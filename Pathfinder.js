@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.3 2012/01/17 06:25:25 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.4 2012/02/10 19:23:09 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -100,7 +100,7 @@ Pathfinder.FEATS = [
   'Armor Proficiency:Combat', 'Athletic:', 'Augment Summoning:',
   'Bleeding Critical:Combat/Critical', 'Blind Fight:Combat',
   'Blinding Critical:Combat/Critical', 'Brew Potion:Item Creation',
-  'Catch Off Guard:Combat', 'Channel Smite:Combat',
+  'Catch Off-Guard:Combat', 'Channel Smite:Combat',
   'Cleave:Combat', 'Combat Casting:', 'Combat Expertise:Combat',
   'Combat Reflexes:Combat', 'Command Undead:',
   'Craft Magic Arms And Armor:Item Creation', 'Craft Rod:Item Creation',
@@ -120,28 +120,28 @@ Pathfinder.FEATS = [
   'Greater Feint:Combat', 'Greater Grapple:Combat', 'Greater Overrun:Combat',
   'Greater Penetrating Strike:Combat', 'Greater Shield Focus:Combat',
   'Greater Spell Focus:', 'Greater Spell Penetration:', 'Greater Sunder:Combat',
-  'Greater Trip:Combat', 'Greater Two Weapon Fighting:Combat',
+  'Greater Trip:Combat', 'Greater Two-Weapon Fighting:Combat',
   'Greater Vital Strike:Combat', 'Greater Weapon Focus:Combat',
-  'Heighten Spell:Metamagic', 'Improved Bull Rush:Combat', 'Improved Channel:',
-  'Improved Counterspell:', 'Improved Critical:Combat',
-  'Improved Disarm:Combat', 'Improved Familiar:', 'Improved Feint:Combat',
-  'Improved Grapple:Combat', 'Improved Great Fortitude:',
-  'Improved Initiative:Combat', 'Improved Iron Will:',
-  'Improved Lightning Reflexes:', 'Improved Overrun:Combat',
-  'Improved Precise Shot:Combat', 'Improved Shield Bash:Combat',
-  'Improved Sunder:Combat', 'Improved Trip:Combat',
-  'Improved Two Weapon Fighting:Combat', 'Improved Unarmed Strike:Combat',
-  'Improved Vital Strike:Combat', 'Improvised Weapon Mastery:Combat',
-  'Intimidating Prowess:Combat', 'Iron Will:', 'Leadership:',
-  'Lightning Reflexes:', 'Lightning Stance:Combat', 'Lunge:Combat',
-  'Magical Aptitude:', 'Manyshot:Combat', 'Master Craftsman:',
-  'Maximize Spell:Metamagic', 'Medusa\'s Wrath:Combat', 'Mobility:Combat',
-  'Mounted Archery:Combat', 'Mounted Combat:Combat', 'Natural Spell:',
-  'Nimble Moves:', 'Penetrating Strike:Combat', 'Persuasive:',
-  'Pinpoint Targeting:Combat', 'Point Blank Shot:Combat',
-  'Power Attack:Combat', 'Precise Shot:Combat', 'Quick Draw:Combat',
-  'Quicken Spell:Metamagic', 'Rapid Reload:Combat', 'Rapid Shot:Combat',
-  'Ride By Attack:Combat', 'Run:', 'Scorpion Style:Combat',
+  'Greater Weapon Specialization:Combat', 'Heighten Spell:Metamagic',
+  'Improved Bull Rush:Combat', 'Improved Channel:', 'Improved Counterspell:',
+  'Improved Critical:Combat', 'Improved Disarm:Combat', 'Improved Familiar:',
+  'Improved Feint:Combat', 'Improved Grapple:Combat',
+  'Improved Great Fortitude:', 'Improved Initiative:Combat',
+  'Improved Iron Will:', 'Improved Lightning Reflexes:',
+  'Improved Overrun:Combat', 'Improved Precise Shot:Combat',
+  'Improved Shield Bash:Combat', 'Improved Sunder:Combat',
+  'Improved Trip:Combat', 'Improved Two-Weapon Fighting:Combat',
+  'Improved Unarmed Strike:Combat', 'Improved Vital Strike:Combat',
+  'Improvised Weapon Mastery:Combat', 'Intimidating Prowess:Combat',
+  'Iron Will:', 'Leadership:', 'Lightning Reflexes:',
+  'Lightning Stance:Combat', 'Lunge:Combat', 'Magical Aptitude:',
+  'Manyshot:Combat', 'Master Craftsman:', 'Maximize Spell:Metamagic',
+  'Medusa\'s Wrath:Combat', 'Mobility:Combat', 'Mounted Archery:Combat',
+  'Mounted Combat:Combat', 'Natural Spell:', 'Nimble Moves:',
+  'Penetrating Strike:Combat', 'Persuasive:', 'Pinpoint Targeting:Combat',
+  'Point Blank Shot:Combat', 'Power Attack:Combat', 'Precise Shot:Combat',
+  'Quick Draw:Combat', 'Quicken Spell:Metamagic', 'Rapid Reload:Combat',
+  'Rapid Shot:Combat', 'Ride By Attack:Combat', 'Run:', 'Scorpion Style:Combat',
   'Scribe Scroll:Item Creation', 'Selective Channeling:', 'Self Sufficient:',
   'Shatter Defenses:Combat', 'Shield Focus:Combat', 'Shield Master:Combat',
   'Shield Proficiency:Combat', 'Shield Slam:Combat', 'Shot On The Run:Combat',
@@ -153,8 +153,8 @@ Pathfinder.FEATS = [
   'Strike Back:Combat', 'Stunning Critical:Combat/Critical',
   'Stunning Fist:Combat', 'Throw Anything:Combat',
   'Tiring Critical:Combat/Critical', 'Toughness:', 'Trample:Combat',
-  'Turn Undead:', 'Two Weapon Defense:Combat', 'Two Weapon Fighting:Combat',
-  'Two Weapon Rend:Combat', 'Unseat:Combat', 'Vital Strike:Combat',
+  'Turn Undead:', 'Two-Weapon Defense:Combat', 'Two-Weapon Fighting:Combat',
+  'Two-Weapon Rend:Combat', 'Unseat:Combat', 'Vital Strike:Combat',
   'Weapon Finesse:Combat', 'Weapon Focus:Combat', 'Weapon Proficiency:Combat',
   'Weapon Specialization:Combat', 'Whirlwind Attack:Combat',
   'Widen Spell:Metamagic', 'Wind Stance:Combat'
@@ -178,6 +178,7 @@ Pathfinder.SUBFEATS = {
   'Greater Weapon Focus':'',
   'Greater Weapon Specialization':'',
   'Improved Critical':'',
+  'Master Craftsman':'',
   'Rapid Reload':'Hand/Heavy/Light',
   'Shield Proficiency':'Heavy/Tower',
   'Skill Focus':'',
@@ -781,20 +782,20 @@ Pathfinder.classRules = function(rules, classes) {
       // TODO flurry of blows attack bonus
       baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
       feats = [
-        'Catch Off Guard', 'Combat Reflexes', 'Deflect Arrows', 'Dodge',
+        'Catch Off-Guard', 'Combat Reflexes', 'Deflect Arrows', 'Dodge',
         'Improved Grapple', 'Scorpion Style', 'Throw Anything',
         'Gorgon\'s Fist', 'Improved Bull Rush', 'Improved Disarm',
         'Improved Feint', 'Improved Trip', 'Mobility', 'Improved Critical',
         'Medusa\'s Wrath', 'Snatch Arrows', 'Spring Attack'
       ];
       features = [
-        '1:Two Weapon Fighting', '1:Stunning Fist', '1:Unarmed Strike',
+        '1:Two-Weapon Fighting', '1:Stunning Fist', '1:Unarmed Strike',
         '2:Evasion', '3:Fast Movement', '3:Maneuver Training', '3:Still Mind',
         '4:Ki Pool', '4:Magic Ki Strike', '4:Slow Fall', '5:High Jump',
         '5:Purity Of Body', '7:Wholeness Of Body',
-        '8:Improved Two Weapon Fighting', '9:Improved Evasion',
+        '8:Improved Two-Weapon Fighting', '9:Improved Evasion',
         '10:Lawful Ki Strike', '11:Diamond Body', '12:Abundant Step',
-        '13:Diamond Soul', '15:Greater Two Weapon Fighting',
+        '13:Diamond Soul', '15:Greater Two-Weapon Fighting',
         '15:Quivering Palm', '16:Adamantine Ki Strike', '17:Timeless Body',
         '17:Tongue Of The Sun And Moon', '19:Empty Body', '20:Perfect Self'
       ];
@@ -814,7 +815,8 @@ Pathfinder.classRules = function(rules, classes) {
         'combatNotes.perfectSelfFeature:DR 10/chaotic',
         'combatNotes.quiveringPalmFeature:' +
           'Foe makes DC %V Fortitude save or dies 1/day',
-        'combatNotes.stunningFistFeature:TODO', // TODO
+        'combatNotes.stunningFistFeature:' +
+          'Foe %V Fortitude save or stunned %1/day',
         'combatNotes.twoWeaponFightingFeature:Take -2 penalty for extra attack',
         'featureNotes.timelessBodyFeature:No aging penalties',
         'featureNotes.tongueOfTheSunAndMoonFeature:Speak w/any living creature',
@@ -1122,8 +1124,8 @@ Pathfinder.classRules = function(rules, classes) {
         'Far Shot', 'Point Blank Shot', 'Precise Shot', 'Rapid Shot',
         'Improved Precise Shot', 'Manyshot', 'Pinpoint Targeting',
         'Shot On The Run', 'Double Slice', 'Improved Shield Bash',
-        'Quick Draw', 'Two Weapon Fighting', 'Improved Two Weapon Fighting',
-        'Two Weapon Defense', 'Greater Two Weapon Fighting', 'Two Weapon Rend'
+        'Quick Draw', 'Two-Weapon Fighting', 'Improved Two-Weapon Fighting',
+        'Two-Weapon Defense', 'Greater Two-Weapon Fighting', 'Two-Weapon Rend'
       ];
       skillPoints = 6;
       skills = [
@@ -1552,7 +1554,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'abilityNotes.acrobaticStepsFeature:' +
           'Move through 20 ft of difficult terrain/round',
         'validationNotes.acrobaticStepsFeatAbility:Requires Dexterity >= 15',
-        'validationNotes.acrobaticStepsFeatFeats:Requires Nimble Moves'
+        'validationNotes.acrobaticStepsFeatFeatures:Requires Nimble Moves'
       ];
     } else if(feat == 'Agile Maneuvers') {
       notes = [
@@ -1568,6 +1570,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       rules.defineRule('combatNotes.strengthCombatManeuverAdjustment',
         'combatNotes.agileManeuversFeature', '*', '0'
       );
+      rules.defineRule
+        ('cmd', 'combatNotes.dexterityCombatManeuverAdjustment', '+', null);
     } else if(feat == 'Alertness') {
       notes = [
         'sanityNotes.alertnessFeatSkills:Requires Perception||Sense Motive',
@@ -1583,8 +1587,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if((matchInfo = feat.match(/^Alignment Channel \((.*)\)$/))!=null) {
       notes = [
-       'combatNotes.alignmentChannel(' + matchInfo[1] + ')Feature:' +
-         'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders'
+        'combatNotes.alignmentChannel(' + matchInfo[1] + ')Feature:' +
+          'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders'
       ];
     } else if(feat == 'Animal Affinity') {
       notes = [
@@ -1680,12 +1684,13 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.blindFightFeature:' +
           'Reroll concealed miss/no bonus to invisible foe/no skill check ' +
-          'blinded full speed move'
+          'on blinded full speed move'
       ];
     } else if(feat == 'Blinding Critical') {
       notes = [
         'combatNotes.blindingCriticalFeature:' +
-          'Critical hit requires DC %V fortitude save or permanent blindness',
+          'Critical hit causes permanent blindness; ' +
+          'DC %V fortitude save reduces to dazzled d4 rounds',
         'validationNotes.blindingCriticalFeatFeature:Requires Critical Focus',
         'validationNotes.blindingCricialFeatBaseAttack:' +
           'Requires Base Attack >= 15'
@@ -1694,7 +1699,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'baseAttack', '=', '10 + source'
       );
     // } else if(feat == 'Brew Potion') { // as SRD35
-    } else if(feat == 'Catch Off Guard') {
+    } else if(feat == 'Catch Off-Guard') {
       notes = [
         'combatNotes.catchOffGuardFeature:' +
           'No penalty for improvised weapon; unarmed opponents flat-footed'
@@ -1702,15 +1707,15 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Channel Smite') {
       notes = [
         'combatNotes.channelSmiteFeature:' +
-          'Channel energy against opponent as swift action',
+          'Channel energy into weapon strike as swift action',
         'validationNotes.channelSmiteFeatFeature:Requires Channel Energy'
       ];
     } else if(feat == 'Cleave') {
       notes = [
-        'combatNotes.cleaveFeature:-2 AC for attack against two opponents',
+        'combatNotes.cleaveFeature:-2 AC for attack against two foes',
         'validationNotes.cleaveFeatAbility:Requires Strength >= 13',
         'validationNotes.cleaveFeatBaseAttack:Requires Base Attack >= 1',
-        'validationNotes.cleaveFeatFeats:Requires Power Attack'
+        'validationNotes.cleaveFeatFeatures:Requires Power Attack'
       ];
     // } else if(feat == 'Combat Casting') { // as SRD35
     } else if(feat == 'Combat Expertise') {
@@ -1747,6 +1752,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Critical Mastery') {
       notes = [
         'combatNotes.criticalMasteryFeature:Apply two effects to critical hits',
+        'validationNotes.criticalMasteryFeatFeatures:Requires Critical Focus',
         'validationNotes.criticalMasteryFeatLevels:Requires Fighter >= 14'
       ];
     } else if(feat == 'Dazzling Display') {
@@ -1772,14 +1778,15 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.deadlyStrokeFeature:' +
           'x2 damage/1 point con bleed against stunned/flat-footed foe',
         'validationNotes.deadlyStrokeFeatBaseAttack:Requires Base Attack >= 11',
-        'validationNotes.deadlyStrokeFeatFeats:' +
+        'validationNotes.deadlyStrokeFeatFeatures:' +
           'Requires Dazzling Display/Shatter Defenses'
-        // TODO requires a Greater Weapon Focus feat
+        // TODO requires Weapon Focus/Greater Weapon Focus feats
       ];
     } else if(feat == 'Deafening Critical') {
       notes = [
         'combatNotes.deafeningCriticalFeature:' +
-          'Critical hit requires DC %V fortitude save or permanent deafness',
+          'Critical hit causes permanent deafness; ' +
+          'DC %V fortitude save reduces to 1 round',
         'validationNotes.deafeningCriticalFeatFeature:Requires Critical Focus',
         'validationNotes.deafeningCricialFeatBaseAttack:' +
           'Requires Base Attack >= 13'
@@ -1838,8 +1845,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if((matchInfo = feat.match(/^Elemental Channel \((.*)\)$/)) != null){
       notes = [
-       'combatNotes.elementalChannel(' + matchInfo[1] + ')Feature:' +
-         'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders'
+        'combatNotes.elementalChannel(' + matchInfo[1] + ')Feature:' +
+          'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders'
       ];
     // } else if(feat == 'Empower Spell') { // as SRD35
     // } else if(feat == 'Endurance') { // as SRD35
@@ -1847,7 +1854,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Eschew Materials') { // as SRD35
     } else if(feat == 'Exhausting Critical') {
       notes = [
-        'combatNotes.ExhaustingCriticalFeature:' +
+        'combatNotes.exhaustingCriticalFeature:' +
           'Critical hit causes foe exhaustion',
         'validationNotes.exhaustingCriticalFeatFeature:' +
           'Requires Critical Focus/Tiring Critical',
@@ -1857,8 +1864,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Extend Spell') { // as SRD35
     } else if(feat == 'Extra Channel') {
       notes = [
-        'magicNotes.extraChannelFeature:Channel energy 2 extra times/day',
-        'validationNotes.extraChannelFeatureFeature:Requires Channel Energy'
+        'magicNotes.extraChannelFeature:Channel energy +2/day',
+        'validationNotes.extraChannelFeatFeature:Requires Channel Energy'
       ];
       rules.defineRule('magicNotes.channelEnergyFeature.2',
         'magicNotes.extraChannelFeature', '+', '2'
@@ -1866,14 +1873,14 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Ki') {
       notes = [
         'featureNotes.extraKiFeature:+2 Ki pool',
-        'validationNotes.extraKiFeatureFeature:Requires Ki Pool'
+        'validationNotes.extraKiFeatFeature:Requires Ki Pool'
       ];
       rules.defineRule('featureNotes.kiPoolFeature',
         'featureNotes.extraKiFeature', '+', '2'
       );
     } else if(feat == 'Extra Lay On Hands') {
       notes = [
-        'magicNotes.extraLayOnHandsFeature:Lay On Hands 2 extra times/day',
+        'magicNotes.extraLayOnHandsFeature:Lay On Hands +2/day',
         'validationNotes.extraLayOnHandsFeatFeature:Requires Lay On Hands'
       ];
       rules.defineRule('magicNotes.layOnHandsFeature.1',
@@ -1882,7 +1889,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Mercy') {
       notes = [
         'magicNotes.extraMercyFeature:Lay On Hands gives Mercy effect',
-        'validationNotes.extraMercyFeatFeature:Requires Mercy'
+        'validationNotes.extraMercyFeatFeature:Requires Lay On Hands/Mercy'
       ];
     } else if(feat == 'Extra Performance') {
       notes = [
@@ -1905,11 +1912,11 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Far Shot') {
       notes = [
         'combatNotes.farShotFeature:-1 range penalty',
-        'validationNotes.farShotFeatFeats:Requires Point Blank Shot'
+        'validationNotes.farShotFeatFeatures:Requires Point Blank Shot'
       ];
     } else if(feat == 'Fleet') {
       notes = [
-        'abilityNotes.fleetFeature:+%V speed'
+        'abilityNotes.fleetFeature:+%V speed in light/no armor'
       ];
       rules.defineRule('speed', 'fleetFeature', '+', '5');
     } else if(feat == 'Forge Ring') {
@@ -1932,226 +1939,617 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Great Cleave') { // as SRD35
     // } else if(feat == 'Great Fortitude') { // as SRD35
     } else if(feat == 'Greater Bull Rush') {
-      // TODO
+      notes = [
+        'combatNotes.greaterBullRushFeature:' +
+          '+2 bull rush checks; AOO on bull rushed foes',
+        'validationNotes.greaterBullRushFeatAbility:Requires Strength >= 13',
+        'validationNotes.greaterBullRushFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterBullRushFeatFeatures:' +
+          'Requires Improved Bull Rush/Power Attack'
+      ];
     } else if(feat == 'Greater Disarm') {
-      // TODO
+      notes = [
+        'combatNotes.greaterDisarmFeature:' +
+          '+2 disarm checks; disarmed weapons land 15 ft away',
+        'validationNotes.greaterDisarmFeatAbility:Requires Intelligence >= 13',
+        'validationNotes.greaterDisarmFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterDisarmFeatFeatures:' +
+          'Requires Combat Expertise/Improved Disarm'
+      ];
     } else if(feat == 'Greater Feint') {
-      // TODO
+      notes = [
+        'combatNotes.greaterFeintFeature:' +
+          'Feinted foe loses dex bonus for full round',
+        'validationNotes.greaterFeintFeatAbility:Requires Intelligence >= 13',
+        'validationNotes.greaterFeintFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterFeintFeatFeatures:' +
+          'Requires Combat Expertise/Improved Feint'
+      ];
     } else if(feat == 'Greater Grapple') {
-      // TODO
+      notes = [
+        'combatNotes.greaterGrappleFeature:' +
+          '+2 grapple checks; grapple check is move action',
+        'validationNotes.greaterGrappleFeatAbility:Requires Dexterity >= 13',
+        'validationNotes.greaterGrappleFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterGrappleFeatFeatures:' +
+          'Requires Improved Grapple/Improved Unarmed Strike'
+      ];
     } else if(feat == 'Greater Overrun') {
-      // TODO
+      notes = [
+        'combatNotes.greaterOverrunFeature:' +
+          '+2 overrun checks; AOO on overrun foes',
+        'validationNotes.greaterOverrunFeatAbility:Requires Strength >= 13',
+        'validationNotes.greaterOverrunFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterOverrunFeatFeatures:' +
+          'Requires Improved Overrun/Power Attack'
+      ];
     } else if(feat == 'Greater Penetrating Strike') {
-      // TODO
+      notes = [
+        'combatNotes.greaterPenetratingStrikeFeature:' +
+          'Focused weapons ignore DR 5/- or DR 10/anything',
+        'validationNotes.greaterPenetratingStrikeFeatLevels:' +
+          'Requires Fighter >= 16',
+        'validationNotes.greaterPenetratingStrikeFeatFeatures:' +
+          'Requires Penetrating Strike'
+        // TODO Requires a Weapon Focus feat
+      ];
     } else if(feat == 'Greater Shield Focus') {
-      // TODO
-    } else if(feat == 'Greater Spell Focus') {
-      // TODO
-    } else if(feat == 'Greater Spell Penetration') {
-      // TODO
+      notes = [
+        'combatNotes.greaterShieldFocusFeature:+1 AC',
+        'validationNotes.greaterShieldFocusFeatBaseAttack:' +
+          'Requires Base Attack >= 1',
+        'validationNotes.greaterShieldFocusFeatFeatures:' +
+           'Requires Shield Focus/Shield Proficiency',
+        'validationNotes.greaterShieldFocusFeatLevels:Requires Fighter >= 8'
+      ];
+      rules.defineRule('armorClass',
+        'combatNotes.greaterShieldFocusFeature', '+', '1'
+      );
+    // } else if((matchInfo = feat.match(/^Greater Spell Focus \((.*)\)$/))!=null){ // as SRD35
+    // } else if(feat == 'Greater Spell Penetration') { // as SRD35
     } else if(feat == 'Greater Sunder') {
-      // TODO
+      notes = [
+        'combatNotes.greaterSunderFeature:' +
+          '+2 sunder checks;foe takes excess damage',
+        'validationNotes.greaterSunderFeatAbility:Requires Strength >= 13',
+        'validationNotes.greaterSunderFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterSunderFeatFeatures:' +
+          'Requires Improved Sunder/Power Attack'
+      ];
     } else if(feat == 'Greater Trip') {
-      // TODO
-    } else if(feat == 'Greater Two Weapon Fighting') {
-      // TODO
+      notes = [
+        'combatNotes.greaterTripFeature:+2 trip checks; AOO on tripped foes',
+        'validationNotes.greaterTripFeatAbility:Requires Intelligence >= 13',
+        'validationNotes.greaterTripFeatBaseAttack:' +
+          'Requires Base Attack >= 6',
+        'validationNotes.greaterTripFeatFeatures:' +
+          'Requires Combat Expertise/Improved Trip'
+      ];
+    } else if(feat == 'Greater Two-Weapon Fighting') {
+      notes = [
+        'combatNotes.greaterTwoWeaponFightingFeature:' +
+          'Third attack with off-hand weapon at -10 attack',
+        'validationNotes.greaterTwoWeaponFightingFeatAbility:' +
+          'Requires Dexterity >= 19',
+        'validationNotes.greaterTwoWeaponFightingFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.greaterTwoWeaponFightingFeatFeatures:' +
+          'Requires Improved Two-Weapon Fighting/Two-Weapon Fighting'
+      ];
     } else if(feat == 'Greater Vital Strike') {
-      // TODO
-    } else if(feat == 'Greater Weapon Focus') {
-      // TODO
-    } else if(feat == 'Heighten Spell') {
-      // TODO
+      notes = [
+        'combatNotes.greaterVitalStrikeFeature:4x base damage',
+        'validationNotes.greaterVitalStrikeFeatBaseAttack:' +
+          'Requires Base Attack >= 16',
+        'validationNotes.greaterVitalStrikeFeatFeatures:' +
+          'Requires Improved Vital Strike/Vital Strike'
+      ];
+    // } else if((matchInfo = feat.match(/^Greater Weapon Focus \((.*)\)$/))!=null){ // as SRD35
+    // } else if((matchInfo = feat.match(/^Greater Weapon Specialization \((.*)\)$/))!=null){ // as SRD35
+    // } else if(feat == 'Heighten Spell') { // as SRD35
     } else if(feat == 'Improved Bull Rush') {
-      // TODO
+      notes = [
+        'combatNotes.improvedBullRushFeature:' +
+          'No AOO on Bull Rush; +2 Bull Rush check; +2 Bull Rush CMD',
+        'validationNotes.improvedBullRushFeatAbility:Requires Strength >= 13',
+        'validationNotes.improvedBullRushFeatBaseAttack:' +
+          'Requires Base Attack >= 1',
+        'validationNotes.improvedBullRushFeatFeatures:Requires Power Attack'
+      ];
     } else if(feat == 'Improved Channel') {
-      // TODO
-    } else if(feat == 'Improved Counterspell') {
-      // TODO
-    } else if(feat == 'Improved Critical') {
-      // TODO
+      notes = [
+        'magicNotes.improvedChannelFeature:+2 DC on channeled energy',
+        'validationNotes.improvedChannelFeatFeature:Requires Channel Energy'
+      ];
+    // } else if(feat == 'Improved Counterspell') { // as SRD35
+    // } else if((matchInfo = feat.match(/^Improved Critical \((.*)\)$/)) != null){ // as SRD35
     } else if(feat == 'Improved Disarm') {
-      // TODO
-    } else if(feat == 'Improved Familiar') {
-      // TODO
-    } else if(feat == 'Improved Feint') {
-      // TODO
+      notes = [
+        'combatNotes.improvedDisarmFeature:' +
+          'No AOO on Disarm; +2 Disarm check; +2 Disarm CMD',
+        'validationNotes.improvedDisarmFeatAbility:Requires Intelligence >= 13',
+        'validationNotes.improvedDisarmFeatFeatures:Requires Combat Expertise'
+      ];
+    // } else if(feat == 'Improved Familiar') { // as SRD35
+    // } else if(feat == 'Improved Feint') { // as SRD35
     } else if(feat == 'Improved Grapple') {
-      // TODO
+      notes = [
+        'combatNotes.improvedGrappleFeature:' +
+          'No AOO on Grapple; +2 Grapple check; +2 Grapple CMD',
+        'validationNotes.improvedGrappleFeatAbility:Requires Dexterity >= 13',
+        'validationNotes.improvedGrappleFeatFeatures:' +
+          'Requires Improved Unarmed Strike'
+      ];
     } else if(feat == 'Improved Great Fortitude') {
-      // TODO
-    } else if(feat == 'Improved Initiative') {
-      // TODO
+      notes = [
+        'saveNotes.improvedGreatFortitudeFeature:Reroll fortitude save 1/day',
+        'validationNotes.improvedGreatFortitudeFeatFeatures:' +
+          'Requires Great Fortitude'
+      ];
+    // } else if(feat == 'Improved Initiative') { // as SRD35
     } else if(feat == 'Improved Iron Will') {
-      // TODO
+      notes = [
+        'saveNotes.improvedIronWillFeature:Reroll will save 1/day',
+        'validationNotes.improvedIronWillFeatFeatures:Requires Iron Will'
+      ];
     } else if(feat == 'Improved Lightning Reflexes') {
-      // TODO
+      notes = [
+        'saveNotes.improvedLightningReflexesFeature:Reroll reflex save 1/day',
+        'validationNotes.improvedLightningReflexesFeatFeatures:' +
+          'Requires Lightning Reflexes'
+      ];
     } else if(feat == 'Improved Overrun') {
-      // TODO
+      notes = [
+        'combatNotes.improvedOverrunFeature:' +
+          'No AOO on Overrun; +2 Overrun check; +2 Overrun CMD; ' +
+          'foes cannot avoid',
+        'validationNotes.improvedOverrunFeatAbility:Requires Strength >= 13',
+        'validationNotes.improvedOverrunFeatFeatures:Requires Power Attack'
+      ];
     } else if(feat == 'Improved Precise Shot') {
-      // TODO
-    } else if(feat == 'Improved Shield Bash') {
-      // TODO
+      notes = [
+        'combatNotes.improvedPreciseShotFeature:' +
+          'No foe AC bonus for partial concealment',
+        'validationNotes.improvedPreciseShotFeatAbility:' +
+          'Requires Dexterity >= 19',
+        'validationNotes.improvedPreciseShotFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.improvedPreciseShotFeatFeatures:' +
+          'Requires Point Blank Shot/Precise Shot'
+      ];
+    // } else if(feat == 'Improved Shield Bash') { // as SRD35
     } else if(feat == 'Improved Sunder') {
-      // TODO
+      notes = [
+        'combatNotes.improvedSunderFeature:' +
+          'No AOO on Sunder; +2 Sunder check; +2 Sunder CMD',
+        'validationNotes.improvedSunderFeatAbility:Requires Strength >= 13',
+        'validationNotes.improvedSunderFeatBaseAttack:',
+          'Requires Base Attack >= 1',
+        'validationNotes.improvedSunderFeatFeatures:Requires Power Attack'
+      ];
     } else if(feat == 'Improved Trip') {
-      // TODO
-    } else if(feat == 'Improved Two Weapon Fighting') {
-      // TODO
-    } else if(feat == 'Improved Unarmed Strike') {
-      // TODO
+      notes = [
+        'combatNotes.improvedTripFeature:' +
+          'No AOO on Trip; +2 Trip check; +2 Trip CMD',
+        'validationNotes.improvedTripFeatAbility:Requires Intelligence >= 13',
+        'validationNotes.improvedTripFeatFeatures:Requires Combat Expertise'
+      ];
+    // } else if(feat == 'Improved Two-Weapon Fighting') { // as SRD35
+    // } else if(feat == 'Improved Unarmed Strike') { // as SRD35
     } else if(feat == 'Improved Vital Strike') {
-      // TODO
+      notes = [
+        'combatNotes.improvedVitalStrikeFeature:3x base damage',
+        'validationNotes.improvedVitalStrikeFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.improvedVitalStrikeFeatFeatures:Requires Vital Strike'
+      ];
     } else if(feat == 'Improvised Weapon Mastery') {
-      // TODO
+      notes = [
+        'combatNotes.improvisedWeaponMasteryFeature:' +
+          'No penalties for improvised weapons; ' +
+          'improvised weapon damage +step, critical x2@19',
+        'validationNotes.improvisedWeaponMasteryFeatBaseAttack:' +
+          'Requires Base Attach >= 8',
+        'validationNotes.improvisedWeaponMasteryFeatFeatures:' +
+          'Requires Catch Off-Guard||Throw Anything'
+      ];
     } else if(feat == 'Intimidating Prowess') {
-      // TODO
-    } else if(feat == 'Iron Will') {
-      // TODO
+      notes = [
+        'skillNotes.intimidatingProwessFeature:+%V Intimidate'
+      ];
+      rules.defineRule('skillModifier.Intimidate',
+        'skillNotes.intimidatingProwessFeature', '+', null
+      );
+      rules.defineRule('skillNotes.intimidatingProwessFeature',
+        'strengthModifier', '=', null
+      );
+    // } else if(feat == 'Iron Will') { // as SRD35
     } else if(feat == 'Leadership') {
-      // TODO
-    } else if(feat == 'Lightning Reflexes') {
-      // TODO
+      notes = [
+        'featureNotes.leadershipFeature:Attract followers',
+        'validationNotes.leadershipFeatLevel:Requires Level >= 7'
+      ];
+    // } else if(feat == 'Lightning Reflexes') { // as SRD35
     } else if(feat == 'Lightning Stance') {
-      // TODO
+      notes = [
+        'combatNotes.lightningStanceFeature:' +
+          '50% concealment with 2 move/withdraw actions',
+        'validationNotes.lightningStanceFeatAbility:Requires Dexterity >= 17',
+        'validationNotes.lightningStanceFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.lightningStanceFeatFeatures:Requires Wind Stance'
+      ];
     } else if(feat == 'Lunge') {
-      // TODO
+      notes = [
+        'combatNotes.lungeFeature:-2 AC to increase melee range 5 ft',
+        'validationNotes.lungeFeatBaseAttack:Requires Base Attack >= 6'
+      ];
     } else if(feat == 'Magical Aptitude') {
-      // TODO
+      notes = [
+        'sanityNotes.magicalAptitudeFeatSkills:' +
+          'Requires Spellcraft||Use Magic Device',
+        'skillNotes.magicalAptitudeFeature:+%V Spellcraft/+%1 Use Magic Device'
+      ];
+      rules.defineRule('skillNotes.magicalAptitudeFeature',
+        '', '=', '2',
+        'skills.Spellcraft', '+', 'source >= 10 ? 2 : null'
+      );
+      rules.defineRule('skillNotes.magicalAptitudeFeature.1',
+        '', '=', '2',
+        'skills.Use Magic Device', '+', 'source >= 10 ? 2 : null'
+      );
     } else if(feat == 'Manyshot') {
-      // TODO
-    } else if(feat == 'Master Craftsman') {
-      // TODO
-    } else if(feat == 'Maximize Spell') {
-      // TODO
+      notes = [
+        'combatNotes.manyshotFeature:Fire 2 arrows simultaneously',
+        'validationNotes.manyshotFeatAbility:Requires Dexterity >= 17',
+        'validationNotes.manyshotFeatBaseAttack:Requires Base Attack >= 6',
+        'validationNotes.manyshotFeatFeatures:' +
+          'Requires Point Blank Shot/Rapid Shot'
+      ];
+    } else if((matchInfo = feat.match(/^Master Craftsman \((.*)\)$/)) != null) {
+      skill = matchInfo[1];
+      notes = [
+        'featureNotes.masterCraftsman(' + skill + ')Feature:' +
+          'Use '+skill+' with Craft Magic Arms And Armor/Craft Wondrous Item',
+        'skillNotes.masterCraftsman(' + skill + ')Feature:+2 ' + skill,
+        'combatNotes.elementalChannel(' + matchInfo[1] + ')Feature:' +
+          'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders',
+        'validationNotes.masterCraftsman(' + skill + ')FeatSkills:' +
+          'Requires ' + skill + ' >= 5'
+      ];
+    // } else if(feat == 'Maximize Spell') { // as SRD35
     } else if(feat == 'Medusa\'s Wrath') {
-      // TODO
-    } else if(feat == 'Mobility') {
-      // TODO
-    } else if(feat == 'Mounted Archery') {
-      // TODO
-    } else if(feat == 'Mounted Combat') {
-      // TODO
-    } else if(feat == 'Natural Spell') {
-      // TODO
+      notes = [
+        'combatNotes.medusa\'sWrathFeature:' +
+          '2 extra unarmed attacks vs. diminshed-capacity foe',
+        'validationNotes.medusa\'sWrathFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.medusa\'sWrathFeatFeatures:' +
+          'Requires Improved Unarmed Strike/Gorgon\'s Fist/Scorpion Style'
+      ];
+    // } else if(feat == 'Mobility') { // as SRD35
+    // } else if(feat == 'Mounted Archery') { // as SRD35
+    // } else if(feat == 'Mounted Combat') { // as SRD35
+    // } else if(feat == 'Natural Spell') { // as SRD35
     } else if(feat == 'Nimble Moves') {
-      // TODO
+      notes = [
+        'abilityNotes.nimbleMovesFeature:' +
+          'Move through 5 ft difficult terrain/round as though normal terrain',
+        'validationNotes.nimbleMovesFeatAbility:Requires Dexterity >= 13'
+      ];
     } else if(feat == 'Penetrating Strike') {
-      // TODO
+      notes = [
+        'combatNotes.greaterPenetratingStrikeFeature:' +
+          'Focused weapons ignore DR 5/anything',
+        'validationNotes.penetratingStrikeFeatBaseAttack:' +
+          'Requires Base Attack >= 1',
+        'validationNotes.penetratingStrikeFeatLevels:Requires Fighter >= 12'
+        // TODO Requires a Weapon Focus feat
+      ];
     } else if(feat == 'Persuasive') {
-      // TODO
+      notes = [
+        'sanityNotes.persuasiveFeatSkills:Requires Diplomacy||Intimidate',
+        'skillNotes.persuasiveFeature:+%V Diplomacy/+%1 Intimidate'
+      ];
+      rules.defineRule('skillNotes.persuasiveFeature',
+        '', '=', '2',
+        'skills.Diplomacy', '+', 'source >= 10 ? 2 : null'
+      );
+      rules.defineRule('skillNotes.persuasiveFeature.1',
+        '', '=', '2',
+        'skills.Intimidate', '+', 'source >= 10 ? 2 : null'
+      );
     } else if(feat == 'Pinpoint Targeting') {
-      // TODO
-    } else if(feat == 'Point Blank Shot') {
-      // TODO
+      notes = [
+        'combatNotes.pinpointTargetingFeature:' +
+          'Ranged attack ignores armor bonus',
+        'validationNotes.pinpointTargetingFeatAbility:Requires Dexterity >= 19',
+        'validationNotes.pinpointTargetingFeatBaseAttack:' +
+          'Requires Base Attack >= 16',
+        'validationNotes.pinpointTargetingFeatFeatures:' +
+          'Requires Improved Precise Shot/Point-Blank Shot/Precise Shot'
+      ];
+    // } else if(feat == 'Point Blank Shot') { // as SRD35
     } else if(feat == 'Power Attack') {
-      // TODO
-    } else if(feat == 'Precise Shot') {
-      // TODO
-    } else if(feat == 'Quick Draw') {
-      // TODO
-    } else if(feat == 'Quicken Spell') {
-      // TODO
-    } else if((matchInfo = feat.match(/^Rapid Reload \((.*)\)$/)) != null) {
-      // TODO
-    } else if(feat == 'Rapid Shot') {
-      // TODO
-    } else if(feat == 'Ride By Attack') {
-      // TODO
+      notes = [
+        'combatNotes.powerAttackFeature:-%V attack/+%1 damage',
+        'validationNotes.powerAttackFeatAbility:Requires Strength >= 13',
+        'validationNotes.powerAttackFeatBaseAttack:Requires Base Attack >= 1'
+      ];
+      rules.defineRule('combatNotes.powerAttackFeature',
+        'baseAttack', '=', '1 + Math.floor(source / 4)'
+      );
+    // } else if(feat == 'Precise Shot') { // as SRD35
+    // } else if(feat == 'Quick Draw') { // as SRD35
+    // } else if(feat == 'Quicken Spell') { // as SRD35
+    // } else if((matchInfo = feat.match(/^Rapid Reload \((.*)\)$/)) != null) { // as SRD35
+    // } else if(feat == 'Rapid Shot') { // as SRD35
+    // } else if(feat == 'Ride By Attack') { // as SRD35
     } else if(feat == 'Run') {
-      // TODO
+      notes = [
+        'abilityNotes.runFeature:+1 run speed multiplier',
+        'combatNotes.runFeature:Retain dex bonus to AC while running',
+        'skillNotes.runFeature:+4 running Jump'
+      ];
+      rules.defineRule
+        ('runSpeedMultiplier', 'combatNotes.runFeature', '+', '1');
     } else if(feat == 'Scorpion Style') {
-      // TODO
-    } else if(feat == 'Scribe Scroll') {
-      // TODO
+      notes = [
+        'combatNotes.scorpionStyleFeature:' +
+          'Unarmed hit slows foe for %V rounds; DC %1 fortitude negates',
+        'validationNotes.scorpionStyleFeatFeatures:' +
+           'Requires Improved Unarmed Strike'
+      ];
+      rules.defineRule('combatNotes.scorpionStyleFeature',
+        'wisdomModifier', '=', null
+      );
+      rules.defineRule('combatNotes.scorpionStyleFeature.1',
+        'level', '=', '10 + Math.floor(source / 2)',
+        'wisdomModifier', '+', null
+      );
+    // } else if(feat == 'Scribe Scroll') { // as SRD35
     } else if(feat == 'Selective Channeling') {
-      // TODO
+      notes = [
+        'magicNotes.selectiveChannelingFeature:Avoid up to %V targets',
+        'validationNotes.selectiveChannelingFeatAbility:' +
+          'Requires Charisma >= 13',
+        'validationNotes.selectiveChannelingFeatFeature:Requires Channel Energy'
+      ];
+      rules.defineRule('magicNotes.selectiveChannelingFeature',
+        'wisdomModifier', '=', null
+      );
     } else if(feat == 'Self Sufficient') {
-      // TODO
+      notes = [
+        'sanityNotes.selfSufficientFeatSkills:Requires Heal||Survival',
+        'skillNotes.selfSufficientFeature:+%V Heal/+%1 Survival'
+      ];
+      rules.defineRule('skillNotes.selfSufficientFeature',
+        '', '=', '2',
+        'skills.Heal', '+', 'source >= 10 ? 2 : null'
+      );
+      rules.defineRule('skillNotes.selfSufficientFeature.1',
+        '', '=', '2',
+        'skills.Survival', '+', 'source >= 10 ? 2 : null'
+      );
     } else if(feat == 'Shatter Defenses') {
-      // TODO
+      notes = [
+        'combatNotes.shatterDefensesFeature:' +
+          'Fearful opponents flat-footed through next round',
+        'validationNotes.shatterDefensesFeatBaseAttack:' +
+           'Requires Base Attack >= 6',
+        'validationNotes.shatterDefensesFeatFeature:Requires Dazzling Display'
+        // TODO Requires Weapon Focus
+      ];
     } else if(feat == 'Shield Focus') {
-      // TODO
+      notes = [
+        'combatNotes.shieldFocusFeature:+1 AC',
+        'validationNotes.shieldFocusFeatBaseAttack:Requires Base Attack >= 1',
+        'validationNotes.shieldFocusFeatFeatures:Requires Shield Proficiency'
+      ];
+      rules.defineRule
+        ('armorClass', 'combatNotes.shieldFocusFeature', '+', '1');
     } else if(feat == 'Shield Master') {
-      // TODO
-    } else if(feat == 'Shield Proficiency (Heavy)') {
-      // TODO
-    } else if(feat == 'Shield Proficiency (Tower)') {
-      // TODO
+      notes = [
+        'combatNotes.shieldMasterFeature:' +
+          'No penalty on shield attacks; ' +
+          'apply shield enhancements to attack/damage',
+        'validationNotes.shieldMasterFeatBaseAttack:Requires Base Attack >= 11',
+        'validationNotes.shieldMasterFeatFeatures:' +
+          'Requires Improved Shield Bash/Shield Proficiency/Shield Slam/' +
+          'Two-Weapon Fighting'
+      ];
+    // } else if(feat == 'Shield Proficiency (Heavy)') { // as SRD35
+    // } else if(feat == 'Shield Proficiency (Tower)') { // as SRD35
     } else if(feat == 'Shield Slam') {
-      // TODO
-    } else if(feat == 'Shot On The Run') {
-      // TODO
+      notes = [
+        'combatNotes.shieldSlamFeature:Shield Bash includes Bull Rush',
+        'validationNotes.shieldSlamFeatBaseAttack:Requires Base Attack >= 6',
+        'validationNotes.shieldSlamFeatFeatures:' +
+          'Requires Improved Shield Bash/Shield Proficiency/Two-Weapon Fighting'
+      ];
+    // } else if(feat == 'Shot On The Run') { // as SRD35
     } else if(feat == 'Sickening Critical') {
-      // TODO
-    } else if(feat == 'Silent Spell') {
-      // TODO
-    } else if(feat == 'Skill Focus') {
-      // TODO
-    } else if(feat == 'Snatch Arrows') {
-      // TODO
-    } else if(feat == 'Spell Focus') {
-      // TODO
-    } else if(feat == 'Spell Mastery') {
-      // TODO
-    } else if(feat == 'Spell Penetration') {
-      // TODO
+      notes = [
+        'combatNotes.sickeningCriticalFeature:' +
+          'Critical hit causes foe sickening',
+        'validationNotes.sickeningCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.sickeningCricialFeatBaseAttack:' +
+          'Requires Base Attack >= 11'
+      ];
+    // } else if(feat == 'Silent Spell') { // as SRD35
+    } else if((matchInfo = feat.match(/^Skill Focus \((.*)\)$/)) != null) {
+      var skill = matchInfo[1];
+      var skillNoSpace = skill.replace(/ /g, '');
+      var note = 'skillNotes.skillFocus(' + skillNoSpace + ')Feature';
+      notes = [
+        note + ':+%V checks',
+        'sanityNotes.skillFocus(' + skillNoSpace + ')FeatSkills:' +
+          'Requires ' + skill
+      ];
+      rules.defineRule(note,
+        '', '=', '3',
+        'skills.' + skill, '+', 'source >= 10 ? 3 : null'
+      );
+      rules.defineRule('skillModifier.' + skill, note, '+', null);
+    // } else if(feat == 'Snatch Arrows') { // as SRD35
+    // } else if((matchInfo = feat.match(/^Spell Focus \((.*)\)$/)) != null) { // as SRD35
+    // } else if(feat == 'Spell Mastery') { // as SRD35
+    // } else if(feat == 'Spell Penetration') { // as SRD35
     } else if(feat == 'Spellbreaker') {
-      // TODO
-    } else if(feat == 'Spirited Charge') {
-      // TODO
-    } else if(feat == 'Spring Attack') {
-      // TODO
+      notes = [
+        'combatNotes.spellbreakerFeature:AOO on foe failed defensive casting',
+        'validationNotes.spellbreakerFeatFeatures:Requires Disruptive',
+        'validationNotes.spellbreakerFeatLevels:Requires Fighter >= 10'
+      ];
+    // } else if(feat == 'Spirited Charge') { // as SRD35
+    // } else if(feat == 'Spring Attack') { // as SRD35
     } else if(feat == 'Staggering Critical') {
-      // TODO
+      notes = [
+        'combatNotes.staggeringCriticalFeature:' +
+          'Critical hit causes foe staggered d4+1 rounds; ' +
+          'DC %V fortitude negates',
+        'validationNotes.staggeringCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.staggeringCricialFeatBaseAttack:' +
+          'Requires Base Attack >= 13'
+      ];
+      rules.defineRule('combatNotes.staggeringCriticalFeature',
+        'baseAttack', '=', '10 + source'
+      );
     } else if(feat == 'Stand Still') {
-      // TODO
+      notes = [
+        'combatNotes.standStillFeature:CMD check to halt foe movement',
+        'validationNotes.standStillFeatFeatures:Requires Combat Reflexes'
+      ];
     } else if(feat == 'Stealthy') {
-      // TODO
+      notes = [
+        'sanityNotes.stealthyFeatSkills:Requires Escape Artist||Stealth',
+        'skillNotes.stealthyFeature:+%V Escape Artist/+%1 Stealth'
+      ];
+      rules.defineRule('skillNotes.stealthyFeature',
+        '', '=', '2',
+        'skills.Escape Artist', '+', 'source >= 10 ? 2 : null'
+      );
+      rules.defineRule('skillNotes.stealthyFeature.1',
+        '', '=', '2',
+        'skills.Stealth', '+', 'source >= 10 ? 2 : null'
+      );
     } else if(feat == 'Step Up') {
-      // TODO
-    } else if(feat == 'Still Spell') {
-      // TODO
+      notes = [
+        'combatNotes.stepUpFeature:Match foe\'s 5 ft step',
+        'validationNotes.stepUpFeatBaseAttack:Requires Base Attack >= 1'
+      ];
+    // } else if(feat == 'Still Spell') { // as SRD35
     } else if(feat == 'Strike Back') {
-      // TODO
+      notes = [
+        'combatNotes.strikeBackFeature:Attack attackers beyond reach',
+        'validationNotes.strikeBackFeatAttackBonus:Requires Attack Bonus >= 11'
+      ];
     } else if(feat == 'Stunning Critical') {
-      // TODO
+      notes = [
+        'combatNotes.stunningCriticalFeature:' +
+          'Critical hit stuns d4 rounds; DC %V fortitude reduces to staggered',
+        'validationNotes.stunningCriticalFeatBaseAttack:' +
+           'Requires Base Attack >= 17',
+        'validationNotes.stunningCriticalFeatFeatures:' +
+           'Requires Critical Focus/Staggering Critical'
+      ]
+      rules.defineRule('combatNotes.stunningCriticalFeature',
+        'baseAttack', '=', '10 + source'
+      );
     } else if(feat == 'Stunning Fist') {
-      // TODO
+      notes = [
+        'combatNotes.stunningFistFeature:' +
+          'Foe %V fortitude save or stunned %1/day',
+        'validationNotes.stunningFistFeatAbility:' +
+          'Requires Dexterity >= 13/Wisdom >= 13',
+        'validationNotes.stunningFistFeatBaseAttack:Requires Base Attack >= 8',
+        'validationNotes.stunningFistFeatFeatures:' +
+          'Requires Improved Unarmed Strike'
+      ];
+      rules.defineRule('combatNotes.stunningFistFeature',
+        'level', '=', '10 + Math.floor(source / 2)',
+        'wisdomModifier', '+', null
+      );
+      rules.defineRule('combatNotes.stunningFistFeature.1',
+        'level', '=', 'Math.floor(source / 4)'
+      )
     } else if(feat == 'Throw Anything') {
-      // TODO
+      notes = [
+        'combatNotes.throwAnythingFeature:' +
+          'No penalty for improvised ranged weapon; +1 attack w/thrown splash'
+      ];
     } else if(feat == 'Tiring Critical') {
-      // TODO
+      notes = [
+        'combatNotes.tiringCriticalFeature:Critical hit tires foe',
+        'validationNotes.tiringCriticalFeatBaseAttack:' +
+           'Requires Base Attack >= 13',
+        'validationNotes.tiringCriticalFeatFeatures:Requires Critical Focus'
+      ]
     } else if(feat == 'Toughness') {
-      // TODO
-    } else if(feat == 'Trample') {
-      // TODO
+      notes = ['combatNotes.toughnessFeature:+%V HP'];
+      rules.defineRule
+        ('combatNotes.toughnessFeature', 'level', '=', 'Math.min(3, source)');
+      rules.defineRule('hitPoints', 'combatNotes.toughnessFeature', '+', null);
+    // } else if(feat == 'Trample') { // as SRD35
     } else if(feat == 'Turn Undead') {
-      // TODO
-    } else if(feat == 'Two Weapon Defense') {
-      // TODO
-    } else if(feat == 'Two Weapon Fighting') {
-      // TODO
-    } else if(feat == 'Two Weapon Rend') {
-      // TODO
+      notes = [
+        'combatNotes.turnUndeadFeature:' +
+          'Channel energy to cause undead panic; DC %V will save negates',
+        'validationNotes.turnUndeadFeatFeatures:Requires Channel Energy'
+      ];
+      rules.defineRule('combatNotes.turnUndeadFeature',
+        'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+        'wisdomModifier', '+', null
+      );
+    // } else if(feat == 'Two-Weapon Defense') { // as SRD35
+    // } else if(feat == 'Two-Weapon Fighting') { // as SRD35
+    } else if(feat == 'Two-Weapon Rend') {
+      notes = [
+        'combatNotes.two-WeaponRendFeature:Extra d10+%V damage from double hit',
+        'validationNotes.two-WeaponRendFeatAbility:Requires Dexterity >= 17',
+        'validationNotes.two-WeaponRendFeatBaseAttack:' +
+          'Requires Base Attack >= 11',
+        'validationNotes.two-WeaponRendFeatFeatures:' +
+          'Requires Double Slice/Improved Two-Weapon Fighting/' +
+          'Two-Weapon Fighting'
+      ];
+      rules.defineRule('combatNotes.two-WeaponRendFeature',
+        'strengthModifier', '=', 'Math.floor(source * 1.5)'
+      );
     } else if(feat == 'Unseat') {
-      // TODO
+      notes = [
+        'combatNotes.unseatFeature:' +
+          'Bull Rush after hit w/lance to unseat mounted foe',
+        'validationNotes.unseatFeatAbility:Requires Strength >= 13',
+        'validationNotes.unseatFeatBaseAttack:Requires Base Attack >= 1',
+        'validationNotes.unseatFeatFeatures:' +
+          'Requires Mounted Combat/Power Attack/Improved Bull Rush',
+        'validationNotes.unseatFeatSkills:Requires Ride'
+      ];
     } else if(feat == 'Vital Strike') {
-      // TODO
-    } else if(feat == 'Weapon Finesse') {
-      // TODO
-    } else if(feat == 'Weapon Focus') {
-      // TODO
-    } else if((matchInfo = feat.match(/^Weapon Proficiency \((.*)\)$/))!=null) {
-      // TODO
-    } else if((matchInfo =
-               feat.match(/^Weapon Specialization \((.*)\)$/)) != null) {
-      // TODO
-    } else if(feat == 'Whirlwind Attack') {
-      // TODO
-    } else if(feat == 'Widen Spell') {
-      // TODO
+      notes = [
+        'combatNotes.vitalStrikeFeature:2x base damage',
+        'validationNotes.vitalStrikeFeatBaseAttack:Requires Base Attack >= 6'
+      ];
+    // } else if(feat == 'Weapon Finesse') { // as SRD35
+    // } else if((matchInfo = feat.match(/^Weapon Focus \((.*)\)$/)) != null) { // as SRD35
+    // } else if((matchInfo = feat.match(/^Weapon Proficiency \((.*)\)$/))!=null) { // as SRD35
+    // } else if((matchInfo = feat.match(/^Weapon Specialization \((.*)\)$/)) != null) { // as SRD35
+    // } else if(feat == 'Whirlwind Attack') { // as SRD35
+    // } else if(feat == 'Widen Spell') { // as SRD35
     } else if(feat == 'Wind Stance') {
-      // TODO
+      notes = [
+        'combatNotes.windStanceFeature:20% concealment when moving > 5 ft',
+        'validationNotes.windStanceFeatAbility:Requires Dexterity >= 15',
+        'validationNotes.windStanceFeatBaseAttack:Requires Base Attack >= 6',
+        'validationNotes.windStanceFeatFeatures:Requires Dodge'
+      ];
     } else {
       SRD35.featRules(rules, [feat], null);
       continue;
