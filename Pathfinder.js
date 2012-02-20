@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.4 2012/02/10 19:23:09 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.5 2012/02/20 02:23:52 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -34,6 +34,12 @@ function Pathfinder() {
     return;
   }
 
+  for(var attr in SRD35.spellsSchools) {
+    Pathfinder.spellsSchools[attr] = SRD35.spellsSchools[attr];
+  }
+  delete Pathfinder.spellsSchools['Cure Minor Wounds'];
+  delete Pathfinder.spellsSchools['Inflict Minor Wounds'];
+
   var rules = new ScribeRules('Pathfinder', PATHFINDER_VERSION);
   Pathfinder.viewer = new ObjectViewer();
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
@@ -41,8 +47,8 @@ function Pathfinder() {
   Pathfinder.raceRules(
     rules, SRD35.LANGUAGES.concat(Pathfinder.LANGUAGES_ADDED), SRD35.RACES
   );
-  Pathfinder.classRules(rules, SRD35.CLASSES);
-  Pathfinder.companionRules(rules, SRD35.COMPANIONS);
+  Pathfinder.classRules(rules, SRD35.CLASSES, Pathfinder.BLOODLINES);
+  Pathfinder.companionRules(rules, Pathfinder.COMPANIONS);
   Pathfinder.skillRules(rules, Pathfinder.SKILLS, Pathfinder.SUBSKILLS);
   Pathfinder.featRules(rules, Pathfinder.FEATS, Pathfinder.SUBFEATS);
   Pathfinder.descriptionRules
@@ -67,6 +73,11 @@ function Pathfinder() {
 }
 
 // Arrays of choices
+Pathfinder.BLOODLINES = [
+  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic',
+  'Elemental', 'Fey', 'Infernal', 'Undead'
+];
+Pathfinder.COMPANIONS = ['Animal Companion', 'Familiar'];
 Pathfinder.DEITIES = [
   'Erastil (LG):Longbow:Animal/Community/Good/Law/Plant',
   'Iomedae (LG):Longsword:Glory/Good/Law/Sun/War',
@@ -209,9 +220,7 @@ Pathfinder.armorsArmorClassBonuses = {
   'Breastplate': 6, 'Splint Mail': 7, 'Banded Mail': 7, 'Half Plate': 8,
   'Full Plate': 9
 };
-/*
-Pathfinder.spellsSchools = SRD35.spellsSchools;
-var newPathfinderSpells = {
+Pathfinder.spellsSchools = {
   'Beast Shape I':'Transmutation',
   'Beast Shape II':'Transmutation',
   'Beast Shape III':'Transmutation',
@@ -231,30 +240,27 @@ var newPathfinderSpells = {
   'Plant Shape I':'Transmutation',
   'Plant Shape II':'Transmutation',
   'Plant Shape III':'Transmutation',
-  'Stabilize':'Conjuration',
+  'Stabilize':'Conjuration'
 };
-for(var attr in newPathfinderSpells) {
-  Pathfinder.spellsSchools[attr] = newPathfinderSpells[attr];
-}
-delete Pathfinder.spellsSchools['Cure Minor Wounds'];
-delete Pathfinder.spellsSchools['Inflict Minor Wounds'];
-*/
 
 /* Defines the rules related to character abilities. */
 Pathfinder.abilityRules = function(rules) {
-  SRD35.abilityRules(rules); // No changes
+  SRD35.abilityRules(rules);
+  // Override intelligence skillPoint adjustment
+  rules.defineRule
+    ('skillNotes.intelligenceSkillPointsAdjustment', 'level', '*', null);
 }
 
 /* Defines the rules related to character classes. */
-Pathfinder.classRules = function(rules, classes) {
+Pathfinder.classRules = function(rules, classes, bloodlines) {
 
   // Level-dependent attributes
-  rules.defineRule('classSkillMaxRanks', 'level', '=', 'source + 3');
+  rules.defineRule('classSkillMaxRanks', 'level', '=', null);
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
   rules.defineRule('skillPoints',
     '', '=', '0',
-    'level', '^', 'source + 3' // TODO
+    'level', '^', null
   );
   rules.defineNote
     ('validationNotes.levelsTotal:' +
@@ -718,14 +724,11 @@ Pathfinder.classRules = function(rules, classes) {
         'charismaModifier', '+', null
       );
 
-/*
-      // TODO
       rules.defineRule('animalCompanionLevel',
         'levels.Druid', '+=', 'Math.floor((source + 3) / 3)'
       );
       rules.defineRule
         ('animalCompanionMasterLevel', 'levels.Druid', '+=', null);
-*/
 
     } else if(klass == 'Fighter') {
 
@@ -1031,16 +1034,6 @@ Pathfinder.classRules = function(rules, classes) {
         'P4:13:0/14:1/18:2/20:3'
       ];
 
-/*
-      // TODO
-      rules.defineRule('mountLevel',
-        'levels.Paladin', '+=',
-        'source < 5 ? null : source < 8 ? 1 : source < 11 ? 2 : ' +
-        'source < 15 ? 3 : 4'
-      );
-      rules.defineRule('mountMasterLevel', 'levels.Paladin', '+=', null);
-*/
-
     } else if(klass == 'Ranger') {
 
       baseAttack = SRD35.ATTACK_BONUS_GOOD;
@@ -1184,14 +1177,11 @@ Pathfinder.classRules = function(rules, classes) {
         'charismaModifier', '+', null
       );
 
-/*
-      // TODO
       rules.defineRule('animalCompanionLevel',
-        'levels.Ranger', '+=', 'source<4 ? null : Math.floor((source + 6) / 6)'
+        'levels.Ranger', '+=', 'source<4 ? null : Math.floor(source / 3)'
       );
       rules.defineRule
         ('animalCompanionMasterLevel', 'levels.Ranger', '+=', null);
-*/
 
     } else if(klass == 'Rogue') {
 
@@ -1329,7 +1319,37 @@ Pathfinder.classRules = function(rules, classes) {
       feats = null;
       features = ['1:Eschew Materials'];
       hitDie = 6;
-      notes = null;
+      notes = [
+        // Aberrant
+        'combatNotes.aberrantFormFeature:' +
+          'Immune critical hit/sneak attack; DR 5/-',
+        'combatNotes.longLimbsFeature:+%V ft touch attack range',
+        'combatNotes.unusualAnatomyFeature:' +
+          '%V% chance to ignore critical hit/sneak attack',
+        'featureNotes.aberrantFormFeature:Blindsight 60 ft',
+        'magicNotes.acidicRayFeature:Ranged touch for %Vd6 %1/day',
+        'magicNotes.bloodlineAberrantFeature:Polymorph spells last 50% longer',
+        'saveNotes.alienResistanceFeature:%V spell resistance',
+        // Abyssal
+        'abilityNotes.strengthOfTheAbyssFeature:+%V strength',
+        'combatNotes.clawsFeature:TODO',
+        'featureNotes.demonicMightFeature:Telepathy 60 ft',
+        'magicNotes.addedSummoningsFeature:' +
+          '<i>Summon Monster</i> brings additional demon/fiendish creature',
+        'magicNotes.bloodlineAbyssalFeature:Summoned creatures gain DR %V/good',
+        'saveNotes.demonicMightFeature:' +
+          'Immune electricity/poison; resistance 10 acid/cold/fire',
+        'saveNotes.demonResistancesFeature:TODO',
+        // Arcane
+        'magicNotes.bloodlineArcaneFeature:+1 boosted spell DC',
+        // Celestial
+        // Destined
+        // Draconic
+        // Elemental
+        // Fey
+        // Infernal
+        // Undead
+      ];
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_LIGHT;
@@ -1337,10 +1357,6 @@ Pathfinder.classRules = function(rules, classes) {
       saveReflex = SRD35.SAVE_BONUS_POOR;
       saveWill = SRD35.SAVE_BONUS_GOOD;
       selectableFeatures = [
-        'Aberrant Bloodline', 'Abyssal Bloodline', 'Arcane Bloodline',
-        'Celestial Bloodline', 'Destined Bloodline', 'Draconic Bloodline',
-        'Elemental Bloodline', 'Fey Bloodline', 'Infernal Bloodline',
-        'Undead Bloodline'
       ];
       skillPoints = 2;
       skills = [
@@ -1372,10 +1388,155 @@ Pathfinder.classRules = function(rules, classes) {
         'S9:18:3/19:4/20:6'
       ];
       rules.defineRule('casterLevelArcane', 'levels.Sorcerer', '+=', null);
+      rules.defineRule('featCount.Sorcerer',
+        'levels.Sorcerer', '=', 'Math.floor((source - 1) / 6)'
+      );
       rules.defineRule
         ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
-      // TODO Bloodline effcts
-
+      var bloodlinePowers = {
+        'Aberrant':
+          '1:Acidic Ray/3:Long Limbs/9:Unusual Anatomy/' +
+          '15:Alien Resistance/20:Aberrant Form',
+        'Abyssal':
+          '1:Claws/3:Demon Resistances/9:Strength Of The Abyss/' +
+          '15:Added Summonings/20:Demonic Might',
+        'Arcane':
+          '1:Arcane Bond/3:Metamagic Adept/9:New Arcana/' +
+          '15:School Power/20:Arcane Apotheosis',
+        'Celestial':
+          '1:Heavenly Fire/3:Celestial Resistances/9:Wings Of Heaven/' +
+          '15:Conviction/20:Ascension',
+        'Destined':
+          '1:Touch Of Destiny/3:Fated/9:It Was Meant To Be/' +
+          '15:Within Reach/20:Destiny Realized',
+        'Draconic':
+          '1:Claws/3:Dragon Resistances/9:Breath Weapon/' +
+          '15:Wings/20:Power Of Wyrms',
+        'Elemental':
+          '1:Elemental Ray/3:Elemental Resistance/9:Elemental Blast/' +
+          '15:Elemental Movement/20:Elemental Body',
+        'Fey':
+          '1:Laughing Touch/3:Woodland Stride/9:Fleeting Glance/' +
+          '15:Fey Magic/20:Soul Of The Fey',
+        'Infernal':
+          '1:Corrupting Touch/3:Infernal Rsistances/9:Hellfire/' +
+          '15:On Dark Wings/20:Power Of The Pit',
+        'Undead':
+          '1:Grave Touch/3:Death\'s Gift/9:Grasp Of The Dead/' +
+          '15:Incorporeal Form/20:One Of Us'
+      }
+      var bloodlineSkills = {
+        'Aberrant':'Knowledge (Dungeoneering)',
+        'Abyssal':'Knowledge (Planes)',
+        'Arcane':'Knowledge',
+        'Celestial':'Heal',
+        'Destined':'Knowledge (History)',
+        'Draconic':'Perception',
+        'Elemental':'Knowledge (Planes)',
+        'Fey':'Knowledge (Nature)',
+        'Infernal':'Diplomacy',
+        'Undead':'Knowledge (Religion)'
+      }
+      var bloodlineSpells = {
+        'Aberrant':
+          'Enlarge Person/See Invisibility/Tongues/Black Tentacles/' +
+          'Feeblemind/Veil/Plane Shift/Mind Blank/Shapechange',
+        'Abyssal':
+          'Cause Fear/Bull\'s Strength/Rage/Stoneskin/Dismissal/' +
+          'Transformation/Greater Teleport/Unholy Aura/Summon Monster IX',
+        'Arcane':
+          'Identify/Invisibility/Dispel Magic/Dimension Door/' +
+          'Overland Flight/True Seeing/Greater Teleport/Power Word Stun/Wish',
+        'Celestial':
+          'Bless/Resist Energy/Magic Circle Against Evil/Remove Curse/' +
+          'Flame Strike/Greater Dispel Magic/Banishment/Sunburst/Gate',
+        'Destined':
+          'Alarm/Blur/Proection From Energy/Freedom Of Movement/' +
+          'Break Enchantment/Mislead/Spell Turning/Moment Of Prescience/' +
+          'Foresight',
+        'Draconic':
+          'Mage Armor/Resist Energy/Fly/Fear/Spell Resistance/' +
+          'Form Of The Dragon I/Form Of The Dragon II/' +
+          'Form Of The Dragon III/Wish',
+        'Elemental':
+          'Burning Hands/Scorching Ray/Protection From Energy/' +
+          'Elemental Body I/Elemental Body II/Elemental Body III/' +
+          'Elemental Body IV/Summon Monster VIII/Elemental Swarm',
+        'Fey':
+          'Entangle/Hideous Laughter/Deep Slumber/Poison/Tree Stride/' +
+          'Mislead/Phase Door/Irresistible Dance/Shapechange',
+        'Infernal':
+          'Protection From Good/Scorching Ray/Suggestion/Charm Monster/' +
+          'Dominate Person/Planar Binding/Greater Teleport/Power Word Stun/' +
+          'Meteor Swarm',
+        'Undead':
+          'Chill Touch/False Life/Vampiric Touch/Animate Dead/' +
+          'Waves Of Fatigue/Undeath To Death/Finger Of Death/Horrid Wilting/' +
+          'Energy Drain'
+      }
+      for(var j = 0; j < bloodlines.length; j++) {
+        var bloodline = bloodlines[j];
+        var bloodlineLevelAttr = 'bloodlineLevel.' + bloodline;
+        var powers = bloodlinePowers[bloodline].split('/');
+        var skill = bloodlineSkills[bloodline];
+        var spells = bloodlineSpells[bloodline].split('/');
+        selectableFeatures.push('Bloodline ' + bloodline);
+        rules.defineRule(bloodlineLevelAttr,
+          'features.Bloodline ' + bloodline, '?', null,
+          'levels.Sorcerer', '=', null
+        );
+        for(var j = 0; j < powers.length; j++) {
+          var pieces = powers[j].split(':');
+          rules.defineRule('sorcererFeatures.' + pieces[1],
+            bloodlineLevelAttr, '=', 'source >= ' + pieces[0] + ' ? 1 : null'
+          );
+          rules.defineRule('features.' + pieces[1],
+            'sorcererFeatures.' + pieces[1], '=', null
+          );
+        }
+        rules.defineRule
+          ('classSkills.' + skill, 'features.Bloodline ' + bloodline, '=', '1');
+        for(var j = 0; j < spells.length; j++) {
+          var spell = spells[j];
+          var school = Pathfinder.spellsSchools[spell].substring(0, 4);
+          rules.defineRule(
+            'spells.' + spell + ' (W' + (j+1) + ' ' + school + ')',
+            bloodlineLevelAttr, '=', 'source >= ' + (3 + 2 * j) + ' ? 1 : null'
+          );
+        }
+      }
+      // Aberrant
+      rules.defineRule('combatNotes.longLimbsFeature',
+        'levels.Sorcerer', '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+      );
+      rules.defineRule('combatNotes.unusualAnatomyFeature',
+        'levels.Sorcerer', '=', 'source >= 13 ? 50 : 25'
+      );
+      rules.defineRule('magicNotes.acidicRayFeature',
+        'levels.Sorcerer', '=', '1 + Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.acidicRayFeature.1',
+        'charismaModifier', '=', '1 + source'
+      );
+      rules.defineRule('saveNotes.alienResistanceFeature',
+        'levels.Sorcerer', '=', 'source + 10'
+      );
+      // Abyssal
+      rules.defineRule('abilityNotes.strengthOfTheAbyssFeature',
+        'levels.Sorcerer', '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+      );
+      rules.defineRule('magicNotes.bloodlineAbyssalFeature',
+        'levels.Sorcerer', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      // Arcane
+      // Celestial
+      // Destined
+      // Draconic
+      // Elemental
+      // Fey
+      // Infernal
+      // Undead
+          
     } else if(klass == 'Wizard') {
 
       baseAttack = SRD35.ATTACK_BONUS_POOR;
@@ -1442,11 +1603,9 @@ Pathfinder.classRules = function(rules, classes) {
       }
       // TODO Specialization
 
-/* // TODO
       rules.defineRule
         ('familiarLevel', 'levels.Wizard', '+=', 'Math.floor(source / 2)');
       rules.defineRule('familiarMasterLevel', 'levels.Wizard', '+=', null);
-*/
 
     } else
       continue;
@@ -1455,6 +1614,9 @@ Pathfinder.classRules = function(rules, classes) {
       (rules, klass, hitDie, skillPoints, baseAttack, saveFortitude, saveReflex,
        saveWill, profArmor, profShield, profWeapon, skills, features,
        spellsKnown, spellsPerDay, spellAbility);
+    // Override SRD35 skillPoints rule
+    rules.defineRule
+      ('skillPoints', 'levels.' + klass, '+', 'source * ' + skillPoints);
     if(notes != null)
       rules.defineNote(notes);
     if(feats != null) {
@@ -1487,12 +1649,19 @@ Pathfinder.classRules = function(rules, classes) {
 
 /* Defines the rules related to combat. */
 Pathfinder.combatRules = function(rules) {
-  SRD35.combatRules(rules); // TODO
+  SRD35.combatRules(rules);
+  // Override SRD35 armor bonuses
+  rules.defineRule
+    ('armorClass', 'armor', '+', 'Pathfinder.armorsArmorClassBonuses[source]');
 };
 
 /* Defines the rules related to companion creatures. */
 Pathfinder.companionRules = function(rules, companions) {
-  SRD35.companionRules(rules, companions); // TODO
+  SRD35.companionRules(rules, companions);
+  // Override SRD35 animal companion HD progression
+  rules.defineRule('animalCompanionStats.hitDice',
+    'animalCompanionLevel', '=', '(source - 1) * 2' // TODO
+  );
 };
 
 /* Returns an ObjectViewer loaded with the default character sheet format. */
@@ -2602,7 +2771,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
     if(race == 'Half Elf') {
 
-      adjustment = null; // TODO
+      adjustment = null; // Player's choice
       features = [
         'Adaptability', 'Elf Blood', 'Keen Senses', 'Low Light Vision',
         'Multitalented', 'Resist Enchantment', 'Sleep Immunity'
@@ -2632,7 +2801,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
     } else if(race == 'Half Orc') {
 
-      adjustment = null; // TODO
+      adjustment = null; // Player's choice
       features = ['Darkvision', 'Intimidating', 'Orc Blood', 'Orc Ferocity'];
       notes = [
         'combatNotes.orcFerocityFeature:Fight 1 round below zero hit points',
@@ -2797,7 +2966,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       );
       rules.defineRule('skillNotes.humanSkillPointsBonus',
         'race', '?', 'source == "Human"',
-        'level', '=', 'source'
+        'level', '=', null
       );
       rules.defineRule
         ('skillPoints', 'skillNotes.humanSkillPointsBonus', '+', null);
@@ -2825,5 +2994,25 @@ Pathfinder.ruleNotes = function() {
 
 /* Defines the rules related to character skills. */
 Pathfinder.skillRules = function(rules, skills, subskills) {
-  SRD35.skillRules(rules, skills, subskills, null); // TODO
+  SRD35.skillRules(rules, skills, subskills, null);
+  // Override SRD35 50% penalty for cross-class skills w/+3 for class skills
+  var allSkills = [];
+  for(var i = 0; i < skills.length; i++) {
+    var pieces = skills[i].split(':');
+    var skill = pieces[0];
+    var skillSubskills = subskills[skill];
+    if(skillSubskills == null) {
+      allSkills[allSkills.length] = skill;
+    } else {
+      for(var subskill in skillSubskills.split('/')) {
+        allSkills[allSkills.length] = skill + ' (' + subskill + ')';
+      }
+    }
+  }
+  for(var skill in allSkills) {
+    rules.defineRule('skillModifier.' + skill,
+      'skills.' + skill, '=', null,
+      'classSkills.' + skills, '+', '3'
+    );
+  }
 };
