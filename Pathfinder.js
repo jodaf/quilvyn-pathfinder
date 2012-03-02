@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.6 2012/02/28 05:48:55 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.7 2012/03/02 23:57:12 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -990,7 +990,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Paladin', '+=', 'source >= 4 ? source - 3 : null'
       );
       rules.defineRule('combatNotes.auraOfRighteousnessFeature',
-        'levels.Paladin', '=', 'source < 20 ? 5 : 10'
+        'levels.Paladin', '=', 'source >= 20 ? 10 : 5'
       );
       rules.defineRule('combatNotes.divineWeaponFeature',
         'levels.Paladin', '=', 'Math.floor((source - 2) / 3)'
@@ -1163,7 +1163,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'R4:13:0/14:1/18:2/20:3'
       ];
       rules.defineRule('casterLevelDivine',
-        'levels.Ranger', '+=', 'source < 4 ? null : Math.floor(source / 2)'
+        'levels.Ranger', '+=', 'source >= 4 ? Math.floor(source / 2) : null'
       );
       rules.defineRule('combatNotes.favoredEnemyFeature',
         'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
@@ -2871,15 +2871,17 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'Summon Nature\'s Ally IV', 'Beast Shape III', 'Antilife Shell',
         'Animal Shapes', 'Summon Nature\'s Ally VIII', 'Shapechange'
       ];
-      rules.defineRule('magicNotes.speakWithAnimalsFeature',
-        'levels.Cleric', '=', 'source + 3'
-      );
       rules.defineRule('animalClericLevel',
         'domains.Animal', '?', null,
         'levels.Cleric', '=', null
       );
       rules.defineRule
         ('animalCompanionMasterLevel', 'animalClericLevel', '=', 'source - 3');
+      rules.defineRule('magicNotes.speakWithAnimalsFeature',
+        'levels.Cleric', '=', 'source + 3'
+      );
+      rules.defineRule
+        ('classSkills.knowledge(Nature)', 'domans.Animal', '=', '1');
     } else if(domain == 'Artiface') {
       features = ['Artificer\'s Touch', 'Dancing Weapons'];
       notes = [
@@ -2969,8 +2971,11 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
       );
     } else if(domain == 'Darkness') {
-      features = ['Touch Of Darkness', 'Eyes Of Darkness'];
+      features = ['Blind Fight', 'Touch Of Darkness', 'Eyes Of Darkness'];
       notes = [
+        'combatNotes.blindFightFeature:' +
+          'Reroll concealed miss/no bonus to invisible foe/no skill check ' +
+          'on blinded full speed move',
         'combatNotes.touchOfDarknessFeature:' +
           'Touch attack causes 20% miss chance for %V rounds %1/day',
         'featureNotes.eyesOfDarknessFeature:' +
@@ -3015,25 +3020,25 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Destruction') {
       features = ['Destructive Smite', 'Destructive Aura'];
       notes = [
-        'combatNotes.destructiveSmiteFeature:+%V damage %1/day',
         'combatNotes.destructiveAuraFeature:' +
-           'Attacks w/in 30 ft +%V damage + critical confirmed %1 rounds/day'
+           'Attacks w/in 30 ft +%V damage + critical confirmed %1 rounds/day',
+        'combatNotes.destructiveSmiteFeature:+%V damage %1/day'
       ];
       spells = [
         'True Strike', 'Shatter', 'Rage', 'Inflict Critical Wounds', 'Shout',
         'Harm', 'Disintegrate', 'Earthquake', 'Implosion'
       ];
+      rules.defineRule('combatNotes.destructiveAuraFeature',
+        'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
+      );
+      rules.defineRule('combatNotes.destructiveAuraFeature.1',
+        'levels.Cleric', '=', null
+      );
       rules.defineRule('combatNotes.destructiveSmiteFeature',
         'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
       );
       rules.defineRule('combatNotes.destructiveSmiteFeature.1',
         'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.destructiveAuraFeature',
-        'levels.Cleric', '=', 'source < 8 ? null : Math.floor(source / 2)'
-      );
-      rules.defineRule('combatNotes.destructiveAuraFeature.1',
-        'levels.Cleric', '=', null
       );
     } else if(domain == 'Earth') {
       features = ['Acid Dart', 'Acid Resistance'];
@@ -3105,11 +3110,12 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
                               'source >= 6 ? 10 : null'
       );
     } else if(domain == 'Glory') {
-      features = ['Touch Of Glory', 'Divine Presence'];
+      features = ['Undead Bane', 'Touch Of Glory', 'Divine Presence'];
       notes = [
         'magicNotes.divinePresenceFeature:' +
           'DC %V <i>Sanctuary</i> for allies w/in 30 ft %1 rounds/day',
-        'magicNotes.touchOfGloryFeature:Impart +%V charisma check bonus %V/day'
+        'magicNotes.touchOfGloryFeature:Impart +%V charisma check bonus %V/day',
+        'magicNotes.undeadBaneFeature:+2 DC on energy channeled to harm undead'
       ];
       spells = [
         'Shield Of Faith', 'Bless Weapon', 'Searing Light', 'Holy Smite',
@@ -3117,7 +3123,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'Gate'
       ];
       rules.defineRule('magicNotes.divinePresenceFeature',
-        'levels.Cleric', '=', 'source < 8 ? null : Math.floor(source / 2)',
+        'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null',
         'wisdomModifier', '+', null
       );
       rules.defineRule
@@ -3130,7 +3136,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'combatNotes.holyLanceFeature:' +
           'Add <i>holy</i> to weapon for %1 rounds %V/day',
-        'magicNotes.touchOfGoodFeature:Touch imparts +%V attack/skill/ability/save for 1 round %1/day'
+        'magicNotes.touchOfGoodFeature:' +
+          'Touch imparts +%V attack/skill/ability/save for 1 round %1/day'
       ];
       spells = [
         'Protection From Evil', 'Align Weapon', 'Magic Circle Against Evil',
@@ -3152,190 +3159,421 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Healing') {
       features = ['Rebuke Death', 'Healer\'s Blessing'];
       notes = [
-        // TODO
+        'magicNotes.healer\'sBlessingFeature:50% bonus on healed damage',
+        'magicNotes.rebukeDeathFeature:' +
+          'Touch creature below 0 HP to heal d4+%1 HP %V/day'
       ];
       spells = [
         'Cure Light Wounds', 'Cure Moderate Wounds', 'Cure Serious Wounds',
         'Cure Critical Wounds', 'Breath Of Life', 'Heal', 'Regenerate',
         'Mass Cure Critical Wounds', 'Mass Heal'
       ];
+      rules.defineRule('magicNotes.healer\'sBlessingFeature',
+        'levels.Cleric', '=', 'source >= 6 ? 1 : null'
+      );
+      rules.defineRule('magicNotes.rebukeDeathFeature',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('magicNotes.rebukeDeathFeature.1',
+        'levels.Cleric', '=', 'Math.floor(source / 2)'
+      );
     } else if(domain == 'Knowledge') {
       features = ['Lore Keeper', 'Remove Viewing'];
       notes = [
-        // TODO
+        'magicNotes.remoteViewingFeature:' +
+          'Level %V <i>Clairvoyance/clairaudience</i> for %1 rounds/day',
+        'skillNotes.loreKeeperFeature:' +
+          'Touch creature equal to %V Knowledge check'
       ];
       spells = [
         'Comprehend Languages', 'Detect Thoughts', 'Speak With Dead',
         'Divination', 'True Seeing', 'Find The Path', 'Legend Lore',
         'Discern Location', 'Foresight'
       ];
+      rules.defineRule(/classSkills.knowledge/, 'domans.Knowledge', '=', '1');
+      rules.defineRule('magicNotes.remoteViewingFeature',
+        'levels.Cleric', '=', 'source >= 6 ? source : null'
+      );
+      rules.defineRule
+        ('magicNotes.remoteViewingFeature.1', 'levels.Cleric', '=', null);
+      rules.defineRule('skillNotes.loreKeeperFeature',
+        'levels.Cleric', '=', 'source + 15',
+        'wisdomModifier', '+', null
+      );
     } else if(domain == 'Law') {
       features = ['Touch Of Law', 'Staff Of Order'];
       notes = [
-        // TODO
+        'combatNotes.staffOfOrderFeature:' +
+          'Add <i>axiomatic</i> to weapon for %1 rounds %V/day',
+        'magicNotes.touchOfLawFeature:' +
+          'Touched creature can "take 11" on all d20 rolls for 1 round %V/day'
       ];
       spells = [
         'Protection From Chaos', 'Align Weapon', 'Magic Circle Against Chaos',
         'Order\'s Wrath', 'Dispel Chaos', 'Hold Monster', 'Dictum',
         'Shield Of Law', 'Summon Monster IX'
       ];
+      rules.defineRule('combatNotes.staffOfOrderFeature',
+        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+      );
+      rules.defineRule('combatNotes.staffOfOrderFeature.1',
+        'levels.Cleric', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule
+        ('magicNotes.touchOfLawFeature', 'wisdomModifier', '=', 'source + 3');
     } else if(domain == 'Liberation') {
       features = ['Liberation', 'Freedom\'s Call'];
       notes = [
-        // TODO
+        'magicNotes.freedom\'sCallFeature:' +
+          'Allies w/in 30 ft unaffected by movement conditions %V rounds/day',
+        'magicNotes.liberationFeature:Ignore movement impediments %V rounds/day'
       ];
       spells = [
         'Remove Fear', 'Remove Paralysis', 'Remove Curse',
         'Freedom Of Movement', 'Break Enchantment', 'Greater Dispel Magic',
         'Refuge', 'Mind Blank', 'Freedom'
       ];
+      rules.defineRule('abilityNotes.freedom\'sCallFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
+      rules.defineRule
+        ('abilityNotes.liberationFeature', 'levels.Cleric', '=', null);
     } else if(domain == 'Luck') {
       features = ['Bit Of Luck', 'Good Fortune'];
       notes = [
-        // TODO
+        'magicNotes.bitOfLuckFeature:' +
+          'Touched creature reroll d20 next round %V/day',
+        'magicNOtes.goodFortuneFeature:Reroll d20 %V/day'
       ];
       spells = [
         'True Strike', 'Aid', 'Protection From Energy', 'Freedom Of Movement',
         'Break Enchantment', 'Mislead', 'Spell Turning',
         'Moment Of Prescience', 'Miracle'
       ];
+      rules.defineRule('magicNotes.bitOfLuckFeature',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('magicNotes.goodFortuneFeature',
+        'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
+      );
     } else if(domain == 'Madness') {
       features = ['Vision Of Madness', 'Aura Of Madness'];
       notes = [
-        // TODO
+        'magicNotes.auraOfMadnessFeature:' +
+          'DC Will %V 30 ft <i>Confusion</i> aura %1 rounds/day',
+        'magicNotes.visionOfMadnessFeature:' +
+          'Touched creature +%V attack, save, or skill, -%1 others for 3 ' +
+          'rounds %2/day'
       ];
       spells = [
         'Lesser Confusion', 'Touch Of Idiocy', 'Rage', 'Confusion',
         'Nightmare', 'Phantasmal Killer', 'Insanity', 'Scintillating Pattern',
         'Weird'
       ];
+      rules.defineRule('magicNotes.auraOfMadnessFeature',
+        'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
+        'wisdomModifier', '+', null
+      );
+      rules.defineRule
+        ('magicNotes.auraOfMadnessFeature.1', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.visionsOfMadnessFeature',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.visionsOfMadnessFeature.1',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.visionsOfMadnessFeature.2',
+        'wisdomModifier', '=', 'source + 3'
+      );
     } else if(domain == 'Magic') {
       features = ['Hand Of The Acolyte', 'Dispelling Touch'];
       notes = [
-        // TODO
+        'combatNotes.handOfTheAcolyteFeature:' +
+          'Melee weapon +%1 30 ft ranged attack %V/day',
+        'magicNotes.dispellingTouchFeature:' +
+          '<i>Dispel Magic</i> touch attack %V/day'
       ];
       spells = [
         'Identify', 'Magic Mouth', 'Dispel Magic', 'Imbue With Spell Ability',
         'Spell Resistance', 'Antimagic Field', 'Spell Turning',
         'Protection From Spells', 'Mage\'s Disjunction'
       ];
+      rules.defineRule('combatNotes.handOfTheAcolyteFeature',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
+        'baseAttack', '=', null,
+        'wisdomModifier', '+', null
+      );
+      rules.defineRule('magicNotes.dispellingTouchFeature',
+        'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+      );
     } else if(domain == 'Nobility') {
-      features = ['Inspiring Word', 'Leadership'];
+      features = ['Inspiring Word', 'Noble Leadership'];
       notes = [
-        // TODO
+        'magicNotes.inspiringWordFeature:' +
+          'Word imparts +%2 attack/skill/ability/save for %V rounds %1/day',
+        'skillNotes.nobleLeadershipFeature:+%V Leadership'
       ];
       spells = [
         'Divine Favor', 'Enthrall', 'Magic Vestment', 'Discern Lies',
         'Greater Command', 'Geas/Quest', 'Repulsion', 'Demand',
         'Storm Of Vengeance'
       ];
+      rules.defineRule
+        ('features.Leadership', 'skillNotes.nobleLeadershipFeature', '=', '1');
+      rules.defineRule('magicNotes.inspiringWordFeature',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.inspiringWordFeature.1',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('skillNotes.nobleLeadershipFeature',
+        'levels.Cleric', '=', 'source >= 8 ? 2 : null'
+      );
     } else if(domain == 'Plant') {
       features = ['Wooden Fist', 'Bramble Armor'];
       notes = [
-        // TODO
+        'combatNotes.brambleArmorFeature:' +
+          'Thorny hide causes d6+%1 damage to striking foes %V/day',
+        'combatNotes.woodenFistFeature:+%V, no AOO unarmed attacks %V/day'
       ];
       spells = [
         'Entangle', 'Barkskin', 'Plant Growth', 'Command Plants',
         'Wall Of Thorns', 'Repel Wood', 'Animate Plants', 'Control Plants',
         'Shambler'
       ];
+      rules.defineRule
+        ('combatNotes.brambleArmorFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('combatNotes.brambleArmorFeature.1',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('combatNotes.woodenFistFeature',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
     } else if(domain == 'Protection') {
-      features = ['Resistant Touch', 'Aura Of Protection'];
+      features = ['Resistance Bonus', 'Resistant Touch', 'Aura Of Protection'];
       notes = [
-        // TODO
+        'magicNotes.auraOfProtectionFeature:' +
+          'Allies w/in 30 ft +%V AC %1 elements resistance %2 rounds/day',
+        'magicNotes.resistantTouchFeature:' +
+           'Touch transfers resistance bonus to ally for 1 minute %V/day',
+        'saveNotes.resistanceBonusFeature:+%V saves'
       ];
       spells = [
         'Sanctuary', 'Shield Other', 'Protection From Energy',
         'Spell Immunity', 'Spell Resistance', 'Antimagic Field', 'Repulsion',
         'Mind Blank', 'Prismatic Sphere'
       ];
+      rules.defineRule('magicNotes.auraOfProtectionFeature',
+        'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+      );
+      rules.defineRule('magicNotes.auraOfProtectionFeature.1',
+        'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
+      );
+      rules.defineRule
+        ('magicNotes.auraOfProtectionFeature.2', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.resistantTouchFeature',
+        'wisdomModifier', '=', '3 + source'
+      );
+      rules.defineRule('saveNotes.resistanceBonusFeature',
+        'levels.Cleric', '=', '1 + Math.floor(source / 5)'
+      );
+      rules.defineRule(/^save./, 'saveNotes.resistanceBonusFeature', '+', null);
     } else if(domain == 'Repose') {
-      // TODO
       features = ['Gentle Rest', 'Ward Against Death'];
       notes = [
+        'magicNotes.gentleRestFeature:Touch staggers %1 rounds %V/day',
+        'magicNotes.wardAgainstDeathFeature:' +
+          'Creatures w/in 30 ft immune to death effects/energy drain/' +
+          'negative levels %V rounds/day'
       ];
       spells = [
         'Deathwatch', 'Gentle Repose', 'Speak With Dead', 'Death Ward',
         'Slay Living', 'Undeath To Death', 'Destruction',
         'Waves Of Exhaustion', 'Wail Of The Banshee'
       ];
+      rules.defineRule
+        ('magicNotes.gentleRestFeature', 'wisdomModifier', '=', 'source + 3');
+      rules.defineRule
+        ('magicNotes.gentleRestFeature.1', 'wisdomModifier', '=', null);
+      rules.defineRule('magicNotes.wardAgainstDeathFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
     } else if(domain == 'Rune') {
-      features = ['Blast Rune', 'Spell Rune'];
+      features = ['Scribe Scroll', 'Blast Rune', 'Spell Rune'];
       notes = [
-        // TODO
+        'magicNotes.blastRuneFeature:' +
+          'Rune in adjacent square causes d6+%1 damage for %V rounds %2/day',
+        'magicNotes.scribeScrollFeature:Create scroll of any known spell',
+        'magicNotes.spellRuneFeature:Add known spell to Blast Rune'
       ];
       spells = [
         'Erase', 'Secret Page', 'Glyph Of Warding', 'Explosive Runes',
         'Lesser Planar Binding', 'Greater Glyph Of Warding', 'Instant Summons',
         'Symbol Of Death', 'Teleportation Circle'
       ];
+      rules.defineRule('magicNotes.blastRune', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.blastRune.1',
+        'levels.Cleric', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.blastRune.2',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('magicNotes.spellRune',
+        'levels.Cleric', '=', 'source >= 8 ? 1 : null'
+      );
     } else if(domain == 'Strength') {
       features = ['Strength Surge', 'Might Of The Gods'];
       notes = [
-        // TODO
+        'magicNotes.mightOfTheGodsFeature:+%V strength checks %1 rounds/day',
+        'magicNotes.strengthSurgeFeature:' +
+          'Touch gives +%V melee attack/strength check bonus %1/day'
       ];
       spells = [
         'Enlarge Person', 'Bull\'s Strength', 'Magic Vestment',
         'Spell Immunity', 'Righteous Might', 'Stoneskin', 'Grasping Hand',
         'Clenched Fist', 'Crushing Hand'
       ];
+      rules.defineRule('magicNotes.mightOfTheGodsFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
+      rules.defineRule('magicNotes.mightOfTheGodsFeature.1',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
+      rules.defineRule('magicNotes.strengthSurgeFeature',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.strengthSurgeFeature.1',
+        'wisdomModifier', '=', 'source + 3'
+      );
     } else if(domain == 'Sun') {
       features = ['Sun\'s Blessing', 'Nimbus Of Light'];
       notes = [
-        // TODO
+        'magicNotes.sun\'sBlessingFeature:' +
+          '+%V undead damage and no resistance to channeled energy',
+        'magicNotes.nimbusOfLightFeature:' +
+          '30 ft aura of <i>Daylight</i> does %V HP damage to undead %1 ' +
+          'rounds/day'
       ];
       spells = [
         'Endure Elements', 'Heat Metal', 'Searing Light', 'Fire Shield',
         'Flame Strike', 'Fire Seeds', 'Sunbeam', 'Sunburst', 'Prismatic Sphere'
       ];
+      rules.defineRule
+        ('magicNotes.sun\'sBlessingFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.nimbusOfLightFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
+      rules.defineRule('magicNotes.nimbusOfLightFeature.1',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
     } else if(domain == 'Travel') {
-      features = ['Agile Feet', 'Dimensional Hop'];
+      features = ['Travel Speed', 'Agile Feet', 'Dimensional Hop'];
       notes = [
-        // TODO
+        'abilityNotes.travelSpeedFeature:+10 speed',
+        'featureNotes.agileFeetFeature:' +
+          'Unaffected by difficult terrain for 1 round %V/day',
+        'magicNotes.dimensionalHopFeature:Teleport up to %V ft/day'
       ];
       spells = [
         'Longstrider', 'Locate Object', 'Fly', 'Dimension Door', 'Teleport',
         'Find The Path', 'Greater Teleport', 'Phase Door', 'Astral Projection'
       ];
+      rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
+      rules.defineRule
+        ('featureNotes.agileFeetFeature', 'wisdomModifier', '=', 'source + 3');
+      rules.defineRule('magicNotes.dimensionalHopFeature',
+        'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
+      );
     } else if(domain == 'Trickery') {
       features = ['Copycat', 'Master\'s Illusion'];
       notes = [
-        // TODO
+        'magicNotes.copycatFeature:<i>Mirror Image</i> for %V rounds %1/day',
+        'magicNotes.master\'sIllusionFeature:' +
+          'DC %V 30 ft <i>Veil</i> %1 rounds/day'
       ];
       spells = [
         'Disguise Self', 'Invisibility', 'Nondetection', 'Confusion',
         'False Vision', 'Mislead', 'Screen', 'Mass Invisibility', 'Time Stop'
       ];
+      rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
+      rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
+      rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
+      rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.copycatFeature.1',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('magicNotes.master\'sIllusionFeature',
+        'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
+        'wisdomModifier', '+', null
+      );
+      rules.defineRule
+        ('magicNotes.master\'sIllusionFeature.1', 'levels.Cleric', '=', null);
     } else if(domain == 'War') {
       features = ['Battle Rage', 'Weapon Master'];
       notes = [
-        // TODO
+        'combatNotes.battleRageFeature:Touch gives +%V damage bonus %1/day',
+        'combatNotes.weaponMasterFeature:' +
+          'Use additional combat feat %V rounds/day'
       ];
       spells = [
         'Magic Weapon', 'Spiritual Weapon', 'Magic Vestment', 'Divine Power',
         'Flame Strike', 'Blade Barrier', 'Power Word Blind', 'Power Word Stun',
         'Power Word Kill'
       ];
+      rules.defineRule('combatNotes.battleRageFeature',
+        'levels.Cleric', '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+      );
+      rules.defineRule('combatNotes.battleRageFeature.1',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('combatNotes.weaponMasterFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
     } else if(domain == 'Water') {
       features = ['Icicle', 'Cold Resistance'];
       notes = [
-        // TODO
+        'combatNotes.icicleFeature:d6+%1 ranged touch %V/day',
+        'saveNotes.coldResistanceFeature:%V'
       ];
       spells = [
         'Obscuring Mist', 'Fog Cloud', 'Water Breathing', 'Control Water',
         'Ice Storm', 'Cone Of Cold', 'Elemental Body IV', 'Horrid Wilting',
         'Elemental Swarm'
       ];
+      rules.defineRule('combatNotes.icicleFeature',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('combatNotes.icicleFeature.1',
+        'levels.Cleric', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('saveNotes.coldResistanceFeature:',
+        'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                              'source >= 12 ? 20 : ' +
+                              'source >= 6 ? 10 : null'
+      );
     } else if(domain == 'Weather') {
       features = ['Storm Burst', 'Lightning Lord'];
       notes = [
-        // TODO
+        'combatNotes.stormBurstFeature:' +
+          'd6+%1 non-lethal + -2 attack ranged touch %V/day',
+        'magicNotes.lightningLordFeature:<i>Call Lightning</i> %V bolts/day'
       ];
       spells = [
         'Obscuring Mist', 'Fog Cloud', 'Call Lightning', 'Sleet Storm',
         'Ice Storm', 'control Winds', 'Control Weather', 'Whirlwind',
         'Storm Of Vengeance'
       ];
+      rules.defineRule('combatNotes.stormBurstFeature',
+        'wisdomModifier', '=', 'source + 3'
+      );
+      rules.defineRule('combatNotes.stormBurstFeature.1',
+        'levels.Cleric', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.lightningLordFeature',
+        'levels.Cleric', '=', 'source >= 8 ? source : null'
+      );
     } else
       continue;
     rules.defineChoice('domains', domain);
