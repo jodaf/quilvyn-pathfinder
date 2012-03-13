@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.8 2012/03/12 03:30:11 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.9 2012/03/13 05:04:49 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -1746,7 +1746,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.soulOfTheFeyFeature:<i>Shadow Walk</i> 1/day',
             'saveNotes.soulOfTheFeyFeature:Immune poison/DR 10/cold iron'
           ]);
-          rules.defineRule('magicNotes.fleetingGlaneFeature',
+          rules.defineRule('magicNotes.fleetingGlanceFeature',
             bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
           );
           rules.defineRule('magicNotes.laughingTouchFeature',
@@ -1829,11 +1829,16 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           feats[feats.length] = pieces[0];
         }
       }
-      features = ['1:Scribe Scroll'];
+      features = [
+        '1:Scribe Scroll', '1:Hand Of The Apprentice', '8:Metamagic Mastery'
+      ];
       hitDie = 6;
       notes = [
+        'combatNotes.handOfTheApprenticeFeature:' +
+          '+%V 30 ft ranged attack w/melee weapon %1/day',
         'featureNotes.familiarFeature:Special bond/abilities',
         'magicNotes.bondedObjectFeature:Cast known spell through object',
+        'magicNotes.metamagicMasteryFeature:Apply metamagic feat %V/day',
         'magicNotes.scribeScrollFeature:Create scroll of any known spell',
         'magicNotes.wizardSpecialization:Extra %V spell/day each spell level',
         'skillNotes.wizardSpecialization:+2 Spellcraft (%V)'
@@ -1870,28 +1875,254 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
 
       rules.defineRule('casterLevelArcane', 'levels.Wizard', '+=', null);
+      rules.defineRule('combatNotes.handOfTheApprenticeFeature',
+        'baseAttack', '=', null,
+        'intelligenceModifier', '+', null
+      );
+      rules.defineRule('combatNotes.handOfTheApprenticeFeature.1',
+        'intelligenceModifier', '=', 'source + 3'
+      );
+      rules.defineRule
+        ('familiarLevel', 'levels.Wizard', '+=', 'Math.floor(source / 2)');
+      rules.defineRule('familiarMasterLevel', 'levels.Wizard', '+=', null);
       rules.defineRule
         ('featCount.Wizard', 'levels.Wizard', '=', 'Math.floor(source / 5)');
+      rules.defineRule('magicNotes.metamagicMasteryFeature',
+        'levels.Wizard', '=', 'source>=8 ? Math.floor((source - 6) / 2) : null'
+      );
       rules.defineRule
         ('selectableFeatureCount.Wizard', 'levels.Wizard', '=', '1');
+      rules.defineRule('wizardSpecializationCount', '', '=', '0');
+      rules.defineRule('wizardFeatures.Hand Of The Apprentice',
+        'wizardSpecializationCount', '?', 'source == 0'
+      );
+      rules.defineRule('wizardFeatures.Metamagic Mastery',
+        'wizardSpecializationCount', '?', 'source == 0'
+      );
+
+      var schoolPowers = {
+        'Abjuration':
+          '1:Energy Resistance/1:Protective Ward/6:Energy Absorption',
+        'Conjuration':
+          '1:Summoner\'s Charm/1:Conjured Dart/8:Dimensional Steps',
+        'Divination':
+          '1:Forewarned/1:Diviner\'s Fortune/8:Scrying Adept',
+        'Enchantment':
+          '1:Enchanting Smile/1:Enchanting Touch/8:Aura Of Despair/' +
+          '20:Enchantment Reflection',
+        'Evocation':
+          '1:Intense Spells/1:Force Missile/8:Elemental Wall/' +
+          '20:Penetrating Spells',
+        'Illusion':
+          '1:Extened Illusions/1:Blinding Ray/8:Invisibility Field',
+        'Necromancy':
+          '1:Power Over Undead/1:Necromantic Touch/8:Life Sight',
+        'Transmutation':
+          '1:Physical Enhancement/1:Telekinetic Fist/8:Change Shape'
+      };
+
       for(var j = 0; j < SRD35.SCHOOLS.length; j++) {
         var school = SRD35.SCHOOLS[j].split(':')[0];
+        var powers = schoolPowers[school].split('/');
+        var schoolLevelAttr = 'schoolLevel.' + school;
         rules.defineRule('magicNotes.wizardSpecialization',
          'specialize.' + school, '=', '"' + school + '"'
         );
         rules.defineRule('skillNotes.wizardSpecialization',
           'specialize.' + school, '=', '"' + school + '"'
         );
+        rules.defineRule(schoolLevelAttr,
+          'specialize.' + school, '?', null,
+          'levels.Wizard', '=', null
+        );
+        rules.defineRule
+          ('wizardSpecializationCount', 'specialize.' + school, '+', '1');
+        for(var k = 0; k < powers.length; k++) {
+          var pieces = powers[k].split(':');
+          rules.defineRule('wizardFeatures.' + pieces[1],
+            schoolLevelAttr, '=', 'source >= ' + pieces[0] + ' ? 1 : null'
+          );
+          rules.defineRule('features.' + pieces[1],
+            'wizardFeatures.' + pieces[1], '=', null
+          );
+        }
+        if(school == 'Abjuration') {
+          notes = notes.concat([
+            'magicNotes.protectiveWardFeature:+%V AC 10 ft radius %1/day',
+            'saveNotes.energyAbsorptionFeature:Ignore %V HP energy damage/day',
+            'saveNotes.energyResistanceFeature:%V chosen energy type'
+          ]);
+          rules.defineRule('magicNotes.protectiveWardFeature',
+            schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+          );
+          rules.defineRule('magicNotes.protectiveWardFeature.1',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('saveNotes.energyAbsorptionFeature',
+            schoolLevelAttr, '=', 'source >= 6 ? source * 3 : null'
+          );
+          rules.defineRule('saveNotes.energyResistanceFeature',
+            schoolLevelAttr, '=',
+            'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
+          );
+        } else if(school == 'Conjuration') {
+          notes = notes.concat([
+            'magicNotes.conjuredDartFeature:d6+%1 ranged touch %V/day',
+            'magicNotes.dimensionalStepsFeature:Teleport up to %V ft/day',
+            'magicNotes.summoner\'sCharmFeature:' +
+              'Summon duration increased %V rounds'
+          ]);
+          rules.defineRule('magicNotes.conjuredDartFeature',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('magicNotes.conjuredDartFeature.1',
+            schoolLevelAttr, '=', 'Math.floor(source / 2)'
+          );
+          rules.defineRule('magicNotes.dimensionalHopFeature',
+            schoolLevelAttr, '=', 'source >= 8 ? 30 * source : null'
+          );
+          rules.defineRule('magicNotes.summoner\'sCharmFeature',
+            schoolLevelAttr, '=',
+            'source >= 20 ? "infinite" : source==1 ? 1 : Math.floor(source / 2)'
+          );
+        } else if(school == 'Divination') {
+          notes = notes.concat([
+            'combatNotes.forewarnedFeature:' +
+              '+%V initiative; always act in surprise round',
+            'magicNotes.diviner\'sFortuneFeature:' +
+              'Touched creature +%V attack/skill/ability/save 1 round %1/day',
+            'magicNotes.scryingAdeptFeature:' +
+              'Constant <i>Detect Scrying</i>; +1 scrying subject familiarity'
+          ]);
+          rules.defineRule('combatNote.forwarnedFeature',
+            schoolLevelAttr, '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+          );
+          rules.defineRule
+            ('initiative', 'combatNote.forwarnedFeature', '+', null);
+          rules.defineRule('magicNotes.diviner\'sFortuneFeature',
+            schoolLevelAttr, '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+          );
+          rules.defineRule('magicNotes.diviner\'sFortuneFeature.1',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+        } else if(school == 'Enchantment') {
+          notes = notes.concat([
+            'magicNotes.auraOfDespairFeature:' +
+              'Foes w/in 30 ft -2 ability/attack/damage/save/skill ' +
+              '%V rounds/day',
+            'magicNotes.enchantingTouchFeature:' +
+              'Touch attack dazes %V HD foe 1 round %V/day',
+            'saveNotes.enchantmentReflectionFeature:' +
+              'Successful save reflects enchantment spells on caster',
+            'skillNotes.enchantingSmileFeature:+%V Bluff/Diplomacy/Intimidate'
+          ]);
+          rules.defineRule('magicNotes.auraOfDespairFeature',
+            schoolLevelAttr, '=', null
+          );
+          rules.defineRule('magicNotes.enchantingTouchFeature',
+            schoolLevelAttr, '=', null
+          );
+          rules.defineRule('magicNotes.enchantingTouchFeature.1',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('skillNotes.enchantingSmileFeature',
+            schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+          );
+        } else if(school == 'Evocation') {
+          notes = notes.concat([
+            'magicNotes.elementalWallFeature:' +
+              '<i>Wall Of Fire</i>/acid/cold/electricty %V rounds/day',
+            'magicNotes.forceMissileFeature:d4+%V <i>Magic Missile</i> %1/day',
+            'magicNotes.intenseSpellsFeature:+%V evocation spell damage',
+            'magicNotes.penetratingSpellsFeature:' +
+              'Best of two rolls to overcome spell resistance'
+          ]);
+          rules.defineRule
+            ('magicNotes.elementalWallFeature', schoolLevelAttr, '=', null);
+          rules.defineRule('magicNotes.forceMissileFeature',
+            schoolLevelAttr, '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+          );
+          rules.defineRule('magicNotes.forceMissileFeature.1',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('magicNotes.intenseSpellsFeature',
+            schoolLevelAttr, '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+          );
+        } else if(school == 'Illusion') {
+          notes = notes.concat([
+            'magicNotes.blindingRayFeature:' +
+              'Ranged touch blinds/dazzles 1 round %V/day',
+            'magicNotes.extendedIllusionsFeature:' +
+              'Illusion duration increased %V rounds',
+            'magicNotes.invisibilityFieldFeature:' +
+              '<i>Greater Invisibility</i> %V rounds/day'
+          ]);
+          rules.defineRule('magicNotes.blindingRayFeature',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('magicNotes.extendedIllusionsFeature',
+            schoolLevelAttr, '=',
+            'source >= 20 ? "infinite" : source==1 ? 1 : Math.floor(source / 2)'
+          );
+          rules.defineRule('magicNotes.invisibilityFieldFeature',
+            bloodlineLevelAttr, '=', 'source >= 8 ? source : null'
+          );
+        } else if(school == 'Necromancy') {
+          notes = notes.concat([
+            'featureNotes.lifeSightFeature:%V blindsight for living/undead',
+            'featureNotes.powerOverUndeadFeature:' +
+              'Command/Turn Undead bonus feat',
+            'magicNotes.necromanticTouchFeature:' +
+              'Touch causes shaken/frightened %V rounds %1/day'
+          ]);
+          rules.defineRule('featureNotes.lifeSightFeature',
+            schoolLevelAttr, '=',
+            'source >= 8 ? 10 * Math.floor((source - 4) / 4) : null'
+          );
+          rules.defineRule('featCount.Wizard',
+            'featureNotes.powerOverUndeadFeature', '+', '1'
+          );
+          rules.defineRule('magicNotes.necromanticTouchFeature',
+            schoolLevelAttr, '=', 'source == 1 ? 1 : Math.floor(source / 2)'
+          );
+          rules.defineRule('magicNotes.necromanticTouchFeature.1',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+        } else if(school == 'Transmutation') {
+          notes = notes.concat([
+            'abilityNotes.physicalEnhancementFeature:+%V %1 of str/dex/con',
+            'magicNotes.changeShapeFeature:' +
+              '<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rounds/day',
+            'magicNotes.telekineticFistFeature:Ranged touch for d4+%1 %V/day'
+          ]);
+          rules.defineRule('abilityNotes.physicalEnhancementFeature',
+            schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+          );
+          rules.defineRule('abilityNotes.physicalEnhancementFeature.1',
+            schoolLevelAttr, '=', 'source >= 20 ? 2 : 1'
+          );
+          rules.defineRule('magicNotes.changeShapeFeature',
+            schoolLevelAttr, '=', 'source >= 8 ? source : null'
+          );
+          rules.defineRule('magicNotes.changeShapeFeature.1',
+            schoolLevelAttr, '=', 'source >= 12 ? "III" : "II"'
+          );
+          rules.defineRule('magicNotes.changeShapeFeature.2',
+            schoolLevelAttr, '=', 'source >= 12 ? "II" : "I"'
+          );
+          rules.defineRule('magicNotes.telekineticFistFeature',
+            'intelligenceModifier', '=', 'source + 3'
+          );
+          rules.defineRule('magicNotes.telekineticFistFeature.1',
+            schoolLevelAttr, '=', 'Math.floor(source / 2)'
+          );
+          // TODO
+        }
       }
       for(var j = 0; j < 10; j++) {
         rules.defineRule
           ('spellsPerDay.W' + j, 'magicNotes.wizardSpecialization', '+', '1');
       }
-      // TODO Specialization
-
-      rules.defineRule
-        ('familiarLevel', 'levels.Wizard', '+=', 'Math.floor(source / 2)');
-      rules.defineRule('familiarMasterLevel', 'levels.Wizard', '+=', null);
 
     } else
       continue;
@@ -3313,22 +3544,22 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Charm') {
       notes = [
-        'combatNotes.dazingTouchFeature:' +
-          'Touch attack dazes %V HD foe 1 round %V/day',
         'magicNotes.charmingSmileFeature:' +
-          'DC %V <i>Charm Person</i> %1 rounds/day'
+          'DC %V <i>Charm Person</i> %1 rounds/day',
+        'magicNotes.dazingTouchFeature:' +
+          'Touch attack dazes %V HD foe 1 round %V/day'
       ];
-      rules.defineRule
-        ('combatNotes.dazingTouchFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('combatNotes.dazingTouchFeature.1',
-        'wisdomModifier', '=', 'source + 3'
-      );
       rules.defineRule('magicNotes.charmingSmileFeature',
         'levels.Cleric', '=', '10 + Math.floor(source / 2)',
         'wisdomModifier', '+', null
       );
       rules.defineRule
         ('magicNotes.charmingSmileFeature.1', 'levels.Cleric', '=', null);
+      rules.defineRule
+        ('magicNotes.dazingTouchFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.dazingTouchFeature.1',
+        'wisdomModifier', '=', 'source + 3'
+      );
     } else if(domain == 'Community') {
       notes = [
         'magicNotes.calmingTouchFeature:' +
@@ -3397,13 +3628,13 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Earth') {
       notes = [
-        'combatNotes.acidDartFeature:d6+%1 ranged touch %V/day',
+        'magicNotes.acidDartFeature:d6+%1 ranged touch %V/day',
         'saveNotes.acidResistanceFeature:%V'
       ];
-      rules.defineRule('combatNotes.acidDartFeature',
+      rules.defineRule('magicNotes.acidDartFeature',
         'wisdomModifier', '=', 'source + 3'
       );
-      rules.defineRule('combatNotes.acidDartFeature.1',
+      rules.defineRule('magicNotes.acidDartFeature.1',
         'levels.Cleric', '=', 'Math.floor(source / 2)'
       );
       rules.defineRule('saveNotes.acidResistanceFeature',
