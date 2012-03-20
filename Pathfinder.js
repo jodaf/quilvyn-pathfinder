@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.10 2012/03/20 02:54:57 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.11 2012/03/20 14:23:48 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -286,7 +286,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.knockbackFeature:' +
-          'Successful bull rush during rage for %V damage',
+          'Successful Bull Rush during rage for %V damage',
         'combatNotes.mightyRageFeature:+8 strength/constitution, +4 Will',
         'combatNotes.mightySwingFeature:Automatic critical 1/rage',
         'combatNotes.momentOfClarityFeature:Rage effects suspended for 1 round',
@@ -484,7 +484,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '+%V all Knowledge, use any Knowledge untrained',
         'skillNotes.jackOfAllTradesFeature:Use any skill untrained',
         'skillNotes.loreMasterFeature:' +
-          'Take 10 on any ranked Knowledge skill; take 20 %V/day',
+          'Take 10 on any ranked Knowledge skill, take 20 %V/day',
         'skillNotes.versatilePerformanceFeature:' +
           'Substitute Perform ranking for other skills'
       ];
@@ -552,6 +552,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('magicNotes.inspireHeroicsFeature',
         'levels.Bard', '+=', 'Math.floor((source - 12) / 3)'
+      );
+      rules.defineRule(/^skillModifier.Knowledge/,
+        'skillNotes.bardicKnowledgeFeature', '+', null
       );
       rules.defineRule('skillNotes.bardicKnowledgeFeature',
         'levels.Bard', '=', 'Math.max(1, Math.floor(source / 2))'
@@ -1859,8 +1862,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 6)'
           );
           for(var k = 0; k < feats.length; k++) {
-            rules.defineChoice('feats', feats[k] + ':' + bloodline);
+            feats[k] += ':' + bloodline;
           }
+          Pathfinder.featRules(rules, feats, Pathfinder.SUBFEATS);
           feats = null;
         }
       }
@@ -2705,7 +2709,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Bull Rush') {
       notes = [
         'combatNotes.greaterBullRushFeature:' +
-          '+2 bull rush checks; AOO on bull rushed foes',
+          '+2 Bull Rush checks; AOO on Bull Rushed foes',
         'validationNotes.greaterBullRushFeatAbility:Requires Strength >= 13',
         'validationNotes.greaterBullRushFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -3725,7 +3729,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'magicNotes.divinePresenceFeature:' +
           'DC %V <i>Sanctuary</i> for allies w/in 30 ft %1 rounds/day',
-        'magicNotes.touchOfGloryFeature:Impart +%V charisma check bonus %V/day',
+        'magicNotes.touchOfGloryFeature:Impart +%V charisma check bonus %1/day',
         'magicNotes.undeadBaneFeature:+2 DC on energy channeled to harm undead'
       ];
       rules.defineRule('magicNotes.divinePresenceFeature',
@@ -3734,7 +3738,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
       rules.defineRule
         ('magicNotes.divinePresenceFeature.1', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.touchOfGloryFeature',
+      rules.defineRule
+        ('magicNotes.touchOfGloryFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.touchOfGloryFeature.1',
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Good') {
