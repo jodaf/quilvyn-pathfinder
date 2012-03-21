@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.11 2012/03/20 14:23:48 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.12 2012/03/21 05:55:27 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -756,7 +756,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule
-        ('damageReduction.All', 'combatNotes.armorMasteryFeature', '+=', null);
+        ('damageReduction.All', 'combatNotes.armorMasteryFeature', '+=', '5');
       rules.defineRule('featCount.Combat',
         'levels.Fighter', '=', '1 + Math.floor(source / 2)'
       );
@@ -798,8 +798,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Treat ki strike as adamantine weapon',
         'combatNotes.flurryOfBlowsFeature:' +
           'Extra attack(s) w/monk weapon using +%V Base Attack Bonus',
-        'combatNotes.greaterTwo-WeaponFightingFeature:Fourth attack at -10',
-        'combatNotes.improvedTwo-WeaponFightingFeature:Third attack at -5',
+        'combatNotes.greaterTwo-WeaponFightingFeature:' +
+          'Third off-hand -10 attack',
+        'combatNotes.improvedTwo-WeaponFightingFeature:' +
+          'Second off-hand -5 attack',
         'featureNotes.kiPoolFeature:' +
           'Ki strike/additional attack/+20 speed/+4 AC %V/day',
         'combatNotes.lawfulKiStrikeFeature:Treat ki strike as lawful weapon',
@@ -954,13 +956,13 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Heal/inflict %Vd6 damage, DC %1 Will for half %2/day',
         'magicNotes.detectEvilFeature:<i>Detect Evil</i> at will',
         'magicNotes.holyChampionFeature:' +
-          'Maximize lay on hands; smite evil DC %V <i>Banishment</i>',
+          'Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
         'magicNotes.layOnHandsFeature:Harm undead or heal %Vd6 HP %1/day',
         'magicNotes.mercyFeature:Lay on hands removes additional effects',
         'saveNotes.auraOfCourageFeature:Immune fear, +4 to allies w/in 30 ft',
         'saveNotes.auraOfResolveFeature:Immune charm, +4 to allies w/in 30 ft',
         'saveNotes.auraOfRighteousnessFeature:' +
-          'Immune compulsion; +4 to allies w/in 30 ft',
+          'Immune compulsion, +4 to allies w/in 30 ft',
         'saveNotes.divineGraceFeature:+%V all saves',
         'saveNotes.divineHealthFeature:Immune to disease',
         'validationNotes.paladinClassAlignment:' +
@@ -1247,7 +1249,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.trapSpotterFeature:' +
           'Automatic Perception check w/in 10 ft of trap',
         'skillNotes.skillMasteryFeature:' +
-          'Never distracted from designated skills',
+          'Take 10 despite distraction on %V designated skills',
         'skillNotes.trapfindingFeature:+%V Perception/Disable Device w/traps',
         'validationNotes.cripplingStrikeSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
@@ -1322,6 +1324,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('magicNotes.minorMagicFeature.1', 'intelligenceModifier', '=', null);
       rules.defineRule('selectableFeatureCount.Rogue',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('skillNotes.skillMasteryFeature',
+        'intelligenceModifier', '=', 'source + 3',
+        'selectableFeatures.Skill Mastery', '*', null
       );
       rules.defineRule('skillNotes.trapfindingFeature',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
@@ -1495,7 +1501,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           ];
           notes = notes.concat([
             'combatNotes.aberrantFormFeature:' +
-              'Immune critical hit/sneak attack; DR 5/-',
+              'Immune critical hit/sneak attack, DR 5/-',
             'combatNotes.longLimbsFeature:+%V ft touch attack range',
             'combatNotes.unusualAnatomyFeature:' +
               '%V% chance to ignore critical hit/sneak attack',
@@ -2038,11 +2044,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         } else if(school == 'Divination') {
           notes = notes.concat([
             'combatNotes.forewarnedFeature:' +
-              '+%V initiative; always act in surprise round',
+              '+%V initiative, always act in surprise round',
             'magicNotes.diviner\'sFortuneFeature:' +
               'Touched creature +%V attack/skill/ability/save 1 round %1/day',
             'magicNotes.scryingAdeptFeature:' +
-              'Constant <i>Detect Scrying</i>; +1 scrying subject familiarity'
+              'Constant <i>Detect Scrying</i>, +1 scrying subject familiarity'
           ]);
           rules.defineRule('combatNote.forwarnedFeature',
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
@@ -2455,7 +2461,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Blinding Critical') {
       notes = [
         'combatNotes.blindingCriticalFeature:' +
-          'Critical hit causes permanent blindness; ' +
+          'Critical hit causes permanent blindness, ' +
           'DC %V fortitude save reduces to dazzled d4 rounds',
         'validationNotes.blindingCriticalFeatFeature:Requires Critical Focus',
         'validationNotes.blindingCricialFeatBaseAttack:' +
@@ -2468,7 +2474,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Catch Off-Guard') {
       notes = [
         'combatNotes.catchOff-GuardFeature:' +
-          'No penalty for improvised weapon; unarmed opponents flat-footed'
+          'No penalty for improvised weapon, unarmed opponents flat-footed'
       ];
     } else if(feat == 'Channel Smite') {
       notes = [
@@ -2551,7 +2557,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Deafening Critical') {
       notes = [
         'combatNotes.deafeningCriticalFeature:' +
-          'Critical hit causes permanent deafness; ' +
+          'Critical hit causes permanent deafness, ' +
           'DC %V fortitude save reduces to 1 round',
         'validationNotes.deafeningCriticalFeatFeature:Requires Critical Focus',
         'validationNotes.deafeningCricialFeatBaseAttack:' +
@@ -2709,7 +2715,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Bull Rush') {
       notes = [
         'combatNotes.greaterBullRushFeature:' +
-          '+2 Bull Rush checks; AOO on Bull Rushed foes',
+          '+2 Bull Rush checks, AOO on Bull Rushed foes',
         'validationNotes.greaterBullRushFeatAbility:Requires Strength >= 13',
         'validationNotes.greaterBullRushFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -2719,7 +2725,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Disarm') {
       notes = [
         'combatNotes.greaterDisarmFeature:' +
-          '+2 disarm checks; disarmed weapons land 15 ft away',
+          '+2 disarm checks, disarmed weapons land 15 ft away',
         'validationNotes.greaterDisarmFeatAbility:Requires Intelligence >= 13',
         'validationNotes.greaterDisarmFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -2739,7 +2745,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Grapple') {
       notes = [
         'combatNotes.greaterGrappleFeature:' +
-          '+2 grapple checks; grapple check is move action',
+          '+2 grapple checks, grapple check is move action',
         'validationNotes.greaterGrappleFeatAbility:Requires Dexterity >= 13',
         'validationNotes.greaterGrappleFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -2749,7 +2755,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Overrun') {
       notes = [
         'combatNotes.greaterOverrunFeature:' +
-          '+2 overrun checks; AOO on overrun foes',
+          '+2 overrun checks, AOO on overrun foes',
         'validationNotes.greaterOverrunFeatAbility:Requires Strength >= 13',
         'validationNotes.greaterOverrunFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -2782,7 +2788,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Sunder') {
       notes = [
         'combatNotes.greaterSunderFeature:' +
-          '+2 sunder checks;foe takes excess damage',
+          '+2 sunder checks, foe takes excess damage',
         'validationNotes.greaterSunderFeatAbility:Requires Strength >= 13',
         'validationNotes.greaterSunderFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -2801,7 +2807,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Two-Weapon Fighting') {
       notes = [
         'combatNotes.greaterTwo-WeaponFightingFeature:' +
-          'Third attack with off-hand weapon at -10 attack',
+          'Third off-hand -10 attack',
         'validationNotes.greaterTwo-WeaponFightingFeatAbility:' +
           'Requires Dexterity >= 19',
         'validationNotes.greaterTwo-WeaponFightingFeatBaseAttack:' +
@@ -2823,7 +2829,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Bull Rush') {
       notes = [
         'combatNotes.improvedBullRushFeature:' +
-          'No AOO on Bull Rush; +2 Bull Rush check; +2 Bull Rush CMD',
+          'No AOO on Bull Rush, +2 Bull Rush check, +2 Bull Rush CMD',
         'validationNotes.improvedBullRushFeatAbility:Requires Strength >= 13',
         'validationNotes.improvedBullRushFeatBaseAttack:' +
           'Requires Base Attack >= 1',
@@ -2839,7 +2845,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Disarm') {
       notes = [
         'combatNotes.improvedDisarmFeature:' +
-          'No AOO on Disarm; +2 Disarm check; +2 Disarm CMD',
+          'No AOO on Disarm, +2 Disarm check, +2 Disarm CMD',
         'validationNotes.improvedDisarmFeatAbility:Requires Intelligence >= 13',
         'validationNotes.improvedDisarmFeatFeatures:Requires Combat Expertise'
       ];
@@ -2848,7 +2854,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Grapple') {
       notes = [
         'combatNotes.improvedGrappleFeature:' +
-          'No AOO on Grapple; +2 Grapple check; +2 Grapple CMD',
+          'No AOO on Grapple, +2 Grapple check, +2 Grapple CMD',
         'validationNotes.improvedGrappleFeatAbility:Requires Dexterity >= 13',
         'validationNotes.improvedGrappleFeatFeatures:' +
           'Requires Improved Unarmed Strike'
@@ -2874,7 +2880,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Overrun') {
       notes = [
         'combatNotes.improvedOverrunFeature:' +
-          'No AOO on Overrun; +2 Overrun check; +2 Overrun CMD; ' +
+          'No AOO on Overrun, +2 Overrun check, +2 Overrun CMD, ' +
           'foes cannot avoid',
         'validationNotes.improvedOverrunFeatAbility:Requires Strength >= 13',
         'validationNotes.improvedOverrunFeatFeatures:Requires Power Attack'
@@ -2894,7 +2900,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Sunder') {
       notes = [
         'combatNotes.improvedSunderFeature:' +
-          'No AOO on Sunder; +2 Sunder check; +2 Sunder CMD',
+          'No AOO on Sunder, +2 Sunder check, +2 Sunder CMD',
         'validationNotes.improvedSunderFeatAbility:Requires Strength >= 13',
         'validationNotes.improvedSunderFeatBaseAttack:',
           'Requires Base Attack >= 1',
@@ -2903,7 +2909,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Trip') {
       notes = [
         'combatNotes.improvedTripFeature:' +
-          'No AOO on Trip; +2 Trip check; +2 Trip CMD',
+          'No AOO on Trip, +2 Trip check, +2 Trip CMD',
         'validationNotes.improvedTripFeatAbility:Requires Intelligence >= 13',
         'validationNotes.improvedTripFeatFeatures:Requires Combat Expertise'
       ];
@@ -2919,7 +2925,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improvised Weapon Mastery') {
       notes = [
         'combatNotes.improvisedWeaponMasteryFeature:' +
-          'No penalties for improvised weapons; ' +
+          'No penalties for improvised weapons, ' +
           'improvised weapon damage +step, critical x2@19',
         'validationNotes.improvisedWeaponMasteryFeatBaseAttack:' +
           'Requires Base Attach >= 8',
@@ -3014,7 +3020,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Penetrating Strike') {
       notes = [
-        'combatNotes.greaterPenetratingStrikeFeature:' +
+        'combatNotes.penetratingStrikeFeature:' +
           'Focused weapons ignore DR 5/anything',
         'validationNotes.penetratingStrikeFeatBaseAttack:' +
           'Requires Base Attack >= 1',
@@ -3071,7 +3077,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Scorpion Style') {
       notes = [
         'combatNotes.scorpionStyleFeature:' +
-          'Unarmed hit slows foe for %V rounds; DC %1 fortitude negates',
+          'Unarmed hit slows foe for %V rounds, DC %1 fortitude negates',
         'validationNotes.scorpionStyleFeatFeatures:' +
            'Requires Improved Unarmed Strike'
       ];
@@ -3126,7 +3132,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Shield Master') {
       notes = [
         'combatNotes.shieldMasterFeature:' +
-          'No penalty on shield attacks; ' +
+          'No penalty on shield attacks, ' +
           'apply shield enhancements to attack/damage',
         'validationNotes.shieldMasterFeatBaseAttack:Requires Base Attack >= 11',
         'validationNotes.shieldMasterFeatFeatures:' +
@@ -3181,7 +3187,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Staggering Critical') {
       notes = [
         'combatNotes.staggeringCriticalFeature:' +
-          'Critical hit causes foe staggered d4+1 rounds; ' +
+          'Critical hit causes foe staggered d4+1 rounds, ' +
           'DC %V fortitude negates',
         'validationNotes.staggeringCriticalFeatFeature:Requires Critical Focus',
         'validationNotes.staggeringCricialFeatBaseAttack:' +
@@ -3222,7 +3228,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Stunning Critical') {
       notes = [
         'combatNotes.stunningCriticalFeature:' +
-          'Critical hit stuns d4 rounds; DC %V fortitude reduces to staggered',
+          'Critical hit stuns d4 rounds, DC %V fortitude reduces to staggered',
         'validationNotes.stunningCriticalFeatBaseAttack:' +
            'Requires Base Attack >= 17',
         'validationNotes.stunningCriticalFeatFeatures:' +
@@ -3269,7 +3275,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Turn Undead') {
       notes = [
         'combatNotes.turnUndeadFeature:' +
-          'Channel energy to cause undead panic; DC %V will save negates',
+          'Channel energy to cause undead panic, DC %V will save negates',
         'validationNotes.turnUndeadFeatFeatures:Requires Channel Energy'
       ];
       rules.defineRule('combatNotes.turnUndeadFeature',
@@ -3320,7 +3326,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'validationNotes.windStanceFeatFeatures:Requires Dodge'
       ];
     } else {
-      SRD35.featRules(rules, [feat], null);
+      SRD35.featRules(rules, [feat + ':' + pieces[1]], null);
       continue;
     }
 
