@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.12 2012/03/21 05:55:27 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.13 2012/03/22 16:11:38 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -200,7 +200,7 @@ Pathfinder.WEAPONS_ADDED = [
   'Blowgun:d2r20',
   'Elven Curve Blade:d10@18',
   'Halfling Sling Staff:d8x3r80',
-  'Sai:d4', // removed range
+  // removed range 'Sai:d4',
   'Starknife:d4x3r20'
 ];
 
@@ -299,7 +299,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '+%V AC vs. ranged for %1 rounds during rage',
         'combatNotes.rousedAngerFeature:Rage even if fatigued',
         'combatNotes.strengthSurgeFeature:' +
-          '+%V strength/combat manuever check 1/rage',
+          '+%V strength/combat maneuver check 1/rage',
         'combatNotes.surpriseAccuracyFeature:+%V attack 1/rage',
         'combatNotes.terrifyingHowlFeature:' +
            'Howl for DC %V will save w/in 30 ft or shaken for d4+1 rounds',
@@ -701,9 +701,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'source < 4 ? null : ' +
           'source < 6 ? "small-medium" : ' +
           'source < 8 ? "tiny-large/small elemental" : ' +
-          'source < 10 ? "dimunitive-huge/medium elemental" : ' +
-          'source < 12 ? "dimunitive-huge/large elemental/plant" : ' +
-          '"dimunitive-huge/elemental/plant"'
+          'source < 10 ? "diminutive-huge/medium elemental" : ' +
+          'source < 12 ? "diminutive-huge/large elemental/plant" : ' +
+          '"diminutive-huge/elemental/plant"'
       );
       rules.defineRule
         ('magicNotes.wildShapeFeature.1', 'levels.Druid', '=', null);
@@ -1076,7 +1076,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Full attack vs. favored enemy requires DC %V Fortitude save or die',
         'combatNotes.quarryFeature:+%V attack/automatic critical vs. target',
         'featureNotes.hunter\'sBondFeature:' +
-          'Animal companion w/pecial bond/abilities',
+          'Animal companion w/special bond/abilities',
         'featureNotes.woodlandStrideFeature:' +
           'Normal movement through undergrowth',
         'saveNotes.enduranceFeature:+4 extended physical action',
@@ -1224,7 +1224,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Sneak attack target DC %V Fortitude or sleep/paralyze/die',
         'combatNotes.opportunistFeature:AOO vs. foe struck by ally',
         'combatNotes.resiliencyFeature:' +
-          '1 minunte of %V temporary hit points when below 0 hit points 1/day',
+          '1 minute of %V temporary hit points when below 0 hit points 1/day',
         'combatNotes.slowReactionsFeature:' +
           'Sneak attack target no AOO for 1 round',
         'combatNotes.sneakAttackFeature:' +
@@ -1408,7 +1408,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '1:Laughing Touch/3:Woodland Stride/9:Fleeting Glance/' +
           '15:Fey Magic/20:Soul Of The Fey',
         'Infernal':
-          '1:Corrupting Touch/3:Infernal Rsistances/9:Hellfire/' +
+          '1:Corrupting Touch/3:Infernal Resistances/9:Hellfire/' +
           '15:On Dark Wings/20:Power Of The Pit',
         'Undead':
           '1:Grave Touch/3:Death\'s Gift/9:Grasp Of The Dead/' +
@@ -1688,7 +1688,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'saveNotes.dragonResistancesFeature:%V vs. energy type'
           ]);
           rules.defineRule
-            ('armorClass', 'combatNotes.dragonReistancesFeature', '+', null);
+            ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
           rules.defineRule('clawsDamageLevel',
             'features.Claws', '=', '1',
             'features.Small', '+', '-1',
@@ -1970,7 +1970,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '1:Intense Spells/1:Force Missile/8:Elemental Wall/' +
           '20:Penetrating Spells',
         'Illusion':
-          '1:Extened Illusions/1:Blinding Ray/8:Invisibility Field',
+          '1:Extended Illusions/1:Blinding Ray/8:Invisibility Field',
         'Necromancy':
           '1:Power Over Undead/1:Necromantic Touch/8:Life Sight',
         'Transmutation':
@@ -2050,11 +2050,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.scryingAdeptFeature:' +
               'Constant <i>Detect Scrying</i>, +1 scrying subject familiarity'
           ]);
-          rules.defineRule('combatNote.forwarnedFeature',
+          rules.defineRule('combatNote.forewarnedFeature',
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule
-            ('initiative', 'combatNote.forwarnedFeature', '+', null);
+            ('initiative', 'combatNote.forewarnedFeature', '+', null);
           rules.defineRule('magicNotes.diviner\'sFortuneFeature',
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
@@ -2087,7 +2087,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         } else if(school == 'Evocation') {
           notes = notes.concat([
             'magicNotes.elementalWallFeature:' +
-              '<i>Wall Of Fire</i>/acid/cold/electricty %V rounds/day',
+              '<i>Wall Of Fire</i>/acid/cold/electricity %V rounds/day',
             'magicNotes.forceMissileFeature:d4+%V <i>Magic Missile</i> %1/day',
             'magicNotes.intenseSpellsFeature:+%V evocation spell damage',
             'magicNotes.penetratingSpellsFeature:' +
@@ -2449,7 +2449,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.bleedingCriticalFeature:' +
           'Critical hit causes 2d6 damage/round until healed (DC 15)',
         'validationNotes.bleedingCriticalFeatFeature:Requires Critical Focus',
-        'validationNotes.bleedingCricialFeatBaseAttack:' +
+        'validationNotes.bleedingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 11'
       ];
     } else if(feat == 'Blind-Fight') {
@@ -2464,7 +2464,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
           'Critical hit causes permanent blindness, ' +
           'DC %V fortitude save reduces to dazzled d4 rounds',
         'validationNotes.blindingCriticalFeatFeature:Requires Critical Focus',
-        'validationNotes.blindingCricialFeatBaseAttack:' +
+        'validationNotes.blindingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 15'
       ];
       rules.defineRule('combatNotes.blindingCriticalFeature',
@@ -2560,7 +2560,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
           'Critical hit causes permanent deafness, ' +
           'DC %V fortitude save reduces to 1 round',
         'validationNotes.deafeningCriticalFeatFeature:Requires Critical Focus',
-        'validationNotes.deafeningCricialFeatBaseAttack:' +
+        'validationNotes.deafeningCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 13'
       ];
       rules.defineRule('combatNotes.deafeningCriticalFeature',
@@ -2632,7 +2632,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
           'Critical hit causes foe exhaustion',
         'validationNotes.exhaustingCriticalFeatFeature:' +
           'Requires Critical Focus/Tiring Critical',
-        'validationNotes.exhaustingCricialFeatBaseAttack:' +
+        'validationNotes.exhaustingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 15'
       ];
     // } else if(feat == 'Extend Spell') { // as SRD35
@@ -3002,7 +3002,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Medusa\'s Wrath') {
       notes = [
         'combatNotes.medusa\'sWrathFeature:' +
-          '2 extra unarmed attacks vs. diminshed-capacity foe',
+          '2 extra unarmed attacks vs. diminished-capacity foe',
         'validationNotes.medusa\'sWrathFeatBaseAttack:' +
           'Requires Base Attack >= 11',
         'validationNotes.medusa\'sWrathFeatFeatures:' +
@@ -3154,7 +3154,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.sickeningCriticalFeature:' +
           'Critical hit causes foe sickening',
         'validationNotes.sickeningCriticalFeatFeature:Requires Critical Focus',
-        'validationNotes.sickeningCricialFeatBaseAttack:' +
+        'validationNotes.sickeningCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 11'
       ];
     // } else if(feat == 'Silent Spell') { // as SRD35
@@ -3190,7 +3190,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
           'Critical hit causes foe staggered d4+1 rounds, ' +
           'DC %V fortitude negates',
         'validationNotes.staggeringCriticalFeatFeature:Requires Critical Focus',
-        'validationNotes.staggeringCricialFeatBaseAttack:' +
+        'validationNotes.staggeringCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 13'
       ];
       rules.defineRule('combatNotes.staggeringCriticalFeature',
@@ -3565,7 +3565,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
       rules.defineRule
         ('classSkills.Knowledge (Nature)', 'domains.Animal', '=', '1');
-    } else if(domain == 'Artiface') {
+    } else if(domain == 'Artifice') {
       notes = [
         'combatNotes.artificer\'sTouchFeature:' +
           'Melee touch attack on objects/constructs for d6+%1 damage %V/day',
