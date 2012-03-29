@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.13 2012/03/22 16:11:38 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.14 2012/03/29 22:24:35 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -3059,6 +3059,9 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
       rules.defineRule('combatNotes.powerAttackFeature',
         'baseAttack', '=', '1 + Math.floor(source / 4)'
+      );
+      rules.defineRule('combatNotes.powerAttackFeature.1',
+        'baseAttack', '=', '2 * (1 + Math.floor(source / 4))'
       );
     // } else if(feat == 'Precise Shot') { // as SRD35
     // } else if(feat == 'Quick Draw') { // as SRD35
