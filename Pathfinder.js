@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.14 2012/03/29 22:24:35 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.15 2012/04/07 16:49:58 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -4152,7 +4152,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
     if(race == 'Half Elf') {
 
-      adjustment = null; // Player's choice
+      adjustment = '+2 any'; // Player's choice
       features = [
         'Adaptability', 'Elf Blood', 'Keen Senses', 'Low-Light Vision',
         'Multitalented', 'Resist Enchantment', 'Sleep Immunity'
@@ -4181,7 +4181,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
     } else if(race == 'Half Orc') {
 
-      adjustment = null; // Player's choice
+      adjustment = '+2 any'; // Player's choice
       features = ['Darkvision', 'Intimidating', 'Orc Blood', 'Orc Ferocity'];
       notes = [
         'combatNotes.orcFerocityFeature:Fight 1 round below zero hit points',
@@ -4335,7 +4335,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
     } else if(race.match(/Human/)) {
 
-      adjustment = null; // Player's choice
+      adjustment = '+2 any'; // Player's choice
       features = null;
       notes = null;
       rules.defineRule
