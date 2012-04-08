@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.15 2012/04/07 16:49:58 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.16 2012/04/08 21:07:01 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -2359,7 +2359,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.alignmentChannel(' + matchInfo[1] + ')Feature:' +
           'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders',
-        'validationNotes.alignmentChannel(' + matchInfo[1] + ')FeatFeature:' +
+        'validationNotes.alignmentChannel(' + matchInfo[1] + ')FeatFeatures:' +
           'Requires Channel Energy'
       ];
     } else if(feat == 'Animal Affinity') {
@@ -2448,7 +2448,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.bleedingCriticalFeature:' +
           'Critical hit causes 2d6 damage/round until healed (DC 15)',
-        'validationNotes.bleedingCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.bleedingCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.bleedingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 11'
       ];
@@ -2463,7 +2463,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.blindingCriticalFeature:' +
           'Critical hit causes permanent blindness, ' +
           'DC %V fortitude save reduces to dazzled d4 rounds',
-        'validationNotes.blindingCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.blindingCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.blindingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 15'
       ];
@@ -2480,7 +2480,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.channelSmiteFeature:' +
           'Channel energy into weapon strike as swift action',
-        'validationNotes.channelSmiteFeatFeature:Requires Channel Energy'
+        'validationNotes.channelSmiteFeatFeatures:Requires Channel Energy'
       ];
     } else if(feat == 'Cleave') {
       notes = [
@@ -2506,7 +2506,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.commandUndeadFeature:' +
           'Undead w/in 30 ft %V DC will save or controlled',
-        'validationNotes.commandUndeadFeatFeature:Requires Channel Energy'
+        'validationNotes.commandUndeadFeatFeatures:Requires Channel Energy'
       ];
       rules.defineRule('combatNotes.commandUndeadFeature',
         'levels.Cleric', '=', '10 + Math.floor(source / 2)',
@@ -2559,7 +2559,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.deafeningCriticalFeature:' +
           'Critical hit causes permanent deafness, ' +
           'DC %V fortitude save reduces to 1 round',
-        'validationNotes.deafeningCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.deafeningCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.deafeningCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 13'
       ];
@@ -2613,13 +2613,13 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.doubleSliceFeature:Add full strength to off-hand damage',
         'validationNotes.doubleSliceFeatAbility:Requires Dexterity >= 15',
-        'validationNotes.doubleSliceFeatFeature:Requires Two-Weapon Fighting'
+        'validationNotes.doubleSliceFeatFeatures:Requires Two-Weapon Fighting'
       ];
     } else if((matchInfo = feat.match(/^Elemental Channel \((.*)\)$/)) != null){
       notes = [
         'combatNotes.elementalChannel(' + matchInfo[1] + ')Feature:' +
           'Channel energy to heal or harm ' + matchInfo[1] + ' outsiders',
-        'validationNotes.elementalChannel(' + matchInfo[1] + ')FeatFeature:' +
+        'validationNotes.elementalChannel(' + matchInfo[1] + ')FeatFeatures:' +
           'Requires Channel Energy'
       ];
     // } else if(feat == 'Empower Spell') { // as SRD35
@@ -2630,7 +2630,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.exhaustingCriticalFeature:' +
           'Critical hit causes foe exhaustion',
-        'validationNotes.exhaustingCriticalFeatFeature:' +
+        'validationNotes.exhaustingCriticalFeatFeatures:' +
           'Requires Critical Focus/Tiring Critical',
         'validationNotes.exhaustingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 15'
@@ -2639,7 +2639,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Channel') {
       notes = [
         'magicNotes.extraChannelFeature:Channel energy +2/day',
-        'validationNotes.extraChannelFeatFeature:Requires Channel Energy'
+        'validationNotes.extraChannelFeatFeatures:Requires Channel Energy'
       ];
       rules.defineRule('magicNotes.channelEnergyFeature.2',
         'magicNotes.extraChannelFeature', '+', '2'
@@ -2647,7 +2647,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Ki') {
       notes = [
         'featureNotes.extraKiFeature:+2 Ki pool',
-        'validationNotes.extraKiFeatFeature:Requires Ki Pool'
+        'validationNotes.extraKiFeatFeatures:Requires Ki Pool'
       ];
       rules.defineRule('featureNotes.kiPoolFeature',
         'featureNotes.extraKiFeature', '+', '2'
@@ -2655,7 +2655,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Lay On Hands') {
       notes = [
         'magicNotes.extraLayOnHandsFeature:Lay On Hands +2/day',
-        'validationNotes.extraLayOnHandsFeatFeature:Requires Lay On Hands'
+        'validationNotes.extraLayOnHandsFeatFeatures:Requires Lay On Hands'
       ];
       rules.defineRule('magicNotes.layOnHandsFeature.1',
         'magicNotes.extraLayOnHandsFeature', '+', '2'
@@ -2663,13 +2663,13 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Mercy') {
       notes = [
         'magicNotes.extraMercyFeature:Lay On Hands gives Mercy effect',
-        'validationNotes.extraMercyFeatFeature:Requires Lay On Hands/Mercy'
+        'validationNotes.extraMercyFeatFeatures:Requires Lay On Hands/Mercy'
       ];
     } else if(feat == 'Extra Performance') {
       notes = [
         'featureNotes.extraPerformanceFeature:' +
           'Use Barding Performance extra 6 rounds/day',
-        'validationNotes.extraPerformanceFeatFeature:' +
+        'validationNotes.extraPerformanceFeatFeatures:' +
           'Requires Bardic Performance'
       ];
       rules.defineRule('featureNotes.bardicPerformanceFeature',
@@ -2678,7 +2678,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Rage') {
       notes = [
         'featureNotes.extraRageFeature:Rage extra 6 rounds/day',
-        'validationNotes.extraRageFeatFeature:Requires Rage'
+        'validationNotes.extraRageFeatFeatures:Requires Rage'
       ];
       rules.defineRule('combatNotes.rageFeature.1',
         'featureNotes.extraRageFeature', '+', '6'
@@ -2838,7 +2838,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Improved Channel') {
       notes = [
         'magicNotes.improvedChannelFeature:+2 DC on channeled energy',
-        'validationNotes.improvedChannelFeatFeature:Requires Channel Energy'
+        'validationNotes.improvedChannelFeatFeatures:Requires Channel Energy'
       ];
     // } else if(feat == 'Improved Counterspell') { // as SRD35
     // } else if((matchInfo = feat.match(/^Improved Critical \((.*)\)$/)) != null){ // as SRD35
@@ -3097,7 +3097,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'magicNotes.selectiveChannelingFeature:Avoid up to %V targets',
         'validationNotes.selectiveChannelingFeatAbility:' +
           'Requires Charisma >= 13',
-        'validationNotes.selectiveChannelingFeatFeature:Requires Channel Energy'
+        'validationNotes.selectiveChannelingFeatFeatures:' +
+          'Requires Channel Energy'
       ];
       rules.defineRule('magicNotes.selectiveChannelingFeature',
         'wisdomModifier', '=', null
@@ -3121,7 +3122,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
           'Fearful opponents flat-footed through next round',
         'validationNotes.shatterDefensesFeatBaseAttack:' +
            'Requires Base Attack >= 6',
-        'validationNotes.shatterDefensesFeatFeature:' +
+        'validationNotes.shatterDefensesFeatFeatures:' +
           'Requires Dazzling Display/Weapon Focus'
       ];
     } else if(feat == 'Shield Focus') {
@@ -3156,7 +3157,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.sickeningCriticalFeature:' +
           'Critical hit causes foe sickening',
-        'validationNotes.sickeningCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.sickeningCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.sickeningCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 11'
       ];
@@ -3192,7 +3193,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.staggeringCriticalFeature:' +
           'Critical hit causes foe staggered d4+1 rounds, ' +
           'DC %V fortitude negates',
-        'validationNotes.staggeringCriticalFeatFeature:Requires Critical Focus',
+        'validationNotes.staggeringCriticalFeatFeatures:' +
+          'Requires Critical Focus',
         'validationNotes.staggeringCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 13'
       ];
