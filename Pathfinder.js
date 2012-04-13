@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.16 2012/04/08 21:07:01 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.17 2012/04/13 06:24:50 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -852,7 +852,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
            'Requires Monk >= 10',
         'validationNotes.springAttackSelectableFeatureLevels:' +
            'Requires Monk >= 10',
-        'validationNotes.monkClassAlignment:Requires Alignment =~ Lawful',
+        'validationNotes.monkClassAlignment:Requires Alignment =~ Lawful'
       ];
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
@@ -2902,7 +2902,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.improvedSunderFeature:' +
           'No AOO on Sunder, +2 Sunder check, +2 Sunder CMD',
         'validationNotes.improvedSunderFeatAbility:Requires Strength >= 13',
-        'validationNotes.improvedSunderFeatBaseAttack:',
+        'validationNotes.improvedSunderFeatBaseAttack:' +
           'Requires Base Attack >= 1',
         'validationNotes.improvedSunderFeatFeatures:Requires Power Attack'
       ];
@@ -4261,7 +4261,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       features = [
         'Defensive Training', 'Gnome Hatred', 'Gnome Magic', 'Keen Senses',
         'Low-Light Vision', 'Natural Spells', 'Obsessive', 'Resist Illusion',
-        'Slow', 'Small',
+        'Slow', 'Small'
       ];
       notes = [
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
