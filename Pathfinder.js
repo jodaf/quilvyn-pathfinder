@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.17 2012/04/13 06:24:50 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.18 2012/09/01 05:33:50 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -443,9 +443,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       features = [
         '1:Bardic Knowledge', '1:Bardic Performance', '1:Countersong',
         '1:Distraction', '1:Fascinate', '1:Inspire Courage',
-        '2:Versatile Performance', '2:Well-Versed', '3:Inspire Competence',
-        '5:Lore Master', '6:Suggestion', '8:Dirge Of Doom',
-        '9:Inspire Greatness', '10:Jack Of All Trades',
+        '1:Simple Somatics', '2:Versatile Performance', '2:Well-Versed',
+        '3:Inspire Competence', '5:Lore Master', '6:Suggestion',
+        '8:Dirge Of Doom', '9:Inspire Greatness', '10:Jack Of All Trades',
         '12:Soothing Performance', '14:Frightening Tune', '15:Inspire Heroics',
         '18:Mass Suggestion', '20:Deadly Performance'
       ];
@@ -475,6 +475,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '+4 AC/saves to %V allies while performing',
         'magicNotes.massSuggestionFeature:' +
           '<i>Suggestion</i> to all fascinated creatures',
+        'magicNotes.simpleSomaticsFeature:Reduce armor casting penalty by %V%',
         'magicNotes.soothingPerformanceFeature:' +
            '30 ft range <i>Mass Cure Serious Wounds</i> via performance',
         'magicNotes.suggestionFeature:' +
@@ -552,6 +553,14 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('magicNotes.inspireHeroicsFeature',
         'levels.Bard', '+=', 'Math.floor((source - 12) / 3)'
+      );
+      rules.defineRule('magicNotes.simpleSomaticsFeature',
+        'armor', '+=', 'source.match(/Padded|Leather|Chain Shirt/) ? ' +
+        'SRD35.armorsArcaneSpellFailurePercentages[source] : null',
+        'shield', '+=', 'SRD35.shieldsArcaneSpellFailurePercentages[source]'
+      );
+      rules.defineRule('magicNotes.arcaneSpellFailure',
+        'magicNotes.simpleSomaticsFeature', '+', '-source'
       );
       rules.defineRule(/^skillModifier.Knowledge/,
         'skillNotes.bardicKnowledgeFeature', '+', null
@@ -657,7 +666,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.venomImmunityFeature:Immune to poisons',
         'skillNotes.natureSenseFeature:+2 Knowledge (Nature)/Survival',
         'skillNotes.wildEmpathyFeature:+%V Diplomacy w/animals',
-        'validationNotes.druidClassAlignment:Requires Alignment =~ Neutral'
+        'validationNotes.druidClassAlignment:Requires Alignment =~ Neutral',
+        'validationNotes.druidClassArmor:' +
+          'Requires Armor =~ None|Hide|Leather|Padded',
+        'validationNotes.druidClassShield:Requires Shield =~ None|Wooden'
       ];
       profArmor = SRD35.PROFICIENCY_MEDIUM;
       profShield = SRD35.PROFICIENCY_HEAVY;
@@ -822,6 +834,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Use ki pool for 1 minute <i>Etherealness</i>',
         'magicNotes.wholenessOfBodyFeature:' +
           'Use ki pool to heal %V damage to self/day',
+        'sanityNotes.monkClassArmor:Requires Armor == None',
+        'sanityNotes.monkClassShield:Requires Shield == None',
         'saveNotes.diamondBodyFeature:Immune to poison',
         'saveNotes.diamondSoulFeature:DC %V spell resistance',
         'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
