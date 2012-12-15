@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.19 2012/12/15 19:09:47 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.20 2012/12/15 22:30:40 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -81,6 +81,17 @@ function Pathfinder() {
   // Override SRD35 feat count computation
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
+
+  // For now, at least, allow direct entry of favored class hit/skill points
+  rules.defineEditorElement
+    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
+  rules.defineEditorElement
+    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
+     'armor');
+  rules.defineRule
+    ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
+  rules.defineRule
+    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
 
 }
 
@@ -264,15 +275,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     /^levels\./, '+=', null
   );
 
-  rules.defineEditorElement
-    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
-  rules.defineEditorElement
-    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
-     'armor');
-  rules.defineRule
-    ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
-  rules.defineRule
-    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
   rules.defineRule
     ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
   rules.defineRule
@@ -761,6 +763,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       hitDie = 10;
       notes = [
         'combatNotes.armorMasteryFeature:DR 5/- when using armor/shield',
+        'combatNotes.armorTrainingFeature:Restore +%V AC Dex bonus',
         'combatNotes.weaponMasteryFeature:' +
           'Critical automatically hits, +1 damage multiplier, no disarm ' +
           'w/chosen weapon',
@@ -786,6 +789,13 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule
+        ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
+      rules.defineRule('combatNotes.armorTrainingFeature',
+        'dexterityModifier', '=', null,
+        'armor', '+', '-SRD35.armorsMaxDexBonuses[source]',
+        'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)'
+      );
+      rules.defineRule
         ('damageReduction.All', 'combatNotes.armorMasteryFeature', '+=', '5');
       rules.defineRule('featCount.Combat',
         'levels.Fighter', '=', '1 + Math.floor(source / 2)'
@@ -794,7 +804,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Fighter', '=', 'Math.floor((source + 2) / 4)'
       );
       rules.defineRule('skillNotes.armorSkillCheckPenalty',
-        'skillNotes.armorTrainingFeature', '+', null
+        'skillNotes.armorTrainingFeature', '+', '-source'
       );
       rules.defineRule('skillNotes.armorTrainingFeature',
         'levels.Fighter', '=', 'Math.floor((source + 1) / 4)'
@@ -1352,8 +1362,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('featCount.General', 'features.Feat Bonus', '+=', 'null');
       rules.defineRule
         ('features.Weapon Finesse', 'features.Finesse Rogue', '=', '1');
-      rules.defineRule
-        ('featCount.Combat', 'features.Weapon Training', '+=', '1');
       rules.defineRule
         ('magicNotes.majorMagicFeature', 'levels.Rogue', '=', null);
       rules.defineRule
@@ -4238,8 +4246,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       notes = [
         'featureNotes.elfBloodFeature:Elf and human for racial effects',
         'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
-        'featureNotes.multitalentedFeature:' +
-          '+1 hit point or skill point per level of favored class',
+        'featureNotes.multitalentedFeature:Two favored classes',
         'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
         'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
         'skillNotes.adaptabilityFeature:Skill Focus bonus feat',
