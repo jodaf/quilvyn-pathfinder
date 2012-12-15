@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.18 2012/09/01 05:33:50 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.19 2012/12/15 19:09:47 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -77,6 +77,10 @@ function Pathfinder() {
   rules.ruleNotes = Pathfinder.ruleNotes;
   Scribe.addRuleSet(rules);
   Pathfinder.rules = rules;
+
+  // Override SRD35 feat count computation
+  rules.defineRule
+    ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
 
 }
 
@@ -259,6 +263,20 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     'level', '+=', '-source',
     /^levels\./, '+=', null
   );
+
+  rules.defineEditorElement
+    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
+  rules.defineEditorElement
+    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
+     'armor');
+  rules.defineRule
+    ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
+  rules.defineRule
+    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
+  rules.defineRule
+    ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
+  rules.defineRule
+    ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
 
   for(var i = 0; i < classes.length; i++) {
 
@@ -1053,8 +1071,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Paladin', '=', 'source >= 5 ? 1 : null'
       );
 
+      rules.defineRule('animalCompanionPaladinLevel',
+        'selectableFeatures.Divine Mount', '?', null,
+        'levels.Paladin', '=', 'source >= 5 ? source : null'
+      );
       rules.defineRule('animalCompanionMasterLevel',
-        'levels.Paladin', '+=', 'Math.floor((source + 3) / 3)'
+        'animalCompanionPaladinLevel', '+=', null
       );
 
       spellAbility = 'charisma';
@@ -1074,23 +1096,21 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       feats = null;
       features = [
         '1:Favored Enemy', '1:Track', '1:Wild Empathy', '3:Endurance',
-        '3:Favored Terrain', '4:Hunter\'s Bond', '7:Woodland Stride',
-        '8:Swift Tracker', '9:Evasion', '11:Quarry', '12:Camouflage',
-        '16:Improved Evasion', '17:Hide In Plain Sight', '19:Improved Quarry',
-        '20:Master Hunter'
+        '3:Favored Terrain', '7:Woodland Stride', '8:Swift Tracker',
+        '9:Evasion', '11:Quarry', '12:Camouflage', '16:Improved Evasion',
+        '17:Hide In Plain Sight', '19:Improved Quarry', '20:Master Hunter'
       ];
       hitDie = 10;
       notes = [
         'combatNotes.favoredEnemyFeature:' +
           '+2 or more attack/damage vs. %V type(s) of creatures',
         'combatNotes.favoredTerrainFeature:+2 initiative in %V terrain type(s)',
-        'combatNotes.hunter\'sBondFeature:' +
-          'half favored enemy bonus to allies w/in 30 ft for %V rounds',
+        'combatNotes.companionBondFeature:' +
+          'Half favored enemy bonus to allies w/in 30 ft for %V rounds',
         'combatNotes.masterHunterFeature:' +
           'Full attack vs. favored enemy requires DC %V Fortitude save or die',
         'combatNotes.quarryFeature:+%V attack/automatic critical vs. target',
-        'featureNotes.hunter\'sBondFeature:' +
-          'Animal companion w/special bond/abilities',
+        'featureNotes.animalCompanionFeature:Special bond/abilities',
         'featureNotes.woodlandStrideFeature:' +
           'Normal movement through undergrowth',
         'saveNotes.enduranceFeature:+4 extended physical action',
@@ -1148,8 +1168,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       saveReflex = SRD35.SAVE_BONUS_GOOD;
       saveWill = SRD35.SAVE_BONUS_POOR;
       selectableFeatures = [
-        'Combat Style (Archery)', 'Combat Style (Two-Weapon Combat)',
-        'Far Shot', 'Point Blank Shot', 'Precise Shot', 'Rapid Shot',
+        'Animal Companion', 'Combat Style (Archery)',
+        'Combat Style (Two-Weapon Combat)', 'Companion Bond', 'Far Shot',
+        'Point Blank Shot', 'Precise Shot', 'Rapid Shot',
         'Improved Precise Shot', 'Manyshot', 'Pinpoint Targeting',
         'Shot On The Run', 'Double Slice', 'Improved Shield Bash',
         'Quick Draw', 'Two-Weapon Fighting', 'Improved Two-Weapon Fighting',
@@ -1182,7 +1203,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Ranger', '+=', '1 + Math.floor((source + 2) / 5)'
       );
       rules.defineRule
-        ('combatNotes.hunter\'sBondFeature', 'wisdomModifier', '=', null);
+        ('combatNotes.companionBondFeature', 'wisdomModifier', '=', null);
       rules.defineRule('combatNotes.masterHunterFeature',
         'levels.Ranger', '=', 'Math.floor(source / 2)',
         'wisdomModifier', '+', null
@@ -1192,7 +1213,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'features.Improved Quarry', '^', '4'
       );
       rules.defineRule('selectableFeatureCount.Ranger',
-        'levels.Ranger', '=', 'source >= 2 ? 1 : null'
+        'levels.Ranger', '=',
+        'source >= 2 ? Math.floor((source+6) / 4) + (source>=4 ? 1 : 0) : null'
       );
       rules.defineRule('skillNotes.favoredEnemyFeature',
         'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
@@ -1212,8 +1234,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'charismaModifier', '+', null
       );
 
+      rules.defineRule('animalCompanionRangerLevel',
+        'selectableFeatures.Animal Companion', '?', null,
+        'levels.Ranger', '+=', 'source >= 4 ? source - 3 : null'
+      );
       rules.defineRule('animalCompanionMasterLevel',
-        'levels.Ranger', '+=', 'source<4 ? null : Math.floor(source / 3)'
+        'animalCompanionRangerLevel', '+=', null
       );
 
     } else if(klass == 'Rogue') {
@@ -2267,6 +2293,41 @@ Pathfinder.companionRules = function(rules, companions) {
   // Override SRD35 animal companion HD progression
   rules.defineRule('animalCompanionStats.hitDice',
     'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1) / 4)'
+  );
+  // Add features not found in SRD35
+  notes = [
+    'animalCompanionStats.bab:+%V',
+    'animalCompanionStats.fort:+%V',
+    'animalCompanionStats.ref:+%V',
+    'animalCompanionStats.will:+%V',
+    'animalCompanionStats.skills:%V',
+    'animalCompanionStats.feats:%V'
+  ];
+  rules.defineNote(notes);
+  rules.defineRule('animalCompanionStats.bab',
+    'animalCompanionMasterLevel', '=',
+    'Math.floor((source + 2) / 2) + ' +
+    '(source == 9 ? 1 : source < 13 ? 0 : source == 16 ? 0 : 1)'
+  );
+  rules.defineRule('animalCompanionStats.feats',
+    'animalCompanionMasterLevel', '=',
+    'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
+    'Math.floor((source + 4) / 3)'
+  );
+  rules.defineRule('animalCompanionStats.fort',
+    'animalCompanionMasterLevel', '=',
+    'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
+  );
+  rules.defineRule('animalCompanionStats.ref',
+    'animalCompanionMasterLevel', '=',
+    'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
+  );
+  rules.defineRule('animalCompanionStats.will',
+    'animalCompanionMasterLevel', '=', 'Math.floor((source + 2) / 4)'
+  );
+  rules.defineRule('animalCompanionStats.skills',
+    'animalCompanionMasterLevel', '=',
+    'source + 1 - Math.floor((source + 1) / 4)'
   );
 };
 
@@ -3573,12 +3634,13 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.speakWithAnimalsFeature:' +
           '<i>Speak With Animals</i> %V rounds/day'
       ];
-      rules.defineRule('animalClericLevel',
+      rules.defineRule('animalCompanionClericLevel',
         'domains.Animal', '?', null,
-        'levels.Cleric', '=', null
+        'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
       );
-      rules.defineRule
-        ('animalCompanionMasterLevel', 'animalClericLevel', '=', 'source - 3');
+      rules.defineRule('animalCompanionMasterLevel',
+        'animalCompanionClericLevel', '=', null
+      );
       rules.defineRule('magicNotes.speakWithAnimalsFeature',
         'levels.Cleric', '=', 'source + 3'
       );
@@ -4181,7 +4243,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
         'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
         'skillNotes.adaptabilityFeature:Skill Focus bonus feat',
-        'skillNotes.keenSensesFeature:+2 Perception'
+        'skillNotes.keenSensesFeature:+2 Perception',
+        'validationNotes.adaptabilityFeatureFeats:Requires Skill Focus'
       ];
       rules.defineRule
         ('featCount.General', 'skillNotes.adaptabilityFeature', '+', '1');
@@ -4194,6 +4257,11 @@ Pathfinder.raceRules = function(rules, languages, races) {
       );
       rules.defineRule
         ('languages.Elven', 'race', '=', 'source.match(/Elf/) ? 1 : null');
+      rules.defineRule('validationNotes.adaptabilityFeatureFeats',
+        'features.Adaptability', '=', '-1',
+        /feats.Skill Focus/, '+', '1',
+        '', 'v', '0'
+      );
 
     } else if(race == 'Half Orc') {
 
