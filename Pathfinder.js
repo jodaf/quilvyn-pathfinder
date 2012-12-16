@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.20 2012/12/15 22:30:40 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.21 2012/12/16 04:05:04 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -507,7 +507,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.loreMasterFeature:' +
           'Take 10 on any ranked Knowledge skill, take 20 %V/day',
         'skillNotes.versatilePerformanceFeature:' +
-          'Substitute Perform ranking for other skills'
+          'Substitute Perform ranking for associated skills'
       ];
       profArmor = SRD35.PROFICIENCY_LIGHT;
       profShield = SRD35.PROFICIENCY_HEAVY;
@@ -1284,6 +1284,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'All foes flat-footed during surprise round',
         'combatNotes.uncannyDodgeFeature:' +
           'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
+        'featNotes.rogueWeaponTrainingFeature:Add Weapon Focus feat',
         'magicNotes.dispellingAttackFeature:' +
           'Sneak attack acts as <i>Dispel Magic</i> on target',
         'magicNotes.majorMagicFeature:Cast W1 spell at level %V DC %1 2/day',
@@ -1313,6 +1314,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
            'Requires Minor Magic',
         'validationNotes.opportunistSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
+        'validationNotes.rogueWeaponTrainingFeatureFeat:Requires Weapon Focus',
         'validationNotes.skillMasterySelectableFeatureLevels:' +
            'Requires Rogue >= 10',
         'validationNotes.slipperyMindSelectableFeatureLevels:' +
@@ -1337,7 +1339,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Bleeding Attack', 'Combat Trick', 'Fast Stealth', 'Finesse Rogue',
         'Ledge Walker', 'Major Magic', 'Minor Magic', 'Quick Disable',
         'Resiliency', 'Rogue Crawl', 'Slow Reactions', 'Stand Up',
-        'Surprise Attack', 'Trap Spotter', 'Weapon Training',
+        'Surprise Attack', 'Trap Spotter', 'Rogue Weapon Training',
         'Crippling Strike', 'Defensive Roll', 'Dispelling Attack',
         'Feat Bonus', 'Improved Evasion', 'Opportunist', 'Skill Mastery',
         'Slippery Mind'
@@ -1357,7 +1359,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('combatNotes.sneakAttackFeature',
         'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
       );
-      rules.defineRule('featCount.Combat', 'features.Combat Trick', '+=', '1');
+      rules.defineRule('featCount.Combat',
+        'features.Combat Trick', '+=', '1',
+        'features.Rogue Weapon Training', '+=', '1'
+      );
       rules.defineRule
         ('featCount.General', 'features.Feat Bonus', '+=', 'null');
       rules.defineRule
@@ -1382,6 +1387,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('saveNotes.trapSenseFeature',
         'levels.Rogue', '+=', 'Math.floor(source / 3)'
+      );
+      rules.defineRule('validationNotes.rogueWeaponTrainingFeatureFeats',
+        'features.Rogue Weapon Training', '=', '-1',
+        /feats.Weapon Focus/, '+', '1',
+        '', 'v', '0'
       );
 
     } else if(klass == 'Sorcerer') {
@@ -2273,16 +2283,12 @@ Pathfinder.combatRules = function(rules) {
   SRD35.combatRules(rules);
   rules.defineRule('combatManeuverBonus',
     'baseAttack', '=', null,
-    'strengthModifier', '+', null,
-    'features.Small', '+', '-1',
-    'features.Large', '+', '1'
+    'strengthModifier', '+', null
   );
   rules.defineRule('combatManeuverDefense',
     'baseAttack', '=', null,
     'strengthModifier', '+', null,
-    'dexterityModifier', '+', null,
-    'features.Small', '+', '-1',
-    'features.Large', '+', '1'
+    'dexterityModifier', '+', null
   );
   rules.defineSheetElement(
     'CombatManeuver', 'CombatStats/',
@@ -2409,8 +2415,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Agile Maneuvers') {
       notes = [
-        'combatNotes.agileManeuversFeature:+%V CMD (dex instead of str)',
-          'Combat maneuver bonus uses dexterity instead of strength',
+        'combatNotes.agileManeuversFeature:+%V CMB (dex instead of str)',
         'sanityNotes.agileManeuversFeatAbility:' +
           'Requires Dexterity Modifier exceed Strength Modifier'
       ];
@@ -2418,7 +2423,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'dexterityModifier', '=', null,
         'strengthModifier', '+', '-source'
       );
-      rules.defineRule('cmd', 'combatNotes.agileManeuversFeature', '+', null);
+      rules.defineRule
+        ('combatManeuverBonus', 'combatNotes.agileManeuversFeature', '+', null);
       rules.defineRule('sanityNotes.agileManeuversFeatAbility',
         'feats.Agile Maneuvers', '=', '-1',
         'dexterityModifier', '+', 'source',
@@ -2668,8 +2674,9 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'level', '=', null,
         'baseAttack', '+', '-source'
       );
-      rules.defineRule
-        ('cmd', 'combatNotes.defensiveCombatTrainingFeature', '+', null);
+      rules.defineRule('combatManeuverDefense',
+        'combatNotes.defensiveCombatTrainingFeature', '+', null
+      );
     // } else if(feat == 'Deflect Arrows') { // as SRD35
     } else if(feat == 'Deft Hands') {
       notes = [
@@ -4366,7 +4373,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
       ];
 
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
-      rules.defineRule('baseAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('combatManeuverBonus', 'combatNotes.smallFeature', '+', '-1');
       rules.defineRule
@@ -4386,6 +4392,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
         '<i>Speak With Animals</i>"'
       );
       rules.defineRule('magicNotes.naturalSpellsFeature.1', 'level', '=', null);
+      rules.defineRule('meleeAttack', 'combatNotes.smallFeature', '+', '1');
+      rules.defineRule('rangedAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('resistance.Illusion', 'saveNotes.resistIllusionFeature', '+=', '2');
       rules.defineRule('speed', 'features.Slow', '+', '-10');
@@ -4406,7 +4414,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'skillNotes.sure-FootedFeature:+2 Acrobatics/Climb'
       ];
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
-      rules.defineRule('baseAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('combatManeuverBonus', 'combatNotes.smallFeature', '+', '-1');
       rules.defineRule
@@ -4414,6 +4421,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
       rules.defineRule('languages.Halfling',
         'race', '=', 'source.match(/Halfling/) ? 1 : null'
       );
+      rules.defineRule('meleeAttack', 'combatNotes.smallFeature', '+', '1');
+      rules.defineRule('rangedAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('resistance.Fear', 'saveNotes.fearlessFeature', '+=', '2');
       rules.defineRule
