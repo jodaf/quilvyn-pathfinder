@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.21 2012/12/16 04:05:04 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.22 2012/12/31 06:17:13 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -4552,6 +4552,8 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
       );
       rules.defineRule
         ('skillModifier.Heal', 'skillNotes.goodiesHealAdjustment', '+', null);
+    } else if(skill == 'Linguistics') {
+      rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
     }
   }
 
