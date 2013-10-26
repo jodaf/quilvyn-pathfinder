@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.22 2012/12/31 06:17:13 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.23 2013/10/26 18:23:09 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -56,6 +56,7 @@ function Pathfinder() {
     rules, SRD35.LANGUAGES.concat(Pathfinder.LANGUAGES_ADDED), SRD35.RACES
   );
   Pathfinder.classRules(rules, SRD35.CLASSES, Pathfinder.BLOODLINES);
+  Pathfinder.classRules(rules, Pathfinder.PRESTIGE_CLASSES, null);
   Pathfinder.companionRules(rules, Pathfinder.COMPANIONS);
   Pathfinder.skillRules(rules, Pathfinder.SKILLS, Pathfinder.SUBSKILLS);
   Pathfinder.featRules(rules, Pathfinder.FEATS, Pathfinder.SUBFEATS);
@@ -194,6 +195,11 @@ Pathfinder.FEATS = [
   'Widen Spell:Metamagic', 'Wind Stance:Combat'
 ];
 Pathfinder.LANGUAGES_ADDED = ['Aklo'];
+Pathfinder.PRESTIGE_CLASSES = [
+  'Arcane Archer', 'Arcane Trickster', 'Assassin', 'Dragon Disciple',
+  'Duelist', 'Eldritch Knight', 'Loremaster', 'Mystic Theurge',
+  'Pathfinder Chonicler', 'Shadowdancer'
+];
 Pathfinder.SKILLS = [
   'Acrobatics:dex', 'Appraise:int', 'Bluff:cha', 'Climb:str', 'Craft:int',
   'Diplomacy:cha', 'Disable Device:dex/trained', 'Disguise:cha',
@@ -2237,6 +2243,118 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         rules.defineRule
           ('spellsPerDay.W' + j, 'magicNotes.wizardSpecialization', '+', '1');
       }
+
+    } else if(klass == 'Arcane Archer') {
+      // TODO
+    } else if(klass == 'Arcane Trickster') {
+      // TODO
+    } else if(klass == 'Assassin') {
+      // TODO
+    } else if(klass == 'Dragon Disciple') {
+      // TODO
+    } else if(klass == 'Duelist') {
+      // TODO
+    } else if(klass == 'Eldritch Knight') {
+      // TODO
+    } else if(klass == 'Loremaster') {
+      // TODO
+    } else if(klass == 'Mystic Theurge') {
+      // TODO
+    } else if(klass == 'Pathfinder Chronicler') {
+      // TODO
+    } else if(klass == 'Shadowdancer') {
+
+      baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
+      feats = null;
+      features = [
+        '1:Hide In Plain Sight', '2:Darkvision', '2:Evasion',
+        '2:Uncanny Dodge', '3:Shadow Illusion', '3:Summon Shadow',
+        '4:Shadow Call', '4:Shadow Jump', '5:Defensive Roll',
+        '5:Improved Uncanny Dodge', '7:Slippery Mind', '8:Shadow Power',
+        '10:Improved Evasion', '10:Shadow Master'
+      ];
+      notes = [
+        'combatNotes.defensiveRollFeature:' +
+          'DC damage Reflex save vs. lethal blow for half damage',
+        'combatNotes.improvedUncannyDodgeFeature:' +
+          'Flanked only by rogue four levels higher',
+        'combatNotes.shadowMasterFeature:' +
+           'DR 10/-, critical hit blinds for d6 rounds in dim light',
+        'combatNotes.uncannyDodgeFeature:' +
+          'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
+        'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
+        'magicNotes.shadowCallFeature:DC %V <i>Shadow Conjuration</i> %1/day',
+        'magicNotes.shadowIllusionFeature:DC %V <i>Silent Image</i> %1/day',
+        'magicNotes.shadowJumpFeature:' +
+           '<i>Dimension Door</i> between shadows %V feet/day',
+        'magicNotes.shadowPowerFeature:DC %V <i>Shadow Evocation</i> %1/day',
+        'magicNotes.summonShadowFeature:' +
+          'Summon unturnable Shadow companion with ' +
+          '%V HP, character attack/save, +4 will vs. channeled energy',
+        'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
+        'saveNotes.improvedEvasionFeature:Failed save yields half damage',
+        'saveNotes.shadowMasterFeature:+2 saves in dim light',
+        'saveNotes.slipperyMindFeature:Second save vs. enchantment',
+        'skillNotes.hideInPlainSightFeature:Hide even when observed',
+        'validationNotes.shadowdancerClassFeatures:' +
+          'Requires Combat Reflexes/Dodge/Mobility',
+        'validationNotes.shadowdancerClassSkills:' +
+          'Requires Stealth >= 5/Perform (Dance) >= 2'
+      ];
+      hitDie = 8;
+      profArmor = SRD35.PROFICIENCY_LIGHT;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      skillPoints = 6;
+      skills = [
+        'Acrobatics', 'Bluff', 'Diplomacy', 'Diguise', 'Escape Artist',
+        'Perception', 'Perform', 'Slight Of Hand', 'Stealth'
+      ];
+      saveFortitude = SRD35.SAVE_BONUS_POOR;
+      saveReflex = SRD35.SAVE_BONUS_GOOD;
+      saveWill = SRD35.SAVE_BONUS_POOR;
+      selectableFeatures = [
+        'Bleeding Attack', 'Combat Trick', 'Fast Stealth', 'Finesse Rogue',
+        'Ledge Walker', 'Major Magic', 'Minor Magic', 'Quick Disable',
+        'Resiliency', 'Rogue Crawl', 'Slow Reactions', 'Stand Up',
+        'Surprise Attack', 'Trap Spotter', 'Rogue Weapon Training',
+        'Crippling Strike', 'Defensive Roll', 'Dispelling Attack',
+        'Feat Bonus', 'Improved Evasion', 'Opportunist', 'Skill Mastery',
+        'Slippery Mind'
+      ];
+      spellAbility = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('featureNotes.darkvisionFeature',
+        'shadowdancerFeatures.Darkvision', '+=', '60'
+      );
+      rules.defineRule('magicNotes.shadowCallFeature',
+        'charismaModifier', '=', '14 + source'
+      );
+      rules.defineRule('magicNotes.shadowCallFeature.1',
+        'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 1'
+      );
+      rules.defineRule('magicNotes.shadowIllusionFeature',
+        'charismaModifier', '=', '11 + source'
+      );
+      rules.defineRule('magicNotes.shadowIllusionFeature.1',
+        'levels.Shadowdancer', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.shadowJumpFeature',
+        'levels.Shadowdancer', '=', '40 * Math.pow(2, Math.floor(source/2)-2)'
+      );
+      rules.defineRule('magicNotes.shadowPowerFeature',
+        'charismaModifier', '=', '15 + source'
+      );
+      rules.defineRule('magicNotes.shadowPowerFeature.1',
+        'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 3'
+      );
+      rules.defineRule('magicNotes.summonShadowFeature',
+        'hitPoints', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('selectableFeatureCount.Shadowdancer',
+        'levels.Shadowdancer', '+=', 'Math.floor(source / 3)'
+      );
 
     } else
       continue;
