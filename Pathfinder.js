@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.24 2013/10/27 16:49:43 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.25 2013/10/27 16:59:42 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -879,7 +879,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.slowFallFeature:' +
           'Subtract %V ft from falling damage distance',
         'saveNotes.stillMindFeature:+2 vs. enchantment',
-        'skillNotes.highJumpFeature:Use ki pool for +%V Acrobatics (Jump)',
+        'skillNotes.highJumpFeature:+%V Acrobatics (Jump); ki use for +20',
         'validationNotes.Gorgon\'sFistSelectableFeatureLevels:' +
            'Requires Monk >= 6',
         'validationNotes.improvedBullRushSelectableFeatureLevels:' +
