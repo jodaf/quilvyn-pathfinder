@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.23 2013/10/26 18:23:09 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.24 2013/10/27 16:49:43 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -943,7 +943,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'wisdomModifier', '+', null
       );
       rules.defineRule('combatNotes.stunningFistFeature.1',
-        'levels.Monk', '+=', 'source - Math.floor(source / 4)'
+        'levels.Monk', '+', 'source - Math.floor(source / 4)'
       );
       rules.defineRule('damageReduction.Chaotic',
         'combatNotes.perfectSelfFeature', '+=', '10'
