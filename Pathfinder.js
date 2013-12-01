@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.26 2013/10/27 17:01:58 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.27 2013/12/01 06:40:19 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -798,7 +798,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
       rules.defineRule('combatNotes.armorTrainingFeature',
         'dexterityModifier', '=', null,
-        'armor', '+', '-SRD35.armorsMaxDexBonuses[source]',
+        'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
         'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)'
       );
       rules.defineRule
@@ -929,6 +929,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.monkArmorClassAdjustment', '+', null
       );
       rules.defineRule('combatNotes.monkArmorClassAdjustment',
+        'armor', '?', 'source == "None"',
         'levels.Monk', '+=', 'Math.floor(source / 4)',
         'wisdomModifier', '+', 'source > 0 ? source : null'
       );
