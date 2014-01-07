@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.27 2013/12/01 06:40:19 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.28 2014/01/07 02:57:41 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -1376,12 +1376,14 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('features.Weapon Finesse', 'features.Finesse Rogue', '=', '1');
       rules.defineRule
         ('magicNotes.majorMagicFeature', 'levels.Rogue', '=', null);
-      rules.defineRule
-        ('magicNotes.majorMagicFeature.1', 'intelligenceModifier', '=', null);
+      rules.defineRule('magicNotes.majorMagicFeature.1',
+        'intelligenceModifier', '=', '11 + source'
+      );
       rules.defineRule
         ('magicNotes.minorMagicFeature', 'levels.Rogue', '=', null);
-      rules.defineRule
-        ('magicNotes.minorMagicFeature.1', 'intelligenceModifier', '=', null);
+      rules.defineRule('magicNotes.minorMagicFeature.1',
+        'intelligenceModifier', '=', '10 + source'
+      );
       rules.defineRule('selectableFeatureCount.Rogue',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
       );
@@ -2029,7 +2031,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Divination':
           '1:Forewarned/1:Diviner\'s Fortune/8:Scrying Adept',
         'Enchantment':
-          '1:Enchanting Smile/1:Enchanting Touch/8:Aura Of Despair/' +
+          '1:Dazing Touch/1:Enchanting Smile/8:Aura Of Despair/' +
           '20:Enchantment Reflection',
         'Evocation':
           '1:Intense Spells/1:Force Missile/8:Elemental Wall/' +
@@ -2131,8 +2133,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.auraOfDespairFeature:' +
               'Foes w/in 30 ft -2 ability/attack/damage/save/skill ' +
               '%V rounds/day',
-            'magicNotes.enchantingTouchFeature:' +
-              'Touch attack dazes %V HD foe 1 round %V/day',
+            'magicNotes.dazingTouchFeature:' +
+              'Touch attack dazes %V HD foe 1 round %1/day',
             'saveNotes.enchantmentReflectionFeature:' +
               'Successful save reflects enchantment spells on caster',
             'skillNotes.enchantingSmileFeature:+%V Bluff/Diplomacy/Intimidate'
@@ -2140,10 +2142,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('magicNotes.auraOfDespairFeature',
             schoolLevelAttr, '=', null
           );
-          rules.defineRule('magicNotes.enchantingTouchFeature',
+          rules.defineRule('magicNotes.dazingTouchFeature',
             schoolLevelAttr, '=', null
           );
-          rules.defineRule('magicNotes.enchantingTouchFeature.1',
+          rules.defineRule('magicNotes.dazingTouchFeature.1',
             'intelligenceModifier', '=', 'source + 3'
           );
           rules.defineRule('skillNotes.enchantingSmileFeature',
