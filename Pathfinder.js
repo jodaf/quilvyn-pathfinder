@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.28 2014/01/07 02:57:41 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.29 2014/02/18 01:42:23 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -17,7 +17,7 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
-var PATHFINDER_VERSION = '0.2-20120101';
+var PATHFINDER_VERSION = '0.3-20140217';
 
 /*
  * This module loads the rules from the Pathfinder Core Rulebook.  The
@@ -521,8 +521,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       saveFortitude = SRD35.SAVE_BONUS_POOR;
       saveReflex = SRD35.SAVE_BONUS_GOOD;
       saveWill = SRD35.SAVE_BONUS_GOOD;
-      selectableFeatures = [
-      ];
+      selectableFeatures = null;
       skillPoints = 6;
       skills = [
         'Acrobatics', 'Appraise', 'Bluff', 'Climb', 'Craft', 'Diplomacy',
@@ -1089,7 +1088,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
       rules.defineRule('animalCompanionPaladinLevel',
-        'selectableFeatures.Divine Mount', '?', null,
+        'paladinFeatures.Divine Mount', '?', null,
         'levels.Paladin', '=', 'source >= 5 ? source : null'
       );
       rules.defineRule('animalCompanionMasterLevel',
@@ -1252,7 +1251,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
       rules.defineRule('animalCompanionRangerLevel',
-        'selectableFeatures.Animal Companion', '?', null,
+        'rangerFeatures.Animal Companion', '?', null,
         'levels.Ranger', '+=', 'source >= 4 ? source - 3 : null'
       );
       rules.defineRule('animalCompanionMasterLevel',
@@ -1389,7 +1388,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('skillNotes.skillMasteryFeature',
         'intelligenceModifier', '=', 'source + 3',
-        'selectableFeatures.Skill Mastery', '*', null
+        'rogueFeatures.Skill Mastery', '*', null
       );
       rules.defineRule('skillNotes.trapfindingFeature',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
@@ -1457,8 +1456,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '1:Claws/3:Demon Resistances/9:Strength Of The Abyss/' +
           '15:Added Summonings/20:Demonic Might',
         'Arcane':
-          '1:Arcane Bond/3:Metamagic Adept/9:New Arcana/' +
-          '15:School Power/20:Arcane Apotheosis',
+          '3:Metamagic Adept/9:New Arcana/15:School Power/20:Arcane Apotheosis',
         'Celestial':
           '1:Heavenly Fire/3:Celestial Resistances/9:Wings Of Heaven/' +
           '15:Conviction/20:Ascension',
@@ -1659,7 +1657,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.newArcaneFeature:%V additional spells',
             'magicNotes.schoolPowerFeature:+2 DC on spells from chosen school'
           ]);
-          selectableFeatures.concat(['Bonded Object', 'Familiar']);
+          selectableFeatures.push('Bonded Object', 'Familiar');
           rules.defineRule
             ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
           rules.defineRule('magicNotes.metamagicAdeptFeature',
@@ -2379,9 +2377,13 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     if(selectableFeatures != null) {
       for(var j = 0; j < selectableFeatures.length; j++) {
         var selectable = selectableFeatures[j];
-        rules.defineChoice('selectableFeatures', selectable + ':' + klass);
+        var choice = klass + ' - ' + selectable;
+        rules.defineChoice('selectableFeatures', choice + ':' + klass);
+        rules.defineRule(klass + 'Features.' + selectable,
+          'selectableFeatures.' + choice, '+=', null
+        );
         rules.defineRule('features.' + selectable,
-          'selectableFeatures.' + selectable, '+=', null
+          'selectableFeatures.' + choice, '+=', null
         );
       }
     }
