@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.30 2014/02/18 01:59:23 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.31 2014/02/18 02:03:35 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -103,7 +103,7 @@ Pathfinder.BLOODLINES = [
 ];
 Pathfinder.COMPANIONS = ['Animal Companion', 'Familiar'];
 Pathfinder.DEITIES = [
-  'None:',
+  'None::',
   'Erastil (LG):Longbow:Animal/Community/Good/Law/Plant',
   'Iomedae (LG):Longsword:Glory/Good/Law/Sun/War',
   'Torag (LG):Warhammer:Artifice/Earth/Good/Law/Protection',
