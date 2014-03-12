@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.31 2014/02/18 02:03:35 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.32 2014/03/12 01:55:50 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -1931,7 +1931,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         }
         if(feats != null) {
           rules.defineRule('featCount.' + bloodline,
-            bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 6)'
+            bloodlineLevelAttr, '=',
+            'source >= 7 ? Math.floor((source - 1) / 6) : null'
           );
           for(var k = 0; k < feats.length; k++) {
             feats[k] += ':' + bloodline;
@@ -2007,8 +2008,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule
         ('familiarLevel', 'levels.Wizard', '+=', 'Math.floor(source / 2)');
       rules.defineRule('familiarMasterLevel', 'levels.Wizard', '+=', null);
-      rules.defineRule
-        ('featCount.Wizard', 'levels.Wizard', '=', 'Math.floor(source / 5)');
+      rules.defineRule('featCount.Wizard',
+        'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
+      );
       rules.defineRule('magicNotes.metamagicMasteryFeature',
         'levels.Wizard', '=', 'source>=8 ? Math.floor((source - 6) / 2) : null'
       );
