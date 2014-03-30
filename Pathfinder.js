@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.32 2014/03/12 01:55:50 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.33 2014/03/30 23:38:18 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -470,7 +470,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       features = [
         '1:Bardic Knowledge', '1:Bardic Performance', '1:Countersong',
         '1:Distraction', '1:Fascinate', '1:Inspire Courage',
-        '1:Simple Somatics', '2:Versatile Performance', '2:Well-Versed',
+        '1:Simple Somatics',
+        '1:Weapon Proficiency (Longsword/Rapier/Sap/Short Sword/Showbow/Whip)',
+        '2:Versatile Performance', '2:Well-Versed',
         '3:Inspire Competence', '5:Lore Master', '6:Suggestion',
         '8:Dirge Of Doom', '9:Inspire Greatness', '10:Jack Of All Trades',
         '12:Soothing Performance', '14:Frightening Tune', '15:Inspire Heroics',
@@ -672,6 +674,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       feats = null;
       features = [
         '1:Druid Spontaneous Casting', '1:Nature Sense', '1:Wild Empathy',
+        '1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)',
         '2:Woodland Stride', '3:Trackless Step', '4:Resist Nature\'s Lure',
         '4:Wild Shape', '9:Venom Immunity', '13:Thousand Faces',
         '15:Timeless Body'
@@ -828,7 +831,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
       features = [
         '1:Flurry Of Blows', '1:Two-Weapon Fighting', '1:Stunning Fist',
-        '1:Unarmed Strike', '2:Evasion', '3:Fast Movement',
+        '1:Unarmed Strike',
+        '1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
+        '2:Evasion', '3:Fast Movement',
         '3:Maneuver Training', '3:Still Mind', '4:Ki Pool',
         '4:Magic Ki Strike', '4:Slow Fall', '5:High Jump', '5:Purity Of Body',
         '7:Wholeness Of Body', '8:Improved Two-Weapon Fighting',
@@ -1264,7 +1269,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
       feats = null;
       features = [
-        '1:Sneak Attack', '1:Trapfinding', '2:Evasion', '3:Trap Sense',
+        '1:Sneak Attack', '1:Trapfinding',
+        '1:Weapon Proficiency (Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)',
+        '2:Evasion', '3:Trap Sense',
         '4:Uncanny Dodge', '8:Improved Uncanny Dodge', '20:Master Strike'
       ];
       notes = [
@@ -1953,7 +1960,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         }
       }
       features = [
-        '1:Scribe Scroll', '1:Hand Of The Apprentice', '8:Metamagic Mastery'
+        '1:Scribe Scroll', '1:Hand Of The Apprentice',
+        '1:Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)',
+        '8:Metamagic Mastery'
       ];
       hitDie = 6;
       notes = [
@@ -2271,9 +2280,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
       feats = null;
       features = [
-        '1:Hide In Plain Sight', '2:Darkvision', '2:Evasion',
-        '2:Uncanny Dodge', '3:Shadow Illusion', '3:Summon Shadow',
-        '4:Shadow Call', '4:Shadow Jump', '5:Defensive Roll',
+        '1:Hide In Plain Sight',
+        '1:Weapon Proficiency (Composite Shortbow/Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Mace/Morningstar/Punching Dagger/Quarterstaff/Rapier/Sap/Shortbow/Short Sword)',
+        '2:Darkvision', '2:Evasion', '2:Uncanny Dodge', '3:Shadow Illusion',
+        '3:Summon Shadow', '4:Shadow Call', '4:Shadow Jump', '5:Defensive Roll',
         '5:Improved Uncanny Dodge', '7:Slippery Mind', '8:Shadow Power',
         '10:Improved Evasion', '10:Shadow Master'
       ];
@@ -4406,7 +4416,11 @@ Pathfinder.raceRules = function(rules, languages, races) {
     } else if(race == 'Half Orc') {
 
       adjustment = '+2 any'; // Player's choice
-      features = ['Darkvision', 'Intimidating', 'Orc Blood', 'Orc Ferocity'];
+      features = [
+        'Darkvision', 'Intimidating', 'Orc Blood', 'Orc Ferocity',
+        'Weapon Familiarity (Orc Double Axe)',
+        'Weapon Proficiency (Falchion/Greataxe)'
+      ];
       notes = [
         'combatNotes.orcFerocityFeature:Fight 1 round below zero hit points',
         'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
@@ -4424,7 +4438,9 @@ Pathfinder.raceRules = function(rules, languages, races) {
       adjustment = '+2 constitution/+2 wisdom/-2 charisma';
       features = [
         'Darkvision', 'Defensive Training', 'Dwarf Hatred', 'Greed', 'Hardy',
-        'Slow', 'Steady', 'Stability', 'Stonecunning'
+        'Slow', 'Steady', 'Stability', 'Stonecunning',
+        'Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)',
+        'Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)'
       ];
       notes = [
         'abilityNotes.steadyFeature:No speed penalty in armor',
@@ -4456,7 +4472,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
       adjustment = '+2 dexterity/+2 intelligence/-2 constitution';
       features = [
         'Elven Magic', 'Keen Senses', 'Low-Light Vision', 'Resist Enchantment',
-        'Sleep Immunity'
+        'Sleep Immunity', 'Weapon Familiarity (Elven Curve Blade)',
+        'Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)'
       ];
       notes = [
         'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
@@ -4483,7 +4500,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       features = [
         'Defensive Training', 'Gnome Hatred', 'Gnome Magic', 'Keen Senses',
         'Low-Light Vision', 'Natural Spells', 'Obsessive', 'Resist Illusion',
-        'Slow', 'Small'
+        'Slow', 'Small', 'Weapon Familiarity (Gnome Hooked Hammer)'
       ];
       notes = [
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
@@ -4529,7 +4546,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
       adjustment = '+2 dexterity/+2 charisma/-2 strength';
       features = [
         'Fearless', 'Halfling Luck', 'Keen Senses', 'Slow', 'Small',
-        'Sure-Footed'
+        'Sure-Footed', 'Weapon Familiarity (Halfling Sling Staff)',
+        'Weapon Proficiency (Sling)'
       ];
       notes = [
         'combatNotes.smallFeature:+1 AC/attack, -1 CMD/CMB',
