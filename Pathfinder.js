@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.34 2014/04/06 17:19:14 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.35 2014/04/06 18:47:34 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -293,6 +293,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         profWeapon, saveFortitude, saveReflex, saveWill, selectableFeatures,
         skillPoints, skills, spellAbility, spellsKnown, spellsPerDay;
     var klass = classes[i];
+    var klassNoSpace =
+      klass.substring(0,1).toLowerCase() + klass.substring(1).replace(/ /g, '');
 
     if(klass == 'Barbarian') {
 
@@ -2392,7 +2394,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         var selectable = selectableFeatures[j];
         var choice = klass + ' - ' + selectable;
         rules.defineChoice('selectableFeatures', choice + ':' + klass);
-        rules.defineRule(klass + 'Features.' + selectable,
+        rules.defineRule(klassNoSpace + 'Features.' + selectable,
           'selectableFeatures.' + choice, '+=', null
         );
         rules.defineRule('features.' + selectable,
