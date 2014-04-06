@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.33 2014/03/30 23:38:18 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.34 2014/04/06 17:19:14 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -17,7 +17,7 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
-var PATHFINDER_VERSION = '0.3-20140217';
+var PATHFINDER_VERSION = '1.2beta-20140406';
 
 /*
  * This module loads the rules from the Pathfinder Core Rulebook.  The
