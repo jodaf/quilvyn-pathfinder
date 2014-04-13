@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.35 2014/04/06 18:47:34 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.36 2014/04/13 18:23:54 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -3673,7 +3673,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       'Bless/Shield Other/Prayer/Imbue With Spell Ability/Telepathic Bond/' +
       'Heroes\' Feast/Refuge/Mass Cure Critical Wounds/Miracle',
     'Darkness':
-      'Obscuring Mist/Blindness/Deafness/Deeper Darkness/Shadow Conjuration/' +
+      'Obscuring Mist/Blindness+Deafness/Deeper Darkness/Shadow Conjuration/' +
       'Summon Monster V/Shadow Walk/Power Word Blind/' +
       'Greater Shadow Evocation/Shades',
     'Death':
