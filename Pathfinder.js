@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.36 2014/04/13 18:23:54 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.37 2014/06/29 19:17:00 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -1564,7 +1564,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           var spell = spells[k];
           var school = Pathfinder.spellsSchools[spell].substring(0, 4);
           rules.defineRule(
-            'spells.' + spell + ' (W' + (k+1) + ' ' + school + ')',
+            'spells.' + spell + '(W' + (k+1) + ' ' + school + ')',
             bloodlineLevelAttr, '=', 'source >= ' + (3 + 2 * k) + ' ? 1 : null'
           );
         }
