@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.38 2014/08/03 04:47:03 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.39 2014/08/03 06:18:38 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -2449,7 +2449,7 @@ Pathfinder.companionRules = function(rules, companions) {
     'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1) / 4)'
   );
   // Add features not found in SRD35
-  notes = [
+  var notes = [
     'animalCompanionStats.bab:+%V',
     'animalCompanionStats.fort:+%V',
     'animalCompanionStats.ref:+%V',
@@ -4391,17 +4391,17 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Multitalented', 'Resist Enchantment', 'Sleep Immunity'
       ];
       notes = [
+        'featureNotes.adaptabilityFeature:Skill Focus bonus feat',
         'featureNotes.elfBloodFeature:Elf and human for racial effects',
         'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
         'featureNotes.multitalentedFeature:Two favored classes',
         'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
         'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
-        'skillNotes.adaptabilityFeature:Skill Focus bonus feat',
         'skillNotes.keenSensesFeature:+2 Perception',
         'validationNotes.adaptabilityFeatureFeats:Requires Skill Focus'
       ];
       rules.defineRule
-        ('featCount.General', 'skillNotes.adaptabilityFeature', '+', '1');
+        ('featCount.General', 'featureNotes.adaptabilityFeature', '+', '1');
       rules.defineRule('featureNotes.low-LightVisionFeature',
         '', '=', '1',
         raceNoSpace + 'Features.Low-Light Vision', '+', null
