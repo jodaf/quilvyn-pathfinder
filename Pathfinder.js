@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.40 2014/12/23 14:16:29 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.41 2014/12/23 15:13:51 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -273,11 +273,18 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     'level', '^', null
   );
   rules.defineNote
-    ('validationNotes.levelsTotal:' +
-     'Allocated levels differ from level total by %V');
-  rules.defineRule('validationNotes.levelsTotal',
-    'level', '+=', '-source',
+    ('validationNotes.levelAllocation:%1 available vs. %2 allocated');
+  rules.defineRule('validationNotes.levelAllocation.1',
+    '', '=', '0',
+    'level', '=', null
+  );
+  rules.defineRule('validationNotes.levelAllocation.2',
+    '', '=', '0',
     /^levels\./, '+=', null
+  );
+  rules.defineRule('validationNotes.levelAllocation',
+    'validationNotes.levelAllocation.1', '=', '-source',
+    'validationNotes.levelAllocation.2', '+=', null
   );
 
   rules.defineRule
@@ -2398,12 +2405,18 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
   }
 
   rules.defineNote
-    ('validationNotes.selectableFeaturesTotal:' +
-     'Allocated selectable features differ from selectable features count ' +
-     'total by %V');
-  rules.defineRule('validationNotes.selectableFeaturesTotal',
-    /^selectableFeatureCount\./, '+=', '-source',
-    /^selectableFeatures\./, '+=', 'source'
+    ('validationNotes.selectableFeatureAllocation:%1 available vs. %2 allocated');
+  rules.defineRule('validationNotes.selectableFeatureAllocation.1',
+    '', '=', '0',
+    /^selectableFeatureCount\./, '+=', null
+  );
+  rules.defineRule('validationNotes.selectableFeatureAllocation.2',
+    '', '=', '0',
+    /^selectableFeatures\./, '+=', null
+  );
+  rules.defineRule('validationNotes.selectableFeatureAllocation',
+    'validationNotes.selectableFeatureAllocation.1', '=', '-source',
+    'validationNotes.selectableFeatureAllocation.2', '+=', null
   );
 
 };
@@ -4363,11 +4376,18 @@ Pathfinder.raceRules = function(rules, languages, races) {
     'race', '=', 'source.match(/Gnome/) ? 3 : source.match(/Human/) ? 1 : 2'
   );
   rules.defineNote
-    ('validationNotes.languagesTotal:Allocated languages differ from ' +
-     'language total by %V');
-  rules.defineRule('validationNotes.languagesTotal',
-    'languageCount', '+=', '-source',
+    ('validationNotes.languageAllocation:%1 available vs. %2 allocated');
+  rules.defineRule('validationNotes.languageAllocation.1',
+    '', '=', '0',
+    'languageCount', '+=', null
+  );
+  rules.defineRule('validationNotes.languageAllocation.2',
+    '', '=', '0',
     /^languages\./, '+=', null
+  );
+  rules.defineRule('validationNotes.languageAllocation',
+    'validationNotes.languageAllocation.1', '=', '-source',
+    'validationNotes.languageAllocation.2', '+=', null
   );
 
   for(var i = 0; i < races.length; i++) {
@@ -4620,8 +4640,7 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
     'skillNotes.armorSkillCheckPenalty:-%V dex- and str-based skills',
     'validationNotes.skillMaximum:' +
       'Points allocated to one or more skills exceed max',
-    'validationNotes.skillsTotal:' +
-      'Allocated skill points differ from skill point total by %V'
+    'validationNotes.skillAllocation:%1 available vs. %2 allocated'
   );
   rules.defineRule('maxAllowedSkillPoints', 'level', '=', null);
   rules.defineRule('maxAllocatedSkillPoints', /^skills\./, '^=', null);
@@ -4640,9 +4659,17 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
     'maxAllowedSkillPoints', '+', 'source',
     '', 'v', '0'
   );
-  rules.defineRule('validationNotes.skillsTotal',
-    'skillPoints', '+=', '-source',
+  rules.defineRule('validationNotes.skillAllocation.1',
+    '', '=', '0',
+    'skillPoints', '=', null
+  );
+  rules.defineRule('validationNotes.skillAllocation.2',
+    '', '=', '0',
     /^skills\./, '+=', null
+  );
+  rules.defineRule('validationNotes.skillAllocation',
+    'validationNotes.skillAllocation.1', '=', '-source',
+    'validationNotes.skillAllocation.2', '+', null
   );
 
   var abilityNames = {
