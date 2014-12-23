@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.39 2014/08/03 06:18:38 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.40 2014/12/23 14:16:29 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -80,10 +80,6 @@ function Pathfinder() {
   rules.ruleNotes = Pathfinder.ruleNotes;
   Scribe.addRuleSet(rules);
   Pathfinder.rules = rules;
-
-  // Override SRD35 feat count computation
-  rules.defineRule
-    ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
 
   // For now, at least, allow direct entry of favored class hit/skill points
   rules.defineEditorElement
@@ -1305,8 +1301,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'featNotes.rogueWeaponTrainingFeature:Add Weapon Focus feat',
         'magicNotes.dispellingAttackFeature:' +
           'Sneak attack acts as <i>Dispel Magic</i> on target',
-        'magicNotes.majorMagicFeature:Cast W1 spell at level %V DC %1 2/day',
-        'magicNotes.minorMagicFeature:Cast W0 spell at level %V DC %1 3/day',
+        'magicNotes.majorMagicFeature:Cast W1 spell at level %V 2/day',
+        'magicNotes.minorMagicFeature:Cast W0 spell at level %V 3/day',
         'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
         'saveNotes.improvedEvasionFeature:Failed save yields half damage',
         'saveNotes.slipperyMindFeature:Second save vs. enchantment',
@@ -1362,7 +1358,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Feat Bonus', 'Improved Evasion', 'Opportunist', 'Skill Mastery',
         'Slippery Mind'
       ];
-      spellAbility = null;
+      spellAbility = 'intelligence';
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule('combatNotes.masterStrikeFeature',
@@ -1387,14 +1383,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('features.Weapon Finesse', 'features.Finesse Rogue', '=', '1');
       rules.defineRule
         ('magicNotes.majorMagicFeature', 'levels.Rogue', '=', null);
-      rules.defineRule('magicNotes.majorMagicFeature.1',
-        'intelligenceModifier', '=', '11 + source'
-      );
       rules.defineRule
         ('magicNotes.minorMagicFeature', 'levels.Rogue', '=', null);
-      rules.defineRule('magicNotes.minorMagicFeature.1',
-        'intelligenceModifier', '=', '10 + source'
-      );
       rules.defineRule('selectableFeatureCount.Rogue',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
       );
@@ -3571,6 +3561,10 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       rules.defineNote(notes);
 
   }
+
+  // Override SRD35 feat count computation
+  rules.defineRule
+    ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
 
 };
 
