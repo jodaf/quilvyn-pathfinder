@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.41 2014/12/23 15:13:51 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.42 2015/02/21 21:16:41 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -92,6 +92,12 @@ function Pathfinder() {
   rules.defineRule
     ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
 
+  rules.defineChoice('factions', Pathfinder.FACTIONS);
+  rules.defineChoice('random', 'faction');
+  rules.defineEditorElement
+    ('faction', 'Faction', 'select-one', 'factions', 'levels');
+  rules.defineSheetElement('Faction', 'Alignment');
+
 }
 
 // Arrays of choices
@@ -126,6 +132,10 @@ Pathfinder.DEITIES = [
 Pathfinder.DOMAINS_ADDED = [
   'Artifice', 'Charm', 'Community', 'Darkness', 'Glory', 'Liberation',
   'Madness', 'Nobility', 'Repose', 'Rune', 'Weather'
+];
+Pathfinder.FACTIONS = [
+  'Andoran', 'Cheliax', 'The Grand Lodge', 'Osirion', 'Qadira', 'The Sczarni',
+  'The Silver Crusade', 'Taldor'
 ];
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
