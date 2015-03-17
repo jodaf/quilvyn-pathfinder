@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.42 2015/02/21 21:16:41 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.43 2015/03/17 04:22:46 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -226,6 +226,36 @@ Pathfinder.SUBFEATS = {
 };
 Pathfinder.SUBSKILLS = {
 };
+Pathfinder.TRAITS = [
+  'Adopted:Social', 'Anatomist:Combat', 'Animal Friend:Gnome',
+  'Apothecary:Campaign', 'Armor Expert:Combat', 'Birthmark:Faith',
+  'Bitter Nobleman:Campaign', 'Brute:Half-Orc', 'Bullied:Combat',
+  'Bully:Social', 'Canter:Social', 'Caretaker:Faith',
+  'Charming:Social', 'Child of Nature:N', 'Child of the Streets:Social',
+  'Child Of the Temple:Faith', 'Classically Schooled:Magic', 'Corageous:Combat',
+  'Dangerously Curious:Magic', 'Deft Dodger:Combat', 'Demon Hunter:Asmodeus',
+  'Desert Child:Regional', 'Devotee Of the Green:Faith', 'Dirty Fighter:Combat',
+  'Divine Courtesan:Calistria', 'Divine Warrior:Iomedae', 'Ear For Music:Shelyn',
+  'Ease Of Faith:Faith', 'Elven Reflexes:Half-Elf', 'Exile:Campaign',
+  'Eyes And Ears Of The City:Abadar', 'Failed Apprentice:Half-Elf', 'Fast-Talker:Social',
+  'Fencer:Combat', 'Flame Of The Dawnflower:Sarenrae', 'Focused Mind:Magic',
+  'Forlorn:Elf', 'Fortified Drinker:Cayden Cailean', 'Freedom Fighter:Halfling',
+  'Gifted Adept:Magic', 'Goldsniffer:Dwarf', 'Guardian Of The Forge:Torag',
+  'Hedge Magician:Magic', 'Highlander:Regional', 'History Of Heresy:Faith',
+  'Indomitable Faith:Faith', 'Killer:Combat', 'Log Roller:Regional',
+  'Lore Seeker:Campaign', 'Magic Is Life:Nethys', 'Magical Knack:Magic',
+  'Magical Lineage:Magic', 'Magical Talent:Magic', 'Mathematical Prodigy:Magic',
+  'Militia Veteran:Regional', 'Missionary:Campaign', 'Natural-Born Leader:Social',
+  'Outcast:Half-Orc', 'Patient Optimist:Erastil', 'Poverty-Stricken:Social',
+  'Rapscallion:Gnome', 'Reactionary:Combat', 'Resilient:Combat',
+  'Rich Parents:Social', 'River Rat:Regional', 'Sacred Conduit:Faith',
+  'Sacred Touch:Faith', 'Savanna Child:Regional', 'Scholar of Ruins:Human',
+  'Scholar Of The Great Beyond:Faith', 'Sherrif:Campaign', 'Skeptic:Magic',
+  'Starchild:Desna', 'Suspicious:Social', 'Tavern Owner:Campaign',
+  'Tunnel Fighter:Dwarf', 'Undead Slayer:Pharasma', 'Vagabond Child:Regional',
+  'Veteran Of Battle:Gorum', 'Warrior Of Old:Elf', 'Well-Informed:Halfling',
+  'Wisdom In The Flesh:Irori', 'World Traveler:Human'
+];
 Pathfinder.WEAPONS_ADDED = [
   'Blowgun:d2r20',
   'Elven Curve Blade:d10@18',
@@ -4737,3 +4767,207 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
   }
 
 };
+
+/* Defines the rules related to (optional) character traits. */
+Pathfinder.traitRules = function(rules, traits) {
+
+  for(var i = 0; i < traits.length; i++) {
+
+    var pieces = traits[i].split(':');
+    var trait = pieces[0];
+    var matchInfo;
+    var notes = null;
+
+    if(trait == 'Adopted') {
+      notes = ['featureNotes.adoptedFeature:Family race traits available'];
+    } else if(trait == 'Anatomist') {
+      notes = ['combatNotes.anatomistFeature:+1 critical hit rolls'];
+    } else if(trait == 'Adopted') {
+      // TODO
+    } else if(trait == 'Anatomist') {
+      // TODO
+    } else if(trait == 'Animal Friend') {
+      // TODO
+    } else if(trait == 'Apothecary') {
+      // TODO
+    } else if(trait == 'Armor Expert') {
+      // TODO
+    } else if(trait == 'Birthmark') {
+      // TODO
+    } else if(trait == 'Bitter Nobleman') {
+      // TODO
+    } else if(trait == 'Brute') {
+      // TODO
+    } else if(trait == 'Bullied') {
+      // TODO
+    } else if(trait == 'Bully') {
+      // TODO
+    } else if(trait == 'Canter') {
+      // TODO
+    } else if(trait == 'Caretaker') {
+      // TODO
+    } else if(trait == 'Charming') {
+      // TODO
+    } else if(trait == 'Child of Nature') {
+      // TODO
+    } else if(trait == 'Child of the Streets') {
+      // TODO
+    } else if(trait == 'Child Of the Temple') {
+      // TODO
+    } else if(trait == 'Classically Schooled') {
+      // TODO
+    } else if(trait == 'Corageous') {
+      // TODO
+    } else if(trait == 'Dangerously Curious') {
+      // TODO
+    } else if(trait == 'Deft Dodger') {
+      // TODO
+    } else if(trait == 'Demon Hunter') {
+      // TODO
+    } else if(trait == 'Desert Child') {
+      notes = [
+        'saveNotes.desertChildFeature:+4 heat stamina; +1 vs. fire effects'
+      ];
+    } else if(trait == 'Devotee Of the Green') {
+      // TODO
+    } else if(trait == 'Dirty Fighter') {
+      // TODO
+    } else if(trait == 'Divine Courtesan') {
+      // TODO
+    } else if(trait == 'Divine Warrior') {
+      // TODO
+    } else if(trait == 'Ear For Music') {
+      // TODO
+    } else if(trait == 'Ease Of Faith') {
+      // TODO
+    } else if(trait == 'Elven Reflexes') {
+      notes = [
+        'combatNotes.elvenReflexesFeature:+2 Initiative'
+      ];
+      rules.defineRule
+        ('initiative', 'combatNotes.elvenReflexesFeature', '+', '2');
+    } else if(trait == 'Exile') {
+      // TODO
+    } else if(trait == 'Eyes And Ears Of The City') {
+      // TODO
+    } else if(trait == 'Failed Apprentice') {
+      // TODO
+    } else if(trait == 'Fast-Talker') {
+      // TODO
+    } else if(trait == 'Fencer') {
+      // TODO
+    } else if(trait == 'Flame Of The Dawnflower') {
+      notes = [
+        'combatNotes.flameOfTheDawnflowerFeature:+2 damage w/scimitar critical hit'
+      ];
+    } else if(trait == 'Focused Mind') {
+      // TODO
+    } else if(trait == 'Forlorn') {
+      // TODO
+    } else if(trait == 'Fortified Drinker') {
+      // TODO
+    } else if(trait == 'Freedom Fighter') {
+      // TODO
+    } else if(trait == 'Gifted Adept') {
+      notes = [
+        'magicNotes.giftedAdeptFeature:Cast selected spell at +1 caster level'
+      ];
+    } else if(trait == 'Goldsniffer') {
+      // TODO
+    } else if(trait == 'Guardian Of The Forge') {
+      // TODO
+    } else if(trait == 'Hedge Magician') {
+      // TODO
+    } else if(trait == 'Highlander') {
+      // TODO
+    } else if(trait == 'History Of Heresy') {
+      // TODO
+    } else if(trait == 'Indomitable Faith') {
+      // TODO
+    } else if(trait == 'Killer') {
+      // TODO
+    } else if(trait == 'Log Roller') {
+      // TODO
+    } else if(trait == 'Lore Seeker') {
+      // TODO
+    } else if(trait == 'Magic Is Life') {
+      // TODO
+    } else if(trait == 'Magical Knack') {
+      // TODO
+    } else if(trait == 'Magical Lineage') {
+      // TODO
+    } else if(trait == 'Magical Talent') {
+      // TODO
+    } else if(trait == 'Mathematical Prodigy') {
+      // TODO
+    } else if(trait == 'Militia Veteran') {
+      // TODO
+    } else if(trait == 'Missionary') {
+      // TODO
+    } else if(trait == 'Natural-Born Leader') {
+      // TODO
+    } else if(trait == 'Outcast') {
+      // TODO
+    } else if(trait == 'Patient Optimist') {
+      // TODO
+    } else if(trait == 'Poverty-Stricken') {
+      // TODO
+    } else if(trait == 'Rapscallion') {
+      // TODO
+    } else if(trait == 'Reactionary') {
+      // TODO
+    } else if(trait == 'Resilient') {
+      // TODO
+    } else if(trait == 'Rich Parents') {
+      // TODO
+    } else if(trait == 'River Rat') {
+      // TODO
+    } else if(trait == 'Sacred Conduit') {
+      // TODO
+    } else if(trait == 'Sacred Touch') {
+      // TODO
+    } else if(trait == 'Savanna Child') {
+      // TODO
+    } else if(trait == 'Scholar of Ruins') {
+      // TODO
+    } else if(trait == 'Scholar Of The Great Beyond') {
+      // TODO
+    } else if(trait == 'Sherrif') {
+      // TODO
+    } else if(trait == 'Skeptic') {
+      // TODO
+    } else if(trait == 'Starchild') {
+      // TODO
+    } else if(trait == 'Suspicious') {
+      // TODO
+    } else if(trait == 'Tavern Owner') {
+      // TODO
+    } else if(trait == 'Tunnel Fighter') {
+      // TODO
+    } else if(trait == 'Undead Slayer') {
+      // TODO
+    } else if(trait == 'Vagabond Child') {
+      // TODO
+    } else if(trait == 'Veteran Of Battle') {
+      // TODO
+    } else if(trait == 'Warrior Of Old') {
+      // TODO
+    } else if(trait == 'Well-Informed') {
+      // TODO
+    } else if(trait == 'Wisdom In The Flesh') {
+      // TODO
+    } else if(trait == 'World Traveler') {
+      // TODO
+    }
+
+    rules.defineChoice('traits', trait + ':' + pieces[1]);
+    rules.defineRule('features.' + trait, 'traits.' + trait, '=', null);
+    if(notes != null)
+      rules.defineNote(notes);
+
+  }
+
+  rules.defineEditorElement('traits', 'Traits', 'fset', 'traits', 'skills');
+  rules.defineSheetElement('Traits', 'Feats+', null, '; ');
+
+}
