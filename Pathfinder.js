@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.43 2015/03/17 04:22:46 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.44 2015/03/20 03:30:23 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -232,29 +232,29 @@ Pathfinder.TRAITS = [
   'Bitter Nobleman:Campaign', 'Brute:Half-Orc', 'Bullied:Combat',
   'Bully:Social', 'Canter:Social', 'Caretaker:Faith',
   'Charming:Social', 'Child of Nature:N', 'Child of the Streets:Social',
-  'Child Of the Temple:Faith', 'Classically Schooled:Magic', 'Corageous:Combat',
-  'Dangerously Curious:Magic', 'Deft Dodger:Combat', 'Demon Hunter:Asmodeus',
-  'Desert Child:Regional', 'Devotee Of the Green:Faith', 'Dirty Fighter:Combat',
-  'Divine Courtesan:Calistria', 'Divine Warrior:Iomedae', 'Ear For Music:Shelyn',
-  'Ease Of Faith:Faith', 'Elven Reflexes:Half-Elf', 'Exile:Campaign',
-  'Eyes And Ears Of The City:Abadar', 'Failed Apprentice:Half-Elf', 'Fast-Talker:Social',
-  'Fencer:Combat', 'Flame Of The Dawnflower:Sarenrae', 'Focused Mind:Magic',
-  'Forlorn:Elf', 'Fortified Drinker:Cayden Cailean', 'Freedom Fighter:Halfling',
-  'Gifted Adept:Magic', 'Goldsniffer:Dwarf', 'Guardian Of The Forge:Torag',
-  'Hedge Magician:Magic', 'Highlander:Regional', 'History Of Heresy:Faith',
-  'Indomitable Faith:Faith', 'Killer:Combat', 'Log Roller:Regional',
-  'Lore Seeker:Campaign', 'Magic Is Life:Nethys', 'Magical Knack:Magic',
-  'Magical Lineage:Magic', 'Magical Talent:Magic', 'Mathematical Prodigy:Magic',
-  'Militia Veteran:Regional', 'Missionary:Campaign', 'Natural-Born Leader:Social',
-  'Outcast:Half-Orc', 'Patient Optimist:Erastil', 'Poverty-Stricken:Social',
-  'Rapscallion:Gnome', 'Reactionary:Combat', 'Resilient:Combat',
-  'Rich Parents:Social', 'River Rat:Regional', 'Sacred Conduit:Faith',
-  'Sacred Touch:Faith', 'Savanna Child:Regional', 'Scholar of Ruins:Human',
-  'Scholar Of The Great Beyond:Faith', 'Sherrif:Campaign', 'Skeptic:Magic',
-  'Starchild:Desna', 'Suspicious:Social', 'Tavern Owner:Campaign',
-  'Tunnel Fighter:Dwarf', 'Undead Slayer:Pharasma', 'Vagabond Child:Regional',
-  'Veteran Of Battle:Gorum', 'Warrior Of Old:Elf', 'Well-Informed:Halfling',
-  'Wisdom In The Flesh:Irori', 'World Traveler:Human'
+  'Child Of the Temple:Faith', 'Classically Schooled:Magic', 'Comparative Religion:Silver Crusade',
+  'Corageous:Combat', 'Dangerously Curious:Magic', 'Deft Dodger:Combat',
+  'Demon Hunter:Asmodeus', 'Desert Child:Regional', 'Devotee Of the Green:Faith',
+  'Dirty Fighter:Combat', 'Divine Courtesan:Calistria', 'Divine Warrior:Iomedae',
+  'Ear For Music:Shelyn', 'Ease Of Faith:Faith', 'Elven Reflexes:Half-Elf',
+  'Exile:Campaign', 'Eyes And Ears Of The City:Abadar', 'Failed Apprentice:Half-Elf',
+  'Fast-Talker:Social', 'Fencer:Combat', 'Flame Of The Dawnflower:Sarenrae',
+  'Focused Mind:Magic', 'Forlorn:Elf', 'Fortified Drinker:Cayden Cailean',
+  'Freedom Fighter:Halfling', 'Gifted Adept:Magic', 'Goldsniffer:Dwarf',
+  'Guardian Of The Forge:Torag', 'Hedge Magician:Magic', 'Highlander:Regional',
+  'History Of Heresy:Faith', 'Indomitable Faith:Faith', 'Killer:Combat',
+  'Log Roller:Regional', 'Lore Seeker:Campaign', 'Magic Is Life:Nethys',
+  'Magical Knack:Magic', 'Magical Lineage:Magic', 'Magical Talent:Magic',
+  'Mathematical Prodigy:Magic', 'Militia Veteran:Regional', 'Missionary:Campaign',
+  'Natural-Born Leader:Social', 'Outcast:Half-Orc', 'Patient Optimist:Erastil',
+  'Poverty-Stricken:Social', 'Rapscallion:Gnome', 'Reactionary:Combat',
+  'Resilient:Combat', 'Rich Parents:Social', 'River Rat:Regional',
+  'Sacred Conduit:Faith', 'Sacred Touch:Faith', 'Savanna Child:Regional',
+  'Scholar of Ruins:Human', 'Scholar Of The Great Beyond:Faith', 'Sherrif:Campaign',
+  'Skeptic:Magic', 'Starchild:Desna', 'Suspicious:Social',
+  'Tavern Owner:Campaign', 'Tunnel Fighter:Dwarf', 'Undead Slayer:Pharasma',
+  'Vagabond Child:Regional', 'Veteran Of Battle:Gorum', 'Warrior Of Old:Elf',
+  'Well-Informed:Halfling', 'Wisdom In The Flesh:Irori', 'World Traveler:Human'
 ];
 Pathfinder.WEAPONS_ADDED = [
   'Blowgun:d2r20',
@@ -4512,8 +4512,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
           '+2 Perception involving stone, automatic check w/in 10 ft'
       ];
 
-      rules.defineRule('abilityNotes.slowAndSteadyFeature',
-        'abilityNotes.armorSpeedAdjustment', '^', '0'
+      rules.defineRule('abilityNotes.armorSpeedAdjustment',
+        'abilityNotes.steadyFeature', '^', '0'
       );
       rules.defineRule('featureNotes.darkvisionFeature',
         raceNoSpace + 'Features.Darkvision', '+=', '60'
@@ -4816,6 +4816,11 @@ Pathfinder.traitRules = function(rules, traits) {
       // TODO
     } else if(trait == 'Classically Schooled') {
       // TODO
+    } else if(trait == 'Comparative Religion') {
+      notes = ['skillNotes.comparativeReligionFeature:+1 Knowledge (Religion)'];
+      rules.defineRule('classSkills.Knowledge (Religion)',
+        'features.Comparative Religion', '=', '1'
+      );
     } else if(trait == 'Corageous') {
       // TODO
     } else if(trait == 'Dangerously Curious') {
@@ -4935,7 +4940,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Sherrif') {
       // TODO
     } else if(trait == 'Skeptic') {
-      // TODO
+      notes = ['saveNotes.skepticFeature:+2 vs. illusions'];
     } else if(trait == 'Starchild') {
       // TODO
     } else if(trait == 'Suspicious') {
@@ -4943,7 +4948,10 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Tavern Owner') {
       // TODO
     } else if(trait == 'Tunnel Fighter') {
-      // TODO
+      notes = [
+        'combatNotes.tunnelFighterFeature:' +
+          '+2 Initiative/+1 Critical damage when underground'
+      ];
     } else if(trait == 'Undead Slayer') {
       // TODO
     } else if(trait == 'Vagabond Child') {
@@ -4951,7 +4959,9 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Veteran Of Battle') {
       // TODO
     } else if(trait == 'Warrior Of Old') {
-      // TODO
+      notes = ['combatNotes.warriorOfOldFeature:+2 Initiative'];
+      rules.defineRule
+        ('initiative', 'combatNotes.warriorOfOldFeature', '+', '2');
     } else if(trait == 'Well-Informed') {
       // TODO
     } else if(trait == 'Wisdom In The Flesh') {
