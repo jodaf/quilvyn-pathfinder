@@ -1,4 +1,4 @@
-/* $Id: Pathfinder.js,v 1.45 2015/03/21 04:41:21 jhayes Exp $ */
+/* $Id: Pathfinder.js,v 1.46 2015/05/01 21:25:42 jhayes Exp $ */
 
 /*
 Copyright 2011, James J. Hayes
@@ -249,7 +249,7 @@ Pathfinder.TRAITS = [
   'Gold Finger:Qadira', 'Goldsniffer:Dwarf', 'Greasy Palm:Sczarni',
   'Guardian Of The Forge:Torag', 'Hedge Magician:Magic', 'Highlander:Regional',
   'History Of Heresy:Faith', 'Horse Lord:Qadira', 'Hunter\'s Eye:Andoran',
-  'I Know A Guy:Sczarni', 'Impressive Presence:Taldor', 'Indomitable Faith:Faith',
+  'Know This Guy:Sczarni', 'Impressive Presence:Taldor', 'Indomitable Faith:Faith',
   'Indomitable:Andoran', 'Insider Knowledge:Grand Lodge', 'Killer:Combat',
   'Log Roller:Regional', 'Lore Seeker:Campaign', 'Loyalty:Grand Lodge',
   'Magic Is Life:Nethys', 'Magical Knack:Magic', 'Magical Lineage:Magic',
@@ -4943,8 +4943,11 @@ Pathfinder.traitRules = function(rules, traits) {
       // TODO
     } else if(trait == 'Hunter\'s Eye') {
       // TODO
-    } else if(trait == 'I Know A Guy') {
-      // TODO
+    } else if(trait == 'Know This Guy') {
+      notes = [
+        'skillNotes.knowThisGuyFeature:' +
+          '+1 Knowlege (Local)/+2 Diplomacy to gather information'
+      ];
     } else if(trait == 'Impressive Presence') {
       // TODO
     } else if(trait == 'Indomitable') {
@@ -4959,7 +4962,10 @@ Pathfinder.traitRules = function(rules, traits) {
           '+Critical hit multiplier damage on critical hit'
       ];
     } else if(trait == 'Log Roller') {
-      // TODO
+      notes = [
+        'combatNotes.logRollerFeature:+1 CMD vs. trip',
+        'skillNotes.logRollerFeature:+1 Acrobatics'
+      ];
     } else if(trait == 'Lore Seeker') {
       // TODO
     } else if(trait == 'Loyalty') {
