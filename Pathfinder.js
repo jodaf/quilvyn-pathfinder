@@ -1695,11 +1695,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('saveNotes.demonResistancesFeature',
             bloodlineLevelAttr, '=',
             'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-          ); 
+          );
           rules.defineRule('saveNotes.demonResistancesFeature.1',
             bloodlineLevelAttr, '=',
             'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-          ); 
+          );
         } else if(bloodline == 'Arcane') {
           feats = [
             'Combat Casting', 'Improved Counterspell', 'Improved Initiative',
@@ -1763,7 +1763,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('saveNotes.celestialResistancesFeature',
             bloodlineLevelAttr, '=',
             'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-          ); 
+          );
         } else if(bloodline == 'Destined') {
           feats = [
             'Arcane Strike', 'Diehard', 'Endurance', 'Leadership',
@@ -1938,11 +1938,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('saveNotes.infernalResistancesFeature',
             bloodlineLevelAttr, '=',
             'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-          ); 
+          );
           rules.defineRule('saveNotes.infernalResistancesFeature.1',
             bloodlineLevelAttr, '=',
             'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-          ); 
+          );
         } else if(bloodline == 'Undead') {
           feats = [
             'Combat Casting', 'Diehard', 'Endurance', 'Iron Will',
@@ -2000,7 +2000,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           feats = null;
         }
       }
-          
+
     } else if(klass == 'Wizard') {
 
       baseAttack = SRD35.ATTACK_BONUS_POOR;
@@ -2310,7 +2310,74 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       }
 
     } else if(klass == 'Arcane Archer') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_GOOD;
+      features = [
+        '1:Enhance Arrows', '2:Caster Level Bonus', '2:Imbue Arrow',
+        '3:Elemental Arrows', '4:Seeker Arrow', '5:Distance Arrows',
+        '6:Phase Arrow', '8:Hail Of Arrows', '9:Aligned Arrows',
+        '10:Arrow Of Death'
+      ];
+      hitDie = 10;
+      notes = [
+        'combatNotes.arrowOfDeathFeature:' +
+          'Special arrow requires foe DC %V fortitude save or die',
+        'combatNotes.alignedArrowsFeature:Arrows anarchic/axiomatic/holy/unholy',
+        'combatNotes.distanceArrowsFeature:x2 range',
+        'combatNotes.elementalArrowsFeature:Arrows %V',
+        'combatNotes.enhanceArrowFeature:Arrows treated as +1 magic weapons',
+        'combatNotes.hailOfArrowsFeature:' +
+          'Simultaneously fire arrows at %V targets 1/day',
+        'combatNotes.phaseArrowFeature:' +
+          'Arrow passes through normal obstacles %V/day',
+        'combatNotes.seekerArrowFeature:Arrow maneuvers to target %V/day',
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'magicNotes.imbueArrowFeature:Center spell where arrow lands',
+        'validationNotes.arcaneArcherClassBaseAttack:Requires Base Attack >= 6',
+        'validationNotes.arcaneArcherClassCasterLevel:' +
+          'Requires Caster Level Arcane >= 1',
+        'validationNotes.arcaneArcherClassFeats:' +
+          'Requires Point Blank Shot/Precise Shot/' +
+          'Weapon Focus (Longbow)||Weapon Focus (Shortbow)'
+      ];
+      profArmor = SRD35.PROFICIENCY_MEDIUM;
+      profShield = SRD35.PROFICIENCY_HEAVY;
+      profWeapon =  SRD35.PROFICIENCY_MEDIUM;
+      saveFortitude = 'Math.floor((source + 1) / 2)';
+      saveReflex = 'Math.floor((source + 1) / 2)';
+      saveWill = 'Math.floor((source + 1) / 3)';
+      selectableFeatures = null;
+      skillPoints = 4;
+      skills = [
+        'Perception', 'Ride', 'Stealth', 'Survival'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule(
+        'combatNotes.arrowOfDeathFeature', 'charismaModifier', '=', '20+source'
+      );
+      rules.defineRule('combatNotes.elementalArrowsFeature',
+       'levels.Arcane Archer', '=',
+       'source < 7 ? "flaming/frost/shock" : "flaming burst/icy burst/shocking burst"'
+      );
+      rules.defineRule
+        ('combatNotes.hailOfArrowsFeature', 'levels.Arcane Archer', '+=', null);
+      rules.defineRule(
+        'combatNotes.phaseArrowFeature', 'levels.Arcane Archer', '=',
+        'Math.floor((source - 4) / 2)'
+      );
+      rules.defineRule(
+        'combatNotes.seekerArrowFeature', 'levels.Arcane Archer', '=',
+        'Math.floor((source - 2) / 2)'
+      );
+      rules.defineRule('magicNotes.casterLevelBonusFeature',
+        'levels.Arcane Archer', '=',
+        'source >= 2 ? source - Math.floor((source + 3) / 4) : null'
+      );
+
     } else if(klass == 'Arcane Trickster') {
       // TODO
     } else if(klass == 'Assassin') {
@@ -2324,7 +2391,50 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     } else if(klass == 'Loremaster') {
       // TODO
     } else if(klass == 'Mystic Theurge') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_POOR;
+      feats = null;
+      features = [
+        '1:Caster Level Bonus', '1:Combined Spells', '10:Spell Synthesis'
+      ];
+      hitDie = 6;
+      notes = [
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'magicNotes.combinedSpellsFeature:' +
+          'Fill spell slots up to level %V with spells from different class',
+        'magicNotes.spellSynthesisFeature:' +
+          'Cast two spells simultaneously, +2 vs. resistance, target -2 saves',
+        'validationNotes.mysticTheurgeClassCasterLevelArcane:' +
+          'Requires Caster Level Arcane >= 3', // TODO
+        'validationNotes.mysticTheurgeClassCasterLevelDivine:' +
+          'Requires Caster Level Divine >= 3', // TODO
+        'validationNotes.mysticTheurgeClassSkills:' +
+          'Requires Knowledge (Arcana) >= 3/Knowledge (Religion) >= 3'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      skillPoints = 2;
+      skills = [
+        'Knowledge (Arcana)', 'Knowledge (Religion)', 'Sense Motive',
+        'Spellcraft'
+      ];
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 3)';
+      saveWill = 'Math.floor((source + 1) / 2)';
+      selectableFeatures = null;
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('magicNotes.casterLevelBonusFeature',
+        'levels.Mystic Theurge', '=', null
+      );
+      rules.defineRule('magicNotes.combinedSpellsFeature',
+        'levels.Mystic Theurge', '+=', 'Math.floor((source + 1) / 2)'
+      );
+
     } else if(klass == 'Pathfinder Chronicler') {
       // TODO
     } else if(klass == 'Shadowdancer') {
