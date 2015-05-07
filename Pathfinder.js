@@ -2379,7 +2379,85 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
     } else if(klass == 'Arcane Trickster') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_POOR;
+      features = [
+        '1:Caster Level Bonus', '1:Ranged Legerdemain', '2:Sneak Attack',
+        '3:Impromptu Sneak Attack', '5:Tricky Spells', '9:Invisible Thief',
+        '10:Surprise Spells'
+      ];
+      hitDie = 6;
+      notes = [
+        'combatNotes.impromptuSneakAttackFeature:' +
+          'Declare any attack a sneak attack %V/day',
+        'combatNotes.rangedLegerdemainFeature:' +
+          '+5 DC on Disable Device/Sleight Of Hand at 30 ft',
+        'combatNotes.sneakAttackFeature:' +
+          '%Vd6 extra damage when surprising or flanking',
+        'combatNotes.surpriseSpellsFeature:' +
+          'Sneak attack spell damage vs flat-footed foes',
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'magicNotes.invisibleThiefFeature:' +
+          '<i>Greater Invisibility</i> %V rounds/day',
+        'magicNotes.trickySpellsFeature:Silent/Still spell %V/day',
+        'validationNotes.arcaneTricksterClassAlignment:' +
+          'Requires Alignment !~ Lawful',
+        'validationNotes.arcaneTricksterClassFeatures:' +
+          'Requires Sneak Attack >= 2',
+        'validationNotes.arcaneTricksterClassSkills:' +
+          'Requires Disable Device >= 4/Escape Artist >= 4/' +
+          'Knowledge (Arcana) >= 4',
+        'validationNotes.arcaneTricksterClassSpells:' +
+          'Requires Mage Hand/arcane level 3'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 2)';
+      saveWill = 'Math.floor((source + 1) / 2)';
+      selectableFeatures = null;
+      skillPoints = 4;
+      skills = [
+        'Appraise', 'Bluff', 'Climb', 'Diplomacy', 'Disable Device',
+        'Disguise', 'Escape Artist', 'Knowledge', 'Perception', 'Sense Motive',
+        'Sleight Of Hand', 'Spellcraft', 'Stealth', 'Swim'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('combatNotes.impromptuSneakAttackFeature',
+        'levels.Arcane Trickster', '+=', 'source < 7 ? 1 : 2'
+      );
+      rules.defineRule('combatNotes.sneakAttackFeature',
+        'levels.Arcane Trickster', '+=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('magicNotes.casterLevelBonusFeature',
+        'levels.Arcane Trickster', '+=', null
+      );
+      rules.defineRule('magicNotes.invisibleThiefFeature',
+        'levels.Arcane Trickster', '+=', null
+      );
+      rules.defineRule('magicNotes.trickySpellsFeature',
+        'levels.Arcane Trickster', '+=', 'Math.floor((source + 1) / 2)'
+      );
+      rules.defineRule('validationNotes.arcaneTricksterClassFeatures',
+        'levels.Arcane Trickster', '=', '-1',
+        // Check standard classes that provide 2d6 Sneak Attack
+        'levels.Assassin', '+', 'source >= 3 ? 1 : null',
+        'levels.Rogue', '+', 'source >= 3 ? 1 : null',
+        '', 'v', '0'
+      );
+      rules.defineRule('validationNotes.arcaneTricksterClassSpells',
+        'levels.Arcane Trickster', '=', '-11',
+        // NOTE: False valid w/multiple Mage Hand spells
+        /^spells\.Mage Hand/, '+=', '10',
+        /^spellsKnown\.(AS|B|S|W)3/, '+', '1',
+        '', 'v', '0'
+      );
+
     } else if(klass == 'Assassin') {
       // TODO
     } else if(klass == 'Dragon Disciple') {
