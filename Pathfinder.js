@@ -20,11 +20,11 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 var PATHFINDER_VERSION = '1.2beta-20140406';
 
 /*
- * This module loads the rules from the Pathfinder Core Rulebook.  The
+ * This module loads the rules from the Pathfinder Reference Document.  The
  * Pathfinder function contains methods that load rules for particular parts of
- * the PCR; raceRules for character races, magicRules for spells, etc.  These
+ * the PRD; raceRules for character races, magicRules for spells, etc.  These
  * member methods can be called independently in order to use a subset of the
- * PCR rules.  Similarly, the constant fields of Pathfinder (ALIGNMENTS, FEATS,
+ * PRD rules.  Similarly, the constant fields of Pathfinder (ALIGNMENTS, FEATS,
  * etc.) can be manipulated to modify the choices.
  */
 function Pathfinder() {
@@ -2540,9 +2540,156 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
     } else if(klass == 'Duelist') {
       // TODO
     } else if(klass == 'Eldritch Knight') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_GOOD;
+      features = [
+       '1:Diverse Training', '2:Caster Level Bonus', '10:Spell Critical'
+     ];
+      hitDie = 10;
+      notes = [
+        'featureNotes.diverseTrainingFeature:' +
+          'Eldritch Knight level satisfies Fighter/arcane feat prerequisite',
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'magicNotes.spellCriticalFeature:Cast swift spell after critical hit',
+        'validationNotes.eldritchKnightClassWeaponProficiencyLevel:' +
+          'Requires Class Weapon Proficiency Level>='+SRD35.PROFICIENCY_MEDIUM,
+        'validationNotes.eldritchKnightClassSpells:Requires arcane level 3'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      saveFortitude = 'Math.floor((source + 1) / 2)';
+      saveReflex = 'Math.floor((source + 1) / 3)';
+      saveWill = 'Math.floor((source + 1) / 3)';
+      selectableFeatures = null;
+      skillPoints = 2;
+      skills = [
+        'Climb', 'Knowledge (Arcana)', 'Knowledge (Nobility)', 'Linguistics',
+        'Ride', 'Sense Motive', 'Spellcraft', 'Swim'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('featCount.Fighter',
+        'levels.Eldritch Knight', '+=', 'Math.floor((source + 3) / 4)'
+      );
+      rules.defineRule('magicNotes.casterLevelBonusFeature',
+        'levels.Eldritch Knight', '+=', 'source > 1 ? source - 1 : null'
+      );
+      rules.defineRule('validationNotes.eldritchKnightClassSpells',
+        'levels.Eldritch Knight', '=', '-1',
+        /^spellsKnown\.(AS|B|S|W)3/, '+', '1',
+        '', 'v', '0'
+      );
+
     } else if(klass == 'Loremaster') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_POOR;
+      features = [
+        '1:Caster Level Bonus', '2:Lore', '4:Bonus Language', '6:Greater Lore',
+        '10:True Lore'
+      ];
+      hitDie = 6;
+      notes = [
+        'combatNotes.dodgeTrickFeature:+1 AC',
+        'combatNotes.secretHealthFeature:+3 HP',
+        'combatNotes.weaponTrickFeature:+1 Attack',
+        'featureNotes.applicableKnowledgeFeature:Bonus feat',
+        'featureNotes.bonusLanguageFeature:%V additional language(s)',
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'skillNotes.greaterLoreFeature:' +
+          '+10 Spellcraft to determine magic item properties',
+        'magicNotes.moreNewfoundArcanaFeature:Bonus level 2 spell',
+        'magicNotes.newfoundArcanaFeature:Bonus level 1 spell',
+        'magicNotes.trueLoreFeature:' +
+          '<i>Legend Lore</i>, <i>Analyze Dweomer</i> 1/day',
+        'saveNotes.secretKnowledgeOfAvoidanceFeature:+2 Reflex',
+        'saveNotes.secretsOfInnerStrengthFeature:+2 Will',
+        'saveNotes.theLoreOfTrueStaminaFeature:+2 Fortitude',
+        'skillNotes.instantMasteryFeature:4 ranks in untrained skill',
+        'skillNotes.loreFeature:+%V all Knowledge, use any Knowledge untrained',
+        'validationNotes.loremasterClassFeats:' +
+          'Requires Skill Focus in any Knowledge skill/' +
+          'any 3 metamagic or item creation',
+        'validationNotes.loremasterClassSkills:Requires any 2 Knowledge >= 7',
+        'validationNotes.loremasterClassSpells:' +
+          'Requires any 7 divination/any level 3 divination'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 3)';
+      saveWill = 'Math.floor((source + 1) / 2)';
+      selectableFeatures = [
+        'Applicable Knowledge', 'Dodge Trick', 'Instant Mastery',
+        'More Newfound Arcana', 'Newfound Arcana', 'Secret Health',
+        'Secret Knowledge Of Avoidance', 'Secrets Of Inner Strength',
+        'The Lore Of True Stamina', 'Weapon Trick'
+      ];
+      skillPoints = 4;
+      skills = [
+        'Appraise', 'Diplomacy', 'Handle Animals', 'Heal', 'Knowledge',
+        'Linguistics', 'Perform', 'Spellcraft', 'Use Magic Device'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('armorClass', 'combatNotes.dodgeTrickFeature', '+', '1');
+      rules.defineRule('baseAttack', 'combatNotes.weaponTrickFeature', '+','1');
+      rules.defineRule('casterLevelArcane', 'levels.Loremaster', '+=', null);
+      rules.defineRule('featCount.General',
+        'featureNotes.applicableKnowledgeFeature', '+', '1'
+      );
+      rules.defineRule('featureNotes.bonusLanguageFeature',
+        'levels.Loremaster', '+=', 'Math.floor(source / 4)'
+      );
+      rules.defineRule('hitPoints', 'combatNotes.secretHealthFeature', '+','3');
+      rules.defineRule
+        ('languageCount', 'featureNotes.bonusLanguageFeature', '+', null);
+      rules.defineRule
+        ('magicNotes.casterLevelBonusFeature', 'levels.Loremaster', '+=', null);
+      rules.defineRule
+        ('save.Fortitude', 'saveNotes.theLoreOfTrueStaminaFeature', '+', '2');
+      rules.defineRule
+        ('save.Will', 'saveNotes.secretsOfInnerStrengthFeature', '+', '2');
+      rules.defineRule('save.Reflex',
+        'saveNotes.secretKnowledgeOfAvoidanceFeature', '+', '2'
+      );
+      rules.defineRule('selectableFeatureCount.Loremaster',
+        'levels.Loremaster', '+=', 'Math.floor((source + 1) / 2)'
+      );
+      rules.defineRule
+        (/^skillModifier\.Knowledge/, 'skillNotes.loreFeature', '+=', null);
+      rules.defineRule('skillNotes.loreFeature',
+        'levels.Loremaster', '+=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('validationNotes.loremasterClassFeats',
+        'levels.Loremaster', '=', '-13',
+        // NOTE: False valid w/multiple Skill Focus (.* Knowledge) feats
+        /^features.Skill Focus.*Knowledge/, '+', '10',
+        // NOTE: False valid w/Natural Spell
+        /^features\..*Spell$/, '+', '1',
+        /^features\.(Brew|Craft|Forge|Scribe)/, '+', '1',
+        '', 'v', '0'
+      );
+      rules.defineRule('validationNotes.loremasterClassSkills',
+        'levels.Loremaster', '=', '-2',
+        /^skillModifier\.Knowledge/, '+=', 'source >= 7 ? 1 : null',
+        '', 'v', '0'
+      );
+      rules.defineRule('validationNotes.loremasterClassSpells',
+        'levels.Loremaster', '=', '-107',
+        // NOTE: False valid w/multiple Div3 spells
+        /^spells\..*Div3/, '+', '100',
+        /^spells\..*Div\d/, '+', '1',
+        '', 'v', '0'
+      );
+
     } else if(klass == 'Mystic Theurge') {
 
       baseAttack = SRD35.ATTACK_BONUS_POOR;
