@@ -205,7 +205,7 @@ Pathfinder.LANGUAGES_ADDED = ['Aklo'];
 Pathfinder.PRESTIGE_CLASSES = [
   'Arcane Archer', 'Arcane Trickster', 'Assassin', 'Dragon Disciple',
   'Duelist', 'Eldritch Knight', 'Loremaster', 'Mystic Theurge',
-  'Pathfinder Chonicler', 'Shadowdancer'
+  'Pathfinder Chronicler', 'Shadowdancer'
 ];
 Pathfinder.SKILLS = [
   'Acrobatics:dex', 'Appraise:int', 'Bluff:cha', 'Climb:str', 'Craft:int',
@@ -610,7 +610,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
       rules.defineRule('casterLevelArcane', 'levels.Bard', '+=', null);
       rules.defineRule('featureNotes.bardicPerformanceFeature',
-        'levels.Bard', '=', '2 + 2 * source',
+        'levels.Bard', '+=', '2 + 2 * source',
         'charismaModifier', '+', null
       );
       rules.defineRule('magicNotes.deadlyPerformanceFeature',
@@ -652,7 +652,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.bardicKnowledgeFeature', '+', null
       );
       rules.defineRule('skillNotes.bardicKnowledgeFeature',
-        'levels.Bard', '=', 'Math.max(1, Math.floor(source / 2))'
+        'levels.Bard', '+=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('skillNotes.loreMasterFeature',
         'levels.Bard', '+=', '1 + Math.floor((source + 1) / 6)'
@@ -2459,7 +2459,82 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
     } else if(klass == 'Assassin') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
+      features = [
+        '1:Death Attack', '1:Poison Use', '1:Sneak Attack',
+        '1:Weapon Proficiency ' +
+          '(Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Punching Dagger/Rapier/Sap/Shortbow/Composite Shortbow/Short Sword)',
+        '2:Poison Tolerance', '2:Uncanny Dodge', '4:Hidden Weapons',
+        '4:True Death', '5:Improved Uncanny Dodge', '6:Quiet Death',
+        '8:Hide In Plain Sight', '9:Swift Death', '10:Angel Of Death'
+      ];
+      hitDie = 8;
+      notes = [
+        'combatNotes.angelOfDeathFeature:Death attack dusts corpse 1/day',
+        'combatNotes.deathAttackFeature:' +
+          'Foe DC %V fortitude save on successful sneak attack after 3 ' +
+          'rounds of study or die/paralyzed for d6+%1 rounds',
+        'combatNotes.improvedUncannyDodgeFeature:' +
+          'Flanked only by rogue four levels higher',
+        'combatNotes.quietDeathFeature:' +
+          'Stealth check to perform Death Attack unnoticed',
+        'combatNotes.sneakAttackFeature:' +
+          '%Vd6 extra damage when surprising or flanking',
+        'combatNotes.swiftDeathFeature:Death attack w/out prior study 1/day',
+        'combatNotes.trueDeathFeature:' +
+          'Raising victim requires DC %V <i>Remove Curse</i> or ' +
+          'DC %1 caster level check',
+        'combatNotes.uncannyDodgeFeature:Always adds dexterity modifier to AC',
+        'featureNotes.poisonUseFeature:' +
+          'No chance of self-poisoning when applying to blade',
+        'saveNotes.poisonToleranceFeature:+%V vs. poison',
+        'skillNotes.hiddenWeaponsFeature:+%V Sleight Of Hand to hide weapons',
+        'skillNotes.hideInPlainSightFeature:Hide even when observed',
+        'validationNotes.assassinClassAlignment:Requires Alignment =~ Evil',
+        'validationNotes.assassinClassSkills:' +
+          'Requires Disguise >= 2/Stealth >= 5'
+      ];
+      profArmor = SRD35.PROFICIENCY_LIGHT;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 2)';
+      saveWill = 'Math.floor((source + 1) / 3)';
+      selectableFeatures = null;
+      skillPoints = 4;
+      skills = [
+        'Acrobatics', 'Bluff', 'Climb', 'Diplomacy', 'Disable Device',
+        'Disguise', 'Escape Artist', 'Intimidate', 'Linguistics', 'Perception',
+        'Sense Motive', 'Sleight Of Hand', 'Stealth', 'Swim', 'Use Magic Device'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('combatNotes.deathAttackFeature',
+        'levels.Assassin', '+=', '10 + source',
+        'intelligenceModifier', '+', null
+      );
+      rules.defineRule
+        ('combatNotes.deathAttackFeature.1', 'levels.Assassin', '+=', null);
+      rules.defineRule('combatNotes.sneakAttackFeature',
+        'levels.Assassin', '+=', 'Math.floor((source + 1) / 2)'
+      );
+      rules.defineRule('combatNotes.trueDeathFeature',
+        'levels.Assassin', '+=', '10 + source'
+      );
+      rules.defineRule('combatNotes.trueDeathFeature.1',
+        'levels.Assassin', '+=', '15 + source'
+      );
+      rules.defineRule
+        ('resistance.Poison', 'saveNotes.poisonToleranceFeature', '+=', null);
+      rules.defineRule('saveNotes.poisonToleranceFeature',
+        'levels.Assassin', '+=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule
+        ('skillNotes.hiddenWeaponFeature', 'levels.Assassin', '=', null);
+
     } else if(klass == 'Dragon Disciple') {
       // TODO
     } else if(klass == 'Duelist') {
@@ -2514,7 +2589,118 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
     } else if(klass == 'Pathfinder Chronicler') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
+      feats = null;
+      features = [
+        '1:Bardic Knowledge', '1:Deep Pockets', '1:Master Scribe',
+        '2:Live To Tell The Tale', '2:Pathfinding', '3:Bardic Performance',
+        '3:Countersong', '3:Distraction', '3:Fascinate', '3:Improved Aid',
+        '3:Inspire Courage', '4:Epic Tales', '5:Inspire Competence',
+        '5:Whispering Campaign', '6:Inspired Action', '7:Call Down The Legends',
+        '8:Suggestion', '10:Dirge Of Doom', '10:Lay Of The Exalted Dead'
+      ];
+      hitDie = 8;
+      notes = [
+        'abilityNotes.pathfindingFeature:Treat trackless terrain as road',
+        'combatNotes.improvedAidFeature:Aid Another action gives +4 bonus',
+        'featureNotes.bardicPerformanceFeature:' +
+          'Bardic Performance effect %V rounds/day',
+        'featureNotes.deepPocketsFeature:' +
+          'Retrieve any small object from backpack as a full-round action',
+        'magicNotes.callDownTheLegendsFeature:' +
+          'Summon 2d4 level 4 barbarians 1/week',
+        'magicNotes.countersongFeature:' +
+          'Perform check vs. sonic magic w/in 30 ft for 10 rounds',
+        'magicNotes.dirgeOfDoomFeature:' +
+          'Creatures w/in 30 ft shaken while performing',
+        'magicNotes.distractionFeature:' +
+          'Perform check vs. visual magic w/in 30 ft for 10 rounds',
+        'magicNotes.epicTalesFeature:' +
+          'Bardic Performance effect via writing%V',
+        'magicNotes.fascinateFeature:' +
+          '%V creatures w/in 90 ft DC %1 Will save or spellbound',
+        'magicNotes.inspiredActionFeature:' +
+          'Use Bardic Performance to give ally extra %V action',
+        'magicNotes.inspireCompetenceFeature:' +
+          '+%V ally skill checks while performing',
+        'magicNotes.inspireCourageFeature:' +
+          '+%V attack/damage and charm/fear saves to allies while performing',
+        'magicNotes.layOfTheExaltedDeadFeature:' +
+          'Summon d4+1 level 5 barbarians 1/week',
+        'magicNotes.suggestionFeature:' +
+          '<i>Suggestion</i> to 1 fascinated creature',
+        'magicNotes.whisperingCampaignFeature:' +
+          '<i>Doom</i>/<i>Enthrall</i> via Bardic Performance',
+        'saveNotes.liveToTellTheTaleFeature:' +
+          'Extra saving throw vs permanent contion %V/day',
+        'saveNotes.pathfindingFeature:+5 vs. <i>Maze</i>',
+        'skillNotes.bardicKnowledgeFeature:' +
+          '+%V all Knowledge, use any Knowledge untrained',
+        'skillNotes.deepPocketsFeature:' +
+          '+4 Sleight Of Hand to conceal small objects',
+        'skillNotes.masterScribeFeature:+%V Linguistics/Profession (Scribe)/Use Magic Device (Scrolls)',
+        'skillNotes.pathfindingFeature:' +
+          '+5 Survival vs. lost/DC 15 Survival to extend to companion',
+        'validationNotes.pathfinderChroniclerClassSkills:' +
+          'Requires Linguistics >= 3/Perform (Oratory) >= 5/Profession (Scribe) >= 5'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      skillPoints = 8;
+      skills = [
+        'Appraise', 'Bluff', 'Diplomacy', 'Disguise', 'Escape Artist',
+        'Intimidate', 'Knowledge', 'Linguistics', 'Perception', 'Perform',
+        'Ride', 'Sense Motive', 'Sleight Of Hand', 'Survival',
+        'Use Magic Device'
+      ];
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 2)';
+      saveWill = 'Math.floor((source + 1) / 2)';
+      selectableFeatures = null;
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('featureNotes.bardicPerformanceFeature',
+        'levels.Pathfinder Chronicler', '+=', '2 + 2 * (source - 2)',
+        'charismaModifier', '+', null
+      );
+      rules.defineRule('magicNotes.epicTalesFeature',
+        'levels.Pathfinder Chronicler', '=',
+        'source >= 8 ? " or reading by others" : ""'
+      );
+      rules.defineRule('magicNotes.fascinateFeature',
+        'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 3)'
+      );
+      rules.defineRule('magicNotes.fascinateFeature.1',
+        'levels.Pathfinder Chronicler', '+=', '10 + Math.floor((source-2) / 2)',
+        'charismaModifier', '+', null
+      );
+      rules.defineRule('magicNotes.inspiredActionFeature',
+        'levels.Pathfinder Chronicler', '=',
+        'source < 9 ? "Move" : "Move/Standard"'
+      );
+      rules.defineRule('magicNotes.inspireCompetenceFeature',
+        'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 4)'
+      );
+      rules.defineRule('magicNotes.inspireCourageFeature',
+        'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 6)'
+      );
+      rules.defineRule('saveNotes.liveToTellTheTaleFeature',
+        'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule(/^skillModifier.Knowledge/,
+        'skillNotes.bardicKnowledgeFeature', '+', null
+      );
+      rules.defineRule('skillNotes.bardicKnowledgeFeature',
+        'levels.Pathfinder Chronicler', '+=', 'Math.max(1, Math.floor(source / 2))'
+      );
+      rules.defineRule('skillNotes.masterScribeFeature',
+        'levels.Pathfinder Chronicler', '+=', null
+      );
+
     } else if(klass == 'Shadowdancer') {
 
       baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
