@@ -1804,14 +1804,19 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'Skill Focus (Knowledge (Arcana))', 'Toughness'
           ];
           notes = notes.concat([
-            'abilityNotes.wingsFeature:Fly 60/average',
+            'abilityNotes.wingsFeature:Fly %V/average',
             'combatNotes.breathWeaponFeature:%Vd6 (%1 DC Reflex half) %2/day',
             'combatNotes.clawsFeature:%V+%1%3 %2 rounds/day',
             'combatNotes.dragonResistancesFeature:+%V AC',
+            'featureNotes.blindsenseFeature:' +
+              'Other senses allow detection of unseen objects w/in %V ft',
             'magicNotes.bloodlineDraconicFeature:' +
               '+1 damage/die on spells matching energy type',
             'saveNotes.dragonResistancesFeature:%V vs. energy type'
           ]);
+          rules.defineRule('abilityNotes.wingsFeature',
+            bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
+          );
           rules.defineRule
             ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
           rules.defineRule('clawsDamageLevel',
@@ -1845,6 +1850,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('combatNotes.dragonResistancesFeature',
             bloodlineLevelAttr, '=',
             'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
+          );
+          rules.defineRule('featureNotes.blindsenseFeature',
+            bloodlineLevelAttr, '^=', '60'
           );
           rules.defineRule('saveNotes.dragonResistancesFeature',
             bloodlineLevelAttr, '=',
@@ -2536,9 +2544,180 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('skillNotes.hiddenWeaponFeature', 'levels.Assassin', '=', null);
 
     } else if(klass == 'Dragon Disciple') {
-      // TODO
+
+      baseAttack = SRD35.ATTACK_BONUS_AVERAGE;
+      features = [
+        '1:Blood Of Dragons', '2:Caster Level Bonus', '2:Dragon Bite',
+        '2:Strength Boost', '3:Breath Weapon', '5:Blindsense',
+        '6:Constitution Boost', '7:Dragon Form', '8:Intelligence Boost',
+        '9:Wings'
+      ];
+      hitDie = 12;
+      notes = [
+        'abilityNotes.constitutionBoostFeature:+2 constitution',
+        'abilityNotes.intelligenceBoostFeature:+2 intelligence',
+        'abilityNotes.strengthBoostFeature:+%V strength',
+        'combatNotes.dragonBiteFeature:d%V+%1%2 bite when using claws',
+        'combatNotes.dragonDiscipleArmorClassAdjustment:+%V',
+        'featureNotes.blindsenseFeature:' +
+          'Other senses allow detection of unseen objects w/in %V ft',
+        'featureNotes.bloodOfDragonsFeature:' +
+          'Dragon Disciple level triggers Bloodline Draconic features',
+        'magicNotes.casterLevelBonusFeature:' +
+          '+%V base class level for spells known/per day',
+        'magicNotes.dragonFormFeature:<i>Form Of The Dragon %V</i> %1/day',
+        'validationNotes.dragonDiscipleClassBloodline:Requires Draconic',
+        'validationNotes.dragonDiscipleClassLanguages:Requires Draconic',
+        'validationNotes.dragonDiscipleClassRace:Requires Race !~ Dragon',
+        'validationNotes.dragonDiscipleClassSkills:' +
+          'Requires Knowledge (Arcana) >= 5',
+        'validationNotes.dragonDiscipleClassSpells:' +
+          'Requires arcane spells w/out preparation'
+      ];
+      profArmor = SRD35.PROFICIENCY_NONE;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_NONE;
+      saveFortitude = 'Math.floor((source + 1) / 2)';
+      saveReflex = 'Math.floor((source + 1) / 3)';
+      saveWill = 'Math.floor((source + 1) / 2)';
+      selectableFeatures = null;
+      skillPoints = 2;
+      skills = [
+        'Diplomacy', 'Escape Artist', 'Fly', 'Knowledge', 'Perception',
+        'Spellcraft'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule('abilityNotes.wingsFeature',
+        // TODO
+        'levels.Dragon Disciple', '^=', 'source >= 9 ? 90 : null'
+      );
+      rules.defineRule('abilityNotes.strengthBoostFeature',
+        'levels.Dragon Disciple', '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
+      );
+      rules.defineRule('armorClass',
+        'combatNotes.dragonDiscipleArmorClassAdjustment', '+', null
+      );
+      rules.defineRule
+        ('bloodlineLevel.Draconic', 'levels.Dragon Disciple', '+=', null);
+      rules.defineRule('combatNotes.dragonBiteFeature',
+        'levels.Dragon Disciple', '?', 'source >= 2',
+        '', '=', '6',
+        'features.Small', '=', '4',
+        'features.Large', '=', '8'
+      );
+      rules.defineRule('combatNotes.breathWeaponFeature.2',
+        'levels.Dragon Disciple', '+=', 'source >= 3 ? 1 : null'
+      );
+      rules.defineRule('combatNotes.dragonBiteFeature.1',
+        'strengthModifier', '=', 'Math.floor(source * 1.5)'
+      );
+      rules.defineRule('combatNotes.dragonBiteFeature.2',
+        'levels.Dragon Disciple', '=', 'source >= 6 ? ", d6 energy" : ""'
+      );
+      rules.defineRule('combatNotes.dragonDiscipleArmorClassAdjustment',
+        'levels.Dragon Disciple', '+=', 'Math.floor((source + 2) / 3)'
+      );
+      rules.defineRule
+        ('constitution', 'abilityNotes.constitutionBoostFeature', '+', '2');
+      rules.defineRule('featCount.Draconic',
+        'levels.Dragon Disciple', '+=', 'Math.floor((source + 4) / 6)'
+      );
+      rules.defineRule
+        ('features.Bloodline Draconic', 'levels.Dragon Disciple', '=', '1');
+      rules.defineRule('featureNotes.blindsenseFeature',
+        'levels.Dragon Disciple', '^=', 'source >= 5 ? 30 : source >= 10 ? 60 : null'
+      );
+      rules.defineRule
+        ('intelligence', 'abilityNotes.intelligenceBoostFeature', '+', '2');
+      rules.defineRule('magicNotes.casterLevelBonusFeature',
+        'levels.Dragon Disciple', '+=', 'source - Math.floor((source + 3) / 4)'
+      );
+      rules.defineRule('magicNotes.dragonFormFeature',
+        'levels.Dragon Disciple', '=', 'source < 10 ? "I" : "II"'
+      );
+      rules.defineRule('magicNotes.dragonFormFeature.1',
+        'levels.Dragon Disciple', '=', 'source < 10 ? 1 : 2'
+      );
+      rules.defineRule('strength',
+        'abilityNotes.strengthBoostFeature', '+', null
+      );
+      rules.defineRule('validationNotes.dragonDiscipleClassBloodline',
+        'levels.Sorcerer', '?', null,
+        'Dragon Disciple', '=', '-1',
+        'sorcererFeatures.Bloodline Draconic', '+', '1'
+      );
+      rules.defineRule('validationNotes.dragonDiscipleClassSpells',
+        'levels.Dragon Disciple', '=', '-1',
+        // Check standard ways to learn arcane spells w/out study
+        'levels.Bard', '+', '1',
+        'levels.Sorcerer', '+', '1',
+        'features.Spell Mastery', '+', '1',
+        '', 'v', '0'
+      );
+
     } else if(klass == 'Duelist') {
-      // TODO
+
+//      baseAttack = SRD35.ATTACK_BONUS_GOOD;
+//      features = [
+//        '1:Canny Defense', '2:Improved Reaction', '3:Enhanced Mobility',
+//        '4:Grace', '5:Precise Strike', '6:Acrobatic Charge',
+//        '7:Elaborate Parry', '9:Deflect Arrows'
+//      ];
+//      hitDie = 10;
+//      notes = [
+//        'combatNotes.acrobaticChargeFeature:May charge in difficult terrain',
+//        'combatNotes.cannyDefenseFeature:Add %V to melee AC when unarmored',
+//        'combatNotes.deflectArrowsFeature:Deflect ranged 1/round',
+//        'combatNotes.elaborateParryFeature:+%V AC when fighting defensively',
+//        'combatNotes.enhancedMobilityFeature:' +
+//          '+4 AC vs. movement AOO when unarmored',
+//        'combatNotes.improvedReactionFeature:+%V initiative',
+//        'combatNotes.preciseStrikeFeature:' +
+//          'Extra %Vd6 damage with light piercing weapon',
+//        'saveNotes.graceFeature:+2 Reflex when unarmored',
+//        'validationNotes.duelistClassBaseAttack:Requires Base Attack >= 6',
+//        'validationNotes.duelistClassFeats:' +
+//          'Requires Dodge/Mobility/Weapon Finesse',
+//        'validationNotes.duelistClassSkills:' +
+//          'Requires Sum Perform >= 3/Tumble >= 5'
+//      ];
+//      profArmor = SRD35.PROFICIENCY_NONE;
+//      profShield = SRD35.PROFICIENCY_NONE;
+//      profWeapon = SRD35.PROFICIENCY_MEDIUM;
+//      saveFortitude = SRD35.SAVE_BONUS_POOR;
+//      saveReflex = SRD35.SAVE_BONUS_GOOD;
+//      saveWill = SRD35.SAVE_BONUS_POOR;
+//      selectableFeatures = null;
+//      skillPoints = 4;
+//      skills = [
+//        'Balance', 'Bluff', 'Escape Artist', 'Jump', 'Listen', 'Perform',
+//        'Sense Motive', 'Spot', 'Tumble'
+//      ];
+//      spellAbility = null;
+//      spells = null;
+//      spellsKnown = null;
+//      spellsPerDay = null;
+//      rules.defineRule
+//        ('armorClass', 'combatNotes.cannyDefenseFeature', '+', null);
+//      rules.defineRule('combatNotes.cannyDefenseFeature',
+//        'intelligenceModifier', '+=', null,
+//        'levels.Duelist', 'v', null
+//      );
+//      rules.defineRule
+//        ('combatNotes.elaborateParryFeature', 'levels.Duelist', '+=', null);
+//      rules.defineRule('combatNotes.improvedReactionFeature',
+//        'levels.Duelist', '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
+//      );
+//      rules.defineRule('combatNotes.preciseStrikeFeature',
+//        'levels.Duelist', '=', 'Math.floor(source / 5)'
+//      );
+//      rules.defineRule
+//        ('initiative', 'combatNotes.improvedReactionFeature', '+', null);
+//      rules.defineRule('save.Reflex', 'saveNotes.graceFeature', '+', null);
+
     } else if(klass == 'Eldritch Knight') {
 
       baseAttack = SRD35.ATTACK_BONUS_GOOD;
