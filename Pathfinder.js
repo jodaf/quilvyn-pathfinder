@@ -2660,62 +2660,68 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
 
     } else if(klass == 'Duelist') {
 
-//      baseAttack = SRD35.ATTACK_BONUS_GOOD;
-//      features = [
-//        '1:Canny Defense', '2:Improved Reaction', '3:Enhanced Mobility',
-//        '4:Grace', '5:Precise Strike', '6:Acrobatic Charge',
-//        '7:Elaborate Parry', '9:Deflect Arrows'
-//      ];
-//      hitDie = 10;
-//      notes = [
-//        'combatNotes.acrobaticChargeFeature:May charge in difficult terrain',
-//        'combatNotes.cannyDefenseFeature:Add %V to melee AC when unarmored',
-//        'combatNotes.deflectArrowsFeature:Deflect ranged 1/round',
-//        'combatNotes.elaborateParryFeature:+%V AC when fighting defensively',
-//        'combatNotes.enhancedMobilityFeature:' +
-//          '+4 AC vs. movement AOO when unarmored',
-//        'combatNotes.improvedReactionFeature:+%V initiative',
-//        'combatNotes.preciseStrikeFeature:' +
-//          'Extra %Vd6 damage with light piercing weapon',
-//        'saveNotes.graceFeature:+2 Reflex when unarmored',
-//        'validationNotes.duelistClassBaseAttack:Requires Base Attack >= 6',
-//        'validationNotes.duelistClassFeats:' +
-//          'Requires Dodge/Mobility/Weapon Finesse',
-//        'validationNotes.duelistClassSkills:' +
-//          'Requires Sum Perform >= 3/Tumble >= 5'
-//      ];
-//      profArmor = SRD35.PROFICIENCY_NONE;
-//      profShield = SRD35.PROFICIENCY_NONE;
-//      profWeapon = SRD35.PROFICIENCY_MEDIUM;
-//      saveFortitude = SRD35.SAVE_BONUS_POOR;
-//      saveReflex = SRD35.SAVE_BONUS_GOOD;
-//      saveWill = SRD35.SAVE_BONUS_POOR;
-//      selectableFeatures = null;
-//      skillPoints = 4;
-//      skills = [
-//        'Balance', 'Bluff', 'Escape Artist', 'Jump', 'Listen', 'Perform',
-//        'Sense Motive', 'Spot', 'Tumble'
-//      ];
-//      spellAbility = null;
-//      spells = null;
-//      spellsKnown = null;
-//      spellsPerDay = null;
-//      rules.defineRule
-//        ('armorClass', 'combatNotes.cannyDefenseFeature', '+', null);
-//      rules.defineRule('combatNotes.cannyDefenseFeature',
-//        'intelligenceModifier', '+=', null,
-//        'levels.Duelist', 'v', null
-//      );
-//      rules.defineRule
-//        ('combatNotes.elaborateParryFeature', 'levels.Duelist', '+=', null);
-//      rules.defineRule('combatNotes.improvedReactionFeature',
-//        'levels.Duelist', '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
-//      );
-//      rules.defineRule('combatNotes.preciseStrikeFeature',
-//        'levels.Duelist', '=', 'Math.floor(source / 5)'
-//      );
-//      rules.defineRule
-//        ('initiative', 'combatNotes.improvedReactionFeature', '+', null);
+      baseAttack = SRD35.ATTACK_BONUS_GOOD;
+      features = [
+        '1:Canny Defense', '1:Precise Strike', '2:Improved Reaction',
+        '2:Parry', '3:Enhanced Mobility', '4:Combat Reflexes', '4:Grace',
+        '5:Riposte', '6:Acrobatic Charge', '7:Elaborate Defense',
+        '9:Deflect Arrows', '9:No Retreat', '10:Crippling Critical'
+      ];
+      hitDie = 10;
+      notes = [
+        'combatNotes.acrobaticChargeFeature:May charge in difficult terrain',
+        'combatNotes.cannyDefenseFeature:+%V AC when lightly/unarmored',
+        'combatNotes.cripplingCriticalFeature:' +
+          'Critical hit causes follow-on damage',
+        'combatNotes.elaborateDefenseFeature:+%V AC when fighting defensively',
+        'combatNotes.enhancedMobilityFeature:' +
+          '+4 AC vs. movement AOO when lightly/unarmored',
+        'combatNotes.improvedReactionFeature:+%V initiative',
+        'combatNotes.noRetreatFeature:AOO on foe withdraw',
+        'combatNotes.parryFeature:' +
+          'Hit on full-round attack negates foe attack instead of damaging',
+        'combatNotes.preciseStrikeFeature:' +
+          '+%V damage with light piercing weapon',
+        'combatNotes.riposteFeature:AOO after parry',
+        'saveNotes.graceFeature:+2 Reflex when lightly/unarmored',
+        'validationNotes.duelistClassBaseAttack:Requires Base Attack >= 6',
+        'validationNotes.duelistClassFeats:' +
+          'Requires Dodge/Mobility/Weapon Finesse',
+        'validationNotes.duelistClassSkills:' +
+          'Requires Acrobatics >= 2/Sum Perform >= 2'
+      ];
+      profArmor = SRD35.PROFICIENCY_LIGHT;
+      profShield = SRD35.PROFICIENCY_NONE;
+      profWeapon = SRD35.PROFICIENCY_MEDIUM;
+      saveFortitude = 'Math.floor((source + 1) / 3)';
+      saveReflex = 'Math.floor((source + 1) / 2)';
+      saveWill = 'Math.floor((source + 1) / 3)';
+      selectableFeatures = null;
+      skillPoints = 4;
+      skills = [
+        'Acrobatics', 'Bluff', 'Escape Artist', 'Perception', 'Perform',
+        'Sense Motive'
+      ];
+      spellAbility = null;
+      spells = null;
+      spellsKnown = null;
+      spellsPerDay = null;
+      rules.defineRule
+        ('armorClass', 'combatNotes.cannyDefenseFeature', '+', null);
+      rules.defineRule('combatNotes.cannyDefenseFeature',
+        'intelligenceModifier', '+=', 'source < 0 ? null : source',
+        'levels.Duelist', 'v', null
+      );
+      rules.defineRule('combatNotes.elaborateDefenseFeature',
+        'levels.Duelist', '+=', 'Math.floor(source / 3)'
+      );
+      rules.defineRule('combatNotes.improvedReactionFeature',
+        'levels.Duelist', '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
+      );
+      rules.defineRule
+        ('combatNotes.preciseStrikeFeature', 'levels.Duelist', '=', null);
+      rules.defineRule
+        ('initiative', 'combatNotes.improvedReactionFeature', '+', null);
 //      rules.defineRule('save.Reflex', 'saveNotes.graceFeature', '+', null);
 
     } else if(klass == 'Eldritch Knight') {
