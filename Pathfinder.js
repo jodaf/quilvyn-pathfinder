@@ -1353,8 +1353,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'featNotes.rogueWeaponTrainingFeature:Add Weapon Focus feat',
         'magicNotes.dispellingAttackFeature:' +
           'Sneak attack acts as <i>Dispel Magic</i> on target',
-        'magicNotes.majorMagicFeature:Cast W1 spell at level %V 2/day',
-        'magicNotes.minorMagicFeature:Cast W0 spell at level %V 3/day',
+        'magicNotes.majorMagicFeature:Cast W1 spell 2/day',
+        'magicNotes.minorMagicFeature:Cast W0 spell 3/day',
         'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
         'saveNotes.improvedEvasionFeature:Failed save yields half damage',
         'saveNotes.slipperyMindFeature:Second save vs. enchantment',
@@ -1413,6 +1413,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       spellAbility = 'intelligence';
       spellsKnown = null;
       spellsPerDay = null;
+      rules.defineRule('casterLevels.Rogue',
+        'magicNotes.minorMagicFeature', '?', null,
+        'levels.Rogue', '=', null
+      );
+      rules.defineRule('casterLevels.W', 'casterLevels.Rogue', '=', null);
       rules.defineRule('combatNotes.masterStrikeFeature',
         'levels.Rogue', '+=', '10 + Math.floor(source / 2)',
         'intelligenceModifier', '+', null
@@ -1433,10 +1438,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('featCount.General', 'features.Feat Bonus', '+=', 'null');
       rules.defineRule
         ('features.Weapon Finesse', 'features.Finesse Rogue', '=', '1');
-      rules.defineRule
-        ('magicNotes.majorMagicFeature', 'levels.Rogue', '=', null);
-      rules.defineRule
-        ('magicNotes.minorMagicFeature', 'levels.Rogue', '=', null);
       rules.defineRule('selectableFeatureCount.Rogue',
         'levels.Rogue', '+=', 'Math.floor(source / 2)'
       );
@@ -1450,6 +1451,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('saveNotes.trapSenseFeature',
         'levels.Rogue', '+=', 'Math.floor(source / 3)'
       );
+      rules.defineRule
+        ('spellsKnown.W0', 'magicNotes.minorMagicFeature', '+=', '1');
+      rules.defineRule
+        ('spellsKnown.W1', 'magicNotes.majorMagicFeature', '+=', '1');
       rules.defineRule('validationNotes.rogueWeaponTrainingFeatureFeats',
         'features.Rogue Weapon Training', '=', '-1',
         /feats.Weapon Focus/, '+', '1',
