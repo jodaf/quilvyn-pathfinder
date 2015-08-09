@@ -241,7 +241,7 @@ Pathfinder.TRAITS = [
   'Gold Finger:Qadira', 'Goldsniffer:Dwarf', 'Greasy Palm:Sczarni',
   'Guardian Of The Forge:Torag', 'Hedge Magician:Magic', 'Highlander:Regional',
   'History Of Heresy:Faith', 'Horse Lord:Qadira', 'Hunter\'s Eye:Andoran',
-  'Know This Guy:Sczarni', 'Impressive Presence:Taldor', 'Indomitable Faith:Faith',
+  'I Know A Guy:Sczarni', 'Impressive Presence:Taldor', 'Indomitable Faith:Faith',
   'Indomitable:Andoran', 'Insider Knowledge:Grand Lodge', 'Killer:Combat',
   'Log Roller:Regional', 'Lore Seeker:Campaign', 'Loyalty:Grand Lodge',
   'Magic Is Life:Nethys', 'Magical Knack:Magic', 'Magical Lineage:Magic',
@@ -4835,9 +4835,9 @@ Pathfinder.traitRules = function(rules, traits) {
       // TODO
     } else if(trait == 'Hunter\'s Eye') {
       // TODO
-    } else if(trait == 'Know This Guy') {
+    } else if(trait == 'I Know A Guy') {
       notes = [
-        'skillNotes.knowThisGuyFeature:' +
+        'skillNotes.iKnowAGuyFeature:' +
           '+1 Knowlege (Local)/+2 Diplomacy to gather information'
       ];
     } else if(trait == 'Impressive Presence') {
