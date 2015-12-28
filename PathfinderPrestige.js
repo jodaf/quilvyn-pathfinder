@@ -374,7 +374,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
       );
       rules.defineRule('validationNotes.dragonDiscipleClassBloodline',
         'levels.Sorcerer', '?', null,
-        'Dragon Disciple', '=', '-1',
+        'levels.Dragon Disciple', '=', '-1',
         'sorcererFeatures.Bloodline Draconic', '+', '1'
       );
       rules.defineRule('validationNotes.dragonDiscipleClassSpells',
