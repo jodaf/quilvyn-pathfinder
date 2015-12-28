@@ -131,8 +131,8 @@ Pathfinder.DOMAINS_ADDED = [
   'Madness', 'Nobility', 'Repose', 'Rune', 'Weather'
 ];
 Pathfinder.FACTIONS = [
-  'Andoran', 'Cheliax', 'The Grand Lodge', 'Osirion', 'Qadira', 'The Sczarni',
-  'The Silver Crusade', 'Taldor'
+  'Andoran', 'Cheliax', 'The Grand Lodge', 'None', 'Osirion', 'Qadira',
+  'The Sczarni', 'The Silver Crusade', 'Taldor'
 ];
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
@@ -4790,7 +4790,9 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Fast-Talker') {
       // TODO
     } else if(trait == 'Fencer') {
-      // TODO
+      notes = [
+        'combatNotes.fencerFeature:+1 attack on AOO with blades'
+      ];
     } else if(trait == 'Fiendish Presence') {
       // TODO
     } else if(trait == 'Fires Of Hell') {
@@ -4921,7 +4923,9 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Scholar Of The Great Beyond') {
       // TODO
     } else if(trait == 'Secrets Of The Sphinx') {
-      // TODO
+      notes = [
+        'skillNotes.secretsOfTheSphinxFeature:+10 single Knowledge 1/day'
+      ];
     } else if(trait == 'Sherrif') {
       notes = [
         'skillNotes.sherrifFeature:' +
