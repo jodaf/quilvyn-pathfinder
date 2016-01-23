@@ -372,7 +372,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.noEscapeFeature:x2 speed 1/rage when foe withdraws',
         'combatNotes.powerfulBlowFeature:+%V damage 1/rage',
         'combatNotes.rageFeature:' +
-          '+4 strength/constitution/+2 Will save/-2 AC for %V rounds %1/day',
+          '+4 strength/constitution/+2 Will save/-2 AC for %V rounds/day',
         'combatNotes.quickReflexesFeature:+1 AOO/round during rage',
         'combatNotes.rollingDodgeFeature:' +
           '+%V AC vs. ranged for %1 rounds during rage',
@@ -465,12 +465,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Barbarian', '=', '1 + Math.floor(source / 4)'
       );
       rules.defineRule('combatNotes.rageFeature',
-        'constitutionModifier', '=', '2 + 2 * source',
-        'features.Greater Rage', '+', '1',
-        'features.Mighty Rage', '+', '1'
-      );
-      rules.defineRule('combatNotes.rageFeature.1',
-        'levels.Barbarian', '+=', '1 + Math.floor(source / 4)'
+        'constitutionModifier', '=', '4 + source',
+        'levels.Barbarian', '+', '(source - 1) * 2'
       );
       rules.defineRule('combatNotes.rollingDodgeFeature',
         'levels.Barbarian', '=', '1 + Math.floor(source / 6)'
@@ -2858,7 +2854,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'featureNotes.extraRageFeature:Rage extra 6 rounds/day',
         'validationNotes.extraRageFeatFeatures:Requires Rage'
       ];
-      rules.defineRule('combatNotes.rageFeature.1',
+      rules.defineRule('combatNotes.rageFeature',
         'featureNotes.extraRageFeature', '+', '6'
       );
     } else if(feat == 'Far Shot') {
