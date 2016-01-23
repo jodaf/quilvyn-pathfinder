@@ -225,8 +225,8 @@ Pathfinder.TRAITS = [
   'Birthmark:Faith', 'Bitter Nobleman:Campaign', 'Brute:Half-Orc',
   'Bullied:Combat', 'Bully:Social', 'Canter:Social',
   'Captain\'s Blade:Andoran', 'Caretaker:Faith', 'Charming:Social',
-  'Child of Nature:N', 'Child of the Streets:Social', 'Child Of the Temple:Faith',
-  'Classically Schooled:Magic', 'Comparative Religion:Silver Crusade', 'Corageous:Combat',
+  'Child Of Nature:N', 'Child Of The Streets:Social', 'Child Of The Temple:Faith',
+  'Classically Schooled:Magic', 'Comparative Religion:Silver Crusade', 'Courageous:Combat',
   'Dangerously Curious:Magic', 'Deft Dodger:Combat', 'Demon Hunter:Asmodeus',
   'Dervish:Qadira', 'Desert Child:Regional', 'Desert Shadow:Qadira',
   'Devil\'s Mark:Cheliax', 'Devotee Of the Green:Faith', 'Dirty Fighter:Combat',
@@ -2304,7 +2304,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('magicNotes.telekineticFistFeature.1',
             schoolLevelAttr, '=', 'Math.floor(source / 2)'
           );
-          // TODO
         }
       }
       for(var j = 0; j < 10; j++) {
@@ -4570,8 +4569,84 @@ Pathfinder.raceRules = function(rules, languages, races) {
 Pathfinder.ruleNotes = function() {
   return '' +
     '<h2>Pathfinder Scribe Module Notes</h2>\n' +
-    'Pathfinder Scribe Module Version ' + Pathfinder_VERSION + '\n' +
-    '\n'; // TODO
+    'Pathfinder Scribe Module Version ' + PATHFINDER_VERSION + '\n' +
+    '<h3>Usage Notes</h3>\n' +
+    '<p>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Although they have a range increment, the weapons Club, Dagger,\n' +
+    '    Light Hammer, Shortspear, Spear, and Trident are all considered\n' +
+    '    melee weapons.  Substitute the ranged attack attribute for the\n' +
+    '    melee attack attribute given on the character sheet when any of\n' +
+    '    these is thrown.\n' +
+    '  </li><li>\n' +
+    '    A few feats have been renamed to emphasize the relationship\n' +
+    '    between similar feats: "Shield Proficiency" and "Tower Shield\n' +
+    '    Proficiency" to "Shield Proficiency (Heavy)" and "Shield\n' +
+    '    Proficiency (Tower)"; "Simple Weapon Proficiency" to "Weapon\n' +
+    '    Proficiency (Simple)"; "Exotic Weapon Proficiency" and "Martial\n' +
+    '    Weapon Proficiency" to "Weapon Proficiency" (a base feat that\n' +
+    '    should be used to define weapon-specific subfeats).\n' +
+    '  </li><li>\n' +
+    '    The distinction between feats and selectable features is\n' +
+    '    arbitrary.  Selectable features could be treated as feats\n' +
+    '    restricted to specific classes; however, doing so would\n' +
+    '    significantly clutter up the feat selection list.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '</p>\n' +
+    '\n' +
+    '<h3>Limitations</h3>\n' +
+    '<p>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Scribe provides no place other than the notes section to enter\n' +
+    '    mundane possessions like lanterns and rope. The same goes for\n' +
+    '    physical description.\n' +
+    '  </li><li>\n' +
+    '    Scribe presently defines no way to add additional types of armor\n' +
+    '    because of all the extra information that would need to be\n' +
+    '    specified&#151;arcane spell failure percentage, AC bonus, max\n' +
+    '    dexterity bonus, skill check penalty, etc.\n' +
+    '  </li><li>\n' +
+    '    Scribe has problems dealing with attributes containing an\n' +
+    '    uncapitalized word.  This is why, e.g., Scribe defines the skills\n' +
+    '    "Sleight Of Hand" and "Knowledge (Arcana)" instead of "Sleight of\n' +
+    '    Hand" and "Knowledge (arcana)".  There are other occasions when\n' +
+    '    Scribe is picky about case; when defining your own attributes,\n' +
+    '    it\'s safest to follow the conventions Scribe uses.\n' +
+    '  </li><li>\n' +
+    '    The customRule interface is not very intuitive, making it more\n' +
+    '    confusing to add new rules than it should be.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '</p>\n' +
+    '\n' +
+    '<h3>Known Bugs</h3>\n' +
+    '<p>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Scribe adds the dexterity modifier to attack throws for all\n' +
+    '    weapons of characters with the Weapon Finesse feat, not just\n' +
+    '    light weapons.\n' +
+    '  </li><li>\n' +
+    '    Scribe incorrectly validates the Mystic Theurge requirement of\n' +
+    '    being able to cast 2nd-level arcane and divine spells.  It checks\n' +
+    '    that the character is caster level 3 in each catetory, whereas\n' +
+    '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
+    '    spells until a higher caster level.\n' +
+    '  </li><li>\n' +
+    '    Scribe lists the fly speed for a 9th-level Dragon Disciple as 30\n' +
+    '    instead of the correct 60.\n'+
+    '  </li><li>\n' +
+    '    When an character ability score is modified, Scribe recalculates\n' +
+    '    attributes based on that ability from scratch.  For example,\n' +
+    '    bumping intelligence when a character reaches fourth level causes\n' +
+    '    Scribe to recompute the number of skill points awarded at first\n' +
+    '    level.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '</p>\n';
 };
 
 /* Defines the rules related to character skills. */
@@ -4686,13 +4761,24 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Anatomist') {
       notes = ['combatNotes.anatomistFeature:+1 critical hit rolls'];
     } else if(trait == 'Animal Friend') {
-      // TODO
+      notes = [
+        'saveNotes.animalFriendFeature:+1 Will when unhostile animal w/in 30 ft',
+        'skillNotes.animalFriendFeature:Handle Animal is class skill'
+      ];
+      rules.defineRule('classSkills.Handle Animal',
+        'skillNotes.animalFriendFeature', '=', '1'
+      );
     } else if(trait == 'Apothecary') {
       notes = [
         'featureNotes.apothecaryFeature:Have reliable source for poisons'
       ];
     } else if(trait == 'Armor Expert') {
-      // TODO
+      notes = [
+        'skillNotes.armorExpertFeature:-1 armor skill check penalty'
+      ];
+      rules.defineRule('skillNotes.armorSkillCheckPenalty',
+        'skillNotes.armorExpertFeature', '+', '-1'
+      );
     } else if(trait == 'Attuned To The Ancestors') {
       // TODO
     } else if(trait == 'Bad Reputation') {
@@ -4700,38 +4786,81 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Beneficient Touch') {
       // TODO
     } else if(trait == 'Birthmark') {
-      // TODO
+      notes = [
+        'saveNotes.birthmarkFeature:+2 vs. charm/compulsion'
+      ];
     } else if(trait == 'Bitter Nobleman') {
-      // TODO
+      notes = [
+        'skillNotes.bitterNoblemanFeature:+1 selected skill when working for patron'
+      ];
     } else if(trait == 'Brute') {
-      // TODO
+      notes = [
+        'skillNotes.bruteFeature:+1 Intimidate'
+      ];
+      rules.defineRule
+        ('classSkills.Intimidate', 'skillNotes.bruteFeature', '=', '1');
     } else if(trait == 'Bullied') {
-      // TODO
+      notes = [
+        'combatNotes.bulliedFeature:+1 unarmed AOO attack'
+      ];
     } else if(trait == 'Bully') {
-      // TODO
+      notes = [
+        'skillNotes.bullyFeature:+1 Intimidate'
+      ];
+      rules.defineRule
+        ('classSkills.Intimidate', 'skillNotes.bullyFeature', '=', '1');
     } else if(trait == 'Canter') {
-      // TODO
+      notes = [
+        'skillNotes.canterFeature:+5 catch secret messages'
+      ];
     } else if(trait == 'Captain\'s Blade') {
       // TODO
     } else if(trait == 'Caretaker') {
-      // TODO
+      notes = [
+        'skillNotes.caretakerFeature:+1 Heal'
+      ];
+      rules.defineRule
+        ('classSkills.Heal', 'skillNotes.caretakerFeature', '=', '1');
     } else if(trait == 'Charming') {
-      // TODO
-    } else if(trait == 'Child of Nature') {
-      // TODO
-    } else if(trait == 'Child of the Streets') {
-      // TODO
-    } else if(trait == 'Child Of the Temple') {
-      // TODO
+      notes = [
+        'magicNotes.charmingFeature:+1 spell DC w/attracted creatures',
+        'skillNotes.charmingFeature:+1 Bluff/Diplomacy w/attracted creatures'
+      ];
+    } else if(trait == 'Child Of Nature') {
+      notes = [
+        'skillNotes.childOfNatureFeature:+1 Survival finding food and water/Knowledge (Nature)'
+      ];
+      // TODO - player's choice of K(N) or Survival
+      rules.defineRule('classSkills.Knowledge (Nature)',
+        'skillNotes.childOfNatureFeature', '=', '1'
+      );
+    } else if(trait == 'Child Of The Streets') {
+      notes = [
+        'skillNotes.childOfTheStreetsFeature:+1 Sleight Of Hand'
+      ];
+      rules.defineRule
+        ('classSkills.Sleight Of Hand', 'skillNotes.childOfTheStreetsFeature', '=', '1');
+    } else if(trait == 'Child Of The Temple') {
+      notes = [
+        'skillNotes.childOfTheTempleFeature:+1 Knowledge (Nobility)/Knowledge (Religion)'
+      ];
+      // TODO - player's choice of K(N) or K(R)
+      rules.defineRule
+        ('classSkills.Knowledge (Religion)', 'skillNotes.childOfTheTempleFeature', '=', '1');
     } else if(trait == 'Classically Schooled') {
-      // TODO
+      notes = [
+        'skillNotes.classicallySchooledFeature:+1 Spellcraft'
+      ];
+      rules.defineRule('classSkills.Spellcraft',
+        'skillNotes.classicallySchooledFeature', '=', '1'
+      );
     } else if(trait == 'Comparative Religion') {
       notes = ['skillNotes.comparativeReligionFeature:+1 Knowledge (Religion)'];
       rules.defineRule('classSkills.Knowledge (Religion)',
         'features.Comparative Religion', '=', '1'
       );
-    } else if(trait == 'Corageous') {
-      // TODO
+    } else if(trait == 'Courageous') {
+      notes = ['saveNotes.courageousFeature:+2 vs. fear'];
     } else if(trait == 'Dangerously Curious') {
       // TODO
     } else if(trait == 'Deft Dodger') {
