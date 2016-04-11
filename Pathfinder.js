@@ -878,8 +878,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Medusa\'s Wrath', 'Snatch Arrows', 'Spring Attack'
       ];
       features = [
-        '1:Flurry Of Blows', '1:Two-Weapon Fighting', '1:Stunning Fist',
-        '1:Unarmed Strike',
+        '1:Flurry Of Blows', '1:Improved Unarmed Strike',
+        '1:Two-Weapon Fighting', '1:Stunning Fist',
         '1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
         '2:Evasion', '3:Fast Movement',
         '3:Maneuver Training', '3:Still Mind', '4:Ki Pool',
@@ -901,6 +901,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Third off-hand -10 attack',
         'combatNotes.improvedTwo-WeaponFightingFeature:' +
           'Second off-hand -5 attack',
+        'combatNotes.improvedUnarmedStrikeFeature:' +
+          'No AOO on unarmed attack, may deal lethal damage',
         'featureNotes.kiPoolFeature:' +
           'Ki strike/additional attack/+20 speed/+4 AC %V/day',
         'combatNotes.lawfulKiStrikeFeature:Treat ki strike as lawful weapon',
@@ -1031,6 +1033,20 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'source < 12 ? ("d" + (6 + Math.floor(source / 4) * 2)) : ' +
         '              ("2d" + (6 + Math.floor((source - 12) / 4) * 2))'
       );
+      // Supress validation checking for monk feats
+      for(var j = 0; j < feats.length; j++) {
+        var featNoSpace =
+          feats[j].substring(0,1).toLowerCase() + feats[j].substring(1).replace(/ /g, '');
+        rules.defineRule('validationNotes.' + featNoSpace + 'FeatAbility',
+          'levels.Monk', '^', '0'
+        );
+        rules.defineRule('validationNotes.' + featNoSpace + 'FeatBaseAttack',
+          'levels.Monk', '^', '0'
+        );
+        rules.defineRule('validationNotes.' + featNoSpace + 'FeatFeatures',
+          'levels.Monk', '^', '0'
+        );
+      }
 
     } else if(klass == 'Paladin') {
 
