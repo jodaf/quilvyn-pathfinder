@@ -884,9 +884,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         '2:Evasion', '3:Fast Movement',
         '3:Maneuver Training', '3:Still Mind', '4:Ki Pool',
         '4:Magic Ki Strike', '4:Slow Fall', '5:High Jump', '5:Purity Of Body',
-        '7:Wholeness Of Body', '8:Improved Two-Weapon Fighting',
-        '9:Improved Evasion', '10:Lawful Ki Strike', '11:Diamond Body',
-        '12:Abundant Step', '13:Diamond Soul', '15:Greater Two-Weapon Fighting',
+        '7:Wholeness Of Body', '8:Condition Fist',
+        '8:Improved Two-Weapon Fighting', '9:Improved Evasion',
+        '10:Lawful Ki Strike', '11:Diamond Body', '12:Abundant Step',
+        '13:Diamond Soul', '15:Greater Two-Weapon Fighting',
         '15:Quivering Palm', '16:Adamantine Ki Strike', '17:Timeless Body',
         '17:Tongue Of The Sun And Moon', '19:Empty Body', '20:Perfect Self'
       ];
@@ -895,8 +896,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'abilityNotes.fastMovementFeature:+%V speed',
         'combatNotes.adamantineKiStrikeFeature:' +
           'Treat ki strike as adamantine weapon',
+        'combatNotes.conditionFist:Stunning Fist may instead make target %V',
         'combatNotes.flurryOfBlowsFeature:' +
-          'Extra attack(s) w/monk weapon using +%V Base Attack Bonus',
+          'Full-round attack w/monk weapon allows %V +%1 attacks',
         'combatNotes.greaterTwo-WeaponFightingFeature:' +
           'Third off-hand -10 attack',
         'combatNotes.improvedTwo-WeaponFightingFeature:' +
@@ -976,12 +978,25 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('abilityNotes.fastMovementFeature',
         'levels.Monk', '+=', '10 * Math.floor(source / 3)'
       );
-      rules.defineRule
-        ('combatNotes.flurryOfBlowsFeature', 'levels.Monk', '=', null);
+      rules.defineRule('combatNotes.flurryOfBlowsFeature',
+        'attacksPerRound', '=', 'source + 1'
+      );
+      rules.defineRule('combatNotes.flurryOfBlowsFeature.1',
+        'levels.Monk', '=', 'source - 2',
+        'meleeAttack', '+', null,
+        'baseAttack', '+', '-source'
+      );
       rules.defineRule
         ('armorClass', 'combatNotes.monkArmorClassAdjustment', '+', null);
       rules.defineRule('combatManeuverDefense',
         'combatNotes.monkArmorClassAdjustment', '+', null
+      );
+      rules.defineRule('combatNotes.conditionFist',
+        'levels.Monk', '=', '"Fatigued" + ' +
+          '(source < 8 ? "" : "/Sickened") + ' +
+          '(source < 12 ? "" : "/Staggered") + ' +
+          '(source < 16 ? "" : "/Blind/Deafened") + ' +
+          '(source < 20 ? "" : "/Paralyzed")'
       );
       rules.defineRule('combatNotes.monkArmorClassAdjustment',
         'armor', '?', 'source == "None"',
