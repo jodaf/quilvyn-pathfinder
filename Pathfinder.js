@@ -1286,7 +1286,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
       );
       rules.defineRule('combatNotes.favoredTerrainFeature',
-        'levels.Ranger', '+=', '1 + Math.floor((source + 2) / 5)'
+        'levels.Ranger', '+=', 'Math.floor((source + 2) / 5)'
       );
       rules.defineRule
         ('combatNotes.companionBondFeature', 'wisdomModifier', '=', null);
@@ -1306,7 +1306,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
       );
       rules.defineRule('skillNotes.favoredTerrainFeature',
-        'levels.Ranger', '+=', '1 + Math.floor((source + 2) / 5)'
+        'levels.Ranger', '+=', 'Math.floor((source + 2) / 5)'
       );
       rules.defineRule('skillNotes.quarryFeature',
         '', '=', '10',
