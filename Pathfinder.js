@@ -919,8 +919,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'magicNotes.abundantStepFeature:' +
           'Use 1 ki to <i>Dimension Door</i> at level %V',
         'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
-        'magicNotes.wholenessOfBodyFeature:' +
-          'Use 2 ki to heal %V damage to self/day',
+        'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V damage to self',
         'sanityNotes.monkClassArmor:Requires Armor == None',
         'sanityNotes.monkClassShield:Requires Shield == None',
         'saveNotes.diamondBodyFeature:Immune to poison',
