@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.0';
+var PATHFINDER_VERSION = '1.0.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -881,34 +881,31 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         '1:Flurry Of Blows', '1:Improved Unarmed Strike',
         '1:Two-Weapon Fighting', '1:Stunning Fist',
         '1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
-        '2:Evasion', '3:Fast Movement',
-        '3:Maneuver Training', '3:Still Mind', '4:Ki Pool',
-        '4:Magic Ki Strike', '4:Slow Fall', '5:High Jump', '5:Purity Of Body',
-        '7:Wholeness Of Body', '8:Condition Fist',
-        '8:Improved Two-Weapon Fighting', '9:Improved Evasion',
-        '10:Lawful Ki Strike', '11:Diamond Body', '12:Abundant Step',
+        '2:Evasion', '3:Fast Movement', '3:Maneuver Training', '3:Still Mind',
+        '4:Ki Dodge', '4:Ki Pool', '4:Ki Speed', '4:Ki Strike', '4:Slow Fall',
+        '5:High Jump', '5:Purity Of Body', '7:Wholeness Of Body',
+        '8:Condition Fist', '8:Improved Two-Weapon Fighting',
+        '9:Improved Evasion', '11:Diamond Body', '12:Abundant Step',
         '13:Diamond Soul', '15:Greater Two-Weapon Fighting',
-        '15:Quivering Palm', '16:Adamantine Ki Strike', '17:Timeless Body',
+        '15:Quivering Palm', '17:Timeless Body',
         '17:Tongue Of The Sun And Moon', '19:Empty Body', '20:Perfect Self'
       ];
       hitDie = 8;
       notes = [
         'abilityNotes.fastMovementFeature:+%V speed',
-        'combatNotes.adamantineKiStrikeFeature:' +
-          'Treat ki strike as adamantine weapon',
+        'abilityNotes.kiSpeedFeature:Use 1 ki for +20',
         'combatNotes.conditionFist:Stunning Fist may instead make target %V',
         'combatNotes.flurryOfBlowsFeature:' +
-          'Full-round attack w/monk weapon allows %V +%1 attacks',
+          'Full-round %V +%1 monk weapon attacks, use 1 ki for one more',
         'combatNotes.greaterTwo-WeaponFightingFeature:' +
           'Third off-hand -10 attack',
         'combatNotes.improvedTwo-WeaponFightingFeature:' +
           'Second off-hand -5 attack',
         'combatNotes.improvedUnarmedStrikeFeature:' +
           'No AOO on unarmed attack, may deal lethal damage',
-        'featureNotes.kiPoolFeature:' +
-          'Ki strike/additional attack/+20 speed/+4 AC %V/day',
-        'combatNotes.lawfulKiStrikeFeature:Treat ki strike as lawful weapon',
-        'combatNotes.magicKiStrikeFeature:Treat ki strike as magic weapon',
+        'combatNotes.kiDodgeFeature:Use 1 ki for +4 AC',
+        'featureNotes.kiPoolFeature:%V points refills w/8 hours rest',
+        'combatNotes.kiStrikeFeature:Unarmed attack is %V',
         'combatNotes.maneuverTrainingFeature:+%V CMB',
         'combatNotes.monkArmorClassAdjustment:+%V AC/CMD',
         'combatNotes.perfectSelfFeature:DR 10/chaotic',
@@ -920,11 +917,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'featureNotes.timelessBodyFeature:No aging penalties',
         'featureNotes.tongueOfTheSunAndMoonFeature:Speak w/any living creature',
         'magicNotes.abundantStepFeature:' +
-          'Use ki pool to <i>Dimension Door</i> at level %V',
-        'magicNotes.emptyBodyFeature:' +
-          'Use ki pool for 1 minute <i>Etherealness</i>',
+          'Use 1 ki to <i>Dimension Door</i> at level %V',
+        'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
         'magicNotes.wholenessOfBodyFeature:' +
-          'Use ki pool to heal %V damage to self/day',
+          'Use 2 ki to heal %V damage to self/day',
         'sanityNotes.monkClassArmor:Requires Armor == None',
         'sanityNotes.monkClassShield:Requires Shield == None',
         'saveNotes.diamondBodyFeature:Immune to poison',
@@ -936,7 +932,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.slowFallFeature:' +
           'Subtract %V ft from falling damage distance',
         'saveNotes.stillMindFeature:+2 vs. enchantment',
-        'skillNotes.highJumpFeature:+%V Acrobatics (Jump), ki use for +20',
+        'skillNotes.highJumpFeature:+%V Acrobatics (Jump), use 1 ki for +20',
         'validationNotes.Gorgon\'sFistSelectableFeatureLevels:' +
            'Requires Monk >= 6',
         'validationNotes.improvedBullRushSelectableFeatureLevels:' +
@@ -986,17 +982,23 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'meleeAttack', '+', null,
         'baseAttack', '+', '-source'
       );
+      rules.defineRule('combatNotes.kiStrikeFeature',
+        'levels.Monk', '=',
+        '"magic" + ' +
+        '(source < 10 ? "" : "/lawful") + ' +
+        '(source < 16 ? "" : "/adamantine")'
+      )
       rules.defineRule
         ('armorClass', 'combatNotes.monkArmorClassAdjustment', '+', null);
       rules.defineRule('combatManeuverDefense',
         'combatNotes.monkArmorClassAdjustment', '+', null
       );
       rules.defineRule('combatNotes.conditionFist',
-        'levels.Monk', '=', '"Fatigued" + ' +
-          '(source < 8 ? "" : "/Sickened") + ' +
-          '(source < 12 ? "" : "/Staggered") + ' +
-          '(source < 16 ? "" : "/Blind/Deafened") + ' +
-          '(source < 20 ? "" : "/Paralyzed")'
+        'levels.Monk', '=', '"fatigued" + ' +
+          '(source < 8 ? "" : "/sickened") + ' +
+          '(source < 12 ? "" : "/staggered") + ' +
+          '(source < 16 ? "" : "/blind/deafened") + ' +
+          '(source < 20 ? "" : "/paralyzed")'
       );
       rules.defineRule('combatNotes.monkArmorClassAdjustment',
         'armor', '?', 'source == "None"',
