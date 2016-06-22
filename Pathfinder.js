@@ -920,8 +920,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Use 1 ki to <i>Dimension Door</i> at level %V',
         'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
         'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V damage to self',
-        'sanityNotes.monkClassArmor:Requires Armor == None',
-        'sanityNotes.monkClassShield:Requires Shield == None',
+        'sanityNotes.monkClassArmor:Implies Armor == None',
+        'sanityNotes.monkClassShield:Implies Shield == None',
         'saveNotes.diamondBodyFeature:Immune to poison',
         'saveNotes.diamondSoulFeature:DC %V spell resistance',
         'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
@@ -2510,7 +2510,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
 
     if(feat == 'Acrobatic') {
       notes = [
-        'sanityNotes.acrobaticFeatSkills:Requires Acrobatics||Fly',
+        'sanityNotes.acrobaticFeatSkills:Implies Acrobatics||Fly',
         'skillNotes.acrobaticFeature:+%V Acrobatics/+%1 Fly'
       ];
       rules.defineRule('skillNotes.acrobaticFeature',
@@ -2532,7 +2532,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.agileManeuversFeature:+%V CMB (dex instead of str)',
         'sanityNotes.agileManeuversFeatAbility:' +
-          'Requires Dexterity Modifier exceed Strength Modifier'
+          'Implies Dexterity Modifier exceed Strength Modifier'
       ];
       rules.defineRule('combatNotes.agileManeuversFeature',
         'dexterityModifier', '=', null,
@@ -2548,7 +2548,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Alertness') {
       notes = [
-        'sanityNotes.alertnessFeatSkills:Requires Perception||Sense Motive',
+        'sanityNotes.alertnessFeatSkills:Implies Perception||Sense Motive',
         'skillNotes.alertnessFeature:+%V Perception/+%1 Sense Motive'
       ];
       rules.defineRule('skillNotes.alertnessFeature',
@@ -2568,7 +2568,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Animal Affinity') {
       notes = [
-        'sanityNotes.animalAffinityFeatSkills:Requires Handle Animal||Ride',
+        'sanityNotes.animalAffinityFeatSkills:Implies Handle Animal||Ride',
         'skillNotes.animalAffinityFeature:+%V Handle Animal/+%1 Ride'
       ];
       rules.defineRule('skillNotes.animalAffinityFeature',
@@ -2636,7 +2636,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Armor Proficiency (Medium)') { // as SRD35
     } else if(feat == 'Athletic') {
       notes = [
-        'sanityNotes.athleticFeatSkills:Requires Climb||Swim',
+        'sanityNotes.athleticFeatSkills:Implies Climb||Swim',
         'skillNotes.athleticFeature:+%V Climb/+%1 Swim'
       ];
       rules.defineRule('skillNotes.athleticFeature',
@@ -2772,7 +2772,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Deceitful') {
       notes = [
-        'sanityNotes.deceitfulFeatSkills:Requires Bluff||Disguise',
+        'sanityNotes.deceitfulFeatSkills:Implies Bluff||Disguise',
         'skillNotes.deceitfulFeature:+%V Bluff/+%1 Disguise'
       ];
       rules.defineRule('skillNotes.deceitfulFeature',
@@ -2796,7 +2796,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Deft Hands') {
       notes = [
         'sanityNotes.deftHandsFeatSkills:' +
-          'Requires Disable Device||Sleight Of Hand',
+          'Implies Disable Device||Sleight Of Hand',
         'skillNotes.deftHandsFeature:+%V Disable Device/+%1 Sleight Of Hand'
       ];
       rules.defineRule('skillNotes.deftHandsFeature',
@@ -3139,8 +3139,8 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Intimidating Prowess') {
       notes = [
-        'sanityNotes.intimidatingProwessFeatAbility:Requires Strength >= 12',
-        'sanityNotes.intimidatingProwessFeatSkills:Requires Intimidate',
+        'sanityNotes.intimidatingProwessFeatAbility:Implies Strength >= 12',
+        'sanityNotes.intimidatingProwessFeatSkills:Implies Intimidate',
         'skillNotes.intimidatingProwessFeature:+%V Intimidate'
       ];
       rules.defineRule('skillModifier.Intimidate',
@@ -3173,7 +3173,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Magical Aptitude') {
       notes = [
         'sanityNotes.magicalAptitudeFeatSkills:' +
-          'Requires Spellcraft||Use Magic Device',
+          'Implies Spellcraft||Use Magic Device',
         'skillNotes.magicalAptitudeFeature:+%V Spellcraft/+%1 Use Magic Device'
       ];
       rules.defineRule('skillNotes.magicalAptitudeFeature',
@@ -3234,7 +3234,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Persuasive') {
       notes = [
-        'sanityNotes.persuasiveFeatSkills:Requires Diplomacy||Intimidate',
+        'sanityNotes.persuasiveFeatSkills:Implies Diplomacy||Intimidate',
         'skillNotes.persuasiveFeature:+%V Diplomacy/+%1 Intimidate'
       ];
       rules.defineRule('skillNotes.persuasiveFeature',
@@ -3310,7 +3310,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Self Sufficient') {
       notes = [
-        'sanityNotes.selfSufficientFeatSkills:Requires Heal||Survival',
+        'sanityNotes.selfSufficientFeatSkills:Implies Heal||Survival',
         'skillNotes.selfSufficientFeature:+%V Heal/+%1 Survival'
       ];
       rules.defineRule('skillNotes.selfSufficientFeature',
@@ -3374,7 +3374,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         note + ':+%V checks',
         'sanityNotes.skillFocus(' + skillNoSpace + ')FeatSkills:' +
-          'Requires ' + skill
+          'Implies ' + skill
       ];
       rules.defineRule(note,
         '', '=', '3',
@@ -3413,7 +3413,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Stealthy') {
       notes = [
-        'sanityNotes.stealthyFeatSkills:Requires Escape Artist||Stealth',
+        'sanityNotes.stealthyFeatSkills:Implies Escape Artist||Stealth',
         'skillNotes.stealthyFeature:+%V Escape Artist/+%1 Stealth'
       ];
       rules.defineRule('skillNotes.stealthyFeature',
