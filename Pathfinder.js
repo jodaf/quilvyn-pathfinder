@@ -806,8 +806,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'charismaModifier', '+', null
       );
 
+      rules.defineRule('animalCompanionDruidLevel',
+        'druidFeatures.Animal Companion', '?', null,
+        'levels.Druid', '=', null
+      );
       rules.defineRule
-        ('animalCompanionMasterLevel', 'levels.Druid', '+=', null);
+        ('animalCompanionMasterLevel', 'animalCompanionDruidLevel', '+=', null);
 
     } else if(klass == 'Fighter') {
 
@@ -1745,6 +1749,15 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.schoolPowerFeature:+2 DC on spells from chosen school'
           ]);
           selectableFeatures.push('Bonded Object', 'Familiar');
+          rules.defineRule('familiarSorcererLevel',
+            'sorcererFeatures.Familiar', '?', null,
+            'levels.Sorcerer', '=', null
+          );
+          rules.defineRule('familiarLevel',
+            'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
+          );
+          rules.defineRule
+            ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
           rules.defineRule
             ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
           rules.defineRule('magicNotes.metamagicAdeptFeature',
@@ -2101,9 +2114,15 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('combatNotes.handOfTheApprenticeFeature.1',
         'intelligenceModifier', '=', 'source + 3'
       );
+      rules.defineRule('familiarWizardLevel',
+        'wizardFeatures.Familiar', '?', null,
+        'levels.Wizard', '=', null
+      );
+      rules.defineRule('familiarLevel',
+        'familiarWizardLevel', '+=', 'Math.floor((source+1) / 2)'
+      );
       rules.defineRule
-        ('familiarLevel', 'levels.Wizard', '+=', 'Math.floor(source / 2)');
-      rules.defineRule('familiarMasterLevel', 'levels.Wizard', '+=', null);
+        ('familiarMasterLevel', 'familiarWizardLevel', '+=', null);
       rules.defineRule('featCount.Wizard',
         'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
       );
@@ -2425,6 +2444,7 @@ Pathfinder.companionRules = function(rules, companions) {
   );
   // Add features not found in SRD35
   var notes = [
+    'animalCompanionStats.abilities:+%V',
     'animalCompanionStats.bab:+%V',
     'animalCompanionStats.fort:+%V',
     'animalCompanionStats.ref:+%V',
@@ -2433,6 +2453,10 @@ Pathfinder.companionRules = function(rules, companions) {
     'animalCompanionStats.feats:%V'
   ];
   rules.defineNote(notes);
+  rules.defineRule('animalCompanionStats.abilities',
+    'animalCompanionMasterLevel', '=',
+    'source < 4 ? null : source == 19 ? 3 : Math.floor((source + 1) / 5)'
+  );
   rules.defineRule('animalCompanionStats.bab',
     'animalCompanionMasterLevel', '=',
     'Math.floor((source + 2) / 2) + ' +
@@ -3773,7 +3797,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
       );
       rules.defineRule('animalCompanionMasterLevel',
-        'animalCompanionClericLevel', '=', null
+        'animalCompanionClericLevel', '+=', null
       );
       rules.defineRule('magicNotes.speakWithAnimalsFeature',
         'levels.Cleric', '=', 'source + 3'
