@@ -49,6 +49,12 @@ function Pathfinder() {
   }
 
   var rules = new ScribeRules('Pathfinder', PATHFINDER_VERSION);
+  rules.defineChoice('preset', 'race', 'level', 'levels');
+  rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
+  rules.editorElements = SRD35.initialEditorElements();
+  rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
+  rules.makeValid = SRD35.makeValid;
+  rules.ruleNotes = Pathfinder.ruleNotes;
   Pathfinder.viewer = new ObjectViewer();
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
   Pathfinder.abilityRules(rules);
@@ -56,7 +62,9 @@ function Pathfinder() {
     rules, SRD35.LANGUAGES.concat(Pathfinder.LANGUAGES_ADDED), SRD35.RACES
   );
   Pathfinder.classRules(rules, SRD35.CLASSES, Pathfinder.BLOODLINES);
-  Pathfinder.companionRules(rules, Pathfinder.COMPANIONS);
+  Pathfinder.companionRules
+    (rules, Pathfinder.COMPANIONS, Pathfinder.ANIMAL_COMPANIONS,
+     Pathfinder.FAMILIARS);
   Pathfinder.skillRules(rules, Pathfinder.SKILLS, Pathfinder.SUBSKILLS);
   Pathfinder.featRules(rules, Pathfinder.FEATS, Pathfinder.SUBFEATS);
   Pathfinder.descriptionRules
@@ -69,12 +77,6 @@ function Pathfinder() {
   Pathfinder.magicRules
     (rules, SRD35.CLASSES, SRD35.DOMAINS.concat(Pathfinder.DOMAINS_ADDED),
      SRD35.SCHOOLS);
-  rules.defineChoice('preset', 'race', 'level', 'levels');
-  rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
-  rules.editorElements = SRD35.initialEditorElements();
-  rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
-  rules.makeValid = SRD35.makeValid;
-  rules.ruleNotes = Pathfinder.ruleNotes;
   Scribe.addRuleSet(rules);
   Pathfinder.rules = rules;
 
@@ -98,6 +100,11 @@ function Pathfinder() {
 }
 
 // Arrays of choices
+Pathfinder.ANIMAL_COMPANIONS = [
+  'Ape', 'Badger', 'Bear', 'Boar', 'Camel', 'Cheetah', 'Constrictor',
+  'Crocodile', 'Deinonychus', 'Dog', 'Eagle', 'Hawk', 'Horse', 'Leopard',
+  'Lion', 'Owl', 'Pony', 'Shark', 'Tiger', 'Velociraptor', 'Viper', 'Wolf'
+];
 Pathfinder.BLOODLINES = [
   'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic',
   'Elemental', 'Fey', 'Infernal', 'Undead'
@@ -133,6 +140,11 @@ Pathfinder.DOMAINS_ADDED = [
 Pathfinder.FACTIONS = [
   'Andoran', 'Cheliax', 'The Grand Lodge', 'None', 'Osirion', 'Qadira',
   'The Sczarni', 'The Silver Crusade', 'Taldor'
+];
+Pathfinder.FAMILIARS = [
+  'Bat', 'Cat', 'Hawk', 'Lizard', 'Monkey', 'Owl', 'Rat', 'Raven', 'Toad',
+  'Viper', 'Weasel', 'Dire Rat', 'Elemental', 'Homunculus', 'Imp', 'Mephit',
+  'Pseudodragon', 'Quasit', 'Stirge'
 ];
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
@@ -2436,52 +2448,98 @@ Pathfinder.combatRules = function(rules) {
 };
 
 /* Defines the rules related to companion creatures. */
-Pathfinder.companionRules = function(rules, companions) {
+Pathfinder.companionRules = function(rules, companions, animals, familiars) {
   SRD35.companionRules(rules, companions);
   // Override SRD35 animal companion HD progression
   rules.defineRule('animalCompanionStats.hitDice',
     'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1) / 4)'
   );
   // Add features not found in SRD35
-  var notes = [
-    'animalCompanionStats.abilities:+%V',
-    'animalCompanionStats.bab:+%V',
-    'animalCompanionStats.fort:+%V',
-    'animalCompanionStats.ref:+%V',
-    'animalCompanionStats.will:+%V',
-    'animalCompanionStats.skills:%V',
-    'animalCompanionStats.feats:%V'
-  ];
-  rules.defineNote(notes);
-  rules.defineRule('animalCompanionStats.abilities',
-    'animalCompanionMasterLevel', '=',
-    'source < 4 ? null : source == 19 ? 3 : Math.floor((source + 1) / 5)'
-  );
-  rules.defineRule('animalCompanionStats.bab',
-    'animalCompanionMasterLevel', '=',
-    'Math.floor((source + 2) / 2) + ' +
-    '(source == 9 ? 1 : source < 13 ? 0 : source == 16 ? 0 : 1)'
-  );
-  rules.defineRule('animalCompanionStats.feats',
-    'animalCompanionMasterLevel', '=',
-    'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
-    'Math.floor((source + 4) / 3)'
-  );
-  rules.defineRule('animalCompanionStats.fort',
-    'animalCompanionMasterLevel', '=',
-    'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
-  );
-  rules.defineRule('animalCompanionStats.ref',
-    'animalCompanionMasterLevel', '=',
-    'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
-  );
-  rules.defineRule('animalCompanionStats.will',
-    'animalCompanionMasterLevel', '=', 'Math.floor((source + 2) / 4)'
-  );
-  rules.defineRule('animalCompanionStats.skills',
-    'animalCompanionMasterLevel', '=',
-    'source + 1 - Math.floor((source + 1) / 4)'
-  );
+  if(animals != null && animals.length > 0) {
+    var notes = [
+      'animalCompanionStats.abilities:+%V',
+      'animalCompanionStats.bab:+%V',
+      'animalCompanionStats.fort:+%V',
+      'animalCompanionStats.ref:+%V',
+      'animalCompanionStats.will:+%V',
+      'animalCompanionStats.skills:%V',
+      'animalCompanionStats.feats:%V'
+    ];
+    rules.defineNote(notes);
+    rules.defineRule('animalCompanionStats.abilities',
+      'animalCompanionMasterLevel', '=',
+      'source < 4 ? null : source == 19 ? 3 : Math.floor((source + 1) / 5)'
+    );
+    rules.defineRule('animalCompanionStats.bab',
+      'animalCompanionMasterLevel', '=',
+      'Math.floor((source + 2) / 2) + ' +
+      '(source == 9 ? 1 : source < 13 ? 0 : source == 16 ? 0 : 1)'
+    );
+    rules.defineRule('animalCompanionStats.feats',
+      'animalCompanionMasterLevel', '=',
+      'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
+      'Math.floor((source + 4) / 3)'
+    );
+    rules.defineRule('animalCompanionStats.fort',
+      'animalCompanionMasterLevel', '=',
+      'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
+    );
+    rules.defineRule('animalCompanionStats.ref',
+      'animalCompanionMasterLevel', '=',
+      'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
+    );
+    rules.defineRule('animalCompanionStats.will',
+      'animalCompanionMasterLevel', '=', 'Math.floor((source + 2) / 4)'
+    );
+    rules.defineRule('animalCompanionStats.skills',
+      'animalCompanionMasterLevel', '=',
+      'source + 1 - Math.floor((source + 1) / 4)'
+    );
+    rules.defineChoice('animalCompanions', animals);
+    rules.defineEditorElement
+      ('animalCompanion', 'Animal Companion', 'set', 'animalCompanions', 'notes');
+    rules.defineSheetElement('Animal Companion', 'Animal Companion Stats');
+  }
+  if(familiars != null && familiars.length > 0) {
+    rules.defineChoice('familiars', familiars);
+    rules.defineChoice('familiarTemplates', 'Normal', 'Celestial', 'Fiendish');
+    rules.defineEditorElement
+      ('familiar', 'Familiar', 'set', 'familiars', 'notes');
+    rules.defineEditorElement
+      ('familiarTemplate', '', 'select-one', 'familiarTemplates', 'notes');
+    rules.defineSheetElement('Familiar Template', 'Familiar Stats', '<b>Familiar</b>: %V');
+    rules.defineSheetElement('Familiar', 'Familiar Template+', '%V', ' ');
+    notes = [
+      'combatNotes.familiarToad:+3 Hit Points',
+      'saveNotes.familiarRat:+2 Fortitude',
+      'saveNotes.familiarWeasel:+2 Reflex',
+      'skillNotes.familiarBat:+3 Fly',
+      'skillNotes.familiarCat:+3 Stealth',
+      'skillNotes.familiarHawk:+3 sight-based Perception in bright light',
+      'skillNotes.familiarLizard:+3 Climb',
+      'skillNotes.familiarMonkey:+3 Acrobatics',
+      'skillNotes.familiarOwl:+3 sight-based Perception in shadows/darkness',
+      'skillNotes.familiarRaven:+3 Appraise',
+      'skillNotes.familiarViper:+3 Bluff'
+    ];
+    rules.defineNote(notes);
+    rules.defineRule('combatNotes.familiarToad', 'familiar.Toad', '=', '1');
+    rules.defineRule('saveNotes.familiarRat', 'familiar.Rat', '=', '1');
+    rules.defineRule('saveNotes.familiarWeasel', 'familiar.Weasel', '=', '1');
+    rules.defineRule('skillNotes.familiarBat', 'familiar.Bat', '=', '1');
+    rules.defineRule('skillNotes.familiarCat', 'familiar.Cat', '=', '1');
+    rules.defineRule('skillNotes.familiarHawk', 'familiar.Hawk', '=', '1');
+    rules.defineRule('skillNotes.familiarLizard', 'familiar.Lizard', '=', '1');
+    rules.defineRule('skillNotes.familiarMonkey', 'familiar.Monkey', '=', '1');
+    rules.defineRule('skillNotes.familiarOwl', 'familiar.Owl', '=', '1');
+    rules.defineRule('skillNotes.familiarRaven', 'familiar.Raven', '=', '1');
+    rules.defineRule('skillNotes.familiarViper', 'familiar.Viper', '=', '1');
+    rules.defineRule('hitPoints', 'combatNotes.familiarToad', '+', '3');
+    rules.defineRule('save.Fortitude', 'saveNotes.familiarRat', '+', '2');
+    rules.defineRule('save.Reflex', 'saveNotes.familiarWeasel', '+', '2');
+    rules.defineRule('familiarCount', /^familiar\./, '+=', '1');
+    rules.defineRule('familiarTemplate', 'familiarCount', '?', null);
+  }
 };
 
 /* Returns an ObjectViewer loaded with the default character sheet format. */
