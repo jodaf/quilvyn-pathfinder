@@ -144,7 +144,7 @@ Pathfinder.FACTIONS = [
 Pathfinder.FAMILIARS = [
   'Bat', 'Cat', 'Hawk', 'Lizard', 'Monkey', 'Owl', 'Rat', 'Raven', 'Toad',
   'Viper', 'Weasel', 'Dire Rat', 'Elemental', 'Homunculus', 'Imp', 'Mephit',
-  'Pseudodragon', 'Quasit', 'Stirge'
+  'Pseudodragon', 'Quasit', 'Stirge', 'Celestial', 'Fiendish'
 ];
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
@@ -2502,13 +2502,9 @@ Pathfinder.companionRules = function(rules, companions, animals, familiars) {
   }
   if(familiars != null && familiars.length > 0) {
     rules.defineChoice('familiars', familiars);
-    rules.defineChoice('familiarTemplates', 'Normal', 'Celestial', 'Fiendish');
     rules.defineEditorElement
       ('familiar', 'Familiar', 'set', 'familiars', 'notes');
-    rules.defineEditorElement
-      ('familiarTemplate', '', 'select-one', 'familiarTemplates', 'notes');
-    rules.defineSheetElement('Familiar Template', 'Familiar Stats', '<b>Familiar</b>: %V');
-    rules.defineSheetElement('Familiar', 'Familiar Template+', '%V', ' ');
+    rules.defineSheetElement('Familiar', 'Familiar Stats', null, ' ');
     notes = [
       'combatNotes.familiarToad:+3 Hit Points',
       'saveNotes.familiarRat:+2 Fortitude',
@@ -2537,8 +2533,6 @@ Pathfinder.companionRules = function(rules, companions, animals, familiars) {
     rules.defineRule('hitPoints', 'combatNotes.familiarToad', '+', '3');
     rules.defineRule('save.Fortitude', 'saveNotes.familiarRat', '+', '2');
     rules.defineRule('save.Reflex', 'saveNotes.familiarWeasel', '+', '2');
-    rules.defineRule('familiarCount', /^familiar\./, '+=', '1');
-    rules.defineRule('familiarTemplate', 'familiarCount', '?', null);
   }
 };
 
