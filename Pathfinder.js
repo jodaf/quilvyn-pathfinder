@@ -671,7 +671,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Visible to <i>Detect Chaos/Evil/Good/Law</i> depending on ' +
           'deity\'s alignment',
         'magicNotes.channelEnergyFeature:' +
-          'Heal/inflict %Vd6 damage, DC %1 Will for half %2/day',
+          'Heal/inflict %Vd6 damage 30 ft radius, DC %1 Will for half %2/day',
         'magicNotes.clericSpontaneousCastingFeature:' +
           'Cast <i>Heal</i>/<i>Inflict</i> spell in place of known spell'
       ];
@@ -1103,7 +1103,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'featureNotes.divineMountFeature:Special bond/abilities',
         'magicNotes.auraOfGoodFeature:Visible to <i>Detect Good</i>',
         'magicNotes.channelEnergyFeature:' +
-          'Heal/inflict %Vd6 damage, DC %1 Will for half %2/day',
+          'Heal/inflict %Vd6 damage 30 ft radius, DC %1 Will for half %2/day',
         'magicNotes.detectEvilFeature:<i>Detect Evil</i> at will',
         'magicNotes.holyChampionFeature:' +
           'Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
@@ -3700,7 +3700,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     'Protection': '1:Resistance Bonus/1:Resistant Touch/8:Aura Of Protection',
     'Repose': '1:Gentle Rest/8:Ward Against Death',
     'Rune': '1:Scribe Scroll/1:Blast Rune/8:Spell Rune',
-    'Strength': '1:Strength Surge/8:Might Of The Gods',
+    'Strength': '1:Strength Rush/8:Might Of The Gods',
     'Sun': '1:Sun\'s Blessing/8:Nimbus Of Light',
     'Travel': '1:Travel Speed/1:Agile Feet/8:Dimensional Hop',
     'Trickery': '1:Copycat/8:Master\'s Illusion',
@@ -3825,7 +3825,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     if(domain == 'Air') {
       notes = [
         'combatNotes.lightningArcFeature:' +
-          'Ranged touch attack for d6+%1 points %V/day',
+          "R30' touch attack for d6+%1 points %V/day",
         'saveNotes.electricityResistanceFeature:%V'
       ];
       rules.defineRule
@@ -3859,7 +3859,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Artifice') {
       notes = [
         'combatNotes.artificer\'sTouchFeature:' +
-          'Melee touch attack on objects/constructs for d6+%1 damage %V/day',
+          'Touch attack on objects/constructs for d6+%1 damage %V/day',
         'combatNotes.dancingWeaponsFeature:' +
           'Add <i>dancing</i> to weapon for 4 rounds %V/day',
         'magicNotes.artificer\'sTouchFeature:<i>Mending</i> at will'
@@ -3911,7 +3911,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Community') {
       notes = [
         'magicNotes.calmingTouchFeature:' +
-          'Touch %V/day heals d6+%1 + removes fatigued/shaken/sickened',
+          'Touch heals d6+%1 + removes fatigued/shaken/sickened %V/day',
         'saveNotes.unityFeature:Allies w/in 30 ft use your saving throw %V/day'
       ];
       rules.defineRule
@@ -3973,7 +3973,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Earth') {
       notes = [
-        'magicNotes.acidDartFeature:d6+%1 ranged touch %V/day',
+        "magicNotes.acidDartFeature:R30' touch attack for d6+%1 points %V/day",
         'saveNotes.acidResistanceFeature:%V'
       ];
       rules.defineRule('magicNotes.acidDartFeature',
@@ -4009,7 +4009,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Fire') {
       notes = [
         'combatNotes.fireBoltFeature:' +
-          'Ranged touch attack for d6+%1 points %V/day',
+          "R30' touch attack for d6+%1 points %V/day",
         'saveNotes.fireResistanceFeature:%V'
       ];
       rules.defineRule
@@ -4026,7 +4026,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'magicNotes.divinePresenceFeature:' +
           'DC %V <i>Sanctuary</i> for allies w/in 30 ft %1 rounds/day',
-        'magicNotes.touchOfGloryFeature:Impart +%V charisma check bonus %1/day',
+        'magicNotes.touchOfGloryFeature:' +
+           'Touch imparts +%V charisma check bonus %1/day',
         'magicNotes.undeadBaneFeature:+2 DC on energy channeled to harm undead'
       ];
       rules.defineRule('magicNotes.divinePresenceFeature',
@@ -4079,7 +4080,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.remoteViewingFeature:' +
           'Level %V <i>Clairvoyance/clairaudience</i> for %1 rounds/day',
         'skillNotes.loreKeeperFeature:' +
-          'Touch creature equal to %V Knowledge check'
+          'Touch attack provides info as per %V Knowledge check'
       ];
       rules.defineRule(/classSkills.Knowledge/, 'domains.Knowledge', '=', '1');
       rules.defineRule('magicNotes.remoteViewingFeature',
@@ -4096,7 +4097,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'combatNotes.staffOfOrderFeature:' +
           'Add <i>axiomatic</i> to weapon for %1 rounds %V/day',
         'magicNotes.touchOfLawFeature:' +
-          'Touched creature can "take 11" on all d20 rolls for 1 round %V/day'
+          'Touch imparts "take 11" on all d20 rolls for 1 round %V/day'
       ];
       rules.defineRule('combatNotes.staffOfOrderFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
@@ -4120,7 +4121,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Luck') {
       notes = [
         'magicNotes.bitOfLuckFeature:' +
-          'Touched creature reroll d20 next round %V/day',
+          'Touch imparts reroll d20 next round %V/day',
         'magicNotes.goodFortuneFeature:Reroll d20 %V/day'
       ];
       rules.defineRule('magicNotes.bitOfLuckFeature',
@@ -4134,7 +4135,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.auraOfMadnessFeature:' +
           'DC Will %V 30 ft <i>Confusion</i> aura %1 rounds/day',
         'magicNotes.visionOfMadnessFeature:' +
-          'Touched creature +%V attack, save, or skill, -%1 others for 3 ' +
+          'Touch imparts +%V attack, save, or skill, -%1 others for 3 ' +
           'rounds %2/day'
       ];
       rules.defineRule('magicNotes.auraOfMadnessFeature',
@@ -4172,7 +4173,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Nobility') {
       notes = [
         'magicNotes.inspiringWordFeature:' +
-          'Word imparts +%2 attack/skill/ability/save for %V rounds %1/day',
+          "R30' word imparts +2 attack/skill/ability/save to target for %V rounds %1/day",
         'skillNotes.nobleLeadershipFeature:+%V Leadership'
       ];
       rules.defineRule
@@ -4190,7 +4191,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'combatNotes.brambleArmorFeature:' +
           'Thorny hide causes d6+%1 damage to striking foes %V/day',
-        'combatNotes.woodenFistFeature:+%V, no AOO unarmed attacks %V/day'
+        'combatNotes.woodenFistFeature:' +
+          '+%V, no AOO unarmed attacks %1 rounds/day'
       ];
       rules.defineRule
         ('combatNotes.brambleArmorFeature', 'levels.Cleric', '=', null);
@@ -4263,8 +4265,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Strength') {
       notes = [
         'magicNotes.mightOfTheGodsFeature:+%V strength checks %1 rounds/day',
-        'magicNotes.strengthSurgeFeature:' +
-          'Touch gives +%V melee attack/strength check bonus %1/day'
+        'magicNotes.strengthRushFeature:' +
+          'Touch imparts +%V melee attack/strength check bonus %1/day'
       ];
       rules.defineRule('magicNotes.mightOfTheGodsFeature',
         'levels.Cleric', '=', 'source >= 8 ? source : null'
@@ -4272,10 +4274,10 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('magicNotes.mightOfTheGodsFeature.1',
         'levels.Cleric', '=', 'source >= 8 ? source : null'
       );
-      rules.defineRule('magicNotes.strengthSurgeFeature',
+      rules.defineRule('magicNotes.strengthRushFeature',
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
-      rules.defineRule('magicNotes.strengthSurgeFeature.1',
+      rules.defineRule('magicNotes.strengthRushFeature.1',
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Sun') {
@@ -4283,7 +4285,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.sun\'sBlessingFeature:' +
           '+%V undead damage and no resistance to channeled energy',
         'magicNotes.nimbusOfLightFeature:' +
-          '30 ft aura of <i>Daylight</i> does %V HP damage to undead %1 ' +
+          '30 ft radius <i>Daylight</i> does %V HP damage to undead %1 ' +
           'rounds/day'
       ];
       rules.defineRule
@@ -4301,7 +4303,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
           'Unaffected by difficult terrain for 1 round %V/day',
         'magicNotes.dimensionalHopFeature:Teleport up to %V ft/day'
       ];
-      rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
+      rules.defineRule('speed', 'abilityNotes.travelSpeedFeature', '+', '10');
       rules.defineRule
         ('featureNotes.agileFeetFeature', 'wisdomModifier', '=', 'source + 3');
       rules.defineRule('magicNotes.dimensionalHopFeature',
@@ -4311,7 +4313,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'magicNotes.copycatFeature:<i>Mirror Image</i> for %V rounds %1/day',
         'magicNotes.master\'sIllusionFeature:' +
-          'DC %V 30 ft <i>Veil</i> %1 rounds/day'
+          'DC %V 30 ft radius <i>Veil</i> %1 rounds/day'
       ];
       rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
       rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
@@ -4328,7 +4330,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         ('magicNotes.master\'sIllusionFeature.1', 'levels.Cleric', '=', null);
     } else if(domain == 'War') {
       notes = [
-        'combatNotes.battleRageFeature:Touch gives +%V damage bonus %1/day',
+        'combatNotes.battleRageFeature:' +
+          'Touch imparts +%V damage bonus for 1 round %1/day',
         'combatNotes.weaponMasterFeature:' +
           'Use additional combat feat %V rounds/day'
       ];
@@ -4343,7 +4346,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Water') {
       notes = [
-        'combatNotes.icicleFeature:d6+%1 ranged touch %V/day',
+        "combatNotes.icicleFeature:R30' touch attack for d6+%1 points %V/day",
         'saveNotes.coldResistanceFeature:%V'
       ];
       rules.defineRule('combatNotes.icicleFeature',
@@ -4360,7 +4363,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Weather') {
       notes = [
         'combatNotes.stormBurstFeature:' +
-          'd6+%1 non-lethal + -2 attack ranged touch %V/day',
+          "R30' touch attack for d6+%1 non-lethal + -2 attack %V/day",
         'magicNotes.lightningLordFeature:<i>Call Lightning</i> %V bolts/day'
       ];
       rules.defineRule('combatNotes.stormBurstFeature',
@@ -4695,6 +4698,10 @@ Pathfinder.ruleNotes = function() {
     '    Proficiency (Simple)"; "Exotic Weapon Proficiency" and "Martial\n' +
     '    Weapon Proficiency" to "Weapon Proficiency" (a base feat that\n' +
     '    should be used to define weapon-specific subfeats).\n' +
+    '  </li><li>\n' +
+    '    The Strength domain "Strength Surge" feature has been renamed\n' +
+    '    "Strength Rush" to distinguish it from the barbarian feature\n' +
+    '    of the same name.\n' +
     '  </li><li>\n' +
     '    The distinction between feats and selectable features is\n' +
     '    arbitrary.  Selectable features could be treated as feats\n' +
