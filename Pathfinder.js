@@ -63,8 +63,7 @@ function Pathfinder() {
   );
   Pathfinder.classRules(rules, SRD35.CLASSES, Pathfinder.BLOODLINES);
   Pathfinder.companionRules
-    (rules, Pathfinder.COMPANIONS, Pathfinder.ANIMAL_COMPANIONS,
-     Pathfinder.FAMILIARS);
+    (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
   Pathfinder.skillRules(rules, Pathfinder.SKILLS, Pathfinder.SUBSKILLS);
   Pathfinder.featRules(rules, Pathfinder.FEATS, Pathfinder.SUBFEATS);
   Pathfinder.descriptionRules
@@ -100,16 +99,34 @@ function Pathfinder() {
 }
 
 // Arrays of choices
-Pathfinder.ANIMAL_COMPANIONS = [
-  'Ape', 'Badger', 'Bear', 'Boar', 'Camel', 'Cheetah', 'Constrictor',
-  'Crocodile', 'Deinonychus', 'Dog', 'Eagle', 'Hawk', 'Horse', 'Leopard',
-  'Lion', 'Owl', 'Pony', 'Shark', 'Tiger', 'Velociraptor', 'Viper', 'Wolf'
-];
+Pathfinder.ANIMAL_COMPANIONS = {
+  'Ape': '',
+  'Badger': '',
+  'Bear': '',
+  'Boar': '',
+  'Camel': '',
+  'Cheetah': '',
+  'Constrictor': '',
+  'Crocodile': '',
+  'Deinonychus': '',
+  'Dog': '',
+  'Eagle': '',
+  'Hawk': '',
+  'Horse': '',
+  'Leopard': '',
+  'Lion': '',
+  'Owl': '',
+  'Pony': '',
+  'Shark': '',
+  'Tiger': '',
+  'Velociraptor': '',
+  'Viper': '',
+  'Wolf': ''
+};
 Pathfinder.BLOODLINES = [
   'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic',
   'Elemental', 'Fey', 'Infernal', 'Undead'
 ];
-Pathfinder.COMPANIONS = ['Animal Companion', 'Familiar'];
 Pathfinder.DEITIES = [
   'None::',
   'Erastil (LG):Longbow:Animal/Community/Good/Law/Plant',
@@ -141,11 +158,35 @@ Pathfinder.FACTIONS = [
   'Andoran', 'Cheliax', 'The Grand Lodge', 'None', 'Osirion', 'Qadira',
   'The Sczarni', 'The Silver Crusade', 'Taldor'
 ];
-Pathfinder.FAMILIARS = [
-  'Bat', 'Cat', 'Hawk', 'Lizard', 'Monkey', 'Owl', 'Rat', 'Raven', 'Toad',
-  'Viper', 'Weasel', 'Dire Rat', 'Elemental', 'Homunculus', 'Imp', 'Mephit',
-  'Pseudodragon', 'Quasit', 'Stirge', 'Celestial', 'Fiendish'
-];
+Pathfinder.FAMILIARS = {
+  'Bat': 'HD=1 Init=2 AC=16 Attack=0 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5',
+  'Cat': 'HD=1 Init=2 AC=14 Attack=0 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7',
+  'Hawk': 'HD=1 Init=3 AC=15 Attack=0 Dam=2@d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7',
+  'Lizard': 'HD=1 Init=2 AC=14 Attack=0 Dam=1d4-4 Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2',
+  'Monkey': 'HD=1 Init=2 AC=14 Attack=0 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
+  'Owl': 'HD=1 Init=3 AC=15 Attack=0 Dam=1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6',
+  'Rat': 'HD=1 Init=2 AC=14 Attack=0 Dam=1d3-4 Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2',
+  'Raven': 'HD=1 Init=2 AC=14 Attack=0 Dam=1d3-4 Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7',
+  'Toad': 'HD=1 Init=1 AC=15 Attack=0 Dam=0 Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4',
+  'Viper': 'HD=1 Init=3 AC=16 Attack=0 Dam=1d2-2 Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2',
+  'Weasel': 'HD=1 Init=2 AC=15 Attack=0 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
+
+  'Air Elemental': 'HD=2 Init=7 AC=17 Attack=2 Dam=1d4+1 Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 Level=5',
+  'Dire Rat': 'HD=1 Init=3 AC=14 Attack=0 Dam=1d4 Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 Level=3',
+  'Earth Elemental': 'HD=2 Init=-1 AC=17 Attack=2 Dam=1d6+4 Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 Level=5',
+  'Fire Elemental': 'HD=2 Init=5 AC=16 Attack=2 Dam=1d4 Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 Level=5',
+  'Homunculus': 'HD=2 Init=2 AC=14 Attack=2 Dam=1d4-1 Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 Level=7',
+  'Imp': 'HD=3 Init=3 AC=17 Attack=3 Dam=1d4 Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 Level=7',
+  'Mephit': 'HD=3 Init=6 AC=17 Attack=3 Dam=1d3+1 Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 Level=7',
+  'Pseudodragon': 'HD=2 Init=2 AC=16 Attack=2 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7',
+  'Quasit': 'HD=3 Init=6 AC=16 Attack=3 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7',
+  'Stirge': 'HD=1 Init=4 AC=16 Attack=1 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5',
+  'Water Elemental': 'HD=2 Init=0 AC=17 Attack=2 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5',
+
+  'Celestial': 'Level=3',
+  'Fiendish': 'Level=3'
+
+};
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
   'Alignment Channel:', 'Animal Affinity:', 'Arcane Armor Mastery:Combat',
@@ -2448,92 +2489,66 @@ Pathfinder.combatRules = function(rules) {
 };
 
 /* Defines the rules related to companion creatures. */
-Pathfinder.companionRules = function(rules, companions, animals, familiars) {
-  SRD35.companionRules(rules, companions);
+Pathfinder.companionRules = function(rules, companions, familiars) {
+
+  SRD35.companionRules(rules, companions, familiars, null);
   // Override SRD35 animal companion HD progression
-  rules.defineRule('animalCompanionStats.hitDice',
+  rules.defineRule('animalCompanionStats.HD',
     'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1) / 4)'
   );
-  // Add features not found in SRD35
-  if(animals != null && animals.length > 0) {
+
+  if(companions != null) {
+
     var notes = [
-      'animalCompanionStats.abilities:+%V',
-      'animalCompanionStats.bab:+%V',
-      'animalCompanionStats.fort:+%V',
-      'animalCompanionStats.ref:+%V',
-      'animalCompanionStats.will:+%V',
-      'animalCompanionStats.skills:%V',
-      'animalCompanionStats.feats:%V'
+      'animalCompanionStats.BAB:+%V',
+      'animalCompanionStats.Fort:+%V',
+      'animalCompanionStats.Ref:+%V',
+      'animalCompanionStats.Will:+%V',
+      'animalCompanionStats.Skills:%V',
+      'animalCompanionStats.Feats:%V'
     ];
     rules.defineNote(notes);
-    rules.defineRule('animalCompanionStats.abilities',
-      'animalCompanionMasterLevel', '=',
-      'source < 4 ? null : source == 19 ? 3 : Math.floor((source + 1) / 5)'
-    );
-    rules.defineRule('animalCompanionStats.bab',
+
+    rules.defineRule('animalCompanionStats.BAB',
       'animalCompanionMasterLevel', '=',
       'Math.floor((source + 2) / 2) + ' +
       '(source == 9 ? 1 : source < 13 ? 0 : source == 16 ? 0 : 1)'
     );
-    rules.defineRule('animalCompanionStats.feats',
+    rules.defineRule('animalCompanionStats.Feats',
       'animalCompanionMasterLevel', '=',
       'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
       'Math.floor((source + 4) / 3)'
     );
-    rules.defineRule('animalCompanionStats.fort',
+    rules.defineRule('animalCompanionStats.Fort',
       'animalCompanionMasterLevel', '=',
       'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
     );
-    rules.defineRule('animalCompanionStats.ref',
+    rules.defineRule('animalCompanionStats.Ref',
       'animalCompanionMasterLevel', '=',
       'Math.floor((source + 8) / 3) + (source > 14 ? 2 : source > 6 ? 1 : 0)'
     );
-    rules.defineRule('animalCompanionStats.will',
+    rules.defineRule('animalCompanionStats.Will',
       'animalCompanionMasterLevel', '=', 'Math.floor((source + 2) / 4)'
     );
-    rules.defineRule('animalCompanionStats.skills',
+    rules.defineRule('animalCompanionStats.Skills',
       'animalCompanionMasterLevel', '=',
       'source + 1 - Math.floor((source + 1) / 4)'
     );
-    rules.defineChoice('animalCompanions', animals);
-    rules.defineEditorElement
-      ('animalCompanion', 'Animal Companion', 'set', 'animalCompanions', 'notes');
-    rules.defineSheetElement('Animal Companion', 'Animal Companion Stats');
+
   }
-  if(familiars != null && familiars.length > 0) {
-    rules.defineChoice('familiars', familiars);
-    rules.defineEditorElement
-      ('familiar', 'Familiar', 'set', 'familiars', 'notes');
-    rules.defineSheetElement('Familiar', 'Familiar Stats', null, ' ');
+
+  if(familiars != null) {
     notes = [
-      'combatNotes.familiarToad:+3 Hit Points',
-      'saveNotes.familiarRat:+2 Fortitude',
-      'saveNotes.familiarWeasel:+2 Reflex',
       'skillNotes.familiarBat:+3 Fly',
       'skillNotes.familiarCat:+3 Stealth',
-      'skillNotes.familiarHawk:+3 sight-based Perception in bright light',
-      'skillNotes.familiarLizard:+3 Climb',
-      'skillNotes.familiarMonkey:+3 Acrobatics',
-      'skillNotes.familiarOwl:+3 sight-based Perception in shadows/darkness',
-      'skillNotes.familiarRaven:+3 Appraise',
-      'skillNotes.familiarViper:+3 Bluff'
+      'skillNotes.familiarMonkey:+3 Acrobatics'
     ];
+    delete rules.choices['notes']['skillNotes.familiarBat'];
+    delete rules.choices['notes']['skillNotes.familiarCat'];
     rules.defineNote(notes);
-    rules.defineRule('combatNotes.familiarToad', 'familiar.Toad', '=', '1');
-    rules.defineRule('saveNotes.familiarRat', 'familiar.Rat', '=', '1');
-    rules.defineRule('saveNotes.familiarWeasel', 'familiar.Weasel', '=', '1');
-    rules.defineRule('skillNotes.familiarBat', 'familiar.Bat', '=', '1');
-    rules.defineRule('skillNotes.familiarCat', 'familiar.Cat', '=', '1');
-    rules.defineRule('skillNotes.familiarHawk', 'familiar.Hawk', '=', '1');
-    rules.defineRule('skillNotes.familiarLizard', 'familiar.Lizard', '=', '1');
     rules.defineRule('skillNotes.familiarMonkey', 'familiar.Monkey', '=', '1');
-    rules.defineRule('skillNotes.familiarOwl', 'familiar.Owl', '=', '1');
-    rules.defineRule('skillNotes.familiarRaven', 'familiar.Raven', '=', '1');
-    rules.defineRule('skillNotes.familiarViper', 'familiar.Viper', '=', '1');
-    rules.defineRule('hitPoints', 'combatNotes.familiarToad', '+', '3');
-    rules.defineRule('save.Fortitude', 'saveNotes.familiarRat', '+', '2');
-    rules.defineRule('save.Reflex', 'saveNotes.familiarWeasel', '+', '2');
   }
+
 };
 
 /* Returns an ObjectViewer loaded with the default character sheet format. */
