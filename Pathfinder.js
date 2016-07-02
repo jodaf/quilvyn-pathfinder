@@ -1128,9 +1128,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       features = [
         '1:Aura Of Good', '1:Detect Evil', '1:Smite Evil', '2:Divine Grace',
         '2:Lay On Hands', '3:Aura Of Courage', '3:Divine Health', '3:Mercy',
-        '4:Channel Energy', '5:Divine Bond', '8:Aura Of Resolve',
-        '11:Aura Of Justice', '14:Aura Of Faith', '17:Aura Of Righteousness',
-        '17:Resist Evil', '20:Holy Champion'
+        '4:Channel Energy', '8:Aura Of Resolve', '11:Aura Of Justice',
+        '14:Aura Of Faith', '17:Aura Of Righteousness', '17:Resist Evil',
+        '20:Holy Champion'
       ];
       hitDie = 10;
       notes = [
@@ -1141,7 +1141,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Add %V enhancements to weapon for %1 minutes %2/day',
         'combatNotes.smiteEvilFeature:' +
           '+%V attack/+%1 damage/+%2 AC vs. evil foe %3/day',
-        'featureNotes.divineMountFeature:Special bond/abilities',
+        'featureNotes.divineMountFeature:Magically summon mount %V/day',
         'magicNotes.auraOfGoodFeature:Visible to <i>Detect Good</i>',
         'magicNotes.channelEnergyFeature:' +
           'Heal/inflict %Vd6 damage 30 ft radius, DC %1 Will for half %2/day',
@@ -1236,6 +1236,16 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('animalCompanionMasterLevel',
         'animalCompanionPaladinLevel', '+=', null
+      );
+      rules.defineRule('featureNotes.divineMountFeature',
+        'animalCompanionPaladinLevel', '=',
+        'source < 5 ? null : Math.floor((source - 1) / 4)'
+      );
+      rules.defineRule('animalCompanion.Celestial',
+        'animalCompanionPaladinLevel', '^=', 'source < 11 ? null : 1'
+      );
+      rules.defineRule('animalCompanionNotes.SR',
+        'animalCompanionPaladinLevel', '^=', 'source >= 15 ? source + 11 : null'
       );
 
       spellAbility = 'charisma';
@@ -2491,25 +2501,25 @@ Pathfinder.combatRules = function(rules) {
 /* Defines the rules related to companion creatures. */
 Pathfinder.companionRules = function(rules, companions, familiars) {
 
-  SRD35.companionRules(rules, companions, familiars, null);
+  SRD35.companionRules(rules, companions, familiars);
 
   if(companions != null) {
     var notes = [
-      'animalCompanionStats.Skills:%V',
-      'animalCompanionStats.Feats:%V'
+      'companionStats.Skills:%V',
+      'companionStats.Feats:%V'
     ];
     rules.defineNote(notes);
     // Overrides SRD35 HD calculation
-    rules.defineRule('animalCompanionStats.HD',
+    rules.defineRule('companionStats.HD',
       'animalCompanionLevel', '=', 'null',
       'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
     );
-    rules.defineRule('animalCompanionStats.Feats',
+    rules.defineRule('companionStats.Feats',
       'animalCompanionMasterLevel', '=',
       'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
       'Math.floor((source + 4) / 3)'
     );
-    rules.defineRule('animalCompanionStats.Skills',
+    rules.defineRule('companionStats.Skills',
       'animalCompanionMasterLevel', '=',
       'source + 1 - Math.floor((source + 1) / 4)'
     );
