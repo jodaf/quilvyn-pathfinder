@@ -4709,6 +4709,9 @@ Pathfinder.ruleNotes = function() {
     '    "Strength Rush" to distinguish it from the barbarian feature\n' +
     '    of the same name.\n' +
     '  </li><li>\n' +
+    '    Use the animal companion editing fields to enter the creature\n' +
+    '    types and names of Paladin mounts.\n'+
+    '  </li><li>\n' +
     '    The distinction between feats and selectable features is\n' +
     '    arbitrary.  Selectable features could be treated as feats\n' +
     '    restricted to specific classes; however, doing so would\n' +
