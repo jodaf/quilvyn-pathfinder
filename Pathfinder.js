@@ -3685,7 +3685,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     'Animal': '1:Speak With Animals/4:Animal Companion',
     'Artifice': '1:Artificer\'s Touch/8:Dancing Weapons',
     'Chaos': '1:Touch Of Chaos/8:Chaos Blade',
-    'Charm': '1:Dazing Touch/8:Charming Smile',
+    'Charm': '1:Addling Touch/8:Charming Smile',
     'Community': '1:Calming Touch/8:Unity',
     'Darkness': '1:Blind-Fight/1:Touch Of Darkness/8:Eyes Of Darkness',
     'Death': '1:Bleeding Touch/8:Death\'s Embrace',
@@ -3901,7 +3901,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'magicNotes.charmingSmileFeature:' +
           'DC %V <i>Charm Person</i> %1 rounds/day',
-        'magicNotes.dazingTouchFeature:' +
+        'magicNotes.addlingTouchFeature:' +
           'Touch attack dazes %V HD foe 1 round %1/day'
       ];
       rules.defineRule('magicNotes.charmingSmileFeature',
@@ -3911,8 +3911,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule
         ('magicNotes.charmingSmileFeature.1', 'levels.Cleric', '=', null);
       rules.defineRule
-        ('magicNotes.dazingTouchFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.dazingTouchFeature.1',
+        ('magicNotes.addlingTouchFeature', 'levels.Cleric', '=', null);
+      rules.defineRule('magicNotes.addlingTouchFeature.1',
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Community') {
@@ -4705,6 +4705,10 @@ Pathfinder.ruleNotes = function() {
     '    Proficiency (Simple)"; "Exotic Weapon Proficiency" and "Martial\n' +
     '    Weapon Proficiency" to "Weapon Proficiency" (a base feat that\n' +
     '    should be used to define weapon-specific subfeats).\n' +
+    '  </li><li>\n' +
+    '    The Charm domain "Dazing Touch" feature has been renamed "Addling\n' +
+    '    Touch" to distinguish it from the Enchantment school feature of\n' +
+    '    the same name.\n' +
     '  </li><li>\n' +
     '    The Strength domain "Strength Surge" feature has been renamed\n' +
     '    "Strength Rush" to distinguish it from the barbarian feature\n' +
