@@ -877,14 +877,14 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       hitDie = 10;
       notes = [
         'combatNotes.armorMasteryFeature:DR 5/- when using armor/shield',
-        'combatNotes.armorTrainingFeature:Restore +%V AC Dex bonus',
+        'combatNotes.armorTrainingFeature:Additional +%V Dex AC bonus',
         'combatNotes.weaponMasteryFeature:' +
           'Critical automatically hits, +1 damage multiplier, no disarm ' +
           'w/chosen weapon',
         'combatNotes.weaponTrainingFeature:' +
           'Attack/damage bonus w/weapons from trained groups',
         'saveNotes.braveryFeature:+%V vs. fear',
-        'skillNotes.armorTrainingFeature:-%V armor penalty'
+        'skillNotes.armorTrainingFeature:Reduce armor skill check penalty by %V'
       ];
       profArmor = SRD35.PROFICIENCY_HEAVY;
       profShield = SRD35.PROFICIENCY_TOWER;
@@ -906,8 +906,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
       rules.defineRule('combatNotes.armorTrainingFeature',
         'dexterityModifier', '=', null,
-        'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
-        'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)'
+        'armor', '-', 'SRD35.armorsMaxDexBonuses[source]',
+        'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)',
+        '', '^', '0'
       );
       rules.defineRule
         ('damageReduction.All', 'combatNotes.armorMasteryFeature', '+=', '5');
