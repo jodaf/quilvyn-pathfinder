@@ -835,7 +835,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'D9:17:1/18:2/19:3/20:4'
       ];
       rules.defineRule('casterLevelDivine', 'levels.Druid', '+=', null);
-      rules.defineRule('domainCount', 'features.Nature Domains', '+=', '2');
+      rules.defineRule('domainCount', 'features.Nature Domains', '+=', '1');
       rules.defineRule('languageCount', 'levels.Druid', '+', '1');
       rules.defineRule('languages.Druidic', 'levels.Druid', '=', '1');
       rules.defineRule('magicNotes.wildShapeFeature',
@@ -4290,7 +4290,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Sun') {
       notes = [
         'magicNotes.sun\'sBlessingFeature:' +
-          '+%V undead damage and no resistance to channeled energy',
+          '+%V undead damage, negate channel resistance',
         'magicNotes.nimbusOfLightFeature:' +
           '30 ft radius <i>Daylight</i> does %V HP damage to undead %1 ' +
           'rounds/day'
