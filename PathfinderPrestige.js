@@ -319,7 +319,8 @@ PathfinderPrestige.classRules = function(rules, classes) {
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule('abilityNotes.wingsFeature',
-        'levels.Dragon Disciple', '+=', 'source >= 9 ? 30 : null'
+        // TODO
+        'levels.Dragon Disciple', '^=', 'source >= 9 ? 90 : null'
       );
       rules.defineRule('abilityNotes.strengthBoostFeature',
         'levels.Dragon Disciple', '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
@@ -615,9 +616,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'magicNotes.spellSynthesisFeature:' +
           'Cast two spells simultaneously, +2 vs. resistance, target -2 saves',
         'validationNotes.mysticTheurgeClassCasterLevelArcane:' +
-          'Requires Caster Level Arcane >= 3',
+          'Requires Caster Level Arcane >= 3', // TODO
         'validationNotes.mysticTheurgeClassCasterLevelDivine:' +
-          'Requires Caster Level Divine >= 3',
+          'Requires Caster Level Divine >= 3', // TODO
         'validationNotes.mysticTheurgeClassSkills:' +
           'Requires Knowledge (Arcana) >= 3/Knowledge (Religion) >= 3'
       ];
