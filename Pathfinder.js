@@ -4215,7 +4215,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Protection') {
       notes = [
         'magicNotes.auraOfProtectionFeature:' +
-          'Allies w/in 30 ft +%V AC %1 elements resistance %2 rounds/day',
+          'Allies w/in 30 ft +%V AC/%1 elements resistance %2 rounds/day',
         'magicNotes.resistantTouchFeature:' +
            'Touch transfers resistance bonus to ally for 1 minute %V/day',
         'saveNotes.resistanceBonusFeature:+%V saves'
