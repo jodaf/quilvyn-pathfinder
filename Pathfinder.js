@@ -5115,7 +5115,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Indomitable') {
       // TODO
     } else if(trait == 'Indomitable Faith') {
-      notes = ['saveNotes.indomitableFaithFeature:+1 Will';
+      notes = ['saveNotes.indomitableFaithFeature:+1 Will'];
       rules.defineRule
         ('save.Will', 'saveNotes.indomitableFaithFeature', '+', '1');
     } else if(trait == 'Influential') {
@@ -5142,7 +5142,7 @@ Pathfinder.traitRules = function(rules, traits) {
       // TODO
     } else if(trait == 'Magical Knack') {
       notes = ['magicNotes.magicalKnackFeature:+2 caster level (max %V)'];
-      rules.defineRul('magicNotes.magicalKnackFeature', 'level', '=', null);
+      rules.defineRule('magicNotes.magicalKnackFeature', 'level', '=', null);
     } else if(trait == 'Magical Lineage') {
       notes = ['magicNotes.magicalLineageFeature:-1 spell level for metamagic no chosen spell'];
     } else if(trait == 'Magical Talent') {
