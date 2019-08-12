@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.1.0';
+var PATHFINDER_VERSION = '1.2.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -4745,6 +4745,10 @@ Pathfinder.ruleNotes = function() {
     '  </li><li>\n' +
     '    The Strength domain "Strength Surge" feature has been renamed\n' +
     '    "Strength Rush" to distinguish it from the barbarian feature\n' +
+    '    of the same name.\n' +
+    '  </li><li>\n' +
+    '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
+    '    "Faction Freedom Fighter" to distinguish it from the halfling trait\n' +
     '    of the same name.\n' +
     '  </li><li>\n' +
     '    Use the animal companion editing fields to enter the creature\n' +
