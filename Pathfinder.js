@@ -155,8 +155,10 @@ Pathfinder.DOMAINS_ADDED = [
   'Madness', 'Nobility', 'Repose', 'Rune', 'Weather'
 ];
 Pathfinder.FACTIONS = [
-  'Andoran', 'Cheliax', 'The Grand Lodge', 'None', 'Osirion', 'Qadira',
-  'The Sczarni', 'The Silver Crusade', 'Taldor'
+  'Andoran', 'Cheliax', 'The Concordance', 'Dark Archive', 'The Exchange',
+  'Grand Lodge', 'Lantern Lodge', 'Liberty\'s Edge', 'None', 'Osirion',
+  'Qadira', 'Sczarni', 'Shadow Lodge', 'Silver Crusade', 'Sovereign Court',
+  'Taldor'
 ];
 Pathfinder.FAMILIARS = {
   'Bat': 'HD=1 AC=14 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5',
@@ -294,7 +296,7 @@ Pathfinder.TRAITS = [
   'Tavern Owner:Favored Child',
   'Animal Friend:Gnome', 'Brute:Half-Orc', 'Elven Reflexes:Half-Elf',
   'Failed Apprentice:Half-Elf', 'Forlorn:Elf',
-  'Goldsniffer:Dwarf', 'Halfling Freedom Fighter:Halfling', 'Outcast:Half-Orc',
+  'Freedom Fighter:Halfling', 'Goldsniffer:Dwarf', 'Outcast:Half-Orc',
   'Rapscallion:Gnome', 'Scholar Of Ruins:Human', 'Tunnel Fighter:Dwarf',
   'Warrior Of Old:Elf', 'Well-Informed:Halfling', 'World Traveler:Human',
   'Desert Child:Regional', 'Highlander:Regional', 'Log Roller:Regional',
@@ -306,33 +308,41 @@ Pathfinder.TRAITS = [
   'Guardian Of The Forge:LG', 'Magic Is Life:N', 'Patient Optimist:LG',
   'Starchild:CG', 'Undead Slayer:N', 'Veteran Of Battle:CN',
   'Wisdom In The Flesh:LN',
-  // PFS Guide to Organized Play (v6.0)
+  // Faction Traits - PS Roleplaying Guild Guide (v10.0)
+  'Balanced Offensive:The Concordance', 'Beastspeaker:The Concordance',
+  'Natural Negotiator:The Concordance', 'Planar Voyager:The Concordance',
+  'Scholar Of Balance:The Concordance',
   'Arcane Archivist:Dark Archive', 'Devil\'s Mark:Dark Archive',
   'Librarian:Dark Archive', 'Master Of Pentacles:Dark Archive',
   'Soul Drinker:Dark Archive',
+  'Gold Finger:The Exchange', 'Greasy Palm:The Exchange',
+  'Smuggler:The Exchange', 'Tireless:The Exchange', 'Upstanding:The Exchange',
   'Insider Knowledge:Grand Lodge', 'Loyalty:Grand Lodge',
   'Obervant:Grand Lodge', 'Proper Training:Grand Lodge',
   'Teaching Mistake:Grand Lodge',
-  'Captain\'s Blade:Liberty\'s Edge', 'Freedom Fighter:Liberty\'s Edge',
+  'Captain\'s Blade:Liberty\'s Edge', 'Faction Freedom Fighter:Liberty\'s Edge',
   'Indomitable:Liberty\'s Edge', 'Rousing Oratory:Liberty\'s Edge',
   'Whistleblower:Liberty\'s Edge',
-  'Ancient Historian:Scarab Sages', 'Attuned To The Ancestors:Scarab Sages',
-  'Reverent Wielder:Scarab Sages', 'Secrets Of The Sphinx:Scarab Sages',
-  'Tomb Raider:Scarab Sages',
   'A Sure Thing:Silver Crusade', 'Beneficient Touch:Silver Crusade',
   'Comparative Religion:Silver Crusade', 'Force For Good:Silver Crusade',
   'Unorthodox Strategy:Silver Crusade',
   'Expert Duelist:Sovereign Court', 'Fashionable:Sovereign Court',
   'Impressive Presence:Sovereign Court', 'Influential:Taldor',
   'Unflappable:Taldor',
-  'Gold Finger:The Exchange', 'Greasy Palm:The Exchange',
-  'Smuggler:The Exchange', 'Tireless:The Exchange', 'Upstanding:The Exchange',
-  // Additional from PFS GOP v4.0
-  'Andoran Freedom Fighter:Andoran', 'Explorer:Andoran',
-  'Hunter\'s Eye:Andoran', 'Fiendish Presence:Cheliax', 'Fires Of Hell:Cheliax',
+  // Faction Traits from prior Guide versions
+  'Explorer:Andoran', 'Hunter\'s Eye:Andoran',
+  'Fiendish Presence:Cheliax', 'Fires Of Hell:Cheliax',
+  'Meridian Strike:Lantern Lodge', 'Meticulous Artisan:Lantern Lodge',
+  'Mind Over Matter:Lantern Lodge', 'Storyteller:Lantern Lodge',
+  'Weapon Style:Lantern Lodge',
   'Dunewalker:Osiron', 'Mummy-Touched:Osirion',
   'Dervish:Qadira', 'Desert Shadow:Qadira', 'Eastern Mysteries:Qadira',
   'Horse Lord:Qadira',
+  'Ancient Historian:Scarab Sages', 'Attuned To The Ancestors:Scarab Sages',
+  'Reverent Wielder:Scarab Sages', 'Secrets Of The Sphinx:Scarab Sages',
+  'Tomb Raider:Scarab Sages',
+  'Aid Allies:Shadow Lodge', 'Fortified:Shadow Lodge', 'Medic:Shadow Lodge',
+  'Shadow Diplomat:Shadow Lodge', 'Watchdog:Shadow Lodge',
   'Bad Reputation:Sczarni', 'I Know A Guy:Sczarni', 'Shiv:Sczarni',
   'Trouper:Sczarni',
   'Performance Artist:Taldor', 'Vindictive:Taldor'
@@ -4910,13 +4920,10 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.ASureThingFeature:+2 attack vs evil 1/day'];
     } else if(trait == 'Adopted') {
       notes = ['featureNotes.adoptedFeature:Family race traits available'];
+    } else if(trait == 'Aid Allies') {
+      notes = ['combatNotes.aidAlliesFeature:+1 aid another action'];
     } else if(trait == 'Anatomist') {
       notes = ['combatNotes.anatomistFeature:+1 critical hit rolls'];
-    } else if(trait == 'Andoran Freedom Fighter') {
-      notes = [
-        'combatNotes.andoranFreedomFighterFeature:+1 surprise attack',
-        'skillNotes.andoranFreedomFighterFeature:+1 Stealth'
-      ];
     } else if(trait == 'Ancient Historian') {
       notes = [
         'skillNotes.ancientHistorianFeature:+1 Knowledge (History) or Linguistics, learn 1 ancient language'
@@ -4952,6 +4959,17 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['skillNotes.badReputationFeature:+2 Intimidate'];
       rules.defineRule
         ('classSkills.Intimidate', 'skillNotes.badReputationFeature', '=', '1');
+    } else if(trait == 'Balanced Offensive') {
+      notes = [
+        'combatNotes.balancedOffensiveFeature:Cleric-like elemental attack %V/day'
+      ];
+      rules.defineRule('combatNotes.balancedOffensiveFeature',
+        'level', '=', '1 + Math.floor(source / 5)'
+      );
+    } else if(trait == 'Beastspeaker') {
+      notes = [
+        'skillNotes.beastspeakerFeature:+1 Wild Empathy; no penalty w/elemental animals'
+      ];
     } else if(trait == 'Beneficient Touch') {
       notes = ['magicNotes.beneficientTouchFeature:Reroll healing 1s 1/day'];
     } else if(trait == 'Birthmark') {
@@ -5055,12 +5073,12 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['magicNotes.divineWarriorFeature:Enspelled weapons +1 Damage'];
     } else if(trait == 'Dunewalker') {
       notes = [
-        'abilityNotes.dunewalkerFeature:Normal movement through normal sand',
+        'abilityNotes.dunewalkerFeature:Normal movement through sand',
         'saveNotes.dunewalkerFeature:+4 Fort vs heat'
       ];
     } else if(trait == 'Ear For Music') {
       notes = [
-        'skillNotes.earForMusicFeature:+1 choice of Perform/+2 Knowledge (Local) for art + music'
+        'skillNotes.earForMusicFeature:+1 Perform choice/+2 Knowledge (Local) for art + music'
       ];
     } else if(trait == 'Ease Of Faith') {
       notes = ['skillNotes.easeOfFaithFeature:+1 Diplomacy'];
@@ -5088,6 +5106,11 @@ Pathfinder.traitRules = function(rules, traits) {
       rules.defineRule('classSkills.Perception',
         'skillNotes.eyesAndEarsOfTheCityFeature', '=', '1'
       );
+    } else if(trait == 'Faction Freedom Fighter') {
+      notes = [
+        'combatNotes.factionFreedomFighterFeature:+1 surprise attack',
+        'skillNotes.factionFreedomFighterFeature:+1 Stealth'
+      ];
     } else if(trait == 'Failed Apprentice') {
       notes = ['saveNotes.failedApprenticeFeature:+1 vs. arcane spells'];
     } else if(trait == 'Fashionable') {
@@ -5123,10 +5146,22 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Forlorn') {
       notes = ['saveNotes.forlornFeature:+1 Fortitude'];
       rules.defineRule('save.Fortitude', 'saveNotes.forlornFeature', '+', '1');
+    } else if(trait == 'Fortified') {
+      notes = [
+        'combatNotes.fortifiedFeature:20% chance to negate critical hit or sneak attack 1/day'
+      ];
     } else if(trait == 'Fortified Drinker') {
       notes = [
         'saveNotes.fortifiedDrinkerFeature:+2 vs mental effect for 1 hr after drinking'
       ];
+    } else if(trait == 'Freedom Fighter') {
+      notes = [
+        'combatNotes.freedomFighterFeature:+1 attack during escape',
+        'skillNotes.freedomFighterFeature:+1 skills during escape'
+      ];
+      rules.defineRule('classSkills.Escape Artist',
+        'skillNotes.halflingFreedomFighterFeature', '=', '1'
+      );
     } else if(trait == 'Gifted Adept') {
       notes = ['magicNotes.giftedAdeptFeature:+1 caster level on chosen spell'];
     } else if(trait == 'Gold Finger') {
@@ -5145,14 +5180,6 @@ Pathfinder.traitRules = function(rules, traits) {
         'skillNotes.guardianOfTheForgeFeature:+1 Knowledge (Engineering)/Knowledge (History)'
       ];
       // NOTE Choice of above also becomes class skill
-    } else if(trait == 'Halfling Freedom Fighter') {
-      notes = [
-        'combatNotes.halflingFreedomFighterFeature:+1 attack during escape',
-        'skillNotes.halflingFreedomFighterFeature:+1 skills during escape'
-      ];
-      rules.defineRule('classSkills.Escape Artist',
-        'skillNotes.halflingFreedomFighterFeature', '=', '1'
-      );
     } else if(trait == 'Hedge Magician') {
       notes = [
         'magicNotes.hedgeMagicianFeature:Reduce magic craft cost by 5%'
@@ -5180,7 +5207,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Impressive Presence') {
       notes = [
-        'combatNotes.impressivePresenceFeature:Foes DC %V Will save or shaken for 1 rd 1/day'
+        'combatNotes.impressivePresenceFeature:Adjacent foes DC %V Will save or shaken for 1 rd 1/day'
       ];
       rules.defineRule('combatNotes.impressivePresenceFeature',
         'level', '=', '10 + Math.floor(source / 2)',
@@ -5206,7 +5233,7 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.killerFeature:Extra damage on critical hit'];
     } else if(trait == 'Librarian') {
       notes = [
-        'skillNotes.librarianFeature:+1 choice of Linguistics, Profession (Librarian), +1 skill check from reading 1/day'
+        'skillNotes.librarianFeature:+1 Linguistics/Profession (Librarian)/+1 reading bonus 1/day'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Log Roller') {
@@ -5246,11 +5273,24 @@ Pathfinder.traitRules = function(rules, traits) {
         'skillNotes.mathematicalProdigyFeature:+1 Knowledge (Arcana)/Knowledge (Engineering)'
       ];
       // NOTE Choice of above also becomes class skill
+    } else if(trait == 'Medic') {
+      notes = [
+        'magicNotes.medicFeature:+1 caster level with <i>Remove</i> healing',
+        'skillNotes.medicFeature:+2 Heal vs. disease, poison'
+      ];
+    } else if(trait == 'Meridian Strike') {
+      notes = ['combatNotes.meridianStrikeFeature:Reroll crit damage 1s 1/day'];
+    } else if(trait == 'Meticulous Artisan') {
+      notes = ['skillNotes.meticulousArtisanFeature:+1 Craft for Day Job'];
     } else if(trait == 'Militia Veteran') {
       notes = [
         'skillNotes.militiaVeteranFeature:+1 choice of Profession (Soldier), Ride, Survival'
       ];
       // NOTE Choice of above also becomes class skill
+    } else if(trait == 'Mind Over Matter') {
+      notes = ['saveNotes.mindOverMatterFeature:+1 Will'];
+      rules.defineRule
+        ('save.Will', 'saveNotes.mindOverMatterFeature', '+', '1');
     } else if(trait == 'Missionary') {
       notes = [
         'magicNotes.missionaryFeature:+1 caster level on 3 spells',
@@ -5261,6 +5301,10 @@ Pathfinder.traitRules = function(rules, traits) {
       );
     } else if(trait == 'Mummy-Touched') {
       notes = ['saveNotes.mummy-TouchedFeature:+2 vs. curse, disease'];
+    } else if(trait == 'Natural Negotiator') {
+      notes = [
+        'featureNotes.naturalNegotiatorFeature:Additional language, Diplomacy or Handle Animal is a class skill'
+      ];
     } else if(trait == 'Natural-Born Leader') {
       notes = [
         'featureNotes.natural-BornLeaderFeature:+1 Leadership score',
@@ -5280,8 +5324,13 @@ Pathfinder.traitRules = function(rules, traits) {
         'skillNotes.patientOptimistFeature:+1 Diplomacy, 1 retry on unfriendly + hostile'
       ];
     } else if(trait == 'Performance Artist') {
-      notes = ['skillNotes.performanceArtistFeature:+1 choice of Perform'];
+      notes = ['skillNotes.performanceArtistFeature:+1 Perform choice'];
       // NOTE Choice of above also becomes class skill
+    } else if(trait == 'Planar Voyager') {
+      notes = [
+        'combatNotes.planarVoyagerFeature:+1 Initiative off PM plane',
+        'saveNotes.planarVoyagerFeature:+1 saves off PM plane',
+      ];
     } else if(trait == 'Poverty-Stricken') {
       notes = ['skillNotes.poverty-StrickenFeature:+1 Survival'];
       rules.defineRule('classSkills.Survival',
@@ -5323,7 +5372,7 @@ Pathfinder.traitRules = function(rules, traits) {
         ('classSkills.Swim', 'skillNotes.riverRatFeature', '=', '1');
     } else if(trait == 'Rousing Oratory') {
       notes = [
-        'Choice of Perform gives allies w/in 60\' +1 or better vs. fear for 5 min 1/day'
+        'DC 15 on Perform choice gives allies w/in 60\' +1 or better vs. fear for 5 min 1/day'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Sacred Conduit') {
@@ -5333,6 +5382,11 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Savanna Child') {
       notes = [
         'skillNotes.savannaChildFeature:+1 choice of Handle Animal, Knowledge (Nature), Ride'
+      ];
+      // NOTE Choice of above also becomes class skill
+    } else if(trait == 'Scholar Of Balance') {
+      notes = [
+        'skillNotes.scholarOfBalanceFeature:+1 Knowledge (Nature)/Knowledge (Planes)'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Scholar Of Ruins') {
@@ -5350,6 +5404,12 @@ Pathfinder.traitRules = function(rules, traits) {
         'skillNotes.secretsOfTheSphinxFeature:+2 Knowledge check 1/day'
       ];
       // NOTE Choice of above also becomes class skill
+    } else if(trait == 'Shadow Diplomat') {
+      notes = [
+        'skillNotes.shadowDiplomatFeature:+1 Diplomacy'
+      ];
+      rules.defineRule
+        ('classSkill.Diplomacy', 'skillNotes.shadowDiplomatFeature', '=', '1');
     } else if(trait == 'Sherrif') {
       notes = [
         'skillNotes.sherrifFeature:+10 local Bluff, Diplomacy, Intimidate 1/session'
@@ -5359,7 +5419,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Skeptic') {
       notes = ['saveNotes.skepticFeature:+2 vs. illusions'];
     } else if(trait == 'Smuggler') {
-      notes = ['skillNotes.smugglerFeature:+3 Sleight Of Hand for contraband'];
+      notes = ['skillNotes.smugglerFeature:+3 Sleight Of Hand to hide object'];
       rules.defineRule('classSkill.Sleight Of Hand',
         'skillNotes.smugglerFeature', '=', '1'
       );
@@ -5369,6 +5429,13 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Starchild') {
       notes = ['skillNotes.starchildFeature:+4 Survival to avoid being lost'];
+    } else if(trait == 'Storyteller') {
+      notes = [
+        'skillNotes.storytellerFeature:+%V Knowledge choice check 1/scenario'
+      ];
+      rules.defineRule('skillNotes.storytellerFeature',
+        'intelligenceModifier', '=', 'Math.min(1, source + 3)'
+      );
     } else if(trait == 'Suspicious') {
       notes = ['skillNotes.suspiciousFeature:+1 Sense Motive'];
       rules.defineRule
@@ -5381,7 +5448,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Tireless') {
       notes = [
-        'abilityNotes.tirelessFeature:+2 Con vs. nonlethan exertion/environ',
+        'abilityNotes.tirelessFeature:+2 Con vs. nonlethal exertion/environ',
         'combatNotes.tirelessFeature:+1 HP'
       ];
       rules.defineRule('hitPoints', 'combatNotes.tirelessFeature', '+', '1');
@@ -5393,7 +5460,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Trouper') {
       notes = [
         'saveNotes.trouperFeature:+1 vs. Perform-related abilities',
-        'skillNotes.trouperFeature:+1 choice of Perform'
+        'skillNotes.trouperFeature:+1 Perform choice'
       ];
     } else if(trait == 'Tunnel Fighter') {
       notes = [
@@ -5432,6 +5499,14 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.warriorOfOldFeature:+2 Initiative'];
       rules.defineRule
         ('initiative', 'combatNotes.warriorOfOldFeature', '+', '2');
+    } else if(trait == 'Watchdog') {
+      notes = [
+        'skillNotes.watchdogFeature:+1 Sense Motive'
+      ];
+      rules.defineRule
+        ('classSkill.Sense Motive', 'skillNotes.watchdogFeature', '=', '1');
+    } else if(trait == 'Weapon Style') {
+      notes = ['combatNotes.weaponStyleFeature:Proficient w/1 monk weapon'];
     } else if(trait == 'Well-Informed') {
       notes = [
         'skillNotes.well-InformedFeature:+1 Diplomacy to gather information/Knowledge (Local)'
