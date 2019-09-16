@@ -2583,8 +2583,24 @@ Pathfinder.createViewers = function(rules, viewers) {
 
 /* Defines the rules related to character description. */
 Pathfinder.descriptionRules = function(rules, alignments, deities, genders) {
-  SRD35.descriptionRules(rules, alignments, [], genders); // No changes
-  CustomExamples.deityRules(rules, deities);
+  SRD35.descriptionRules(rules, alignments, deities, genders);
+  // Pathfinder clerics get proficiency in the deity's favored weapon without
+  // taking the War domain, and the War domain does not grant Weapon Focus.
+  for(var i = 0; i < deities.length; i++) {
+    var pieces = deities[i].split(':');
+    if(pieces.length < 3 || pieces[1] == "")
+      continue;
+    var deity = pieces[0];
+    var weapons = pieces[1].split('/');
+    for(var j = 0; j < weapons.length; j++) {
+      var weapon = weapons[j];
+      var focusFeature = 'Weapon Focus (' + weapon + ')';
+      var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
+      rules.defineRule('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
+      rules.defineRule
+        ('clericFeatures.' + proficiencyFeature, 'domains.War', '=', 'null');
+    }
+  }
 };
 
 /* Defines the rules related to equipment. */
