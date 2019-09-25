@@ -34,20 +34,6 @@ function Pathfinder() {
     return;
   }
 
-  for(var attr in SRD35.spellsSchools) {
-    Pathfinder.spellsSchools[attr] = SRD35.spellsSchools[attr];
-  }
-  delete Pathfinder.spellsSchools['Cure Minor Wounds'];
-  delete Pathfinder.spellsSchools['Inflict Minor Wounds'];
-  for(var attr in SRD35.SUBFEATS) {
-    if(Pathfinder.SUBFEATS[attr] == null)
-      Pathfinder.SUBFEATS[attr] = SRD35.SUBFEATS[attr];
-  }
-  for(var attr in SRD35.SUBSKILLS) {
-    if(Pathfinder.SUBSKILLS[attr] == null)
-      Pathfinder.SUBSKILLS[attr] = SRD35.SUBSKILLS[attr];
-  }
-
   var rules = new ScribeRules('Pathfinder', PATHFINDER_VERSION);
   rules.defineChoice('preset', 'race', 'level', 'levels');
   rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
@@ -266,12 +252,46 @@ Pathfinder.SKILLS = [
   'Sleight Of Hand:dex/trained', 'Spellcraft:int/trained', 'Stealth:dex',
   'Survival:wis', 'Swim:str', 'Use Magic Device:cha/trained'
 ];
+Pathfinder.SRD35_SKILL_MAP = {
+  'Balance':'Acrobatics',
+  'Concentration':'',
+  'Decipher Script':'Linguistics',
+  'Forgery':'Linguistics',
+  'Gather Information':'Diplomacy',
+  'Hide':'Stealth',
+  'Jump':'Acrobatics',
+  'Listen':'Perception',
+  'Move Silently':'Stealth',
+  'Open Lock':'Disable Device',
+  'Search':'Perception',
+  'Speak Language':'Linguistics',
+  'Spot':'Perception',
+  'Tumble':'Acrobatics',
+  'Use Rope':''
+};
 Pathfinder.SUBFEATS = {
   'Alignment Channel':'Chaos/Evil/Good/Law',
+  'Armor Proficiency':'Heavy/Light/Medium',
   'Elemental Channel':'Air/Earth/Fire/Water',
-  'Master Craftsman':''
+  'Greater Spell Focus':SRD35.SCHOOLS.join('/').replace(/:[^\/]+/g, ''),
+  'Greater Weapon Focus':'',
+  'Greater Weapon Specialization':'',
+  'Improved Critical':'',
+  'Master Craftsman':'',
+  'Rapid Reload':'Hand/Heavy/Light',
+  'Shield Proficiency':'Heavy/Tower',
+  'Skill Focus':'',
+  'Spell Focus':SRD35.SCHOOLS.join('/').replace(/:[^\/]+/g, ''),
+  'Weapon Focus':'',
+  'Weapon Proficiency':'Simple',
+  'Weapon Specialization':'Dwarven Waraxe/Longsword'
 };
 Pathfinder.SUBSKILLS = {
+  'Craft':'',
+  'Knowledge':'Arcana/Dungeoneering/Engineering/Geography/' +
+              'History/Local/Nature/Nobility/Planes/Religion',
+  'Perform':'Act/Comedy/Dance/Keyboard/Oratory/Percussion/Sing/String/Wind',
+  'Profession':''
 };
 Pathfinder.TRAITS = [
   // Advanced Player's Guide
@@ -362,7 +382,7 @@ Pathfinder.armorsArmorClassBonuses = {
   'Breastplate': 6, 'Splint Mail': 7, 'Banded Mail': 7, 'Half Plate': 8,
   'Full Plate': 9
 };
-Pathfinder.spellsSchools = {
+Pathfinder.spellsSchools = Object.assign({}, SRD35.spellsSchools, {
   'Beast Shape I':'Transmutation',
   'Beast Shape II':'Transmutation',
   'Beast Shape III':'Transmutation',
@@ -383,7 +403,9 @@ Pathfinder.spellsSchools = {
   'Plant Shape II':'Transmutation',
   'Plant Shape III':'Transmutation',
   'Stabilize':'Conjuration'
-};
+});
+delete Pathfinder.spellsSchools['Cure Minor Wounds'];
+delete Pathfinder.spellsSchools['Inflict Minor Wounds'];
 
 /* Defines the rules related to character abilities. */
 Pathfinder.abilityRules = function(rules) {
