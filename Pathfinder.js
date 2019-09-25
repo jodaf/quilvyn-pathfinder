@@ -4925,6 +4925,14 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
       'skills.' + skill, '=', null,
       'classSkills.' + skill, '+', '3'
     );
+    rules.defineNote('skills.' + skill + ':(%1%2) %V (%3)');
+    rules.defineRule('skills.' + skill + '.1', '', '=', '"' + ability + '"');
+    rules.defineRule('skills.' + skill + '.2',
+      '', '=', '";cc"',
+      'classSkills.' + skill, '=', '""'
+    );
+    rules.defineRule
+      ('skills.' + skill + '.3', 'skillModifier.' + skill, '=', null);
     if(abilityNames[ability] != null) {
       var modifier = abilityNames[ability] + 'Modifier';
       rules.defineRule('skillModifier.' + skill, modifier, '+', null);
