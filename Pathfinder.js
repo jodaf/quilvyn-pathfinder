@@ -4859,11 +4859,11 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
   rules.defineNote(
     'skillNotes.armorSkillCheckPenalty:-%V dex- and str-based skills',
     'validationNotes.skillMaximum:' +
-      'Points allocated to one or more skills exceed max',
+      'Points allocated to one or more skills exceed maximum',
     'validationNotes.skillAllocation:%1 available vs. %2 allocated'
   );
   rules.defineRule('maxAllowedSkillPoints', 'level', '=', null);
-  rules.defineRule('maxAllocatedSkillPoints', /^skills\./, '^=', null);
+  rules.defineRule('maxAllocatedSkillPoints', /^skills\.[^\.]*$/, '^=', null);
   rules.defineRule('skillNotes.armorSkillCheckPenalty',
     'armor', '=', 'SRD35.armorsSkillCheckPenalties[source]',
     'shield', '+=', 'source == "None" ? 0 : ' +
@@ -4885,7 +4885,7 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
   );
   rules.defineRule('validationNotes.skillAllocation.2',
     '', '=', '0',
-    /^skills\./, '+=', null
+    /^skills\.[^\.]*$/, '+=', null
   );
   rules.defineRule('validationNotes.skillAllocation',
     'validationNotes.skillAllocation.1', '=', '-source',
