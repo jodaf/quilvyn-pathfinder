@@ -1,5 +1,5 @@
 /*
-Copyright 2015, James J. Hayes
+Copyright 2019, James J. Hayes
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -2686,7 +2686,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.agileManeuversFeature:+%V CMB (dex instead of str)',
         'sanityNotes.agileManeuversFeatAbility:' +
-          'Implies Dexterity Modifier exceed Strength Modifier'
+          'Implies Dexterity Modifier exceeds Strength Modifier'
       ];
       rules.defineRule('combatNotes.agileManeuversFeature',
         'dexterityModifier', '=', null,
