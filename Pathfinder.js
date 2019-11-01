@@ -1033,8 +1033,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Use 1 ki to <i>Dimension Door</i> at level %V',
         'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
         'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V damage to self',
-        'sanityNotes.monkClassArmor:Implies Armor == None',
-        'sanityNotes.monkClassShield:Implies Shield == None',
+        'sanityNotes.monkClassArmor:Implies Armor == "None"',
+        'sanityNotes.monkClassShield:Implies Shield == "None"',
         'saveNotes.diamondBodyFeature:Immune to poison',
         'saveNotes.diamondSoulFeature:DC %V spell resistance',
         'saveNotes.evasionFeature:Reflex save yields no damage instead of half',
@@ -1213,7 +1213,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.divineGraceFeature:+%V all saves',
         'saveNotes.divineHealthFeature:Immune to disease',
         'validationNotes.paladinClassAlignment:' +
-          'Requires Alignment == Lawful Good'
+          'Requires Alignment == "Lawful Good"'
       ];
       profArmor = SRD35.PROFICIENCY_HEAVY;
       profShield = SRD35.PROFICIENCY_HEAVY;
