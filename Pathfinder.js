@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.2.0';
+var PATHFINDER_VERSION = '1.4.1.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -62,6 +62,7 @@ function Pathfinder() {
   Pathfinder.magicRules
     (rules, SRD35.CLASSES, SRD35.DOMAINS.concat(Pathfinder.DOMAINS_ADDED),
      SRD35.SCHOOLS);
+  Pathfinder.traitRules(rules, Pathfinder.TRAITS);
   Scribe.addRuleSet(rules);
   Pathfinder.rules = rules;
 
