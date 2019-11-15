@@ -55,8 +55,9 @@ function Pathfinder() {
   Pathfinder.descriptionRules
     (rules, SRD35.ALIGNMENTS, Pathfinder.DEITIES, SRD35.GENDERS);
   Pathfinder.equipmentRules
-    (rules, SRD35.ARMORS, SRD35.GOODIES, SRD35.SHIELDS,
+    (rules, SRD35.ARMORS, SRD35.SHIELDS,
      SRD35.WEAPONS.concat(Pathfinder.WEAPONS_ADDED));
+  SRD35.goodiesRules(rules, SRD35.GOODIES);
   Pathfinder.combatRules(rules);
   Pathfinder.movementRules(rules);
   Pathfinder.magicRules
@@ -851,7 +852,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.resistNature\'sLureFeature:+4 vs. spells of feys',
         'saveNotes.venomImmunityFeature:Immune to poisons',
         'skillNotes.natureSenseFeature:+2 Knowledge (Nature)/Survival',
-        'skillNotes.wildEmpathyFeature:+%V Diplomacy w/animals',
+        'skillNotes.wildEmpathyFeature:+%V Diplomacy (animals)',
         'validationNotes.druidClassAlignment:Requires Alignment =~ Neutral',
         'validationNotes.druidClassArmor:' +
           'Requires Armor =~ None|Hide|Leather|Padded',
@@ -1045,7 +1046,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.slowFallFeature:' +
           'Subtract %V ft from falling damage distance',
         'saveNotes.stillMindFeature:+2 vs. enchantment',
-        'skillNotes.highJumpFeature:+%V Acrobatics (Jump), use 1 ki for +20',
+        'skillNotes.highJumpFeature:+%V Acrobatics (jump), use 1 ki for +20',
         'validationNotes.Gorgon\'sFistSelectableFeatureLevels:' +
            'Requires Monk >= 6',
         'validationNotes.improvedBullRushSelectableFeatureLevels:' +
@@ -1344,16 +1345,16 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.improvedEvasionFeature:Failed save yields half damage',
         'skillNotes.camouflageFeature:Hide in favored terrain',
         'skillNotes.favoredEnemyFeature:' +
-          '+2 or more Bluff/Knowledge/Perception/Sense Motive/Survival ' +
+          '+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival ' +
           'vs. %V type(s) of creatures',
         'skillNotes.favoredTerrainFeature:' +
-          '+2 Knowledge (Geography)/Perception/Stealth/Survival/leaves no ' +
-          'trail in %V terrain type(s)',
+          '+2 Knowledge (Geography), Perception, Stealth, Survival, leaves ' +
+          'no trail in %V terrain type(s)',
         'skillNotes.hideInPlainSightFeature:Hide even when observed',
         'skillNotes.quarryFeature:Take %V to track target',
         'skillNotes.swiftTrackerFeature:Track at full speed',
         'skillNotes.trackFeature:+%V Survival to follow creatures\' trail',
-        'skillNotes.wildEmpathyFeature:+%V Diplomacy w/animals',
+        'skillNotes.wildEmpathyFeature:+%V Diplomacy (animals)',
         'validationNotes.greaterTwo-WeaponFightingSelectableFeatureFeatures:' +
            'Requires Combat Style (Two-Weapon Combat)',
         'validationNotes.greaterTwo-WeaponFightingSelectableFeatureLevels:' +
@@ -1518,8 +1519,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.trapSpotterFeature:' +
           'Automatic Perception check w/in 10 ft of trap',
         'skillNotes.skillMasteryFeature:' +
-          'Take 10 despite distraction on %V designated skills',
-        'skillNotes.trapfindingFeature:+%V Perception/Disable Device w/traps',
+          'Take 10 despite distraction on %V chosen skills',
+        'skillNotes.trapfindingFeature:' +
+          '+%V Perception (traps)/Disable Device (traps)',
         'validationNotes.cripplingStrikeSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
         'validationNotes.defensiveRollSelectableFeatureLevels:' +
@@ -2285,10 +2287,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         var powers = schoolPowers[school].split('/');
         var schoolLevelAttr = 'schoolLevel.' + school;
         rules.defineRule('magicNotes.wizardSpecialization',
-         'specialize.' + school, '=', '"' + school + '"'
+         'specialize.' + school, '=', '"' + school.toLowerCase() + '"'
         );
         rules.defineRule('skillNotes.wizardSpecialization',
-          'specialize.' + school, '=', '"' + school + '"'
+          'specialize.' + school, '=', '"' + school.toLowerCase() + '"'
         );
         rules.defineRule(schoolLevelAttr,
           'specialize.' + school, '?', null,
@@ -2585,7 +2587,7 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
   if(familiars != null) {
     notes = [
       'skillNotes.companionAlertnessFeature:' +
-        '+2 Perception/Sense Motive when companion w/in reach',
+        '+2 Perception, Sense Motive when companion w/in reach',
       'skillNotes.familiarBat:+3 Fly',
       'skillNotes.familiarCat:+3 Stealth',
       'skillNotes.familiarMonkey:+3 Acrobatics'
@@ -2627,8 +2629,8 @@ Pathfinder.descriptionRules = function(rules, alignments, deities, genders) {
 };
 
 /* Defines the rules related to equipment. */
-Pathfinder.equipmentRules = function(rules, armors, goodies, shields, weapons) {
-  SRD35.equipmentRules(rules, armors, goodies, shields, weapons); // No changes
+Pathfinder.equipmentRules = function(rules, armors, shields, weapons) {
+  SRD35.equipmentRules(rules, armors, shields, weapons); // No changes
 };
 
 /* Defines the rules related to feats. */
@@ -3433,7 +3435,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'abilityNotes.runFeature:+1 run speed multiplier',
         'combatNotes.runFeature:Retain dex bonus to AC while running',
-        'skillNotes.runFeature:+4 running Jump'
+        'skillNotes.runFeature:+4 Acrobatics (running jump)'
       ];
       rules.defineRule
         ('runSpeedMultiplier', 'abilityNotes.runFeature', '+', '1');
@@ -4251,20 +4253,21 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Nobility') {
       notes = [
+        'featureNotes.nobleLeadershipFeature:+%V Leadership',
         'magicNotes.inspiringWordFeature:' +
-          "R30' word imparts +2 attack/skill/ability/save to target for %V rounds %1/day",
-        'skillNotes.nobleLeadershipFeature:+%V Leadership'
+          "R30' word imparts +2 attack/skill/ability/save to target for %V rounds %1/day"
       ];
-      rules.defineRule
-        ('features.Leadership', 'skillNotes.nobleLeadershipFeature', '=', '1');
+      rules.defineRule('featureNotes.nobleLeadershipFeature',
+        'levels.Cleric', '=', 'source >= 8 ? 2 : null'
+      );
+      rules.defineRule('features.Leadership',
+        'featureNotes.nobleLeadershipFeature', '=', '1'
+      );
       rules.defineRule('magicNotes.inspiringWordFeature',
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.inspiringWordFeature.1',
         'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('skillNotes.nobleLeadershipFeature',
-        'levels.Cleric', '=', 'source >= 8 ? 2 : null'
       );
     } else if(domain == 'Plant') {
       notes = [
@@ -4591,15 +4594,16 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)'
       ];
       notes = [
+        'abilityNotes.slowFeature:-10 speed',
         'abilityNotes.steadyFeature:No speed penalty in armor',
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
         'combatNotes.dwarfHatredFeature:+1 attack vs. goblinoid/orc',
         'combatNotes.stabilityFeature:+4 CMD vs. Bull Rush/Trip',
         'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
         'saveNotes.hardyFeature:+2 vs. poison/spells',
-        'skillNotes.greedFeature:+2 Appraise involving precious metal/gems',
+        'skillNotes.greedFeature:+2 Appraise (precious metals, gems)',
         'skillNotes.stonecunningFeature:' +
-          '+2 Perception involving stone, automatic check w/in 10 ft'
+          '+2 Perception (stone), automatic check w/in 10 ft'
       ];
 
       rules.defineRule('abilityNotes.armorSpeedAdjustment',
@@ -4613,7 +4617,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       rules.defineRule
         ('resistance.Poison', 'saveNotes.hardyFeature', '+=', '2');
       rules.defineRule('resistance.Spell', 'saveNotes.hardyFeature', '+=', '2');
-      rules.defineRule('speed', 'features.Slow', '+', '-10');
+      rules.defineRule('speed', 'abilityNotes.slowFeature', '+', '-10');
 
     } else if(race.match(/Elf/)) {
 
@@ -4629,7 +4633,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
         'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
         'skillNotes.elvenMagicFeature:' +
-          '+2 Spellcraft to identify magic item properties',
+          '+2 Spellcraft (identify magic item properties)',
         'skillNotes.keenSensesFeature:+2 Perception'
       ];
       rules.defineRule('featureNotes.low-LightVisionFeature',
@@ -4651,6 +4655,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Slow', 'Small', 'Weapon Familiarity (Gnome Hooked Hammer)'
       ];
       notes = [
+        'abilityNotes.slowFeature:-10 speed',
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
         'combatNotes.gnomeHatredFeature:+1 attack vs. goblinoid/reptilian',
         'combatNotes.smallFeature:+1 AC/attack, -1 CMD/CMB',
@@ -4659,7 +4664,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'magicNotes.naturalSpellsFeature:%V 1/day as caster %1',
         'saveNotes.resistIllusionFeature:+2 vs. illusions',
         'skillNotes.keenSensesFeature:+2 Perception',
-        'skillNotes.obsessiveFeature:+2 on choice of Craft/Profession',
+        'skillNotes.obsessiveFeature:+2 choice of Craft or Profession',
         'skillNotes.smallFeature:+4 Stealth'
       ];
 
@@ -4687,7 +4692,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       rules.defineRule('rangedAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('resistance.Illusion', 'saveNotes.resistIllusionFeature', '+=', '2');
-      rules.defineRule('speed', 'features.Slow', '+', '-10');
+      rules.defineRule('speed', 'abilityNotes.slowFeature', '+', '-10');
 
     } else if(race.match(/Halfling/)) {
 
@@ -4698,6 +4703,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Weapon Proficiency (Sling)'
       ];
       notes = [
+        'abilityNotes.slowFeature:-10 speed',
         'combatNotes.smallFeature:+1 AC/attack, -1 CMD/CMB',
         'saveNotes.fearlessFeature:+2 vs. fear',
         'saveNotes.halflingLuckFeature:+1 all saves',
@@ -4723,7 +4729,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         ('save.Reflex', 'saveNotes.halflingLuckFeature', '+', '1');
       rules.defineRule
         ('save.Will', 'saveNotes.halflingLuckFeature', '+', '1');
-      rules.defineRule('speed', 'features.Slow', '+', '-10');
+      rules.defineRule('speed', 'abilityNotes.slowFeature', '+', '-10');
 
     } else if(race.match(/Human/)) {
 
@@ -4857,6 +4863,32 @@ Pathfinder.ruleNotes = function() {
 /* Defines the rules related to character skills. */
 Pathfinder.skillRules = function(rules, skills, subskills) {
 
+  var allSkills = [];
+  for(var i = 0; i < skills.length; i++) {
+    var pieces = skills[i].split(':');
+    var skill = pieces[0];
+    var skillSubskills = subskills[skill];
+    if(skillSubskills == null) {
+      allSkills[allSkills.length] = skills[i];
+    } else if(skillSubskills != '') {
+      skillSubskills = skillSubskills.split('/');
+      for(var j = 0; j < skillSubskills.length; j++) {
+        var subskill = skill + ' (' + skillSubskills[j] + ')';
+        allSkills[allSkills.length] = subskill + ':' + pieces[1];
+        rules.defineRule
+          ('classSkills.' + subskill, 'classSkills.' + skill, '=', '1');
+      }
+    }
+  }
+
+  for(var i = 0; i < allSkills.length; i++) {
+    var pieces = allSkills[i].split(':');
+    var skill = pieces[0];
+    var ability = pieces[1].replace(/\/.*/, '');
+    Pathfinder.defineSkill
+      (rules, skill, ability, pieces[1].includes('/trained'), null);
+  }
+
   rules.defineNote(
     'skillNotes.armorSkillCheckPenalty:-%V dex- and str-based skills',
     'validationNotes.skillMaximum:' +
@@ -4869,7 +4901,8 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
     'armor', '=', 'SRD35.armorsSkillCheckPenalties[source]',
     'shield', '+=', 'source == "None" ? 0 : ' +
                     'source == "Tower" ? 10 : ' +
-                    'source.match(/Heavy/) ? 2 : 1'
+                    'source.match(/Heavy/) ? 2 : 1',
+    '', '^', '0'
   );
   rules.defineRule('skillPoints',
     '', '=', '0',
@@ -4892,68 +4925,6 @@ Pathfinder.skillRules = function(rules, skills, subskills) {
     'validationNotes.skillAllocation.1', '=', '-source',
     'validationNotes.skillAllocation.2', '+', null
   );
-
-  var abilityNames = {
-    'cha':'charisma', 'con':'constitution', 'dex':'dexterity',
-    'int':'intelligence', 'str':'strength', 'wis':'wisdom'
-  };
-
-  var allSkills = [];
-  for(var i = 0; i < skills.length; i++) {
-    var pieces = skills[i].split(':');
-    var skill = pieces[0];
-    var skillSubskills = subskills[skill];
-    if(skillSubskills == null) {
-      allSkills[allSkills.length] = skill + ':' + pieces[1];
-    } else if(skillSubskills != '') {
-      skillSubskills = skillSubskills.split('/');
-      for(var j = 0; j < skillSubskills.length; j++) {
-        var subskill = skill + ' (' + skillSubskills[j] + ')';
-        allSkills[allSkills.length] = subskill + ':' + pieces[1];
-        rules.defineRule
-          ('classSkills.' + subskill, 'classSkills.' + skill, '=', '1');
-      }
-    }
-  }
-
-  for(var i = 0; i < allSkills.length; i++) {
-    var pieces = allSkills[i].split(':');
-    var skill = pieces[0];
-    var ability = pieces[1].replace(/\/.*/, '');
-    var matchInfo;
-    rules.defineChoice('skills', skill + ':' + pieces[1]);
-    rules.defineRule('skillModifier.' + skill,
-      'skills.' + skill, '=', null,
-      'classSkills.' + skill, '+', '3'
-    );
-    rules.defineNote('skills.' + skill + ':(%1%2) %V (%3)');
-    rules.defineRule('skills.' + skill + '.1', '', '=', '"' + ability + '"');
-    rules.defineRule('skills.' + skill + '.2',
-      '', '=', '";cc"',
-      'classSkills.' + skill, '=', '""'
-    );
-    rules.defineRule
-      ('skills.' + skill + '.3', 'skillModifier.' + skill, '=', null);
-    if(abilityNames[ability] != null) {
-      var modifier = abilityNames[ability] + 'Modifier';
-      rules.defineRule('skillModifier.' + skill, modifier, '+', null);
-      if(ability == 'dex' || ability == 'str') {
-        rules.defineRule('skillModifier.' + skill,
-          'skillNotes.armorSkillCheckPenalty', '+', '-source'
-        );
-      }
-    }
-    if(skill == 'Heal') {
-      rules.defineChoice('goodies', 'Healer\'s Kit');
-      rules.defineRule('skillNotes.goodiesHealAdjustment',
-        'goodies.Healer\'s Kit', '+=', '2'
-      );
-      rules.defineRule
-        ('skillModifier.Heal', 'skillNotes.goodiesHealAdjustment', '+', null);
-    } else if(skill == 'Linguistics') {
-      rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
-    }
-  }
 
 };
 
@@ -5019,7 +4990,7 @@ Pathfinder.traitRules = function(rules, traits) {
       );
     } else if(trait == 'Beastspeaker') {
       notes = [
-        'skillNotes.beastspeakerFeature:+1 Wild Empathy; no penalty w/elemental animals'
+        'skillNotes.beastspeakerFeature:+1 Diplomacy (animals), no penalty w/elemental animals'
       ];
     } else if(trait == 'Beneficient Touch') {
       notes = ['magicNotes.beneficientTouchFeature:Reroll healing 1s 1/day'];
@@ -5041,10 +5012,10 @@ Pathfinder.traitRules = function(rules, traits) {
       rules.defineRule
         ('classSkills.Intimidate', 'skillNotes.bullyFeature', '=', '1');
     } else if(trait == 'Canter') {
-      notes = ['skillNotes.canterFeature:+5 Bluff w/secret messages'];
+      notes = ['skillNotes.canterFeature:+5 Bluff (secret messages)'];
     } else if(trait == 'Captain\'s Blade') {
       notes = [
-        'skillNotes.captain\'sBladeFeature:+1 Acrobatics and Climb aboard ship'
+        'skillNotes.captain\'sBladeFeature:+1 Acrobatics, Climb aboard ship'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Caretaker') {
@@ -5054,11 +5025,11 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Charming') {
       notes = [
         'magicNotes.charmingFeature:+1 spell DC w/attracted creatures',
-        'skillNotes.charmingFeature:+1 Bluff and Diplomacy w/attracted creatures'
+        'skillNotes.charmingFeature:+1 Bluff, Diplomacy w/attracted creatures'
       ];
     } else if(trait == 'Child Of Nature') {
       notes = [
-        'skillNotes.childOfNatureFeature:+1 Survival finding food and water/Knowledge (Nature)'
+        'skillNotes.childOfNatureFeature:+1 Survival (finding food and water)/Knowledge (Nature)'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Child Of The Streets') {
@@ -5117,7 +5088,7 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.dirtyFighterFeature:+1 damage when flanking'];
     } else if(trait == 'Divine Courtesan') {
       notes = [
-        'skillNotes.divineCourtesanFeature:+1 Diplomacy to gather information/Sense Motive'
+        'skillNotes.divineCourtesanFeature:+1 Diplomacy (gather information)/Sense Motive'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Divine Warrior') {
@@ -5129,7 +5100,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Ear For Music') {
       notes = [
-        'skillNotes.earForMusicFeature:+1 Perform choice/+2 Knowledge (Local) for art + music'
+        'skillNotes.earForMusicFeature:+1 Perform choice/+2 Knowledge (Local) (art, music)'
       ];
     } else if(trait == 'Ease Of Faith') {
       notes = ['skillNotes.easeOfFaithFeature:+1 Diplomacy'];
@@ -5222,7 +5193,7 @@ Pathfinder.traitRules = function(rules, traits) {
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Goldsniffer') {
       notes = [
-        'skillNotes.goldsnifferFeature:+2 Perception wrt metals, jewels, gems'
+        'skillNotes.goldsnifferFeature:+2 Perception (metals, jewels, gems)'
       ];
     } else if(trait == 'Greasy Palm') {
       notes = ['10% discount on bribes'];
@@ -5237,7 +5208,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Highlander') {
       notes = [
-        'skillNotes.highlanderFeature:+1 Stealth/+2 in hilly and rocky areas'
+        'skillNotes.highlanderFeature:+1 Stealth/+2 Stealth (hilly and rocky areas)'
       ];
       rules.defineRule
         ('classSkills.Stealth', 'skillNotes.highlanderFeature', '=', '1');
@@ -5254,7 +5225,7 @@ Pathfinder.traitRules = function(rules, traits) {
       // NOTE Choice of above also becomes proficient
     } else if(trait == 'I Know A Guy') {
       notes = [
-        'skillNotes.iKnowAGuyFeature:+1 Knowledge (Local)/+2 Diplomacy to gather information'
+        'skillNotes.iKnowAGuyFeature:+1 Knowledge (Local)/+2 Diplomacy (gather information)'
       ];
     } else if(trait == 'Impressive Presence') {
       notes = [
@@ -5273,7 +5244,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Influential') {
       notes = [
         'magicNotes.influentialFeature:+1 DC on language-dependent spell 1/day',
-        'skillNotes.influentialFeature:+3 Diplomacy for requests'
+        'skillNotes.influentialFeature:+3 Diplomacy (requests)'
       ];
     } else if(trait == 'Insider Knowledge') {
       notes = [
@@ -5327,12 +5298,12 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Medic') {
       notes = [
         'magicNotes.medicFeature:+1 caster level with <i>Remove</i> healing',
-        'skillNotes.medicFeature:+2 Heal vs. disease, poison'
+        'skillNotes.medicFeature:+2 Heal (disease, poison)'
       ];
     } else if(trait == 'Meridian Strike') {
       notes = ['combatNotes.meridianStrikeFeature:Reroll crit damage 1s 1/day'];
     } else if(trait == 'Meticulous Artisan') {
-      notes = ['skillNotes.meticulousArtisanFeature:+1 Craft for Day Job'];
+      notes = ['skillNotes.meticulousArtisanFeature:+1 Craft for day job'];
     } else if(trait == 'Militia Veteran') {
       notes = [
         'skillNotes.militiaVeteranFeature:+1 choice of Profession (Soldier), Ride, Survival'
@@ -5470,7 +5441,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Skeptic') {
       notes = ['saveNotes.skepticFeature:+2 vs. illusions'];
     } else if(trait == 'Smuggler') {
-      notes = ['skillNotes.smugglerFeature:+3 Sleight Of Hand to hide object'];
+      notes = ['skillNotes.smugglerFeature:+3 Sleight Of Hand (hide object)'];
       rules.defineRule('classSkill.Sleight Of Hand',
         'skillNotes.smugglerFeature', '=', '1'
       );
@@ -5479,7 +5450,7 @@ Pathfinder.traitRules = function(rules, traits) {
         'combatNotes.soulDrinkerFeature:Gain HP equal to slain foe\'s hit dice for 1 min 1/day'
       ];
     } else if(trait == 'Starchild') {
-      notes = ['skillNotes.starchildFeature:+4 Survival to avoid being lost'];
+      notes = ['skillNotes.starchildFeature:+4 Survival (avoid becoming lost)'];
     } else if(trait == 'Storyteller') {
       notes = [
         'skillNotes.storytellerFeature:+%V Knowledge choice check 1/scenario'
@@ -5511,7 +5482,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Trouper') {
       notes = [
         'saveNotes.trouperFeature:+1 vs. Perform-related abilities',
-        'skillNotes.trouperFeature:+1 Perform choice'
+        'skillNotes.trouperFeature:+1 choice of Perform'
       ];
     } else if(trait == 'Tunnel Fighter') {
       notes = [
@@ -5520,7 +5491,7 @@ Pathfinder.traitRules = function(rules, traits) {
     } else if(trait == 'Unflappable') {
       notes = [
         'saveNotes.unflappableFeature:+1 vs. fear',
-        'skillNotes.unflappableFeature:+3 DC on foes\'s Intimidate'
+        'skillNotes.unflappableFeature:+3 DC (resist Intimidate)'
       ];
     } else if(trait == 'Undead Slayer') {
       notes = ['combatNotes.undeadSlayerFeature:+1 Damage vs. undead'];
@@ -5529,7 +5500,7 @@ Pathfinder.traitRules = function(rules, traits) {
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Unorthodox Strategy') {
       notes = [
-        'skillNotes.unorthodoxStrategyFeature:+2 Acrobatics move through threatened squares'
+        'skillNotes.unorthodoxStrategyFeature:+2 Acrobatics (traverse threatened squares)'
       ];
     } else if(trait == 'Vagabond Child') {
       notes = [
@@ -5560,7 +5531,7 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.weaponStyleFeature:Proficient w/1 monk weapon'];
     } else if(trait == 'Well-Informed') {
       notes = [
-        'skillNotes.well-InformedFeature:+1 Diplomacy to gather information/Knowledge (Local)'
+        'skillNotes.well-InformedFeature:+1 Diplomacy (gather information)/Knowledge (Local)'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Whistleblower') {
@@ -5589,4 +5560,29 @@ Pathfinder.traitRules = function(rules, traits) {
   rules.defineEditorElement('traits', 'Traits', 'fset', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
 
+}
+
+/*
+ * A convenience function that adds #name# to the list of known skills in
+ * #rules#.  #ability# is the three-character abbreviation for the skill's
+ * primary ability ("str", "int", "dex", etc.). #trainedOnly# is a boolean
+ * indicating whether only those trained in the skill can use it.
+ * #classes#, if not null, is either "all" or a slash-delimited list of class
+ * names, indicating the classes for which this skill is a class skill.
+ */
+Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
+  SRD35.defineSkill(rules, name, ability, trainedOnly, null, classes);
+  // Override class skill calculations
+  rules.defineRule('skillModifier.' + name,
+    'skills.' + name, '=', 'source',
+    'classSkills.' + name, '+', '3'
+  );
+  if(ability == 'dex' || ability == 'str') {
+    rules.defineRule('skillModifier.' + name,
+      'skillNotes.armorSkillCheckPenalty', '+', '-source'
+    );
+  }
+  if(name == 'Linguistics') {
+    rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
+  }
 }

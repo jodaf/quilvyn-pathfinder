@@ -227,7 +227,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'featureNotes.poisonUseFeature:' +
           'No chance of self-poisoning when applying to blade',
         'saveNotes.poisonToleranceFeature:+%V vs. poison',
-        'skillNotes.hiddenWeaponsFeature:+%V Sleight Of Hand to hide weapons',
+        'skillNotes.hiddenWeaponsFeature:+%V Sleight Of Hand (hide weapons)',
         'skillNotes.hideInPlainSightFeature:Hide even when observed',
         'validationNotes.assassinClassAlignment:Requires Alignment =~ Evil',
         'validationNotes.assassinClassSkills:' +
@@ -511,7 +511,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'magicNotes.casterLevelBonusFeature:' +
           '+%V base class level for spells known/per day',
         'skillNotes.greaterLoreFeature:' +
-          '+10 Spellcraft to determine magic item properties',
+          '+10 Spellcraft (identify magic item properties)',
         'magicNotes.moreNewfoundArcanaFeature:Bonus level 2 spell',
         'magicNotes.newfoundArcanaFeature:Bonus level 1 spell',
         'magicNotes.trueLoreFeature:' +
@@ -693,10 +693,10 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'skillNotes.bardicKnowledgeFeature:' +
           '+%V all Knowledge, use any Knowledge untrained',
         'skillNotes.deepPocketsFeature:' +
-          '+4 Sleight Of Hand to conceal small objects',
+          '+4 Sleight Of Hand (conceal small objects)',
         'skillNotes.masterScribeFeature:+%V Linguistics/Profession (Scribe)/Use Magic Device (Scrolls)',
         'skillNotes.pathfindingFeature:' +
-          '+5 Survival vs. lost/DC 15 Survival to extend to companion',
+          '+5 Survival (avoid becoming lost), DC 15 Survival to extend to companion',
         'validationNotes.pathfinderChroniclerClassSkills:' +
           'Requires Linguistics >= 3/Perform (Oratory) >= 5/Profession (Scribe) >= 5'
       ];
