@@ -4855,6 +4855,9 @@ Pathfinder.ruleNotes = function() {
     '    bumping intelligence when a character reaches fourth level causes\n' +
     '    Scribe to recompute the number of skill points awarded at first\n' +
     '    level.\n' +
+    '  </li><li>\n' +
+    '    For monks, Scribe shows the unarmed damage for medium size, even\n' +
+    '    if the monk is small or large.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n';
