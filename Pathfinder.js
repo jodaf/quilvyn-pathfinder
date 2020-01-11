@@ -4665,7 +4665,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'saveNotes.resistIllusionFeature:+2 vs. illusions',
         'skillNotes.keenSensesFeature:+2 Perception',
         'skillNotes.obsessiveFeature:+2 choice of Craft or Profession',
-        'skillNotes.smallFeature:+4 Stealth'
+        'skillNotes.smallFeature:+2 Fly/+4 Stealth'
       ];
 
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
@@ -4708,7 +4708,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'saveNotes.fearlessFeature:+2 vs. fear',
         'saveNotes.halflingLuckFeature:+1 all saves',
         'skillNotes.keenSensesFeature:+2 Perception',
-        'skillNotes.smallFeature:+4 Stealth',
+        'skillNotes.smallFeature:+2 Fly/+4 Stealth',
         'skillNotes.sure-FootedFeature:+2 Acrobatics/Climb'
       ];
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
@@ -5587,7 +5587,6 @@ Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
   }
   if(name == 'Fly') {
     rules.defineRule('skillModifier.Fly', 'features.Large', '+', '-2');
-    rules.defineRule('skillModifier.Fly', 'features.Small', '+', '2');
   }
   if(name == 'Linguistics') {
     rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
