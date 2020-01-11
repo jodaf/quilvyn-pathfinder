@@ -36,6 +36,8 @@ PathfinderPrestige.CLASSES = [
   'Duelist', 'Eldritch Knight', 'Loremaster', 'Mystic Theurge',
   'Pathfinder Chronicler', 'Shadowdancer'
 ];
+PathfinderPrestige.SAVE_BONUS_GOOD = 'Math.floor((source + 1) / 2)';
+PathfinderPrestige.SAVE_BONUS_POOR = 'Math.floor((source + 1) / 3)';
 
 /* Defines the rules related to Pathfinder Prestige Classes. */
 PathfinderPrestige.classRules = function(rules, classes) {
@@ -84,9 +86,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_MEDIUM;
       profShield = SRD35.PROFICIENCY_HEAVY;
       profWeapon =  SRD35.PROFICIENCY_MEDIUM;
-      saveFortitude = 'Math.floor((source + 1) / 2)';
-      saveReflex = 'Math.floor((source + 1) / 2)';
-      saveWill = 'Math.floor((source + 1) / 3)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_POOR;
       selectableFeatures = null;
       skillPoints = 4;
       skills = [
@@ -153,9 +155,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_NONE;
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 2)';
-      saveWill = 'Math.floor((source + 1) / 2)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_GOOD;
       selectableFeatures = null;
       skillPoints = 4;
       skills = [
@@ -236,9 +238,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_LIGHT;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_NONE;
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 2)';
-      saveWill = 'Math.floor((source + 1) / 3)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_POOR;
       selectableFeatures = null;
       skillPoints = 4;
       skills = [
@@ -306,9 +308,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_NONE;
-      saveFortitude = 'Math.floor((source + 1) / 2)';
-      saveReflex = 'Math.floor((source + 1) / 3)';
-      saveWill = 'Math.floor((source + 1) / 2)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveWill = PathfinderPrestige.SAVE_BONUS_GOOD;
       selectableFeatures = null;
       skillPoints = 2;
       skills = [
@@ -420,9 +422,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_LIGHT;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_MEDIUM;
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 2)';
-      saveWill = 'Math.floor((source + 1) / 3)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_POOR;
       selectableFeatures = null;
       skillPoints = 4;
       skills = [
@@ -470,9 +472,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_NONE;
-      saveFortitude = 'Math.floor((source + 1) / 2)';
-      saveReflex = 'Math.floor((source + 1) / 3)';
-      saveWill = 'Math.floor((source + 1) / 3)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveWill = PathfinderPrestige.SAVE_BONUS_POOR;
       selectableFeatures = null;
       skillPoints = 2;
       skills = [
@@ -531,9 +533,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       profArmor = SRD35.PROFICIENCY_NONE;
       profShield = SRD35.PROFICIENCY_NONE;
       profWeapon = SRD35.PROFICIENCY_NONE;
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 3)';
-      saveWill = 'Math.floor((source + 1) / 2)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveWill = PathfinderPrestige.SAVE_BONUS_GOOD;
       selectableFeatures = [
         'Applicable Knowledge', 'Dodge Trick', 'Instant Mastery',
         'More Newfound Arcana', 'Newfound Arcana', 'Secret Health',
@@ -629,9 +631,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'Knowledge (Arcana)', 'Knowledge (Religion)', 'Sense Motive',
         'Spellcraft'
       ];
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 3)';
-      saveWill = 'Math.floor((source + 1) / 2)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveWill = PathfinderPrestige.SAVE_BONUS_GOOD;
       selectableFeatures = null;
       spellAbility = null;
       spellsKnown = null;
@@ -710,9 +712,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'Ride', 'Sense Motive', 'Sleight Of Hand', 'Survival',
         'Use Magic Device'
       ];
-      saveFortitude = 'Math.floor((source + 1) / 3)';
-      saveReflex = 'Math.floor((source + 1) / 2)';
-      saveWill = 'Math.floor((source + 1) / 2)';
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_GOOD;
       selectableFeatures = null;
       spellAbility = null;
       spellsKnown = null;
@@ -804,9 +806,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'Acrobatics', 'Bluff', 'Diplomacy', 'Diguise', 'Escape Artist',
         'Perception', 'Perform', 'Slight Of Hand', 'Stealth'
       ];
-      saveFortitude = SRD35.SAVE_BONUS_POOR;
-      saveReflex = SRD35.SAVE_BONUS_GOOD;
-      saveWill = SRD35.SAVE_BONUS_POOR;
+      saveFortitude = PathfinderPrestige.SAVE_BONUS_POOR;
+      saveReflex = PathfinderPrestige.SAVE_BONUS_GOOD;
+      saveWill = PathfinderPrestige.SAVE_BONUS_POOR;
       selectableFeatures = [
         'Bleeding Attack', 'Combat Trick', 'Fast Stealth', 'Finesse Rogue',
         'Ledge Walker', 'Major Magic', 'Minor Magic', 'Quick Disable',
