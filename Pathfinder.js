@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.1';
+var PATHFINDER_VERSION = '1.4.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -5584,6 +5584,10 @@ Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
     rules.defineRule('skillModifier.' + name,
       'skillNotes.armorSkillCheckPenalty', '+', '-source'
     );
+  }
+  if(name == 'Fly') {
+    rules.defineRule('skillModifier.Fly', 'features.Large', '+', '-2');
+    rules.defineRule('skillModifier.Fly', 'features.Small', '+', '2');
   }
   if(name == 'Linguistics') {
     rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
