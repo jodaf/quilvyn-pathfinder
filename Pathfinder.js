@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.3';
+var PATHFINDER_VERSION = '1.4.1.4';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -5574,21 +5574,52 @@ Pathfinder.traitRules = function(rules, traits) {
  * names, indicating the classes for which this skill is a class skill.
  */
 Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
-  SRD35.defineSkill(rules, name, ability, trainedOnly, null, classes);
-  // Override class skill calculations
+
+  var abilityNames = {
+    'cha':'charisma', 'con':'constitution', 'dex':'dexterity',
+    'int':'intelligence', 'str':'strength', 'wis':'wisdom'
+  };
+
+  rules.defineChoice('skills', name + ':' + (ability ? ability : ''));
+  rules.defineRule('classSkillBump.' + name,
+    'skills.' + name, '?', 'source > 0',
+    'classSkills.' + name, '=', '3'
+  );
   rules.defineRule('skillModifier.' + name,
     'skills.' + name, '=', 'source',
-    'classSkills.' + name, '+', '3'
+    'classSkillBump.' + name, '+', null
   );
-  if(ability == 'dex' || ability == 'str') {
-    rules.defineRule('skillModifier.' + name,
-      'skillNotes.armorSkillCheckPenalty', '+', '-source'
-    );
+  rules.defineNote('skills.' + name + ':(%1%2) %V (%3)');
+  rules.defineRule('skills.' + name + '.1', '', '=', '"' + ability + '"');
+  rules.defineRule('skills.' + name + '.2',
+    '', '=', '";cc"',
+    'classSkills.' + name, '=', '""'
+  );
+  rules.defineRule('skills.' + name + '.3', 'skillModifier.' + name, '=', null);
+
+  if(ability && abilityNames[ability]) {
+    rules.defineRule
+      ('skillModifier.' + name, abilityNames[ability] + 'Modifier', '+', null);
+    if(ability == 'dex' || ability == 'str') {
+      rules.defineRule('skillModifier.' + name,
+        'skillNotes.armorSkillCheckPenalty', '+', '-source'
+      );
+    }
   }
+
   if(name == 'Fly') {
     rules.defineRule('skillModifier.Fly', 'features.Large', '+', '-2');
   }
   if(name == 'Linguistics') {
     rules.defineRule('languageCount', 'skills.Linguistics', '+', null);
   }
+
+  if(classes == 'all') {
+    rules.defineRule('classSkills.' + name, 'level', '=', '1');
+  } else if(classes) {
+    classes = classes.split('/');
+    for(var i = 0; i < classes.length; i++)
+      rules.defineRule('classSkills.' + name, 'levels.'+classes[i], '=', '1');
+  }
+
 }
