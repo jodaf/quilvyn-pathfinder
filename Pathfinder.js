@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.2';
+var PATHFINDER_VERSION = '1.4.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -963,7 +963,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
       rules.defineRule('combatNotes.armorTrainingFeature',
         'dexterityModifier', '=', null,
-        'armor', '-', 'SRD35.armorsMaxDexBonuses[source]',
+        'armor', '+', '-SRD35.armorsMaxDexBonuses[source]',
         'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)',
         '', '^', '0'
       );
