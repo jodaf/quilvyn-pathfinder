@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.4';
+var PATHFINDER_VERSION = '1.4.1.5';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -87,29 +87,30 @@ function Pathfinder() {
 }
 
 // Arrays of choices
+// Attack, Dam, AC include all modifiers
 Pathfinder.ANIMAL_COMPANIONS = {
-  'Ape': 'AC=11 Dam=2x1d4,1d4 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7',
-  'Badger': 'AC=12 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10',
-  'Bear': 'AC=12 Dam=2x1d3,1d4 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6',
-  'Boar': 'AC=16 Dam=1d6 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4',
-  'Camel': 'AC=11 Dam=1d4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4',
-  'Cheetah': 'AC=11 Dam=2x1d2,1d4 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
-  'Constrictor': 'AC=12 Dam=1d3 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2',
-  'Crocodile': 'AC=14 Dam=1d6 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2',
-  'Deinonychus': 'AC=11 Dam=2x1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
-  'Dog': 'AC=12 Dam=1d4 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6',
-  'Eagle': 'AC=11 Dam=2x1d4+1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Hawk': 'AC=11 Dam=2x1d4+1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Horse': 'AC=14 Dam=2x1d6,1d4 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6',
-  'Leopard': 'AC=11 Dam=2x1d2,1d4 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
-  'Lion': 'AC=11 Dam=2x1d4,1d6 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
-  'Owl': 'AC=11 Dam=2x1d4+1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Pony': 'AC=12 Dam=2x1d3 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4',
-  'Shark': 'AC=14 Dam=1d4 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4',
-  'Small Viper': 'AC=12 Dam=1d3 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2',
-  'Tiger': 'AC=11 Dam=2x1d4,1d6 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
-  'Velociraptor': 'AC=11 Dam=2x1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
-  'Wolf': 'AC=12 Dam=1d6 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6'
+  'Ape': 'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7',
+  'Badger': 'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10',
+  'Bear': 'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6',
+  'Boar': 'Attack=2 AC=18 Dam=1d6+1 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4',
+  'Camel': 'Attack=3 AC=13 Dam=1d4+4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4',
+  'Cheetah': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
+  'Constrictor': 'Attack=2 AC=15 Dam=1d3+2 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2',
+  'Crocodile': 'Attack=3 AC=17 Dam=1d6+2 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2',
+  'Deinonychus': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
+  'Dog': 'Attack=2 AC=16 Dam=1d4+1 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6',
+  'Eagle': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
+  'Hawk': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
+  'Horse': 'Attack=2 AC=14 Dam=2@1d6+3,1d4+3 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6',
+  'Leopard': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
+  'Lion': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
+  'Owl': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
+  'Pony': 'Attack=1 AC=13 Dam=2@1d3+1 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4',
+  'Shark': 'Attack=2 AC=17 Dam=1d4+1 Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2',
+  'Small Viper': 'Attack=0 AC=16 Dam=1d3-1 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2',
+  'Tiger': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
+  'Velociraptor': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
+  'Wolf': 'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6'
 };
 Pathfinder.BLOODLINES = [
   'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic',
@@ -148,30 +149,31 @@ Pathfinder.FACTIONS = [
   'Qadira', 'Sczarni', 'Shadow Lodge', 'Silver Crusade', 'Sovereign Court',
   'Taldor'
 ];
+// Attack, Dam, AC include all modifiers
 Pathfinder.FAMILIARS = {
-  'Bat': 'HD=1 AC=14 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5',
-  'Cat': 'HD=1 AC=12 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7',
-  'Hawk': 'HD=1 AC=12 Dam=2@d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7',
-  'Lizard': 'HD=1 AC=12 Dam=1d4-4 Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2',
-  'Monkey': 'HD=1 AC=12 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
-  'Owl': 'HD=1 AC=12 Dam=1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6',
-  'Rat': 'HD=1 AC=12 Dam=1d3-4 Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2',
-  'Raven': 'HD=1 AC=12 Dam=1d3-4 Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7',
-  'Toad': 'HD=1 AC=14 Dam=0 Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4',
-  'Tiny Viper': 'HD=1 AC=13 Dam=1d2-2 Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2',
-  'Weasel': 'HD=1 AC=13 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
+  'Bat': 'Attack=6 HD=1 AC=16 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5',
+  'Cat': 'Attack=4 HD=1 AC=14 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7',
+  'Hawk': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7',
+  'Lizard': 'Attack=4 HD=1 AC=14 Dam=1d4-4 Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2',
+  'Monkey': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
+  'Owl': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6',
+  'Rat': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2',
+  'Raven': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7',
+  'Toad': 'Attack=0 HD=1 AC=15 Dam=0 Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4',
+  'Tiny Viper': 'Attack=5 HD=1 AC=16 Dam=1d2-2 Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2',
+  'Weasel': 'Attack=4 HD=1 AC=15 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
 
-  'Air Elemental': 'HD=2 AC=14 Dam=1d4+1 Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 Level=5',
-  'Dire Rat': 'HD=1 AC=11 Dam=1d4 Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 Level=3',
-  'Earth Elemental': 'HD=2 AC=18 Dam=1d6+4 Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 Level=5',
-  'Fire Elemental': 'HD=2 AC=15 Dam=1d4 Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 Level=5',
-  'Homunculus': 'HD=2 AC=12 Dam=1d4-1 Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 Level=7',
-  'Imp': 'HD=3 AC=14 Dam=1d4 Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 Level=7',
-  'Mephit': 'HD=3 AC=15 Dam=1d3+1 Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 Level=7',
-  'Pseudodragon': 'HD=2 AC=14 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7',
-  'Quasit': 'HD=3 AC=14 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7',
-  'Stirge': 'HD=1 AC=12 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5',
-  'Water Elemental': 'HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5',
+  'Air Elemental': 'Attack=6 HD=2 AC=17 Dam=1d4+1 Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 Level=5',
+  'Dire Rat': 'Attack=1 HD=1 AC=14 Dam=1d4 Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 Level=3',
+  'Earth Elemental': 'Attack=6 HD=2 AC=17 Dam=1d6+4 Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 Level=5',
+  'Fire Elemental': 'Attack=4 HD=2 AC=16 Dam=1d4 Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 Level=5',
+  'Homunculus': 'Attack=3 HD=2 AC=14 Dam=1d4-1 Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 Level=7',
+  'Imp': 'Attack=8 HD=3 AC=17 Dam=1d4 Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 Level=7',
+  'Mephit': 'Attack=5 HD=3 AC=17 Dam=1d3+1 Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 Level=7',
+  'Pseudodragon': 'Attack=6 HD=2 AC=16 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7',
+  'Quasit': 'Attack=7 HD=3 AC=16 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7',
+  'Stirge': 'Attack=7 HD=1 AC=16 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5',
+  'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5',
 
   'Celestial': 'Level=3',
   'Fiendish': 'Level=3'
@@ -916,12 +918,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'charismaModifier', '+', null
       );
 
-      rules.defineRule('animalCompanionDruidLevel',
+      rules.defineRule('companionMasterLevelDruid',
         'druidFeatures.Animal Companion', '?', null,
         'levels.Druid', '=', null
       );
       rules.defineRule
-        ('animalCompanionMasterLevel', 'animalCompanionDruidLevel', '+=', null);
+        ('companionMasterLevel', 'companionMasterLevelDruid', '+=', null);
 
     } else if(klass == 'Fighter') {
 
@@ -1288,22 +1290,22 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Paladin', '=', 'source >= 5 ? 1 : null'
       );
 
-      rules.defineRule('animalCompanionPaladinLevel',
+      rules.defineRule('companionMasterLevelPaladin',
         'paladinFeatures.Divine Mount', '?', null,
         'levels.Paladin', '=', 'source >= 5 ? source : null'
       );
-      rules.defineRule('animalCompanionMasterLevel',
-        'animalCompanionPaladinLevel', '+=', null
+      rules.defineRule('companionMasterLevel',
+        'companionMasterLevelPaladin', '+=', null
       );
       rules.defineRule('featureNotes.divineMountFeature',
-        'animalCompanionPaladinLevel', '=',
+        'companionMasterLevelPaladin', '=',
         'source < 5 ? null : Math.floor((source - 1) / 4)'
       );
       rules.defineRule('animalCompanion.Celestial',
-        'animalCompanionPaladinLevel', '^=', 'source < 11 ? null : 1'
+        'companionMasterLevelPaladin', '^=', 'source < 11 ? null : 1'
       );
       rules.defineRule('animalCompanionNotes.SR',
-        'animalCompanionPaladinLevel', '^=', 'source >= 15 ? source + 11 : null'
+        'companionMasterLevelPaladin', '^=', 'source >= 15 ? source + 11 : null'
       );
 
       spellAbility = 'charisma';
@@ -1461,12 +1463,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'charismaModifier', '+', null
       );
 
-      rules.defineRule('animalCompanionRangerLevel',
+      rules.defineRule('companionMasterLevelRanger',
         'rangerFeatures.Animal Companion', '?', null,
         'levels.Ranger', '+=', 'source >= 4 ? source - 3 : null'
       );
-      rules.defineRule('animalCompanionMasterLevel',
-        'animalCompanionRangerLevel', '+=', null
+      rules.defineRule('companionMasterLevel',
+        'companionMasterLevelRanger', '+=', null
       );
 
     } else if(klass == 'Rogue') {
@@ -2570,16 +2572,16 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
     rules.defineNote(notes);
     // Overrides SRD35 HD calculation
     rules.defineRule('companionStats.HD',
-      'animalCompanionLevel', '=', 'null',
-      'animalCompanionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
+      'companionLevel', '=', 'null',
+      'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
     );
     rules.defineRule('companionStats.Feats',
-      'animalCompanionMasterLevel', '=',
-      'source == 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
+      'companionMasterLevel', '=',
+      'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
       'Math.floor((source + 4) / 3)'
     );
     rules.defineRule('companionStats.Skills',
-      'animalCompanionMasterLevel', '=',
+      'companionMasterLevel', '=',
       'source + 1 - Math.floor((source + 1) / 4)'
     );
   }
@@ -3925,12 +3927,12 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.speakWithAnimalsFeature:' +
           '<i>Speak With Animals</i> %V rounds/day'
       ];
-      rules.defineRule('animalCompanionClericLevel',
+      rules.defineRule('companionMasterLevelCleric',
         'domains.Animal', '?', null,
         'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
       );
-      rules.defineRule('animalCompanionMasterLevel',
-        'animalCompanionClericLevel', '+=', null
+      rules.defineRule('companionMasterLevel',
+        'companionMasterLevelCleric', '+=', null
       );
       rules.defineRule('magicNotes.speakWithAnimalsFeature',
         'levels.Cleric', '=', 'source + 3'
