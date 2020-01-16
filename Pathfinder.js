@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.5';
+var PATHFINDER_VERSION = '1.4.1.6';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -935,6 +935,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
       hitDie = 10;
       notes = [
+        'abilityNotes.armorTrainingFeature:No speed penalty in %V armor',
         'combatNotes.armorMasteryFeature:DR 5/- when using armor/shield',
         'combatNotes.armorTrainingFeature:Additional +%V Dex AC bonus',
         'combatNotes.weaponMasteryFeature:' +
@@ -961,6 +962,17 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
+
+      rules.defineRule('abilityNotes.armorTrainingFeature',
+        'levels.Fighter', '=', 'source >= 7 ? "heavy" : source >= 3 ? "medium" : null'
+      );
+      rules.defineRule('abilityNotes.armorSpeedAdjustment',
+        'armorTrainingGap', '^', 'source >= 0 ? 0 : null'
+      );
+      rules.defineRule('armorTrainingGap',
+        'armor', '+', '-SRD35.armorsProficiencyLevels[source]',
+        'abilityNotes.armorTrainingFeature', '=', 'source == "heavy" ? SRD35.PROFICIENCY_HEAVY : SRD35.PROFICIENCY_MEDIUM'
+      );
       rules.defineRule
         ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
       rules.defineRule('combatNotes.armorTrainingFeature',
@@ -3056,7 +3068,11 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'abilityNotes.fleetFeature:+5 speed in light/no armor'
       ];
-      rules.defineRule('speed', 'abilityNotes.fleetFeature', '+', '5');
+      rules.defineRule('fleetSpeedAdjustment',
+        'abilityNotes.fleetFeature', '?', null,
+        'armor', '=', 'SRD35.armorsProficiencyLevels[source] <= SRD35.PROFICIENCY_LIGHT ? 5 : 0'
+      );
+      rules.defineRule('speed', 'fleetSpeedAdjustment', '+', null);
     } else if(feat == 'Forge Ring') {
       notes = [
         'magicNotes.forgeRingFeature:Create/mend magic ring',
