@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.6';
+var PATHFINDER_VERSION = '1.4.1.7';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -372,11 +372,11 @@ Pathfinder.TRAITS = [
   'Performance Artist:Taldor', 'Vindictive:Taldor'
 ];
 Pathfinder.WEAPONS_ADDED = [
-  'Blowgun:d2r20',
-  'Elven Curve Blade:d10@18',
-  'Halfling Sling Staff:d8x3r80',
+  'Blowgun:d2r20 Si',
+  'Elven Curve Blade:d10@18 2h Ex',
+  'Halfling Sling Staff:d8x3r80 Ex',
   // removed range 'Sai:d4',
-  'Starknife:d4x3r20'
+  'Starknife:d4x3r20 Li Ma'
 ];
 
 // Related information used internally by Pathfinder
