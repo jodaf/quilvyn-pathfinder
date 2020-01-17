@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.7';
+var PATHFINDER_VERSION = '1.4.1.8';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -57,7 +57,7 @@ function Pathfinder() {
   Pathfinder.equipmentRules
     (rules, SRD35.ARMORS, SRD35.SHIELDS,
      SRD35.WEAPONS.concat(Pathfinder.WEAPONS_ADDED));
-  SRD35.goodiesRules(rules, SRD35.GOODIES);
+  Pathfinder.goodiesRules(rules, SRD35.GOODIES);
   Pathfinder.combatRules(rules);
   Pathfinder.movementRules(rules);
   Pathfinder.magicRules
@@ -471,7 +471,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       notes = [
         'abilityNotes.fastMovementFeature:+%V speed',
         'abilityNotes.swiftFootFeature:+%V * 5 speed during rage',
-        'combatNotes.animalFuryFeature:Bite attack for d%V+%1 during rage',
+        'combatNotes.animalFuryFeature:Bite attack for %V+%1 during rage',
         'combatNotes.greaterRageFeature:+6 strength/constitution, +3 Will',
         'combatNotes.guardedStanceFeature:+%V AC during rage',
         'combatNotes.improvedUncannyDodgeFeature:' +
@@ -560,8 +560,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule
         ('abilityNotes.fastMovementFeature', 'levels.Barbarian', '+=', '10');
       rules.defineRule('combatNotes.animalFuryFeature',
-        '', '=', '4',
-        'features.Small', '+', '-1'
+        '', '=', '"d4"',
+        'features.Large', '+', 'SRD35.weaponsLargeDamage["d4"]',
+        'features.Small', '+', 'SRD35.weaponsSmallDamage["d4"]'
       );
       rules.defineRule('combatNotes.animalFuryFeature.1',
         'strengthModifier', '=', 'Math.floor(source / 2)'
@@ -975,6 +976,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule
         ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
+      rules.defineRule('combatManeuverDefense',
+        'combatNotes.armorTrainingFeature', '+',null
+      );
       rules.defineRule('combatNotes.armorTrainingFeature',
         'dexterityModifier', '=', null,
         'armor', '+', '-SRD35.armorsMaxDexBonuses[source]',
@@ -1995,6 +1999,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule
             ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
+          // NOTE: No bonus to CMB
           rules.defineRule('clawsDamageLevel',
             'features.Claws', '=', '1',
             'features.Small', '+', '-1',
@@ -2556,9 +2561,9 @@ Pathfinder.combatRules = function(rules) {
     'strengthModifier', '+', null
   );
   rules.defineRule('combatManeuverDefense',
-    'baseAttack', '=', null,
+    'baseAttack', '=', '10 + source',
     'strengthModifier', '+', null,
-    'dexterityModifier', '+', null
+    'combatNotes.dexterityArmorClassAdjustment', '+', null
   );
   rules.defineSheetElement(
     'CombatManeuver', 'CombatStats/',
@@ -2984,7 +2989,14 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'combatNotes.disruptiveFeature:+4 foes\' defensive spell DC',
         'validationNotes.disruptiveFeatLevels:Requires Fighter >= 6'
       ]
-    // } else if(feat == 'Dodge') { // as SRD35
+    } else if(feat == 'Dodge') {
+      notes = [
+        'combatNotes.dodgeFeature:+1 AC, CMB vs. chosen foe',
+        'validationNotes.dodgeFeatAbility:Requires Dexterity >= 13'
+      ];
+      rules.defineRule('armorClass', 'combatNotes.dodgeFeature', '+', '1');
+      rules.defineRule
+        ('combatManeuverDefense', 'combatNotes.dodgeFeature', '+', '1');
     } else if(feat == 'Double Slice') {
       notes = [
         'combatNotes.doubleSliceFeature:Add full strength to off-hand damage',
@@ -3163,6 +3175,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       rules.defineRule('armorClass',
         'combatNotes.greaterShieldFocusFeature', '+', '1'
       );
+      // NOTE: No bonus to CMB
     // } else if((matchInfo = feat.match(/^Greater Spell Focus \((.*)\)$/))!=null){ // as SRD35
     // } else if(feat == 'Greater Spell Penetration') { // as SRD35
     } else if(feat == 'Greater Sunder') {
@@ -3513,6 +3526,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
       rules.defineRule
         ('armorClass', 'combatNotes.shieldFocusFeature', '+', '1');
+      // NOTE: No bonus to CMB
     } else if(feat == 'Shield Master') {
       notes = [
         'combatNotes.shieldMasterFeature:' +
@@ -3726,6 +3740,24 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
 
+};
+
+/*
+ * Defines rules for a specified set of goodies (generally magic items). The
+ * method knows how to define rules for "* Of <skill> [+-]<amount>", "* Of
+ * <ability> [+-]<amount>", "* Of Protection [+-]]<amount>" (improves * AC),
+ * "<weapon> [+-]<amount>", "Masterwork <weapon>", "<armor> [+-]<amount>",
+ * "Masterwork <armor>", and "Healer's Kit".
+ */
+Pathfinder.goodiesRules = function(rules, goodies) {
+  SRD35.goodiesRules(rules, goodies);
+  for(var i = 0; i < goodies.length; i++) {
+    var matchInfo;
+    if((matchInfo = goodies[i].match(/^(.*) Of Protection ([+-]\d+)$/)) != null) {
+      rules.defineRule
+        ('combatManeuverDefense', 'goodies.' + goodies[i], '+', matchInfo[2]);
+    }
+  }
 };
 
 /* Defines the rules related to spells and domains. */
@@ -5140,6 +5172,7 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.expertDuelistFeature:+1 AC vs. single foe'];
       rules.defineRule
         ('armorClass', 'combatNotes.expertDuelestFeature', '+', '1');
+      // NOTE: No bonus to CMB
     } else if(trait == 'Explorer') {
       notes = ['skillNotes.explorerFeature:+1 Survival'];
       rules.defineRule
