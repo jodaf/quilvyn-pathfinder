@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.8';
+var PATHFINDER_VERSION = '1.4.1.9';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -113,8 +113,12 @@ Pathfinder.ANIMAL_COMPANIONS = {
   'Wolf': 'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6'
 };
 Pathfinder.BLOODLINES = [
-  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic',
-  'Elemental', 'Fey', 'Infernal', 'Undead'
+  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
+  'Draconic (Blue)', 'Draconic (Green)', 'Draconic (Red)', 'Draconic (White)',
+  'Draconic (Brass)', 'Draconic (Bronze)', 'Draconic (Copper)',
+  'Draconic (Gold)', 'Draconic (Silver)', 'Elemental (Air)',
+  'Elemental (Earth)', 'Elemental (Fire)', 'Elemental (Water)', 'Fey',
+  'Infernal', 'Undead'
 ];
 Pathfinder.DEITIES = [
   'None::',
@@ -471,36 +475,35 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       notes = [
         'abilityNotes.fastMovementFeature:+%V speed',
         'abilityNotes.swiftFootFeature:+%V * 5 speed during rage',
-        'combatNotes.animalFuryFeature:Bite attack for %V+%1 during rage',
+        'combatNotes.animalFuryFeature:Bite attack %V+%1 during rage',
         'combatNotes.greaterRageFeature:+6 strength/constitution, +3 Will',
         'combatNotes.guardedStanceFeature:+%V AC during rage',
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.knockbackFeature:' +
-          'Successful Bull Rush during rage for %V damage',
+          'Successful Bull Rush during rage %V HP',
         'combatNotes.mightyRageFeature:+8 strength/constitution, +4 Will',
         'combatNotes.mightySwingFeature:Automatic critical 1/rage',
-        'combatNotes.momentOfClarityFeature:Rage effects suspended for 1 round',
+        'combatNotes.momentOfClarityFeature:Rage effects suspended 1 rd',
         'combatNotes.noEscapeFeature:x2 speed 1/rage when foe withdraws',
-        'combatNotes.powerfulBlowFeature:+%V damage 1/rage',
+        'combatNotes.powerfulBlowFeature:+%V HP 1/rage',
         'combatNotes.rageFeature:' +
-          '+4 strength/constitution/+2 Will save/-2 AC for %V rounds/day',
-        'combatNotes.quickReflexesFeature:+1 AOO/round during rage',
-        'combatNotes.rollingDodgeFeature:' +
-          '+%V AC vs. ranged for %1 rounds during rage',
+          '+4 strength/constitution/+2 Will save/-2 AC %V rd/day',
+        'combatNotes.quickReflexesFeature:+1 AOO/rd during rage',
+        'combatNotes.rollingDodgeFeature:+%V AC vs. ranged %1 rd during rage',
         'combatNotes.rousedAngerFeature:Rage even if fatigued',
         'combatNotes.strengthSurgeFeature:' +
           '+%V strength/combat maneuver check 1/rage',
         'combatNotes.surpriseAccuracyFeature:+%V attack 1/rage',
         'combatNotes.terrifyingHowlFeature:' +
-           'Howl for DC %V will save w/in 30 ft or shaken for d4+1 rounds',
+           "Howl DC %V will save w/in 30' or shaken 1d4+1 rd",
         'combatNotes.tirelessRageFeature:Not fatigued after rage',
         'combatNotes.uncannyDodgeFeature:' +
           'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
         'combatNotes.unexpectedStrikeFeature:AOO when foe enters threat 1/rage',
         'featureNotes.nightVisionFeature:60% Darkvision during rage',
         'featureNotes.scentFeature:Detect creatures via smell',
-        'magicNotes.renewedVigorFeature:Heal %Vd8+%1 damage 1/day during rage',
+        'magicNotes.renewedVigorFeature:Heal %Vd8+%1 HP 1/day during rage',
         'saveNotes.clearMindFeature:Reroll Will save 1/rage',
         'saveNotes.fearlessRageFeature:Cannot be shaken/frightened during rage',
         'saveNotes.indomitableWillFeature:' +
@@ -511,7 +514,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '+%V vs. spells and supernatural/spell-like abilities during rage',
         'saveNotes.trapSenseFeature:+%V Reflex and AC vs. traps',
         'skillNotes.intimidatingGlareFeature:' +
-          'Successful Intimidate during rage shakes foe for at least d4 rounds',
+          'Successful Intimidate during rage shakes foe at least 1d4 rd',
         'skillNotes.ragingClimberFeature:+%V Climb during rage',
         'skillNotes.ragingLeaperFeature:+%V Acrobatic (jump) during rage',
         'skillNotes.ragingSwimmerFeature:+%V Swim during rage',
@@ -560,9 +563,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule
         ('abilityNotes.fastMovementFeature', 'levels.Barbarian', '+=', '10');
       rules.defineRule('combatNotes.animalFuryFeature',
-        '', '=', '"d4"',
-        'features.Large', '+', 'SRD35.weaponsLargeDamage["d4"]',
-        'features.Small', '+', 'SRD35.weaponsSmallDamage["d4"]'
+        '', '=', '"1d4"',
+        'features.Large', '=', '"1d6"',
+        'features.Small', '=', '"1d3"'
       );
       rules.defineRule('combatNotes.animalFuryFeature.1',
         'strengthModifier', '=', 'Math.floor(source / 2)'
@@ -642,19 +645,19 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       hitDie = 8;
       notes = [
         'featureNotes.bardicPerformanceFeature:' +
-          'Bardic Performance effect %V rounds/day',
+          'Bardic Performance effect %V rd/day',
         'magicNotes.countersongFeature:' +
-          'Perform check vs. sonic magic w/in 30 ft for 10 rounds',
+          "Perform check vs. sonic magic w/in 30' 10 rd",
         'magicNotes.deadlyPerformanceFeature:' +
           'Target DC %V Will save or die',
         'magicNotes.dirgeOfDoomFeature:' +
-          'Creatures w/in 30 ft shaken while performing',
+          "Creatures w/in 30' shaken while performing",
         'magicNotes.distractionFeature:' +
-          'Perform check vs. visual magic w/in 30 ft for 10 rounds',
+          "Perform check vs. visual magic w/in 30' 10 rd",
         'magicNotes.fascinateFeature:' +
-          '%V creatures w/in 90 ft DC %1 Will save or spellbound',
+          "%V creatures w/in 90' DC %1 Will save or spellbound",
         'magicNotes.frighteningTuneFeature:' +
-          '30 ft range DC %V Will <i>Cause Fear</i> via performance',
+          "R30' DC %V Will <i>Cause Fear</i> via performance",
         'magicNotes.inspireCompetenceFeature:' +
           '+%V ally skill checks while performing',
         'magicNotes.inspireCourageFeature:' +
@@ -667,7 +670,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '<i>Suggestion</i> to all fascinated creatures',
         'magicNotes.simpleSomaticsFeature:Reduce armor casting penalty by %V%',
         'magicNotes.soothingPerformanceFeature:' +
-           '30 ft range <i>Mass Cure Serious Wounds</i> via performance',
+           "R30' <i>Mass Cure Serious Wounds</i> via performance",
         'magicNotes.suggestionFeature:' +
           '<i>Suggestion</i> to 1 fascinated creature',
         'saveNotes.well-VersedFeature:+4 vs. bardic effects',
@@ -772,7 +775,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Visible to <i>Detect Chaos/Evil/Good/Law</i> depending on ' +
           'deity\'s alignment',
         'magicNotes.channelEnergyFeature:' +
-          'Heal/inflict %Vd6 damage 30 ft radius, DC %1 Will for half %2/day',
+          "Heal/inflict %Vd6 HP 30' radius (DC %1 Will half) %2/day",
         'magicNotes.clericSpontaneousCastingFeature:' +
           'Cast <i>Heal</i>/<i>Inflict</i> spell in place of known spell'
       ];
@@ -851,7 +854,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Cast <i>Summon Nature\'s Ally</i> spell in place of known spell',
         'magicNotes.thousandFacesFeature:<i>Alter Self</i> at will',
         'magicNotes.wildShapeFeature:' +
-          'Change into creature of size %V for %1 hours %2/day',
+          'Change into creature of size %V %1 hours %2/day',
         'saveNotes.resistNature\'sLureFeature:+4 vs. spells of feys',
         'saveNotes.venomImmunityFeature:Immune to poisons',
         'skillNotes.natureSenseFeature:+2 Knowledge (Nature)/Survival',
@@ -1052,7 +1055,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'magicNotes.abundantStepFeature:' +
           'Use 1 ki to <i>Dimension Door</i> at level %V',
         'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
-        'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V damage to self',
+        'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V HP to self',
         'sanityNotes.monkClassArmor:Implies Armor == "None"',
         'sanityNotes.monkClassShield:Implies Shield == "None"',
         'saveNotes.diamondBodyFeature:Immune to poison',
@@ -1062,7 +1065,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'saveNotes.perfectSelfFeature:Treat as outsider for magic saves',
         'saveNotes.purityOfBodyFeature:Immune to all disease',
         'saveNotes.slowFallFeature:' +
-          'Subtract %V ft from falling damage distance',
+          "Subtract %V' from falling damage distance",
         'saveNotes.stillMindFeature:+2 vs. enchantment',
         'skillNotes.highJumpFeature:+%V Acrobatics (jump), use 1 ki for +20',
         'validationNotes.Gorgon\'sFistSelectableFeatureLevels:' +
@@ -1211,25 +1214,25 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       hitDie = 10;
       notes = [
         'combatNotes.auraOfJusticeFeature:' +
-          'Grant Smite Evil to allies w/in 10 ft',
+          "Grant Smite Evil to allies w/in 10'",
         'combatNotes.auraOfRighteousnessFeature:DR %V/evil',
         'combatNotes.divineWeaponFeature:' +
-          'Add %V enhancements to weapon for %1 minutes %2/day',
+          'Add %V enhancements to weapon %1 minutes %2/day',
         'combatNotes.smiteEvilFeature:' +
           '+%V attack/+%1 damage/+%2 AC vs. evil foe %3/day',
         'featureNotes.divineMountFeature:Magically summon mount %V/day',
         'magicNotes.auraOfGoodFeature:Visible to <i>Detect Good</i>',
         'magicNotes.channelEnergyFeature:' +
-          'Heal/inflict %Vd6 damage 30 ft radius, DC %1 Will for half %2/day',
+          "Heal/inflict %Vd6 HP 30' radius (DC %1 Will half) %2/day",
         'magicNotes.detectEvilFeature:<i>Detect Evil</i> at will',
         'magicNotes.holyChampionFeature:' +
           'Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
         'magicNotes.layOnHandsFeature:Harm undead or heal %Vd6 HP %1/day',
         'magicNotes.mercyFeature:Lay on hands removes additional effects',
-        'saveNotes.auraOfCourageFeature:Immune fear, +4 to allies w/in 30 ft',
-        'saveNotes.auraOfResolveFeature:Immune charm, +4 to allies w/in 30 ft',
+        "saveNotes.auraOfCourageFeature:Immune fear, +4 to allies w/in 30'",
+        "saveNotes.auraOfResolveFeature:Immune charm, +4 to allies w/in 30'",
         'saveNotes.auraOfRighteousnessFeature:' +
-          'Immune compulsion, +4 to allies w/in 30 ft',
+          "Immune compulsion, +4 to allies w/in 30'",
         'saveNotes.divineGraceFeature:+%V all saves',
         'saveNotes.divineHealthFeature:Immune to disease',
         'validationNotes.paladinClassAlignment:' +
@@ -1351,7 +1354,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           '+2 or more attack/damage vs. %V type(s) of creatures',
         'combatNotes.favoredTerrainFeature:+2 initiative in %V terrain type(s)',
         'combatNotes.companionBondFeature:' +
-          'Half favored enemy bonus to allies w/in 30 ft for %V rounds',
+          "Half favored enemy bonus to allies w/in 30' %V rd",
         'combatNotes.masterHunterFeature:' +
           'Full attack vs. favored enemy requires DC %V Fortitude save or die',
         'combatNotes.quarryFeature:+%V attack/automatic critical vs. target',
@@ -1500,22 +1503,21 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       notes = [
         'abilityNotes.rogueCrawlFeature:Crawl at half speed',
         'combatNotes.bleedingAttackFeature:' +
-          'Sneak attack causes extra %V hp/round until healed',
+          'Sneak attack causes extra %V HP/rd until healed',
         'combatNotes.cripplingStrikeFeature: ' +
           '2 points strength damage from sneak attack',
         'combatNotes.defensiveRollFeature:' +
-          'DC damage Reflex save vs. lethal blow for half damage',
+          'DC damage Reflex save vs. lethal blow for half',
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.masterStrikeFeature:' +
           'Sneak attack target DC %V Fortitude or sleep/paralyze/die',
         'combatNotes.opportunistFeature:AOO vs. foe struck by ally',
         'combatNotes.resiliencyFeature:' +
-          '1 minute of %V temporary hit points when below 0 hit points 1/day',
-        'combatNotes.slowReactionsFeature:' +
-          'Sneak attack target no AOO for 1 round',
+          '1 minute of %V temporary HP when below 0 HP 1/day',
+        'combatNotes.slowReactionsFeature:Sneak attack target no AOO 1 rd',
         'combatNotes.sneakAttackFeature:' +
-          '%Vd6 extra damage when surprising or flanking',
+          '%Vd6 HP extra when surprising or flanking',
         'combatNotes.standUpFeature:Stand from prone as free action',
         'combatNotes.surpriseAttackFeature:' +
           'All foes flat-footed during surprise round',
@@ -1535,7 +1537,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Use Acrobatics along narrow surfaces at full speed',
         'skillNotes.quickDisableFeature:Disable Device in half normal time',
         'skillNotes.trapSpotterFeature:' +
-          'Automatic Perception check w/in 10 ft of trap',
+          "Automatic Perception check w/in 10' of trap",
         'skillNotes.skillMasteryFeature:' +
           'Take 10 despite distraction on %V chosen skills',
         'skillNotes.trapfindingFeature:' +
@@ -1761,10 +1763,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       }
       for(var j = 0; j < bloodlines.length; j++) {
         var bloodline = bloodlines[j];
+        var baseBloodline = bloodline.split(' (')[0];
         var bloodlineLevelAttr = 'bloodlineLevel.' + bloodline;
-        var powers = bloodlinePowers[bloodline].split('/');
-        var skill = bloodlineSkills[bloodline];
-        var spells = bloodlineSpells[bloodline].split('/');
+        var powers = bloodlinePowers[baseBloodline].split('/');
+        var skill = bloodlineSkills[baseBloodline];
+        var spells = bloodlineSpells[baseBloodline].split('/');
         selectableFeatures.push('Bloodline ' + bloodline);
         rules.defineRule(bloodlineLevelAttr,
           'features.Bloodline ' + bloodline, '?', null,
@@ -1798,11 +1801,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           notes = notes.concat([
             'combatNotes.aberrantFormFeature:' +
               'Immune critical hit/sneak attack, DR 5/-',
-            'combatNotes.longLimbsFeature:+%V ft touch attack range',
+            "combatNotes.longLimbsFeature:+%V' touch attack range",
             'combatNotes.unusualAnatomyFeature:' +
               '%V% chance to ignore critical hit/sneak attack',
-            'featureNotes.aberrantFormFeature:Blindsight 60 ft',
-            'magicNotes.acidicRayFeature:30 ft ranged touch for %Vd6 %1/day',
+            "featureNotes.aberrantFormFeature:Blindsight 60'",
+            "magicNotes.acidicRayFeature:R30' %Vd6 HP %1/day",
             'magicNotes.bloodlineAberrantFeature:' +
               'Polymorph spells last 50% longer',
             'saveNotes.alienResistanceFeature:%V spell resistance'
@@ -1830,8 +1833,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           ];
           notes = notes.concat([
             'abilityNotes.strengthOfTheAbyssFeature:+%V strength',
-            'combatNotes.clawsFeature:%V+%1%3 %2 rounds/day',
-            'featureNotes.demonicMightFeature:Telepathy 60 ft',
+            'combatNotes.clawsFeature:%V+%1%3 %2 rd/day',
+            "featureNotes.demonicMightFeature:Telepathy 60'",
             'magicNotes.addedSummoningsFeature:' +
               '<i>Summon Monster</i> brings additional demon/fiendish creature',
             'magicNotes.bloodlineAbyssalFeature:' +
@@ -1850,7 +1853,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule('combatNotes.clawsFeature',
             'clawsDamageLevel', '=',
-            '["d3", "d4", "d6", "d8"][source]'
+            '["1d3", "1d4", "1d6", "1d8"][source]'
           );
           rules.defineRule
             ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
@@ -1914,11 +1917,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'Weapon Finesse'
           ];
           notes = notes.concat([
-            'abilityNotes.wingsOfHeavenFeature:Fly 60/good %V minutes/day',
+            "abilityNotes.wingsOfHeavenFeature:Fly 60'/good %V minutes/day",
             'featureNotes.convictionFeature:' +
               'Reroll ability/attack/skill/save 1/day',
             'magicNotes.heavenlyFireFeature:' +
-              'Ranged touch heal good/harm evil d4+%V %1/day',
+              'Ranged touch heal good/harm evil 1d4+%V HP %1/day',
             'magicNotes.bloodlineCelestialFeature:' +
               'Summoned creatures gain DR %V/evil',
             'magicNotes.ascensionFeature:<i>Tongues</i> at will',
@@ -1958,9 +1961,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.destinyRealizedFeature:' +
               'Automatically overcome resistance 1/day',
             'magicNotes.touchOfDestinyFeature:' +
-              'Touched creature +%V attack/skill/ability/save 1 round %1/day',
+              'Touched creature +%V attack/skill/ability/save 1 rd %1/day',
             'saveNotes.bloodlineDestinedFeature:' +
-              '+spell level on saves 1 round after casting personal spell',
+              '+spell level on saves 1 rd after casting personal spell',
             'saveNotes.fatedFeature:+%V saves when surprised',
             'saveNotes.withinReachFeature:' +
               'DC 20 Will save vs. fatal attack 1/day'
@@ -1977,22 +1980,29 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('saveNotes.fatedFeature',
             bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
           );
-        } else if(bloodline == 'Draconic') {
+        } else if(baseBloodline == 'Draconic') {
+          var dragonType = bloodline.split(')')[0].split('(')[1];
+          var breathShape =
+            'GreenRedWhiteGoldSilver'.indexOf(dragonType) >= 0 ? "30' cone" : "60' line";
+          var energyType =
+            'BlackGreenCopper'.indexOf(dragonType) >= 0 ? 'acid' :
+            'BlueBronze'.indexOf(dragonType) >= 0 ? 'electricity' :
+            'RedBrassGold'.indexOf(dragonType) >= 0 ? 'fire' : 'cold';
           feats = [
             'Blind-Fight', 'Great Fortitude', 'Improved Initiative',
             'Power Attack', 'Quicken Spell', 'Skill Focus (Fly)',
             'Skill Focus (Knowledge (Arcana))', 'Toughness'
           ];
           notes = notes.concat([
-            'abilityNotes.wingsFeature:Fly %V/average',
-            'combatNotes.breathWeaponFeature:%Vd6 (%1 DC Reflex half) %2/day',
-            'combatNotes.clawsFeature:%V+%1%3 %2 rounds/day',
+            "abilityNotes.wingsFeature:Fly %V'/average",
+            'combatNotes.breathWeaponFeature:' +
+              "%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
+            'combatNotes.clawsFeature:%V+%1%3 %2 rd/day',
             'combatNotes.dragonResistancesFeature:+%V AC',
             'featureNotes.blindsenseFeature:' +
-              'Other senses allow detection of unseen objects w/in %V ft',
-            'magicNotes.bloodlineDraconicFeature:' +
-              '+1 damage/die on spells matching energy type',
-            'saveNotes.dragonResistancesFeature:%V vs. energy type'
+              "Other senses allow detection of unseen objects w/in %V'",
+            'magicNotes.bloodlineDraconicFeature:+1 damage/die on %V spells',
+            'saveNotes.dragonResistancesFeature:%V vs. %1'
           ]);
           rules.defineRule('abilityNotes.wingsFeature',
             bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
@@ -2016,9 +2026,15 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=',
             'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
           );
+          rules.defineRule('combatNotes.breathWeaponFeature.3',
+            bloodlineLevelAttr, '=', '"' + breathShape + '"'
+          );
+          rules.defineRule('combatNotes.breathWeaponFeature.4',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
           rules.defineRule('combatNotes.clawsFeature',
             'clawsDamageLevel', '=',
-            '["d3", "d4", "d6", "d8"][source]'
+            '["1d3", "1d4", "1d6", "1d8"][source]'
           );
           rules.defineRule
             ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
@@ -2026,7 +2042,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             ('combatNotes.clawsFeature.2', 'charismaModifier', '=', 'source+3');
           rules.defineRule('combatNotes.clawsFeature.3',
             bloodlineLevelAttr, '=',
-            'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 energy"'
+            'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 HP ' + energyType + '"'
           );
           rules.defineRule('combatNotes.dragonResistancesFeature',
             bloodlineLevelAttr, '=',
@@ -2035,28 +2051,46 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('featureNotes.blindsenseFeature',
             bloodlineLevelAttr, '^=', '60'
           );
+          rules.defineRule('magicNotes.bloodlineDraconicFeature',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
           rules.defineRule('saveNotes.dragonResistancesFeature',
             bloodlineLevelAttr, '=',
             'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
           );
-        } else if(bloodline == 'Elemental') {
+          rules.defineRule('saveNotes.dragonResistancesFeature.1',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
+        } else if(baseBloodline == 'Elemental') {
+          var elementType = bloodline.split(')')[0].split('(')[1];
+          var energyType =
+            elementType == 'Air' ? 'electricity' :
+            elementType == 'Earth' ? 'acid' :
+            elementType == 'Fire' ? 'fire' : 'cold';
+          var movement =
+            elementType == 'Air' ? "Fly 60'" :
+            elementType == 'Earth' ? "Burrow 30'" :
+            elementType == 'Water' ? "Swim 60'" : "+30 speed";
           feats = [
             'Dodge', 'Empower Spell', 'Great Fortitude', 'Improved Initiative',
             'Lightning Reflexes', 'Power Attack',
             'Skill Focus (Knowledge (Planes))', 'Weapon Finesse'
           ];
           notes = notes.concat([
-            'abilityNotes.elementalMovementFeature:Special type/bonus',
-            'combatNotes.elementalBodyFeature:Immune sneak attack/critical hit',
+            'abilityNotes.elementalMovementFeature:%V/rd',
+            'combatNotes.elementalBlastFeature:' +
+              "R60' 20' radius %Vd6 HP %3 (DC %1 Reflex half) %2/day",
+            'combatNotes.elementalBodyFeature:' +
+              'Immune sneak attack, critical hit',
             'magicNotes.bloodlineElementFeature:' +
               'Change spell energy type to match own',
-            'magicNotes.elementalBlastFeature:' +
-              '60 ft range 20 ft radius %Vd6 damage (DC %1 Reflex half) %2/day',
-            'magicNotes.elementalRayFeature:' +
-              '30 ft ranged touch for d6+%1 %V/day',
-            'saveNotes.elementalResistance:%V vs. energy type'
+            "magicNotes.elementalRayFeature:R30' 1d6+%1 HP %2 %V/day",
+            'saveNotes.elementalResistanceFeature:%V vs. %1'
           ]);
-          rules.defineRule('magicNotes.elementalBlastFeature',
+          rules.defineRule('abilityNotes.elementalMovementFeature',
+            bloodlineLevelAttr, '=', 'source >= 15 ? "' + movement + '" : null'
+          );
+          rules.defineRule('combatNotes.elementalBlastFeature',
             bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
           );
           rules.defineRule('combatNotes.elementalBlastFeature.1',
@@ -2067,15 +2101,27 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=',
             'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
           );
+          rules.defineRule('combatNotes.elementalBlastFeature.3',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
+          rules.defineRule('combatNotes.elementalBodyFeature',
+            bloodlineLevelAttr, '=', 'source>=20 ? "' + energyType + '" : null'
+          );
           rules.defineRule('magicNotes.elementalRayFeature',
             'charismaModifier', '=', 'source + 3'
           );
           rules.defineRule('magicNotes.elementalRayFeature.1',
             bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
           );
+          rules.defineRule('magicNotes.elementalRayFeature.2',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
           rules.defineRule('saveNotes.elementalResistanceFeature',
             bloodlineLevelAttr, '=',
             'source>=20 ? "Immune" : source >= 9 ? 20 : source >= 3 ? 10 : null'
+          );
+          rules.defineRule('saveNotes.elementalResistanceFeature.1',
+            bloodlineLevelAttr, '=', '"' + energyType + '"'
           );
         } else if(bloodline == 'Fey') {
           feats = [
@@ -2091,9 +2137,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'magicNotes.bloodlineFeyFeature:+2 compulsion spell DC',
             'magicNotes.feyMagicFeature:Reroll any resistance check',
             'magicNotes.fleetingGlanceFeature:' +
-              '<i>Greater Invisibility</i> %V rounds/day',
+              '<i>Greater Invisibility</i> %V rd/day',
             'magicNotes.laughingTouchFeature:' +
-              'Touch causes 1 round of laughter %V/day',
+              'Touch causes 1 rd of laughter %V/day',
             'magicNotes.soulOfTheFeyFeature:<i>Shadow Walk</i> 1/day',
             'saveNotes.soulOfTheFeyFeature:Immune poison/DR 10/cold iron'
           ]);
@@ -2110,11 +2156,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'Spell Penetration'
           ];
           notes = notes.concat([
-            'abilityNotes.onDarkWingsFeature:Fly 60/average',
-            'featureNotes.powerOfThePitFeature:Darkvision 60 ft',
+            "abilityNotes.onDarkWingsFeature:Fly 60'/average",
+            "featureNotes.powerOfThePitFeature:Darkvision 60'",
             'magicNotes.bloodlineInfernalFeature:+2 charm spell DC',
             'magicNotes.corruptingTouchFeature:' +
-              'Touch causes shaken %V rounds %1/day',
+              'Touch causes shaken %V rd %1/day',
             'saveNotes.infernalResistancesFeature:%V fire/%1 poison',
             'saveNotes.powerOfThePitFeature:10 acid/cold'
           ]);
@@ -2140,10 +2186,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           notes = notes.concat([
             'combatNotes.oneOfUsFeature:Ignored by unintelligent undead',
             'magicNotes.graveTouchFeature:' +
-              'Touch causes shaken/frightened %V rounds %1/day',
+              'Touch causes shaken/frightened %V rd %1/day',
             'magicNotes.graspOfTheDadFeature:' +
-              '60 ft range 20 ft radius %Vd6 damage (DC %1 Reflex half) %2/day',
-            'magicNotes.incorporealFormFeature:Incorporeal %V rounds 1/day',
+              "R60' 20' radius %Vd6 HP (DC %1 Reflex half) %2/day",
+            'magicNotes.incorporealFormFeature:Incorporeal %V rd 1/day',
             'saveNotes.death\'sGiftFeature:%V cold/DR %1/- vs. non-lethal',
             'saveNotes.oneOfUsFeature:' +
               'Immune paralysis/sleep/+4 vs. undead\'s spells'
@@ -2207,8 +2253,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
       hitDie = 6;
       notes = [
-        'combatNotes.handOfTheApprenticeFeature:' +
-          '+%V 30 ft ranged attack w/melee weapon %1/day',
+        "combatNotes.handOfTheApprenticeFeature:R30' +%V w/melee weapon %1/day",
         'featureNotes.familiarFeature:Special bond/abilities',
         'magicNotes.bondedObjectFeature:Cast known spell through object',
         'magicNotes.metamagicMasteryFeature:Apply metamagic feat %V/day',
@@ -2328,8 +2373,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         }
         if(school == 'Abjuration') {
           notes = notes.concat([
-            'magicNotes.protectiveWardFeature:+%V AC 10 ft radius %1/day',
-            'saveNotes.energyAbsorptionFeature:Ignore %V HP energy damage/day',
+            "magicNotes.protectiveWardFeature:+%V AC 10' radius %1/day",
+            'saveNotes.energyAbsorptionFeature:Ignore %V HP energy/day',
             'saveNotes.energyResistanceFeature:%V chosen energy type'
           ]);
           rules.defineRule('magicNotes.protectiveWardFeature',
@@ -2347,10 +2392,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
         } else if(school == 'Conjuration') {
           notes = notes.concat([
-            'magicNotes.conjuredDartFeature:d6+%1 ranged touch %V/day',
-            'magicNotes.dimensionalStepsFeature:Teleport up to %V ft/day',
+            'magicNotes.conjuredDartFeature:Ranged touch 1d6+%1 HP %V/day',
+            "magicNotes.dimensionalStepsFeature:Teleport up to %V'/day",
             'magicNotes.summoner\'sCharmFeature:' +
-              'Summon duration increased %V rounds'
+              'Summon duration increased %V rd'
           ]);
           rules.defineRule('magicNotes.conjuredDartFeature',
             'intelligenceModifier', '=', 'source + 3'
@@ -2370,7 +2415,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'combatNotes.forewarnedFeature:' +
               '+%V initiative, always act in surprise round',
             'magicNotes.diviner\'sFortuneFeature:' +
-              'Touched creature +%V attack/skill/ability/save 1 round %1/day',
+              'Touched creature +%V attack/skill/ability/save 1 rd %1/day',
             'magicNotes.scryingAdeptFeature:' +
               'Constant <i>Detect Scrying</i>, +1 scrying subject familiarity'
           ]);
@@ -2388,10 +2433,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         } else if(school == 'Enchantment') {
           notes = notes.concat([
             'magicNotes.auraOfDespairFeature:' +
-              'Foes w/in 30 ft -2 ability/attack/damage/save/skill ' +
-              '%V rounds/day',
+              "Foes w/in 30' -2 ability/attack/damage/save/skill %V rd/day",
             'magicNotes.dazingTouchFeature:' +
-              'Touch attack dazes %V HD foe 1 round %1/day',
+              'Touch attack dazes %V HD foe 1 rd %1/day',
             'saveNotes.enchantmentReflectionFeature:' +
               'Successful save reflects enchantment spells on caster',
             'skillNotes.enchantingSmileFeature:+%V Bluff/Diplomacy/Intimidate'
@@ -2411,8 +2455,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         } else if(school == 'Evocation') {
           notes = notes.concat([
             'magicNotes.elementalWallFeature:' +
-              '<i>Wall Of Fire</i>/acid/cold/electricity %V rounds/day',
-            'magicNotes.forceMissileFeature:d4+%V <i>Magic Missile</i> %1/day',
+              '<i>Wall Of Fire</i>/acid/cold/electricity %V rd/day',
+            'magicNotes.forceMissileFeature:' +
+              '<i>Magic Missile</i> 1d4+%V HP %1/day',
             'magicNotes.intenseSpellsFeature:+%V evocation spell damage',
             'magicNotes.penetratingSpellsFeature:' +
               'Best of two rolls to overcome spell resistance'
@@ -2431,11 +2476,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         } else if(school == 'Illusion') {
           notes = notes.concat([
             'magicNotes.blindingRayFeature:' +
-              'Ranged touch blinds/dazzles 1 round %V/day',
+              'Ranged touch blinds/dazzles 1 rd %V/day',
             'magicNotes.extendedIllusionsFeature:' +
-              'Illusion duration increased %V rounds',
+              'Illusion duration increased %V rd',
             'magicNotes.invisibilityFieldFeature:' +
-              '<i>Greater Invisibility</i> %V rounds/day'
+              '<i>Greater Invisibility</i> %V rd/day'
           ]);
           rules.defineRule('magicNotes.blindingRayFeature',
             'intelligenceModifier', '=', 'source + 3'
@@ -2453,7 +2498,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'featureNotes.powerOverUndeadFeature:' +
               'Command/Turn Undead bonus feat',
             'magicNotes.necromanticTouchFeature:' +
-              'Touch causes shaken/frightened %V rounds %1/day'
+              'Touch causes shaken/frightened %V rd %1/day'
           ]);
           rules.defineRule('featureNotes.lifeSightFeature',
             schoolLevelAttr, '=',
@@ -2472,8 +2517,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           notes = notes.concat([
             'abilityNotes.physicalEnhancementFeature:+%V %1 of str/dex/con',
             'magicNotes.changeShapeFeature:' +
-              '<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rounds/day',
-            'magicNotes.telekineticFistFeature:Ranged touch for d4+%1 %V/day'
+              '<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
+            'magicNotes.telekineticFistFeature:Ranged touch 1d4+%1 HP %V/day'
           ]);
           rules.defineRule('abilityNotes.physicalEnhancementFeature',
             schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
@@ -2700,7 +2745,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Acrobatic Steps') {
       notes = [
         'abilityNotes.acrobaticStepsFeature:' +
-          'Move through 20 ft of difficult terrain/round',
+          "Move through difficult terrain 20'/rd",
         'validationNotes.acrobaticStepsFeatAbility:Requires Dexterity >= 15',
         'validationNotes.acrobaticStepsFeatFeatures:Requires Nimble Moves'
       ];
@@ -2800,7 +2845,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Arcane Strike') {
       notes = [
         'combatNotes.arcaneStrikeFeature:' +
-          'Imbue weapons with +%V magic damage bonus for 1 round',
+          'Imbue weapons with +%V magic damage bonus 1 rd',
         'validationNotes.arcaneStrikeFeatCasterLevelArcane:' +
           'Requires Caster Level Arcane >= 1'
       ];
@@ -2827,7 +2872,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Bleeding Critical') {
       notes = [
         'combatNotes.bleedingCriticalFeature:' +
-          'Critical hit causes 2d6 damage/round until healed (DC 15)',
+          'Critical hit causes 2d6 HP/rd until healed (DC 15)',
         'validationNotes.bleedingCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.bleedingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 11'
@@ -2842,7 +2887,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.blindingCriticalFeature:' +
           'Critical hit causes permanent blindness, ' +
-          'DC %V fortitude save reduces to dazzled d4 rounds',
+          'DC %V fortitude save reduces to dazzled 1d4 rd',
         'validationNotes.blindingCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.blindingCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 15'
@@ -2885,7 +2930,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Command Undead') {
       notes = [
         'combatNotes.commandUndeadFeature:' +
-          'Undead w/in 30 ft %V DC will save or controlled',
+          "Undead w/in 30' %V DC will save or controlled",
         'validationNotes.commandUndeadFeatFeatures:Requires Channel Energy'
       ];
       rules.defineRule('combatNotes.commandUndeadFeature',
@@ -2910,7 +2955,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Dazzling Display') {
       notes = [
         'combatNotes.dazzlingDisplayFeature:' +
-          'Intimidate check to demoralize foes w/in 30 ft using focused weapon',
+          "Intimidate check to demoralize foes w/in 30' using focused weapon",
         'validationNotes.dazzlingDisplayFeatFeatures:Requires Weapon Focus'
       ];
     } else if(feat == 'Deadly Aim') {
@@ -2938,7 +2983,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       notes = [
         'combatNotes.deafeningCriticalFeature:' +
           'Critical hit causes permanent deafness, ' +
-          'DC %V fortitude save reduces to 1 round',
+          'DC %V fortitude save reduces to 1 rd',
         'validationNotes.deafeningCriticalFeatFeatures:Requires Critical Focus',
         'validationNotes.deafeningCriticalFeatBaseAttack:' +
           'Requires Base Attack >= 13'
@@ -3056,7 +3101,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Extra Performance') {
       notes = [
         'featureNotes.extraPerformanceFeature:' +
-          'Use Barding Performance extra 6 rounds/day',
+          'Use Barding Performance extra 6 rd/day',
         'validationNotes.extraPerformanceFeatFeatures:' +
           'Requires Bardic Performance'
       ];
@@ -3065,7 +3110,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Extra Rage') {
       notes = [
-        'featureNotes.extraRageFeature:Rage extra 6 rounds/day',
+        'featureNotes.extraRageFeature:Rage extra 6 rd/day',
         'validationNotes.extraRageFeatFeatures:Requires Rage'
       ];
       rules.defineRule('combatNotes.rageFeature',
@@ -3117,7 +3162,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Greater Disarm') {
       notes = [
         'combatNotes.greaterDisarmFeature:' +
-          '+2 disarm checks, disarmed weapons land 15 ft away',
+          "+2 disarm checks, disarmed weapons land 15' away",
         'validationNotes.greaterDisarmFeatAbility:Requires Intelligence >= 13',
         'validationNotes.greaterDisarmFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -3126,8 +3171,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Greater Feint') {
       notes = [
-        'combatNotes.greaterFeintFeature:' +
-          'Feinted foe loses dex bonus for full round',
+        'combatNotes.greaterFeintFeature:Feinted foe loses dex bonus 1 rd',
         'validationNotes.greaterFeintFeatAbility:Requires Intelligence >= 13',
         'validationNotes.greaterFeintFeatBaseAttack:' +
           'Requires Base Attack >= 6',
@@ -3355,7 +3399,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
     } else if(feat == 'Lunge') {
       notes = [
-        'combatNotes.lungeFeature:-2 AC to increase melee range 5 ft',
+        "combatNotes.lungeFeature:-2 AC to increase melee range 5'",
         'validationNotes.lungeFeatBaseAttack:Requires Base Attack >= 6'
       ];
     } else if(feat == 'Magical Aptitude') {
@@ -3408,7 +3452,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Nimble Moves') {
       notes = [
         'abilityNotes.nimbleMovesFeature:' +
-          'Move through 5 ft difficult terrain/round as though normal terrain',
+          "Move through difficult terrain 5'/rd as though normal terrain",
         'validationNotes.nimbleMovesFeatAbility:Requires Dexterity >= 13'
       ];
     } else if(feat == 'Penetrating Strike') {
@@ -3473,7 +3517,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Scorpion Style') {
       notes = [
         'combatNotes.scorpionStyleFeature:' +
-          'Unarmed hit slows foe for %V rounds, DC %1 fortitude negates',
+          'Unarmed hit slows foe %V rd (DC %1 Fort neg)',
         'validationNotes.scorpionStyleFeatFeatures:' +
            'Requires Improved Unarmed Strike'
       ];
@@ -3512,7 +3556,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Shatter Defenses') {
       notes = [
         'combatNotes.shatterDefensesFeature:' +
-          'Fearful opponents flat-footed through next round',
+          'Fearful opponents flat-footed through next rd',
         'validationNotes.shatterDefensesFeatBaseAttack:' +
            'Requires Base Attack >= 6',
         'validationNotes.shatterDefensesFeatFeatures:' +
@@ -3585,7 +3629,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Staggering Critical') {
       notes = [
         'combatNotes.staggeringCriticalFeature:' +
-          'Critical hit causes foe staggered d4+1 rounds, ' +
+          'Critical hit causes foe staggered 1d4+1 rd, ' +
           'DC %V fortitude negates',
         'validationNotes.staggeringCriticalFeatFeatures:' +
           'Requires Critical Focus',
@@ -3615,7 +3659,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Step Up') {
       notes = [
-        'combatNotes.stepUpFeature:Match foe\'s 5 ft step',
+        "combatNotes.stepUpFeature:Match foe\'s 5' step",
         'validationNotes.stepUpFeatBaseAttack:Requires Base Attack >= 1'
       ];
     // } else if(feat == 'Still Spell') { // as SRD35
@@ -3627,7 +3671,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     } else if(feat == 'Stunning Critical') {
       notes = [
         'combatNotes.stunningCriticalFeature:' +
-          'Critical hit stuns d4 rounds, DC %V fortitude reduces to staggered',
+          'Critical hit stuns 1d4 rd (DC %V Fort staggered)',
         'validationNotes.stunningCriticalFeatBaseAttack:' +
            'Requires Base Attack >= 17',
         'validationNotes.stunningCriticalFeatFeatures:' +
@@ -3685,7 +3729,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Two-Weapon Fighting') { // as SRD35
     } else if(feat == 'Two-Weapon Rend') {
       notes = [
-        'combatNotes.two-WeaponRendFeature:Extra d10+%V damage from double hit',
+        'combatNotes.two-WeaponRendFeature:Extra 1d10+%V HP from double hit',
         'validationNotes.two-WeaponRendFeatAbility:Requires Dexterity >= 17',
         'validationNotes.two-WeaponRendFeatBaseAttack:' +
           'Requires Base Attack >= 11',
@@ -3719,7 +3763,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
     // } else if(feat == 'Widen Spell') { // as SRD35
     } else if(feat == 'Wind Stance') {
       notes = [
-        'combatNotes.windStanceFeature:20% concealment when moving > 5 ft',
+        "combatNotes.windStanceFeature:20% concealment when moving > 5'",
         'validationNotes.windStanceFeatAbility:Requires Dexterity >= 15',
         'validationNotes.windStanceFeatBaseAttack:Requires Base Attack >= 6',
         'validationNotes.windStanceFeatFeatures:Requires Dodge'
@@ -3955,8 +3999,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     var notes = [];
     if(domain == 'Air') {
       notes = [
-        'combatNotes.lightningArcFeature:' +
-          "R30' touch attack for d6+%1 points %V/day",
+        "combatNotes.lightningArcFeature:R30' touch 1d6+%1 HP %V/day",
         'saveNotes.electricityResistanceFeature:%V'
       ];
       rules.defineRule
@@ -3973,7 +4016,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'featureNotes.animalCompanionFeature:Special bond/abilities',
         'magicNotes.speakWithAnimalsFeature:' +
-          '<i>Speak With Animals</i> %V rounds/day'
+          '<i>Speak With Animals</i> %V rd/day'
       ];
       rules.defineRule('companionMasterLevelCleric',
         'domains.Animal', '?', null,
@@ -3990,9 +4033,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Artifice') {
       notes = [
         'combatNotes.artificer\'sTouchFeature:' +
-          'Touch attack on objects/constructs for d6+%1 damage %V/day',
+          'Touch attack on objects/constructs 1d6+%1 HP %V/day',
         'combatNotes.dancingWeaponsFeature:' +
-          'Add <i>dancing</i> to weapon for 4 rounds %V/day',
+          'Add <i>dancing</i> to weapon 4 rd %V/day',
         'magicNotes.artificer\'sTouchFeature:<i>Mending</i> at will'
       ];
       rules.defineRule('combatNotes.artificer\'sTouchFeature',
@@ -4007,10 +4050,10 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Chaos') {
       notes = [
         'combatNotes.chaosBladeFeature:' +
-          'Add <i>anarchic</i> to weapon for %1 rounds %V/day',
+          'Add <i>anarchic</i> to weapon %1 rd %V/day',
         'combatNotes.touchOfChaosFeature:' +
           'Touch attack %V/day causes target to take worse result of d20 ' +
-          'rerolls for 1 round'
+          'rerolls 1 rd'
       ];
       rules.defineRule('combatNotes.chaosBladeFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
@@ -4024,9 +4067,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Charm') {
       notes = [
         'magicNotes.charmingSmileFeature:' +
-          'DC %V <i>Charm Person</i> %1 rounds/day',
+          'DC %V <i>Charm Person</i> %1 rd/day',
         'magicNotes.addlingTouchFeature:' +
-          'Touch attack dazes %V HD foe 1 round %1/day'
+          'Touch attack dazes %V HD foe 1 rd %1/day'
       ];
       rules.defineRule('magicNotes.charmingSmileFeature',
         'levels.Cleric', '=', '10 + Math.floor(source / 2)',
@@ -4042,8 +4085,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Community') {
       notes = [
         'magicNotes.calmingTouchFeature:' +
-          'Touch heals d6+%1 + removes fatigued/shaken/sickened %V/day',
-        'saveNotes.unityFeature:Allies w/in 30 ft use your saving throw %V/day'
+          'Touch heals 1d6+%1 HP, removes fatigued/shaken/sickened %V/day',
+        "saveNotes.unityFeature:Allies w/in 30' use your saving throw %V/day"
       ];
       rules.defineRule
         ('magicNotes.calmingTouchFeature', 'wisdomModifier', '=', 'source + 3');
@@ -4058,9 +4101,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
           'Reroll concealed miss, no bonus to invisible foe, no skill check ' +
           'on blinded full speed move',
         'combatNotes.touchOfDarknessFeature:' +
-          'Touch attack causes 20% miss chance for %V rounds %1/day',
+          'Touch attack causes 20% miss chance %V rd %1/day',
         'featureNotes.eyesOfDarknessFeature:' +
-          'Normal vision in any lighting %V rounds/day'
+          'Normal vision in any lighting %V rd/day'
       ];
       rules.defineRule('combatNotes.touchOfDarknessFeature',
         'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
@@ -4074,7 +4117,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Death') {
       notes = [
         'combatNotes.bleedingTouchFeature:' +
-          'Touch attack causes d6 damage/round %V rounds or until healed ' +
+          'Touch attack causes 1d6 HP/rd %V rd or until healed ' +
           '(DC 15) %1/day',
         'combatNotes.death\'sEmbraceFeature:Healed by channeled negative energy'
       ];
@@ -4087,7 +4130,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Destruction') {
       notes = [
         'combatNotes.destructiveAuraFeature:' +
-           'Attacks w/in 30 ft +%V damage + critical confirmed %1 rounds/day',
+           "Attacks w/in 30' +%V damage + critical confirmed %1 rd/day",
         'combatNotes.destructiveSmiteFeature:+%V damage %1/day'
       ];
       rules.defineRule('combatNotes.destructiveAuraFeature',
@@ -4104,7 +4147,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Earth') {
       notes = [
-        "magicNotes.acidDartFeature:R30' touch attack for d6+%1 points %V/day",
+        "magicNotes.acidDartFeature:R30' touch 1d6+%1 HP %V/day",
         'saveNotes.acidResistanceFeature:%V'
       ];
       rules.defineRule('magicNotes.acidDartFeature',
@@ -4121,9 +4164,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Evil') {
       notes = [
         'combatNotes.scytheOfEvilFeature:' +
-          'Add <i>unholy</i> to weapon for %1 rounds %V/day',
-        'combatNotes.touchOfEvilFeature:' +
-          'Touch attack sickens for %V rounds %1/day'
+          'Add <i>unholy</i> to weapon %1 rd %V/day',
+        'combatNotes.touchOfEvilFeature:Touch attack sickens %V rd %1/day'
       ];
       rules.defineRule('combatNotes.scytheOfEvilFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
@@ -4139,8 +4181,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Fire') {
       notes = [
-        'combatNotes.fireBoltFeature:' +
-          "R30' touch attack for d6+%1 points %V/day",
+        "combatNotes.fireBoltFeature:R30' touch 1d6+%1 HP %V/day",
         'saveNotes.fireResistanceFeature:%V'
       ];
       rules.defineRule
@@ -4156,7 +4197,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Glory') {
       notes = [
         'magicNotes.divinePresenceFeature:' +
-          'DC %V <i>Sanctuary</i> for allies w/in 30 ft %1 rounds/day',
+          "DC %V <i>Sanctuary</i> for allies w/in 30' %1 rd/day",
         'magicNotes.touchOfGloryFeature:' +
            'Touch imparts +%V charisma check bonus %1/day',
         'magicNotes.undeadBaneFeature:+2 DC on energy channeled to harm undead'
@@ -4175,9 +4216,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Good') {
       notes = [
         'combatNotes.holyLanceFeature:' +
-          'Add <i>holy</i> to weapon for %1 rounds %V/day',
+          'Add <i>holy</i> to weapon %1 rd %V/day',
         'magicNotes.touchOfGoodFeature:' +
-          'Touch imparts +%V attack/skill/ability/save for 1 round %1/day'
+          'Touch imparts +%V attack/skill/ability/save 1 rd %1/day'
       ];
       rules.defineRule('combatNotes.holyLanceFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
@@ -4195,7 +4236,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'magicNotes.healer\'sBlessingFeature:%V% bonus on healed damage',
         'magicNotes.rebukeDeathFeature:' +
-          'Touch creature below 0 HP to heal d4+%1 HP %V/day'
+          'Touch creature below 0 HP to heal 1d4+%1 HP %V/day'
       ];
       rules.defineRule('magicNotes.healer\'sBlessingFeature',
         'levels.Cleric', '=', 'source >= 6 ? 50 : null'
@@ -4209,7 +4250,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Knowledge') {
       notes = [
         'magicNotes.remoteViewingFeature:' +
-          'Level %V <i>Clairvoyance/clairaudience</i> for %1 rounds/day',
+          'Level %V <i>Clairvoyance/clairaudience</i> %1 rd/day',
         'skillNotes.loreKeeperFeature:' +
           'Touch attack provides info as per %V Knowledge check'
       ];
@@ -4226,9 +4267,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Law') {
       notes = [
         'combatNotes.staffOfOrderFeature:' +
-          'Add <i>axiomatic</i> to weapon for %1 rounds %V/day',
+          'Add <i>axiomatic</i> to weapon %1 rd %V/day',
         'magicNotes.touchOfLawFeature:' +
-          'Touch imparts "take 11" on all d20 rolls for 1 round %V/day'
+          'Touch imparts "take 11" on all d20 rolls 1 rd %V/day'
       ];
       rules.defineRule('combatNotes.staffOfOrderFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
@@ -4241,8 +4282,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Liberation') {
       notes = [
         'magicNotes.freedom\'sCallFeature:' +
-          'Allies w/in 30 ft unaffected by movement conditions %V rounds/day',
-        'magicNotes.liberationFeature:Ignore movement impediments %V rounds/day'
+          "Allies w/in 30' unaffected by movement conditions %V rd/day",
+        'magicNotes.liberationFeature:Ignore movement impediments %V rd/day'
       ];
       rules.defineRule('magicNotes.freedom\'sCallFeature',
         'levels.Cleric', '=', 'source >= 8 ? source : null'
@@ -4252,7 +4293,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Luck') {
       notes = [
         'magicNotes.bitOfLuckFeature:' +
-          'Touch imparts reroll d20 next round %V/day',
+          'Touch imparts reroll d20 next rd %V/day',
         'magicNotes.goodFortuneFeature:Reroll d20 %V/day'
       ];
       rules.defineRule('magicNotes.bitOfLuckFeature',
@@ -4264,10 +4305,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Madness') {
       notes = [
         'magicNotes.auraOfMadnessFeature:' +
-          'DC Will %V 30 ft <i>Confusion</i> aura %1 rounds/day',
+          "DC Will %V 30' <i>Confusion</i> aura %1 rd/day",
         'magicNotes.visionOfMadnessFeature:' +
-          'Touch imparts +%V attack, save, or skill, -%1 others for 3 ' +
-          'rounds %2/day'
+          'Touch imparts +%V attack, save, or skill, -%1 others 3 rd %2/day'
       ];
       rules.defineRule('magicNotes.auraOfMadnessFeature',
         'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
@@ -4286,17 +4326,16 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Magic') {
       notes = [
-        'combatNotes.handOfTheAcolyteFeature:' +
-          'Melee weapon +%1 30 ft ranged attack %V/day',
+        "combatNotes.handOfTheAcolyteFeature:R30' +%V w/melee weapon %1/day",
         'magicNotes.dispellingTouchFeature:' +
           '<i>Dispel Magic</i> touch attack %V/day'
       ];
       rules.defineRule('combatNotes.handOfTheAcolyteFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
         'baseAttack', '=', null,
         'wisdomModifier', '+', null
+      );
+      rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
+        'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('magicNotes.dispellingTouchFeature',
         'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
@@ -4305,7 +4344,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'featureNotes.nobleLeadershipFeature:+%V Leadership',
         'magicNotes.inspiringWordFeature:' +
-          "R30' word imparts +2 attack/skill/ability/save to target for %V rounds %1/day"
+          "R30' word imparts +2 attack/skill/ability/save to target %V rd %1/day"
       ];
       rules.defineRule('featureNotes.nobleLeadershipFeature',
         'levels.Cleric', '=', 'source >= 8 ? 2 : null'
@@ -4322,9 +4361,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Plant') {
       notes = [
         'combatNotes.brambleArmorFeature:' +
-          'Thorny hide causes d6+%1 damage to striking foes %V/day',
+          'Thorny hide causes 1d6+%1 HP to striking foes %V/day',
         'combatNotes.woodenFistFeature:' +
-          '+%V, no AOO unarmed attacks %1 rounds/day'
+          '+%V, no AOO unarmed attacks %1 rd/day'
       ];
       rules.defineRule
         ('combatNotes.brambleArmorFeature', 'levels.Cleric', '=', null);
@@ -4340,9 +4379,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Protection') {
       notes = [
         'magicNotes.auraOfProtectionFeature:' +
-          'Allies w/in 30 ft +%V AC/%1 elements resistance %2 rounds/day',
+          "Allies w/in 30' +%V AC/%1 elements resistance %2 rd/day",
         'magicNotes.resistantTouchFeature:' +
-           'Touch transfers resistance bonus to ally for 1 minute %V/day',
+           'Touch transfers resistance bonus to ally 1 minute %V/day',
         'saveNotes.resistanceBonusFeature:+%V saves'
       ];
       rules.defineRule('magicNotes.auraOfProtectionFeature',
@@ -4367,10 +4406,10 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         ('save.Will', 'saveNotes.resistanceBonusFeature', '+', null);
     } else if(domain == 'Repose') {
       notes = [
-        'magicNotes.gentleRestFeature:Touch staggers %1 rounds %V/day',
+        'magicNotes.gentleRestFeature:Touch staggers %1 rd %V/day',
         'magicNotes.wardAgainstDeathFeature:' +
-          'Creatures w/in 30 ft immune to death effects/energy drain/' +
-          'negative levels %V rounds/day'
+          "Creatures w/in 30' immune to death effects/energy drain/" +
+          'negative levels %V rd/day'
       ];
       rules.defineRule
         ('magicNotes.gentleRestFeature', 'wisdomModifier', '=', 'source + 3');
@@ -4382,7 +4421,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Rune') {
       notes = [
         'magicNotes.blastRuneFeature:' +
-          'Rune in adjacent square causes d6+%1 damage for %V rounds %2/day',
+          'Rune in adjacent square causes 1d6+%1 HP %V rd %2/day',
         'magicNotes.scribeScrollFeature:Create scroll of any known spell',
         'magicNotes.spellRuneFeature:Add known spell to Blast Rune'
       ];
@@ -4396,7 +4435,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Strength') {
       notes = [
-        'magicNotes.mightOfTheGodsFeature:+%V strength checks %1 rounds/day',
+        'magicNotes.mightOfTheGodsFeature:+%V strength checks %1 rd/day',
         'magicNotes.strengthRushFeature:' +
           'Touch imparts +%V melee attack/strength check bonus %1/day'
       ];
@@ -4417,8 +4456,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'magicNotes.sun\'sBlessingFeature:' +
           '+%V undead damage, negate channel resistance',
         'magicNotes.nimbusOfLightFeature:' +
-          '30 ft radius <i>Daylight</i> does %V HP damage to undead %1 ' +
-          'rounds/day'
+          "30' radius <i>Daylight</i> does %V HP to undead %1 rd/day"
       ];
       rules.defineRule
         ('magicNotes.sun\'sBlessingFeature', 'levels.Cleric', '=', null);
@@ -4432,8 +4470,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       notes = [
         'abilityNotes.travelSpeedFeature:+10 speed',
         'featureNotes.agileFeetFeature:' +
-          'Unaffected by difficult terrain for 1 round %V/day',
-        'magicNotes.dimensionalHopFeature:Teleport up to %V ft/day'
+          'Unaffected by difficult terrain 1 rd %V/day',
+        "magicNotes.dimensionalHopFeature:Teleport up to %V'/day"
       ];
       rules.defineRule('speed', 'abilityNotes.travelSpeedFeature', '+', '10');
       rules.defineRule
@@ -4443,9 +4481,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Trickery') {
       notes = [
-        'magicNotes.copycatFeature:<i>Mirror Image</i> for %V rounds %1/day',
+        'magicNotes.copycatFeature:<i>Mirror Image</i> %V rd %1/day',
         'magicNotes.master\'sIllusionFeature:' +
-          'DC %V 30 ft radius <i>Veil</i> %1 rounds/day'
+          "DC %V 30' radius <i>Veil</i> %1 rd/day"
       ];
       rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
       rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
@@ -4463,9 +4501,8 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'War') {
       notes = [
         'combatNotes.battleRageFeature:' +
-          'Touch imparts +%V damage bonus for 1 round %1/day',
-        'combatNotes.weaponMasterFeature:' +
-          'Use additional combat feat %V rounds/day'
+          'Touch imparts +%V damage bonus 1 rd %1/day',
+        'combatNotes.weaponMasterFeature:Use additional combat feat %V rd/day'
       ];
       rules.defineRule('combatNotes.battleRageFeature',
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
@@ -4478,7 +4515,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Water') {
       notes = [
-        "combatNotes.icicleFeature:R30' touch attack for d6+%1 points %V/day",
+        "combatNotes.icicleFeature:R30' touch 1d6+%1 HP %V/day",
         'saveNotes.coldResistanceFeature:%V'
       ];
       rules.defineRule('combatNotes.icicleFeature',
@@ -4495,7 +4532,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Weather') {
       notes = [
         'combatNotes.stormBurstFeature:' +
-          "R30' touch attack for d6+%1 non-lethal + -2 attack %V/day",
+          "R30' touch 1d6+%1 HP non-lethal + -2 attack %V/day",
         'magicNotes.lightningLordFeature:<i>Call Lightning</i> %V bolts/day'
       ];
       rules.defineRule('combatNotes.stormBurstFeature',
@@ -4623,8 +4660,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Weapon Proficiency (Falchion/Greataxe)'
       ];
       notes = [
-        'combatNotes.orcFerocityFeature:Fight 1 round below zero hit points',
-        'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
+        'combatNotes.orcFerocityFeature:Fight 1 rd below zero HP',
+        "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
         'featureNotes.orcBloodFeature:Orc and human for racial effects',
         'skillNotes.intimidatingFeature:+2 Intimidate'
       ];
@@ -4649,11 +4686,11 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
         'combatNotes.dwarfHatredFeature:+1 attack vs. goblinoid/orc',
         'combatNotes.stabilityFeature:+4 CMD vs. Bull Rush/Trip',
-        'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
+        "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
         'saveNotes.hardyFeature:+2 vs. poison/spells',
         'skillNotes.greedFeature:+2 Appraise (precious metals, gems)',
         'skillNotes.stonecunningFeature:' +
-          '+2 Perception (stone), automatic check w/in 10 ft'
+          "+2 Perception (stone), automatic check w/in 10'"
       ];
 
       rules.defineRule('abilityNotes.armorSpeedAdjustment',
@@ -5005,7 +5042,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Animal Friend') {
       notes = [
-        'saveNotes.animalFriendFeature:+1 Will unhostile animal w/in 30 ft',
+        "saveNotes.animalFriendFeature:+1 Will unhostile animal w/in 30'",
         'skillNotes.animalFriendFeature:Handle Animal is class skill'
       ];
       rules.defineRule('classSkills.Handle Animal',
@@ -5205,7 +5242,7 @@ Pathfinder.traitRules = function(rules, traits) {
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Fires Of Hell') {
       notes = [
-        'combatNotes.firesOfHellFeature:Flaming blade +1 Damage for %V rd 1/day'
+        'combatNotes.firesOfHellFeature:Flaming blade +1 Damage %V rd 1/day'
       ];
       rules.defineRule
         ('combatNotes.firesOfHellFeature', 'charismaModifier', '=', null);
@@ -5228,7 +5265,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Fortified Drinker') {
       notes = [
-        'saveNotes.fortifiedDrinkerFeature:+2 vs mental effect for 1 hr after drinking'
+        'saveNotes.fortifiedDrinkerFeature:+2 vs mental effect 1 hr after drinking'
       ];
     } else if(trait == 'Freedom Fighter') {
       notes = [
@@ -5283,7 +5320,7 @@ Pathfinder.traitRules = function(rules, traits) {
       ];
     } else if(trait == 'Impressive Presence') {
       notes = [
-        'combatNotes.impressivePresenceFeature:Adjacent foes DC %V Will save or shaken for 1 rd 1/day'
+        'combatNotes.impressivePresenceFeature:Adjacent foes DC %V Will save or shaken 1 rd 1/day'
       ];
       rules.defineRule('combatNotes.impressivePresenceFeature',
         'level', '=', '10 + Math.floor(source / 2)',
@@ -5448,7 +5485,7 @@ Pathfinder.traitRules = function(rules, traits) {
         ('classSkills.Swim', 'skillNotes.riverRatFeature', '=', '1');
     } else if(trait == 'Rousing Oratory') {
       notes = [
-        'DC 15 on Perform choice gives allies w/in 60\' +1 or better vs. fear for 5 min 1/day'
+        'DC 15 on Perform choice gives allies w/in 60\' +1 or better vs. fear 5 min 1/day'
       ];
       // NOTE Choice of above also becomes class skill
     } else if(trait == 'Sacred Conduit') {
@@ -5501,7 +5538,7 @@ Pathfinder.traitRules = function(rules, traits) {
       );
     } else if(trait == 'Soul Drinker') {
       notes = [
-        'combatNotes.soulDrinkerFeature:Gain HP equal to slain foe\'s hit dice for 1 min 1/day'
+        'combatNotes.soulDrinkerFeature:Gain HP equal to slain foe\'s hit dice 1 min 1/day'
       ];
     } else if(trait == 'Starchild') {
       notes = ['skillNotes.starchildFeature:+4 Survival (avoid becoming lost)'];
@@ -5569,7 +5606,7 @@ Pathfinder.traitRules = function(rules, traits) {
         ('initiative', 'combatNotes.veteranOfBattleFeature', '+', '1');
     } else if(trait == 'Vindictive') {
       notes = [
-        'combatNotes.vindictiveFeature:+1 damage vs. successful foe for 1 min 1/day'
+        'combatNotes.vindictiveFeature:+1 damage vs. successful foe 1 min 1/day'
       ];
     } else if(trait == 'Warrior Of Old') {
       notes = ['combatNotes.warriorOfOldFeature:+2 Initiative'];
