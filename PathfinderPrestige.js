@@ -214,7 +214,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.angelOfDeathFeature:Death attack dusts corpse 1/day',
         'combatNotes.deathAttackFeature:' +
           'Foe DC %V fortitude save on successful sneak attack after 3 ' +
-          'rd of study or die/paralyzed for d6+%1 rd',
+          'rd of study or die/paralyzed d6+%1 rd',
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.quietDeathFeature:' +
@@ -667,11 +667,11 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'magicNotes.callDownTheLegendsFeature:' +
           'Summon 2d4 level 4 barbarians 1/week',
         'magicNotes.countersongFeature:' +
-          "Perform check vs. sonic magic w/in 30' for 10 rd",
+          "Perform check vs. sonic magic w/in 30' 10 rd",
         'magicNotes.dirgeOfDoomFeature:' +
           "Creatures w/in 30' shaken while performing",
         'magicNotes.distractionFeature:' +
-          "Perform check vs. visual magic w/in 30' for 10 rd",
+          "Perform check vs. visual magic w/in 30' 10 rd",
         'magicNotes.epicTalesFeature:' +
           'Bardic Performance effect via writing%V',
         'magicNotes.fascinateFeature:' +
@@ -774,7 +774,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.shadowMasterFeature:' +
-           'DR 10/-, critical hit blinds for d6 rd in dim light',
+           'DR 10/-, critical hit blinds d6 rd in dim light',
         'combatNotes.uncannyDodgeFeature:' +
           'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
         "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
