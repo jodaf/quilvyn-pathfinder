@@ -1833,7 +1833,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           ];
           notes = notes.concat([
             'abilityNotes.strengthOfTheAbyssFeature:+%V strength',
-            'combatNotes.clawsFeature:%V+%1%3 %2 rd/day',
+            'combatNotes.clawsFeature:%V+%1%3 HP %2 rd/day',
             "featureNotes.demonicMightFeature:Telepathy 60'",
             'magicNotes.addedSummoningsFeature:' +
               '<i>Summon Monster</i> brings additional demon/fiendish creature',
@@ -1997,7 +1997,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             "abilityNotes.wingsFeature:Fly %V'/average",
             'combatNotes.breathWeaponFeature:' +
               "%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
-            'combatNotes.clawsFeature:%V+%1%3 %2 rd/day',
+            'combatNotes.clawsFeature:%V+%1%3 HP %2 rd/day',
             'combatNotes.dragonResistancesFeature:+%V AC',
             'featureNotes.blindsenseFeature:' +
               "Other senses allow detection of unseen objects w/in %V'",
