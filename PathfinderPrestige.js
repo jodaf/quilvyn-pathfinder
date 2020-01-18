@@ -132,7 +132,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.impromptuSneakAttackFeature:' +
           'Declare any attack a sneak attack %V/day',
         'combatNotes.rangedLegerdemainFeature:' +
-          '+5 DC on Disable Device/Sleight Of Hand at 30 ft',
+          "+5 DC on Disable Device/Sleight Of Hand at 30'",
         'combatNotes.sneakAttackFeature:' +
           '%Vd6 HP extra when surprising or flanking',
         'combatNotes.surpriseSpellsFeature:' +
@@ -140,7 +140,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'magicNotes.casterLevelBonusFeature:' +
           '+%V base class level for spells known/per day',
         'magicNotes.invisibleThiefFeature:' +
-          '<i>Greater Invisibility</i> %V rounds/day',
+          '<i>Greater Invisibility</i> %V rd/day',
         'magicNotes.trickySpellsFeature:Silent/Still spell %V/day',
         'validationNotes.arcaneTricksterClassAlignment:' +
           'Requires Alignment !~ Lawful',
@@ -214,7 +214,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.angelOfDeathFeature:Death attack dusts corpse 1/day',
         'combatNotes.deathAttackFeature:' +
           'Foe DC %V fortitude save on successful sneak attack after 3 ' +
-          'rounds of study or die/paralyzed for d6+%1 rounds',
+          'rd of study or die/paralyzed for d6+%1 rd',
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.quietDeathFeature:' +
@@ -291,7 +291,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.dragonBiteFeature:d%V+%1%2 bite when using claws',
         'combatNotes.dragonDiscipleArmorClassAdjustment:+%V',
         'featureNotes.blindsenseFeature:' +
-          'Other senses allow detection of unseen objects w/in %V ft',
+          "Other senses allow detection of unseen objects w/in %V'",
         'featureNotes.bloodOfDragonsFeature:' +
           'Dragon Disciple level triggers Bloodline Draconic features',
         'magicNotes.casterLevelBonusFeature:' +
@@ -409,8 +409,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.noRetreatFeature:AOO on foe withdraw',
         'combatNotes.parryFeature:' +
           'Hit on full-round attack negates foe attack instead of damaging',
-        'combatNotes.preciseStrikeFeature:' +
-          '+%V damage with light piercing weapon',
+        'combatNotes.preciseStrikeFeature:+%V HP with light piercing weapon',
         'combatNotes.riposteFeature:AOO after parry',
         'saveNotes.graceFeature:+2 Reflex when lightly/unarmored',
         'validationNotes.duelistClassBaseAttack:Requires Base Attack >= 6',
@@ -668,15 +667,15 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'magicNotes.callDownTheLegendsFeature:' +
           'Summon 2d4 level 4 barbarians 1/week',
         'magicNotes.countersongFeature:' +
-          'Perform check vs. sonic magic w/in 30 ft for 10 rounds',
+          "Perform check vs. sonic magic w/in 30' for 10 rd",
         'magicNotes.dirgeOfDoomFeature:' +
-          'Creatures w/in 30 ft shaken while performing',
+          "Creatures w/in 30' shaken while performing",
         'magicNotes.distractionFeature:' +
-          'Perform check vs. visual magic w/in 30 ft for 10 rounds',
+          "Perform check vs. visual magic w/in 30' for 10 rd",
         'magicNotes.epicTalesFeature:' +
           'Bardic Performance effect via writing%V',
         'magicNotes.fascinateFeature:' +
-          '%V creatures w/in 90 ft DC %1 Will save or spellbound',
+          "%V creatures w/in 90' DC %1 Will save or spellbound",
         'magicNotes.inspiredActionFeature:' +
           'Use Bardic Performance to give ally extra %V action',
         'magicNotes.inspireCompetenceFeature:' +
@@ -775,10 +774,10 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.improvedUncannyDodgeFeature:' +
           'Flanked only by rogue four levels higher',
         'combatNotes.shadowMasterFeature:' +
-           'DR 10/-, critical hit blinds for d6 rounds in dim light',
+           'DR 10/-, critical hit blinds for d6 rd in dim light',
         'combatNotes.uncannyDodgeFeature:' +
           'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
-        'featureNotes.darkvisionFeature:%V ft b/w vision in darkness',
+        "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
         'magicNotes.shadowCallFeature:DC %V <i>Shadow Conjuration</i> %1/day',
         'magicNotes.shadowIllusionFeature:DC %V <i>Silent Image</i> %1/day',
         'magicNotes.shadowJumpFeature:' +
