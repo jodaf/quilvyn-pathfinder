@@ -662,7 +662,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'abilityNotes.pathfindingFeature:Treat trackless terrain as road',
         'combatNotes.improvedAidFeature:Aid Another action gives +4 bonus',
         'featureNotes.bardicPerformanceFeature:' +
-          'Bardic Performance effect %V rounds/day',
+          'Bardic Performance effect %V rd/day',
         'featureNotes.deepPocketsFeature:' +
           'Retrieve any small object from backpack as a full-round action',
         'magicNotes.callDownTheLegendsFeature:' +
