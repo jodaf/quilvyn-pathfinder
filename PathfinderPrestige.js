@@ -134,7 +134,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.rangedLegerdemainFeature:' +
           '+5 DC on Disable Device/Sleight Of Hand at 30 ft',
         'combatNotes.sneakAttackFeature:' +
-          '%Vd6 extra damage when surprising or flanking',
+          '%Vd6 HP extra when surprising or flanking',
         'combatNotes.surpriseSpellsFeature:' +
           'Sneak attack spell damage vs flat-footed foes',
         'magicNotes.casterLevelBonusFeature:' +
@@ -220,7 +220,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.quietDeathFeature:' +
           'Stealth check to perform Death Attack unnoticed',
         'combatNotes.sneakAttackFeature:' +
-          '%Vd6 extra damage when surprising or flanking',
+          '%Vd6 HP extra when surprising or flanking',
         'combatNotes.swiftDeathFeature:Death attack w/out prior study 1/day',
         'combatNotes.trueDeathFeature:' +
           'Raising victim requires DC %V <i>Remove Curse</i> or ' +
