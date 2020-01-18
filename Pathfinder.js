@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.9';
+var PATHFINDER_VERSION = '1.4.1.10';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -1715,7 +1715,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       var bloodlineSkills = {
         'Aberrant':'Knowledge (Dungeoneering)',
         'Abyssal':'Knowledge (Planes)',
-        'Arcane':'Knowledge',
+        'Arcane':null, // Knowledge (any one)
         'Celestial':'Heal',
         'Destined':'Knowledge (History)',
         'Draconic':'Perception',
@@ -1782,8 +1782,10 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'sorcererFeatures.' + pieces[1], '=', null
           );
         }
-        rules.defineRule
-          ('classSkills.' + skill, 'features.Bloodline ' + bloodline, '=', '1');
+        if(skill != null) {
+          rules.defineRule
+            ('classSkills.'+skill, 'features.Bloodline ' + bloodline, '=', '1');
+        }
         for(var k = 0; k < spells.length; k++) {
           var spell = spells[k];
           var school = Pathfinder.spellsSchools[spell].substring(0, 4);
