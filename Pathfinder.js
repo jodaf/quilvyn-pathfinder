@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.11';
+var PATHFINDER_VERSION = '1.4.1.12';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -2053,6 +2053,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           rules.defineRule('featureNotes.blindsenseFeature',
             bloodlineLevelAttr, '^=', '60'
           );
+          rules.defineRule('features.Bloodline Draconic',
+            bloodlineLevelAttr, '=', '1'
+          );
           rules.defineRule('magicNotes.bloodlineDraconicFeature',
             bloodlineLevelAttr, '=', '"' + energyType + '"'
           );
@@ -2105,6 +2108,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule('combatNotes.elementalBlastFeature.3',
             bloodlineLevelAttr, '=', '"' + energyType + '"'
+          );
+          rules.defineRule('features.Bloodline Elemental',
+            bloodlineLevelAttr, '=', '1'
           );
           rules.defineRule('combatNotes.elementalBodyFeature',
             bloodlineLevelAttr, '=', 'source>=20 ? "' + energyType + '" : null'
