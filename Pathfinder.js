@@ -62,6 +62,8 @@ function Pathfinder() {
   Pathfinder.magicRules
     (rules, SRD35.CLASSES, SRD35.DOMAINS.concat(Pathfinder.DOMAINS_ADDED),
      SRD35.SCHOOLS);
+  SRD35.spellRules
+    (rules, null, Object.assign({}, SRD35.spellsDescriptions, Pathfinder.spellsDescriptions));
   Pathfinder.traitRules(rules, Pathfinder.TRAITS);
   Scribe.addRuleSet(rules);
   Pathfinder.rules = rules;
@@ -424,6 +426,13 @@ Pathfinder.abilityRules = function(rules) {
 
 /* Defines the rules related to character classes. */
 Pathfinder.classRules = function(rules, classes, bloodlines) {
+
+  // TODO Temporary use of SRD35 experience calculations
+  rules.defineRule
+    ('experienceNeeded', 'level', '=', '1000 * source * (source + 1) / 2');
+  rules.defineRule('level',
+    'experience', '=', 'Math.floor((1 + Math.sqrt(1 + source / 125)) / 2)'
+  );
 
   // Level-dependent attributes
   rules.defineRule
