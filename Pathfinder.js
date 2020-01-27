@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.4.1.12';
+var PATHFINDER_VERSION = '1.5.1.0alpha';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -57,7 +57,6 @@ function Pathfinder() {
   Pathfinder.equipmentRules
     (rules, SRD35.ARMORS, SRD35.SHIELDS,
      SRD35.WEAPONS.concat(Pathfinder.WEAPONS_ADDED));
-  Pathfinder.goodiesRules(rules, SRD35.GOODIES);
   Pathfinder.combatRules(rules);
   Pathfinder.movementRules(rules);
   Pathfinder.magicRules
@@ -2702,7 +2701,10 @@ Pathfinder.descriptionRules = function(rules, alignments, deities, genders) {
 
 /* Defines the rules related to equipment. */
 Pathfinder.equipmentRules = function(rules, armors, shields, weapons) {
-  SRD35.equipmentRules(rules, armors, shields, weapons); // No changes
+  SRD35.equipmentRules(rules, armors, shields, weapons);
+  rules.defineRule('combatManeuverDefense',
+    'combatNotes.goodiesArmorClassAdjustment', '+', null
+  );
 };
 
 /* Defines the rules related to feats. */
@@ -3792,24 +3794,6 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
 
-};
-
-/*
- * Defines rules for a specified set of goodies (generally magic items). The
- * method knows how to define rules for "* Of <skill> [+-]<amount>", "* Of
- * <ability> [+-]<amount>", "* Of Protection [+-]]<amount>" (improves * AC),
- * "<weapon> [+-]<amount>", "Masterwork <weapon>", "<armor> [+-]<amount>",
- * "Masterwork <armor>", and "Healer's Kit".
- */
-Pathfinder.goodiesRules = function(rules, goodies) {
-  SRD35.goodiesRules(rules, goodies);
-  for(var i = 0; i < goodies.length; i++) {
-    var matchInfo;
-    if((matchInfo = goodies[i].match(/^(.*) Of Protection ([+-]\d+)$/)) != null) {
-      rules.defineRule
-        ('combatManeuverDefense', 'goodies.' + goodies[i], '+', matchInfo[2]);
-    }
-  }
 };
 
 /* Defines the rules related to spells and domains. */
