@@ -2711,9 +2711,16 @@ Pathfinder.descriptionRules = function(rules, alignments, deities, genders) {
 /* Defines the rules related to equipment. */
 Pathfinder.equipmentRules = function(rules, armors, shields, weapons) {
   SRD35.equipmentRules(rules, armors, shields, weapons);
-  rules.defineRule('combatManeuverDefense',
-    'combatNotes.goodiesArmorClassAdjustment', '+', null
+  rules.defineRule('combatNotes.goodiesCMDAdjustment',
+    'goodiesAffectingAC', '=',
+      'source.filter(item => !item.match(/\\b(armor|shield)\\b/i)).reduce(' +
+        'function(total, item) {' +
+          'return total + ((item + "+0").match(/[-+]\\d+/) - 0);' +
+        '}' +
+      ', 0)'
   );
+  rules.defineRule
+    ('combatManeuverDefense', 'combatNotes.goodiesCMDAdjustment', '+', null);
 };
 
 /* Defines the rules related to feats. */
