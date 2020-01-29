@@ -56,7 +56,7 @@ function Pathfinder() {
     (rules, SRD35.ALIGNMENTS, Pathfinder.DEITIES, SRD35.GENDERS);
   Pathfinder.equipmentRules
     (rules, SRD35.ARMORS, SRD35.SHIELDS,
-     SRD35.WEAPONS.concat(Pathfinder.WEAPONS_ADDED));
+     SRD35.WEAPONS.filter(item => !item.startsWith('Sai:')).concat(Pathfinder.WEAPONS_ADDED));
   Pathfinder.combatRules(rules);
   Pathfinder.movementRules(rules);
   Pathfinder.magicRules
@@ -385,7 +385,7 @@ Pathfinder.WEAPONS_ADDED = [
   'Blowgun:d2r20 Si',
   'Elven Curve Blade:d10@18 2h Ex',
   'Halfling Sling Staff:d8x3r80 Ex',
-  // removed range 'Sai:d4',
+  'Sai:d4 Li Ex', // removed range
   'Starknife:d4x3r20 Li Ma'
 ];
 
@@ -4899,6 +4899,16 @@ Pathfinder.ruleNotes = function() {
     '    melee attack attribute given on the character sheet when any of\n' +
     '    these is thrown.\n' +
     '  </li><li>\n' +
+    '    The armor class of characters with the Dodge feat includes a +1\n' +
+    '    bonus that applies only to one foe at a time.\n' +
+    '  </li><li>\n' +
+    '    For purposes of computing strength damage bonuses, Scribe assumes\n' +
+    '    that characters with a buckler wield their weapons one-handed and\n' +
+    '    that characters with no buckler or shield wield with both hands.\n' +
+    '  </li><li>\n' +
+    '    Scribe assumes that masterwork composite bows are specially built\n' +
+    '    to allow a strength damage bonus to be applied.\n' +
+    '  </li><li>\n' +
     '    A few feats have been renamed to emphasize the relationship\n' +
     '    between similar feats: "Shield Proficiency" and "Tower Shield\n' +
     '    Proficiency" to "Shield Proficiency (Heavy)" and "Shield\n' +
@@ -4916,16 +4926,8 @@ Pathfinder.ruleNotes = function() {
     '    of the same name.\n' +
     '  </li><li>\n' +
     '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
-    '    "Faction Freedom Fighter" to distinguish it from the halfling trait\n' +
-    '    of the same name.\n' +
-    '  </li><li>\n' +
-    '    Use the animal companion editing fields to enter the creature\n' +
-    '    types and names of Paladin mounts.\n'+
-    '  </li><li>\n' +
-    '    The distinction between feats and selectable features is\n' +
-    '    arbitrary.  Selectable features could be treated as feats\n' +
-    '    restricted to specific classes; however, doing so would\n' +
-    '    significantly clutter up the feat selection list.\n' +
+    '    "Faction Freedom Fighter" to distinguish it from the halfling\n' +
+    '    trait of the same name.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n' +
@@ -4934,14 +4936,19 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
+    '    You can only select each feat once. Multiple selections of feats\n' +
+    '    that allow it can be managed by defining custom feats.\n' +
+    '  </li><li>\n' +
+    '    Scribe doesn\'t support double weapons where the two attacks have\n' +
+    '    different critical mutipliers. In the predefined weapons this\n' +
+    '    affects only the Gnome Hooked Hammer, where Scribe displays a\n' +
+    '    critical multiplier of x4 instead of x3/x4.\n' +
+    '  </li><li>\n' +
     '    Scribe provides no place other than the notes section to enter\n' +
     '    mundane possessions like lanterns and rope. The same goes for\n' +
     '    physical description.\n' +
     '  </li><li>\n' +
-    '    Scribe presently defines no way to add additional types of armor\n' +
-    '    because of all the extra information that would need to be\n' +
-    '    specified&#151;arcane spell failure percentage, AC bonus, max\n' +
-    '    dexterity bonus, skill check penalty, etc.\n' +
+    '    Animal companion feats, skills, and tricks are not supported\n' +
     '  </li><li>\n' +
     '    Scribe has problems dealing with attributes containing an\n' +
     '    uncapitalized word.  This is why, e.g., Scribe defines the skills\n' +
@@ -4949,9 +4956,6 @@ Pathfinder.ruleNotes = function() {
     '    Hand" and "Knowledge (arcana)".  There are other occasions when\n' +
     '    Scribe is picky about case; when defining your own attributes,\n' +
     '    it\'s safest to follow the conventions Scribe uses.\n' +
-    '  </li><li>\n' +
-    '    The customRule interface is not very intuitive, making it more\n' +
-    '    confusing to add new rules than it should be.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n' +
@@ -4960,18 +4964,14 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    Scribe adds the dexterity modifier to attack throws for all\n' +
-    '    weapons of characters with the Weapon Finesse feat, not just\n' +
-    '    light weapons.\n' +
-    '  </li><li>\n' +
     '    Scribe incorrectly validates the Mystic Theurge requirement of\n' +
     '    being able to cast 2nd-level arcane and divine spells.  It checks\n' +
     '    that the character is caster level 3 in each catetory, whereas\n' +
     '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
     '    spells until a higher caster level.\n' +
     '  </li><li>\n' +
-    '    Scribe lists the fly speed for a 9th-level Dragon Disciple as 30\n' +
-    '    instead of the correct 60.\n'+
+    '    Scribe lists the fly speed for a 9th-level Dragon Disciple as\n' +
+    "    30' instead of the correct 60'.\n" +
     '  </li><li>\n' +
     '    When an character ability score is modified, Scribe recalculates\n' +
     '    attributes based on that ability from scratch.  For example,\n' +
