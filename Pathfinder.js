@@ -82,7 +82,7 @@ function Pathfinder() {
   rules.defineChoice('factions', Pathfinder.FACTIONS);
   rules.defineChoice('random', 'faction');
   rules.defineEditorElement
-    ('faction', 'Faction', 'select-one', 'factions', 'levels');
+    ('faction', 'Faction', 'select-one', 'factions', 'experience');
   rules.defineSheetElement('Faction', 'Alignment');
 
 }
