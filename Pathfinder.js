@@ -80,10 +80,14 @@ function Pathfinder() {
     ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
 
   rules.defineChoice('factions', Pathfinder.FACTIONS);
+  rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineChoice('random', 'faction');
   rules.defineEditorElement
     ('faction', 'Faction', 'select-one', 'factions', 'experience');
+  rules.defineEditorElement
+    ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
   rules.defineSheetElement('Faction', 'Alignment');
+  rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
 
 }
 
@@ -302,6 +306,7 @@ Pathfinder.SUBSKILLS = {
   'Perform':'Act/Comedy/Dance/Keyboard/Oratory/Percussion/Sing/String/Wind',
   'Profession':''
 };
+Pathfinder.TRACKS = ['Slow', 'Medium', 'Fast'];
 Pathfinder.TRAITS = [
   // Advanced Player's Guide
   'Anatomist:Combat', 'Armor Expert:Combat', 'Bullied:Combat',
@@ -391,6 +396,24 @@ Pathfinder.armorsArmorClassBonuses = {
   'Breastplate': 6, 'Splint Mail': 7, 'Banded Mail': 7, 'Half Plate': 8,
   'Full Plate': 9
 };
+Pathfinder.tracksThreshholds = {
+  '3.5':[
+    0, 1, 3, 6, 10, 15, 21, 28, 36, 45,
+    55, 66, 78, 91, 105, 120, 136, 153, 171, 190
+  ],
+  'Fast':[
+    0, 1.3, 3.3, 6, 10, 15, 23, 34, 50, 71,
+    105, 145, 210, 295, 425, 600, 850, 1200, 1700, 2400
+  ],
+  'Medium':[
+    0, 2, 5, 9, 15, 23, 35, 51, 75, 105,
+    155, 220, 315, 445, 635, 890, 1300, 1800, 2550, 3600
+  ],
+  'Slow':[
+    0, 3, 7.5, 14, 23, 35, 53, 77, 115, 160,
+    235, 330, 475, 665, 955, 1350, 1900, 2700, 3850, 5350
+  ]
+};
 Pathfinder.spellsSchools = Object.assign({}, SRD35.spellsSchools, {
   'Beast Shape I':'Transmutation',
   'Beast Shape II':'Transmutation',
@@ -427,11 +450,16 @@ Pathfinder.abilityRules = function(rules) {
 /* Defines the rules related to character classes. */
 Pathfinder.classRules = function(rules, classes, bloodlines) {
 
-  // TODO Temporary use of SRD35 experience calculations
-  rules.defineRule
-    ('experienceNeeded', 'level', '=', '1000 * source * (source + 1) / 2');
+  // TODO Our rule engine doesn't support indexing into an array. Here, we work
+  // around this limitation by defining rules that set a global array as a side
+  // effect, then indexing into that array.
+  rules.defineRule('experienceNeeded',
+    'level', '=', 'Pathfinder.tracksThreshholds["Current"] ? Pathfinder.tracksThreshholds["Current"][source] * 1000 : null'
+  );
   rules.defineRule('level',
-    'experience', '=', 'Math.floor((1 + Math.sqrt(1 + source / 125)) / 2)'
+    '', '=', '(Pathfinder.tracksThreshholds["Current"] = Pathfinder.tracksThreshholds["Medium"]) ? 1 : 1',
+    'experienceTrack', '=', '(Pathfinder.tracksThreshholds["Current"] = Pathfinder.tracksThreshholds[source]) ? 1 : 1',
+    'experience', '=', 'Pathfinder.tracksThreshholds["Current"] ? Pathfinder.tracksThreshholds["Current"].findIndex(item => item * 1000 > source) : 1'
   );
 
   // Level-dependent attributes
