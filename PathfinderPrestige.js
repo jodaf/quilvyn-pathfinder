@@ -225,7 +225,8 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.trueDeathFeature:' +
           'Raising victim requires DC %V <i>Remove Curse</i> or ' +
           'DC %1 caster level check',
-        'combatNotes.uncannyDodgeFeature:Always adds dexterity modifier to AC',
+        'combatNotes.uncannyDodgeFeature:' +
+          'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
         'featureNotes.poisonUseFeature:' +
           'No chance of self-poisoning when applying to blade',
         'saveNotes.poisonToleranceFeature:+%V vs. poison',
