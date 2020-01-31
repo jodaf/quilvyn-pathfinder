@@ -604,6 +604,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'features.Small', '=', '"1d3"'
       );
       rules.defineRule('combatNotes.animalFuryFeature.1',
+        'features.Animal Fury', '?', null,
         'strengthModifier', '=', 'Math.floor(source / 2)'
       );
       rules.defineRule('combatNotes.knockbackFeature',
@@ -624,6 +625,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Barbarian', '=', '1 + Math.floor(source / 6)'
       );
       rules.defineRule('combatNotes.rollingDodgeFeature.1',
+        'features.Rolling Dodge', '?', null,
         'constitutionModifier', '=', 'Math.max(1, source)'
       );
       rules.defineRule('combatNotes.strengthSurgeFeature',
@@ -644,6 +646,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Barbarian', '=', 'Math.floor(source / 4)'
       );
       rules.defineRule('magicNotes.renewedVigorFeature.1',
+        'features.Renewed Vigor', '?', null,
         'constitutionModifier', '=', 'source + 2'
       );
       rules.defineRule('selectableFeatureCount.Barbarian',
@@ -861,10 +864,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
       );
       rules.defineRule('magicNotes.channelEnergyFeature.1',
+        'features.Channel Energy', '?', null,
         'levels.Cleric', '+=', '10 + Math.floor(source / 2)',
         'charismaModifier', '+', null
       );
       rules.defineRule('magicNotes.channelEnergyFeature.2',
+        'features.Channel Energy', '?', null,
         'charismaModifier', '=', '3 + source'
       );
 
@@ -1216,7 +1221,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('skillNotes.highJumpFeature', 'levels.Monk', '=', null);
       rules.defineRule('speed', 'abilityNotes.fastMovementFeature', '+', null);
-      rules.defineRule('weaponDamage.Unarmed',
+      rules.defineRule('monkUnarmedDamage',
         'levels.Monk', '=',
         'source < 12 ? ("d" + (6 + Math.floor(source / 4) * 2)) : ' +
         '              ("2d" + (6 + Math.floor((source - 12) / 4) * 2))'
@@ -1307,6 +1312,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule
         ('combatNotes.smiteEvilFeature.1', 'levels.Paladin', '=', null);
       rules.defineRule('combatNotes.smiteEvilFeature.2',
+        'features.Smite Evil', '?', null,
         'charismaModifier', '=', 'source > 0 ? source : 0'
       );
       rules.defineRule('combatNotes.smiteEvilFeature.3',
@@ -1858,6 +1864,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
           );
           rules.defineRule('magicNotes.acidicRayFeature.1',
+            'features.Acidic Ray', '?', null,
             'charismaModifier', '=', '1 + source'
           );
           rules.defineRule('saveNotes.alienResistanceFeature',
@@ -1893,11 +1900,16 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             'clawsDamageLevel', '=',
             '["1d3", "1d4", "1d6", "1d8"][source]'
           );
-          rules.defineRule
-            ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
-          rules.defineRule
-            ('combatNotes.clawsFeature.2', 'charismaModifier', '=', 'source+3');
+          rules.defineRule('combatNotes.clawsFeature.1',
+            'features.Claws', '?', null,
+            'strengthModifier', '=', null
+          );
+          rules.defineRule('combatNotes.clawsFeature.2',
+            'features.Claws', '?', null,
+            'charismaModifier', '=', 'source+3'
+          );
           rules.defineRule('combatNotes.clawsFeature.3',
+            'features.Claws', '?', null,
             bloodlineLevelAttr, '=',
             'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 energy"'
           );
@@ -1979,6 +1991,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
           );
           rules.defineRule('magicNotes.heavenlyFireFeature.1',
+            'features.Heavenly Fire', '?', null,
             'charismaModifier', '=', '1 + source'
           );
           rules.defineRule('saveNotes.celestialResistancesFeature',
@@ -2013,6 +2026,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule('magicNotes.touchOfDestinyFeature.1',
+            'features.Touch Of Destiny', '?', null,
             'wisdomModifier', '=', 'source + 3'
           );
           rules.defineRule('saveNotes.fatedFeature',
@@ -2212,6 +2226,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule('magicNotes.corruptingTouchFeature.1',
+            'features.Corrupting Touch', '?', null,
             'charismaModifier', '=', 'source + 3'
           );
           rules.defineRule('saveNotes.infernalResistancesFeature',
@@ -2253,6 +2268,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule('magicNotes.graveTouchFeature.1',
+            'features.Grave Touch', '?', null,
             'charismaModifier', '=', 'source + 3'
           );
           rules.defineRule('magicNotes.incorporealFormFeature',
@@ -2342,6 +2358,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'intelligenceModifier', '+', null
       );
       rules.defineRule('combatNotes.handOfTheApprenticeFeature.1',
+        'features.Hand Of The Apprentice', '?', null,
         'intelligenceModifier', '=', 'source + 3'
       );
       rules.defineRule('familiarWizardLevel',
@@ -2425,6 +2442,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
           );
           rules.defineRule('magicNotes.protectiveWardFeature.1',
+            'features.Protective Ward', '?', null,
             'intelligenceModifier', '=', 'source + 3'
           );
           rules.defineRule('saveNotes.energyAbsorptionFeature',
@@ -2458,7 +2476,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           notes = notes.concat([
             'combatNotes.forewarnedFeature:' +
               '+%V initiative, always act in surprise round',
-            'magicNotes.diviner\'sFortuneFeature:' +
+            "magicNotes.diviner'sFortuneFeature:" +
               'Touched creature +%V attack/skill/ability/save 1 rd %1/day',
             'magicNotes.scryingAdeptFeature:' +
               'Constant <i>Detect Scrying</i>, +1 scrying subject familiarity'
@@ -2468,10 +2486,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule
             ('initiative', 'combatNote.forewarnedFeature', '+', null);
-          rules.defineRule('magicNotes.diviner\'sFortuneFeature',
+          rules.defineRule("magicNotes.diviner'sFortuneFeature",
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
-          rules.defineRule('magicNotes.diviner\'sFortuneFeature.1',
+          rules.defineRule("magicNotes.diviner'sFortuneFeature.1",
+            "magicNotes.diviner'sFortuneFeature", '?', null,
             'intelligenceModifier', '=', 'source + 3'
           );
         } else if(school == 'Enchantment') {
@@ -2491,6 +2510,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             schoolLevelAttr, '=', null
           );
           rules.defineRule('magicNotes.dazingTouchFeature.1',
+            'features.Dazing Touch', '?', null,
             'intelligenceModifier', '=', 'source + 3'
           );
           rules.defineRule('skillNotes.enchantingSmileFeature',
@@ -2512,6 +2532,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule('magicNotes.forceMissileFeature.1',
+            'features.Force Missile', '?', null,
             'intelligenceModifier', '=', 'source + 3'
           );
           rules.defineRule('magicNotes.intenseSpellsFeature',
@@ -2555,6 +2576,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
             schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
           );
           rules.defineRule('magicNotes.necromanticTouchFeature.1',
+            'features.Necromantic Touch', '?', null,
             'intelligenceModifier', '=', 'source + 3'
           );
         } else if(school == 'Transmutation') {
@@ -2978,6 +3000,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'baseAttack', '=', '1 + Math.floor(source / 4)'
       );
       rules.defineRule('combatNotes.combatExpertiseFeature.1',
+        'features.Combat Expertise', '?', null,
         'baseAttack', '=', '1 + Math.floor(source / 4)'
       );
     // } else if(feat == 'Combat Reflexes') { // as SRD35
@@ -3022,6 +3045,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'baseAttack', '=', '1 + Math.floor(source / 4)'
       );
       rules.defineRule('combatNotes.deadlyAimFeature.1',
+        'features.Deadly Aim', '?', null,
         'baseAttack', '=', '2 * (1 + Math.floor(source / 4))'
       );
     } else if(feat == 'Deadly Stroke') {
@@ -3552,6 +3576,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'baseAttack', '=', '1 + Math.floor(source / 4)'
       );
       rules.defineRule('combatNotes.powerAttackFeature.1',
+        'features.Power Attack', '?', null,
         'baseAttack', '=', '2 * (1 + Math.floor(source / 4))'
       );
     // } else if(feat == 'Precise Shot') { // as SRD35
@@ -3579,6 +3604,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'wisdomModifier', '=', null
       );
       rules.defineRule('combatNotes.scorpionStyleFeature.1',
+        'features.Scorpion Style', '?', null,
         'level', '=', '10 + Math.floor(source / 2)',
         'wisdomModifier', '+', null
       );
@@ -3749,6 +3775,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
         'wisdomModifier', '+', null
       );
       rules.defineRule('combatNotes.stunningFistFeature.1',
+        'features.Stunning Fist', '?', null,
         'level', '=', 'Math.floor(source / 4)'
       )
     } else if(feat == 'Throw Anything') {
@@ -4116,6 +4143,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule
         ('magicNotes.addlingTouchFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.addlingTouchFeature.1',
+        'Features.Addling Touch', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Community') {
@@ -4145,6 +4173,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
       );
       rules.defineRule('combatNotes.touchOfDarknessFeature.1',
+        'features.Touch Of Darkness', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('featureNotes.eyesOfDarknessFeature',
@@ -4161,6 +4190,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('combatNotes.bleedingTouchFeature.1',
+        'features.Bleeding Touch', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Destruction') {
@@ -4179,6 +4209,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('combatNotes.destructiveSmiteFeature.1',
+        'features.Destructive Smite', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Earth') {
@@ -4213,6 +4244,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('combatNotes.touchOfEvilFeature.1',
+        'features.Touch Of Evil', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Fire') {
@@ -4247,6 +4279,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule
         ('magicNotes.touchOfGloryFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.touchOfGloryFeature.1',
+        'features.Touch Of Glory', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Good') {
@@ -4266,6 +4299,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.touchOfGoodFeature.1',
+        'magicNotes.touchOfGoodFeature', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Healing') {
@@ -4355,9 +4389,11 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.visionOfMadnessFeature.1',
+        'features.Vision Of Madness', '?', null,
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.visionOfMadnessFeature.2',
+        'features.Vision Of Madness', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Magic') {
@@ -4371,6 +4407,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'wisdomModifier', '+', null
       );
       rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
+        'features.Hand Of The Acolyte', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('magicNotes.dispellingTouchFeature',
@@ -4392,6 +4429,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.inspiringWordFeature.1',
+        'features.Inspiring Word', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Plant') {
@@ -4410,6 +4448,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('combatNotes.woodenFistFeature.1',
+        'features.Wooden Fist', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Protection') {
@@ -4449,8 +4488,10 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       ];
       rules.defineRule
         ('magicNotes.gentleRestFeature', 'wisdomModifier', '=', 'source + 3');
-      rules.defineRule
-        ('magicNotes.gentleRestFeature.1', 'wisdomModifier', '=', null);
+      rules.defineRule('magicNotes.gentleRestFeature.1',
+        'features.Gentle Rest', '?', null,
+        'wisdomModifier', '=', null
+      );
       rules.defineRule('magicNotes.wardAgainstDeathFeature',
         'levels.Cleric', '=', 'source >= 8 ? source : null'
       );
@@ -4464,9 +4505,11 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule
         ('magicNotes.blastRuneFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.blastRuneFeature.1',
+        'features.Blast Rune', '?', null,
         'levels.Cleric', '=', 'Math.floor(source / 2)'
       );
       rules.defineRule('magicNotes.blastRuneFeature.2',
+        'features.Blast Rune', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Strength') {
@@ -4485,6 +4528,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('magicNotes.strengthRushFeature.1',
+        'features.Strength Rush', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
     } else if(domain == 'Sun') {
@@ -4526,6 +4570,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
       rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.copycatFeature.1',
+        'Features.Copycat', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('magicNotes.master\'sIllusionFeature',
@@ -4544,6 +4589,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
       rules.defineRule('combatNotes.battleRageFeature.1',
+        'features.Battle Rage', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('combatNotes.weaponMasterFeature',
@@ -4810,7 +4856,10 @@ Pathfinder.raceRules = function(rules, languages, races) {
         '"<i>Dancing Lights</i>/<i>Ghost Sound</i>/<i>Prestidigitation</i>/' +
         '<i>Speak With Animals</i>"'
       );
-      rules.defineRule('magicNotes.naturalSpellsFeature.1', 'level', '=', null);
+      rules.defineRule('magicNotes.naturalSpellsFeature.1',
+        'Features.Natural Spells', '?', null,
+        'level', '=', null
+      );
       rules.defineRule('meleeAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule('rangedAttack', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
@@ -5714,8 +5763,10 @@ Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
     'classSkillBump.' + name, '+', null
   );
   rules.defineNote('skills.' + name + ':(%1%2) %V (%3)');
-  rules.defineRule('skills.' + name + '.1', '', '=', '"' + ability + '"');
+  rules.defineRule
+    ('skills.' + name + '.1', 'skills.' + name, '=', '"' + ability + '"');
   rules.defineRule('skills.' + name + '.2',
+    'skills.' + name, '?', '1',
     '', '=', '";cc"',
     'classSkills.' + name, '=', '""'
   );

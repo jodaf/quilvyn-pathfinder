@@ -342,9 +342,11 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'levels.Dragon Disciple', '+=', 'source >= 3 ? 1 : null'
       );
       rules.defineRule('combatNotes.dragonBiteFeature.1',
+        'features.Dragon Bite', '?', null,
         'strengthModifier', '=', 'Math.floor(source * 1.5)'
       );
       rules.defineRule('combatNotes.dragonBiteFeature.2',
+        'features.Dragon Bite', '?', null,
         'levels.Dragon Disciple', '=', 'source >= 6 ? ", d6 energy" : ""'
       );
       rules.defineRule('combatNotes.dragonDiscipleArmorClassAdjustment',
