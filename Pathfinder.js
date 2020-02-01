@@ -4993,10 +4993,6 @@ Pathfinder.ruleNotes = function() {
     '    affects only the Gnome Hooked Hammer, where Scribe displays a\n' +
     '    critical multiplier of x4 instead of x3/x4.\n' +
     '  </li><li>\n' +
-    '    Scribe provides no place other than the notes section to enter\n' +
-    '    mundane possessions like lanterns and rope. The same goes for\n' +
-    '    physical description.\n' +
-    '  </li><li>\n' +
     '    Animal companion feats, skills, and tricks are not supported\n' +
     '  </li><li>\n' +
     '    Scribe has problems dealing with attributes containing an\n' +
