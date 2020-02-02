@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.5.1.0beta';
+var PATHFINDER_VERSION = '1.5.1.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -34,7 +34,7 @@ function Pathfinder() {
     return;
   }
 
-  var rules = new ScribeRules('Pathfinder', PATHFINDER_VERSION);
+  var rules = new ScribeRules('Pathfinder 1E', PATHFINDER_VERSION);
   rules.defineChoice('preset', 'race', 'level', 'levels');
   rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
   rules.editorElements = SRD35.initialEditorElements();
