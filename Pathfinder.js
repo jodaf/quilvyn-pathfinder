@@ -1225,6 +1225,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       // Here, we work around this limitation by defining rules that set global
       // values as a side effect, then use these values in our calculations.
       rules.defineRule('monkUnarmedDamage',
+        'monkFeatures.Flurry Of Blows', '?', null, // Limit these rules to monks
         'levels.Monk', '=',
           'SRD35.weaponsSmallDamage["monk"] = ' +
           'SRD35.weaponsLargeDamage["monk"] = ' +
@@ -4865,7 +4866,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         '<i>Speak With Animals</i>"'
       );
       rules.defineRule('magicNotes.naturalSpellsFeature.1',
-        'Features.Natural Spells', '?', null,
+        'features.Natural Spells', '?', null,
         'level', '=', null
       );
       rules.defineRule('meleeAttack', 'combatNotes.smallFeature', '+', '1');
