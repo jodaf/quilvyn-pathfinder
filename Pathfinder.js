@@ -2070,7 +2070,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule
             ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
-          // NOTE: No bonus to CMB
+          // NOTE: No bonus to CMD
           rules.defineRule('clawsDamageLevel',
             'features.Claws', '=', '1',
             'features.Small', '+', '-1',
@@ -3123,7 +3123,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ]
     } else if(feat == 'Dodge') {
       notes = [
-        'combatNotes.dodgeFeature:+1 AC, CMB vs. chosen foe',
+        'combatNotes.dodgeFeature:+1 AC, CMD vs. chosen foe',
         'validationNotes.dodgeFeatAbility:Requires Dexterity >= 13'
       ];
       rules.defineRule('armorClass', 'combatNotes.dodgeFeature', '+', '1');
@@ -3306,7 +3306,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       rules.defineRule('armorClass',
         'combatNotes.greaterShieldFocusFeature', '+', '1'
       );
-      // NOTE: No bonus to CMB
+      // NOTE: No bonus to CMD
     // } else if((matchInfo = feat.match(/^Greater Spell Focus \((.*)\)$/))!=null){ // as SRD35
     // } else if(feat == 'Greater Spell Penetration') { // as SRD35
     } else if(feat == 'Greater Sunder') {
@@ -3659,7 +3659,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
       rules.defineRule
         ('armorClass', 'combatNotes.shieldFocusFeature', '+', '1');
-      // NOTE: No bonus to CMB
+      // NOTE: No bonus to CMD
     } else if(feat == 'Shield Master') {
       notes = [
         'combatNotes.shieldMasterFeature:' +
@@ -3730,7 +3730,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       );
     } else if(feat == 'Stand Still') {
       notes = [
-        'combatNotes.standStillFeature:CMD check to halt foe movement',
+        'combatNotes.standStillFeature:CMB check to halt foe movement',
         'validationNotes.standStillFeatFeatures:Requires Combat Reflexes'
       ];
     } else if(feat == 'Stealthy') {
@@ -4836,7 +4836,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'abilityNotes.slowFeature:-10 speed',
         'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
         'combatNotes.gnomeHatredFeature:+1 attack vs. goblinoid/reptilian',
-        'combatNotes.smallFeature:+1 AC/attack, -1 CMD/CMB',
+        'combatNotes.smallFeature:+1 AC/attack, -1 CMB/CMD',
         'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
         'magicNotes.gnomeMagicFeature:+1 DC on illusion spells',
         'magicNotes.naturalSpellsFeature:%V 1/day as caster %1',
@@ -4885,7 +4885,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       ];
       notes = [
         'abilityNotes.slowFeature:-10 speed',
-        'combatNotes.smallFeature:+1 AC/attack, -1 CMD/CMB',
+        'combatNotes.smallFeature:+1 AC/attack, -1 CMB/CMD',
         'saveNotes.fearlessFeature:+2 vs. fear',
         'saveNotes.halflingLuckFeature:+1 all saves',
         'skillNotes.keenSensesFeature:+2 Perception',
@@ -5293,10 +5293,11 @@ Pathfinder.traitRules = function(rules, traits) {
       notes = ['combatNotes.exileFeature:+2 Initiative'];
       rules.defineRule('initiative', 'combatNotes.exileFeature', '+', '2');
     } else if(trait == 'Expert Duelist') {
-      notes = ['combatNotes.expertDuelistFeature:+1 AC vs. single foe'];
+      notes = ['combatNotes.expertDuelistFeature:+1 AC, CMD vs. single foe'];
       rules.defineRule
-        ('armorClass', 'combatNotes.expertDuelestFeature', '+', '1');
-      // NOTE: No bonus to CMB
+        ('armorClass', 'combatNotes.expertDuelistFeature', '+', '1');
+      rules.defineRule
+        ('combatManeuverDefense', 'combatNotes.expertDuelistFeature', '+', '1');
     } else if(trait == 'Explorer') {
       notes = ['skillNotes.explorerFeature:+1 Survival'];
       rules.defineRule
