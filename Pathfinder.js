@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.5.1.1';
+var PATHFINDER_VERSION = '1.5.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -515,7 +515,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.greaterRageFeature:+6 strength/constitution, +3 Will',
         'combatNotes.guardedStanceFeature:+%V AC during rage',
         'combatNotes.improvedUncannyDodgeFeature:' +
-          'Flanked only by rogue four levels higher',
+          'Cannot be flanked, sneak attack only by rogue level %V+',
         'combatNotes.knockbackFeature:' +
           'Successful Bull Rush during rage %V HP',
         'combatNotes.mightyRageFeature:+8 strength/constitution, +4 Will',
@@ -665,6 +665,17 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule
         ('skillNotes.ragingSwimmerFeature', 'levels.Barbarian', '=', null);
       rules.defineRule('speed', 'abilityNotes.fastMovementFeature', '+', null);
+      rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
+        'barbarianFeatures.Uncanny Dodge', '?', null,
+        'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+      );
+      rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+        'levels.Barbarian', '+=', 'source >= 2 ? source : null',
+        '', '+', '4'
+      );
+      rules.defineRule('uncannyDodgeSources',
+        'levels.Barbarian', '+=', 'source >= 2 ? 1 : null'
+      );
 
     } else if(klass == 'Bard') {
 
@@ -1560,7 +1571,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.defensiveRollFeature:' +
           'DC damage Reflex save vs. lethal blow for half',
         'combatNotes.improvedUncannyDodgeFeature:' +
-          'Flanked only by rogue four levels higher',
+          'Cannot be flanked, sneak attack only by rogue level %V+',
         'combatNotes.masterStrikeFeature:' +
           'Sneak attack target DC %V Fortitude or sleep/paralyze/die',
         'combatNotes.opportunistFeature:AOO vs. foe struck by ally',
@@ -1684,6 +1695,17 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'features.Rogue Weapon Training', '=', '-1',
         /feats.Weapon Focus/, '+', '1',
         '', 'v', '0'
+      );
+      rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
+        'rogueFeatures.Uncanny Dodge', '?', null,
+        'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+      );
+      rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+        'levels.Rogue', '+=', 'source >= 4 ? source : null',
+        '', '+', '4'
+      );
+      rules.defineRule('uncannyDodgeSources',
+        'levels.Rogue', '+=', 'source >= 4 ? 1 : null'
       );
 
     } else if(klass == 'Sorcerer') {

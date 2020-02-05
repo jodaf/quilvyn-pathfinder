@@ -216,7 +216,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
           'Foe DC %V fortitude save on successful sneak attack after 3 ' +
           'rd of study or die/paralyzed d6+%1 rd',
         'combatNotes.improvedUncannyDodgeFeature:' +
-          'Flanked only by rogue four levels higher',
+          'Cannot be flanked, sneak attack only by rogue level %V+',
         'combatNotes.quietDeathFeature:' +
           'Stealth check to perform Death Attack unnoticed',
         'combatNotes.sneakAttackFeature:' +
@@ -274,6 +274,17 @@ PathfinderPrestige.classRules = function(rules, classes) {
       );
       rules.defineRule
         ('skillNotes.hiddenWeaponFeature', 'levels.Assassin', '=', null);
+      rules.defineRule('assassinFeatures.Improved Uncanny Dodge',
+        'assassinFeatures.Uncanny Dodge', '?', null,
+        'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+      );
+      rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+        'levels.Assassin', '+=', 'source >= 2 ? source : null',
+        '', '+', '4'
+      );
+      rules.defineRule('uncannyDodgeSources',
+        'levels.Assassin', '+=', 'source >= 2 ? 1 : null'
+      );
 
     } else if(klass == 'Dragon Disciple') {
 
@@ -775,7 +786,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.defensiveRollFeature:' +
           'DC damage Reflex save vs. lethal blow for half damage',
         'combatNotes.improvedUncannyDodgeFeature:' +
-          'Flanked only by rogue four levels higher',
+          'Cannot be flanked, sneak attack only by rogue level %V+',
         'combatNotes.shadowMasterFeature:' +
            'DR 10/-, critical hit blinds d6 rd in dim light',
         'combatNotes.uncannyDodgeFeature:' +
@@ -852,6 +863,17 @@ PathfinderPrestige.classRules = function(rules, classes) {
       );
       rules.defineRule('selectableFeatureCount.Shadowdancer',
         'levels.Shadowdancer', '+=', 'Math.floor(source / 3)'
+      );
+      rules.defineRule('shadowdancerFeatures.Improved Uncanny Dodge',
+        'shadowdancerFeatures.Uncanny Dodge', '?', null,
+        'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+      );
+      rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+        'levels.Shadowdancer', '+=', 'source >= 2 ? source : null',
+        '', '+', '4'
+      );
+      rules.defineRule('uncannyDodgeSources',
+        'levels.Shadowdancer', '+=', 'source >= 2 ? 1 : null'
       );
 
     } else
