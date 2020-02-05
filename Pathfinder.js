@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.5.1.0';
+var PATHFINDER_VERSION = '1.5.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -38,7 +38,7 @@ function Pathfinder() {
   rules.defineChoice('preset', 'race', 'level', 'levels');
   rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
   rules.editorElements = SRD35.initialEditorElements();
-  rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
+  rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
   rules.makeValid = SRD35.makeValid;
   rules.ruleNotes = Pathfinder.ruleNotes;
   Pathfinder.viewer = new ObjectViewer();
@@ -5739,7 +5739,7 @@ Pathfinder.traitRules = function(rules, traits) {
   rules.defineEditorElement('traits', 'Traits', 'fset', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
 
-}
+};
 
 /*
  * A convenience function that adds #name# to the list of known skills in
@@ -5800,4 +5800,23 @@ Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
       rules.defineRule('classSkills.' + name, 'levels.'+classes[i], '=', '1');
   }
 
-}
+};
+
+/* Sets #attributes#'s #attribute# attribute to a random value. */
+Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
+  SRD35.randomizeOneAttribute.apply(this, [attributes, attribute]);
+  if(attribute == 'levels') {
+    // Set experience track and override SRD3.5's experience value
+    var track = attributes.experienceTrack;
+    if(!track)
+      track = attributes.experienceTrack = 'Fast';
+    var level = ScribeUtils.sumMatching(attributes, /levels\./);
+    if(!level)
+      level = 1;
+    if(level < Pathfinder.tracksThreshholds[track].length) {
+      var min = Pathfinder.tracksThreshholds[track][level - 1] * 1000;
+      var max = Pathfinder.tracksThreshholds[track][level] * 1000 - 1;
+      attributes.experience = ScribeUtils.random(min, max);
+    }
+  }
+};
