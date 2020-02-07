@@ -34,7 +34,7 @@ function Pathfinder() {
     return;
   }
 
-  var rules = new ScribeRules('Pathfinder 1E', PATHFINDER_VERSION);
+  var rules = new QuilvynRules('Pathfinder 1E', PATHFINDER_VERSION);
   rules.defineChoice('preset', 'race', 'level', 'levels');
   rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
   rules.editorElements = SRD35.initialEditorElements();
@@ -65,7 +65,7 @@ function Pathfinder() {
   SRD35.spellRules
     (rules, null, Object.assign({}, SRD35.spellsDescriptions, Pathfinder.spellsDescriptions));
   Pathfinder.traitRules(rules, Pathfinder.TRAITS);
-  Scribe.addRuleSet(rules);
+  Quilvyn.addRuleSet(rules);
   Pathfinder.rules = rules;
 
   // For now, at least, allow direct entry of favored class hit/skill points
@@ -4972,8 +4972,8 @@ Pathfinder.raceRules = function(rules, languages, races) {
 /* Returns HTML body content for user notes associated with this rule set. */
 Pathfinder.ruleNotes = function() {
   return '' +
-    '<h2>Pathfinder Scribe Module Notes</h2>\n' +
-    'Pathfinder Scribe Module Version ' + PATHFINDER_VERSION + '\n' +
+    '<h2>Pathfinder Quilvyn Module Notes</h2>\n' +
+    'Pathfinder Quilvyn Module Version ' + PATHFINDER_VERSION + '\n' +
     '<h3>Usage Notes</h3>\n' +
     '<p>\n' +
     '<ul>\n' +
@@ -4987,11 +4987,11 @@ Pathfinder.ruleNotes = function() {
     '    The armor class of characters with the Dodge feat includes a +1\n' +
     '    bonus that applies only to one foe at a time.\n' +
     '  </li><li>\n' +
-    '    For purposes of computing strength damage bonuses, Scribe assumes\n' +
+    '    For purposes of computing strength damage bonuses, Quilvyn assumes\n' +
     '    that characters with a buckler wield their weapons one-handed and\n' +
     '    that characters with no buckler or shield wield with both hands.\n' +
     '  </li><li>\n' +
-    '    Scribe assumes that masterwork composite bows are specially built\n' +
+    '    Quilvyn assumes that masterwork composite bows are specially built\n' +
     '    to allow a strength damage bonus to be applied.\n' +
     '  </li><li>\n' +
     '    A few feats have been renamed to emphasize the relationship\n' +
@@ -5024,19 +5024,19 @@ Pathfinder.ruleNotes = function() {
     '    You can only select each feat once. Multiple selections of feats\n' +
     '    that allow it can be managed by defining custom feats.\n' +
     '  </li><li>\n' +
-    '    Scribe doesn\'t support double weapons where the two attacks have\n' +
+    '    Quilvyn doesn\'t support double weapons where the two attacks have\n' +
     '    different critical mutipliers. In the predefined weapons this\n' +
-    '    affects only the Gnome Hooked Hammer, where Scribe displays a\n' +
+    '    affects only the Gnome Hooked Hammer, where Quilvyn displays a\n' +
     '    critical multiplier of x4 instead of x3/x4.\n' +
     '  </li><li>\n' +
     '    Animal companion feats, skills, and tricks are not supported\n' +
     '  </li><li>\n' +
-    '    Scribe has problems dealing with attributes containing an\n' +
-    '    uncapitalized word.  This is why, e.g., Scribe defines the skills\n' +
+    '    Quilvyn has problems dealing with attributes containing an\n' +
+    '    uncapitalized word.  This is why, e.g., Quilvyn defines the skills\n' +
     '    "Sleight Of Hand" and "Knowledge (Arcana)" instead of "Sleight of\n' +
     '    Hand" and "Knowledge (arcana)".  There are other occasions when\n' +
-    '    Scribe is picky about case; when defining your own attributes,\n' +
-    '    it\'s safest to follow the conventions Scribe uses.\n' +
+    '    Quilvyn is picky about case; when defining your own attributes,\n' +
+    '    it\'s safest to follow the conventions Quilvyn uses.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n' +
@@ -5045,19 +5045,19 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    Scribe incorrectly validates the Mystic Theurge requirement of\n' +
+    '    Quilvyn incorrectly validates the Mystic Theurge requirement of\n' +
     '    being able to cast 2nd-level arcane and divine spells.  It checks\n' +
     '    that the character is caster level 3 in each catetory, whereas\n' +
     '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
     '    spells until a higher caster level.\n' +
     '  </li><li>\n' +
-    '    Scribe lists the fly speed for a 9th-level Dragon Disciple as\n' +
+    '    Quilvyn lists the fly speed for a 9th-level Dragon Disciple as\n' +
     "    30' instead of the correct 60'.\n" +
     '  </li><li>\n' +
-    '    When an character ability score is modified, Scribe recalculates\n' +
+    '    When an character ability score is modified, Quilvyn recalculates\n' +
     '    attributes based on that ability from scratch.  For example,\n' +
     '    bumping intelligence when a character reaches fourth level causes\n' +
-    '    Scribe to recompute the number of skill points awarded at first\n' +
+    '    Quilvyn to recompute the number of skill points awarded at first\n' +
     '    level.\n' +
     '  </li>\n' +
     '</ul>\n' +
@@ -5837,13 +5837,13 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
     var track = attributes.experienceTrack;
     if(!track)
       track = attributes.experienceTrack = 'Fast';
-    var level = ScribeUtils.sumMatching(attributes, /levels\./);
+    var level = QuilvynUtils.sumMatching(attributes, /levels\./);
     if(!level)
       level = 1;
     if(level < Pathfinder.tracksThreshholds[track].length) {
       var min = Pathfinder.tracksThreshholds[track][level - 1] * 1000;
       var max = Pathfinder.tracksThreshholds[track][level] * 1000 - 1;
-      attributes.experience = ScribeUtils.random(min, max);
+      attributes.experience = QuilvynUtils.random(min, max);
     }
   }
 };
