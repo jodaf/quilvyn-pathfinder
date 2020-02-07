@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.5.1.2';
+var PATHFINDER_VERSION = '1.5.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -1385,7 +1385,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('animalCompanion.Celestial',
         'companionMasterLevelPaladin', '^=', 'source < 11 ? null : 1'
       );
-      rules.defineRule('animalCompanionNotes.SR',
+      rules.defineRule('companionFeatures.Companion Resist Spells',
+        'companionMasterLevelPaladin', '=', 'source >= 15 ? 1 : null'
+      );
+      rules.defineRule
+        ('companionStats.Int', 'companionMasterLevelPaladin', '^', '6');
+      rules.defineRule('companionStats.SR',
         'companionMasterLevelPaladin', '^=', 'source >= 15 ? source + 11 : null'
       );
 
