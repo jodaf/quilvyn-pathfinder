@@ -1,8 +1,8 @@
-## Pathfinder plugin for Quilvyn RPG character sheet generator
+## Pathfinder plugin for the Quilvyn RPG character sheet generator
 
 The quilvyn-pathfinder package bundles modules that extend Quilvyn to work with
-the Pathfinder RPG, applying the rules of the
-<a href="http://paizo.com/pathfinderRPG/prd/">Pathfinder Reference Document</a>.
+the First Edition Pathfinder RPG, applying the rules of the
+<a href="http://legacy.aonprd.com/">Pathfinder 1E Reference Document</a>.
 
 ### Requirements
 
@@ -13,7 +13,9 @@ quilvyn-core package.
 
 To use quilvyn-pathfinder, unbundle the release package into a plugins/
 subdirectory within the Quilvyn installation directory, then add or uncomment
-the 'plugins/Pathfinder.js' entry in the PLUGINS definition in quilvyn.html.
+the 'plugins/Pathfinder.js' entry in the PLUGINS definition in quilvyn.html. An
+entry for 'plugins/PathfinderPrestige.js' can also be added or uncommented to
+use the prestige classes from the campaign setting rulebook. 
 
 ### Usage
 
