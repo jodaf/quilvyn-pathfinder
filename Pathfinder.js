@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.0';
+var PATHFINDER_VERSION = '1.6.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -94,29 +94,75 @@ function Pathfinder() {
 // Arrays of choices
 // Attack, Dam, AC include all modifiers
 Pathfinder.ANIMAL_COMPANIONS = {
-  'Ape': 'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7',
-  'Badger': 'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10',
-  'Bear': 'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6',
-  'Boar': 'Attack=2 AC=18 Dam=1d6+1 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4',
-  'Camel': 'Attack=3 AC=13 Dam=1d4+4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4',
-  'Cheetah': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
-  'Constrictor': 'Attack=2 AC=15 Dam=1d3+2 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2',
-  'Crocodile': 'Attack=3 AC=17 Dam=1d6+2 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2',
-  'Deinonychus': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
-  'Dog': 'Attack=2 AC=16 Dam=1d4+1 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6',
-  'Eagle': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Hawk': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Horse': 'Attack=2 AC=14 Dam=2@1d6+3,1d4+3 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6',
-  'Leopard': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6',
-  'Lion': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
-  'Owl': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6',
-  'Pony': 'Attack=1 AC=13 Dam=2@1d3+1 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4',
-  'Shark': 'Attack=2 AC=17 Dam=1d4+1 Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2',
-  'Small Viper': 'Attack=0 AC=16 Dam=1d3-1 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2',
-  'Tiger': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10',
-  'Velociraptor': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14',
-  'Wolf': 'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6'
+  'Ape': 'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 Size=M',
+  'Badger': 'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 Size=S',
+  'Bear': 'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Boar': 'Attack=2 AC=18 Dam=1d6+1 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4 Size=S',
+  'Camel': 'Attack=3 AC=13 Dam=1d4+4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4 Size=L',
+  'Cheetah': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Constrictor': 'Attack=2 AC=15 Dam=1d3+2 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2 Size=M',
+  'Crocodile': 'Attack=3 AC=17 Dam=1d6+2 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2 Size=S',
+  'Deinonychus': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
+  'Dog': 'Attack=2 AC=16 Dam=1d4+1 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6 Size=S',
+  'Eagle': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Hawk': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Horse': 'Attack=2 AC=14 Dam=2@1d6+3,1d4+3 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6 Size=L',
+  'Leopard': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Lion': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
+  'Owl': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Pony': 'Attack=1 AC=13 Dam=2@1d3+1 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4 Size=M',
+  'Shark': 'Attack=2 AC=17 Dam=1d4+1 Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2 Size=S',
+  'Tiger': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
+  'Velociraptor': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
+  'Viper': 'Attack=0 AC=16 Dam=1d3-1 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2 Size=S',
+  'Wolf': 'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 Size=M'
 };
+Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
+  'Advanced Ape': Pathfinder.ANIMAL_COMPANIONS['Ape'] +
+    ' Level=4 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=14',
+  'Advanced Badger': Pathfinder.ANIMAL_COMPANIONS['Badger'] +
+    ' Level=4 Size=M Attack=2 AC=14 Dam=2@1d4+2,1d6+2 Str=14 Dex=15 Con=17',
+  'Advanced Bear': Pathfinder.ANIMAL_COMPANIONS['Bear'] +
+    ' Level=4 Size=M Attac=4 AC=13 Dam=2@1d4+4,1d6+4 Str=19 Dex=13 Con=15',
+  'Advanced Boar': Pathfinder.ANIMAL_COMPANIONS['Boar'] +
+    ' Level=4 Size=M Attack=3 AC=16 Dam=1d8+3 Str=17 Dex=10 Con=17',
+  'Advanced Camel': Pathfinder.ANIMAL_COMPANIONS['Camel'] +
+    ' Level=4 Attack=4 AC=13 Dam=1d4+5 Str=20 Con=19',
+  'Advanced Cheetah': Pathfinder.ANIMAL_COMPANIONS['Cheetah'] +
+    ' Level=4 Size=M Attack=3 AC=15 Dam=2@1d3+3,1d6+3 Str=16 Dex=19 Con=15',
+  'Advanced Constrictor': Pathfinder.ANIMAL_COMPANIONS['Constrictor'] +
+    ' Level=4 Size=L Attack=5 AC=12 Dam=1d4+6 Str=23 Dex=15 Con=17',
+  'Advanced Crocodile': Pathfinder.ANIMAL_COMPANIONS['Crocodile'] +
+    ' Level=4 Size=M Attack=4 AC=15 Dam=1d8+4 Str=19 Dex=12 Con=17',
+  'Advanced Deinonychus': Pathfinder.ANIMAL_COMPANIONS['Deinonychus'] +
+    ' Level=7 Size=M Attack=2 AC=14 Dam=2@1d8+2,1d6+2,2@1d4+2 Str=15 Dex=15 Con=15',
+  'Advanced Dog': Pathfinder.ANIMAL_COMPANIONS['Dog'] +
+    ' Level=4 Size=L Attack=3 AC=14 Dam=1d6+3 Str=17 Dex=15 Con=17',
+  'Advanced Eagle': Pathfinder.ANIMAL_COMPANIONS['Eagle'] +
+    ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
+  'Advanced Hawk': Pathfinder.ANIMAL_COMPANIONS['Hawk'] +
+    ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
+  'Advanced Horse': Pathfinder.ANIMAL_COMPANIONS['Horse'] +
+    ' Level=4 Attack=3 AC=14 Dam=2@1d6+4,1d4+4 Str=18 Con=17',
+  'Advanced Leopard': Pathfinder.ANIMAL_COMPANIONS['Leopard'] +
+    ' Level=4 Size=M Attack=3 AC=15 Dam=2@1d3+3,1d6+3 Str=16 Dex=19 Con=15',
+  'Advanced Lion': Pathfinder.ANIMAL_COMPANIONS['Lion'] +
+    ' Level=7 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=17',
+  'Advanced Owl': Pathfinder.ANIMAL_COMPANIONS['Owl'] +
+    ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
+  'Advanced Pony': Pathfinder.ANIMAL_COMPANIONS['Pony'] +
+    ' Level=4 Attack=2 AC=13 Dam=2@1d3+2 Str=15 Con=14',
+  'Advanced Shark': Pathfinder.ANIMAL_COMPANIONS['Shark'] +
+    ' Level=4 Size=M Attack=3 AC=11 Dam=1d6+3 Str=17 Dex=13 Con=17',
+  'Advanced Tiger': Pathfinder.ANIMAL_COMPANIONS['Tiger'] +
+    ' Level=7 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=17',
+  'Advanced Velociraptor': Pathfinder.ANIMAL_COMPANIONS['Velociraptor'] +
+    ' Level=7 Size=M Attack=2 AC=14 Dam=2@1d8+2,1d6+2,2@1d4+2 Str=15 Dex=15 Con=15',
+  'Advanced Viper': Pathfinder.ANIMAL_COMPANIONS['Viper'] +
+    ' Level=4 Size=M, Attack=1 AC=15 Dam=1d4+1 Str=12 Dex=15 Con=13',
+  'Advanced Wolf': Pathfinder.ANIMAL_COMPANIONS['Wolf'] +
+    ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
+});
 Pathfinder.BLOODLINES = [
   'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
   'Draconic (Blue)', 'Draconic (Green)', 'Draconic (Red)', 'Draconic (White)',
@@ -160,29 +206,29 @@ Pathfinder.FACTIONS = [
 ];
 // Attack, Dam, AC include all modifiers
 Pathfinder.FAMILIARS = {
-  'Bat': 'Attack=6 HD=1 AC=16 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5',
-  'Cat': 'Attack=4 HD=1 AC=14 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7',
-  'Hawk': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7',
-  'Lizard': 'Attack=4 HD=1 AC=14 Dam=1d4-4 Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2',
-  'Monkey': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
-  'Owl': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6',
-  'Rat': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2',
-  'Raven': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7',
-  'Toad': 'Attack=0 HD=1 AC=15 Dam=0 Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4',
-  'Tiny Viper': 'Attack=5 HD=1 AC=16 Dam=1d2-2 Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2',
-  'Weasel': 'Attack=4 HD=1 AC=15 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5',
+  'Bat': 'Attack=6 HD=1 AC=16 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5 Size=D',
+  'Cat': 'Attack=4 HD=1 AC=14 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7 Size=T',
+  'Hawk': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7 Size=T',
+  'Lizard': 'Attack=4 HD=1 AC=14 Dam=1d4-4 Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2 Size=T',
+  'Monkey': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5 Size=T',
+  'Owl': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6 Size=T',
+  'Rat': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2 Size=T',
+  'Raven': 'Attack=4 HD=1 AC=14 Dam=1d3-4 Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7 Size=T',
+  'Toad': 'Attack=0 HD=1 AC=15 Dam=0 Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4 Size=D',
+  'Viper': 'Attack=5 HD=1 AC=16 Dam=1d2-2 Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2 Size=T',
+  'Weasel': 'Attack=4 HD=1 AC=15 Dam=1d3-4 Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5 Size=T',
 
-  'Air Elemental': 'Attack=6 HD=2 AC=17 Dam=1d4+1 Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 Level=5',
-  'Dire Rat': 'Attack=1 HD=1 AC=14 Dam=1d4 Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 Level=3',
-  'Earth Elemental': 'Attack=6 HD=2 AC=17 Dam=1d6+4 Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 Level=5',
-  'Fire Elemental': 'Attack=4 HD=2 AC=16 Dam=1d4 Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 Level=5',
-  'Homunculus': 'Attack=3 HD=2 AC=14 Dam=1d4-1 Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 Level=7',
-  'Imp': 'Attack=8 HD=3 AC=17 Dam=1d4 Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 Level=7',
-  'Mephit': 'Attack=5 HD=3 AC=17 Dam=1d3+1 Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 Level=7',
-  'Pseudodragon': 'Attack=6 HD=2 AC=16 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7',
-  'Quasit': 'Attack=7 HD=3 AC=16 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7',
-  'Stirge': 'Attack=7 HD=1 AC=16 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5',
-  'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5',
+  'Air Elemental': 'Attack=6 HD=2 AC=17 Dam=1d4+1 Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 Level=5 Size=S',
+  'Dire Rat': 'Attack=1 HD=1 AC=14 Dam=1d4 Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 Level=3 Size=S',
+  'Earth Elemental': 'Attack=6 HD=2 AC=17 Dam=1d6+4 Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 Level=5 Size=S',
+  'Fire Elemental': 'Attack=4 HD=2 AC=16 Dam=1d4 Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 Level=5 Size=S',
+  'Homunculus': 'Attack=3 HD=2 AC=14 Dam=1d4-1 Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 Level=7 Size=T',
+  'Imp': 'Attack=8 HD=3 AC=17 Dam=1d4 Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 Level=7 Size=T',
+  'Mephit': 'Attack=5 HD=3 AC=17 Dam=1d3+1 Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 Level=7 Size=S',
+  'Pseudodragon': 'Attack=6 HD=2 AC=16 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7 Size=T',
+  'Quasit': 'Attack=7 HD=3 AC=16 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7 Size=T',
+  'Stirge': 'Attack=7 HD=1 AC=16 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5 Size=M',
+  'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5 Size=T',
 
   'Celestial': 'Level=3',
   'Fiendish': 'Level=3'
@@ -2729,11 +2775,6 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
   SRD35.companionRules(rules, companions, familiars);
 
   if(companions != null) {
-    var notes = [
-      'companionStats.Skills:%V',
-      'companionStats.Feats:%V'
-    ];
-    rules.defineNote(notes);
     // Overrides SRD35 HD calculation
     rules.defineRule('companionStats.HD',
       'companionLevel', '=', 'null',
@@ -2748,10 +2789,14 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
       'companionMasterLevel', '=',
       'source + 1 - Math.floor((source + 1) / 4)'
     );
+    rules.defineRule('companionBAB',
+      'features.Animal Companion', '?', null,
+      'companionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
+    );
   }
 
   if(familiars != null) {
-    notes = [
+    var notes = [
       'skillNotes.companionAlertnessFeature:' +
         '+2 Perception, Sense Motive when companion w/in reach',
       'skillNotes.familiarBat:+3 Fly',
@@ -2763,7 +2808,38 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
     delete rules.choices['notes']['skillNotes.familiarCat'];
     rules.defineNote(notes);
     rules.defineRule('skillNotes.familiarMonkey', 'familiar.Monkey', '=', '1');
+    rules.defineRule('familiarMaxDexOrStr',
+      'features.Familiar', '?', null,
+      'companionStats.Dex', '=', null,
+      'companionStats.Str', '^', null
+    );
+    rules.defineRule('familiarBAB',
+      'features.Familiar', '?', null,
+      'baseAttack', '=', null
+    );
   }
+
+  rules.defineRule('tinyCompanionCMBAbility',
+    'companionStats.Size', '?', 'source == "T" || source == "D"',
+    'companionStats.Dex', '=', null
+  );
+  rules.defineRule('companionCMBAbility',
+    'companionStats.Str', '=', null,
+    'tinyCompanionCMBAbility', '=', null
+  );
+  rules.defineRule('companionStats.CMB',
+    'companionBAB', '=', null,
+    'familiarBAB', '=', null,
+    'companionCMBAbility', '+', 'Math.floor((source - 10) / 2)',
+    'companionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('companionStats.CMD',
+    'companionBAB', '=', 'source + 10',
+    'familiarBAB', '=', 'source + 10',
+    'companionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
+    'companionStats.Str', '+', 'Math.floor((source - 10) / 2)',
+    'companionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
 
 };
 
