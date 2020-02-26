@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.1';
+var PATHFINDER_VERSION = '1.6.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -2780,6 +2780,19 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
       'companionLevel', '=', 'null',
       'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
     );
+    rules.defineRule('companionMasterLevelsUntilAdvance',
+      'companionStats.Adv', '=', null,
+      'companionMasterLevel', '+', '-source'
+    );
+    rules.defineRule('companionStats.AC',
+      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 1 : null'
+    );
+    rules.defineRule('companionStats.Con',
+      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
+    );
+    rules.defineRule('companionStats.Dex',
+      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
+    );
     rules.defineRule('companionStats.Feats',
       'companionMasterLevel', '=',
       'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
@@ -2793,6 +2806,15 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
       'features.Animal Companion', '?', null,
       'companionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
     );
+    for(var companion in companions) {
+      var matchInfo = companions[companion].match(/Level=(\d+)/);
+      if(!companion.startsWith('Advanced ') || !matchInfo)
+        continue;
+      var baseCompanion = companion.replace('Advanced ', '');
+      rules.defineRule('companionStats.Adv',
+        'animalCompanion.' + baseCompanion, '=', matchInfo[1]
+      );
+    }
   }
 
   if(familiars != null) {
