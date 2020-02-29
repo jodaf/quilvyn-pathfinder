@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.3';
+var PATHFINDER_VERSION = '1.6.1.4';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -455,6 +455,28 @@ Pathfinder.tracksThreshholds = {
     0, 3, 7.5, 14, 23, 35, 53, 77, 115, 160,
     235, 330, 475, 665, 955, 1350, 1900, 2700, 3850, 5350
   ]
+};
+Pathfinder.spellsDescriptions = {
+  "Beast Shape I": "Become small (+2 Dex/+1 AC) or medium (+2 Str/+2 AC) animal for $L min",
+  "Beast Shape II": "Become tiny (+4 Dex/-2 Str/+1 AC) or large (+4 Str/-2 Dex/+4 AC) animal for $L min",
+  "Beast Shape III": "Become dimunitive (+6 Dex/-4 Str/+1 AC) or huge (+6 Str/-4 Dex/+6 AC) animal or small (+4 Dex/+2 AC) or medium (+4 Str/+4 AC) magical beast for $L min",
+  "Beast Shape IV": "Become tiny (+8 Dex/-2 Str/+3 AC) or large (+6 Str/-2 Dex/+2 Con/+6 AC) magical beast for $L min",
+  "Bleed": "R$RS' Stabilized target resume dying (Will neg)",
+  "Breath Of Life": "Heal 5d8+$L/max 25 plus resurrect target dead lt 1 rd",
+  "Elemental Body I": "Become small air (+2 Dex/+2 AC/fly 60'/whirlwind), earth (+2 Str/+4 AC/earth glide), fire (+2 Dex/+2 AC/resist fire/burn), water (+2 Con/+4 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision for $L min",
+  "Elemental Body II": "Become medium air (+4 Dex/+3 AC/fly 60'/whirlwind), earth (+4 Str/+5 AC/earth glide), fire (+4 Dex/+3 AC/resist fire/burn), water (+4 Con/+5 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision for $L min",
+  "Elemental Body III": "Become large air (+2 Str/+4 Dex/+4 AC/fly 60'/whirlwind), earth (+6 Str/-2 Dex/+2 Con/+6 AC/earth glide), fire (+4 Dex/+2 Con/+4 AC/resist fire/burn), water (+2 Str/-2 Dex/+6 Con/+6 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision/immune bleed, critical, sneak attack for $L min",
+  "Elemental Body IV": "Become huge air (+4 Str/+6 Dex/+4 AC/fly 120'/whirlwind), earth (+8 Str/-2 Dex/+4 Con/+6 AC/earth glide), fire (+6 Dex/+4 Con/+4 AC/resist fire/burn), water (+4 Str/-2 Dex/+8 Con/+6 AC/swim 120'/vortex/breathe water) elemental, 60' darkvision/immune bleed, critical, sneak attack/DR 5/- for $L min",
+  "Form Of The Dragon I": "Become Medium dragon (+4 Str/+2 Con/+4 AC/Fly 60'/Darkvision 60'/breath weapon once 6d8 HP (Ref half)/element resistance/bite 1d8 HP/claws 2x1d6 HP/wings 2x1d4 HP) for $L min",
+  "Form Of The Dragon II": "Become Large dragon (+6 Str/+4 Con/+6 AC/Fly 90'/Darkvision 60'/breath weapon twice 8d8 HP (Ref half)/element resistance/bite 2d6 HP/claws 2x1d8 HP/wings 2x1d6 HP) for $L min",
+  "Form Of The Dragon III": "Become Huge dragon (+10 Str/+8 Con/+8 AC/Fly 120'/Blindsense 60'/Darkvision 120'/breath weapon 1/d4 rd 12d8 HP (Ref half)/element immunity/bite 2d8 HP/claws 2x2d6 HP/wings 2x1d8 HP/tail 2d6 HP) for $L min",
+  "Giant Form I": "Become large giant (+6 Str/-2 Dex/+4 Con/+4 AC/low-light vision/form abilities) for $L min",
+  "Giant Form II": "Become huge giant (+8 Str/-2 Dex/+6 Con/+6 AC/low-light vision/form abilities) for $L min",
+  "Greater Polymorph": "Willing target becomes animal/elemental/plant/dragon for $L min",
+  "Plant Shape I": "Become small (+2 Con/+2 AC) or medium (+2 Str/+2 Con/+2 AC) plant creature for $L min",
+  "Plant Shape II": "Become large (+4 Str/+2 Con/+4 AC) plant creature for $L min",
+  "Plant Shape III": "Become huge (+8 Str/-2 Dex/+4 Con/+6 AC) plant creature for $L min",
+  "Stabilize": "R$RS' Stabilize dying target"
 };
 Pathfinder.spellsSchools = Object.assign({}, SRD35.spellsSchools, {
   'Beast Shape I':'Transmutation',
