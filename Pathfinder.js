@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.2';
+var PATHFINDER_VERSION = '1.6.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -228,11 +228,7 @@ Pathfinder.FAMILIARS = {
   'Pseudodragon': 'Attack=6 HD=2 AC=16 Dam=1d3-2,1d2-2 Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 Level=7 Size=T',
   'Quasit': 'Attack=7 HD=3 AC=16 Dam=1d3-1,1d4-1 Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 Level=7 Size=T',
   'Stirge': 'Attack=7 HD=1 AC=16 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5 Size=M',
-  'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5 Size=T',
-
-  'Celestial': 'Level=3',
-  'Fiendish': 'Level=3'
-
+  'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5 Size=T'
 };
 Pathfinder.FEATS = [
   'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
