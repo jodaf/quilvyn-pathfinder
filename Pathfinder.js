@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.4';
+var PATHFINDER_VERSION = '1.6.1.5';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -62,7 +62,7 @@ function Pathfinder() {
   Pathfinder.magicRules
     (rules, SRD35.CLASSES, SRD35.DOMAINS.concat(Pathfinder.DOMAINS_ADDED),
      SRD35.SCHOOLS);
-  SRD35.spellRules
+  Pathfinder.spellRules
     (rules, null, Object.assign({}, SRD35.spellsDescriptions, Pathfinder.spellsDescriptions));
   Pathfinder.traitRules(rules, Pathfinder.TRAITS);
   Quilvyn.addRuleSet(rules);
@@ -5084,6 +5084,25 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
 };
 
+/* Replaces spell names with longer descriptions on the character sheet. */
+Pathfinder.spellRules = function(rules, spells, descriptions) {
+  SRD35.spellRules(rules, spells, descriptions);
+  var notes = rules.getChoices('notes');
+  // SRD35 uses wisdomModifier when calculating the save DC for Paladin
+  // spells; in Pathfinder we override to use charismaModifier.
+  for(var note in notes) {
+    var matchInfo = note.match(/^spells.*\(P([\d+])/);
+    if(!matchInfo)
+      continue;
+    var level = matchInfo[1];
+    matchInfo = notes[note].match(/\(DC %(\d+)/);
+    if(!matchInfo)
+      continue;
+    rules.defineRule(note + '.' + matchInfo[1],
+      'charismaModifier', '=', '10 + source + ' + level
+    );
+  }
+};
 
 /* Returns HTML body content for user notes associated with this rule set. */
 Pathfinder.ruleNotes = function() {
