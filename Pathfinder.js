@@ -4568,7 +4568,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
           'Touch imparts +%V attack, save, or skill, -%1 others 3 rd %2/day'
       ];
       rules.defineRule
-        ('magicNotes.auraOfMadnessFeature.V', 'levels.Cleric', '=', null);
+        ('magicNotes.auraOfMadnessFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.visionOfMadnessFeature',
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
