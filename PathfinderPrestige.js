@@ -732,6 +732,9 @@ PathfinderPrestige.classRules = function(rules, classes) {
       spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
+      rules.defineRule('casterLevels.B',
+        'levels.Pathfinder Chronicler', '+=', 'source < 3 ? null : source'
+      );
       rules.defineRule('featureNotes.bardicPerformanceFeature',
         'levels.Pathfinder Chronicler', '+=', '2 + 2 * (source - 2)',
         'charismaModifier', '+', null
@@ -792,11 +795,11 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'combatNotes.uncannyDodgeFeature:' +
           'Never flat-footed, adds dexterity modifier to AC vs. invisible foe',
         "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
-        'magicNotes.shadowCallFeature:DC %V <i>Shadow Conjuration</i> %1/day',
-        'magicNotes.shadowIllusionFeature:DC %V <i>Silent Image</i> %1/day',
+        'magicNotes.shadowCallFeature:<i>Shadow Conjuration</i> %V/day',
+        'magicNotes.shadowIllusionFeature:<i>Silent Image</i> %V/day',
         'magicNotes.shadowJumpFeature:' +
            '<i>Dimension Door</i> between shadows %V feet/day',
-        'magicNotes.shadowPowerFeature:DC %V <i>Shadow Evocation</i> %1/day',
+        'magicNotes.shadowPowerFeature:<i>Shadow Evocation</i> %V/day',
         'magicNotes.summonShadowFeature:' +
           'Summon unturnable Shadow companion with ' +
           '%V HP, character attack/save, +4 will vs. channeled energy',
@@ -834,29 +837,23 @@ PathfinderPrestige.classRules = function(rules, classes) {
       spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
+      rules.defineRule('casterLevels.W',
+        'levels.Shadowdancer', '+=', 'source < 3 ? null : source'
+      );
       rules.defineRule('featureNotes.darkvisionFeature',
         'shadowdancerFeatures.Darkvision', '+=', '60'
       );
       rules.defineRule('magicNotes.shadowCallFeature',
-        'charismaModifier', '=', '14 + source'
-      );
-      rules.defineRule('magicNotes.shadowCallFeature.1',
         'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 1'
       );
       rules.defineRule('magicNotes.shadowIllusionFeature',
-        'charismaModifier', '=', '11 + source'
-      );
-      rules.defineRule('magicNotes.shadowIllusionFeature.1',
         'levels.Shadowdancer', '=', 'Math.floor(source / 2)'
       );
       rules.defineRule('magicNotes.shadowJumpFeature',
         'levels.Shadowdancer', '=', '40 * Math.pow(2, Math.floor(source/2)-2)'
       );
       rules.defineRule('magicNotes.shadowPowerFeature',
-        'charismaModifier', '=', '15 + source'
-      );
-      rules.defineRule('magicNotes.shadowPowerFeature.1',
-        'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 3'
+        'levels.Shadowdancer', '=', 'source < 8 ? null : source < 10 ? 1 : 2'
       );
       rules.defineRule('magicNotes.summonShadowFeature',
         'hitPoints', '=', 'Math.floor(source / 2)'
