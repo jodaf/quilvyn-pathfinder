@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.5';
+var PATHFINDER_VERSION = '1.6.1.6';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -828,7 +828,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'B5:13:1/14:2/15:3/17:4/19:5',
         'B6:16:1/17:2/18:3/19:4/20:5'
       ];
-      rules.defineRule('casterLevelArcane', 'levels.Bard', '+=', null);
+      rules.defineRule('casterLevels.B',
+        'levels.Bard', '+=', null,
+        'magicNotes.casterLevelBonusFeature', '+', null
+      );
+      rules.defineRule('casterLevelArcane', 'casterLevels.B', '+=', null);
       rules.defineRule('featureNotes.bardicPerformanceFeature',
         'levels.Bard', '+=', '2 + 2 * source',
         'charismaModifier', '+', null
@@ -933,7 +937,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'levels.Cleric', '=',
           'source >= ' + (j * 2 - 1) + ' ? 1 : null');
       }
-      rules.defineRule('casterLevelDivine', 'levels.Cleric', '+=', null);
+      rules.defineRule('casterLevels.C',
+        'levels.Cleric', '+=', null,
+        'magicNotes.casterLevelBonusFeature', '+', null
+      );
+      rules.defineRule('casterLevels.Dom', 'casterLevels.C', '+=', null);
+      rules.defineRule('casterLevelDivine', 'casterLevels.C', '+=', null);
       rules.defineRule('domainCount', 'levels.Cleric', '+=', '2');
       rules.defineRule('magicNotes.channelEnergyFeature',
         'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
@@ -1013,7 +1022,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'D8:15:1/16:2/18:3/20:4',
         'D9:17:1/18:2/19:3/20:4'
       ];
-      rules.defineRule('casterLevelDivine', 'levels.Druid', '+=', null);
+      rules.defineRule('casterLevels.D',
+        'levels.Druid', '+=', null,
+        'magicNotes.casterLevelBonusFeature', '+', null
+      );
+      rules.defineRule('casterLevels.Dom', 'casterLevels.D', '+=', null);
+      rules.defineRule('casterLevelDivine', 'casterLevels.D', '+=', null);
       rules.defineRule('domainCount', 'features.Nature Domains', '+=', '1');
       rules.defineRule('languageCount', 'levels.Druid', '+', '1');
       rules.defineRule('languages.Druidic', 'levels.Druid', '=', '1');
@@ -1168,9 +1182,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'combatNotes.twoWeaponFightingFeature:Take -2 penalty for extra attack',
         'featureNotes.timelessBodyFeature:No aging penalties',
         'featureNotes.tongueOfTheSunAndMoonFeature:Speak w/any living creature',
-        'magicNotes.abundantStepFeature:' +
-          'Use 1 ki to <i>Dimension Door</i> at level %V',
-        'magicNotes.emptyBodyFeature:Use 1 ki for 1 minute <i>Etherealness</i>',
+        'magicNotes.abundantStepFeature:Use 2 ki to <i>Dimension Door</i>',
+        'magicNotes.emptyBodyFeature:Use 3 ki for 1 minute <i>Etherealness</i>',
         'magicNotes.wholenessOfBodyFeature:Use 2 ki to heal %V HP to self',
         'sanityNotes.monkClassArmor:Implies Armor == "None"',
         'sanityNotes.monkClassShield:Implies Shield == "None"',
@@ -1241,6 +1254,9 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       )
       rules.defineRule
         ('armorClass', 'combatNotes.monkArmorClassAdjustment', '+', null);
+      rules.defineRule('casterLevels.W',
+        'levels.Monk', '^=', 'source < 12 ? null : source'
+      );
       rules.defineRule('combatManeuverDefense',
         'combatNotes.monkArmorClassAdjustment', '+', null
       );
@@ -1278,9 +1294,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('featureNotes.kiPoolFeature',
         'levels.Monk', '=', 'Math.floor(source / 2)',
         'wisdomModifier', '+', null
-      );
-      rules.defineRule('magicNotes.abundantStepFeature',
-        'levels.Monk', '+=', 'Math.floor(source / 2)'
       );
       rules.defineRule
         ('magicNotes.wholenessOfBodyFeature', 'levels.Monk', '=', null);
@@ -1376,9 +1389,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Knowledge (Religion)', 'Profession', 'Ride', 'Sense Motive',
         'Spellcraft'
       ];
-      rules.defineRule('casterLevelDivine',
-        'levels.Paladin', '+=', 'source >= 4 ? source - 3 : null'
+      rules.defineRule('casterLevels.P',
+        'levels.Paladin', '+=', 'source < 4 ? null : source - 3',
+        'magicNotes.casterLevelBonusFeature', '+', null
       );
+      rules.defineRule('casterLevelDivine', 'casterLevels.P', '+=', null);
       rules.defineRule('combatNotes.auraOfRighteousnessFeature',
         'levels.Paladin', '=', 'source >= 20 ? 10 : 5'
       );
@@ -1572,9 +1587,14 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'R3:10:0/11:1/15:2/19:3',
         'R4:13:0/14:1/18:2/20:3'
       ];
-      rules.defineRule('casterLevelDivine',
-        'levels.Ranger', '+=', 'source >= 4 ? Math.floor(source / 2) : null'
+      rules.defineRule('casterLevels.Ranger',
+        'levels.Ranger', '+=', 'source < 4 ? null : source',
+        'magicNotes.casterLevelBonusFeature', '+', null
       );
+      rules.defineRule('casterLevels.R',
+        'casterLevels.Ranger', '=', 'Math.floor(source / 2)'
+      );
+      rules.defineRule('casterLevelDivine', 'casterLevels.R', '+=', null);
       rules.defineRule('combatNotes.favoredEnemyFeature',
         'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
       );
@@ -1677,6 +1697,8 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
            'Requires Rogue >= 10',
         'validationNotes.defensiveRollSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
+        'validationNotes.dispellingAttackSelectableFeatureFeatures:' +
+           'Requires Major Magic',
         'validationNotes.dispellingAttackSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
         'validationNotes.improvedEvasionSelectableFeatureLevels:' +
@@ -1715,14 +1737,15 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Feat Bonus', 'Improved Evasion', 'Opportunist', 'Skill Mastery',
         'Slippery Mind'
       ];
-      spellAbility = 'intelligence';
+      spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule('casterLevels.Rogue',
         'magicNotes.minorMagicFeature', '?', null,
         'levels.Rogue', '=', null
       );
-      rules.defineRule('casterLevels.W', 'casterLevels.Rogue', '=', null);
+      rules.defineRule('casterLevels.W', 'casterLevels.Rogue', '+=', null);
+      rules.defineRule('casterLevelArcane', 'casterLevels.W', '+=', null);
       rules.defineRule('combatNotes.masterStrikeFeature',
         'levels.Rogue', '+=', '10 + Math.floor(source / 2)',
         'intelligenceModifier', '+', null
@@ -1820,7 +1843,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'S8:16:3/17:4/18:5/19:6',
         'S9:18:3/19:4/20:6'
       ];
-      rules.defineRule('casterLevelArcane', 'levels.Sorcerer', '+=', null);
+      rules.defineRule('casterLevels.S',
+        'levels.Sorcerer', '+=', null,
+        'magicNotes.casterLevelBonusFeature', '+', null
+      );
+      rules.defineRule('casterLevelArcane', 'casterLevels.S', '+=', null);
       rules.defineRule
         ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
       var bloodlinePowers = {
@@ -2452,7 +2479,11 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'W9:17:1/18:2/19:3/20:4'
       ];
 
-      rules.defineRule('casterLevelArcane', 'levels.Wizard', '+=', null);
+      rules.defineRule('casterLevels.W',
+        'levels.Wizard', '+=', null,
+        'magicNotes.casterLevelBonusFeature', '+', null
+      );
+      rules.defineRule('casterLevelArcane', 'casterLevels.W', '+=', null);
       rules.defineRule('combatNotes.handOfTheApprenticeFeature',
         'baseAttack', '=', null,
         'intelligenceModifier', '+', null
@@ -4035,7 +4066,9 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
   for(var i = 0; i < classes.length; i++) {
     var klass = classes[i];
     var spells;
-    if(klass == 'Cleric') {
+    if(klass == 'Bard') {
+      spells = ['B1:Doom'];
+    } else if(klass == 'Cleric') {
       spells = [
         'C0:Bleed', 'C0:Stabilize', 'C4:Chaos Hammer', 'C4:Holy Smite',
         'C4:Order\'s Wrath', 'C4:Unholy Blight', 'C5:Breath Of Life'
@@ -4245,6 +4278,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
       rules.defineRule
         ('classSkills.Knowledge (Nature)', 'domains.Animal', '=', '1');
+      rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
     } else if(domain == 'Artifice') {
       notes = [
         'combatNotes.artificer\'sTouchFeature:' +
@@ -4262,6 +4296,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('combatNotes.dancingWeaponsFeature',
         'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
       );
+      rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
     } else if(domain == 'Chaos') {
       notes = [
         'combatNotes.chaosBladeFeature:' +
@@ -4298,6 +4333,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'Features.Addling Touch', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
+      // Charm person already a Charm spell
     } else if(domain == 'Community') {
       notes = [
         'magicNotes.calmingTouchFeature:' +
@@ -4434,6 +4470,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'features.Touch Of Glory', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
+      rules.defineChoice('spells', 'Sanctuary(Glory1 Abju)');
     } else if(domain == 'Good') {
       notes = [
         'combatNotes.holyLanceFeature:' +
@@ -4472,7 +4509,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
     } else if(domain == 'Knowledge') {
       notes = [
         'magicNotes.remoteViewingFeature:' +
-          'Level %V <i>Clairvoyance/clairaudience</i> %1 rd/day',
+          '<i>Clairaudience/Clairvoyance</i> %V rd/day',
         'skillNotes.loreKeeperFeature:' +
           'Touch attack provides info as per %V Knowledge check'
       ];
@@ -4480,12 +4517,12 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('magicNotes.remoteViewingFeature',
         'levels.Cleric', '=', 'source >= 6 ? source : null'
       );
-      rules.defineRule
-        ('magicNotes.remoteViewingFeature.1', 'levels.Cleric', '=', null);
       rules.defineRule('skillNotes.loreKeeperFeature',
         'levels.Cleric', '=', 'source + 15',
         'wisdomModifier', '+', null
       );
+      rules.defineChoice
+        ('spells', 'Clairaudience/Clairvoyance(Knowledge3 Divi)');
     } else if(domain == 'Law') {
       notes = [
         'combatNotes.staffOfOrderFeature:' +
@@ -4526,17 +4563,12 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
     } else if(domain == 'Madness') {
       notes = [
-        'magicNotes.auraOfMadnessFeature:' +
-          "DC Will %V 30' <i>Confusion</i> aura %1 rd/day",
+        "magicNotes.auraOfMadnessFeature:30' <i>Confusion</i> aura %V rd/day",
         'magicNotes.visionOfMadnessFeature:' +
           'Touch imparts +%V attack, save, or skill, -%1 others 3 rd %2/day'
       ];
-      rules.defineRule('magicNotes.auraOfMadnessFeature',
-        'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
-        'wisdomModifier', '+', null
-      );
       rules.defineRule
-        ('magicNotes.auraOfMadnessFeature.1', 'levels.Cleric', '=', null);
+        ('magicNotes.auraOfMadnessFeature.V', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.visionOfMadnessFeature',
         'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
       );
@@ -4548,6 +4580,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
         'features.Vision Of Madness', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
+      // Confusion already a Madness spell
     } else if(domain == 'Magic') {
       notes = [
         "combatNotes.handOfTheAcolyteFeature:R30' +%V w/melee weapon %1/day",
@@ -4565,6 +4598,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('magicNotes.dispellingTouchFeature',
         'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
       );
+      // Dispel Magic already a Magic spell
     } else if(domain == 'Nobility') {
       notes = [
         'featureNotes.nobleLeadershipFeature:+%V Leadership',
@@ -4731,6 +4765,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       );
       rules.defineRule
         ('magicNotes.master\'sIllusionFeature.1', 'levels.Cleric', '=', null);
+      rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
     } else if(domain == 'War') {
       notes = [
         'combatNotes.battleRageFeature:' +
@@ -4778,6 +4813,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('magicNotes.lightningLordFeature',
         'levels.Cleric', '=', 'source >= 8 ? source : null'
       );
+      // Call Lightning already a Weather spell
     } else
       continue;
     rules.defineChoice('domains', domain);
@@ -4990,6 +5026,11 @@ Pathfinder.raceRules = function(rules, languages, races) {
       ];
 
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
+      rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '^=', null);
+      rules.defineRule('casterLevels.Gnome',
+        'gnomeFeatures.Natural Spells', '?', null,
+        'level', '=', null
+      );
       rules.defineRule
         ('combatManeuverBonus', 'combatNotes.smallFeature', '+', '-1');
       rules.defineRule
@@ -5148,6 +5189,9 @@ Pathfinder.ruleNotes = function() {
     '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
     '    "Faction Freedom Fighter" to distinguish it from the halfling\n' +
     '    trait of the same name.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
+    '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n' +
