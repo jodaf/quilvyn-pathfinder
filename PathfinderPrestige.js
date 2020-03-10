@@ -732,8 +732,19 @@ PathfinderPrestige.classRules = function(rules, classes) {
       spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
-      rules.defineRule('casterLevels.B',
-        'levels.Pathfinder Chronicler', '+=', 'source < 3 ? null : source'
+      rules.defineRule('casterLevels.Doom',
+        'levels.Pathfinder Chronicler', '^=', 'source < 5 ? null : source'
+      );
+      rules.defineRule('casterLevels.Enthrall',
+        'levels.Pathfinder Chronicler', '^=', 'source < 5 ? null : source'
+      );
+      rules.defineRule('casterLevels.Suggestion',
+        'levels.Pathfinder Chronicler', '^=', 'source < 3 ? null : source'
+      );
+      // Set casterLevels.W to a minimal value so that spell DC will be
+      // calcuated even for non-Wizard Pathfinder Chroniclers.
+      rules.defineRule('casterLevels.W',
+        'levels.Pathfinder Chronicler', '=', 'source < 3 ? null : 1'
       );
       rules.defineRule('featureNotes.bardicPerformanceFeature',
         'levels.Pathfinder Chronicler', '+=', '2 + 2 * (source - 2)',
@@ -837,8 +848,25 @@ PathfinderPrestige.classRules = function(rules, classes) {
       spellAbility = null;
       spellsKnown = null;
       spellsPerDay = null;
+      rules.defineRule('casterLevels.Silent Image',
+        'levels.Shadowdancer', '^=', 'source < 3 ? null : source'
+      );
+      rules.defineRule('casterLevels.Dimennsion Door',
+        'levels.Shadowdancer', '^=', 'source < 4 ? null : source'
+      );
+      rules.defineRule('casterLevels.Greater Shadow Conjuration',
+        'levels.Shadowdancer', '^=', 'source < 10 ? null : source'
+      );
+      rules.defineRule('casterLevels.Shadow Conjuration',
+        'levels.Shadowdancer', '^=', 'source < 4 ? null : source'
+      );
+      rules.defineRule('casterLevels.Shadow Evocation Image',
+        'levels.Shadowdancer', '^=', 'source < 8 ? null : source'
+      );
+      // Set casterLevels.W to a minimal value so that spell DC will be
+      // calcuated even for non-Wizard Shadowdancers.
       rules.defineRule('casterLevels.W',
-        'levels.Shadowdancer', '+=', 'source < 3 ? null : source'
+        'levels.Shadowdancer', '=', 'source < 3 ? null : 1'
       );
       rules.defineRule('featureNotes.darkvisionFeature',
         'shadowdancerFeatures.Darkvision', '+=', '60'

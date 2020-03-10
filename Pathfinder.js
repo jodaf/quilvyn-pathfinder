@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.6.1.6';
+var PATHFINDER_VERSION = '1.6.1.7';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -829,7 +829,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'B6:16:1/17:2/18:3/19:4/20:5'
       ];
       rules.defineRule('casterLevels.B',
-        'levels.Bard', '+=', null,
+        'levels.Bard', '=', null,
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevelArcane', 'casterLevels.B', '+=', null);
@@ -938,7 +938,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'source >= ' + (j * 2 - 1) + ' ? 1 : null');
       }
       rules.defineRule('casterLevels.C',
-        'levels.Cleric', '+=', null,
+        'levels.Cleric', '=', null,
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevels.Dom', 'casterLevels.C', '+=', null);
@@ -1023,7 +1023,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'D9:17:1/18:2/19:3/20:4'
       ];
       rules.defineRule('casterLevels.D',
-        'levels.Druid', '+=', null,
+        'levels.Druid', '=', null,
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevels.Dom', 'casterLevels.D', '+=', null);
@@ -1254,9 +1254,16 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       )
       rules.defineRule
         ('armorClass', 'combatNotes.monkArmorClassAdjustment', '+', null);
-      rules.defineRule('casterLevels.W',
-        'levels.Monk', '^=', 'source < 12 ? null : source'
+      rules.defineRule('casterLevels.Dimension Door',
+        'levels.Monk', '=', 'source < 12 ? null : Math.floor(source / 2)'
       );
+      rules.defineRule('casterLevels.Etherealness',
+        'levels.Monk', '=', 'source < 19 ? null : Math.floor(source / 2)'
+      );
+      // Set casterLevels.W to a minimal value so that spell DC will be
+      // calcuated even for non-Wizard Monks.
+      rules.defineRule
+        ('casterLevels.W', 'levels.Monk', '^=', 'source < 12 ? null : 1');
       rules.defineRule('combatManeuverDefense',
         'combatNotes.monkArmorClassAdjustment', '+', null
       );
@@ -1390,7 +1397,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Spellcraft'
       ];
       rules.defineRule('casterLevels.P',
-        'levels.Paladin', '+=', 'source < 4 ? null : source - 3',
+        'levels.Paladin', '=', 'source < 4 ? null : source - 3',
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevelDivine', 'casterLevels.P', '+=', null);
@@ -1588,7 +1595,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'R4:13:0/14:1/18:2/20:3'
       ];
       rules.defineRule('casterLevels.Ranger',
-        'levels.Ranger', '+=', 'source < 4 ? null : source',
+        'levels.Ranger', '=', 'source < 4 ? null : source',
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevels.R',
@@ -1741,10 +1748,14 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       spellsKnown = null;
       spellsPerDay = null;
       rules.defineRule('casterLevels.Rogue',
-        'magicNotes.minorMagicFeature', '?', null,
+        'rogueFeatures.Minor Magic', '?', null,
         'levels.Rogue', '=', null
       );
-      rules.defineRule('casterLevels.W', 'casterLevels.Rogue', '+=', null);
+      rules.defineRule
+        ('casterLevels.Dispel Magic', 'casterLevels.Rogue', '^=', null);
+      // Set casterLevels.W to a minimal value so that spell DC will be
+      // calcuated even for non-Wizard Rogues.
+      rules.defineRule('casterLevels.W', 'casterLevels.Rogue', '^=', '1');
       rules.defineRule('casterLevelArcane', 'casterLevels.W', '+=', null);
       rules.defineRule('combatNotes.masterStrikeFeature',
         'levels.Rogue', '+=', '10 + Math.floor(source / 2)',
@@ -1844,7 +1855,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'S9:18:3/19:4/20:6'
       ];
       rules.defineRule('casterLevels.S',
-        'levels.Sorcerer', '+=', null,
+        'levels.Sorcerer', '=', null,
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevelArcane', 'casterLevels.S', '+=', null);
@@ -2480,7 +2491,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       ];
 
       rules.defineRule('casterLevels.W',
-        'levels.Wizard', '+=', null,
+        'levels.Wizard', '=', null,
         'magicNotes.casterLevelBonusFeature', '+', null
       );
       rules.defineRule('casterLevelArcane', 'casterLevels.W', '+=', null);
@@ -5026,11 +5037,21 @@ Pathfinder.raceRules = function(rules, languages, races) {
       ];
 
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
-      rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '^=', null);
       rules.defineRule('casterLevels.Gnome',
         'gnomeFeatures.Natural Spells', '?', null,
         'level', '=', null
       );
+      rules.defineRule
+        ('casterLevels.Dancing Lights', 'casterLevels.Gnome', '^=', null);
+      rules.defineRule
+        ('casterLevels.Ghost Sound', 'casterLevels.Gnome', '^=', null);
+      rules.defineRule
+        ('casterLevels.Prestidigitation', 'casterLevels.Gnome', '^=', null);
+      rules.defineRule
+        ('casterLevels.Speak With Animals', 'casterLevels.Gnome', '^=', null);
+      // Set casterLevels.B to a minimal value so that spell DC will be
+      // calcuated even for non-Bard Gnomes.
+      rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '=', '1');
       rules.defineRule
         ('combatManeuverBonus', 'combatNotes.smallFeature', '+', '-1');
       rules.defineRule
