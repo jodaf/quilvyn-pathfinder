@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.7.1.0';
+var PATHFINDER_VERSION = '1.7.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -619,21 +619,21 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.ragingLeaperFeature:+%V Acrobatic (jump) during rage',
         'skillNotes.ragingSwimmerFeature:+%V Swim during rage',
         'validationNotes.barbarianClassAlignment:Requires Alignment !~ Lawful',
-        'validationNotes.clearMindSelectableFeatureLevels:' +
+        'validationNotes.barbarian - ClearMindSelectableFeatureLevels:' +
            'Requires Barbarian >= 8',
-        'validationNotes.fearlessRangeSelectableFeatureLevels:' +
+        'validationNotes.barbarian - FearlessRageSelectableFeatureLevels:' +
            'Requires Barbarian >= 12',
-        'validationNotes.internalFortitudeSelectableFeatureLevels:' +
+        'validationNotes.barbarian - IncreasedDamageReductionSelectableFeatureLevels:' +
            'Requires Barbarian >= 8',
-        'validationNotes.increasedDamageReductionSelectableFeatureLevels:' +
+        'validationNotes.barbarian - InternalFortitudeSelectableFeatureLevels:' +
            'Requires Barbarian >= 8',
-        'validationNotes.mightySwingSelectableFeatureLevels:' +
+        'validationNotes.barbarian - MightySwingSelectableFeatureLevels:' +
            'Requires Barbarian >= 12',
-        'validationNotes.renewedVigorSelectableFeatureLevels:' +
+        'validationNotes.barbarian - RenewedVigorSelectableFeatureLevels:' +
            'Requires Barbarian >= 8',
-        'validationNotes.terrifyingHowelSelectableFeatureLevels:' +
+        'validationNotes.barbarian - TerrifyingHowlSelectableFeatureLevels:' +
            'Requires Barbarian >= 8',
-        'validationNotes.unexpectedStrikeSelectableFeatureLevels:' +
+        'validationNotes.barbarian - UnexpectedStrikeSelectableFeatureLevels:' +
            'Requires Barbarian >= 4'
       ];
       profArmor = SRD35.PROFICIENCY_MEDIUM;
@@ -1140,9 +1140,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'Catch Off-Guard', 'Combat Reflexes', 'Deflect Arrows', 'Dodge',
         'Improved Grapple', 'Scorpion Style', 'Throw Anything',
         'Gorgon\'s Fist', 'Improved Bull Rush', 'Improved Disarm',
-        'Improved Feint', 'Improved Trip', 'Mobility', 'Improved Critical',
+        'Improved Feint', 'Improved Trip', 'Mobility',
         'Medusa\'s Wrath', 'Snatch Arrows', 'Spring Attack'
       ];
+      if(Pathfinder.SUBFEATS['Improved Critical']) {
+        feats = feats.concat(Pathfinder.SUBFEATS['Improved Critical'].split('/').map(x => 'Improved Critical (' + x + ')'));
+      }
       features = [
         '1:Flurry Of Blows', '1:Improved Unarmed Strike',
         '1:Two-Weapon Fighting', '1:Stunning Fist',
@@ -1197,26 +1200,6 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           "Subtract %V' from falling damage distance",
         'saveNotes.stillMindFeature:+2 vs. enchantment',
         'skillNotes.highJumpFeature:+%V Acrobatics (jump), use 1 ki for +20',
-        'validationNotes.Gorgon\'sFistSelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.improvedBullRushSelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.improvedDisarmSelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.improvedFeintSelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.improvedTripSelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.mobilitySelectableFeatureLevels:' +
-           'Requires Monk >= 6',
-        'validationNotes.improvedCriticalSelectableFeatureLevels:' +
-           'Requires Monk >= 10',
-        'validationNotes.medusa\'sWrathSelectableFeatureLevels:' +
-           'Requires Monk >= 10',
-        'validationNotes.snatchArrowsSelectableFeatureLevels:' +
-           'Requires Monk >= 10',
-        'validationNotes.springAttackSelectableFeatureLevels:' +
-           'Requires Monk >= 10',
         'validationNotes.monkClassAlignment:Requires Alignment =~ Lawful'
       ];
       profArmor = SRD35.PROFICIENCY_NONE;
@@ -1331,17 +1314,32 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
 
       // Supress validation checking for monk feats
+      var featsMinMonkLevel = {
+        "gorgon'sFist":6,
+        'improvedBullRush':6,
+        'improvedCritical':10,
+        'improvedDisarm':6,
+        'improvedFeint':6,
+        'improvedTrip':6,
+        "medusa'sWrath":10,
+        'mobility':6,
+        'snatchArrows':10,
+        'springAttack':10
+      };
       for(var j = 0; j < feats.length; j++) {
         var featNoSpace =
           feats[j].substring(0,1).toLowerCase() + feats[j].substring(1).replace(/ /g, '');
+        var minLevel = featsMinMonkLevel[featNoSpace.startsWith('improvedCrit') ? 'improvedCritical' : featNoSpace];
+        if(!minLevel)
+          minLevel = 1;
         rules.defineRule('validationNotes.' + featNoSpace + 'FeatAbility',
-          'levels.Monk', '^', '0'
+          'levels.Monk', '^', 'source < ' + minLevel + ' ? null : 0'
         );
         rules.defineRule('validationNotes.' + featNoSpace + 'FeatBaseAttack',
-          'levels.Monk', '^', '0'
+          'levels.Monk', '^', 'source < ' + minLevel + ' ? null : 0'
         );
         rules.defineRule('validationNotes.' + featNoSpace + 'FeatFeatures',
-          'levels.Monk', '^', '0'
+          'levels.Monk', '^', 'source < ' + minLevel + ' ? null : 0'
         );
       }
 
@@ -1529,37 +1527,37 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
         'skillNotes.swiftTrackerFeature:Track at full speed',
         'skillNotes.trackFeature:+%V Survival to follow creatures\' trail',
         'skillNotes.wildEmpathyFeature:+%V Diplomacy (animals)',
-        'validationNotes.greaterTwo-WeaponFightingSelectableFeatureFeatures:' +
+        'validationNotes.ranger - GreaterTwo-WeaponFightingSelectableFeatureFeatures:' +
            'Requires Combat Style (Two-Weapon Combat)',
-        'validationNotes.greaterTwo-WeaponFightingSelectableFeatureLevels:' +
+        'validationNotes.ranger - GreaterTwo-WeaponFightingSelectableFeatureLevels:' +
            'Requires Ranger >= 10',
-        'validationNotes.improvedPreciseShotSelectableFeatureFeatures:' +
+        'validationNotes.ranger - ImprovedPreciseShotSelectableFeatureFeatures:' +
            'Requires Combat Style (Archery)',
-        'validationNotes.improvedPreciseShotSelectableFeatureLevels:' +
+        'validationNotes.ranger - ImprovedPreciseShotSelectableFeatureLevels:' +
            'Requires Ranger >= 6',
-        'validationNotes.improvedTwo-WeaponFightingSelectableFeatureFeatures:' +
+        'validationNotes.ranger - ImprovedTwo-WeaponFightingSelectableFeatureFeatures:' +
            'Requires Combat Style (Two-Weapon Combat)',
-        'validationNotes.improvedTwo-WeaponFightingSelectableFeatureLevels:' +
+        'validationNotes.ranger - ImprovedTwo-WeaponFightingSelectableFeatureLevels:' +
            'Requires Ranger >= 6',
-        'validationNotes.manyshotSelectableFeatureFeatures:' +
+        'validationNotes.ranger - ManyshotSelectableFeatureFeatures:' +
            'Requires Combat Style (Archery)',
-        'validationNotes.manyshotSelectableFeatureLevels:' +
+        'validationNotes.ranger - ManyshotSelectableFeatureLevels:' +
            'Requires Ranger >= 6',
-        'validationNotes.pinpointTargetingSelectableFeatureFeatures:' +
+        'validationNotes.ranger - PinpointTargetingSelectableFeatureFeatures:' +
            'Requires Combat Style (Archery)',
-        'validationNotes.pinpointTargetingSelectableFeatureLevels:' +
+        'validationNotes.ranger - PinpointTargetingSelectableFeatureLevels:' +
            'Requires Ranger >= 10',
-        'validationNotes.shotOnTheRunSelectableFeatureFeatures:' +
+        'validationNotes.ranger - ShotOnTheRunSelectableFeatureFeatures:' +
            'Requires Combat Style (Archery)',
-        'validationNotes.shotOnTheRunSelectableFeatureLevels:' +
+        'validationNotes.ranger - ShotOnTheRunSelectableFeatureLevels:' +
            'Requires Ranger >= 10',
-        'validationNotes.twoWeaponDefenseSelectableFeatureFeatures:' +
+        'validationNotes.ranger - Two-WeaponDefenseSelectableFeatureFeatures:' +
            'Requires Combat Style (Two-Weapon Combat)',
-        'validationNotes.twoWeaponDefenseSelectableFeatureLevels:' +
+        'validationNotes.ranger - Two-WeaponDefenseSelectableFeatureLevels:' +
            'Requires Ranger >= 6',
-        'validationNotes.twoWeaponRendSelectableFeatureFeatures:' +
+        'validationNotes.ranger - Two-WeaponRendSelectableFeatureFeatures:' +
            'Requires Combat Style (Two-Weapon Combat)',
-        'validationNotes.twoWeaponRendSelectableFeatureLevels:' +
+        'validationNotes.ranger - Two-WeaponRendSelectableFeatureLevels:' +
            'Requires Ranger >= 10'
       ];
       profArmor = SRD35.PROFICIENCY_MEDIUM;
@@ -1700,24 +1698,24 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           'Take 10 despite distraction on %V chosen skills',
         'skillNotes.trapfindingFeature:' +
           '+%V Perception (traps)/Disable Device (traps)',
-        'validationNotes.cripplingStrikeSelectableFeatureLevels:' +
+        'validationNotes.rogue - CripplingStrikeSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
-        'validationNotes.defensiveRollSelectableFeatureLevels:' +
+        'validationNotes.rogue - DefensiveRollSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
-        'validationNotes.dispellingAttackSelectableFeatureFeatures:' +
+        'validationNotes.rogue - DispellingAttackSelectableFeatureFeatures:' +
            'Requires Major Magic',
-        'validationNotes.dispellingAttackSelectableFeatureLevels:' +
+        'validationNotes.rogue - DispellingAttackSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
-        'validationNotes.improvedEvasionSelectableFeatureLevels:' +
+        'validationNotes.rogue - ImprovedEvasionSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
-        'validationNotes.majorMagicSelectableFeatureFeatures:' +
+        'validationNotes.rogue - MajorMagicSelectableFeatureFeatures:' +
            'Requires Minor Magic',
-        'validationNotes.opportunistSelectableFeatureLevels:' +
+        'validationNotes.rogue - OpportunistSelectableFeatureLevels:' +
            'Requires Rogue >= 10',
         'validationNotes.rogueWeaponTrainingFeatureFeat:Requires Weapon Focus',
-        'validationNotes.skillMasterySelectableFeatureLevels:' +
+        'validationNotes.rogue - SkillMasterySelectableFeatureLevels:' +
            'Requires Rogue >= 10',
-        'validationNotes.slipperyMindSelectableFeatureLevels:' +
+        'validationNotes.rogue - SlipperyMindSelectableFeatureLevels:' +
            'Requires Rogue >= 10'
       ];
       hitDie = 8;
