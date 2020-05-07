@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.7.1.2';
+var PATHFINDER_VERSION = '1.7.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -79,6 +79,7 @@ function Pathfinder() {
   rules.defineRule
     ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
 
+  rules.defineChoice('extras', 'feats', 'featCount');
   rules.defineChoice('factions', Pathfinder.FACTIONS);
   rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineChoice('random', 'faction');
@@ -5963,6 +5964,7 @@ Pathfinder.traitRules = function(rules, traits) {
 
   rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
+  rules.defineChoice('extras', 'traits');
 
 };
 
