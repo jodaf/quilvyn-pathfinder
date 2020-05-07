@@ -79,7 +79,7 @@ function Pathfinder() {
   rules.defineRule
     ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
 
-  rules.defineChoice('extras', 'feats', 'featCount');
+  rules.defineChoice('extras', 'feats', 'featCount', 'selectableFeatureCount');
   rules.defineChoice('factions', Pathfinder.FACTIONS);
   rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineChoice('random', 'faction');
