@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.7.1.1';
+var PATHFINDER_VERSION = '1.7.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -5961,7 +5961,7 @@ Pathfinder.traitRules = function(rules, traits) {
 
   }
 
-  rules.defineEditorElement('traits', 'Traits', 'fset', 'traits', 'skills');
+  rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
 
 };
