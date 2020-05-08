@@ -515,7 +515,7 @@ Pathfinder.abilityRules = function(rules) {
 /* Defines the rules related to character classes. */
 Pathfinder.classRules = function(rules, classes, bloodlines) {
 
-  // TODO Our rule engine doesn't support indexing into an array. Here, we work
+  // NOTE Our rule engine doesn't support indexing into an array. Here, we work
   // around this limitation by defining rules that set a global array as a side
   // effect, then indexing into that array.
   rules.defineRule('experienceNeeded',
@@ -1300,7 +1300,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       );
       rules.defineRule('skillNotes.highJumpFeature', 'levels.Monk', '=', null);
       rules.defineRule('speed', 'abilityNotes.fastMovementFeature', '+', null);
-      // TODO Our rule engine doesn't support modifying a value via indexing.
+      // NOTE Our rule engine doesn't support modifying a value via indexing.
       // Here, we work around this limitation by defining rules that set global
       // values as a side effect, then use these values in our calculations.
       rules.defineRule('monkUnarmedDamage',
