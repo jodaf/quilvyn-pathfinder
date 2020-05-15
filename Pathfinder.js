@@ -1470,12 +1470,12 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
       rules.defineRule('animalCompanion.Celestial',
         'companionMasterLevelPaladin', '^=', 'source < 11 ? null : 1'
       );
-      rules.defineRule('companionFeatures.Companion Resist Spells',
+      rules.defineRule('animalCompanionFeatures.Companion Resist Spells',
         'companionMasterLevelPaladin', '=', 'source >= 15 ? 1 : null'
       );
       rules.defineRule
-        ('companionStats.Int', 'companionMasterLevelPaladin', '^', '6');
-      rules.defineRule('companionStats.SR',
+        ('animalCompanionStats.Int', 'companionMasterLevelPaladin', '^', '6');
+      rules.defineRule('animalCompanionStats.SR',
         'companionMasterLevelPaladin', '^=', 'source >= 15 ? source + 11 : null'
       );
 
@@ -2835,42 +2835,41 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
 
   if(companions != null) {
     // Overrides SRD35 HD calculation
-    rules.defineRule('companionStats.HD',
+    rules.defineRule('animalCompanionStats.HD',
       'companionLevel', '=', 'null',
       'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
     );
     rules.defineRule('companionMasterLevelsUntilAdvance',
-      'companionStats.Adv', '=', null,
+      'animalCompanionStats.Adv', '=', null,
       'companionMasterLevel', '+', '-source'
     );
-    rules.defineRule('companionStats.AC',
+    rules.defineRule('animalCompanionStats.AC',
       'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 1 : null'
     );
-    rules.defineRule('companionStats.Con',
+    rules.defineRule('animalCompanionStats.Con',
       'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
     );
-    rules.defineRule('companionStats.Dex',
+    rules.defineRule('animalCompanionStats.Dex',
       'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
     );
-    rules.defineRule('companionStats.Feats',
+    rules.defineRule('animalCompanionStats.Feats',
       'companionMasterLevel', '=',
       'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
       'Math.floor((source + 4) / 3)'
     );
-    rules.defineRule('companionStats.Skills',
+    rules.defineRule('animalCompanionStats.Skills',
       'companionMasterLevel', '=',
       'source + 1 - Math.floor((source + 1) / 4)'
     );
     rules.defineRule('companionBAB',
-      'features.Animal Companion', '?', null,
-      'companionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
+      'animalCompanionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
     );
     for(var companion in companions) {
       var matchInfo = companions[companion].match(/Level=(\d+)/);
       if(!companion.startsWith('Advanced ') || !matchInfo)
         continue;
       var baseCompanion = companion.replace('Advanced ', '');
-      rules.defineRule('companionStats.Adv',
+      rules.defineRule('animalCompanionStats.Adv',
         'animalCompanion.' + baseCompanion, '=', matchInfo[1]
       );
     }
@@ -2891,8 +2890,8 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
     rules.defineRule('skillNotes.familiarMonkey', 'familiar.Monkey', '=', '1');
     rules.defineRule('familiarMaxDexOrStr',
       'features.Familiar', '?', null,
-      'companionStats.Dex', '=', null,
-      'companionStats.Str', '^', null
+      'familiarStats.Dex', '=', null,
+      'familiarStats.Str', '^', null
     );
     rules.defineRule('familiarBAB',
       'features.Familiar', '?', null,
@@ -2901,25 +2900,42 @@ Pathfinder.companionRules = function(rules, companions, familiars) {
   }
 
   rules.defineRule('tinyCompanionCMBAbility',
-    'companionStats.Size', '?', 'source == "T" || source == "D"',
-    'companionStats.Dex', '=', null
+    'animalCompanionStats.Size', '?', 'source == "T" || source == "D"',
+    'animalCompanionStats.Dex', '=', null
   );
   rules.defineRule('companionCMBAbility',
-    'companionStats.Str', '=', null,
-    'tinyCompanionCMBAbility', '=', null
+    'animalCompanionStats.Str', '=', null,
+    'tinyCompanionCMBAbility', '^', null
   );
-  rules.defineRule('companionStats.CMB',
+  rules.defineRule('animalCompanionStats.CMB',
     'companionBAB', '=', null,
-    'familiarBAB', '=', null,
     'companionCMBAbility', '+', 'Math.floor((source - 10) / 2)',
-    'companionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
   );
-  rules.defineRule('companionStats.CMD',
+  rules.defineRule('animalCompanionStats.CMD',
     'companionBAB', '=', 'source + 10',
+    'animalCompanionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
+    'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)',
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('tinyFamiliarCMBAbility',
+    'familiarStats.Size', '?', 'source == "T" || source == "D"',
+    'familiarStats.Dex', '=', null
+  );
+  rules.defineRule('familiarCMBAbility',
+    'familiarStats.Str', '=', null,
+    'tinyFamiliarCMBAbility', '^', null
+  );
+  rules.defineRule('familiarStats.CMB',
+    'familiarBAB', '=', null,
+    'familiarCMBAbility', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('familiarStats.CMD',
     'familiarBAB', '=', 'source + 10',
-    'companionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
-    'companionStats.Str', '+', 'Math.floor((source - 10) / 2)',
-    'companionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+    'familiarStats.Dex', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Str', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
   );
 
 };
