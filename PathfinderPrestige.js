@@ -190,11 +190,14 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'levels.Rogue', '+', 'source >= 3 ? 1 : null',
         '', 'v', '0'
       );
+      rules.defineRule
+        ('countmagehandspells', /^spells.Mage Hand\(.*\)$/, '+=', '1');
       rules.defineRule('validationNotes.arcaneTricksterClassSpells',
         'levels.Arcane Trickster', '=', '-11',
-        // NOTE: False valid w/multiple Mage Hand spells
-        /^spells\.Mage Hand/, '+=', '10',
-        /^spellsKnown\.(AS|B|S|W)3/, '+', '1',
+        'countmagehandspells', '+', '10',
+        'spellsKnown.B3', '+', '1',
+        'spellsKnown.S3', '+', '1',
+        'spellsKnown.W3', '+', '1',
         '', 'v', '0'
       );
 
@@ -537,8 +540,7 @@ PathfinderPrestige.classRules = function(rules, classes) {
         'skillNotes.instantMasteryFeature:4 ranks in untrained skill',
         'skillNotes.loreFeature:+%V all Knowledge, use any Knowledge untrained',
         'validationNotes.loremasterClassFeats:' +
-          'Requires Skill Focus in any Knowledge skill/' +
-          'any 3 metamagic or item creation',
+          'Requires Skill Focus in any Knowledge skill/any 3 Item Creation or Metamagic',
         'validationNotes.loremasterClassSkills:Requires any 2 Knowledge >= 7',
         'validationNotes.loremasterClassSpells:' +
           'Requires any 7 divination/any level 3 divination'
@@ -592,25 +594,31 @@ PathfinderPrestige.classRules = function(rules, classes) {
       rules.defineRule('skillNotes.loreFeature',
         'levels.Loremaster', '+=', 'Math.floor(source / 2)'
       );
+      rules.defineRule('countskillfocusknowledgefeats',
+        /^features.Skill Focus \(Knowledge/, '+=', '1'
+      );
       rules.defineRule('validationNotes.loremasterClassFeats',
-        'levels.Loremaster', '=', '-13',
-        // NOTE: False valid w/multiple Skill Focus (.* Knowledge) feats
-        /^features.Skill Focus.*Knowledge/, '+', '10',
-        // NOTE: False valid w/Natural Spell
-        /^features\..*Spell$/, '+', '1',
-        /^features\.(Brew|Craft|Forge|Scribe)/, '+', '1',
+        'levels.Loremaster', '=', '-103',
+        'countskillfocusknowledgefeats', '+', '100',
         '', 'v', '0'
       );
+      var feats = rules.getChoices('feats');
+      for(var feat in feats) {
+        if(feats[feat].match(/Item Creation|Metamagic/)) {
+          rules.defineRule
+            ('validationNotes.loremasterClassFeats', 'feats.' + feat, '+', '1');
+        }
+      }
       rules.defineRule('validationNotes.loremasterClassSkills',
         'levels.Loremaster', '=', '-2',
-        /^skillModifier\.Knowledge/, '+=', 'source >= 7 ? 1 : null',
+        /^skills\.Knowledge \(.*\)$/, '+=', 'source >= 7 ? 1 : null',
         '', 'v', '0'
       );
+      rules.defineRule('countdivspells', /^spells\..*Divi\)$/, '+=', '1');
       rules.defineRule('validationNotes.loremasterClassSpells',
-        'levels.Loremaster', '=', '-107',
-        // NOTE: False valid w/multiple Div3 spells
-        /^spells\..*Div3/, '+', '100',
-        /^spells\..*Div\d/, '+', '1',
+        'levels.Loremaster', '=', '-101',
+        'countdivspells', '+', 'source >= 7 ? 100 : null',
+        /^spells\..*3 Divi\)/, '+', '1',
         '', 'v', '0'
       );
 
