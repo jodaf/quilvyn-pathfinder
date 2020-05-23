@@ -2198,7 +2198,7 @@ Pathfinder.classRules = function(rules, classes, bloodlines) {
           );
           rules.defineRule
             ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
-          // NOTE No bonus to CMD
+          // No bonus to CMD
           rules.defineRule('clawsDamageLevel',
             'features.Claws', '=', '1',
             'features.Small', '+', '-1',
@@ -3506,7 +3506,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       rules.defineRule('armorClass',
         'combatNotes.greaterShieldFocusFeature', '+', '1'
       );
-      // NOTE No bonus to CMD
+      // No bonus to CMD
     // } else if((matchInfo = feat.match(/^Greater Spell Focus \((.*)\)$/))!=null){ // as SRD35
     // } else if(feat == 'Greater Spell Penetration') { // as SRD35
     } else if(feat == 'Greater Sunder') {
@@ -3859,7 +3859,7 @@ Pathfinder.featRules = function(rules, feats, subfeats) {
       ];
       rules.defineRule
         ('armorClass', 'combatNotes.shieldFocusFeature', '+', '1');
-      // NOTE No bonus to CMD
+      // No bonus to CMD
     } else if(feat == 'Shield Master') {
       notes = [
         'combatNotes.shieldMasterFeature:' +
