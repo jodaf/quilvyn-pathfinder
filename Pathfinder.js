@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.8.1.2';
+var PATHFINDER_VERSION = '1.8.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -4356,7 +4356,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule
         ('magicNotes.addlingTouchFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.addlingTouchFeature.1',
-        'Features.Addling Touch', '?', null,
+        'features.Addling Touch', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       // Charm person already a Charm spell
@@ -4782,7 +4782,7 @@ Pathfinder.magicRules = function(rules, classes, domains, schools) {
       rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
       rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
       rules.defineRule('magicNotes.copycatFeature.1',
-        'Features.Copycat', '?', null,
+        'features.Copycat', '?', null,
         'wisdomModifier', '=', 'source + 3'
       );
       rules.defineRule('magicNotes.master\'sIllusionFeature',
