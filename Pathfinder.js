@@ -175,7 +175,21 @@ Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
   'Advanced Wolf': Pathfinder.ANIMAL_COMPANIONS['Wolf'] +
     ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
 });
-Pathfinder.ARMORS = Object.assign{}, SRD35.ARMORS);
+Pathfinder.ARMORS = {
+  'None':'AC=0 Level=0 Dex=10 Skill=0 Spell=0',
+  'Padded':'AC=1 Level=1 Dex=8 Skill=0 Spell=5',
+  'Leather':'AC=2 Level=1 Dex=6 Skill=0 Spell=10',
+  'Studded Leather':'AC=3 Level=1 Dex=5 Skill=1 Spell=15',
+  'Chain Shirt':'AC=4 Level=1 Dex=4 Skill=2 Spell=20',
+  'Hide':'AC=4 Level=2 Dex=4 Skill=3 Spell=20',
+  'Scale Mail':'AC=5 Level=2 Dex=3 Skill=4 Spell=25',
+  'Chainmail':'AC=6 Level=2 Dex=2 Skill=5 Spell=30',
+  'Breastplate':'AC=5 Level=2 Dex=3 Skill=4 Spell=25',
+  'Splint Mail':'AC=7 Level=3 Dex=0 Skill=7 Spell=40',
+  'Banded Mail':'AC=7 Level=3 Dex=1 Skill=6 Spell=35',
+  'Half Plate':'AC=8 Level=3 Dex=0 Skill=7 Spell=40',
+  'Full Plate':'AC=9 Level=3 Dex=1 Skill=6 Spell=35'
+};
 Pathfinder.CLASSES = Object.assign{}, SRD35.CLASSES);
 Pathfinder.DEITIES = {
   'None':'',
@@ -266,12 +280,17 @@ Pathfinder.FEATS = {
   'Acrobatic Steps':'Type=General',
   'Agile Maneuvers':'Type=Combat',
   'Alertness':'Type=General',
-  'Alignment Channel':'Type=General',
+  'Alignment Channel (Chaos)':'Type=General',
+  'Alignment Channel (Evil)':'Type=General',
+  'Alignment Channel (Good)':'Type=General',
+  'Alignment Channel (Law)':'Type=General',
   'Animal Affinity':'Type=General',
   'Arcane Armor Mastery':'Type=Combat',
   'Arcane Armor Training':'Type=Combat',
   'Arcane Strike':'Type=Combat',
-  'Armor Proficiency':'Type=Combat',
+  'Armor Proficiency (Heavy)':'Type=Combat',
+  'Armor Proficiency (Light)':'Type=Combat',
+  'Armor Proficiency (Medium)':'Type=Combat',
   'Athletic':'Type=General',
   'Augment Summoning':'Type=General',
   'Bleeding Critical':'Type=Combat,Critical',
@@ -303,7 +322,10 @@ Pathfinder.FEATS = {
   'Disruptive':'Type=Combat',
   'Dodge':'Type=Combat',
   'Double Slice':'Type=Combat',
-  'Elemental Channel':'Type=General',
+  'Elemental Channel (Air)':'Type=General',
+  'Elemental Channel (Earth)':'Type=General',
+  'Elemental Channel (Fire)':'Type=General',
+  'Elemental Channel (Water)':'Type=General',
   'Empower Spell':'Type=Metamagic',
   'Endurance':'Type=General',
   'Enlarge Spell':'Type=Metamagic',
@@ -329,19 +351,34 @@ Pathfinder.FEATS = {
   'Greater Overrun':'Type=Combat',
   'Greater Penetrating Strike':'Type=Combat',
   'Greater Shield Focus':'Type=Combat',
-  'Greater Spell Focus':'Type=General',
+  'Greater Spell Focus (Abjuration)':
+    'Type=General Require="features.Spell Focus (Abjuration)"',
+  'Greater Spell Focus (Conjuration)':
+    'Type=General Require="features.Spell Focus (Conjuration)"',
+  'Greater Spell Focus (Divination)':
+    'Type=General Require="features.Spell Focus (Diviniation)"',
+  'Greater Spell Focus (Enchantment)':
+    'Type=General Require="features.Spell Focus (Enchantment)"',
+  'Greater Spell Focus (Evocation)':
+    'Type=General Require="features.Spell Focus (Evocation)"',
+  'Greater Spell Focus (Illusion)':
+    'Type=General Require="features.Spell Focus (Illusion)"',
+  'Greater Spell Focus (Necromancy)':
+    'Type=General Require="features.Spell Focus (Necromancy)"',
+  'Greater Spell Focus (Transmutation)':
+    'Type=General Require="features.Spell Focus (Transmutation)"',
   'Greater Spell Penetration':'Type=General',
   'Greater Sunder':'Type=Combat',
   'Greater Trip':'Type=Combat',
   'Greater Two-Weapon Fighting':'Type=Combat',
   'Greater Vital Strike':'Type=Combat',
-  'Greater Weapon Focus':'Type=Combat',
-  'Greater Weapon Specialization':'Type=Combat',
+  'Greater Weapon Focus (Longsword)':'Type=Combat',
+  'Greater Weapon Specialization (Longsword)':'Type=Combat',
   'Heighten Spell':'Type=Metamagic',
   'Improved Bull Rush':'Type=Combat',
   'Improved Channel':'Type=General',
   'Improved Counterspell':'Type=General',
-  'Improved Critical':'Type=Combat',
+  'Improved Critical (Longsword)':'Type=Combat',
   'Improved Disarm':'Type=Combat',
   'Improved Familiar':'Type=General',
   'Improved Feint':'Type=Combat',
@@ -383,7 +420,9 @@ Pathfinder.FEATS = {
   'Precise Shot':'Type=Combat',
   'Quick Draw':'Type=Combat',
   'Quicken Spell':'Type=Metamagic',
-  'Rapid Reload':'Type=Combat',
+  'Rapid Reload (Hand)':'Type=Combat',
+  'Rapid Reload (Heavy)':'Type=Combat',
+  'Rapid Reload (Light)':'Type=Combat',
   'Rapid Shot':'Type=Combat',
   'Ride By Attack':'Type=Combat',
   'Run':'Type=General',
@@ -394,14 +433,22 @@ Pathfinder.FEATS = {
   'Shatter Defenses':'Type=Combat',
   'Shield Focus':'Type=Combat',
   'Shield Master':'Type=Combat',
-  'Shield Proficiency':'Type=Combat',
+  'Shield Proficiency (Heavy)':'Type=Combat',
+  'Shield Proficiency (Tower)':'Type=Combat',
   'Shield Slam':'Type=Combat',
   'Shot On The Run':'Type=Combat',
   'Sickening Critical':'Type=Combat,Critical',
   'Silent Spell':'Type=Metamagic',
   'Skill Focus':'Type=General',
   'Snatch Arrows':'Type=Combat',
-  'Spell Focus':'Type=General',
+  'Spell Focus (Abjuration)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Conjuration)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Divination)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Enchantment)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Evocation)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Illusion)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Necromancy)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Transmutation)':'Type=General Imply="casterLevel >= 1"',
   'Spell Mastery':'Type=General',
   'Spell Penetration':'Type=General',
   'Spellbreaker':'Type=Combat',
@@ -426,9 +473,9 @@ Pathfinder.FEATS = {
   'Unseat':'Type=Combat',
   'Vital Strike':'Type=Combat',
   'Weapon Finesse':'Type=Combat',
-  'Weapon Focus':'Type=Combat',
-  'Weapon Proficiency':'Type=Combat',
-  'Weapon Specialization':'Type=Combat',
+  'Weapon Focus (Longsword)':'Type=Combat',
+  'Weapon Proficiency (Simple)':'Type=Combat',
+  'Weapon Specialization (Longsword)':'Type=Combat',
   'Whirlwind Attack':'Type=Combat',
   'Widen Spell':'Type=Metamagic',
   'Wind Stance':'Type=Combat'
@@ -487,17 +534,27 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
     'Ability=intelligence Untrained=n Class=Bard,Cleric,Monk,Paladin,Wizard',
   'Linguistics':
     'Ability=intelligence Untrained=n Class=Bard,Cleric,Rogue,Wizard',
-  'Perception':'Ability=wisdom Class=',
-  'Perform':'Ability=charisma Class=',
-  'Profession':'Ability=wisdom Untrained=n Class=',
-  'Ride':'Ability=dexterity Class=',
-  'Sense Motive':'Ability=wisdom Class=',
-  'Sleight Of Hand':'Ability=dexterity Untrained=n Class=',
-  'Spellcraft':'Ability=intelligence Untrained=n Class=',
-  'Stealth':'Ability=dexterity Class=',
-  'Survival':'Ability=wisdom Class=',
-  'Swim':'Ability=strength Class=',
-  'Use Magic Device':'Ability=charisma Untrained=n'
+  'Perception':'Ability=wisdom Class=Barbarian,Bard,Druid,Monk,Ranger,Rogue',
+  'Perform (Act)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Comedy)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Dance)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Keyboard)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Oratory)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Percussion)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Sing)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (String)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Perform (Wind)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Profession':
+    'Ability=wisdom Untrained=n Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Ride':'Ability=dexterity Class=Barbarian,Druid,Fighter,Monk,Paladin,Ranger',
+  'Sense Motive':'Ability=wisdom Class=Bard,Cleric,Monk,Paladin,Rogue',
+  'Sleight Of Hand':'Ability=dexterity Untrained=n Class=Bard,Rogue',
+  'Spellcraft':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Druid,Paladin,Ranger,Sorcerer,Wizard',
+  'Stealth':'Ability=dexterity Class=Bard,Monk,Ranger,Rogue',
+  'Survival':'Ability=wisdom Class=Barbarian,Druid,Fighter,Ranger',
+  'Swim':'Ability=strength Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
+  'Use Magic Device':'Ability=charisma Untrained=n Class=Bard,Rogue,Sorcerer'
 };
 Pathfinder.SRD35_SKILL_MAP = {
   'Balance':'Acrobatics',
@@ -515,30 +572,6 @@ Pathfinder.SRD35_SKILL_MAP = {
   'Spot':'Perception',
   'Tumble':'Acrobatics',
   'Use Rope':''
-};
-Pathfinder.SUBFEATS = {
-  'Alignment Channel':'Chaos/Evil/Good/Law',
-  'Armor Proficiency':'Heavy/Light/Medium',
-  'Elemental Channel':'Air/Earth/Fire/Water',
-  'Greater Spell Focus':SRD35.SCHOOLS.join('/').replace(/:[^\/]+/g, ''),
-  'Greater Weapon Focus':'',
-  'Greater Weapon Specialization':'',
-  'Improved Critical':'',
-  'Master Craftsman':'',
-  'Rapid Reload':'Hand/Heavy/Light',
-  'Shield Proficiency':'Heavy/Tower',
-  'Skill Focus':'',
-  'Spell Focus':SRD35.SCHOOLS.join('/').replace(/:[^\/]+/g, ''),
-  'Weapon Focus':'',
-  'Weapon Proficiency':'Simple',
-  'Weapon Specialization':'Dwarven Waraxe/Longsword'
-};
-Pathfinder.SUBSKILLS = {
-  'Craft':'',
-  'Knowledge':'Arcana/Dungeoneering/Engineering/Geography/' +
-              'History/Local/Nature/Nobility/Planes/Religion',
-  'Perform':'Act/Comedy/Dance/Keyboard/Oratory/Percussion/Sing/String/Wind',
-  'Profession':''
 };
 Pathfinder.TRACKS = ['Slow', 'Medium', 'Fast'];
 Pathfinder.TRAITS = [
@@ -615,13 +648,15 @@ Pathfinder.TRAITS = [
   'Trouper:Sczarni',
   'Performance Artist:Taldor', 'Vindictive:Taldor'
 ];
+Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
+  'Bolas':'Level=3 Category=R Damage=d4 Range=10',
 Pathfinder.WEAPONS_ADDED = [
-  'Blowgun:d2r20 Si',
-  'Elven Curve Blade:d10@18 2h Ex',
-  'Halfling Sling Staff:d8x3r80 Ex',
-  'Sai:d4 Li Ex', // removed range
-  'Starknife:d4x3r20 Li Ma'
-];
+  'Blowgun':'Level=1 Category=R Damage=d2 Range=20',
+  'Elven Curve Blade':'Level=3 Category=2h Damage=d10@18',
+  'Halfling Sling Staff':'Level=3 Category=R Damage=d8x3 Range=80',
+  'Sai':'Level=3 Category=Li Damage=d4', // removed range
+  'Starknife':'Level=2 Category=Li Damage=d4x3 Range=20'
+});
 
 Pathfinder.BLOODLINES = [
   'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
@@ -631,13 +666,6 @@ Pathfinder.BLOODLINES = [
   'Elemental (Earth)', 'Elemental (Fire)', 'Elemental (Water)', 'Fey',
   'Infernal', 'Undead'
 ];
-// Related information used internally by Pathfinder
-Pathfinder.armorsArmorClassBonuses = {
-  'None': null, 'Padded': 1, 'Leather': 2, 'Studded Leather': 3,
-  'Chain Shirt': 4, 'Hide': 4, 'Scale Mail': 5, 'Chainmail': 6,
-  'Breastplate': 6, 'Splint Mail': 7, 'Banded Mail': 7, 'Half Plate': 8,
-  'Full Plate': 9
-};
 Pathfinder.tracksThreshholds = {
   '3.5':[
     0, 1, 3, 6, 10, 15, 21, 28, 36, 45,
