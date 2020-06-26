@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '1.8.1.3';
+var PATHFINDER_VERSION = '2.0-alpha';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -35,38 +35,49 @@ function Pathfinder() {
   }
 
   var rules = new QuilvynRules('Pathfinder 1E', PATHFINDER_VERSION);
+  rules.choiceEditorElements = Pathfinder.choiceEditorElements;
+  rules.editorElements = SRD35.initialEditorElements();
+  rules.getFormats = SRD35.getFormats;
+  rules.makeValid = SRD35.makeValid;
+  rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
+  Pathfinder.createViewers(rules, SRD35.VIEWERS);
+
+  Pathfinder.abilityRules(rules);
+  Pathfinder.identityRules(
+    rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
+    Pathfinder.GENDERS, Pathfinder.RACES
+  );
+  Pathfinder.talentRules
+    (rules, Pathfinder.FEATS, Pathfinder.FEATURES,
+     Object.assign({}, SRD35.LANGUAGES, Pathfinder.LANGUAGES),
+     Pathfinder.SKILLS);
+  Pathfinder.combatRules
+    (rules, SRD35.ARMORS, SRD35.SHIELDS,
+     Object.Assign({}, SRD35.WEAPONS, Pathfinder.WEAPONS));
+  Pathfinder.magicRules(rules, Object.assign({}, SRD35.DOMAINS, Pathfinder.DOMAINS), SRD35.SCHOOLS, SRD35.SPELLS);
+  Pathfinder.aideRules(rules, SRD35.ANIMAL_COMPANIONS, SRD35.FAMILIARS);
+  Pathfinder.goodiesRules(rules);
+  rules.defineChoice('choices',
+    'armors', 'bloodlines', 'classes', 'deities', 'domains', 'familiars',
+    'feats', 'features', 'genders', 'languages', 'races', 'schools', 'shields',
+    'skills', 'spells', 'weapons'
+  );
   rules.defineChoice('preset', 'race', 'level', 'levels');
   rules.defineChoice('random', SRD35.RANDOMIZABLE_ATTRIBUTES);
-  rules.editorElements = SRD35.initialEditorElements();
-  rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
-  rules.makeValid = SRD35.makeValid;
+  Quilvyn.addRuleSet(rules);
   rules.ruleNotes = Pathfinder.ruleNotes;
-  Pathfinder.viewer = new ObjectViewer();
-  Pathfinder.createViewers(rules, SRD35.VIEWERS);
-  Pathfinder.abilityRules(rules);
-  Pathfinder.raceRules(
-    rules, SRD35.LANGUAGES.concat(Pathfinder.LANGUAGES_ADDED), SRD35.RACES
-  );
-  Pathfinder.classRules(rules, SRD35.CLASSES, Pathfinder.BLOODLINES);
+  Pathfinder.rules = rules;
+
   Pathfinder.companionRules
     (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
   Pathfinder.skillRules(rules, Pathfinder.SKILLS, Pathfinder.SUBSKILLS);
-  Pathfinder.featRules(rules, Pathfinder.FEATS, Pathfinder.SUBFEATS);
-  Pathfinder.descriptionRules
-    (rules, SRD35.ALIGNMENTS, Pathfinder.DEITIES, SRD35.GENDERS);
-  Pathfinder.equipmentRules
-    (rules, SRD35.ARMORS, SRD35.SHIELDS,
-     SRD35.WEAPONS.filter(item => !item.startsWith('Sai:')).concat(Pathfinder.WEAPONS_ADDED));
   Pathfinder.combatRules(rules);
-  Pathfinder.movementRules(rules);
   Pathfinder.magicRules
     (rules, SRD35.CLASSES, SRD35.DOMAINS.concat(Pathfinder.DOMAINS_ADDED),
      SRD35.SCHOOLS);
   Pathfinder.spellRules
     (rules, null, Object.assign({}, SRD35.spellsDescriptions, Pathfinder.spellsDescriptions));
   Pathfinder.traitRules(rules, Pathfinder.TRAITS);
-  Quilvyn.addRuleSet(rules);
-  Pathfinder.rules = rules;
 
   // For now, at least, allow direct entry of favored class hit/skill points
   rules.defineEditorElement
@@ -92,9 +103,9 @@ function Pathfinder() {
 
 }
 
-// Arrays of choices
-// Attack, Dam, AC include all modifiers
+Pathfinder.ALIGNMENTS = Object.assign({}, SRD35.ALIGNMENTS);
 Pathfinder.ANIMAL_COMPANIONS = {
+  // Attack, Dam, AC include all modifiers
   'Ape': 'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 Size=M',
   'Badger': 'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 Size=S',
   'Bear': 'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6 Size=S',
@@ -164,49 +175,68 @@ Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
   'Advanced Wolf': Pathfinder.ANIMAL_COMPANIONS['Wolf'] +
     ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
 });
-Pathfinder.BLOODLINES = [
-  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
-  'Draconic (Blue)', 'Draconic (Green)', 'Draconic (Red)', 'Draconic (White)',
-  'Draconic (Brass)', 'Draconic (Bronze)', 'Draconic (Copper)',
-  'Draconic (Gold)', 'Draconic (Silver)', 'Elemental (Air)',
-  'Elemental (Earth)', 'Elemental (Fire)', 'Elemental (Water)', 'Fey',
-  'Infernal', 'Undead'
-];
-Pathfinder.DEITIES = [
-  'None::',
-  'Erastil (LG):Longbow:Animal/Community/Good/Law/Plant',
-  'Iomedae (LG):Longsword:Glory/Good/Law/Sun/War',
-  'Torag (LG):Warhammer:Artifice/Earth/Good/Law/Protection',
-  'Sarenrae (NG):Scimitar:Fire/Glory/Good/Healing/Sun',
-  'Shelyn (NG):Glaive:Air/Charm/Good/Luck/Protection',
-  'Desna (CG):Starknife:Chaos/Good/Liberation/Luck/Travel',
-  'Cayden Cailean (CG):Rapier:Chaos/Charm/Good/Strength/Travel',
-  'Abadar (LN):Light Crossbow:Earth/Law/Nobility/Protection/Travel',
-  'Irori (LN):Unarmed:Healing/Knowledge/Law/Rune/Strength',
-  'Gozreh (N):Trident:Air/Animal/Plant/Water/Weather',
-  'Pharasma (N):Dagger:Death/Healing/Knowledge/Repose/Water',
-  'Nethys (N):Quarterstaff:Destruction/Knowledge/Magic/Protection/Rune',
-  'Gorum (CN):Greatsword:Chaos/Destruction/Glory/Strength/War',
-  'Calistria (CN):Whip:Chaos/Charm/Knowledge/Luck/Trickery',
-  'Asmodeus (LE):Mace:Evil/Fire/Law/Magic/Trickery',
-  'Zon-Kuthon (LE):Darkness/Death/Destruction/Evil/Law',
-  'Urgathoa (NE):Scythe:Death/Evil/Magic/Strength/War',
-  'Norgorber (NE):Short Sword:Charm/Death/Evil/Knowledge/Trickery',
-  'Lamashtu (CE):Falchion:Chaos/Evil/Madness/Strength/Trickery',
-  'Rovagug (CE):Greataxe:Chaos/Destruction/Evil/War/Weather'
-];
-Pathfinder.DOMAINS_ADDED = [
-  'Artifice', 'Charm', 'Community', 'Darkness', 'Glory', 'Liberation',
-  'Madness', 'Nobility', 'Repose', 'Rune', 'Weather'
-];
-Pathfinder.FACTIONS = [
-  'Andoran', 'Cheliax', 'The Concordance', 'Dark Archive', 'The Exchange',
-  'Grand Lodge', 'Lantern Lodge', 'Liberty\'s Edge', 'None', 'Osirion',
-  'Qadira', 'Sczarni', 'Shadow Lodge', 'Silver Crusade', 'Sovereign Court',
-  'Taldor'
-];
-// Attack, Dam, AC include all modifiers
+Pathfinder.ARMORS = Object.assign{}, SRD35.ARMORS);
+Pathfinder.CLASSES = Object.assign{}, SRD35.CLASSES);
+Pathfinder.DEITIES = {
+  'None':'',
+  'Abadar (LN)':
+    'Weapon="Light Crossbow" Domain=Earth,Law,Nobility,Protection,Travel',
+  'Asmodeus (LE)':'Weapon=Mace Domain=Evil,Fire,Law,Magic,Trickery',
+  'Calistria (CN)':'Weapon=Whip Domain=Chaos,Charm,Knowledge,Luck,Trickery',
+  'Cayden Cailean (CG)':'Weapon=Rapier Domain=Chaos,Charm,Good,Strength,Travel',
+  'Desna (CG)':'Weapon=Starknife Domain=Chaos,Good,Liberation,Luck,Travel',
+  'Erastil (LG)':'Weapon=Longbow Domain=Animal,Community,Good,Law,Plant',
+  'Gozreh (N)':'Weapon=Trident Domain=Air,Animal,Plant,Water,Weather',
+  'Gorum (CN)':'Weapon=Greatsword Domain=Chaos,Destruction,Glory,Strength,War',
+  'Iomedae (LG)':'Weapon=Longsword Domain=Glory,Good,Law,Sun,War',
+  'Irori (LN)':'Weapon=Unarmed Domain=Healing,Knowledge,Law,Rune,Strength',
+  'Lamashtu (CE)':'Weapon=Falchion Domain=Chaos,Evil,Madness,Strength,Trickery',
+  'Nethys (N)':
+    'Weapon=Quarterstaff Domain=Destruction,Knowledge,Magic,Protection,Rune',
+  'Norgorber (NE)':
+    'Weapon="Short Sword" Domain=Charm,Death,Evil,Knowledge,Trickery',
+  'Pharasma (N)':'Weapon=Dagger Domain=Death,Healing,Knowledge,Repose,Water',
+  'Rovagug (CE)':'Weapon=Greataxe Domain=Chaos,Destruction,Evil,War,Weather',
+  'Sarenrae (NG)':'Weapon=Scimitar Domain=Fire,Glory,Good,Healing,Sun',
+  'Shelyn (NG)':'Weapon=Glaive Domain=Air,Charm,Good,Luck,Protection',
+  'Torag (LG)':'Weapon=Warhammer Domain=Artifice,Earth,Good,Law,Protection',
+  'Urgathoa (NE)':'Weapon=Scythe Domain=Death,Evil,Magic,Strength,War',
+  'Zon-Kuthon (LE)':
+    'Weapon="Spiked Chain" Domain=Darkness,Death,Destruction,Evil,Law'
+};
+Pathfinder.DOMAINS = Object.assign({}, SRD35.DOMAINS, {
+  'Artifice':'',
+  'Charm':'',
+  'Community':'',
+  'Darkness':'',
+  'Glory':'',
+  'Liberation':'',
+  'Madness':'',
+  'Nobility':'',
+  'Repose':'',
+  'Rune':'',
+  'Weather':''
+});
+Pathfinder.FACTIONS = {
+  'Andoran':'',
+  'Cheliax':'',
+  'The Concordance':'',
+  'Dark Archive':'',
+  'The Exchange':'',
+  'Grand Lodge':'',
+  'Lantern Lodge':'',
+  "Liberty's Edge":'',
+  'None':'',
+  'Osirion':'',
+  'Qadira':'',
+  'Sczarni':'',
+  'Shadow Lodge':'',
+  'Silver Crusade':'',
+  'Sovereign Court':'',
+  'Taldor':''
+};
 Pathfinder.FAMILIARS = {
+  // Attack, Dam, AC include all modifiers
   'Bat': 'Attack=6 HD=1 AC=16 Dam=1d3-5 Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5 Size=D',
   'Cat': 'Attack=4 HD=1 AC=14 Dam=2@1d2-4,1d3-4 Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7 Size=T',
   'Hawk': 'Attack=5 HD=1 AC=15 Dam=2@1d4-2 Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7 Size=T',
@@ -231,83 +261,244 @@ Pathfinder.FAMILIARS = {
   'Stirge': 'Attack=7 HD=1 AC=16 Dam=0 Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 Level=5 Size=M',
   'Water Elemental': 'Attack=5 HD=2 AC=17 Dam=1d6+3 Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 Level=5 Size=T'
 };
-Pathfinder.FEATS = [
-  'Acrobatic:', 'Acrobatic Steps:', 'Agile Maneuvers:Combat', 'Alertness:',
-  'Alignment Channel:', 'Animal Affinity:', 'Arcane Armor Mastery:Combat',
-  'Arcane Armor Training:Combat', 'Arcane Strike:Combat',
-  'Armor Proficiency:Combat', 'Athletic:', 'Augment Summoning:',
-  'Bleeding Critical:Combat/Critical', 'Blind-Fight:Combat',
-  'Blinding Critical:Combat/Critical', 'Brew Potion:Item Creation',
-  'Catch Off-Guard:Combat', 'Channel Smite:Combat',
-  'Cleave:Combat', 'Combat Casting:', 'Combat Expertise:Combat',
-  'Combat Reflexes:Combat', 'Command Undead:',
-  'Craft Magic Arms And Armor:Item Creation', 'Craft Rod:Item Creation',
-  'Craft Wand:Item Creation', 'Craft Wondrous Item:Item Creation',
-  'Critical Focus:Combat', 'Critical Mastery:Combat',
-  'Dazzling Display:Combat', 'Deadly Aim:Combat', 'Deadly Stroke:Combat',
-  'Deafening Critical:Combat/Critical', 'Deceitful:',
-  'Defensive Combat Training:Combat', 'Deflect Arrows:Combat', 'Deft Hands:',
-  'Diehard:', 'Disruptive:Combat', 'Dodge:Combat', 'Double Slice:Combat',
-  'Elemental Channel:', 'Empower Spell:Metamagic', 'Endurance:',
-  'Enlarge Spell:Metamagic', 'Eschew Materials:',
-  'Exhausting Critical:Combat/Critical', 'Extend Spell:Metamagic',
-  'Extra Channel:', 'Extra Ki:', 'Extra Lay On Hands:', 'Extra Mercy:',
-  'Extra Performance:', 'Extra Rage:', 'Far Shot:Combat', 'Fleet:',
-  'Forge Ring:Item Creation', 'Gorgon\'s Fist:Combat', 'Great Cleave:Combat',
-  'Great Fortitude:', 'Greater Bull Rush:Combat', 'Greater Disarm:Combat',
-  'Greater Feint:Combat', 'Greater Grapple:Combat', 'Greater Overrun:Combat',
-  'Greater Penetrating Strike:Combat', 'Greater Shield Focus:Combat',
-  'Greater Spell Focus:', 'Greater Spell Penetration:', 'Greater Sunder:Combat',
-  'Greater Trip:Combat', 'Greater Two-Weapon Fighting:Combat',
-  'Greater Vital Strike:Combat', 'Greater Weapon Focus:Combat',
-  'Greater Weapon Specialization:Combat', 'Heighten Spell:Metamagic',
-  'Improved Bull Rush:Combat', 'Improved Channel:', 'Improved Counterspell:',
-  'Improved Critical:Combat', 'Improved Disarm:Combat', 'Improved Familiar:',
-  'Improved Feint:Combat', 'Improved Grapple:Combat',
-  'Improved Great Fortitude:', 'Improved Initiative:Combat',
-  'Improved Iron Will:', 'Improved Lightning Reflexes:',
-  'Improved Overrun:Combat', 'Improved Precise Shot:Combat',
-  'Improved Shield Bash:Combat', 'Improved Sunder:Combat',
-  'Improved Trip:Combat', 'Improved Two-Weapon Fighting:Combat',
-  'Improved Unarmed Strike:Combat', 'Improved Vital Strike:Combat',
-  'Improvised Weapon Mastery:Combat', 'Intimidating Prowess:Combat',
-  'Iron Will:', 'Leadership:', 'Lightning Reflexes:',
-  'Lightning Stance:Combat', 'Lunge:Combat', 'Magical Aptitude:',
-  'Manyshot:Combat', 'Master Craftsman:', 'Maximize Spell:Metamagic',
-  'Medusa\'s Wrath:Combat', 'Mobility:Combat', 'Mounted Archery:Combat',
-  'Mounted Combat:Combat', 'Natural Spell:', 'Nimble Moves:',
-  'Penetrating Strike:Combat', 'Persuasive:', 'Pinpoint Targeting:Combat',
-  'Point Blank Shot:Combat', 'Power Attack:Combat', 'Precise Shot:Combat',
-  'Quick Draw:Combat', 'Quicken Spell:Metamagic', 'Rapid Reload:Combat',
-  'Rapid Shot:Combat', 'Ride By Attack:Combat', 'Run:', 'Scorpion Style:Combat',
-  'Scribe Scroll:Item Creation', 'Selective Channeling:', 'Self Sufficient:',
-  'Shatter Defenses:Combat', 'Shield Focus:Combat', 'Shield Master:Combat',
-  'Shield Proficiency:Combat', 'Shield Slam:Combat', 'Shot On The Run:Combat',
-  'Sickening Critical:Combat/Critical', 'Silent Spell:Metamagic',
-  'Skill Focus:', 'Snatch Arrows:Combat', 'Spell Focus:', 'Spell Mastery:',
-  'Spell Penetration:', 'Spellbreaker:Combat', 'Spirited Charge:Combat',
-  'Spring Attack:Combat', 'Staggering Critical:Combat/Critical',
-  'Stand Still:Combat', 'Stealthy:', 'Step Up:Combat', 'Still Spell:Metamagic',
-  'Strike Back:Combat', 'Stunning Critical:Combat/Critical',
-  'Stunning Fist:Combat', 'Throw Anything:Combat',
-  'Tiring Critical:Combat/Critical', 'Toughness:', 'Trample:Combat',
-  'Turn Undead:', 'Two-Weapon Defense:Combat', 'Two-Weapon Fighting:Combat',
-  'Two-Weapon Rend:Combat', 'Unseat:Combat', 'Vital Strike:Combat',
-  'Weapon Finesse:Combat', 'Weapon Focus:Combat', 'Weapon Proficiency:Combat',
-  'Weapon Specialization:Combat', 'Whirlwind Attack:Combat',
-  'Widen Spell:Metamagic', 'Wind Stance:Combat'
-];
-Pathfinder.LANGUAGES_ADDED = ['Aklo'];
-Pathfinder.SKILLS = [
-  'Acrobatics:dex', 'Appraise:int', 'Bluff:cha', 'Climb:str', 'Craft:int',
-  'Diplomacy:cha', 'Disable Device:dex/trained', 'Disguise:cha',
-  'Escape Artist:dex', 'Fly:dex', 'Handle Animal:cha/trained',
-  'Heal:wis', 'Intimidate:cha', 'Knowledge:int/trained',
-  'Linguistics:int/trained', 'Perception:wis', 'Perform:cha',
-  'Profession:wis/trained', 'Ride:dex', 'Sense Motive:wis',
-  'Sleight Of Hand:dex/trained', 'Spellcraft:int/trained', 'Stealth:dex',
-  'Survival:wis', 'Swim:str', 'Use Magic Device:cha/trained'
-];
+Pathfinder.FEATS = {
+  'Acrobatic':'Type=General',
+  'Acrobatic Steps':'Type=General',
+  'Agile Maneuvers':'Type=Combat',
+  'Alertness':'Type=General',
+  'Alignment Channel':'Type=General',
+  'Animal Affinity':'Type=General',
+  'Arcane Armor Mastery':'Type=Combat',
+  'Arcane Armor Training':'Type=Combat',
+  'Arcane Strike':'Type=Combat',
+  'Armor Proficiency':'Type=Combat',
+  'Athletic':'Type=General',
+  'Augment Summoning':'Type=General',
+  'Bleeding Critical':'Type=Combat,Critical',
+  'Blind-Fight':'Type=Combat',
+  'Blinding Critical':'Type=Combat,Critical',
+  'Brew Potion':'Type="Item Creation"',
+  'Catch Off-Guard':'Type=Combat',
+  'Channel Smite':'Type=Combat',
+  'Cleave':'Type=Combat',
+  'Combat Casting':'Type=General',
+  'Combat Expertise':'Type=Combat',
+  'Combat Reflexes':'Type=Combat',
+  'Command Undead':'Type=General',
+  'Craft Magic Arms And Armor':'Type="Item Creation"',
+  'Craft Rod':'Type="Item Creation"',
+  'Craft Wand':'Type="Item Creation"',
+  'Craft Wondrous Item':'Type="Item Creation"',
+  'Critical Focus':'Type=Combat',
+  'Critical Mastery':'Type=Combat',
+  'Dazzling Display':'Type=Combat',
+  'Deadly Aim':'Type=Combat',
+  'Deadly Stroke':'Type=Combat',
+  'Deafening Critical':'Type=Combat,Critical',
+  'Deceitful':'Type=General',
+  'Defensive Combat Training':'Type=Combat',
+  'Deflect Arrows':'Type=Combat',
+  'Deft Hands':'Type=General',
+  'Diehard':'Type=General',
+  'Disruptive':'Type=Combat',
+  'Dodge':'Type=Combat',
+  'Double Slice':'Type=Combat',
+  'Elemental Channel':'Type=General',
+  'Empower Spell':'Type=Metamagic',
+  'Endurance':'Type=General',
+  'Enlarge Spell':'Type=Metamagic',
+  'Eschew Materials':'Type=General',
+  'Exhausting Critical':'Type=Combat,Critical',
+  'Extend Spell':'Type=Metamagic',
+  'Extra Channel':'Type=General',
+  'Extra Ki':'Type=General',
+  'Extra Lay On Hands':'Type=General',
+  'Extra Mercy':'Type=General',
+  'Extra Performance':'Type=General',
+  'Extra Rage':'Type=General',
+  'Far Shot':'Type=Combat',
+  'Fleet':'Type=General',
+  'Forge Ring':'Type="Item Creation"',
+  "Gorgon's Fist":'Type=Combat',
+  'Great Cleave':'Type=Combat',
+  'Great Fortitude':'Type=General',
+  'Greater Bull Rush':'Type=Combat',
+  'Greater Disarm':'Type=Combat',
+  'Greater Feint':'Type=Combat',
+  'Greater Grapple':'Type=Combat',
+  'Greater Overrun':'Type=Combat',
+  'Greater Penetrating Strike':'Type=Combat',
+  'Greater Shield Focus':'Type=Combat',
+  'Greater Spell Focus':'Type=General',
+  'Greater Spell Penetration':'Type=General',
+  'Greater Sunder':'Type=Combat',
+  'Greater Trip':'Type=Combat',
+  'Greater Two-Weapon Fighting':'Type=Combat',
+  'Greater Vital Strike':'Type=Combat',
+  'Greater Weapon Focus':'Type=Combat',
+  'Greater Weapon Specialization':'Type=Combat',
+  'Heighten Spell':'Type=Metamagic',
+  'Improved Bull Rush':'Type=Combat',
+  'Improved Channel':'Type=General',
+  'Improved Counterspell':'Type=General',
+  'Improved Critical':'Type=Combat',
+  'Improved Disarm':'Type=Combat',
+  'Improved Familiar':'Type=General',
+  'Improved Feint':'Type=Combat',
+  'Improved Grapple':'Type=Combat',
+  'Improved Great Fortitude':'Type=General',
+  'Improved Initiative':'Type=Combat',
+  'Improved Iron Will':'Type=General',
+  'Improved Lightning Reflexes':'Type=General',
+  'Improved Overrun':'Type=Combat',
+  'Improved Precise Shot':'Type=Combat',
+  'Improved Shield Bash':'Type=Combat',
+  'Improved Sunder':'Type=Combat',
+  'Improved Trip':'Type=Combat',
+  'Improved Two-Weapon Fighting':'Type=Combat',
+  'Improved Unarmed Strike':'Type=Combat',
+  'Improved Vital Strike':'Type=Combat',
+  'Improvised Weapon Mastery':'Type=Combat',
+  'Intimidating Prowess':'Type=Combat',
+  'Iron Will':'Type=General',
+  'Leadership':'Type=General',
+  'Lightning Reflexes':'Type=General',
+  'Lightning Stance':'Type=Combat',
+  'Lunge':'Type=Combat',
+  'Magical Aptitude':'Type=General',
+  'Manyshot':'Type=Combat',
+  'Master Craftsman':'Type=General',
+  'Maximize Spell':'Type=Metamagic',
+  "Medusa's Wrath":'Type=Combat',
+  'Mobility':'Type=Combat',
+  'Mounted Archery':'Type=Combat',
+  'Mounted Combat':'Type=Combat',
+  'Natural Spell':'Type=General',
+  'Nimble Moves':'Type=General',
+  'Penetrating Strike':'Type=Combat',
+  'Persuasive':'Type=General',
+  'Pinpoint Targeting':'Type=Combat',
+  'Point Blank Shot':'Type=Combat',
+  'Power Attack':'Type=Combat',
+  'Precise Shot':'Type=Combat',
+  'Quick Draw':'Type=Combat',
+  'Quicken Spell':'Type=Metamagic',
+  'Rapid Reload':'Type=Combat',
+  'Rapid Shot':'Type=Combat',
+  'Ride By Attack':'Type=Combat',
+  'Run':'Type=General',
+  'Scorpion Style':'Type=Combat',
+  'Scribe Scroll':'Type="Item Creation"',
+  'Selective Channeling':'Type=General',
+  'Self-Sufficient':'Type=General',
+  'Shatter Defenses':'Type=Combat',
+  'Shield Focus':'Type=Combat',
+  'Shield Master':'Type=Combat',
+  'Shield Proficiency':'Type=Combat',
+  'Shield Slam':'Type=Combat',
+  'Shot On The Run':'Type=Combat',
+  'Sickening Critical':'Type=Combat,Critical',
+  'Silent Spell':'Type=Metamagic',
+  'Skill Focus':'Type=General',
+  'Snatch Arrows':'Type=Combat',
+  'Spell Focus':'Type=General',
+  'Spell Mastery':'Type=General',
+  'Spell Penetration':'Type=General',
+  'Spellbreaker':'Type=Combat',
+  'Spirited Charge':'Type=Combat',
+  'Spring Attack':'Type=Combat',
+  'Staggering Critical':'Type=Combat,Critical',
+  'Stand Still':'Type=Combat',
+  'Stealthy':'Type=General',
+  'Step Up':'Type=Combat',
+  'Still Spell':'Type=Metamagic',
+  'Strike Back':'Type=Combat',
+  'Stunning Critical':'Type=Combat,Critical',
+  'Stunning Fist':'Type=Combat',
+  'Throw Anything':'Type=Combat',
+  'Tiring Critical':'Type=Combat,Critcial',
+  'Toughness':'Type=General',
+  'Trample':'Type=Combat',
+  'Turn Undead':'Type=General',
+  'Two-Weapon Defense':'Type=Combat',
+  'Two-Weapon Fighting':'Type=Combat',
+  'Two-Weapon Rend':'Type=Combat',
+  'Unseat':'Type=Combat',
+  'Vital Strike':'Type=Combat',
+  'Weapon Finesse':'Type=Combat',
+  'Weapon Focus':'Type=Combat',
+  'Weapon Proficiency':'Type=Combat',
+  'Weapon Specialization':'Type=Combat',
+  'Whirlwind Attack':'Type=Combat',
+  'Widen Spell':'Type=Metamagic',
+  'Wind Stance':'Type=Combat'
+};
+Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS, {
+  'Female':'',
+  'Male':''
+};
+Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
+  'Aklo':''
+});
+Pathfinder.RACES = Object.assign({}, SRD35.RACES, {
+  // TODO
+});
+Pathfinder.SCHOOLS = Object.assign({}, SRD35.SCHOOLS, {
+  // TODO
+});
+Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS, {
+  // TODO
+});
+Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
+  'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,,Monk,Rogue',
+  'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
+  'Bluff':'Ability=charisma Class=,Bard,Rogue,Sorcerer',
+  'Climb':'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Rogue',
+  'Craft':'Ability=intelligence',
+  'Diplomacy':'Ability=charisma Class=Bard,Cleric,Paladin,Rogue',
+  'Disable Device':'Ability=dexterity Untrained=n Class=Rogue',
+  'Disguise':'Ability=charisma Class=Bard,Rogue',
+  'Escape Artist':'Ability=dexterity Class=Bard,Monk,Rogue',
+  'Fly':'Ability=dexterity Class=Druid,Sorcerer,Wizard',
+  'Handle Animal':
+    'Ability=charisma Untrained=n Class=,Barbarian,Druid,Fighter,Paladin,Rogue',
+  'Heal':'Ability=wisdom Class=Cleric,Druid,Paladin,Ranger',
+  'Intimidate':
+    'Ability=charisma Class=Barbarian,Bard,Fighter,Monk,Ranger,Rogue,Sorcerer',
+  'Knowledge (Arcana)':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Sorcerer,Wizard',
+  'Knowledge (Dungeoneering)':
+    'Ability=intelligence Untrained=n Class=Bard,,Fighter,Ranger,Rogue,Wizard',
+  'Knowledge (Engineering)':
+    'Ability=intelligence Untrained=n Class=Bard,Fighter,Wizard',
+  'Knowledge (Geography)':
+    'Ability=intelligence Untrained=n Class=Bard,Druid,Ranger,Wizard',
+  'Knowledge (History)':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Monk,Wizard',
+  'Knowledge (Local)':
+    'Ability=intelligence Untrained=n Class=Bard,Rogue,Wizard',
+  'Knowledge (Nature)':
+    'Ability=intelligence Untrained=n Class=Barbarian,Bard,druid,Ranger,Wizard',
+  'Knowledge (Nobility)':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Paladin,Wizard',
+  'Knowledge (Planes)':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Wizard',
+  'Knowledge (Religion)':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Monk,Paladin,Wizard',
+  'Linguistics':
+    'Ability=intelligence Untrained=n Class=Bard,Cleric,Rogue,Wizard',
+  'Perception':'Ability=wisdom Class=',
+  'Perform':'Ability=charisma Class=',
+  'Profession':'Ability=wisdom Untrained=n Class=',
+  'Ride':'Ability=dexterity Class=',
+  'Sense Motive':'Ability=wisdom Class=',
+  'Sleight Of Hand':'Ability=dexterity Untrained=n Class=',
+  'Spellcraft':'Ability=intelligence Untrained=n Class=',
+  'Stealth':'Ability=dexterity Class=',
+  'Survival':'Ability=wisdom Class=',
+  'Swim':'Ability=strength Class=',
+  'Use Magic Device':'Ability=charisma Untrained=n'
+};
 Pathfinder.SRD35_SKILL_MAP = {
   'Balance':'Acrobatics',
   'Concentration':'',
@@ -432,6 +623,14 @@ Pathfinder.WEAPONS_ADDED = [
   'Starknife:d4x3r20 Li Ma'
 ];
 
+Pathfinder.BLOODLINES = [
+  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
+  'Draconic (Blue)', 'Draconic (Green)', 'Draconic (Red)', 'Draconic (White)',
+  'Draconic (Brass)', 'Draconic (Bronze)', 'Draconic (Copper)',
+  'Draconic (Gold)', 'Draconic (Silver)', 'Elemental (Air)',
+  'Elemental (Earth)', 'Elemental (Fire)', 'Elemental (Water)', 'Fey',
+  'Infernal', 'Undead'
+];
 // Related information used internally by Pathfinder
 Pathfinder.armorsArmorClassBonuses = {
   'None': null, 'Padded': 1, 'Leather': 2, 'Studded Leather': 3,
@@ -6062,4 +6261,178 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       attributes.experience = QuilvynUtils.random(min, max);
     }
   }
+};
+
+/*
+ * TODO
+ */
+Pathfinder.choiceEditorElements = function() {
+  // TODO
+  return SRD35.choiceEditorElements();
+};
+
+/*
+ * TODO
+ */
+Pathfinder.choiceRules = function(rules, type, name, attrs) {
+  if(name == null || name == '') {
+    console.log('Empty name for ' + type);
+    return;
+  }
+  name = name.replace(/(^|\s)([a-z])/g, function(x) {return x.toUpperCase();});
+  if(type == 'alignments')
+    Pathfinder.alignmentRules(rules, name);
+  else if(type == 'bloodlines')
+    Pathfinder.bloodlinesRules(rules, name);
+  else if(type == 'animalCompanions')
+    Pathfinder.companionRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'Str'),
+      QuilvynRules.getAttrValue(attrs, 'Int'),
+      QuilvynRules.getAttrValue(attrs, 'Wis'),
+      QuilvynRules.getAttrValue(attrs, 'Dex'),
+      QuilvynRules.getAttrValue(attrs, 'Con'),
+      QuilvynRules.getAttrValue(attrs, 'Cha'),
+      QuilvynRules.getAttrValue(attrs, 'HD'),
+      QuilvynRules.getAttrValue(attrs, 'AC'),
+      QuilvynRules.getAttrValue(attrs, 'Attack'),
+      QuilvynRules.getAttrValueArray(attrs, 'Dam'),
+      QuilvynRules.getAttrValue(attrs, 'Level')
+    );
+  else if(type == 'armors')
+    Pathfinder.armorRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'AC'),
+      QuilvynRules.getAttrValue(attrs, 'Level'),
+      QuilvynRules.getAttrValue(attrs, 'Dex'),
+      QuilvynRules.getAttrValue(attrs, 'Skill'),
+      QuilvynRules.getAttrValue(attrs, 'Spell')
+    );
+  else if(type == 'deities')
+    Pathfinder.deityRules(rules, name,
+      QuilvynRules.getAttrValueArray(attrs, 'domain'),
+      QuilvynRules.getAttrValueArray(attrs, 'weapon'));
+  else if(type == 'domains')
+    Pathfinder.domainRules(rules, name,
+    );
+  else if(type == 'familiars')
+    Pathfinder.familiarRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'Str'),
+      QuilvynRules.getAttrValue(attrs, 'Int'),
+      QuilvynRules.getAttrValue(attrs, 'Wis'),
+      QuilvynRules.getAttrValue(attrs, 'Dex'),
+      QuilvynRules.getAttrValue(attrs, 'Con'),
+      QuilvynRules.getAttrValue(attrs, 'Cha'),
+      QuilvynRules.getAttrValue(attrs, 'HD'),
+      QuilvynRules.getAttrValue(attrs, 'AC'),
+      QuilvynRules.getAttrValue(attrs, 'Attack'),
+      QuilvynRules.getAttrValueArray(attrs, 'Dam'),
+      QuilvynRules.getAttrValue(attrs, 'Level')
+    );
+  else if(type == 'feats')
+    Pathfinder.featRules(rules, name,
+      QuilvynRules.getAttrValueArray(attrs, 'Type'),
+      QuilvynRules.getAttrValueArray(attrs, 'Require'),
+      QuilvynRules.getAttrValueArray(attrs, 'Imply')
+    );
+  else if(type == 'features')
+    Pathfinder.featureRules(rules, name, attrs);
+  else if(type == 'genders')
+    Pathfinder.genderRules(rules, name);
+  else if(type == 'languages')
+    Pathfinder.languageRules(rules, name);
+  else if(type == 'levels')
+    Pathfinder.classRules(rules, name,
+      QuilvynRules.getAttrValueArray(attrs, 'Require'),
+      QuilvynRules.getAttrValueArray(attrs, 'Imply'),
+      QuilvynRules.getAttrValue(attrs, 'HitDie'),
+      QuilvynRules.getAttrValue(attrs, 'Attack'),
+      QuilvynRules.getAttrValue(attrs, 'SkillPoints'),
+      QuilvynRules.getAttrValue(attrs, 'Fortitude'),
+      QuilvynRules.getAttrValue(attrs, 'Reflex'),
+      QuilvynRules.getAttrValue(attrs, 'Will'),
+      [], // Skills for base classes handled by skillRules
+      QuilvynRules.getAttrValueArray(attrs, 'Features'),
+      QuilvynRules.getAttrValueArray(attrs, 'Selectables'),
+      QuilvynRules.getAttrValue(attrs, 'SpellAbility'),
+      QuilvynRules.getAttrValueArray(attrs, 'SpellsPerDay')
+    );
+  else if(type == 'races')
+    Pathfinder.raceRules(rules, name,
+      QuilvynRules.getAttrValueArray(attrs, 'Features')
+  );
+  else if(type == 'schools')
+    Pathfinder.schoolRules(rules, name);
+  else if(type == 'shields')
+    Pathfinder.shieldRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'AC'),
+      QuilvynRules.getAttrValue(attrs, 'Level'),
+      QuilvynRules.getAttrValue(attrs, 'Skill'),
+      QuilvynRules.getAttrValue(attrs, 'Spell')
+    );
+  else if(type == 'skills')
+    Pathfinder.skillRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'Ability'),
+      QuilvynRules.getAttrValue(attrs, 'Untrained'),
+      QuilvynRules.getAttrValueArray(attrs, 'Class'),
+      QuilvynRules.getAttrValueArray(attrs, 'Synergy')
+    );
+  else if(type == 'spells') {
+    var description = QuilvynRules.getAttrValue(attrs, 'Description');
+    var levels = QuilvynRules.getAttrValueArray(attrs, 'Level');
+    var school = QuilvynRules.getAttrValue(attrs, 'School');
+    var schoolAbbr = school.substring(0, 4);
+    for(var i = 0; i < levels.length; i++) {
+      var groupAndLevel = levels[i];
+      var casterGroup = groupAndLevel.length > 3 ? 'Dom' : groupAndLevel.substring(0, groupAndLevel.length - 1);
+      var level = groupAndLevel.substring(groupAndLevel.length - 1) * 1;
+      var fullSpell = name + '(' + groupAndLevel + ' ' + schoolAbbr + ')';
+      rules.addChoice('spells', fullSpell, attrs);
+      Pathfinder.spellRules(rules, fullSpell,
+        school,
+        casterGroup,
+        level,
+        QuilvynRules.getAttrValue(attrs, 'Description')
+      );
+    }
+  } else if(type == 'weapons')
+    Pathfinder.weaponRules(rules, name,
+      QuilvynRules.getAttrValue(attrs, 'Level'),
+      QuilvynRules.getAttrValue(attrs, 'Category'),
+      QuilvynRules.getAttrValue(attrs, 'Damage'),
+      QuilvynRules.getAttrValue(attrs, 'Threat'),
+      QuilvynRules.getAttrValue(attrs, 'Crit'),
+      QuilvynRules.getAttrValue(attrs, 'Range')
+    );
+  else {
+    console.log('Unknown choice type "' + type + '"');
+    return;
+  }
+  if(type != 'spells' && type != 'features')
+    rules.addChoice(type, name, attrs);
+};
+
+/* Defines rules related to basic character identity. */
+SRD35.identityRules = function(
+  rules, alignments, classes, deities, genders, races, bloodlines
+) {
+  for(var alignment in alignments) {
+    Pathfinder.choiceRules
+      (rules, 'alignments', alignment, SRD35.ALIGNMENTS[alignment]);
+  }
+  for(var klass in classes) {
+    Pathfinder.choiceRules(rules, 'levels', klass, classes[klass]);
+  }
+  for(var deity in deities) {
+    Pathfinder.choiceRules(rules, 'deities', deity, deities[deity]);
+  }
+  for(var gender in genders) {
+    Pathfinder.choiceRules(rules, 'genders', gender, genders[gender]);
+  }
+  for(var race in races) {
+    Pathfinder.choiceRules(rules, 'races', race, races[race]);
+  }
+  for(var bloodline in bloodlines) {
+    Pathfinder.choiceRules
+      (rules, 'bloodlines', bloodline, bloodlines[bloodline]);
+  }
+  SRD35.validAllocationRules(rules, 'level', 'level', /^levels\./);
 };
