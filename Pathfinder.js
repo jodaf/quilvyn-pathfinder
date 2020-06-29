@@ -415,19 +415,74 @@ Pathfinder.DEITIES = {
   'Zon-Kuthon (LE)':
     'Weapon="Spiked Chain" Domain=Darkness,Death,Destruction,Evil,Law'
 };
-Pathfinder.DOMAINS = Object.assign({}, SRD35.DOMAINS, {
-  'Artifice':'',
-  'Charm':'',
-  'Community':'',
-  'Darkness':'',
-  'Glory':'',
-  'Liberation':'',
-  'Madness':'',
-  'Nobility':'',
-  'Repose':'',
-  'Rune':'',
-  'Weather':''
-});
+Pathfinder.DOMAINS = {
+  'Air':
+    'Features="1:Lightning Arc","6:Electricity Resistance" ' +
+  'Animal':
+    'Features="1:Speak With Animals","4:Animal Companion" ' +
+  'Artifice':
+    'Features="1:Artificer\'s Touch","8:Dancing Weapons" ' +
+  'Chaos':
+    'Features="1:Touch Of Chaos","8:Chaos Blade" ' +
+  'Charm':
+    'Features="1:Addling Touch","8:Charming Smile" ' +
+  'Community':
+    'Features="1:Calming Touch","8:Unity" ' +
+  'Darkness':
+    'Features="1:Blind-Fight","1:Touch Of Darkness","8:Eyes Of Darkness" ' +
+  'Death':
+    'Features="1:Bleeding Touch","8:Death\'s Embrace" ' +
+  'Destruction':
+    'Features="1:Destructive Smite","8:Destructive Aura" ' +
+  'Earth':
+    'Features="1:Acid Dart","6:Acid Resistance" ' +
+  'Evil':
+    'Features="1:Touch Of Evil","8:Scythe Of Evil" ' +
+  'Fire':
+    'Features="1:Fire Bolt","6:Fire Resistance" ' +
+  'Glory':
+    'Features="1:Undead Bane","1:Touch Of Glory","8:Divine Presence" ' +
+  'Good':
+    'Features="1:Touch Of Good","8:Holy Lance" ' +
+  'Healing':
+    'Features="1:Rebuke Death","6:Healer\'s Blessing" ' +
+  'Knowledge':
+    'Features="1:Lore Keeper","6:Remote Viewing" ' +
+  'Law':
+    'Features="1:Touch Of Law","8:Staff Of Order" ' +
+  'Liberation':
+    'Features="1:Liberation","8:Freedom\'s Call" ' +
+  'Luck':
+    'Features="1:Bit Of Luck","6:Good Fortune" ' +
+  'Madness':
+    'Features="1:Vision Of Madness","8:Aura Of Madness" ' +
+  'Magic':
+    'Features="1:Hand Of The Acolyte","8:Dispelling Touch" ' +
+  'Nobility':
+    'Features="1:Inspiring Word","8:Noble Leadership" ' +
+  'Plant':
+    'Features="1:Wooden Fist","6:Bramble Armor" ' +
+  'Protection':
+    'Features="1:Resistance Bonus","1:Resistant Touch","8:Aura Of Protection" ' +
+  'Repose':
+    'Features="1:Gentle Rest","8:Ward Against Death" ' +
+  'Rune':
+    'Features="1:Scribe Scroll","1:Blast Rune","8:Spell Rune" ' +
+  'Strength':
+    'Features="1:Strength Rush","8:Might Of The Gods" ' +
+  'Sun':
+    'Features="1:Sun\'s Blessing","8:Nimbus Of Light" ' +
+  'Travel':
+    'Features="1:Travel Speed","1:Agile Feet","8:Dimensional Hop" ' +
+  'Trickery':
+    'Features="1:Copycat","8:Master\'s Illusion" ' +
+  'War':
+    'Features="1:Battle Rage","8:Weapon Master" ' +
+  'Water':
+    'Features="1:Icicle","6:Cold Resistance" ' +
+  'Weather':
+    'Features="1:Storm Burst","8:Lightning Lord" ' +
+};
 Pathfinder.FACTIONS = {
   'Andoran':'',
   'Cheliax':'',
@@ -985,7 +1040,44 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Necromantic Touch':'magic:Touch causes shaken/frightened %V rd %1/day',
   'Physical Enhancement':'ability:+%V %1 of str/dex/con',
   'Change Shape':'magic:<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
-  'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day'
+  'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
+  // Races
+  'Adaptability':'feature:+1 Feat',
+  'Elf Blood':'feature:Elf and human for racial effects',
+  'Low-Light Vision':'feature:x%V normal distance in poor light',
+  'Multitalented':'feature:Two favored classes',
+  'Resist Enchantment':'save:+2 vs. enchantment',
+  'Sleep Immunity':'save:Immune <i>Sleep</i>',
+  'Keen Senses':'skill:+2 Perception',
+  'Orc Ferocity':'combat:Fight 1 rd below zero HP',
+  'Darkvision':"feature:%V' b/w vision in darkness",
+  'Orc Blood':'feature:Orc and human for racial effects',
+  'Intimidating':'skill:+2 Intimidate',
+  'Slow':'ability:-10 Speed',
+  'Steady':'ability:No speed penalty in armor',
+  'Defensive Training':'combat:+4 AC vs. giant creatures',
+  'Dwarf Hatred':'combat:+1 attack vs. goblinoid/orc',
+  'Stability':'combat:+4 CMD vs. Bull Rush/Trip',
+  'Hardy':'save:+2 vs. poison/spells',
+  'Greed':'skill:+2 Appraise (precious metals, gems)',
+  'Stonecunning':'skill:+2 Perception (stone), automatic check w/in 10'",
+  'Elven Magic':[
+    'magic:+2 vs. spell resistance',
+    'skill:+2 Spellcraft (identify magic item properties)'
+  ],
+  'Keen Senses':'skill:+2 Perception',
+  'Gnome Hatred':'combat:+1 attack vs. goblinoid/reptilian',
+  'Small':[
+    'combat:+1 AC/attack, -1 CMB/CMD',
+    'skill:+2 Fly/+4 Stealth'
+  ],
+  'Gnome Magic':'magic:+1 DC on illusion spells',
+  'Natural Spells':'magic:%V 1/day as caster %1',
+  'Resist Illusion':'save:+2 vs. illusions',
+  'Obsessive':'skill:+2 choice of Craft or Profession',
+  'Fearless':'save:+2 vs. fear',
+  'Halfling Luck':'save:+1 all saves',
+  'Sure-Footed':'skill-FootedFeature:+2 Acrobatics/Climb'
 });
 Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS);
 Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
@@ -1056,22 +1148,138 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Swim':'Ability=strength Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
   'Use Magic Device':'Ability=charisma Untrained=n Class=Bard,Rogue,Sorcerer'
 });
-Pathfinder.SRD35_SKILL_MAP = {
-  'Balance':'Acrobatics',
-  'Concentration':'',
-  'Decipher Script':'Linguistics',
-  'Forgery':'Linguistics',
-  'Gather Information':'Diplomacy',
-  'Hide':'Stealth',
-  'Jump':'Acrobatics',
-  'Listen':'Perception',
-  'Move Silently':'Stealth',
-  'Open Lock':'Disable Device',
-  'Search':'Perception',
-  'Speak Language':'Linguistics',
-  'Spot':'Perception',
-  'Tumble':'Acrobatics',
-  'Use Rope':''
+Pathfinder.SPELLS = Object.assign({}, SRD35.SPELLS, {
+
+  'Beast Shape I':
+    'School=Transmutation Level=W3 ' +
+    'Description="Become small (+2 Dex/+1 AC) or medium (+2 Str/+2 AC) animal for $L min"',
+  'Beast Shape II':
+    'School=Transmutation Level=W4 ' +
+    'Description="Become tiny (+4 Dex/-2 Str/+1 AC) or large (+4 Str/-2 Dex/+4 AC) animal for $L min"',
+  'Beast Shape III':
+    'School=Transmutation Level=W5,Animal5 ' +
+    'Description="Become dimunitive (+6 Dex/-4 Str/+1 AC) or huge (+6 Str/-4 Dex/+6 AC) animal or small (+4 Dex/+2 AC) or medium (+4 Str/+4 AC) magical beast for $L min"',
+  'Beast Shape IV':
+    'School=Transmutation Level=W6 ' +
+    'Description="Become tiny (+8 Dex/-2 Str/+3 AC) or large (+6 Str/-2 Dex/+2 Con/+6 AC) magical beast for $L min"',
+  'Bleed':
+    'School=Necromancy Level=C0,W0 ' +
+    'Description="R$RS\' Stabilized target resume dying (Will neg)"',
+  'Breath Of Life':
+    'School=Conjuration Level=C5 ' +
+    'Description="Heal 5d8+$L/max 25 plus resurrect target dead lt 1 rd"',
+  'Elemental Body I':
+    'School=Transmutation Level=W4 ' +
+    'Description="Become small air (+2 Dex/+2 AC/fly 60\'/whirlwind), earth (+2 Str/+4 AC/earth glide), fire (+2 Dex/+2 AC/resist fire/burn), water (+2 Con/+4 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision for $L min"',
+  'Elemental Body II':
+    'School=Transmutation Level=W5 ' +
+    'Description="Become medium air (+4 Dex/+3 AC/fly 60\'/whirlwind), earth (+4 Str/+5 AC/earth glide), fire (+4 Dex/+3 AC/resist fire/burn), water (+4 Con/+5 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision for $L min"',
+  'Elemental Body III':
+    'School=Transmutation Level=W6 ' +
+    'Description="Become large air (+2 Str/+4 Dex/+4 AC/fly 60\'/whirlwind), earth (+6 Str/-2 Dex/+2 Con/+6 AC/earth glide), fire (+4 Dex/+2 Con/+4 AC/resist fire/burn), water (+2 Str/-2 Dex/+6 Con/+6 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision/immune bleed, critical, sneak attack for $L min"',
+  'Elemental Body IV':
+    'School=Transmutation Level=W7,Air7,Fire7 ' +
+    'Description="Become huge air (+4 Str/+6 Dex/+4 AC/fly 120\'/whirlwind), earth (+8 Str/-2 Dex/+4 Con/+6 AC/earth glide), fire (+6 Dex/+4 Con/+4 AC/resist fire/burn), water (+4 Str/-2 Dex/+8 Con/+6 AC/swim 120\'/vortex/breathe water) elemental, 60\' darkvision/immune bleed, critical, sneak attack/DR 5/- for $L min"',
+  'Form Of The Dragon I':
+    'School=Transmutation Level=W6 ' +
+    'Description="Become Medium dragon (+4 Str/+2 Con/+4 AC/Fly 60\'/Darkvision 60\'/breath weapon once 6d8 HP (Ref half)/element resistance/bite 1d8 HP/claws 2x1d6 HP/wings 2x1d4 HP) for $L min"',
+  'Form Of The Dragon II':
+    'School=Transmutation Level=W7 ' +
+    'Description="Become Large dragon (+6 Str/+4 Con/+6 AC/Fly 90\'/Darkvision 60\'/breath weapon twice 8d8 HP (Ref half)/element resistance/bite 2d6 HP/claws 2x1d8 HP/wings 2x1d6 HP) for $L min"',
+  'Form Of The Dragon III':
+    'School=Transmutation Level=W8 ' +
+    'Description="Become Huge dragon (+10 Str/+8 Con/+8 AC/Fly 120\'/Blindsense 60\'/Darkvision 120\'/breath weapon 1/d4 rd 12d8 HP (Ref half)/element immunity/bite 2d8 HP/claws 2x2d6 HP/wings 2x1d8 HP/tail 2d6 HP) for $L min"',
+  'Giant Form I':
+    'School=Transmutation Level=W7 ' +
+    'Description="Become large giant (+6 Str/-2 Dex/+4 Con/+4 AC/low-light vision/form abilities) for $L min"',
+  'Giant Form II':
+    'School=Transmutation Level=W8 ' +
+    'Description="Become huge giant (+8 Str/-2 Dex/+6 Con/+6 AC/low-light vision/form abilities) for $L min"',
+  'Greater Polymorph':
+    'School=Transmutation Level=W5 ' +
+    'Description="Willing target becomes animal/elemental/plant/dragon for $L min"',
+  'Plant Shape I':
+    'School=Transmutation Level=W5 ' +
+    'Description="Become small (+2 Con/+2 AC) or medium (+2 Str/+2 Con/+2 AC) plant creature for $L min"',
+  'Plant Shape II':
+    'School=Transmutation Level=W6 ' +
+    'Description="Become large (+4 Str/+2 Con/+4 AC) plant creature for $L min"',
+  'Plant Shape III':
+    'School=Transmutation Level=W7 ' +
+    'Description="Become huge (+8 Str/-2 Dex/+4 Con/+6 AC) plant creature for $L min"',
+  'Stabilize':
+    'School=Conjuration Level=C0,D0 ' +
+    'Description="R$RS\' Stabilize dying target"'
+};
+// Delete SRD35 spells that don't exist in Pathfinder
+delete Pathfinder.SPELLS['Cure Minor Wounds'];
+delete Pathfinder.SPELLS['Inflict Minor Wounds'];
+delete Pathfinder.SPELLS['Polymorph'];
+Pathfinder.SPELL_LEVEL_CHANGES = {
+  'Commune With Nature':'-Animal5',
+  'Control Weather':'-Air7',
+  'Animate Rope':'+Artificer1',
+  'Wood Shape':'+Artificer2',
+  'Stone Shape':'+Artificer3',
+  'Minor Creation':'+Artificer4',
+  'Fabricate':'+Artificer5',
+  'Major Creation':'+Artificer6',
+  'Wall Of Iron':'+Artificer7',
+  'Statue':'+Artificer8',
+  'Prismatic Sphere':'+Artificer9',
+  'Align Weapon':'+Chaos2,+Evil2',
+  'Shatter':'-Chaos2',
+  'Charm Person':'+Charm1',
+  'Calm Emotions':'+Charm2',
+  'Suggestion':'+Charm3',
+  'Heroism':'+Charm4',
+  'Charm Monster':'+Charm5',
+  'Geas/Quest':'+Charm6',
+  'Insanity':'+Charm7',
+  'Demand':'+Charm8',
+  'Dominate Monster':'+Charm9',
+  'Bless':'+Community1',
+  'Shield Other':'+Community2',
+  'Prayer':'+Community3',
+  'Imbue With Spell Ability':'+Community4',
+  'Telepathic Bond':'+Community5',
+  "Heroes' Feast":'+Community6',
+  'Refuge':'+Community7',
+  'Mass Cure Critical Wounds':'+Community8',
+  'Miracle':'+Community9',
+  'Obscuring Mist':'+Darkness1',
+  'Blindness/Deafness':'+Darkness2',
+  'Deeper Darkness':'+Darkness3',
+  'Shadow Conjuration':'+Darkness4',
+  'Summon Monster V':'+Darkness5',
+  'Shadow Walk':'+Darkness6',
+  'Power Word Blind':'+Darkness7',
+  'Greater Shadow Evocation':'+Darkness8',
+  'Shades':'+Darkness9',
+  'True Strike':'+Destruction1',
+  'Contagion':'-Destruction3',
+  'Range':'+Destruction3',
+  'Mass Inflict Light Wounds':'-Destruction5',
+  'Shout':'+Destruction5',
+  'Earthquake':'-Earth7,+Earth8',
+  'Iron Body':'-Earth8',
+  'Desecrate':'-Evil2',
+  'Resist Energy':'-Fire3',
+  'Fireball':'+Fire3',
+  'Fire Storm':'-Fire7',
+  'Shield Of Faith':'+Glory1',
+  'Bless Weapon':'+Glory2',
+  'Searing Light':'+Glory3',
+  'Holy Smite':'+Glory4',
+  'Righteous Might':'+Glory5',
+  'Undeath To Death':'+Glory6',
+  'Holy Sword':'+Glory7',
+  'Holy Aura':'+Glory8',
+  'Gate':'+Glory9',
+  'Aid':'-Good2',
+  'Align Weapon':'+Good2',
+  'Mass Cure Light Wounds':'-Healing5',
+  'Breath Of Life':'+Healing5',
 };
 Pathfinder.TRACKS = ['Slow', 'Medium', 'Fast'];
 Pathfinder.TRAITS = {
@@ -1263,52 +1471,23 @@ Pathfinder.tracksThreshholds = {
     235, 330, 475, 665, 955, 1350, 1900, 2700, 3850, 5350
   ]
 };
-Pathfinder.spellsDescriptions = {
-  "Beast Shape I": "Become small (+2 Dex/+1 AC) or medium (+2 Str/+2 AC) animal for $L min",
-  "Beast Shape II": "Become tiny (+4 Dex/-2 Str/+1 AC) or large (+4 Str/-2 Dex/+4 AC) animal for $L min",
-  "Beast Shape III": "Become dimunitive (+6 Dex/-4 Str/+1 AC) or huge (+6 Str/-4 Dex/+6 AC) animal or small (+4 Dex/+2 AC) or medium (+4 Str/+4 AC) magical beast for $L min",
-  "Beast Shape IV": "Become tiny (+8 Dex/-2 Str/+3 AC) or large (+6 Str/-2 Dex/+2 Con/+6 AC) magical beast for $L min",
-  "Bleed": "R$RS' Stabilized target resume dying (Will neg)",
-  "Breath Of Life": "Heal 5d8+$L/max 25 plus resurrect target dead lt 1 rd",
-  "Elemental Body I": "Become small air (+2 Dex/+2 AC/fly 60'/whirlwind), earth (+2 Str/+4 AC/earth glide), fire (+2 Dex/+2 AC/resist fire/burn), water (+2 Con/+4 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision for $L min",
-  "Elemental Body II": "Become medium air (+4 Dex/+3 AC/fly 60'/whirlwind), earth (+4 Str/+5 AC/earth glide), fire (+4 Dex/+3 AC/resist fire/burn), water (+4 Con/+5 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision for $L min",
-  "Elemental Body III": "Become large air (+2 Str/+4 Dex/+4 AC/fly 60'/whirlwind), earth (+6 Str/-2 Dex/+2 Con/+6 AC/earth glide), fire (+4 Dex/+2 Con/+4 AC/resist fire/burn), water (+2 Str/-2 Dex/+6 Con/+6 AC/swim 60'/vortex/breathe water) elemental, 60' darkvision/immune bleed, critical, sneak attack for $L min",
-  "Elemental Body IV": "Become huge air (+4 Str/+6 Dex/+4 AC/fly 120'/whirlwind), earth (+8 Str/-2 Dex/+4 Con/+6 AC/earth glide), fire (+6 Dex/+4 Con/+4 AC/resist fire/burn), water (+4 Str/-2 Dex/+8 Con/+6 AC/swim 120'/vortex/breathe water) elemental, 60' darkvision/immune bleed, critical, sneak attack/DR 5/- for $L min",
-  "Form Of The Dragon I": "Become Medium dragon (+4 Str/+2 Con/+4 AC/Fly 60'/Darkvision 60'/breath weapon once 6d8 HP (Ref half)/element resistance/bite 1d8 HP/claws 2x1d6 HP/wings 2x1d4 HP) for $L min",
-  "Form Of The Dragon II": "Become Large dragon (+6 Str/+4 Con/+6 AC/Fly 90'/Darkvision 60'/breath weapon twice 8d8 HP (Ref half)/element resistance/bite 2d6 HP/claws 2x1d8 HP/wings 2x1d6 HP) for $L min",
-  "Form Of The Dragon III": "Become Huge dragon (+10 Str/+8 Con/+8 AC/Fly 120'/Blindsense 60'/Darkvision 120'/breath weapon 1/d4 rd 12d8 HP (Ref half)/element immunity/bite 2d8 HP/claws 2x2d6 HP/wings 2x1d8 HP/tail 2d6 HP) for $L min",
-  "Giant Form I": "Become large giant (+6 Str/-2 Dex/+4 Con/+4 AC/low-light vision/form abilities) for $L min",
-  "Giant Form II": "Become huge giant (+8 Str/-2 Dex/+6 Con/+6 AC/low-light vision/form abilities) for $L min",
-  "Greater Polymorph": "Willing target becomes animal/elemental/plant/dragon for $L min",
-  "Plant Shape I": "Become small (+2 Con/+2 AC) or medium (+2 Str/+2 Con/+2 AC) plant creature for $L min",
-  "Plant Shape II": "Become large (+4 Str/+2 Con/+4 AC) plant creature for $L min",
-  "Plant Shape III": "Become huge (+8 Str/-2 Dex/+4 Con/+6 AC) plant creature for $L min",
-  "Stabilize": "R$RS' Stabilize dying target"
+Pathfinder.SRD35_SKILL_MAP = {
+  'Balance':'Acrobatics',
+  'Concentration':'',
+  'Decipher Script':'Linguistics',
+  'Forgery':'Linguistics',
+  'Gather Information':'Diplomacy',
+  'Hide':'Stealth',
+  'Jump':'Acrobatics',
+  'Listen':'Perception',
+  'Move Silently':'Stealth',
+  'Open Lock':'Disable Device',
+  'Search':'Perception',
+  'Speak Language':'Linguistics',
+  'Spot':'Perception',
+  'Tumble':'Acrobatics',
+  'Use Rope':''
 };
-Pathfinder.spellsSchools = Object.assign({}, SRD35.spellsSchools, {
-  'Beast Shape I':'Transmutation',
-  'Beast Shape II':'Transmutation',
-  'Beast Shape III':'Transmutation',
-  'Beast Shape IV':'Transmutation',
-  'Bleed':'Necromancy',
-  'Breath Of Life':'Conjuration',
-  'Elemental Body I':'Transmutation',
-  'Elemental Body II':'Transmutation',
-  'Elemental Body III':'Transmutation',
-  'Elemental Body IV':'Transmutation',
-  'Form Of The Dragon I':'Transmutation',
-  'Form Of The Dragon II':'Transmutation',
-  'Form Of The Dragon III':'Transmutation',
-  'Giant Form I':'Transmutation',
-  'Giant Form II':'Transmutation',
-  'Greater Polymorph':'Transmutation',
-  'Plant Shape I':'Transmutation',
-  'Plant Shape II':'Transmutation',
-  'Plant Shape III':'Transmutation',
-  'Stabilize':'Conjuration'
-});
-delete Pathfinder.spellsSchools['Cure Minor Wounds'];
-delete Pathfinder.spellsSchools['Inflict Minor Wounds'];
 
 /* Defines the rules related to character abilities. */
 Pathfinder.abilityRules = function(rules) {
@@ -3185,201 +3364,7 @@ Pathfinder.featRules = function(rules, name, types, requires, implies) {
 
 };
 
-/* Defines the rules related to spells and domains. */
-Pathfinder.magicRules = function(rules, classes, domains, schools) {
 
-  SRD35.magicRules(rules, classes, [], schools);
-  schools = rules.getChoices('schools');
-
-  // Delete SRD35 spells that don't exist in Pathfinder
-  delete rules.choices['spells']['Cure Minor Wounds(C0 Conj)'];
-  delete rules.choices['spells']['Inflict Minor Wounds(C0 Necr)'];
-  delete rules.choices['spells']['Cure Minor Wounds(D0 Conj)'];
-  delete rules.choices['spells']['Polymorph(W4 Tran)'];
-
-  // Add Pathfinder-specific spells
-  for(var i = 0; i < classes.length; i++) {
-    var klass = classes[i];
-    var spells;
-    if(klass == 'Bard') {
-      spells = ['B1:Doom'];
-    } else if(klass == 'Cleric') {
-      spells = [
-        'C0:Bleed', 'C0:Stabilize', 'C4:Chaos Hammer', 'C4:Holy Smite',
-        'C4:Order\'s Wrath', 'C4:Unholy Blight', 'C5:Breath Of Life'
-      ];
-    } else if(klass == 'Druid') {
-      spells = ['D0:Stabilize'];
-    } else if(klass == 'Sorcerer' || klass == 'Wizard') {
-      spells = [
-        'W0:Bleed', 'W2:Make Whole', 'W3:Beast Shape I', 'W4:Beast Shape II',
-        'W4:Elemental Body I', 'W5:Beast Shape III', 'W5:Elemental Body II',
-        'W5:Plant Shape I', 'W5:Polymorph', 'W6:Beast Shape IV',
-        'W6:Elemental Body III', 'W6:Form Of The Dragon I',
-        'W6:Plant Shape II', 'W7:Elemental Body IV',
-        'W7:Form Of The Dragon II', 'W7:Giant Form I', 'W7:Plant Shape III',
-        'W7:Greater Polymorph', 'W8:Form Of The Dragon III', 'W8:Giant Form II'
-      ];
-    } else
-      continue;
-    for(var j = 0; j < spells.length; j++) {
-      var pieces = spells[j].split(':');
-      var school = Pathfinder.spellsSchools[pieces[1]];
-      spell = pieces[1] + '(' + pieces[0] + ' ' + schools[school] + ')';
-      rules.defineChoice('spells', spell);
-    }
-  }
-
-  // Add domain rules
-  var domainFeatures = {
-    'Air': '1:Lightning Arc/6:Electricity Resistance',
-    'Animal': '1:Speak With Animals/4:Animal Companion',
-    'Artifice': '1:Artificer\'s Touch/8:Dancing Weapons',
-    'Chaos': '1:Touch Of Chaos/8:Chaos Blade',
-    'Charm': '1:Addling Touch/8:Charming Smile',
-    'Community': '1:Calming Touch/8:Unity',
-    'Darkness': '1:Blind-Fight/1:Touch Of Darkness/8:Eyes Of Darkness',
-    'Death': '1:Bleeding Touch/8:Death\'s Embrace',
-    'Destruction': '1:Destructive Smite/8:Destructive Aura',
-    'Earth': '1:Acid Dart/6:Acid Resistance',
-    'Evil': '1:Touch Of Evil/8:Scythe Of Evil',
-    'Fire': '1:Fire Bolt/6:Fire Resistance',
-    'Glory': '1:Undead Bane/1:Touch Of Glory/8:Divine Presence',
-    'Good': '1:Touch Of Good/8:Holy Lance',
-    'Healing': '1:Rebuke Death/6:Healer\'s Blessing',
-    'Knowledge': '1:Lore Keeper/6:Remote Viewing',
-    'Law': '1:Touch Of Law/8:Staff Of Order',
-    'Liberation': '1:Liberation/8:Freedom\'s Call',
-    'Luck': '1:Bit Of Luck/6:Good Fortune',
-    'Madness': '1:Vision Of Madness/8:Aura Of Madness',
-    'Magic': '1:Hand Of The Acolyte/8:Dispelling Touch',
-    'Nobility': '1:Inspiring Word/8:Noble Leadership',
-    'Plant': '1:Wooden Fist/6:Bramble Armor',
-    'Protection': '1:Resistance Bonus/1:Resistant Touch/8:Aura Of Protection',
-    'Repose': '1:Gentle Rest/8:Ward Against Death',
-    'Rune': '1:Scribe Scroll/1:Blast Rune/8:Spell Rune',
-    'Strength': '1:Strength Rush/8:Might Of The Gods',
-    'Sun': '1:Sun\'s Blessing/8:Nimbus Of Light',
-    'Travel': '1:Travel Speed/1:Agile Feet/8:Dimensional Hop',
-    'Trickery': '1:Copycat/8:Master\'s Illusion',
-    'War': '1:Battle Rage/8:Weapon Master',
-    'Water': '1:Icicle/6:Cold Resistance',
-    'Weather': '1:Storm Burst/8:Lightning Lord'
-  };
-  var domainSpells = {
-    'Air':
-      'Obscuring Mist/Wind Wall/Gaseous Form/Air Walk/Control Winds/' +
-      'Chain Lightning/Elemental Body IV/Whirlwind/Elemental Swarm',
-    'Animal':
-      'Calm Animals/Hold Animal/Dominate Animal/Summon Nature\'s Ally IV/' +
-      'Beast Shape III/Antilife Shell/Animal Shapes/' +
-      'Summon Nature\'s Ally VIII/Shapechange',
-    'Artifice':
-      'Animate Rope/Wood Shape/Stone Shape/Minor Creation/Fabricate/' +
-      'Major Creation/Wall Of Iron/Instant Summons/Prismatic Sphere',
-    'Chaos':
-      'Protection From Law/Align Weapon/Magic Circle Against Law/' +
-      'Chaos Hammer/Dispel Law/Animate Objects/Word Of Chaos/Cloak Of Chaos/' +
-      'Summon Monster IX',
-    'Charm':
-      'Charm Person/Calm Emotions/Suggestion/Heroism/Charm Monster/' +
-      'Geas+Quest/Insanity/Demand/Dominate Monster',
-    'Community':
-      'Bless/Shield Other/Prayer/Imbue With Spell Ability/Telepathic Bond/' +
-      'Heroes\' Feast/Refuge/Mass Cure Critical Wounds/Miracle',
-    'Darkness':
-      'Obscuring Mist/Blindness+Deafness/Deeper Darkness/Shadow Conjuration/' +
-      'Summon Monster V/Shadow Walk/Power Word Blind/' +
-      'Greater Shadow Evocation/Shades',
-    'Death':
-      'Cause Fear/Death Knell/Animate Dead/Death Ward/Slay Living/' +
-      'Create Undead/Destruction/Create Greater Undead/Wail Of The Banshee',
-    'Destruction':
-      'True Strike/Shatter/Rage/Inflict Critical Wounds/Shout/Harm/' +
-      'Disintegrate/Earthquake/Implosion',
-    'Earth':
-      'Magic Stone/Soften Earth And Stone/Stone Shape/Spike Stones/' +
-      'Wall Of Stone/Stoneskin/Elemental Body IV/Earthquake/Elemental Swarm',
-    'Evil':
-      'Protection From Good/Align Weapon/Magic Circle Against Good/' +
-      'Unholy Blight/Dispel Good/Create Undead/Blasphemy/Unholy Aura/' +
-      'Summon Monster IX',
-    'Fire':
-      'Burning Hands/Produce Flame/Fireball/Wall Of Fire/Fire Shield/' +
-      'Fire Seeds/Elemental Body IV/Incendiary Cloud/Elemental Swarm',
-    'Glory':
-      'Shield Of Faith/Bless Weapon/Searing Light/Holy Smite/' +
-      'Righteous Might/Undeath To Death/Holy Sword/Holy Aura/Gate',
-    'Good':
-      'Protection From Evil/Align Weapon/Magic Circle Against Evil/' +
-      'Holy Smite/Dispel Evil/Blade Barrier/Holy Word/Holy Aura/' +
-      'Summon Monster IX',
-    'Healing':
-      'Cure Light Wounds/Cure Moderate Wounds/Cure Serious Wounds/' +
-      'Cure Critical Wounds/Breath Of Life/Heal/Regenerate/' +
-      'Mass Cure Critical Wounds/Mass Heal',
-    'Knowledge':
-      'Comprehend Languages/Detect Thoughts/Speak With Dead/Divination/' +
-      'True Seeing/Find The Path/Legend Lore/Discern Location/Foresight',
-    'Law':
-      'Protection From Chaos/Align Weapon/Magic Circle Against Chaos/' +
-      'Order\'s Wrath/Dispel Chaos/Hold Monster/Dictum/Shield Of Law/' +
-      'Summon Monster IX',
-    'Liberation':
-      'Remove Fear/Remove Paralysis/Remove Curse/Freedom Of Movement/' +
-      'Break Enchantment/Greater Dispel Magic/Refuge/Mind Blank/Freedom',
-    'Luck':
-      'True Strike/Aid/Protection From Energy/Freedom Of Movement/' +
-      'Break Enchantment/Mislead/Spell Turning/Moment Of Prescience/Miracle',
-    'Madness':
-      'Lesser Confusion/Touch Of Idiocy/Rage/Confusion/Nightmare/' +
-      'Phantasmal Killer/Insanity/Scintillating Pattern/Weird',
-    'Magic':
-      'Identify/Magic Mouth/Dispel Magic/Imbue With Spell Ability/' +
-      'Spell Resistance/Antimagic Field/Spell Turning/' +
-      'Protection From Spells/Mage\'s Disjunction',
-    'Nobility':
-      'Divine Favor/Enthrall/Magic Vestment/Discern Lies/Greater Command/' +
-      'Geas+Quest/Repulsion/Demand/Storm Of Vengeance',
-    'Plant':
-      'Entangle/Barkskin/Plant Growth/Command Plants/Wall Of Thorns/' +
-      'Repel Wood/Animate Plants/Control Plants/Shambler',
-    'Protection':
-      'Sanctuary/Shield Other/Protection From Energy/Spell Immunity/' +
-      'Spell Resistance/Antimagic Field/Repulsion/Mind Blank/Prismatic Sphere',
-    'Repose':
-      'Deathwatch/Gentle Repose/Speak With Dead/Death Ward/Slay Living/' +
-      'Undeath To Death/Destruction/Waves Of Exhaustion/Wail Of The Banshee',
-    'Rune':
-      'Erase/Secret Page/Glyph Of Warding/Explosive Runes/' +
-      'Lesser Planar Binding/Greater Glyph Of Warding/Instant Summons/' +
-      'Symbol Of Death/Teleportation Circle',
-    'Strength':
-      'Enlarge Person/Bull\'s Strength/Magic Vestment/Spell Immunity/' +
-      'Righteous Might/Stoneskin/Grasping Hand/Clenched Fist/Crushing Hand',
-    'Sun':
-      'Endure Elements/Heat Metal/Searing Light/Fire Shield/Flame Strike/' +
-      'Fire Seeds/Sunbeam/Sunburst/Prismatic Sphere',
-    'Travel':
-      'Longstrider/Locate Object/Fly/Dimension Door/Teleport/Find The Path/' +
-      'Greater Teleport/Phase Door/Astral Projection',
-    'Trickery':
-      'Disguise Self/Invisibility/Nondetection/Confusion/False Vision/' +
-      'Mislead/Screen/Mass Invisibility/Time Stop',
-    'War':
-      'Magic Weapon/Spiritual Weapon/Magic Vestment/Divine Power/' +
-      'Flame Strike/Blade Barrier/Power Word Blind/Power Word Stun/' +
-      'Power Word Kill',
-    'Water':
-      'Obscuring Mist/Fog Cloud/Water Breathing/Control Water/Ice Storm/' +
-      'Cone Of Cold/Elemental Body IV/Horrid Wilting/Elemental Swarm',
-    'Weather':
-      'Obscuring Mist/Fog Cloud/Call Lightning/Sleet Storm/Ice Storm/' +
-      'Control Winds/Control Weather/Whirlwind/Storm Of Vengeance'
-  };
-  for(var i = 0; i < domains.length; i++) {
-    var domain = domains[i];
-    var notes = [];
     if(domain == 'Air') {
       notes = [
         "combatNotes.lightningArcFeature:R30' touch 1d6+%1 HP %V/day",
@@ -3989,31 +3974,10 @@ Pathfinder.movementRules = function(rules) {
   SRD35.movementRules(rules); // No changes
 };
 
-/* Defines the rules related to character races. */
-Pathfinder.raceRules = function(rules, languages, races) {
-
-  rules.defineChoice('languages', languages);
-  for(var i = 0; i < languages.length; i++) {
-    if(languages[i] == 'Common')
-      rules.defineRule('languages.Common', '', '=', '1');
-  }
-  rules.defineRule('languageCount',
-    'race', '=', 'source.match(/Gnome/) ? 3 : source.match(/Human/) ? 1 : 2'
-  );
-  rules.defineNote
-    ('validationNotes.languageAllocation:%1 available vs. %2 allocated');
-  rules.defineRule('validationNotes.languageAllocation.1',
-    '', '=', '0',
-    'languageCount', '+=', null
-  );
-  rules.defineRule('validationNotes.languageAllocation.2',
-    '', '=', '0',
-    /^languages\./, '+=', null
-  );
-  rules.defineRule('validationNotes.languageAllocation',
-    'validationNotes.languageAllocation.1', '=', '-source',
-    'validationNotes.languageAllocation.2', '+=', null
-  );
+/*
+ * TODO
+ */
+Pathfinder.raceRules = function(rules, name, features) {
 
   for(var i = 0; i < races.length; i++) {
 
@@ -4028,16 +3992,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
       features = [
         'Adaptability', 'Elf Blood', 'Keen Senses', 'Low-Light Vision',
         'Multitalented', 'Resist Enchantment', 'Sleep Immunity'
-      ];
-      notes = [
-        'featureNotes.adaptabilityFeature:Skill Focus bonus feat',
-        'featureNotes.elfBloodFeature:Elf and human for racial effects',
-        'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
-        'featureNotes.multitalentedFeature:Two favored classes',
-        'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
-        'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
-        'skillNotes.keenSensesFeature:+2 Perception',
-        'validationNotes.adaptabilityFeatureFeats:Requires Skill Focus'
       ];
       rules.defineRule
         ('featCount.General', 'featureNotes.adaptabilityFeature', '+', '1');
@@ -4064,12 +4018,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Weapon Familiarity (Orc Double Axe)',
         'Weapon Proficiency (Falchion/Greataxe)'
       ];
-      notes = [
-        'combatNotes.orcFerocityFeature:Fight 1 rd below zero HP',
-        "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
-        'featureNotes.orcBloodFeature:Orc and human for racial effects',
-        'skillNotes.intimidatingFeature:+2 Intimidate'
-      ];
       rules.defineRule('featureNotes.darkvisionFeature',
         raceNoSpace + 'Features.Darkvision', '+=', '60'
       );
@@ -4084,18 +4032,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Slow', 'Steady', 'Stability', 'Stonecunning',
         'Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)',
         'Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)'
-      ];
-      notes = [
-        'abilityNotes.slowFeature:-10 speed',
-        'abilityNotes.steadyFeature:No speed penalty in armor',
-        'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
-        'combatNotes.dwarfHatredFeature:+1 attack vs. goblinoid/orc',
-        'combatNotes.stabilityFeature:+4 CMD vs. Bull Rush/Trip',
-        "featureNotes.darkvisionFeature:%V' b/w vision in darkness",
-        'saveNotes.hardyFeature:+2 vs. poison/spells',
-        'skillNotes.greedFeature:+2 Appraise (precious metals, gems)',
-        'skillNotes.stonecunningFeature:' +
-          "+2 Perception (stone), automatic check w/in 10'"
       ];
 
       rules.defineRule('abilityNotes.armorSpeedAdjustment',
@@ -4119,15 +4055,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Sleep Immunity', 'Weapon Familiarity (Elven Curve Blade)',
         'Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)'
       ];
-      notes = [
-        'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
-        'magicNotes.elvenMagicFeature:+2 vs. spell resistance',
-        'saveNotes.resistEnchantmentFeature:+2 vs. enchantment',
-        'saveNotes.sleepImmunityFeature:Immune <i>Sleep</i>',
-        'skillNotes.elvenMagicFeature:' +
-          '+2 Spellcraft (identify magic item properties)',
-        'skillNotes.keenSensesFeature:+2 Perception'
-      ];
       rules.defineRule('featureNotes.low-LightVisionFeature',
         '', '=', '1',
         raceNoSpace + 'Features.Low-Light Vision', '+', null
@@ -4145,19 +4072,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Defensive Training', 'Gnome Hatred', 'Gnome Magic', 'Keen Senses',
         'Low-Light Vision', 'Natural Spells', 'Obsessive', 'Resist Illusion',
         'Slow', 'Small', 'Weapon Familiarity (Gnome Hooked Hammer)'
-      ];
-      notes = [
-        'abilityNotes.slowFeature:-10 speed',
-        'combatNotes.defensiveTrainingFeature:+4 AC vs. giant creatures',
-        'combatNotes.gnomeHatredFeature:+1 attack vs. goblinoid/reptilian',
-        'combatNotes.smallFeature:+1 AC/attack, -1 CMB/CMD',
-        'featureNotes.low-LightVisionFeature:x%V normal distance in poor light',
-        'magicNotes.gnomeMagicFeature:+1 DC on illusion spells',
-        'magicNotes.naturalSpellsFeature:%V 1/day as caster %1',
-        'saveNotes.resistIllusionFeature:+2 vs. illusions',
-        'skillNotes.keenSensesFeature:+2 Perception',
-        'skillNotes.obsessiveFeature:+2 choice of Craft or Profession',
-        'skillNotes.smallFeature:+2 Fly/+4 Stealth'
       ];
 
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
@@ -4212,15 +4126,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
         'Sure-Footed', 'Weapon Familiarity (Halfling Sling Staff)',
         'Weapon Proficiency (Sling)'
       ];
-      notes = [
-        'abilityNotes.slowFeature:-10 speed',
-        'combatNotes.smallFeature:+1 AC/attack, -1 CMB/CMD',
-        'saveNotes.fearlessFeature:+2 vs. fear',
-        'saveNotes.halflingLuckFeature:+1 all saves',
-        'skillNotes.keenSensesFeature:+2 Perception',
-        'skillNotes.smallFeature:+2 Fly/+4 Stealth',
-        'skillNotes.sure-FootedFeature:+2 Acrobatics/Climb'
-      ];
       rules.defineRule('armorClass', 'combatNotes.smallFeature', '+', '1');
       rules.defineRule
         ('combatManeuverBonus', 'combatNotes.smallFeature', '+', '-1');
@@ -4245,7 +4150,6 @@ Pathfinder.raceRules = function(rules, languages, races) {
 
       adjustment = '+2 any'; // Player's choice
       features = null;
-      notes = null;
       rules.defineRule
         ('featCount.General', 'featureNotes.humanFeatCountBonus', '+', null);
       rules.defineRule('featureNotes.humanFeatCountBonus',
@@ -4258,15 +4162,7 @@ Pathfinder.raceRules = function(rules, languages, races) {
       rules.defineRule
         ('skillPoints', 'skillNotes.humanSkillPointsBonus', '+', null);
 
-    } else
-      continue;
-
-    SRD35.defineRace(rules, race, adjustment, features);
-    if(notes != null) {
-      rules.defineNote(notes);
     }
-
-  }
 
 };
 
