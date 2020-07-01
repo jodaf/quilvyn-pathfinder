@@ -95,6 +95,9 @@ function Pathfinder() {
 
 }
 
+Pathfinder.RANDOMIZABLE_ATTRIBUTES =
+  SRD35.RANDOMIZABLE_ATTRIBUTES.concat(['faction', 'traits']);
+
 Pathfinder.ALIGNMENTS = Object.assign({}, SRD35.ALIGNMENTS);
 Pathfinder.ANIMAL_COMPANIONS = {
   // Attack, Dam, AC include all modifiers
@@ -177,7 +180,7 @@ Pathfinder.ARMORS = {
   'Scale Mail':SRD35.ARMORS['Scale Mail'] + ' AC=5',
   'Chainmail':SRD35.ARMORS['Chainmail'] + ' AC=6',
   'Breastplate':SRD35.ARMORS['Breastplate'] + ' AC=5',
-  'Splint Mail':SRD35.ARMORS['Split Mail'] + ' AC=7',
+  'Splint Mail':SRD35.ARMORS['Splint Mail'] + ' AC=7',
   'Banded Mail':SRD35.ARMORS['Banded Mail'] + ' AC=7',
   'Half Plate':SRD35.ARMORS['Half Plate'] + ' AC=8',
   'Full Plate':SRD35.ARMORS['Full Plate'] + ' AC=9'
@@ -928,11 +931,11 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Dispelling Touch':'magic:<i>Dispel Magic</i> touch attack %V/day',
   'Noble Leadership':'feature:+%V Leadership',
   'Inspiring Word':
-    "magic:R30' word imparts +2 attack/skill/ability/save to target %V rd %1/day",
+    "magic:R30' word imparts +2 attack, skill, ability, and save to target %V rd %1/day",
   'Bramble Armor':'combat:Thorny hide causes 1d6+%1 HP to striking foes %V/day',
   'Wooden Fist':'combat:+%V, no AOO unarmed attacks %1 rd/day',
   'Aura Of Protection':
-    "magic:Allies w/in 30' +%V AC/%1 elements resistance %2 rd/day",
+    "magic:Allies w/in 30' +%V AC, %1 elements resistance %2 rd/day",
   'Resistant Touch':
     'magic:Touch transfers resistance bonus to ally 1 minute %V/day',
   'Resistance Bonus':'save:+%V saves',
@@ -1002,7 +1005,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Defensive Combat Training':'combat:+%V CMD',
   'Deft Hands':'skill:+%V Disable Device/+%1 Sleight Of Hand',
   'Disruptive':'combat:+4 foe defensive spell DC',
-  'Dodge':'combat:+1 AC/CMD',
+  'Dodge':'combat:+1 AC/+1 CMD',
   'Double Slice':'combat:Add full strength to off-hand damage',
   'Elemental Channel (Air)':
     'combat:Channel energy to heal or harm Air outsiders',
@@ -1020,7 +1023,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Extra Performance':'feature:Use Barding Performance extra 6 rd/day',
   'Extra Rage':'feature:Rage extra 6 rd/day',
   'Far Shot':'combat:-1 range penalty',
-  'Fleet':'ability:+5 Speed in light/no armor',
+  'Fleet':'ability:+5 Speed in light or no armor',
   "Gorgon's Fist":
     'combat:Unarmed attack vs. slowed foe DC %V fortitude save or staggered',
   'Greater Bull Rush':'combat:+2 Bull Rush checks, AOO on Bull Rushed foes',
@@ -1113,7 +1116,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Quick Reflexes':'combat:+1 AOO/rd during rage',
   'Rolling Dodge':'combat:+%V AC vs. ranged %1 rd during rage',
   'Roused Anger':'combat:Rage even if fatigued',
-  'Strength Surge':'combat:+%V strength/combat maneuver check 1/rage',
+  'Strength Surge':'combat:+%V strength or combat maneuver check 1/rage',
   'Surprise Accuracy':'combat:+%V attack 1/rage',
   'Terrifying Howl':"combat:Howl DC %V will save w/in 30' or shaken 1d4+1 rd",
   'Unexpected Strike':'combat:AOO when foe enters threat 1/rage',
@@ -1159,7 +1162,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Ki Pool':'feature:%V points refills w/8 hours rest',
   'Ki Strike':'combat:Unarmed attack is %V',
   'Maneuver Training':'combat:+%V CMB',
-  'Monk Armor Class Adjustment':'combat:+%V AC/CMD',
+  'Monk Armor Class Adjustment':'combat:+%V AC/+%V CMD',
   'Perfect Self':[
     'combat:DR 10/chaotic',
     'save:Treat as outsider for magic saves'
@@ -1179,7 +1182,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Aura Of Resolve':"save:Immune charm, +4 to allies w/in 30'",
   'Aura Of Righteousness':"save:Immune compulsion, +4 to allies w/in 30'",
   'Favored Enemy':[
-    'combat:+2 or more attack/damage vs. %V type(s) of creatures',
+    'combat:+2 or more attack and damage vs. %V type(s) of creatures',
     'skill:+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures'
   ],
   'Favored Terrain':[
@@ -1190,7 +1193,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Master Hunter':
     'combat:Full attack vs. favored enemy requires DC %V Fortitude save or die',
   'Quarry':[
-    'combat:+%V attack/automatic critical vs. target',
+    'combat:+%V attack, automatic critical vs. target',
     'skill:Take %V to track target',
   ],
   'Camouflage':'skill:Hide in favored terrain',
@@ -1210,7 +1213,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Ledge Walker':'skill:Use Acrobatics along narrow surfaces at full speed',
   'Quick Disable':'skill:Disable Device in half normal time',
   'Trap Spotter':"skill:Automatic Perception check w/in 10' of trap",
-  'Trapfinding':'skill:+%V Perception (traps)/Disable Device (traps)',
+  'Trapfinding':'skill:+%V Perception (traps)/+%V Disable Device (traps)',
   'Aberrant Form':[
     'combat:Immune critical hit/sneak attack, DR 5/-',
     "feature:Blindsight 60'"
@@ -1249,7 +1252,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'magic:Automatically overcome resistance 1/day'
   ],
   'It Was Meant To Be':'feature:Reroll attack/critical/spell resistance check %V/day',
-  'Touch Of Destiny':'magic:Touched creature +%V attack/skill/ability/save 1 rd %1/day',
+  'Touch Of Destiny':'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
   'Bloodline Destined':'save:+spell level on saves 1 rd after casting personal spell',
   'Fated':
     'save:+%V saves when surprisedaveNotes.withinReachFeature:DC 20 Will save vs. fatal attack 1/day',
@@ -1301,13 +1304,13 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   "Summoner's Charm":'magic:Summon duration increased %V rd',
   'Forewarned':'combat:+%V initiative, always act in surprise round',
   "Diviner's Fortune":
-    'magic:Touched creature +%V attack/skill/ability/save 1 rd %1/day',
+    'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
   'Scrying Adept':
     'magic:Constant <i>Detect Scrying</i>, +1 scrying subject familiarity',
   'Aura Of Despair':"magic:Foes w/in 30' -2 ability/attack/damage/save/skill %V rd/day",
   'Dazing Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
   'Enchantment Reflection':'save:Successful save reflects enchantment spells on caster',
-  'Enchanting Smile':'skill:+%V Bluff/Diplomacy/Intimidate',
+  'Enchanting Smile':'skill:+%V Bluff/+%V Diplomacy/+%V Intimidate',
   'Elemental Wall':'magic:<i>Wall Of Fire</i>/acid/cold/electricity %V rd/day',
   'Force Missile':'magic:<i>Magic Missile</i> 1d4+%V HP %1/day',
   'Intense Spell':'magic:+%V evocation spell damage',
@@ -1318,7 +1321,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Life Sight':'feature:%V blindsight for living/undead',
   'Power Over Undead':'feature:+1 Feat',
   'Necromantic Touch':'magic:Touch causes shaken/frightened %V rd %1/day',
-  'Physical Enhancement':'ability:+%V %1 of str/dex/con',
+  'Physical Enhancement':'ability:+%V %1 of str, dex, and con',
   'Change Shape':'magic:<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
   'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   // Races
@@ -1343,9 +1346,9 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Slow':'ability:-10 Speed',
   'Steady':'ability:No speed penalty in armor',
   'Defensive Training':'combat:+4 AC vs. giant creatures',
-  'Dwarf Hatred':'combat:+1 attack vs. goblinoid/orc',
-  'Stability':'combat:+4 CMD vs. Bull Rush/Trip',
-  'Hardy':'save:+2 vs. poison/spells',
+  'Dwarf Hatred':'combat:+1 attack vs. goblinoid and orc',
+  'Stability':'combat:+4 CMD vs. Bull Rush and Trip',
+  'Hardy':'save:+2 vs. poison and spells',
   'Greed':'skill:+2 Appraise (precious metals, gems)',
   'Stonecunning':"skill:+2 Perception (stone), automatic check w/in 10'",
   'Elven Magic':[
@@ -1353,9 +1356,9 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+2 Spellcraft (identify magic item properties)'
   ],
   'Keen Senses':'skill:+2 Perception',
-  'Gnome Hatred':'combat:+1 attack vs. goblinoid/reptilian',
+  'Gnome Hatred':'combat:+1 attack vs. goblinoid and reptilian',
   'Small':[
-    'combat:+1 AC/attack, -1 CMB/CMD',
+    'combat:+1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD',
     'skill:+2 Fly/+4 Stealth'
   ],
   'Gnome Magic':'magic:+1 DC on illusion spells',
@@ -1364,7 +1367,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Obsessive':'skill:+2 choice of Craft or Profession',
   'Fearless':'save:+2 vs. fear',
   'Halfling Luck':'save:+1 all saves',
-  'Sure-Footed':'skill-FootedFeature:+2 Acrobatics/Climb',
+  'Sure-Footed':'skill-FootedFeature:+2 Acrobatics/+2 Climb',
   // Traits
   'A Sure Thing':'combat:+2 attack vs evil 1/day',
   'Adopted':'feature:Family race traits available',
@@ -1376,36 +1379,38 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:Handle Animal is class skill'
   ],
   'Apothecary':'feature:Has reliable poisons source',
-  'Arcane Archivist':'skill:+1 Use Magic Device/is class skill',
+  'Arcane Archivist':'skill:+1 Use Magic Device/Use Magic Device is class skill',
   'Armor Expert':'skillNotes.armorExpertFeature:-1 armor skill check penalty',
   'Attuned To The Ancestors':'magic:<i>Hide From Undead</i> %V rd 1/day',
-  'Bad Reputation':'skill:+2 Intimidate/is class skill',
+  'Bad Reputation':'skill:+2 Intimidate/Intimidate is class skill',
   'Balanced Offensive':'combat:Cleric-like elemental attack %V/day',
   'Beastspeaker':'skill:+1 Diplomacy (animals), no penalty w/elemental animals',
   'Beneficient Touch':'magic:Reroll healing spell 1s 1/day',
   'Birthmark':'save:+2 vs. charm, compulsion',
   'Bitter Nobleman':
-    'skill:+1 choice of Bluff, Sleight Of Hand, Stealth/is class skill',
-  'Brute':'skill:+1 Intimidate/is class skill',
+    'skill:+1 choice of Bluff, Sleight Of Hand, Stealth/choice is class skill',
+  'Brute':'skill:+1 Intimidate/Intimidate is class skill',
   'Bullied':'combat:+1 unarmed AOO attack',
-  'Bully':'skill:+1 Intimidate/is class skill',
-  'Canter':'skill:+5 Bluff (secret message)/Sense Motive (secret message)',
+  'Bully':'skill:+1 Intimidate/Intimidate is class skill',
+  'Canter':'skill:+5 Bluff (secret message)/+5 Sense Motive (secret message)',
   "Captain's Blade":
     'skill:+1 Acrobatics, Climb when on ship/choice is class skill',
-  'Caretaker':'skillNotes.caretakerFeature:+1 Heal/is class skill',
+  'Caretaker':'skillNotes.caretakerFeature:+1 Heal/Heal is class skill',
   'Charming':[
     'magic:+1 spell DC w/attracted creatures',
     'skill:+1 Bluff, Diplomacy w/attracted creatures'
   ],
   'Child Of Nature':
-    'skill:+1 Knowledge (Nature)/Survival (finding food and water)/choice is class skill',
-  'Child Of The Streets':'skill:+1 Sleight Of Hand/is class skill',
+    'skill:+1 Knowledge (Nature)/+1 Survival (finding food and water)/choice is class skill',
+  'Child Of The Streets':'skill:+1 Sleight Of Hand/Sleight Of Hand is class skill',
   'Child Of The Temple':
-    'skill:+1 Knowledge (Nobility)/Knowledge (Religion)/choice is class skill',
-  'Clasically Schooled':'skill:+1 Spellcraft/is class skill',
-  'Comparative Religion':'skill:+1 Knowledge (Religion)/is class skill',
+    'skill:+1 Knowledge (Nobility)/+1 Knowledge (Religion)/choice is class skill',
+  'Clasically Schooled':'skill:+1 Spellcraft/Spellcraft is class skill',
+  'Comparative Religion':
+    'skill:+1 Knowledge (Religion)/Knowledge (Religion) is class skill',
   'Courageous':'save:+2 vs. fear',
-  'Dangerously Curious':'skill:+1 Use Magic Device/is class skill',
+  'Dangerously Curious':
+    'skill:+1 Use Magic Device/Use Magic Device is class skill',
   'Deft Dodger':'save:+1 Reflex',
   'Demon Hunter':[
     'skill:+3 Knowledge (Planes) wrt demons',
@@ -1417,21 +1422,21 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   "Devil's Mark":
     'skill:+2 Bluff, Diplomacy, Intimidate, Sense Motive with evil outsiders',
   'Devotee Of The Green':
-    'skill:+1 Knowledge (Geography)/Knowledge (Nature)/choice is class skill',
+    'skill:+1 Knowledge (Geography)/+1 Knowledge (Nature)/choice is class skill',
   'Dirty Fighter':'combat:+1 damage when flanking',
   'Divine Courtesan':
-    'skill:+1 Diplomacy (gather information)/Sense Motive/choice is class skill',
+    'skill:+1 Diplomacy (gather information)/+1 Sense Motive/choice is class skill',
   'Divine Warrior':'magic:Enspelled weapons +1 damage',
   'Dune Walker':[
     'ability:Normal movement through sand',
     'save:+4 Fort vs heat'
   ],
   'Ear For Music':'skill:+1 Perform choice/+2 Knowledge (Local) (art, music)',
-  'Ease Of Faith':'skill:+1 Diplomacy/is class skill',
+  'Ease Of Faith':'skill:+1 Diplomacy/Diplomacy is class skill',
   'Eastern Mysteries':'magicNotes.easternMysteriesFeature:+2 spell DC 1/day',
   'Elven Reflexes':'combat:+2 Initiative',
   'Exile':'combat:+2 Initiative',
-  'Expert Duelist':'combat:+1 AC/CMD',
+  'Expert Duelist':'combat:+1 AC/+1 CMD',
   'Explorer':'skill:+1 Survival/Survival is class skill',
   'Eyes And Ears Of The City':'skill:+1 Perception/Perception is class skill',
   'Faction Freedom Fighter':[
@@ -1443,7 +1448,8 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+1 Bluff, Diplomacy, Sense Motive when well-dressed/choice is class skill',
   'Fast-Talker':'skill:+1 Bluff/Bluff is class skill',
   'Fencer':'combat:+1 attack on AOO with blades',
-  'Fiendish Presence':'skill:+1 Diplomacy/Sense Motive/choice is class skill',
+  'Fiendish Presence':
+    'skill:+1 Diplomacy/+1 Sense Motive/choice is class skill',
   'Fires Of Hell':'combat:Flaming blade +1 damage %V rd 1/day',
   'Flame Of The Dawn Flower':'combat:+2 scimitar critical damage',
   'Focused Mind':'magic:+2 concentration checks',
@@ -1456,11 +1462,12 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+1 skills during escape/Escape Artist is class skill'
   ],
   'Gifted Adept':'magic:+1 caster level on chosen spell',
-  'Gold Finger':'skill:+1 Disable Device/Sleight Of Hand/choice is class skill',
+  'Gold Finger':
+    'skill:+1 Disable Device/+1 Sleight Of Hand/choice is class skill',
   'Goldsniffer':'skill:+2 Perception (metals, jewels, gems)',
   'Greasy Palm':'feature:10% discount on bribes',
   'Guardian Of The Forge':
-    'skill:+1 Knowledge (Engineering)/Knowledge (History)/choice is class skill',
+    'skill:+1 Knowledge (Engineering)/+1 Knowledge (History)/choice is class skill',
   'Hedge Magician':'magic:5% discount on magic craft cost',
   'Highlander':
     'skill:+1 Stealth/+2 Stealth (hilly and rocky areas)/Stealth is class skill',
@@ -1478,17 +1485,17 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+3 Diplomacy (requests)'
   ],
   'Insider Knowledge':
-    'skill:+1 choice of Diplomacy, Knowledge (Local)/is class skill',
+    'skill:+1 choice of Diplomacy, Knowledge (Local)/choice is class skill',
   'Killer':'combat:Extra damage on critical hit',
   'Librarian':
-    'skill:+1 Linguistics/Profession (Librarian)/choice is class skill/+1 reading bonus 1/day',
+    'skill:+1 Linguistics/+1 Profession (Librarian)/choice is class skill/+1 reading bonus 1/day',
   'Log Roller':[
     'combat:+1 CMD vs. trip',
     'skill:+1 Acrobatics'
   ],
   'Lore Seeker': [
     'magic:+1 caster level on 3 spells',
-    'skill:+1 Knowledge (Arcana)/is class skill'
+    'skill:+1 Knowledge (Arcana)/Knowledge (Arcana) is class skill'
   ],
   'Loyalty':'save:+1 vs enchantment',
   'Magic Is Life':
@@ -1498,7 +1505,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Magical Talent':'magic:Use chosen cantrip 1/day',
   'Master Of Pentacles':'magic:+2 Conjuration spell caster level 1/day',
   'Mathematical Prodigy':
-    'skill:+1 Knowledge (Arcana)/Knowledge (Engineering)/choice is class skill',
+    'skill:+1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is class skill',
   'Medic':[
     'magic:+1 caster level with <i>Remove</i> healing',
     'skill:+2 Heal (disease, poison)'
@@ -1506,11 +1513,11 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Meridian Strike':'combat:Reroll crit damage 1s 1/day',
   'Meticulous Artisan':'skill:+1 Craft for day job',
   'Militia Veteran':
-    'skill:+1 choice of Profession (Soldier), Ride, Survival/is class skill',
+    'skill:+1 choice of Profession (Soldier), Ride, Survival/choice is class skill',
   'Mind Over Matter':'save:+1 Will',
   'Missionary':[
     'magic:+1 caster level on 3 spells',
-    'skill:+1 Knowledge (Religion)/is class skill'
+    'skill:+1 Knowledge (Religion)/Knowledge (Religion) is class skill'
   ],
   'Mummy-Touched':'save:+2 vs. curse, disease',
   'Natural Negotiator':[
@@ -1521,17 +1528,18 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'feature:+1 Leadership score',
     "save:+1 followers' Will vs. mind-altering effects"
   ],
-  'Observant':'skill:+1 choice of Perception, Sense Motive/is class skill',
-  'Outcast':'skill:+1 Survival/is class skill',
+  'Observant':
+    'skill:+1 choice of Perception, Sense Motive/choice is class skill',
+  'Outcast':'skill:+1 Survival/Survival is class skill',
   'Patient Optimist':'skill:+1 Diplomacy, 1 retry on unfriendly or hostile',
-  'Performance Artist':'skill:+1 choice of Perform/is class skill',
+  'Performance Artist':'skill:+1 choice of Perform/choice is class skill',
   'Planar Voyage':[
     'combat:+1 Initiative off PM plane',
     'save:+1 saves off PM plane'
   ],
-  'Poverty-Stricken':'skill:+1 Survival/is class skill',
+  'Poverty-Stricken':'skill:+1 Survival/Survival is class skill',
   'Proper Training':
-    'skill:+1 choice of Knowledge (Geography), Knowledge (History)/is class skill',
+    'skill:+1 choice of Knowledge (Geography), Knowledge (History)/choice is class skill',
   'Rapscallion':[
     'combat:+1 Initiative',
     'skill:+1 Escape Artist'
@@ -1545,31 +1553,32 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Rich Parents':'feature:Start w/900 GP',
   'River Rat':[
     'combat:+1 damage w/daggers',
-    'skill:+1 Swim/is class skill'
+    'skill:+1 Swim/Swim is class skill'
   ],
   'Rousing Oratory':
     "skill:Choice of Perform is class skill/DC 15 gives allies w/in 60' +1 or better vs. fear 5 min 1/day",
   'Sacred Conduit':'magic:+1 channeled energy save DC',
   'Sacred Touch':'magic:Touch stabilizes',
   'Savanna Child':
-    'skill:+1 choice of Handle Animal, Knowledge (Nature), Ride/is class skill',
+    'skill:+1 choice of Handle Animal, Knowledge (Nature), Ride/choice is class skill',
   'Scholar Of Balance':
-    'skill:+1 Knowledge (Nature)/Knowledge (Planes)/choice is class skill',
+    'skill:+1 Knowledge (Nature)/+1 Knowledge (Planes)/choice is class skill',
   'Scholar Of Ruins':
-    'skill:+1 Knowledge (Dungeoneering)/Knowledge (Geography)/choice is class skill',
+    'skill:+1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)/choice is class skill',
   'Scholar Of The Great Beyond':
-    'skill:+1 Knowledge (History)/Knowledge (Planes)/choice is class skill',
+    'skill:+1 Knowledge (History)/+1 Knowledge (Planes)/choice is class skill',
   'Secrets Of The Sphinx':
     'skill:+2 Knowledge check 1/day/choice of Knowledge is class skill',
-  'Shadow Diplomat':'skill:+1 Diplomacy/is class skill',
+  'Shadow Diplomat':'skill:+1 Diplomacy/Diplomacy is class skill',
   'Sheriff':'skill:+10 local Bluff, Diplomacy, Intimidate 1/session',
   'Shiv':'combat:+1 surprise piercing/slashing damage',
   'Skeptic':'save:+2 vs. illusions',
-  'Smuggler':'skill:+3 Sleight Of Hand (hide object)/is class skill',
+  'Smuggler':
+    'skill:+3 Sleight Of Hand (hide object)/Sleight Of Hand is class skill',
   'Soul Drinker':"combat:Gain HP equal to slain foe's hit dice 1 min 1/day",
   'Starchild':'skill:+4 Survival (avoid becoming lost), know North',
   'Storyteller':'skill:+%V choice of Knowledge check 1/scenario',
-  'Suspicious':'skill:+1 Sense Motive/is class skill',
+  'Suspicious':'skill:+1 Sense Motive/Sense Motive is class skill',
   'Tavern Owner':'feature:10% extra from treasure sale',
   'Teaching Mistake':'save:+1 save after nat 1 save roll 1/scenario',
   'Tireless':[
@@ -1577,7 +1586,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'combat:+1 HP'
   ],
   'Tomb Raider':
-    'skill:+1 Knowledge (Dungeoneering)/Perception/choice is class skill',
+    'skill:+1 Knowledge (Dungeoneering)/+1 Perception/choice is class skill',
   'Trouper':[
     'save:+1 vs. Perform-related abilities',
     'skill:+1 choice of Perform'
@@ -1588,22 +1597,22 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+3 resist Intimidate DC'
   ],
   'Undead Slayer':'combatNotes.undeadSlayerFeature:+1 damage vs. undead',
-  'Upstanding':'skill:+1 Diplomacy/Sense Motive/choice is class skill',
+  'Upstanding':'skill:+1 Diplomacy/+1 Sense Motive/choice is class skill',
   'Unorthodox Strategy':'skill:+2 Acrobatics (traverse threatened squares)',
   'Vagabond Child':
-    'skill:+1 choice of Disable Device, Escape Artist, Sleight Of Hand/is class skill',
+    'skill:+1 choice of Disable Device, Escape Artist, Sleight Of Hand/choice is class skill',
   'Veteran Of Battle':'combat:+1 Initiative, draw weapon during surprise round',
   'Vindictive':'combat:+1 damage vs. successful foe 1 min 1/day',
   'Warrior Of Old':'combat:+2 Initiative',
-  'Watchdog':'skill:+1 Sense Motive/is class skill',
+  'Watchdog':'skill:+1 Sense Motive/Sense Motive is class skill',
   'Weapon Style':'combat:Proficient with choice of monk weapon',
   'Well-Informed':
-    'skill:+1 Diplomacy (gather information)/Knowledge (Local)/choice is class skill',
-  'Whistleblower':'skill:+1 Sense Motive/is class skill',
+    'skill:+1 Diplomacy (gather information)/+1 Knowledge (Local)/choice is class skill',
+  'Whistleblower':'skill:+1 Sense Motive/Sense Motive is class skill',
   'Wisdom In The Flesh':
     'skill:Use Wis modifier for chosen Str/Con/Dex skill/is class skill',
   'World Traveler':
-    'skill:+1 choice of Diplomacy, Knowledge (Local), Sense Motive/is class skill'
+    'skill:+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is class skill'
 });
 Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS);
 Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
@@ -1705,64 +1714,64 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
 Pathfinder.SPELLS = Object.assign({}, SRD35.SPELLS, {
 
   'Beast Shape I':
-    'School=Transmutation Level=W3 ' +
-    'Description="Become small (+2 Dex/+1 AC) or medium (+2 Str/+2 AC) animal for $L min"',
+    'School=Transmutation ' +
+    'Description="Become small (+2 Dex, +1 AC) or medium (+2 Str, +2 AC) animal for $L min"',
   'Beast Shape II':
-    'School=Transmutation Level=W4 ' +
-    'Description="Become tiny (+4 Dex/-2 Str/+1 AC) or large (+4 Str/-2 Dex/+4 AC) animal for $L min"',
+    'School=Transmutation ' +
+    'Description="Become tiny (+4 Dex, -2 Str, +1 AC) or large (+4 Str, -2 Dex, +4 AC) animal for $L min"',
   'Beast Shape III':
-    'School=Transmutation Level=W5,Animal5 ' +
-    'Description="Become dimunitive (+6 Dex/-4 Str/+1 AC) or huge (+6 Str/-4 Dex/+6 AC) animal or small (+4 Dex/+2 AC) or medium (+4 Str/+4 AC) magical beast for $L min"',
+    'School=Transmutation ' +
+    'Description="Become dimunitive (+6 Dex, -4 Str, +1 AC) or huge (+6 Str, -4 Dex, +6 AC) animal or small (+4 Dex, +2 AC) or medium (+4 Str, +4 AC) magical beast for $L min"',
   'Beast Shape IV':
-    'School=Transmutation Level=W6 ' +
-    'Description="Become tiny (+8 Dex/-2 Str/+3 AC) or large (+6 Str/-2 Dex/+2 Con/+6 AC) magical beast for $L min"',
+    'School=Transmutation ' +
+    'Description="Become tiny (+8 Dex, -2 Str, +3 AC) or large (+6 Str, -2 Dex, +2 Con, +6 AC) magical beast for $L min"',
   'Bleed':
-    'School=Necromancy Level=C0,W0 ' +
+    'School=Necromancy ' +
     'Description="R$RS\' Stabilized target resume dying (Will neg)"',
   'Breath Of Life':
-    'School=Conjuration Level=C5 ' +
-    'Description="Heal 5d8+$L/max 25 plus resurrect target dead lt 1 rd"',
+    'School=Conjuration ' +
+    'Description="Heal 5d8+$L (max 25) plus resurrect target dead lt 1 rd"',
   'Elemental Body I':
-    'School=Transmutation Level=W4 ' +
-    'Description="Become small air (+2 Dex/+2 AC/fly 60\'/whirlwind), earth (+2 Str/+4 AC/earth glide), fire (+2 Dex/+2 AC/resist fire/burn), water (+2 Con/+4 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision for $L min"',
+    'School=Transmutation ' +
+    'Description="Become small air (+2 Dex, +2 AC, fly 60\', whirlwind), earth (+2 Str, +4 AC, earth glide), fire (+2 Dex, +2 AC, resist fire, burn), water (+2 Con, +4 AC, swim 60\', vortex, breathe water) elemental, 60\' darkvision for $L min"',
   'Elemental Body II':
-    'School=Transmutation Level=W5 ' +
-    'Description="Become medium air (+4 Dex/+3 AC/fly 60\'/whirlwind), earth (+4 Str/+5 AC/earth glide), fire (+4 Dex/+3 AC/resist fire/burn), water (+4 Con/+5 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision for $L min"',
+    'School=Transmutation ' +
+    'Description="Become medium air (+4 Dex, +3 AC, fly 60\', whirlwind), earth (+4 Str, +5 AC, earth glide), fire (+4 Dex, +3 AC, resist fire, burn), water (+4 Con, +5 AC, swim 60\', vortex, breathe water) elemental, 60\' darkvision for $L min"',
   'Elemental Body III':
-    'School=Transmutation Level=W6 ' +
-    'Description="Become large air (+2 Str/+4 Dex/+4 AC/fly 60\'/whirlwind), earth (+6 Str/-2 Dex/+2 Con/+6 AC/earth glide), fire (+4 Dex/+2 Con/+4 AC/resist fire/burn), water (+2 Str/-2 Dex/+6 Con/+6 AC/swim 60\'/vortex/breathe water) elemental, 60\' darkvision/immune bleed, critical, sneak attack for $L min"',
+    'School=Transmutation ' +
+    'Description="Become large air (+2 Str, +4 Dex, +4 AC, fly 60\', whirlwind), earth (+6 Str, -2 Dex, +2 Con, +6 AC, earth glide), fire (+4 Dex, +2 Con, +4 AC, resist fire, burn), water (+2 Str, -2 Dex, +6 Con, +6 AC, swim 60\', vortex, breathe water) elemental, 60\' darkvision, immune bleed, critical, sneak attack for $L min"',
   'Elemental Body IV':
-    'School=Transmutation Level=W7,Air7,Fire7 ' +
-    'Description="Become huge air (+4 Str/+6 Dex/+4 AC/fly 120\'/whirlwind), earth (+8 Str/-2 Dex/+4 Con/+6 AC/earth glide), fire (+6 Dex/+4 Con/+4 AC/resist fire/burn), water (+4 Str/-2 Dex/+8 Con/+6 AC/swim 120\'/vortex/breathe water) elemental, 60\' darkvision/immune bleed, critical, sneak attack/DR 5/- for $L min"',
+    'School=Transmutation ' +
+    'Description="Become huge air (+4 Str, +6 Dex, +4 AC, fly 120\', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120\', vortex, breathe water) elemental, 60\' darkvision, immune bleed, critical, sneak attack, DR 5, - for $L min"',
   'Form Of The Dragon I':
-    'School=Transmutation Level=W6 ' +
-    'Description="Become Medium dragon (+4 Str/+2 Con/+4 AC/Fly 60\'/Darkvision 60\'/breath weapon once 6d8 HP (Ref half)/element resistance/bite 1d8 HP/claws 2x1d6 HP/wings 2x1d4 HP) for $L min"',
+    'School=Transmutation ' +
+    'Description="Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60\', Darkvision 60\', breath weapon once 6d8 HP (Ref half), element resistance, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for $L min"',
   'Form Of The Dragon II':
-    'School=Transmutation Level=W7 ' +
-    'Description="Become Large dragon (+6 Str/+4 Con/+6 AC/Fly 90\'/Darkvision 60\'/breath weapon twice 8d8 HP (Ref half)/element resistance/bite 2d6 HP/claws 2x1d8 HP/wings 2x1d6 HP) for $L min"',
+    'School=Transmutation ' +
+    'Description="Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90\', Darkvision 60\', breath weapon twice 8d8 HP (Ref half), element resistance, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for $L min"',
   'Form Of The Dragon III':
-    'School=Transmutation Level=W8 ' +
-    'Description="Become Huge dragon (+10 Str/+8 Con/+8 AC/Fly 120\'/Blindsense 60\'/Darkvision 120\'/breath weapon 1/d4 rd 12d8 HP (Ref half)/element immunity/bite 2d8 HP/claws 2x2d6 HP/wings 2x1d8 HP/tail 2d6 HP) for $L min"',
+    'School=Transmutation ' +
+    'Description="Become Huge dragon (+10 Str, +8 Con, +8 AC, Fly 120\', Blindsense 60\', Darkvision 120\', breath weapon 1, d4 rd 12d8 HP (Ref half), element immunity, bite 2d8 HP, claws 2x2d6 HP, wings 2x1d8 HP, tail 2d6 HP) for $L min"',
   'Giant Form I':
-    'School=Transmutation Level=W7 ' +
-    'Description="Become large giant (+6 Str/-2 Dex/+4 Con/+4 AC/low-light vision/form abilities) for $L min"',
+    'School=Transmutation ' +
+    'Description="Become large giant (+6 Str, -2 Dex, +4 Con, +4 AC, low-light vision, form abilities) for $L min"',
   'Giant Form II':
-    'School=Transmutation Level=W8 ' +
-    'Description="Become huge giant (+8 Str/-2 Dex/+6 Con/+6 AC/low-light vision/form abilities) for $L min"',
+    'School=Transmutation ' +
+    'Description="Become huge giant (+8 Str, -2 Dex, +6 Con, +6 AC, low-light vision, form abilities) for $L min"',
   'Greater Polymorph':
-    'School=Transmutation Level=W5 ' +
-    'Description="Willing target becomes animal/elemental/plant/dragon for $L min"',
+    'School=Transmutation ' +
+    'Description="Willing target becomes animal, elemental, plant, or dragon for $L min"',
   'Plant Shape I':
-    'School=Transmutation Level=W5 ' +
-    'Description="Become small (+2 Con/+2 AC) or medium (+2 Str/+2 Con/+2 AC) plant creature for $L min"',
+    'School=Transmutation ' +
+    'Description="Become small (+2 Con, +2 AC) or medium (+2 Str, +2 Con, +2 AC) plant creature for $L min"',
   'Plant Shape II':
-    'School=Transmutation Level=W6 ' +
-    'Description="Become large (+4 Str/+2 Con/+4 AC) plant creature for $L min"',
+    'School=Transmutation ' +
+    'Description="Become large (+4 Str, +2 Con, +4 AC) plant creature for $L min"',
   'Plant Shape III':
-    'School=Transmutation Level=W7 ' +
-    'Description="Become huge (+8 Str/-2 Dex/+4 Con/+6 AC) plant creature for $L min"',
+    'School=Transmutation ' +
+    'Description="Become huge (+8 Str, -2 Dex, +4 Con, +6 AC) plant creature for $L min"',
   'Stabilize':
-    'School=Conjuration Level=C0,D0 ' +
+    'School=Conjuration ' +
     'Description="R$RS\' Stabilize dying target"'
 });
 // Delete SRD35 spells that don't exist in Pathfinder
@@ -1993,10 +2002,10 @@ Pathfinder.TRAITS = {
 Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
   'Bolas':'Level=3 Category=R Damage=d4 Range=10',
   'Blowgun':'Level=1 Category=R Damage=d2 Range=20',
-  'Elven Curve Blade':'Level=3 Category=2h Damage=d10@18',
-  'Halfling Sling Staff':'Level=3 Category=R Damage=d8x3 Range=80',
+  'Elven Curve Blade':'Level=3 Category=2h Damage=d10 Threat=18',
+  'Halfling Sling Staff':'Level=3 Category=R Damage=d8 Crit=3 Range=80',
   'Sai':'Level=3 Category=Li Damage=d4', // removed range
-  'Starknife':'Level=2 Category=Li Damage=d4x3 Range=20'
+  'Starknife':'Level=2 Category=Li Damage=d4 Crit=3 Range=20'
 });
 
 Pathfinder.BLOODLINES = [
@@ -2072,6 +2081,13 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   SRD35.combatRules(rules, armors, shields, weapons);
 };
 
+/*
+ * TODO
+ */
+Pathfinder.domainRules = function(rules, name, features, spells) {
+  SRD35.domainRules(rules, name, features, spells);
+};
+
 /* Defines the rules related to goodies included in character notes. */
 Pathfinder.goodiesRules = function(rules) {
   SRD35.goodiesRules(rules);
@@ -2079,7 +2095,7 @@ Pathfinder.goodiesRules = function(rules) {
 
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
-  rules, alignments, classes, deities, factions, genders, races, traits
+  rules, alignments, classes, deities, genders, races, factions, traits
 ) {
   SRD35.identityRules(rules, alignments, classes, deities, genders, races);
   for(var faction in factions) {
@@ -2287,7 +2303,7 @@ Pathfinder.alignmentRules = function(rules, name) {
 Pathfinder.armorRules = function(
   rules, name, ac, profLevel, maxDex, skillPenalty, spellFail
 ) {
-  SRD35.armorRules(rules, name, ac, profLevel, maxDex, skillPenalty, skillFail);
+  SRD35.armorRules(rules, name, ac, profLevel, maxDex, skillPenalty, spellFail);
 };
 
 /*
@@ -3456,9 +3472,9 @@ Pathfinder.classRules = function(
 
 };
 
-/* Defines the rules related to combat. */
-Pathfinder.combatRules = function(rules) {
-  SRD35.combatRules(rules);
+/* Defines rules related to combat. */
+Pathfinder.combatRules = function(rules, armors, shields, weapons) {
+  SRD35.combatRules(rules, armors, shields, weapons);
   rules.defineRule('combatManeuverBonus',
     'baseAttack', '=', null,
     'strengthModifier', '+', null
@@ -3474,13 +3490,21 @@ Pathfinder.combatRules = function(rules) {
   );
   rules.defineSheetElement('Combat Maneuver Bonus', 'CombatManeuver/', '%V');
   rules.defineSheetElement('Combat Maneuver Defense', 'CombatManeuver/', '%V');
-  // Override SRD35 armor bonuses
-  rules.defineRule
-    ('armorClass', 'armor', '+', 'Pathfinder.armorsArmorClassBonuses[source]');
+};
+
+/*
+ * TODO
+ */
+Pathfinder.companionRules = function(
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
+) {
+  if(!hd)
+    hd = 1;
+  SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
 };
 
 /* Defines the rules related to companion creatures. */
-Pathfinder.companionRules = function(rules, companions, familiars) {
+Pathfinder.old_companionRules = function(rules, companions, familiars) {
 
   SRD35.companionRules(rules, companions, familiars);
 
@@ -3631,6 +3655,17 @@ Pathfinder.equipmentRules = function(rules, armors, shields, weapons) {
   );
   rules.defineRule
     ('combatManeuverDefense', 'combatNotes.goodiesCMDAdjustment', '+', null);
+};
+
+/*
+ * TODO
+ */
+Pathfinder.familiarRules = function(
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
+) {
+  SRD35.familiarRules(
+    rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
+  );
 };
 
 /*
@@ -4293,9 +4328,21 @@ Pathfinder.factionRules = function(rules, name) {
   // TODO
 };
 
+/*
+ * TODO
+ */
+Pathfinder.featureRules = function(rules, name, notes) {
+  SRD35.featureRules(rules, name);
+};
+
 /* Defines in #rules# the rules associated with gender #name#. */
 Pathfinder.genderRules = function(rules, name) {
   SRD35.genderRules(rules, name);
+};
+
+/* Defines in #rules# the rules associated with language #name#. */
+Pathfinder.languageRules = function(rules, name) {
+  SRD35.languageRules(rules, name);
 };
 
 /* Defines the rules related to character movement. */
@@ -4390,6 +4437,11 @@ Pathfinder.raceRules = function(rules, name, features) {
 
 };
 
+/* Defines in #rules# the rules associated with magic school #name#. */
+Pathfinder.schoolRules = function(rules, name) {
+  SRD35.schoolRules(rules, name);
+};
+
 /* Replaces spell names with longer descriptions on the character sheet. */
 Pathfinder.spellRules = function(rules, spells, descriptions) {
   SRD35.spellRules(rules, spells, descriptions);
@@ -4408,6 +4460,26 @@ Pathfinder.spellRules = function(rules, spells, descriptions) {
       'charismaModifier', '=', '10 + source + ' + level
     );
   }
+};
+
+/*
+ * TODO
+ */
+Pathfinder.shieldRules = function(
+  rules, name, ac, profLevel, skillFail, spellFail
+) {
+  SRD35.shieldRules(rules, name, ac, profLevel, skillFail, spellFail);
+};
+
+/*
+ * TODO
+ */
+Pathfinder.weaponRules = function(
+  rules, name, profLevel, category, damage, threat, critMultiplier, range
+) {
+  SRD35.weaponRules(
+    rules, name, profLevel, category, damage, threat, critMultiplier, range
+  );
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
@@ -4508,72 +4580,13 @@ Pathfinder.ruleNotes = function() {
     '</p>\n';
 };
 
-/* Defines the rules related to character skills. */
-Pathfinder.skillRules = function(rules, skills, subskills) {
-
-  var allSkills = [];
-  for(var i = 0; i < skills.length; i++) {
-    var pieces = skills[i].split(':');
-    var skill = pieces[0];
-    var skillSubskills = subskills[skill];
-    if(skillSubskills == null) {
-      allSkills[allSkills.length] = skills[i];
-    } else if(skillSubskills != '') {
-      skillSubskills = skillSubskills.split('/');
-      for(var j = 0; j < skillSubskills.length; j++) {
-        var subskill = skill + ' (' + skillSubskills[j] + ')';
-        allSkills[allSkills.length] = subskill + ':' + pieces[1];
-        rules.defineRule
-          ('classSkills.' + subskill, 'classSkills.' + skill, '=', '1');
-      }
-    }
-  }
-
-  for(var i = 0; i < allSkills.length; i++) {
-    var pieces = allSkills[i].split(':');
-    var skill = pieces[0];
-    var ability = pieces[1].replace(/\/.*/, '');
-    Pathfinder.defineSkill
-      (rules, skill, ability, pieces[1].includes('/trained'), null);
-  }
-
-  rules.defineNote(
-    'skillNotes.armorSkillCheckPenalty:-%V dex- and str-based skills',
-    'validationNotes.skillMaximum:' +
-      'Points allocated to one or more skills exceed maximum',
-    'validationNotes.skillAllocation:%1 available vs. %2 allocated'
-  );
-  rules.defineRule('maxAllowedSkillPoints', 'level', '=', null);
-  rules.defineRule('maxAllocatedSkillPoints', /^skills\.[^\.]*$/, '^=', null);
-  rules.defineRule('skillNotes.armorSkillCheckPenalty',
-    'armor', '=', 'SRD35.armorsSkillCheckPenalties[source]',
-    'shield', '+=', 'source == "None" ? 0 : ' +
-                    'source == "Tower" ? 10 : ' +
-                    'source.match(/Heavy/) ? 2 : 1',
-    '', '^', '0'
-  );
-  rules.defineRule('skillPoints',
-    '', '=', '0',
-    'level', '^', null
-  );
-  rules.defineRule('validationNotes.skillMaximum',
-    'maxAllocatedSkillPoints', '=', '-source',
-    'maxAllowedSkillPoints', '+', 'source',
-    '', 'v', '0'
-  );
-  rules.defineRule('validationNotes.skillAllocation.1',
-    '', '=', '0',
-    'skillPoints', '=', null
-  );
-  rules.defineRule('validationNotes.skillAllocation.2',
-    '', '=', '0',
-    /^skills\.[^\.]*$/, '+=', null
-  );
-  rules.defineRule('validationNotes.skillAllocation',
-    'validationNotes.skillAllocation.1', '=', '-source',
-    'validationNotes.skillAllocation.2', '+', null
-  );
-
+/*
+ * TODO
+ */
+Pathfinder.skillRules = function(
+  rules, name, ability, untrained, classes
+) {
+  SRD35.skillRules(rules, name, ability, untrained, classes, []);
 };
 
 /* Defines the rules related to (optional) character traits. */
