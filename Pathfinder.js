@@ -43,6 +43,9 @@ function Pathfinder() {
   rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
 
+  // For spells, schools have to be defined before classes and domains
+  Pathfinder.magicRules
+    (rules, Pathfinder.DOMAINS, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
   Pathfinder.abilityRules(rules);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
@@ -53,8 +56,6 @@ function Pathfinder() {
      Pathfinder.SKILLS);
   Pathfinder.combatRules
     (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
-  Pathfinder.magicRules
-    (rules, Pathfinder.DOMAINS, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
   Pathfinder.aideRules
     (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
   Pathfinder.goodiesRules(rules);
@@ -228,7 +229,7 @@ Pathfinder.CLASSES = {
       'B5:13=1;14=2;15=3;17=4;19=5,' +
       'B6:16=1;17=2;18=3;19=4;20=5 ' +
     'Spells=' +
-      'B0:Dancing Lights;Daze;Detect Magic;Flare;Ghost Sound;Know Direction;' +
+      '"B0:Dancing Lights;Daze;Detect Magic;Flare;Ghost Sound;Know Direction;' +
       'Light;Lullaby;Mage Hand;Mending;Message;Open/Close;Prestidigitation;' +
       'Read Magic;Resistance;Summon Instrument",' +
       'B1:Alarm;Animate Rope;Cause Fear;Charm Person;Comprehend Languages;' +
@@ -325,7 +326,7 @@ Pathfinder.CLASSES = {
       'Greater Command;Hallow;Insect Plague;Mark Of Justice;' +
       'Mass Cure Light Wounds;Mass Inflict Light Wounds;Plane Shift;' +
       'Raise Dead;Righteous Might;Scrying;Slay Living;Spell Resistance;' +
-      'Summon Monster V;Symbol Of Pain;Symbol of Sleep;True Seeing;Unhallow;' +
+      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;True Seeing;Unhallow;' +
       'Wall Of Stone",' +
       '"C6:Animate Objects;Antilife Shell;Banishment;Blade Barrier;' +
       'Create Undead;Find The Path;Forbiddance;Geas/Quest;' +
@@ -334,7 +335,7 @@ Pathfinder.CLASSES = {
       'Mass Cure Moderate Wounds;Mass Eagle\'s Splendor;' +
       'Mass Inflict Moderate Wounds;Mass Owl\'s Wisdom;Planar Ally;' +
       'Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
-      'Undeath To Death;Wind Walk;Word of Recall",' +
+      'Undeath To Death;Wind Walk;Word Of Recall",' +
       '"C7:Blasphemy;Control Weather;Destruction;Dictum;Ethereal Jaunt;' +
       'Greater Restoration;Greater Scrying;Holy Word;' +
       'Mass Cure Serious Wounds;Mass Inflict Serious Wounds;Refuge;' +
@@ -344,7 +345,7 @@ Pathfinder.CLASSES = {
       'Dimensional Lock;Discern Location;Earthquake;Fire Storm;' +
       'Greater Planar Ally;Greater Spell Immunity;Holy Aura;' +
       'Mass Cure Critical Wounds;Mass Inflict Critical Wounds;Shield Of Law;' +
-      'Summon Monster VIII;Symbol Of Death;Symbol Of Insanity;Unholy AuraF",' +
+      'Summon Monster VIII;Symbol Of Death;Symbol Of Insanity;Unholy Aura",' +
       '"C9:Astral Projection;Energy Drain;Etherealness;Gate;Implosion;' +
       'Mass Heal;Miracle;Soul Bind;Storm Of Vengeance;Summon Monster IX;' +
       'True Resurrection"',
@@ -413,7 +414,7 @@ Pathfinder.CLASSES = {
       '"20:Holy Champion" ' +
     'Selectables=' +
       '"5:Divine Mount","5:Divine Weapon" ' +
-    'SpellAbility=charmisma ' +
+    'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
       'P2:8=0;9=1;12=2;16=3;20=4,' +
@@ -531,8 +532,8 @@ Pathfinder.DOMAINS = {
   'Animal':
     'Features="1:Speak With Animals","4:Animal Companion" ' +
     'Spells="Calm Animals","Hold Animal","Dominate Animal",' +
-    '"Summon Nature\'s Ally IV","Beast Shape III",,"Antilife Shell",' +
-    '"Animal Shapes",Shapechange',
+    '"Summon Nature\'s Ally IV","Beast Shape III","Antilife Shell",' +
+    '"Animal Shapes","Summon Nature\'s Ally VIII",Shapechange',
   'Artifice':
     'Features="1:Artificer\'s Touch","8:Dancing Weapons" ' +
     'Spells="Animate Rope","Wood Shape","Stone Shape","Minor Creation",' +
@@ -776,7 +777,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Command Undead':'Type=General Require="features.Channel Energy"',
   'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
   'Critical Mastery':
-    'Type=Fighter Require="level.Fighter >= 14,"features.Critical Focus"',
+    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus"',
     // TODO Also requires two critical feats
   'Dazzling Display':'Type=Fighter Require="features.Weapon Focus"',
   'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
@@ -1254,8 +1255,8 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'It Was Meant To Be':'feature:Reroll attack/critical/spell resistance check %V/day',
   'Touch Of Destiny':'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
   'Bloodline Destined':'save:+spell level on saves 1 rd after casting personal spell',
-  'Fated':
-    'save:+%V saves when surprisedaveNotes.withinReachFeature:DC 20 Will save vs. fatal attack 1/day',
+  'Fated':'save:+%V saves when surprised',
+  'Within Reach':'save:DC 20 Will save vs. fatal attack 1/day',
   'Wings':"ability:Fly %V'/average",
   'Breath Weapon':"combat:%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
   'Dragon Resistances':[
@@ -1326,14 +1327,15 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   // Races
   'Adaptability':'feature:+1 Feat',
-  'Dwarf Ability Adjustment':'+2 constitution/+2 wisdom/-2 charisma',
-  'Elf Ability Adjustment':'+2 dexterity/+2 intelligence/-2 constitution',
+  'Dwarf Ability Adjustment':'ability:+2 constitution/+2 wisdom/-2 charisma',
+  'Elf Ability Adjustment':
+    'ability:+2 dexterity/+2 intelligence/-2 constitution',
   'Elf Blood':'feature:Elf and human for racial effects',
-  'Gnome Ability Adjustment':'+2 constitution/+2 charisma/-2 strength',
-  'Half-Elf Ability Adjustment':'+2 any',
-  'Half-Orc Ability Adjustment':'+2 any',
-  'Halfling Ability Adjustement':'+2 dexterity/+2 charisma/-2 strength',
-  'Human Ability Adjustment':'+2 any',
+  'Gnome Ability Adjustment':'ability:+2 constitution/+2 charisma/-2 strength',
+  'Half-Elf Ability Adjustment':'ability:+2 any',
+  'Half-Orc Ability Adjustment':'ability:+2 any',
+  'Halfling Ability Adjustement':'ability:+2 dexterity/+2 charisma/-2 strength',
+  'Human Ability Adjustment':'ability:+2 any',
   'Low-Light Vision':'feature:x%V normal distance in poor light',
   'Multitalented':'feature:Two favored classes',
   'Resist Enchantment':'save:+2 vs. enchantment',
@@ -1368,6 +1370,12 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Fearless':'save:+2 vs. fear',
   'Halfling Luck':'save:+1 all saves',
   'Sure-Footed':'skill-FootedFeature:+2 Acrobatics/+2 Climb',
+  // Animal companions and familiars
+  'Companion Alertness':
+    'skill:+2 Perception, Sense Motive when companion w/in reach',
+  'Familiar Bat':'skill:+3 Fly',
+  'Familiar Cat':'skill:+3 Stealth',
+  'Familiar Monkey':'skill:+3 Acrobatics',
   // Traits
   'A Sure Thing':'combat:+2 attack vs evil 1/day',
   'Adopted':'feature:Family race traits available',
@@ -1612,7 +1620,9 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Wisdom In The Flesh':
     'skill:Use Wis modifier for chosen Str/Con/Dex skill/is class skill',
   'World Traveler':
-    'skill:+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is class skill'
+    'skill:+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is class skill',
+  // Misc
+  'Armor Skill Check Penalty':'skill:-%V dex- and str-based skills'
 });
 Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS);
 Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
@@ -1652,7 +1662,7 @@ Pathfinder.RACES = {
 Pathfinder.SCHOOLS = Object.assign({}, SRD35.SCHOOLS);
 Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
 Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
-  'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,,Monk,Rogue',
+  'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
   'Bluff':'Ability=charisma Class=,Bard,Rogue,Sorcerer',
   'Climb':'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Rogue',
@@ -1670,7 +1680,7 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Knowledge (Arcana)':
     'Ability=intelligence Untrained=n Class=Bard,Cleric,Sorcerer,Wizard',
   'Knowledge (Dungeoneering)':
-    'Ability=intelligence Untrained=n Class=Bard,,Fighter,Ranger,Rogue,Wizard',
+    'Ability=intelligence Untrained=n Class=Bard,Fighter,Ranger,Rogue,Wizard',
   'Knowledge (Engineering)':
     'Ability=intelligence Untrained=n Class=Bard,Fighter,Wizard',
   'Knowledge (Geography)':
@@ -2052,12 +2062,164 @@ Pathfinder.SRD35_SKILL_MAP = {
   'Use Rope':''
 };
 
-/* Defines the rules related to character abilities. */
+/* Defines rules related to character abilities. */
 Pathfinder.abilityRules = function(rules) {
   SRD35.abilityRules(rules);
   // Override intelligence skillPoint adjustment
   rules.defineRule
     ('skillNotes.intelligenceSkillPointsAdjustment', 'level', '*', null);
+  // NOTE: Using SRD35.abilityRules above adds SRD35 minimum ability checks
+  // (at least one ability > 13, ability modifiers must sum to > 0), that are
+  // not part of the Pathfinder rules.
+};
+
+/* Defines rules related to animal companions and familiars. */
+Pathfinder.aideRules = function(rules, companions, familiars) {
+  SRD35.aideRules(rules, companions, familiars);
+  // Override SRD35 HD calculation
+  rules.defineRule('animalCompanionStats.HD',
+    'companionLevel', '=', 'null',
+    'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
+  );
+  // Pathfinder-specific attributes
+  rules.defineRule('animalCompanionStats.Feats',
+    'companionMasterLevel', '=',
+    'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
+    'Math.floor((source + 4) / 3)'
+  );
+  rules.defineRule('animalCompanionStats.Skills',
+    'companionMasterLevel', '=',
+    'source + 1 - Math.floor((source + 1) / 4)'
+  );
+  rules.defineRule('companionBAB',
+    'animalCompanionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
+  );
+  rules.defineRule('animalCompanionStats.CMB',
+    'companionBAB', '=', null,
+    'companionCMBAbility', '+', 'Math.floor((source - 10) / 2)',
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('animalCompanionStats.CMD',
+    'companionBAB', '=', 'source + 10',
+    'animalCompanionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
+    'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)',
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('tinyCompanionCMBAbility',
+    'animalCompanionStats.Size', '?', 'source == "T" || source == "D"',
+    'animalCompanionStats.Dex', '=', null
+  );
+  rules.defineRule('companionCMBAbility',
+    'animalCompanionStats.Str', '=', null,
+    'tinyCompanionCMBAbility', '^', null
+  );
+  rules.defineRule('familiarMaxDexOrStr',
+    'features.Familiar', '?', null,
+    'familiarStats.Dex', '=', null,
+    'familiarStats.Str', '^', null
+  );
+  rules.defineRule('familiarBAB',
+    'features.Familiar', '?', null,
+    'baseAttack', '=', null
+  );
+  rules.defineRule('tinyFamiliarCMBAbility',
+    'familiarStats.Size', '?', 'source == "T" || source == "D"',
+    'familiarStats.Dex', '=', null
+  );
+  rules.defineRule('familiarCMBAbility',
+    'familiarStats.Str', '=', null,
+    'tinyFamiliarCMBAbility', '^', null
+  );
+  rules.defineRule('familiarStats.CMB',
+    'familiarBAB', '=', null,
+    'familiarCMBAbility', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  rules.defineRule('familiarStats.CMD',
+    'familiarBAB', '=', 'source + 10',
+    'familiarStats.Dex', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Str', '+', 'Math.floor((source - 10) / 2)',
+    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+  );
+  // Rules for advanced companions
+  rules.defineRule('companionMasterLevelsUntilAdvance',
+    'animalCompanionStats.Adv', '=', null,
+    'companionMasterLevel', '+', '-source'
+  );
+  rules.defineRule('animalCompanionStats.AC',
+    'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 1 : null'
+  );
+  rules.defineRule('animalCompanionStats.Con',
+    'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
+  );
+  rules.defineRule('animalCompanionStats.Dex',
+    'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
+  );
+};
+
+/* Defines rules related to combat. */
+Pathfinder.combatRules = function(rules, armors, shields, weapons) {
+  SRD35.combatRules(rules, armors, shields, weapons);
+  rules.defineRule('combatManeuverBonus',
+    'baseAttack', '=', null,
+    'strengthModifier', '+', null
+  );
+  rules.defineRule('combatManeuverDefense',
+    'baseAttack', '=', '10 + source',
+    'strengthModifier', '+', null,
+    'combatNotes.dexterityArmorClassAdjustment', '+', null
+  );
+  rules.defineSheetElement(
+    'CombatManeuver', 'CombatStats/',
+    '<b>Combat Maneuver Bonus/Defense</b>: %V', '/'
+  );
+  rules.defineSheetElement('Combat Maneuver Bonus', 'CombatManeuver/', '%V');
+  rules.defineSheetElement('Combat Maneuver Defense', 'CombatManeuver/', '%V');
+};
+
+/* Defines the rules related to goodies included in character notes. */
+Pathfinder.goodiesRules = function(rules) {
+  SRD35.goodiesRules(rules);
+  rules.defineRule('combatNotes.goodiesCMDAdjustment',
+    'goodiesAffectingAC', '=',
+      'source.filter(item => !item.match(/\\b(armor|shield)\\b/i)).reduce(' +
+        'function(total, item) {' +
+          'return total + ((item + "+0").match(/[-+]\\d+/) - 0);' +
+        '}' +
+      ', 0)'
+  );
+  rules.defineRule
+    ('combatManeuverDefense', 'combatNotes.goodiesCMDAdjustment', '+', null);
+};
+
+/* Defines rules related to basic character identity. */
+Pathfinder.identityRules = function(
+  rules, alignments, classes, deities, genders, races, factions, traits
+) {
+  for(var alignment in alignments) {
+    rules.choiceRules(rules, 'alignments', alignment, alignments[alignment]);
+  }
+  for(var klass in classes) {
+    rules.choiceRules(rules, 'levels', klass, classes[klass]);
+  }
+  for(var deity in deities) {
+    rules.choiceRules(rules, 'deities', deity, deities[deity]);
+  }
+  for(var gender in genders) {
+    rules.choiceRules(rules, 'genders', gender, genders[gender]);
+  }
+  for(var race in races) {
+    rules.choiceRules(rules, 'races', race, races[race]);
+  }
+  for(var faction in factions) {
+    rules.choiceRules(rules, 'factions', faction, factions[faction]);
+  }
+  for(var trait in traits) {
+    rules.choiceRules(rules, 'traits', trait, traits[trait]);
+  }
+  rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
+  rules.defineSheetElement('Traits', 'Feats+', null, '; ');
+  rules.defineChoice('extras', 'traits');
   // NOTE Our rule engine doesn't support indexing into an array. Here, we work
   // around this limitation by defining rules that set a global array as a side
   // effect, then indexing into that array.
@@ -2069,57 +2231,26 @@ Pathfinder.abilityRules = function(rules) {
     'experienceTrack', '=', '(Pathfinder.tracksThreshholds["Current"] = Pathfinder.tracksThreshholds[source]) ? 1 : 1',
     'experience', '=', 'Pathfinder.tracksThreshholds["Current"] ? Pathfinder.tracksThreshholds["Current"].findIndex(item => item * 1000 > source) : 1'
   );
-}
-
-/* Defines rules related to animal companions and familiars. */
-Pathfinder.aideRules = function(rules, companions, familiars) {
-  SRD35.aideRules(rules, companions, familiars);
-};
-
-/* Defines rules related to combat. */
-Pathfinder.combatRules = function(rules, armors, shields, weapons) {
-  SRD35.combatRules(rules, armors, shields, weapons);
-};
-
-/*
- * TODO
- */
-Pathfinder.domainRules = function(rules, name, features, spells) {
-  SRD35.domainRules(rules, name, features, spells);
-};
-
-/* Defines the rules related to goodies included in character notes. */
-Pathfinder.goodiesRules = function(rules) {
-  SRD35.goodiesRules(rules);
-};
-
-/* Defines rules related to basic character identity. */
-Pathfinder.identityRules = function(
-  rules, alignments, classes, deities, genders, races, factions, traits
-) {
-  SRD35.identityRules(rules, alignments, classes, deities, genders, races);
-  for(var faction in factions) {
-    rules.choiceRules(rules, 'factions', faction, factions[faction]);
-  }
-  for(var trait in traits) {
-    rules.choiceRules(rules, 'traits', trait, traits[trait]);
-  }
-  rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
-  rules.defineSheetElement('Traits', 'Feats+', null, '; ');
-  rules.defineChoice('extras', 'traits');
+  rules.defineRule('casterLevel',
+    'casterLevelArcane', '=', null,
+    'casterLevelDivine', '+=', null
+  );
+  SRD35.validAllocationRules(rules, 'level', 'level', /^levels\./);
 };
 
 /* Defines rules related to magic use. */
 Pathfinder.magicRules = function(rules, domains, schools, spells) {
   SRD35.magicRules(rules, domains, schools, spells);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /* Defines rules related to character feats, languages, and skills. */
 Pathfinder.talentRules = function(rules, feats, features, languages, skills) {
   SRD35.talentRules(rules, feats, features, languages, skills);
-  // Override SRD35 feat count computation
+  // Override SRD35 feat count computation and max ranks per skill
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
+  rules.defineRule('maxAllowedSkillAllocation', 'level', '=', null);
   // Define non-subfeat features for validation purposes
   rules.defineRule
     ('features.Weapon Focus', /features.Weapon Focus \(/, '=', '1');
@@ -2147,18 +2278,12 @@ Pathfinder.choiceEditorElements = function(rules, type) {
 };
 
 /*
- * TODO
+ * Adds #name# as a possible user #type# choice and parses #attrs# to add rules
+ * related to selecting that choice.
  */
 Pathfinder.choiceRules = function(rules, type, name, attrs) {
-  if(name == null || name == '') {
-    console.log('Empty name for ' + type);
-    return;
-  }
-  name = name.replace(/(^|\s)([a-z])/g, function(x) {return x.toUpperCase();});
   if(type == 'alignments')
     Pathfinder.alignmentRules(rules, name);
-  else if(type == 'bloodlines')
-    Pathfinder.bloodlinesRules(rules, name);
   else if(type == 'animalCompanions')
     Pathfinder.companionRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Str'),
@@ -2183,13 +2308,18 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     );
   else if(type == 'deities')
     Pathfinder.deityRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'domain'),
-      QuilvynUtils.getAttrValueArray(attrs, 'weapon'));
-  else if(type == 'domains')
-    Pathfinder.domainRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Domain'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
     );
-  else if(type == 'factions')
-    Pathfinder.factionRules(rules, name);
+  else if(type == 'domains') {
+    Pathfinder.domainRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells')
+    );
+    Pathfinder.domainRulesExtras(rules, name);
+  } else if(type == 'factions')
+    Pathfinder.factionRules(rules, name,
+    );
   else if(type == 'familiars')
     Pathfinder.familiarRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Str'),
@@ -2204,19 +2334,20 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
       QuilvynUtils.getAttrValue(attrs, 'Level')
     );
-  else if(type == 'feats')
+  else if(type == 'feats') {
     Pathfinder.featRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Type'),
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Imply')
     );
-  else if(type == 'features')
+    Pathfinder.featRulesExtra(rules, name);
+  } else if(type == 'features')
     Pathfinder.featureRules(rules, name, attrs);
   else if(type == 'genders')
     Pathfinder.genderRules(rules, name);
   else if(type == 'languages')
     Pathfinder.languageRules(rules, name);
-  else if(type == 'levels')
+  else if(type == 'levels') {
     Pathfinder.classRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Imply'),
@@ -2226,17 +2357,22 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Fortitude'),
       QuilvynUtils.getAttrValue(attrs, 'Reflex'),
       QuilvynUtils.getAttrValue(attrs, 'Will'),
-      [], // Skills for base classes handled by skillRules
+      QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
+      QuilvynUtils.getAttrValue(attrs, 'CasterLevelArcane'),
+      QuilvynUtils.getAttrValue(attrs, 'CasterLevelDivine'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
-      QuilvynUtils.getAttrValueArray(attrs, 'SpellsPerDay')
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellsPerDay'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
     );
-  else if(type == 'races')
+    Pathfinder.classRulesExtra(rules, name);
+  } else if(type == 'races') {
     Pathfinder.raceRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
-  );
-  else if(type == 'schools')
+    );
+    Pathfinder.raceRulesExtra(rules, name);
+  } else if(type == 'schools')
     Pathfinder.schoolRules(rules, name);
   else if(type == 'shields')
     Pathfinder.shieldRules(rules, name,
@@ -2245,32 +2381,18 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
-  else if(type == 'skills')
+  else if(type == 'skills') {
+    var untrained = QuilvynUtils.getAttrValue(attrs, 'Untrained');
     Pathfinder.skillRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Ability'),
-      QuilvynUtils.getAttrValue(attrs, 'Untrained'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Class'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Synergy')
+      untrained != 'n' && untrained != 'N',
+      QuilvynUtils.getAttrValueArray(attrs, 'Class')
     );
-  else if(type == 'spells') {
-    var description = QuilvynUtils.getAttrValue(attrs, 'Description');
-    var levels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
-    var school = QuilvynUtils.getAttrValue(attrs, 'School');
-    var schoolAbbr = school.substring(0, 4);
-    for(var i = 0; i < levels.length; i++) {
-      var groupAndLevel = levels[i];
-      var casterGroup = groupAndLevel.length > 3 ? 'Dom' : groupAndLevel.substring(0, groupAndLevel.length - 1);
-      var level = groupAndLevel.substring(groupAndLevel.length - 1) * 1;
-      var fullSpell = name + '(' + groupAndLevel + ' ' + schoolAbbr + ')';
-      rules.addChoice('spells', fullSpell, attrs);
-      Pathfinder.spellRules(rules, fullSpell,
-        school,
-        casterGroup,
-        level,
-        QuilvynUtils.getAttrValue(attrs, 'Description')
-      );
-    }
-  } else if(type == 'weapons')
+  } else if(type == 'spells') {
+    ; // empty -- handled by classes and domains
+  } else if(type == 'traits')
+    Pathfinder.traitRules(rules, name);
+  else if(type == 'weapons')
     Pathfinder.weaponRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Level'),
       QuilvynUtils.getAttrValue(attrs, 'Category'),
@@ -2278,11 +2400,6 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Threat'),
       QuilvynUtils.getAttrValue(attrs, 'Crit'),
       QuilvynUtils.getAttrValue(attrs, 'Range')
-    );
-  else if(type == 'traits')
-    Pathfinder.traitRules(rules, name,
-      QuilvynUtils.getAttrValue(attrs, 'Type'),
-      QuilvynUtils.getAttrValue(attrs, 'Subtype')
     );
   else {
     console.log('Unknown choice type "' + type + '"');
@@ -2295,25 +2412,63 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
 /* Defines in #rules# the rules associated with alignment #name#. */
 Pathfinder.alignmentRules = function(rules, name) {
   SRD35.alignmentRules(rules, name);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with armor #name#, which adds #ac#
+ * to the character's armor class, requires a #profLevel# proficiency level to
+ * use effectively, allows a maximum dex bonus to ac of #maxDex#, imposes
+ * #skillPenalty# on specific skills and yields a #spellFail# percent chance of
+ * arcane spell failure.
  */
 Pathfinder.armorRules = function(
   rules, name, ac, profLevel, maxDex, skillPenalty, spellFail
 ) {
   SRD35.armorRules(rules, name, ac, profLevel, maxDex, skillPenalty, spellFail);
+  // Disable armor swim check note
+  rules.defineRule
+    ('skillNotes.armorSwimCheckPenaltyFeature', 'level', '^', '0');
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with class #name#, which has the list
+ * of hard prerequisites #requires# and soft prerequisites #implies#. The class
+ * grants #hitDie# (format [n]'d'n) additional hit points and #skillPoint#
+ * additional skill points with each level advance. #attack# is one of '1',
+ * '1/2', or '3/4', indicating the base attack progression for the class;
+ * similarly, #saveFort#, #saveRef#, and #saveWill# are each one of '1/2' or
+ * '1/3', indicating the saving through progressions. #skills# indicate class
+ * skills for the class (but see also skillRules for an alternate way these can
+ * be defined). #features# and #selectables# list the features and selectable
+ * features acquired as the character advances in class level.
+ * #casterLevelArcane# and #casterLevelDivine#, if specified, give the
+ * expression for determining the caster level for the class; within these
+ * expressions the text "Level" indicates class level. #spellAbility#, if
+ * specified, contains the base ability for computing spell difficulty class
+ * for cast spells. #spellsPerDay# lists the number of spells per day that the
+ * class can cast, and #spells# lists spells defined by the class.
  */
 Pathfinder.classRules = function(
   rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
   saveRef, saveWill, skills, features, selectables, casterLevelArcane,
   casterLevelDivine, spellAbility, spellsPerDay, spells
 ) {
+  SRD35.classRules(
+    rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
+    saveRef, saveWill, skills, features, selectables, casterLevelArcane,
+    casterLevelDivine, spellAbility, spellsPerDay, spells
+  );
+  // Override SRD35 skillPoints rule
+  rules.defineRule
+    ('skillPoints', 'levels.' + name, '+', 'source * ' + skillPoints);
+};
+
+/*
+ * Defines in #rules# the rules associated with class #name# that are not
+ * directly derived from the parmeters passed to classRules.
+ */
+Pathfinder.classRulesExtra = function(rules, name) {
 
   if(name == 'Barbarian') {
 
@@ -2514,7 +2669,7 @@ Pathfinder.classRules = function(
     rules.defineRule('saveNotes.braveryFeature',
       'levels.Fighter', '=', 'Math.floor((source + 2) / 4)'
     );
-    rules.defineRule('skillNotes.armorSkillCheckPenalty',
+    rules.defineRule('skillNotes.armorSkillCheckPenaltyFeature',
       'skillNotes.armorTrainingFeature', '+', '-source'
     );
     rules.defineRule('skillNotes.armorTrainingFeature',
@@ -3465,35 +3620,14 @@ Pathfinder.classRules = function(
     }
   }
 
-
-  // Override SRD35 skillPoints rule
-  rules.defineRule
-    ('skillPoints', 'levels.' + name, '+', 'source * ' + skillPoints);
-
-};
-
-/* Defines rules related to combat. */
-Pathfinder.combatRules = function(rules, armors, shields, weapons) {
-  SRD35.combatRules(rules, armors, shields, weapons);
-  rules.defineRule('combatManeuverBonus',
-    'baseAttack', '=', null,
-    'strengthModifier', '+', null
-  );
-  rules.defineRule('combatManeuverDefense',
-    'baseAttack', '=', '10 + source',
-    'strengthModifier', '+', null,
-    'combatNotes.dexterityArmorClassAdjustment', '+', null
-  );
-  rules.defineSheetElement(
-    'CombatManeuver', 'CombatStats/',
-    '<b>Combat Maneuver Bonus/Defense</b>: %V', '/'
-  );
-  rules.defineSheetElement('Combat Maneuver Bonus', 'CombatManeuver/', '%V');
-  rules.defineSheetElement('Combat Maneuver Defense', 'CombatManeuver/', '%V');
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with animal companion #name#, which
+ * has abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
+ * and armor class #ac#. The companion has attack bonus #attack# and does
+ * #damage# damage. If specified, #level# indicates the minimum master level
+ * the character needs to have this animal as a companion.
  */
 Pathfinder.companionRules = function(
   rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
@@ -3501,177 +3635,476 @@ Pathfinder.companionRules = function(
   if(!hd)
     hd = 1;
   SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
+  if(name.startsWith('Advanced ') && level) {
+    var name = name.replace('Advanced ', '');
+    rules.defineRule
+      ('animalCompanionStats.Adv', 'animalCompanion.' + name, '=', level);
+  }
 };
 
-/* Defines the rules related to companion creatures. */
-Pathfinder.old_companionRules = function(rules, companions, familiars) {
-
-  SRD35.companionRules(rules, companions, familiars);
-
-  if(companions != null) {
-    // Overrides SRD35 HD calculation
-    rules.defineRule('animalCompanionStats.HD',
-      'companionLevel', '=', 'null',
-      'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
-    );
-    rules.defineRule('companionMasterLevelsUntilAdvance',
-      'animalCompanionStats.Adv', '=', null,
-      'companionMasterLevel', '+', '-source'
-    );
-    rules.defineRule('animalCompanionStats.AC',
-      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 1 : null'
-    );
-    rules.defineRule('animalCompanionStats.Con',
-      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
-    );
-    rules.defineRule('animalCompanionStats.Dex',
-      'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
-    );
-    rules.defineRule('animalCompanionStats.Feats',
-      'companionMasterLevel', '=',
-      'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
-      'Math.floor((source + 4) / 3)'
-    );
-    rules.defineRule('animalCompanionStats.Skills',
-      'companionMasterLevel', '=',
-      'source + 1 - Math.floor((source + 1) / 4)'
-    );
-    rules.defineRule('companionBAB',
-      'animalCompanionStats.HD', '=', SRD35.ATTACK_BONUS_AVERAGE
-    );
-    for(var companion in companions) {
-      var matchInfo = companions[companion].match(/Level=(\d+)/);
-      if(!companion.startsWith('Advanced ') || !matchInfo)
-        continue;
-      var baseCompanion = companion.replace('Advanced ', '');
-      rules.defineRule('animalCompanionStats.Adv',
-        'animalCompanion.' + baseCompanion, '=', matchInfo[1]
-      );
-    }
-  }
-
-  if(familiars != null) {
-    var notes = [
-      'skillNotes.companionAlertnessFeature:' +
-        '+2 Perception, Sense Motive when companion w/in reach',
-      'skillNotes.familiarBat:+3 Fly',
-      'skillNotes.familiarCat:+3 Stealth',
-      'skillNotes.familiarMonkey:+3 Acrobatics'
-    ];
-    delete rules.choices['notes']['skillNotes.companionAlertnessFeature'];
-    delete rules.choices['notes']['skillNotes.familiarBat'];
-    delete rules.choices['notes']['skillNotes.familiarCat'];
-    rules.defineNote(notes);
-    rules.defineRule('skillNotes.familiarMonkey', 'familiar.Monkey', '=', '1');
-    rules.defineRule('familiarMaxDexOrStr',
-      'features.Familiar', '?', null,
-      'familiarStats.Dex', '=', null,
-      'familiarStats.Str', '^', null
-    );
-    rules.defineRule('familiarBAB',
-      'features.Familiar', '?', null,
-      'baseAttack', '=', null
-    );
-  }
-
-  rules.defineRule('tinyCompanionCMBAbility',
-    'animalCompanionStats.Size', '?', 'source == "T" || source == "D"',
-    'animalCompanionStats.Dex', '=', null
-  );
-  rules.defineRule('companionCMBAbility',
-    'animalCompanionStats.Str', '=', null,
-    'tinyCompanionCMBAbility', '^', null
-  );
-  rules.defineRule('animalCompanionStats.CMB',
-    'companionBAB', '=', null,
-    'companionCMBAbility', '+', 'Math.floor((source - 10) / 2)',
-    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
-  );
-  rules.defineRule('animalCompanionStats.CMD',
-    'companionBAB', '=', 'source + 10',
-    'animalCompanionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
-    'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)',
-    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
-  );
-  rules.defineRule('tinyFamiliarCMBAbility',
-    'familiarStats.Size', '?', 'source == "T" || source == "D"',
-    'familiarStats.Dex', '=', null
-  );
-  rules.defineRule('familiarCMBAbility',
-    'familiarStats.Str', '=', null,
-    'tinyFamiliarCMBAbility', '^', null
-  );
-  rules.defineRule('familiarStats.CMB',
-    'familiarBAB', '=', null,
-    'familiarCMBAbility', '+', 'Math.floor((source - 10) / 2)',
-    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
-  );
-  rules.defineRule('familiarStats.CMD',
-    'familiarBAB', '=', 'source + 10',
-    'familiarStats.Dex', '+', 'Math.floor((source - 10) / 2)',
-    'familiarStats.Str', '+', 'Math.floor((source - 10) / 2)',
-    'familiarStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
-  );
-
-};
-
-/* Returns an ObjectViewer loaded with the default character sheet format. */
-Pathfinder.createViewers = function(rules, viewers) {
-  SRD35.createViewers(rules, viewers); // No changes
-}
-
-/* Defines the rules related to character description. */
-Pathfinder.descriptionRules = function(rules, alignments, deities, genders) {
-  SRD35.descriptionRules(rules, alignments, deities, genders);
+/*
+ * Defines in #rules# the rules associated with deity #name#. #domains# and
+ * #favoredWeapons# list the associated domains and favored weapons.
+ */
+Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
+  SRD35.deityRules(rules, name, domains, favoredWeapons);
   // Pathfinder clerics get proficiency in the deity's favored weapon without
   // taking the War domain, and the War domain does not grant Weapon Focus.
-  for(var i = 0; i < deities.length; i++) {
-    var pieces = deities[i].split(':');
-    if(pieces.length < 3 || pieces[1] == "")
-      continue;
-    var deity = pieces[0];
-    var weapons = pieces[1].split('/');
-    for(var j = 0; j < weapons.length; j++) {
-      var weapon = weapons[j];
-      var focusFeature = 'Weapon Focus (' + weapon + ')';
-      var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
-      rules.defineRule('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
-      rules.defineRule
-        ('clericFeatures.' + proficiencyFeature, 'domains.War', '=', 'null');
-    }
+  for(var i = 0; i < favoredWeapons.length; i++) {
+    var weapon = favoredWeapons[i];
+    var focusFeature = 'Weapon Focus (' + weapon + ')';
+    var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
+    rules.defineRule
+      ('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
+    // TODO Don't think this is right
+    rules.defineRule
+      ('clericFeatures.' + proficiencyFeature, 'domains.War', '=', 'null');
   }
 };
 
-/* Defines the rules related to equipment. */
-Pathfinder.equipmentRules = function(rules, armors, shields, weapons) {
-  SRD35.equipmentRules(rules, armors, shields, weapons);
-  rules.defineRule('combatNotes.goodiesCMDAdjustment',
-    'goodiesAffectingAC', '=',
-      'source.filter(item => !item.match(/\\b(armor|shield)\\b/i)).reduce(' +
-        'function(total, item) {' +
-          'return total + ((item + "+0").match(/[-+]\\d+/) - 0);' +
-        '}' +
-      ', 0)'
-  );
-  rules.defineRule
-    ('combatManeuverDefense', 'combatNotes.goodiesCMDAdjustment', '+', null);
+/*
+ * Defines in #rules# the rules associated with domain #name#. #features# and
+ * #spells# list the associated features and domain spells.
+ */
+Pathfinder.domainRules = function(rules, name, features, spells) {
+  SRD35.domainRules(rules, name, features, spells);
+  // No changes needed to the rules defined by SRD35 method
+};
+
+/*
+ * Defines in #rules# the rules associated with domain #name# that are not
+ * directly derived from the parmeters passed to domainRules.
+ */
+Pathfinder.domainRulesExtras = function(rules, name) {
+
+  if(name == 'Air') {
+    rules.defineRule
+      ('combatNotes.lightningArcFeature', 'wisdomModifier', '=', 'source+3');
+    rules.defineRule('combatNotes.lightningArcFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.electricityResistanceFeature',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Animal') {
+    rules.defineRule('companionMasterLevelCleric',
+      'domains.Animal', '?', null,
+      'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
+    );
+    rules.defineRule('companionMasterLevel',
+      'companionMasterLevelCleric', '+=', null
+    );
+    rules.defineRule('magicNotes.speakWithAnimalsFeature',
+      'levels.Cleric', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('classSkills.Knowledge (Nature)', 'domains.Animal', '=', '1');
+    rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
+  } else if(name == 'Artifice') {
+    rules.defineRule("combatNotes.artificer'sTouchFeature",
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule("combatNotes.artificer'sTouchFeature.1",
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.dancingWeaponsFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
+  } else if(name == 'Chaos') {
+    rules.defineRule('combatNotes.chaosBladeFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.chaosBladeFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.touchOfChaosFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Charm') {
+    rules.defineRule('magicNotes.charmingSmileFeature',
+      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule
+      ('magicNotes.charmingSmileFeature.1', 'levels.Cleric', '=', null);
+    rules.defineRule
+      ('magicNotes.addlingTouchFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.addlingTouchFeature.1',
+      'features.Addling Touch', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    // Charm person already a Charm spell
+  } else if(name == 'Community') {
+    rules.defineRule
+      ('magicNotes.calmingTouchFeature', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule
+      ('magicNotes.calmingTouchFeature.1', 'levels.Cleric', '=', null);
+    rules.defineRule('saveNotes.unityFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+  } else if(name == 'Darkness') {
+    rules.defineRule('combatNotes.touchOfDarknessFeature',
+      'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
+    );
+    rules.defineRule('combatNotes.touchOfDarknessFeature.1',
+      'features.Touch Of Darkness', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('featureNotes.eyesOfDarknessFeature',
+      'levels.Cleric', '=', 'source >= 4 ? Math.floor(source / 2) : null'
+    );
+  } else if(name == 'Death') {
+    rules.defineRule('combatNotes.bleedingTouchFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.bleedingTouchFeature.1',
+      'features.Bleeding Touch', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Destruction') {
+    rules.defineRule('combatNotes.destructiveAuraFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
+    );
+    rules.defineRule('combatNotes.destructiveAuraFeature.1',
+      'levels.Cleric', '=', null
+    );
+    rules.defineRule('combatNotes.destructiveSmiteFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.destructiveSmiteFeature.1',
+      'features.Destructive Smite', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Earth') {
+    rules.defineRule('magicNotes.acidDartFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.acidDartFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.acidResistanceFeature',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Evil') {
+    rules.defineRule('combatNotes.scytheOfEvilFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.scytheOfEvilFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.touchOfEvilFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.touchOfEvilFeature.1',
+      'features.Touch Of Evil', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Fire') {
+    rules.defineRule
+      ('combatNotes.fireBoltFeature', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('combatNotes.fireBoltFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.fireResistanceFeature',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Glory') {
+    rules.defineRule('magicNotes.divinePresenceFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule
+      ('magicNotes.divinePresenceFeature.1', 'levels.Cleric', '=', null);
+    rules.defineRule
+      ('magicNotes.touchOfGloryFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.touchOfGloryFeature.1',
+      'features.Touch Of Glory', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineChoice('spells', 'Sanctuary(Glory1 Abju)');
+  } else if(name == 'Good') {
+    rules.defineRule('combatNotes.holyLanceFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.holyLanceFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.touchOfGoodFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.touchOfGoodFeature.1',
+      'magicNotes.touchOfGoodFeature', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Healing') {
+    rules.defineRule('magicNotes.healer\'sBlessingFeature',
+      'levels.Cleric', '=', 'source >= 6 ? 50 : null'
+    );
+    rules.defineRule('magicNotes.rebukeDeathFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.rebukeDeathFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+  } else if(name == 'Knowledge') {
+    rules.defineRule(/classSkills.Knowledge/, 'domains.Knowledge', '=', '1');
+    rules.defineRule('magicNotes.remoteViewingFeature',
+      'levels.Cleric', '=', 'source >= 6 ? source : null'
+    );
+    rules.defineRule('skillNotes.loreKeeperFeature',
+      'levels.Cleric', '=', 'source + 15',
+      'wisdomModifier', '+', null
+    );
+    rules.defineChoice
+      ('spells', 'Clairaudience/Clairvoyance(Knowledge3 Divi)');
+  } else if(name == 'Law') {
+    rules.defineRule('combatNotes.staffOfOrderFeature',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.staffOfOrderFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('magicNotes.touchOfLawFeature', 'wisdomModifier', '=', 'source + 3');
+  } else if(name == 'Liberation') {
+    rules.defineRule('magicNotes.freedom\'sCallFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule
+      ('magicNotes.liberationFeature', 'levels.Cleric', '=', null);
+  } else if(name == 'Luck') {
+    rules.defineRule('magicNotes.bitOfLuckFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.goodFortuneFeature',
+      'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
+    );
+  } else if(name == 'Madness') {
+    rules.defineRule
+      ('magicNotes.auraOfMadnessFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.visionOfMadnessFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.visionOfMadnessFeature.1',
+      'features.Vision Of Madness', '?', null,
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.visionOfMadnessFeature.2',
+      'features.Vision Of Madness', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    // Confusion already a Madness spell
+  } else if(name == 'Magic') {
+    rules.defineRule('combatNotes.handOfTheAcolyteFeature',
+      'baseAttack', '=', null,
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
+      'features.Hand Of The Acolyte', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.dispellingTouchFeature',
+      'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+    );
+    // Dispel Magic already a Magic spell
+  } else if(name == 'Nobility') {
+    rules.defineRule('featureNotes.nobleLeadershipFeature',
+      'levels.Cleric', '=', 'source >= 8 ? 2 : null'
+    );
+    rules.defineRule('features.Leadership',
+      'featureNotes.nobleLeadershipFeature', '=', '1'
+    );
+    rules.defineRule('magicNotes.inspiringWordFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.inspiringWordFeature.1',
+      'features.Inspiring Word', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Plant') {
+    rules.defineRule
+      ('combatNotes.brambleArmorFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('combatNotes.brambleArmorFeature.1',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.woodenFistFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.woodenFistFeature.1',
+      'features.Wooden Fist', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Protection') {
+    rules.defineRule('magicNotes.auraOfProtectionFeature',
+      'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+    );
+    rules.defineRule('magicNotes.auraOfProtectionFeature.1',
+      'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
+    );
+    rules.defineRule
+      ('magicNotes.auraOfProtectionFeature.2', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.resistantTouchFeature',
+      'wisdomModifier', '=', '3 + source'
+    );
+    rules.defineRule('saveNotes.resistanceBonusFeature',
+      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
+    );
+    rules.defineRule
+      ('save.Fortitude', 'saveNotes.resistanceBonusFeature', '+', null);
+    rules.defineRule
+      ('save.Reflex', 'saveNotes.resistanceBonusFeature', '+', null);
+    rules.defineRule
+      ('save.Will', 'saveNotes.resistanceBonusFeature', '+', null);
+  } else if(name == 'Repose') {
+    rules.defineRule
+      ('magicNotes.gentleRestFeature', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.gentleRestFeature.1',
+      'features.Gentle Rest', '?', null,
+      'wisdomModifier', '=', null
+    );
+    rules.defineRule('magicNotes.wardAgainstDeathFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Rune') {
+    rules.defineRule
+      ('magicNotes.blastRuneFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.blastRuneFeature.1',
+      'features.Blast Rune', '?', null,
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.blastRuneFeature.2',
+      'features.Blast Rune', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Strength') {
+    rules.defineRule('magicNotes.mightOfTheGodsFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.mightOfTheGodsFeature.1',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.strengthRushFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.strengthRushFeature.1',
+      'features.Strength Rush', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Sun') {
+    rules.defineRule
+      ('magicNotes.sun\'sBlessingFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.nimbusOfLightFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.nimbusOfLightFeature.1',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Travel') {
+    rules.defineRule('speed', 'abilityNotes.travelSpeedFeature', '+', '10');
+    rules.defineRule
+      ('featureNotes.agileFeetFeature', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.dimensionalHopFeature',
+      'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
+    );
+  } else if(name == 'Trickery') {
+    rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
+    rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
+    rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
+    rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.copycatFeature.1',
+      'features.Copycat', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.master\'sIllusionFeature',
+      'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule
+      ('magicNotes.master\'sIllusionFeature.1', 'levels.Cleric', '=', null);
+    rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
+  } else if(name == 'War') {
+    rules.defineRule('combatNotes.battleRageFeature',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.battleRageFeature.1',
+      'features.Battle Rage', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('combatNotes.weaponMasterFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Water') {
+    rules.defineRule('combatNotes.icicleFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('combatNotes.icicleFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.coldResistanceFeature',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Weather') {
+    rules.defineRule('combatNotes.stormBurstFeature',
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('combatNotes.stormBurstFeature.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.lightningLordFeature',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    // Call Lightning already a Weather spell
+  }
+
 };
 
 /*
  * TODO
+ */
+Pathfinder.factionRules = function(rules, name) {
+  // TODO
+};
+
+/*
+ * Defines in #rules# the rules associated with familiar #name#, which has
+ * abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
+ * and armor class #ac#. The familiar has attack bonus #attack# and does
+ * #damage# damage. If specified, #level# indicates the minimum master level
+ * the character needs to have this animal as a familiar.
  */
 Pathfinder.familiarRules = function(
   rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
 ) {
-  SRD35.familiarRules(
-    rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
-  );
+  SRD35.familiarRules
+    (rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with feat #name#. #types# lists the
+ * categories of the feat, and #require# and #implies# list the hard and soft
+ * prerequisites for the feat.
  */
 Pathfinder.featRules = function(rules, name, types, requires, implies) {
+  SRD35.featRules(rules, name, types, requires, implies);
+};
+
+/*
+ * Defines in #rules# the rules associated with feat #name# that are not
+ * directly derived from the parmeters passed to featRules.
+ */
+Pathfinder.featRulesExtra = function(rules, name) {
+
+  SRD35.featRulesExtra(rules, name);
 
   var matchInfo;
   if(name == 'Acrobatic') {
@@ -3922,440 +4355,39 @@ Pathfinder.featRules = function(rules, name, types, requires, implies) {
 /*
  * TODO
  */
-Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
-  SRD35.deityRules(rules, name, domains, favoredWeapons);
-};
-
-/*
- * TODO
- */
-SRD35.domainRules = function(rules, name, spells) {
-
-    if(name == 'Air') {
-      rules.defineRule
-        ('combatNotes.lightningArcFeature', 'wisdomModifier', '=', 'source+3');
-      rules.defineRule('combatNotes.lightningArcFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('saveNotes.electricityResistanceFeature',
-        'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                              'source >= 12 ? 20 : ' +
-                              'source >= 6 ? 10 : null'
-      );
-    } else if(name == 'Animal') {
-      rules.defineRule('companionMasterLevelCleric',
-        'domains.Animal', '?', null,
-        'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
-      );
-      rules.defineRule('companionMasterLevel',
-        'companionMasterLevelCleric', '+=', null
-      );
-      rules.defineRule('magicNotes.speakWithAnimalsFeature',
-        'levels.Cleric', '=', 'source + 3'
-      );
-      rules.defineRule
-        ('classSkills.Knowledge (Nature)', 'domains.Animal', '=', '1');
-      rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
-    } else if(name == 'Artifice') {
-      rules.defineRule('combatNotes.artificer\'sTouchFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.artificer\'sTouchFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('combatNotes.dancingWeaponsFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-      rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
-    } else if(name == 'Chaos') {
-      rules.defineRule('combatNotes.chaosBladeFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-      rules.defineRule('combatNotes.chaosBladeFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('combatNotes.touchOfChaosFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Charm') {
-      rules.defineRule('magicNotes.charmingSmileFeature',
-        'levels.Cleric', '=', '10 + Math.floor(source / 2)',
-        'wisdomModifier', '+', null
-      );
-      rules.defineRule
-        ('magicNotes.charmingSmileFeature.1', 'levels.Cleric', '=', null);
-      rules.defineRule
-        ('magicNotes.addlingTouchFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.addlingTouchFeature.1',
-        'features.Addling Touch', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      // Charm person already a Charm spell
-    } else if(name == 'Community') {
-      rules.defineRule
-        ('magicNotes.calmingTouchFeature', 'wisdomModifier', '=', 'source + 3');
-      rules.defineRule
-        ('magicNotes.calmingTouchFeature.1', 'levels.Cleric', '=', null);
-      rules.defineRule('saveNotes.unityFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-    } else if(name == 'Darkness') {
-      rules.defineRule('combatNotes.touchOfDarknessFeature',
-        'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
-      );
-      rules.defineRule('combatNotes.touchOfDarknessFeature.1',
-        'features.Touch Of Darkness', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('featureNotes.eyesOfDarknessFeature',
-        'levels.Cleric', '=', 'source >= 4 ? Math.floor(source / 2) : null'
-      );
-    } else if(name == 'Death') {
-      rules.defineRule('combatNotes.bleedingTouchFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.bleedingTouchFeature.1',
-        'features.Bleeding Touch', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Destruction') {
-      rules.defineRule('combatNotes.destructiveAuraFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
-      );
-      rules.defineRule('combatNotes.destructiveAuraFeature.1',
-        'levels.Cleric', '=', null
-      );
-      rules.defineRule('combatNotes.destructiveSmiteFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.destructiveSmiteFeature.1',
-        'features.Destructive Smite', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Earth') {
-      rules.defineRule('magicNotes.acidDartFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('magicNotes.acidDartFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('saveNotes.acidResistanceFeature',
-        'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                              'source >= 12 ? 20 : ' +
-                              'source >= 6 ? 10 : null'
-      );
-    } else if(name == 'Evil') {
-      rules.defineRule('combatNotes.scytheOfEvilFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-      rules.defineRule('combatNotes.scytheOfEvilFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('combatNotes.touchOfEvilFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.touchOfEvilFeature.1',
-        'features.Touch Of Evil', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Fire') {
-      rules.defineRule
-        ('combatNotes.fireBoltFeature', 'wisdomModifier', '=', 'source + 3');
-      rules.defineRule('combatNotes.fireBoltFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('saveNotes.fireResistanceFeature',
-        'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                              'source >= 12 ? 20 : ' +
-                              'source >= 6 ? 10 : null'
-      );
-    } else if(name == 'Glory') {
-      rules.defineRule('magicNotes.divinePresenceFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null',
-        'wisdomModifier', '+', null
-      );
-      rules.defineRule
-        ('magicNotes.divinePresenceFeature.1', 'levels.Cleric', '=', null);
-      rules.defineRule
-        ('magicNotes.touchOfGloryFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.touchOfGloryFeature.1',
-        'features.Touch Of Glory', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineChoice('spells', 'Sanctuary(Glory1 Abju)');
-    } else if(name == 'Good') {
-      rules.defineRule('combatNotes.holyLanceFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-      rules.defineRule('combatNotes.holyLanceFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('magicNotes.touchOfGoodFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('magicNotes.touchOfGoodFeature.1',
-        'magicNotes.touchOfGoodFeature', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Healing') {
-      rules.defineRule('magicNotes.healer\'sBlessingFeature',
-        'levels.Cleric', '=', 'source >= 6 ? 50 : null'
-      );
-      rules.defineRule('magicNotes.rebukeDeathFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('magicNotes.rebukeDeathFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-    } else if(name == 'Knowledge') {
-      rules.defineRule(/classSkills.Knowledge/, 'domains.Knowledge', '=', '1');
-      rules.defineRule('magicNotes.remoteViewingFeature',
-        'levels.Cleric', '=', 'source >= 6 ? source : null'
-      );
-      rules.defineRule('skillNotes.loreKeeperFeature',
-        'levels.Cleric', '=', 'source + 15',
-        'wisdomModifier', '+', null
-      );
-      rules.defineChoice
-        ('spells', 'Clairaudience/Clairvoyance(Knowledge3 Divi)');
-    } else if(name == 'Law') {
-      rules.defineRule('combatNotes.staffOfOrderFeature',
-        'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-      );
-      rules.defineRule('combatNotes.staffOfOrderFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule
-        ('magicNotes.touchOfLawFeature', 'wisdomModifier', '=', 'source + 3');
-    } else if(name == 'Liberation') {
-      rules.defineRule('magicNotes.freedom\'sCallFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-      rules.defineRule
-        ('magicNotes.liberationFeature', 'levels.Cleric', '=', null);
-    } else if(name == 'Luck') {
-      rules.defineRule('magicNotes.bitOfLuckFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('magicNotes.goodFortuneFeature',
-        'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
-      );
-    } else if(name == 'Madness') {
-      rules.defineRule
-        ('magicNotes.auraOfMadnessFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.visionOfMadnessFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('magicNotes.visionOfMadnessFeature.1',
-        'features.Vision Of Madness', '?', null,
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('magicNotes.visionOfMadnessFeature.2',
-        'features.Vision Of Madness', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      // Confusion already a Madness spell
-    } else if(name == 'Magic') {
-      rules.defineRule('combatNotes.handOfTheAcolyteFeature',
-        'baseAttack', '=', null,
-        'wisdomModifier', '+', null
-      );
-      rules.defineRule('combatNotes.handOfTheAcolyteFeature.1',
-        'features.Hand Of The Acolyte', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('magicNotes.dispellingTouchFeature',
-        'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
-      );
-      // Dispel Magic already a Magic spell
-    } else if(name == 'Nobility') {
-      rules.defineRule('featureNotes.nobleLeadershipFeature',
-        'levels.Cleric', '=', 'source >= 8 ? 2 : null'
-      );
-      rules.defineRule('features.Leadership',
-        'featureNotes.nobleLeadershipFeature', '=', '1'
-      );
-      rules.defineRule('magicNotes.inspiringWordFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('magicNotes.inspiringWordFeature.1',
-        'features.Inspiring Word', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Plant') {
-      rules.defineRule
-        ('combatNotes.brambleArmorFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('combatNotes.brambleArmorFeature.1',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.woodenFistFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.woodenFistFeature.1',
-        'features.Wooden Fist', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Protection') {
-      rules.defineRule('magicNotes.auraOfProtectionFeature',
-        'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
-      );
-      rules.defineRule('magicNotes.auraOfProtectionFeature.1',
-        'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
-      );
-      rules.defineRule
-        ('magicNotes.auraOfProtectionFeature.2', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.resistantTouchFeature',
-        'wisdomModifier', '=', '3 + source'
-      );
-      rules.defineRule('saveNotes.resistanceBonusFeature',
-        'levels.Cleric', '=', '1 + Math.floor(source / 5)'
-      );
-      rules.defineRule
-        ('save.Fortitude', 'saveNotes.resistanceBonusFeature', '+', null);
-      rules.defineRule
-        ('save.Reflex', 'saveNotes.resistanceBonusFeature', '+', null);
-      rules.defineRule
-        ('save.Will', 'saveNotes.resistanceBonusFeature', '+', null);
-    } else if(name == 'Repose') {
-      rules.defineRule
-        ('magicNotes.gentleRestFeature', 'wisdomModifier', '=', 'source + 3');
-      rules.defineRule('magicNotes.gentleRestFeature.1',
-        'features.Gentle Rest', '?', null,
-        'wisdomModifier', '=', null
-      );
-      rules.defineRule('magicNotes.wardAgainstDeathFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-    } else if(name == 'Rune') {
-      rules.defineRule
-        ('magicNotes.blastRuneFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.blastRuneFeature.1',
-        'features.Blast Rune', '?', null,
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('magicNotes.blastRuneFeature.2',
-        'features.Blast Rune', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Strength') {
-      rules.defineRule('magicNotes.mightOfTheGodsFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-      rules.defineRule('magicNotes.mightOfTheGodsFeature.1',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-      rules.defineRule('magicNotes.strengthRushFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('magicNotes.strengthRushFeature.1',
-        'features.Strength Rush', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-    } else if(name == 'Sun') {
-      rules.defineRule
-        ('magicNotes.sun\'sBlessingFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.nimbusOfLightFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-      rules.defineRule('magicNotes.nimbusOfLightFeature.1',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-    } else if(name == 'Travel') {
-      rules.defineRule('speed', 'abilityNotes.travelSpeedFeature', '+', '10');
-      rules.defineRule
-        ('featureNotes.agileFeetFeature', 'wisdomModifier', '=', 'source + 3');
-      rules.defineRule('magicNotes.dimensionalHopFeature',
-        'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
-      );
-    } else if(name == 'Trickery') {
-      rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
-      rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
-      rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
-      rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
-      rules.defineRule('magicNotes.copycatFeature.1',
-        'features.Copycat', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('magicNotes.master\'sIllusionFeature',
-        'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
-        'wisdomModifier', '+', null
-      );
-      rules.defineRule
-        ('magicNotes.master\'sIllusionFeature.1', 'levels.Cleric', '=', null);
-      rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
-    } else if(name == 'War') {
-      rules.defineRule('combatNotes.battleRageFeature',
-        'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-      );
-      rules.defineRule('combatNotes.battleRageFeature.1',
-        'features.Battle Rage', '?', null,
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.weaponMasterFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-    } else if(name == 'Water') {
-      rules.defineRule('combatNotes.icicleFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.icicleFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('saveNotes.coldResistanceFeature',
-        'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                              'source >= 12 ? 20 : ' +
-                              'source >= 6 ? 10 : null'
-      );
-    } else if(name == 'Weather') {
-      rules.defineRule('combatNotes.stormBurstFeature',
-        'wisdomModifier', '=', 'source + 3'
-      );
-      rules.defineRule('combatNotes.stormBurstFeature.1',
-        'levels.Cleric', '=', 'Math.floor(source / 2)'
-      );
-      rules.defineRule('magicNotes.lightningLordFeature',
-        'levels.Cleric', '=', 'source >= 8 ? source : null'
-      );
-      // Call Lightning already a Weather spell
-    }
-
-};
-
-/*
- * TODO
- */
-Pathfinder.factionRules = function(rules, name) {
-  // TODO
-};
-
-/*
- * TODO
- */
 Pathfinder.featureRules = function(rules, name, notes) {
-  SRD35.featureRules(rules, name);
+  SRD35.featureRules(rules, name, notes);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /* Defines in #rules# the rules associated with gender #name#. */
 Pathfinder.genderRules = function(rules, name) {
   SRD35.genderRules(rules, name);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /* Defines in #rules# the rules associated with language #name#. */
 Pathfinder.languageRules = function(rules, name) {
   SRD35.languageRules(rules, name);
-};
-
-/* Defines the rules related to character movement. */
-Pathfinder.movementRules = function(rules) {
-  SRD35.movementRules(rules); // No changes
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with race #name#. #features# lists
+ * the associated features.
  */
 Pathfinder.raceRules = function(rules, name, features) {
+  SRD35.raceRules(rules, name, features);
+  // No changes needed to the rules defined by SRD35 method
+};
 
-  var raceNoSpace =
+/*
+ * Defines in #rules# the rules associated with race #name# that are not
+ * directly derived from the parmeters passed to raceRules.
+ */
+Pathfinder.raceRulesExtra = function(rules, name, features) {
+
+  var prefix =
     name.substring(0,1).toLowerCase() + name.substring(1).replace(/ /g, '');
 
   if(name == 'Half-Elf') {
@@ -4364,36 +4396,22 @@ Pathfinder.raceRules = function(rules, name, features) {
       ('featCount.General', 'featureNotes.adaptabilityFeature', '+', '1');
     rules.defineRule('featureNotes.low-LightVisionFeature',
       '', '=', '1',
-      raceNoSpace + 'Features.Low-Light Vision', '+', null
+      prefix + 'Features.Low-Light Vision', '+', null
     );
     rules.defineRule('resistance.Enchantment',
       'saveNotes.resistEnchantmentFeature', '+=', '2'
     );
-    rules.defineRule
-      ('languages.Elven', 'race', '=', 'source.match(/Elf/) ? 1 : null');
     rules.defineRule('validationNotes.adaptabilityFeatureFeats',
       'features.Adaptability', '=', '-1',
       /feats.Skill Focus/, '+', '1',
       '', 'v', '0'
     );
 
-  } else if(name == 'Half-Orc') {
-
-    rules.defineRule
-      ('languages.Orc', 'race', '=', 'source.match(/Orc/) ? 1 : null');
-
   } else if(name.match(/Dwarf/)) {
 
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.steadyFeature', '^', '0'
     );
-    rules.defineRule
-      ('languages.Dwarven', 'race', '=', 'source.match(/Dwarf/) ? 1 : null');
-
-  } else if(name.match(/Elf/)) {
-
-    rules.defineRule
-      ('languages.Elven', 'race', '=', 'source.match(/Elf/) ? 1 : null');
 
   } else if(name.match(/Gnome/)) {
 
@@ -4413,24 +4431,16 @@ Pathfinder.raceRules = function(rules, name, features) {
     // calcuated even for non-Bard Gnomes.
     rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '=', '1');
     rules.defineRule
-      ('languages.Gnome', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
-    rules.defineRule
       ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
     rules.defineRule('magicNotes.naturalSpellsFeature',
       'charisma', '?', 'source >= 11',
-      raceNoSpace + 'Features.Natural Spells', '=',
+      prefix + 'Features.Natural Spells', '=',
       '"<i>Dancing Lights</i>/<i>Ghost Sound</i>/<i>Prestidigitation</i>/' +
       '<i>Speak With Animals</i>"'
     );
     rules.defineRule('magicNotes.naturalSpellsFeature.1',
       'features.Natural Spells', '?', null,
       'level', '=', null
-    );
-
-  } else if(name.match(/Halfling/)) {
-
-    rules.defineRule('languages.Halfling',
-      'race', '=', 'source.match(/Halfling/) ? 1 : null'
     );
 
   }
@@ -4440,39 +4450,64 @@ Pathfinder.raceRules = function(rules, name, features) {
 /* Defines in #rules# the rules associated with magic school #name#. */
 Pathfinder.schoolRules = function(rules, name) {
   SRD35.schoolRules(rules, name);
-};
-
-/* Replaces spell names with longer descriptions on the character sheet. */
-Pathfinder.spellRules = function(rules, spells, descriptions) {
-  SRD35.spellRules(rules, spells, descriptions);
-  var notes = rules.getChoices('notes');
-  // SRD35 uses wisdomModifier when calculating the save DC for Paladin
-  // spells; in Pathfinder we override to use charismaModifier.
-  for(var note in notes) {
-    var matchInfo = note.match(/^spells.*\(P([\d+])/);
-    if(!matchInfo)
-      continue;
-    var level = matchInfo[1];
-    matchInfo = notes[note].match(/\(DC %(\d+)/);
-    if(!matchInfo)
-      continue;
-    rules.defineRule(note + '.' + matchInfo[1],
-      'charismaModifier', '=', '10 + source + ' + level
-    );
-  }
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with shield #name#, which adds #ac#
+ * to the character's armor class, requires a #profLevel# proficiency level to
+ * use effectively, imposes #skillPenalty# on specific skills
+ * and yields a #spellFail# percent chance of arcane spell failure.
  */
 Pathfinder.shieldRules = function(
   rules, name, ac, profLevel, skillFail, spellFail
 ) {
   SRD35.shieldRules(rules, name, ac, profLevel, skillFail, spellFail);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with skill #name#, associated with
+ * #ability# (one of 'strength', 'intelligence', etc.). #untrained#, if
+ * specified is a boolean indicating whether or not the skill can be used
+ * untrained; the default is true. #classes#, if specified, lists the classes
+ * for which this is a class skill.
+ */
+Pathfinder.skillRules = function(rules, name, ability, untrained, classes) {
+  SRD35.skillRules(rules, name, ability, untrained, classes, []);
+  // No changes needed to the rules defined by SRD35 method
+};
+
+/*
+ * Defines in #rules# the rules associated with spell #name#, which is from
+ * magic school #school#. #casterGroup# and #level# are used to compute any
+ * saving throw value required by the spell. #description# is a verbose
+ * description of the spell's effects.
+ */
+Pathfinder.spellRules = function(
+  rules, name, school, casterGroup, level, description
+) {
+  SRD35.spellRules(rules, name, school, casterGroup, level, description);
+  // SRD35 uses wisdomModifier when calculating the save DC for Paladin
+  // spells; in Pathfinder we override to use charismaModifier.
+  if(casterGroup == 'P') {
+    var matchInfo;
+    var note = rules.getChoices('notes')[name];
+    if(note != null && (matchInfo = notes[note].match(/\(DC %(\d+)/)) != null)
+      rules.defineRule(note + '.' + matchInfo[1],
+        'charismaModifier', '=', '10 + source + ' + level
+      );
+  }
+};
+
+/*
+ * Defines in #rules# the rules associated with weapon #name#, which requires a
+ * #profLevel# proficiency level to use effectively and belongs to weapon
+ * category #category# (one of '1h', '2h', 'Li', 'R', 'Un' or their spelled-out
+ * equivalents). The weapon does #damage# HP on a successful attack and
+ * threatens x#critMultiplier# (default 2) damage on a roll of #threat# (default
+ * 20). If specified, the weapon can be used as a ranged weapon with a range
+ * increment of #range# feet.
  */
 Pathfinder.weaponRules = function(
   rules, name, profLevel, category, damage, threat, critMultiplier, range
@@ -4480,6 +4515,7 @@ Pathfinder.weaponRules = function(
   SRD35.weaponRules(
     rules, name, profLevel, category, damage, threat, critMultiplier, range
   );
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
@@ -4580,22 +4616,13 @@ Pathfinder.ruleNotes = function() {
     '</p>\n';
 };
 
-/*
- * TODO
- */
-Pathfinder.skillRules = function(
-  rules, name, ability, untrained, classes
-) {
-  SRD35.skillRules(rules, name, ability, untrained, classes, []);
-};
-
 /* Defines the rules related to (optional) character traits. */
 Pathfinder.traitRules = function(rules, name, type, subtype) {
 
   rules.defineRule('features.' + name, 'traits.' + name, '=', null);
 
   if(name == 'Armor Expert') {
-    rules.defineRule('skillNotes.armorSkillCheckPenalty',
+    rules.defineRule('skillNotes.armorSkillCheckPenaltyFeature',
       'skillNotes.armorExpertFeature', '+', '-1'
     );
   } else if(name == 'Attuned To The Ancestors') {
@@ -4663,7 +4690,7 @@ Pathfinder.defineSkill = function(rules, name, ability, trainedOnly, classes) {
       ('skillModifier.' + name, abilityNames[ability] + 'Modifier', '+', null);
     if(ability == 'dex' || ability == 'str') {
       rules.defineRule('skillModifier.' + name,
-        'skillNotes.armorSkillCheckPenalty', '+', '-source'
+        'skillNotes.armorSkillCheckPenaltyFeature', '+', '-source'
       );
     }
   }
@@ -4702,4 +4729,9 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       attributes.experience = QuilvynUtils.random(min, max);
     }
   }
+};
+
+/* Returns an ObjectViewer loaded with the default character sheet format. */
+Pathfinder.createViewers = function(rules, viewers) {
+  SRD35.createViewers(rules, viewers); // No changes
 };
