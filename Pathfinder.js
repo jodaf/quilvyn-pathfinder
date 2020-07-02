@@ -102,28 +102,50 @@ Pathfinder.RANDOMIZABLE_ATTRIBUTES =
 Pathfinder.ALIGNMENTS = Object.assign({}, SRD35.ALIGNMENTS);
 Pathfinder.ANIMAL_COMPANIONS = {
   // Attack, Dam, AC include all modifiers
-  'Ape': 'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 Size=M',
-  'Badger': 'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 Size=S',
-  'Bear': 'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6 Size=S',
-  'Boar': 'Attack=2 AC=18 Dam=1d6+1 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4 Size=S',
-  'Camel': 'Attack=3 AC=13 Dam=1d4+4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4 Size=L',
-  'Cheetah': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
-  'Constrictor': 'Attack=2 AC=15 Dam=1d3+2 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2 Size=M',
-  'Crocodile': 'Attack=3 AC=17 Dam=1d6+2 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2 Size=S',
-  'Deinonychus': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
-  'Dog': 'Attack=2 AC=16 Dam=1d4+1 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6 Size=S',
-  'Eagle': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
-  'Hawk': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
-  'Horse': 'Attack=2 AC=14 Dam=2@1d6+3,1d4+3 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6 Size=L',
-  'Leopard': 'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
-  'Lion': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
-  'Owl': 'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
-  'Pony': 'Attack=1 AC=13 Dam=2@1d3+1 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4 Size=M',
-  'Shark': 'Attack=2 AC=17 Dam=1d4+1 Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2 Size=S',
-  'Tiger': 'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
-  'Velociraptor': 'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
-  'Viper': 'Attack=0 AC=16 Dam=1d3-1 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2 Size=S',
-  'Wolf': 'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 Size=M'
+  'Ape':
+    'Attack=1 AC=14 Dam=2@1d4+1,1d4+1 Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 Size=M',
+  'Badger':
+    'Attack=1 AC=16 Dam=1d4 Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 Size=S',
+  'Bear':
+    'Attack=3 AC=15 Dam=2@1d3+2,1d4+2 Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Boar':
+    'Attack=2 AC=18 Dam=1d6+1 Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4 Size=S',
+  'Camel':
+    'Attack=3 AC=13 Dam=1d4+4 Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4 Size=L',
+  'Cheetah':
+    'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Constrictor':
+    'Attack=2 AC=15 Dam=1d3+2 Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2 Size=M',
+  'Crocodile':
+    'Attack=3 AC=17 Dam=1d6+2 Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2 Size=S',
+  'Deinonychus':
+    'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
+  'Dog':
+    'Attack=2 AC=16 Dam=1d4+1 Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6 Size=S',
+  'Eagle':
+    'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Hawk':
+    'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Horse':
+    'Attack=2 AC=14 Dam=2@1d6+3,1d4+3 Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6 Size=L',
+  'Leopard':
+    'Attack=2 AC=17 Dam=2@1d2+1,1d4+1 Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 Size=S',
+  'Lion':
+    'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
+  'Owl':
+    'Attack=1 AC=14 Dam=2@1d4,1d4 Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 Size=S',
+  'Pony':
+    'Attack=1 AC=13 Dam=2@1d3+1 Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4 Size=M',
+  'Shark':
+    'Attack=2 AC=17 Dam=1d4+1 Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2 Size=S',
+  'Tiger':
+    'Attack=1 AC=14 Dam=2@1d4+1,1d6+1 Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 Size=M',
+  'Velociraptor':
+    'Attack=1 AC=15 Dam=2@1d6,1d4 Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 Size=S',
+  'Viper':
+    'Attack=0 AC=16 Dam=1d3-1 Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2 Size=S',
+  'Wolf':
+    'Attack=1 AC=14 Dam=1d6+1 Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 Size=M'
 };
 Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
   'Advanced Ape': Pathfinder.ANIMAL_COMPANIONS['Ape'] +
@@ -218,7 +240,7 @@ Pathfinder.CLASSES = {
       '"10:Jack Of All Trades","12:Soothing Performace",' +
       '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
       '"20:Deadly Performance" ' +
-    'CasterLevelArcane=l ' +
+    'CasterLevelArcane=Level ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'B0:1=4;2=5;3=6,' +
@@ -274,7 +296,7 @@ Pathfinder.CLASSES = {
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
       '"1:Weapon Proficiency (Simple)",1:Aura,"1:Channel Energy",' +
       '"1:Spontaneous Cleric Spell" ' +
-    'CasterLevelDivine=l ' +
+    'CasterLevelDivine=Level ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'C0:1=3;2=4,' +
@@ -1187,7 +1209,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures'
   ],
   'Favored Terrain':[
-    'combat:+2 initiative in %V terrain type(s)',
+    'combat:+2 Initiative in %V terrain type(s)',
     'skill:+2 Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)'
   ],
   'Companion Bond':"combat:Half favored enemy bonus to allies w/in 30' %V rd",
@@ -1327,14 +1349,14 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   // Races
   'Adaptability':'feature:+1 Feat',
-  'Dwarf Ability Adjustment':'ability:+2 constitution/+2 wisdom/-2 charisma',
+  'Dwarf Ability Adjustment':'ability:+2 Constitution/+2 Wisdom/-2 Charisma',
   'Elf Ability Adjustment':
-    'ability:+2 dexterity/+2 intelligence/-2 constitution',
+    'ability:+2 Dexterity/+2 Intelligence/-2 Constitution',
   'Elf Blood':'feature:Elf and human for racial effects',
-  'Gnome Ability Adjustment':'ability:+2 constitution/+2 charisma/-2 strength',
+  'Gnome Ability Adjustment':'ability:+2 Constitution/+2 Charisma/-2 Strength',
   'Half-Elf Ability Adjustment':'ability:+2 any',
   'Half-Orc Ability Adjustment':'ability:+2 any',
-  'Halfling Ability Adjustement':'ability:+2 dexterity/+2 charisma/-2 strength',
+  'Halfling Ability Adjustement':'ability:+2 Dexterity/+2 Charisma/-2 Strength',
   'Human Ability Adjustment':'ability:+2 any',
   'Low-Light Vision':'feature:x%V normal distance in poor light',
   'Multitalented':'feature:Two favored classes',
@@ -1527,7 +1549,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'magic:+1 caster level on 3 spells',
     'skill:+1 Knowledge (Religion)/Knowledge (Religion) is class skill'
   ],
-  'Mummy-Touched':'save:+2 vs. curse, disease',
+  'Mummy-Touched':'save:+2 vs. curse and disease',
   'Natural Negotiator':[
     'feature:Additional language',
     'skill:Choice of Diplomacy, Handle Animal is a class skill'
@@ -1599,7 +1621,8 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'save:+1 vs. Perform-related abilities',
     'skill:+1 choice of Perform'
   ],
-  'Tunnel Fighter':'combat:+2 initiative, +1 critical damage underground',
+  'Tunnel Fighter':
+     'combat:+2 Initiative (underground)/+1 critical damage (underground)',
   'Unflappable':[
     'save:+1 vs. fear',
     'skill:+3 resist Intimidate DC'
@@ -2645,6 +2668,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.armorTrainingFeature',
       'levels.Fighter', '=', 'source >= 7 ? "heavy" : source >= 3 ? "medium" : null'
     );
+/* TODO
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'armorTrainingGap', '^', 'source >= 0 ? 0 : null'
     );
@@ -2652,6 +2676,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'armor', '+', '-SRD35.armorsProficiencyLevels[source]',
       'abilityNotes.armorTrainingFeature', '=', 'source == "heavy" ? SRD35.PROFICIENCY_HEAVY : SRD35.PROFICIENCY_MEDIUM'
     );
+*/
     rules.defineRule
       ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
     rules.defineRule('combatManeuverDefense',
@@ -2659,7 +2684,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.armorTrainingFeature',
       'dexterityModifier', '=', null,
-      'armor', '+', '-SRD35.armorsMaxDexBonuses[source]',
+      'dexterityArmorClassAdjustment', '+', '-source',
       'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)',
       '', '^', '0'
     );
@@ -3656,9 +3681,11 @@ Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
     var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
     rules.defineRule
       ('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
-    // TODO Don't think this is right
-    rules.defineRule
-      ('clericFeatures.' + proficiencyFeature, 'domains.War', '=', 'null');
+    rules.defineRule('clericFeatures.' + proficiencyFeature,
+      'levels.Cleric', '?', null,
+      'deityFavoredWeapon', '=', 'source.indexOf("'+weapon+'")>=0 ? 1 : null',
+      'featureNotes.weaponOfWarFeature', '=', 'null'
+    );
   }
 };
 
@@ -4296,20 +4323,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if((matchInfo = name.match(/^Skill Focus \((.*)\)$/)) != null) {
     var skill = matchInfo[1];
-    var skillNoSpace = skill.replace(/ /g, '');
-    var note = 'skillNotes.skillFocus(' + skillNoSpace + ')Feature';
-/* TODO
-    notes = [
-      note + ':+%V checks',
-      'sanityNotes.skillFocus(' + skillNoSpace + ')FeatSkills:' +
-        'Implies ' + skill
-    ];
-*/
-    rules.defineRule(note,
-      '', '=', '3',
-      'skills.' + skill, '+', 'source >= 10 ? 3 : null'
+    Pathfinder.featureRules(rules, name, 'skill:+%V ' + skill);
+    rules.defineRule('skillNotes.skillFocus(' + skill + ')Feature',
+      'skills.' + skill, '+', 'source >= 10 ? 6 : 3'
     );
-    rules.defineRule('skillModifier.' + skill, note, '+', null);
   } else if(name == 'Staggering Critical') {
     rules.defineRule('combatNotes.staggeringCriticalFeature',
       'baseAttack', '=', '10 + source'
@@ -4411,6 +4428,13 @@ Pathfinder.raceRulesExtra = function(rules, name, features) {
 
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.steadyFeature', '^', '0'
+    );
+
+  } else if(name.match(/Elf/)) {
+
+    rules.defineRule('featureNotes.low-LightVisionFeature',
+      '', '=', '1',
+      prefix + 'Features.Low-Light Vision', '+', null
     );
 
   } else if(name.match(/Gnome/)) {
