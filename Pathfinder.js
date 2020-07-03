@@ -254,7 +254,7 @@ Pathfinder.CLASSES = {
       '"B0:Dancing Lights;Daze;Detect Magic;Flare;Ghost Sound;Know Direction;' +
       'Light;Lullaby;Mage Hand;Mending;Message;Open/Close;Prestidigitation;' +
       'Read Magic;Resistance;Summon Instrument",' +
-      'B1:Alarm;Animate Rope;Cause Fear;Charm Person;Comprehend Languages;' +
+      '"B1:Alarm;Animate Rope;Cause Fear;Charm Person;Comprehend Languages;' +
       'Cure Light Wounds;Detect Secret Doors;Disguise Self;Erase;' +
       'Expeditious Retreat;Feather Fall;Grease;Hideous Laughter;Hypnotism;' +
       'Identify;Lesser Confusion;Magic Aura;Magic Mouth;Obscure Object;' +
@@ -394,7 +394,52 @@ Pathfinder.CLASSES = {
       'D6:11=1;12=2;14=3;17=4,' +
       'D7:13=1;14=2;16=3;19=4,' +
       'D8:15=1;16=2;18=3;20=4,' +
-      'D9:17=1;18=2;19=3;20=4',
+      'D9:17=1;18=2;19=3;20=4 ' +
+      'Spells=' +
+      '"D0:Create Water;Detect Magic;Detect Poison;Flare;Guidance;' +
+      'Know Direction;Light;Mending;Purify Food And Drink;Read Magic;' +
+      'Resistance;Stabilize;Virtue",' +
+      '"D1:Calm Animals;Charm Animal;Cure Light Wounds;' +
+      'Detect Animals Or Plants;Detect Snares And Pits;Endure Elements;' +
+      'Entangle;Faerie Fire;Goodberry;Hide From Animals;Jump;Longstrider;' +
+      'Magic Fang;Magic Stone;Obscuring Mist;Pass Without Trace;' +
+      'Produce Flame;Shillelagh;Speak With Animals;Summon Nature\'s Ally I",' +
+      '"D2:Animal Messenger;Animal Trance;Barkskin;Bear\'s Endurance;' +
+      'Bull\'s Strength;Cat\'s Grace;Chill Metal;Delay Poison;Fire Trap;' +
+      'Flame Blade;Flaming Sphere;Fog Cloud;Gust Of Wind;Heat Metal;' +
+      'Hold Animal;Lesser Restoration;Owl\'s Wisdom;Reduce Animal;' +
+      'Resist Energy;Soften Earth And Stone;Spider Climb;' +
+      'Summon Nature\'s Ally II;Summon Swarm;Tree Shape;Warp Wood",' +
+      '"D3:Call Lightning;Contagion;Cure Moderate Wounds;Daylight;' +
+      'Diminish Plants;Dominate Animal;Greater Magic Fang;Meld Into Stone;' +
+      'Neutralize Poison;Plant Growth;Poison;Protection From Energy;Quench;' +
+      'Remove Disease;Sleet Storm;Snare;Speak With Plants;Spike Growth;' +
+      'Stone Shape;Summon Nature\'s Ally III;Water Breathing;Wind Wall;' +
+      'Wood Shape",' +
+      '"D4:Air Walk;Antiplant Shell;Blight;Command Plants;Control Water;' +
+      'Cure Serious Wounds;Dispel Magic;Flame Strike;Freedom Of Movement;' +
+      'Giant Vermin;Ice Storm;Reincarnate;Repel Vermin;Rusting Grasp;Scrying;' +
+      'Spike Stones;Summon Nature\'s Ally IV",' +
+      '"D5:Atonement;Awaken;Baleful Polymorph;Call Lightning Storm;' +
+      'Commune With Nature;Control Winds;Cure Critical Wounds;Death Ward;' +
+      'Hallow;Insect Plague;Stoneskin;Summon Nature\'s Ally V;' +
+      'Transmute Mud To Rock;Transmute Rock To Mud;Tree Stride;Unhallow;' +
+      'Wall Of Fire;Wall Of Thorns",' +
+      '"D6:Antilife Shell;Find The Path;Fire Seeds;Greater Dispel Magic;' +
+      'Ironwood;Liveoak;Mass Bear\'s Endurance;Mass Bull\'s Strength;' +
+      'Mass Cat\'s Grace;Mass Cure Light Wounds;Mass Owl\'s Wisdom;' +
+      'Move Earth;Repel Wood;Spellstaff;Stone Tell;Summon Nature\'s Ally VI;' +
+      'Transport Via Plants;Wall Of Stone",' +
+      '"D7:Animate Plants;Changestaff;Control Weather;Creeping Doom;' +
+      'Fire Storm;Greater Scrying;Heal;Mass Cure Moderate Wounds;' +
+      'Summon Nature\'s Ally VII;Sunbeam;Transmute Metal To Wood;True Seeing;' +
+      'Wind Walk",' +
+      '"D8:Animal Shapes;Control Plants;Earthquake;Finger Of Death;' +
+      'Mass Cure Serious Wounds;Repel Metal Or Stone;Reverse Gravity;' +
+      'Summon Nature\'s Ally VIII;Sunburst;Whirlwind;Word Of Recall",' +
+      '"D9:Antipathy;Elemental Swarm;Foresight;Mass Cure Critical Wounds;' +
+      'Regenerate;Shambler;Shapechange;Storm Of Vengeance;' +
+      'Summon Nature\'s Ally IX;Sympathy"',
   'Fighter':
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
@@ -441,7 +486,21 @@ Pathfinder.CLASSES = {
       'P1:4=0;5=1;9=2;13=3;17=4,' +
       'P2:8=0;9=1;12=2;16=3;20=4,' +
       'P3:19=0;11=1;15=2;19=3,' +
-      'P4:13=0;14=1;18=2;20=3',
+      'P4:13=0;14=1;18=2;20=3 ' +
+    'Spells=' +
+      '"P1:Bless;Bless Water;Bless Weapon;Create Water;Cure Light Wounds;' +
+      'Detect Poison;Detect Undead;Divine Favor;Endure Elements;' +
+      'Lesser Restoration;Magic Weapon;Protection From Chaos;' +
+      'Protection From Evil;Read Magic;Resistance;Virtue",' +
+      '"P2:Bull\'s Strength;Delay Poison;Eagle\'s Splendor;Owl\'s Wisdom;' +
+      'Remove Paralysis;Resist Energy;Shield Other;Undetectable Alignment;' +
+      'Zone Of Truth",' +
+      '"P3:Cure Moderate Wounds;Daylight;Discern Lies;Dispel Magic;' +
+      'Greater Magic Weapon;Heal Mount;Magic Circle Against Chaos;' +
+      'Protection From Evil;Prayer;Remove Blindness/Deafness;' +
+      'Remove Curse",' +
+      '"P4:Break Enchantment;Cure Serious Wounds;Death Ward;Dispel Chaos;' +
+      'Dispel Evil;Holy Sword;Mark Of Justice;Neutralize Poison;Restoration"',
   'Ranger':
     'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -464,7 +523,22 @@ Pathfinder.CLASSES = {
       'R1:4=0;5=1;9=2;13=3;17=4,' +
       'R2:7=0;8=1;12=2;16=3;20=4,' +
       'R3:10=0;11=1;15=2;19=3,' +
-      'R4:13=0;14=1;18=2;20=3',
+      'R4:13=0;14=1;18=2;20=3 ' +
+    'Spells=' +
+      '"R1:Alarm;Animal Messenger;Calm Animals;Charm Animal;Delay Poison;' +
+      'Detect Animals Or Plants;Detect Poison;Detect Snares And Pits;' +
+      'Endure Elements;Entangle;Hide From Animals;Jump;Longstrider;' +
+      'Magic Fang;Pass Without Trace;Read Magic;Resist Energy;' +
+      'Speak With Animals;Summon Nature\'s Ally I",' +
+      '"R2:Barkskin;Bear\'s Endurance;Cat\'s Grace;Cure Light Wounds;' +
+      'Hold Animal;Owl\'s Wisdom;Protection From Energy;Snare;' +
+      'Speak With Plants;Spike Growth;Summon Nature\'s Ally II;Wind Wall",' +
+      '"R3:Command Plants;Cure Moderate Wounds;Darkvision;Diminish Plants;' +
+      'Greater Magic Fang;Neutralize Poison;Plant Growth;Reduce Animal;' +
+      'Remove Disease;Repel Vermin;Summon Nature\'s Ally III;Tree Shape;' +
+      'Water Walk",' +
+      '"R4:Animal Growth;Commune With Nature;Cure Serious Wounds;' +
+      'Freedom Of Movement;Nondetection;Summon Nature\'s Ally IV;Tree Stride"',
   // TODO Combat Style requirements for selectables
   'Rogue':
     'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
@@ -516,7 +590,101 @@ Pathfinder.CLASSES = {
       'W6:11=1;12=2;14=3;17=4,' +
       'W7:13=1;14=2;16=3;19=4,' +
       'W8:15=1;16=2;18=3;20=4,' +
-      'W9:17=1;18=2;19=3;20=4'
+      'W9:17=1;18=2;19=3;20=4 ' +
+    'Spells=' +
+      '"W0:Acid Splash;Arcane Mark;Bleed;Dancing Lights;Daze;Detect Magic;' +
+      'Detect Poison;Disrupt Undead;Flare;Ghost Sound;Light;Mage Hand;' +
+      'Mending;Message;Open/Close;Prestidigitation;Ray Of Frost;Read Magic;' +
+      'Resistance;Touch Of Fatigue",' +
+      '"W1:Alarm;Animate Rope;Burning Hands;Cause Fear;Charm Person;' +
+      'Chill Touch;Color Spray;Comprehend Languages;Detect Secret Doors;' +
+      'Detect Undead;Disguise Self;Endure Elements;Enlarge Person;Erase;' +
+      'Expeditious Retreat;Feather Fall;Floating Disk;Grease;Hold Portal;' +
+      'Hypnotism;Identify;Jump;Mage Armor;Magic Aura;Magic Missile;' +
+      'Magic Weapon;Mount;Obscuring Mist;Protection From Chaos;' +
+      'Protection From Evil;Protection From Good;Protection From Law;' +
+      'Ray Of Enfeeblement;Reduce Person;Shield;Shocking Grasp;Silent Image;' +
+      'Sleep;Summon Monster I;True Strike;Unseen Servant;Ventriloquism",' +
+      '"W2:Acid Arrow;Alter Self;Arcane Lock;Bear\'s Endurance;' +
+      'Blindness/Deafness;Blur;Bull\'s Strength;Cat\'s Grace;Command Undead;' +
+      'Continual Flame;Darkness;Darkvision;Daze Monster;Detect Thoughts;' +
+      'Eagle\'s Splendor;False Life;Flaming Sphere;Fog Cloud;Fox\'s Cunning;' +
+      'Ghoul Touch;Glitterdust;Gust Of Wind;Hideous Laughter;' +
+      'Hypnotic Pattern;Invisibility;Knock;Levitate;Locate Object;' +
+      'Magic Mouth;Make Whole;Minor Image;Mirror Image;Misdirection;' +
+      'Obscure Object;Owl\'s Wisdom;Phantom Trap;Protection From Arrows;' +
+      'Pyrotechnics;Resist Energy;Rope Trick;Scare;Scorching Ray;' +
+      'See Invisibility;Shatter;Spectral Hand;Spider Climb;Summon Monster II;' +
+      'Summon Swarm;Touch Of Idiocy;Web;Whispering Wind",' +
+      '"W3:Arcane Sight;Beast Shape I;Blink;Clairaudience/Clairvoyance;' +
+      'Daylight;Deep Slumber;Dispel Magic;Displacement;Explosive Runes;' +
+      'Fireball;Flame Arrow;Fly;Gaseous Form;Gentle Repose;' +
+      'Greater Magic Weapon;Halt Undead;Haste;Heroism;Hold Person;' +
+      'Illusory Script;Invisibility Sphere;Keen Edge;Lightning Bolt;' +
+      'Magic Circle Against Chaos;Magic Circle Against Evil;' +
+      'Magic Circle Against Good;Magic Circle Against Law;Major Image;' +
+      'Nondetection;Phantom Steed;Protection From Energy;Rage;' +
+      'Ray Of Exhaustion;Secret Page;Sepia Snake Sigil;Shrink Item;' +
+      'Sleet Storm;Slow;Stinking Cloud;Suggestion;Summon Monster III;' +
+      'Tiny Hut;Tongues;Vampiric Touch;Water Breathing;Wind Wall",' +
+      '"W4:Animate Dead;Arcane Eye;Beast Shape II;Bestow Curse;' +
+      'Black Tentacles;Charm Monster;Confusion;Contagion;Crushing Despair;' +
+      'Detect Scrying;Dimension Door;Dimensional Anchor;Elemental Body I;' +
+      'Enervation;Fear;Fire Shield;Fire Trap;Greater Invisibility;' +
+      'Hallucinatory Terrain;Ice Storm;Illusory Wall;Lesser Geas;' +
+      'Lesser Globe Of Invulnerability;Locate Creature;Mass Enlarge Person;' +
+      'Mass Reduce Person;Minor Creation;Mnemonic Enhancer;Phantasmal Killer;' +
+      'Rainbow Pattern;Remove Curse;Resilient Sphere;Scrying;Secure Shelter;' +
+      'Shadow Conjuration;Shout;Solid Fog;Stone Shape;Stoneskin;' +
+      'Summon Monster IV;Wall Of Fire;Wall Of Ice",' +
+      '"W5:Animal Growth;Baleful Polymorph;Beast Shape III;Blight;' +
+      'Break Enchantment;Cloudkill;Cone Of Cold;Contact Other Plane;' +
+      'Dismissal;Dominate Person;Dream;Elemental Body II;Fabricate;' +
+      'False Vision;Feeblemind;Hold Monster;Interposing Hand;' +
+      'Lesser Planar Binding;Mage\'s Faithful Hound;Mage\'s Private Sanctum;' +
+      'Magic Jar;Major Creation;Mind Fog;Mirage Arcana;Nightmare;' +
+      'Overland Flight;Passwall;Permanency;Persistent Image;Plant Shape I;' +
+      'Polymorph;Prying Eyes;Secret Chest;Seeming;Sending;Shadow Evocation;' +
+      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;Telekinesis;' +
+      'Telepathic Bond;Teleport;Transmute Mud To Rock;Transmute Rock To Mud;' +
+      'Wall Of Force;Wall Of Stone;Waves Of Fatigue",' +
+      '"W6:Acid Fog;Analyze Dweomer;Antimagic Field;Bear\'s Endurance;' +
+      'Beast Shape IV;Bull\'s Strength;Cat\'s Grace;Chain Lightning;' +
+      'Circle Of Death;Contingency;Control Water;Create Undead;Disintegrate;' +
+      'Eagle\'s Splendor;Elemental Body III;Eyebite;Flesh To Stone;' +
+      'Forceful Hand;Form Of The Dragon I;Fox\'s Cunning;Freezing Sphere;' +
+      'Geas/Quest;Globe Of Invulnerability;Greater Dispel Magic;' +
+      'Greater Heroism;Guards And Wards;Legend Lore;Mage\'s Lucubration;' +
+      'Mass Owl\'s Wisdom;Mass Suggestion;Mislead;Move Earth;Permanent Image;' +
+      'Planar Binding;Plant Shape II;Programmed Image;Repulsion;Shadow Walk;' +
+      'Stone To Flesh;Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
+      'Transformation;True Seeing;Undeath To Death;Veil;Wall Of Iron",' +
+      '"W7:Banishment;Control Undead;Control Weather;Delayed Blast Fireball;' +
+      'Elemental Body IV;Ethereal Jaunt;Finger Of Death;Forcecage;' +
+      'Form Of The Dragon II;Giant Form I;Grasping Hand;Greater Arcane Sight;' +
+      'Greater Polymorph;Greater Scrying;Greater Shadow Conjuration;' +
+      'Greater Teleport;Insanity;Instant Summons;Limited Wish;' +
+      'Mage\'s Magnificent Mansion;Mage\'s Sword;Mass Hold Person;' +
+      'Mass Invisibility;Phase Door;Plane Shift;Plant Shape III;' +
+      'Power Word Blind;Prismatic Spray;Project Image;Reverse Gravity;' +
+      'Sequester;Simulacrum;Spell Turning;Statue;Summon Monster VII;' +
+      'Symbol Of Weakness;Symbol Of Stunning;Teleport Object;Vision;' +
+      'Waves Of Exhaustion",' +
+      '"W8:Antipathy;Binding;Clenched Fist;Clone;Create Greater Undead;' +
+      'Demand;Dimensional Lock;Discern Location;Form Of The Dragon III;' +
+      'Giant Form II;Greater Planar Binding;Greater Prying Eyes;' +
+      'Greater Shadow Evocation;Greater Shout;Horrid Wilting;' +
+      'Incendiary Cloud;Iron Body;Irresistible Dance;Mass Charm Monster;Maze;' +
+      'Mind Blank;Moment Of Prescience;Polar Ray;Polymorph Any Object;' +
+      'Power Word Stun;Prismatic Wall;Protection From Spells;' +
+      'Scintillating Pattern;Screen;Summon Monster VIII;Sunburst;' +
+      'Symbol Of Death;Symbol Of Insanity;Sympathy;Telekinetic Sphere;' +
+      'Temporal Stasis;Trap The Soul",' +
+      '"W9:Astral Projection;Crushing Hand;Dominate Monster;Energy Drain;' +
+      'Etherealness;Foresight;Freedom;Gate;Imprisonment;Mage\'s Disjunction;' +
+      'Mass Hold Monster;Meteor Swarm;Power Word Kill;Prismatic Sphere;' +
+      'Refuge;Shades;Shapechange;Soul Bind;Summon Monster IX;' +
+      'Teleportation Circle;Time Stop;Wail Of The Banshee;Weird;Wish"'
 };
 Pathfinder.DEITIES = {
   'None':'',
@@ -635,7 +803,7 @@ Pathfinder.DOMAINS = {
   'Luck':
     'Features="1:Bit Of Luck","6:Good Fortune" ' +
     'Spells="True Strike",Aid,"Protection From Energy","Freedom Of Movement",' +
-    '"Break Enchantment",Mislead,"Spell Turning","Moment Of Precsience",' +
+    '"Break Enchantment",Mislead,"Spell Turning","Moment Of Prescience",' +
     'Miracle',
   'Madness':
     'Features="1:Vision Of Madness","8:Aura Of Madness" ' +
@@ -1810,7 +1978,6 @@ Pathfinder.SPELLS = Object.assign({}, SRD35.SPELLS, {
 // Delete SRD35 spells that don't exist in Pathfinder
 delete Pathfinder.SPELLS['Cure Minor Wounds'];
 delete Pathfinder.SPELLS['Inflict Minor Wounds'];
-delete Pathfinder.SPELLS['Polymorph'];
 Pathfinder.SPELL_LEVEL_CHANGES = {
   'Commune With Nature':'-Animal5',
   'Control Weather':'-Air7',
@@ -2337,7 +2504,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   else if(type == 'domains') {
     Pathfinder.domainRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Spells')
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
     );
     Pathfinder.domainRulesExtras(rules, name);
   } else if(type == 'factions')
@@ -2388,6 +2556,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
       QuilvynUtils.getAttrValueArray(attrs, 'SpellsPerDay'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
     );
     Pathfinder.classRulesExtra(rules, name);
   } else if(type == 'races') {
@@ -2475,12 +2644,12 @@ Pathfinder.armorRules = function(
 Pathfinder.classRules = function(
   rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
   saveRef, saveWill, skills, features, selectables, casterLevelArcane,
-  casterLevelDivine, spellAbility, spellsPerDay, spells
+  casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
 ) {
   SRD35.classRules(
     rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
     saveRef, saveWill, skills, features, selectables, casterLevelArcane,
-    casterLevelDivine, spellAbility, spellsPerDay, spells
+    casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
   );
   // Override SRD35 skillPoints rule
   rules.defineRule
@@ -3693,8 +3862,8 @@ Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
  * Defines in #rules# the rules associated with domain #name#. #features# and
  * #spells# list the associated features and domain spells.
  */
-Pathfinder.domainRules = function(rules, name, features, spells) {
-  SRD35.domainRules(rules, name, features, spells);
+Pathfinder.domainRules = function(rules, name, features, spells, spellDict) {
+  SRD35.domainRules(rules, name, features, spells, spellDict);
   // No changes needed to the rules defined by SRD35 method
 };
 
