@@ -488,7 +488,7 @@ Pathfinder.CLASSES = {
       '"6:Gorgon\'s Fist","6:Improved Bull Rush","6:Improved Disarm",' +
       '"6:Improved Feint","6:Improved Trip","6:Mobility",' +
       '"10:Improved Critical","10:Medusa\'s Wrath","10:Snatch Arrows",' +
-      '"10:Spring Attack',
+      '"10:Spring Attack"',
   // TODO Improved Critical subfeats
   'Paladin':
     'Require="alignment == \'Lawful Good\'" ' +
@@ -575,12 +575,53 @@ Pathfinder.CLASSES = {
       '"2:Stand Up","2:Surprise Attack","2:Trap Spotter",' +
       '"2:Rogue Weapon Training","10:Crippling Strike","10:Defensive Roll",' +
       '"10:Dispelling Attack","10:Feat Bonus","10:Improved Evasion",' +
-      '10:Opportunist,"10:Skill Mastery","10:Slippery Mind',
+      '10:Opportunist,"10:Skill Mastery","10:Slippery Mind"',
   // TODO Dispelling Attack requires Major Magic requires Minor Magic
   'Sorcerer':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)",1:"Eschew Materials" ' +
+      '"1:Weapon Proficiency (Simple)","1:Eschew Materials",' +
+      // Aberrant
+      '"1:Acidic Ray","3:Long Limbs","9:Unusual Anatomy",' +
+      '"15:Alient Resistance","20:Aberrant Form",' +
+      // Abyssal
+      '1:Claws,"3:Demon Resistances","9:Strength Of The Abyss",' +
+      '"15:Added Summonings","20:Demonic Might",' +
+      // Arcane
+      '"3:Metamagic Adept","9:New Arcana","15:School Power",' +
+      '"20:Arcane Apotheosis",' +
+      // Celestial
+      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven",' +
+      '15:Conviction,20:Ascension,' +
+      // Destined
+      '"1:Touch Of Destiny",3:Fated,"9:It Was Meant To Be","15:Within Reach",' +
+      '"20:Destiny Realized",' +
+      // Draconic
+      '1:Claws,"3:Dragon Resistances","9:Breath Weapon",15:Wings,' +
+      '"20:Power Of Wyrms",20:Blindsense,' +
+      // Elemental
+      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
+      '"15:Elemental Movement","20:Elemental Body",' +
+      // Fey
+      '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
+      '"15:Fey Magic","20:Soul Of The Fey",' +
+      // Infernal
+      '"1:Corrupting Touch","3:Infernal Resistances",9:Hellfire,' +
+      '"15:On Dark Wings","20:Power Of The Pit",' +
+      // Undead
+      '"1:Grave Touch","3:Death\'s Gift","9:Grasp Of The Dead",' +
+      '"15:Incorporeal Form","20:One Of Us" ' +
+    'Selectables=' +
+      '"1:Bloodline Aberrant","1:Bloodline Abyssal","1:Bloodline Arcane",' +
+      '"1:Bloodline Celestial","1:Bloodline Destined",' +
+      '"1:Bloodline Draconic (Black)","1:Bloodline Draconic (Blue)",' +
+      '"1:Bloodline Draconic (Green)","1:Bloodline Draconic (Red)",' +
+      '"1:Bloodline Draconic (White)","1:Bloodline Draconic (Brass)",' +
+      '"1:Bloodline Draconic (Bronze)","1:Bloodline Draconic (Copper)",' +
+      '"1:Bloodline Draconic (Gold)","1:Bloodline Draconic (Silver)",' +
+      '"1:Bloodline Elemental (Air)","1:Bloodline Elemental (Earth)",' +
+      '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
+      '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead" ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'S1:1=3;2=4;3=5;4=6,' +
@@ -1420,7 +1461,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Companion Bond':"combat:Half favored enemy bonus to allies w/in 30' %V rd",
   'Condition Fist':'combat:Stunning Fist may instead make target %V',
   'Conjured Dart':'magic:Ranged touch 1d6+%1 HP %V/day',
-  'Combat Trick':'feature:+1 combat Feat',
+  'Combat Trick':'feature:+1 Combat Feat',
   'Conviction':'feature:Reroll ability/attack/skill/save 1/day',
   'Corrupting Touch':'magic:Touch causes shaken %V rd %1/day',
   'Dazing Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
@@ -1439,7 +1480,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Divine Mount':'feature:Magically summon mount %V/day',
   'Divine Weapon':'combat:Add %V enhancements to weapon %1 minutes %2/day',
   'Dragon Resistances':[
-    'combat:+%V AC',
+    'combat:+%V AC', // No bonus to CMD
     'save:%V vs. %1'
   ],
   'Elemental Blast':"combat:R60' 20' radius %Vd6 HP %3 (DC %1 Reflex half) %2/day",
@@ -1531,7 +1572,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'save:10 acid/cold'
   ],
   'Power Of Wyrms':'save:Immune paralysis/sleep',
-  'Power Over Undead':'feature:+1 Command Undead or Turn Undead Feat',
+  'Power Over Undead':'feature:+1 General Feat (Command Undead or Turn Undead)',
   'Powerful Blow':'combat:+%V HP 1/rage',
   'Protective Ward':"magic:+%V AC 10' radius %1/day",
   'Quarry':[
@@ -1547,7 +1588,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Renewed Vigor':'magic:Heal %Vd8+%1 HP 1/day during rage',
   'Resiliency':'combat:1 minute of %V temporary HP when below 0 HP 1/day',
   'Rogue Crawl':'ability:Crawl at half speed',
-  'Rogue Weapon Training':'feat:+1 Weapon Focus Feat',
+  'Rogue Weapon Training':'feat:+1 Combat Feat (Weapon Focus)',
   'Rolling Dodge':'combat:+%V AC vs. ranged %1 rd during rage',
   'Roused Anger':'combat:Rage even if fatigued',
   'Scent':'feature:Detect creatures via smell',
@@ -1590,7 +1631,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Wings':"ability:Fly %V'/average",
   'Within Reach':'save:DC 20 Will save vs. fatal attack 1/day',
   // Races
-  'Adaptability':'feature:+1 Skill Focus Feat',
+  'Adaptability':'feature:+1 General Feat (Skill Focus)',
   'Darkvision':"feature:60' b/w vision in darkness",
   'Defensive Training':'combat:+4 AC vs. giant creatures',
   'Dwarf Ability Adjustment':'ability:+2 Constitution/+2 Wisdom/-2 Charisma',
@@ -2214,12 +2255,6 @@ Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
 });
 
 Pathfinder.BLOODLINES = [
-  'Aberrant', 'Abyssal', 'Arcane', 'Celestial', 'Destined', 'Draconic (Black)',
-  'Draconic (Blue)', 'Draconic (Green)', 'Draconic (Red)', 'Draconic (White)',
-  'Draconic (Brass)', 'Draconic (Bronze)', 'Draconic (Copper)',
-  'Draconic (Gold)', 'Draconic (Silver)', 'Elemental (Air)',
-  'Elemental (Earth)', 'Elemental (Fire)', 'Elemental (Water)', 'Fey',
-  'Infernal', 'Undead'
 ];
 Pathfinder.tracksThreshholds = {
   '3.5':[
@@ -3165,39 +3200,71 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     rules.defineRule
       ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
-    if(true)
-      return; // TODO
     var bloodlinePowers = {
       'Aberrant':
-        '1:Acidic Ray/3:Long Limbs/9:Unusual Anatomy/' +
-        '15:Alien Resistance/20:Aberrant Form',
+        'Acidic Ray,Long Limbs,Unusual Anatomy,Alien Resistance,Aberrant Form',
       'Abyssal':
-        '1:Claws/3:Demon Resistances/9:Strength Of The Abyss/' +
-        '15:Added Summonings/20:Demonic Might',
+        'Claws,Demon Resistances,Strength Of The Abyss,Added Summonings,Demonic Might',
       'Arcane':
-        '3:Metamagic Adept/9:New Arcana/15:School Power/20:Arcane Apotheosis',
+        'Metamagic Adept,New Arcana,School Power,Arcane Apotheosis',
       'Celestial':
-        '1:Heavenly Fire/3:Celestial Resistances/9:Wings Of Heaven/' +
-        '15:Conviction/20:Ascension',
+        'Heavenly Fire,Celestial Resistances,Wings Of Heaven,Conviction,Ascension',
       'Destined':
-        '1:Touch Of Destiny/3:Fated/9:It Was Meant To Be/' +
-        '15:Within Reach/20:Destiny Realized',
+        'Touch Of Destiny,Fated,It Was Meant To Be,Within Reach,Destiny Realized',
       'Draconic':
-        '1:Claws/3:Dragon Resistances/9:Breath Weapon/' +
-        '15:Wings/20:Power Of Wyrms/20:Blindsense',
+        'Claws,Dragon Resistances,Breath Weapon,Wings,Power Of Wyrms,Blindsense',
       'Elemental':
-        '1:Elemental Ray/3:Elemental Resistance/9:Elemental Blast/' +
-        '15:Elemental Movement/20:Elemental Body',
+        'Elemental Ray,Elemental Resistance,Elemental Blast,Elemental Movement,Elemental Body',
       'Fey':
-        '1:Laughing Touch/3:Woodland Stride/9:Fleeting Glance/' +
-        '15:Fey Magic/20:Soul Of The Fey',
+        'Laughing Touch,Woodland Stride,Fleeting Glance,Fey Magic,Soul Of The Fey',
       'Infernal':
-        '1:Corrupting Touch/3:Infernal Resistances/9:Hellfire/' +
-        '15:On Dark Wings/20:Power Of The Pit',
+        'Corrupting Touch,Infernal Resistances,Hellfire,On Dark Wings,Power Of The Pit',
       'Undead':
-        '1:Grave Touch/3:Death\'s Gift/9:Grasp Of The Dead/' +
-        '15:Incorporeal Form/20:One Of Us'
+        'Grave Touch,Death\'s Gift,Grasp Of The Dead,Incorporeal Form,One Of Us'
+    };
+    var subBloodlines = [
+      'Bloodline Draconic (Black)', 'Bloodline Draconic (Blue)',
+      'Bloodline Draconic (Green)', 'Bloodline Draconic (Red)',
+      'Bloodline Draconic (White)', 'Bloodline Draconic (Brass)',
+      'Bloodline Draconic (Bronze)', 'Bloodline Draconic (Copper)',
+      'Bloodline Draconic (Gold)', 'Bloodline Draconic (Silver)',
+      'Bloodline Elemental (Air)', 'Bloodline Elemental (Earth)',
+      'Bloodline Elemental (Fire)', 'Bloodline Elemental (Water)'
+    ];
+    for(var bloodline in bloodlinePowers) {
+      var bloodlineLevelAttr = 'bloodlineLevel.' + bloodline;
+      var powers = bloodlinePowers[bloodline].split(',');
+      rules.defineRule(bloodlineLevelAttr,
+        'features.Bloodline ' + bloodline, '?', null,
+        'levels.Sorcerer', '=', null
+      );
+      for(var i = 0; i < powers.length; i++) {
+        rules.defineRule('sorcererFeatures.' + powers[i],
+          'features.Bloodline ' + bloodline, '?', null
+        );
+      }
+      rules.defineRule('combatNotes.dragonResistancesFeature',
+        bloodlineLevelAttr, '=',
+        'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
+      );
+      rules.defineRule('saveNotes.dragonResistancesFeature',
+        bloodlineLevelAttr, '=',
+        'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+      );
+/* TODO
+      rules.defineRule('saveNotes.dragonResistancesFeature.1',
+        bloodlineLevelAttr, '=', '"' + energyType + '"'
+      );
+*/
     }
+    for(var i = 0; i < subBloodlines.length; i++) {
+      var subBloodline = subBloodlines[i];
+      var superBloodline = subBloodline.replace(/ \(.*/, '');
+      rules.defineRule
+        ('features.' + superBloodline, 'features.' + subBloodline, '=', '1');
+    }
+    if(true)
+      return; // TODO
     var bloodlineSkills = {
       'Aberrant':'Knowledge (Dungeoneering)',
       'Abyssal':'Knowledge (Planes)',
@@ -3247,18 +3314,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'Waves Of Fatigue/Undeath To Death/Finger Of Death/Horrid Wilting/' +
         'Energy Drain'
     }
-    for(var j = 0; j < bloodlines.length; j++) {
-      var bloodline = bloodlines[j];
+    for(bloodline in bloodlinePowers) {
       var baseBloodline = bloodline.split(' (')[0];
-      var bloodlineLevelAttr = 'bloodlineLevel.' + bloodline;
       var powers = bloodlinePowers[baseBloodline].split('/');
       var skill = bloodlineSkills[baseBloodline];
       var spells = bloodlineSpells[baseBloodline].split('/');
-      selectableFeatures.push('Bloodline ' + bloodline);
-      rules.defineRule(bloodlineLevelAttr,
-        'features.Bloodline ' + bloodline, '?', null,
-        'levels.Sorcerer', '=', null
-      );
       for(var k = 0; k < powers.length; k++) {
         var pieces = powers[k].split(':');
         rules.defineRule('sorcererFeatures.' + pieces[1],
@@ -3429,9 +3489,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
         rules.defineRule('abilityNotes.wingsFeature',
           bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
         );
-        rules.defineRule
-          ('armorClass', 'combatNotes.dragonResistancesFeature', '+', null);
-        // No bonus to CMD
         rules.defineRule('clawsDamageLevel',
           'features.Claws', '=', '1',
           'features.Small', '+', '-1',
@@ -3466,10 +3523,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
           bloodlineLevelAttr, '=',
           'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 HP ' + energyType + '"'
         );
-        rules.defineRule('combatNotes.dragonResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
-        );
         rules.defineRule('featureNotes.blindsenseFeature',
           bloodlineLevelAttr, '^=', '60'
         );
@@ -3477,13 +3530,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
           bloodlineLevelAttr, '=', '1'
         );
         rules.defineRule('magicNotes.bloodlineDraconicFeature',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('saveNotes.dragonResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.dragonResistancesFeature.1',
           bloodlineLevelAttr, '=', '"' + energyType + '"'
         );
       } else if(baseBloodline == 'Elemental') {
