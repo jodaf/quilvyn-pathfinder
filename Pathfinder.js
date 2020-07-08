@@ -220,6 +220,135 @@ Pathfinder.ARMORS = {
   'Half Plate':SRD35.ARMORS['Half Plate'] + ' AC=8',
   'Full Plate':SRD35.ARMORS['Full Plate'] + ' AC=9'
 };
+Pathfinder.BLOODLINES = {
+  'Aberrant':
+    'Features=' +
+      '"1:Acidic Ray","3:Long Limbs","9:Unusual Anatomy",' +
+      '"15:Alien Resistance","20:Aberrant Form" ' +
+    'Feats=' +
+      '"Combat Casting","Improved Disarm","Improved Grapple",' +
+      '"Improved Initiative","Improved Unarmed Strike","Iron Will",' +
+      '"Silent Spell","Skill Focus (Knowledge (Dungeoneering))" ' +
+    'Skills="Knowledge (Dungeoneering)" ' +
+    'Spells=',
+      '"3:Enlarge Person","5:See Invisibility",7:Tongues,"9:Black Tentacles",' +
+      '11:Feeblemind,13:Veil,"15:Plane Shift","17:Mind Blank",19:Shapechange',
+  'Abyssal':
+    'Features=' +
+      '1:Claws,"3:Demon Resistances","9:Strength Of The Abyss",' +
+      '"15:Added Summonings","20:Demonic Might" ' +
+    'Feats=' +
+      '"Augment Summoning",Cleave,"Empower Spell","Great Fortitude",' +
+      '"Improved Bull Rush","Improved Sunder","Power Attack",' +
+      '"Skill Focus (Knowledge (Planes)) ' +
+    'Skills="Knowledge (Planes)" ' +
+    'Spells=',
+      '"3:Cause Fear","5:Bull\'s Strength",7:Rage,9:Stoneskin,11:Dismissal,' +
+      '13:Transformation,"15:Greater Teleport","17:Unholy Aura",' +
+      '"19:Summon Monster IX"',
+  'Arcane':
+    'Features=' +
+      '"1:Arcane Bond","3:Metamagic Adept","9:New Arcana","15:School Power",' +
+      '"20:Arcane Apotheosis" ' +
+    'Feats=' +
+      '"Combat Casting","Improved Counterspell","Improved Initiative",' +
+      '"Iron Will","Scribe Scroll","Skill Focus (Knowledge (Arcana))",' +
+      '"Spell Focus","Still Spell" ' +
+    'Skills="choice of Knowledge" ' +
+    'Spells=',
+      '3:Identify,5:Invisibility:"7:Dispel Magic","9:Dimension Door",' +
+      '"11:Overland Flight","13:True Seeing","15:Greater Teleport",' +
+      '"17:Power Word Stun",19:Wish',
+  'Celestial':
+    'Features=' +
+      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven,"'+
+      '15:Conviction,20:Ascension ' +
+    'Feats=' +
+      'Dodge,"Extend Spell","Iron Will",Mobility,"Mounted Combat",' +
+      '"Ride-By Attack","Skill Focus (Knowledge (Religion))",' +
+      '"Weapon Finesse" ' +
+    'Skills=Heal ' +
+    'Spells=',
+      '3:Bless,"5:Resist Energy","7:Magic Circle Against Evil",' +
+      '"9:Remove Curse","11:Flame Strike","13:Greater Dispel Magic",'
+      '15:Banishment,17:Sunburst,19:Gate',
+  'Destined':
+    'Features=' +
+      '"1:Touch Of Destiny",3:Fated,"9:It Was Meant To Be","15:Within Reach",' +
+      '"20:Destiny Realized" ' +
+    'Feats=' +
+      '"Arcane Strike",Diehard,Endurance,Leadership,"Lightning Reflexes",' +
+      '"Maximize Spell","Skill Focus (Knowledge (History))","Weapon Focus" ' +
+    'Skills="Knowledge (History)" ' +
+    'Spells=',
+      '3:Alarm,5:Blur,"7:Protection From Energy","9:Freedom Of Movement",' +
+      '"11:Break Enchantment",13:Mislead,"15:Spell Turning",' +
+      '"17:Moment Of Prescience",19:Foresight',
+  'Draconic':
+    'Features=' +
+      '1:Claws,"3:Dragon Resistances","9:Breath Weapon",15:Wings,' +
+      '"20:Power Of Wyrms",20:Blindsense ' +
+    'Feats=' +
+      '"Blind-Fight","Great Fortitude","Improved Initiative","Power Attack",' +
+      '"Quicken Spell","Skill Focus (Fly)",' +
+      '"Skill Focus (Knowledge (Arcana))",Toughness ' +
+    'Skills=Perception ' +
+    'Spells=',
+      '"3:Mage Armor","5:Resist Energy",7:Fly,9:Fear,"11:Spell Resistance",' +
+      '"13:Form Of The Dragon I","15:Form Of The Dragon II",' +
+      '"17:Form Of The Dragon III",19:Wish',
+  'Elemental':
+    'Features=' +
+      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
+      '"15:Elemental Movement","20:Elemental Body" ' +
+    'Feats=' +
+      'Dodge,"Empower Spell","Great Fortitude","Improved Initiative",' +
+      'Lightning Reflexes","Power Attack","Skill Focus (Knowledge (Planes))",' +
+      '"Weapon Finesse ' +
+    'Skills="Knowledge (Planes)" ' +
+    'Spells=',
+      '"3:Burning Hands","5:Scorching Ray","7:Protection From Energy",' +
+      '"9:Elemental Body I","11:Elemental Body II","13:Elemental Body III",' +
+      '"15:Elemental Body IV","17:Summon Monster VIII","19:Elemental Swarm"',
+  'Fey':
+    'Features=' +
+      '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
+      '"15:Fey Magic","20:Soul Of The Fey" ' +
+    'Feats='
+      'Dodge,"Improved Initiative","Lightning Reflexes",Mobility,' +
+      '"Point-Blank Shot","Precise Shot","Quicken Spell",' +
+      '"Skill Focus (Knowledge (Nature)) ' +
+    'Skills="Knowledge (Nature)" ' +
+    'Spells=',
+      '3:Entangle,"5:Hideous Laughter","7:Deep Slumber",9:Poison,' +
+      '"11:Tree Stride",13:Mislead,"15:Phase Door","17:Irresistible Dance",' +
+      '19:Shapechange',
+  'Infernal':
+    'Features=' +
+      '"1:Corrupting Touch","3:Infernal Resistances",9:Hellfire,' +
+      '"15:On Dark Wings","20:Power Of The Pit" ' +
+    'Feats=' +
+      'Blind-Fight,"Combat Expertise",Deceitful,"Extend Spell",' +
+      '"Improved Disarm","Iron Will","Skill Focus (Knowledge (Planes))",' +
+      '"Spell Penetration" ' +
+    'Skills=Diplomacy ' +
+    'Spells=',
+      '"3:Protection From Good","5:Scorching Ray",7:Suggestion,' +
+      '"9:Charm Monster","11:Dominate Person","13:Planar Binding",' +
+      '"15:Greater Teleport","17:Power Word Stun","19:Meteor Swarm"',
+  'Undead':
+    'Features=' +
+      '"1:Grave Touch","3:Death\'s Gift","9:Grasp Of The Dead",' +
+      '"15:Incorporeal Form","20:One Of Us" ' +
+    'Feats=' +
+      '"Combat Casting","Diehard",Endurance,"Iron Will",' +
+      '"Skill Focus (Knowledge (Religion))","Spell Focus",Toughness ' +
+    'Skills="Knowledge (Religion)" ' +
+    'Spells='
+      '"3:Chill Touch","5:False Life","7:Vampiric Touch","9:Animate Dead",' +
+      '"11:Waves Of Fatigue","13:Undeath To Death","15"Finger Of Death",' +
+      '"17:Horrid Wilting","19:Energy Drain"'
+};
 Pathfinder.CLASSES = {
   'Barbarian':
     'Require="alignment !~ /Lawful/" ' +
@@ -580,37 +709,7 @@ Pathfinder.CLASSES = {
   'Sorcerer':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)","1:Eschew Materials",' +
-      // Aberrant
-      '"1:Acidic Ray","3:Long Limbs","9:Unusual Anatomy",' +
-      '"15:Alient Resistance","20:Aberrant Form",' +
-      // Abyssal
-      '1:Claws,"3:Demon Resistances","9:Strength Of The Abyss",' +
-      '"15:Added Summonings","20:Demonic Might",' +
-      // Arcane
-      '"3:Metamagic Adept","9:New Arcana","15:School Power",' +
-      '"20:Arcane Apotheosis",' +
-      // Celestial
-      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven",' +
-      '15:Conviction,20:Ascension,' +
-      // Destined
-      '"1:Touch Of Destiny",3:Fated,"9:It Was Meant To Be","15:Within Reach",' +
-      '"20:Destiny Realized",' +
-      // Draconic
-      '1:Claws,"3:Dragon Resistances","9:Breath Weapon",15:Wings,' +
-      '"20:Power Of Wyrms",20:Blindsense,' +
-      // Elemental
-      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
-      '"15:Elemental Movement","20:Elemental Body",' +
-      // Fey
-      '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
-      '"15:Fey Magic","20:Soul Of The Fey",' +
-      // Infernal
-      '"1:Corrupting Touch","3:Infernal Resistances",9:Hellfire,' +
-      '"15:On Dark Wings","20:Power Of The Pit",' +
-      // Undead
-      '"1:Grave Touch","3:Death\'s Gift","9:Grasp Of The Dead",' +
-      '"15:Incorporeal Form","20:One Of Us" ' +
+      '"1:Weapon Proficiency (Simple)",1:Bloodline,"1:Eschew Materials" ' +
     'Selectables=' +
       '"1:Bloodline Aberrant","1:Bloodline Abyssal","1:Bloodline Arcane",' +
       '"1:Bloodline Celestial","1:Bloodline Destined",' +
@@ -2254,8 +2353,6 @@ Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
   'Starknife':'Level=2 Category=Li Damage=d4 Crit=3 Range=20'
 });
 
-Pathfinder.BLOODLINES = [
-];
 Pathfinder.tracksThreshholds = {
   '3.5':[
     0, 1, 3, 6, 10, 15, 21, 28, 36, 45,
@@ -2668,6 +2765,366 @@ Pathfinder.armorRules = function(
   rules.defineRule
     ('skillNotes.armorSwimCheckPenaltyFeature', 'level', '^', '0');
 };
+
+/*
+ * TODO
+ */
+Pathfinder.bloodlineRules = function(
+  name, features, feats, skills, spells, spellDict
+) {
+
+  var bloodlineLevelAttr = 'bloodlineLevel.' + name;
+  rules.defineRule(bloodlineLevelAttr,
+    'features.Bloodline ' + name, '?', null,
+    'levels.Sorcerer', '=', null
+  );
+
+  for(var i = 0; i < features.length; i++) {
+    var matchInfo = features[i].match(/^((\d+):)?(.*)$/);
+    var feature = matchInfo ? matchInfo[3] : features[i];
+    var level = matchInfo ? matchInfo[2] : 1;
+    if(level == 1)
+      rules.defineRule('sorcererFeatures.' + feature,
+        bloodlineLevelAttr, '=', '1'
+      );
+    else
+      rules.defineRule('sorcererFeatures.' + feature,
+        bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
+      );
+    rules.defineRule
+      ('features.' + feature, 'sorcererFeatures.' + feature, '+=', null);
+  }
+
+  rules.defineRule('featCount.' + name,
+    bloodlineLevelAttr, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
+  );
+  for(var i = 0; i < feats.length; i++) {
+    feats[i] += ':' + name;
+    Pathfinder.featRules = function(rules, feats[i], name, [], []);
+  }
+
+  Pathfinder.featureRules(rules, name + ' Bloodline', 'skills:' + skills.join(' is a class skill/') + ' is a class skill');
+
+  for(var i = 0; i < spells.length; i++) {
+    var spell = spells[i];
+    var school = Pathfinder.spellsSchools[spell].substring(0, 4);
+    rules.defineRule(
+      'spells.' + spell + '(W' + (k+1) + ' ' + school + ')',
+      bloodlineLevelAttr, '=', 'source >= ' + (3 + 2 * k) + ' ? 1 : null'
+    );
+  }
+
+  for(var i = 0; i < spells.length; i++) {
+    var matchInfo = spells[i].match(/^((\d+):)?(.*)$/);
+    var spellName = matchInfo ? matchInfo[3] : features[i];
+    var level = matchInfo ? matchInfo[2] : 1;
+    if(spellDict[spellName] == null) {
+      console.log('Unknown spell "' + spellName + '"');
+      continue;
+    }
+    var school = QuilvynUtils.getAttrValue(spellDict[spellName], 'School');
+    var description =
+      QuilvynUtils.getAttrValue(spellDict[spellName], 'Description');
+    var spell =
+      spellName + '(W' +  level + ' ' + school.substring(0, 4) + ')';
+    rules.defineRule('spells.' + spell,
+      bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
+    );
+  }
+
+  if(true)
+    return;
+
+      rules.defineRule('combatNotes.dragonResistancesFeature',
+        bloodlineLevelAttr, '=',
+        'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
+      );
+      rules.defineRule('saveNotes.dragonResistancesFeature',
+        bloodlineLevelAttr, '=',
+        'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+      );
+/* TODO
+      rules.defineRule('saveNotes.dragonResistancesFeature.1',
+        bloodlineLevelAttr, '=', '"' + energyType + '"'
+      );
+*/
+    for(var i = 0; i < subBloodlines.length; i++) {
+      var subBloodline = subBloodlines[i];
+      var superBloodline = subBloodline.replace(/ \(.*/, '');
+      rules.defineRule
+        ('features.' + superBloodline, 'features.' + subBloodline, '=', '1');
+    }
+    for(bloodline in bloodlinePowers) {
+      var baseBloodline = bloodline.split(' (')[0];
+      var powers = bloodlinePowers[baseBloodline].split('/');
+      var skill = bloodlineSkills[baseBloodline];
+      var spells = bloodlineSpells[baseBloodline].split('/');
+      if(bloodline == 'Aberrant') {
+        rules.defineRule('combatNotes.longLimbsFeature',
+          bloodlineLevelAttr, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+        );
+        rules.defineRule('combatNotes.unusualAnatomyFeature',
+          bloodlineLevelAttr, '=', 'source >= 13 ? 50 : 25'
+        );
+        rules.defineRule('magicNotes.acidicRayFeature',
+          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+        );
+        rules.defineRule('magicNotes.acidicRayFeature.1',
+          'features.Acidic Ray', '?', null,
+          'charismaModifier', '=', '1 + source'
+        );
+        rules.defineRule('saveNotes.alienResistanceFeature',
+          bloodlineLevelAttr, '=', 'source + 10'
+        );
+      } else if(bloodline == 'Abyssal') {
+        rules.defineRule('abilityNotes.strengthOfTheAbyssFeature',
+          bloodlineLevelAttr, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+        );
+        rules.defineRule('clawsDamageLevel',
+          'features.Claws', '=', '1',
+          'features.Small', '+', '-1',
+          'features.Large', '+', '1',
+          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
+        );
+        rules.defineRule('combatNotes.clawsFeature',
+          'clawsDamageLevel', '=',
+          '["1d3", "1d4", "1d6", "1d8"][source]'
+        );
+        rules.defineRule('combatNotes.clawsFeature.1',
+          'features.Claws', '?', null,
+          'strengthModifier', '=', null
+        );
+        rules.defineRule('combatNotes.clawsFeature.2',
+          'features.Claws', '?', null,
+          'charismaModifier', '=', 'source+3'
+        );
+        rules.defineRule('combatNotes.clawsFeature.3',
+          'features.Claws', '?', null,
+          bloodlineLevelAttr, '=',
+          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 energy"'
+        );
+        rules.defineRule('magicNotes.bloodlineAbyssalFeature',
+          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+        );
+        rules.defineRule('saveNotes.demonResistancesFeature',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+        );
+        rules.defineRule('saveNotes.demonResistancesFeature.1',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
+        );
+      } else if(bloodline == 'Arcane') {
+        selectableFeatures.push('Bonded Object', 'Familiar');
+        rules.defineRule('familiarSorcererLevel',
+          'sorcererFeatures.Familiar', '?', null,
+          'levels.Sorcerer', '=', null
+        );
+        rules.defineRule('familiarLevel',
+          'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
+        );
+        rules.defineRule
+          ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
+        rules.defineRule
+          ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
+        rules.defineRule('magicNotes.metamagicAdeptFeature',
+          bloodlineLevelAttr, '=',
+          'source >= 20 ? "any" : Math.floor((source + 1) / 4)'
+        );
+        rules.defineRule('magicNotes.newArcanaFeature',
+          bloodlineLevelAttr, '=', 'Math.floor((source - 5) / 4)'
+        );
+      } else if(bloodline == 'Celestial') {
+        rules.defineRule('abilityNotes.wingsOfHeavenFeature',
+          bloodlineLevelAttr, '=',
+          'source >= 20 ? "any" : source >= 9 ? source : null'
+        );
+        rules.defineRule('magicNotes.bloodlineCelestialFeature',
+          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+        );
+        rules.defineRule('magicNotes.heavenlyFireFeature',
+          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+        );
+        rules.defineRule('magicNotes.heavenlyFireFeature.1',
+          'features.Heavenly Fire', '?', null,
+          'charismaModifier', '=', '1 + source'
+        );
+        rules.defineRule('saveNotes.celestialResistancesFeature',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+        );
+      } else if(bloodline == 'Destined') {
+        rules.defineRule('featureNotes.itWasMeantToBeFeature',
+          bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 8)'
+        );
+        rules.defineRule('magicNotes.touchOfDestinyFeature',
+          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+        );
+        rules.defineRule('magicNotes.touchOfDestinyFeature.1',
+          'features.Touch Of Destiny', '?', null,
+          'wisdomModifier', '=', 'source + 3'
+        );
+        rules.defineRule('saveNotes.fatedFeature',
+          bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
+        );
+      } else if(baseBloodline == 'Draconic') {
+        var dragonType = bloodline.split(')')[0].split('(')[1];
+        var breathShape =
+          'GreenRedWhiteGoldSilver'.indexOf(dragonType) >= 0 ? "30' cone" : "60' line";
+        var energyType =
+          'BlackGreenCopper'.indexOf(dragonType) >= 0 ? 'acid' :
+          'BlueBronze'.indexOf(dragonType) >= 0 ? 'electricity' :
+          'RedBrassGold'.indexOf(dragonType) >= 0 ? 'fire' : 'cold';
+        rules.defineRule('abilityNotes.wingsFeature',
+          bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
+        );
+        rules.defineRule('clawsDamageLevel',
+          'features.Claws', '=', '1',
+          'features.Small', '+', '-1',
+          'features.Large', '+', '1',
+          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
+        );
+        rules.defineRule
+          ('combatNotes.breathWeaponFeature', bloodlineLevelAttr, '=', null);
+        rules.defineRule('combatNotes.breathWeaponFeature.1',
+          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+          'charismaModifier', '+', null
+        );
+        rules.defineRule('combatNotes.breathWeaponFeature.2',
+          bloodlineLevelAttr, '=',
+          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
+        );
+        rules.defineRule('combatNotes.breathWeaponFeature.3',
+          bloodlineLevelAttr, '=', '"' + breathShape + '"'
+        );
+        rules.defineRule('combatNotes.breathWeaponFeature.4',
+          bloodlineLevelAttr, '=', '"' + energyType + '"'
+        );
+        rules.defineRule('combatNotes.clawsFeature',
+          'clawsDamageLevel', '=',
+          '["1d3", "1d4", "1d6", "1d8"][source]'
+        );
+        rules.defineRule
+          ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
+        rules.defineRule
+          ('combatNotes.clawsFeature.2', 'charismaModifier', '=', 'source+3');
+        rules.defineRule('combatNotes.clawsFeature.3',
+          bloodlineLevelAttr, '=',
+          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 HP ' + energyType + '"'
+        );
+        rules.defineRule('featureNotes.blindsenseFeature',
+          bloodlineLevelAttr, '^=', '60'
+        );
+        rules.defineRule('features.Bloodline Draconic',
+          bloodlineLevelAttr, '=', '1'
+        );
+        rules.defineRule('magicNotes.bloodlineDraconicFeature',
+          bloodlineLevelAttr, '=', '"' + energyType + '"'
+        );
+      } else if(baseBloodline == 'Elemental') {
+        var elementType = bloodline.split(')')[0].split('(')[1];
+        var energyType =
+          elementType == 'Air' ? 'electricity' :
+          elementType == 'Earth' ? 'acid' :
+          elementType == 'Fire' ? 'fire' : 'cold';
+        var movement =
+          elementType == 'Air' ? "Fly 60'" :
+          elementType == 'Earth' ? "Burrow 30'" :
+          elementType == 'Water' ? "Swim 60'" : "+30 speed";
+        rules.defineRule('abilityNotes.elementalMovementFeature',
+          bloodlineLevelAttr, '=', 'source >= 15 ? "' + movement + '" : null'
+        );
+        rules.defineRule('combatNotes.elementalBlastFeature',
+          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
+        );
+        rules.defineRule('combatNotes.elementalBlastFeature.1',
+          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+          'charismaModifier', '+', null
+        );
+        rules.defineRule('combatNotes.elementalBlastFeature.2',
+          bloodlineLevelAttr, '=',
+          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
+        );
+        rules.defineRule('combatNotes.elementalBlastFeature.3',
+          bloodlineLevelAttr, '=', '"' + energyType + '"'
+        );
+        rules.defineRule('features.Bloodline Elemental',
+          bloodlineLevelAttr, '=', '1'
+        );
+        rules.defineRule('combatNotes.elementalBodyFeature',
+          bloodlineLevelAttr, '=', 'source>=20 ? "' + energyType + '" : null'
+        );
+        rules.defineRule('magicNotes.elementalRayFeature',
+          'charismaModifier', '=', 'source + 3'
+        );
+        rules.defineRule('magicNotes.elementalRayFeature.1',
+          bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
+        );
+        rules.defineRule('magicNotes.elementalRayFeature.2',
+          bloodlineLevelAttr, '=', '"' + energyType + '"'
+        );
+        rules.defineRule('saveNotes.elementalResistanceFeature',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "Immune" : source >= 9 ? 20 : source >= 3 ? 10 : null'
+        );
+        rules.defineRule('saveNotes.elementalResistanceFeature.1',
+          bloodlineLevelAttr, '=', '"' + energyType + '"'
+        );
+      } else if(bloodline == 'Fey') {
+        rules.defineRule('magicNotes.fleetingGlanceFeature',
+          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
+        );
+        rules.defineRule('magicNotes.laughingTouchFeature',
+          'charismaModifier', '=', 'source + 3'
+        );
+      } else if(bloodline == 'Infernal') {
+        rules.defineRule('magicNotes.corruptingTouchFeature',
+          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+        );
+        rules.defineRule('magicNotes.corruptingTouchFeature.1',
+          'features.Corrupting Touch', '?', null,
+          'charismaModifier', '=', 'source + 3'
+        );
+        rules.defineRule('saveNotes.infernalResistancesFeature',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+        );
+        rules.defineRule('saveNotes.infernalResistancesFeature.1',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
+        );
+      } else if(bloodline == 'Undead') {
+        rules.defineRule('magicNotes.graspOfTheDeadFeature',
+          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
+        );
+        rules.defineRule('combatNotes.graspOfTheDeadFeature.1',
+          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+          'charismaModifier', '+', null
+        );
+        rules.defineRule('combatNotes.graspOfTheDeadFeature.2',
+          bloodlineLevelAttr, '=',
+          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
+        );
+        rules.defineRule('magicNotes.graveTouchFeature',
+          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+        );
+        rules.defineRule('magicNotes.graveTouchFeature.1',
+          'features.Grave Touch', '?', null,
+          'charismaModifier', '=', 'source + 3'
+        );
+        rules.defineRule('magicNotes.incorporealFormFeature',
+          bloodlineLevelAttr, '=', 'source >= 15 ? source : null'
+        );
+        rules.defineRule('saveNotes.death\'sGiftFeature',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+        );
+        rules.defineRule('saveNotes.death\'sGiftFeature.1',
+          bloodlineLevelAttr, '=',
+          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
+        );
+      }
+    }
 
 /*
  * Defines in #rules# the rules associated with class #name#, which has the list
@@ -3200,473 +3657,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     rules.defineRule
       ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
-    var bloodlinePowers = {
-      'Aberrant':
-        'Acidic Ray,Long Limbs,Unusual Anatomy,Alien Resistance,Aberrant Form',
-      'Abyssal':
-        'Claws,Demon Resistances,Strength Of The Abyss,Added Summonings,Demonic Might',
-      'Arcane':
-        'Metamagic Adept,New Arcana,School Power,Arcane Apotheosis',
-      'Celestial':
-        'Heavenly Fire,Celestial Resistances,Wings Of Heaven,Conviction,Ascension',
-      'Destined':
-        'Touch Of Destiny,Fated,It Was Meant To Be,Within Reach,Destiny Realized',
-      'Draconic':
-        'Claws,Dragon Resistances,Breath Weapon,Wings,Power Of Wyrms,Blindsense',
-      'Elemental':
-        'Elemental Ray,Elemental Resistance,Elemental Blast,Elemental Movement,Elemental Body',
-      'Fey':
-        'Laughing Touch,Woodland Stride,Fleeting Glance,Fey Magic,Soul Of The Fey',
-      'Infernal':
-        'Corrupting Touch,Infernal Resistances,Hellfire,On Dark Wings,Power Of The Pit',
-      'Undead':
-        'Grave Touch,Death\'s Gift,Grasp Of The Dead,Incorporeal Form,One Of Us'
-    };
-    var subBloodlines = [
-      'Bloodline Draconic (Black)', 'Bloodline Draconic (Blue)',
-      'Bloodline Draconic (Green)', 'Bloodline Draconic (Red)',
-      'Bloodline Draconic (White)', 'Bloodline Draconic (Brass)',
-      'Bloodline Draconic (Bronze)', 'Bloodline Draconic (Copper)',
-      'Bloodline Draconic (Gold)', 'Bloodline Draconic (Silver)',
-      'Bloodline Elemental (Air)', 'Bloodline Elemental (Earth)',
-      'Bloodline Elemental (Fire)', 'Bloodline Elemental (Water)'
-    ];
-    for(var bloodline in bloodlinePowers) {
-      var bloodlineLevelAttr = 'bloodlineLevel.' + bloodline;
-      var powers = bloodlinePowers[bloodline].split(',');
-      rules.defineRule(bloodlineLevelAttr,
-        'features.Bloodline ' + bloodline, '?', null,
-        'levels.Sorcerer', '=', null
-      );
-      for(var i = 0; i < powers.length; i++) {
-        rules.defineRule('sorcererFeatures.' + powers[i],
-          'features.Bloodline ' + bloodline, '?', null
-        );
-      }
-      rules.defineRule('combatNotes.dragonResistancesFeature',
-        bloodlineLevelAttr, '=',
-        'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
-      );
-      rules.defineRule('saveNotes.dragonResistancesFeature',
-        bloodlineLevelAttr, '=',
-        'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-      );
-/* TODO
-      rules.defineRule('saveNotes.dragonResistancesFeature.1',
-        bloodlineLevelAttr, '=', '"' + energyType + '"'
-      );
-*/
-    }
-    for(var i = 0; i < subBloodlines.length; i++) {
-      var subBloodline = subBloodlines[i];
-      var superBloodline = subBloodline.replace(/ \(.*/, '');
-      rules.defineRule
-        ('features.' + superBloodline, 'features.' + subBloodline, '=', '1');
-    }
-    if(true)
-      return; // TODO
-    var bloodlineSkills = {
-      'Aberrant':'Knowledge (Dungeoneering)',
-      'Abyssal':'Knowledge (Planes)',
-      'Arcane':null, // Knowledge (any one)
-      'Celestial':'Heal',
-      'Destined':'Knowledge (History)',
-      'Draconic':'Perception',
-      'Elemental':'Knowledge (Planes)',
-      'Fey':'Knowledge (Nature)',
-      'Infernal':'Diplomacy',
-      'Undead':'Knowledge (Religion)'
-    }
-    var bloodlineSpells = {
-      'Aberrant':
-        'Enlarge Person/See Invisibility/Tongues/Black Tentacles/' +
-        'Feeblemind/Veil/Plane Shift/Mind Blank/Shapechange',
-      'Abyssal':
-        'Cause Fear/Bull\'s Strength/Rage/Stoneskin/Dismissal/' +
-        'Transformation/Greater Teleport/Unholy Aura/Summon Monster IX',
-      'Arcane':
-        'Identify/Invisibility/Dispel Magic/Dimension Door/' +
-        'Overland Flight/True Seeing/Greater Teleport/Power Word Stun/Wish',
-      'Celestial':
-        'Bless/Resist Energy/Magic Circle Against Evil/Remove Curse/' +
-        'Flame Strike/Greater Dispel Magic/Banishment/Sunburst/Gate',
-      'Destined':
-        'Alarm/Blur/Protection From Energy/Freedom Of Movement/' +
-        'Break Enchantment/Mislead/Spell Turning/Moment Of Prescience/' +
-        'Foresight',
-      'Draconic':
-        'Mage Armor/Resist Energy/Fly/Fear/Spell Resistance/' +
-        'Form Of The Dragon I/Form Of The Dragon II/' +
-        'Form Of The Dragon III/Wish',
-      'Elemental':
-        'Burning Hands/Scorching Ray/Protection From Energy/' +
-        'Elemental Body I/Elemental Body II/Elemental Body III/' +
-        'Elemental Body IV/Summon Monster VIII/Elemental Swarm',
-      'Fey':
-        'Entangle/Hideous Laughter/Deep Slumber/Poison/Tree Stride/' +
-        'Mislead/Phase Door/Irresistible Dance/Shapechange',
-      'Infernal':
-        'Protection From Good/Scorching Ray/Suggestion/Charm Monster/' +
-        'Dominate Person/Planar Binding/Greater Teleport/Power Word Stun/' +
-        'Meteor Swarm',
-      'Undead':
-        'Chill Touch/False Life/Vampiric Touch/Animate Dead/' +
-        'Waves Of Fatigue/Undeath To Death/Finger Of Death/Horrid Wilting/' +
-        'Energy Drain'
-    }
-    for(bloodline in bloodlinePowers) {
-      var baseBloodline = bloodline.split(' (')[0];
-      var powers = bloodlinePowers[baseBloodline].split('/');
-      var skill = bloodlineSkills[baseBloodline];
-      var spells = bloodlineSpells[baseBloodline].split('/');
-      for(var k = 0; k < powers.length; k++) {
-        var pieces = powers[k].split(':');
-        rules.defineRule('sorcererFeatures.' + pieces[1],
-          bloodlineLevelAttr, '=', 'source >= ' + pieces[0] + ' ? 1 : null'
-        );
-        rules.defineRule('features.' + pieces[1],
-          'sorcererFeatures.' + pieces[1], '=', null
-        );
-      }
-      if(skill != null) {
-        rules.defineRule
-          ('classSkills.'+skill, 'features.Bloodline ' + bloodline, '=', '1');
-      }
-      for(var k = 0; k < spells.length; k++) {
-        var spell = spells[k];
-        var school = Pathfinder.spellsSchools[spell].substring(0, 4);
-        rules.defineRule(
-          'spells.' + spell + '(W' + (k+1) + ' ' + school + ')',
-          bloodlineLevelAttr, '=', 'source >= ' + (3 + 2 * k) + ' ? 1 : null'
-        );
-      }
-      if(bloodline == 'Aberrant') {
-        feats = [
-          'Combat Casting', 'Improved Disarm', 'Improved Grapple',
-          'Improved Initiative', 'Improved Unarmed Strike', 'Iron Will',
-          'Silent Spell', 'Skill Focus (Knowledge (Dungeoneering))'
-        ];
-        rules.defineRule('combatNotes.longLimbsFeature',
-          bloodlineLevelAttr, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
-        );
-        rules.defineRule('combatNotes.unusualAnatomyFeature',
-          bloodlineLevelAttr, '=', 'source >= 13 ? 50 : 25'
-        );
-        rules.defineRule('magicNotes.acidicRayFeature',
-          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.acidicRayFeature.1',
-          'features.Acidic Ray', '?', null,
-          'charismaModifier', '=', '1 + source'
-        );
-        rules.defineRule('saveNotes.alienResistanceFeature',
-          bloodlineLevelAttr, '=', 'source + 10'
-        );
-      } else if(bloodline == 'Abyssal') {
-        feats = [
-          'Augment Summoning', 'Cleave', 'Empower Spell', 'Great Fortitude',
-          'Improved Bull Rush', 'Improved Sunder', 'Power Attack',
-          'Skill Focus (Knowledge (Planes))'
-        ];
-        rules.defineRule('abilityNotes.strengthOfTheAbyssFeature',
-          bloodlineLevelAttr, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
-        );
-        rules.defineRule('clawsDamageLevel',
-          'features.Claws', '=', '1',
-          'features.Small', '+', '-1',
-          'features.Large', '+', '1',
-          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.clawsFeature',
-          'clawsDamageLevel', '=',
-          '["1d3", "1d4", "1d6", "1d8"][source]'
-        );
-        rules.defineRule('combatNotes.clawsFeature.1',
-          'features.Claws', '?', null,
-          'strengthModifier', '=', null
-        );
-        rules.defineRule('combatNotes.clawsFeature.2',
-          'features.Claws', '?', null,
-          'charismaModifier', '=', 'source+3'
-        );
-        rules.defineRule('combatNotes.clawsFeature.3',
-          'features.Claws', '?', null,
-          bloodlineLevelAttr, '=',
-          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 energy"'
-        );
-        rules.defineRule('magicNotes.bloodlineAbyssalFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('saveNotes.demonResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.demonResistancesFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-        );
-      } else if(bloodline == 'Arcane') {
-        feats = [
-          'Combat Casting', 'Improved Counterspell', 'Improved Initiative',
-          'Iron Will', 'Scribe Scroll', 'Skill Focus (Knowledge (Arcana))',
-          'Spell Focus', 'Still Spell'
-        ];
-        selectableFeatures.push('Bonded Object', 'Familiar');
-        rules.defineRule('familiarSorcererLevel',
-          'sorcererFeatures.Familiar', '?', null,
-          'levels.Sorcerer', '=', null
-        );
-        rules.defineRule('familiarLevel',
-          'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
-        );
-        rules.defineRule
-          ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
-        rules.defineRule
-          ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
-        rules.defineRule('magicNotes.metamagicAdeptFeature',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? "any" : Math.floor((source + 1) / 4)'
-        );
-        rules.defineRule('magicNotes.newArcanaFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source - 5) / 4)'
-        );
-      } else if(bloodline == 'Celestial') {
-        feats = [
-          'Dodge', 'Extend Spell', 'Iron Will', 'Mobility', 'Mounted Combat',
-          'Ride-By Attack', 'Skill Focus (Knowledge (Religion))',
-          'Weapon Finesse'
-        ];
-        rules.defineRule('abilityNotes.wingsOfHeavenFeature',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? "any" : source >= 9 ? source : null'
-        );
-        rules.defineRule('magicNotes.bloodlineCelestialFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.heavenlyFireFeature',
-          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.heavenlyFireFeature.1',
-          'features.Heavenly Fire', '?', null,
-          'charismaModifier', '=', '1 + source'
-        );
-        rules.defineRule('saveNotes.celestialResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-      } else if(bloodline == 'Destined') {
-        feats = [
-          'Arcane Strike', 'Diehard', 'Endurance', 'Leadership',
-          'Lightning Reflexes', 'Maximize Spell',
-          'Skill Focus (Knowledge (History))', 'Weapon Focus'
-        ];
-        rules.defineRule('featureNotes.itWasMeantToBeFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 8)'
-        );
-        rules.defineRule('magicNotes.touchOfDestinyFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.touchOfDestinyFeature.1',
-          'features.Touch Of Destiny', '?', null,
-          'wisdomModifier', '=', 'source + 3'
-        );
-        rules.defineRule('saveNotes.fatedFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
-        );
-      } else if(baseBloodline == 'Draconic') {
-        var dragonType = bloodline.split(')')[0].split('(')[1];
-        var breathShape =
-          'GreenRedWhiteGoldSilver'.indexOf(dragonType) >= 0 ? "30' cone" : "60' line";
-        var energyType =
-          'BlackGreenCopper'.indexOf(dragonType) >= 0 ? 'acid' :
-          'BlueBronze'.indexOf(dragonType) >= 0 ? 'electricity' :
-          'RedBrassGold'.indexOf(dragonType) >= 0 ? 'fire' : 'cold';
-        feats = [
-          'Blind-Fight', 'Great Fortitude', 'Improved Initiative',
-          'Power Attack', 'Quicken Spell', 'Skill Focus (Fly)',
-          'Skill Focus (Knowledge (Arcana))', 'Toughness'
-        ];
-        rules.defineRule('abilityNotes.wingsFeature',
-          bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
-        );
-        rules.defineRule('clawsDamageLevel',
-          'features.Claws', '=', '1',
-          'features.Small', '+', '-1',
-          'features.Large', '+', '1',
-          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
-        );
-        rules.defineRule
-          ('combatNotes.breathWeaponFeature', bloodlineLevelAttr, '=', null);
-        rules.defineRule('combatNotes.breathWeaponFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.3',
-          bloodlineLevelAttr, '=', '"' + breathShape + '"'
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.4',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('combatNotes.clawsFeature',
-          'clawsDamageLevel', '=',
-          '["1d3", "1d4", "1d6", "1d8"][source]'
-        );
-        rules.defineRule
-          ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
-        rules.defineRule
-          ('combatNotes.clawsFeature.2', 'charismaModifier', '=', 'source+3');
-        rules.defineRule('combatNotes.clawsFeature.3',
-          bloodlineLevelAttr, '=',
-          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 HP ' + energyType + '"'
-        );
-        rules.defineRule('featureNotes.blindsenseFeature',
-          bloodlineLevelAttr, '^=', '60'
-        );
-        rules.defineRule('features.Bloodline Draconic',
-          bloodlineLevelAttr, '=', '1'
-        );
-        rules.defineRule('magicNotes.bloodlineDraconicFeature',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-      } else if(baseBloodline == 'Elemental') {
-        var elementType = bloodline.split(')')[0].split('(')[1];
-        var energyType =
-          elementType == 'Air' ? 'electricity' :
-          elementType == 'Earth' ? 'acid' :
-          elementType == 'Fire' ? 'fire' : 'cold';
-        var movement =
-          elementType == 'Air' ? "Fly 60'" :
-          elementType == 'Earth' ? "Burrow 30'" :
-          elementType == 'Water' ? "Swim 60'" : "+30 speed";
-        feats = [
-          'Dodge', 'Empower Spell', 'Great Fortitude', 'Improved Initiative',
-          'Lightning Reflexes', 'Power Attack',
-          'Skill Focus (Knowledge (Planes))', 'Weapon Finesse'
-        ];
-        rules.defineRule('abilityNotes.elementalMovementFeature',
-          bloodlineLevelAttr, '=', 'source >= 15 ? "' + movement + '" : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.3',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('features.Bloodline Elemental',
-          bloodlineLevelAttr, '=', '1'
-        );
-        rules.defineRule('combatNotes.elementalBodyFeature',
-          bloodlineLevelAttr, '=', 'source>=20 ? "' + energyType + '" : null'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature',
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature.1',
-          bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature.2',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('saveNotes.elementalResistanceFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 20 : source >= 3 ? 10 : null'
-        );
-        rules.defineRule('saveNotes.elementalResistanceFeature.1',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-      } else if(bloodline == 'Fey') {
-        feats = [
-          'Dodge', 'Improved Initiative', 'Lightning Reflexes', 'Mobility',
-          'Point-Blank Shot', 'Precise Shot', 'Quicken Spell',
-          'Skill Focus (Knowledge (Nature))'
-        ];
-        rules.defineRule('magicNotes.fleetingGlanceFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('magicNotes.laughingTouchFeature',
-          'charismaModifier', '=', 'source + 3'
-        );
-      } else if(bloodline == 'Infernal') {
-        feats = [
-          'Blind-Fight', 'Combat Expertise', 'Deceitful', 'Extend Spell',
-          'Improved Disarm', 'Iron Will', 'Skill Focus (Knowledge (Planes))',
-          'Spell Penetration'
-        ];
-        rules.defineRule('magicNotes.corruptingTouchFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.corruptingTouchFeature.1',
-          'features.Corrupting Touch', '?', null,
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('saveNotes.infernalResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.infernalResistancesFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-        );
-      } else if(bloodline == 'Undead') {
-        feats = [
-          'Combat Casting', 'Diehard', 'Endurance', 'Iron Will',
-          'Skill Focus (Knowledge (Religion))', 'Spell Focus', 'Toughness'
-        ];
-        rules.defineRule('magicNotes.graspOfTheDeadFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('combatNotes.graspOfTheDeadFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.graspOfTheDeadFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('magicNotes.graveTouchFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.graveTouchFeature.1',
-          'features.Grave Touch', '?', null,
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.incorporealFormFeature',
-          bloodlineLevelAttr, '=', 'source >= 15 ? source : null'
-        );
-        rules.defineRule('saveNotes.death\'sGiftFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.death\'sGiftFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-      }
-      if(feats != null) {
-        rules.defineRule('featCount.' + bloodline,
-          bloodlineLevelAttr, '=',
-          'source >= 7 ? Math.floor((source - 1) / 6) : null'
-        );
-        for(var k = 0; k < feats.length; k++) {
-          feats[k] += ':' + bloodline;
-        }
-        Pathfinder.featRules(rules, feats, Pathfinder.SUBFEATS);
-        feats = null;
-      }
-    }
-
   } else if(name == 'Wizard') {
 
     rules.defineRule('combatNotes.handOfTheApprenticeFeature',
