@@ -43,13 +43,13 @@ function Pathfinder() {
   rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
 
-  // For spells, schools have to be defined before classes and domains
-  Pathfinder.magicRules
-    (rules, Pathfinder.DOMAINS, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
+  // For spells, schools have to be defined before bloodlines, classes, domains
+  Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
   Pathfinder.abilityRules(rules);
   Pathfinder.identityRules(
-    rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
-    Pathfinder.GENDERS, Pathfinder.RACES, Pathfinder.FACTIONS, Pathfinder.TRAITS
+    rules, Pathfinder.ALIGNMENTS, Pathfinder.BLOODLINES, Pathfinder.CLASSES,
+    Pathfinder.DEITIES, Pathfinder.DOMAINS, Pathfinder.FACTIONS,
+    Pathfinder.GENDERS, Pathfinder.RACES, Pathfinder.TRAITS
   );
   Pathfinder.talentRules
     (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.LANGUAGES,
@@ -230,19 +230,20 @@ Pathfinder.BLOODLINES = {
       '"Improved Initiative","Improved Unarmed Strike","Iron Will",' +
       '"Silent Spell","Skill Focus (Knowledge (Dungeoneering))" ' +
     'Skills="Knowledge (Dungeoneering)" ' +
-    'Spells=',
+    'Spells=' +
       '"3:Enlarge Person","5:See Invisibility",7:Tongues,"9:Black Tentacles",' +
       '11:Feeblemind,13:Veil,"15:Plane Shift","17:Mind Blank",19:Shapechange',
   'Abyssal':
     'Features=' +
-      '1:Claws,"3:Demon Resistances","9:Strength Of The Abyss",' +
-      '"15:Added Summonings","20:Demonic Might" ' +
+      '1:Claws,"3:Demon Resistances","5:Magic Claws",' +
+      '"9:Strength Of The Abyss","11:Improved Claws","15:Added Summonings",' +
+      '"20:Demonic Might" ' +
     'Feats=' +
       '"Augment Summoning",Cleave,"Empower Spell","Great Fortitude",' +
       '"Improved Bull Rush","Improved Sunder","Power Attack",' +
       '"Skill Focus (Knowledge (Planes)) ' +
     'Skills="Knowledge (Planes)" ' +
-    'Spells=',
+    'Spells=' +
       '"3:Cause Fear","5:Bull\'s Strength",7:Rage,9:Stoneskin,11:Dismissal,' +
       '13:Transformation,"15:Greater Teleport","17:Unholy Aura",' +
       '"19:Summon Monster IX"',
@@ -255,22 +256,22 @@ Pathfinder.BLOODLINES = {
       '"Iron Will","Scribe Scroll","Skill Focus (Knowledge (Arcana))",' +
       '"Spell Focus","Still Spell" ' +
     'Skills="choice of Knowledge" ' +
-    'Spells=',
-      '3:Identify,5:Invisibility:"7:Dispel Magic","9:Dimension Door",' +
+    'Spells=' +
+      '3:Identify,5:Invisibility,"7:Dispel Magic","9:Dimension Door",' +
       '"11:Overland Flight","13:True Seeing","15:Greater Teleport",' +
       '"17:Power Word Stun",19:Wish',
   'Celestial':
     'Features=' +
-      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven,"'+
+      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven",'+
       '15:Conviction,20:Ascension ' +
     'Feats=' +
       'Dodge,"Extend Spell","Iron Will",Mobility,"Mounted Combat",' +
       '"Ride-By Attack","Skill Focus (Knowledge (Religion))",' +
       '"Weapon Finesse" ' +
     'Skills=Heal ' +
-    'Spells=',
+    'Spells=' +
       '3:Bless,"5:Resist Energy","7:Magic Circle Against Evil",' +
-      '"9:Remove Curse","11:Flame Strike","13:Greater Dispel Magic",'
+      '"9:Remove Curse","11:Flame Strike","13:Greater Dispel Magic",' +
       '15:Banishment,17:Sunburst,19:Gate',
   'Destined':
     'Features=' +
@@ -280,20 +281,20 @@ Pathfinder.BLOODLINES = {
       '"Arcane Strike",Diehard,Endurance,Leadership,"Lightning Reflexes",' +
       '"Maximize Spell","Skill Focus (Knowledge (History))","Weapon Focus" ' +
     'Skills="Knowledge (History)" ' +
-    'Spells=',
+    'Spells=' +
       '3:Alarm,5:Blur,"7:Protection From Energy","9:Freedom Of Movement",' +
       '"11:Break Enchantment",13:Mislead,"15:Spell Turning",' +
       '"17:Moment Of Prescience",19:Foresight',
   'Draconic':
     'Features=' +
-      '1:Claws,"3:Dragon Resistances","9:Breath Weapon",15:Wings,' +
-      '"20:Power Of Wyrms",20:Blindsense ' +
+      '1:Claws,"3:Dragon Resistances","5:Magic Claws","9:Breath Weapon",' +
+      '"11:Improved Claws",15:Wings,"20:Power Of Wyrms",20:Blindsense ' +
     'Feats=' +
       '"Blind-Fight","Great Fortitude","Improved Initiative","Power Attack",' +
       '"Quicken Spell","Skill Focus (Fly)",' +
       '"Skill Focus (Knowledge (Arcana))",Toughness ' +
     'Skills=Perception ' +
-    'Spells=',
+    'Spells=' +
       '"3:Mage Armor","5:Resist Energy",7:Fly,9:Fear,"11:Spell Resistance",' +
       '"13:Form Of The Dragon I","15:Form Of The Dragon II",' +
       '"17:Form Of The Dragon III",19:Wish',
@@ -306,7 +307,7 @@ Pathfinder.BLOODLINES = {
       'Lightning Reflexes","Power Attack","Skill Focus (Knowledge (Planes))",' +
       '"Weapon Finesse ' +
     'Skills="Knowledge (Planes)" ' +
-    'Spells=',
+    'Spells=' +
       '"3:Burning Hands","5:Scorching Ray","7:Protection From Energy",' +
       '"9:Elemental Body I","11:Elemental Body II","13:Elemental Body III",' +
       '"15:Elemental Body IV","17:Summon Monster VIII","19:Elemental Swarm"',
@@ -314,12 +315,12 @@ Pathfinder.BLOODLINES = {
     'Features=' +
       '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
       '"15:Fey Magic","20:Soul Of The Fey" ' +
-    'Feats='
+    'Feats=' +
       'Dodge,"Improved Initiative","Lightning Reflexes",Mobility,' +
       '"Point-Blank Shot","Precise Shot","Quicken Spell",' +
       '"Skill Focus (Knowledge (Nature)) ' +
     'Skills="Knowledge (Nature)" ' +
-    'Spells=',
+    'Spells=' +
       '3:Entangle,"5:Hideous Laughter","7:Deep Slumber",9:Poison,' +
       '"11:Tree Stride",13:Mislead,"15:Phase Door","17:Irresistible Dance",' +
       '19:Shapechange',
@@ -332,7 +333,7 @@ Pathfinder.BLOODLINES = {
       '"Improved Disarm","Iron Will","Skill Focus (Knowledge (Planes))",' +
       '"Spell Penetration" ' +
     'Skills=Diplomacy ' +
-    'Spells=',
+    'Spells=' +
       '"3:Protection From Good","5:Scorching Ray",7:Suggestion,' +
       '"9:Charm Monster","11:Dominate Person","13:Planar Binding",' +
       '"15:Greater Teleport","17:Power Word Stun","19:Meteor Swarm"',
@@ -344,508 +345,10 @@ Pathfinder.BLOODLINES = {
       '"Combat Casting","Diehard",Endurance,"Iron Will",' +
       '"Skill Focus (Knowledge (Religion))","Spell Focus",Toughness ' +
     'Skills="Knowledge (Religion)" ' +
-    'Spells='
+    'Spells=' +
       '"3:Chill Touch","5:False Life","7:Vampiric Touch","9:Animate Dead",' +
-      '"11:Waves Of Fatigue","13:Undeath To Death","15"Finger Of Death",' +
+      '"11:Waves Of Fatigue","13:Undeath To Death","15:Finger Of Death",' +
       '"17:Horrid Wilting","19:Energy Drain"'
-};
-Pathfinder.CLASSES = {
-  'Barbarian':
-    'Require="alignment !~ /Lawful/" ' +
-    'HitDie=d12 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Martial)","1:Fast Movement",1:Rage,' +
-      '"2:Uncanny Dodge","3:Trap Sense","5:Improved Uncanny Dodge",' +
-      '"7:Damage Reduction","11:Greater Rage","14:Indomitable Will",' +
-      '"17:Tireless Rage","20:Mighty Rage" ' +
-    'Selectables=' +
-      '"2:Animal Fury","8:Clear Mind","12:Fearless Rage","2:Guarded Stance",' +
-      '"8:Increased Damage Reduction","8:Internal Fortitude",' +
-      '"2:Intimidating Glare","2:Knockback","2:Low-Light Vision",' +
-      '"12:Mighty Swing","2:Moment Of Clarity","2:Night Vision",' +
-      '"2:No Escape","2:Powerful Blow","2:Quick Reflexes",' +
-      '"2:Raging Climber","2:Raging Leaper","2:Raging Swimmer",' +
-      '"8:Renewed Vigor","2:Rolling Dodge","2:Roused Anger","2:Scent",' +
-      '"2:Strength Surge","2:Superstition","2:Surprise Accuracy",' +
-      '"2:Swift Foot","8:Terrifying Howl","4:Unexpected Strike"',
-  'Bard':
-    'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Light)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Short Bow/Whip)",' +
-      '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
-      '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
-      '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
-      '"5:Lore Master",6:Suggestion,"8:Dirge Of Doom","9:Inspire Greatness",' +
-      '"10:Jack Of All Trades","12:Soothing Performace",' +
-      '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
-      '"20:Deadly Performance" ' +
-    'CasterLevelArcane=Level ' +
-    'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
-      'B0:1=4;2=5;3=6,' +
-      'B1:1=1;2=2;3=3;5=4;9=5,' +
-      'B2:4=1;5=2;6=3;8=4;12=5,' +
-      'B3:7=1;8=2;9=3;11=4;15=5,' +
-      'B4:10=1;11=2;12=3;14=4;18=5,' +
-      'B5:13=1;14=2;15=3;17=4;19=5,' +
-      'B6:16=1;17=2;18=3;19=4;20=5 ' +
-    'Spells=' +
-      '"B0:Dancing Lights;Daze;Detect Magic;Flare;Ghost Sound;Know Direction;' +
-      'Light;Lullaby;Mage Hand;Mending;Message;Open/Close;Prestidigitation;' +
-      'Read Magic;Resistance;Summon Instrument",' +
-      '"B1:Alarm;Animate Rope;Cause Fear;Charm Person;Comprehend Languages;' +
-      'Cure Light Wounds;Detect Secret Doors;Disguise Self;Erase;' +
-      'Expeditious Retreat;Feather Fall;Grease;Hideous Laughter;Hypnotism;' +
-      'Identify;Lesser Confusion;Magic Aura;Magic Mouth;Obscure Object;' +
-      'Remove Fear;Silent Image;Sleep;Summon Monster I;' +
-      'Undetectable Alignment;Unseen Servant;Ventriloquism",' +
-      '"B2:Alter Self;Animal Messenger;Animal Trance;Blindness/Deafness;Blur;' +
-      'Calm Emotions;Cat\'s Grace;Cure Moderate Wounds;Darkness;Daze Monster;' +
-      'Delay Poison;Detect Thoughts;Eagle\'s Splendor;Enthrall;' +
-      'Fox\'s Cunning;Glitterdust;Heroism;Hold Person;Hypnotic Pattern;' +
-      'Invisibility;Locate Object;Minor Image;Mirror Image;Misdirection;' +
-      'Pyrotechnics;Rage;Scare;Shatter;Silence;Sound Burst;Suggestion;' +
-      'Summon Monster II;Summon Swarm;Tongues;Whispering Wind",' +
-      '"B3:Blink;Charm Monster;Clairaudience/Clairvoyance;Confusion;' +
-      'Crushing Despair;Cure Serious Wounds;Daylight;Deep Slumber;' +
-      'Dispel Magic;Displacement;Fear;Gaseous Form;Glibness;Good Hope;Haste;' +
-      'Illusory Script;Invisibility Sphere;Lesser Geas;Major Image;' +
-      'Phantom Steed;Remove Curse;Scrying;Sculpt Sound;Secret Page;' +
-      'See Invisibility;Sepia Snake Sigil;Slow;Speak With Animals;' +
-      'Summon Monster III;Tiny Hut",' +
-      '"B4:Break Enchantment;Cure Critical Wounds;Detect Scrying;' +
-      'Dimension Door;Dominate Person;Freedom Of Movement;' +
-      'Greater Invisibility;Hallucinatory Terrain;Hold Monster;Legend Lore;' +
-      'Locate Creature;Modify Memory;Neutralize Poison;Rainbow Pattern;' +
-      'Repel Vermin;Secure Shelter;Shadow Conjuration;Shout;' +
-      'Speak With Plants;Summon Monster IV;Zone Of Silence",' +
-      '"B5:Dream;False Vision;Greater Dispel Magic;Greater Heroism;' +
-      'Mass Cure Light Wounds;Mass Suggestion;Mind Fog;Mirage Arcana;Mislead;' +
-      'Nightmare;Persistent Image;Seeming;Shadow Evocation;Shadow Walk;' +
-      'Song Of Discord;Summon Monster V",' +
-      '"B6:Analyze Dweomer;Animate Objects;Eyebite;Find The Path;Geas/Quest;' +
-      'Greater Scrying;Greater Shout;Heroes\' Feast;Irresistible Dance;' +
-      'Mass Cat\'s Grace;Mass Charm Monster;Mass Cure Moderate Wounds;' +
-      'Mass Eagle\'s Splendor;Mass Fox\'s Cunning;Permanent Image;' +
-      'Programmed Image;Project Image;Summon Monster VI;' +
-      'Sympathetic Vibration;Veil"',
-  'Cleric':
-    'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Simple)",1:Aura,"1:Channel Energy",' +
-      '"1:Spontaneous Cleric Spell" ' +
-    'CasterLevelDivine=Level ' +
-    'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
-      'C0:1=3;2=4,' +
-      'C1:1=1;2=2;4=3;7=4,' +
-      'C2:3=1;4=2;6=3;9=4,' +
-      'C3:5=1;6=2;8=3;11=4,' +
-      'C4:7=1;8=2;10=3;13=4,' +
-      'C5:9=1;10=2;12=3;15=4,' +
-      'C6:11=1;12=2;14=3;17=4,' +
-      'C7:13=1;14=2;16=3;19=4,' +
-      'C8:15=1;16=2;18=3;20=4,' +
-      'C9:17=1;18=2;19=3;20=4,' +
-      'Dom1:1=1,' +
-      'Dom2:3=1,' +
-      'Dom3:5=1,' +
-      'Dom4:7=1,' +
-      'Dom5:9=1,' +
-      'Dom6:11=1,' +
-      'Dom7:13=1,' +
-      'Dom8:15=1,' +
-      'Dom9:17=1 ' +
-      'Spells=' +
-      '"C0:Bleed;Create Water;Detect Magic;Detect Poison;Guidance;Light;' +
-      'Mending;Purify Food And Drink;Read Magic;Resistance;Stabilize;Virtue",' +
-      '"C1:Bane;Bless;Bless Water;Cause Fear;Command;Comprehend Languages;' +
-      'Cure Light Wounds;Curse Water;Deathwatch;Detect Chaos;Detect Evil;' +
-      'Detect Good;Detect Law;Detect Undead;Divine Favor;Doom;' +
-      'Endure Elements;Entropic Shield;Hide From Undead;Inflict Light Wounds;' +
-      'Magic Stone;Magic Weapon;Obscuring Mist;Protection From Chaos;' +
-      'Protection From Evil;Protection From Good;Protection From Law;' +
-      'Remove Fear;Sanctuary;Shield Of Faith;Summon Monster I",' +
-      '"C2:Aid;Align Weapon;Augury;Bear\'s Endurance;Bull\'s Strength;' +
-      'Calm Emotions;Consecrate;Cure Moderate Wounds;Darkness;Death Knell;' +
-      'Delay Poison;Desecrate;Eagle\'s Splendor;Enthrall;Find Traps;' +
-      'Gentle Repose;Hold Person;Inflict Moderate Wounds;Lesser Restoration;' +
-      'Make Whole;Owl\'s Wisdom;Remove Paralysis;Resist Energy;Shatter;' +
-      'Shield Other;Silence;Sound Burst;Spiritual Weapon;Status;' +
-      'Summon Monster II;Undetectable Alignment;Zone Of Truth",' +
-      '"C3:Animate Dead;Bestow Curse;Blindness/Deafness;Contagion;' +
-      'Continual Flame;Create Food And Water;Cure Serious Wounds;Daylight;' +
-      'Deeper Darkness;Dispel Magic;Glyph Of Warding;Helping Hand;' +
-      'Inflict Serious Wounds;Invisibility Purge;Locate Object;' +
-      'Magic Circle Against Chaos;Magic Circle Against Evil;' +
-      'Magic Circle Against Good;Magic Circle Against Law;Magic Vestment;' +
-      'Meld Into Stone;Obscure Object;Prayer;Protection From Energy;' +
-      'Remove Blindness/Deafness;Remove Curse;Remove Disease;Searing Light;' +
-      'Speak With Dead;Stone Shape;Summon Monster III;Water Breathing;' +
-      'Water Walk;Wind Wall",' +
-      '"C4:Air Walk;Chaos Hammer;Control Water;Cure Critical Wounds;' +
-      'Death Ward;Dimensional Anchor;Discern Lies;Dismissal;Divination;' +
-      'Divine Power;Freedom Of Movement;Giant Vermin;Greater Magic Weapon;' +
-      'Holy Smite;Imbue With Spell Ability;Inflict Critical Wounds;' +
-      'Lesser Planar Ally;Neutralize Poison;Order\'s Wrath;Poison;' +
-      'Repel Vermin;Restoration;Sending;Spell Immunity;Summon Monster IV;' +
-      'Tongues;Unholy Blight",' +
-      '"C5:Atonement;Break Enchantment;Breath Of Life;Commune;Dispel Chaos;' +
-      'Dispel Evil;Dispel Good;Dispel Law;Disrupting Weapon;Flame Strike;' +
-      'Greater Command;Hallow;Insect Plague;Mark Of Justice;' +
-      'Mass Cure Light Wounds;Mass Inflict Light Wounds;Plane Shift;' +
-      'Raise Dead;Righteous Might;Scrying;Slay Living;Spell Resistance;' +
-      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;True Seeing;Unhallow;' +
-      'Wall Of Stone",' +
-      '"C6:Animate Objects;Antilife Shell;Banishment;Blade Barrier;' +
-      'Create Undead;Find The Path;Forbiddance;Geas/Quest;' +
-      'Greater Dispel Magic;Greater Glyph Of Warding;Harm;Heal;' +
-      'Heroes\' Feast;Mass Bear\'s Endurance;Mass Bull\'s Strength;' +
-      'Mass Cure Moderate Wounds;Mass Eagle\'s Splendor;' +
-      'Mass Inflict Moderate Wounds;Mass Owl\'s Wisdom;Planar Ally;' +
-      'Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
-      'Undeath To Death;Wind Walk;Word Of Recall",' +
-      '"C7:Blasphemy;Control Weather;Destruction;Dictum;Ethereal Jaunt;' +
-      'Greater Restoration;Greater Scrying;Holy Word;' +
-      'Mass Cure Serious Wounds;Mass Inflict Serious Wounds;Refuge;' +
-      'Regenerate;Repulsion;Resurrection;Summon Monster VII;' +
-      'Symbol Of Stunning;Symbol Of Weakness;Word Of Chaos",' +
-      '"C8:Antimagic Field;Cloak Of Chaos;Create Greater Undead;' +
-      'Dimensional Lock;Discern Location;Earthquake;Fire Storm;' +
-      'Greater Planar Ally;Greater Spell Immunity;Holy Aura;' +
-      'Mass Cure Critical Wounds;Mass Inflict Critical Wounds;Shield Of Law;' +
-      'Summon Monster VIII;Symbol Of Death;Symbol Of Insanity;Unholy Aura",' +
-      '"C9:Astral Projection;Energy Drain;Etherealness;Gate;Implosion;' +
-      'Mass Heal;Miracle;Soul Bind;Storm Of Vengeance;Summon Monster IX;' +
-      'True Resurrection"',
-  'Druid':
-    'Require="alignment =~ /Neutral/","armor =~ /None|Hide|Leather|Padded/","shield =~ /None|Wooden/" ' +
-    'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
-      '"1:Nature Sense","1:Spontaneous Druid Spell","1:Wild Empathy",' +
-      '"2:Woodland Stride","3:Trackless Step","4:Resist Nature\'s Lure",' +
-      '"4:Wild Shape","9:Venom Immunity","13:Thousand Faces",' +
-      '"15:Timeless Body" ' +
-    'Selectables=' +
-      '"1:Animal Companion","1:Nature Domains" ' +
-    'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
-      'D0:1=3;2=4,' +
-      'D1:1=1;2=2;4=3;7=4,' +
-      'D2:3=1;4=2;6=3;9=4,' +
-      'D3:5=1;6=2;8=3;11=4,' +
-      'D4:7=1;8=2;10=3;13=4,' +
-      'D5:9=1;10=2;12=3;15=4,' +
-      'D6:11=1;12=2;14=3;17=4,' +
-      'D7:13=1;14=2;16=3;19=4,' +
-      'D8:15=1;16=2;18=3;20=4,' +
-      'D9:17=1;18=2;19=3;20=4 ' +
-      'Spells=' +
-      '"D0:Create Water;Detect Magic;Detect Poison;Flare;Guidance;' +
-      'Know Direction;Light;Mending;Purify Food And Drink;Read Magic;' +
-      'Resistance;Stabilize;Virtue",' +
-      '"D1:Calm Animals;Charm Animal;Cure Light Wounds;' +
-      'Detect Animals Or Plants;Detect Snares And Pits;Endure Elements;' +
-      'Entangle;Faerie Fire;Goodberry;Hide From Animals;Jump;Longstrider;' +
-      'Magic Fang;Magic Stone;Obscuring Mist;Pass Without Trace;' +
-      'Produce Flame;Shillelagh;Speak With Animals;Summon Nature\'s Ally I",' +
-      '"D2:Animal Messenger;Animal Trance;Barkskin;Bear\'s Endurance;' +
-      'Bull\'s Strength;Cat\'s Grace;Chill Metal;Delay Poison;Fire Trap;' +
-      'Flame Blade;Flaming Sphere;Fog Cloud;Gust Of Wind;Heat Metal;' +
-      'Hold Animal;Lesser Restoration;Owl\'s Wisdom;Reduce Animal;' +
-      'Resist Energy;Soften Earth And Stone;Spider Climb;' +
-      'Summon Nature\'s Ally II;Summon Swarm;Tree Shape;Warp Wood",' +
-      '"D3:Call Lightning;Contagion;Cure Moderate Wounds;Daylight;' +
-      'Diminish Plants;Dominate Animal;Greater Magic Fang;Meld Into Stone;' +
-      'Neutralize Poison;Plant Growth;Poison;Protection From Energy;Quench;' +
-      'Remove Disease;Sleet Storm;Snare;Speak With Plants;Spike Growth;' +
-      'Stone Shape;Summon Nature\'s Ally III;Water Breathing;Wind Wall;' +
-      'Wood Shape",' +
-      '"D4:Air Walk;Antiplant Shell;Blight;Command Plants;Control Water;' +
-      'Cure Serious Wounds;Dispel Magic;Flame Strike;Freedom Of Movement;' +
-      'Giant Vermin;Ice Storm;Reincarnate;Repel Vermin;Rusting Grasp;Scrying;' +
-      'Spike Stones;Summon Nature\'s Ally IV",' +
-      '"D5:Atonement;Awaken;Baleful Polymorph;Call Lightning Storm;' +
-      'Commune With Nature;Control Winds;Cure Critical Wounds;Death Ward;' +
-      'Hallow;Insect Plague;Stoneskin;Summon Nature\'s Ally V;' +
-      'Transmute Mud To Rock;Transmute Rock To Mud;Tree Stride;Unhallow;' +
-      'Wall Of Fire;Wall Of Thorns",' +
-      '"D6:Antilife Shell;Find The Path;Fire Seeds;Greater Dispel Magic;' +
-      'Ironwood;Liveoak;Mass Bear\'s Endurance;Mass Bull\'s Strength;' +
-      'Mass Cat\'s Grace;Mass Cure Light Wounds;Mass Owl\'s Wisdom;' +
-      'Move Earth;Repel Wood;Spellstaff;Stone Tell;Summon Nature\'s Ally VI;' +
-      'Transport Via Plants;Wall Of Stone",' +
-      '"D7:Animate Plants;Changestaff;Control Weather;Creeping Doom;' +
-      'Fire Storm;Greater Scrying;Heal;Mass Cure Moderate Wounds;' +
-      'Summon Nature\'s Ally VII;Sunbeam;Transmute Metal To Wood;True Seeing;' +
-      'Wind Walk",' +
-      '"D8:Animal Shapes;Control Plants;Earthquake;Finger Of Death;' +
-      'Mass Cure Serious Wounds;Repel Metal Or Stone;Reverse Gravity;' +
-      'Summon Nature\'s Ally VIII;Sunburst;Whirlwind;Word Of Recall",' +
-      '"D9:Antipathy;Elemental Swarm;Foresight;Mass Cure Critical Wounds;' +
-      'Regenerate;Shambler;Shapechange;Storm Of Vengeance;' +
-      'Summon Nature\'s Ally IX;Sympathy"',
-  'Fighter':
-    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Heavy)","Shield Proficiency (Tower)",' +
-      '"1:Weapon Proficiency (Martial)","2:Bravery","3:Armor Training",' +
-      '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
-  'Monk':
-    'Require="alignment =~ /Lawful/" Imply="armor == \'None\'","shield == \'None\'" ' +
-    'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
-    'Features=' +
-      '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
-      '"1:Flurry Of Blows","1:Improved Unarmed Strike",' +
-      '"1:Two-Weapon Fighting","1:Stunning Fist",2:Evasion,' +
-      '"3:Fast Movement","3:Maneuver Training","3:Still Mind","4:Ki Dodge",' +
-      '"4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall","5:High Jump",' +
-      '"5:Purity Of Body","7:Wholeness Of Body","8:Condition Fist",' +
-      '"8:Improved Two-Weapon Fighting","9:Improved Evasion",' +
-      '"11:Diamond Body","12:Abundant Step","13:Diamond Soul",' +
-      '"15:Greater Two-Weapon Fighting","15:Quivering Palm",' +
-      '"17:Timeless Body","17:Tongue Of The Sun And Moon","19:Empty Body",' +
-      '"20:Perfect Self" ' +
-    'Selectables=' +
-      '"1:Catch Off-Guard","1:Combat Reflexes","1:Deflect Arrows","1:Dodge",' +
-      '"1:Improved Grapple","1:Scorpion Style","1:Throw Anything",' +
-      '"6:Gorgon\'s Fist","6:Improved Bull Rush","6:Improved Disarm",' +
-      '"6:Improved Feint","6:Improved Trip","6:Mobility",' +
-      '"10:Improved Critical","10:Medusa\'s Wrath","10:Snatch Arrows",' +
-      '"10:Spring Attack"',
-  // TODO Improved Critical subfeats
-  'Paladin':
-    'Require="alignment == \'Lawful Good\'" ' +
-    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Martial)",1:Aura,"1:Detect Evil",' +
-      '"1:Smite Evil","2:Divine Grace","2:Lay On Hands","3:Aura Of Courage",' +
-      '"3:Divine Health",3:Mercy,"4:Channel Energy","8:Aura Of Resolve",' +
-      '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
-      '"20:Holy Champion" ' +
-    'Selectables=' +
-      '"5:Divine Mount","5:Divine Weapon" ' +
-    'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
-      'P1:4=0;5=1;9=2;13=3;17=4,' +
-      'P2:8=0;9=1;12=2;16=3;20=4,' +
-      'P3:19=0;11=1;15=2;19=3,' +
-      'P4:13=0;14=1;18=2;20=3 ' +
-    'Spells=' +
-      '"P1:Bless;Bless Water;Bless Weapon;Create Water;Cure Light Wounds;' +
-      'Detect Poison;Detect Undead;Divine Favor;Endure Elements;' +
-      'Lesser Restoration;Magic Weapon;Protection From Chaos;' +
-      'Protection From Evil;Read Magic;Resistance;Virtue",' +
-      '"P2:Bull\'s Strength;Delay Poison;Eagle\'s Splendor;Owl\'s Wisdom;' +
-      'Remove Paralysis;Resist Energy;Shield Other;Undetectable Alignment;' +
-      'Zone Of Truth",' +
-      '"P3:Cure Moderate Wounds;Daylight;Discern Lies;Dispel Magic;' +
-      'Greater Magic Weapon;Heal Mount;Magic Circle Against Chaos;' +
-      'Protection From Evil;Prayer;Remove Blindness/Deafness;' +
-      'Remove Curse",' +
-      '"P4:Break Enchantment;Cure Serious Wounds;Death Ward;Dispel Chaos;' +
-      'Dispel Evil;Holy Sword;Mark Of Justice;Neutralize Poison;Restoration"',
-  'Ranger':
-    'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
-      '"1:Weapon Proficiency (Martial)","1:Favored Enemy",1:Track,' +
-      '"1:Wild Empathy",3:Endurance,"3:Favored Terrain","7:Woodland Stride",' +
-      '"8:Swift Tracker",9:Evasion,11:Quarry,12:Camouflage,' +
-      '"16:Improved Evasion","17:Hide In Plain Sight","19:Improved Quarry",' +
-      '"20:Master Hunter" ' +
-    'Selectables=' +
-      '"2:Combat Style (Archery)","2:Combat Style (Two-Weapon Combat)",' +
-      '"2:Far Shot","2:Point-Blank Shot","2:Precise Shot","2:Rapid Shot",' +
-      '"2:Double Slice","2:Improved Shield Bash","2:Quick Draw",' +
-      '"2:Two-Weapon Fighting","4:Animal Companion","4:Companion Bond",' +
-      '"6:Improved Precise Shot",6:Manyshot,6:Improved Two-Weapon Fighting",' +
-      '"6:Two-Weapon Defense","10:Pinpoint Targeting","10:Shot On The Run",' +
-      '"10:Greater Two-Weapon Fighting","10:Two-Weapon Rend ' +
-    'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
-      'R1:4=0;5=1;9=2;13=3;17=4,' +
-      'R2:7=0;8=1;12=2;16=3;20=4,' +
-      'R3:10=0;11=1;15=2;19=3,' +
-      'R4:13=0;14=1;18=2;20=3 ' +
-    'Spells=' +
-      '"R1:Alarm;Animal Messenger;Calm Animals;Charm Animal;Delay Poison;' +
-      'Detect Animals Or Plants;Detect Poison;Detect Snares And Pits;' +
-      'Endure Elements;Entangle;Hide From Animals;Jump;Longstrider;' +
-      'Magic Fang;Pass Without Trace;Read Magic;Resist Energy;' +
-      'Speak With Animals;Summon Nature\'s Ally I",' +
-      '"R2:Barkskin;Bear\'s Endurance;Cat\'s Grace;Cure Light Wounds;' +
-      'Hold Animal;Owl\'s Wisdom;Protection From Energy;Snare;' +
-      'Speak With Plants;Spike Growth;Summon Nature\'s Ally II;Wind Wall",' +
-      '"R3:Command Plants;Cure Moderate Wounds;Darkvision;Diminish Plants;' +
-      'Greater Magic Fang;Neutralize Poison;Plant Growth;Reduce Animal;' +
-      'Remove Disease;Repel Vermin;Summon Nature\'s Ally III;Tree Shape;' +
-      'Water Walk",' +
-      '"R4:Animal Growth;Commune With Nature;Cure Serious Wounds;' +
-      'Freedom Of Movement;Nondetection;Summon Nature\'s Ally IV;Tree Stride"',
-  // TODO Combat Style requirements for selectables
-  'Rogue':
-    'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
-    'Features=' +
-      '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Shortbow/Short Sword)",' +
-      '"1:Sneak Attack",1:Trapfinding,2:Evasion,"3:Trap Sense",' +
-      '"4:Uncanny Dodge","8:Improved Uncanny Dodge","20:Master Strike" ' +
-    'Selectables=' +
-      '"2:Bleeding Attack","2:Combat Trick","2:Fast Stealth",' +
-      '"2:Finesse Rogue","2:Ledge Walker","2:Major Magic","2:Minor Magic",' +
-      '"2:Quick Disable2",2:Resiliency,"2:Rogue Crawl","2:Slow Reactions",' +
-      '"2:Stand Up","2:Surprise Attack","2:Trap Spotter",' +
-      '"2:Rogue Weapon Training","10:Crippling Strike","10:Defensive Roll",' +
-      '"10:Dispelling Attack","10:Feat Bonus","10:Improved Evasion",' +
-      '10:Opportunist,"10:Skill Mastery","10:Slippery Mind"',
-  // TODO Dispelling Attack requires Major Magic requires Minor Magic
-  'Sorcerer':
-    'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
-    'Features=' +
-      '"1:Weapon Proficiency (Simple)",1:Bloodline,"1:Eschew Materials" ' +
-    'Selectables=' +
-      '"1:Bloodline Aberrant","1:Bloodline Abyssal","1:Bloodline Arcane",' +
-      '"1:Bloodline Celestial","1:Bloodline Destined",' +
-      '"1:Bloodline Draconic (Black)","1:Bloodline Draconic (Blue)",' +
-      '"1:Bloodline Draconic (Green)","1:Bloodline Draconic (Red)",' +
-      '"1:Bloodline Draconic (White)","1:Bloodline Draconic (Brass)",' +
-      '"1:Bloodline Draconic (Bronze)","1:Bloodline Draconic (Copper)",' +
-      '"1:Bloodline Draconic (Gold)","1:Bloodline Draconic (Silver)",' +
-      '"1:Bloodline Elemental (Air)","1:Bloodline Elemental (Earth)",' +
-      '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
-      '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead" ' +
-    'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
-      'S1:1=3;2=4;3=5;4=6,' +
-      'S2:4=3;5=4;6=5;7=6,' +
-      'S3:6=3;7=4;8=5;9=6,' +
-      'S4:8=3;9=4;10=5;11=6,' +
-      'S5:10=3;11=4;12=5;13=6,' +
-      'S6:12=3;13=4;14=5;15=6,' +
-      'S7:14=3;15=4;16=5;17=6,' +
-      'S8:16=3;17=4;18=5;19=6,' +
-      'S9:18=3;19=4;20=6',
-  'Wizard':
-    'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
-    'Features=' +
-      '"1:Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)",' +
-      '"1:Hand Of The Apprentice","1:Scribe Scroll",' +
-      '"1:Wizard Specialization","8:Metamagic Mastery" ' +
-    'Selectables=' +
-      '"1:Bonded Object",1:Familiar ' +
-    'SpellAbility=intelligence ' +
-    'SpellsPerDay=' +
-      'W0:1=3;2=4,' +
-      'W1:1=1;2=2;4=3;7=4,' +
-      'W2:3=1;4=2;6=3;9=4,' +
-      'W3:5=1;6=2;8=3;11=4,' +
-      'W4:7=1;8=2;10=3;13=4,' +
-      'W5:9=1;10=2;12=3;15=4,' +
-      'W6:11=1;12=2;14=3;17=4,' +
-      'W7:13=1;14=2;16=3;19=4,' +
-      'W8:15=1;16=2;18=3;20=4,' +
-      'W9:17=1;18=2;19=3;20=4 ' +
-    'Spells=' +
-      '"W0:Acid Splash;Arcane Mark;Bleed;Dancing Lights;Daze;Detect Magic;' +
-      'Detect Poison;Disrupt Undead;Flare;Ghost Sound;Light;Mage Hand;' +
-      'Mending;Message;Open/Close;Prestidigitation;Ray Of Frost;Read Magic;' +
-      'Resistance;Touch Of Fatigue",' +
-      '"W1:Alarm;Animate Rope;Burning Hands;Cause Fear;Charm Person;' +
-      'Chill Touch;Color Spray;Comprehend Languages;Detect Secret Doors;' +
-      'Detect Undead;Disguise Self;Endure Elements;Enlarge Person;Erase;' +
-      'Expeditious Retreat;Feather Fall;Floating Disk;Grease;Hold Portal;' +
-      'Hypnotism;Identify;Jump;Mage Armor;Magic Aura;Magic Missile;' +
-      'Magic Weapon;Mount;Obscuring Mist;Protection From Chaos;' +
-      'Protection From Evil;Protection From Good;Protection From Law;' +
-      'Ray Of Enfeeblement;Reduce Person;Shield;Shocking Grasp;Silent Image;' +
-      'Sleep;Summon Monster I;True Strike;Unseen Servant;Ventriloquism",' +
-      '"W2:Acid Arrow;Alter Self;Arcane Lock;Bear\'s Endurance;' +
-      'Blindness/Deafness;Blur;Bull\'s Strength;Cat\'s Grace;Command Undead;' +
-      'Continual Flame;Darkness;Darkvision;Daze Monster;Detect Thoughts;' +
-      'Eagle\'s Splendor;False Life;Flaming Sphere;Fog Cloud;Fox\'s Cunning;' +
-      'Ghoul Touch;Glitterdust;Gust Of Wind;Hideous Laughter;' +
-      'Hypnotic Pattern;Invisibility;Knock;Levitate;Locate Object;' +
-      'Magic Mouth;Make Whole;Minor Image;Mirror Image;Misdirection;' +
-      'Obscure Object;Owl\'s Wisdom;Phantom Trap;Protection From Arrows;' +
-      'Pyrotechnics;Resist Energy;Rope Trick;Scare;Scorching Ray;' +
-      'See Invisibility;Shatter;Spectral Hand;Spider Climb;Summon Monster II;' +
-      'Summon Swarm;Touch Of Idiocy;Web;Whispering Wind",' +
-      '"W3:Arcane Sight;Beast Shape I;Blink;Clairaudience/Clairvoyance;' +
-      'Daylight;Deep Slumber;Dispel Magic;Displacement;Explosive Runes;' +
-      'Fireball;Flame Arrow;Fly;Gaseous Form;Gentle Repose;' +
-      'Greater Magic Weapon;Halt Undead;Haste;Heroism;Hold Person;' +
-      'Illusory Script;Invisibility Sphere;Keen Edge;Lightning Bolt;' +
-      'Magic Circle Against Chaos;Magic Circle Against Evil;' +
-      'Magic Circle Against Good;Magic Circle Against Law;Major Image;' +
-      'Nondetection;Phantom Steed;Protection From Energy;Rage;' +
-      'Ray Of Exhaustion;Secret Page;Sepia Snake Sigil;Shrink Item;' +
-      'Sleet Storm;Slow;Stinking Cloud;Suggestion;Summon Monster III;' +
-      'Tiny Hut;Tongues;Vampiric Touch;Water Breathing;Wind Wall",' +
-      '"W4:Animate Dead;Arcane Eye;Beast Shape II;Bestow Curse;' +
-      'Black Tentacles;Charm Monster;Confusion;Contagion;Crushing Despair;' +
-      'Detect Scrying;Dimension Door;Dimensional Anchor;Elemental Body I;' +
-      'Enervation;Fear;Fire Shield;Fire Trap;Greater Invisibility;' +
-      'Hallucinatory Terrain;Ice Storm;Illusory Wall;Lesser Geas;' +
-      'Lesser Globe Of Invulnerability;Locate Creature;Mass Enlarge Person;' +
-      'Mass Reduce Person;Minor Creation;Mnemonic Enhancer;Phantasmal Killer;' +
-      'Rainbow Pattern;Remove Curse;Resilient Sphere;Scrying;Secure Shelter;' +
-      'Shadow Conjuration;Shout;Solid Fog;Stone Shape;Stoneskin;' +
-      'Summon Monster IV;Wall Of Fire;Wall Of Ice",' +
-      '"W5:Animal Growth;Baleful Polymorph;Beast Shape III;Blight;' +
-      'Break Enchantment;Cloudkill;Cone Of Cold;Contact Other Plane;' +
-      'Dismissal;Dominate Person;Dream;Elemental Body II;Fabricate;' +
-      'False Vision;Feeblemind;Hold Monster;Interposing Hand;' +
-      'Lesser Planar Binding;Mage\'s Faithful Hound;Mage\'s Private Sanctum;' +
-      'Magic Jar;Major Creation;Mind Fog;Mirage Arcana;Nightmare;' +
-      'Overland Flight;Passwall;Permanency;Persistent Image;Plant Shape I;' +
-      'Polymorph;Prying Eyes;Secret Chest;Seeming;Sending;Shadow Evocation;' +
-      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;Telekinesis;' +
-      'Telepathic Bond;Teleport;Transmute Mud To Rock;Transmute Rock To Mud;' +
-      'Wall Of Force;Wall Of Stone;Waves Of Fatigue",' +
-      '"W6:Acid Fog;Analyze Dweomer;Antimagic Field;Bear\'s Endurance;' +
-      'Beast Shape IV;Bull\'s Strength;Cat\'s Grace;Chain Lightning;' +
-      'Circle Of Death;Contingency;Control Water;Create Undead;Disintegrate;' +
-      'Eagle\'s Splendor;Elemental Body III;Eyebite;Flesh To Stone;' +
-      'Forceful Hand;Form Of The Dragon I;Fox\'s Cunning;Freezing Sphere;' +
-      'Geas/Quest;Globe Of Invulnerability;Greater Dispel Magic;' +
-      'Greater Heroism;Guards And Wards;Legend Lore;Mage\'s Lucubration;' +
-      'Mass Owl\'s Wisdom;Mass Suggestion;Mislead;Move Earth;Permanent Image;' +
-      'Planar Binding;Plant Shape II;Programmed Image;Repulsion;Shadow Walk;' +
-      'Stone To Flesh;Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
-      'Transformation;True Seeing;Undeath To Death;Veil;Wall Of Iron",' +
-      '"W7:Banishment;Control Undead;Control Weather;Delayed Blast Fireball;' +
-      'Elemental Body IV;Ethereal Jaunt;Finger Of Death;Forcecage;' +
-      'Form Of The Dragon II;Giant Form I;Grasping Hand;Greater Arcane Sight;' +
-      'Greater Polymorph;Greater Scrying;Greater Shadow Conjuration;' +
-      'Greater Teleport;Insanity;Instant Summons;Limited Wish;' +
-      'Mage\'s Magnificent Mansion;Mage\'s Sword;Mass Hold Person;' +
-      'Mass Invisibility;Phase Door;Plane Shift;Plant Shape III;' +
-      'Power Word Blind;Prismatic Spray;Project Image;Reverse Gravity;' +
-      'Sequester;Simulacrum;Spell Turning;Statue;Summon Monster VII;' +
-      'Symbol Of Weakness;Symbol Of Stunning;Teleport Object;Vision;' +
-      'Waves Of Exhaustion",' +
-      '"W8:Antipathy;Binding;Clenched Fist;Clone;Create Greater Undead;' +
-      'Demand;Dimensional Lock;Discern Location;Form Of The Dragon III;' +
-      'Giant Form II;Greater Planar Binding;Greater Prying Eyes;' +
-      'Greater Shadow Evocation;Greater Shout;Horrid Wilting;' +
-      'Incendiary Cloud;Iron Body;Irresistible Dance;Mass Charm Monster;Maze;' +
-      'Mind Blank;Moment Of Prescience;Polar Ray;Polymorph Any Object;' +
-      'Power Word Stun;Prismatic Wall;Protection From Spells;' +
-      'Scintillating Pattern;Screen;Summon Monster VIII;Sunburst;' +
-      'Symbol Of Death;Symbol Of Insanity;Sympathy;Telekinetic Sphere;' +
-      'Temporal Stasis;Trap The Soul",' +
-      '"W9:Astral Projection;Crushing Hand;Dominate Monster;Energy Drain;' +
-      'Etherealness;Foresight;Freedom;Gate;Imprisonment;Mage\'s Disjunction;' +
-      'Mass Hold Monster;Meteor Swarm;Power Word Kill;Prismatic Sphere;' +
-      'Refuge;Shades;Shapechange;Soul Bind;Summon Monster IX;' +
-      'Teleportation Circle;Time Stop;Wail Of The Banshee;Weird;Wish"'
 };
 Pathfinder.DEITIES = {
   'None':'',
@@ -1270,6 +773,90 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 15","features.Dodge"'
 });
 Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
+  // Bloodlines
+  'Aberrant Form':[
+    'combat:Immune critical hit/sneak attack, DR 5/-',
+    "feature:Blindsight 60'"
+  ],
+  'Ascension':[
+    'magic:<i>Tongues</i> at will',
+    'save:Immune petrification, 10 electricity/fire, +4 poison'
+  ],
+  'Acidic Ray':"magic:R30' %Vd6 HP %1/day",
+  'Added Summonings':
+    'magic:<i>Summon Monster</i> brings additional demon/fiendish creature',
+  'Alien Resistance':'save:%V spell resistance',
+  'Arcane Apotheosis':
+    'magic:Expend 3 spell slots to replace 1 magic item charge',
+  'Blindsense':
+    "feature:Other senses allow detection of unseen objects w/in %V'",
+  'Breath Weapon':"combat:%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
+  'Celestial Resistances':'save:%V acid/cold',
+  'Claws':'combat:%V+%1 HP %2 rd/day',
+  'Conviction':'feature:Reroll ability/attack/skill/save 1/day',
+  'Corrupting Touch':'magic:Touch causes shaken %V rd %1/day',
+  "Death's Gift":'save:%V cold/DR %1/- vs. non-lethal',
+  'Demon Resistances':'save:%V electricity/%1 poison',
+  'Demonic Might':[
+    "feature:Telepathy 60'",
+    'save:10 acid/cold/fire'
+  ],
+  'Destiny Realized':[
+    'combat:Critical hits confirmed, foe critical requires 20',
+    'magic:Automatically overcome resistance 1/day'
+  ],
+  'Dragon Resistances':[
+    'combat:+%V AC', // No bonus to CMD
+    'save:%V vs. %1'
+  ],
+  'Elemental Blast':"combat:R60' 20' radius %Vd6 HP %3 (DC %1 Reflex half) %2/day",
+  'Elemental Body':'save:Immune %V',
+  'Elemental Movement':'ability:%V',
+  'Elemental Ray':"magic:R30' 1d6+%1 HP %2 %V/day",
+  'Elemental Resistance':'save:%V vs. %1',
+  'Fated':'save:+%V saves when surprised',
+  'Fey Magic':'magic:Reroll any resistance check',
+  'Fleeting Glance':'magic:<i>Greater Invisibility</i> %V rd/day',
+  'Grasp Of The Dead':
+    "magic:R60' Skeletal arms claw 20' radius %Vd6 HP (DC %1 Reflex half) %2/day",
+  'Grave Touch':'magic:Touch causes shaken/frightened %V rd %1/day',
+  'Heavenly Fire':
+    "magic:R30' Ranged touch heal good/harm evil 1d4+%V HP %1/day",
+  'Hellfire':
+    "magic:R60' 10' radius %Vd6 HP (DC %1 Ref half), good target shaken %2 rd %3/dy",
+  'Improved Claws':'combat:Claws do additional 1d6 %V damage',
+  'Incorporeal Form':'magic:Incorporeal %V rd 1/day',
+  'Infernal Resistances':'save:%V fire/%1 poison',
+  'It Was Meant To Be':
+    'feature:Reroll attack/critical/spell resistance check %V/day',
+  'Laughing Touch':'magic:Touch causes 1 rd of laughter %V/day',
+  'Long Limbs':"combat:+%V' touch attack range",
+  'Magic Claws':'combat:Claws are magical weapon',
+  'Metamagic Adept':'magic:Applying metamagic feat w/out increased casting time %V/day',
+  'New Arcana':'magic:%V additional spells',
+  'On Dark Wings':"ability:Fly 60'/average",
+  'One Of Us':[
+    'combat:Ignored by unintelligent undead',
+    'save:Immune paralysis/sleep/+4 vs. undead\'s spells'
+  ],
+  'Power Of The Pit':[
+    "feature:Darkvision 60'",
+    'save:Resistance 10 acid/cold'
+  ],
+  'Power Of Wyrms':'save:Immune paralysis/sleep',
+  'School Power':'magic:+2 DC on spells from chosen school',
+  'Soul Of The Fey':[
+    'combat:Animals attack only if magically forced',
+    'magic:<i>Shadow Walk</i> 1/day',
+    'save:Immune poison/DR 10/cold iron'
+  ],
+  'Strength Of The Abyss':'ability:+%V Strength',
+  'Touch Of Destiny':
+    'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
+  'Unusual Anatomy':'combat:%V% chance to ignore critical hit/sneak attack',
+  'Wings':"ability:Fly %V'/average",
+  'Wings Of Heaven':"ability:Fly 60'/good %V minutes/day",
+  'Within Reach':'save:DC 20 Will save vs. fatal attack 1/day',
   // Domains
   "Artificer's Touch":[
     'combat:Touch attack on objects/constructs 1d6+%1 HP %V/day',
@@ -1504,29 +1091,15 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Vital Strike':'combat:2x base damage',
   'Wind Stance':"combat:20% concealment when moving > 5'",
   // Classes
-  "Death's Gift":'save:%V cold/DR %1/- vs. non-lethal',
   "Diviner's Fortune":
     'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
   "Summoner's Charm":'magic:Summon duration increased %V rd',
-  'Aberrant Form':[
-    'combat:Immune critical hit/sneak attack, DR 5/-',
-    "feature:Blindsight 60'"
-  ],
   'Abundant Step':'magic:Use 2 ki to <i>Dimension Door</i>',
-  'Acidic Ray':"magic:R30' %Vd6 HP %1/day",
-  'Added Summonings':
-    'magic:<i>Summon Monster</i> brings additional demon/fiendish creature',
-  'Alien Resistance':'save:%V spell resistance',
   'Animal Fury':'combat:Bite attack %V+%1 during rage',
-  'Arcane Apotheosis':'magic:Expend 3 spell slots to replace 1 magic item charge',
   'Armor Mastery':'combat:DR 5/- when using armor/shield',
   'Armor Training':[
     'ability:No speed penalty in %V armor',
     'combat:Additional +%V Dex AC bonus', 'skill:Reduce armor skill check penalty by %V'
-  ],
-  'Ascension':[
-    'magic:<i>Tongues</i> at will',
-    'save:Immune petrification, 10 electricity/fire, +4 poison'
   ],
   'Aura Of Despair':"magic:Foes w/in 30' -2 ability/attack/damage/save/skill %V rd/day",
   'Aura Of Justice':"combat:Grant Smite Evil to allies w/in 10'",
@@ -1537,56 +1110,34 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Bardic Performance':'feature:Bardic Performance effect %V rd/day',
   'Bleeding Attack':'combat:Sneak attack causes extra %V HP/rd until healed',
   'Blinding Ray':'magic:Ranged touch blinds/dazzles 1 rd %V/day',
-  'Blindsense':
-    "feature:Other senses allow detection of unseen objects w/in %V'",
   'Bloodline Aberrant':'magic:Polymorph spells last 50% longer',
   'Bloodline Abyssal':'magic:Summoned creatures gain DR %V/good',
   'Bloodline Arcane':'magic:+1 boosted spell DC',
   'Bloodline Celestial':'magic:Summoned creatures gain DR %V/evil',
   'Bloodline Destined':'save:+spell level on saves 1 rd after casting personal spell',
   'Bloodline Draconic':'magic:+1 damage/die on %V spells',
-  'Bloodline Elemental':'magic:Change spell energy type to match own',
+  'Bloodline Elemental':'magic:Change spell energy type to %V',
   'Bloodline Fey':'magic:+2 compulsion spell DC',
   'Bloodline Infernal':'magic:+2 charm spell DC',
+  'Bloodline Undead':'magic:Affect corporeal undead as humanoid',
   'Bonded Object':'magic:Cast known spell through object',
   'Bravery':'save:+%V vs. fear',
-  'Breath Weapon':"combat:%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
   'Camouflage':'skill:Hide in favored terrain',
-  'Celestial Resistances':'save:%V acid/cold',
   'Change Shape':'magic:<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
   'Channel Energy':"magic:Heal/inflict %Vd6 HP 30' radius (DC %1 Will half) %2/day",
-  'Claws':'combat:%V+%1%3 HP %2 rd/day',
   'Clear Mind':'save:Reroll Will save 1/rage',
   'Companion Bond':"combat:Half favored enemy bonus to allies w/in 30' %V rd",
   'Condition Fist':'combat:Stunning Fist may instead make target %V',
   'Conjured Dart':'magic:Ranged touch 1d6+%1 HP %V/day',
   'Combat Trick':'feature:+1 Combat Feat',
-  'Conviction':'feature:Reroll ability/attack/skill/save 1/day',
-  'Corrupting Touch':'magic:Touch causes shaken %V rd %1/day',
   'Dazing Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
   'Deadly Performance':'magic:Target DC %V Will save or die',
-  'Demonic Might':"feature:Telepathy 60'",
-  'Demonic Might':'save:10 acid/cold/fire',
-  'Demonic Resistance':'save:%V electricity/%1 poison',
-  'Destiny Realized':[
-    'combat:Critical hits confirmed, foe critical requires 20',
-    'magic:Automatically overcome resistance 1/day'
-  ],
   'Dimensional Steps':"magic:Teleport up to %V'/day",
   'Dirge Of Doom':"magic:Creatures w/in 30' shaken while performing",
   'Dispelling Attack':'magic:Sneak attack acts as <i>Dispel Magic</i> on target',
   'Distraction':"magic:Perform check vs. visual magic w/in 30' 10 rd",
   'Divine Mount':'feature:Magically summon mount %V/day',
   'Divine Weapon':'combat:Add %V enhancements to weapon %1 minutes %2/day',
-  'Dragon Resistances':[
-    'combat:+%V AC', // No bonus to CMD
-    'save:%V vs. %1'
-  ],
-  'Elemental Blast':"combat:R60' 20' radius %Vd6 HP %3 (DC %1 Reflex half) %2/day",
-  'Elemental Body':'combat:Immune sneak attack, critical hit',
-  'Elemental Movement':'ability:%V/rd',
-  'Elemental Ray':"magic:R30' 1d6+%1 HP %2 %V/day",
-  'Elemental Resistance':'save:%V vs. %1',
   'Elemental Wall':'magic:<i>Wall Of Fire</i>/acid/cold/electricity %V rd/day',
   'Empty Body':'magic:Use 3 ki for 1 minute <i>Etherealness</i>',
   'Enchanting Smile':'skill:+%V Bluff/+%V Diplomacy/+%V Intimidate',
@@ -1595,7 +1146,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Energy Resistance':'save:%V chosen energy type',
   'Extended Illusions':'magic:Illusion duration increased %V rd',
   'Fast Stealth':'skill:Use Stealth at full speed',
-  'Fated':'save:+%V saves when surprised',
   'Favored Enemy':[
     'combat:+2 or more attack and damage vs. %V type(s) of creatures',
     'skill:+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures'
@@ -1605,39 +1155,29 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+2 Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)'
   ],
   'Fearless Rage':'save:Cannot be shaken/frightened during rage',
-  'Fey Magic':'magic:Reroll any resistance check',
-  'Fleeting Glance':'magic:<i>Greater Invisibility</i> %V rd/day',
   'Flurry Of Blows':
     'combat:Full-round %V +%1 monk weapon attacks, use 1 ki for one more',
   'Force Missile':'magic:<i>Magic Missile</i> 1d4+%V HP %1/day',
   'Forewarned':'combat:+%V initiative, always act in surprise round',
   'Frightening Tune':"magic:R30' DC %V Will <i>Cause Fear</i> via performance",
-  'Grasp Of The Dead':"magic:R60' 20' radius %Vd6 HP (DC %1 Reflex half) %2/day",
-  'Grave Touch':'magic:Touch causes shaken/frightened %V rd %1/day',
   'Guarded Stance':'combat:+%V AC during rage',
   'Hand Of The Apprentice':"combat:R30' +%V w/melee weapon %1/day",
-  'Heavenly Fire':'magic:Ranged touch heal good/harm evil 1d4+%V HP %1/day',
   'High Jump':'skill:+%V Acrobatics (jump), use 1 ki for +20',
   'Holy Champion':'magic:Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
-  'Incorporeal Form':'magic:Incorporeal %V rd 1/day',
-  'Infernal Resistances':'save:%V fire/%1 poison',
   'Intense Spell':'magic:+%V evocation spell damage',
   'Internal Fortitude':'save:Cannot be sickened/nauseated during rage',
   'Intimidating Glare':
     'skill:Successful Intimidate during rage shakes foe at least 1d4 rd',
   'Invisibility Field':'magic:<i>Greater Invisibility</i> %V rd/day',
-  'It Was Meant To Be':'feature:Reroll attack/critical/spell resistance check %V/day',
   'Jack Of All Trades':'skill:Use any skill untrained',
   'Ki Dodge':'combat:Use 1 ki for +4 AC',
   'Ki Pool':'feature:%V points refills w/8 hours rest',
   'Ki Speed':'ability:Use 1 ki for +20',
   'Ki Strike':'combat:Unarmed attack is %V',
   'Knockback':'combat:Successful Bull Rush during rage %V HP',
-  'Laughing Touch':'magic:Touch causes 1 rd of laughter %V/day',
   'Lay On Hands':'magic:Harm undead or heal %Vd6 HP %1/day',
   'Ledge Walker':'skill:Use Acrobatics along narrow surfaces at full speed',
   'Life Sight':'feature:%V blindsight for living/undead',
-  'Long Limbs':"combat:+%V' touch attack range",
   'Lore Master':'skill:Take 10 on any ranked Knowledge skill, take 20 %V/day',
   'Major Magic':'magic:Cast W1 spell 2/day',
   'Maneuver Training':'combat:+%V CMB',
@@ -1645,32 +1185,20 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'combat:Full attack vs. favored enemy requires DC %V Fortitude save or die',
   'Master Strike':'combat:Sneak attack target DC %V Fortitude or sleep/paralyze/die',
   'Mercy':'magic:Lay on hands removes additional effects',
-  'Metamagic Adept':'magic:Applying metamagic feat w/out increased casting time %V/day',
   'Metamagic Mastery':'magic:Apply metamagic feat %V/day',
   'Mighty Swing':'combat:Automatic critical 1/rage',
   'Minor Magic':'magic:Cast W0 spell 3/day',
   'Moment Of Clarity':'combat:Rage effects suspended 1 rd',
   'Monk Armor Class Adjustment':'combat:+%V AC/+%V CMD',
   'Necromantic Touch':'magic:Touch causes shaken/frightened %V rd %1/day',
-  'New Arcane':'magic:%V additional spells',
   'Night Vision':"feature:60' Darkvision during rage",
   'No Escape':'combat:x2 speed 1/rage when foe withdraws',
-  'On Dark Wings':"ability:Fly 60'/average",
-  'One Of Us':[
-    'combat:Ignored by unintelligent undead',
-    'save:Immune paralysis/sleep/+4 vs. undead\'s spells'
-  ],
   'Penetrating Spells':'magic:Best of two rolls to overcome spell resistance',
   'Perfect Self':[
     'combat:DR 10/chaotic',
     'save:Treat as outsider for magic saves'
   ],
   'Physical Enhancement':'ability:+%V %1 of str, dex, and con',
-  'Power Of The Pit':[
-    "feature:Darkvision 60'",
-    'save:10 acid/cold'
-  ],
-  'Power Of Wyrms':'save:Immune paralysis/sleep',
   'Power Over Undead':'feature:+1 General Feat (Command Undead or Turn Undead)',
   'Powerful Blow':'combat:+%V HP 1/rage',
   'Protective Ward':"magic:+%V AC 10' radius %1/day",
@@ -1691,22 +1219,15 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Rolling Dodge':'combat:+%V AC vs. ranged %1 rd during rage',
   'Roused Anger':'combat:Rage even if fatigued',
   'Scent':'feature:Detect creatures via smell',
-  'School Power':'magic:+2 DC on spells from chosen school',
   'Scrying Adept':
     'magic:Constant <i>Detect Scrying</i>, +1 scrying subject familiarity',
   'Slow Reactions':'combat:Sneak attack target no AOO 1 rd',
   'Soothing Performance':"magic:R30' <i>Mass Cure Serious Wounds</i> via performance",
-  'Soul Of The Fey':'combat:Animals attack only if magically forced',
-  'Soul Of The Fey':[
-    'magic:<i>Shadow Walk</i> 1/day',
-    'save:Immune poison/DR 10/cold iron'
-  ],
   'Spontaneous Cleric Spell':
     'magic:Cast <i>Cure</i> or <i>Inflict<i> in place of known spell',
   'Spontaneous Druid Spell':
     "magic:Cast <i>Summon Nature's Ally</i> in place of known spell",
   'Stand Up':'combat:Stand from prone as free action',
-  'Strength Of The Abyss':'ability:+%V strength',
   'Strength Surge':'combat:+%V strength or combat maneuver check 1/rage',
   'Superstition':'save:+%V vs. spells, supernatural, spell-like abilities during rage',
   'Surprise Accuracy':'combat:+%V attack 1/rage',
@@ -1714,21 +1235,16 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Swift Foot':'ability:+5 Speed during rage',
   'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   'Terrifying Howl':"combat:Howl DC %V will save w/in 30' or shaken 1d4+1 rd",
-  'Touch Of Destiny':'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
   'Track':"skill:+%V Survival to follow creatures' trail",
   'Trap Spotter':"skill:Automatic Perception check w/in 10' of trap",
   'Trapfinding':'skill:+%V Perception (traps)/+%V Disable Device (traps)',
   'Unexpected Strike':'combat:AOO when foe enters threat 1/rage',
-  'Unusual Anatomy':'combat:%V% chance to ignore critical hit/sneak attack',
   'Versatile Performance':'skill:Substitute Perform ranking for associated skills',
   'Weapon Mastery':
     'combat:Critical automatically hits, +1 damage multiplier, no disarm w/chosen weapon',
   'Weapon Training':'combat:Attack/damage bonus w/weapons from trained groups',
   'Well-Versed':'save:+4 vs. bardic effects',
   'Wholeness Of Body':'magic:Use 2 ki to heal %V HP to self',
-  'Wings Of Heaven':"ability:Fly 60'/good %V minutes/day",
-  'Wings':"ability:Fly %V'/average",
-  'Within Reach':'save:DC 20 Will save vs. fatal attack 1/day',
   // Races
   'Adaptability':'feature:+1 General Feat (Skill Focus)',
   'Darkvision':"feature:60' b/w vision in darkness",
@@ -2352,6 +1868,507 @@ Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
   'Sai':'Level=3 Category=Li Damage=d4', // removed range
   'Starknife':'Level=2 Category=Li Damage=d4 Crit=3 Range=20'
 });
+Pathfinder.CLASSES = {
+  'Barbarian':
+    'Require="alignment !~ /Lawful/" ' +
+    'HitDie=d12 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Martial)","1:Fast Movement",1:Rage,' +
+      '"2:Uncanny Dodge","3:Trap Sense","5:Improved Uncanny Dodge",' +
+      '"7:Damage Reduction","11:Greater Rage","14:Indomitable Will",' +
+      '"17:Tireless Rage","20:Mighty Rage" ' +
+    'Selectables=' +
+      '"2:Animal Fury","8:Clear Mind","12:Fearless Rage","2:Guarded Stance",' +
+      '"8:Increased Damage Reduction","8:Internal Fortitude",' +
+      '"2:Intimidating Glare","2:Knockback","2:Low-Light Vision",' +
+      '"12:Mighty Swing","2:Moment Of Clarity","2:Night Vision",' +
+      '"2:No Escape","2:Powerful Blow","2:Quick Reflexes",' +
+      '"2:Raging Climber","2:Raging Leaper","2:Raging Swimmer",' +
+      '"8:Renewed Vigor","2:Rolling Dodge","2:Roused Anger","2:Scent",' +
+      '"2:Strength Surge","2:Superstition","2:Surprise Accuracy",' +
+      '"2:Swift Foot","8:Terrifying Howl","4:Unexpected Strike"',
+  'Bard':
+    'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Light)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Short Bow/Whip)",' +
+      '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
+      '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
+      '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
+      '"5:Lore Master",6:Suggestion,"8:Dirge Of Doom","9:Inspire Greatness",' +
+      '"10:Jack Of All Trades","12:Soothing Performace",' +
+      '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
+      '"20:Deadly Performance" ' +
+    'CasterLevelArcane=Level ' +
+    'SpellAbility=charisma ' +
+    'SpellsPerDay=' +
+      'B0:1=4;2=5;3=6,' +
+      'B1:1=1;2=2;3=3;5=4;9=5,' +
+      'B2:4=1;5=2;6=3;8=4;12=5,' +
+      'B3:7=1;8=2;9=3;11=4;15=5,' +
+      'B4:10=1;11=2;12=3;14=4;18=5,' +
+      'B5:13=1;14=2;15=3;17=4;19=5,' +
+      'B6:16=1;17=2;18=3;19=4;20=5 ' +
+    'Spells=' +
+      '"B0:Dancing Lights;Daze;Detect Magic;Flare;Ghost Sound;Know Direction;' +
+      'Light;Lullaby;Mage Hand;Mending;Message;Open/Close;Prestidigitation;' +
+      'Read Magic;Resistance;Summon Instrument",' +
+      '"B1:Alarm;Animate Rope;Cause Fear;Charm Person;Comprehend Languages;' +
+      'Cure Light Wounds;Detect Secret Doors;Disguise Self;Erase;' +
+      'Expeditious Retreat;Feather Fall;Grease;Hideous Laughter;Hypnotism;' +
+      'Identify;Lesser Confusion;Magic Aura;Magic Mouth;Obscure Object;' +
+      'Remove Fear;Silent Image;Sleep;Summon Monster I;' +
+      'Undetectable Alignment;Unseen Servant;Ventriloquism",' +
+      '"B2:Alter Self;Animal Messenger;Animal Trance;Blindness/Deafness;Blur;' +
+      'Calm Emotions;Cat\'s Grace;Cure Moderate Wounds;Darkness;Daze Monster;' +
+      'Delay Poison;Detect Thoughts;Eagle\'s Splendor;Enthrall;' +
+      'Fox\'s Cunning;Glitterdust;Heroism;Hold Person;Hypnotic Pattern;' +
+      'Invisibility;Locate Object;Minor Image;Mirror Image;Misdirection;' +
+      'Pyrotechnics;Rage;Scare;Shatter;Silence;Sound Burst;Suggestion;' +
+      'Summon Monster II;Summon Swarm;Tongues;Whispering Wind",' +
+      '"B3:Blink;Charm Monster;Clairaudience/Clairvoyance;Confusion;' +
+      'Crushing Despair;Cure Serious Wounds;Daylight;Deep Slumber;' +
+      'Dispel Magic;Displacement;Fear;Gaseous Form;Glibness;Good Hope;Haste;' +
+      'Illusory Script;Invisibility Sphere;Lesser Geas;Major Image;' +
+      'Phantom Steed;Remove Curse;Scrying;Sculpt Sound;Secret Page;' +
+      'See Invisibility;Sepia Snake Sigil;Slow;Speak With Animals;' +
+      'Summon Monster III;Tiny Hut",' +
+      '"B4:Break Enchantment;Cure Critical Wounds;Detect Scrying;' +
+      'Dimension Door;Dominate Person;Freedom Of Movement;' +
+      'Greater Invisibility;Hallucinatory Terrain;Hold Monster;Legend Lore;' +
+      'Locate Creature;Modify Memory;Neutralize Poison;Rainbow Pattern;' +
+      'Repel Vermin;Secure Shelter;Shadow Conjuration;Shout;' +
+      'Speak With Plants;Summon Monster IV;Zone Of Silence",' +
+      '"B5:Dream;False Vision;Greater Dispel Magic;Greater Heroism;' +
+      'Mass Cure Light Wounds;Mass Suggestion;Mind Fog;Mirage Arcana;Mislead;' +
+      'Nightmare;Persistent Image;Seeming;Shadow Evocation;Shadow Walk;' +
+      'Song Of Discord;Summon Monster V",' +
+      '"B6:Analyze Dweomer;Animate Objects;Eyebite;Find The Path;Geas/Quest;' +
+      'Greater Scrying;Greater Shout;Heroes\' Feast;Irresistible Dance;' +
+      'Mass Cat\'s Grace;Mass Charm Monster;Mass Cure Moderate Wounds;' +
+      'Mass Eagle\'s Splendor;Mass Fox\'s Cunning;Permanent Image;' +
+      'Programmed Image;Project Image;Summon Monster VI;' +
+      'Sympathetic Vibration;Veil"',
+  'Cleric':
+    'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Simple)",1:Aura,"1:Channel Energy",' +
+      '"1:Cleric Domains","1:Spontaneous Cleric Spell" ' +
+    'Selectables=' +
+      QuilvynUtils.getKeys(Pathfinder.DOMAINS).map(x => '"1:' + x + ' Domain"').join(',') + ' ' +
+    'CasterLevelDivine=Level ' +
+    'SpellAbility=wisdom ' +
+    'SpellsPerDay=' +
+      'C0:1=3;2=4,' +
+      'C1:1=1;2=2;4=3;7=4,' +
+      'C2:3=1;4=2;6=3;9=4,' +
+      'C3:5=1;6=2;8=3;11=4,' +
+      'C4:7=1;8=2;10=3;13=4,' +
+      'C5:9=1;10=2;12=3;15=4,' +
+      'C6:11=1;12=2;14=3;17=4,' +
+      'C7:13=1;14=2;16=3;19=4,' +
+      'C8:15=1;16=2;18=3;20=4,' +
+      'C9:17=1;18=2;19=3;20=4,' +
+      'Dom1:1=1,' +
+      'Dom2:3=1,' +
+      'Dom3:5=1,' +
+      'Dom4:7=1,' +
+      'Dom5:9=1,' +
+      'Dom6:11=1,' +
+      'Dom7:13=1,' +
+      'Dom8:15=1,' +
+      'Dom9:17=1 ' +
+      'Spells=' +
+      '"C0:Bleed;Create Water;Detect Magic;Detect Poison;Guidance;Light;' +
+      'Mending;Purify Food And Drink;Read Magic;Resistance;Stabilize;Virtue",' +
+      '"C1:Bane;Bless;Bless Water;Cause Fear;Command;Comprehend Languages;' +
+      'Cure Light Wounds;Curse Water;Deathwatch;Detect Chaos;Detect Evil;' +
+      'Detect Good;Detect Law;Detect Undead;Divine Favor;Doom;' +
+      'Endure Elements;Entropic Shield;Hide From Undead;Inflict Light Wounds;' +
+      'Magic Stone;Magic Weapon;Obscuring Mist;Protection From Chaos;' +
+      'Protection From Evil;Protection From Good;Protection From Law;' +
+      'Remove Fear;Sanctuary;Shield Of Faith;Summon Monster I",' +
+      '"C2:Aid;Align Weapon;Augury;Bear\'s Endurance;Bull\'s Strength;' +
+      'Calm Emotions;Consecrate;Cure Moderate Wounds;Darkness;Death Knell;' +
+      'Delay Poison;Desecrate;Eagle\'s Splendor;Enthrall;Find Traps;' +
+      'Gentle Repose;Hold Person;Inflict Moderate Wounds;Lesser Restoration;' +
+      'Make Whole;Owl\'s Wisdom;Remove Paralysis;Resist Energy;Shatter;' +
+      'Shield Other;Silence;Sound Burst;Spiritual Weapon;Status;' +
+      'Summon Monster II;Undetectable Alignment;Zone Of Truth",' +
+      '"C3:Animate Dead;Bestow Curse;Blindness/Deafness;Contagion;' +
+      'Continual Flame;Create Food And Water;Cure Serious Wounds;Daylight;' +
+      'Deeper Darkness;Dispel Magic;Glyph Of Warding;Helping Hand;' +
+      'Inflict Serious Wounds;Invisibility Purge;Locate Object;' +
+      'Magic Circle Against Chaos;Magic Circle Against Evil;' +
+      'Magic Circle Against Good;Magic Circle Against Law;Magic Vestment;' +
+      'Meld Into Stone;Obscure Object;Prayer;Protection From Energy;' +
+      'Remove Blindness/Deafness;Remove Curse;Remove Disease;Searing Light;' +
+      'Speak With Dead;Stone Shape;Summon Monster III;Water Breathing;' +
+      'Water Walk;Wind Wall",' +
+      '"C4:Air Walk;Chaos Hammer;Control Water;Cure Critical Wounds;' +
+      'Death Ward;Dimensional Anchor;Discern Lies;Dismissal;Divination;' +
+      'Divine Power;Freedom Of Movement;Giant Vermin;Greater Magic Weapon;' +
+      'Holy Smite;Imbue With Spell Ability;Inflict Critical Wounds;' +
+      'Lesser Planar Ally;Neutralize Poison;Order\'s Wrath;Poison;' +
+      'Repel Vermin;Restoration;Sending;Spell Immunity;Summon Monster IV;' +
+      'Tongues;Unholy Blight",' +
+      '"C5:Atonement;Break Enchantment;Breath Of Life;Commune;Dispel Chaos;' +
+      'Dispel Evil;Dispel Good;Dispel Law;Disrupting Weapon;Flame Strike;' +
+      'Greater Command;Hallow;Insect Plague;Mark Of Justice;' +
+      'Mass Cure Light Wounds;Mass Inflict Light Wounds;Plane Shift;' +
+      'Raise Dead;Righteous Might;Scrying;Slay Living;Spell Resistance;' +
+      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;True Seeing;Unhallow;' +
+      'Wall Of Stone",' +
+      '"C6:Animate Objects;Antilife Shell;Banishment;Blade Barrier;' +
+      'Create Undead;Find The Path;Forbiddance;Geas/Quest;' +
+      'Greater Dispel Magic;Greater Glyph Of Warding;Harm;Heal;' +
+      'Heroes\' Feast;Mass Bear\'s Endurance;Mass Bull\'s Strength;' +
+      'Mass Cure Moderate Wounds;Mass Eagle\'s Splendor;' +
+      'Mass Inflict Moderate Wounds;Mass Owl\'s Wisdom;Planar Ally;' +
+      'Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
+      'Undeath To Death;Wind Walk;Word Of Recall",' +
+      '"C7:Blasphemy;Control Weather;Destruction;Dictum;Ethereal Jaunt;' +
+      'Greater Restoration;Greater Scrying;Holy Word;' +
+      'Mass Cure Serious Wounds;Mass Inflict Serious Wounds;Refuge;' +
+      'Regenerate;Repulsion;Resurrection;Summon Monster VII;' +
+      'Symbol Of Stunning;Symbol Of Weakness;Word Of Chaos",' +
+      '"C8:Antimagic Field;Cloak Of Chaos;Create Greater Undead;' +
+      'Dimensional Lock;Discern Location;Earthquake;Fire Storm;' +
+      'Greater Planar Ally;Greater Spell Immunity;Holy Aura;' +
+      'Mass Cure Critical Wounds;Mass Inflict Critical Wounds;Shield Of Law;' +
+      'Summon Monster VIII;Symbol Of Death;Symbol Of Insanity;Unholy Aura",' +
+      '"C9:Astral Projection;Energy Drain;Etherealness;Gate;Implosion;' +
+      'Mass Heal;Miracle;Soul Bind;Storm Of Vengeance;Summon Monster IX;' +
+      'True Resurrection"',
+  'Druid':
+    'Require="alignment =~ /Neutral/","armor =~ /None|Hide|Leather|Padded/","shield =~ /None|Wooden/" ' +
+    'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
+      '"1:Nature Sense","1:Spontaneous Druid Spell","1:Wild Empathy",' +
+      '"2:Woodland Stride","3:Trackless Step","4:Resist Nature\'s Lure",' +
+      '"4:Wild Shape","9:Venom Immunity","13:Thousand Faces",' +
+      '"15:Timeless Body" ' +
+    'Selectables=' +
+      '"1:Animal Companion","1:Nature Domains" ' +
+    'SpellAbility=wisdom ' +
+    'SpellsPerDay=' +
+      'D0:1=3;2=4,' +
+      'D1:1=1;2=2;4=3;7=4,' +
+      'D2:3=1;4=2;6=3;9=4,' +
+      'D3:5=1;6=2;8=3;11=4,' +
+      'D4:7=1;8=2;10=3;13=4,' +
+      'D5:9=1;10=2;12=3;15=4,' +
+      'D6:11=1;12=2;14=3;17=4,' +
+      'D7:13=1;14=2;16=3;19=4,' +
+      'D8:15=1;16=2;18=3;20=4,' +
+      'D9:17=1;18=2;19=3;20=4 ' +
+      'Spells=' +
+      '"D0:Create Water;Detect Magic;Detect Poison;Flare;Guidance;' +
+      'Know Direction;Light;Mending;Purify Food And Drink;Read Magic;' +
+      'Resistance;Stabilize;Virtue",' +
+      '"D1:Calm Animals;Charm Animal;Cure Light Wounds;' +
+      'Detect Animals Or Plants;Detect Snares And Pits;Endure Elements;' +
+      'Entangle;Faerie Fire;Goodberry;Hide From Animals;Jump;Longstrider;' +
+      'Magic Fang;Magic Stone;Obscuring Mist;Pass Without Trace;' +
+      'Produce Flame;Shillelagh;Speak With Animals;Summon Nature\'s Ally I",' +
+      '"D2:Animal Messenger;Animal Trance;Barkskin;Bear\'s Endurance;' +
+      'Bull\'s Strength;Cat\'s Grace;Chill Metal;Delay Poison;Fire Trap;' +
+      'Flame Blade;Flaming Sphere;Fog Cloud;Gust Of Wind;Heat Metal;' +
+      'Hold Animal;Lesser Restoration;Owl\'s Wisdom;Reduce Animal;' +
+      'Resist Energy;Soften Earth And Stone;Spider Climb;' +
+      'Summon Nature\'s Ally II;Summon Swarm;Tree Shape;Warp Wood",' +
+      '"D3:Call Lightning;Contagion;Cure Moderate Wounds;Daylight;' +
+      'Diminish Plants;Dominate Animal;Greater Magic Fang;Meld Into Stone;' +
+      'Neutralize Poison;Plant Growth;Poison;Protection From Energy;Quench;' +
+      'Remove Disease;Sleet Storm;Snare;Speak With Plants;Spike Growth;' +
+      'Stone Shape;Summon Nature\'s Ally III;Water Breathing;Wind Wall;' +
+      'Wood Shape",' +
+      '"D4:Air Walk;Antiplant Shell;Blight;Command Plants;Control Water;' +
+      'Cure Serious Wounds;Dispel Magic;Flame Strike;Freedom Of Movement;' +
+      'Giant Vermin;Ice Storm;Reincarnate;Repel Vermin;Rusting Grasp;Scrying;' +
+      'Spike Stones;Summon Nature\'s Ally IV",' +
+      '"D5:Atonement;Awaken;Baleful Polymorph;Call Lightning Storm;' +
+      'Commune With Nature;Control Winds;Cure Critical Wounds;Death Ward;' +
+      'Hallow;Insect Plague;Stoneskin;Summon Nature\'s Ally V;' +
+      'Transmute Mud To Rock;Transmute Rock To Mud;Tree Stride;Unhallow;' +
+      'Wall Of Fire;Wall Of Thorns",' +
+      '"D6:Antilife Shell;Find The Path;Fire Seeds;Greater Dispel Magic;' +
+      'Ironwood;Liveoak;Mass Bear\'s Endurance;Mass Bull\'s Strength;' +
+      'Mass Cat\'s Grace;Mass Cure Light Wounds;Mass Owl\'s Wisdom;' +
+      'Move Earth;Repel Wood;Spellstaff;Stone Tell;Summon Nature\'s Ally VI;' +
+      'Transport Via Plants;Wall Of Stone",' +
+      '"D7:Animate Plants;Changestaff;Control Weather;Creeping Doom;' +
+      'Fire Storm;Greater Scrying;Heal;Mass Cure Moderate Wounds;' +
+      'Summon Nature\'s Ally VII;Sunbeam;Transmute Metal To Wood;True Seeing;' +
+      'Wind Walk",' +
+      '"D8:Animal Shapes;Control Plants;Earthquake;Finger Of Death;' +
+      'Mass Cure Serious Wounds;Repel Metal Or Stone;Reverse Gravity;' +
+      'Summon Nature\'s Ally VIII;Sunburst;Whirlwind;Word Of Recall",' +
+      '"D9:Antipathy;Elemental Swarm;Foresight;Mass Cure Critical Wounds;' +
+      'Regenerate;Shambler;Shapechange;Storm Of Vengeance;' +
+      'Summon Nature\'s Ally IX;Sympathy"',
+  'Fighter':
+    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Heavy)","Shield Proficiency (Tower)",' +
+      '"1:Weapon Proficiency (Martial)","2:Bravery","3:Armor Training",' +
+      '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
+  'Monk':
+    'Require="alignment =~ /Lawful/" Imply="armor == \'None\'","shield == \'None\'" ' +
+    'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
+    'Features=' +
+      '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
+      '"1:Flurry Of Blows","1:Improved Unarmed Strike",' +
+      '"1:Two-Weapon Fighting","1:Stunning Fist",2:Evasion,' +
+      '"3:Fast Movement","3:Maneuver Training","3:Still Mind","4:Ki Dodge",' +
+      '"4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall","5:High Jump",' +
+      '"5:Purity Of Body","7:Wholeness Of Body","8:Condition Fist",' +
+      '"8:Improved Two-Weapon Fighting","9:Improved Evasion",' +
+      '"11:Diamond Body","12:Abundant Step","13:Diamond Soul",' +
+      '"15:Greater Two-Weapon Fighting","15:Quivering Palm",' +
+      '"17:Timeless Body","17:Tongue Of The Sun And Moon","19:Empty Body",' +
+      '"20:Perfect Self" ' +
+    'Selectables=' +
+      '"1:Catch Off-Guard","1:Combat Reflexes","1:Deflect Arrows","1:Dodge",' +
+      '"1:Improved Grapple","1:Scorpion Style","1:Throw Anything",' +
+      '"6:Gorgon\'s Fist","6:Improved Bull Rush","6:Improved Disarm",' +
+      '"6:Improved Feint","6:Improved Trip","6:Mobility",' +
+      '"10:Improved Critical","10:Medusa\'s Wrath","10:Snatch Arrows",' +
+      '"10:Spring Attack"',
+  // TODO Improved Critical subfeats
+  'Paladin':
+    'Require="alignment == \'Lawful Good\'" ' +
+    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Martial)",1:Aura,"1:Detect Evil",' +
+      '"1:Smite Evil","2:Divine Grace","2:Lay On Hands","3:Aura Of Courage",' +
+      '"3:Divine Health",3:Mercy,"4:Channel Energy","8:Aura Of Resolve",' +
+      '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
+      '"20:Holy Champion" ' +
+    'Selectables=' +
+      '"5:Divine Mount","5:Divine Weapon" ' +
+    'SpellAbility=charisma ' +
+    'SpellsPerDay=' +
+      'P1:4=0;5=1;9=2;13=3;17=4,' +
+      'P2:8=0;9=1;12=2;16=3;20=4,' +
+      'P3:19=0;11=1;15=2;19=3,' +
+      'P4:13=0;14=1;18=2;20=3 ' +
+    'Spells=' +
+      '"P1:Bless;Bless Water;Bless Weapon;Create Water;Cure Light Wounds;' +
+      'Detect Poison;Detect Undead;Divine Favor;Endure Elements;' +
+      'Lesser Restoration;Magic Weapon;Protection From Chaos;' +
+      'Protection From Evil;Read Magic;Resistance;Virtue",' +
+      '"P2:Bull\'s Strength;Delay Poison;Eagle\'s Splendor;Owl\'s Wisdom;' +
+      'Remove Paralysis;Resist Energy;Shield Other;Undetectable Alignment;' +
+      'Zone Of Truth",' +
+      '"P3:Cure Moderate Wounds;Daylight;Discern Lies;Dispel Magic;' +
+      'Greater Magic Weapon;Heal Mount;Magic Circle Against Chaos;' +
+      'Protection From Evil;Prayer;Remove Blindness/Deafness;' +
+      'Remove Curse",' +
+      '"P4:Break Enchantment;Cure Serious Wounds;Death Ward;Dispel Chaos;' +
+      'Dispel Evil;Holy Sword;Mark Of Justice;Neutralize Poison;Restoration"',
+  'Ranger':
+    'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Weapon Proficiency (Martial)","1:Favored Enemy",1:Track,' +
+      '"1:Wild Empathy",3:Endurance,"3:Favored Terrain","7:Woodland Stride",' +
+      '"8:Swift Tracker",9:Evasion,11:Quarry,12:Camouflage,' +
+      '"16:Improved Evasion","17:Hide In Plain Sight","19:Improved Quarry",' +
+      '"20:Master Hunter" ' +
+    'Selectables=' +
+      '"2:Combat Style (Archery)","2:Combat Style (Two-Weapon Combat)",' +
+      '"2:Far Shot","2:Point-Blank Shot","2:Precise Shot","2:Rapid Shot",' +
+      '"2:Double Slice","2:Improved Shield Bash","2:Quick Draw",' +
+      '"2:Two-Weapon Fighting","4:Animal Companion","4:Companion Bond",' +
+      '"6:Improved Precise Shot",6:Manyshot,6:Improved Two-Weapon Fighting",' +
+      '"6:Two-Weapon Defense","10:Pinpoint Targeting","10:Shot On The Run",' +
+      '"10:Greater Two-Weapon Fighting","10:Two-Weapon Rend ' +
+    'SpellAbility=wisdom ' +
+    'SpellsPerDay=' +
+      'R1:4=0;5=1;9=2;13=3;17=4,' +
+      'R2:7=0;8=1;12=2;16=3;20=4,' +
+      'R3:10=0;11=1;15=2;19=3,' +
+      'R4:13=0;14=1;18=2;20=3 ' +
+    'Spells=' +
+      '"R1:Alarm;Animal Messenger;Calm Animals;Charm Animal;Delay Poison;' +
+      'Detect Animals Or Plants;Detect Poison;Detect Snares And Pits;' +
+      'Endure Elements;Entangle;Hide From Animals;Jump;Longstrider;' +
+      'Magic Fang;Pass Without Trace;Read Magic;Resist Energy;' +
+      'Speak With Animals;Summon Nature\'s Ally I",' +
+      '"R2:Barkskin;Bear\'s Endurance;Cat\'s Grace;Cure Light Wounds;' +
+      'Hold Animal;Owl\'s Wisdom;Protection From Energy;Snare;' +
+      'Speak With Plants;Spike Growth;Summon Nature\'s Ally II;Wind Wall",' +
+      '"R3:Command Plants;Cure Moderate Wounds;Darkvision;Diminish Plants;' +
+      'Greater Magic Fang;Neutralize Poison;Plant Growth;Reduce Animal;' +
+      'Remove Disease;Repel Vermin;Summon Nature\'s Ally III;Tree Shape;' +
+      'Water Walk",' +
+      '"R4:Animal Growth;Commune With Nature;Cure Serious Wounds;' +
+      'Freedom Of Movement;Nondetection;Summon Nature\'s Ally IV;Tree Stride"',
+  // TODO Combat Style requirements for selectables
+  'Rogue':
+    'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Light)",' +
+      '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Shortbow/Short Sword)",' +
+      '"1:Sneak Attack",1:Trapfinding,2:Evasion,"3:Trap Sense",' +
+      '"4:Uncanny Dodge","8:Improved Uncanny Dodge","20:Master Strike" ' +
+    'Selectables=' +
+      '"2:Bleeding Attack","2:Combat Trick","2:Fast Stealth",' +
+      '"2:Finesse Rogue","2:Ledge Walker","2:Major Magic","2:Minor Magic",' +
+      '"2:Quick Disable2",2:Resiliency,"2:Rogue Crawl","2:Slow Reactions",' +
+      '"2:Stand Up","2:Surprise Attack","2:Trap Spotter",' +
+      '"2:Rogue Weapon Training","10:Crippling Strike","10:Defensive Roll",' +
+      '"10:Dispelling Attack","10:Feat Bonus","10:Improved Evasion",' +
+      '10:Opportunist,"10:Skill Mastery","10:Slippery Mind"',
+  // TODO Dispelling Attack requires Major Magic requires Minor Magic
+  'Sorcerer':
+    'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Weapon Proficiency (Simple)",1:Bloodline,"1:Eschew Materials" ' +
+    'Selectables=' +
+      '"1:Bloodline Aberrant","1:Bloodline Abyssal","1:Bloodline Arcane",' +
+      '"1:Bloodline Celestial","1:Bloodline Destined",' +
+      '"1:Bloodline Draconic (Black)","1:Bloodline Draconic (Blue)",' +
+      '"1:Bloodline Draconic (Green)","1:Bloodline Draconic (Red)",' +
+      '"1:Bloodline Draconic (White)","1:Bloodline Draconic (Brass)",' +
+      '"1:Bloodline Draconic (Bronze)","1:Bloodline Draconic (Copper)",' +
+      '"1:Bloodline Draconic (Gold)","1:Bloodline Draconic (Silver)",' +
+      '"1:Bloodline Elemental (Air)","1:Bloodline Elemental (Earth)",' +
+      '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
+      '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead",' +
+      '"1:Bonded Object",1:Familiar ' +
+    'SpellAbility=charisma ' +
+    'SpellsPerDay=' +
+      'S1:1=3;2=4;3=5;4=6,' +
+      'S2:4=3;5=4;6=5;7=6,' +
+      'S3:6=3;7=4;8=5;9=6,' +
+      'S4:8=3;9=4;10=5;11=6,' +
+      'S5:10=3;11=4;12=5;13=6,' +
+      'S6:12=3;13=4;14=5;15=6,' +
+      'S7:14=3;15=4;16=5;17=6,' +
+      'S8:16=3;17=4;18=5;19=6,' +
+      'S9:18=3;19=4;20=6',
+  'Wizard':
+    'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)",' +
+      '"1:Hand Of The Apprentice","1:Scribe Scroll",' +
+      '"1:Wizard Specialization","8:Metamagic Mastery" ' +
+    'Selectables=' +
+      '"1:Bonded Object",1:Familiar ' +
+    'SpellAbility=intelligence ' +
+    'SpellsPerDay=' +
+      'W0:1=3;2=4,' +
+      'W1:1=1;2=2;4=3;7=4,' +
+      'W2:3=1;4=2;6=3;9=4,' +
+      'W3:5=1;6=2;8=3;11=4,' +
+      'W4:7=1;8=2;10=3;13=4,' +
+      'W5:9=1;10=2;12=3;15=4,' +
+      'W6:11=1;12=2;14=3;17=4,' +
+      'W7:13=1;14=2;16=3;19=4,' +
+      'W8:15=1;16=2;18=3;20=4,' +
+      'W9:17=1;18=2;19=3;20=4 ' +
+    'Spells=' +
+      '"W0:Acid Splash;Arcane Mark;Bleed;Dancing Lights;Daze;Detect Magic;' +
+      'Detect Poison;Disrupt Undead;Flare;Ghost Sound;Light;Mage Hand;' +
+      'Mending;Message;Open/Close;Prestidigitation;Ray Of Frost;Read Magic;' +
+      'Resistance;Touch Of Fatigue",' +
+      '"W1:Alarm;Animate Rope;Burning Hands;Cause Fear;Charm Person;' +
+      'Chill Touch;Color Spray;Comprehend Languages;Detect Secret Doors;' +
+      'Detect Undead;Disguise Self;Endure Elements;Enlarge Person;Erase;' +
+      'Expeditious Retreat;Feather Fall;Floating Disk;Grease;Hold Portal;' +
+      'Hypnotism;Identify;Jump;Mage Armor;Magic Aura;Magic Missile;' +
+      'Magic Weapon;Mount;Obscuring Mist;Protection From Chaos;' +
+      'Protection From Evil;Protection From Good;Protection From Law;' +
+      'Ray Of Enfeeblement;Reduce Person;Shield;Shocking Grasp;Silent Image;' +
+      'Sleep;Summon Monster I;True Strike;Unseen Servant;Ventriloquism",' +
+      '"W2:Acid Arrow;Alter Self;Arcane Lock;Bear\'s Endurance;' +
+      'Blindness/Deafness;Blur;Bull\'s Strength;Cat\'s Grace;Command Undead;' +
+      'Continual Flame;Darkness;Darkvision;Daze Monster;Detect Thoughts;' +
+      'Eagle\'s Splendor;False Life;Flaming Sphere;Fog Cloud;Fox\'s Cunning;' +
+      'Ghoul Touch;Glitterdust;Gust Of Wind;Hideous Laughter;' +
+      'Hypnotic Pattern;Invisibility;Knock;Levitate;Locate Object;' +
+      'Magic Mouth;Make Whole;Minor Image;Mirror Image;Misdirection;' +
+      'Obscure Object;Owl\'s Wisdom;Phantom Trap;Protection From Arrows;' +
+      'Pyrotechnics;Resist Energy;Rope Trick;Scare;Scorching Ray;' +
+      'See Invisibility;Shatter;Spectral Hand;Spider Climb;Summon Monster II;' +
+      'Summon Swarm;Touch Of Idiocy;Web;Whispering Wind",' +
+      '"W3:Arcane Sight;Beast Shape I;Blink;Clairaudience/Clairvoyance;' +
+      'Daylight;Deep Slumber;Dispel Magic;Displacement;Explosive Runes;' +
+      'Fireball;Flame Arrow;Fly;Gaseous Form;Gentle Repose;' +
+      'Greater Magic Weapon;Halt Undead;Haste;Heroism;Hold Person;' +
+      'Illusory Script;Invisibility Sphere;Keen Edge;Lightning Bolt;' +
+      'Magic Circle Against Chaos;Magic Circle Against Evil;' +
+      'Magic Circle Against Good;Magic Circle Against Law;Major Image;' +
+      'Nondetection;Phantom Steed;Protection From Energy;Rage;' +
+      'Ray Of Exhaustion;Secret Page;Sepia Snake Sigil;Shrink Item;' +
+      'Sleet Storm;Slow;Stinking Cloud;Suggestion;Summon Monster III;' +
+      'Tiny Hut;Tongues;Vampiric Touch;Water Breathing;Wind Wall",' +
+      '"W4:Animate Dead;Arcane Eye;Beast Shape II;Bestow Curse;' +
+      'Black Tentacles;Charm Monster;Confusion;Contagion;Crushing Despair;' +
+      'Detect Scrying;Dimension Door;Dimensional Anchor;Elemental Body I;' +
+      'Enervation;Fear;Fire Shield;Fire Trap;Greater Invisibility;' +
+      'Hallucinatory Terrain;Ice Storm;Illusory Wall;Lesser Geas;' +
+      'Lesser Globe Of Invulnerability;Locate Creature;Mass Enlarge Person;' +
+      'Mass Reduce Person;Minor Creation;Mnemonic Enhancer;Phantasmal Killer;' +
+      'Rainbow Pattern;Remove Curse;Resilient Sphere;Scrying;Secure Shelter;' +
+      'Shadow Conjuration;Shout;Solid Fog;Stone Shape;Stoneskin;' +
+      'Summon Monster IV;Wall Of Fire;Wall Of Ice",' +
+      '"W5:Animal Growth;Baleful Polymorph;Beast Shape III;Blight;' +
+      'Break Enchantment;Cloudkill;Cone Of Cold;Contact Other Plane;' +
+      'Dismissal;Dominate Person;Dream;Elemental Body II;Fabricate;' +
+      'False Vision;Feeblemind;Hold Monster;Interposing Hand;' +
+      'Lesser Planar Binding;Mage\'s Faithful Hound;Mage\'s Private Sanctum;' +
+      'Magic Jar;Major Creation;Mind Fog;Mirage Arcana;Nightmare;' +
+      'Overland Flight;Passwall;Permanency;Persistent Image;Plant Shape I;' +
+      'Polymorph;Prying Eyes;Secret Chest;Seeming;Sending;Shadow Evocation;' +
+      'Summon Monster V;Symbol Of Pain;Symbol Of Sleep;Telekinesis;' +
+      'Telepathic Bond;Teleport;Transmute Mud To Rock;Transmute Rock To Mud;' +
+      'Wall Of Force;Wall Of Stone;Waves Of Fatigue",' +
+      '"W6:Acid Fog;Analyze Dweomer;Antimagic Field;Bear\'s Endurance;' +
+      'Beast Shape IV;Bull\'s Strength;Cat\'s Grace;Chain Lightning;' +
+      'Circle Of Death;Contingency;Control Water;Create Undead;Disintegrate;' +
+      'Eagle\'s Splendor;Elemental Body III;Eyebite;Flesh To Stone;' +
+      'Forceful Hand;Form Of The Dragon I;Fox\'s Cunning;Freezing Sphere;' +
+      'Geas/Quest;Globe Of Invulnerability;Greater Dispel Magic;' +
+      'Greater Heroism;Guards And Wards;Legend Lore;Mage\'s Lucubration;' +
+      'Mass Owl\'s Wisdom;Mass Suggestion;Mislead;Move Earth;Permanent Image;' +
+      'Planar Binding;Plant Shape II;Programmed Image;Repulsion;Shadow Walk;' +
+      'Stone To Flesh;Summon Monster VI;Symbol Of Fear;Symbol Of Persuasion;' +
+      'Transformation;True Seeing;Undeath To Death;Veil;Wall Of Iron",' +
+      '"W7:Banishment;Control Undead;Control Weather;Delayed Blast Fireball;' +
+      'Elemental Body IV;Ethereal Jaunt;Finger Of Death;Forcecage;' +
+      'Form Of The Dragon II;Giant Form I;Grasping Hand;Greater Arcane Sight;' +
+      'Greater Polymorph;Greater Scrying;Greater Shadow Conjuration;' +
+      'Greater Teleport;Insanity;Instant Summons;Limited Wish;' +
+      'Mage\'s Magnificent Mansion;Mage\'s Sword;Mass Hold Person;' +
+      'Mass Invisibility;Phase Door;Plane Shift;Plant Shape III;' +
+      'Power Word Blind;Prismatic Spray;Project Image;Reverse Gravity;' +
+      'Sequester;Simulacrum;Spell Turning;Statue;Summon Monster VII;' +
+      'Symbol Of Weakness;Symbol Of Stunning;Teleport Object;Vision;' +
+      'Waves Of Exhaustion",' +
+      '"W8:Antipathy;Binding;Clenched Fist;Clone;Create Greater Undead;' +
+      'Demand;Dimensional Lock;Discern Location;Form Of The Dragon III;' +
+      'Giant Form II;Greater Planar Binding;Greater Prying Eyes;' +
+      'Greater Shadow Evocation;Greater Shout;Horrid Wilting;' +
+      'Incendiary Cloud;Iron Body;Irresistible Dance;Mass Charm Monster;Maze;' +
+      'Mind Blank;Moment Of Prescience;Polar Ray;Polymorph Any Object;' +
+      'Power Word Stun;Prismatic Wall;Protection From Spells;' +
+      'Scintillating Pattern;Screen;Summon Monster VIII;Sunburst;' +
+      'Symbol Of Death;Symbol Of Insanity;Sympathy;Telekinetic Sphere;' +
+      'Temporal Stasis;Trap The Soul",' +
+      '"W9:Astral Projection;Crushing Hand;Dominate Monster;Energy Drain;' +
+      'Etherealness;Foresight;Freedom;Gate;Imprisonment;Mage\'s Disjunction;' +
+      'Mass Hold Monster;Meteor Swarm;Power Word Kill;Prismatic Sphere;' +
+      'Refuge;Shades;Shapechange;Soul Bind;Summon Monster IX;' +
+      'Teleportation Circle;Time Stop;Wail Of The Banshee;Weird;Wish"'
+};
 
 Pathfinder.tracksThreshholds = {
   '3.5':[
@@ -2521,25 +2538,32 @@ Pathfinder.goodiesRules = function(rules) {
 
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
-  rules, alignments, classes, deities, genders, races, factions, traits
+  rules, alignments, bloodlines, classes, deities, domains, factions, genders,
+  races, traits
 ) {
   for(var alignment in alignments) {
     rules.choiceRules(rules, 'alignments', alignment, alignments[alignment]);
   }
-  for(var klass in classes) {
-    rules.choiceRules(rules, 'levels', klass, classes[klass]);
+  for(var bloodline in bloodlines) {
+    rules.choiceRules(rules, 'bloodlines', bloodline, bloodlines[bloodline]);
+  }
+  for(var clas in classes) {
+    rules.choiceRules(rules, 'levels', clas, classes[clas]);
   }
   for(var deity in deities) {
     rules.choiceRules(rules, 'deities', deity, deities[deity]);
+  }
+  for(var domain in domains) {
+    rules.choiceRules(rules, 'domains', domain, domains[domain]);
+  }
+  for(var faction in factions) {
+    rules.choiceRules(rules, 'factions', faction, factions[faction]);
   }
   for(var gender in genders) {
     rules.choiceRules(rules, 'genders', gender, genders[gender]);
   }
   for(var race in races) {
     rules.choiceRules(rules, 'races', race, races[race]);
-  }
-  for(var faction in factions) {
-    rules.choiceRules(rules, 'factions', faction, factions[faction]);
   }
   for(var trait in traits) {
     rules.choiceRules(rules, 'traits', trait, traits[trait]);
@@ -2566,8 +2590,8 @@ Pathfinder.identityRules = function(
 };
 
 /* Defines rules related to magic use. */
-Pathfinder.magicRules = function(rules, domains, schools, spells) {
-  SRD35.magicRules(rules, domains, schools, spells);
+Pathfinder.magicRules = function(rules, schools, spells) {
+  SRD35.magicRules(rules, schools, spells);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -2628,9 +2652,19 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
-      QuilvynUtils.getAttrValue(attrs, 'Level')
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Size')
     );
-  else if(type == 'armors')
+  else if(type == 'bloodlines') {
+    Pathfinder.bloodlineRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
+      QuilvynUtils.getAttrValueArray(attrs, 'skills'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
+    );
+    Pathfinder.bloodlineRulesExtra(rules, name);
+  } else if(type == 'armors')
     Pathfinder.armorRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Level'),
@@ -2665,7 +2699,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
-      QuilvynUtils.getAttrValue(attrs, 'Level')
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Size')
     );
   else if(type == 'feats') {
     Pathfinder.featRules(rules, name,
@@ -2770,7 +2805,7 @@ Pathfinder.armorRules = function(
  * TODO
  */
 Pathfinder.bloodlineRules = function(
-  name, features, feats, skills, spells, spellDict
+  rules, name, features, feats, skills, spells, spellDict
 ) {
 
   var bloodlineLevelAttr = 'bloodlineLevel.' + name;
@@ -2800,19 +2835,11 @@ Pathfinder.bloodlineRules = function(
   );
   for(var i = 0; i < feats.length; i++) {
     feats[i] += ':' + name;
-    Pathfinder.featRules = function(rules, feats[i], name, [], []);
+    Pathfinder.featRules(rules, feats[i], name, [], []);
   }
 
-  Pathfinder.featureRules(rules, name + ' Bloodline', 'skills:' + skills.join(' is a class skill/') + ' is a class skill');
-
-  for(var i = 0; i < spells.length; i++) {
-    var spell = spells[i];
-    var school = Pathfinder.spellsSchools[spell].substring(0, 4);
-    rules.defineRule(
-      'spells.' + spell + '(W' + (k+1) + ' ' + school + ')',
-      bloodlineLevelAttr, '=', 'source >= ' + (3 + 2 * k) + ' ? 1 : null'
-    );
-  }
+  var note = skills.join(' is a class skill/') + ' is a class skill';
+  Pathfinder.featureRules(rules, 'Bloodline ' + name, 'skill:' + note);
 
   for(var i = 0; i < spells.length; i++) {
     var matchInfo = spells[i].match(/^((\d+):)?(.*)$/);
@@ -2822,309 +2849,297 @@ Pathfinder.bloodlineRules = function(
       console.log('Unknown spell "' + spellName + '"');
       continue;
     }
-    var school = QuilvynUtils.getAttrValue(spellDict[spellName], 'School');
     var description =
-      QuilvynUtils.getAttrValue(spellDict[spellName], 'Description');
-    var spell =
-      spellName + '(W' +  level + ' ' + school.substring(0, 4) + ')';
+      QuilvynUtils.getAttrValue(spellDict[spellName], 'description');
+    var school = QuilvynUtils.getAttrValue(spellDict[spellName], 'School');
+    var spell = spellName + '(W' + (i+1) + ' ' + school.substring(0, 4) + ')';
+    Pathfinder.spellRules(rules, spell, school, 'W', i + 1, description);
     rules.defineRule('spells.' + spell,
       bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
     );
   }
 
-  if(true)
-    return;
+};
 
-      rules.defineRule('combatNotes.dragonResistancesFeature',
-        bloodlineLevelAttr, '=',
-        'source >= 15 ? 4 : source >= 10 ? 2 : source >= 3 ? 1 : null'
-      );
-      rules.defineRule('saveNotes.dragonResistancesFeature',
-        bloodlineLevelAttr, '=',
-        'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-      );
-/* TODO
-      rules.defineRule('saveNotes.dragonResistancesFeature.1',
-        bloodlineLevelAttr, '=', '"' + energyType + '"'
-      );
-*/
-    for(var i = 0; i < subBloodlines.length; i++) {
-      var subBloodline = subBloodlines[i];
-      var superBloodline = subBloodline.replace(/ \(.*/, '');
-      rules.defineRule
-        ('features.' + superBloodline, 'features.' + subBloodline, '=', '1');
-    }
-    for(bloodline in bloodlinePowers) {
-      var baseBloodline = bloodline.split(' (')[0];
-      var powers = bloodlinePowers[baseBloodline].split('/');
-      var skill = bloodlineSkills[baseBloodline];
-      var spells = bloodlineSpells[baseBloodline].split('/');
-      if(bloodline == 'Aberrant') {
-        rules.defineRule('combatNotes.longLimbsFeature',
-          bloodlineLevelAttr, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
-        );
-        rules.defineRule('combatNotes.unusualAnatomyFeature',
-          bloodlineLevelAttr, '=', 'source >= 13 ? 50 : 25'
-        );
-        rules.defineRule('magicNotes.acidicRayFeature',
-          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.acidicRayFeature.1',
-          'features.Acidic Ray', '?', null,
-          'charismaModifier', '=', '1 + source'
-        );
-        rules.defineRule('saveNotes.alienResistanceFeature',
-          bloodlineLevelAttr, '=', 'source + 10'
-        );
-      } else if(bloodline == 'Abyssal') {
-        rules.defineRule('abilityNotes.strengthOfTheAbyssFeature',
-          bloodlineLevelAttr, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
-        );
-        rules.defineRule('clawsDamageLevel',
-          'features.Claws', '=', '1',
-          'features.Small', '+', '-1',
-          'features.Large', '+', '1',
-          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.clawsFeature',
-          'clawsDamageLevel', '=',
-          '["1d3", "1d4", "1d6", "1d8"][source]'
-        );
-        rules.defineRule('combatNotes.clawsFeature.1',
-          'features.Claws', '?', null,
-          'strengthModifier', '=', null
-        );
-        rules.defineRule('combatNotes.clawsFeature.2',
-          'features.Claws', '?', null,
-          'charismaModifier', '=', 'source+3'
-        );
-        rules.defineRule('combatNotes.clawsFeature.3',
-          'features.Claws', '?', null,
-          bloodlineLevelAttr, '=',
-          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 energy"'
-        );
-        rules.defineRule('magicNotes.bloodlineAbyssalFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('saveNotes.demonResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.demonResistancesFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-        );
-      } else if(bloodline == 'Arcane') {
-        selectableFeatures.push('Bonded Object', 'Familiar');
-        rules.defineRule('familiarSorcererLevel',
-          'sorcererFeatures.Familiar', '?', null,
-          'levels.Sorcerer', '=', null
-        );
-        rules.defineRule('familiarLevel',
-          'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
-        );
-        rules.defineRule
-          ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
-        rules.defineRule
-          ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
-        rules.defineRule('magicNotes.metamagicAdeptFeature',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? "any" : Math.floor((source + 1) / 4)'
-        );
-        rules.defineRule('magicNotes.newArcanaFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source - 5) / 4)'
-        );
-      } else if(bloodline == 'Celestial') {
-        rules.defineRule('abilityNotes.wingsOfHeavenFeature',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? "any" : source >= 9 ? source : null'
-        );
-        rules.defineRule('magicNotes.bloodlineCelestialFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.heavenlyFireFeature',
-          bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.heavenlyFireFeature.1',
-          'features.Heavenly Fire', '?', null,
-          'charismaModifier', '=', '1 + source'
-        );
-        rules.defineRule('saveNotes.celestialResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-      } else if(bloodline == 'Destined') {
-        rules.defineRule('featureNotes.itWasMeantToBeFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 8)'
-        );
-        rules.defineRule('magicNotes.touchOfDestinyFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.touchOfDestinyFeature.1',
-          'features.Touch Of Destiny', '?', null,
-          'wisdomModifier', '=', 'source + 3'
-        );
-        rules.defineRule('saveNotes.fatedFeature',
-          bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
-        );
-      } else if(baseBloodline == 'Draconic') {
-        var dragonType = bloodline.split(')')[0].split('(')[1];
-        var breathShape =
-          'GreenRedWhiteGoldSilver'.indexOf(dragonType) >= 0 ? "30' cone" : "60' line";
-        var energyType =
-          'BlackGreenCopper'.indexOf(dragonType) >= 0 ? 'acid' :
-          'BlueBronze'.indexOf(dragonType) >= 0 ? 'electricity' :
-          'RedBrassGold'.indexOf(dragonType) >= 0 ? 'fire' : 'cold';
-        rules.defineRule('abilityNotes.wingsFeature',
-          bloodlineLevelAttr, '^=', 'source >= 15 ? 60 : null'
-        );
-        rules.defineRule('clawsDamageLevel',
-          'features.Claws', '=', '1',
-          'features.Small', '+', '-1',
-          'features.Large', '+', '1',
-          bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
-        );
-        rules.defineRule
-          ('combatNotes.breathWeaponFeature', bloodlineLevelAttr, '=', null);
-        rules.defineRule('combatNotes.breathWeaponFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.3',
-          bloodlineLevelAttr, '=', '"' + breathShape + '"'
-        );
-        rules.defineRule('combatNotes.breathWeaponFeature.4',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('combatNotes.clawsFeature',
-          'clawsDamageLevel', '=',
-          '["1d3", "1d4", "1d6", "1d8"][source]'
-        );
-        rules.defineRule
-          ('combatNotes.clawsFeature.1', 'strengthModifier', '=', null);
-        rules.defineRule
-          ('combatNotes.clawsFeature.2', 'charismaModifier', '=', 'source+3');
-        rules.defineRule('combatNotes.clawsFeature.3',
-          bloodlineLevelAttr, '=',
-          'source < 5 ? "" : source < 7 ? ", magic" : ", magic +d6 HP ' + energyType + '"'
-        );
-        rules.defineRule('featureNotes.blindsenseFeature',
-          bloodlineLevelAttr, '^=', '60'
-        );
-        rules.defineRule('features.Bloodline Draconic',
-          bloodlineLevelAttr, '=', '1'
-        );
-        rules.defineRule('magicNotes.bloodlineDraconicFeature',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-      } else if(baseBloodline == 'Elemental') {
-        var elementType = bloodline.split(')')[0].split('(')[1];
-        var energyType =
-          elementType == 'Air' ? 'electricity' :
-          elementType == 'Earth' ? 'acid' :
-          elementType == 'Fire' ? 'fire' : 'cold';
-        var movement =
-          elementType == 'Air' ? "Fly 60'" :
-          elementType == 'Earth' ? "Burrow 30'" :
-          elementType == 'Water' ? "Swim 60'" : "+30 speed";
-        rules.defineRule('abilityNotes.elementalMovementFeature',
-          bloodlineLevelAttr, '=', 'source >= 15 ? "' + movement + '" : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('combatNotes.elementalBlastFeature.3',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('features.Bloodline Elemental',
-          bloodlineLevelAttr, '=', '1'
-        );
-        rules.defineRule('combatNotes.elementalBodyFeature',
-          bloodlineLevelAttr, '=', 'source>=20 ? "' + energyType + '" : null'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature',
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature.1',
-          bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.elementalRayFeature.2',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-        rules.defineRule('saveNotes.elementalResistanceFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 20 : source >= 3 ? 10 : null'
-        );
-        rules.defineRule('saveNotes.elementalResistanceFeature.1',
-          bloodlineLevelAttr, '=', '"' + energyType + '"'
-        );
-      } else if(bloodline == 'Fey') {
-        rules.defineRule('magicNotes.fleetingGlanceFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('magicNotes.laughingTouchFeature',
-          'charismaModifier', '=', 'source + 3'
-        );
-      } else if(bloodline == 'Infernal') {
-        rules.defineRule('magicNotes.corruptingTouchFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.corruptingTouchFeature.1',
-          'features.Corrupting Touch', '?', null,
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('saveNotes.infernalResistancesFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.infernalResistancesFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "immune" : source>=9 ? "+4" : source>=3 ? "+2" : null'
-        );
-      } else if(bloodline == 'Undead') {
-        rules.defineRule('magicNotes.graspOfTheDeadFeature',
-          bloodlineLevelAttr, '=', 'source >= 9 ? source : null'
-        );
-        rules.defineRule('combatNotes.graspOfTheDeadFeature.1',
-          bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
-          'charismaModifier', '+', null
-        );
-        rules.defineRule('combatNotes.graspOfTheDeadFeature.2',
-          bloodlineLevelAttr, '=',
-          'source >= 20 ? 3 : source >= 17 ? 2 : source >= 9 ? 1 : null'
-        );
-        rules.defineRule('magicNotes.graveTouchFeature',
-          bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.graveTouchFeature.1',
-          'features.Grave Touch', '?', null,
-          'charismaModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.incorporealFormFeature',
-          bloodlineLevelAttr, '=', 'source >= 15 ? source : null'
-        );
-        rules.defineRule('saveNotes.death\'sGiftFeature',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-        rules.defineRule('saveNotes.death\'sGiftFeature.1',
-          bloodlineLevelAttr, '=',
-          'source>=20 ? "Immune" : source >= 9 ? 10 : source >= 3 ? 5 : null'
-        );
-      }
-    }
+/*
+ * Defines in #rules# the rules associated with bloodline #name# that are not
+ * directly derived from the parmeters passed to bloodlineRules.
+ */
+Pathfinder.bloodlineRulesExtra = function(rules, name) {
+
+  var bloodlineLevelAttr = 'bloodlineLevel.' + name;
+
+  if(name == 'Abyssal' || name == 'Draconic') {
+    rules.defineRule('clawsDamageLevel',
+      'features.Claws', '=', '1',
+      'features.Small', '+', '-1',
+      'features.Large', '+', '1',
+      bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
+    );
+    rules.defineRule('combatNotes.clawsFeature',
+      'clawsDamageLevel', '=',
+      '["1d3", "1d4", "1d6", "1d8"][source]'
+    );
+    rules.defineRule('combatNotes.clawsFeature.1',
+      'features.Claws', '?', null,
+      'strengthModifier', '=', null
+    );
+    rules.defineRule('combatNotes.clawsFeature.2',
+      'features.Claws', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('combatNotes.improvedClawsFeature', 'bloodlineEnergy', '=', null);
+  }
+
+  if(name == 'Aberrant') {
+
+    rules.defineRule('combatNotes.longLimbsFeature',
+      bloodlineLevelAttr, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+    );
+    rules.defineRule('combatNotes.unusualAnatomyFeature',
+      bloodlineLevelAttr, '=', 'source >= 13 ? 50 : 25'
+    );
+    rules.defineRule('magicNotes.acidicRayFeature',
+      bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.acidicRayFeature.1',
+      'features.Acidic Ray', '?', null,
+      'charismaModifier', '=', '1 + source'
+    );
+    rules.defineRule('saveNotes.alienResistanceFeature',
+      bloodlineLevelAttr, '=', 'source + 10'
+    );
+
+  } else if(name == 'Abyssal') {
+
+    rules.defineRule('abilityNotes.strengthOfTheAbyssFeature',
+      bloodlineLevelAttr, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+    );
+    rules.defineRule('magicNotes.bloodlineAbyssalFeature',
+      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('saveNotes.demonResistancesFeature',
+      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? 10 : 5'
+    );
+    rules.defineRule('saveNotes.demonResistancesFeature.1',
+      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+    );
+
+  } else if(name == 'Arcane') {
+
+    rules.defineRule('familiarSorcererLevel',
+      'sorcererFeatures.Familiar', '?', null,
+      'levels.Sorcerer', '=', null
+    );
+    rules.defineRule('familiarLevel',
+      'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
+    );
+    rules.defineRule
+      ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
+    rules.defineRule
+      ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
+    rules.defineRule('magicNotes.metamagicAdeptFeature',
+      bloodlineLevelAttr, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
+    );
+    rules.defineRule('magicNotes.newArcanaFeature',
+      bloodlineLevelAttr, '=', 'Math.floor((source - 5) / 4)'
+    );
+    SRD35.testRules
+      (rules, 'validation', 'sorcerer-BondedObjectSelectableFeatureFeature', 'levels.' + name, ['Requires Bloodline Arcane']);
+    SRD35.testRules
+      (rules, 'validation', 'sorcerer-FamiliarSelectableFeatureFeature', 'levels.' + name, ['Requires Bloodline Arcane']);
+
+  } else if(name == 'Celestial') {
+
+    rules.defineRule('abilityNotes.wingsOfHeavenFeature',
+      bloodlineLevelAttr, '=', 'source >= 20 ? "any" : source'
+    );
+    rules.defineRule('magicNotes.bloodlineCelestialFeature',
+      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.heavenlyFireFeature',
+      bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.heavenlyFireFeature.1',
+      'features.Heavenly Fire', '?', null,
+      'charismaModifier', '=', '1 + source'
+    );
+    rules.defineRule('saveNotes.celestialResistancesFeature',
+      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+    );
+
+  } else if(name == 'Destined') {
+
+    rules.defineRule('featureNotes.itWasMeantToBeFeature',
+      bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 8)'
+    );
+    rules.defineRule('magicNotes.touchOfDestinyFeature',
+      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.touchOfDestinyFeature.1',
+      'features.Touch Of Destiny', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('saveNotes.fatedFeature',
+      bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
+    );
+
+  } else if(name == 'Draconic') {
+
+    rules.defineRule
+      ('abilityNotes.wingsFeature', bloodlineLevelAttr, '^=', null);
+    rules.defineRule
+      ('combatNotes.breathWeaponFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule('combatNotes.breathWeaponFeature.1',
+      'features.Breath Weapon', '?', null,
+      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('combatNotes.breathWeaponFeature.2',
+      'features.Breath Weapon', '?', null,
+      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('combatNotes.breathWeaponFeature.3',
+      'features.Breath Weapon', '?', null,
+      'bloodlineBreath', '=', null
+    );
+    rules.defineRule('combatNotes.breathWeaponFeature.4',
+      'features.Breath Weapon', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('combatNotes.dragonResistancesFeature',
+      bloodlineLevelAttr, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
+    );
+    rules.defineRule('saveNotes.dragonResistancesFeature',
+      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+    rules.defineRule('saveNotes.dragonResistancesFeature.1',
+      'features.Dragon Resistances', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule
+      ('featureNotes.blindsenseFeature', bloodlineLevelAttr, '^=', '60');
+    rules.defineRule('magicNotes.bloodlineDraconicFeature',
+      'bloodlineEnergy', '=', null
+    );
+
+  } else if(name == 'Elemental') {
+
+    rules.defineRule
+      ('abilityNotes.elementalMovementFeature', 'bloodlineMovement', '=', null);
+    rules.defineRule
+      ('combatNotes.elementalBlastFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule('combatNotes.elementalBlastFeature.1',
+      'features.Elemental Blast', '?', null,
+      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('combatNotes.elementalBlastFeature.2',
+      'features.Elemental Blast', '?', null,
+      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('combatNotes.elementalBlastFeature.3',
+      'features.Elemental Blast', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('features.Bloodline Elemental',
+      bloodlineLevelAttr, '=', '1'
+    );
+    rules.defineRule('magicNotes.elementalRayFeature',
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.elementalRayFeature.1',
+      'features.Elemental Ray', '?', null,
+      bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.elementalRayFeature.2',
+      'features.Elemental Ray', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('saveNotes.elementalBodyFeature',
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('saveNotes.elementalResistanceFeature',
+      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
+    );
+    rules.defineRule('saveNotes.elementalResistanceFeature.1',
+      'features.Elemental Resistance', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+
+  } else if(name == 'Fey') {
+
+    rules.defineRule
+      ('magicNotes.fleetingGlanceFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.laughingTouchFeature',
+      'charismaModifier', '=', 'source + 3'
+    );
+
+  } else if(name == 'Infernal') {
+
+    rules.defineRule('magicNotes.corruptingTouchFeature',
+      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.corruptingTouchFeature.1',
+      'features.Corrupting Touch', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('magicNotes.hellfireFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.hellfireFeature.1',
+      'features.Hellfire', '?', null,
+      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('magicNotes.hellfireFeature.2',
+      'features.Hellfire', '?', null,
+      bloodlineLevelAttr, '=', null
+    );
+    rules.defineRule('magicNotes.hellfireFeature.3',
+      'features.Hellfire', '?', null,
+      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('saveNotes.infernalResistancesFeature',
+      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+    );
+    rules.defineRule('saveNotes.infernalResistancesFeature.1',
+      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+    );
+
+  } else if(name == 'Undead') {
+
+    rules.defineRule
+      ('magicNotes.graspOfTheDeadFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.graspOfTheDeadFeature.1',
+      'features.Grasp Of The Dead', '?', null,
+      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('magicNotes.graspOfTheDeadFeature.2',
+      'features.Grasp Of The Dead', '?', null,
+      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('magicNotes.graveTouchFeature',
+      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.graveTouchFeature.1',
+      'features.Grave Touch', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('magicNotes.incorporealFormFeature', bloodlineLevelAttr, '=', null);
+    rules.defineRule("saveNotes.death'sGiftFeature",
+      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+    rules.defineRule("saveNotes.death'sGiftFeature.1",
+      "features.Death's Gift", '?', null,
+      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+
+  }
+
+};
 
 /*
  * Defines in #rules# the rules associated with class #name#, which has the list
@@ -3295,7 +3310,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Cleric') {
 
-    rules.defineRule('domainCount', 'levels.Cleric', '+=', '2');
     rules.defineRule('magicNotes.channelEnergyFeature',
       'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
     );
@@ -3308,10 +3322,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Channel Energy', '?', null,
       'charismaModifier', '=', '3 + source'
     );
+    rules.defineRule
+      ('selectableFeatureCount.Cleric', 'levels.Cleric', '+=', '2');
 
   } else if(name == 'Druid') {
 
-    rules.defineRule('domainCount', 'features.Nature Domains', '+=', '1');
     rules.defineRule('languageCount', 'levels.Druid', '+', '1');
     rules.defineRule('languages.Druidic', 'levels.Druid', '=', '1');
     rules.defineRule('magicNotes.wildShapeFeature',
@@ -3328,8 +3343,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.wildShapeFeature.2',
       'levels.Druid', '=', 'Math.floor((source - 2) / 2)'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Druid', 'levels.Druid', '=', '1');
+    rules.defineRule('selectableFeatureCount.Druid',
+      'levels.Druid', '=', '1',
+      // TODO
+      'features.Nature Domains', '+', '1'
+    );
     rules.defineRule('skillNotes.wildEmpathyFeature',
       'levels.Druid', '+=', null,
       'charismaModifier', '+', null
@@ -3440,10 +3458,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('magicNotes.wholenessOfBodyFeature', 'levels.Monk', '=', null);
-    rules.defineRule
-      ('resistance.Enchantment', 'saveNotes.stillMindFeature', '+=', '2');
-    rules.defineRule
-      ('resistance.Spell', 'saveNotes.diamondSoulFeature', '+=', null);
     rules.defineRule
       ('saveNotes.diamondSoulFeature', 'levels.Monk', '+=', '10 + source');
     rules.defineRule('saveNotes.slowFallFeature',
@@ -3564,7 +3578,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('selectableFeatureCount.Ranger',
       'levels.Ranger', '=',
-      'source >= 2 ? Math.floor((source+6) / 4) + (source>=4 ? 1 : 0) : null'
+      'source >= 2 ? Math.floor((source+6) / 4) + (source >= 4 ? 1 : 0) : null'
     );
     rules.defineRule('skillNotes.favoredEnemyFeature',
       'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
@@ -3657,6 +3671,48 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     rules.defineRule
       ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
+    for(var feature in rules.getChoices('selectableFeatures')) {
+      if(feature == 'Sorcerer - Bloodline Abyssal') {
+        rules.defineRule('bloodlineEnergy',
+          'selectableFeatures.' + feature, '=', '"fire"'
+        );
+      } else if(feature.startsWith('Sorcerer - Bloodline Draconic (')) {
+        var color = feature.replace(/^.*\(|\)/g, '');
+        var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
+                     'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
+                     'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
+        rules.defineRule('bloodlineEnergy',
+          'selectableFeatures.' + feature, '=', '"' + energy + '"'
+        );
+        rules.defineRule('bloodlineBreath',
+          'selectableFeatures.' + feature, '=', '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
+        );
+        rules.defineRule('features.Bloodline Draconic',
+          'selectableFeatures.' + feature, '=', null
+        );
+      } else if(feature.startsWith('Sorcerer - Bloodline Elemental (')) {
+        var element = feature.replace(/^.*\(|\)/g, '');
+        var energy = element == 'Earth' ? 'acid' :
+                     element == 'Water' ? 'cold' :
+                     element == 'Air' ? 'electricity' : 'fire';
+        var movement = element == 'Air' ? "Fly 60'/average" :
+                       element == 'Earth' ? "Burrow 30'" :
+                       element == 'Fire' ? 'Speed +30' : "Swim 60'";
+        rules.defineRule('bloodlineEnergy',
+          'selectableFeatures.' + feature, '=', '"' + energy + '"'
+        );
+        rules.defineRule('magicNotes.bloodlineElementalFeature',
+          'bloodlineEnergy', '=', null
+        );
+        rules.defineRule('bloodlineMovement',
+          'selectableFeatures.' + feature, '=', '"' + movement + '"'
+        );
+        rules.defineRule('features.Bloodline Elemental',
+          'selectableFeatures.' + feature, '=', null
+        );
+      }
+    }
+
   } else if(name == 'Wizard') {
 
     rules.defineRule('combatNotes.handOfTheApprenticeFeature',
@@ -3680,7 +3736,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
     );
     rules.defineRule('magicNotes.metamagicMasteryFeature',
-      'levels.Wizard', '=', 'source>=8 ? Math.floor((source - 6) / 2) : null'
+      'levels.Wizard', '=', 'source >= 8 ? Math.floor((source - 6) / 2) : null'
     );
     rules.defineRule
       ('selectableFeatureCount.Wizard', 'levels.Wizard', '=', '1');
@@ -3878,11 +3934,15 @@ Pathfinder.classRulesExtra = function(rules, name) {
  * the character needs to have this animal as a companion.
  */
 Pathfinder.companionRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level, size
 ) {
   if(!hd)
     hd = 1;
   SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
+  if(size != null)
+    rules.defineRule('animalCompanionStats.Size',
+      'animalCompanion.' + name, '=', '"' + size + '"'
+    );
   if(name.startsWith('Advanced ') && level) {
     var name = name.replace('Advanced ', '');
     rules.defineRule
@@ -4161,7 +4221,7 @@ Pathfinder.domainRulesExtras = function(rules, name) {
       'wisdomModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.dispellingTouchFeature',
-      'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
     );
     // Dispel Magic already a Magic spell
   } else if(name == 'Nobility') {
@@ -4193,7 +4253,7 @@ Pathfinder.domainRulesExtras = function(rules, name) {
     );
   } else if(name == 'Protection') {
     rules.defineRule('magicNotes.auraOfProtectionFeature',
-      'levels.Cleric', '=', 'source>=8 ? Math.floor((source - 4) / 4) : null'
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
     );
     rules.defineRule('magicNotes.auraOfProtectionFeature.1',
       'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
@@ -4273,7 +4333,7 @@ Pathfinder.domainRulesExtras = function(rules, name) {
       'wisdomModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.master\'sIllusionFeature',
-      'levels.Cleric', '=', 'source>=8 ? 10 + Math.floor(source / 2) : null',
+      'levels.Cleric', '=', 'source >= 8 ? 10 + Math.floor(source / 2) : null',
       'wisdomModifier', '+', null
     );
     rules.defineRule
@@ -4334,11 +4394,13 @@ Pathfinder.factionRules = function(rules, name) {
  * the character needs to have this animal as a familiar.
  */
 Pathfinder.familiarRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level, size
 ) {
   SRD35.familiarRules
     (rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
-  // No changes needed to the rules defined by SRD35 method
+  if(size != null)
+    rules.defineRule
+      ('familiarStats.Size', 'familiar.' + name, '=', '"' + size + '"');
 };
 
 /*
@@ -4542,6 +4604,11 @@ Pathfinder.featRulesExtra = function(rules, name) {
  * TODO
  */
 Pathfinder.featureRules = function(rules, name, notes) {
+  if(typeof notes == 'string')
+    notes = [notes];
+  for(var i = 0; i < notes.length; i++) {
+    notes[i] = notes[i].replace('CMB', 'Combat Maneuver Bonus').replace('CMD', 'Combat Maneuver Defense');
+  }
   SRD35.featureRules(rules, name, notes);
   // No changes needed to the rules defined by SRD35 method
 };
@@ -4581,9 +4648,6 @@ Pathfinder.raceRulesExtra = function(rules, name, features) {
     rules.defineRule('featureNotes.low-LightVisionFeature',
       '', '=', '1',
       prefix + 'Features.Low-Light Vision', '+', null
-    );
-    rules.defineRule('resistance.Enchantment',
-      'saveNotes.resistEnchantmentFeature', '+=', '2'
     );
     rules.defineChoice('notes',
       'validationNotes.adaptabilityFeatureFeats:Requires Skill Focus'
