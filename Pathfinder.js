@@ -1260,6 +1260,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'skill:+2 Spellcraft (identify magic item properties)'
   ],
   'Fearless':'save:+2 vs. fear',
+  'Fortunate':'save:+1 Fortitude/+1 Reflex/+1 Will',
   'Gnome Ability Adjustment':'ability:+2 Constitution/+2 Charisma/-2 Strength',
   'Gnome Hatred':'combat:+1 attack vs. goblinoid and reptilian',
   'Gnome Magic':'magic:+1 DC on illusion spells',
@@ -1267,9 +1268,10 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Half-Elf Ability Adjustment':'ability:+2 any',
   'Half-Orc Ability Adjustment':'ability:+2 any',
   'Halfling Ability Adjustement':'ability:+2 Dexterity/+2 Charisma/-2 Strength',
-  'Halfling Luck':'save:+1 all saves',
   'Hardy':'save:+2 vs. poison and spells',
   'Human Ability Adjustment':'ability:+2 any',
+  'Bonus Feat':'feature:+1 General Feat',
+  'Skilled':'skill:+%V skill points',
   'Intimidating':'skill:+2 Intimidate',
   'Keen Senses':'skill:+2 Perception',
   'Low-Light Vision':'feature:x%V normal distance in poor light',
@@ -1283,6 +1285,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Sleep Immunity':'save:Immune <i>Sleep</i>',
   'Slow':'ability:-10 Speed',
   'Small':[
+    'ability:3/4 max load',
     'combat:+1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD',
     'skill:+2 Fly/+4 Stealth'
   ],
@@ -1573,11 +1576,11 @@ Pathfinder.RACES = {
     '"Orc Blood","Orc Ferocity","Weapon Familiarity (Orc Double Axe)"' +
     '"Weapon Proficiency (Falchion/Greataxe)"',
   'Halfling':
-  'Features=Fearless,"Halfling Ability Adjustment","Halfling Luck",' +
+  'Features=Fearless,"Fortunate","Halfling Ability Adjustment",' +
     '"Keen Senses",Slow,Small,Sure-Footed,' +
     '"Weapon Familiarity (Halfling Sling Staff)""Weapon Proficiency (Sling)"',
   'Human':
-    'Features="Human Ability Adjustment"'
+    'Features="Human Ability Adjustment","Bonus Feat",Skilled'
 };
 Pathfinder.SCHOOLS = Object.assign({}, SRD35.SCHOOLS);
 Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
@@ -2126,15 +2129,15 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
       '"1:Flurry Of Blows","1:Improved Unarmed Strike",' +
-      '"1:Two-Weapon Fighting","1:Stunning Fist",2:Evasion,' +
-      '"3:Fast Movement","3:Maneuver Training","3:Still Mind","4:Ki Dodge",' +
-      '"4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall","5:High Jump",' +
-      '"5:Purity Of Body","7:Wholeness Of Body","8:Condition Fist",' +
-      '"8:Improved Two-Weapon Fighting","9:Improved Evasion",' +
-      '"11:Diamond Body","12:Abundant Step","13:Diamond Soul",' +
-      '"15:Greater Two-Weapon Fighting","15:Quivering Palm",' +
-      '"17:Timeless Body","17:Tongue Of The Sun And Moon","19:Empty Body",' +
-      '"20:Perfect Self" ' +
+      '"1:Monk Armor Class Adjustment","1:Two-Weapon Fighting",' +
+      '"1:Stunning Fist",2:Evasion,"3:Fast Movement","3:Maneuver Training",' +
+      '"3:Still Mind","4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike",' +
+      '"4:Slow Fall","5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
+      '"8:Condition Fist","8:Improved Two-Weapon Fighting",' +
+      '"9:Improved Evasion","11:Diamond Body","12:Abundant Step",' +
+      '"13:Diamond Soul","15:Greater Two-Weapon Fighting",' +
+      '"15:Quivering Palm","17:Timeless Body",' +
+      '"17:Tongue Of The Sun And Moon","19:Empty Body","20:Perfect Self" ' +
     'Selectables=' +
       '"1:Catch Off-Guard","1:Combat Reflexes","1:Deflect Arrows","1:Dodge",' +
       '"1:Improved Grapple","1:Scorpion Style","1:Throw Anything",' +
@@ -3434,14 +3437,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // calcuated even for non-Wizard Monks.
     rules.defineRule
       ('casterLevels.W', 'levels.Monk', '^=', 'source < 12 ? null : 1');
-    rules.defineRule('combatNotes.conditionFist',
+    rules.defineRule('combatNotes.conditionFistFeature',
       'levels.Monk', '=', '"fatigued" + ' +
         '(source < 8 ? "" : "/sickened") + ' +
         '(source < 12 ? "" : "/staggered") + ' +
         '(source < 16 ? "" : "/blind/deafened") + ' +
         '(source < 20 ? "" : "/paralyzed")'
     );
-    rules.defineRule('combatNotes.monkArmorClassAdjustment',
+    rules.defineRule('combatNotes.monkArmorClassAdjustmentFeature',
       'armor', '?', 'source == "None"',
       'levels.Monk', '+=', 'Math.floor(source / 4)',
       'wisdomModifier', '+', 'source > 0 ? source : null'
@@ -3479,13 +3482,37 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('monkUnarmedDamage',
       'monkFeatures.Flurry Of Blows', '?', null, // Limit these rules to monks
       'levels.Monk', '=',
-        'SRD35.weaponsSmallDamage["monk"] = ' +
-        'SRD35.weaponsLargeDamage["monk"] = ' +
+        'SRD35.SMALL_DAMAGE["monk"] = ' +
+        'SRD35.LARGE_DAMAGE["monk"] = ' +
         'source < 12 ? ("d" + (6 + Math.floor(source / 4) * 2)) : ' +
         '              ("2d" + (6 + Math.floor((source - 12) / 4) * 2))',
-      'features.Small', '=', 'SRD35.weaponsSmallDamage[SRD35.weaponsSmallDamage["monk"]]',
-      'features.Large', '=', 'SRD35.weaponsLargeDamage[SRD35.weaponsLargeDamage["monk"]]'
+      'features.Small', '=', 'SRD35.SMALL_DAMAGE[SRD35.SMALL_DAMAGE["monk"]]',
+      'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
+    // Supress validation checking for monk feats
+    var featsMinMonkLevel = {
+      "gorgon'sFist":6,
+      'improvedBullRush':6,
+      'improvedCritical':10,
+      'improvedDisarm':6,
+      'improvedFeint':6,
+      'improvedTrip':6,
+      "medusa'sWrath":10,
+      'mobility':6,
+      'snatchArrows':10,
+      'springAttack':10
+    };
+    // TODO Improved Critical subfeats
+    for(var feat in featsMinMonkLevel) {
+      var featNoSpace =
+        feat.substring(0,1).toLowerCase() + feat.substring(1).replace(/ /g, '');
+      var minLevel = featsMinMonkLevel[featNoSpace.startsWith('improvedCrit') ? 'improvedCritical' : featNoSpace];
+      if(!minLevel)
+        minLevel = 1;
+      rules.defineRule('validationNotes.' + featNoSpace + 'Feat',
+        'levels.Monk', 'v', 'source < ' + minLevel + ' ? null : 0'
+      );
+    }
 
   } else if(name == 'Paladin') {
 
@@ -4535,6 +4562,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.magicalAptitudeFeature',
       'skills.Spellcraft', '=', 'source >= 10 ? 4 : 2'
     );
+  } else if(name == 'Manyshot') {
+    // empty -- avoid SRD35 computation
   } else if(name == 'Persuasive') {
     rules.defineRule('skillNotes.persuasiveFeature',
       'skills.Diplomacy', '=', 'source >= 10 ? 4 : 2'
@@ -4603,6 +4632,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.two-WeaponRendFeature',
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
+  } else {
+    SRD35.featRulesExtra(rules, name);
   }
 
 };
@@ -4706,6 +4737,11 @@ Pathfinder.raceRulesExtra = function(rules, name, features) {
       'features.Natural Spells', '?', null,
       'level', '=', null
     );
+
+  } else if(name.match(/Human/)) {
+
+    rules.defineRule('skillNotes.skilledFeature', 'level', '=', null);
+    rules.defineRule('skillPoints', 'skillNotes.skilledFeature', '+', null);
 
   }
 
