@@ -1209,6 +1209,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Quick Disable':'skill:Disable Device in half normal time',
   'Quick Reflexes':'combat:+1 AOO/rd during rage',
   'Quivering Palm':'combat:Foe makes DC %V Fortitude save or dies 1/day',
+  'Rage':'combat:+4 Str, +4 Con, +2 Will, -2 AC %V rd/8 hr rest',
   'Raging Climber':'skill:+%V Climb during rage',
   'Raging Leaper':'skill:+%V Acrobatics (jump) during rage',
   'Raging Swimmer':'skill:+%V Swim during rage',
@@ -1584,7 +1585,8 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
   'Bluff':'Ability=charisma Class=,Bard,Rogue,Sorcerer',
-  'Climb':'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Rogue',
+  'Climb':
+    'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
   'Craft (Armor)':'Ability=intelligence',
   'Diplomacy':'Ability=charisma Class=Bard,Cleric,Paladin,Rogue',
   'Disable Device':'Ability=dexterity Untrained=n Class=Rogue',
@@ -1592,7 +1594,7 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Escape Artist':'Ability=dexterity Class=Bard,Monk,Rogue',
   'Fly':'Ability=dexterity Class=Druid,Sorcerer,Wizard',
   'Handle Animal':
-    'Ability=charisma Untrained=n Class=,Barbarian,Druid,Fighter,Paladin,Rogue',
+    'Ability=charisma Untrained=n Class=Barbarian,Druid,Fighter,Paladin,Ranger',
   'Heal':'Ability=wisdom Class=Cleric,Druid,Paladin,Ranger',
   'Intimidate':
     'Ability=charisma Class=Barbarian,Bard,Fighter,Monk,Ranger,Rogue,Sorcerer',
@@ -2054,6 +2056,7 @@ Pathfinder.CLASSES = {
       '"15:Timeless Body" ' +
     'Selectables=' +
       '"1:Animal Companion","1:Nature Domains" ' +
+    'CasterLevelDivine=Level ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'D0:1=3;2=4,' +
@@ -2152,6 +2155,7 @@ Pathfinder.CLASSES = {
       '"20:Holy Champion" ' +
     'Selectables=' +
       '"5:Divine Mount","5:Divine Weapon" ' +
+    'CasterLevelDivine=Level-3 ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
@@ -2189,6 +2193,7 @@ Pathfinder.CLASSES = {
       '"6:Improved Precise Shot",6:Manyshot,6:Improved Two-Weapon Fighting",' +
       '"6:Two-Weapon Defense","10:Pinpoint Targeting","10:Shot On The Run",' +
       '"10:Greater Two-Weapon Fighting","10:Two-Weapon Rend ' +
+    'CasterLevelDivine=Level-3 ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'R1:4=0;5=1;9=2;13=3;17=4,' +
@@ -2243,6 +2248,7 @@ Pathfinder.CLASSES = {
       '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
       '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead",' +
       '"1:Bonded Object",1:Familiar ' +
+    'CasterLevelDivine=Level ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'S1:1=3;2=4;3=5;4=6,' +
@@ -2262,6 +2268,7 @@ Pathfinder.CLASSES = {
       '"1:Wizard Specialization","8:Metamagic Mastery" ' +
     'Selectables=' +
       '"1:Bonded Object",1:Familiar ' +
+    'CasterLevelDivine=Level ' +
     'SpellAbility=intelligence ' +
     'SpellsPerDay=' +
       'W0:1=3;2=4,' +
@@ -3391,7 +3398,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.braveryFeature',
       'levels.Fighter', '=', 'Math.floor((source + 2) / 4)'
     );
-    rules.defineRule('skillNotes.armorSkillCheckPenaltyFeature',
+    rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorTrainingFeature', '+', '-source'
     );
     rules.defineRule('skillNotes.armorTrainingFeature',
@@ -4740,11 +4747,12 @@ Pathfinder.skillRules = function(rules, name, ability, untrained, classes) {
   rules.defineRule('skillModifier.' + name,
     'skills.' + name, '=', null,
     'classSkillBump.' + name, '+', null,
-    'classSkills.' + name, '+', 'null'
+    'classSkills.' + name, '+', '0'
   );
   if(ability == 'strength' || ability == 'dexterity') {
-    rules.defineRule
-      ('skillModifier.' + name, 'skillNotes.armorSkillCheckPenalty', '+', 'source > 0 ? -3 : null');
+    rules.defineRule('skillModifier.' + name,
+      'skillNotes.armorSkillCheckPenalty', '+', '-source'
+    );
   }
 };
 
@@ -4901,7 +4909,7 @@ Pathfinder.traitRules = function(rules, name, type, subtype) {
   rules.defineRule('features.' + name, 'traits.' + name, '=', null);
 
   if(name == 'Armor Expert') {
-    rules.defineRule('skillNotes.armorSkillCheckPenaltyFeature',
+    rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpertFeature', '+', '-1'
     );
   } else if(name == 'Attuned To The Ancestors') {
