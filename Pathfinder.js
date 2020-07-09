@@ -868,7 +868,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   "Healer's Blessing":'magic:%V% bonus on healed damage',
   "Master's Illusion":"magic:DC %V 30' radius <i>Veil</i> %1 rd/day",
   "Sun's Blessing":'magic:+%V undead damage, negate channel resistance',
-  'Acid Dart':"magic:R30' touch 1d6+%1 HP %V/day",
   'Acid Resistance':'save:%V',
   'Addling Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
   'Agile Feet':'feature:Unaffected by difficult terrain 1 rd %V/day',
@@ -943,6 +942,34 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     "magic:Creatures w/in 30' immune to death effects/energy drain/negative levels %V rd/day",
   'Weapon Master':'combat:Use additional combat feat %V rd/day',
   'Wooden Fist':'combat:+%V, no AOO unarmed attacks %1 rd/day',
+  // Schools
+  'Acid Dart':"magic:R30' touch 1d6+%1 HP %V/day",
+  'Aura Of Despair':
+    "magic:Foes w/in 30' -2 ability/attack/damage/save/skill %V rd/day",
+  'Blinding Ray':'magic:Ranged touch blinds/dazzles 1 rd %V/day',
+  'Change Shape':
+    'magic:<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
+  'Dazing Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
+  'Dimensional Steps':"magic:Teleport up to %V'/day",
+  "Diviner's Fortune":
+    'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
+  'Elemental Wall':'magic:<i>Wall Of Fire</i>/acid/cold/electricity %V rd/day',
+  'Enchanting Smile':'skill:+%V Bluff/+%V Diplomacy/+%V Intimidate',
+  'Energy Absorption':'save:Ignore %V HP energy/day',
+  'Energy Resistance':'save:%V chosen energy type',
+  'Extended Illusions':'magic:Illusion duration increased %V rd',
+  'Force Missile':'magic:<i>Magic Missile</i> 1d4+%V HP %1/day',
+  'Forewarned':'combat:+%V initiative, always act in surprise round',
+  'Intense Spells':'magic:+%V evocation spell damage',
+  'Invisibility Field':'magic:<i>Greater Invisibility</i> %V rd/day',
+  'Life Sight':'feature:%V blindsight for living/undead',
+  'Physical Enhancement':'ability:+%V %1 of str, dex, and con',
+  'Power Over Undead':'feature:+1 General Feat (Command Undead or Turn Undead)',
+  'Protective Ward':"magic:+%V AC 10' radius %1/day",
+  'Scrying Adept':
+    'magic:Constant <i>Detect Scrying</i>, +1 scrying subject familiarity',
+  "Summoner's Charm":'magic:Summon duration increased %V rd',
+  'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   // Feats
   'Acrobatic':'skill:+%V Acrobatics/+%V Fly',
   'Acrobatic Steps':"ability:Move through difficult terrain 20'/rd",
@@ -1091,9 +1118,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Vital Strike':'combat:2x base damage',
   'Wind Stance':"combat:20% concealment when moving > 5'",
   // Classes
-  "Diviner's Fortune":
-    'magic:Touched creature +%V attack, skill, ability, save 1 rd %1/day',
-  "Summoner's Charm":'magic:Summon duration increased %V rd',
   'Abundant Step':'magic:Use 2 ki to <i>Dimension Door</i>',
   'Animal Fury':'combat:Bite attack %V+%1 during rage',
   'Armor Mastery':'combat:DR 5/- when using armor/shield',
@@ -1101,7 +1125,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'ability:No speed penalty in %V armor',
     'combat:Additional +%V Dex AC bonus', 'skill:Reduce armor skill check penalty by %V'
   ],
-  'Aura Of Despair':"magic:Foes w/in 30' -2 ability/attack/damage/save/skill %V rd/day",
   'Aura Of Justice':"combat:Grant Smite Evil to allies w/in 10'",
   'Aura Of Resolve':"save:Immune charm, +4 to allies w/in 30'",
   'Aura Of Righteousness':"save:Immune compulsion, +4 to allies w/in 30'",
@@ -1109,7 +1132,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Bardic Knowledge':'skill:+%V all Knowledge, use any Knowledge untrained',
   'Bardic Performance':'feature:Bardic Performance effect %V rd/day',
   'Bleeding Attack':'combat:Sneak attack causes extra %V HP/rd until healed',
-  'Blinding Ray':'magic:Ranged touch blinds/dazzles 1 rd %V/day',
   'Bloodline Aberrant':'magic:Polymorph spells last 50% longer',
   'Bloodline Abyssal':'magic:Summoned creatures gain DR %V/good',
   'Bloodline Arcane':'magic:+1 boosted spell DC',
@@ -1123,28 +1145,20 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Bonded Object':'magic:Cast known spell through object',
   'Bravery':'save:+%V vs. fear',
   'Camouflage':'skill:Hide in favored terrain',
-  'Change Shape':'magic:<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/day',
   'Channel Energy':"magic:Heal/inflict %Vd6 HP 30' radius (DC %1 Will half) %2/day",
   'Clear Mind':'save:Reroll Will save 1/rage',
   'Companion Bond':"combat:Half favored enemy bonus to allies w/in 30' %V rd",
   'Condition Fist':'combat:Stunning Fist may instead make target %V',
   'Conjured Dart':'magic:Ranged touch 1d6+%1 HP %V/day',
   'Combat Trick':'feature:+1 Combat Feat',
-  'Dazing Touch':'magic:Touch attack dazes %V HD foe 1 rd %1/day',
   'Deadly Performance':'magic:Target DC %V Will save or die',
-  'Dimensional Steps':"magic:Teleport up to %V'/day",
   'Dirge Of Doom':"magic:Creatures w/in 30' shaken while performing",
   'Dispelling Attack':'magic:Sneak attack acts as <i>Dispel Magic</i> on target',
   'Distraction':"magic:Perform check vs. visual magic w/in 30' 10 rd",
   'Divine Mount':'feature:Magically summon mount %V/day',
   'Divine Weapon':'combat:Add %V enhancements to weapon %1 minutes %2/day',
-  'Elemental Wall':'magic:<i>Wall Of Fire</i>/acid/cold/electricity %V rd/day',
   'Empty Body':'magic:Use 3 ki for 1 minute <i>Etherealness</i>',
-  'Enchanting Smile':'skill:+%V Bluff/+%V Diplomacy/+%V Intimidate',
   'Enchantment Reflection':'save:Successful save reflects enchantment spells on caster',
-  'Energy Absorption':'save:Ignore %V HP energy/day',
-  'Energy Resistance':'save:%V chosen energy type',
-  'Extended Illusions':'magic:Illusion duration increased %V rd',
   'Fast Stealth':'skill:Use Stealth at full speed',
   'Favored Enemy':[
     'combat:+2 or more attack and damage vs. %V type(s) of creatures',
@@ -1157,18 +1171,14 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Fearless Rage':'save:Cannot be shaken/frightened during rage',
   'Flurry Of Blows':
     'combat:Full-round %V +%1 monk weapon attacks, use 1 ki for one more',
-  'Force Missile':'magic:<i>Magic Missile</i> 1d4+%V HP %1/day',
-  'Forewarned':'combat:+%V initiative, always act in surprise round',
   'Frightening Tune':"magic:R30' DC %V Will <i>Cause Fear</i> via performance",
   'Guarded Stance':'combat:+%V AC during rage',
   'Hand Of The Apprentice':"combat:R30' +%V w/melee weapon %1/day",
   'High Jump':'skill:+%V Acrobatics (jump), use 1 ki for +20',
   'Holy Champion':'magic:Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
-  'Intense Spell':'magic:+%V evocation spell damage',
   'Internal Fortitude':'save:Cannot be sickened/nauseated during rage',
   'Intimidating Glare':
     'skill:Successful Intimidate during rage shakes foe at least 1d4 rd',
-  'Invisibility Field':'magic:<i>Greater Invisibility</i> %V rd/day',
   'Jack Of All Trades':'skill:Use any skill untrained',
   'Ki Dodge':'combat:Use 1 ki for +4 AC',
   'Ki Pool':'feature:%V points refills w/8 hours rest',
@@ -1177,7 +1187,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Knockback':'combat:Successful Bull Rush during rage %V HP',
   'Lay On Hands':'magic:Harm undead or heal %Vd6 HP %1/day',
   'Ledge Walker':'skill:Use Acrobatics along narrow surfaces at full speed',
-  'Life Sight':'feature:%V blindsight for living/undead',
   'Lore Master':'skill:Take 10 on any ranked Knowledge skill, take 20 %V/day',
   'Major Magic':'magic:Cast W1 spell 2/day',
   'Maneuver Training':'combat:+%V CMB',
@@ -1198,10 +1207,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'combat:DR 10/chaotic',
     'save:Treat as outsider for magic saves'
   ],
-  'Physical Enhancement':'ability:+%V %1 of str, dex, and con',
-  'Power Over Undead':'feature:+1 General Feat (Command Undead or Turn Undead)',
   'Powerful Blow':'combat:+%V HP 1/rage',
-  'Protective Ward':"magic:+%V AC 10' radius %1/day",
   'Quarry':[
     'combat:+%V attack, automatic critical vs. target',
     'skill:Take %V to track target'
@@ -1220,8 +1226,20 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Rolling Dodge':'combat:+%V AC vs. ranged %1 rd during rage',
   'Roused Anger':'combat:Rage even if fatigued',
   'Scent':'feature:Detect creatures via smell',
-  'Scrying Adept':
-    'magic:Constant <i>Detect Scrying</i>, +1 scrying subject familiarity',
+  'School Opposition (Abjuration)':
+    'magic:Double cost to cast Abjuration spells',
+  'School Opposition (Conjuration)':
+    'magic:Double cost to cast Conjuration spells',
+  'School Opposition (Enchantment)':
+    'magic:Double cost to cast Enchantment spells',
+  'School Opposition (Evocation)':
+    'magic:Double cost to cast Evocation spells',
+  'School Opposition (Illusion)':
+    'magic:Double cost to cast Illusion spells',
+  'School Opposition (Necromancy)':
+    'magic:Double cost to cast Necromancy spells',
+  'School Opposition (Transmutation)':
+    'magic:Double cost to cast Transmutation spells',
   'Slow Reactions':'combat:Sneak attack target no AOO 1 rd',
   'Soothing Performance':"magic:R30' <i>Mass Cure Serious Wounds</i> via performance",
   'Spontaneous Cleric Spell':
@@ -1234,7 +1252,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Surprise Accuracy':'combat:+%V attack 1/rage',
   'Surprise Attack':'combat:All foes flat-footed during surprise round',
   'Swift Foot':'ability:+5 Speed during rage',
-  'Telekinetic Fist':'magic:Ranged touch 1d4+%1 HP %V/day',
   'Terrifying Howl':"combat:Howl DC %V will save w/in 30' or shaken 1d4+1 rd",
   'Track':"skill:+%V Survival to follow creatures' trail",
   'Trap Spotter':"skill:Automatic Perception check w/in 10' of trap",
@@ -1582,7 +1599,36 @@ Pathfinder.RACES = {
   'Human':
     'Features="Human Ability Adjustment","Bonus Feat",Skilled'
 };
-Pathfinder.SCHOOLS = Object.assign({}, SRD35.SCHOOLS);
+Pathfinder.SCHOOLS = {
+  'Abjuration':
+    'Features=' +
+      '"1:Energy Resistance","1:Protective Ward","6:Energy Absorption"',
+  'Conjuration':
+    'Features=' +
+      '"1:Summoner\'s Charm","1:Conjured Dart","8:Dimensional Steps"',
+  'Divination':
+    'Features=' +
+      '1:Forewarned,"1:Diviner\'s Fortune","8:Scrying Adept"',
+  'Enchantment':
+    'Features=' +
+      '"1:Dazing Touch","1:Enchanting Smile","8:Aura Of Despair",' +
+      '"20:Enchantment Reflection"',
+  'Evocation':
+    'Features=' +
+      '"1:Intense Spells","1:Force Missile","8:Elemental Wall",' +
+      '"20:Penetrating Spells"',
+  'Illusion':
+    'Features=' +
+      '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
+  'Necromancy':
+    'Features=' +
+      '"1:Power Over Undead","1:Necromantic Touch","8:Life Sight"',
+  'Transmutation':
+    'Features=' +
+      '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"',
+  'Universal':
+    'Features='
+};
 Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
 Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
@@ -2120,7 +2166,7 @@ Pathfinder.CLASSES = {
   'Fighter':
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","Shield Proficiency (Tower)",' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency (Tower)",' +
       '"1:Weapon Proficiency (Martial)","2:Bravery","3:Armor Training",' +
       '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
   'Monk':
@@ -2267,10 +2313,12 @@ Pathfinder.CLASSES = {
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)",' +
-      '"1:Hand Of The Apprentice","1:Scribe Scroll",' +
-      '"1:Wizard Specialization","8:Metamagic Mastery" ' +
+      '"1:Arcane Bond","1:Arcane School","1:Hand Of The Apprentice",' +
+      '"1:Scribe Scroll","8:Metamagic Mastery" ' +
     'Selectables=' +
-      '"1:Bonded Object",1:Familiar ' +
+      '"1:Bonded Object",1:Familiar,' +
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + (x == 'Universal' ? 'None' : x) + ')"').join(',') + ',' +
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).filter(x => x != 'Universal').map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
     'CasterLevelDivine=Level ' +
     'SpellAbility=intelligence ' +
     'SpellsPerDay=' +
@@ -2751,9 +2799,12 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
     );
     Pathfinder.raceRulesExtra(rules, name);
-  } else if(type == 'schools')
-    Pathfinder.schoolRules(rules, name);
-  else if(type == 'shields')
+  } else if(type == 'schools') {
+    Pathfinder.schoolRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Features')
+    );
+    Pathfinder.schoolRulesExtra(rules, name);
+  } else if(type == 'shields')
     Pathfinder.shieldRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Level'),
@@ -2817,6 +2868,11 @@ Pathfinder.armorRules = function(
 Pathfinder.bloodlineRules = function(
   rules, name, features, feats, skills, spells, spellDict
 ) {
+
+  if(!name) {
+    console.log('Empty bloodline name');
+    return;
+  }
 
   var bloodlineLevelAttr = 'bloodlineLevel.' + name;
   rules.defineRule(bloodlineLevelAttr,
@@ -2938,15 +2994,15 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
 
   } else if(name == 'Arcane') {
 
+    rules.defineRule('familiarLevel',
+      'familiarMasterLevel', '+=', 'Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule
+      ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
     rules.defineRule('familiarSorcererLevel',
       'sorcererFeatures.Familiar', '?', null,
       'levels.Sorcerer', '=', null
     );
-    rules.defineRule('familiarLevel',
-      'familiarSorcererLevel', '+=', 'Math.floor((source+1) / 2)'
-    );
-    rules.defineRule
-      ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
     rules.defineRule
       ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
     rules.defineRule('magicNotes.metamagicAdeptFeature',
@@ -3634,7 +3690,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     rules.defineRule('companionMasterLevelRanger',
       'rangerFeatures.Animal Companion', '?', null,
-      'levels.Ranger', '+=', 'source >= 4 ? source - 3 : null'
+      'levels.Ranger', '+=', 'source - 3'
     );
     rules.defineRule('companionMasterLevel',
       'companionMasterLevelRanger', '+=', null
@@ -3749,6 +3805,36 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Wizard') {
 
+    rules.defineRule('familiarLevel',
+      'familiarMasterLevel', '+=', 'Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule('familiarMasterLevel', 'familiarWizardLevel', '+=', null);
+    rules.defineRule('familiarWizardLevel',
+      'wizardFeatures.Familiar', '?', null,
+      'levels.Wizard', '+=', null
+    );
+    rules.defineRule('featCount.Wizard',
+      'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Wizard',
+      'wizardFeatures.Arcane Bond', '+=', '1',
+      'wizardFeatures.Arcane School', '+=', '1'
+    );
+
+    var schools = rules.getChoices('schools');
+    for(var school in schools) {
+      if(school == 'Universal')
+        continue;
+      rules.defineRule('selectableFeatureCount.Wizard',
+        'wizardFeatures.School Specialization (' + school + ')', '+', '2'
+      );
+      for(var i = 1; i <= 9; i++) {
+        rules.defineRule('spellsPerDay.W' + i,
+          'magicNotes.schoolSpecialization(' + school + ')Feature', '+', '1'
+        );
+      }
+    }
+
     rules.defineRule('combatNotes.handOfTheApprenticeFeature',
       'baseAttack', '=', null,
       'intelligenceModifier', '+', null
@@ -3757,205 +3843,16 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Hand Of The Apprentice', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
-    rules.defineRule('familiarWizardLevel',
-      'wizardFeatures.Familiar', '?', null,
-      'levels.Wizard', '=', null
-    );
-    rules.defineRule('familiarLevel',
-      'familiarWizardLevel', '+=', 'Math.floor((source+1) / 2)'
-    );
-    rules.defineRule
-      ('familiarMasterLevel', 'familiarWizardLevel', '+=', null);
-    rules.defineRule('featCount.Wizard',
-      'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
-    );
     rules.defineRule('magicNotes.metamagicMasteryFeature',
       'levels.Wizard', '=', 'source >= 8 ? Math.floor((source - 6) / 2) : null'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Wizard', 'levels.Wizard', '=', '1');
-    rules.defineRule('wizardSpecializationCount', '', '=', '0');
     rules.defineRule('wizardFeatures.Hand Of The Apprentice',
-      'wizardSpecializationCount', '?', 'source == 0'
+      'wizardFeatures.School Specialization (None)', '?', null
     );
     rules.defineRule('wizardFeatures.Metamagic Mastery',
-      'wizardSpecializationCount', '?', 'source == 0'
+      'wizardFeatures.School Specialization (None)', '?', null
     );
 
-    var schoolPowers = {
-      'Abjuration':
-        '1:Energy Resistance/1:Protective Ward/6:Energy Absorption',
-      'Conjuration':
-        '1:Summoner\'s Charm/1:Conjured Dart/8:Dimensional Steps',
-      'Divination':
-        '1:Forewarned/1:Diviner\'s Fortune/8:Scrying Adept',
-      'Enchantment':
-        '1:Dazing Touch/1:Enchanting Smile/8:Aura Of Despair/' +
-        '20:Enchantment Reflection',
-      'Evocation':
-        '1:Intense Spells/1:Force Missile/8:Elemental Wall/' +
-        '20:Penetrating Spells',
-      'Illusion':
-        '1:Extended Illusions/1:Blinding Ray/8:Invisibility Field',
-      'Necromancy':
-        '1:Power Over Undead/1:Necromantic Touch/8:Life Sight',
-      'Transmutation':
-        '1:Physical Enhancement/1:Telekinetic Fist/8:Change Shape'
-    };
-
-    for(var j = 0; j < SRD35.SCHOOLS.length; j++) {
-      var school = SRD35.SCHOOLS[j].split(':')[0];
-      var powers = schoolPowers[school].split('/');
-      var schoolLevelAttr = 'schoolLevel.' + school;
-      rules.defineRule('magicNotes.wizardSpecialization',
-       'specialize.' + school, '=', '"' + school.toLowerCase() + '"'
-      );
-      rules.defineRule('skillNotes.wizardSpecialization',
-        'specialize.' + school, '=', '"' + school.toLowerCase() + '"'
-      );
-      rules.defineRule(schoolLevelAttr,
-        'specialize.' + school, '?', null,
-        'levels.Wizard', '=', null
-      );
-      rules.defineRule
-        ('wizardSpecializationCount', 'specialize.' + school, '+', '1');
-      for(var k = 0; k < powers.length; k++) {
-        var pieces = powers[k].split(':');
-        rules.defineRule('wizardFeatures.' + pieces[1],
-          schoolLevelAttr, '=', 'source >= ' + pieces[0] + ' ? 1 : null'
-        );
-        rules.defineRule('features.' + pieces[1],
-          'wizardFeatures.' + pieces[1], '=', null
-        );
-      }
-      if(school == 'Abjuration') {
-        rules.defineRule('magicNotes.protectiveWardFeature',
-          schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
-        );
-        rules.defineRule('magicNotes.protectiveWardFeature.1',
-          'features.Protective Ward', '?', null,
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('saveNotes.energyAbsorptionFeature',
-          schoolLevelAttr, '=', 'source >= 6 ? source * 3 : null'
-        );
-        rules.defineRule('saveNotes.energyResistanceFeature',
-          schoolLevelAttr, '=',
-          'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
-        );
-      } else if(school == 'Conjuration') {
-        rules.defineRule('magicNotes.conjuredDartFeature',
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.conjuredDartFeature.1',
-          schoolLevelAttr, '=', 'Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.dimensionalHopFeature',
-          schoolLevelAttr, '=', 'source >= 8 ? 30 * source : null'
-        );
-        rules.defineRule('magicNotes.summoner\'sCharmFeature',
-          schoolLevelAttr, '=',
-          'source >= 20 ? "infinite" : source==1 ? 1 : Math.floor(source / 2)'
-        );
-      } else if(school == 'Divination') {
-        rules.defineRule('combatNote.forewarnedFeature',
-          schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule
-          ('initiative', 'combatNote.forewarnedFeature', '+', null);
-        rules.defineRule("magicNotes.diviner'sFortuneFeature",
-          schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule("magicNotes.diviner'sFortuneFeature.1",
-          "magicNotes.diviner'sFortuneFeature", '?', null,
-          'intelligenceModifier', '=', 'source + 3'
-        );
-      } else if(school == 'Enchantment') {
-        rules.defineRule('magicNotes.auraOfDespairFeature',
-          schoolLevelAttr, '=', null
-        );
-        rules.defineRule('magicNotes.dazingTouchFeature',
-          schoolLevelAttr, '=', null
-        );
-        rules.defineRule('magicNotes.dazingTouchFeature.1',
-          'features.Dazing Touch', '?', null,
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('skillNotes.enchantingSmileFeature',
-          schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
-        );
-      } else if(school == 'Evocation') {
-        rules.defineRule
-          ('magicNotes.elementalWallFeature', schoolLevelAttr, '=', null);
-        rules.defineRule('magicNotes.forceMissileFeature',
-          schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.forceMissileFeature.1',
-          'features.Force Missile', '?', null,
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.intenseSpellsFeature',
-          schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-      } else if(school == 'Illusion') {
-        rules.defineRule('magicNotes.blindingRayFeature',
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.extendedIllusionsFeature',
-          schoolLevelAttr, '=',
-          'source >= 20 ? "infinite" : source==1 ? 1 : Math.floor(source / 2)'
-        );
-        rules.defineRule('magicNotes.invisibilityFieldFeature',
-          bloodlineLevelAttr, '=', 'source >= 8 ? source : null'
-        );
-      } else if(school == 'Necromancy') {
-        rules.defineChoice('notes',
-          'validationNotes.powerOverUndeadFeatureFeats:Requires Command Undead || Turn Undead'
-        );
-        rules.defineRule('validationNotes.powerOverUndeadFeatureFeats',
-          'features.Power Over Undead', '=', '-1',
-          'feats.Command Undead', '^', '0',
-          'feats.Turn Undead', '^', '0'
-        );
-        rules.defineRule('featureNotes.lifeSightFeature',
-          schoolLevelAttr, '=',
-          'source >= 8 ? 10 * Math.floor((source - 4) / 4) : null'
-        );
-        rules.defineRule('magicNotes.necromanticTouchFeature',
-          schoolLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
-        );
-        rules.defineRule('magicNotes.necromanticTouchFeature.1',
-          'features.Necromantic Touch', '?', null,
-          'intelligenceModifier', '=', 'source + 3'
-        );
-      } else if(school == 'Transmutation') {
-        rules.defineRule('abilityNotes.physicalEnhancementFeature',
-          schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
-        );
-        rules.defineRule('abilityNotes.physicalEnhancementFeature.1',
-          schoolLevelAttr, '=', 'source >= 20 ? 2 : 1'
-        );
-        rules.defineRule('magicNotes.changeShapeFeature',
-          schoolLevelAttr, '=', 'source >= 8 ? source : null'
-        );
-        rules.defineRule('magicNotes.changeShapeFeature.1',
-          schoolLevelAttr, '=', 'source >= 12 ? "III" : "II"'
-        );
-        rules.defineRule('magicNotes.changeShapeFeature.2',
-          schoolLevelAttr, '=', 'source >= 12 ? "II" : "I"'
-        );
-        rules.defineRule('magicNotes.telekineticFistFeature',
-          'intelligenceModifier', '=', 'source + 3'
-        );
-        rules.defineRule('magicNotes.telekineticFistFeature.1',
-          schoolLevelAttr, '=', 'Math.floor(source / 2)'
-        );
-      }
-    }
-    for(var j = 0; j < 10; j++) {
-      rules.defineRule
-        ('spellsPerDay.W' + j, 'magicNotes.wizardSpecialization', '+', '1');
-    }
   }
 
 };
@@ -4034,8 +3931,8 @@ Pathfinder.domainRulesExtras = function(rules, name) {
     );
   } else if(name == 'Animal') {
     rules.defineRule('companionMasterLevelCleric',
-      'domains.Animal', '?', null,
-      'levels.Cleric', '=', 'source >= 4 ? source - 3 : null'
+      'features.Animal Domain', '?', null,
+      'levels.Cleric', '=', 'source - 3'
     );
     rules.defineRule('companionMasterLevel',
       'companionMasterLevelCleric', '+=', null
@@ -4044,7 +3941,7 @@ Pathfinder.domainRulesExtras = function(rules, name) {
       'levels.Cleric', '=', 'source + 3'
     );
     rules.defineRule
-      ('classSkills.Knowledge (Nature)', 'domains.Animal', '=', '1');
+      ('classSkills.Knowledge (Nature)', 'features.Animal Domain', '=', '1');
     rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
   } else if(name == 'Artifice') {
     rules.defineRule("combatNotes.artificer'sTouchFeature",
@@ -4198,7 +4095,9 @@ Pathfinder.domainRulesExtras = function(rules, name) {
       'levels.Cleric', '=', 'Math.floor(source / 2)'
     );
   } else if(name == 'Knowledge') {
-    rules.defineRule(/classSkills.Knowledge/, 'domains.Knowledge', '=', '1');
+    rules.defineRule(/classSkills.Knowledge/,
+      'features.Knowledge Domain', '=', '1'
+    );
     rules.defineRule('magicNotes.remoteViewingFeature',
       'levels.Cleric', '=', 'source >= 6 ? source : null'
     );
@@ -4358,9 +4257,11 @@ Pathfinder.domainRulesExtras = function(rules, name) {
       'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
     );
   } else if(name == 'Trickery') {
-    rules.defineRule('classSkills.Bluff', 'domains.Trickery', '=', '1');
-    rules.defineRule('classSkills.Disguise', 'domains.Trickery', '=', '1');
-    rules.defineRule('classSkills.Stealth', 'domains.Trickery', '=', '1');
+    rules.defineRule('classSkills.Bluff', 'features.TrickeryDomain', '=', '1');
+    rules.defineRule
+      ('classSkills.Disguise', 'features.TrickeryDomain', '=', '1');
+    rules.defineRule
+      ('classSkills.Stealth', 'features.TrickeryDomain', '=', '1');
     rules.defineRule('magicNotes.copycatFeature', 'levels.Cleric', '=', null);
     rules.defineRule('magicNotes.copycatFeature.1',
       'features.Copycat', '?', null,
@@ -4515,7 +4416,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Deceitful') {
     rules.defineRule('skillNotes.deceitfulFeature',
-      'skills.Bluff', '=', 'source >= 10 ? 4 : 2'
+      'skills.Bluff', '=', 'source >= 10 ? 4 : 2',
+      'skills.Disguise', '^=', 'source >= 10 ? 4 : 2'
     );
   } else if(name == 'Defensive Combat Training') {
     rules.defineRule('combatNotes.defensiveCombatTrainingFeature',
@@ -4676,7 +4578,7 @@ Pathfinder.raceRules = function(rules, name, features) {
  * Defines in #rules# the rules associated with race #name# that are not
  * directly derived from the parmeters passed to raceRules.
  */
-Pathfinder.raceRulesExtra = function(rules, name, features) {
+Pathfinder.raceRulesExtra = function(rules, name) {
 
   var prefix =
     name.substring(0,1).toLowerCase() + name.substring(1).replace(/ /g, '');
@@ -4748,9 +4650,159 @@ Pathfinder.raceRulesExtra = function(rules, name, features) {
 };
 
 /* Defines in #rules# the rules associated with magic school #name#. */
-Pathfinder.schoolRules = function(rules, name) {
+Pathfinder.schoolRules = function(rules, name, features) {
+
   SRD35.schoolRules(rules, name);
-  // No changes needed to the rules defined by SRD35 method
+
+  var schoolLevelAttr = 'schoolLevel.' + name;
+  rules.defineRule(schoolLevelAttr,
+    'features.School Specialization (' + name + ')', '?', null,
+    'levels.Wizard', '=', null
+  );
+
+  for(var i = 0; i < features.length; i++) {
+    var matchInfo = features[i].match(/^((\d+):)?(.*)$/);
+    var feature = matchInfo ? matchInfo[3] : features[i];
+    var level = matchInfo ? matchInfo[2] : 1;
+    if(level == 1)
+      rules.defineRule
+        ('wizardFeatures.' + feature, schoolLevelAttr, '=', '1');
+    else
+      rules.defineRule('wizardFeatures.' + feature,
+        schoolLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
+      );
+    rules.defineRule
+      ('features.' + feature, 'wizardFeatures.' + feature, '+=', null);
+  }
+
+};
+
+/*
+ * Defines in #rules# the rules associated with school #name# that are not
+ * directly derived from the parmeters passed to schoolRules.
+ */
+Pathfinder.schoolRulesExtra = function(rules, name) {
+
+  var schoolLevelAttr = 'schoolLevel.' + name;
+
+  if(name == 'Abjuration') {
+    rules.defineRule('magicNotes.protectiveWardFeature',
+      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+    );
+    rules.defineRule('magicNotes.protectiveWardFeature.1',
+      'features.Protective Ward', '?', null,
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('saveNotes.energyAbsorptionFeature', schoolLevelAttr, '=', 'source * 3');
+    rules.defineRule('saveNotes.energyResistanceFeature',
+      schoolLevelAttr, '=',
+      'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
+    );
+  } else if(name == 'Conjuration') {
+    rules.defineRule('magicNotes.conjuredDartFeature',
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.conjuredDartFeature.1',
+      'features.Conjured Dart', '?', null,
+      schoolLevelAttr, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('magicNotes.dimensionalHopFeature', schoolLevelAttr, '=', '30 * source');
+    rules.defineRule("magicNotes.summoner'sCharmFeature",
+      schoolLevelAttr, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Divination') {
+    rules.defineRule('combatNote.forewarnedFeature',
+      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule("magicNotes.diviner'sFortuneFeature",
+      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule("magicNotes.diviner'sFortuneFeature.1",
+      "features.Diviner's Fortune", '?', null,
+      'intelligenceModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Enchantment') {
+    rules.defineRule
+      ('magicNotes.auraOfDespairFeature', schoolLevelAttr, '=', null);
+    rules.defineRule
+      ('magicNotes.dazingTouchFeature', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.dazingTouchFeature.1',
+      'features.Dazing Touch', '?', null,
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('skillNotes.enchantingSmileFeature',
+      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+    );
+  } else if(name == 'Evocation') {
+    rules.defineRule
+      ('magicNotes.elementalWallFeature', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.forceMissileFeature',
+      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('magicNotes.forceMissileFeature.1',
+      'features.Force Missile', '?', null,
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.intenseSpellsFeature',
+      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Illusion') {
+    rules.defineRule('magicNotes.blindingRayFeature',
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.extendedIllusionsFeature',
+      schoolLevelAttr, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule
+      ('magicNotes.invisibilityFieldFeature', schoolLevelAttr, '=', null);
+  } else if(name == 'Necromancy') {
+    rules.defineChoice('notes',
+      'validationNotes.powerOverUndeadFeatureFeats:Requires Command Undead || Turn Undead'
+    );
+    rules.defineRule('validationNotes.powerOverUndeadFeatureFeats',
+      'features.Power Over Undead', '=', '-1',
+      'feats.Command Undead', '^', '0',
+      'feats.Turn Undead', '^', '0'
+    );
+    rules.defineRule('featureNotes.lifeSightFeature',
+      schoolLevelAttr, '=', '10 * Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule('magicNotes.necromanticTouchFeature',
+      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('magicNotes.necromanticTouchFeature.1',
+      'features.Necromantic Touch', '?', null,
+      'intelligenceModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Transmutation') {
+   rules.defineRule('abilityNotes.physicalEnhancementFeature',
+      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+    );
+    rules.defineRule('abilityNotes.physicalEnhancementFeature.1',
+      'features.Physical Enhancement', '?', null,
+      schoolLevelAttr, '=', 'source >= 20 ? 2 : 1'
+    );
+    rules.defineRule
+      ('magicNotes.changeShapeFeature', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.changeShapeFeature.1',
+      'features.Change Shape', '?', null,
+      schoolLevelAttr, '=', 'source >= 12 ? "III" : "II"'
+    );
+    rules.defineRule('magicNotes.changeShapeFeature.2',
+      'features.Change Shape', '?', null,
+      schoolLevelAttr, '=', 'source >= 12 ? "II" : "I"'
+    );
+    rules.defineRule('magicNotes.telekineticFistFeature',
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.telekineticFistFeature.1',
+      'features.Telekinetic Fist', '?', null,
+      schoolLevelAttr, '=', 'Math.floor(source / 2)'
+    );
+  }
+
 };
 
 /*
