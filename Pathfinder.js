@@ -653,7 +653,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   // New feats
   'Acrobatic Steps':'Type=General',
   'Agile Maneuvers':
-    'Type=Fighter Implies="dexterityModifier > strengthModifier",
+    'Type=Fighter Implies="dexterityModifier > strengthModifier"',
   'Alignment Channel (Chaos)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Evil)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Good)':'Type=General Require="features.Channel Energy"',
@@ -672,10 +672,10 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Command Undead':'Type=General Require="features.Channel Energy"',
   'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
   'Critical Mastery':
-    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","criticalFeatCount >= 2"',
-  'Dazzling Display':'Type=Fighter Require="weaponFocusCount >= 1"',
+    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","Sum /^features.*Critical$/ >= 2"',
+  'Dazzling Display':'Type=Fighter Require="Sum /^features.Weapon Focus/ >= 1"',
   'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
-  'Deadly Stroke':'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","greaterWeaponFocusCount >= 1","features.Shatter Defenses","features.WeaponFocus"',
+  'Deadly Stroke':'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","Sum /^features.Greater Weapon Focus/ >= 1","features.Shatter Defenses","features.WeaponFocus"',
   'Deafening Critical':
     'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
   'Defensive Combat Training':'Type=Fighter',
@@ -707,7 +707,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 13","features.Improved Grapple","features.Improved Unarmed Strike"',
   'Greater Overrun':
     'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Overrun","features.Power Attack"',
-  'Greater Penetrating Strike':'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","weaponFocusCount >= 1"',
+  'Greater Penetrating Strike':'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","Sum /^features.Weapon Focus/ >= 1"',
   'Greater Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 8","features.Shield Focus","features.Shield Proficiency (Heavy)"',
   'Greater Sunder':
@@ -735,12 +735,12 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=General Require="skills.Profession (Tanner) >= 5"',
   "Medusa's Wrath":'Type=Fighter Require="baseAttack >= 11","features.Improved Unarmed Strike","features.Gorgon\'s Fist","features.Scorpion Style"',
   'Nimble Moves':'Type=General Require="dexterity >= 13"',
-  'Penetrating Strike':'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","weaponFocusCount >= 1"',
+  'Penetrating Strike':'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","Sum /^features.Weapon Focus/ >= 1"',
   'Pinpoint Targeting':'Type=Fighter Require="baseAttack >= 16","dexterity >= 19","features.Improved Precise Shot","features.Point-Blank Shot"',
   'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
   'Selective Channeling':
     'Type=General Require="charisma >= 13","features.Channel Energy"',
-  'Shatter Defenses':'Type=Fighter Require="baseAttack >= 6","weaponFocusCount >= 1","features.Dazzing Display"',
+  'Shatter Defenses':'Type=Fighter Require="baseAttack >= 6","Sum /^features.Weapon Focus/ >= 1","features.Dazzing Display"',
   'Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
   'Shield Master':
@@ -2646,13 +2646,6 @@ Pathfinder.talentRules = function(rules, feats, features, languages, skills) {
   rules.defineChoice
     ('notes', 'skillNotes.armorSkillCheckPenalty:-%V Dex- and Str-based skills');
   rules.defineRule('skillNotes.armorSwimCheckPenalty', '', '?', 'false');
-  // Count feat collections for validation purposes
-  rules.defineRule('criticalFeatCount', /^feats\.*Critical$/, '+=', '1');
-  rules.defineRule
-    ('weaponFocusCount', /^features.Weapon Focus \(/, '+=', '1');
-  rules.defineRule('greaterWeaponFocusCount',
-    /features.Greater Weapon Focus \(/, '+=', '1'
-  );
 };
 
 /*

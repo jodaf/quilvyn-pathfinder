@@ -52,8 +52,8 @@ PathfinderPrestige.CLASSES = {
     'Require=' +
       '"alignment !~ /Lawful/","features.sneakAttack >= 2",' +
       '"skills.Disable Device >= 4","skills.Escape Artist >= 4",' +
-      '"skills.Knowledge (Arcana) >= 4","Sum spells.Mage Hand >= 1",' +
-      '"Any spells.*[BW]3 ' +
+      '"skills.Knowledge (Arcana) >= 4","Sum /^spells.Mage Hand/ >= 1",' +
+      '"Sum /^spells.*[BW]3/ >= 0" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Skills=' +
       'Appraise,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
@@ -93,7 +93,7 @@ PathfinderPrestige.CLASSES = {
     'Require=' +
       '"baseAttack >= 6",features.Dodge,features.Mobility,' +
       '"features.Weapon Finesse","skills.Acrobatics >= 2",' +
-      '"Sum skills.Perform >= 2" ' +
+      '"Sum /^skills.Perform / >= 2" ' +
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Acrobatics,Bluff,"Escape Artist",Perception,Perform,"Sense Motive" ' +
@@ -105,7 +105,7 @@ PathfinderPrestige.CLASSES = {
       '"9:No Retreat","10:Crippling Critical"',
   'Eldritch Knight':
     'Require=' +
-      '"features.Weapon Proficiency (Martial)","Any spells..*[BW]3" ' +
+      '"features.Weapon Proficiency (Martial)","Sum /^spells.*[BW]3/ >= 0" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Skills=' +
       'Climb,"Knowledge (Arcana)","Knowledge (Nobility)",Linguistics,Ride,' +
@@ -114,9 +114,9 @@ PathfinderPrestige.CLASSES = {
       '"1:Diverse Training","2:Caster Level Bonus","10:Spell Critical"',
   'Loremaster':
     'Require=' +
-      '"Sum features.Skill Focus (Knowledge >= 0",' +
-      '"Any 2 skill.Knowledge >= 7","Any 7 spells..*Divi",' +
-      '"Any spells.*3 Divi)" '+
+      '"Sum /^features.Skill Focus .Knowledge/ >= 0",' +
+      '"Sum /^spells.*Divi/ >= 7","Sum /^spells.*3 Divi/ >= 1" ' +
+      // TODO Any two Knowledge skills >= 7
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Appraise,Diplomacy,"Handle Animals",Heal,Knowledge,Linguistics,' +
@@ -288,6 +288,13 @@ PathfinderPrestige.identityRules = function(rules, classes) {
   for(var clas in classes) {
     rules.choiceRules(rules, 'levels', clas, classes[clas]);
     PathfinderPrestige.classRulesExtra(rules, clas);
+    // Pathfinder prestige classes use different progressions for saves
+    for(var save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
+      var value = QuilvynUtils.getAttrValue(classes[clas], save);
+      rules.defineRule('class' + save + 'Bonus',
+        'levels.' + clas, '+', 'Math.floor((source + 1) / ' + (value == '1/2' ? '2' : '3') + ')'
+      );
+    }
   }
 };
 
