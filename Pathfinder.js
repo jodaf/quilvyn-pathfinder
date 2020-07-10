@@ -88,10 +88,7 @@ function Pathfinder() {
   rules.defineChoice('extras', 'feats', 'featCount', 'selectableFeatureCount');
   rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineEditorElement
-    ('faction', 'Faction', 'select-one', 'factions', 'experience');
-  rules.defineEditorElement
     ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
-  rules.defineSheetElement('Faction', 'Alignment');
   rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
 
 }
@@ -655,7 +652,8 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Weapon Finesse':SRD35.FEATS['Weapon Finesse'] + ' Require=',
   // New feats
   'Acrobatic Steps':'Type=General',
-  'Agile Maneuvers':'Type=Fighter Implies:dexterityModifier > strengthModifier',
+  'Agile Maneuvers':
+    'Type=Fighter Implies="dexterityModifier > strengthModifier",
   'Alignment Channel (Chaos)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Evil)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Good)':'Type=General Require="features.Channel Energy"',
@@ -674,11 +672,10 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Command Undead':'Type=General Require="features.Channel Energy"',
   'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
   'Critical Mastery':
-    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus"',
-    // TODO Also requires two critical feats
-  'Dazzling Display':'Type=Fighter Require="features.Weapon Focus"',
+    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","criticalFeatCount >= 2"',
+  'Dazzling Display':'Type=Fighter Require="weaponFocusCount >= 1"',
   'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
-  'Deadly Stroke':'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","features.Greater Weapon Focus","features.Shatter Defenses","features.WeaponFocus"',
+  'Deadly Stroke':'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","greaterWeaponFocusCount >= 1","features.Shatter Defenses","features.WeaponFocus"',
   'Deafening Critical':
     'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
   'Defensive Combat Training':'Type=Fighter',
@@ -697,8 +694,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Extra Mercy':'Type=General Require="features.Lay On Hands",features.Mercy',
   'Extra Performance':'Type=General Require="features.Bardic Performance"',
   'Extra Rage':'Type=General Require=features.Rage',
-  'Fleet':'Type=General',
-  // TODO implies (requires?) light/no armor
+  'Fleet':'Type=General Implies="wearingLightArmor == 1"',
   "Gorgon's Fist":
     'Type=Fighter Require="baseAttack >= 6","features.Improved Unarmed Strike","features.Scorpion Style"',
   'Greater Bull Rush':
@@ -711,7 +707,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 13","features.Improved Grapple","features.Improved Unarmed Strike"',
   'Greater Overrun':
     'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Overrun","features.Power Attack"',
-  'Greater Penetrating Strike':'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","features.Weapon Focus"',
+  'Greater Penetrating Strike':'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","weaponFocusCount >= 1"',
   'Greater Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 8","features.Shield Focus","features.Shield Proficiency (Heavy)"',
   'Greater Sunder':
@@ -739,12 +735,12 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=General Require="skills.Profession (Tanner) >= 5"',
   "Medusa's Wrath":'Type=Fighter Require="baseAttack >= 11","features.Improved Unarmed Strike","features.Gorgon\'s Fist","features.Scorpion Style"',
   'Nimble Moves':'Type=General Require="dexterity >= 13"',
-  'Penetrating Strike':'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","features.Weapon Focus"',
+  'Penetrating Strike':'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","weaponFocusCount >= 1"',
   'Pinpoint Targeting':'Type=Fighter Require="baseAttack >= 16","dexterity >= 19","features.Improved Precise Shot","features.Point-Blank Shot"',
   'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
   'Selective Channeling':
     'Type=General Require="charisma >= 13","features.Channel Energy"',
-  'Shatter Defenses':'Type=Fighter Require="baseAttack >= 6","features.Weapon Focus","features.Dazzing Display"',
+  'Shatter Defenses':'Type=Fighter Require="baseAttack >= 6","weaponFocusCount >= 1","features.Dazzing Display"',
   'Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
   'Shield Master':
@@ -2599,36 +2595,10 @@ Pathfinder.identityRules = function(
   rules, alignments, bloodlines, classes, deities, domains, factions, genders,
   races, traits
 ) {
-  for(var alignment in alignments) {
-    rules.choiceRules(rules, 'alignments', alignment, alignments[alignment]);
-  }
-  for(var bloodline in bloodlines) {
-    rules.choiceRules(rules, 'bloodlines', bloodline, bloodlines[bloodline]);
-  }
-  for(var clas in classes) {
-    rules.choiceRules(rules, 'levels', clas, classes[clas]);
-  }
-  for(var deity in deities) {
-    rules.choiceRules(rules, 'deities', deity, deities[deity]);
-  }
-  for(var domain in domains) {
-    rules.choiceRules(rules, 'domains', domain, domains[domain]);
-  }
-  for(var faction in factions) {
-    rules.choiceRules(rules, 'factions', faction, factions[faction]);
-  }
-  for(var gender in genders) {
-    rules.choiceRules(rules, 'genders', gender, genders[gender]);
-  }
-  for(var race in races) {
-    rules.choiceRules(rules, 'races', race, races[race]);
-  }
-  for(var trait in traits) {
-    rules.choiceRules(rules, 'traits', trait, traits[trait]);
-  }
-  rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
-  rules.defineSheetElement('Traits', 'Feats+', null, '; ');
-  rules.defineChoice('extras', 'traits');
+
+  SRD35.identityRules
+    (rules, alignments, classes, deities, domains, genders, races);
+  // Override calculations for level and experienceNeeded.
   // NOTE: Our rule engine doesn't support indexing into an array. Here, we work
   // around this limitation by defining rules that set a global array as a side
   // effect, then indexing into that array.
@@ -2640,11 +2610,23 @@ Pathfinder.identityRules = function(
     'experienceTrack', '=', '(Pathfinder.tracksThreshholds["Current"] = Pathfinder.tracksThreshholds[source]) ? 1 : 1',
     'experience', '=', 'Pathfinder.tracksThreshholds["Current"] ? Pathfinder.tracksThreshholds["Current"].findIndex(item => item * 1000 > source) : 1'
   );
-  rules.defineRule('casterLevel',
-    'casterLevelArcane', '=', null,
-    'casterLevelDivine', '+=', null
-  );
-  SRD35.validAllocationRules(rules, 'level', 'level', /^levels\./);
+
+  for(var bloodline in bloodlines) {
+    rules.choiceRules(rules, 'bloodlines', bloodline, bloodlines[bloodline]);
+  }
+  for(var faction in factions) {
+    rules.choiceRules(rules, 'factions', faction, factions[faction]);
+  }
+  rules.defineEditorElement
+    ('faction', 'Faction', 'select-one', 'factions', 'experience');
+  rules.defineSheetElement('Faction', 'Alignment');
+  for(var trait in traits) {
+    rules.choiceRules(rules, 'traits', trait, traits[trait]);
+  }
+  rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
+  rules.defineSheetElement('Traits', 'Feats+', null, '; ');
+  rules.defineChoice('extras', 'traits');
+
 };
 
 /* Defines rules related to magic use. */
@@ -2664,11 +2646,12 @@ Pathfinder.talentRules = function(rules, feats, features, languages, skills) {
   rules.defineChoice
     ('notes', 'skillNotes.armorSkillCheckPenalty:-%V Dex- and Str-based skills');
   rules.defineRule('skillNotes.armorSwimCheckPenalty', '', '?', 'false');
-  // Define non-subfeat features for validation purposes
+  // Count feat collections for validation purposes
+  rules.defineRule('criticalFeatCount', /^feats\.*Critical$/, '+=', '1');
   rules.defineRule
-    ('features.Weapon Focus', /features.Weapon Focus \(/, '=', '1');
-  rules.defineRule('features.Greater Weapon Focus',
-    /features.Greater Weapon Focus \(/, '=', '1'
+    ('weaponFocusCount', /^features.Weapon Focus \(/, '+=', '1');
+  rules.defineRule('greaterWeaponFocusCount',
+    /features.Greater Weapon Focus \(/, '+=', '1'
   );
 };
 
@@ -2863,7 +2846,11 @@ Pathfinder.armorRules = function(
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules assocated with bloodline #name#. #features#
+ * lists features associated with the bloodline, #feats# lists the feats from
+ * which bonus feats can be selected, #skill# lists skills that become class
+ * skills, and #spells# lists the additional spells granted, along with the
+ * level for each.
  */
 Pathfinder.bloodlineRules = function(
   rules, name, features, feats, skills, spells, spellDict
@@ -4541,7 +4528,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
 };
 
 /*
- * TODO
+ * Defines in #rules# the rules associated with feature #name#. #notes# lists
+ * notes associated with feature.
  */
 Pathfinder.featureRules = function(rules, name, notes) {
   if(typeof notes == 'string')
