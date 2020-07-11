@@ -35,17 +35,31 @@ function Pathfinder() {
   }
 
   var rules = new QuilvynRules('Pathfinder 1E', PATHFINDER_VERSION);
+  Pathfinder.rules = rules;
+
+  rules.defineChoice('choices', Pathfinder.CHOICES);
   rules.choiceEditorElements = Pathfinder.choiceEditorElements;
   rules.choiceRules = Pathfinder.choiceRules;
   rules.editorElements = SRD35.initialEditorElements();
   rules.getFormats = SRD35.getFormats;
   rules.makeValid = SRD35.makeValid;
   rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
-  Pathfinder.createViewers(rules, SRD35.VIEWERS);
+  rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
+  rules.ruleNotes = Pathfinder.ruleNotes;
 
-  // For spells, schools have to be defined before bloodlines, classes, domains
-  Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
+  Pathfinder.createViewers(rules, SRD35.VIEWERS);
+  rules.defineChoice('extras', 'feats', 'featCount', 'selectableFeatureCount');
+  rules.defineChoice('preset', 'race', 'level', 'levels');
+
+  // For spells, schools have to be defined before classes and domains
+  // Spell definition is handed by individual classes and domains
+  Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, []);
   Pathfinder.abilityRules(rules);
+  Pathfinder.aideRules
+    (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
+  Pathfinder.combatRules
+    (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
+  Pathfinder.goodiesRules(rules);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.BLOODLINES, Pathfinder.CLASSES,
     Pathfinder.DEITIES, Pathfinder.DOMAINS, Pathfinder.FACTIONS,
@@ -54,21 +68,7 @@ function Pathfinder() {
   Pathfinder.talentRules
     (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.LANGUAGES,
      Pathfinder.SKILLS);
-  Pathfinder.combatRules
-    (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
-  Pathfinder.aideRules
-    (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
-  Pathfinder.goodiesRules(rules);
-  rules.defineChoice('choices',
-    'armors', 'bloodlines', 'classes', 'deities', 'domains', 'factions',
-    'familiars', 'feats', 'features', 'genders', 'languages', 'races',
-    'schools', 'shields', 'skills', 'spells', 'traits', 'weapons'
-  );
-  rules.defineChoice('preset', 'race', 'level', 'levels');
-  rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
   Quilvyn.addRuleSet(rules);
-  rules.ruleNotes = Pathfinder.ruleNotes;
-  Pathfinder.rules = rules;
 
   // For now, at least, allow direct entry of favored class hit/skill points
   rules.defineEditorElement
@@ -85,7 +85,6 @@ function Pathfinder() {
   rules.defineRule
     ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
 
-  rules.defineChoice('extras', 'feats', 'featCount', 'selectableFeatureCount');
   rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineEditorElement
     ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
@@ -93,6 +92,7 @@ function Pathfinder() {
 
 }
 
+Pathfinder.CHOICES = SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Trait']);
 Pathfinder.RANDOMIZABLE_ATTRIBUTES =
   SRD35.RANDOMIZABLE_ATTRIBUTES.concat(['faction', 'traits']);
 
@@ -2612,16 +2612,16 @@ Pathfinder.identityRules = function(
   );
 
   for(var bloodline in bloodlines) {
-    rules.choiceRules(rules, 'bloodlines', bloodline, bloodlines[bloodline]);
+    rules.choiceRules(rules, 'Bloodline', bloodline, bloodlines[bloodline]);
   }
   for(var faction in factions) {
-    rules.choiceRules(rules, 'factions', faction, factions[faction]);
+    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
   }
   rules.defineEditorElement
     ('faction', 'Faction', 'select-one', 'factions', 'experience');
   rules.defineSheetElement('Faction', 'Alignment');
   for(var trait in traits) {
-    rules.choiceRules(rules, 'traits', trait, traits[trait]);
+    rules.choiceRules(rules, 'Trait', trait, traits[trait]);
   }
   rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
@@ -2649,32 +2649,13 @@ Pathfinder.talentRules = function(rules, feats, features, languages, skills) {
 };
 
 /*
- * TODO
- */
-Pathfinder.choiceEditorElements = function(rules, type) {
-  var result = [];
-  if(type == 'factions')
-    result.push(
-      // empty
-    );
-  else if(type == 'traits')
-    result.push(
-      ['type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
-      ['subtype', 'Subtype', 'text', [20]]
-    );
-  else
-    return SRD35.choiceEditorElements(rules, type);
-  return result
-};
-
-/*
  * Adds #name# as a possible user #type# choice and parses #attrs# to add rules
  * related to selecting that choice.
  */
 Pathfinder.choiceRules = function(rules, type, name, attrs) {
-  if(type == 'alignments')
+  if(type == 'Alignment')
     Pathfinder.alignmentRules(rules, name);
-  else if(type == 'animalCompanions')
+  else if(type == 'Animal Companion')
     Pathfinder.companionRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Str'),
       QuilvynUtils.getAttrValue(attrs, 'Int'),
@@ -2689,67 +2670,24 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Level'),
       QuilvynUtils.getAttrValue(attrs, 'Size')
     );
-  else if(type == 'bloodlines') {
-    Pathfinder.bloodlineRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
-      QuilvynUtils.getAttrValueArray(attrs, 'skills'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
-      Pathfinder.SPELLS
-    );
-    Pathfinder.bloodlineRulesExtra(rules, name);
-  } else if(type == 'armors')
+  else if(type == 'Armor')
     Pathfinder.armorRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Weight'),
       QuilvynUtils.getAttrValue(attrs, 'Dex'),
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
-  else if(type == 'deities')
-    Pathfinder.deityRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Domain'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
-    );
-  else if(type == 'domains') {
-    Pathfinder.domainRules(rules, name,
+  else if(type == 'Bloodline') {
+    Pathfinder.bloodlineRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
       Pathfinder.SPELLS
     );
-    Pathfinder.domainRulesExtras(rules, name);
-  } else if(type == 'factions')
-    Pathfinder.factionRules(rules, name,
-    );
-  else if(type == 'familiars')
-    Pathfinder.familiarRules(rules, name,
-      QuilvynUtils.getAttrValue(attrs, 'Str'),
-      QuilvynUtils.getAttrValue(attrs, 'Int'),
-      QuilvynUtils.getAttrValue(attrs, 'Wis'),
-      QuilvynUtils.getAttrValue(attrs, 'Dex'),
-      QuilvynUtils.getAttrValue(attrs, 'Con'),
-      QuilvynUtils.getAttrValue(attrs, 'Cha'),
-      QuilvynUtils.getAttrValue(attrs, 'HD'),
-      QuilvynUtils.getAttrValue(attrs, 'AC'),
-      QuilvynUtils.getAttrValue(attrs, 'Attack'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
-      QuilvynUtils.getAttrValue(attrs, 'Size')
-    );
-  else if(type == 'feats') {
-    Pathfinder.featRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Type'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Require'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Imply')
-    );
-    Pathfinder.featRulesExtra(rules, name);
-  } else if(type == 'features')
-    Pathfinder.featureRules(rules, name, attrs);
-  else if(type == 'genders')
-    Pathfinder.genderRules(rules, name);
-  else if(type == 'languages')
-    Pathfinder.languageRules(rules, name);
-  else if(type == 'levels') {
+    Pathfinder.bloodlineRulesExtra(rules, name);
+  } else if(type == 'Class') {
     Pathfinder.classRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Imply'),
@@ -2770,24 +2708,67 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       Pathfinder.SPELLS
     );
     Pathfinder.classRulesExtra(rules, name);
-  } else if(type == 'races') {
+  } else if(type == 'Deity')
+    Pathfinder.deityRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Domain'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
+    );
+  else if(type == 'Domain') {
+    Pathfinder.domainRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
+    );
+    Pathfinder.domainRulesExtras(rules, name);
+  } else if(type == 'Faction')
+    Pathfinder.factionRules(rules, name,
+    );
+  else if(type == 'Familiar')
+    Pathfinder.familiarRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'Str'),
+      QuilvynUtils.getAttrValue(attrs, 'Int'),
+      QuilvynUtils.getAttrValue(attrs, 'Wis'),
+      QuilvynUtils.getAttrValue(attrs, 'Dex'),
+      QuilvynUtils.getAttrValue(attrs, 'Con'),
+      QuilvynUtils.getAttrValue(attrs, 'Cha'),
+      QuilvynUtils.getAttrValue(attrs, 'HD'),
+      QuilvynUtils.getAttrValue(attrs, 'AC'),
+      QuilvynUtils.getAttrValue(attrs, 'Attack'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Size')
+    );
+  else if(type == 'Feat') {
+    Pathfinder.featRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Type'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Require'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Imply')
+    );
+    Pathfinder.featRulesExtra(rules, name);
+  } else if(type == 'Feature')
+    Pathfinder.featureRules(rules, name, attrs);
+  else if(type == 'Gender')
+    Pathfinder.genderRules(rules, name);
+  else if(type == 'Language')
+    Pathfinder.languageRules(rules, name);
+  else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
     );
     Pathfinder.raceRulesExtra(rules, name);
-  } else if(type == 'schools') {
+  } else if(type == 'School') {
     Pathfinder.schoolRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
     );
     Pathfinder.schoolRulesExtra(rules, name);
-  } else if(type == 'shields')
+  } else if(type == 'Shield')
     Pathfinder.shieldRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Level'),
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
-  else if(type == 'skills') {
+  else if(type == 'Skill') {
     var untrained = QuilvynUtils.getAttrValue(attrs, 'Untrained');
     Pathfinder.skillRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Ability'),
@@ -2795,11 +2776,20 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Class')
     );
     Pathfinder.skillRulesExtra(rules, name);
-  } else if(type == 'spells') {
-    ; // empty -- handled by classes and domains
-  } else if(type == 'traits')
-    Pathfinder.traitRules(rules, name);
-  else if(type == 'weapons')
+  } else if(type == 'Spell')
+    Pathfinder.spellRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'School'),
+      QuilvynUtils.getAttrValue(attrs, 'Group'),
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Description')
+    );
+  else if(type == 'Trait') {
+    Pathfinder.traitRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'Type'),
+      QuilvynUtils.getAttrValue(attrs, 'Subtype')
+    );
+    Pathfinder.traitRulesExtra(rules, name);
+  } else if(type == 'Weapon')
     Pathfinder.weaponRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Level'),
       QuilvynUtils.getAttrValue(attrs, 'Category'),
@@ -2812,8 +2802,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     console.log('Unknown choice type "' + type + '"');
     return;
   }
-  if(type != 'spells' && type != 'features')
+  if(type != 'Feature') {
+    type = type == 'Class' ? 'levels' : (type.substring(0,1).toLowerCase() + type.substring(1).replace(/ /g, '') + 's');
     rules.addChoice(type, name, attrs);
+  }
 };
 
 /* Defines in #rules# the rules associated with alignment #name#. */
@@ -2887,6 +2879,9 @@ Pathfinder.bloodlineRules = function(
   var note = skills.join(' is a class skill/') + ' is a class skill';
   Pathfinder.featureRules(rules, 'Bloodline ' + name, 'skill:' + note);
 
+  // Some bloodline spells are already defined with the Wizard class; others
+  // are not (i.e., they're only Cleric or Druid spells). (Re)define them all
+  // here to make certain.
   for(var i = 0; i < spells.length; i++) {
     var matchInfo = spells[i].match(/^((\d+):)?(.*)$/);
     var spellName = matchInfo ? matchInfo[3] : features[i];
@@ -2895,14 +2890,16 @@ Pathfinder.bloodlineRules = function(
       console.log('Unknown spell "' + spellName + '"');
       continue;
     }
-    var description =
-      QuilvynUtils.getAttrValue(spellDict[spellName], 'description');
     var school = QuilvynUtils.getAttrValue(spellDict[spellName], 'School');
-    var spell = spellName + '(W' + (i+1) + ' ' + school.substring(0, 4) + ')';
-    Pathfinder.spellRules(rules, spell, school, 'W', i + 1, description);
-    rules.defineRule('spells.' + spell,
-      bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
-    );
+    if(school == null) {
+      console.log('No school given for spell "' + spellName + '"');
+      continue;
+    }
+    var fullSpell =
+      spellName + '(' + 'W' + level + ' ' + school.substring(0, 4) + ')';
+    rules.choiceRules
+      (rules, 'Spell', fullSpell,
+       spellDict[spellName] + ' Group=W Level=' + level);
   }
 
 };
@@ -4325,6 +4322,7 @@ Pathfinder.familiarRules = function(
  */
 Pathfinder.featRules = function(rules, name, types, requires, implies) {
   SRD35.featRules(rules, name, types, requires, implies);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
@@ -4825,6 +4823,10 @@ Pathfinder.skillRules = function(rules, name, ability, untrained, classes) {
   }
 };
 
+/*
+ * Defines in #rules# the rules associated with skill #name# that are not
+ * directly derived from the parmeters passed to skillRules.
+ */
 Pathfinder.skillRulesExtra = function(rules, name) {
   if(name == 'Fly') {
     rules.defineRule('skillModifier.Fly', 'features.Large', '+', '-2');
@@ -4853,6 +4855,48 @@ Pathfinder.spellRules = function(
       rules.defineRule(note + '.' + matchInfo[1],
         'charismaModifier', '=', '10 + source + ' + level
       );
+  }
+};
+
+/*
+ * Defines in #rules# the rules associated with trait #name#, which is of type
+ * #type# and subtype #subtype#.
+ */
+Pathfinder.traitRules = function(rules, name, type, subtype) {
+  rules.defineRule('features.' + name, 'traits.' + name, '=', null);
+};
+
+/*
+ * Defines in #rules# the rules associated with trait #name# that are not
+ * directly derived from the parmeters passed to traitRules.
+ */
+Pathfinder.traitRulesExtra = function(rules, name) {
+  if(name == 'Armor Expert') {
+    rules.defineRule('skillNotes.armorSkillCheckPenalty',
+      'skillNotes.armorExpertFeature', '+', '-1'
+    );
+  } else if(name == 'Attuned To The Ancestors') {
+    rules.defineRule('magicNotes.attunedToTheAncestorsFeature',
+      'level', '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Balanced Offensive') {
+    rules.defineRule('combatNotes.balancedOffensiveFeature',
+      'level', '=', '1 + Math.floor(source / 5)'
+    );
+  } else if(name == 'Fires Of Hell') {
+    rules.defineRule
+      ('combatNotes.firesOfHellFeature', 'charismaModifier', '=', null);
+  } else if(name == 'Impressive Presence') {
+    rules.defineRule('combatNotes.impressivePresenceFeature',
+      'level', '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+  } else if(name == 'Magical Knack') {
+    rules.defineRule('magicNotes.magicalKnackFeature', 'level', '=', null);
+  } else if(name == 'Storyteller') {
+    rules.defineRule('skillNotes.storytellerFeature',
+      'intelligenceModifier', '=', 'Math.max(source + 3, 1)'
+    );
   }
 };
 
@@ -4972,39 +5016,28 @@ Pathfinder.ruleNotes = function() {
     '</p>\n';
 };
 
-/* Defines the rules related to (optional) character traits. */
-Pathfinder.traitRules = function(rules, name, type, subtype) {
+/* Returns an ObjectViewer loaded with the default character sheet format. */
+Pathfinder.createViewers = function(rules, viewers) {
+  SRD35.createViewers(rules, viewers); // No changes
+};
 
-  rules.defineRule('features.' + name, 'traits.' + name, '=', null);
-
-  if(name == 'Armor Expert') {
-    rules.defineRule('skillNotes.armorSkillCheckPenalty',
-      'skillNotes.armorExpertFeature', '+', '-1'
+/*
+ * TODO
+ */
+Pathfinder.choiceEditorElements = function(rules, type) {
+  var result = [];
+  if(type == 'factions')
+    result.push(
+      // empty
     );
-  } else if(name == 'Attuned To The Ancestors') {
-    rules.defineRule('magicNotes.attunedToTheAncestorsFeature',
-      'level', '=', 'Math.max(Math.floor(source / 2), 1)'
+  else if(type == 'traits')
+    result.push(
+      ['type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
+      ['subtype', 'Subtype', 'text', [20]]
     );
-  } else if(name == 'Balanced Offensive') {
-    rules.defineRule('combatNotes.balancedOffensiveFeature',
-      'level', '=', '1 + Math.floor(source / 5)'
-    );
-  } else if(name == 'Fires Of Hell') {
-    rules.defineRule
-      ('combatNotes.firesOfHellFeature', 'charismaModifier', '=', null);
-  } else if(name == 'Impressive Presence') {
-    rules.defineRule('combatNotes.impressivePresenceFeature',
-      'level', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-  } else if(name == 'Magical Knack') {
-    rules.defineRule('magicNotes.magicalKnackFeature', 'level', '=', null);
-  } else if(name == 'Storyteller') {
-    rules.defineRule('skillNotes.storytellerFeature',
-      'intelligenceModifier', '=', 'Math.max(source + 3, 1)'
-    );
-  }
-
+  else
+    return SRD35.choiceEditorElements(rules, type);
+  return result
 };
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
@@ -5024,9 +5057,4 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       attributes.experience = QuilvynUtils.random(min, max);
     }
   }
-};
-
-/* Returns an ObjectViewer loaded with the default character sheet format. */
-Pathfinder.createViewers = function(rules, viewers) {
-  SRD35.createViewers(rules, viewers); // No changes
 };

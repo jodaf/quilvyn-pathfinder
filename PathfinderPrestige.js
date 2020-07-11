@@ -286,7 +286,7 @@ PathfinderPrestige.FEATURES = {
 /* Defines the rules related to SRDv3.5 Prestige Classes. */
 PathfinderPrestige.identityRules = function(rules, classes) {
   for(var clas in classes) {
-    rules.choiceRules(rules, 'levels', clas, classes[clas]);
+    rules.choiceRules(rules, 'Class', clas, classes[clas]);
     PathfinderPrestige.classRulesExtra(rules, clas);
     // Pathfinder prestige classes use different progressions for saves
     for(var save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
@@ -301,7 +301,7 @@ PathfinderPrestige.identityRules = function(rules, classes) {
 /* Defines rules related to character features. */
 PathfinderPrestige.talentRules = function(rules, features) {
   for(var feature in features) {
-    rules.choiceRules(rules, 'features', feature, features[feature]);
+    rules.choiceRules(rules, 'Feature', feature, features[feature]);
   }
 };
 
