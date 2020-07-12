@@ -695,7 +695,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Extra Mercy':'Type=General Require="features.Lay On Hands",features.Mercy',
   'Extra Performance':'Type=General Require="features.Bardic Performance"',
   'Extra Rage':'Type=General Require=features.Rage',
-  'Fleet':'Type=General Implies="wearingLightArmor == 1"',
+  'Fleet':'Type=General Implies="armorWeight < 2"',
   "Gorgon's Fist":
     'Type=Fighter Require="baseAttack >= 6","features.Improved Unarmed Strike","features.Scorpion Style"',
   'Greater Bull Rush':
@@ -724,8 +724,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Improved Vital Strike':
     'Type=Fighter Require="baseAttack >= 11","features.Vital Strike"',
   'Improvised Weapon Mastery':
-    'Type=Fighter Require="baseAttack >= 8","features.Catch Off-Guard","features.Throw Anything"',
-    // TODO Catch Off-Guard *or* Throw Anything
+    'Type=Fighter Require="baseAttack >= 8","features.Catch Off-Guard || features.Throw Anything"',
   'Intimidating Prowess':'Type=Fighter',
   'Lightning Stance':
     'Type=Fighter Require="baseAttack >= 11","dexterity >= 17",features.Dodge,"features.Wind Stance"',
@@ -970,7 +969,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   // Feats
   'Acrobatic':'skill:+%V Acrobatics/+%V Fly',
   'Acrobatic Steps':"ability:Move through difficult terrain 20'/rd",
-  'Agile Maneuvers':'combat:+%V CMB (dex instead of str)',
+  'Agile Maneuvers':'combat:+%V CMB',
   'Alertness':'skill:+%V Perception/+%V Sense Motive',
   'Alignment Channel (Chaos)':
     'combat:Channel Energy to heal or harm Chaos outsiders',
@@ -1120,7 +1119,8 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Armor Mastery':'combat:DR 5/- when using armor/shield',
   'Armor Training':[
     'ability:No speed penalty in %V armor',
-    'combat:Additional +%V Dex AC bonus', 'skill:Reduce armor skill check penalty by %V'
+    'combat:Additional +%V Dex AC bonus',
+    'skill:Reduce armor skill check penalty by %V'
   ],
   'Aura Of Justice':"combat:Grant Smite Evil to allies w/in 10'",
   'Aura Of Resolve':"save:Immune charm, +4 to allies w/in 30'",
@@ -2817,15 +2817,15 @@ Pathfinder.alignmentRules = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with armor #name#, which adds #ac#
- * to the character's armor class, requires a #profLevel# proficiency level to
+ * to the character's armor class, requires a #weight# proficiency level to
  * use effectively, allows a maximum dex bonus to ac of #maxDex#, imposes
  * #skillPenalty# on specific skills and yields a #spellFail# percent chance of
  * arcane spell failure.
  */
 Pathfinder.armorRules = function(
-  rules, name, ac, profLevel, maxDex, skillPenalty, spellFail
+  rules, name, ac, weight, maxDex, skillPenalty, spellFail
 ) {
-  SRD35.armorRules(rules, name, ac, profLevel, maxDex, skillPenalty, spellFail);
+  SRD35.armorRules(rules, name, ac, weight, maxDex, skillPenalty, spellFail);
   // Disable armor swim check note
   rules.defineRule
     ('skillNotes.armorSwimCheckPenaltyFeature', 'level', '^', '0');
@@ -3344,7 +3344,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.simpleSomaticsFeature.1',
       'magicNotes.simpleSomaticsFeature', '?', null,
-      'wearingLightArmor', '=', null
+      'armorWeight', '=', 'source <= 1 ? 1 : null'
     );
     rules.defineRule(/^skillModifier.Knowledge/,
       'skillNotes.bardicKnowledgeFeature', '+', null
@@ -3410,18 +3410,16 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Fighter') {
 
-    rules.defineRule('abilityNotes.armorTrainingFeature',
-      'levels.Fighter', '=', 'source >= 7 ? "heavy" : source >= 3 ? "medium" : null'
-    );
-/* TODO
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
-      'armorTrainingGap', '^', 'source >= 0 ? 0 : null'
+      'abilityNotes.armorTrainingFeature.1', '^', 'source >= 0 ? 0 : null'
     );
-    rules.defineRule('armorTrainingGap',
-      'armor', '+', '-SRD35.armorsProficiencyLevels[source]',
-      'abilityNotes.armorTrainingFeature', '=', 'source == "heavy" ? SRD35.PROFICIENCY_HEAVY : SRD35.PROFICIENCY_MEDIUM'
+    rules.defineRule('abilityNotes.armorTrainingFeature',
+      'levels.Fighter', '=', 'source >= 7 ? "heavy" : "medium"'
     );
-*/
+    rules.defineRule('abilityNotes.armorTrainingFeature.1',
+      'abilityNotes.armorTrainingFeature', '=', 'source == "heavy" ? 3 : 2',
+      'armorWeight', '+', '-source'
+    );
     rules.defineRule
       ('armorClass', 'combatNotes.armorTrainingFeature', '+', null);
     rules.defineRule('combatManeuverDefense',
@@ -3429,7 +3427,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.armorTrainingFeature',
       'dexterityModifier', '=', null,
-      'dexterityArmorClassAdjustment', '+', '-source',
+      'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
       'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)',
       '', '^', '0'
     );
@@ -4531,9 +4529,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
 Pathfinder.featureRules = function(rules, name, notes) {
   if(typeof notes == 'string')
     notes = [notes];
-  for(var i = 0; i < notes.length; i++) {
-    notes[i] = notes[i].replace('CMB', 'Combat Maneuver Bonus').replace('CMD', 'Combat Maneuver Defense');
-  }
   SRD35.featureRules(rules, name, notes);
   // No changes needed to the rules defined by SRD35 method
 };
@@ -4547,7 +4542,9 @@ Pathfinder.genderRules = function(rules, name) {
 /* Defines in #rules# the rules associated with language #name#. */
 Pathfinder.languageRules = function(rules, name) {
   SRD35.languageRules(rules, name);
-  // No changes needed to the rules defined by SRD35 method
+  if(name == 'Sylvan')
+    rules.defineRule
+      ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
 };
 
 /*
@@ -4611,9 +4608,11 @@ Pathfinder.raceRulesExtra = function(rules, name) {
       ('casterLevels.Speak With Animals', 'casterLevels.Gnome', '^=', null);
     // Set casterLevels.B to a minimal value so that spell DC will be
     // calcuated even for non-Bard Gnomes.
-    rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '=', '1');
-    rules.defineRule
-      ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
+    rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '^=', '1');
+    rules.defineRule('featureNotes.low-LightVisionFeature',
+      '', '=', '1',
+      prefix + 'Features.Low-Light Vision', '+', null
+    );
     rules.defineRule('magicNotes.naturalSpellsFeature',
       'charisma', '?', 'source >= 11',
       prefix + 'Features.Natural Spells', '=',
