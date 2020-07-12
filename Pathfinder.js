@@ -59,7 +59,6 @@ function Pathfinder() {
     (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
   Pathfinder.combatRules
     (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
-  Pathfinder.goodiesRules(rules);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.BLOODLINES, Pathfinder.CLASSES,
     Pathfinder.DEITIES, Pathfinder.DOMAINS, Pathfinder.FACTIONS,
@@ -68,6 +67,8 @@ function Pathfinder() {
   Pathfinder.talentRules
     (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.LANGUAGES,
      Pathfinder.SKILLS);
+  Pathfinder.goodiesRules(rules);
+
   Quilvyn.addRuleSet(rules);
 
   // For now, at least, allow direct entry of favored class hit/skill points
