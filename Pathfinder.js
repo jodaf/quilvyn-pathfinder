@@ -2897,11 +2897,15 @@ Pathfinder.bloodlineRules = function(
       continue;
     }
     var fullSpell =
-      spellName + '(' + 'W' + level + ' ' + school.substring(0, 4) + ')';
+      spellName + '(' + 'W' + (i+1) + ' ' + school.substring(0, 4) + ')';
     rules.choiceRules
       (rules, 'Spell', fullSpell,
-       spellDict[spellName] + ' Group=W Level=' + level);
+       spellDict[spellName] + ' Group=W Level=' + (i + 1));
+    rules.defineRule('spells.' + fullSpell,
+      bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
+    );
   }
+
 
 };
 
@@ -4486,7 +4490,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Stealthy') {
     rules.defineRule('skillNotes.stealthyFeature',
-      'skills.Escape Artist', '=', 'source >= 10 ? 4 : 2'
+      'skills.Escape Artist', '=', 'source >= 10 ? 4 : 2',
+      'skills.Stealth', '^=', 'source >= 10 ? 4 : 2'
     );
   } else if(name == 'Stunning Critical') {
     rules.defineRule('combatNotes.stunningCriticalFeature',
