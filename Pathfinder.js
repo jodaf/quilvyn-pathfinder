@@ -1079,7 +1079,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Penetrating Strike':'combat:Focused weapons ignore DR 5/anything',
   'Persuasive':'skill:+%V Diplomacy/+%V Intimidate',
   'Pinpoint Targeting':'combat:Ranged attack ignores armor bonus',
-  'Power Attack':'combat:-%V attack/+%1 damage',
+  'Power Attack':'combat:Trade up to -%V attack for double damage bonus',
   'Run':[
     'ability:+1 Run Speed Multiplier',
     'combat:Retain dex bonus to AC while running',
@@ -1288,9 +1288,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Skilled':'skill:+%V skill points',
   'Intimidating':'skill:+2 Intimidate',
   'Keen Senses':'skill:+2 Perception',
-  'Low-Light Vision':'feature:x%V normal distance in poor light',
   'Multitalented':'feature:Two favored classes',
-  'Natural Spells':'magic:%V 1/day as caster %1',
   'Obsessive':'skill:+2 choice of Craft or Profession',
   'Orc Blood':'feature:Orc and human for racial effects',
   'Orc Ferocity':'combat:Fight 1 rd below zero HP',
@@ -1579,8 +1577,12 @@ Pathfinder.RACES = {
   'Gnome':
     'Features="Defensive Training","Gnome Ability Adjustment",' +
     '"Gnome Hatred","Gnome Magic","Keen Senses","Low-Light Vision",' +
-    '"Natural Spells",Obsessive,"Resist Illusion",Slow,Small,' +
-    '"Weapon Familiarity (Gnome Hooked Hammer)"',
+    'Obsessive,"Resist Illusion",Slow,Small,' +
+    '"Weapon Familiarity (Gnome Hooked Hammer)" ' +
+    'SpellAbility=charisma ' +
+    'Spells=' +
+      '"charisma >= 11 ? Gnome1:Speak With Animals",' +
+      '"charisma >= 11 ? Gnome0:Dancing Lights;Ghost Sound;Prestidigitation"',
   'Half-Elf':
     'Features=Adaptability,"Elf Blood","Half-Elf Ability Adjustment",' +
     '"Keen Senses","Low-Light Vision",Multitalented,"Resist Enchantment",' +
@@ -2101,7 +2103,9 @@ Pathfinder.CLASSES = {
       '"4:Wild Shape","9:Venom Immunity","13:Thousand Faces",' +
       '"15:Timeless Body" ' +
     'Selectables=' +
-      '"1:Animal Companion","1:Nature Domains" ' +
+      '"1:Animal Companion","1:Air Domain","1:Animal Domain",' +
+      '"1:Earth Domain","1:Fire Domain","1:Plant Domain","1:Water Domain",' +
+      '"1:Weather Domain" ' +
     'CasterLevelDivine=Level ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
@@ -2754,7 +2758,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.languageRules(rules, name);
   else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Features')
+      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
     );
     Pathfinder.raceRulesExtra(rules, name);
   } else if(type == 'School') {
@@ -2765,7 +2772,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   } else if(type == 'Shield')
     Pathfinder.shieldRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Weight'),
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
@@ -3377,11 +3384,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.wildShape.2',
       'levels.Druid', '=', 'Math.floor((source - 2) / 2)'
     );
-    rules.defineRule('selectableFeatureCount.Druid',
-      'levels.Druid', '=', '1',
-      // TODO
-      'features.Nature Domains', '+', '1'
-    );
+    rules.defineRule('selectableFeatureCount.Druid', 'levels.Druid', '=', '1');
     rules.defineRule('skillNotes.wildEmpathy',
       'levels.Druid', '+=', null,
       'charismaModifier', '+', null
@@ -4300,13 +4303,13 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Arcane Armor Mastery') {
     rules.defineRule('magicNotes.arcaneSpellFailure',
-      '', '^', '0',
-      'magicNotes.arcaneArmorMastery', '+', '-10'
+      'magicNotes.arcaneArmorMastery', '+', '-10',
+      '', '^', '0'
     );
   } else if(name == 'Arcane Armor Training') {
     rules.defineRule('magicNotes.arcaneSpellFailure',
-      '', '^', '0',
-      'magicNotes.arcaneArmorTraining', '+', '-10'
+      'magicNotes.arcaneArmorTraining', '+', '-10',
+      '', '^', '0'
     );
   } else if(name == 'Arcane Strike') {
     rules.defineRule('combatNotes.arcaneStrike',
@@ -4353,9 +4356,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Disable Device', '=', 'source >= 10 ? 4 : 2'
     );
   } else if(name == 'Extra Channel') {
-    rules.defineRule('magicNotes.channelEnergy.2',
-      'magicNotes.extraChannel', '+', '2'
-    );
+    rules.defineRule
+      ('magicNotes.channelEnergy.2', 'magicNotes.extraChannel', '+', '2');
   } else if(name == 'Extra Ki') {
     rules.defineRule('featureNotes.kiPool', 'featureNotes.extraKi', '+', '2');
   } else if(name == 'Extra Lay On Hands') {
@@ -4390,10 +4392,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Power Attack') {
     rules.defineRule('combatNotes.powerAttack',
       'baseAttack', '=', '1 + Math.floor(source / 4)'
-    );
-    rules.defineRule('combatNotes.powerAttack.1',
-      'features.Power Attack', '?', null,
-      'baseAttack', '=', '2 * (1 + Math.floor(source / 4))'
     );
   } else if(name == 'Scorpion Style') {
     rules.defineRule('combatNotes.scorpionStyle', 'wisdomModifier', '=', null);
@@ -4437,7 +4435,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
     )
   } else if(name == 'Toughness') {
     rules.defineRule
-      ('combatNotes.toughness', 'level', '=', 'Math.max(3, source)');
+      ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
   } else if(name == 'Turn Undead') {
     rules.defineRule('combatNotes.turnUndead',
       'levels.Cleric', '=', '10 + Math.floor(source / 2)',
@@ -4480,10 +4478,13 @@ Pathfinder.languageRules = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with race #name#. #features# lists
- * the associated features.
+ * the associated features. #spells# lists any natural spells, for which
+ * #spellAbility# is used to compute the save DC.
  */
-Pathfinder.raceRules = function(rules, name, features) {
-  SRD35.raceRules(rules, name, features);
+Pathfinder.raceRules = function(
+  rules, name, features, spellAbility, spells, spellDict
+) {
+  SRD35.raceRules(rules, name, features, spellAbility, spells, spellDict);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -4492,16 +4493,7 @@ Pathfinder.raceRules = function(rules, name, features) {
  * directly derived from the parmeters passed to raceRules.
  */
 Pathfinder.raceRulesExtra = function(rules, name) {
-
-  var prefix =
-    name.substring(0,1).toLowerCase() + name.substring(1).replace(/ /g, '');
-
   if(name == 'Half-Elf') {
-
-    rules.defineRule('featureNotes.low-LightVision',
-      '', '=', '1',
-      prefix + 'Features.Low-Light Vision', '+', null
-    );
     rules.defineChoice('notes',
       'validationNotes.adaptabilityFeatureFeats:Requires Skill Focus'
     );
@@ -4509,58 +4501,12 @@ Pathfinder.raceRulesExtra = function(rules, name) {
       'features.Adaptability', '=', '-1',
       /feats.Skill Focus/, '^', '0'
     );
-
   } else if(name.match(/Dwarf/)) {
-
     rules.defineRule
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
-
-  } else if(name.match(/Elf/)) {
-
-    rules.defineRule('featureNotes.low-LightVision',
-      '', '=', '1',
-      prefix + 'Features.Low-Light Vision', '+', null
-    );
-
-  } else if(name.match(/Gnome/)) {
-
-    rules.defineRule('casterLevels.Gnome',
-      'gnomeFeatures.Natural Spells', '?', null,
-      'level', '=', null
-    );
-    rules.defineRule
-      ('casterLevels.Dancing Lights', 'casterLevels.Gnome', '^=', null);
-    rules.defineRule
-      ('casterLevels.Ghost Sound', 'casterLevels.Gnome', '^=', null);
-    rules.defineRule
-      ('casterLevels.Prestidigitation', 'casterLevels.Gnome', '^=', null);
-    rules.defineRule
-      ('casterLevels.Speak With Animals', 'casterLevels.Gnome', '^=', null);
-    // Set casterLevels.B to a minimal value so that spell DC will be
-    // calcuated even for non-Bard Gnomes.
-    rules.defineRule('casterLevels.B', 'casterLevels.Gnome', '^=', '1');
-    rules.defineRule('featureNotes.low-LightVision',
-      '', '=', '1',
-      prefix + 'Features.Low-Light Vision', '+', null
-    );
-    rules.defineRule('magicNotes.naturalSpells',
-      'charisma', '?', 'source >= 11',
-      prefix + 'Features.Natural Spells', '=',
-      '"<i>Dancing Lights</i>/<i>Ghost Sound</i>/<i>Prestidigitation</i>/' +
-      '<i>Speak With Animals</i>"'
-    );
-    rules.defineRule('magicNotes.naturalSpells.1',
-      'features.Natural Spells', '?', null,
-      'level', '=', null
-    );
-
   } else if(name.match(/Human/)) {
-
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
-    rules.defineRule('skillPoints', 'skillNotes.skilled', '+', null);
-
   }
-
 };
 
 /* Defines in #rules# the rules associated with magic school #name#. */
@@ -4960,8 +4906,8 @@ Pathfinder.choiceEditorElements = function(rules, type) {
     );
   else if(type == 'traits')
     result.push(
-      ['type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
-      ['subtype', 'Subtype', 'text', [20]]
+      ['Type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
+      ['Subtype', 'Subtype', 'text', [20]]
     );
   else
     return SRD35.choiceEditorElements(rules, type);
