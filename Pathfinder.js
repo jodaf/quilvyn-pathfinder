@@ -911,7 +911,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Noble Leadership':'feature:+%V Leadership',
   'Rebuke Death':'magic:Touch creature below 0 HP to heal 1d4+%1 HP %V/day',
   'Remote Viewing':'magic:<i>Clairaudience/Clairvoyance</i> %V rd/day',
-  'Resistance Bonus':'save:+%V saves',
+  'Resistance Bonus':'save:+%V Fortitude/+%V Reflex/+%V Will',
   'Resistant Touch':
     'magic:Touch transfers resistance bonus to ally 1 minute %V/day',
   'Scythe Of Evil':'combat:Add <i>unholy</i> to weapon %1 rd %V/day',
@@ -1179,7 +1179,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Jack Of All Trades':'skill:Use any skill untrained',
   'Ki Dodge':'combat:Use 1 ki for +4 AC',
   'Ki Pool':'feature:%V points refills w/8 hours rest',
-  'Ki Speed':'ability:Use 1 ki for +20',
+  'Ki Speed':'ability:Use 1 ki for +20 Speed',
   'Ki Strike':'combat:Unarmed attack is %V',
   'Knockback':'combat:Successful Bull Rush during rage %V HP',
   'Lay On Hands':'magic:Harm undead or heal %Vd6 HP %1/day',
@@ -1238,6 +1238,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'School Opposition (Transmutation)':
     'magic:Double cost to cast Transmutation spells',
   'Slow Reactions':'combat:Sneak attack target no AOO 1 rd',
+  'Smite Evil':'combat:+%V attack/+%1 damage/+%2 AC vs. evil foe %2/day',
   'Soothing Performance':"magic:R30' <i>Mass Cure Serious Wounds</i> via performance",
   'Spontaneous Cleric Spell':
     'magic:Cast <i>Cure</i> or <i>Inflict<i> in place of known spell',
@@ -1262,6 +1263,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Wholeness Of Body':'magic:Use 2 ki to heal %V HP to self',
   // Races
   'Adaptability':'feature:+1 General Feat (Skill Focus)',
+  'Bonus Feat':'feature:+1 General Feat',
   'Darkvision':"feature:60' b/w vision in darkness",
   'Defensive Training':'combat:+4 AC vs. giant creatures',
   'Dwarf Ability Adjustment':'ability:+2 Constitution/+2 Wisdom/-2 Charisma',
@@ -1284,8 +1286,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Halfling Ability Adjustement':'ability:+2 Dexterity/+2 Charisma/-2 Strength',
   'Hardy':'save:+2 vs. poison and spells',
   'Human Ability Adjustment':'ability:+2 any',
-  'Bonus Feat':'feature:+1 General Feat',
-  'Skilled':'skill:+%V skill points',
   'Intimidating':'skill:+2 Intimidate',
   'Keen Senses':'skill:+2 Perception',
   'Multitalented':'feature:Two favored classes',
@@ -1294,6 +1294,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Orc Ferocity':'combat:Fight 1 rd below zero HP',
   'Resist Enchantment':'save:+2 vs. enchantment',
   'Resist Illusion':'save:+2 vs. illusions',
+  'Skilled':'skill:+%V Skill Points',
   'Sleep Immunity':'save:Immune <i>Sleep</i>',
   'Slow':'ability:-10 Speed',
   'Small':[
@@ -3340,6 +3341,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'magicNotes.simpleSomatics', '?', null,
       'armorWeight', '=', 'source <= 1 ? 1 : null'
     );
+    rules.defineRule('magicNotes.suggestion',
+      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
     rules.defineRule(/^skillModifier.Knowledge/,
       'skillNotes.bardicKnowledge', '+', null
     );
@@ -3533,7 +3538,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       if(!minLevel)
         minLevel = 1;
       rules.defineRule('validationNotes.' + featNoSpace + 'Feat',
-        'levels.Monk', 'v', 'source < ' + minLevel + ' ? null : 0'
+        'levels.Monk', '^', 'source < ' + minLevel + ' ? null : 0'
       );
     }
 
@@ -3578,9 +3583,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
     )
-    rules.defineRule('save.Fortitude', 'saveNotes.divineGrace', '+', null);
-    rules.defineRule('save.Reflex', 'saveNotes.divineGrace', '+', null);
-    rules.defineRule('save.Will', 'saveNotes.divineGrace', '+', null);
     rules.defineRule('saveNotes.divineGrace', 'charismaModifier', '=', null);
     rules.defineRule('selectableFeatureCount.Paladin',
       'levels.Paladin', '=', 'source >= 5 ? 1 : null'
@@ -4137,9 +4139,6 @@ Pathfinder.domainRulesExtras = function(rules, name) {
     rules.defineRule('saveNotes.resistanceBonus',
       'levels.Cleric', '=', '1 + Math.floor(source / 5)'
     );
-    rules.defineRule('save.Fortitude', 'saveNotes.resistanceBonus', '+', null);
-    rules.defineRule('save.Reflex', 'saveNotes.resistanceBonus', '+', null);
-    rules.defineRule('save.Will', 'saveNotes.resistanceBonus', '+', null);
   } else if(name == 'Repose') {
     rules.defineRule
       ('magicNotes.gentleRest', 'wisdomModifier', '=', 'source + 3');
@@ -4471,9 +4470,7 @@ Pathfinder.genderRules = function(rules, name) {
 /* Defines in #rules# the rules associated with language #name#. */
 Pathfinder.languageRules = function(rules, name) {
   SRD35.languageRules(rules, name);
-  if(name == 'Sylvan')
-    rules.defineRule
-      ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
@@ -4504,6 +4501,10 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
+  } else if(name.match(/Gnome/)) {
+    rules.defineRule('languageCount', 'is' + name, '+', '1');
+    rules.defineRule
+      ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
   }
