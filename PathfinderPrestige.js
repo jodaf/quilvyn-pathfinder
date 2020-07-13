@@ -311,42 +311,42 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
   if(name == 'Arcane Archer') {
 
     rules.defineRule(
-      'combatNotes.arrowOfDeathFeature', 'charismaModifier', '=', 'source + 20'
+      'combatNotes.arrowOfDeath', 'charismaModifier', '=', 'source + 20'
     );
-    rules.defineRule('combatNotes.elementalArrowsFeature',
+    rules.defineRule('combatNotes.elementalArrows',
      'levels.Arcane Archer', '=',
      'source < 7 ? "flaming/frost/shock" : "flaming burst/icy burst/shocking burst"'
     );
     rules.defineRule
-      ('combatNotes.hailOfArrowsFeature', 'levels.Arcane Archer', '+=', null);
+      ('combatNotes.hailOfArrows', 'levels.Arcane Archer', '+=', null);
     rules.defineRule(
-      'combatNotes.phaseArrowFeature', 'levels.Arcane Archer', '=',
+      'combatNotes.phaseArrow', 'levels.Arcane Archer', '=',
       'Math.floor((source - 4) / 2)'
     );
     rules.defineRule(
-      'combatNotes.seekerArrowFeature', 'levels.Arcane Archer', '=',
+      'combatNotes.seekerArrow', 'levels.Arcane Archer', '=',
       'Math.floor((source - 2) / 2)'
     );
-    rules.defineRule('magicNotes.casterLevelBonusFeature',
+    rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Arcane Archer', '=',
       'source >= 2 ? source - Math.floor((source + 3) / 4) : null'
     );
 
   } else if(name == 'Arcane Trickster') {
 
-    rules.defineRule('combatNotes.impromptuSneakAttackFeature',
+    rules.defineRule('combatNotes.impromptuSneakAttack',
       'levels.Arcane Trickster', '+=', 'source < 7 ? 1 : 2'
     );
-    rules.defineRule('combatNotes.sneakAttackFeature',
+    rules.defineRule('combatNotes.sneakAttack',
       'levels.Arcane Trickster', '+=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('magicNotes.casterLevelBonusFeature',
+    rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Arcane Trickster', '+=', null
     );
-    rules.defineRule('magicNotes.invisibleThiefFeature',
+    rules.defineRule('magicNotes.invisibleThief',
       'levels.Arcane Trickster', '+=', null
     );
-    rules.defineRule('magicNotes.trickySpellsFeature',
+    rules.defineRule('magicNotes.trickySpells',
       'levels.Arcane Trickster', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule('validationNotes.arcaneTricksterClassFeatures',
@@ -369,33 +369,32 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Assassin') {
 
-    rules.defineRule('combatNotes.deathAttackFeature',
+    rules.defineRule('combatNotes.deathAttack',
       'levels.Assassin', '+=', '10 + source',
       'intelligenceModifier', '+', null
     );
     rules.defineRule
-      ('combatNotes.deathAttackFeature.1', 'levels.Assassin', '+=', null);
-    rules.defineRule('combatNotes.sneakAttackFeature',
+      ('combatNotes.deathAttack.1', 'levels.Assassin', '+=', null);
+    rules.defineRule('combatNotes.sneakAttack',
       'levels.Assassin', '+=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('combatNotes.trueDeathFeature',
+    rules.defineRule('combatNotes.trueDeath',
       'levels.Assassin', '+=', '10 + source'
     );
-    rules.defineRule('combatNotes.trueDeathFeature.1',
+    rules.defineRule('combatNotes.trueDeath.1',
       'levels.Assassin', '+=', '15 + source'
     );
     rules.defineRule
-      ('resistance.Poison', 'saveNotes.poisonToleranceFeature', '+=', null);
-    rules.defineRule('saveNotes.poisonToleranceFeature',
+      ('resistance.Poison', 'saveNotes.poisonTolerance', '+=', null);
+    rules.defineRule('saveNotes.poisonTolerance',
       'levels.Assassin', '+=', 'Math.floor(source / 2)'
     );
-    rules.defineRule
-      ('skillNotes.hiddenWeaponFeature', 'levels.Assassin', '=', null);
+    rules.defineRule('skillNotes.hiddenWeapon', 'levels.Assassin', '=', null);
     rules.defineRule('assassinFeatures.Improved Uncanny Dodge',
       'assassinFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
     );
-    rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+    rules.defineRule('combatNotes.improvedUncannyDodge',
       'levels.Assassin', '+=', 'source >= 2 ? source : null',
       '', '+', '4'
     );
@@ -405,10 +404,10 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Dragon Disciple') {
 
-    rules.defineRule('abilityNotes.wingsFeature',
+    rules.defineRule('abilityNotes.wings',
       'levels.Dragon Disciple', '+=', 'source >= 9 ? 30 : null'
     );
-    rules.defineRule('abilityNotes.strengthBoostFeature',
+    rules.defineRule('abilityNotes.strengthBoost',
       'levels.Dragon Disciple', '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
     );
     rules.defineRule('armorClass',
@@ -416,20 +415,20 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('bloodlineLevel.Draconic', 'levels.Dragon Disciple', '+=', null);
-    rules.defineRule('combatNotes.dragonBiteFeature',
+    rules.defineRule('combatNotes.dragonBite',
       'levels.Dragon Disciple', '?', 'source >= 2',
       '', '=', '6',
       'features.Small', '=', '4',
       'features.Large', '=', '8'
     );
-    rules.defineRule('combatNotes.breathWeaponFeature.2',
+    rules.defineRule('combatNotes.breathWeapon.2',
       'levels.Dragon Disciple', '+=', 'source >= 3 ? 1 : null'
     );
-    rules.defineRule('combatNotes.dragonBiteFeature.1',
+    rules.defineRule('combatNotes.dragonBite.1',
       'features.Dragon Bite', '?', null,
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
-    rules.defineRule('combatNotes.dragonBiteFeature.2',
+    rules.defineRule('combatNotes.dragonBite.2',
       'features.Dragon Bite', '?', null,
       'levels.Dragon Disciple', '=', 'source >= 6 ? ", d6 energy" : ""'
     );
@@ -437,29 +436,27 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       'levels.Dragon Disciple', '+=', 'Math.floor((source + 2) / 3)'
     );
     rules.defineRule
-      ('constitution', 'abilityNotes.constitutionBoostFeature', '+', '2');
+      ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
     rules.defineRule('featCount.Draconic',
       'levels.Dragon Disciple', '+=', 'Math.floor((source + 4) / 6)'
     );
     rules.defineRule
       ('features.Bloodline Draconic', 'levels.Dragon Disciple', '=', '1');
-    rules.defineRule('featureNotes.blindsenseFeature',
+    rules.defineRule('featureNotes.blindsense',
       'levels.Dragon Disciple', '^=', 'source >= 5 ? 30 : source >= 10 ? 60 : null'
     );
     rules.defineRule
-      ('intelligence', 'abilityNotes.intelligenceBoostFeature', '+', '2');
-    rules.defineRule('magicNotes.casterLevelBonusFeature',
+      ('intelligence', 'abilityNotes.intelligenceBoost', '+', '2');
+    rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Dragon Disciple', '+=', 'source - Math.floor((source + 3) / 4)'
     );
-    rules.defineRule('magicNotes.dragonFormFeature',
+    rules.defineRule('magicNotes.dragonForm',
       'levels.Dragon Disciple', '=', 'source < 10 ? "I" : "II"'
     );
-    rules.defineRule('magicNotes.dragonFormFeature.1',
+    rules.defineRule('magicNotes.dragonForm.1',
       'levels.Dragon Disciple', '=', 'source < 10 ? 1 : 2'
     );
-    rules.defineRule('strength',
-      'abilityNotes.strengthBoostFeature', '+', null
-    );
+    rules.defineRule('strength', 'abilityNotes.strengthBoost', '+', null);
     rules.defineRule('validationNotes.dragonDiscipleClassBloodline',
       'levels.Sorcerer', '?', null,
       'levels.Dragon Disciple', '=', '-1',
@@ -476,30 +473,27 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Duelist') {
 
-    rules.defineRule
-      ('armorClass', 'combatNotes.cannyDefenseFeature', '+', null);
-    rules.defineRule('combatNotes.cannyDefenseFeature',
+    rules.defineRule('armorClass', 'combatNotes.cannyDefense', '+', null);
+    rules.defineRule('combatNotes.cannyDefense',
       'intelligenceModifier', '+=', 'source < 0 ? null : source',
       'levels.Duelist', 'v', null
     );
-    rules.defineRule('combatNotes.elaborateDefenseFeature',
+    rules.defineRule('combatNotes.elaborateDefense',
       'levels.Duelist', '+=', 'Math.floor(source / 3)'
     );
-    rules.defineRule('combatNotes.improvedReactionFeature',
+    rules.defineRule('combatNotes.improvedReaction',
       'levels.Duelist', '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
     );
-    rules.defineRule
-      ('combatNotes.preciseStrikeFeature', 'levels.Duelist', '=', null);
-    rules.defineRule
-      ('initiative', 'combatNotes.improvedReactionFeature', '+', null);
-    rules.defineRule('save.Reflex', 'saveNotes.graceFeature', '+', null);
+    rules.defineRule('combatNotes.preciseStrike', 'levels.Duelist', '=', null);
+    rules.defineRule('initiative', 'combatNotes.improvedReaction', '+', null);
+    rules.defineRule('save.Reflex', 'saveNotes.grace', '+', null);
 
   } else if(name == 'Eldritch Knight') {
 
     rules.defineRule('featCount.Fighter',
       'levels.Eldritch Knight', '+=', 'Math.floor((source + 3) / 4)'
     );
-    rules.defineRule('magicNotes.casterLevelBonusFeature',
+    rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Eldritch Knight', '+=', 'source > 1 ? source - 1 : null'
     );
     rules.defineRule('validationNotes.eldritchKnightClassSpells',
@@ -510,35 +504,30 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Loremaster') {
 
-    rules.defineRule('armorClass', 'combatNotes.dodgeTrickFeature', '+', '1');
-    rules.defineRule('baseAttack', 'combatNotes.weaponTrickFeature', '+','1');
+    rules.defineRule('armorClass', 'combatNotes.dodgeTrick', '+', '1');
+    rules.defineRule('baseAttack', 'combatNotes.weaponTrick', '+','1');
     rules.defineRule('casterLevelArcane', 'levels.Loremaster', '+=', null);
-    rules.defineRule('featCount.General',
-      'featureNotes.applicableKnowledgeFeature', '+', '1'
-    );
-    rules.defineRule('featureNotes.bonusLanguageFeature',
+    rules.defineRule
+      ('featCount.General', 'featureNotes.applicableKnowledge', '+', '1');
+    rules.defineRule('featureNotes.bonusLanguage',
       'levels.Loremaster', '+=', 'Math.floor(source / 4)'
     );
-    rules.defineRule('hitPoints', 'combatNotes.secretHealthFeature', '+','3');
+    rules.defineRule('hitPoints', 'combatNotes.secretHealth', '+','3');
+    rules.defineRule('languageCount', 'featureNotes.bonusLanguage', '+', null);
     rules.defineRule
-      ('languageCount', 'featureNotes.bonusLanguageFeature', '+', null);
+      ('magicNotes.casterLevelBonus', 'levels.Loremaster', '+=', null);
     rules.defineRule
-      ('magicNotes.casterLevelBonusFeature', 'levels.Loremaster', '+=', null);
+      ('save.Fortitude', 'saveNotes.theLoreOfTrueStamina', '+', '2');
+    rules.defineRule('save.Will', 'saveNotes.secretsOfInnerStrength', '+', '2');
     rules.defineRule
-      ('save.Fortitude', 'saveNotes.theLoreOfTrueStaminaFeature', '+', '2');
-    rules.defineRule
-      ('save.Will', 'saveNotes.secretsOfInnerStrengthFeature', '+', '2');
-    rules.defineRule('save.Reflex',
-      'saveNotes.secretKnowledgeOfAvoidanceFeature', '+', '2'
-    );
+      ('save.Reflex', 'saveNotes.secretKnowledgeOfAvoidance', '+', '2');
     rules.defineRule('selectableFeatureCount.Loremaster',
       'levels.Loremaster', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule
-      (/^skillModifier\.Knowledge/, 'skillNotes.loreFeature', '+=', null);
-    rules.defineRule('skillNotes.loreFeature',
-      'levels.Loremaster', '+=', 'Math.floor(source / 2)'
-    );
+      (/^skillModifier\.Knowledge/, 'skillNotes.lore', '+=', null);
+    rules.defineRule
+      ('skillNotes.lore', 'levels.Loremaster', '+=', 'Math.floor(source / 2)');
     rules.defineRule('countskillfocusknowledgefeats',
       /^features.Skill Focus \(Knowledge/, '+=', '1'
     );
@@ -569,10 +558,10 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Mystic Theurge') {
 
-    rules.defineRule('magicNotes.casterLevelBonusFeature',
+    rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Mystic Theurge', '=', null
     );
-    rules.defineRule('magicNotes.combinedSpellsFeature',
+    rules.defineRule('magicNotes.combinedSpells',
       'levels.Mystic Theurge', '+=', 'Math.floor((source + 1) / 2)'
     );
 
@@ -592,41 +581,41 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('casterLevels.W',
       'levels.Pathfinder Chronicler', '=', 'source < 3 ? null : 1'
     );
-    rules.defineRule('featureNotes.bardicPerformanceFeature',
+    rules.defineRule('featureNotes.bardicPerformance',
       'levels.Pathfinder Chronicler', '+=', '2 + 2 * (source - 2)',
       'charismaModifier', '+', null
     );
-    rules.defineRule('magicNotes.epicTalesFeature',
+    rules.defineRule('magicNotes.epicTales',
       'levels.Pathfinder Chronicler', '=',
       'source >= 8 ? " or reading by others" : ""'
     );
-    rules.defineRule('magicNotes.fascinateFeature',
+    rules.defineRule('magicNotes.fascinate',
       'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 3)'
     );
-    rules.defineRule('magicNotes.fascinateFeature.1',
+    rules.defineRule('magicNotes.fascinate.1',
       'levels.Pathfinder Chronicler', '+=', '10 + Math.floor((source-2) / 2)',
       'charismaModifier', '+', null
     );
-    rules.defineRule('magicNotes.inspiredActionFeature',
+    rules.defineRule('magicNotes.inspiredAction',
       'levels.Pathfinder Chronicler', '=',
       'source < 9 ? "Move" : "Move/Standard"'
     );
-    rules.defineRule('magicNotes.inspireCompetenceFeature',
+    rules.defineRule('magicNotes.inspireCompetence',
       'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 4)'
     );
-    rules.defineRule('magicNotes.inspireCourageFeature',
+    rules.defineRule('magicNotes.inspireCourage',
       'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 6)'
     );
-    rules.defineRule('saveNotes.liveToTellTheTaleFeature',
+    rules.defineRule('saveNotes.liveToTellTheTale',
       'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 2)'
     );
     rules.defineRule(/^skillModifier.Knowledge/,
-      'skillNotes.bardicKnowledgeFeature', '+', null
+      'skillNotes.bardicKnowledge', '+', null
     );
-    rules.defineRule('skillNotes.bardicKnowledgeFeature',
+    rules.defineRule('skillNotes.bardicKnowledge',
       'levels.Pathfinder Chronicler', '+=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('skillNotes.masterScribeFeature',
+    rules.defineRule('skillNotes.masterScribe',
       'levels.Pathfinder Chronicler', '+=', null
     );
 
@@ -652,22 +641,22 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('casterLevels.W',
       'levels.Shadowdancer', '=', 'source < 3 ? null : 1'
     );
-    rules.defineRule('featureNotes.darkvisionFeature',
+    rules.defineRule('featureNotes.darkvision',
       'shadowdancerFeatures.Darkvision', '+=', '60'
     );
-    rules.defineRule('magicNotes.shadowCallFeature',
+    rules.defineRule('magicNotes.shadowCall',
       'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 1'
     );
-    rules.defineRule('magicNotes.shadowIllusionFeature',
+    rules.defineRule('magicNotes.shadowIllusion',
       'levels.Shadowdancer', '=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('magicNotes.shadowJumpFeature',
+    rules.defineRule('magicNotes.shadowJump',
       'levels.Shadowdancer', '=', '40 * Math.pow(2, Math.floor(source/2)-2)'
     );
-    rules.defineRule('magicNotes.shadowPowerFeature',
+    rules.defineRule('magicNotes.shadowPower',
       'levels.Shadowdancer', '=', 'source < 8 ? null : source < 10 ? 1 : 2'
     );
-    rules.defineRule('magicNotes.summonShadowFeature',
+    rules.defineRule('magicNotes.summonShadow',
       'hitPoints', '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('selectableFeatureCount.Shadowdancer',
@@ -677,7 +666,7 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       'shadowdancerFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
     );
-    rules.defineRule('combatNotes.improvedUncannyDodgeFeature',
+    rules.defineRule('combatNotes.improvedUncannyDodge',
       'levels.Shadowdancer', '+=', 'source >= 2 ? source : null',
       '', '+', '4'
     );
