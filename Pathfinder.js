@@ -2812,7 +2812,9 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     return;
   }
   if(type != 'Feature') {
-    type = type == 'Class' ? 'levels' : (type.substring(0,1).toLowerCase() + type.substring(1).replace(/ /g, '') + 's');
+    type = type == 'Class' ? 'levels' :
+    type = type == 'Deity' ? 'deities' :
+    (type.substring(0,1).toLowerCase() + type.substring(1).replace(/ /g, '') + 's');
     rules.addChoice(type, name, attrs);
   }
 };
