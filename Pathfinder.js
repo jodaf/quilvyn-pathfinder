@@ -71,26 +71,6 @@ function Pathfinder() {
 
   Quilvyn.addRuleSet(rules);
 
-  // For now, at least, allow direct entry of favored class hit/skill points
-  rules.defineEditorElement
-    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
-  rules.defineEditorElement
-    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
-     'armor');
-  rules.defineRule
-    ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
-  rules.defineRule
-    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
-  rules.defineRule
-    ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
-  rules.defineRule
-    ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
-
-  rules.defineChoice('tracks', Pathfinder.TRACKS);
-  rules.defineEditorElement
-    ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
-  rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
-
 }
 
 Pathfinder.CHOICES = SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Trait']);
@@ -1566,38 +1546,53 @@ Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
 });
 Pathfinder.RACES = {
   'Dwarf':
-    'Features=Darkvision,"Defensive Training","Dwarf Ability Adjustment",' +
-    '"Dwarf Hatred",Greed,Hardy,Slow,Steady,Stability,Stonecunning,' +
-    '"Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)",' +
-    '"Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)"',
+    'Features=' +
+      'Darkvision,"Defensive Training","Dwarf Ability Adjustment",' +
+      '"Dwarf Hatred",Greed,Hardy,Slow,Steady,Stability,Stonecunning,' +
+      '"Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)",' +
+      '"Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)" ' +
+    'Languages=Common,Dwarven',
   'Elf':
-    'Features="Elf Ability Adjustment","Elven Magic","Keen Senses",' +
-    '"Low-Light Vision","Resist Enchantment","Sleep Immunity",' +
-    '"Weapon Familiarity (Elven Curve Blade)",' +
-    '"Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)"',
+    'Features=' +
+      '"Elf Ability Adjustment","Elven Magic","Keen Senses",' +
+      '"Low-Light Vision","Resist Enchantment","Sleep Immunity",' +
+      '"Weapon Familiarity (Elven Curve Blade)",' +
+      '"Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)" ' +
+    'Languages=Common,Elven',
   'Gnome':
-    'Features="Defensive Training","Gnome Ability Adjustment",' +
-    '"Gnome Hatred","Gnome Magic","Keen Senses","Low-Light Vision",' +
-    'Obsessive,"Resist Illusion",Slow,Small,' +
-    '"Weapon Familiarity (Gnome Hooked Hammer)" ' +
+    'Features=' +
+      '"Defensive Training","Gnome Ability Adjustment","Gnome Hatred",' +
+      '"Gnome Magic","Keen Senses","Low-Light Vision",Obsessive,' +
+      '"Resist Illusion",Slow,Small,' +
+      '"Weapon Familiarity (Gnome Hooked Hammer)" ' +
+    'Languages=Common,Gnome,Sylvan ' +
     'SpellAbility=charisma ' +
     'Spells=' +
       '"charisma >= 11 ? Gnome1:Speak With Animals",' +
       '"charisma >= 11 ? Gnome0:Dancing Lights;Ghost Sound;Prestidigitation"',
   'Half-Elf':
-    'Features=Adaptability,"Elf Blood","Half-Elf Ability Adjustment",' +
-    '"Keen Senses","Low-Light Vision",Multitalented,"Resist Enchantment",' +
-    '"Sleep Immunity"',
+    'Features=' +
+      'Adaptability,"Elf Blood","Half-Elf Ability Adjustment",' +
+      '"Keen Senses","Low-Light Vision",Multitalented,"Resist Enchantment",' +
+      '"Sleep Immunity" ' +
+    'Languages=Common,Elven',
   'Half-Orc':
-    'Features=Darkvision,"Half-Orc Ability Adjustment",Intimidating,' +
-    '"Orc Blood","Orc Ferocity","Weapon Familiarity (Orc Double Axe)"' +
-    '"Weapon Proficiency (Falchion/Greataxe)"',
+    'Features=' +
+      'Darkvision,"Half-Orc Ability Adjustment",Intimidating,' +
+      '"Orc Blood","Orc Ferocity","Weapon Familiarity (Orc Double Axe)"' +
+      '"Weapon Proficiency (Falchion/Greataxe)" ' +
+    'Languages=Common,Orc',
   'Halfling':
-  'Features=Fearless,"Fortunate","Halfling Ability Adjustment",' +
-    '"Keen Senses",Slow,Small,Sure-Footed,' +
-    '"Weapon Familiarity (Halfling Sling Staff)""Weapon Proficiency (Sling)"',
+    'Features=' +
+      'Fearless,"Fortunate","Halfling Ability Adjustment",' +
+      '"Keen Senses",Slow,Small,Sure-Footed,' +
+      '"Weapon Familiarity (Halfling Sling Staff)",' +
+      '"Weapon Proficiency (Sling)" ' +
+    'Languages=Common,Halfling',
   'Human':
-    'Features="Human Ability Adjustment","Bonus Feat",Skilled'
+    'Features=' +
+      '"Human Ability Adjustment","Bonus Feat",Skilled ' +
+    'Languages=Common'
 };
 Pathfinder.SCHOOLS = {
   'Abjuration':
@@ -2107,6 +2102,7 @@ Pathfinder.CLASSES = {
       '"1:Animal Companion","1:Air Domain","1:Animal Domain",' +
       '"1:Earth Domain","1:Fire Domain","1:Plant Domain","1:Water Domain",' +
       '"1:Weather Domain" ' +
+    'Languages=Druidic ' +
     'CasterLevelDivine=Level ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
@@ -2632,6 +2628,24 @@ Pathfinder.identityRules = function(
   rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
   rules.defineChoice('extras', 'traits');
+  rules.defineChoice('tracks', Pathfinder.TRACKS);
+  rules.defineEditorElement
+    ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
+  rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
+
+  rules.defineEditorElement
+    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
+  rules.defineEditorElement
+    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
+     'armor');
+  rules.defineRule
+    ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
+  rules.defineRule
+    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
+  rules.defineRule
+    ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
+  rules.defineRule
+    ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
 
 };
 
@@ -2706,6 +2720,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelArcane'),
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelDivine'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
@@ -2760,6 +2775,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
       Pathfinder.SPELLS
@@ -3200,23 +3216,26 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
  * '1/3', indicating the saving through progressions. #skills# indicate class
  * skills for the class (but see also skillRules for an alternate way these can
  * be defined). #features# and #selectables# list the features and selectable
- * features acquired as the character advances in class level.
- * #casterLevelArcane# and #casterLevelDivine#, if specified, give the
- * expression for determining the caster level for the class; within these
- * expressions the text "Level" indicates class level. #spellAbility#, if
- * specified, contains the base ability for computing spell difficulty class
- * for cast spells. #spellsPerDay# lists the number of spells per day that the
- * class can cast, and #spells# lists spells defined by the class.
+ * features acquired as the character advances in class level; #languages# list
+ * any automatic languages for the class.  #casterLevelArcane# and
+ * #casterLevelDivine#, if specified, give the expression for determining the
+ * caster level for the class; within these expressions the text "Level"
+ * indicates class level. #spellAbility#, if specified, contains the base
+ * ability for computing spell difficulty class for cast spells. #spellsPerDay#
+ * lists the number of spells per day that the class can cast, and #spells#
+ * lists spells defined by the class.
  */
 Pathfinder.classRules = function(
   rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
-  saveRef, saveWill, skills, features, selectables, casterLevelArcane,
-  casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
+  saveRef, saveWill, skills, features, selectables, languages,
+  casterLevelArcane, casterLevelDivine, spellAbility, spellsPerDay, spells,
+  spellDict
 ) {
   SRD35.classRules(
     rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
-    saveRef, saveWill, skills, features, selectables, casterLevelArcane,
-    casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
+    saveRef, saveWill, skills, features, selectables, languages,
+    casterLevelArcane, casterLevelDivine, spellAbility, spellsPerDay, spells,
+    spellDict
   );
   // Override SRD35 skillPoints rule
   rules.defineRule
@@ -3376,8 +3395,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Druid') {
 
-    rules.defineRule('languageCount', 'levels.Druid', '+', '1');
-    rules.defineRule('languages.Druidic', 'levels.Druid', '=', '1');
     rules.defineRule('magicNotes.wildShape',
       'levels.Druid', '=',
         'source < 4 ? null : ' +
@@ -4477,13 +4494,14 @@ Pathfinder.languageRules = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with race #name#. #features# lists
- * the associated features. #spells# lists any natural spells, for which
- * #spellAbility# is used to compute the save DC.
+ * associated features and #languages# the automatic languages. #spells# lists
+ * any natural spells, for which #spellAbility# is used to compute the save DC.
  */
 Pathfinder.raceRules = function(
-  rules, name, features, spellAbility, spells, spellDict
+  rules, name, features, languages, spellAbility, spells, spellDict
 ) {
-  SRD35.raceRules(rules, name, features, spellAbility, spells, spellDict);
+  SRD35.raceRules
+    (rules, name, features, languages, spellAbility, spells, spellDict);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -4503,10 +4521,6 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
-  } else if(name.match(/Gnome/)) {
-    rules.defineRule('languageCount', 'is' + name, '+', '1');
-    rules.defineRule
-      ('languages.Sylvan', 'race', '=', 'source.match(/Gnome/) ? 1 : null');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
   }
