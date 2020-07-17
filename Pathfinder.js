@@ -2687,8 +2687,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
-      QuilvynUtils.getAttrValue(attrs, 'Size')
+      QuilvynUtils.getAttrValue(attrs, 'Size'),
+      QuilvynUtils.getAttrValue(attrs, 'Level')
     );
   else if(type == 'Armor')
     Pathfinder.armorRules(rules, name,
@@ -2756,8 +2756,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
-      QuilvynUtils.getAttrValue(attrs, 'Size')
+      QuilvynUtils.getAttrValue(attrs, 'Size'),
+      QuilvynUtils.getAttrValue(attrs, 'Level')
     );
   else if(type == 'Feat') {
     Pathfinder.featRules(rules, name,
@@ -3837,20 +3837,16 @@ Pathfinder.classRulesExtra = function(rules, name) {
 /*
  * Defines in #rules# the rules associated with animal companion #name#, which
  * has abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
- * and armor class #ac#. The companion has attack bonus #attack# and does
- * #damage# damage. If specified, #level# indicates the minimum master level
- * the character needs to have this animal as a companion.
+ * and armor class #ac#. The companion has attack bonus #attack#, does
+ * #damage# damage, and is size #size#. If specified, #level# indicates the
+ * minimum master level the character needs to have this animal as a companion.
  */
 Pathfinder.companionRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level, size
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level
 ) {
   if(!hd)
     hd = 1;
-  SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
-  if(size != null)
-    rules.defineRule('animalCompanionStats.Size',
-      'animalCompanion.' + name, '=', '"' + size + '"'
-    );
+  SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level);
   if(name.startsWith('Advanced ') && level) {
     var name = name.replace('Advanced ', '');
     rules.defineRule
@@ -4271,18 +4267,16 @@ Pathfinder.factionRules = function(rules, name) {
 /*
  * Defines in #rules# the rules associated with familiar #name#, which has
  * abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
- * and armor class #ac#. The familiar has attack bonus #attack# and does
- * #damage# damage. If specified, #level# indicates the minimum master level
- * the character needs to have this animal as a familiar.
+ * and armor class #ac#. The familiar has attack bonus #attack#, does
+ * #damage# damage, and is size #size#. If specified, #level# indicates the
+ * minimum master level the character needs to have this animal as a familiar.
  */
 Pathfinder.familiarRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level, size
+  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level
 ) {
   SRD35.familiarRules
-    (rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, level);
-  if(size != null)
-    rules.defineRule
-      ('familiarStats.Size', 'familiar.' + name, '=', '"' + size + '"');
+    (rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
