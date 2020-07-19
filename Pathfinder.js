@@ -1087,8 +1087,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
     'combat:No penalty for improvised ranged weapon, +1 attack w/thrown splash',
   'Tiring Critical':'combat:Critical hit tires foe',
   'Toughness':'combat:+%V HP',
-  'Turn Undead':
-    'combat:Channel energy to cause undead panic, DC %V will save negates',
+  'Turn Undead':'combat:Channel energy to cause undead panic (DC %V Will neg)',
   'Two-Weapon Rend':'combat:Extra 1d10+%V HP from double hit',
   'Unseat':'combat:Bull Rush after hit w/lance to unseat mounted foe',
   'Vital Strike':'combat:2x base damage',
@@ -2798,7 +2797,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.skillRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Ability'),
       untrained != 'n' && untrained != 'N',
-      QuilvynUtils.getAttrValueArray(attrs, 'Class')
+      QuilvynUtils.getAttrValueArray(attrs, 'Class'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Synergy')
     );
     Pathfinder.skillRulesExtra(rules, name);
   } else if(type == 'Spell')
@@ -3392,6 +3392,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric', 'levels.Cleric', '+=', '2');
+    rules.defineRule('turningLevel',
+      'features.Turn Undead', '?', null,
+      'levels.Cleric', '+=', null
+    );
 
   } else if(name == 'Druid') {
 
@@ -4450,7 +4454,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
   } else if(name == 'Turn Undead') {
     rules.defineRule('combatNotes.turnUndead',
-      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      'turningLevel', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
   } else if(name == 'Two-Weapon Rend') {
@@ -4520,32 +4524,13 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   }
 };
 
-/* Defines in #rules# the rules associated with magic school #name#. */
+/*
+ * Defines in #rules# the rules associated with magic school #name#, which
+ * grants the list of #features#.
+ */
 Pathfinder.schoolRules = function(rules, name, features) {
-
-  SRD35.schoolRules(rules, name);
-
-  var schoolLevelAttr = 'schoolLevel.' + name;
-  rules.defineRule(schoolLevelAttr,
-    'features.School Specialization (' + name + ')', '?', null,
-    'levels.Wizard', '=', null
-  );
-
-  for(var i = 0; i < features.length; i++) {
-    var matchInfo = features[i].match(/^((\d+):)?(.*)$/);
-    var feature = matchInfo ? matchInfo[3] : features[i];
-    var level = matchInfo ? matchInfo[2] : 1;
-    if(level == 1)
-      rules.defineRule
-        ('wizardFeatures.' + feature, schoolLevelAttr, '=', '1');
-    else
-      rules.defineRule('wizardFeatures.' + feature,
-        schoolLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
-      );
-    rules.defineRule
-      ('features.' + feature, 'wizardFeatures.' + feature, '+=', null);
-  }
-
+  SRD35.schoolRules(rules, name, features);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /*
@@ -4687,11 +4672,15 @@ Pathfinder.shieldRules = function(
  * Defines in #rules# the rules associated with skill #name#, associated with
  * #ability# (one of 'strength', 'intelligence', etc.). #untrained#, if
  * specified is a boolean indicating whether or not the skill can be used
- * untrained; the default is true. #classes#, if specified, lists the classes
- * for which this is a class skill.
+ * untrained; the default is true. #classes# lists the classes for which this
+ * is a class skill; a value of "all" indicates that this is a class skill for
+ * all classes. #synergies#, if specified, lists synergies to other skills and
+ * abilities granted by high ranks in this skill.
  */
-Pathfinder.skillRules = function(rules, name, ability, untrained, classes) {
-  SRD35.skillRules(rules, name, ability, untrained, classes, []);
+Pathfinder.skillRules = function(
+  rules, name, ability, untrained, classes, synergies
+) {
+  SRD35.skillRules(rules, name, ability, untrained, classes, synergies);
   // Override effects of class skills and armor skill check penalty
   rules.defineRule('classSkillBump.' + name,
     'skills.' + name, '?', 'source > 0',
