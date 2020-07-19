@@ -2878,21 +2878,8 @@ Pathfinder.bloodlineRules = function(
     'levels.Sorcerer', '=', null
   );
 
-  for(var i = 0; i < features.length; i++) {
-    var matchInfo = features[i].match(/^((\d+):)?(.*)$/);
-    var feature = matchInfo ? matchInfo[3] : features[i];
-    var level = matchInfo ? matchInfo[2] : 1;
-    if(level == 1)
-      rules.defineRule('sorcererFeatures.' + feature,
-        bloodlineLevelAttr, '=', '1'
-      );
-    else
-      rules.defineRule('sorcererFeatures.' + feature,
-        bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
-      );
-    rules.defineRule
-      ('features.' + feature, 'sorcererFeatures.' + feature, '+=', null);
-  }
+  SRD35.featureListRules
+    (rules, features, 'sorcererFeatures', null, bloodlineLevelAttr);
 
   rules.defineRule('featCount.' + name,
     bloodlineLevelAttr, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
