@@ -2272,7 +2272,7 @@ Pathfinder.CLASSES = {
     'Selectables=' +
       '"2:Bleeding Attack","2:Combat Trick","2:Fast Stealth",' +
       '"2:Finesse Rogue","2:Ledge Walker","2:Major Magic","2:Minor Magic",' +
-      '"2:Quick Disable2",2:Resiliency,"2:Rogue Crawl","2:Slow Reactions",' +
+      '"2:Quick Disable",2:Resiliency,"2:Rogue Crawl","2:Slow Reactions",' +
       '"2:Stand Up","2:Surprise Attack","2:Trap Spotter",' +
       '"2:Rogue Weapon Training","10:Crippling Strike","10:Defensive Roll",' +
       '"10:Dispelling Attack","10:Feat Bonus","10:Improved Evasion",' +
