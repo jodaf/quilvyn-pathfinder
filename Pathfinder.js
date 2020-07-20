@@ -1152,6 +1152,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Hand Of The Apprentice':"combat:R30' +%V w/melee weapon %1/day",
   'High Jump':'skill:+%V Acrobatics (jump), use 1 ki for +20',
   'Holy Champion':'magic:Maximize lay on hands, smite evil DC %V <i>Banishment</i>',
+  'Inspire Competence':'magic:+%V allies skill checks while performing',
   'Internal Fortitude':'save:Cannot be sickened/nauseated during rage',
   'Intimidating Glare':
     'skill:Successful Intimidate during rage shakes foe at least 1d4 rd',
