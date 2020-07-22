@@ -2478,7 +2478,6 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
   SRD35.aideRules(rules, companions, familiars);
   // Override SRD35 HD calculation
   rules.defineRule('animalCompanionStats.HD',
-    'companionLevel', '=', 'null',
     'companionMasterLevel', '=', 'source + 1 - Math.floor((source+1)/4)'
   );
   // Pathfinder-specific attributes
@@ -2989,11 +2988,8 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
 
   } else if(name == 'Arcane') {
 
-    rules.defineRule('familiarLevel',
-      'familiarMasterLevel', '+=', 'Math.floor((source + 1) / 2)'
-    );
     rules.defineRule
-      ('familiarMasterLevel', 'familiarSorcererLevel', '+=', null)
+      ('familiarMasterLevel', 'familiarSorcererLevel', '^=', null);
     rules.defineRule('familiarSorcererLevel',
       'sorcererFeatures.Familiar', '?', null,
       'levels.Sorcerer', '=', null
@@ -3407,12 +3403,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'charismaModifier', '+', null
     );
 
-    rules.defineRule('companionMasterLevelDruid',
+    rules.defineRule('companionDruidLevel',
       'druidFeatures.Animal Companion', '?', null,
       'levels.Druid', '=', null
     );
-    rules.defineRule
-      ('companionMasterLevel', 'companionMasterLevelDruid', '+=', null);
+    rules.defineRule('companionMasterLevel', 'companionDruidLevel', '^=', null);
 
   } else if(name == 'Fighter') {
 
@@ -3600,27 +3595,25 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'source >= 5 ? 1 : null'
     );
 
-    rules.defineRule('companionMasterLevelPaladin',
+    rules.defineRule
+      ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
+    rules.defineRule('companionPaladinLevel',
       'paladinFeatures.Divine Mount', '?', null,
-      'levels.Paladin', '=', 'source >= 5 ? source : null'
-    );
-    rules.defineRule('companionMasterLevel',
-      'companionMasterLevelPaladin', '+=', null
+      'levels.Paladin', '=', null,
     );
     rules.defineRule('featureNotes.divineMount',
-      'companionMasterLevelPaladin', '=',
-      'source < 5 ? null : Math.floor((source - 1) / 4)'
+      'companionPaladinLevel', '=', 'Math.floor((source - 1) / 4)'
     );
     rules.defineRule('animalCompanion.Celestial',
-      'companionMasterLevelPaladin', '^=', 'source < 11 ? null : 1'
+      'companionPaladinLevel', '=', 'source < 11 ? null : 1'
     );
     rules.defineRule('animalCompanionFeatures.Companion Resist Spells',
-      'companionMasterLevelPaladin', '=', 'source >= 15 ? 1 : null'
+      'companionPaladinLevel', '=', 'source >= 15 ? 1 : null'
     );
     rules.defineRule
-      ('animalCompanionStats.Int', 'companionMasterLevelPaladin', '^', '6');
+      ('animalCompanionStats.Int', 'companionPaladinLevel', '^', '6');
     rules.defineRule('animalCompanionStats.SR',
-      'companionMasterLevelPaladin', '^=', 'source >= 15 ? source + 11 : null'
+      'companionPaladinLevel', '^=', 'source >= 15 ? source + 11 : null'
     );
 
   } else if(name == 'Ranger') {
@@ -3662,12 +3655,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'charismaModifier', '+', null
     );
 
-    rules.defineRule('companionMasterLevelRanger',
+    rules.defineRule
+      ('companionMasterLevel', 'companionRangerLevel', '^=', null);
+    rules.defineRule('companionRangerLevel',
       'rangerFeatures.Animal Companion', '?', null,
       'levels.Ranger', '+=', 'source - 3'
-    );
-    rules.defineRule('companionMasterLevel',
-      'companionMasterLevelRanger', '+=', null
     );
 
   } else if(name == 'Rogue') {
@@ -3775,10 +3767,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Wizard') {
 
-    rules.defineRule('familiarLevel',
-      'familiarMasterLevel', '+=', 'Math.floor((source + 1) / 2)'
-    );
-    rules.defineRule('familiarMasterLevel', 'familiarWizardLevel', '+=', null);
+    rules.defineRule('familiarMasterLevel', 'familiarWizardLevel', '^=', null);
     rules.defineRule('familiarWizardLevel',
       'wizardFeatures.Familiar', '?', null,
       'levels.Wizard', '+=', null
@@ -3896,12 +3885,11 @@ Pathfinder.domainRulesExtras = function(rules, name) {
                             'source >= 6 ? 10 : null'
     );
   } else if(name == 'Animal') {
-    rules.defineRule('companionMasterLevelCleric',
+    rules.defineRule
+      ('companionMasterLevel', 'companionClericLevel', '^=', null);
+    rules.defineRule('companionClericLevel',
       'features.Animal Domain', '?', null,
       'levels.Cleric', '=', 'source - 3'
-    );
-    rules.defineRule('companionMasterLevel',
-      'companionMasterLevelCleric', '+=', null
     );
     rules.defineRule
       ('magicNotes.speakWithAnimals', 'levels.Cleric', '=', 'source + 3');
