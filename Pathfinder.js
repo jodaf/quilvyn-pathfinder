@@ -2491,7 +2491,7 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
     'source + 1 - Math.floor((source + 1) / 4)'
   );
   rules.defineRule('companionBAB',
-    'animalCompanionStats.HD', '=', SRD35.ATTACK_BONUS_3_4
+    'animalCompanionStats.HD', '=', 'Math.floor(source * 3 / 4)'
   );
   rules.defineRule('animalCompanionStats.CMB',
     'companionBAB', '=', null,
@@ -2880,7 +2880,7 @@ Pathfinder.bloodlineRules = function(
   );
 
   SRD35.featureListRules
-    (rules, features, 'sorcererFeatures', null, bloodlineLevelAttr);
+    (rules, features, 'sorcererFeatures', bloodlineLevelAttr);
 
   rules.defineRule('featCount.' + name,
     bloodlineLevelAttr, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
