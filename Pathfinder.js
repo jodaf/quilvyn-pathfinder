@@ -1625,13 +1625,17 @@ Pathfinder.SCHOOLS = {
     'Features='
 };
 Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
-Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
+Pathfinder.SKILLS = {
   'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
   'Bluff':'Ability=charisma Class=,Bard,Rogue,Sorcerer',
   'Climb':
     'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
-  'Craft (Armor)':'Ability=intelligence',
+  'Craft (Alchemy)':'Ability=intelligence Class=all',
+  'Craft (Armor)':'Ability=intelligence Class=all',
+  'Craft (Bows)':'Ability=intelligence Class=all',
+  'Craft (Traps)':'Ability=intelligence Class=all',
+  'Craft (Weapons)':'Ability=intelligence Class=all',
   'Diplomacy':'Ability=charisma Class=Bard,Cleric,Paladin,Rogue',
   'Disable Device':'Ability=dexterity Untrained=n Class=Rogue',
   'Disguise':'Ability=charisma Class=Bard,Rogue',
@@ -1685,7 +1689,7 @@ Pathfinder.SKILLS = Object.assign({}, SRD35.SKILLS, {
   'Survival':'Ability=wisdom Class=Barbarian,Druid,Fighter,Ranger',
   'Swim':'Ability=strength Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
   'Use Magic Device':'Ability=charisma Untrained=n Class=Bard,Rogue,Sorcerer'
-});
+};
 Pathfinder.SPELLS = Object.assign({}, SRD35.SPELLS, {
   'Beast Shape I':
     'School=Transmutation ' +
