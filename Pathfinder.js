@@ -71,6 +71,9 @@ function Pathfinder() {
 
   Quilvyn.addRuleSet(rules);
 
+  SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
+  SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
+
 }
 
 Pathfinder.CHOICES = SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Trait']);
@@ -2884,7 +2887,7 @@ Pathfinder.bloodlineRules = function(
   );
 
   SRD35.featureListRules
-    (rules, features, 'sorcererFeatures', bloodlineLevelAttr);
+    (rules, features, 'sorcererFeatures', bloodlineLevelAttr, false);
 
   rules.defineRule('featCount.' + name,
     bloodlineLevelAttr, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
