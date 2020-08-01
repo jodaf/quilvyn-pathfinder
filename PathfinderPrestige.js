@@ -185,8 +185,6 @@ PathfinderPrestige.FEATURES = {
   'Applicable Knowledge':'feature:+1 General Feat',
   'Arrow Of Death':
     'combat:Special arrow requires foe DC %V fortitude save or die',
-  'Blindsense':
-    "feature:Other senses allow detection of unseen objects w/in %V'",
   'Blood Of Dragons':
     'feature:Dragon Disciple level triggers Bloodline Draconic features',
   'Bonus Language':'feature:%V additional language(s)',

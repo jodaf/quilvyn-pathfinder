@@ -767,8 +767,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES, {
   'Alien Resistance':'save:%V spell resistance',
   'Arcane Apotheosis':
     'magic:Expend 3 spell slots to replace 1 magic item charge',
-  'Blindsense':
-    "feature:Other senses allow detection of unseen objects w/in %V'",
+  'Blindsense':"feature:R%V' Other senses allow detection of unseen objects",
   'Breath Weapon':"combat:%3 %4 %Vd6 HP (%1 DC Reflex half) %2/day",
   'Celestial Resistances':'save:%V acid/cold',
   'Claws':'combat:%V+%1 HP %2 rd/day',
@@ -2880,17 +2879,18 @@ Pathfinder.bloodlineRules = function(
     return;
   }
 
-  var bloodlineLevelAttr = 'bloodlineLevel.' + name;
-  rules.defineRule(bloodlineLevelAttr,
+  var bloodlineLevel =
+    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
+  rules.defineRule(bloodlineLevel,
     'features.Bloodline ' + name, '?', null,
     'levels.Sorcerer', '=', null
   );
 
   SRD35.featureListRules
-    (rules, features, 'sorcererFeatures', bloodlineLevelAttr, false);
+    (rules, features, 'sorcererFeatures', bloodlineLevel, false);
 
   rules.defineRule('featCount.' + name,
-    bloodlineLevelAttr, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
+    bloodlineLevel, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
   );
   for(var i = 0; i < feats.length; i++) {
     feats[i] += ':' + name;
@@ -2922,7 +2922,7 @@ Pathfinder.bloodlineRules = function(
       (rules, 'Spell', fullSpell,
        spellDict[spellName] + ' Group=W Level=' + (i + 1));
     rules.defineRule('spells.' + fullSpell,
-      bloodlineLevelAttr, '=', 'source >= ' + level + ' ? 1 : null'
+      bloodlineLevel, '=', 'source >= ' + level + ' ? 1 : null'
     );
   }
 
@@ -2935,18 +2935,18 @@ Pathfinder.bloodlineRules = function(
  */
 Pathfinder.bloodlineRulesExtra = function(rules, name) {
 
-  var bloodlineLevelAttr = 'bloodlineLevel.' + name;
+  var bloodlineLevel =
+    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
 
   if(name == 'Abyssal' || name == 'Draconic') {
     rules.defineRule('clawsDamageLevel',
       'features.Claws', '=', '1',
       'features.Small', '+', '-1',
       'features.Large', '+', '1',
-      bloodlineLevelAttr, '+', 'source >= 7 ? 1 : null'
+      bloodlineLevel, '+', 'source >= 7 ? 1 : null'
     );
     rules.defineRule('combatNotes.claws',
-      'clawsDamageLevel', '=',
-      '["1d3", "1d4", "1d6", "1d8"][source]'
+      'clawsDamageLevel', '=', '["1d3", "1d4", "1d6", "1d8"][source]'
     );
     rules.defineRule('combatNotes.claws.1',
       'features.Claws', '?', null,
@@ -2962,35 +2962,34 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
   if(name == 'Aberrant') {
 
     rules.defineRule('combatNotes.longLimbs',
-      bloodlineLevelAttr, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+      bloodlineLevel, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
     );
     rules.defineRule('combatNotes.unusualAnatomy',
-      bloodlineLevelAttr, '=', 'source >= 13 ? 50 : 25'
+      bloodlineLevel, '=', 'source >= 13 ? 50 : 25'
     );
     rules.defineRule('magicNotes.acidicRay',
-      bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+      bloodlineLevel, '=', '1 + Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.acidicRay.1',
       'features.Acidic Ray', '?', null,
       'charismaModifier', '=', '1 + source'
     );
-    rules.defineRule('saveNotes.alienResistance',
-      bloodlineLevelAttr, '=', 'source + 10'
-    );
+    rules.defineRule
+      ('saveNotes.alienResistance', bloodlineLevel, '=', 'source + 10');
 
   } else if(name == 'Abyssal') {
 
     rules.defineRule('abilityNotes.strengthOfTheAbyss',
-      bloodlineLevelAttr, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+      bloodlineLevel, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
     );
     rules.defineRule('magicNotes.bloodlineAbyssal',
-      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('saveNotes.demonResistances',
-      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? 10 : 5'
+      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? 10 : 5'
     );
     rules.defineRule('saveNotes.demonResistances.1',
-      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
     );
 
   } else if(name == 'Arcane') {
@@ -3002,65 +3001,64 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
       'levels.Sorcerer', '=', null
     );
     rules.defineRule
-      ('selectableFeatureCount.Sorcerer', bloodlineLevelAttr, '+', '1');
+      ('selectableFeatureCount.Sorcerer', bloodlineLevel, '+', '1');
     rules.defineRule('magicNotes.metamagicAdept',
-      bloodlineLevelAttr, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
+      bloodlineLevel, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
     );
     rules.defineRule('magicNotes.newArcana',
-      bloodlineLevelAttr, '=', 'Math.floor((source - 5) / 4)'
+      bloodlineLevel, '=', 'Math.floor((source - 5) / 4)'
     );
     SRD35.testRules
-      (rules, 'validation', 'sorcerer-BondedObjectSelectableFeature', 'levels.' + name, ['Requires Bloodline Arcane']);
+      (rules, 'validation', 'sorcerer-BondedObjectSelectableFeature', 'selectableFeatures.Sorcerer - Bonded Object', ['Requires Bloodline Arcane']);
     SRD35.testRules
-      (rules, 'validation', 'sorcerer-FamiliarSelectableFeature', 'levels.' + name, ['Requires Bloodline Arcane']);
+      (rules, 'validation', 'sorcerer-FamiliarSelectableFeature', 'selectableFeatures.Sorcerer - Familiar', ['Requires Bloodline Arcane']);
 
   } else if(name == 'Celestial') {
 
     rules.defineRule('abilityNotes.wingsOfHeaven',
-      bloodlineLevelAttr, '=', 'source >= 20 ? "any" : source'
+      bloodlineLevel, '=', 'source >= 20 ? "any" : source'
     );
     rules.defineRule('magicNotes.bloodlineCelestial',
-      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.heavenlyFire',
-      bloodlineLevelAttr, '=', '1 + Math.floor(source / 2)'
+      bloodlineLevel, '=', '1 + Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.heavenlyFire.1',
       'features.Heavenly Fire', '?', null,
       'charismaModifier', '=', '1 + source'
     );
     rules.defineRule('saveNotes.celestialResistances',
-      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
     );
 
   } else if(name == 'Destined') {
 
     rules.defineRule('featureNotes.itWasMeantToBe',
-      bloodlineLevelAttr, '=', 'Math.floor((source - 1) / 8)'
+      bloodlineLevel, '=', 'Math.floor((source - 1) / 8)'
     );
     rules.defineRule('magicNotes.touchOfDestiny',
-      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.touchOfDestiny.1',
       'features.Touch Of Destiny', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
-    rules.defineRule('saveNotes.fated',
-      bloodlineLevelAttr, '=', 'Math.floor((source + 1) / 4)'
-    );
+    rules.defineRule
+      ('saveNotes.fated', bloodlineLevel, '=', 'Math.floor((source + 1) / 4)');
 
   } else if(name == 'Draconic') {
 
-    rules.defineRule('abilityNotes.wings', bloodlineLevelAttr, '^=', null);
-    rules.defineRule('combatNotes.breathWeapon', bloodlineLevelAttr, '=', null);
+    rules.defineRule('abilityNotes.wings', bloodlineLevel, '^=', null);
+    rules.defineRule('combatNotes.breathWeapon', bloodlineLevel, '=', null);
     rules.defineRule('combatNotes.breathWeapon.1',
       'features.Breath Weapon', '?', null,
-      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('combatNotes.breathWeapon.2',
       'features.Breath Weapon', '?', null,
-      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
     );
     rules.defineRule('combatNotes.breathWeapon.3',
       'features.Breath Weapon', '?', null,
@@ -3071,47 +3069,43 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
       'bloodlineEnergy', '=', null
     );
     rules.defineRule('combatNotes.dragonResistances',
-      bloodlineLevelAttr, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
+      bloodlineLevel, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
     );
+    rules.defineRule('featureNotes.blindsense', bloodlineLevel, '^=', '60');
     rules.defineRule('saveNotes.dragonResistances',
-      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
     );
     rules.defineRule('saveNotes.dragonResistances.1',
       'features.Dragon Resistances', '?', null,
       'bloodlineEnergy', '=', null
     );
-    rules.defineRule('featureNotes.blindsense', bloodlineLevelAttr, '^=', '60');
-    rules.defineRule('magicNotes.bloodlineDraconic',
-      'bloodlineEnergy', '=', null
-    );
+    rules.defineRule
+      ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
 
   } else if(name == 'Elemental') {
 
     rules.defineRule
       ('abilityNotes.elementalMovement', 'bloodlineMovement', '=', null);
-    rules.defineRule
-      ('combatNotes.elementalBlast', bloodlineLevelAttr, '=', null);
+    rules.defineRule('combatNotes.elementalBlast', bloodlineLevel, '=', null);
     rules.defineRule('combatNotes.elementalBlast.1',
       'features.Elemental Blast', '?', null,
-      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('combatNotes.elementalBlast.2',
       'features.Elemental Blast', '?', null,
-      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
     );
     rules.defineRule('combatNotes.elementalBlast.3',
       'features.Elemental Blast', '?', null,
       'bloodlineEnergy', '=', null
     );
-    rules.defineRule('features.Bloodline Elemental',
-      bloodlineLevelAttr, '=', '1'
-    );
+    rules.defineRule('features.Bloodline Elemental', bloodlineLevel, '=', '1');
     rules.defineRule
       ('magicNotes.elementalRay', 'charismaModifier', '=', 'source + 3');
     rules.defineRule('magicNotes.elementalRay.1',
       'features.Elemental Ray', '?', null,
-      bloodlineLevelAttr, '=', 'Math.floor(source / 2)'
+      bloodlineLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.elementalRay.2',
       'features.Elemental Ray', '?', null,
@@ -3120,7 +3114,7 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.elementalBody', 'bloodlineEnergy', '=', null
     );
     rules.defineRule('saveNotes.elementalResistance',
-      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
+      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
     );
     rules.defineRule('saveNotes.elementalResistance.1',
       'features.Elemental Resistance', '?', null,
@@ -3129,69 +3123,66 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
 
   } else if(name == 'Fey') {
 
-    rules.defineRule
-      ('magicNotes.fleetingGlance', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.fleetingGlance', bloodlineLevel, '=', null);
     rules.defineRule
       ('magicNotes.laughingTouch', 'charismaModifier', '=', 'source + 3');
 
   } else if(name == 'Infernal') {
 
     rules.defineRule('magicNotes.corruptingTouch',
-      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.corruptingTouch.1',
       'features.Corrupting Touch', '?', null,
       'charismaModifier', '=', 'source + 3'
     );
-    rules.defineRule('magicNotes.hellfire', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.hellfire', bloodlineLevel, '=', null);
     rules.defineRule('magicNotes.hellfire.1',
       'features.Hellfire', '?', null,
-      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.hellfire.2',
       'features.Hellfire', '?', null,
-      bloodlineLevelAttr, '=', null
+      bloodlineLevel, '=', null
     );
     rules.defineRule('magicNotes.hellfire.3',
       'features.Hellfire', '?', null,
-      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
     );
     rules.defineRule('saveNotes.infernalResistances',
-      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
     );
     rules.defineRule('saveNotes.infernalResistances.1',
-      bloodlineLevelAttr, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
     );
 
   } else if(name == 'Undead') {
 
-    rules.defineRule
-      ('magicNotes.graspOfTheDead', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.graspOfTheDead', bloodlineLevel, '=', null);
     rules.defineRule('magicNotes.graspOfTheDead.1',
       'features.Grasp Of The Dead', '?', null,
-      bloodlineLevelAttr, '=', '10 + Math.floor(source / 2)',
+      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.graspOfTheDead.2',
       'features.Grasp Of The Dead', '?', null,
-      bloodlineLevelAttr, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
     );
     rules.defineRule('magicNotes.graveTouch',
-      bloodlineLevelAttr, '=', 'Math.max(1, Math.floor(source / 2))'
+      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.graveTouch.1',
       'features.Grave Touch', '?', null,
       'charismaModifier', '=', 'source + 3'
     );
-    rules.defineRule
-      ('magicNotes.incorporealForm', bloodlineLevelAttr, '=', null);
+    rules.defineRule('magicNotes.incorporealForm', bloodlineLevel, '=', null);
     rules.defineRule("saveNotes.death'sGift",
-      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
     );
     rules.defineRule("saveNotes.death'sGift.1",
       "features.Death's Gift", '?', null,
-      bloodlineLevelAttr, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
     );
 
   }
