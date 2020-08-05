@@ -176,109 +176,132 @@ PathfinderPrestige.CLASSES = {
       '"3:Stand Up","3:Surprise Attack","3:Trap Spotter",' +
       '"3:Rogue Weapon Training","3:Crippling Strike","3:Defensive Roll",' +
       '"3:Dispelling Attack","3:Feat Bonus","3:Improved Evasion",' +
-      '3:Opportunist,"3:Skill Mastery","3:Slippery Mind"'
+      '3:Opportunist,"3:Skill Mastery","3:Slippery Mind" ' +
+    'CasterLevelArcane=levels.Shadowdancer ' +
+    'SpellAbility=charisma ' +
+    'SpellsPerDay=' +
+      'Shadowdancer1:3=1,' +
+      'Shadowdancer4:4=2,' +
+      'Shadowdancer5:8=1,' +
+      'Shadowdancer7:10=1 ' +
+    'Spells=' +
+      '"Shadowdancer1:Silent Image",' +
+      '"Shadowdancer4:Dimension Door;Shadow Conjuration",' +
+      '"Shadowdancer5:Shadow Evocation",' +
+      '"Shadowdancer7:Greater Shadow Conjuration"'
 };
 PathfinderPrestige.FEATURES = {
-  'Acrobatic Charge':'combat:May charge in difficult terrain',
-  'Aligned Arrows':'combat:Arrows anarchic/axiomatic/holy/unholy',
-  'Angel Of Death':'combat:Death attack dusts corpse 1/day',
-  'Applicable Knowledge':'feature:+1 General Feat',
+  'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
+  'Aligned Arrows':
+    'Section=combat Note="Arrows anarchic, axiomatic, holy, or unholy"',
+  'Angel Of Death':'Section=combat Note="Death attack dusts corpse 1/dy"',
+  'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
   'Arrow Of Death':
-    'combat:Special arrow requires foe DC %V fortitude save or die',
+    'Section=combat Note="Special arrow kills foe (DC %V Fort neg)"',
   'Blood Of Dragons':
-    'feature:Dragon Disciple level triggers Bloodline Draconic features',
-  'Bonus Language':'feature:%V additional language(s)',
-  'Call Down The Legends':'magic:Summon 2d4 level 4 barbarians 1/week',
-  'Canny Defense':'combat:+%V AC when lightly/unarmored',
-  'Caster Level Bonus':'magic:+%V base class level for spells known/per day',
+    'Section=feature Note="Dragon Disciple level triggers Bloodline Draconic features"',
+  'Bonus Language':'Section=feature Note="+%V Language Count"',
+  'Call Down The Legends':
+    'Section=magic Note="Summon 2d4 level 4 barbarians 1/wk"',
+  'Canny Defense':'Section=combat Note="+%V AC in light or no armor"',
+  'Caster Level Bonus':
+    'Section=magic Note="+%V base class level for spells known and spells per day"',
   'Combined Spells':
-    'magic:Fill spell slots up to level %V with spells from different class',
-  'Constitution Boost':'ability:+2 Constitution',
-  'Crippling Critical':'combat:Critical hit causes follow-on damage',
+    'Section=magic Note="Fill spell slots up to level %V with spells from different class"',
+  'Constitution Boost':'Section=ability Note="+2 Constitution"',
+  'Crippling Critical':
+    'Section=combat Note="Critical hit causes follow-on damage"',
   'Death Attack':
-    'combat:Foe DC %V fortitude save on successful sneak attack after 3 rd of study or die/paralyzed d6+%1 rd',
-  'Deep Pockets':[
-    'feature:Retrieve any small object from backpack as a full-round action',
-    'skill:+4 Sleight Of Hand (conceal small objects)'
-  ],
+    'Section=combat Note="Sneak attack after 3 rd of study causes death or paralysis d6+%1 rd (DC %V Fort neg)"',
+  'Deep Pockets':
+    'Section=feature,skill Note="Retrieve any small object from backpack as a full-round action","+4 Sleight Of Hand (conceal small objects)"',
   'Defensive Roll':
-    'combat:DC damage Reflex save vs. lethal blow for half damage',
-  'Dirge Of Doom':"magic:Creatures w/in 30' shaken while performing",
-  'Distance Arrows':'combat:x2 range',
-  'Distraction':"magic:Perform check vs. visual magic w/in 30' 10 rd",
+    'Section=combat Note="DC damage Reflex save vs. lethal blow for half damage"',
+  'Distance Arrows':'Section=combat Note="x2 range"',
+  'Distraction':
+    'Section=magic Note="R30\' Perform check vs. visual magic 10 rd"',
   'Diverse Training':
-    'feature:Eldritch Knight level satisfies Fighter/arcane feat prerequisite',
-  'Dragon Bite':'combat:d%V+%1%2 bite when using claws',
-  'Dragon Disciple':'combat:+%V',
-  'Dragon Form':'magic:<i>Form Of The Dragon %V</i> %1/day',
-  'Elaborate Defense':'combat:+%V AC when fighting defensively',
-  'Elemental Arrows':'combat:Arrows %V',
-  'Enhance Arrow':'combat:Arrows treated as +1 magic weapons',
-  'Enhanced Mobility':'combat:+4 AC vs. movement AOO when lightly/unarmored',
-  'Epic Tales':'magic:Bardic Performance effect via writing%V',
-  'Grace':'save:+2 Reflex when lightly/unarmored',
-  'Greater Lore':'skill:+10 Spellcraft (identify magic item properties)',
-  'Hail Of Arrows':'combat:Simultaneously fire arrows at %V targets 1/day',
-  'Hidden Weapons':'skill:+%V Sleight Of Hand (hide weapons)',
-  'Imbue Arrow':'magic:Center spell where arrow lands',
-  'Impromptu Sneak Attack':'combat:Declare any attack a sneak attack %V/day',
-  'Improved Aid':'combat:Aid Another action gives +4 bonus',
-  'Improved Reaction':'combat:+%V Initiative',
-  'Inspired Action':'magic:Use Bardic Performance to give ally extra %V action',
-  'Instant Mastery':'skill:4 ranks in untrained skill',
-  'Intelligence Boost':'ability:+2 Intelligence',
-  'Invisible Thief':'magic:<i>Greater Invisibility</i> %V rd/day',
-  'Lay Of The Exalted Dead':'magic:Summon d4+1 level 5 barbarians 1/week',
-  'Live To Tell The Tale':'save:Extra saving throw vs permanent contion %V/day',
-  'Lore':'skill:+%V all Knowledge, use any Knowledge untrained',
+    'Section=feature Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
+  'Dragon Bite':'Section=combat Note="d%V+%1%2 bite when using claws"',
+  'Dragon Disciple':'Section=combat Note="+%V"',
+  'Dragon Form':'Section=magic Note="<i>Form Of The Dragon %V</i> %1/dy"',
+  'Elaborate Defense':'Section=combat Note="+%V AC when fighting defensively"',
+  'Elemental Arrows':'Section=combat Note="Arrows %V"',
+  'Enhance Arrow':'Section=combat Note="Arrows treated as +1 magic weapons"',
+  'Enhanced Mobility':
+    'Section=combat Note="+4 AC vs. movement AOO in light or no armor"',
+  'Epic Tales':'Section=magic Note="Bardic Performance effect via writing%V"',
+  'Grace':'Section=save Note="+2 Reflex in light or no armor"',
+  'Greater Lore':
+    'Section=skill Note="+10 Spellcraft (identify magic item properties)"',
+  'Hail Of Arrows':
+    'Section=combat Note="Simultaneously fire arrows at %V targets 1/dy"',
+  'Hidden Weapons':'Section=skill Note="+%V Sleight Of Hand (hide weapons)"',
+  'Imbue Arrow':'Section=magic Note="Center spell where arrow lands"',
+  'Impromptu Sneak Attack':
+    'Section=combat Note="Declare any attack a sneak attack %V/dy"',
+  'Improved Aid':'Section=combat Note="Aid Another action gives +4 bonus"',
+  'Improved Reaction':'Section=combat Note="+%V Initiative"',
+  'Inspired Action':
+    'Section=magic Note="Use Bardic Performance to give ally extra %V action"',
+  'Instant Mastery':'Section=skill Note="4 ranks in untrained skill"',
+  'Intelligence Boost':'Section=ability Note="+2 Intelligence"',
+  'Invisible Thief':
+    'Section=magic Note="<i>Greater Invisibility</i> %V rd/dy"',
+  'Lay Of The Exalted Dead':
+    'Section=magic Note="Summon d4+1 level 5 barbarians 1/wk"',
+  'Live To Tell The Tale':
+    'Section=save Note="Extra saving throw vs permanent condition %V/dy"',
+  'Lore':'Section=skill Note="+%V All Knowledge/use any Knowledge untrained"',
   'Master Scribe':
-    'skill:+%V Linguistics/Profession (Scribe)/Use Magic Device (Scrolls)',
-  'More Newfound Arcana':'magic:Bonus level 2 spell',
-  'Newfound Arcana':'magic:Bonus level 1 spell',
-  'No Retreat':'combat:AOO on foe withdraw',
+    'Section=skill Note="+%V Linguistics/=%v Profession (Scribe)/+%V Use Magic Device (scrolls)"',
+  'More Newfound Arcana':'Section=magic Note="Bonus level 2 spell"',
+  'Newfound Arcana':'Section=magic Note="Bonus level 1 spell"',
+  'No Retreat':'Section=combat Note="AOO on foe withdraw"',
   'Parry':
-    'combat:Hit on full-round attack negates foe attack instead of damaging',
-  'Pathfinding':[
-    'ability:Treat trackless terrain as road',
-    'save:+5 vs. <i>Maze</i>',
-    'skill:+5 Survival (avoid becoming lost), DC 15 Survival to extend to companion'
-  ],
-  'Phase Arrow':'combat:Arrow passes through normal obstacles %V/day',
-  'Poison Tolerance':'save:+%V vs. poison',
-  'Poison Use':'feature:No chance of self-poisoning when applying to blade',
-  'Precise Strike':'combat:+%V HP with light piercing weapon',
-  'Quiet Death':'combat:Stealth check to perform Death Attack unnoticed',
-  'Ranged Legerdemain':"combat:+5 DC on Disable Device/Sleight Of Hand at 30'",
-  'Riposte':'combat:AOO after parry',
-  'Secret Health':'combat:+3 HP',
-  'Secret Knowledge Of Avoidance':'save:+2 Reflex',
-  'Secrets Of Inner Strength':'save:+2 Will',
-  'Seeker Arrow':'combat:Arrow maneuvers to target %V/day',
-  'Shadow Call':'magic:<i>Shadow Conjuration</i> %V/day',
-  'Shadow Illusion':'magic:<i>Silent Image</i> %V/day',
-  'Shadow Jump':'magic:<i>Dimension Door</i> between shadows %V feet/day',
-  'Shadow Master':[
-    'combat:DR 10/-, critical hit blinds d6 rd in dim light',
-    'save:+2 saves in dim light'
-  ],
-  'Shadow Power':'magic:<i>Shadow Evocation</i> %V/day',
-  'Sneak Attack':'combat:%Vd6 HP extra when surprising or flanking',
-  'Spell Critical':'magic:Cast swift spell after critical hit',
+    'Section=combat Note="Hit on full-round attack negates foe attack instead of damaging"',
+  'Pathfinding':
+    'Section=ability,save,skill Note="Treat trackless terrain as road","+5 vs. <i>Maze</i>","+5 Survival (avoid becoming lost), DC 15 Survival to extend to companion"',
+  'Phase Arrow':
+    'Section=combat Note="Arrow passes through normal obstacles %V/dy"',
+  'Poison Tolerance':'Section=save Note="+%V vs. poison"',
+  'Poison Use':
+    'Section=feature Note="No chance of self-poisoning when applying to blade"',
+  'Precise Strike':'Section=combat Note="+%V HP with light piercing weapon"',
+  'Quiet Death':
+    'Section=combat Note="Stealth check to perform Death Attack unnoticed"',
+  'Ranged Legerdemain':
+    'Section=skill Note="+5 DC on Disable Device and Sleight Of Hand at 30\'"',
+  'Riposte':'Section=combat Note="AOO after parry"',
+  'Secret Health':'Section=combat Note="+3 HP"',
+  'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
+  'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
+  'Seeker Arrow':'Section=combat Note="Arrow maneuvers to target %V/dy"',
+  'Shadow Call':'Section=magic Note="<i>Shadow Conjuration</i> %V/dy"',
+  'Shadow Illusion':'Section=magic Note="<i>Silent Image</i> %V/dy"',
+  'Shadow Jump':
+    'Section=magic Note="<i>Dimension Door</i> between shadows %V\'/dy"',
+  'Shadow Master':
+    'Section=combat,save Note="DR 10/-, critical hit blinds d6 rd in dim light","+2 saves in dim light"',
+  'Shadow Power':'Section=magic Note="<i>Shadow Evocation</i> %V/dy"',
+  'Spell Critical':'Section=magic Note="Cast swift spell after critical hit"',
   'Spell Synthesis':
-    'magic:Cast two spells simultaneously, +2 vs. resistance, target -2 saves',
-  'Strength Boost':'ability:+%V Strength',
+    'Section=magic Note="Cast two spells simultaneously, +2 vs. resistance, target -2 saves"',
+  'Strength Boost':'Section=ability Note="+%V Strength"',
   'Summon Shadow':
-    'magic:Summon unturnable Shadow companion with %V HP, character attack/save, +4 will vs. channeled energy',
-  'Surprise Spells':'combat:Sneak attack spell damage vs flat-footed foes',
-  'Swift Death':'combat:Death attack w/out prior study 1/day',
-  'The Lore Of True Stamina':'save:+2 Fortitude',
-  'Tricky Spells':'magic:Silent/Still spell %V/day',
+    'Section=magic Note="Summon unturnable Shadow companion with %V HP, character attack/save, +4 will vs. channeled energy"',
+  'Surprise Spells':
+    'Section=combat Note="Sneak attack spell damage vs flat-footed foes"',
+  'Swift Death':'Section=combat Note="Death attack w/out prior study 1/dy"',
+  'The Lore Of True Stamina':'Section=save Note="+2 Fortitude"',
+  'Tricky Spells':'Section=magic Note="Use Silent Spell and Still Spell %V/dy"',
   'True Death':
-    'combat:Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check',
-  'True Lore':'magic:<i>Legend Lore</i>, <i>Analyze Dweomer</i> 1/day',
-  'Weapon Trick':'combat:+1 Attack',
+    'Section=combat Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
+  'True Lore':
+    'Section=magic Note="<i>Legend Lore</i>, <i>Analyze Dweomer</i> 1/dy"',
+  'Weapon Trick':'Section=combat Note="+1 Melee Attack/+1 Ranged Attack"',
   'Whispering Campaign':
-    'magic:<i>Doom</i>/<i>Enthrall</i> via Bardic Performance'
+    'Section=magic Note="<i>Doom</i>/<i>Enthrall</i> via Bardic Performance"'
 };
 
 /* Defines the rules related to SRDv3.5 Prestige Classes. */
@@ -523,8 +546,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       'levels.Loremaster', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule
-      (/^skillModifier\.Knowledge/, 'skillNotes.lore', '+=', null);
-    rules.defineRule
       ('skillNotes.lore', 'levels.Loremaster', '+=', 'Math.floor(source / 2)');
     rules.defineRule('countskillfocusknowledgefeats',
       /^features.Skill Focus \(Knowledge/, '+=', '1'
@@ -619,26 +640,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Shadowdancer') {
 
-    rules.defineRule('casterLevels.Silent Image',
-      'levels.Shadowdancer', '^=', 'source < 3 ? null : source'
-    );
-    rules.defineRule('casterLevels.Dimennsion Door',
-      'levels.Shadowdancer', '^=', 'source < 4 ? null : source'
-    );
-    rules.defineRule('casterLevels.Greater Shadow Conjuration',
-      'levels.Shadowdancer', '^=', 'source < 10 ? null : source'
-    );
-    rules.defineRule('casterLevels.Shadow Conjuration',
-      'levels.Shadowdancer', '^=', 'source < 4 ? null : source'
-    );
-    rules.defineRule('casterLevels.Shadow Evocation Image',
-      'levels.Shadowdancer', '^=', 'source < 8 ? null : source'
-    );
-    // Set casterLevels.W to a minimal value so that spell DC will be
-    // calcuated even for non-Wizard Shadowdancers.
-    rules.defineRule('casterLevels.W',
-      'levels.Shadowdancer', '=', 'source < 3 ? null : 1'
-    );
     rules.defineRule('featureNotes.darkvision',
       'shadowdancerFeatures.Darkvision', '+=', '60'
     );
