@@ -3910,7 +3910,8 @@ Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
 
 /*
  * Defines in #rules# the rules associated with domain #name#. #features# and
- * #spells# list the associated features and domain spells.
+ * #spells# list the associated features and domain spells. #spellDict# is the
+ * dictionary of all spells used to look up individual spell attributes.
  */
 Pathfinder.domainRules = function(rules, name, features, spells, spellDict) {
   SRD35.domainRules(rules, name, features, spells, spellDict);
