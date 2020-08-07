@@ -215,11 +215,7 @@ PathfinderPrestige.FEATURES = {
     'Section=combat Note="Sneak attack after 3 rd of study causes death or paralysis d6+%1 rd (DC %V Fort neg)"',
   'Deep Pockets':
     'Section=feature,skill Note="Retrieve any small object from backpack as a full-round action","+4 Sleight Of Hand (conceal small objects)"',
-  'Defensive Roll':
-    'Section=combat Note="DC damage Reflex save vs. lethal blow for half damage"',
   'Distance Arrows':'Section=combat Note="x2 range"',
-  'Distraction':
-    'Section=magic Note="R30\' Perform check vs. visual magic 10 rd"',
   'Diverse Training':
     'Section=feature Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
   'Dragon Bite':'Section=combat Note="d%V+%1%2 bite when using claws"',
