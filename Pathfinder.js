@@ -350,30 +350,41 @@ for(var element in {'Earth':'', 'Fire':'', 'Water':''})
     Pathfinder.BLOODLINES['Elemental (Air)'];
 Pathfinder.DEITIES = {
   'None':'',
-  'Abadar (LN)':
-    'Weapon="Light Crossbow" Domain=Earth,Law,Nobility,Protection,Travel',
-  'Asmodeus (LE)':'Weapon=Mace Domain=Evil,Fire,Law,Magic,Trickery',
-  'Calistria (CN)':'Weapon=Whip Domain=Chaos,Charm,Knowledge,Luck,Trickery',
-  'Cayden Cailean (CG)':'Weapon=Rapier Domain=Chaos,Charm,Good,Strength,Travel',
-  'Desna (CG)':'Weapon=Starknife Domain=Chaos,Good,Liberation,Luck,Travel',
-  'Erastil (LG)':'Weapon=Longbow Domain=Animal,Community,Good,Law,Plant',
-  'Gozreh (N)':'Weapon=Trident Domain=Air,Animal,Plant,Water,Weather',
-  'Gorum (CN)':'Weapon=Greatsword Domain=Chaos,Destruction,Glory,Strength,War',
-  'Iomedae (LG)':'Weapon=Longsword Domain=Glory,Good,Law,Sun,War',
-  'Irori (LN)':'Weapon=Unarmed Domain=Healing,Knowledge,Law,Rune,Strength',
-  'Lamashtu (CE)':'Weapon=Falchion Domain=Chaos,Evil,Madness,Strength,Trickery',
-  'Nethys (N)':
-    'Weapon=Quarterstaff Domain=Destruction,Knowledge,Magic,Protection,Rune',
-  'Norgorber (NE)':
-    'Weapon="Short Sword" Domain=Charm,Death,Evil,Knowledge,Trickery',
-  'Pharasma (N)':'Weapon=Dagger Domain=Death,Healing,Knowledge,Repose,Water',
-  'Rovagug (CE)':'Weapon=Greataxe Domain=Chaos,Destruction,Evil,War,Weather',
-  'Sarenrae (NG)':'Weapon=Scimitar Domain=Fire,Glory,Good,Healing,Sun',
-  'Shelyn (NG)':'Weapon=Glaive Domain=Air,Charm,Good,Luck,Protection',
-  'Torag (LG)':'Weapon=Warhammer Domain=Artifice,Earth,Good,Law,Protection',
-  'Urgathoa (NE)':'Weapon=Scythe Domain=Death,Evil,Magic,Strength,War',
-  'Zon-Kuthon (LE)':
-    'Weapon="Spiked Chain" Domain=Darkness,Death,Destruction,Evil,Law'
+  'Abadar':
+    'Alignment=LN Weapon="Light Crossbow" Domain=Earth,Law,Nobility,Protection,Travel',
+  'Asmodeus':'Alignment=LE Weapon=Mace Domain=Evil,Fire,Law,Magic,Trickery',
+  'Calistria':
+    'Alignment=CN Weapon=Whip Domain=Chaos,Charm,Knowledge,Luck,Trickery',
+  'Cayden Cailean':
+    'Alignement=CG Weapon=Rapier Domain=Chaos,Charm,Good,Strength,Travel',
+  'Desna':
+    'Alignment=CG Weapon=Starknife Domain=Chaos,Good,Liberation,Luck,Travel',
+  'Erastil':
+    'Alginment=LG Weapon=Longbow Domain=Animal,Community,Good,Law,Plant',
+  'Gozreh':
+    'Alignment=N Weapon=Trident Domain=Air,Animal,Plant,Water,Weather',
+  'Gorum':
+    'Alignment=CN Weapon=Greatsword Domain=Chaos,Destruction,Glory,Strength,War',
+  'Iomedae':'Alignment=LG Weapon=Longsword Domain=Glory,Good,Law,Sun,War',
+  'Irori':
+    'Alignment=LN Weapon=Unarmed Domain=Healing,Knowledge,Law,Rune,Strength',
+  'Lamashtu':
+    'Alignment=CE Weapon=Falchion Domain=Chaos,Evil,Madness,Strength,Trickery',
+  'Nethys':
+    'Alignment=N Weapon=Quarterstaff Domain=Destruction,Knowledge,Magic,Protection,Rune',
+  'Norgorber':
+    'Alignment=NE Weapon="Short Sword" Domain=Charm,Death,Evil,Knowledge,Trickery',
+  'Pharasma':
+    'Alignment=N Weapon=Dagger Domain=Death,Healing,Knowledge,Repose,Water',
+  'Rovagug':
+    'Alignment=CE Weapon=Greataxe Domain=Chaos,Destruction,Evil,War,Weather',
+  'Sarenrae':'Alignment=NG Weapon=Scimitar Domain=Fire,Glory,Good,Healing,Sun',
+  'Shelyn':'Alignment=NG Weapon=Glaive Domain=Air,Charm,Good,Luck,Protection',
+  'Torag':
+    'Alignment=LG Weapon=Warhammer Domain=Artifice,Earth,Good,Law,Protection',
+  'Urgathoa':'Alignment=NE Weapon=Scythe Domain=Death,Evil,Magic,Strength,War',
+  'Zon-Kuthon':
+    'Alignment=LE Weapon="Spiked Chain" Domain=Darkness,Death,Destruction,Evil,Law'
 };
 Pathfinder.DOMAINS = {
   'Air':
@@ -2860,6 +2871,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.classRulesExtra(rules, name);
   } else if(type == 'Deity')
     Pathfinder.deityRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'Alignment'),
       QuilvynUtils.getAttrValueArray(attrs, 'Domain'),
       QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
     );
@@ -3887,15 +3899,16 @@ Pathfinder.companionRules = function(
 };
 
 /*
- * Defines in #rules# the rules associated with deity #name#. #domains# and
- * #favoredWeapons# list the associated domains and favored weapons.
+ * Defines in #rules# the rules associated with deity #name#. #alignment# gives
+ * the deity's alignment, and #domains# and #weapons# list the associated
+ * domains and favored weapons.
  */
-Pathfinder.deityRules = function(rules, name, domains, favoredWeapons) {
-  SRD35.deityRules(rules, name, domains, favoredWeapons);
+Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
+  SRD35.deityRules(rules, name, alignment, domains, weapons);
   // Pathfinder clerics get proficiency in the deity's favored weapon without
   // taking the War domain, and the War domain does not grant Weapon Focus.
-  for(var i = 0; i < favoredWeapons.length; i++) {
-    var weapon = favoredWeapons[i];
+  for(var i = 0; i < weapons.length; i++) {
+    var weapon = weapons[i];
     var focusFeature = 'Weapon Focus (' + weapon + ')';
     var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
     rules.defineRule
