@@ -2818,10 +2818,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   else if(type == 'Animal Companion')
     Pathfinder.companionRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Str'),
-      QuilvynUtils.getAttrValue(attrs, 'Int'),
-      QuilvynUtils.getAttrValue(attrs, 'Wis'),
       QuilvynUtils.getAttrValue(attrs, 'Dex'),
       QuilvynUtils.getAttrValue(attrs, 'Con'),
+      QuilvynUtils.getAttrValue(attrs, 'Int'),
+      QuilvynUtils.getAttrValue(attrs, 'Wis'),
       QuilvynUtils.getAttrValue(attrs, 'Cha'),
       QuilvynUtils.getAttrValue(attrs, 'HD'),
       QuilvynUtils.getAttrValue(attrs, 'AC'),
@@ -2888,10 +2888,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   else if(type == 'Familiar')
     Pathfinder.familiarRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Str'),
-      QuilvynUtils.getAttrValue(attrs, 'Int'),
-      QuilvynUtils.getAttrValue(attrs, 'Wis'),
       QuilvynUtils.getAttrValue(attrs, 'Dex'),
       QuilvynUtils.getAttrValue(attrs, 'Con'),
+      QuilvynUtils.getAttrValue(attrs, 'Int'),
+      QuilvynUtils.getAttrValue(attrs, 'Wis'),
       QuilvynUtils.getAttrValue(attrs, 'Cha'),
       QuilvynUtils.getAttrValue(attrs, 'HD'),
       QuilvynUtils.getAttrValue(attrs, 'AC'),
@@ -2902,9 +2902,9 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     );
   else if(type == 'Feat') {
     Pathfinder.featRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Type'),
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Imply')
+      QuilvynUtils.getAttrValueArray(attrs, 'Imply'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Type')
     );
     Pathfinder.featRulesExtra(rules, name);
   } else if(type == 'Feature')
@@ -3880,17 +3880,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with animal companion #name#, which
- * has abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
+ * has abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The companion has attack bonus #attack#, does
  * #damage# damage, and is size #size#. If specified, #level# indicates the
  * minimum master level the character needs to have this animal as a companion.
  */
 Pathfinder.companionRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level
+  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level
 ) {
   if(!hd)
     hd = 1;
-  SRD35.companionRules(rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level);
+  SRD35.companionRules(rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level);
   if(name.startsWith('Advanced ') && level) {
     var name = name.replace('Advanced ', '');
     rules.defineRule
@@ -4311,26 +4311,26 @@ Pathfinder.factionRules = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with familiar #name#, which has
- * abilities #str#, #intel#, #wis#, #dex#, #con#, and #cha#, hit dice #hd#,
+ * abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The familiar has attack bonus #attack#, does
  * #damage# damage, and is size #size#. If specified, #level# indicates the
  * minimum master level the character needs to have this animal as a familiar.
  */
 Pathfinder.familiarRules = function(
-  rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level
+  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level
 ) {
   SRD35.familiarRules
-    (rules, name, str, intel, wis, dex, con, cha, hd, ac, attack, damage, size, level);
+    (rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level);
   // No changes needed to the rules defined by SRD35 method
 };
 
 /*
- * Defines in #rules# the rules associated with feat #name#. #types# lists the
- * categories of the feat, and #require# and #implies# list the hard and soft
- * prerequisites for the feat.
+ * Defines in #rules# the rules associated with feat #name#. #require# and
+ * #implies# list any hard and soft prerequisites for the feat, and #types#
+ * lists the categories of the feat.
  */
-Pathfinder.featRules = function(rules, name, types, requires, implies) {
-  SRD35.featRules(rules, name, types, requires, implies);
+Pathfinder.featRules = function(rules, name, requires, implies, types) {
+  SRD35.featRules(rules, name, requires, implies, types);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -4936,11 +4936,11 @@ Pathfinder.createViewers = function(rules, viewers) {
  */
 Pathfinder.choiceEditorElements = function(rules, type) {
   var result = [];
-  if(type == 'factions')
+  if(type == 'Faction')
     result.push(
       // empty
     );
-  else if(type == 'traits')
+  else if(type == 'Trait')
     result.push(
       ['Type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
       ['Subtype', 'Subtype', 'text', [20]]
