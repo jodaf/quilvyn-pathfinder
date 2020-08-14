@@ -668,6 +668,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Skill Focus (Knowledge (Dungeoneering))':'Type=General',
   'Skill Focus (Knowledge (History))':'Type=General',
   'Skill Focus (Knowledge (Planes))':'Type=General',
+  'Skill Focus (Knowledge (Religion))':'Type=General',
   // New feats
   'Acrobatic Steps':'Type=General',
   'Agile Maneuvers':
