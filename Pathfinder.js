@@ -663,6 +663,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     SRD35.FEATS['Shield Proficiency (Tower)'] + ' Type=Fighter',
   'Weapon Finesse':SRD35.FEATS['Weapon Finesse'] + ' Require=',
   // Subfeats required by bloodlines
+  'Skill Focus (Fly)':'Type=General',
   'Skill Focus (Knowledge (Arcana))':'Type=General',
   'Skill Focus (Knowledge (Dungeoneering))':'Type=General',
   'Skill Focus (Knowledge (History))':'Type=General',
