@@ -50,10 +50,10 @@ PathfinderPrestige.CLASSES = {
       '"10:Arrow Of Death"',
   'Arcane Trickster':
     'Require=' +
-      '"alignment !~ /Lawful/","features.sneakAttack >= 2",' +
+      '"alignment !~ \'Lawful\'","features.sneakAttack >= 2",' +
       '"skills.Disable Device >= 4","skills.Escape Artist >= 4",' +
-      '"skills.Knowledge (Arcana) >= 4","Sum /^spells.Mage Hand/ >= 1",' +
-      '"Sum /^spells.*[BW]3/ >= 0" ' +
+      '"skills.Knowledge (Arcana) >= 4","Sum \'^spells\\.Mage Hand\' >= 1",' +
+      '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Skills=' +
       'Appraise,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
@@ -65,7 +65,7 @@ PathfinderPrestige.CLASSES = {
         '"10:Surprise Spells"',
   'Assassin':
     'Require=' +
-      '"alignment =~ /Evil/","skills.Disguise >= 2","skill.Stealth >= 5" ' +
+      '"alignment =~ \'Evil\'","skills.Disguise >= 2","skill.Stealth >= 5" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Acrobatics,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
@@ -80,8 +80,8 @@ PathfinderPrestige.CLASSES = {
       '"9:Swift Death","10:Angel Of Death"',
   'Dragon Disciple':
     'Require=' +
-      '"features.Bloodline Draconic","languages.Draconic","race !~ /Dragon/",' +
-      '"skills.Knowledge (Arcana) >= 5" ' +
+      '"features.Bloodline Draconic","languages.Draconic",' +
+      '"race !~ \'Dragon\'","skills.Knowledge (Arcana) >= 5" ' +
       // TODO arcane spells w/out prep
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
@@ -93,7 +93,7 @@ PathfinderPrestige.CLASSES = {
     'Require=' +
       '"baseAttack >= 6",features.Dodge,features.Mobility,' +
       '"features.Weapon Finesse","skills.Acrobatics >= 2",' +
-      '"Sum /^skills.Perform / >= 2" ' +
+      '"Sum \'^skills\\.Perform \' >= 2" ' +
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Acrobatics,Bluff,"Escape Artist",Perception,Perform,"Sense Motive" ' +
@@ -105,7 +105,8 @@ PathfinderPrestige.CLASSES = {
       '"9:No Retreat","10:Crippling Critical"',
   'Eldritch Knight':
     'Require=' +
-      '"features.Weapon Proficiency (Martial)","Sum /^spells.*[BW]3/ >= 0" ' +
+      '"features.Weapon Proficiency (Martial)",' +
+      '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Skills=' +
       'Climb,"Knowledge (Arcana)","Knowledge (Nobility)",Linguistics,Ride,' +
@@ -114,8 +115,8 @@ PathfinderPrestige.CLASSES = {
       '"1:Diverse Training","2:Caster Level Bonus","10:Spell Critical"',
   'Loremaster':
     'Require=' +
-      '"Sum /^features.Skill Focus .Knowledge/ >= 0",' +
-      '"Sum /^spells.*Divi/ >= 7","Sum /^spells.*3 Divi/ >= 1" ' +
+      '"Sum \'^features\\.Skill Focus .Knowledge\' >= 0",' +
+      '"Sum \'^spells\\..*Divi\' >= 7","Sum \'^spells\\..*3 Divi\' >= 1" ' +
       // TODO Any two Knowledge skills >= 7
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Skills=' +

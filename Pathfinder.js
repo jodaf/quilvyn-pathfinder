@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '2.0-alpha';
+var PATHFINDER_VERSION = '2.0.1.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -689,11 +689,11 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Command Undead':'Type=General Require="features.Channel Energy"',
   'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
   'Critical Mastery':
-    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","Sum /^features.*Critical$/ >= 2"',
-  'Dazzling Display':'Type=Fighter Require="Sum /^features.Weapon Focus/ >= 1"',
+    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","Sum \'^features\\..*Critical$\' >= 2"',
+  'Dazzling Display':'Type=Fighter Require="Sum \'^features\\.Weapon Focus\' >= 1"',
   'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
   'Deadly Stroke':
-    'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","Sum /^features.Greater Weapon Focus/ >= 1","features.Shatter Defenses","features.WeaponFocus"',
+    'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","Sum \'^features\\.Greater Weapon Focus\' >= 1","features.Shatter Defenses","features.WeaponFocus"',
   'Deafening Critical':
     'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
   'Defensive Combat Training':'Type=Fighter',
@@ -726,7 +726,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Greater Overrun':
     'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Overrun","features.Power Attack"',
   'Greater Penetrating Strike':
-    'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","Sum /^features.Weapon Focus/ >= 1"',
+    'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","Sum \'^features\\.Weapon Focus\' >= 1"',
   'Greater Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 8","features.Shield Focus","features.Shield Proficiency (Heavy)"',
   'Greater Sunder':
@@ -756,14 +756,14 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     'Type=Fighter Require="baseAttack >= 11","features.Improved Unarmed Strike","features.Gorgon\'s Fist","features.Scorpion Style"',
   'Nimble Moves':'Type=General Require="dexterity >= 13"',
   'Penetrating Strike':
-    'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","Sum /^features.Weapon Focus/ >= 1"',
+    'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","Sum \'^features\\.Weapon Focus\' >= 1"',
   'Pinpoint Targeting':
     'Type=Fighter Require="baseAttack >= 16","dexterity >= 19","features.Improved Precise Shot","features.Point-Blank Shot"',
   'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
   'Selective Channeling':
     'Type=General Require="charisma >= 13","features.Channel Energy"',
   'Shatter Defenses':
-    'Type=Fighter Require="baseAttack >= 6","Sum /^features.Weapon Focus/ >= 1","features.Dazzing Display"',
+    'Type=Fighter Require="baseAttack >= 6","Sum \'^features\\.Weapon Focus\' >= 1","features.Dazzing Display"',
   'Shield Focus':
     'Type=Fighter Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
   'Shield Master':
@@ -1723,7 +1723,7 @@ Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
 Pathfinder.SKILLS = {
   'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
-  'Bluff':'Ability=charisma Class=,Bard,Rogue,Sorcerer',
+  'Bluff':'Ability=charisma Class=Bard,Rogue,Sorcerer',
   'Climb':
     'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
   'Craft (Alchemy)':'Ability=intelligence Class=all',
@@ -2015,7 +2015,7 @@ Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
 });
 Pathfinder.CLASSES = {
   'Barbarian':
-    'Require="alignment !~ /Lawful/" ' +
+    'Require="alignment !~ \'Lawful\'" ' +
     'HitDie=d12 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
@@ -2045,7 +2045,7 @@ Pathfinder.CLASSES = {
       '"10:Jack Of All Trades","12:Soothing Performace",' +
       '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
       '"20:Deadly Performance" ' +
-    'CasterLevelArcane=Level ' +
+    'CasterLevelArcane=levels.Bard ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'B0:1=4;2=5;3=6,' +
@@ -2103,7 +2103,7 @@ Pathfinder.CLASSES = {
       '"1:Spontaneous Cleric Spell" ' +
     'Selectables=' +
       QuilvynUtils.getKeys(Pathfinder.DOMAINS).map(x => '"1:' + x + ' Domain"').join(',') + ' ' +
-    'CasterLevelDivine=Level ' +
+    'CasterLevelDivine=levels.Cleric ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'C0:1=3;2=4,' +
@@ -2188,7 +2188,7 @@ Pathfinder.CLASSES = {
       'Mass Heal;Miracle;Soul Bind;Storm Of Vengeance;Summon Monster IX;' +
       'True Resurrection"',
   'Druid':
-    'Require="alignment =~ /Neutral/","armor =~ /None|Hide|Leather|Padded/","shield =~ /None|Wooden/" ' +
+    'Require="alignment =~ \'Neutral\'","armor =~ \'None|Hide|Leather|Padded\'","shield =~ \'None|Wooden\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
@@ -2202,7 +2202,7 @@ Pathfinder.CLASSES = {
       '"1:Earth Domain","1:Fire Domain","1:Plant Domain","1:Water Domain",' +
       '"1:Weather Domain" ' +
     'Languages=Druidic ' +
-    'CasterLevelDivine=Level ' +
+    'CasterLevelDivine=levels.Druid ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'D0:1=3;2=4,' +
@@ -2267,7 +2267,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Martial)","2:Bravery","3:Armor Training",' +
       '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
   'Monk':
-    'Require="alignment =~ /Lawful/" Imply="armor == \'None\'","shield == \'None\'" ' +
+    'Require="alignment =~ \'Lawful\'" Imply="armor == \'None\'","shield == \'None\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
@@ -2309,7 +2309,7 @@ Pathfinder.CLASSES = {
       '"20:Holy Champion" ' +
     'Selectables=' +
       '"5:Divine Mount","5:Divine Weapon" ' +
-    'CasterLevelDivine=Level-3 ' +
+    'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
@@ -2358,7 +2358,7 @@ Pathfinder.CLASSES = {
       '"features.Combat Style (Two-Weapon Combat) ? 6:Two-Weapon Defense",' +
       '"features.Combat Style (Two-Weapon Combat) ? 10:Greater Two-Weapon Fighting",' +
       '"features.Combat Style (Two-Weapon Combat) ? 10:Two-Weapon Rend" ' +
-    'CasterLevelDivine=Level-3 ' +
+    'CasterLevelDivine="levels.Ranger >= 4 ? levels.Ranger - 3 : null" ' +
     'SpellAbility=wisdom ' +
     'SpellsPerDay=' +
       'R1:4=0;5=1;9=2;13=3;17=4,' +
@@ -2433,8 +2433,9 @@ Pathfinder.CLASSES = {
       '"1:Bloodline Elemental (Air)","1:Bloodline Elemental (Earth)",' +
       '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
       '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead",' +
-      '"1:Bonded Object",1:Familiar ' +
-    'CasterLevelDivine=Level ' +
+      '"features.Bloodline Arcane ? 1:Bonded Object",' +
+      '"features.Bloodline Arcane ? 1:Familiar" ' +
+    'CasterLevelDivine=levels.Sorcerer ' +
     'SpellAbility=charisma ' +
     'SpellsPerDay=' +
       'S1:1=3;2=4;3=5;4=6,' +
@@ -2457,7 +2458,7 @@ Pathfinder.CLASSES = {
       '"1:Bonded Object",1:Familiar,' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + (x == 'Universal' ? 'None' : x) + ')"').join(',') + ',' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).filter(x => x != 'Universal').map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
-    'CasterLevelDivine=Level ' +
+    'CasterLevelDivine=levels.Wizard ' +
     'SpellAbility=intelligence ' +
     'SpellsPerDay=' +
       'W0:1=3;2=4,' +
@@ -3151,10 +3152,6 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.newArcana',
       bloodlineLevel, '=', 'Math.floor((source - 5) / 4)'
     );
-    SRD35.prerequisiteRules
-      (rules, 'validation', 'sorcerer-BondedObjectSelectableFeature', 'selectableFeatures.Sorcerer - Bonded Object', 'Requires Bloodline Arcane');
-    SRD35.prerequisiteRules
-      (rules, 'validation', 'sorcerer-FamiliarSelectableFeature', 'selectableFeatures.Sorcerer - Familiar', 'Requires Bloodline Arcane');
 
   } else if(name == 'Celestial') {
 
@@ -3471,38 +3468,42 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Bard') {
 
     rules.defineRule('featureNotes.bardicPerformance',
-      'levels.Bard', '+=', '2 + 2 * source',
+      'levels.Bard', '=', '2 + 2 * source',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.simpleSomatics.1', 'v', '0'
     );
     rules.defineRule('magicNotes.deadlyPerformance',
-      'levels.Bard', '+=', '10 + Math.floor(source / 2)',
+      'levels.Bard', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.fascinate',
-      'levels.Bard', '+=', 'Math.floor((source + 2) / 3)'
+      'levels.Bard', '=', 'Math.floor((source + 2) / 3)'
     );
     rules.defineRule('magicNotes.fascinate.1',
-      'levels.Bard', '+=', '10 + Math.floor(source / 2)',
+      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('magicNotes.fascinate.2',
+      'levels.Bard', '=', 'Math.floor(source / 2) + 10',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.frighteningTune',
-      'levels.Bard', '+=', '10 + Math.floor(source / 2)',
+      'levels.Bard', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.inspireCompetence',
-      'levels.Bard', '+=', '1 + Math.floor((source + 1) / 4)'
+      'levels.Bard', '=', '1 + Math.floor((source + 1) / 4)'
     );
     rules.defineRule('magicNotes.inspireCourage',
-      'levels.Bard', '+=', '1 + Math.floor((source + 1) / 6)'
+      'levels.Bard', '=', '1 + Math.floor((source + 1) / 6)'
     );
     rules.defineRule('magicNotes.inspireGreatness',
-      'levels.Bard', '+=', 'Math.floor((source - 6) / 3)'
+      'levels.Bard', '=', 'Math.floor((source - 6) / 3)'
     );
     rules.defineRule('magicNotes.inspireHeroics',
-      'levels.Bard', '+=', 'Math.floor((source - 12) / 3)'
+      'levels.Bard', '=', 'Math.floor((source - 12) / 3)'
     );
     rules.defineRule('magicNotes.simpleSomatics.1',
       'magicNotes.simpleSomatics', '?', null,
@@ -3516,10 +3517,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'skillNotes.bardicKnowledge', '+', null
     );
     rules.defineRule('skillNotes.bardicKnowledge',
-      'levels.Bard', '+=', 'Math.max(Math.floor(source / 2), 1)'
+      'levels.Bard', '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('skillNotes.loreMaster',
-      'levels.Bard', '+=', '1 + Math.floor((source + 1) / 6)'
+      'levels.Bard', '=', '1 + Math.floor((source + 1) / 6)'
     );
 
   } else if(name == 'Cleric') {
@@ -3786,7 +3787,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     SRD35.prerequisiteRules(
       rules, 'validation', 'rogueWeaponTraining',
-      'features.Rogue Weapon Training', 'Sum /features.Weapon Focus/ >= 1'
+      'features.Rogue Weapon Training', 'Sum \'features\\.Weapon Focus\' >= 1'
     );
     rules.defineRule('combatNotes.bleedingAttack',
       'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
@@ -4553,7 +4554,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   if(name == 'Half-Elf') {
     SRD35.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
-      'Sum /features.Skill Focus/ >= 1'
+      'Sum \'features\\.Skill Focus\' >= 1'
     );
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
