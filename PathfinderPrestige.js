@@ -81,8 +81,9 @@ PathfinderPrestige.CLASSES = {
   'Dragon Disciple':
     'Require=' +
       '"features.Bloodline Draconic","languages.Draconic",' +
-      '"race !~ \'Dragon\'","skills.Knowledge (Arcana) >= 5" ' +
-      // TODO arcane spells w/out prep
+      '"race !~ \'Dragon\'","skills.Knowledge (Arcana) >= 5",' +
+      '"levels.Bard > 0 || levels.Sorcerer > 0" ' +
+      // i.e., Arcane spells w/out prep
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
@@ -116,8 +117,8 @@ PathfinderPrestige.CLASSES = {
   'Loremaster':
     'Require=' +
       '"Sum \'^features\\.Skill Focus .Knowledge\' >= 0",' +
-      '"Sum \'^spells\\..*Divi\' >= 7","Sum \'^spells\\..*3 Divi\' >= 1" ' +
-      // TODO Any two Knowledge skills >= 7
+      '"Sum \'^spells\\..*Divi\' >= 7","Sum \'^spells\\..*3 Divi\' >= 1",' +
+      '"CountKnowledgeGe7 >= 2" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Appraise,Diplomacy,"Handle Animals",Heal,Knowledge,Linguistics,' +
@@ -367,23 +368,8 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.trickySpells',
       'levels.Arcane Trickster', '+=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('validationNotes.arcaneTricksterClassFeatures',
-      'levels.Arcane Trickster', '=', '-1',
-      // Check standard classes that provide 2d6 Sneak Attack
-      'levels.Assassin', '+', 'source >= 3 ? 1 : null',
-      'levels.Rogue', '+', 'source >= 3 ? 1 : null',
-      '', 'v', '0'
-    );
     rules.defineRule
       ('countmagehandspells', /^spells.Mage Hand\(.*\)$/, '+=', '1');
-    rules.defineRule('validationNotes.arcaneTricksterClassSpells',
-      'levels.Arcane Trickster', '=', '-11',
-      'countmagehandspells', '+', '10',
-      'spellsKnown.B3', '+', '1',
-      'spellsKnown.S3', '+', '1',
-      'spellsKnown.W3', '+', '1',
-      '', 'v', '0'
-    );
 
   } else if(name == 'Assassin') {
 
@@ -475,19 +461,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       'levels.Dragon Disciple', '=', 'source < 10 ? 1 : 2'
     );
     rules.defineRule('strength', 'abilityNotes.strengthBoost', '+', null);
-    rules.defineRule('validationNotes.dragonDiscipleClassBloodline',
-      'levels.Sorcerer', '?', null,
-      'levels.Dragon Disciple', '=', '-1',
-      'sorcererFeatures.Bloodline Draconic', '+', '1'
-    );
-    rules.defineRule('validationNotes.dragonDiscipleClassSpells',
-      'levels.Dragon Disciple', '=', '-1',
-      // Check standard ways to learn arcane spells w/out study
-      'levels.Bard', '+', '1',
-      'levels.Sorcerer', '+', '1',
-      'features.Spell Mastery', '+', '1',
-      '', 'v', '0'
-    );
 
   } else if(name == 'Duelist') {
 
@@ -514,14 +487,16 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Eldritch Knight', '+=', 'source > 1 ? source - 1 : null'
     );
-    rules.defineRule('validationNotes.eldritchKnightClassSpells',
-      'levels.Eldritch Knight', '=', '-1',
-      /^spellsKnown\.(AS|B|S|W)3/, '+', '1',
-      '', 'v', '0'
-    );
 
   } else if(name == 'Loremaster') {
 
+    var allSkills = rules.getChoices('skills');
+    for(var skill in allSkills) {
+      if(skill.startsWith('Knowledge'))
+        rules.defineRule('CountKnowledgeGe7',
+          'skills.' + skill, '+=', 'source >= 7 ? 1 : null'
+        );
+    }
     rules.defineRule('armorClass', 'combatNotes.dodgeTrick', '+', '1');
     rules.defineRule('baseAttack', 'combatNotes.weaponTrick', '+','1');
     rules.defineRule('casterLevelArcane', 'levels.Loremaster', '+=', null);
@@ -546,30 +521,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       ('skillNotes.lore', 'levels.Loremaster', '+=', 'Math.floor(source / 2)');
     rules.defineRule('countskillfocusknowledgefeats',
       /^features.Skill Focus \(Knowledge/, '+=', '1'
-    );
-    rules.defineRule('validationNotes.loremasterClassFeats',
-      'levels.Loremaster', '=', '-103',
-      'countskillfocusknowledgefeats', '+', '100',
-      '', 'v', '0'
-    );
-    var feats = rules.getChoices('feats');
-    for(var feat in feats) {
-      if(feats[feat].match(/Item Creation|Metamagic/)) {
-        rules.defineRule
-          ('validationNotes.loremasterClassFeats', 'feats.' + feat, '+', '1');
-      }
-    }
-    rules.defineRule('validationNotes.loremasterClassSkills',
-      'levels.Loremaster', '=', '-2',
-      /^skills\.Knowledge \(.*\)$/, '+=', 'source >= 7 ? 1 : null',
-      '', 'v', '0'
-    );
-    rules.defineRule('countdivspells', /^spells\..*Divi\)$/, '+=', '1');
-    rules.defineRule('validationNotes.loremasterClassSpells',
-      'levels.Loremaster', '=', '-101',
-      'countdivspells', '+', 'source >= 7 ? 100 : null',
-      /^spells\..*3 Divi\)/, '+', '1',
-      '', 'v', '0'
     );
 
   } else if(name == 'Mystic Theurge') {

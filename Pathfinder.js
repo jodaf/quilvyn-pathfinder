@@ -266,7 +266,6 @@ Pathfinder.BLOODLINES = {
     'Feats=' +
       '"Arcane Strike",Diehard,Endurance,Leadership,"Lightning Reflexes",' +
       '"Maximize Spell","Skill Focus (Knowledge (History))" ' +
-    // TODO Weapon Focus subfeats
     'Skills="Knowledge (History)" ' +
     'Spells=' +
       '3:Alarm,5:Blur,"7:Protection From Energy","9:Freedom Of Movement",' +
@@ -2288,9 +2287,7 @@ Pathfinder.CLASSES = {
       '"1:Improved Grapple","1:Scorpion Style","1:Throw Anything",' +
       '"6:Gorgon\'s Fist","6:Improved Bull Rush","6:Improved Disarm",' +
       '"6:Improved Feint","6:Improved Trip","6:Mobility",' +
-      '"10:Improved Critical","10:Medusa\'s Wrath","10:Snatch Arrows",' +
-      '"10:Spring Attack" ' +
-    // TODO Improved Critical subfeats
+      '"10:Medusa\'s Wrath","10:Snatch Arrows","10:Spring Attack" ' +
     'CasterLevelArcane="levels.Monk < 12 ? null : levels.Monk" ' +
     'SpellAbility=intelligence ' +
     'SpellsPerDay=' +
@@ -3024,6 +3021,12 @@ Pathfinder.bloodlineRules = function(
     console.log('Feats not yet defined for bloodline ' + name);
     return;
   }
+  if(name == 'Destined') {
+    for(var feat in allFeats) {
+      if(feat.startsWith('Weapon Focus'))
+        feats.push(feat);
+    }
+  }
 
   var bloodlineLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
@@ -3377,6 +3380,13 @@ Pathfinder.classRules = function(
   casterLevelArcane, casterLevelDivine, spellAbility, spellsPerDay, spells,
   spellDict
 ) {
+  if(name == 'Monk') {
+    var allFeats = rules.getChoices('feats');
+    for(var feat in allFeats) {
+      if(feat.startsWith('Improved Critical'))
+        selectables.push('10:' + feat);
+    }
+  }
   SRD35.classRules(
     rules, name, requires, implies, hitDie, attack, skillPoints, saveFort,
     saveRef, saveWill, skills, features, selectables, languages,
