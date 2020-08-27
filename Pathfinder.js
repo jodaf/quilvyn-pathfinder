@@ -2917,6 +2917,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.languageRules(rules, name);
   else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
       QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
@@ -4541,17 +4542,20 @@ Pathfinder.languageRules = function(rules, name) {
 };
 
 /*
- * Defines in #rules# the rules associated with race #name#. #features# and
- * #selectables# list associated features and #languages# the automatic
- * languages. #spells# lists any natural spells, for which #spellAbility# is
- * used to compute the save DC.
+ * Defines in #rules# the rules associated with race #name#, which has the list
+ * of hard prerequisites #requires#. #features# and #selectables# list
+ * associated features and #languages# the automatic languages. #spells# lists
+ * any natural spells, for which #spellAbility# is used to compute the save DC.
+ * #spellDict# is the dictionary of all spells used to look up individual spell
+ * attributes.
  */
 Pathfinder.raceRules = function(
-  rules, name, features, selectables, languages, spellAbility, spells, spellDict
+  rules, name, requires, features, selectables, languages, spellAbility,
+  spells, spellDict
 ) {
   SRD35.raceRules
-    (rules, name, features, selectables, languages, spellAbility, spells,
-     spellDict);
+    (rules, name, requires, features, selectables, languages, spellAbility,
+     spells, spellDict);
   // No changes needed to the rules defined by SRD35 method
 };
 
