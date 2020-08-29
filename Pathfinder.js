@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 "use strict";
 
-var PATHFINDER_VERSION = '2.0.1.0';
+var PATHFINDER_VERSION = '2.0.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -43,7 +43,7 @@ function Pathfinder() {
   rules.editorElements = SRD35.initialEditorElements();
   rules.getFormats = SRD35.getFormats;
   rules.makeValid = SRD35.makeValid;
-  rules.randomizeOneAttribute = SRD35.randomizeOneAttribute;
+  rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
   rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
   rules.ruleNotes = Pathfinder.ruleNotes;
 
@@ -66,7 +66,7 @@ function Pathfinder() {
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.BLOODLINES, Pathfinder.CLASSES,
     Pathfinder.DEITIES, Pathfinder.DOMAINS, Pathfinder.FACTIONS,
-    Pathfinder.GENDERS, Pathfinder.RACES, Pathfinder.TRAITS
+    Pathfinder.GENDERS, Pathfinder.RACES, Pathfinder.TRACKS, Pathfinder.TRAITS
   );
   Pathfinder.goodiesRules(rules);
 
@@ -74,7 +74,8 @@ function Pathfinder() {
 
 }
 
-Pathfinder.CHOICES = SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Trait']);
+Pathfinder.CHOICES =
+  SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Track', 'Trait']);
 Pathfinder.RANDOMIZABLE_ATTRIBUTES =
   SRD35.RANDOMIZABLE_ATTRIBUTES.concat(['faction', 'traits']);
 
@@ -1851,7 +1852,21 @@ Pathfinder.SPELLS = Object.assign({}, SRD35.SPELLS, {
 // Delete SRD35 spells that don't exist in Pathfinder
 delete Pathfinder.SPELLS['Cure Minor Wounds'];
 delete Pathfinder.SPELLS['Inflict Minor Wounds'];
-Pathfinder.TRACKS = ['Slow', 'Medium', 'Fast'];
+Pathfinder.TRACKS = {
+  '3.5':
+    'Progression=' +
+      '0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190',
+  'Fast':
+    'Progression=' +
+      '0,1.3,3.3,6,10,15,23,34,50,71,105,145,210,295,425,600,850,1200,1700,2400',
+  'Medium':
+    'Progression=' +
+      '0,2,5,9,15,23,35,51,75,105,155,220,315,445,635,890,1300,1800,2550,3600',
+  'Slow':
+    'Progression=' +
+      '0,3,7.5,14,23,35,53,77,115,160,235,330,475,665,955,1350,1900,2700,' +
+      '3850,5350'
+};
 Pathfinder.TRAITS = {
   // Advanced Player's Guide
   'Adopted':'Type=Basic Subtype=Social',
@@ -2565,24 +2580,7 @@ Pathfinder.CLASSES = {
       'Refuge;Shades;Shapechange;Soul Bind;Summon Monster IX;' +
       'Teleportation Circle;Time Stop;Wail Of The Banshee;Weird;Wish"'
 };
-Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS = {
-  '3.5':[
-    0, 1, 3, 6, 10, 15, 21, 28, 36, 45,
-    55, 66, 78, 91, 105, 120, 136, 153, 171, 190
-  ],
-  'Fast':[
-    0, 1.3, 3.3, 6, 10, 15, 23, 34, 50, 71,
-    105, 145, 210, 295, 425, 600, 850, 1200, 1700, 2400
-  ],
-  'Medium':[
-    0, 2, 5, 9, 15, 23, 35, 51, 75, 105,
-    155, 220, 315, 445, 635, 890, 1300, 1800, 2550, 3600
-  ],
-  'Slow':[
-    0, 3, 7.5, 14, 23, 35, 53, 77, 115, 160,
-    235, 330, 475, 665, 955, 1350, 1900, 2700, 3850, 5350
-  ]
-};
+
 Pathfinder.SRD35_SKILL_MAP = {
   'Balance':'Acrobatics',
   'Concentration':'',
@@ -2731,23 +2729,11 @@ Pathfinder.goodiesRules = function(rules) {
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
   rules, alignments, bloodlines, classes, deities, domains, factions, genders,
-  races, traits
+  races, tracks, traits
 ) {
 
   SRD35.identityRules
     (rules, alignments, classes, deities, domains, genders, races);
-  // Override calculations for level and experienceNeeded.
-  // NOTE: Our rule engine doesn't support indexing into an array. Here, we work
-  // around this limitation by defining rules that set a global array as a side
-  // effect, then indexing into that array.
-  rules.defineRule('experienceNeeded',
-    'level', '=', 'Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"] ? Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"][source] * 1000 : null'
-  );
-  rules.defineRule('level',
-    '', '=', '(Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"] = Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Medium"]) ? 1 : 1',
-    'experienceTrack', '=', '(Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"] = Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS[source]) ? 1 : 1',
-    'experience', '=', 'Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"] ? Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS["Current"].findIndex(item => item * 1000 > source) : 1'
-  );
 
   // Pathfinder-specific attributes
   for(var bloodline in bloodlines) {
@@ -2755,6 +2741,9 @@ Pathfinder.identityRules = function(
   }
   for(var faction in factions) {
     rules.choiceRules(rules, 'Faction', faction, factions[faction]);
+  }
+  for(var track in tracks) {
+    rules.choiceRules(rules, 'Track', track, tracks[track]);
   }
   for(var trait in traits) {
     rules.choiceRules(rules, 'Trait', trait, traits[trait]);
@@ -2766,7 +2755,6 @@ Pathfinder.identityRules = function(
   rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
   rules.defineChoice('extras', 'traits');
-  rules.defineChoice('tracks', Pathfinder.TRACKS);
   rules.defineEditorElement
     ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
   rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
@@ -2953,6 +2941,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Group'),
       QuilvynUtils.getAttrValue(attrs, 'Level'),
       QuilvynUtils.getAttrValue(attrs, 'Description')
+    );
+  else if(type == 'Track')
+    Pathfinder.trackRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Progression')
     );
   else if(type == 'Trait') {
     Pathfinder.traitRules(rules, name,
@@ -4783,6 +4775,25 @@ Pathfinder.spellRules = function(
 };
 
 /*
+ * Defines in #rules# the rules associated with experience track #name#, which
+ * has the level progression listed by #progression#.
+ */
+Pathfinder.trackRules = function(rules, name, progression) {
+  var trackLevel = name + 'Level';
+  var trackNeeded = name + 'Needed';
+  rules.defineRule('experienceNeeded', trackNeeded, '=', null);
+  rules.defineRule('level', trackLevel, '=', null);
+  rules.defineRule(trackLevel,
+    'experienceTrack', '?', 'source == "' + name + '"',
+    'experience', '=', 'source >= ' + (progression[progression.length - 1] * 1000) + ' ? ' + progression.length + ' : [' + progression + '].findIndex(item => item * 1000 > source)'
+  );
+  rules.defineRule(trackNeeded,
+    'experienceTrack', '?', 'source == "' + name + '"',
+    trackLevel, '=', 'source < ' + progression.length + ' ? [' + progression + '][source] * 1000 : ' + (progression[progression.length - 1] * 1000 + 1)
+  );
+};
+
+/*
  * Defines in #rules# the rules associated with trait #name#, which is of type
  * #type# and subtype #subtype#.
  */
@@ -4969,15 +4980,20 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
   SRD35.randomizeOneAttribute.apply(this, [attributes, attribute]);
   if(attribute == 'levels') {
     // Set experience track and override SRD3.5's experience value
-    var track = attributes.experienceTrack;
-    if(!track)
-      track = attributes.experienceTrack = 'Fast';
+    if(!attributes.experienceTrack)
+      attributes.experienceTrack =
+        QuilvynUtils.randomKey(this.getChoices('tracks'));
+    var progression =
+      QuilvynUtils.getAttrValueArray
+        (Pathfinder.TRACKS[attributes.experienceTrack], 'Progression');
     var level = QuilvynUtils.sumMatching(attributes, /levels\./);
-    if(!level)
+    if(!level) {
       level = 1;
-    if(level < Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS[track].length) {
-      var min = Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS[track][level - 1] * 1000;
-      var max = Pathfinder.EXPERIENCE_TRACK_THRESHHOLDS[track][level] * 1000 - 1;
+      attributes['levels.' + QuilvynUtils.randomKey(this.getChoices('levels'))] = level;
+    }
+    if(level < progression.length) {
+      var min = progression[level - 1] * 1000;
+      var max = progression[level] * 1000 - 1;
       attributes.experience = QuilvynUtils.random(min, max);
     }
   }
