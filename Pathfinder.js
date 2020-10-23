@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.0.3.0';
+var PATHFINDER_VERSION = '2.3.1.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
