@@ -80,8 +80,8 @@ PathfinderPrestige.CLASSES = {
       '"9:Swift Death","10:Angel Of Death"',
   'Dragon Disciple':
     'Require=' +
-      '"features.Bloodline Draconic","languages.Draconic",' +
-      '"race !~ \'Dragon\'","skills.Knowledge (Arcana) >= 5",' +
+      '"languages.Draconic","race !~ \'Dragon\'",' +
+      '"skills.Knowledge (Arcana) >= 5",' +
       '"levels.Bard > 0 || levels.Sorcerer > 0" ' +
       // i.e., Arcane spells w/out prep
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
@@ -124,7 +124,7 @@ PathfinderPrestige.CLASSES = {
       'Appraise,Diplomacy,"Handle Animals",Heal,Knowledge,Linguistics,' +
       'Perform,Spellcraft,"Use Magic Device" ' +
     'Features=' +
-      '"1:Caster Level Bonus",2:Lore,"4:Bonus Language,"6:Greater Lore",' +
+      '"1:Caster Level Bonus",2:Lore,"4:Bonus Language","6:Greater Lore",' +
       '"10:True Lore" ' +
     'Selectables=' +
       '"1:Applicable Knowledge","1:Dodge Trick","1:Instant Mastery",' +
@@ -181,7 +181,7 @@ PathfinderPrestige.CLASSES = {
       '3:Opportunist,"3:Skill Mastery","3:Slippery Mind" ' +
     'CasterLevelArcane=levels.Shadowdancer ' +
     'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'Shadowdancer1:3=1,' +
       'Shadowdancer4:4=2,' +
       'Shadowdancer5:8=1,' +
@@ -304,6 +304,8 @@ PathfinderPrestige.FEATURES = {
 
 /* Defines the rules related to SRDv3.5 Prestige Classes. */
 PathfinderPrestige.identityRules = function(rules, classes) {
+  QuilvynUtils.checkAttrTable
+    (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'Spells']);
   for(var clas in classes) {
     rules.choiceRules(rules, 'Class', clas, classes[clas]);
     PathfinderPrestige.classRulesExtra(rules, clas);
@@ -319,6 +321,7 @@ PathfinderPrestige.identityRules = function(rules, classes) {
 
 /* Defines rules related to character features. */
 PathfinderPrestige.talentRules = function(rules, features) {
+  QuilvynUtils.checkAttrTable(features, ['Section', 'Note']);
   for(var feature in features) {
     rules.choiceRules(rules, 'Feature', feature, features[feature]);
   }
@@ -408,6 +411,7 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Dragon Disciple') {
 
+    // TBD Choice of Draconic Bloodline if not Sorcerer
     rules.defineRule('abilityNotes.wings',
       'levels.Dragon Disciple', '+=', 'source >= 9 ? 30 : null'
     );
@@ -417,8 +421,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('armorClass',
       'combatNotes.dragonDiscipleArmorClassAdjustment', '+', null
     );
-    rules.defineRule
-      ('bloodlineLevel.Draconic', 'levels.Dragon Disciple', '+=', null);
     rules.defineRule('combatNotes.dragonBite',
       'levels.Dragon Disciple', '?', 'source >= 2',
       '', '=', '6',
