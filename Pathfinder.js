@@ -15,9 +15,10 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
+/*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.0.1.1';
+var PATHFINDER_VERSION = '2.0.3.0';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -59,14 +60,14 @@ function Pathfinder() {
   // Spell definition is handled by each individual class and domain. Schools
   // have to be defined before this can be done.
   Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, []);
-  // Feats must be defined before bloodlines
+  // Feats must be defined before paths
   Pathfinder.talentRules
     (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.LANGUAGES,
      Pathfinder.SKILLS);
   Pathfinder.identityRules(
-    rules, Pathfinder.ALIGNMENTS, Pathfinder.BLOODLINES, Pathfinder.CLASSES,
-    Pathfinder.DEITIES, Pathfinder.DOMAINS, Pathfinder.FACTIONS,
-    Pathfinder.GENDERS, Pathfinder.RACES, Pathfinder.TRACKS, Pathfinder.TRAITS
+    rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
+    Pathfinder.FACTIONS, Pathfinder.GENDERS, Pathfinder.PATHS,
+    Pathfinder.RACES, Pathfinder.TRACKS, Pathfinder.TRAITS
   );
   Pathfinder.goodiesRules(rules);
 
@@ -74,8 +75,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.CHOICES =
-  SRD35.CHOICES.concat(['Bloodline', 'Faction', 'Track', 'Trait']);
+Pathfinder.CHOICES = SRD35.CHOICES.concat(['Faction', 'Track', 'Trait']);
 Pathfinder.RANDOMIZABLE_ATTRIBUTES =
   SRD35.RANDOMIZABLE_ATTRIBUTES.concat(['faction', 'traits']);
 
@@ -148,7 +148,7 @@ Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
   'Advanced Badger': Pathfinder.ANIMAL_COMPANIONS['Badger'] +
     ' Level=4 Size=M Attack=2 AC=14 Dam=2@1d4+2,1d6+2 Str=14 Dex=15 Con=17',
   'Advanced Bear': Pathfinder.ANIMAL_COMPANIONS['Bear'] +
-    ' Level=4 Size=M Attac=4 AC=13 Dam=2@1d4+4,1d6+4 Str=19 Dex=13 Con=15',
+    ' Level=4 Size=M Attack=4 AC=13 Dam=2@1d4+4,1d6+4 Str=19 Dex=13 Con=15',
   'Advanced Boar': Pathfinder.ANIMAL_COMPANIONS['Boar'] +
     ' Level=4 Size=M Attack=3 AC=16 Dam=1d8+3 Str=17 Dex=10 Con=17',
   'Advanced Camel': Pathfinder.ANIMAL_COMPANIONS['Camel'] +
@@ -203,151 +203,6 @@ Pathfinder.ARMORS = {
   'Half Plate':SRD35.ARMORS['Half Plate'] + ' AC=8',
   'Full Plate':SRD35.ARMORS['Full Plate'] + ' AC=9'
 };
-Pathfinder.BLOODLINES = {
-  'Aberrant':
-    'Features=' +
-      '"1:Acidic Ray","3:Long Limbs","9:Unusual Anatomy",' +
-      '"15:Alien Resistance","20:Aberrant Form" ' +
-    'Feats=' +
-      '"Combat Casting","Improved Disarm","Improved Grapple",' +
-      '"Improved Initiative","Improved Unarmed Strike","Iron Will",' +
-      '"Silent Spell","Skill Focus (Knowledge (Dungeoneering))" ' +
-    'Skills="Knowledge (Dungeoneering)" ' +
-    'Spells=' +
-      '"3:Enlarge Person","5:See Invisibility",7:Tongues,"9:Black Tentacles",' +
-      '11:Feeblemind,13:Veil,"15:Plane Shift","17:Mind Blank",19:Shapechange',
-  'Abyssal':
-    'Features=' +
-      '1:Claws,"3:Demon Resistances","5:Magic Claws",' +
-      '"9:Strength Of The Abyss","11:Improved Claws","15:Added Summonings",' +
-      '"20:Demonic Might" ' +
-    'Feats=' +
-      '"Augment Summoning",Cleave,"Empower Spell","Great Fortitude",' +
-      '"Improved Bull Rush","Improved Sunder","Power Attack",' +
-      '"Skill Focus (Knowledge (Planes))" ' +
-    'Skills="Knowledge (Planes)" ' +
-    'Spells=' +
-      '"3:Cause Fear","5:Bull\'s Strength",7:Rage,9:Stoneskin,11:Dismissal,' +
-      '13:Transformation,"15:Greater Teleport","17:Unholy Aura",' +
-      '"19:Summon Monster IX"',
-  'Arcane':
-    'Features=' +
-      '"3:Metamagic Adept","9:New Arcana","15:School Power",' +
-      '"20:Arcane Apotheosis" ' +
-    'Feats=' +
-      '"Combat Casting","Improved Counterspell","Improved Initiative",' +
-      '"Iron Will","Scribe Scroll","Skill Focus (Knowledge (Arcana))",' +
-      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
-      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
-      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
-      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
-      '"Still Spell" ' +
-    'Skills="choice of Knowledge" ' +
-    'Spells=' +
-      '3:Identify,5:Invisibility,"7:Dispel Magic","9:Dimension Door",' +
-      '"11:Overland Flight","13:True Seeing","15:Greater Teleport",' +
-      '"17:Power Word Stun",19:Wish',
-  'Celestial':
-    'Features=' +
-      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven",'+
-      '15:Conviction,20:Ascension ' +
-    'Feats=' +
-      'Dodge,"Extend Spell","Iron Will",Mobility,"Mounted Combat",' +
-      '"Ride-By Attack","Skill Focus (Knowledge (Religion))",' +
-      '"Weapon Finesse" ' +
-    'Skills=Heal ' +
-    'Spells=' +
-      '3:Bless,"5:Resist Energy","7:Magic Circle Against Evil",' +
-      '"9:Remove Curse","11:Flame Strike","13:Greater Dispel Magic",' +
-      '15:Banishment,17:Sunburst,19:Gate',
-  'Destined':
-    'Features=' +
-      '"1:Touch Of Destiny",3:Fated,"9:It Was Meant To Be","15:Within Reach",' +
-      '"20:Destiny Realized" ' +
-    'Feats=' +
-      '"Arcane Strike",Diehard,Endurance,Leadership,"Lightning Reflexes",' +
-      '"Maximize Spell","Skill Focus (Knowledge (History))" ' +
-    'Skills="Knowledge (History)" ' +
-    'Spells=' +
-      '3:Alarm,5:Blur,"7:Protection From Energy","9:Freedom Of Movement",' +
-      '"11:Break Enchantment",13:Mislead,"15:Spell Turning",' +
-      '"17:Moment Of Prescience",19:Foresight',
-  'Draconic (Black)':
-    'Features=' +
-      '1:Claws,"3:Dragon Resistances","5:Magic Claws","9:Breath Weapon",' +
-      '"11:Improved Claws",15:Wings,"20:Power Of Wyrms",20:Blindsense ' +
-    'Feats=' +
-      '"Blind-Fight","Great Fortitude","Improved Initiative","Power Attack",' +
-      '"Quicken Spell","Skill Focus (Fly)",' +
-      '"Skill Focus (Knowledge (Arcana))",Toughness ' +
-    'Skills=Perception ' +
-    'Spells=' +
-      '"3:Mage Armor","5:Resist Energy",7:Fly,9:Fear,"11:Spell Resistance",' +
-      '"13:Form Of The Dragon I","15:Form Of The Dragon II",' +
-      '"17:Form Of The Dragon III",19:Wish',
-  'Elemental (Air)':
-    'Features=' +
-      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
-      '"15:Elemental Movement","20:Elemental Body" ' +
-    'Feats=' +
-      'Dodge,"Empower Spell","Great Fortitude","Improved Initiative",' +
-      '"Lightning Reflexes","Power Attack",' +
-      '"Skill Focus (Knowledge (Planes))","Weapon Finesse" ' +
-    'Skills="Knowledge (Planes)" ' +
-    'Spells=' +
-      '"3:Burning Hands","5:Scorching Ray","7:Protection From Energy",' +
-      '"9:Elemental Body I","11:Elemental Body II","13:Elemental Body III",' +
-      '"15:Elemental Body IV","17:Summon Monster VIII","19:Elemental Swarm"',
-  'Fey':
-    'Features=' +
-      '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
-      '"15:Fey Magic","20:Soul Of The Fey" ' +
-    'Feats=' +
-      'Dodge,"Improved Initiative","Lightning Reflexes",Mobility,' +
-      '"Point-Blank Shot","Precise Shot","Quicken Spell",' +
-      '"Skill Focus (Knowledge (Nature))" ' +
-    'Skills="Knowledge (Nature)" ' +
-    'Spells=' +
-      '3:Entangle,"5:Hideous Laughter","7:Deep Slumber",9:Poison,' +
-      '"11:Tree Stride",13:Mislead,"15:Phase Door","17:Irresistible Dance",' +
-      '19:Shapechange',
-  'Infernal':
-    'Features=' +
-      '"1:Corrupting Touch","3:Infernal Resistances",9:Hellfire,' +
-      '"15:On Dark Wings","20:Power Of The Pit" ' +
-    'Feats=' +
-      'Blind-Fight,"Combat Expertise",Deceitful,"Extend Spell",' +
-      '"Improved Disarm","Iron Will","Skill Focus (Knowledge (Planes))",' +
-      '"Spell Penetration" ' +
-    'Skills=Diplomacy ' +
-    'Spells=' +
-      '"3:Protection From Good","5:Scorching Ray",7:Suggestion,' +
-      '"9:Charm Monster","11:Dominate Person","13:Planar Binding",' +
-      '"15:Greater Teleport","17:Power Word Stun","19:Meteor Swarm"',
-  'Undead':
-    'Features=' +
-      '"1:Grave Touch","3:Death\'s Gift","9:Grasp Of The Dead",' +
-      '"15:Incorporeal Form","20:One Of Us" ' +
-    'Feats=' +
-      '"Combat Casting","Diehard",Endurance,"Iron Will",' +
-      '"Skill Focus (Knowledge (Religion))",' +
-      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
-      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
-      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
-      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
-      'Toughness ' +
-    'Skills="Knowledge (Religion)" ' +
-    'Spells=' +
-      '"3:Chill Touch","5:False Life","7:Vampiric Touch","9:Animate Dead",' +
-      '"11:Waves Of Fatigue","13:Undeath To Death","15:Finger Of Death",' +
-      '"17:Horrid Wilting","19:Energy Drain"'
-};
-for(var color in {'Blue':'', 'Green':'', 'Red':'', 'White':'', 'Brass':'', 'Bronze':'', 'Copper':'', 'Gold':'', 'Silver':''})
-  Pathfinder.BLOODLINES['Draconic (' + color + ')'] =
-    Pathfinder.BLOODLINES['Draconic (Black)'];
-for(var element in {'Earth':'', 'Fire':'', 'Water':''})
-  Pathfinder.BLOODLINES['Elemental (' + element + ')'] =
-    Pathfinder.BLOODLINES['Elemental (Air)'];
 Pathfinder.DEITIES = {
   'None':'',
   'Abadar':
@@ -356,11 +211,11 @@ Pathfinder.DEITIES = {
   'Calistria':
     'Alignment=CN Weapon=Whip Domain=Chaos,Charm,Knowledge,Luck,Trickery',
   'Cayden Cailean':
-    'Alignement=CG Weapon=Rapier Domain=Chaos,Charm,Good,Strength,Travel',
+    'Alignment=CG Weapon=Rapier Domain=Chaos,Charm,Good,Strength,Travel',
   'Desna':
     'Alignment=CG Weapon=Starknife Domain=Chaos,Good,Liberation,Luck,Travel',
   'Erastil':
-    'Alginment=LG Weapon=Longbow Domain=Animal,Community,Good,Law,Plant',
+    'Alignment=LG Weapon=Longbow Domain=Animal,Community,Good,Law,Plant',
   'Gozreh':
     'Alignment=N Weapon=Trident Domain=Air,Animal,Plant,Water,Weather',
   'Gorum':
@@ -385,163 +240,6 @@ Pathfinder.DEITIES = {
   'Urgathoa':'Alignment=NE Weapon=Scythe Domain=Death,Evil,Magic,Strength,War',
   'Zon-Kuthon':
     'Alignment=LE Weapon="Spiked Chain" Domain=Darkness,Death,Destruction,Evil,Law'
-};
-Pathfinder.DOMAINS = {
-  'Air':
-    'Features="1:Lightning Arc","6:Electricity Resistance" ' +
-    'Spells="Obscuring Mist","Wind Wall","Gaseous Form","Air Walk",' +
-    '"Control Winds","Chain Lightning","Elemental Body IV",Whirlwind,' +
-    '"Elemental Swarm"',
-  'Animal':
-    'Features="1:Speak With Animals","4:Animal Companion" ' +
-    'Spells="Calm Animals","Hold Animal","Dominate Animal",' +
-    '"Summon Nature\'s Ally IV","Beast Shape III","Antilife Shell",' +
-    '"Animal Shapes","Summon Nature\'s Ally VIII",Shapechange',
-  'Artifice':
-    'Features="1:Artificer\'s Touch","8:Dancing Weapons" ' +
-    'Spells="Animate Rope","Wood Shape","Stone Shape","Minor Creation",' +
-    'Fabricate,"Major Creation","Wall Of Iron",Statue,"Prismatic Sphere"',
-  'Chaos':
-    'Features="1:Touch Of Chaos","8:Chaos Blade" ' +
-    'Spells="Protection From Law","Align Weapon","Magic Circle Against Law",' +
-    '"Chaos Hammer","Dispel Law","Animate Objects","Word Of Chaos",' +
-    '"Cloak Of Chaos","Summon Monster IX"',
-  'Charm':
-    'Features="1:Addling Touch","8:Charming Smile" ' +
-    'Spells="Charm Person","Calm Emotions",Suggestion,Heroism,' +
-    '"Charm Monster",Geas/Quest,Insanity,Demand,"Dominate Monster"',
-  'Community':
-    'Features="1:Calming Touch","8:Unity" ' +
-    'Spells=Bless,"Shield Other",Prayer,"Imbue With Spell Ability",' +
-    '"Telepathic Bond","Heroes\' Feast",Refuge,"Mass Cure Critical Wounds",' +
-    'Miracle',
-  'Darkness':
-    'Features="1:Blind-Fight","1:Touch Of Darkness","8:Eyes Of Darkness" ' +
-    'Spells="Obscuring Mist",Blindness/Deafness,"Deeper Darkness",' +
-    '"Shadow Conjuration","Summon Monster V","Shadow Walk",' +
-    '"Power Word Blind","Greater Shadow Evocation",Shades',
-  'Death':
-    'Features="1:Bleeding Touch","8:Death\'s Embrace" ' +
-    'Spells="Cause Fear","Death Knell","Animate Dead","Death Ward",' +
-    '"Slay Living","Create Undead",Destruction,"Create Greater Undead",' +
-    '"Wail Of The Banshee"',
-  'Destruction':
-    'Features="1:Destructive Smite","8:Destructive Aura" ' +
-    'Spells="True Strike",Shatter,Rage,"Inflict Critical Wounds",Shout,Harm,' +
-    'Disintegrate,Earthquake,Implosion',
-  'Earth':
-    'Features="1:Acid Dart","6:Acid Resistance" ' +
-    'Spells="Magic Stone","Soften Earth And Stone","Stone Shape",' +
-    '"Spike Stones","Wall Of Stone",Stoneskin,"Elemental Body IV",Earthquake,' +
-    '"Elemental Swarm"',
-  'Evil':
-    'Features="1:Touch Of Evil","8:Scythe Of Evil" ' +
-    'Spells="Protection From Good","Align Weapon",' +
-    '"Magic Circle Against Good","Unholy Blight","Dispel Good",' +
-    '"Create Undead",Blasphemy,"Unholy Aura","Summon Monster IX"',
-  'Fire':
-    'Features="1:Fire Bolt","6:Fire Resistance" ' +
-    'Spells="Burning Hands","Produce Flame",Fireball,"Wall Of Fire",' +
-    '"Fire Shield","Fire Seeds","Elemental Body IV","Incendiary Cloud",' +
-    '"Elemental Swarm"',
-  'Glory':
-    'Features="1:Undead Bane","1:Touch Of Glory","8:Divine Presence" ' +
-    'Spells="Shield Of Faith","Bless Weapon","Searing Light","Holy Smite",' +
-    '"Righteous Might","Undeath To Death","Holy Sword","Holy Aura",Gate',
-  'Good':
-    'Features="1:Touch Of Good","8:Holy Lance" ' +
-    'Spells="Protection From Evil","Align Weapon",' +
-    '"Magic Circle Against Evil","Holy Smite","Dispel Evil","Blade Barrier",' +
-    '"Holy Word","Holy Aura","Summon Monster IX"',
-  'Healing':
-    'Features="1:Rebuke Death","6:Healer\'s Blessing" ' +
-    'Spells="Cure Light Wounds","Cure Moderate Wounds","Cure Serious Wounds",' +
-    '"Cure Critical Wounds","Breath Of Life",Heal,Regenerate,' +
-    '"Mass Cure Critical Wounds","Mass Heal"',
-  'Knowledge':
-    'Features="1:Lore Keeper","6:Remote Viewing" ' +
-    'Spells="Comprehend Languages","Detect Thoughts","Speak With Dead",' +
-    'Divination,"True Seeing","Find The Path","Legend Lore",' +
-    '"Discern Location",Foresight',
-  'Law':
-    'Features="1:Touch Of Law","8:Staff Of Order" ' +
-    'Spells="Protection From Chaos","Align Weapon",' +
-    '"Magic Circle Against Chaos","Order\'s Wrath","Dispel Chaos",' +
-    '"Hold Monster",Dictum,"Shield Of Law","Summon Monster IX"',
-  'Liberation':
-    'Features="1:Liberation","8:Freedom\'s Call" ' +
-    'Spells="Remove Fear","Remove Paralysis","Remove Curse",' +
-    '"Freedom Of Movement","Break Enchantment","Greater Dispel Magic",Refuge,' +
-    '"Mind Blank",Freedom',
-  'Luck':
-    'Features="1:Bit Of Luck","6:Good Fortune" ' +
-    'Spells="True Strike",Aid,"Protection From Energy","Freedom Of Movement",' +
-    '"Break Enchantment",Mislead,"Spell Turning","Moment Of Prescience",' +
-    'Miracle',
-  'Madness':
-    'Features="1:Vision Of Madness","8:Aura Of Madness" ' +
-    'Spells="Lesser Confusion","Touch Of Idiocy",Rage,Confusion,Nightmare,' +
-    '"Phantasmal Killer",Insanity,"Scintillating Pattern",Weird',
-  'Magic':
-    'Features="1:Hand Of The Acolyte","8:Dispelling Touch" ' +
-    'Spells=Identify,"Magic Mouth","Dispel Magic","Imbue With Spell Ability",' +
-    '"Spell Resistance","Antimagic Field","Spell Turning",' +
-    '"Protection From Spells","Mage\'s Disjunction"',
-  'Nobility':
-    'Features="1:Inspiring Word","8:Noble Leadership" ' +
-    'Spells="Divine Favor",Enthrall,"Magic Vestment","Discern Lies",' +
-    '"Greater Command",Geas/Quest,Repulsion,Demand,"Storm Of Vengeance"',
-  'Plant':
-    'Features="1:Wooden Fist","6:Bramble Armor" ' +
-    'Spells=Entangle,Barkskin,"Plant Growth","Command Plants",' +
-    '"Wall Of Thorns","Repel Wood","Animate Plants","Control Plants",Shambler',
-  'Protection':
-    'Features="1:Resistance Bonus","1:Resistant Touch","8:Aura Of Protection" '+
-    'Spells=Sanctuary,"Shield Other","Protection From Energy",' +
-    '"Spell Immunity","Spell Resistance","Antimagic Field",Repulsion,' +
-    '"Mind Blank","Prismatic Sphere"',
-  'Repose':
-    'Features="1:Gentle Rest","8:Ward Against Death" ' +
-    'Spells=Deathwatch,"Gentle Repose","Speak With Dead","Death Ward",' +
-    '"Slay Living","Undeath To Death",Destruction,"Waves Of Exhaustion",' +
-    '"Wail Of The Banshee"',
-  'Rune':
-    'Features="1:Scribe Scroll","1:Blast Rune","8:Spell Rune" ' +
-    'Spells=Erase,"Secret Page","Glyph Of Warding","Explosive Runes",' +
-    '"Lesser Planar Binding","Greater Glyph Of Warding","Instant Summons",' +
-    '"Symbol Of Death","Teleportation Circle"',
-  'Strength':
-    'Features="1:Strength Rush","8:Might Of The Gods" ' +
-    'Spells="Enlarge Person","Bull\'s Strength","Magic Vestment",' +
-    '"Spell Immunity","Righteous Might",Stoneskin,"Grasping Hand",' +
-    '"Clenched Fist","Crushing Hand"',
-  'Sun':
-    'Features="1:Sun\'s Blessing","8:Nimbus Of Light" ' +
-    'Spells="Endure Elements","Heat Metal","Searing Light","Fire Shield",' +
-    '"Flame Strike","Fire Seeds",Sunbeam,Sunburst,"Prismatic Sphere"',
-  'Travel':
-    'Features="1:Travel Speed","1:Agile Feet","8:Dimensional Hop" ' +
-    'Spells=Longstrider,"Locate Object",Fly,"Dimension Door",Teleport,' +
-    '"Find The Path","Greater Teleport","Phase Door","Astral Projection"',
-  'Trickery':
-    'Features="1:Copycat","8:Master\'s Illusion" ' +
-    'Spells="Disguise Self",Invisibility,Nondetection,Confusion,' +
-    '"False Vision",Mislead,Screen,"Mass Invisibility","Time Stop"',
-  'War':
-    'Features="1:Battle Rage","8:Weapon Master" ' +
-    'Spells="Magic Weapon","Spiritual Weapon","Magic Vestment",' +
-    '"Divine Power","Flame Strike","Blade Barrier","Power Word Blind",' +
-    '"Power Word Stun","Power Word Kill"',
-  'Water':
-    'Features="1:Icicle","6:Cold Resistance" ' +
-    'Spells="Obscuring Mist","Fog Cloud","Water Breathing","Control Water",' +
-    '"Ice Storm","Cone Of Cold","Elemental Body IV","Horrid Wilting",' +
-    '"Elemental Swarm"',
-  'Weather':
-    'Features="1:Storm Burst","8:Lightning Lord" ' +
-    'Spells="Obscuring Mist","Fog Cloud","Call Lightning","Sleet Storm",' +
-    '"Ice Storm","Control Winds","Control Weather",Whirlwind,' +
-    '"Storm Of Vengeance"'
 };
 Pathfinder.FACTIONS = {
   'Andoran':'',
@@ -640,8 +338,8 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
     SRD35.FEATS['Armor Proficiency (Medium)'] + ' Type=Fighter',
   'Cleave':
     SRD35.FEATS['Cleave'] + ' Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
-  'Craft Staff':SRD35.FEATS['Craft Staff'] + ' Require="casterLevel >= 11',
-  'Forge Ring':SRD35.FEATS['Forge Ring'] + ' Require=casterLevel >= 7',
+  'Craft Staff':SRD35.FEATS['Craft Staff'] + ' Require="casterLevel >= 11"',
+  'Forge Ring':SRD35.FEATS['Forge Ring'] + ' Require="casterLevel >= 7"',
   'Greater Two-Weapon Fighting':
     SRD35.FEATS['Greater Two-Weapon Fighting'] + ' Require="baseAttack >= 11","dexterity >= 19","features.Improved Two-Weapon Fighting","features.Two-Weapon Fighting"',
   'Improved Bull Rush':
@@ -671,8 +369,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Skill Focus (Knowledge (Religion))':'Type=General',
   // New feats
   'Acrobatic Steps':'Type=General',
-  'Agile Maneuvers':
-    'Type=Fighter Implies="dexterityModifier > strengthModifier"',
+  'Agile Maneuvers':'Type=Fighter Imply="dexterityModifier > strengthModifier"',
   'Alignment Channel (Chaos)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Evil)':'Type=General Require="features.Channel Energy"',
   'Alignment Channel (Good)':'Type=General Require="features.Channel Energy"',
@@ -680,7 +377,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Arcane Armor Mastery':
     'Type=Fighter Require="casterLevel >= 7","features.Arcane Armor Training","features.Armor Proficiency (Medium)"',
   'Arcane Armor Training':
-    'Type=Fighter Require="casterLevel >= 3",features.Armor Proficiency (Light)"',
+    'Type=Fighter Require="casterLevel >= 3","features.Armor Proficiency (Light)"',
   'Arcane Strike':'Type=Fighter Require="casterLevelArcane >= 1"',
   'Bleeding Critical':
     'Type=Fighter,Critical Require="baseAttack>=11","features.Critical Focus"',
@@ -714,7 +411,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Extra Mercy':'Type=General Require="features.Lay On Hands",features.Mercy',
   'Extra Performance':'Type=General Require="features.Bardic Performance"',
   'Extra Rage':'Type=General Require=features.Rage',
-  'Fleet':'Type=General Implies="armorWeight < 2"',
+  'Fleet':'Type=General Imply="armorWeight < 2"',
   "Gorgon's Fist":
     'Type=Fighter Require="baseAttack >= 6","features.Improved Unarmed Strike","features.Scorpion Style"',
   'Greater Bull Rush':
@@ -771,7 +468,7 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Shield Master':
     'Type=Fighter Require="baseAttack >= 11","features.Improved Shield Bash","features.Shield Proficiency (Heavy)","features.Shield Slam","features.Two-Weapon Fighting"',
   'Shield Slam':
-    'Type=Fighter Requires="baseAttack >= 6","features.Improved Shield Bash","features.Shield Proficiency (Heavy)","features.Two-Weapon Fighting"',
+    'Type=Fighter Require="baseAttack >= 6","features.Improved Shield Bash","features.Shield Proficiency (Heavy)","features.Two-Weapon Fighting"',
   'Sickening Critical':'Type=Fighter,Critical',
   // Required by Fey bloodline
   'Skill Focus (Knowledge (Nature))':'Type=General',
@@ -1641,6 +1338,870 @@ Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS);
 Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
   'Aklo':''
 });
+Pathfinder.PATHS = {
+  'Air Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Lightning Arc","6:Electricity Resistance" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Air1:Obscuring Mist",' +
+      '"Air2:Wind Wall",' +
+      '"Air3:Gaseous Form",' +
+      '"Air4:Air Walk",' +
+      '"Air5:Control Winds",' +
+      '"Air6:Chain Lightning",' +
+      '"Air7:Elemental Body IV",' +
+      'Air8:Whirlwind,' +
+      '"Air9:Elemental Swarm"',
+  'Animal Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Speak With Animals","4:Animal Companion" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Animal1:Calm Animals",' +
+      '"Animal2:Hold Animal",' +
+      '"Animal3:Dominate Animal",' +
+      '"Animal4:Summon Nature\'s Ally IV",' +
+      '"Animal5:Beast Shape III",' +
+      '"Animal6:Antilife Shell",' +
+      '"Animal7:Animal Shapes",' +
+      '"Animal8:Summon Nature\'s Ally VIII",' +
+      'Animal9:Shapechange',
+  'Artifice Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Artificer\'s Touch","8:Dancing Weapons" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Artifice1:Animate Rope",' +
+      '"Artifice2:Wood Shape",' +
+      '"Artifice3:Stone Shape",' +
+      '"Artifice4:Minor Creation",' +
+      'Artifice5:Fabricate,' +
+      '"Artifice6:Major Creation",' +
+      '"Artifice7:Wall Of Iron",' +
+      'Artifice8:Statue,' +
+      '"Artifice9:Prismatic Sphere"',
+  'Chaos Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Touch Of Chaos","8:Chaos Blade" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Chaos1:Protection From Law",' +
+      '"Chaos2:Align Weapon",' +
+      '"Chaos3:Magic Circle Against Law",' +
+      '"Chaos4:Chaos Hammer",' +
+      '"Chaos5:Dispel Law",' +
+      '"Chaos6:Animate Objects",' +
+      '"Chaos7:Word Of Chaos",' +
+      '"Chaos8:Cloak Of Chaos",' +
+      '"Chaos9:Summon Monster IX"',
+  'Charm Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Addling Touch","8:Charming Smile" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Charm1:Charm Person",' +
+      '"Charm2:Calm Emotions",' +
+      'Charm3:Suggestion,' +
+      'Charm4:Heroism,' +
+      '"Charm5:Charm Monster",' +
+      'Charm6:Geas/Quest,' +
+      'Charm7:Insanity,' +
+      'Charm8:Demand,' +
+      '"Charm9:Dominate Monster"',
+  'Community Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Calming Touch","8:Unity" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Community1:Bless,' +
+      '"Community2:Shield Other",' +
+      'Community3:Prayer,' +
+      '"Community4:Imbue With Spell Ability",' +
+      '"Community5:Telepathic Bond",' +
+      '"Community6:Heroes\' Feast",' +
+      'Community7:Refuge,' +
+      '"Community8:Mass Cure Critical Wounds",' +
+      'Community9:Miracle',
+  'Darkness Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Blind-Fight","1:Touch Of Darkness","8:Eyes Of Darkness" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Darkness1:Obscuring Mist",' +
+      'Darkness2:Blindness/Deafness,' +
+      '"Darkness3:Deeper Darkness",' +
+      '"Darkness4:Shadow Conjuration",' +
+      '"Darkness5:Summon Monster V",' +
+      '"Darkness6:Shadow Walk",' +
+      '"Darkness7:Power Word Blind",' +
+      '"Darkness8:Greater Shadow Evocation",' +
+      'Darkness9:Shades',
+  'Death Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Bleeding Touch","8:Death\'s Embrace" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Death1:Cause Fear",' +
+      '"Death2:Death Knell",' +
+      '"Death3:Animate Dead",' +
+      '"Death4:Death Ward",' +
+      '"Death5:Slay Living",' +
+      '"Death6:Create Undead",' +
+      'Death7:Destruction,' +
+      '"Death8:Create Greater Undead",' +
+      '"Death9:Wail Of The Banshee"',
+  'Destruction Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Destructive Smite","8:Destructive Aura" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Destruction1:True Strike",' +
+      'Destruction2:Shatter,' +
+      'Destruction3:Rage,' +
+      '"Destruction4:Inflict Critical Wounds",' +
+      'Destruction5:Shout,' +
+      'Destruction6:Harm,' +
+      'Destruction7:Disintegrate,' +
+      'Destruction8:Earthquake,' +
+      'Destruction9:Implosion',
+  'Earth Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Acid Dart","6:Acid Resistance" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Earth1:Magic Stone",' +
+      '"Earth2:Soften Earth And Stone",' +
+      '"Earth3:Stone Shape",' +
+      '"Earth4:Spike Stones",' +
+      '"Earth5:Wall Of Stone",' +
+      'Earth6:Stoneskin,' +
+      '"Earth7:Elemental Body IV",' +
+      'Earth8:Earthquake,' +
+      '"Earth9:Elemental Swarm"',
+  'Evil Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Touch Of Evil","8:Scythe Of Evil" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Evil1:Protection From Good",' +
+      '"Evil2:Align Weapon",' +
+      '"Evil3:Magic Circle Against Good",' +
+      '"Evil4:Unholy Blight",' +
+      '"Evil5:Dispel Good",' +
+      '"Evil6:Create Undead",' +
+      'Evil7:Blasphemy,' +
+      '"Evil8:Unholy Aura",' +
+      '"Evil9:Summon Monster IX"',
+  'Fire Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Fire Bolt","6:Fire Resistance" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Fire1:Burning Hands",' +
+      '"Fire2:Produce Flame",' +
+      'Fire3:Fireball,' +
+      '"Fire4:Wall Of Fire",' +
+      '"Fire5:Fire Shield",' +
+      '"Fire6:Fire Seeds",' +
+      '"Fire7:Elemental Body IV",' +
+      '"Fire8:Incendiary Cloud",' +
+      '"Fire9:Elemental Swarm"',
+  'Glory Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Undead Bane","1:Touch Of Glory","8:Divine Presence" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Glory1:Shield Of Faith",' +
+      '"Glory2:Bless Weapon",' +
+      '"Glory3:Searing Light",' +
+      '"Glory4:Holy Smite",' +
+      '"Glory5:Righteous Might",' +
+      '"Glory6:Undeath To Death",' +
+      '"Glory7:Holy Sword",' +
+      '"Glory8:Holy Aura",' +
+      'Glory9:Gate',
+  'Good Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Touch Of Good","8:Holy Lance" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Good1:Protection From Evil",' +
+      '"Good2:Align Weapon",' +
+      '"Good3:Magic Circle Against Evil",' +
+      '"Good4:Holy Smite",' +
+      '"Good5:Dispel Evil",' +
+      '"Good6:Blade Barrier",' +
+      '"Good7:Holy Word",' +
+      '"Good8:Holy Aura",' +
+      '"Good9:Summon Monster IX"',
+  'Healing Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Rebuke Death","6:Healer\'s Blessing" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Healing1:Cure Light Wounds",' +
+      '"Healing2:Cure Moderate Wounds",' +
+      '"Healing3:Cure Serious Wounds",' +
+      '"Healing4:Cure Critical Wounds",' +
+      '"Healing5:Breath Of Life",' +
+      'Healing6:Heal,' +
+      'Healing7:Regenerate,' +
+      '"Healing8:Mass Cure Critical Wounds",' +
+      '"Healing9:Mass Heal"',
+  'Knowledge Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Lore Keeper","6:Remote Viewing" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Knowledge1:Comprehend Languages",' +
+      '"Knowledge2:Detect Thoughts",' +
+      '"Knowledge3:Speak With Dead",' +
+      'Knowledge4:Divination,' +
+      '"Knowledge5:True Seeing",' +
+      '"Knowledge6:Find The Path",' +
+      '"Knowledge7:Legend Lore",' +
+      '"Knowledge8:Discern Location",' +
+      'Knowledge9:Foresight',
+  'Law Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Touch Of Law","8:Staff Of Order" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Law1:Protection From Chaos",' +
+      '"Law2:Align Weapon",' +
+      '"Law3:Magic Circle Against Chaos",' +
+      '"Law4:Order\'s Wrath",' +
+      '"Law5:Dispel Chaos",' +
+      '"Law6:Hold Monster",' +
+      'Law7:Dictum,' +
+      '"Law8:Shield Of Law",' +
+      '"Law9:Summon Monster IX"',
+  'Liberation Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Liberation","8:Freedom\'s Call" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Liberation1:Remove Fear",' +
+      '"Liberation2:Remove Paralysis",' +
+      '"Liberation3:Remove Curse",' +
+      '"Liberation4:Freedom Of Movement",' +
+      '"Liberation5:Break Enchantment",' +
+      '"Liberation6:Greater Dispel Magic",' +
+      'Liberation7:Refuge,' +
+      '"Liberation8:Mind Blank",' +
+      'Liberation9:Freedom',
+  'Luck Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Bit Of Luck","6:Good Fortune" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Luck1:True Strike",' +
+      'Luck2:Aid,' +
+      '"Luck3:Protection From Energy",' +
+      '"Luck4:Freedom Of Movement",' +
+      '"Luck5:Break Enchantment",' +
+      'Luck6:Mislead,' +
+      '"Luck7:Spell Turning",' +
+      '"Luck8:Moment Of Prescience",' +
+      'Luck9:Miracle',
+  'Madness Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Vision Of Madness","8:Aura Of Madness" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Madness1:Lesser Confusion",' +
+      '"Madness2:Touch Of Idiocy",' +
+      'Madness3:Rage,' +
+      'Madness4:Confusion,' +
+      'Madness5:Nightmare,' +
+      '"Madness6:Phantasmal Killer",' +
+      'Madness7:Insanity,' +
+      '"Madness8:Scintillating Pattern",' +
+      'Madness9:Weird',
+  'Magic Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Hand Of The Acolyte","8:Dispelling Touch" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Magic1:Identify,' +
+      '"Magic2:Magic Mouth",' +
+      '"Magic3:Dispel Magic",' +
+      '"Magic4:Imbue With Spell Ability",' +
+      '"Magic5:Spell Resistance",' +
+      '"Magic6:Antimagic Field",' +
+      '"Magic7:Spell Turning",' +
+      '"Magic8:Protection From Spells",' +
+      '"Magic9:Mage\'s Disjunction"',
+  'Nobility Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Inspiring Word","8:Noble Leadership" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Nobility1:Divine Favor",' +
+      'Nobility2:Enthrall,' +
+      '"Nobility3:Magic Vestment",' +
+      '"Nobility4:Discern Lies",' +
+      '"Nobility5:Greater Command",' +
+      'Nobility6:Geas/Quest,' +
+      'Nobility7:Repulsion,' +
+      'Nobility8:Demand,' +
+      '"Nobility9:Storm Of Vengeance"',
+  'Plant Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Wooden Fist","6:Bramble Armor" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Plant1:Entangle,' +
+      'Plant2:Barkskin,' +
+      '"Plant3:Plant Growth",' +
+      '"Plant4:Command Plants",' +
+      '"Plant5:Wall Of Thorns",' +
+      '"Plant6:Repel Wood",' +
+      '"Plant7:Animate Plants",' +
+      '"Plant8:Control Plants",' +
+      'Plant9:Shambler',
+  'Protection Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Resistance Bonus","1:Resistant Touch","8:Aura Of Protection" '+
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Protection1:Sanctuary,' +
+      '"Protection2:Shield Other",' +
+      '"Protection3:Protection From Energy",' +
+      '"Protection4:Spell Immunity",' +
+      '"Protection5:Spell Resistance",' +
+      '"Protection6:Antimagic Field",' +
+      'Protection7:Repulsion,' +
+      '"Protection8:Mind Blank",' +
+      '"Protection9:Prismatic Sphere"',
+  'Repose Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Gentle Rest","8:Ward Against Death" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Repose1:Deathwatch,' +
+      '"Repose2:Gentle Repose",' +
+      '"Repose3:Speak With Dead",' +
+      '"Repose4:Death Ward",' +
+      '"Repose5:Slay Living",' +
+      '"Repose6:Undeath To Death",' +
+      'Repose7:Destruction,' +
+      '"Repose8:Waves Of Exhaustion",' +
+      '"Repose9:Wail Of The Banshee"',
+  'Rune Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Scribe Scroll","1:Blast Rune","8:Spell Rune" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Rune1:Erase,' +
+      '"Rune2:Secret Page",' +
+      '"Rune3:Glyph Of Warding",' +
+      '"Rune4:Explosive Runes",' +
+      '"Rune5:Lesser Planar Binding",' +
+      '"Rune6:Greater Glyph Of Warding",' +
+      '"Rune7:Instant Summons",' +
+      '"Rune8:Symbol Of Death",' +
+      '"Rune9:Teleportation Circle"',
+  'Strength Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Strength Rush","8:Might Of The Gods" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Strength1:Enlarge Person",' +
+      '"Strength2:Bull\'s Strength",' +
+      '"Strength3:Magic Vestment",' +
+      '"Strength4:Spell Immunity",' +
+      '"Strength5:Righteous Might",' +
+      'Strength6:Stoneskin,' +
+      '"Strength7:Grasping Hand",' +
+      '"Strength8:Clenched Fist",' +
+      '"Strength9:Crushing Hand"',
+  'Sun Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Sun\'s Blessing","8:Nimbus Of Light" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Sun1:Endure Elements",' +
+      '"Sun2:Heat Metal",' +
+      '"Sun3:Searing Light",' +
+      '"Sun4:Fire Shield",' +
+      '"Sun5:Flame Strike",' +
+      '"Sun6:Fire Seeds",' +
+      'Sun7:Sunbeam,' +
+      'Sun8:Sunburst,' +
+      '"Sun9:Prismatic Sphere"',
+  'Travel Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Travel Speed","1:Agile Feet","8:Dimensional Hop" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      'Travel1:Longstrider,' +
+      '"Travel2:Locate Object",' +
+      'Travel3:Fly,' +
+      '"Travel4:Dimension Door",' +
+      'Travel5:Teleport,' +
+      '"Travel6:Find The Path",' +
+      '"Travel7:Greater Teleport",' +
+      '"Travel8:Phase Door",' +
+      '"Travel9:Astral Projection"',
+  'Trickery Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Copycat","8:Master\'s Illusion" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Trickery1:Disguise Self",' +
+      'Trickery2:Invisibility,' +
+      'Trickery3:Nondetection,' +
+      'Trickery4:Confusion,' +
+      '"Trickery5:False Vision",' +
+      'Trickery6:Mislead,' +
+      'Trickery7:Screen,' +
+      '"Trickery8:Mass Invisibility",' +
+      '"Trickery9:Time Stop"',
+  'War Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Battle Rage","8:Weapon Master" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"War1:Magic Weapon",' +
+      '"War2:Spiritual Weapon",' +
+      '"War3:Magic Vestment",' +
+      '"War4:Divine Power",' +
+      '"War5:Flame Strike",' +
+      '"War6:Blade Barrier",' +
+      '"War7:Power Word Blind",' +
+      '"War8:Power Word Stun",' +
+      '"War9:Power Word Kill"',
+  'Water Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Icicle","6:Cold Resistance" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Water1:Obscuring Mist",' +
+      '"Water2:Fog Cloud",' +
+      '"Water3:Water Breathing",' +
+      '"Water4:Control Water",' +
+      '"Water5:Ice Storm",' +
+      '"Water6:Cone Of Cold",' +
+      '"Water7:Elemental Body IV",' +
+      '"Water8:Horrid Wilting",' +
+      '"Water9:Elemental Swarm"',
+  'Weather Domain':
+    'Group=Cleric ' +
+    'Level=levels.Cleric ' +
+    'Features=' +
+      '"1:Storm Burst","8:Lightning Lord" ' +
+    'SpellAbility=wisdom ' +
+    'Spells=' +
+      '"Weather1:Obscuring Mist",' +
+      '"Weather2:Fog Cloud",' +
+      '"Weather3:Call Lightning",' +
+      '"Weather4:Sleet Storm",' +
+      '"Weather5:Ice Storm",' +
+      '"Weather6:Control Winds",' +
+      '"Weather7:Control Weather",' +
+      'Weather8:Whirlwind,' +
+      '"Weather9:Storm Of Vengeance"',
+  'Bloodline Aberrant':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Acidic Ray","3:Long Limbs","9:Unusual Anatomy",' +
+      '"15:Alien Resistance","20:Aberrant Form" ' +
+    'Feats=' +
+      '"Combat Casting","Improved Disarm","Improved Grapple",' +
+      '"Improved Initiative","Improved Unarmed Strike","Iron Will",' +
+      '"Silent Spell","Skill Focus (Knowledge (Dungeoneering))" ' +
+    'Skills="Knowledge (Dungeoneering)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Aberrant1:3=1,' +
+      'Aberrant2:5=1,' +
+      'Aberrant3:7=1,' +
+      'Aberrant4:9=1,' +
+      'Aberrant5:11=1,' +
+      'Aberrant6:13=1,' +
+      'Aberrant7:15=1,' +
+      'Aberrant8:17=1,' +
+      'Aberrant9:19=1 ' +
+    'Spells=' +
+      '"Aberrant1:Enlarge Person",' +
+      '"Aberrant2:See Invisibility",' +
+      'Aberrant3:Tongues,' +
+      '"Aberrant4:Black Tentacles",' +
+      'Aberrant5:Feeblemind,' +
+      'Aberrant6:Veil,' +
+      '"Aberrant7:Plane Shift",' +
+      '"Aberrant8:Mind Blank",' +
+      'Aberrant9:Shapechange',
+  'Bloodline Abyssal':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Claws,"3:Demon Resistances","5:Magic Claws",' +
+      '"9:Strength Of The Abyss","11:Improved Claws","15:Added Summonings",' +
+      '"20:Demonic Might" ' +
+    'Feats=' +
+      '"Augment Summoning",Cleave,"Empower Spell","Great Fortitude",' +
+      '"Improved Bull Rush","Improved Sunder","Power Attack",' +
+      '"Skill Focus (Knowledge (Planes))" ' +
+    'Skills="Knowledge (Planes)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Abyssal1:3=1,' +
+      'Abyssal2:5=1,' +
+      'Abyssal3:7=1,' +
+      'Abyssal4:9=1,' +
+      'Abyssal5:11=1,' +
+      'Abyssal6:13=1,' +
+      'Abyssal7:15=1,' +
+      'Abyssal8:17=1,' +
+      'Abyssal9:19=1 ' +
+    'Spells=' +
+      '"Abyssal1:Cause Fear",' +
+      '"Abyssal2:Bull\'s Strength",' +
+      'Abyssal3:Rage,' +
+      'Abyssal4:Stoneskin,' +
+      'Abyssal5:Dismissal,' +
+      'Abyssal6:Transformation,' +
+      '"Abyssal7:Greater Teleport",' +
+      '"Abyssal8:Unholy Aura",' +
+      '"Abyssal9:Summon Monster IX"',
+  'Bloodline Arcane':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"3:Metamagic Adept","9:New Arcana","15:School Power",' +
+      '"20:Arcane Apotheosis" ' +
+    'Feats=' +
+      '"Combat Casting","Improved Counterspell","Improved Initiative",' +
+      '"Iron Will","Scribe Scroll","Skill Focus (Knowledge (Arcana))",' +
+      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
+      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
+      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
+      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
+      '"Still Spell" ' +
+    'Skills="choice of Knowledge" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Arcane1:3=1,' +
+      'Arcane2:5=1,' +
+      'Arcane3:7=1,' +
+      'Arcane4:9=1,' +
+      'Arcane5:11=1,' +
+      'Arcane6:13=1,' +
+      'Arcane7:15=1,' +
+      'Arcane8:17=1,' +
+      'Arcane9:19=1 ' +
+    'Spells=' +
+      'Arcane1:Identify,' +
+      'Arcane2:Invisibility,' +
+      '"Arcane3:Dispel Magic",' +
+      '"Arcane4:Dimension Door",' +
+      '"Arcane5:Overland Flight",' +
+      '"Arcane6:True Seeing",' +
+      '"Arcane7:Greater Teleport",' +
+      '"Arcane8:Power Word Stun",' +
+      'Arcane9:Wish',
+  'Bloodline Celestial':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Heavenly Fire","3:Celestial Resistances","9:Wings Of Heaven",'+
+      '15:Conviction,20:Ascension ' +
+    'Feats=' +
+      'Dodge,"Extend Spell","Iron Will",Mobility,"Mounted Combat",' +
+      '"Ride-By Attack","Skill Focus (Knowledge (Religion))",' +
+      '"Weapon Finesse" ' +
+    'Skills=Heal ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Celestial1:3=1,' +
+      'Celestial2:5=1,' +
+      'Celestial3:7=1,' +
+      'Celestial4:9=1,' +
+      'Celestial5:11=1,' +
+      'Celestial6:13=1,' +
+      'Celestial7:15=1,' +
+      'Celestial8:17=1,' +
+      'Celestial9:19=1 ' +
+    'Spells=' +
+      'Celestial1:Bless,' +
+      '"Celestial2:Resist Energy",' +
+      '"Celestial3:Magic Circle Against Evil",' +
+      '"Celestial4:Remove Curse",' +
+      '"Celestial5:Flame Strike",' +
+      '"Celestial6:Greater Dispel Magic",' +
+      'Celestial7:Banishment,' +
+      'Celestial8:Sunburst,' +
+      'Celestial9:Gate',
+  'Bloodline Destined':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Touch Of Destiny",3:Fated,"9:It Was Meant To Be","15:Within Reach",' +
+      '"20:Destiny Realized" ' +
+    'Feats=' +
+      '"Arcane Strike",Diehard,Endurance,Leadership,"Lightning Reflexes",' +
+      '"Maximize Spell","Skill Focus (Knowledge (History))" ' +
+    'Skills="Knowledge (History)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Destined1:3=1,' +
+      'Destined2:5=1,' +
+      'Destined3:7=1,' +
+      'Destined4:9=1,' +
+      'Destined5:11=1,' +
+      'Destined6:13=1,' +
+      'Destined7:15=1,' +
+      'Destined8:17=1,' +
+      'Destined9:19=1 ' +
+    'Spells=' +
+      'Destined1:Alarm,' +
+      'Destined2:Blur,' +
+      '"Destined3:Protection From Energy",' +
+      '"Destined4:Freedom Of Movement",' +
+      '"Destined5:Break Enchantment",' +
+      'Destined6:Mislead,' +
+      '"Destined7:Spell Turning",' +
+      '"Destined8:Moment Of Prescience",' +
+      'Destined9:Foresight',
+  'Bloodline Draconic (Black)':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Claws,"3:Dragon Resistances","5:Magic Claws","9:Breath Weapon",' +
+      '"11:Improved Claws",15:Wings,"20:Power Of Wyrms",20:Blindsense ' +
+    'Feats=' +
+      '"Blind-Fight","Great Fortitude","Improved Initiative","Power Attack",' +
+      '"Quicken Spell","Skill Focus (Fly)",' +
+      '"Skill Focus (Knowledge (Arcana))",Toughness ' +
+    'Skills=Perception ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Draconic1:3=1,' +
+      'Draconic2:5=1,' +
+      'Draconic3:7=1,' +
+      'Draconic4:9=1,' +
+      'Draconic5:11=1,' +
+      'Draconic6:13=1,' +
+      'Draconic7:15=1,' +
+      'Draconic8:17=1,' +
+      'Draconic9:19=1 ' +
+    'Spells=' +
+      '"Draconic1:Mage Armor",' +
+      '"Draconic2:Resist Energy",' +
+      'Draconic3:Fly,' +
+      'Draconic4:Fear,' +
+      '"Draconic5:Spell Resistance",' +
+      '"Draconic6:Form Of The Dragon I",' +
+      '"Draconic7:Form Of The Dragon II",' +
+      '"Draconic8:Form Of The Dragon III",' +
+      'Draconic9:Wish',
+  'Bloodline Elemental (Air)':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
+      '"15:Elemental Movement","20:Elemental Body" ' +
+    'Feats=' +
+      'Dodge,"Empower Spell","Great Fortitude","Improved Initiative",' +
+      '"Lightning Reflexes","Power Attack",' +
+      '"Skill Focus (Knowledge (Planes))","Weapon Finesse" ' +
+    'Skills="Knowledge (Planes)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Elemental1:3=1,' +
+      'Elemental2:5=1,' +
+      'Elemental3:7=1,' +
+      'Elemental4:9=1,' +
+      'Elemental5:11=1,' +
+      'Elemental6:13=1,' +
+      'Elemental7:15=1,' +
+      'Elemental8:17=1,' +
+      'Elemental9:19=1 ' +
+    'Spells=' +
+      '"Elemental1:Burning Hands",' +
+      '"Elemental2:Scorching Ray",' +
+      '"Elemental3:Protection From Energy",' +
+      '"Elemental4:Elemental Body I",' +
+      '"Elemental5:Elemental Body II",' +
+      '"Elemental6:Elemental Body III",' +
+      '"Elemental7:Elemental Body IV",' +
+      '"Elemental8:Summon Monster VIII",' +
+      '"Elemental9:Elemental Swarm"',
+  'Bloodline Fey':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Laughing Touch","3:Woodland Stride","9:Fleeting Glance",' +
+      '"15:Fey Magic","20:Soul Of The Fey" ' +
+    'Feats=' +
+      'Dodge,"Improved Initiative","Lightning Reflexes",Mobility,' +
+      '"Point-Blank Shot","Precise Shot","Quicken Spell",' +
+      '"Skill Focus (Knowledge (Nature))" ' +
+    'Skills="Knowledge (Nature)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Fey1:3=1,' +
+      'Fey2:5=1,' +
+      'Fey3:7=1,' +
+      'Fey4:9=1,' +
+      'Fey5:11=1,' +
+      'Fey6:13=1,' +
+      'Fey7:15=1,' +
+      'Fey8:17=1,' +
+      'Fey9:19=1 ' +
+    'Spells=' +
+      'Fey1:Entangle,' +
+      '"Fey2:Hideous Laughter",' +
+      '"Fey3:Deep Slumber",' +
+      'Fey4:Poison,' +
+      '"Fey5:Tree Stride",' +
+      'Fey6:Mislead,' +
+      '"Fey7:Phase Door",' +
+      '"Fey8:Irresistible Dance",' +
+      'Fey9:Shapechange',
+  'Bloodline Infernal':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Corrupting Touch","3:Infernal Resistances",9:Hellfire,' +
+      '"15:On Dark Wings","20:Power Of The Pit" ' +
+    'Feats=' +
+      'Blind-Fight,"Combat Expertise",Deceitful,"Extend Spell",' +
+      '"Improved Disarm","Iron Will","Skill Focus (Knowledge (Planes))",' +
+      '"Spell Penetration" ' +
+    'Skills=Diplomacy ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Infernal1:3=1,' +
+      'Infernal2:5=1,' +
+      'Infernal3:7=1,' +
+      'Infernal4:9=1,' +
+      'Infernal5:11=1,' +
+      'Infernal6:13=1,' +
+      'Infernal7:15=1,' +
+      'Infernal8:17=1,' +
+      'Infernal9:19=1 ' +
+    'Spells=' +
+      '"Infernal1:Protection From Good",' +
+      '"Infernal2:Scorching Ray",' +
+      'Infernal3:Suggestion,' +
+      '"Infernal4:Charm Monster",' +
+      '"Infernal5:Dominate Person",' +
+      '"Infernal6:Planar Binding",' +
+      '"Infernal7:Greater Teleport",' +
+      '"Infernal8:Power Word Stun",' +
+      '"Infernal9:Meteor Swarm"',
+  'Bloodline Undead':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Grave Touch","3:Death\'s Gift","9:Grasp Of The Dead",' +
+      '"15:Incorporeal Form","20:One Of Us" ' +
+    'Feats=' +
+      '"Combat Casting","Diehard",Endurance,"Iron Will",' +
+      '"Skill Focus (Knowledge (Religion))",' +
+      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
+      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
+      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
+      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
+      'Toughness ' +
+    'Skills="Knowledge (Religion)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Undead1:3=1,' +
+      'Undead2:5=1,' +
+      'Undead3:7=1,' +
+      'Undead4:9=1,' +
+      'Undead5:11=1,' +
+      'Undead6:13=1,' +
+      'Undead7:15=1,' +
+      'Undead8:17=1,' +
+      'Undead9:19=1 ' +
+    'Spells=' +
+      '"Undead1:Chill Touch",' +
+      '"Undead2:False Life",' +
+      '"Undead3:Vampiric Touch",' +
+      '"Undead4:Animate Dead",' +
+      '"Undead5:Waves Of Fatigue",' +
+      '"Undead6:Undeath To Death",' +
+      '"Undead7:Finger Of Death",' +
+      '"Undead8:Horrid Wilting",' +
+      '"Undead9:Energy Drain"'
+};
+for(var color in {'Blue':'', 'Green':'', 'Red':'', 'White':'', 'Brass':'', 'Bronze':'', 'Copper':'', 'Gold':'', 'Silver':''})
+  Pathfinder.PATHS['Bloodline Draconic (' + color + ')'] =
+    Pathfinder.PATHS['Bloodline Draconic (Black)'];
+for(var element in {'Earth':'', 'Fire':'', 'Water':''})
+  Pathfinder.PATHS['Bloodline Elemental (' + element + ')'] =
+    Pathfinder.PATHS['Bloodline Elemental (Air)'];
 Pathfinder.RACES = {
   'Dwarf':
     'Features=' +
@@ -1664,9 +2225,12 @@ Pathfinder.RACES = {
       '"Weapon Familiarity (Gnome Hooked Hammer)" ' +
     'Languages=Common,Gnome,Sylvan ' +
     'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      '"Gnome0:1=3",' +
+      '"Gnome1:1=1" ' +
     'Spells=' +
-      '"charisma >= 11 ? Gnome1:Speak With Animals",' +
-      '"charisma >= 11 ? Gnome0:Dancing Lights;Ghost Sound;Prestidigitation"',
+      '"Gnome0:Dancing Lights;Ghost Sound;Prestidigitation",' +
+      '"Gnome1:Speak With Animals"',
   'Half-Elf':
     'Features=' +
       'Adaptability,"Elf Blood","Half-Elf Ability Adjustment",' +
@@ -1676,7 +2240,7 @@ Pathfinder.RACES = {
   'Half-Orc':
     'Features=' +
       'Darkvision,"Half-Orc Ability Adjustment",Intimidating,' +
-      '"Orc Blood","Orc Ferocity","Weapon Familiarity (Orc Double Axe)"' +
+      '"Orc Blood","Orc Ferocity","Weapon Familiarity (Orc Double Axe)",' +
       '"Weapon Proficiency (Falchion/Greataxe)" ' +
     'Languages=Common,Orc',
   'Halfling':
@@ -2063,7 +2627,7 @@ Pathfinder.CLASSES = {
       '"20:Deadly Performance" ' +
     'CasterLevelArcane=levels.Bard ' +
     'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'B0:1=4;2=5;3=6,' +
       'B1:1=1;2=2;3=3;5=4;9=5,' +
       'B2:4=1;5=2;6=3;8=4;12=5,' +
@@ -2118,10 +2682,10 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Simple)",1:Aura,"1:Channel Energy",' +
       '"1:Spontaneous Cleric Spell" ' +
     'Selectables=' +
-      QuilvynUtils.getKeys(Pathfinder.DOMAINS).map(x => '"1:' + x + ' Domain"').join(',') + ' ' +
+      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/ Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + '"').join(',') + ' ' +
     'CasterLevelDivine=levels.Cleric ' +
     'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'C0:1=3;2=4,' +
       'C1:1=1;2=2;4=3;7=4,' +
       'C2:3=1;4=2;6=3;9=4,' +
@@ -2220,7 +2784,7 @@ Pathfinder.CLASSES = {
     'Languages=Druidic ' +
     'CasterLevelDivine=levels.Druid ' +
     'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'D0:1=3;2=4,' +
       'D1:1=1;2=2;4=3;7=4,' +
       'D2:3=1;4=2;6=3;9=4,' +
@@ -2283,7 +2847,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Martial)","2:Bravery","3:Armor Training",' +
       '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
   'Monk':
-    'Require="alignment =~ \'Lawful\'" Imply="armor == \'None\'","shield == \'None\'" ' +
+    'Require="alignment =~ \'Lawful\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
@@ -2305,7 +2869,7 @@ Pathfinder.CLASSES = {
       '"10:Medusa\'s Wrath","10:Snatch Arrows","10:Spring Attack" ' +
     'CasterLevelArcane="levels.Monk < 12 ? null : levels.Monk" ' +
     'SpellAbility=intelligence ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'Monk4:12=1,' +
       'Monk9:19=1 ' +
     'Spells=' +
@@ -2325,7 +2889,7 @@ Pathfinder.CLASSES = {
       '"5:Divine Mount","5:Divine Weapon" ' +
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
     'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
       'P2:8=0;9=1;12=2;16=3;20=4,' +
       'P3:19=0;11=1;15=2;19=3,' +
@@ -2374,7 +2938,7 @@ Pathfinder.CLASSES = {
       '"features.Combat Style (Two-Weapon Combat) ? 10:Two-Weapon Rend" ' +
     'CasterLevelDivine="levels.Ranger >= 4 ? levels.Ranger - 3 : null" ' +
     'SpellAbility=wisdom ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'R1:4=0;5=1;9=2;13=3;17=4,' +
       'R2:7=0;8=1;12=2;16=3;20=4,' +
       'R3:10=0;11=1;15=2;19=3,' +
@@ -2413,7 +2977,7 @@ Pathfinder.CLASSES = {
       '"features.Major Magic ? 10:Dispelling Attack" ' +
     'CasterLevelArcane=levels.Rogue ' +
     'SpellAbility=intelligence ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'Rogue0:2=1,' +
       'Rogue1:2=1,' +
       'Rogue3:10=1 ' +
@@ -2451,7 +3015,7 @@ Pathfinder.CLASSES = {
       '"features.Bloodline Arcane ? 1:Familiar" ' +
     'CasterLevelDivine=levels.Sorcerer ' +
     'SpellAbility=charisma ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'S1:1=3;2=4;3=5;4=6,' +
       'S2:4=3;5=4;6=5;7=6,' +
       'S3:6=3;7=4;8=5;9=6,' +
@@ -2474,7 +3038,7 @@ Pathfinder.CLASSES = {
       QuilvynUtils.getKeys(SRD35.SCHOOLS).filter(x => x != 'Universal').map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
     'CasterLevelDivine=levels.Wizard ' +
     'SpellAbility=intelligence ' +
-    'SpellsPerDay=' +
+    'SpellSlots=' +
       'W0:1=3;2=4,' +
       'W1:1=1;2=2;4=3;7=4,' +
       'W2:3=1;4=2;6=3;9=4,' +
@@ -2728,16 +3292,39 @@ Pathfinder.goodiesRules = function(rules) {
 
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
-  rules, alignments, bloodlines, classes, deities, domains, factions, genders,
-  races, tracks, traits
+  rules, alignments, classes, deities, factions, genders, paths, races, tracks,
+  traits
 ) {
 
-  SRD35.identityRules
-    (rules, alignments, classes, deities, domains, genders, races);
+  QuilvynUtils.checkAttrTable(alignments, []);
+  QuilvynUtils.checkAttrTable
+    (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'Spells']);
+  QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
+  QuilvynUtils.checkAttrTable(genders, []);
+  QuilvynUtils.checkAttrTable
+    (paths, ['Features', 'Selectables', 'Group', 'Level', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots', 'Spells']);
+  QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots', 'Spells']);
+  QuilvynUtils.checkAttrTable(factions, []);
+  QuilvynUtils.checkAttrTable(tracks, ['Progression']);
+  QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
-  // Pathfinder-specific attributes
-  for(var bloodline in bloodlines) {
-    rules.choiceRules(rules, 'Bloodline', bloodline, bloodlines[bloodline]);
+  for(var alignment in alignments) {
+    rules.choiceRules(rules, 'Alignment', alignment, alignments[alignment]);
+  }
+  for(var clas in classes) {
+    rules.choiceRules(rules, 'Class', clas, classes[clas]);
+  }
+  for(var deity in deities) {
+    rules.choiceRules(rules, 'Deity', deity, deities[deity]);
+  }
+  for(var gender in genders) {
+    rules.choiceRules(rules, 'Gender', gender, genders[gender]);
+  }
+  for(var path in paths) {
+    rules.choiceRules(rules, 'Path', path, paths[path]);
+  }
+  for(var race in races) {
+    rules.choiceRules(rules, 'Race', race, races[race]);
   }
   for(var faction in factions) {
     rules.choiceRules(rules, 'Faction', faction, factions[faction]);
@@ -2763,6 +3350,11 @@ Pathfinder.identityRules = function(
   rules.defineEditorElement
     ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
      'armor');
+
+  rules.defineRule('casterLevel',
+    'casterLevelArcane', '=', null,
+    'casterLevelDivine', '+=', null
+  );
   rules.defineRule
     ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
   rules.defineRule
@@ -2771,6 +3363,9 @@ Pathfinder.identityRules = function(
     ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
   rules.defineRule
     ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
+
+  QuilvynRules.validAllocationRules
+    (rules, 'level', 'level', 'Sum "^levels\\."');
 
 };
 
@@ -2826,16 +3421,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
-  else if(type == 'Bloodline') {
-    Pathfinder.bloodlineRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
-      Pathfinder.SPELLS
-    );
-    Pathfinder.bloodlineRulesExtra(rules, name);
-  } else if(type == 'Class') {
+  else if(type == 'Class') {
     Pathfinder.classRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValue(attrs, 'HitDie'),
@@ -2851,7 +3437,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelArcane'),
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelDivine'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
-      QuilvynUtils.getAttrValueArray(attrs, 'SpellsPerDay'),
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
       Pathfinder.SPELLS
     );
@@ -2862,14 +3448,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Domain'),
       QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
     );
-  else if(type == 'Domain') {
-    Pathfinder.domainRules(rules, name,
-      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
-      Pathfinder.SPELLS
-    );
-    Pathfinder.domainRulesExtras(rules, name);
-  } else if(type == 'Faction')
+  else if(type == 'Faction')
     Pathfinder.factionRules(rules, name,
     );
   else if(type == 'Familiar')
@@ -2903,13 +3482,28 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.genderRules(rules, name);
   else if(type == 'Language')
     Pathfinder.languageRules(rules, name);
-  else if(type == 'Race') {
+  else if(type == 'Path') {
+    Pathfinder.pathRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'Group'),
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
+      QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      Pathfinder.SPELLS
+    );
+    Pathfinder.pathRulesExtra(rules, name);
+  } else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
       QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
       Pathfinder.SPELLS
     );
@@ -2994,359 +3588,6 @@ Pathfinder.armorRules = function(
 };
 
 /*
- * Defines in #rules# the rules assocated with bloodline #name#. #features#
- * lists features associated with the bloodline, #feats# lists the feats from
- * which bonus feats can be selected, #skill# lists skills that become class
- * skills, and #spells# lists the additional spells granted, along with the
- * level for each.
- */
-Pathfinder.bloodlineRules = function(
-  rules, name, features, feats, skills, spells, spellDict
-) {
-
-  if(!name) {
-    console.log('Empty bloodline name');
-    return;
-  }
-  var allFeats = rules.getChoices('feats');
-  if(allFeats == null) {
-    console.log('Feats not yet defined for bloodline ' + name);
-    return;
-  }
-  if(name == 'Destined') {
-    for(var feat in allFeats) {
-      if(feat.startsWith('Weapon Focus'))
-        feats.push(feat);
-    }
-  }
-
-  var bloodlineLevel =
-    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
-  rules.defineRule(bloodlineLevel,
-    'features.Bloodline ' + name, '?', null,
-    'levels.Sorcerer', '=', null
-  );
-
-  SRD35.featureListRules(rules, features, 'Sorcerer', bloodlineLevel, false);
-
-  rules.defineRule('featCount.' + name,
-    bloodlineLevel, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
-  );
-  for(var i = 0; i < feats.length; i++) {
-    var attrs = allFeats[feats[i]];
-    if(attrs == null) {
-      console.log('Feat "' + feats[i] + '" undefined for bloodline ' + name);
-    } else {
-      allFeats[feats[i]] = attrs.replace(/Type=/, 'Type="' + name + '",');
-    }
-  }
-
-  var note = skills.join(' is a class skill/') + ' is a class skill';
-  Pathfinder.featureRules(rules, 'Bloodline ' + name, 'skill', note);
-
-  // Some bloodline spells are already defined with the Wizard class; others
-  // are not (i.e., they're only Cleric or Druid spells). (Re)define them all
-  // here to make certain.
-  for(var i = 0; i < spells.length; i++) {
-    var matchInfo = spells[i].match(/^((\d+):)?(.*)$/);
-    var spellName = matchInfo ? matchInfo[3] : features[i];
-    var level = matchInfo ? matchInfo[2] : 1;
-    if(spellDict[spellName] == null) {
-      console.log('Unknown spell "' + spellName + '"');
-      continue;
-    }
-    var school = QuilvynUtils.getAttrValue(spellDict[spellName], 'School');
-    if(school == null) {
-      console.log('No school given for spell "' + spellName + '"');
-      continue;
-    }
-    var fullSpell =
-      spellName + '(' + 'W' + (i+1) + ' ' + school.substring(0, 4) + ')';
-    rules.choiceRules
-      (rules, 'Spell', fullSpell,
-       spellDict[spellName] + ' Group=W Level=' + (i + 1));
-    rules.defineRule('spells.' + fullSpell,
-      bloodlineLevel, '=', 'source >= ' + level + ' ? 1 : null'
-    );
-  }
-
-};
-
-/*
- * Defines in #rules# the rules associated with bloodline #name# that are not
- * directly derived from the parmeters passed to bloodlineRules.
- */
-Pathfinder.bloodlineRulesExtra = function(rules, name) {
-
-  var bloodlineLevel =
-    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
-
-  if(name == 'Aberrant') {
-
-    rules.defineRule('combatNotes.longLimbs',
-      bloodlineLevel, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
-    );
-    rules.defineRule('combatNotes.unusualAnatomy',
-      bloodlineLevel, '=', 'source >= 13 ? 50 : 25'
-    );
-    rules.defineRule('magicNotes.acidicRay',
-      bloodlineLevel, '=', '1 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.acidicRay.1',
-      'features.Acidic Ray', '?', null,
-      'charismaModifier', '=', '1 + source'
-    );
-    rules.defineRule
-      ('saveNotes.alienResistance', bloodlineLevel, '=', 'source + 10');
-
-  } else if(name == 'Abyssal') {
-
-    rules.defineRule('abilityNotes.strengthOfTheAbyss',
-      bloodlineLevel, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
-    );
-    rules.defineRule('bloodlineEnergy', bloodlineLevel, '=', '"fire"');
-    rules.defineRule('clawsDamageLevel',
-      'features.Claws', '=', '1',
-      'features.Small', '+', '-1',
-      'features.Large', '+', '1',
-      bloodlineLevel, '+', 'source >= 7 ? 1 : null'
-    );
-    rules.defineRule('combatNotes.claws',
-      'clawsDamageLevel', '=', '["1d3", "1d4", "1d6", "1d8"][source]'
-    );
-    rules.defineRule('combatNotes.claws.1',
-      'features.Claws', '?', null,
-      'strengthModifier', '=', null
-    );
-    rules.defineRule('combatNotes.claws.2',
-      'features.Claws', '?', null,
-      'charismaModifier', '=', 'source + 3'
-    );
-    rules.defineRule('combatNotes.improvedClaws', 'bloodlineEnergy', '=', null);
-    rules.defineRule('magicNotes.bloodlineAbyssal',
-      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('saveNotes.demonResistances',
-      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? 10 : 5'
-    );
-    rules.defineRule('saveNotes.demonResistances.1',
-      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
-    );
-
-  } else if(name == 'Arcane') {
-
-    rules.defineRule
-      ('familiarMasterLevel', 'familiarSorcererLevel', '^=', null);
-    rules.defineRule('familiarSorcererLevel',
-      'sorcererFeatures.Familiar', '?', null,
-      'levels.Sorcerer', '=', null
-    );
-    rules.defineRule
-      ('selectableFeatureCount.Sorcerer', bloodlineLevel, '+', '1');
-    rules.defineRule('magicNotes.metamagicAdept',
-      bloodlineLevel, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
-    );
-    rules.defineRule('magicNotes.newArcana',
-      bloodlineLevel, '=', 'Math.floor((source - 5) / 4)'
-    );
-
-  } else if(name == 'Celestial') {
-
-    rules.defineRule('abilityNotes.wingsOfHeaven',
-      bloodlineLevel, '=', 'source >= 20 ? "any" : source'
-    );
-    rules.defineRule('magicNotes.bloodlineCelestial',
-      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.heavenlyFire',
-      bloodlineLevel, '=', '1 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.heavenlyFire.1',
-      'features.Heavenly Fire', '?', null,
-      'charismaModifier', '=', '1 + source'
-    );
-    rules.defineRule('saveNotes.celestialResistances',
-      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
-    );
-
-  } else if(name == 'Destined') {
-
-    rules.defineRule('featureNotes.itWasMeantToBe',
-      bloodlineLevel, '=', 'Math.floor((source - 1) / 8)'
-    );
-    rules.defineRule('magicNotes.touchOfDestiny',
-      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.touchOfDestiny.1',
-      'features.Touch Of Destiny', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule
-      ('saveNotes.fated', bloodlineLevel, '=', 'Math.floor((source + 1) / 4)');
-
-  } else if(name.startsWith('Draconic')) {
-
-    var color = name.replace(/^.*\(|\)/g, '');
-    var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
-                 'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
-                 'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
-    rules.defineRule('abilityNotes.wings', bloodlineLevel, '^=', null);
-    rules.defineRule
-      ('bloodlineEnergy', bloodlineLevel, '=', '"' + energy + '"');
-    // Other claws rules defined by Bloodline Abyssal
-    rules.defineRule
-      ('clawsDamageLevel', bloodlineLevel, '+', 'source >= 7 ? 1 : null');
-    rules.defineRule('combatNotes.breathWeapon', bloodlineLevel, '=', null);
-    rules.defineRule('combatNotes.breathWeapon.1',
-      'features.Breath Weapon', '?', null,
-      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('combatNotes.breathWeapon.2',
-      'features.Breath Weapon', '?', null,
-      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
-    );
-    rules.defineRule('combatNotes.breathWeapon.3',
-      'features.Breath Weapon', '?', null,
-      bloodlineLevel, '=', '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
-    );
-    rules.defineRule('combatNotes.breathWeapon.4',
-      'features.Breath Weapon', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-    rules.defineRule('combatNotes.dragonResistances',
-      bloodlineLevel, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
-    );
-    rules.defineRule('featureNotes.blindsense', bloodlineLevel, '^=', '60');
-    rules.defineRule('saveNotes.dragonResistances',
-      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
-    );
-    rules.defineRule('saveNotes.dragonResistances.1',
-      'features.Dragon Resistances', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-    rules.defineRule
-      ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
-
-  } else if(name.startsWith('Elemental')) {
-
-    var element = name.replace(/^.*\(|\)/g, '');
-    var energy = element == 'Earth' ? 'acid' :
-                 element == 'Water' ? 'cold' :
-                 element == 'Air' ? 'electricity' : 'fire';
-    var movement = element == 'Air' ? "Fly 60'/average" :
-                   element == 'Earth' ? "Burrow 30'" :
-                   element == 'Fire' ? 'Speed +30' : "Swim 60'";
-    rules.defineRule
-      ('abilityNotes.elementalMovement', 'bloodlineMovement', '=', null);
-    rules.defineRule
-      ('bloodlineEnergy', bloodlineLevel, '=', '"' + energy + '"');
-    rules.defineRule
-      ('bloodlineMovement', bloodlineLevel, '=', '"' + movement + '"');
-    rules.defineRule('combatNotes.elementalBlast', bloodlineLevel, '=', null);
-    rules.defineRule('combatNotes.elementalBlast.1',
-      'features.Elemental Blast', '?', null,
-      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('combatNotes.elementalBlast.2',
-      'features.Elemental Blast', '?', null,
-      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
-    );
-    rules.defineRule('combatNotes.elementalBlast.3',
-      'features.Elemental Blast', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-    rules.defineRule
-      ('magicNotes.bloodlineElemental', 'bloodlineEnergy', '=', null);
-    rules.defineRule
-      ('magicNotes.elementalRay', 'charismaModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.elementalRay.1',
-      'features.Elemental Ray', '?', null,
-      bloodlineLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.elementalRay.2',
-      'features.Elemental Ray', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-    rules.defineRule('saveNotes.elementalBody', 'bloodlineEnergy', '=', null);
-    rules.defineRule('saveNotes.elementalResistance',
-      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
-    );
-    rules.defineRule('saveNotes.elementalResistance.1',
-      'features.Elemental Resistance', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-
-  } else if(name == 'Fey') {
-
-    rules.defineRule('magicNotes.fleetingGlance', bloodlineLevel, '=', null);
-    rules.defineRule
-      ('magicNotes.laughingTouch', 'charismaModifier', '=', 'source + 3');
-
-  } else if(name == 'Infernal') {
-
-    rules.defineRule('magicNotes.corruptingTouch',
-      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.corruptingTouch.1',
-      'features.Corrupting Touch', '?', null,
-      'charismaModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.hellfire', bloodlineLevel, '=', null);
-    rules.defineRule('magicNotes.hellfire.1',
-      'features.Hellfire', '?', null,
-      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.hellfire.2',
-      'features.Hellfire', '?', null,
-      bloodlineLevel, '=', null
-    );
-    rules.defineRule('magicNotes.hellfire.3',
-      'features.Hellfire', '?', null,
-      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
-    );
-    rules.defineRule('saveNotes.infernalResistances',
-      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
-    );
-    rules.defineRule('saveNotes.infernalResistances.1',
-      bloodlineLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
-    );
-
-  } else if(name == 'Undead') {
-
-    rules.defineRule('magicNotes.graspOfTheDead', bloodlineLevel, '=', null);
-    rules.defineRule('magicNotes.graspOfTheDead.1',
-      'features.Grasp Of The Dead', '?', null,
-      bloodlineLevel, '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.graspOfTheDead.2',
-      'features.Grasp Of The Dead', '?', null,
-      bloodlineLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
-    );
-    rules.defineRule('magicNotes.graveTouch',
-      bloodlineLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.graveTouch.1',
-      'features.Grave Touch', '?', null,
-      'charismaModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.incorporealForm', bloodlineLevel, '=', null);
-    rules.defineRule("saveNotes.death'sGift",
-      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
-    );
-    rules.defineRule("saveNotes.death'sGift.1",
-      "features.Death's Gift", '?', null,
-      bloodlineLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
-    );
-
-  }
-
-};
-
-/*
  * Defines in #rules# the rules associated with class #name#, which has the list
  * of hard prerequisites #requires#. The class grants #hitDie# (format [n]'d'n)
  * additional hit points and #skillPoints# additional skill points with each
@@ -3361,7 +3602,7 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
  * Javascript expression for determining the caster level for the class; these
  * can incorporate a class level attribute (e.g., 'levels.Cleric') or the
  * character level attribute 'level'. #spellAbility#, if specified, names the
- * ability for computing spell difficulty class. #spellsPerDay# lists the
+ * ability for computing spell difficulty class. #spellSlots# lists the
  * number of spells per level per day that the class can cast, and #spells#
  * lists spells defined by the class. #spellDict# is the dictionary of all
  * spells used to look up individual spell attributes.
@@ -3369,7 +3610,7 @@ Pathfinder.bloodlineRulesExtra = function(rules, name) {
 Pathfinder.classRules = function(
   rules, name, requires, hitDie, attack, skillPoints, saveFort, saveRef,
   saveWill, skills, features, selectables, languages, casterLevelArcane,
-  casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
+  casterLevelDivine, spellAbility, spellSlots, spells, spellDict
 ) {
   if(name == 'Monk') {
     var allFeats = rules.getChoices('feats');
@@ -3381,7 +3622,7 @@ Pathfinder.classRules = function(
   SRD35.classRules(
     rules, name, requires, hitDie, attack, skillPoints, saveFort, saveRef,
     saveWill, skills, features, selectables, languages, casterLevelArcane,
-    casterLevelDivine, spellAbility, spellsPerDay, spells, spellDict
+    casterLevelDivine, spellAbility, spellSlots, spells, spellDict
   );
   // Override SRD35 skillPoints rule
   rules.defineRule
@@ -3787,7 +4028,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Rogue') {
 
-    SRD35.prerequisiteRules(
+    QuilvynRules.prerequisiteRules(
       rules, 'validation', 'rogueWeaponTraining',
       'features.Rogue Weapon Training', 'Sum \'features\\.Weapon Focus\' >= 1'
     );
@@ -3825,10 +4066,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.trapfinding',
       'levels.Rogue', '+=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('spellsPerDay.Rogue0', 'features.Minor Magic', '?', null);
-    rules.defineRule('spellsPerDay.Rogue1', 'features.Major Magic', '?', null);
+    rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '?', null);
+    rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '?', null);
     rules.defineRule
-      ('spellsPerDay.Rogue3', 'features.Dispelling Attack', '?', null);
+      ('spellSlots.Rogue3', 'features.Dispelling Attack', '?', null);
     rules.defineRule('uncannyDodgeSources',
       'levels.Rogue', '+=', 'source >= 4 ? 1 : null'
     );
@@ -3859,7 +4100,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'wizardFeatures.School Specialization (' + school + ')', '+', '2'
       );
       for(var i = 1; i <= 9; i++) {
-        rules.defineRule('spellsPerDay.W' + i,
+        rules.defineRule('spellSlots.W' + i,
           'magicNotes.schoolSpecialization(' + school + ')', '+', '1'
         );
       }
@@ -3922,385 +4163,6 @@ Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
       'featureNotes.weaponOfWar', '=', 'null'
     );
   }
-};
-
-/*
- * Defines in #rules# the rules associated with domain #name#. #features# and
- * #spells# list the associated features and domain spells. #spellDict# is the
- * dictionary of all spells used to look up individual spell attributes.
- */
-Pathfinder.domainRules = function(rules, name, features, spells, spellDict) {
-  SRD35.domainRules(rules, name, features, spells, spellDict);
-  // No changes needed to the rules defined by SRD35 method
-};
-
-/*
- * Defines in #rules# the rules associated with domain #name# that are not
- * directly derived from the parmeters passed to domainRules.
- */
-Pathfinder.domainRulesExtras = function(rules, name) {
-
-  if(name == 'Air') {
-    rules.defineRule
-      ('combatNotes.lightningArc', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.lightningArc.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('saveNotes.electricityResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
-    );
-  } else if(name == 'Animal') {
-    rules.defineRule
-      ('companionMasterLevel', 'companionClericLevel', '^=', null);
-    rules.defineRule('companionClericLevel',
-      'features.Animal Domain', '?', null,
-      'levels.Cleric', '=', 'source - 3'
-    );
-    rules.defineRule
-      ('magicNotes.speakWithAnimals', 'levels.Cleric', '=', 'source + 3');
-    rules.defineRule
-      ('classSkills.Knowledge (Nature)', 'features.Animal Domain', '=', '1');
-    rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
-  } else if(name == 'Artifice') {
-    rules.defineRule
-      ("combatNotes.artificer'sTouch", 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule("combatNotes.artificer'sTouch.1",
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.dancingWeapons',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
-  } else if(name == 'Chaos') {
-    rules.defineRule('combatNotes.chaosBlade',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineRule('combatNotes.chaosBlade.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('combatNotes.touchOfChaos', 'wisdomModifier', '=', 'source + 3');
-  } else if(name == 'Charm') {
-    rules.defineRule('magicNotes.charmingSmile',
-      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('magicNotes.charmingSmile.1', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.addlingTouch', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.addlingTouch.1',
-      'features.Addling Touch', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    // Charm person already a Charm spell
-  } else if(name == 'Community') {
-    rules.defineRule
-      ('magicNotes.calmingTouch', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.calmingTouch.1', 'levels.Cleric', '=', null);
-    rules.defineRule('saveNotes.unity',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-  } else if(name == 'Darkness') {
-    rules.defineRule('combatNotes.touchOfDarkness',
-      'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
-    );
-    rules.defineRule('combatNotes.touchOfDarkness.1',
-      'features.Touch Of Darkness', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('featureNotes.eyesOfDarkness',
-      'levels.Cleric', '=', 'source >= 4 ? Math.floor(source / 2) : null'
-    );
-  } else if(name == 'Death') {
-    rules.defineRule('combatNotes.bleedingTouch',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.bleedingTouch.1',
-      'features.Bleeding Touch', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Destruction') {
-    rules.defineRule('combatNotes.destructiveAura',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
-    );
-    rules.defineRule
-      ('combatNotes.destructiveAura.1', 'levels.Cleric', '=', null);
-    rules.defineRule('combatNotes.destructiveSmite',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.destructiveSmite.1',
-      'features.Destructive Smite', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Earth') {
-    rules.defineRule
-      ('magicNotes.acidDart', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule
-      ('magicNotes.acidDart.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
-    rules.defineRule('saveNotes.acidResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
-    );
-  } else if(name == 'Evil') {
-    rules.defineRule('combatNotes.scytheOfEvil',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineRule('combatNotes.scytheOfEvil.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.touchOfEvil',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.touchOfEvil.1',
-      'features.Touch Of Evil', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Fire') {
-    rules.defineRule
-      ('combatNotes.fireBolt', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.fireBolt.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('saveNotes.fireResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
-    );
-  } else if(name == 'Glory') {
-    rules.defineRule('magicNotes.divinePresence',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('magicNotes.divinePresence.1', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.touchOfGlory', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.touchOfGlory.1',
-      'features.Touch Of Glory', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineChoice('spells', 'Sanctuary(Glory1 Abju)');
-  } else if(name == 'Good') {
-    rules.defineRule('combatNotes.holyLance',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineRule('combatNotes.holyLance.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.touchOfGood',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.touchOfGood.1',
-      'magicNotes.touchOfGood', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Healing') {
-    rules.defineRule("magicNotes.healer'sBlessing",
-      'levels.Cleric', '=', 'source >= 6 ? 50 : null'
-    );
-    rules.defineRule
-      ('magicNotes.rebukeDeath', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.rebukeDeath.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-  } else if(name == 'Knowledge') {
-    rules.defineRule(/classSkills.Knowledge/,
-      'features.Knowledge Domain', '=', '1'
-    );
-    rules.defineRule('magicNotes.remoteViewing',
-      'levels.Cleric', '=', 'source >= 6 ? source : null'
-    );
-    rules.defineRule('skillNotes.loreKeeper',
-      'levels.Cleric', '=', 'source + 15',
-      'wisdomModifier', '+', null
-    );
-    rules.defineChoice
-      ('spells', 'Clairaudience/Clairvoyance(Knowledge3 Divi)');
-  } else if(name == 'Law') {
-    rules.defineRule('combatNotes.staffOfOrder',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineRule('combatNotes.staffOfOrder.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('magicNotes.touchOfLaw', 'wisdomModifier', '=', 'source + 3');
-  } else if(name == 'Liberation') {
-    rules.defineRule("magicNotes.freedom'sCall",
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.liberation', 'levels.Cleric', '=', null);
-  } else if(name == 'Luck') {
-    rules.defineRule
-      ('magicNotes.bitOfLuck', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.goodFortune',
-      'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
-    );
-  } else if(name == 'Madness') {
-    rules.defineRule('magicNotes.auraOfMadness', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.visionOfMadness',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.visionOfMadness.1',
-      'features.Vision Of Madness', '?', null,
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.visionOfMadness.2',
-      'features.Vision Of Madness', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    // Confusion already a Madness spell
-  } else if(name == 'Magic') {
-    rules.defineRule('combatNotes.handOfTheAcolyte',
-      'baseAttack', '=', null,
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('combatNotes.handOfTheAcolyte.1',
-      'features.Hand Of The Acolyte', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.dispellingTouch',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
-    );
-    // Dispel Magic already a Magic spell
-  } else if(name == 'Nobility') {
-    rules.defineRule('featureNotes.nobleLeadership',
-      'levels.Cleric', '=', 'source >= 8 ? 2 : null'
-    );
-    rules.defineRule
-      ('features.Leadership', 'featureNotes.nobleLeadership', '=', '1');
-    rules.defineRule('magicNotes.inspiringWord',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.inspiringWord.1',
-      'features.Inspiring Word', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Plant') {
-    rules.defineRule('combatNotes.brambleArmor', 'levels.Cleric', '=', null);
-    rules.defineRule('combatNotes.brambleArmor.1',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.woodenFist',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.woodenFist.1',
-      'features.Wooden Fist', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Protection') {
-    rules.defineRule('magicNotes.auraOfProtection',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
-    );
-    rules.defineRule('magicNotes.auraOfProtection.1',
-      'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
-    );
-    rules.defineRule
-      ('magicNotes.auraOfProtection.2', 'levels.Cleric', '=', null);
-    rules.defineRule
-      ('magicNotes.resistantTouch', 'wisdomModifier', '=', '3 + source');
-    rules.defineRule('saveNotes.resistanceBonus',
-      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
-    );
-  } else if(name == 'Repose') {
-    rules.defineRule
-      ('magicNotes.gentleRest', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.gentleRest.1',
-      'features.Gentle Rest', '?', null,
-      'wisdomModifier', '=', null
-    );
-    rules.defineRule('magicNotes.wardAgainstDeath',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-  } else if(name == 'Rune') {
-    rules.defineRule('magicNotes.blastRune', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.blastRune.1',
-      'features.Blast Rune', '?', null,
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.blastRune.2',
-      'features.Blast Rune', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Strength') {
-    rules.defineRule('magicNotes.mightOfTheGods',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.mightOfTheGods.1',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.strengthRush',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.strengthRush.1',
-      'features.Strength Rush', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-  } else if(name == 'Sun') {
-    rules.defineRule("magicNotes.sun'sBlessing", 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.nimbusOfLight',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.nimbusOfLight.1',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-  } else if(name == 'Travel') {
-    rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
-    rules.defineRule
-      ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.dimensionalHop',
-      'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
-    );
-  } else if(name == 'Trickery') {
-    rules.defineRule('classSkills.Bluff', 'features.TrickeryDomain', '=', '1');
-    rules.defineRule
-      ('classSkills.Disguise', 'features.TrickeryDomain', '=', '1');
-    rules.defineRule
-      ('classSkills.Stealth', 'features.TrickeryDomain', '=', '1');
-    rules.defineRule('magicNotes.copycat', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.copycat.1',
-      'features.Copycat', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule("magicNotes.master'sIllusion",
-      'levels.Cleric', '=', 'source >= 8 ? 10 + Math.floor(source / 2) : null',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule
-      ("magicNotes.master'sIllusion.1", 'levels.Cleric', '=', null);
-    rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
-  } else if(name == 'War') {
-    rules.defineRule('combatNotes.battleRage',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.battleRage.1',
-      'features.Battle Rage', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('combatNotes.weaponMaster',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-  } else if(name == 'Water') {
-    rules.defineRule('combatNotes.icicle', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule
-      ('combatNotes.icicle.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
-    rules.defineRule('saveNotes.coldResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
-    );
-  } else if(name == 'Weather') {
-    rules.defineRule
-      ('combatNotes.stormBurst', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.stormBurst.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.lightningLord',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    // Call Lightning already a Weather spell
-  }
-
 };
 
 /* Defines in #rules the rules assocated with faction #name#. */
@@ -4533,6 +4395,705 @@ Pathfinder.languageRules = function(rules, name) {
   // No changes needed to the rules defined by SRD35 method
 };
 
+/* TODO */
+/*
+ * Defines in #rules# the rules assocated with bloodline #name#. #features#
+ * lists features associated with the bloodline, #feats# lists the feats from
+ * which bonus feats can be selected, #skill# lists skills that become class
+ * skills, and #spells# lists the additional spells granted, along with the
+ * level for each.
+ */
+Pathfinder.pathRules = function(
+  rules, name, group, levelAttr, features, selectables, feats, skills,
+  spellAbility, spellSlots, spells, spellDict
+) {
+
+  var allFeats = rules.getChoices('feats');
+  if(allFeats == null) {
+    console.log('Feats not yet defined for path ' + name);
+    return;
+  }
+
+  SRD35.pathRules(
+    rules, name, group, levelAttr, features, selectables, spellAbility,
+    spellSlots, spells, spellDict
+  );
+
+  var pathLevel =
+    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
+
+  if(feats.length > 0) {
+    rules.defineRule('featCount.' + name,
+      pathLevel, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
+    );
+    if(name == 'Destined Bloodline') {
+      for(var feat in allFeats) {
+        if(feat.startsWith('Weapon Focus'))
+          feats.push(feat);
+      }
+    }
+    for(var i = 0; i < feats.length; i++) {
+      var attrs = allFeats[feats[i]];
+      if(attrs == null) {
+        console.log('Feat "' + feats[i] + '" undefined for bloodline ' + name);
+      } else {
+        allFeats[feats[i]] = attrs.replace(/Type=/, 'Type="' + name + '",');
+      }
+    }
+  }
+
+  if(skills.length > 0) {
+    var note = skills.join(' is a class skill/') + ' is a class skill';
+    Pathfinder.featureRules(rules, name, 'skill', note);
+  }
+
+};
+
+/*
+ * Defines in #rules# the rules associated with bloodline #name# that are not
+ * directly derived from the parmeters passed to pathRules.
+ */
+Pathfinder.pathRulesExtra = function(rules, name) {
+
+  var pathLevel =
+    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
+
+  if(name.match(/\sDomain$/)) {
+    var domain = name.replace(/\sDomain/, '');
+    rules.defineRule('casterLevels.' + domain,
+      'clericFeatures.' + name, '?', null,
+      pathLevel, '=', null
+    );
+    rules.defineRule('spellDifficultyClass.' + domain,
+      'casterLevels.' + domain, '?', null,
+      'wisdomModifier', '=', '10 + source',
+    );
+  }
+
+  if(name == 'Bloodline Aberrant') {
+
+    rules.defineRule('combatNotes.longLimbs',
+      pathLevel, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+    );
+    rules.defineRule('combatNotes.unusualAnatomy',
+      pathLevel, '=', 'source >= 13 ? 50 : 25'
+    );
+    rules.defineRule('magicNotes.acidicRay',
+      pathLevel, '=', '1 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.acidicRay.1',
+      'features.Acidic Ray', '?', null,
+      'charismaModifier', '=', '1 + source'
+    );
+    rules.defineRule
+      ('saveNotes.alienResistance', pathLevel, '=', 'source + 10');
+
+  } else if(name == 'Bloodline Abyssal') {
+
+    rules.defineRule('abilityNotes.strengthOfTheAbyss',
+      pathLevel, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+    );
+    rules.defineRule('bloodlineEnergy', pathLevel, '=', '"fire"');
+    rules.defineRule('clawsDamageLevel',
+      'features.Claws', '=', '1',
+      'features.Small', '+', '-1',
+      'features.Large', '+', '1',
+      pathLevel, '+', 'source >= 7 ? 1 : null'
+    );
+    rules.defineRule('combatNotes.claws',
+      'clawsDamageLevel', '=', '["1d3", "1d4", "1d6", "1d8"][source]'
+    );
+    rules.defineRule('combatNotes.claws.1',
+      'features.Claws', '?', null,
+      'strengthModifier', '=', null
+    );
+    rules.defineRule('combatNotes.claws.2',
+      'features.Claws', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule('combatNotes.improvedClaws', 'bloodlineEnergy', '=', null);
+    rules.defineRule('magicNotes.bloodlineAbyssal',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('saveNotes.demonResistances',
+      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? 10 : 5'
+    );
+    rules.defineRule('saveNotes.demonResistances.1',
+      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+    );
+
+  } else if(name == 'Bloodline Arcane') {
+
+    rules.defineRule
+      ('familiarMasterLevel', 'familiarSorcererLevel', '^=', null);
+    rules.defineRule('familiarSorcererLevel',
+      'sorcererFeatures.Familiar', '?', null,
+      'levels.Sorcerer', '=', null
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Sorcerer', pathLevel, '+', '1');
+    rules.defineRule('magicNotes.metamagicAdept',
+      pathLevel, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
+    );
+    rules.defineRule('magicNotes.newArcana',
+      pathLevel, '=', 'Math.floor((source - 5) / 4)'
+    );
+
+  } else if(name == 'Bloodline Celestial') {
+
+    rules.defineRule('abilityNotes.wingsOfHeaven',
+      pathLevel, '=', 'source >= 20 ? "any" : source'
+    );
+    rules.defineRule('magicNotes.bloodlineCelestial',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.heavenlyFire',
+      pathLevel, '=', '1 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.heavenlyFire.1',
+      'features.Heavenly Fire', '?', null,
+      'charismaModifier', '=', '1 + source'
+    );
+    rules.defineRule('saveNotes.celestialResistances',
+      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+    );
+
+  } else if(name == 'Bloodline Destined') {
+
+    rules.defineRule('featureNotes.itWasMeantToBe',
+      pathLevel, '=', 'Math.floor((source - 1) / 8)'
+    );
+    rules.defineRule('magicNotes.touchOfDestiny',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.touchOfDestiny.1',
+      'features.Touch Of Destiny', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule
+      ('saveNotes.fated', pathLevel, '=', 'Math.floor((source + 1) / 4)');
+
+  } else if(name.startsWith('Bloodline Draconic')) {
+
+    var color = name.replace(/^.*\(|\)/g, '');
+    var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
+                 'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
+                 'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
+    rules.defineRule('abilityNotes.wings', pathLevel, '^=', null);
+    rules.defineRule
+      ('bloodlineEnergy', pathLevel, '=', '"' + energy + '"');
+    // Other claws rules defined by Bloodline Abyssal
+    rules.defineRule
+      ('clawsDamageLevel', pathLevel, '+', 'source >= 7 ? 1 : null');
+    rules.defineRule('combatNotes.breathWeapon', pathLevel, '=', null);
+    rules.defineRule('combatNotes.breathWeapon.1',
+      'features.Breath Weapon', '?', null,
+      pathLevel, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('combatNotes.breathWeapon.2',
+      'features.Breath Weapon', '?', null,
+      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('combatNotes.breathWeapon.3',
+      'features.Breath Weapon', '?', null,
+      pathLevel, '=', '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
+    );
+    rules.defineRule('combatNotes.breathWeapon.4',
+      'features.Breath Weapon', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('combatNotes.dragonResistances',
+      pathLevel, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
+    );
+    rules.defineRule('featureNotes.blindsense', pathLevel, '^=', '60');
+    rules.defineRule('saveNotes.dragonResistances',
+      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+    rules.defineRule('saveNotes.dragonResistances.1',
+      'features.Dragon Resistances', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule
+      ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
+
+  } else if(name.startsWith('Bloodline Elemental')) {
+
+    var element = name.replace(/^.*\(|\)/g, '');
+    var energy = element == 'Earth' ? 'acid' :
+                 element == 'Water' ? 'cold' :
+                 element == 'Air' ? 'electricity' : 'fire';
+    var movement = element == 'Air' ? "Fly 60'/average" :
+                   element == 'Earth' ? "Burrow 30'" :
+                   element == 'Fire' ? 'Speed +30' : "Swim 60'";
+    rules.defineRule
+      ('abilityNotes.elementalMovement', 'bloodlineMovement', '=', null);
+    rules.defineRule
+      ('bloodlineEnergy', pathLevel, '=', '"' + energy + '"');
+    rules.defineRule
+      ('bloodlineMovement', pathLevel, '=', '"' + movement + '"');
+    rules.defineRule('combatNotes.elementalBlast', pathLevel, '=', null);
+    rules.defineRule('combatNotes.elementalBlast.1',
+      'features.Elemental Blast', '?', null,
+      pathLevel, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('combatNotes.elementalBlast.2',
+      'features.Elemental Blast', '?', null,
+      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('combatNotes.elementalBlast.3',
+      'features.Elemental Blast', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule
+      ('magicNotes.bloodlineElemental', 'bloodlineEnergy', '=', null);
+    rules.defineRule
+      ('magicNotes.elementalRay', 'charismaModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.elementalRay.1',
+      'features.Elemental Ray', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.elementalRay.2',
+      'features.Elemental Ray', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('saveNotes.elementalBody', 'bloodlineEnergy', '=', null);
+    rules.defineRule('saveNotes.elementalResistance',
+      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
+    );
+    rules.defineRule('saveNotes.elementalResistance.1',
+      'features.Elemental Resistance', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+
+  } else if(name == 'Bloodline Fey') {
+
+    rules.defineRule('magicNotes.fleetingGlance', pathLevel, '=', null);
+    rules.defineRule
+      ('magicNotes.laughingTouch', 'charismaModifier', '=', 'source + 3');
+
+  } else if(name == 'Bloodline Infernal') {
+
+    rules.defineRule('magicNotes.corruptingTouch',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.corruptingTouch.1',
+      'features.Corrupting Touch', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.hellfire', pathLevel, '=', null);
+    rules.defineRule('magicNotes.hellfire.1',
+      'features.Hellfire', '?', null,
+      pathLevel, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('magicNotes.hellfire.2',
+      'features.Hellfire', '?', null,
+      pathLevel, '=', null
+    );
+    rules.defineRule('magicNotes.hellfire.3',
+      'features.Hellfire', '?', null,
+      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('saveNotes.infernalResistances',
+      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
+    );
+    rules.defineRule('saveNotes.infernalResistances.1',
+      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+    );
+
+  } else if(name == 'Bloodline Undead') {
+
+    rules.defineRule('magicNotes.graspOfTheDead', pathLevel, '=', null);
+    rules.defineRule('magicNotes.graspOfTheDead.1',
+      'features.Grasp Of The Dead', '?', null,
+      pathLevel, '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
+    rules.defineRule('magicNotes.graspOfTheDead.2',
+      'features.Grasp Of The Dead', '?', null,
+      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+    );
+    rules.defineRule('magicNotes.graveTouch',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.graveTouch.1',
+      'features.Grave Touch', '?', null,
+      'charismaModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.incorporealForm', pathLevel, '=', null);
+    rules.defineRule("saveNotes.death'sGift",
+      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+    rules.defineRule("saveNotes.death'sGift.1",
+      "features.Death's Gift", '?', null,
+      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+    );
+
+  } else if(name == 'Air Domain') {
+    rules.defineRule
+      ('combatNotes.lightningArc', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('combatNotes.lightningArc.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.electricityResistance',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Animal Domain') {
+    rules.defineRule
+      ('companionMasterLevel', 'companionClericLevel', '^=', null);
+    rules.defineRule('companionClericLevel',
+      'features.Animal Domain', '?', null,
+      'levels.Cleric', '=', 'source - 3'
+    );
+    rules.defineRule
+      ('magicNotes.speakWithAnimals', 'levels.Cleric', '=', 'source + 3');
+    rules.defineRule
+      ('classSkills.Knowledge (Nature)', 'features.Animal Domain', '=', '1');
+    rules.defineChoice('spells', 'Speak With Animals(Animal1 Divi)');
+  } else if(name == 'Artifice Domain') {
+    rules.defineRule
+      ("combatNotes.artificer'sTouch", 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule("combatNotes.artificer'sTouch.1",
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.dancingWeapons',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
+  } else if(name == 'Chaos Domain') {
+    rules.defineRule('combatNotes.chaosBlade',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.chaosBlade.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('combatNotes.touchOfChaos', 'wisdomModifier', '=', 'source + 3');
+  } else if(name == 'Charm Domain') {
+    rules.defineRule('magicNotes.charmingSmile',
+      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('magicNotes.charmingSmile.1', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.addlingTouch', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.addlingTouch.1',
+      'features.Addling Touch', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    // Charm person already a Charm spell
+  } else if(name == 'Community Domain') {
+    rules.defineRule
+      ('magicNotes.calmingTouch', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.calmingTouch.1', 'levels.Cleric', '=', null);
+    rules.defineRule('saveNotes.unity',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+  } else if(name == 'Darkness Domain') {
+    rules.defineRule('combatNotes.touchOfDarkness',
+      'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
+    );
+    rules.defineRule('combatNotes.touchOfDarkness.1',
+      'features.Touch Of Darkness', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('featureNotes.eyesOfDarkness',
+      'levels.Cleric', '=', 'source >= 4 ? Math.floor(source / 2) : null'
+    );
+  } else if(name == 'Death Domain') {
+    rules.defineRule('combatNotes.bleedingTouch',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.bleedingTouch.1',
+      'features.Bleeding Touch', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Destruction Domain') {
+    rules.defineRule('combatNotes.destructiveAura',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
+    );
+    rules.defineRule
+      ('combatNotes.destructiveAura.1', 'levels.Cleric', '=', null);
+    rules.defineRule('combatNotes.destructiveSmite',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.destructiveSmite.1',
+      'features.Destructive Smite', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Earth Domain') {
+    rules.defineRule
+      ('magicNotes.acidDart', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule
+      ('magicNotes.acidDart.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.acidResistance',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Evil Domain') {
+    rules.defineRule('combatNotes.scytheOfEvil',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.scytheOfEvil.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.touchOfEvil',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.touchOfEvil.1',
+      'features.Touch Of Evil', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Fire Domain') {
+    rules.defineRule
+      ('combatNotes.fireBolt', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('combatNotes.fireBolt.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('saveNotes.fireResistance',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Glory Domain') {
+    rules.defineRule('magicNotes.divinePresence',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('magicNotes.divinePresence.1', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.touchOfGlory', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.touchOfGlory.1',
+      'features.Touch Of Glory', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineChoice('spells', 'Sanctuary(Glory1 Abju)');
+  } else if(name == 'Good Domain') {
+    rules.defineRule('combatNotes.holyLance',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.holyLance.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.touchOfGood',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.touchOfGood.1',
+      'magicNotes.touchOfGood', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Healing Domain') {
+    rules.defineRule("magicNotes.healer'sBlessing",
+      'levels.Cleric', '=', 'source >= 6 ? 50 : null'
+    );
+    rules.defineRule
+      ('magicNotes.rebukeDeath', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.rebukeDeath.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+  } else if(name == 'Knowledge Domain') {
+    rules.defineRule(/classSkills.Knowledge/,
+      'features.Knowledge Domain', '=', '1'
+    );
+    rules.defineRule('magicNotes.remoteViewing',
+      'levels.Cleric', '=', 'source >= 6 ? source : null'
+    );
+    rules.defineRule('skillNotes.loreKeeper',
+      'levels.Cleric', '=', 'source + 15',
+      'wisdomModifier', '+', null
+    );
+    rules.defineChoice
+      ('spells', 'Clairaudience/Clairvoyance(Knowledge3 Divi)');
+  } else if(name == 'Law Domain') {
+    rules.defineRule('combatNotes.staffOfOrder',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+    );
+    rules.defineRule('combatNotes.staffOfOrder.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('magicNotes.touchOfLaw', 'wisdomModifier', '=', 'source + 3');
+  } else if(name == 'Liberation Domain') {
+    rules.defineRule("magicNotes.freedom'sCall",
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.liberation', 'levels.Cleric', '=', null);
+  } else if(name == 'Luck Domain') {
+    rules.defineRule
+      ('magicNotes.bitOfLuck', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.goodFortune',
+      'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
+    );
+  } else if(name == 'Madness Domain') {
+    rules.defineRule('magicNotes.auraOfMadness', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.visionOfMadness',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.visionOfMadness.1',
+      'features.Vision Of Madness', '?', null,
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.visionOfMadness.2',
+      'features.Vision Of Madness', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    // Confusion already a Madness spell
+  } else if(name == 'Magic Domain') {
+    rules.defineRule('combatNotes.handOfTheAcolyte',
+      'baseAttack', '=', null,
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('combatNotes.handOfTheAcolyte.1',
+      'features.Hand Of The Acolyte', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.dispellingTouch',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
+    );
+    // Dispel Magic already a Magic spell
+  } else if(name == 'Nobility Domain') {
+    rules.defineRule('featureNotes.nobleLeadership',
+      'levels.Cleric', '=', 'source >= 8 ? 2 : null'
+    );
+    rules.defineRule
+      ('features.Leadership', 'featureNotes.nobleLeadership', '=', '1');
+    rules.defineRule('magicNotes.inspiringWord',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.inspiringWord.1',
+      'features.Inspiring Word', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Plant Domain') {
+    rules.defineRule('combatNotes.brambleArmor', 'levels.Cleric', '=', null);
+    rules.defineRule('combatNotes.brambleArmor.1',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.woodenFist',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.woodenFist.1',
+      'features.Wooden Fist', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Protection Domain') {
+    rules.defineRule('magicNotes.auraOfProtection',
+      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
+    );
+    rules.defineRule('magicNotes.auraOfProtection.1',
+      'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
+    );
+    rules.defineRule
+      ('magicNotes.auraOfProtection.2', 'levels.Cleric', '=', null);
+    rules.defineRule
+      ('magicNotes.resistantTouch', 'wisdomModifier', '=', '3 + source');
+    rules.defineRule('saveNotes.resistanceBonus',
+      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
+    );
+  } else if(name == 'Repose Domain') {
+    rules.defineRule
+      ('magicNotes.gentleRest', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.gentleRest.1',
+      'features.Gentle Rest', '?', null,
+      'wisdomModifier', '=', null
+    );
+    rules.defineRule('magicNotes.wardAgainstDeath',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Rune Domain') {
+    rules.defineRule('magicNotes.blastRune', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.blastRune.1',
+      'features.Blast Rune', '?', null,
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.blastRune.2',
+      'features.Blast Rune', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Strength Domain') {
+    rules.defineRule('magicNotes.mightOfTheGods',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.mightOfTheGods.1',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.strengthRush',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.strengthRush.1',
+      'features.Strength Rush', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+  } else if(name == 'Sun Domain') {
+    rules.defineRule("magicNotes.sun'sBlessing", 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.nimbusOfLight',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    rules.defineRule('magicNotes.nimbusOfLight.1',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Travel Domain') {
+    rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
+    rules.defineRule
+      ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('magicNotes.dimensionalHop',
+      'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
+    );
+  } else if(name == 'Trickery Domain') {
+    rules.defineRule('classSkills.Bluff', 'features.TrickeryDomain', '=', '1');
+    rules.defineRule
+      ('classSkills.Disguise', 'features.TrickeryDomain', '=', '1');
+    rules.defineRule
+      ('classSkills.Stealth', 'features.TrickeryDomain', '=', '1');
+    rules.defineRule('magicNotes.copycat', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.copycat.1',
+      'features.Copycat', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule("magicNotes.master'sIllusion",
+      'levels.Cleric', '=', 'source >= 8 ? 10 + Math.floor(source / 2) : null',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule
+      ("magicNotes.master'sIllusion.1", 'levels.Cleric', '=', null);
+    rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
+  } else if(name == 'War Domain') {
+    rules.defineRule('combatNotes.battleRage',
+      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('combatNotes.battleRage.1',
+      'features.Battle Rage', '?', null,
+      'wisdomModifier', '=', 'source + 3'
+    );
+    rules.defineRule('combatNotes.weaponMaster',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+  } else if(name == 'Water Domain') {
+    rules.defineRule('combatNotes.icicle', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule
+      ('combatNotes.icicle.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.coldResistance',
+      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
+                            'source >= 12 ? 20 : ' +
+                            'source >= 6 ? 10 : null'
+    );
+  } else if(name == 'Weather Domain') {
+    rules.defineRule
+      ('combatNotes.stormBurst', 'wisdomModifier', '=', 'source + 3');
+    rules.defineRule('combatNotes.stormBurst.1',
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.lightningLord',
+      'levels.Cleric', '=', 'source >= 8 ? source : null'
+    );
+    // Call Lightning already a Weather spell
+  }
+
+};
+
 /*
  * Defines in #rules# the rules associated with race #name#, which has the list
  * of hard prerequisites #requires#. #features# and #selectables# list
@@ -4543,7 +5104,7 @@ Pathfinder.languageRules = function(rules, name) {
  */
 Pathfinder.raceRules = function(
   rules, name, requires, features, selectables, languages, spellAbility,
-  spells, spellDict
+  spells, spellSlots, spellDict
 ) {
   SRD35.raceRules
     (rules, name, requires, features, selectables, languages, spellAbility,
@@ -4556,8 +5117,11 @@ Pathfinder.raceRules = function(
  * directly derived from the parmeters passed to raceRules.
  */
 Pathfinder.raceRulesExtra = function(rules, name) {
-  if(name == 'Half-Elf') {
-    SRD35.prerequisiteRules(
+  if(name.match(/Gnome/)) {
+    rules.defineRule('spellSlots.Gnome0', 'charisma', '?', 'source >= 11');
+    rules.defineRule('spellSlots.Gnome1', 'charisma', '?', 'source >= 11');
+  } else if(name == 'Half-Elf') {
+    QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
       'Sum \'features\\.Skill Focus\' >= 1'
     );
@@ -4654,7 +5218,7 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.invisibilityField', schoolLevelAttr, '=', null);
   } else if(name == 'Necromancy') {
-    SRD35.prerequisiteRules(
+    QuilvynRules.prerequisiteRules(
       rules, 'validation', 'powerOverUndead', 'features.Power Over Undead',
       'features.Command Undead || features.Turn Undead'
     );
