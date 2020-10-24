@@ -959,7 +959,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
   'Guardian Of The Forge':
     'Section=skill Note="+1 Knowledge (Engineering)/+1 Knowledge (History)/choice is a class skill"',
   'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
-  'Halfling Ability Adjustement':
+  'Halfling Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Charisma/-2 Strength"',
   'Hand Of The Acolyte':'Section=combat Note="R30\' +%V w/melee weapon %1/day"',
   'Hand Of The Apprentice':
