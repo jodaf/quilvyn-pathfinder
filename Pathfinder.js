@@ -517,6 +517,8 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
     'Section=combat Note="Reroll concealed miss, no bonus to invisible foe, no skill check on blinded full speed move"',
   'Camouflage':'Section=skill Note="Hide in favored terrain"',
   'Cleave':'Section=combat Note="-2 AC for attack against two foes"',
+  'Combat Casting':
+    'Section=skill Note="+4 concentration (defensive or grappling)"',
   'Combat Expertise':
     'Section=combat Note="Trade up to -%V attack for equal AC bonus"',
   'Companion Alertness':
@@ -3317,6 +3319,9 @@ Pathfinder.identityRules = function(
   for(var deity in deities) {
     rules.choiceRules(rules, 'Deity', deity, deities[deity]);
   }
+  for(var faction in factions) {
+    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
+  }
   for(var gender in genders) {
     rules.choiceRules(rules, 'Gender', gender, genders[gender]);
   }
@@ -3325,9 +3330,6 @@ Pathfinder.identityRules = function(
   }
   for(var race in races) {
     rules.choiceRules(rules, 'Race', race, races[race]);
-  }
-  for(var faction in factions) {
-    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
   }
   for(var track in tracks) {
     rules.choiceRules(rules, 'Track', track, tracks[track]);
