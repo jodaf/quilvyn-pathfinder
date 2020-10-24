@@ -4369,7 +4369,11 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.two-WeaponRend',
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
-  } else {
+  } else if(SRD35.featRulesExtra) {
+    // Since we inherit unchanged many feats from SRD35, we need to invoke that
+    // module's RulesExtra method to add any feat-specific rules. That's not
+    // true of other objects, where we use, e.g., SRD35.classRules only for the
+    // basic attribute parsing.
     SRD35.featRulesExtra(rules, name);
   }
 
