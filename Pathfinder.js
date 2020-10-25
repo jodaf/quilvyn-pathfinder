@@ -66,8 +66,8 @@ function Pathfinder() {
      Pathfinder.SKILLS);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
-    Pathfinder.FACTIONS, Pathfinder.GENDERS, Pathfinder.PATHS,
-    Pathfinder.RACES, Pathfinder.TRACKS, Pathfinder.TRAITS
+    Pathfinder.FACTIONS, Pathfinder.PATHS, Pathfinder.RACES, Pathfinder.TRACKS,
+    Pathfinder.TRAITS
   );
   Pathfinder.goodiesRules(rules);
 
@@ -1336,7 +1336,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
   'World Traveler':
     'Section=skill Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"'
 });
-Pathfinder.GENDERS = Object.assign({}, SRD35.GENDERS);
 Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
   'Aklo':''
 });
@@ -3294,15 +3293,13 @@ Pathfinder.goodiesRules = function(rules) {
 
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
-  rules, alignments, classes, deities, factions, genders, paths, races, tracks,
-  traits
+  rules, alignments, classes, deities, factions, paths, races, tracks, traits
 ) {
 
   QuilvynUtils.checkAttrTable(alignments, []);
   QuilvynUtils.checkAttrTable
     (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'Spells']);
   QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
-  QuilvynUtils.checkAttrTable(genders, []);
   QuilvynUtils.checkAttrTable
     (paths, ['Features', 'Selectables', 'Group', 'Level', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots', 'Spells']);
   QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots', 'Spells']);
@@ -3321,9 +3318,6 @@ Pathfinder.identityRules = function(
   }
   for(var faction in factions) {
     rules.choiceRules(rules, 'Faction', faction, factions[faction]);
-  }
-  for(var gender in genders) {
-    rules.choiceRules(rules, 'Gender', gender, genders[gender]);
   }
   for(var path in paths) {
     rules.choiceRules(rules, 'Path', path, paths[path]);
@@ -3480,8 +3474,6 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Section'),
       QuilvynUtils.getAttrValueArray(attrs, 'Note')
     );
-  else if(type == 'Gender')
-    Pathfinder.genderRules(rules, name);
   else if(type == 'Language')
     Pathfinder.languageRules(rules, name);
   else if(type == 'Path') {
@@ -4386,12 +4378,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
  */
 Pathfinder.featureRules = function(rules, name, sections, notes) {
   SRD35.featureRules(rules, name, sections, notes);
-  // No changes needed to the rules defined by SRD35 method
-};
-
-/* Defines in #rules# the rules associated with gender #name#. */
-Pathfinder.genderRules = function(rules, name) {
-  SRD35.genderRules(rules, name);
   // No changes needed to the rules defined by SRD35 method
 };
 
