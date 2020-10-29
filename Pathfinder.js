@@ -2557,11 +2557,11 @@ Pathfinder.RACES = {
     'Languages=Common,Gnome,Sylvan ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
-      '"Gnome0:1=3",' +
-      '"Gnome1:1=1" ' +
+      '"Gnomish0:1=3",' +
+      '"Gnomish1:1=1" ' +
     'Spells=' +
-      '"Gnome0:Dancing Lights;Ghost Sound;Prestidigitation",' +
-      '"Gnome1:Speak With Animals"',
+      '"Gnomish0:Dancing Lights;Ghost Sound;Prestidigitation",' +
+      '"Gnomish1:Speak With Animals"',
   'Half-Elf':
     'Features=' +
       'Adaptability,"Elf Blood","Half-Elf Ability Adjustment",' +
