@@ -1346,6 +1346,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Lightning Arc","6:Electricity Resistance" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Air1:1=1,' +
+      'Air2:3=1,' +
+      'Air3:5=1,' +
+      'Air4:7=1,' +
+      'Air5:9=1,' +
+      'Air6:11=1,' +
+      'Air7:13=1,' +
+      'Air8:15=1,' +
+      'Air9:17=1 ' +
     'Spells=' +
       '"Air1:Obscuring Mist",' +
       '"Air2:Wind Wall",' +
@@ -1362,6 +1372,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Speak With Animals","4:Animal Companion" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Animal1:1=1,' +
+      'Animal2:3=1,' +
+      'Animal3:5=1,' +
+      'Animal4:7=1,' +
+      'Animal5:9=1,' +
+      'Animal6:11=1,' +
+      'Animal7:13=1,' +
+      'Animal8:15=1,' +
+      'Animal9:17=1 ' +
     'Spells=' +
       '"Animal1:Calm Animals",' +
       '"Animal2:Hold Animal",' +
@@ -1378,6 +1398,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Artificer\'s Touch","8:Dancing Weapons" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Artifice1:1=1,' +
+      'Artifice2:3=1,' +
+      'Artifice3:5=1,' +
+      'Artifice4:7=1,' +
+      'Artifice5:9=1,' +
+      'Artifice6:11=1,' +
+      'Artifice7:13=1,' +
+      'Artifice8:15=1,' +
+      'Artifice9:17=1 ' +
     'Spells=' +
       '"Artifice1:Animate Rope",' +
       '"Artifice2:Wood Shape",' +
@@ -1394,6 +1424,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Touch Of Chaos","8:Chaos Blade" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Chaos1:1=1,' +
+      'Chaos2:3=1,' +
+      'Chaos3:5=1,' +
+      'Chaos4:7=1,' +
+      'Chaos5:9=1,' +
+      'Chaos6:11=1,' +
+      'Chaos7:13=1,' +
+      'Chaos8:15=1,' +
+      'Chaos9:17=1 ' +
     'Spells=' +
       '"Chaos1:Protection From Law",' +
       '"Chaos2:Align Weapon",' +
@@ -1410,6 +1450,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Addling Touch","8:Charming Smile" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Charm1:1=1,' +
+      'Charm2:3=1,' +
+      'Charm3:5=1,' +
+      'Charm4:7=1,' +
+      'Charm5:9=1,' +
+      'Charm6:11=1,' +
+      'Charm7:13=1,' +
+      'Charm8:15=1,' +
+      'Charm9:17=1 ' +
     'Spells=' +
       '"Charm1:Charm Person",' +
       '"Charm2:Calm Emotions",' +
@@ -1426,6 +1476,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Calming Touch","8:Unity" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Community1:1=1,' +
+      'Community2:3=1,' +
+      'Community3:5=1,' +
+      'Community4:7=1,' +
+      'Community5:9=1,' +
+      'Community6:11=1,' +
+      'Community7:13=1,' +
+      'Community8:15=1,' +
+      'Community9:17=1 ' +
     'Spells=' +
       'Community1:Bless,' +
       '"Community2:Shield Other",' +
@@ -1442,6 +1502,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Blind-Fight","1:Touch Of Darkness","8:Eyes Of Darkness" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Darkness1:1=1,' +
+      'Darkness2:3=1,' +
+      'Darkness3:5=1,' +
+      'Darkness4:7=1,' +
+      'Darkness5:9=1,' +
+      'Darkness6:11=1,' +
+      'Darkness7:13=1,' +
+      'Darkness8:15=1,' +
+      'Darkness9:17=1 ' +
     'Spells=' +
       '"Darkness1:Obscuring Mist",' +
       'Darkness2:Blindness/Deafness,' +
@@ -1458,6 +1528,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Bleeding Touch","8:Death\'s Embrace" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Death1:1=1,' +
+      'Death2:3=1,' +
+      'Death3:5=1,' +
+      'Death4:7=1,' +
+      'Death5:9=1,' +
+      'Death6:11=1,' +
+      'Death7:13=1,' +
+      'Death8:15=1,' +
+      'Death9:17=1 ' +
     'Spells=' +
       '"Death1:Cause Fear",' +
       '"Death2:Death Knell",' +
@@ -1474,6 +1554,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Destructive Smite","8:Destructive Aura" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Destruction1:1=1,' +
+      'Destruction2:3=1,' +
+      'Destruction3:5=1,' +
+      'Destruction4:7=1,' +
+      'Destruction5:9=1,' +
+      'Destruction6:11=1,' +
+      'Destruction7:13=1,' +
+      'Destruction8:15=1,' +
+      'Destruction9:17=1 ' +
     'Spells=' +
       '"Destruction1:True Strike",' +
       'Destruction2:Shatter,' +
@@ -1490,6 +1580,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Acid Dart","6:Acid Resistance" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Earth1:1=1,' +
+      'Earth2:3=1,' +
+      'Earth3:5=1,' +
+      'Earth4:7=1,' +
+      'Earth5:9=1,' +
+      'Earth6:11=1,' +
+      'Earth7:13=1,' +
+      'Earth8:15=1,' +
+      'Earth9:17=1 ' +
     'Spells=' +
       '"Earth1:Magic Stone",' +
       '"Earth2:Soften Earth And Stone",' +
@@ -1506,6 +1606,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Touch Of Evil","8:Scythe Of Evil" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Evil1:1=1,' +
+      'Evil2:3=1,' +
+      'Evil3:5=1,' +
+      'Evil4:7=1,' +
+      'Evil5:9=1,' +
+      'Evil6:11=1,' +
+      'Evil7:13=1,' +
+      'Evil8:15=1,' +
+      'Evil9:17=1 ' +
     'Spells=' +
       '"Evil1:Protection From Good",' +
       '"Evil2:Align Weapon",' +
@@ -1522,6 +1632,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Fire Bolt","6:Fire Resistance" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Fire1:1=1,' +
+      'Fire2:3=1,' +
+      'Fire3:5=1,' +
+      'Fire4:7=1,' +
+      'Fire5:9=1,' +
+      'Fire6:11=1,' +
+      'Fire7:13=1,' +
+      'Fire8:15=1,' +
+      'Fire9:17=1 ' +
     'Spells=' +
       '"Fire1:Burning Hands",' +
       '"Fire2:Produce Flame",' +
@@ -1538,6 +1658,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Undead Bane","1:Touch Of Glory","8:Divine Presence" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Glory1:1=1,' +
+      'Glory2:3=1,' +
+      'Glory3:5=1,' +
+      'Glory4:7=1,' +
+      'Glory5:9=1,' +
+      'Glory6:11=1,' +
+      'Glory7:13=1,' +
+      'Glory8:15=1,' +
+      'Glory9:17=1 ' +
     'Spells=' +
       '"Glory1:Shield Of Faith",' +
       '"Glory2:Bless Weapon",' +
@@ -1554,6 +1684,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Touch Of Good","8:Holy Lance" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Good1:1=1,' +
+      'Good2:3=1,' +
+      'Good3:5=1,' +
+      'Good4:7=1,' +
+      'Good5:9=1,' +
+      'Good6:11=1,' +
+      'Good7:13=1,' +
+      'Good8:15=1,' +
+      'Good9:17=1 ' +
     'Spells=' +
       '"Good1:Protection From Evil",' +
       '"Good2:Align Weapon",' +
@@ -1570,6 +1710,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Rebuke Death","6:Healer\'s Blessing" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Healing1:1=1,' +
+      'Healing2:3=1,' +
+      'Healing3:5=1,' +
+      'Healing4:7=1,' +
+      'Healing5:9=1,' +
+      'Healing6:11=1,' +
+      'Healing7:13=1,' +
+      'Healing8:15=1,' +
+      'Healing9:17=1 ' +
     'Spells=' +
       '"Healing1:Cure Light Wounds",' +
       '"Healing2:Cure Moderate Wounds",' +
@@ -1586,6 +1736,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Lore Keeper","6:Remote Viewing" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Knowledge1:1=1,' +
+      'Knowledge2:3=1,' +
+      'Knowledge3:5=1,' +
+      'Knowledge4:7=1,' +
+      'Knowledge5:9=1,' +
+      'Knowledge6:11=1,' +
+      'Knowledge7:13=1,' +
+      'Knowledge8:15=1,' +
+      'Knowledge9:17=1 ' +
     'Spells=' +
       '"Knowledge1:Comprehend Languages",' +
       '"Knowledge2:Detect Thoughts",' +
@@ -1602,6 +1762,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Touch Of Law","8:Staff Of Order" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Law1:1=1,' +
+      'Law2:3=1,' +
+      'Law3:5=1,' +
+      'Law4:7=1,' +
+      'Law5:9=1,' +
+      'Law6:11=1,' +
+      'Law7:13=1,' +
+      'Law8:15=1,' +
+      'Law9:17=1 ' +
     'Spells=' +
       '"Law1:Protection From Chaos",' +
       '"Law2:Align Weapon",' +
@@ -1618,6 +1788,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Liberation","8:Freedom\'s Call" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Liberation1:1=1,' +
+      'Liberation2:3=1,' +
+      'Liberation3:5=1,' +
+      'Liberation4:7=1,' +
+      'Liberation5:9=1,' +
+      'Liberation6:11=1,' +
+      'Liberation7:13=1,' +
+      'Liberation8:15=1,' +
+      'Liberation9:17=1 ' +
     'Spells=' +
       '"Liberation1:Remove Fear",' +
       '"Liberation2:Remove Paralysis",' +
@@ -1634,6 +1814,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Bit Of Luck","6:Good Fortune" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Luck1:1=1,' +
+      'Luck2:3=1,' +
+      'Luck3:5=1,' +
+      'Luck4:7=1,' +
+      'Luck5:9=1,' +
+      'Luck6:11=1,' +
+      'Luck7:13=1,' +
+      'Luck8:15=1,' +
+      'Luck9:17=1 ' +
     'Spells=' +
       '"Luck1:True Strike",' +
       'Luck2:Aid,' +
@@ -1650,6 +1840,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Vision Of Madness","8:Aura Of Madness" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Madness1:1=1,' +
+      'Madness2:3=1,' +
+      'Madness3:5=1,' +
+      'Madness4:7=1,' +
+      'Madness5:9=1,' +
+      'Madness6:11=1,' +
+      'Madness7:13=1,' +
+      'Madness8:15=1,' +
+      'Madness9:17=1 ' +
     'Spells=' +
       '"Madness1:Lesser Confusion",' +
       '"Madness2:Touch Of Idiocy",' +
@@ -1666,6 +1866,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Hand Of The Acolyte","8:Dispelling Touch" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Magic1:1=1,' +
+      'Magic2:3=1,' +
+      'Magic3:5=1,' +
+      'Magic4:7=1,' +
+      'Magic5:9=1,' +
+      'Magic6:11=1,' +
+      'Magic7:13=1,' +
+      'Magic8:15=1,' +
+      'Magic9:17=1 ' +
     'Spells=' +
       'Magic1:Identify,' +
       '"Magic2:Magic Mouth",' +
@@ -1682,6 +1892,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Inspiring Word","8:Noble Leadership" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Nobility1:1=1,' +
+      'Nobility2:3=1,' +
+      'Nobility3:5=1,' +
+      'Nobility4:7=1,' +
+      'Nobility5:9=1,' +
+      'Nobility6:11=1,' +
+      'Nobility7:13=1,' +
+      'Nobility8:15=1,' +
+      'Nobility9:17=1 ' +
     'Spells=' +
       '"Nobility1:Divine Favor",' +
       'Nobility2:Enthrall,' +
@@ -1698,6 +1918,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Wooden Fist","6:Bramble Armor" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Plant1:1=1,' +
+      'Plant2:3=1,' +
+      'Plant3:5=1,' +
+      'Plant4:7=1,' +
+      'Plant5:9=1,' +
+      'Plant6:11=1,' +
+      'Plant7:13=1,' +
+      'Plant8:15=1,' +
+      'Plant9:17=1 ' +
     'Spells=' +
       'Plant1:Entangle,' +
       'Plant2:Barkskin,' +
@@ -1714,6 +1944,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Resistance Bonus","1:Resistant Touch","8:Aura Of Protection" '+
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Protection1:1=1,' +
+      'Protection2:3=1,' +
+      'Protection3:5=1,' +
+      'Protection4:7=1,' +
+      'Protection5:9=1,' +
+      'Protection6:11=1,' +
+      'Protection7:13=1,' +
+      'Protection8:15=1,' +
+      'Protection9:17=1 ' +
     'Spells=' +
       'Protection1:Sanctuary,' +
       '"Protection2:Shield Other",' +
@@ -1730,6 +1970,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Gentle Rest","8:Ward Against Death" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Repose1:1=1,' +
+      'Repose2:3=1,' +
+      'Repose3:5=1,' +
+      'Repose4:7=1,' +
+      'Repose5:9=1,' +
+      'Repose6:11=1,' +
+      'Repose7:13=1,' +
+      'Repose8:15=1,' +
+      'Repose9:17=1 ' +
     'Spells=' +
       'Repose1:Deathwatch,' +
       '"Repose2:Gentle Repose",' +
@@ -1746,6 +1996,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Scribe Scroll","1:Blast Rune","8:Spell Rune" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Rune1:1=1,' +
+      'Rune2:3=1,' +
+      'Rune3:5=1,' +
+      'Rune4:7=1,' +
+      'Rune5:9=1,' +
+      'Rune6:11=1,' +
+      'Rune7:13=1,' +
+      'Rune8:15=1,' +
+      'Rune9:17=1 ' +
     'Spells=' +
       'Rune1:Erase,' +
       '"Rune2:Secret Page",' +
@@ -1762,6 +2022,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Strength Rush","8:Might Of The Gods" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Strength1:1=1,' +
+      'Strength2:3=1,' +
+      'Strength3:5=1,' +
+      'Strength4:7=1,' +
+      'Strength5:9=1,' +
+      'Strength6:11=1,' +
+      'Strength7:13=1,' +
+      'Strength8:15=1,' +
+      'Strength9:17=1 ' +
     'Spells=' +
       '"Strength1:Enlarge Person",' +
       '"Strength2:Bull\'s Strength",' +
@@ -1778,6 +2048,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Sun\'s Blessing","8:Nimbus Of Light" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Sun1:1=1,' +
+      'Sun2:3=1,' +
+      'Sun3:5=1,' +
+      'Sun4:7=1,' +
+      'Sun5:9=1,' +
+      'Sun6:11=1,' +
+      'Sun7:13=1,' +
+      'Sun8:15=1,' +
+      'Sun9:17=1 ' +
     'Spells=' +
       '"Sun1:Endure Elements",' +
       '"Sun2:Heat Metal",' +
@@ -1794,6 +2074,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Travel Speed","1:Agile Feet","8:Dimensional Hop" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Travel1:1=1,' +
+      'Travel2:3=1,' +
+      'Travel3:5=1,' +
+      'Travel4:7=1,' +
+      'Travel5:9=1,' +
+      'Travel6:11=1,' +
+      'Travel7:13=1,' +
+      'Travel8:15=1,' +
+      'Travel9:17=1 ' +
     'Spells=' +
       'Travel1:Longstrider,' +
       '"Travel2:Locate Object",' +
@@ -1810,6 +2100,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Copycat","8:Master\'s Illusion" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Trickery1:1=1,' +
+      'Trickery2:3=1,' +
+      'Trickery3:5=1,' +
+      'Trickery4:7=1,' +
+      'Trickery5:9=1,' +
+      'Trickery6:11=1,' +
+      'Trickery7:13=1,' +
+      'Trickery8:15=1,' +
+      'Trickery9:17=1 ' +
     'Spells=' +
       '"Trickery1:Disguise Self",' +
       'Trickery2:Invisibility,' +
@@ -1826,6 +2126,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Battle Rage","8:Weapon Master" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'War1:1=1,' +
+      'War2:3=1,' +
+      'War3:5=1,' +
+      'War4:7=1,' +
+      'War5:9=1,' +
+      'War6:11=1,' +
+      'War7:13=1,' +
+      'War8:15=1,' +
+      'War9:17=1 ' +
     'Spells=' +
       '"War1:Magic Weapon",' +
       '"War2:Spiritual Weapon",' +
@@ -1842,6 +2152,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Icicle","6:Cold Resistance" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Water1:1=1,' +
+      'Water2:3=1,' +
+      'Water3:5=1,' +
+      'Water4:7=1,' +
+      'Water5:9=1,' +
+      'Water6:11=1,' +
+      'Water7:13=1,' +
+      'Water8:15=1,' +
+      'Water9:17=1 ' +
     'Spells=' +
       '"Water1:Obscuring Mist",' +
       '"Water2:Fog Cloud",' +
@@ -1858,6 +2178,16 @@ Pathfinder.PATHS = {
     'Features=' +
       '"1:Storm Burst","8:Lightning Lord" ' +
     'SpellAbility=wisdom ' +
+    'SpellSlots=' +
+      'Weather1:1=1,' +
+      'Weather2:3=1,' +
+      'Weather3:5=1,' +
+      'Weather4:7=1,' +
+      'Weather5:9=1,' +
+      'Weather6:11=1,' +
+      'Weather7:13=1,' +
+      'Weather8:15=1,' +
+      'Weather9:17=1 ' +
     'Spells=' +
       '"Weather1:Obscuring Mist",' +
       '"Weather2:Fog Cloud",' +
@@ -2696,16 +3026,7 @@ Pathfinder.CLASSES = {
       'C6:11=1;12=2;14=3;17=4,' +
       'C7:13=1;14=2;16=3;19=4,' +
       'C8:15=1;16=2;18=3;20=4,' +
-      'C9:17=1;18=2;19=3;20=4,' +
-      'Dom1:1=1,' +
-      'Dom2:3=1,' +
-      'Dom3:5=1,' +
-      'Dom4:7=1,' +
-      'Dom5:9=1,' +
-      'Dom6:11=1,' +
-      'Dom7:13=1,' +
-      'Dom8:15=1,' +
-      'Dom9:17=1 ' +
+      'C9:17=1;18=2;19=3;20=4 ' +
       'Spells=' +
       '"C0:Bleed;Create Water;Detect Magic;Detect Poison;Guidance;Light;' +
       'Mending;Purify Food And Drink;Read Magic;Resistance;Stabilize;Virtue",' +
@@ -4450,18 +4771,6 @@ Pathfinder.pathRulesExtra = function(rules, name) {
   var pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
 
-  if(name.match(/\sDomain$/)) {
-    var domain = name.replace(/\sDomain/, '');
-    rules.defineRule('casterLevels.' + domain,
-      'clericFeatures.' + name, '?', null,
-      pathLevel, '=', null
-    );
-    rules.defineRule('spellDifficultyClass.' + domain,
-      'casterLevels.' + domain, '?', null,
-      'wisdomModifier', '=', '10 + source',
-    );
-  }
-
   if(name == 'Bloodline Aberrant') {
 
     rules.defineRule('combatNotes.longLimbs',
@@ -5471,7 +5780,7 @@ Pathfinder.ruleNotes = function() {
     '    affects only the Gnome Hooked Hammer, where Quilvyn displays a\n' +
     '    critical multiplier of x4 instead of x3/x4.\n' +
     '  </li><li>\n' +
-    '    Animal companion feats, skills, and tricks are not supported\n' +
+    '    Quilvyn does not track companion feats, skills, and tricks.\n' +
     '  </li><li>\n' +
     '    Quilvyn has problems dealing with attributes containing an\n' +
     '    uncapitalized word.  This is why, e.g., Quilvyn defines the skills\n' +
@@ -5501,6 +5810,9 @@ Pathfinder.ruleNotes = function() {
     '    bumping intelligence when a character reaches fourth level causes\n' +
     '    Quilvyn to recompute the number of skill points awarded at first\n' +
     '    level.\n' +
+    '  </li><li>\n' +
+    '    When randomly generating clerics, Quilvyn reports a spell for each\n' +
+    '    domain in each level, instead of a single domain spell per level.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n';
