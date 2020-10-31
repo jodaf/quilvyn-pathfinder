@@ -855,7 +855,7 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
   'Elemental Ray':'Section=magic Note="R30\' 1d6+%1 HP %2 %V/day"',
   'Elemental Resistance':'Section=save Note="%V vs. %1"',
   'Elemental Wall':
-    'Section=magic Note="<i>Wall Of Fire</i>/Acid/Cold/Electricity %V rd/day"',
+    'Section=magic Note="<i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> %V rd/day"',
   'Elf Blood':'Section=feature Note="Elf and human for racial effects"',
   'Elven Magic':
     'Section=magic,skill Note="+2 vs. spell resistance","+2 Spellcraft (identify magic item properties)"',
@@ -4200,9 +4200,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Monk', '+=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule('combatNotes.stunningFist.1',
-      'levels.Monk', '+', 'source - Math.floor(source / 4)'
-    );
     rules.defineRule('featureNotes.kiPool',
       'levels.Monk', '=', 'Math.floor(source / 2)',
       'wisdomModifier', '+', null
@@ -4620,8 +4617,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.magicalAptitude',
       'skills.Spellcraft', '=', 'source >= 10 ? 4 : 2'
     );
-  } else if(name == 'Manyshot') {
-    // empty -- avoid SRD35 computation
   } else if(name == 'Persuasive') {
     rules.defineRule('skillNotes.persuasive',
       'skills.Diplomacy', '=', 'source >= 10 ? 4 : 2'
@@ -4661,15 +4656,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Stunning Critical') {
     rules.defineRule
       ('combatNotes.stunningCritical', 'baseAttack', '=', '10 + source');
-  } else if(name == 'Stunning Fist') {
-    rules.defineRule('combatNotes.stunningFist',
-      'level', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('combatNotes.stunningFist.1',
-      'features.Stunning Fist', '?', null,
-      'level', '=', 'Math.floor(source / 4)'
-    )
   } else if(name == 'Toughness') {
     rules.defineRule
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
@@ -4683,7 +4669,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
   } else if(SRD35.featRulesExtra) {
-    // Since we inherit unchanged many feats from SRD35, we need to invoke that
+    // Since we inherit many feats from SRD35 unchanged, we need to invoke that
     // module's RulesExtra method to add any feat-specific rules. That's not
     // true of other objects, where we use, e.g., SRD35.classRules only for the
     // basic attribute parsing.
@@ -5405,11 +5391,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
  */
 Pathfinder.raceRules = function(
   rules, name, requires, features, selectables, languages, spellAbility,
-  spells, spellSlots, spellDict
+  spellSlots, spells, spellDict
 ) {
   SRD35.raceRules
     (rules, name, requires, features, selectables, languages, spellAbility,
-     spells, spellDict);
+     spellSlots, spells, spellDict);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -5419,8 +5405,8 @@ Pathfinder.raceRules = function(
  */
 Pathfinder.raceRulesExtra = function(rules, name) {
   if(name.match(/Gnome/)) {
-    rules.defineRule('spellSlots.Gnome0', 'charisma', '?', 'source >= 11');
-    rules.defineRule('spellSlots.Gnome1', 'charisma', '?', 'source >= 11');
+    rules.defineRule('spellSlots.Gnomish0', 'charisma', '?', 'source >= 11');
+    rules.defineRule('spellSlots.Gnomish1', 'charisma', '?', 'source >= 11');
   } else if(name == 'Half-Elf') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
@@ -5449,20 +5435,22 @@ Pathfinder.schoolRules = function(rules, name, features) {
  */
 Pathfinder.schoolRulesExtra = function(rules, name) {
 
-  var schoolLevelAttr = 'schoolLevel.' + name;
+  var prefix =
+    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'');
+  var schoolLevel = prefix + 'Level';
 
   if(name == 'Abjuration') {
     rules.defineRule('magicNotes.protectiveWard',
-      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+      schoolLevel, '=', '1 + Math.floor(source / 5)'
     );
     rules.defineRule('magicNotes.protectiveWard.1',
       'features.Protective Ward', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule
-      ('saveNotes.energyAbsorption', schoolLevelAttr, '=', 'source * 3');
+      ('saveNotes.energyAbsorption', schoolLevel, '=', 'source * 3');
     rules.defineRule('saveNotes.energyResistance',
-      schoolLevelAttr, '=',
+      schoolLevel, '=',
       'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
     );
   } else if(name == 'Conjuration') {
@@ -5470,64 +5458,64 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       ('magicNotes.conjuredDart', 'intelligenceModifier', '=', 'source + 3');
     rules.defineRule('magicNotes.conjuredDart.1',
       'features.Conjured Dart', '?', null,
-      schoolLevelAttr, '=', 'Math.floor(source / 2)'
+      schoolLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
-      ('magicNotes.dimensionalHop', schoolLevelAttr, '=', '30 * source');
+      ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
     rules.defineRule("magicNotes.summoner'sCharm",
-      schoolLevelAttr, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
     );
   } else if(name == 'Divination') {
     rules.defineRule('combatNotes.forewarned',
-      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule("magicNotes.diviner'sFortune",
-      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule("magicNotes.diviner'sFortune.1",
       "features.Diviner's Fortune", '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
   } else if(name == 'Enchantment') {
-    rules.defineRule('magicNotes.auraOfDespair', schoolLevelAttr, '=', null);
-    rules.defineRule('magicNotes.dazingTouch', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.auraOfDespair', schoolLevel, '=', null);
+    rules.defineRule('magicNotes.dazingTouch', schoolLevel, '=', null);
     rules.defineRule('magicNotes.dazingTouch.1',
       'features.Dazing Touch', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule('skillNotes.enchantingSmile',
-      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+      schoolLevel, '=', '1 + Math.floor(source / 5)'
     );
   } else if(name == 'Evocation') {
-    rules.defineRule('magicNotes.elementalWall', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.elementalWall', schoolLevel, '=', null);
     rules.defineRule('magicNotes.forceMissile',
-      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('magicNotes.forceMissile.1',
       'features.Force Missile', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.intenseSpells',
-      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
   } else if(name == 'Illusion') {
     rules.defineRule
       ('magicNotes.blindingRay', 'intelligenceModifier', '=', 'source + 3');
     rules.defineRule('magicNotes.extendedIllusions',
-      schoolLevelAttr, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule
-      ('magicNotes.invisibilityField', schoolLevelAttr, '=', null);
+      ('magicNotes.invisibilityField', schoolLevel, '=', null);
   } else if(name == 'Necromancy') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'powerOverUndead', 'features.Power Over Undead',
       'features.Command Undead || features.Turn Undead'
     );
     rules.defineRule('featureNotes.lifeSight',
-      schoolLevelAttr, '=', '10 * Math.floor((source - 4) / 4)'
+      schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
     );
     rules.defineRule('magicNotes.necromanticTouch',
-      schoolLevelAttr, '=', 'Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('magicNotes.necromanticTouch.1',
       'features.Necromantic Touch', '?', null,
@@ -5535,27 +5523,27 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     );
   } else if(name == 'Transmutation') {
     rules.defineRule('abilityNotes.physicalEnhancement',
-      schoolLevelAttr, '=', '1 + Math.floor(source / 5)'
+      schoolLevel, '=', '1 + Math.floor(source / 5)'
     );
     rules.defineRule('abilityNotes.physicalEnhancement.1',
       'features.Physical Enhancement', '?', null,
-      schoolLevelAttr, '=', 'source >= 20 ? 2 : 1'
+      schoolLevel, '=', 'source >= 20 ? 2 : 1'
     );
-    rules.defineRule('magicNotes.changeShape', schoolLevelAttr, '=', null);
+    rules.defineRule('magicNotes.changeShape', schoolLevel, '=', null);
     rules.defineRule('magicNotes.changeShape.1',
       'features.Change Shape', '?', null,
-      schoolLevelAttr, '=', 'source >= 12 ? "III" : "II"'
+      schoolLevel, '=', 'source >= 12 ? "III" : "II"'
     );
     rules.defineRule('magicNotes.changeShape.2',
       'features.Change Shape', '?', null,
-      schoolLevelAttr, '=', 'source >= 12 ? "II" : "I"'
+      schoolLevel, '=', 'source >= 12 ? "II" : "I"'
     );
     rules.defineRule('magicNotes.telekineticFist',
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.telekineticFist.1',
       'features.Telekinetic Fist', '?', null,
-      schoolLevelAttr, '=', 'Math.floor(source / 2)'
+      schoolLevel, '=', 'Math.floor(source / 2)'
     );
   }
 
