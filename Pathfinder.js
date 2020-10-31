@@ -3874,7 +3874,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     console.log('Unknown choice type "' + type + '"');
     return;
   }
-  if(type != 'Feature') {
+  if(type != 'Feature' && type != 'Path') {
     type = type == 'Class' ? 'levels' :
     type = type == 'Deity' ? 'deities' :
     (type.substring(0,1).toLowerCase() + type.substring(1).replace(/ /g, '') + 's');
