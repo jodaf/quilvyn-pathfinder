@@ -2366,8 +2366,9 @@ Pathfinder.PATHS = {
     'Group=Sorcerer ' +
     'Level=levels.Sorcerer ' +
     'Features=' +
-      '1:Claws,"3:Dragon Resistances","5:Magic Claws","9:Breath Weapon",' +
-      '"11:Improved Claws",15:Wings,"20:Power Of Wyrms",20:Blindsense ' +
+      '"1:Bloodline Draconic",1:Claws,"3:Dragon Resistances","5:Magic Claws",' +
+      '"9:Breath Weapon","11:Improved Claws",15:Wings,"20:Power Of Wyrms",' +
+      '20:Blindsense ' +
     'Feats=' +
       '"Blind-Fight","Great Fortitude","Improved Initiative","Power Attack",' +
       '"Quicken Spell","Skill Focus (Fly)",' +
@@ -2398,8 +2399,8 @@ Pathfinder.PATHS = {
     'Group=Sorcerer ' +
     'Level=levels.Sorcerer ' +
     'Features=' +
-      '"1:Elemental Ray","3:Elemental Resistance","9:Elemental Blast",' +
-      '"15:Elemental Movement","20:Elemental Body" ' +
+      '"1:Bloodline Elemental","1:Elemental Ray","3:Elemental Resistance",' +
+      '"9:Elemental Blast","15:Elemental Movement","20:Elemental Body" ' +
     'Feats=' +
       'Dodge,"Empower Spell","Great Fortitude","Improved Initiative",' +
       '"Lightning Reflexes","Power Attack",' +
@@ -2576,7 +2577,7 @@ Pathfinder.RACES = {
     'Languages=Common,Orc',
   'Halfling':
     'Features=' +
-      'Fearless,"Fortunate","Halfling Ability Adjustment",' +
+      'Fearless,Fortunate,"Halfling Ability Adjustment",' +
       '"Keen Senses",Slow,Small,Sure-Footed,' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)" ' +
@@ -3173,8 +3174,8 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
-      '"1:Flurry Of Blows","1:Improved Unarmed Strike",' +
-      '"1:Armor Class Bonus","1:Two-Weapon Fighting","1:Stunning Fist",' +
+      '"1:Armor Class Bonus","1:Flurry Of Blows","1:Improved Unarmed Strike",' +
+      '"1:Increased Unarmed Damage","1:Stunning Fist","1:Two-Weapon Fighting",'+
       '2:Evasion,"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
       '"4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall",' +
       '"5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
@@ -3358,7 +3359,7 @@ Pathfinder.CLASSES = {
       '"1:Bonded Object",1:Familiar,' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + (x == 'Universal' ? 'None' : x) + ')"').join(',') + ',' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).filter(x => x != 'Universal').map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
-    'CasterLevelDivine=levels.Wizard ' +
+    'CasterLevelArcane=levels.Wizard ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
       'W0:1=3;2=4,' +
@@ -4218,8 +4219,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // NOTE Our rule engine doesn't support modifying a value via indexing.
     // Here, we work around this limitation by defining rules that set global
     // values as a side effect, then use these values in our calculations.
-    rules.defineRule('monkUnarmedDamage',
-      'monkFeatures.Flurry Of Blows', '?', null, // Limit these rules to monks
+    rules.defineRule('combatNotes.increasedUnarmedDamage',
       'levels.Monk', '=',
         'SRD35.SMALL_DAMAGE["monk"] = ' +
         'SRD35.LARGE_DAMAGE["monk"] = ' +
@@ -4535,6 +4535,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.animalAffinity',
       'skills.Handle Animal', '=', 'source >= 10 ? 4 : 2'
     );
+    rules.defineRule
+      ('skillNotes.animalAffinity', 'skills.Ride', '=', 'source >= 10 ? 4 : 2');
   } else if(name == 'Arcane Armor Mastery') {
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.arcaneArmorMastery', '+', '-10',
@@ -5410,7 +5412,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   } else if(name == 'Half-Elf') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
-      'Sum \'features\\.Skill Focus\' >= 1'
+      'Sum \'features.Skill Focus\' >= 1'
     );
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
