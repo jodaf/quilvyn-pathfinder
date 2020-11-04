@@ -15,13 +15,14 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
+/*jshint esversion: 6 */
 "use strict";
 
 /*
  * This module loads the Prestige class rules from the Pathfinder Reference
  * Document.  Member methods can be called independently in order to use
  * a subset of the rules.  Similarly, the constant fields of PathfinderPrestige
- * (CLASSES) can be thined to limit the user's choices.
+ * (CLASSES, FEATURES) can be manipulated to modify the choices.
  */
 function PathfinderPrestige() {
   if(window.Pathfinder == null) {
@@ -40,7 +41,8 @@ PathfinderPrestige.CLASSES = {
       '"features.Precise Shot",' +
       '"features.Weapon Focus (Longbow) || features.Weapon Focus (Shortbow)" ' +
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
-    'Skills=Perception,Ride,Stealth,Survival ' +
+    'Skills=' +
+      'Perception,Ride,Stealth,Survival ' +
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
       '"1:Weapon Proficiency (Martial)",' +
@@ -85,7 +87,8 @@ PathfinderPrestige.CLASSES = {
       '"levels.Bard > 0 || levels.Sorcerer > 0" ' +
       // i.e., Arcane spells w/out prep
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
-    'Skills=Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
+    'Skills=' +
+      'Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
       '"1:Blood Of Dragons","2:Caster Level Bonus","2:Dragon Bite",' +
       '"2:Strength Boost","3:Breath Weapon",5:Blindsense,' +
@@ -201,25 +204,32 @@ PathfinderPrestige.FEATURES = {
   'Arrow Of Death':
     'Section=combat Note="Special arrow kills foe (DC %V Fort neg)"',
   'Blood Of Dragons':
-    'Section=feature Note="Dragon Disciple level triggers Bloodline Draconic features"',
+    'Section=feature ' +
+    'Note="Dragon Disciple level triggers Bloodline Draconic features"',
   'Bonus Language':'Section=feature Note="+%V Language Count"',
   'Call Down The Legends':
     'Section=magic Note="Summon 2d4 level 4 barbarians 1/wk"',
   'Canny Defense':'Section=combat Note="+%V AC in light or no armor"',
   'Caster Level Bonus':
-    'Section=magic Note="+%V base class level for spells known and spells per day"',
+    'Section=magic ' +
+    'Note="+%V base class level for spells known and spells per day"',
   'Combined Spells':
-    'Section=magic Note="Fill spell slots up to level %V with spells from different class"',
+    'Section=magic ' +
+    'Note="Fill spell slots up to level %V with spells from different class"',
   'Constitution Boost':'Section=ability Note="+2 Constitution"',
   'Crippling Critical':
     'Section=combat Note="Critical hit causes follow-on damage"',
   'Death Attack':
-    'Section=combat Note="Sneak attack after 3 rd of study causes death or paralysis d6+%1 rd (DC %V Fort neg)"',
+    'Section=combat ' +
+    'Note="Sneak attack after 3 rd of study causes death or paralysis d6+%1 rd (DC %V Fort neg)"',
   'Deep Pockets':
-    'Section=feature,skill Note="Retrieve any small object from backpack as a full-round action","+4 Sleight Of Hand (conceal small objects)"',
+    'Section=feature,skill ' +
+    'Note="Retrieve any small object from backpack as a full-round action",' +
+         '"+4 Sleight Of Hand (conceal small objects)"',
   'Distance Arrows':'Section=combat Note="x2 range"',
   'Diverse Training':
-    'Section=feature Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
+    'Section=feature ' +
+    'Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
   'Dragon Bite':'Section=combat Note="d%V+%1%2 bite when using claws"',
   'Dragon Disciple':'Section=combat Note="+%V"',
   'Dragon Form':'Section=magic Note="<i>Form Of The Dragon %V</i> %1/dy"',
@@ -252,14 +262,19 @@ PathfinderPrestige.FEATURES = {
     'Section=save Note="Extra saving throw vs permanent condition %V/dy"',
   'Lore':'Section=skill Note="+%V All Knowledge/use any Knowledge untrained"',
   'Master Scribe':
-    'Section=skill Note="+%V Linguistics/=%v Profession (Scribe)/+%V Use Magic Device (scrolls)"',
+    'Section=skill ' +
+    'Note="+%V Linguistics/=%v Profession (Scribe)/+%V Use Magic Device (scrolls)"',
   'More Newfound Arcana':'Section=magic Note="Bonus level 2 spell"',
   'Newfound Arcana':'Section=magic Note="Bonus level 1 spell"',
   'No Retreat':'Section=combat Note="AOO on foe withdraw"',
   'Parry':
-    'Section=combat Note="Hit on full-round attack negates foe attack instead of damaging"',
+    'Section=combat ' +
+    'Note="Hit on full-round attack negates foe attack instead of damaging"',
   'Pathfinding':
-    'Section=ability,save,skill Note="Treat trackless terrain as road","+5 vs. <i>Maze</i>","+5 Survival (avoid becoming lost), DC 15 Survival to extend to companion"',
+    'Section=ability,save,skill ' +
+    'Note="Treat trackless terrain as road",' +
+         '"+5 vs. <i>Maze</i>",' +
+         '"+5 Survival (avoid becoming lost), DC 15 Survival to extend to companion"',
   'Phase Arrow':
     'Section=combat Note="Arrow passes through normal obstacles %V/dy"',
   'Poison Tolerance':'Section=save Note="+%V vs. poison"',
@@ -280,21 +295,26 @@ PathfinderPrestige.FEATURES = {
   'Shadow Jump':
     'Section=magic Note="<i>Dimension Door</i> between shadows %V\'/dy"',
   'Shadow Master':
-    'Section=combat,save Note="DR 10/-, critical hit blinds d6 rd in dim light","+2 saves in dim light"',
+    'Section=combat,save ' +
+    'Note="DR 10/-, critical hit blinds d6 rd in dim light",' +
+         '"+2 saves in dim light"',
   'Shadow Power':'Section=magic Note="<i>Shadow Evocation</i> %V/dy"',
   'Spell Critical':'Section=magic Note="Cast swift spell after critical hit"',
   'Spell Synthesis':
-    'Section=magic Note="Cast two spells simultaneously, +2 vs. resistance, target -2 saves"',
+    'Section=magic ' +
+    'Note="Cast two spells simultaneously, +2 vs. resistance, target -2 saves"',
   'Strength Boost':'Section=ability Note="+%V Strength"',
   'Summon Shadow':
-    'Section=magic Note="Summon unturnable Shadow companion with %V HP, character attack/save, +4 will vs. channeled energy"',
+    'Section=magic ' +
+    'Note="Summon unturnable Shadow companion with %V HP, character attack/save, +4 will vs. channeled energy"',
   'Surprise Spells':
     'Section=combat Note="Sneak attack spell damage vs flat-footed foes"',
   'Swift Death':'Section=combat Note="Death attack w/out prior study 1/dy"',
   'The Lore Of True Stamina':'Section=save Note="+2 Fortitude"',
   'Tricky Spells':'Section=magic Note="Use Silent Spell and Still Spell %V/dy"',
   'True Death':
-    'Section=combat Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
+    'Section=combat ' +
+    'Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
   'True Lore':
     'Section=magic Note="<i>Legend Lore</i>, <i>Analyze Dweomer</i> 1/dy"',
   'Weapon Trick':'Section=combat Note="+1 Melee Attack/+1 Ranged Attack"',
@@ -302,7 +322,7 @@ PathfinderPrestige.FEATURES = {
     'Section=magic Note="<i>Doom</i>/<i>Enthrall</i> via Bardic Performance"'
 };
 
-/* Defines the rules related to SRDv3.5 Prestige Classes. */
+/* Defines rules related to basic character identity. */
 PathfinderPrestige.identityRules = function(rules, classes) {
   QuilvynUtils.checkAttrTable
     (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'Spells']);
@@ -319,7 +339,7 @@ PathfinderPrestige.identityRules = function(rules, classes) {
   }
 };
 
-/* Defines rules related to character features. */
+/* Defines rules related to character aptitudes. */
 PathfinderPrestige.talentRules = function(rules, features) {
   QuilvynUtils.checkAttrTable(features, ['Section', 'Note']);
   for(var feature in features) {
@@ -327,7 +347,10 @@ PathfinderPrestige.talentRules = function(rules, features) {
   }
 };
 
-/* Defines the rules related to Pathfinder Prestige Classes. */
+/*
+ * Defines in #rules# the rules associated with class #name# that cannot be
+ * derived directly from the attributes passed to classRules.
+ */
 PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   if(name == 'Arcane Archer') {
