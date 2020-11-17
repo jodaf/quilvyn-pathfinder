@@ -4517,8 +4517,8 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
     'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
   );
   // Remove fiendish/celestial improvements from editor
-  rules.defineEditorElement('celestialFamiliar');
-  rules.defineEditorElement('fiendishFamiliar');
+  rules.defineEditorElement('familiarCelestial');
+  rules.defineEditorElement('familiarFiendish');
 };
 
 /* Defines rules related to combat. */
