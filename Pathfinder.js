@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.1.1.0';
+var PATHFINDER_VERSION = '2.1.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -79,18 +79,36 @@ function Pathfinder() {
 }
 
 /* List of items handled by choiceRules method. */
-Pathfinder.CHOICES = SRD35.CHOICES.concat(['Faction', 'Track', 'Trait']);
+Pathfinder.CHOICES = [
+  'Alignment', 'Animal Companion', 'Armor', 'Class', 'Deity', 'Faction',
+  'Familiar', 'Feat', 'Feature', 'Language', 'Path', 'Race', 'School',
+  'Shield', 'Skill', 'Spell', 'Track', 'Trait', 'Weapon'
+];
 /*
  * List of items handled by randomizeOneAttribute method. The order handles
  * dependencies among attributes when generating random characters.
  */
-Pathfinder.RANDOMIZABLE_ATTRIBUTES =
-  SRD35.RANDOMIZABLE_ATTRIBUTES.concat(['faction', 'traits']);
+Pathfinder.RANDOMIZABLE_ATTRIBUTES = [
+  'charisma', 'constitution', 'dexterity', 'intelligence', 'strength', 'wisdom',
+  'name', 'race', 'gender', 'alignment', 'deity', 'levels', 'features',
+  'feats', 'skills', 'languages', 'hitPoints', 'armor', 'shield', 'weapons',
+  'spells', 'companion', 'faction', 'traits'
+];
 
 SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
 SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
 
-Pathfinder.ALIGNMENTS = Object.assign({}, SRD35.ALIGNMENTS);
+Pathfinder.ALIGNMENTS = {
+  'Chaotic Evil':'',
+  'Chaotic Good':'',
+  'Chaotic Neutral':'',
+  'Neutral Evil':'',
+  'Neutral Good':'',
+  'Neutral':'',
+  'Lawful Evil':'',
+  'Lawful Good':'',
+  'Lawful Neutral':''
+};
 Pathfinder.ANIMAL_COMPANIONS = {
 
   // Attack, Dam, AC include all modifiers
@@ -198,19 +216,19 @@ Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
     ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
 });
 Pathfinder.ARMORS = {
-  'None':SRD35.ARMORS['None'] + ' AC=0',
-  'Padded':SRD35.ARMORS['Padded'] + ' AC=1',
-  'Leather':SRD35.ARMORS['Leather'] + ' AC=2',
-  'Studded Leather':SRD35.ARMORS['Studded Leather'] + ' AC=3',
-  'Chain Shirt':SRD35.ARMORS['Chain Shirt'] + ' AC=4',
-  'Hide':SRD35.ARMORS['Hide'] + ' AC=4',
-  'Scale Mail':SRD35.ARMORS['Scale Mail'] + ' AC=5',
-  'Chainmail':SRD35.ARMORS['Chainmail'] + ' AC=6',
-  'Breastplate':SRD35.ARMORS['Breastplate'] + ' AC=5',
-  'Splint Mail':SRD35.ARMORS['Splint Mail'] + ' AC=7',
-  'Banded Mail':SRD35.ARMORS['Banded Mail'] + ' AC=7',
-  'Half Plate':SRD35.ARMORS['Half Plate'] + ' AC=8',
-  'Full Plate':SRD35.ARMORS['Full Plate'] + ' AC=9'
+  'None':'AC=0 Weight=0 Dex=10 Skill=0 Spell=0',
+  'Padded':'AC=1 Weight=1 Dex=8 Skill=0 Spell=5',
+  'Leather':'AC=2 Weight=1 Dex=6 Skill=0 Spell=10',
+  'Studded Leather':'AC=3 Weight=1 Dex=5 Skill=1 Spell=15',
+  'Chain Shirt':'AC=4 Weight=1 Dex=4 Skill=2 Spell=20',
+  'Hide':'AC=4 Weight=2 Dex=4 Skill=3 Spell=20',
+  'Scale Mail':'AC=5 Weight=2 Dex=3 Skill=4 Spell=25',
+  'Chainmail':'AC=6 Weight=2 Dex=2 Skill=5 Spell=30',
+  'Breastplate':'AC=5 Weight=2 Dex=3 Skill=4 Spell=25',
+  'Splint Mail':'AC=7 Weight=3 Dex=0 Skill=7 Spell=40',
+  'Banded Mail':'AC=7 Weight=3 Dex=1 Skill=6 Spell=35',
+  'Half Plate':'AC=8 Weight=3 Dex=0 Skill=7 Spell=40',
+  'Full Plate':'AC=9 Weight=3 Dex=1 Skill=6 Spell=35'
 };
 Pathfinder.DEITIES = {
   'None':'',
@@ -384,41 +402,377 @@ Pathfinder.FAMILIARS = {
     'Size=T Level=5'
 
 };
-Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
+Pathfinder.FEATS = {
 
-  // Override certain SRD35 attributes of some common feats
+  'Acrobatic':'Type=General',
+  'Acrobatic Steps':'Type=General',
+  'Agile Maneuvers':'Type=Fighter Imply="dexterityModifier > strengthModifier"',
+  'Alertness':'Type=General',
+  'Alignment Channel (Chaos)':'Type=General Require="features.Channel Energy"',
+  'Alignment Channel (Evil)':'Type=General Require="features.Channel Energy"',
+  'Alignment Channel (Good)':'Type=General Require="features.Channel Energy"',
+  'Alignment Channel (Law)':'Type=General Require="features.Channel Energy"',
+  'Animal Affinity':'Type=General',
+  'Arcane Armor Mastery':
+    'Type=Fighter ' +
+    'Require=' +
+      '"casterLevel >= 7",' +
+      '"features.Arcane Armor Training",' +
+      '"features.Armor Proficiency (Medium)"',
+  'Arcane Armor Training':
+    'Type=Fighter ' +
+    'Require=' +
+      '"casterLevel >= 3",' +
+      '"features.Armor Proficiency (Light)"',
+  'Arcane Strike':'Type=Fighter Require="casterLevelArcane >= 1"',
   'Armor Proficiency (Heavy)':
-    SRD35.FEATS['Armor Proficiency (Heavy)'] + ' Type=Fighter',
-  'Armor Proficiency (Light)':
-    SRD35.FEATS['Armor Proficiency (Light)'] + ' Type=Fighter',
+    'Type=Fighter Require="features.Armor Proficiency (Medium)"',
+  'Armor Proficiency (Light)':'Type=Fighter',
   'Armor Proficiency (Medium)':
-    SRD35.FEATS['Armor Proficiency (Medium)'] + ' Type=Fighter',
+    'Type=Fighter Require="features.Armor Proficiency (Light)"',
+  'Athletic':'Type=General',
+  'Augment Summoning':
+    'Type=General Require="features.Spell Focus (Conjuration)"',
+  'Bleeding Critical':
+    'Type=Fighter,Critical Require="baseAttack>=11","features.Critical Focus"',
+  'Blind-Fight':'Type=Fighter',
+  'Blinding Critical':
+    'Type=Fighter,Critical Require="baseAttack>=15","features.Critical Focus"',
+  'Brew Potion':'Type="Item Creation",Wizard Require="casterLevel >= 3"',
+  'Catch Off-Guard':'Type=Fighter',
+  'Channel Smite':'Type=Fighter Require="features.Channel Energy"',
   'Cleave':
-    SRD35.FEATS['Cleave'] + ' Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
-  'Craft Staff':SRD35.FEATS['Craft Staff'] + ' Require="casterLevel >= 11"',
-  'Forge Ring':SRD35.FEATS['Forge Ring'] + ' Require="casterLevel >= 7"',
+    'Type=Fighter ' +
+    'Require="baseAttack >= 1","features.Power Attack","strength >= 13"',
+  'Combat Casting':'Type=General Imply="casterLevel >= 1"',
+  'Combat Expertise':'Type=Fighter Require="intelligence >= 13"',
+  'Combat Reflexes':'Type=Fighter',
+  'Command Undead':'Type=General Require="features.Channel Energy"',
+  'Craft Magic Arms And Armor':
+    'Type="Item Creation",Wizard Require="casterLevel >= 5"',
+  'Craft Rod':'Type="Item Creation",Wizard Require="casterLevel >= 9"',
+  'Craft Staff':'Type="Item Creation",Wizard Require="casterLevel >= 11"',
+  'Craft Wand':'Type="Item Creation",Wizard Require="casterLevel >= 5"',
+  'Craft Wondrous Item':
+    'Type="Item Creation",Wizard Require="casterLevel >= 3"',
+  'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
+  'Critical Mastery':
+    'Type=Fighter ' +
+    'Require=' +
+      '"level.Fighter >= 14",' +
+      '"features.Critical Focus",' +
+      '"Sum \'^features\\..*Critical$\' >= 2"',
+  'Dazzling Display':
+    'Type=Fighter Require="Sum \'^features\\.Weapon Focus\' >= 1"',
+  'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
+  'Deadly Stroke':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"features.Dazzling Display",' +
+      '"Sum \'^features\\.Greater Weapon Focus\' >= 1",' +
+      '"features.Shatter Defenses",' +
+      '"features.WeaponFocus"',
+  'Deafening Critical':
+    'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
+  'Deceitful':'Type=General',
+  'Defensive Combat Training':'Type=Fighter',
+  'Deflect Arrows':
+    'Type=Fighter Require="dexterity >= 13","features.Improved Unarmed Strike"',
+  'Deft Hands':'Type=General',
+  'Diehard':'Type=General Require="features.Endurance"',
+  'Disruptive':'Type=Fighter Require="level.Fighter >= 6"',
+  'Dodge':'Type=Fighter Require="dexterity >= 13"',
+  'Double Slice':
+    'Type=Fighter Require="dexterity >= 15","features.Two-Weapon Fighting"',
+  'Elemental Channel (Air)':'Type=General Require="features.Channel Energy"',
+  'Elemental Channel (Earth)':'Type=General Require="features.Channel Energy"',
+  'Elemental Channel (Fire)':'Type=General Require="features.Channel Energy"',
+  'Elemental Channel (Water)':'Type=General Require="features.Channel Energy"',
+  'Empower Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Endurance':'Type=General',
+  'Enlarge Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Eschew Materials':'Type=General Imply="casterLevel >= 1"',
+  'Exhausting Critical':
+    'Type=Fighter,Critical ' +
+    'Require=' +
+      '"baseAttack >= 15",' +
+      '"features.Critical Focus",' +
+      '"features.Tiring Critical"',
+  'Extend Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Extra Channel':'Type=General Require="features.Channel Energy"',
+  'Extra Ki':'Type=General Require="features.Ki Pool"',
+  'Extra Lay On Hands':'Type=General Require="features.Lay On Hands"',
+  'Extra Mercy':'Type=General Require="features.Lay On Hands",features.Mercy',
+  'Extra Performance':'Type=General Require="features.Bardic Performance"',
+  'Extra Rage':'Type=General Require=features.Rage',
+  'Far Shot':'Type=Fighter Require="features.Point-Blank Shot"',
+  'Fleet':'Type=General Imply="armorWeight < 2"',
+  'Forge Ring':'Type="Item Creation",Wizard Require="casterLevel >= 7"',
+  "Gorgon's Fist":
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"features.Improved Unarmed Strike",' +
+      '"features.Scorpion Style"',
+  'Great Cleave':
+    'Type=Fighter ' +
+    'Require=' +
+      '"strength >= 13",' +
+      '"baseAttack >= 4",' +
+      '"features.Cleave",' +
+      '"features.Power Attack"',
+  'Great Fortitude':'Type=General',
+  'Greater Bull Rush':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"strength >= 13",' +
+      '"features.Improved Bull Rush",' +
+      '"features.Power Attack"',
+  'Greater Disarm':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Disarm"',
+  'Greater Feint':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Feint"',
+  'Greater Grapple':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"dexterity >= 13",' +
+      '"features.Improved Grapple",' +
+      '"features.Improved Unarmed Strike"',
+  'Greater Overrun':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"strength >= 13",' +
+      '"features.Improved Overrun",' +
+      '"features.Power Attack"',
+  'Greater Penetrating Strike':
+    'Type=Fighter ' +
+    'Require=' +
+      '"level.Fighter >= 16",' +
+      '"features.Penetrating Strike",' +
+      '"Sum \'^features\\.Weapon Focus\' >= 1"',
+  'Greater Shield Focus':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 1",' +
+      '"levels.Fighter >= 8",' +
+      '"features.Shield Focus",' +
+      '"features.Shield Proficiency (Heavy)"',
+  'Greater Spell Penetration':
+    'Type=General ' +
+    'Imply="casterLevel >= 1" ' +
+    'Require="features.Spell Penetration"',
+  'Greater Sunder':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"strength >= 13",' +
+      '"features.Improved Sunder",' +
+      '"features.Power Attack"',
+  'Greater Trip':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Trip"',
   'Greater Two-Weapon Fighting':
-    SRD35.FEATS['Greater Two-Weapon Fighting'] + ' Require="baseAttack >= 11","dexterity >= 19","features.Improved Two-Weapon Fighting","features.Two-Weapon Fighting"',
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"dexterity >= 19",' +
+      '"features.Improved Two-Weapon Fighting",' +
+      '"features.Two-Weapon Fighting"',
+  'Greater Vital Strike':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 16",' +
+      '"features.Improved Vital Strike",' +
+      '"features.Vital Strike"',
+  'Greater Weapon Focus (Longsword)':
+    'Type=Fighter ' +
+    'Imply=weapons.Longsword ' +
+    'Require=' +
+      '"features.Weapon Focus (Longsword)",' +
+      '"levels.Fighter >= 8"',
+  'Greater Weapon Specialization (Longsword)':
+    'Type=Fighter ' +
+    'Imply=weapons.Longsword ' +
+    'Require=' +
+      '"features.Weapon Focus (Longsword)",' +
+      '"features.Greater Weapon Focus (Longsword)",' +
+      '"features.Weapon Specialization (Longsword)",' +
+      '"levels.Fighter >= 12"',
+  'Heighten Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Improved Bull Rush':
-    SRD35.FEATS['Improved Bull Rush'] + ' Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
+    'Type=Fighter ' +
+    'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
+  'Improved Channel':'Type=General Require="features.Channel Energy"',
+  'Improved Counterspell':'Type=General Imply="casterLevel >= 1"',
+  'Improved Critical (Longsword)':
+    'Type=Fighter Require="baseAttack >= 8" Imply=weapons.Longsword',
+  'Improved Disarm':
+    'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
+  'Improved Familiar':'Type=General Require="features.Familiar"',
+  'Improved Feint':
+    'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
+  'Improved Grapple':
+    'Type=Fighter Require="dexterity >= 13","features.Improved Unarmed Strike"',
+  'Improved Great Fortitude':'Type=General Require="features.Great Fortitude"',
+  'Improved Initiative':'Type=Fighter',
+  'Improved Iron Will':'Type=General Require="features.Iron Will"',
+  'Improved Lightning Reflexes':
+    'Type=General Require="features.Lightning Reflexes"',
   'Improved Overrun':
-    SRD35.FEATS['Improved Overrun'] + ' Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
+    'Type=Fighter ' +
+    'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
   'Improved Precise Shot':
-    SRD35.FEATS['Improved Precise Shot'] + ' Require="baseAttack >= 11","dexterity >= 19","features.Point-Blank Shot","features.Precise Shot"',
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"dexterity >= 19",' +
+      '"features.Point-Blank Shot",' +
+      '"features.Precise Shot"',
+  'Improved Shield Bash':
+    'Type=Fighter Require="features.Shield Proficiency (Heavy)"',
   'Improved Sunder':
-    SRD35.FEATS['Improved Sunder'] + ' Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
+    'Type=Fighter ' +
+    'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
+  'Improved Trip':
+    'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
   'Improved Two-Weapon Fighting':
-    SRD35.FEATS['Improved Two-Weapon Fighting'] + ' Require="baseAttack >= 6","dexterity >= 17","features.Two-Weapon Fighting"',
-  'Leadership':SRD35.FEATS['Leadership'] + ' Require="level >= 7"',
-  'Power Attack':
-    SRD35.FEATS['Power Attack'] + ' Require="baseAttack >= 1","strength >= 13"',
-  'Shield Proficiency (Heavy)':
-    SRD35.FEATS['Shield Proficiency (Heavy)'] + ' Type=Fighter',
-  'Shield Proficiency (Tower)':
-    SRD35.FEATS['Shield Proficiency (Tower)'] + ' Type=Fighter',
-  'Weapon Finesse':SRD35.FEATS['Weapon Finesse'] + ' Require=',
-
-  // Subfeats required by bloodlines
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"dexterity >= 17",' +
+      '"features.Two-Weapon Fighting"',
+  'Improved Unarmed Strike':'Type=Fighter',
+  'Improved Vital Strike':
+    'Type=Fighter Require="baseAttack >= 11","features.Vital Strike"',
+  'Improvised Weapon Mastery':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 8",' +
+      '"features.Catch Off-Guard || features.Throw Anything"',
+  'Intimidating Prowess':'Type=Fighter',
+  'Iron Will':'Type=General',
+  'Leadership':'Type=General Require="level >= 7"',
+  'Lightning Reflexes':'Type=General',
+  'Lightning Stance':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"dexterity >= 17",' +
+      '"features.Dodge",' +
+      '"features.Wind Stance"',
+  'Lunge':'Type=Fighter Require="baseAttack >= 6"',
+  'Magical Aptitude':'Type=General',
+  'Manyshot':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 17",' +
+      '"baseAttack >= 6",' +
+      '"features.Point-Blank Shot",' +
+      '"features.Rapid Shot"',
+  'Master Craftsman (Craft (Armor))':
+    'Type=General Require="skills.Craft (Armor) >= 5"',
+  'Master Craftsman (Profession (Tanner))':
+    'Type=General Require="skills.Profession (Tanner) >= 5"',
+  'Maximize Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  "Medusa's Wrath":
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"features.Improved Unarmed Strike",' +
+      '"features.Gorgon\'s Fist",' +
+      '"features.Scorpion Style"',
+  'Mobility':'Type=Fighter Require="dexterity >= 13",features.Dodge',
+  'Mounted Archery':
+    'Type=Fighter Require="features.Mounted Combat",skills.Ride',
+  'Mounted Combat':'Type=Fighter Require=skills.Ride',
+  'Natural Spell':'Type=General Require="wisdom >= 13","features.Wild Shape"',
+  'Nimble Moves':'Type=General Require="dexterity >= 13"',
+  'Penetrating Strike':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 1",' +
+      '"levels.Fighter >= 12",' +
+      '"Sum \'^features\\.Weapon Focus\' >= 1"',
+  'Persuasive':'Type=General',
+  'Pinpoint Targeting':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 16",' +
+      '"dexterity >= 19",' +
+      '"features.Improved Precise Shot",' +
+      '"features.Point-Blank Shot"',
+  'Point-Blank Shot':'Type=Fighter',
+  'Power Attack':'Type=Fighter Require="baseAttack >= 1","strength >= 13"',
+  'Precise Shot':'Type=Fighter Require="features.Point-Blank Shot"',
+  'Quick Draw':'Type=Fighter Require="baseAttack >= 1"',
+  'Quicken Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Rapid Reload (Hand)':'Type=Fighter Imply="weapons.Hand Crossbow"',
+  'Rapid Reload (Heavy)':'Type=Fighter Imply="weapons.Heavy Crossbow"',
+  'Rapid Reload (Light)':'Type=Fighter Imply="weapons.Light Crossbow"',
+  'Rapid Shot':
+    'Type=Fighter Require="dexterity >= 13","features.Point-Blank Shot"',
+  'Ride-By Attack':'Type=Fighter Require="features.Mounted Combat",skills.Ride',
+  'Run':'Type=General',
+  'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
+  'Scribe Scroll':'Type="Item Creation",Wizard Require="casterLevel >= 1"',
+  'Selective Channeling':
+    'Type=General Require="charisma >= 13","features.Channel Energy"',
+  'Self-Sufficient':'Type=General',
+  'Shatter Defenses':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"Sum \'^features\\.Weapon Focus\' >= 1",' +
+      '"features.Dazzing Display"',
+  'Shield Focus':
+    'Type=Fighter ' +
+    'Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
+  'Shield Master':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"features.Improved Shield Bash",' +
+      '"features.Shield Proficiency (Heavy)",' +
+      '"features.Shield Slam",' +
+      '"features.Two-Weapon Fighting"',
+  'Shield Proficiency (Heavy)':'Type=Fighter',
+  'Shield Proficiency (Tower)':'Type=Fighter',
+  'Shield Slam':
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 6",' +
+      '"features.Improved Shield Bash",' +
+      '"features.Shield Proficiency (Heavy)",' +
+      '"features.Two-Weapon Fighting"',
+  'Shot On The Run':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"baseAttack >= 4",' +
+      '"features.Dodge",' +
+      '"features.Mobility",' +
+      '"features.Point-Blank Shot"',
+  'Sickening Critical':'Type=Fighter,Critical',
+  'Silent Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  // Skill Focus subfeats required by bloodlines
   'Skill Focus (Fly)':'Type=General',
   'Skill Focus (Knowledge (Arcana))':'Type=General',
   'Skill Focus (Knowledge (Dungeoneering))':'Type=General',
@@ -426,222 +780,361 @@ Pathfinder.FEATS = Object.assign({}, SRD35.FEATS, {
   'Skill Focus (Knowledge (Nature))':'Type=General',
   'Skill Focus (Knowledge (Planes))':'Type=General',
   'Skill Focus (Knowledge (Religion))':'Type=General',
-
-  // New feats
-  'Acrobatic Steps':'Type=General',
-  'Agile Maneuvers':'Type=Fighter Imply="dexterityModifier > strengthModifier"',
-  'Alignment Channel (Chaos)':'Type=General Require="features.Channel Energy"',
-  'Alignment Channel (Evil)':'Type=General Require="features.Channel Energy"',
-  'Alignment Channel (Good)':'Type=General Require="features.Channel Energy"',
-  'Alignment Channel (Law)':'Type=General Require="features.Channel Energy"',
-  'Arcane Armor Mastery':
-    'Type=Fighter Require="casterLevel >= 7","features.Arcane Armor Training","features.Armor Proficiency (Medium)"',
-  'Arcane Armor Training':
-    'Type=Fighter Require="casterLevel >= 3","features.Armor Proficiency (Light)"',
-  'Arcane Strike':'Type=Fighter Require="casterLevelArcane >= 1"',
-  'Bleeding Critical':
-    'Type=Fighter,Critical Require="baseAttack>=11","features.Critical Focus"',
-  'Blinding Critical':
-    'Type=Fighter,Critical Require="baseAttack>=15","features.Critical Focus"',
-  'Catch Off-Guard':'Type=Fighter',
-  'Channel Smite':'Type=Fighter Require="features.Channel Energy"',
-  'Command Undead':'Type=General Require="features.Channel Energy"',
-  'Critical Focus':'Type=Fighter Require="baseAttack >= 9"',
-  'Critical Mastery':
-    'Type=Fighter Require="level.Fighter >= 14","features.Critical Focus","Sum \'^features\\..*Critical$\' >= 2"',
-  'Dazzling Display':'Type=Fighter Require="Sum \'^features\\.Weapon Focus\' >= 1"',
-  'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
-  'Deadly Stroke':
-    'Type=Fighter Require="baseAttack >= 11","features.Dazzling Display","Sum \'^features\\.Greater Weapon Focus\' >= 1","features.Shatter Defenses","features.WeaponFocus"',
-  'Deafening Critical':
-    'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
-  'Defensive Combat Training':'Type=Fighter',
-  'Disruptive':'Type=Fighter Require="level.Fighter >= 6"',
-  'Double Slice':
-    'Type=Fighter Require="dexterity >= 15","features.Two-Weapon Fighting"',
-  'Elemental Channel (Air)':'Type=General Require="features.Channel Energy"',
-  'Elemental Channel (Earth)':'Type=General Require="features.Channel Energy"',
-  'Elemental Channel (Fire)':'Type=General Require="features.Channel Energy"',
-  'Elemental Channel (Water)':'Type=General Require="features.Channel Energy"',
-  'Exhausting Critical':
-    'Type=Fighter,Critical Require="baseAttack >= 15","features.Critical Focus","features.Tiring Critical"',
-  'Extra Channel':'Type=General Require="features.Channel Energy"',
-  'Extra Ki':'Type=General Require="features.Ki Pool"',
-  'Extra Lay On Hands':'Type=General Require="features.Lay On Hands"',
-  'Extra Mercy':'Type=General Require="features.Lay On Hands",features.Mercy',
-  'Extra Performance':'Type=General Require="features.Bardic Performance"',
-  'Extra Rage':'Type=General Require=features.Rage',
-  'Fleet':'Type=General Imply="armorWeight < 2"',
-  "Gorgon's Fist":
-    'Type=Fighter Require="baseAttack >= 6","features.Improved Unarmed Strike","features.Scorpion Style"',
-  'Greater Bull Rush':
-    'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Bull Rush","features.Power Attack"',
-  'Greater Disarm':
-    'Type=Fighter Require="baseAttack >= 6","intelligence >= 13","features.Combat Expertise","features.Improved Disarm"',
-  'Greater Feint':
-    'Type=Fighter Require="baseAttack >= 6","intelligence >= 13","features.Combat Expertise","features.Improved Feint"',
-  'Greater Grapple':
-    'Type=Fighter Require="baseAttack >= 6","dexterity >= 13","features.Improved Grapple","features.Improved Unarmed Strike"',
-  'Greater Overrun':
-    'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Overrun","features.Power Attack"',
-  'Greater Penetrating Strike':
-    'Type=Fighter Require="level.Fighter >= 16","features.Penetrating Strike","Sum \'^features\\.Weapon Focus\' >= 1"',
-  'Greater Shield Focus':
-    'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 8","features.Shield Focus","features.Shield Proficiency (Heavy)"',
-  'Greater Sunder':
-    'Type=Fighter Require="baseAttack >= 6","strength >= 13","features.Improved Sunder","features.Power Attack"',
-  'Greater Trip':
-    'Type=Fighter Require="baseAttack >= 6","intelligence >= 13","features.Combat Expertise","features.Improved Trip"',
-  'Greater Vital Strike':
-    'Type=Fighter Require="baseAttack >= 16","features.Improved Vital Strike","features.Vital Strike"',
-  'Improved Channel':'Type=General Require="features.Channel Energy"',
-  'Improved Great Fortitude':'Type=General Require="features.Great Fortitude"',
-  'Improved Iron Will':'Type=General Require="features.Iron Will"',
-  'Improved Lightning Reflexes':
-    'Type=General Require="features.Lightning Reflexes"',
-  'Improved Vital Strike':
-    'Type=Fighter Require="baseAttack >= 11","features.Vital Strike"',
-  'Improvised Weapon Mastery':
-    'Type=Fighter Require="baseAttack >= 8","features.Catch Off-Guard || features.Throw Anything"',
-  'Intimidating Prowess':'Type=Fighter',
-  'Lightning Stance':
-    'Type=Fighter Require="baseAttack >= 11","dexterity >= 17",features.Dodge,"features.Wind Stance"',
-  'Lunge':'Type=Fighter Require="baseAttack >= 6"',
-  'Master Craftsman (Craft (Armor))':
-    'Type=General Require="skills.Craft (Armor) >= 5"',
-  'Master Craftsman (Profession (Tanner))':
-    'Type=General Require="skills.Profession (Tanner) >= 5"',
-  "Medusa's Wrath":
-    'Type=Fighter Require="baseAttack >= 11","features.Improved Unarmed Strike","features.Gorgon\'s Fist","features.Scorpion Style"',
-  'Nimble Moves':'Type=General Require="dexterity >= 13"',
-  'Penetrating Strike':
-    'Type=Fighter Require="baseAttack >= 1","levels.Fighter >= 12","Sum \'^features\\.Weapon Focus\' >= 1"',
-  'Pinpoint Targeting':
-    'Type=Fighter Require="baseAttack >= 16","dexterity >= 19","features.Improved Precise Shot","features.Point-Blank Shot"',
-  'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
-  'Selective Channeling':
-    'Type=General Require="charisma >= 13","features.Channel Energy"',
-  'Shatter Defenses':
-    'Type=Fighter Require="baseAttack >= 6","Sum \'^features\\.Weapon Focus\' >= 1","features.Dazzing Display"',
-  'Shield Focus':
-    'Type=Fighter Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
-  'Shield Master':
-    'Type=Fighter Require="baseAttack >= 11","features.Improved Shield Bash","features.Shield Proficiency (Heavy)","features.Shield Slam","features.Two-Weapon Fighting"',
-  'Shield Slam':
-    'Type=Fighter Require="baseAttack >= 6","features.Improved Shield Bash","features.Shield Proficiency (Heavy)","features.Two-Weapon Fighting"',
-  'Sickening Critical':'Type=Fighter,Critical',
+  'Snatch Arrows':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 15",' +
+      '"features.Deflect Arrows",' +
+      '"features.Improved Unarmed Strike"',
+  'Spell Focus (Abjuration)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Conjuration)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Divination)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Enchantment)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Evocation)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Illusion)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Necromancy)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (Transmutation)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Mastery':
+    'Type=Wizard Imply="intelligenceModifier > 0" Require="levels.Wizard >= 1"',
+  'Spell Penetration':'Type=General Imply="casterLevel >= 1"',
   'Spellbreaker':
     'Type=Fighter Require="levels.Fighter >= 10","features.Disruptive"',
+  'Spirited Charge':
+    'Type=Fighter ' +
+    'Require="features.Mounted Combat","features.Ride-By Attack",skills.Ride',
+  'Spring Attack':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"baseAttack >= 4",' +
+      '"features.Dodge",' +
+      '"features.Mobility"',
   'Staggering Critical':
-    'Type=Fighter,Critical Require="baseAttack >= 13","features.Critical Focus"',
+    'Type=Fighter,Critical ' +
+    'Require="baseAttack >= 13","features.Critical Focus"',
   'Stand Still':'Type=Fighter Require="features.Combat Reflexes"',
+  'Stealthy':'Type=General',
   'Step Up':'Type=Fighter Require="baseAttack >= 1"',
+  'Still Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Strike Back':'Type=Fighter Require="baseAttack >= 11"',
   'Stunning Critical':
-    'Type=Fighter,Critical Require="baseAttack >= 17","features.Critical Focus","features.Staggering Critical"',
+    'Type=Fighter,Critical ' +
+    'Require=' +
+      '"baseAttack >= 17",' +
+      '"features.Critical Focus",' +
+      '"features.Staggering Critical"',
+  'Stunning Fist':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"wisdom >= 13",' +
+      '"baseAttack >= 8",' +
+      '"features.Improved Unarmed Strike"',
   'Throw Anything':'Type=Fighter',
   'Tiring Critical':
-    'Type=Fighter,Critcial Require="baseAttack >= 13","features.Critical Focus"',
+    'Type=Fighter,Critcial ' +
+    'Require="baseAttack >= 13","features.Critical Focus"',
+  'Toughness':'Type=General',
+  'Trample':'Type=Fighter Require="features.Mounted Combat",skills.Ride',
   'Turn Undead':'Type=General Require="features.Channel Energy"',
+  'Two-Weapon Defense':
+    'Type=Fighter Require="dexterity >= 15","features.Two-Weapon Fighting"',
+  'Two-Weapon Fighting':'Type=Fighter Require="dexterity >= 15"',
   'Two-Weapon Rend':
-    'Type=Fighter Require="baseAttack >= 11","dexterity >= 17","features.Double Slice","features.Improved Two-Weapon Fighting","features.Two-Weapon Fighting"',
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 11",' +
+      '"dexterity >= 17",' +
+      '"features.Double Slice",' +
+      '"features.Improved Two-Weapon Fighting",' +
+      '"features.Two-Weapon Fighting"',
   'Unseat':
-    'Type=Fighter Require="baseAttack >= 1","strength >= 13","skills.Ride","features.Mounted Attack","features.Power Attack","features.Improved Bull Rush"',
+    'Type=Fighter ' +
+    'Require=' +
+      '"baseAttack >= 1",' +
+      '"strength >= 13",' +
+      '"skills.Ride",' +
+      '"features.Mounted Attack",' +
+      '"features.Power Attack",' +
+      '"features.Improved Bull Rush"',
   'Vital Strike':'Type=Fighter Require="baseAttack >= 6"',
+  'Weapon Finesse':
+    'Type=Fighter ' +
+    'Imply="dexterityModifier > strengthModifier"',
+  'Weapon Focus (Longsword)':
+    'Type=Fighter Require="baseAttack >= 1" Imply=weapons.Longsword',
+  'Weapon Proficiency (Simple)':'Type=General',
+  'Weapon Proficiency (Longsword)':
+    'Type=General Require="baseAttack >= 1" Imply="weapons.Longsword"',
+  'Weapon Specialization (Longsword)':
+    'Type=Fighter ' +
+    'Imply="weapons.Longsword" ' +
+    'Require=' +
+      '"features.Weapon Focus (Longsword)",' +
+      '"levels.Fighter >= 4"',
+  'Whirlwind Attack':
+    'Type=Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"intelligence >= 13",' +
+      '"baseAttack >= 4",' +
+      '"features.Combat Expertise",' +
+      '"features.Dodge",' +
+      '"features.Mobility",' +
+      '"features.Spring Attack"',
+  'Widen Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Wind Stance':
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 15","features.Dodge"'
-});
-// Delete SRD35 feats not present in PRD
-delete Pathfinder.FEATS['Agile'];
-delete Pathfinder.FEATS['Diligent'];
-delete Pathfinder.FEATS['Extra Turning'];
-delete Pathfinder.FEATS['Improved Turning'];
-delete Pathfinder.FEATS['Investigator'];
-delete Pathfinder.FEATS['Negotiator'];
-delete Pathfinder.FEATS['Nimble Fingers'];
-delete Pathfinder.FEATS['Track'];
-Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
-{
+};
+Pathfinder.FEATURES = {
 
-  // Features modified from SRD35
+  // Shared with SRD35
   'Abundant Step':'Section=magic Note="Use 2 ki to <i>Dimension Door</i>"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%V Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%V Sense Motive"',
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%V Ride"',
+  'Animal Companion':'Section=feature Note="Special bond and abilities"',
   'Armor Class Bonus':'Section=combat Note="+%V AC/+%V CMD"',
   'Athletic':'Section=skill Note="+%V Climb/+%V Swim"',
+  'Augment Summoning':'Section=magic Note="Summoned creatures +4 Str, +4 Con"',
+  'Aura':
+    'Section=magic ' +
+    'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
+  'Aura Of Courage':'Section=save Note="Immune fear, +4 to allies w/in 30\'"',
   'Bardic Knowledge':
     'Section=skill Note="+%V all Knowledge, use any Knowledge untrained"',
   'Blind-Fight':
     'Section=combat ' +
     'Note="Reroll concealed miss, no bonus to invisible foe, no skill check on blinded full speed move"',
+  'Brew Potion':'Section=magic Note="Create potion for up to 3rd level spell"',
   'Camouflage':'Section=skill Note="Hide in favored terrain"',
   'Cleave':'Section=combat Note="-2 AC for attack against two foes"',
   'Combat Casting':
     'Section=skill Note="+4 concentration (defensive or grappling)"',
   'Combat Expertise':
     'Section=combat Note="Trade up to -%V attack for equal AC bonus"',
+  'Combat Reflexes':'Section=combat Note="Flatfooted AOO, %V AOO/rd"',
   'Companion Alertness':
     'Section=skill Note="+2 Perception, Sense Motive when companion in reach"',
+  'Companion Evasion':
+    'Section=companion Note="Reflex save yields no damage instead of half"',
+  'Companion Improved Evasion':
+    'Section=companion Note="Failed save yields half damage"',
+  'Countersong':
+    'Section=magic Note="R30\' Perform check vs. sonic magic for 10 rd"',
+  'Craft Magic Arms And Armor':
+    'Section=magic Note="Create and mend magic weapons, armor, and shields"',
+  'Craft Rod':'Section=magic Note="Create magic rod"',
+  'Craft Staff':'Section=magic Note="Create magic staff"',
+  'Craft Wand':'Section=magic Note="Create wand for up to 4th level spell"',
+  'Craft Wondrous Item':
+    'Section=magic Note="Create and mend miscellaneous magic items"',
+  'Crippling Strike':
+    'Section=combat Note="2 points Str damage from sneak attack"',
+  'Damage Reduction':'Section=combat Note="Negate %V HP each attack"',
+  'Darkvision':'Section=feature Note="60\' b/w vision in darkness"',
   'Deceitful':'Section=skill Note="+%V Bluff/+%V Disguise"',
+  'Defensive Roll':
+    'Section=combat ' +
+    'Note="DC damage Reflex save vs. lethal blow for half damage"',
+  'Deflect Arrows':'Section=combat Note="No damage from ranged hit 1/rd"',
   'Deft Hands':'Section=skill Note="+%V Disable Device/+%V Sleight Of Hand"',
+  'Deliver Touch Spells':
+    'Section=companion ' +
+    'Note="Deliver touch spells if in contact w/master when cast"',
+  'Detect Evil':'Section=magic Note="<i>Detect Evil</i> at will"',
+  'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
+  'Diamond Body':'Section=save Note="Immune to poison"',
+  'Diamond Soul':'Section=save Note="DC %V spell resistance"',
+  'Diehard':
+    'Section=combat Note="Remain conscious and stable with negative HP"',
+  'Divine Grace':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
+  'Divine Health':'Section=save Note="Immune to disease"',
   'Dodge':'Section=combat Note="+1 AC/+1 CMD"',
   'Dwarf Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Wisdom/-2 Charisma"',
+  'Dwarf Armor Speed Adjustment':
+    'Section=ability Note="No armor speed penalty"',
+  'Dwarf Enmity':'Section=combat Note="+1 attack vs. goblinoid and orc"',
   'Elf Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Intelligence/-2 Constitution"',
-  'Empty Body':'Section=magic Note="Use 3 ki for 1 minute <i>Etherealness</i>"',
+  'Empathic Link':'Section=companion Note="Share emotions up to 1 mile"',
+  'Empower Spell':
+    'Section=magic ' +
+    'Note="x1.5 chosen spell variable effects uses +2 spell slot"',
+  'Empty Body':'Section=magic Note="Use 3 ki for 1 min <i>Etherealness</i>"',
+  'Endurance':'Section=save Note="+4 extended physical action"',
+  'Enlarge Spell':
+    'Section=magic Note="x2 chosen spell range uses +1 spell slot"',
+  'Eschew Materials':'Section=magic Note="Cast spells w/out materials"',
+  'Evasion':'Section=save Note="Reflex save yields no damage instead of half"',
+  'Extend Spell':
+    'Section=magic Note="x2 chosen spell duration uses +1 spell slot"',
   'Familiar Bat':'Section=skill Note="+3 Fly"',
   'Familiar Cat':'Section=skill Note="+3 Stealth"',
+  'Familiar Hawk':'Section=skill Note="+3 Spot in bright light"',
+  'Familiar Lizard':'Section=skill Note="+3 Climb"',
+  'Familiar Owl':'Section=skill Note="+3 Spot in shadows and darkness"',
+  'Familiar Rat':'Section=save Note="+2 Fortitude"',
+  'Familiar Raven':'Section=skill Note="+3 Appraise"',
+  'Familiar Tiny Viper':'Section=skill Note="+3 Bluff"',
+  'Familiar Toad':'Section=combat Note="+3 Hit Points"',
+  'Familiar Weasel':'Section=save Note="+2 Reflex"',
+  'Familiar':'Section=feature Note="Special bond and abilities"',
   'Far Shot':'Section=combat Note="-1 range penalty"',
+  'Fascinate':
+    'Section=magic ' +
+    'Note="R90\' Hold %V creatures spellbound %1 rd (DC %2 Will neg)"',
   'Fast Movement':'Section=ability Note="+%V Speed"',
   'Favored Enemy':
     'Section=combat,skill ' +
-    'Note="+2 or more attack and damage vs. %V type(s) of creatures","+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
+    'Note="+2 or more attack and damage vs. %V type(s) of creatures",' +
+         '"+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
+  'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Flurry Of Blows':
     'Section=combat ' +
     'Note="Full-round %V +%1 monk weapon attacks, use 1 ki for one more"',
+  'Forge Ring':'Section=magic Note="Create and mend magic rings"',
+  'Fortunate':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Gnome Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Charisma/-2 Strength"',
-  'Gnome Emnity':'Section=combat Note="+1 attack vs. goblinoid and reptilian"',
+  'Gnome Enmity':'Section=combat Note="+1 attack vs. goblinoid and reptilian"',
   'Good Fortune':'Section=magic Note="Reroll d20 %V/day"',
+  'Great Cleave':'Section=combat Note="Cleave w/out limit"',
+  'Great Fortitude':'Section=save Note="+2 Fortitude"',
+  'Greater Rage':'Section=combat Note="+6 Str, +6 Con, +3 Will during rage"',
+  'Greater Spell Focus (Abjuration)':
+    'Section=magic Note="+1 Spell DC (Abjuration)"',
+  'Greater Spell Focus (Conjuration)':
+    'Section=magic Note="+1 Spell DC (Conjuration)"',
+  'Greater Spell Focus (Divination)':
+    'Section=magic Note="+1 Spell DC (Divination)"',
+  'Greater Spell Focus (Enchantment)':
+    'Section=magic Note="+1 Spell DC (Enhancement)"',
+  'Greater Spell Focus (Evocation)':
+    'Section=magic Note="+1 Spell DC (Evocation)"',
+  'Greater Spell Focus (Illusion)':
+    'Section=magic Note="+1 Spell DC (Illusion)"',
+  'Greater Spell Focus (Necromancy)':
+    'Section=magic Note="+1 Spell DC (Necromancy)"',
+  'Greater Spell Focus (Transmutation)':
+    'Section=magic Note="+1 Spell DC (Transmutation)"',
+  'Greater Spell Penetration':
+    'Section=magic Note="+2 caster level vs. resistance checks"',
+  'Greater Two-Weapon Fighting':
+    'Section=combat Note="Third off-hand -10 attack"',
   'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
+  'Halfling Ability Adjustment':
+    'Section=ability Note="+2 Dexterity/-2 Strength"',
+  'Heighten Spell':'Section=magic Note="Increase chosen spell level"',
+  'Hide In Plain Sight':'Section=skill Note="Hide even when observed"',
   'Improved Bull Rush':
     'Section=combat ' +
     'Note="No AOO on Bull Rush, +2 Bull Rush check, +2 Bull Rush CMD"',
+  'Improved Counterspell':
+    'Section=magic Note="Counter using higher-level spell from same school"',
+  'Improved Critical (Longsword)':
+    'Section=combat Note="x2 Longsword Threat Range"',
   'Improved Disarm':
     'Section=combat Note="No AOO on Disarm, +2 Disarm check, +2 Disarm CMD"',
+  'Improved Evasion':'Section=save Note="Failed save yields half damage"',
+  'Improved Familiar':'Section=feature Note="Expanded Familiar choices"',
+  'Improved Feint':'Section=combat Note="Bluff check to Feint as move action"',
   'Improved Grapple':
     'Section=combat Note="No AOO on Grapple, +2 Grapple check, +2 Grapple CMD"',
+  'Improved Initiative':'Section=combat Note="+4 Initiative"',
   'Improved Overrun':
     'Section=combat ' +
     'Note="No AOO on Overrun, +2 Overrun check, +2 Overrun CMD, foes cannot avoid"',
   'Improved Precise Shot':
     'Section=combat Note="No foe AC bonus for partial concealment"',
+  'Improved Shield Bash':'Section=combat Note="No AC penalty on Shield Bash"',
+  'Improved Speed':'Section=companion Note="+10 companion Speed"',
   'Improved Sunder':
     'Section=combat Note="No AOO on Sunder, +2 Sunder check, +2 Sunder CMD"',
   'Improved Trip':
     'Section=combat Note="No AOO on Trip, +2 Trip check, +2 Trip CMD"',
+  'Improved Turning':'Section=combat Note="+1 Turning Level"',
+  'Improved Two-Weapon Fighting':
+    'Section=combat Note="Second off-hand -5 attack"',
+  'Improved Unarmed Strike':
+    'Section=combat Note="No AOO on Unarmed attack, may deal lethal damage"',
+  'Improved Uncanny Dodge':
+    'Section=combat ' +
+    'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
+  'Increased Unarmed Damage':'Section=combat Note="%V"',
+  'Indomitable Will':
+    'Section=save Note="+4 enchantment resistance during rage"',
   'Inspire Competence':
     'Section=magic Note="+%V allies skill checks while performing"',
+  'Inspire Courage':
+    'Section=magic ' +
+    'Note="+%V allies attack, damage, charm, fear saves while performing"',
+  'Inspire Greatness':
+    'Section=magic ' +
+    'Note="%V allies +2d10 HP, +2 attack, +1 Fortitude while performing"',
+  'Inspire Heroics':
+    'Section=magic Note="%V allies +4 AC and saves while performing"',
+  'Iron Will':'Section=save Note="+2 Will"',
   'Keen Senses':'Section=skill Note="+2 Perception"',
+  'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
   'Large':
     'Section=ability,combat,skill ' +
     'Note="x2 Load Max",' +
          '"-1 AC/-1 Melee Attack/-1 Ranged Attack/+1 CMB/+1 CMD",' +
          '"-2 Fly/+4 Intimidate/-4 Stealth"',
   'Lay On Hands':'Section=magic Note="Harm undead or heal %Vd6 HP %1/day"',
+  'Leadership':'Section=feature Note="Attract followers"',
+  'Lightning Reflexes':'Section=save Note="+2 Reflex"',
+  'Link':
+    'Section=skill ' +
+    'Note="+4 Handle Animal (companion)/Wild Empathy (companion)"',
+  'Low-Light Vision':'Section=feature Note="x2 normal distance in poor light"',
   'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%V Use Magic Device"',
   'Manyshot':'Section=combat Note="Fire 2 arrows simultaneously"',
+  'Mass Suggestion':
+    'Section=magic ' +
+    'Note="<i>Suggestion</i> to all fascinated creatures (DC %V Will neg)"',
+  'Maximize Spell':
+    'Section=magic ' +
+    'Note="Maximize all chosen spell variable effects uses +3 spell slot"',
+  'Mighty Rage':'Section=combat Note="+8 Str, +8 Con, +4 Will during rage"',
+  'Mobility':'Section=combat Note="+4 AC vs. movement AOO"',
+  'Mounted Archery':'Section=combat Note="x.5 mounted ranged penalty"',
+  'Mounted Combat':
+    'Section=combat Note="Ride skill save vs. mount damage 1/rd"',
+  'Natural Spell':'Section=magic Note="Cast spell during <i>Wild Shape</i>"',
+  'Nature Sense':'Section=skill Note="+2 Knowledge (Nature)/+2 Survival"',
+  'Opportunist':'Section=combat Note="AOO vs. foe struck by ally"',
   'Perfect Self':
     'Section=combat,save ' +
     'Note="DR 10/chaotic","Treat as outsider for magic saves"',
   'Persuasive':'Section=skill Note="+%V Diplomacy/+%V Intimidate"',
+  'Point-Blank Shot':
+    'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
   'Power Attack':
     'Section=combat Note="Trade up to -%V attack for double damage bonus"',
+  'Precise Shot':'Section=combat Note="No penalty on shot into melee"',
+  'Purity Of Body':'Section=save Note="Immune to normal disease"',
+  'Quick Draw':'Section=combat Note="Draw weapon as free action"',
+  'Quicken Spell':
+    'Section=magic Note="Free action casting 1/rd uses +4 spell slot"',
   'Quivering Palm':
     'Section=combat Note="Struck foe dies 1/dy (DC %V Fort neg)"',
   'Rage':'Section=combat Note="+4 Str, +4 Con, +2 Will, -2 AC %V rd/8 hr rest"',
+  'Rapid Reload (Hand)':
+    'Section=combat Note="Reload Hand Crossbow as free action"',
+  'Rapid Reload (Heavy)':
+    'Section=combat Note="Reload Heavy Crossbow as move action"',
+  'Rapid Reload (Light)':
+    'Section=combat Note="Reload Light Crossbow as free action"',
+  'Rapid Shot':'Section=combat Note="Normal and extra ranged -2 attacks"',
+  'Remove Disease':'Section=magic Note="<i>Remove Disease</i> %V/week"',
+  'Resist Enchantment':'Section=save Note="+2 vs. enchantment"',
+  'Resist Fear':'Section=save Note="+2 vs. fear"',
+  'Resist Illusion':'Section=save Note="+2 vs. illusions"',
+  "Resist Nature's Lure":'Section=save Note="+4 vs. spells of feys"',
+  'Ride-By Attack':'Section=combat Note="Move before, after mounted attack"',
   'Run':
     'Section=ability,combat,skill ' +
     'Note="+1 Run Speed Multiplier",' +
@@ -661,7 +1154,55 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
     'Section=magic Note="Double cost to cast Necromancy spells"',
   'School Opposition (Transmutation)':
     'Section=magic Note="Double cost to cast Transmutation spells"',
+  'School Specialization (Abjuration)':
+    'Section=magic,skill ' +
+    'Note="Extra Abjuration spell/dy each spell level",' +
+         '"+2 Spellcraft (Abjuration effects)"',
+  'School Specialization (Conjuration)':
+    'Section=magic,skill ' +
+    'Note="Extra Conjuration spell/dy each spell level",' +
+         '"+2 Spellcraft (Conjuration effects)"',
+  'School Specialization (Divination)':
+    'Section=magic,skill ' +
+    'Note="Extra Divination spell/dy each spell level",' +
+         '"+2 Spellcraft (Divination effects)"',
+  'School Specialization (Enchantment)':
+    'Section=magic,skill ' +
+    'Note="Extra Enchantment spell/dy each spell level",' +
+         '"+2 Spellcraft (Enchantment effects)"',
+  'School Specialization (Evocation)':
+    'Section=magic,skill ' +
+    'Note="Extra Evocation spell/dy each spell level",' +
+         '"+2 Spellcraft (Evocation effects)"',
+  'School Specialization (Illusion)':
+    'Section=magic,skill ' +
+    'Note="Extra Illusion spell/dy each spell level",' +
+         '"+2 Spellcraft (Illusion effects)"',
+  'School Specialization (Necromancy)':
+    'Section=magic,skill ' +
+    'Note="Extra Necromancy spell/dy each spell level",' +
+         '"+2 Spellcraft (Necromancy effects)"',
+  'School Specialization (Transmutation)':
+    'Section=magic,skill ' +
+    'Note="Extra Transmutation spell/dy each spell level",' +
+         '"+2 Spellcraft (Transmutation effects)"',
+  'Scribe Scroll':'Section=magic Note="Create scroll of any known spell"',
+  'Scry':'Section=companion Note="Master views companion 1/dy"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%V Survival"',
+  'Share Saving Throws':'Section=companion Note="+%1 Fort/+%2 Ref/+%3 Will"',
+  'Share Spells':
+    'Section=companion Note="Master share self spell w/companion w/in 5\'"',
+  'Shot On The Run':'Section=combat Note="Move before, after ranged attack"',
+  'Silent Spell':
+    'Section=magic Note="Cast spell w/out speech uses +1 spell slot"',
+  'Simple Somatics':
+    'Section=magic Note="No arcane spell failure in light armor"',
+  'Skill Mastery':
+    'Section=skill Note="Take 10 despite distraction on %V chosen skills"',
+  'Sleep Immunity':'Section=save Note="Immune <i>Sleep</i>"',
+  'Slippery Mind':'Section=save Note="Second save vs. enchantment"',
+  'Slow':'Section=ability Note="-10 Speed"',
+  'Slow Fall':'Section=save Note="Subtract %V\' from falling damage distance"',
   'Small':
     'Section=ability,combat,skill ' +
     'Note="x0.75 Load Max",' +
@@ -669,18 +1210,82 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat Note="+%V attack/+%1 damage/+%2 AC vs. evil foe %2/day"',
+  'Snatch Arrows':'Section=combat Note="Catch ranged weapons"',
+  'Sneak Attack':
+    'Section=combat Note="Hit +%Vd6 HP when surprising or flanking"',
+  'Speak With Like Animals':'Section=companion Note="Talk w/similar creatures"',
+  'Speak With Master':
+    'Section=companion Note="Talk w/master in secret language"',
+  'Special Mount':'Section=feature Note="Magical mount w/special abilities"',
+  'Spell Focus (Abjuration)':'Section=magic Note="+1 Spell DC (Abjuration)"',
+  'Spell Focus (Conjuration)':'Section=magic Note="+1 Spell DC (Conjuration)"',
+  'Spell Focus (Divination)':'Section=magic Note="+1 Spell DC (Divination)"',
+  'Spell Focus (Enchantment)':'Section=magic Note="+1 Spell DC (Enhancement)"',
+  'Spell Focus (Evocation)':'Section=magic Note="+1 Spell DC (Evocation)"',
+  'Spell Focus (Illusion)':'Section=magic Note="+1 Spell DC (Illusion)"',
+  'Spell Focus (Necromancy)':'Section=magic Note="+1 Spell DC (Necromancy)"',
+  'Spell Focus (Transmutation)':
+    'Section=magic Note="+1 Spell DC (Transmutation)"',
+  'Spell Mastery':'Section=magic Note="Prepare %V spells w/out spellbook"',
+  'Spell Penetration':
+    'Section=magic Note="+2 checks to overcome spell resistance"',
+  'Spirited Charge':
+    'Section=combat Note="x2 damage (x3 lance) on mounted charge"',
+  'Spontaneous Cleric Spell':
+    'Section=magic ' +
+    'Note="Cast <i>Cure</i> or <i>Inflict</i> in place of known spell"',
+  'Spontaneous Druid Spell':
+    'Section=magic ' +
+    'Note="Cast <i>Summon Nature\'s Ally</i> in place of known spell"',
+  'Spring Attack':'Section=combat Note="Move before, after melee attack"',
   'Stability':'Section=combat Note="+4 CMD vs. Bull Rush and Trip"',
   'Stealthy':'Section=skill Note="+%V Escape Artist/+%V Stealth"',
+  'Still Mind':'Section=save Note="+2 vs. enchantment"',
+  'Still Spell':
+    'Section=magic Note="Cast spell w/out movement uses +1 spell slot"',
   'Stonecunning':
     'Section=skill Note="+2 Perception (stone), automatic check w/in 10\'"',
+  'Stunning Fist':
+    'Section=combat Note="Struck foe stunned %V/dy (DC %1 Fort neg)"',
+  'Suggestion':
+    'Section=magic ' +
+    'Note="<i>Suggestion</i> to 1 fascinated creature (DC %V neg)"',
+  'Swift Tracker':'Section=skill Note="Track at full speed"',
+  'Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
+  'Timeless Body':'Section=feature Note="No aging penalties"',
+  'Tireless Rage':'Section=combat Note="Not fatigued after rage"',
+  'Tongue Of The Sun And Moon':
+    'Section=feature Note="Speak w/any living creature"',
   'Toughness':'Section=combat Note="+%V HP"',
   'Track':'Section=skill Note="+%V Survival to follow creatures\' trail"',
+  'Trackless Step':'Section=feature Note="Untrackable outdoors"',
+  'Trample':
+    'Section=combat Note="Mounted overrun unavoidable, bonus hoof attack"',
+  'Trap Sense':'Section=save Note="+%V Reflex and AC vs. traps"',
   'Trapfinding':
     'Section=skill Note="+%V Perception (traps)/+%V Disable Device (traps)"',
   'Turn Undead':
     'Section=combat ' +
     'Note="Channel energy to cause undead panic (DC %V Will neg)"',
+  'Two-Weapon Defense':
+    'Section=combat ' +
+    'Note="+1 AC wielding two weapons (+2 fighting defensively)"',
+  'Two-Weapon Fighting':
+    'Section=combat Note="Reduce on-hand penalty by 2, off-hand by 6"',
+  'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
+  'Uncanny Dodge':'Section=combat Note="Always adds Dex modifier to AC"',
+  'Venom Immunity':'Section=save Note="Immune to poisons"',
+  'Weapon Finesse':
+    'Section=combat ' +
+    'Note="+%V light melee weapon attack (dex instead of str)"',
+  'Whirlwind Attack':'Section=combat Note="Attack all foes in reach"',
   'Wholeness Of Body':'Section=magic Note="Use 2 ki to heal %V HP to self"',
+  'Widen Spell':'Section=magic Note="x2 area of affect uses +3 spell slot"',
+  'Wild Empathy':'Section=skill Note="+%V Diplomacy (animals)"',
+  'Wild Shape':
+    'Section=magic Note="Change into creature of size %V %1 hr %2/dy"',
+  'Woodland Stride':
+    'Section=feature Note="Normal movement through undergrowth"',
 
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil 1/day"',
@@ -1029,7 +1634,6 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
          '"+2 Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)"',
   'Fearless Rage':
     'Section=save Note="Cannot be shaken or frightened during rage"',
-  'Fearless':'Section=save Note="+2 vs. fear"',
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
   'Fey Magic':'Section=magic Note="Reroll any resistance check"',
@@ -1562,10 +2166,30 @@ Pathfinder.FEATURES = Object.assign({}, SRD35.FEATURES,
   'World Traveler':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"'
-});
-Pathfinder.LANGUAGES = Object.assign({}, SRD35.LANGUAGES, {
-  'Aklo':''
-});
+};
+Pathfinder.LANGUAGES = {
+  'Abyssal':'',
+  'Aklo':'',
+  'Aquan':'',
+  'Auran':'',
+  'Celestial':'',
+  'Common':'',
+  'Draconic':'',
+  'Druidic':'',
+  'Dwarven':'',
+  'Elven':'',
+  'Giant':'',
+  'Gnoll':'',
+  'Gnome':'',
+  'Goblin':'',
+  'Halfling':'',
+  'Ignan':'',
+  'Infernal':'',
+  'Orc':'',
+  'Sylvan':'',
+  'Terran':'',
+  'Undercommon':''
+};
 Pathfinder.PATHS = {
   'Air Domain':
     'Group=Cleric ' +
@@ -2767,7 +3391,7 @@ Pathfinder.RACES = {
       '"Dwarf Ability Adjustment",' +
       '"Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)",' +
       '"Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)",' +
-      'Darkvision,"Defensive Training","Dwarf Emnity",Greed,Hardy,Slow,' +
+      'Darkvision,"Defensive Training","Dwarf Enmity",Greed,Hardy,Slow,' +
       'Steady,Stability,Stonecunning ' +
     'Languages=Common,Dwarven',
   'Elf':
@@ -2782,7 +3406,7 @@ Pathfinder.RACES = {
     'Features=' +
       '"Gnome Ability Adjustment",' +
       '"Weapon Familiarity (Gnome Hooked Hammer)",' +
-      '"Defensive Training","Gnome Emnity","Gnome Magic","Keen Senses",' +
+      '"Defensive Training","Gnome Enmity","Gnome Magic","Keen Senses",' +
       '"Low-Light Vision",Obsessive,"Resist Illusion",Slow,Small ' +
     'Languages=Common,Gnome,Sylvan ' +
     'SpellAbility=charisma ' +
@@ -2810,7 +3434,7 @@ Pathfinder.RACES = {
       '"Halfling Ability Adjustment",' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)",' +
-      'Fearless,Fortunate,"Keen Senses",Slow,Small,Sure-Footed ' +
+      'Fortunate,"Keen Senses","Resist Fear",Slow,Small,Sure-Footed ' +
     'Languages=Common,Halfling',
   'Human':
     'Features=' +
@@ -2848,7 +3472,15 @@ Pathfinder.SCHOOLS = {
   'Universal':
     'Features='
 };
-Pathfinder.SHIELDS = Object.assign({}, SRD35.SHIELDS);
+Pathfinder.SHIELDS = {
+  'Buckler':'AC=1 Weight=1 Skill=1 Spell=5',
+  'Heavy Steel':'AC=2 Weight=3 Skill=2 Spell=15',
+  'Heavy Wooden':'AC=2 Weight=3 Skill=2 Spell=15',
+  'Light Steel':'AC=1 Weight=1 Skill=1 Spell=5',
+  'Light Wooden':'AC=1 Weight=1 Skill=1 Spell=5',
+  'None':'AC=0 Weight=0 Skill=0 Spell=0',
+  'Tower':'AC=4 Weight=4 Skill=10 Spell=50'
+};
 Pathfinder.SKILLS = {
   'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
@@ -3153,12 +3785,85 @@ Pathfinder.TRAITS = {
   'Weapon Style':'Type=Faction Subtype="Lantern Lodge"'
 };
 Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
+  'Bastard Sword':'Level=3 Category=1h Damage=d10 Threat=19',
+  'Battleaxe':'Level=2 Category=1h Damage=d8 Crit=3',
   'Bolas':'Level=3 Category=R Damage=d4 Range=10',
   'Blowgun':'Level=1 Category=R Damage=d2 Range=20',
+  'Club':'Level=1 Category=1h Damage=d6 Range=10',
+  'Composite Longbow':'Level=2 Category=R Damage=d8 Crit=3 Range=110',
+  'Composite Shortbow':'Level=2 Category=R Damage=d6 Crit=3 Range=70',
+  'Dagger':'Level=1 Category=Li Damage=d4 Threat=19 Range=10',
+  'Dart':'Level=1 Category=R Damage=d4 Range=20',
+  'Dire Flail':'Level=3 Category=2h Damage=d8/d8',
+  'Dwarven Urgosh':'Level=3 Category=2h Damage=d8/d6 Crit=3',
+  'Dwarven Waraxe':'Level=3 Category=1h Damage=d10 Crit=3',
   'Elven Curve Blade':'Level=3 Category=2h Damage=d10 Threat=18',
+  'Falchion':'Level=2 Category=2h Damage=2d4 Threat=18',
+  'Flail':'Level=2 Category=1h Damage=d8',
+  'Gauntlet':'Level=0 Category=Un Damage=d3',
+  'Glaive':'Level=2 Category=2h Damage=d10 Crit=3',
+  'Gnome Hooked Hammer':'Level=3 Category=2h Damage=d8/d6 Crit=4',
+  'Greataxe':'Level=2 Category=2h Damage=d12 Crit=3',
+  'Greatclub':'Level=2 Category=2h Damage=d10',
+  'Greatsword':'Level=2 Category=2h Damage=2d6 Threat=19',
+  'Guisarme':'Level=2 Category=2h Damage=2d4 Crit=3',
+  'Halberd':'Level=2 Category=2h Damage=d10 Crit=3',
   'Halfling Sling Staff':'Level=3 Category=R Damage=d8 Crit=3 Range=80',
-  'Sai':'Level=3 Category=Li Damage=d4', // removed range
-  'Starknife':'Level=2 Category=Li Damage=d4 Crit=3 Range=20'
+  'Hand Crossbow':'Level=3 Category=R Damage=d4 Threat=19 Range=30',
+  'Handaxe':'Level=2 Damage=d6 Category=Li Crit=3',
+  'Heavy Crossbow':'Level=1 Category=R Damage=d10 Threat=19 Range=120',
+  'Heavy Flail':'Level=2 Category=2h Damage=d10 Threat=19',
+  'Heavy Mace':'Level=1 Category=1h Damage=d8',
+  'Heavy Pick':'Level=2 Category=1h Damage=d6 Crit=4',
+  'Heavy Shield':'Level=2 Category=1h Damage=d4',
+  'Heavy Spiked Shield':'Level=2 Category=1h Damage=d6',
+  'Improvised':'Level=3 Category=R Damage=d4 Range=10',
+  'Javelin':'Level=1 Category=R Damage=d6 Range=30',
+  'Kama':'Level=3 Category=Li Damage=d6',
+  'Kukri':'Level=2 Category=Li Damage=d4 Threat=18',
+  'Lance':'Level=2 Category=2h Damage=d8 Crit=3',
+  'Light Crossbow':'Level=1 Category=R Damage=d8 Threat=19 Range=80',
+  'Light Hammer':'Level=2 Category=Li Damage=d4 Range=20',
+  'Light Mace':'Level=1 Category=Li Damage=d6',
+  'Light Pick':'Level=2 Category=Li Damage=d4 Crit=4',
+  'Light Shield':'Level=2 Category=Li Damage=d3',
+  'Light Spiked Shield':'Level=2 Category=Li Damage=d4',
+  'Longbow':'Level=2 Category=R Damage=d8 Crit=3 Range=100',
+  'Longspear':'Level=1 Category=2h Damage=d8 Crit=3',
+  'Longsword':'Level=2 Category=1h Damage=d8 Threat=19',
+  'Morningstar':'Level=1 Category=1h Damage=d8',
+  'Net':'Level=3 Category=R Damage=d0 Range=10',
+  'Nunchaku':'Level=3 Category=Li Damage=d6',
+  'Orc Double Axe':'Level=3 Category=2h Damage=d8/d8 Crit=3',
+  'Punching Dagger':'Level=1 Category=Li Damage=d4 Crit=3',
+  'Quarterstaff':'Level=1 Category=2h Damage=d6/d6',
+  'Ranseur':'Level=2 Category=2h Damage=2d4 Crit=3',
+  'Rapier':'Level=2 Category=1h Damage=d6 Threat=18',
+  'Repeating Heavy Crossbow':
+    'Level=3 Category=R Damage=d10 Threat=19 Range=120',
+  'Repeating Light Crossbow':'Level=3 Category=R Damage=d8 Threat=19 Range=80',
+  'Sai':'Level=3 Category=Li Damage=d4',
+  'Sap':'Level=2 Category=Li Damage=d6',
+  'Scimitar':'Level=2 Category=1h Damage=d6 Threat=18',
+  'Scythe':'Level=2 Category=2h Damage=2d4 Crit=4',
+  'Short Sword':'Level=2 Category=Li Damage=d6 Threat=19',
+  'Shortbow':'Level=2 Category=R Damage=d6 Crit=3 Range=60',
+  'Shortspear':'Level=1 Category=1h Damage=d6 Range=20',
+  'Shuriken':'Level=3 Category=R Damage=d2 Range=10',
+  'Siangham':'Level=3 Category=Li Damage=d6',
+  'Sickle':'Level=1 Category=Li Damage=d6',
+  'Sling':'Level=1 Category=R Damage=d4 Range=50',
+  'Spear':'Level=1 Category=2h Damage=d8 Crit=3 Range=20',
+  'Spiked Armor':'Level=2 Category=Li Damage=d6',
+  'Spiked Chain':'Level=3 Category=2h Damage=2d4',
+  'Spiked Gauntlet':'Level=1 Category=Li Damage=d4',
+  'Starknife':'Level=2 Category=Li Damage=d4 Crit=3 Range=20',
+  'Throwing Axe':'Level=2 Category=Li Damage=d6 Range=10',
+  'Trident':'Level=2 Category=1h Damage=d8 Range=10',
+  'Two-Bladed Sword':'Level=3 Category=2h Damage=d8/d8 Threat=19',
+  'Unarmed':'Level=0 Category=Un Damage=d3',
+  'Warhammer':'Level=2 Category=1h Damage=d8 Crit=3',
+  'Whip':'Level=3 Category=1h Damage=d3'
 });
 Pathfinder.CLASSES = {
   'Barbarian':
@@ -3811,6 +4516,9 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
   rules.defineRule('animalCompanionStats.Dex',
     'companionMasterLevelsUntilAdvance', '+', 'source <= 0 ? 2 : null'
   );
+  // Remove fiendish/celestial improvements from editor
+  rules.defineEditorElement('celestialFamiliar');
+  rules.defineEditorElement('fiendishFamiliar');
 };
 
 /* Defines rules related to combat. */
@@ -4302,6 +5010,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.inspireHeroics',
       'levels.Bard', '=', 'Math.floor((source - 12) / 3)'
     );
+    rules.defineRule('magicNotes.massSuggestion',
+      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
+    );
     rules.defineRule('magicNotes.simpleSomatics.1',
       'magicNotes.simpleSomatics', '?', null,
       'armorWeight', '=', 'source <= 1 ? 1 : null'
@@ -4406,6 +5118,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.fastMovement',
       'levels.Monk', '+=', '10 * Math.floor(source / 3)'
     );
+    rules.defineRule('abilityNotes.unarmoredSpeedBonus',
+      'armor', '?', 'source == "None"',
+      'levels.Monk', '=', 'Math.floor(source / 3) * 10'
+    );
     rules.defineRule
       ('combatNotes.flurryOfBlows', 'attacksPerRound', '=', 'source + 1');
     rules.defineRule('combatNotes.flurryOfBlows.1',
@@ -4437,6 +5153,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.quiveringPalm',
       'levels.Monk', '+=', '10 + Math.floor(source / 2)',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('combatNotes.stunningFist', 'levels.Monk', '^=', null);
+    rules.defineRule('combatNotes.stunningFist.1',
+      'features.Stunning Fist', '?', null,
+      'level', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
     rules.defineRule('featureNotes.kiPool',
@@ -4526,6 +5248,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
     )
+    rules.defineRule('magicNotes.removeDisease',
+      'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
+    );
     rules.defineRule('saveNotes.divineGrace', 'charismaModifier', '=', null);
     rules.defineRule('selectableFeatureCount.Paladin',
       'levels.Paladin', '=', 'source >= 5 ? 1 : null'
@@ -4757,6 +5482,7 @@ Pathfinder.featRules = function(rules, name, requires, implies, types) {
 Pathfinder.featRulesExtra = function(rules, name) {
 
   var matchInfo;
+
   if(name == 'Acrobatic') {
     rules.defineRule('skillNotes.acrobatic',
       'skills.Acrobatics', '=', 'source >= 10 ? 4 : 2'
@@ -4800,6 +5526,9 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.combatExpertise',
       'baseAttack', '=', '1 + Math.floor(source / 4)'
     );
+  } else if(name == 'Combat Reflexes') {
+    rules.defineRule
+      ('combatNotes.combatReflexes', 'dexterityModifier', '=', 'source + 1');
   } else if(name == 'Command Undead') {
     rules.defineRule('combatNotes.commandUndead',
       'levels.Cleric', '=', '10 + Math.floor(source / 2)',
@@ -4849,6 +5578,9 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'level', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
+  } else if((matchInfo = name.match(/^Improved Critical \((.*)\)$/)) != null) {
+    Pathfinder.featureRules
+      (rules, name, ['combat'], ['x2 ' + matchInfo[1] + ' Threat Range']);
   } else if(name == 'Intimidating Prowess') {
     rules.defineRule
       ('skillModifier.Intimidate', 'skillNotes.intimidatingProwess', '+', null);
@@ -4886,6 +5618,9 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.skillFocus(' + skill.replace(/ /g, '') + ')',
       'skills.' + skill, '=', 'source >= 10 ? 6 : 3'
     );
+  } else if(name == 'Spell Mastery') {
+    rules.defineRule
+      ('magicNotes.spellMastery', 'intelligenceModifier', '=', null);
   } else if(name == 'Staggering Critical') {
     rules.defineRule
       ('combatNotes.staggeringCritical', 'baseAttack', '=', '10 + source');
@@ -4897,6 +5632,14 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Stunning Critical') {
     rules.defineRule
       ('combatNotes.stunningCritical', 'baseAttack', '=', '10 + source');
+  } else if(name == 'Stunning Fist') {
+    rules.defineRule
+      ('combatNotes.stunningFist', 'level', '^=', 'Math.floor(source / 4)');
+    rules.defineRule('combatNotes.stunningFist.1',
+      'features.Stunning Fist', '?', null,
+      'level', '=', '10 + Math.floor(source / 2)',
+      'wisdomModifier', '+', null
+    );
   } else if(name == 'Toughness') {
     rules.defineRule
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
@@ -4909,12 +5652,17 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.two-WeaponRend',
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
-  } else if(SRD35.featRulesExtra) {
-    // Since we inherit many feats from SRD35 unchanged, we need to invoke that
-    // module's RulesExtra method to add any feat-specific rules. That's not
-    // true of other objects, where we use, e.g., SRD35.classRules only for the
-    // basic attribute parsing.
-    SRD35.featRulesExtra(rules, name);
+  } else if(name == 'Weapon Finesse') {
+    rules.defineRule('combatNotes.weaponFinesse',
+      'dexterityModifier', '=', null,
+      'strengthModifier', '+', '-source'
+    );
+  } else if((matchInfo = name.match(/^(Greater )?Weapon Focus \((.*)\)$/)) != null) {
+    Pathfinder.featureRules
+      (rules, name, ['combat'], ['+1 ' + matchInfo[2] + ' Attack Modifier']);
+  } else if((matchInfo = name.match(/^(Greater )?Weapon Specialization \((.*)\)$/)) != null) {
+    Pathfinder.featureRules
+      (rules, name, ['combat'], ['+2 ' + matchInfo[2] + ' Damage Modifier']);
   }
 
 };
