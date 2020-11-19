@@ -84,15 +84,22 @@ PathfinderPrestige.CLASSES = {
     'Require=' +
       '"languages.Draconic","race !~ \'Dragon\'",' +
       '"skills.Knowledge (Arcana) >= 5",' +
-      '"levels.Bard > 0 || levels.Sorcerer > 0" ' +
+      '"levels.Bard > 0 || levels.Sorcerer > 0",' +
       // i.e., Arcane spells w/out prep
+      '"levels.Sorcerer == 0 || sorcererFeatures.Bloodline Draconic" ' +
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
-      '"1:Blood Of Dragons","2:Caster Level Bonus","2:Dragon Bite",' +
-      '"2:Strength Boost","3:Breath Weapon",5:Blindsense,' +
-      '"6:Constitution Boost","7:Dragon Form","8:Intelligence Boost",9:Wings',
+      '"1:Blood Of Dragons","1:Natural Armor","2:Caster Level Bonus",' +
+      '"2:Dragon Bite","2:Strength Boost",5:Blindsense,' +
+      '"6:Constitution Boost","7:Dragon Form","8:Intelligence Boost" ' +
+    'Selectables=' +
+      '"1:Bloodline Draconic (Black)","1:Bloodline Draconic (Blue)",' +
+      '"1:Bloodline Draconic (Green)","1:Bloodline Draconic (Red)",' +
+      '"1:Bloodline Draconic (White)","1:Bloodline Draconic (Brass)",' +
+      '"1:Bloodline Draconic (Bronze)","1:Bloodline Draconic (Copper)",' +
+      '"1:Bloodline Draconic (Gold)","1:Bloodline Draconic (Silver)"',
   'Duelist':
     'Require=' +
       '"baseAttack >= 6",features.Dodge,features.Mobility,' +
@@ -205,7 +212,7 @@ PathfinderPrestige.FEATURES = {
     'Section=combat Note="Special arrow kills foe (DC %V Fort neg)"',
   'Blood Of Dragons':
     'Section=feature ' +
-    'Note="Dragon Disciple level triggers Bloodline Draconic features"',
+    'Note="Dragon Disciple level triggers Bloodline features"',
   'Bonus Language':'Section=feature Note="+%V Language Count"',
   'Call Down The Legends':
     'Section=magic Note="Summon 2d4 level 4 barbarians 1/wk"',
@@ -434,7 +441,6 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Dragon Disciple') {
 
-    // TBD Choice of Draconic Bloodline if not Sorcerer
     rules.defineRule('abilityNotes.wings',
       'levels.Dragon Disciple', '+=', 'source >= 9 ? 30 : null'
     );
@@ -444,14 +450,14 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('armorClass',
       'combatNotes.dragonDiscipleArmorClassAdjustment', '+', null
     );
+    rules.defineRule('combatNotes.breathWeapon',
+      'levels.Dragon Disciple', '+=', 'source >= 3 ? 1 : null'
+    );
     rules.defineRule('combatNotes.dragonBite',
       'levels.Dragon Disciple', '?', 'source >= 2',
       '', '=', '6',
       'features.Small', '=', '4',
       'features.Large', '=', '8'
-    );
-    rules.defineRule('combatNotes.breathWeapon.2',
-      'levels.Dragon Disciple', '+=', 'source >= 3 ? 1 : null'
     );
     rules.defineRule('combatNotes.dragonBite.1',
       'features.Dragon Bite', '?', null,
@@ -464,10 +470,13 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.dragonDiscipleArmorClassAdjustment',
       'levels.Dragon Disciple', '+=', 'Math.floor((source + 2) / 3)'
     );
+    rules.defineRule('combatNotes.naturalArmor',
+      'levels.Dragon Disciple', '+', 'source >= 7 ? 3 : source >= 4 ? 2 : 1'
+    );
     rules.defineRule
       ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
     rules.defineRule('featCount.Draconic',
-      'levels.Dragon Disciple', '+=', 'Math.floor((source + 4) / 6)'
+      'levels.Dragon Disciple', '=', 'source<2 ? null : Math.floor((source + 4) / 6)'
     );
     rules.defineRule
       ('features.Bloodline Draconic', 'levels.Dragon Disciple', '=', '1');
@@ -485,7 +494,25 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.dragonForm.1',
       'levels.Dragon Disciple', '=', 'source < 10 ? 1 : 2'
     );
+    rules.defineRule('sorcererFeatures.Breath Weapon',
+      'levels.Dragon Disciple', '=', 'source >= 3 ? 1 : null'
+    );
+    rules.defineRule('sorcererFeatures.Wings',
+      'levels.Dragon Disciple', '=', 'source >= 9 ? 1 : null'
+    );
     rules.defineRule('strength', 'abilityNotes.strengthBoost', '+', null);
+    // Choice of Draconic Bloodline if not Sorcerer
+    rules.defineRule('selectableFeatureCount.Dragon Disciple',
+      'levels.Dragon Disciple', '=', '1',
+      'levels.Sorcerer', 'v', '0'
+    );
+    rules.defineRule('features.Bloodline Draconic',
+      'selectableFeatureCount.Dragon Disciple', '=', 'source == 1 ? 1 : null'
+    );
+    rules.defineRule('bloodlineDraconicLevel',
+      'selectableFeatureCount.Dragon Disciple', '=', 'source == 1 ? 0 : null',
+      'levels.Dragon Disciple', '+', null
+    );
 
   } else if(name == 'Duelist') {
 

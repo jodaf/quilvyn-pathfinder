@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.1.1.1';
+var PATHFINDER_VERSION = '2.1.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -1422,7 +1422,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Thorny hide causes 1d6+%1 HP to striking foes %V/day"',
   'Bravery':'Section=save Note="+%V vs. fear"',
-  'Breath Weapon':'Section=combat Note="%3 %4 %Vd6 HP (%1 DC Ref half) %2/day"',
+  'Breath Weapon':'Section=combat Note="%1 %2 %3d6 HP (%4 DC Ref half) %V/day"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
   'Bullied':'Section=combat Note="+1 unarmed AOO attack"',
   'Bully':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
@@ -1559,8 +1559,7 @@ Pathfinder.FEATURES = {
     'Note="Touched creature +%V attack, skill, ability, and save 1 rd %1/day"',
   'Double Slice':
     'Section=combat Note="Add full Str modifier to off-hand damage"',
-  'Dragon Resistances':
-    'Section=combat,save Note="+%V AC","%V vs. %1"', // No bonus to CMD
+  'Dragon Resistances':'Section=save Note="%V vs. %1"',
   'Dune Walker':
     'Section=ability,save ' +
     'Note="Normal movement through sand",' +
@@ -1865,6 +1864,7 @@ Pathfinder.FEATURES = {
   'Moment Of Clarity':'Section=combat Note="Rage effects suspended 1 rd"',
   'Multitalented':'Section=feature Note="Two favored classes"',
   'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
+  'Natural Armor':'Section=combat Note="+%V AC"', // No bonus to CMD
   'Natural Negotiator':
     'Section=feature,skill ' +
     'Note="Additional language",' +
@@ -3213,11 +3213,11 @@ Pathfinder.PATHS = {
       '"Destined7:Spell Turning",' +
       '"Destined8:Moment Of Prescience",' +
       'Destined9:Foresight',
-  'Bloodline Draconic (Black)':
+  'Bloodline Draconic':
     'Group=Sorcerer ' +
     'Level=levels.Sorcerer ' +
     'Features=' +
-      '"1:Bloodline Draconic",1:Claws,"3:Dragon Resistances","5:Magic Claws",' +
+      '1:Claws,"3:Dragon Resistances","3:Natural Armor","5:Magic Claws",' +
       '"9:Breath Weapon","11:Improved Claws",15:Wings,"20:Power Of Wyrms",' +
       '20:Blindsense ' +
     'Feats=' +
@@ -3246,7 +3246,7 @@ Pathfinder.PATHS = {
       '"Draconic7:Form Of The Dragon II",' +
       '"Draconic8:Form Of The Dragon III",' +
       'Draconic9:Wish',
-  'Bloodline Elemental (Air)':
+  'Bloodline Elemental':
     'Group=Sorcerer ' +
     'Level=levels.Sorcerer ' +
     'Features=' +
@@ -3379,12 +3379,6 @@ Pathfinder.PATHS = {
       '"Undead8:Horrid Wilting",' +
       '"Undead9:Energy Drain"'
 };
-for(var color in {'Blue':'', 'Green':'', 'Red':'', 'White':'', 'Brass':'', 'Bronze':'', 'Copper':'', 'Gold':'', 'Silver':''})
-  Pathfinder.PATHS['Bloodline Draconic (' + color + ')'] =
-    Pathfinder.PATHS['Bloodline Draconic (Black)'];
-for(var element in {'Earth':'', 'Fire':'', 'Water':''})
-  Pathfinder.PATHS['Bloodline Elemental (' + element + ')'] =
-    Pathfinder.PATHS['Bloodline Elemental (Air)'];
 Pathfinder.RACES = {
   'Dwarf':
     'Features=' +
@@ -5853,38 +5847,50 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('saveNotes.fated', pathLevel, '=', 'Math.floor((source + 1) / 4)');
 
-  } else if(name.startsWith('Bloodline Draconic')) {
+  } else if(name == 'Bloodline Draconic') {
 
-    var color = name.replace(/^.*\(|\)/g, '');
-    var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
-                 'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
-                 'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
-    rules.defineRule('abilityNotes.wings', pathLevel, '^=', null);
+    var colors = {
+      'Black':'', 'Blue':'', 'Brass':'', 'Bronze':'', 'Copper':'', 'Gold':'',
+      'Green':'', 'Red':'', 'Silver':'', 'White':''
+    };
+    for(var color in colors) {
+      var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
+                   'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
+                   'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
+      var subFeature = 'features.Bloodline Draconic (' + color + ')';
+      rules.defineRule('bloodlineEnergy', subFeature, '=', '"' + energy + '"');
+      rules.defineRule('bloodlineShape',
+        subFeature, '=',  '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
+      );
+      rules.defineRule('features.Bloodline Draconic', subFeature, '=', '1');
+    }
     rules.defineRule
-      ('bloodlineEnergy', pathLevel, '=', '"' + energy + '"');
+      ('abilityNotes.wings', pathLevel, '^=', 'source >= 15 ? 60 : null');
     // Other claws rules defined by Bloodline Abyssal
     rules.defineRule
       ('clawsDamageLevel', pathLevel, '+', 'source >= 7 ? 1 : null');
-    rules.defineRule('combatNotes.breathWeapon', pathLevel, '=', null);
+    rules.defineRule('combatNotes.breathWeapon',
+      pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : source>=9 ? 1 : null'
+    );
     rules.defineRule('combatNotes.breathWeapon.1',
+      'features.Breath Weapon', '?', null,
+      'bloodlineShape', '=', null
+    );
+    rules.defineRule('combatNotes.breathWeapon.2',
+      'features.Breath Weapon', '?', null,
+      'bloodlineEnergy', '=', null
+    );
+    rules.defineRule('combatNotes.breathWeapon.3',
+      'features.Breath Weapon', '?', null,
+      pathLevel, '=', null
+    );
+    rules.defineRule('combatNotes.breathWeapon.4',
       'features.Breath Weapon', '?', null,
       pathLevel, '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
-    rules.defineRule('combatNotes.breathWeapon.2',
-      'features.Breath Weapon', '?', null,
-      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
-    );
-    rules.defineRule('combatNotes.breathWeapon.3',
-      'features.Breath Weapon', '?', null,
-      pathLevel, '=', '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
-    );
-    rules.defineRule('combatNotes.breathWeapon.4',
-      'features.Breath Weapon', '?', null,
-      'bloodlineEnergy', '=', null
-    );
-    rules.defineRule('combatNotes.dragonResistances',
-      pathLevel, '=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
+    rules.defineRule('combatNotes.naturalArmor',
+      pathLevel, '+=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
     );
     rules.defineRule('featureNotes.blindsense', pathLevel, '^=', '60');
     rules.defineRule('saveNotes.dragonResistances',
@@ -5897,21 +5903,24 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
 
-  } else if(name.startsWith('Bloodline Elemental')) {
+  } else if(name == 'Bloodline Elemental') {
 
-    var element = name.replace(/^.*\(|\)/g, '');
-    var energy = element == 'Earth' ? 'acid' :
-                 element == 'Water' ? 'cold' :
-                 element == 'Air' ? 'electricity' : 'fire';
-    var movement = element == 'Air' ? "Fly 60'/average" :
-                   element == 'Earth' ? "Burrow 30'" :
-                   element == 'Fire' ? 'Speed +30' : "Swim 60'";
+    var elements = {'Air':'', 'Earth':'', 'Fire':'', 'Water':''};
+    for(var element in elements) {
+      var energy = element == 'Earth' ? 'acid' :
+                   element == 'Water' ? 'cold' :
+                   element == 'Air' ? 'electricity' : 'fire';
+      var movement = element == 'Air' ? "Fly 60'/average" :
+                     element == 'Earth' ? "Burrow 30'" :
+                     element == 'Fire' ? 'Speed +30' : "Swim 60'";
+      var subFeature = 'features.Bloodline Elemental (' + element + ')';
+      rules.defineRule('bloodlineEnergy', subFeature, '=', '"' + energy + '"');
+      rules.defineRule
+        ('bloodlineMovement', subFeature, '=',  '"' + movement + '"');
+      rules.defineRule('features.Bloodline Elemental', subFeature, '=', '1');
+    }
     rules.defineRule
       ('abilityNotes.elementalMovement', 'bloodlineMovement', '=', null);
-    rules.defineRule
-      ('bloodlineEnergy', pathLevel, '=', '"' + energy + '"');
-    rules.defineRule
-      ('bloodlineMovement', pathLevel, '=', '"' + movement + '"');
     rules.defineRule('combatNotes.elementalBlast', pathLevel, '=', null);
     rules.defineRule('combatNotes.elementalBlast.1',
       'features.Elemental Blast', '?', null,
