@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.1.1.2';
+var PATHFINDER_VERSION = '2.1.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -1024,8 +1024,6 @@ Pathfinder.FEATURES = {
   'Greater Two-Weapon Fighting':
     'Section=combat Note="Third off-hand -10 attack"',
   'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
-  'Halfling Ability Adjustment':
-    'Section=ability Note="+2 Dexterity/-2 Strength"',
   'Heighten Spell':'Section=magic Note="Increase chosen spell level"',
   'Hide In Plain Sight':'Section=skill Note="Hide even when observed"',
   'Improved Bull Rush':
@@ -1633,7 +1631,6 @@ Pathfinder.FEATURES = {
          '"+2 Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)"',
   'Fearless Rage':
     'Section=save Note="Cannot be shaken or frightened during rage"',
-  'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
   'Fey Magic':'Section=magic Note="Reroll any resistance check"',
   'Fiendish Presence':
@@ -3948,7 +3945,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Simple)",' +
       '1:Aura,"1:Channel Energy","1:Spontaneous Cleric Spell" ' +
     'Selectables=' +
-      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/ Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + '"').join(',') + ' ' +
+      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + '"').join(',') + ' ' +
     'CasterLevelDivine=levels.Cleric ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
@@ -4818,7 +4815,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   if(type != 'Feature' && type != 'Path') {
     type = type == 'Class' ? 'levels' :
     type = type == 'Deity' ? 'deities' :
-    (type.substring(0,1).toLowerCase() + type.substring(1).replace(/ /g, '') + 's');
+    (type.substring(0,1).toLowerCase() + type.substring(1).replaceAll(' ', '') + 's');
     rules.addChoice(type, name, attrs);
   }
 };
@@ -5572,7 +5569,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'level', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-  } else if((matchInfo = name.match(/^Improved Critical \((.*)\)$/)) != null) {
+  } else if((matchInfo = name.match(/^Improved\sCritical\s\((.*)\)$/)) != null){
     Pathfinder.featureRules
       (rules, name, ['combat'], ['x2 ' + matchInfo[1] + ' Threat Range']);
   } else if(name == 'Intimidating Prowess') {
@@ -5606,10 +5603,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.self-Sufficient',
       'skills.Heal', '=', 'source >= 10 ? 4 : 2'
     );
-  } else if((matchInfo = name.match(/^Skill Focus \((.*)\)$/)) != null) {
+  } else if((matchInfo = name.match(/^Skill\sFocus\s\((.*)\)$/)) != null) {
     var skill = matchInfo[1];
     Pathfinder.featureRules(rules, name, ['skill'], ['+%V ' + skill]);
-    rules.defineRule('skillNotes.skillFocus(' + skill.replace(/ /g, '') + ')',
+    rules.defineRule('skillNotes.skillFocus(' + skill.replaceAll(' ', '') + ')',
       'skills.' + skill, '=', 'source >= 10 ? 6 : 3'
     );
   } else if(name == 'Spell Mastery') {
@@ -5651,10 +5648,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'dexterityModifier', '=', null,
       'strengthModifier', '+', '-source'
     );
-  } else if((matchInfo = name.match(/^(Greater )?Weapon Focus \((.*)\)$/)) != null) {
+  } else if((matchInfo = name.match(/^(Greater\s)?Weapon\sFocus\s\((.*)\)$/)) != null) {
     Pathfinder.featureRules
       (rules, name, ['combat'], ['+1 ' + matchInfo[2] + ' Attack Modifier']);
-  } else if((matchInfo = name.match(/^(Greater )?Weapon Specialization \((.*)\)$/)) != null) {
+  } else if((matchInfo = name.match(/^(Greater\s)?Weapon\sSpecialization\s\((.*)\)$/)) != null) {
     Pathfinder.featureRules
       (rules, name, ['combat'], ['+2 ' + matchInfo[2] + ' Damage Modifier']);
   }
@@ -5705,7 +5702,7 @@ Pathfinder.pathRules = function(
   );
 
   var pathLevel =
-    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
   if(feats.length > 0) {
     // Applies to bloodlines, not domains
@@ -5742,7 +5739,7 @@ Pathfinder.pathRules = function(
 Pathfinder.pathRulesExtra = function(rules, name) {
 
   var pathLevel =
-    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'') + 'Level';
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
   if(name == 'Bloodline Aberrant') {
 
@@ -6439,7 +6436,7 @@ Pathfinder.schoolRules = function(rules, name, features) {
 Pathfinder.schoolRulesExtra = function(rules, name) {
 
   var prefix =
-    name.charAt(0).toLowerCase() + name.substring(1).replace(/ /g,'');
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','');
   var schoolLevel = prefix + 'Level';
 
   if(name == 'Abjuration') {
@@ -6620,7 +6617,7 @@ Pathfinder.spellRules = function(
   if(casterGroup == 'P') {
     var matchInfo;
     var note = rules.getChoices('notes')[name];
-    if(note != null && (matchInfo = notes[note].match(/\(DC %(\d+)/)) != null)
+    if(note != null && (matchInfo = notes[note].match(/\(DC\s%(\d+)/)) != null)
       rules.defineRule(note + '.' + matchInfo[1],
         'charismaModifier', '=', '10 + source + ' + level
       );

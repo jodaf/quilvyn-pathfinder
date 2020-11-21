@@ -402,7 +402,7 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
       'levels.Arcane Trickster', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule
-      ('countmagehandspells', /^spells.Mage Hand\(.*\)$/, '+=', '1');
+      ('countmagehandspells', /^spells.Mage.Hand\(.*\)$/, '+=', '1');
 
   } else if(name == 'Assassin') {
 
@@ -572,7 +572,7 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillNotes.lore', 'levels.Loremaster', '+=', 'Math.floor(source / 2)');
     rules.defineRule('countskillfocusknowledgefeats',
-      /^features.Skill Focus \(Knowledge/, '+=', '1'
+      /^features.Skill\sFocus\s\(Knowledge/, '+=', '1'
     );
 
   } else if(name == 'Mystic Theurge') {
