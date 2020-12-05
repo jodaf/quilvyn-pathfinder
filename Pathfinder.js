@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.1.1.4';
+var PATHFINDER_VERSION = '2.1.1.5';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -1060,6 +1060,8 @@ Pathfinder.FEATURES = {
   'Improved Uncanny Dodge':
     'Section=combat ' +
     'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
+  'Increased Damage Reduction':
+    'Section=combat Note="Negate additional %V HP each attack"',
   'Increased Unarmed Damage':'Section=combat Note="%V"',
   'Indomitable Will':
     'Section=save Note="+4 enchantment resistance during rage"',
@@ -4579,6 +4581,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.animalFury.1',
       'features.Animal Fury', '?', null,
       'strengthModifier', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.damageReduction',
+      'levels.Barbarian', '+=', 'Math.floor((source - 4) / 3)',
+      'combatNotes.increasedDamageReduction', '+', null
+    );
+    rules.defineRule('combatNotes.increasedDamageReduction',
+      'features.Increased Damage Reduction', '=', null
     );
     rules.defineRule
       ('combatNotes.knockback', 'strengthModifier', '=', 'source + 2');
