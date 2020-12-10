@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.1.1.5';
+var PATHFINDER_VERSION = '2.1.1.6';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -43,6 +43,7 @@ function Pathfinder() {
   rules.choiceRules = Pathfinder.choiceRules;
   rules.editorElements = SRD35.initialEditorElements();
   rules.getFormats = SRD35.getFormats;
+  rules.getPlugins = Pathfinder.getPlugins;
   rules.makeValid = SRD35.makeValid;
   rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
   rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
@@ -6543,4 +6544,9 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       attributes.experience = QuilvynUtils.random(min, max);
     }
   }
+};
+
+/* Returns an array of plugins upon which this one depends. */
+Pathfinder.getPlugins = function() {
+  return [SRD35];
 };
