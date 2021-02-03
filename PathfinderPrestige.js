@@ -31,6 +31,7 @@ function PathfinderPrestige() {
   }
   PathfinderPrestige.identityRules
     (Pathfinder.rules, PathfinderPrestige.CLASSES);
+  PathfinderPrestige.magicRules(Pathfinder.rules, PathfinderPrestige.SPELLS);
   PathfinderPrestige.talentRules(Pathfinder.rules, PathfinderPrestige.FEATURES);
 }
 
@@ -195,12 +196,7 @@ PathfinderPrestige.CLASSES = {
       'Shadowdancer1:3=1,' +
       'Shadowdancer4:4=2,' +
       'Shadowdancer5:8=1,' +
-      'Shadowdancer7:10=1 ' +
-    'Spells=' +
-      '"Shadowdancer1:Silent Image",' +
-      '"Shadowdancer4:Dimension Door;Shadow Conjuration",' +
-      '"Shadowdancer5:Shadow Evocation",' +
-      '"Shadowdancer7:Greater Shadow Conjuration"'
+      'Shadowdancer7:10=1',
 };
 PathfinderPrestige.FEATURES = {
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
@@ -328,6 +324,13 @@ PathfinderPrestige.FEATURES = {
   'Whispering Campaign':
     'Section=magic Note="<i>Doom</i>/<i>Enthrall</i> via Bardic Performance"'
 };
+PathfinderPrestige.SPELLS = {
+  'Dimension Door':'Level=Shadowdancer4',
+  'Greater Shadow Conjuration':'Level=Shadowdancer7',
+  'Shadow Conjuration':'Level=Shadowdancer4',
+  'Shadow Evocation':'Level=Shadowdancer5',
+  'Silent Image':'Level=Shadowdancer1'
+};
 
 /* Defines rules related to basic character identity. */
 PathfinderPrestige.identityRules = function(rules, classes) {
@@ -343,6 +346,15 @@ PathfinderPrestige.identityRules = function(rules, classes) {
         'levels.' + clas, '+', 'Math.floor((source + 1) / ' + (value == '1/2' ? '2' : '3') + ')'
       );
     }
+  }
+};
+
+/* Defines rules related to magic use. */
+PathfinderPrestige.magicRules = function(rules, spells) {
+  QuilvynUtils.checkAttrTable(spells, ['School', 'Level', 'Description']);
+  for(var spell in spells) {
+    rules.choiceRules
+      (rules, 'Spell', spell, (SRD35.SPELLS[spell]||'') + ' ' + spells[spell]);
   }
 };
 
