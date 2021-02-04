@@ -68,8 +68,6 @@ function Pathfinder() {
     (rules, Pathfinder.ANIMAL_COMPANIONS, Pathfinder.FAMILIARS);
   Pathfinder.combatRules
     (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
-  // Most spell definitions are handled by individual classes and domains.
-  // Schools must be defined before this can be done.
   Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
   // Feats must be defined before paths
   Pathfinder.talentRules
