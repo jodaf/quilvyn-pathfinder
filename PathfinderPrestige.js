@@ -29,6 +29,10 @@ function PathfinderPrestige() {
     alert('The PathfinderPrestige module requires use of the Pathfinder module');
     return;
   }
+  for(var s in PathfinderPrestige.SPELLS) {
+    PathfinderPrestige.SPELLS[s] =
+      Pathfinder.SPELLS[s] + ' ' + PathfinderPrestige.SPELLS[s];
+  }
   PathfinderPrestige.identityRules
     (Pathfinder.rules, PathfinderPrestige.CLASSES);
   PathfinderPrestige.magicRules(Pathfinder.rules, PathfinderPrestige.SPELLS);
@@ -352,9 +356,8 @@ PathfinderPrestige.identityRules = function(rules, classes) {
 /* Defines rules related to magic use. */
 PathfinderPrestige.magicRules = function(rules, spells) {
   QuilvynUtils.checkAttrTable(spells, ['School', 'Level', 'Description']);
-  for(var spell in spells) {
-    rules.choiceRules
-      (rules, 'Spell', spell, (SRD35.SPELLS[spell]||'') + ' ' + spells[spell]);
+  for(var s in spells) {
+    rules.choiceRules(rules, 'Spell', s, spells[s]);
   }
 };
 
@@ -487,8 +490,8 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
-    rules.defineRule('featCount.Draconic',
-      'levels.Dragon Disciple', '=', 'source<2 ? null : Math.floor((source + 4) / 6)'
+    rules.defineRule('featCount.Bloodline Draconic',
+      'levels.Dragon Disciple', '+=', 'source<2 ? null : Math.floor((source + 4) / 6)'
     );
     rules.defineRule
       ('features.Bloodline Draconic', 'levels.Dragon Disciple', '=', '1');
