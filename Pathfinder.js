@@ -49,6 +49,13 @@ function Pathfinder() {
   rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
   rules.ruleNotes = Pathfinder.ruleNotes;
 
+  SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
+  SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
+  Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, Pathfinder.WEAPONS);
+  for(var s in Pathfinder.SPELLS) {
+    Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
+  }
+
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
   rules.defineChoice('extras',
     'feats', 'featCount', 'sanityNotes', 'selectableFeatureCount',
@@ -95,9 +102,6 @@ Pathfinder.RANDOMIZABLE_ATTRIBUTES = [
   'feats', 'skills', 'languages', 'hitPoints', 'armor', 'shield', 'weapons',
   'spells', 'companion', 'faction', 'traits'
 ];
-
-SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
-SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
 
 Pathfinder.ALIGNMENTS = {
   'Chaotic Evil':'',
@@ -3603,7 +3607,7 @@ Pathfinder.TRAITS = {
   'Watchdog':'Type=Faction Subtype="Shadow Lodge"',
   'Weapon Style':'Type=Faction Subtype="Lantern Lodge"'
 };
-Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
+Pathfinder.WEAPONS = {
   'Bastard Sword':'Level=3 Category=1h Damage=d10 Threat=19',
   'Battleaxe':'Level=2 Category=1h Damage=d8 Crit=3',
   'Bolas':'Level=3 Category=R Damage=d4 Range=10',
@@ -3683,7 +3687,7 @@ Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, {
   'Unarmed':'Level=0 Category=Un Damage=d3',
   'Warhammer':'Level=2 Category=1h Damage=d8 Crit=3',
   'Whip':'Level=3 Category=1h Damage=d3'
-});
+};
 Pathfinder.CLASSES = {
   'Barbarian':
     'Require="alignment !~ \'Lawful\'" ' +
@@ -4175,11 +4179,7 @@ Pathfinder.identityRules = function(
 
 /* Defines rules related to magic use. */
 Pathfinder.magicRules = function(rules, schools, spells) {
-  var pfSpells = {};
-  for(var spell in spells) {
-    pfSpells[spell] = (SRD35.SPELLS[spell] || '') + ' ' + spells[spell];
-  }
-  SRD35.magicRules(rules, schools, pfSpells);
+  SRD35.magicRules(rules, schools, spells);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -4336,8 +4336,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     var schoolAbbr = school.substring(0, 4);
     for(var i = 0; i < groupLevels.length; i++) {
       var matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
-      if(!matchInfo)
+      if(!matchInfo) {
+        console.log('Bad level "' + groupLevels[i] + '" for spell ' + name);
         continue;
+      }
       var group = matchInfo[1];
       var level = matchInfo[2] * 1;
       var fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
