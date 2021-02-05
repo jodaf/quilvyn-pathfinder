@@ -4341,7 +4341,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       var group = matchInfo[1];
       var level = matchInfo[2] * 1;
       var fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
-      SRD35.spellRules(rules, fullName, school, group, level, description);
+      // TODO indicate domain spells in attributes?
+      var domainSpell = Pathfinder.PATHS[group + ' Domain'] != null;
+      Pathfinder.spellRules
+        (rules, fullName, school, group, level, description, domainSpell);
       rules.addChoice('spells', fullName, attrs);
     }
   } else if(type == 'Track')
@@ -6167,9 +6170,10 @@ Pathfinder.skillRulesExtra = function(rules, name) {
  * description of the spell's effects.
  */
 Pathfinder.spellRules = function(
-  rules, name, school, casterGroup, level, description
+  rules, name, school, casterGroup, level, description, domainSpell
 ) {
-  SRD35.spellRules(rules, name, school, casterGroup, level, description);
+  SRD35.spellRules
+    (rules, name, school, casterGroup, level, description, domainSpell);
   // SRD35 uses wisdomModifier when calculating the save DC for Paladin
   // spells; in Pathfinder we override to use charismaModifier.
   if(casterGroup == 'P') {
