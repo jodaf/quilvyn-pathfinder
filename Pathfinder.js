@@ -52,9 +52,6 @@ function Pathfinder() {
   SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
   SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
   Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, Pathfinder.WEAPONS);
-  for(var s in Pathfinder.SPELLS) {
-    Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
-  }
 
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
   rules.defineChoice('extras',
@@ -574,6 +571,22 @@ Pathfinder.FEATS = {
       '"levels.Fighter >= 8",' +
       '"features.Shield Focus",' +
       '"features.Shield Proficiency (Heavy)"',
+  'Greater Spell Focus (Abjuration)':
+    'Type=General Require="features.Spell Focus (Abjuration)"',
+  'Greater Spell Focus (Conjuration)':
+    'Type=General Require="features.Spell Focus (Conjuration)"',
+  'Greater Spell Focus (Divination)':
+    'Type=General Require="features.Spell Focus (Diviniation)"',
+  'Greater Spell Focus (Enchantment)':
+    'Type=General Require="features.Spell Focus (Enchantment)"',
+  'Greater Spell Focus (Evocation)':
+    'Type=General Require="features.Spell Focus (Evocation)"',
+  'Greater Spell Focus (Illusion)':
+    'Type=General Require="features.Spell Focus (Illusion)"',
+  'Greater Spell Focus (Necromancy)':
+    'Type=General Require="features.Spell Focus (Necromancy)"',
+  'Greater Spell Focus (Transmutation)':
+    'Type=General Require="features.Spell Focus (Transmutation)"',
   'Greater Spell Penetration':
     'Type=General ' +
     'Imply="casterLevel >= 1" ' +
@@ -3436,6 +3449,9 @@ Pathfinder.SPELLS = {
     'Description="R$RS\' Stabilize dying target"'
 
 };
+for(var s in Pathfinder.SPELLS) {
+  Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
+}
 Pathfinder.TRACKS = {
   '3.5':
     'Progression=' +
