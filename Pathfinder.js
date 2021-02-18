@@ -68,14 +68,13 @@ function Pathfinder() {
   Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
   // Feats must be defined before paths
   Pathfinder.talentRules
-    (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.LANGUAGES,
-     Pathfinder.SKILLS);
+    (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.GOODIES,
+     Pathfinder.LANGUAGES, Pathfinder.SKILLS);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
     Pathfinder.FACTIONS, Pathfinder.PATHS, Pathfinder.RACES, Pathfinder.TRACKS,
     Pathfinder.TRAITS
   );
-  Pathfinder.goodiesRules(rules);
 
   Quilvyn.addRuleSet(rules);
 
@@ -84,7 +83,7 @@ function Pathfinder() {
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
   'Alignment', 'Animal Companion', 'Armor', 'Class', 'Deity', 'Faction',
-  'Familiar', 'Feat', 'Feature', 'Language', 'Path', 'Race', 'School',
+  'Familiar', 'Feat', 'Feature', 'Goody', 'Language', 'Path', 'Race', 'School',
   'Shield', 'Skill', 'Spell', 'Track', 'Trait', 'Weapon'
 ];
 /*
@@ -2182,6 +2181,14 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"'
 };
+Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
+  'Protection CMD':
+    'Pattern="([-+]\\d).*protection|protection\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $2" ' +
+    'Attribute=combatManeuverDefense ' +
+    'Section=combat Note="%V CMD"'
+});
 Pathfinder.LANGUAGES = {
   'Abyssal':'',
   'Aklo':'',
@@ -4100,22 +4107,6 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   rules.defineSheetElement('Combat Maneuver Defense', 'CombatManeuver/', '%V');
 };
 
-/* Defines the rules related to goodies included in character notes. */
-Pathfinder.goodiesRules = function(rules) {
-  SRD35.goodiesRules(rules);
-  // Pathfinder-specific attributes
-  rules.defineRule('combatNotes.goodiesCMDAdjustment',
-    'goodiesAffectingAC', '=',
-      'source.filter(item => !item.match(/\\b(armor|shield)\\b/i)).reduce(' +
-        'function(total, item) {' +
-          'return total + ((item + "+0").match(/[-+]\\d+/) - 0);' +
-        '}' +
-      ', 0)'
-  );
-  rules.defineRule
-    ('combatManeuverDefense', 'combatNotes.goodiesCMDAdjustment', '+', null);
-};
-
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
   rules, alignments, classes, deities, factions, paths, races, tracks, traits
@@ -4198,8 +4189,10 @@ Pathfinder.magicRules = function(rules, schools, spells) {
 };
 
 /* Defines rules related to character aptitudes. */
-Pathfinder.talentRules = function(rules, feats, features, languages, skills) {
-  SRD35.talentRules(rules, feats, features, languages, skills);
+Pathfinder.talentRules = function(
+  rules, feats, features, goodies, languages, skills
+) {
+  SRD35.talentRules(rules, feats, features, goodies, languages, skills);
   // Override SRD35 intelligence skillPoint adjustment, feat count computation,
   // max ranks per skill, and armor skill check penalty and disable armor swim
   // check penalty.
@@ -4300,6 +4293,15 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     );
   else if(type == 'Language')
     Pathfinder.languageRules(rules, name);
+  else if(type == 'Goody')
+    Pathfinder.goodyRules(rules, name,
+      QuilvynUtils.getAttrValue(attrs, 'Pattern'),
+      QuilvynUtils.getAttrValue(attrs, 'Effect'),
+      QuilvynUtils.getAttrValue(attrs, 'Value'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Attribute'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Section'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Note')
+  );
   else if(type == 'Path') {
     Pathfinder.pathRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Group'),
@@ -5250,6 +5252,25 @@ Pathfinder.featRulesExtra = function(rules, name) {
 Pathfinder.featureRules = function(rules, name, sections, notes) {
   SRD35.featureRules(rules, name, sections, notes);
   // No changes needed to the rules defined by SRD35 method
+};
+
+/*
+ * Defines in #rules# the rules associated with goody #name#, triggered by
+ * a starred line in the character notes that matches #pattern#. #effect#
+ * specifies the effect of the goody on each attribute in list #attributes#.
+ * This is one of "increment" (adds #value# to the attribute), "set" (replaces
+ * the value of the attribute by #value#), "lower" (decreases the value to
+ * #value#), or "raise" (increases the value to #value#). #value#, if null,
+ * defaults to 1; occurrences of $1, $2, ... in #value# reference capture
+ * groups in #pattern#. #sections# and #notes# list the note sections
+ * ("attribute", "combat", "companion", "feature", "magic", "save", or "skill")
+ * and formats that show the effects of the goody on the character sheet.
+ */
+Pathfinder.goodyRules = function(
+  rules, name, pattern, effect, value, attributes, sections, notes
+) {
+  QuilvynRules.goodyRules
+    (rules, name, pattern, effect, value, attributes, sections, notes);
 };
 
 /* Defines in #rules# the rules associated with language #name#. */
