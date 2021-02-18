@@ -4301,7 +4301,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Attribute'),
       QuilvynUtils.getAttrValueArray(attrs, 'Section'),
       QuilvynUtils.getAttrValueArray(attrs, 'Note')
-  );
+    );
   else if(type == 'Path') {
     Pathfinder.pathRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Group'),
