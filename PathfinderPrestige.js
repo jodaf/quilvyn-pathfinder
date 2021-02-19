@@ -133,7 +133,7 @@ PathfinderPrestige.CLASSES = {
     'Require=' +
       '"Sum \'^features\\.Skill Focus .Knowledge\' >= 0",' +
       '"Sum \'^spells\\..*Divi\' >= 7","Sum \'^spells\\..*3 Divi\' >= 1",' +
-      '"CountKnowledgeGe7 >= 2" ' +
+      '"countKnowledgeGe7 >= 2" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Appraise,Diplomacy,"Handle Animals",Heal,Knowledge,Linguistics,' +
@@ -200,7 +200,7 @@ PathfinderPrestige.CLASSES = {
       'Shadowdancer1:3=1,' +
       'Shadowdancer4:4=2,' +
       'Shadowdancer5:8=1,' +
-      'Shadowdancer7:10=1',
+      'Shadowdancer7:10=1'
 };
 PathfinderPrestige.FEATURES = {
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
@@ -560,7 +560,7 @@ PathfinderPrestige.classRulesExtra = function(rules, name) {
     var allSkills = rules.getChoices('skills');
     for(var skill in allSkills) {
       if(skill.startsWith('Knowledge'))
-        rules.defineRule('CountKnowledgeGe7',
+        rules.defineRule('countKnowledgeGe7',
           'skills.' + skill, '+=', 'source >= 7 ? 1 : null'
         );
     }

@@ -51,7 +51,6 @@ function Pathfinder() {
 
   SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
   SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
-  Pathfinder.WEAPONS = Object.assign({}, SRD35.WEAPONS, Pathfinder.WEAPONS);
 
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
   rules.defineChoice('extras',
@@ -109,7 +108,6 @@ Pathfinder.ALIGNMENTS = {
   'Lawful Neutral':''
 };
 Pathfinder.ANIMAL_COMPANIONS = {
-
   // Attack, Dam, AC include all modifiers
   'Ape':
     'Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 AC=14 Attack=1 ' +
@@ -331,7 +329,6 @@ Pathfinder.FACTIONS = {
   'Taldor':''
 };
 Pathfinder.FAMILIARS = {
-
   // Attack, Dam, AC include all modifiers
   'Bat':
     'Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5 HD=1 AC=16 Attack=6 Dam=1d3-5 ' +
@@ -365,7 +362,6 @@ Pathfinder.FAMILIARS = {
   'Weasel':
     'Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5 HD=1 AC=15 Attack=4 Dam=1d3-4 ' +
     'Size=T',
-
   'Air Elemental':
     'Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 HD=2 AC=17 Attack=6 Dam=1d4+1 ' +
     'Size=S Level=5',
@@ -399,10 +395,8 @@ Pathfinder.FAMILIARS = {
   'Water Elemental':
     'Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 HD=2 AC=17 Attack=5 Dam=1d6+3 ' +
     'Size=T Level=5'
-
 };
 Pathfinder.FEATS = {
-
   'Acrobatic':'Type=General',
   'Acrobatic Steps':'Type=General',
   'Agile Maneuvers':'Type=Fighter Imply="dexterityModifier > strengthModifier"',
@@ -436,7 +430,8 @@ Pathfinder.FEATS = {
     'Type=Fighter,Critical Require="baseAttack>=11","features.Critical Focus"',
   'Blind-Fight':'Type=Fighter',
   'Blinding Critical':
-    'Type=Fighter,Critical Require="baseAttack>=15","features.Critical Focus"',
+    'Type=Fighter,Critical ' +
+    'Require="baseAttack >= 15","features.Critical Focus"',
   'Brew Potion':'Type="Item Creation",Wizard Require="casterLevel >= 3"',
   'Catch Off-Guard':'Type=Fighter',
   'Channel Smite':'Type=Fighter Require="features.Channel Energy"',
@@ -473,7 +468,8 @@ Pathfinder.FEATS = {
       '"features.Shatter Defenses",' +
       '"features.WeaponFocus"',
   'Deafening Critical':
-    'Type=Fighter,Critical Require="baseAttack>=13","features.Critical Focus"',
+    'Type=Fighter,Critical ' +
+    'Require="baseAttack >= 13","features.Critical Focus"',
   'Deceitful':'Type=General',
   'Defensive Combat Training':'Type=Fighter',
   'Deflect Arrows':
@@ -902,7 +898,6 @@ Pathfinder.FEATS = {
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 15","features.Dodge"'
 };
 Pathfinder.FEATURES = {
-
   // Shared with SRD35
   'Abundant Step':'Section=magic Note="Use 2 ki to <i>Dimension Door</i>"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%V Fly"',
@@ -1301,7 +1296,6 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Change into creature of size %V %1 hr %2/dy"',
   'Woodland Stride':
     'Section=feature Note="Normal movement through undergrowth"',
-
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil 1/day"',
   'Aberrant Form':
@@ -3997,8 +3991,8 @@ Pathfinder.SRD35_SKILL_MAP = {
 Pathfinder.abilityRules = function(rules) {
   SRD35.abilityRules(rules);
   // No changes needed to the rules defined by SRD35 method
-  // NOTE: SRD35.abilityRules adds SRD35 minimum ability checks (at least one
-  // ability > 13, ability modifiers must sum to > 0), that are not in the PRD.
+  // NOTE: SRD35.abilityRules adds minimum ability checks (at least one ability
+  // > 13, ability modifiers must sum to > 0), that are not in the PRD.
 };
 
 /* Defines rules related to animal companions and familiars. */
@@ -4116,11 +4110,11 @@ Pathfinder.identityRules = function(
   QuilvynUtils.checkAttrTable
     (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots']);
   QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
+  QuilvynUtils.checkAttrTable(factions, []);
   // Note addition of feats and skills to SRD35's list
   QuilvynUtils.checkAttrTable
     (paths, ['Group', 'Level', 'Features', 'Selectables', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots']);
   QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots']);
-  QuilvynUtils.checkAttrTable(factions, []);
   QuilvynUtils.checkAttrTable(tracks, ['Progression']);
   QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
@@ -5269,8 +5263,9 @@ Pathfinder.featureRules = function(rules, name, sections, notes) {
 Pathfinder.goodyRules = function(
   rules, name, pattern, effect, value, attributes, sections, notes
 ) {
-  QuilvynRules.goodyRules
+  SRD35.goodyRules
     (rules, name, pattern, effect, value, attributes, sections, notes);
+  // No changes needed to the rules defined by SRD35 method
 };
 
 /* Defines in #rules# the rules associated with language #name#. */
@@ -6301,107 +6296,6 @@ Pathfinder.weaponRules = function(
   // No changes needed to the rules defined by SRD35 method
 };
 
-/* Returns HTML body content for user notes associated with this rule set. */
-Pathfinder.ruleNotes = function() {
-  return '' +
-    '<h2>Pathfinder Quilvyn Module Notes</h2>\n' +
-    'Pathfinder Quilvyn Module Version ' + PATHFINDER_VERSION + '\n' +
-    '<h3>Usage Notes</h3>\n' +
-    '<p>\n' +
-    '<ul>\n' +
-    '  <li>\n' +
-    '    Although they have a range increment, the weapons Club, Dagger,\n' +
-    '    Light Hammer, Shortspear, Spear, and Trident are all considered\n' +
-    '    melee weapons.  Substitute the ranged attack attribute for the\n' +
-    '    melee attack attribute given on the character sheet when any of\n' +
-    '    these is thrown.\n' +
-    '  </li><li>\n' +
-    '    The armor class of characters with the Dodge feat includes a +1\n' +
-    '    bonus that applies only to one foe at a time.\n' +
-    '  </li><li>\n' +
-    '    For purposes of computing strength damage bonuses, Quilvyn assumes\n' +
-    '    that characters with a buckler wield their weapons one-handed and\n' +
-    '    that characters with no buckler or shield wield with both hands.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn assumes that masterwork composite bows are specially built\n' +
-    '    to allow a strength damage bonus to be applied.\n' +
-    '  </li><li>\n' +
-    '    A few feats have been renamed to emphasize the relationship\n' +
-    '    between similar feats: "Shield Proficiency" and "Tower Shield\n' +
-    '    Proficiency" to "Shield Proficiency (Heavy)" and "Shield\n' +
-    '    Proficiency (Tower)"; "Simple Weapon Proficiency" to "Weapon\n' +
-    '    Proficiency (Simple)"; "Exotic Weapon Proficiency" and "Martial\n' +
-    '    Weapon Proficiency" to "Weapon Proficiency" (a base feat that\n' +
-    '    should be used to define weapon-specific subfeats).\n' +
-    '  </li><li>\n' +
-    '    The Charm domain "Dazing Touch" feature has been renamed "Addling\n' +
-    '    Touch" to distinguish it from the Enchantment school feature of\n' +
-    '    the same name.\n' +
-    '  </li><li>\n' +
-    '    The Strength domain "Strength Surge" feature has been renamed\n' +
-    '    "Strength Rush" to distinguish it from the barbarian feature\n' +
-    '    of the same name.\n' +
-    '  </li><li>\n' +
-    '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
-    '    "Faction Freedom Fighter" to distinguish it from the halfling\n' +
-    '    trait of the same name.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
-    '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
-    '  </li>\n' +
-    '</ul>\n' +
-    '</p>\n' +
-    '\n' +
-    '<h3>Limitations</h3>\n' +
-    '<p>\n' +
-    '<ul>\n' +
-    '  <li>\n' +
-    '    You can only select each feat once. Multiple selections of feats\n' +
-    '    that allow it can be managed by defining custom feats.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn doesn\'t support double weapons where the two attacks have\n' +
-    '    different critical mutipliers. In the predefined weapons this\n' +
-    '    affects only the Gnome Hooked Hammer, where Quilvyn displays a\n' +
-    '    critical multiplier of x4 instead of x3/x4.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn does not track companion feats, skills, and tricks.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn has problems dealing with attributes containing an\n' +
-    '    uncapitalized word.  This is why, e.g., Quilvyn defines the skills\n' +
-    '    "Sleight Of Hand" and "Knowledge (Arcana)" instead of "Sleight of\n' +
-    '    Hand" and "Knowledge (arcana)".  There are other occasions when\n' +
-    '    Quilvyn is picky about case; when defining your own attributes,\n' +
-    '    it\'s safest to follow the conventions Quilvyn uses.\n' +
-    '  </li>\n' +
-    '</ul>\n' +
-    '</p>\n' +
-    '\n' +
-    '<h3>Known Bugs</h3>\n' +
-    '<p>\n' +
-    '<ul>\n' +
-    '  <li>\n' +
-    '    Quilvyn incorrectly validates the Mystic Theurge requirement of\n' +
-    '    being able to cast 2nd-level arcane and divine spells.  It checks\n' +
-    '    that the character is caster level 3 in each catetory, whereas\n' +
-    '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
-    '    spells until a higher caster level.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn lists the fly speed for a 9th-level Dragon Disciple as\n' +
-    "    30' instead of the correct 60'.\n" +
-    '  </li><li>\n' +
-    '    When an character ability score is modified, Quilvyn recalculates\n' +
-    '    attributes based on that ability from scratch.  For example,\n' +
-    '    bumping intelligence when a character reaches fourth level causes\n' +
-    '    Quilvyn to recompute the number of skill points awarded at first\n' +
-    '    level.\n' +
-    '  </li><li>\n' +
-    '    When randomly generating clerics, Quilvyn reports a spell for each\n' +
-    '    domain in each level, instead of a single domain spell per level.\n' +
-    '  </li>\n' +
-    '</ul>\n' +
-    '</p>\n';
-};
-
 /* Returns an ObjectViewer loaded with the default character sheet format. */
 Pathfinder.createViewers = function(rules, viewers) {
   SRD35.createViewers(rules, viewers); // No changes
@@ -6454,4 +6348,48 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
 /* Returns an array of plugins upon which this one depends. */
 Pathfinder.getPlugins = function() {
   return [SRD35];
+};
+
+/* Returns HTML body content for user notes associated with this rule set. */
+Pathfinder.ruleNotes = function() {
+  return '' +
+    '<h2>Pathfinder/Prestige Quilvyn Plugin Notes</h2>\n' +
+    'Pathfinder Quilvyn Plugin Version ' + PATHFINDER_VERSION + '\n' +
+    '<h3>Usage Notes</h3>\n' +
+    '<p>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    The Charm domain "Dazing Touch" feature has been renamed "Addling\n' +
+    '    Touch" to distinguish it from the Enchantment school feature of\n' +
+    '    the same name.\n' +
+    '  </li><li>\n' +
+    '    The Strength domain "Strength Surge" feature has been renamed\n' +
+    '    "Strength Rush" to distinguish it from the barbarian feature\n' +
+    '    of the same name.\n' +
+    '  </li><li>\n' +
+    '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
+    '    "Faction Freedom Fighter" to distinguish it from the halfling\n' +
+    '    trait of the same name.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
+    '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '</p>\n' +
+    '\n' +
+    '<h3>Known Bugs</h3>\n' +
+    '<p>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Quilvyn incorrectly validates the Mystic Theurge requirement of\n' +
+    '    being able to cast 2nd-level arcane and divine spells.  It checks\n' +
+    '    that the character is caster level 3 in each catetory, whereas\n' +
+    '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
+    '    spells until a higher caster level.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn lists the fly speed for a 9th-level Dragon Disciple as\n' +
+    "    30' instead of the correct 60'.\n" +
+    '  </li>\n' +
+    '</ul>\n' +
+    '</p>\n';
 };
