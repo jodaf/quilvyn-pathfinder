@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.1.0';
+var PATHFINDER_VERSION = '2.2.1.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -3466,7 +3466,11 @@ Pathfinder.TRACKS = {
   'Slow':
     'Progression=' +
       '0,3,7.5,14,23,35,53,77,115,160,235,330,475,665,955,1350,1900,2700,' +
-      '3850,5350'
+      '3850,5350',
+  'PSOP':
+    'Progression=' +
+      '0,.003,.006,.009,.012,.015,.018,.021,.024,.027,.03,.033,.036,.039,' +
+      '.042,.045,.048,.051,.054,.057,.060' 
 };
 Pathfinder.TRAITS = {
   // Advanced Player's Guide
