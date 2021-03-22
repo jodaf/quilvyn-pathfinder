@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.1.1';
+var PATHFINDER_VERSION = '2.2.1.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -235,7 +235,7 @@ Pathfinder.DEITIES = {
     'Domain=Earth,Law,Nobility,Protection,Travel',
   'Asmodeus':
     'Alignment=LE ' +
-    'Weapon=Mace ' +
+    'Weapon="Heavy Mace","Light Mace" ' +
     'Domain=Evil,Fire,Law,Magic,Trickery',
   'Calistria':
     'Alignment=CN ' +

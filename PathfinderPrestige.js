@@ -136,7 +136,7 @@ PathfinderPrestige.CLASSES = {
       '"countKnowledgeGe7 >= 2" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
-      'Appraise,Diplomacy,"Handle Animals",Heal,Knowledge,Linguistics,' +
+      'Appraise,Diplomacy,"Handle Animal",Heal,Knowledge,Linguistics,' +
       'Perform,Spellcraft,"Use Magic Device" ' +
     'Features=' +
       '"1:Caster Level Bonus",2:Lore,"4:Bonus Language","6:Greater Lore",' +
@@ -177,8 +177,8 @@ PathfinderPrestige.CLASSES = {
       '"skills.Stealth >= 5","skills.Perform (Dance) >= 2" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
-      'Acrobatics,Bluff,Diplomacy,Diguise,"Escape Artist",Perception,' +
-      'Perform,"Slight Of Hand",Stealth ' +
+      'Acrobatics,Bluff,Diplomacy,Disguise,"Escape Artist",Perception,' +
+      'Perform,"Sleight Of Hand",Stealth ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Composite Shortbow/Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Mace/Morningstar/Punching Dagger/Quarterstaff/Rapier/Sap/Shortbow/Short Sword)",' +
