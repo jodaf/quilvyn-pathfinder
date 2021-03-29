@@ -49,7 +49,7 @@ PathfinderPrestige.CLASSES = {
     'Skills=' +
       'Perception,Ride,Stealth,Survival ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
       '"1:Enhance Arrows","2:Caster Level Bonus","2:Imbue Arrow",' +
       '"3:Elemental Arrows","4:Seeker Arrow","5:Distance Arrows",' +
