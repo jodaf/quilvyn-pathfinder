@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.1.2';
+var PATHFINDER_VERSION = '2.2.1.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document.  The
@@ -565,7 +565,7 @@ Pathfinder.FEATS = {
       '"baseAttack >= 1",' +
       '"levels.Fighter >= 8",' +
       '"features.Shield Focus",' +
-      '"features.Shield Proficiency (Heavy)"',
+      '"features.Shield Proficiency"',
   'Greater Spell Focus (Abjuration)':
     'Type=General Require="features.Spell Focus (Abjuration)"',
   'Greater Spell Focus (Conjuration)':
@@ -658,7 +658,7 @@ Pathfinder.FEATS = {
       '"features.Point-Blank Shot",' +
       '"features.Precise Shot"',
   'Improved Shield Bash':
-    'Type=Fighter Require="features.Shield Proficiency (Heavy)"',
+    'Type=Fighter Require="features.Shield Proficiency"',
   'Improved Sunder':
     'Type=Fighter ' +
     'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
@@ -698,6 +698,8 @@ Pathfinder.FEATS = {
       '"baseAttack >= 6",' +
       '"features.Point-Blank Shot",' +
       '"features.Rapid Shot"',
+  'Martial Weapon Proficiency (Longsword)':
+    'Type=General Require="baseAttack >= 1" Imply="weapons.Longsword"',
   'Master Craftsman (Craft (Armor))':
     'Type=General Require="skills.Craft (Armor) >= 5"',
   'Master Craftsman (Profession (Tanner))':
@@ -755,23 +757,22 @@ Pathfinder.FEATS = {
       '"features.Dazzing Display"',
   'Shield Focus':
     'Type=Fighter ' +
-    'Require="baseAttack >= 1","features.Shield Proficiency (Heavy)"',
+    'Require="baseAttack >= 1","features.Shield Proficiency"',
   'Shield Master':
     'Type=Fighter ' +
     'Require=' +
       '"baseAttack >= 11",' +
       '"features.Improved Shield Bash",' +
-      '"features.Shield Proficiency (Heavy)",' +
+      '"features.Shield Proficiency",' +
       '"features.Shield Slam",' +
       '"features.Two-Weapon Fighting"',
-  'Shield Proficiency (Heavy)':'Type=Fighter',
-  'Shield Proficiency (Tower)':'Type=Fighter',
+  'Shield Proficiency':'Type=Fighter',
   'Shield Slam':
     'Type=Fighter ' +
     'Require=' +
       '"baseAttack >= 6",' +
       '"features.Improved Shield Bash",' +
-      '"features.Shield Proficiency (Heavy)",' +
+      '"features.Shield Proficiency",' +
       '"features.Two-Weapon Fighting"',
   'Shot On The Run':
     'Type=Fighter ' +
@@ -783,6 +784,7 @@ Pathfinder.FEATS = {
       '"features.Point-Blank Shot"',
   'Sickening Critical':'Type=Fighter,Critical',
   'Silent Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Simple Weapon Proficiency':'Type=General',
   // Skill Focus subfeats required by bloodlines
   'Skill Focus (Fly)':'Type=General',
   'Skill Focus (Knowledge (Arcana))':'Type=General',
@@ -846,6 +848,7 @@ Pathfinder.FEATS = {
     'Type=Fighter,Critcial ' +
     'Require="baseAttack >= 13","features.Critical Focus"',
   'Toughness':'Type=General',
+  'Tower Shield Proficiency':'Type=Fighter',
   'Trample':'Type=Fighter Require="features.Mounted Combat",skills.Ride',
   'Turn Undead':'Type=General Require="features.Channel Energy"',
   'Two-Weapon Defense':
@@ -874,9 +877,6 @@ Pathfinder.FEATS = {
     'Imply="dexterityModifier > strengthModifier"',
   'Weapon Focus (Longsword)':
     'Type=Fighter Require="baseAttack >= 1" Imply=weapons.Longsword',
-  'Weapon Proficiency (Simple)':'Type=General',
-  'Weapon Proficiency (Longsword)':
-    'Type=General Require="baseAttack >= 1" Imply="weapons.Longsword"',
   'Weapon Specialization (Longsword)':
     'Type=Fighter ' +
     'Imply="weapons.Longsword" ' +
@@ -3712,7 +3712,7 @@ Pathfinder.CLASSES = {
     'Require="alignment !~ \'Lawful\'" ' +
     'HitDie=d12 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
       '"1:Fast Movement",1:Rage,"2:Uncanny Dodge","3:Trap Sense",' +
       '"5:Improved Uncanny Dodge","7:Damage Reduction","11:Greater Rage",' +
@@ -3730,7 +3730,7 @@ Pathfinder.CLASSES = {
   'Bard':
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Light)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Short Bow/Whip)",' +
       '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
       '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
@@ -3752,7 +3752,7 @@ Pathfinder.CLASSES = {
   'Cleric':
     'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Simple)",' +
       '1:Aura,"1:Channel Energy","1:Spontaneous Cleric Spell" ' +
     'Selectables=' +
@@ -3783,7 +3783,7 @@ Pathfinder.CLASSES = {
     'Require="alignment =~ \'Neutral\'","armor =~ \'None|Hide|Leather|Padded\'","shield =~ \'None|Wooden\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
       '"1:Nature Sense","1:Spontaneous Druid Spell","1:Wild Empathy",' +
       '"2:Woodland Stride","3:Trackless Step","4:Resist Nature\'s Lure",' +
@@ -3810,7 +3810,8 @@ Pathfinder.CLASSES = {
   'Fighter':
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency (Tower)",' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
+      '"1:Tower Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
       '2:Bravery,"3:Armor Training","5:Weapon Training","19:Armor Mastery",' +
       '"20:Weapon Mastery"',
@@ -3844,7 +3845,7 @@ Pathfinder.CLASSES = {
     'Require="alignment == \'Lawful Good\'" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
       '1:Aura,"1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
@@ -3862,7 +3863,7 @@ Pathfinder.CLASSES = {
   'Ranger':
     'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency (Heavy)",' +
+      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
       '"1:Favored Enemy",1:Track,"1:Wild Empathy",3:Endurance,' +
       '"3:Favored Terrain","7:Woodland Stride","8:Swift Tracker",9:Evasion,' +
@@ -5238,6 +5239,14 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if((matchInfo = name.match(/^(Greater\s)?Weapon\sSpecialization\s\((.*)\)$/)) != null) {
     Pathfinder.featureRules
       (rules, name, ['combat'], ['+2 ' + matchInfo[2] + ' Damage Modifier']);
+  } else if(name == 'Simple Weapon Proficiency') {
+    rules.defineRule('features.Weapon Proficiency (Simple)',
+      'features.' + name, '=', '1'
+    );
+  } else if((matchInfo = name.match(/^(Exotic|Martial)\sWeapon\sProficiency.\((.*)\)$/)) != null) {
+    rules.defineRule('features.Weapon Proficiency (' + matchInfo[2] + ')',
+      'features.' + name, '=', '1'
+    );
   }
 
 };
