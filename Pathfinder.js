@@ -18,15 +18,16 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.1.3';
+var PATHFINDER_VERSION = '2.2.1.4';
 
 /*
- * This module loads the rules from the Pathfinder Reference Document.  The
+ * This module loads the rules from the Pathfinder Reference Document. The
  * Pathfinder function contains methods that load rules for particular parts of
- * the PRD; raceRules for character races, shieldRules for shields, etc.  These
+ * the PRD; raceRules for character races, shieldRules for shields, etc. These
  * member methods can be called independently in order to use a subset of the
- * PRD rules.  Similarly, the constant fields of Pathfinder (ALIGNMENTS, FEATS,
- * etc.) can be manipulated to modify the choices.
+ * PRD rules. Similarly, the constant fields of Pathfinder (ALIGNMENTS, FEATS,
+ * etc.) can be manipulated to modify the choices. If the SRD35NPC plugin is
+ * available, Pathfinder includes the NPC classes in the Pathfinder rules.
  */
 function Pathfinder() {
 
@@ -74,6 +75,19 @@ function Pathfinder() {
     Pathfinder.FACTIONS, Pathfinder.PATHS, Pathfinder.RACES, Pathfinder.TRACKS,
     Pathfinder.TRAITS
   );
+
+  if(window.SRD35NPC != null) {
+    var classes = {};
+    for(var c in Pathfinder.NPC_CLASSES) {
+      if(c in SRD35NPC.CLASSES)
+        classes[c] = SRD35NPC.CLASSES[c] + ' ' + Pathfinder.NPC_CLASSES[c];
+      else
+        console.log('Unknown NPC class "' + c + '"');
+    }
+    SRD35NPC.identityRules(rules, classes);
+    SRD35NPC.magicRules(rules, SRD35NPC.SPELLS);
+    SRD35NPC.talentRules(rules, SRD35NPC.FEATURES);
+  }
 
   Quilvyn.addRuleSet(rules);
 
@@ -2205,6 +2219,21 @@ Pathfinder.LANGUAGES = {
   'Sylvan':'',
   'Terran':'',
   'Undercommon':''
+};
+Pathfinder.NPC_CLASSES = {
+  'Adept':
+    'Skills=' +
+      'Craft,"Handle Animal",Heal,Knowledge,Profession,Spellcraft,Survival',
+  'Aristocrat':
+    'Skills=' +
+      'Appraise,Bluff,Craft,Diplomacy,Disguise,"Handle Animal",Intimidate,' +
+      'Knowledge,Linguistics,Perception,Perform,Profession,Ride,' +
+      '"Sense Motive",Swim,Survival',
+  'Commoner':
+    'Skills=Climb,Craft,"Handle Animal",Perception,Profession,Ride,Swim',
+  'Expert':'',
+  'Warrior':
+    'Skills=Climb,Craft,"Handle Animal",Intimidate,Profession,Ride,Swim'
 };
 Pathfinder.PATHS = {
   'Air Domain':
