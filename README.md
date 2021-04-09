@@ -13,9 +13,7 @@ quilvyn-core package.
 
 To use quilvyn-pathfinder, unbundle the release package into a plugins/
 subdirectory within the Quilvyn installation directory, then add or uncomment
-the 'plugins/Pathfinder.js' entry in the PLUGINS definition in quilvyn.html. An
-entry for 'plugins/PathfinderPrestige.js' can also be added or uncommented to
-use the prestige classes from the campaign setting rulebook. 
+the 'plugins/Pathfinder.js' entry in the PLUGINS definition in quilvyn.html.
 
 ### Usage
 
