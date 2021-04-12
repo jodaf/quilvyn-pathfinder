@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.0';
+var PATHFINDER_VERSION = '2.2.2.1';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
@@ -965,8 +965,6 @@ Pathfinder.FEATURES = {
   'Dodge':'Section=combat Note="+1 AC/+1 CMD"',
   'Dwarf Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Wisdom/-2 Charisma"',
-  'Dwarf Armor Speed Adjustment':
-    'Section=ability Note="No armor speed penalty"',
   'Dwarf Enmity':'Section=combat Note="+1 attack vs. goblinoid and orc"',
   'Elf Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Intelligence/-2 Constitution"',
@@ -2045,7 +2043,8 @@ Pathfinder.FEATURES = {
   'Stand Up':'Section=combat Note="Stand from prone as free action"',
   'Starchild':
     'Section=skill Note="+4 Survival (avoid becoming lost), know North"',
-  'Steady':'Section=ability Note="No speed penalty in armor"',
+  'Steady':
+    'Section=ability Note="No speed penalty in heavy armor or with heavy load"',
   'Step Up':'Section=combat Note="Match foe 5\' step"',
   'Storm Burst':
     'Section=combat ' +
