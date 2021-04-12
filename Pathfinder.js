@@ -7029,7 +7029,7 @@ Pathfinder.getPlugins = function() {
 /* Returns HTML body content for user notes associated with this rule set. */
 Pathfinder.ruleNotes = function() {
   return '' +
-    '<h2>Pathfinder/Prestige Quilvyn Plugin Notes</h2>\n' +
+    '<h2>Pathfinder Quilvyn Plugin Notes</h2>\n' +
     'Pathfinder Quilvyn Plugin Version ' + PATHFINDER_VERSION + '\n' +
     '<h3>Usage Notes</h3>\n' +
     '<p>\n' +
