@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.1';
+var PATHFINDER_VERSION = '2.2.2.2';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
@@ -58,8 +58,9 @@ function Pathfinder() {
     'feats', 'featCount', 'sanityNotes', 'selectableFeatureCount',
     'validationNotes'
   );
-  rules.defineChoice
-    ('preset', 'race', 'levels', 'prestige', 'npc', 'experienceTrack');
+  rules.defineChoice('preset',
+    'race:Race,select-one,races', 'levels:Class Levels,bag,levels',
+    'prestige:Prestige Levels,bag,prestiges', 'npc:NPC Levels,bag,npcs');
 
   Pathfinder.abilityRules(rules);
   Pathfinder.aideRules
