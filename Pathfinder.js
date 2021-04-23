@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.2';
+var PATHFINDER_VERSION = '2.2.2.3';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
@@ -1619,7 +1619,7 @@ Pathfinder.FEATURES = {
   'Extra Channel':'Section=magic Note="Channel energy +2/day"',
   'Extra Ki':'Section=feature Note="+2 Ki pool"',
   'Extra Lay On Hands':'Section=magic Note="Lay On Hands +2/day"',
-  'Extra Mercy':'Section=magic Note="Lay On Hands gives Mercy effect"',
+  'Extra Mercy':'Section=magic Note="%V additional Mercy effect"',
   'Extra Performance':
     'Section=feature Note="Use Barding Performance extra 6 rd/day"',
   'Extra Rage':'Section=feature Note="Rage extra 6 rd/day"',
@@ -1852,7 +1852,8 @@ Pathfinder.FEATURES = {
          '"+2 Heal (disease, poison)"',
   "Medusa's Wrath":
     'Section=combat Note="2 extra unarmed attacks vs. diminished-capacity foe"',
-  'Mercy':'Section=magic Note="Lay on hands removes additional effects"',
+  'Mercy':
+    'Section=magic Note="Lay on hands removes %V additional conditions: %1"',
   'Meridian Strike':'Section=combat Note="Reroll crit damage 1s 1/day"',
   'Metamagic Adept':
     'Section=magic ' +
@@ -3979,7 +3980,13 @@ Pathfinder.CLASSES = {
       '"4:Channel Energy","8:Aura Of Resolve","14:Aura Of Faith",' +
       '"17:Aura Of Righteousness","17:Resist Evil","20:Holy Champion" ' +
     'Selectables=' +
-      '"5:Divine Mount","5:Divine Weapon" ' +
+      '"3:Mercy (Fatigued)","3:Mercy (Shaken)","3:Mercy (Sickened)",' +
+      '"features.Divine Weapon == 0 ? 5:Divine Mount",' +
+      '"features.Divine Mount == 0 ? 5:Divine Weapon",' +
+      '"6:Mercy (Dazed)","6:Mercy (Diseased)","6:Mercy (Staggered)",' +
+      '"9:Mercy (Cursed)","9:Mercy (Exhausted)","9:Mercy (Frighted)",' +
+      '"9:Mercy (Nauseated)","9:Mercy (Poisoned)","12:Mercy (Blinded)",' +
+      '"12:Mercy (Deafened)","12:Mercy (Paralyzed)","12:Mercy (Stunned)" ' +
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -5171,13 +5178,26 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
     )
+    rules.defineRule
+      ('magicNotes.mercy', 'levels.Paladin', '=', 'Math.floor(source / 3)');
     rules.defineRule('magicNotes.removeDisease',
       'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
     );
     rules.defineRule('saveNotes.divineGrace', 'charismaModifier', '=', null);
     rules.defineRule('selectableFeatureCount.Paladin',
-      'levels.Paladin', '=', 'source >= 5 ? 1 : null'
+      'levels.Paladin', '+=', 'Math.floor(source / 3) + (source>=5 ? 1 : null)'
     );
+    var mercies =
+      QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Mercy/).map(x => x.replace(/^.*Mercy/, 'Mercy'));
+    rules.defineRule('magicNotes.mercy.1',
+      'levels.Paladin', '=', '(Pathfinder.merciesTaken = []).length'
+    );
+    for(var i = 0; i < mercies.length; i++) {
+      var mercy = mercies[i];
+      rules.defineRule('magicNotes.mercy.1',
+        'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.join(", ") : ""'
+      );
+    }
 
   } else if(name == 'Ranger') {
 
@@ -5803,6 +5823,11 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Extra Lay On Hands') {
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', '2')
+  } else if(name == 'Extra Mercy') {
+    rules.defineRule('magicNotes.extraMercy', 'feats.Extra Mercy', '=', null);
+    rules.defineRule('magicNotes.mercy', 'magicNotes.extraMercy', '+', null);
+    rules.defineRule
+      ('selectableFeatureCount.Paladin', 'magicNotes.extraMercy', '+', null);
   } else if(name == 'Extra Performance') {
     rules.defineRule('featureNotes.bardicPerformance',
       'featureNotes.extraPerformance', '+', '6'
