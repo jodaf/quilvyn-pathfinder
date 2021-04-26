@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.3';
+var PATHFINDER_VERSION = '2.2.2.4';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
@@ -1616,13 +1616,12 @@ Pathfinder.FEATURES = {
   'Expert Duelist':'Section=combat Note="+1 AC/+1 CMD"',
   'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Extended Illusions':'Section=magic Note="Illusion duration increased %V rd"',
-  'Extra Channel':'Section=magic Note="Channel energy +2/day"',
-  'Extra Ki':'Section=feature Note="+2 Ki pool"',
-  'Extra Lay On Hands':'Section=magic Note="Lay On Hands +2/day"',
+  'Extra Channel':'Section=magic Note="Channel energy +2/dy"',
+  'Extra Ki':'Section=feature Note="+%V Ki pool"',
+  'Extra Lay On Hands':'Section=magic Note="Lay On Hands +%V/dy"',
   'Extra Mercy':'Section=magic Note="%V additional Mercy effect"',
-  'Extra Performance':
-    'Section=feature Note="Use Barding Performance extra 6 rd/day"',
-  'Extra Rage':'Section=feature Note="Rage extra 6 rd/day"',
+  'Extra Performance':'Section=feature Note="Bardic Performance +%V rd/dy"',
+  'Extra Rage':'Section=combat Note="Rage +%V rd/dy"',
   'Eyes And Ears Of The City':
     'Section=skill Note="+1 Perception/Perception is a class skill"',
   'Eyes Of Darkness':
@@ -1652,7 +1651,7 @@ Pathfinder.FEATURES = {
   'Fires Of Hell':'Section=combat Note="Flaming blade +1 damage %V rd 1/day"',
   'Flame Of The Dawn Flower':
     'Section=combat Note="+2 scimitar critical damage"',
-  'Fleet':'Section=ability Note="+5 Speed in light or no armor"',
+  'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
   'Fleeting Glance':
     'Section=magic Note="<i>Greater Invisibility</i> %V rd/day"',
   'Focused Mind':'Section=magic Note="+2 concentration checks"',
@@ -5818,22 +5817,40 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Extra Channel') {
     rules.defineRule
       ('magicNotes.channelEnergy.2', 'magicNotes.extraChannel', '+', '2');
-  } else if(name == 'Extra Ki') {
-    rules.defineRule('featureNotes.kiPool', 'featureNotes.extraKi', '+', '2');
-  } else if(name == 'Extra Lay On Hands') {
     rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', '2')
+      ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4')
+  } else if(name == 'Extra Ki') {
+    rules.defineRule
+      ('featureNotes.extraKi', 'feats.Extra Ki', '=', 'source * 2');
+    rules.defineRule('featureNotes.kiPool', 'featureNotes.extraKi', '+', null);
+  } else if(name == 'Extra Lay On Hands') {
+    rules.defineRule('magicNotes.extraLayOnHands',
+      'feats.Extra Lay On Hands', '=', 'source * 2'
+    );
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', null)
   } else if(name == 'Extra Mercy') {
     rules.defineRule('magicNotes.extraMercy', 'feats.Extra Mercy', '=', null);
     rules.defineRule('magicNotes.mercy', 'magicNotes.extraMercy', '+', null);
     rules.defineRule
       ('selectableFeatureCount.Paladin', 'magicNotes.extraMercy', '+', null);
   } else if(name == 'Extra Performance') {
+    rules.defineRule('featureNotes.extraPerformance',
+      'feats.Extra Performance', '=', 'source * 6'
+    );
     rules.defineRule('featureNotes.bardicPerformance',
-      'featureNotes.extraPerformance', '+', '6'
+      'featureNotes.extraPerformance', '+', null
     );
   } else if(name == 'Extra Rage') {
-    rules.defineRule('combatNotes.rage', 'featureNotes.extraRage', '+', '6');
+    rules.defineRule
+      ('combatNotes.extraRage', 'feats.Extra Rage', '=', 'source * 6');
+    rules.defineRule('combatNotes.rage', 'combatNotes.extraRage', '+', null);
+  } else if(name == 'Fleet') {
+    rules.defineRule('abilityNotes.fleet',
+      'armorWeight', '?', 'source < 2',
+      'feats.Fleet', '=', 'source * 5'
+    );
+    rules.defineRule('speed', 'abilityNotes.fleet', '+', null);
   } else if(name == "Gorgon's Fist") {
     rules.defineRule("combatNotes.gorgon'sFist",
       'level', '=', '10 + Math.floor(source / 2)',
