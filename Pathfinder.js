@@ -93,6 +93,7 @@ Pathfinder.CHOICES = [
  * dependencies among attributes when generating random characters.
  */
 Pathfinder.RANDOMIZABLE_ATTRIBUTES = [
+  'abilities',
   'charisma', 'constitution', 'dexterity', 'intelligence', 'strength', 'wisdom',
   'name', 'race', 'gender', 'alignment', 'deity', 'levels', 'features',
   'feats', 'skills', 'languages', 'hitPoints', 'armor', 'shield', 'weapons',
