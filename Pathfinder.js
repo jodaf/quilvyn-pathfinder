@@ -18,7 +18,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.4';
+var PATHFINDER_VERSION = '2.2.2.5';
 
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
@@ -4507,19 +4507,18 @@ Pathfinder.identityRules = function(
   }
 
   rules.defineEditorElement
-    ('faction', 'Faction', 'select-one', 'factions', 'experience');
+    ('faction', 'Faction', 'select-one', 'factions', 'alignment');
   rules.defineSheetElement('Faction', 'Alignment');
   rules.defineEditorElement('traits', 'Traits', 'set', 'traits', 'skills');
   rules.defineSheetElement('Traits', 'Feats+', null, '; ');
   rules.defineChoice('extras', 'traits');
   rules.defineEditorElement
-    ('experienceTrack', 'Track', 'select-one', 'tracks', 'levels');
+    ('experienceTrack', 'Track', 'select-one', 'tracks', 'feats');
   rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
   rules.defineEditorElement
-    ('favoredClassHitPoints', 'Favored Class Hit Points', 'text', [4], 'armor');
+    ('favoredClassHitPoints', 'Favored Class Hit Points/Skill Points', 'text', [4], 'hitPoints');
   rules.defineEditorElement
-    ('favoredClassSkillPoints', 'Favored Class Skill Points', 'text', [4],
-     'armor');
+    ('favoredClassSkillPoints', '', 'text', [4], 'hitPoints');
 
   rules.defineRule('casterLevel',
     'casterLevelArcane', '=', null,
