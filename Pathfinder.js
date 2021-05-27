@@ -95,9 +95,9 @@ Pathfinder.CHOICES = [
 Pathfinder.RANDOMIZABLE_ATTRIBUTES = [
   'abilities',
   'charisma', 'constitution', 'dexterity', 'intelligence', 'strength', 'wisdom',
-  'name', 'race', 'gender', 'alignment', 'deity', 'levels', 'features',
-  'feats', 'skills', 'languages', 'hitPoints', 'armor', 'shield', 'weapons',
-  'spells', 'companion', 'faction', 'traits'
+  'name', 'race', 'gender', 'alignment', 'deity', 'levels',
+  'selectableFeatures', 'feats', 'skills', 'languages', 'hitPoints', 'armor',
+  'shield', 'weapons', 'spells', 'companion', 'faction', 'traits'
 ];
 
 Pathfinder.ALIGNMENTS = {
