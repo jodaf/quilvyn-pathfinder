@@ -80,7 +80,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.5';
+Pathfinder.VERSION = '2.2.2.6';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -498,6 +498,8 @@ Pathfinder.FEATS = {
       '"baseAttack >= 15",' +
       '"features.Critical Focus",' +
       '"features.Tiring Critical"',
+  'Exotic Weapon Proficiency (%exoticWeapon)':
+    'Type=General Require="baseAttack >= 1" Imply="weapons.%exoticWeapon"',
   'Extend Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Extra Channel':'Type=General Require="features.Channel Energy"',
   'Extra Ki':'Type=General Require="features.Ki Pool"',
@@ -570,22 +572,8 @@ Pathfinder.FEATS = {
       '"levels.Fighter >= 8",' +
       '"features.Shield Focus",' +
       '"features.Shield Proficiency"',
-  'Greater Spell Focus (Abjuration)':
-    'Type=General Require="features.Spell Focus (Abjuration)"',
-  'Greater Spell Focus (Conjuration)':
-    'Type=General Require="features.Spell Focus (Conjuration)"',
-  'Greater Spell Focus (Divination)':
-    'Type=General Require="features.Spell Focus (Divination)"',
-  'Greater Spell Focus (Enchantment)':
-    'Type=General Require="features.Spell Focus (Enchantment)"',
-  'Greater Spell Focus (Evocation)':
-    'Type=General Require="features.Spell Focus (Evocation)"',
-  'Greater Spell Focus (Illusion)':
-    'Type=General Require="features.Spell Focus (Illusion)"',
-  'Greater Spell Focus (Necromancy)':
-    'Type=General Require="features.Spell Focus (Necromancy)"',
-  'Greater Spell Focus (Transmutation)':
-    'Type=General Require="features.Spell Focus (Transmutation)"',
+  'Greater Spell Focus (%school)':
+    'Type=General Require="features.Spell Focus (%school)"',
   'Greater Spell Penetration':
     'Type=General ' +
     'Imply="casterLevel >= 1" ' +
@@ -617,19 +605,19 @@ Pathfinder.FEATS = {
       '"baseAttack >= 16",' +
       '"features.Improved Vital Strike",' +
       '"features.Vital Strike"',
-  'Greater Weapon Focus (Longsword)':
+  'Greater Weapon Focus (%weapon)':
     'Type=Fighter ' +
-    'Imply=weapons.Longsword ' +
+    'Imply=weapons.%weapon ' +
     'Require=' +
-      '"features.Weapon Focus (Longsword)",' +
+      '"features.Weapon Focus (%weapon)",' +
       '"levels.Fighter >= 8"',
-  'Greater Weapon Specialization (Longsword)':
+  'Greater Weapon Specialization (%weapon)':
     'Type=Fighter ' +
-    'Imply=weapons.Longsword ' +
+    'Imply=weapons.%weapon ' +
     'Require=' +
-      '"features.Weapon Focus (Longsword)",' +
-      '"features.Greater Weapon Focus (Longsword)",' +
-      '"features.Weapon Specialization (Longsword)",' +
+      '"features.Weapon Focus (%weapon)",' +
+      '"features.Greater Weapon Focus (%weapon)",' +
+      '"features.Weapon Specialization (%weapon)",' +
       '"levels.Fighter >= 12"',
   'Heighten Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Improved Bull Rush':
@@ -637,8 +625,8 @@ Pathfinder.FEATS = {
     'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
   'Improved Channel':'Type=General Require="features.Channel Energy"',
   'Improved Counterspell':'Type=General Imply="casterLevel >= 1"',
-  'Improved Critical (Longsword)':
-    'Type=Fighter Require="baseAttack >= 8" Imply=weapons.Longsword',
+  'Improved Critical (%weapon)':
+    'Type=Fighter Require="baseAttack >= 8" Imply=weapons.%weapon',
   'Improved Disarm':
     'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
   'Improved Familiar':'Type=General Require="features.Familiar"',
@@ -702,12 +690,12 @@ Pathfinder.FEATS = {
       '"baseAttack >= 6",' +
       '"features.Point-Blank Shot",' +
       '"features.Rapid Shot"',
-  'Martial Weapon Proficiency (Longsword)':
-    'Type=General Require="baseAttack >= 1" Imply="weapons.Longsword"',
-  'Master Craftsman (Craft (Armor))':
-    'Type=General Require="skills.Craft (Armor) >= 5"',
-  'Master Craftsman (Profession (Tanner))':
-    'Type=General Require="skills.Profession (Tanner) >= 5"',
+  'Martial Weapon Proficiency (%martialWeapon)':
+    'Type=General Require="baseAttack >= 1" Imply="weapons.%martialWeapon"',
+  'Master Craftsman (%craftSkill)':
+    'Type=General Require="skills.%craftSkill >= 5"',
+  'Master Craftsman (%professionSkill)':
+    'Type=General Require="skills.%professionSkill >= 5"',
   'Maximize Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   "Medusa's Wrath":
     'Type=Fighter ' +
@@ -789,28 +777,14 @@ Pathfinder.FEATS = {
   'Sickening Critical':'Type=Fighter,Critical',
   'Silent Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Simple Weapon Proficiency':'Type=General',
-  // Skill Focus subfeats required by bloodlines
-  'Skill Focus (Fly)':'Type=General',
-  'Skill Focus (Knowledge (Arcana))':'Type=General',
-  'Skill Focus (Knowledge (Dungeoneering))':'Type=General',
-  'Skill Focus (Knowledge (History))':'Type=General',
-  'Skill Focus (Knowledge (Nature))':'Type=General',
-  'Skill Focus (Knowledge (Planes))':'Type=General',
-  'Skill Focus (Knowledge (Religion))':'Type=General',
+  'Skill Focus (%skill)':'Type=General',
   'Snatch Arrows':
     'Type=Fighter ' +
     'Require=' +
       '"dexterity >= 15",' +
       '"features.Deflect Arrows",' +
       '"features.Improved Unarmed Strike"',
-  'Spell Focus (Abjuration)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Conjuration)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Divination)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Enchantment)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Evocation)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Illusion)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Necromancy)':'Type=General Imply="casterLevel >= 1"',
-  'Spell Focus (Transmutation)':'Type=General Imply="casterLevel >= 1"',
+  'Spell Focus (%school)':'Type=General Imply="casterLevel >= 1"',
   'Spell Mastery':
     'Type=Wizard Imply="intelligenceModifier > 0" Require="levels.Wizard >= 1"',
   'Spell Penetration':'Type=General Imply="casterLevel >= 1"',
@@ -879,13 +853,13 @@ Pathfinder.FEATS = {
   'Weapon Finesse':
     'Type=Fighter ' +
     'Imply="dexterityModifier > strengthModifier"',
-  'Weapon Focus (Longsword)':
-    'Type=Fighter Require="baseAttack >= 1" Imply=weapons.Longsword',
-  'Weapon Specialization (Longsword)':
+  'Weapon Focus (%weapon)':
+    'Type=Fighter Require="baseAttack >= 1" Imply=weapons.%weapon',
+  'Weapon Specialization (%weapon)':
     'Type=Fighter ' +
-    'Imply="weapons.Longsword" ' +
+    'Imply="weapons.%weapon" ' +
     'Require=' +
-      '"features.Weapon Focus (Longsword)",' +
+      '"features.Weapon Focus (%weapon)",' +
       '"levels.Fighter >= 4"',
   'Whirlwind Attack':
     'Type=Fighter ' +
@@ -1015,22 +989,7 @@ Pathfinder.FEATURES = {
   'Great Cleave':'Section=combat Note="Cleave w/out limit"',
   'Great Fortitude':'Section=save Note="+2 Fortitude"',
   'Greater Rage':'Section=combat Note="+6 Str, +6 Con, +3 Will during rage"',
-  'Greater Spell Focus (Abjuration)':
-    'Section=magic Note="+1 Spell DC (Abjuration)"',
-  'Greater Spell Focus (Conjuration)':
-    'Section=magic Note="+1 Spell DC (Conjuration)"',
-  'Greater Spell Focus (Divination)':
-    'Section=magic Note="+1 Spell DC (Divination)"',
-  'Greater Spell Focus (Enchantment)':
-    'Section=magic Note="+1 Spell DC (Enhancement)"',
-  'Greater Spell Focus (Evocation)':
-    'Section=magic Note="+1 Spell DC (Evocation)"',
-  'Greater Spell Focus (Illusion)':
-    'Section=magic Note="+1 Spell DC (Illusion)"',
-  'Greater Spell Focus (Necromancy)':
-    'Section=magic Note="+1 Spell DC (Necromancy)"',
-  'Greater Spell Focus (Transmutation)':
-    'Section=magic Note="+1 Spell DC (Transmutation)"',
+  'Greater Spell Focus (%school)':'Section=magic Note="+1 Spell DC (%school)"',
   'Greater Spell Penetration':
     'Section=magic Note="+2 caster level vs. resistance checks"',
   'Greater Two-Weapon Fighting':
@@ -1043,8 +1002,8 @@ Pathfinder.FEATURES = {
     'Note="No AOO on Bull Rush, +2 Bull Rush check, +2 Bull Rush CMD"',
   'Improved Counterspell':
     'Section=magic Note="Counter using higher-level spell from same school"',
-  'Improved Critical (Longsword)':
-    'Section=combat Note="x2 Longsword Threat Range"',
+  'Improved Critical (%weapon)':
+    'Section=combat Note="x2 %weapon Threat Range"',
   'Improved Disarm':
     'Section=combat Note="No AOO on Disarm, +2 Disarm check, +2 Disarm CMD"',
   'Improved Evasion':'Section=save Note="Failed save yields half damage"',
@@ -1152,52 +1111,12 @@ Pathfinder.FEATURES = {
     'Note="+1 Run Speed Multiplier",' +
          '"Retain dex bonus to AC while running",' +
          '"+4 Acrobatics (running jump)"',
-  'School Opposition (Abjuration)':
-    'Section=magic Note="Double cost to cast Abjuration spells"',
-  'School Opposition (Conjuration)':
-    'Section=magic Note="Double cost to cast Conjuration spells"',
-  'School Opposition (Enchantment)':
-    'Section=magic Note="Double cost to cast Enchantment spells"',
-  'School Opposition (Evocation)':
-    'Section=magic Note="Double cost to cast Evocation spells"',
-  'School Opposition (Illusion)':
-    'Section=magic Note="Double cost to cast Illusion spells"',
-  'School Opposition (Necromancy)':
-    'Section=magic Note="Double cost to cast Necromancy spells"',
-  'School Opposition (Transmutation)':
-    'Section=magic Note="Double cost to cast Transmutation spells"',
-  'School Specialization (Abjuration)':
+  'School Opposition (%school)':
+    'Section=magic Note="Double cost to cast %school spells"',
+  'School Specialization (%school)':
     'Section=magic,skill ' +
-    'Note="Extra Abjuration spell/dy each spell level",' +
-         '"+2 Spellcraft (Abjuration effects)"',
-  'School Specialization (Conjuration)':
-    'Section=magic,skill ' +
-    'Note="Extra Conjuration spell/dy each spell level",' +
-         '"+2 Spellcraft (Conjuration effects)"',
-  'School Specialization (Divination)':
-    'Section=magic,skill ' +
-    'Note="Extra Divination spell/dy each spell level",' +
-         '"+2 Spellcraft (Divination effects)"',
-  'School Specialization (Enchantment)':
-    'Section=magic,skill ' +
-    'Note="Extra Enchantment spell/dy each spell level",' +
-         '"+2 Spellcraft (Enchantment effects)"',
-  'School Specialization (Evocation)':
-    'Section=magic,skill ' +
-    'Note="Extra Evocation spell/dy each spell level",' +
-         '"+2 Spellcraft (Evocation effects)"',
-  'School Specialization (Illusion)':
-    'Section=magic,skill ' +
-    'Note="Extra Illusion spell/dy each spell level",' +
-         '"+2 Spellcraft (Illusion effects)"',
-  'School Specialization (Necromancy)':
-    'Section=magic,skill ' +
-    'Note="Extra Necromancy spell/dy each spell level",' +
-         '"+2 Spellcraft (Necromancy effects)"',
-  'School Specialization (Transmutation)':
-    'Section=magic,skill ' +
-    'Note="Extra Transmutation spell/dy each spell level",' +
-         '"+2 Spellcraft (Transmutation effects)"',
+    'Note="Extra %school spell/dy each spell level",' +
+         '"+2 Spellcraft (%school effects)"',
   'Scribe Scroll':'Section=magic Note="Create scroll of any known spell"',
   'Scry':'Section=companion Note="Master views companion 1/dy"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%V Survival"',
@@ -1229,15 +1148,7 @@ Pathfinder.FEATURES = {
   'Speak With Master':
     'Section=companion Note="Talk w/master in secret language"',
   'Special Mount':'Section=feature Note="Magical mount w/special abilities"',
-  'Spell Focus (Abjuration)':'Section=magic Note="+1 Spell DC (Abjuration)"',
-  'Spell Focus (Conjuration)':'Section=magic Note="+1 Spell DC (Conjuration)"',
-  'Spell Focus (Divination)':'Section=magic Note="+1 Spell DC (Divination)"',
-  'Spell Focus (Enchantment)':'Section=magic Note="+1 Spell DC (Enhancement)"',
-  'Spell Focus (Evocation)':'Section=magic Note="+1 Spell DC (Evocation)"',
-  'Spell Focus (Illusion)':'Section=magic Note="+1 Spell DC (Illusion)"',
-  'Spell Focus (Necromancy)':'Section=magic Note="+1 Spell DC (Necromancy)"',
-  'Spell Focus (Transmutation)':
-    'Section=magic Note="+1 Spell DC (Transmutation)"',
+  'Spell Focus (%school)':'Section=magic Note="+1 Spell DC (%school)"',
   'Spell Mastery':'Section=magic Note="Prepare %V spells w/out spellbook"',
   'Spell Penetration':
     'Section=magic Note="+2 checks to overcome spell resistance"',
@@ -1588,11 +1499,11 @@ Pathfinder.FEATURES = {
   'Elemental Channel (Air)':
     'Section=combat Note="Channel energy to heal or harm Air outsiders"',
   'Elemental Channel (Earth)':
-    'Section=combat Note="Channel energy to heal or harm Air outsiders"',
+    'Section=combat Note="Channel energy to heal or harm Earth outsiders"',
   'Elemental Channel (Fire)':
-    'Section=combat Note="Channel energy to heal or harm Air outsiders"',
+    'Section=combat Note="Channel energy to heal or harm Fire outsiders"',
   'Elemental Channel (Water)':
-    'Section=combat Note="Channel energy to heal or harm Air outsiders"',
+    'Section=combat Note="Channel energy to heal or harm Water outsiders"',
   'Elemental Movement':'Section=ability Note="%V"',
   'Elemental Ray':'Section=magic Note="R30\' 1d6+%1 HP %2 %V/day"',
   'Elemental Resistance':'Section=save Note="%V vs. %1"',
@@ -1685,7 +1596,7 @@ Pathfinder.FEATURES = {
   'Goldsniffer':'Section=skill Note="+2 Perception (metals, jewels, gems)"',
   "Gorgon's Fist":
     'Section=combat ' +
-    'Note="Unarmed attack vs. slowed foe staggers (DC %V ford neg)"',
+    'Note="Unarmed attack vs. slowed foe staggers (DC %V Fort neg)"',
   'Grasp Of The Dead':
     'Section=magic ' +
     'Note="R60\' Skeletal arms claw 20\' radius %Vd6 HP (DC %1 Ref half) %2/day"',
@@ -1825,14 +1736,14 @@ Pathfinder.FEATURES = {
   'Magical Talent':'Section=magic Note="Use chosen cantrip 1/dy"',
   'Major Magic':'Section=magic Note="Cast W1 spell 2/day"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
-  'Master Craftsman (Craft (Armor))':
+  'Master Craftsman (%craftSkill)':
     'Section=feature,skill ' +
-    'Note="Use Craft (Armor) with Craft Magic Arms And Armor, Craft Wondrous Item",' +
-         '"+2 Craft (Armor)"',
-  'Master Craftsman (Profession (Tanner))':
+    'Note="Use %craftSkill with Craft Magic Arms And Armor, Craft Wondrous Item",' +
+         '"+2 %craftSkill"',
+  'Master Craftsman (%professionSkill)':
     'Section=feature,skill ' +
-    'Note="Use Profession (Tanner) with Craft Magic Arms And Armor, Craft Wondrous Item",' +
-         '"+2 Profession (Tanner)"',
+    'Note="Use %professionSkill with Craft Magic Arms And Armor, Craft Wondrous Item",' +
+         '"+2 %professionSkill"',
   'Master Hunter':
     'Section=combat ' +
     'Note="Full attack vs. favored enemy kills (DC %V Fort neg)"',
@@ -2810,9 +2721,7 @@ Pathfinder.SCHOOLS = {
       '"1:Power Over Undead","1:Necromantic Touch","8:Life Sight"',
   'Transmutation':
     'Features=' +
-      '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"',
-  'Universal':
-    'Features='
+      '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
 };
 Pathfinder.SHIELDS = {
   'Buckler':'AC=1 Weight=1 Skill=1 Spell=5',
@@ -4090,9 +3999,9 @@ Pathfinder.CLASSES = {
       '"features.School Specialization (None) ? 1:Hand Of The Apprentice",' +
       '"features.School Specialization (None) ? 8:Metamagic Mastery" ' +
     'Selectables=' +
-      '"1:Bonded Object",1:Familiar,' +
-      QuilvynUtils.getKeys(Pathfinder.SCHOOLS).map(x => '"1:School Specialization (' + (x == 'Universal' ? 'None' : x) + ')"').join(',') + ',' +
-      QuilvynUtils.getKeys(Pathfinder.SCHOOLS).filter(x => x != 'Universal').map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
+      '"1:Bonded Object",1:Familiar,"1:School Specialization (None)",' +
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + x + ')"').join(',') + ',' +
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
     'CasterLevelArcane=levels.Wizard ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
@@ -4706,7 +4615,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     var description = QuilvynUtils.getAttrValue(attrs, 'Description');
     var groupLevels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
     var school = QuilvynUtils.getAttrValue(attrs, 'School');
-    var schoolAbbr = school.substring(0, 4);
+    var schoolAbbr = (school || 'Universal').substring(0, 4);
     for(var i = 0; i < groupLevels.length; i++) {
       var matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
       if(!matchInfo) {
@@ -5316,8 +5225,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     var schools = rules.getChoices('schools');
     for(var school in schools) {
-      if(school == 'Universal')
-        continue;
       rules.defineRule('selectableFeatureCount.Wizard',
         'wizardFeatures.School Specialization (' + school + ')', '+', '2'
       );
@@ -5935,12 +5842,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'dexterityModifier', '=', null,
       'strengthModifier', '+', '-source'
     );
-  } else if((matchInfo = name.match(/^(Greater\s)?Weapon\sFocus\s\((.*)\)$/)) != null) {
-    Pathfinder.featureRules
-      (rules, name, ['combat'], ['+1 ' + matchInfo[2] + ' Attack Modifier']);
-  } else if((matchInfo = name.match(/^(Greater\s)?Weapon\sSpecialization\s\((.*)\)$/)) != null) {
-    Pathfinder.featureRules
-      (rules, name, ['combat'], ['+2 ' + matchInfo[2] + ' Damage Modifier']);
   } else if(name == 'Simple Weapon Proficiency') {
     rules.defineRule('features.Weapon Proficiency (Simple)',
       'features.' + name, '=', '1'
@@ -6898,6 +6799,10 @@ Pathfinder.skillRules = function(
       'skillNotes.armorSkillCheckPenalty', '+', '-source'
     );
   }
+  if(name.startsWith('Craft'))
+    rules.addChoice('craftSkills', name, '');
+  else if(name.startsWith('Profession'))
+    rules.addChoice('professionSkills', name, '');
 };
 
 /*
