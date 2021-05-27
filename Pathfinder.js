@@ -18,8 +18,6 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 /*jshint esversion: 6 */
 "use strict";
 
-var PATHFINDER_VERSION = '2.2.2.5';
-
 /*
  * This module loads the rules from the Pathfinder Reference Document. The
  * Pathfinder function contains methods that load rules for particular parts of
@@ -36,7 +34,7 @@ function Pathfinder() {
     return;
   }
 
-  var rules = new QuilvynRules('Pathfinder 1E', PATHFINDER_VERSION);
+  var rules = new QuilvynRules('Pathfinder 1E', Pathfinder.VERSION);
   Pathfinder.rules = rules;
 
   rules.defineChoice('choices', Pathfinder.CHOICES);
@@ -81,6 +79,8 @@ function Pathfinder() {
   Quilvyn.addRuleSet(rules);
 
 }
+
+Pathfinder.VERSION = '2.2.2.5';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -7072,7 +7072,7 @@ Pathfinder.getPlugins = function() {
 Pathfinder.ruleNotes = function() {
   return '' +
     '<h2>Pathfinder Quilvyn Plugin Notes</h2>\n' +
-    'Pathfinder Quilvyn Plugin Version ' + PATHFINDER_VERSION + '\n' +
+    'Pathfinder Quilvyn Plugin Version ' + Pathfinder.VERSION + '\n' +
     '<h3>Usage Notes</h3>\n' +
     '<p>\n' +
     '<ul>\n' +
