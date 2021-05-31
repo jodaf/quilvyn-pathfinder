@@ -80,7 +80,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.6';
+Pathfinder.VERSION = '2.2.2.7';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -4378,24 +4378,6 @@ Pathfinder.identityRules = function(
   for(var clas in classes) {
     rules.choiceRules(rules, 'Class', clas, classes[clas]);
   }
-  for(var deity in deities) {
-    rules.choiceRules(rules, 'Deity', deity, deities[deity]);
-  }
-  for(var faction in factions) {
-    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
-  }
-  for(var path in paths) {
-    rules.choiceRules(rules, 'Path', path, paths[path]);
-  }
-  for(var race in races) {
-    rules.choiceRules(rules, 'Race', race, races[race]);
-  }
-  for(var track in tracks) {
-    rules.choiceRules(rules, 'Track', track, tracks[track]);
-  }
-  for(var trait in traits) {
-    rules.choiceRules(rules, 'Trait', trait, traits[trait]);
-  }
   if(prestigeClasses) {
     for(var pc in prestigeClasses) {
       rules.choiceRules(rules, 'Prestige', pc, prestigeClasses[pc]);
@@ -4414,6 +4396,25 @@ Pathfinder.identityRules = function(
       rules.choiceRules(rules, 'Npc', nc, npcClasses[nc]);
       rules.defineRule('levels.' + nc, 'npc.' + nc, '=', null);
     }
+  }
+  for(var faction in factions) {
+    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
+  }
+  // Process paths before deities for domain definitions
+  for(var path in paths) {
+    rules.choiceRules(rules, 'Path', path, paths[path]);
+  }
+  for(var deity in deities) {
+    rules.choiceRules(rules, 'Deity', deity, deities[deity]);
+  }
+  for(var race in races) {
+    rules.choiceRules(rules, 'Race', race, races[race]);
+  }
+  for(var track in tracks) {
+    rules.choiceRules(rules, 'Track', track, tracks[track]);
+  }
+  for(var trait in traits) {
+    rules.choiceRules(rules, 'Trait', trait, traits[trait]);
   }
 
   rules.defineEditorElement
