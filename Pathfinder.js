@@ -691,7 +691,7 @@ Pathfinder.FEATS = {
       '"features.Point-Blank Shot",' +
       '"features.Rapid Shot"',
   'Martial Weapon Proficiency (%martialWeapon)':
-    'Type=General Require="baseAttack >= 1" Imply="weapons.%martialWeapon"',
+    'Type=General Imply="weapons.%martialWeapon"',
   'Master Craftsman (%craftSkill)':
     'Type=General Require="skills.%craftSkill >= 5"',
   'Master Craftsman (%professionSkill)':
