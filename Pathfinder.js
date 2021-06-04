@@ -80,7 +80,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.7';
+Pathfinder.VERSION = '2.2.2.8';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -4879,11 +4879,15 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.channelEnergy.1',
       'features.Channel Energy', '?', null,
       'levels.Cleric', '+=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
+      'magicNotes.charismaChannelEnergyAdjustment', '+', null
     );
     rules.defineRule('magicNotes.channelEnergy.2',
       'features.Channel Energy', '?', null,
-      'charismaModifier', '=', '3 + source'
+      'magicNotes.charismaChannelEnergyAdjustment', '=', '3 + source'
+    );
+    rules.defineRule('magicNotes.charismaChannelEnergyAdjustment',
+      'features.Channel Energy', '?', null,
+      'charismaModifier', '=', null
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric', 'levels.Cleric', '+=', '2');
