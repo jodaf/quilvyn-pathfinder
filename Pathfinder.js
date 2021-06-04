@@ -80,7 +80,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.8';
+Pathfinder.VERSION = '2.2.2.9';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -981,7 +981,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Full-round %V +%1 monk weapon attacks, use 1 ki for one more"',
   'Forge Ring':'Section=magic Note="Create and mend magic rings"',
-  'Fortunate':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Gnome Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Charisma/-2 Strength"',
   'Gnome Enmity':'Section=combat Note="+1 attack vs. goblinoid and reptilian"',
@@ -995,6 +994,7 @@ Pathfinder.FEATURES = {
   'Greater Two-Weapon Fighting':
     'Section=combat Note="Third off-hand -10 attack"',
   'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
+  'Halfling Luck':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Heighten Spell':'Section=magic Note="Increase chosen spell level"',
   'Hide In Plain Sight':'Section=skill Note="Hide even when observed"',
   'Improved Bull Rush':
@@ -1032,7 +1032,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
   'Increased Damage Reduction':
-    'Section=combat Note="Negate additional %V HP each attack"',
+    'Section=combat Note="Negate additional %V HP each attack during rage"',
   'Increased Unarmed Damage':'Section=combat Note="%V"',
   'Indomitable Will':
     'Section=save Note="+4 enchantment resistance during rage"',
@@ -1061,6 +1061,8 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+4 Handle Animal (companion)/Wild Empathy (companion)"',
   'Low-Light Vision':'Section=feature Note="x2 normal distance in poor light"',
+  'Low-Light Rage':
+    'Section=feature Note="x2 normal distance in poor light during rage"',
   'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%V Use Magic Device"',
   'Manyshot':'Section=combat Note="Fire 2 arrows simultaneously"',
   'Mass Suggestion':
@@ -1620,7 +1622,7 @@ Pathfinder.FEATURES = {
   'Greater Trip':'Section=combat Note="+2 trip checks, AOO on tripped foes"',
   'Greater Vital Strike':'Section=combat Note="4x base damage"',
   'Greed':'Section=skill Note="+2 Appraise (precious metals, gems)"',
-  'Guarded Stance':'Section=combat Note="+%V AC during rage"',
+  'Guarded Stance':'Section=combat Note="+%V AC for %1 rd during rage"',
   'Guardian Of The Forge':
     'Section=skill ' +
     'Note="+1 Knowledge (Engineering)/+1 Knowledge (History)/choice is a class skill"',
@@ -1700,7 +1702,8 @@ Pathfinder.FEATURES = {
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="Use 1 ki for +20 Speed"',
   'Killer':'Section=combat Note="Extra damage on critical hit"',
-  'Knockback':'Section=combat Note="Successful Bull Rush during rage %V HP"',
+  'Knockback':
+    'Section=combat Note="Successful Bull Rush during rage does %V HP"',
   'Laughing Touch':'Section=magic Note="Touch causes 1 rd of laughter %V/day"',
   'Ledge Walker':
     'Section=skill Note="Use Acrobatics along narrow surfaces at full speed"',
@@ -1772,7 +1775,7 @@ Pathfinder.FEATURES = {
   'Metamagic Mastery':'Section=magic Note="Apply metamagic feat %V/day"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Might Of The Gods':'Section=magic Note="+%V Str checks %1 rd/day"',
-  'Mighty Swing':'Section=combat Note="Automatic critical 1/rage"',
+  'Mighty Swing':'Section=combat Note="Confirm critical automatically 1/rage"',
   'Militia Veteran':
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, Survival/choice is a class skill"',
@@ -1892,6 +1895,7 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Handle Animal, Knowledge (Nature), Ride/choice is a class skill"',
   'Scent':'Section=feature Note="Detect creatures via smell"',
+  'Scent Rage':'Section=feature Note="Detect creatures via smell during rage"',
   'Scholar Of Balance':
     'Section=skill ' +
     'Note="+1 Knowledge (Nature)/+1 Knowledge (Planes)/choice is a class skill"',
@@ -2687,7 +2691,7 @@ Pathfinder.RACES = {
       '"Halfling Ability Adjustment",' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)",' +
-      'Fortunate,"Keen Senses","Resist Fear",Slow,Small,Sure-Footed ' +
+      '"Halfling Luck","Keen Senses","Resist Fear",Slow,Small,Sure-Footed ' +
     'Languages=Common,Halfling',
   'Human':
     'Features=' +
@@ -3757,11 +3761,11 @@ Pathfinder.CLASSES = {
     'Selectables=' +
       '"2:Animal Fury","8:Clear Mind","12:Fearless Rage","2:Guarded Stance",' +
       '"8:Increased Damage Reduction","8:Internal Fortitude",' +
-      '"2:Intimidating Glare","2:Knockback","2:Low-Light Vision",' +
+      '"2:Intimidating Glare","2:Knockback","2:Low-Light Rage",' +
       '"12:Mighty Swing","2:Moment Of Clarity","2:Night Vision",' +
       '"2:No Escape","2:Powerful Blow","2:Quick Reflexes",' +
       '"2:Raging Climber","2:Raging Leaper","2:Raging Swimmer",' +
-      '"8:Renewed Vigor","2:Rolling Dodge","2:Roused Anger","2:Scent",' +
+      '"8:Renewed Vigor","2:Rolling Dodge","2:Roused Anger","2:Scent Rage",' +
       '"2:Strength Surge","2:Superstition","2:Surprise Accuracy",' +
       '"2:Swift Foot","8:Terrifying Howl","4:Unexpected Strike"',
   'Bard':
@@ -4740,20 +4744,37 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.animalFury.1',
       'features.Animal Fury', '?', null,
-      'strengthModifier', '=', 'Math.floor(source / 2)'
+      'combatNotes.animalFury.2', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.animalFury.2',
+      'features.Animal Fury', '?', null,
+      'strengthModifier', '=', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('combatNotes.damageReduction',
-      'levels.Barbarian', '+=', 'Math.floor((source - 4) / 3)',
-      'combatNotes.increasedDamageReduction', '+', null
+      'levels.Barbarian', '+=', 'Math.floor((source - 4) / 3)'
     );
     rules.defineRule('combatNotes.increasedDamageReduction',
       'features.Increased Damage Reduction', '=', null
     );
-    rules.defineRule
-      ('combatNotes.knockback', 'strengthModifier', '=', 'source + 2');
     rules.defineRule('combatNotes.guardedStance',
-      'constitutionModifier', '=', 'Math.max(source, 1)',
-      'levels.Barbarian', '+', 'Math.floor(source / 6)'
+      'levels.Barbarian', '=', '1 + Math.floor(source / 6)'
+    );
+    rules.defineRule('combatNotes.guardedStance.1',
+      'features.Guarded Stance', '?', null,
+      'combatNotes.guardedStance.2', '=', 'Math.max(source, 1)'
+    );
+    rules.defineRule('combatNotes.guardedStance.2',
+      'features.Guarded Stance', '?', null,
+      'constitutionModifier', '=', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
+    );
+    rules.defineRule('combatNotes.knockback',
+      'strengthModifier', '=', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('combatNotes.powerfulBlow',
       'levels.Barbarian', '=', '1 + Math.floor(source / 4)'
@@ -4767,7 +4788,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.rollingDodge.1',
       'features.Rolling Dodge', '?', null,
-      'constitutionModifier', '=', 'Math.max(1, source)'
+      'combatNotes.rollingDodge.2', '=', 'Math.max(source, 1)'
+    );
+    rules.defineRule('combatNotes.rollingDodge.2',
+      'features.Rolling Dodge', '?', null,
+      'constitutionModifier', '=', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule
       ('combatNotes.strengthSurge', 'levels.Barbarian', '=', null);
@@ -4776,14 +4803,18 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.terrifyingHowl',
       'levels.Barbarian', '=', '10 + Math.floor(source / 2)',
-      'strengthModifier', '+', null
+      'strengthModifier', '+', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('magicNotes.renewedVigor',
       'levels.Barbarian', '=', 'Math.floor(source / 4)'
     );
     rules.defineRule('magicNotes.renewedVigor.1',
       'features.Renewed Vigor', '?', null,
-      'constitutionModifier', '=', 'source + 2'
+      'constitutionModifier', '=', 'source + 2',
+      'features.Greater Rage', '+', '1',
+      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('selectableFeatureCount.Barbarian',
       'levels.Barbarian', '=', 'Math.floor(source / 2)'
