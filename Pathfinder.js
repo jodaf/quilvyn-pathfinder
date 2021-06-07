@@ -878,7 +878,7 @@ Pathfinder.FEATS = {
 Pathfinder.FEATURES = {
   // Shared with SRD35
   'A Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
-  'Abundant Step':'Section=magic Note="Use 2 ki to <i>Dimension Door</i>"',
+  'Abundant Step':'Section=feature Note="Use 2 ki to teleport self %V\'"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%V Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%V Sense Motive"',
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%V Ride"',
@@ -908,7 +908,7 @@ Pathfinder.FEATURES = {
   'Companion Evasion':
     'Section=companion Note="Reflex save yields no damage instead of half"',
   'Companion Improved Evasion':
-    'Section=companion Note="Failed save yields half damage"',
+    'Section=companion Note="Failed Reflex save yields half damage"',
   'Countersong':
     'Section=magic Note="R30\' Perform check vs. sonic magic for 10 rd"',
   'Craft Magic Arms And Armor':
@@ -949,7 +949,7 @@ Pathfinder.FEATURES = {
   'Empower Spell':
     'Section=magic ' +
     'Note="x1.5 chosen spell variable effects uses +2 spell slot"',
-  'Empty Body':'Section=magic Note="Use 3 ki for 1 min <i>Etherealness</i>"',
+  'Empty Body':'Section=feature Note="Use 3 ki for 1 min on Ethereal plane"',
   'Endurance':'Section=save Note="+4 extended physical action"',
   'Enlarge Spell':
     'Section=magic Note="x2 chosen spell range uses +1 spell slot"',
@@ -1007,7 +1007,8 @@ Pathfinder.FEATURES = {
     'Section=combat Note="x2 %weapon Threat Range"',
   'Improved Disarm':
     'Section=combat Note="No AOO on Disarm, +2 Disarm check, +2 Disarm CMD"',
-  'Improved Evasion':'Section=save Note="Failed save yields half damage"',
+  'Improved Evasion':
+    'Section=save Note="Failed Reflex save yields half damage"',
   'Improved Familiar':'Section=feature Note="Expanded Familiar choices"',
   'Improved Feint':'Section=combat Note="Bluff check to Feint as move action"',
   'Improved Grapple':
@@ -1092,7 +1093,7 @@ Pathfinder.FEATURES = {
   'Power Attack':
     'Section=combat Note="Trade up to -%V attack for double damage bonus"',
   'Precise Shot':'Section=combat Note="No penalty on shot into melee"',
-  'Purity Of Body':'Section=save Note="Immune to normal disease"',
+  'Purity Of Body':'Section=save Note="Immune to all disease"',
   'Quick Draw':'Section=combat Note="Draw weapon as free action"',
   'Quicken Spell':
     'Section=magic Note="Free action casting 1/rd uses +4 spell slot"',
@@ -2958,7 +2959,7 @@ Pathfinder.SPELLS = {
   'Detect Thoughts':'Level=B2,Knowledge2,W2',
   'Detect Undead':'Level=C1,P1,Rogue1,W1',
   'Dictum':'Level=C7,Law7',
-  'Dimension Door':'Level=Arcane4,B4,Monk4,Shadowdancer4,Travel4,W4',
+  'Dimension Door':'Level=Arcane4,B4,Shadowdancer4,Travel4,W4',
   'Dimensional Anchor':'Level=C4,W4',
   'Dimensional Lock':'Level=C8,W8',
   'Diminish Plants':'Level=D3,R3',
@@ -2995,7 +2996,7 @@ Pathfinder.SPELLS = {
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rogue1,Rune1,W1',
   'Ethereal Jaunt':'Level=C7,W7',
-  'Etherealness':'Level=C9,Monk9,W9',
+  'Etherealness':'Level=C9,W9',
   'Expeditious Retreat':'Level=B1,Rogue1,W1',
   'Explosive Runes':'Level=Rune4,W3',
   'Eyebite':'Level=B6,W6',
@@ -3899,12 +3900,7 @@ Pathfinder.CLASSES = {
       '"1:Improved Grapple","1:Scorpion Style","1:Throw Anything",' +
       '"6:Gorgon\'s Fist","6:Improved Bull Rush","6:Improved Disarm",' +
       '"6:Improved Feint","6:Improved Trip","6:Mobility",' +
-      '"10:Medusa\'s Wrath","10:Snatch Arrows","10:Spring Attack" ' +
-    'CasterLevelArcane="levels.Monk < 12 ? null : levels.Monk" ' +
-    'SpellAbility=intelligence ' +
-    'SpellSlots=' +
-      'Monk4:12=1,' +
-      'Monk9:19=1',
+      '"10:Medusa\'s Wrath","10:Snatch Arrows","10:Spring Attack"',
   'Paladin':
     'Require="alignment == \'Lawful Good\'" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
@@ -5038,8 +5034,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'armor', '?', 'source == "None"',
       'levels.Monk', '=', 'Math.floor(source / 3) * 10'
     );
-    rules.defineRule
-      ('combatNotes.flurryOfBlows', 'attacksPerRound', '=', 'source + 1');
+    rules.defineRule('combatNotes.flurryOfBlows',
+      'levels.Monk', '=', 'source>=15 ? 7 : source>=8 ? 4 : 2'
+    );
     rules.defineRule('combatNotes.flurryOfBlows.1',
       'levels.Monk', '=', 'source - 2',
       'meleeAttack', '+', null,
@@ -5077,6 +5074,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'level', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
+    rules.defineRule
+      ('featureNotes.abundantStep', 'levels.Monk', '=', 'source * 40 + 400');
     rules.defineRule('featureNotes.kiPool',
       'levels.Monk', '=', 'Math.floor(source / 2)',
       'wisdomModifier', '+', null
