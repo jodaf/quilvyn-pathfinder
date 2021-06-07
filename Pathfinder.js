@@ -80,7 +80,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.9';
+Pathfinder.VERSION = '2.2.2.10';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -1635,7 +1635,7 @@ Pathfinder.FEATURES = {
   'Hand Of The Apprentice':
     'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
   'Hardy':'Section=save Note="+2 vs. poison and spells"',
-  "Healer's Blessing":'Section=magic Note="%V% bonus on healed damage"',
+  "Healer's Blessing":'Section=magic Note="50% bonus on healed damage"',
   'Heavenly Fire':
     'Section=magic ' +
     'Note="R30\' Ranged touch heal good/harm evil 1d4+%V HP %1/dy"',
@@ -1810,7 +1810,7 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="30\' radius <i>Daylight</i> does %V HP to undead %1 rd/dy"',
   'No Escape':'Section=combat Note="x2 speed 1/rage when foe withdraws"',
-  'Noble Leadership':'Section=feature Note="+%V Leadership"',
+  'Noble Leadership':'Section=feature Note="+2 Leadership"',
   'Observant':
     'Section=skill ' +
     'Note="+1 choice of Perception, Sense Motive/choice is a class skill"',
@@ -2647,6 +2647,23 @@ Pathfinder.PATHS = {
       'Undead8:17=1,' +
       'Undead9:19=1'
 };
+// Domain paths allowed to druids
+Pathfinder.DRUID_DOMAINS = {
+  'Air Domain':
+    Pathfinder.PATHS['Air Domain'].replaceAll('Cleric', 'Druid'),
+  'Animal Domain':
+    Pathfinder.PATHS['Animal Domain'].replaceAll('Cleric', 'Druid'),
+  'Earth Domain':
+    Pathfinder.PATHS['Earth Domain'].replaceAll('Cleric', 'Druid'),
+  'Fire Domain':
+    Pathfinder.PATHS['Fire Domain'].replaceAll('Cleric', 'Druid'),
+  'Plant Domain':
+    Pathfinder.PATHS['Plant Domain'].replaceAll('Cleric', 'Druid'),
+  'Water Domain':
+    Pathfinder.PATHS['Water Domain'].replaceAll('Cleric', 'Druid'),
+  'Weather Domain':
+    Pathfinder.PATHS['Weather Domain'].replaceAll('Cleric', 'Druid')
+};
 Pathfinder.RACES = {
   'Dwarf':
     'Features=' +
@@ -3160,7 +3177,7 @@ Pathfinder.SPELLS = {
   'Mass Suggestion':'Level=B5,W6',
   'Maze':'Level=W8',
   'Meld Into Stone':'Level=C3,D3',
-  'Mending':'Level=B0,C0,D0,Rogue0,W0',
+  'Mending':'Level=Artifice0,B0,C0,D0,Rogue0,W0',
   'Message':'Level=B0,Rogue0,W0',
   'Meteor Swarm':'Level=Infernal9,W9',
   'Mind Blank':'Level=Aberrant8,Liberation8,Protection8,W8',
@@ -3169,7 +3186,7 @@ Pathfinder.SPELLS = {
   'Minor Image':'Level=B2,W2',
   'Miracle':'Level=C9,Community9,Luck9',
   'Mirage Arcana':'Level=B5,W5',
-  'Mirror Image':'Level=B2,W2',
+  'Mirror Image':'Level=B2,Trickery2,W2',
   'Misdirection':'Level=B2,W2',
   'Mislead':'Level=B5,Destined6,Fey6,Luck6,Trickery6,W6',
   'Mnemonic Enhancer':'Level=W4',
@@ -3833,9 +3850,8 @@ Pathfinder.CLASSES = {
       '"4:Wild Shape","9:Venom Immunity","13:Thousand Faces",' +
       '"15:Timeless Body" ' +
     'Selectables=' +
-      '"1:Animal Companion","1:Air Domain","1:Animal Domain",' +
-      '"1:Earth Domain","1:Fire Domain","1:Plant Domain","1:Water Domain",' +
-      '"1:Weather Domain" ' +
+      '"1:Animal Companion",' +
+      QuilvynUtils.getKeys(Pathfinder.DRUID_DOMAINS).map(x => '"1:' + x + '"').join(',') + ' ' +
     'Languages=Druidic ' +
     'CasterLevelDivine=levels.Druid ' +
     'SpellAbility=wisdom ' +
@@ -4409,6 +4425,8 @@ Pathfinder.identityRules = function(
   // Process paths before deities for domain definitions
   for(var path in paths) {
     rules.choiceRules(rules, 'Path', path, paths[path]);
+    if(path in Pathfinder.DRUID_DOMAINS)
+      rules.choiceRules(rules, 'Path', path, Pathfinder.DRUID_DOMAINS[path]);
   }
   for(var deity in deities) {
     rules.choiceRules(rules, 'Deity', deity, deities[deity]);
@@ -4825,22 +4843,21 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Barbarian', '=', '2 + Math.floor(source / 4)'
     );
     rules.defineRule('saveNotes.trapSense',
-      'levels.Barbarian', '+=', 'source >= 3 ? Math.floor(source / 3) : null'
+      'levels.Barbarian', '+=', 'Math.floor(source / 3)'
     );
     rules.defineRule('skillNotes.ragingClimber', 'levels.Barbarian', '=', null);
     rules.defineRule('skillNotes.ragingLeaper', 'levels.Barbarian', '=', null);
     rules.defineRule('skillNotes.ragingSwimmer', 'levels.Barbarian', '=', null);
     rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
       'barbarianFeatures.Uncanny Dodge', '?', null,
-      'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+      'uncannyDodgeSources', '=', 'source>=2 ? 1 : null'
     );
     rules.defineRule('combatNotes.improvedUncannyDodge',
       'levels.Barbarian', '+=', null,
       '', '+', '4'
     );
-    rules.defineRule('uncannyDodgeSources',
-      'levels.Barbarian', '+=', 'source >= 2 ? 1 : null'
-    );
+    rules.defineRule
+      ('uncannyDodgeSources', 'levels.Barbarian', '+=', 'source>=2 ? 1 : null');
 
   } else if(name == 'Bard') {
 
@@ -4931,11 +4948,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Druid') {
 
+    rules.defineRule('casterLevels.Domain', 'druidDomainLevel', '^=', null);
     rules.defineRule('companionDruidLevel',
       'druidFeatures.Animal Companion', '?', null,
       'levels.Druid', '=', null
     );
     rules.defineRule('companionMasterLevel', 'companionDruidLevel', '^=', null);
+    rules.defineRule('druidDomainLevel',
+      'druidHasDomain', '?', null,
+      'levels.Druid', '=', null
+    );
+    for(var domain in Pathfinder.DRUID_DOMAINS) {
+      rules.defineRule('druidHasDomain', 'druidFeatures.' + domain, '=', '1');
+    }
     rules.defineRule('magicNotes.wildShape',
       'levels.Druid', '=',
         'source < 4 ? null : ' +
@@ -4954,6 +4979,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Druid', '+=', null,
       'charismaModifier', '+', null
     );
+    for(var level = 1; level <= 9; level++) {
+      rules.defineRule('spellSlots.Domain' + level,
+        'druidDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
+      );
+    }
 
   } else if(name == 'Fighter') {
 
@@ -5953,6 +5983,17 @@ Pathfinder.pathRules = function(
     spellSlots
   );
 
+  // Hack to ensure that dommain features for clerics don't show for druid
+  // characters and vice versa.
+  // TODO What happens with multiclass cleric/druid?
+  if(name in Pathfinder.DRUID_DOMAINS) {
+    var groupFeatures = group.toLowerCase() + 'Features';
+    for(var i = 0; i < features.length; i++) {
+      var feature = features[i].replace(/^\d+:/, '');
+      rules.defineRule(groupFeatures + '.' + feature, levelAttr, '?', null);
+    }
+  }
+
   var pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
@@ -5996,14 +6037,12 @@ Pathfinder.pathRulesExtra = function(rules, name) {
   if(name == 'Bloodline Aberrant') {
 
     rules.defineRule('combatNotes.longLimbs',
-      pathLevel, '=', 'source >= 17 ? 15 : source >= 11 ? 10 : 5'
+      pathLevel, '=', 'source>=17 ? 15 : source>=11 ? 10 : 5'
     );
-    rules.defineRule('combatNotes.unusualAnatomy',
-      pathLevel, '=', 'source >= 13 ? 50 : 25'
-    );
-    rules.defineRule('magicNotes.acidicRay',
-      pathLevel, '=', '1 + Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.unusualAnatomy', pathLevel, '=', 'source>=13 ? 50 : 25');
+    rules.defineRule
+      ('magicNotes.acidicRay', pathLevel, '=', '1 + Math.floor(source / 2)');
     rules.defineRule('magicNotes.acidicRay.1',
       'features.Acidic Ray', '?', null,
       'charismaModifier', '=', '1 + source'
@@ -6014,14 +6053,14 @@ Pathfinder.pathRulesExtra = function(rules, name) {
   } else if(name == 'Bloodline Abyssal') {
 
     rules.defineRule('abilityNotes.strengthOfTheAbyss',
-      pathLevel, '=', 'source >= 17 ? 6 : source >= 13 ? 4 : 2'
+      pathLevel, '=', 'source>=17 ? 6 : source>=13 ? 4 : 2'
     );
     rules.defineRule('bloodlineEnergy', pathLevel, '=', '"fire"');
     rules.defineRule('clawsDamageLevel',
       'features.Claws', '=', '1',
       'features.Small', '+', '-1',
       'features.Large', '+', '1',
-      pathLevel, '+', 'source >= 7 ? 1 : null'
+      pathLevel, '+', 'source>=7 ? 1 : null'
     );
     rules.defineRule('combatNotes.claws',
       'clawsDamageLevel', '=', '["1d3", "1d4", "1d6", "1d8"][source]'
@@ -6051,21 +6090,19 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('familiarMasterLevel', 'familiarSorcererLevel', '^=', null);
     rules.defineRule('familiarSorcererLevel',
       'sorcererFeatures.Familiar', '?', null,
-      'levels.Sorcerer', '=', null
+      pathLevel, '=', null
+    );
+    rules.defineRule('selectableFeatureCount.Sorcerer', pathLevel, '+', '1');
+    rules.defineRule('magicNotes.metamagicAdept',
+      pathLevel, '=', 'source>=20 ? "any" : Math.floor((source+1)/4)'
     );
     rules.defineRule
-      ('selectableFeatureCount.Sorcerer', pathLevel, '+', '1');
-    rules.defineRule('magicNotes.metamagicAdept',
-      pathLevel, '=', 'source >= 20 ? "any" : Math.floor((source+1)/4)'
-    );
-    rules.defineRule('magicNotes.newArcana',
-      pathLevel, '=', 'Math.floor((source - 5) / 4)'
-    );
+      ('magicNotes.newArcana', pathLevel, '=', 'Math.floor((source - 5) / 4)');
 
   } else if(name == 'Bloodline Celestial') {
 
     rules.defineRule('abilityNotes.wingsOfHeaven',
-      pathLevel, '=', 'source >= 20 ? "any" : source'
+      pathLevel, '=', 'source>=20 ? "any" : source'
     );
     rules.defineRule('magicNotes.bloodlineCelestial',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
@@ -6114,10 +6151,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       rules.defineRule('features.Bloodline Draconic', subFeature, '=', '1');
     }
     rules.defineRule
-      ('abilityNotes.wings', pathLevel, '^=', 'source >= 15 ? 60 : null');
+      ('abilityNotes.wings', pathLevel, '^=', 'source>=15 ? 60 : null');
     // Other claws rules defined by Bloodline Abyssal
     rules.defineRule
-      ('clawsDamageLevel', pathLevel, '+', 'source >= 7 ? 1 : null');
+      ('clawsDamageLevel', pathLevel, '+', 'source>=7 ? 1 : null');
     rules.defineRule('combatNotes.breathWeapon',
       pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : source>=9 ? 1 : null'
     );
@@ -6139,11 +6176,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'charismaModifier', '+', null
     );
     rules.defineRule('combatNotes.naturalArmor',
-      pathLevel, '+=', 'source >= 15 ? 4 : source >= 10 ? 2 : 1'
+      pathLevel, '+=', 'source>=15 ? 4 : source>=10 ? 2 : 1'
     );
     rules.defineRule('featureNotes.blindsense', pathLevel, '^=', '60');
     rules.defineRule('saveNotes.dragonResistances',
-      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
     );
     rules.defineRule('saveNotes.dragonResistances.1',
       'features.Dragon Resistances', '?', null,
@@ -6178,7 +6215,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.elementalBlast.2',
       'features.Elemental Blast', '?', null,
-      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : 1'
     );
     rules.defineRule('combatNotes.elementalBlast.3',
       'features.Elemental Blast', '?', null,
@@ -6198,7 +6235,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('saveNotes.elementalBody', 'bloodlineEnergy', '=', null);
     rules.defineRule('saveNotes.elementalResistance',
-      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 20 : 10'
     );
     rules.defineRule('saveNotes.elementalResistance.1',
       'features.Elemental Resistance', '?', null,
@@ -6232,7 +6269,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.hellfire.3',
       'features.Hellfire', '?', null,
-      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : 1'
     );
     rules.defineRule('saveNotes.infernalResistances',
       pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+10":"+5"'
@@ -6251,7 +6288,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.graspOfTheDead.2',
       'features.Grasp Of The Dead', '?', null,
-      pathLevel, '=', 'source >= 20 ? 3 : source >= 17 ? 2 : 1'
+      pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : 1'
     );
     rules.defineRule('magicNotes.graveTouch',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
@@ -6262,225 +6299,239 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.incorporealForm', pathLevel, '=', null);
     rules.defineRule("saveNotes.death'sGift",
-      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
     );
     rules.defineRule("saveNotes.death'sGift.1",
       "features.Death's Gift", '?', null,
-      pathLevel, '=', 'source >= 20 ? "Immune" : source >= 9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
     );
 
   } else if(name == 'Air Domain') {
+
     rules.defineRule
       ('combatNotes.lightningArc', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.lightningArc.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.electricityResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
     );
+
   } else if(name == 'Animal Domain') {
+
     rules.defineRule
       ('companionMasterLevel', 'companionClericLevel', '^=', null);
     rules.defineRule('companionClericLevel',
       'features.Animal Domain', '?', null,
-      'levels.Cleric', '=', 'source - 3'
+      pathLevel, '=', 'source - 3'
     );
     rules.defineRule
-      ('magicNotes.speakWithAnimals', 'levels.Cleric', '=', 'source + 3');
+      ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
     rules.defineRule
       ('classSkills.Knowledge (Nature)', 'features.Animal Domain', '=', '1');
+
   } else if(name == 'Artifice Domain') {
+
     rules.defineRule
       ("combatNotes.artificer'sTouch", 'wisdomModifier', '=', 'source + 3');
     rules.defineRule("combatNotes.artificer'sTouch.1",
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
+      pathLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('combatNotes.dancingWeapons',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
-    rules.defineChoice('spells', 'Mending(Artifice0 Tran)');
+
   } else if(name == 'Chaos Domain') {
+
     rules.defineRule('combatNotes.chaosBlade',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
-    rules.defineRule('combatNotes.chaosBlade.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
     rules.defineRule
+      ('combatNotes.chaosBlade.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule
       ('combatNotes.touchOfChaos', 'wisdomModifier', '=', 'source + 3');
+
   } else if(name == 'Charm Domain') {
+
     rules.defineRule('magicNotes.charmingSmile',
-      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      pathLevel, '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule('magicNotes.charmingSmile.1', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.addlingTouch', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.charmingSmile.1', pathLevel, '=', null);
+    rules.defineRule('magicNotes.addlingTouch', pathLevel, '=', null);
     rules.defineRule('magicNotes.addlingTouch.1',
       'features.Addling Touch', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
-    // Charm person already a Charm spell
+
   } else if(name == 'Community Domain') {
+
     rules.defineRule
       ('magicNotes.calmingTouch', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.calmingTouch.1', 'levels.Cleric', '=', null);
-    rules.defineRule('saveNotes.unity',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
-    );
+    rules.defineRule('magicNotes.calmingTouch.1', pathLevel, '=', null);
+    rules.defineRule
+      ('saveNotes.unity', pathLevel, '=', 'Math.floor((source - 4) / 4)');
+
   } else if(name == 'Darkness Domain') {
+
     rules.defineRule('combatNotes.touchOfDarkness',
-      'levels.Cleric', '=', 'source >= 2 ? Math.floor(source / 2) : 1'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('combatNotes.touchOfDarkness.1',
       'features.Touch Of Darkness', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
     rules.defineRule('featureNotes.eyesOfDarkness',
-      'levels.Cleric', '=', 'source >= 4 ? Math.floor(source / 2) : null'
+      pathLevel, '=', 'Math.floor(source / 2)'
     );
+
   } else if(name == 'Death Domain') {
+
     rules.defineRule('combatNotes.bleedingTouch',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('combatNotes.bleedingTouch.1',
       'features.Bleeding Touch', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Destruction Domain') {
+
     rules.defineRule('combatNotes.destructiveAura',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor(source / 2) : null'
+      pathLevel, '=', 'Math.floor(source / 2)'
     );
-    rules.defineRule
-      ('combatNotes.destructiveAura.1', 'levels.Cleric', '=', null);
+    rules.defineRule('combatNotes.destructiveAura.1', pathLevel, '=', null);
     rules.defineRule('combatNotes.destructiveSmite',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('combatNotes.destructiveSmite.1',
       'features.Destructive Smite', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Earth Domain') {
+
     rules.defineRule
       ('magicNotes.acidDart', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
-      ('magicNotes.acidDart.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
+      ('magicNotes.acidDart.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.acidResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
     );
+
   } else if(name == 'Evil Domain') {
+
     rules.defineRule('combatNotes.scytheOfEvil',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
-    rules.defineRule('combatNotes.scytheOfEvil.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.scytheOfEvil.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('combatNotes.touchOfEvil',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('combatNotes.touchOfEvil.1',
       'features.Touch Of Evil', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Fire Domain') {
+
     rules.defineRule
       ('combatNotes.fireBolt', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.fireBolt.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.fireBolt.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.fireResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
     );
+
   } else if(name == 'Glory Domain') {
+
     rules.defineRule('magicNotes.divinePresence',
-      'levels.Cleric', '=', 'source >= 8 ? 10 + Math.floor(source / 2) : null',
+      pathLevel, '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule('magicNotes.divinePresence.1', 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.touchOfGlory', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.divinePresence.1', pathLevel, '=', null);
+    rules.defineRule('magicNotes.touchOfGlory', pathLevel, '=', null);
     rules.defineRule('magicNotes.touchOfGlory.1',
       'features.Touch Of Glory', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Good Domain') {
+
     rules.defineRule('combatNotes.holyLance',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
-    rules.defineRule('combatNotes.holyLance.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.holyLance.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.touchOfGood',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.touchOfGood.1',
       'features.Touch Of Good', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Healing Domain') {
-    rules.defineRule("magicNotes.healer'sBlessing",
-      'levels.Cleric', '=', 'source >= 6 ? 50 : null'
-    );
+
     rules.defineRule
       ('magicNotes.rebukeDeath', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.rebukeDeath.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('magicNotes.rebukeDeath.1', pathLevel, '=', 'Math.floor(source / 2)');
+
   } else if(name == 'Knowledge Domain') {
-    rules.defineRule(/classSkills.Knowledge/,
-      'features.Knowledge Domain', '=', '1'
-    );
-    rules.defineRule('magicNotes.remoteViewing',
-      'levels.Cleric', '=', 'source >= 6 ? source : null'
-    );
+
+    rules.defineRule
+      ('classSkills.Knowledge', 'features.Knowledge Domain', '=', '1');
+    rules.defineRule('magicNotes.remoteViewing', pathLevel, '=', null);
     rules.defineRule('skillNotes.loreKeeper',
-      'levels.Cleric', '=', 'source + 15',
+      pathLevel, '=', 'source + 15',
       'wisdomModifier', '+', null
     );
+
   } else if(name == 'Law Domain') {
+
     rules.defineRule('combatNotes.staffOfOrder',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source-4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
-    rules.defineRule('combatNotes.staffOfOrder.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.staffOfOrder.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('magicNotes.touchOfLaw', 'wisdomModifier', '=', 'source + 3');
+
   } else if(name == 'Liberation Domain') {
-    rules.defineRule("magicNotes.freedom'sCall",
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.liberation', 'levels.Cleric', '=', null);
+
+    rules.defineRule("magicNotes.freedom'sCall", pathLevel, '=', null);
+    rules.defineRule('magicNotes.liberation', pathLevel, '=', null);
+
   } else if(name == 'Luck Domain') {
+
     rules.defineRule
       ('magicNotes.bitOfLuck', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.goodFortune',
-      'levels.Cleric', '=', 'source >= 6 ? Math.floor(source / 6) : null'
-    );
+    rules.defineRule
+      ('magicNotes.goodFortune', pathLevel, '=', 'Math.floor(source / 6)');
+
   } else if(name == 'Madness Domain') {
-    rules.defineRule('magicNotes.auraOfMadness', 'levels.Cleric', '=', null);
+
+    rules.defineRule('magicNotes.auraOfMadness', pathLevel, '=', null);
     rules.defineRule('magicNotes.auraOfMadness.1',
       'features.Aura Of Madness', '?', null,
-      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      pathLevel, '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
     rules.defineRule('magicNotes.visionOfMadness',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.visionOfMadness.1',
       'features.Vision Of Madness', '?', null,
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('magicNotes.visionOfMadness.2',
       'features.Vision Of Madness', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
-    // Confusion already a Madness spell
+
   } else if(name == 'Magic Domain') {
+
     rules.defineRule('combatNotes.handOfTheAcolyte',
       'baseAttack', '=', null,
       'wisdomModifier', '+', null
@@ -6490,145 +6541,144 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'wisdomModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.dispellingTouch',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
-    // Dispel Magic already a Magic spell
+
   } else if(name == 'Nobility Domain') {
-    rules.defineRule('featureNotes.nobleLeadership',
-      'levels.Cleric', '=', 'source >= 8 ? 2 : null'
-    );
+
     rules.defineRule
       ('features.Leadership', 'featureNotes.nobleLeadership', '=', '1');
     rules.defineRule('magicNotes.inspiringWord',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('magicNotes.inspiringWord.1',
       'features.Inspiring Word', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Plant Domain') {
-    rules.defineRule('combatNotes.brambleArmor', 'levels.Cleric', '=', null);
+
+    rules.defineRule('combatNotes.brambleArmor', pathLevel, '=', null);
     rules.defineRule('combatNotes.brambleArmor.1',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('combatNotes.woodenFist',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('combatNotes.woodenFist.1',
       'features.Wooden Fist', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Protection Domain') {
+
     rules.defineRule('magicNotes.auraOfProtection',
-      'levels.Cleric', '=', 'source >= 8 ? Math.floor((source - 4) / 4) : null'
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
     rules.defineRule('magicNotes.auraOfProtection.1',
-      'levels.Cleric', '=', 'source >= 14 ? 10 : 5'
+      pathLevel, '=', 'source>=14 ? 10 : 5'
     );
-    rules.defineRule
-      ('magicNotes.auraOfProtection.2', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.auraOfProtection.2', pathLevel, '=', null);
     rules.defineRule
       ('magicNotes.resistantTouch', 'wisdomModifier', '=', '3 + source');
     rules.defineRule('saveNotes.resistanceBonus',
-      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
+      pathLevel, '=', '1 + Math.floor(source / 5)'
     );
+
   } else if(name == 'Repose Domain') {
+
     rules.defineRule
       ('magicNotes.gentleRest', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule('magicNotes.gentleRest.1',
       'features.Gentle Rest', '?', null,
       'wisdomModifier', '=', null
     );
-    rules.defineRule('magicNotes.wardAgainstDeath',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
+    rules.defineRule('magicNotes.wardAgainstDeath', pathLevel, '=', null);
+
   } else if(name == 'Rune Domain') {
-    rules.defineRule('magicNotes.blastRune', 'levels.Cleric', '=', null);
+
+    rules.defineRule('magicNotes.blastRune', pathLevel, '=', null);
     rules.defineRule('magicNotes.blastRune.1',
       'features.Blast Rune', '?', null,
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
+      pathLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.blastRune.2',
       'features.Blast Rune', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Strength Domain') {
-    rules.defineRule('magicNotes.mightOfTheGods',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.mightOfTheGods.1',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
+
+    rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
+    rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
     rules.defineRule('magicNotes.strengthRush',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('magicNotes.strengthRush.1',
       'features.Strength Rush', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+
   } else if(name == 'Sun Domain') {
-    rules.defineRule("magicNotes.sun'sBlessing", 'levels.Cleric', '=', null);
-    rules.defineRule('magicNotes.nimbusOfLight',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    rules.defineRule('magicNotes.nimbusOfLight.1',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
+
+    rules.defineRule("magicNotes.sun'sBlessing", pathLevel, '=', null);
+    rules.defineRule('magicNotes.nimbusOfLight', pathLevel, '=', null);
+    rules.defineRule('magicNotes.nimbusOfLight.1', pathLevel, '=', null);
+
   } else if(name == 'Travel Domain') {
+
     rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
     rules.defineRule
       ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.dimensionalHop',
-      'levels.Cleric', '=', 'source >= 8 ? 10 * source : null'
-    );
+    rules.defineRule
+      ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
+
   } else if(name == 'Trickery Domain') {
+
     rules.defineRule('classSkills.Bluff', 'features.TrickeryDomain', '=', '1');
     rules.defineRule
       ('classSkills.Disguise', 'features.TrickeryDomain', '=', '1');
     rules.defineRule
       ('classSkills.Stealth', 'features.TrickeryDomain', '=', '1');
-    rules.defineRule('magicNotes.copycat', 'levels.Cleric', '=', null);
+    rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
     rules.defineRule('magicNotes.copycat.1',
       'features.Copycat', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
     rules.defineRule("magicNotes.master'sIllusion",
-      'levels.Cleric', '=', 'source >= 8 ? 10 + Math.floor(source / 2) : null',
+      pathLevel, '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule
-      ("magicNotes.master'sIllusion.1", 'levels.Cleric', '=', null);
-    rules.defineChoice('spells', 'Mirror Image(Trickery2 Illu)');
+    rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+
   } else if(name == 'War Domain') {
+
     rules.defineRule('combatNotes.battleRage',
-      'levels.Cleric', '=', 'Math.max(1, Math.floor(source / 2))'
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('combatNotes.battleRage.1',
       'features.Battle Rage', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
-    rules.defineRule('combatNotes.weaponMaster',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
+    rules.defineRule('combatNotes.weaponMaster', pathLevel, '=', null);
+
   } else if(name == 'Water Domain') {
+
     rules.defineRule('combatNotes.icicle', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
-      ('combatNotes.icicle.1', 'levels.Cleric', '=', 'Math.floor(source / 2)');
+      ('combatNotes.icicle.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.coldResistance',
-      'levels.Cleric', '=', 'source >= 20 ? "Immune" : ' +
-                            'source >= 12 ? 20 : ' +
-                            'source >= 6 ? 10 : null'
+      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
     );
+
   } else if(name == 'Weather Domain') {
+
     rules.defineRule
       ('combatNotes.stormBurst', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.stormBurst.1',
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.lightningLord',
-      'levels.Cleric', '=', 'source >= 8 ? source : null'
-    );
-    // Call Lightning already a Weather spell
+    rules.defineRule
+      ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
+
   }
 
 };
