@@ -1399,7 +1399,7 @@ Pathfinder.FEATURES = {
   'Claws':'Section=combat Note="%V+%1 HP %2 rd/dy"',
   'Clear Mind':'Section=save Note="Reroll Will save 1/rage"',
   'Cold Resistance':'Section=save Note="%V"',
-  'Combat Trick':'Section=feature Note="+1 Fighter Feat"',
+  'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
     'Section=combat Note="R30\' Control undead (%V DC Will neg)"',
   'Companion Bond':
@@ -1567,6 +1567,7 @@ Pathfinder.FEATURES = {
   'Fey Magic':'Section=magic Note="Reroll any resistance check"',
   'Fiendish Presence':
     'Section=skill Note="+1 Diplomacy/+1 Sense Motive/choice is a class skill"',
+  'Finesse Rogue':'Section=feature Note="Weapon Finesse"',
   'Fire Bolt':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Fire Resistance':'Section=save Note="%V"',
   'Fires Of Hell':'Section=combat Note="Flaming blade +1 damage %V rd 1/dy"',
@@ -1891,7 +1892,7 @@ Pathfinder.FEATURES = {
          '"+1 Swim/Swim is a class skill"',
   'Rogue Crawl':'Section=ability Note="Crawl at half speed"',
   'Rogue Weapon Training':
-    'Section=feature Note="+1 Fighter Feat (Weapon Focus)"',
+    'Section=feature Note="Gain 1 Fighter Feat (Weapon Focus)"',
   'Rolling Dodge':'Section=combat Note="+%V AC vs. ranged %1 rd during rage"',
   'Roused Anger':'Section=combat Note="Rage even if fatigued"',
   'Rousing Oratory':
@@ -3968,7 +3969,7 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Shortbow/Short Sword)",' +
+      '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)",' +
       '"1:Sneak Attack",1:Trapfinding,2:Evasion,"3:Trap Sense",' +
       '"4:Uncanny Dodge","8:Improved Uncanny Dodge","20:Master Strike" ' +
     'Selectables=' +
@@ -5253,8 +5254,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.sneakAttack',
       'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
     );
+    rules.defineRule('featCount.Fighter',
+      'featureNotes.combatTrick', '+=', '1',
+      'featureNotes.rogueWeaponTraining', '+=', '1'
+    );
     rules.defineRule
-      ('features.Weapon Finesse', 'features.Finesse Rogue', '=', '1');
+      ('features.Weapon Finesse', 'featureNotes.finesseRogue', '=', '1');
     rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
       'rogueFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
