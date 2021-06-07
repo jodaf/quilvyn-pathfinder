@@ -877,6 +877,7 @@ Pathfinder.FEATS = {
 };
 Pathfinder.FEATURES = {
   // Shared with SRD35
+  'A Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
   'Abundant Step':'Section=magic Note="Use 2 ki to <i>Dimension Door</i>"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%V Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%V Sense Motive"',
@@ -1076,6 +1077,9 @@ Pathfinder.FEATURES = {
   'Mounted Archery':'Section=combat Note="x.5 mounted ranged penalty"',
   'Mounted Combat':
     'Section=combat Note="Ride skill save vs. mount damage 1/rd"',
+  'Multiattack':
+    'Section=companion ' +
+    'Note="Reduce additional attack penalty to -2 or second attack at -5"',
   'Natural Spell':'Section=magic Note="Cast spell during <i>Wild Shape</i>"',
   'Nature Sense':'Section=skill Note="+2 Knowledge (Nature)/+2 Survival"',
   'Opportunist':'Section=combat Note="AOO vs. foe struck by ally"',
@@ -1176,7 +1180,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="<i>Suggestion</i> to 1 fascinated creature (DC %V neg)"',
   'Swift Tracker':'Section=skill Note="Track at full speed"',
-  'Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
   'Timeless Body':'Section=feature Note="No aging penalties"',
   'Tireless Rage':'Section=combat Note="Not fatigued after rage"',
   'Tongue Of The Sun And Moon':
@@ -3847,7 +3850,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
       '"1:Nature Sense","1:Spontaneous Druid Spell","1:Wild Empathy",' +
       '"2:Woodland Stride","3:Trackless Step","4:Resist Nature\'s Lure",' +
-      '"4:Wild Shape","9:Venom Immunity","13:Thousand Faces",' +
+      '"4:Wild Shape","9:Venom Immunity","13:A Thousand Faces",' +
       '"15:Timeless Body" ' +
     'Selectables=' +
       '"1:Animal Companion",' +
@@ -4972,7 +4975,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.wildShape.1', 'levels.Druid', '=', null);
     rules.defineRule('magicNotes.wildShape.2',
-      'levels.Druid', '=', 'Math.floor((source - 2) / 2)'
+      'levels.Druid', '=', 'source==20 ? "unlimited" : Math.floor((source - 2) / 2)'
     );
     rules.defineRule('selectableFeatureCount.Druid', 'levels.Druid', '=', '1');
     rules.defineRule('skillNotes.wildEmpathy',
