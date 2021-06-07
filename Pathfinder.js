@@ -889,7 +889,7 @@ Pathfinder.FEATURES = {
   'Aura':
     'Section=magic ' +
     'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
-  'Aura Of Courage':'Section=save Note="Immune fear, +4 to allies w/in 30\'"',
+  'Aura Of Courage':'Section=save Note="Immune fear, +4 to allies w/in 10\'"',
   'Bardic Knowledge':
     'Section=skill Note="+%V all Knowledge, use any Knowledge untrained"',
   'Blind-Fight':
@@ -1147,7 +1147,7 @@ Pathfinder.FEATURES = {
          '"+1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
-    'Section=combat Note="+%V attack/+%1 damage/+%2 AC vs. evil foe %2/dy"',
+    'Section=combat Note="+%V attack/+%1 damage/+%2 AC vs. evil foe %3/dy"',
   'Snatch Arrows':'Section=combat Note="Catch ranged weapons"',
   'Sneak Attack':
     'Section=combat Note="Hit +%Vd6 HP when surprising or flanking"',
@@ -1287,17 +1287,19 @@ Pathfinder.FEATURES = {
   'Aura Of Despair':
     'Section=magic ' +
     'Note="R30\' Foes -2 ability, attack, damage, save, and skill %V rd/dy"',
-  'Aura Of Justice':'Section=combat Note="R10\' Grant Smite Evil to allies"',
+  'Aura Of Faith':'Section=combat Note="R10\' attacks good-aligned"',
+  'Aura Of Justice':
+    'Section=combat Note="R10\' Use 2 Smite Evil to grant use to allies"',
   'Aura Of Madness':
     'Section=magic Note="30\' <i>Confusion</i> (DC %1 Will neg) %V rd/dy"',
   'Aura Of Protection':
     'Section=magic ' +
     'Note="Allies w/in 30\' +%V AC, %1 elements resistance %2 rd/dy"',
-  'Aura Of Resolve':'Section=save Note="Immune charm, +4 to allies w/in 30\'"',
+  'Aura Of Resolve':'Section=save Note="Immune charm, +4 to allies w/in 10\'"',
   'Aura Of Righteousness':
     'Section=combat,save ' +
     'Note="DR %V/evil",' +
-         '"Immune compulsion, +4 to allies w/in 30\'"',
+         '"Immune compulsion, +4 to allies w/in 10\'"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
@@ -1654,7 +1656,7 @@ Pathfinder.FEATURES = {
   'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
   'Holy Champion':
     'Section=magic ' +
-    'Note="Maximize lay on hands, smite evil DC %V <i>Banishment</i>"',
+    'Note="Maximize lay on hands, Smite Evil DC %V <i>Banishment</i>"',
   'Holy Lance':'Section=combat Note="Add <i>holy</i> to weapon %1 rd %V/dy"',
   'Horse Lord':'Section=skill Note="+2 Ride/Ride is a class skill"',
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
@@ -3909,14 +3911,15 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Martial)",' +
       '1:Aura,"1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
-      '"4:Channel Energy","8:Aura Of Resolve","14:Aura Of Faith",' +
-      '"17:Aura Of Righteousness","17:Resist Evil","20:Holy Champion" ' +
+      '"4:Channel Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
+      '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
+      '"20:Holy Champion" ' +
     'Selectables=' +
       '"3:Mercy (Fatigued)","3:Mercy (Shaken)","3:Mercy (Sickened)",' +
       '"features.Divine Weapon == 0 ? 5:Divine Mount",' +
       '"features.Divine Mount == 0 ? 5:Divine Weapon",' +
       '"6:Mercy (Dazed)","6:Mercy (Diseased)","6:Mercy (Staggered)",' +
-      '"9:Mercy (Cursed)","9:Mercy (Exhausted)","9:Mercy (Frighted)",' +
+      '"9:Mercy (Cursed)","9:Mercy (Exhausted)","9:Mercy (Frightened)",' +
       '"9:Mercy (Nauseated)","9:Mercy (Poisoned)","12:Mercy (Blinded)",' +
       '"12:Mercy (Deafened)","12:Mercy (Paralyzed)","12:Mercy (Stunned)" ' +
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
