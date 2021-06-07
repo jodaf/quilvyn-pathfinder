@@ -1403,7 +1403,7 @@ Pathfinder.FEATURES = {
   'Command Undead':
     'Section=combat Note="R30\' Control undead (%V DC Will neg)"',
   'Companion Bond':
-    'Section=combat Note="Half favored enemy bonus to allies w/in 30\' %V rd"',
+    'Section=combat Note="R30\' Half favored enemy bonus to allies for %V rd"',
   'Comparative Religion':
     'Section=skill ' +
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
@@ -1858,7 +1858,7 @@ Pathfinder.FEATURES = {
   'Protective Ward':'Section=magic Note="+%V AC 10\' radius %1/dy"',
   'Quarry':
     'Section=combat,skill ' +
-    'Note="+%V attack, automatic critical vs. target",' +
+    'Note="+%V attack, critical confirmed vs. target",' +
          '"Take %V to track target"',
   'Quick Disable':'Section=skill Note="Disable Device in half normal time"',
   'Quick Reflexes':'Section=combat Note="+1 AOO/rd during rage"',
@@ -2040,7 +2040,7 @@ Pathfinder.FEATURES = {
   'Tunnel Fighter':
     'Section=combat ' +
     'Note="+2 Initiative (underground)/+1 critical damage (underground)"',
-  'Two-Weapon Rend':'Section=combat Note="Extra 1d10+%V HP from double hit"',
+  'Two-Weapon Rend':'Section=combat Note="Extra 1d10+%1 HP from double hit"',
   'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
   'Undead Slayer':'Section=combat Note="+1 damage vs. undead"',
   'Unexpected Strike':'Section=combat Note="AOO when foe enters threat 1/rage"',
@@ -5914,7 +5914,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'wisdomModifier', '+', null
     );
   } else if(name == 'Two-Weapon Rend') {
-    rules.defineRule('combatNotes.two-WeaponRend',
+    rules.defineRule('combatNotes.two-WeaponRend.1',
+      'features.Two-Weapon Rend', '?', null,
       'strengthModifier', '=', 'Math.floor(source * 1.5)'
     );
   } else if(name == 'Weapon Finesse') {
