@@ -1449,7 +1449,7 @@ Pathfinder.FEATURES = {
   'Desert Shadow':'Section=skill Note="Full speed Stealth in desert"',
   'Destiny Realized':
     'Section=combat,magic ' +
-    'Note="Critical hits confirmed, foe critical requires 20",' +
+    'Note="Spell critical confirmed, foe critical requires 20",' +
          '"Automatically overcome resistance 1/dy"',
   'Destructive Aura':
     'Section=combat ' +
@@ -1780,7 +1780,7 @@ Pathfinder.FEATURES = {
   'Metamagic Mastery':'Section=magic Note="Apply metamagic feat %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Might Of The Gods':'Section=magic Note="+%V Str checks %1 rd/dy"',
-  'Mighty Swing':'Section=combat Note="Confirm critical automatically 1/rage"',
+  'Mighty Swing':'Section=combat Note="Critical confirmed 1/rage"',
   'Militia Veteran':
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, Survival/choice is a class skill"',
@@ -2073,11 +2073,13 @@ Pathfinder.FEATURES = {
   'Weapon Master':'Section=combat Note="Use additional combat feat %V rd/dy"',
   'Weapon Mastery':
     'Section=combat ' +
-    'Note="Critical automatically hits, +1 damage multiplier, no disarm w/chosen weapon"',
+    'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen weapon"',
   'Weapon Style':'Section=combat Note="Proficient with choice of monk weapon"',
+  // TODO Detail? Groups are axes, heavy blades, light blades, blows, close,
+  // crossbows, double, flails, hammers, monk, natural, pole arms, spears,thrown
   'Weapon Training':
     'Section=combat ' +
-    'Note="Attack and damage bonus w/weapons from trained groups"',
+    'Note="%V attack and damage w/weapons from chosen groups"',
   'Well-Informed':
     'Section=skill ' +
     'Note="+1 Diplomacy (gather information)/+1 Knowledge (Local)/choice is a class skill"',
@@ -5006,8 +5008,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.armorTraining',
       'dexterityModifier', '=', null,
       'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
-      'levels.Fighter', 'v', 'Math.floor((source + 1) / 4)',
+      'levels.Fighter', 'v', 'Math.min(Math.floor((source + 1) / 4), 4)',
       '', '^', '0'
+    );
+    rules.defineRule('combatNotes.weaponTraining',
+      'levels.Fighter', '=',
+        '(source>=17 ? "+4/" : "") + (source>=13 ? "+3/" : "") + ' +
+        '(source>=9 ? "+2/" : "") + "+1"'
     );
     rules.defineRule('featCount.Fighter',
       'levels.Fighter', '=', '1 + Math.floor(source / 2)'
@@ -5019,7 +5026,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'skillNotes.armorTraining', '+', '-source'
     );
     rules.defineRule('skillNotes.armorTraining',
-      'levels.Fighter', '=', 'Math.floor((source + 1) / 4)'
+      'levels.Fighter', '=', 'Math.min(Math.floor((source + 1) / 4), 4)'
     );
 
   } else if(name == 'Monk') {
