@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.11';
+Pathfinder.VERSION = '2.2.2.12';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -1232,8 +1232,6 @@ Pathfinder.FEATURES = {
   'Added Summonings':
     'Section=magic ' +
     'Note="<i>Summon Monster</i> brings additional demon or fiendish creature"',
-  'Addling Touch':
-    'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
   'Adopted':'Section=feature Note="Family race traits available"',
   'Agile Feet':
     'Section=feature Note="Unaffected by difficult terrain 1 rd %V/dy"',
@@ -1333,7 +1331,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical hit causes permanent blindness (DC %V Fort dazzled 1d4 rd)"',
   'Blinding Ray':
-    'Section=magic Note="Ranged touch blinds and dazzles 1 rd %V/dy"',
+    'Section=magic Note="R30\' Ranged touch blinds or dazzles target 1 rd %V/dy"',
   'Blindsense':
     'Section=feature ' +
     'Note="R%V\' Other senses allow detection of unseen objects"',
@@ -1380,7 +1378,7 @@ Pathfinder.FEATURES = {
     'Note="<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/dy"',
   'Channel Energy':
     'Section=magic ' +
-    'Note="Heal or inflict %Vd6 HP 30\' radius (DC %1 Will half) %2/dy"',
+    'Note="Heal or inflict %1d6 HP 30\' radius (DC %2 Will half) %V/dy"',
   'Channel Smite':
     'Section=combat Note="Channel energy into weapon strike as swift action"',
   'Chaos Blade':
@@ -1413,7 +1411,7 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
   'Condition Fist':
     'Section=combat Note="Stunning Fist may instead make target %V"',
-  'Conjured Dart':'Section=magic Note="Ranged touch 1d6+%1 HP %V/dy"',
+  'Conjured Acid Dart':'Section=magic Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Conviction':
     'Section=feature Note="Reroll ability, attack, skill, or save 1/dy"',
   'Copycat':'Section=magic Note="<i>Mirror Image</i> %V rd %1/dy"',
@@ -1426,8 +1424,7 @@ Pathfinder.FEATURES = {
   'Dangerously Curious':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Dazing Touch':
-    'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
+  'Dazing Touch':'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
   'Dazzling Display':
     'Section=combat ' +
     'Note="R30\' Intimidate to demoralize foes using focused weapon"',
@@ -1533,9 +1530,11 @@ Pathfinder.FEATURES = {
          '"+2 Spellcraft (identify magic item properties)"',
   'Elven Reflexes':'Section=combat Note="+2 Initiative"',
   'Enchanting Smile':
-    'Section=skill Note="+%V Bluff/+%V Diplomacy/+%V Intimidate"',
-  'Enchantment Reflection':
-    'Section=save Note="Successful save reflects enchantment spells on caster"',
+    'Section=save,skill ' +
+    'Note="Successful save reflects enchantment spells onto caster",' +
+         '"+%V Bluff/+%V Diplomacy/+%V Intimidate"',
+  'Enchantment Dazing Touch':
+    'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
   'Energy Absorption':'Section=save Note="Ignore %V HP energy/dy"',
   'Energy Resistance':'Section=save Note="%V chosen energy type"',
   'Exhausting Critical':
@@ -1554,8 +1553,6 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+1 Perception/Perception is a class skill"',
   'Eyes Of Darkness':
     'Section=feature Note="Normal vision in any lighting %V rd/dy"',
-  'Faction Freedom Fighter':
-    'Section=combat,skill Note="+1 surprise attack","+1 Stealth"',
   'Failed Apprentice':'Section=save Note="+1 vs. arcane spells"',
   'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
   'Fashionable':
@@ -1587,7 +1584,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="+1 caster level on good-aligned spells"',
   'Force Missile':'Section=magic Note="<i>Magic Missile</i> 1d4+%V HP %1/dy"',
   'Forewarned':
-    'Section=combat Note="+%V initiative, always act in surprise round"',
+    'Section=combat Note="+%V Initiative/%1Always act in surprise round"',
   'Forlorn':'Section=save Note="+1 Fortitude"',
   'Fortified Drinker':
     'Section=save Note="+2 vs. mental effect 1 hr after drinking"',
@@ -1595,9 +1592,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="20% chance to negate critical hit or sneak attack 1/dy"',
   'Freedom Fighter':
-    'Section=combat,skill ' +
-    'Note="+1 attack during escape",' +
-         '"+1 skills during escape/Escape Artist is a class skill"',
+    'Section=combat,skill Note="+1 surprise attack","+1 Stealth"',
   "Freedom's Call":
     'Section=magic ' +
     'Note="R30\' Allies unaffected by movement conditions %V rd/dy"',
@@ -1643,6 +1638,10 @@ Pathfinder.FEATURES = {
   'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
   'Halfling Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Charisma/-2 Strength"',
+  'Halfling Freedom Fighter':
+    'Section=combat,skill ' +
+    'Note="+1 attack during escape",' +
+         '"+1 skills during escape/Escape Artist is a class skill"',
   'Hand Of The Acolyte':'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
     'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
@@ -1698,7 +1697,7 @@ Pathfinder.FEATURES = {
   'Inspiring Word':
     'Section=magic ' +
     'Note="R30\' word imparts +2 attack, skill, ability, and save to target %V rd %1/dy"',
-  'Intense Spells':'Section=magic Note="+%V Evocation spell damage"',
+  'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
   'Internal Fortitude':
     'Section=save Note="Cannot be sickened or nauseated during rage"',
   'Intimidating Glare':
@@ -1706,8 +1705,7 @@ Pathfinder.FEATURES = {
     'Note="Successful Intimidate during rage shakes foe at least 1d4 rd"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
   'Intimidating':'Section=skill Note="+2 Intimidate"',
-  'Invisibility Field':
-    'Section=magic Note="<i>Greater Invisibility</i> %V rd/dy"',
+  'Invisibility Field':'Section=magic Note="Self invisible %V rd/dy"',
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="Reroll attack, critical, or spell resistance check %V/dy"',
@@ -1725,7 +1723,8 @@ Pathfinder.FEATURES = {
   'Librarian':
     'Section=skill ' +
     'Note="+1 Linguistics/+1 Profession (Librarian)/choice is a class skill/+1 reading bonus 1/dy"',
-  'Life Sight':'Section=feature Note="%V blindsight for living or undead"',
+  'Life Sight':
+    'Section=feature Note="R%V\' Blindsight for living and undead %1 rd/dy"',
   'Lightning Arc':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Lightning Lord':'Section=magic Note="<i>Call Lightning</i> %V bolts/dy"',
   'Lightning Stance':
@@ -1786,7 +1785,8 @@ Pathfinder.FEATURES = {
   'Metamagic Adept':
     'Section=magic ' +
     'Note="Applying metamagic feat w/out increased casting time %V/dy"',
-  'Metamagic Mastery':'Section=magic Note="Apply metamagic feat %V/dy"',
+  'Metamagic Mastery':
+    'Section=magic Note="Apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Might Of The Gods':'Section=magic Note="+%V Str checks %1 rd/dy"',
   'Mighty Swing':'Section=combat Note="Critical confirmed 1/rage"',
@@ -1811,8 +1811,8 @@ Pathfinder.FEATURES = {
     'Section=feature,save ' +
     'Note="+1 Leadership score",' +
          '"+1 followers\' Will vs. mind-altering effects"',
-  'Necromantic Touch':
-    'Section=magic Note="Touch causes shaken or frightened %V rd %1/dy"',
+  'Necromantic Grave Touch':
+    'Section=magic Note="Touch causes shaken %V rd %1/dy"',
   'New Arcana':'Section=magic Note="%V additional spells"',
   'Night Vision':'Section=feature Note="60\' Darkvision during rage"',
   'Nimble Moves':
@@ -1837,8 +1837,6 @@ Pathfinder.FEATURES = {
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill Note="+1 Diplomacy, 1 retry on unfriendly or hostile"',
-  'Penetrating Spells':
-    'Section=magic Note="Best of two rolls to overcome spell resistance"',
   'Penetrating Strike':
     'Section=combat Note="Focused weapons ignore DR 5/anything"',
   'Performance Artist':
@@ -1982,11 +1980,11 @@ Pathfinder.FEATURES = {
     'Note="R30\' Touch 1d6+%1 HP non-lethal and -2 attack %V/dy"',
   'Storyteller':'Section=skill Note="+%V choice of Knowledge check 1/scenario"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
-  'Strength Rush':
-    'Section=magic ' +
-    'Note="Touch imparts +%V melee attack and Str check bonus %1/dy"',
   'Strength Surge':
     'Section=combat Note="+%V Str or combat maneuver check 1/rage"',
+  'Strength Surge Touch':
+    'Section=magic ' +
+    'Note="Touch imparts +%V melee attack and Str check bonus %1/dy"',
   'Strike Back':'Section=combat Note="Attack attackers beyond reach"',
   'Stunning Critical':
     'Section=combat Note="Critical hit stuns 1d4 rd (DC %V Fort staggered)"',
@@ -2290,7 +2288,7 @@ Pathfinder.PATHS = {
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
     'Features=' +
-      '"1:Addling Touch","8:Charming Smile"',
+      '"1:Dazing Touch","8:Charming Smile"',
   'Community Domain':
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
@@ -2400,7 +2398,7 @@ Pathfinder.PATHS = {
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
     'Features=' +
-      '"1:Strength Rush","8:Might Of The Gods"',
+      '"1:Strength Surge Touch","8:Might Of The Gods"',
   'Sun Domain':
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
@@ -2738,24 +2736,23 @@ Pathfinder.SCHOOLS = {
       '"1:Energy Resistance","1:Protective Ward","6:Energy Absorption"',
   'Conjuration':
     'Features=' +
-      '"1:Summoner\'s Charm","1:Conjured Dart","8:Dimensional Steps"',
+      '"1:Conjured Acid Dart","1:Summoner\'s Charm","8:Dimensional Steps"',
   'Divination':
     'Features=' +
       '1:Forewarned,"1:Diviner\'s Fortune","8:Scrying Adept"',
   'Enchantment':
     'Features=' +
-      '"1:Dazing Touch","1:Enchanting Smile","8:Aura Of Despair",' +
-      '"20:Enchantment Reflection"',
+      '"1:Enchanting Smile","1:Enchantment Dazing Touch","8:Aura Of Despair"',
   'Evocation':
     'Features=' +
-      '"1:Intense Spells","1:Force Missile","8:Elemental Wall",' +
-      '"20:Penetrating Spells"',
+      '"1:Intense Spells","1:Force Missile","8:Elemental Wall"',
   'Illusion':
     'Features=' +
       '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
   'Necromancy':
     'Features=' +
-      '"1:Power Over Undead","1:Necromantic Touch","8:Life Sight"',
+      '"1:Channel Energy","1:Power Over Undead","1:Necromantic Grave Touch",' +
+      '"8:Life Sight"',
   'Transmutation':
     'Features=' +
       '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
@@ -3586,10 +3583,10 @@ Pathfinder.TRAITS = {
   'Focused Mind':'Type=Basic Subtype=Magic',
   'Forlorn':'Type=Race Subtype=Elf',
   'Fortified Drinker':'Type=Religion Subtype=CG',
-  'Freedom Fighter':'Type=Race Subtype=Halfling',
   'Gifted Adept':'Type=Basic Subtype=Magic',
   'Goldsniffer':'Type=Race Subtype=Dwarf',
   'Guardian Of The Forge':'Type=Religion Subtype=LG',
+  'Halfling Freedom Fighter':'Type=Race Subtype=Halfling',
   'Hedge Magician':'Type=Basic Subtype=Magic',
   'Highlander':'Type=Regional Subtype=Hills,Mountains',
   'History Of Heresy':'Type=Basic Subtype=Faith',
@@ -3641,9 +3638,9 @@ Pathfinder.TRAITS = {
   'Comparative Religion':'Type=Faction Subtype="Silver Crusade"',
   'Devil\'s Mark':'Type=Faction Subtype="Dark Archive"',
   'Expert Duelist':'Type=Faction Subtype="Sovereign Court"',
-  'Faction Freedom Fighter':'Type=Faction Subtype="Liberty\'s Edge"',
   'Fashionable':'Type=Faction Subtype="Sovereign Court"',
   'Force For Good':'Type=Faction Subtype="Silver Crusade"',
+  'Freedom Fighter':'Type=Faction Subtype="Liberty\'s Edge"',
   'Gold Finger':'Type=Faction Subtype="The Exchange"',
   'Greasy Palm':'Type=Faction Subtype="The Exchange"',
   'Impressive Presence':'Type=Faction Subtype="Sovereign Court"',
@@ -4933,17 +4930,18 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Cleric') {
 
+    rules.defineRule('channelLevel', 'levels.Cleric', '+=', null);
     rules.defineRule('magicNotes.channelEnergy',
-      'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
+      'magicNotes.charismaChannelEnergyAdjustment', '=', '3 + source'
     );
     rules.defineRule('magicNotes.channelEnergy.1',
       'features.Channel Energy', '?', null,
-      'levels.Cleric', '+=', '10 + Math.floor(source / 2)',
-      'magicNotes.charismaChannelEnergyAdjustment', '+', null
+      'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule('magicNotes.channelEnergy.2',
       'features.Channel Energy', '?', null,
-      'magicNotes.charismaChannelEnergyAdjustment', '=', '3 + source'
+      'levels.Cleric', '+=', '10 + Math.floor(source / 2)',
+      'magicNotes.charismaChannelEnergyAdjustment', '+', null
     );
     rules.defineRule('magicNotes.charismaChannelEnergyAdjustment',
       'features.Channel Energy', '?', null,
@@ -4951,10 +4949,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric', 'levels.Cleric', '+=', '2');
-    rules.defineRule('turningLevel',
-      'features.Turn Undead', '?', null,
-      'levels.Cleric', '+=', null
-    );
 
   } else if(name == 'Druid') {
 
@@ -5126,6 +5120,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanionStats.SR',
       'companionPaladinLevel', '^=', 'source >= 15 ? source + 11 : null'
     );
+    rules.defineRule
+      ('channelLevel', 'levels.Paladin', '+=', 'source>=4 ? source : null');
     rules.defineRule('combatNotes.auraOfRighteousness',
       'levels.Paladin', '=', 'source >= 20 ? 10 : 5'
     );
@@ -5155,15 +5151,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.divineMount',
       'companionPaladinLevel', '=', 'Math.floor((source - 1) / 4)'
     );
-    rules.defineRule('magicNotes.channelEnergy',
+    // Other Channel Energy calculations handled in Cleric rules
+    rules.defineRule('magicNotes.channelEnergy.1',
       'levels.Paladin', '+=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('magicNotes.channelEnergy.1',
-      'levels.Paladin', '+=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
+    rules.defineRule('magicNotes.channelEnergy.2',
+      'levels.Paladin', '+=', '10 + Math.floor(source / 2)'
     );
-    rules.defineRule
-      ('magicNotes.channelEnergy.2', 'charismaModifier', '=', '3 + source');
     rules.defineRule('magicNotes.holyChampion', 'levels.Paladin', '=', null);
     rules.defineRule('magicNotes.layOnHands',
       'levels.Paladin', '=', 'Math.floor(source / 2)'
@@ -5783,7 +5777,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('combatNotes.combatReflexes', 'dexterityModifier', '=', 'source + 1');
   } else if(name == 'Command Undead') {
     rules.defineRule('combatNotes.commandUndead',
-      'levels.Cleric', '=', '10 + Math.floor(source / 2)',
+      'channelLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
   } else if(name == 'Deadly Aim') {
@@ -5813,7 +5807,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Extra Channel') {
     rules.defineRule
-      ('magicNotes.channelEnergy.2', 'magicNotes.extraChannel', '+', '2');
+      ('magicNotes.channelEnergy', 'magicNotes.extraChannel', '+', '2');
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4')
   } else if(name == 'Extra Ki') {
@@ -5920,8 +5914,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
   } else if(name == 'Turn Undead') {
     rules.defineRule('combatNotes.turnUndead',
-      'turningLevel', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
+      'channelLevel', '=', '10 + Math.floor(source / 2)',
+      'charismaModifier', '+', null
     );
   } else if(name == 'Two-Weapon Rend') {
     rules.defineRule('combatNotes.two-WeaponRend.1',
@@ -6379,9 +6373,9 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'wisdomModifier', '+', null
     );
     rules.defineRule('magicNotes.charmingSmile.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.addlingTouch', pathLevel, '=', null);
-    rules.defineRule('magicNotes.addlingTouch.1',
-      'features.Addling Touch', '?', null,
+    rules.defineRule('magicNotes.dazingTouch', pathLevel, '=', null);
+    rules.defineRule('magicNotes.dazingTouch.1',
+      'features.Dazing Touch', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
 
@@ -6633,11 +6627,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
     rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
     rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.strengthRush',
+    rules.defineRule('magicNotes.strengthSurgeTouch',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('magicNotes.strengthRush.1',
-      'features.Strength Rush', '?', null,
+    rules.defineRule('magicNotes.strengthSurgeTouch.1',
+      'features.Strength Surge Touch', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
 
@@ -6778,20 +6772,24 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
     );
   } else if(name == 'Conjuration') {
-    rules.defineRule
-      ('magicNotes.conjuredDart', 'intelligenceModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.conjuredDart.1',
-      'features.Conjured Dart', '?', null,
+    rules.defineRule('magicNotes.conjuredAcidDart',
+      'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('magicNotes.conjuredAcidDart.1',
+      'features.Conjured Acid Dart', '?', null,
       schoolLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
       ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
     rules.defineRule("magicNotes.summoner'sCharm",
-      schoolLevel, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'source>=20 ? "unlimited" : Math.max(Math.floor(source / 2), 1)'
     );
   } else if(name == 'Divination') {
     rules.defineRule('combatNotes.forewarned',
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('combatNotes.forewarned.1',
+      schoolLevel, '=', 'source==20 ? "Take 20 on Initiative/" : ""'
     );
     rules.defineRule("magicNotes.diviner'sFortune",
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -6802,11 +6800,14 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     );
   } else if(name == 'Enchantment') {
     rules.defineRule('magicNotes.auraOfDespair', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.dazingTouch', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.dazingTouch.1',
-      'features.Dazing Touch', '?', null,
+    rules.defineRule
+      ('magicNotes.enchantmentDazingTouch', schoolLevel, '=', null);
+    rules.defineRule('magicNotes.enchantmentDazingTouch.1',
+      'features.Enchantment Dazing Touch', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
+    rules.defineRule
+      ('saveNotes.enchantingSmile', schoolLevel, '?', 'source==20');
     rules.defineRule('skillNotes.enchantingSmile',
       schoolLevel, '=', '1 + Math.floor(source / 5)'
     );
@@ -6822,11 +6823,14 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.intenseSpells',
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+    rules.defineRule('magicNotes.intenseSpells.1',
+      schoolLevel, '=', 'source==20 ? ", use best of two rolls to overcome resistance on Evocation spells" : ""'
+    );
   } else if(name == 'Illusion') {
     rules.defineRule
       ('magicNotes.blindingRay', 'intelligenceModifier', '=', 'source + 3');
     rules.defineRule('magicNotes.extendedIllusions',
-      schoolLevel, '=', 'source>=20 ? "infinite" : Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'source>=20 ? "unlimited" : Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule
       ('magicNotes.invisibilityField', schoolLevel, '=', null);
@@ -6835,14 +6839,29 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       rules, 'validation', 'powerOverUndead', 'features.Power Over Undead',
       'features.Command Undead || features.Turn Undead'
     );
+    rules.defineRule('channelLevel', schoolLevel, '+=', null);
+    // Other Channel Energy calculations handled in Cleric rules
+    rules.defineRule('magicNotes.channelEnergy',
+      'magicNotes.intelligenceChannelEnergyAdjustment', '+', null
+    );
+    rules.defineRule('magicNotes.channelEnergy.1', schoolLevel, '+=', '0');
+    rules.defineRule('magicNotes.channelEnergy.2',
+      schoolLevel, '+=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.intelligenceChannelEnergyAdjustment',
+      schoolLevel, '?', null,
+      'intelligenceModifier', '=', null,
+      'charismaModifier', '+', '-source'
+    );
     rules.defineRule('featureNotes.lifeSight',
       schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
     );
-    rules.defineRule('magicNotes.necromanticTouch',
-      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    rules.defineRule('featureNotes.lifeSight.1', schoolLevel, '=', null);
+    rules.defineRule('magicNotes.necromanticGraveTouch',
+      schoolLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('magicNotes.necromanticTouch.1',
-      'features.Necromantic Touch', '?', null,
+    rules.defineRule('magicNotes.necromanticGraveTouch.1',
+      'features.Necromantic Grave Touch', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
   } else if(name == 'Transmutation') {
@@ -7097,18 +7116,6 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    The Charm domain "Dazing Touch" feature has been renamed "Addling\n' +
-    '    Touch" to distinguish it from the Enchantment school feature of\n' +
-    '    the same name.\n' +
-    '  </li><li>\n' +
-    '    The Strength domain "Strength Surge" feature has been renamed\n' +
-    '    "Strength Rush" to distinguish it from the barbarian feature\n' +
-    '    of the same name.\n' +
-    '  </li><li>\n' +
-    '    The Liberty\'s Edge "Freedom Fighter" trait has been renamed\n' +
-    '    "Faction Freedom Fighter" to distinguish it from the halfling\n' +
-    '    trait of the same name.\n' +
-    '  </li><li>\n' +
     '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
     '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
     '  </li>\n' +
