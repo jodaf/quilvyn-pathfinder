@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.13';
+Pathfinder.VERSION = '2.2.2.14';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -1709,7 +1709,7 @@ Pathfinder.FEATURES = {
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="Reroll attack, critical, or spell resistance check %V/dy"',
-  'Jack Of All Trades':'Section=skill Note="Use any skill untrained"',
+  'Jack-Of-All-Trades':'Section=skill Note="Use any skill untrained"',
   'Ki Dodge':'Section=combat Note="Use 1 ki for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="Use 1 ki for +20 Speed"',
@@ -2108,8 +2108,6 @@ Pathfinder.FEATURES = {
     'Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"',
   // Prestige classes
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
-  'Aligned Arrows':
-    'Section=combat Note="Arrows anarchic, axiomatic, holy, or unholy"',
   'Angel Of Death':'Section=combat Note="Death attack dusts corpse 1/dy"',
   'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
   'Arrow Of Death':
@@ -2119,7 +2117,7 @@ Pathfinder.FEATURES = {
     'Note="Dragon Disciple level triggers Bloodline features"',
   'Bonus Language':'Section=feature Note="+%V Language Count"',
   'Call Down The Legends':
-    'Section=magic Note="Summon 2d4 level 4 barbarians 1/wk"',
+    'Section=magic Note="Summon 2d4 level 4 construct barbarians 1/wk"',
   'Canny Defense':'Section=combat Note="+%V AC in light or no armor"',
   'Caster Level Bonus':
     'Section=magic ' +
@@ -2137,16 +2135,20 @@ Pathfinder.FEATURES = {
     'Section=feature,skill ' +
     'Note="Retrieve any small object from backpack as a full-round action",' +
          '"+4 Sleight Of Hand (conceal small objects)"',
-  'Distance Arrows':'Section=combat Note="x2 range"',
   'Diverse Training':
     'Section=feature ' +
     'Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
+  'Dodge Trick':'Section=combat Note="+1 AC"',
   'Dragon Bite':'Section=combat Note="d%V+%1%2 bite when using claws"',
   'Dragon Disciple':'Section=combat Note="+%V"',
   'Dragon Form':'Section=magic Note="<i>Form Of The Dragon %V</i> %1/dy"',
   'Elaborate Defense':'Section=combat Note="+%V AC when fighting defensively"',
-  'Elemental Arrows':'Section=combat Note="Arrows %V"',
-  'Enhance Arrow':'Section=combat Note="Arrows treated as +1 magic weapons"',
+  'Enhance Arrows (Aligned)':
+    'Section=combat Note="Arrows anarchic, axiomatic, holy, or unholy"',
+  'Enhance Arrows (Distance)':'Section=combat Note="x2 range"',
+  'Enhance Arrows (Elemental)':'Section=combat Note="Arrows %V"',
+  'Enhance Arrows (Magic)':
+    'Section=combat Note="Arrows treated as +1 magic weapons"',
   'Enhanced Mobility':
     'Section=combat Note="+4 AC vs. movement AOO in light or no armor"',
   'Epic Tales':'Section=magic Note="Bardic Performance effect via writing%V"',
@@ -2161,20 +2163,20 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Declare any attack a sneak attack %V/dy"',
   'Improved Aid':'Section=combat Note="Aid Another action gives +4 bonus"',
   'Improved Reaction':'Section=combat Note="+%V Initiative"',
-  'Inspired Action':
+  'Inspire Action':
     'Section=magic Note="Use Bardic Performance to give ally extra %V action"',
   'Instant Mastery':'Section=skill Note="4 ranks in untrained skill"',
   'Intelligence Boost':'Section=ability Note="+2 Intelligence"',
-  'Invisible Thief':
-    'Section=magic Note="<i>Greater Invisibility</i> %V rd/dy"',
+  'Invisible Thief':'Section=magic Note="Self invisible %V rd/dy"',
   'Lay Of The Exalted Dead':
-    'Section=magic Note="Summon d4+1 level 5 barbarians 1/wk"',
+    'Section=magic ' +
+    'Note="Summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
   'Live To Tell The Tale':
-    'Section=save Note="Extra saving throw vs permanent condition %V/dy"',
+    'Section=save Note="Extra saving throw vs ongoing condition %V/dy"',
   'Lore':'Section=skill Note="+%V Knowledge/use any Knowledge untrained"',
   'Master Scribe':
     'Section=skill ' +
-    'Note="+%V Linguistics/=%v Profession (Scribe)/+%V Use Magic Device (scrolls)"',
+    'Note="+%V Linguistics/+%V Profession (Scribe)/+%V Use Magic Device (scrolls)"',
   'More Newfound Arcana':'Section=magic Note="Bonus level 2 spell"',
   'Newfound Arcana':'Section=magic Note="Bonus level 1 spell"',
   'No Retreat':'Section=combat Note="AOO on foe withdraw"',
@@ -2195,9 +2197,9 @@ Pathfinder.FEATURES = {
   'Quiet Death':
     'Section=combat Note="Stealth check to perform Death Attack unnoticed"',
   'Ranged Legerdemain':
-    'Section=skill Note="+5 DC on Disable Device and Sleight Of Hand at 30\'"',
+    'Section=skill Note="R30\' Disable Device or Sleight Of Hand at +5 DC"',
   'Riposte':'Section=combat Note="AOO after parry"',
-  'Secret Health':'Section=combat Note="+3 HP"',
+  'Secret Health':'Section=combat Note="+%V HP"',
   'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
   'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
   'Seeker Arrow':'Section=combat Note="Arrow maneuvers to target %V/dy"',
@@ -2227,7 +2229,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
   'True Lore':
-    'Section=magic Note="<i>Legend Lore</i>, <i>Analyze Dweomer</i> 1/dy"',
+    'Section=magic Note="<i>Legend Lore</i> or <i>Analyze Dweomer</i> 1/dy"',
   'Weapon Trick':'Section=combat Note="+1 Melee Attack/+1 Ranged Attack"',
   'Whispering Campaign':
     'Section=magic Note="<i>Doom</i>/<i>Enthrall</i> via Bardic Performance"'
@@ -2819,6 +2821,15 @@ Pathfinder.SKILLS = {
   'Perform (Sing)':'Ability=charisma Class=Bard,Monk,Rogue',
   'Perform (String)':'Ability=charisma Class=Bard,Monk,Rogue',
   'Perform (Wind)':'Ability=charisma Class=Bard,Monk,Rogue',
+  'Profession (Librarian)':
+    'Ability=wisdom Untrained=n ' +
+    'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Profession (Soldier)':
+    'Ability=wisdom Untrained=n ' +
+    'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Profession (Scribe)':
+    'Ability=wisdom Untrained=n ' +
+    'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Tanner)':
     'Ability=wisdom Untrained=n ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
@@ -3807,7 +3818,7 @@ Pathfinder.CLASSES = {
       '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
       '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
       '"5:Lore Master",6:Suggestion,"8:Dirge Of Doom","9:Inspire Greatness",' +
-      '"10:Jack Of All Trades","12:Soothing Performance",' +
+      '"10:Jack-Of-All-Trades","12:Soothing Performance",' +
       '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
       '"20:Deadly Performance" ' +
     'CasterLevelArcane=levels.Bard ' +
@@ -4008,7 +4019,7 @@ Pathfinder.CLASSES = {
       '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead",' +
       '"features.Bloodline Arcane ? 1:Bonded Object",' +
       '"features.Bloodline Arcane ? 1:Familiar" ' +
-    'CasterLevelDivine=levels.Sorcerer ' +
+    'CasterLevelArcane=levels.Sorcerer ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
       'S1:1=3;2=4;3=5;4=6,' +
@@ -4099,13 +4110,13 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
-      '"1:Enhance Arrows","2:Caster Level Bonus","2:Imbue Arrow",' +
-      '"3:Elemental Arrows","4:Seeker Arrow","5:Distance Arrows",' +
-      '"6:Phase Arrow","8:Hail Of Arrows","9:Aligned Arrows",' +
+      '"1:Enhance Arrows (Magic)","2:Caster Level Bonus","2:Imbue Arrow",' +
+      '"3:Enhance Arrows (Elemental)","4:Seeker Arrow","5:Distance Arrows",' +
+      '"6:Phase Arrow","8:Hail Of Arrows","9:Enhance Arrows (Aligned)",' +
       '"10:Arrow Of Death"',
   'Arcane Trickster':
     'Require=' +
-      '"alignment !~ \'Lawful\'","features.sneakAttack >= 2",' +
+      '"alignment !~ \'Lawful\'","combatNotes.sneakAttack >= 2",' +
       '"skills.Disable Device >= 4","skills.Escape Artist >= 4",' +
       '"skills.Knowledge (Arcana) >= 4","Sum \'^spells\\.Mage Hand\' >= 1",' +
       '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
@@ -4120,7 +4131,7 @@ Pathfinder.PRESTIGE_CLASSES = {
         '"10:Surprise Spells"',
   'Assassin':
     'Require=' +
-      '"alignment =~ \'Evil\'","skills.Disguise >= 2","skill.Stealth >= 5" ' +
+      '"alignment =~ \'Evil\'","skills.Disguise >= 2","skills.Stealth >= 5" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Acrobatics,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
@@ -4137,8 +4148,8 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Require=' +
       '"languages.Draconic","race !~ \'Dragon\'",' +
       '"skills.Knowledge (Arcana) >= 5",' +
-      '"levels.Bard > 0 || levels.Sorcerer > 0",' +
       // i.e., Arcane spells w/out prep
+      '"levels.Bard > 0 || levels.Sorcerer > 0",' +
       '"levels.Sorcerer == 0 || sorcererFeatures.Bloodline Draconic" ' +
     'HitDie=d12 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
@@ -4162,7 +4173,7 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Acrobatics,Bluff,"Escape Artist",Perception,Perform,"Sense Motive" ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Simple)",' +
+      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Martial)",' +
       '"1:Canny Defense","1:Precise Strike","2:Improved Reaction",2:Parry,' +
       '"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
       '"6:Acrobatic Charge","7:Elaborate Defense","9:Deflect Arrows",' +
@@ -4217,7 +4228,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"2:Live To Tell The Tale",2:Pathfinding,"3:Bardic Performance",' +
       '3:Countersong,3:Distraction,3:Fascinate,"3:Improved Aid",' +
       '"3:Inspire Courage","4:Epic Tales","5:Inspire Competence",' +
-      '"5:Whispering Campaign","6:Inspired Action","7:Call Down The Legends",' +
+      '"5:Whispering Campaign","6:Inspire Action","7:Call Down The Legends",' +
       '8:Suggestion,"10:Dirge Of Doom","10:Lay Of The Exalted Dead"',
   'Shadowdancer':
     'Require=' +
@@ -4229,7 +4240,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Perform,"Sleight Of Hand",Stealth ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Composite Shortbow/Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Mace/Morningstar/Punching Dagger/Quarterstaff/Rapier/Sap/Shortbow/Short Sword)",' +
+      '"1:Weapon Proficiency (Club/Composite Shortbow/Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Mace/Morningstar/Punching Dagger/Quarterstaff/Rapier/Sap/Shortbow/Short Sword)",' +
       '"1:Hide In Plain Sight",2:Darkvision,2:Evasion,"2:Uncanny Dodge",' +
       '"3:Shadow Illusion","3:Summon Shadow","4:Shadow Call","4:Shadow Jump",' +
       '"5:Defensive Roll","5:Improved Uncanny Dodge","7:Slippery Mind",' +
@@ -5345,9 +5356,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule(
       'combatNotes.arrowOfDeath', 'charismaModifier', '=', 'source + 20'
     );
-    rules.defineRule('combatNotes.elementalArrows',
+    rules.defineRule('combatNotes.enhanceArrows(Elemental)',
      'levels.Arcane Archer', '=',
-     'source < 7 ? "flaming/frost/shock" : "flaming burst/icy burst/shocking burst"'
+     'source<7 ? "flaming/frost/shock for +1d6 HP" : "flaming burst/icy burst/shocking burst for +1d6 HP + +1d10 critical hit"'
     );
     rules.defineRule
       ('combatNotes.hailOfArrows', 'levels.Arcane Archer', '+=', null);
@@ -5404,7 +5415,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.poisonTolerance',
       'levels.Assassin', '+=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('skillNotes.hiddenWeapon', 'levels.Assassin', '=', null);
+    rules.defineRule('skillNotes.hiddenWeapons', 'levels.Assassin', '=', null);
     rules.defineRule('assassinFeatures.Improved Uncanny Dodge',
       'assassinFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
@@ -5420,7 +5431,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Dragon Disciple') {
 
     rules.defineRule('abilityNotes.wings',
-      'levels.Dragon Disciple', '+=', 'source >= 9 ? 30 : null'
+      'levels.Dragon Disciple', '^=', 'source>=9 ? 60 : null',
+      'abilityNotes.wings.1', '+', null
+    );
+    rules.defineRule('abilityNotes.wings.1',
+      'levels.Dragon Disciple', '?', 'source>=9',
+      'bloodlineDraconicLevel', '=', 'source>=15 ? 30 : null'
     );
     rules.defineRule('abilityNotes.strengthBoost',
       'levels.Dragon Disciple', '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
@@ -5454,7 +5470,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
     rules.defineRule('featCount.Bloodline Draconic',
-      'levels.Dragon Disciple', '+=', 'source<2 ? null : Math.floor((source + 4) / 6)'
+      'levels.Dragon Disciple', '+=',
+        'source>=2 ? Math.floor((source + 1) / 3) : null'
     );
     rules.defineRule
       ('features.Bloodline Draconic', 'levels.Dragon Disciple', '=', '1');
@@ -5507,7 +5524,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.preciseStrike', 'levels.Duelist', '=', null);
     rules.defineRule('initiative', 'combatNotes.improvedReaction', '+', null);
-    rules.defineRule('save.Reflex', 'saveNotes.grace', '+', null);
+    rules.defineRule('save.Reflex', 'saveNotes.grace.1', '+', '2');
+    rules.defineRule('saveNotes.grace.1',
+      'saveNotes.grace', '?', null,
+      'armorWeight', '=', 'source <= 1 ? 2 : null'
+    );
 
   } else if(name == 'Eldritch Knight') {
 
@@ -5522,14 +5543,16 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     var allSkills = rules.getChoices('skills');
     for(var skill in allSkills) {
-      if(skill.startsWith('Knowledge'))
+      if(skill.startsWith('Knowledge')) {
         rules.defineRule('countKnowledgeGe7',
           'skills.' + skill, '+=', 'source >= 7 ? 1 : null'
         );
+        rules.defineRule('skillModifier.' + skill, 'skillNotes.lore', '+', '5');
+      }
     }
-    rules.defineRule('armorClass', 'combatNotes.dodgeTrick', '+', '1');
-    rules.defineRule('baseAttack', 'combatNotes.weaponTrick', '+','1');
     rules.defineRule('casterLevelArcane', 'levels.Loremaster', '+=', null);
+    rules.defineRule
+      ('combatNotes.secretHealth', 'level', '=', 'Math.max(source, 3)');
     rules.defineRule
       ('featCount.General', 'featureNotes.applicableKnowledge', '+', '1');
     rules.defineRule('featureNotes.bonusLanguage',
@@ -5590,9 +5613,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Pathfinder Chronicler', '+=', '10 + Math.floor((source-2) / 2)',
       'charismaModifier', '+', null
     );
-    rules.defineRule('magicNotes.inspiredAction',
+    rules.defineRule('magicNotes.inspireAction',
       'levels.Pathfinder Chronicler', '=',
-      'source < 9 ? "Move" : "Move/Standard"'
+      'source < 9 ? "move" : "move or standard"'
     );
     rules.defineRule('magicNotes.inspireCompetence',
       'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 4)'
@@ -6026,7 +6049,7 @@ Pathfinder.pathRules = function(
   if(feats.length > 0) {
     // Applies to bloodlines, not domains
     rules.defineRule('featCount.' + name,
-      pathLevel, '=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
+      pathLevel, '+=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
     );
     if(name == 'Destined Bloodline') {
       for(var feat in allFeats) {
@@ -6181,7 +6204,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     // Other claws rules defined by Bloodline Abyssal
     rules.defineRule('clawsDamageLevel', pathLevel, '=', 'source>=7 ? 2 : 1');
     rules.defineRule('combatNotes.breathWeapon',
-      pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : source>=9 ? 1 : null'
+      pathLevel, '+=', 'source>=20 ? 3 : source>=17 ? 2 : source>=9 ? 1 : null'
     );
     rules.defineRule('combatNotes.breathWeapon.1',
       'features.Breath Weapon', '?', null,
@@ -7140,9 +7163,6 @@ Pathfinder.ruleNotes = function() {
     '    that the character is caster level 3 in each category, whereas\n' +
     '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
     '    spells until a higher caster level.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn lists the fly speed for a 9th-level Dragon Disciple as\n' +
-    "    30' instead of the correct 60'.\n" +
     '  </li>\n' +
     '</ul>\n' +
     '</p>\n';
