@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.14';
+Pathfinder.VERSION = '2.2.2.15';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -4327,12 +4327,12 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
     'tinyCompanionCMBAbility', '^', null
   );
   rules.defineRule('familiarMaxDexOrStr',
-    'features.Familiar', '?', null,
+    'hasFamiliar', '?', null,
     'familiarStats.Dex', '=', null,
     'familiarStats.Str', '^', null
   );
   rules.defineRule('familiarBAB',
-    'features.Familiar', '?', null,
+    'hasFamiliar', '?', null,
     'baseAttack', '=', null
   );
   rules.defineRule('tinyFamiliarCMBAbility',
