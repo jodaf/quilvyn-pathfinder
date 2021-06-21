@@ -5779,6 +5779,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Acrobatics', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.acrobatic.1',
+      'features.Acrobatic', '?', null,
       '', '=', '2',
       'skills.Fly', '+', 'source >= 10 ? 2 : null'
     );
@@ -5793,6 +5794,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Perception', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.alertness.1',
+      'features.Alertness', '?', null,
       '', '=', '2',
       'skills.Sense Motive', '+', 'source >= 10 ? 2 : null'
     );
@@ -5802,6 +5804,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Handle Animal', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.animalAffinity.1',
+      'features.Animal Affinity', '?', null,
       '', '=', '2',
       'skills.Ride', '+', 'source >= 10 ? 2 : null'
     );
@@ -5825,6 +5828,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Climb', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.athletic.1',
+      'features.Athletic', '?', null,
       '', '=', '2',
       'skills.Swim', '+', 'source >= 10 ? 2 : null'
     );
@@ -5860,6 +5864,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Bluff', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.deceitful.1',
+      'features.Deceitful', '?', null,
       '', '=', '2',
       'skills.Disguise', '+', 'source >= 10 ? 2 : null'
     );
@@ -5874,6 +5879,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Disable Device', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.deftHands.1',
+      'features.Deft Hands', '?', null,
       '', '=', '2',
       'skills.Sleight Of Hands', '+', 'source >= 10 ? 2 : null'
     );
@@ -5933,6 +5939,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Spellcraft', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.magicalAptitude.1',
+      'features.Magical Aptitude', '?', null,
       '', '=', '2',
       'skills.Use Magic Device', '+', 'source >= 10 ? 2 : null'
     );
@@ -5942,6 +5949,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Diplomacy', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.persuasive.1',
+      'features.Persuasive', '?', null,
       '', '=', '2',
       'skills.Intimidate', '+', 'source >= 10 ? 2 : null'
     );
@@ -5965,6 +5973,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Heal', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.self-Sufficient.1',
+      'features.Self-Sufficient', '?', null,
       '', '=', '2',
       'skills.Survival', '+', 'source >= 10 ? 2 : null'
     );
@@ -5986,6 +5995,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Escape Artist', '+', 'source >= 10 ? 2 : null'
     );
     rules.defineRule('skillNotes.stealthy.1',
+      'features.Stealthy', '?', null,
       '', '=', '2',
       'skills.Stealth', '+', 'source >= 10 ? 2 : null'
     );
