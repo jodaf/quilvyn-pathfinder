@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.15';
+Pathfinder.VERSION = '2.2.2.16';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -423,11 +423,6 @@ Pathfinder.FEATS = {
       '"casterLevel >= 3",' +
       '"features.Armor Proficiency (Light)"',
   'Arcane Strike':'Type=Fighter Require="casterLevelArcane >= 1"',
-  'Armor Proficiency (Heavy)':
-    'Type=Fighter Require="features.Armor Proficiency (Medium)"',
-  'Armor Proficiency (Light)':'Type=Fighter',
-  'Armor Proficiency (Medium)':
-    'Type=Fighter Require="features.Armor Proficiency (Light)"',
   'Athletic':'Type=General',
   'Augment Summoning':
     'Type=General Require="features.Spell Focus (Conjuration)"',
@@ -458,9 +453,9 @@ Pathfinder.FEATS = {
   'Critical Mastery':
     'Type=Fighter ' +
     'Require=' +
-      '"level.Fighter >= 14",' +
+      '"levels.Fighter >= 14",' +
       '"features.Critical Focus",' +
-      '"Sum \'^features\\..*Critical$\' >= 2"',
+      '"sumCriticalFeats >= 2"',
   'Dazzling Display':
     'Type=Fighter Require="Sum \'^features\\.Weapon Focus\' >= 1"',
   'Deadly Aim':'Type=Fighter Require="dexterity >= 13","baseAttack >= 1"',
@@ -471,7 +466,7 @@ Pathfinder.FEATS = {
       '"features.Dazzling Display",' +
       '"Sum \'^features\\.Greater Weapon Focus\' >= 1",' +
       '"features.Shatter Defenses",' +
-      '"features.WeaponFocus"',
+      '"Sum \'^features\\.Weapon Focus\' >= 1"',
   'Deafening Critical':
     'Type=Fighter,Critical ' +
     'Require="baseAttack >= 13","features.Critical Focus"',
@@ -481,7 +476,7 @@ Pathfinder.FEATS = {
     'Type=Fighter Require="dexterity >= 13","features.Improved Unarmed Strike"',
   'Deft Hands':'Type=General',
   'Diehard':'Type=General Require="features.Endurance"',
-  'Disruptive':'Type=Fighter Require="level.Fighter >= 6"',
+  'Disruptive':'Type=Fighter Require="levels.Fighter >= 6"',
   'Dodge':'Type=Fighter Require="dexterity >= 13"',
   'Double Slice':
     'Type=Fighter Require="dexterity >= 15","features.Two-Weapon Fighting"',
@@ -563,7 +558,7 @@ Pathfinder.FEATS = {
   'Greater Penetrating Strike':
     'Type=Fighter ' +
     'Require=' +
-      '"level.Fighter >= 16",' +
+      '"levels.Fighter >= 16",' +
       '"features.Penetrating Strike",' +
       '"Sum \'^features\\.Weapon Focus\' >= 1"',
   'Greater Shield Focus':
@@ -620,6 +615,8 @@ Pathfinder.FEATS = {
       '"features.Greater Weapon Focus (%weapon)",' +
       '"features.Weapon Specialization (%weapon)",' +
       '"levels.Fighter >= 12"',
+  'Heavy Armor Proficiency':
+    'Type=Fighter Require="features.Armor Proficiency (Medium)"',
   'Heighten Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Improved Bull Rush':
     'Type=Fighter ' +
@@ -674,6 +671,7 @@ Pathfinder.FEATS = {
   'Intimidating Prowess':'Type=Fighter',
   'Iron Will':'Type=General',
   'Leadership':'Type=General Require="level >= 7"',
+  'Light Armor Proficiency':'Type=Fighter',
   'Lightning Reflexes':'Type=General',
   'Lightning Stance':
     'Type=Fighter ' +
@@ -698,6 +696,8 @@ Pathfinder.FEATS = {
   'Master Craftsman (%professionSkill)':
     'Type=General Require="skills.%professionSkill >= 5"',
   'Maximize Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Medium Armor Proficiency':
+    'Type=Fighter Require="features.Armor Proficiency (Light)"',
   "Medusa's Wrath":
     'Type=Fighter ' +
     'Require=' +
@@ -737,7 +737,7 @@ Pathfinder.FEATS = {
     'Type=Fighter Require="dexterity >= 13","features.Point-Blank Shot"',
   'Ride-By Attack':'Type=Fighter Require="features.Mounted Combat",skills.Ride',
   'Run':'Type=General',
-  'Scorpion Style':'Type=Fighter Require="Improved Unarmed Strike"',
+  'Scorpion Style':'Type=Fighter Require="features.Improved Unarmed Strike"',
   'Scribe Scroll':'Type="Item Creation",Wizard Require="casterLevel >= 1"',
   'Selective Channeling':
     'Type=General Require="charisma >= 13","features.Channel Energy"',
@@ -824,7 +824,7 @@ Pathfinder.FEATS = {
       '"features.Improved Unarmed Strike"',
   'Throw Anything':'Type=Fighter',
   'Tiring Critical':
-    'Type=Fighter,Critcial ' +
+    'Type=Fighter,Critical ' +
     'Require="baseAttack >= 13","features.Critical Focus"',
   'Toughness':'Type=General',
   'Tower Shield Proficiency':'Type=Fighter',
@@ -847,7 +847,7 @@ Pathfinder.FEATS = {
       '"baseAttack >= 1",' +
       '"strength >= 13",' +
       '"skills.Ride",' +
-      '"features.Mounted Attack",' +
+      '"features.Mounted Combat",' +
       '"features.Power Attack",' +
       '"features.Improved Bull Rush"',
   'Vital Strike':'Type=Fighter Require="baseAttack >= 6"',
@@ -880,12 +880,12 @@ Pathfinder.FEATURES = {
   // Shared with SRD35
   'A Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
   'Abundant Step':'Section=feature Note="Use 2 ki to teleport self %V\'"',
-  'Acrobatic':'Section=skill Note="+%V Acrobatics/+%V Fly"',
-  'Alertness':'Section=skill Note="+%V Perception/+%V Sense Motive"',
-  'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%V Ride"',
+  'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
+  'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
+  'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
   'Animal Companion':'Section=feature Note="Special bond and abilities"',
   'Armor Class Bonus':'Section=combat Note="+%V AC/+%V CMD"',
-  'Athletic':'Section=skill Note="+%V Climb/+%V Swim"',
+  'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
   'Augment Summoning':'Section=magic Note="Summoned creatures +4 Str, +4 Con"',
   'Aura':
     'Section=magic ' +
@@ -895,7 +895,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+%V all Knowledge, use any Knowledge untrained"',
   'Blind-Fight':
     'Section=combat ' +
-    'Note="Reroll concealed miss, no bonus to invisible foe, no skill check on blinded full speed move"',
+    'Note="Reroll concealed miss, no melee bonus to invisible foe, no skill check on blinded full speed move"',
   'Brew Potion':'Section=magic Note="Create potion for up to 3rd level spell"',
   'Camouflage':'Section=skill Note="Hide in favored terrain"',
   'Cleave':'Section=combat Note="-2 AC for attack against two foes"',
@@ -923,12 +923,12 @@ Pathfinder.FEATURES = {
     'Section=combat Note="2 points Str damage from sneak attack"',
   'Damage Reduction':'Section=combat Note="Negate %V HP each attack"',
   'Darkvision':'Section=feature Note="60\' b/w vision in darkness"',
-  'Deceitful':'Section=skill Note="+%V Bluff/+%V Disguise"',
+  'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
   'Defensive Roll':
     'Section=combat ' +
     'Note="DC damage Reflex save vs. lethal blow for half damage"',
   'Deflect Arrows':'Section=combat Note="No damage from ranged hit 1/rd"',
-  'Deft Hands':'Section=skill Note="+%V Disable Device/+%V Sleight Of Hand"',
+  'Deft Hands':'Section=skill Note="+%V Disable Device/+%1 Sleight Of Hand"',
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="Deliver touch spells if in contact w/master when cast"',
@@ -995,6 +995,10 @@ Pathfinder.FEATURES = {
     'Section=magic Note="+2 caster level vs. resistance checks"',
   'Greater Two-Weapon Fighting':
     'Section=combat Note="Third off-hand -10 attack"',
+  'Greater Weapon Focus (%weapon)':
+    'Section=combat Note="+1 %weapon Attack Modifier"',
+  'Greater Weapon Specialization (%weapon)':
+    'Section=combat Note="+2 %weapon Damage Modifier"',
   'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
   'Halfling Luck':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Heighten Spell':'Section=magic Note="Increase chosen spell level"',
@@ -1034,6 +1038,9 @@ Pathfinder.FEATURES = {
   'Improved Uncanny Dodge':
     'Section=combat ' +
     'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
+  'Improvised Weapon Mastery':
+    'Section=combat ' +
+    'Note="No penalty for improvised weapon, improvised damage +1 step, crit x2@19"',
   'Increased Damage Reduction':
     'Section=combat Note="Negate additional %V HP each attack during rage"',
   'Increased Unarmed Damage':'Section=combat Note="%V"',
@@ -1066,7 +1073,7 @@ Pathfinder.FEATURES = {
   'Low-Light Vision':'Section=feature Note="x2 normal distance in poor light"',
   'Low-Light Rage':
     'Section=feature Note="x2 normal distance in poor light during rage"',
-  'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%V Use Magic Device"',
+  'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%1 Use Magic Device"',
   'Manyshot':'Section=combat Note="Fire 2 arrows simultaneously"',
   'Mass Suggestion':
     'Section=magic ' +
@@ -1088,7 +1095,7 @@ Pathfinder.FEATURES = {
   'Perfect Self':
     'Section=combat,save ' +
     'Note="DR 10/chaotic","Treat as outsider for magic saves"',
-  'Persuasive':'Section=skill Note="+%V Diplomacy/+%V Intimidate"',
+  'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
   'Point-Blank Shot':
     'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
   'Power Attack':
@@ -1127,7 +1134,7 @@ Pathfinder.FEATURES = {
          '"+2 Spellcraft (%school effects)"',
   'Scribe Scroll':'Section=magic Note="Create scroll of any known spell"',
   'Scry':'Section=companion Note="Master views companion 1/dy"',
-  'Self-Sufficient':'Section=skill Note="+%V Heal/+%V Survival"',
+  'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
   'Share Saving Throws':'Section=companion Note="+%1 Fort/+%2 Ref/+%3 Will"',
   'Share Spells':
     'Section=companion Note="Master share self spell w/companion w/in 5\'"',
@@ -1171,14 +1178,14 @@ Pathfinder.FEATURES = {
     'Note="Cast <i>Summon Nature\'s Ally</i> in place of known spell"',
   'Spring Attack':'Section=combat Note="Move before, after melee attack"',
   'Stability':'Section=combat Note="+4 CMD vs. Bull Rush and Trip"',
-  'Stealthy':'Section=skill Note="+%V Escape Artist/+%V Stealth"',
+  'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
   'Still Mind':'Section=save Note="+2 vs. enchantment"',
   'Still Spell':
     'Section=magic Note="Cast spell w/out movement uses +1 spell slot"',
   'Stonecunning':
     'Section=skill Note="+2 Perception (stone), automatic check w/in 10\'"',
   'Stunning Fist':
-    'Section=combat Note="Struck foe stunned %V/dy (DC %1 Fort neg)"',
+    'Section=combat Note="Struck foe stunned 1 rd %V/dy (DC %1 Fort neg)"',
   'Suggestion':
     'Section=magic ' +
     'Note="<i>Suggestion</i> to 1 fascinated creature (DC %V neg)"',
@@ -1209,6 +1216,9 @@ Pathfinder.FEATURES = {
   'Weapon Finesse':
     'Section=combat ' +
     'Note="+%V light melee weapon attack (dex instead of str)"',
+  'Weapon Focus (%weapon)':'Section=combat Note="+1 %weapon Attack Modifier"',
+  'Weapon Specialization (%weapon)':
+    'Section=combat Note="+2 %weapon Damage Modifier"',
   'Whirlwind Attack':'Section=combat Note="Attack all foes in reach"',
   'Wholeness Of Body':'Section=magic Note="Use 2 ki to heal %V HP to self"',
   'Widen Spell':'Section=magic Note="x2 area of affect uses +3 spell slot"',
@@ -1371,7 +1381,7 @@ Pathfinder.FEATURES = {
   'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
   'Catch Off-Guard':
     'Section=combat ' +
-    'Note="No penalty for improvised weapon, unarmed opponents flat-footed"',
+    'Note="No penalty for improvised melee weapon, unarmed opponents flat-footed"',
   'Celestial Resistances':'Section=save Note="%V acid and cold"',
   'Change Shape':
     'Section=magic ' +
@@ -1403,7 +1413,8 @@ Pathfinder.FEATURES = {
   'Cold Resistance':'Section=save Note="%V"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
-    'Section=combat Note="R30\' Control undead (%V DC Will neg)"',
+    'Section=combat ' +
+    'Note="R30\' Channel Energy to control undead (%V DC Will neg)"',
   'Companion Bond':
     'Section=combat Note="R30\' Half favored enemy bonus to allies for %V rd"',
   'Comparative Religion':
@@ -1417,7 +1428,7 @@ Pathfinder.FEATURES = {
   'Copycat':'Section=magic Note="<i>Mirror Image</i> %V rd %1/dy"',
   'Corrupting Touch':'Section=magic Note="Touch causes shaken %V rd %1/dy"',
   'Courageous':'Section=save Note="+2 vs. fear"',
-  'Critical Focus':'Section=combat Note="+4 attack on critical hits"',
+  'Critical Focus':'Section=combat Note="+4 confirm critical"',
   'Critical Mastery':'Section=combat Note="Apply two effects to critical hits"',
   'Dancing Weapons':
     'Section=combat Note="Add <i>dancing</i> to weapon 4 rd %V/dy"',
@@ -1429,11 +1440,11 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="R30\' Intimidate to demoralize foes using focused weapon"',
   'Deadly Aim':
-    'Section=combat Note="-%V attack and +%1 damage on ranged attacks"',
+    'Section=combat Note="Trade up to -%V ranged attack for +%1 damage"',
   'Deadly Performance':'Section=magic Note="Target killed (DC %V Will neg)"',
   'Deadly Stroke':
     'Section=combat ' +
-    'Note="x2 damage and 1 point Con bleed against stunned or flat-footed foe"',
+    'Note="x2 damage and 1 point Con bleed w/focused weapon against stunned or flat-footed foe"',
   'Deafening Critical':
     'Section=combat ' +
     'Note="Critical hit causes permanent deafness (DC %V Fort 1 rd)"',
@@ -1620,7 +1631,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="+2 disarm checks, disarmed weapons land 15\' away"',
   'Greater Feint':'Section=combat Note="Feinted foe loses Dex bonus 1 rd"',
   'Greater Grapple':
-    'Section=combat Note="+2 grapple checks, grapple is move action"',
+    'Section=combat Note="+2 grapple checks, maintain grapple as move action"',
   'Greater Overrun':
     'Section=combat Note="+2 overrun checks, AOO on overrun foes"',
   'Greater Penetrating Strike':
@@ -1741,7 +1752,7 @@ Pathfinder.FEATURES = {
     'Note="+1 caster level on 3 spells",' +
          '"+1 Knowledge (Arcana)/Knowledge (Arcana) is a class skill"',
   'Loyalty':'Section=save Note="+1 vs. enchantment"',
-  'Lunge':'Section=combat Note="-2 AC to increase melee range 5\'"',
+  'Lunge':'Section=combat Note="Trade -2 AC for +5\' melee range"',
   'Magic Claws':'Section=combat Note="Claws are magical weapon"',
   'Magic Is Life':
     'Section=save ' +
@@ -1942,7 +1953,7 @@ Pathfinder.FEATURES = {
   'Shield Slam':'Section=combat Note="Shield Bash includes Bull Rush"',
   'Shiv':'Section=combat Note="+1 surprise piercing and slashing damage"',
   'Sickening Critical':
-    'Section=combat Note="Critical hit causes foe sickening"',
+    'Section=combat Note="Critical hit causes foe sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
   'Skilled':'Section=skill Note="+%V Skill Points"',
   'Slow Reactions':'Section=combat Note="Sneak attack target no AOO 1 rd"',
@@ -1967,7 +1978,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Add <i>axiomatic</i> to weapon %1 rd %V/dy"',
   'Staggering Critical':
     'Section=combat ' +
-    'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort negates)"',
+    'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort 1 rd)"',
   'Stand Still':'Section=combat Note="CMB check to halt foe movement"',
   'Stand Up':'Section=combat Note="Stand from prone as free action"',
   'Starchild':
@@ -1985,7 +1996,8 @@ Pathfinder.FEATURES = {
   'Strength Surge Touch':
     'Section=magic ' +
     'Note="Touch imparts +%V melee attack and Str check bonus %1/dy"',
-  'Strike Back':'Section=combat Note="Attack attackers beyond reach"',
+  'Strike Back':
+    'Section=combat Note="Ready melee attack against any foe that attacks you"',
   'Stunning Critical':
     'Section=combat Note="Critical hit stuns 1d4 rd (DC %V Fort staggered)"',
   "Summoner's Charm":'Section=magic Note="Summon duration increased %V rd"',
@@ -2014,7 +2026,7 @@ Pathfinder.FEATURES = {
     'Section=ability,combat ' +
     'Note="+2 Con vs. nonlethal exertion and environment",' +
          '"+1 HP"',
-  'Tiring Critical':'Section=combat Note="Critical hit tires foe"',
+  'Tiring Critical':'Section=combat Note="Critical hit fatigues foe"',
   'Tomb Raider':
     'Section=skill ' +
     'Note="+1 Knowledge (Dungeoneering)/+1 Perception/choice is a class skill"',
@@ -5763,7 +5775,12 @@ Pathfinder.featRulesExtra = function(rules, name) {
 
   if(name == 'Acrobatic') {
     rules.defineRule('skillNotes.acrobatic',
-      'skills.Acrobatics', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Acrobatics', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.acrobatic.1',
+      '', '=', '2',
+      'skills.Fly', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Agile Maneuvers') {
     rules.defineRule('combatNotes.agileManeuvers',
@@ -5772,14 +5789,22 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Alertness') {
     rules.defineRule('skillNotes.alertness',
-      'skills.Perception', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Perception', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.alertness.1',
+      '', '=', '2',
+      'skills.Sense Motive', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Animal Affinity') {
     rules.defineRule('skillNotes.animalAffinity',
-      'skills.Handle Animal', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Handle Animal', '+', 'source >= 10 ? 2 : null'
     );
-    rules.defineRule
-      ('skillNotes.animalAffinity', 'skills.Ride', '=', 'source >= 10 ? 4 : 2');
+    rules.defineRule('skillNotes.animalAffinity.1',
+      '', '=', '2',
+      'skills.Ride', '+', 'source >= 10 ? 2 : null'
+    );
   } else if(name == 'Arcane Armor Mastery') {
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.arcaneArmorMastery', '+', '-10',
@@ -5795,8 +5820,14 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'casterLevelArcane', '=', 'Math.floor((source + 4) / 5)'
     );
   } else if(name == 'Athletic') {
-    rules.defineRule
-      ('skillNotes.athletic', 'skills.Climb', '=', 'source >= 10 ? 4 : 2');
+    rules.defineRule('skillNotes.athletic',
+      '', '=', '2',
+      'skills.Climb', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.athletic.1',
+      '', '=', '2',
+      'skills.Swim', '+', 'source >= 10 ? 2 : null'
+    );
   } else if(name == 'Blinding Critical') {
     rules.defineRule
       ('combatNotes.blindingCritical', 'baseAttack', '=', '10 + source');
@@ -5825,8 +5856,12 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('combatNotes.deafeningCritical', 'baseAttack', '=', '10 + source');
   } else if(name == 'Deceitful') {
     rules.defineRule('skillNotes.deceitful',
-      'skills.Bluff', '=', 'source >= 10 ? 4 : 2',
-      'skills.Disguise', '^=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Bluff', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.deceitful.1',
+      '', '=', '2',
+      'skills.Disguise', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Defensive Combat Training') {
     rules.defineRule('combatNotes.defensiveCombatTraining',
@@ -5835,7 +5870,12 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Deft Hands') {
     rules.defineRule('skillNotes.deftHands',
-      'skills.Disable Device', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Disable Device', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.deftHands.1',
+      '', '=', '2',
+      'skills.Sleight Of Hands', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Extra Channel') {
     rules.defineRule
@@ -5889,11 +5929,21 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('skillNotes.intimidatingProwess', 'strengthModifier', '=', null);
   } else if(name == 'Magical Aptitude') {
     rules.defineRule('skillNotes.magicalAptitude',
-      'skills.Spellcraft', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Spellcraft', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.magicalAptitude.1',
+      '', '=', '2',
+      'skills.Use Magic Device', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Persuasive') {
     rules.defineRule('skillNotes.persuasive',
-      'skills.Diplomacy', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Diplomacy', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.persuasive.1',
+      '', '=', '2',
+      'skills.Intimidate', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Power Attack') {
     rules.defineRule('combatNotes.powerAttack',
@@ -5908,10 +5958,15 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Selective Channeling') {
     rules.defineRule
-      ('magicNotes.selectiveChanneling', 'wisdomModifier', '=', null);
+      ('magicNotes.selectiveChanneling', 'charismaModifier', '=', null);
   } else if(name == 'Self-Sufficient') {
     rules.defineRule('skillNotes.self-Sufficient',
-      'skills.Heal', '=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Heal', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.self-Sufficient.1',
+      '', '=', '2',
+      'skills.Survival', '+', 'source >= 10 ? 2 : null'
     );
   } else if((matchInfo = name.match(/^Skill\sFocus\s\((.*)\)$/)) != null) {
     var skill = matchInfo[1];
@@ -5927,8 +5982,12 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('combatNotes.staggeringCritical', 'baseAttack', '=', '10 + source');
   } else if(name == 'Stealthy') {
     rules.defineRule('skillNotes.stealthy',
-      'skills.Escape Artist', '=', 'source >= 10 ? 4 : 2',
-      'skills.Stealth', '^=', 'source >= 10 ? 4 : 2'
+      '', '=', '2',
+      'skills.Escape Artist', '+', 'source >= 10 ? 2 : null'
+    );
+    rules.defineRule('skillNotes.stealthy.1',
+      '', '=', '2',
+      'skills.Stealth', '+', 'source >= 10 ? 2 : null'
     );
   } else if(name == 'Stunning Critical') {
     rules.defineRule
@@ -5965,6 +6024,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if((matchInfo = name.match(/^(Exotic|Martial)\sWeapon\sProficiency.\((.*)\)$/)) != null) {
     rules.defineRule('features.Weapon Proficiency (' + matchInfo[2] + ')',
+      'features.' + name, '=', '1'
+    );
+  } else if((matchInfo = name.match(/^(Heavy|Medium|Light)\sArmor\sProficiency.\((.*)\)$/)) != null) {
+    rules.defineRule('features.Armor Proficiency (' + matchInfo[2] + ')',
       'features.' + name, '=', '1'
     );
   }
