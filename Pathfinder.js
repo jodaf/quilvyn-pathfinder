@@ -1790,8 +1790,7 @@ Pathfinder.FEATURES = {
          '"+2 Heal (disease, poison)"',
   "Medusa's Wrath":
     'Section=combat Note="2 extra unarmed attacks vs. diminished-capacity foe"',
-  'Mercy':
-    'Section=magic Note="Lay on hands removes %V additional conditions: %1"',
+  'Mercy':'Section=magic Note="Lay On Hands removes condition(s) %V"',
   'Meridian Strike':'Section=combat Note="Reroll crit damage 1s 1/dy"',
   'Metamagic Adept':
     'Section=magic ' +
@@ -5189,8 +5188,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
     )
-    rules.defineRule
-      ('magicNotes.mercy', 'levels.Paladin', '=', 'Math.floor(source / 3)');
     rules.defineRule('magicNotes.removeDisease',
       'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
     );
@@ -5200,12 +5197,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     var mercies =
       QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Mercy/).map(x => x.replace(/^.*Mercy/, 'Mercy'));
-    rules.defineRule('magicNotes.mercy.1',
-      'levels.Paladin', '=', '(Pathfinder.merciesTaken = []).length'
+    // Rule used only for its side-effect
+    rules.defineRule('magicNotes.mercy',
+      'levels.Paladin', '=', '(Pathfinder.merciesTaken = []) ? null : null'
     );
     for(var i = 0; i < mercies.length; i++) {
       var mercy = mercies[i];
-      rules.defineRule('magicNotes.mercy.1',
+      rules.defineRule('magicNotes.mercy',
         'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.join(", ") : ""'
       );
     }
@@ -5900,7 +5898,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', null)
   } else if(name == 'Extra Mercy') {
     rules.defineRule('magicNotes.extraMercy', 'feats.Extra Mercy', '=', null);
-    rules.defineRule('magicNotes.mercy', 'magicNotes.extraMercy', '+', null);
     rules.defineRule
       ('selectableFeatureCount.Paladin', 'magicNotes.extraMercy', '+', null);
   } else if(name == 'Extra Performance') {
