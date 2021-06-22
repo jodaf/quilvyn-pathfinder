@@ -6036,8 +6036,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('features.Weapon Proficiency (' + matchInfo[2] + ')',
       'features.' + name, '=', '1'
     );
-  } else if((matchInfo = name.match(/^(Heavy|Medium|Light)\sArmor\sProficiency.\((.*)\)$/)) != null) {
-    rules.defineRule('features.Armor Proficiency (' + matchInfo[2] + ')',
+  } else if((matchInfo = name.match(/^(Heavy|Medium|Light)\sArmor\sProficiency$/)) != null) {
+    rules.defineRule('features.Armor Proficiency (' + matchInfo[1] + ')',
       'features.' + name, '=', '1'
     );
   }
