@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.16';
+Pathfinder.VERSION = '2.2.2.17';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -2786,11 +2786,11 @@ Pathfinder.SKILLS = {
   'Bluff':'Ability=charisma Class=Bard,Rogue,Sorcerer',
   'Climb':
     'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
-  'Craft (Alchemy)':'Ability=intelligence Class=all',
-  'Craft (Armor)':'Ability=intelligence Class=all',
-  'Craft (Bows)':'Ability=intelligence Class=all',
-  'Craft (Traps)':'Ability=intelligence Class=all',
-  'Craft (Weapons)':'Ability=intelligence Class=all',
+  'Craft (Alchemy)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Armor)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Bows)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Traps)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Weapons)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Diplomacy':'Ability=charisma Class=Bard,Cleric,Paladin,Rogue',
   'Disable Device':'Ability=dexterity Untrained=n Class=Rogue',
   'Disguise':'Ability=charisma Class=Bard,Rogue',
@@ -4134,7 +4134,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Skills=' +
-      'Appraise,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
+      'Acrobatics,Appraise,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
       '"Escape Artist",Knowledge,Perception,"Sense Motive","Sleight Of Hand",' +
       'Spellcraft,Stealth,Swim ' +
     'Features=' +
