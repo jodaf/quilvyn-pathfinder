@@ -3484,7 +3484,7 @@ Pathfinder.SPELLS = {
   'Breath Of Life':
     'School=Conjuration ' +
     'Level=C5,Healing5 ' +
-    'Description="Heal 5d8+$L (max 25) plus resurrect target dead lt 1 rd"',
+    'Description="Heal 5d8+$L (max 25) plus resurrect target dead less than 1 rd"',
   'Elemental Body I':
     'School=Transmutation ' +
     'Level=Elemental4,W4 ' +
