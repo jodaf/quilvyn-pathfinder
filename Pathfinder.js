@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.17';
+Pathfinder.VERSION = '2.2.2.18';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -2214,15 +2214,20 @@ Pathfinder.FEATURES = {
   'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
   'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
   'Seeker Arrow':'Section=combat Note="Arrow maneuvers to target %V/dy"',
-  'Shadow Call':'Section=magic Note="<i>Shadow Conjuration</i> %V/dy"',
-  'Shadow Illusion':'Section=magic Note="<i>Silent Image</i> %V/dy"',
-  'Shadow Jump':
-    'Section=magic Note="<i>Dimension Door</i> between shadows %V\'/dy"',
+  'Shadow Call':
+    'Section=magic ' +
+    'Note="Mimics conjuration (creation or summoning) spell up to %1 level (DC %2 Will 20% effect) %V/dy"',
+  'Shadow Illusion':
+    'Section=magic ' +
+    'Note="R%{levels.Shadowdancer*40+400}\' %{levels.Shadowdancer*10+40}\' cu image (DC %{11+charismaModifier} Will disbelieve) for conc %V/dy"',
+  'Shadow Jump':'Section=magic Note="Teleport between shadows %V\'/dy"',
   'Shadow Master':
     'Section=combat,save ' +
     'Note="DR 10/-, critical hit blinds d6 rd in dim light",' +
          '"+2 saves in dim light"',
-  'Shadow Power':'Section=magic Note="<i>Shadow Evocation</i> %V/dy"',
+  'Shadow Power':
+    'Section=magic ' +
+    'Note="Mimics evocation spell up to 4rd level (DC %{15+charismaModifier} Will 20% effect) %V/dy"',
   'Spell Critical':'Section=magic Note="Cast swift spell after critical hit"',
   'Spell Synthesis':
     'Section=magic ' +
@@ -2986,7 +2991,7 @@ Pathfinder.SPELLS = {
   'Detect Thoughts':'Level=B2,Knowledge2,W2',
   'Detect Undead':'Level=C1,P1,Rogue1,W1',
   'Dictum':'Level=C7,Law7',
-  'Dimension Door':'Level=Arcane4,B4,Shadowdancer4,Travel4,W4',
+  'Dimension Door':'Level=Arcane4,B4,Travel4,W4',
   'Dimensional Anchor':'Level=C4,W4',
   'Dimensional Lock':'Level=C8,W8',
   'Diminish Plants':'Level=D3,R3',
@@ -3087,7 +3092,7 @@ Pathfinder.SPELLS = {
   'Greater Prying Eyes':'Level=W8',
   'Greater Restoration':'Level=C7',
   'Greater Scrying':'Level=B6,C7,D7,W7',
-  'Greater Shadow Conjuration':'Level=Shadowdancer7,W7',
+  'Greater Shadow Conjuration':'Level=W7',
   'Greater Shadow Evocation':'Level=Darkness8,W8',
   'Greater Shout':'Level=B6,W8',
   'Greater Spell Immunity':'Level=C8',
@@ -3322,8 +3327,8 @@ Pathfinder.SPELLS = {
   'Sepia Snake Sigil':'Level=B3,W3',
   'Sequester':'Level=W7',
   'Shades':'Level=Darkness9,W9',
-  'Shadow Conjuration':'Level=B4,Darkness4,Shadowdancer4,W4',
-  'Shadow Evocation':'Level=B5,Shadowdancer5,W5',
+  'Shadow Conjuration':'Level=B4,Darkness4,W4',
+  'Shadow Evocation':'Level=B5,W5',
   'Shadow Walk':'Level=B5,Darkness6,W6',
   'Shambler':'Level=D9,Plant9',
   'Shapechange':'Level=Aberrant9,Animal9,D9,Fey9,W9',
@@ -3337,7 +3342,7 @@ Pathfinder.SPELLS = {
   'Shout':'Level=B4,Destruction5,W4',
   'Shrink Item':'Level=W3',
   'Silence':'Level=B2,C2',
-  'Silent Image':'Level=B1,Rogue1,Shadowdancer1,W1',
+  'Silent Image':'Level=B1,Rogue1,W1',
   'Simulacrum':'Level=W7',
   'Slay Living':'Level=C5,Death5,Repose5',
   'Sleep':'Level=Adept1,B1,Rogue1,W1',
@@ -4263,14 +4268,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"3:Stand Up","3:Surprise Attack","3:Trap Spotter",' +
       '"3:Rogue Weapon Training","3:Crippling Strike","3:Defensive Roll",' +
       '"3:Dispelling Attack","3:Feat Bonus","3:Improved Evasion",' +
-      '3:Opportunist,"3:Skill Mastery","3:Slippery Mind" ' +
-    'CasterLevelArcane=levels.Shadowdancer ' +
-    'SpellAbility=charisma ' +
-    'SpellSlots=' +
-      'Shadowdancer1:3=1,' +
-      'Shadowdancer4:4=2,' +
-      'Shadowdancer5:8=1,' +
-      'Shadowdancer7:10=1'
+      '3:Opportunist,"3:Skill Mastery","3:Slippery Mind"'
 };
 
 Pathfinder.SRD35_SKILL_MAP = {
@@ -5653,6 +5651,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.shadowCall',
       'levels.Shadowdancer', '=', 'Math.floor(source / 2) - 1'
+    );
+    rules.defineRule('magicNotes.shadowCall.1',
+      'levels.Shadowdancer', '=', 'source<10 ? "3rd" : "6th"'
+    );
+    rules.defineRule('magicNotes.shadowCall.2',
+      'levels.Shadowdancer', '=', 'source<10 ? 14 : 17',
+      'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.shadowIllusion',
       'levels.Shadowdancer', '=', 'Math.floor(source / 2)'
