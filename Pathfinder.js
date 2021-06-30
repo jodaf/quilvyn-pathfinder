@@ -4365,7 +4365,7 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
   );
   // Rules for advanced companions
   rules.defineRule('companionMasterLevelsUntilAdvance',
-    'animalCompanionStats.Adv', '=', null,
+    'animalCompanionStats.Advance Level', '=', null,
     'companionMasterLevel', '+', '-source'
   );
   rules.defineRule('animalCompanionStats.AC',
@@ -5707,7 +5707,7 @@ Pathfinder.companionRules = function(
   if(name.startsWith('Advanced ') && level) {
     var name = name.replace('Advanced ', '');
     rules.defineRule
-      ('animalCompanionStats.Adv', 'animalCompanion.' + name, '=', level);
+      ('animalCompanionStats.Advance Level', 'animalCompanion.' + name, '=', level);
   }
 };
 
