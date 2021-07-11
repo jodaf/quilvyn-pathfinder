@@ -4044,7 +4044,7 @@ Pathfinder.CLASSES = {
       '"1:Bloodline Elemental (Air):Bloodline",' +
       '"1:Bloodline Elemental (Earth):Bloodline",' +
       '"1:Bloodline Elemental (Fire):Bloodline",' +
-      '"1:Bloodline Elemental (Water:Bloodline)",' +
+      '"1:Bloodline Elemental (Water):Bloodline",' +
       '"1:Bloodline Fey:Bloodline",' +
       '"1:Bloodline Infernal:Bloodline",' +
       '"1:Bloodline Undead:Bloodline",' +
