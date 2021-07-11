@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.18';
+Pathfinder.VERSION = '2.2.2.19';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -3945,13 +3945,15 @@ Pathfinder.CLASSES = {
       '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
       '"20:Holy Champion" ' +
     'Selectables=' +
-      '"3:Mercy (Fatigued)","3:Mercy (Shaken)","3:Mercy (Sickened)",' +
-      '"features.Divine Weapon == 0 ? 5:Divine Mount",' +
-      '"features.Divine Mount == 0 ? 5:Divine Weapon",' +
-      '"6:Mercy (Dazed)","6:Mercy (Diseased)","6:Mercy (Staggered)",' +
-      '"9:Mercy (Cursed)","9:Mercy (Exhausted)","9:Mercy (Frightened)",' +
-      '"9:Mercy (Nauseated)","9:Mercy (Poisoned)","12:Mercy (Blinded)",' +
-      '"12:Mercy (Deafened)","12:Mercy (Paralyzed)","12:Mercy (Stunned)" ' +
+      '"5:Divine Mount:Divine Bond","5:Divine Weapon:Divine Bond",' +
+      '"3:Mercy (Fatigued):Mercy","3:Mercy (Shaken):Mercy",' +
+      '"3:Mercy (Sickened):Mercy","6:Mercy (Dazed):Mercy",' +
+      '"6:Mercy (Diseased):Mercy","6:Mercy (Staggered):Mercy",' +
+      '"9:Mercy (Cursed):Mercy","9:Mercy (Exhausted):Mercy",' +
+      '"9:Mercy (Frightened):Mercy","9:Mercy (Nauseated):Mercy",' +
+      '"9:Mercy (Poisoned):Mercy","12:Mercy (Blinded):Mercy",' +
+      '"12:Mercy (Deafened):Mercy","12:Mercy (Paralyzed):Mercy",' +
+      '"12:Mercy (Stunned):Mercy" ' +
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -3969,24 +3971,25 @@ Pathfinder.CLASSES = {
       '11:Quarry,12:Camouflage,"16:Improved Evasion",' +
       '"17:Hide In Plain Sight","19:Improved Quarry","20:Master Hunter" ' +
     'Selectables=' +
-      '"2:Combat Style (Archery)","2:Combat Style (Two-Weapon Combat)",' +
-      '"4:Animal Companion","4:Companion Bond",' +
-      '"features.Combat Style (Archery) ? 2:Far Shot",' +
-      '"features.Combat Style (Archery) ? 2:Point-Blank Shot",' +
-      '"features.Combat Style (Archery) ? 2:Precise Shot",' +
-      '"features.Combat Style (Archery) ? 2:Rapid Shot",' +
-      '"features.Combat Style (Archery) ? 6:Improved Precise Shot",' +
-      '"features.Combat Style (Archery) ? 6:Manyshot",' +
-      '"features.Combat Style (Archery) ? 10:Pinpoint Targeting",' +
-      '"features.Combat Style (Archery) ? 10:Shot On The Run",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 2:Double Slice",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 2:Improved Shield Bash",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 2:Quick Draw",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 2:Two-Weapon Fighting",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 6:Improved Two-Weapon Fighting",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 6:Two-Weapon Defense",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 10:Greater Two-Weapon Fighting",' +
-      '"features.Combat Style (Two-Weapon Combat) ? 10:Two-Weapon Rend" ' +
+      '"2:Combat Style (Archery):Combat Style",' +
+      '"2:Combat Style (Two-Weapon Combat):Combat Style",' +
+      '"4:Animal Companion:Hunter\'s Bond","4:Companion Bond:Hunter\'s Bond",' +
+      '"2:Far Shot:Archery Feat",' +
+      '"2:Point-Blank Shot:Archery Feat",' +
+      '"2:Precise Shot:Archery Feat",' +
+      '"2:Rapid Shot:Archery Feat",' +
+      '"6:Improved Precise Shot:Archery Feat",' +
+      '"6:Manyshot:Archery Feat",' +
+      '"10:Pinpoint Targeting:Archery Feat",' +
+      '"10:Shot On The Run:Archery Feat",' +
+      '"2:Double Slice:Two-Weapon Feat",' +
+      '"2:Improved Shield Bash:Two-Weapon Feat",' +
+      '"2:Quick Draw:Two-Weapon Feat",' +
+      '"2:Two-Weapon Fighting:Two-Weapon Feat",' +
+      '"6:Improved Two-Weapon Fighting:Two-Weapon Feat",' +
+      '"6:Two-Weapon Defense:Two-Weapon Feat",' +
+      '"10:Greater Two-Weapon Fighting:Two-Weapon Feat",' +
+      '"10:Two-Weapon Rend:Two-Weapon Feat" ' +
     'CasterLevelDivine="levels.Ranger >= 4 ? levels.Ranger - 3 : null" ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
@@ -4023,18 +4026,30 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Simple)",' +
       '"1:Eschew Materials" ' +
     'Selectables=' +
-      '"1:Bloodline Aberrant","1:Bloodline Abyssal","1:Bloodline Arcane",' +
-      '"1:Bloodline Celestial","1:Bloodline Destined",' +
-      '"1:Bloodline Draconic (Black)","1:Bloodline Draconic (Blue)",' +
-      '"1:Bloodline Draconic (Green)","1:Bloodline Draconic (Red)",' +
-      '"1:Bloodline Draconic (White)","1:Bloodline Draconic (Brass)",' +
-      '"1:Bloodline Draconic (Bronze)","1:Bloodline Draconic (Copper)",' +
-      '"1:Bloodline Draconic (Gold)","1:Bloodline Draconic (Silver)",' +
-      '"1:Bloodline Elemental (Air)","1:Bloodline Elemental (Earth)",' +
-      '"1:Bloodline Elemental (Fire)","1:Bloodline Elemental (Water)",' +
-      '"1:Bloodline Fey","1:Bloodline Infernal","1:Bloodline Undead",' +
-      '"features.Bloodline Arcane ? 1:Bonded Object",' +
-      '"features.Bloodline Arcane ? 1:Familiar" ' +
+      '"1:Bloodline Aberrant:Bloodline",' +
+      '"1:Bloodline Abyssal:Bloodline",' +
+      '"1:Bloodline Arcane:Bloodline",' +
+      '"1:Bloodline Celestial:Bloodline",' +
+      '"1:Bloodline Destined:Bloodline",' +
+      '"1:Bloodline Draconic (Black):Bloodline",' +
+      '"1:Bloodline Draconic (Blue):Bloodline",' +
+      '"1:Bloodline Draconic (Green):Bloodline",' +
+      '"1:Bloodline Draconic (Red):Bloodline",' +
+      '"1:Bloodline Draconic (White):Bloodline",' +
+      '"1:Bloodline Draconic (Brass):Bloodline",' +
+      '"1:Bloodline Draconic (Bronze):Bloodline",' +
+      '"1:Bloodline Draconic (Copper):Bloodline",' +
+      '"1:Bloodline Draconic (Gold):Bloodline",' +
+      '"1:Bloodline Draconic (Silver):Bloodline",' +
+      '"1:Bloodline Elemental (Air):Bloodline",' +
+      '"1:Bloodline Elemental (Earth):Bloodline",' +
+      '"1:Bloodline Elemental (Fire):Bloodline",' +
+      '"1:Bloodline Elemental (Water:Bloodline)",' +
+      '"1:Bloodline Fey:Bloodline",' +
+      '"1:Bloodline Infernal:Bloodline",' +
+      '"1:Bloodline Undead:Bloodline",' +
+      '"1:Bonded Object:Arcane Bond",' +
+      '"1:Familiar:Arcane Bond" ' +
     'CasterLevelArcane=levels.Sorcerer ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -4055,9 +4070,10 @@ Pathfinder.CLASSES = {
       '"features.School Specialization (None) ? 1:Hand Of The Apprentice",' +
       '"features.School Specialization (None) ? 8:Metamagic Mastery" ' +
     'Selectables=' +
-      '"1:Bonded Object","1:Familiar","1:School Specialization (None)",'+
-      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + x + ')"').join(',') + ',' +
-      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Opposition (' + x + ')"').join(',') + ' ' +
+      '"1:Bonded Object:Arcane Bond","1:Familiar:Arcane Bond",' +
+      '"1:School Specialization (None):Specialization",'+
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',') + ',' +
+      QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Opposition (' + x + '):Opposition"').join(',') + ' ' +
     'CasterLevelArcane=levels.Wizard ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
@@ -5190,8 +5206,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
     );
     rules.defineRule('saveNotes.divineGrace', 'charismaModifier', '=', null);
-    rules.defineRule('selectableFeatureCount.Paladin',
-      'levels.Paladin', '+=', 'Math.floor(source / 3) + (source>=5 ? 1 : null)'
+    rules.defineRule('selectableFeatureCount.Paladin (Divine Bond)',
+      'levels.Paladin', '=', 'source >= 5 ? 1 : null'
+    );
+    rules.defineRule('selectableFeatureCount.Paladin (Mercy)',
+      'levels.Paladin', '=', 'Math.floor(source / 3)'
     );
     var mercies =
       QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Mercy/).map(x => x.replace(/^.*Mercy/, 'Mercy'));
@@ -5229,9 +5248,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'rangerFeatures.Animal Companion', '?', null,
       'levels.Ranger', '+=', 'source - 3'
     );
-    rules.defineRule('selectableFeatureCount.Ranger',
-      'levels.Ranger', '=',
-      'source >= 2 ? Math.floor((source+6) / 4) + (source >= 4 ? 1 : 0) : null'
+    rules.defineRule('selectableFeatureCount.Ranger (Archery Feat)',
+      'features.Combat Style (Archery)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Combat Style)',
+      'levels.Ranger', '=', 'source >= 2 ? 1 : null'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Hunter's Bond)",
+      'levels.Ranger', '=', 'source >= 4 ? 1 : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Two-Weapon Feat)',
+      'features.Combat Style (Two-Weapon Combat)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
     );
     rules.defineRule('skillNotes.favoredEnemy',
       'levels.Ranger', '+=', '1 + Math.floor(source / 5)'
@@ -5305,8 +5334,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Sorcerer') {
 
-    rules.defineRule
-      ('selectableFeatureCount.Sorcerer', 'levels.Sorcerer', '=', '1');
+    rules.defineRule('selectableFeatureCount.Sorcerer (Bloodline)',
+      'levels.Sorcerer', '=', '1'
+    );
     rules.defineRule('casterLevels.S', 'casterLevels.Sorcerer', '^=', null);
     rules.defineRule('spellDifficultyClass.S',
       'casterLevels.S', '?', null,
@@ -5323,13 +5353,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featCount.Wizard',
       'levels.Wizard', '=', 'source >= 5 ? Math.floor(source / 5) : null'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Wizard', 'levels.Wizard', '=', '2');
+    rules.defineRule('selectableFeatureCount.Wizard (Arcane Bond)',
+      'levels.Wizard', '=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Wizard (Specialization)',
+      'levels.Wizard', '=', '1'
+    );
 
     var schools = rules.getChoices('schools');
     for(var school in schools) {
-      rules.defineRule('selectableFeatureCount.Wizard',
-        'wizardFeatures.School Specialization (' + school + ')', '+', '2'
+      rules.defineRule('selectableFeatureCount.Wizard (Opposition)',
+        'wizardFeatures.School Specialization (' + school + ')', '=', '2'
       );
       for(var i = 1; i <= 9; i++) {
         rules.defineRule('spellSlots.W' + i,
@@ -6216,7 +6250,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'sorcererFeatures.Familiar', '?', null,
       pathLevel, '=', null
     );
-    rules.defineRule('selectableFeatureCount.Sorcerer', pathLevel, '+', '1');
+    rules.defineRule
+      ('selectableFeatureCount.Sorcerer (Arcane Bond)', pathLevel, '=', '1');
     rules.defineRule('magicNotes.metamagicAdept',
       pathLevel, '=', 'source>=20 ? "unlimited" : Math.floor((source+1)/4)'
     );
