@@ -6248,7 +6248,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('familiarMasterLevel', 'familiarSorcererLevel', '^=', null);
     rules.defineRule('familiarSorcererLevel',
       'sorcererFeatures.Familiar', '?', null,
-      pathLevel, '=', null
+      'levels.Sorcerer', '=', null
     );
     rules.defineRule
       ('selectableFeatureCount.Sorcerer (Arcane Bond)', pathLevel, '=', '1');
