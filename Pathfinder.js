@@ -603,13 +603,13 @@ Pathfinder.FEATS = {
       '"features.Vital Strike"',
   'Greater Weapon Focus (%weapon)':
     'Type=Fighter ' +
-    'Imply=weapons.%weapon ' +
+    'Imply="weapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
       '"levels.Fighter >= 8"',
   'Greater Weapon Specialization (%weapon)':
     'Type=Fighter ' +
-    'Imply=weapons.%weapon ' +
+    'Imply="weapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
       '"features.Greater Weapon Focus (%weapon)",' +
@@ -624,7 +624,7 @@ Pathfinder.FEATS = {
   'Improved Channel':'Type=General Require="features.Channel Energy"',
   'Improved Counterspell':'Type=General Imply="casterLevel >= 1"',
   'Improved Critical (%weapon)':
-    'Type=Fighter Require="baseAttack >= 8" Imply=weapons.%weapon',
+    'Type=Fighter Require="baseAttack >= 8" Imply="weapons.%weapon"',
   'Improved Disarm':
     'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
   'Improved Familiar':'Type=General Require="features.Familiar"',
@@ -855,7 +855,7 @@ Pathfinder.FEATS = {
     'Type=Fighter ' +
     'Imply="dexterityModifier > strengthModifier"',
   'Weapon Focus (%weapon)':
-    'Type=Fighter Require="baseAttack >= 1" Imply=weapons.%weapon',
+    'Type=Fighter Require="baseAttack >= 1" Imply="weapons.%weapon"',
   'Weapon Specialization (%weapon)':
     'Type=Fighter ' +
     'Imply="weapons.%weapon" ' +
