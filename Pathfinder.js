@@ -1107,7 +1107,8 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Free action casting 1/rd uses +4 spell slot"',
   'Quivering Palm':
     'Section=combat Note="Struck foe dies 1/dy (DC %V Fort neg)"',
-  'Rage':'Section=combat Note="+4 Str, +4 Con, +2 Will, -2 AC %V rd/8 hr rest"',
+  'Rage':
+    'Section=combat Note="+4 Str, +4 Con, +2 Will, -2 AC for %V rd/8 hr rest"',
   'Rapid Reload (Hand)':
     'Section=combat Note="Reload Hand Crossbow as free action"',
   'Rapid Reload (Heavy)':
