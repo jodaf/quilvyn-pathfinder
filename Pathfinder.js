@@ -7256,17 +7256,14 @@ Pathfinder.ruleNotes = function() {
     '<h2>Pathfinder Quilvyn Plugin Notes</h2>\n' +
     'Pathfinder Quilvyn Plugin Version ' + Pathfinder.VERSION + '\n' +
     '<h3>Usage Notes</h3>\n' +
-    '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
     '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
     '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
     '  </li>\n' +
     '</ul>\n' +
-    '</p>\n' +
     '\n' +
     '<h3>Known Bugs</h3>\n' +
-    '<p>\n' +
     '<ul>\n' +
     '  <li>\n' +
     '    Quilvyn incorrectly validates the Mystic Theurge requirement of\n' +
@@ -7275,6 +7272,5 @@ Pathfinder.ruleNotes = function() {
     '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
     '    spells until a higher caster level.\n' +
     '  </li>\n' +
-    '</ul>\n' +
-    '</p>\n';
+    '</ul>\n';
 };
