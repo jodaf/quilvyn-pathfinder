@@ -4495,9 +4495,9 @@ Pathfinder.identityRules = function(
     ('experienceTrack', 'Track', 'select-one', 'tracks', 'feats');
   rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
   rules.defineEditorElement
-    ('favoredClassHitPoints', 'Favored Class Hit Points/Skill Points', 'text', [4], 'hitPoints');
+    ('favoredClassHitPoints', 'Favored Class Hit Points/Skill Points', 'text', [4, '(\\+?\\d+)?'], 'hitPoints');
   rules.defineEditorElement
-    ('favoredClassSkillPoints', '', 'text', [4], 'hitPoints');
+    ('favoredClassSkillPoints', '', 'text', [4, '(\\+?\\d+)?'], 'hitPoints');
 
   rules.defineRule('casterLevel',
     'casterLevelArcane', '=', null,
