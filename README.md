@@ -2,7 +2,8 @@
 
 The quilvyn-pathfinder package bundles modules that extend Quilvyn to work with
 the First Edition Pathfinder RPG, applying the rules of the
-<a href="http://legacy.aonprd.com/">Pathfinder 1E Reference Document</a>.
+<a href="http://legacy.aonprd.com/">Pathfinder Roleplaying Game Reference 
+Document</a>.
 
 ### Requirements
 
@@ -11,11 +12,18 @@ quilvyn-core package.
 
 ### Installation
 
-To use quilvyn-pathfinder, unbundle the release package into a plugins/
-subdirectory within the Quilvyn installation directory, then add or uncomment
-the 'plugins/Pathfinder.js' entry in the PLUGINS definition in quilvyn.html.
+To use quilvyn-pathfinder, unbundle the release package into the plugins/
+subdirectory within the Quilvyn installation directory, then append the
+following lines to the file plugins/plugins.js:
+
+    RULESETS['Pathfinder 1E'] = {
+      url:'plugins/Pathfinder.js',
+      group:'Pathfinder 1E',
+      require:'v3.5 (SRD only)'
+    };
 
 ### Usage
 
-Once the Pathfinder plugin is installed as described above, start Quilvyn and
-choose Pathfinder from the Rules menu in the editor window.
+Once the quilvyn-pathfinder package is installed as described above, start
+Quilvyn and choose 'Pathfinder 1E' from the rule sets menu in the initial
+window.

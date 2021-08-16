@@ -7255,6 +7255,18 @@ Pathfinder.ruleNotes = function() {
   return '' +
     '<h2>Pathfinder Quilvyn Plugin Notes</h2>\n' +
     'Pathfinder Quilvyn Plugin Version ' + Pathfinder.VERSION + '\n' +
+    '<p>\n' +
+    'Pathfinder material is Open Game Content from the Pathfinder ' +
+    'Roleplaying Game Reference Document, released by Paizo Publishing, LLC ' +
+    'under the Open Game License. ©2011, Paizo Publishing, LLC; Author: ' +
+    'Paizo Publishing, LLC.\n' +
+    '</p><p>\n' +
+    'Open Game License v 1.0a Copyright 2000, Wizards of the Coast, LLC. You ' +
+    'should have received a copy of the Open Game License with this program; ' +
+    'if not, you can obtain one from ' +
+    'https://media.wizards.com/2016/downloads/SRD-OGL_V1.1.pdf. ' +
+    '<a href="plugins/ogl-pathfinder.txt">Click here</a> to see the license.<br/>\n'+
+    '</p>\n' +
     '<h3>Usage Notes</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
