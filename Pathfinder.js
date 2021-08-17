@@ -232,89 +232,6 @@ Pathfinder.ARMORS = {
   'Half Plate':'AC=8 Weight=3 Dex=0 Skill=7 Spell=40',
   'Full Plate':'AC=9 Weight=3 Dex=1 Skill=6 Spell=35'
 };
-Pathfinder.DEITIES = {
-  'None':'',
-  'Abadar':
-    'Alignment=LN ' +
-    'Weapon="Light Crossbow" ' +
-    'Domain=Earth,Law,Nobility,Protection,Travel',
-  'Asmodeus':
-    'Alignment=LE ' +
-    'Weapon="Heavy Mace","Light Mace" ' +
-    'Domain=Evil,Fire,Law,Magic,Trickery',
-  'Calistria':
-    'Alignment=CN ' +
-    'Weapon=Whip ' +
-    'Domain=Chaos,Charm,Knowledge,Luck,Trickery',
-  'Cayden Cailean':
-    'Alignment=CG ' +
-    'Weapon=Rapier ' +
-    'Domain=Chaos,Charm,Good,Strength,Travel',
-  'Desna':
-    'Alignment=CG ' +
-    'Weapon=Starknife ' +
-    'Domain=Chaos,Good,Liberation,Luck,Travel',
-  'Erastil':
-    'Alignment=LG ' +
-    'Weapon=Longbow ' +
-    'Domain=Animal,Community,Good,Law,Plant',
-  'Gozreh':
-    'Alignment=N ' +
-    'Weapon=Trident ' +
-    'Domain=Air,Animal,Plant,Water,Weather',
-  'Gorum':
-    'Alignment=CN ' +
-    'Weapon=Greatsword ' +
-    'Domain=Chaos,Destruction,Glory,Strength,War',
-  'Iomedae':
-    'Alignment=LG ' +
-    'Weapon=Longsword ' +
-    'Domain=Glory,Good,Law,Sun,War',
-  'Irori':
-    'Alignment=LN ' +
-    'Weapon=Unarmed ' +
-    'Domain=Healing,Knowledge,Law,Rune,Strength',
-  'Lamashtu':
-    'Alignment=CE ' +
-    'Weapon=Falchion ' +
-    'Domain=Chaos,Evil,Madness,Strength,Trickery',
-  'Nethys':
-    'Alignment=N ' +
-    'Weapon=Quarterstaff ' +
-    'Domain=Destruction,Knowledge,Magic,Protection,Rune',
-  'Norgorber':
-    'Alignment=NE ' +
-    'Weapon="Short Sword" ' +
-    'Domain=Charm,Death,Evil,Knowledge,Trickery',
-  'Pharasma':
-    'Alignment=N ' +
-    'Weapon=Dagger ' +
-    'Domain=Death,Healing,Knowledge,Repose,Water',
-  'Rovagug':
-    'Alignment=CE ' +
-    'Weapon=Greataxe ' +
-    'Domain=Chaos,Destruction,Evil,War,Weather',
-  'Sarenrae':
-    'Alignment=NG ' +
-    'Weapon=Scimitar ' +
-    'Domain=Fire,Glory,Good,Healing,Sun',
-  'Shelyn':
-    'Alignment=NG ' +
-    'Weapon=Glaive ' +
-    'Domain=Air,Charm,Good,Luck,Protection',
-  'Torag':
-    'Alignment=LG ' +
-    'Weapon=Warhammer ' +
-    'Domain=Artifice,Earth,Good,Law,Protection',
-  'Urgathoa':
-    'Alignment=NE ' +
-    'Weapon=Scythe ' +
-    'Domain=Death,Evil,Magic,Strength,War',
-  'Zon-Kuthon':
-    'Alignment=LE ' +
-    'Weapon="Spiked Chain" ' +
-    'Domain=Darkness,Death,Destruction,Evil,Law'
-};
 Pathfinder.FACTIONS = {
   'Andoran':'',
   'Cheliax':'',
@@ -4286,6 +4203,90 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"3:Rogue Weapon Training","3:Crippling Strike","3:Defensive Roll",' +
       '"3:Dispelling Attack","3:Feat Bonus","3:Improved Evasion",' +
       '3:Opportunist,"3:Skill Mastery","3:Slippery Mind"'
+};
+Pathfinder.DEITIES = {
+  // clerics with no deity still get two domains.
+  'None':'Domain=' + QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => x.replace(' Domain', '')).join(','),
+  'Abadar':
+    'Alignment=LN ' +
+    'Weapon="Light Crossbow" ' +
+    'Domain=Earth,Law,Nobility,Protection,Travel',
+  'Asmodeus':
+    'Alignment=LE ' +
+    'Weapon="Heavy Mace","Light Mace" ' +
+    'Domain=Evil,Fire,Law,Magic,Trickery',
+  'Calistria':
+    'Alignment=CN ' +
+    'Weapon=Whip ' +
+    'Domain=Chaos,Charm,Knowledge,Luck,Trickery',
+  'Cayden Cailean':
+    'Alignment=CG ' +
+    'Weapon=Rapier ' +
+    'Domain=Chaos,Charm,Good,Strength,Travel',
+  'Desna':
+    'Alignment=CG ' +
+    'Weapon=Starknife ' +
+    'Domain=Chaos,Good,Liberation,Luck,Travel',
+  'Erastil':
+    'Alignment=LG ' +
+    'Weapon=Longbow ' +
+    'Domain=Animal,Community,Good,Law,Plant',
+  'Gozreh':
+    'Alignment=N ' +
+    'Weapon=Trident ' +
+    'Domain=Air,Animal,Plant,Water,Weather',
+  'Gorum':
+    'Alignment=CN ' +
+    'Weapon=Greatsword ' +
+    'Domain=Chaos,Destruction,Glory,Strength,War',
+  'Iomedae':
+    'Alignment=LG ' +
+    'Weapon=Longsword ' +
+    'Domain=Glory,Good,Law,Sun,War',
+  'Irori':
+    'Alignment=LN ' +
+    'Weapon=Unarmed ' +
+    'Domain=Healing,Knowledge,Law,Rune,Strength',
+  'Lamashtu':
+    'Alignment=CE ' +
+    'Weapon=Falchion ' +
+    'Domain=Chaos,Evil,Madness,Strength,Trickery',
+  'Nethys':
+    'Alignment=N ' +
+    'Weapon=Quarterstaff ' +
+    'Domain=Destruction,Knowledge,Magic,Protection,Rune',
+  'Norgorber':
+    'Alignment=NE ' +
+    'Weapon="Short Sword" ' +
+    'Domain=Charm,Death,Evil,Knowledge,Trickery',
+  'Pharasma':
+    'Alignment=N ' +
+    'Weapon=Dagger ' +
+    'Domain=Death,Healing,Knowledge,Repose,Water',
+  'Rovagug':
+    'Alignment=CE ' +
+    'Weapon=Greataxe ' +
+    'Domain=Chaos,Destruction,Evil,War,Weather',
+  'Sarenrae':
+    'Alignment=NG ' +
+    'Weapon=Scimitar ' +
+    'Domain=Fire,Glory,Good,Healing,Sun',
+  'Shelyn':
+    'Alignment=NG ' +
+    'Weapon=Glaive ' +
+    'Domain=Air,Charm,Good,Luck,Protection',
+  'Torag':
+    'Alignment=LG ' +
+    'Weapon=Warhammer ' +
+    'Domain=Artifice,Earth,Good,Law,Protection',
+  'Urgathoa':
+    'Alignment=NE ' +
+    'Weapon=Scythe ' +
+    'Domain=Death,Evil,Magic,Strength,War',
+  'Zon-Kuthon':
+    'Alignment=LE ' +
+    'Weapon="Spiked Chain" ' +
+    'Domain=Darkness,Death,Destruction,Evil,Law'
 };
 
 Pathfinder.SRD35_SKILL_MAP = {
