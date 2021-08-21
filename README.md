@@ -1,7 +1,7 @@
 ## Pathfinder plugin for the Quilvyn RPG character sheet generator
 
 The quilvyn-pathfinder package bundles modules that extend Quilvyn to work with
-the First Edition Pathfinder RPG, applying the rules of the
+the 1st Edition Pathfinder RPG, applying the rules of the
 <a href="http://legacy.aonprd.com/">Pathfinder Roleplaying Game Reference 
 Document</a>.
 
@@ -17,7 +17,7 @@ subdirectory within the Quilvyn installation directory, then append the
 following lines to the file plugins/plugins.js:
 
     RULESETS['Pathfinder 1E'] = {
-      url:'plugins/Pathfinder.js',
+      url:'Pathfinder.js',
       group:'Pathfinder 1E',
       require:'v3.5 (SRD only)'
     };
@@ -25,5 +25,5 @@ following lines to the file plugins/plugins.js:
 ### Usage
 
 Once the quilvyn-pathfinder package is installed as described above, start
-Quilvyn and choose 'Pathfinder 1E' from the rule sets menu in the initial
-window.
+Quilvyn and check the box next to "Pathfinder 1E" from the rule sets menu in
+the initial window.
