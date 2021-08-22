@@ -807,7 +807,8 @@ Pathfinder.FEATURES = {
   'Aura':
     'Section=magic ' +
     'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
-  'Aura Of Courage':'Section=save Note="Immune fear, +4 to allies w/in 10\'"',
+  'Aura Of Courage':
+    'Section=save Note="Immune to fear, +4 to allies w/in 10\'"',
   'Bardic Knowledge':
     'Section=skill Note="+%V all Knowledge, use any Knowledge untrained"',
   'Blind-Fight':
@@ -838,7 +839,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Create and mend miscellaneous magic items"',
   'Crippling Strike':
     'Section=combat Note="2 points Str damage from sneak attack"',
-  'Damage Reduction':'Section=combat Note="Negate %V HP each attack"',
+  'Damage Reduction':'Section=combat Note="DR %V/-"',
   'Darkvision':'Section=feature Note="60\' b/w vision in darkness"',
   'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
   'Defensive Roll':
@@ -852,7 +853,7 @@ Pathfinder.FEATURES = {
   'Detect Evil':'Section=magic Note="<i>Detect Evil</i> at will"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
   'Diamond Body':'Section=save Note="Immune to poison"',
-  'Diamond Soul':'Section=save Note="DC %V spell resistance"',
+  'Diamond Soul':'Section=save Note="Spell resistance %V"',
   'Diehard':
     'Section=combat Note="Remain conscious and stable with negative HP"',
   'Divine Grace':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
@@ -958,11 +959,9 @@ Pathfinder.FEATURES = {
   'Improvised Weapon Mastery':
     'Section=combat ' +
     'Note="No penalty for improvised weapon, improvised damage +1 step, crit x2@19"',
-  'Increased Damage Reduction':
-    'Section=combat Note="Negate additional %V HP each attack during rage"',
+  'Increased Damage Reduction':'Section=combat Note="+%V DR/- during rage"',
   'Increased Unarmed Damage':'Section=combat Note="%V"',
-  'Indomitable Will':
-    'Section=save Note="+4 enchantment resistance during rage"',
+  'Indomitable Will':'Section=save Note="+4 vs. enchantment during rage"',
   'Inspire Competence':
     'Section=magic Note="+%V allies skill checks while performing"',
   'Inspire Courage':
@@ -1063,7 +1062,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="No arcane spell failure in light armor"',
   'Skill Mastery':
     'Section=skill Note="Take 10 despite distraction on %V chosen skills"',
-  'Sleep Immunity':'Section=save Note="Immune <i>Sleep</i>"',
+  'Sleep Immunity':'Section=save Note="Immune to <i>Sleep</i>"',
   'Slippery Mind':'Section=save Note="Second save vs. enchantment"',
   'Slow':'Section=ability Note="-10 Speed"',
   'Slow Fall':'Section=save Note="Subtract %V\' from falling damage distance"',
@@ -1148,11 +1147,12 @@ Pathfinder.FEATURES = {
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil 1/dy"',
   'Aberrant Form':
-    'Section=combat,feature ' +
-    'Note="Immune critical hit and sneak attack, DR 5/-",' +
-         '"Blindsight 60\'"',
+    'Section=combat,feature,save ' +
+    'Note="DR 5/-",' +
+         '"Blindsight 60\'",' +
+         '"Immune to critical hit and sneak attack"',
   'Acid Dart':'Section=magic Note="R30\' touch 1d6+%1 HP %V/dy"',
-  'Acid Resistance':'Section=save Note="%V"',
+  'Acid Resistance':'Section=save Note="Resistance %V to acid"',
   'Acidic Ray':'Section=magic Note="R30\' %Vd6 HP %1/dy"',
   'Acrobatic Steps':
     'Section=ability Note="Move through difficult terrain 20\'/rd"',
@@ -1165,7 +1165,7 @@ Pathfinder.FEATURES = {
     'Section=feature Note="Unaffected by difficult terrain 1 rd %V/dy"',
   'Agile Maneuvers':'Section=combat Note="+%V CMB"',
   'Aid Allies':'Section=combat Note="+1 aid another action"',
-  'Alien Resistance':'Section=save Note="%V spell resistance"',
+  'Alien Resistance':'Section=save Note="Spell resistance %V"',
   'Alignment Channel (Chaos)':
     'Section=combat Note="Channel Energy to heal or harm Chaos outsiders"',
   'Alignment Channel (Evil)':
@@ -1209,7 +1209,7 @@ Pathfinder.FEATURES = {
   'Ascension':
     'Section=magic,save ' +
     'Note="Speak any language",' +
-         '"Immune petrification, 10 electricity and fire, +4 poison"',
+         '"Immune to petrification, resistance 10 to electricity and fire, +4 vs. poison"',
   'Attuned To The Ancestors':
     'Section=magic Note="<i>Hide From Undead</i> %V rd 1/dy"',
   'Aura Of Despair':
@@ -1222,12 +1222,13 @@ Pathfinder.FEATURES = {
     'Section=magic Note="30\' <i>Confusion</i> (DC %1 Will neg) %V rd/dy"',
   'Aura Of Protection':
     'Section=magic ' +
-    'Note="Allies w/in 30\' +%V AC, %1 elements resistance %2 rd/dy"',
-  'Aura Of Resolve':'Section=save Note="Immune charm, +4 to allies w/in 10\'"',
+    'Note="Allies w/in 30\' +%V AC, resistance %1 to all energy for %2 rd/dy"',
+  'Aura Of Resolve':
+    'Section=save Note="Immune to charm, +4 to allies w/in 10\'"',
   'Aura Of Righteousness':
     'Section=combat,save ' +
     'Note="DR %V/evil",' +
-         '"Immune compulsion, +4 to allies w/in 10\'"',
+         '"Immune to compulsion, +4 to allies w/in 10\'"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
@@ -1300,7 +1301,7 @@ Pathfinder.FEATURES = {
   'Catch Off-Guard':
     'Section=combat ' +
     'Note="No penalty for improvised melee weapon, unarmed opponents flat-footed"',
-  'Celestial Resistances':'Section=save Note="%V acid and cold"',
+  'Celestial Resistances':'Section=save Note="Resistance %V to acid and cold"',
   'Change Shape':
     'Section=magic ' +
     'Note="<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/dy"',
@@ -1328,7 +1329,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="%V+%1 HP %2 rd/dy"',
   'Clear Mind':'Section=save Note="Reroll Will save 1/rage"',
-  'Cold Resistance':'Section=save Note="%V"',
+  'Cold Resistance':'Section=save Note="Resistance %V to cold"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
     'Section=combat ' +
@@ -1367,7 +1368,8 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical hit causes permanent deafness (DC %V Fort 1 rd)"',
   "Death's Embrace":'Section=combat Note="Healed by channeled negative energy"',
-  "Death's Gift":'Section=save Note="%V cold/DR %1/- vs. non-lethal"',
+  "Death's Gift":
+    'Section=save Note="Resistance %V to cold/DR %1/- vs. non-lethal"',
   'Defensive Combat Training':'Section=combat Note="+%V CMD"',
   'Defensive Training':'Section=combat Note="+4 AC vs. giant creatures"',
   'Deft Dodger':'Section=save Note="+1 Reflex"',
@@ -1375,17 +1377,18 @@ Pathfinder.FEATURES = {
     'Section=skill,save ' +
     'Note="+3 Knowledge (Planes) wrt demons",' +
          '"+2 Will vs. demonic mental spells and effects"',
-  'Demon Resistances':'Section=save Note="%V electricity and %1 poison"',
+  'Demon Resistances':
+    'Section=save Note="Resistance %V to electricity and %1 to poison"',
   'Demonic Might':
     'Section=feature,save ' +
-    'Note="Telepathy 60\'","Resistance 10 acid, cold, and fire"',
+    'Note="Telepathy 60\'","Resistance 10 to acid, cold, and fire"',
   'Dervish':'Section=combat Note="+1 AC vs. move AOO"',
   'Desert Child':'Section=save Note="+4 heat stamina, +1 vs. fire effects"',
   'Desert Shadow':'Section=skill Note="Full speed Stealth in desert"',
   'Destiny Realized':
     'Section=combat,magic ' +
     'Note="Spell critical confirmed, foe critical requires 20",' +
-         '"Automatically overcome resistance 1/dy"',
+         '"Automatically overcome spell resistance 1/dy"',
   'Destructive Aura':
     'Section=combat ' +
     'Note="R30\' Attacks +%V damage and critical confirmed %1 rd/dy"',
@@ -1422,7 +1425,7 @@ Pathfinder.FEATURES = {
     'Note="Touched creature +%V attack, skill, ability, and save 1 rd %1/dy"',
   'Double Slice':
     'Section=combat Note="Add full Str modifier to off-hand damage"',
-  'Dragon Resistances':'Section=save Note="%V vs. %1"',
+  'Dragon Resistances':'Section=save Note="Resistance %V to %1"',
   'Dune Walker':
     'Section=ability,save ' +
     'Note="Normal movement through sand",' +
@@ -1432,12 +1435,13 @@ Pathfinder.FEATURES = {
   'Ease Of Faith':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Eastern Mysteries':'Section=magic Note="+2 spell DC 1/dy"',
-  'Electricity Resistance':'Section=save Note="%V"',
+  'Electricity Resistance':'Section=save Note="Resistance %V to electricity"',
   'Elemental Blast':
     'Section=combat ' +
     'Note="R60\' 20\' radius %Vd6 HP %3 (DC %1 Ref half) %2/dy"',
   'Elemental Body':
-    'Section=combat,save Note="Immune critical and sneak attack","Immune %V"',
+    'Section=combat,save ' +
+    'Note="Immune to critical and sneak attack","Immune to %V"',
   'Elemental Channel (Air)':
     'Section=combat Note="Channel energy to heal or harm Air outsiders"',
   'Elemental Channel (Earth)':
@@ -1448,7 +1452,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Channel energy to heal or harm Water outsiders"',
   'Elemental Movement':'Section=ability Note="%V"',
   'Elemental Ray':'Section=magic Note="R30\' 1d6+%1 HP %2 %V/dy"',
-  'Elemental Resistance':'Section=save Note="%V vs. %1"',
+  'Elemental Resistance':'Section=save Note="Resistance %V to %1"',
   'Elemental Wall':
     'Section=magic ' +
     'Note="<i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> %V rd/dy"',
@@ -1465,7 +1469,8 @@ Pathfinder.FEATURES = {
   'Enchantment Dazing Touch':
     'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
   'Energy Absorption':'Section=save Note="Ignore %V HP energy/dy"',
-  'Energy Resistance':'Section=save Note="%V chosen energy type"',
+  'Energy Resistance':
+    'Section=save Note="Resistance %V to chosen energy type each dy"',
   'Exhausting Critical':
     'Section=combat Note="Critical hit causes foe exhaustion"',
   'Exile':'Section=combat Note="+2 Initiative"',
@@ -1497,12 +1502,12 @@ Pathfinder.FEATURES = {
   'Fearless Rage':
     'Section=save Note="Cannot be shaken or frightened during rage"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
-  'Fey Magic':'Section=magic Note="Reroll any resistance check"',
+  'Fey Magic':'Section=magic Note="Reroll any spell resistance check"',
   'Fiendish Presence':
     'Section=skill Note="+1 Diplomacy/+1 Sense Motive/choice is a class skill"',
   'Finesse Rogue':'Section=feature Note="Weapon Finesse"',
   'Fire Bolt':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
-  'Fire Resistance':'Section=save Note="%V"',
+  'Fire Resistance':'Section=save Note="Resistance %V to fire"',
   'Fires Of Hell':'Section=combat Note="Flaming blade +1 damage %V rd 1/dy"',
   'Flame Of The Dawn Flower':
     'Section=combat Note="+2 scimitar critical damage"',
@@ -1553,7 +1558,7 @@ Pathfinder.FEATURES = {
   'Greater Overrun':
     'Section=combat Note="+2 overrun checks, AOO on overrun foes"',
   'Greater Penetrating Strike':
-    'Section=combat Note="Focused weapons ignore DR 5/- or DR 10/anything"',
+    'Section=combat Note="Focused weapons ignore DR 5/- or DR 10/any"',
   'Greater Shield Focus':'Section=combat Note="+1 AC"', // No change to CMD
   'Greater Sunder':
     'Section=combat Note="+2 sunder checks, foe takes excess damage"',
@@ -1615,7 +1620,8 @@ Pathfinder.FEATURES = {
   'Incorporeal Form':'Section=magic Note="Incorporeal %V rd 1/dy"',
   'Indomitable Faith':'Section=save Note="+1 Will"',
   'Indomitable':'Section=save Note="+1 vs. enchantment"',
-  'Infernal Resistances':'Section=save Note="%V fire and %1 poison"',
+  'Infernal Resistances':
+    'Section=save Note="Resistance %V to fire and %1 to poison"',
   'Influential':
     'Section=magic,skill ' +
     'Note="+1 DC on language-dependent spell 1/dy",' +
@@ -1759,14 +1765,13 @@ Pathfinder.FEATURES = {
   'One Of Us':
     'Section=combat,save ' +
     'Note="Ignored by unintelligent undead",' +
-         '"Immune paralysis and sleep, +4 vs. undead\'s spells"',
+         '"Immune to paralysis and sleep, +4 vs. undead\'s spells"',
   'Orc Blood':'Section=feature Note="Orc and human for racial effects"',
   'Orc Ferocity':'Section=combat Note="Fight 1 rd below zero HP"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill Note="+1 Diplomacy, 1 retry on unfriendly or hostile"',
-  'Penetrating Strike':
-    'Section=combat Note="Focused weapons ignore DR 5/anything"',
+  'Penetrating Strike':'Section=combat Note="Focused weapons ignore DR 5/any"',
   'Performance Artist':
     'Section=skill Note="+1 choice of Perform/choice is a class skill"',
   'Physical Enhancement':'Section=ability Note="+%V %1 of Str, Dex, and Con"',
@@ -1779,8 +1784,9 @@ Pathfinder.FEATURES = {
   'Poverty-Stricken':
     'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Power Of The Pit':
-    'Section=feature,save Note="60\' Darkvision","Resistance 10 acid and cold"',
-  'Power Of Wyrms':'Section=save Note="Immune paralysis and sleep"',
+    'Section=feature,save ' +
+    'Note="60\' Darkvision","Resistance 10 to acid and cold"',
+  'Power Of Wyrms':'Section=save Note="Immune to paralysis and sleep"',
   'Power Over Undead':
     'Section=feature Note="+1 General Feat (Command Undead or Turn Undead)"',
   'Powerful Blow':'Section=combat Note="+%V HP 1/rage"',
@@ -1807,8 +1813,6 @@ Pathfinder.FEATURES = {
   'Resiliency':
     'Section=combat Note="1 minute of %V temporary HP when below 0 HP 1/dy"',
   'Resilient':'Section=save Note="+1 Fortitude"',
-  'Resistance Bonus':
-    'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Resistant Touch':
     'Section=magic ' +
     'Note="Touch transfers resistance bonus to ally 1 minute %V/dy"',
@@ -1834,6 +1838,7 @@ Pathfinder.FEATURES = {
   'Savanna Child':
     'Section=skill ' +
     'Note="+1 choice of Handle Animal, Knowledge (Nature), Ride/choice is a class skill"',
+  'Save Bonus':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Scent':'Section=feature Note="Detect creatures via smell"',
   'Scent Rage':'Section=feature Note="Detect creatures via smell during rage"',
   'Scholar Of Balance':
@@ -1883,10 +1888,11 @@ Pathfinder.FEATURES = {
   'Soul Drinker':
     'Section=combat Note="Gain HP equal to slain foe\'s hit dice 1 min 1/dy"',
   'Soul Of The Fey':
-    'Section=combat,magic,save ' +
-    'Note="Animals attack only if magically forced",' +
+    'Section=combat,feature,magic,save ' +
+    'Note="DR 10/cold iron",' +
+         '"Animals attack only if magically forced",' +
          '"<i>Shadow Walk</i> 1/dy",' +
-         '"Immune poison and DR 10/cold iron"',
+         '"Immune to poison"',
   'Speak With Animals':
     'Section=magic Note="<i>Speak With Animals</i> %V rd/dy"',
   'Spell Rune':'Section=magic Note="Add known spell to Blast Rune"',
@@ -2149,7 +2155,7 @@ Pathfinder.FEATURES = {
   'Spell Critical':'Section=magic Note="Cast swift spell after critical hit"',
   'Spell Synthesis':
     'Section=magic ' +
-    'Note="Cast two spells simultaneously, +2 vs. resistance, target -2 saves"',
+    'Note="Cast two spells simultaneously, +2 vs. spell resistance, target -2 saves"',
   'Strength Boost':'Section=ability Note="+%V Strength"',
   'Summon Shadow':
     'Section=magic ' +
@@ -2319,7 +2325,7 @@ Pathfinder.PATHS = {
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
     'Features=' +
-      '"1:Resistance Bonus","1:Resistant Touch","8:Aura Of Protection"',
+      '"1:Save Bonus","1:Resistant Touch","8:Aura Of Protection"',
   'Repose Domain':
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
@@ -3423,15 +3429,15 @@ Pathfinder.SPELLS = {
   'Elemental Body IV':
     'School=Transmutation ' +
     'Level=Air7,Earth7,Elemental7,Fire7,W7,Water7 ' +
-    'Description="Become huge air (+4 Str, +6 Dex, +4 AC, fly 120\', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120\', vortex, breathe water) elemental, 60\' darkvision, immune bleed, critical, sneak attack, DR 5, - for $L min"',
+    'Description="Become huge air (+4 Str, +6 Dex, +4 AC, fly 120\', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120\', vortex, breathe water) elemental, 60\' darkvision, immune bleed, critical, sneak attack, DR 5/- for $L min"',
   'Form Of The Dragon I':
     'School=Transmutation ' +
     'Level=Draconic6,W6 ' +
-    'Description="Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60\', Darkvision 60\', breath weapon once 6d8 HP (Ref half), element resistance, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for $L min"',
+    'Description="Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60\', Darkvision 60\', breath weapon once 6d8 HP (Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for $L min"',
   'Form Of The Dragon II':
     'School=Transmutation ' +
     'Level=Draconic7,W7 ' +
-    'Description="Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90\', Darkvision 60\', breath weapon twice 8d8 HP (Ref half), element resistance, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for $L min"',
+    'Description="Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90\', Darkvision 60\', breath weapon twice 8d8 HP (Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for $L min"',
   'Form Of The Dragon III':
     'School=Transmutation ' +
     'Level=Draconic8,W8 ' +
@@ -4872,6 +4878,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Greater Rage', '+', '1',
       'features.Mighty Rage', '+', '1'
     );
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.damageReduction', '^=', null);
     rules.defineRule('magicNotes.renewedVigor',
       'levels.Barbarian', '=', 'Math.floor(source / 4)'
     );
@@ -5042,6 +5050,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('armorClass', 'combatNotes.armorTraining', '+', null);
     rules.defineRule
       ('combatManeuverDefense', 'combatNotes.armorTraining', '+', null);
+    rules.defineRule('combatNotes.armorMastery.1',
+      'combatNotes.armorMastery', '?', null,
+      'armor', '=', 'source != "None" ? 1 : null',
+      'shield', '=', 'source != "None" ? 1 : null'
+    );
     rules.defineRule('combatNotes.armorTraining',
       'dexterityModifier', '=', null,
       'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
@@ -5053,6 +5066,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
         '(source>=17 ? "+4/" : "") + (source>=13 ? "+3/" : "") + ' +
         '(source>=9 ? "+2/" : "") + "+1"'
     );
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.armorMastery.1', '^=', '5');
     rules.defineRule('featCount.Fighter',
       'levels.Fighter', '=', '1 + Math.floor(source / 2)'
     );
@@ -5116,6 +5131,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'wisdomModifier', '+', null
     );
     rules.defineRule
+      ('damageReduction.Chaotic', 'combatNotes.perfectSelf', '^=', '10');
+    rules.defineRule
       ('featureNotes.abundantStep', 'levels.Monk', '=', 'source * 40 + 400');
     rules.defineRule('featureNotes.kiPool',
       'levels.Monk', '=', 'Math.floor(source / 2)',
@@ -5144,6 +5161,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Small', '=', 'SRD35.SMALL_DAMAGE[SRD35.SMALL_DAMAGE["monk"]]',
       'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
+    rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
   } else if(name == 'Paladin') {
 
@@ -5186,6 +5204,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'paladinFeatures.Divine Mount', '?', null,
       'levels.Paladin', '=', null,
     );
+    rules.defineRule
+      ('damageReduction.Evil', 'combatNotes.auraOfRighteousness', '^=', null);
     rules.defineRule('featureNotes.divineMount',
       'companionPaladinLevel', '=', 'Math.floor((source - 1) / 4)'
     );
@@ -5454,8 +5474,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.trueDeath.1',
       'levels.Assassin', '+=', '15 + source'
     );
-    rules.defineRule
-      ('resistance.Poison', 'saveNotes.poisonTolerance', '+=', null);
     rules.defineRule('saveNotes.poisonTolerance',
       'levels.Assassin', '+=', 'Math.floor(source / 2)'
     );
@@ -5682,6 +5700,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Shadowdancer') {
 
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.shadowMaster', '^=', '10');
     rules.defineRule('featureNotes.darkvision',
       'shadowdancerFeatures.Darkvision', '+=', '60'
     );
@@ -6202,6 +6222,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('combatNotes.unusualAnatomy', pathLevel, '=', 'source>=13 ? 50 : 25');
     rules.defineRule
+      ('damageReduction.-', 'combatNotes.aberrantForm', '^=', '5');
+    rules.defineRule
       ('magicNotes.acidicRay', pathLevel, '=', '1 + Math.floor(source / 2)');
     rules.defineRule('magicNotes.acidicRay.1',
       'features.Acidic Ray', '?', null,
@@ -6209,6 +6231,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('saveNotes.alienResistance', pathLevel, '=', 'source + 10');
+    rules.defineRule
+      ('spellResistance', 'saveNotes.alienResistance', '^=', null);
 
   } else if(name == 'Bloodline Abyssal') {
 
@@ -6234,14 +6258,21 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'charismaModifier', '=', 'source + 3'
     );
     rules.defineRule('combatNotes.improvedClaws', 'bloodlineEnergy', '=', null);
+    rules.defineRule('resistance.Acid', 'saveNotes.demonicMight', '^=', '10');
+    rules.defineRule('resistance.Cold', 'saveNotes.demonicMight', '^=', '10');
+    rules.defineRule
+      ('resistance.Electricity', 'saveNotes.demonResistances', '^=', null);
+    rules.defineRule('resistance.Fire', 'saveNotes.demonicMight', '^=', '10');
+    rules.defineRule
+      ('resistance.Poison', 'saveNotes.demonResistances.1', '^=', null);
     rules.defineRule('magicNotes.bloodlineAbyssal',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
     rules.defineRule('saveNotes.demonResistances',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
     rules.defineRule('saveNotes.demonResistances.1',
-      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 4 : 2'
     );
 
   } else if(name == 'Bloodline Arcane') {
@@ -6265,6 +6296,13 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.wingsOfHeaven',
       pathLevel, '=', 'source>=20 ? "unlimited" : source'
     );
+    rules.defineRule
+      ('resistance.Acid', 'saveNotes.celestialResistances', '^=', null);
+    rules.defineRule
+      ('resistance.Cold', 'saveNotes.celestialResistances', '^=', null);
+    rules.defineRule
+      ('resistance.Electricity', 'saveNotes.ascension', '^=', '10');
+    rules.defineRule('resistance.Fire', 'saveNotes.ascension', '^=', '10');
     rules.defineRule('magicNotes.bloodlineCelestial',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
@@ -6276,7 +6314,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'charismaModifier', '=', '1 + source'
     );
     rules.defineRule('saveNotes.celestialResistances',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? "+10" : "+5"'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
 
   } else if(name == 'Bloodline Destined') {
@@ -6338,16 +6376,40 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.naturalArmor',
       pathLevel, '+=', 'source>=15 ? 4 : source>=10 ? 2 : 1'
     );
+    rules.defineRule
+      ('resistance.Acid', 'saveNotes.dragonResistances.2', '^=', null);
+    rules.defineRule
+      ('resistance.Cold', 'saveNotes.dragonResistances.3', '^=', null);
+    rules.defineRule
+      ('resistance.Electricity', 'saveNotes.dragonResistances.4', '^=', null);
+    rules.defineRule
+      ('resistance.Fire', 'saveNotes.dragonResistances.5', '^=', null);
+    rules.defineRule('saveNotes.dragonResistances.2',
+      'saveNotes.dragonResistances.1', '?', 'source == "acid"',
+      'saveNotes.dragonResistances', '=', null
+    );
+    rules.defineRule('saveNotes.dragonResistances.3',
+      'saveNotes.dragonResistances.1', '?', 'source == "cold"',
+      'saveNotes.dragonResistances', '=', null
+    );
+    rules.defineRule('saveNotes.dragonResistances.4',
+      'saveNotes.dragonResistances.1', '?', 'source == "electricity"',
+      'saveNotes.dragonResistances', '=', null
+    );
+    rules.defineRule('saveNotes.dragonResistances.5',
+      'saveNotes.dragonResistances.1', '?', 'source == "fire"',
+      'saveNotes.dragonResistances', '=', null
+    );
     rules.defineRule('featureNotes.blindsense', pathLevel, '^=', '60');
     rules.defineRule('saveNotes.dragonResistances',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
+    rules.defineRule
+      ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
     rules.defineRule('saveNotes.dragonResistances.1',
       'features.Dragon Resistances', '?', null,
       'bloodlineEnergy', '=', null
     );
-    rules.defineRule
-      ('magicNotes.bloodlineDraconic', 'bloodlineEnergy', '=', null);
 
   } else if(name == 'Bloodline Elemental') {
 
@@ -6382,6 +6444,30 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'bloodlineEnergy', '=', null
     );
     rules.defineRule
+      ('resistance.Acid', 'saveNotes.elementalResistance.2', '^=', null);
+    rules.defineRule
+      ('resistance.Cold', 'saveNotes.elementalResistance.3', '^=', null);
+    rules.defineRule
+      ('resistance.Electricity', 'saveNotes.elementalResistance.4', '^=', null);
+    rules.defineRule
+      ('resistance.Fire', 'saveNotes.elementalResistance.5', '^=', null);
+    rules.defineRule('saveNotes.elementalResistance.2',
+      'saveNotes.elementalResistance.1', '?', 'source == "acid"',
+      'saveNotes.elementalResistance', '=', null
+    );
+    rules.defineRule('saveNotes.elementalResistance.3',
+      'saveNotes.elementalResistance.1', '?', 'source == "cold"',
+      'saveNotes.elementalResistance', '=', null
+    );
+    rules.defineRule('saveNotes.elementalResistance.4',
+      'saveNotes.elementalResistance.1', '?', 'source == "electricity"',
+      'saveNotes.elementalResistance', '=', null
+    );
+    rules.defineRule('saveNotes.elementalResistance.5',
+      'saveNotes.elementalResistance.1', '?', 'source == "fire"',
+      'saveNotes.elementalResistance', '=', null
+    );
+    rules.defineRule
       ('magicNotes.bloodlineElemental', 'bloodlineEnergy', '=', null);
     rules.defineRule
       ('magicNotes.elementalRay', 'charismaModifier', '=', 'source + 3');
@@ -6395,7 +6481,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('saveNotes.elementalBody', 'bloodlineEnergy', '=', null);
     rules.defineRule('saveNotes.elementalResistance',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 20 : 10'
     );
     rules.defineRule('saveNotes.elementalResistance.1',
       'features.Elemental Resistance', '?', null,
@@ -6404,12 +6490,20 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
   } else if(name == 'Bloodline Fey') {
 
+    rules.defineRule
+      ('damageReduction.Cold Iron', 'combatNotes.soulOfTheFey', '^=', '10');
     rules.defineRule('magicNotes.fleetingGlance', pathLevel, '=', null);
     rules.defineRule
       ('magicNotes.laughingTouch', 'charismaModifier', '=', 'source + 3');
 
   } else if(name == 'Bloodline Infernal') {
 
+    rules.defineRule('resistance.Acid', 'saveNotes.powerOfThePit', '^=', '10');
+    rules.defineRule('resistance.Cold', 'saveNotes.powerOfThePit', '^=', '10');
+    rules.defineRule
+      ('resistance.Fire', 'saveNotes.infernalResistances', '^=', null);
+    rules.defineRule
+      ('resistance.Poison', 'saveNotes.infernalResistances.1', '^=', null);
     rules.defineRule('magicNotes.corruptingTouch',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
@@ -6432,10 +6526,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'source>=20 ? 3 : source>=17 ? 2 : 1'
     );
     rules.defineRule('saveNotes.infernalResistances',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? "+10" : "+5"'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
     rules.defineRule('saveNotes.infernalResistances.1',
-      pathLevel, '=', 'source>=20 ? "immune" : source>=9 ? "+4" : "+2"'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 4 : 2'
     );
 
   } else if(name == 'Bloodline Undead') {
@@ -6458,12 +6552,13 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'charismaModifier', '=', 'source + 3'
     );
     rules.defineRule('magicNotes.incorporealForm', pathLevel, '=', null);
+    rules.defineRule('resistance.Cold', "saveNotes.death'sGift", '^=', null);
     rules.defineRule("saveNotes.death'sGift",
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
     rules.defineRule("saveNotes.death'sGift.1",
       "features.Death's Gift", '?', null,
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=9 ? 10 : 5'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
     );
 
   } else if(name == 'Air Domain') {
@@ -6472,8 +6567,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('combatNotes.lightningArc', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule
+      ('resistance.Electricity', 'saveNotes.electricityResistance', '^=', null);
     rules.defineRule('saveNotes.electricityResistance',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
 
   } else if(name == 'Animal Domain') {
@@ -6574,8 +6671,9 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('magicNotes.acidDart', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('magicNotes.acidDart.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('resistance.Acid', 'saveNotes.acidResistance', '^=', null);
     rules.defineRule('saveNotes.acidResistance',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
 
   } else if(name == 'Evil Domain') {
@@ -6599,8 +6697,9 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('combatNotes.fireBolt', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('combatNotes.fireBolt.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('resistance.Fire', 'saveNotes.fireResistance', '^=', null);
     rules.defineRule('saveNotes.fireResistance',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
 
   } else if(name == 'Glory Domain') {
@@ -6741,9 +6840,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.auraOfProtection.2', pathLevel, '=', null);
     rules.defineRule
       ('magicNotes.resistantTouch', 'wisdomModifier', '=', '3 + source');
-    rules.defineRule('saveNotes.resistanceBonus',
-      pathLevel, '=', '1 + Math.floor(source / 5)'
-    );
+    rules.defineRule
+      ('saveNotes.saveBonus', pathLevel, '=', '1 + Math.floor(source / 5)');
 
   } else if(name == 'Repose Domain') {
 
@@ -6827,8 +6925,9 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.icicle', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('combatNotes.icicle.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('resistance.Cold', 'saveNotes.coldResistance', '^=', null);
     rules.defineRule('saveNotes.coldResistance',
-      pathLevel, '=', 'source>=20 ? "Immune" : source>=12 ? 20 : 10'
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
 
   } else if(name == 'Weather Domain') {
@@ -6912,8 +7011,7 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule
       ('saveNotes.energyAbsorption', schoolLevel, '=', 'source * 3');
     rules.defineRule('saveNotes.energyResistance',
-      schoolLevel, '=',
-      'source >= 20 ? "Immune" : source >= 11 ? 10 : 5'
+      schoolLevel, '=', 'source >= 20 ? Infinity : source >= 11 ? 10 : 5'
     );
   } else if(name == 'Conjuration') {
     rules.defineRule('magicNotes.conjuredAcidDart',
