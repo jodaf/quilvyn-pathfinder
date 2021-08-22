@@ -202,6 +202,7 @@ var attributes = {
         <td><b>Hit Points</b>: 155</td>
         <td><b>Initiative</b>: 0</td>
         <td><b>Armor Class</b>: 19</td>
+        <td><b>Damage Reduction</b>: 10/Evil</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: 20/21/20</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: 21/31</td>
@@ -226,6 +227,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Aura Of Righteousness: DR 10/evil</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
@@ -235,8 +238,6 @@ var attributes = {
         <td>Aura Of Faith: R10' attacks good-aligned</td>
       </tr><tr style="text-align:center">
         <td>Aura Of Justice: R10' Use 2 Smite Evil to grant use to allies</td>
-      </tr><tr style="text-align:center">
-        <td>Aura Of Righteousness: DR 10/evil</td>
       </tr><tr style="text-align:center">
         <td>Divine Weapon: Add 6 enhancements to weapon 20 minutes 4/dy</td>
       </tr><tr style="text-align:center">
@@ -250,7 +251,11 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 16; Reflex: 11; Will: 16</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 16; Reflex: 11; Will: 16</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
@@ -262,17 +267,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Courage: Immune fear, +4 to allies w/in 10'</td>
+        <td>Aura Of Courage: Immune to fear, +4 to allies w/in 10'</td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Resolve: Immune charm, +4 to allies w/in 10'</td>
+        <td>Aura Of Resolve: Immune to charm, +4 to allies w/in 10'</td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Righteousness: Immune compulsion, +4 to allies w/in 10'</td>
+        <td>Aura Of Righteousness: Immune to compulsion, +4 to allies w/in 10'</td>
       </tr><tr style="text-align:center">
         <td>Divine Health: Immune to disease</td>
       </tr><tr style="text-align:center">
         <td>Resist Enchantment: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Sleep Immunity: Immune <i>Sleep</i></td>
+        <td>Sleep Immunity: Immune to <i>Sleep</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -371,7 +376,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Remove Paralysis (P2 Conj): R65' Frees one target from paralysis, slow, 2/3/4 targets extra save at +4/+2/+2</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (P2 Abju): Touched DR 30 from specified energy for 170 min</td>
+      <td>Resist Energy (P2 Abju): Touched resistance 30 to chosen energy for 170 min</td>
     </tr><tr style="text-align:left">
       <td>Resistance (P1 Abju): Touched +1 saves for 1 min</td>
     </tr><tr style="text-align:left">

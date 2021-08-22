@@ -200,6 +200,7 @@ var attributes = {
         <td><b>Hit Points</b>: 132</td>
         <td><b>Initiative</b>: 2</td>
         <td><b>Armor Class</b>: 19</td>
+        <td><b>Damage Reduction</b>: 5/-</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: 20/23/22</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: 23/35</td>
@@ -224,6 +225,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Damage Reduction: DR 5/-</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Dexterity Armor Class Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
@@ -234,15 +237,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Animal Fury: Bite attack d4+3 during rage</td>
       </tr><tr style="text-align:center">
-        <td>Damage Reduction: Negate 5 HP each attack</td>
-      </tr><tr style="text-align:center">
         <td>Greater Rage: +6 Str, +6 Con, +3 Will during rage</td>
       </tr><tr style="text-align:center">
         <td>Guarded Stance: +4 AC for 4 rd during rage</td>
       </tr><tr style="text-align:center">
         <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 24+</td>
       </tr><tr style="text-align:center">
-        <td>Increased Damage Reduction: Negate additional 1 HP each attack during rage</td>
+        <td>Increased Damage Reduction: +1 DR/- during rage</td>
       </tr><tr style="text-align:center">
         <td>Knockback: Successful Bull Rush during rage does 7 HP</td>
       </tr><tr style="text-align:center">
@@ -282,7 +283,11 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 14; Reflex: 8; Will: 6</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 14; Reflex: 8; Will: 6</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
@@ -294,7 +299,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Fearless Rage: Cannot be shaken or frightened during rage</td>
       </tr><tr style="text-align:center">
-        <td>Indomitable Will: +4 enchantment resistance during rage</td>
+        <td>Indomitable Will: +4 vs. enchantment during rage</td>
       </tr><tr style="text-align:center">
         <td>Internal Fortitude: Cannot be sickened or nauseated during rage</td>
       </tr><tr style="text-align:center">

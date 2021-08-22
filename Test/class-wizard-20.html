@@ -404,7 +404,11 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 5; Reflex: 6; Will: 9</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 5; Reflex: 6; Will: 9</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
@@ -416,11 +420,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Energy Absorption: Ignore 60 HP energy/dy</td>
       </tr><tr style="text-align:center">
-        <td>Energy Resistance: Immune chosen energy type</td>
+        <td>Energy Resistance: Resistance immune to chosen energy type each dy</td>
       </tr><tr style="text-align:center">
         <td>Resist Enchantment: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Sleep Immunity: Immune <i>Sleep</i></td>
+        <td>Sleep Immunity: Immune to <i>Sleep</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -629,7 +633,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Elemental Body III (W6 Tran): Become large air (+2 Str, +4 Dex, +4 AC, fly 60', whirlwind), earth (+6 Str, -2 Dex, +2 Con, +6 AC, earth glide), fire (+4 Dex, +2 Con, +4 AC, resist fire, burn), water (+2 Str, -2 Dex, +6 Con, +6 AC, swim 60', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (W7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (W7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Endure Elements (W1 Abju): Touched comfortable in at -50-140F for 1 dy</td>
     </tr><tr style="text-align:left">
@@ -691,9 +695,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Foresight (W9 Divi): Warnings provide +2 AC, +2 Reflex, no surprise, flat-footed for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon I (W6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 18 Ref half), element resistance, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
+      <td>Form Of The Dragon I (W6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 18 Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon II (W7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 19 Ref half), element resistance, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
+      <td>Form Of The Dragon II (W7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 19 Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Form Of The Dragon III (W8 Tran): Become Huge dragon (+10 Str, +8 Con, +8 AC, Fly 120', Blindsense 60', Darkvision 120', breath weapon 1, d4 rd 12d8 HP (DC 20 Ref half), element immunity, bite 2d8 HP, claws 2x2d6 HP, wings 2x1d8 HP, tail 2d6 HP) for 20 min</td>
     </tr><tr style="text-align:left">
@@ -931,7 +935,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Nightmare (W5 Illu): Target 1d10 HP and fatigue (DC 17 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (W3 Abju): Touched DC 31, 35 resistance to divination for 20 hr</td>
+      <td>Nondetection (W3 Abju): Touched DC 31, spell resistance 35 to divination for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Obscure Object (W2 Abju): Touched immune to divination for 8 hr (DC 14 Will neg)</td>
     </tr><tr style="text-align:left">
@@ -997,7 +1001,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Protection From Chaos (W1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by chaotic creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (W3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (W3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Protection From Evil (W1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by evil creatures for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1033,7 +1037,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Resilient Sphere (W4 Evoc): R75' Impassible and immobile 20'-diameter sphere surrounds target for 20 min (DC 16 Ref neg)</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (W2 Abju): Touched DR 30 from specified energy for 200 min</td>
+      <td>Resist Energy (W2 Abju): Touched resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Resistance (W0 Abju): Touched +1 saves for 1 min</td>
     </tr><tr style="text-align:left">

@@ -201,6 +201,7 @@ var attributes = {
         <td><b>Hit Points</b>: 108</td>
         <td><b>Initiative</b>: 1</td>
         <td><b>Armor Class</b>: 14</td>
+        <td><b>Damage Reduction</b>: 10/-</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: 12/11/13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: 11/23</td>
@@ -235,6 +236,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Sickle): x2 Sickle Threat Range</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Shadow Master: DR 10/-, critical hit blinds d6 rd in dim light</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Sneak Attack: Hit +4d6 HP when surprising or flanking</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -1</i></td>
@@ -261,8 +264,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Resiliency: 1 minute of 7 temporary HP when below 0 HP 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Shadow Master: DR 10/-, critical hit blinds d6 rd in dim light</td>
-      </tr><tr style="text-align:center">
         <td>Slow Reactions: Sneak attack target no AOO 1 rd</td>
       </tr><tr style="text-align:center">
         <td>Stand Up: Stand from prone as free action</td>
@@ -273,7 +274,11 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 7; Reflex: 11; Will: 10</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 7; Reflex: 11; Will: 10</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">

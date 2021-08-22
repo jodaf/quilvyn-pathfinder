@@ -313,7 +313,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Deadly Aim; Eschew Materials; Heighten Spell; Quicken Spell; Skill Focus (Climb); Skill Focus (Knowledge (Engineering)); Skill Focus (Perform (Act)); Spell Focus (Evocation); Still Spell; Toughness; Weapon Focus (Unarmed)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Acid Dart; Acid Resistance; Agile Feet; Air Domain; Animal Companion; Animal Domain; Armor Proficiency (Medium); Artifice Domain; Artificer's Touch; Aura Of Madness; Aura Of Protection; Aura; Battle Rage; Bit Of Luck; Blast Rune; Bleeding Touch; Blind-Fight; Bramble Armor; Calming Touch; Channel Energy; Chaos Blade; Chaos Domain; Charm Domain; Charming Smile; Cold Resistance; Community Domain; Copycat; Dancing Weapons; Darkness Domain; Dazing Touch; Death Domain; Death's Embrace; Destruction Domain; Destructive Aura; Destructive Smite; Dimensional Hop; Dispelling Touch; Divine Presence; Earth Domain; Electricity Resistance; Evil Domain; Eyes Of Darkness; Fire Bolt; Fire Domain; Fire Resistance; Freedom's Call; Gentle Rest; Glory Domain; Good Domain; Good Fortune; Hand Of The Acolyte; Healer's Blessing; Healing Domain; Holy Lance; Icicle; Inspiring Word; Knowledge Domain; Law Domain; Liberation Domain; Liberation; Lightning Arc; Lightning Lord; Lore Keeper; Luck Domain; Madness Domain; Magic Domain; Master's Illusion; Might Of The Gods; Nimbus Of Light; Nobility Domain; Noble Leadership; Plant Domain; Protection Domain; Rebuke Death; Remote Viewing; Repose Domain; Resistance Bonus; Resistant Touch; Rune Domain; Scribe Scroll; Scythe Of Evil; Shield Proficiency; Speak With Animals; Spell Rune; Spontaneous Cleric Spell; Staff Of Order; Storm Burst; Strength Domain; Strength Surge Touch; Sun Domain; Sun's Blessing; Touch Of Chaos; Touch Of Darkness; Touch Of Evil; Touch Of Glory; Touch Of Good; Touch Of Law; Travel Domain; Travel Speed; Trickery Domain; Undead Bane; Unity; Vision Of Madness; War Domain; Ward Against Death; Water Domain; Weapon Master; Weapon Proficiency (Greatsword); Weapon Proficiency (Simple); Weather Domain; Wooden Fist</td>
+        <td><b>Cleric Features</b>: Acid Dart; Acid Resistance; Agile Feet; Air Domain; Animal Companion; Animal Domain; Armor Proficiency (Medium); Artifice Domain; Artificer's Touch; Aura Of Madness; Aura Of Protection; Aura; Battle Rage; Bit Of Luck; Blast Rune; Bleeding Touch; Blind-Fight; Bramble Armor; Calming Touch; Channel Energy; Chaos Blade; Chaos Domain; Charm Domain; Charming Smile; Cold Resistance; Community Domain; Copycat; Dancing Weapons; Darkness Domain; Dazing Touch; Death Domain; Death's Embrace; Destruction Domain; Destructive Aura; Destructive Smite; Dimensional Hop; Dispelling Touch; Divine Presence; Earth Domain; Electricity Resistance; Evil Domain; Eyes Of Darkness; Fire Bolt; Fire Domain; Fire Resistance; Freedom's Call; Gentle Rest; Glory Domain; Good Domain; Good Fortune; Hand Of The Acolyte; Healer's Blessing; Healing Domain; Holy Lance; Icicle; Inspiring Word; Knowledge Domain; Law Domain; Liberation Domain; Liberation; Lightning Arc; Lightning Lord; Lore Keeper; Luck Domain; Madness Domain; Magic Domain; Master's Illusion; Might Of The Gods; Nimbus Of Light; Nobility Domain; Noble Leadership; Plant Domain; Protection Domain; Rebuke Death; Remote Viewing; Repose Domain; Resistant Touch; Rune Domain; Save Bonus; Scribe Scroll; Scythe Of Evil; Shield Proficiency; Speak With Animals; Spell Rune; Spontaneous Cleric Spell; Staff Of Order; Storm Burst; Strength Domain; Strength Surge Touch; Sun Domain; Sun's Blessing; Touch Of Chaos; Touch Of Darkness; Touch Of Evil; Touch Of Glory; Touch Of Good; Touch Of Law; Travel Domain; Travel Speed; Trickery Domain; Undead Bane; Unity; Vision Of Madness; War Domain; Ward Against Death; Water Domain; Weapon Master; Weapon Proficiency (Greatsword); Weapon Proficiency (Simple); Weather Domain; Wooden Fist</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -477,25 +477,30 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 18; Reflex: 15; Will: 19</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 18; Reflex: 15; Will: 19</td>
+        <td><b>Resistance</b>: Acid: immune; Cold: immune; Electricity: immune; Fire: immune</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Acid Resistance: Resistance immune to acid</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Cold Resistance: Resistance immune to cold</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Resistance Bonus: +5 Fortitude/+5 Reflex/+5 Will</i></td>
+        <td><i>Electricity Resistance: Resistance immune to electricity</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Fire Resistance: Resistance immune to fire</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Save Bonus: +5 Fortitude/+5 Reflex/+5 Will</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
-      </tr><tr style="text-align:center">
-        <td>Acid Resistance: Immune</td>
-      </tr><tr style="text-align:center">
-        <td>Cold Resistance: Immune</td>
-      </tr><tr style="text-align:center">
-        <td>Electricity Resistance: Immune</td>
-      </tr><tr style="text-align:center">
-        <td>Fire Resistance: Immune</td>
       </tr><tr style="text-align:center">
         <td>Unity: R30' Allies use your saving throw 4/dy</td>
       </tr></table>
@@ -846,13 +851,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Earthquake (Earth8 Evoc): R1200' Intense tremor shakes 80' radius for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Air7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (Air7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Earth7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (Earth7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Fire7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (Fire7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Water7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (Water7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Swarm (Air9 Conj): R300' Summons 2d4 large, then 1d4 huge, then 1 greater  elementals for 200 min</td>
     </tr><tr style="text-align:left">
@@ -1198,7 +1203,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Nightmare (Madness5 Illu): Target 1d10 HP and fatigue (DC 17 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (Trickery3 Abju): Touched DC 31, 35 resistance to divination for 20 hr</td>
+      <td>Nondetection (Trickery3 Abju): Touched DC 31, spell resistance 35 to divination for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Obscure Object (C3 Abju): Touched immune to divination for 8 hr (DC 15 Will neg)</td>
     </tr><tr style="text-align:left">
@@ -1254,11 +1259,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Protection From Chaos (Law1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by chaotic creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (C3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (C3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (Luck3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (Luck3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (Protection3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (Protection3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Protection From Evil (C1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by evil creatures for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1320,7 +1325,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Repulsion (Protection7 Abju): Creatures stay 200' away for 20 rd (DC 19 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (C2 Abju): Touched DR 30 from specified energy for 200 min</td>
+      <td>Resist Energy (C2 Abju): Touched resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Resistance (C0 Abju): Touched +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
@@ -1416,11 +1421,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Spell Immunity (Strength4 Abju): Touched immune to 5 spells up to 4th level for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Resistance (C5 Abju): Touched +32 saves vs spells for 20 min</td>
+      <td>Spell Resistance (C5 Abju): Touched spell resistance 32 for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Resistance (Magic5 Abju): Touched +32 saves vs spells for 20 min</td>
+      <td>Spell Resistance (Magic5 Abju): Touched spell resistance 32 for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Resistance (Protection5 Abju): Touched +32 saves vs spells for 20 min</td>
+      <td>Spell Resistance (Protection5 Abju): Touched spell resistance 32 for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Spell Turning (Luck7 Abju): Self reflect onto caster 1d4+6 non-touch spell levels for 200 min</td>
     </tr><tr style="text-align:left">
@@ -1612,7 +1617,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Aura Of Madness: 30' <i>Confusion</i> (DC 22 Will neg) 20 rd/dy</td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Protection: Allies w/in 30' +4 AC, 10 elements resistance 20 rd/dy</td>
+      <td>Aura Of Protection: Allies w/in 30' +4 AC, resistance 10 to all energy for 20 rd/dy</td>
     </tr><tr style="text-align:center">
       <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
     </tr><tr style="text-align:center">

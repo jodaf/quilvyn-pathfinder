@@ -308,6 +308,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Power Of The Pit: 60' Darkvision</td>
       </tr><tr style="text-align:center">
+        <td>Soul Of The Fey: Animals attack only if magically forced</td>
+      </tr><tr style="text-align:center">
         <td>Woodland Stride: Normal movement through undergrowth</td>
       </tr></table>
 </td>
@@ -414,6 +416,7 @@ var attributes = {
         <td><b>Hit Points</b>: 96</td>
         <td><b>Initiative</b>: 1</td>
         <td><b>Armor Class</b>: 15</td>
+        <td><b>Damage Reduction</b>: 10/Cold Iron; 5/-</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: 10/15/11</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: 15/26</td>
@@ -438,6 +441,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Aberrant Form: DR 5/-</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Armor Class Adjustment: +1</i></td>
@@ -446,13 +451,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Natural Armor: +4 AC</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Soul Of The Fey: DR 10/cold iron</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +5</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +5</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +2</i></td>
-      </tr><tr style="text-align:center">
-        <td>Aberrant Form: Immune critical hit and sneak attack, DR 5/-</td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Reroll concealed miss, no melee bonus to invisible foe, no skill check on blinded full speed move</td>
       </tr><tr style="text-align:center">
@@ -466,7 +471,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elemental Blast: R60' 20' radius 20d6 HP cold (DC 23 Ref half) 3/dy</td>
       </tr><tr style="text-align:center">
-        <td>Elemental Body: Immune critical and sneak attack</td>
+        <td>Elemental Body: Immune to critical and sneak attack</td>
       </tr><tr style="text-align:center">
         <td>Improved Claws: Claws do additional 1d6 cold HP</td>
       </tr><tr style="text-align:center">
@@ -478,61 +483,67 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>One Of Us: Ignored by unintelligent undead</td>
       </tr><tr style="text-align:center">
-        <td>Soul Of The Fey: Animals attack only if magically forced</td>
-      </tr><tr style="text-align:center">
         <td>Throw Anything: No penalty for improvised ranged weapon, +1 attack w/thrown splash</td>
       </tr><tr style="text-align:center">
         <td>Unusual Anatomy: 50% chance to ignore critical hit and sneak attack</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Save</b>: Fortitude: 9; Reflex: 7; Will: 11</td>
+      <td>      <table id="SavesAndResistance" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Save</b>: Fortitude: 9; Reflex: 7; Will: 11</td>
+        <td><b>Spell Resistance</b>: 30</td>
+        <td><b>Resistance</b>: Acid: immune; Cold: immune; Electricity: immune; Fire: immune; Poison: immune</td>
+      </tr></table>
+</td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Alien Resistance: Spell resistance 30</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Ascension: Immune to petrification, resistance 10 to electricity and fire, +4 vs. poison</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Celestial Resistances: Resistance immune to acid and cold</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Death's Gift: Resistance immune to cold/DR immune/- vs. non-lethal</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Demon Resistances: Resistance immune to electricity and immune to poison</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Demonic Might: Resistance 10 to acid, cold, and fire</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Dragon Resistances: Resistance immune to cold</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Elemental Resistance: Resistance immune to cold</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Great Fortitude: +2 Fortitude</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Infernal Resistances: Resistance immune to fire and immune to poison</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Power Of The Pit: Resistance 10 to acid and cold</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alien Resistance: 30 spell resistance</td>
-      </tr><tr style="text-align:center">
-        <td>Ascension: Immune petrification, 10 electricity and fire, +4 poison</td>
+        <td>Aberrant Form: Immune to critical hit and sneak attack</td>
       </tr><tr style="text-align:center">
         <td>Bloodline Destined: +spell level on saves 1 rd after casting personal spell</td>
       </tr><tr style="text-align:center">
-        <td>Celestial Resistances: Immune acid and cold</td>
-      </tr><tr style="text-align:center">
-        <td>Death's Gift: Immune cold/DR Immune/- vs. non-lethal</td>
-      </tr><tr style="text-align:center">
-        <td>Demon Resistances: Immune electricity and immune poison</td>
-      </tr><tr style="text-align:center">
-        <td>Demonic Might: Resistance 10 acid, cold, and fire</td>
-      </tr><tr style="text-align:center">
-        <td>Dragon Resistances: Immune vs. cold</td>
-      </tr><tr style="text-align:center">
-        <td>Elemental Body: Immune cold</td>
-      </tr><tr style="text-align:center">
-        <td>Elemental Resistance: Immune vs. cold</td>
+        <td>Elemental Body: Immune to cold</td>
       </tr><tr style="text-align:center">
         <td>Fated: +5 saves when surprised</td>
       </tr><tr style="text-align:center">
-        <td>Infernal Resistances: Immune fire and immune poison</td>
+        <td>One Of Us: Immune to paralysis and sleep, +4 vs. undead's spells</td>
       </tr><tr style="text-align:center">
-        <td>One Of Us: Immune paralysis and sleep, +4 vs. undead's spells</td>
-      </tr><tr style="text-align:center">
-        <td>Power Of The Pit: Resistance 10 acid and cold</td>
-      </tr><tr style="text-align:center">
-        <td>Power Of Wyrms: Immune paralysis and sleep</td>
+        <td>Power Of Wyrms: Immune to paralysis and sleep</td>
       </tr><tr style="text-align:center">
         <td>Resist Enchantment: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Sleep Immunity: Immune <i>Sleep</i></td>
+        <td>Sleep Immunity: Immune to <i>Sleep</i></td>
       </tr><tr style="text-align:center">
-        <td>Soul Of The Fey: Immune poison and DR 10/cold iron</td>
+        <td>Soul Of The Fey: Immune to poison</td>
       </tr><tr style="text-align:center">
         <td>Within Reach: DC 20 Will save vs. fatal attack 1/dy</td>
       </tr></table>
@@ -783,9 +794,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Elemental Body III (W6 Tran): Become large air (+2 Str, +4 Dex, +4 AC, fly 60', whirlwind), earth (+6 Str, -2 Dex, +2 Con, +6 AC, earth glide), fire (+4 Dex, +2 Con, +4 AC, resist fire, burn), water (+2 Str, -2 Dex, +6 Con, +6 AC, swim 60', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Elemental7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (Elemental7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (W7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5, - for 20 min</td>
+      <td>Elemental Body IV (W7 Tran): Become huge air (+4 Str, +6 Dex, +4 AC, fly 120', whirlwind), earth (+8 Str, -2 Dex, +4 Con, +6 AC, earth glide), fire (+6 Dex, +4 Con, +4 AC, resist fire, burn), water (+4 Str, -2 Dex, +8 Con, +6 AC, swim 120', vortex, breathe water) elemental, 60' darkvision, immune bleed, critical, sneak attack, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Swarm (Elemental9 Conj): R300' Summons 2d4 large, then 1d4 huge, then 1 greater  elementals for 200 min</td>
     </tr><tr style="text-align:left">
@@ -869,13 +880,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Foresight (W9 Divi): Warnings provide +2 AC, +2 Reflex, no surprise, flat-footed for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon I (Draconic6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), element resistance, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
+      <td>Form Of The Dragon I (Draconic6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon I (W6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), element resistance, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
+      <td>Form Of The Dragon I (W6 Tran): Become Medium dragon (+4 Str, +2 Con, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon II (Draconic7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), element resistance, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
+      <td>Form Of The Dragon II (Draconic7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon II (W7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), element resistance, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
+      <td>Form Of The Dragon II (W7 Tran): Become Large dragon (+6 Str, +4 Con, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Form Of The Dragon III (Draconic8 Tran): Become Huge dragon (+10 Str, +8 Con, +8 AC, Fly 120', Blindsense 60', Darkvision 120', breath weapon 1, d4 rd 12d8 HP (DC 21 Ref half), element immunity, bite 2d8 HP, claws 2x2d6 HP, wings 2x1d8 HP, tail 2d6 HP) for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1151,7 +1162,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Nightmare (W5 Illu): Target 1d10 HP and fatigue (DC 18 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (W3 Abju): Touched DC 31, 35 resistance to divination for 20 hr</td>
+      <td>Nondetection (W3 Abju): Touched DC 31, spell resistance 35 to divination for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Obscure Object (W2 Abju): Touched immune to divination for 8 hr (DC 15 Will neg)</td>
     </tr><tr style="text-align:left">
@@ -1231,11 +1242,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Protection From Chaos (W1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by chaotic creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (Destined3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (Destined3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (Elemental3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (Elemental3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (W3 Abju): Touched ignores up to 120 HP from specified energy for 200 min</td>
+      <td>Protection From Energy (W3 Abju): Touched resistance 120 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Protection From Evil (W1 Abju): Touched +2 AC, +2 saves, extra save vs. mental control, no contact by evil creatures for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1277,11 +1288,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Resilient Sphere (W4 Evoc): R75' Impassible and immobile 20'-diameter sphere surrounds target for 20 min (DC 17 Ref neg)</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Celestial2 Abju): Touched DR 30 from specified energy for 200 min</td>
+      <td>Resist Energy (Celestial2 Abju): Touched resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Draconic2 Abju): Touched DR 30 from specified energy for 200 min</td>
+      <td>Resist Energy (Draconic2 Abju): Touched resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (W2 Abju): Touched DR 30 from specified energy for 200 min</td>
+      <td>Resist Energy (W2 Abju): Touched resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Resistance (W0 Abju): Touched +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
@@ -1361,7 +1372,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Spectral Hand (W2 Necr): Self yield 1d4 HP to glowing hand to deliver touch attacks at +2 for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Resistance (Draconic5 Abju): Touched +32 saves vs spells for 20 min</td>
+      <td>Spell Resistance (Draconic5 Abju): Touched spell resistance 32 for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Spell Turning (Destined7 Abju): Self reflect onto caster 1d4+6 non-touch spell levels for 200 min</td>
     </tr><tr style="text-align:left">
@@ -1567,13 +1578,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Corrupting Touch: Touch causes shaken 10 rd 6/dy</td>
     </tr><tr style="text-align:center">
-      <td>Destiny Realized: Automatically overcome resistance 1/dy</td>
+      <td>Destiny Realized: Automatically overcome spell resistance 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Ray: R30' 1d6+10 HP cold 6/dy</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Cast spells w/out materials</td>
     </tr><tr style="text-align:center">
-      <td>Fey Magic: Reroll any resistance check</td>
+      <td>Fey Magic: Reroll any spell resistance check</td>
     </tr><tr style="text-align:center">
       <td>Fleeting Glance: Self invisible 20 rd/dy</td>
     </tr><tr style="text-align:center">
