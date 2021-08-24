@@ -4410,6 +4410,12 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
 Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   SRD35.combatRules(rules, armors, shields, weapons);
   // Pathfinder-specific attributes
+  rules.defineChoice('notes',
+    'damageReduction.-:%V/%N',
+    'damageReduction.Chaotic:%V/%N',
+    'damageReduction.Cold Iron:%V/%N',
+    'damageReduction.Evil:%V/%N'
+  );
   rules.defineRule('combatManeuverBonus',
     'baseAttack', '=', null,
     'strengthModifier', '+', null
@@ -4824,7 +4830,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('combatNotes.damageReduction',
-      'levels.Barbarian', '+=', 'Math.floor((source - 4) / 3)'
+      'levels.Barbarian', '^=', 'Math.floor((source - 4) / 3)'
     );
     rules.defineRule('combatNotes.increasedDamageReduction',
       'features.Increased Damage Reduction', '=', null
