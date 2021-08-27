@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.2.2.19';
+Pathfinder.VERSION = '2.3.1.0';
 
 /* List of items handled by choiceRules method. */
 Pathfinder.CHOICES = [
@@ -807,8 +807,7 @@ Pathfinder.FEATURES = {
   'Aura':
     'Section=magic ' +
     'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
-  'Aura Of Courage':
-    'Section=save Note="Immune to fear, +4 to allies w/in 10\'"',
+  'Aura Of Courage':'Section=save Note="Immune fear, R10\' +4 to allies"',
   'Bardic Knowledge':
     'Section=skill Note="+%V all Knowledge, use any Knowledge untrained"',
   'Blind-Fight':
@@ -829,7 +828,7 @@ Pathfinder.FEATURES = {
   'Companion Improved Evasion':
     'Section=companion Note="Failed Reflex save yields half damage"',
   'Countersong':
-    'Section=magic Note="R30\' Perform check vs. sonic magic for 10 rd"',
+    'Section=magic Note="R30\' Perform check vs. sonic magic while performing"',
   'Craft Magic Arms And Armor':
     'Section=magic Note="Create and mend magic weapons, armor, and shields"',
   'Craft Rod':'Section=magic Note="Create magic rod"',
@@ -850,7 +849,7 @@ Pathfinder.FEATURES = {
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="Deliver touch spells if in contact w/master when cast"',
-  'Detect Evil':'Section=magic Note="<i>Detect Evil</i> at will"',
+  'Detect Evil':'Section=magic Note="R60\' <i>Detect Evil</i> at will"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
   'Diamond Body':'Section=save Note="Immune to poison"',
   'Diamond Soul':'Section=save Note="Spell resistance %V"',
@@ -890,7 +889,7 @@ Pathfinder.FEATURES = {
   'Far Shot':'Section=combat Note="-1 range penalty"',
   'Fascinate':
     'Section=magic ' +
-    'Note="R90\' Hold %V creatures spellbound %1 rd (DC %2 Will neg)"',
+    'Note="R90\' Hold %V creatures spellbound while performing (DC %1 Will neg)"',
   'Fast Movement':'Section=ability Note="+%V Speed"',
   'Favored Enemy':
     'Section=combat,skill ' +
@@ -899,7 +898,7 @@ Pathfinder.FEATURES = {
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Flurry Of Blows':
     'Section=combat ' +
-    'Note="Full-round %V +%1 monk weapon attacks, use 1 ki for one more"',
+    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks, use 1 ki for additional %8"',
   'Forge Ring':'Section=magic Note="Create and mend magic rings"',
   'Gnome Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Charisma/-2 Strength"',
@@ -961,17 +960,17 @@ Pathfinder.FEATURES = {
     'Note="No penalty for improvised weapon, improvised damage +1 step, crit x2@19"',
   'Increased Damage Reduction':'Section=combat Note="+%V DR/- during rage"',
   'Increased Unarmed Damage':'Section=combat Note="%V"',
-  'Indomitable Will':'Section=save Note="+4 vs. enchantment during rage"',
+  'Indomitable Will':'Section=save Note="+4 Will vs. enchantment during rage"',
   'Inspire Competence':
-    'Section=magic Note="+%V allies skill checks while performing"',
+    'Section=magic Note="R30\' Allies +%V skill checks while performing"',
   'Inspire Courage':
     'Section=magic ' +
-    'Note="+%V allies attack, damage, charm, fear saves while performing"',
+    'Note="Allies +%V attack, damage, charm and fear saves while performing"',
   'Inspire Greatness':
     'Section=magic ' +
-    'Note="%V allies +2d10 HP, +2 attack, +1 Fortitude while performing"',
+    'Note="R30\' %V allies +2d10 HP, +2 attack, +1 Fortitude while performing"',
   'Inspire Heroics':
-    'Section=magic Note="%V allies +4 AC and saves while performing"',
+    'Section=magic Note="R30\' %V allies +4 AC and saves while performing"',
   'Iron Will':'Section=save Note="+2 Will"',
   'Keen Senses':'Section=skill Note="+2 Perception"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
@@ -985,7 +984,7 @@ Pathfinder.FEATURES = {
   'Lightning Reflexes':'Section=save Note="+2 Reflex"',
   'Link':
     'Section=skill ' +
-    'Note="+4 Handle Animal (companion)/Wild Empathy (companion)"',
+    'Note="+4 Handle Animal (companion)/+4 Wild Empathy (companion)"',
   'Low-Light Vision':'Section=feature Note="x2 normal distance in poor light"',
   'Low-Light Rage':
     'Section=feature Note="x2 normal distance in poor light during rage"',
@@ -1036,7 +1035,8 @@ Pathfinder.FEATURES = {
   'Resist Enchantment':'Section=save Note="+2 vs. enchantment"',
   'Resist Fear':'Section=save Note="+2 vs. fear"',
   'Resist Illusion':'Section=save Note="+2 vs. illusions"',
-  "Resist Nature's Lure":'Section=save Note="+4 vs. spells of feys"',
+  "Resist Nature's Lure":
+    'Section=save Note="+4 vs. spells of feys and spells targeting plants"',
   'Ride-By Attack':'Section=combat Note="Move before, after mounted attack"',
   'Run':
     'Section=ability,combat,skill ' +
@@ -1073,7 +1073,7 @@ Pathfinder.FEATURES = {
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat ' +
-    'Note="+%V attack, +%1 damage, and +%2 AC vs. evil foe %3/dy"',
+    'Note="+%V attack, +%1 damage, bypass DR, and +%2 AC vs. evil foe %3/dy"',
   'Snatch Arrows':'Section=combat Note="Catch ranged weapons"',
   'Sneak Attack':
     'Section=combat Note="Hit +%Vd6 HP when surprising or flanking"',
@@ -1102,10 +1102,10 @@ Pathfinder.FEATURES = {
   'Stonecunning':
     'Section=skill Note="+2 Perception (stone), automatic check w/in 10\'"',
   'Stunning Fist':
-    'Section=combat Note="Struck foe stunned 1 rd %V/dy (DC %1 Fort neg)"',
+    'Section=combat Note="Struck foe stunned for 1 rd %V/dy (DC %1 Fort neg)"',
   'Suggestion':
     'Section=magic ' +
-    'Note="<i>Suggestion</i> to 1 fascinated creature (DC %V neg)"',
+    'Note="<i>Suggestion</i> to 1 fascinated creature (DC %V Will neg)"',
   'Swift Tracker':'Section=skill Note="Track at full speed"',
   'Timeless Body':'Section=feature Note="No aging penalties"',
   'Tireless Rage':'Section=combat Note="Not fatigued after rage"',
@@ -1141,7 +1141,7 @@ Pathfinder.FEATURES = {
   'Widen Spell':'Section=magic Note="x2 area of affect uses +3 spell slot"',
   'Wild Empathy':'Section=skill Note="+%V Diplomacy (animals)"',
   'Wild Shape':
-    'Section=magic Note="Change into creature of size %V %1 hr %2/dy"',
+    'Section=magic Note="Change into creature of size %V for %1 hr %2/dy"',
   'Woodland Stride':
     'Section=feature Note="Normal movement through undergrowth"',
   // New features
@@ -1152,6 +1152,7 @@ Pathfinder.FEATURES = {
          '"Blindsight 60\'",' +
          '"Immune to critical hit and sneak attack"',
   'Acid Dart':'Section=magic Note="R30\' touch 1d6+%1 HP %V/dy"',
+  'Acid Dart Conjuration':'Section=magic Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Acid Resistance':'Section=save Note="Resistance %V to acid"',
   'Acidic Ray':'Section=magic Note="R30\' %Vd6 HP %1/dy"',
   'Acrobatic Steps':
@@ -1162,7 +1163,7 @@ Pathfinder.FEATURES = {
     'Note="<i>Summon Monster</i> brings additional demon or fiendish creature"',
   'Adopted':'Section=feature Note="Family race traits available"',
   'Agile Feet':
-    'Section=feature Note="Unaffected by difficult terrain 1 rd %V/dy"',
+    'Section=feature Note="Unaffected by difficult terrain for 1 rd %V/dy"',
   'Agile Maneuvers':'Section=combat Note="+%V CMB"',
   'Aid Allies':'Section=combat Note="+1 aid another action"',
   'Alien Resistance':'Section=save Note="Spell resistance %V"',
@@ -1182,7 +1183,7 @@ Pathfinder.FEATURES = {
     'Section=save,skill ' +
     'Note="+1 Will when unhostile animal w/in 30\'",' +
          '"Handle Animal is a class skill"',
-  'Animal Fury':'Section=combat Note="Bite attack %V+%1 during rage"',
+  'Animal Fury':'Section=combat Note="%1 bite attack for %V+%2 HP during rage"',
   'Apothecary':'Section=feature Note="Has reliable poisons source"',
   'Arcane Apotheosis':
     'Section=magic Note="Expend 3 spell slots to power 1 magic item charge"',
@@ -1194,7 +1195,7 @@ Pathfinder.FEATURES = {
   'Arcane Armor Training':
     'Section=magic Note="Reduce armored casting penalty 10%"',
   'Arcane Strike':
-    'Section=combat Note="Imbue weapons with +%V magic damage bonus 1 rd"',
+    'Section=combat Note="Imbue weapons with +%V magic damage bonus for 1 rd"',
   'Armor Expert':'Section=skill Note="-1 armor skill check penalty"',
   'Armor Mastery':'Section=combat Note="DR 5/- when using armor or shield"',
   'Armor Training':
@@ -1204,74 +1205,74 @@ Pathfinder.FEATURES = {
          '"Reduce armor skill check penalty by %V"',
   "Artificer's Touch":
     'Section=combat,magic ' +
-    'Note="Touch attack on objects and constructs 1d6+%1 HP %V/dy",' +
+    'Note="Touch attack on objects and constructs 1d6+%1 HP, bypassing DR and hardness, %V/dy",' +
          '"<i>Mending</i> at will"',
   'Ascension':
     'Section=magic,save ' +
     'Note="Speak any language",' +
-         '"Immune to petrification, resistance 10 to electricity and fire, +4 vs. poison"',
+         '"Immune to acid, cold, and petrification, resistance 10 to electricity and fire, +4 vs. poison"',
   'Attuned To The Ancestors':
-    'Section=magic Note="<i>Hide From Undead</i> %V rd 1/dy"',
+    'Section=magic Note="<i>Hide From Undead</i> for %V rd 1/dy"',
   'Aura Of Despair':
     'Section=magic ' +
-    'Note="R30\' Foes -2 ability, attack, damage, save, and skill %V rd/dy"',
+    'Note="R30\' Foes -2 ability, attack, damage, save, and skill for %V rd/dy"',
   'Aura Of Faith':'Section=combat Note="R10\' attacks good-aligned"',
   'Aura Of Justice':
     'Section=combat Note="R10\' Use 2 Smite Evil to grant use to allies"',
   'Aura Of Madness':
-    'Section=magic Note="30\' <i>Confusion</i> (DC %1 Will neg) %V rd/dy"',
+    'Section=magic ' +
+    'Note="30\' <i>Confusion</i> effects for %V rd/dy (DC %1 Will neg)"',
   'Aura Of Protection':
     'Section=magic ' +
     'Note="Allies w/in 30\' +%V AC, resistance %1 to all energy for %2 rd/dy"',
-  'Aura Of Resolve':
-    'Section=save Note="Immune to charm, +4 to allies w/in 10\'"',
+  'Aura Of Resolve':'Section=save Note="Immune charm, R10\' +4 to allies"',
   'Aura Of Righteousness':
     'Section=combat,save ' +
     'Note="DR %V/evil",' +
-         '"Immune to compulsion, +4 to allies w/in 10\'"',
+         '"Immune compulsion, R10\' +4 to allies"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
     'Section=combat Note="Cleric-like elemental attack %V/dy"',
   'Bardic Performance':
-    'Section=feature Note="Bardic Performance effect %V rd/dy"',
+    'Section=feature Note="Bardic Performance effect for %V rd/dy"',
   'Battle Rage':
-    'Section=combat Note="Touch imparts +%V damage bonus 1 rd %1/dy"',
+    'Section=combat Note="Touch imparts +%V damage bonus for 1 rd %1/dy"',
   'Beastspeaker':
     'Section=skill ' +
     'Note="+1 Diplomacy (animals), no penalty w/elemental animals"',
   'Beneficent Touch':'Section=magic Note="Reroll healing spell 1s 1/dy"',
   'Birthmark':'Section=save Note="+2 vs. charm, compulsion"',
-  'Bit Of Luck':'Section=magic Note="Touch imparts reroll d20 next rd %V/dy"',
+  'Bit Of Luck':'Section=magic Note="Touch imparts reroll d20 for 1 rd %V/dy"',
   'Bitter Nobleman':
     'Section=skill ' +
     'Note="+1 choice of Bluff, Sleight Of Hand, Stealth/choice is a class skill"',
   'Blast Rune':
     'Section=magic ' +
-    'Note="Rune in adjacent square causes 1d6+%1 HP for %V rd %2/dy"',
+    'Note="Rune in adjacent square causes 1d6+%1 HP energy damage for %V rd %2/dy"',
   'Bleeding Attack':
     'Section=combat Note="Sneak attack causes extra %V HP/rd until healed"',
   'Bleeding Critical':
     'Section=combat Note="Critical hit causes 2d6 HP/rd until healed (DC 15)"',
   'Bleeding Touch':
     'Section=combat ' +
-    'Note="Touch attack causes 1d6 HP/rd %V rd or until healed (DC 15) %1/dy"',
+    'Note="Touch attack causes 1d6 HP/rd for %V rd or until healed (DC 15) %1/dy"',
   'Blinding Critical':
     'Section=combat ' +
     'Note="Critical hit causes permanent blindness (DC %V Fort dazzled 1d4 rd)"',
   'Blinding Ray':
-    'Section=magic Note="R30\' Ranged touch blinds or dazzles target 1 rd %V/dy"',
+    'Section=magic Note="R30\' Ranged touch blinds or dazzles target for 1 rd %V/dy"',
   'Blindsense':
     'Section=feature ' +
     'Note="R%V\' Other senses allow detection of unseen objects"',
   'Bloodline Aberrant':'Section=magic Note="Polymorph spells last 50% longer"',
   'Bloodline Abyssal':'Section=magic Note="Summoned creatures gain DR %V/good"',
-  'Bloodline Arcane':'Section=magic Note="+1 boosted spell DC"',
+  'Bloodline Arcane':'Section=magic Note="+1 metamagicked spell DC"',
   'Bloodline Celestial':
     'Section=magic Note="Summoned creatures gain DR %V/evil"',
   'Bloodline Destined':
     'Section=save ' +
-    'Note="+spell level on saves 1 rd after casting personal spell"',
+    'Note="+spell level on saves for 1 rd after casting personal spell"',
   'Bloodline Draconic':'Section=magic Note="+1 damage per die on %V spells"',
   'Bloodline Elemental':'Section=magic Note="Change spell energy type to %V"',
   'Bloodline Fey':'Section=magic Note="+2 compulsion spell DC"',
@@ -1282,7 +1283,7 @@ Pathfinder.FEATURES = {
   'Bonus Feat':'Section=feature Note="+1 General Feat"',
   'Bramble Armor':
     'Section=combat ' +
-    'Note="Thorny hide causes 1d6+%1 HP to striking foes %V/dy"',
+    'Note="Thorny hide causes 1d6+%1 HP to striking foes for %V rd/dy"',
   'Bravery':'Section=save Note="+%V vs. fear"',
   'Breath Weapon':'Section=combat Note="%1 %2 %3d6 HP (%4 DC Ref half) %V/dy"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
@@ -1304,15 +1305,15 @@ Pathfinder.FEATURES = {
   'Celestial Resistances':'Section=save Note="Resistance %V to acid and cold"',
   'Change Shape':
     'Section=magic ' +
-    'Note="<i>Beast Shape %1</i>/<i>Elemental Body %2</i> %V rd/dy"',
+    'Note="<i>Beast Shape %1</i>/<i>Elemental Body %2</i> for %V rd/dy"',
   'Channel Energy':
     'Section=magic ' +
-    'Note="Heal or inflict %1d6 HP 30\' radius (DC %2 Will half) %V/dy"',
+    'Note="R30\' Heal or inflict %1d6 HP (DC %2 Will half) %V/dy"',
   'Channel Smite':
     'Section=combat Note="Channel energy into weapon strike as swift action"',
   'Chaos Blade':
-    'Section=combat Note="Add <i>anarchic</i> to weapon %1 rd %V/dy"',
-  'Charming Smile':'Section=magic Note="DC %V <i>Charm Person</i> %1 rd/dy"',
+    'Section=combat Note="Add <i>anarchic</i> to weapon for %1 rd %V/dy"',
+  'Charming Smile':'Section=magic Note="<i>Charm Person</i> effect for %1 rd/dy (DC %V Will neg)"',
   'Charming':
     'Section=magic,skill ' +
     'Note="+1 spell DC w/attracted creatures",' +
@@ -1327,7 +1328,7 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (Nobility)/+1 Knowledge (Religion)/choice is a class skill"',
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
-  'Claws':'Section=combat Note="%V+%1 HP %2 rd/dy"',
+  'Claws':'Section=combat Note="2 %3 attacks %V+%1 HP for %2 rd/dy"',
   'Clear Mind':'Section=save Note="Reroll Will save 1/rage"',
   'Cold Resistance':'Section=save Note="Resistance %V to cold"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
@@ -1341,26 +1342,30 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
   'Condition Fist':
     'Section=combat Note="Stunning Fist may instead make target %V"',
-  'Conjured Acid Dart':'Section=magic Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Conviction':
     'Section=feature Note="Reroll ability, attack, skill, or save 1/dy"',
-  'Copycat':'Section=magic Note="<i>Mirror Image</i> %V rd %1/dy"',
-  'Corrupting Touch':'Section=magic Note="Touch causes shaken %V rd %1/dy"',
+  'Copycat':'Section=magic Note="<i>Mirror Image</i> for %V rd %1/dy"',
+  'Corrupting Touch':'Section=magic Note="Touch causes shaken for %V rd %1/dy"',
   'Courageous':'Section=save Note="+2 vs. fear"',
   'Critical Focus':'Section=combat Note="+4 confirm critical"',
   'Critical Mastery':'Section=combat Note="Apply two effects to critical hits"',
   'Dancing Weapons':
-    'Section=combat Note="Add <i>dancing</i> to weapon 4 rd %V/dy"',
+    'Section=combat Note="Add <i>dancing</i> to weapon for 4 rd %V/dy"',
   'Dangerously Curious':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Dazing Touch':'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
+  'Dazing Touch':
+    'Section=magic Note="Touch attack dazes %V HD foe for 1 rd %1/dy"',
+  'Dazing Touch Enchantment':
+    'Section=magic Note="Touch attack dazes %V HD foe for 1 rd %1/dy"',
   'Dazzling Display':
     'Section=combat ' +
     'Note="R30\' Intimidate to demoralize foes using focused weapon"',
   'Deadly Aim':
     'Section=combat Note="Trade up to -%V ranged attack for +%1 damage"',
-  'Deadly Performance':'Section=magic Note="Target killed (DC %V Will neg)"',
+  'Deadly Performance':
+    'Section=magic ' +
+    'Note="R30\' Target killed by performance (DC %V Will staggers 1d4 rd)"',
   'Deadly Stroke':
     'Section=combat ' +
     'Note="x2 damage and 1 point Con bleed w/focused weapon against stunned or flat-footed foe"',
@@ -1391,7 +1396,7 @@ Pathfinder.FEATURES = {
          '"Automatically overcome spell resistance 1/dy"',
   'Destructive Aura':
     'Section=combat ' +
-    'Note="R30\' Attacks +%V damage and critical confirmed %1 rd/dy"',
+    'Note="R30\' Attacks +%V damage and critical confirmed for %1 rd/dy"',
   'Destructive Smite':'Section=combat Note="+%V damage %1/dy"',
   "Devil's Mark":
     'Section=skill ' +
@@ -1410,19 +1415,20 @@ Pathfinder.FEATURES = {
     'Section=magic Note="<i>Dispel Magic</i> touch attack %V/dy"',
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Distraction':
-    'Section=magic Note="R30\' Perform check vs. visual magic 10 rd"',
+    'Section=magic ' +
+    'Note="R30\' Perform check vs. visual magic while performing"',
   'Divine Courtesan':
     'Section=skill ' +
     'Note="+1 Diplomacy (gather information)/+1 Sense Motive/choice is a class skill"',
   'Divine Mount':'Section=feature Note="Magically summon mount %V/dy"',
   'Divine Presence':
-    'Section=magic Note="R30\' Allies DC %V <i>Sanctuary</i> %1 rd/dy"',
+    'Section=magic Note="R30\' Allies DC %V <i>Sanctuary</i> for %1 rd/dy"',
   'Divine Warrior':'Section=magic Note="Enspelled weapons +1 damage"',
   'Divine Weapon':
-    'Section=combat Note="Add %V enhancements to weapon %1 minutes %2/dy"',
+    'Section=combat Note="Add %V enhancements to weapon for %1 min %2/dy"',
   "Diviner's Fortune":
     'Section=magic ' +
-    'Note="Touched creature +%V attack, skill, ability, and save 1 rd %1/dy"',
+    'Note="Touched creature +%V attack, skill, ability, and save for 1 rd %1/dy"',
   'Double Slice':
     'Section=combat Note="Add full Str modifier to off-hand damage"',
   'Dragon Resistances':'Section=save Note="Resistance %V to %1"',
@@ -1455,7 +1461,7 @@ Pathfinder.FEATURES = {
   'Elemental Resistance':'Section=save Note="Resistance %V to %1"',
   'Elemental Wall':
     'Section=magic ' +
-    'Note="<i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> %V rd/dy"',
+    'Note="<i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> for %V rd/dy"',
   'Elf Blood':'Section=feature Note="Elf and human for racial effects"',
   'Elven Magic':
     'Section=magic,skill ' +
@@ -1466,11 +1472,7 @@ Pathfinder.FEATURES = {
     'Section=save,skill ' +
     'Note="Successful save reflects enchantment spells onto caster",' +
          '"+%V Bluff/+%V Diplomacy/+%V Intimidate"',
-  'Enchantment Dazing Touch':
-    'Section=magic Note="Touch attack dazes %V HD foe 1 rd %1/dy"',
   'Energy Absorption':'Section=save Note="Ignore %V HP energy/dy"',
-  'Energy Resistance':
-    'Section=save Note="Resistance %V to chosen energy type each dy"',
   'Exhausting Critical':
     'Section=combat Note="Critical hit causes foe exhaustion"',
   'Exile':'Section=combat Note="+2 Initiative"',
@@ -1486,7 +1488,7 @@ Pathfinder.FEATURES = {
   'Eyes And Ears Of The City':
     'Section=skill Note="+1 Perception/Perception is a class skill"',
   'Eyes Of Darkness':
-    'Section=feature Note="Normal vision in any lighting %V rd/dy"',
+    'Section=feature Note="Normal vision in any lighting for %V rd/dy"',
   'Failed Apprentice':'Section=save Note="+1 vs. arcane spells"',
   'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
   'Fashionable':
@@ -1494,11 +1496,13 @@ Pathfinder.FEATURES = {
     'Note="+1 Bluff, Diplomacy, Sense Motive when well-dressed/choice is a class skill"',
   'Fast Stealth':'Section=skill Note="Use Stealth at full speed"',
   'Fast-Talker':'Section=skill Note="+1 Bluff/Bluff is a class skill"',
-  'Fated':'Section=save Note="+%V saves when surprised"',
+  'Fated':
+    'Section=combat,save ' +
+    'Note="+%V AC when surprised","+%V saves when surprised"',
   'Favored Terrain':
     'Section=combat,skill ' +
-    'Note="+2 Initiative in %V terrain type(s)",' +
-         '"+2 Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)"',
+    'Note="+2 or more Initiative in %V terrain type(s)",' +
+         '"+2 or more Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)"',
   'Fearless Rage':
     'Section=save Note="Cannot be shaken or frightened during rage"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
@@ -1508,11 +1512,12 @@ Pathfinder.FEATURES = {
   'Finesse Rogue':'Section=feature Note="Weapon Finesse"',
   'Fire Bolt':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Fire Resistance':'Section=save Note="Resistance %V to fire"',
-  'Fires Of Hell':'Section=combat Note="Flaming blade +1 damage %V rd 1/dy"',
+  'Fires Of Hell':
+    'Section=combat Note="Flaming blade +1 damage for %V rd 1/dy"',
   'Flame Of The Dawn Flower':
     'Section=combat Note="+2 scimitar critical damage"',
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
-  'Fleeting Glance':'Section=magic Note="Self invisible %V rd/dy"',
+  'Fleeting Glance':'Section=magic Note="Self invisible for %V rd/dy"',
   'Focused Mind':'Section=magic Note="+2 concentration checks"',
   'Force For Good':
     'Section=magic Note="+1 caster level on good-aligned spells"',
@@ -1521,7 +1526,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="+%V Initiative/%1Always act in surprise round"',
   'Forlorn':'Section=save Note="+1 Fortitude"',
   'Fortified Drinker':
-    'Section=save Note="+2 vs. mental effect 1 hr after drinking"',
+    'Section=save Note="+2 vs. mental effect for 1 hr after drinking"',
   'Fortified':
     'Section=combat ' +
     'Note="20% chance to negate critical hit or sneak attack 1/dy"',
@@ -1529,11 +1534,11 @@ Pathfinder.FEATURES = {
     'Section=combat,skill Note="+1 surprise attack","+1 Stealth"',
   "Freedom's Call":
     'Section=magic ' +
-    'Note="R30\' Allies unaffected by movement conditions %V rd/dy"',
+    'Note="R30\' Allies unaffected by confused, grappled, frightened, panicked, paralyzed, pinned, or shaken for %V rd/dy"',
   'Frightening Tune':
-    'Section=magic Note="R30\' DC %V Will <i>Cause Fear</i> via performance"',
+    'Section=magic Note="R30\' Foes flee while performing (DC %V Will neg)"',
   'Gentle Rest':
-    'Section=magic Note="Touch staggers 1 rd (undead %1 rd) %V/dy"',
+    'Section=magic Note="Touch staggers for 1 rd (undead for %1 rd) %V/dy"',
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
   'Gnome Magic':'Section=magic Note="+1 DC on Illusion spells"',
   'Gold Finger':
@@ -1545,14 +1550,16 @@ Pathfinder.FEATURES = {
     'Note="Unarmed attack vs. slowed foe staggers (DC %V Fort neg)"',
   'Grasp Of The Dead':
     'Section=magic ' +
-    'Note="R60\' Skeletal arms claw 20\' radius %Vd6 HP (DC %1 Ref half) %2/dy"',
-  'Grave Touch':'Section=magic Note="Touch causes shaken %V rd %1/dy"',
+    'Note="R60\' Skeletal arms claw 20\' radius %Vd6 HP (DC %1 Ref half) for 1 rd %2/dy"',
+  'Grave Touch':'Section=magic Note="Touch causes shaken for %V rd %1/dy"',
+  'Grave Touch Necromantic':
+    'Section=magic Note="Touch causes shaken for %V rd %1/dy"',
   'Greasy Palm':'Section=feature Note="10% discount on bribes"',
   'Greater Bull Rush':
     'Section=combat Note="+2 Bull Rush checks, AOO on Bull Rushed foes"',
   'Greater Disarm':
     'Section=combat Note="+2 disarm checks, disarmed weapons land 15\' away"',
-  'Greater Feint':'Section=combat Note="Feinted foe loses Dex bonus 1 rd"',
+  'Greater Feint':'Section=combat Note="Feinted foe loses Dex bonus for 1 rd"',
   'Greater Grapple':
     'Section=combat Note="+2 grapple checks, maintain grapple as move action"',
   'Greater Overrun':
@@ -1576,18 +1583,20 @@ Pathfinder.FEATURES = {
     'Section=combat,skill ' +
     'Note="+1 attack during escape",' +
          '"+1 skills during escape/Escape Artist is a class skill"',
-  'Hand Of The Acolyte':'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
+  'Hand Of The Acolyte':
+    'Section=combat Note="R30\' +%V attck w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
     'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
   'Hardy':'Section=save Note="+2 vs. poison and spells"',
-  "Healer's Blessing":'Section=magic Note="50% bonus on healed damage"',
+  "Healer's Blessing":
+    'Section=magic Note="<i>Cure</i> spells heal 50% more HP"',
   'Heavenly Fire':
     'Section=magic ' +
-    'Note="R30\' Ranged touch heal good or harm evil 1d4+%V HP %1/dy"',
+    'Note="R30\' Ranged touch heal good or harm evil 1d4+%1 HP %V/dy"',
   'Hedge Magician':'Section=magic Note="5% discount on magic craft cost"',
   'Hellfire':
     'Section=magic ' +
-    'Note="R60\' 10\' radius %Vd6 HP (DC %1 Ref half), good target shaken %2 rd %3/dy"',
+    'Note="R60\' 10\' radius %Vd6 HP (DC %1 Ref half), good target shaken for %2 rd %3/dy"',
   'High Jump':'Section=skill Note="+%V Acrobatics (jump), use 1 ki for +20"',
   'Highlander':
     'Section=skill ' +
@@ -1596,7 +1605,8 @@ Pathfinder.FEATURES = {
   'Holy Champion':
     'Section=magic ' +
     'Note="Maximize lay on hands, Smite Evil DC %V <i>Banishment</i>"',
-  'Holy Lance':'Section=combat Note="Add <i>holy</i> to weapon %1 rd %V/dy"',
+  'Holy Lance':
+    'Section=combat Note="Add <i>holy</i> to weapon for %1 rd %V/dy"',
   'Horse Lord':'Section=skill Note="+2 Ride/Ride is a class skill"',
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
   "Hunter's Eye":
@@ -1607,17 +1617,20 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (Local)/+2 Diplomacy (gather information)"',
   'Icicle':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Impressive Presence':
-    'Section=combat Note="Adjacent foes shaken 1 rd 1/dy (DC %V Will neg)"',
+    'Section=combat Note="Adjacent foes shaken for 1 rd 1/dy (DC %V Will neg)"',
   'Improved Channel':'Section=magic Note="+2 DC on channeled energy"',
   'Improved Claws':'Section=combat Note="Claws do additional 1d6 %V HP"',
   'Improved Great Fortitude':'Section=save Note="Reroll Fort 1/dy"',
   'Improved Iron Will':'Section=save Note="Reroll Will 1/dy"',
   'Improved Lightning Reflexes':'Section=save Note="Reroll Ref 1/dy"',
+  'Improved Quarry':
+    'Section=combat,skill ' +
+    'Note="+4 attack vs. target","Take 20 to track target"',
   'Improved Vital Strike':'Section=combat Note="3x base damage"',
   'Improved Weapon Mastery':
     'Section=combat ' +
     'Note="No penalties for improvised weapons, improvised weapon damage +step, critical x2@19"',
-  'Incorporeal Form':'Section=magic Note="Incorporeal %V rd 1/dy"',
+  'Incorporeal Form':'Section=magic Note="Incorporeal for %V rd 1/dy"',
   'Indomitable Faith':'Section=save Note="+1 Will"',
   'Indomitable':'Section=save Note="+1 vs. enchantment"',
   'Infernal Resistances':
@@ -1631,7 +1644,7 @@ Pathfinder.FEATURES = {
     'Note="+1 choice of Diplomacy or Knowledge (Local)/choice is a class skill"',
   'Inspiring Word':
     'Section=magic ' +
-    'Note="R30\' word imparts +2 attack, skill, ability, and save to target %V rd %1/dy"',
+    'Note="R30\' word imparts +2 attack, skill, ability, and save to target for %V rd %1/dy"',
   'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
   'Internal Fortitude':
     'Section=save Note="Cannot be sickened or nauseated during rage"',
@@ -1640,26 +1653,27 @@ Pathfinder.FEATURES = {
     'Note="Successful Intimidate during rage shakes foe at least 1d4 rd"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
   'Intimidating':'Section=skill Note="+2 Intimidate"',
-  'Invisibility Field':'Section=magic Note="Self invisible %V rd/dy"',
+  'Invisibility Field':'Section=magic Note="Self invisible for %V rd/dy"',
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="Reroll attack, critical, or spell resistance check %V/dy"',
-  'Jack-Of-All-Trades':'Section=skill Note="Use any skill untrained"',
+  'Jack-Of-All-Trades':'Section=skill Note="Use any skill untrained%1%2"',
   'Ki Dodge':'Section=combat Note="Use 1 ki for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="Use 1 ki for +20 Speed"',
   'Killer':'Section=combat Note="Extra damage on critical hit"',
   'Knockback':
     'Section=combat Note="Successful Bull Rush during rage does %V HP"',
-  'Laughing Touch':'Section=magic Note="Touch causes 1 rd of laughter %V/dy"',
+  'Laughing Touch':'Section=magic Note="Touch causes laughter for 1 rd %V/dy"',
   'Ledge Walker':
     'Section=skill Note="Use Acrobatics along narrow surfaces at full speed"',
-  'Liberation':'Section=magic Note="Ignore movement impediments %V rd/dy"',
+  'Liberation':'Section=magic Note="Ignore movement impediments for %V rd/dy"',
   'Librarian':
     'Section=skill ' +
     'Note="+1 Linguistics/+1 Profession (Librarian)/choice is a class skill/+1 reading bonus 1/dy"',
   'Life Sight':
-    'Section=feature Note="R%V\' Blindsight for living and undead %1 rd/dy"',
+    'Section=feature ' +
+    'Note="R%V\' Blindsight for living and undead for %1 rd/dy"',
   'Lightning Arc':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Lightning Lord':'Section=magic Note="<i>Call Lightning</i> %V bolts/dy"',
   'Lightning Stance':
@@ -1697,14 +1711,14 @@ Pathfinder.FEATURES = {
          '"+2 %professionSkill"',
   'Master Hunter':
     'Section=combat ' +
-    'Note="Full attack vs. favored enemy kills (DC %V Fort neg)"',
+    'Note="Full attack vs. favored enemy kills (DC %V Fort neg) 1/dy/favored enemy type"',
   'Master Of Pentacles':
     'Section=magic Note="+2 Conjuration spell caster level 1/dy"',
   'Master Strike':
     'Section=combat ' +
     'Note="Sneak attack causes choice of sleep, paralysis, or death (DC %V Fort neg)"',
   "Master's Illusion":
-    'Section=magic Note="30\' radius <i>Veil</i> (DC %V disbelieve) %1 rd/dy"',
+    'Section=magic Note="30\' radius <i>Veil</i> (DC %V Will disbelieve) for %1 rd/dy"',
   'Mathematical Prodigy':
     'Section=skill ' +
     'Note="+1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill"',
@@ -1722,7 +1736,7 @@ Pathfinder.FEATURES = {
   'Metamagic Mastery':
     'Section=magic Note="Apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
-  'Might Of The Gods':'Section=magic Note="+%V Str checks %1 rd/dy"',
+  'Might Of The Gods':'Section=magic Note="+%V Str checks for %1 rd/dy"',
   'Mighty Swing':'Section=combat Note="Critical confirmed 1/rage"',
   'Militia Veteran':
     'Section=skill ' +
@@ -1733,7 +1747,8 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note="+1 caster level on 3 spells",' +
          '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
-  'Moment Of Clarity':'Section=combat Note="Rage effects suspended 1 rd"',
+  'Moment Of Clarity':
+    'Section=combat Note="Rage effects suspended for 1 rd 1/rage"',
   'Multitalented':'Section=feature Note="Two favored classes"',
   'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
   'Natural Armor':'Section=combat Note="+%V AC"', // No bonus to CMD
@@ -1745,8 +1760,6 @@ Pathfinder.FEATURES = {
     'Section=feature,save ' +
     'Note="+1 Leadership score",' +
          '"+1 followers\' Will vs. mind-altering effects"',
-  'Necromantic Grave Touch':
-    'Section=magic Note="Touch causes shaken %V rd %1/dy"',
   'New Arcana':'Section=magic Note="%V additional spells"',
   'Night Vision':'Section=feature Note="60\' Darkvision during rage"',
   'Nimble Moves':
@@ -1754,8 +1767,9 @@ Pathfinder.FEATURES = {
     'Note="Move through difficult terrain 5\'/rd as though normal terrain"',
   'Nimbus Of Light':
     'Section=magic ' +
-    'Note="30\' radius <i>Daylight</i> does %V HP to undead %1 rd/dy"',
-  'No Escape':'Section=combat Note="x2 speed 1/rage when foe withdraws"',
+    'Note="30\' radius <i>Daylight</i> does %V HP to undead for %1 rd/dy"',
+  'No Escape':
+    'Section=combat Note="Dbl speed to follow withdrawing foe 1/rage"',
   'Noble Leadership':'Section=feature Note="+2 Leadership"',
   'Observant':
     'Section=skill ' +
@@ -1763,18 +1777,20 @@ Pathfinder.FEATURES = {
   'Obsessive':'Section=skill Note="+2 choice of Craft or Profession"',
   'On Dark Wings':'Section=ability Note="Fly 60\'/average"',
   'One Of Us':
-    'Section=combat,save ' +
-    'Note="Ignored by unintelligent undead",' +
-         '"Immune to paralysis and sleep, +4 vs. undead\'s spells"',
+    'Section=combat,feature,save ' +
+    'Note="DR 5/-",' +
+         '"Ignored by unintelligent undead",' +
+         '"Immune to paralysis, sleep, cold, and non-letal damage, +4 vs. spells from undead"',
   'Orc Blood':'Section=feature Note="Orc and human for racial effects"',
-  'Orc Ferocity':'Section=combat Note="Fight 1 rd below zero HP"',
+  'Orc Ferocity':'Section=combat Note="Fight below zero HP for 1 rd"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill Note="+1 Diplomacy, 1 retry on unfriendly or hostile"',
   'Penetrating Strike':'Section=combat Note="Focused weapons ignore DR 5/any"',
   'Performance Artist':
     'Section=skill Note="+1 choice of Perform/choice is a class skill"',
-  'Physical Enhancement':'Section=ability Note="+%V %1 of Str, Dex, and Con"',
+  'Physical Enhancement':
+    'Section=ability Note="+%V Choose %1 from Str, Dex, and Con"',
   'Pinpoint Targeting':
     'Section=combat Note="Ranged attack ignores armor bonus"',
   'Planar Voyage':
@@ -1785,7 +1801,8 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Power Of The Pit':
     'Section=feature,save ' +
-    'Note="60\' Darkvision","Resistance 10 to acid and cold"',
+    'Note="60\' Darkvision",' +
+         '"Resistance 10 to acid and cold, immune fire and poison"',
   'Power Of Wyrms':'Section=save Note="Immune to paralysis and sleep"',
   'Power Over Undead':
     'Section=feature Note="+1 General Feat (Command Undead or Turn Undead)"',
@@ -1793,13 +1810,14 @@ Pathfinder.FEATURES = {
   'Proper Training':
     'Section=skill ' +
     'Note="+1 choice of Knowledge (Geography), Knowledge (History)/choice is a class skill"',
-  'Protective Ward':'Section=magic Note="+%V AC 10\' radius %1/dy"',
+  'Protective Ward':'Section=magic Note="R10\' Allies +%V for %1 rd %2/dy"',
   'Quarry':
     'Section=combat,skill ' +
     'Note="+%V attack, critical confirmed vs. target",' +
          '"Take %V to track target"',
   'Quick Disable':'Section=skill Note="Disable Device in half normal time"',
   'Quick Reflexes':'Section=combat Note="+1 AOO/rd during rage"',
+  'Rage Powers':'Section=feature Note="%V selections"',
   'Raging Climber':'Section=skill Note="+%V Climb during rage"',
   'Raging Leaper':'Section=skill Note="+%V Acrobatics (jump) during rage"',
   'Raging Swimmer':'Section=skill Note="+%V Swim during rage"',
@@ -1808,14 +1826,16 @@ Pathfinder.FEATURES = {
   'Rebuke Death':
     'Section=magic Note="Touch creature below 0 HP to heal 1d4+%1 HP %V/dy"',
   'Remote Viewing':
-    'Section=magic Note="<i>Clairaudience/Clairvoyance</i> %V rd/dy"',
-  'Renewed Vigor':'Section=magic Note="Heal %Vd8+%1 HP 1/dy during rage"',
+    'Section=magic Note="<i>Clairaudience/Clairvoyance</i> for %V rd/dy"',
+  'Renewed Vigor':'Section=magic Note="Heal %Vd8+%1 HP during rage 1/dy"',
   'Resiliency':
     'Section=combat Note="1 minute of %V temporary HP when below 0 HP 1/dy"',
   'Resilient':'Section=save Note="+1 Fortitude"',
+  'Resistance To Energy':
+    'Section=save Note="Resistance %V to chosen energy type each dy"',
   'Resistant Touch':
     'Section=magic ' +
-    'Note="Touch transfers resistance bonus to ally 1 minute %V/dy"',
+    'Note="Touch transfers resistance bonus to ally for 1 min %V/dy"',
   'Reverent Wielder':
     'Section=combat,save ' +
     'Note="+1 disarm, steal, sunder CMD",' +
@@ -1826,9 +1846,11 @@ Pathfinder.FEATURES = {
     'Note="+1 damage w/daggers",' +
          '"+1 Swim/Swim is a class skill"',
   'Rogue Crawl':'Section=ability Note="Crawl at half speed"',
+  'Rogue Talents':'Section=feature Note="%V selections"',
   'Rogue Weapon Training':
     'Section=feature Note="Gain 1 Fighter Feat (Weapon Focus)"',
-  'Rolling Dodge':'Section=combat Note="+%V AC vs. ranged %1 rd during rage"',
+  'Rolling Dodge':
+    'Section=combat Note="+%V AC vs. ranged for %1 rd during rage"',
   'Roused Anger':'Section=combat Note="Rage even if fatigued"',
   'Rousing Oratory':
     'Section=skill ' +
@@ -1852,12 +1874,12 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (History)/+1 Knowledge (Planes)/choice is a class skill"',
   'School Power':'Section=magic Note="+2 DC on spells from chosen school"',
   'Scorpion Style':
-    'Section=combat Note="Unarmed hit slows foe %V rd (DC %1 Fort neg)"',
+    'Section=combat Note="Unarmed hit slows foe for %V rd (DC %1 Fort neg)"',
   'Scrying Adept':
     'Section=magic ' +
     'Note="Constant <i>Detect Scrying</i>, +1 scrying subject familiarity"',
   'Scythe Of Evil':
-    'Section=combat Note="Add <i>unholy</i> to weapon %1 rd %V/dy"',
+    'Section=combat Note="Add <i>unholy</i> to weapon for %1 rd %V/dy"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
     'Note="+2 Knowledge check 1/dy/choice of Knowledge is a class skill"',
@@ -1878,15 +1900,16 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Critical hit causes foe sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
   'Skilled':'Section=skill Note="+%V Skill Points"',
-  'Slow Reactions':'Section=combat Note="Sneak attack target no AOO 1 rd"',
+  'Slow Reactions':'Section=combat Note="Sneak attack target no AOO for 1 rd"',
   'Smuggler':
     'Section=skill ' +
     'Note="+3 Sleight Of Hand (hide object)/Sleight Of Hand is a class skill"',
   'Soothing Performance':
     'Section=magic ' +
-    'Note="R30\' <i>Mass Cure Serious Wounds</i> via performance"',
+    'Note="R30\' <i>Mass Cure Serious Wounds</i> via 4 rd performance also removes fatigued, sickened, and shaken"',
   'Soul Drinker':
-    'Section=combat Note="Gain HP equal to slain foe\'s hit dice 1 min 1/dy"',
+    'Section=combat ' +
+    'Note="Gain HP equal to slain foe\'s hit dice for 1 min 1/dy"',
   'Soul Of The Fey':
     'Section=combat,feature,magic,save ' +
     'Note="DR 10/cold iron",' +
@@ -1894,11 +1917,11 @@ Pathfinder.FEATURES = {
          '"<i>Shadow Walk</i> 1/dy",' +
          '"Immune to poison"',
   'Speak With Animals':
-    'Section=magic Note="<i>Speak With Animals</i> %V rd/dy"',
+    'Section=magic Note="<i>Speak With Animals</i> for %V rd/dy"',
   'Spell Rune':'Section=magic Note="Add known spell to Blast Rune"',
   'Spellbreaker':'Section=combat Note="AOO on foe failed defensive casting"',
   'Staff Of Order':
-    'Section=combat Note="Add <i>axiomatic</i> to weapon %1 rd %V/dy"',
+    'Section=combat Note="Add <i>axiomatic</i> to weapon for %1 rd %V/dy"',
   'Staggering Critical':
     'Section=combat ' +
     'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort 1 rd)"',
@@ -1914,18 +1937,17 @@ Pathfinder.FEATURES = {
     'Note="R30\' Touch 1d6+%1 HP non-lethal and -2 attack %V/dy"',
   'Storyteller':'Section=skill Note="+%V choice of Knowledge check 1/scenario"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
-  'Strength Surge':
-    'Section=combat Note="+%V Str or combat maneuver check 1/rage"',
+  'Strength Surge':'Section=combat Note="+%V Str, CMB, or CMD check 1/rage"',
   'Strength Surge Touch':
     'Section=magic ' +
-    'Note="Touch imparts +%V melee attack and Str check bonus %1/dy"',
+    'Note="Touch imparts +%V melee attack and Str check bonus for 1 rd %1/dy"',
   'Strike Back':
     'Section=combat Note="Ready melee attack against any foe that attacks you"',
   'Stunning Critical':
     'Section=combat Note="Critical hit stuns 1d4 rd (DC %V Fort staggered)"',
   "Summoner's Charm":'Section=magic Note="Summon duration increased %V rd"',
   "Sun's Blessing":
-    'Section=magic Note="+%V undead damage, negate channel resistance"',
+    'Section=magic Note="+%V HP undead damage, negate channel resistance"',
   'Superstition':
     'Section=save ' +
     'Note="+%V vs. spells, supernatural, spell-like abilities during rage"',
@@ -1939,7 +1961,7 @@ Pathfinder.FEATURES = {
   'Tavern Owner':'Section=feature Note="10% extra from treasure sale"',
   'Teaching Mistake':
     'Section=save Note="+1 save after nat 1 save roll 1/scenario"',
-  'Telekinetic Fist':'Section=magic Note="Ranged touch 1d4+%1 HP %V/dy"',
+  'Telekinetic Fist':'Section=magic Note="R30\' touch 1d4+%1 HP %V/dy"',
   'Terrifying Howl':
     'Section=combat Note="R30\' Howl causes shaken 1d4+1 rd (DC %V Will neg)"',
   'Throw Anything':
@@ -1955,20 +1977,20 @@ Pathfinder.FEATURES = {
     'Note="+1 Knowledge (Dungeoneering)/+1 Perception/choice is a class skill"',
   'Touch Of Chaos':
     'Section=combat ' +
-    'Note="Touch attack %V/dy causes target to take worse result of d20 rerolls 1 rd"',
+    'Note="Touch attack causes target to take worse result of d20 rerolls for 1 rd %V/dy"',
   'Touch Of Darkness':
-    'Section=combat Note="Touch attack causes 20% miss chance %V rd %1/dy"',
+    'Section=combat Note="Touch attack causes 20% miss chance for %V rd %1/dy"',
   'Touch Of Destiny':
     'Section=magic ' +
-    'Note="Touched creature +%V attack, skill, ability, save 1 rd %1/dy"',
-  'Touch Of Evil':'Section=combat Note="Touch attack sickens %V rd %1/dy"',
+    'Note="Touched creature +%V attack, skill, ability, save for 1 rd %1/dy"',
+  'Touch Of Evil':'Section=combat Note="Touch attack sickens for %V rd %1/dy"',
   'Touch Of Glory':
     'Section=magic Note="Touch imparts +%V Cha check bonus w/in 1 hr %1/dy"',
   'Touch Of Good':
     'Section=magic ' +
-    'Note="Touch imparts +%V attack, skill, ability, and save 1 rd %1/dy"',
+    'Note="Touch imparts +%V attack, skill, ability, and save for 1 rd %1/dy"',
   'Touch Of Law':
-    'Section=magic Note="Touched take 11 on all d20 rolls 1 rd %V/dy"',
+    'Section=magic Note="Touched take 11 on all d20 rolls for 1 rd %V/dy"',
   'Trap Spotter':
     'Section=skill Note="Automatic Perception check w/in 10\' of trap"',
   'Travel Speed':'Section=ability Note="+10 Speed"',
@@ -1998,21 +2020,24 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Disable Device, Escape Artist, Sleight Of Hand/choice is a class skill"',
   'Versatile Performance':
-    'Section=skill Note="Substitute Perform ranking for associated skills"',
+    'Section=skill ' +
+    'Note="Substitute %V Perform checks for associated skill checks"',
   'Veteran Of Battle':
     'Section=combat Note="+1 Initiative/Draw weapon during surprise round"',
-  'Vindictive':'Section=combat Note="+1 damage vs. successful foe 1 min 1/dy"',
+  'Vindictive':
+    'Section=combat Note="+1 damage vs. successful foe for 1 min 1/dy"',
   'Vision Of Madness':
     'Section=magic ' +
-    'Note="Touch imparts +%V attack, save, or skill, -%1 others 3 rd %2/dy"',
+    'Note="Touch imparts +%V attack, save, or skill, -%1 others for 3 rd %2/dy"',
   'Vital Strike':'Section=combat Note="2x base damage"',
   'Ward Against Death':
     'Section=magic ' +
-    'Note="R30\' Creatures immune to death effects, energy drain, and negative levels %V rd/dy"',
+    'Note="R30\' Creatures immune to death effects, energy drain, and negative levels for %V rd/dy"',
   'Warrior Of Old':'Section=combat Note="+2 Initiative"',
   'Watchdog':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Weapon Master':'Section=combat Note="Use additional combat feat %V rd/dy"',
+  'Weapon Master':
+    'Section=combat Note="Use additional combat feat for %V rd/dy"',
   'Weapon Mastery':
     'Section=combat ' +
     'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen weapon"',
@@ -2021,15 +2046,15 @@ Pathfinder.FEATURES = {
   // crossbows, double, flails, hammers, monk, natural, pole arms, spears,thrown
   'Weapon Training':
     'Section=combat ' +
-    'Note="%V attack and damage w/weapons from chosen groups"',
+    'Note="%V attack, damage, CMB, and CMD w/weapons from chosen groups"',
   'Well-Informed':
     'Section=skill ' +
     'Note="+1 Diplomacy (gather information)/+1 Knowledge (Local)/choice is a class skill"',
-  'Well-Versed':'Section=save Note="+4 vs. bardic effects"',
+  'Well-Versed':'Section=save Note="+4 vs. bardic and sonic effects"',
   'Whistleblower':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Wind Stance':'Section=combat Note="20% concealment when moving > 5\'"',
-  'Wings Of Heaven':'Section=ability Note="Fly 60\'/good %V minutes/dy"',
+  'Wings Of Heaven':'Section=ability Note="Fly 60\'/good %V for min/dy"',
   'Wings':'Section=ability Note="Fly %V\'/average"',
   'Wisdom In The Flesh':
     'Section=skill ' +
@@ -2037,7 +2062,7 @@ Pathfinder.FEATURES = {
   'Within Reach':'Section=save Note="DC 20 Will save vs. fatal attack 1/dy"',
   'Wooden Fist':
     'Section=combat ' +
-    'Note="+%V Unarmed damage and no AOO on Unarmed attacks %1 rd/dy"',
+    'Note="+%V Unarmed damage and no AOO on Unarmed attacks for %1 rd/dy"',
   'World Traveler':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"',
@@ -2102,7 +2127,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Use Bardic Performance to give ally extra %V action"',
   'Instant Mastery':'Section=skill Note="4 ranks in untrained skill"',
   'Intelligence Boost':'Section=ability Note="+2 Intelligence"',
-  'Invisible Thief':'Section=magic Note="Self invisible %V rd/dy"',
+  'Invisible Thief':'Section=magic Note="Self invisible for %V rd/dy"',
   'Lay Of The Exalted Dead':
     'Section=magic ' +
     'Note="Summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
@@ -2675,16 +2700,16 @@ Pathfinder.RACES = {
 Pathfinder.SCHOOLS = {
   'Abjuration':
     'Features=' +
-      '"1:Energy Resistance","1:Protective Ward","6:Energy Absorption"',
+      '"1:Resistance To Energy","1:Protective Ward","6:Energy Absorption"',
   'Conjuration':
     'Features=' +
-      '"1:Conjured Acid Dart","1:Summoner\'s Charm","8:Dimensional Steps"',
+      '"1:Acid Dart Conjuration","1:Summoner\'s Charm","8:Dimensional Steps"',
   'Divination':
     'Features=' +
       '1:Forewarned,"1:Diviner\'s Fortune","8:Scrying Adept"',
   'Enchantment':
     'Features=' +
-      '"1:Enchanting Smile","1:Enchantment Dazing Touch","8:Aura Of Despair"',
+      '"1:Enchanting Smile","1:Dazing Touch Enchantment","8:Aura Of Despair"',
   'Evocation':
     'Features=' +
       '"1:Intense Spells","1:Force Missile","8:Elemental Wall"',
@@ -2693,7 +2718,7 @@ Pathfinder.SCHOOLS = {
       '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
   'Necromancy':
     'Features=' +
-      '"1:Channel Energy","1:Power Over Undead","1:Necromantic Grave Touch",' +
+      '"1:Channel Energy","1:Power Over Undead","1:Grave Touch Necromantic",' +
       '"8:Life Sight"',
   'Transmutation':
     'Features=' +
@@ -3736,9 +3761,10 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
-      '"1:Fast Movement",1:Rage,"2:Uncanny Dodge","3:Trap Sense",' +
-      '"5:Improved Uncanny Dodge","7:Damage Reduction","11:Greater Rage",' +
-      '"14:Indomitable Will","17:Tireless Rage","20:Mighty Rage" ' +
+      '"1:Fast Movement",1:Rage,"2:Rage Powers","2:Uncanny Dodge",' +
+      '"3:Trap Sense","5:Improved Uncanny Dodge","7:Damage Reduction",' +
+      '"11:Greater Rage","14:Indomitable Will","17:Tireless Rage",' +
+      '"20:Mighty Rage" ' +
     'Selectables=' +
       '"2:Animal Fury","8:Clear Mind","12:Fearless Rage","2:Guarded Stance",' +
       '"8:Increased Damage Reduction","8:Internal Fortitude",' +
@@ -3753,7 +3779,7 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Armor Proficiency (Light)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Short Bow/Whip)",' +
+      '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)",' +
       '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
       '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
       '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
@@ -3926,8 +3952,9 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)",' +
-      '"1:Sneak Attack",1:Trapfinding,2:Evasion,"3:Trap Sense",' +
-      '"4:Uncanny Dodge","8:Improved Uncanny Dodge","20:Master Strike" ' +
+      '"1:Sneak Attack",1:Trapfinding,2:Evasion,"2:Rogue Talents",' +
+      '"3:Trap Sense","4:Uncanny Dodge","8:Improved Uncanny Dodge",' +
+      '"20:Master Strike" ' +
     'Selectables=' +
       '"2:Bleeding Attack","2:Combat Trick","2:Fast Stealth",' +
       '"2:Finesse Rogue","2:Ledge Walker","2:Minor Magic","2:Quick Disable",' +
@@ -3977,6 +4004,7 @@ Pathfinder.CLASSES = {
     'CasterLevelArcane=levels.Sorcerer ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
+      'S0:1=4;2=5;4=6;6=7;8=8;10=9,' +
       'S1:1=3;2=4;3=5;4=6,' +
       'S2:4=3;5=4;6=5;7=6,' +
       'S3:6=3;7=4;8=5;9=6,' +
@@ -4072,7 +4100,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"10:Arrow Of Death"',
   'Arcane Trickster':
     'Require=' +
-      '"alignment !~ \'Lawful\'","combatNotes.sneakAttack >= 2",' +
+      '"alignment !~ \'Lawful\'","sneakAttack >= 2",' +
       '"skills.Disable Device >= 4","skills.Escape Artist >= 4",' +
       '"skills.Knowledge (Arcana) >= 4","Sum \'^spells\\.Mage Hand\' >= 1",' +
       '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
@@ -4821,9 +4849,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.animalFury.1',
       'features.Animal Fury', '?', null,
-      'combatNotes.animalFury.2', '=', 'Math.floor(source / 2)'
+      'baseAttack', '=', 'source>=5 ? "+" + (source - 5) : source'
     );
     rules.defineRule('combatNotes.animalFury.2',
+      'features.Animal Fury', '?', null,
+      'combatNotes.animalFury.3', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.animalFury.3',
       'features.Animal Fury', '?', null,
       'strengthModifier', '=', 'source + 2',
       'features.Greater Rage', '+', '1',
@@ -4886,6 +4918,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.damageReduction', '^=', null);
+    rules.defineRule('feature.ragePowers',
+      'levels.Barbarian', '=', 'Math.floor(source / 2)'
+    );
     rules.defineRule('magicNotes.renewedVigor',
       'levels.Barbarian', '=', 'Math.floor(source / 4)'
     );
@@ -4896,7 +4931,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('selectableFeatureCount.Barbarian',
-      'levels.Barbarian', '=', 'Math.floor(source / 2)'
+      'feature.ragePowers', '+=', null
     );
     rules.defineRule('saveNotes.superstition',
       'levels.Barbarian', '=', '2 + Math.floor(source / 4)'
@@ -4920,6 +4955,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
+    var allSkills = rules.getChoices('skills');
+    for(var s in rules.getChoices('skills')) {
+      rules.defineRule
+        ('classSkills.' + s, 'levels.Bard', '=', 'source>=16 ? 1 : null');
+    }
     rules.defineRule('featureNotes.bardicPerformance',
       'levels.Bard', '=', '2 + 2 * source',
       'charismaModifier', '+', null
@@ -4935,10 +4975,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Bard', '=', 'Math.floor((source + 2) / 3)'
     );
     rules.defineRule('magicNotes.fascinate.1',
-      'levels.Bard', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.fascinate.2',
       'levels.Bard', '=', 'Math.floor(source / 2) + 10',
       'charismaModifier', '+', null
     );
@@ -4976,8 +5012,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.bardicKnowledge',
       'levels.Bard', '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
+      'features.Jack-Of-All-Trades', '?', null,
+      'levels.Bard', '=', 'source>=16 ? ", all skills class skills" : ""'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
+      'features.Jack-Of-All-Trades', '?', null,
+      'levels.Bard', '=', 'source>=19 ? ", take 10 any skill" : ""'
+    );
     rules.defineRule('skillNotes.loreMaster',
-      'levels.Bard', '=', '1 + Math.floor((source + 1) / 6)'
+      'levels.Bard', '=', 'Math.floor((source + 1) / 6)'
+    );
+    rules.defineRule('skillNotes.versatilePerformance',
+      'levels.Bard', '=', 'Math.floor((source + 2) / 4)'
     );
 
   } else if(name == 'Cleric') {
@@ -5096,18 +5143,45 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'armor', '?', 'source == "None"',
       'levels.Monk', '=', 'Math.floor(source / 3) * 10'
     );
-    rules.defineRule('combatNotes.flurryOfBlows',
-      'levels.Monk', '=', 'source>=15 ? 7 : source>=8 ? 4 : 2'
-    );
-    rules.defineRule('combatNotes.flurryOfBlows.1',
+    // fob.0 isn't dispayed--used only to ease prefixing '+' as appropriate
+    rules.defineRule('combatNotes.flurryOfBlows.0',
       'levels.Monk', '=', 'source - 2',
       'meleeAttack', '+', null,
       'baseAttack', '+', '-source'
     );
+    rules.defineRule('combatNotes.flurryOfBlows.1',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "+" + source : source'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.2',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "/+" + source : ("/" + source)'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.3',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=5 ? "/+" + (source - 5) : ("/" + (source - 5))',
+      'levels.Monk', '=', 'source<6 ? "" : null'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.4',
+      'combatNotes.flurryOfBlows.3', '=', null,
+      'levels.Monk', '=', 'source<8 ? "" : null'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.5',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=10 ? "/+" + (source - 10) : ("/" + (source - 10))',
+      'levels.Monk', '=', 'source<11 ? "" : null'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.6',
+      'combatNotes.flurryOfBlows.5', '=', null,
+      'levels.Monk', '=', 'source<15 ? "" : null'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.7',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=15 ? "/+" + (source - 15) : ("/" + (source - 15))',
+      'levels.Monk', '=', 'source<16 ? "" : null'
+    );
+    rules.defineRule('combatNotes.flurryOfBlows.8',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "+" + source : source'
+    );
     rules.defineRule('combatNotes.kiStrike',
       'levels.Monk', '=',
       '"magic" + ' +
-      '(source < 7 ? "" : "/iron/silver") + ' +
+      '(source < 7 ? "" : "/cold iron/silver") + ' +
       '(source < 10 ? "" : "/lawful") + ' +
       '(source < 16 ? "" : "/adamantine")'
     )
@@ -5263,12 +5337,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.companionBond', 'wisdomModifier', '=', null);
     rules.defineRule('combatNotes.masterHunter',
-      'levels.Ranger', '=', 'Math.floor(source / 2)',
+      'levels.Ranger', '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
     rules.defineRule('combatNotes.quarry',
       '', '=', '2',
-      'features.Improved Quarry', '^', '4'
+      'combatNotes.improvedQuarry', '^', '4'
     );
     rules.defineRule
       ('companionMasterLevel', 'companionRangerLevel', '^=', null);
@@ -5298,7 +5372,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.quarry',
       '', '=', '10',
-      'features.Improved Quarry', '^', '20'
+      'skillNotes.improvedQuarry', '^', '20'
     );
     rules.defineRule('skillNotes.track',
       'levels.Ranger', '+=', 'Math.max(1, Math.floor(source / 2))'
@@ -5326,15 +5400,16 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'intelligenceModifier', '+', null
     );
     rules.defineRule('combatNotes.resiliency', 'levels.Rogue', '=', null);
-    rules.defineRule('combatNotes.sneakAttack',
-      'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
-    );
+    rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
     rules.defineRule('featCount.Fighter',
       'featureNotes.combatTrick', '+=', '1',
       'featureNotes.rogueWeaponTraining', '+=', '1'
     );
     rules.defineRule
       ('features.Weapon Finesse', 'featureNotes.finesseRogue', '=', '1');
+    rules.defineRule('featureNotes.rogueTalents',
+      'levels.Rogue', '+=', 'Math.floor(source / 2)'
+    );
     rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
       'rogueFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
@@ -5343,7 +5418,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Rogue', '+=', 'Math.floor(source / 3)'
     );
     rules.defineRule('selectableFeatureCount.Rogue',
-      'levels.Rogue', '+=', 'Math.floor(source / 2)'
+      'featureNotes.rogueTalents', '+=', null
     );
     rules.defineRule('skillNotes.skillMastery',
       'intelligenceModifier', '=', 'source + 3',
@@ -5351,6 +5426,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.trapfinding',
       'levels.Rogue', '+=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('sneakAttack',
+      'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '?', null);
     rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '?', null);
@@ -5450,9 +5528,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.impromptuSneakAttack',
       'levels.Arcane Trickster', '+=', 'source < 7 ? 1 : 2'
     );
-    rules.defineRule('combatNotes.sneakAttack',
-      'levels.Arcane Trickster', '+=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
     rules.defineRule('magicNotes.casterLevelBonus',
       'levels.Arcane Trickster', '+=', null
     );
@@ -5461,6 +5537,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.trickySpells',
       'levels.Arcane Trickster', '+=', 'Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule('sneakAttack',
+      'levels.Arcane Trickster', '+=', 'Math.floor(source / 2)'
     );
 
   } else if(name == 'Assassin') {
@@ -5471,9 +5550,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('combatNotes.deathAttack.1', 'levels.Assassin', '+=', null);
-    rules.defineRule('combatNotes.sneakAttack',
-      'levels.Assassin', '+=', 'Math.floor((source + 1) / 2)'
-    );
+    rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
     rules.defineRule('combatNotes.trueDeath',
       'levels.Assassin', '+=', '10 + source'
     );
@@ -5494,6 +5571,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('uncannyDodgeSources',
       'levels.Assassin', '+=', 'source >= 2 ? 1 : null'
+    );
+    rules.defineRule('sneakAttack',
+      'levels.Assassin', '+=', 'Math.floor((source + 1) / 2)'
     );
 
   } else if(name == 'Dragon Disciple') {
@@ -6263,6 +6343,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'features.Claws', '?', null,
       'charismaModifier', '=', 'source + 3'
     );
+    rules.defineRule('combatNotes.claws.3',
+      'features.Claws', '?', null,
+      'meleeAttack', '=', 'source>=0 ? "+" + source : source'
+    );
     rules.defineRule('combatNotes.improvedClaws', 'bloodlineEnergy', '=', null);
     rules.defineRule('resistance.Acid', 'saveNotes.demonicMight', '^=', '10');
     rules.defineRule('resistance.Cold', 'saveNotes.demonicMight', '^=', '10');
@@ -6312,12 +6396,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.bloodlineCelestial',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('magicNotes.heavenlyFire',
-      pathLevel, '=', '1 + Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('magicNotes.heavenlyFire', 'charismaModifier', '=', '3 + source');
     rules.defineRule('magicNotes.heavenlyFire.1',
       'features.Heavenly Fire', '?', null,
-      'charismaModifier', '=', '1 + source'
+      pathLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('saveNotes.celestialResistances',
       pathLevel, '=', 'source>=20 ? Infinity : source>=9 ? 10 : 5'
@@ -6325,6 +6408,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
   } else if(name == 'Bloodline Destined') {
 
+    rules.defineRule
+      ('combatNotes.fated', pathLevel, '=', 'Math.floor((source + 1) / 4)');
     rules.defineRule('featureNotes.itWasMeantToBe',
       pathLevel, '=', 'Math.floor((source - 1) / 8)'
     );
@@ -6540,6 +6625,7 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
   } else if(name == 'Bloodline Undead') {
 
+    rules.defineRule('damageReduction.-', 'combatNotes.oneOfUs', '^=', '5');
     rules.defineRule('magicNotes.graspOfTheDead', pathLevel, '=', null);
     rules.defineRule('magicNotes.graspOfTheDead.1',
       'features.Grasp Of The Dead', '?', null,
@@ -7012,19 +7098,23 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.protectiveWard.1',
       'features.Protective Ward', '?', null,
+      'intelligenceModifier', '=', null
+    );
+    rules.defineRule('magicNotes.protectiveWard.2',
+      'features.Protective Ward', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule
       ('saveNotes.energyAbsorption', schoolLevel, '=', 'source * 3');
-    rules.defineRule('saveNotes.energyResistance',
+    rules.defineRule('saveNotes.resistanceToEnergy',
       schoolLevel, '=', 'source >= 20 ? Infinity : source >= 11 ? 10 : 5'
     );
   } else if(name == 'Conjuration') {
-    rules.defineRule('magicNotes.conjuredAcidDart',
+    rules.defineRule('magicNotes.acidDartConjuration',
       'intelligenceModifier', '=', 'source + 3'
     );
-    rules.defineRule('magicNotes.conjuredAcidDart.1',
-      'features.Conjured Acid Dart', '?', null,
+    rules.defineRule('magicNotes.acidDartConjuration.1',
+      'features.Acid Dart Conjuration', '?', null,
       schoolLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
@@ -7049,15 +7139,15 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
   } else if(name == 'Enchantment') {
     rules.defineRule('magicNotes.auraOfDespair', schoolLevel, '=', null);
     rules.defineRule
-      ('magicNotes.enchantmentDazingTouch', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.enchantmentDazingTouch.1',
-      'features.Enchantment Dazing Touch', '?', null,
+      ('magicNotes.dazingTouchEnchantment', schoolLevel, '=', null);
+    rules.defineRule('magicNotes.dazingTouchEnchantment.1',
+      'features.Dazing Touch Enchantment', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule
       ('saveNotes.enchantingSmile', schoolLevel, '?', 'source==20');
     rules.defineRule('skillNotes.enchantingSmile',
-      schoolLevel, '=', '1 + Math.floor(source / 5)'
+      schoolLevel, '=', '2 + Math.floor(source / 5)'
     );
   } else if(name == 'Evocation') {
     rules.defineRule('magicNotes.elementalWall', schoolLevel, '=', null);
@@ -7105,11 +7195,11 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
     );
     rules.defineRule('featureNotes.lifeSight.1', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.necromanticGraveTouch',
+    rules.defineRule('magicNotes.graveTouchNecromantic',
       schoolLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('magicNotes.necromanticGraveTouch.1',
-      'features.Necromantic Grave Touch', '?', null,
+    rules.defineRule('magicNotes.graveTouchNecromantic.1',
+      'features.Grave Touch Necromantic', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
   } else if(name == 'Transmutation') {
