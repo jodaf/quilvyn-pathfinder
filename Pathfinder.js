@@ -865,6 +865,8 @@ Pathfinder.FEATURES = {
   'Dwarf Hatred':'Section=combat Note="+1 attack vs. goblinoid and orc"',
   'Elf Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Intelligence/-2 Constitution"',
+  'Elven Immunities':
+    'Section=save Note="Immune to sleep effects, +2 vs. enchantment"',
   'Empathic Link':'Section=companion Note="Share emotions up to 1 mile"',
   'Empower Spell':
     'Section=magic ' +
@@ -897,6 +899,7 @@ Pathfinder.FEATURES = {
     'Section=combat,skill ' +
     'Note="+2 or more attack and damage vs. %V type(s) of creatures",' +
          '"+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
+  'Fearless':'Section=save Note="+2 vs. fear"',
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Flurry Of Blows':
     'Section=combat ' +
@@ -1034,8 +1037,6 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Reload Light Crossbow as free action"',
   'Rapid Shot':'Section=combat Note="Normal and extra ranged -2 attacks"',
   'Remove Disease':'Section=magic Note="<i>Remove Disease</i> %V/week"',
-  'Resist Enchantment':'Section=save Note="+2 vs. enchantment"',
-  'Resist Fear':'Section=save Note="+2 vs. fear"',
   'Resist Illusion':'Section=save Note="+2 vs. illusions"',
   "Resist Nature's Lure":
     'Section=save Note="+4 vs. spells of feys and spells targeting plants"',
@@ -1066,7 +1067,6 @@ Pathfinder.FEATURES = {
   'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
   'Skill Mastery':
     'Section=skill Note="Take 10 despite distraction on %V chosen skills"',
-  'Sleep Immunity':'Section=save Note="Immune to <i>Sleep</i>"',
   'Slippery Mind':'Section=save Note="Second save vs. enchantment"',
   'Slow':'Section=ability Note="-10 Speed"',
   'Slow Fall':'Section=save Note="Subtract %V\' from falling damage distance"',
@@ -2675,8 +2675,7 @@ Pathfinder.RACES = {
       '"Elf Ability Adjustment",' +
       '"Weapon Familiarity (Elven Curve Blade)",' +
       '"Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)",' +
-      '"Elven Magic","Keen Senses","Low-Light Vision","Resist Enchantment",' +
-      '"Sleep Immunity" ' +
+      '"Elven Immunities","Elven Magic","Keen Senses","Low-Light Vision" ' +
     'Languages=Common,Elven',
   'Gnome':
     'Features=' +
@@ -2692,8 +2691,8 @@ Pathfinder.RACES = {
   'Half-Elf':
     'Features=' +
       '"Half-Elf Ability Adjustment",' +
-      'Adaptability,"Elf Blood","Keen Senses","Low-Light Vision",' +
-      'Multitalented,"Resist Enchantment","Sleep Immunity" ' +
+      'Adaptability,"Elf Blood","Elven Immunities","Keen Senses",' +
+      '"Low-Light Vision",Multitalented, ' +
     'Languages=Common,Elven',
   'Half-Orc':
     'Features=' +
@@ -2707,7 +2706,7 @@ Pathfinder.RACES = {
       '"Halfling Ability Adjustment",' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)",' +
-      '"Halfling Luck","Keen Senses","Resist Fear",Slow,Small,Sure-Footed ' +
+      'Fearless,"Halfling Luck","Keen Senses",Slow,Small,Sure-Footed ' +
     'Languages=Common,Halfling',
   'Human':
     'Features=' +
