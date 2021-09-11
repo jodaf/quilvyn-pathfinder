@@ -1264,7 +1264,7 @@ Pathfinder.FEATURES = {
     'Note="Touch attack causes 1d6 HP/rd for %V rd or until healed (DC 15) %1/dy"',
   'Blinding Critical':
     'Section=combat ' +
-    'Note="Critical hit causes permanent blindness (DC %V Fort dazzled 1d4 rd)"',
+    'Note="Critical hit causes permanent blindness (DC %V Fort dazzled for 1d4 rd)"',
   'Blinding Ray':
     'Section=magic Note="R30\' Ranged touch blinds or dazzles target for 1 rd %V/dy"',
   'Blindsense':
@@ -1371,13 +1371,13 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Trade up to -%V ranged attack for +%1 damage"',
   'Deadly Performance':
     'Section=magic ' +
-    'Note="R30\' Target killed by performance (DC %V Will staggers 1d4 rd)"',
+    'Note="R30\' Target killed by performance (DC %V Will staggers for 1d4 rd)"',
   'Deadly Stroke':
     'Section=combat ' +
     'Note="x2 damage and 1 point Con bleed w/focused weapon against stunned or flat-footed foe"',
   'Deafening Critical':
     'Section=combat ' +
-    'Note="Critical hit causes permanent deafness (DC %V Fort 1 rd)"',
+    'Note="Critical hit causes permanent deafness (DC %V Fort deaf for 1 rd)"',
   "Death's Embrace":'Section=combat Note="Healed by channeled negative energy"',
   "Death's Gift":
     'Section=save Note="Resistance %V to cold/DR %1/- vs. non-lethal"',
@@ -1656,7 +1656,7 @@ Pathfinder.FEATURES = {
     'Section=save Note="Cannot be sickened or nauseated during rage"',
   'Intimidating Glare':
     'Section=skill ' +
-    'Note="Successful Intimidate during rage shakes foe at least 1d4 rd"',
+    'Note="Successful Intimidate during rage shakes foe for at least 1d4 rd"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
   'Intimidating':'Section=skill Note="+2 Intimidate"',
   'Invisibility Field':'Section=magic Note="Self invisible for %V rd/dy"',
@@ -1786,7 +1786,7 @@ Pathfinder.FEATURES = {
     'Section=combat,feature,save ' +
     'Note="DR 5/-",' +
          '"Ignored by unintelligent undead",' +
-         '"Immune to paralysis, sleep, cold, and non-letal damage, +4 vs. spells from undead"',
+         '"Immune to paralysis, sleep, cold, and non-lethal damage, +4 vs. spells from undead"',
   'Orc Blood':'Section=feature Note="Orc and human for racial effects"',
   'Orc Ferocity':'Section=combat Note="Fight below zero HP for 1 rd 1/dy"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
@@ -1896,7 +1896,7 @@ Pathfinder.FEATURES = {
   'Shadow Diplomat':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Shatter Defenses':
-    'Section=combat Note="Fearful struck foes flat-footed 1 rd"',
+    'Section=combat Note="Fearful struck foes flat-footed for 1 rd"',
   'Sheriff':
     'Section=skill Note="+10 local Bluff, Diplomacy, Intimidate 1/session"',
   'Shield Focus':'Section=combat Note="+1 AC"', // No change to CMD
@@ -1933,7 +1933,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Add <i>axiomatic</i> to weapon for %1 rd %V/dy"',
   'Staggering Critical':
     'Section=combat ' +
-    'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort 1 rd)"',
+    'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort staggered for 1 rd)"',
   'Stand Still':'Section=combat Note="CMB check to halt foe movement"',
   'Stand Up':'Section=combat Note="Stand from prone as free action"',
   'Starchild':
@@ -1953,7 +1953,7 @@ Pathfinder.FEATURES = {
   'Strike Back':
     'Section=combat Note="Ready melee attack against any foe that attacks you"',
   'Stunning Critical':
-    'Section=combat Note="Critical hit stuns 1d4 rd (DC %V Fort staggered)"',
+    'Section=combat Note="Critical hit stuns for 1d4 rd (DC %V Fort staggered)"',
   "Summoner's Charm":'Section=magic Note="Summon duration increased %V rd"',
   "Sun's Blessing":
     'Section=magic Note="+%V HP undead damage, negate channel resistance"',
@@ -1972,7 +1972,7 @@ Pathfinder.FEATURES = {
     'Section=save Note="+1 save after nat 1 save roll 1/scenario"',
   'Telekinetic Fist':'Section=magic Note="R30\' touch 1d4+%1 HP %V/dy"',
   'Terrifying Howl':
-    'Section=combat Note="R30\' Howl causes shaken 1d4+1 rd (DC %V Will neg)"',
+    'Section=combat Note="R30\' Howl causes shaken for 1d4+1 rd (DC %V Will neg)"',
   'Throw Anything':
     'Section=combat ' +
     'Note="No penalty for improvised ranged weapon, +1 attack w/thrown splash"',
@@ -2101,7 +2101,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Critical hit causes follow-on damage"',
   'Death Attack':
     'Section=combat ' +
-    'Note="Sneak attack after 3 rd of study causes death or paralysis 1d6+%1 rd (DC %V Fort neg)"',
+    'Note="Sneak attack after 3 rd of study causes death or paralysis for 1d6+%1 rd (DC %V Fort neg)"',
   'Deep Pockets':
     'Section=ability,feature,skill ' +
     'Note="%V Strength for light load",' +
@@ -2127,7 +2127,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Bardic Performance effect via Profession (Scribe)"',
   'Grace':'Section=save Note="+2 Reflex in light or no armor"',
   'Greater Epic Tales':
-    'Section=skill Note="Bardic Performace takes effect when read by others"',
+    'Section=skill Note="Bardic Performance takes effect when read by others"',
   'Greater Lore':
     'Section=skill Note="+10 Spellcraft (identify magic item properties)"',
   'Hail Of Arrows':
@@ -2835,20 +2835,30 @@ Pathfinder.SPELLS = {
   'Air Walk':'Level=Air4,C4,D4',
   'Alarm':'Level=B1,Destined1,R1,Rogue1,W1',
   'Align Weapon':'Level=C2,Chaos2,Evil2,Good2,Law2',
-  'Alter Self':'Level=B2,W2',
+  'Alter Self':
+    'Level=B2,W2 ' +
+    'Description="Self become small (+2 Dex) or medium (+2 Str) humanoid for $L min"',
   'Analyze Dweomer':'Level=B6,W6',
-  'Animal Growth':'Level=D5,R4,W5',
+  'Animal Growth':
+    'Level=D5,R4,W5 ' +
+    'Description="R$RM\' $Ldiv2 animal targets in 15\' radius dbl size, +8 Str, +4 Con, -2 Dex, +2 AC for $L min (Fort neg)"',
   'Animal Messenger':'Level=B2,D2,R1',
-  'Animal Shapes':'Level=Animal7,D8',
+  'Animal Shapes':
+    'Level=Animal7,D8 ' +
+    'Description="R$RS\' $L willing targets in 15\' radius become chosen diminutive - huge animal or small - medium magical beast for $L hr"',
   'Animal Trance':'Level=Adept2,B2,D2',
   'Animate Dead':'Level=Adept3,C3,Death3,Undead4,W4',
   'Animate Objects':'Level=B6,C6,Chaos6',
   'Animate Plants':'Level=D7,Plant7',
   'Animate Rope':'Level=Artifice1,B1,Rogue1,W1',
-  'Antilife Shell':'Level=Animal6,C6,D6',
+  'Antilife Shell':
+    'Level=Animal6,C6,D6 ' +
+    'Description="10\' radius bars living for $L min"',
   'Antimagic Field':'Level=C8,Magic6,Protection6,W6',
   'Antipathy':'Level=D9,W8',
-  'Antiplant Shell':'Level=D4',
+  'Antiplant Shell':
+    'Level=D4 ' +
+    'Description="10\' radius bars animate plants for $L min"',
   'Arcane Eye':'Level=W4',
   'Arcane Lock':'Level=W2',
   'Arcane Mark':'Level=Rogue0,W0',
@@ -2864,9 +2874,13 @@ Pathfinder.SPELLS = {
   'Bear\'s Endurance':'Level=Adept2,C2,D2,R2,W2',
   'Bestow Curse':'Level=Adept3,C3,W4',
   'Binding':'Level=W8',
-  'Black Tentacles':'Level=Aberrant4,W4',
+  'Black Tentacles':
+    'Level=Aberrant4,W4 ' +
+    'Description="R$RM\' Tentacles in 20\' radius grapple (BAB +%{casterLevel+5}), 1d6+4/rd HP for $L rd"',
   'Blade Barrier':'Level=C6,Good6,War6',
-  'Blasphemy':'Level=C7,Evil7',
+  'Blasphemy':
+    'Level=C7,Evil7 ' +
+    'Description="Nonevil creatures in 40\' radius with equal/-1/-5/-10 HD dazed for 1 rd (Will neg)/-2d6 Str for 2d4 rd (Will half)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will 3d6+$L HP) and banished (Will -4 neg)"',
   'Bless':'Level=Adept1,C1,Celestial1,Community1,P1',
   'Bless Water':'Level=C1,P1',
   'Bless Weapon':'Level=Glory2,P1',
@@ -2883,7 +2897,9 @@ Pathfinder.SPELLS = {
   'Calm Emotions':'Level=B2,C2,Charm2',
   'Cat\'s Grace':'Level=Adept2,B2,D2,R2,W2',
   'Cause Fear':'Level=Abyssal1,Adept1,B1,C1,Death1,Rogue1,W1',
-  'Chain Lightning':'Level=Air6,W6',
+  'Chain Lightning':
+    'Level=Air6,W6 ' +
+    'Description="R$RL\' ${Lmin20}d6 HP primary (Ref half), $Lmin20 secondary targets in 30\' radius (Ref +2 half)"',
   'Changestaff':'Level=D7',
   'Chaos Hammer':'Level=C4,Chaos4',
   'Charm Animal':'Level=D1,R1',
@@ -2893,7 +2909,9 @@ Pathfinder.SPELLS = {
   'Chill Touch':'Level=Rogue1,Undead1,W1',
   'Circle Of Death':'Level=W6',
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,W3',
-  'Clenched Fist':'Level=Strength8,W8',
+  'Clenched Fist':
+    'Level=Strength8,W8 ' +
+    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) cover (+4 AC), move 60\', hit (+$Lplus11+mod 1d8+11 HP, stun for 1 rd (Fort neg)), +$Lplus12 bull rush for $L rd"',
   'Cloak Of Chaos':'Level=C8,Chaos8',
   'Clone':'Level=W8',
   'Cloudkill':'Level=W5',
@@ -2905,7 +2923,9 @@ Pathfinder.SPELLS = {
   'Commune With Nature':'Level=D5,R4',
   'Comprehend Languages':'Level=Adept1,B1,C1,Knowledge1,Rogue1,W1',
   'Cone Of Cold':'Level=W5,Water6',
-  'Confusion':'Level=B3,Madness4,Trickery4,W4',
+  'Confusion':
+    'Level=B3,Madness4,Trickery4,W4 ' +
+    'Description="R$RM\' Creatures in 15\' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for $L rd (Will neg)"',
   'Consecrate':'Level=C2',
   'Contact Other Plane':'Level=W5',
   'Contagion':'Level=Adept3,C3,D3,W4',
@@ -2922,28 +2942,42 @@ Pathfinder.SPELLS = {
   'Create Water':'Level=Adept0,C0,D0,P1',
   'Creeping Doom':'Level=D7',
   'Crushing Despair':'Level=B3,W4',
-  'Crushing Hand':'Level=Strength9,W9',
+  'Crushing Hand':
+    'Level=Strength9,W9 ' +
+    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) cover (+4 AC), move 60\', grapple (+$Lplus13 for 2d6+12), +$Lplus13 bull rush for $L rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
   'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2',
   'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3',
   'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4',
   'Curse Water':'Level=C1',
   'Dancing Lights':'Level=B0,Gnomish0,Rogue0,W0',
-  'Darkness':'Level=Adept2,B2,C2,W2',
+  'Darkness':
+    'Level=Adept2,B2,C2,W2 ' +
+    'Description="Touched reduces light level by 1 in 20\' radius for $L min"',
   'Darkvision':'Level=R3,W2',
-  'Daylight':'Level=Adept3,B3,C3,D3,P3,W3',
+  'Daylight':
+    'Level=Adept3,B3,C3,D3,P3,W3 ' +
+    'Description="Touched increases light level by 1 in 20\' radius for $L10 min"',
   'Daze':'Level=B0,Rogue0,W0',
   'Daze Monster':'Level=B2,W2',
   'Death Knell':'Level=C2,Death2',
-  'Death Ward':'Level=C4,D5,Death4,Repose4,P4',
+  'Death Ward':
+    'Level=C4,D5,Death4,Repose4,P4 ' +
+    'Description="Touched +4 saves vs. death spells and death effects, immune energy drain and negative energy effects for $L min"',
   'Deathwatch':'Level=C1,Repose1',
   'Deep Slumber':'Level=B3,Fey3,W3',
-  'Deeper Darkness':'Level=Adept3,C3,Darkness3',
+  'Deeper Darkness':
+    'Level=Adept3,C3,Darkness3 ' +
+    'Description="Touched reduces light level by 2 in 60\' radius for $L min"',
   'Delay Poison':'Level=Adept2,B2,C2,D2,P2,R1',
   'Delayed Blast Fireball':'Level=W7',
   'Demand':'Level=Charm8,Nobility8,W8',
-  'Desecrate':'Level=C2',
-  'Destruction':'Level=C7,Death7,Repose7',
+  'Desecrate':
+    'Level=C2 ' +
+    'Description="R$RS\' 20\' radius gives +3 DC vs. negative channel, undead +1 attack, damage, saves, HP/HD for $L2 hr"',
+  'Destruction':
+    'Level=C7,Death7,Repose7 ' +
+    'Description="R$RS\' Target $L10 HP, consumed if slain (Fort 10d6 HP)"',
   'Detect Animals Or Plants':'Level=D1,R1',
   'Detect Chaos':'Level=Adept1,C1',
   'Detect Evil':'Level=Adept1,C1',
@@ -2956,7 +2990,9 @@ Pathfinder.SPELLS = {
   'Detect Snares And Pits':'Level=D1,R1',
   'Detect Thoughts':'Level=B2,Knowledge2,W2',
   'Detect Undead':'Level=C1,P1,Rogue1,W1',
-  'Dictum':'Level=C7,Law7',
+  'Dictum':
+    'Level=C7,Law7 ' +
+    'Description="Nonlawful creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/staggered for 2d4 rd (Will for 1d4 rd)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will 3d6+$L HP) and banished (Will -4 neg)"',
   'Dimension Door':'Level=Arcane4,B4,Travel4,W4',
   'Dimensional Anchor':'Level=C4,W4',
   'Dimensional Lock':'Level=C8,W8',
@@ -2965,7 +3001,9 @@ Pathfinder.SPELLS = {
   'Discern Location':'Level=C8,Knowledge8,W8',
   'Disguise Self':'Level=B1,Rogue1,Trickery1,W1',
   'Disintegrate':'Level=Destruction7,W6',
-  'Dismissal':'Level=Abyssal5,C4,W5',
+  'Dismissal':
+    'Level=Abyssal5,C4,W5 ' +
+    'Description="R$RS\' Target returned to native plane (Will neg)"',
   'Dispel Chaos':'Level=C5,Law5,P4',
   'Dispel Evil':'Level=C5,Good5,P4',
   'Dispel Good':'Level=C5,Evil5',
@@ -2976,7 +3014,9 @@ Pathfinder.SPELLS = {
   'Disrupting Weapon':'Level=C5',
   'Divination':'Level=C4,Knowledge4',
   'Divine Favor':'Level=C1,Nobility1,P1',
-  'Divine Power':'Level=C4,War4',
+  'Divine Power':
+    'Level=C4,War4 ' +
+    'Description="Self +$Ldiv3min6 attack, damage, Str checks, Str-based skill checks, +$L HP, extra attack for $L rd"',
   'Dominate Animal':'Level=Animal3,D3',
   'Dominate Monster':'Level=Charm9,W9',
   'Dominate Person':'Level=B4,Infernal5,W5',
@@ -2989,7 +3029,9 @@ Pathfinder.SPELLS = {
   'Energy Drain':'Level=C9,Undead9,W9',
   'Enervation':'Level=W4',
   'Enlarge Person':'Level=Aberrant1,Rogue1,Strength1,W1',
-  'Entangle':'Level=D1,Fey1,Plant1,R1',
+  'Entangle':
+    'Level=D1,Fey1,Plant1,R1 ' +
+    'Description="R$RL\' Creatures in 40\' radius entangled for $L min (Ref neg)"',
   'Enthrall':'Level=B2,C2,Nobility2',
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rogue1,Rune1,W1',
@@ -3006,45 +3048,73 @@ Pathfinder.SPELLS = {
   'Feather Fall':'Level=B1,Rogue1,W1',
   'Feeblemind':'Level=Aberrant5,W5',
   'Find The Path':'Level=B6,C6,D6,Knowledge6,Travel6',
-  'Find Traps':'Level=C2',
-  'Finger Of Death':'Level=D8,Undead7,W7',
-  'Fire Seeds':'Level=D6,Fire6,Sun6',
+  'Find Traps':
+    'Level=C2 ' +
+    'Description="Self +$Ldiv2min10 Perception to uncover traps for $L min"',
+  'Finger Of Death':
+    'Level=D8,Undead7,W7 ' +
+    'Description="R$RS\' Target $L10 HP (Fort 3d6+$L HP)"',
+  'Fire Seeds':
+    'Level=D6,Fire6,Sun6 ' +
+    'Description="Touched 4 acorn grenades ${Lmin20}d4 total or 8 berry bombs 1d8+$L in 5\' radius (Ref half) that detonate on command for $L10 min"',
   'Fire Shield':'Level=Fire5,Sun4,W4',
-  'Fire Storm':'Level=C8,D7',
+  'Fire Storm':
+    'Level=C8,D7 ' +
+    'Description="R$RM\' $L2 10\' cu ${Lmin20}d6 HP, then 4d6 HP/rd until extinguished (Ref half, initial damage only)"',
   'Fire Trap':'Level=D2,W4',
   'Fireball':'Level=Fire3,W3',
   'Flame Arrow':'Level=W3',
   'Flame Blade':'Level=D2',
   'Flame Strike':'Level=C5,Celestial5,D4,Sun5,War5',
-  'Flaming Sphere':'Level=D2,W2',
+  'Flaming Sphere':
+    'Level=D2,W2 ' +
+    'Description="R$RM\' 5\' diameter sphere 3d6 HP (Ref neg) jump or move 30\' for $L rd"',
   'Flare':'Level=B0,D0,Rogue0,W0',
   'Flesh To Stone':'Level=W6',
   'Floating Disk':'Level=Rogue1,W1',
-  'Fly':'Level=Draconic3,Travel3,W3',
+  'Fly':
+    'Level=Draconic3,Travel3,W3 ' +
+    'Description="Touched 60\' fly speed, +$Ldiv2 Fly skill for $L min"',
   'Fog Cloud':'Level=D2,W2,Water2,Weather2',
   'Forbiddance':'Level=C6',
-  'Forcecage':'Level=W7',
-  'Forceful Hand':'Level=W6',
+  'Forcecage':
+    'Level=W7 ' +
+    'Description="R$RS\' Traps targets in 20\' cage or 10\' cube for $L rd"',
+  'Forceful Hand':
+    'Level=W6 ' +
+    'Description="R$RM\' 10\' (AC 20, %{hitPoints} HP) hand cover (+4 AC), move 60\', +$Lplus9 bull rush for $L rd"',
   'Foresight':'Level=D9,Destined9,Knowledge9,W9',
   'Fox\'s Cunning':'Level=B2,W2',
   'Freedom':'Level=Liberation9,W9',
   'Freedom Of Movement':'Level=B4,C4,D4,Destined4,Liberation4,Luck4,R4',
-  'Freezing Sphere':'Level=W6',
-  'Gaseous Form':'Level=Air3,B3,W3',
+  'Freezing Sphere':
+    'Level=W6 ' +
+    'Description="R$RL\' 40\' radius ${Lmin15}d6 HP (Ref half)"',
+  'Gaseous Form':
+    'Level=Air3,B3,W3 ' +
+    'Description="Touched insubstantial (DR 10/magic, immune poison, sneak attacks, and critical hits, unable to use spell components, fly 10\') for $L2 min"',
   'Gate':'Level=C9,Celestial9,Glory9,W9',
   'Geas/Quest':'Level=B6,C6,Charm6,Nobility6,W6',
   'Gentle Repose':'Level=C2,Repose2,W3',
   'Ghost Sound':'Level=Adept0,B0,Gnomish0,Rogue0,W0',
   'Ghoul Touch':'Level=W2',
-  'Giant Vermin':'Level=C4,D4',
-  'Glibness':'Level=B3',
+  'Giant Vermin':
+    'Level=C4,D4 ' +
+    'Description="R$RS\' %{$L<10?3:$L<14?4:$L<18?6:$L<20?8:12} centipedes, %{$L<10?2:$L<14?3:$L<18?4:$L<20?5:8} spiders, or %{$L<10?1:$L<14?2:$L<18?3:$L<20?4:6} scorpions in 15\' radius become giant and obey commands for $L min"',
+  'Glibness':
+    'Level=B3 ' +
+    'Description="Self +20 Bluff, SR $Lplus15 (magical lie detection) for $L10 min"',
   'Glitterdust':'Level=B2,W2',
   'Globe Of Invulnerability':'Level=W6',
   'Glyph Of Warding':'Level=C3,Rune3',
   'Good Hope':'Level=B3',
   'Goodberry':'Level=D1',
-  'Grasping Hand':'Level=Strength7,W7',
-  'Grease':'Level=B1,Rogue1,W1',
+  'Grasping Hand':
+    'Level=Strength7,W7 ' +
+    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) cover (+4 AC), move 60\', +$Lplus11 grapple, +$Lplus11 bull rush for $L rd"',
+  'Grease':
+    'Level=B1,Rogue1,W1 ' +
+    'Description="R$RS\' Object or 10\' square slippery, causes falls (Ref DC 10 Balance for half speed) for $L min"',
   'Greater Arcane Sight':'Level=W7',
   'Greater Command':'Level=C5,Nobility5',
   'Greater Dispel Magic':'Level=B5,C6,Celestial6,Liberation6,D6,W6',
@@ -3055,7 +3125,9 @@ Pathfinder.SPELLS = {
   'Greater Magic Weapon':'Level=C4,P3,W3',
   'Greater Planar Ally':'Level=C8',
   'Greater Planar Binding':'Level=W8',
-  'Greater Prying Eyes':'Level=W8',
+  'Greater Prying Eyes':
+    'Level=W8 ' +
+    'Description="1d4+$L floating eyes (AC 18, 1 HP, +16 Stealth, +$Lmin25 Perception, Fly 30\') with True Seeing scout 1 mile for $L hr"',
   'Greater Restoration':'Level=C7',
   'Greater Scrying':'Level=B6,C7,D7,W7',
   'Greater Shadow Conjuration':'Level=W7',
@@ -3066,7 +3138,9 @@ Pathfinder.SPELLS = {
   'Guards And Wards':'Level=W6',
   'Guidance':'Level=Adept0,C0,D0',
   'Gust Of Wind':'Level=D2,W2',
-  'Hallow':'Level=C5,D5',
+  'Hallow':
+    'Level=C5,D5 ' +
+    'Description="40\' radius from touched gives +2 AC and saves vs. evil, suppresses mental control, bars contact by summoned evil creatures, prevents undead creation, positive channeling +4 DC, negative channeling -4 DC, and evokes boon spell"',
   'Hallucinatory Terrain':'Level=B4,W4',
   'Halt Undead':'Level=W3',
   'Harm':'Level=C6,Destruction6',
@@ -3075,7 +3149,9 @@ Pathfinder.SPELLS = {
   'Heal Mount':'Level=P3',
   'Heat Metal':'Level=D2,Sun2',
   'Helping Hand':'Level=C3',
-  'Heroes\' Feast':'Level=B6,C6,Community6',
+  'Heroes\' Feast':
+    'Level=B6,C6,Community6 ' +
+    'Description="R$RS\' Food for $L creatures cures sickness, poison, and disease, 1d8+$Ldiv2min10 temporary HP, +1 attack and Will saves, +4 vs. poison and fear for 12 hr"',
   'Heroism':'Level=B2,Charm4,W3',
   'Hide From Animals':'Level=D1,R1',
   'Hide From Undead':'Level=C1',
@@ -3087,52 +3163,76 @@ Pathfinder.SPELLS = {
   'Holy Aura':'Level=C8,Glory8,Good8',
   'Holy Smite':'Level=C4,Glory4,Good4',
   'Holy Sword':'Level=Glory7,P4',
-  'Holy Word':'Level=C7,Good7',
+  'Holy Word':
+    'Level=C7,Good7 ' +
+    'Description="Nongood creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/blinded for 2d4 rd (Will for 1d4 rd)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will 3d6+$L HP) and banished (Will neg)"',
   'Horrid Wilting':'Level=Undead8,Water8,W8',
   'Hypnotic Pattern':'Level=B2,W2',
   'Hypnotism':'Level=B1,Rogue1,W1',
-  'Ice Storm':'Level=D4,W4,Water5,Weather5',
-  'Identify':'Level=Arcane1,Magic1,B1,Rogue1,W1',
+  'Ice Storm':
+    'Level=D4,W4,Water5,Weather5 ' +
+    'Description="R$RL\' Hail in 20\' radius 3d6 HP bludgeoning, 2d6 HP cold, -4 Perception for $L rd"',
+  'Identify':
+    'Level=Arcane1,Magic1,B1,Rogue1,W1 ' +
+    'Description="R60\' cone info on magical auras, +10 Spellcraft (item properties) for conc or $L3 rd"',
   'Illusory Script':'Level=B3,W3',
   'Illusory Wall':'Level=W4',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
-  'Implosion':'Level=C9,Destruction9',
+  'Implosion':
+    'Level=C9,Destruction9 ' +
+    'Description="R$RS\' 1 target/rd $L10 HP for conc or $Ldiv2 rd (Fort neg)"',
   'Imprisonment':'Level=W9',
-  'Incendiary Cloud':'Level=Fire8,W8',
+  'Incendiary Cloud':
+    'Level=Fire8,W8 ' +
+    'Description="R$RM\' 20\' radius moves away 10\'/rd, 6d6 HP (Ref half) for $L rd"',
   'Inflict Critical Wounds':'Level=C4,Destruction4',
   'Inflict Light Wounds':'Level=C1',
   'Inflict Moderate Wounds':'Level=C2',
   'Inflict Serious Wounds':'Level=C3',
-  'Insanity':'Level=Charm7,Madness7,W7',
-  'Insect Plague':'Level=C5,D5',
+  'Insanity':
+    'Level=Charm7,Madness7,W7 ' +
+    'Description="R$RM\' Target randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest permanently (Will neg)"',
+  'Insect Plague':
+    'Level=C5,D5 ' +
+    'Description="R$RL\' $Ldiv3min6 wasp swarms 2d6 HP + 1 Dex (DC 13 Fort neg) for $L min"',
   'Instant Summons':'Level=Rune7,W7',
   'Interposing Hand':'Level=W5',
   'Invisibility':'Level=Adept2,Arcane2,B2,Trickery2,W2',
   'Invisibility Purge':'Level=C3',
   'Invisibility Sphere':'Level=B3,W3',
-  'Iron Body':'Level=W8',
+  'Iron Body':
+    'Level=W8 ' +
+    'Description="Self becomes iron (+6 Str, -6 Dex, half Speed, 35% arcane failure, -6 skill, DR 15/adamantine, half damage acid and fire, immune other attacks and effects) for $L min"',
   'Ironwood':'Level=D6',
-  'Irresistible Dance':'Level=B6,Fey8,W8',
+  'Irresistible Dance':
+    'Level=B6,Fey8,W8 ' +
+    'Description="Touched dance (-4 AC, -10 Reflex) for d4+1 rd (Will for 1 rd)"',
   'Jump':'Level=D1,R1,Rogue1,W1',
   'Keen Edge':'Level=W3',
   'Knock':'Level=W2',
   'Know Direction':'Level=B0,D0',
   'Legend Lore':'Level=B4,Knowledge7,W6',
-  'Lesser Confusion':'Level=B1,Madness1',
+  'Lesser Confusion':
+    'Level=B1,Madness1 ' +
+    'Description="R$RM\' Target randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for 1 rd (Will neg)"',
   'Lesser Geas':'Level=B3,W4',
   'Lesser Globe Of Invulnerability':'Level=W4',
   'Lesser Planar Ally':'Level=C4',
   'Lesser Planar Binding':'Level=Rune5,W5',
   'Lesser Restoration':'Level=C2,D2,P1',
   'Levitate':'Level=W2',
-  'Light':'Level=Adept0,B0,C0,D0,Rogue0,W0',
+  'Light':
+    'Level=Adept0,B0,C0,D0,Rogue0,W0 ' +
+    'Description="Touched gives 20\' normal light for $L10 min"',
   'Lightning Bolt':'Level=Adept3,W3',
   'Limited Wish':'Level=W7',
   'Liveoak':'Level=D6',
   'Locate Creature':'Level=B4,W4',
   'Locate Object':'Level=B2,C3,Travel2,W2',
   'Longstrider':'Level=D1,R1,Travel1',
-  'Lullaby':'Level=B0',
+  'Lullaby':
+    'Level=B0 ' +
+    'Description="R$RM\' Targets in 10\' radius -5 Perception, -2 Will vs. sleep for conc + $L rd (Will neg)"',
   'Mage Armor':'Level=Draconic1,Rogue1,W1',
   'Mage Hand':'Level=B0,Rogue0,W0',
   'Mage\'s Disjunction':'Level=Magic9,W9',
@@ -3142,10 +3242,18 @@ Pathfinder.SPELLS = {
   'Mage\'s Private Sanctum':'Level=W5',
   'Mage\'s Sword':'Level=W7',
   'Magic Aura':'Level=B1,Rogue1,W1',
-  'Magic Circle Against Chaos':'Level=C3,Law3,P3,W3',
-  'Magic Circle Against Evil':'Level=C3,Celestial3,Good3,P3,W3',
-  'Magic Circle Against Good':'Level=C3,Evil3,W3',
-  'Magic Circle Against Law':'Level=C3,Chaos3,W3',
+  'Magic Circle Against Chaos':
+    'Level=C3,Law3,P3,W3 ' +
+    'Description="10\' radius from touched +2 AC, +2 saves, +2 save to suppress mental control, no contact and bar entry by chaotic summoned creatures (SR neg) for $L10 min"',
+  'Magic Circle Against Evil':
+    'Level=C3,Celestial3,Good3,P3,W3 ' +
+    'Description="10\' radius from touched +2 AC, +2 saves, +2 save to suppress mental control, no contact and bar entry by evil summoned creatures (SR neg) for $L10 min"',
+  'Magic Circle Against Good':
+    'Level=C3,Evil3,W3 ' +
+    'Description="10\' radius from touched +2 AC, +2 saves, +2 save to suppress mental control, no contact and bar entry by good summoned creatures (SR neg) for $L10 min"',
+  'Magic Circle Against Law':
+    'Level=C3,Chaos3,W3 ' +
+    'Description="10\' radius from touched +2 AC, +2 saves, +2 save to suppress mental control, no contact and bar entry by good summoned creatures (SR neg) for $L10 min"',
   'Magic Fang':'Level=D1,R1',
   'Magic Jar':'Level=W5',
   'Magic Missile':'Level=Rogue1,W1',
@@ -3205,7 +3313,9 @@ Pathfinder.SPELLS = {
   'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Rogue1,Water1,W1,Weather1',
   'Open/Close':'Level=B0,Rogue0,W0',
   'Order\'s Wrath':'Level=C4,Law4',
-  'Overland Flight':'Level=Arcane5,W5',
+  'Overland Flight':
+    'Level=Arcane5,W5 ' +
+    'Description="Self 40\' fly speed, +$Ldiv2 Fly skill for $L hr"',
   'Owl\'s Wisdom':'Level=C2,D2,P2,R2,W2',
   'Passwall':'Level=W5',
   'Pass Without Trace':'Level=D1,R1',
@@ -3213,15 +3323,21 @@ Pathfinder.SPELLS = {
   'Permanent Image':'Level=B6,W6',
   'Persistent Image':'Level=B5,W5',
   'Phantasmal Killer':'Level=Madness6,W4',
-  'Phantom Steed':'Level=B3,W3',
+  'Phantom Steed':
+    'Level=B3,W3 ' +
+    'Description="Create mount ($Lplus7 HP, AC 18, MV $Ldiv2times20min100\') for target for $L hr"',
   'Phantom Trap':'Level=W2',
   'Phase Door':'Level=Fey7,Travel8,W7',
   'Planar Ally':'Level=C6',
   'Planar Binding':'Level=Infernal6,W6',
   'Plane Shift':'Level=Aberrant7,C5,W7',
   'Plant Growth':'Level=D3,Plant3,R3',
-  'Poison':'Level=C4,D3,Fey4',
-  'Polar Ray':'Level=W8',
+  'Poison':
+    'Level=C4,D3,Fey4 ' +
+    'Description="Touched 1d3 Con/rd for 6 rd (Fort neg)"',
+  'Polar Ray':
+    'Level=W8 ' +
+    'Description="R$RM\' Ranged touch ${Lmin25}d6 HP, 1d4 Dex"',
   'Polymorph':'Level=Adept4,W5',
   'Polymorph Any Object':'Level=W8',
   'Power Word Blind':'Level=Darkness7,W7,War7',
@@ -3242,14 +3358,18 @@ Pathfinder.SPELLS = {
   'Protection From Good':'Level=Adept1,C1,Evil1,Infernal1,Rogue1,W1',
   'Protection From Law':'Level=Adept1,C1,Chaos1,Rogue1,W1',
   'Protection From Spells':'Level=Magic8,W8',
-  'Prying Eyes':'Level=W5',
+  'Prying Eyes':
+    'Level=W5 ' +
+    'Description="1d4+$L floating eyes (AC 18, 1 HP, +16 Stealth, +$Lmin15 Perception, Fly 30\') scout 1 mile for $L hr"',
   'Purify Food And Drink':'Level=Adept0,C0,D0',
   'Pyrotechnics':'Level=B2,W2',
   'Quench':'Level=D3',
   'Rage':'Level=Abyssal3,B2,Destruction3,Madness3,W3',
   'Rainbow Pattern':'Level=B4,W4',
   'Raise Dead':'Level=Adept5,C5',
-  'Ray Of Enfeeblement':'Level=Rogue1,W1',
+  'Ray Of Enfeeblement':
+    'Level=Rogue1,W1 ' +
+    'Description="R$RS\' Ranged touch 1d6+$Ldiv2min5 Str for $L rd"',
   'Ray Of Exhaustion':'Level=W3',
   'Ray Of Frost':'Level=Rogue0,W0',
   'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,Rogue0,W0',
@@ -3259,8 +3379,12 @@ Pathfinder.SPELLS = {
   'Regenerate':'Level=C7,D9,Healing7',
   'Reincarnate':'Level=D4',
   'Remove Blindness/Deafness':'Level=C3,P3',
-  'Remove Curse':'Level=Adept3,B3,C3,Celestial4,Liberation3,P3,W4',
-  'Remove Disease':'Level=Adept3,C3,D3,R3',
+  'Remove Curse':
+    'Level=Adept3,B3,C3,Celestial4,Liberation3,P3,W4 ' +
+    'Description="Caster level check to dispel all curses from touched"',
+  'Remove Disease':
+    'Level=Adept3,C3,D3,R3 ' +
+    'Description="Caster level check to cure touched of all diseases"',
   'Remove Fear':'Level=B1,C1,Liberation1',
   'Remove Paralysis':'Level=C2,Liberation2,P2',
   'Repel Metal Or Stone':'Level=D8',
@@ -3272,8 +3396,12 @@ Pathfinder.SPELLS = {
   'Resistance':'Level=B0,C0,D0,P1,Rogue0,W0',
   'Restoration':'Level=Adept4,C4,P4',
   'Resurrection':'Level=C7',
-  'Reverse Gravity':'Level=D8,W7',
-  'Righteous Might':'Level=C5,Glory5,Strength5',
+  'Reverse Gravity':
+    'Level=D8,W7 ' +
+    'Description="R$RM\' Objects in $L 10\' cu fall upward for $L rd"',
+  'Righteous Might':
+    'Level=C5,Glory5,Strength5 ' +
+    'Description="Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and DR ${lvl>14?10:5}/evil or DR ${lvl>14?10:5}/good for $L rd"',
   'Rope Trick':'Level=W2',
   'Rusting Grasp':'Level=D4',
   'Sanctuary':'Level=C1,Glory1,Protection1',
@@ -3296,7 +3424,9 @@ Pathfinder.SPELLS = {
   'Shadow Conjuration':'Level=B4,Darkness4,W4',
   'Shadow Evocation':'Level=B5,W5',
   'Shadow Walk':'Level=B5,Darkness6,W6',
-  'Shambler':'Level=D9,Plant9',
+  'Shambler':
+    'Level=D9,Plant9 ' +
+    'Description="R$RM\' 1d4+2 advanced shambling mounds in 15\' radius fight for 7 dy, guard for 7 mo"',
   'Shapechange':'Level=Aberrant9,Animal9,D9,Fey9,W9',
   'Shatter':'Level=B2,C2,Destruction2,W2',
   'Shield':'Level=Rogue1,W1',
@@ -3307,16 +3437,24 @@ Pathfinder.SPELLS = {
   'Shocking Grasp':'Level=Rogue1,W1',
   'Shout':'Level=B4,Destruction5,W4',
   'Shrink Item':'Level=W3',
-  'Silence':'Level=B2,C2',
+  'Silence':
+    'Level=B2,C2 ' +
+    'Description="R$RL\' Bars sound in 20\' radius for $L rd"',
   'Silent Image':'Level=B1,Rogue1,W1',
   'Simulacrum':'Level=W7',
-  'Slay Living':'Level=C5,Death5,Repose5',
+  'Slay Living':
+    'Level=C5,Death5,Repose5 ' +
+    'Description="Touched 12d6+$L HP (Fort 3d6+$L HP)"',
   'Sleep':'Level=Adept1,B1,Rogue1,W1',
-  'Sleet Storm':'Level=D3,W3,Weather4',
+  'Sleet Storm':
+    'Level=D3,W3,Weather4 ' +
+    'Description="R$RL\' Blinding sleet in 40\' radius, creatures DC 10 Acrobatics to move for $L rd"',
   'Slow':'Level=B3,W3',
   'Snare':'Level=D3,R2',
   'Soften Earth And Stone':'Level=D2,Earth2',
-  'Solid Fog':'Level=W4',
+  'Solid Fog':
+    'Level=W4 ' +
+    'Description="R$RM\' Fog in 20\' radius obscures vision, reduces Speed to half, and -2 attack and damage for $L min"',
   'Song Of Discord':'Level=B5',
   'Soul Bind':'Level=C9,W9',
   'Sound Burst':'Level=B2,C2',
@@ -3398,7 +3536,9 @@ Pathfinder.SPELLS = {
   'True Strike':'Level=Destruction1,Luck1,Rogue1,W1',
   'Undeath To Death':'Level=C6,Glory6,Repose6,Undead6,W6',
   'Undetectable Alignment':'Level=B1,C2,P2',
-  'Unhallow':'Level=C5,D5',
+  'Unhallow':
+    'Level=C5,D5 ' +
+    'Description="40\' radius from touched gives +2 AC and saves vs. good, suppresses mental control, bars contact by summoned good creatures, negative channeling +4 DC, positive channeling -4 DC, and evokes bane spell"',
   'Unholy Aura':'Level=Abyssal8,C8,Evil8',
   'Unholy Blight':'Level=C4,Evil4',
   'Unseen Servant':'Level=B1,Rogue1,W1',
@@ -3407,7 +3547,9 @@ Pathfinder.SPELLS = {
   'Ventriloquism':'Level=B1,Rogue1,W1',
   'Virtue':'Level=C0,D0,P1',
   'Vision':'Level=W7',
-  'Wail Of The Banshee':'Level=Death9,Repose9,W9',
+  'Wail Of The Banshee':
+    'Level=Death9,Repose9,W9 ' +
+    'Description="R$RS\' $L targets in 40\' radius $L10 HP (Fort neg)"',
   'Wall Of Fire':'Level=Adept4,D5,Fire4,W4',
   'Wall Of Force':'Level=W5',
   'Wall Of Ice':'Level=W4',
@@ -3419,7 +3561,9 @@ Pathfinder.SPELLS = {
   'Water Walk':'Level=C3,R3',
   'Waves Of Exhaustion':'Level=Repose8,W7',
   'Waves Of Fatigue':'Level=Undead5,W5',
-  'Web':'Level=Adept2,W2',
+  'Web':
+    'Level=Adept2,W2 ' +
+    'Description="R$RM\' Webs in 20\' radius entangle (Ref neg, Str or Escape Artist break), burn for 2d4 HP for $L10 min"',
   'Weird':'Level=Madness9,W9',
   'Whirlwind':'Level=Air8,D8,Weather8',
   'Whispering Wind':'Level=B2,W2',
@@ -3427,7 +3571,9 @@ Pathfinder.SPELLS = {
   'Wind Wall':'Level=Air2,C3,D3,R2,W3',
   'Wish':'Level=Arcane9,Draconic9,W9',
   'Wood Shape':'Level=Artifice2,D2',
-  'Word Of Chaos':'Level=C7,Chaos7',
+  'Word Of Chaos':
+    'Level=C7,Chaos7 ' +
+    'Description="Nonchaotic creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/stunned for 1 rd (Will neg)/confused for 1d10 min (Will for 1 rd)/killed (Will 3d6+$L HP) and banished (Will neg)"',
   'Word Of Recall':'Level=C6,D8',
   'Zone Of Silence':'Level=B4',
   'Zone Of Truth':'Level=C2,P2',
@@ -3451,11 +3597,11 @@ Pathfinder.SPELLS = {
   'Bleed':
     'School=Necromancy ' +
     'Level=C0,Rogue0,W0 ' +
-    'Description="R$RS\' Stabilized target resume dying (Will neg)"',
+    'Description="R$RS\' Stabilized target 1 HP, resumes dying (Will neg)"',
   'Breath Of Life':
     'School=Conjuration ' +
     'Level=C5,Healing5 ' +
-    'Description="Heal 5d8+$L (max 25) plus resurrect target dead less than 1 rd"',
+    'Description="Heal 5d8+$Lmin25 and resurrect target dead less than 1 rd"',
   'Elemental Body I':
     'School=Transmutation ' +
     'Level=Elemental4,W4 ' +
