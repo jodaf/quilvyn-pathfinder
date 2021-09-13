@@ -17,7 +17,7 @@ subdirectory within the Quilvyn installation directory, then append the
 following lines to the file plugins/plugins.js:
 
     RULESETS['Pathfinder 1E'] = {
-      url:'Pathfinder.js',
+      url:'plugins/Pathfinder.js',
       group:'Pathfinder 1E',
       require:'v3.5 (SRD only)'
     };
