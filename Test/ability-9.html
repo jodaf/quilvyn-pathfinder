@@ -12,13 +12,11 @@ var attributes = {
   "experience":32501, "experienceTrack":"3.5", "familiar.Hawk":1, "familiarName":"Couktoc", 
   "feats.Craft Wand":1, "feats.Forge Ring":1, "feats.Skill Focus (Craft (Armor))":1, 
   "feats.Skill Focus (Diplomacy)":1, "feats.Skill Focus (Knowledge (Planes))":1, "gender":"Male", "hitPoints":32, 
-  "intelligence":9, "languages.Goblin":1, "languages.Halfling":1, "languages.Undercommon":1, 
-  "levels.Cleric":4, "levels.Sorcerer":4, "name":"Ability-9", "race":"Human", 
+  "intelligence":9, "levels.Cleric":4, "levels.Sorcerer":4, "name":"Ability-9", "race":"Human", 
   "selectableFeatures.Cleric - Death Domain":1, "selectableFeatures.Cleric - Magic Domain":1, 
-  "selectableFeatures.Sorcerer - Bloodline Draconic (Bronze)":1, "shield":"None", "skills.Acrobatics":6, "skills.Bluff":4, 
-  "skills.Craft (Armor)":2, "skills.Diplomacy":8, "skills.Heal":8, "skills.Knowledge (Planes)":2, 
-  "skills.Perception":8, "skills.Perform (String)":2, "skills.Profession (Tanner)":5, 
-  "skills.Spellcraft":3, "spells.Augury(C2 Divi)":1, "spells.Daze Monster(W2 Ench)":1, 
+  "selectableFeatures.Sorcerer - Bloodline Draconic (Bronze)":1, "shield":"None", "skills.Bluff":2, "skills.Craft (Armor)":2, 
+  "skills.Diplomacy":2, "skills.Heal":2, "skills.Knowledge (Planes)":2, "skills.Perception":2, 
+  "skills.Profession (Soldier)":4, "spells.Augury(C2 Divi)":1, "spells.Daze Monster(W2 Ench)":1, 
   "spells.Daze(W0 Ench)":1, "spells.Detect Good(C1 Divi)":1, "spells.Detect Magic(C0 Divi)":1, 
   "spells.Detect Poison(W0 Divi)":1, "spells.Endure Elements(W1 Abju)":1, "spells.Enlarge Person(W1 Tran)":1, 
   "spells.Enthrall(C2 Ench)":1, "spells.Erase(W1 Tran)":1, "spells.Expeditious Retreat(W1 Tran)":1, 
@@ -103,25 +101,21 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Acrobatics: (dex;cc) 6 (5)</td>
-        <td>Heal: (wis) 8 (10)</td>
-        <td>Profession (Tanner): (wis) 5 (7)</td>
-      </tr><tr style="text-align:left">
-        <td>Bluff: (cha) 4 (6)</td>
-        <td>Knowledge (Planes): (int) 2 (7)</td>
-        <td>Spellcraft: (int) 3 (5)</td>
+        <td>Bluff: (cha) 2 (4)</td>
+        <td>Heal: (wis) 2 (4)</td>
+        <td>Profession (Soldier): (wis) 4 (6)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Armor): (int) 2 (7)</td>
-        <td>Perception: (wis) 8 (10)</td>
+        <td>Knowledge (Planes): (int) 2 (7)</td>
         <td></td>
       </tr><tr style="text-align:left">
-        <td>Diplomacy: (cha) 8 (13)</td>
-        <td>Perform (String): (cha;cc) 2 (1)</td>
+        <td>Diplomacy: (cha) 2 (7)</td>
+        <td>Perception: (wis) 2 (4)</td>
         <td></td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Languages</b>: Common; Goblin; Halfling; Undercommon</td>
+      <td><b>Languages</b>: Common</td>
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
@@ -333,6 +327,18 @@ var attributes = {
       <td><b>Familiar</b>: Hawk "Couktoc"</td>
     </tr><tr style="text-align:center">
       <td><b>Familiar Stats</b>: AC: 15; CMB: 6; CMD: 14; Cha: 7; Con: 11; Dex: 17; Initiative: 3; Int: 2; Size: T; Str: 6; Wis: 14</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td>Ability Minimum: Requires charisma (currently 9) >= 14, constitution (currently 9) >= 14, dexterity (currently 9) >= 14, intelligence (currently 9) >= 14, strength (currently 9) >= 14 or wisdom (currently 9) >= 14</td>
+      </tr><tr style="text-align:center">
+        <td>Ability Modifier Sum: Requires ability modifier sum</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr></table>
