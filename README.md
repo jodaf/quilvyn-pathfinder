@@ -19,7 +19,7 @@ following lines to the file plugins/plugins.js:
     RULESETS['Pathfinder 1E'] = {
       url:'plugins/Pathfinder.js',
       group:'Pathfinder 1E',
-      require:'v3.5 (SRD only)'
+      require:'SRD35.js'
     };
 
 ### Usage
