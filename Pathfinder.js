@@ -3003,7 +3003,7 @@ Pathfinder.SPELLS = {
   'Disintegrate':'Level=Destruction7,W6',
   'Dismissal':
     'Level=Abyssal5,C4,W5 ' +
-    'Description="R$RS\' Target returned to native plane (Will neg)"',
+    'Description="R$RS\' Returns target to native plane (Will neg)"',
   'Dispel Chaos':'Level=C5,Law5,P4',
   'Dispel Evil':'Level=C5,Good5,P4',
   'Dispel Good':'Level=C5,Evil5',
@@ -3056,7 +3056,7 @@ Pathfinder.SPELLS = {
     'Description="R$RS\' Target suffers $L10 HP (Fort 3d6+$L HP)"',
   'Fire Seeds':
     'Level=D6,Fire6,Sun6 ' +
-    'Description="Touched 4 acorn grenades inflict ${Lmin20}d4 total or 8 berry bombs that detonate on command to inflict 1d8+$L in 5\' radius (Ref half) for $L10 min"',
+    'Description="Touched 4 acorn grenades inflict ${Lmin20}d4 total or 8 berry bombs detonate on command to inflict 1d8+$L in 5\' radius (Ref half) for $L10 min"',
   'Fire Shield':'Level=Fire5,Sun4,W4',
   'Fire Storm':
     'Level=C8,D7 ' +
@@ -3174,7 +3174,7 @@ Pathfinder.SPELLS = {
     'Description="R$RL\' Hail in 20\' radius inflicts 3d6 HP bludgeoning, 2d6 HP cold, -4 Perception for $L rd"',
   'Identify':
     'Level=Arcane1,Magic1,B1,Rogue1,W1 ' +
-    'Description="R60\' cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or $L3 rd"',
+    'Description="R60\' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or $L3 rd"',
   'Illusory Script':'Level=B3,W3',
   'Illusory Wall':'Level=W4',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
@@ -3659,7 +3659,7 @@ Pathfinder.SPELLS = {
   'Stabilize':
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
-    'Description="R$RS\' Target w/negative HP stabilized"'
+    'Description="R$RS\' Stabilizes arget w/negative HP"'
 
 };
 for(var s in Pathfinder.SPELLS) {
