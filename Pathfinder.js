@@ -7633,19 +7633,9 @@ Pathfinder.getPlugins = function() {
 /* Returns HTML body content for user notes associated with this rule set. */
 Pathfinder.ruleNotes = function() {
   return '' +
-    '<h2>Pathfinder Quilvyn Plugin Notes</h2>\n' +
-    'Pathfinder Quilvyn Plugin Version ' + Pathfinder.VERSION + '\n' +
+    '<h2>Quilvyn Pathfinder Rule Set Notes</h2>\n' +
     '<p>\n' +
-    'Pathfinder material is Open Game Content from the Pathfinder ' +
-    'Roleplaying Game Reference Document, released by Paizo Publishing, LLC ' +
-    'under the Open Game License. ©2011, Paizo Publishing, LLC; Author: ' +
-    'Paizo Publishing, LLC.\n' +
-    '</p><p>\n' +
-    'Open Game License v 1.0a Copyright 2000, Wizards of the Coast, LLC. You ' +
-    'should have received a copy of the Open Game License with this program; ' +
-    'if not, you can obtain one from ' +
-    'https://media.wizards.com/2016/downloads/SRD-OGL_V1.1.pdf. ' +
-    '<a href="plugins/ogl-pathfinder.txt">Click here</a> to see the license.<br/>\n'+
+    'Quilvyn Pathfinder Rule Set Version ' + Pathfinder.VERSION + '\n' +
     '</p>\n' +
     '<h3>Usage Notes</h3>\n' +
     '<ul>\n' +
@@ -7664,5 +7654,18 @@ Pathfinder.ruleNotes = function() {
     '    some magic-using classes (e.g., Sorcerer) don\'t allow 2nd-level\n' +
     '    spells until a higher caster level.\n' +
     '  </li>\n' +
-    '</ul>\n';
+    '</ul>\n' +
+    '<h3>Copyrights and Licensing</h3>\n' +
+    '<p>\n' +
+    'Pathfinder material is Open Game Content from the Pathfinder ' +
+    'Roleplaying Game Reference Document, released by Paizo Publishing, LLC ' +
+    'under the Open Game License. ©2011, Paizo Publishing, LLC; Author: ' +
+    'Paizo Publishing, LLC.\n' +
+    '</p><p>\n' +
+    'Open Game License v 1.0a Copyright 2000, Wizards of the Coast, LLC. You ' +
+    'should have received a copy of the Open Game License with this program; ' +
+    'if not, you can obtain one from ' +
+    'https://media.wizards.com/2016/downloads/SRD-OGL_V1.1.pdf. ' +
+    '<a href="plugins/ogl-pathfinder.txt">Click here</a> to see the license.<br/>\n'+
+    '</p>\n';
 };
