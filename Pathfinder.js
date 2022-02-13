@@ -81,13 +81,13 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.1.0';
+Pathfinder.VERSION = '2.3.1.1';
 
-/* List of items handled by choiceRules method. */
+/* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
-  'Alignment', 'Animal Companion', 'Armor', 'Class', 'Deity', 'Faction',
-  'Familiar', 'Feat', 'Feature', 'Goody', 'Language', 'Npc', 'Path', 'Prestige',
-  'Race', 'School', 'Shield', 'Skill', 'Spell', 'Track', 'Trait', 'Weapon'
+  'Animal Companion', 'Armor', 'Class', 'Deity', 'Faction', 'Familiar', 'Feat',
+  'Feature', 'Goody', 'Language', 'Npc', 'Path', 'Prestige', 'Race', 'School',
+  'Shield', 'Skill', 'Spell', 'Track', 'Trait', 'Weapon'
 ];
 /*
  * List of items handled by randomizeOneAttribute method. The order handles
