@@ -81,7 +81,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.1.1';
+Pathfinder.VERSION = '2.3.1.2';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -3659,7 +3659,7 @@ Pathfinder.SPELLS = {
   'Stabilize':
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
-    'Description="R$RS\' Stabilizes arget w/negative HP"'
+    'Description="R$RS\' Stabilizes target w/negative HP"'
 
 };
 for(var s in Pathfinder.SPELLS) {
