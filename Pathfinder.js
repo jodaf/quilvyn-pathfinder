@@ -16,6 +16,8 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 */
 
 /*jshint esversion: 6 */
+/* jshint forin: false */
+/* globals Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
 "use strict";
 
 /*
@@ -4823,7 +4825,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
     );
   else if(type == 'Faction')
-    Pathfinder.factionRules(rules, name,
+    Pathfinder.factionRules(rules, name
     );
   else if(type == 'Familiar')
     Pathfinder.familiarRules(rules, name,
@@ -5372,7 +5374,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       '(source < 7 ? "" : "/cold iron/silver") + ' +
       '(source < 10 ? "" : "/lawful") + ' +
       '(source < 16 ? "" : "/adamantine")'
-    )
+    );
     rules.defineRule('combatNotes.armorClassBonus',
       'armor', '?', 'source == "None"',
       'levels.Monk', '+=', 'Math.floor(source / 4)',
@@ -5470,7 +5472,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
     rules.defineRule('companionPaladinLevel',
       'paladinFeatures.Divine Mount', '?', null,
-      'levels.Paladin', '=', null,
+      'levels.Paladin', '=', null
     );
     rules.defineRule
       ('damageReduction.Evil', 'combatNotes.auraOfRighteousness', '^=', null);
@@ -5487,11 +5489,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.holyChampion', 'levels.Paladin', '=', null);
     rules.defineRule('magicNotes.layOnHands',
       'levels.Paladin', '=', 'Math.floor(source / 2)'
-    )
+    );
     rules.defineRule('magicNotes.layOnHands.1',
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
-    )
+    );
     rules.defineRule('magicNotes.removeDisease',
       'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
     );
@@ -5855,7 +5857,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.cannyDefense.1',
       'armorWeight', '?', 'source <= 1',
       'shield', '?', 'source == "None"',
-      'combatNotes.cannyDefense', '=', null,
+      'combatNotes.cannyDefense', '=', null
     );
     rules.defineRule('combatNotes.elaborateDefense',
       'levels.Duelist', '+=', 'Math.floor(source / 3)'
@@ -6238,7 +6240,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.channelEnergy', 'magicNotes.extraChannel', '+', '2');
     rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4')
+      ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4');
   } else if(name == 'Extra Ki') {
     rules.defineRule
       ('featureNotes.extraKi', 'feats.Extra Ki', '=', 'source * 2');
@@ -6248,7 +6250,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'feats.Extra Lay On Hands', '=', 'source * 2'
     );
     rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', null)
+      ('magicNotes.layOnHands.1', 'magicNotes.extraLayOnHands', '+', null);
   } else if(name == 'Extra Mercy') {
     rules.defineRule('magicNotes.extraMercy', 'feats.Extra Mercy', '=', null);
     rules.defineRule
@@ -7510,7 +7512,7 @@ Pathfinder.spellRules = function(
   if(casterGroup == 'P') {
     var matchInfo;
     var note = rules.getChoices('notes')[name];
-    if(note != null && (matchInfo = notes[note].match(/\(DC\s%(\d+)/)) != null)
+    if(note != null && (matchInfo = note.match(/\(DC\s%(\d+)/)) != null)
       rules.defineRule(note + '.' + matchInfo[1],
         'charismaModifier', '=', '10 + source + ' + level
       );
@@ -7617,7 +7619,7 @@ Pathfinder.choiceEditorElements = function(rules, type) {
     );
   else
     return SRD35.choiceEditorElements(rules, type);
-  return result
+  return result;
 };
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
