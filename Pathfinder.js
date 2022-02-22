@@ -2947,19 +2947,19 @@ Pathfinder.SPELLS = {
     'Level=Strength9,W9 ' +
     'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus13 bull rush and +$Lplus13 grapple that inflicts 2d6+12 HP for $L rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
-  'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2 Liquid=Oil',
+  'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2 Liquid=Potion',
   'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3 Liquid=Potion',
   'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4 Liquid=Potion',
   'Curse Water':'Level=C1',
   'Dancing Lights':'Level=B0,Gnomish0,Rogue0,W0',
   'Darkness':
     'Level=Adept2,B2,C2,W2 ' +
-    'Description="Touched reduces light level by 1 in 20\' radius for $L min"',
+    'Description="Touched reduces light level by 1 in 20\' radius for $L min" ' +   'Liquid=Oil',
   'Darkvision':'Level=R3,W2 Liquid=Potion',
   'Daylight':
     'Level=Adept3,B3,C3,D3,P3,W3 ' +
     'Description="Touched increases light level by 1 in 60\' radius for $L10 min" ' +
-    'Liquid=Potion',
+    'Liquid=Oil',
   'Daze':'Level=B0,Rogue0,W0',
   'Daze Monster':'Level=B2,W2',
   'Death Knell':'Level=C2,Death2',
@@ -3099,7 +3099,7 @@ Pathfinder.SPELLS = {
     'Liquid=Potion',
   'Gate':'Level=C9,Celestial9,Glory9,W9',
   'Geas/Quest':'Level=B6,C6,Charm6,Nobility6,W6',
-  'Gentle Repose':'Level=C2,Repose2,W3 Liquid=Potion',
+  'Gentle Repose':'Level=C2,Repose2,W3 Liquid=Oil',
   'Ghost Sound':'Level=Adept0,B0,Gnomish0,Rogue0,W0',
   'Ghoul Touch':'Level=W2',
   'Giant Vermin':
@@ -3127,7 +3127,7 @@ Pathfinder.SPELLS = {
   'Greater Heroism':'Level=B5,W6',
   'Greater Invisibility':'Level=B4,W4',
   'Greater Magic Fang':'Level=D3,R3 Liquid=Potion',
-  'Greater Magic Weapon':'Level=C4,P3,W3',
+  'Greater Magic Weapon':'Level=C4,P3,W3 Liquid=Oil',
   'Greater Planar Ally':'Level=C8',
   'Greater Planar Binding':'Level=W8',
   'Greater Prying Eyes':
@@ -3202,7 +3202,7 @@ Pathfinder.SPELLS = {
     'Description="R$RL\' $Ldiv3min6 wasp swarms inflict 2d6 HP and -1 Dexterity (DC 13 Fort neg) for $L min"',
   'Instant Summons':'Level=Rune7,W7',
   'Interposing Hand':'Level=W5',
-  'Invisibility':'Level=Adept2,Arcane2,B2,Trickery2,W2 Liquid=Potion',
+  'Invisibility':'Level=Adept2,Arcane2,B2,Trickery2,W2 Liquid=Oil,Potion',
   'Invisibility Purge':'Level=C3',
   'Invisibility Sphere':'Level=B3,W3',
   'Iron Body':
@@ -3227,8 +3227,8 @@ Pathfinder.SPELLS = {
   'Lesser Globe Of Invulnerability':'Level=W4',
   'Lesser Planar Ally':'Level=C4',
   'Lesser Planar Binding':'Level=Rune5,W5',
-  'Lesser Restoration':'Level=C2,D2,P1',
-  'Levitate':'Level=W2 Liquid=Potion',
+  'Lesser Restoration':'Level=C2,D2,P1 Liquid=Potion',
+  'Levitate':'Level=W2 Liquid=Oil,Potion',
   'Light':
     'Level=Adept0,B0,C0,D0,Rogue0,W0 ' +
     'Description="Touched gives 20\' normal light for $L10 min" ' +
@@ -3238,7 +3238,7 @@ Pathfinder.SPELLS = {
   'Liveoak':'Level=D6',
   'Locate Creature':'Level=B4,W4',
   'Locate Object':'Level=B2,C3,Travel2,W2',
-  'Longstrider':'Level=D1,R1,Travel1',
+  'Longstrider':'Level=D1,R1,Travel1', // no liquid--personal
   'Lullaby':
     'Level=B0 ' +
     'Description="R$RM\' Creatures in 10\' radius suffer -5 Perception, -2 Will vs. sleep for conc + $L rd (Will neg)"',
@@ -3253,16 +3253,20 @@ Pathfinder.SPELLS = {
   'Magic Aura':'Level=B1,Rogue1,W1',
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by chaotic summoned creatures (SR neg) for $L10 min"',
+    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by chaotic summoned creatures (SR neg) for $L10 min" ' +
+    'Liquid=Potion',
   'Magic Circle Against Evil':
     'Level=C3,Celestial3,Good3,P3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by evil summoned creatures (SR neg) for $L10 min"',
+    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by evil summoned creatures (SR neg) for $L10 min" ' +
+    'Liquid=Potion',
   'Magic Circle Against Good':
     'Level=C3,Evil3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by good summoned creatures (SR neg) for $L10 min"',
+    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by good summoned creatures (SR neg) for $L10 min" ' +
+    'Liquid=Potion',
   'Magic Circle Against Law':
     'Level=C3,Chaos3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by lawful summoned creatures (SR neg) for $L10 min"',
+    'Description="10\' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by lawful summoned creatures (SR neg) for $L10 min" ' +
+    'Liquid=Potion',
   'Magic Fang':'Level=D1,R1 Liquid=Potion',
   'Magic Jar':'Level=W5',
   'Magic Missile':'Level=Rogue1,W1',
@@ -3298,7 +3302,8 @@ Pathfinder.SPELLS = {
   'Mass Suggestion':'Level=B5,W6',
   'Maze':'Level=W8',
   'Meld Into Stone':'Level=C3,D3',
-  'Mending':'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0',
+  'Mending':
+    'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0', // no liquid--10 min cast
   'Message':'Level=B0,Rogue0,W0',
   'Meteor Swarm':'Level=Infernal9,W9',
   'Mind Blank':'Level=Aberrant8,Liberation8,Protection8,W8',
@@ -3308,7 +3313,7 @@ Pathfinder.SPELLS = {
   'Miracle':'Level=C9,Community9,Luck9',
   'Mirage Arcana':'Level=B5,W5',
   'Mirror Image':'Level=Adept2,B2,Trickery2,W2',
-  'Misdirection':'Level=B2,W2',
+  'Misdirection':'Level=B2,W2 Liquid=Potion',
   'Mislead':'Level=B5,Destined6,Fey6,Luck6,Trickery6,W6',
   'Mnemonic Enhancer':'Level=W4',
   'Modify Memory':'Level=B4',
@@ -3444,13 +3449,13 @@ Pathfinder.SPELLS = {
   'Shapechange':'Level=Aberrant9,Animal9,D9,Fey9,W9',
   'Shatter':'Level=B2,C2,Destruction2,W2',
   'Shield':'Level=Rogue1,W1',
-  'Shield Of Faith':'Level=C1,Glory1',
+  'Shield Of Faith':'Level=C1,Glory1 Liquid=Potion',
   'Shield Of Law':'Level=C8,Law8',
   'Shield Other':'Level=C2,Community2,Protection2,P2',
   'Shillelagh':'Level=D1 Liquid=Oil',
   'Shocking Grasp':'Level=Rogue1,W1',
   'Shout':'Level=B4,Destruction5,W4',
-  'Shrink Item':'Level=W3 Liquid=Potion',
+  'Shrink Item':'Level=W3 Liquid=Oil',
   'Silence':
     'Level=B2,C2 ' +
     'Description="R$RL\' Bars sound in 20\' radius for $L rd"',
