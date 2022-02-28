@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.0';
+Pathfinder.VERSION = '2.3.2.1';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -2221,7 +2221,7 @@ Pathfinder.FEATURES = {
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
   'Protection CMD':
-    'Pattern="([-+]\\d).*protection|protection\\s+([-+]\\d)" ' +
+    'Pattern="([-+]\\d).*\\bprotection|\\bprotection\\s+([-+]\\d)" ' +
     'Effect=add ' +
     'Value="$1 || $2" ' +
     'Attribute=combatManeuverDefense ' +
