@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.1';
+Pathfinder.VERSION = '2.3.2.2';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -4232,7 +4232,7 @@ Pathfinder.NPC_CLASSES = {
       '"1:Weapon Proficiency (Simple)","2:Familiar" ' +
     'Skills=' +
       'Craft,"Handle Animal",Heal,Knowledge,Profession,Spellcraft,Survival ' +
-    'CasterLevelDivine=Level ' +
+    'CasterLevelDivine=levels.Adept ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
       'Adept0:1=3,' +
@@ -6456,14 +6456,13 @@ Pathfinder.pathRules = function(
     spellSlots
   );
 
-  // Hack to ensure that domain features for clerics don't show for druid
-  // characters and vice versa.
-  // TODO What happens with multiclass cleric/druid?
+  // Ensure that cleric domain features don't show for druids or vice versa.
   if(name in Pathfinder.DRUID_DOMAINS) {
     var groupFeatures = group.toLowerCase() + 'Features';
     for(var i = 0; i < features.length; i++) {
       var feature = features[i].replace(/^\d+:/, '');
-      rules.defineRule(groupFeatures + '.' + feature, levelAttr, '?', null);
+      rules.defineRule
+        (groupFeatures + '.' + feature, groupFeatures + '.' + name, '?', null);
     }
   }
 
