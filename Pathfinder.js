@@ -2053,8 +2053,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen weapon"',
   'Weapon Style':'Section=combat Note="Proficient with choice of monk weapon"',
-  // TODO Detail? Groups are axes, heavy blades, light blades, blows, close,
-  // crossbows, double, flails, hammers, monk, natural, pole arms, spears,thrown
   'Weapon Training':
     'Section=combat ' +
     'Note="%V attack, damage, CMB, and CMD w/weapons from chosen groups"',
