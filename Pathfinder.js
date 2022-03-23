@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.2';
+Pathfinder.VERSION = '2.3.2.3';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -4529,9 +4529,10 @@ Pathfinder.SRD35_SKILL_MAP = {
 /* Defines rules related to character abilities. */
 Pathfinder.abilityRules = function(rules) {
   SRD35.abilityRules(rules);
-  // No changes needed to the rules defined by SRD35 method
-  // NOTE: SRD35.abilityRules adds minimum ability checks (at least one ability
-  // > 13, ability modifiers must sum to > 0), that are not in the PRD.
+  // Disable SRD35's minimum ability checks--not part of the PFv1 rules
+  rules.defineRule('validationNotes.abilityMinimum', 'wisdom', '=', '0');
+  rules.defineRule
+    ('validationNotes.abilityModifierSum', 'wisdomModifier', '^', '0');
 };
 
 /* Defines rules related to animal companions and familiars. */
