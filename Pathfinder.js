@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.3';
+Pathfinder.VERSION = '2.3.2.4';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -1731,7 +1731,7 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill"',
   'Medic':
-    'Section=magic,kill ' +
+    'Section=magic,skill ' +
     'Note="+1 caster level with <i>Remove</i> healing",' +
          '"+2 Heal (disease, poison)"',
   "Medusa's Wrath":
