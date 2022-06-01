@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.5';
+Pathfinder.VERSION = '2.3.2.6';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -954,7 +954,6 @@ Pathfinder.FEATURES = {
     'Section=combat Note="No AOO on Sunder, +2 Sunder check, +2 Sunder CMD"',
   'Improved Trip':
     'Section=combat Note="No AOO on Trip, +2 Trip check, +2 Trip CMD"',
-  'Improved Turning':'Section=combat Note="+1 Turning Level"',
   'Improved Two-Weapon Fighting':
     'Section=combat Note="Second off-hand -5 attack"',
   'Improved Unarmed Strike':
@@ -5202,8 +5201,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'armorWeight', '=', 'source <= 1 ? 1 : null'
     );
     rules.defineRule('magicNotes.suggestion',
-      'levels.Bard', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
+      'charismaModifier', '=', '10 + source',
+      'levels.Bard', '+', 'Math.floor(source / 2)'
     );
     rules.defineRule(/^skillModifier.Knowledge/,
       'skillNotes.bardicKnowledge', '+', null
@@ -5974,15 +5973,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Pathfinder Chronicler') {
 
-    rules.defineRule('casterLevels.Doom',
-      'levels.Pathfinder Chronicler', '^=', 'source < 5 ? null : source'
-    );
-    rules.defineRule('casterLevels.Enthrall',
-      'levels.Pathfinder Chronicler', '^=', 'source < 5 ? null : source'
-    );
-    rules.defineRule('casterLevels.Suggestion',
-      'levels.Pathfinder Chronicler', '^=', 'source < 3 ? null : source'
-    );
     // Set casterLevels.W to a minimal value so that spell DC will be
     // calculated even for non-Wizard Pathfinder Chroniclers.
     rules.defineRule('casterLevels.W',
@@ -6010,6 +6000,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.inspireCourage',
       'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 6)'
+    );
+    rules.defineRule('magicNotes.suggestion',
+      'levels.Pathfinder Chronicler', '+', 'source<3 ? null : Math.floor(source / 2)',
     );
     rules.defineRule('saveNotes.liveToTellTheTale',
       'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 2)'
@@ -7701,14 +7694,6 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     'Quilvyn Pathfinder Rule Set Version ' + Pathfinder.VERSION + '\n' +
     '</p>\n' +
-    '<h3>Usage Notes</h3>\n' +
-    '<ul>\n' +
-    '  <li>\n' +
-    '    Quilvyn includes <i>Doom</i> in the list of Bard spells to support\n' +
-    '    the Pathfinder Chronicler Whispering Campaign feature.\n' +
-    '  </li>\n' +
-    '</ul>\n' +
-    '\n' +
     '<h3>Known Bugs</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
