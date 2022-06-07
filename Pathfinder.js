@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.6';
+Pathfinder.VERSION = '2.3.2.7';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -1443,7 +1443,7 @@ Pathfinder.FEATURES = {
   'Double Slice':
     'Section=combat Note="Add full Str modifier to off-hand damage"',
   'Dragon Resistances':'Section=save Note="Resistance %V to %1"',
-  'Dune Walker':
+  'Dunewalker':
     'Section=ability,save ' +
     'Note="Normal movement through sand",' +
          '"+4 Fort vs. heat"',
@@ -3802,9 +3802,9 @@ Pathfinder.TRAITS = {
   'Balanced Offensive':'Type=Faction Subtype="The Concordance"',
   'Beastspeaker':'Type=Faction Subtype="The Concordance"',
   'Beneficent Touch':'Type=Faction Subtype="Silver Crusade"',
-  'Captain\'s Blade':'Type=Faction Subtype="Liberty\'s Edge"',
+  "Captain's Blade":'Type=Faction Subtype="Liberty\'s Edge"',
   'Comparative Religion':'Type=Faction Subtype="Silver Crusade"',
-  'Devil\'s Mark':'Type=Faction Subtype="Dark Archive"',
+  "Devil's Mark":'Type=Faction Subtype="Dark Archive"',
   'Expert Duelist':'Type=Faction Subtype="Sovereign Court"',
   'Fashionable':'Type=Faction Subtype="Sovereign Court"',
   'Force For Good':'Type=Faction Subtype="Silver Crusade"',
@@ -3846,7 +3846,7 @@ Pathfinder.TRAITS = {
   'Fires Of Hell':'Type=Faction Subtype=Cheliax',
   'Fortified':'Type=Faction Subtype="Shadow Lodge"',
   'Horse Lord':'Type=Faction Subtype=Qadira',
-  'Hunter\'s Eye':'Type=Faction Subtype=Andoran',
+  "Hunter's Eye":'Type=Faction Subtype=Andoran',
   'I Know A Guy':'Type=Faction Subtype=Sczarni',
   'Medic':'Type=Faction Subtype="Shadow Lodge"',
   'Meridian Strike':'Type=Faction Subtype="Lantern Lodge"',
