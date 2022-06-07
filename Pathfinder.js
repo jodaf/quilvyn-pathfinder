@@ -235,22 +235,23 @@ Pathfinder.ARMORS = {
   'Full Plate':'AC=9 Weight=3 Dex=1 Skill=6 Spell=35'
 };
 Pathfinder.FACTIONS = {
-  'Andoran':'',
-  'Cheliax':'',
-  'The Concordance':'',
-  'Dark Archive':'',
-  'The Exchange':'',
-  'Grand Lodge':'',
-  'Lantern Lodge':'',
-  "Liberty's Edge":'',
+  'Andoran':'Season=1,2,3,4,5 Successor="Liberty\'s Edge"',
+  'Cheliax':'Season=1,2,3,4,5 Successor="Dark Archive"',
+  'The Concordance':'Season=9,10',
+  'Dark Archive':'Season=6,7,8,9,10',
+  'The Exchange':'Season=6,7,8,9,10',
+  'Grand Lodge':'Season=4,5,6,7,8,9,10',
+  'Lantern Lodge':'Season=4',
+  "Liberty's Edge":'Season=6,7,8,9,10',
   'None':'',
-  'Osirion':'',
-  'Qadira':'',
-  'Sczarni':'',
-  'Shadow Lodge':'',
-  'Silver Crusade':'',
-  'Sovereign Court':'',
-  'Taldor':''
+  'Osirion':'Season=1,2,3,4,5 Successor="Scarab Sages"',
+  'Qadira':'Season=1,2,3,4,5 Successor="The Exchange"',
+  'Scarab Sages':'Season=6,7,8,9',
+  'Sczarni':'Season=4,5',
+  'Shadow Lodge':'Season=4',
+  'Silver Crusade':'Season=4,5,6,7,8,9,10',
+  'Sovereign Court':'Season=6,7,8,9,10',
+  'Taldor':'Season=1,2,3,4,5 Successor="Sovereign Court"'
 };
 Pathfinder.FAMILIARS = {
   // Attack, Dam, AC include all modifiers
@@ -3813,7 +3814,7 @@ Pathfinder.TRAITS = {
   'Greasy Palm':'Type=Faction Subtype="The Exchange"',
   'Impressive Presence':'Type=Faction Subtype="Sovereign Court"',
   'Indomitable':'Type=Faction Subtype="Liberty\'s Edge"',
-  'Influential':'Type=Faction Subtype=Taldor',
+  'Influential':'Type=Faction Subtype="Sovereign Court"',
   'Insider Knowledge':'Type=Faction Subtype="Grand Lodge"',
   'Librarian':'Type=Faction Subtype="Dark Archive"',
   'Loyalty':'Type=Faction Subtype="Grand Lodge"',
@@ -3828,7 +3829,7 @@ Pathfinder.TRAITS = {
   'Soul Drinker':'Type=Faction Subtype="Dark Archive"',
   'Teaching Mistake':'Type=Faction Subtype="Grand Lodge"',
   'Tireless':'Type=Faction Subtype="The Exchange"',
-  'Unflappable':'Type=Faction Subtype=Taldor',
+  'Unflappable':'Type=Faction Subtype="Sovereign Court"',
   'Unorthodox Strategy':'Type=Faction Subtype="Silver Crusade"',
   'Upstanding':'Type=Faction Subtype="The Exchange"',
   'Whistleblower':'Type=Faction Subtype="Liberty\'s Edge"',
@@ -4666,7 +4667,7 @@ Pathfinder.identityRules = function(
   QuilvynUtils.checkAttrTable
     (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots']);
   QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
-  QuilvynUtils.checkAttrTable(factions, []);
+  QuilvynUtils.checkAttrTable(factions, ['Season', 'Successor']);
   // Note addition of feats and skills to SRD35's list
   QuilvynUtils.checkAttrTable
     (paths, ['Group', 'Level', 'Features', 'Selectables', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots']);
@@ -4833,7 +4834,9 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Weapon')
     );
   else if(type == 'Faction')
-    Pathfinder.factionRules(rules, name
+    Pathfinder.factionRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Season'),
+      QuilvynUtils.getAttrValue(attrs, 'Successor')
     );
   else if(type == 'Familiar')
     Pathfinder.familiarRules(rules, name,
@@ -6002,7 +6005,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 6)'
     );
     rules.defineRule('magicNotes.suggestion',
-      'levels.Pathfinder Chronicler', '+', 'source<3 ? null : Math.floor(source / 2)',
+      'levels.Pathfinder Chronicler', '+', 'source<3 ? null : Math.floor(source / 2)'
     );
     rules.defineRule('saveNotes.liveToTellTheTale',
       'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 2)'
@@ -6110,8 +6113,12 @@ Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
   }
 };
 
-/* Defines in #rules the rules associated with faction #name#. */
-Pathfinder.factionRules = function(rules, name) {
+/*
+ * Defines in #rules the rules associated with faction #name#, which was in
+ * play during the list of seasons #seasons# and was replaced by faction
+ * #successor#.
+ */
+Pathfinder.factionRules = function(rules, name, seasons, successor) {
   if(!name) {
     console.log('Empty faction name');
     return;
