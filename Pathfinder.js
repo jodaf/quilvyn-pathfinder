@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.7';
+Pathfinder.VERSION = '2.3.2.8';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -4280,7 +4280,10 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Require=' +
       '"baseAttack >= 6","casterLevelArcane >= 1","features.Point-Blank Shot",'+
       '"features.Precise Shot",' +
-      '"features.Weapon Focus (Longbow) || features.Weapon Focus (Shortbow)" ' +
+      '"features.Weapon Focus (Longbow) || ' +
+      ' features.Weapon Focus (Composite Longbow) || ' +
+      ' features.Weapon Focus (Shortbow) || ' +
+      ' features.Weapon Focus (Composite Shortbow)" ' +
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Perception,Ride,Stealth,Survival ' +
