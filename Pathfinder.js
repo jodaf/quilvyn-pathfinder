@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.8';
+Pathfinder.VERSION = '2.3.2.9';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -4779,6 +4779,14 @@ Pathfinder.talentRules = function(
   rules.defineChoice
     ('notes', 'skillNotes.armorSkillCheckPenalty:-%V Dex- and Str-based skills');
   rules.defineRule('skillNotes.armorSwimCheckPenalty', 'level', '?', 'false');
+  // Define specific attributes for Stat Block character sheet format
+  rules.defineRule
+    ('cmb', 'combatManeuverBonus', '=', '(source>=0 ? "+" : "") + source');
+  rules.defineRule('cmd', 'combatManeuverDefense', '=', null);
+  rules.defineRule('perception',
+    'wisdomModifier', '=', '(source>=0 ? "+" : "") + source',
+    'skillModifier.Perception', '=', '(source>=0 ? "+" : "") + source'
+  );
 };
 
 /*
@@ -7642,7 +7650,61 @@ Pathfinder.weaponRules = function(
 
 /* Returns an ObjectViewer loaded with the default character sheet format. */
 Pathfinder.createViewers = function(rules, viewers) {
-  SRD35.createViewers(rules, viewers); // No changes
+  SRD35.createViewers(rules, viewers);
+  if(viewers.includes('Stat Block')) {
+    // Minor differences from SRD35 version
+    var viewer = new ObjectViewer();
+    viewer.addElements(
+      {name: '_top', separator: '\n', columns: '1L'},
+        {name: 'Name', within: '_top', format: '<div style="font-size:2em"><b>%V</b></div>'},
+        {name: 'GenderRaceAndLevels', within: '_top', separator: ' '},
+          {name: 'Gender', within: 'GenderRaceAndLevels', format: '%V'},
+          {name: 'Race', within: 'GenderRaceAndLevels', format: '%V'},
+          {name: 'Levels', within: 'GenderRaceAndLevels', format: '%V', separator: '/'},
+        {name: 'AlignAndSize', within: '_top', separator: ' '},
+          {name: 'Alignment Abbr', within: 'AlignAndSize', format: '%V'},
+          {name: 'Size', within: 'AlignAndSize', format: '%V humanoid'},
+        {name: 'InitAndSenses', within: '_top', separator: ''},
+          {name: 'Initiative', within: 'InitAndSenses', format: '<b>Init</b> %V; <b>Senses</b> '},
+          {name: 'Sense Features', within: 'InitAndSenses', format: '%V; '},
+          {name: 'Perception', within: 'InitAndSenses', format: 'Perception %V'},
+        {name: 'Sep1', within: '_top', format: '<hr/>'},
+        {name: 'ACs', within: '_top', separator: ''},
+          {name: 'Armor Class', within: 'ACs', format: '<b>AC</b> %V'},
+          {name: 'Armor Class Touch', within: 'ACs', format: ', touch %V'},
+          {name: 'Armor Class Flatfooted', within: 'ACs', format: ', flat-footed %V'},
+          {name: 'Dodge Features', within: 'ACs', format: '; %V'},
+        {name: 'HPandHD', within: '_top', separator: ' '},
+          {name: 'Hit Points', within: 'HPandHD', format: '<b>hp</b> %V'},
+          {name: 'Level', within: 'HPandHD', format: '(%V HD)'},
+        {name: 'Saves', within: '_top', separator: ''},
+          {name: 'Save', within: 'Saves', format: '<b>%N</b> %V',
+           separator: ', '},
+          {name: 'Evasion', within: 'Saves', format: '; %V'},
+        {name: 'Sep2', within: '_top', format: '<hr/>'},
+        {name: 'Speed', within: '_top', format: '<b>%N</b> %V ft.'},
+        {name: 'Weapons', within: '_top', separator: ', ', format: '<b>%N</b> %V'},
+        {name: 'Spells', within: '_top', separator: ', ', format: '<b>%N</b> %V'},
+        {name: 'Sep3', within: '_top', format: '<hr/>'},
+        {name: 'Abilities', within: '_top', separator: ', ', format: '<b>%N</b> %V'},
+          {name: 'Strength', within: 'Abilities', format: 'Str %V'},
+          {name: 'Dexterity', within: 'Abilities', format: 'Dex %V'},
+          {name: 'Constitution', within: 'Abilities', format: 'Con %V'},
+          {name: 'Intelligence', within: 'Abilities', format: 'Int %V'},
+          {name: 'Wisdom', within: 'Abilities', format: 'Wis %V'},
+          {name: 'Charisma', within: 'Abilities', format: 'Cha %V'},
+        {name: 'Attack', within: '_top', separator: '; '},
+          {name: 'Base Attack', within: 'Attack', format: '<b>Base Atk</b> %V'},
+          {name: 'Cmb', within: 'Attack', format: '<b>CMB</b> %V'},
+          {name: 'Cmd', within: 'Attack', format: '<b>CMD</b> %V'},
+        {name: 'Feats', within: '_top', separator: ', ', format: '<b>%N</b> %V'},
+        {name: 'Skill Modifier', within: '_top', separator: ', ', format: '<b>Skills</b> %V'},
+        {name: 'Languages', within: '_top', separator: ', ', format: '<b>%N</b> %V'},
+        {name: 'Sep4', within: '_top', format: '<hr/>'},
+        {name: 'Notes', within: '_top', format: '%V'}
+    );
+    rules.defineViewer('Stat Block', viewer);
+  }
 };
 
 /*
