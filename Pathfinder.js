@@ -7512,6 +7512,12 @@ Pathfinder.shieldRules = function(
 Pathfinder.skillRules = function(
   rules, name, ability, untrained, classes, synergies
 ) {
+  // NOTE: SRD v3.5 uses the term "Skill Point" to designate assignable points
+  // acquired via class advance and "Skill Rank" to designate skill abilities
+  // purchased using skill points. Pathfinder eliminates skill points, using
+  // "Skill Rank" for both concepts. Although this module consistently displays
+  // "Skill Rank" in the UI, the term "Skill Point" remains within the code to
+  // enable reuse of portions of the SRD35 module.
   SRD35.skillRules(rules, name, ability, untrained, classes, synergies);
   // Override effects of class skills and armor skill check penalty
   rules.defineRule('classSkillBump.' + name,
