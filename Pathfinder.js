@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.9';
+Pathfinder.VERSION = '2.3.2.10';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -1916,7 +1916,7 @@ Pathfinder.FEATURES = {
   'Sickening Critical':
     'Section=combat Note="Critical hit causes foe sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
-  'Skilled':'Section=skill Note="+%V Skill Points"',
+  'Skilled':'Section=skill Note="+%V Skill ranks"',
   'Slow Reactions':'Section=combat Note="Sneak attack target no AOO for 1 rd"',
   'Smuggler':
     'Section=skill ' +
@@ -4735,7 +4735,7 @@ Pathfinder.identityRules = function(
     ('experienceTrack', 'Track', 'select-one', 'tracks', 'feats');
   rules.defineSheetElement('Experience Track', 'ExperienceInfo/', ' (%V)');
   rules.defineEditorElement
-    ('favoredClassHitPoints', 'Favored Class Hit Points/Skill Points', 'text', [4, '(\\+?\\d+)?'], 'hitPoints');
+    ('favoredClassHitPoints', 'Favored Class Hit Points/Skill Ranks', 'text', [4, '(\\+?\\d+)?'], 'hitPoints');
   rules.defineEditorElement
     ('favoredClassSkillPoints', '', 'text', [4, '(\\+?\\d+)?'], 'hitPoints');
 
@@ -4787,6 +4787,8 @@ Pathfinder.talentRules = function(
     'wisdomModifier', '=', '(source>=0 ? "+" : "") + source',
     'skillModifier.Perception', '=', '(source>=0 ? "+" : "") + source'
   );
+  rules.defineSheetElement
+    ('Skill Points', 'Max Allowed Skill Allocation', '<b>Skills</b> (%V ranks');
 };
 
 /*
@@ -7324,6 +7326,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
+    rules.defineRule('skillPoints', 'skillNotes.skilled', '+', null);
   }
 };
 
@@ -7722,8 +7725,11 @@ Pathfinder.choiceEditorElements = function(rules, type) {
       ['Type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
       ['Subtype', 'Subtype', 'text', [20]]
     );
-  else
-    return SRD35.choiceEditorElements(rules, type);
+  else {
+    result = SRD35.choiceEditorElements(rules, type);
+    for(var i = 0; i < result.length; i++)
+      result[i][1] = result[i][1].replaceAll('Skill Points', 'Skill Ranks');
+  }
   return result;
 };
 
