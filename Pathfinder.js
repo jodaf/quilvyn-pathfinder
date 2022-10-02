@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.10';
+Pathfinder.VERSION = '2.3.2.11';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -4638,6 +4638,7 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   SRD35.combatRules(rules, armors, shields, weapons);
   // Pathfinder-specific attributes
   rules.defineChoice('notes',
+    'combatManeuverBonus:%S',
     'damageReduction.-:%V/%N',
     'damageReduction.Chaotic:%V/%N',
     'damageReduction.Cold Iron:%V/%N',
