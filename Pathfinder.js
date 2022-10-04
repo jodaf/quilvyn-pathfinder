@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 /*jshint esversion: 6 */
 /* jshint forin: false */
-/* globals Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
+/* globals ObjectViewer, Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
 "use strict";
 
 /*
@@ -43,7 +43,7 @@ function Pathfinder() {
   rules.choiceEditorElements = Pathfinder.choiceEditorElements;
   rules.choiceRules = Pathfinder.choiceRules;
   rules.editorElements = SRD35.initialEditorElements();
-  rules.getFormats = SRD35.getFormats;
+  rules.getFormats = Pathfinder.getFormats;
   rules.getPlugins = Pathfinder.getPlugins;
   rules.makeValid = SRD35.makeValid;
   rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
@@ -83,7 +83,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.3.2.11';
+Pathfinder.VERSION = '2.3.2.12';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
@@ -174,49 +174,49 @@ Pathfinder.ANIMAL_COMPANIONS = {
     'Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 AC=14 Attack=1 Dam=1d6+1 Size=M'
 };
 Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
-  'Advanced Ape': Pathfinder.ANIMAL_COMPANIONS['Ape'] +
+  'Advanced Ape': Pathfinder.ANIMAL_COMPANIONS.Ape +
     ' Level=4 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=14',
-  'Advanced Badger': Pathfinder.ANIMAL_COMPANIONS['Badger'] +
+  'Advanced Badger': Pathfinder.ANIMAL_COMPANIONS.Badger +
     ' Level=4 Size=M Attack=2 AC=14 Dam=2@1d4+2,1d6+2 Str=14 Dex=15 Con=17',
-  'Advanced Bear': Pathfinder.ANIMAL_COMPANIONS['Bear'] +
+  'Advanced Bear': Pathfinder.ANIMAL_COMPANIONS.Bear +
     ' Level=4 Size=M Attack=4 AC=13 Dam=2@1d4+4,1d6+4 Str=19 Dex=13 Con=15',
-  'Advanced Boar': Pathfinder.ANIMAL_COMPANIONS['Boar'] +
+  'Advanced Boar': Pathfinder.ANIMAL_COMPANIONS.Boar +
     ' Level=4 Size=M Attack=3 AC=16 Dam=1d8+3 Str=17 Dex=10 Con=17',
-  'Advanced Camel': Pathfinder.ANIMAL_COMPANIONS['Camel'] +
+  'Advanced Camel': Pathfinder.ANIMAL_COMPANIONS.Camel +
     ' Level=4 Attack=4 AC=13 Dam=1d4+5 Str=20 Con=19',
-  'Advanced Cheetah': Pathfinder.ANIMAL_COMPANIONS['Cheetah'] +
+  'Advanced Cheetah': Pathfinder.ANIMAL_COMPANIONS.Cheetah +
     ' Level=4 Size=M Attack=3 AC=15 Dam=2@1d3+3,1d6+3 Str=16 Dex=19 Con=15',
-  'Advanced Constrictor': Pathfinder.ANIMAL_COMPANIONS['Constrictor'] +
+  'Advanced Constrictor': Pathfinder.ANIMAL_COMPANIONS.Constrictor +
     ' Level=4 Size=L Attack=5 AC=12 Dam=1d4+6 Str=23 Dex=15 Con=17',
-  'Advanced Crocodile': Pathfinder.ANIMAL_COMPANIONS['Crocodile'] +
+  'Advanced Crocodile': Pathfinder.ANIMAL_COMPANIONS.Crocodile +
     ' Level=4 Size=M Attack=4 AC=15 Dam=1d8+4 Str=19 Dex=12 Con=17',
-  'Advanced Deinonychus': Pathfinder.ANIMAL_COMPANIONS['Deinonychus'] +
+  'Advanced Deinonychus': Pathfinder.ANIMAL_COMPANIONS.Deinonychus +
     ' Level=7 Size=M Attack=2 AC=14 Dam=2@1d8+2,1d6+2,2@1d4+2 Str=15 Dex=15 Con=15',
-  'Advanced Dog': Pathfinder.ANIMAL_COMPANIONS['Dog'] +
+  'Advanced Dog': Pathfinder.ANIMAL_COMPANIONS.Dog +
     ' Level=4 Size=L Attack=3 AC=14 Dam=1d6+3 Str=17 Dex=15 Con=17',
-  'Advanced Eagle': Pathfinder.ANIMAL_COMPANIONS['Eagle'] +
+  'Advanced Eagle': Pathfinder.ANIMAL_COMPANIONS.Eagle +
     ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
-  'Advanced Hawk': Pathfinder.ANIMAL_COMPANIONS['Hawk'] +
+  'Advanced Hawk': Pathfinder.ANIMAL_COMPANIONS.Hawk +
     ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
-  'Advanced Horse': Pathfinder.ANIMAL_COMPANIONS['Horse'] +
+  'Advanced Horse': Pathfinder.ANIMAL_COMPANIONS.Horse +
     ' Level=4 Attack=3 AC=14 Dam=2@1d6+4,1d4+4 Str=18 Con=17',
-  'Advanced Leopard': Pathfinder.ANIMAL_COMPANIONS['Leopard'] +
+  'Advanced Leopard': Pathfinder.ANIMAL_COMPANIONS.Leopard +
     ' Level=4 Size=M Attack=3 AC=15 Dam=2@1d3+3,1d6+3 Str=16 Dex=19 Con=15',
-  'Advanced Lion': Pathfinder.ANIMAL_COMPANIONS['Lion'] +
+  'Advanced Lion': Pathfinder.ANIMAL_COMPANIONS.Lion +
     ' Level=7 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=17',
-  'Advanced Owl': Pathfinder.ANIMAL_COMPANIONS['Owl'] +
+  'Advanced Owl': Pathfinder.ANIMAL_COMPANIONS.Owl +
     ' Level=4 Attack=2 AC=14 Dam=2@1d4+1,1d4+1 Str=12 Con=14',
-  'Advanced Pony': Pathfinder.ANIMAL_COMPANIONS['Pony'] +
+  'Advanced Pony': Pathfinder.ANIMAL_COMPANIONS.Pony +
     ' Level=4 Attack=2 AC=13 Dam=2@1d3+2 Str=15 Con=14',
-  'Advanced Shark': Pathfinder.ANIMAL_COMPANIONS['Shark'] +
+  'Advanced Shark': Pathfinder.ANIMAL_COMPANIONS.Shark +
     ' Level=4 Size=M Attack=3 AC=11 Dam=1d6+3 Str=17 Dex=13 Con=17',
-  'Advanced Tiger': Pathfinder.ANIMAL_COMPANIONS['Tiger'] +
+  'Advanced Tiger': Pathfinder.ANIMAL_COMPANIONS.Tiger +
     ' Level=7 Size=L Attack=4 AC=13 Dam=2@1d6+5,1d6+5 Str=21 Dex=15 Con=17',
-  'Advanced Velociraptor': Pathfinder.ANIMAL_COMPANIONS['Velociraptor'] +
+  'Advanced Velociraptor': Pathfinder.ANIMAL_COMPANIONS.Velociraptor +
     ' Level=7 Size=M Attack=2 AC=14 Dam=2@1d8+2,1d6+2,2@1d4+2 Str=15 Dex=15 Con=15',
-  'Advanced Viper': Pathfinder.ANIMAL_COMPANIONS['Viper'] +
+  'Advanced Viper': Pathfinder.ANIMAL_COMPANIONS.Viper +
     ' Level=4 Size=M Attack=1 AC=15 Dam=1d4+1 Str=12 Dex=15 Con=13',
-  'Advanced Wolf': Pathfinder.ANIMAL_COMPANIONS['Wolf'] +
+  'Advanced Wolf': Pathfinder.ANIMAL_COMPANIONS.Wolf +
     ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
 });
 Pathfinder.ARMORS = {
@@ -4747,11 +4747,11 @@ Pathfinder.identityRules = function(
   rules.defineRule
     ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
   rules.defineRule
-    ('skillNotes.favoredClassSkillPoints', 'favoredClassSkillPoints', '=',null);
+    ('skillNotes.favoredClassSkillRanks', 'favoredClassSkillPoints', '=',null);
   rules.defineRule
     ('hitPoints', 'combatNotes.favoredClassHitPoints', '+=', null);
   rules.defineRule
-    ('skillPoints', 'skillNotes.favoredClassSkillPoints', '+=', null);
+    ('skillPoints', 'skillNotes.favoredClassSkillRanks', '+=', null);
 
   QuilvynRules.validAllocationRules
     (rules, 'level', 'level', 'Sum "^levels\\."');
@@ -4773,7 +4773,13 @@ Pathfinder.talentRules = function(
   // max ranks per skill, and armor skill check penalty and disable armor swim
   // check penalty.
   rules.defineRule
-    ('skillNotes.intelligenceSkillPointsAdjustment', 'level', '*', null);
+    ('skillNotes.intelligenceSkillPointsAdjustment', 'level', '*', '0');
+  rules.defineRule('skillNotes.intelligenceSkillRanksAdjustment',
+    'intelligenceModifier', '=', null,
+    'level', '*', null
+  );
+  rules.defineRule
+    ('skillPoints', 'skillNotes.intelligenceSkillRanksAdjustment', '+', null);
   rules.defineRule
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
   rules.defineRule('maxAllowedSkillAllocation', 'level', '=', null);
@@ -7656,6 +7662,17 @@ Pathfinder.weaponRules = function(
     rules, name, profLevel, category, damage, threat, critMultiplier, range
   );
   // No changes needed to the rules defined by SRD35 method
+};
+
+/*
+ * Returns the dictionary of attribute formats associated with character sheet
+ * format #viewer# in #rules#.
+ */
+Pathfinder.getFormats = function(rules, viewer) {
+  var result = SRD35.getFormats(rules, viewer);
+  for(var a in result)
+    result[a] = result[a].replaceAll('Skill Point', 'Skill Rank');
+  return result;
 };
 
 /* Returns an ObjectViewer loaded with the default character sheet format. */
