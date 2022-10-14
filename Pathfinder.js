@@ -7760,15 +7760,19 @@ Pathfinder.choiceEditorElements = function(rules, type) {
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
   SRD35.randomizeOneAttribute.apply(this, [attributes, attribute]);
+  let attr;
+  let attrs;
+  let choices;
+  let howMany;
   if(attribute == 'levels') {
     // Set experience track and override SRD3.5's experience value
     if(!attributes.experienceTrack)
       attributes.experienceTrack =
         QuilvynUtils.randomKey(this.getChoices('tracks'));
-    var progression =
+    let progression =
       QuilvynUtils.getAttrValueArray
         (Pathfinder.TRACKS[attributes.experienceTrack], 'Progression');
-    var level =
+    let level =
       QuilvynUtils.sumMatching(attributes, /levels\./) +
       QuilvynUtils.sumMatching(attributes, /npc\./) +
       QuilvynUtils.sumMatching(attributes, /prestige\./);
@@ -7777,9 +7781,26 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       attributes['levels.' + QuilvynUtils.randomKey(this.getChoices('levels'))] = level;
     }
     if(level < progression.length) {
-      var min = progression[level - 1] * 1000;
-      var max = progression[level] * 1000 - 1;
+      let min = progression[level - 1] * 1000;
+      let max = progression[level] * 1000 - 1;
       attributes.experience = QuilvynUtils.random(min, max);
+    }
+  } else if(attribute == 'traits') {
+    let allTraits = this.getChoices('traits');
+    attrs = this.applyRules(attributes);
+    choices = [];
+    howMany = attrs.traitCount || 0;
+    for(let trait in allTraits) {
+      if(attrs['traits.' + trait])
+        howMany--;
+      else if(allTraits[trait].includes('Basic'))
+        choices.push(trait);
+    }
+    while(howMany > 0 && choices.length > 0) {
+      let index = QuilvynUtils.random(0, choices.length - 1);
+      attributes['traits.' + choices[index]] = 1;
+      choices.splice(index, 1);
+      howMany--;
     }
   }
 };
