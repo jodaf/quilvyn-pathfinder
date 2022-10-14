@@ -18,8 +18,13 @@ following lines to the file plugins/plugins.js:
 
     RULESETS['Pathfinder 1E'] = {
       url:'plugins/Pathfinder.js',
-      group:'Pathfinder 1E',
+      group:'Pathfinder',
       require:'SRD35.js'
+    };
+    RULESETS["Pathfinder 1E Advanced Player's Guide"] = {
+      url:'plugins/PathfinderSupplements.js',
+      group:'Pathfinder',
+      supplement:'Pathfinder 1E'
     };
 
 ### Usage
