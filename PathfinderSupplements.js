@@ -81,6 +81,358 @@ PathfinderSupplements.VERSION = '2.3.1.0';
 PathfinderSupplements.APG_ARMORS = {
 };
 PathfinderSupplements.APG_FEATS = {
+  'Additional Traits':'Type=General',
+  'Arcane Blast':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
+  'Arcane Shield':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
+  'Arcane Talent':
+    'Type=General Require="charisma >= 10","race =~ \'Elf|Gnome\'"',
+  'Aspect Of the Beast':'Type=General Require="features.Wild Shape"',
+  'Bashing Finish':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Shield Master",' +
+      '"features.Two-Weapon Fighting",' +
+      '"baseAttackBonus >= 11"',
+  'Bloody Assault':
+    'Type=General,Fighter ' +
+    'Require="features.Power Attack","baseAttackBonus >= 6"',
+  'Bodyguard':'Type=General,Fighter Require="features.Combat Reflexes"',
+  "In Harm's Way":'Type=General,Fighter Require="features.Bodyguard"',
+  // Also, age >= 100
+  'Breadth Of Experience':'Type=General Require="race =~ \'Dwarf|Elf|Gnome\'"',
+  'Bull Rush Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Bull Rush","baseAttackBonus >= 9"',
+  'Charge Through':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Overrun","baseAttackBonus >= 1"',
+  'Childlike':'Type=General Require="charisma >= 13","race =~ \'Halfling\'"',
+  'Cockatrice Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Medusa\'s Wrath","baseAttackBonus >= 14"',
+  'Combat Patrol':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Combat Reflexes",' +
+      'features.Mobility,' +
+      '"baseAttackBonus >= 5"',
+  // TODO
+  // 'Cooperative Crafting':'Type=General Require=""'1 rank in any Craft skill, any item creation feat 
+  'Cosmopolitan':'Type=General',
+  'Covering Defense':
+    'Type=General,Feature ' +
+    'Require="features.Shield Focus","baseAttackBonus >= 6"',
+  'Crippling Critical':
+    'Type=General,Fighter ' +
+    'Require="features.Critical Focus","baseAttackBonus >= 13"',
+  'Crossbow Mastery':
+    'Type=General,Fighter ' +
+    'Require="dexterity >= 15","features.Rapid Reload","features.Rapid Shot"',
+  'Dastardly Finish':'Type=General,Fighter Require="sneakAttack >= 5"',
+  'Dazing Assault':
+    'Type=General,Fighter ' +
+    'Require="features.Power Attack","baseAttackBonus >= 11"',
+  'Deep Drinker':
+    'Type=General ' +
+    'Require="constitution >= 13","levels.Monk >= 11","features.Drunken Ki"',
+  'Deepsight':'Type=General Require="features.Darkvision"',
+  'Disarming Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Disarm","baseAttackBonus >= 9"',
+  'Disrupting Shot':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"features.Point-Blank Shot",' +
+      '"levels.Fighter >= 6"',
+  "Diviner's Delving":
+    'Type=General Require="features.Spell Focus (Divination)"',
+  'Eagle Eyes':'Type=General Require="wisdom >= 13","features.Keen Senses"',
+  'Eclectic':'Type=General Require="race =~ \'Human\'"',
+  'Eldritch Claws':
+    'Type=General ' +
+    'Require=' +
+      '"strength >= 15",' +
+      '"features.Natural Weapons",' +
+      '"baseAttackBonus >= 6"',
+  'Elemental Fist':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"constitution >= 13",' +
+      '"wisdom >= 13",' +
+      '"features.Improved Unarmed Strike",' +
+      '"baseAttackBonus >= 8"',
+  'Elemental Focus':'Type=General',
+  'Greater Elemental Focus':'Type=General Require="features.Elemental Focus"',
+  'Elven Accuracy':'Type=General,Fighter Require="race =~ \'Elf\'"',
+  'Enforcer':'Type=General,Fighter Require=skills.Intimidate',
+  'Expanded Arcana':'Type=General Require="casterLevel >= 1"',
+  'Extra Bombs':'Type=General Require=features.Bomb',
+  'Extra Discovery':'Type=General Require=features.Discovery',
+  'Extra Hex':'Type=General Require=features.Hex',
+  'Extra Rage Power':'Type=General Require="features.Rage Power"',
+  'Extra Revelation':'Type=General Require=features.Revelation',
+  'Extra Rogue Talent':'Type=General Require="features.Rogue Talent"',
+  'Fast Drinker':
+    'Type=General Require="constitution >= 18","features.Drunken Ki"',
+  'Fast Healer':
+    'Type=General ' +
+    'Require="constitution >= 13",features.Diehard,features.Endurance',
+  'Favored Defense':'Type=General Require="features.Favored Enemy"',
+  'Fight On':
+    'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
+  'Focused Shot':
+    'Type=General,Fighter Require="intelligence >= 13","features.Precise Shot"',
+  'Following Step':
+    'Type=General,Fighter Require="dexterity >= 13","features.Step Up"',
+  'Step Up and Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Following Step","baseAttackBonus >= 6"',
+  'Furious Focus':
+    'Type=General,Fighter ' +
+    'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
+  'Dreadful Carnage':
+    'Type=General,Fighter ' +
+    'Require="strength >= 15","features.Furious Focus","baseAttackBonus >= 11"',
+  'Gang Up':'Type=General,Fighter Require="features.Combat Expertise"',
+  'Team Up':
+    'Type=General,Fighter Require=features.Gang-Up,"baseAttackBonus >= 6"',
+  'Gnome Trickster':
+    'Type=General ' +
+    'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
+  'Go Unnoticed':'Type=General Require="dexterity >= 13",features.Small',
+  'Groundling':
+    'Type=General ' +
+    'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
+  'Heroic Defiance':
+    'Type=General Require=features.Diehard,"save.Fortitude >= 8"',
+  'Heroic Recovery':
+    'Type=General Require=features.Diehard,"save.Fortitude >= 4"',
+  'Improved Blind-Fight':
+    'Type=General,Fighter ' +
+     'Require="skills.Perception >= 10",features.Blind-Fight"',
+  'Greater Blind-Fight':
+    'Type=General,Fighter ' +
+    'Require="skills.Perception >= 15","features.Improved Blind-Fight"',
+  'Improved Dirty Trick':
+    'Type=General,Fighter Require="features.Combat Expertise"',
+  'Greater Dirty Trick':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Dirty Trick","baseAttackBonus >= 6"',
+  'Improved Drag':'Type=General,Fighter Require="features.Power Attack"',
+  'Greater Drag':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Drag","baseAttackBonus >= 6"',
+  'Improved Reposition':
+    'Type=General,Fighter Require="features.Combat Expertise"',
+  'Greater Reposition':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Reposition","baseAttackBonus >= 6"',
+  'Improved Share Spells':'Type=General Require="skills.Spellcraft >= 10"',
+  'Improved Steal':'Type=General,Fighter Require="features.Combat Expertise"',
+  'Greater Steal':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Steal","baseAttackBonus >= 6"',
+  'Improved Stonecunning':
+    'Type=General ' +
+    'Require="wisdom >= 13","race =~ \'Dwarf\'",features.Stonecunning',
+  'Stone Sense':
+    'Type=General ' +
+    'Require="skills.Perception >= 10","features.Improved Stonecunning"',
+  'Ironguts':
+    'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
+  'Ironhide':
+    'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
+  'Keen Scent':'Type=General Require="wisdom >= 13","race =~ \'Orc\'"',
+  'Smell Fear':'Type=General Require="features.Keen Scent","race =~ \'Orc\'"',
+  'Ki Throw':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Trip","features.Improved Unarmed Strike"',
+  'Improved Ki Throw':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Bull Rush","features.Ki Throw"',
+  'Leaf Singer':
+    'Type=General ' +
+    'Require="charisma >= 13","features.Bardic Performance","race =~ \'Elf\'"',
+  'Light Step':
+    'Type=General ' +
+    'Require=' +
+      '"features.Acrobatic Steps",' +
+      '"features.Nimble Moves",' +
+      '"race == \'Elf\'"',
+  'Lingering Performance':'Type=General Require="features.Bardic Performance"',
+  'Low Profile':'Type=General,Fighter Require="dexterity >= 13",features.Small',
+  'Lucky Halfling':'Type=General Require="race =~ \'Halfling\'"',
+  'Master Alchemist':'Type=General Require="skills.Craft (Alchemy) >= 5"',
+  // TODO
+  // 'Minor Spell Expertise':'Type=General Require=""'Cast 4th-level spells
+  // 'Major Spell Expertise':'Type=General Require=""'Minor Spell Expertise, cast 9th-level spells
+  'Missile Shield':
+    'Type=General,Fighter Require="dexterity >= 13","features.Shield Focus"',
+  'Ray Shield':
+    'Type=General,Fighter ' +
+    'Require="dexterity >= 15","features.Missile Shield",features.Spellbreaker',
+  'Mounted Shield':
+    'Type=General,Fighter ' +
+    'Require="features.Mounted Combat","features.Shield Focus"',
+  'Parry Spell':
+    'Type=General ' +
+    'Require="skills.Spellcraft >= 15","features.Improved Counterspell"',
+  'Parting Shot':
+    'Type=General,Fighter ' +
+    'Require="features.Shot on the Run","baseAttackBonus >= 6"',
+  'Pass for Human':
+    'Type=General Require="race =~ \'Half-Elf|Half-Orc|Halfling\'"',
+  'Perfect Strike':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"wisdom >= 13",' +
+      '"features.Improved Unarmed Strike",' +
+      '"baseAttackBonus >= 8"',
+  // TODO
+  // 'Point-Blank Master':'Type=General,Fighter Require=""'Weapon Specialization with a ranged weapon
+  'Practiced Tactician':'Type=General Require=features.Tactician',
+  'Preferred Spell':
+    'Type=General Require="skills.Spellcraft >= 5","features.Heighten Spell"',
+  'Punishing Kick':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"constitution >= 13",' +
+      '"wisdom >= 13",' +
+      '"features.Improved Unarmed Strike",' +
+      '"baseAttackBonus >= 8"',
+  'Pushing Assault':
+    'Type=General,Fighter ' +
+    'Require="strength >= 15","features.Power Attack","baseAttackBonus >= 1"',
+  'Racial Heritage':'Type=General Require="race =~ \'Human\'"',
+  'Raging Vitality':'Type=General Require="constitution >= 15",features.Rage',
+  'Razortusk':'Type=General Require="race == \'Half-Orc\'"',
+  'Rending Claws':
+    'Type=General,Fighter ' +
+    'Require="strength >= 13",weapons.Claws,"baseAttackBonus >= 6"',
+  'Repositioning Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Repostion","baseAttackBonus >= 9"',
+  'Saving Shield':'Type=General,Fighter Require="features.Shield Proficiency"',
+  'Second Chance':
+    'Type=General,Fighter ' +
+    'Require="features.Combat Expertise","baseAttackBonus >= 6"',
+  'Improved Second Chance':
+    'Type=General,Fighter ' +
+    'Require="features.Second Chance","baseAttackBonus >= 11"',
+  'Shadow Strike':'Type=General,Fighter Require="baseAttackBonus >= 1"',
+  'Shared Insight':'Type=General Require="wisdom >= 13","race == \'Half-Elf\'"',
+  'Sharp Senses':'Type=General Require="features.Keen Senses"',
+  'Shield of Swings':
+    'Type=General,Fighter ' +
+    'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
+  'Shield Specialization':
+    'Type=General,Fighter ' +
+    'Require="features.Shield Focus","features.Fighter >= 4"',
+  'Greater Shield Specialization':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Greater Shield Focus",' +
+      '"features.Shield Specialization",' +
+      '"levels.Fighter >= 12"',
+  'Sidestep':
+    'Type=General,Fighter ' +
+    'Require="dexterity >= 13",features.Dodge,features.Mobility',
+  'Improved Sidestep':
+    'Type=General,Fighter Require="dexterity >= 15",features.Sidestep',
+  'Smash':
+    'Type=General,Fighter ' +
+    'Require="features.Power Attack","race == \'Half-Orc\'"',
+  'Sociable':'Type=General Require="charisma >= 13","race == \'Half-Elf\'"',
+  'Spell Perfection':
+    'Type=General Require="skills.Spellcraft >= 15","sumMetamagicFeats >= 3"',
+  'Spider Step':
+    'Type=General ' +
+    'Require="skills.Acrobatics >= 6","skills.Climb >= 6","levels.Monk >= 6"',
+  'Cloud Step':
+    'Type=General Require="features.Spider Step","levels.Monk >= 12"',
+  'Stabbing Shot':
+    'Type=General,Fighter Require="features.Rapid Shot","race == \'Elf\'"',
+  'Steel Soul':'Type=General Require="race =~ \'Dwarf\'",features.Hardy',
+  'Stone-Faced':'Type=General Require="race =~ \'Dwarf\'"',
+  'Stone Singer':
+    'Type=General ' +
+    'Require=' +
+      '"charisma >= 13",' +
+      '"features.Bardic Performance",' +
+      '"race =~ \'Dwarf\'"',
+  'Stunning Assault':
+    'Type=General,Fighter ' +
+    'Require="features.Power Attack","baseAttackBonus >= 16"',
+  "Summoner's Call":'Type=General Require=features.Eidolon',
+  'Sundering Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Sunder","baseAttackBonus >= 9"',
+  'Swift Aid':
+    'Type=General,Fighter ' +
+    'Require="features.Combat Expertise","baseAttackBonus >= 6"',
+  'Taunt':'Type=General Require="charisma >= 13",features.Small',
+  'Teleport Tactician':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Combat Reflexes",' +
+      'features.Disruptive,' +
+      'features.Spellbreaker',
+  'Tenacious Transmutation':
+    'Type=General Require="features.Spell Focus (Transmutation)"',
+  'Touch of Serenity':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"wisdom >= 18",' +
+      '"features.Improved Unarmed Strike",' +
+      '"baseAttackBonus >= 8"',
+  'Trick Riding':
+    'Type=General,Fighter Require="skills.Ride >= 9","features.Mounted Combat"',
+  'Mounted Skirmisher':
+    'Type=General,Fighter Require="skills.Ride >= 14","features.Trick Riding"',
+  'Tripping Strike':
+    'Type=General,Fighter ' +
+    'Require="features.Improved Trip","baseAttackBonus >= 9"',
+  'Under and Over':
+    'Type=General,Fighter Require="features.Agile Maneuvers",features.Small',
+  'Underfoot':
+    'Type=General,Fighter ' +
+    'Require=features.Dodge,features.Mobility,features.Small',
+  'Vermin Heart':'Type=General Require="features.Wild Empathy"',
+  'War Singer':
+    'Type=General ' +
+    'Require="charisma >= 13","features.Bardic Performance","race =~ \'Orc\'"',
+  'Well-Prepared':'Type=General Require="race =~ \'Halfling\'"',
+  'Bouncing Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Dazing Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Disruptive Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Ectoplasmic Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Elemental Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Focused Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Intensified Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Lingering Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Merciful Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Persistent Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Reach Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Selective Spell':
+    'Type=Metamagic,Wizard ' +
+    'Require="skills.Spellcraft >= 10" ' +
+    'Imply="casterLevel >= 1"',
+  'Sickening Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Thundering Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Allied Spellcaster':'Type=Teamwork Require="casterLevel >= 1"',
+  'Coordinated Defense':'Type=Teamwork,Fighter',
+  'Coordinated Maneuvers':'Type=Teamwork,Fighter',
+  'Duck and Cover':'Type=Teamwork',
+  'Lookout':'Type=Teamwork,Fighter',
+  'Outflank':'Type=Teamwork,Fighter Require="baseAttackBonus >= 4"',
+  'Paired Opportunists':'Type=Teamwork,Fighter',
+  'Precise Strike':
+    'Type=Teamwork,Fighter Require="dexterity >= 13","baseAttackBonus >= 1"',
+  'Shield Wall':'Type=Teamwork,Fighter Require="features.Shield Proficiency"',
+  'Shielded Caster':'Type=Teamwork',
+  'Swap Places':'Type=Teamwork,Fighter'
 };
 PathfinderSupplements.APG_FEATURES = {
 };
