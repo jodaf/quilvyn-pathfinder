@@ -79,6 +79,11 @@ PathfinderSupplements.VERSION = '2.3.1.0';
 
 // Advanced Player's Guide
 PathfinderSupplements.APG_ARMORS = {
+  'Agile Breatplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
+  'Agile Half-Plate':'AC=8 Weight=2 Dex=0 Skill=7 Spell=40',
+  'Armored Coat':'AC=4 Weight=2 Dex=3 Skill=2 Spell=20',
+  'Quilted Cloth':'AC=1 Weight=1 Dex=8 Skill=0 Spell=10',
+  'Wooden':'AC=3 Weight=1 Dex=3 Skill=1 Spell=15'
 };
 PathfinderSupplements.APG_FEATS = {
   'Additional Traits':'Type=General',
@@ -436,40 +441,88 @@ PathfinderSupplements.APG_FEATS = {
 };
 PathfinderSupplements.APG_FEATURES = {
   // Classes
-  'Alchemy':'Section=feature Note="FILL"',
+  'Acid Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
+  'Alchemy':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
+      '"+%V Craft (Alchemy)"',
   'Aspect':'Section=feature Note="FILL"',
   'Bane':'Section=feature Note="FILL"',
   'Banner':'Section=feature Note="FILL"',
-  'Bomb':'Section=feature Note="FILL"',
+  'Bomb':
+    'Section=combat ' +
+    'Note="May create R20\' missiles that inflict %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} HP (%{levels.Alchemist+1)//2+intelligenceModifier} (Ref half) splash) %{levels.Alchemist + intelligenceModifier}/dy"',
   'Bond Senses':'Section=feature Note="FILL"',
   // 'Brew Potion' in SRD35.js
   'Cantrips':'Section=feature Note="FILL"',
   'Cavalier Feat Bonus':'Section=feature Note="FILL"',
   "Cavalier's Charge":'Section=feature Note="FILL"',
   'Challenge':'Section=feature Note="FILL"',
+  'Combine Extracts':
+    'Section=magic Note="May combine two effects into one extract"',
+  'Concentrate Poison':
+    'Section=feature ' +
+    'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
+  'Concussive Bomb':'Section=feature Note="FILL"',
   'Cunning Initiative':'Section=feature Note="FILL"',
+  'Delayed Bomb':
+    'Section=combat ' +
+    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
   'Demanding Challenge':'Section=feature Note="FILL"',
   'Detect Alignment':'Section=feature Note="FILL"',
+  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
   'Discern Lies':'Section=feature Note="FILL"',
-  'Discovery':'Section=feature Note="FILL"',
+  'Discovery':'Section=feature Note="%V Selections"',
+  'Dispelling Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that dispels magic instead of inflicting damage"',
   'Domain':'Section=feature Note="FILL"',
   'Eidolon':'Section=feature Note="FILL"',
+  'Elixir Of Life':
+    'Section=magic ' +
+    'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
+  'Enhance Potion':
+    'Section=magic ' +
+    'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
+  'Eternal Potion':
+     'Section=magic ' +
+     'Note="May cause effects of 1 imbibed potion to become permanent"',
   'Expert Trainer':'Section=feature Note="FILL"',
   'Exploit Weakness':'Section=feature Note="FILL"',
+  'Explosive Bomb':
+    'Section=combat ' +
+    'Note="Direct hit from bomb causes 1d6 HP fire until extinguised; splash extends 10\'"',
+  'Extend Potion':
+     'Section=magic ' +
+     'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
+  'Fast Bombs':
+    'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
+  'Feral Mutagen':'Section=feature Note="FILL"',
   'Final Revelation':'Section=feature Note="FILL"',
+  'Force Bomb':'Section=feature Note="FILL"',
+  'Frost Bomb':'Section=feature Note="FILL"',
   'Gate':'Section=feature Note="FILL"',
   'Grand Discovery':'Section=feature Note="FILL"',
   'Grand Hex':'Section=feature Note="FILL"',
+  'Grand Mutagen':'Section=feature Note="FILL"',
   'Greater Aspect':'Section=feature Note="FILL"',
   'Greater Bane':'Section=feature Note="FILL"',
   'Greater Banner':'Section=feature Note="FILL"',
+  'Greater Mutagen':'Section=feature Note="FILL"',
   'Greater Shield Ally':'Section=feature Note="FILL"',
   'Greater Tactician':'Section=feature Note="FILL"',
   'Hex':'Section=feature Note="FILL"',
+  'Infuse Mutagen':'Section=feature Note="FILL"',
+  'Inferno Bomb':'Section=feature Note="FILL"',
+  'Infusion':'Section=feature Note="FILL"',
   'Instant Alchemy':'Section=feature Note="FILL"',
   'Judgment':'Section=feature Note="FILL"',
   'Life Bond':'Section=feature Note="FILL"',
   'Life Link':'Section=feature Note="FILL"',
+  'Madness Bomb':'Section=feature Note="FILL"',
   "Maker's Call":'Section=feature Note="FILL"',
   'Major Hex':'Section=feature Note="FILL"',
   'Master Tactician':'Section=feature Note="FILL"',
@@ -477,7 +530,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Mighty Charge':'Section=feature Note="FILL"',
   'Monster Lore':'Section=feature Note="FILL"',
   'Mount':'Section=feature Note="FILL"',
-  'Mutagen':'Section=feature Note="FILL"',
+  'Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery Spell':'Section=feature Note="FILL"',
   'Mystery':'Section=feature Note="FILL"',
   "Oracle's Curse":'Section=feature Note="FILL"',
@@ -486,15 +541,20 @@ PathfinderSupplements.APG_FEATURES = {
   'Orisons':'Section=feature Note="FILL"',
   'Orisons':'Section=feature Note="FILL"',
   'Persistent Mutagen':'Section=feature Note="FILL"',
+  'Poison Bomb':'Section=feature Note="FILL"',
   'Poison Resistance':'Section=feature Note="FILL"',
   // 'Poison Use' in Pathfinder.js
+  'Precise Bombs':'Section=feature Note="FILL"',
   'Revelation':'Section=feature Note="FILL"',
   'Second Judgment':'Section=feature Note="FILL"',
   'Shield Ally':'Section=feature Note="FILL"',
+  'Shock Bomb':'Section=feature Note="FILL"',
   'Slayer':'Section=feature Note="FILL"',
+  'Smoke Bomb':'Section=feature Note="FILL"',
   'Solo Tactics':'Section=feature Note="FILL"',
   'Stalwart':'Section=feature Note="FILL"',
   'Stern Gaze':'Section=feature Note="FILL"',
+  'Sticky Bomb':'Section=feature Note="FILL"',
   'Summon Monster':'Section=feature Note="FILL"',
   'Supreme Charge':'Section=feature Note="FILL"',
   'Swift Alchemy':'Section=feature Note="FILL"',
@@ -694,6 +754,8 @@ PathfinderSupplements.APG_PATHS = {
 PathfinderSupplements.APG_RACES = {
 };
 PathfinderSupplements.APG_SHIELDS = {
+  'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
+  'Light Wooden Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5'
 };
 PathfinderSupplements.APG_SKILLS = {
 };
@@ -703,6 +765,28 @@ PathfinderSupplements.APG_TRAITS = {
   // Already declared in Pathfinder.js
 };
 PathfinderSupplements.APG_WEAPONS = {
+  'Bardiche':'Level=2 Category=2h Damage=d10 Threat=19',
+  'Battle Aspergillum':'Level=1 Category=Li Damage=d6',
+  'Bayonet':'Level=1 Category=2h Damage=d6',
+  'Bec De Corbin':'Level=2 Category=2h Damage=d10 Crit=3',
+  'Bill':'Level=2 Category=2h Damage=d8 Crit=3',
+  'Boar Spear':'Level=1 Category=2h Damage=d8',
+  'Boomerang':'Level=3 Category=R Damage=d6 Range=30',
+  'Brass Knuckles':'Level=0 Category=Un Damage=d3',
+  'Cestus':'Level=1 Category=Li Damage=d4 Threat=19',
+  'Chain Spear':'Level=3 Category=2h Damage=d6/d6',
+  'Chakram':'Level=2 Category=R Damage=d8 Range=30',
+  'Double Crossbow':'Level=3 Category=R Damage=d8 Threat=19 Range=80',
+  'Falcata':'Level=3 Category=1h Damage=d8 Threat=19 Crit=3',
+  'Glaive-Guisarme':'Level=2 Category=2h Damage=d10 Crit=3',
+  'Khopesh':'Level=3 Category=1h Damage=d8 Threat=19',
+  'Lucerne Hammer':'Level=2 Category=2h Damage=d12',
+  'Mancatcher':'Level=3 Category=2h Damage=d2',
+  'Pilum':'Level=2 Category=R Damage=d8 Range=20',
+  'Sword Cane':'Level=2 Category=1h Damage=d6',
+  'Swordbreaker Dagger':'Level=3 Category=Li Damage=d4',
+  'Temple Sword':'Level=3 Category=1h Damage=d8 Threat=19',
+  'Wooden Stake':'Level=1 Category=Li Damage=d4 Range=10'
 };
 PathfinderSupplements.APG_CLASSES = {
   'Alchemist':
@@ -714,6 +798,15 @@ PathfinderSupplements.APG_CLASSES = {
       '2:Discovery,"2:Poison Resistance","2:Poison Use","3:Swift Alchemy",' +
       '"6:Swift Poisoning","14:Persistent Mutagen","18:Instant Alchemy",' +
       '"20:Grand Discovery" ' +
+    'Selectables=' +
+      '"Acid Bomb","8:Combine Extracts","Concentrate Poison",' +
+      '"6:Concussive Bomb","8:Delayed Bomb",12:Dilution,"6:Dispelling Bomb",' +
+      '"16:Elixir Of Life","Enhance Potion","16:Eternal Potion",' +
+      '"Explosive Bomb","Extend Potion","8:Fast Bombs","Feral Mutagen",' +
+      '"Force Bomb","8:Frost Bomb","16:Grand Mutagen","Greater Mutagen",' +
+      '"Infuse Mutagen","16:Inferno Bomb",Infusion,"12:Madness Bomb",' +
+      '"12:Poison Bomb","Precise Bombs","Shock Bomb","Smoke Bomb",' +
+      '"10:Sticky Bomb","Stink Bomb" ' +
     'CasterLevelArcane=levels.Alchemist ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
@@ -851,6 +944,14 @@ PathfinderSupplements.identityRules = function(
     rules, alignments, classes, deities, factions, paths, races, tracks, traits,
     prestigeClasses, npcClasses
   );
+  for(let clas in classes)
+    PathfinderSupplements.classRulesExtra(rules, clas);
+  for(let clas in prestigeClasses)
+    PathfinderSupplements.classRulesExtra(rules, clas);
+  for(let clas in npcClasses)
+    PathfinderSupplements.classRulesExtra(rules, clas);
+  for(let race in races)
+    PathfinderSupplements.raceRulesExtra(rules, race);
 };
 
 /* Defines rules related to magic use. */
@@ -863,6 +964,8 @@ PathfinderSupplements.talentRules = function(
   rules, feats, features, goodies, languages, skills
 ) {
   Pathfinder.talentRules(rules, feats, features, goodies, languages, skills);
+  for(let feat in feats)
+    PathfinderSupplements.raceRulesExtra(rules, feat);
   rules.defineRule('traitCount', '', '=', '2');
 };
 
@@ -871,6 +974,14 @@ PathfinderSupplements.talentRules = function(
  * directly derived from the attributes passed to classRules.
  */
 PathfinderSupplements.classRulesExtra = function(rules, name) {
+  let classLevel = 'levels.' + name;
+  if(name == 'Alchemist') {
+    rules.defineRule
+      ('featureNotes.discovery', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule
+      ('selectableFeatureCount.Alchemist', 'featureNotes.discovery', '=', null);
+    rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
+  }
 };
 
 /*
