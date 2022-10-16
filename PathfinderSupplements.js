@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 /*jshint esversion: 6 */
 /* jshint forin: false */
-/* globals ObjectViewer, Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
+/* globals Pathfinder */
 "use strict";
 
 /*
@@ -450,6 +450,7 @@ PathfinderSupplements.APG_FEATURES = {
       '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
       '"+%V Craft (Alchemy)"',
   'Aspect':'Section=feature Note="FILL"',
+  'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bane':'Section=feature Note="FILL"',
   'Banner':'Section=feature Note="FILL"',
   'Bomb':
@@ -466,7 +467,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Concentrate Poison':
     'Section=feature ' +
     'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
-  'Concussive Bomb':'Section=feature Note="FILL"',
+  'Concussive Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
   'Cunning Initiative':'Section=feature Note="FILL"',
   'Delayed Bomb':
     'Section=combat ' +
@@ -490,6 +493,8 @@ PathfinderSupplements.APG_FEATURES = {
   'Eternal Potion':
      'Section=magic ' +
      'Note="May cause effects of 1 imbibed potion to become permanent"',
+  'Eternal Youth':
+    'Section=feature Note="Suffers no ability score penalties from age"',
   'Expert Trainer':'Section=feature Note="FILL"',
   'Exploit Weakness':'Section=feature Note="FILL"',
   'Explosive Bomb':
@@ -500,29 +505,50 @@ PathfinderSupplements.APG_FEATURES = {
      'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
   'Fast Bombs':
     'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
-  'Feral Mutagen':'Section=feature Note="FILL"',
+  'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
+  'Feral Mutagen':
+    'Section=combat ' +
+    'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
   'Final Revelation':'Section=feature Note="FILL"',
-  'Force Bomb':'Section=feature Note="FILL"',
-  'Frost Bomb':'Section=feature Note="FILL"',
+  'Force Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
+  'Frost Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
   'Gate':'Section=feature Note="FILL"',
-  'Grand Discovery':'Section=feature Note="FILL"',
+  'Grand Discovery':'Section=feature Note="%V Selection"',
   'Grand Hex':'Section=feature Note="FILL"',
-  'Grand Mutagen':'Section=feature Note="FILL"',
+  'Grand Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
   'Greater Aspect':'Section=feature Note="FILL"',
   'Greater Bane':'Section=feature Note="FILL"',
   'Greater Banner':'Section=feature Note="FILL"',
-  'Greater Mutagen':'Section=feature Note="FILL"',
+  'Greater Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
   'Greater Shield Ally':'Section=feature Note="FILL"',
   'Greater Tactician':'Section=feature Note="FILL"',
   'Hex':'Section=feature Note="FILL"',
-  'Infuse Mutagen':'Section=feature Note="FILL"',
-  'Inferno Bomb':'Section=feature Note="FILL"',
-  'Infusion':'Section=feature Note="FILL"',
-  'Instant Alchemy':'Section=feature Note="FILL"',
+  'Infuse Mutagen':
+     'Section=magic ' +
+     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
+  'Inferno Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
+  'Infusion':'Section=magic Note="Created extracts persist when not held"',
+  'Instant Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as an immediate action",' +
+      '"May create alchemical items as a full-round action"',
   'Judgment':'Section=feature Note="FILL"',
   'Life Bond':'Section=feature Note="FILL"',
   'Life Link':'Section=feature Note="FILL"',
-  'Madness Bomb':'Section=feature Note="FILL"',
+  'Madness Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
   "Maker's Call":'Section=feature Note="FILL"',
   'Major Hex':'Section=feature Note="FILL"',
   'Master Tactician':'Section=feature Note="FILL"',
@@ -539,32 +565,58 @@ PathfinderSupplements.APG_FEATURES = {
   'Order Ability':'Section=feature Note="FILL"',
   'Order':'Section=feature Note="FILL"',
   'Orisons':'Section=feature Note="FILL"',
-  'Orisons':'Section=feature Note="FILL"',
-  'Persistent Mutagen':'Section=feature Note="FILL"',
-  'Poison Bomb':'Section=feature Note="FILL"',
-  'Poison Resistance':'Section=feature Note="FILL"',
+  'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
+  "Philosopher's Stone":
+    'Section=magic ' +
+    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
+  'Poison Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 consitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+  'Poison Resistance':'Section=save Note="Resistance %V poison"',
   // 'Poison Use' in Pathfinder.js
-  'Precise Bombs':'Section=feature Note="FILL"',
+  'Poisonous Touch':
+    'Section=combat ' +
+    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (Con neg)"',
+  'Precise Bombs':
+    'Section=combat ' +
+    'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
   'Revelation':'Section=feature Note="FILL"',
   'Second Judgment':'Section=feature Note="FILL"',
   'Shield Ally':'Section=feature Note="FILL"',
-  'Shock Bomb':'Section=feature Note="FILL"',
+  'Shock Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
   'Slayer':'Section=feature Note="FILL"',
-  'Smoke Bomb':'Section=feature Note="FILL"',
+  'Smoke Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
   'Solo Tactics':'Section=feature Note="FILL"',
   'Stalwart':'Section=feature Note="FILL"',
   'Stern Gaze':'Section=feature Note="FILL"',
-  'Sticky Bomb':'Section=feature Note="FILL"',
+  'Sticky Bomb':
+    'Section=combat ' +
+    'Note="Targets hit by bombs suffer splash damage on the following rd"',
+  'Stink Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
   'Summon Monster':'Section=feature Note="FILL"',
   'Supreme Charge':'Section=feature Note="FILL"',
-  'Swift Alchemy':'Section=feature Note="FILL"',
-  'Swift Poisoning':'Section=feature Note="FILL"',
+  'Swift Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as a move action",' +
+      '"Creating alchemical items takes half normal time"',
+  'Swift Poisoning':
+    'Section=combat Note="May apply poison to a blade as a swift action"',
   'Tactician':'Section=feature Note="FILL"',
   'Teamwork Feat':'Section=feature Note="FILL"',
   'Third Judgment':'Section=feature Note="FILL"',
   // 'Throw Anything' in Pathfinder.js
   // 'Track' in Pathfinder.js
   'Transposition':'Section=feature Note="FILL"',
+  'True Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
   'True Judgment':'Section=feature Note="FILL"',
   'Twin Eidolon':'Section=feature Note="FILL"',
   "Witch's Familiar":'Section=feature Note="FILL"',
@@ -799,14 +851,26 @@ PathfinderSupplements.APG_CLASSES = {
       '"6:Swift Poisoning","14:Persistent Mutagen","18:Instant Alchemy",' +
       '"20:Grand Discovery" ' +
     'Selectables=' +
-      '"Acid Bomb","8:Combine Extracts","Concentrate Poison",' +
-      '"6:Concussive Bomb","8:Delayed Bomb",12:Dilution,"6:Dispelling Bomb",' +
-      '"16:Elixir Of Life","Enhance Potion","16:Eternal Potion",' +
-      '"Explosive Bomb","Extend Potion","8:Fast Bombs","Feral Mutagen",' +
-      '"Force Bomb","8:Frost Bomb","16:Grand Mutagen","Greater Mutagen",' +
-      '"Infuse Mutagen","16:Inferno Bomb",Infusion,"12:Madness Bomb",' +
-      '"12:Poison Bomb","Precise Bombs","Shock Bomb","Smoke Bomb",' +
-      '"10:Sticky Bomb","Stink Bomb" ' +
+      '"1:Acid Bomb:Discovery","8:Combine Extracts:Discovery",' +
+      '"1:Concentrate Poison:Discovery","6:Concussive Bomb:Discovery",' +
+      '"8:Delayed Bomb:Discovery",12:Dilution:Discovery,' +
+      '"6:Dispelling Bomb:Discovery","16:Elixir Of Life:Discovery",' +
+      '"1:Enhance Potion:Discovery","16:Eternal Potion:Discovery",' +
+      '"1:Explosive Bomb:Discovery","1:Extend Potion:Discovery",' +
+      '"8:Fast Bombs:Discovery:Discovery","1:Feral Mutagen:Discovery",' +
+      '"1:Force Bomb:Discovery","8:Frost Bomb:Discovery",' +
+      '"16:Grand Mutagen:Discovery","1:Greater Mutagen:Discovery",' +
+      '"1:Infuse Mutagen:Discovery","16:Inferno Bomb:Discovery",' +
+      '1:Infusion:Discovery,"12:Madness Bomb:Discovery",' +
+      '"12:Poison Bomb:Discovery","1:Precise Bombs:Discovery",' +
+      '"1:Shock Bomb:Discovery","1:Smoke Bomb:Discovery",' +
+      '"10:Sticky Bomb:Discovery","1:Stink Bomb:Discovery",' +
+      '"20:Awakened Intellect:Grand Discovery",' +
+      '"20:Eternal Youth:Grand Discovery",' +
+      '"20:Fast Healing:Grand Discovery",' +
+      '"20:Philosopher\'s Stone:Grand Discovery",' +
+      '"20:Poison Touch:Grand Discovery",' +
+      '"20:True Mutagen:Grand Discovery" ' +
     'CasterLevelArcane=levels.Alchemist ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
@@ -976,10 +1040,19 @@ PathfinderSupplements.talentRules = function(
 PathfinderSupplements.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Alchemist') {
+    rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
+    rules.defineRule('featureNotes.discovery',
+      classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
+    );
+    rules.defineRule('featureNotes.grandDiscovery', classLevel, '=', '1');
+    rules.defineRule('saveNotes.poisonResistance',
+      classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
+    );
     rules.defineRule
-      ('featureNotes.discovery', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule
-      ('selectableFeatureCount.Alchemist', 'featureNotes.discovery', '=', null);
+      ('selectableFeatureCount.Discovery', 'featureNotes.discovery', '=', null);
+    rules.defineRule('selectableFeatureCount.Grand Discovery',
+      'featureNotes.grandDiscovery', '=', null
+    );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
   }
 };
