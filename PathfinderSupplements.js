@@ -455,7 +455,7 @@ PathfinderSupplements.APG_FEATURES = {
   'Banner':'Section=feature Note="FILL"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create R20\' missiles that inflict %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} HP (%{levels.Alchemist+1)//2+intelligenceModifier} (Ref half) splash) %{levels.Alchemist + intelligenceModifier}/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %{levels.Alchemist + intelligenceModifier}/dy"',
   'Bond Senses':'Section=feature Note="FILL"',
   // 'Brew Potion' in SRD35.js
   'Cantrips':'Section=feature Note="FILL"',
@@ -1048,12 +1048,19 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.poisonResistance',
       classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Discovery', 'featureNotes.discovery', '=', null);
-    rules.defineRule('selectableFeatureCount.Grand Discovery',
+    rules.defineRule('selectableFeatureCount.Alchemist (Discovery)',
+      'featureNotes.discovery', '=', null
+    );
+    rules.defineRule('selectableFeatureCount.Alchemist (Grand Discovery)',
       'featureNotes.grandDiscovery', '=', null
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
+    Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
+    rules.defineRule('bombDamageDice',
+      classLevel, '=', 'Math.floor((source + 1) / 2) + "d6"'
+    );
+    rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
+    rules.defineRule('weapons.Bomb', classLevel, '=', '1');
   }
 };
 
