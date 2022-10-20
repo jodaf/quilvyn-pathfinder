@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 /*jshint esversion: 6 */
 /* jshint forin: false */
-/* globals Pathfinder */
+/* globals Pathfinder, QuilvynUtils */
 "use strict";
 
 /*
@@ -62,11 +62,13 @@ function PathfinderSupplements(supplement, rules) {
   let shields = PathfinderSupplements[supplement + '_SHIELDS'] || {};
   let skills = PathfinderSupplements[supplement + '_SKILLS'] || {};
   let spells = PathfinderSupplements[supplement + '_SPELLS'] || {};
+  let spellLevels =
+    PathfinderSupplements[supplement + '_SPELLS_LEVELS_ADDED'] || {};
   let traits = PathfinderSupplements[supplement + '_TRAITS'] || {};
   let weapons = PathfinderSupplements[supplement + '_WEAPONS'] || {};
 
   PathfinderSupplements.combatRules(rules, armors, shields, weapons);
-  PathfinderSupplements.magicRules(rules, {}, spells);
+  PathfinderSupplements.magicRules(rules, spells, spellLevels);
   PathfinderSupplements.talentRules
     (rules, feats, features, {}, languages, skills);
   PathfinderSupplements.identityRules(
@@ -318,7 +320,7 @@ PathfinderSupplements.APG_FEATS = {
     'Require="strength >= 13",weapons.Claws,"baseAttackBonus >= 6"',
   'Repositioning Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Repostion","baseAttackBonus >= 9"',
+    'Require="features.Improved Reposition","baseAttackBonus >= 9"',
   'Saving Shield':'Type=General,Fighter Require="features.Shield Proficiency"',
   'Second Chance':
     'Type=General,Fighter ' +
@@ -444,34 +446,60 @@ PathfinderSupplements.APG_FEATURES = {
   'Acid Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
+  'Acid Skin':'Section=feature Note="FILL"',
   'Act As One':
     'Section=combat ' +
     'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
   'Aid Allies (Cavalier)':
     'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
+  'Air Barrier':'Section=feature Note="FILL"',
   'Alchemy':
     'Section=magic,skill ' +
     'Note=' +
       '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
       '"+%V Craft (Alchemy)"',
+  'Arcane Archivist':'Section=feature Note="FILL"',
+  'Armor Of Bones':'Section=feature Note="FILL"',
   'Aspect':'Section=feature Note="FILL"',
+  'Automatic Writing':'Section=feature Note="FILL"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
-  'Bane':'Section=feature Note="FILL"',
+  'Awesome Display':'Section=feature Note="FILL"',
+  'Bane':
+    'Section=combat ' +
+    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
   'Banner':
     'Section=combat ' +
     'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
+  'Battle Mystery':
+    'Section=skill ' +
+    'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
+  'Battlecry':'Section=feature Note="FILL"',
+  'Battlefield Clarity':'Section=feature Note="FILL"',
+  'Bleeding Wounds':'Section=feature Note="FILL"',
+  'Blizzard':'Section=feature Note="FILL"',
+  'Bonded Mount':'Section=feature Note="FILL"',
   'Braggart':
     'Section=combat,feature ' +
     'Note=' +
       '"+2 attacks on demoralized target",' +
       '"Has Dazzling Display features"',
+  'Brain Drain':'Section=feature Note="FILL"',
   'Bomb':
     'Section=combat ' +
     'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %{levels.Alchemist + intelligenceModifier}/dy"',
   'Bond Senses':'Section=feature Note="FILL"',
+  'Bones Mystery':
+    'Section=skill ' +
+    'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
   // 'Brew Potion' in SRD35.js
-  'By My Honor':'Section=feature Note="FILL"',
-  'Calling':'Section=feature Note="FILL"',
+  'Burning Magic':'Section=feature Note="FILL"',
+  'By My Honor':
+    'Section=save Note="+2 choice of save while maintaining alignment"',
+  'Calling':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
+      '"+%V %1"',
   'Cantrips':'Section=feature Note="FILL"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
@@ -479,6 +507,12 @@ PathfinderSupplements.APG_FEATURES = {
   'Challenge':
     'Section=combat ' +
     'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
+  'Channel':'Section=feature Note="FILL"',
+  'Cinder Dance':'Section=feature Note="FILL"',
+  'Clobbering Strike':'Section=feature Note="FILL"',
+  'Clouded Vision':'Section=feature Note="FILL"',
+  'Coat Of Many Stars':'Section=feature Note="FILL"',
+  'Combat Healer':'Section=feature Note="FILL"',
   'Combine Extracts':
     'Section=magic Note="May combine two effects into one extract"',
   'Concentrate Poison':
@@ -487,27 +521,38 @@ PathfinderSupplements.APG_FEATURES = {
   'Concussive Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
-  'Cunning Initiative':'Section=feature Note="FILL"',
+  'Crystal Strike':'Section=feature Note="FILL"',
+  'Cunning Initiative':'Section=combat Note="+%V Initiative"',
+  'Deaf':'Section=feature Note="FILL"',
+  "Death's Touch":'Section=feature Note="FILL"',
+  'Delay Affliction':'Section=feature Note="FILL"',
   'Delayed Bomb':
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
   'Demanding Challenge':
     'Section=combat Note="Challenged target suffers -2 AC from others"',
-  'Detect Alignment':'Section=feature Note="FILL"',
+  'Detect Alignment':
+    'Section=magic ' +
+    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
   'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
-  'Discern Lies':'Section=feature Note="FILL"',
+  'Discern Lies':'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
   'Discovery':'Section=feature Note="%V Selections"',
   'Dispelling Bomb':
     'Section=combat ' +
     'Note="May create bomb that dispels magic instead of inflicting damage"',
   'Domain':'Section=feature Note="FILL"',
+  'Dweller In Darkness':'Section=feature Note="FILL"',
+  'Earth Glide':'Section=feature Note="FILL"',
   'Eidolon':'Section=feature Note="FILL"',
   'Elixir Of Life':
     'Section=magic ' +
     'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
+  'Energy Body':'Section=feature Note="FILL"',
   'Enhance Potion':
     'Section=magic ' +
     'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
+  'Enhanced Cures':'Section=feature Note="FILL"',
+  'Erosion Touch':'Section=feature Note="FILL"',
   'Eternal Potion':
      'Section=magic ' +
      'Note="May cause effects of 1 imbibed potion to become permanent"',
@@ -516,10 +561,12 @@ PathfinderSupplements.APG_FEATURES = {
   'Expert Trainer':
     'Section=skill ' +
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
-  'Exploit Weakness':'Section=feature Note="FILL"',
+  'Exploit Weakness':
+    'Section=combat ' +
+    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
   'Explosive Bomb':
     'Section=combat ' +
-    'Note="Direct hit from bomb causes 1d6 HP fire until extinguised; splash extends 10\'"',
+    'Note="Direct hit from bomb causes 1d6 HP fire until extinguished; splash extends 10\'"',
   'Extend Potion':
      'Section=magic ' +
      'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
@@ -530,16 +577,30 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=combat ' +
     'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
   'Final Revelation':'Section=feature Note="FILL"',
-  'For The Faith':'Section=feature Note="FILL"',
+  'Fire Breath':'Section=feature Note="FILL"',
+  'Firestorm':'Section=feature Note="FILL"',
+  'Flame Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
+  'Fluid Nature':'Section=feature Note="FILL"',
+  'Fluid Travel':'Section=feature Note="FILL"',
+  'Focused Trance':'Section=feature Note="FILL"',
+  'For The Faith':
+    'Section=combat ' +
+    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
   'For The King':
     'Section=combat ' +
     'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
   'Force Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
+  'Form Of Flame':'Section=feature Note="FILL"',
+  'Freezing Spells':'Section=feature Note="FILL"',
+  'Friend To The Animals':'Section=feature Note="FILL"',
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
+  'Gaseous Form':'Section=feature Note="FILL"',
   'Gate':'Section=feature Note="FILL"',
   'Grand Discovery':'Section=feature Note="%V Selection"',
   'Grand Hex':'Section=feature Note="FILL"',
@@ -547,7 +608,7 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=magic ' +
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
   'Greater Aspect':'Section=feature Note="FILL"',
-  'Greater Bane':'Section=feature Note="FILL"',
+  'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Greater Banner':
     'Section=combat ' +
     'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
@@ -556,7 +617,16 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
   'Greater Shield Ally':'Section=feature Note="FILL"',
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  'Guiding Star':'Section=feature Note="FILL"',
+  'Haunted':'Section=feature Note="FILL"',
+  'Healing Hands':'Section=feature Note="FILL"',
+  'Heat Aura':'Section=feature Note="FILL"',
+  'Heavens Mystery':
+    'Section=skill ' +
+    'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
   'Hex':'Section=feature Note="FILL"',
+  'Ice Armor':'Section=feature Note="FILL"',
+  'Icy Skin':'Section=feature Note="FILL"',
   'Infuse Mutagen':
      'Section=magic ' +
      'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
@@ -569,35 +639,73 @@ PathfinderSupplements.APG_FEATURES = {
     'Note=' +
       '"May apply poison to a blade as an immediate action",' +
       '"May create alchemical items as a full-round action"',
-  'Judgment':'Section=feature Note="FILL"',
-  "Knight's Challenge":'Section=feature Note="FILL"',
+  'Interstellar Void':'Section=feature Note="FILL"',
+  'Invisibility':'Section=feature Note="FILL"',
+  'Iron Skin':'Section=feature Note="FILL"',
+  'Judgment':
+    'Section=combat ' +
+    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+  "Knight's Challenge":
+    'Section=combat ' +
+    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
+  'Lame':'Section=feature Note="FILL"',
   'Life Bond':'Section=feature Note="FILL"',
+  'Life Leach':'Section=feature Note="FILL"',
   'Life Link':'Section=feature Note="FILL"',
+  'Life Mystery':
+    'Section=skill ' +
+    'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
+  'Lifesense':'Section=feature Note="FILL"',
+  'Lightning Breath':'Section=feature Note="FILL"',
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
+  'Lore Keeper':'Section=feature Note="FILL"',
+  'Lore Mystery':
+    'Section=skill ' +
+    'Note="Appraise is a class skill/Knowledge is a class skill"',
+  'Lure Of The Heavens':'Section=feature Note="FILL"',
   'Madness Bomb':
     'Section=combat ' +
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
-  "Maker's Call":'Section=feature Note="FILL"',
   'Major Hex':'Section=feature Note="FILL"',
+  "Maker's Call":'Section=feature Note="FILL"',
+  'Maneuver Mastery':'Section=feature Note="FILL"',
+  'Mantle Of Moonlight':'Section=feature Note="FILL"',
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  'Mental Acuity':'Section=feature Note="FILL"',
   'Merge Forms':'Section=feature Note="FILL"',
   'Mighty Charge':
     'Section=combat ' +
     'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
+  'Mighty Pebble':'Section=feature Note="FILL"',
+  'Molten Skin':'Section=feature Note="FILL"',
   'Moment Of Triumph':
     'Section=feature ' +
     'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attacks, damage, saves, skillChecks, and AC 1/dy"',
-  'Monster Lore':'Section=feature Note="FILL"',
+  'Monster Lore':
+    'Section=skill ' +
+    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
+  'Moonlight Bridge':'Section=feature Note="FILL"',
   'Mount':'Section=feature Note="Special bond and abilities"',
-  'Mounted Mastery':'Section=feature Note="FILL"',
+  'Mounted Mastery':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+4 AC vs. attacks set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
+      '"Gain 1 Order Of The Sword feat",' +
+      '"No armor check penalty for Ride"',
   'Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery Spell':'Section=feature Note="FILL"',
-  'Mystery':'Section=feature Note="FILL"',
-  "Oracle's Curse":'Section=feature Note="FILL"',
+  'Mystery':'Section=feature Note="1 Selection"',
+  'Natural Divination':'Section=feature Note="FILL"',
+  'Nature Mystery':
+    'Section=skill ' +
+    'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill/Swim is a class skill"',
+  "Nature's Whispers":'Section=feature Note="FILL"',
+  'Near Death':'Section=feature Note="FILL"',
+  "Oracle's Curse":'Section=feature Note="1 Selection"',
   'Order':'Section=feature Note="1 Selection"',
   'Order Of The Cockatrice':
     'Section=combat,feature,skill ' +
@@ -617,17 +725,32 @@ PathfinderSupplements.APG_FEATURES = {
       '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
       '"Must defend and obey sovereign",' +
       '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
-  'Order Of The Shield':'Section=feature Note="FILL"',
-  'Order Of The Star':'Section=feature Note="FILL"',
-  'Order Of The Sword':'Section=feature Note="FILL"',
-  'Orisons':'Section=feature Note="FILL"',
+  'Order Of The Shield':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} attacks vs. challenge target for 1 min if target attacks another",' +
+      '"Must defend the lives and property of common folks",' +
+      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
+  'Order Of The Star':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
+      '"Must protect and serve the faithful",' +
+      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
+  'Order Of The Sword':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} mounted attacks vs. challenge target",' +
+      '"Must show honor, mercy, and charity",' +
+      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
+  'Orisons':'Section=magic Note="Knows level-0 spells"',
   'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
   "Philosopher's Stone":
     'Section=magic ' +
     'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
   'Poison Bomb':
     'Section=combat ' +
-    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 consitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
   'Poison Resistance':'Section=save Note="Resistance %V poison"',
   // 'Poison Use' in Pathfinder.js
   'Poisonous Touch':
@@ -636,11 +759,24 @@ PathfinderSupplements.APG_FEATURES = {
   'Precise Bombs':
     'Section=combat ' +
     'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
-  'Protect The Meek':'Section=feature Note="FILL"',
-  'Resolute':'Section=feature Note="FILL"',
-  'Retribution':'Section=feature Note="FILL"',
-  'Revelation':'Section=feature Note="FILL"',
-  'Second Judgment':'Section=feature Note="FILL"',
+  'Protect The Meek':
+    'Section=combat ' +
+    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
+  'Punitive Transformation':'Section=feature Note="FILL"',
+  'Raise The Dead':'Section=feature Note="FILL"',
+  'Resiliency':'Section=feature Note="FILL"',
+  'Resist Life':'Section=feature Note="FILL"',
+  'Resolute':
+    'Section=combat ' +
+    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
+  'Retribution':
+    'Section=combat ' +
+    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
+  'Revelation':'Section=feature Note="%V Selections"',
+  'Rock Throwing':'Section=feature Note="FILL"',
+  'Safe Curing':'Section=feature Note="FILL"',
+  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
+  'Shard Explosion':'Section=feature Note="FILL"',
   'Shield Ally':'Section=feature Note="FILL"',
   'Shield Of The Liege':
     'Section=combat ' +
@@ -648,30 +784,50 @@ PathfinderSupplements.APG_FEATURES = {
   'Shock Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
-  'Slayer':'Section=feature Note="FILL"',
+  'Sidestep Secret':'Section=feature Note="FILL"',
+  'Skill At Arms':'Section=feature Note="FILL"',
+  'Slayer':
+    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
-  'Solo Tactics':'Section=feature Note="FILL"',
-  'Stalwart':'Section=feature Note="FILL"',
+  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
+  'Soul Siphon':'Section=feature Note="FILL"',
+  'Spark Skin':'Section=feature Note="FILL"',
+  'Speak With Animals':'Section=feature Note="FILL"',
+  'Spirit Boost':'Section=feature Note="FILL"',
+  'Spirit Of Nature':'Section=feature Note="FILL"',
+  'Spirit Walk':'Section=feature Note="FILL"',
+  'Spontaneous Symbology':'Section=feature Note="FILL"',
+  'Spray Of Shooting Stars':'Section=feature Note="FILL"',
+  'Stalwart':
+    'Section=save ' +
+    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
+  'Star Chart':'Section=feature Note="FILL"',
   'Steal Glory':
     'Section=combat ' +
     'Note="May make AOO against threatened target when ally scores a critical hit"',
-  'Stem The Tide':'Section=feature Note="FILL"',
-  'Stern Gaze':'Section=feature Note="FILL"',
+  'Steelbreaker Skin':'Section=feature Note="FILL"',
+  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
+  'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
   'Sticky Bomb':
     'Section=combat ' +
     'Note="Targets hit by bombs suffer splash damage on the following rd"',
   'Stink Bomb':
     'Section=combat ' +
     'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
+  'Stone Mystery':
+    'Section=skill ' +
+    'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
+  'Stone Stability':'Section=feature Note="FILL"',
   'Strategy':
     'Section=combat ' +
-    'Note="R30\' Grant immidate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
+    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
   'Summon Monster':'Section=feature Note="FILL"',
   'Supreme Charge':
     'Section=combat ' +
     'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
+  'Surprising Charge':'Section=feature Note="FILL"',
   'Swift Alchemy':
     'Section=combat,magic ' +
     'Note=' +
@@ -682,16 +838,45 @@ PathfinderSupplements.APG_FEATURES = {
   'Tactician':
     'Section=feature ' +
     'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
-  'Teamwork Feat':'Section=feature Note="FILL"',
-  'Third Judgment':'Section=feature Note="FILL"',
+  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
+  'Think On It':'Section=feature Note="FILL"',
+  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
   // 'Throw Anything' in Pathfinder.js
+  'Thunderburst':'Section=feature Note="FILL"',
+  'Tongues':'Section=feature Note="FILL"',
+  'Touch Of Acid':'Section=feature Note="FILL"',
+  'Touch Of Electricity':'Section=feature Note="FILL"',
+  'Touch Of Flame':'Section=feature Note="FILL"',
   // 'Track' in Pathfinder.js
+  'Transcendental Bond':'Section=feature Note="FILL"',
   'Transposition':'Section=feature Note="FILL"',
+  'True Judgment':
+    'Section=combat ' +
+    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
   'True Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
-  'True Judgment':'Section=feature Note="FILL"',
   'Twin Eidolon':'Section=feature Note="FILL"',
+  'Undead Servitude':'Section=feature Note="FILL"',
+  'Undo Artifice':'Section=feature Note="FILL"',
+  'Voice Of The Grave':'Section=feature Note="FILL"',
+  'Vortex Spells':'Section=feature Note="FILL"',
+  'War Sight':'Section=feature Note="FILL"',
+  'Wasting':'Section=feature Note="FILL"',
+  'Water Form':'Section=feature Note="FILL"',
+  'Water Sight':'Section=feature Note="FILL"',
+  'Waves Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
+  'Weapon Mastery':'Section=feature Note="FILL"',
+  'Whirlwind Lesson':'Section=feature Note="FILL"',
+  'Wind Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Fly is a class skill/Stealth is a class skill"',
+  'Wind Sight':'Section=feature Note="FILL"',
+  'Wings Of Air':'Section=feature Note="FILL"',
+  'Wings Of Fire':'Section=feature Note="FILL"',
+  'Wintry Touch':'Section=feature Note="FILL"',
   "Witch's Familiar":'Section=feature Note="FILL"',
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -1458,117 +1643,442 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Conjuration ' +
     'Level=B3 ' +
     'Description="FILL"',
-/*
   'Keen Senses':
+    'School=Transmutation ' +
+    'Level=Alchemist1,D1,R1 ' +
+    'Description="FILL"',
   "King's Castle":
+    'School=Conjuration ' +
+    'Level=P4 ' +
+    'Description="FILL"',
   "Knight's Calling":
+    'School=Enchantment ' +
+    'Level=P1 ' +
+    'Description="FILL"',
   'Lead Blades':
+    'School=Transmutation ' +
+    'Level=R1 ' +
+    'Description="FILL"',
   'Life Bubble':
+    'School=Abjuration ' +
+    'Level=C5,D4,R3,W5 ' +
+    'Description="FILL"',
   'Light Lance':
+    'School=Evocation ' +
+    'Level=P2 ' +
+    'Description="FILL"',
   'Lily Pad Stride':
+    'School=Transmutation ' +
+    'Level=D3 ' +
+    'Description="FILL"',
   'Lockjaw':
+    'School=Transmutation ' +
+    'Level=D2,R2 ' +
+    'Description="FILL"',
   'Marks Of Forbiddance':
+    'School=Abjuration ' +
+    'Level=P3 ' +
+    'Description="FILL"',
   'Mask Dweomer':
+    'School=Illusion ' +
+    'Level=Witch1 ' +
+    'Description="FILL"',
   'Memory Lapse':
+    'School=Enchantment ' +
+    'Level=B1,W1 ' +
+    'Description="FILL"',
   'Moonstruck':
+    'School=Enchantment ' +
+    'Level=D4,W4,Witch4 ' +
+    'Description="FILL"',
   'Nap Stack':
+    'School=Necromancy ' +
+    'Level=C3 ' +
+    'Description="FILL"',
   'Natural Rhythm':
+    'School=Transmutation ' +
+    'Level=D2 ' +
+    'Description="FILL"',
   "Nature's Exile":
+    'School=Transmutation ' +
+    'Level=D3,Witch3 ' +
+    'Description="FILL"',
   'Negate Aroma':
+    'School=Transmutation ' +
+    'Level=Alchemist1,D1,R1 ' +
+    'Description="FILL"',
   'Oath of Peace':
+    'School=Abjuration ' +
+    'Level=P4 ' +
+    'Description="FILL"',
   "Oracle's Burden":
+    'School=Necromancy ' +
+    'Level=Oracle2 ' +
+    'Description="FILL"',
   'Pain Strike':
+    'School=Evocation ' +
+    'Level=W3,Witch3 ' +
+    'Description="FILL"',
   'Mass Pain Strike':
+    'School=Evocation ' +
+    'Level=W5,Witch5 ' +
+    'Description="FILL"',
   "Paladin's Sacrifice":
+    'School=Abjuration ' +
+    'Level=P2 ' +
+    'Description="FILL"',
   'Perceive Cues':
+    'School=Transmutation ' +
+    'Level=Alchemist2,Inquisitor2,R2,Witch2 ' +
+    'Description="FILL"',
   'Phantasmal Revenge':
+    'School=Illusion ' +
+    'Level=W7 ' +
+    'Description="FILL"',
   'Phantasmal Web':
+    'School=Illusion ' +
+    'Level=B5,W5 ' +
+    'Description="FILL"',
   'Pied Piping':
+    'School=Enchantment ' +
+    'Level=B6 ' +
+    'Description="FILL"',
   'Pillar of Life':
+    'School=Conjuration ' +
+    'Level=C5 ' +
+    'Description="FILL"',
   'Planar Adaptation':
+    'School=Transmutation ' +
+    'Level=Alchemist5,C4,W5,Summoner5 ' +
+    'Description="FILL"',
   'Mass Planar Adaptation':
+    'School=Transmutation ' +
+    'Level=W7,Summoner6 ' +
+    'Description="FILL"',
   'Pox Pustules':
+    'School=Necromancy ' +
+    'Level=D2,W2 ' +
+    'Description="FILL"',
   'Protective Spirit':
+    'School=Conjuration ' +
+    'Level=R2 ' +
+    'Description="FILL"',
   'Purging Finale':
+    'School=Conjuration ' +
+    'Level=B3 ' +
+    'Description="FILL"',
   'Purified Calling':
+    'School=Conjuration ' +
+    'Level=Summoner4 ' +
+    'Description="FILL"',
   'Putrefy Food and Drink':
+    'School=Transmutation ' +
+    'Level=W0 ' +
+    'Description="FILL"',
   'Rally Point':
+    'School=Enchantment ' +
+    'Level=P1 ' +
+    'Description="FILL"',
   'Rampart':
+    'School=Conjuration ' +
+    'Level=D7,W7 ' +
+    'Description="FILL"',
   'Rebuke':
+    'School=Evocation ' +
+    'Level=Inquisitor4 ' +
+    'Description="FILL"',
   'Rejuvenate Eidolon':
+    'School=Conjuration ' +
+    'Level=Summoner3 ' +
+    'Description="FILL"',
   'Greater Rejuvenate Eidolon':
+    'School=Conjuration ' +
+    'Level=Summoner5 ' +
+    'Description="FILL"',
   'Lesser Rejuvenate Eidolon':
+    'School=Conjuration ' +
+    'Level=Summoner1 ' +
+    'Description="FILL"',
   'Residual Tracking':
+    'School=Divination ' +
+    'Level=R1 ' +
+    'Description="FILL"',
   'Resounding Blow':
+    'School=Evocation ' +
+    'Level=Antipaladin4,Inquisitor5,Paladin40 ' +
+    'Description="FILL"',
   'Rest Eternal':
+    'School=Necromancy ' +
+    'Level=C4,D5,Witch5 ' +
+    'Description="FILL"',
   'Restful Sleep':
+    'School=Necromancy ' +
+    'Level=B1 ' +
+    'Description="FILL"',
   'Resurgent Transformation':
+    'School=Conjuration ' +
+    'Level=Alchemist5 ' +
+    'Description="FILL"',
   'Retribution':
+    'School=Necromancy ' +
+    'Level=Inquisitor3 ' +
+    'Description="FILL"',
   'Reviving Finale':
+    'School=Conjuration ' +
+    'Level=B3 ' +
+    'Description="FILL"',
   'Righteous Vigor':
+    'School=Enchantment ' +
+    'Level=Inquisitor3,P2 ' +
+    'Description="FILL"',
   'River of Wind':
+    'School=Evocation ' +
+    'Level=D4,W4 ' +
+    'Description="FILL"',
   'Sacred Bond':
+    'School=Conjuration ' +
+    'Level=C3,Inquisitor2,P2 ' +
+    'Description="FILL"',
   'Sacrificial Oath':
+    'School=Abjuration ' +
+    'Level=P4 ' +
+    'Description="FILL"',
   'Saddle Surge':
+    'School=Transmutation ' +
+    'Level=P2 ' +
+    'Description="FILL"',
   'Sanctify Armor':
+    'School=Abjuration ' +
+    'Level=Inquisitor4,P3 ' +
+    'Description="FILL"',
   'Saving Finale':
+    'School=Evocation ' +
+    'Level=B1 ' +
+    'Description="FILL"',
   'Scent Trail':
+    'School=Transmutation ' +
+    'Level=D2 ' +
+    'Description="FILL"',
   'Screech':
+    'School=Evocation ' +
+    'Level=Witch3 ' +
+    'Description="FILL"',
   'Sculpt Corpse':
+    'School=Necromancy ' +
+    'Level=W1 ' +
+    'Description="FILL"',
   'Seamantle':
+    'School=Conjuration ' +
+    'Level=D8,W8 ' +
+    'Description="FILL"',
   'Seek Thoughts':
+    'School=Divination ' +
+    'Level=Alchemist3,B3,Inquisitor3,W3,Summoner3,Witch3 ' +
+    'Description="FILL"',
   'Shadow Projection':
+    'School=Necromancy ' +
+    'Level=W4 ' +
+    'Description="FILL"',
   'Share Language':
+    'School=Divination ' +
+    'Level=B1,C2,D2,W2 ' +
+    'Description="FILL"',
   'Share Senses':
+    'School=Divination ' +
+    'Level=W4,Witch3 ' +
+    'Description="FILL"',
   'Shared Wrath':
+    'School=Enchantment ' +
+    'Level=Inquisitor4 ' +
+    'Description="FILL"',
   'Shifting Sand':
+    'School=Transmutation ' +
+    'Level=D3,W3 ' +
+    'Description="FILL"',
   'Sift':
+    'School=Divination ' +
+    'Level=B0,Inquisitor0 ' +
+    'Description="FILL"',
   'Sirocco':
+    'School=Evocation ' +
+    'Level=D6,W60 ' +
+    'Description="FILL"',
   'Sleepwalk':
+    'School=Enchantment ' +
+    'Level=Inquisitor4,Witch4 ' +
+    'Description="FILL"',
   'Slipstream':
+    'School=Conjuration ' +
+    'Level=D2,R2,W2 ' +
+    'Description="FILL"',
   'Snake Staff':
+    'School=Transmutation ' +
+    'Level=C5,D5 ' +
+    'Description="FILL"',
   'Solid Note':
+    'School=Conjuration ' +
+    'Level=B1 ' +
+    'Description="FILL"',
   'Spark':
+    'School=Evocation ' +
+    'Level=B0,C0,D0,W0,Witch0 ' +
+    'Description="FILL"',
   'Spiked Pit':
+    'School=Conjuration ' +
+    'Level=W3,Summoner3 ' +
+    'Description="FILL"',
   'Spiritual Ally':
+    'School=Evocation ' +
+    'Level=C4 ' +
+    'Description="FILL"',
   'Spite':
+    'School=Abjuration ' +
+    'Level=Witch4 ' +
+    'Description="FILL"',
   'Stay the Hand':
+    'School=Enchantment ' +
+    'Level=P4 ' +
+    'Description="FILL"',
   'Stone Call':
+    'School=Conjuration ' +
+    'Level=D2,R2,W2 ' +
+    'Description="FILL"',
   'Stone Fist':
+    'School=Transmutation ' +
+    'Level=Alchemist1,D1,W1 ' +
+    'Description="FILL"',
   'Stormbolts':
+    'School=Evocation ' +
+    'Level=C8,D8,W8,Witch8 ' +
+    'Description="FILL"',
   'Strong Jaw':
+    'School=Transmutation ' +
+    'Level=D4,R3 ' +
+    'Description="FILL"',
   'Stumble Gap':
+    'School=Conjuration ' +
+    'Level=W1 ' +
+    'Description="FILL"',
   'Stunning Finale':
+    'School=Enchantment ' +
+    'Level=B5 ' +
+    'Description="FILL"',
   'Suffocation':
+    'School=Necromancy ' +
+    'Level=W5,Witch5 ' +
+    'Description="FILL"',
   'Mass Suffocation':
+    'School=Necromancy ' +
+    'Level=W9,Witch9 ' +
+    'Description="FILL"',
   'Summon Eidolon':
+    'School=Conjuration ' +
+    'Level=Summoner2 ' +
+    'Description="FILL"',
   'Swarm Skin':
+    'School=Transmutation ' +
+    'Level=D6,Witch6 ' +
+    'Description="FILL"',
   'Thorn Body':
+    'School=Transmutation ' +
+    'Level=Alchemist3,D4 ' +
+    'Description="FILL"',
   'Threefold Aspect':
+    'School=Transmutation ' +
+    'Level=D5,Witch4 ' +
+    'Description="FILL"',
   'Thundering Drums':
+    'School=Evocation ' +
+    'Level=B3 ' +
+    'Description="FILL"',
   'Timely Inspiration':
+    'School=Divination ' +
+    'Level=B1 ' +
+    'Description="FILL"',
   'Tireless Pursuers':
+    'School=Transmutation ' +
+    'Level=Inquisitor4,R3 ' +
+    'Description="FILL"',
   'Tireless Pursuit':
+    'School=Transmutation ' +
+    'Level=Inquisitor1,R1 ' +
+    'Description="FILL"',
   'Touch of Gracelessness':
+    'School=Transmutation ' +
+    'Level=B1,W1 ' +
+    'Description="FILL"',
   'Touch of the Sea':
+    'School=Transmutation ' +
+    'Level=Alchemist1,D1,W1 ' +
+    'Description="FILL"',
   'Transmogrify':
+    'School=Transmutation ' +
+    'Level=Summoner4 ' +
+    'Description="FILL"',
   'Transmute Potion to Poison':
+    'School=Transmutation ' +
+    'Level=Alchemist2 ' +
+    'Description="FILL"',
   'Treasure Stitching':
+    'School=Transmutation ' +
+    'Level=B4,C4,W5 ' +
+    'Description="FILL"',
   'True Form':
+    'School=Abjuration ' +
+    'Level=D4,W4 ' +
+    'Description="FILL"',
   'Tsunami':
+    'School=Conjuration ' +
+    'Level=D9,W9 ' +
+    'Description="FILL"',
   'Twilight Knife':
+    'School=Evocation ' +
+    'Level=W3,Witch3 ' +
+    'Description="FILL"',
   'Twin Form':
+    'School=Transmutation ' +
+    'Level=Alchemist6 ' +
+    'Description="FILL"',
   'Unfetter':
+    'School=Transmutation ' +
+    'Level=Summoner1 ' +
+    'Description="FILL"',
   'Universal Formula':
+    'School=Transmutation ' +
+    'Level=Alchemist4 ' +
+    'Description="FILL"',
   'Unwilling Shield':
+    'School=Necromancy ' +
+    'Level=B5,Inquisitor5,W6,Witch6 ' +
+    'Description="FILL"',
   'Unwitting Ally':
+    'School=Enchantment ' +
+    'Level=B0 ' +
+    'Description="FILL"',
   'Vanish':
+    'School=Illusion ' +
+    'Level=B1,W1 ' +
+    'Description="FILL"',
   'Veil of Positive Energy':
+    'School=Abjuration ' +
+    'Level=P1 ' +
+    'Description="FILL"',
   'Venomous Bolt':
+    'School=Necromancy ' +
+    'Level=R3 ' +
+    'Description="FILL"',
   'Versatile Weapon':
+    'School=Transmutation ' +
+    'Level=B2,R2,W3 ' +
+    'Description="FILL"',
   'Vomit Swarm':
+    'School=Conjuration ' +
+    'Level=Alchemist2,Witch2 ' +
+    'Description="FILL"',
   'Vortex':
-*/
+    'School=Evocation ' +
+    'Level=D7,W7 ' +
+    'Description="FILL"',
   'Wake of Light':
     'School=Evocation ' +
     'Level=P2 ' +
@@ -1608,7 +2118,173 @@ PathfinderSupplements.APG_SPELLS = {
   'Wrathful Mantle':
     'School=Evocation ' +
     'Level=C3,P3 ' +
-    'Description="FILL"',
+    'Description="FILL"'
+
+};
+PathfinderSupplements.APG_SPELLS_LEVELS_ADDED = {
+  'Acid Splash':'Inquisitor0',
+  'Bleed':'Inquisitor0',
+  'Create Water':'Inquisitor0',
+  'Daze':'Inquisitor0',
+  'Detect Magic':'Inquisitor0',
+  'Detect Poison':'Inquisitor0',
+  'Disrupt Undead':'Inquisitor0',
+  'Guidance':'Inquisitor0',
+  'Light':'Inquisitor0',
+  'Read Magic':'Inquisitor0',
+  'Resistance':'Inquisitor0',
+  'Stabilize':'Inquisitor0',
+  'Virtue':'Inquisitor0',
+  'Alarm':'Inquisitor1',
+  'Bane':'Inquisitor1',
+  'Bless':'Inquisitor1',
+  'Bless Water':'Inquisitor1',
+  'Cause Fear':'Inquisitor1',
+  'Command':'Inquisitor1',
+  'Comprehend Languages':'Inquisitor1',
+  'Cure Light Wounds':'Inquisitor1',
+  'Curse Water':'Inquisitor1',
+  'Detect Chaos':'Inquisitor1',
+  'Detect Evil':'Inquisitor1',
+  'Detect Good':'Inquisitor1',
+  'Detect Law':'Inquisitor1',
+  'Detect Undead':'Inquisitor1',
+  'Disguise Self':'Inquisitor1',
+  'Divine Favor':'Inquisitor1',
+  'Doom':'Inquisitor1',
+  'Expeditious Retreat':'Inquisitor1',
+  'Hide From Undead':'Inquisitor1',
+  'Inflict Light Wounds':'Inquisitor1',
+  'Magic Weapon':'Inquisitor1',
+  'Protection From Chaos':'Inquisitor1',
+  'Protection From Evil':'Inquisitor1',
+  'Protection From Good':'Inquisitor1',
+  'Protection From Law':'Inquisitor1',
+  'Remove Fear':'Inquisitor1',
+  'Sanctuary':'Inquisitor1',
+  'Shield Of Faith':'Inquisitor1',
+  'True Strike':'Inquisitor1',
+
+  'Aid':'Inquisitor2',
+  'Align Weapon':'Inquisitor2',
+  'Calm Emotions':'Inquisitor2',
+  'Consecrate':'Inquisitor2',
+  'Cure Moderate Wounds':'Inquisitor2',
+  'Darkness':'Inquisitor2',
+  'Death Knell':'Inquisitor2',
+  'Delay Poison':'Inquisitor2',
+  'Desecrate':'Inquisitor2',
+  'Detect Thoughts':'Inquisitor2',
+  'Enthrall':'Inquisitor2',
+  'Find Traps':'Inquisitor2',
+  'Hold Person':'Inquisitor2',
+  'Inflict Moderate Wounds':'Inquisitor2',
+  'Invisibility':'Inquisitor2',
+  'Knock':'Inquisitor2',
+  'Remove Paralysis':'Inquisitor2',
+  'Resist Energy':'Inquisitor2',
+  'Lesser Restoration':'Inquisitor2',
+  'See Invisibility':'Inquisitor2',
+  'Shield Other':'Inquisitor2',
+  'Silence':'Inquisitor2',
+  'Spiritual Weapon':'Inquisitor2',
+  'Tongues':'Inquisitor2',
+  'Undetectable Alignment':'Inquisitor2',
+  'Whispering Wind':'Inquisitor2',
+  'Zone Of Truth':'Inquisitor2',
+
+  'Arcane Sight':'Inquisitor3',
+  'Continual Flame':'Inquisitor3',
+  'Cure Serious Wounds':'Inquisitor3',
+  'Daylight':'Inquisitor3',
+  'Deeper Darkness':'Inquisitor3',
+  'Dimensional Anchor':'Inquisitor3',
+  'Dispel Magic':'Inquisitor3',
+  'Glyph Of Warding':'Inquisitor3',
+  'Halt Undead':'Inquisitor3',
+  'Heroism':'Inquisitor3',
+  'Inflict Serious Wounds':'Inquisitor3',
+  'Invisibility Purge':'Inquisitor3',
+  'Keen Edge':'Inquisitor3',
+  'Locate Object':'Inquisitor3',
+  'Magic Circle Against Chaos':'Inquisitor3',
+  'Magic Circle Against Evil':'Inquisitor3',
+  'Magic Circle Against Good':'Inquisitor3',
+  'Magic Circle Against Law':'Inquisitor3',
+  'Magic Vestment':'Inquisitor3',
+  'Greater Magic Weapon':'Inquisitor3',
+  'Nondetection':'Inquisitor3',
+  'Obscure Object':'Inquisitor3',
+  'Prayer':'Inquisitor3',
+  'Protection From Energy':'Inquisitor3',
+  'Remove Curse':'Inquisitor3',
+  'Remove Disease':'Inquisitor3',
+  'Searing Light':'Inquisitor3',
+  'Speak With Dead':'Inquisitor3',
+
+  'Chaos Hammer':'Inquisitor4',
+  'Cure Critical Wounds':'Inquisitor4',
+  'Death Ward':'Inquisitor4',
+  'Detect Scrying':'Inquisitor4',
+  'Discern Lies':'Inquisitor4',
+  'Dismissal':'Inquisitor4',
+  'Divination':'Inquisitor4',
+  'Divine Power':'Inquisitor4',
+  'Fear':'Inquisitor4',
+  'Freedom Of Movement':'Inquisitor4',
+  'Lesser Geas':'Inquisitor4',
+  'Hold Monster':'Inquisitor4',
+  'Holy Smite':'Inquisitor4',
+  'Inflict Critical Wounds':'Inquisitor4',
+  'Greater Invisibility':'Inquisitor4',
+  'Neutralize Poison':'Inquisitor4',
+  "Order's Wrath":'Inquisitor4',
+  'Restoration':'Inquisitor4',
+  'Sending':'Inquisitor4',
+  'Spell Immunity':'Inquisitor4',
+  'Stoneskin':'Inquisitor4',
+  'Unholy Blight':'Inquisitor4',
+
+  'Atonement':'Inquisitor5',
+  'Banishment':'Inquisitor5',
+  'Break Enchantment':'Inquisitor5',
+  'Greater Command':'Inquisitor5',
+  'Commune':'Inquisitor5',
+  'Mass Cure Light Wounds':'Inquisitor5',
+  'Dispel Chaos':'Inquisitor5',
+  'Dispel Evil':'Inquisitor5',
+  'Dispel Good':'Inquisitor5',
+  'Dispel Law':'Inquisitor5',
+  'Disrupting Weapon':'Inquisitor5',
+  'Flame Strike':'Inquisitor5',
+  'Geas/Quest':'Inquisitor5',
+  'Hallow':'Inquisitor5',
+  'Mass Inflict Light Wounds':'Inquisitor5',
+  'Mark Of Justice':'Inquisitor5',
+  'Righteous Might':'Inquisitor5',
+  'Spell Resistance':'Inquisitor5',
+  'Telepathic Bond':'Inquisitor5',
+  'True Seeing':'Inquisitor5',
+  'Unhallow':'Inquisitor5',
+
+  'Blade Barrier':'Inquisitor6',
+  'Blasphemy':'Inquisitor6',
+  'Circle Of Death':'Inquisitor6',
+  'Mass Cure Moderate Wounds':'Inquisitor6',
+  'Dictum':'Inquisitor6',
+  'Greater Dispel Magic':'Inquisitor6',
+  'Find The Path':'Inquisitor6',
+  'Forbiddance':'Inquisitor6',
+  'Greater Glyph Of Warding':'Inquisitor6',
+  'Harm':'Inquisitor6',
+  'Heal':'Inquisitor6',
+  "Heroes' Feast":'Inquisitor6',
+  'Holy Word':'Inquisitor6',
+  'Mass Inflict Moderate Wounds':'Inquisitor6',
+  'Legend Lore':'Inquisitor6',
+  'Repulsion':'Inquisitor6',
+  'Undeath To Death':'Inquisitor6',
+  'Word Of Chaos':'Inquisitor6'
 
 };
 PathfinderSupplements.APG_TRAITS = {
@@ -1726,6 +2402,8 @@ PathfinderSupplements.APG_CLASSES = {
       '"3:Teamwork Feat",5:Bane,"5:Discern Lies","8:Second Judgment",' +
       '11:Stalwart,"12:Greater Bane","14:Exploit Weakness",' +
       '"16:Third Judgment",17:Slayer,"20:True Judgment" ' +
+    'Selectables=' +
+      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + '"').join(',') + ' ' +
     'CasterLevelDivine=levels.Inquisitor ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
@@ -1748,9 +2426,116 @@ PathfinderSupplements.APG_CLASSES = {
       '"1:Weapon Proficiency (Simple)",' +
       '1:Mystery,"1:Oracle\'s Curse",1:Orisons,1:Revelation,' +
       '"2:Mystery Spell","20:Final Revelation" ' +
+    'Selectables=' +
+      '"1:Battle Mystery:Mystery","1:Bones Mystery:Mystery",' +
+      '"1:Flame Mystery:Mystery","1:Heavens Mystery:Mystery",' +
+      '"1:Life Mystery:Mystery","1:Lore Mystery:Mystery",' +
+      '"1:Nature Mystery:Mystery","1:Stone Mystery:Mystery",' +
+      '"1:Waves Mystery:Mystery","1:Wind Mystery:Mystery",' +
+      '"1:Clouded Vision:Curse","1:Deaf:Curse","1:Haunted:Curse",' +
+      '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse",' +
+      '"features.Battle Mystery ? 1:Battlecry:Revelation",' +
+      '"features.Battle Mystery ? 1:Battlefield Clarity:Revelation",' +
+      '"features.Battle Mystery || features.Life Mystery ? 1:Combat Healer:Revelation",' +
+      '"features.Battle Mystery ? 1:Iron Skin:Revelation",' +
+      '"features.Battle Mystery ? 1:Maneuver Mastery:Revelation",' +
+      '"features.Battle Mystery ? 1:Resiliency:Revelation",' +
+      '"features.Battle Mystery ? 1:Skill At Arms:Revelation",' +
+      '"features.Battle Mystery ? 1:Surprising Charge:Revelation",' +
+      '"features.Battle Mystery ? 1:War Sight:Revelation",' +
+      '"features.Battle Mystery ? 1:Weapon Mastery:Revelation",' +
+      '"features.Bones Mystery ? 1:Armor Of Bones:Revelation",' +
+      '"features.Bones Mystery ? 1:Bleeding Wounds:Revelation",' +
+      '"features.Bones Mystery ? 1:Death\'s Touch:Revelation",' +
+      '"features.Bones Mystery ? 1:Near Death:Revelation",' +
+      '"features.Bones Mystery ? 1:Raise The Dead:Revelation",' +
+      '"features.Bones Mystery ? 1:Resist Life:Revelation",' +
+      '"features.Bones Mystery ? 1:Soul Siphon:Revelation",' +
+      '"features.Bones Mystery ? 1:Spirit Walk:Revelation",' +
+      '"features.Bones Mystery ? 1:Undead Servitude:Revelation",' +
+      '"features.Bones Mystery ? 1:Voice Of The Grave:Revelation",' +
+      '"features.Flame Mystery ? 1:Burning Magic:Revelation",' +
+      '"features.Flame Mystery ? 1:Cinder Dance:Revelation",' +
+      '"features.Flame Mystery ? 1:Fire Breath:Revelation",' +
+      '"features.Flame Mystery ? 1:Firestorm:Revelation",' +
+      '"features.Flame Mystery ? 1:Form Of Flame:Revelation",' +
+      '"features.Flame Mystery ? 1:Heat Aura:Revelation",' +
+      '"features.Flame Mystery ? 1:Molten Skin:Revelation",' +
+      '"features.Flame Mystery ? 1:Touch Of Flame:Revelation",' +
+      '"features.Flame Mystery ? 1:Wings Of Fire:Revelation",' +
+      '"features.Heavens Mystery ? 1:Awesome Display:Revelation",' +
+      '"features.Heavens Mystery ? 1:Coat Of Many Stars:Revelation",' +
+      '"features.Heavens Mystery ? 1:Dweller In Darkness:Revelation",' +
+      '"features.Heavens Mystery ? 1:Guiding Star:Revelation",' +
+      '"features.Heavens Mystery ? 1:Interstellar Void:Revelation",' +
+      '"features.Heavens Mystery ? 1:Lure Of The Heavens:Revelation",' +
+      '"features.Heavens Mystery ? 1:Mantle Of Moonlight:Revelation",' +
+      '"features.Heavens Mystery ? 1:Moonlight Bridge:Revelation",' +
+      '"features.Heavens Mystery ? 1:Spray Of Shooting Stars:Revelation",' +
+      '"features.Heavens Mystery ? 1:Star Chart:Revelation",' +
+      '"features.Life Mystery ? 1:Channel:Revelation",' +
+      '"features.Life Mystery ? 1:Delay Affliction:Revelation",' +
+      '"features.Life Mystery ? 1:Energy Body:Revelation",' +
+      '"features.Life Mystery ? 1:Enhanced Cures:Revelation",' +
+      '"features.Life Mystery ? 1:Healing Hands:Revelation",' +
+      '"features.Life Mystery ? 1:Life Link:Revelation",' +
+      '"features.Life Mystery ? 1:Lifesense:Revelation",' +
+      '"features.Life Mystery ? 1:Safe Curing:Revelation",' +
+      '"features.Life Mystery ? 1:Spirit Boost:Revelation",' +
+      '"features.Lore Mystery ? 1:Arcane Archivist:Revelation",' +
+      '"features.Lore Mystery ? 1:Automatic Writing:Revelation",' +
+      '"features.Lore Mystery ? 1:Brain Drain:Revelation",' +
+      '"features.Lore Mystery ? 1:Focused Trance:Revelation",' +
+      '"features.Lore Mystery ? 1:Lore Keeper:Revelation",' +
+      '"features.Lore Mystery ? 1:Mental Acuity:Revelation",' +
+      '"features.Lore Mystery ? 1:Sidestep Secret:Revelation",' +
+      '"features.Lore Mystery ? 1:Spontaneous Symbology:Revelation",' +
+      '"features.Lore Mystery ? 1:Think On It:Revelation",' +
+      '"features.Lore Mystery ? 1:Whirlwind Lesson:Revelation",' +
+      '"features.Nature Mystery ? 1:Bonded Mount:Revelation",' +
+      '"features.Nature Mystery ? 1:Erosion Touch:Revelation",' +
+      '"features.Nature Mystery ? 1:Friend To The Animals:Revelation",' +
+      '"features.Nature Mystery ? 1:Life Leach:Revelation",' +
+      '"features.Nature Mystery ? 1:Natural Divination:Revelation",' +
+      '"features.Nature Mystery ? 1:Nature\'s Whispers:Revelation",' +
+      '"features.Nature Mystery ? 1:Speak With Animals:Revelation",' +
+      '"features.Nature Mystery ? 1:Spirit Of Nature:Revelation",' +
+      '"features.Nature Mystery ? 1:Transcendental Bond:Revelation",' +
+      '"features.Nature Mystery ? 1:Undo Artifice:Revelation",' +
+      '"features.Stone Mystery ? 1:Acid Skin:Revelation",' +
+      '"features.Stone Mystery ? 1:Clobbering Strike:Revelation",' +
+      '"features.Stone Mystery ? 1:Crystal Strike:Revelation",' +
+      '"features.Stone Mystery ? 1:Earth Glide:Revelation",' +
+      '"features.Stone Mystery ? 1:Mighty Pebble:Revelation",' +
+      '"features.Stone Mystery ? 1:Rock Throwing:Revelation",' +
+      '"features.Stone Mystery ? 1:Shard Explosion:Revelation",' +
+      '"features.Stone Mystery ? 1:Steelbreaker Skin:Revelation",' +
+      '"features.Stone Mystery ? 1:Stone Stability:Revelation",' +
+      '"features.Stone Mystery ? 1:Touch Of Acid:Revelation",' +
+      '"features.Waves Mystery ? 1:Blizzard:Revelation",' +
+      '"features.Waves Mystery ? 1:Fluid Nature:Revelation",' +
+      '"features.Waves Mystery ? 1:Fluid Travel:Revelation",' +
+      '"features.Waves Mystery ? 1:Freezing Spells:Revelation",' +
+      '"features.Waves Mystery ? 1:Ice Armor:Revelation",' +
+      '"features.Waves Mystery ? 1:Icy Skin:Revelation",' +
+      '"features.Waves Mystery ? 1:Punitive Transformation:Revelation",' +
+      '"features.Waves Mystery ? 1:Water Form:Revelation",' +
+      '"features.Waves Mystery ? 1:Water Sight:Revelation",' +
+      '"features.Waves Mystery ? 1:Wintry Touch:Revelation",' +
+      '"features.Wind Mystery ? 1:Air Barrier:Revelation",' +
+      '"features.Wind Mystery ? 1:Gaseous Form:Revelation",' +
+      '"features.Wind Mystery ? 1:Invisibility:Revelation",' +
+      '"features.Wind Mystery ? 1:Lightning Breath:Revelation",' +
+      '"features.Wind Mystery ? 1:Spark Skin:Revelation",' +
+      '"features.Wind Mystery ? 1:Thunderburst:Revelation",' +
+      '"features.Wind Mystery ? 1:Touch Of Electricity:Revelation",' +
+      '"features.Wind Mystery ? 1:Vortex Spells:Revelation",' +
+      '"features.Wind Mystery ? 1:Wind Sight:Revelation",' +
+      '"features.Wind Mystery ? 1:Wings Of Air:Revelation" ' +
     'CasterLevelArcane=levels.Oracle ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
+      'C0:1=4;2=5;4=6;6=7;8=8;10=9,' +
       'C1:1=3;2=4;3=5;4=6,' +
       'C2:4=3;5=4;6=5;7=6,' +
       'C3:6=3;7=4;8=5;9=6,' +
@@ -1838,8 +2623,16 @@ PathfinderSupplements.identityRules = function(
 };
 
 /* Defines rules related to magic use. */
-PathfinderSupplements.magicRules = function(rules, schools, spells) {
-  Pathfinder.magicRules(rules, schools, spells);
+PathfinderSupplements.magicRules = function(rules, spells, spellsLevels) {
+  Pathfinder.magicRules(rules, {}, spells);
+  for(var s in spellsLevels) {
+    if(!Pathfinder.SPELLS[s]) {
+      console.log('Unknown spell "' + s + '"');
+      continue;
+    }
+    rules.choiceRules
+      (rules, 'Spell', s, Pathfinder.SPELLS[s] + ' Level=' + spellsLevels[s]);
+  }
 };
 
 /* Defines rules related to character aptitudes. */
@@ -1881,9 +2674,13 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
     rules.defineRule('weapons.Bomb', classLevel, '=', '1');
   } else if(name == 'Cavalier') {
+    rules.defineRule
+      ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
     rules.defineRule
       ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
+    rules.defineRule
+      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
     rules.defineRule('featCount.Teamwork',
       'featureNotes.greaterTactician', '+=', '1',
       'featureNotes.masterTactician', '+=', '1'
@@ -1893,9 +2690,62 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
+    rules.defineRule
+      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
     rules.defineRule('features.Teamwork', 'features.Tactician', '=', null);
+    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
+    rules.defineRule('magicNotes.calling',
+      'magicNotes.calling.1', '?', null,
+      classLevel, '=', 'source>=2 ? Math.floor(source / 2) : null'
+    );
+    rules.defineRule('magicNotes.calling.1',
+      'magicNotes.calling.2', '=',
+        'source==1 ? "Channel Energy" : source== 2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
+    );
+    rules.defineRule('magicNotes.calling.2',
+      'levels.Cleric', '=', '1',
+      'levels.Paladin', '+=', '2'
+    );
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
       'featureNotes.order', '=', null
+    );
+    let allFeats = rules.getChoices('feats');
+    ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
+     'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
+  } else if(name == 'Inquisitor') {
+    rules.defineRule('combatNotes.bane',
+      '', '=', '2',
+      'combatNotes.greaterBane', '+', '2'
+    );
+    rules.defineRule('combatNotes.cunningInitiative',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
+    rules.defineRule('featureNotes.teamworkFeat',
+      classLevel, '+=', 'Math.floor(source / 3)'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Inquisitor', 'levels.Inquisitor', '+=', '1');
+    rules.defineRule('skillNotes.sternGaze',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule
+      ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
+  } else if(name == 'Oracle') {
+    rules.defineRule('featureNotes.revelation',
+      classLevel, '+=', 'Math.floor((source + 5) / 4)'
+    );
+    rules.defineRule('selectableFeatureCount.Oracle (Curse)',
+      "featureNotes.oracle'sCurse", '+=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
+      'featureNotes.mystery', '+=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Oracle (Revelation)',
+      'featureNotes.revelation', '=', null
     );
   }
 };
