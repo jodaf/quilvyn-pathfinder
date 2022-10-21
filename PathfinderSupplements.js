@@ -510,7 +510,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Channel':'Section=feature Note="FILL"',
   'Cinder Dance':'Section=feature Note="FILL"',
   'Clobbering Strike':'Section=feature Note="FILL"',
-  'Clouded Vision':'Section=feature Note="FILL"',
+  'Clouded Vision':
+    'Section=feature ' +
+    'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' blindsight\\" : \'\'}"',
   'Coat Of Many Stars':'Section=feature Note="FILL"',
   'Combat Healer':'Section=feature Note="FILL"',
   'Combine Extracts':
@@ -523,7 +525,13 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
   'Crystal Strike':'Section=feature Note="FILL"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
-  'Deaf':'Section=feature Note="FILL"',
+  'Deaf':
+    'Section=combat,feature,magic,skill ' +
+    'Note=' +
+      '"-%V Initiative",' +
+      '"Has %V",' +
+      '"May cast all spells silently",' +
+      '"+3 Perception (non-sound)"',
   "Death's Touch":'Section=feature Note="FILL"',
   'Delay Affliction':'Section=feature Note="FILL"',
   'Delayed Bomb':
@@ -618,7 +626,11 @@ PathfinderSupplements.APG_FEATURES = {
   'Greater Shield Ally':'Section=feature Note="FILL"',
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Guiding Star':'Section=feature Note="FILL"',
-  'Haunted':'Section=feature Note="FILL"',
+  'Haunted':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Malevolent spirits cause minor annoyances",' +
+      '"Know %V spells"',
   'Healing Hands':'Section=feature Note="FILL"',
   'Heat Aura':'Section=feature Note="FILL"',
   'Heavens Mystery':
@@ -648,7 +660,11 @@ PathfinderSupplements.APG_FEATURES = {
   "Knight's Challenge":
     'Section=combat ' +
     'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
-  'Lame':'Section=feature Note="FILL"',
+  'Lame':
+    'Section=ability,save ' +
+    'Note=' +
+      '"-%V Speed/Speed is unaffected by encumbrance%V",' +
+      '"Immune to %V"',
   'Life Bond':'Section=feature Note="FILL"',
   'Life Leach':'Section=feature Note="FILL"',
   'Life Link':'Section=feature Note="FILL"',
@@ -2735,8 +2751,33 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
   } else if(name == 'Oracle') {
+    rules.defineRule('abilityNotes.armorSpeedAdjustment',
+      'abilityNotes.lame.1', '*', 'source.includes("armor") ? 0 : null'
+    );
+    rules.defineRule('abilityNotes.lame',
+      '', '=', '10',
+      'features.Slow', '+', '5'
+    );
+    rules.defineRule('abilityNotes.lame.1',
+      classLevel, '=', 'source>10 ? " or armor" : ""'
+    );
+    rules.defineRule('combatNotes.deaf',
+      classLevel, '=', 'source<5 ? -4 : source<10 ? -2 : null'
+    );
+    rules.defineRule('featureNotes.deaf',
+      classLevel, '=', 'source<10 ? null : source<15 ? "scent feature" : "scent feature, 30\' tremorsense"'
+    );
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
+    );
+    rules.defineRule('features.Scent',
+      'featureNotes.deaf', '=', 'source.includes("scent") ? 1 : null'
+    );
+    rules.defineRule('magicNotes.haunted',
+      classLevel, '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>10 ? ", <i>Telekinesis</i>" : "") + (source>15 ? "<i>, Reverse Gravity</i>" : "")'
+    );
+    rules.defineRule('saveNotes.lame',
+      classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
     );
     rules.defineRule('selectableFeatureCount.Oracle (Curse)',
       "featureNotes.oracle'sCurse", '+=', '1'
@@ -2747,6 +2788,24 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Oracle (Revelation)',
       'featureNotes.revelation', '=', null
     );
+    let allSpells = rules.getChoices('spells');
+    ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
+     'Reverse Gravity'].forEach(s => {
+       let spell = QuilvynUtils.getKeys(allSpells, new RegExp(s + '\\('))[0];
+       let attrs = allSpells[spell];
+       let description = QuilvynUtils.getAttrValue(attrs, 'Description');
+       let level =
+         QuilvynUtils.getAttrValue(attrs, 'Level').replace(/\D*/, '') - 0;
+       let school = QuilvynUtils.getAttrValue(attrs, 'School');
+       let fullName =
+         s + ' (C' + level + ' [Oracle] ' + school.substring(0, 4) + ')';
+       Pathfinder.spellRules(
+         rules, fullName, school, 'C', level, description, false, []
+       );
+       rules.defineRule('spells.' + fullName,
+         'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
+       );
+    });
   }
 };
 
