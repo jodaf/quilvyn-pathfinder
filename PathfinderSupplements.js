@@ -473,8 +473,12 @@ PathfinderSupplements.APG_FEATURES = {
   'Battle Mystery':
     'Section=skill ' +
     'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
-  'Battlecry':'Section=feature Note="FILL"',
-  'Battlefield Clarity':'Section=feature Note="FILL"',
+  'Battlecry':
+    'Section=combat ' +
+    'Note="R100\' Allies within hearing gain +%{levels.Oracle>=10 ? 2 : 1} attack, skill checks, and saves for %{charismaModifier} rd %{(levels.Oracle+5)//5}/dy"',
+  'Battlefield Clarity':
+    'Section=combat ' +
+    'Note="May make +4 reroll on failed save vs. blind, deaf, frightened, panicked, paralyzed, shaken, or stunned %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
   'Bleeding Wounds':'Section=feature Note="FILL"',
   'Blizzard':'Section=feature Note="FILL"',
   'Bonded Mount':'Section=feature Note="FILL"',
@@ -653,7 +657,9 @@ PathfinderSupplements.APG_FEATURES = {
       '"May create alchemical items as a full-round action"',
   'Interstellar Void':'Section=feature Note="FILL"',
   'Invisibility':'Section=feature Note="FILL"',
-  'Iron Skin':'Section=feature Note="FILL"',
+  'Iron Skin':
+    'Section=magic ' +
+    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
   'Judgment':
     'Section=combat ' +
     'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
@@ -686,7 +692,11 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
   'Major Hex':'Section=feature Note="FILL"',
   "Maker's Call":'Section=feature Note="FILL"',
-  'Maneuver Mastery':'Section=feature Note="FILL"',
+  'Maneuver Mastery':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
+      '"Has Improved Trip%V features"',
   'Mantle Of Moonlight':'Section=feature Note="FILL"',
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Mental Acuity':'Section=feature Note="FILL"',
@@ -780,7 +790,11 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
   'Punitive Transformation':'Section=feature Note="FILL"',
   'Raise The Dead':'Section=feature Note="FILL"',
-  'Resiliency':'Section=feature Note="FILL"',
+  'Resiliency (Oracle)':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Not disabled or staggered at 0 HP",' +
+      '"Has %V features"',
   'Resist Life':'Section=feature Note="FILL"',
   'Resolute':
     'Section=combat ' +
@@ -801,7 +815,9 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
   'Sidestep Secret':'Section=feature Note="FILL"',
-  'Skill At Arms':'Section=feature Note="FILL"',
+  'Skill At Arms':
+    'Section=combat ' +
+    'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
   'Slayer':
     'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
   'Smoke Bomb':
@@ -843,7 +859,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Supreme Charge':
     'Section=combat ' +
     'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
-  'Surprising Charge':'Section=feature Note="FILL"',
+  'Surprising Charge':
+    'Section=combat ' +
+    'Note="May take extra move %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
   'Swift Alchemy':
     'Section=combat,magic ' +
     'Note=' +
@@ -859,7 +877,11 @@ PathfinderSupplements.APG_FEATURES = {
   'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
   // 'Throw Anything' in Pathfinder.js
   'Thunderburst':'Section=feature Note="FILL"',
-  'Tongues':'Section=feature Note="FILL"',
+  'Tongues':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Can speak only chosen outsider or elemental language during combat",' +
+      '"+%V Language Count%1"',
   'Touch Of Acid':'Section=feature Note="FILL"',
   'Touch Of Electricity':'Section=feature Note="FILL"',
   'Touch Of Flame':'Section=feature Note="FILL"',
@@ -877,14 +899,21 @@ PathfinderSupplements.APG_FEATURES = {
   'Undo Artifice':'Section=feature Note="FILL"',
   'Voice Of The Grave':'Section=feature Note="FILL"',
   'Vortex Spells':'Section=feature Note="FILL"',
-  'War Sight':'Section=feature Note="FILL"',
-  'Wasting':'Section=feature Note="FILL"',
+  'War Sight':
+    'Section=combat ' +
+    'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
+  'Wasting':
+    'Section=save,skill ' +
+    'Note=' +
+      '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%1",' +
+      '"-4 Charisma-based skills other than Intimidate"',
   'Water Form':'Section=feature Note="FILL"',
   'Water Sight':'Section=feature Note="FILL"',
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
-  'Weapon Mastery':'Section=feature Note="FILL"',
+  'Weapon Mastery':
+    'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
   'Whirlwind Lesson':'Section=feature Note="FILL"',
   'Wind Mystery':
     'Section=skill ' +
@@ -2455,7 +2484,7 @@ PathfinderSupplements.APG_CLASSES = {
       '"features.Battle Mystery || features.Life Mystery ? 1:Combat Healer:Revelation",' +
       '"features.Battle Mystery ? 1:Iron Skin:Revelation",' +
       '"features.Battle Mystery ? 1:Maneuver Mastery:Revelation",' +
-      '"features.Battle Mystery ? 1:Resiliency:Revelation",' +
+      '"features.Battle Mystery ? 1:Resiliency (Oracle):Revelation",' +
       '"features.Battle Mystery ? 1:Skill At Arms:Revelation",' +
       '"features.Battle Mystery ? 1:Surprising Charge:Revelation",' +
       '"features.Battle Mystery ? 1:War Sight:Revelation",' +
@@ -2764,12 +2793,39 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.deaf',
       classLevel, '=', 'source<5 ? -4 : source<10 ? -2 : null'
     );
+    rules.defineRule
+      ('featCount.General', 'featureNotes.weaponMastery', '+', null);
     rules.defineRule('featureNotes.deaf',
       classLevel, '=', 'source<10 ? null : source<15 ? "scent feature" : "scent feature, 30\' tremorsense"'
+    );
+    rules.defineRule('featureNotes.maneuverMastery',
+      classLevel, '=', 'source<7 ? null : source<11 ? "" : " and Greater Trip"'
+    );
+    rules.defineRule('featureNotes.resiliency(Oracle)',
+      classLevel, '=', 'source<7 ? null : "Diehard"'
     );
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
     );
+    rules.defineRule
+      ('featureNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
+    rules.defineRule('featureNotes.tongues.1',
+      classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
+    );
+    rules.defineRule('featureNotes.weaponMastery',
+      classLevel, '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
+    );
+    rules.defineRule('featureNotes.weaponMastery.1',
+      classLevel, '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
+    );
+    rules.defineRule('features.Diehard',
+      'featureNotes.resiliency(Oracle)', '=', 'source.includes("Diehard") ? 1 : null'
+    );
+    rules.defineRule('features.Greater Trip',
+      'featureNotes.maneuverMastery', '=', 'source.includes("Greater") ? 1 : null'
+    );
+    rules.defineRule
+      ('features.Improved Trip', 'featureNotes.maneuverMastery', '=', '1');
     rules.defineRule('features.Scent',
       'featureNotes.deaf', '=', 'source.includes("scent") ? 1 : null'
     );
@@ -2778,6 +2834,9 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('saveNotes.lame',
       classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
+    );
+    rules.defineRule('saveNotes.wasting.1',
+      classLevel, '=', 'source>=5 ? "/Immune to sickened" + (source>=15 ? " and nauseated" : "") + " condition" : ""'
     );
     rules.defineRule('selectableFeatureCount.Oracle (Curse)',
       "featureNotes.oracle'sCurse", '+=', '1'
