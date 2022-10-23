@@ -1105,6 +1105,77 @@ PathfinderSupplements.APG_FEATURES = {
 PathfinderSupplements.APG_LANGUAGES = {
 };
 PathfinderSupplements.APG_PATHS = {
+  'Battle Mystery':
+    'Group="Battle Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      'Battlecry,"Battlefield Clarity","7:Combat Healer","11:Iron Skin",' +
+      '"Maneuver Mastery","Resiliency (Oracle)","Skill At Arms",' +
+      '"Surprising Charge","War Sight","Weapon Mastery"',
+  'Bones Mystery':
+    'Group="Bones Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Armor Of Bones","Bleeding Wounds","Death\'s Touch","Near Death",' +
+      '"Raise The Dead","Resist Life","7:Soul Siphon","11:Spirit Walk",' +
+      '"Undead Servitude","Voice Of The Grave"',
+  'Flame Mystery':
+    'Group="Flame Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Burning Magic","Cinder Dance","Fire Breath",11:Firestorm,' +
+      '"7:Form Of Flame","Heat Aura","Molten Skin","Touch Of Flame",' +
+      '"7:Wings Of Fire"',
+  'Heavens Mystery':
+    'Group="Heavens Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Awesome Display","Coat Of Many Stars","11:Dweller In Darkness",' +
+      '"Guiding Star","Interstellar Void","Lure Of The Heavens",' +
+      '"Mantle Of Moonlight","Moonlight Bridge","Spray Of Shooting Stars",' +
+      '"7:Star Chart"',
+  'Life Mystery':
+    'Group="Life Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      'Channel,"7:Combat Healer","Delay Affliction","Energy Body",' +
+      '"Enhanced Cures","Healing Hands","Life Link",11:Lifesense,' +
+      '"Safe Curing","Spirit Boost"',
+  'Lore Mystery':
+    'Group="Lore Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"11:Arcane Archivist","Automatic Writing","Brain Drain",' +
+      '"Focused Trance","Lore Keeper","7:Mental Acuity","Sidestep Secret",' +
+      '"11:Spontaneous Symbology","Think On It","Whirlwind Lesson"',
+  'Nature Mystery':
+    'Group="Nature Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Bonded Mount","Erosion Touch","Friend To The Animals","7:Life Leach",' +
+      '"Natural Divination","Nature\'s Whispers","Speak With Animals",' +
+      '"Spirit Of Nature","Transcendental Bond","Undo Artifice"',
+  'Stone Mystery':
+    'Group="Stone Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Acid Skin","Clobbering Strike","Crystal Strike","7:Earth Glide",' +
+      '"Mighty Pebble","Rock Throwing","Shard Explosion",' +
+      '"7:Steelbreaker Skin","Stone Stability","Touch Of Acid"',
+  'Waves Mystery':
+    'Group="Waves Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      'Blizzard,"Fluid Nature","Fluid Travel","Freezing Spells","Ice Armor",' +
+      '"Icy Skin","7:Punitive Transformation","7:Water Form","Water Sight",' +
+      '"Wintry Touch"',
+  'Wind Mystery':
+    'Group="Wind Mystery" ' +
+    'Level=levels.Oracle ' +
+    'Selectables=' +
+      '"Air Barrier","7:Gaseous Form",3:Invisibility,"Lightning Breath",' +
+      '"Spark Skin",7:Thunderburst,"Touch Of Electricity","Vortex Spells",' +
+      '"Wind Sight","7:Wings Of Air"'
 };
 PathfinderSupplements.APG_RACES = {
 };
@@ -2478,105 +2549,7 @@ PathfinderSupplements.APG_CLASSES = {
       '"1:Nature Mystery:Mystery","1:Stone Mystery:Mystery",' +
       '"1:Waves Mystery:Mystery","1:Wind Mystery:Mystery",' +
       '"1:Clouded Vision:Curse","1:Deaf:Curse","1:Haunted:Curse",' +
-      '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse",' +
-      '"features.Battle Mystery ? 1:Battlecry:Revelation",' +
-      '"features.Battle Mystery ? 1:Battlefield Clarity:Revelation",' +
-      '"features.Battle Mystery || features.Life Mystery ? 1:Combat Healer:Revelation",' +
-      '"features.Battle Mystery ? 1:Iron Skin:Revelation",' +
-      '"features.Battle Mystery ? 1:Maneuver Mastery:Revelation",' +
-      '"features.Battle Mystery ? 1:Resiliency (Oracle):Revelation",' +
-      '"features.Battle Mystery ? 1:Skill At Arms:Revelation",' +
-      '"features.Battle Mystery ? 1:Surprising Charge:Revelation",' +
-      '"features.Battle Mystery ? 1:War Sight:Revelation",' +
-      '"features.Battle Mystery ? 1:Weapon Mastery:Revelation",' +
-      '"features.Bones Mystery ? 1:Armor Of Bones:Revelation",' +
-      '"features.Bones Mystery ? 1:Bleeding Wounds:Revelation",' +
-      '"features.Bones Mystery ? 1:Death\'s Touch:Revelation",' +
-      '"features.Bones Mystery ? 1:Near Death:Revelation",' +
-      '"features.Bones Mystery ? 1:Raise The Dead:Revelation",' +
-      '"features.Bones Mystery ? 1:Resist Life:Revelation",' +
-      '"features.Bones Mystery ? 1:Soul Siphon:Revelation",' +
-      '"features.Bones Mystery ? 1:Spirit Walk:Revelation",' +
-      '"features.Bones Mystery ? 1:Undead Servitude:Revelation",' +
-      '"features.Bones Mystery ? 1:Voice Of The Grave:Revelation",' +
-      '"features.Flame Mystery ? 1:Burning Magic:Revelation",' +
-      '"features.Flame Mystery ? 1:Cinder Dance:Revelation",' +
-      '"features.Flame Mystery ? 1:Fire Breath:Revelation",' +
-      '"features.Flame Mystery ? 1:Firestorm:Revelation",' +
-      '"features.Flame Mystery ? 1:Form Of Flame:Revelation",' +
-      '"features.Flame Mystery ? 1:Heat Aura:Revelation",' +
-      '"features.Flame Mystery ? 1:Molten Skin:Revelation",' +
-      '"features.Flame Mystery ? 1:Touch Of Flame:Revelation",' +
-      '"features.Flame Mystery ? 1:Wings Of Fire:Revelation",' +
-      '"features.Heavens Mystery ? 1:Awesome Display:Revelation",' +
-      '"features.Heavens Mystery ? 1:Coat Of Many Stars:Revelation",' +
-      '"features.Heavens Mystery ? 1:Dweller In Darkness:Revelation",' +
-      '"features.Heavens Mystery ? 1:Guiding Star:Revelation",' +
-      '"features.Heavens Mystery ? 1:Interstellar Void:Revelation",' +
-      '"features.Heavens Mystery ? 1:Lure Of The Heavens:Revelation",' +
-      '"features.Heavens Mystery ? 1:Mantle Of Moonlight:Revelation",' +
-      '"features.Heavens Mystery ? 1:Moonlight Bridge:Revelation",' +
-      '"features.Heavens Mystery ? 1:Spray Of Shooting Stars:Revelation",' +
-      '"features.Heavens Mystery ? 1:Star Chart:Revelation",' +
-      '"features.Life Mystery ? 1:Channel:Revelation",' +
-      '"features.Life Mystery ? 1:Delay Affliction:Revelation",' +
-      '"features.Life Mystery ? 1:Energy Body:Revelation",' +
-      '"features.Life Mystery ? 1:Enhanced Cures:Revelation",' +
-      '"features.Life Mystery ? 1:Healing Hands:Revelation",' +
-      '"features.Life Mystery ? 1:Life Link:Revelation",' +
-      '"features.Life Mystery ? 1:Lifesense:Revelation",' +
-      '"features.Life Mystery ? 1:Safe Curing:Revelation",' +
-      '"features.Life Mystery ? 1:Spirit Boost:Revelation",' +
-      '"features.Lore Mystery ? 1:Arcane Archivist:Revelation",' +
-      '"features.Lore Mystery ? 1:Automatic Writing:Revelation",' +
-      '"features.Lore Mystery ? 1:Brain Drain:Revelation",' +
-      '"features.Lore Mystery ? 1:Focused Trance:Revelation",' +
-      '"features.Lore Mystery ? 1:Lore Keeper:Revelation",' +
-      '"features.Lore Mystery ? 1:Mental Acuity:Revelation",' +
-      '"features.Lore Mystery ? 1:Sidestep Secret:Revelation",' +
-      '"features.Lore Mystery ? 1:Spontaneous Symbology:Revelation",' +
-      '"features.Lore Mystery ? 1:Think On It:Revelation",' +
-      '"features.Lore Mystery ? 1:Whirlwind Lesson:Revelation",' +
-      '"features.Nature Mystery ? 1:Bonded Mount:Revelation",' +
-      '"features.Nature Mystery ? 1:Erosion Touch:Revelation",' +
-      '"features.Nature Mystery ? 1:Friend To The Animals:Revelation",' +
-      '"features.Nature Mystery ? 1:Life Leach:Revelation",' +
-      '"features.Nature Mystery ? 1:Natural Divination:Revelation",' +
-      '"features.Nature Mystery ? 1:Nature\'s Whispers:Revelation",' +
-      '"features.Nature Mystery ? 1:Speak With Animals:Revelation",' +
-      '"features.Nature Mystery ? 1:Spirit Of Nature:Revelation",' +
-      '"features.Nature Mystery ? 1:Transcendental Bond:Revelation",' +
-      '"features.Nature Mystery ? 1:Undo Artifice:Revelation",' +
-      '"features.Stone Mystery ? 1:Acid Skin:Revelation",' +
-      '"features.Stone Mystery ? 1:Clobbering Strike:Revelation",' +
-      '"features.Stone Mystery ? 1:Crystal Strike:Revelation",' +
-      '"features.Stone Mystery ? 1:Earth Glide:Revelation",' +
-      '"features.Stone Mystery ? 1:Mighty Pebble:Revelation",' +
-      '"features.Stone Mystery ? 1:Rock Throwing:Revelation",' +
-      '"features.Stone Mystery ? 1:Shard Explosion:Revelation",' +
-      '"features.Stone Mystery ? 1:Steelbreaker Skin:Revelation",' +
-      '"features.Stone Mystery ? 1:Stone Stability:Revelation",' +
-      '"features.Stone Mystery ? 1:Touch Of Acid:Revelation",' +
-      '"features.Waves Mystery ? 1:Blizzard:Revelation",' +
-      '"features.Waves Mystery ? 1:Fluid Nature:Revelation",' +
-      '"features.Waves Mystery ? 1:Fluid Travel:Revelation",' +
-      '"features.Waves Mystery ? 1:Freezing Spells:Revelation",' +
-      '"features.Waves Mystery ? 1:Ice Armor:Revelation",' +
-      '"features.Waves Mystery ? 1:Icy Skin:Revelation",' +
-      '"features.Waves Mystery ? 1:Punitive Transformation:Revelation",' +
-      '"features.Waves Mystery ? 1:Water Form:Revelation",' +
-      '"features.Waves Mystery ? 1:Water Sight:Revelation",' +
-      '"features.Waves Mystery ? 1:Wintry Touch:Revelation",' +
-      '"features.Wind Mystery ? 1:Air Barrier:Revelation",' +
-      '"features.Wind Mystery ? 1:Gaseous Form:Revelation",' +
-      '"features.Wind Mystery ? 1:Invisibility:Revelation",' +
-      '"features.Wind Mystery ? 1:Lightning Breath:Revelation",' +
-      '"features.Wind Mystery ? 1:Spark Skin:Revelation",' +
-      '"features.Wind Mystery ? 1:Thunderburst:Revelation",' +
-      '"features.Wind Mystery ? 1:Touch Of Electricity:Revelation",' +
-      '"features.Wind Mystery ? 1:Vortex Spells:Revelation",' +
-      '"features.Wind Mystery ? 1:Wind Sight:Revelation",' +
-      '"features.Wind Mystery ? 1:Wings Of Air:Revelation" ' +
+      '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse" ' +
     'CasterLevelArcane=levels.Oracle ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -2663,6 +2636,8 @@ PathfinderSupplements.identityRules = function(
     PathfinderSupplements.classRulesExtra(rules, clas);
   for(let clas in npcClasses)
     PathfinderSupplements.classRulesExtra(rules, clas);
+  for(let path in paths)
+    PathfinderSupplements.pathRulesExtra(rules, path);
   for(let race in races)
     PathfinderSupplements.raceRulesExtra(rules, race);
 };
@@ -2844,9 +2819,6 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
       'featureNotes.mystery', '+=', '1'
     );
-    rules.defineRule('selectableFeatureCount.Oracle (Revelation)',
-      'featureNotes.revelation', '=', null
-    );
     let allSpells = rules.getChoices('spells');
     ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
      'Reverse Gravity'].forEach(s => {
@@ -2880,6 +2852,12 @@ PathfinderSupplements.featRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to pathRules.
  */
 PathfinderSupplements.pathRulesExtra = function(rules, name) {
+  if(name.match(/Mystery/)) {
+    rules.defineRule('selectableFeatureCount.' + name,
+      'features.' + name, '?', null,
+      'featureNotes.revelation', '=', null
+    );
+  }
 };
 
 /*
@@ -2887,13 +2865,6 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to raceRules.
  */
 PathfinderSupplements.raceRulesExtra = function(rules, name) {
-};
-
-/*
- * Defines in #rules# the rules associated with trait #name# that are not
- * directly derived from the parameters passed to traitRules.
- */
-PathfinderSupplements.traitRulesExtra = function(rules, name) {
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
