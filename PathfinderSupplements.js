@@ -93,7 +93,7 @@ PathfinderSupplements.APG_FEATS = {
   'Arcane Shield':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
   'Arcane Talent':
     'Type=General Require="charisma >= 10","race =~ \'Elf|Gnome\'"',
-  'Aspect Of the Beast':'Type=General Require="features.Wild Shape"',
+  'Aspect Of The Beast':'Type=General Require="features.Wild Shape"',
   'Bashing Finish':
     'Type=General,Fighter ' +
     'Require=' +
@@ -331,7 +331,7 @@ PathfinderSupplements.APG_FEATS = {
   'Shadow Strike':'Type=General,Fighter Require="baseAttackBonus >= 1"',
   'Shared Insight':'Type=General Require="wisdom >= 13","race == \'Half-Elf\'"',
   'Sharp Senses':'Type=General Require="features.Keen Senses"',
-  'Shield of Swings':
+  'Shield Of Swings':
     'Type=General,Fighter ' +
     'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
   'Shield Specialization':
@@ -388,7 +388,7 @@ PathfinderSupplements.APG_FEATS = {
       'features.Spellbreaker',
   'Tenacious Transmutation':
     'Type=General Require="features.Spell Focus (Transmutation)"',
-  'Touch of Serenity':
+  'Touch Of Serenity':
     'Type=General,Fighter ' +
     'Require=' +
       '"wisdom >= 18",' +
@@ -588,7 +588,16 @@ PathfinderSupplements.APG_FEATURES = {
   'Feral Mutagen':
     'Section=combat ' +
     'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
-  'Final Revelation':'Section=feature Note="FILL"',
+  'Final Revelation (Battle Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Bones Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Flame Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Heavens Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Life Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Lore Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Nature Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Stone Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Waves Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Wind Mystery)':'Section=feature Note="FILL"',
   'Fire Breath':'Section=feature Note="FILL"',
   'Firestorm':'Section=feature Note="FILL"',
   'Flame Mystery':
@@ -936,7 +945,7 @@ PathfinderSupplements.APG_FEATURES = {
   'Arcane Talent':
     'Section=magic ' +
     'Note="Cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
-  'Aspect Of the Beast':'Section=feature Note="FILL"',
+  'Aspect Of The Beast':'Section=feature Note="FILL"',
   'Bashing Finish':
     'Section=combat Note="Gain free shield bash after critical hit"',
   'Bloody Assault':
@@ -1068,7 +1077,7 @@ PathfinderSupplements.APG_FEATURES = {
   'Sharp Senses':'Section=feature Note="FILL"',
   'Shield Specialization':'Section=feature Note="FILL"',
   'Shield Wall':'Section=feature Note="FILL"',
-  'Shield of Swings':'Section=feature Note="FILL"',
+  'Shield Of Swings':'Section=feature Note="FILL"',
   'Shielded Caster':'Section=feature Note="FILL"',
   'Sickening Spell':'Section=feature Note="FILL"',
   'Sidestep':'Section=feature Note="FILL"',
@@ -1093,7 +1102,7 @@ PathfinderSupplements.APG_FEATURES = {
   'Teleport Tactician':'Section=feature Note="FILL"',
   'Tenacious Transmutation':'Section=feature Note="FILL"',
   'Thundering Spell':'Section=feature Note="FILL"',
-  'Touch of Serenity':'Section=feature Note="FILL"',
+  'Touch Of Serenity':'Section=feature Note="FILL"',
   'Trick Riding':'Section=feature Note="FILL"',
   'Tripping Strike':'Section=feature Note="FILL"',
   'Under and Over':'Section=feature Note="FILL"',
@@ -1106,76 +1115,262 @@ PathfinderSupplements.APG_LANGUAGES = {
 };
 PathfinderSupplements.APG_PATHS = {
   'Battle Mystery':
-    'Group="Battle Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Battle1:2=1,' +
+      'Battle2:4=1,' +
+      'Battle3:6=1,' +
+      'Battle4:8=1,' +
+      'Battle5:10=1,' +
+      'Battle6:12=1,' +
+      'Battle7:14=1,' +
+      'Battle8:16=1,' +
+      'Battle9:18=1 ' +
+    'Features="20:Final Revelation (Battle Mystery)" ' +
     'Selectables=' +
-      'Battlecry,"Battlefield Clarity","7:Combat Healer","11:Iron Skin",' +
-      '"Maneuver Mastery","Resiliency (Oracle)","Skill At Arms",' +
-      '"Surprising Charge","War Sight","Weapon Mastery"',
+      '"1:Battlecry:Battle Revelation",' +
+      '"1:Battlefield Clarity:Battle Revelation",' +
+      '"11:Iron Skin:Battle Revelation",' +
+      '"1:Maneuver Mastery:Battle Revelation",' +
+      '"1:Resiliency (Oracle):Battle Revelation",' +
+      '"1:Skill At Arms:Battle Revelation",' +
+      '"1:Surprising Charge:Battle Revelation",' +
+      '"1:War Sight:Battle Revelation",' +
+      '"1:Weapon Mastery:Battle Revelation"',
   'Bones Mystery':
-    'Group="Bones Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Bones1:2=1,' +
+      'Bones2:4=1,' +
+      'Bones3:6=1,' +
+      'Bones4:8=1,' +
+      'Bones5:10=1,' +
+      'Bones6:12=1,' +
+      'Bones7:14=1,' +
+      'Bones8:16=1,' +
+      'Bones9:18=1 ' +
+    'Features="20:Final Revelation (Bones Mystery)" ' +
     'Selectables=' +
-      '"Armor Of Bones","Bleeding Wounds","Death\'s Touch","Near Death",' +
-      '"Raise The Dead","Resist Life","7:Soul Siphon","11:Spirit Walk",' +
-      '"Undead Servitude","Voice Of The Grave"',
+      '"1:Armor Of Bones:Bones Revelation",' +
+      '"1:Bleeding Wounds:Bones Revelation",' +
+      '"1:Death\'s Touch:Bones Revelation",' +
+      '"1:Near Death:Bones Revelation",' +
+      '"1:Raise The Dead:Bones Revelation",' +
+      '"1:Resist Life:Bones Revelation",' +
+      '"7:Soul Siphon:Bones Revelation",' +
+      '"11:Spirit Walk:Bones Revelation",' +
+      '"1:Undead Servitude:Bones Revelation",' +
+      '"1:Voice Of The Grave:Bones Revelation"',
   'Flame Mystery':
-    'Group="Flame Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Flame1:2=1,' +
+      'Flame2:4=1,' +
+      'Flame3:6=1,' +
+      'Flame4:8=1,' +
+      'Flame5:10=1,' +
+      'Flame6:12=1,' +
+      'Flame7:14=1,' +
+      'Flame8:16=1,' +
+      'Flame9:18=1 ' +
+    'Features="20:Final Revelation (Flame Mystery)" ' +
     'Selectables=' +
-      '"Burning Magic","Cinder Dance","Fire Breath",11:Firestorm,' +
-      '"7:Form Of Flame","Heat Aura","Molten Skin","Touch Of Flame",' +
-      '"7:Wings Of Fire"',
+      '"1:Burning Magic:Flame Revelation",' +
+      '"1:Cinder Dance:Flame Revelation",' +
+      '"1:Fire Breath:Flame Revelation",' +
+      '"11:Firestorm:Flame Revelation",' +
+      '"7:Form Of Flame:Flame Revelation",' +
+      '"1:Heat Aura:Flame Revelation",' +
+      '"1:Molten Skin:Flame Revelation",' +
+      '"1:Touch Of Flame:Flame Revelation",' +
+      '"7:Wings Of Fire:Flame Revelation"',
   'Heavens Mystery':
-    'Group="Heavens Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Heavens1:2=1,' +
+      'Heavens2:4=1,' +
+      'Heavens3:6=1,' +
+      'Heavens4:8=1,' +
+      'Heavens5:10=1,' +
+      'Heavens6:12=1,' +
+      'Heavens7:14=1,' +
+      'Heavens8:16=1,' +
+      'Heavens9:18=1 ' +
+    'Features="20:Final Revelation (Heavens Mystery)" ' +
     'Selectables=' +
-      '"Awesome Display","Coat Of Many Stars","11:Dweller In Darkness",' +
-      '"Guiding Star","Interstellar Void","Lure Of The Heavens",' +
-      '"Mantle Of Moonlight","Moonlight Bridge","Spray Of Shooting Stars",' +
-      '"7:Star Chart"',
+      '"1:Awesome Display:Heavens Revelation",' +
+      '"1:Coat Of Many Stars:Heavens Revelation",' +
+      '"11:Dweller In Darkness:Heavens Revelation",' +
+      '"1:Guiding Star:Heavens Revelation",' +
+      '"1:Interstellar Void:Heavens Revelation",' +
+      '"1:Lure Of The Heavens:Heavens Revelation",' +
+      '"1:Mantle Of Moonlight:Heavens Revelation",' +
+      '"1:Moonlight Bridge:Heavens Revelation",' +
+      '"1:Spray Of Shooting Stars:Heavens Revelation",' +
+      '"7:Star Chart:Heavens Revelation"',
   'Life Mystery':
-    'Group="Life Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Life1:2=1,' +
+      'Life2:4=1,' +
+      'Life3:6=1,' +
+      'Life4:8=1,' +
+      'Life5:10=1,' +
+      'Life6:12=1,' +
+      'Life7:14=1,' +
+      'Life8:16=1,' +
+      'Life9:18=1 ' +
+    'Features="20:Final Revelation (Life Mystery)" ' +
     'Selectables=' +
-      'Channel,"7:Combat Healer","Delay Affliction","Energy Body",' +
-      '"Enhanced Cures","Healing Hands","Life Link",11:Lifesense,' +
-      '"Safe Curing","Spirit Boost"',
+      '"1:Channel:Life Revelation",' +
+      '"1:Delay Affliction:Life Revelation",' +
+      '"1:Energy Body:Life Revelation",' +
+      '"1:Enhanced Cures:Life Revelation",' +
+      '"1:Healing Hands:Life Revelation",' +
+      '"1:Life Link:Life Revelation",' +
+      '"11:Lifesense:Life Revelation",' +
+      '"1:Safe Curing:Life Revelation",' +
+      '"1:Spirit Boost:Life Revelation"',
   'Lore Mystery':
-    'Group="Lore Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Lore1:2=1,' +
+      'Lore2:4=1,' +
+      'Lore3:6=1,' +
+      'Lore4:8=1,' +
+      'Lore5:10=1,' +
+      'Lore6:12=1,' +
+      'Lore7:14=1,' +
+      'Lore8:16=1,' +
+      'Lore9:18=1 ' +
+    'Features="20:Final Revelation (Lore Mystery)" ' +
     'Selectables=' +
-      '"11:Arcane Archivist","Automatic Writing","Brain Drain",' +
-      '"Focused Trance","Lore Keeper","7:Mental Acuity","Sidestep Secret",' +
-      '"11:Spontaneous Symbology","Think On It","Whirlwind Lesson"',
+      '"11:Arcane Archivist:Lore Revelation",' +
+      '"1:Automatic Writing:Lore Revelation",' +
+      '"1:Brain Drain:Lore Revelation",' +
+      '"1:Focused Trance:Lore Revelation",' +
+      '"1:Lore Keeper:Lore Revelation",' +
+      '"7:Mental Acuity:Lore Revelation",' +
+      '"1:Sidestep Secret:Lore Revelation",' +
+      '"11:Spontaneous Symbology:Lore Revelation",' +
+      '"1:Think On It:Lore Revelation",' +
+      '"1:Whirlwind Lesson:Lore Revelation"',
   'Nature Mystery':
-    'Group="Nature Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Nature1:2=1,' +
+      'Nature2:4=1,' +
+      'Nature3:6=1,' +
+      'Nature4:8=1,' +
+      'Nature5:10=1,' +
+      'Nature6:12=1,' +
+      'Nature7:14=1,' +
+      'Nature8:16=1,' +
+      'Nature9:18=1 ' +
+    'Features="20:Final Revelation (Nature Mystery)" ' +
     'Selectables=' +
-      '"Bonded Mount","Erosion Touch","Friend To The Animals","7:Life Leach",' +
-      '"Natural Divination","Nature\'s Whispers","Speak With Animals",' +
-      '"Spirit Of Nature","Transcendental Bond","Undo Artifice"',
+      '"1:Bonded Mount:Nature Revelation",' +
+      '"1:Erosion Touch:Nature Revelation",' +
+      '"1:Friend To The Animals:Nature Revelation",' +
+      '"7:Life Leach:Nature Revelation",' +
+      '"1:Natural Divination:Nature Revelation",' +
+      '"1:Nature\'s Whispers:Nature Revelation",' +
+      '"1:Speak With Animals:Nature Revelation",' +
+      '"1:Spirit Of Nature:Nature Revelation",' +
+      '"1:Transcendental Bond:Nature Revelation",' +
+      '"1:Undo Artifice:Nature Revelation"',
   'Stone Mystery':
-    'Group="Stone Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Stone1:2=1,' +
+      'Stone2:4=1,' +
+      'Stone3:6=1,' +
+      'Stone4:8=1,' +
+      'Stone5:10=1,' +
+      'Stone6:12=1,' +
+      'Stone7:14=1,' +
+      'Stone8:16=1,' +
+      'Stone9:18=1 ' +
+    'Features="20:Final Revelation (Stone Mystery)" ' +
     'Selectables=' +
-      '"Acid Skin","Clobbering Strike","Crystal Strike","7:Earth Glide",' +
-      '"Mighty Pebble","Rock Throwing","Shard Explosion",' +
-      '"7:Steelbreaker Skin","Stone Stability","Touch Of Acid"',
+      '"1:Acid Skin:Stone Revelation",' +
+      '"1:Clobbering Strike:Stone Revelation",' +
+      '"1:Crystal Strike:Stone Revelation",' +
+      '"7:Earth Glide:Stone Revelation",' +
+      '"1:Mighty Pebble:Stone Revelation",' +
+      '"1:Rock Throwing:Stone Revelation",' +
+      '"1:Shard Explosion:Stone Revelation",' +
+      '"7:Steelbreaker Skin:Stone Revelation",' +
+      '"1:Stone Stability:Stone Revelation",' +
+      '"1:Touch Of Acid:Stone Revelation"',
   'Waves Mystery':
-    'Group="Waves Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Waves1:2=1,' +
+      'Waves2:4=1,' +
+      'Waves3:6=1,' +
+      'Waves4:8=1,' +
+      'Waves5:10=1,' +
+      'Waves6:12=1,' +
+      'Waves7:14=1,' +
+      'Waves8:16=1,' +
+      'Waves9:18=1 ' +
+    'Features="20:Final Revelation (Waves Mystery)" ' +
     'Selectables=' +
-      'Blizzard,"Fluid Nature","Fluid Travel","Freezing Spells","Ice Armor",' +
-      '"Icy Skin","7:Punitive Transformation","7:Water Form","Water Sight",' +
-      '"Wintry Touch"',
+      '"1:Blizzard:Waves Revelation",' +
+      '"1:Fluid Nature:Waves Revelation",' +
+      '"1:Fluid Travel:Waves Revelation",' +
+      '"1:Freezing Spells:Waves Revelation",' +
+      '"1:Ice Armor:Waves Revelation",' +
+      '"1:Icy Skin:Waves Revelation",' +
+      '"7:Punitive Transformation:Waves Revelation",' +
+      '"7:Water Form:Waves Revelation",' +
+      '"1:Water Sight:Waves Revelation",' +
+      '"1:Wintry Touch:Waves Revelation"',
   'Wind Mystery':
-    'Group="Wind Mystery" ' +
+    'Group="Oracle" ' +
     'Level=levels.Oracle ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Wind1:2=1,' +
+      'Wind2:4=1,' +
+      'Wind3:6=1,' +
+      'Wind4:8=1,' +
+      'Wind5:10=1,' +
+      'Wind6:12=1,' +
+      'Wind7:14=1,' +
+      'Wind8:16=1,' +
+      'Wind9:18=1 ' +
+    'Features="20:Final Revelation (Wind Mystery)" ' +
     'Selectables=' +
-      '"Air Barrier","7:Gaseous Form",3:Invisibility,"Lightning Breath",' +
-      '"Spark Skin",7:Thunderburst,"Touch Of Electricity","Vortex Spells",' +
-      '"Wind Sight","7:Wings Of Air"'
+      '"1:Air Barrier:Wind Revelation",' +
+      '"7:Gaseous Form:Wind Revelation",' +
+      '"3:Invisibility:Wind Revelation",' +
+      '"1:Lightning Breath:Wind Revelation",' +
+      '"1:Spark Skin:Wind Revelation",' +
+      '"7:Thunderburst:Wind Revelation",' +
+      '"1:Touch Of Electricity:Wind Revelation",' +
+      '"1:Vortex Spells:Wind Revelation",' +
+      '"1:Wind Sight:Wind Revelation",' +
+      '"7:Wings Of Air:Wind Revelation"'
 };
 PathfinderSupplements.APG_RACES = {
 };
@@ -1209,7 +1404,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Alter Winds':
     'School=Transmutation ' +
-    'Level=D1,W1 ' +
+    'Level=D1,W1,Wind1 ' +
     'Description="FILL"',
   'Amplify Elixir':
     'School=Transmutation ' +
@@ -1231,23 +1426,23 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Conjuration ' +
     'Level=R2,W2 ' +
     'Description="FILL"',
-  'Aspect of the Bear':
+  'Aspect Of The Bear':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
     'Description="FILL"',
-  'Aspect of the Falcon':
+  'Aspect Of The Falcon':
     'School=Transmutation ' +
     'Level=D1,R1 ' +
     'Description="FILL"',
-  'Aspect of the Stag':
+  'Aspect Of The Stag':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
     'Description="FILL"',
-  'Aspect of the Wolf':
+  'Aspect Of The Wolf':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
     'Description="FILL"',
-  'Aura of Greater Courage':
+  'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
     'Description="FILL"',
@@ -1271,19 +1466,19 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Abjuration ' +
     'Level=P2 ' +
     'Description="FILL"',
-  'Blaze of Glory':
+  'Blaze Of Glory':
     'School=Conjuration ' +
     'Level=P4 ' +
     'Description="FILL"',
-  'Blessing of Courage and Life':
+  'Blessing Of Courage and Life':
     'School=Conjuration ' +
     'Level=C2,P2 ' +
     'Description="FILL"',
-  'Blessing of Fervor':
+  'Blessing Of Fervor':
     'School=Transmutation ' +
     'Level=C4 ' +
     'Description="FILL"',
-  'Blessing of the Salamander':
+  'Blessing Of The Salamander':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
     'Description="FILL"',
@@ -1385,23 +1580,23 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Clashing Rocks':
     'School=Conjuration ' +
-    'Level=D9,W9 ' +
+    'Level=D9,W9,Stone9 ' +
     'Description="FILL"',
   'Cleanse':
     'School=Evocation ' +
     'Level=C5,Inquisitor6 ' +
     'Description="FILL"',
-  'Cloak of Dreams':
+  'Cloak Of Dreams':
     'School=Enchantment ' +
     'Level=B5,W6,Witch6 ' +
     'Description="FILL"',
-  'Cloak of Shade':
+  'Cloak Of Shade':
     'School=Abjuration ' +
     'Level=D1,R1 ' +
     'Description="FILL"',
-  'Cloak of Winds':
+  'Cloak Of Winds':
     'School=Abjuration ' +
-    'Level=D3,R3,W3 ' +
+    'Level=D3,R3,W3,Wind3 ' +
     'Description="FILL"',
   'Confess':
     'School=Enchantment ' +
@@ -1439,7 +1634,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Divination ' +
     'Level=B2,D3,R2,W2 ' +
     'Description="FILL"',
-  'Cup of Dust':
+  'Cup Of Dust':
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
     'Description="FILL"',
@@ -1503,7 +1698,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
     'Description="FILL"',
-  'Dust of Twilight':
+  'Dust Of Twilight':
     'School=Conjuration ' +
     'Level=B2,W2 ' +
     'Description="FILL"',
@@ -1559,7 +1754,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Abjuration ' +
     'Level=W7 ' +
     'Description="FILL"',
-  'Feast of Ashes':
+  'Feast Of Ashes':
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
     'Description="FILL"',
@@ -1581,21 +1776,21 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Fiery Body':
     'School=Transmutation ' +
-    'Level=W9 ' +
+    'Level=W9,Flame9 ' +
     'Description="FILL"',
   'Fire Breath':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
     'Description="FILL"',
-  'Fire of Entanglement':
+  'Fire Of Entanglement':
     'School=Evocation ' +
     'Level=P2 ' +
     'Description="FILL"',
-  'Fire of Judgment':
+  'Fire Of Judgment':
     'School=Evocation ' +
     'Level=P3 ' +
     'Description="FILL"',
-  'Fire of Vengeance':
+  'Fire Of Vengeance':
     'School=Evocation ' +
     'Level=P4 ' +
     'Description="FILL"',
@@ -1611,7 +1806,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Transmutation ' +
     'Level=W4 ' +
     'Description="FILL"',
-  'Flames of the Faithful':
+  'Flames Of The Faithful':
     'School=Transmutation ' +
     'Level=Inquisitor2 ' +
     'Description="FILL"',
@@ -1621,7 +1816,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Fluid Form':
     'School=Transmutation ' +
-    'Level=Alchemist4,W6 ' +
+    'Level=Alchemist4,W6,Waves6 ' +
     'Description="FILL"',
   'Mass Fly':
     'School=Transmutation ' +
@@ -1657,7 +1852,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Geyser':
     'School=Conjuration ' +
-    'Level=D4,W5 ' +
+    'Level=D4,W5,Waves5 ' +
     'Description="FILL"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
@@ -1679,9 +1874,9 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Transmutation ' +
     'Level=R1,W1 ' +
     'Description="FILL"',
-  'Grove of Respite':
+  'Grove Of Respite':
     'School=Conjuration ' +
-    'Level=D4,R4 ' +
+    'Level=D4,R4,Nature4 ' +
     'Description="FILL"',
   'Guiding Star':
     'School=Divination ' +
@@ -1823,7 +2018,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
     'Description="FILL"',
-  'Oath of Peace':
+  'Oath Of Peace':
     'School=Abjuration ' +
     'Level=P4 ' +
     'Description="FILL"',
@@ -1859,7 +2054,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Enchantment ' +
     'Level=B6 ' +
     'Description="FILL"',
-  'Pillar of Life':
+  'Pillar Of Life':
     'School=Conjuration ' +
     'Level=C5 ' +
     'Description="FILL"',
@@ -1947,9 +2142,9 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Enchantment ' +
     'Level=Inquisitor3,P2 ' +
     'Description="FILL"',
-  'River of Wind':
+  'River Of Wind':
     'School=Evocation ' +
-    'Level=D4,W4 ' +
+    'Level=D4,W4,Wind4 ' +
     'Description="FILL"',
   'Sacred Bond':
     'School=Conjuration ' +
@@ -1985,7 +2180,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Seamantle':
     'School=Conjuration ' +
-    'Level=D8,W8 ' +
+    'Level=D8,W8,Waves8 ' +
     'Description="FILL"',
   'Seek Thoughts':
     'School=Divination ' +
@@ -2017,7 +2212,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Sirocco':
     'School=Evocation ' +
-    'Level=D6,W60 ' +
+    'Level=D6,W60,Wind6 ' +
     'Description="FILL"',
   'Sleepwalk':
     'School=Enchantment ' +
@@ -2025,7 +2220,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Slipstream':
     'School=Conjuration ' +
-    'Level=D2,R2,W2 ' +
+    'Level=D2,R2,W2,Waves2 ' +
     'Description="FILL"',
   'Snake Staff':
     'School=Transmutation ' +
@@ -2057,7 +2252,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Stone Call':
     'School=Conjuration ' +
-    'Level=D2,R2,W2 ' +
+    'Level=D2,R2,W2,Stone2 ' +
     'Description="FILL"',
   'Stone Fist':
     'School=Transmutation ' +
@@ -2119,13 +2314,13 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Transmutation ' +
     'Level=Inquisitor1,R1 ' +
     'Description="FILL"',
-  'Touch of Gracelessness':
+  'Touch Of Gracelessness':
     'School=Transmutation ' +
     'Level=B1,W1 ' +
     'Description="FILL"',
-  'Touch of the Sea':
+  'Touch Of The Sea':
     'School=Transmutation ' +
-    'Level=Alchemist1,D1,W1 ' +
+    'Level=Alchemist1,D1,W1,Waves1 ' +
     'Description="FILL"',
   'Transmogrify':
     'School=Transmutation ' +
@@ -2145,7 +2340,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Tsunami':
     'School=Conjuration ' +
-    'Level=D9,W9 ' +
+    'Level=D9,W9,Waves9 ' +
     'Description="FILL"',
   'Twilight Knife':
     'School=Evocation ' +
@@ -2175,7 +2370,7 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Illusion ' +
     'Level=B1,W1 ' +
     'Description="FILL"',
-  'Veil of Positive Energy':
+  'Veil Of Positive Energy':
     'School=Abjuration ' +
     'Level=P1 ' +
     'Description="FILL"',
@@ -2193,17 +2388,17 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"',
   'Vortex':
     'School=Evocation ' +
-    'Level=D7,W7 ' +
+    'Level=D7,W7,Waves7 ' +
     'Description="FILL"',
-  'Wake of Light':
+  'Wake Of Light':
     'School=Evocation ' +
     'Level=P2 ' +
     'Description="FILL"',
-  'Wall of Lava':
+  'Wall Of Lava':
     'School=Conjuration ' +
     'Level=D8,W8 ' +
     'Description="FILL"',
-  'Wall of Suppression':
+  'Wall Of Suppression':
     'School=Abjuration ' +
     'Level=W9 ' +
     'Description="FILL"',
@@ -2215,17 +2410,17 @@ PathfinderSupplements.APG_SPELLS = {
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
     'Description="FILL"',
-  'Weapon of Awe':
+  'Weapon Of Awe':
     'School=Transmutation ' +
     'Level=C2,Inquisitor2,P2 ' +
     'Description="FILL"',
-  'Winds of Vengeance':
+  'Winds Of Vengeance':
     'School=Transmutation ' +
-    'Level=C9,D9,W9 ' +
+    'Level=C9,D9,W9,Wind9 ' +
     'Description="FILL"',
   'World Wave':
     'School=Transmutation ' +
-    'Level=Alchemist3 ' +
+    'Level=D9,W9,Nature9 ' +
     'Description="FILL"',
   'Wrath':
     'School=Enchantment ' +
@@ -2239,169 +2434,217 @@ PathfinderSupplements.APG_SPELLS = {
 };
 PathfinderSupplements.APG_SPELLS_LEVELS_ADDED = {
   'Acid Splash':'Inquisitor0',
-  'Bleed':'Inquisitor0',
-  'Create Water':'Inquisitor0',
-  'Daze':'Inquisitor0',
-  'Detect Magic':'Inquisitor0',
-  'Detect Poison':'Inquisitor0',
-  'Disrupt Undead':'Inquisitor0',
-  'Guidance':'Inquisitor0',
-  'Light':'Inquisitor0',
-  'Read Magic':'Inquisitor0',
-  'Resistance':'Inquisitor0',
-  'Stabilize':'Inquisitor0',
-  'Virtue':'Inquisitor0',
+  'Aid':'Inquisitor2',
   'Alarm':'Inquisitor1',
+  'Align Weapon':'Inquisitor2',
+  'Animal Shapes':'Nature8',
+  'Animate Dead':'Bones3',
+  'Arcane Sight':'Inquisitor3',
+  'Atonement':'Inquisitor5',
+  'Awaken':'Nature5',
   'Bane':'Inquisitor1',
+  'Banishment':'Inquisitor5',
+  'Barkskin':'Nature2',
+  'Blade Barrier':'Inquisitor6',
+  'Blasphemy':'Inquisitor6',
+  'Bleed':'Inquisitor0',
   'Bless':'Inquisitor1',
   'Bless Water':'Inquisitor1',
-  'Cause Fear':'Inquisitor1',
+  'Break Enchantment':'Inquisitor5',
+  'Breath Of Life':'Life5',
+  'Burning Hands':'Flame1',
+  'Calm Emotions':'Inquisitor2',
+  'Cause Fear':'Bones1,Inquisitor1',
+  'Chain Lightning':'Heavens6',
+  'Chaos Hammer':'Inquisitor4',
+  'Charm Animal':'Nature1',
+  'Circle Of Death':'Bones6,Inquisitor6',
+  'Color Spray':'Heavens1',
   'Command':'Inquisitor1',
+  'Commune':'Inquisitor5',
   'Comprehend Languages':'Inquisitor1',
+  'Consecrate':'Inquisitor2',
+  'Contact Other Plane':'Lore5',
+  'Continual Flame':'Inquisitor3',
+  'Control Undead':'Bones8',
+  'Control Weather':'Battle7,Wind7',
+  'Control Winds':'Wind5',
+  'Create Water':'Inquisitor0',
+  'Creeping Doom':'Nature7',
+  'Cure Critical Wounds':'Inquisitor4',
   'Cure Light Wounds':'Inquisitor1',
+  'Cure Moderate Wounds':'Inquisitor2',
+  'Cure Serious Wounds':'Inquisitor3',
   'Curse Water':'Inquisitor1',
+  'Darkness':'Inquisitor2',
+  'Daylight':'Heavens3,Inquisitor3',
+  'Daze':'Inquisitor0',
+  'Death Knell':'Inquisitor2',
+  'Death Ward':'Inquisitor4',
+  'Deeper Darkness':'Inquisitor3',
+  'Delay Poison':'Inquisitor2',
+  'Desecrate':'Inquisitor2',
   'Detect Chaos':'Inquisitor1',
   'Detect Evil':'Inquisitor1',
   'Detect Good':'Inquisitor1',
   'Detect Law':'Inquisitor1',
-  'Detect Undead':'Inquisitor1',
-  'Disguise Self':'Inquisitor1',
-  'Divine Favor':'Inquisitor1',
-  'Doom':'Inquisitor1',
-  'Expeditious Retreat':'Inquisitor1',
-  'Hide From Undead':'Inquisitor1',
-  'Inflict Light Wounds':'Inquisitor1',
-  'Magic Weapon':'Inquisitor1',
-  'Protection From Chaos':'Inquisitor1',
-  'Protection From Evil':'Inquisitor1',
-  'Protection From Good':'Inquisitor1',
-  'Protection From Law':'Inquisitor1',
-  'Remove Fear':'Inquisitor1',
-  'Sanctuary':'Inquisitor1',
-  'Shield Of Faith':'Inquisitor1',
-  'True Strike':'Inquisitor1',
-
-  'Aid':'Inquisitor2',
-  'Align Weapon':'Inquisitor2',
-  'Calm Emotions':'Inquisitor2',
-  'Consecrate':'Inquisitor2',
-  'Cure Moderate Wounds':'Inquisitor2',
-  'Darkness':'Inquisitor2',
-  'Death Knell':'Inquisitor2',
-  'Delay Poison':'Inquisitor2',
-  'Desecrate':'Inquisitor2',
-  'Detect Thoughts':'Inquisitor2',
-  'Enthrall':'Inquisitor2',
-  'Find Traps':'Inquisitor2',
-  'Hold Person':'Inquisitor2',
-  'Inflict Moderate Wounds':'Inquisitor2',
-  'Invisibility':'Inquisitor2',
-  'Knock':'Inquisitor2',
-  'Remove Paralysis':'Inquisitor2',
-  'Resist Energy':'Inquisitor2',
-  'Lesser Restoration':'Inquisitor2',
-  'See Invisibility':'Inquisitor2',
-  'Shield Other':'Inquisitor2',
-  'Silence':'Inquisitor2',
-  'Spiritual Weapon':'Inquisitor2',
-  'Tongues':'Inquisitor2',
-  'Undetectable Alignment':'Inquisitor2',
-  'Whispering Wind':'Inquisitor2',
-  'Zone Of Truth':'Inquisitor2',
-
-  'Arcane Sight':'Inquisitor3',
-  'Continual Flame':'Inquisitor3',
-  'Cure Serious Wounds':'Inquisitor3',
-  'Daylight':'Inquisitor3',
-  'Deeper Darkness':'Inquisitor3',
-  'Dimensional Anchor':'Inquisitor3',
-  'Dispel Magic':'Inquisitor3',
-  'Glyph Of Warding':'Inquisitor3',
-  'Halt Undead':'Inquisitor3',
-  'Heroism':'Inquisitor3',
-  'Inflict Serious Wounds':'Inquisitor3',
-  'Invisibility Purge':'Inquisitor3',
-  'Keen Edge':'Inquisitor3',
-  'Locate Object':'Inquisitor3',
-  'Magic Circle Against Chaos':'Inquisitor3',
-  'Magic Circle Against Evil':'Inquisitor3',
-  'Magic Circle Against Good':'Inquisitor3',
-  'Magic Circle Against Law':'Inquisitor3',
-  'Magic Vestment':'Inquisitor3',
-  'Greater Magic Weapon':'Inquisitor3',
-  'Nondetection':'Inquisitor3',
-  'Obscure Object':'Inquisitor3',
-  'Prayer':'Inquisitor3',
-  'Protection From Energy':'Inquisitor3',
-  'Remove Curse':'Inquisitor3',
-  'Remove Disease':'Inquisitor3',
-  'Searing Light':'Inquisitor3',
-  'Speak With Dead':'Inquisitor3',
-
-  'Chaos Hammer':'Inquisitor4',
-  'Cure Critical Wounds':'Inquisitor4',
-  'Death Ward':'Inquisitor4',
+  'Detect Magic':'Inquisitor0',
+  'Detect Poison':'Inquisitor0',
   'Detect Scrying':'Inquisitor4',
+  'Detect Thoughts':'Inquisitor2',
+  'Detect Undead':'Inquisitor1,Life1',
+  'Dictum':'Inquisitor6',
+  'Dimensional Anchor':'Inquisitor3',
   'Discern Lies':'Inquisitor4',
+  'Disguise Self':'Inquisitor1',
   'Dismissal':'Inquisitor4',
-  'Divination':'Inquisitor4',
-  'Divine Power':'Inquisitor4',
-  'Fear':'Inquisitor4',
-  'Freedom Of Movement':'Inquisitor4',
-  'Lesser Geas':'Inquisitor4',
-  'Hold Monster':'Inquisitor4',
-  'Holy Smite':'Inquisitor4',
-  'Inflict Critical Wounds':'Inquisitor4',
-  'Greater Invisibility':'Inquisitor4',
-  'Neutralize Poison':'Inquisitor4',
-  "Order's Wrath":'Inquisitor4',
-  'Restoration':'Inquisitor4',
-  'Sending':'Inquisitor4',
-  'Spell Immunity':'Inquisitor4',
-  'Stoneskin':'Inquisitor4',
-  'Unholy Blight':'Inquisitor4',
-
-  'Atonement':'Inquisitor5',
-  'Banishment':'Inquisitor5',
-  'Break Enchantment':'Inquisitor5',
-  'Greater Command':'Inquisitor5',
-  'Commune':'Inquisitor5',
-  'Mass Cure Light Wounds':'Inquisitor5',
   'Dispel Chaos':'Inquisitor5',
   'Dispel Evil':'Inquisitor5',
   'Dispel Good':'Inquisitor5',
   'Dispel Law':'Inquisitor5',
+  'Dispel Magic':'Inquisitor3',
+  'Disrupt Undead':'Inquisitor0',
   'Disrupting Weapon':'Inquisitor5',
-  'Flame Strike':'Inquisitor5',
-  'Geas/Quest':'Inquisitor5',
-  'Hallow':'Inquisitor5',
-  'Mass Inflict Light Wounds':'Inquisitor5',
-  'Mark Of Justice':'Inquisitor5',
-  'Righteous Might':'Inquisitor5',
-  'Spell Resistance':'Inquisitor5',
-  'Telepathic Bond':'Inquisitor5',
-  'True Seeing':'Inquisitor5',
-  'Unhallow':'Inquisitor5',
-
-  'Blade Barrier':'Inquisitor6',
-  'Blasphemy':'Inquisitor6',
-  'Circle Of Death':'Inquisitor6',
-  'Mass Cure Moderate Wounds':'Inquisitor6',
-  'Dictum':'Inquisitor6',
-  'Greater Dispel Magic':'Inquisitor6',
+  'Divination':'Inquisitor4',
+  'Divine Favor':'Inquisitor1',
+  'Divine Power':'Inquisitor4',
+  'Doom':'Inquisitor1',
+  'Earthquake':'Battle8',
+  'Enlarge Person':'Battle1',
+  'Enthrall':'Inquisitor2',
+  'Expeditious Retreat':'Inquisitor1',
+  'False Life':'Bones2',
+  'Fear':'Bones4,Inquisitor4',
   'Find The Path':'Inquisitor6',
+  'Find Traps':'Inquisitor2',
+  'Fire Seeds':'Flame6',
+  'Fire Storm':'Flame7',
+  'Fireball':'Flame3',
+  'Flame Strike':'Inquisitor5',
+  'Fog Cloud':'Battle2',
   'Forbiddance':'Inquisitor6',
+  'Freedom Of Movement':'Inquisitor4',
+  'Geas/Quest':'Inquisitor5',
+  'Glyph Of Warding':'Inquisitor3',
+  'Greater Command':'Inquisitor5',
+  'Greater Dispel Magic':'Inquisitor6',
   'Greater Glyph Of Warding':'Inquisitor6',
+  'Greater Invisibility':'Inquisitor4',
+  'Greater Magic Weapon':'Inquisitor3',
+  'Greater Restoration':'Life7',
+  'Guidance':'Inquisitor0',
+  'Gust Of Wind':'Wind2',
+  'Hallow':'Inquisitor5',
+  'Halt Undead':'Inquisitor3',
   'Harm':'Inquisitor6',
-  'Heal':'Inquisitor6',
+  'Heal':'Inquisitor6,Life6',
   "Heroes' Feast":'Inquisitor6',
+  'Heroism':'Inquisitor3',
+  'Hide From Undead':'Inquisitor1',
+  'Hold Monster':'Inquisitor4',
+  'Hold Person':'Inquisitor2',
+  'Holy Smite':'Inquisitor4',
   'Holy Word':'Inquisitor6',
+  'Horrid Wilting':'Bones8',
+  'Hypnotic Pattern':'Heavens2',
+  'Identify':'Lore1',
+  'Incendiary Cloud':'Flame8',
+  'Inflict Critical Wounds':'Inquisitor4',
+  'Inflict Light Wounds':'Inquisitor1',
+  'Inflict Moderate Wounds':'Inquisitor2',
+  'Inflict Serious Wounds':'Inquisitor3',
+  'Invisibility Purge':'Inquisitor3',
+  'Invisibility':'Inquisitor2',
+  'Keen Edge':'Inquisitor3',
+  'Knock':'Inquisitor2',
+  'Legend Lore':'Inquisitor6,Lore4',
+  'Lesser Geas':'Inquisitor4',
+  'Lesser Restoration':'Inquisitor2,Life2',
+  'Light':'Inquisitor0',
+  'Locate Object':'Inquisitor3,Lore3',
+  'Magic Circle Against Chaos':'Inquisitor3',
+  'Magic Circle Against Evil':'Inquisitor3',
+  'Magic Circle Against Good':'Inquisitor3',
+  'Magic Circle Against Law':'Inquisitor3',
+  'Magic Stone':'Stone1',
+  'Magic Vestment':'Battle3,Inquisitor3',
+  'Magic Weapon':'Inquisitor1',
+  'Mark Of Justice':'Inquisitor5',
+  "Mass Bull's Strength":'Battle6',
+  'Mass Cure Light Wounds':'Inquisitor5',
+  'Mass Cure Moderate Wounds':'Inquisitor6',
+  'Mass Heal':'Life8',
+  'Mass Inflict Light Wounds':'Inquisitor5',
   'Mass Inflict Moderate Wounds':'Inquisitor6',
-  'Legend Lore':'Inquisitor6',
+  "Mass Owl's Wisdom":'Lore6',
+  'Meld Into Stone':'Stone3',
+  'Meteor Swarm':'Heavens9',
+  'Moment Of Prescience':'Lore8',
+  'Neutralize Poison':'Inquisitor4,Life3',
+  'Nondetection':'Inquisitor3',
+  'Obscure Object':'Inquisitor3',
+  "Order's Wrath":'Inquisitor4',
+  'Overland Flight':'Heavens5',
+  'Prayer':'Inquisitor3',
+  'Prismatic Spray':'Heavens7',
+  'Protection From Chaos':'Inquisitor1',
+  'Protection From Energy':'Inquisitor3',
+  'Protection From Evil':'Inquisitor1',
+  'Protection From Good':'Inquisitor1',
+  'Protection From Law':'Inquisitor1',
+  'Rainbow Pattern':'Heavens4',
+  'Read Magic':'Inquisitor0',
+  'Remove Curse':'Inquisitor3',
+  'Remove Disease':'Inquisitor3',
+  'Remove Fear':'Inquisitor1',
+  'Remove Paralysis':'Inquisitor2',
+  'Repel Metal Or Stone':'Stone8',
   'Repulsion':'Inquisitor6',
+  'Resist Energy':'Flame2,Inquisitor2',
+  'Resistance':'Inquisitor0',
+  'Restoration':'Inquisitor4,Life4',
+  'Righteous Might':'Battle5,Inquisitor5',
+  'Sanctuary':'Inquisitor1',
+  'Searing Light':'Inquisitor3',
+  'See Invisibility':'Inquisitor2',
+  'Sending':'Inquisitor4',
+  'Shield Of Faith':'Inquisitor1',
+  'Shield Other':'Inquisitor2',
+  'Silence':'Inquisitor2',
+  'Slay Living':'Bones5',
+  'Speak With Dead':'Inquisitor3',
+  'Speak With Plants':'Nature3',
+  'Spell Immunity':'Inquisitor4',
+  'Spell Resistance':'Inquisitor5',
+  'Spiritual Weapon':'Inquisitor2',
+  'Stabilize':'Inquisitor0',
+  'Statue':'Stone7',
+  'Stone Tell':'Nature6,Stone6',
+  'Stoneskin':'Inquisitor4,Stone5',
+  'Storm Of Vengeance':'Battle9',
+  'Summon Monster V':'Flame5',
+  'Sunburst':'Heavens8',
+  'Telepathic Bond':'Inquisitor5',
+  'Time Stop':'Lore9',
+  'Tongues':'Inquisitor2,Lore2',
+  'True Resurrection':'Life9',
+  'True Seeing':'Inquisitor5',
+  'True Strike':'Inquisitor1',
   'Undeath To Death':'Inquisitor6',
-  'Word Of Chaos':'Inquisitor6'
-
+  'Undetectable Alignment':'Inquisitor2',
+  'Unhallow':'Inquisitor5',
+  'Unholy Blight':'Inquisitor4',
+  'Virtue':'Inquisitor0',
+  'Vision':'Lore7',
+  'Wail Of The Banshee':'Bones9',
+  'Wall Of Fire':'Battle4,Flame4',
+  'Wall Of Ice':'Waves4',
+  'Wall Of Stone':'Stone4',
+  'Water Breathing':'Waves3',
+  'Whirlwind':'Wind8',
+  'Whispering Wind':'Inquisitor2',
+  'Word Of Chaos':'Inquisitor6',
+  'Zone Of Truth':'Inquisitor2'
 };
 PathfinderSupplements.APG_TRAITS = {
   // Already declared in Pathfinder.js
@@ -2549,7 +2792,9 @@ PathfinderSupplements.APG_CLASSES = {
       '"1:Nature Mystery:Mystery","1:Stone Mystery:Mystery",' +
       '"1:Waves Mystery:Mystery","1:Wind Mystery:Mystery",' +
       '"1:Clouded Vision:Curse","1:Deaf:Curse","1:Haunted:Curse",' +
-      '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse" ' +
+      '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse",' +
+      // Need to list Combat Healer here since it's available via two Mysteries
+      '"7:Combat Healer:Battle Revelation,Life Revelation" ' +
     'CasterLevelArcane=levels.Oracle ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -2853,7 +3098,7 @@ PathfinderSupplements.featRulesExtra = function(rules, name) {
  */
 PathfinderSupplements.pathRulesExtra = function(rules, name) {
   if(name.match(/Mystery/)) {
-    rules.defineRule('selectableFeatureCount.' + name,
+    rules.defineRule('selectableFeatureCount.Oracle (' + name.replace('Mystery', 'Revelation') + ')',
       'features.' + name, '?', null,
       'featureNotes.revelation', '=', null
     );
