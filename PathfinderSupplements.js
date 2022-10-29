@@ -446,7 +446,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Acid Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
-  'Acid Skin':'Section=feature Note="FILL"',
+  'Acid Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
   'Act As One':
     'Section=combat ' +
     'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
@@ -458,12 +460,15 @@ PathfinderSupplements.APG_FEATURES = {
     'Note=' +
       '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
       '"+%V Craft (Alchemy)"',
-  'Arcane Archivist':'Section=feature Note="FILL"',
+  'Arcane Archivist':
+    'Section=magic ' +
+    'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
   'Armor Of Bones':
     'Section=combat ' +
     'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Aspect':'Section=feature Note="FILL"',
-  'Automatic Writing':'Section=feature Note="FILL"',
+  'Automatic Writing':
+    'Section=magic Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Awesome Display':
     'Section=magic ' +
@@ -487,13 +492,15 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=combat ' +
     'Note="Successful attack causes %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
   'Blizzard':'Section=feature Note="FILL"',
-  'Bonded Mount':'Section=feature Note="FILL"',
+  'Bonded Mount':'Section=feature Note="Has mount animal companion"',
   'Braggart':
     'Section=combat,feature ' +
     'Note=' +
       '"+2 attacks on demoralized target",' +
       '"Has Dazzling Display features"',
-  'Brain Drain':'Section=feature Note="FILL"',
+  'Brain Drain':
+    'Section=feature ' +
+    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
   'Bomb':
     'Section=combat ' +
     'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %{levels.Alchemist + intelligenceModifier}/dy"',
@@ -519,18 +526,22 @@ PathfinderSupplements.APG_FEATURES = {
   'Challenge':
     'Section=combat ' +
     'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
-  'Channel':'Section=feature Note="FILL"',
+  'Channel':'Section=feature Note="Has Channel Energy feature"',
   'Cinder Dance':
     'Section=ability,feature ' +
     'Note=' +
       '"+10 Speed",' +
       '"Has %V features"',
-  'Clobbering Strike':'Section=feature Note="FILL"',
+  'Clobbering Strike':
+    'Section=combat ' +
+    'Note="May make swift action trip attempt w/out AOO after critical hit"',
   'Clouded Vision':
     'Section=feature ' +
     'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' blindsight\\" : \'\'}"',
   'Coat Of Many Stars':'Section=combat Note="Conjured coat gives +{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
-  'Combat Healer':'Section=feature Note="FILL"',
+  'Combat Healer':
+    'Section=feature ' +
+    'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
   'Combine Extracts':
     'Section=magic Note="May combine two effects into one extract"',
   'Concentrate Poison':
@@ -539,7 +550,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Concussive Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
-  'Crystal Strike':'Section=feature Note="FILL"',
+  'Crystal Strike':
+    'Section=feature ' +
+    'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Deaf':
     'Section=combat,feature,magic,skill ' +
@@ -551,7 +564,9 @@ PathfinderSupplements.APG_FEATURES = {
   "Death's Touch":
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
-  'Delay Affliction':'Section=feature Note="FILL"',
+  'Delay Affliction':
+    'Section=save ' +
+    'Note="May delay effects of failed save vs. disease or poison for %{levels.Oracle} %{levels.Oracle>=15 ? 3 : levels.Oracle >= 7 ? 2 : 1}/dy"',
   'Delayed Bomb':
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
@@ -570,17 +585,25 @@ PathfinderSupplements.APG_FEATURES = {
   'Dweller In Darkness':
     'Section=magic ' +
     'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
-  'Earth Glide':'Section=feature Note="FILL"',
+  'Earth Glide':
+    'Section=ability ' +
+    'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
   'Eidolon':'Section=feature Note="FILL"',
   'Elixir Of Life':
     'Section=magic ' +
     'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
-  'Energy Body':'Section=feature Note="FILL"',
+  'Energy Body':
+    'Section=feature ' +
+    'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
   'Enhance Potion':
     'Section=magic ' +
     'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
-  'Enhanced Cures':'Section=feature Note="FILL"',
-  'Erosion Touch':'Section=feature Note="FILL"',
+  'Enhanced Cures':
+     'Section=magic ' +
+     'Note="Level-based healing by Cure spells gives %{levels.Oracle} HP"',
+  'Erosion Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts %{levels.Oracle}d6 HP to objects %{levels.Oracle//3>?1}/dy"',
   'Eternal Potion':
      'Section=magic ' +
      'Note="May cause effects of 1 imbibed potion to become permanent"',
@@ -625,7 +648,9 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
   'Fluid Nature':'Section=feature Note="FILL"',
   'Fluid Travel':'Section=feature Note="FILL"',
-  'Focused Trance':'Section=feature Note="FILL"',
+  'Focused Trance':
+    'Section=skill ' +
+    'Note="Trance of 1d6 rd gives +%{levels.Oracle} saves vs. sonic and gaze attacks and 1 +20 intelligence skill test %{charismaModifier}/dy"',
   'For The Faith':
     'Section=combat ' +
     'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
@@ -638,7 +663,11 @@ PathfinderSupplements.APG_FEATURES = {
   'Form Of Flame':
     'Section=magic Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
   'Freezing Spells':'Section=feature Note="FILL"',
-  'Friend To The Animals':'Section=feature Note="FILL"',
+  'Friend To The Animals':
+    'Section=magic,save ' +
+    'Note=' +
+      '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
+      '"R30\' Animals gain +%{charismaModifier} on all saves"',
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
@@ -715,17 +744,21 @@ PathfinderSupplements.APG_FEATURES = {
       '"-%V Speed/Speed is unaffected by encumbrance%V",' +
       '"Immune to %V"',
   'Life Bond':'Section=feature Note="FILL"',
-  'Life Leach':'Section=feature Note="FILL"',
-  'Life Link':'Section=feature Note="FILL"',
+  'Life Leach':
+    'Section=combat ' +
+    'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
+  'Life Link':
+    'Section=combat ' +
+    'Note="May establish bond with target that transfers 5 HP damage to self earch rd while within $RM\'"',
   'Life Mystery':
     'Section=skill ' +
     'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
-  'Lifesense':'Section=feature Note="FILL"',
+  'Lifesense':'Section=feature Note="30\' Blindsight"',
   'Lightning Breath':'Section=feature Note="FILL"',
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
-  'Lore Keeper':'Section=feature Note="FILL"',
+  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
   'Lore Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Knowledge is a class skill"',
@@ -750,14 +783,17 @@ PathfinderSupplements.APG_FEATURES = {
       '"Touch forces lycanthrope target into human form%{levels.Oracle>=5 \' or inflicts rage\' : \'\'} for %{levels.Oracle} rd %{levels.Oracle//5>?1}/dy",' +
       '"Immune to lycanthropy"',
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
-  'Mental Acuity':'Section=feature Note="FILL"',
+  'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Merge Forms':'Section=feature Note="FILL"',
   'Mighty Charge':
     'Section=combat ' +
     'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
-  'Mighty Pebble':'Section=feature Note="FILL"',
+  'Mighty Pebble':
+    'Section=combat ' +
+    'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Molten Skin':
-    'Section=save Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
   'Moment Of Triumph':
     'Section=feature ' +
     'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attacks, damage, saves, skillChecks, and AC 1/dy"',
@@ -779,11 +815,13 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery Spell':'Section=feature Note="FILL"',
   'Mystery':'Section=feature Note="1 Selection"',
-  'Natural Divination':'Section=feature Note="FILL"',
+  'Natural Divination':
+    'Section=feature ' +
+    'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
   'Nature Mystery':
     'Section=skill ' +
     'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill/Swim is a class skill"',
-  "Nature's Whispers":'Section=feature Note="FILL"',
+  "Nature's Whispers":'Section=combat Note="+%V AC/+%V CMD"',
   'Near Death':
     'Section=save ' +
     'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
@@ -863,10 +901,11 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=combat ' +
     'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
   'Revelation':'Section=feature Note="%V Selections"',
-  'Rock Throwing':'Section=feature Note="FILL"',
-  'Safe Curing':'Section=feature Note="FILL"',
+  'Rock Throwing':'Section=combat Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
+  'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
   'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
-  'Shard Explosion':'Section=feature Note="FILL"',
+  'Shard Explosion':
+    'Section=combat Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
   'Shield Ally':'Section=feature Note="FILL"',
   'Shield Of The Liege':
     'Section=combat ' +
@@ -874,7 +913,11 @@ PathfinderSupplements.APG_FEATURES = {
   'Shock Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
-  'Sidestep Secret':'Section=feature Note="FILL"',
+  'Sidestep Secret':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC",' +
+      '"+%V Reflex"',
   'Skill At Arms':
     'Section=combat ' +
     'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
@@ -888,13 +931,20 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
   'Spark Skin':'Section=feature Note="FILL"',
-  'Speak With Animals':'Section=feature Note="FILL"',
-  'Spirit Boost':'Section=feature Note="FILL"',
-  'Spirit Of Nature':'Section=feature Note="FILL"',
+  'Speak With Animals (Oracle)':
+    'Section=magic ' +
+    'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
+  'Spirit Boost':
+    'Section=magic ' +
+    'Note="Up to %{levels.Oracle} excess HP from Cure spell become temporary HP for 1 rd"',
+  'Spirit Of Nature':
+    'Section=combat ' +
+    'Note="At negative HP, stabilize automatically%{levels.Oracle<10 ? \' in natural setting\' : \'\'}%{levels.Oracle>=15 ? \' and gain fast healing 3 for 1d4 rd\' : levels.Oracle>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
   'Spirit Walk':
     'Section=magic ' +
     'Note="Self becomes incorporeal for %{levels.Oracle} rd %{levels.Oracle>=15 ? 2 : 1}/dy"',
-  'Spontaneous Symbology':'Section=feature Note="FILL"',
+  'Spontaneous Symbology':
+    'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
   'Spray Of Shooting Stars':
     'Section=combat ' +
     'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
@@ -905,7 +955,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Steal Glory':
     'Section=combat ' +
     'Note="May make AOO against threatened target when ally scores a critical hit"',
-  'Steelbreaker Skin':'Section=feature Note="FILL"',
+  'Steelbreaker Skin':
+    'Section=combat ' +
+    'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness\' : \'\'} for %{levels.Oracle} min 1/dy"',
   'Stem The Tide':'Section=feature Note="Has Stand Still features"',
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
   'Sticky Bomb':
@@ -917,7 +969,11 @@ PathfinderSupplements.APG_FEATURES = {
   'Stone Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
-  'Stone Stability':'Section=feature Note="FILL"',
+  'Stone Stability':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+4 CMD vs. bull rush and trip while standing on ground",' +
+      '"Has %V feature"',
   'Strategy':
     'Section=combat ' +
     'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
@@ -939,7 +995,7 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=feature ' +
     'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
   'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
-  'Think On It':'Section=feature Note="FILL"',
+  'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
   'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
   // 'Throw Anything' in Pathfinder.js
   'Thunderburst':'Section=feature Note="FILL"',
@@ -948,13 +1004,16 @@ PathfinderSupplements.APG_FEATURES = {
     'Note=' +
       '"Can speak only chosen outsider or elemental language during combat",' +
       '"+%V Language Count%1"',
-  'Touch Of Acid':'Section=feature Note="FILL"',
+  'Touch Of Acid':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{leveles.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
   'Touch Of Electricity':'Section=feature Note="FILL"',
   'Touch Of Flame':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{leveles.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
   // 'Track' in Pathfinder.js
-  'Transcendental Bond':'Section=feature Note="FILL"',
+  'Transcendental Bond':
+    'Section=magic Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
   'Transposition':'Section=feature Note="FILL"',
   'True Judgment':
     'Section=combat ' +
@@ -966,7 +1025,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Undead Servitude':
     'Section=feature ' +
     'Note="Can use Command Undead feature %{charismaModifier+3}/dy"',
-  'Undo Artifice':'Section=feature Note="FILL"',
+  'Undo Artifice':
+    'Section=feature ' +
+    'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
   'Voice Of The Grave':
     'Section=magic Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
   'Vortex Spells':'Section=feature Note="FILL"',
@@ -985,7 +1046,8 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
   'Weapon Mastery':
     'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
-  'Whirlwind Lesson':'Section=feature Note="FILL"',
+  'Whirlwind Lesson':
+    'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
   'Wind Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Fly is a class skill/Stealth is a class skill"',
@@ -1352,7 +1414,7 @@ PathfinderSupplements.APG_PATHS = {
       '"7:Life Leach:Nature Revelation",' +
       '"1:Natural Divination:Nature Revelation",' +
       '"1:Nature\'s Whispers:Nature Revelation",' +
-      '"1:Speak With Animals:Nature Revelation",' +
+      '"1:Speak With Animals (Oracle):Nature Revelation",' +
       '"1:Spirit Of Nature:Nature Revelation",' +
       '"1:Transcendental Bond:Nature Revelation",' +
       '"1:Undo Artifice:Nature Revelation"',
@@ -3192,6 +3254,62 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
   } else if(name == 'Heavens Mystery') {
     rules.defineRule('magicNotes.lureOfTheHeavens',
       pathLevel, '=', 'source>=10 ? ", fly for " + source + " min/dy" : source>=5 ? "" : null'
+    );
+  } else if(name == 'Life Mystery') {
+    rules.defineRule
+      ('features.Channel Energy', 'featureNotes.channel', '=', '1');
+    // Oracle channeling gives two fewer uses/dy than Cleric
+    rules.defineRule
+      ('magicNotes.channelEnergy', 'featureNotes.channel', '=', '-2');
+    rules.defineRule('magicNotes.channelEnergy.1',
+      'levels.Oracle', '+=', 'Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule('magicNotes.channelEnergy.2',
+      'levels.Oracle', '+=', '10 + Math.floor(source / 2)'
+    );
+  } else if(name == 'Lore Mystery') {
+    // NOTE: This calculation is correct only if taken at 1st level
+    rules.defineRule('abilityNotes.mentalAcuity',
+      pathLevel, '=', 'Math.floor((source + 2) / 3)'
+    );
+    rules.defineRule('combatNotes.sidestepSecret',
+      'charismaModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+    rules.defineRule('magicNotes.whirlwindLesson.1',
+      pathLevel, '=', 'source>=7 ? " and share with another " + (source>=15 ? source : 1) + " for %2 hr" : ""'
+    );
+    rules.defineRule
+      ('magicNotes.whirlwindLesson.2', 'charismaModifier', '=', null);
+    rules.defineRule('saveNotes.sidestepSecret',
+      'charismaModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+    rules.defineRule('skillNotes.loreKeeper(Oracle)',
+      'charismaModifier', '=', null,
+      'intelligenceModifier', '+', '-source'
+    );
+  } else if(name == 'Lore Mystery') {
+    rules.defineRule('companionOracleLevel',
+      'oracleFeatures.Bonded Mount', '?', null,
+      'levels.Oracle', '=', null
+    );
+    rules.defineRule
+      ('companionMasterLevel', 'companionOracleLevel', '^=', null);
+  } else if(name == 'Nature Mystery') {
+    rules.defineRule("combatNotes.nature'sWhispers",
+      'charismaModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+  } else if(name == 'Stone Mystery') {
+    rules.defineRule('featureNotes.stoneStability',
+      pathLevel, '=', 'source<5 ? null : source<10 ? "Improved Trip" : "Improved Trip and Greater Trip"'
+    );
+    rules.defineRule('features.Greater Trip',
+      'featureNotes.stoneStability', '=', 'source.includes("Greater Trip") ? 1 : null'
+    );
+    rules.defineRule('features.Improved Trip',
+      'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
     );
   }
 };
