@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 /*jshint esversion: 6 */
 /* jshint forin: false */
-/* globals Pathfinder, QuilvynUtils */
+/* globals Pathfinder, QuilvynRules, QuilvynUtils, SRD35 */
 "use strict";
 
 /*
@@ -52,7 +52,9 @@ function PathfinderSupplements(supplement, rules) {
 
   let armors = PathfinderSupplements[supplement + '_ARMORS'] || {};
   let classes = PathfinderSupplements[supplement + '_CLASSES'] || {};
+  let companions = PathfinderSupplements[supplement + '_ANIMAL_COMPANIONS'] || {};
   let deities = PathfinderSupplements[supplement + '_DEITIES'] || {};
+  let familiars = PathfinderSupplements[supplement + '_FAMILIARS'] || {};
   let feats = PathfinderSupplements[supplement + '_FEATS'] || {};
   let features = PathfinderSupplements[supplement + '_FEATURES'] || {};
   let languages = PathfinderSupplements[supplement + '_LANGUAGES'] || {};
@@ -67,6 +69,7 @@ function PathfinderSupplements(supplement, rules) {
   let traits = PathfinderSupplements[supplement + '_TRAITS'] || {};
   let weapons = PathfinderSupplements[supplement + '_WEAPONS'] || {};
 
+  PathfinderSupplements.aideRules(rules, companions, familiars);
   PathfinderSupplements.combatRules(rules, armors, shields, weapons);
   PathfinderSupplements.magicRules(rules, spells, spellLevels);
   PathfinderSupplements.talentRules
@@ -75,13 +78,28 @@ function PathfinderSupplements(supplement, rules) {
     rules, {}, classes, deities, {}, paths, races, {}, traits, prestiges, {}
   );
 
+  rules.randomizeOneAttribute = PathfinderSupplements.randomizeOneAttribute;
+
 }
 
 PathfinderSupplements.VERSION = '2.3.1.0';
 
 // Advanced Player's Guide
+PathfinderSupplements.APG_ANIMAL_COMPANIONS = {
+  // Eidolon have the same stats as animal companions, but the calculations
+  // are different.
+  'Biped Eidolon':
+    'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=2 Attack=0 Dam=2@1d4 ' +
+    'Size=M',
+  'Quadruped Eidolon':
+    'Str=14 Dex=14 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=2 Attack=0 Dam=1d6 ' +
+    'Size=M',
+  'Serpentine Eidolon':
+    'Str=12 Dex=16 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=2 Attack=0 Dam=1d6,1d6 ' +
+    'Size=M'
+};
 PathfinderSupplements.APG_ARMORS = {
-  'Agile Breatplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
+  'Agile Breastplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
   'Agile Half-Plate':'AC=8 Weight=2 Dex=0 Skill=7 Spell=40',
   'Armored Coat':'AC=4 Weight=2 Dex=3 Skill=2 Spell=20',
   'Quilted Cloth':'AC=1 Weight=1 Dex=8 Skill=0 Spell=10',
@@ -454,7 +472,9 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
   'Aid Allies (Cavalier)':
     'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
-  'Air Barrier':'Section=feature Note="FILL"',
+  'Air Barrier':
+    'Section=combat ' +
+    'Note="Conjured air shell gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Alchemy':
     'Section=magic,skill ' +
     'Note=' +
@@ -491,7 +511,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Bleeding Wounds':
     'Section=combat ' +
     'Note="Successful attack causes %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
-  'Blizzard':'Section=feature Note="FILL"',
+  'Blizzard':
+    'Section=combat ' +
+    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
   'Bonded Mount':'Section=feature Note="Has mount animal companion"',
   'Braggart':
     'Section=combat,feature ' +
@@ -519,7 +541,7 @@ PathfinderSupplements.APG_FEATURES = {
     'Note=' +
       '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
       '"+%V %1"',
-  'Cantrips':'Section=feature Note="FILL"',
+  'Cantrips':'Section=magic Note="May cast 0-level spells"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
     'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
@@ -544,13 +566,15 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
   'Combine Extracts':
     'Section=magic Note="May combine two effects into one extract"',
+  'Companion Darkvision':
+    'Section=companion Note="60\' b/w vision in darkness"',
   'Concentrate Poison':
     'Section=feature ' +
     'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
-  'Crystal Strike':
+  'Crystal Sight':
     'Section=feature ' +
     'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
@@ -627,27 +651,62 @@ PathfinderSupplements.APG_FEATURES = {
   'Feral Mutagen':
     'Section=combat ' +
     'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
-  'Final Revelation (Battle Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Bones Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Flame Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Heavens Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Life Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Lore Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Nature Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Stone Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Waves Mystery)':'Section=feature Note="FILL"',
-  'Final Revelation (Wind Mystery)':'Section=feature Note="FILL"',
+  'Final Revelation (Battle Mystery)':
+    'Section=combat ' +
+    'Note="May take full-attack action and move %{speed}\'/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{hitPoints*2} HP"',
+  'Final Revelation (Bones Mystery)':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"Automatically stabilize at negative HP",' +
+      '"May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy"',
+  'Final Revelation (Flame Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spell w/out cost"',
+  'Final Revelation (Heavens Mystery)':
+    'Section=combat,feature,save ' +
+    'Note=' +
+      '"Automatically stabilize at negative HP/Critical hits automatically confirmed",' +
+      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear",' +
+      '""',
+  'Final Revelation (Life Mystery)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"Remain alive until -%{hitPoints*2} HP",' +
+      '"Immune to bleed, death attacks, exhaustion, fatigue, nausea effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
+  'Final Revelation (Lore Mystery)':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast <i>Wish</i> 1/dy",' +
+      '"May take 20 on all Knowledge"',
+  'Final Revelation (Nature Mystery)':
+    'Section=feature ' +
+    'Note="Cacooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
+  'Final Revelation (Stone Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid or earth spell w/out cost"',
+  'Final Revelation (Waves Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water spell w/out cost"',
+  'Final Revelation (Wind Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air or electricity spell w/out cost"',
   'Fire Breath':
     'Section=combat ' +
     'Note="15\' cone inflicts %{levels.Oracle}d4 HP fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
   'Firestorm':
     'Section=combat ' +
-    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d7 HP fire (Ref half) for %{charismaModifier} rd 1/dy"',
+    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d6 HP fire (Ref half) for %{charismaModifier} rd 1/dy"',
   'Flame Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
-  'Fluid Nature':'Section=feature Note="FILL"',
-  'Fluid Travel':'Section=feature Note="FILL"',
+  'Fluid Nature':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+2 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe critical confirmation",' +
+      '"Has %V features"',
+  'Fluid Travel':
+    'Section=ability ' +
+    'Note="May move full speed across liquid without contact damage%1"',
   'Focused Trance':
     'Section=skill ' +
     'Note="Trance of 1d6 rd gives +%{levels.Oracle} saves vs. sonic and gaze attacks and 1 +20 intelligence skill test %{charismaModifier}/dy"',
@@ -661,8 +720,11 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
   'Form Of Flame':
-    'Section=magic Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
-  'Freezing Spells':'Section=feature Note="FILL"',
+    'Section=magic ' +
+    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
+  'Freezing Spells':
+    'Section=magic ' +
+    'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
   'Friend To The Animals':
     'Section=magic,save ' +
     'Note=' +
@@ -671,7 +733,8 @@ PathfinderSupplements.APG_FEATURES = {
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
-  'Gaseous Form':'Section=feature Note="FILL"',
+  'Gaseous Form':
+    'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
   'Gate':'Section=feature Note="FILL"',
   'Gaze Of Flames':
     'Section=feature,magic ' +
@@ -712,8 +775,12 @@ PathfinderSupplements.APG_FEATURES = {
     'Section=skill ' +
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
   'Hex':'Section=feature Note="FILL"',
-  'Ice Armor':'Section=feature Note="FILL"',
-  'Icy Skin':'Section=feature Note="FILL"',
+  'Ice Armor':
+    'Section=combat ' +
+    'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
+  'Icy Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
   'Infuse Mutagen':
      'Section=magic ' +
      'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
@@ -728,7 +795,8 @@ PathfinderSupplements.APG_FEATURES = {
       '"May create alchemical items as a full-round action"',
   'Interstellar Void':
     'Section=combat Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
-  'Invisibility':'Section=feature Note="FILL"',
+  'Invisibility':
+    'Section=magic Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
     'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
@@ -749,12 +817,14 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
   'Life Link':
     'Section=combat ' +
-    'Note="May establish bond with target that transfers 5 HP damage to self earch rd while within $RM\'"',
+    'Note="May establish bond with target that transfers 5 HP damage to self each rd while within $RM\'"',
   'Life Mystery':
     'Section=skill ' +
     'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
   'Lifesense':'Section=feature Note="30\' Blindsight"',
-  'Lightning Breath':'Section=feature Note="FILL"',
+  'Lightning Breath':
+    'Section=combat ' +
+    'Note="R30\' Breath inflicts %{levels.Oracle}d4 electricity (Ref half) %{(levels.Oracle+5)//5}/dy"',
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
@@ -882,7 +952,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Protect The Meek':
     'Section=combat ' +
     'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
-  'Punitive Transformation':'Section=feature Note="FILL"',
+  'Punitive Transformation':
+    'Section=magic ' +
+    'Note="May cast <i>Baleful Polymorph</i>, lasting %{levels.Oracle} rd, %{charismaModifier}/dy"',
   'Raise The Dead':
     'Section=magic ' +
     'Note="Summoned %{levels.Oracle} HD %{levels.Oracle>= 15 ? \'advanced skeleton or zombie\' : levels.Oracle>=7 ? \'bloody skeleton or fast zombie\' : \'skeleton or zombie\'} serves for %{charismaModifier} rd"',
@@ -930,7 +1002,9 @@ PathfinderSupplements.APG_FEATURES = {
   'Soul Siphon':
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
-  'Spark Skin':'Section=feature Note="FILL"',
+  'Spark Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
   'Speak With Animals (Oracle)':
     'Section=magic ' +
     'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
@@ -998,7 +1072,8 @@ PathfinderSupplements.APG_FEATURES = {
   'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
   'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
   // 'Throw Anything' in Pathfinder.js
-  'Thunderburst':'Section=feature Note="FILL"',
+  'Thunderburst':
+    'Section=combat Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
   'Tongues':
     'Section=combat,feature ' +
     'Note=' +
@@ -1006,11 +1081,13 @@ PathfinderSupplements.APG_FEATURES = {
       '"+%V Language Count%1"',
   'Touch Of Acid':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{leveles.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
-  'Touch Of Electricity':'Section=feature Note="FILL"',
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
+  'Touch Of Electricity':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP electricity %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are shock\' : \'\'}"',
   'Touch Of Flame':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{leveles.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
   // 'Track' in Pathfinder.js
   'Transcendental Bond':
     'Section=magic Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
@@ -1030,7 +1107,9 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
   'Voice Of The Grave':
     'Section=magic Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
-  'Vortex Spells':'Section=feature Note="FILL"',
+  'Vortex Spells':
+    'Section=magic ' +
+    'Note="Successful critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
   'War Sight':
     'Section=combat ' +
     'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
@@ -1039,8 +1118,14 @@ PathfinderSupplements.APG_FEATURES = {
     'Note=' +
       '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%1",' +
       '"-4 Charisma-based skills other than Intimidate"',
-  'Water Form':'Section=feature Note="FILL"',
-  'Water Sight':'Section=feature Note="FILL"',
+  'Water Form':
+    'Section=magic ' +
+    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become water elemental for %{levels.Oracle} hr 1/dy"',
+  'Water Sight':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Can see normally through fog and mist",' +
+      '"May use <i>%V</i> via pool %{levels.Oracle} rd/dy"',
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
@@ -1051,10 +1136,16 @@ PathfinderSupplements.APG_FEATURES = {
   'Wind Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Fly is a class skill/Stealth is a class skill"',
-  'Wind Sight':'Section=feature Note="FILL"',
-  'Wings Of Air':'Section=feature Note="FILL"',
+  'Wind Sight':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> on any unobstructed area %V rd/dy",' +
+      '"Ignore Perception wind penalties and 100\' distance penalties"',
+  'Wings Of Air':'Section=ability Note="Fly %{levels.Oracle>=10 ? 90 : 60}\'"',
   'Wings Of Fire':'Section=ability Note="Fly 60\'"',
-  'Wintry Touch':'Section=feature Note="FILL"',
+  'Wintry Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
   "Witch's Familiar":'Section=feature Note="FILL"',
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -1071,7 +1162,7 @@ PathfinderSupplements.APG_FEATURES = {
     'Note="Cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
   'Aspect Of The Beast':'Section=feature Note="FILL"',
   'Bashing Finish':
-    'Section=combat Note="Gain free shield bash after critical hit"',
+    'Section=combat Note="May make free shield bash after critical hit"',
   'Bloody Assault':
     'Section=combat ' +
     'Note="May trade -5 attack for extra 1d4 HP bleeding damage (DC 15 Heal ends)"',
@@ -2868,7 +2959,7 @@ PathfinderSupplements.APG_CLASSES = {
       '"features.Order Of The Star ? 15:Retribution",' +
       '"features.Order Of The Sword ? 2:By My Honor",' +
       '"features.Order Of The Sword ? 8:Mounted Mastery",' +
-      '"features.Order Of The Sword ? 15:Kight\'s Challenge" ' +
+      '"features.Order Of The Sword ? 15:Knight\'s Challenge" ' +
     'Selectables=' +
       '"1:Order Of The Cockatrice:Order","1:Order Of The Dragon:Order",' +
       '"1:Order Of The Lion:Order","1:Order Of The Shield:Order",' +
@@ -2945,6 +3036,26 @@ PathfinderSupplements.APG_CLASSES = {
       '"4:Shield Ally","6:Maker\'s Call",8:Transposition,10:Aspect,' +
       '"12:Greater Shield Ally","14:Life Bond","16:Merge Forms",' +
       '"18:Greater Aspect",19:Gate,"20:Twin Eidolon" ' +
+    'Selectables=' +
+      '1:Bite:Evolution,1:Claws:Evolution,1:Climb:Evolution,' +
+      '1:Gills:Evolution,"1:Improved Damage:Evolution",' +
+      '"1:Improved Natural Armor","1:Magic Attacks:Evolution",' +
+      '1:Mount:Evolution,1:Pincers:Evolution,1:Pounce:Evolution,' +
+      '1:Pull:Evolution,1:Push:Evolution,1:Reach:Evolution,1:Scent:Evolution,' +
+      '1:Skilled:Evolution,1:Slam:Evolution,1:Sting:Evolution,' +
+      '1:Swim:Evolution,1:Tail:Evolution,"1:Tail Slap:Evolution",' +
+      '1:Tentacle:Evolution,"1:Wing Buffet:Evolution",' +
+      '"1:Ability Increase:Evolution",1:Constrict:Evolution,' +
+      '"1:Energy Attacks:Evolution",1:Flight:Evolution,1:Gore:Evolution,' +
+      '1:Grab:Evolution,1:Immunity:Evolution,1:Limbs:Evolution,' +
+      '1:Poison:Evolution,1:Rake:Evolution,1:Rend:Evolution,' +
+      '1:Trample:Evolution,1:Tremorsense:Evolution,1:Trip:Evolution,' +
+      '"1:Weapon Training:Evolution",1:Blindsense:Evolution,' +
+      '1:Burrow:Evolution,"1:Damage Reduction:Evolution",' +
+      '"1:Frightful Presence:Evolution","1:Swallow Whole:Evolution",' +
+      '1:Web:Evolution,1:Blindsight:Evolution,"1:Breath Weapon:Evolution",' +
+      '"1:Fast Healing:Evolution",1:Large:Evolution,' +
+      '"1:Spell Resistance:Evolution" ' +
     'CasterLevelArcane=levels.Summoner ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -2983,6 +3094,12 @@ PathfinderSupplements.APG_CLASSES = {
 PathfinderSupplements.APG_PRESTIGES = {
 };
 PathfinderSupplements.APG_DEITIES = {
+};
+
+/* Defines rules related to animal companions and familiars. */
+PathfinderSupplements.aideRules = function(rules, companions, familiars) {
+  Pathfinder.aideRules(rules, companions, familiars);
+  // No changes needed to the rules defined by Pathfinder method
 };
 
 /* Defines rules related to combat. */
@@ -3207,7 +3324,45 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
          'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
        );
     });
+  } else if(name == 'Summoner') {
+    rules.defineRule('companionMasterLevel', 'eliodonMasterLevel', '^=', null);
+    rules.defineRule('eliodonMasterLevel', classLevel, '=', null);
+    rules.defineRule('eidolonStats.AC',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[1, 1, 0, 0, 0, -1, -1, -1, -2, -2, -1, -3, -3, -2, -4, -4, -3, -5, -4, -4][source - 1]'
+    );
+    rules.defineRule('eidolonStats.BAB',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[0, 0, 1, 0, 1, 1, 2, 1, 1, 2, 3, 2, 2, 2, 3, 3, 3, 3, 4, 3][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Dex',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '+', '[0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Feats',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0][source - 1]'
+    );
+    rules.defineRule('eidolonStats.HD',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '+', 'source % 4 == 3 ? 0 : -1'
+    );
+    rules.defineRule('eidolonStats.Skills',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[2, 5, 9, 8, 11, 14, 18, 17, 20, 23, 27, 26, 29, 32, 36, 35, 38, 41, 45, 44][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Str', 'eilodonStats.Dex', '=', null);
+    ['AC', 'BAB', 'Dex', 'Feats', 'HD', 'Skills', 'Str'].forEach(stat => {
+      rules.defineRule
+        ('animalCompanionStats.' + stat, 'eilodonStats.' + stat, '+', null);
+    });
   }
+  let features = [
+    '1:Companion Darkvision', '1:Link', '1:Share Spells', '2:Companion Evasion',
+    '5:Devotion', '7:Multiattack', '11:Companion Improved Evasion'
+  ];
+  QuilvynRules.featureListRules
+    (rules, features, 'Animal Companion', 'eliodonMasterLevel', false);
 };
 
 /*
@@ -3254,6 +3409,9 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
   } else if(name == 'Heavens Mystery') {
     rules.defineRule('magicNotes.lureOfTheHeavens',
       pathLevel, '=', 'source>=10 ? ", fly for " + source + " min/dy" : source>=5 ? "" : null'
+    );
+    rules.defineRule('saveNotes.finalRevelation(HeavensMystery)',
+      'charismaModifier', '=', null
     );
   } else if(name == 'Life Mystery') {
     rules.defineRule
@@ -3311,6 +3469,22 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
     rules.defineRule('features.Improved Trip',
       'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
     );
+  } else if(name == 'Waves Mystery') {
+    rules.defineRule('abilityNotes.fluidTravel',
+      pathLevel, '=', 'source>=7 ? "/May breathe water and swim 60\'/rd underwater" : ""'
+    );
+    rules.defineRule('featureNotes.fluidNature',
+      pathLevel, '=', 'source>=5 ? "Dodge" : null'
+    );
+    rules.defineRule('features.Dodge',
+      'featureNotes.fluidNature', '=', 'source.includes("Dodge") ? 1 : null'
+    );
+    rules.defineRule('magicNotes.waterSight',
+      pathLevel, '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scry" : null'
+    );
+  } else if(name == 'Wind Mystery') {
+    rules.defineRule
+      ('magicNotes.windSight', pathLevel, '=', 'source>=7 ? source : null');
   }
 };
 
@@ -3319,6 +3493,28 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to raceRules.
  */
 PathfinderSupplements.raceRulesExtra = function(rules, name) {
+};
+
+/* Sets #attributes#'s #attribute# attribute to a random value. */
+PathfinderSupplements.randomizeOneAttribute = function(attributes, attribute) {
+  if(attribute == 'companion' && 'levels.Summoner' in attributes) {
+    let choices = [];
+    let howMany = 1;
+    for(let attr in PathfinderSupplements.APG_ANIMAL_COMPANIONS) {
+      if(!attr.match(/Eidolon/))
+        continue;
+      if('animalCompanion.' + attr in attributes)
+        howMany--;
+      else
+        choices.push(attr);
+    }
+    if(howMany == 1 && choices.length > 0) {
+      attributes['animalCompanion.' + choices[QuilvynUtils.random(0, choices.length - 1)]] = 1;
+      attributes.animalCompanionName = SRD35.randomName(null);
+    }
+  }
+  Pathfinder.randomizeOneAttribute.apply
+    (Pathfinder.rules, [attributes, attribute]);
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
