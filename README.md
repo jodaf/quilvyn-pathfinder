@@ -22,7 +22,7 @@ following lines to the file plugins/plugins.js:
       require:'SRD35.js'
     };
     RULESETS["Pathfinder 1E Advanced Player's Guide"] = {
-      url:'plugins/PathfinderSupplements.js',
+      url:'plugins/PFAPG.js',
       group:'Pathfinder',
       supplement:'Pathfinder 1E'
     };

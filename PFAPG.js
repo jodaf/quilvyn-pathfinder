@@ -21,73 +21,42 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 "use strict";
 
 /*
- * This module loads the rules from Pathfinder 1E supplemental rule books.
- * The PathfinderSupplements function contains methods that load rules for
- * particular parts of rules; raceRules for character races, shieldRules for
- * shields, etc. These member methods can be called independently in order to
- * use a subset of the rules. Similarly, the constant fields of
- * PathfinderSupplements (FEATS, RACES, etc.) can be manipulated to modify the
- * choices.
+ * This module loads the rules from Pathfinder Advanced Players Guide. The
+ * PFAPG function contains methods that load rules for particular parts of
+ * rules; raceRules for character races, shieldRules for shields, etc. These
+ * member methods can be called independently in order to use a subset of the
+ * rules. Similarly, the constant fields of PFAPG (FEATS, RACES, etc.) can be
+ * manipulated to modify the choices.
  */
-function PathfinderSupplements(supplement, rules) {
+function PFAPG(edition, rules) {
 
   if(window.Pathfinder == null) {
-    alert('The PathfinderSupplements module requires use of the Pathfinder module');
+    alert('The PFAPG module requires use of the Pathfinder module');
     return;
   }
 
   if(rules == null)
     rules = Pathfinder.rules;
 
-  if(supplement.match(/Advanced Class/i))
-    supplement = 'ACG';
-  else if(supplement.match(/Advanced Player/i))
-    supplement = 'APG';
-  else if(supplement.match(/Advanced Race/i))
-    supplement = 'APG';
-  else if(supplement.match(/Unchained/i))
-    supplement = 'Unchained';
-  else
-    supplement = 'APG';
-
-  let armors = PathfinderSupplements[supplement + '_ARMORS'] || {};
-  let classes = PathfinderSupplements[supplement + '_CLASSES'] || {};
-  let companions = PathfinderSupplements[supplement + '_ANIMAL_COMPANIONS'] || {};
-  let deities = PathfinderSupplements[supplement + '_DEITIES'] || {};
-  let familiars = PathfinderSupplements[supplement + '_FAMILIARS'] || {};
-  let feats = PathfinderSupplements[supplement + '_FEATS'] || {};
-  let features = PathfinderSupplements[supplement + '_FEATURES'] || {};
-  let languages = PathfinderSupplements[supplement + '_LANGUAGES'] || {};
-  let paths = PathfinderSupplements[supplement + '_PATHS'] || {};
-  let prestiges = PathfinderSupplements[supplement + '_PRESTIGES'] || {};
-  let races = PathfinderSupplements[supplement + '_RACES'] || {};
-  let shields = PathfinderSupplements[supplement + '_SHIELDS'] || {};
-  let skills = PathfinderSupplements[supplement + '_SKILLS'] || {};
-  let spells = PathfinderSupplements[supplement + '_SPELLS'] || {};
-  let spellLevels =
-    PathfinderSupplements[supplement + '_SPELLS_LEVELS_ADDED'] || {};
-  let traits = PathfinderSupplements[supplement + '_TRAITS'] || {};
-  let weapons = PathfinderSupplements[supplement + '_WEAPONS'] || {};
-
-  PathfinderSupplements.aideRules(rules, companions, familiars);
-  PathfinderSupplements.combatRules(rules, armors, shields, weapons);
-  PathfinderSupplements.magicRules(rules, spells, spellLevels);
-  PathfinderSupplements.talentRules
-    (rules, feats, features, {}, languages, skills);
-  PathfinderSupplements.identityRules(
-    rules, {}, classes, deities, {}, paths, races, {}, traits, prestiges, {}
+  PFAPG.aideRules(rules, PFAPG.ANIMAL_COMPANIONS, PFAPG.FAMILIARS);
+  PFAPG.combatRules(rules, PFAPG.ARMORS, PFAPG.SHIELDS, PFAPG.WEAPONS);
+  PFAPG.magicRules(rules, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
+  PFAPG.talentRules
+    (rules, PFAPG.FEATS, PFAPG.FEATURES, {}, PFAPG.LANGUAGES, PFAPG.SKILLS);
+  PFAPG.identityRules(
+    rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
+    PFAPG.TRAITS, PFAPG.PRESTIGES, {}
   );
 
-  rules.randomizeOneAttribute = PathfinderSupplements.randomizeOneAttribute;
+  rules.randomizeOneAttribute = PFAPG.randomizeOneAttribute;
 
 }
 
-PathfinderSupplements.VERSION = '2.3.1.0';
+PFAPG.VERSION = '2.3.1.0';
 
-// Advanced Player's Guide
-PathfinderSupplements.APG_ANIMAL_COMPANIONS = {
-  // Eidolon have the same stats as animal companions, but the calculations
-  // are different.
+PFAPG.ANIMAL_COMPANIONS = {
+  // Eidolon have the same stats as animal companions with modified
+  // calculations.
   'Biped Eidolon':
     'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=2 Attack=0 Dam=2@1d4 ' +
     'Size=M',
@@ -98,14 +67,14 @@ PathfinderSupplements.APG_ANIMAL_COMPANIONS = {
     'Str=12 Dex=16 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=2 Attack=0 Dam=1d6,1d6 ' +
     'Size=M'
 };
-PathfinderSupplements.APG_ARMORS = {
+PFAPG.ARMORS = {
   'Agile Breastplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
   'Agile Half-Plate':'AC=8 Weight=2 Dex=0 Skill=7 Spell=40',
   'Armored Coat':'AC=4 Weight=2 Dex=3 Skill=2 Spell=20',
   'Quilted Cloth':'AC=1 Weight=1 Dex=8 Skill=0 Spell=10',
   'Wooden':'AC=3 Weight=1 Dex=3 Skill=1 Spell=15'
 };
-PathfinderSupplements.APG_FEATS = {
+PFAPG.FEATS = {
   'Additional Traits':'Type=General',
   'Arcane Blast':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
   'Arcane Shield':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
@@ -459,7 +428,7 @@ PathfinderSupplements.APG_FEATS = {
   'Shielded Caster':'Type=Teamwork',
   'Swap Places':'Type=Teamwork,Fighter'
 };
-PathfinderSupplements.APG_FEATURES = {
+PFAPG.FEATURES = {
   // Classes
   'Acid Bomb':
     'Section=combat ' +
@@ -1326,9 +1295,9 @@ PathfinderSupplements.APG_FEATURES = {
   'War Singer':'Section=feature Note="FILL"',
   'Well-Prepared':'Section=feature Note="FILL"',
 };
-PathfinderSupplements.APG_LANGUAGES = {
+PFAPG.LANGUAGES = {
 };
-PathfinderSupplements.APG_PATHS = {
+PFAPG.PATHS = {
   'Battle Mystery':
     'Group="Oracle" ' +
     'Level=levels.Oracle ' +
@@ -1588,15 +1557,15 @@ PathfinderSupplements.APG_PATHS = {
       '"1:Wind Sight:Wind Revelation",' +
       '"7:Wings Of Air:Wind Revelation"'
 };
-PathfinderSupplements.APG_RACES = {
+PFAPG.RACES = {
 };
-PathfinderSupplements.APG_SHIELDS = {
+PFAPG.SHIELDS = {
   'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
   'Light Wooden Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5'
 };
-PathfinderSupplements.APG_SKILLS = {
+PFAPG.SKILLS = {
 };
-PathfinderSupplements.APG_SPELLS = {
+PFAPG.SPELLS = {
 
   'Absorbing Touch':
     'School=Transmutation ' +
@@ -2648,7 +2617,7 @@ PathfinderSupplements.APG_SPELLS = {
     'Description="FILL"'
 
 };
-PathfinderSupplements.APG_SPELLS_LEVELS_ADDED = {
+PFAPG.SPELLS_LEVELS_ADDED = {
   'Acid Splash':'Inquisitor0',
   'Aid':'Inquisitor2',
   'Alarm':'Inquisitor1',
@@ -2862,10 +2831,10 @@ PathfinderSupplements.APG_SPELLS_LEVELS_ADDED = {
   'Word Of Chaos':'Inquisitor6',
   'Zone Of Truth':'Inquisitor2'
 };
-PathfinderSupplements.APG_TRAITS = {
+PFAPG.TRAITS = {
   // Already declared in Pathfinder.js
 };
-PathfinderSupplements.APG_WEAPONS = {
+PFAPG.WEAPONS = {
   'Bardiche':'Level=2 Category=2h Damage=d10 Threat=19',
   'Battle Aspergillum':'Level=1 Category=Li Damage=d6',
   'Bayonet':'Level=1 Category=2h Damage=d6',
@@ -2889,7 +2858,7 @@ PathfinderSupplements.APG_WEAPONS = {
   'Temple Sword':'Level=3 Category=1h Damage=d8 Threat=19',
   'Wooden Stake':'Level=1 Category=Li Damage=d4 Range=10'
 };
-PathfinderSupplements.APG_CLASSES = {
+PFAPG.CLASSES = {
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -3091,25 +3060,25 @@ PathfinderSupplements.APG_CLASSES = {
       '"Knowledge (Nature)","Knowledge (Planes)",Profession,Spellcraft,' +
       '"Use Magic Device"'
 };
-PathfinderSupplements.APG_PRESTIGES = {
+PFAPG.PRESTIGES = {
 };
-PathfinderSupplements.APG_DEITIES = {
+PFAPG.DEITIES = {
 };
 
 /* Defines rules related to animal companions and familiars. */
-PathfinderSupplements.aideRules = function(rules, companions, familiars) {
+PFAPG.aideRules = function(rules, companions, familiars) {
   Pathfinder.aideRules(rules, companions, familiars);
   // No changes needed to the rules defined by Pathfinder method
 };
 
 /* Defines rules related to combat. */
-PathfinderSupplements.combatRules = function(rules, armors, shields, weapons) {
+PFAPG.combatRules = function(rules, armors, shields, weapons) {
   Pathfinder.combatRules(rules, armors, shields, weapons);
   // No changes needed to the rules defined by Pathfinder method
 };
 
 /* Defines rules related to basic character identity. */
-PathfinderSupplements.identityRules = function(
+PFAPG.identityRules = function(
   rules, alignments, classes, deities, factions, paths, races, tracks, traits,
   prestigeClasses, npcClasses
 ) {
@@ -3118,19 +3087,19 @@ PathfinderSupplements.identityRules = function(
     prestigeClasses, npcClasses
   );
   for(let clas in classes)
-    PathfinderSupplements.classRulesExtra(rules, clas);
+    PFAPG.classRulesExtra(rules, clas);
   for(let clas in prestigeClasses)
-    PathfinderSupplements.classRulesExtra(rules, clas);
+    PFAPG.classRulesExtra(rules, clas);
   for(let clas in npcClasses)
-    PathfinderSupplements.classRulesExtra(rules, clas);
+    PFAPG.classRulesExtra(rules, clas);
   for(let path in paths)
-    PathfinderSupplements.pathRulesExtra(rules, path);
+    PFAPG.pathRulesExtra(rules, path);
   for(let race in races)
-    PathfinderSupplements.raceRulesExtra(rules, race);
+    PFAPG.raceRulesExtra(rules, race);
 };
 
 /* Defines rules related to magic use. */
-PathfinderSupplements.magicRules = function(rules, spells, spellsLevels) {
+PFAPG.magicRules = function(rules, spells, spellsLevels) {
   Pathfinder.magicRules(rules, {}, spells);
   for(var s in spellsLevels) {
     if(!Pathfinder.SPELLS[s]) {
@@ -3143,12 +3112,12 @@ PathfinderSupplements.magicRules = function(rules, spells, spellsLevels) {
 };
 
 /* Defines rules related to character aptitudes. */
-PathfinderSupplements.talentRules = function(
+PFAPG.talentRules = function(
   rules, feats, features, goodies, languages, skills
 ) {
   Pathfinder.talentRules(rules, feats, features, goodies, languages, skills);
   for(let feat in feats)
-    PathfinderSupplements.raceRulesExtra(rules, feat);
+    PFAPG.raceRulesExtra(rules, feat);
   rules.defineRule('traitCount', '', '=', '2');
 };
 
@@ -3156,7 +3125,7 @@ PathfinderSupplements.talentRules = function(
  * Defines in #rules# the rules associated with class #name# that cannot be
  * directly derived from the attributes passed to classRules.
  */
-PathfinderSupplements.classRulesExtra = function(rules, name) {
+PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Alchemist') {
     rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
@@ -3369,14 +3338,14 @@ PathfinderSupplements.classRulesExtra = function(rules, name) {
  * Defines in #rules# the rules associated with feat #name# that cannot be
  * derived directly from the attributes passed to featRules.
  */
-PathfinderSupplements.featRulesExtra = function(rules, name) {
+PFAPG.featRulesExtra = function(rules, name) {
 };
 
 /*
  * Defines in #rules# the rules associated with bloodline #name# that cannot be
  * derived directly from the attributes passed to pathRules.
  */
-PathfinderSupplements.pathRulesExtra = function(rules, name) {
+PFAPG.pathRulesExtra = function(rules, name) {
   var pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
   if(name.match(/Mystery/)) {
@@ -3492,15 +3461,15 @@ PathfinderSupplements.pathRulesExtra = function(rules, name) {
  * Defines in #rules# the rules associated with race #name# that cannot be
  * derived directly from the attributes passed to raceRules.
  */
-PathfinderSupplements.raceRulesExtra = function(rules, name) {
+PFAPG.raceRulesExtra = function(rules, name) {
 };
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
-PathfinderSupplements.randomizeOneAttribute = function(attributes, attribute) {
+PFAPG.randomizeOneAttribute = function(attributes, attribute) {
   if(attribute == 'companion' && 'levels.Summoner' in attributes) {
     let choices = [];
     let howMany = 1;
-    for(let attr in PathfinderSupplements.APG_ANIMAL_COMPANIONS) {
+    for(let attr in PFAPG.ANIMAL_COMPANIONS) {
       if(!attr.match(/Eidolon/))
         continue;
       if('animalCompanion.' + attr in attributes)
@@ -3518,11 +3487,11 @@ PathfinderSupplements.randomizeOneAttribute = function(attributes, attribute) {
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
-PathfinderSupplements.ruleNotes = function() {
+PFAPG.ruleNotes = function() {
   return '' +
-    '<h2>Quilvyn Pathfinder Supplements Rule Set Notes</h2>\n' +
+    "<h2>Quilvyn Pathfinder Advanced Player's Guide Rule Set Notes</h2>\n" +
     '<p>\n' +
-    'Quilvyn Pathfinder Supplements Rule Set Version ' + PathfinderSupplements.VERSION + '\n' +
+    "Quilvyn Pathfinder Advanced Player's Guide Rule Set Version ' + PFAPG.VERSION + '\n" +
     '</p>\n' +
     '<h3>Copyrights and Licensing</h3>\n' +
     '<p>\n' +
