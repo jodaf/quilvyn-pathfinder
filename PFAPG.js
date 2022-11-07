@@ -38,15 +38,30 @@ function PFAPG(edition, rules) {
   if(rules == null)
     rules = Pathfinder.rules;
 
+  let msBefore = new Date().getTime();
   PFAPG.aideRules(rules, PFAPG.ANIMAL_COMPANIONS, PFAPG.FAMILIARS);
+  let msAfter = new Date().getTime();
+  console.log('aideRules took ' + (msAfter - msBefore) + ' ms');
+  msBefore = new Date().getTime();
   PFAPG.combatRules(rules, PFAPG.ARMORS, PFAPG.SHIELDS, PFAPG.WEAPONS);
+  msAfter = new Date().getTime();
+  console.log('combatRules took ' + (msAfter - msBefore) + ' ms');
+  msBefore = new Date().getTime();
   PFAPG.magicRules(rules, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
+  msAfter = new Date().getTime();
+  console.log('magicRules took ' + (msAfter - msBefore) + ' ms');
+  msBefore = new Date().getTime();
   PFAPG.talentRules
     (rules, PFAPG.FEATS, PFAPG.FEATURES, {}, PFAPG.LANGUAGES, PFAPG.SKILLS);
+  msAfter = new Date().getTime();
+  console.log('talentRules took ' + (msAfter - msBefore) + ' ms');
+  msBefore = new Date().getTime();
   PFAPG.identityRules(
     rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
     PFAPG.TRAITS, PFAPG.PRESTIGES, {}
   );
+  msAfter = new Date().getTime();
+  console.log('identityRules took ' + (msAfter - msBefore) + ' ms');
 
   rules.randomizeOneAttribute = PFAPG.randomizeOneAttribute;
 
@@ -455,7 +470,7 @@ PFAPG.FEATURES = {
   'Armor Of Bones':
     'Section=combat ' +
     'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
-  'Aspect':'Section=feature Note="FILL"',
+  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
   'Automatic Writing':
     'Section=magic Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
@@ -495,7 +510,9 @@ PFAPG.FEATURES = {
   'Bomb':
     'Section=combat ' +
     'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %{levels.Alchemist + intelligenceModifier}/dy"',
-  'Bond Senses':'Section=feature Note="FILL"',
+  'Bond Senses':
+    'Section=feature ' +
+    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
   'Bones Mystery':
     'Section=skill ' +
     'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
@@ -581,7 +598,74 @@ PFAPG.FEATURES = {
   'Earth Glide':
     'Section=ability ' +
     'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
-  'Eidolon':'Section=feature Note="FILL"',
+  'Eidolon':'Section=feature Note="Special bond and abilities"',
+  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
+  'Eidolon Claws':'Section=companion Note="Claw attack inflicts %V HP each"',
+  'Eidolon Climb':'Section=companion Note="%V\' Climb speed"',
+  'Eidolon Gills':'Section=companion Note="May breathe underwater"',
+  'Eidolon Improved Damage':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts 1 die type higher damage"',
+  'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
+  'Eidolon Magic Attacks':
+    'Section=companion ' +
+    'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
+  'Eidolon Mount':'Section=companion Note="Master may ride eidolon"',
+  'Eidolon Pincers':
+    'Section=companion Note="Pincer attack inflicts %V HP each"',
+  'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
+  'Eidolon Pull':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
+  'Eidolon Push':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
+  'Eidolon Reach':
+    'Section=companion Note="Reach for chosen natural attack increases 5\'"',
+  'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
+  'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
+  'Eidolon Slam':'Section=companion Note="Slam attack inflicts %V HP each"',
+  'Eidolon Sting':'Section=companion Note="Sting attack inflicts %V HP"',
+  'Eidolon Swim':'Section=companion Note="Can swim at full speed%1"',
+  'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
+  'Eidolon Tail Slap':'Section=companion Note="Slap attack inflicts %V HP"',
+  'Eidolon Tentacle':
+    'Section=companion Note="Tentacle attack inflicts %V HP each"',
+  'Eidolon Wing Buffet':
+    'Section=companion Note="Wing attack inflicts %V HP each"',
+  'Eidolon Ability Increase':'Section=companion Note="+2 chosen ability"',
+  'Eidolon Constrict':
+    'Section=companion Note="Successful grapple doubles damage"',
+  'Eidolon Energy Attacks':
+    'Section=companion ' +
+    'Note="Natural attacks inflict 1d6 HP of chosen energy Type"',
+  'Eidolon Flight':'Section=companion Note="May fly at full speed"',
+  'Eidolon Gore':'Section=companion Note="Horn attack inflicts %V HP"',
+  'Eidolon Grab':
+    'Section=companion ' +
+    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
+  'Eidolon Immunity':'Section=companion Note="Immune to chosen energy type"',
+  'Eidolon Limbs':'Section=companion Note="+%V limbs"',
+  'Eidolon Poison':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
+  'Eidolon Rake':
+    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
+  'Eidolon Rend':
+    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
+  'Eidolon Trample':'Section=companion Note="FILL"',
+  'Eidolon Tremorsense':'Section=companion Note="FILL"',
+  'Eidolon Trip':'Section=companion Note="FILL"',
+  'Eidolon Weapon Training':'Section=companion Note="FILL"',
+  'Eidolon Blindsense':'Section=companion Note="FILL"',
+  'Eidolon Burrow':'Section=companion Note="FILL"',
+  'Eidolon Damage Reduction':'Section=companion Note="FILL"',
+  'Eidolon Frightful Presence':'Section=companion Note="FILL"',
+  'Eidolon Swallow Whole':'Section=companion Note="FILL"',
+  'Eidolon Web':'Section=companion Note="FILL"',
+  'Eidolon Blindsight':'Section=companion Note="FILL"',
+  'Eidolon Breath Weapon':'Section=companion Note="FILL"',
+  'Eidolon Fast Healing':'Section=companion Note="FILL"',
+  'Eidolon Large':'Section=companion Note="FILL"',
+  'Eidolon Spell Resistance':'Section=companion Note="FILL"',
   'Elixir Of Life':
     'Section=magic ' +
     'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
@@ -715,7 +799,7 @@ PFAPG.FEATURES = {
   'Grand Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Aspect':'Section=feature Note="FILL"',
+  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Greater Banner':
     'Section=combat ' +
@@ -723,7 +807,11 @@ PFAPG.FEATURES = {
   'Greater Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Shield Ally':'Section=feature Note="FILL"',
+  'Greater Shield Ally':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 ally AC (+4 self) when eidolon is within reach",' +
+      '"+2 ally saves (+4 self) when eidolon is within reach"',
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Guiding Star':
     'Section=feature,magic,skill ' +
@@ -780,13 +868,18 @@ PFAPG.FEATURES = {
     'Note=' +
       '"-%V Speed/Speed is unaffected by encumbrance%V",' +
       '"Immune to %V"',
-  'Life Bond':'Section=feature Note="FILL"',
+  'Life Bond':
+    'Section=combat ' +
+    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
   'Life Leach':
     'Section=combat ' +
     'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
   'Life Link':
     'Section=combat ' +
     'Note="May establish bond with target that transfers 5 HP damage to self each rd while within $RM\'"',
+  'Life Link (Summoner)':
+    'Section=combat ' +
+    'Note="May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
   'Life Mystery':
     'Section=skill ' +
     'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
@@ -810,7 +903,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
   'Major Hex':'Section=feature Note="FILL"',
-  "Maker's Call":'Section=feature Note="FILL"',
+  "Maker's Call":
+    'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(source - 2) // 4}/dy"',
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
@@ -823,7 +917,9 @@ PFAPG.FEATURES = {
       '"Immune to lycanthropy"',
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
-  'Merge Forms':'Section=feature Note="FILL"',
+  'Merge Forms':
+    'Section=combat ' +
+    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
   'Mighty Charge':
     'Section=combat ' +
     'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
@@ -947,7 +1043,11 @@ PFAPG.FEATURES = {
   'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
   'Shard Explosion':
     'Section=combat Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
-  'Shield Ally':'Section=feature Note="FILL"',
+  'Shield Ally':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 AC when eidolon is within reach",' +
+      '"+2 saves when eidolon is within reach"',
   'Shield Of The Liege':
     'Section=combat ' +
     'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
@@ -1020,7 +1120,8 @@ PFAPG.FEATURES = {
   'Strategy':
     'Section=combat ' +
     'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
-  'Summon Monster':'Section=feature Note="FILL"',
+  'Summon Monster':
+    'Section=magic Note="May cast <i>Summon Monster %V</i> for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
   'Supreme Charge':
     'Section=combat ' +
     'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
@@ -1060,14 +1161,17 @@ PFAPG.FEATURES = {
   // 'Track' in Pathfinder.js
   'Transcendental Bond':
     'Section=magic Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
-  'Transposition':'Section=feature Note="FILL"',
+  'Transposition':
+    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
   'True Judgment':
     'Section=combat ' +
     'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
   'True Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
-  'Twin Eidolon':'Section=feature Note="FILL"',
+  'Twin Eidolon':
+    'Section=feature ' +
+    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
   'Undead Servitude':
     'Section=feature ' +
     'Note="Can use Command Undead feature %{charismaModifier+3}/dy"',
@@ -3001,30 +3105,59 @@ PFAPG.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple)",' +
-      '1:Cantrips,1:Eidolon,"1:Life Link","1:Summon Monster","2:Bond Senses",' +
-      '"4:Shield Ally","6:Maker\'s Call",8:Transposition,10:Aspect,' +
-      '"12:Greater Shield Ally","14:Life Bond","16:Merge Forms",' +
+      '1:Cantrips,1:Eidolon,"1:Life Link (Summoner)","1:Summon Monster",' +
+      '"2:Bond Senses","4:Shield Ally","6:Maker\'s Call",8:Transposition,' +
+      '10:Aspect,"12:Greater Shield Ally","14:Life Bond","16:Merge Forms",' +
       '"18:Greater Aspect",19:Gate,"20:Twin Eidolon" ' +
     'Selectables=' +
-      '1:Bite:Evolution,1:Claws:Evolution,1:Climb:Evolution,' +
-      '1:Gills:Evolution,"1:Improved Damage:Evolution",' +
-      '"1:Improved Natural Armor","1:Magic Attacks:Evolution",' +
-      '1:Mount:Evolution,1:Pincers:Evolution,1:Pounce:Evolution,' +
-      '1:Pull:Evolution,1:Push:Evolution,1:Reach:Evolution,1:Scent:Evolution,' +
-      '1:Skilled:Evolution,1:Slam:Evolution,1:Sting:Evolution,' +
-      '1:Swim:Evolution,1:Tail:Evolution,"1:Tail Slap:Evolution",' +
-      '1:Tentacle:Evolution,"1:Wing Buffet:Evolution",' +
-      '"1:Ability Increase:Evolution",1:Constrict:Evolution,' +
-      '"1:Energy Attacks:Evolution",1:Flight:Evolution,1:Gore:Evolution,' +
-      '1:Grab:Evolution,1:Immunity:Evolution,1:Limbs:Evolution,' +
-      '1:Poison:Evolution,1:Rake:Evolution,1:Rend:Evolution,' +
-      '1:Trample:Evolution,1:Tremorsense:Evolution,1:Trip:Evolution,' +
-      '"1:Weapon Training:Evolution",1:Blindsense:Evolution,' +
-      '1:Burrow:Evolution,"1:Damage Reduction:Evolution",' +
-      '"1:Frightful Presence:Evolution","1:Swallow Whole:Evolution",' +
-      '1:Web:Evolution,1:Blindsight:Evolution,"1:Breath Weapon:Evolution",' +
-      '"1:Fast Healing:Evolution",1:Large:Evolution,' +
-      '"1:Spell Resistance:Evolution" ' +
+      '"1:Eidolon Bite:Evolution",' +
+      '"1:Eidolon Claws:Evolution",' +
+      '"1:Eidolon Climb:Evolution",' +
+      '"1:Eidolon Gills:Evolution",' +
+      '"1:Eidolon Improved Damage:Evolution",' +
+      '"1:Eidolon Improved Natural Armor",' +
+      '"1:Eidolon Magic Attacks:Evolution",' +
+      '"1:Eidolon Mount:Evolution",' +
+      '"1:Eidolon Pincers:Evolution",' +
+      '"1:Eidolon Pounce:Evolution",' +
+      '"1:Eidolon Pull:Evolution",' +
+      '"1:Eidolon Push:Evolution",' +
+      '"1:Eidolon Reach:Evolution",' +
+      '"1:Eidolon Scent:Evolution",' +
+      '"1:Eidolon Skilled:Evolution",' +
+      '"1:Eidolon Slam:Evolution",' +
+      '"1:Eidolon Sting:Evolution",' +
+      '"1:Eidolon Swim:Evolution",' +
+      '"1:Eidolon Tail:Evolution",' +
+      '"1:Eidolon Tail Slap:Evolution",' +
+      '"1:Eidolon Tentacle:Evolution",' +
+      '"1:Eidolon Wing Buffet:Evolution",' +
+      '"1:Eidolon Ability Increase:Evolution",' +
+      '"1:Eidolon Constrict:Evolution",' +
+      '"1:Eidolon Energy Attacks:Evolution",' +
+      '"1:Eidolon Flight:Evolution",' +
+      '"1:Eidolon Gore:Evolution",' +
+      '"1:Eidolon Grab:Evolution",' +
+      '"1:Eidolon Immunity:Evolution",' +
+      '"1:Eidolon Limbs:Evolution",' +
+      '"1:Eidolon Poison:Evolution",' +
+      '"1:Eidolon Rake:Evolution",' +
+      '"1:Eidolon Rend:Evolution",' +
+      '"1:Eidolon Trample:Evolution",' +
+      '"1:Eidolon Tremorsense:Evolution",' +
+      '"1:Eidolon Trip:Evolution",' +
+      '"1:Eidolon Weapon Training:Evolution",' +
+      '"1:Eidolon Blindsense:Evolution",' +
+      '"1:Eidolon Burrow:Evolution",' +
+      '"1:Eidolon Damage Reduction:Evolution",' +
+      '"1:Eidolon Frightful Presence:Evolution",' +
+      '"1:Eidolon Swallow Whole:Evolution",' +
+      '"1:Eidolon Web:Evolution",' +
+      '"1:Eidolon Blindsight:Evolution",' +
+      '"1:Eidolon Breath Weapon:Evolution",' +
+      '"1:Eidolon Fast Healing:Evolution",' +
+      '"1:Eidolon Large:Evolution",' +
+      '"1:Eidolon Spell Resistance:Evolution" ' +
     'CasterLevelArcane=levels.Summoner ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -3295,6 +3428,78 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
   } else if(name == 'Summoner') {
     rules.defineRule('companionMasterLevel', 'eliodonMasterLevel', '^=', null);
+    rules.defineRule('companionNotes.eidolonBite',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonBite.1',
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonClaws',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonClimb',
+      'summonerFeatures.Eidolon Climb', '=', '20 * source'
+    );
+    rules.defineRule('companionNotes.eidolonGore',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonImprovedNaturalArmor',
+      'summonerFeatures.Eidolon Improved Natural Armor', '=', '2 * source'
+    );
+    rules.defineRule('companionNotes.eidolonLimbs',
+      'summonerFeatures.Eidolon Limbs', '=', '2 * source'
+    );
+    rules.defineRule('companionNotes.eidolonPincers',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonPoison',
+      'companionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'companionStats.Con', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonRake',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonRend',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonRend.1',
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonSlam',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d8" : source=="L" ? "2d6" : "1d8"'
+    );
+    rules.defineRule('companionNotes.eidolonSting',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonSwim',
+      'summonerFeatures.Eidolon Swim', '=', 'source>=2 ? "+" ((source - 1) * 20) : ""'
+    );
+    rules.defineRule('companionNotes.eidolonTail',
+      'summonerFeatures.Eidolon Swim', '=', 'source * 2'
+    );
+    rules.defineRule('companionNotes.eidolonTailSlap',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonTentacle',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonWingBuffet',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('eidolonStats.AC',
+      'companionNotes.eidolonImprovedNaturalArmor', '+', null
+    );
     rules.defineRule('eliodonMasterLevel', classLevel, '=', null);
     rules.defineRule('eidolonStats.AC',
       'features.Eidolon', '?', null,
@@ -3325,13 +3530,24 @@ PFAPG.classRulesExtra = function(rules, name) {
       rules.defineRule
         ('animalCompanionStats.' + stat, 'eilodonStats.' + stat, '+', null);
     });
+    let features = [
+      '1:Companion Darkvision', '1:Link', '1:Share Spells',
+      '2:Companion Evasion', '5:Devotion', '7:Multiattack',
+      '11:Companion Improved Evasion'
+    ];
+    QuilvynRules.featureListRules
+      (rules, features, 'Animal Companion', 'eliodonMasterLevel', false);
+    rules.defineRule('featureNotes.aspect',
+      classLevel, '=', '2',
+      'featureNotes.greaterAspect', '+', '4'
+    );
+    rules.defineRule('magicNotes.summonMonster',
+      classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.floor((source - 1) / 2)]'
+    );
+    rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
+      classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
+    );
   }
-  let features = [
-    '1:Companion Darkvision', '1:Link', '1:Share Spells', '2:Companion Evasion',
-    '5:Devotion', '7:Multiattack', '11:Companion Improved Evasion'
-  ];
-  QuilvynRules.featureListRules
-    (rules, features, 'Animal Companion', 'eliodonMasterLevel', false);
 };
 
 /*
