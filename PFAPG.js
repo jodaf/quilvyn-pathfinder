@@ -89,6 +89,28 @@ PFAPG.ARMORS = {
   'Quilted Cloth':'AC=1 Weight=1 Dex=8 Skill=0 Spell=10',
   'Wooden':'AC=3 Weight=1 Dex=3 Skill=1 Spell=15'
 };
+PFAPG.FAMILIARS = {
+  'Centipede':
+    'Str=1 Dex=17 Con=10 Int=0 Wis=10 Cha=2 HD=1 AC=17 Attack=5 Dam=1d3-5 ' +
+    'Size=T',
+  'Crab':
+    'Str=7 Dex=15 Con=12 Int=0 Wis=10 Cha=2 HD=1 AC=18 Attack=0 Dam=1d2-2 ' +
+    'Size=T',
+  // Dog + young: Size -1 (AC, Attack +1) Dam -1 die step Str -4 Con -4 Dex +4
+  'Fox':
+    'Str=9 Dex=17 Con=11 Int=2 Wis=12 Cha=6 HD=1 AC=14 Attack=3 Dam=1d3+1 ' +
+    'Size=T',
+  // Octopus + young
+  'Octopus':
+    'Str=8 Dex=21 Con=10 Int=2 Wis=13 Cha=3 HD=2 AC=16 Attack=6 Dam=1d2+1 ' +
+    'Size=T',
+  'Scorpion':
+    'Str=3 Dex=16 Con=10 Int=0 Wis=10 Cha=2 HD=1 AC=18 Attack=5 Dam=1d2-4 ' +
+    'Size=T',
+  'Spider':
+    'Str=3 Dex=21 Con=10 Int=0 Wis=10 Cha=2 HD=1 AC=18 Attack=7 Dam=1d3-4 ' +
+    'Size=T'
+};
 PFAPG.FEATS = {
   'Additional Traits':'Type=General',
   'Arcane Blast':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
@@ -454,7 +476,9 @@ PFAPG.FEATURES = {
   'Act As One':
     'Section=combat ' +
     'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
-  'Agony Hex':'Section=feature Note="FILL"',
+  'Agony Hex':
+    'Section=magic ' +
+    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
   'Aid Allies (Cavalier)':
     'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
   'Air Barrier':
@@ -498,7 +522,7 @@ PFAPG.FEATURES = {
     'Note="Successful attack causes %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
   'Blight Hex':
     'Section=magic ' +
-    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg)"',
+    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{hexDC} Will neg)"',
   'Blizzard':
     'Section=combat ' +
     'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
@@ -547,7 +571,7 @@ PFAPG.FEATURES = {
   'Channel':'Section=feature Note="Has Channel Energy feature"',
   'Charm Hex':
     'Section=skill ' +
-    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg) for %{intelligenceModifier} rd"',
+    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Cinder Dance':
     'Section=ability,feature ' +
     'Note=' +
@@ -589,7 +613,9 @@ PFAPG.FEATURES = {
       '"Has %V",' +
       '"May cast all spells silently",' +
       '"+3 Perception (non-sound)"',
-  'Death Curse Hex':'Section=feature Note="FILL"',
+  'Death Curse Hex':
+    'Section=magic ' +
+    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP)"',
   "Death's Touch":
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
@@ -727,10 +753,12 @@ PFAPG.FEATURES = {
   'Eternal Potion':
      'Section=magic ' +
      'Note="May cause effects of 1 imbibed potion to become permanent"',
-  'Eternal Slumber Hex':'Section=feature Note="FILL"',
+  'Eternal Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
   'Eternal Youth':
     'Section=feature Note="Suffers no ability score penalties from age"',
-  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attacks, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{10 + levels.Witch//2 + intelligenceModifier} Will 1 rd)"',
+  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attacks, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
   'Expert Trainer':
     'Section=skill ' +
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
@@ -743,6 +771,12 @@ PFAPG.FEATURES = {
   'Extend Potion':
      'Section=magic ' +
      'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
+  'Familiar Centipede':'Section=skill Note="+3 Steath"',
+  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
+  'Familiar Fox':'Section=save Note="+2 Reflex"',
+  'Familiar Octopus':'Section=skill Note="+3 Swim"',
+  'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
+  'Familiar Spider':'Section=skill Note="+3 Climb"',
   'Fast Bombs':
     'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
   'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
@@ -822,7 +856,9 @@ PFAPG.FEATURES = {
   'Force Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
-  'Forced Reincarnation Hex':'Section=feature Note="FILL"',
+  'Forced Reincarnation Hex':
+    'Section=magic ' +
+    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
@@ -871,7 +907,8 @@ PFAPG.FEATURES = {
       '"May determine precise location under clear night sky",' +
       '"+%{charismaModifier} wisdom-linked skills under clear night sky",' +
       '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night"',
-  "Hag's Eye Hex":'Section=feature Note="FILL"',
+  "Hag's Eye Hex":
+    'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
   'Haunted':
     'Section=feature,magic ' +
     'Note=' +
@@ -926,7 +963,7 @@ PFAPG.FEATURES = {
   'Life Bond':
     'Section=combat ' +
     'Note="Damage that would reduce self to negative HP transferred to eidolon"',
-  'Life Giver Hex':'Section=feature Note="FILL"',
+  'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
   'Life Leach':
     'Section=combat ' +
     'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
@@ -958,7 +995,8 @@ PFAPG.FEATURES = {
   'Madness Bomb':
     'Section=combat ' +
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
-  'Major Healing Hex':'Section=feature Note="FILL"',
+  'Major Healing Hex':
+    'Section=feature Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
   "Maker's Call":
     'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(source - 2) // 4}/dy"',
   'Maneuver Mastery':
@@ -983,7 +1021,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Misfortune Hex':
-    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attacks, saves, and skill checks (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attacks, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -1008,7 +1046,9 @@ PFAPG.FEATURES = {
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery Spell':'Section=feature Note="FILL"',
   'Mystery':'Section=feature Note="1 Selection"',
-  'Natural Disaster Hex':'Section=feature Note="FILL"',
+  'Natural Disaster Hex':
+    'Section=magic ' +
+    'Note="May use <i>Storm Of Vengeance</i> combined with <i>Earthquake</i> 1/dy"',
   'Natural Divination':
     'Section=feature ' +
     'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
@@ -1019,7 +1059,9 @@ PFAPG.FEATURES = {
   'Near Death':
     'Section=save ' +
     'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
-  'Nightmares Hex':'Section=feature Note="FILL"',
+  'Nightmares Hex':
+    'Section=magic ' +
+    'Note="R60\' Can use <i>Nightmare</i> (DC %{hexDC} Will ends) at will"',
   "Oracle's Curse":'Section=feature Note="1 Selection"',
   'Order':'Section=feature Note="1 Selection"',
   'Order Of The Cockatrice':
@@ -1097,7 +1139,9 @@ PFAPG.FEATURES = {
   'Retribution':
     'Section=combat ' +
     'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
-  'Retribution Hex':'Section=feature Note="FILL"',
+  'Retribution Hex':
+    'Section=magic ' +
+    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Revelation':'Section=feature Note="%V Selections"',
   'Rock Throwing':'Section=combat Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
   'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
@@ -1127,7 +1171,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
   'Slumber Hex':
     'Section=magic ' +
-    'Note="R30\' May cause target to sleep (DC %{10 + levels.Witch//2 + intelligenceModifier} neg) for %{levels.Witch} rd at will 1/target/dy"',
+    'Note="R30\' May cause target to sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
@@ -1245,7 +1289,9 @@ PFAPG.FEATURES = {
   'Undo Artifice':
     'Section=feature ' +
     'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
-  'Vision Hex':'Section=feature Note="FILL"',
+  'Vision Hex':
+    'Section=feature ' +
+    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
   'Voice Of The Grave':
     'Section=magic Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
   'Vortex Spells':
@@ -1273,10 +1319,14 @@ PFAPG.FEATURES = {
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
-  'Waxen Image Hex':'Section=feature Note="FILL"',
+  'Waxen Image Hex':
+    'Section=feature ' +
+    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
   'Weapon Mastery':
     'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
-  'Weather Control Hex':'Section=feature Note="FILL"',
+  'Weather Control Hex':
+    'Section=magic ' +
+    'Note="May use <i>Control Weather</i> after 1 hr ritual 1/dy"',
   'Whirlwind Lesson':
     'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
   'Wind Mystery':
@@ -1292,7 +1342,8 @@ PFAPG.FEATURES = {
   'Wintry Touch':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
-  "Witch's Familiar":'Section=feature Note="FILL"',
+  "Witch's Familiar":
+    'Section=feature Note="Has Familiar features/Familiar stores spells"',
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -3727,6 +3778,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
     );
   } else if(name == 'Witch') {
+    rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
+    rules.defineRule
+      ('features.Familiar', "featureNotes.witch'sFamiliar", '=', null);
+    rules.defineRule('hexDC',
+      classLevel, '=', '10 + source',
+      'intelligenceModifier', '+', null
+    );
     rules.defineRule('magicNotes.flightHex.1',
       classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> %{levels.Witch} min/dy" : "")'
     );
