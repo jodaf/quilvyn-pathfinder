@@ -454,6 +454,7 @@ PFAPG.FEATURES = {
   'Act As One':
     'Section=combat ' +
     'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
+  'Agony Hex':'Section=feature Note="FILL"',
   'Aid Allies (Cavalier)':
     'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
   'Air Barrier':
@@ -495,6 +496,9 @@ PFAPG.FEATURES = {
   'Bleeding Wounds':
     'Section=combat ' +
     'Note="Successful attack causes %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
+  'Blight Hex':
+    'Section=magic ' +
+    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg)"',
   'Blizzard':
     'Section=combat ' +
     'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
@@ -522,12 +526,18 @@ PFAPG.FEATURES = {
     'Note="Successful fire spell inflicts 1/spell level HP fire for 1d4 rd (Ref ends)"',
   'By My Honor':
     'Section=save Note="+2 choice of save while maintaining alignment"',
+  'Cackle Hex':'Section=magic Note="R30\' Extends hex affects 1 rd"',
   'Calling':
     'Section=feature,magic ' +
     'Note=' +
       '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
       '"+%V %1"',
   'Cantrips':'Section=magic Note="May cast 0-level spells"',
+  'Cauldron Hex':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Has Brew Potion features",' +
+      '"+4 Craft (Alchemy)"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
     'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
@@ -535,6 +545,9 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
   'Channel':'Section=feature Note="Has Channel Energy feature"',
+  'Charm Hex':
+    'Section=skill ' +
+    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg) for %{intelligenceModifier} rd"',
   'Cinder Dance':
     'Section=ability,feature ' +
     'Note=' +
@@ -560,6 +573,11 @@ PFAPG.FEATURES = {
   'Concussive Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
+  'Coven Hex':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May participate in hag coven",' +
+      '"May use aid another to give witches in 30\' radius +1 caster level for 1 rd"',
   'Crystal Sight':
     'Section=feature ' +
     'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
@@ -571,6 +589,7 @@ PFAPG.FEATURES = {
       '"Has %V",' +
       '"May cast all spells silently",' +
       '"+3 Perception (non-sound)"',
+  'Death Curse Hex':'Section=feature Note="FILL"',
   "Death's Touch":
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
@@ -587,6 +606,9 @@ PFAPG.FEATURES = {
     'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
   'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
   'Discern Lies':'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
+  'Disguise Hex':
+    'Section=magic ' +
+    'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
   'Discovery':'Section=feature Note="%V Selections"',
   'Dispelling Bomb':
     'Section=combat ' +
@@ -631,41 +653,62 @@ PFAPG.FEATURES = {
     'Section=companion Note="Tentacle attack inflicts %V HP each"',
   'Eidolon Wing Buffet':
     'Section=companion Note="Wing attack inflicts %V HP each"',
-  'Eidolon Ability Increase':'Section=companion Note="+2 chosen ability"',
-  'Eidolon Constrict':
+  'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
+  'Eidolon Constrict (2)':
     'Section=companion Note="Successful grapple doubles damage"',
-  'Eidolon Energy Attacks':
+  'Eidolon Energy Attacks (2)':
     'Section=companion ' +
     'Note="Natural attacks inflict 1d6 HP of chosen energy Type"',
-  'Eidolon Flight':'Section=companion Note="May fly at full speed"',
-  'Eidolon Gore':'Section=companion Note="Horn attack inflicts %V HP"',
-  'Eidolon Grab':
+  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
+  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
+  'Eidolon Grab (2)':
     'Section=companion ' +
     'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
-  'Eidolon Immunity':'Section=companion Note="Immune to chosen energy type"',
-  'Eidolon Limbs':'Section=companion Note="+%V limbs"',
-  'Eidolon Poison':
+  'Eidolon Immunity (2)':
+    'Section=companion Note="Immune to chosen energy type"',
+  'Eidolon Limbs (2)':'Section=companion Note="+%V limbs"',
+  'Eidolon Poison (2)':
     'Section=companion ' +
     'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
-  'Eidolon Rake':
+  'Eidolon Rake (2)':
     'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
-  'Eidolon Rend':
+  'Eidolon Rend (2)':
     'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
-  'Eidolon Trample':'Section=companion Note="FILL"',
-  'Eidolon Tremorsense':'Section=companion Note="FILL"',
-  'Eidolon Trip':'Section=companion Note="FILL"',
-  'Eidolon Weapon Training':'Section=companion Note="FILL"',
-  'Eidolon Blindsense':'Section=companion Note="FILL"',
-  'Eidolon Burrow':'Section=companion Note="FILL"',
-  'Eidolon Damage Reduction':'Section=companion Note="FILL"',
-  'Eidolon Frightful Presence':'Section=companion Note="FILL"',
-  'Eidolon Swallow Whole':'Section=companion Note="FILL"',
-  'Eidolon Web':'Section=companion Note="FILL"',
-  'Eidolon Blindsight':'Section=companion Note="FILL"',
-  'Eidolon Breath Weapon':'Section=companion Note="FILL"',
-  'Eidolon Fast Healing':'Section=companion Note="FILL"',
-  'Eidolon Large':'Section=companion Note="FILL"',
-  'Eidolon Spell Resistance':'Section=companion Note="FILL"',
+  'Eidolon Trample (2)':
+    'Section=companion ' +
+    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
+  'Eidolon Tremorsense (2)':
+    'Section=companion Note="R30\' Senses creatures via ground vibrations"',
+  'Eidolon Trip (2)':
+    'Section=companion Note="Successful bite allows free CMB to trip"',
+  'Eidolon Weapon Training (2)':
+    'Section=companion Note="Proficient with simple%1 weapons"',
+  'Eidolon Blindsense (3)':
+    'Section=companion Note="R30\' May detect unseen creatures"',
+  'Eidolon Burrow (3)':
+    'Section=companion Note="May burrow through earth at half speed"',
+  'Eidolon Damage Reduction (3)':
+    'Section=companion Note="DR %V/opposite alignment"',
+  'Eidolon Frightful Presence (3)':
+    'Section=companion ' +
+    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
+  'Eidolon Swallow Whole (3)':
+    'Section=companion Note="May use CMB to swallow creature grappled by bite"',
+  'Eidolon Web (3)':
+    'Section=companion ' +
+    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
+  'Eidolon Blindsight (4)':
+    'Section=companion ' +
+    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
+  'Eidolon Breath Weapon (4)':
+    'Section=companion ' +
+    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
+  'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
+  'Eidolon Large (4)':
+    'Section=companion ' +
+    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
+  'Eidolon Spell Resistance (4)':
+    'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
   'Elixir Of Life':
     'Section=magic ' +
     'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
@@ -684,8 +727,10 @@ PFAPG.FEATURES = {
   'Eternal Potion':
      'Section=magic ' +
      'Note="May cause effects of 1 imbibed potion to become permanent"',
+  'Eternal Slumber Hex':'Section=feature Note="FILL"',
   'Eternal Youth':
     'Section=feature Note="Suffers no ability score penalties from age"',
+  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attacks, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{10 + levels.Witch//2 + intelligenceModifier} Will 1 rd)"',
   'Expert Trainer':
     'Section=skill ' +
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
@@ -752,6 +797,11 @@ PFAPG.FEATURES = {
   'Flame Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
+  'Flight Hex':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast <i>Feather Fall</i> at will%1",' +
+      '"+4 Swim"',
   'Fluid Nature':
     'Section=combat,feature ' +
     'Note=' +
@@ -772,9 +822,12 @@ PFAPG.FEATURES = {
   'Force Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
+  'Forced Reincarnation Hex':'Section=feature Note="FILL"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
+  'Fortune Hex':
+    'Section=magic Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Freezing Spells':
     'Section=magic ' +
     'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
@@ -795,7 +848,6 @@ PFAPG.FEATURES = {
       '"Can see through fire, fog, and smoke %{levels.Oracle} rd/dy",' +
       '"Can use <i>Clairvoyance</i> via flame %V rd/dy"',
   'Grand Discovery':'Section=feature Note="%V Selection"',
-  'Grand Hex':'Section=feature Note="FILL"',
   'Grand Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
@@ -819,19 +871,22 @@ PFAPG.FEATURES = {
       '"May determine precise location under clear night sky",' +
       '"+%{charismaModifier} wisdom-linked skills under clear night sky",' +
       '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night"',
+  "Hag's Eye Hex":'Section=feature Note="FILL"',
   'Haunted':
     'Section=feature,magic ' +
     'Note=' +
       '"Malevolent spirits cause minor annoyances",' +
       '"Know %V spells"',
   'Healing Hands':'Section=feature Note="FILL"',
+  'Healing Hex':
+    'Section=feature Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
   'Heat Aura':
     'Section=combat ' +
     'Note="R10\' Heat blast inflicts %{levels.Oracle>?1}d4 HP fire, gives self 20% concealment for 1 rd %{(levels.Oracle+5)//5}/dy"',
   'Heavens Mystery':
     'Section=skill ' +
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
-  'Hex':'Section=feature Note="FILL"',
+  'Hex':'Section=feature Note="%V Selections"',
   'Ice Armor':
     'Section=combat ' +
     'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
@@ -871,6 +926,7 @@ PFAPG.FEATURES = {
   'Life Bond':
     'Section=combat ' +
     'Note="Damage that would reduce self to negative HP transferred to eidolon"',
+  'Life Giver Hex':'Section=feature Note="FILL"',
   'Life Leach':
     'Section=combat ' +
     'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
@@ -902,7 +958,7 @@ PFAPG.FEATURES = {
   'Madness Bomb':
     'Section=combat ' +
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
-  'Major Hex':'Section=feature Note="FILL"',
+  'Major Healing Hex':'Section=feature Note="FILL"',
   "Maker's Call":
     'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(source - 2) // 4}/dy"',
   'Maneuver Mastery':
@@ -926,6 +982,8 @@ PFAPG.FEATURES = {
   'Mighty Pebble':
     'Section=combat ' +
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
+  'Misfortune Hex':
+    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attacks, saves, and skill checks (DC %{10 + levels.Witch//2 + intelligenceModifier} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -950,6 +1008,7 @@ PFAPG.FEATURES = {
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery Spell':'Section=feature Note="FILL"',
   'Mystery':'Section=feature Note="1 Selection"',
+  'Natural Disaster Hex':'Section=feature Note="FILL"',
   'Natural Divination':
     'Section=feature ' +
     'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
@@ -960,6 +1019,7 @@ PFAPG.FEATURES = {
   'Near Death':
     'Section=save ' +
     'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
+  'Nightmares Hex':'Section=feature Note="FILL"',
   "Oracle's Curse":'Section=feature Note="1 Selection"',
   'Order':'Section=feature Note="1 Selection"',
   'Order Of The Cockatrice':
@@ -1037,6 +1097,7 @@ PFAPG.FEATURES = {
   'Retribution':
     'Section=combat ' +
     'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
+  'Retribution Hex':'Section=feature Note="FILL"',
   'Revelation':'Section=feature Note="%V Selections"',
   'Rock Throwing':'Section=combat Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
   'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
@@ -1064,6 +1125,9 @@ PFAPG.FEATURES = {
     'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
   'Slayer':
     'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
+  'Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' May cause target to sleep (DC %{10 + levels.Witch//2 + intelligenceModifier} neg) for %{levels.Witch} rd at will 1/target/dy"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
@@ -1149,6 +1213,9 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Can speak only chosen outsider or elemental language during combat",' +
       '"+%V Language Count%1"',
+  'Tongues Hex':
+    'Section=magic ' +
+    'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
   'Touch Of Acid':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
@@ -1178,6 +1245,7 @@ PFAPG.FEATURES = {
   'Undo Artifice':
     'Section=feature ' +
     'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
+  'Vision Hex':'Section=feature Note="FILL"',
   'Voice Of The Grave':
     'Section=magic Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
   'Vortex Spells':
@@ -1186,6 +1254,9 @@ PFAPG.FEATURES = {
   'War Sight':
     'Section=combat ' +
     'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
+  'Ward Hex':
+    'Section=magic ' +
+    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
   'Wasting':
     'Section=save,skill ' +
     'Note=' +
@@ -1202,8 +1273,10 @@ PFAPG.FEATURES = {
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
+  'Waxen Image Hex':'Section=feature Note="FILL"',
   'Weapon Mastery':
     'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
+  'Weather Control Hex':'Section=feature Note="FILL"',
   'Whirlwind Lesson':
     'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
   'Wind Mystery':
@@ -1674,11 +1747,11 @@ PFAPG.SPELLS = {
   'Absorbing Touch':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
-    'Description="FILL"',
+    'Description="Self hand absorbes $L lb object (Fort neg) for $L dy"',
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,W2 ' +
-    'Description="FILL"',
+    'Description="Poison affecting touched takes effect immediately or does dbl damage for half duration"',
   'Acid Pit':
     'School=Conjuration ' +
     'Level=W4,Summoner4 ' +
@@ -1686,55 +1759,55 @@ PFAPG.SPELLS = {
   'Alchemical Allocation':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
-    'Description="FILL"',
+    'Description="Self gains effect of potion used in next rd w/out swallowing"',
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
-    'Description="FILL"',
+    'Description="Transforms touched $L5 object into edible substance"',
   'Alter Winds':
     'School=Transmutation ' +
     'Level=D1,W1,Wind1 ' +
-    'Description="FILL"',
+    'Description="%{lvl>=16 ? \'Severe\' : lvl>=10 ? \'Strong\' : lvl>=4 ? \'Moderate\' : \'Light\'} winds in 10\' radius around touched increased or descreased 1 step for $L hr"',
   'Amplify Elixir':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
-    'Description="FILL"',
+    'Description="Effects of potions consumed by self increased by 1/2 for $L rd"',
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,R1,W1,Summoner1 ' +
-    'Description="FILL"',
+    'Description="Touched gains triple carrying capacity for $L2 rd"',
   'Aqueous Orb':
     'School=Conjuration ' +
     'Level=D3,W3,Summoner3 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 10\' diameter sphere douses fires, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), jumps or moves 30\'/rd for $L rd"',
   'Arcane Concordance':
     'School=Evocation ' +
     'Level=B3 ' +
-    'Description="FILL"',
+    'Description="10\' radius gives +1 ally spell DC and free use of choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for $L rd"',
   'Arrow Eruption':
     'School=Conjuration ' +
     'Level=R2,W2 ' +
-    'Description="FILL"',
+    'Description="R$RL Duplicates of killing arrow attack %{lvl<?15} foes in 30\' radius"',
   'Aspect Of The Bear':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
-    'Description="FILL"',
+    'Description="Self gains +2 AC and CMD, no AOO on bull rush, grapple, and overrun for $L min"',
   'Aspect Of The Falcon':
     'School=Transmutation ' +
     'Level=D1,R1 ' +
-    'Description="FILL"',
+    'Description="Self gains +3 Perception, +1 ranged attacks, and ranged crit of 19-20/x3 for $L min"',
   'Aspect Of The Stag':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
-    'Description="FILL"',
+    'Description="Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack after successful foe AOO for $L min"',
   'Aspect Of The Wolf':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
-    'Description="FILL"',
+    'Description="Self gains +4 Strength and Dexterity, +2 trip attacks, and swift trip w/no AOO for $L min"',
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="Allies in 10\' radius gain immunity to fear for $L10 min"',
   'Ball Lightning':
     'School=Evocation ' +
     'Level=D4,W4 ' +
@@ -3132,32 +3205,32 @@ PFAPG.CLASSES = {
       '"1:Eidolon Tail Slap:Evolution",' +
       '"1:Eidolon Tentacle:Evolution",' +
       '"1:Eidolon Wing Buffet:Evolution",' +
-      '"1:Eidolon Ability Increase:Evolution",' +
-      '"1:Eidolon Constrict:Evolution",' +
-      '"1:Eidolon Energy Attacks:Evolution",' +
-      '"1:Eidolon Flight:Evolution",' +
-      '"1:Eidolon Gore:Evolution",' +
-      '"1:Eidolon Grab:Evolution",' +
-      '"1:Eidolon Immunity:Evolution",' +
-      '"1:Eidolon Limbs:Evolution",' +
-      '"1:Eidolon Poison:Evolution",' +
-      '"1:Eidolon Rake:Evolution",' +
-      '"1:Eidolon Rend:Evolution",' +
-      '"1:Eidolon Trample:Evolution",' +
-      '"1:Eidolon Tremorsense:Evolution",' +
-      '"1:Eidolon Trip:Evolution",' +
-      '"1:Eidolon Weapon Training:Evolution",' +
-      '"1:Eidolon Blindsense:Evolution",' +
-      '"1:Eidolon Burrow:Evolution",' +
-      '"1:Eidolon Damage Reduction:Evolution",' +
-      '"1:Eidolon Frightful Presence:Evolution",' +
-      '"1:Eidolon Swallow Whole:Evolution",' +
-      '"1:Eidolon Web:Evolution",' +
-      '"1:Eidolon Blindsight:Evolution",' +
-      '"1:Eidolon Breath Weapon:Evolution",' +
-      '"1:Eidolon Fast Healing:Evolution",' +
-      '"1:Eidolon Large:Evolution",' +
-      '"1:Eidolon Spell Resistance:Evolution" ' +
+      '"1:Eidolon Ability Increase (2):Evolution",' +
+      '"1:Eidolon Constrict (2):Evolution",' +
+      '"5:Eidolon Energy Attacks (2):Evolution",' +
+      '"5:Eidolon Flight (2):Evolution",' +
+      '"1:Eidolon Gore (2):Evolution",' +
+      '"1:Eidolon Grab (2):Evolution",' +
+      '"7:Eidolon Immunity (2):Evolution",' +
+      '"1:Eidolon Limbs (2):Evolution",' +
+      '"7:Eidolon Poison (2):Evolution",' +
+      '"4:Eidolon Rake (2):Evolution",' +
+      '"6:Eidolon Rend (2):Evolution",' +
+      '"1:Eidolon Trample (2):Evolution",' +
+      '"7:Eidolon Tremorsense (2):Evolution",' +
+      '"1:Eidolon Trip (2):Evolution",' +
+      '"1:Eidolon Weapon Training (2):Evolution",' +
+      '"9:Eidolon Blindsense (3):Evolution",' +
+      '"9:Eidolon Burrow (3):Evolution",' +
+      '"9:Eidolon Damage Reduction (3):Evolution",' +
+      '"11:Eidolon Frightful Presence (3):Evolution",' +
+      '"9:Eidolon Swallow Whole (3):Evolution",' +
+      '"7:Eidolon Web (3):Evolution",' +
+      '"11:Eidolon Blindsight (4):Evolution",' +
+      '"9:Eidolon Breath Weapon (4):Evolution",' +
+      '"11:Eidolon Fast Healing (4):Evolution",' +
+      '"8:Eidolon Large (4):Evolution",' +
+      '"9:Eidolon Spell Resistance (4):Evolution" ' +
     'CasterLevelArcane=levels.Summoner ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -3174,7 +3247,35 @@ PFAPG.CLASSES = {
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Simple)",' +
-      '1:Cantrips,1:Hex,"1:Witch\'s Familiar","10:Major Hex","18:Grand Hex" ' +
+      '1:Cantrips,1:Hex,"1:Witch\'s Familiar" ' +
+    'Selectables=' +
+      '"1:Blight Hex:Hex",' +
+      '"1:Cackle Hex:Hex",' +
+      '"1:Cauldron Hex:Hex",' +
+      '"1:Charm Hex:Hex",' +
+      '"1:Coven Hex:Hex",' +
+      '"1:Disguise Hex:Hex",' +
+      '"1:Evil Eye Hex:Hex",' +
+      '"1:Flight Hex:Hex",' +
+      '"1:Fortune Hex:Hex",' +
+      '"1:Healing Hex:Hex",' +
+      '"1:Misfortune Hex:Hex",' +
+      '"1:Slumber Hex:Hex",' +
+      '"1:Tongues Hex:Hex",' +
+      '"1:Ward Hex:Hex",' +
+      '"10:Agony Hex:Hex",' +
+      '"10:Hag\'s Eye Hex:Hex",' +
+      '"10:Major Healing Hex:Hex",' +
+      '"10:Nightmares Hex:Hex",' +
+      '"10:Retribution Hex:Hex",' +
+      '"10:Vision Hex:Hex",' +
+      '"10:Waxen Image Hex:Hex",' +
+      '"10:Weather Control Hex:Hex",' +
+      '"18:Death Curse Hex:Hex",' +
+      '"18:Eternal Slumber Hex:Hex",' +
+      '"18:Forced Reincarnation Hex:Hex",' +
+      '"18:Life Giver Hex:Hex",' +
+      '"18:Natural Disaster Hex:Hex" ' +
     'CasterLevelArcane=levels.Witch ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
@@ -3435,6 +3536,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.eidolonBite.1',
       'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
     );
+    rules.defineRule('companionNotes.eidolonBreathWeapon(4)',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonBreathWeapon(4).1',
+      'summonerFeatures.Eidolon Breath Weapon', '=', 'source - 3'
+    );
     rules.defineRule('companionNotes.eidolonClaws',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
@@ -3442,33 +3550,86 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.eidolonClimb',
       'summonerFeatures.Eidolon Climb', '=', '20 * source'
     );
-    rules.defineRule('companionNotes.eidolonGore',
+    rules.defineRule('companionNotes.eidolonDamageReduction(3)',
+      'summonerFeatures.Eidolon Damage Reduction(3)', '=', 'source>=2 ? 10 : 5'
+    );
+    rules.defineRule('companionNotes.eidolonFastHealing(4)',
+      'summonerFeatures.Eidolon Breath Weapon', '=', 'Math.floor((source - 2) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonFrightfulPresence(3)',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Cha', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonGore(2)',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
     );
     rules.defineRule('companionNotes.eidolonImprovedNaturalArmor',
       'summonerFeatures.Eidolon Improved Natural Armor', '=', '2 * source'
     );
-    rules.defineRule('companionNotes.eidolonLimbs',
-      'summonerFeatures.Eidolon Limbs', '=', '2 * source'
+    rules.defineRule('companionNotes.eidolonLarge(4)',
+      'summonerFeatures.Eidolon Large(4)', '=', 'source>=10 ? "Huge" : "Large"'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).1',
+      'companionStats.Size', '+', 'source=="H" ? 16 : 8'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).2',
+      'companionStats.Size', '+', 'source=="H" ? 8 : 4'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).3',
+      'companionStats.Size', '+', 'source=="H" ? 3 : 1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).4',
+      'companionStats.Size', '+', 'source=="H" ? 2 : 1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).5',
+      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).6',
+      'companionStats.Size', '+', 'source=="H" ? -2 : -1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).7',
+      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).7',
+      'companionStats.Size', '+', 'source=="H" ? -8 : -4'
+    );
+    rules.defineRule
+      ('companionStats.Str, companionNotes.Large(4).1', '+', null);
+    rules.defineRule
+      ('companionStats.Con, companionNotes.Large(4).2', '+', null);
+    rules.defineRule
+      ('companionStats.AC, companionNotes.Large(4).3', '+', null);
+    rules.defineRule
+      ('companionStats.CMB, companionNotes.Large(4).4', '+', null);
+    rules.defineRule
+      ('companionStats.CMD, companionNotes.Large(4).4', '+', null);
+    rules.defineRule
+      ('companionStats.Dex, companionNotes.Large(4).5', '+', null);
+    rules.defineRule('companionAttack, companionNotes.Large(4).6', '+', null);
+    rules.defineRule('companionStats.Size',
+      'companionNotes.eidolonLarge(4)', '=', 'source.charAt(0)'
+    );
+    rules.defineRule('companionNotes.eidolonLimbs(2)',
+      'summonerFeatures.Eidolon Limbs(2)', '=', '2 * source'
     );
     rules.defineRule('companionNotes.eidolonPincers',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
     );
-    rules.defineRule('companionNotes.eidolonPoison',
+    rules.defineRule('companionNotes.eidolonPoison(2)',
       'companionStats.HD', '=', '10 + Math.floor(source / 2)',
       'companionStats.Con', '+', 'Math.floor((source - 10) / 2)'
     );
-    rules.defineRule('companionNotes.eidolonRake',
+    rules.defineRule('companionNotes.eidolonRake(2)',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
     );
-    rules.defineRule('companionNotes.eidolonRend',
+    rules.defineRule('companionNotes.eidolonRend(2)',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
     );
-    rules.defineRule('companionNotes.eidolonRend.1',
+    rules.defineRule('companionNotes.eidolonRend(2).1',
       'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
     );
     rules.defineRule('companionNotes.eidolonSlam',
@@ -3492,6 +3653,24 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.eidolonTentacle',
       'animalCompanionStats.Size', '=',
         'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2)',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2).1',
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2).2',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonWeaponTraining(2).1',
+      'summonerFeatures.Eidolon Weapon Training', '=', 'source>=2 ? " and martial" : ""'
+    );
+    rules.defineRule('companionNotes.eidolonWeb(3)',
+      'animalCompanionStats.HD', '=', '10 + source',
+      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
     );
     rules.defineRule('companionNotes.eidolonWingBuffet',
       'animalCompanionStats.Size', '=',
@@ -3547,6 +3726,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
       classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
     );
+  } else if(name == 'Witch') {
+    rules.defineRule('magicNotes.flightHex.1',
+      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> %{levels.Witch} min/dy" : "")'
+    );
+    rules.defineRule
+      ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
+    rules.defineRule
+      ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
   }
 };
 
@@ -3668,6 +3855,8 @@ PFAPG.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scry" : null'
     );
   } else if(name == 'Wind Mystery') {
+    rules.defineRule
+      ('features.Brew Potion', 'featureNotes.cauldronHex', '=', '1');
     rules.defineRule
       ('magicNotes.windSight', pathLevel, '=', 'source>=7 ? source : null');
   }
