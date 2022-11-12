@@ -117,7 +117,14 @@ PFAPG.FEATS = {
   'Arcane Shield':'Type=General Require=casterLevelArcane,"casterLevel >= 10"',
   'Arcane Talent':
     'Type=General Require="charisma >= 10","race =~ \'Elf|Gnome\'"',
-  'Aspect Of The Beast':'Type=General Require="features.Wild Shape"',
+  'Aspect Of The Beast (Claws Of The Beast)':
+    'Type=General Require="features.Wild Shape"',
+  'Aspect Of The Beast (Night Senses)':
+    'Type=General Require="features.Wild Shape"',
+  "Aspect Of The Beast (Predator's Leap)":
+    'Type=General Require="features.Wild Shape"',
+  'Aspect Of The Beast (Wild Instinct)':
+    'Type=General Require="features.Wild Shape"',
   'Bashing Finish':
     'Type=General,Fighter ' +
     'Require=' +
@@ -193,8 +200,18 @@ PFAPG.FEATS = {
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
       '"baseAttackBonus >= 8"',
-  'Elemental Focus':'Type=General',
-  'Greater Elemental Focus':'Type=General Require="features.Elemental Focus"',
+  'Elemental Focus (Acid)':'Type=General',
+  'Elemental Focus (Cold)':'Type=General',
+  'Elemental Focus (Electricity)':'Type=General',
+  'Elemental Focus (Fire)':'Type=General',
+  'Greater Elemental Focus (Acid)':
+    'Type=General Require="features.Elemental Focus (Acid)"',
+  'Greater Elemental Focus (Cold)':
+    'Type=General Require="features.Elemental Focus (Cold)"',
+  'Greater Elemental Focus (Electricity)':
+    'Type=General Require="features.Elemental Focus (Electricity)"',
+  'Greater Elemental Focus (Fire)':
+    'Type=General Require="features.Elemental Focus (Fire)"',
   'Elven Accuracy':'Type=General,Fighter Require="race =~ \'Elf\'"',
   'Enforcer':'Type=General,Fighter Require=skills.Intimidate',
   'Expanded Arcana':'Type=General Require="casterLevel >= 1"',
@@ -439,7 +456,11 @@ PFAPG.FEATS = {
   'Dazing Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Disruptive Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Ectoplasmic Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
-  'Elemental Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Elemental Spell (Acid)':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Elemental Spell (Cold)':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Elemental Spell (Electricity)':
+    'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
+  'Elemental Spell (Fire)':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Focused Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Intensified Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Lingering Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
@@ -537,7 +558,7 @@ PFAPG.FEATURES = {
     'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %{levels.Alchemist + intelligenceModifier}/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %V/dy"',
   'Bond Senses':
     'Section=feature ' +
     'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
@@ -1357,56 +1378,130 @@ PFAPG.FEATURES = {
   'Arcane Talent':
     'Section=magic ' +
     'Note="Cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
-  'Aspect Of The Beast':'Section=feature Note="FILL"',
+  'Aspect Of The Beast (Claws Of The Beast)':
+    'Section=combat ' +
+    'Note="Claws do %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
+  'Aspect Of The Beast (Night Senses)':'Section=feature Note="%V"',
+  "Aspect Of The Beast (Predator's Leap)":
+    'Section=skill Note="May make running jump without running beforehand"',
+  'Aspect Of The Beast (Wild Instinct)':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+2 Initiative",' +
+      '"+2 Survival"',
   'Bashing Finish':
     'Section=combat Note="May make free shield bash after critical hit"',
   'Bloody Assault':
     'Section=combat ' +
     'Note="May trade -5 attack for extra 1d4 HP bleeding damage (DC 15 Heal ends)"',
-  'Bodyguard':'Section=feature Note="FILL"',
+  'Bodyguard':
+    'Section=combat ' +
+    'Note="May use AOO on aid another action to improve adjacent ally\'s AC"',
   'Bouncing Spell':'Section=magic Note="May redirect ineffectual spell"',
   'Breadth Of Experience':
     'Section=skill ' +
     'Note="+2 Knowledge/+2 Profession/May use Knowledge and Profession untrained"',
-  'Bull Rush Strike':'Section=feature Note="FILL"',
-  'Charge Through':'Section=feature Note="FILL"',
+  'Bull Rush Strike':
+    'Section=combat Note="May push on critical hit that exceeds foe CMD"',
+  'Charge Through':
+    'Section=combat Note="May attempt free overrun during charge"',
   'Childlike':
     'Section=skill ' +
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
-  'Cloud Step':'Section=feature Note="FILL"',
-  'Cockatrice Strike':'Section=feature Note="FILL"',
-  'Combat Patrol':'Section=feature Note="FILL"',
-  'Cooperative Crafting':'Section=feature Note="FILL"',
-  'Coordinated Defense':'Section=feature Note="FILL"',
-  'Coordinated Maneuvers':'Section=feature Note="FILL"',
-  'Cosmopolitan':'Section=feature Note="FILL"',
-  'Covering Defense':'Section=feature Note="FILL"',
-  'Crippling Critical':'Section=feature Note="FILL"',
-  'Crossbow Mastery':'Section=feature Note="FILL"',
-  'Dastardly Finish':'Section=feature Note="FILL"',
-  'Dazing Assault':'Section=feature Note="FILL"',
-  'Dazing Spell':'Section=feature Note="FILL"',
-  'Deep Drinker':'Section=feature Note="FILL"',
-  'Deepsight':'Section=feature Note="FILL"',
-  'Disarming Strike':'Section=feature Note="FILL"',
-  'Disrupting Shot':'Section=feature Note="FILL"',
-  'Disruptive Spell':'Section=feature Note="FILL"',
-  "Diviner's Delving":'Section=feature Note="FILL"',
-  'Dreadful Carnage':'Section=feature Note="FILL"',
-  'Duck and Cover':'Section=feature Note="FILL"',
-  'Eagle Eyes':'Section=feature Note="FILL"',
-  'Eclectic':'Section=feature Note="FILL"',
-  'Ectoplasmic Spell':'Section=feature Note="FILL"',
-  'Eldritch Claws':'Section=feature Note="FILL"',
-  'Elemental Fist':'Section=feature Note="FILL"',
-  'Elemental Focus':'Section=feature Note="FILL"',
-  'Elemental Spell':'Section=feature Note="FILL"',
-  'Elven Accuracy':'Section=feature Note="FILL"',
-  'Enforcer':'Section=feature Note="FILL"',
-  'Expanded Arcana':'Section=feature Note="FILL"',
-  'Extra Bombs':'Section=feature Note="FILL"',
-  'Extra Discovery':'Section=feature Note="FILL"',
-  'Extra Hex':'Section=feature Note="FILL"',
+  'Cloud Step':
+    'Section=magic ' +
+    'Note="May <i>Air Walk</i> half of Slow Fall distance (50\' max)"',
+  'Cockatrice Strike':
+    'Section=combat ' +
+    'Note="Unarmed crit pertrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
+  'Combat Patrol':
+    'Section=combat ' +
+    'Note="May use full-round action to increase threat area by %{baseAttackBonus//5}\'"',
+  'Cooperative Crafting':
+    'Section=skill ' +
+    'Note="Assisting another gives +2 Craft or Spellcraft and dbl GP value"',
+  'Coordinated Defense':
+    'Section=combat ' +
+    'Note="+2 CMD (+4 vs. larger foe) when adjacent ally also has this feat"',
+  'Coordinated Maneuvers':
+    'Section=combat ' +
+    'Note="+2 CMB and CMD, +4 vs. grapple, when adjacent ally also has this feat"',
+  'Cosmopolitan':
+    'Section=skill ' +
+    'Note="+2 Language Count/Two chosen Int, Wis, or Cha skills are class skills"',
+  'Covering Defense':
+    'Section=combat ' +
+    'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : 1} AC to adjacent ally"',
+  'Crippling Critical':
+    'Section=combat ' +
+    'Note="Critical hit reduces foe speed by half for 1 min (DC %{10 + baseAttackBonus} Fort 1d4 rd)"',
+  'Crossbow Mastery':
+    'Section=combat Note="May reload crossbow as free action w/out AOO"',
+  'Dastardly Finish':
+    'Section=combat Note="May coup de grace cowering and stunned targets"',
+  'Dazing Assault':
+    'Section=feature ' +
+    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttackBonus} neg)"',
+  'Dazing Spell':
+    'Section=magic ' +
+    'Note="May forego spell damage to daze target for spell level rd (spell save or Will neg)"',
+  'Deep Drinker':'Section=feature Note="Gain 2 temporary ki from Drunken Ki"',
+  'Deepsight':'Section=feature Note="120\' Darkvision"',
+  'Disarming Strike':
+    'Section=combat Note="May disarm on critical hit that exceeds foe CMD"',
+  'Disrupting Shot':
+    'Section=combat ' +
+     'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
+  'Disruptive Spell':
+    'Section=magic Note="Effect of disruptive spell last for 1 rd"',
+  "Diviner's Delving":
+    'Section=magic ' +
+    'Note="+2 checks to overcome divination spell resistance; concentration divinations require 1 fewer rd"',
+  'Dreadful Carnage':
+    'Section=combat ' +
+    'Note="R30\' May make Intimidation check to demoralize foes after reducing foe to 0 HP"',
+  'Duck and Cover':
+    'Section=combat,save ' +
+    'Note=' +
+      '"May use Reflex roll of adjacent ally who also has this feat; knocked prone afterward",' +
+      '"+2 AC vs. ranged if adjacent ally also has this feat"',
+  'Eagle Eyes':'Section=skill Note="Ignore -5 penalties on visual Perception"',
+  'Eclectic':'Section=feature Note="Additional favored class"',
+  'Ectoplasmic Spell':
+    'Section=magic ' +
+    'Note="Cast spell targeting incorporeal or ethereal target uses +1 spell slot"',
+  'Eldritch Claws':
+    'Section=combat ' +
+    'Note="Natural weapons considered magic and silver for overcoming DR"',
+  'Elemental Fist':
+    'Section=combat ' +
+    'Note="Successful Elemental Strike inflicts +1d6 HP of choice of energy type"',
+  'Elemental Focus (Acid)':
+    'Section=feature Note="+%V DC on spells that inflict acid damage"',
+  'Elemental Focus (Cold)':
+    'Section=feature Note="+%V DC on spells that inflict cold damage"',
+  'Elemental Focus (Electricity)':
+    'Section=feature Note="+%V DC on spells that inflict electricity damage"',
+  'Elemental Focus (Fire)':
+    'Section=feature Note="+%V DC on spells that inflict fire damage"',
+  'Elemental Spell (Acid)':
+    'Section=magic Note="May convert half of spell damage to acid damage"',
+  'Elemental Spell (Cold)':
+    'Section=magic Note="May convert half of spell damage to cold damage"',
+  'Elemental Spell (Electricity)':
+    'Section=magic Note="May convert half of spell damage to electricity damage"',
+  'Elemental Spell (Fire)':
+    'Section=magic Note="May convert half of spell damage to fire damage"',
+  'Elven Accuracy':
+    'Section=combat Note="May reroll bow miss due to concealment"',
+  'Enforcer':
+    'Section=combat ' +
+    'Note="May make Intimidation check to shake foe for HP rd (crit also frightened 1 rd) after inflicting nonlethal damage"',
+  'Expanded Arcana':
+    'Section=magic Note="+1 spells know (+2 of lower than max level)"',
+  'Extra Bombs':'Section=combat Note="+%V bombs/dy"',
+  'Extra Discovery':'Section=feature Note="+%V discoveries"',
+  'Extra Hex':'Section=feature Note="+%V hexes"',
   'Extra Rage Power':'Section=feature Note="FILL"',
   'Extra Revelation':'Section=feature Note="FILL"',
   'Extra Rogue Talent':'Section=feature Note="FILL"',
@@ -1424,7 +1519,14 @@ PFAPG.FEATURES = {
   'Greater Blind-Fight':'Section=feature Note="FILL"',
   'Greater Dirty Trick':'Section=feature Note="FILL"',
   'Greater Drag':'Section=feature Note="FILL"',
-  'Greater Elemental Focus':'Section=feature Note="FILL"',
+  'Greater Elemental Focus (Acid)':
+    'Section=magic Note="Increased Elemental Focus Effects"',
+  'Greater Elemental Focus (Cold)':
+    'Section=magic Note="Increased Elemental Focus Effects"',
+  'Greater Elemental Focus (Electricity)':
+    'Section=magic Note="Increased Elemental Focus Effects"',
+  'Greater Elemental Focus (Fire)':
+    'Section=magic Note="Increased Elemental Focus Effects"',
   'Greater Reposition':'Section=feature Note="FILL"',
   'Greater Shield Specialization':'Section=feature Note="FILL"',
   'Greater Steal':'Section=feature Note="FILL"',
@@ -3413,6 +3515,10 @@ PFAPG.talentRules = function(
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Alchemist') {
+    rules.defineRule('combatNotes.bomb',
+      classLevel, '=', null,
+      'intelligenceModifier', '+', null
+    );
     rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
     rules.defineRule('featureNotes.discovery',
       classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
@@ -3800,6 +3906,32 @@ PFAPG.classRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to featRules.
  */
 PFAPG.featRulesExtra = function(rules, name) {
+  let matchInfo;
+  if(name == 'Aspect Of The Beast (Night Senses)') {
+    rules.defineRule('featureNotes.aspectOfTheBeast(NightSenses)',
+      '', '=', '"x2 normal distance in poor light"',
+      'features.Low-Light Vision', '=', '"30\' b/w vision in darkness"',
+      'features.Darkvision', '=', '"+30\' Darkvision"'
+    );
+  } else if((matchInfo = name.match(/^Elemental Focus .(Acid|Cold|Electricity|Fire).$/)) != null) {
+    let energy = matchInfo[1];
+    rules.defineRule('magicNotes.elementalFocus(' + energy + ')',
+      '', '=', '1',
+      'magicNotes.greaterElementalFocus(' + energy + ')', '+', '1'
+    );
+  } else if(name == 'Extra Bombs') {
+    rules.defineRule('combatNotes.bomb', 'combatNotes.extraBombs', '+', null);
+    rules.defineRule
+      ('combatNotes.extraBombs', 'feats.Extra Bombs', '=', '2 * source');
+  } else if(name == 'Extra Discovery') {
+    rules.defineRule
+      ('featureNotes.discovery', 'featureNotes.extraDiscovery', '+', null);
+    rules.defineRule
+      ('featureNotes.extraDiscovery', 'feats.Extra Discovery', '=', null);
+  } else if(name == 'Extra Hex') {
+    rules.defineRule('featureNotes.hex', 'featureNotes.extraHex', '+', null);
+    rules.defineRule('featureNotes.extraHex', 'feats.Extra Hex', '=', null);
+  }
 };
 
 /*
