@@ -375,10 +375,37 @@ PFAPG.FEATS = {
   'Shield Of Swings':
     'Type=General,Fighter ' +
     'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
-  'Shield Specialization':
+  'Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require="features.Shield Focus","features.Fighter >= 4"',
-  'Greater Shield Specialization':
+  'Shield Specialization (Heavy)':
+    'Type=General,Fighter ' +
+    'Require="features.Shield Focus","features.Fighter >= 4"',
+  'Shield Specialization (Light)':
+    'Type=General,Fighter ' +
+    'Require="features.Shield Focus","features.Fighter >= 4"',
+  'Shield Specialization (Tower)':
+    'Type=General,Fighter ' +
+    'Require="features.Shield Focus","features.Fighter >= 4"',
+  'Greater Shield Specialization (Buckler)':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Greater Shield Focus",' +
+      '"features.Shield Specialization",' +
+      '"levels.Fighter >= 12"',
+  'Greater Shield Specialization (Heavy)':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Greater Shield Focus",' +
+      '"features.Shield Specialization",' +
+      '"levels.Fighter >= 12"',
+  'Greater Shield Specialization (Light)':
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"features.Greater Shield Focus",' +
+      '"features.Shield Specialization",' +
+      '"levels.Fighter >= 12"',
+  'Greater Shield Specialization (Tower)':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Greater Shield Focus",' +
@@ -1425,7 +1452,7 @@ PFAPG.FEATURES = {
     'Note="+2 CMD (+4 vs. larger foe) when adjacent ally also has this feat"',
   'Coordinated Maneuvers':
     'Section=combat ' +
-    'Note="+2 CMB and CMD, +4 vs. grapple, when adjacent ally also has this feat"',
+    'Note="+2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally also has this feat"',
   'Cosmopolitan':
     'Section=skill ' +
     'Note="+2 Language Count/Two chosen Int, Wis, or Cha skills are class skills"',
@@ -1460,7 +1487,7 @@ PFAPG.FEATURES = {
   'Dreadful Carnage':
     'Section=combat ' +
     'Note="R30\' May make Intimidation check to demoralize foes after reducing foe to 0 HP"',
-  'Duck and Cover':
+  'Duck And Cover':
     'Section=combat,save ' +
     'Note=' +
       '"May use Reflex roll of adjacent ally who also has this feat; knocked prone afterward",' +
@@ -1502,23 +1529,42 @@ PFAPG.FEATURES = {
   'Extra Bombs':'Section=combat Note="+%V bombs/dy"',
   'Extra Discovery':'Section=feature Note="+%V discoveries"',
   'Extra Hex':'Section=feature Note="+%V hexes"',
-  'Extra Rage Power':'Section=feature Note="FILL"',
-  'Extra Revelation':'Section=feature Note="FILL"',
-  'Extra Rogue Talent':'Section=feature Note="FILL"',
-  'Fast Drinker':'Section=feature Note="FILL"',
-  'Fast Healer':'Section=feature Note="FILL"',
-  'Favored Defense':'Section=feature Note="FILL"',
-  'Fight On':'Section=feature Note="FILL"',
-  'Focused Shot':'Section=feature Note="FILL"',
-  'Focused Spell':'Section=feature Note="FILL"',
-  'Following Step':'Section=feature Note="FILL"',
-  'Furious Focus':'Section=feature Note="FILL"',
-  'Gang Up':'Section=feature Note="FILL"',
-  'Gnome Trickster':'Section=feature Note="FILL"',
-  'Go Unnoticed':'Section=feature Note="FILL"',
-  'Greater Blind-Fight':'Section=feature Note="FILL"',
-  'Greater Dirty Trick':'Section=feature Note="FILL"',
-  'Greater Drag':'Section=feature Note="FILL"',
+  'Extra Rage Power':'Section=feature Note="+%V powers"',
+  'Extra Revelation':'Section=feature Note="+%V revelations"',
+  'Extra Rogue Talent':'Section=feature Note="+%V talents"',
+  'Fast Drinker':
+    'Section=feature Note="Drinking for temporary Ki is a swift action"',
+  'Fast Healer':
+    'Section=combat Note="Regain +%{constitutionModifier//2>?1} when healing"',
+  'Favored Defense':
+    'Section=combat ' +
+    'Note="+Half favored enemy bonus to AC and CMD vs. chosen enemy"',
+  'Fight On':
+    'Section=combat ' +
+    'Note="Gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
+  'Focused Shot':
+    'Section=combat ' +
+    'Note="R30\' +%{intelligenceModifier} HP damage on bow or crossbow attack"',
+  'Focused Spell':
+    'Section=magic ' +
+    'Note="Chosen target suffers +2 save DC on spell w/multiple targets"',
+  'Following Step':'Section=combat Note="May use Step Up to move 10\'"',
+  'Furious Focus':
+    'Section=combat ' +
+    'Note="Ignore penalty on first attack using Power Attack w/two-handed weapon"',
+  'Gang Up':
+    'Section=feature Note="Considered flanking regardless of ally position"',
+  'Gnome Trickster':
+    'Section=magic ' +
+    'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy"',
+  'Go Unnoticed':
+    'Section=skill Note="May use Stealth to hide from flat-footed foes"',
+  'Greater Blind-Fight':
+    'Section=combat ' +
+    'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no attack bonus"',
+  'Greater Dirty Trick':
+    'Section=combat Note="Dirty Trick penalty extends +1d4+ rd"',
+  'Greater Drag':'Section=combat Note="+2 checks to drag foe"',
   'Greater Elemental Focus (Acid)':
     'Section=magic Note="Increased Elemental Focus Effects"',
   'Greater Elemental Focus (Cold)':
@@ -1527,14 +1573,28 @@ PFAPG.FEATURES = {
     'Section=magic Note="Increased Elemental Focus Effects"',
   'Greater Elemental Focus (Fire)':
     'Section=magic Note="Increased Elemental Focus Effects"',
-  'Greater Reposition':'Section=feature Note="FILL"',
-  'Greater Shield Specialization':'Section=feature Note="FILL"',
+  'Greater Reposition':'Section=combat Note="+2 checks to move foe"',
+  'Greater Shield Specialization (Buckler)':
+    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+  'Greater Shield Specialization (Heavy)':
+    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+  'Greater Shield Specialization (Light)':
+    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+  'Greater Shield Specialization (Tower)':
+    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
   'Greater Steal':'Section=feature Note="FILL"',
-  'Groundling':'Section=feature Note="FILL"',
-  'Heroic Defiance':'Section=feature Note="FILL"',
-  'Heroic Recovery':'Section=feature Note="FILL"',
-  'Improved Blind-Fight':'Section=feature Note="FILL"',
-  'Improved Dirty Trick':'Section=feature Note="FILL"',
+  'Groundling':
+    'Section=magic ' +
+    'Note="May use <i>Speak With Animals</i> w/burrowing animals at will"',
+  'Heroic Defiance':
+    'Section=combat Note="May delay effects of harmful condition 1 rd 1/dy"',
+  'Heroic Recovery':
+    'Section=save Note="May reroll failed Fort vs. harmful condition 1/dy"',
+  'Improved Blind-Fight':
+    'Section=combat ' +
+    'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
+  'Improved Dirty Trick':
+    'Section=combat Note="+2 CMB, +2 CMD, and no AOO w/dirty tricks"',
   'Improved Drag':'Section=feature Note="FILL"',
   'Improved Ki Throw':'Section=feature Note="FILL"',
   'Improved Reposition':'Section=feature Note="FILL"',
@@ -1589,7 +1649,14 @@ PFAPG.FEATURES = {
   'Shadow Strike':'Section=feature Note="FILL"',
   'Shared Insight':'Section=feature Note="FILL"',
   'Sharp Senses':'Section=feature Note="FILL"',
-  'Shield Specialization':'Section=feature Note="FILL"',
+  'Shield Specialization (Buckler)':
+    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+  'Shield Specialization (Heavy)':
+    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+  'Shield Specialization (Light)':
+    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+  'Shield Specialization (Tower)':
+    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Wall':'Section=feature Note="FILL"',
   'Shield Of Swings':'Section=feature Note="FILL"',
   'Shielded Caster':'Section=feature Note="FILL"',
@@ -3931,6 +3998,26 @@ PFAPG.featRulesExtra = function(rules, name) {
   } else if(name == 'Extra Hex') {
     rules.defineRule('featureNotes.hex', 'featureNotes.extraHex', '+', null);
     rules.defineRule('featureNotes.extraHex', 'feats.Extra Hex', '=', null);
+  } else if(name == 'Extra Rage Power') {
+    rules.defineRule
+      ('featureNotes.ragePowers', 'featureNotes.extraRagePower', '+', null);
+    rules.defineRule
+      ('featureNotes.extraRagePower', 'feats.Extra Rage Power', '=', null);
+  } else if(name == 'Extra Revelation') {
+    rules.defineRule
+      ('featureNotes.revelation', 'featureNotes.extraRevelation', '+', null);
+    rules.defineRule
+      ('featureNotes.extraRevelation', 'feats.Extra Revelation', '=', null);
+  } else if(name == 'Extra Rogue Talent') {
+    rules.defineRule
+      ('featureNotes.rogueTalents', 'featureNotes.extraRogueTalent', '+', null);
+    rules.defineRule
+      ('featureNotes.extraRogueTalent', 'feats.Extra Rogue Talent', '=', null);
+  } else if((matchInfo = name.match(/^Shield Specialization .(.*)./)) != null) {
+    rules.defineRule('combatNotes.shieldSpecialization(' + matchInfo[1] + ')',
+      '', '=', '1',
+      'features.Greater Shield Focus', '+', '1'
+    );
   }
 };
 
