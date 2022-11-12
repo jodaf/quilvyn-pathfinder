@@ -2107,7 +2107,7 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Place spells up to level %V into +1 spell slots from different class"',
   'Constitution Boost':'Section=ability Note="+2 Constitution"',
-  'Crippling Critical':
+  'Crippling Critical (Duelist)':
     'Section=combat Note="Critical hit causes follow-on damage"',
   'Death Attack':
     'Section=combat ' +
@@ -4357,7 +4357,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"1:Canny Defense","1:Precise Strike","2:Improved Reaction",2:Parry,' +
       '"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
       '"6:Acrobatic Charge","7:Elaborate Defense","9:Deflect Arrows",' +
-      '"9:No Retreat","10:Crippling Critical"',
+      '"9:No Retreat","10:Crippling Critical (Duelist)"',
   'Eldritch Knight':
     'Require=' +
       '"features.Weapon Proficiency (Martial)",' +
