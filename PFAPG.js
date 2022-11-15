@@ -1595,60 +1595,133 @@ PFAPG.FEATURES = {
     'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
   'Improved Dirty Trick':
     'Section=combat Note="+2 CMB, +2 CMD, and no AOO w/dirty tricks"',
-  'Improved Drag':'Section=feature Note="FILL"',
-  'Improved Ki Throw':'Section=feature Note="FILL"',
-  'Improved Reposition':'Section=feature Note="FILL"',
-  'Improved Second Chance':'Section=feature Note="FILL"',
-  'Improved Share Spells':'Section=feature Note="FILL"',
-  'Improved Sidestep':'Section=feature Note="FILL"',
-  'Improved Steal':'Section=feature Note="FILL"',
-  'Improved Stonecunning':'Section=feature Note="FILL"',
-  "In Harm's Way":'Section=feature Note="FILL"',
-  'Intensified Spell':'Section=feature Note="FILL"',
-  'Ironguts':'Section=feature Note="FILL"',
-  'Ironhide':'Section=feature Note="FILL"',
-  'Keen Scent':'Section=feature Note="FILL"',
-  'Ki Throw':'Section=feature Note="FILL"',
-  'Leaf Singer':'Section=feature Note="FILL"',
-  'Light Step':'Section=feature Note="FILL"',
-  'Lingering Performance':'Section=feature Note="FILL"',
-  'Lingering Spell':'Section=feature Note="FILL"',
-  'Lookout':'Section=feature Note="FILL"',
-  'Low Profile':'Section=feature Note="FILL"',
-  'Lucky Halfling':'Section=feature Note="FILL"',
-  'Major Spell Expertise':'Section=feature Note="FILL"',
-  'Master Alchemist':'Section=feature Note="FILL"',
-  'Merciful Spell':'Section=feature Note="FILL"',
-  'Minor Spell Expertise':'Section=feature Note="FILL"',
-  'Missile Shield':'Section=feature Note="FILL"',
-  'Mounted Shield':'Section=feature Note="FILL"',
-  'Mounted Skirmisher':'Section=feature Note="FILL"',
-  'Outflank':'Section=feature Note="FILL"',
-  'Paired Opportunists':'Section=feature Note="FILL"',
-  'Parry Spell':'Section=feature Note="FILL"',
-  'Parting Shot':'Section=feature Note="FILL"',
-  'Pass for Human':'Section=feature Note="FILL"',
-  'Perfect Strike':'Section=feature Note="FILL"',
-  'Persistent Spell':'Section=feature Note="FILL"',
-  'Point-Blank Master':'Section=feature Note="FILL"',
-  'Practiced Tactician':'Section=feature Note="FILL"',
-  'Precise Strike':'Section=feature Note="FILL"',
-  'Preferred Spell':'Section=feature Note="FILL"',
-  'Punishing Kick':'Section=feature Note="FILL"',
-  'Pushing Assault':'Section=feature Note="FILL"',
-  'Racial Heritage':'Section=feature Note="FILL"',
-  'Raging Vitality':'Section=feature Note="FILL"',
-  'Ray Shield':'Section=feature Note="FILL"',
-  'Razortusk':'Section=feature Note="FILL"',
-  'Reach Spell':'Section=feature Note="FILL"',
-  'Rending Claws':'Section=feature Note="FILL"',
-  'Repositioning Strike':'Section=feature Note="FILL"',
-  'Saving Shield':'Section=feature Note="FILL"',
-  'Second Chance':'Section=feature Note="FILL"',
-  'Selective Spell':'Section=feature Note="FILL"',
-  'Shadow Strike':'Section=feature Note="FILL"',
-  'Shared Insight':'Section=feature Note="FILL"',
-  'Sharp Senses':'Section=feature Note="FILL"',
+  'Improved Drag':
+    'Section=combat Note="+2 CMB to drag foe w/out AOO/+2 CMD vs. drag"',
+  'Improved Ki Throw':
+    'Section=feature ' +
+    'Note="May use Ki Throw for -4 bull rush on another target"',
+  'Improved Reposition':
+    'Section=combat ' +
+    'Note="+2 CMB to move foe w/out AOO/+2 CMD vs. move attempts"',
+  'Improved Second Chance':
+    'Section=combat ' +
+    'Note="May proceed w/additional attacks after failed Second Chance at -5 attack"',
+  'Improved Share Spells':
+    'Section=magic ' +
+    'Note="May share non-instantaneous self spells w/companion; halves duration"',
+  'Improved Sidestep':
+    'Section=combat Note="May move on next rd after Sidestep"',
+  'Improved Steal':
+    'Section=combat ' +
+    'Note="+2 CMB to steal from foe w/out AOO/+2 CMD vs. steal attempts"',
+  'Improved Stonecunning':'Section=skill Note="+4 Perception (stone)"',
+  "In Harm's Way":
+    'Section=combat ' +
+    'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
+  'Intensified Spell':
+    'Section=magic ' +
+    'Note="Cast spell causes damage as caster level %{casterLevel+5} uses +1 spell slot"',
+  'Ironguts':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+2 vs. ingested nauseated or sickened condition",' +
+      '"+2 Survival (find food for self)"',
+  'Ironhide':'Section=combat Note="+1 AC"',
+  'Keen Scent':'Section=feature Note="Has Scent features"',
+  'Ki Throw':
+    'Section=feature ' +
+    'Note="May throw foe into adjacent square after successful unarmed trip"',
+  'Leaf Singer':
+    'Section=feature ' +
+    'Note="Dbl range or area of effect of Bardic Performance in forest/+2 Bardic Performace DC vs. feys"',
+  'Light Step':
+    'Section=ability Note="Ignore difficult terrain in natural environments"',
+  'Lingering Performance':
+    'Section=feature ' +
+    'Note="Bardic Performance effects last 2 rd after performance ends"',
+  'Lingering Spell':
+    'Section=magic ' +
+    'Note="Cast instantaneous spell to last 1 extra rd uses +1 spell slot"',
+  'Lookout':
+    'Section=combat ' +
+    'Note="May act in surprise round if adjacent ally w/same feat can do so"',
+  'Low Profile':'Section=combat Note="+1 AC (ranged)"',
+  'Lucky Halfling':
+    'Section=save Note="R30\' May share saving throw w/ally 1/dy"',
+  'Major Spell Expertise':
+    'Section=magic ' +
+    'Note="May use %V chosen 5th level spells as spell-like ability 2/dy"',
+  'Master Alchemist':
+    'Section=skill ' +
+    'Note="+2 Craft (Alchemy)/Create %{intelligenceModifier} potion doses simultaneously/Craft alchemical items in 1/10 time"',
+  'Merciful Spell':
+    'Section=magic Note="May cast spells to inflict nonlethal damage"',
+  'Minor Spell Expertise':
+    'Section=magic ' +
+    'Note="May use %V chosen 1st level spells as spell-like ability 2/dy"',
+  'Missile':'Section=combat Note="No damage from ranged hit 1/rd"',
+  'Mounted Shield':
+    'Section=combat ' +
+    'Note="Add shield bonus to mount AC and Ride checks to avoid mount damage"',
+  'Mounted Skirmisher':
+    'Section=combat Note="May take full-attack action after mount move"',
+  'Outflank':
+    'Section=combat ' +
+    'Note="Flanking gives +4 attack if ally has same feat; critical hit gives ally AOO"',
+  'Paired Opportunists':
+    'Section=combat ' +
+    'Note="+4 AOO and share ally AOO if ally w/same feat threatens same foe"',
+  'Parry Spell':'Section=magic Note="Countered spell turns back on caster"',
+  'Parting Shot':'Section=combat Note="May make ranged attack during withdraw"',
+  'Pass for Human':'Section=skill Note="+10 Disguise (pass as human)"',
+  'Perfect Strike':
+    'Section=combat ' +
+    'Note="Use better of two rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %{level//4>?1}/dy"',
+  'Persistent Spell':
+    'Section=magic ' +
+    'Note="Cast spell forcing target to take worse of 2 saving throws uses +2 spell slot"',
+  'Point-Blank Master':
+    'Section=combat Note="No AOO when firing chosen ranged weapon"',
+  'Practiced Tactician':
+    'Section=combat Note="May give allies a teamwork feat +1/dy"',
+  'Precise Strike':
+    'Section=combat Note="+1d6 damage when flanking w/ally who has same feat"',
+  'Preferred Spell':
+    'Section=magic Note="May cast %V chosen spells in place of prepared spell"',
+  'Punishing Kick':
+    'Section=feature Note="Successful kick attack pushes foe 5\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %{level//5>?1}/dy"',
+  'Pushing Assault':
+    'Section=combat ' +
+    'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
+  'Racial Heritage':
+    'Section=feature ' +
+    'Note="Count as both human and chosen race for racial effects"',
+  'Raging Vitality':
+    'Section=combat Note="+2 Con during rage; rage continues if unconscious"',
+  'Ray Shield':'Section=combat Note="No damage from ranged touch hit 1/rd"',
+  'Razortusk':'Section=combat Note="Bite does 1d4 HP damage"',
+  'Reach Spell':
+    'Section=magic ' +
+    'Note="Cast spell at longer rage uses +1 spell slot/range increase"',
+  'Rending Claws':
+    'Section=combat Note="Second claw hit in 1 rd does +1d6 HP damage 1/rd"',
+  'Repositioning Strike':
+    'Section=combat Note="May move foe w/critical hit that exceeds foe CMD"',
+  'Saving Shield':
+    'Section=combat Note="May use shield to give adjacent ally +2 AC"',
+  'Second Chance':
+    'Section=combat ' +
+    'Note="May forego additional attacks to reroll miss on first"',
+  'Selective Spell':
+    'Section=magic ' +
+    'Note="May protect from damage ability modifier targets in spell effect area"',
+  'Shadow Strike':
+    'Section=combat ' +
+    'Note="May inflict precision damage on targets w/partial concealment"',
+  'Shared Insight':
+    'Section=combat ' +
+    'Note="$30\' May forego move to give allies +2 Perception for %{wisdomModifier} rd"',
+  'Sharp Senses':'Section=skill Note="+2 Perception"',
   'Shield Specialization (Buckler)':
     'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Specialization (Heavy)':
@@ -4018,6 +4091,19 @@ PFAPG.featRulesExtra = function(rules, name) {
       '', '=', '1',
       'features.Greater Shield Focus', '+', '1'
     );
+  } else if(name == 'Keen Scent') {
+    rules.defineRules('features.Scent', 'featureRules.keenScent', '=', '1');
+  } else if(name == 'Major Sepll Expertise') {
+    rules.defineRule('magicNotes.majorSpellExpertise',
+      'feats.Major Spell Expertise', '=', null
+    );
+  } else if(name == 'Minor Sepll Expertise') {
+    rules.defineRule('magicNotes.minorSpellExpertise',
+      'feats.Minor Spell Expertise', '=', null
+    );
+  } else if(name == 'Preferred Spell') {
+    rules.defineRule
+      ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
   }
 };
 
