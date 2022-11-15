@@ -2178,7 +2178,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Arrow passes through normal obstacles %V/dy"',
   'Poison Use':
     'Section=feature Note="No chance of self-poisoning when applying to blade"',
-  'Precise Strike':
+  'Precise Strike (Duelist)':
     'Section=combat ' +
     'Note="+%V HP damage with light or one-handed piercing weapon"',
   'Quiet Death':
@@ -4354,8 +4354,8 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Acrobatics,Bluff,"Escape Artist",Perception,Perform,"Sense Motive" ' +
     'Features=' +
       '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Martial)",' +
-      '"1:Canny Defense","1:Precise Strike","2:Improved Reaction",2:Parry,' +
-      '"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
+      '"1:Canny Defense","1:Precise Strike (Duelist)","2:Improved Reaction",' +
+      '2:Parry,"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
       '"6:Acrobatic Charge","7:Elaborate Defense","9:Deflect Arrows",' +
       '"9:No Retreat","10:Crippling Critical (Duelist)"',
   'Eldritch Knight':
