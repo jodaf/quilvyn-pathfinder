@@ -514,7 +514,56 @@ PFAPG.FEATS = {
   'Swap Places':'Type=Teamwork,Fighter'
 };
 PFAPG.FEATURES = {
-  // Classes
+  // Existing base class options
+  'Beast Totem':'Section=feature Note="FILL"',
+  'Greater Beast Totem':'Section=feature Note="FILL"',
+  'Lesser Beast Totem':'Section=feature Note="FILL"',
+  'Boasting Taunt':'Section=feature Note="FILL"',
+  'Brawler':'Section=feature Note="FILL"',
+  'Greater Brawler':'Section=feature Note="FILL"',
+  'Chaos Totem':'Section=feature Note="FILL"',
+  'Greater Chaos Totem':'Section=feature Note="FILL"',
+  'Lesser Chaos Totem':'Section=feature Note="FILL"',
+  'Come And Get Me':'Section=feature Note="FILL"',
+  'Disruptive':'Section=feature Note="FILL"',
+  'Elemental Rage':'Section=feature Note="FILL"',
+  'Greater Elemental Rage':'Section=feature Note="FILL"',
+  'Lesser Elemental Rage':'Section=feature Note="FILL"',
+  'Energy Absorbtion':'Section=feature Note="FILL"',
+  'Energy Eruption':'Section=feature Note="FILL"',
+  'Energy Resistance':'Section=feature Note="FILL"',
+  'Greater Energy Resistance':'Section=feature Note="FILL"',
+  'Ferocious Mount':'Section=feature Note="FILL"',
+  'Greater Ferocious Mount':'Section=feature Note="FILL"',
+  'Ferocious Trample':'Section=feature Note="FILL"',
+  'Greater Ferocious Trample':'Section=feature Note="FILL"',
+  'Fiend Totem':'Section=feature Note="FILL"',
+  'Greater Fiend Totem':'Section=feature Note="FILL"',
+  'Lesser Fiend Totem':'Section=feature Note="FILL"',
+  'Flesh Wound':'Section=feature Note="FILL"',
+  'Good For What Ails You':'Section=feature Note="FILL"',
+  'Ground Breaker':'Section=feature Note="FILL"',
+  'Guarded Life':'Section=feature Note="FILL"',
+  'Hurling':'Section=feature Note="FILL"',
+  'Greater Hurling':'Section=feature Note="FILL"',
+  'Lesser Hurling':'Section=feature Note="FILL"',
+  'Hurling Charge':'Section=feature Note="FILL"',
+  'Inspire Ferocity':'Section=feature Note="FILL"',
+  'Knockdown':'Section=feature Note="FILL"',
+  'Liquid Courage':'Section=feature Note="FILL"',
+  'Overbearing Advance':'Section=feature Note="FILL"',
+  'Overbearing Onslaught':'Section=feature Note="FILL"',
+  'Reckless Abandon':'Section=feature Note="FILL"',
+  'Roaring Drunk':'Section=feature Note="FILL"',
+  'Smasher':'Section=feature Note="FILL"',
+  'Spellbreaker':'Section=feature Note="FILL"',
+  'Spirit Steed':'Section=feature Note="FILL"',
+  'Spirit Totem':'Section=feature Note="FILL"',
+  'Greater Spirit Totem':'Section=feature Note="FILL"',
+  'Lesser Spirit Totem':'Section=feature Note="FILL"',
+  'Staggering Drunk':'Section=feature Note="FILL"',
+  'Witch Hunter':'Section=feature Note="FILL"',
+  // New base classes
   'Acid Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
@@ -1834,6 +1883,95 @@ PFAPG.FEATURES = {
 PFAPG.LANGUAGES = {
 };
 PFAPG.PATHS = {
+  'Agathion Subdomain':
+    Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Protective Aura'),
+  'Ancestors Subdomain':
+    Pathfinder.PATHS['Repose Domain'].replace('Ward Against Death', 'Speak With Dead'),
+  'Arcane Subdomain':
+    Pathfinder.PATHS['Magic Domain'].replace('Hand Of The Acolyte', 'Arcane Beacon'),
+  'Archon Subdomain (Good)':
+    Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Aura Of Menace'),
+  'Archon Subdomain (Law)':
+    Pathfinder.PATHS['Law Domain'].replace('Staff Of Order', 'Aura Of Menace'),
+  'Ash Subdomain':
+    Pathfinder.PATHS['Fire Domain'].replace('Fire Resistance', 'Wall Of Ashes'),
+  'Azata Subdomain (Chaos)':
+    Pathfinder.PATHS['Chaos Domain'].replace('Touch Of Chaos', "Elysium's Call"),
+  'Azata Subdomain (Good)':
+    Pathfinder.PATHS['Good Domain'].replace('Touch Of Good', "Elysium's Call"),
+  'Blood Subdomain':
+    Pathfinder.PATHS['War Domain'].replace('Weapon Master', 'Wounding Blade'),
+  'Catastrophe Subdomain':
+    Pathfinder.PATHS['Destruction Domain'].replace('Destructive Aura', 'Deadly Weather'),
+  'Caves Subdomain':
+    Pathfinder.PATHS['Earth Domain'].replace('Acid Resistance', 'Tunnel Runner'),
+  'Cloud Subdomain':
+    Pathfinder.PATHS['Air Domain'].replace('Electricity Resistance', 'Thundercloud'),
+  'Construct Subdomain':
+    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapon', 'Animate Servant'),
+  'Curse Subdomain':
+    Pathfinder.PATHS['Luck Domain'].replace('Bit Of Luck', 'Malign Eye'),
+  'Daemon Subdomain':
+    Pathfinder.PATHS['Evil Domain'].replace('Scythe Of Evil', 'Whispering Evil'),
+  'Day Subdomain':
+    Pathfinder.PATHS['Sun Domain'].replace('Nimbus Of Light', "Day's Resurgence"),
+  'Decay Subdomain':
+    Pathfinder.PATHS['Plant Domain'].replace('Bramble Armor', 'Aura Of Decay'),
+  'Deception Subdomain':
+    Pathfinder.PATHS['Trickery Domain'].replace('Copycat Power', 'Sudden Shift'),
+  'Defense Subdomain':
+    Pathfinder.PATHS['Protection Domain'].replace('Resistance Touch', 'Deflection Aura'),
+  'Demon Subdomain (Chaos)':
+    Pathfinder.PATHS['Chaos Domain'].replace('Touch Of Chaos', 'Fury Of The Abyss'),
+  'Demon Subdomain (Evil)':
+    Pathfinder.PATHS['Evil Domain'].replace('Touch Of Evil', 'Fury Of The Abyss'),
+  'Devil Subdomain (Evil)':
+    Pathfinder.PATHS['Evil Domain'].replace('Touch Of Evil', "Hell's Corruption"),
+  'Devil Subdomain (Law)':
+    Pathfinder.PATHS['Law Domain'].replace('Touch Of Evil', "Hell's Corruption"),
+  'Divine Subdomain':
+    Pathfinder.PATHS['Magic Domain'].replace('Hand Of The Acolyte', 'Divine Vessel'),
+  'Exploration Subdomain':
+    Pathfinder.PATHS['Travel Domain'].replace('Agile Feet', 'Door Sight'),
+  'Family Subdomain':
+    Pathfinder.PATHS['Community Domain'].replace('Calming Touch', 'Binding Ties'),
+  'Fate Subdomain':
+    Pathfinder.PATHS['Luck Domain'].replace('Good Fortune', 'Tugging Strands'),
+  'Feather Subdomain':
+    Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', 'Eyes Of The Hawk'),
+  'Ferocity Subdomain':
+    Pathfinder.PATHS['Strength Domain'].replace('Strength Surge', 'Ferocious Strike'),
+  'Freedom Subdomain':
+    Pathfinder.PATHS['Liberation Domain'].replace('Liberation', "Liberty's Blessing"),
+  'Fur Subdomain':
+    Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', "Predator's Curse"),
+  'Growth Subdomain':
+    Pathfinder.PATHS['Plant Domain'].replace('Wooden Fist', 'Enlarge'),
+  'Heroism Subdomain':
+    Pathfinder.PATHS['Glory Domain'].replace('Divine Presence', 'Aura Of Heroism'),
+  'Home Subdomain':
+    Pathfinder.PATHS['Community Domain'].replace('Unity', 'Guarded Hearth'),
+  'Honor Subdomain':
+    Pathfinder.PATHS['Glory Domain'].replace('Touch Of Glory', 'Honor Bound'),
+  'Ice Subdomain':
+    Pathfinder.PATHS['Water Domain'].replace('Cold Resistance', 'Body Of Ice'),
+  'Inevitable Subdomain':
+    Pathfinder.PATHS['Law Domain'].replace('Touch Of Law', 'Command'),
+  'Insanity Subdomain':
+    Pathfinder.PATHS['Madness Domain'].replace('Visions Of Madness', 'Insane Focus'),
+  'Language Subdomain':
+    Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Rune Shift'),
+  'Leadership Subdomain':
+    Pathfinder.PATHS['Nobility Domain'].replace('Inspiring Word', 'Inspiring Command'),
+  'Light Subdomain':
+    Pathfinder.PATHS['Sun Domain'].replace("Sun's Blessing", 'Blinding Flash'),
+  'Loss Subdomain':
+    Pathfinder.PATHS['Darkness Domain'].replace('Eyes Of Darkness', 'Aura Of Forgetfulness'),
+  'Love Subdomain':
+    Pathfinder.PATHS['Charm Domain'].replace('Dazing Touch', 'Adoration'),
+  'Lust Subdomain':
+    Pathfinder.PATHS['Charm Domain'].replace('Charming Smile', 'Anything To Please'),
+
   'Battle Mystery':
     'Group="Oracle" ' +
     'Level=levels.Oracle ' +
@@ -3395,6 +3533,59 @@ PFAPG.WEAPONS = {
   'Wooden Stake':'Level=1 Category=Li Damage=d4 Range=10'
 };
 PFAPG.CLASSES = {
+  'Barbarian':
+    'Selectables=' +
+      '"features.Lesser Beast Totem ? 6:Beast Totem",' +
+      '"features.Beast Totem ? 10:Greater Beast Totem",' +
+      '"2:Lesser Beast Totem",' +
+      '"6:Boasting Taunt",' +
+      '"2:Brawler",' +
+      '"features.Brawler ? 2:Greater Brawler",' +
+      '"features.Lesser Chaos Totem ? 6:Chaos Totem",' +
+      '"features.Chaos Totem ? 10:Greater Chaos Totem",' +
+      '"2:Lesser Chaos Totem",' +
+      '"12:Come And Get Me",' +
+      '"features.Superstition ? 8:Disruptive",' +
+      '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
+      '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
+      '"4:Lesser Elemental Rage",' +
+      '"features.Greater Energy Resistance ? 12:Energy Absorbtion",' +
+      '"features.Energy Absorbtion ? 16:Energy Eruption",' +
+      '"2:Energy Resistance",' +
+      '"features.Energy Resistance ? 8:Greater Energy Resistance",' +
+      '"2:Ferocious Mount",' +
+      '"features.Ferocious Mount ? 8:Greater Ferocious Mount",' +
+      '"features.Ferocious Mount ? 8:Ferocious Trample",' +
+      '"features.Ferocious Trample ? 12:Greater Ferocious Trample",' +
+      '"features.Lesser Fiend Totem ? 6:Fiend Totem",' +
+      '"features.Fiend Totem ? 10:Greater Fiend Totem",' +
+      '"2:Lesser Fiend Totem",' +
+      '"10:Flesh Wound",' +
+      '"2:Good For What Ails You",' +
+      '"6:Ground Breaker",' +
+      '"6:Guarded Life",' +
+      '"features.Lesser Hurling ? 8:Hurling",' +
+      '"features.Hurling ? 12:Greater Hurling",' +
+      '"2:Lesser Hurling",' +
+      '"features.Lesser Hurling ? 8:Hurling Charge",' +
+      '"features.Reckless Abandon ? 2:Inspire Ferocity",' +
+      '2:Knockdown,' +
+      '"2:Liquid Courage",' +
+      '"2:Overbearing Advance",' +
+      '"features.Overbearing Advance ? 6:Overbearing Onslaught",' +
+      '"2:Reckless Abandon",' +
+      '"2:Roaring Drunk",' +
+      '2:Smasher,' +
+      '"features.Disruptive Rage ? 12:Spellbreaker",' +
+      '"features.Ferocious Mount ? 6:Spirit Steed",' +
+      '"features.Lesser Spirit Totem ? 6:Spirit Totem",' +
+      '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
+      '"2:Lesser Spirit Totem",' +
+      '"2:Staggering Drunk",' +
+      '"features.Superstition ? 2:Witch Hunter"',
+  'Cleric':
+    'Selectables=' +
+      QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -3675,9 +3866,20 @@ PFAPG.identityRules = function(
   rules, alignments, classes, deities, factions, paths, races, tracks, traits,
   prestigeClasses, npcClasses
 ) {
+  let newClasses = Object.assign({}, classes);
+  for(let clas in classes) {
+    let hitDie = QuilvynUtils.getAttrValue(classes[clas], 'HitDie');
+    let selectables =
+      QuilvynUtils.getAttrValueArray(classes[clas], 'Selectables');
+    if(!hitDie) {
+      QuilvynRules.featureListRules
+        (rules, selectables, clas, 'levels.' + clas, true);
+      delete newClasses[clas];
+    }
+  }
   Pathfinder.identityRules(
-    rules, alignments, classes, deities, factions, paths, races, tracks, traits,
-    prestigeClasses, npcClasses
+    rules, alignments, newClasses, deities, factions, paths, races, tracks,
+    traits, prestigeClasses, npcClasses
   );
   for(let clas in classes)
     PFAPG.classRulesExtra(rules, clas);
