@@ -563,6 +563,75 @@ PFAPG.FEATURES = {
   'Lesser Spirit Totem':'Section=feature Note="FILL"',
   'Staggering Drunk':'Section=feature Note="FILL"',
   'Witch Hunter':'Section=feature Note="FILL"',
+
+  'Protective Aura':'Section=feature Note="FILL"',
+  'Speak With Dead':'Section=feature Note="FILL"',
+  'Arcane Beacon':'Section=feature Note="FILL"',
+  'Aura Of Menace':'Section=feature Note="FILL"',
+  'Aura Of Menace':'Section=feature Note="FILL"',
+  'Wall Of Ashes':'Section=feature Note="FILL"',
+  "Elysium's Call":'Section=feature Note="FILL"',
+  'Wounding Blade':'Section=feature Note="FILL"',
+  'Deadly Weather':'Section=feature Note="FILL"',
+  'Tunnel Runner':'Section=feature Note="FILL"',
+  'Thundercloud':'Section=feature Note="FILL"',
+  'Animate Servant':'Section=feature Note="FILL"',
+  'Malign Eye':'Section=feature Note="FILL"',
+  'Whispering Evil':'Section=feature Note="FILL"',
+  "Day's Resurgence":'Section=feature Note="FILL"',
+  'Aura Of Decay':'Section=feature Note="FILL"',
+  'Sudden Shift':'Section=feature Note="FILL"',
+  'Deflection Aura':'Section=feature Note="FILL"',
+  'Fury Of The Abyss':'Section=feature Note="FILL"',
+  "Hell's Corruption":'Section=feature Note="FILL"',
+  'Divine Vessel':'Section=feature Note="FILL"',
+  'Door Sight':'Section=feature Note="FILL"',
+  'Binding Ties':'Section=feature Note="FILL"',
+  'Tugging Strands':'Section=feature Note="FILL"',
+  'Eyes Of The Hawk':'Section=feature Note="FILL"',
+  'Ferocious Strike':'Section=feature Note="FILL"',
+  "Liberty's Blessing":'Section=feature Note="FILL"',
+  "Predator's Curse":'Section=feature Note="FILL"',
+  'Enlarge':'Section=feature Note="FILL"',
+  'Aura Of Heroism':'Section=feature Note="FILL"',
+  'Guarded Hearth':'Section=feature Note="FILL"',
+  'Honor Bound':'Section=feature Note="FILL"',
+  'Body Of Ice':'Section=feature Note="FILL"',
+  'Command':'Section=feature Note="FILL"',
+  'Insane Focus':'Section=feature Note="FILL"',
+  'Rune Shift':'Section=feature Note="FILL"',
+  'Inspiring Command':'Section=feature Note="FILL"',
+  'Blinding Flash':'Section=feature Note="FILL"',
+  'Aura Of Forgetfulness':'Section=feature Note="FILL"',
+  'Adoration':'Section=feature Note="FILL"',
+  'Anything To Please':'Section=feature Note="FILL"',
+  'Sacrificial Bond':'Section=feature Note="FILL"',
+  'Recall':'Section=feature Note="FILL"',
+  'Metal Fist':'Section=feature Note="FILL"',
+  'Killing Blow':'Section=feature Note="FILL"',
+  'Night Hunter':'Section=feature Note="FILL"',
+  'Fearful Touch':'Section=feature Note="FILL"',
+  'Surge':'Section=feature Note="FILL"',
+  'Aura Of Chaos':'Section=feature Note="FILL"',
+  'Purifying Touch':'Section=feature Note="FILL"',
+  'Rage':'Section=feature Note="FILL"',
+  'Bestow Resolve':'Section=feature Note="FILL"',
+  'Restorative Touch':'Section=feature Note="FILL"',
+  'Gift Of Life':'Section=feature Note="FILL"',
+  'Powerful Persuader':'Section=feature Note="FILL"',
+  'Untouched By The Seasons':'Section=feature Note="FILL"',
+  'Cloud Of Smoke':'Section=feature Note="FILL"',
+  'Touch The Spirit World':'Section=feature Note="FILL"',
+  'Gale Aura':'Section=feature Note="FILL"',
+  'Seize The Initiative':'Section=feature Note="FILL"',
+  'Thief Of The Gods':'Section=feature Note="FILL"',
+  'Read Minds':'Section=feature Note="FILL"',
+  'Aura Of Repetition':'Section=feature Note="FILL"',
+  'Silver-Tongued Haggler':'Section=feature Note="FILL"',
+  "Death's Kiss":'Section=feature Note="FILL"',
+  'Warding Rune':'Section=feature Note="FILL"',
+  'Wind Blast':'Section=feature Note="FILL"',
+
   // New base classes
   'Acid Bomb':
     'Section=combat ' +
@@ -1971,6 +2040,58 @@ PFAPG.PATHS = {
     Pathfinder.PATHS['Charm Domain'].replace('Dazing Touch', 'Adoration'),
   'Lust Subdomain':
     Pathfinder.PATHS['Charm Domain'].replace('Charming Smile', 'Anything To Please'),
+  'Martyr Subdomain':
+    Pathfinder.PATHS['Nobility Domain'].replace('Noble Leadership', 'Sacrificial Bond'),
+  'Memory Subdomain':
+    Pathfinder.PATHS['Knowledge Domain'].replace('Lore Keeper', 'Recall'),
+  'Metal Subdomain':
+    Pathfinder.PATHS['Earth Domain'].replace('Acid Dart', 'Metal Fist'),
+  'Murder Subdomain':
+    Pathfinder.PATHS['Death Domain'].replace("Death's Embrace", 'Killing Blow'),
+  'Night Subdomain':
+    Pathfinder.PATHS['Darkness Domain'].replace('Touch Of Darkness', 'Night Hunter'),
+  'Nightmare Subdomain':
+    Pathfinder.PATHS['Madness Domain'].replace('Vision Of Madness', 'Fearful Touch'),
+  'Oceans Subdomain':
+    Pathfinder.PATHS['Water Domain'].replace('Icicle Power', 'Surge'),
+  'Protean Subdomain':
+    Pathfinder.PATHS['Chaos Domain'].replace('Chaos Blade', 'Aura Of Chaos'),
+  'Purity Subdomain':
+    Pathfinder.PATHS['Protection Domain'].replace('Aura Of Protection', 'Purifying Touch'),
+  'Rage Subdomain':
+    Pathfinder.PATHS['Destruction Domain'].replace('Destructive Aura', 'Rage'),
+  'Resolve Subdomain':
+    Pathfinder.PATHS['Strength Domain'].replace('Might Of The Gods', 'Bestow Resolve'),
+  'Restoration Subdomain':
+    Pathfinder.PATHS['Healing Domain'].replace('Rebuke Death', 'Restorative Touch'),
+  'Resurrection Subdomain':
+    Pathfinder.PATHS['Healing Domain'].replace("Healer's Blessing", 'Gift Of Life'),
+  'Revolution Subdomain':
+    Pathfinder.PATHS['Liberation Domain'].replace("Freedom's Call", 'Powerful Persuader'),
+  'Seasons Subdomain':
+    Pathfinder.PATHS['Weather Domain'].replace('Storm Burst', 'Untouched By The Seasons'),
+  'Smoke Subdomain':
+    Pathfinder.PATHS['Fire Domain'].replace('Fire Bolt', 'Cloud Of Smoke'),
+  'Souls Subdomain':
+    Pathfinder.PATHS['Repose Domain'].replace('Gentle Rest', 'Touch The Spirit World'),
+  'Storms Subdomain':
+    Pathfinder.PATHS['Weather Domain'].replace('Lightning Lord', 'Gale Aura'),
+  'Tactics Subdomain':
+    Pathfinder.PATHS['War Domain'].replace('Battle Rage', 'Seize The Initiative'),
+  'Thievery Subdomain':
+    Pathfinder.PATHS['Trickery Domain'].replace("Master's Illusions", 'Thief Of The Gods'),
+  'Thought Subdomain':
+    Pathfinder.PATHS['Knowledge Domain'].replace('Remote Viewing Power', 'Read Minds'),
+  'Toil Subdomain':
+    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapon', 'Aura Of Repetition'),
+  'Trade Subdomain':
+    Pathfinder.PATHS['Travel Domain'].replace('Agile Feet', 'Silver-Tongued Haggler'),
+  'Undead Subdomain':
+    Pathfinder.PATHS['Death Domain'].replace('Bleeding Touch', "Death's Kiss"),
+  'Wards Subdomain':
+    Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Warding Rune'),
+  'Wind Subdomain':
+    Pathfinder.PATHS['Air Domain'].replace('Lightning Arc', 'Wind Blast'),
 
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -2487,7 +2608,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Create Pit':
     'School=Conjuration ' +
-    'Level=W2,Summoner2 ' +
+    'Level=Caves2,W2,Summoner2 ' +
     'Description="FILL"',
   'Create Treasure Map':
     'School=Divination ' +
@@ -2591,7 +2712,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Euphoric Tranquility':
     'School=Enchantment ' +
-    'Level=B6,C8,D8,W8 ' +
+    'Level=B6,C8,D8,Love8,W8 ' +
     'Description="FILL"',
   'Evolution Surge':
     'School=Transmutation ' +
@@ -2635,7 +2756,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Fiery Body':
     'School=Transmutation ' +
-    'Level=W9,Flame9 ' +
+    'Level=Ash9,W9,Flame9 ' +
     'Description="FILL"',
   'Fire Breath':
     'School=Evocation ' +
@@ -2679,7 +2800,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Mass Fly':
     'School=Transmutation ' +
-    'Level=W7 ' +
+    'Level=Feather6,W7 ' +
     'Description="FILL"',
   'Foe to Friend':
     'School=Enchantment ' +
@@ -2767,7 +2888,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Hungry Pit':
     'School=Conjuration ' +
-    'Level=W5,Summoner5 ' +
+    'Level=Caves6,W5,Summoner5 ' +
     'Description="FILL"',
   "Hunter's Eye":
     'School=Divination ' +
@@ -2859,7 +2980,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Moonstruck':
     'School=Enchantment ' +
-    'Level=D4,W4,Witch4 ' +
+    'Level=D4,Rage6,W4,Witch4 ' +
     'Description="FILL"',
   'Nap Stack':
     'School=Necromancy ' +
@@ -2979,7 +3100,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Rest Eternal':
     'School=Necromancy ' +
-    'Level=C4,D5,Witch5 ' +
+    'Level=Ancestors4,C4,D5,Witch5 ' +
     'Description="FILL"',
   'Restful Sleep':
     'School=Necromancy ' +
@@ -3095,7 +3216,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Spiked Pit':
     'School=Conjuration ' +
-    'Level=W3,Summoner3 ' +
+    'Level=Caves3,W3,Summoner3 ' +
     'Description="FILL"',
   'Spiritual Ally':
     'School=Evocation ' +
@@ -3135,11 +3256,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Suffocation':
     'School=Necromancy ' +
-    'Level=W5,Witch5 ' +
+    'Level=Murder5,W5,Witch5 ' +
     'Description="FILL"',
   'Mass Suffocation':
     'School=Necromancy ' +
-    'Level=W9,Witch9 ' +
+    'Level=Murder9,W9,Witch9 ' +
     'Description="FILL"',
   'Summon Eidolon':
     'School=Conjuration ' +
@@ -3292,6 +3413,195 @@ PFAPG.SPELLS = {
 
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
+
+  'Air Walk':'Wind4',
+  'Chain Lightning':'Cloud6',
+  'Control Winds':'Cloud5,Wind5',
+  'Elemental Body IV':'Cloud7,Wind7',
+  'Gaseous Form':'Cloud3,Wind3',
+  'Obscuring Mist':'Cloud1',
+  'Solid Fog':'Cloud4',
+  'Storm Of Vengeance':'Cloud9',
+  'Whirlwind':'Cloud8,Wind8',
+  'Whispering Wind':'Wind1',
+  'Wind Wall':'Cloud2,Wind2',
+  'Wind Walk':'Wind6',
+
+  'Animal Shapes':'Feather7,Fur7',
+  'Antilife Shell':'Fur6',
+  'Beast Shape I':'Fur3',
+  'Beast Shape III':'Feather5,Fur5',
+  'Calm Animals':'Feather1',
+  'Feather Fall':'Feather2',
+  'Fly':'Feather3',
+  'Hold Animal':'Fur2',
+  'Magic Fang':'Fur1',
+  'Shapechange':'Feather9,Fur9',
+  'Speak With Animals':'Feather1,Fur1',
+  'Summon Nature\'s Ally IV':'Feather4,Fur4',
+  'Summon Nature\'s Ally VIII':'Feather8,Fur8',
+
+  'Animate Rope':'Construct1',
+  'Command':'Toil1',
+  'Fabricate':'Construct5',
+  'Limited Wish':'Construct7',
+  'Major Creation':'Construct6,Toil6',
+  'Minor Creation':'Construct4,Toil4',
+  'Polymorph Any Object':'Construct8',
+  'Prismatic Sphere':'Construct9,Toil9',
+  'Statue':'Toil8',
+  'Stone Shape':'Construct3,Toil3',
+  'Waves Of Exhaustion':'Toil7',
+  'Waves Of Fatigue':'Toil5',
+  'Wood Shape':'Construct2,Toil2',
+
+  'Align Weapon':'Azata2,Demon2,Protean2',
+  'Chaos Hammer':'Azata4,Demon4,Protean4',
+  'Cloak Of Chaos':'Azata8,Demon8,Protean8',
+  'Displacement':'Protean3',
+  'Doom':'Demon1',
+  'Dispel Law':'Azata5,Demon5,Protean5',
+  'Expeditious Retreat':'Azata1',
+  'Fly':'Azata3',
+  'Lesser Confusion':'Protean1',
+  'Planar Ally':'Azata6',
+  'Planar Binding':'Demon6,Protean6',
+  'Rage':'Demon3',
+  'Summon Monster IX':'Azata9,Demon9,Protean9',
+  'Word Of Chaos':'Azata7,Demon7,Protean7',
+
+  'Charm Monster':'Love5,Lust5',
+  'Charm Person':'Love1,Lust1',
+  'Confusion':'Lust4',
+  'Demand':'Lust8',
+  'Dominate Monster':'Love9,Lust9',
+  'Enthrall':'Love2',
+  'Geas/Quest':'B6,C6,Love6,Lust6',
+  'Heroism':'Love4',
+  'Insanity':'Love7,Lust7',
+  'Suggestion':'Love3,Lust3',
+  'Touch Of Idiocy':'Lust2',
+
+  'Alarm':'Home1',
+  'Bless':'Family1',
+  'Calm Emotions':'Family2',
+  'Create Food And Water':'Family3',
+  'Glyph Of Warding':'Home3',
+  'Guards And Wards':'Home7',
+  "Heroes' Feast":'Family6,Home6',
+  'Imbue With Spell Ability':'Family4,Home4',
+  'Mass Cure Critical Wounds':'Family8,Home8',
+  'Miracle':'Family9,Home9',
+  'Refuge':'Family7',
+  'Shield Other':'Home2',
+  'Telepathic Bond':'Family5,Home5',
+
+  'Blindness/Deafness':'Loss2,Night2',
+  'Deeper Darkness':'Loss3,Night3',
+  'Energy Drain':'Loss9',
+  'Enervation':'Loss5',
+  'Greater Shadow Evocation':'Loss8,Night8',
+  'Modify Memory':'Loss6',
+  'Nightmare':'Night6',
+  'Obscuring Mist':'Loss1',
+  'Power Word Blind':'Loss7,Night7',
+  'Shades':'Night9',
+  'Shadow Conjuration':'Loss4,Night4',
+  'Sleep':'Night1',
+  'Summon Monster V':'Night5',
+
+  'Animate Dead':'Undead3',
+  'Cause Fear':'Murder1,Undead1',
+  'Create Greater Undead':'Murder8,Undead8',
+  'Create Undead':'Murder6,Undead6',
+  'Death Knell':'Murder2',
+  'Death Ward':'Murder4',
+  'Destruction':'Murder7,Undead7',
+  'Energy Drain':'Undead9',
+  'Enervation':'Undead4',
+  'Ghoul Touch':'Undead2',
+  'Keen Edge':'Murder3',
+  'Slay Living':'Undead5',
+
+  "Bull's Strength":'Rage2',
+  'Call Lightning':'Catastrophe3',
+  'Control Weather':'Catastrophe7',
+  'Disintegrate':'Rage7',
+  'Earthquake':'Catastrophe8,Rage8',
+  'Gust Of Wind':'Catastrophe2',
+  'Harm':'Catastrophe6',
+  'Implosion':'Catastrophe9,Rage9',
+  'Inflict Critical Wounds':'Catastrophe4,Rage4',
+  'Rage':'Rage3',
+  'Shout':'Catastrophe5,Rage5',
+  'True Strike':'Catastrophe1,Rage1',
+
+  'Earthquake':'Caves8',
+  'Elemental Swarm':'Caves9,Metal9',
+  'Heat Metal':'Metal2',
+  'Iron Body':'Metal8',
+  'Magic Stone':'Caves1,Metal1',
+  'Spike Stones':'Caves4,Metal4',
+  'Stone Shape':'Metal3',
+  'Wall Of Iron':'Metal6',
+  'Wall Of Stone':'Caves5,Metal5',
+  'Elemental Body IV':'Caves7,Metal7',
+
+  'Align Weapon':'Daemon2,Demon2,Devil2',
+  'Blasphemy':'Daemon7,Demon7,Devil7',
+  'Cause Fear':'Daemon1',
+  'Command':'Devil1',
+  'Doom':'Demon1',
+  'Dispel Good':'Daemon5,Demon5,Devil5',
+  'Planar Binding':'Daemon6,Demon6,Devil6',
+  'Rage':'Demon3',
+  'Suggestion':'Devil3',
+  'Summon Monster IX':'Daemon9,Demon9,Devil9',
+  'Unholy Aura':'Daemon8,Demon8,Devil8',
+  'Unholy Blight':'Daemon4,Demon4,Devil4',
+  'Vampiric Touch':'Daemon3',
+
+  'Burning Hands':'Ash1,Smoke1',
+  'Disintegrate':'Ash7',
+  'Elemental Swarm':'Smoke9',
+  'Elemental Body IV':'Smoke7',
+  'Fire Seeds':'Ash6,Smoke6',
+  'Fire Shield':'Ash5,Smoke5',
+  'Fireball':'Ash3',
+  'Incendiary Cloud':'Ash8,Smoke8',
+  'Produce Flame':'Ash2',
+  'Pyrotechnics':'Smoke2',
+  'Stinking Cloud':'Smoke3',
+  'Wall Of Fire':'Ash4,Smoke4',
+
+  'Bless Weapon':'Heroism2',
+  'Gate':'Heroism9,Honor9',
+  'Geas/Quest':'Honor6',
+  'Greater Heroism':'Heroism6',
+  'Heroism':'Heroism3',
+  'Holy Aura':'Heroism8,Honor8',
+  'Holy Smite':'Heroism4,Honor4',
+  'Holy Sword':'Heroism7,Honor7',
+  'Righteous Might':'Heroism5,Honor5',
+  'Sanctuary':'Heroism1,Honor1',
+  'Searing Light':'Honor3',
+  'Shield Of Faith':'Heroism1,Honor1',
+  'Zone Of Truth':'Honor2',
+
+  'Align Weapon':'Agathion2,Archon2,Azata2',
+  'Dispel Evil':'Agathion5,Archon5,Azata5',
+  'Divine Favor':'Archon1',
+  'Expeditious Retreat':'Azata1',
+  'Fly':'Azata3',
+  'Holy Aura':'Agathion8,Archon8,Azata8',
+  'Holy Smite':'Agathion4,Archon4,Azata4',
+  'Holy Word':'Agathion7,Archon7,Azata7',
+  'Planar Ally':'Agathion6,Archon6,Azata6',
+  'Prayer':'Archon3',
+  'Shield Of Faith':'Agathion1',
+  'Summon Monster IX':'Agathion9,Archon9,Azata9',
+  'Tongues':'Agathion3',
+
   'Acid Splash':'Inquisitor0',
   'Aid':'Inquisitor2',
   'Alarm':'Inquisitor1',
@@ -3847,6 +4157,48 @@ PFAPG.CLASSES = {
 PFAPG.PRESTIGES = {
 };
 PFAPG.DEITIES = {
+  // clerics with no deity still get two domains.
+  'None':'Domain=' + QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => x.replace(' Subdomain', '')).join(','),
+  'Abadar':
+    'Domain=Defense,Inevitable,Leadership,Martyr,Metal,Trade',
+  'Asmodeus':
+    'Domain=Arcane,Ash,Deception,Devil,Divine,Smoke',
+  'Calistria':
+    'Domain=Azata,Curse,Deception,Lust,Memory,Thievery',
+  'Cayden Cailean':
+    'Domain=Azata,Exploration,Ferocity,Love,Lust,Resolve',
+  'Desna':
+    'Domain=Azata,Curse,Exploration,Fate,Freedom,Revolution',
+  'Erastil':
+    'Domain=Archon,Family,Feather,Fur,Growth,Home',
+  'Gorum':
+    'Domain=Blood,Ferocity,Protean,Rage,Resolve,Tactics',
+  'Gozreh':
+    'Domain=Cloud,Decay,Growth,Oceans,Seasons,Wind',
+  'Iomedae':
+    'Domain=Archon,Day,Heroism,Honor,Light,Tactics',
+  'Irori':
+    'Domain=Inevitable,Language,Memory,Restoration,Resolve,Thought',
+  'Lamashtu':
+    'Domain=Deception,Demon,Ferocity,Insanity,Nightmare,Thievery',
+  'Nethys':
+    'Domain=Arcane,Catastrophe,Divine,Defense,Thought,Wards',
+  'Norgorber':
+    'Domain=Daemon,Deception,Memory,Murder,Thievery,Thought',
+  'Pharasma':
+    'Domain=Ancestors,Ice,Memory,Murder,Thievery,Thought',
+  'Rovagug':
+    'Domain=Blood,Catastrophe,Demon,Protean,Rage,Storms',
+  'Sarenrae':
+    'Domain=Agathion,Day,Heroism,Light,Restoration,Resurrection',
+  'Shelyn':
+    'Domain=Agathion,Cloud,Defense,Fate,Love,Purity',
+  'Torag':
+    'Domain=Archon,Caves,Construct,Defense,Metal,Toil',
+  'Urgathoa':
+    'Domain=Blood,Daemon,Divine,Ferocity,Murder,Undead',
+  'Zon-Kuthon':
+    'Domain=Catastrophe,Devil,Loss,Murder,Night,Undead'
 };
 
 /* Defines rules related to animal companions and familiars. */
@@ -3878,7 +4230,7 @@ PFAPG.identityRules = function(
     }
   }
   Pathfinder.identityRules(
-    rules, alignments, newClasses, deities, factions, paths, races, tracks,
+    rules, alignments, newClasses, {}, factions, paths, races, tracks,
     traits, prestigeClasses, npcClasses
   );
   for(let clas in classes)
@@ -3887,6 +4239,18 @@ PFAPG.identityRules = function(
     PFAPG.classRulesExtra(rules, clas);
   for(let clas in npcClasses)
     PFAPG.classRulesExtra(rules, clas);
+  for(let deity in deities) {
+    let domains = QuilvynUtils.getAttrValueArray(deities[deity], 'Domain');
+    if(rules.deityStats.domains[deity] == null)
+      console.log('Unknown deity "' + deity + '"');
+    else if(domains.length == 0)
+      console.log('No subdomains listed for deity "' + deity + '"');
+    else
+      rules.deityStats.domains[deity] += '/' + domains.join('/');
+  }
+  rules.defineRule('deityDomains',
+    'deity', '=', QuilvynUtils.dictLit(rules.deityStats.domains) + '[source]'
+  );
   for(let path in paths)
     PFAPG.pathRulesExtra(rules, path);
   for(let race in races)
