@@ -590,63 +590,170 @@ PFAPG.FEATURES = {
   'Tunnel Runner':
     'Section=feature ' +
     'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground for %{levels.Cleric} min/dy"',
-  'Thundercloud':'Section=feature Note="FILL"',
-  'Animate Servant':'Section=feature Note="FILL"',
-  'Malign Eye':'Section=feature Note="FILL"',
-  'Whispering Evil':'Section=feature Note="FILL"',
-  "Day's Resurgence":'Section=feature Note="FILL"',
-  'Aura Of Decay':'Section=feature Note="FILL"',
-  'Sudden Shift':'Section=feature Note="FILL"',
-  'Deflection Aura':'Section=feature Note="FILL"',
-  'Fury Of The Abyss':'Section=feature Note="FILL"',
-  "Hell's Corruption":'Section=feature Note="FILL"',
-  'Divine Vessel':'Section=feature Note="FILL"',
-  'Door Sight':'Section=feature Note="FILL"',
-  'Binding Ties':'Section=feature Note="FILL"',
-  'Tugging Strands':'Section=feature Note="FILL"',
-  'Eyes Of The Hawk':'Section=feature Note="FILL"',
-  'Ferocious Strike':'Section=feature Note="FILL"',
-  "Liberty's Blessing":'Section=feature Note="FILL"',
-  "Predator's Curse":'Section=feature Note="FILL"',
-  'Enlarge':'Section=feature Note="FILL"',
-  'Aura Of Heroism':'Section=feature Note="FILL"',
-  'Guarded Hearth':'Section=feature Note="FILL"',
-  'Honor Bound':'Section=feature Note="FILL"',
-  'Body Of Ice':'Section=feature Note="FILL"',
-  'Command':'Section=feature Note="FILL"',
-  'Insane Focus':'Section=feature Note="FILL"',
-  'Rune Shift':'Section=feature Note="FILL"',
-  'Inspiring Command':'Section=feature Note="FILL"',
-  'Blinding Flash':'Section=feature Note="FILL"',
-  'Aura Of Forgetfulness':'Section=feature Note="FILL"',
-  'Adoration':'Section=feature Note="FILL"',
-  'Anything To Please':'Section=feature Note="FILL"',
-  'Sacrificial Bond':'Section=feature Note="FILL"',
-  'Recall':'Section=feature Note="FILL"',
-  'Metal Fist':'Section=feature Note="FILL"',
-  'Killing Blow':'Section=feature Note="FILL"',
-  'Night Hunter':'Section=feature Note="FILL"',
-  'Fearful Touch':'Section=feature Note="FILL"',
-  'Surge':'Section=feature Note="FILL"',
-  'Aura Of Chaos':'Section=feature Note="FILL"',
-  'Purifying Touch':'Section=feature Note="FILL"',
-  'Rage':'Section=feature Note="FILL"',
-  'Bestow Resolve':'Section=feature Note="FILL"',
-  'Restorative Touch':'Section=feature Note="FILL"',
-  'Gift Of Life':'Section=feature Note="FILL"',
-  'Powerful Persuader':'Section=feature Note="FILL"',
-  'Untouched By The Seasons':'Section=feature Note="FILL"',
-  'Cloud Of Smoke':'Section=feature Note="FILL"',
-  'Touch The Spirit World':'Section=feature Note="FILL"',
-  'Gale Aura':'Section=feature Note="FILL"',
-  'Seize The Initiative':'Section=feature Note="FILL"',
-  'Thief Of The Gods':'Section=feature Note="FILL"',
-  'Read Minds':'Section=feature Note="FILL"',
-  'Aura Of Repetition':'Section=feature Note="FILL"',
-  'Silver-Tongued Haggler':'Section=feature Note="FILL"',
-  "Death's Kiss":'Section=feature Note="FILL"',
-  'Warding Rune':'Section=feature Note="FILL"',
-  'Wind Blast':'Section=feature Note="FILL"',
+  'Thundercloud':
+    'Section=magic ' +
+    'Note="R%{levels.Cleric*10+100}\' Fog in 20\' radius moves 30\'/rd, obscures vision, deafens, and inflicts 2d6 HP electricity %{levels.Cleric} rd/dy"',
+  'Animate Servant':
+    'Section=magic ' +
+    'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
+  'Malign Eye':
+    'Section=magic ' +
+    'Note="R30\' Target -2 saves vs. self spells for 1 min or until hits self %{wisdomModifier+3}/dy"',
+  'Whispering Evil':
+    'Section=magic ' +
+    'Note="30\' radius fascinates foes (Will neg) for %{levels.Cleric} rd/dy"',
+  "Day's Resurgence":
+    'Section=magic ' +
+    'Note="10 minute usage gives target 8 hrs rest %{(levels.Cleric-4)//4}/dy"',
+  'Aura Of Decay':
+    'Section=combat ' +
+    'Note="30\' raidus inflicts 1d6 HP/rd and -1 Strength/rd for %{levels.Cleric} rd/dy"',
+  'Sudden Shift':
+    'Section=combat ' +
+    'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+1}/dy"',
+  'Deflection Aura':
+    'Section=combat ' +
+    'Note="20\' radius gives allies +2 AC for %{levels.Cleric} rd 1/dy"',
+  'Fury Of The Abyss':
+    'Section=combat ' +
+    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
+  "Hell's Corruption":
+    'Section=combat ' +
+    'Note="Touch inflicts -1 saves and worst of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Divine Vessel':
+    'Section=magic ' +
+    'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill, or ability for 1 rd %{wisdomModifier+3}/dy"',
+  'Door Sight':
+    'Section=magic ' +
+    'Note="May see through %{6+levels.Cleric}\\" material after 1 min touch %{wisdomModifier+3}/dy"',
+  'Binding Ties':
+    'Section=magic ' +
+    'Note="Touch transfers condition to self for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+  'Tugging Strands':
+    'Section=combat Note="May force target reroll %{(levels.Cleric-2}//6}/dy"',
+  'Eyes Of The Hawk':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+2 Initiative",' +
+      '"+%{levels.Cleric//2>?1}"',
+  'Ferocious Strike':
+    'Section=combat ' +
+    'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
+  "Liberty's Blessing":
+    'Section=magic ' +
+    'Note="Touch allows additional spell save %{wisdomModifier+3}/dy"',
+  "Predator's Curse":
+    'Section=ability,feature ' +
+    'Note=' +
+      '"+%{10+levels.Cleric//5*5}\' Speed for 1 rd %{wisdomModifier+3}/dy",' +
+      '"Has Low-Light Vision features %{wisdomModifier+3}/dy"',
+  'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
+  'Aura Of Heroism':
+    'Section=combat ' +
+    'Note="30\' radius gives allies +2 attack, saves, and skill checks for %{levels.Cleric} rd/dy"',
+  'Guarded Hearth':
+    'Section=magic ' +
+    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attacks and saves for %{levels.Cleric} hr 1/dy"',
+  'Honor Bound':
+    'Section=magic ' +
+    'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
+  'Body Of Ice':
+    'Section=combat Note="May trade dbl damage from fire for immunity to cold and DR 5/- for %{levels.Cleric} rd/dy"',
+  'command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
+  'Insane Focus':
+    'Section=magic ' +
+    'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) %{wisdomModifier+3}/dy"',
+  'Rune Shift':
+    'Section=magic Note="R30\' May move blast runes to adjacent square"',
+  'Inspiring Command':
+    'Section=magic ' +
+    'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
+  'Blinding Flash':
+    'Section=magic ' +
+    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Aura Of Forgetfulness':
+    'Section=magic ' +
+    'Note="Creatures have no memory of time in 30\' radius and forget 1 spell/rd (Will neg) %{levels.Cleric} rd/dy"',
+  'Adoration':
+   'Section=combat ' +
+   'Note="May force foe to forego attack (Will neg) %{wisdomModifier+3}/dy"',
+  'Anything To Please':
+    'Section=magic ' +
+    'Note="R30\' Target attempts to please self (Will neg) %{(levels.Cleric-4)//4}/dy"',
+  'Sacrificial Bond':
+    'Section=combat ' +
+    'Note="R30\' May transfer ally damage to self %{(levels.Cleric-2)//6}/dy"',
+  'Recall':
+    'Section=skill ' +
+    'Note="Touch gives +%{wisdomModifier} Knowledge retry %{wisdomModifier+3}/dy"',
+  'Metal Fist':
+    'Section=combat ' +
+    'Note="Unarmed attacks inflict 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
+  'Killing Blow':
+    'Section=combat ' +
+    'Note="Critical hit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
+  'Night Hunter':
+    'Section=feature ' +
+    'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Fearful Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts -2 attacks on self and -%{levels.Cleric//2>?1} saves vs. fear for 1 rd %{wisdomModifier+3}/dy"',
+  'Surge':
+    'Section=feature ' +
+    'Note="%{levels.Cleric+wisdomModifier} CMB pulls or pushes target %{wisdomModifier+3}/dy"',
+  'Aura Of Chaos':
+    'Section=combat ' +
+    'Note="30\' radius randomizes creature actions for %{levels.Cleric} rd/dy"',
+  'Purifying Touch':
+    'Section=magic ' +
+    'Note="Touch gives additional save vs. effects %{(levels-2)//6}/dy"',
+  'Rage (Cleric)':
+    'Section=feature Note="May enter rage %{levels.Cleric} w/%1 powers rd/dy"',
+  'Bestow Resolve':
+    'Section=magic ' +
+    'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
+  'Restorative Touch':
+    'Section=magic ' +
+    'Note="Touch removes choice of dazed, fatigued, shaken, sickened, or staggered %{wisdomModifier+3}/dy"',
+  'Gift Of Life':
+    'Section=magic ' +
+    'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
+  'Powerful Persuader':
+    'Section=skill ' +
+    'Note="May take better of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-4)//4}/dy"',
+  'Untouched By The Seasons':
+    'Section=feature ' +
+    'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
+  'Cloud Of Smoke':
+    'Section=magic Note="R30\' 5\' radius inflicts -2 attacks and Perception, gives concealment %{wisdomModifier+3}/rd"',
+  'Touch The Spirit World':
+    'Section=magic ' +
+    'Note="Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+  'Gale Aura':
+    'Section=magic ' +
+    'Note="30\' radius inflicts difficult terrain, no 5\' step for %{levels.Cleric} rd/dy"',
+  'Seize The Initiative':
+    'Section=magic ' +
+    'Note="R30\' Target gains best of two Initiative rolls %{wisdomModifier+3}/dy"',
+  'Thief Of The Gods':
+    'Section=skill ' +
+    'Note="May take better of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-4)//4}/dy"',
+  'Read Minds':
+    'Section=magic ' +
+    'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) for %{levels.Cleric} rd/dy"',
+  'Aura Of Repetition':
+    'Section=combat Note="R30\' Forces foes to repeat prior action (Will neg) for %{levels.Cleric} rd/dy"',
+  'Silver-Tongued Haggler':
+    'Section=skill ' +
+    'Note="+%{levels.Cleric//2>?1} Bluff, Diplomacy, or Sense Motive %{wisdomModifier+3}/dy"',
+  "Death's Kiss":
+    'Section=magic ' +
+    'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Warding Rune':
+    'Section=magic ' +
+    'Note="Damage from blast rune prevents attacks on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+  'Wind Blast':
+    'Section=magic Note="30\' line bull rush %{wisdomModifier+3}/dy"',
 
   // New base classes
   'Acid Bomb':
@@ -2075,7 +2182,7 @@ PFAPG.PATHS = {
   'Purity Subdomain':
     Pathfinder.PATHS['Protection Domain'].replace('Aura Of Protection', 'Purifying Touch'),
   'Rage Subdomain':
-    Pathfinder.PATHS['Destruction Domain'].replace('Destructive Aura', 'Rage'),
+    Pathfinder.PATHS['Destruction Domain'].replace('Destructive Aura', 'Rage (Cleric)'),
   'Resolve Subdomain':
     Pathfinder.PATHS['Strength Domain'].replace('Might Of The Gods', 'Bestow Resolve'),
   'Restoration Subdomain':
@@ -4278,7 +4385,14 @@ PFAPG.talentRules = function(
  */
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
-  if(name == 'Alchemist') {
+  if(name == 'Cleric') {
+    rules.defineRule('featureNotes.rage(Cleric).1',
+      'features.Rage (Cleric)', '?', null,
+      'levels.Cleric', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
+    );
+    rules.defineRule
+      ('featureNotes.ragePowers', 'featureNotes.rage(Cleric).1', '+=', null);
+  } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
       'intelligenceModifier', '+', null
