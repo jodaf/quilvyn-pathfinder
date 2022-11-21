@@ -529,7 +529,7 @@ PFAPG.FEATURES = {
   'Elemental Rage':'Section=feature Note="FILL"',
   'Greater Elemental Rage':'Section=feature Note="FILL"',
   'Lesser Elemental Rage':'Section=feature Note="FILL"',
-  'Energy Absorbtion':'Section=feature Note="FILL"',
+  'Energy Absorption':'Section=feature Note="FILL"',
   'Energy Eruption':'Section=feature Note="FILL"',
   'Energy Resistance':'Section=feature Note="FILL"',
   'Greater Energy Resistance':'Section=feature Note="FILL"',
@@ -566,30 +566,30 @@ PFAPG.FEATURES = {
 
   'Protective Aura':
     'Section=magic ' +
-    'Note="R30\' Allies +2 AC, +2 saves, and <i>Protection From Evil</i> effects for %{levels.Cleric} rd/dy"',
+    'Note="R30\' Allies gain +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
   'Speak With Dead':
     'Section=magic Note="May ask question of corpse %{levels.Cleric}/dy"',
   'Arcane Beacon':
     'Section=magic ' +
-    'Note="15\' radius gives +1 to caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
+    'Note="15\' radius gives arcane spells +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
   'Aura Of Menace':
     'Section=magic ' +
-    'Note="30\' radius inficts -2 AC and attack on foes for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
   'Wall Of Ashes':
     'Section=magic ' +
-    'Note="R100\' %{levels.Cleric*10}\'x20\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures for %{levels.Cleric} min/dy"',
+    'Note="R100\' %{levels.Cleric*10}\'x20\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
   "Elysium's Call":
     'Section=magic ' +
     'Note="Touch gives immediate enchantment reroll, +2 save vs. enchantment, +2 CMB to escape grapple, and negate 5\' difficult terrain for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Wounding Blade':
     'Section=magic ' +
-    'Note="Hit w/touched weapon causes 1 HP bleeding damage (DC 15 Heal or cure ends) for %{levels.Cleric//2} %{(levels.Cleric-4)//4}/dy"',
+    'Note="Hit w/touched weapon causes 1 HP bleeding damage (DC 15 Heal or cure ends) for %{levels.Cleric//2} rd %{(levels.Cleric-4)//4}/dy"',
   'Deadly Weather':
     'Section=magic ' +
-    'Note="Storm in %{levels.Cleric*5}\' radius causes choice of rain (-4 Perception and ranged attacks), winds (-8 Fly and ranged attacks), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy"',
+    'Note="%{levels.Cleric*5}\' radius inflicts choice of rain (-4 Perception and ranged attack), winds (-8 Fly and ranged attack), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy"',
   'Tunnel Runner':
     'Section=feature ' +
-    'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground for %{levels.Cleric} min/dy"',
+    'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
   'Thundercloud':
     'Section=magic ' +
     'Note="R%{levels.Cleric*10+100}\' Fog in 20\' radius moves 30\'/rd, obscures vision, deafens, and inflicts 2d6 HP electricity %{levels.Cleric} rd/dy"',
@@ -598,73 +598,72 @@ PFAPG.FEATURES = {
     'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
   'Malign Eye':
     'Section=magic ' +
-    'Note="R30\' Target -2 saves vs. self spells for 1 min or until hits self %{wisdomModifier+3}/dy"',
+    'Note="R30\' Inflicts -2 saves vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
   'Whispering Evil':
     'Section=magic ' +
-    'Note="30\' radius fascinates foes (Will neg) for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius fascinates foes (Will neg) %{levels.Cleric} rd/dy"',
   "Day's Resurgence":
     'Section=magic ' +
-    'Note="10 minute usage gives target 8 hrs rest %{(levels.Cleric-4)//4}/dy"',
+    'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
   'Aura Of Decay':
     'Section=combat ' +
-    'Note="30\' raidus inflicts 1d6 HP/rd and -1 Strength/rd for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd %{levels.Cleric} rd/dy"',
   'Sudden Shift':
     'Section=combat ' +
-    'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+1}/dy"',
+    'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
   'Deflection Aura':
     'Section=combat ' +
-    'Note="20\' radius gives allies +2 AC for %{levels.Cleric} rd 1/dy"',
+    'Note="20\' radius gives allies +2 AC and CMD for %{levels.Cleric} rd 1/dy"',
   'Fury Of The Abyss':
     'Section=combat ' +
-    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, and CMB for 1 rd %{wisdomModifier+3}/dy"',
   "Hell's Corruption":
     'Section=combat ' +
-    'Note="Touch inflicts -1 saves and worst of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="Touch inflicts -2 saves and worse of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Divine Vessel':
     'Section=magic ' +
-    'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill, or ability for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill check, or ability check for 1 rd %{wisdomModifier+3}/dy"',
   'Door Sight':
     'Section=magic ' +
     'Note="May see through %{6+levels.Cleric}\\" material after 1 min touch %{wisdomModifier+3}/dy"',
   'Binding Ties':
     'Section=magic ' +
-    'Note="Touch transfers condition to self for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+    'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
   'Tugging Strands':
-    'Section=combat Note="May force target reroll %{(levels.Cleric-2}//6}/dy"',
+    'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
     'Note=' +
       '"+2 Initiative",' +
-      '"+%{levels.Cleric//2>?1}"',
+      '"+%V Perception"',
   'Ferocious Strike':
     'Section=combat ' +
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
   "Liberty's Blessing":
-    'Section=magic ' +
-    'Note="Touch allows additional spell save %{wisdomModifier+3}/dy"',
-  "Predator's Curse":
+    'Section=magic Note="Touch gives additional save %{wisdomModifier+3}/dy"',
+  "Predator's Grace":
     'Section=ability,feature ' +
     'Note=' +
       '"+%{10+levels.Cleric//5*5}\' Speed for 1 rd %{wisdomModifier+3}/dy",' +
-      '"Has Low-Light Vision features %{wisdomModifier+3}/dy"',
+      '"Has Low-Light Vision features for 1 rd %{wisdomModifier+3}/dy"',
   'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
   'Aura Of Heroism':
     'Section=combat ' +
-    'Note="30\' radius gives allies +2 attack, saves, and skill checks for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius gives allies +2 attack, saves, and skill checks %{levels.Cleric} rd/dy"',
   'Guarded Hearth':
     'Section=magic ' +
-    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attacks and saves for %{levels.Cleric} hr 1/dy"',
+    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
   'Honor Bound':
     'Section=magic ' +
     'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
   'Body Of Ice':
-    'Section=combat Note="May trade dbl damage from fire for immunity to cold and DR 5/- for %{levels.Cleric} rd/dy"',
-  'command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
+    'Section=combat Note="May trade dbl damage from fire for immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
+  'Command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
   'Insane Focus':
     'Section=magic ' +
     'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) %{wisdomModifier+3}/dy"',
   'Rune Shift':
-    'Section=magic Note="R30\' May move blast runes to adjacent square"',
+    'Section=magic Note="R30\' May move blast rune to adjacent square"',
   'Inspiring Command':
     'Section=magic ' +
     'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
@@ -673,7 +672,7 @@ PFAPG.FEATURES = {
     'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Aura Of Forgetfulness':
     'Section=magic ' +
-    'Note="Creatures have no memory of time in 30\' radius and forget 1 spell/rd (Will neg) %{levels.Cleric} rd/dy"',
+    'Note="Creatures have no memory of time in 30\' radius and lose 1 spell slot/rd (Will neg) %{levels.Cleric} rd/dy"',
   'Adoration':
    'Section=combat ' +
    'Note="May force foe to forego attack (Will neg) %{wisdomModifier+3}/dy"',
@@ -685,10 +684,10 @@ PFAPG.FEATURES = {
     'Note="R30\' May transfer ally damage to self %{(levels.Cleric-2)//6}/dy"',
   'Recall':
     'Section=skill ' +
-    'Note="Touch gives +%{wisdomModifier} Knowledge retry %{wisdomModifier+3}/dy"',
+    'Note="Touch gives +%{wisdomModifier} Knowledge reroll %{wisdomModifier+3}/dy"',
   'Metal Fist':
     'Section=combat ' +
-    'Note="Unarmed attacks inflict 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
   'Killing Blow':
     'Section=combat ' +
     'Note="Critical hit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
@@ -697,18 +696,19 @@ PFAPG.FEATURES = {
     'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Fearful Touch':
     'Section=combat ' +
-    'Note="Touch inflicts -2 attacks on self and -%{levels.Cleric//2>?1} saves vs. fear for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} saves vs. fear for 1 rd %{wisdomModifier+3}/dy"',
   'Surge':
     'Section=feature ' +
-    'Note="%{levels.Cleric+wisdomModifier} CMB pulls or pushes target %{wisdomModifier+3}/dy"',
+    'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
   'Aura Of Chaos':
     'Section=combat ' +
-    'Note="30\' radius randomizes creature actions for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius randomizes creature actions %{levels.Cleric} rd/dy"',
   'Purifying Touch':
     'Section=magic ' +
-    'Note="Touch gives additional save vs. effects %{(levels-2)//6}/dy"',
+    'Note="Touch gives additional save vs. effects %{(levels.Cleric-2)//6}/dy"',
   'Rage (Cleric)':
-    'Section=feature Note="May enter rage %{levels.Cleric} w/%1 powers rd/dy"',
+    'Section=combat ' +
+    'Note="+4 Str, +4 Con, +2 Will, -2 AC and %1 powers %{levels.Cleric} rd/dy"',
   'Bestow Resolve':
     'Section=magic ' +
     'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
@@ -720,29 +720,29 @@ PFAPG.FEATURES = {
     'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
   'Powerful Persuader':
     'Section=skill ' +
-    'Note="May take better of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-4)//4}/dy"',
+    'Note="May take higher of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-6)//2}/dy"',
   'Untouched By The Seasons':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
   'Cloud Of Smoke':
-    'Section=magic Note="R30\' 5\' radius inflicts -2 attacks and Perception, gives concealment %{wisdomModifier+3}/rd"',
+    'Section=magic Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
   'Touch The Spirit World':
     'Section=magic ' +
     'Note="Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
   'Gale Aura':
     'Section=magic ' +
-    'Note="30\' radius inflicts difficult terrain, no 5\' step for %{levels.Cleric} rd/dy"',
+    'Note="30\' radius inflicts difficult terrain and no 5\' step %{levels.Cleric} rd/dy"',
   'Seize The Initiative':
     'Section=magic ' +
-    'Note="R30\' Target gains best of two Initiative rolls %{wisdomModifier+3}/dy"',
+    'Note="R30\' Target gains choice of 2 Initiative rolls %{wisdomModifier+3}/dy"',
   'Thief Of The Gods':
     'Section=skill ' +
-    'Note="May take better of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-4)//4}/dy"',
+    'Note="May take higher of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-6)//2}/dy"',
   'Read Minds':
     'Section=magic ' +
-    'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) for %{levels.Cleric} rd/dy"',
+    'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Aura Of Repetition':
-    'Section=combat Note="R30\' Forces foes to repeat prior action (Will neg) for %{levels.Cleric} rd/dy"',
+    'Section=combat Note="R30\' Forces foes to repeat prior action (Will neg) %{levels.Cleric} rd/dy"',
   'Silver-Tongued Haggler':
     'Section=skill ' +
     'Note="+%{levels.Cleric//2>?1} Bluff, Diplomacy, or Sense Motive %{wisdomModifier+3}/dy"',
@@ -751,9 +751,9 @@ PFAPG.FEATURES = {
     'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Warding Rune':
     'Section=magic ' +
-    'Note="Damage from blast rune prevents attacks on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+    'Note="Damage from blast rune prevents attack on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
   'Wind Blast':
-    'Section=magic Note="30\' line bull rush %{wisdomModifier+3}/dy"',
+    'Section=magic Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
 
   // New base classes
   'Acid Bomb':
@@ -819,7 +819,7 @@ PFAPG.FEATURES = {
   'Braggart':
     'Section=combat,feature ' +
     'Note=' +
-      '"+2 attacks on demoralized target",' +
+      '"+2 attack on demoralized target",' +
       '"Has Dazzling Display features"',
   'Brain Drain':
     'Section=feature ' +
@@ -973,7 +973,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="Successful grapple doubles damage"',
   'Eidolon Energy Attacks (2)':
     'Section=companion ' +
-    'Note="Natural attacks inflict 1d6 HP of chosen energy Type"',
+    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
   'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
   'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
   'Eidolon Grab (2)':
@@ -1046,7 +1046,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
   'Eternal Youth':
     'Section=feature Note="Suffers no ability score penalties from age"',
-  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attacks, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
+  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
   'Expert Trainer':
     'Section=skill ' +
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
@@ -1092,7 +1092,7 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"Remain alive until -%{hitPoints*2} HP",' +
-      '"Immune to bleed, death attacks, exhaustion, fatigue, nausea effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
+      '"Immune to bleed, death attack, exhaustion, fatigue, nausea effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
   'Final Revelation (Lore Mystery)':
     'Section=magic,skill ' +
     'Note=' +
@@ -1134,7 +1134,7 @@ PFAPG.FEATURES = {
     'Note="May move full speed across liquid without contact damage%1"',
   'Focused Trance':
     'Section=skill ' +
-    'Note="Trance of 1d6 rd gives +%{levels.Oracle} saves vs. sonic and gaze attacks and 1 +20 intelligence skill test %{charismaModifier}/dy"',
+    'Note="Trance of 1d6 rd gives +%{levels.Oracle} saves vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
   'For The Faith':
     'Section=combat ' +
     'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
@@ -1309,13 +1309,13 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Misfortune Hex':
-    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attacks, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
   'Moment Of Triumph':
     'Section=feature ' +
-    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attacks, damage, saves, skillChecks, and AC 1/dy"',
+    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
@@ -1326,7 +1326,7 @@ PFAPG.FEATURES = {
   'Mounted Mastery':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+4 AC vs. attacks set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
+      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
       '"Gain 1 Order Of The Sword feat",' +
       '"No armor check penalty for Ride"',
   'Mutagen':
@@ -1361,7 +1361,7 @@ PFAPG.FEATURES = {
   'Order Of The Dragon':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"Allies receive +%{levels.Cavalier//4+1} attacks on challenge target",' +
+      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
       '"Must defend allies",' +
       '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
   'Order Of The Lion':
@@ -1373,7 +1373,7 @@ PFAPG.FEATURES = {
   'Order Of The Shield':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} attacks vs. challenge target for 1 min if target attacks another",' +
+      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
       '"Must defend the lives and property of common folks",' +
       '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
   'Order Of The Star':
@@ -1385,7 +1385,7 @@ PFAPG.FEATURES = {
   'Order Of The Sword':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} mounted attacks vs. challenge target",' +
+      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
       '"Must show honor, mercy, and charity",' +
       '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
   'Orisons':'Section=magic Note="Knows level-0 spells"',
@@ -2100,7 +2100,7 @@ PFAPG.PATHS = {
   'Cloud Subdomain':
     Pathfinder.PATHS['Air Domain'].replace('Electricity Resistance', 'Thundercloud'),
   'Construct Subdomain':
-    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapon', 'Animate Servant'),
+    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapons', 'Animate Servant'),
   'Curse Subdomain':
     Pathfinder.PATHS['Luck Domain'].replace('Bit Of Luck', 'Malign Eye'),
   'Daemon Subdomain':
@@ -2110,9 +2110,9 @@ PFAPG.PATHS = {
   'Decay Subdomain':
     Pathfinder.PATHS['Plant Domain'].replace('Bramble Armor', 'Aura Of Decay'),
   'Deception Subdomain':
-    Pathfinder.PATHS['Trickery Domain'].replace('Copycat Power', 'Sudden Shift'),
+    Pathfinder.PATHS['Trickery Domain'].replace('Copycat', 'Sudden Shift'),
   'Defense Subdomain':
-    Pathfinder.PATHS['Protection Domain'].replace('Resistance Touch', 'Deflection Aura'),
+    Pathfinder.PATHS['Protection Domain'].replace('Resistant Touch', 'Deflection Aura'),
   'Demon Chaos Subdomain':
     Pathfinder.PATHS['Chaos Domain'].replace('Touch Of Chaos', 'Fury Of The Abyss'),
   'Demon Evil Subdomain':
@@ -2132,11 +2132,11 @@ PFAPG.PATHS = {
   'Feather Subdomain':
     Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', 'Eyes Of The Hawk'),
   'Ferocity Subdomain':
-    Pathfinder.PATHS['Strength Domain'].replace('Strength Surge', 'Ferocious Strike'),
+    Pathfinder.PATHS['Strength Domain'].replace('Strength Surge Touch', 'Ferocious Strike'),
   'Freedom Subdomain':
     Pathfinder.PATHS['Liberation Domain'].replace('Liberation', "Liberty's Blessing"),
   'Fur Subdomain':
-    Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', "Predator's Curse"),
+    Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', "Predator's Grace"),
   'Growth Subdomain':
     Pathfinder.PATHS['Plant Domain'].replace('Wooden Fist', 'Enlarge'),
   'Heroism Subdomain':
@@ -2150,7 +2150,7 @@ PFAPG.PATHS = {
   'Inevitable Subdomain':
     Pathfinder.PATHS['Law Domain'].replace('Touch Of Law', 'Command'),
   'Insanity Subdomain':
-    Pathfinder.PATHS['Madness Domain'].replace('Visions Of Madness', 'Insane Focus'),
+    Pathfinder.PATHS['Madness Domain'].replace('Vision Of Madness', 'Insane Focus'),
   'Language Subdomain':
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Rune Shift'),
   'Leadership Subdomain':
@@ -2176,7 +2176,7 @@ PFAPG.PATHS = {
   'Nightmare Subdomain':
     Pathfinder.PATHS['Madness Domain'].replace('Vision Of Madness', 'Fearful Touch'),
   'Oceans Subdomain':
-    Pathfinder.PATHS['Water Domain'].replace('Icicle Power', 'Surge'),
+    Pathfinder.PATHS['Water Domain'].replace('Icicle', 'Surge'),
   'Protean Subdomain':
     Pathfinder.PATHS['Chaos Domain'].replace('Chaos Blade', 'Aura Of Chaos'),
   'Purity Subdomain':
@@ -2202,11 +2202,11 @@ PFAPG.PATHS = {
   'Tactics Subdomain':
     Pathfinder.PATHS['War Domain'].replace('Battle Rage', 'Seize The Initiative'),
   'Thievery Subdomain':
-    Pathfinder.PATHS['Trickery Domain'].replace("Master's Illusions", 'Thief Of The Gods'),
+    Pathfinder.PATHS['Trickery Domain'].replace("Master's Illusion", 'Thief Of The Gods'),
   'Thought Subdomain':
-    Pathfinder.PATHS['Knowledge Domain'].replace('Remote Viewing Power', 'Read Minds'),
+    Pathfinder.PATHS['Knowledge Domain'].replace('Remote Viewing', 'Read Minds'),
   'Toil Subdomain':
-    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapon', 'Aura Of Repetition'),
+    Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapons', 'Aura Of Repetition'),
   'Trade Subdomain':
     Pathfinder.PATHS['Travel Domain'].replace('Agile Feet', 'Silver-Tongued Haggler'),
   'Undead Subdomain':
@@ -2536,7 +2536,7 @@ PFAPG.SPELLS = {
   'Aspect Of The Falcon':
     'School=Transmutation ' +
     'Level=D1,R1 ' +
-    'Description="Self gains +3 Perception, +1 ranged attacks, and ranged crit of 19-20/x3 for $L min"',
+    'Description="Self gains +3 Perception, +1 ranged attack, and ranged crit of 19-20/x3 for $L min"',
   'Aspect Of The Stag':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
@@ -2544,7 +2544,7 @@ PFAPG.SPELLS = {
   'Aspect Of The Wolf':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
-    'Description="Self gains +4 Strength and Dexterity, +2 trip attacks, and swift trip w/no AOO for $L min"',
+    'Description="Self gains +4 Strength and Dexterity, +2 trip attack, and swift trip w/no AOO for $L min"',
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -3958,8 +3958,8 @@ PFAPG.CLASSES = {
       '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
       '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
       '"4:Lesser Elemental Rage",' +
-      '"features.Greater Energy Resistance ? 12:Energy Absorbtion",' +
-      '"features.Energy Absorbtion ? 16:Energy Eruption",' +
+      '"features.Greater Energy Resistance ? 12:Energy Absorption",' +
+      '"features.Energy Absorption ? 16:Energy Eruption",' +
       '"2:Energy Resistance",' +
       '"features.Energy Resistance ? 8:Greater Energy Resistance",' +
       '"2:Ferocious Mount",' +
@@ -4257,29 +4257,29 @@ PFAPG.PRESTIGES = {
 };
 PFAPG.DEITIES = {
   // clerics with no deity still get two domains.
-  'None':'Domain=' + QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => x.replace(' Subdomain', '')).join(','),
+  'None':'Domain="' + QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => x.replace(' Subdomain', '')).join('","') + '"',
   'Abadar':
     'Domain=Defense,Inevitable,Leadership,Martyr,Metal,Trade',
   'Asmodeus':
-    'Domain=Arcane,Ash,Deception,Devil,Divine,Smoke',
+    'Domain=Arcane,Ash,Deception,"Devil Evil","Devil Law",Divine,Smoke',
   'Calistria':
-    'Domain=Azata,Curse,Deception,Lust,Memory,Thievery',
+    'Domain="Azata Chaos",Curse,Deception,Lust,Memory,Thievery',
   'Cayden Cailean':
-    'Domain=Azata,Exploration,Ferocity,Love,Lust,Resolve',
+    'Domain="Azata Chaos","Azata Good",Exploration,Ferocity,Love,Lust,Resolve',
   'Desna':
-    'Domain=Azata,Curse,Exploration,Fate,Freedom,Revolution',
+    'Domain="Azata Chaos","Azata Good",Curse,Exploration,Fate,Freedom,Revolution',
   'Erastil':
-    'Domain=Archon,Family,Feather,Fur,Growth,Home',
+    'Domain="Archon Good","Archon Law",Family,Feather,Fur,Growth,Home',
   'Gorum':
     'Domain=Blood,Ferocity,Protean,Rage,Resolve,Tactics',
   'Gozreh':
     'Domain=Cloud,Decay,Growth,Oceans,Seasons,Wind',
   'Iomedae':
-    'Domain=Archon,Day,Heroism,Honor,Light,Tactics',
+    'Domain="Archon Good","Archon Law",Day,Heroism,Honor,Light,Tactics',
   'Irori':
     'Domain=Inevitable,Language,Memory,Restoration,Resolve,Thought',
   'Lamashtu':
-    'Domain=Deception,Demon,Ferocity,Insanity,Nightmare,Thievery',
+    'Domain=Deception,"Demon Chaos","Demon Evil",Ferocity,Insanity,Nightmare,Thievery',
   'Nethys':
     'Domain=Arcane,Catastrophe,Divine,Defense,Thought,Wards',
   'Norgorber':
@@ -4287,17 +4287,17 @@ PFAPG.DEITIES = {
   'Pharasma':
     'Domain=Ancestors,Ice,Memory,Murder,Thievery,Thought',
   'Rovagug':
-    'Domain=Blood,Catastrophe,Demon,Protean,Rage,Storms',
+    'Domain=Blood,Catastrophe,"Demon Chaos","Demon Evil",Protean,Rage,Storms',
   'Sarenrae':
     'Domain=Agathion,Day,Heroism,Light,Restoration,Resurrection',
   'Shelyn':
     'Domain=Agathion,Cloud,Defense,Fate,Love,Purity',
   'Torag':
-    'Domain=Archon,Caves,Construct,Defense,Metal,Toil',
+    'Domain="Archon Good","Archon Law",Caves,Construct,Defense,Metal,Toil',
   'Urgathoa':
     'Domain=Blood,Daemon,Divine,Ferocity,Murder,Undead',
   'Zon-Kuthon':
-    'Domain=Catastrophe,Devil,Loss,Murder,Night,Undead'
+    'Domain=Catastrophe,"Devil Evil","Devil Law",Loss,Murder,Night,Undead'
 };
 
 /* Defines rules related to animal companions and familiars. */
@@ -4386,12 +4386,18 @@ PFAPG.talentRules = function(
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Cleric') {
-    rules.defineRule('featureNotes.rage(Cleric).1',
+    rules.defineRule('combatNotes.rage(Cleric).1',
       'features.Rage (Cleric)', '?', null,
       'levels.Cleric', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
     );
     rules.defineRule
-      ('featureNotes.ragePowers', 'featureNotes.rage(Cleric).1', '+=', null);
+      ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
+    rules.defineRule('features.Rage Powers',
+      'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
+    );
+    rules.defineRule('skillNotes.eyesOfTheHawk',
+      'levels.Cleric', '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
