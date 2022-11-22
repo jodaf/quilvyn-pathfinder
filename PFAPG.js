@@ -515,54 +515,136 @@ PFAPG.FEATS = {
 };
 PFAPG.FEATURES = {
   // Existing base class options
-  'Beast Totem':'Section=feature Note="FILL"',
-  'Greater Beast Totem':'Section=feature Note="FILL"',
-  'Lesser Beast Totem':'Section=feature Note="FILL"',
-  'Boasting Taunt':'Section=feature Note="FILL"',
-  'Brawler':'Section=feature Note="FILL"',
-  'Greater Brawler':'Section=feature Note="FILL"',
-  'Chaos Totem':'Section=feature Note="FILL"',
-  'Greater Chaos Totem':'Section=feature Note="FILL"',
-  'Lesser Chaos Totem':'Section=feature Note="FILL"',
-  'Come And Get Me':'Section=feature Note="FILL"',
-  'Disruptive':'Section=feature Note="FILL"',
-  'Elemental Rage':'Section=feature Note="FILL"',
-  'Greater Elemental Rage':'Section=feature Note="FILL"',
-  'Lesser Elemental Rage':'Section=feature Note="FILL"',
-  'Energy Absorption':'Section=feature Note="FILL"',
-  'Energy Eruption':'Section=feature Note="FILL"',
-  'Energy Resistance':'Section=feature Note="FILL"',
-  'Greater Energy Resistance':'Section=feature Note="FILL"',
-  'Ferocious Mount':'Section=feature Note="FILL"',
-  'Greater Ferocious Mount':'Section=feature Note="FILL"',
-  'Ferocious Trample':'Section=feature Note="FILL"',
-  'Greater Ferocious Trample':'Section=feature Note="FILL"',
-  'Fiend Totem':'Section=feature Note="FILL"',
-  'Greater Fiend Totem':'Section=feature Note="FILL"',
-  'Lesser Fiend Totem':'Section=feature Note="FILL"',
-  'Flesh Wound':'Section=feature Note="FILL"',
-  'Good For What Ails You':'Section=feature Note="FILL"',
-  'Ground Breaker':'Section=feature Note="FILL"',
-  'Guarded Life':'Section=feature Note="FILL"',
-  'Hurling':'Section=feature Note="FILL"',
-  'Greater Hurling':'Section=feature Note="FILL"',
-  'Lesser Hurling':'Section=feature Note="FILL"',
-  'Hurling Charge':'Section=feature Note="FILL"',
-  'Inspire Ferocity':'Section=feature Note="FILL"',
-  'Knockdown':'Section=feature Note="FILL"',
-  'Liquid Courage':'Section=feature Note="FILL"',
-  'Overbearing Advance':'Section=feature Note="FILL"',
-  'Overbearing Onslaught':'Section=feature Note="FILL"',
-  'Reckless Abandon':'Section=feature Note="FILL"',
-  'Roaring Drunk':'Section=feature Note="FILL"',
-  'Smasher':'Section=feature Note="FILL"',
-  'Spellbreaker':'Section=feature Note="FILL"',
-  'Spirit Steed':'Section=feature Note="FILL"',
-  'Spirit Totem':'Section=feature Note="FILL"',
-  'Greater Spirit Totem':'Section=feature Note="FILL"',
-  'Lesser Spirit Totem':'Section=feature Note="FILL"',
-  'Staggering Drunk':'Section=feature Note="FILL"',
-  'Witch Hunter':'Section=feature Note="FILL"',
+  'Beast Totem':
+   'Section=combat Note="+%{levels.Barbarian//4+1} AC during rage"',
+  'Greater Beast Totem':
+    'Section=combat ' +
+    'Note="May make full attack at the end of a charge, increased Lesser Beast Totem effects"',
+  'Lesser Beast Totem':
+    'Section=combat ' +
+    'Note="Claws inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
+  'Boasting Taunt':
+    'Section=combat ' +
+    'Note="Successful Intimidate shakes target until attacks self"',
+  'Brawler':
+    'Section=combat Note="Has Improved Unarmed Strike features during rage"',
+  'Greater Brawler':
+    'Section=combat ' +
+    'Note="Has Two-Weapon Fighting features for unarmed attacks during rage"',
+  'Chaos Totem':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"25% chance to ignore critical hit and sneak attack damage during rage",' +
+      '"+4 Escape Artist during rage"',
+  'Greater Chaos Totem':
+    'Section=combat ' +
+    'Note="DR %{levels.Barbarian//2}/lawful and weapons are chaotic during rage"',
+  'Lesser Chaos Totem':
+    'Section=combat ' +
+    'Note="+V AC vs. lawful foe, +V saves vs. confusion, insanity, polymorph, and lawful effects during rage"',
+  'Come And Get Me':
+    'Section=combat ' +
+    'Note="May trade +4 foe attack and damage for AOO after every foe attack during rage"',
+  'Elemental Rage':
+    'Section=combat Note="Attacks do +1d6 energy damage during rage"',
+  'Greater Elemental Rage':
+   'Section=combat ' +
+   'Note="Critical hits do +1d10 or better energy damage during rage"',
+  'Lesser Elemental Rage':
+    'Section=combat Note="Attacks do +1d6 energy damage 1/rage"',
+  'Energy Absorption':
+    'Section=combat ' +
+    'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
+  'Energy Eruption':
+    'Section=combat ' +
+    'Note="May convert energy damage to self to breath attack of equal HP (DC %{10+levels.Barbarian//2+constitutionModifier} half) 1/rage"',
+  'Energy Resistance':
+    'Section=save ' +
+    'Note="Resistance %{levels.Barbarian//2>?1} to chosen energy during rage"',
+  'Greater Energy Resistance':
+    'Section=combat Note="Chosen energy attack does half damage 1/rage"',
+  'Ferocious Mount':
+    'Section=combat Note="May give mount rage benefits during rage"',
+  'Greater Ferocious Mount':
+    'Section=combat Note="May give mount rage power benefits during rage"',
+  'Ferocious Trample':
+    'Section=combat ' +
+    'Note="Mount trample inflicts 1d8+strength (L/H mount 2d6/2d8, Ref half) during rage"',
+  'Greater Ferocious Trample':
+    'Section=combat ' +
+    'Note="Mount may trample targets of same size and overrun during rage"',
+  'Fiend Totem':
+    'Section=combat ' +
+    'Note="Successful foe unarmed or natural weapon attack inflicts 1d6 HP on attacker during rage"',
+  'Greater Fiend Totem':
+    'Section=combat ' +
+    'Note="Adjacent good creatures suffer 2d6 HP and shaken, neutral creatures shaken"',
+  'Lesser Fiend Totem':
+    'Section=combat ' +
+    'Note="Gore attack inflicts 1d{features.Small ? 6 : 8} during rage"',
+  'Flesh Wound':
+    'Section=combat ' +
+    'Note="Successful DC damge Fort reduces damage to half nonlethal 1/rage"',
+  'Good For What Ails You':
+    'Section=combat Note="Alcohol gives save vs. condition during rage"',
+  'Ground Breaker':
+    'Section=combat ' +
+    'Note="May knock prone adjacent creatures (DC 15 Ref neg) and create difficult terrain 1/rage"',
+  'Guarded Life':
+    'Section=combat ' +
+    'Note="%{levels.Barbarian} HP damage converted to nonlethal when taken to negative HP and automatically stabilizes during rage"',
+  'Hurling':
+    'Section=combat Note="May hurl 20\' or +1 size objects during rage"',
+  'Greater Hurling':
+    'Section=combat Note="May hurl 30\' or +2 size objects during rage"',
+  'Lesser Hurling':
+    'Section=combat ' +
+    'Note="R10\' Thrown object inflicts 1d6+%{strengthModifier} or more during rage"',
+  'Hurling Charge':
+    'Section=combat ' +
+    'Note="May make +2 thrown attack while charging during rage"',
+  'Inspire Ferocity':
+    'Section=combat ' +
+    'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd"',
+  'Knockdown':
+    'Section=combat ' +
+    'Note="May make trip attack w/out AOO that inflicts %{strengthModifier} HP and knocks prone 1/rage"',
+  'Liquid Courage':
+    'Section=save ' +
+    'Note="Alcohol gives up to +%{levels.Barbarian//4} vs. mind-affecting effects during rage"',
+  'Overbearing Advance':
+    'Section=combat ' +
+    'Note="Successful overrun inflicts %{strengthModifier} HP during rage"',
+  'Overbearing Onslaught':
+    'Section=combat Note="May make additional -2 overruns during rage"',
+  'Reckless Abandon':
+    'Section=combat ' +
+    'Note="May trade up to -%{levels.Barbarian//4+1} AC for equal attack bonus during rage"',
+  'Roaring Drunk':
+    'Section=save,skill ' +
+    'Note=' +
+      '"Alcohol gives up to +%{levels.Barbarian//4} vs. fear during rage",' +
+      '"Alcohol gives up to +%{levels.Barbarian//4} Intimidate during rage"',
+  'Smasher':
+    'Section=combat Note="May have attack ignore object hardness 1/rage"',
+  'Spirit Steed':
+    'Section=combat ' +
+    'Note="Mount gains DR %{levels.Barbarian//2}/magic during rage"',
+  'Spirit Totem':
+    'Section=combat ' +
+    'Note="Spirits give 20% miss chance vs. ranged and non-adjacent attacks during rage"',
+  'Greater Spirit Totem':
+    'Section=combat ' +
+    'Note="Spirits inflict 1d8 HP on adjacent foes, may attack 15\' away for 1d6 HP during rage"',
+  'Lesser Spirit Totem':
+    'Section=combat ' +
+    'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP 1/rd during rage"',
+  'Staggering Drunk':
+    'Section=combat ' +
+    'Note="Alcohol gives up to +%{levels.Barbarian//4} HP vs. AOO during rage"',
+  'Witch Hunter':
+    'Section=combat ' +
+    'Note="Gives +%{levels.Barbarian//4+1} damage vs. spell users"',
 
   'Protective Aura':
     'Section=magic ' +
@@ -4385,7 +4467,22 @@ PFAPG.talentRules = function(
  */
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
-  if(name == 'Cleric') {
+  if(name == 'Barbarian') {
+    rules.defineRule('combatNotes.lesserBeastTotem',
+      '', '=', '6',
+      'features.Small', '+', '-2',
+      'features.Greater Beast Totem', '+', '2'
+    );
+    rules.defineRule('combatNotes.lesserBeastTotem.1',
+      '', '=', '2',
+      'features.Greater Beast Totem', '+', '1'
+    );
+    rules.defineRule('combatNotes.lesserChaosTotem',
+      '', '=', '1',
+      'features.Chaos Totem', '+', '1',
+      'features.Greater Chaos Totem', '+', '1'
+    );
+  } else if(name == 'Cleric') {
     rules.defineRule('combatNotes.rage(Cleric).1',
       'features.Rage (Cleric)', '?', null,
       'levels.Cleric', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
