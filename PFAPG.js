@@ -645,6 +645,44 @@ PFAPG.FEATURES = {
   'Witch Hunter':
     'Section=combat ' +
     'Note="Gives +%{levels.Barbarian//4+1} damage vs. spell users"',
+  'Destructive':
+    'Section=combat ' +
+    'Note="+%{levels.Barbarian} damage vs. objects or with sunder"',
+  'Battle Scavenger':
+    'Section=combat ' +
+    'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
+  'Savage Grapple"':
+   'Section=combat ' +
+   'Note="%V grappled penalties/Always has AOO vs. grapple, success gives +2 vs. grapple "',
+  'Pit Fighter':
+    'Section=combat ' +
+    'Note="+%{armor==\'None\' ? 2 : 1} on %{(levels.Barbarian-3)//3} combat maneuvers"',
+  'Improved Savage Grapple':
+    'Section=combat Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
+  'Raging Drunk':
+    'Section=combat ' +
+    'Note="May drink alcohol or potion w/out AOO during rage/Alchohol extends rage 1 rd"',
+  'Elemental Fury':
+    'Section=combat ' +
+    'Note="Taking %{levels.Barbarian} HP energy damage adds %{levels.Barbarian//3} to daily rage rds"',
+  'Skilled Thrower':
+    'Section=combat Note="+10\' range for thrown weapons and objects"',
+  'Invulnerability':
+    'Section=combat Note="DR %{levels.Barbarian//2}/-, dbl nonlethal"',
+  'Extreme Endurance':
+    'Section=save ' +
+    'Note="Inured to choice of hot or cold climate/Resistance %{(levels.Barbarian-3)//3} to choice of fire or cold"',
+  'Fast Ride':'Section=feature Note="+5\' Mount speed"',
+  'Bestial Mount':'Section=feature Note="Has Animal Companion features"',
+  'Naked Courage':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC in no armor",' +
+      '"+%{(levels.Barbarian+3)//6} saves vs. fear in no armor"',
+  'Natural Toughness':'Section=combat Note="+V AC in no armor"',
+  'Sixth Sense':'Section=combat Note="+%V Initiative/+V AC during surprise rd"',
+  'Keen Senses (Barbarian)':
+    'Section=feature Note="Has Low-Light Vision%1 features"',
 
   'Protective Aura':
     'Section=magic ' +
@@ -2157,6 +2195,59 @@ PFAPG.FEATURES = {
 PFAPG.LANGUAGES = {
 };
 PFAPG.PATHS = {
+
+  'Breaker':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '1:Destructive,"3:Battle Scavenger"',
+  'Brutal Pugilist':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"2:Savage Grapple","3:Pit Fighter","5:Improved Savage Grapple"',
+  'Drunken Brute':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"1:Raging Drunk"',
+  'Elemental Kin':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"3:Elemental Fury"',
+  'Hurler':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"1:Skilled Thrower"',
+  'Invulnerable Rager':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '2:Invulnerability,"3:Extreme Endurance"',
+  'Mounted Fury':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"1:Fast Ride","5:Bestial Mount"',
+  'Savage Barbarian':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"3:Naked Courage","7:Natural Toughness"',
+  'Standard Barbarian':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian',
+  'Superstitious':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian ' +
+    'Features=' +
+      '"3:Sixth Sense","7:Keen Senses (Barbarian)"',
+  'Totem Warrior':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian',
+
   'Agathion Subdomain':
     Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Protective Aura'),
   'Ancestors Subdomain':
@@ -2556,6 +2647,7 @@ PFAPG.PATHS = {
       '"1:Vortex Spells:Wind Revelation",' +
       '"1:Wind Sight:Wind Revelation",' +
       '"7:Wings Of Air:Wind Revelation"'
+
 };
 PFAPG.RACES = {
 };
@@ -4073,7 +4165,18 @@ PFAPG.CLASSES = {
       '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
       '"2:Lesser Spirit Totem",' +
       '"2:Staggering Drunk",' +
-      '"features.Superstition ? 2:Witch Hunter"',
+      '"features.Superstition ? 2:Witch Hunter",' +
+      '"1:Breaker:Archetype",' +
+      '"1:Brutal Pugilist:Archetype",' +
+      '"1:Drunken Brute:Archetype",' +
+      '"1:Elemental Kin:Archetype",' +
+      '"1:Hurler:Archetype",' +
+      '"1:Invulnerable Rager:Archetype",' +
+      '"1:Mounted Fury:Archetype",' +
+      '"1:Savage Barbarian:Archetype",' +
+      '"1:Standard Barbarian:Archetype",' +
+      '"1:Superstitious:Archetype",' +
+      '"1:Totem Warrior:Archetype"',
   'Cleric':
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
@@ -4468,12 +4571,48 @@ PFAPG.talentRules = function(
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Barbarian') {
+    rules.defineRule('armorClass',
+      'combatNotes.nakedCourage.1', '+', null,
+      'combatNotes.naturalToughness.1', '+', null
+    );
+    rules.defineRule('barbarianFeatures.Damage Reduction',
+      'barbarianFeatures.Invulnerability', '=', '0',
+      'barbarianFeatures.Keen Senses (Barbarian)', '=', '0',
+      'barbarianFeatures.Natural Toughness', '=', '0'
+    );
+    rules.defineRule('barbarianFeatures.Fast Movement',
+      'barbarianFeatures.Destructive', '=', '0',
+      'barbarianFeatures.Fast Rider', '=', '0',
+      'barbarianFeatures.Raging Drunk', '=', '0',
+      'barbarianFeatures.Skilled Thrower', '=', '0'
+    );
+    rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
+      'barbarianFeatures.Bestial Mount', '=', '0',
+      'barbarianFeatures.Improved Savage Grapple', '=', '0',
+      'barbarianFeatures.Invulnerability', '=', '0'
+    );
+    rules.defineRule('barbarianFeatures.Trap Sense',
+      'barbarianFeatures.Battle Scavenger', '=', '0',
+      'barbarianFeatures.Elemental Fury', '=', '0',
+      'barbarianFeatures.Extreme Endurance', '=', '0',
+      'barbarianFeatures.Naked Courage', '=', '0',
+      'barbarianFeatures.Pit Fighter', '=', '0',
+      'barbarianFeatures.Sixth Sense', '=', '0'
+    );
+    rules.defineRule('barbarianFeatures.Uncanny Dodge',
+      'barbarianFeatures.Bestial Mount', '=', '0',
+      'barbarianFeatures.Invulnerability', '=', '0',
+      'barbarianFeatures.Savage Grapple', '=', '0'
+    );
+    rules.defineRule
+      ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule('combatNotes.lesserBeastTotem',
       '', '=', '6',
       'features.Small', '+', '-2',
       'features.Greater Beast Totem', '+', '2'
     );
     rules.defineRule('combatNotes.lesserBeastTotem.1',
+      'features.Lesser Beast Totem', '?', null,
       '', '=', '2',
       'features.Greater Beast Totem', '+', '1'
     );
@@ -4482,6 +4621,38 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Chaos Totem', '+', '1',
       'features.Greater Chaos Totem', '+', '1'
     );
+    rules.defineRule('combatNotes.nakedCourage',
+      classLevel, '=', 'Math.floor((source + 3) / 6)'
+    );
+    rules.defineRule('combatNotes.nakedCourage.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.nakedCourage', '=', null
+    );
+    rules.defineRule('combatNotes.naturalToughness',
+      classLevel, '=', 'Math.floor((source - 4) / 3)'
+    );
+    rules.defineRule('combatNotes.naturalToughness.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.naturalToughness', '=', null
+    );
+    rules.defineRule('combatNotes.savageGrapple',
+      '', '=', '"Half"',
+      'combatNotes.improvedSavageGrapple', '=', '"No"'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).1',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', '"" + (source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
+    );
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
+    rules.defineRule('companionBarbarianLevel',
+      'features.Bestial Mount', '?', null,
+      classLevel, '+=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
+    rules.defineRule
+      ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Cleric') {
     rules.defineRule('combatNotes.rage(Cleric).1',
       'features.Rage (Cleric)', '?', null,
@@ -4553,6 +4724,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'source==1 ? "Channel Energy" : source== 2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
     );
     rules.defineRule('magicNotes.calling.2',
+      'features.Calling', '?', null,
       'levels.Cleric', '=', '1',
       'levels.Paladin', '+=', '2'
     );
@@ -4591,6 +4763,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Slow', '+', '5'
     );
     rules.defineRule('abilityNotes.lame.1',
+      'features.Lame', '?', null,
       classLevel, '=', 'source>10 ? " or armor" : ""'
     );
     rules.defineRule('combatNotes.deaf',
@@ -4613,12 +4786,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('featureNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
     rules.defineRule('featureNotes.tongues.1',
+      'features.Tongues', '?', null,
       classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
     );
     rules.defineRule('featureNotes.weaponMastery',
       classLevel, '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
     );
     rules.defineRule('featureNotes.weaponMastery.1',
+      'features.Weapon Mastery', '?', null,
       classLevel, '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
     );
     rules.defineRule('features.Diehard',
@@ -4639,6 +4814,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
     );
     rules.defineRule('saveNotes.wasting.1',
+      'features.Wasting', '?', null,
       classLevel, '=', 'source>=5 ? "/Immune to sickened" + (source>=15 ? " and nauseated" : "") + " condition" : ""'
     );
     rules.defineRule('selectableFeatureCount.Oracle (Curse)',
@@ -4672,6 +4848,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
     );
     rules.defineRule('companionNotes.eidolonBite.1',
+      'features.Eidolon Bite', '?', null,
       'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
     );
     rules.defineRule('companionNotes.eidolonBreathWeapon(4)',
@@ -4679,6 +4856,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
     );
     rules.defineRule('companionNotes.eidolonBreathWeapon(4).1',
+      'features.Eidolon Breath Weapon (4)', '?', null,
       'summonerFeatures.Eidolon Breath Weapon', '=', 'source - 3'
     );
     rules.defineRule('companionNotes.eidolonClaws',
@@ -4709,6 +4887,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Eidolon Large(4)', '=', 'source>=10 ? "Huge" : "Large"'
     );
     rules.defineRule('companionNotes.eidolonLarge(4).1',
+      'features.Eidolon Large (4)', '?', null,
       'companionStats.Size', '+', 'source=="H" ? 16 : 8'
     );
     rules.defineRule('companionNotes.eidolonLarge(4).2',
@@ -4768,6 +4947,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
     );
     rules.defineRule('companionNotes.eidolonRend(2).1',
+      'features.Eidolon Rend (2)', '?', null,
       'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
     );
     rules.defineRule('companionNotes.eidolonSlam',
@@ -4797,6 +4977,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
     );
     rules.defineRule('companionNotes.eidolonTrample(2).1',
+      'features.Eidolon Trample (2)', '?', null,
       'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
     );
     rules.defineRule('companionNotes.eidolonTrample(2).2',
@@ -4804,6 +4985,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)'
     );
     rules.defineRule('companionNotes.eidolonWeaponTraining(2).1',
+      'features.Eidolon Weapon Training (2)', '?', null,
       'summonerFeatures.Eidolon Weapon Training', '=', 'source>=2 ? " and martial" : ""'
     );
     rules.defineRule('companionNotes.eidolonWeb(3)',
@@ -4873,6 +5055,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'intelligenceModifier', '+', null
     );
     rules.defineRule('magicNotes.flightHex.1',
+      'features.Flight Hex', '?', null,
       classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> %{levels.Witch} min/dy" : "")'
     );
     rules.defineRule
@@ -5011,6 +5194,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'dexterityModifier', '+', '-source'
     );
     rules.defineRule('magicNotes.whirlwindLesson.1',
+      'features.Whirlwind Lesson', '?', null,
       pathLevel, '=', 'source>=7 ? " and share with another " + (source>=15 ? source : 1) + " for %2 hr" : ""'
     );
     rules.defineRule
