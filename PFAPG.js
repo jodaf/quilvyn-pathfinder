@@ -4575,23 +4575,27 @@ PFAPG.classRulesExtra = function(rules, name) {
       'combatNotes.nakedCourage.1', '+', null,
       'combatNotes.naturalToughness.1', '+', null
     );
-    rules.defineRule('barbarianFeatures.Damage Reduction',
-      'barbarianFeatures.Invulnerability', '=', '0',
-      'barbarianFeatures.Keen Senses (Barbarian)', '=', '0',
-      'barbarianFeatures.Natural Toughness', '=', '0'
+    rules.defineRule('barbarianHasDamageReduction',
+      'levels.Barbarian', '=', '1',
+      'barbarianFeatures.Invulnerability', '+', '-1',
+      'barbarianFeatures.Keen Senses (Barbarian)', '+', '-1',
+      'barbarianFeatures.Natural Toughness', '+', '-1'
     );
-    rules.defineRule('barbarianFeatures.Fast Movement',
-      'barbarianFeatures.Destructive', '=', '0',
-      'barbarianFeatures.Fast Rider', '=', '0',
-      'barbarianFeatures.Raging Drunk', '=', '0',
-      'barbarianFeatures.Skilled Thrower', '=', '0'
+    rules.defineRule('barbarianHasFastMovement',
+      'levels.Barbarian', '=', '1',
+      'barbarianFeatures.Destructive', '+', '-1',
+      'barbarianFeatures.Fast Rider', '+', '-1',
+      'barbarianFeatures.Raging Drunk', '+', '-1',
+      'barbarianFeatures.Skilled Thrower', '+', '-1'
     );
-    rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
+    rules.defineRule('barbarianHasImprovedUncannyDodge',
+      'levels.Barbarian', '=', '1',
       'barbarianFeatures.Bestial Mount', '=', '0',
       'barbarianFeatures.Improved Savage Grapple', '=', '0',
       'barbarianFeatures.Invulnerability', '=', '0'
     );
-    rules.defineRule('barbarianFeatures.Trap Sense',
+    rules.defineRule('barbarianHasTrapSense',
+      'levels.Barbarian', '=', '1',
       'barbarianFeatures.Battle Scavenger', '=', '0',
       'barbarianFeatures.Elemental Fury', '=', '0',
       'barbarianFeatures.Extreme Endurance', '=', '0',
@@ -4599,10 +4603,26 @@ PFAPG.classRulesExtra = function(rules, name) {
       'barbarianFeatures.Pit Fighter', '=', '0',
       'barbarianFeatures.Sixth Sense', '=', '0'
     );
-    rules.defineRule('barbarianFeatures.Uncanny Dodge',
+    rules.defineRule('barbarianHasUncannyDodge',
+      'levels.Barbarian', '=', '1',
       'barbarianFeatures.Bestial Mount', '=', '0',
       'barbarianFeatures.Invulnerability', '=', '0',
       'barbarianFeatures.Savage Grapple', '=', '0'
+    );
+    rules.defineRule('barbarianFeatures.Damage Reduction',
+      'barbarianHasDamageReduction', '?', 'source == 1'
+    );
+    rules.defineRule('barbarianFeatures.Fast Movement',
+      'barbarianHasFastMovement', '?', 'source == 1'
+    );
+    rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
+      'barbarianHasImprovedUncannyDodge', '?', 'source == 1'
+    );
+    rules.defineRule('barbarianFeatures.Trap Sense',
+      'barbarianHasTrapSense', '?', 'source == 1'
+    );
+    rules.defineRule('barbarianFeatures.Uncanny Dodge',
+      'barbarianHasUncannyDodge', '?', 'source == 1'
     );
     rules.defineRule
       ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
