@@ -519,10 +519,10 @@ PFAPG.FEATURES = {
    'Section=combat Note="+%{levels.Barbarian//4+1} AC during rage"',
   'Greater Beast Totem':
     'Section=combat ' +
-    'Note="May make full attack at the end of a charge, increased Lesser Beast Totem effects"',
+    'Note="May make full attack at the end of a charge/Increased Lesser Beast Totem effects"',
   'Lesser Beast Totem':
     'Section=combat ' +
-    'Note="Claws inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
+    'Note="Two claw attacks inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
   'Boasting Taunt':
     'Section=combat ' +
     'Note="Successful Intimidate shakes target until attacks self"',
@@ -540,18 +540,20 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="DR %{levels.Barbarian//2}/lawful and weapons are chaotic during rage"',
   'Lesser Chaos Totem':
-    'Section=combat ' +
-    'Note="+V AC vs. lawful foe, +V saves vs. confusion, insanity, polymorph, and lawful effects during rage"',
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC vs. lawful foe during rage",' +
+      '"+%V save vs. confusion, insanity, polymorph, and lawful effects during rage"',
   'Come And Get Me':
     'Section=combat ' +
     'Note="May trade +4 foe attack and damage for AOO after every foe attack during rage"',
   'Elemental Rage':
-    'Section=combat Note="Attacks do +1d6 energy damage during rage"',
+    'Section=combat Note="Attacks do HP +1d6 energy damage during rage"',
   'Greater Elemental Rage':
    'Section=combat ' +
-   'Note="Critical hits do +1d10 or better energy damage during rage"',
+   'Note="Critical hits do +1d10 HP or better energy damage during rage"',
   'Lesser Elemental Rage':
-    'Section=combat Note="Attacks do +1d6 energy damage 1/rage"',
+    'Section=combat Note="Attacks do +1d6 HP energy damage for 1 rd 1/rage"',
   'Energy Absorption':
     'Section=combat ' +
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
@@ -578,28 +580,29 @@ PFAPG.FEATURES = {
     'Note="Successful foe unarmed or natural weapon attack inflicts 1d6 HP on attacker during rage"',
   'Greater Fiend Totem':
     'Section=combat ' +
-    'Note="Adjacent good creatures suffer 2d6 HP and shaken, neutral creatures shaken"',
+    'Note="Adjacent good creatures suffer 2d6 HP and shaken and neutral creatures shaken during range"',
   'Lesser Fiend Totem':
     'Section=combat ' +
-    'Note="Gore attack inflicts 1d{features.Small ? 6 : 8} during rage"',
+    'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}+%{strengthModifier} HP during rage"',
   'Flesh Wound':
     'Section=combat ' +
     'Note="Successful DC damge Fort reduces damage to half nonlethal 1/rage"',
   'Good For What Ails You':
-    'Section=combat Note="Alcohol gives save vs. condition during rage"',
+    'Section=combat ' +
+    'Note="Alcohol gives save vs. condition or poison during rage"',
   'Ground Breaker':
     'Section=combat ' +
     'Note="May knock prone adjacent creatures (DC 15 Ref neg) and create difficult terrain 1/rage"',
   'Guarded Life':
     'Section=combat ' +
-    'Note="%{levels.Barbarian} HP damage converted to nonlethal when taken to negative HP and automatically stabilizes during rage"',
+    'Note="%{levels.Barbarian} HP damage converted to nonlethal when taken to negative HP and stabilize automatically during rage"',
   'Hurling':
-    'Section=combat Note="May hurl 20\' or +1 size objects during rage"',
+    'Section=combat Note="May hurl +20\' or +1 size objects during rage"',
   'Greater Hurling':
-    'Section=combat Note="May hurl 30\' or +2 size objects during rage"',
+    'Section=combat Note="May hurl +30\' or +2 size objects during rage"',
   'Lesser Hurling':
     'Section=combat ' +
-    'Note="R10\' Thrown object inflicts 1d6+%{strengthModifier} or more during rage"',
+    'Note="R10\' Thrown %V object inflicts 1d6+%{strengthModifier} HP or more during rage"',
   'Hurling Charge':
     'Section=combat ' +
     'Note="May make +2 thrown attack while charging during rage"',
@@ -611,12 +614,12 @@ PFAPG.FEATURES = {
     'Note="May make trip attack w/out AOO that inflicts %{strengthModifier} HP and knocks prone 1/rage"',
   'Liquid Courage':
     'Section=save ' +
-    'Note="Alcohol gives up to +%{levels.Barbarian//4} vs. mind-affecting effects during rage"',
+    'Note="Alcohol gives up to +%{levels.Barbarian//4} save vs. mind-affecting effects during rage"',
   'Overbearing Advance':
     'Section=combat ' +
     'Note="Successful overrun inflicts %{strengthModifier} HP during rage"',
   'Overbearing Onslaught':
-    'Section=combat Note="May make additional -2 overruns during rage"',
+    'Section=combat Note="May make additional -2 CMB overruns during rage"',
   'Reckless Abandon':
     'Section=combat ' +
     'Note="May trade up to -%{levels.Barbarian//4+1} AC for equal attack bonus during rage"',
@@ -626,10 +629,10 @@ PFAPG.FEATURES = {
       '"Alcohol gives up to +%{levels.Barbarian//4} vs. fear during rage",' +
       '"Alcohol gives up to +%{levels.Barbarian//4} Intimidate during rage"',
   'Smasher':
-    'Section=combat Note="May have attack ignore object hardness 1/rage"',
+    'Section=combat Note="Attack ignores object hardness 1/rage"',
   'Spirit Steed':
     'Section=combat ' +
-    'Note="Mount gains DR %{levels.Barbarian//2}/magic during rage"',
+    'Note="Mount gains DR %{levels.Barbarian//2}/magic and magic natural weapons during rage"',
   'Spirit Totem':
     'Section=combat ' +
     'Note="Spirits give 20% miss chance vs. ranged and non-adjacent attacks during rage"',
@@ -641,7 +644,7 @@ PFAPG.FEATURES = {
     'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP 1/rd during rage"',
   'Staggering Drunk':
     'Section=combat ' +
-    'Note="Alcohol gives up to +%{levels.Barbarian//4} HP vs. AOO during rage"',
+    'Note="Alcohol gives up to +%{levels.Barbarian//4} AC vs. AOO during rage"',
   'Witch Hunter':
     'Section=combat ' +
     'Note="Gives +%{levels.Barbarian//4+1} damage vs. spell users"',
@@ -678,7 +681,7 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"+%V AC in no armor",' +
-      '"+%{(levels.Barbarian+3)//6} saves vs. fear in no armor"',
+      '"+%{(levels.Barbarian+3)//6} save vs. fear in no armor"',
   'Natural Toughness':'Section=combat Note="+V AC in no armor"',
   'Sixth Sense':'Section=combat Note="+%V Initiative/+V AC during surprise rd"',
   'Keen Senses (Barbarian)':
@@ -718,7 +721,7 @@ PFAPG.FEATURES = {
     'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
   'Malign Eye':
     'Section=magic ' +
-    'Note="R30\' Inflicts -2 saves vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
+    'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
   'Whispering Evil':
     'Section=magic ' +
     'Note="30\' radius fascinates foes (Will neg) %{levels.Cleric} rd/dy"',
@@ -816,7 +819,7 @@ PFAPG.FEATURES = {
     'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Fearful Touch':
     'Section=combat ' +
-    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} saves vs. fear for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
   'Surge':
     'Section=feature ' +
     'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
@@ -1254,7 +1257,7 @@ PFAPG.FEATURES = {
     'Note="May move full speed across liquid without contact damage%1"',
   'Focused Trance':
     'Section=skill ' +
-    'Note="Trance of 1d6 rd gives +%{levels.Oracle} saves vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
+    'Note="Trance of 1d6 rd gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
   'For The Faith':
     'Section=combat ' +
     'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
@@ -4159,7 +4162,7 @@ PFAPG.CLASSES = {
       '"2:Reckless Abandon",' +
       '"2:Roaring Drunk",' +
       '2:Smasher,' +
-      '"features.Disruptive Rage ? 12:Spellbreaker",' +
+      '"features.Disruptive ? 12:Spellbreaker",' +
       '"features.Ferocious Mount ? 6:Spirit Steed",' +
       '"features.Lesser Spirit Totem ? 6:Spirit Totem",' +
       '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
@@ -4624,6 +4627,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('barbarianFeatures.Uncanny Dodge',
       'barbarianHasUncannyDodge', '?', 'source == 1'
     );
+    rules.defineRule('combatNotes.lesserHurling',
+      'combatNotes.lesserHurling.1', '=', '["Tiny", "Small", "Medium", "Large", "Huge"][source]'
+    );
+    rules.defineRule('combatNotes.lesserHurling.1',
+      'features.Lesser Hurling', '=', '1',
+      'features.Small', '+', '-1',
+      'features.Large', '+', '1',
+      'combatNotes.hurling', '+', '1',
+      'combatNotes.greaterHurling', '+', '1'
+    );
     rules.defineRule
       ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule('combatNotes.lesserBeastTotem',
@@ -4682,6 +4695,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
     rules.defineRule('features.Rage Powers',
       'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
+    );
+    rules.defineRule('saveNotes.lesserChaosTotem',
+      '', '=', '1',
+      'features.Chaos Totem', '+', '1',
+      'features.Greater Chaos Totem', '+', '1'
     );
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'levels.Cleric', '=', 'Math.max(Math.floor(source / 2), 1)'
