@@ -5060,6 +5060,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   if(name == 'Barbarian') {
 
+    rules.defineRule('ragePowerLevel', 'levels.Barbarian', '=', null);
     rules.defineRule
       ('abilityNotes.fastMovement', 'levels.Barbarian', '+=', '10');
     rules.defineRule('combatNotes.animalFury',
@@ -5088,7 +5089,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Increased Damage Reduction', '=', null
     );
     rules.defineRule('combatNotes.guardedStance',
-      'levels.Barbarian', '=', '1 + Math.floor(source / 6)'
+      'ragePowerLevel', '=', '1 + Math.floor(source / 6)'
     );
     rules.defineRule('combatNotes.guardedStance.1',
       'features.Guarded Stance', '?', null,
@@ -5106,14 +5107,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Mighty Rage', '+', '1'
     );
     rules.defineRule('combatNotes.powerfulBlow',
-      'levels.Barbarian', '=', '1 + Math.floor(source / 4)'
+      'ragePowerLevel', '=', '1 + Math.floor(source / 4)'
     );
     rules.defineRule('combatNotes.rage',
       'constitutionModifier', '=', '4 + source',
       'levels.Barbarian', '+', '(source - 1) * 2'
     );
     rules.defineRule('combatNotes.rollingDodge',
-      'levels.Barbarian', '=', '1 + Math.floor(source / 6)'
+      'ragePowerLevel', '=', '1 + Math.floor(source / 6)'
     );
     rules.defineRule('combatNotes.rollingDodge.1',
       'features.Rolling Dodge', '?', null,
@@ -5125,13 +5126,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Greater Rage', '+', '1',
       'features.Mighty Rage', '+', '1'
     );
-    rules.defineRule
-      ('combatNotes.strengthSurge', 'levels.Barbarian', '=', null);
+    rules.defineRule('combatNotes.strengthSurge', 'ragePowerLevel', '=', null);
     rules.defineRule('combatNotes.surpriseAccuracy',
-      'levels.Barbarian', '=', '1 + Math.floor(source / 4)'
+      'ragePowerLevel', '=', '1 + Math.floor(source / 4)'
     );
     rules.defineRule('combatNotes.terrifyingHowl',
-      'levels.Barbarian', '=', '10 + Math.floor(source / 2)',
+      'ragePowerLevel', '=', '10 + Math.floor(source / 2)',
       'strengthModifier', '+', 'source + 2',
       'features.Greater Rage', '+', '1',
       'features.Mighty Rage', '+', '1'
@@ -5142,7 +5142,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Barbarian', '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.renewedVigor',
-      'levels.Barbarian', '=', 'Math.floor(source / 4)'
+      'ragePowerLevel', '=', 'Math.floor(source / 4)'
     );
     rules.defineRule('magicNotes.renewedVigor.1',
       'features.Renewed Vigor', '?', null,
@@ -5154,14 +5154,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'featureNotes.ragePowers', '+=', null
     );
     rules.defineRule('saveNotes.superstition',
-      'levels.Barbarian', '=', '2 + Math.floor(source / 4)'
+      'ragePowerLevel', '=', '2 + Math.floor(source / 4)'
     );
     rules.defineRule('saveNotes.trapSense',
       'levels.Barbarian', '+=', 'Math.floor(source / 3)'
     );
-    rules.defineRule('skillNotes.ragingClimber', 'levels.Barbarian', '=', null);
-    rules.defineRule('skillNotes.ragingLeaper', 'levels.Barbarian', '=', null);
-    rules.defineRule('skillNotes.ragingSwimmer', 'levels.Barbarian', '=', null);
+    rules.defineRule('skillNotes.ragingClimber', 'ragePowerLevel', '=', null);
+    rules.defineRule('skillNotes.ragingLeaper', 'ragePowerLevel', '=', null);
+    rules.defineRule('skillNotes.ragingSwimmer', 'ragePowerLevel', '=', null);
     rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
       'barbarianFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source>=2 ? 1 : null'
@@ -5924,7 +5924,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.improvedReaction',
       'levels.Duelist', '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
     );
-    rules.defineRule('combatNotes.preciseStrike', 'levels.Duelist', '=', null);
+    rules.defineRule('combatNotes.preciseStrike(Duelist)', 'levels.Duelist', '=', null);
     rules.defineRule('initiative', 'combatNotes.improvedReaction', '+', null);
     rules.defineRule('save.Reflex', 'saveNotes.grace.1', '+', '2');
     rules.defineRule('saveNotes.grace.1',
