@@ -516,7 +516,7 @@ PFAPG.FEATS = {
 PFAPG.FEATURES = {
   // Existing base class options
   'Beast Totem':
-   'Section=combat Note="+%{levels.Barbarian//4+1} AC during rage"',
+   'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
   'Greater Beast Totem':
     'Section=combat ' +
     'Note="May make full attack at the end of a charge/Increased Lesser Beast Totem effects"',
@@ -538,7 +538,7 @@ PFAPG.FEATURES = {
       '"+4 Escape Artist during rage"',
   'Greater Chaos Totem':
     'Section=combat ' +
-    'Note="DR %{levels.Barbarian//2}/lawful and weapons are chaotic during rage"',
+    'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
   'Lesser Chaos Totem':
     'Section=combat,save ' +
     'Note=' +
@@ -559,10 +559,10 @@ PFAPG.FEATURES = {
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
   'Energy Eruption':
     'Section=combat ' +
-    'Note="May convert energy damage to self to breath attack of equal HP (DC %{10+levels.Barbarian//2+constitutionModifier} half) 1/rage"',
+    'Note="May convert energy damage to self to breath attack of equal HP (DC %{10+ragePowerLevel//2+constitutionModifier} half) 1/rage"',
   'Energy Resistance':
     'Section=save ' +
-    'Note="Resistance %{levels.Barbarian//2>?1} to chosen energy during rage"',
+    'Note="Resistance %{ragePowerLevel//2>?1} to chosen energy during rage"',
   'Greater Energy Resistance':
     'Section=combat Note="Chosen energy attack does half damage 1/rage"',
   'Ferocious Mount':
@@ -595,7 +595,7 @@ PFAPG.FEATURES = {
     'Note="May knock prone adjacent creatures (DC 15 Ref neg) and create difficult terrain 1/rage"',
   'Guarded Life':
     'Section=combat ' +
-    'Note="%{levels.Barbarian} HP damage converted to nonlethal when taken to negative HP and stabilize automatically during rage"',
+    'Note="%{ragePowerLevel} HP damage converted to nonlethal when taken to negative HP and stabilize automatically during rage"',
   'Hurling':
     'Section=combat Note="May hurl +20\' or +1 size objects during rage"',
   'Greater Hurling':
@@ -614,7 +614,7 @@ PFAPG.FEATURES = {
     'Note="May make trip attack w/out AOO that inflicts %{strengthModifier} HP and knocks prone 1/rage"',
   'Liquid Courage':
     'Section=save ' +
-    'Note="Alcohol gives up to +%{levels.Barbarian//4} save vs. mind-affecting effects during rage"',
+    'Note="Alcohol gives up to +%{ragePowerLevel//4} save vs. mind-affecting effects during rage"',
   'Overbearing Advance':
     'Section=combat ' +
     'Note="Successful overrun inflicts %{strengthModifier} HP during rage"',
@@ -622,17 +622,17 @@ PFAPG.FEATURES = {
     'Section=combat Note="May make additional -2 CMB overruns during rage"',
   'Reckless Abandon':
     'Section=combat ' +
-    'Note="May trade up to -%{levels.Barbarian//4+1} AC for equal attack bonus during rage"',
+    'Note="May trade up to -%{ragePowerLevel//4+1} AC for equal attack bonus during rage"',
   'Roaring Drunk':
     'Section=save,skill ' +
     'Note=' +
-      '"Alcohol gives up to +%{levels.Barbarian//4} vs. fear during rage",' +
-      '"Alcohol gives up to +%{levels.Barbarian//4} Intimidate during rage"',
+      '"Alcohol gives up to +%{ragePowerLevel//4} vs. fear during rage",' +
+      '"Alcohol gives up to +%{ragePowerLevel//4} Intimidate during rage"',
   'Smasher':
     'Section=combat Note="Attack ignores object hardness 1/rage"',
   'Spirit Steed':
     'Section=combat ' +
-    'Note="Mount gains DR %{levels.Barbarian//2}/magic and magic natural weapons during rage"',
+    'Note="Mount gains DR %{ragePowerLevel//2}/magic and magic natural weapons during rage"',
   'Spirit Totem':
     'Section=combat ' +
     'Note="Spirits give 20% miss chance vs. ranged and non-adjacent attacks during rage"',
@@ -644,48 +644,51 @@ PFAPG.FEATURES = {
     'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP 1/rd during rage"',
   'Staggering Drunk':
     'Section=combat ' +
-    'Note="Alcohol gives up to +%{levels.Barbarian//4} AC vs. AOO during rage"',
+    'Note="Alcohol gives up to +%{ragePowerLevel//4} AC vs. AOO during rage"',
   'Witch Hunter':
     'Section=combat ' +
-    'Note="Gives +%{levels.Barbarian//4+1} damage vs. spell users"',
+    'Note="Gives +%{ragePowerLevel//4+1} damage vs. spell users"',
   'Destructive':
     'Section=combat ' +
-    'Note="+%{levels.Barbarian} damage vs. objects or with sunder"',
+    'Note="+%{levels.Barbarian//2>?1} damage vs. objects or with sunder"',
   'Battle Scavenger':
     'Section=combat ' +
     'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
-  'Savage Grapple"':
+  'Savage Grapple':
    'Section=combat ' +
-   'Note="%V grappled penalties/Always has AOO vs. grapple, success gives +2 vs. grapple "',
+   'Note="%V grappled penalties/Always has AOO vs. grapple, success gives +2 vs. grapple"',
   'Pit Fighter':
     'Section=combat ' +
-    'Note="+%{armor==\'None\' ? 2 : 1} on %{(levels.Barbarian-3)//3} combat maneuvers"',
+    'Note="+%{armor==\'None\' ? 2 : 1} on CMB or CMD of %{(levels.Barbarian-3)//3} combat maneuvers"',
   'Improved Savage Grapple':
-    'Section=combat Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
+    'Section=combat ' +
+    'Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
   'Raging Drunk':
     'Section=combat ' +
-    'Note="May drink alcohol or potion w/out AOO during rage/Alchohol extends rage 1 rd"',
+    'Note="May drink alcohol or potion w/out AOO during rage/Alcohol extends rage 1 rd"',
   'Elemental Fury':
     'Section=combat ' +
     'Note="Taking %{levels.Barbarian} HP energy damage adds %{levels.Barbarian//3} to daily rage rds"',
   'Skilled Thrower':
     'Section=combat Note="+10\' range for thrown weapons and objects"',
-  'Invulnerability':
-    'Section=combat Note="DR %{levels.Barbarian//2}/-, dbl nonlethal"',
+  'Invulnerability':'Section=combat Note="DR %V/-, dbl nonlethal"',
   'Extreme Endurance':
     'Section=save ' +
     'Note="Inured to choice of hot or cold climate/Resistance %{(levels.Barbarian-3)//3} to choice of fire or cold"',
-  'Fast Ride':'Section=feature Note="+5\' Mount speed"',
+  'Fast Rider':'Section=feature Note="+10\' Mount speed"',
   'Bestial Mount':'Section=feature Note="Has Animal Companion features"',
   'Naked Courage':
     'Section=combat,save ' +
     'Note=' +
       '"+%V AC in no armor",' +
       '"+%{(levels.Barbarian+3)//6} save vs. fear in no armor"',
-  'Natural Toughness':'Section=combat Note="+V AC in no armor"',
-  'Sixth Sense':'Section=combat Note="+%V Initiative/+V AC during surprise rd"',
+  'Natural Toughness':'Section=combat Note="+%V AC in no armor"',
+  'Sixth Sense':
+    'Section=combat Note="+%V Initiative/+%V AC during surprise rd"',
   'Keen Senses (Barbarian)':
     'Section=feature Note="Has Low-Light Vision%1 features"',
+  'Blindsight':
+    'Section=feature Note="Can locate invisible creatures w/in line of sight"',
 
   'Protective Aura':
     'Section=magic ' +
@@ -1206,11 +1209,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spell w/out cost"',
   'Final Revelation (Heavens Mystery)':
-    'Section=combat,feature,save ' +
+    'Section=combat,save ' +
     'Note=' +
       '"Automatically stabilize at negative HP/Critical hits automatically confirmed",' +
-      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear",' +
-      '""',
+      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
   'Final Revelation (Life Mystery)':
     'Section=combat,save ' +
     'Note=' +
@@ -2209,6 +2211,9 @@ PFAPG.PATHS = {
     'Level=levels.Barbarian ' +
     'Features=' +
       '"2:Savage Grapple","3:Pit Fighter","5:Improved Savage Grapple"',
+  'Core Barbarian':
+    'Group=Barbarian ' +
+    'Level=levels.Barbarian',
   'Drunken Brute':
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
@@ -2233,15 +2238,12 @@ PFAPG.PATHS = {
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
     'Features=' +
-      '"1:Fast Ride","5:Bestial Mount"',
+      '"1:Fast Rider","5:Bestial Mount"',
   'Savage Barbarian':
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
     'Features=' +
       '"3:Naked Courage","7:Natural Toughness"',
-  'Standard Barbarian':
-    'Group=Barbarian ' +
-    'Level=levels.Barbarian',
   'Superstitious':
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
@@ -4171,13 +4173,13 @@ PFAPG.CLASSES = {
       '"features.Superstition ? 2:Witch Hunter",' +
       '"1:Breaker:Archetype",' +
       '"1:Brutal Pugilist:Archetype",' +
+      '"1:Core Barbarian:Archetype",' +
       '"1:Drunken Brute:Archetype",' +
       '"1:Elemental Kin:Archetype",' +
       '"1:Hurler:Archetype",' +
       '"1:Invulnerable Rager:Archetype",' +
       '"1:Mounted Fury:Archetype",' +
       '"1:Savage Barbarian:Archetype",' +
-      '"1:Standard Barbarian:Archetype",' +
       '"1:Superstitious:Archetype",' +
       '"1:Totem Warrior:Archetype"',
   'Cleric':
@@ -4580,16 +4582,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('barbarianHasDamageReduction',
       'levels.Barbarian', '=', '1',
-      'barbarianFeatures.Invulnerability', '+', '-1',
-      'barbarianFeatures.Keen Senses (Barbarian)', '+', '-1',
-      'barbarianFeatures.Natural Toughness', '+', '-1'
+      'barbarianFeatures.Invulnerability', '=', '0',
+      'barbarianFeatures.Keen Senses (Barbarian)', '=', '0',
+      'barbarianFeatures.Natural Toughness', '=', '0'
     );
     rules.defineRule('barbarianHasFastMovement',
       'levels.Barbarian', '=', '1',
-      'barbarianFeatures.Destructive', '+', '-1',
-      'barbarianFeatures.Fast Rider', '+', '-1',
-      'barbarianFeatures.Raging Drunk', '+', '-1',
-      'barbarianFeatures.Skilled Thrower', '+', '-1'
+      'barbarianFeatures.Destructive', '=', '0',
+      'barbarianFeatures.Fast Rider', '=', '0',
+      'barbarianFeatures.Raging Drunk', '=', '0',
+      'barbarianFeatures.Skilled Thrower', '=', '0'
     );
     rules.defineRule('barbarianHasImprovedUncannyDodge',
       'levels.Barbarian', '=', '1',
@@ -4627,6 +4629,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('barbarianFeatures.Uncanny Dodge',
       'barbarianHasUncannyDodge', '?', 'source == 1'
     );
+    rules.defineRule('combatNotes.invulnerability',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
     rules.defineRule('combatNotes.lesserHurling',
       'combatNotes.lesserHurling.1', '=', '["Tiny", "Small", "Medium", "Large", "Huge"][source]'
     );
@@ -4637,8 +4642,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'combatNotes.hurling', '+', '1',
       'combatNotes.greaterHurling', '+', '1'
     );
-    rules.defineRule
-      ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule('combatNotes.lesserBeastTotem',
       '', '=', '6',
       'features.Small', '+', '-2',
@@ -4672,12 +4675,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       '', '=', '"Half"',
       'combatNotes.improvedSavageGrapple', '=', '"No"'
     );
-    rules.defineRule('featureNotes.keenSenses(Barbarian).1',
-      'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', '"" + (source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
-    );
     rules.defineRule
-      ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
+      ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule('companionBarbarianLevel',
       'features.Bestial Mount', '?', null,
       classLevel, '+=', 'Math.floor(source / 2)'
@@ -4685,8 +4684,36 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
     rules.defineRule
+      ('damageReduction.-', 'combatNotes.invulnerability', '^=', null);
+    rules.defineRule('featureNotes.keenSenses(Barbarian).1',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', '"" + (source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
+    );
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
+    rules.defineRule('features.Blindsense',
+      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Blindsense") ? 1 : null'
+    );
+    rules.defineRule('features.Blindsight',
+      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Blindsight") ? 1 : null'
+    );
+    rules.defineRule('features.Darkvision',
+      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Darkvision") ? 1 : null'
+    );
+    rules.defineRule('features.Low-Light Vision',
+      'featureNotes.keenSenses(Barbarian)', '=', '1'
+    );
+    rules.defineRule('features.Scent',
+      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Scent") ? 1 : null'
+    );
+    rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Cleric') {
+    rules.defineRule('clericRagePowerLevel',
+      'features.Rage (Cleric)', '?', null,
+      'levels.Cleric', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
     rules.defineRule('combatNotes.rage(Cleric).1',
       'features.Rage (Cleric)', '?', null,
       'levels.Cleric', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
