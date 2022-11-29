@@ -554,7 +554,7 @@ PFAPG.FEATURES = {
    'Note="Critical hits do +1d10 HP or better energy damage during rage"',
   'Lesser Elemental Rage':
     'Section=combat Note="Attacks do +1d6 HP energy damage for 1 rd 1/rage"',
-  'Energy Absorption':
+  'Energy Absorption (Rage)':
     'Section=combat ' +
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
   'Energy Eruption':
@@ -689,6 +689,68 @@ PFAPG.FEATURES = {
     'Section=feature Note="Has Low-Light Vision%1 features"',
   'Blindsight':
     'Section=feature Note="Can locate invisible creatures w/in line of sight"',
+
+  // Arcane Strike as per core?
+  'Rallying Cry':'Section=feature Note="FILL"',
+  'Bladethirst':'Section=feature Note="FILL"',
+  'Mass Bladethirst':'Section=feature Note="FILL"',
+  'Arcane Armor':'Section=feature Note="FILL"',
+  'Naturalist':'Section=feature Note="FILL"',
+  'Lamentable Belaborment':'Section=feature Note="FILL"',
+  'Pedantic Lecture':'Section=feature Note="FILL"',
+  // Lore Master as per core?
+  'Magic Lore':'Section=feature Note="FILL"',
+  // Jack Of All Trades as per core Jack-Of-All-Trades?
+  'Probable Path':'Section=feature Note="FILL"',
+  'Satire':'Section=feature Note="FILL"',
+  'Mockery':'Section=feature Note="FILL"',
+  'Glorious Epic':'Section=feature Note="FILL"',
+  'Scandal':'Section=feature Note="FILL"',
+  'Heraldic Expertise':'Section=feature Note="FILL"',
+  'Wide Audience':'Section=feature Note="FILL"',
+  'Careful Teamwork':'Section=feature Note="FILL"',
+  'True Confession':'Section=feature Note="FILL"',
+  'Show Yourselves':'Section=feature Note="FILL"',
+  'Eye For Detail':'Section=feature Note="FILL"',
+  'Arcane Insight':'Section=feature Note="FILL"',
+  'Arcane Investigation':'Section=feature Note="FILL"',
+  'Dweomercraft':'Section=feature Note="FILL"',
+  'Spell Suppression':'Section=feature Note="FILL"',
+  // Metamagic Mastery as per core?
+  'Magical Talent':'Section=feature Note="FILL"',
+  'Extended Performance':'Section=feature Note="FILL"',
+  'Expanded Repertoire':'Section=feature Note="FILL"',
+  'Wand Mastery':'Section=feature Note="FILL"',
+  'Stealspell':'Section=feature Note="FILL"',
+  'Slumber Song':'Section=feature Note="FILL"',
+  'Dramatic Subtext':'Section=feature Note="FILL"',
+  'Greater Stealspell':'Section=feature Note="FILL"',
+  'Mass Slumber Song':'Section=feature Note="FILL"',
+  'Spell Catching':'Section=feature Note="FILL"',
+  'Master Of Deception':'Section=feature Note="FILL"',
+  'Sneakspell':'Section=feature Note="FILL"',
+  // Arcane Bond as per core?
+  // Trap Sense as per core?
+  // Sneak Attack as per core?
+  'Inspiring Blow':'Section=feature Note="FILL"',
+  'Incite Rage':'Section=feature Note="FILL"',
+  'Song Of The Fallen':'Section=feature Note="FILL"',
+  'Boomerang':'Section=feature Note="FILL"',
+  'Battle Song':'Section=feature Note="FILL"',
+  'Sea Shanty':'Section=feature Note="FILL"',
+  'Still Water':'Section=feature Note="FILL"',
+  'Whistle The Wind':'Section=feature Note="FILL"',
+  'Call The Storm':'Section=feature Note="FILL"',
+  'World Traveler':'Section=feature Note="FILL"',
+  // Familiar as per core?
+  'Sea Legs':'Section=feature Note="FILL"',
+  'Disappearing Act':'Section=feature Note="FILL"',
+  'Harmless Performance':'Section=feature Note="FILL"',
+  'Madcap Prank':'Section=feature Note="FILL"',
+  'Slip Through The Crowd':'Section=feature Note="FILL"',
+  'Gladhandling':'Section=feature Note="FILL"',
+  'Streetwise':'Section=feature Note="FILL"',
+  'Quick Change':'Section=feature Note="FILL"',
 
   'Protective Aura':
     'Section=magic ' +
@@ -904,7 +966,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
       '"+%V Craft (Alchemy)"',
-  'Arcane Archivist':
+  'Arcane Archivist (Oracle)':
     'Section=magic ' +
     'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
   'Armor Of Bones':
@@ -2253,6 +2315,67 @@ PFAPG.PATHS = {
     'Group=Barbarian ' +
     'Level=levels.Barbarian',
 
+  'Arcane Duelist':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '"1:Arcane Strike","1:Rallying Cry",6:Bladethirst,' +
+      '"18:Mass Bladethirst","2:Combat Casting",6:Disruptive,10:Spellbreaker,' +
+      '"14:Penetrating Strike","18:Greater Penetrating Strike",' +
+      '"5:Arcane Bond","10:Arcane Armor"',
+  'Archivist':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '1:Naturalist,"6:Lamentable Belaborment","18:Pedantic Lecture",' +
+      '"2:Lore Master","2:Magic Lore","5:Jack Of All Trades",' +
+      '"10:Probable Path"',
+  'Court Bard':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '1:Satire,3:Mockery,"8:Glorious Epic",14:Scandal,' +
+      '"1:Heraldic Expertise","5:Wide Audience"',
+  'Detective':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '"1:Careful Teamwork","9:True Confession","15:Show Yourselves",' +
+      '"1:Eye For Detail","2:Arcane Insight","1:Arcane Investigation"',
+  'Magician':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '1:Dweomercraft,"8:Spell Suppression","14:Metamagic Mastery",' +
+      '"1:Magical Talent","1:Improved Counterspell","2:Extended Performance",' +
+      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery"',
+  'Sandman':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '1:Stealspell,"6:Slumber Song","9:Dramatic Subtext",' +
+      '"15:Greater Stealspell","18:Mass Slumber Song","20:Spell Catching",' +
+      '"1:Master Of Deception",2:Sneakspell,"3:Trap Sense","5:Sneak Attack"',
+  'Savage Skald':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '"1:Inspiring Blow","6:Incite Rage","10:Song Of The Fallen",' +
+      '12:Boomerang,"18:Battle Song"',
+  'Sea Singer':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '"1:Sea Shanty","3:Still Water","6:Whistle The Wind",' +
+      '"18:Call The Storm","1:World Traveler",2:Familiar,"2:Sea Legs"',
+  'Street Performer':
+    'Group=Bard ' +
+    'Level=levels.Bard ' +
+    'Features=' +
+      '"1:Disappearing Act","3:Harmless Performance","9:Madcap Prank",' +
+      '"15:Slip Through The Crowd",1:Gladhandling,1:Streetwise,' +
+      '"5:Quick Change"',
+
   'Agathion Subdomain':
     Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Protective Aura'),
   'Ancestors Subdomain':
@@ -2538,7 +2661,7 @@ PFAPG.PATHS = {
       'Lore9:18=1 ' +
     'Features="20:Final Revelation (Lore Mystery)" ' +
     'Selectables=' +
-      '"11:Arcane Archivist:Lore Revelation",' +
+      '"11:Arcane Archivist (Oracle):Lore Revelation",' +
       '"1:Automatic Writing:Lore Revelation",' +
       '"1:Brain Drain:Lore Revelation",' +
       '"1:Focused Trance:Lore Revelation",' +
@@ -4137,8 +4260,8 @@ PFAPG.CLASSES = {
       '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
       '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
       '"4:Lesser Elemental Rage",' +
-      '"features.Greater Energy Resistance ? 12:Energy Absorption",' +
-      '"features.Energy Absorption ? 16:Energy Eruption",' +
+      '"features.Greater Energy Resistance ? 12:Energy Absorption (Rage)",' +
+      '"features.Energy Absorption (Rage) ? 16:Energy Eruption",' +
       '"2:Energy Resistance",' +
       '"features.Energy Resistance ? 8:Greater Energy Resistance",' +
       '"2:Ferocious Mount",' +
@@ -4182,6 +4305,18 @@ PFAPG.CLASSES = {
       '"1:Savage Barbarian:Archetype",' +
       '"1:Superstitious:Archetype",' +
       '"1:Totem Warrior:Archetype"',
+  'Bard':
+    'Selectables=' +
+      '"1:Arcane Duelist:Archetype",' +
+      '"1:Archivist:Archetype",' +
+      '"1:Core Bard:Archetype",' +
+      '"1:Court Bard:Archetype",' +
+      '"1:Detective:Archetype",' +
+      '"1:Magician:Archetype",' +
+      '"1:Sandman:Archetype",' +
+      '"1:Savage Skald:Archetype",' +
+      '"1:Sea Singer:Archetype",' +
+      '"1:Street Performer:Archetype"',
   'Cleric':
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
@@ -4708,6 +4843,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
+  } else if(name == 'Bard') {
+    rules.defineRule
+      ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
   } else if(name == 'Cleric') {
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
