@@ -690,17 +690,26 @@ PFAPG.FEATURES = {
   'Blindsight':
     'Section=feature Note="Can locate invisible creatures w/in line of sight"',
 
-  // Arcane Strike as per core?
-  'Rallying Cry':'Section=feature Note="FILL"',
-  'Bladethirst':'Section=feature Note="FILL"',
-  'Mass Bladethirst':'Section=feature Note="FILL"',
-  'Arcane Armor':'Section=feature Note="FILL"',
+  'Rallying Cry':
+    'Section=combat ' +
+    'Note="R30\' Allies may use self Intimidate check for save vs. fear"',
+  'Bladethirst':
+    'Section=combat ' +
+    'Note="R30\' May give weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
+  'Mass Bladethirst':
+    'Section=combat ' +
+    'Note="R30\' May give attack bonus to weapons of multiple allies"',
+  'Arcane Armor':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Has %V Armor Proficiency features",' +
+      '"No arcane spell failure in %V armor"',
   'Naturalist':'Section=feature Note="FILL"',
   'Lamentable Belaborment':'Section=feature Note="FILL"',
   'Pedantic Lecture':'Section=feature Note="FILL"',
-  // Lore Master as per core?
+  // TODO Lore Master modify level
   'Magic Lore':'Section=feature Note="FILL"',
-  // Jack Of All Trades as per core Jack-Of-All-Trades?
+  // TODO Jack-Of-All-Trades modify level
   'Probable Path':'Section=feature Note="FILL"',
   'Satire':'Section=feature Note="FILL"',
   'Mockery':'Section=feature Note="FILL"',
@@ -729,7 +738,6 @@ PFAPG.FEATURES = {
   'Spell Catching':'Section=feature Note="FILL"',
   'Master Of Deception':'Section=feature Note="FILL"',
   'Sneakspell':'Section=feature Note="FILL"',
-  // Arcane Bond as per core?
   // Trap Sense as per core?
   // Sneak Attack as per core?
   'Inspiring Blow':'Section=feature Note="FILL"',
@@ -748,7 +756,7 @@ PFAPG.FEATURES = {
   'Harmless Performance':'Section=feature Note="FILL"',
   'Madcap Prank':'Section=feature Note="FILL"',
   'Slip Through The Crowd':'Section=feature Note="FILL"',
-  'Gladhandling':'Section=feature Note="FILL"',
+  'Gladhanding':'Section=feature Note="FILL"',
   'Streetwise':'Section=feature Note="FILL"',
   'Quick Change':'Section=feature Note="FILL"',
 
@@ -2328,7 +2336,7 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '1:Naturalist,"6:Lamentable Belaborment","18:Pedantic Lecture",' +
-      '"2:Lore Master","2:Magic Lore","5:Jack Of All Trades",' +
+      '"2:Lore Master","2:Magic Lore","5:Jack-Of-All-Trades",' +
       '"10:Probable Path"',
   'Court Bard':
     'Group=Bard ' +
@@ -2373,14 +2381,14 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '"1:Disappearing Act","3:Harmless Performance","9:Madcap Prank",' +
-      '"15:Slip Through The Crowd",1:Gladhandling,1:Streetwise,' +
+      '"15:Slip Through The Crowd",1:Gladhanding,1:Streetwise,' +
       '"5:Quick Change"',
 
   'Agathion Subdomain':
     Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Protective Aura'),
   'Ancestors Subdomain':
     Pathfinder.PATHS['Repose Domain'].replace('Ward Against Death', 'Speak With Dead'),
-  'Arcane Subdomain':
+  'Arcana Subdomain':
     Pathfinder.PATHS['Magic Domain'].replace('Hand Of The Acolyte', 'Arcane Beacon'),
   'Archon Good Subdomain':
     Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Aura Of Menace'),
@@ -2510,7 +2518,7 @@ PFAPG.PATHS = {
     Pathfinder.PATHS['Artifice Domain'].replace('Dancing Weapons', 'Aura Of Repetition'),
   'Trade Subdomain':
     Pathfinder.PATHS['Travel Domain'].replace('Agile Feet', 'Silver-Tongued Haggler'),
-  'Undead Subdomain':
+  'Undeath Subdomain':
     Pathfinder.PATHS['Death Domain'].replace('Bleeding Touch', "Death's Kiss"),
   'Wards Subdomain':
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Warding Rune'),
@@ -2817,7 +2825,7 @@ PFAPG.SPELLS = {
     'Description="Effects of potions consumed by self increased by 1/2 for $L rd"',
   'Ant Haul':
     'School=Transmutation ' +
-    'Level=Alchemist1,C1,D1,R1,W1,Summoner1 ' +
+    'Level=Alchemist1,C1,D1,O1,R1,W1,Summoner1 ' +
     'Description="Touched gains triple carrying capacity for $L2 rd"',
   'Aqueous Orb':
     'School=Conjuration ' +
@@ -2877,11 +2885,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Blessing Of Courage and Life':
     'School=Conjuration ' +
-    'Level=C2,P2 ' +
+    'Level=C2,O2,P2 ' +
     'Description="FILL"',
   'Blessing Of Fervor':
     'School=Transmutation ' +
-    'Level=C4 ' +
+    'Level=C4,O4 ' +
     'Description="FILL"',
   'Blessing Of The Salamander':
     'School=Transmutation ' +
@@ -2889,7 +2897,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Blood Biography':
     'School=Divination ' +
-    'Level=B2,C3,Inquisitor3,W3 ' +
+    'Level=B2,C3,Inquisitor3,O3,W3 ' +
     'Description="FILL"',
   'Bloodhound':
     'School=Transmutation ' +
@@ -2989,7 +2997,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Cleanse':
     'School=Evocation ' +
-    'Level=C5,Divine5,Inquisitor6 ' +
+    'Level=C5,Divine5,Inquisitor6,O5 ' +
     'Description="FILL"',
   'Cloak Of Dreams':
     'School=Enchantment ' +
@@ -3045,7 +3053,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Dancing Lantern':
     'School=Transmutation ' +
-    'Level=B1,C1,R1,W1,Witch1 ' +
+    'Level=B1,C1,O1,R1,W1,Witch1 ' +
     'Description="FILL"',
   'Deadly Finale':
     'School=Evocation ' +
@@ -3117,7 +3125,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Elemental Speech':
     'School=Divination ' +
-    'Level=B3,C3,D2,W2 ' +
+    'Level=B3,C3,D2,O3,W2 ' +
     'Description="FILL"',
   'Elemental Touch':
     'School=Evocation ' +
@@ -3133,11 +3141,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Enter Image':
     'School=Transmutation ' +
-    'Level=B2,C3,W3 ' +
+    'Level=B2,C3,O3,W3 ' +
     'Description="FILL"',
   'Euphoric Tranquility':
     'School=Enchantment ' +
-    'Level=B6,C8,D8,Love8,W8 ' +
+    'Level=B6,C8,D8,Love8,O8,W8 ' +
     'Description="FILL"',
   'Evolution Surge':
     'School=Transmutation ' +
@@ -3261,11 +3269,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
-    'Level=B2,C2,Inquisitor2,P1 ' +
+    'Level=B2,C2,Inquisitor2,O2,P1 ' +
     'Description="FILL"',
   'Mass Ghostbane Dirge':
     'School=Transmutation ' +
-    'Level=B4,C5,Inquisitor5,P3 ' +
+    'Level=B4,C5,Inquisitor5,O5,P3 ' +
     'Description="FILL"',
   'Glide':
     'School=Transmutation ' +
@@ -3273,7 +3281,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Grace':
     'School=Abjuration ' +
-    'Level=C2,P1 ' +
+    'Level=C2,O2,P1 ' +
     'Description="FILL"',
   'Gravity Bow':
     'School=Transmutation ' +
@@ -3285,7 +3293,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Guiding Star':
     'School=Divination ' +
-    'Level=C3,R2,Witch3 ' +
+    'Level=C3,O3,R2,Witch3 ' +
     'Description="FILL"',
   'Heroic Finale':
     'School=Enchantment ' +
@@ -3341,7 +3349,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Instant Armor':
     'School=Conjuration ' +
-    'Level=C2,P2 ' +
+    'Level=C2,O2,P2 ' +
     'Description="FILL"',
   'Instant Enemy':
     'School=Enchantment ' +
@@ -3377,7 +3385,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Life Bubble':
     'School=Abjuration ' +
-    'Level=C5,D4,R3,W5 ' +
+    'Level=C5,D4,O5,R3,W5 ' +
     'Description="FILL"',
   'Light Lance':
     'School=Evocation ' +
@@ -3409,7 +3417,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Nap Stack':
     'School=Necromancy ' +
-    'Level=C3 ' +
+    'Level=C3,O3 ' +
     'Description="FILL"',
   'Natural Rhythm':
     'School=Transmutation ' +
@@ -3461,11 +3469,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Pillar Of Life':
     'School=Conjuration ' +
-    'Level=C5 ' +
+    'Level=C5,O5 ' +
     'Description="FILL"',
   'Planar Adaptation':
     'School=Transmutation ' +
-    'Level=Alchemist5,C4,W5,Summoner5 ' +
+    'Level=Alchemist5,C4,O4,W5,Summoner5 ' +
     'Description="FILL"',
   'Mass Planar Adaptation':
     'School=Transmutation ' +
@@ -3525,7 +3533,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Rest Eternal':
     'School=Necromancy ' +
-    'Level=Ancestors4,C4,D5,Witch5 ' +
+    'Level=Ancestors4,C4,O4,D5,Witch5 ' +
     'Description="FILL"',
   'Restful Sleep':
     'School=Necromancy ' +
@@ -3553,7 +3561,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Sacred Bond':
     'School=Conjuration ' +
-    'Level=C3,Inquisitor2,P2 ' +
+    'Level=C3,Inquisitor2,O3,P2 ' +
     'Description="FILL"',
   'Sacrificial Oath':
     'School=Abjuration ' +
@@ -3597,7 +3605,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Share Language':
     'School=Divination ' +
-    'Level=B1,C2,D2,Language2,W2 ' +
+    'Level=B1,C2,D2,Language2,O2,W2 ' +
     'Description="FILL"',
   'Share Senses':
     'School=Divination ' +
@@ -3629,7 +3637,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Snake Staff':
     'School=Transmutation ' +
-    'Level=C5,D5 ' +
+    'Level=C5,D5,O5 ' +
     'Description="FILL"',
   'Solid Note':
     'School=Conjuration ' +
@@ -3637,7 +3645,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Spark':
     'School=Evocation ' +
-    'Level=B0,C0,D0,W0,Witch0 ' +
+    'Level=B0,C0,D0,O0,W0,Witch0 ' +
     'Description="FILL"',
   'Spiked Pit':
     'School=Conjuration ' +
@@ -3645,7 +3653,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Spiritual Ally':
     'School=Evocation ' +
-    'Level=C4 ' +
+    'Level=C4,O4 ' +
     'Description="FILL"',
   'Spite':
     'School=Abjuration ' +
@@ -3665,7 +3673,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Stormbolts':
     'School=Evocation ' +
-    'Level=C8,D8,W8,Witch8 ' +
+    'Level=C8,D8,O8,W8,Witch8 ' +
     'Description="FILL"',
   'Strong Jaw':
     'School=Transmutation ' +
@@ -3737,7 +3745,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Treasure Stitching':
     'School=Transmutation ' +
-    'Level=B4,C4,W5 ' +
+    'Level=B4,C4,O4,W5 ' +
     'Description="FILL"',
   'True Form':
     'School=Abjuration ' +
@@ -3817,11 +3825,11 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Weapon Of Awe':
     'School=Transmutation ' +
-    'Level=C2,Inquisitor2,P2 ' +
+    'Level=C2,Inquisitor2,O2,P2 ' +
     'Description="FILL"',
   'Winds Of Vengeance':
     'School=Transmutation ' +
-    'Level=C9,D9,W9,Wind9 ' +
+    'Level=C9,D9,O9,W9,Wind9 ' +
     'Description="FILL"',
   'World Wave':
     'School=Transmutation ' +
@@ -3833,139 +3841,147 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Wrathful Mantle':
     'School=Evocation ' +
-    'Level=C3,P3 ' +
+    'Level=C3,O3,P3 ' +
     'Description="FILL"'
 
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
 
   'Acid Splash':'Inquisitor0',
-  'Aid':'Curse2,Inquisitor2,Tactics2',
-  'Air Walk':'Wind4',
+  'Aid':'Curse2,Inquisitor2,O2,Tactics2',
+  'Air Walk':'O4,Wind4',
   'Alarm':'Home1,Inquisitor1',
-  'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,Protean2',
-  'Analyze Dweomer':'Arcane6',
+  'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,O2,Protean2',
+  'Analyze Dweomer':'Arcana6',
   'Animal Shapes':'Feather7,Fur7,Nature8',
-  'Animate Dead':'Bones3,Souls3,Undead3',
+  'Animate Dead':'Bones3,O3,Souls3,Undeath3',
+  'Animate Objects':'O6',
   'Animate Plants':'Decay7,Growth7',
   'Animate Rope':'Construct1',
-  'Antilife Shell':'Fur6,Souls6',
-  'Antimagic Field':'Defense6,Divine6,Purity6',
-  'Arcane Eye':'Arcane4',
+  'Antilife Shell':'Fur6,O6,Souls6',
+  'Antimagic Field':'Defense6,Divine6,Purity6,O8',
+  'Arcane Eye':'Arcana4',
   'Arcane Lock':'Wards1',
   'Arcane Sight':'Inquisitor3',
-  'Atonement':'Inquisitor5,Purity5',
-  'Augury':'Fate2',
+  'Astral Projection':'O9',
+  'Atonement':'Inquisitor5,O5,Purity5',
+  'Augury':'Fate2,O2',
   'Awaken':'Nature5',
-  'Bane':'Curse1,Inquisitor1',
-  'Banishment':'Inquisitor5',
+  'Bane':'Curse1,Inquisitor1,O1',
+  'Banishment':'Inquisitor5,O6',
   'Barkskin':'Decay2,Defense2,Growth2,Nature2',
+  "Bear's Endurance":'O2',
   'Beast Shape I':'Fur3',
   'Beast Shape III':'Feather5,Fur5',
-  'Bestow Curse':'Curse3',
-  'Blade Barrier':'Blood6,Inquisitor6,Tactics6',
-  'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6',
-  'Bleed':'Inquisitor0',
-  'Bless Water':'Divine2,Inquisitor1',
+  'Bestow Curse':'Curse3,O3',
+  'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
+  'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6,O7',
+  'Bleed':'Inquisitor0,O0',
+  'Bless':'Family1,Inquisitor1,Leadership1,O1,Resolve1',
+  'Bless Water':'Divine2,Inquisitor1,O1',
   'Bless Weapon':'Heroism2',
-  'Bless':'Family1,Inquisitor1,Leadership1,Resolve1',
   'Blight':'Seasons4',
-  'Blindness/Deafness':'Loss2,Night2',
-  'Break Enchantment':'Curse5,Fate5,Inquisitor5,Restoration5,Revolution5',
-  'Breath Of Life':'Life5',
-  "Bull's Strength":'Ferocity2,Rage2,Resolve2',
+  'Blindness/Deafness':'Loss2,Night2,O3',
+  'Break Enchantment':'Curse5,Fate5,Inquisitor5,O5,Restoration5,Revolution5',
+  'Breath Of Life':'Life5,O5',
+  "Bull's Strength":'Ferocity2,O2,Rage2,Resolve2',
   'Burning Hands':'Ash1,Flame1,Smoke1',
   'Call Lightning':'Catastrophe3,Seasons3,Storms3',
   'Call Lightning Storm':'Storms5',
   'Calm Animals':'Feather1',
-  'Calm Emotions':'Family2,Inquisitor2',
-  'Cause Fear':'Bones1,Daemon1,Inquisitor1,Murder1,Undead1',
+  'Calm Emotions':'Family2,Inquisitor2,O2',
+  'Cause Fear':'Bones1,Daemon1,Inquisitor1,Murder1,O1,Undeath1',
   'Chain Lightning':'Cloud6,Heavens6',
-  'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,Protean4',
+  'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Protean4',
   'Charm Animal':'Nature1',
   'Charm Monster':'Love5,Lust5',
   'Charm Person':'Love1,Lust1',
   'Circle Of Death':'Bones6,Inquisitor6',
   'Clenched Fist':'Ferocity8,Resolve8',
-  'Cloak Of Chaos':'"Azata Chaos8","Demon Chaos8",Protean8',
+  'Cloak Of Chaos':'"Azata Chaos8","Demon Chaos8",O8,Protean8',
   'Color Spray':'Heavens1',
-  'Command':'"Devil Evil1","Devil Law1",Inquisitor1,Toil1',
+  'Command':'"Devil Evil1","Devil Law1",Inquisitor1,O1,Toil1',
   'Command Plants':'Growth4',
   'Command Undead':'Inevitable3',
-  'Commune':'Inquisitor5',
-  'Comprehend Languages':'Inquisitor1,Language1,Memory1,Thought1',
+  'Commune':'Inquisitor5,O5',
+  'Comprehend Languages':'Inquisitor1,Language1,Memory1,O1,Thought1',
   'Cone Of Cold':'Ice6,Oceans6',
   'Confusion':'Deception4,Lust4,Thievery4',
-  'Consecrate':'Inquisitor2',
+  'Consecrate':'Inquisitor2,O2',
   'Contact Other Plane':'Lore5',
-  'Contagion':'Decay3',
-  'Continual Flame':'Day2,Inquisitor3',
+  'Contagion':'Decay3,O3',
+  'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
   'Control Undead':'Bones8',
-  'Control Water':'Ice4,Oceans4',
-  'Control Weather':'Battle7,Catastrophe7,Seasons7,Storms7,Wind7',
+  'Control Water':'Ice4,O4,Oceans4',
+  'Control Weather':'Battle7,Catastrophe7,O7,Seasons7,Storms7,Wind7',
   'Control Winds':'Cloud5,Seasons6,Wind5',
-  'Create Food And Water':'Family3',
-  'Create Greater Undead':'Murder8,Undead8',
-  'Create Undead':'Murder6,Undead6',
-  'Create Water':'Inquisitor0',
+  'Create Food And Water':'Family3,O3',
+  'Create Greater Undead':'Murder8,O8,Undeath8',
+  'Create Undead':'Murder6,O6,Undeath6',
+  'Create Water':'Inquisitor0,O0',
   'Creeping Doom':'Nature7',
   'Crushing Hand':'Ferocity9,Resolve9',
-  'Cure Critical Wounds':'Inquisitor4,Resurrection4',
-  'Cure Light Wounds':'Inquisitor1,Restoration1,Resurrection1',
-  'Cure Moderate Wounds':'Inquisitor2,Resurrection2',
-  'Cure Serious Wounds':'Inquisitor3,Restoration3,Resurrection3',
-  'Curse Water':'Inquisitor1',
-  'Darkness':'Inquisitor2',
-  'Daylight':'Day3,Heavens3,Inquisitor3,Light3',
+  'Cure Critical Wounds':'Inquisitor4,O4,Resurrection4',
+  'Cure Light Wounds':'Inquisitor1,O1,Restoration1,Resurrection1',
+  'Cure Moderate Wounds':'Inquisitor2,O2,Resurrection2',
+  'Cure Serious Wounds':'Inquisitor3,O3,Restoration3,Resurrection3',
+  'Curse Water':'Inquisitor1,O1',
+  'Darkness':'Inquisitor2,O2',
+  'Daylight':'Day3,Heavens3,Inquisitor3,Light3,O3',
   'Daze':'Inquisitor0',
-  'Death Knell':'Inquisitor2,Murder2',
-  'Death Ward':'Inquisitor4,Murder4,Souls4',
-  'Deathwatch':'Ancestors1,Souls1',
-  'Deeper Darkness':'Inquisitor3,Loss3,Night3',
-  'Delay Poison':'Inquisitor2',
+  'Death Knell':'Inquisitor2,Murder2,O2',
+  'Death Ward':'Inquisitor4,Murder4,O4,Souls4',
+  'Deathwatch':'Ancestors1,O1,Souls1',
+  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3',
+  'Delay Poison':'Inquisitor2,O2',
   'Demand':'Leadership8,Lust8,Martyr8',
-  'Desecrate':'Inquisitor2',
-  'Destruction':'Ancestors7,Murder7,Souls7,Undead7',
-  'Detect Chaos':'Inquisitor1',
-  'Detect Evil':'Inquisitor1',
-  'Detect Good':'Inquisitor1',
-  'Detect Law':'Inquisitor1',
-  'Detect Magic':'Inquisitor0',
-  'Detect Poison':'Inquisitor0',
+  'Desecrate':'Inquisitor2,O2',
+  'Destruction':'Ancestors7,Murder7,O7,Souls7,Undeath7',
+  'Detect Chaos':'Inquisitor1,O1',
+  'Detect Evil':'Inquisitor1,O1',
+  'Detect Good':'Inquisitor1,O1',
+  'Detect Law':'Inquisitor1,O1',
+  'Detect Magic':'Inquisitor0,O0',
+  'Detect Poison':'Inquisitor0,O0',
   'Detect Scrying':'Inquisitor4',
   'Detect Thoughts':'Inquisitor2,Thought2',
-  'Detect Undead':'Inquisitor1,Life1',
-  'Dictum':'"Archon Law7","Devil Law7",Inevitable7,Inquisitor6',
+  'Detect Undead':'Inquisitor1,Life1,O1',
+  'Dictum':'"Archon Law7","Devil Law7",Inevitable7,Inquisitor6,O7',
   'Dimension Door':'Trade4',
-  'Dimensional Anchor':'Inquisitor3,Wards4',
-  'Discern Lies':'Inquisitor4,Leadership4,Martyr4',
+  'Dimensional Anchor':'Inquisitor3,O4,Wards4',
+  'Dimensional Lock':'O8',
+  'Discern Lies':'Inquisitor4,Leadership4,Martyr4,O4',
+  'Discern Location':'O8',
   'Disguise Self':'Deception1,Inquisitor1,Thievery1',
   'Disintegrate':'Ash7,Rage7',
-  'Dismissal':'Inquisitor4',
-  'Dispel Chaos':'"Archon Law5","Devil Law5",Inquisitor5',
-  'Dispel Evil':'Agathion5,"Archon Good5","Azata Good5",Inquisitor5',
-  'Dispel Good':'Daemon5,"Demon Evil5","Devil Evil5",Inquisitor5',
-  'Dispel Law':'"Azata Chaos5","Demon Chaos5",Inquisitor5,Protean5',
-  'Dispel Magic':'Arcane3,Divine3,Inquisitor3',
+  'Dismissal':'Inquisitor4,O4',
+  'Dispel Chaos':'"Archon Law5","Devil Law5",Inquisitor5,O5',
+  'Dispel Evil':'Agathion5,"Archon Good5","Azata Good5",Inquisitor5,O5',
+  'Dispel Good':'Daemon5,"Demon Evil5","Devil Evil5",Inquisitor5,O5',
+  'Dispel Law':'"Azata Chaos5","Demon Chaos5",Inquisitor5,Protean5,O5',
+  'Dispel Magic':'Arcana3,Divine3,Inquisitor3,O3',
   'Displacement':'Protean3',
   'Disrupt Undead':'Inquisitor0',
-  'Disrupting Weapon':'Inquisitor5',
-  'Divination':'Inquisitor4,Memory4,Thought4',
-  'Divine Favor':'"Archon Good1","Archon Law1",Inquisitor1,Martyr1',
-  'Divine Power':'Blood4,Inquisitor4,Tactics4',
+  'Disrupting Weapon':'Inquisitor5,O5',
+  'Divination':'Inquisitor4,Memory4,O4,Thought4',
+  'Divine Favor':'"Archon Good1","Archon Law1",Inquisitor1,Martyr1,O1',
+  'Divine Power':'Blood4,Inquisitor4,O4,Tactics4',
   'Dominate Monster':'Love9,Lust9',
-  'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1',
-  'Earthquake':'Battle8,Catastrophe8,Caves8,Rage8',
+  'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
+  "Eagle's Splendor":'O2',
+  'Earthquake':'Battle8,Catastrophe8,Caves8,O8,Rage8',
   'Elemental Body IV':'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Wind7',
   'Elemental Swarm':'Caves9,Metal9,Smoke9',
-  'Endure Elements':'Day1',
-  'Energy Drain':'Loss9,Undead9',
-  'Enervation':'Loss5,Undead4',
+  'Endure Elements':'Day1,O1',
+  'Energy Drain':'Loss9,O9,Undeath9',
+  'Enervation':'Loss5,Undeath4',
   'Enlarge Person':'Battle1,Ferocity1,Growth1',
   'Entangle':'Decay1',
-  'Enthrall':'Inquisitor2,Leadership2,Love2,Revolution2',
-  'Ethereal Jaunt':'Thievery7',
+  'Enthrall':'Inquisitor2,Leadership2,Love2,O2,Revolution2',
+  'Entropic Shield':'O1',
+  'Ethereal Jaunt':'O7,Thievery7',
+  'Etherealness':'O9',
   'Expeditious Retreat':'"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
   'Explosive Runes':'Language4',
   'Eyebite':'Curse6',
@@ -3975,246 +3991,280 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'False Vision':'Deception5,Thievery5',
   'Fear':'Bones4,Inquisitor4',
   'Feather Fall':'Feather2',
-  'Find The Path':'Exploration6,Inquisitor6,Thought6,Trade6',
-  'Find Traps':'Inquisitor2',
+  'Find The Path':'Exploration6,Inquisitor6,O6,Thought6,Trade6',
+  'Find Traps':'Inquisitor2,O2',
   'Fire Seeds':'Ash6,Day6,Flame6,Light6,Smoke6',
   'Fire Shield':'Ash5,Day4,Light4,Smoke5',
-  'Fire Storm':'Flame7',
+  'Fire Storm':'Flame7,O8',
   'Fireball':'Ash3,Flame3',
-  'Flame Strike':'Day5,Inquisitor5,Light5',
+  'Flame Strike':'Day5,Inquisitor5,Light5,O5',
   'Floating Disk':'Trade1',
   'Fly':'"Azata Chaos3","Azata Good3",Exploration3,Feather3,Trade3',
   'Fog Cloud':'Battle2,Ice2,Seasons2,Storms2',
-  'Forbiddance':'Inquisitor6',
+  'Forbiddance':'Inquisitor6,O6',
   'Foresight':'Memory9,Thought9',
   'Freedom':'Freedom9,Revolution9',
-  'Freedom Of Movement':'Curse4,Fate4,Freedom4,Inquisitor4,Revolution4',
+  'Freedom Of Movement':'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4',
   'Freezing Sphere':'Ice7',
   'Gaseous Form':'Cloud3,Wind3',
-  'Gate':'Heroism9,Honor9,Trade9',
-  'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6',
-  'Gentle Repose':'Ancestors2,Souls2',
+  'Gate':'Heroism9,Honor9,O9,Trade9',
+  'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6',
+  'Gentle Repose':'Ancestors2,O2,Souls2',
   'Ghoul Touch':'Undead2',
-  'Glyph Of Warding':'Home3,Inquisitor3,Wards3',
+  'Giant Vermin':'O4',
+  'Glyph Of Warding':'Home3,Inquisitor3,O3,Wards3',
   'Goodberry':'Seasons1',
   'Grasping Hand':'Ferocity7,Resolve7',
-  'Greater Command':'Inevitable5,Inquisitor5,Leadership5,Martyr5,Tactics5',
-  'Greater Dispel Magic':'Freedom6,Inquisitor6',
-  'Greater Glyph Of Warding':'Inquisitor6,Language6',
+  'Greater Command':'Inevitable5,Inquisitor5,Leadership5,Martyr5,O5,Tactics5',
+  'Greater Dispel Magic':'Freedom6,Inquisitor6,O6',
+  'Greater Glyph Of Warding':'Inquisitor6,Language6,O6',
   'Greater Heroism':'Heroism6',
   'Greater Invisibility':'Inquisitor4',
-  'Greater Magic Weapon':'Inquisitor3',
-  'Greater Planar Ally':'Tactics8',
-  'Greater Restoration':'Life7',
+  'Greater Magic Weapon':'Inquisitor3,O4',
+  'Greater Planar Ally':'O8,Tactics8',
+  'Greater Restoration':'Life7,O7',
+  'Greater Scrying':'O7',
   'Greater Shadow Evocation':'Loss8,Night8',
+  'Greater Spell Immunity':'O8',
   'Greater Teleport':'Exploration7,Trade7',
   'Guards And Wards':'Home7,Wards6',
-  'Guidance':'Inquisitor0',
+  'Guidance':'Inquisitor0,O0',
   'Gust Of Wind':'Catastrophe2,Wind2',
-  'Hallow':'Inquisitor5',
+  'Hallow':'Inquisitor5,O5',
   'Halt Undead':'Inquisitor3',
-  'Harm':'Catastrophe6,Decay6,Inquisitor6',
-  'Heal':'Inquisitor6,Life6,Restoration6,Resurrection6',
+  'Harm':'Catastrophe6,Decay6,Inquisitor6,O6',
+  'Heal':'Inquisitor6,Life6,O6,Restoration6,Resurrection6',
   'Heat Metal':'Light2,Metal2',
-  "Heroes' Feast":'Family6,Home6,Inquisitor6,Resolve6',
+  'Helping Hand':'O3',
+  "Heroes' Feast":'Family6,Home6,Inquisitor6,O6,Resolve6',
   'Heroism':'Heroism3,Inquisitor3,Love4',
-  'Hide From Undead':'Inquisitor1',
+  'Hide From Undead':'Inquisitor1,O1',
   'Hold Animal':'Fur2',
   'Hold Monster':'Inquisitor4',
-  'Hold Person':'Inquisitor2',
-  'Holy Aura':'Agathion8,"Archon Good8","Azata Good8",Heroism8,Honor8',
-  'Holy Smite':'Agathion4,"Archon Good4","Azata Good4",Heroism4,Honor4,Inquisitor4',
+  'Hold Person':'Inquisitor2,O2',
+  'Holy Aura':'Agathion8,"Archon Good8","Azata Good8",Heroism8,Honor8,O8',
+  'Holy Smite':'Agathion4,"Archon Good4","Azata Good4",Heroism4,Honor4,Inquisitor4,O4',
   'Holy Sword':'Heroism7,Honor7',
-  'Holy Word':'Agathion7,"Archon Good7","Azata Good7",Inquisitor6',
+  'Holy Word':'Agathion7,"Archon Good7","Azata Good7",Inquisitor6,O7',
   'Horrid Wilting':'Bones8,Ice8,Oceans8',
   'Hypnotic Pattern':'Heavens2',
   'Ice Storm':'Ice5,Oceans5,Seasons5',
   'Identify':'Divine1,Lore1',
-  'Imbue With Spell Ability':'Divine4,Family4,Home4',
-  'Implosion':'Catastrophe9,Rage9',
+  'Imbue With Spell Ability':'Divine4,Family4,Home4,O4',
+  'Implosion':'Catastrophe9,O9,Rage9',
   'Incendiary Cloud':'Ash8,Flame8,Smoke8',
-  'Inflict Critical Wounds':'Catastrophe4,Inquisitor4,Rage4',
-  'Inflict Light Wounds':'Inquisitor1',
-  'Inflict Moderate Wounds':'Inquisitor2',
-  'Inflict Serious Wounds':'Inquisitor3',
+  'Inflict Critical Wounds':'Catastrophe4,Inquisitor4,O4,Rage4',
+  'Inflict Light Wounds':'Inquisitor1,O1',
+  'Inflict Moderate Wounds':'Inquisitor2,O2',
+  'Inflict Serious Wounds':'Inquisitor3,O3',
   'Insanity':'Insanity7,Love7,Lust7,Nightmare7',
+  'Insect Plague':'O5',
   'Instant Summons':'Language7,Wards7',
   'Invisibility':'Deception2,Inquisitor2,Thievery2',
-  'Invisibility Purge':'Inquisitor3',
+  'Invisibility Purge':'Inquisitor3,O3',
   'Iron Body':'Metal8',
   'Keen Edge':'Inquisitor3,Murder3',
   'Knock':'Inquisitor2',
   'Legend Lore':'Inquisitor6,Lore4,Memory7,Thought7',
   'Lesser Confusion':'Insanity1,Nightmare1,Protean1',
   'Lesser Geas':'Inquisitor4',
+  'Lesser Planar Ally':'O4',
   'Lesser Planar Binding':'Wards5',
-  'Lesser Restoration':'Inquisitor2,Life2',
-  'Light':'Inquisitor0',
+  'Lesser Restoration':'Inquisitor2,Life2,O2',
+  'Light':'Inquisitor0,O0',
   'Limited Wish':'Construct7',
   'Locate Creature':'Exploration4',
-  'Locate Object':'Exploration2,Inquisitor3,Lore3,Thievery3,Trade2',
-  "Mage's Disjunction":'Arcane9',
-  'Magic Aura':'Arcane1',
-  'Magic Circle Against Chaos':'Inquisitor3',
-  'Magic Circle Against Evil':'Inquisitor3',
-  'Magic Circle Against Good':'Inquisitor3',
-  'Magic Circle Against Law':'Inquisitor3',
+  'Locate Object':'Exploration2,Inquisitor3,Lore3,O3,Thievery3,Trade2',
+  "Mage's Disjunction":'Arcana9',
+  'Magic Aura':'Arcana1',
+  'Magic Circle Against Chaos':'Inquisitor3,O3',
+  'Magic Circle Against Evil':'Inquisitor3,O3',
+  'Magic Circle Against Good':'Inquisitor3,O3',
+  'Magic Circle Against Law':'Inquisitor3,O3',
   'Magic Fang':'Fur1',
-  'Magic Mouth':'Arcane2',
-  'Magic Stone':'Caves1,Metal1,Stone1',
-  'Magic Vestment':'Battle3,Inquisitor3,Martyr3,Resolve3,Tactics3',
-  'Magic Weapon':'Blood1,Inquisitor1,Tactics1',
+  'Magic Mouth':'Arcana2',
+  'Magic Stone':'Caves1,Metal1,O1,Stone1',
+  'Magic Vestment':'Battle3,Inquisitor3,Martyr3,O3,Resolve3,Tactics3',
+  'Magic Weapon':'Blood1,Inquisitor1,O1,Tactics1',
   'Major Creation':'Construct6,Toil6',
-  'Mark Of Justice':'Inquisitor5',
-  "Mass Bull's Strength":'Battle6,Ferocity6',
-  'Mass Cure Critical Wounds':'Family8,Home8,Restoration8,Resurrection8',
-  'Mass Cure Light Wounds':'Inquisitor5',
-  'Mass Cure Moderate Wounds':'Inquisitor6',
-  'Mass Heal':'Life8,Restoration9',
-  'Mass Inflict Light Wounds':'Inquisitor5',
-  'Mass Inflict Moderate Wounds':'Inquisitor6',
-  'Mass Inflict Serious Wounds':'Blood7',
+  'Make Whole':'O2',
+  'Mark Of Justice':'Inquisitor5,O5',
+  "Mass Bear's Endurance":'O6',
+  "Mass Bull's Strength":'Battle6,Ferocity6,O6',
+  'Mass Cure Critical Wounds':'Family8,Home8,O8,Restoration8,Resurrection8',
+  'Mass Cure Light Wounds':'Inquisitor5,O5',
+  'Mass Cure Moderate Wounds':'Inquisitor6,O6',
+  'Mass Cure Serious Wounds':'O7',
+  "Mass Eagle's Splendor":'O6',
+  'Mass Heal':'Life8,O9,Restoration9',
+  'Mass Inflict Critical Wounds':'O8',
+  'Mass Inflict Light Wounds':'Inquisitor5,O5',
+  'Mass Inflict Moderate Wounds':'Inquisitor6,O6',
+  'Mass Inflict Serious Wounds':'Blood7,O7',
   'Mass Invisibility':'Deception8,Thievery8',
-  "Mass Owl's Wisdom":'Lore6',
-  'Meld Into Stone':'Stone3',
+  "Mass Owl's Wisdom":'Lore6,O6',
+  'Meld Into Stone':'O3,Stone3',
+  'Mending':'O0',
   'Meteor Swarm':'Heavens9',
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8',
   'Minor Creation':'Construct4,Toil4',
-  'Miracle':'Curse9,Divine9,Family9,Fate9,Home9',
+  'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9',
   'Mirror Image':'Deception3',
   'Mislead':'Deception6,Fate6,Thievery6',
   'Modify Memory':'Loss6,Memory6',
   'Moment Of Prescience':'Curse8,Fate8,Lore8,Memory8',
-  'Neutralize Poison':'Inquisitor4,Life3,Restoration4',
+  'Neutralize Poison':'Inquisitor4,Life3,O4,Restoration4',
   'Nightmare':'Insanity5,Night6,Nightmare5',
   'Nondetection':'Inquisitor3',
-  'Obscure Object':'Inquisitor3',
-  'Obscuring Mist':'Cloud1,Ice1,Loss1,Oceans1,Storms1',
-  "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4',
+  'Obscure Object':'Inquisitor3,O3',
+  'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1',
+  "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
   'Overland Flight':'Exploration5,Heavens5',
+  "Owl's Wisdom":'O2',
   'Phantasmal Killer':'Nightmare4',
   'Phase Door':'Exploration8,Trade8',
-  'Planar Ally':'Agathion6,"Archon Good6","Archon Law6","Azata Chaos6","Azata Good6"',
+  'Planar Ally':'Agathion6,"Archon Good6","Archon Law6","Azata Chaos6","Azata Good6",O6',
   'Planar Binding':'Daemon6,"Demon Chaos6","Demon Evil6","Devil Evil6","Devil Law6",Inevitable6,Protean6',
-  'Plane Shift':'Freedom5',
+  'Plane Shift':'Freedom5,O5',
   'Plant Growth':'Growth3',
-  'Poison':'Decay4',
+  'Poison':'Decay4,O4',
   'Polar Ray':'Ice9',
   'Polymorph Any Object':'Construct8',
   'Power Word Blind':'Loss7,Night7,Tactics7',
   'Power Word Kill':'Blood9,Tactics9',
   'Power Word Stun':'Blood8',
-  'Prayer':'"Archon Good3","Archon Law3",Inquisitor3,Leadership3',
+  'Prayer':'"Archon Good3","Archon Law3",Inquisitor3,Leadership3,O3',
   'Prismatic Sphere':'Construct9,Day9,Defense9,Light9,Purity9,Toil9',
   'Prismatic Spray':'Heavens7',
   'Produce Flame':'Ash2',
   'Project Image':'Deception7',
-  'Protection From Chaos':'Inevitable1,Inquisitor1,Purity1',
-  'Protection From Energy':'Defense3,Inquisitor3',
-  'Protection From Evil':'Inquisitor1,Purity1',
-  'Protection From Good':'Inquisitor1,Purity1',
-  'Protection From Law':'Inquisitor1,Purity1',
-  'Protection From Spells':'Arcane8,Divine8',
+  'Protection From Chaos':'Inevitable1,Inquisitor1,O1,Purity1',
+  'Protection From Energy':'Defense3,Inquisitor3,O3',
+  'Protection From Evil':'Inquisitor1,O1,Purity1',
+  'Protection From Good':'Inquisitor1,O1,Purity1',
+  'Protection From Law':'Inquisitor1,O1,Purity1',
+  'Protection From Spells':'Arcana8,Divine8',
+  'Purify Food And Drink':'O0',
   'Pyrotechnics':'Smoke2',
   'Rage':'"Demon Chaos3","Demon Evil3",Ferocity3,Insanity3,Nightmare3,Rage3',
   'Rainbow Pattern':'Heavens4',
-  'Raise Dead':'Resurrection5',
-  'Read Magic':'Inquisitor0',
-  'Refuge':'Family7,Freedom7,Revolution7',
-  'Regenerate':'Restoration7',
-  'Remove Blindness/Deafness':'Purity3',
-  'Remove Curse':'Freedom3,Inquisitor3,Revolution3',
-  'Remove Disease':'Inquisitor3,Restoration2',
-  'Remove Fear':'Inquisitor1,Revolution1',
-  'Remove Paralysis':'Freedom2,Inquisitor2',
+  'Raise Dead':'Resurrection5,O5',
+  'Read Magic':'Inquisitor0,O0',
+  'Refuge':'Family7,Freedom7,O7,Revolution7',
+  'Regenerate':'O7,Restoration7',
+  'Remove Blindness/Deafness':'O3,Purity3',
+  'Remove Curse':'Freedom3,Inquisitor3,O3,Revolution3',
+  'Remove Disease':'Inquisitor3,O3,Restoration2',
+  'Remove Fear':'Inquisitor1,O1,Revolution1',
+  'Remove Paralysis':'Freedom2,Inquisitor2,O2',
   'Repel Metal Or Stone':'Stone8',
+  'Repel Vermin':'O4',
   'Repel Wood':'Growth6',
-  'Repulsion':'Inquisitor6,Leadership7,Martyr7,Purity7',
-  'Resist Energy':'Flame2,Inquisitor2',
-  'Resistance':'Inquisitor0',
-  'Restoration':'Inquisitor4,Life4',
-  'Resurrection':'Divine7,Resurrection7',
-  'Righteous Might':'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,Resolve5',
-  'Sanctuary':'Freedom1,Heroism1,Honor1,Inquisitor1',
+  'Repulsion':'Inquisitor6,Leadership7,Martyr7,O7,Purity7',
+  'Resist Energy':'Flame2,Inquisitor2,O2',
+  'Resistance':'Inquisitor0,O0',
+  'Restoration':'Inquisitor4,Life4,O4',
+  'Resurrection':'Divine7,O7,Resurrection7',
+  'Righteous Might':'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5',
+  'Sanctuary':'Freedom1,Heroism1,Honor1,Inquisitor1,O1',
   'Scintillating Pattern':'Insanity8,Nightmare8',
-  'Searing Light':'Honor3,Inquisitor3',
+  'Scrying':'O5',
+  'Searing Light':'Honor3,Inquisitor3,O3',
   'Secret Page':'Wards2',
   'See Invisibility':'Inquisitor2',
-  'Sending':'Inquisitor4',
+  'Sending':'Inquisitor4,O4',
   'Shades':'Night9',
   'Shadow Conjuration':'Loss4,Night4',
   'Shambler':'Decay9,Growth9',
   'Shapechange':'Feather9,Fur9',
+  'Shatter':'O2',
   'Shield':'Defense1',
-  'Shield Of Faith':'Agathion1,Heroism1,Honor1,Inquisitor1',
-  'Shield Of Law':'"Archon Law8","Devil Law8",Inevitable8',
-  'Shield Other':'Home2,Inquisitor2,Martyr2,Purity2',
+  'Shield Of Faith':'Agathion1,Heroism1,Honor1,Inquisitor1,O1',
+  'Shield Of Law':'"Archon Law8","Devil Law8",Inevitable8,O8',
+  'Shield Other':'Home2,Inquisitor2,Martyr2,O2,Purity2',
   'Shout':'Catastrophe5,Rage5',
-  'Silence':'Inquisitor2',
-  'Slay Living':'Ancestors5,Bones5,Souls5,Undead5',
+  'Silence':'Inquisitor2,O2',
+  'Slay Living':'Ancestors5,Bones5,O5,Souls5,Undeath5',
   'Sleep':'Night1',
   'Sleet Storm':'Storms4',
   'Solid Fog':'Cloud4',
+  'Soul Bind':'O9',
+  'Sound Burst':'O2',
   'Speak With Animals':'Feather1,Fur1',
-  'Speak With Dead':'Ancestors3,Inquisitor3,Memory3',
+  'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3',
   'Speak With Plants':'Nature3',
-  'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,Purity4,Resolve4',
-  'Spell Resistance':'Arcane5,Defense5,Inquisitor5',
-  'Spell Turning':'Arcane7,Curse7,Fate7',
+  'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4',
+  'Spell Resistance':'Arcana5,Defense5,Inquisitor5,O5',
+  'Spell Turning':'Arcana7,Curse7,Fate7',
   'Spike Stones':'Caves4,Metal4',
-  'Spiritual Weapon':'Blood2,Inquisitor2',
-  'Stabilize':'Inquisitor0',
+  'Spiritual Weapon':'Blood2,Inquisitor2,O2',
+  'Stabilize':'Inquisitor0,O0',
   'Statue':'Stone7,Toil8',
+  'Status':'O2',
   'Stinking Cloud':'Smoke3',
-  'Stone Shape':'Construct3,Metal3,Toil3',
+  'Stone Shape':'Construct3,Metal3,O3,Toil3',
   'Stone Tell':'Nature6,Stone6',
   'Stoneskin':'Inquisitor4,Stone5',
-  'Storm Of Vengeance':'Battle9,Cloud9,Leadership9,Martyr9,Seasons9,Storms9',
+  'Storm Of Vengeance':'Battle9,Cloud9,Leadership9,Martyr9,O9,Seasons9,Storms9',
   'Suggestion':'"Devil Evil3","Devil Law3",Love3,Lust3',
-  'Summon Monster IX':'Agathion9,"Archon Good9","Archon Law9","Azata Chaos9","Azata Good9",Daemon9,"Demon Chaos9","Demon Evil9","Devil Evil9","Devil Law9",Inevitable9,Protean9',
-  'Summon Monster V':'Flame5,Night5',
+  'Summon Monster I':'O1',
+  'Summon Monster II':'O2',
+  'Summon Monster III':'O3',
+  'Summon Monster IV':'O4',
+  'Summon Monster IX':'Agathion9,"Archon Good9","Archon Law9","Azata Chaos9","Azata Good9",Daemon9,"Demon Chaos9","Demon Evil9","Devil Evil9","Devil Law9",Inevitable9,O9,Protean9',
+  'Summon Monster V':'Flame5,Night5,O5',
+  'Summon Monster VI':'O6',
+  'Summon Monster VII':'O7',
+  'Summon Monster VIII':'O8',
   "Summon Nature's Ally IV":'Feather4,Fur4',
   "Summon Nature's Ally VIII":'Feather8,Fur8',
   'Sunbeam':'Day7,Light7',
   'Sunburst':'Day8,Heavens8,Light8,Seasons8',
-  'Symbol Of Death':'Language8,Wards8',
-  'Symbol Of Persuasion':'Revolution6',
+  'Symbol Of Death':'Language8,O8,Wards8',
+  'Symbol Of Fear':'O6',
+  'Symbol Of Insanity':'O8',
+  'Symbol Of Pain':'O5',
+  'Symbol Of Persuasion':'O6,Revolution6',
+  'Symbol Of Sleep':'O5',
+  'Symbol Of Stunning':'O7',
+  'Symbol Of Weakness':'O7',
   'Telepathic Bond':'Family5,Home5,Inquisitor5,Language5,Thought5',
   'Teleport':'Trade5',
   'Teleportation Circle':'Language9,Wards9',
   'Time Stop':'Deception9,Lore9,Thievery9',
-  'Tongues':'Agathion3,Inquisitor2,Language3,Lore2',
+  'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2',
   'Trap The Soul':'Souls9',
-  'True Resurrection':'Life9,Resurrection9',
-  'True Seeing':'Inquisitor5,Memory5',
+  'True Resurrection':'Life9,O9,Resurrection9',
+  'True Seeing':'Inquisitor5,Memory5,O5',
   'True Strike':'Catastrophe1,Fate1,Inquisitor1,Rage1',
-  'Undeath To Death':'Inquisitor6',
-  'Undetectable Alignment':'Inquisitor2',
-  'Unhallow':'Inquisitor5',
-  'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8"',
-  'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4',
+  'Undeath To Death':'Inquisitor6,O6',
+  'Undetectable Alignment':'Inquisitor2,O2',
+  'Unhallow':'Inquisitor5,O5',
+  'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8",O8',
+  'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
   'Vampiric Touch':'Blood3,Daemon3',
-  'Virtue':'Inquisitor0',
+  'Virtue':'Inquisitor0,O0',
   'Vision':'Lore7',
   'Wail Of The Banshee':'Ancestors9,Bones9',
   'Wall Of Fire':'Ash4,Battle4,Flame4,Smoke4',
   'Wall Of Ice':'Waves4',
   'Wall Of Iron':'Metal6',
-  'Wall Of Stone':'Caves5,Metal5,Stone4',
+  'Wall Of Stone':'Caves5,Metal5,O5,Stone4',
   'Wall Of Thorns':'Blood5,Decay5',
-  'Water Breathing':'Ice3,Waves3',
-  'Water Walk':'Oceans3',
+  'Water Breathing':'Ice3,O3,Waves3',
+  'Water Walk':'O3,Oceans3',
   'Waves Of Exhaustion':'Ancestors8,Souls8,Toil7',
   'Waves Of Fatigue':'Toil5',
   'Weird':'Insanity9,Nightmare9',
   'Whirlwind':'Cloud8,Storms8,Wind8',
   'Whispering Wind':'Inquisitor2,Wind1',
-  'Wind Walk':'Wind6',
-  'Wind Wall':'Cloud2,Wind2',
+  'Wind Walk':'O6,Wind6',
+  'Wind Wall':'Cloud2,O3,Wind2',
   'Wood Shape':'Construct2,Toil2',
-  'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,Protean7',
-  'Zone Of Truth':'Honor2,Inquisitor2'
+  'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Protean7',
+  'Word Of Recall':'O6',
+  'Zone Of Truth':'Honor2,Inquisitor2,O2'
 };
 PFAPG.TRAITS = {
   // Already declared in Pathfinder.js
@@ -4444,16 +4494,16 @@ PFAPG.CLASSES = {
     'CasterLevelArcane=levels.Oracle ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
-      'C0:1=4;2=5;4=6;6=7;8=8;10=9,' +
-      'C1:1=3;2=4;3=5;4=6,' +
-      'C2:4=3;5=4;6=5;7=6,' +
-      'C3:6=3;7=4;8=5;9=6,' +
-      'C4:8=3;9=4;10=5;11=6,' +
-      'C5:10=3;11=4;12=5;13=6,' +
-      'C6:12=3;13=4;14=5;15=6,' +
-      'C7:14=3;15=4;16=5;17=6,' +
-      'C8:16=3;17=4;18=5;19=6,' +
-      'C9:18=3;19=4;20=6 ' +
+      'O0:1=4;2=5;4=6;6=7;8=8;10=9,' +
+      'O1:1=3;2=4;3=5;4=6,' +
+      'O2:4=3;5=4;6=5;7=6,' +
+      'O3:6=3;7=4;8=5;9=6,' +
+      'O4:8=3;9=4;10=5;11=6,' +
+      'O5:10=3;11=4;12=5;13=6,' +
+      'O6:12=3;13=4;14=5;15=6,' +
+      'O7:14=3;15=4;16=5;17=6,' +
+      'O8:16=3;17=4;18=5;19=6,' +
+      'O9:18=3;19=4;20=6 ' +
     'Skills=' +
       'Craft,Diplomacy,Heal,"Knowledge (History)","Knowledge (Planes)",' +
       '"Knowledge (Religion)",Profession,"Sense Motive",Spellcraft',
@@ -4586,7 +4636,7 @@ PFAPG.DEITIES = {
   'Abadar':
     'Domain=Defense,Inevitable,Leadership,Martyr,Metal,Trade',
   'Asmodeus':
-    'Domain=Arcane,Ash,Deception,"Devil Evil","Devil Law",Divine,Smoke',
+    'Domain=Arcana,Ash,Deception,"Devil Evil","Devil Law",Divine,Smoke',
   'Calistria':
     'Domain="Azata Chaos",Curse,Deception,Lust,Memory,Thievery',
   'Cayden Cailean':
@@ -4606,7 +4656,7 @@ PFAPG.DEITIES = {
   'Lamashtu':
     'Domain=Deception,"Demon Chaos","Demon Evil",Ferocity,Insanity,Nightmare,Thievery',
   'Nethys':
-    'Domain=Arcane,Catastrophe,Divine,Defense,Thought,Wards',
+    'Domain=Arcana,Catastrophe,Divine,Defense,Thought,Wards',
   'Norgorber':
     'Domain=Daemon,Deception,Memory,Murder,Thievery,Thought',
   'Pharasma':
@@ -4620,9 +4670,9 @@ PFAPG.DEITIES = {
   'Torag':
     'Domain="Archon Good","Archon Law",Caves,Construct,Defense,Metal,Toil',
   'Urgathoa':
-    'Domain=Blood,Daemon,Divine,Ferocity,Murder,Undead',
+    'Domain=Blood,Daemon,Divine,Ferocity,Murder,Undeath',
   'Zon-Kuthon':
-    'Domain=Catastrophe,"Devil Evil","Devil Law",Loss,Murder,Night,Undead'
+    'Domain=Catastrophe,"Devil Evil","Devil Law",Loss,Murder,Night,Undeath'
 };
 
 /* Defines rules related to animal companions and familiars. */
@@ -4844,6 +4894,159 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Bard') {
+    rules.defineRule('bardHasBardicKnowledge',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Arcane Strike', '=', '0',
+      'bardFeatures.Eye For Detail', '=', '0',
+      'bardFeatures.Heraldic Expertise', '=', '0',
+      'bardFeatures.Magical Talent', '=', '0',
+      'bardFeatures.Master Of Deception', '=', '0',
+      'bardFeatures.Streetwise', '=', '0',
+      'bardFeatures.World Traveler', '=', '0'
+    );
+    rules.defineRule('bardHasCountersong',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Gladhanding', '=', '0',
+      'bardFeatures.Improved Counterspell', '=', '0',
+      'bardFeatures.Rallying Cry', '=', '0'
+    );
+    rules.defineRule('bardHasDeadlyPerformance',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Spell Catching', '=', '0'
+    );
+    rules.defineRule('bardHasDirgeOfDoom',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Glorious Epic', '=', '0',
+      'bardFeatures.Spell Suppression', '=', '0'
+    );
+    rules.defineRule('bardHasFascinate',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Inspiring Blow', '=', '0'
+    );
+    rules.defineRule('bardHasFrighteningTune',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Metamagic Mastery', '=', '0',
+      'bardFeatures.Scandal', '=', '0'
+    );
+    rules.defineRule('bardHasInspireCompetence',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Harmless Performer', '=', '0',
+      'bardFeatures.Mockery', '=', '0',
+      'bardFeatures.Sea Shanty', '=', '0',
+      'bardFeatures.Trap Sense', '=', '0'
+    );
+    rules.defineRule('bardHasInspireCourage',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Careful Teamwork', '=', '0',
+      'bardFeatures.Disappearing Act', '=', '0',
+      'bardFeatures.Dweomercraft', '=', '0',
+      'bardFeatures.Naturalist', '=', '0',
+      'bardFeatures.Satire', '=', '0',
+      'bardFeatures.Stealspell', '=', '0'
+    );
+    rules.defineRule('bardHasInspireGreatness',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Dramatic Subtext', '=', '0',
+      'bardFeatures.Madcap Prank', '=', '0',
+      'bardFeatures.True Confession', '=', '0'
+    );
+    rules.defineRule('bardHasInspireHeroics',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Greater Stealspell', '=', '0',
+      'bardFeatures.Show Yourselves', '=', '0',
+      'bardFeatures.Slip Through The Crowd', '=', '0'
+    );
+    rules.defineRule('bardHasJackOfAllTrades',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Arcane Armor', '=', '0',
+      'bardFeatures.Song Of The Fallen', '=', '0',
+      'bardFeatures.Wand Mastery', '=', '0',
+      'bardFeatures.Wide Audience', '=', '0'
+    );
+    rules.defineRule('bardHasLoreMaster',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Arcane Bond', '=', '0',
+      'bardFeatures.Quick Change', '=', '0',
+      'bardFeatures.Sneak Attack', '=', '0'
+    );
+    rules.defineRule('bardHasMassSuggestion',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Battle Song', '=', '0',
+      'bardFeatures.Call The Storm', '=', '0',
+      'bardFeatures.Mass Bladethirst', '=', '0',
+      'bardFeatures.Pedantic Lecture', '=', '0'
+    );
+    rules.defineRule('bardHasSoothingPerformance',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Berserkergang', '=', '0'
+    );
+    rules.defineRule('bardHasSuggestion',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Bladethirst', '=', '0',
+      'bardFeatures.Incite Rage', '=', '0',
+      'bardFeatures.Lamentable Belaborment', '=', '0',
+      'bardFeatures.Slumber Song', '=', '0',
+      'bardFeatures.Whistle The Wind', '=', '0'
+    );
+    rules.defineRule('bardHasVersatilePerformance',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Arcane Investigation', '=', '0',
+      'bardFeatures.Expanded Repertoire', '=', '0',
+      'bardFeatures.Familiar', '=', '0',
+      'bardFeatures.Lore Master', '=', '0',
+      'bardFeatures.Sneakspell', '=', '0'
+    );
+    rules.defineRule('bardHasWellVersed',
+      'levels.Bard', '=', '1',
+      'bardFeatures.Arcane Insight', '=', '0',
+      'bardFeatures.Extended Performance', '=', '0',
+      'bardFeatures.Magic Lore', '=', '0',
+      'bardFeatures.Sea Legs', '=', '0'
+    );
+    rules.defineRule
+      ('bardFeatures.Bardic Knowledge', 'bardHasBardicKnowledge', '?', null);
+    rules.defineRule
+      ('bardFeatures.Countersong', 'bardHasCountersong', '?', null);
+    rules.defineRule('bardFeatures.Deadly Performance',
+      'bardHasDeadlyPerformance', '?', null
+    );
+    rules.defineRule
+      ('bardFeatures.Dirge Of Doom', 'bardHasDirgeOfDoom', '?', null);
+    rules.defineRule('bardFeatures.Fascinate', 'bardHasFascinate', '?', null);
+    rules.defineRule
+      ('bardFeatures.Frightening Tune', 'bardHasFrighteningTune', '?', null);
+    rules.defineRule('bardFeatures.Inspire Competence',
+      'bardHasInspireCompetence', '?', null
+    );
+    rules.defineRule
+      ('bardFeatures.Inspire Courage', 'bardHasInspireCourage', '?', null);
+    rules.defineRule
+      ('bardFeatures.Inspire Greatness', 'bardHasInspireGreatness', '?', null);
+    rules.defineRule
+      ('bardFeatures.Inspire Heroics', 'bardHasInspireHeroics', '?', null);
+    rules.defineRule
+      ('bardFeatures.Jack-Of-All-Trades', 'bardHasJackOfAllTrades', '?', null);
+    rules.defineRule
+      ('bardFeatures.Lore Master', 'bardHasLoreMaster', '?', null);
+    rules.defineRule
+      ('bardFeatures.Mass Suggestion', 'bardHasMassSuggestion', '?', null);
+    rules.defineRule('bardFeatures.Soothing Performance',
+      'bardHasSoothingPerformance', '?', null
+    );
+    rules.defineRule
+      ('bardFeatures.Suggestion', 'bardHasSuggestion', '?', null);
+    rules.defineRule('bardFeatures.Versatile Performance',
+      'bardHasVersatilePerformance', '?', null
+    );
+    rules.defineRule
+      ('bardFeatures.Well-Versed', 'bardHasWellVersed', '?', null);
+    rules.defineRule('featureNotes.arcaneArmor',
+      classLevel, '=', 'source>=16 ? "heavy" : "medium"'
+    );
+    rules.defineRule('magicNotes.arcaneArmor',
+      classLevel, '=', 'source>=16 ? "heavy" : "medium"'
+    );
+    // TODO implement magicNotes.arcaneArmor
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
   } else if(name == 'Cleric') {
