@@ -586,7 +586,7 @@ PFAPG.FEATURES = {
     'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}+%{strengthModifier} HP during rage"',
   'Flesh Wound':
     'Section=combat ' +
-    'Note="Successful DC damge Fort reduces damage to half nonlethal 1/rage"',
+    'Note="Successful DC damage Fort reduces damage to half nonlethal 1/rage"',
   'Good For What Ails You':
     'Section=combat ' +
     'Note="Alcohol gives save vs. condition or poison during rage"',
@@ -691,74 +691,167 @@ PFAPG.FEATURES = {
     'Section=feature Note="Can locate invisible creatures w/in line of sight"',
 
   'Rallying Cry':
-    'Section=combat ' +
-    'Note="R30\' Allies may use self Intimidate check for save vs. fear"',
+    'Section=magic ' +
+    'Note="R30\' Performance gives allies use of self Intimidate check for save vs. fear and despair"',
   'Bladethirst':
-    'Section=combat ' +
-    'Note="R30\' May give weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
+    'Section=magic ' +
+    'Note="R30\' Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
   'Mass Bladethirst':
-    'Section=combat ' +
-    'Note="R30\' May give attack bonus to weapons of multiple allies"',
+    'Section=magic ' +
+    'Note="R30\' Performance gives +1 or better attack bonus to weapons of multiple allies"',
   'Arcane Armor':
     'Section=feature,magic ' +
     'Note=' +
       '"Has %V Armor Proficiency features",' +
       '"No arcane spell failure in %V armor"',
-  'Naturalist':'Section=feature Note="FILL"',
-  'Lamentable Belaborment':'Section=feature Note="FILL"',
-  'Pedantic Lecture':'Section=feature Note="FILL"',
+  'Naturalist':
+    'Section=magic ' +
+    'Note="R30\' Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of identified foes"',
+  'Lamentable Belaborment':
+    'Section=magic ' +
+    'Note="Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Pedantic Lecture':
+    'Section=magic ' +
+    'Note="Performance inflicts choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   // TODO Lore Master modify level
-  'Magic Lore':'Section=feature Note="FILL"',
+  'Magic Lore':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+4 vs. magical traps and language- and symbol-based effects",' +
+      '"+%{levels.Bard//2} Spellcraft (identify items and decipher scrolls)/May use Disable Device on magical traps"',
   // TODO Jack-Of-All-Trades modify level
-  'Probable Path':'Section=feature Note="FILL"',
-  'Satire':'Section=feature Note="FILL"',
-  'Mockery':'Section=feature Note="FILL"',
-  'Glorious Epic':'Section=feature Note="FILL"',
-  'Scandal':'Section=feature Note="FILL"',
-  'Heraldic Expertise':'Section=feature Note="FILL"',
-  'Wide Audience':'Section=feature Note="FILL"',
-  'Careful Teamwork':'Section=feature Note="FILL"',
-  'True Confession':'Section=feature Note="FILL"',
-  'Show Yourselves':'Section=feature Note="FILL"',
-  'Eye For Detail':'Section=feature Note="FILL"',
-  'Arcane Insight':'Section=feature Note="FILL"',
-  'Arcane Investigation':'Section=feature Note="FILL"',
-  'Dweomercraft':'Section=feature Note="FILL"',
-  'Spell Suppression':'Section=feature Note="FILL"',
-  // Metamagic Mastery as per core?
-  'Magical Talent':'Section=feature Note="FILL"',
-  'Extended Performance':'Section=feature Note="FILL"',
-  'Expanded Repertoire':'Section=feature Note="FILL"',
-  'Wand Mastery':'Section=feature Note="FILL"',
-  'Stealspell':'Section=feature Note="FILL"',
-  'Slumber Song':'Section=feature Note="FILL"',
-  'Dramatic Subtext':'Section=feature Note="FILL"',
-  'Greater Stealspell':'Section=feature Note="FILL"',
-  'Mass Slumber Song':'Section=feature Note="FILL"',
-  'Spell Catching':'Section=feature Note="FILL"',
-  'Master Of Deception':'Section=feature Note="FILL"',
-  'Sneakspell':'Section=feature Note="FILL"',
-  // Trap Sense as per core?
-  // Sneak Attack as per core?
-  'Inspiring Blow':'Section=feature Note="FILL"',
-  'Incite Rage':'Section=feature Note="FILL"',
-  'Song Of The Fallen':'Section=feature Note="FILL"',
-  'Boomerang':'Section=feature Note="FILL"',
-  'Battle Song':'Section=feature Note="FILL"',
-  'Sea Shanty':'Section=feature Note="FILL"',
-  'Still Water':'Section=feature Note="FILL"',
-  'Whistle The Wind':'Section=feature Note="FILL"',
-  'Call The Storm':'Section=feature Note="FILL"',
-  'World Traveler':'Section=feature Note="FILL"',
-  // Familiar as per core?
-  'Sea Legs':'Section=feature Note="FILL"',
-  'Disappearing Act':'Section=feature Note="FILL"',
-  'Harmless Performance':'Section=feature Note="FILL"',
-  'Madcap Prank':'Section=feature Note="FILL"',
-  'Slip Through The Crowd':'Section=feature Note="FILL"',
-  'Gladhanding':'Section=feature Note="FILL"',
-  'Streetwise':'Section=feature Note="FILL"',
-  'Quick Change':'Section=feature Note="FILL"',
+  'Probable Path':
+    'Section=feature ' +
+    'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
+  'Satire':
+    'Section=magic ' +
+    'Note="Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm of foes w/in hearing"',
+  'Mockery':
+    'Section=magic ' +
+    'Note="Performance inflicts -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
+  'Glorious Epic':
+    'Section=magic ' +
+    'Note="Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
+  'Scandal':
+    'Section=magic ' +
+    'Note="R30\' Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
+  'Heraldic Expertise':
+    'Section=skill ' +
+    'Note="+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)/May reroll 1/dy"',
+  'Wide Audience':
+    'Section=magic ' +
+    'Note="Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{60+(levels.Bard-5)//5*10} radius, or +%{(levels.Bard-5)//5} targets"',
+  'Careful Teamwork':
+    'Section=magic ' +
+    'Note="R30\' 3 rd Performance gives allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
+  'True Confession':
+    'Section=skill Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 1} rd Performance gives automatic success on Sense Motive or to notice compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Show Yourselves':
+    'Section=combat ' +
+    'Note="$30\' Performance compels foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Eye For Detail':
+    'Section=skill ' +
+    'Note="+%V Diplomacy (gather information)/+%V Knowledge (Local)/+%V Perception/+%V Sense Motive"',
+  'Arcane Insight':
+    'Section=magic,save,skill ' +
+    'Note=' +
+      '"+4 caster level to overcome protection vs. divination",' +
+      '"+4 vs. illusions",' +
+      '"May find and disable magical traps/+4 vs. disguises"',
+  'Arcane Investigation':'Section=magic Note="Has access to additional spells"',
+  'Dweomercraft':
+    'Section=magic ' +
+    'Note="Performance gives allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
+  'Spell Suppression':
+    'Section=magic ' +
+    'Note="May use Performance to counter spells as per <i>Dispel Magic</i>"',
+  'Metamagic Mastery (Magician)':
+    'Section=magic Note="May use Performance to apply metamagic feat to spell"',
+  'Magical Talent':
+    'Section=skill ' +
+    'Note="+%V Knowledge (Arcana)/+%V Spellcraft/+%V Use Magic Device"',
+  'Extended Performance':
+    'Section=magic Note="May expend spell slot to extend Performance effects"',
+  'Expanded Repertoire':'Section=magic Note="Has access to additional spells"',
+  'Wand Mastery':
+    'Section=magic ' +
+    'Note="Uses charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
+  'Stealspell':
+    'Section=magic ' +
+    'Note="Touch transfers spell to self (DC %{10+levels.Bard+charismaModifier} Will neg) for duration of Performance"',
+  'Slumber Song':
+    'Section=magic ' +
+    'Note="May cause one fascinated target to sleep or follow suggestion (DC %{10+levels.Bard//2+charismaModifier} Will neg"',
+  'Dramatic Subtext':
+    'Section=magic ' +
+    'Note="2 rd Performance allows spell casting w/out visual or audible components (Perception vs. Sleight Of Hand to detect casting)"',
+  'Greater Stealspell':
+    'Section=magic ' +
+    'Note="Successful Stealspell reveals target\'s spells; may instead steal %{levels.Bard//2} SR"',
+  'Mass Slumber Song':
+    'Section=magic ' +
+    'Note="May cause all fascinated targets to sleep or follow suggestion (DC %{10+levels.Bard//2+charismaModifier} Will neg"',
+  'Spell Catching':
+    'Section=magic ' +
+    'Note="Successful caster level check (DC 10 + spell level) negates foe targeted spell and allows recast"',
+  'Master Of Deception':
+    'Section=skill ' +
+    'Note="+%V Bluff/+%V Sleight Of Hand/+%V Stealth/May disarm magical traps"',
+  'Sneakspell':
+    'Section=magic ' +
+    'Note="+%{(levels.Bard+6)//8} DC and Performance vs. flat-footed foe"',
+  'Inspiring Blow':
+    'Section=combat ' +
+    'Note="Performance following critical hit gives self %{charismaModifier>?0} temporary HP and allies +1 attack for 1 rd"',
+  'Incite Rage':
+    'Section=magic ' +
+    'Note="R30\' Performance affects target as <i>Rage</i> spell"',
+  'Song Of The Fallen':
+    'Section=magic ' +
+    'Note="Performance summons barbarian warriors as %{source>=19 ? \'iron\' : source>=16 ? \'bronze\' : source>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
+  'Boomerang':
+    'Section=magic ' +
+    'Note="Performance suppresses pain, stun, and fear effects on target and gives DR5/-"',
+  'Battle Song':
+    'Section=magic ' +
+    'Note="R30\' Performance affects all allies as <i>Rage</i> spell"',
+  'Sea Shanty':
+    'Section=skill ' +
+    'Note="R30\' Allies may use self Perform check to save vs. exhaustion, fatigue, nausea, and sickening"',
+  'Still Water':
+    'Section=magic ' +
+    'Note="R30\' Performance gives -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard)"',
+  'Whistle The Wind':
+   'Section=magic Note="Performance acts as <i>Gust Of Wind</i> spell"',
+  'Call The Storm':
+    'Section=magic Note="Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell"',
+  'World Traveler (Sea Singer)':
+    'Section=skill ' +
+    'Note="+%V Knowledge (Geography)/+%V Knowledge (Local)/+%V Knowledge (Nature)/+%V Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
+  'Sea Legs':
+    'Section=combat,save ' +
+    'Note="+4 CMD vs. grapple, overrun, and trip",' +
+    '"+4 vs. air, water, and knock prone"',
+  'Disappearing Act':
+    'Section=magic ' +
+    'Note="R30\' Performance causes creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Harmless Performance':
+    'Section=magic ' +
+    'Note="Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Madcap Prank':
+    'Section=magic ' +
+    'Note="R30\' Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg)"',
+  'Slip Through The Crowd':
+    'Section=magic Note="Disappearing Act allows affected allies to attack"',
+  'Gladhanding':
+    'Section=skill ' +
+    'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
+  'Streetwise':
+    'Section=skill ' +
+    'Note="+%V Bluff/+%V Disguise/+%V Knowledge (Local)/+%V Sleight Of Hand/+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
+  'Quick Change':
+    'Section=skill ' +
+    'Note="May don disguise as standard action (-5 check)/May take 10 on Bluff and Disguise/May use Bluff as diversion to hide"',
 
   'Protective Aura':
     'Section=magic ' +
@@ -2330,7 +2423,9 @@ PFAPG.PATHS = {
       '"1:Arcane Strike","1:Rallying Cry",6:Bladethirst,' +
       '"18:Mass Bladethirst","2:Combat Casting",6:Disruptive,10:Spellbreaker,' +
       '"14:Penetrating Strike","18:Greater Penetrating Strike",' +
-      '"5:Arcane Bond","10:Arcane Armor"',
+      '"5:Arcane Bond","10:Arcane Armor" ' +
+    'Selectables=' +
+      '"5:Bonded Object:Arcane Bond"',
   'Archivist':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -2354,9 +2449,12 @@ PFAPG.PATHS = {
     'Group=Bard ' +
     'Level=levels.Bard ' +
     'Features=' +
-      '1:Dweomercraft,"8:Spell Suppression","14:Metamagic Mastery",' +
-      '"1:Magical Talent","1:Improved Counterspell","2:Extended Performance",' +
-      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery"',
+      '1:Dweomercraft,"8:Spell Suppression",' +
+      '"14:Metamagic Mastery (Magician)","1:Magical Talent",' +
+      '"1:Improved Counterspell","2:Extended Performance",' +
+      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery" ' +
+    'Selectables=' +
+      '"5:Bonded Object:Arcane Bond","5:Familiar:Arcane Bond"',
   'Sandman':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -2375,7 +2473,8 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '"1:Sea Shanty","3:Still Water","6:Whistle The Wind",' +
-      '"18:Call The Storm","1:World Traveler",2:Familiar,"2:Sea Legs"',
+      '"18:Call The Storm","1:World Traveler (Sea Singer)",2:Familiar,' +
+      '"2:Sea Legs"',
   'Street Performer':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -4902,7 +5001,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Magical Talent', '=', '0',
       'bardFeatures.Master Of Deception', '=', '0',
       'bardFeatures.Streetwise', '=', '0',
-      'bardFeatures.World Traveler', '=', '0'
+      'bardFeatures.World Traveler (Sea Singer)', '=', '0'
     );
     rules.defineRule('bardHasCountersong',
       'levels.Bard', '=', '1',
@@ -4925,7 +5024,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('bardHasFrighteningTune',
       'levels.Bard', '=', '1',
-      'bardFeatures.Metamagic Mastery', '=', '0',
+      'bardFeatures.Metamagic Mastery (Magician)', '=', '0',
       'bardFeatures.Scandal', '=', '0'
     );
     rules.defineRule('bardHasInspireCompetence',
@@ -4991,6 +5090,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasVersatilePerformance',
       'levels.Bard', '=', '1',
       'bardFeatures.Arcane Investigation', '=', '0',
+      'bardFeatures.Combat Casting', '=', '0',
       'bardFeatures.Expanded Repertoire', '=', '0',
       'bardFeatures.Familiar', '=', '0',
       'bardFeatures.Lore Master', '=', '0',
@@ -4999,6 +5099,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasWellVersed',
       'levels.Bard', '=', '1',
       'bardFeatures.Arcane Insight', '=', '0',
+      'bardFeatures.Combat Casting', '=', '0',
       'bardFeatures.Extended Performance', '=', '0',
       'bardFeatures.Magic Lore', '=', '0',
       'bardFeatures.Sea Legs', '=', '0'
@@ -5040,15 +5141,55 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('bardFeatures.Well-Versed', 'bardHasWellVersed', '?', null);
+    rules.defineRule('familiarMasterLevel',
+      'seaSingerLevel', '+=', 'source>=2 ? source : null'
+    );
     rules.defineRule('featureNotes.arcaneArmor',
-      classLevel, '=', 'source>=16 ? "heavy" : "medium"'
+      classLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
+    );
+    rules.defineRule('features.Heavy Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', 'source=="Heavy" ? 1 : null'
+    );
+    rules.defineRule('features.Medium Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', '1'
     );
     rules.defineRule('magicNotes.arcaneArmor',
       classLevel, '=', 'source>=16 ? "heavy" : "medium"'
     );
-    // TODO implement magicNotes.arcaneArmor
+    rules.defineRule('magicNotes.arcaneArmor.1',
+      'magicNotes.arcaneArmor', '=', 'source=="heavy" ? -3 : -2',
+      'armorWeight', '+', null
+    );
+    rules.defineRule('magicNotes.arcaneSpellFailure',
+      'magicNotes.simpleSomatics.1', 'v', 'source<=0 ? 0 : null'
+    );
+    rules.defineRule
+      ('saveNotes.trapSense', 'sandmanLevel', '+=', 'Math.floor(source / 3)');
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Bard (Arcane Bond)',
+      'arcaneDuelistLevel', '+=', 'source>=5 ? 1 : null',
+      'magicianLevel', '+=', 'source>=5 ? 1 : null'
+    );
+    rules.defineRule('skillNotes.eyeForDetail',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.heraldicExpertise',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule
+      ('skillNotes.magicalTalent', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('skillNotes.masterOfDeception',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('skillNotes.streetwise',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.worldTraveler(SeaSinger)',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('sneakAttack', 'sandmanLevel', '+=', 'Math.floor(source / 5)');
   } else if(name == 'Cleric') {
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
