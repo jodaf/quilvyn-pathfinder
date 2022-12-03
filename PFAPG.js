@@ -1044,6 +1044,52 @@ PFAPG.FEATURES = {
   'Wind Blast':
     'Section=magic Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
 
+  'Acquatic Adaptation':'Section=feature Note="FILL"',
+  'Natural Swimmer':'Section=feature Note="FILL"',
+  "Resist Ocean's Fury":'Section=feature Note="FILL"',
+  'Seaborn':'Section=feature Note="FILL"',
+  'Deep Diver':'Section=feature Note="FILL"',
+  'Arctic Native':'Section=feature Note="FILL"',
+  'Icewalking':'Section=feature Note="FILL"',
+  'Arctic Endurance':'Section=feature Note="FILL"',
+  'Snowcaster':'Section=feature Note="FILL"',
+  'Flurry Form':'Section=feature Note="FILL"',
+  'Vermin Empathy':'Section=feature Note="FILL"',
+  'Miasma':'Section=feature Note="FILL"',
+  'Blightblooded':'Section=feature Note="FILL"',
+  'Plaguebearer':'Section=feature Note="FILL"',
+  'Cavesense':'Section=feature Note="FILL"',
+  'Tunnelrunner':'Section=feature Note="FILL"',
+  'Lightfoot':'Section=feature Note="FILL"',
+  'Resist Subterranean Corruption':'Section=feature Note="FILL"',
+  'Desert Native':'Section=feature Note="FILL"',
+  'Sandwalker':'Section=feature Note="FILL"',
+  'Desert Endurance':'Section=feature Note="FILL"',
+  'Shaded Vision':'Section=feature Note="FILL"',
+  'Dunemeld':'Section=feature Note="FILL"',
+  'Jungle Guardian':'Section=feature Note="FILL"',
+  'Torrid Endrance':'Section=feature Note="FILL"',
+  'Verdant Sentinel':'Section=feature Note="FILL"',
+  'Mountaineer':'Section=feature Note="FILL"',
+  'Sure-Footed':'Section=feature Note="FILL"',
+  'Spire Walker':'Section=feature Note="FILL"',
+  'Mountain Stance':'Section=feature Note="FILL"',
+  'Mountain Stone':'Section=feature Note="FILL"',
+  'Plains Traveler':'Section=feature Note="FILL"',
+  'Run Like The Wind':'Section=feature Note="FILL"',
+  'Savanna Ambush':'Section=feature Note="FILL"',
+  'Canny Charger':'Section=feature Note="FILL"',
+  'Marshwight':'Section=feature Note="FILL"',
+  'Swamp Strider':'Section=feature Note="FILL"',
+  'Pond Scum':'Section=feature Note="FILL"',
+  'Slippery':'Section=feature Note="FILL"',
+  'Lorekeeper':'Section=feature Note="FILL"',
+  'Resist Temptation':'Section=feature Note="FILL"',
+  'Mental Strength':'Section=feature Note="FILL"',
+  'Totem Transformation':'Section=feature Note="FILL"',
+  'Totemic Summons':'Section=feature Note="FILL"',
+  'Bear Shaman Feat Bonus':'Section=feature Note="FILL"',
+
   // New base classes
   'Acid Bomb':
     'Section=combat ' +
@@ -2423,9 +2469,7 @@ PFAPG.PATHS = {
       '"1:Arcane Strike","1:Rallying Cry",6:Bladethirst,' +
       '"18:Mass Bladethirst","2:Combat Casting",6:Disruptive,10:Spellbreaker,' +
       '"14:Penetrating Strike","18:Greater Penetrating Strike",' +
-      '"5:Arcane Bond","10:Arcane Armor" ' +
-    'Selectables=' +
-      '"5:Bonded Object:Arcane Bond"',
+      '"5:Arcane Bond","10:Arcane Armor"',
   'Archivist':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -2452,9 +2496,7 @@ PFAPG.PATHS = {
       '1:Dweomercraft,"8:Spell Suppression",' +
       '"14:Metamagic Mastery (Bard)","1:Magical Talent (Bard)",' +
       '"1:Improved Counterspell","2:Extended Performance",' +
-      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery" ' +
-    'Selectables=' +
-      '"5:Bonded Object:Arcane Bond"',
+      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery"',
   'Sandman':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -2623,6 +2665,95 @@ PFAPG.PATHS = {
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Warding Rune'),
   'Wind Subdomain':
     Pathfinder.PATHS['Air Domain'].replace('Lightning Arc', 'Wind Blast'),
+
+  'Aquatic Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Acquatic Adaptation","3:Natural Swimmer","4:Resist Ocean\'s Fury",' +
+      '"9:Seaborn","13:Deep Diver"',
+  'Arctic Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Arctic Native","3:Icewalking","4:Arctic Endurance","9:Snowcaster",' +
+      '"13:Flurry Form"',
+  'Blight Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"1:Vermin Empathy","4:Miasma","9:Blightblooded","13:Plaguebearer"',
+  'Cave Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"1:Cavesense","2:Tunnelrunner","3:Lightfoot",' +
+      '"4:Resist Subterranean Corruption"',
+  'Core Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid',
+  'Desert Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Desert Native","3:Sandwalker","4:Desert Endurance",' +
+      '"9:Shaded Vision","13:Dunemeld"',
+  'Jungle Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Jungle Guardian","3:Woodland Stride","4:Torrid Endrance",' +
+      '"13:Verdant Sentinel"',
+  'Mountain Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Mountaineer","3:Sure-Footed","4:Spire Walker","9:Mountain Stance",' +
+      '"13:Mountain Stone"',
+  'Plains Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Plains Traveler","3:Run Like The Wind","4:Savanna Ambush",' +
+      '"9:Canny Charger","13:Evasion"',
+  'Swamp Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Marshwight","3:Swamp Strider","4:Pond Scum","13:Slippery"',
+  'Urban Druid':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Lorekeeper","4:Resist Temptation","6:A Thousand Faces",' +
+      '"9:Mental Strength"',
+  'Bear Shaman':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Totem Transformation","5:Totemic Summons","9:Bear Shaman Feat Bonus"',
+  'Eagle Shaman':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Totem Transformation","5:Totemic Summons",' +
+      '"9:Eagle Shaman Feat Bonus"',
+  'Lion Shaman':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Totem Transformation","5:Totemic Summons","9:Lion Shaman Feat Bonus"',
+  'Serpent Shaman':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Totem Transformation","5:Totemic Summons",' +
+      '"9:Serpent Shaman Feat Bonus"',
+  'Wolf Shaman':
+    'Group="Druid" ' +
+    'Level=levels.Druid ' +
+    'Features=' +
+      '"2:Totem Transformation","5:Totemic Summons","9:Wolf Shaman Feat Bonus"',
 
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -4465,10 +4596,30 @@ PFAPG.CLASSES = {
       '"1:Sandman:Archetype",' +
       '"1:Savage Skald:Archetype",' +
       '"1:Sea Singer:Archetype",' +
-      '"1:Street Performer:Archetype"',
+      '"1:Street Performer:Archetype",' +
+      // Need to list Bonded Object here since it's available via two Archetypes
+      '"1:Bonded Object:Arcane Bond"',
   'Cleric':
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
+  'Druid':
+    'Selectables=' +
+      '"1:Aquatic Druid:Archetype",' +
+      '"1:Arctic Druid:Archetype",' +
+      '"1:Blight Druid:Archetype",' +
+      '"1:Cave Druid:Archetype",' +
+      '"1:Core Druid:Archetype",' +
+      '"1:Desert Druid:Archetype",' +
+      '"1:Jungle Druid:Archetype",' +
+      '"1:Mountain Druid:Archetype",' +
+      '"1:Plains Druid:Archetype",' +
+      '"1:Swamp Druid:Archetype",' +
+      '"1:Urban Druid:Archetype",' +
+      '"1:Bear Shaman:Archetype",' +
+      '"1:Eagle Shaman:Archetype",' +
+      '"1:Lion Shaman:Archetype",' +
+      '"1:Serpent Shaman:Archetype",' +
+      '"1:Wolf Shaman:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -5217,6 +5368,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'levels.Cleric', '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+  } else if(name == 'Druid') {
+    rules.defineRule
+      ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
