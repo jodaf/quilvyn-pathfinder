@@ -1669,7 +1669,7 @@ Pathfinder.FEATURES = {
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="Reroll attack, critical, or check to overcome spell resistance %V/dy"',
-  'Jack-Of-All-Trades':'Section=skill Note="Use any skill untrained%1%2"',
+  'Jack-Of-All-Trades':'Section=skill Note="May use any skill untrained%1%2"',
   'Ki Dodge':'Section=combat Note="Use 1 ki for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="Use 1 ki for +20 Speed"',
@@ -4026,13 +4026,13 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
-      '"1:Nature Sense","1:Spontaneous Druid Spell","1:Wild Empathy",' +
-      '"2:Woodland Stride","3:Trackless Step","4:Resist Nature\'s Lure",' +
-      '"4:Wild Shape","9:Venom Immunity","13:A Thousand Faces",' +
-      '"15:Timeless Body" ' +
+      '"1:Nature Bond","1:Nature Sense","1:Spontaneous Druid Spell",' +
+      '"1:Wild Empathy","2:Woodland Stride","3:Trackless Step",' +
+      '"4:Resist Nature\'s Lure","4:Wild Shape","9:Venom Immunity",' +
+      '"13:A Thousand Faces","15:Timeless Body" ' +
     'Selectables=' +
-      '"1:Animal Companion",' +
-      QuilvynUtils.getKeys(Pathfinder.DRUID_DOMAINS).map(x => '"1:' + x + '"').join(',') + ' ' +
+      '"1:Animal Companion:Nature Bond",' +
+      QuilvynUtils.getKeys(Pathfinder.DRUID_DOMAINS).map(x => '"1:' + x + ':Nature Bond"').join(',') + ' ' +
     'Languages=Druidic ' +
     'CasterLevelDivine=levels.Druid ' +
     'SpellAbility=wisdom ' +
@@ -5298,7 +5298,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.wildShape.2',
       'levels.Druid', '=', 'source==20 ? "unlimited" : Math.floor((source - 2) / 2)'
     );
-    rules.defineRule('selectableFeatureCount.Druid', 'levels.Druid', '=', '1');
+    rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
+      'druidFeatures.Nature Bond', '=', '1'
+    );
     rules.defineRule('skillNotes.wildEmpathy',
       'levels.Druid', '+=', null,
       'charismaModifier', '+', null
