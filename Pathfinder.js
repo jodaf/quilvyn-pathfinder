@@ -5286,7 +5286,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       rules.defineRule('druidHasDomain', 'druidFeatures.' + domain, '=', '1');
     }
     rules.defineRule('magicNotes.wildShape',
-      'levels.Druid', '=',
+      'wildShapeLevel', '=',
         'source < 4 ? null : ' +
         'source < 6 ? "small-medium" : ' +
         'source < 8 ? "tiny-large/small elemental" : ' +
@@ -5294,9 +5294,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'source < 12 ? "diminutive-huge/large elemental/plant" : ' +
         '"diminutive-huge/elemental/plant"'
     );
-    rules.defineRule('magicNotes.wildShape.1', 'levels.Druid', '=', null);
+    rules.defineRule('magicNotes.wildShape.1', 'wildShapeLevel', '=', null);
     rules.defineRule('magicNotes.wildShape.2',
-      'levels.Druid', '=', 'source==20 ? "unlimited" : Math.floor((source - 2) / 2)'
+      'wildShapeLevel', '=', 'source==20 ? "unlimited" : Math.floor((source - 2) / 2)'
     );
     rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
       'druidFeatures.Nature Bond', '=', '1'
@@ -5310,6 +5310,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'druidDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
       );
     }
+    rules.defineRule('wildShapeLevel', 'levels.Druid', '=', null);
 
   } else if(name == 'Fighter') {
 
