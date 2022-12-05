@@ -1047,9 +1047,9 @@ PFAPG.FEATURES = {
   'Aquatic Adaptation':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in aquatic terrain",' +
+      '"+%{levels.Druid//2} Initiative in aquatic terrain",' +
       '"Cannot be tracked in aquatic environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in aquatic terrain/+%V Swim"',
+      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in aquatic terrain"',
   'Natural Swimmer':'Section=ability Note="%V\' Swim speed"',
   "Resist Ocean's Fury":'Section=save Note="+4 vs. water spells and creatures"',
   'Seaborn':
@@ -1059,11 +1059,11 @@ PFAPG.FEATURES = {
       '"Has aquatic subtype and amphibious trait; comfortable down to -50F"',
   'Deep Diver':
     'Section=combat ' +
-    'Note="Has DR %{levels.Druid//2} vs. slashing, piercing, and grappling or crushing spells"',
+    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing"',
   'Arctic Native':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in cold terrain",' +
+      '"+%{levels.Druid//2} Initiative in cold terrain",' +
       '"Cannot be tracked in cold environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in cold terrain"',
   'Icewalking':
@@ -1092,7 +1092,7 @@ PFAPG.FEATURES = {
     'Section=save Note="Immune to disease, sickened, and nauseated"',
   'Plaguebearer':
     'Section=combat ' +
-    'Note="Contact attack inflicts disease on foe (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
+    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
   'Cavesense':
     'Section=skill ' +
     'Note="Knowledge (Dungeoneering) is a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
@@ -1100,13 +1100,13 @@ PFAPG.FEATURES = {
     'Section=ability Note="May move at full speed through narrow passages"',
   'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
   'Resist Subterranean Corruption':
-    'Section=save Note="+2 vs. abilities of oozes and aberration"',
+    'Section=save Note="+2 vs. abilities of oozes and aberrations"',
   'Desert Native':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in desert terrain",' +
+      '"+%{levels.Druid//2} Initiative in desert terrain",' +
       '"Cannot be tracked in desert environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in desert terrain/+%V Swim"',
+      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in desert terrain"',
   'Sandwalker':
     'Section=ability,skill ' +
     'Note=' +
@@ -1126,10 +1126,10 @@ PFAPG.FEATURES = {
   'Jungle Guardian':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in jungle terrain",' +
+      '"+%{levels.Druid//2} Initiative in jungle terrain",' +
       '"Cannot be tracked in jungle environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in jungle terrain"',
-  'Torrid Endrance':
+      '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in jungle terrain"',
+  'Torrid Endurance':
     'Section=feature,save ' +
     'Note=' +
       '"Comfortable to 140F",' +
@@ -1139,9 +1139,9 @@ PFAPG.FEATURES = {
   'Mountaineer':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in mountainous terrain",' +
+      '"+%{levels.Druid//2} Initiative in mountainous terrain",' +
       '"Cannot be tracked in mountainous environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in mountainous terrain"',
+      '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in mountainous terrain"',
   'Sure-Footed (Druid)':
     'Section=ability,skill ' +
     'Note=' +
@@ -1156,31 +1156,31 @@ PFAPG.FEATURES = {
   'Mountain Stance':
     'Section=combat,save ' +
     'Note=' +
-      '"+4 CMD vs. movement attempts",' +
-      '"Immune to petrification"',
+      '"+4 CMD vs. forced movement attempts",' +
+      '"Immune to petrification, +4 vs. forced movement"',
   'Mountain Stone':
     'Section=magic Note="May transform into stone outcrop at will"',
   'Plains Traveler':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in plains terrain",' +
+      '"+%{levels.Druid//2} Initiative in plains terrain",' +
       '"Cannot be tracked in plains environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in plains terrain"',
   'Run Like The Wind':
     'Section=ability ' +
-    'Note="+10\' Speed in light armor/May dbl speed for 1 rd"',
+    'Note="+10\' Speed in light armor/May dbl speed for 1 rd 1/hr"',
   'Savanna Ambush':
     'Section=combat,skill ' +
     'Note=' +
       '"Gains concealment when prone in natural surroundings; may stand from prone as immediate action",' +
-      '"No Stealth penalty when prone"',
+      '"No Stealth penalty when prone, -5 when crawling"',
   'Canny Charger':
     'Section=combat ' +
     'Note="May charge through allies\' squares/+4 AC vs. enemy charge/+4 damage when readied vs. charge"',
   'Marshwight':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+{levels.Druid//2} Initiative in swamp terrain",' +
+      '"+%{levels.Druid//2} Initiative in swamp terrain",' +
       '"Cannot be tracked in swamp environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in swamp terrain"',
   'Swamp Strider':
@@ -1191,10 +1191,12 @@ PFAPG.FEATURES = {
   'Pond Scum':
     'Section=combat,save ' +
     'Note=' +
-      '"DR %{levels.Druid}/- vs. swarms",' +
+      '"DR %{levels.Druid//2}/- vs. swarms",' +
       '"+4 vs. disease and abilities of monstrous humanoids"',
   'Slippery':
     'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
+  'Spontaneous Casting':
+    'Section=magic Note="May cast domain spell in place of prepared spell"',
   'Lorekeeper':
     'Section=skill ' +
     'Note="+2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill"',
@@ -1204,7 +1206,7 @@ PFAPG.FEATURES = {
   'Totemic Summons':
     'Section=magic ' +
     'Note="May cast <i>Summon Nature\'s Ally</i> to summon bear with %{levels.Druid} temporary HP"',
-  'Bear Shaman Feat Bonus':'Section=feature Note="FILL"',
+  'Bear Shaman Feat Bonus':'Section=feature Note="%V Selections"',
 
   // New base classes
   'Acid Bomb':
@@ -1223,7 +1225,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
   'Air Barrier':
     'Section=combat ' +
-    'Note="Conjured air shell gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
+    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Alchemy':
     'Section=magic,skill ' +
     'Note=' +
@@ -1234,7 +1236,7 @@ PFAPG.FEATURES = {
     'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
   'Armor Of Bones':
     'Section=combat ' +
-    'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
+    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Aspect':'Section=feature Note="May apply %V evolution points to self"',
   'Automatic Writing':
     'Section=magic Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
@@ -1323,7 +1325,7 @@ PFAPG.FEATURES = {
   'Clouded Vision':
     'Section=feature ' +
     'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' blindsight\\" : \'\'}"',
-  'Coat Of Many Stars':'Section=combat Note="Conjured coat gives +{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
+  'Coat Of Many Stars':'Section=combat Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
   'Combat Healer':
     'Section=feature ' +
     'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
@@ -1664,7 +1666,7 @@ PFAPG.FEATURES = {
   'Hex':'Section=feature Note="%V Selections"',
   'Ice Armor':
     'Section=combat ' +
-    'Note="Conjured armor gives %+{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
+    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Icy Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
@@ -1740,7 +1742,7 @@ PFAPG.FEATURES = {
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
-      '"+{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
+      '"+%{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
       '"Has Improved Trip%V features"',
   'Mantle Of Moonlight':
     'Section=combat,save ' +
@@ -2786,7 +2788,7 @@ PFAPG.PATHS = {
     'Group="Druid" ' +
     'Level=levels.Druid ' +
     'Features=' +
-      '"2:Acquatic Adaptation","3:Natural Swimmer","4:Resist Ocean\'s Fury",' +
+      '"2:Aquatic Adaptation","3:Natural Swimmer","4:Resist Ocean\'s Fury",' +
       '"9:Seaborn","13:Deep Diver"',
   'Arctic Druid':
     'Group="Druid" ' +
@@ -2818,7 +2820,7 @@ PFAPG.PATHS = {
     'Group="Druid" ' +
     'Level=levels.Druid ' +
     'Features=' +
-      '"2:Jungle Guardian","3:Woodland Stride","4:Torrid Endrance",' +
+      '"2:Jungle Guardian","3:Woodland Stride","4:Torrid Endurance",' +
       '"13:Verdant Sentinel"',
   'Mountain Druid':
     'Group="Druid" ' +
@@ -2841,8 +2843,8 @@ PFAPG.PATHS = {
     'Group="Druid" ' +
     'Level=levels.Druid ' +
     'Features=' +
-      '"2:Lorekeeper","4:Resist Temptation","6:A Thousand Faces",' +
-      '"9:Mental Strength"',
+      '"1:Spontaneous Casting","2:Lorekeeper","4:Resist Temptation",' +
+      '"6:A Thousand Faces","9:Mental Strength"',
   'Bear Shaman':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -5489,6 +5491,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'charismaModifier', '+', null
     );
   } else if(name == 'Druid') {
+    var allFeats = rules.getChoices('feats');
     rules.defineRule('abilityNotes.naturalSwimmer',
       'speed', '=', 'Math.floor(source / 2)',
       'abilityNotes.seaborn', '*', '2'
@@ -5499,75 +5502,96 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('druidHasAThousandFaces',
       'levels.Druid', '=', '1',
-      'bardFeatures.Deep Diver', '=', '0',
-      'bardFeatures.Dunemeld', '=', '0',
-      'bardFeatures.Evasion', '=', '0',
-      'bardFeatures.Flurry Form', '=', '0',
-      'bardFeatures.Mountain Stone', '=', '0',
-      'bardFeatures.Plaguebearer', '=', '0',
-      'bardFeatures.Slippery', '=', '0',
-      'bardFeatures.Verdant Sentinel', '=', '0'
+      'druidFeatures.Deep Diver', '=', '0',
+      'druidFeatures.Dunemeld', '=', '0',
+      'druidFeatures.Evasion', '=', '0',
+      'druidFeatures.Flurry Form', '=', '0',
+      'druidFeatures.Mountain Stone', '=', '0',
+      'druidFeatures.Plaguebearer', '=', '0',
+      'druidFeatures.Slippery', '=', '0',
+      'druidFeatures.Verdant Sentinel', '=', '0',
+      'druidFeatures.Totemic Summons', '=', '0'
     );
     rules.defineRule('druidHasNatureSense',
       'levels.Druid', '=', '1',
-      'bardFeatures.Cavesense', '=', '0'
+      'druidFeatures.Cavesense', '=', '0'
     );
     rules.defineRule('druidHasResistNaturesLure',
       'levels.Druid', '=', '1',
-      'bardFeatures.Arctic Endurance', '=', '0',
-      'bardFeatures.Desert Endurance', '=', '0',
-      'bardFeatures.Miasma', '=', '0',
-      'bardFeatures.Pond Scum', '=', '0',
-      "bardFeatures.Resist Ocean's Fury", '=', '0',
-      'bardFeatures.Resist Temptation', '=', '0',
-      'bardFeatures.Savanna Ambush', '=', '0',
-      'bardFeatures.Spire Walker', '=', '0',
-      'bardFeatures.Resist Subterranean Corruption', '=', '0',
-      'bardFeatures.Torrid Endurance', '=', '0',
-      'bardFeatures.Totemic Summons', '=', '0'
+      'druidFeatures.Arctic Endurance', '=', '0',
+      'druidFeatures.Desert Endurance', '=', '0',
+      'druidFeatures.Miasma', '=', '0',
+      'druidFeatures.Pond Scum', '=', '0',
+      "druidFeatures.Resist Ocean's Fury", '=', '0',
+      'druidFeatures.Resist Subterranean Corruption', '=', '0',
+      'druidFeatures.Resist Temptation', '=', '0',
+      'druidFeatures.Savanna Ambush', '=', '0',
+      'druidFeatures.Spire Walker', '=', '0',
+      'druidFeatures.Torrid Endurance', '=', '0'
+    );
+    rules.defineRule('druidHasSpontaneousDruidSpell',
+      'levels.Druid', '=', '1',
+      'druidFeatures.Spontaneous Casting', '=', '0'
     );
     rules.defineRule('druidHasTracklessStep',
       'levels.Druid', '=', '1',
-      'bardFeatures.Icewalking', '=', '0',
-      'bardFeatures.Lightfoot', '=', '0',
-      'bardFeatures.Lorekeeper', '=', '0',
-      'bardFeatures.Natural Swimmer', '=', '0',
-      'bardFeatures.Run Like The Wind', '=', '0',
-      'bardFeatures.Sandwalker', '=', '0',
-      'bardFeatures.Swamp Strider', '=', '0',
-      'bardFeatures.Sure-Footed (Druid)', '=', '0'
+      'druidFeatures.Icewalking', '=', '0',
+      'druidFeatures.Lightfoot', '=', '0',
+      'druidFeatures.Lorekeeper', '=', '0',
+      'druidFeatures.Natural Swimmer', '=', '0',
+      'druidFeatures.Run Like The Wind', '=', '0',
+      'druidFeatures.Sandwalker', '=', '0',
+      'druidFeatures.Swamp Strider', '=', '0',
+      'druidFeatures.Sure-Footed (Druid)', '=', '0'
     );
     rules.defineRule('druidHasVenomImmunity',
       'levels.Druid', '=', '1',
-      'bardFeatures.Blightblooded', '=', '0',
-      'bardFeatures.Canny Charger', '=', '0',
-      'bardFeatures.Mental Strength', '=', '0',
-      'bardFeatures.Mountain Stance', '=', '0',
-      'bardFeatures.Seaborn', '=', '0',
-      'bardFeatures.Shaded Vision', '=', '0',
-      'bardFeatures.Snowcaster', '=', '0'
+      'druidFeatures.Blightblooded', '=', '0',
+      'druidFeatures.Canny Charger', '=', '0',
+      'druidFeatures.Mental Strength', '=', '0',
+      'druidFeatures.Mountain Stance', '=', '0',
+      'druidFeatures.Seaborn', '=', '0',
+      'druidFeatures.Shaded Vision', '=', '0',
+      'druidFeatures.Snowcaster', '=', '0',
+      'druidFeatures.Bear Shaman Feat Bonus', '=', '0'
     );
     rules.defineRule('druidHasWildEmpathy',
       'levels.Druid', '=', '1',
-      'bardFeatures.Venom Empathy', '=', '0'
+      'druidFeatures.Venom Empathy', '=', '0'
+    );
+    rules.defineRule('druidHasWildShape',
+      'aquaticDruidLevel', '=', 'source>=6 ? null : 0',
+      'arcticDruidLevel', '=', 'source>=6 ? null : 0',
+      'caveDruidLevel', '=', 'source>=6 ? null : 0',
+      'desertDruidLevel', '=', 'source>=6 ? null : 0',
+      'jungleDruidLevel', '=', 'source>=6 ? null : 0',
+      'mountainDruidLevel', '=', 'source>=6 ? null : 0',
+      'plainsDruidLevel', '=', 'source>=6 ? null : 0',
+      'swampDruidLevel', '=', 'source>=6 ? null : 0',
+      'urbanDruidLevel', '=', 'source>=8 ? null : 0',
+      'bearShamanLevel', '=', 'source>=6 ? null : 0'
     );
     rules.defineRule('druidHasWoodlandStride',
       'levels.Druid', '=', '1',
-      'bardFeatures.Aquatic Adaptation', '=', '0',
-      'bardFeatures.Arctic Native', '=', '0',
-      'bardFeatures.Desert Native', '=', '0',
-      'bardFeatures.Lorekeeper', '=', '0',
-      'bardFeatures.Marshwight', '=', '0',
-      'bardFeatures.Mountaineer', '=', '0',
-      'bardFeatures.Plains Traveler', '=', '0',
-      'bardFeatures.Tunnelrunner', '=', '0'
+      'druidFeatures.Aquatic Adaptation', '=', '0',
+      'druidFeatures.Arctic Native', '=', '0',
+      'druidFeatures.Desert Native', '=', '0',
+      'druidFeatures.Lorekeeper', '=', '0',
+      'druidFeatures.Marshwight', '=', '0',
+      'druidFeatures.Mountaineer', '=', '0',
+      'druidFeatures.Plains Traveler', '=', '0',
+      'druidFeatures.Tunnelrunner', '=', '0',
+      'jungleDruidLevel', '=', 'source>=3 ? null : 0'
     );
     rules.defineRule
-      ('druidFeatures.A Thousand Faces', 'druidHasTracklessStep', '?', null);
+      ('druidFeatures.A Thousand Faces', 'druidHasAThousandFaces', '?', null);
     rules.defineRule
       ('druidFeatures.Nature Sense', 'druidHasNatureSense', '?', null);
     rules.defineRule("druidFeatures.Resist Nature's Lure",
       'druidHasResistNaturesLure', '?', null
+    );
+    rules.defineRule('druidFeatures.Spontaneous Druid Spell',
+      'druidHasSpontaneousDruidSpell', '?', null
     );
     rules.defineRule
       ('druidFeatures.Trackless Step', 'druidHasTracklessStep', '?', null);
@@ -5576,13 +5600,33 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('druidFeatures.Wild Empathy', 'druidHasWildEmpathy', '?', null);
     rules.defineRule
+      ('druidFeatures.Wild Shape', 'druidHasWildShape', '?', null);
+    rules.defineRule
       ('druidFeatures.Woodland Stride', 'druidHasWoodlandStride', '?', null);
+    rules.defineRule('featureNotes.bearShamanFeatBonus',
+      classLevel, '=', 'Math.floor((source - 5) / 4)'
+    );
+    rules.defineRule
+      ('featCount.Bear Shaman', 'featureNotes.bearShamanFeatBonus', '=', null);
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
-    rules.defineRule(
-      'skillNotes.aquaticAdaptation', classLevel, '=', 'Math.floor(source / 2)'
+    rules.defineRule('wildShapeLevel',
+      'aquaticDruidLevel', '+', '-2',
+      'arcticDruidLevel', '+', '-2',
+      'caveDruidLevel', '+', '-2',
+      'desertDruidLevel', '+', '-2',
+      'jungleDruidLevel', '+', '-2',
+      'mountainDruidLevel', '+', '-2',
+      'plainsDruidLevel', '+', '-2',
+      'swampDruidLevel', '+', '-2',
+      'urbanDruidLevel', '+', '-4',
+      'bearShamanLevel', '+', '-2'
     );
     rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
+    ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
+     'Toughness'].forEach(f => {
+      allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
+    });
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
