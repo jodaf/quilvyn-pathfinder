@@ -1044,6 +1044,9 @@ PFAPG.FEATURES = {
   'Wind Blast':
     'Section=magic Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
 
+  'Aquatic Druid':
+    'Section=skill ' +
+    'Note="Wild Empathy works only with swimming and water creatures"',
   'Aquatic Adaptation':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1059,7 +1062,7 @@ PFAPG.FEATURES = {
       '"Has aquatic subtype and amphibious trait; comfortable down to -50F"',
   'Deep Diver':
     'Section=combat ' +
-    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing"',
+    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing; immune to deep water pressure"',
   'Arctic Native':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1069,7 +1072,7 @@ PFAPG.FEATURES = {
   'Icewalking':
     'Section=ability,skill ' +
     'Note=' +
-      '"No speed penalty on ice or snow, does not break through snow crust or thin ice",' +
+      '"No speed penalty on ice or snow; does not break through snow crust or thin ice",' +
       '"No Acrobatics, Climb, or Stealth penalty on ice or snow"',
   'Arctic Endurance':
     'Section=save Note="Comfortable down to -50F; immune to dazzled"',
@@ -1077,22 +1080,32 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"Sees normally in snowstorms",' +
-      '"May transform spell fire damage to cold damage"',
+      '"May prepare fire spells to inflict cold damage"',
   'Flurry Form':
     'Section=magic,skill ' +
     'Note=' +
       '"May assume insubstantial snow flurry form",' +
       '"Transformation gives +%{levels.Druid} Stealth in cold terrain"',
+  'Blight Druid':
+    'Section=feature ' +
+    'Note="May choose Familiar or Darkness, Death, or Destruction Domain, but not Animal Companion, for Nature Bond"',
   'Vermin Empathy':
-    'Section=skill Note="+%V Diplomacy (vermin, +4 disease-bearing)"',
+    'Section=skill ' +
+    'Note="+%{levels.Druid+charismaModifier} Diplomacy (vermin, disease-bearing)/+%{levels.Druid+charismaModifier-4} Diplomacy (other animals)"',
   'Miasma':
     'Section=combat ' +
-    'Note="Adjacent creatures sickened (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
+    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
   'Blightblooded':
     'Section=save Note="Immune to disease, sickened, and nauseated"',
   'Plaguebearer':
     'Section=combat ' +
     'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
+  'Cave Druid':
+    'Section=feature,magic,skill ' +
+    'Note=' +
+      '"May choose Darkness Domain, but not Air Domain or Weather Domain, for Nature Bond",' +
+      '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into ooze\':\'\'}",' +
+      '"-4 Wild Empathy (oozes)"',
   'Cavesense':
     'Section=skill ' +
     'Note="Knowledge (Dungeoneering) is a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
@@ -1101,6 +1114,10 @@ PFAPG.FEATURES = {
   'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
   'Resist Subterranean Corruption':
     'Section=save Note="+2 vs. abilities of oozes and aberrations"',
+  'Desert Druid':
+    'Section=magic ' +
+    'Note=' +
+      '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into vermin\':\'\'}"',
   'Desert Native':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1117,7 +1134,7 @@ PFAPG.FEATURES = {
     'Note="Comfortable to 140F; reduced need for food and drink"',
   'Shaded Vision':
     'Section=save ' +
-    'Note="+2 vs. gaze, figments, and patterns; immune to blinding and dazzling"',
+    'Note="+2 vs. gaze, figments, and patterns; immune to blinded and dazzled"',
   'Dunemeld':
     'Section=magic,skill ' +
     'Note=' +
@@ -1136,6 +1153,10 @@ PFAPG.FEATURES = {
       '"+4 vs. disease and exceptional abilities of animals and magical beasts"',
   'Verdant Sentinel':
     'Section=magic Note="May cast <i>Tree Shape</i> at will"',
+  'Mountain Druid':
+    'Section=magic ' +
+    'Note=' +
+      '"Cannot Wild Shape into plant creature%{levels.Druid>=12 ? \'; May Wild Shape into giant\':\'\'}"',
   'Mountaineer':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1157,7 +1178,7 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"+4 CMD vs. forced movement attempts",' +
-      '"Immune to petrification, +4 vs. forced movement"',
+      '"Immune to petrified, +4 vs. forced movement"',
   'Mountain Stone':
     'Section=magic Note="May transform into stone outcrop at will"',
   'Plains Traveler':
@@ -1172,11 +1193,11 @@ PFAPG.FEATURES = {
   'Savanna Ambush':
     'Section=combat,skill ' +
     'Note=' +
-      '"Gains concealment when prone in natural surroundings; may stand from prone as immediate action",' +
+      '"Gains concealment when prone in natural surroundings; may stand from prone during surprise round as immediate action",' +
       '"No Stealth penalty when prone, -5 when crawling"',
   'Canny Charger':
     'Section=combat ' +
-    'Note="May charge through allies\' squares/+4 AC vs. enemy charge/+4 damage when readied vs. charge"',
+    'Note="May pass through allies\' squares and turn during charge/+4 AC vs. enemy charge/+4 damage when readied vs. charge"',
   'Marshwight':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1195,6 +1216,9 @@ PFAPG.FEATURES = {
       '"+4 vs. disease and abilities of monstrous humanoids"',
   'Slippery':
     'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
+  'Urban Druid':
+    'Section=feature ' +
+    'Note="May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond"',
   'Spontaneous Casting':
     'Section=magic Note="May cast domain spell in place of prepared spell"',
   'Lorekeeper':
@@ -1544,7 +1568,7 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"Remain alive until -%{hitPoints*2} HP",' +
-      '"Immune to bleed, death attack, exhaustion, fatigue, nausea effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
+      '"Immune to bleed, death attack, exhausted, fatigued, nauseated effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
   'Final Revelation (Lore Mystery)':
     'Section=magic,skill ' +
     'Note=' +
@@ -2800,7 +2824,7 @@ PFAPG.PATHS = {
     'Group="Druid" ' +
     'Level=levels.Druid ' +
     'Features=' +
-      '"1:Vermin Empathy","4:Miasma","9:Blightblooded","13:Plaguebearer"',
+      '"1:Vermin Empathy","5:Miasma","9:Blightblooded","13:Plaguebearer"',
   'Cave Druid':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -2844,7 +2868,16 @@ PFAPG.PATHS = {
     'Level=levels.Druid ' +
     'Features=' +
       '"1:Spontaneous Casting","2:Lorekeeper","4:Resist Temptation",' +
-      '"6:A Thousand Faces","9:Mental Strength"',
+      '"6:A Thousand Faces","9:Mental Strength" ' +
+    'Selectables=' +
+      '"1:Charm Domain:Nature Bond",' +
+      '"1:Community Domain:Nature Bond",' +
+      '"1:Knowledge Domain:Nature Bond",' +
+      '"1:Nobility Domain:Nature Bond",' +
+      '"1:Protection Domain:Nature Bond",' +
+      '"1:Repose Domain:Nature Bond",' +
+      '"1:Rune Domain:Nature Bond"',
+      // TODO Weather Domain -- overlaps w/other druids
   'Bear Shaman':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -4737,7 +4770,12 @@ PFAPG.CLASSES = {
       '"1:Eagle Shaman:Archetype",' +
       '"1:Lion Shaman:Archetype",' +
       '"1:Serpent Shaman:Archetype",' +
-      '"1:Wolf Shaman:Archetype"',
+      '"1:Wolf Shaman:Archetype",' +
+      '"features.Blight Druid == 0 ? 1:Animal Companion:Nature Bond",' +
+      '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
+      '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
+      '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
+      '"features.Blight Druid ? 1:Destruction Domain:Nature Bond"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -5486,10 +5524,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'levels.Cleric', '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('skillNotes.verminEmpathy',
-      'levels.Druid', '+=', 'source - 4',
-      'charismaModifier', '+', null
-    );
   } else if(name == 'Druid') {
     var allFeats = rules.getChoices('feats');
     rules.defineRule('abilityNotes.naturalSwimmer',
@@ -5535,6 +5569,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('druidHasTracklessStep',
       'levels.Druid', '=', '1',
+      // BD5 Miasma replaces D3 Trackless Step
+      'blightDruidLevel', '=', '0',
       'druidFeatures.Icewalking', '=', '0',
       'druidFeatures.Lightfoot', '=', '0',
       'druidFeatures.Lorekeeper', '=', '0',
@@ -5542,7 +5578,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Run Like The Wind', '=', '0',
       'druidFeatures.Sandwalker', '=', '0',
       'druidFeatures.Swamp Strider', '=', '0',
-      'druidFeatures.Sure-Footed (Druid)', '=', '0'
+      'druidFeatures.Sure-Footed (Druid)', '=', '0',
+      'jungleDruidLevel', '=', '0'
     );
     rules.defineRule('druidHasVenomImmunity',
       'levels.Druid', '=', '1',
@@ -5557,9 +5594,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('druidHasWildEmpathy',
       'levels.Druid', '=', '1',
-      'druidFeatures.Venom Empathy', '=', '0'
+      'druidFeatures.Vermin Empathy', '=', '0'
     );
     rules.defineRule('druidHasWildShape',
+      'levels.Druid', '=', '1',
       'aquaticDruidLevel', '=', 'source>=6 ? null : 0',
       'arcticDruidLevel', '=', 'source>=6 ? null : 0',
       'caveDruidLevel', '=', 'source>=6 ? null : 0',
@@ -5606,10 +5644,22 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.bearShamanFeatBonus',
       classLevel, '=', 'Math.floor((source - 5) / 4)'
     );
+    rules.defineRule('familiarMasterLevel', 'blightDruidLevel', '+=', null);
     rules.defineRule
       ('featCount.Bear Shaman', 'featureNotes.bearShamanFeatBonus', '=', null);
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
+    rules.defineRule('isNotUrbanDruid',
+      'levels.Druid', '=', '1',
+      'features.Urban Druid', '=', '0'
+    );
+    rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
+      'isNotUrbanDruid', '?', null
+    );
+    rules.defineRule('selectableFeatureCount.Urban Druid (Nature Bond)',
+      'features.Urban Druid', '?', null,
+      classLevel, '=', '1'
+    );
     rules.defineRule('wildShapeLevel',
       'aquaticDruidLevel', '+', '-2',
       'arcticDruidLevel', '+', '-2',
@@ -5627,6 +5677,8 @@ PFAPG.classRulesExtra = function(rules, name) {
      'Toughness'].forEach(f => {
       allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
     });
+    // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
+    // TODO Disable Knowledge (Geography) class skill for Cave Druid
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
