@@ -2655,22 +2655,10 @@ Pathfinder.PATHS = {
       'Undead9:19=1'
 };
 // Domain paths allowed to druids
-Pathfinder.DRUID_DOMAINS = {
-  'Air Domain':
-    Pathfinder.PATHS['Air Domain'].replaceAll('Cleric', 'Druid'),
-  'Animal Domain':
-    Pathfinder.PATHS['Animal Domain'].replaceAll('Cleric', 'Druid'),
-  'Earth Domain':
-    Pathfinder.PATHS['Earth Domain'].replaceAll('Cleric', 'Druid'),
-  'Fire Domain':
-    Pathfinder.PATHS['Fire Domain'].replaceAll('Cleric', 'Druid'),
-  'Plant Domain':
-    Pathfinder.PATHS['Plant Domain'].replaceAll('Cleric', 'Druid'),
-  'Water Domain':
-    Pathfinder.PATHS['Water Domain'].replaceAll('Cleric', 'Druid'),
-  'Weather Domain':
-    Pathfinder.PATHS['Weather Domain'].replaceAll('Cleric', 'Druid')
-};
+Pathfinder.DRUID_DOMAINS = [
+  'Air Domain', 'Animal Domain', 'Earth Domain', 'Fire Domain', 'Plant Domain',
+  'Water Domain', 'Weather Domain'
+];
 Pathfinder.RACES = {
   'Dwarf':
     'Features=' +
@@ -4032,7 +4020,7 @@ Pathfinder.CLASSES = {
       '"13:A Thousand Faces","15:Timeless Body" ' +
     'Selectables=' +
       '"1:Animal Companion:Nature Bond",' +
-      QuilvynUtils.getKeys(Pathfinder.DRUID_DOMAINS).map(x => '"1:' + x + ':Nature Bond"').join(',') + ' ' +
+      Pathfinder.DRUID_DOMAINS.map(x => '"1:' + x + ':Nature Bond"').join(',') + ' ' +
     'Languages=Druidic ' +
     'CasterLevelDivine=levels.Druid ' +
     'SpellAbility=wisdom ' +
@@ -4710,8 +4698,9 @@ Pathfinder.identityRules = function(
   // Process paths before deities for domain definitions
   for(var path in paths) {
     rules.choiceRules(rules, 'Path', path, paths[path]);
-    if(path in Pathfinder.DRUID_DOMAINS)
-      rules.choiceRules(rules, 'Path', path, Pathfinder.DRUID_DOMAINS[path]);
+    if(Pathfinder.DRUID_DOMAINS.includes(path))
+      rules.choiceRules
+        (rules, 'Path', path, Pathfinder.PATHS[path].replaceAll('Cleric', 'Druid'));
   }
   for(var deity in deities) {
     rules.choiceRules(rules, 'Deity', deity, deities[deity]);
@@ -5282,7 +5271,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'druidHasDomain', '?', null,
       'levels.Druid', '=', null
     );
-    for(var domain in Pathfinder.DRUID_DOMAINS) {
+    for(var domain in QuilvynUtils.getKeys(Pathfinder.PATHS, /domain/i)) {
       rules.defineRule('druidHasDomain', 'druidFeatures.' + domain, '=', '1');
     }
     rules.defineRule('magicNotes.wildShape',
@@ -6517,7 +6506,7 @@ Pathfinder.pathRules = function(
   );
 
   // Ensure that cleric domain features don't show for druids or vice versa.
-  if(name in Pathfinder.DRUID_DOMAINS) {
+  if(Pathfinder.DRUID_DOMAINS.includes(name)) {
     var groupFeatures = group.toLowerCase() + 'Features';
     for(var i = 0; i < features.length; i++) {
       var feature = features[i].replace(/^\d+:/, '');
