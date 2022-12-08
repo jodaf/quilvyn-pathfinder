@@ -1257,6 +1257,87 @@ PFAPG.FEATURES = {
     'Note="May cast <i>Summon Nature\'s Ally</i> to summon %V with %{levels.Druid} temporary HP"',
   'Animal Shaman Feat Bonus':'Section=feature Note="%V Selections"',
 
+  'Hawkeye':'Section=combat Note="FILL"',
+  'Trick Shot':'Section=combat Note="FILL"',
+  'Expert Archer':'Section=combat Note="FILL"',
+  'Safe Shot':'Section=combat Note="FILL"',
+  'Evasive Archer':'Section=combat Note="FILL"',
+  'Volley':'Section=combat Note="FILL"',
+  'Ranged Defense':'Section=combat Note="FILL"',
+  'Deadshot':'Section=combat Note="FILL"',
+  'Crossbow Expert':'Section=combat Note="FILL"',
+  'Improved Deadshot':'Section=combat Note="FILL"',
+  'Quick Sniper':'Section=combat Note="FILL"',
+  'Greater Deadshot':'Section=combat Note="FILL"',
+  'Safe Shot':'Section=combat Note="FILL"',
+  'Meteor Shot':'Section=combat Note="FILL"',
+  'Penetrating Shot':'Section=combat Note="FILL"',
+  'Deceptive Strike':'Section=combat Note="FILL"',
+  'Elusive':'Section=combat Note="FILL"',
+  'Singleton':'Section=combat Note="FILL"',
+  'Timely Tip':'Section=combat Note="FILL"',
+  'Interference':'Section=combat Note="FILL"',
+  'Reversal':'Section=combat Note="FILL"',
+  'Agility':'Section=combat Note="FILL"',
+  'Leaping Attack':'Section=combat Note="FILL"',
+  'Rapid Attack':'Section=combat Note="FILL"',
+  'Fleet Footed':'Section=combat Note="FILL"',
+  'Whirlwind Blitz':'Section=combat Note="FILL"',
+  'Stand Firm':'Section=combat Note="FILL"',
+  'Phalanx Fighting':'Section=combat Note="FILL"',
+  'Ready Pike':'Section=combat Note="FILL"',
+  'Deft Shield':'Section=combat Note="FILL"',
+  'Shield Ally':'Section=combat Note="FILL"',
+  'Irresistable Advance':'Section=combat Note="FILL"',
+  'Shielded Fortress':'Section=combat Note="FILL"',
+  'Pole Fighting':'Section=combat Note="FILL"',
+  'Steadfast Pike':'Section=combat Note="FILL"',
+  'Polearm Training':'Section=combat Note="FILL"',
+  'Flexible Flanker':'Section=combat Note="FILL"',
+  'Sweeping Fend':'Section=combat Note="FILL"',
+  'Step Aside':'Section=combat Note="FILL"',
+  'Polearm Parry':'Section=combat Note="FILL"',
+  'Steadfast Mount':'Section=combat Note="FILL"',
+  'Armored Charger':'Section=combat Note="FILL"',
+  'Mounted Mettle':'Section=combat Note="FILL"',
+  'Leap From The Saddle':'Section=combat Note="FILL"',
+  'Relentless Steed':'Section=combat Note="FILL"',
+  'Ride Them Down':'Section=combat Note="FILL"',
+  'Unavoidable Onslaught':'Section=combat Note="FILL"',
+  'Indomitable Steed':'Section=combat Note="FILL"',
+  'Spark Of Life':'Section=combat Note="FILL"',
+  'Natural Savagery':'Section=combat Note="FILL"',
+  'Savage Charge':'Section=combat Note="FILL"',
+  'Careful Claw':'Section=combat Note="FILL"',
+  'Greater Savage Charge':'Section=combat Note="FILL"',
+  'Natural Weapon Mastery':'Section=combat Note="FILL"',
+  'Active Defense':'Section=combat Note="FILL"',
+  'Shield Fighter':'Section=combat Note="FILL"',
+  'Shield Buffet':'Section=combat Note="FILL"',
+  'Shield Guard':'Section=combat Note="FILL"',
+  'Shield Mastery':'Section=combat Note="FILL"',
+  'Shield Ward':'Section=combat Note="FILL"',
+  'Shattering Strike':'Section=combat Note="FILL"',
+  'Overhand Chop':'Section=combat Note="FILL"',
+  'Backswing':'Section=combat Note="FILL"',
+  'Piledriver':'Section=combat Note="FILL"',
+  'Greater Power Attack':'Section=combat Note="FILL"',
+  'Devastating Blow':'Section=combat Note="FILL"',
+  'Defensive Parry':'Section=combat Note="FILL"',
+  'Twin Blades':'Section=combat Note="FILL"',
+  'Doublestrike':'Section=combat Note="FILL"',
+  'Improved Balance':'Section=combat Note="FILL"',
+  'Equal Opportunity':'Section=combat Note="FILL"',
+  'Perfect Balance':'Section=combat Note="FILL"',
+  'Deft Doublestrike':'Section=combat Note="FILL"',
+  'Deadly Defense':'Section=combat Note="FILL"',
+  'Weapon Guard':'Section=combat Note="FILL"',
+  '5Reliable Strike':'Section=combat Note="FILL"',
+  'Mirror Move':'Section=combat Note="FILL"',
+  'Deadly Critical':'Section=combat Note="FILL"',
+  'Critical Specialist':'Section=combat Note="FILL"',
+  'Unstoppable Strike':'Section=combat Note="FILL"',
+
   // New base classes
   'Acid Bomb':
     'Section=combat ' +
@@ -2588,9 +2669,6 @@ PFAPG.PATHS = {
     'Level=levels.Barbarian ' +
     'Features=' +
       '"2:Savage Grapple","3:Pit Fighter","5:Improved Savage Grapple"',
-  'Core Barbarian':
-    'Group=Barbarian ' +
-    'Level=levels.Barbarian',
   'Drunken Brute':
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
@@ -2857,9 +2935,6 @@ PFAPG.PATHS = {
     'Features=' +
       '"1:Cavesense","2:Tunnelrunner","3:Lightfoot",' +
       '"4:Resist Subterranean Corruption"',
-  'Core Druid':
-    'Group="Druid" ' +
-    'Level=levels.Druid',
   'Desert Druid':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -2920,6 +2995,84 @@ PFAPG.PATHS = {
       '"1:Lion Totem:Totem",' +
       '"1:Serpent Totem:Totem",' +
       '"1:Wolf Totem:Totem"',
+
+  'Archer':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '2:Hawkeye,"3:Trick Shot","5:Expert Archer","9:Safe Shot",' +
+      '"13:Evasive Archer",17:Volley,"19:Ranged Defense"',
+  'Crossbowman':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '3:Deadshot,"5:Crossbow Expert","7:Improved Deadshot","9:Quick Sniper",' +
+      '"11:Greater Deadshot","13:Safe Shot","15:Pinpoint Targeting",' +
+      '"17:Meteor Shot","19:Penetrating Shot"',
+  'Free Hand Fighter':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Deceptive Strike",3:Elusive,5:Singleton,"9:Timely Tip",' +
+      '13:Interference,19:Reversal',
+  'Mobile Fighter':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '2:Agility,"5:Leaping Attack","11:Rapid Attack","15:Fleet Footed",' +
+      '"20:Whirlwind Blitz"',
+  'Phalanx Soldier':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Stand Firm","3:Phalanx Fighting","5:Ready Pike","7:Deft Shield",' +
+      '"9:Shield Ally","15:Irresistable Advance","20:Shielded Fortress"',
+  'Polearm Master':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Pole Fighting","3:Steadfast Pike","5:Polearm Training",' +
+      '"9:Flexible Flanker","13:Sweeping Fend","17:Step Aside",' +
+      '"19:Polearm Parry"',
+  'Roughrider':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Steadfast Mount","3:Armored Charger","5:Mounted Mettle",' +
+      '"7:Leap From The Saddle","11:Relentless Steed","15:Ride Them Down",' +
+      '"15:Unavoidable Onslaught","19:Indomitable Steed"',
+  'Savage Warrior':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Spark Of Life","5:Natural Savagery","9:Savage Charge",' +
+      '"13:Careful Claw","17:Greater Savage Charge",' +
+      '"20:Natural Weapon Mastery"',
+  'Shielded Fighter':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"3:Active Defense","5:Shield Fighter","9:Shield Buffet",' +
+      '"17:Shield Guard","19:Shield Mastery","20:Shield Ward"',
+  'Two-Handed Fighter':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Shattering Strike","3:Overhand Chop",7:Backswing,11:Piledriver,' +
+      '"15:Greater Power Attack","19:Devastating Blow"',
+  'Two-Weapon Warrior':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"3:Defensive Parry","5:Twin Blades",9:Doublestrike,' +
+      '"11:Improved Balance","13:Equal Opportunity","15:Perfect Balance",' +
+      '"17:Deft Doublestrike","19:Deadly Defense"',
+  'Weapon Master':
+    'Group=Fighter ' +
+    'Level=levels.Fighter ' +
+    'Features=' +
+      '"2:Weapon Guard","5:Reliable Strike","9:Mirror Move",' +
+      '"13:Deadly Critical","17:Critical Specialist","19:Unstoppable Strike"',
 
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -4787,6 +4940,21 @@ PFAPG.CLASSES = {
       '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
       '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
       '"features.Blight Druid ? 1:Destruction Domain:Nature Bond"',
+  'Fighter':
+    'Selectables=' +
+      '"1:Archer:Archetype",' + 
+      '"1:Core Fighter:Archetype",' + 
+      '"1:Crossbowman:Archetype",' + 
+      '"1:Free Hand Fighter:Archetype",' + 
+      '"1:Mobile Fighter:Archetype",' + 
+      '"1:Phalanx Soldier:Archetype",' + 
+      '"1:Polearm Master:Archetype",' + 
+      '"1:Roughrider:Archetype",' + 
+      '"1:Savage Warrior:Archetype",' + 
+      '"1:Shielded Fighter:Archetype",' + 
+      '"1:Two-Handed Fighter:Archetype",' + 
+      '"1:Two-Weapon Warrior:Archetype",' + 
+      '"1:Weapon Master:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -5742,6 +5910,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
     // TODO Disable Knowledge (Geography) class skill for Cave Druid
+  } else if(name == 'Fighter') {
+    rules.defineRule
+      ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
