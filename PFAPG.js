@@ -229,6 +229,7 @@ PFAPG.FEATS = {
   'Favored Defense':'Type=General Require="features.Favored Enemy"',
   'Fight On':
     'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
+  'Flyby Attack':'Type=General Require=skills.Fly',
   'Focused Shot':
     'Type=General,Fighter Require="intelligence >= 13","features.Precise Shot"',
   'Following Step':
@@ -1226,11 +1227,35 @@ PFAPG.FEATURES = {
     'Note="+2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill"',
   'Resist Temptation':'Section=save Note="+2 vs. divinations and enchantments"',
   'Mental Strength':'Section=save Note="Immune to charm and compulsion"',
-  'Totem Transformation':'Section=magic Note="Gains <i>Speak With Animals</i> (mammals) at will and one of: +10\' speed and +4 Swim; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
+  'Animal Shaman':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+4 Wild Shape level w/totem animal",' +
+      '"+4 Wild Empathy w/totem animal"',
+  'Bear Totem':
+    'Section=feature ' +
+    'Note="Must choose bear animal companion or one of Animal, Earth, Protection, or Strength Domains"',
+  'Eagle Totem':
+    'Section=feature ' +
+    'Note="Must choose eagle animal companion or one of Air, Animal, Nobility, or Weather Domains"',
+  'Lion Totem':
+    'Section=feature ' +
+    'Note="Must choose lion animal companion or one of Animal, Glory, Nobility, or Sun Domains"',
+  'Serpent Totem':
+    'Section=feature ' +
+    'Note="Must choose snake animal companion or one of Animal, Charm, Trickery, or Water Domains"',
+  'Wolf Totem':
+    'Section=feature ' +
+    'Note="Must choose wolf animal companion or one of Animal, Community, Liberation, or Travel Domains"',
+  'Totem Transformation (Bear)':'Section=magic Note="Gains <i>Speak With Animals</i> (mammals) at will and one of: +10\' speed and +4 Swim; Low-Light Vision and Scent; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
+  'Totem Transformation (Eagle)':'Section=magic Note="Gains <i>Speak With Animals</i> (birds) at will and one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
+  'Totem Transformation (Lion)':'Section=magic Note="Gains <i>Speak With Animals</i> (felines) at will and one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
+  'Totem Transformation (Serpent)':'Section=magic Note="Gains <i>Speak With Animals</i> (reptiles) at will and one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
+  'Totem Transformation (Wolf)':'Section=magic Note="Gains <i>Speak With Animals</i> (canines) at will and one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
   'Totemic Summons':
     'Section=magic ' +
-    'Note="May cast <i>Summon Nature\'s Ally</i> to summon bear with %{levels.Druid} temporary HP"',
-  'Bear Shaman Feat Bonus':'Section=feature Note="%V Selections"',
+    'Note="May cast <i>Summon Nature\'s Ally</i> to summon %V with %{levels.Druid} temporary HP"',
+  'Animal Shaman Feat Bonus':'Section=feature Note="%V Selections"',
 
   // New base classes
   'Acid Bomb':
@@ -2258,6 +2283,7 @@ PFAPG.FEATURES = {
   'Fight On':
     'Section=combat ' +
     'Note="Gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
+  'Flyby Attack':'Section=combat Note="FILL"',
   'Focused Shot':
     'Section=combat ' +
     'Note="R30\' +%{intelligenceModifier} HP damage on bow or crossbow attack"',
@@ -2878,33 +2904,22 @@ PFAPG.PATHS = {
       '"1:Repose Domain:Nature Bond",' +
       '"1:Rune Domain:Nature Bond"',
       // TODO Weather Domain -- overlaps w/other druids
-  'Bear Shaman':
+  'Animal Shaman':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
     'Features=' +
-      '"2:Totem Transformation","5:Totemic Summons","9:Bear Shaman Feat Bonus"',
-  'Eagle Shaman':
-    'Group="Druid" ' +
-    'Level=levels.Druid ' +
-    'Features=' +
-      '"2:Totem Transformation","5:Totemic Summons",' +
-      '"9:Eagle Shaman Feat Bonus"',
-  'Lion Shaman':
-    'Group="Druid" ' +
-    'Level=levels.Druid ' +
-    'Features=' +
-      '"2:Totem Transformation","5:Totemic Summons","9:Lion Shaman Feat Bonus"',
-  'Serpent Shaman':
-    'Group="Druid" ' +
-    'Level=levels.Druid ' +
-    'Features=' +
-      '"2:Totem Transformation","5:Totemic Summons",' +
-      '"9:Serpent Shaman Feat Bonus"',
-  'Wolf Shaman':
-    'Group="Druid" ' +
-    'Level=levels.Druid ' +
-    'Features=' +
-      '"2:Totem Transformation","5:Totemic Summons","9:Wolf Shaman Feat Bonus"',
+      '"features.Bear Totem ? 2:Totem Transformation (Bear)",' +
+      '"features.Eagle Totem ? 2:Totem Transformation (Eagle)",' +
+      '"features.Lion Totem ? 2:Totem Transformation (Lion)",' +
+      '"features.Serpent Totem ? 2:Totem Transformation (Serpent)",' +
+      '"features.Wolf Totem ? 2:Totem Transformation (Wolf)",' +
+      '"5:Totemic Summons","9:Animal Shaman Feat Bonus" ' +
+    'Selectables=' +
+      '"1:Bear Totem:Totem",' +
+      '"1:Eagle Totem:Totem",' +
+      '"1:Lion Totem:Totem",' +
+      '"1:Serpent Totem:Totem",' +
+      '"1:Wolf Totem:Totem"',
 
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -4766,11 +4781,7 @@ PFAPG.CLASSES = {
       '"1:Plains Druid:Archetype",' +
       '"1:Swamp Druid:Archetype",' +
       '"1:Urban Druid:Archetype",' +
-      '"1:Bear Shaman:Archetype",' +
-      '"1:Eagle Shaman:Archetype",' +
-      '"1:Lion Shaman:Archetype",' +
-      '"1:Serpent Shaman:Archetype",' +
-      '"1:Wolf Shaman:Archetype",' +
+      '"1:Animal Shaman:Archetype",' +
       '"features.Blight Druid == 0 ? 1:Animal Companion:Nature Bond",' +
       '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
       '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
@@ -5590,7 +5601,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Seaborn', '=', '0',
       'druidFeatures.Shaded Vision', '=', '0',
       'druidFeatures.Snowcaster', '=', '0',
-      'druidFeatures.Bear Shaman Feat Bonus', '=', '0'
+      'druidFeatures.Animal Shaman Feat Bonus', '=', '0'
     );
     rules.defineRule('druidHasWildEmpathy',
       'levels.Druid', '=', '1',
@@ -5607,7 +5618,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'plainsDruidLevel', '=', 'source>=6 ? null : 0',
       'swampDruidLevel', '=', 'source>=6 ? null : 0',
       'urbanDruidLevel', '=', 'source>=8 ? null : 0',
-      'bearShamanLevel', '=', 'source>=6 ? null : 0'
+      'animalShamanLevel', '=', 'source>=6 ? null : 0'
     );
     rules.defineRule('druidHasWoodlandStride',
       'levels.Druid', '=', '1',
@@ -5641,17 +5652,53 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('druidFeatures.Wild Shape', 'druidHasWildShape', '?', null);
     rules.defineRule
       ('druidFeatures.Woodland Stride', 'druidHasWoodlandStride', '?', null);
-    rules.defineRule('featureNotes.bearShamanFeatBonus',
+    rules.defineRule('featureNotes.animalShamanFeatBonus',
       classLevel, '=', 'Math.floor((source - 5) / 4)'
     );
     rules.defineRule('familiarMasterLevel', 'blightDruidLevel', '+=', null);
-    rules.defineRule
-      ('featCount.Bear Shaman', 'featureNotes.bearShamanFeatBonus', '=', null);
-    rules.defineRule
-      ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
+    rules.defineRule('featCount.Bear Shaman',
+      'features.Bear Totem', '?', null,
+      'featureNotes.animalShamanFeatBonus', '=', null
+    );
+    rules.defineRule('featCount.Eagle Shaman',
+      'features.Eagle Totem', '?', null,
+      'featureNotes.animalShamanFeatBonus', '=', null
+    );
+    rules.defineRule('featCount.Lion Shaman',
+      'features.Lion Totem', '?', null,
+      'featureNotes.animalShamanFeatBonus', '=', null
+    );
+    rules.defineRule('featCount.Serpent Shaman',
+      'features.Serpent Totem', '?', null,
+      'featureNotes.animalShamanFeatBonus', '=', null
+    );
+    rules.defineRule('featCount.Wolf Shaman',
+      'features.Wolf Totem', '?', null,
+      'featureNotes.animalShamanFeatBonus', '=', null
+    );
+    rules.defineRule('magicNotes.totemTransformation',
+      'features.Bear Totem', '=', '"mammals"',
+      'features.Eagle Totem', '=', '"birds"',
+      'features.Lion Totem', '=', '"felines"',
+      'features.Serpent Totem', '=', '"reptiles"',
+      'features.Wolf Totem', '=', '"canines"'
+    );
+    rules.defineRule('magicNotes.totemicSummons',
+      'features.Bear Totem', '=', '"bear"',
+      'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
+      'features.Lion Totem', '=', '"feline"',
+      'features.Serpent Totem', '=', '"snake"',
+      'features.Wolf Totem', '=', '"canine"'
+    );
     rules.defineRule('isNotUrbanDruid',
       'levels.Druid', '=', '1',
       'features.Urban Druid', '=', '0'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
+      'features.Animal Shaman', '?', null,
+      classLevel, '=', '1'
     );
     rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
       'isNotUrbanDruid', '?', null
@@ -5670,12 +5717,28 @@ PFAPG.classRulesExtra = function(rules, name) {
       'plainsDruidLevel', '+', '-2',
       'swampDruidLevel', '+', '-2',
       'urbanDruidLevel', '+', '-4',
-      'bearShamanLevel', '+', '-2'
+      'animalShamanLevel', '+', '-2'
     );
     rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
     ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
      'Toughness'].forEach(f => {
       allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
+    });
+    ['Flyby Attack', 'Improved Lightning Reflexes', 'Lightning Reflexes',
+     'Skill Focus (Perception)', 'Wind Stance'].forEach(f => {
+      allFeats[f] = allFeats[f].replace('Type=', 'Type="Eagle Shaman",');
+    });
+    ['Dodge', 'Lunge', 'Improved Iron Will', 'Iron Will',
+     'Skill Focus (Acrobatics)'].forEach(f => {
+      allFeats[f] = allFeats[f].replace('Type=', 'Type="Lion Shaman",');
+    });
+    ['Combat Expertise', 'Improved Feint', 'Skill Focus (Bluff)', 'Stealthy',
+     'Strike Back'].forEach(f => {
+      allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
+    });
+    ['Greater Trip', 'Improved Trip', 'Mobility', 'Skill Focus (Stealth)',
+     'Spring Attack'].forEach(f => {
+      allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
     });
     // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
     // TODO Disable Knowledge (Geography) class skill for Cave Druid
