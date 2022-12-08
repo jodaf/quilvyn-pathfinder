@@ -5271,9 +5271,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'druidHasDomain', '?', null,
       'levels.Druid', '=', null
     );
-    for(var domain in QuilvynUtils.getKeys(Pathfinder.PATHS, /domain/i)) {
-      rules.defineRule('druidHasDomain', 'druidFeatures.' + domain, '=', '1');
-    }
+    Pathfinder.DRUID_DOMAINS.forEach(domain =>
+      rules.defineRule('druidHasDomain', 'druidFeatures.' + domain, '=', '1')
+    );
     rules.defineRule('magicNotes.wildShape',
       'wildShapeLevel', '=',
         'source < 4 ? null : ' +
