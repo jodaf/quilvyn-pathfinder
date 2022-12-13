@@ -1280,10 +1280,10 @@ PFAPG.FEATURES = {
   // Fighter
   'Active Defense':
     'Section=combat ' +
-    'Note="+%{(level.Fighter+1)//4} AC w/shield when fighting defensively or using Combat Expertise or total defense/May share bonus w/1 adjacent ally or half will all adjacent allies"',
+    'Note="+%{(levels.Fighter+1)//4} AC w/shield when fighting defensively or using Combat Expertise or total defense/May share bonus w/1 adjacent ally or half will all adjacent allies"',
   'Agility':
     'Section=save ' +
-    'Note="+{(levels.Fighter+2)//4} vs. paralyzed, slowed, and entangled"',
+    'Note="+%{(levels.Fighter+2)//4} vs. paralyzed, slowed, and entangled"',
   'Armored Charger':
     'Section=combat,skill ' +
     'Note=' +
@@ -1313,7 +1313,7 @@ PFAPG.FEATURES = {
      '"+%{(levels.Fighter+2)//4} Bluff (feint or create distraction to hide)"',
   'Defensive Parry':
     'Section=combat ' +
-    'Note="+%{(levels+1)//4} AC when making full attack w/two weapons"',
+    'Note="+%{(levels.Fighter+1)//4} AC when making full attack w/two weapons"',
   'Deft Doublestrike':
     'Section=combat ' +
     'Note="May make disarm or trip w/out AOO after hitting foe w/both weapons"',
@@ -1328,7 +1328,7 @@ PFAPG.FEATURES = {
   'Elusive':'Section=combat Note="+%V AC in light armor"',
   'Equal Opportunity':'Section=combat Note="May attack w/two weapons in AOO"',
   'Evasive Archer':
-    'Section=combat Note="+{levels.Fighter>=17?4:2} AC vs. ranged attacks"',
+    'Section=combat Note="+%{levels.Fighter>=17?4:2} AC vs. ranged attacks"',
   'Expert Archer':'Section=combat Note="+V attack and damge w/bows"',
   'Fleet Footed':
     'Section=ability,skill ' +
@@ -1364,7 +1364,7 @@ PFAPG.FEATURES = {
     'Note="DC 20 Ride check allows full attack after mount move"',
   'Leaping Attack':
     'Section=combat ' +
-    'Note="+{(levels.Fighter-1)//4} attack and damage after 5\' move"',
+    'Note="+%{(levels.Fighter-1)//4} attack and damage after 5\' move"',
   'Meteor Shot':
     'Section=combat ' +
     'Note="May inflict bull rush or trip via successful -4 crossbow attack"',
@@ -1470,7 +1470,7 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter+2)//4} vs. bull rush, drag, overrun, trip, and trample"',
   'Steadfast Mount':
     'Section=combat ' +
-    'Note="Mount gains +{(levels+2)//4} AC and saves after 1 hr practice"',
+    'Note="Mount gains +%{(levels.Fighter+2)//4} AC and saves after 1 hr practice"',
   'Steadfast Pike':
     'Section=combat ' +
     'Note="+%{(levels.Fighter+1)//4} readied attacks and AOO w/polearms"',
