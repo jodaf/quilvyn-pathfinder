@@ -515,46 +515,37 @@ PFAPG.FEATS = {
   'Swap Places':'Type=Teamwork,Fighter'
 };
 PFAPG.FEATURES = {
-  // Existing base class options
+
+  // Barbarian
   'Beast Totem':
    'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
-  'Greater Beast Totem':
+  'Battle Scavenger':
     'Section=combat ' +
-    'Note="May make full attack at the end of a charge/Increased Lesser Beast Totem effects"',
-  'Lesser Beast Totem':
-    'Section=combat ' +
-    'Note="Two claw attacks inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
+    'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
+  'Bestial Mount':'Section=feature Note="Has Animal Companion features"',
+  'Blindsight':
+    'Section=feature Note="Can locate invisible creatures w/in line of sight"',
   'Boasting Taunt':
     'Section=combat ' +
     'Note="Successful Intimidate shakes target until attacks self"',
   'Brawler':
     'Section=combat Note="Has Improved Unarmed Strike features during rage"',
-  'Greater Brawler':
-    'Section=combat ' +
-    'Note="Has Two-Weapon Fighting features for unarmed attacks during rage"',
   'Chaos Totem':
     'Section=combat,skill ' +
     'Note=' +
       '"25% chance to ignore critical hit and sneak attack damage during rage",' +
       '"+4 Escape Artist during rage"',
-  'Greater Chaos Totem':
-    'Section=combat ' +
-    'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
-  'Lesser Chaos Totem':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+%V AC vs. lawful foe during rage",' +
-      '"+%V save vs. confusion, insanity, polymorph, and lawful effects during rage"',
   'Come And Get Me':
     'Section=combat ' +
     'Note="May trade +4 foe attack and damage for AOO after every foe attack during rage"',
+  'Destructive':
+    'Section=combat ' +
+    'Note="+%{levels.Barbarian//2>?1} damage vs. objects or with sunder"',
+  'Elemental Fury':
+    'Section=combat ' +
+    'Note="Taking %{levels.Barbarian} HP energy damage adds %{levels.Barbarian//3} to daily rage rds"',
   'Elemental Rage':
     'Section=combat Note="Attacks do HP +1d6 energy damage during rage"',
-  'Greater Elemental Rage':
-   'Section=combat ' +
-   'Note="Critical hits do +1d10 HP or better energy damage during rage"',
-  'Lesser Elemental Rage':
-    'Section=combat Note="Attacks do +1d6 HP energy damage for 1 rd 1/rage"',
   'Energy Absorption (Rage)':
     'Section=combat ' +
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
@@ -564,33 +555,51 @@ PFAPG.FEATURES = {
   'Energy Resistance':
     'Section=save ' +
     'Note="Resistance %{ragePowerLevel//2>?1} to chosen energy during rage"',
-  'Greater Energy Resistance':
-    'Section=combat Note="Chosen energy attack does half damage 1/rage"',
+  'Extreme Endurance':
+    'Section=save ' +
+    'Note="Inured to choice of hot or cold climate/Resistance %{(levels.Barbarian-3)//3} to choice of fire or cold"',
+  'Fast Rider':'Section=feature Note="+10\' Mount speed"',
   'Ferocious Mount':
     'Section=combat Note="May give mount rage benefits during rage"',
-  'Greater Ferocious Mount':
-    'Section=combat Note="May give mount rage power benefits during rage"',
   'Ferocious Trample':
     'Section=combat ' +
     'Note="Mount trample inflicts 1d8+strength (L/H mount 2d6/2d8, Ref half) during rage"',
-  'Greater Ferocious Trample':
-    'Section=combat ' +
-    'Note="Mount may trample targets of same size and overrun during rage"',
   'Fiend Totem':
     'Section=combat ' +
     'Note="Successful foe unarmed or natural weapon attack inflicts 1d6 HP on attacker during rage"',
-  'Greater Fiend Totem':
-    'Section=combat ' +
-    'Note="Adjacent good creatures suffer 2d6 HP and shaken and neutral creatures shaken during range"',
-  'Lesser Fiend Totem':
-    'Section=combat ' +
-    'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}+%{strengthModifier} HP during rage"',
   'Flesh Wound':
     'Section=combat ' +
     'Note="Successful DC damage Fort reduces damage to half nonlethal 1/rage"',
   'Good For What Ails You':
     'Section=combat ' +
     'Note="Alcohol gives save vs. condition or poison during rage"',
+  'Greater Beast Totem':
+    'Section=combat ' +
+    'Note="May make full attack at the end of a charge/Increased Lesser Beast Totem effects"',
+  'Greater Brawler':
+    'Section=combat ' +
+    'Note="Has Two-Weapon Fighting features for unarmed attacks during rage"',
+  'Greater Chaos Totem':
+    'Section=combat ' +
+    'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
+  'Greater Elemental Rage':
+   'Section=combat ' +
+   'Note="Critical hits do +1d10 HP or better energy damage during rage"',
+  'Greater Energy Resistance':
+    'Section=combat Note="Chosen energy attack does half damage 1/rage"',
+  'Greater Ferocious Mount':
+    'Section=combat Note="May give mount rage power benefits during rage"',
+  'Greater Ferocious Trample':
+    'Section=combat ' +
+    'Note="Mount may trample targets of same size and overrun during rage"',
+  'Greater Fiend Totem':
+    'Section=combat ' +
+    'Note="Adjacent good creatures suffer 2d6 HP and shaken and neutral creatures shaken during range"',
+  'Greater Hurling':
+    'Section=combat Note="May hurl +30\' or +2 size objects during rage"',
+  'Greater Spirit Totem':
+    'Section=combat ' +
+    'Note="Spirits inflict 1d8 HP on adjacent foes, may attack 15\' away for 1d6 HP during rage"',
   'Ground Breaker':
     'Section=combat ' +
     'Note="May knock prone adjacent creatures (DC 15 Ref neg) and create difficult terrain 1/rage"',
@@ -599,28 +608,60 @@ PFAPG.FEATURES = {
     'Note="%{ragePowerLevel} HP damage converted to nonlethal when taken to negative HP and stabilize automatically during rage"',
   'Hurling':
     'Section=combat Note="May hurl +20\' or +1 size objects during rage"',
-  'Greater Hurling':
-    'Section=combat Note="May hurl +30\' or +2 size objects during rage"',
-  'Lesser Hurling':
-    'Section=combat ' +
-    'Note="R10\' Thrown %V object inflicts 1d6+%{strengthModifier} HP or more during rage"',
   'Hurling Charge':
     'Section=combat ' +
     'Note="May make +2 thrown attack while charging during rage"',
+  'Improved Savage Grapple':
+    'Section=combat ' +
+    'Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
   'Inspire Ferocity':
     'Section=combat ' +
     'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd"',
+  'Invulnerability':'Section=combat Note="DR %V/-, dbl nonlethal"',
+  'Keen Senses (Barbarian)':
+    'Section=feature Note="Has Low-Light Vision%1 features"',
   'Knockdown':
     'Section=combat ' +
     'Note="May make trip attack w/out AOO that inflicts %{strengthModifier} HP and knocks prone 1/rage"',
+  'Lesser Beast Totem':
+    'Section=combat ' +
+    'Note="Two claw attacks inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
+  'Lesser Chaos Totem':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC vs. lawful foe during rage",' +
+      '"+%V save vs. confusion, insanity, polymorph, and lawful effects during rage"',
+  'Lesser Elemental Rage':
+    'Section=combat Note="Attacks do +1d6 HP energy damage for 1 rd 1/rage"',
+  'Lesser Fiend Totem':
+    'Section=combat ' +
+    'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}+%{strengthModifier} HP during rage"',
+  'Lesser Hurling':
+    'Section=combat ' +
+    'Note="R10\' Thrown %V object inflicts 1d6+%{strengthModifier} HP or more during rage"',
+  'Lesser Spirit Totem':
+    'Section=combat ' +
+    'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP 1/rd during rage"',
   'Liquid Courage':
     'Section=save ' +
     'Note="Alcohol gives up to +%{ragePowerLevel//4} save vs. mind-affecting effects during rage"',
+  'Naked Courage':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC in no armor",' +
+      '"+%{(levels.Barbarian+3)//6} save vs. fear in no armor"',
+  'Natural Toughness':'Section=combat Note="+%V AC in no armor"',
   'Overbearing Advance':
     'Section=combat ' +
     'Note="Successful overrun inflicts %{strengthModifier} HP during rage"',
   'Overbearing Onslaught':
     'Section=combat Note="May make additional -2 CMB overruns during rage"',
+  'Pit Fighter':
+    'Section=combat ' +
+    'Note="+%{armor==\'None\' ? 2 : 1} on CMB or CMD of %{(levels.Barbarian-3)//3} combat maneuvers"',
+  'Raging Drunk':
+    'Section=combat ' +
+    'Note="May drink alcohol or potion w/out AOO during rage/Alcohol extends rage 1 rd"',
   'Reckless Abandon':
     'Section=combat ' +
     'Note="May trade up to -%{ragePowerLevel//4+1} AC for equal attack bonus during rage"',
@@ -629,6 +670,13 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Alcohol gives up to +%{ragePowerLevel//4} vs. fear during rage",' +
       '"Alcohol gives up to +%{ragePowerLevel//4} Intimidate during rage"',
+  'Savage Grapple':
+   'Section=combat ' +
+   'Note="%V grappled penalties/Always has AOO vs. grapple, success gives +2 vs. grapple"',
+  'Sixth Sense':
+    'Section=combat Note="+%V Initiative/+%V AC during surprise rd"',
+  'Skilled Thrower':
+    'Section=combat Note="+10\' range for thrown weapons and objects"',
   'Smasher':
     'Section=combat Note="Attack ignores object hardness 1/rage"',
   'Spirit Steed':
@@ -637,122 +685,19 @@ PFAPG.FEATURES = {
   'Spirit Totem':
     'Section=combat ' +
     'Note="Spirits give 20% miss chance vs. ranged and non-adjacent attacks during rage"',
-  'Greater Spirit Totem':
-    'Section=combat ' +
-    'Note="Spirits inflict 1d8 HP on adjacent foes, may attack 15\' away for 1d6 HP during rage"',
-  'Lesser Spirit Totem':
-    'Section=combat ' +
-    'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP 1/rd during rage"',
   'Staggering Drunk':
     'Section=combat ' +
     'Note="Alcohol gives up to +%{ragePowerLevel//4} AC vs. AOO during rage"',
   'Witch Hunter':
     'Section=combat ' +
     'Note="Gives +%{ragePowerLevel//4+1} damage vs. spell users"',
-  'Destructive':
-    'Section=combat ' +
-    'Note="+%{levels.Barbarian//2>?1} damage vs. objects or with sunder"',
-  'Battle Scavenger':
-    'Section=combat ' +
-    'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
-  'Savage Grapple':
-   'Section=combat ' +
-   'Note="%V grappled penalties/Always has AOO vs. grapple, success gives +2 vs. grapple"',
-  'Pit Fighter':
-    'Section=combat ' +
-    'Note="+%{armor==\'None\' ? 2 : 1} on CMB or CMD of %{(levels.Barbarian-3)//3} combat maneuvers"',
-  'Improved Savage Grapple':
-    'Section=combat ' +
-    'Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
-  'Raging Drunk':
-    'Section=combat ' +
-    'Note="May drink alcohol or potion w/out AOO during rage/Alcohol extends rage 1 rd"',
-  'Elemental Fury':
-    'Section=combat ' +
-    'Note="Taking %{levels.Barbarian} HP energy damage adds %{levels.Barbarian//3} to daily rage rds"',
-  'Skilled Thrower':
-    'Section=combat Note="+10\' range for thrown weapons and objects"',
-  'Invulnerability':'Section=combat Note="DR %V/-, dbl nonlethal"',
-  'Extreme Endurance':
-    'Section=save ' +
-    'Note="Inured to choice of hot or cold climate/Resistance %{(levels.Barbarian-3)//3} to choice of fire or cold"',
-  'Fast Rider':'Section=feature Note="+10\' Mount speed"',
-  'Bestial Mount':'Section=feature Note="Has Animal Companion features"',
-  'Naked Courage':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+%V AC in no armor",' +
-      '"+%{(levels.Barbarian+3)//6} save vs. fear in no armor"',
-  'Natural Toughness':'Section=combat Note="+%V AC in no armor"',
-  'Sixth Sense':
-    'Section=combat Note="+%V Initiative/+%V AC during surprise rd"',
-  'Keen Senses (Barbarian)':
-    'Section=feature Note="Has Low-Light Vision%1 features"',
-  'Blindsight':
-    'Section=feature Note="Can locate invisible creatures w/in line of sight"',
 
-  'Rallying Cry':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies use of self Intimidate check for save vs. fear and despair"',
-  'Bladethirst':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
-  'Mass Bladethirst':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives +1 or better attack bonus to weapons of multiple allies"',
+  // Bard
   'Arcane Armor':
     'Section=feature,magic ' +
     'Note=' +
       '"Has %V Armor Proficiency features",' +
       '"No arcane spell failure in %V armor"',
-  'Naturalist':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of identified creatures"',
-  'Lamentable Belaborment':
-    'Section=magic ' +
-    'Note="Bardic Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Pedantic Lecture':
-    'Section=magic ' +
-    'Note="Bardic Performance inflicts choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  // TODO Lore Master modify level
-  'Magic Lore':
-    'Section=save,skill ' +
-    'Note=' +
-      '"+4 vs. magical traps and language- and symbol-based effects",' +
-      '"+%{levels.Bard//2} Spellcraft (identify items and decipher scrolls)/May use Disable Device on magical traps"',
-  // TODO Jack-Of-All-Trades modify level
-  'Probable Path':
-    'Section=feature ' +
-    'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
-  'Satire':
-    'Section=magic ' +
-    'Note="Bardic Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm of foes w/in hearing"',
-  'Mockery':
-    'Section=magic ' +
-    'Note="Bardic Performance inflicts -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
-  'Glorious Epic':
-    'Section=magic ' +
-    'Note="Bardic Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
-  'Scandal':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
-  'Heraldic Expertise':
-    'Section=skill ' +
-    'Note="+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)/May reroll 1/dy"',
-  'Wide Audience':
-    'Section=magic ' +
-    'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{60+(levels.Bard-5)//5*10} radius, or +%{(levels.Bard-5)//5} targets"',
-  'Careful Teamwork':
-    'Section=magic ' +
-    'Note="R30\' 3 rd Bardic Performance gives allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
-  'True Confession':
-    'Section=skill Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 1} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Show Yourselves':
-    'Section=combat ' +
-    'Note="R30\' Bardic Performance compels foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Eye For Detail':
-    'Section=skill ' +
-    'Note="+%V Diplomacy (gather information)/+%V Knowledge (Local)/+%V Perception/+%V Sense Motive"',
   'Arcane Insight':
     'Section=magic,save,skill ' +
     'Note=' +
@@ -760,347 +705,390 @@ PFAPG.FEATURES = {
       '"+4 vs. illusions",' +
       '"May find and disable magical traps/+4 vs. disguises"',
   'Arcane Investigation':'Section=magic Note="Has access to additional spells"',
-  'Dweomercraft':
-    'Section=magic ' +
-    'Note="Bardic Performance gives allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
-  'Spell Suppression':
-    'Section=magic Note="Bardic Performance acts as <i>Dispel Magic</i>"',
-  'Metamagic Mastery (Bard)':
-    'Section=magic Note="Bardic Performance applies metamagic feat to spell"',
-  'Magical Talent (Bard)':
-    'Section=skill ' +
-    'Note="+%V Knowledge (Arcana)/+%V Spellcraft/+%V Use Magic Device"',
-  'Extended Performance':
-    'Section=magic ' +
-    'Note="May expend spell slot to extend Bardic Performance effects"',
-  'Expanded Repertoire':'Section=magic Note="Has access to additional spells"',
-  'Wand Mastery':
-    'Section=magic ' +
-    'Note="Uses charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
-  'Stealspell':
-    'Section=magic ' +
-    'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will neg) for duration of Bardic Performance"',
-  'Slumber Song':
-    'Section=magic ' +
-    'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Dramatic Subtext':
-    'Section=magic ' +
-    'Note="2 rd Bardic Performance allows spell casting w/out visual or audible components (Perception vs. Sleight Of Hand to detect casting)"',
-  'Greater Stealspell':
-    'Section=magic ' +
-    'Note="Successful Stealspell reveals target\'s spells; may instead steal SR %{levels.Bard//2}"',
-  'Mass Slumber Song':
-    'Section=magic ' +
-    'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Spell Catching':
-    'Section=magic ' +
-    'Note="Bardic Performance and successful caster level check (DC 10 + spell level) negates foe targeted spell and allows immediate recast"',
-  'Master Of Deception':
-    'Section=skill ' +
-    'Note="+%V Bluff/+%V Sleight Of Hand/+%V Stealth/May disarm magical traps"',
-  'Sneakspell':
-    'Section=magic ' +
-    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} DC and Bardic Performance vs. flat-footed foe"',
-  'Inspiring Blow':
-    'Section=combat ' +
-    'Note="Bardic Performance following critical hit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 attack for 1 rd"',
-  'Incite Rage':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell"',
-  'Song Of The Fallen':
-    'Section=magic ' +
-    'Note="10 rd Bardic Performance summons barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
-  'Berserkergang':
-    'Section=magic ' +
-    'Note="Bardic Performance suppresses pain, stun, and fear effects and gives DR5/- to %{(levels.Bard-9)//3} targets"',
   'Battle Song':
     'Section=magic ' +
     'Note="R30\' Bardic Performance affects all allies as <i>Rage</i> spell"',
-  'Sea Shanty':
-    'Section=skill ' +
-    'Note="R30\' Allies may use self Perform to save vs. exhaustion, fatigue, nausea, and sickening"',
-  'Still Water':
+  'Berserkergang':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard)"',
-  'Whistle The Wind':
-   'Section=magic Note="Bardic Performance acts as <i>Gust Of Wind</i> spell"',
+    'Note="Bardic Performance suppresses pain, stun, and fear effects and gives DR5/- to %{(levels.Bard-9)//3} targets"',
+  'Bladethirst':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
   'Call The Storm':
-    'Section=magic Note="Bardic Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell"',
-  'World Traveler (Bard)':
+    'Section=magic ' +
+    'Note="Bardic Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell"',
+  'Careful Teamwork':
+    'Section=magic ' +
+    'Note="R30\' 3 rd Bardic Performance gives allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
+  'Disappearing Act':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance causes creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Dramatic Subtext':
+    'Section=magic ' +
+    'Note="2 rd Bardic Performance allows spell casting w/out visual or audible components (Perception vs. Sleight Of Hand to detect casting)"',
+  'Dweomercraft':
+    'Section=magic ' +
+    'Note="Bardic Performance gives allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
+  'Expanded Repertoire':'Section=magic Note="Has access to additional spells"',
+  'Extended Performance':
+    'Section=magic ' +
+    'Note="May expend spell slot to extend Bardic Performance effects"',
+  'Eye For Detail':
     'Section=skill ' +
-    'Note="+%V Knowledge (Geography)/+%V Knowledge (Local)/+%V Knowledge (Nature)/+%V Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
+    'Note="+%V Diplomacy (gather information)/+%V Knowledge (Local)/+%V Perception/+%V Sense Motive"',
+  'Gladhanding':
+    'Section=skill ' +
+    'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
+  'Glorious Epic':
+    'Section=magic ' +
+    'Note="Bardic Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
+  'Greater Stealspell':
+    'Section=magic ' +
+    'Note="Successful Stealspell reveals target\'s spells; may instead steal SR %{levels.Bard//2}"',
+  'Harmless Performer':
+    'Section=magic ' +
+    'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Heraldic Expertise':
+    'Section=skill ' +
+    'Note="+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)/May reroll 1/dy"',
+  'Incite Rage':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell"',
+  'Inspiring Blow':
+    'Section=combat ' +
+    'Note="Bardic Performance following critical hit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 attack for 1 rd"',
+  // TODO Jack-Of-All-Trades modify level
+  'Lamentable Belaborment':
+    'Section=magic ' +
+    'Note="Bardic Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  // TODO Lore Master modify level
+  'Madcap Prank':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg)"',
+  'Magic Lore':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+4 vs. magical traps and language- and symbol-based effects",' +
+      '"+%{levels.Bard//2} Spellcraft (identify items and decipher scrolls)/May use Disable Device on magical traps"',
+  'Magical Talent (Bard)':
+    'Section=skill ' +
+    'Note="+%V Knowledge (Arcana)/+%V Spellcraft/+%V Use Magic Device"',
+  'Mass Bladethirst':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance gives +1 or better attack bonus to weapons of multiple allies"',
+  'Mass Slumber Song':
+    'Section=magic ' +
+    'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Master Of Deception':
+    'Section=skill ' +
+    'Note="+%V Bluff/+%V Sleight Of Hand/+%V Stealth/May disarm magical traps"',
+  'Metamagic Mastery (Bard)':
+    'Section=magic Note="Bardic Performance applies metamagic feat to spell"',
+  'Mockery':
+    'Section=magic ' +
+    'Note="Bardic Performance inflicts -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
+  'Naturalist':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of identified creatures"',
+  'Pedantic Lecture':
+    'Section=magic ' +
+    'Note="Bardic Performance inflicts choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Probable Path':
+    'Section=feature ' +
+    'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
+  'Quick Change':
+    'Section=skill ' +
+    'Note="May don disguise as standard action (-5 check)/May use Bluff as diversion to hide/May take 10 on Bluff and Disguise %{(levels.Bard+1)//6}/dy"',
+  'Rallying Cry':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance gives allies use of self Intimidate check for save vs. fear and despair"',
+  'Satire':
+    'Section=magic ' +
+    'Note="Bardic Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm of foes w/in hearing"',
+  'Scandal':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
   'Sea Legs':
     'Section=combat,save ' +
     'Note="+4 CMD vs. grapple, overrun, and trip",' +
     '"+4 vs. air, water, and knock prone"',
-  'Disappearing Act':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance causes creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Harmless Performer':
-    'Section=magic ' +
-    'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  'Madcap Prank':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg)"',
+  'Sea Shanty':
+    'Section=skill ' +
+    'Note="R30\' Allies may use self Perform to save vs. exhaustion, fatigue, nausea, and sickening"',
+  'Show Yourselves':
+    'Section=combat ' +
+    'Note="R30\' Bardic Performance compels foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Slip Through The Crowd':
     'Section=magic Note="Disappearing Act allows affected allies to attack"',
-  'Gladhanding':
-    'Section=skill ' +
-    'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
+  'Slumber Song':
+    'Section=magic ' +
+    'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Sneakspell':
+    'Section=magic ' +
+    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} DC and Bardic Performance vs. flat-footed foe"',
+  'Song Of The Fallen':
+    'Section=magic ' +
+    'Note="10 rd Bardic Performance summons barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
+  'Spell Catching':
+    'Section=magic ' +
+    'Note="Bardic Performance and successful caster level check (DC 10 + spell level) negates foe targeted spell and allows immediate recast"',
+  'Spell Suppression':
+    'Section=magic Note="Bardic Performance acts as <i>Dispel Magic</i>"',
+  'Stealspell':
+    'Section=magic ' +
+    'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will neg) for duration of Bardic Performance"',
+  'Still Water':
+    'Section=magic ' +
+    'Note="R30\' Bardic Performance gives -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard)"',
   'Streetwise':
     'Section=skill ' +
     'Note="+%V Bluff/+%V Disguise/+%V Knowledge (Local)/+%V Sleight Of Hand/+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
-  'Quick Change':
+  'True Confession':
     'Section=skill ' +
-    'Note="May don disguise as standard action (-5 check)/May use Bluff as diversion to hide/May take 10 on Bluff and Disguise %{(levels.Bard+1)//6}/dy"',
+    'Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 1} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+  'Wand Mastery':
+    'Section=magic ' +
+    'Note="Uses charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
+  'Whistle The Wind':
+   'Section=magic Note="Bardic Performance acts as <i>Gust Of Wind</i> spell"',
+  'Wide Audience':
+    'Section=magic ' +
+    'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{60+(levels.Bard-5)//5*10} radius, or +%{(levels.Bard-5)//5} targets"',
+  'World Traveler (Bard)':
+    'Section=skill ' +
+    'Note="+%V Knowledge (Geography)/+%V Knowledge (Local)/+%V Knowledge (Nature)/+%V Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
 
-  'Protective Aura':
-    'Section=magic ' +
-    'Note="R30\' Allies gain +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
-  'Speak With Dead':
-    'Section=magic Note="May ask question of corpse %{levels.Cleric}/dy"',
-  'Arcane Beacon':
-    'Section=magic ' +
-    'Note="15\' radius gives arcane spells +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
-  'Aura Of Menace':
-    'Section=magic ' +
-    'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
-  'Wall Of Ashes':
-    'Section=magic ' +
-    'Note="R100\' %{levels.Cleric*10}\'x20\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
-  "Elysium's Call":
-    'Section=magic ' +
-    'Note="Touch gives immediate enchantment reroll, +2 save vs. enchantment, +2 CMB to escape grapple, and negate 5\' difficult terrain for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
-  'Wounding Blade':
-    'Section=magic ' +
-    'Note="Hit w/touched weapon causes 1 HP bleeding damage (DC 15 Heal or cure ends) for %{levels.Cleric//2} rd %{(levels.Cleric-4)//4}/dy"',
-  'Deadly Weather':
-    'Section=magic ' +
-    'Note="%{levels.Cleric*5}\' radius inflicts choice of rain (-4 Perception and ranged attack), winds (-8 Fly and ranged attack), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy"',
-  'Tunnel Runner':
-    'Section=feature ' +
-    'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
-  'Thundercloud':
-    'Section=magic ' +
-    'Note="R%{levels.Cleric*10+100}\' Fog in 20\' radius moves 30\'/rd, obscures vision, deafens, and inflicts 2d6 HP electricity %{levels.Cleric} rd/dy"',
+  // Cleric
+  'Adoration':
+    'Section=combat ' +
+    'Note="May force foe to forego attack (Will neg) %{wisdomModifier+3}/dy"',
   'Animate Servant':
     'Section=magic ' +
     'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
-  'Malign Eye':
+  'Anything To Please':
     'Section=magic ' +
-    'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
-  'Whispering Evil':
+    'Note="R30\' Target attempts to please self (Will neg) %{(levels.Cleric-4)//4}/dy"',
+  'Arcane Beacon':
     'Section=magic ' +
-    'Note="30\' radius fascinates foes (Will neg) %{levels.Cleric} rd/dy"',
-  "Day's Resurgence":
-    'Section=magic ' +
-    'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
+    'Note="15\' radius gives arcane spells +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
+  'Aura Of Chaos':
+    'Section=combat ' +
+    'Note="30\' radius randomizes creature actions %{levels.Cleric} rd/dy"',
   'Aura Of Decay':
     'Section=combat ' +
     'Note="30\' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd %{levels.Cleric} rd/dy"',
-  'Sudden Shift':
+  'Aura Of Forgetfulness':
+    'Section=magic ' +
+    'Note="Creatures have no memory of time in 30\' radius and lose 1 spell slot/rd (Will neg) %{levels.Cleric} rd/dy"',
+  'Aura Of Heroism':
     'Section=combat ' +
-    'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
+    'Note="30\' radius gives allies +2 attack, saves, and skill checks %{levels.Cleric} rd/dy"',
+  'Aura Of Menace':
+    'Section=magic ' +
+    'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
+  'Aura Of Repetition':
+    'Section=combat ' +
+    'Note="R30\' Forces foes to repeat prior action (Will neg) %{levels.Cleric} rd/dy"',
+  'Bestow Resolve':
+    'Section=magic ' +
+    'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
+  'Binding Ties':
+    'Section=magic ' +
+    'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+  'Blinding Flash':
+    'Section=magic ' +
+    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Body Of Ice':
+    'Section=combat ' +
+    'Note="May trade dbl damage from fire for immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
+  'Cloud Of Smoke':
+    'Section=magic ' +
+    'Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
+  'Command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
+  "Day's Resurgence":
+    'Section=magic ' +
+    'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
+  'Deadly Weather':
+    'Section=magic ' +
+    'Note="%{levels.Cleric*5}\' radius inflicts choice of rain (-4 Perception and ranged attack), winds (-8 Fly and ranged attack), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy"',
+  "Death's Kiss":
+    'Section=magic ' +
+    'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Deflection Aura':
     'Section=combat ' +
     'Note="20\' radius gives allies +2 AC and CMD for %{levels.Cleric} rd 1/dy"',
-  'Fury Of The Abyss':
-    'Section=combat ' +
-    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, and CMB for 1 rd %{wisdomModifier+3}/dy"',
-  "Hell's Corruption":
-    'Section=combat ' +
-    'Note="Touch inflicts -2 saves and worse of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Divine Vessel':
     'Section=magic ' +
     'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill check, or ability check for 1 rd %{wisdomModifier+3}/dy"',
   'Door Sight':
     'Section=magic ' +
     'Note="May see through %{6+levels.Cleric}\\" material after 1 min touch %{wisdomModifier+3}/dy"',
-  'Binding Ties':
+  "Elysium's Call":
     'Section=magic ' +
-    'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
-  'Tugging Strands':
-    'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
+    'Note="Touch gives immediate enchantment reroll, +2 save vs. enchantment, +2 CMB to escape grapple, and negate 5\' difficult terrain for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
     'Note=' +
       '"+2 Initiative",' +
       '"+%V Perception"',
+  'Fearful Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
   'Ferocious Strike':
     'Section=combat ' +
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
+  'Fury Of The Abyss':
+    'Section=combat ' +
+    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, and CMB for 1 rd %{wisdomModifier+3}/dy"',
+  'Gale Aura':
+    'Section=magic ' +
+    'Note="30\' radius inflicts difficult terrain and no 5\' step %{levels.Cleric} rd/dy"',
+  'Gift Of Life':
+    'Section=magic ' +
+    'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
+  'Guarded Hearth':
+    'Section=magic ' +
+    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
+  "Hell's Corruption":
+    'Section=combat ' +
+    'Note="Touch inflicts -2 saves and worse of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Honor Bound':
+    'Section=magic ' +
+    'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
+  'Insane Focus':
+    'Section=magic ' +
+    'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) %{wisdomModifier+3}/dy"',
+  'Inspiring Command':
+    'Section=magic ' +
+    'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
+  'Killing Blow':
+    'Section=combat ' +
+    'Note="Critical hit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
   "Liberty's Blessing":
     'Section=magic Note="Touch gives additional save %{wisdomModifier+3}/dy"',
+  'Malign Eye':
+    'Section=magic ' +
+    'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
+  'Metal Fist':
+    'Section=combat ' +
+    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
+  'Night Hunter':
+    'Section=feature ' +
+    'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Powerful Persuader':
+    'Section=skill ' +
+    'Note="May take higher of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-6)//2}/dy"',
   "Predator's Grace":
     'Section=ability,feature ' +
     'Note=' +
       '"+%{10+levels.Cleric//5*5}\' Speed for 1 rd %{wisdomModifier+3}/dy",' +
       '"Has Low-Light Vision features for 1 rd %{wisdomModifier+3}/dy"',
-  'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
-  'Aura Of Heroism':
-    'Section=combat ' +
-    'Note="30\' radius gives allies +2 attack, saves, and skill checks %{levels.Cleric} rd/dy"',
-  'Guarded Hearth':
+  'Protective Aura':
     'Section=magic ' +
-    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
-  'Honor Bound':
-    'Section=magic ' +
-    'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
-  'Body Of Ice':
-    'Section=combat Note="May trade dbl damage from fire for immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
-  'Command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
-  'Insane Focus':
-    'Section=magic ' +
-    'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) %{wisdomModifier+3}/dy"',
-  'Rune Shift':
-    'Section=magic Note="R30\' May move blast rune to adjacent square"',
-  'Inspiring Command':
-    'Section=magic ' +
-    'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
-  'Blinding Flash':
-    'Section=magic ' +
-    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
-  'Aura Of Forgetfulness':
-    'Section=magic ' +
-    'Note="Creatures have no memory of time in 30\' radius and lose 1 spell slot/rd (Will neg) %{levels.Cleric} rd/dy"',
-  'Adoration':
-   'Section=combat ' +
-   'Note="May force foe to forego attack (Will neg) %{wisdomModifier+3}/dy"',
-  'Anything To Please':
-    'Section=magic ' +
-    'Note="R30\' Target attempts to please self (Will neg) %{(levels.Cleric-4)//4}/dy"',
-  'Sacrificial Bond':
-    'Section=combat ' +
-    'Note="R30\' May transfer ally damage to self %{(levels.Cleric-2)//6}/dy"',
-  'Recall':
-    'Section=skill ' +
-    'Note="Touch gives +%{wisdomModifier} Knowledge reroll %{wisdomModifier+3}/dy"',
-  'Metal Fist':
-    'Section=combat ' +
-    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
-  'Killing Blow':
-    'Section=combat ' +
-    'Note="Critical hit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
-  'Night Hunter':
-    'Section=feature ' +
-    'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
-  'Fearful Touch':
-    'Section=combat ' +
-    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
-  'Surge':
-    'Section=feature ' +
-    'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
-  'Aura Of Chaos':
-    'Section=combat ' +
-    'Note="30\' radius randomizes creature actions %{levels.Cleric} rd/dy"',
+    'Note="R30\' Allies gain +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
   'Purifying Touch':
     'Section=magic ' +
     'Note="Touch gives additional save vs. effects %{(levels.Cleric-2)//6}/dy"',
   'Rage (Cleric)':
     'Section=combat ' +
     'Note="+4 Str, +4 Con, +2 Will, -2 AC and %1 powers %{levels.Cleric} rd/dy"',
-  'Bestow Resolve':
-    'Section=magic ' +
-    'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
-  'Restorative Touch':
-    'Section=magic ' +
-    'Note="Touch removes choice of dazed, fatigued, shaken, sickened, or staggered %{wisdomModifier+3}/dy"',
-  'Gift Of Life':
-    'Section=magic ' +
-    'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
-  'Powerful Persuader':
-    'Section=skill ' +
-    'Note="May take higher of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-6)//2}/dy"',
-  'Untouched By The Seasons':
-    'Section=magic ' +
-    'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
-  'Cloud Of Smoke':
-    'Section=magic Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
-  'Touch The Spirit World':
-    'Section=magic ' +
-    'Note="Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
-  'Gale Aura':
-    'Section=magic ' +
-    'Note="30\' radius inflicts difficult terrain and no 5\' step %{levels.Cleric} rd/dy"',
-  'Seize The Initiative':
-    'Section=magic ' +
-    'Note="R30\' Target gains choice of 2 Initiative rolls %{wisdomModifier+3}/dy"',
-  'Thief Of The Gods':
-    'Section=skill ' +
-    'Note="May take higher of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-6)//2}/dy"',
   'Read Minds':
     'Section=magic ' +
     'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
-  'Aura Of Repetition':
-    'Section=combat Note="R30\' Forces foes to repeat prior action (Will neg) %{levels.Cleric} rd/dy"',
+  'Recall':
+    'Section=skill ' +
+    'Note="Touch gives +%{wisdomModifier} Knowledge reroll %{wisdomModifier+3}/dy"',
+  'Restorative Touch':
+    'Section=magic ' +
+    'Note="Touch removes choice of dazed, fatigued, shaken, sickened, or staggered %{wisdomModifier+3}/dy"',
+  'Rune Shift':
+    'Section=magic Note="R30\' May move blast rune to adjacent square"',
+  'Sacrificial Bond':
+    'Section=combat ' +
+    'Note="R30\' May transfer ally damage to self %{(levels.Cleric-2)//6}/dy"',
+  'Seize The Initiative':
+    'Section=magic ' +
+    'Note="R30\' Target gains choice of 2 Initiative rolls %{wisdomModifier+3}/dy"',
   'Silver-Tongued Haggler':
     'Section=skill ' +
     'Note="+%{levels.Cleric//2>?1} Bluff, Diplomacy, or Sense Motive %{wisdomModifier+3}/dy"',
-  "Death's Kiss":
+  'Speak With Dead':
+    'Section=magic Note="May ask question of corpse %{levels.Cleric}/dy"',
+  'Sudden Shift':
+    'Section=combat ' +
+    'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
+  'Surge':
+    'Section=feature ' +
+    'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
+  'Thief Of The Gods':
+    'Section=skill ' +
+    'Note="May take higher of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-6)//2}/dy"',
+  'Thundercloud':
     'Section=magic ' +
-    'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="R%{levels.Cleric*10+100}\' Fog in 20\' radius moves 30\'/rd, obscures vision, deafens, and inflicts 2d6 HP electricity %{levels.Cleric} rd/dy"',
+  'Touch The Spirit World':
+    'Section=magic ' +
+    'Note="Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+  'Tugging Strands':
+    'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
+  'Tunnel Runner':
+    'Section=feature ' +
+    'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
+  'Untouched By The Seasons':
+    'Section=magic ' +
+    'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
+  'Wall Of Ashes':
+    'Section=magic ' +
+    'Note="R100\' %{levels.Cleric*10}\'x20\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
   'Warding Rune':
     'Section=magic ' +
     'Note="Damage from blast rune prevents attack on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+  'Whispering Evil':
+    'Section=magic ' +
+    'Note="30\' radius fascinates foes (Will neg) %{levels.Cleric} rd/dy"',
   'Wind Blast':
-    'Section=magic Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
+    'Section=magic ' +
+    'Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
+  'Wounding Blade':
+    'Section=magic ' +
+    'Note="Hit w/touched weapon causes 1 HP bleeding damage (DC 15 Heal or cure ends) for %{levels.Cleric//2} rd %{(levels.Cleric-4)//4}/dy"',
 
-  'Aquatic Druid':
-    'Section=skill ' +
-    'Note="Wild Empathy works only with swimming and water creatures"',
+  // Druid
+  'Animal Shaman':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+4 Wild Shape level w/totem animal",' +
+      '"+4 Wild Empathy w/totem animal"',
+  'Animal Shaman Feat Bonus':'Section=feature Note="%V Selections"',
   'Aquatic Adaptation':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in aquatic terrain",' +
       '"Cannot be tracked in aquatic environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in aquatic terrain"',
-  'Natural Swimmer':'Section=ability Note="%V\' Swim speed"',
-  "Resist Ocean's Fury":'Section=save Note="+4 vs. water spells and creatures"',
-  'Seaborn':
-    'Section=ability,feature ' +
-    'Note=' +
-      '"Increased Natural Swimmer effects",' +
-      '"Has aquatic subtype and amphibious trait; comfortable down to -50F"',
-  'Deep Diver':
-    'Section=combat ' +
-    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing; immune to deep water pressure"',
+  'Aquatic Druid':
+    'Section=skill ' +
+    'Note="Wild Empathy works only with swimming and water creatures"',
+  'Arctic Endurance':
+    'Section=save Note="Comfortable down to -50F; immune to dazzled"',
   'Arctic Native':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in cold terrain",' +
       '"Cannot be tracked in cold environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in cold terrain"',
-  'Icewalking':
-    'Section=ability,skill ' +
-    'Note=' +
-      '"No speed penalty on ice or snow; does not break through snow crust or thin ice",' +
-      '"No Acrobatics, Climb, or Stealth penalty on ice or snow"',
-  'Arctic Endurance':
-    'Section=save Note="Comfortable down to -50F; immune to dazzled"',
-  'Snowcaster':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"Sees normally in snowstorms",' +
-      '"May prepare fire spells to inflict cold damage"',
-  'Flurry Form':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May assume insubstantial snow flurry form",' +
-      '"Transformation gives +%{levels.Druid} Stealth in cold terrain"',
+  'Bear Totem':
+    'Section=feature ' +
+    'Note="Must choose bear animal companion or one of Animal, Earth, Protection, or Strength Domains"',
   'Blight Druid':
     'Section=feature ' +
     'Note="May choose Familiar or Darkness, Death, or Destruction Domain, but not Animal Companion, for Nature Bond"',
-  'Vermin Empathy':
-    'Section=skill ' +
-    'Note="+%{levels.Druid+charismaModifier} Diplomacy (vermin, disease-bearing)/+%{levels.Druid+charismaModifier-4} Diplomacy (other animals)"',
-  'Miasma':
-    'Section=combat ' +
-    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
   'Blightblooded':
     'Section=save Note="Immune to disease, sickened, and nauseated"',
-  'Plaguebearer':
+  'Canny Charger':
     'Section=combat ' +
-    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
+    'Note="May pass through allies\' squares and turn during charge/+4 AC vs. enemy charge/+4 damage when readied vs. charge"',
   'Cave Druid':
     'Section=feature,magic,skill ' +
     'Note=' +
@@ -1110,71 +1098,67 @@ PFAPG.FEATURES = {
   'Cavesense':
     'Section=skill ' +
     'Note="Knowledge (Dungeoneering) is a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
-  'Tunnelrunner':
-    'Section=ability Note="May move at full speed through narrow passages"',
-  'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
-  'Resist Subterranean Corruption':
-    'Section=save Note="+2 vs. abilities of oozes and aberrations"',
+  'Deep Diver':
+    'Section=combat ' +
+    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing; immune to deep water pressure"',
   'Desert Druid':
     'Section=magic ' +
     'Note=' +
       '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into vermin\':\'\'}"',
+  'Desert Endurance':
+    'Section=feature ' +
+    'Note="Comfortable to 140F; reduced need for food and drink"',
   'Desert Native':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in desert terrain",' +
       '"Cannot be tracked in desert environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in desert terrain"',
-  'Sandwalker':
-    'Section=ability,skill ' +
-    'Note=' +
-      '"No speed penalty in sand or desert",' +
-      '"No Acrobatics or Stealth penalty in sand or desert"',
-  'Desert Endurance':
-    'Section=feature ' +
-    'Note="Comfortable to 140F; reduced need for food and drink"',
-  'Shaded Vision':
-    'Section=save ' +
-    'Note="+2 vs. gaze, figments, and patterns; immune to blinded and dazzled"',
   'Dunemeld':
     'Section=magic,skill ' +
     'Note=' +
       '"May assume insubstantial sand form",' +
       '"Transformation gives +%{levels.Druid} Stealth in desert terrain"',
+  'Eagle Totem':
+    'Section=feature ' +
+    'Note="Must choose eagle animal companion or one of Air, Animal, Nobility, or Weather Domains"',
+  'Flurry Form':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May assume insubstantial snow flurry form",' +
+      '"Transformation gives +%{levels.Druid} Stealth in cold terrain"',
+  'Icewalking':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"No speed penalty on ice or snow; does not break through snow crust or thin ice",' +
+      '"No Acrobatics, Climb, or Stealth penalty on ice or snow"',
   'Jungle Guardian':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in jungle terrain",' +
       '"Cannot be tracked in jungle environments",' +
       '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in jungle terrain"',
-  'Torrid Endurance':
-    'Section=feature,save ' +
+  'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
+  'Lion Totem':
+    'Section=feature ' +
+    'Note="Must choose lion animal companion or one of Animal, Glory, Nobility, or Sun Domains"',
+  'Lorekeeper':
+    'Section=skill ' +
+    'Note="+2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill"',
+  'Marshwight':
+    'Section=combat,feature,skill ' +
     'Note=' +
-      '"Comfortable to 140F",' +
-      '"+4 vs. disease and exceptional abilities of animals and magical beasts"',
-  'Verdant Sentinel':
-    'Section=magic Note="May cast <i>Tree Shape</i> at will"',
+      '"+%{levels.Druid//2} Initiative in swamp terrain",' +
+      '"Cannot be tracked in swamp environments",' +
+      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in swamp terrain"',
+  'Mental Strength':'Section=save Note="Immune to charm and compulsion"',
+  'Miasma':
+    'Section=combat ' +
+    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
   'Mountain Druid':
     'Section=magic ' +
     'Note=' +
       '"Cannot Wild Shape into plant creature%{levels.Druid>=12 ? \'; May Wild Shape into giant\':\'\'}"',
-  'Mountaineer':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Druid//2} Initiative in mountainous terrain",' +
-      '"Cannot be tracked in mountainous environments",' +
-      '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in mountainous terrain"',
-  'Sure-Footed (Druid)':
-    'Section=ability,skill ' +
-    'Note=' +
-      '"No speed penalty on slopes, rubble, or scree",' +
-      '"No Acrobatics or Stealth penalty on slopes, rubble, or scree"',
-  'Spire Walker':
-    'Section=feature,save,skill ' +
-    'Note=' +
-      '"Comfortable to -50F",' +
-      '"Immune to altitude sickness",' +
-      '"Retains dexterity bonus during climb"',
   'Mountain Stance':
     'Section=combat,save ' +
     'Note=' +
@@ -1182,161 +1166,345 @@ PFAPG.FEATURES = {
       '"Immune to petrified, +4 vs. forced movement"',
   'Mountain Stone':
     'Section=magic Note="May transform into stone outcrop at will"',
+  'Mountaineer':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Druid//2} Initiative in mountainous terrain",' +
+      '"Cannot be tracked in mountainous environments",' +
+      '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in mountainous terrain"',
+  'Natural Swimmer':'Section=ability Note="%V\' Swim speed"',
+  'Plaguebearer':
+    'Section=combat ' +
+    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
   'Plains Traveler':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in plains terrain",' +
       '"Cannot be tracked in plains environments",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in plains terrain"',
-  'Run Like The Wind':
-    'Section=ability ' +
-    'Note="+10\' Speed in light armor/May dbl speed for 1 rd 1/hr"',
-  'Savanna Ambush':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"Gains concealment when prone in natural surroundings; may stand from prone during surprise round as immediate action",' +
-      '"No Stealth penalty when prone, -5 when crawling"',
-  'Canny Charger':
-    'Section=combat ' +
-    'Note="May pass through allies\' squares and turn during charge/+4 AC vs. enemy charge/+4 damage when readied vs. charge"',
-  'Marshwight':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Druid//2} Initiative in swamp terrain",' +
-      '"Cannot be tracked in swamp environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in swamp terrain"',
-  'Swamp Strider':
-    'Section=ability,skill ' +
-    'Note=' +
-      '"No speed penalty in bogs or undergrowth",' +
-      '"No Acrobatics or Stealth penalty in bogs or undergrowth"',
   'Pond Scum':
     'Section=combat,save ' +
     'Note=' +
       '"DR %{levels.Druid//2}/- vs. swarms",' +
       '"+4 vs. disease and abilities of monstrous humanoids"',
-  'Slippery':
-    'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
-  'Urban Druid':
-    'Section=feature ' +
-    'Note="May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond"',
-  'Spontaneous Casting':
-    'Section=magic Note="May cast domain spell in place of prepared spell"',
-  'Lorekeeper':
-    'Section=skill ' +
-    'Note="+2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill"',
+  "Resist Ocean's Fury":'Section=save Note="+4 vs. water spells and creatures"',
+  'Resist Subterranean Corruption':
+    'Section=save Note="+2 vs. abilities of oozes and aberrations"',
   'Resist Temptation':'Section=save Note="+2 vs. divinations and enchantments"',
-  'Mental Strength':'Section=save Note="Immune to charm and compulsion"',
-  'Animal Shaman':
-    'Section=magic,skill ' +
+  'Run Like The Wind':
+    'Section=ability ' +
+    'Note="+10\' Speed in light armor/May dbl speed for 1 rd 1/hr"',
+  'Sandwalker':
+    'Section=ability,skill ' +
     'Note=' +
-      '"+4 Wild Shape level w/totem animal",' +
-      '"+4 Wild Empathy w/totem animal"',
-  'Bear Totem':
-    'Section=feature ' +
-    'Note="Must choose bear animal companion or one of Animal, Earth, Protection, or Strength Domains"',
-  'Eagle Totem':
-    'Section=feature ' +
-    'Note="Must choose eagle animal companion or one of Air, Animal, Nobility, or Weather Domains"',
-  'Lion Totem':
-    'Section=feature ' +
-    'Note="Must choose lion animal companion or one of Animal, Glory, Nobility, or Sun Domains"',
+      '"No speed penalty in sand or desert",' +
+      '"No Acrobatics or Stealth penalty in sand or desert"',
+  'Savanna Ambush':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Gains concealment when prone in natural surroundings; may stand from prone during surprise round as immediate action",' +
+      '"No Stealth penalty when prone, -5 when crawling"',
+  'Seaborn':
+    'Section=ability,feature ' +
+    'Note=' +
+      '"Increased Natural Swimmer effects",' +
+      '"Has aquatic subtype and amphibious trait; comfortable down to -50F"',
   'Serpent Totem':
     'Section=feature ' +
     'Note="Must choose snake animal companion or one of Animal, Charm, Trickery, or Water Domains"',
-  'Wolf Totem':
-    'Section=feature ' +
-    'Note="Must choose wolf animal companion or one of Animal, Community, Liberation, or Travel Domains"',
-  'Totem Transformation (Bear)':'Section=magic Note="Gains <i>Speak With Animals</i> (mammals) at will and one of: +10\' speed and +4 Swim; Low-Light Vision and Scent; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
-  'Totem Transformation (Eagle)':'Section=magic Note="Gains <i>Speak With Animals</i> (birds) at will and one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
-  'Totem Transformation (Lion)':'Section=magic Note="Gains <i>Speak With Animals</i> (felines) at will and one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
-  'Totem Transformation (Serpent)':'Section=magic Note="Gains <i>Speak With Animals</i> (reptiles) at will and one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
-  'Totem Transformation (Wolf)':'Section=magic Note="Gains <i>Speak With Animals</i> (canines) at will and one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
+  'Shaded Vision':
+    'Section=save ' +
+    'Note="+2 vs. gaze, figments, and patterns; immune to blinded and dazzled"',
+  'Slippery':
+    'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
+  'Snowcaster':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Sees normally in snowstorms",' +
+      '"May prepare fire spells to inflict cold damage"',
+  'Spire Walker':
+    'Section=feature,save,skill ' +
+    'Note=' +
+      '"Comfortable to -50F",' +
+      '"Immune to altitude sickness",' +
+      '"Retains dexterity bonus during climb"',
+  'Spontaneous Casting':
+    'Section=magic Note="May cast domain spell in place of prepared spell"',
+  'Sure-Footed (Druid)':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"No speed penalty on slopes, rubble, or scree",' +
+      '"No Acrobatics or Stealth penalty on slopes, rubble, or scree"',
+  'Swamp Strider':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"No speed penalty in bogs or undergrowth",' +
+      '"No Acrobatics or Stealth penalty in bogs or undergrowth"',
+  'Torrid Endurance':
+    'Section=feature,save ' +
+    'Note=' +
+      '"Comfortable to 140F",' +
+      '"+4 vs. disease and exceptional abilities of animals and magical beasts"',
+  'Totem Transformation (Bear)':
+    'Section=magic ' +
+    'Note="Gains <i>Speak With Animals</i> (mammals) at will and one of: +10\' speed and +4 Swim; Low-Light Vision and Scent; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
+  'Totem Transformation (Eagle)':
+    'Section=magic ' +
+    'Note="Gains <i>Speak With Animals</i> (birds) at will and one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
+  'Totem Transformation (Lion)':
+    'Section=magic ' +
+    'Note="Gains <i>Speak With Animals</i> (felines) at will and one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
+  'Totem Transformation (Serpent)':
+    'Section=magic ' +
+    'Note="Gains <i>Speak With Animals</i> (reptiles) at will and one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
+  'Totem Transformation (Wolf)':
+    'Section=magic ' +
+    'Note="Gains <i>Speak With Animals</i> (canines) at will and one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
   'Totemic Summons':
     'Section=magic ' +
     'Note="May cast <i>Summon Nature\'s Ally</i> to summon %V with %{levels.Druid} temporary HP"',
-  'Animal Shaman Feat Bonus':'Section=feature Note="%V Selections"',
+  'Tunnelrunner':
+    'Section=ability Note="May move at full speed through narrow passages"',
+  'Urban Druid':
+    'Section=feature ' +
+    'Note="May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond"',
+  'Verdant Sentinel':
+    'Section=magic Note="May cast <i>Tree Shape</i> at will"',
+  'Vermin Empathy':
+    'Section=skill ' +
+    'Note="+%{levels.Druid+charismaModifier} Diplomacy (vermin, disease-bearing)/+%{levels.Druid+charismaModifier-4} Diplomacy (other animals)"',
+  'Wolf Totem':
+    'Section=feature ' +
+    'Note="Must choose wolf animal companion or one of Animal, Community, Liberation, or Travel Domains"',
 
-  'Hawkeye':'Section=combat Note="FILL"',
-  'Trick Shot':'Section=combat Note="FILL"',
-  'Expert Archer':'Section=combat Note="FILL"',
-  'Safe Shot':'Section=combat Note="FILL"',
-  'Evasive Archer':'Section=combat Note="FILL"',
-  'Volley':'Section=combat Note="FILL"',
-  'Ranged Defense':'Section=combat Note="FILL"',
-  'Deadshot':'Section=combat Note="FILL"',
-  'Crossbow Expert':'Section=combat Note="FILL"',
-  'Improved Deadshot':'Section=combat Note="FILL"',
-  'Quick Sniper':'Section=combat Note="FILL"',
-  'Greater Deadshot':'Section=combat Note="FILL"',
-  'Safe Shot':'Section=combat Note="FILL"',
-  'Meteor Shot':'Section=combat Note="FILL"',
-  'Penetrating Shot':'Section=combat Note="FILL"',
-  'Deceptive Strike':'Section=combat Note="FILL"',
-  'Elusive':'Section=combat Note="FILL"',
-  'Singleton':'Section=combat Note="FILL"',
-  'Timely Tip':'Section=combat Note="FILL"',
-  'Interference':'Section=combat Note="FILL"',
-  'Reversal':'Section=combat Note="FILL"',
-  'Agility':'Section=combat Note="FILL"',
-  'Leaping Attack':'Section=combat Note="FILL"',
-  'Rapid Attack':'Section=combat Note="FILL"',
-  'Fleet Footed':'Section=combat Note="FILL"',
-  'Whirlwind Blitz':'Section=combat Note="FILL"',
-  'Stand Firm':'Section=combat Note="FILL"',
-  'Phalanx Fighting':'Section=combat Note="FILL"',
-  'Ready Pike':'Section=combat Note="FILL"',
-  'Deft Shield':'Section=combat Note="FILL"',
-  'Shield Ally':'Section=combat Note="FILL"',
-  'Irresistable Advance':'Section=combat Note="FILL"',
-  'Shielded Fortress':'Section=combat Note="FILL"',
-  'Pole Fighting':'Section=combat Note="FILL"',
-  'Steadfast Pike':'Section=combat Note="FILL"',
-  'Polearm Training':'Section=combat Note="FILL"',
-  'Flexible Flanker':'Section=combat Note="FILL"',
-  'Sweeping Fend':'Section=combat Note="FILL"',
-  'Step Aside':'Section=combat Note="FILL"',
-  'Polearm Parry':'Section=combat Note="FILL"',
-  'Steadfast Mount':'Section=combat Note="FILL"',
-  'Armored Charger':'Section=combat Note="FILL"',
-  'Mounted Mettle':'Section=combat Note="FILL"',
-  'Leap From The Saddle':'Section=combat Note="FILL"',
-  'Relentless Steed':'Section=combat Note="FILL"',
-  'Ride Them Down':'Section=combat Note="FILL"',
-  'Unavoidable Onslaught':'Section=combat Note="FILL"',
-  'Indomitable Steed':'Section=combat Note="FILL"',
-  'Spark Of Life':'Section=combat Note="FILL"',
-  'Natural Savagery':'Section=combat Note="FILL"',
-  'Savage Charge':'Section=combat Note="FILL"',
-  'Careful Claw':'Section=combat Note="FILL"',
-  'Greater Savage Charge':'Section=combat Note="FILL"',
-  'Natural Weapon Mastery':'Section=combat Note="FILL"',
-  'Active Defense':'Section=combat Note="FILL"',
-  'Shield Fighter':'Section=combat Note="FILL"',
-  'Shield Buffet':'Section=combat Note="FILL"',
-  'Shield Guard':'Section=combat Note="FILL"',
-  'Shield Mastery':'Section=combat Note="FILL"',
-  'Shield Ward':'Section=combat Note="FILL"',
-  'Shattering Strike':'Section=combat Note="FILL"',
-  'Overhand Chop':'Section=combat Note="FILL"',
-  'Backswing':'Section=combat Note="FILL"',
-  'Piledriver':'Section=combat Note="FILL"',
-  'Greater Power Attack':'Section=combat Note="FILL"',
-  'Devastating Blow':'Section=combat Note="FILL"',
-  'Defensive Parry':'Section=combat Note="FILL"',
-  'Twin Blades':'Section=combat Note="FILL"',
-  'Doublestrike':'Section=combat Note="FILL"',
-  'Improved Balance':'Section=combat Note="FILL"',
-  'Equal Opportunity':'Section=combat Note="FILL"',
-  'Perfect Balance':'Section=combat Note="FILL"',
-  'Deft Doublestrike':'Section=combat Note="FILL"',
-  'Deadly Defense':'Section=combat Note="FILL"',
-  'Weapon Guard':'Section=combat Note="FILL"',
-  '5Reliable Strike':'Section=combat Note="FILL"',
-  'Mirror Move':'Section=combat Note="FILL"',
-  'Deadly Critical':'Section=combat Note="FILL"',
-  'Critical Specialist':'Section=combat Note="FILL"',
-  'Unstoppable Strike':'Section=combat Note="FILL"',
+  // Fighter
+  'Active Defense':
+    'Section=combat ' +
+    'Note="+%{(level.Fighter+1)//4} AC w/shield when fighting defensively or using Combat Expertise or total defense/May share bonus w/1 adjacent ally or half will all adjacent allies"',
+  'Agility':
+    'Section=save ' +
+    'Note="+{(levels.Fighter+2)//4} vs. paralyzed, slowed, and entangled"',
+  'Armored Charger':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Mount moves full speed with medium load",' +
+      '"No Ride armor penalty"',
+  'Backswing':
+    'Section=combat ' +
+    'Note="+%{(strengthModifier*2-(strengthModifier*1.5//1)} damage w/multiple attacks w/two-handed weapons"',
+  'Careful Claw':
+    'Section=combat ' +
+    'Note="Reduces contact damage from natural attack by %{levels.Fighter//2}"',
+  'Critical Specialist':
+    'Section=combat Note="+4 DC vs. critical effects from chosen weapon"',
+  'Crossbow Expert':'Section=combat Note="+%V attack and damage w/crossbows"',
+  'Deadly Critical':
+    'Section=combat ' +
+    'Note="May increase critical multiplier w/chosen weapon %{(levels.Fighter-10)//3}/dy"',
+  'Deadly Defense':
+    'Section=combat ' +
+    'Note="May make AOO on every attacking foe after full attack w/both weapons"',
+  'Deadshot':
+    'Section=combat Note="+%V HP damage on crossbow readied action hit"',
+  'Deceptive Strike':
+    'Section=combat,skill ' +
+    'Note=' +
+     '"+%{(levels.Fighter+2)//4} CMB and CMD on disarm",' +
+     '"+%{(levels.Fighter+2)//4} Bluff (feint or create distraction to hide)"',
+  'Defensive Parry':
+    'Section=combat ' +
+    'Note="+%{(levels+1)//4} AC when making full attack w/two weapons"',
+  'Deft Doublestrike':
+    'Section=combat ' +
+    'Note="May make disarm or trip w/out AOO after hitting foe w/both weapons"',
+  'Deft Shield':
+    'Section=combat ' +
+    'Note="Reduces tower shield penalties by %{levels.Fighter>=11?2:1}"',
+  'Devastating Blow':
+    'Section=combat ' +
+    'Note="May automatically crit on -5 two-handed weapon attack"',
+  'Doublestrike':
+    'Section=combat Note="May attack w/two weapons as single action"',
+  'Elusive':'Section=combat Note="+%V AC in light armor"',
+  'Equal Opportunity':'Section=combat Note="May attack w/two weapons in AOO"',
+  'Evasive Archer':
+    'Section=combat Note="+{levels.Fighter>=17?4:2} AC vs. ranged attacks"',
+  'Expert Archer':'Section=combat Note="+V attack and damge w/bows"',
+  'Fleet Footed':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"+10 Speed",' +
+      '"May take 10 on Acrobatics when threatened/May take 20 on Acrobatics %{levels.Fighter//5}/dy"',
+  'Flexible Flanker':'Section=combat Note="May flank from adjacent square"',
+  'Greater Deadshot':'Section=combat Note="Increased Deadshot effects"',
+  'Greater Power Attack':
+    'Section=combat Note="Power Attack w/two-handed weapon doubles damage"',
+  'Greater Savage Charge':
+    'Section=combat ' +
+    'Note="Increased Savage Charge effects/May charge past allies and over difficult terrain"',
+  'Hawkeye':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+%{(levels.Fighter+2)//4*5}\' bow range",' +
+      '"+%V Perception"',
+  'Improved Balance':
+    'Section=combat ' +
+    'Note="Reduces two-weapon fighting penalties by 1/May treat one-handed weapon in off hand as light weapon"',
+  'Improved Deadshot':
+    'Section=combat ' +
+    'Note="Crossbow readied action attack negate target Dex AC bonus"',
+  'Indomitable Steed':
+    'Section=combat Note="Self and mount DR 5/- when mounted"',
+  'Interference':
+    'Section=combat ' +
+    'Note="Successful disarm maneuver makes foe flat-footed for 1 rd or until hit"',
+  'Irresistable Advance':'Section=combat Note="+%V bull rush and overrun CMB"',
+  'Leap From The Saddle':
+    'Section=combat ' +
+    'Note="DC 20 Ride check allows full attack after mount move"',
+  'Leaping Attack':
+    'Section=combat ' +
+    'Note="+{(levels.Fighter-1)//4} attack and damage after 5\' move"',
+  'Meteor Shot':
+    'Section=combat ' +
+    'Note="May inflict bull rush or trip via successful -4 crossbow attack"',
+  'Mirror Move':
+    'Section=combat Note="+%{(levels.Fighter+1)//4} AC vs. chosen weapon"',
+  'Mounted Mettle':
+    'Section=combat ' +
+    'Note="Self and mount gain %{(levels.Fighter-1)//4} attack and damage when adjacent or mounted"',
+  'Natural Savagery':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter-1)//4} attack, damage, and grapple CMB/CMD w/natural weapons"',
+  'Natural Weapon Mastery':
+    'Section=combat ' +
+    'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen natural weapon"',
+  'Overhand Chop':
+    'Section=combat ' +
+    'Note="+%{(strengthModifier*2-(strengthModifier*1.5//1)} damage w/single attack w/two-handed weapons"',
+  'Penetrating Shot':
+    'Section=combat ' +
+    'Note="May hit two inline targets with single -4 crossbow attack"',
+  'Perfect Balance':
+    'Section=combat ' +
+    'Note="Reduces two-weapon fighting penalties by 1/May treat one-handed weapon in off hand as light weapon"',
+  'Phalanx Fighting':
+    'Section=combat Note="May use any polearm or spear 1-handed"',
+  'Piledriver':
+    'Section=combat ' +
+    'Note="May make bull rush or trip w/out AOO after single attack w/two-handed weapon"',
+  'Pole Fighting':
+    'Section=combat ' +
+    'Note="May use polearm vs. adjacent foes%{levels.Fighter<18 ? (\' at \' + (levels.Fighter-18)//4 + \' attack\' : \'\'}"',
+  'Polearm Parry':
+    'Section=combat ' +
+    'Note="May give ally attacked by threatened foe +2 AC and DR 5/- vs. attack"',
+  'Polearm Training':
+    'Section=combat Note="+%{(levels.Fighter-1)//4} HP damage w/polearms"',
+  'Quick Sniper':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Can immediately fire back when hit by ranged attack",' +
+      '"%{levels.Fighter//2} Stealth when sniping"',
+  'Ranged Defense':
+    'Section=combat Note="DR 5/- vs. ranged/May catch and re-fire arrow"',
+  'Rapid Attack':
+    'Section=combat ' +
+    'Note="May make move and full-attack action, minus highest bonus attack"',
+  'Ready Pike':
+    'Section=combat ' +
+    'Note="May brace weapon for +%{(levels.Fighter-1)//4} attack and damage %{(levels.Fighter-1)//4}/dy"',
+  'Relentless Steed':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Mount moves full speed with heavy load",' +
+      '"May reroll Ride or mount save %{(levels.Fighter-7)//4}/dy"',
+  'Reliable Strike':
+    'Section=combat ' +
+    'Note="May reroll attack, crit, miss chance, or damage %{levels.Fighter//5}/dy"',
+  'Reversal':
+    'Section=combat ' +
+    'Note="Successful disarm maneuver redirects attack from self to foe"',
+  'Ride Them Down':
+    'Section=combat ' +
+    'Note="May make full attack%{features.Trample ? \' or overrun\' : \'\'} during mount move"',
+  'Safe Shot':'Section=combat Note="%V attack does not incur AOO"',
+  'Savage Charge':
+    'Section=combat ' +
+    'Note="May suffer -%V AC to gain +%{levels.Fighter//2} bull rush and overrun and make +%{levels.Fighter//2} attack w/natural weapon at end of charge"',
+  'Shattering Strike':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter+2)//4} CMB/CMD on sunder and damage vs. objects"',
+  // TODO This one is complex
+  'Shield Ally':
+    'Section=combat ' +
+    'Note="Shield move gives self and adjacent allies +2 AC and +1 Reflex for 1 rd"',
+  'Shield Buffet':
+    'Section=combat ' +
+    'Note="May use combat maneuver as %{levels.Fighter>=13 ? \'swift\' : \'move\'} action to inflict -2 attacks and -2 AC on adjacent foe"',
+  'Shield Fighter':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter-1}//4} attack and damage w/shield bash/Full attack may freely alternate between shield and weapon"',
+  'Shield Guard':
+    'Section=combat Note="Foes in chosen adjacent square(s) cannot flank self"',
+  'Shield Mastery':'Section=combat Note="DR 5/- w/shield"',
+  'Shield Ward':
+    'Section=combat,feature,save ' +
+    'Note=' +
+      '"Shield cannot be disarmed or sundered/Adds shield bonus to touch AC",' +
+      '"Has %V features w/shield",' +
+      '"Adds shield bonus to Reflex saves"',
+  'Shielded Fortress':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion features",' +
+      '"Has %V features"',
+  'Singleton':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter+1)//6} attack and damage with one-handed weapon and one free hand"',
+  'Spark Of Life':
+    'Section=save ' +
+    'Note="%{(levels.Fighter+2)//4} vs. energy drain and death effects"',
+  'Stand Firm':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter+2)//4} vs. bull rush, drag, overrun, trip, and trample"',
+  'Steadfast Mount':
+    'Section=combat ' +
+    'Note="Mount gains +{(levels+2)//4} AC and saves after 1 hr practice"',
+  'Steadfast Pike':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter+1)//4} readied attacks and AOO w/polearms"',
+  'Step Aside':
+    'Section=combat ' +
+    'Note="May immediately follow threatened foe 5\' step/+2 AC vs. that foe for 1 rd"',
+  'Sweeping Fend':
+    'Section=combat Note="May use polearm for -4 CMB bull rush or trip"',
+  'Timely Tip':
+    'Section=combat ' +
+    'Note="Successful disarm maneuver negates foe shield bonus for 1 rd"',
+  'Trick Shot':
+    'Section=combat ' +
+    'Note="R30\' May use bow shot to perform %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'} at -4 CMB"',
+  'Twin Blades':
+    'Section=combat ' +
+    'Note="%{(levels.Fighter-1)//4} attack and damage when making full attack w/two weapons or double weapon"',
+  'Unavoidable Onslaught':
+    'Section=combat ' +
+    'Note="May make mounted charge past allies and over difficult terrain"',
+  'Unstoppable Strike':
+    'Section=combat ' +
+    'Note="May make attack w/chosen weapon as touch attack, ignoring DR or hardness"',
+  'Volley':
+    'Section=combat ' +
+    'Note="May make bow attack against all in 15\' radius as full-round action"',
+  'Weapon Guard':
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter+2)//4} vs. disarm, sunder, and saves vs. effects with chosen weapon"',
+  'Weapon Training (Weapon Master)':
+     'Section=combat ' +
+     'Note="+%{(levels.Fighter+1)//4} attack and damage w/chosen weapon"',
+  'Whirlwind Blitz':
+    'Section=combat Note="May take full-attack action as a standard action"',
 
   // New base classes
   'Acid Bomb':
@@ -1765,7 +1933,7 @@ PFAPG.FEATURES = {
   'Greater Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Shield Ally':
+  'Greater Shield Ally (Summoner)':
     'Section=combat,save ' +
     'Note=' +
       '"+2 ally AC (+4 self) when eidolon is within reach",' +
@@ -2018,7 +2186,7 @@ PFAPG.FEATURES = {
   'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
   'Shard Explosion':
     'Section=combat Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
-  'Shield Ally':
+  'Shield Ally (Summoner)':
     'Section=combat,save ' +
     'Note=' +
       '"+2 AC when eidolon is within reach",' +
@@ -3071,8 +3239,9 @@ PFAPG.PATHS = {
     'Group=Fighter ' +
     'Level=levels.Fighter ' +
     'Features=' +
-      '"2:Weapon Guard","5:Reliable Strike","9:Mirror Move",' +
-      '"13:Deadly Critical","17:Critical Specialist","19:Unstoppable Strike"',
+      '"2:Weapon Guard","3:Weapon Training (Weapon Master)",' +
+      '"5:Reliable Strike","9:Mirror Move","13:Deadly Critical",' +
+      '"17:Critical Specialist","19:Unstoppable Strike"',
 
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -5098,9 +5267,10 @@ PFAPG.CLASSES = {
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple)",' +
       '1:Cantrips,1:Eidolon,"1:Life Link (Summoner)","1:Summon Monster",' +
-      '"2:Bond Senses","4:Shield Ally","6:Maker\'s Call",8:Transposition,' +
-      '10:Aspect,"12:Greater Shield Ally","14:Life Bond","16:Merge Forms",' +
-      '"18:Greater Aspect",19:Gate,"20:Twin Eidolon" ' +
+      '"2:Bond Senses","4:Shield Ally (Summoner)","6:Maker\'s Call",' +
+      '8:Transposition,10:Aspect,"12:Greater Shield Ally (Summoner)",' +
+      '"14:Life Bond","16:Merge Forms","18:Greater Aspect",19:Gate,' +
+      '"20:Twin Eidolon" ' +
     'Selectables=' +
       '"1:Eidolon Bite:Evolution",' +
       '"1:Eidolon Claws:Evolution",' +
@@ -5911,8 +6081,125 @@ PFAPG.classRulesExtra = function(rules, name) {
     // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
     // TODO Disable Knowledge (Geography) class skill for Cave Druid
   } else if(name == 'Fighter') {
+    rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
+    rules.defineRule('combatNotes.crossbowExpert',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.elusive',
+      classLevel, '=', 'Math.floor((source + 2) / 4)'
+    );
+    rules.defineRule('combatNotes.elusive.1',
+      'armorWeight', '?', 'source<=1',
+      'combatNotes.elusive', '=', null
+    );
+    rules.defineRule('combatNotes.expertArcher',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.deadshot',
+      'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
+      // Noop inclusion to get Greater Deadshot in italics
+      'combatNotes.greaterDeadshot', '+', '0',
+      'combatNotes.greaterDeadshot.1', '+', null
+    );
+    rules.defineRule('combatNotes.greaterDeadshot.1',
+      'features.Greater Deadshot', '?', null,
+      'dexterityModifier', '=', 'source - Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('combatNotes.irresistibleAdvance',
+      'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
+    );
+    rules.defineRule('combatNotes.safeShot',
+      'fighterFeatures.Archer', '=', '"Bow"',
+      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
+    );
+    rules.defineRule('combatNotes.savageCharge',
+      'combatNotes.savageCharge.1', '=', 'Math.floor(source)'
+    );
+    rules.defineRule('combatNotes.savageCharge.1',
+      'features.Savage Charge', '?', null,
+      'levels.Fighter', '=', 'source / 2',
+      'combatNotes.greaterSavageCharge', '*', '0.5'
+    );
+    rules.defineRule('featureNotes.shieldedFortress',
+      'shield', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
+    );
+    rules.defineRule('featureNotes.shieldWard',
+      'shield', 'source=="None" ? null : "Evasion"'
+    );
+    rules.defineRule('features.Evasion',
+      'featureNotes.shieldedFortress', '=', 'source=="Evasion" ? 1 : null',
+      'featureNotes.shieldWard', '=', 'source=="Evasion" ? 1 : null'
+    );
+    rules.defineRule('features.Improved Evasion',
+      'featureNotes.shieldedFortress', '=', 'source=="Improved Evasion" ? 1 : null'
+    );
+    rules.defineRule('fighterHasArmorMastery',
+      'levels.Fighter', '=', '1',
+      'fighterFeatures.Deadly Defense', '=', '0',
+      'fighterFeatures.Devastating Blow', '=', '0',
+      'fighterFeatures.Indomitable Steed', '=', '0',
+      'fighterFeatures.Penetrating Shot', '=', '0',
+      'fighterFeatures.Polearm Parry', '=', '0',
+      'fighterFeatures.Ranged Defense', '=', '0',
+      'fighterFeatures.Reversal', '=', '0',
+      'fighterFeatures.Shield Mastery', '=', '0',
+      'fighterFeatures.Unstoppable Strike', '=', '0'
+    );
+    rules.defineRule('fighterHasArmorTraining',
+      'levels.Fighter', '=', '1',
+      'fighterFeatures.Active Defense', '=', '0',
+      'fighterFeatures.Armored Charger', '=', '0',
+      'fighterFeatures.Deadshot', '=', '0',
+      'fighterFeatures.Defensive Flurry', '=', '0',
+      'fighterFeatures.Elusive', '=', '0',
+      'fighterFeatures.Overhand Chop', '=', '0',
+      'fighterFeatures.Phalanx Fighting', '=', '0',
+      'fighterFeatures.Steadfast Spike', '=', '0',
+      'fighterFeatures.Trick Shot', '=', '0',
+      'fighterFeatures.Weapon Training (Weapon Master)', '=', '0'
+    );
+    rules.defineRule('fighterHasBravery',
+      'levels.Fighter', '=', '1',
+      'fighterFeatures.Agility', '=', '0',
+      'fighterFeatures.Deceptive Strike', '=', '0',
+      'fighterFeatures.Hawkeye', '=', '0',
+      'fighterFeatures.Pole Fighting', '=', '0',
+      'fighterFeatures.Shattering Strike', '=', '0',
+      'fighterFeatures.Spark Of Life', '=', '0',
+      'fighterFeatures.Stand Firm', '=', '0',
+      'fighterFeatures.Steadfast Mount', '=', '0',
+      'fighterFeatures.Weapon Guard', '=', '0'
+    );
+    rules.defineRule('fighterHasWeaponMastery',
+      'levels.Fighter', '=', '1',
+      'fighterFeatures.Natural Weapon Mastery', '=', '0',
+      'fighterFeatures.Shield Ward', '=', '0',
+      'fighterFeatures.Shielded Fortress', '=', '0',
+      'fighterFeatures.Whirlwind Blitz', '=', '0'
+    );
+    rules.defineRule('fighterHasWeaponTraining',
+      'levels.Fighter', '=', '1',
+      'fighterFeatures.Crossbow Expert', '=', '0',
+      'fighterFeatures.Expert Archer', '=', '0',
+      'fighterFeatures.Leaping Attack', '=', '0',
+      'fighterFeatures.Mounted Mettle', '=', '0',
+      'fighterFeatures.Natural Savagery', '=', '0',
+      'fighterFeatures.Polearm Training', '=', '0',
+      'fighterFeatures.Ready Pike', '=', '0',
+      'fighterFeatures.Reliable Strike', '=', '0',
+      'fighterFeatures.Shield Fighter', '=', '0',
+      'fighterFeatures.Singleton', '=', '0',
+      'fighterFeatures.Twin Blades', '=', '0'
+    );
+    rules.defineRule
+      ('fighterFeatures.Armor Mastery', 'fighterHasArmorMastery', '?', null);
+    rules.defineRule
+      ('fighterFeatures.Armor Training', 'fighterHasArmorTraining', '?', null);
+    rules.defineRule('fighterFeatures.Bravery', 'fighterHasBravery', '?', null);
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
+    rules.defineRule
+      ('skillNotes.hawkeye', classLevel, '=', 'Math.floor((source + 2) / 4)');
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
