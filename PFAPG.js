@@ -1291,7 +1291,7 @@ PFAPG.FEATURES = {
       '"No Ride armor penalty"',
   'Backswing':
     'Section=combat ' +
-    'Note="+%{(strengthModifier*2-(strengthModifier*1.5//1)} damage w/multiple attacks w/two-handed weapons"',
+    'Note="+%{strengthModifier*2-(strengthModifier*1.5//1)} damage w/multiple attacks w/two-handed weapons"',
   'Careful Claw':
     'Section=combat ' +
     'Note="Reduces contact damage from natural attack by %{levels.Fighter//2}"',
@@ -1304,8 +1304,7 @@ PFAPG.FEATURES = {
   'Deadly Defense':
     'Section=combat ' +
     'Note="May make AOO on every attacking foe after full attack w/both weapons"',
-  'Deadshot':
-    'Section=combat Note="+%V HP damage on crossbow readied action hit"',
+  'Deadshot':'Section=combat Note="+%V damage w/readied crossbow"',
   'Deceptive Strike':
     'Section=combat,skill ' +
     'Note=' +
@@ -1329,7 +1328,7 @@ PFAPG.FEATURES = {
   'Equal Opportunity':'Section=combat Note="May attack w/two weapons in AOO"',
   'Evasive Archer':
     'Section=combat Note="+%{levels.Fighter>=17?4:2} AC vs. ranged attacks"',
-  'Expert Archer':'Section=combat Note="+V attack and damge w/bows"',
+  'Expert Archer':'Section=combat Note="+%V attack and damge w/bows"',
   'Fleet Footed':
     'Section=ability,skill ' +
     'Note=' +
@@ -1345,20 +1344,19 @@ PFAPG.FEATURES = {
   'Hawkeye':
     'Section=combat,skill ' +
     'Note=' +
-      '"+%{(levels.Fighter+2)//4*5}\' bow range",' +
+      '"+%V\' bow range",' +
       '"+%V Perception"',
   'Improved Balance':
     'Section=combat ' +
     'Note="Reduces two-weapon fighting penalties by 1/May treat one-handed weapon in off hand as light weapon"',
   'Improved Deadshot':
-    'Section=combat ' +
-    'Note="Crossbow readied action attack negate target Dex AC bonus"',
+    'Section=combat Note="Crossbow readied attack negates target Dex AC bonus"',
   'Indomitable Steed':
     'Section=combat Note="Self and mount DR 5/- when mounted"',
   'Interference':
     'Section=combat ' +
     'Note="Successful disarm maneuver makes foe flat-footed for 1 rd or until hit"',
-  'Irresistable Advance':'Section=combat Note="+%V bull rush and overrun CMB"',
+  'Irresistible Advance':'Section=combat Note="+%V bull rush and overrun CMB"',
   'Leap From The Saddle':
     'Section=combat ' +
     'Note="DC 20 Ride check allows full attack after mount move"',
@@ -1381,10 +1379,10 @@ PFAPG.FEATURES = {
     'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen natural weapon"',
   'Overhand Chop':
     'Section=combat ' +
-    'Note="+%{(strengthModifier*2-(strengthModifier*1.5//1)} damage w/single attack w/two-handed weapons"',
+    'Note="+%{strengthModifier*2-(strengthModifier*1.5//1)} damage w/single attack w/two-handed weapons"',
   'Penetrating Shot':
     'Section=combat ' +
-    'Note="May hit two inline targets with single -4 crossbow attack"',
+    'Note="Successful crossbow attack threatens additional inline targets w/-4 attack"',
   'Perfect Balance':
     'Section=combat ' +
     'Note="Reduces two-weapon fighting penalties by 1/May treat one-handed weapon in off hand as light weapon"',
@@ -1395,7 +1393,7 @@ PFAPG.FEATURES = {
     'Note="May make bull rush or trip w/out AOO after single attack w/two-handed weapon"',
   'Pole Fighting':
     'Section=combat ' +
-    'Note="May use polearm vs. adjacent foes%{levels.Fighter<18 ? (\' at \' + (levels.Fighter-18)//4 + \' attack\' : \'\'}"',
+    'Note="May use polearm vs. adjacent foes%{levels.Fighter<18 ? \' at \' + (levels.Fighter-18)//4 + \' attack\' : \'\'}"',
   'Polearm Parry':
     'Section=combat ' +
     'Note="May give ally attacked by threatened foe +2 AC and DR 5/- vs. attack"',
@@ -1404,8 +1402,8 @@ PFAPG.FEATURES = {
   'Quick Sniper':
     'Section=combat,skill ' +
     'Note=' +
-      '"Can immediately fire back when hit by ranged attack",' +
-      '"%{levels.Fighter//2} Stealth when sniping"',
+      '"Can return fire immediately when hit by ranged attack",' +
+      '"+%{levels.Fighter//2} Stealth when sniping"',
   'Ranged Defense':
     'Section=combat Note="DR 5/- vs. ranged/May catch and re-fire arrow"',
   'Rapid Attack':
@@ -1428,7 +1426,7 @@ PFAPG.FEATURES = {
   'Ride Them Down':
     'Section=combat ' +
     'Note="May make full attack%{features.Trample ? \' or overrun\' : \'\'} during mount move"',
-  'Safe Shot':'Section=combat Note="%V attack does not incur AOO"',
+  'Safe Shot':'Section=combat Note="%V attack does not provoke AOO"',
   'Savage Charge':
     'Section=combat ' +
     'Note="May suffer -%V AC to gain +%{levels.Fighter//2} bull rush and overrun and make +%{levels.Fighter//2} attack w/natural weapon at end of charge"',
@@ -1444,7 +1442,7 @@ PFAPG.FEATURES = {
     'Note="May use combat maneuver as %{levels.Fighter>=13 ? \'swift\' : \'move\'} action to inflict -2 attacks and -2 AC on adjacent foe"',
   'Shield Fighter':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter-1}//4} attack and damage w/shield bash/Full attack may freely alternate between shield and weapon"',
+    'Note="+%{(levels.Fighter-1)//4} attack and damage w/shield bash/Full attack may freely alternate between shield and weapon"',
   'Shield Guard':
     'Section=combat Note="Foes in chosen adjacent square(s) cannot flank self"',
   'Shield Mastery':'Section=combat Note="DR 5/- w/shield"',
@@ -1461,7 +1459,7 @@ PFAPG.FEATURES = {
       '"Has %V features"',
   'Singleton':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+1)//6} attack and damage with one-handed weapon and one free hand"',
+    'Note="+%{(levels.Fighter+1)//6} attack and damage w/one-handed weapon and other hand free"',
   'Spark Of Life':
     'Section=save ' +
     'Note="%{(levels.Fighter+2)//4} vs. energy drain and death effects"',
@@ -1484,7 +1482,7 @@ PFAPG.FEATURES = {
     'Note="Successful disarm maneuver negates foe shield bonus for 1 rd"',
   'Trick Shot':
     'Section=combat ' +
-    'Note="R30\' May use bow shot to perform %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'} at -4 CMB"',
+    'Note="R30\' May use bow shot to perform -4 CMB %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'}"',
   'Twin Blades':
     'Section=combat ' +
     'Note="%{(levels.Fighter-1)//4} attack and damage when making full attack w/two weapons or double weapon"',
@@ -1496,7 +1494,7 @@ PFAPG.FEATURES = {
     'Note="May make attack w/chosen weapon as touch attack, ignoring DR or hardness"',
   'Volley':
     'Section=combat ' +
-    'Note="May make bow attack against all in 15\' radius as full-round action"',
+    'Note="May make full-round bow attack against all in 15\' radius"',
   'Weapon Guard':
     'Section=combat ' +
     'Note="+%{(levels.Fighter+2)//4} vs. disarm, sunder, and saves vs. effects with chosen weapon"',
@@ -3194,7 +3192,7 @@ PFAPG.PATHS = {
     'Level=levels.Fighter ' +
     'Features=' +
       '"2:Stand Firm","3:Phalanx Fighting","5:Ready Pike","7:Deft Shield",' +
-      '"9:Shield Ally","15:Irresistable Advance","20:Shielded Fortress"',
+      '"9:Shield Ally","15:Irresistible Advance","20:Shielded Fortress"',
   'Polearm Master':
     'Group=Fighter ' +
     'Level=levels.Fighter ' +
@@ -6081,6 +6079,24 @@ PFAPG.classRulesExtra = function(rules, name) {
     // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
     // TODO Disable Knowledge (Geography) class skill for Cave Druid
   } else if(name == 'Fighter') {
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(weapon => {
+      if(weapon.match(/\b(long|short)?bow\b/i)) {
+        let prefix =
+          weapon.charAt(0).toLowerCase() + weapon.substring(1).replaceAll(' ', '');
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+', null);
+        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+', null);
+      } else if(weapon.match(/\bcrossbow\b/i)) {
+        let prefix =
+          weapon.charAt(0).toLowerCase() + weapon.substring(1).replaceAll(' ', '');
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+', null);
+      }
+    });
     rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
     rules.defineRule('combatNotes.crossbowExpert',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
@@ -6097,13 +6113,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.deadshot',
       'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
-      // Noop inclusion to get Greater Deadshot in italics
-      'combatNotes.greaterDeadshot', '+', '0',
-      'combatNotes.greaterDeadshot.1', '+', null
+      'combatNotes.greaterDeadshot.1', '^', null,
+      // Noop to get combatNotes.greaterDeadshot to appear in italics
+      'combatNotes.greaterDeadshot', '+', '0'
     );
     rules.defineRule('combatNotes.greaterDeadshot.1',
       'features.Greater Deadshot', '?', null,
-      'dexterityModifier', '=', 'source - Math.max(Math.floor(source / 2), 1)'
+      'dexterityModifier', '=', null
+    );
+    rules.defineRule('combatNotes.hawkeye',
+      classLevel, '=', 'Math.floor((source + 2) / 4) * 5'
     );
     rules.defineRule('combatNotes.irresistibleAdvance',
       'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
@@ -6196,6 +6215,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('fighterFeatures.Armor Training', 'fighterHasArmorTraining', '?', null);
     rules.defineRule('fighterFeatures.Bravery', 'fighterHasBravery', '?', null);
+    rules.defineRule
+      ('fighterFeatures.Weapon Mastery', 'fighterHasWeaponMastery', '?', null);
+    rules.defineRule('fighterFeatures.Weapon Training',
+      'fighterHasWeaponTraining', '?', null
+    );
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
     rules.defineRule
