@@ -1356,7 +1356,8 @@ PFAPG.FEATURES = {
   'Interference':
     'Section=combat ' +
     'Note="Successful disarm maneuver makes foe flat-footed for 1 rd or until hit"',
-  'Irresistible Advance':'Section=combat Note="+%V bull rush and overrun CMB"',
+  'Irresistible Advance':
+    'Section=combat Note="+%V CMB on bull rush and overrun"',
   'Leap From The Saddle':
     'Section=combat ' +
     'Note="DC 20 Ride check allows full attack after mount move"',
@@ -1387,18 +1388,19 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Reduces two-weapon fighting penalties by 1/May treat one-handed weapon in off hand as light weapon"',
   'Phalanx Fighting':
-    'Section=combat Note="May use any polearm or spear 1-handed"',
+    'Section=combat Note="May use polearm or spear 1-handed w/shield"',
   'Piledriver':
     'Section=combat ' +
     'Note="May make bull rush or trip w/out AOO after single attack w/two-handed weapon"',
   'Pole Fighting':
     'Section=combat ' +
-    'Note="May use polearm vs. adjacent foes%{levels.Fighter<18 ? \' at \' + (levels.Fighter-18)//4 + \' attack\' : \'\'}"',
+    'Note="May make %{levels.Fighter<18 ? (levels.Fighter-18)//4 + \' \' : \'\'}polearm attack vs. adjacent foes"',
   'Polearm Parry':
     'Section=combat ' +
     'Note="May give ally attacked by threatened foe +2 AC and DR 5/- vs. attack"',
   'Polearm Training':
-    'Section=combat Note="+%{(levels.Fighter-1)//4} HP damage w/polearms"',
+    'Section=combat ' +
+    'Note="+%{(levels.Fighter-1)//4} attack and damage w/polearms"',
   'Quick Sniper':
     'Section=combat,skill ' +
     'Note=' +
@@ -1408,7 +1410,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="DR 5/- vs. ranged/May catch and re-fire arrow"',
   'Rapid Attack':
     'Section=combat ' +
-    'Note="May make move and full-attack action, minus highest bonus attack"',
+    'Note="May combine move w/full-attack action minus highest bonus attack"',
   'Ready Pike':
     'Section=combat ' +
     'Note="May brace weapon for +%{(levels.Fighter-1)//4} attack and damage %{(levels.Fighter-1)//4}/dy"',
@@ -1436,7 +1438,7 @@ PFAPG.FEATURES = {
   // TODO This one is complex
   'Shield Ally':
     'Section=combat ' +
-    'Note="Shield move gives self and adjacent allies +2 AC and +1 Reflex for 1 rd"',
+    'Note="Heavy or tower shield move gives self and adjacent allies +2 AC and +1 Reflex for 1 rd"',
   'Shield Buffet':
     'Section=combat ' +
     'Note="May use combat maneuver as %{levels.Fighter>=13 ? \'swift\' : \'move\'} action to inflict -2 attacks and -2 AC on adjacent foe"',
@@ -1455,7 +1457,7 @@ PFAPG.FEATURES = {
   'Shielded Fortress':
     'Section=combat,feature ' +
     'Note=' +
-      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion features",' +
+      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion features for 1 rd",' +
       '"Has %V features"',
   'Singleton':
     'Section=combat ' +
@@ -1465,7 +1467,7 @@ PFAPG.FEATURES = {
     'Note="%{(levels.Fighter+2)//4} vs. energy drain and death effects"',
   'Stand Firm':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+2)//4} vs. bull rush, drag, overrun, trip, and trample"',
+    'Note="+%{(levels.Fighter+2)//4} CMD vs. bull rush, drag, overrun, trip, and trample"',
   'Steadfast Mount':
     'Section=combat ' +
     'Note="Mount gains +%{(levels.Fighter+2)//4} AC and saves after 1 hr practice"',
@@ -1474,7 +1476,7 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter+1)//4} readied attacks and AOO w/polearms"',
   'Step Aside':
     'Section=combat ' +
-    'Note="May immediately follow threatened foe 5\' step/+2 AC vs. that foe for 1 rd"',
+    'Note="May take 5\' step immediately after threatened foe; gains +2 AC vs. that foe for 1 rd"',
   'Sweeping Fend':
     'Section=combat Note="May use polearm for -4 CMB bull rush or trip"',
   'Timely Tip':
@@ -1502,7 +1504,8 @@ PFAPG.FEATURES = {
      'Section=combat ' +
      'Note="+%{(levels.Fighter+1)//4} attack and damage w/chosen weapon"',
   'Whirlwind Blitz':
-    'Section=combat Note="May take full-attack action as a standard action"',
+    'Section=combat ' +
+    'Note="May make full-attack action or use Whirlwind Attack as a standard action"',
 
   // New base classes
   'Acid Bomb':
@@ -6140,7 +6143,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'combatNotes.greaterSavageCharge', '*', '0.5'
     );
     rules.defineRule('featureNotes.shieldedFortress',
-      'shield', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
+      'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
     );
     rules.defineRule('featureNotes.shieldWard',
       'shield', 'source=="None" ? null : "Evasion"'
@@ -6173,7 +6176,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Elusive', '=', '0',
       'fighterFeatures.Overhand Chop', '=', '0',
       'fighterFeatures.Phalanx Fighting', '=', '0',
-      'fighterFeatures.Steadfast Spike', '=', '0',
+      'fighterFeatures.Steadfast Pike', '=', '0',
       'fighterFeatures.Trick Shot', '=', '0',
       'fighterFeatures.Weapon Training (Weapon Master)', '=', '0'
     );
