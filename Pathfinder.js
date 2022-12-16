@@ -6511,7 +6511,7 @@ Pathfinder.pathRules = function(
     for(var i = 0; i < features.length; i++) {
       var feature = features[i].replace(/^\d+:/, '');
       rules.defineRule
-        (groupFeatures + '.' + feature, groupFeatures + '.' + name, '?', null);
+        (groupFeatures + '.' + feature, 'levels.' + group, '?', null);
     }
   }
 
