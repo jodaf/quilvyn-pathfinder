@@ -922,7 +922,7 @@ PFAPG.FEATURES = {
     'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill check, or ability check for 1 rd %{wisdomModifier+3}/dy"',
   'Door Sight':
     'Section=magic ' +
-    'Note="May see through %{6+levels.Cleric}\\" material after 1 min touch %{wisdomModifier+3}/dy"',
+    'Note="May see through %{6+levels.Cleric}\\" material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
   "Elysium's Call":
     'Section=magic ' +
     'Note="Touch gives immediate enchantment reroll, +2 save vs. enchantment, +2 CMB to escape grapple, and negate 5\' difficult terrain for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -930,7 +930,7 @@ PFAPG.FEATURES = {
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
     'Note=' +
-      '"+2 Initiative",' +
+      '"+2 Initiative (surprise round)",' +
       '"+%V Perception"',
   'Fearful Touch':
     'Section=combat ' +
@@ -1034,13 +1034,13 @@ PFAPG.FEATURES = {
     'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
   'Tunnel Runner':
     'Section=feature ' +
-    'Note="Gives <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
+    'Note="Self gains <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
   'Untouched By The Seasons':
     'Section=magic ' +
     'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
   'Wall Of Ashes':
     'Section=magic ' +
-    'Note="R100\' %{levels.Cleric*10}\'x20\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
+    'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
   'Warding Rune':
     'Section=magic ' +
     'Note="Damage from blast rune prevents attack on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
@@ -2986,7 +2986,7 @@ PFAPG.PATHS = {
   'Devil Evil Subdomain':
     Pathfinder.PATHS['Evil Domain'].replace('Touch Of Evil', "Hell's Corruption"),
   'Devil Law Subdomain':
-    Pathfinder.PATHS['Law Domain'].replace('Touch Of Evil', "Hell's Corruption"),
+    Pathfinder.PATHS['Law Domain'].replace('Touch Of Law', "Hell's Corruption"),
   'Divine Subdomain':
     Pathfinder.PATHS['Magic Domain'].replace('Hand Of The Acolyte', 'Divine Vessel'),
   'Exploration Subdomain':
@@ -4780,7 +4780,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Insanity':'Insanity7,Love7,Lust7,Nightmare7',
   'Insect Plague':'O5',
   'Instant Summons':'Language7,Wards7',
-  'Invisibility':'Deception2,Inquisitor2,Thievery2',
+  'Invisibility':'Inquisitor2,Thievery2',
   'Invisibility Purge':'Inquisitor3,O3',
   'Iron Body':'Metal8',
   'Keen Edge':'Inquisitor3,Murder3',
@@ -4829,17 +4829,17 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8',
   'Minor Creation':'Construct4,Toil4',
   'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9',
-  'Mirror Image':'Deception3',
+  'Mirror Image':'Deception2',
   'Mislead':'Deception6,Fate6,Thievery6',
   'Modify Memory':'Loss6,Memory6',
   'Moment Of Prescience':'Curse8,Fate8,Lore8,Memory8',
   'Neutralize Poison':'Inquisitor4,Life3,O4,Restoration4',
   'Nightmare':'Insanity5,Night6,Nightmare5',
-  'Nondetection':'Inquisitor3',
+  'Nondetection':'Deception3,Inquisitor3',
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
-  'Overland Flight':'Exploration5,Heavens5',
+  'Overland Flight':'Heavens5',
   "Owl's Wisdom":'O2',
   'Phantasmal Killer':'Nightmare4',
   'Phase Door':'Exploration8,Trade8',
@@ -4910,7 +4910,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Solid Fog':'Cloud4',
   'Soul Bind':'O9',
   'Sound Burst':'O2',
-  'Speak With Animals':'Feather1,Fur1',
+  'Speak With Animals':'Fur1',
   'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3',
   'Speak With Plants':'Nature3',
   'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4',
@@ -4949,7 +4949,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Symbol Of Stunning':'O7',
   'Symbol Of Weakness':'O7',
   'Telepathic Bond':'Family5,Home5,Inquisitor5,Language5,Thought5',
-  'Teleport':'Trade5',
+  'Teleport':'Exploration5,Trade5',
   'Teleportation Circle':'Language9,Wards9',
   'Time Stop':'Deception9,Lore9,Thievery9',
   'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4',
@@ -5491,13 +5491,34 @@ PFAPG.identityRules = function(
 /* Defines rules related to magic use. */
 PFAPG.magicRules = function(rules, spells, spellsLevels) {
   Pathfinder.magicRules(rules, {}, spells);
-  for(var s in spellsLevels) {
+  for(let s in spellsLevels) {
     if(!Pathfinder.SPELLS[s]) {
       console.log('Unknown spell "' + s + '"');
       continue;
     }
-    rules.choiceRules
-      (rules, 'Spell', s, Pathfinder.SPELLS[s] + ' Level=' + spellsLevels[s]);
+    let attrs = Pathfinder.SPELLS[s] + ' Level=' + spellsLevels[s];
+    let description = QuilvynUtils.getAttrValue(attrs, 'Description');
+    let groupLevels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
+    let liquids = QuilvynUtils.getAttrValueArray(attrs, 'Liquid');
+    let school = QuilvynUtils.getAttrValue(attrs, 'School');
+    let schoolAbbr = (school || 'Universal').substring(0, 4);
+    for(let i = 0; i < groupLevels.length; i++) {
+      let matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
+      if(!matchInfo) {
+        console.log('Bad level "' + groupLevels[i] + '" for spell ' + s);
+        continue;
+      }
+      let group = matchInfo[1];
+      let level = matchInfo[2] * 1;
+      let fullName = s + '(' + group + level + ' ' + schoolAbbr + ')';
+      let domainSpell =
+        Pathfinder.PATHS[group + ' Domain'] != null ||
+        PFAPG.PATHS[group + ' Subdomain'] != null;
+      Pathfinder.spellRules
+        (rules, fullName, school, group, level, description, domainSpell,
+         liquids);
+      rules.addChoice('spells', fullName, attrs);
+    }
   }
 };
 
@@ -6734,7 +6755,196 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'featureNotes.revelation', '=', null
     );
   }
-  if(name == 'Bones Mystery') {
+  // Level-dependent domain code copied from Pathfinder for related subdomains.
+  if(name.match(/(Cloud|Wind) Subdomain/)) { // Air
+    rules.defineRule
+      ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.electricityResistance',
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
+    );
+  } else if(name.match(/(Feather|Fur) Subdomain/)) { // Animal
+    rules.defineRule('companionClericLevel', pathLevel, '=', 'source - 3');
+    rules.defineRule
+      ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
+    if(name == 'Feather Subdomain')
+      rules.defineRule('classSkills.Fly', pathLevel, '=', '1');
+  } else if(name.match(/(Construct|Toil) Subdomain/)) { // Artifice
+    rules.defineRule("combatNotes.artificer'sTouch.1",
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.dancingWeapons',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+  } else if(name.match(/(Azata Chaos|Demon Chaos|Protean) Subdomain/)) {// Chaos
+    rules.defineRule('combatNotes.chaosBlade',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule
+      ('combatNotes.chaosBlade.1', pathLevel, '=', 'Math.floor(source / 2)');
+  } else if(name.match(/(Love|Lust) Subdomain/)) { // Charm
+    rules.defineRule('magicNotes.charmingSmile',
+      pathLevel, '=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.charmingSmile.1', pathLevel, '=', null);
+    rules.defineRule('magicNotes.dazingTouch', pathLevel, '=', null);
+  } else if(name.match(/(Family|Home) Subdomain/)) { // Community
+    rules.defineRule('magicNotes.calmingTouch.1', pathLevel, '=', null);
+    rules.defineRule
+      ('saveNotes.unity', pathLevel, '=', 'Math.floor((source - 4) / 4)');
+  } else if(name.match(/(Loss|Night) Subdomain/)) { // Darkness
+    rules.defineRule('combatNotes.touchOfDarkness',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('featureNotes.eyesOfDarkness',
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+  } else if(name.match(/(Murder|Undeath) Subdomain/)) { // Death
+    rules.defineRule('combatNotes.bleedingTouch',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+  } else if(name.match(/(Catastrophe|Rage) Subdomain/)) { // Destruction
+    rules.defineRule('combatNotes.destructiveAura',
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('combatNotes.destructiveAura.1', pathLevel, '=', null);
+    rules.defineRule('combatNotes.destructiveSmite',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+  } else if(name.match(/(Caves|Metal) Subdomain/)) { // Earth
+    rules.defineRule
+      ('magicNotes.acidDart.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.acidResistance',
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
+    );
+  } else if(name.match(/(Daemon|Demon Evil|Devil Evil) Subdomain/)) { // Evil
+    rules.defineRule('combatNotes.scytheOfEvil',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule
+      ('combatNotes.scytheOfEvil.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('combatNotes.touchOfEvil',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+  } else if(name.match(/(Ash|Smoke) Subdomain/)) { // Fire
+    rules.defineRule
+      ('combatNotes.fireBolt.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.fireResistance',
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
+    );
+  } else if(name.match(/(Heroism|Honor) Subdomain/)) { // Glory
+    rules.defineRule('magicNotes.divinePresence',
+      pathLevel, '=', '10 + Math.floor(source / 2)',
+      'wisdomModifier', '+', null
+    );
+    rules.defineRule('magicNotes.divinePresence.1', pathLevel, '=', null);
+    rules.defineRule('magicNotes.touchOfGlory', pathLevel, '=', null);
+  } else if(name.match(/(Agathion|Archon Good|Azata Good) Subdomain/)) { // Good
+    rules.defineRule('combatNotes.holyLance',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule
+      ('combatNotes.holyLance.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('magicNotes.touchOfGood',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+  } else if(name.match(/(Restoration|Resurrection) Subdomain/)) { // Healing
+    rules.defineRule
+      ('magicNotes.rebukeDeath.1', pathLevel, '=', 'Math.floor(source / 2)');
+  } else if(name.match(/(Memory|Thought) Subdomain/)) { // Knowledge
+    rules.defineRule('magicNotes.remoteViewing', pathLevel, '=', null);
+    rules.defineRule('skillNotes.loreKeeper', pathLevel, '=', 'source + 15');
+  } else if(name.match(/(Archon Law|Devil Law|Inevitable) Subdomain/)) { // Law
+    rules.defineRule('combatNotes.staffOfOrder',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule
+      ('combatNotes.staffOfOrder.1', pathLevel, '=', 'Math.floor(source / 2)');
+  } else if(name.match(/(Freedom|Revolution) Subdomain/)) { // Liberation
+    rules.defineRule("magicNotes.freedom'sCall", pathLevel, '=', null);
+    rules.defineRule('magicNotes.liberation', pathLevel, '=', null);
+  } else if(name.match(/(Curse|Fate) Subdomain/)) { // Luck
+    rules.defineRule
+      ('magicNotes.goodFortune', pathLevel, '=', 'Math.floor(source / 6)');
+  } else if(name.match(/(Insanity|Nightmare) Subdomain/)) { // Madness
+    rules.defineRule('magicNotes.auraOfMadness', pathLevel, '=', null);
+    rules.defineRule('magicNotes.auraOfMadness.1',
+      pathLevel, '=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.visionOfMadness',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+    rules.defineRule('magicNotes.visionOfMadness.1',
+      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
+    );
+  } else if(name.match(/(Arcana|Divine) Subdomain/)) { // Magic
+    rules.defineRule('magicNotes.dispellingTouch',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+  } else if(name.match(/(Leadership|Martyr) Subdomain/)) { // Nobility
+    rules.defineRule('magicNotes.inspiringWord',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name.match(/(Decay|Growth) Subdomain/)) { // Plant
+    rules.defineRule('combatNotes.brambleArmor', pathLevel, '=', null);
+    rules.defineRule('combatNotes.brambleArmor.1',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('combatNotes.woodenFist',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name.match(/(Defense|Purity) Subdomain/)) { // Protection
+    rules.defineRule('magicNotes.auraOfProtection',
+      pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    rules.defineRule('magicNotes.auraOfProtection.1',
+      pathLevel, '=', 'source>=14 ? 10 : 5'
+    );
+    rules.defineRule('magicNotes.auraOfProtection.2', pathLevel, '=', null);
+    rules.defineRule
+      ('saveNotes.saveBonus', pathLevel, '=', '1 + Math.floor(source / 5)');
+  } else if(name.match(/(Ancestors|Souls) Subdomain/)) { // Repose
+    rules.defineRule('magicNotes.wardAgainstDeath', pathLevel, '=', null);
+  } else if(name.match(/(Language|Wards) Subdomain/)) { // Rune
+    rules.defineRule('magicNotes.blastRune', pathLevel, '=', null);
+    rules.defineRule('magicNotes.blastRune.1',
+      'features.Blast Rune', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+  } else if(name.match(/(Ferocity|Resolve) Subdomain/)) { // Strength
+    rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
+    rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
+    rules.defineRule('magicNotes.strengthSurgeTouch',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name.match(/(Day|Light) Subdomain/)) { // Sun
+    rules.defineRule("magicNotes.sun'sBlessing", pathLevel, '=', null);
+    rules.defineRule('magicNotes.nimbusOfLight', pathLevel, '=', null);
+    rules.defineRule('magicNotes.nimbusOfLight.1', pathLevel, '=', null);
+  } else if(name.match(/(Exploration|Trade) Subdomain/)) { // Travel
+    rules.defineRule
+      ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
+  } else if(name.match(/(Deception|Thievery) Subdomain/)) { // Trickery
+    rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
+    rules.defineRule("magicNotes.master'sIllusion",
+      pathLevel, '=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+  } else if(name.match(/(Blood|Tactics) Subdomain/)) { // War
+    rules.defineRule('combatNotes.battleRage',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('combatNotes.weaponMaster', pathLevel, '=', null);
+  } else if(name.match(/(Ice|Oceans) Subdomain/)) { // Water
+    rules.defineRule
+      ('combatNotes.icicle.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('saveNotes.coldResistance',
+      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
+    );
+  } else if(name.match(/(Seasons|Storms) Subdomain/)) { // Weather
+    rules.defineRule
+      ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
+  } else if(name == 'Bones Mystery') {
     rules.defineRule
       ('channelLevel', 'featureNotes.undeadServitude.1', '=', null);
     rules.defineRule
