@@ -861,25 +861,25 @@ PFAPG.FEATURES = {
   // Cleric
   'Adoration':
     'Section=combat ' +
-    'Note="May force foe to forego attack (Will neg) %{wisdomModifier+3}/dy"',
+    'Note="May force foe to forego self attack (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{wisdomModifier+3}/dy"',
   'Animate Servant':
     'Section=magic ' +
     'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
   'Anything To Please':
     'Section=magic ' +
-    'Note="R30\' Target attempts to please self (Will neg) %{(levels.Cleric-4)//4}/dy"',
+    'Note="R30\' Target attempts to please self (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{(levels.Cleric-4)//4}/dy"',
   'Arcane Beacon':
     'Section=magic ' +
     'Note="15\' radius gives arcane spells +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
   'Aura Of Chaos':
     'Section=combat ' +
-    'Note="30\' radius randomizes creature actions %{levels.Cleric} rd/dy"',
+    'Note="30\' radius randomizes foe actions (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Aura Of Decay':
     'Section=combat ' +
     'Note="30\' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd %{levels.Cleric} rd/dy"',
   'Aura Of Forgetfulness':
     'Section=magic ' +
-    'Note="Creatures have no memory of time in 30\' radius and lose 1 spell slot/rd (Will neg) %{levels.Cleric} rd/dy"',
+    'Note="Targets have no memory of time spent in 30\' radius (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) and lose 1 spell slot/rd (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Aura Of Heroism':
     'Section=combat ' +
     'Note="30\' radius gives allies +2 attack, saves, and skill checks %{levels.Cleric} rd/dy"',
@@ -888,7 +888,7 @@ PFAPG.FEATURES = {
     'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
   'Aura Of Repetition':
     'Section=combat ' +
-    'Note="R30\' Forces foes to repeat prior action (Will neg) %{levels.Cleric} rd/dy"',
+    'Note="R30\' Forces foes to repeat prior action (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Bestow Resolve':
     'Section=magic ' +
     'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
@@ -897,7 +897,7 @@ PFAPG.FEATURES = {
     'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
   'Blinding Flash':
     'Section=magic ' +
-    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Body Of Ice':
     'Section=combat ' +
     'Note="May trade dbl damage from fire for immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
@@ -934,7 +934,7 @@ PFAPG.FEATURES = {
       '"+%V Perception"',
   'Fearful Touch':
     'Section=combat ' +
-    'Note="Touch inflicts -2 attack on self and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Touch inflicts -2 attack on self, loss of fear immunity, and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
   'Ferocious Strike':
     'Section=combat ' +
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
@@ -949,7 +949,7 @@ PFAPG.FEATURES = {
     'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
   'Guarded Hearth':
     'Section=magic ' +
-    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
+    'Note="10 min ritual gives targets in %{levels.Cleric*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
   "Hell's Corruption":
     'Section=combat ' +
     'Note="Touch inflicts -2 saves and worse of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -958,7 +958,7 @@ PFAPG.FEATURES = {
     'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
   'Insane Focus':
     'Section=magic ' +
-    'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) %{wisdomModifier+3}/dy"',
+    'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) for 1 min %{wisdomModifier+3}/dy"',
   'Inspiring Command':
     'Section=magic ' +
     'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
@@ -1019,7 +1019,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
   'Surge':
-    'Section=feature ' +
+    'Section=combat ' +
     'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
   'Thief Of The Gods':
     'Section=skill ' +
@@ -1040,13 +1040,13 @@ PFAPG.FEATURES = {
     'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
   'Wall Of Ashes':
     'Section=magic ' +
-    'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
+    'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
   'Warding Rune':
     'Section=magic ' +
-    'Note="Damage from blast rune prevents attack on self (Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+    'Note="Damage from blast rune prevents attack on self (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
   'Whispering Evil':
     'Section=magic ' +
-    'Note="30\' radius fascinates foes (Will neg) %{levels.Cleric} rd/dy"',
+    'Note="30\' radius fascinates foes (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Wind Blast':
     'Section=magic ' +
     'Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
@@ -3079,7 +3079,7 @@ PFAPG.PATHS = {
     Pathfinder.PATHS['Death Domain'].replace('Bleeding Touch', "Death's Kiss"),
   'Wards Subdomain':
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Warding Rune'),
-  'Wind Subdomain':
+  'Winds Subdomain':
     Pathfinder.PATHS['Air Domain'].replace('Lightning Arc', 'Wind Blast'),
 
   'Aquatic Druid':
@@ -4317,7 +4317,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Seek Thoughts':
     'School=Divination ' +
-    'Level=Alchemist3,B3,Inquisitor3,Memory3,Summoner3,W3,Witch3 ' +
+    'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,W3,Witch3 ' +
     'Description="FILL"',
   'Shadow Projection':
     'School=Necromancy ' +
@@ -4549,7 +4549,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Winds Of Vengeance':
     'School=Transmutation ' +
-    'Level=C9,D9,O9,W9,Wind9 ' +
+    'Level=C9,D9,O9,W9,Wind9,Winds9 ' +
     'Description="FILL"',
   'World Wave':
     'School=Transmutation ' +
@@ -4569,7 +4569,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
 
   'Acid Splash':'Inquisitor0',
   'Aid':'Curse2,Inquisitor2,O2,Tactics2',
-  'Air Walk':'O4,Wind4',
+  'Air Walk':'O4,Winds4',
   'Alarm':'Home1,Inquisitor1',
   'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,O2,Protean2',
   'Analyze Dweomer':'Arcana6',
@@ -4635,7 +4635,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Control Undead':'Bones8',
   'Control Water':'Ice4,O4,Oceans4',
   'Control Weather':'Battle7,Catastrophe7,O7,Seasons7,Storms7,Wind7',
-  'Control Winds':'Cloud5,Seasons6,Wind5',
+  'Control Winds':'Cloud5,Seasons6,Wind5,Winds5',
   'Create Food And Water':'Family3,O3',
   'Create Greater Undead':'Murder8,O8,Undeath8',
   'Create Undead':'Murder6,O6,Undeath6',
@@ -4691,7 +4691,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
   "Eagle's Splendor":'O2',
   'Earthquake':'Battle8,Catastrophe8,Caves8,O8,Rage8',
-  'Elemental Body IV':'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Wind7',
+  'Elemental Body IV':'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7',
   'Elemental Swarm':'Caves9,Metal9,Smoke9',
   'Endure Elements':'Day1,O1',
   'Energy Drain':'Loss9,O9,Undeath9',
@@ -4726,11 +4726,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Freedom':'Freedom9,Revolution9',
   'Freedom Of Movement':'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4',
   'Freezing Sphere':'Ice7',
-  'Gaseous Form':'Cloud3,Wind3',
+  'Gaseous Form':'Cloud3,Winds3',
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6',
   'Gentle Repose':'Ancestors2,O2,Souls2',
-  'Ghoul Touch':'Undead2',
+  'Ghoul Touch':'Undeath2',
   'Giant Vermin':'O4',
   'Glyph Of Warding':'Home3,Inquisitor3,O3,Wards3',
   'Goodberry':'Seasons1',
@@ -4839,7 +4839,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
-  'Overland Flight':'Heavens5',
+  'Overland Flight':'Heavens5,Trade5',
   "Owl's Wisdom":'O2',
   'Phantasmal Killer':'Nightmare4',
   'Phase Door':'Exploration8,Trade8',
@@ -4886,7 +4886,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Restoration':'Inquisitor4,Life4,O4',
   'Resurrection':'Divine7,O7,Resurrection7',
   'Righteous Might':'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5',
-  'Sanctuary':'Freedom1,Heroism1,Honor1,Inquisitor1,O1',
+  'Sanctuary':'Freedom1,Inquisitor1,O1',
   'Scintillating Pattern':'Insanity8,Nightmare8',
   'Scrying':'O5',
   'Searing Light':'Honor3,Inquisitor3,O3',
@@ -4910,7 +4910,6 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Solid Fog':'Cloud4',
   'Soul Bind':'O9',
   'Sound Burst':'O2',
-  'Speak With Animals':'Fur1',
   'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3',
   'Speak With Plants':'Nature3',
   'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4',
@@ -4949,7 +4948,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Symbol Of Stunning':'O7',
   'Symbol Of Weakness':'O7',
   'Telepathic Bond':'Family5,Home5,Inquisitor5,Language5,Thought5',
-  'Teleport':'Exploration5,Trade5',
+  'Teleport':'Exploration5',
   'Teleportation Circle':'Language9,Wards9',
   'Time Stop':'Deception9,Lore9,Thievery9',
   'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4',
@@ -4977,10 +4976,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Waves Of Exhaustion':'Ancestors8,Souls8,Toil7',
   'Waves Of Fatigue':'Toil5',
   'Weird':'Insanity9,Nightmare9',
-  'Whirlwind':'Cloud8,Storms8,Wind8',
-  'Whispering Wind':'Inquisitor2,Wind1',
-  'Wind Walk':'O6,Wind6',
-  'Wind Wall':'Cloud2,O3,Wind2',
+  'Whirlwind':'Cloud8,Storms8,Wind8,Winds8',
+  'Whispering Wind':'Inquisitor2,Winds1',
+  'Wind Walk':'O6,Winds6',
+  'Wind Wall':'Cloud2,O3,Winds2',
   'Wood Shape':'Construct2,Toil2',
   'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Protean7',
   'Word Of Recall':'O6',
@@ -6756,7 +6755,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
   }
   // Level-dependent domain code copied from Pathfinder for related subdomains.
-  if(name.match(/(Cloud|Wind) Subdomain/)) { // Air
+  if(name.match(/(Cloud|Winds) Subdomain/)) { // Air
     rules.defineRule
       ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.electricityResistance',
