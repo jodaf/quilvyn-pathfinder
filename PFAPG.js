@@ -3582,95 +3582,95 @@ PFAPG.SPELLS = {
   'Ball Lightning':
     'School=Evocation ' +
     'Level=D4,W4 ' +
-    'Description="FILL"',
+    'Description="R$RM\' %{(lvl+1)//4} 5\' spheres move 20\'/rd, inflict 3d6 HP electricity in same square (Ref neg; -4 in metal armor) for $L rd"',
   'Banish Seeming':
     'School=Abjuration ' +
     'Level=Inquisitor3,Witch5 ' +
-    'Description="FILL"',
+    'Description="Touch dispels illusions and reverts magical transformations for $L rd"',
   "Bard's Escape":
     'School=Conjuration ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Self and %{lvl//2} willing targets in 15\' radius teleport to another location within range"',
   'Beguiling Gift':
     'School=Enchantment ' +
     'Level=B1,Witch1 ' +
-    'Description="FILL"',
+    'Description="R5\' Target takes and uses offered object (Will neg)"',
   'Bestow Grace':
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="Touched adds its charisma bonus to saves for $L min"',
   'Blaze Of Glory':
     'School=Conjuration ' +
     'Level=P4 ' +
-    'Description="FILL"',
+    'Description="30\' radius restores %{lvl//2}d6 HP to good creatures, inflicts %{lvl//2}d6 HP on evil (Will half), gives +1 attack, damage, save, and skill to allies and -1 to foes for $L rd; self drops to -1 HP and stabilizes"',
   'Blessing Of Courage and Life':
     'School=Conjuration ' +
     'Level=C2,O2,P2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target gains +2 save vs. fear and death for $L min; may end to regain 1d8+%{lvl<?10} HP"',
   'Blessing Of Fervor':
     'School=Transmutation ' +
     'Level=C4,O4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius gain choice of: +30 Speed; +1 attacks/rd; +2 attack, damage, and Reflex; or cast level 2 spell w/metamagic each rd for $L rd"',
   'Blessing Of The Salamander':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
-    'Description="FILL"',
+    'Description="Touched gains fast healing 5, fire resistance 20, and +2 CMB for $L rd"',
   'Blood Biography':
     'School=Divination ' +
     'Level=B2,C3,Inquisitor3,O3,W3 ' +
-    'Description="FILL"',
+    'Description="Touched blood of target creature answers questions about identity and damage (Will neg)"',
   'Bloodhound':
     'School=Transmutation ' +
     'Level=Alchemist3,Inquisitor2,R2 ' +
-    'Description="FILL"',
+    'Description="Self gains Scent features, +8 Perception (small), +4 Survival (track via scent), -4 save vs. odor, DC 20 to smell poison for $L hr"',
   'Bloody Claws':
     'School=Necromancy ' +
     'Level=D4,R3 ' +
-    'Description="FILL"',
+    'Description="Touched inflicts %{lvl//2} bleed damage w/natural attack for $L min"',
   "Bomber's Eye":
     'School=Transmutation ' +
     'Level=Alchemist1 ' +
-    'Description="FILL"',
+    'Description="Self gains +1 throw attack and +10\' throw range for $L rd"',
   'Borrow Fortune':
     'School=Evocation ' +
     'Level=Fate3,Oracle3 ' +
-    'Description="FILL"',
+    'Description="Self gains better of two immediate d20 rolls and suffers worse of two d20 rolls for 2 rd"',
   'Borrow Skill':
     'School=Transmutation ' +
     'Level=B1 ' +
-    'Description="FILL"',
+    'Description="Self gains skill ability of touched for next attempt w/in $L rd"',
   'Bow Spirit':
     'School=Conjuration ' +
     'Level=R4 ' +
-    'Description="FILL"',
+    'Description="Conjured spirit makes 1 arrow or bolt attack each rd for $L rd"',
   'Brand':
     'School=Transmutation ' +
     'Level=Inquisitor0 ' +
-    'Description="FILL"',
+    'Description="Inflicts 1 HP on touched to etch indelible mark (Fort neg, scraping to remove inflicts 1d6 HP) for $L dy"',
   'Greater Brand':
     'School=Transmutation ' +
     'Level=Inquisitor4 ' +
-    'Description="FILL"',
+    'Description="Inflicts 1d6 HP on touched to etch permanent indelible mark (Fort neg) that glows and sickens when w/in 30\' of self faith symbol"',
   'Break':
     'School=Transmutation ' +
     'Level=W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target medium object becomes broken (Fort neg)"',
   'Brilliant Inspiration':
     'School=Evocation ' +
     'Level=B6,Leadership6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target gains better of two attack, ability, or skill rolls for $L rd or until nat 20 is rolled"',
   'Bristle':
     'School=Transmutation ' +
     'Level=D1 ' +
-    'Description="FILL"',
+    'Description="Target may trade up to %{lvl//3<?5} natural armor bonus for equal damage bonus each rd for $L min"',
   'Burning Gaze':
     'School=Evocation ' +
     'Level=D2,W2,Witch2 ' +
-    'Description="FILL"',
+    'Description="R30\' Inflicts 1d6 HP fire/rd on target (Ref ends) for $L rd"',
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
-    'Description="FILL"',
+    'Description="Touched restraints or restraining creature suffers %{lvl<?5}d6 HP (Fort half); ignores hardness up to 10"',
   'Cacophonous Call':
     'School=Enchantment ' +
     'Level=B2 ' +
