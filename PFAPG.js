@@ -3838,143 +3838,143 @@ PFAPG.SPELLS = {
   'Eagle Eye':
     'School=Divination ' +
     'Level=D2,R2 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Self can view from higher point for $L min"',
   'Elemental Aura':
     'School=Evocation ' +
     'Level=Alchemist3,W3 ' +
-    'Description="FILL"',
+    'Description="Creatures adjacent to self suffer 2d6 HP energy damage (Ref half), plus energy effects, for $L rd"',
   'Elemental Speech':
     'School=Divination ' +
     'Level=B3,C3,D2,O3,W2 ' +
-    'Description="FILL"',
+    'Description="Self can converse w/chosen element creatures for $L min"',
   'Elemental Touch':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
-    'Description="FILL"',
+    'Description="Touch inflicts 1d6 HP chosen energy, plus energy effects, for $L rd"',
   'Elude Time':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
-    'Description="FILL"',
+    'Description="Self enters suspended animation, impervious to damage, for up to $L min"',
   'Enemy Hammer':
     'School=Transmutation ' +
     'Level=W6 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Self can use target as 30\' thrown weapon (Fort neg, full-round resistance +4), inflicting 2d6 HP (medium target), for $L rd"',
   'Enter Image':
     'School=Transmutation ' +
     'Level=B2,C3,O3,W3 ' +
-    'Description="FILL"',
+    'Description="R%{lvl*50}\' Self can interact via image of self for conc"',
   'Euphoric Tranquility':
     'School=Enchantment ' +
     'Level=B6,C8,D8,Love8,O8,W8 ' +
-    'Description="FILL"',
+    'Description="Touched treats all as friends (Will after attacked neg 1 rd), suffers half speed for $L rd"',
   'Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner3 ' +
-    'Description="FILL"',
+    'Description="Touched eliodon gains 4-point evolution for $L min"',
   'Greater Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
-    'Description="FILL"',
+    'Description="Touched eliodon gains 6-point evolution for $L min"',
   'Lesser Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner2 ' +
-    'Description="FILL"',
+    'Description="Touched eliodon gains 2-point evolution for $L min"',
   'Expeditious Excavation':
     'School=Transmutation ' +
     'Level=D1,W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Moves 5\' cu of dirt"',
   'Expend':
     'School=Abjuration ' +
     'Level=W7 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 20\' radius inflicts ineffecttual use of ability"',
   'Feast Of Ashes':
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers starvation, eating causes nausea (DC 12 Fort neg) for %{lvl*2} dy"',
   'Feather Step':
     'School=Transmutation ' +
     'Level=B1,D1,R1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target ignores difficult terrain for %{lvl*10} min"',
   'Mass Feather Step':
     'School=Transmutation ' +
     'Level=B3,D3,R3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius ignore difficult terrain for %{lvl*10} min"',
   'Fester':
     'School=Necromancy ' +
     'Level=Inquisitor3,Witch2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers %{lvl+12} resistance to healing for $L rd (Fort 1 rd)"',
   'Mass Fester':
     'School=Necromancy ' +
     'Level=Inquisitor6,Witch6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius suffer %{lvl+12} resistance to healing for $L rd (Fort 1 rd)"',
   'Fiery Body':
     'School=Transmutation ' +
     'Level=Ash9,W9,Flame9 ' +
-    'Description="FILL"',
+    'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexerity, 40\' Fly, dazzling brightness, 50% miss chance,regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for $L min"',
   'Fire Breath':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
-    'Description="FILL"',
+    'Description="3 uses of 15\' cone inflict 4d6, 2d6, and 1d6 HP (Ref half) in %{lvl*2} rd"',
   'Fire Of Entanglement':
     'School=Evocation ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="Next Smite Evil hit inflicts entanglement for $L rd (Ref 1 rd)"',
   'Fire Of Judgment':
     'School=Evocation ' +
     'Level=P3 ' +
-    'Description="FILL"',
+    'Description="Next Smite Evil hit inflicts 1d6 HP (evil outsider, dragon, or undead 1d10 HP) when attacking others for $L rd (Will 1 rd)"',
   'Fire Of Vengeance':
     'School=Evocation ' +
     'Level=P4 ' +
-    'Description="FILL"',
+    'Description="Next Smite Evil hit inflicts 3d8 HP on first attack on other"',
   'Fire Snake':
     'School=Evocation ' +
     'Level=D5,W5 ' +
-    'Description="FILL"',
+    'Description="R60\' Curved line inflicts %{lvl<?15}d6 HP fire (Ref half)"',
   'Firebrand':
     'School=Transmutation ' +
     'Level=W7 ' +
-    'Description="FILL"',
+    'Description="%{lvl//4} targets in 15\' radius gain torchlight, immunity to self fire spells, and 1d6 HP fire from attacks, and may use R30\' ranged touch that inflicts 6d6 HP fire once, for $L rd"',
   'Firefall':
     'School=Transmutation ' +
     'Level=W4 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Target fire extinguished, inflicts 60\' radius 5d6 HP fire and catch on fire (Ref half HP only) and 120\' blinded for 1d4+1 rd (Will neg)"',
   'Flames Of The Faithful':
     'School=Transmutation ' +
     'Level=Inquisitor2 ' +
-    'Description="FILL"',
+    'Description="Touched self weapon gains flaming or flaming burst features for $L rd"',
   'Flare Burst':
     'School=Evocation ' +
     'Level=B1,D1,W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' 10\' radius inflicts dazzled (Fort neg) for 1 min"',
   'Fluid Form':
     'School=Transmutation ' +
     'Level=Alchemist4,W6,Waves6 ' +
-    'Description="FILL"',
+    'Description="Self gains DR 10/slashing, +10 reach, +60\' Swim, amphibious features, and ability to squeeze through cracks for $L min"',
   'Mass Fly':
     'School=Transmutation ' +
     'Level=Feather6,W7 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius gain 60\' fly speed for %{lvl*10} min"',
   'Foe To Friend':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Redirects or negates foe attack (Will neg)"',
   'Follow Aura':
     'School=Divination ' +
     'Level=Inquisitor2 ' +
-    'Description="FILL"',
+    'Description="Self can track chosen alignment aura for %{lvl*10} min"',
   "Fool's Forbiddance":
     'School=Abjuration ' +
     'Level=B6 ' +
-    'Description="FILL"',
+    'Description="10\' radius inflicts confusion (Will staggered) for conc"',
   'Forced Repentance':
     'School=Enchantment ' +
     'Level=Inquisitor4,P4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Evil target creature makes prone confession for $L rd"',
   'Frozen Note':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="Creatures in 30\' radius held spellbound (Will (%{lvl-4} HD) or %{lvl+4} HD neg} for conc or $L rd"',
   'Gallant Inspiration':
     'School=Divination ' +
     'Level=B2 ' +
@@ -4345,7 +4345,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Sirocco':
     'School=Evocation ' +
-    'Level=D6,Storms6,W60,Wind6 ' +
+    'Level=D6,Storms6,W6,Wind6 ' +
     'Description="FILL"',
   'Sleepwalk':
     'School=Enchantment ' +
@@ -5105,7 +5105,6 @@ PFAPG.CLASSES = {
       '"1:Swamp Druid:Archetype",' +
       '"1:Urban Druid:Archetype",' +
       '"1:Animal Shaman:Archetype",' +
-      '"features.Blight Druid == 0 ? 1:Animal Companion:Nature Bond",' +
       '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
       '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
       '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
@@ -6067,6 +6066,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Urban Druid', '?', null,
       classLevel, '=', '1'
     );
+    rules.defineChoice('notes',
+      'validationNotes.blightDruidCompanion:Blight Druids may not have an animal companion'
+    );
+    rules.defineRule('validationNotes.blightDruidCompanion',
+      'blightDruidLevel', '=', '0',
+      'druidFeatures.Animal Companion', '+', '-1',
+    );
     rules.defineRule('wildShapeLevel',
       'aquaticDruidLevel', '+', '-2',
       'arcticDruidLevel', '+', '-2',
@@ -6753,6 +6759,23 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'features.' + name, '?', null,
       'featureNotes.revelation', '=', null
     );
+  }
+  if(name == 'Rage Subdomain') {
+    // Supress validation notes for Rage clerics w/barbarian powers
+    let allSelectables = rules.getChoices('selectableFeatures');
+    let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
+    powers.forEach(p => {
+      let matchInfo =
+        Pathfinder.CLASSES.Barbarian.match('(\\d+):' + p) ||
+        PFAPG.CLASSES.Barbarian.match('(\\d+):' + p);
+      let level = matchInfo ? matchInfo[1] : '2';
+      let note = 'validationNotes.barbarian-' + p.replaceAll(' ', '') +
+                 'SelectableFeature';
+      rules.defineRule(note,
+        pathLevel, '+', 'source >= ' + level + ' ? 1 : null',
+        '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
+      );
+    });
   }
   // Level-dependent domain code copied from Pathfinder for related subdomains.
   if(name.match(/(Cloud|Winds) Subdomain/)) { // Air
