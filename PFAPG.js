@@ -3674,115 +3674,115 @@ PFAPG.SPELLS = {
   'Cacophonous Call':
     'School=Enchantment ' +
     'Level=B2 ' +
-    'Description="FILL"',
+    'Description="R$$RS\' Target suffers nauseated (Will neg) for $L rd"',
   'Mass Cacophonous Call':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius suffer nauseated (Will neg) for $L rd"',
   'Calcific Touch':
     'School=Transmutation ' +
     'Level=W4 ' +
-    'Description="FILL"',
+    'Description="$L touched w/in $L rd suffer permanent 1d4 Dex damage and effects of Slow spell (Fort Dex only)"',
   'Call Animal':
     'School=Enchantment ' +
     'Level=D1,R1 ' +
-    'Description="FILL"',
+    'Description="Nearest wild animal of chosen type moves toward self for $L hr"',
   'Campfire Wall':
     'School=Evocation ' +
     'Level=B3,D2,R2,W3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' 20\' radius around fire blocks sight, inflicts 1d6 HP fire and 1d6 min glow on those passing in for %{lvl*2} hr"',
   'Cast Out':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
-    'Description="FILL"',
+    'Description="Touched suffers 2d8+{lvl<?15} HP and loss of %{lvl//4} magic effects (Will half HP and 1 effect)"',
   'Castigate':
     'School=Enchantment ' +
     'Level=Inquisitor2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers fear for $L rd (Will shaken for 1 rd; same deity -2)"',
   'Mass Castigate':
     'School=Enchantment ' +
     'Level=Inquisitor5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' $L targets in 15\' radius suffer fear for $L rd (Will shaken for 1 rd; same deity -2)"',
   'Challenge Evil':
     'School=Enchantment ' +
     'Level=P1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target must fight you (self gains +2 attack) or suffer sickened for (Will neg) $L min"',
   'Chameleon Stride':
     'School=Illusion ' +
     'Level=R2 ' +
-    'Description="FILL"',
+    'Description="Self gains +4 Stealth and 20% miss from non-adjacent foes for $L min"',
   'Clashing Rocks':
     'School=Conjuration ' +
     'Level=D9,W9,Stone9 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (Ref half HP only)"',
   'Cleanse':
     'School=Evocation ' +
     'Level=C5,Divine5,Inquisitor6,O5 ' +
-    'Description="FILL"',
+    'Description="Self regains 4d8+${lvl<?25} HP, recovers from ability damage and conditions, and breaks one enchantment"',
   'Cloak Of Dreams':
     'School=Enchantment ' +
     'Level=B5,Nightmare6,W6,Witch6 ' +
-    'Description="FILL"',
+    'Description="Creatures in 5\' radius fall asleep for 1 min (Will neg; creatures w/Scent -4) for $L rd"',
   'Cloak Of Shade':
     'School=Abjuration ' +
     'Level=D1,R1 ' +
-    'Description="FILL"',
+    'Description="$L touched treat sunlight as 1 level less severe for $L hr"',
   'Cloak Of Winds':
     'School=Abjuration ' +
     'Level=D3,R3,W3,Wind3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Foes of target suffer -4 ranged attacks, and Tiny foes cannot touch target (Fort neg) for $L min"',
   'Confess':
     'School=Enchantment ' +
     'Level=Inquisitor2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target must answer question truthfully or suffer 1d6 HP and 2d4 rd sickened (Will half HP only)"',
   'Contagious Flame':
     'School=Evocation ' +
     'Level=W6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' %{(lvl+1}//4} ranged touch rays in 15\' radius inflict 4d6 HP fire, reflect to new targets for 3 rd"',
   'Coordinated Effort':
     'School=Divination ' +
     'Level=B3,Inquisitor3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' %{lvl//3} allies in 15\' radius gain use of self Teamwork feat for $L min"',
   'Corruption Resistance':
     'School=Abjuration ' +
     'Level=Antipaladin2,Inquisitor2,P2 ' +
-    'Description="FILL"',
+    'Description="Touched gain DR %{lvl>=11?15:lvl>=7?10:5}/- vs. chosen alignment damage for %{lvl*10} min"',
   "Coward's Lament":
     'School=Enchantment ' +
     'Level=Inquisitor4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers -1 AC, attack, and saves/rd unless attacks self (Will neg) for $L rd"',
   "Crafter's Curse":
     'School=Transmutation ' +
     'Level=W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers -5 Craft (Will neg) for $L dy"',
   "Crafter's Fortune":
     'School=Transmutation ' +
     'Level=Alchemist1,W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target gains +5 on next Craft skill check"',
   'Create Pit':
     'School=Conjuration ' +
     'Level=Caves2,W2,Summoner2 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?30}\' deep extradimensional pit for %{lvl+1} rd"',
   'Create Treasure Map':
     'School=Divination ' +
     'Level=B2,D3,R2,W2 ' +
-    'Description="FILL"',
+    'Description="Allows use of 1-day-old corpse to create a map to %{lvl//3} treasures that it knew"',
   'Cup Of Dust':
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers dehydration (Fort neg) for $L dy"',
   'Dancing Lantern':
     'School=Transmutation ' +
     'Level=B1,C1,O1,R1,W1,Witch1 ' +
-    'Description="FILL"',
+    'Description="Touched lantern follows 5\' behind self for $L hr"',
   'Deadly Finale':
     'School=Evocation ' +
     'Level=B6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Ending Barding Performance inflicts 2d8 HP sonic and 3d6 HP bleed for 1d6 rd (Fort sonic only) on %{lvl//3} targets in 15\' radius"',
   'Deafening Song Bolt':
     'School=Evocation ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Ranged touch w/3 notes inflict 3d10 HP sonic and deafened for 1d6 rd each"',
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
@@ -3790,51 +3790,51 @@ PFAPG.SPELLS = {
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
-    'Description="FILL"',
+    'Description="Missed attacks on self reflected onto attacker for $L rd"',
   'Delayed Consumption':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
-    'Description="FILL"',
+    'Description="Delays effects of second consumed extract up to $L dy"',
   'Denounce':
     'School=Enchantment ' +
     'Level=B4,Inquisitor4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Creatures in 30\' radius shift attitude toward target 2 levels worse (Will neg) for $L hr"',
   'Detect Aberration':
     'School=Divination ' +
     'Level=D1,R1 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Cone gives self info on aberrations for conc or %{lvl*10} min"',
   'Detonate':
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
-    'Description="FILL"',
+    'Description="15\' radius inflicts %{lvl}d8 HP chosen energy type, 30\' raidius and self half (Ref half)"',
   'Devolution':
     'School=Transmutation ' +
     'Level=W3,Summoner3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target eidolon loses %{lvl//5+1} evolutions for $L rd"',
   'Discordant Blast':
     'School=Evocation ' +
     'Level=B4 ' +
-    'Description="FILL"',
+    'Description="10\' radius or 30\' code inflicts 3d6 HP sonic and bull rush"',
   'Divine Transfer':
     'School=Necromancy ' +
     'Level=P3 ' +
-    'Description="FILL"',
+    'Description="Touched regains up to %{constitution} HP, transferred from self, and gains DR %{charismaBonus}/evil for $L rd"',
   'Divine Vessel':
     'School=Transmutation ' +
     'Level=Oracle8 ' +
-    'Description="FILL"',
+    'Description="Self gains size level and anarchic, axiomatic, celestial, or fiendish abilities for $L rd"',
   'Draconic Reservoir':
     'School=Evocation ' +
     'Level=Alchemist3,W3 ' +
-    'Description="FILL"',
+    'Description="Touched can absorb and release in attack %{lvl*6} HP of specified energy damage"',
   "Dragon's Breath":
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
-    'Description="FILL"',
+    'Description="60\' line or 30\' cone inflicts %{lvl<?12}d6 HP specified energy damage (Ref alf)"',
   'Dust Of Twilight':
     'School=Conjuration ' +
     'Level=B2,W2 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 5\' radius extinguishes mundane light sources and 2nd level light spells, inflicts fatigue (Fort neg)"',
   'Eagle Eye':
     'School=Divination ' +
     'Level=D2,R2 ' +
