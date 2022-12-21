@@ -3738,7 +3738,7 @@ PFAPG.SPELLS = {
   'Contagious Flame':
     'School=Evocation ' +
     'Level=W6 ' +
-    'Description="R$RS\' %{(lvl+1}//4} ranged touch rays in 15\' radius inflict 4d6 HP fire, reflect to new targets for 3 rd"',
+    'Description="R$RS\' %{(lvl+1)//4} ranged touch rays in 15\' radius inflict 4d6 HP fire, reflect to new targets for 3 rd"',
   'Coordinated Effort':
     'School=Divination ' +
     'Level=B3,Inquisitor3 ' +
@@ -3955,7 +3955,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Feather6,W7 ' +
     'Description="FILL"',
-  'Foe to Friend':
+  'Foe To Friend':
     'School=Enchantment ' +
     'Level=B5 ' +
     'Description="FILL"',
@@ -4015,13 +4015,13 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=C3,O3,R2,Witch3 ' +
     'Description="FILL"',
-  'Heroic Finale':
-    'School=Enchantment ' +
-    'Level=B4 ' +
-    'Description="FILL"',
   "Hero's Defiance":
     'School=Conjuration ' +
     'Level=P1 ' +
+    'Description="FILL"',
+  'Heroic Finale':
+    'School=Enchantment ' +
+    'Level=B4 ' +
     'Description="FILL"',
   'Hidden Speech':
     'School=Transmutation ' +
@@ -4215,7 +4215,7 @@ PFAPG.SPELLS = {
     'School=Conjuration ' +
     'Level=Summoner4 ' +
     'Description="FILL"',
-  'Putrefy Food and Drink':
+  'Putrefy Food And Drink':
     'School=Transmutation ' +
     'Level=W0 ' +
     'Description="FILL"',
@@ -4249,7 +4249,7 @@ PFAPG.SPELLS = {
     'Description="FILL"',
   'Resounding Blow':
     'School=Evocation ' +
-    'Level=Antipaladin4,Inquisitor5,Paladin40 ' +
+    'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
     'Description="FILL"',
   'Rest Eternal':
     'School=Necromancy ' +
@@ -4379,7 +4379,7 @@ PFAPG.SPELLS = {
     'School=Abjuration ' +
     'Level=Witch4 ' +
     'Description="FILL"',
-  'Stay the Hand':
+  'Stay The Hand':
     'School=Enchantment ' +
     'Level=P4 ' +
     'Description="FILL"',
@@ -4459,7 +4459,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Summoner4 ' +
     'Description="FILL"',
-  'Transmute Potion to Poison':
+  'Transmute Potion To Poison':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
     'Description="FILL"',
@@ -4539,7 +4539,7 @@ PFAPG.SPELLS = {
     'School=Illusion ' +
     'Level=B4,W4,Witch4 ' +
     'Description="FILL"',
-  'Ward the Faithful':
+  'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
     'Description="FILL"',
