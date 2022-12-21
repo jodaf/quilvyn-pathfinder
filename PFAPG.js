@@ -3806,7 +3806,7 @@ PFAPG.SPELLS = {
   'Detonate':
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
-    'Description="15\' radius inflicts %{lvl}d8 HP chosen energy type, 30\' raidius and self half (Ref half)"',
+    'Description="15\' radius inflicts %{lvl}d8 HP chosen energy type, 30\' radius and self half (Ref half)"',
   'Devolution':
     'School=Transmutation ' +
     'Level=W3,Summoner3 ' +
@@ -3830,7 +3830,7 @@ PFAPG.SPELLS = {
   "Dragon's Breath":
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
-    'Description="60\' line or 30\' cone inflicts %{lvl<?12}d6 HP specified energy damage (Ref alf)"',
+    'Description="60\' line or 30\' cone inflicts %{lvl<?12}d6 HP specified energy damage (Ref half)"',
   'Dust Of Twilight':
     'School=Conjuration ' +
     'Level=B2,W2 ' +
@@ -3870,15 +3870,15 @@ PFAPG.SPELLS = {
   'Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner3 ' +
-    'Description="Touched eliodon gains 4-point evolution for $L min"',
+    'Description="Touched eidolon gains 4-point evolution for $L min"',
   'Greater Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
-    'Description="Touched eliodon gains 6-point evolution for $L min"',
+    'Description="Touched eidolon gains 6-point evolution for $L min"',
   'Lesser Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner2 ' +
-    'Description="Touched eliodon gains 2-point evolution for $L min"',
+    'Description="Touched eidolon gains 2-point evolution for $L min"',
   'Expeditious Excavation':
     'School=Transmutation ' +
     'Level=D1,W1 ' +
@@ -3886,7 +3886,7 @@ PFAPG.SPELLS = {
   'Expend':
     'School=Abjuration ' +
     'Level=W7 ' +
-    'Description="R$RM\' 20\' radius inflicts ineffecttual use of ability"',
+    'Description="R$RM\' 20\' radius inflicts ineffectual use of ability"',
   'Feast Of Ashes':
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
@@ -3910,7 +3910,7 @@ PFAPG.SPELLS = {
   'Fiery Body':
     'School=Transmutation ' +
     'Level=Ash9,W9,Flame9 ' +
-    'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexerity, 40\' Fly, dazzling brightness, 50% miss chance,regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for $L min"',
+    'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40\' Fly, dazzling brightness, 50% miss chance,regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for $L min"',
   'Fire Breath':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
@@ -6071,7 +6071,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('validationNotes.blightDruidCompanion',
       'blightDruidLevel', '=', '0',
-      'druidFeatures.Animal Companion', '+', '-1',
+      'druidFeatures.Animal Companion', '+', '-1'
     );
     rules.defineRule('wildShapeLevel',
       'aquaticDruidLevel', '+', '-2',
