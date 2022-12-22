@@ -3974,151 +3974,151 @@ PFAPG.SPELLS = {
   'Frozen Note':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="Creatures in 30\' radius held spellbound (Will (%{lvl-4} HD) or %{lvl+4} HD neg} for conc or $L rd"',
+    'Description="Creatures in 30\' radius held spellbound (Will (%{lvl-4} HD) or %{lvl+4} HD neg) for conc or $L rd"',
   'Gallant Inspiration':
     'School=Divination ' +
     'Level=B2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target immediately adds +2d4 to failed roll"',
   'Getaway':
     'School=Conjuration ' +
     'Level=B6,W6 ' +
-    'Description="FILL"',
+    'Description="R30\' Self and %{lvl//2} willing pre-selected targets teleport to prepared location"',
   'Geyser':
     'School=Conjuration ' +
     'Level=D4,W5,Waves5 ' +
-    'Description="FILL"',
+    'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), then 1d6 HP fire in %{lvl*5}\' radius for conc + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
     'Level=B2,C2,Inquisitor2,O2,P1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Incorporeal target suffers half damage from normal weapons, full damage from magic, for $L rd"',
   'Mass Ghostbane Dirge':
     'School=Transmutation ' +
     'Level=B4,C5,Inquisitor5,O5,P3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L incorporeal targets in 15\' radius suffer half damage from normal weapons, full damage from magic, for $L rd"',
   'Glide':
     'School=Transmutation ' +
     'Level=D2,R1,W2,Summoner2,Witch2 ' +
-    'Description="FILL"',
+    'Description="Self falls 60\'/rd, may move horizontally for $L min"',
   'Grace':
     'School=Abjuration ' +
     'Level=C2,O2,P1 ' +
-    'Description="FILL"',
+    'Description="Self movement provokes no AOO for 1 rd"',
   'Gravity Bow':
     'School=Transmutation ' +
     'Level=R1,W1 ' +
-    'Description="FILL"',
+    'Description="Self bow attacks inflict extra damage for $L min"',
   'Grove Of Respite':
     'School=Conjuration ' +
     'Level=D4,R4,Nature4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Creates 20\' radius grove with food and water for %{lvl*2} hr"',
   'Guiding Star':
     'School=Divination ' +
     'Level=C3,O3,R2,Witch3 ' +
-    'Description="FILL"',
+    'Description="Self aware of direction and distance to casting location for $L dy"',
   "Hero's Defiance":
     'School=Conjuration ' +
     'Level=P1 ' +
-    'Description="FILL"',
+    'Description="Expending Lay on Hands use on self when reduced to 0 HP heals +1d6 HP"',
   'Heroic Finale':
     'School=Enchantment ' +
     'Level=B4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' End of Bardic Performance allows target move or action"',
   'Hidden Speech':
     'School=Transmutation ' +
     'Level=B2,Inquisitor3,Witch2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Self and $L targets gain +10 Bluff to exchange secret messages; foes suffer -5 Sense Motive to decipher"',
   'Hide Campsite':
     'School=Illusion ' +
     'Level=D3,R2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' 20\' cu covers camp activity for {lvl*2} hr"',
   'Holy Whisper':
     'School=Evocation ' +
     'Level=P3 ' +
-    'Description="FILL"',
+    'Description="30\' cone sickens evil-aligned creatures and inflicts 2d8 HP on evil creatures and undead (Fort neg), gives good-aligned creatures +2 attack and damage for 1 rd"',
   'Honeyed Tongue':
     'School=Transmutation ' +
     'Level=B2,Inquisitor2,P1 ' +
-    'Description="FILL"',
+    'Description="Self gain best of two Diplomacy to change attitude, +5 Diplomacy to gather information for %{lvl*10} min"',
   'Hungry Pit':
     'School=Conjuration ' +
     'Level=Caves6,W5,Summoner5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit that inflicts 4d6 bludgeoning (Ref half) for %{lvl+1} rd"',
   "Hunter's Eye":
     'School=Divination ' +
     'Level=Inquisitor3,R2 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Self can see invisible target and gains +20 Perception to locate target for $L min"',
   "Hunter's Howl":
     'School=Necromancy ' +
     'Level=R1 ' +
-    'Description="FILL"',
+    'Description="Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken) (Will neg) for $L rd"',
   'Hydraulic Push':
     'School=Evocation ' +
     'Level=D1,W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers CMB +{lvl+(intelligenceModifier>?wisdomModifier?>charismaModifier)} bull rush; extinguishes fires"',
   'Hydraulic Torrent':
     'School=Evocation ' +
     'Level=D3,W3 ' +
-    'Description="FILL"',
+    'Description="Creatures in 60\' line suffer CMB +{lvl+(intelligenceModifier>?wisdomModifier?>charismaModifier)} bull rush; extinguishes fires"',
   'Ill Omen':
     'School=Enchantment ' +
     'Level=Witch1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers worse of two roll for next %{lvl//5+1} d20 rolls (prayer negates 1) w/in $L rd"',
   'Innocence':
     'School=Transmutation ' +
     'Level=B1 ' +
-    'Description="FILL"',
+    'Description="Self gains +10 Bluff to promote innocence for $L min"',
   'Instant Armor':
     'School=Conjuration ' +
     'Level=C2,O2,P2 ' +
-    'Description="FILL"',
+    'Description="Self gains effects of %{lvl>=12 ? \'full plate\' : lvl>=9 ? \'half-plate\' : lvl>=6 ? \'banded mail\' : \'chainmail\'} for $L min"',
   'Instant Enemy':
     'School=Enchantment ' +
     'Level=R3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Self gains favored enemy benefits vs. target for $L min"',
   'Invigorate':
     'School=Illusion ' +
     'Level=B1 ' +
-    'Description="FILL"',
+    'Description="Touched ignores effects of fatigued and exhausted for %{lvl*10} min, suffers 1d6 HP nonlethal after"',
   'Mass Invigorate':
     'School=Illusion ' +
     'Level=B3 ' +
-    'Description="FILL"',
+    'Description="$L touched ignore effects of fatigued and exhausted for %{lvl*10} min, suffer 1d6 HP nonlethal after"',
   "Jester's Jaunt":
     'School=Conjuration ' +
     'Level=B3 ' +
-    'Description="FILL"',
+    'Description="Touched teleported 30\' to safe spot (Will neg)"',
   'Keen Senses':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
-    'Description="FILL"',
+    'Description="Touched gains +2 Perception and Low-Light Vision (or dbl range) for $L min"',
   "King's Castle":
     'School=Conjuration ' +
     'Level=P4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Self switches place will target ally"',
   "Knight's Calling":
     'School=Enchantment ' +
     'Level=P1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target must move to attack self (Will neg)"',
   'Lead Blades':
     'School=Transmutation ' +
     'Level=R1 ' +
-    'Description="FILL"',
+    'Description="Self melee weapons inflict extra damage for $L min"',
   'Life Bubble':
     'School=Abjuration ' +
     'Level=C5,D4,O5,R3,W5 ' +
-    'Description="FILL"',
+    'Description="$L touched breathe freely, comfortable from -40F to 150F, and unaffected by pressure for %{lvl*2} hr total"',
   'Light Lance':
     'School=Evocation ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="Self gains glowing +1 holy lance for %{lvl+1} rd"',
   'Lily Pad Stride':
     'School=Transmutation ' +
     'Level=D3 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Self moves across liquid, others can follow w/DC 10 Acrobatics, for %{lvl*10} min"',
   'Lockjaw':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
-    'Description="FILL"',
+    'Description="Touched gains +4 CMB to grapple w/natural weapon"',
   'Marks Of Forbiddance':
     'School=Abjuration ' +
     'Level=P3 ' +
