@@ -3694,7 +3694,7 @@ PFAPG.SPELLS = {
   'Cast Out':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
-    'Description="Touched suffers 2d8+{lvl<?15} HP and loss of %{lvl//4} magic effects (Will half HP and 1 effect)"',
+    'Description="Touched suffers 2d8+%{lvl<?15} HP and loss of %{lvl//4} magic effects (Will half HP and 1 effect)"',
   'Castigate':
     'School=Enchantment ' +
     'Level=Inquisitor2 ' +
@@ -4054,11 +4054,11 @@ PFAPG.SPELLS = {
   'Hydraulic Push':
     'School=Evocation ' +
     'Level=D1,W1 ' +
-    'Description="R$RS\' Target suffers CMB +{lvl+(intelligenceModifier>?wisdomModifier?>charismaModifier)} bull rush; extinguishes fires"',
+    'Description="R$RS\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes fires"',
   'Hydraulic Torrent':
     'School=Evocation ' +
     'Level=D3,W3 ' +
-    'Description="Creatures in 60\' line suffer CMB +{lvl+(intelligenceModifier>?wisdomModifier?>charismaModifier)} bull rush; extinguishes fires"',
+    'Description="Creatures in 60\' line suffer CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes fires"',
   'Ill Omen':
     'School=Enchantment ' +
     'Level=Witch1 ' +
@@ -4122,103 +4122,103 @@ PFAPG.SPELLS = {
   'Marks Of Forbiddance':
     'School=Abjuration ' +
     'Level=P3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' ally and foe targets cannot attack one another (Will neg) for $L rd"',
   'Mask Dweomer':
     'School=Illusion ' +
     'Level=Witch1 ' +
-    'Description="FILL"',
+    'Description="Spell aura on touched immune to <i>Detect Magic</i> for $L dy"',
   'Memory Lapse':
     'School=Enchantment ' +
     'Level=B1,Memory2,W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target forgets prior rd (Will neg)"',
   'Moonstruck':
     'School=Enchantment ' +
     'Level=D4,Insanity4,Rage6,W4,Witch4 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Target suffers dazed for 1 rd, then bite and two claw attacks, rage, and confusion for $L rd, then dazed for 1 rd (Will neg)"',
   'Nap Stack':
     'School=Necromancy ' +
     'Level=C3,O3 ' +
-    'Description="FILL"',
+    'Description="30\' gives effects of 8 hr sleep in 2 hr for 8 hr"',
   'Natural Rhythm':
     'School=Transmutation ' +
     'Level=D2 ' +
-    'Description="FILL"',
+    'Description="Touched gains +1 cumulative damage on natural attacks (max +5, miss resets to +0) for $L rd"',
   "Nature's Exile":
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
-    'Description="FILL"',
+    'Description="Touched suffers permanent hostility from natural animals and -10 Survial (Will neg)"',
   'Negate Aroma':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target loses odor (Fort neg) for $L rd"',
   'Oath Of Peace':
     'School=Abjuration ' +
     'Level=P4 ' +
-    'Description="FILL"',
+    'Description="Self gains +5 AC and DR 10/evil for $L rd or until attack"',
   "Oracle's Burden":
     'School=Necromancy ' +
     'Level=Oracle2 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Target suffers Oracle\'s Curse effects (Will neg) for $L min"',
   'Pain Strike':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers 1d6 HP nonlethal and sickened (Fort neg) and self gains +4 Intimidate for %{lvl<?10} rd"',
   'Mass Pain Strike':
     'School=Evocation ' +
     'Level=W5,Witch5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius suffer 1d6 HP nonlethal and sickened (Fort neg) and self gains +4 Intimidate for %{lvl<?10} rd"',
   "Paladin's Sacrifice":
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="R$S\' Immediate damage to target transferred to self"',
   'Perceive Cues':
     'School=Transmutation ' +
     'Level=Alchemist2,Inquisitor2,R2,Witch2 ' +
-    'Description="FILL"',
+    'Description="Self gains +5 Perception and Sense Motive for {lvl*10} min"',
   'Phantasmal Revenge':
     'School=Illusion ' +
     'Level=W7 ' +
-    'Description="FILL"',
+    'Description="Spectre from touched $L-day-old corpse finds and inflicting %{lvl*10} HP (Will 5d6+$L HP) on killer"',
   'Phantasmal Web':
     'School=Illusion ' +
     'Level=B5,Insanity6,W5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' $L targets in 15\' radius suffer entanglement and nauseated (Will neg; Fort entanglement only) for $L rd"',
   'Pied Piping':
     'School=Enchantment ' +
     'Level=B6 ' +
-    'Description="FILL"',
+    'Description="R90\' Creatures w/chosen trait follow self (Will neg) for conc"',
   'Pillar Of Life':
     'School=Conjuration ' +
     'Level=C5,O5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Creatures touching 5\' sq regain 2d8+%{lvl<?20} HP, undead suffer %{lvl<?10}d6 HP (light-sensitive %{lvl<?10}d8)"',
   'Planar Adaptation':
     'School=Transmutation ' +
     'Level=Alchemist5,C4,O4,W5,Summoner5 ' +
-    'Description="FILL"',
+    'Description="Self gains immunity to chosen planar harm and 20 energy resistance for $L hr"',
   'Mass Planar Adaptation':
     'School=Transmutation ' +
     'Level=W7,Summoner6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' $L targets in 15\' radius gain immunity to chosen planar harm and 20 energy resistance for $L hr"',
   'Pox Pustules':
     'School=Necromancy ' +
     'Level=D2,W2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers sickened and -r Dexterity (Fort neg; full-round scratch neg sickened for 1 rd) for $L min"',
   'Protective Spirit':
     'School=Conjuration ' +
     'Level=R2 ' +
-    'Description="FILL"',
+    'Description="+%{baseAttack+dexterityModifier} attack by spirit negates %{dexterityModifier>?1} AOO/rd on self for $L rd"',
   'Purging Finale':
     'School=Conjuration ' +
     'Level=B3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' End of Bardic Performance allows removing condition on target"',
   'Purified Calling':
     'School=Conjuration ' +
     'Level=Summoner4 ' +
-    'Description="FILL"',
+    'Description="Summons eidolon at full HP and no ability damage or temporary conditions"',
   'Putrefy Food And Drink':
     'School=Transmutation ' +
     'Level=W0 ' +
-    'Description="FILL"',
+    'Description="R10\' Fouls $L\' cu food and water or single potion"',
   'Rally Point':
     'School=Enchantment ' +
     'Level=P1 ' +
