@@ -3718,7 +3718,7 @@ PFAPG.SPELLS = {
   'Cleanse':
     'School=Evocation ' +
     'Level=C5,Divine5,Inquisitor6,O5 ' +
-    'Description="Self regains 4d8+${lvl<?25} HP, recovers from ability damage and conditions, and breaks one enchantment"',
+    'Description="Self regains 4d8+%{lvl<?25} HP, recovers from ability damage and conditions, and breaks one enchantment"',
   'Cloak Of Dreams':
     'School=Enchantment ' +
     'Level=B5,Nightmare6,W6,Witch6 ' +
@@ -4294,7 +4294,7 @@ PFAPG.SPELLS = {
   'Sanctify Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,P3 ' +
-    'Description="Touched armor gains +{lvl//4} AC for $L min"',
+    'Description="Touched armor gains +%{lvl//4} AC for $L min"',
   'Saving Finale':
     'School=Evocation ' +
     'Level=B1 ' +
@@ -4322,15 +4322,15 @@ PFAPG.SPELLS = {
   'Shadow Projection':
     'School=Necromancy ' +
     'Level=W4 ' +
-    'Description="FILL"',
+    'Description="Self becomes shadow for $L hr; death reduces body -1 HP"',
   'Share Language':
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,W2 ' +
-    'Description="FILL"',
+    'Description="Touched can use %{lvl//4+1} languages self knows for 1 dy"',
   'Share Senses':
     'School=Divination ' +
     'Level=W4,Witch3 ' +
-    'Description="FILL"',
+    'Description="R$RL\' Self can use familiar\'s senses for $L min"',
   'Shared Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor4 ' +
@@ -4338,35 +4338,35 @@ PFAPG.SPELLS = {
   'Shifting Sand':
     'School=Transmutation ' +
     'Level=D3,W3 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 10\' radius moves 10\'/rd, creates difficult terrain, entagles and knocks prone (Ref neg) for $L rd"',
   'Sift':
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
-    'Description="FILL"',
+    'Description="R30\' Self makes -5 Perception to note details at range"',
   'Sirocco':
     'School=Evocation ' +
     'Level=D6,Storms6,W6,Wind6 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 20\' radius inflicts 4d6+$L HP fire, fatigues, and knocks prone (Fort half HP only) for $L rd"',
   'Sleepwalk':
     'School=Enchantment ' +
     'Level=Inquisitor4,Witch4 ' +
-    'Description="FILL"',
+    'Description="Touched unconscious creature animates and moves at half speed for $L hr"',
   'Slipstream':
     'School=Conjuration ' +
     'Level=D2,Oceans2,R2,W2,Waves2 ' +
-    'Description="FILL"',
+    'Description="Creates wave that moves touched 10\'/rd for %{lvl*10} min"',
   'Snake Staff':
     'School=Transmutation ' +
     'Level=C5,D5,O5 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Transforms sticks into snakes under self control for $L rd"',
   'Solid Note':
     'School=Conjuration ' +
     'Level=B1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Note becomes hand-sized physical object for conc + $L rd"',
   'Spark':
     'School=Evocation ' +
     'Level=B0,C0,D0,O0,W0,Witch0 ' +
-    'Description="FILL"',
+    'Description="R$RS\' lights size fine flammable object (Fort neg)"',
   'Spiked Pit':
     'School=Conjuration ' +
     'Level=Caves3,W3,Summoner3 ' +
@@ -4374,55 +4374,55 @@ PFAPG.SPELLS = {
   'Spiritual Ally':
     'School=Evocation ' +
     'Level=C4,O4 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Force being moves 30\'/rd attacks at +%{baseAttack+wisdomModifier}, doing 1d10+%{lvl//3<?5} HP for $L rd (DC d20+$L spell resistence ends)"',
   'Spite':
     'School=Abjuration ' +
     'Level=Witch4 ' +
-    'Description="FILL"',
+    'Description="Damage to self triggers L4 spell for $L hr"',
   'Stay The Hand':
     'School=Enchantment ' +
     'Level=P4 ' +
-    'Description="FILL"',
+    'Description="$RM\' Target suffers negated attack (Will -5 attack and damage) and -2 attack and damage on targeted ally for $L rd"',
   'Stone Call':
     'School=Conjuration ' +
     'Level=D2,R2,W2,Stone2 ' +
-    'Description="FILL"',
+    'Description="R$RM\' 40\' radius inflcits 2d6 HP bludgeoning for 1 rd, difficult terrain for $L rd"',
   'Stone Fist':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1 ' +
-    'Description="FILL"',
+    'Description="Self Unarmed Strikes inflict 1d%{features.Small ? 4 : 6}+%{strengthModifier} w/o AOO for $L min"',
   'Stormbolts':
     'School=Evocation ' +
     'Level=C8,D8,O8,W8,Witch8 ' +
-    'Description="FILL"',
+    'Description="Targets in 30\' radius suffer 1d8 HP electricity and stunned (Fort half HP only)"',
   'Strong Jaw':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
-    'Description="FILL"',
+    'Description="Touched natural weapon inflicts damage as +2 size for $L min"',
   'Stumble Gap':
     'School=Conjuration ' +
     'Level=W1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' 5\' square inflicts 1d6 HP and knocked prone (Ref -1 all rolls for 1 rd) for %{lvl+1} rd"',
   'Stunning Finale':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' End of Bardic Performance inflicts stunned 1 rd (Fort staggered 1 rd) on 3 targets in 15\' radius"',
   'Suffocation':
     'School=Necromancy ' +
     'Level=Murder5,W5,Witch5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target suffers unconsciousness next rd (Fort staggered 1 rd), then -1 HP (Fort delays 1 rd), then death (Fort delays 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,W9,Witch9 ' +
-    'Description="FILL"',
+    'Description="R$RS\' %{lvl//2} targets in 15\' radius suffer unconsciousness next rd (Fort staggered 1 rd), then -1 HP (Fort delays 1 rd), then death (Fort delays 1 rd) for $L rd"',
   'Summon Eidolon':
     'School=Conjuration ' +
     'Level=Summoner2 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Teleports eidolon companion from home plane for $L min"',
   'Swarm Skin':
     'School=Transmutation ' +
     'Level=D6,Witch6 ' +
-    'Description="FILL"',
+    'Description="Self flesh transforms into controlled insect swarms until destroyed or ordered to return to bones"',
   'Thorn Body':
     'School=Transmutation ' +
     'Level=Alchemist3,D4 ' +
