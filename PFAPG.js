@@ -2038,7 +2038,7 @@ PFAPG.FEATURES = {
   'Major Healing Hex':
     'Section=feature Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
   "Maker's Call":
-    'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(source - 2) // 4}/dy"',
+    'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
@@ -3534,7 +3534,7 @@ PFAPG.SPELLS = {
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
-    'Description="Transforms touched $L5 object into edible substance"',
+    'Description="Transforms touched %{lvl*5} object into edible substance"',
   'Alter Winds':
     'School=Transmutation ' +
     'Level=D1,W1,Wind1 ' +
@@ -3546,7 +3546,7 @@ PFAPG.SPELLS = {
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,O1,R1,W1,Summoner1 ' +
-    'Description="Touched creature gains triple carrying capacity for $L2 rd"',
+    'Description="Touched creature gains triple carrying capacity for %{lvl*2} rd"',
   'Aqueous Orb':
     'School=Conjuration ' +
     'Level=D3,W3,Summoner3 ' +
@@ -3578,7 +3578,7 @@ PFAPG.SPELLS = {
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="Allies in 10\' radius gain immunity to fear for $L10 min"',
+    'Description="Allies in 10\' radius gain immunity to fear for %{lvl*10} min"',
   'Ball Lightning':
     'School=Evocation ' +
     'Level=D4,W4 ' +
@@ -3633,7 +3633,7 @@ PFAPG.SPELLS = {
     'Description="Self gains +1 throw attack and +10\' throw range for $L rd"',
   'Borrow Fortune':
     'School=Evocation ' +
-    'Level=Fate3,Oracle3 ' +
+    'Level=Fate3,O3 ' +
     'Description="Self gains better of two immediate d20 rolls and suffers worse of two d20 rolls for 2 rd"',
   'Borrow Skill':
     'School=Transmutation ' +
@@ -3786,7 +3786,7 @@ PFAPG.SPELLS = {
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
-    'Description="FILL"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during judgement or smite for $L min"',
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
@@ -3821,7 +3821,7 @@ PFAPG.SPELLS = {
     'Description="Touched regains up to %{constitution} HP, transferred from self, and gains DR %{charismaModifier}/evil for $L rd"',
   'Divine Vessel':
     'School=Transmutation ' +
-    'Level=Oracle8 ' +
+    'Level=O8 ' +
     'Description="Self gains size level and anarchic, axiomatic, celestial, or fiendish abilities for $L rd"',
   'Draconic Reservoir':
     'School=Evocation ' +
@@ -4157,7 +4157,7 @@ PFAPG.SPELLS = {
     'Description="Self gains +5 AC and DR 10/evil for $L rd or until attacks"',
   "Oracle's Burden":
     'School=Necromancy ' +
-    'Level=Oracle2 ' +
+    'Level=O2 ' +
     'Description="R$RM\' Target suffers Oracle\'s Curse effects (Will neg) for $L min"',
   'Pain Strike':
     'School=Evocation ' +
@@ -4246,7 +4246,7 @@ PFAPG.SPELLS = {
   'Residual Tracking':
     'School=Divination ' +
     'Level=R1 ' +
-    'Description="Self sees creature making touched footprint"',
+    'Description="Self sees creation of touched footprint"',
   'Resounding Blow':
     'School=Evocation ' +
     'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
@@ -4258,7 +4258,7 @@ PFAPG.SPELLS = {
   'Restful Sleep':
     'School=Necromancy ' +
     'Level=B1 ' +
-    'Description="R$RS\' $L targets in 15\' radius gain full day\'s rest benefits from 8 hr sleep and regain 3xlevel HP from full day\'s rest"',
+    'Description="R$RS\' $L targets in 15\' radius gain full day\'s rest benefits from 8 hr sleep and regain 3 x level HP from full day\'s rest"',
   'Resurgent Transformation':
     'School=Conjuration ' +
     'Level=Alchemist5 ' +
@@ -4282,7 +4282,7 @@ PFAPG.SPELLS = {
   'Sacred Bond':
     'School=Conjuration ' +
     'Level=C3,Inquisitor2,O3,P2 ' +
-    'Description="Self and touched mail heal each other at $RS\' for %{lvl*10} min"',
+    'Description="Self and touched may heal each other at $RS\' for %{lvl*10} min"',
   'Sacrificial Oath':
     'School=Abjuration ' +
     'Level=Martyr6,P4 ' +
@@ -4294,7 +4294,7 @@ PFAPG.SPELLS = {
   'Sanctify Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,P3 ' +
-    'Description="Touched armor gains +%{lvl//4} AC for $L min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during judgement or smite for $L min"',
   'Saving Finale':
     'School=Evocation ' +
     'Level=B1 ' +
@@ -4322,7 +4322,7 @@ PFAPG.SPELLS = {
   'Shadow Projection':
     'School=Necromancy ' +
     'Level=W4 ' +
-    'Description="Self becomes shadow for $L hr; death reduces body -1 HP"',
+    'Description="Self becomes shadow for $L hr; death reduces body to -1 HP"',
   'Share Language':
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,W2 ' +
@@ -4334,11 +4334,11 @@ PFAPG.SPELLS = {
   'Shared Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor4 ' +
-    'Description="FILL"',
+    'Description="$L targets in 15\' radius gain +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. chosen foe for 1 min"',
   'Shifting Sand':
     'School=Transmutation ' +
     'Level=D3,W3 ' +
-    'Description="R$RM\' 10\' radius moves 10\'/rd, creates difficult terrain, entagles and knocks prone (Ref neg) for $L rd"',
+    'Description="R$RM\' 10\' radius moves 10\'/rd, creates difficult terrain, entangles and knocks prone (Ref neg) for $L rd"',
   'Sift':
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
@@ -4366,7 +4366,7 @@ PFAPG.SPELLS = {
   'Spark':
     'School=Evocation ' +
     'Level=B0,C0,D0,O0,W0,Witch0 ' +
-    'Description="R$RS\' lights size fine flammable object (Fort neg)"',
+    'Description="R$RS\' Lights size fine flammable object (Fort neg)"',
   'Spiked Pit':
     'School=Conjuration ' +
     'Level=Caves3,W3,Summoner3 ' +
@@ -4374,11 +4374,11 @@ PFAPG.SPELLS = {
   'Spiritual Ally':
     'School=Evocation ' +
     'Level=C4,O4 ' +
-    'Description="R$RM\' Force being moves 30\'/rd attacks at +%{baseAttack+wisdomModifier}, doing 1d10+%{lvl//3<?5} HP for $L rd (DC d20+$L spell resistence ends)"',
+    'Description="R$RM\' Force being moves 30\'/rd and attacks at +%{baseAttack+wisdomModifier}, inflics 1d10+%{lvl//3<?5} HP for $L rd (DC d20+$L SR ends)"',
   'Spite':
     'School=Abjuration ' +
     'Level=Witch4 ' +
-    'Description="Damage to self triggers L4 spell for $L hr"',
+    'Description="Damage to self triggers level 4 spell for $L hr"',
   'Stay The Hand':
     'School=Enchantment ' +
     'Level=P4 ' +
@@ -4386,7 +4386,7 @@ PFAPG.SPELLS = {
   'Stone Call':
     'School=Conjuration ' +
     'Level=D2,R2,W2,Stone2 ' +
-    'Description="R$RM\' 40\' radius inflcits 2d6 HP bludgeoning for 1 rd, difficult terrain for $L rd"',
+    'Description="R$RM\' 40\' radius inflicts 2d6 HP bludgeoning for 1 rd, difficult terrain for $L rd"',
   'Stone Fist':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1 ' +
@@ -4426,143 +4426,143 @@ PFAPG.SPELLS = {
   'Thorn Body':
     'School=Transmutation ' +
     'Level=Alchemist3,D4 ' +
-    'Description="FILL"',
+    'Description="Melee hits on self inflict 1d6+%{lvl<?15} HP piercing on attacker, grapple 2d6+%{lvl<?15} HP, self unarmed attack +1d6 HP for $L rd"',
   'Threefold Aspect':
     'School=Transmutation ' +
     'Level=D5,Witch4 ' +
-    'Description="FILL"',
+    'Description="Self may transform freely between young (+2 Dex and Con, -2 Wis), adult (+2 Wis and Int, -2 Dex), and elderly (+4 Wis, -2 Str and Dex) for 1 dy"',
   'Thundering Drums':
     'School=Evocation ' +
     'Level=B3 ' +
-    'Description="FILL"',
+    'Description="15\' cone inflicts %{lvl<?5}d8 HP sonic and knocked prone (Fort half HP only)"',
   'Timely Inspiration':
     'School=Divination ' +
     'Level=B1 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target gains +%{lvl//5<?3} on failed attack or skill roll"',
   'Tireless Pursuers':
     'School=Transmutation ' +
     'Level=Inquisitor4,R3 ' +
-    'Description="FILL"',
+    'Description="Self and %{lvl//3} touched gain half damage from hustling and forced march and ignore fatigue for $L hr"',
   'Tireless Pursuit':
     'School=Transmutation ' +
     'Level=Inquisitor1,R1 ' +
-    'Description="FILL"',
+    'Description="Self gains half damage from hustling and forced march and ignores fatigue for $L hr"',
   'Touch Of Gracelessness':
     'School=Transmutation ' +
     'Level=B1,W1 ' +
-    'Description="FILL"',
+    'Description="Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone, and half movement (Fort half Dexterity only) for $L rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1,Waves1 ' +
-    'Description="FILL"',
+    'Description="Touched gains +30\' swim speed and +8 Swim for $L min"',
   'Transmogrify':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
-    'Description="FILL"',
+    'Description="Modifies eidolon and self evolutions 1/dy"',
   'Transmute Potion To Poison':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
-    'Description="FILL"',
+    'Description="Self transforms 1 potion to poison for $L min"',
   'Treasure Stitching':
     'School=Transmutation ' +
     'Level=B4,C4,O4,W5 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Transforms objects into embroidery for $L dy"',
   'True Form':
     'School=Abjuration ' +
     'Level=D4,W4 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Removes polymorph effects from %{lvl//3} targets (Will neg for ability, DC 11+effect level for spells) for $L rd"',
   'Tsunami':
     'School=Conjuration ' +
     'Level=D9,Oceans9,W9,Waves9 ' +
-    'Description="FILL"',
+    'Description="R$RL\' 10\'x10\'x%{lvl*2}\' wave moves 60\'/rd (water) or 30\'/rd (land), inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
   'Twilight Knife':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Force knife flanks and attacks (+%{baseAttack+(intelligenceModifier>?charismaModifier)}) same foe as self, inflicts 1d4 HP plus %{lvl//4}d6 HP sneak attack for $L rd"',
   'Twin Form':
     'School=Transmutation ' +
     'Level=Alchemist6 ' +
-    'Description="FILL"',
+    'Description="Self splits in two and may act from either for $L rd"',
   'Unfetter':
     'School=Transmutation ' +
     'Level=Summoner1 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Negates eidolon distance limit and damage sharing for %{lvl*10} min"',
   'Universal Formula':
     'School=Transmutation ' +
     'Level=Alchemist4 ' +
-    'Description="FILL"',
+    'Description="Extract effects self as any known level 3 extract"',
   'Unwilling Shield':
     'School=Necromancy ' +
     'Level=B5,Inquisitor5,W6,Witch6 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Self gains half damage and +1 AC and saves, target suffers half of self damage (Will neg) for $L rd"',
   'Unwitting Ally':
     'School=Enchantment ' +
     'Level=B0 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target counts as self ally for flanking (Will neg) for 1 rd"',
   'Vanish':
     'School=Illusion ' +
     'Level=B1,W1 ' +
-    'Description="FILL"',
+    'Description="Touched becomes invisible for %{lvl<?5} rd or until attacks"',
   'Veil Of Positive Energy':
     'School=Abjuration ' +
     'Level=P1 ' +
-    'Description="FILL"',
+    'Description="Self gains +2 AC and +2 saves vs. undead for %{lvl*10} min; dismissal inflicts $L HP to undead in 5\' radius"',
   'Venomous Bolt':
     'School=Necromancy ' +
     'Level=R3 ' +
-    'Description="FILL"',
+    'Description="Fired arrow or bold inflicts -1d3 Constitution/rd for 6 rd (Fort neg)"',
   'Versatile Weapon':
     'School=Transmutation ' +
     'Level=B2,R2,W3 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target weapon bypasses DR from choice of bludgeoning, cold iron, piercing, silver, or slashing for $L min"',
   'Vomit Swarm':
     'School=Conjuration ' +
     'Level=Alchemist2,Witch2 ' +
-    'Description="FILL"',
+    'Description="Self moves insect swarm that attacks all creatures for $L rd"',
   'Vortex':
     'School=Evocation ' +
     'Level=D7,W7,Waves7 ' +
-    'Description="FILL"',
+    'Description="R$RL\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg), then 1d8 HP/rd for $L rd"',
   'Wake Of Light':
     'School=Evocation ' +
     'Level=P2 ' +
-    'Description="FILL"',
+    'Description="10\'x120\' trail behind mount makes difficult terrain normal for good creatures and normal terrain difficult for evil creatures for $L rd"',
   'Wall Of Lava':
     'School=Conjuration ' +
     'Level=D8,W8 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Creates $L 5\' sq wall sections for $L rd; foe strike inflicts 2d6 HP fire, passage inflicts 20d6 HP fire, R60\' ranged touch inflicts 10d6 HP fire"',
   'Wall Of Suppression':
     'School=Abjuration ' +
     'Level=W9 ' +
-    'Description="FILL"',
+    'Description="R$RM\' Creates %{lvl*2} 5\' sq wall sections that suppress passing magic effects for $L rd for %{lvl*10} min"',
   'Wandering Star Motes':
     'School=Illusion ' +
     'Level=B4,W4,Witch4 ' +
-    'Description="FILL"',
+    'Description="R$RS\' Target loses any concealment and suffers dazed (Will neg and transfers 30\' to nearest foe) for $L rd"',
   'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
-    'Description="FILL"',
+    'Description="10\' radius around touched gives +%{lvl>=18?4:lvl>?12?3:2} AC and saves to fellow deists for %{lvl*10} min"',
   'Weapon Of Awe':
     'School=Transmutation ' +
     'Level=C2,Inquisitor2,O2,P2 ' +
-    'Description="FILL"',
+    'Description="Touched weapon gains +2 damage and crit hit inflicts shaken for $L min"',
   'Winds Of Vengeance':
     'School=Transmutation ' +
     'Level=C9,D9,O9,W9,Wind9,Winds9 ' +
-    'Description="FILL"',
+    'Description="Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for $L min"',
   'World Wave':
     'School=Transmutation ' +
     'Level=D9,Exploration9,W9,Nature9 ' +
-    'Description="FILL"',
+    'Description="Earth or water tsunami inflicts 6d6 HP bludgeoning for $L rd or swell inflicts 1d6 HP bludgeoning for $L hr"',
   'Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor1 ' +
-    'Description="FILL"',
+    'Description="Self gains +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. chosen foe for 1 min"',
   'Wrathful Mantle':
     'School=Evocation ' +
     'Level=C3,O3,P3 ' +
-    'Description="FILL"'
+    'Description="Touched gains +%{lvl//4<?5} saves for $L min; dismissal inflicts 2d8 HP force to creatures in 5\' radius"'
 
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
@@ -5488,13 +5488,16 @@ PFAPG.identityRules = function(
 
 /* Defines rules related to magic use. */
 PFAPG.magicRules = function(rules, spells, spellsLevels) {
-  Pathfinder.magicRules(rules, {}, spells);
-  for(let s in spellsLevels) {
-    if(!Pathfinder.SPELLS[s]) {
-      console.log('Unknown spell "' + s + '"');
-      continue;
+  let allSpells = Object.assign({}, spells, spellsLevels);
+  for(let s in allSpells) {
+    let attrs = allSpells[s];
+    if(!attrs.includes('School=')) {
+      if(!Pathfinder.SPELLS[s]) {
+        console.log('Unknown spell "' + s + '"');
+        continue;
+      }
+      attrs = Pathfinder.SPELLS[s] + ' Level=' + attrs;
     }
-    let attrs = Pathfinder.SPELLS[s] + ' Level=' + spellsLevels[s];
     let description = QuilvynUtils.getAttrValue(attrs, 'Description');
     let groupLevels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
     let liquids = QuilvynUtils.getAttrValueArray(attrs, 'Liquid');
@@ -6449,9 +6452,9 @@ PFAPG.classRulesExtra = function(rules, name) {
          QuilvynUtils.getAttrValue(attrs, 'Level').replace(/\D*/, '') - 0;
        let school = QuilvynUtils.getAttrValue(attrs, 'School');
        let fullName =
-         s + ' (C' + level + ' [Oracle] ' + school.substring(0, 4) + ')';
+         s + ' (O' + level + ' [Haunted] ' + school.substring(0, 4) + ')';
        Pathfinder.spellRules(
-         rules, fullName, school, 'C', level, description, false, []
+         rules, fullName, school, 'O', level, description, false, []
        );
        rules.defineRule('spells.' + fullName,
          'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
