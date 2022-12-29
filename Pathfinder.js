@@ -1082,7 +1082,8 @@ Pathfinder.FEATURES = {
     'Note="+%V attack, +%1 damage, bypass DR, and +%2 AC vs. evil foe %3/dy"',
   'Snatch Arrows':'Section=combat Note="Catch ranged weapons"',
   'Sneak Attack':
-    'Section=combat Note="Hit +%Vd6 HP when surprising or flanking"',
+    'Section=combat ' +
+    'Note="Hit inflicts +%Vd6 HP when foe flanked or denied Dex bonus "',
   'Speak With Like Animals':'Section=companion Note="Talk w/similar creatures"',
   'Speak With Master':
     'Section=companion Note="Talk w/master in secret language"',
@@ -1205,7 +1206,8 @@ Pathfinder.FEATURES = {
   'Arcane Armor Training':
     'Section=magic Note="Reduce armored casting penalty 10%"',
   'Arcane Strike':
-    'Section=combat Note="Imbue weapons with +%V magic damage bonus for 1 rd"',
+    'Section=combat ' +
+    'Note="May imbue weapons with +%V magic damage bonus for 1 rd"',
   'Armor Expert':'Section=skill Note="-1 armor skill check penalty"',
   'Armor Mastery':'Section=combat Note="DR 5/- when using armor or shield"',
   'Armor Training':
@@ -1290,7 +1292,7 @@ Pathfinder.FEATURES = {
   'Bloodline Infernal':'Section=magic Note="+2 charm spell DC"',
   'Bloodline Undead':
     'Section=magic Note="Spells affect corporeal undead as humanoid"',
-  'Bonded Object':'Section=magic Note="Cast known spell through object"',
+  'Bonded Object':'Section=magic Note="May cast known spell through object"',
   'Bonus Feat':'Section=feature Note="+1 General Feat"',
   'Bramble Armor':
     'Section=combat ' +
@@ -1696,7 +1698,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Touch attack provides info as per %V Knowledge check"',
   'Lore Master':
     'Section=skill ' +
-    'Note="Take 10 on any ranked Knowledge skill, take 20 %V/dy"',
+    'Note="Take 10 on any ranked Knowledge skill; take 20 %V/dy"',
   'Lore Seeker':
     'Section=magic,skill ' +
     'Note="+1 caster level and save DC on 3 spells",' +
@@ -1936,7 +1938,8 @@ Pathfinder.FEATURES = {
   'Speak With Animals':
     'Section=magic Note="<i>Speak With Animals</i> for %V rd/dy"',
   'Spell Rune':'Section=magic Note="Add known spell to Blast Rune"',
-  'Spellbreaker':'Section=combat Note="AOO on foe failed defensive casting"',
+  'Spellbreaker':
+    'Section=combat Note="May take AOO after foe failed defensive casting"',
   'Staff Of Order':
     'Section=combat Note="Add <i>axiomatic</i> to weapon for %1 rd %V/dy"',
   'Staggering Critical':
@@ -5224,11 +5227,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.jack-Of-All-Trades.1',
       'features.Jack-Of-All-Trades', '?', null,
-      'levels.Bard', '=', 'source>=16 ? ", all skills class skills" : ""'
+      'levels.Bard', '=', 'source>=16 ? "; all skills are class skills" : ""'
     );
     rules.defineRule('skillNotes.jack-Of-All-Trades.2',
       'features.Jack-Of-All-Trades', '?', null,
-      'levels.Bard', '=', 'source>=19 ? ", take 10 any skill" : ""'
+      'levels.Bard', '=', 'source>=19 ? "; may take 10 on any skill" : ""'
     );
     rules.defineRule('skillNotes.loreMaster',
       'levels.Bard', '=', 'Math.floor((source + 1) / 6)'
