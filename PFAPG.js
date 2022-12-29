@@ -229,6 +229,7 @@ PFAPG.FEATS = {
   'Favored Defense':'Type=General Require="features.Favored Enemy"',
   'Fight On':
     'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
+  // From Bestiary; needed for Eagle Shaman
   'Flyby Attack':'Type=General Require=skills.Fly',
   'Focused Shot':
     'Type=General,Fighter Require="intelligence >= 13","features.Precise Shot"',
@@ -517,8 +518,7 @@ PFAPG.FEATS = {
 PFAPG.FEATURES = {
 
   // Barbarian
-  'Beast Totem':
-   'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
+  'Beast Totem':'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
   'Battle Scavenger':
     'Section=combat ' +
     'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
@@ -679,8 +679,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+%V Initiative/+%V AC during surprise rd"',
   'Skilled Thrower':
     'Section=combat Note="+10\' range for thrown weapons and objects"',
-  'Smasher':
-    'Section=combat Note="Attack ignores object hardness 1/rage"',
+  'Smasher':'Section=combat Note="Attack ignores object hardness 1/rage"',
   'Spirit Steed':
     'Section=combat ' +
     'Note="Mount gains DR %{ragePowerLevel//2}/magic and magic natural weapons during rage"',
@@ -714,7 +713,7 @@ PFAPG.FEATURES = {
     'Note="Bardic Performance suppresses pain, stun, and fear effects and gives DR5/- to %{(levels.Bard-9)//3} targets"',
   'Bladethirst':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack or defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding property"',
+    'Note="R30\' Bardic Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties"',
   'Call The Storm':
     'Section=magic ' +
     'Note="Bardic Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell"',
@@ -726,7 +725,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Bardic Performance causes creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Dramatic Subtext':
     'Section=magic ' +
-    'Note="2 rd Bardic Performance allows spell casting w/out visual or audible components (Perception vs. Sleight Of Hand to detect casting)"',
+    'Note="2 rd Bardic Performance allows casting spell w/out visual or audible components (opposed Perception vs. Sleight Of Hand to detect)"',
   'Dweomercraft':
     'Section=magic ' +
     'Note="Bardic Performance gives allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
@@ -742,38 +741,36 @@ PFAPG.FEATURES = {
     'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
   'Glorious Epic':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
+    'Note="R30\' Bardic Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
   'Greater Stealspell':
     'Section=magic ' +
     'Note="Successful Stealspell reveals target\'s spells; may instead steal SR %{levels.Bard//2}"',
   'Harmless Performer':
     'Section=magic ' +
-    'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
   'Heraldic Expertise':
     'Section=skill ' +
     'Note="+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)/May reroll 1/dy"',
   'Incite Rage':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell"',
+    'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} neg)"',
   'Inspiring Blow':
     'Section=combat ' +
-    'Note="Bardic Performance following critical hit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 attack for 1 rd"',
-  // TODO Jack-Of-All-Trades modify level
+    'Note="Bardic Performance following critical hit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
     'Note="Bardic Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
-  // TODO Lore Master modify level
   'Madcap Prank':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg)"',
+    'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg) 1/rd"',
   'Magic Lore':
     'Section=save,skill ' +
     'Note=' +
       '"+4 vs. magical traps and language- and symbol-based effects",' +
       '"+%{levels.Bard//2} Spellcraft (identify items and decipher scrolls)/May use Disable Device on magical traps"',
-  'Magical Talent (Bard)':
+  'Magical Talent (Magician)':
     'Section=skill ' +
-    'Note="+%V Knowledge (Arcana)/+%V Spellcraft/+%V Use Magic Device"',
+    'Note="+%1 Knowledge (Arcana)/+%1 Spellcraft/+%1 Use Magic Device"',
   'Mass Bladethirst':
     'Section=magic ' +
     'Note="R30\' Bardic Performance gives +1 or better attack bonus to weapons of multiple allies"',
@@ -782,15 +779,16 @@ PFAPG.FEATURES = {
     'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Master Of Deception':
     'Section=skill ' +
-    'Note="+%V Bluff/+%V Sleight Of Hand/+%V Stealth/May disarm magical traps"',
-  'Metamagic Mastery (Bard)':
-    'Section=magic Note="Bardic Performance applies metamagic feat to spell"',
+    'Note="+%1 Bluff/+%1 Sleight Of Hand/+%1 Stealth/May disarm magical traps"',
+  'Metamagic Mastery (Magician)':
+    'Section=magic ' +
+    'Note="May use Bardic Performance to apply metamagic feat to spell"',
   'Mockery':
     'Section=magic ' +
     'Note="Bardic Performance inflicts -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
   'Naturalist':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of identified creatures"',
+    'Note="R30\' Bardic Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of creatures identified w/Knowledge check"',
   'Pedantic Lecture':
     'Section=magic ' +
     'Note="Bardic Performance inflicts choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
@@ -799,65 +797,67 @@ PFAPG.FEATURES = {
     'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
   'Quick Change':
     'Section=skill ' +
-    'Note="May don disguise as standard action (-5 check)/May use Bluff as diversion to hide/May take 10 on Bluff and Disguise %{(levels.Bard+1)//6}/dy"',
+    'Note="May don disguise as standard action (-5 check)/May use Bluff as diversion to hide/May take 10 on Bluff and Disguise; may take 20 %{(levels.Bard+1)//6}/dy"',
   'Rallying Cry':
     'Section=magic ' +
     'Note="R30\' Bardic Performance gives allies use of self Intimidate check for save vs. fear and despair"',
   'Satire':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm of foes w/in hearing"',
+    'Note="Bardic Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm on foes w/in hearing"',
   'Scandal':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes w/in hearing"',
+    'Note="R30\' Bardic Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
   'Sea Legs':
     'Section=combat,save ' +
     'Note="+4 CMD vs. grapple, overrun, and trip",' +
-    '"+4 vs. air, water, and knock prone"',
+    '"+4 vs. air, water, and knocked prone"',
   'Sea Shanty':
     'Section=skill ' +
-    'Note="R30\' Allies may use self Perform to save vs. exhaustion, fatigue, nausea, and sickening"',
+    'Note="R30\' Allies may use self Perform to save vs. exhausted, fatigued, nauseated, and sickened"',
   'Show Yourselves':
     'Section=combat ' +
     'Note="R30\' Bardic Performance compels foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Slip Through The Crowd':
-    'Section=magic Note="Disappearing Act allows affected allies to attack"',
+    'Section=magic Note="Disappearing Act allows affected allies to move through occupied squares and attack"',
   'Slumber Song':
     'Section=magic ' +
     'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Sneakspell':
     'Section=magic ' +
-    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} DC and Bardic Performance vs. flat-footed foe"',
+    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} spell DC and Bardic Performance vs. foes denied Dex bonus"',
   'Song Of The Fallen':
     'Section=magic ' +
     'Note="10 rd Bardic Performance summons barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
   'Spell Catching':
     'Section=magic ' +
-    'Note="Bardic Performance and successful caster level check (DC 10 + spell level) negates foe targeted spell and allows immediate recast"',
+    'Note="Bardic Performance and successful caster level check (DC 10 + foe caster level) negates foe targeted spell and allows immediate recast"',
   'Spell Suppression':
-    'Section=magic Note="Bardic Performance acts as <i>Dispel Magic</i>"',
+    'Section=magic ' +
+    'Note="May use Bardic Performance to counter spell of level equal to performance rds"',
   'Stealspell':
     'Section=magic ' +
     'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will neg) for duration of Bardic Performance"',
   'Still Water':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard)"',
+    'Note="R30\' Bardic Performance gives listeners -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr"',
   'Streetwise':
     'Section=skill ' +
     'Note="+%V Bluff/+%V Disguise/+%V Knowledge (Local)/+%V Sleight Of Hand/+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
   'True Confession':
     'Section=skill ' +
-    'Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 1} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Wand Mastery':
     'Section=magic ' +
     'Note="Uses charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
   'Whistle The Wind':
-   'Section=magic Note="Bardic Performance acts as <i>Gust Of Wind</i> spell"',
+   'Section=magic ' +
+   'Note="Bardic Performance acts as <i>Gust Of Wind</i> spell; 5 rd performance extends effect to 1 min"',
   'Wide Audience':
     'Section=magic ' +
-    'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{60+(levels.Bard-5)//5*10} radius, or +%{(levels.Bard-5)//5} targets"',
-  'World Traveler (Bard)':
+    'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{30+(levels.Bard-5)//5*10}\' radius, or +%{(levels.Bard-5)//5} targets"',
+  'World Traveler (Sea Singer)':
     'Section=skill ' +
-    'Note="+%V Knowledge (Geography)/+%V Knowledge (Local)/+%V Knowledge (Nature)/+%V Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
+    'Note="+%1 Knowledge (Geography)/+%1 Knowledge (Local)/+%1 Knowledge (Nature)/+%1 Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
 
   // Cleric
   'Adoration':
@@ -1104,8 +1104,7 @@ PFAPG.FEATURES = {
     'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing; immune to deep water pressure"',
   'Desert Druid':
     'Section=magic ' +
-    'Note=' +
-      '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into vermin\':\'\'}"',
+    'Note="Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into vermin\':\'\'}"',
   'Desert Endurance':
     'Section=feature ' +
     'Note="Comfortable to 140F; reduced need for food and drink"',
@@ -1158,8 +1157,7 @@ PFAPG.FEATURES = {
     'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
   'Mountain Druid':
     'Section=magic ' +
-    'Note=' +
-      '"Cannot Wild Shape into plant creature%{levels.Druid>=12 ? \'; May Wild Shape into giant\':\'\'}"',
+    'Note="Cannot Wild Shape into plant creature%{levels.Druid>=12 ? \'; May Wild Shape into giant\':\'\'}"',
   'Mountain Stance':
     'Section=combat,save ' +
     'Note=' +
@@ -1540,7 +1538,8 @@ PFAPG.FEATURES = {
     'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Aspect':'Section=feature Note="May apply %V evolution points to self"',
   'Automatic Writing':
-    'Section=magic Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
+    'Section=magic ' +
+    'Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Awesome Display':
     'Section=magic ' +
@@ -1626,14 +1625,15 @@ PFAPG.FEATURES = {
   'Clouded Vision':
     'Section=feature ' +
     'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
-  'Coat Of Many Stars':'Section=combat Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
+  'Coat Of Many Stars':
+    'Section=combat ' +
+    'Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
   'Combat Healer':
     'Section=feature ' +
     'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
   'Combine Extracts':
     'Section=magic Note="May combine two effects into one extract"',
-  'Companion Darkvision':
-    'Section=companion Note="60\' b/w vision in darkness"',
+  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
   'Concentrate Poison':
     'Section=feature ' +
     'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
@@ -1674,7 +1674,8 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
   'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
-  'Discern Lies':'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
+  'Discern Lies':
+    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
   'Disguise Hex':
     'Section=magic ' +
     'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
@@ -1682,7 +1683,7 @@ PFAPG.FEATURES = {
   'Dispelling Bomb':
     'Section=combat ' +
     'Note="May create bomb that dispels magic instead of inflicting damage"',
-  'Domain':'Section=feature Note="FILL"',
+  'Domain':'Section=feature Note="1 Selection"',
   'Dweller In Darkness':
     'Section=magic ' +
     'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
@@ -1800,7 +1801,9 @@ PFAPG.FEATURES = {
     'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
   'Eternal Youth':
     'Section=feature Note="Suffers no ability score penalties from age"',
-  'Evil Eye Hex':'Section=magic Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
+  'Evil Eye Hex':
+    'Section=magic ' +
+    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
   'Expert Trainer':
     'Section=skill ' +
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
@@ -1904,7 +1907,8 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
   'Fortune Hex':
-    'Section=magic Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Section=magic ' +
+    'Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Freezing Spells':
     'Section=magic ' +
     'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
@@ -1918,7 +1922,6 @@ PFAPG.FEATURES = {
     'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
   'Gaseous Form':
     'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
-  'Gate':'Section=feature Note="FILL"',
   'Gaze Of Flames':
     'Section=feature,magic ' +
     'Note=' +
@@ -1955,7 +1958,9 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Malevolent spirits inflict minor annoyances",' +
       '"Know %V spells"',
-  'Healing Hands':'Section=feature Note="FILL"',
+  'Healing Hands':
+    'Section=skill ' +
+    'Note="+4 Heal/May use Heal on dbl number of people simultaneously"',
   'Healing Hex':
     'Section=feature Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
   'Heat Aura':
@@ -1984,9 +1989,11 @@ PFAPG.FEATURES = {
       '"May apply poison to a blade as an immediate action",' +
       '"May create alchemical items as a full-round action"',
   'Interstellar Void':
-    'Section=combat Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
+    'Section=combat ' +
+    'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
   'Invisibility':
-    'Section=magic Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
+    'Section=magic ' +
+    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
     'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
@@ -2037,9 +2044,11 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
   'Major Healing Hex':
-    'Section=feature Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
+    'Section=feature ' +
+    'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
   "Maker's Call":
-    'Section=magic Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
@@ -2062,7 +2071,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Misfortune Hex':
-    'Section=magic Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Section=magic ' +
+    'Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -2085,7 +2095,6 @@ PFAPG.FEATURES = {
   'Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
-  'Mystery Spell':'Section=feature Note="FILL"',
   'Mystery':'Section=feature Note="1 Selection"',
   'Natural Disaster Hex':
     'Section=magic ' +
@@ -2184,11 +2193,14 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Revelation':'Section=feature Note="%V Selections"',
-  'Rock Throwing':'Section=combat Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
+  'Rock Throwing':
+    'Section=combat ' +
+    'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
   'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
   'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
   'Shard Explosion':
-    'Section=combat Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
+    'Section=combat ' +
+    'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
   'Shield Ally (Summoner)':
     'Section=combat,save ' +
     'Note=' +
@@ -2270,7 +2282,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
   'Summon Monster':
-    'Section=magic Note="May cast <i>Summon Monster %V</i> for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
+    'Section=magic ' +
+    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'} for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
   'Supreme Charge':
     'Section=combat ' +
     'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
@@ -2292,7 +2305,8 @@ PFAPG.FEATURES = {
   'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
   // 'Throw Anything' in Pathfinder.js
   'Thunderburst':
-    'Section=combat Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
+    'Section=combat ' +
+    'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
   'Tongues':
     'Section=combat,feature ' +
     'Note=' +
@@ -2312,7 +2326,8 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
   // 'Track' in Pathfinder.js
   'Transcendental Bond':
-    'Section=magic Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
   'Transposition':
     'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
   'True Judgment':
@@ -2334,7 +2349,8 @@ PFAPG.FEATURES = {
     'Section=feature ' +
     'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
   'Voice Of The Grave':
-    'Section=magic Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
+    'Section=magic ' +
+    'Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
   'Vortex Spells':
     'Section=magic ' +
     'Note="Successful critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
@@ -2509,7 +2525,8 @@ PFAPG.FEATURES = {
   'Elemental Spell (Cold)':
     'Section=magic Note="May convert half of spell damage to cold damage"',
   'Elemental Spell (Electricity)':
-    'Section=magic Note="May convert half of spell damage to electricity damage"',
+    'Section=magic ' +
+    'Note="May convert half of spell damage to electricity damage"',
   'Elemental Spell (Fire)':
     'Section=magic Note="May convert half of spell damage to fire damage"',
   'Elven Accuracy':
@@ -2535,7 +2552,8 @@ PFAPG.FEATURES = {
   'Fight On':
     'Section=combat ' +
     'Note="Gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
-  'Flyby Attack':'Section=combat Note="FILL"',
+  'Flyby Attack':
+    'Section=combat Note="May take action any time during fly move"',
   'Focused Shot':
     'Section=combat ' +
     'Note="R30\' +%{intelligenceModifier} HP damage on bow or crossbow attack"',
@@ -2576,7 +2594,9 @@ PFAPG.FEATURES = {
     'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
   'Greater Shield Specialization (Tower)':
     'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
-  'Greater Steal':'Section=feature Note="FILL"',
+  'Greater Steal':
+    'Section=combat ' +
+    'Note="+2 CMB to steal from foe; foe does not notice successful steal"',
   'Groundling':
     'Section=magic ' +
     'Note="May use <i>Speak With Animals</i> w/burrowing animals at will"',
@@ -2911,7 +2931,7 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '1:Dweomercraft,"8:Spell Suppression",' +
-      '"14:Metamagic Mastery (Bard)","1:Magical Talent (Bard)",' +
+      '"14:Metamagic Mastery (Magician)","1:Magical Talent (Magician)",' +
       '"1:Improved Counterspell","2:Extended Performance",' +
       '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery"',
   'Sandman':
@@ -2932,7 +2952,7 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '"1:Sea Shanty","3:Still Water","6:Whistle The Wind",' +
-      '"18:Call The Storm","1:World Traveler (Bard)",2:Familiar,' +
+      '"18:Call The Storm","1:World Traveler (Sea Singer)",2:Familiar,' +
       '"2:Sea Legs"',
   'Street Performer':
     'Group=Bard ' +
@@ -4633,7 +4653,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Contagion':'Decay3,O3',
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
-  'Control Undead':'Bones8',
+  'Control Undead':'Bones7',
   'Control Water':'Ice4,O4,Oceans4',
   'Control Weather':'Battle7,Catastrophe7,O7,Seasons7,Storms7,Wind7',
   'Control Winds':'Cloud5,Seasons6,Wind5,Winds5',
@@ -5235,7 +5255,7 @@ PFAPG.CLASSES = {
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Simple)",' +
       '1:Mystery,"1:Oracle\'s Curse",1:Orisons,1:Revelation,' +
-      '"2:Mystery Spell","20:Final Revelation" ' +
+      '"20:Final Revelation" ' +
     'Selectables=' +
       '"1:Battle Mystery:Mystery","1:Bones Mystery:Mystery",' +
       '"1:Flame Mystery:Mystery","1:Heavens Mystery:Mystery",' +
@@ -5687,10 +5707,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Arcane Strike', '=', '0',
       'bardFeatures.Eye For Detail', '=', '0',
       'bardFeatures.Heraldic Expertise', '=', '0',
-      'bardFeatures.Magical Talent (Bard)', '=', '0',
+      'bardFeatures.Magical Talent (Magician)', '=', '0',
       'bardFeatures.Master Of Deception', '=', '0',
       'bardFeatures.Streetwise', '=', '0',
-      'bardFeatures.World Traveler (Bard)', '=', '0'
+      'bardFeatures.World Traveler (Sea Singer)', '=', '0'
     );
     rules.defineRule('bardHasCountersong',
       'levels.Bard', '=', '1',
@@ -5714,7 +5734,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('bardHasFrighteningTune',
       'levels.Bard', '=', '1',
-      'bardFeatures.Metamagic Mastery (Bard)', '=', '0',
+      'bardFeatures.Metamagic Mastery (Magician)', '=', '0',
       'bardFeatures.Scandal', '=', '0'
     );
     rules.defineRule('bardHasInspireCompetence',
@@ -5863,22 +5883,67 @@ PFAPG.classRulesExtra = function(rules, name) {
       'arcaneDuelistLevel', '+=', 'source>=5 ? 1 : null',
       'magicianLevel', '+=', 'source>=5 ? 1 : null'
     );
+    rules.defineRule('skillModifier.Bluff',
+      'skillNotes.masterOfDeception', '+', 'null', // No-op for italics
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Arcana)',
+      'skillNotes.magicalTalent(Magician)', '+', 'null', // No-op for italics
+      'skillNotes.magicalTalent(Magician).1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Geography)',
+      'skillNotes.worldTraveler(SeaSinger)', '+', 'null', // No-op for italics
+      'skillNotes.worldTraveler(SeaSinger).1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Local)',
+      'skillNotes.worldTraveler(SeaSinger).1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Nature)',
+      'skillNotes.worldTraveler(SeaSinger).1', '+', null
+    );
+    rules.defineRule('skillModifier.Linguistics',
+      'skillNotes.worldTraveler(SeaSinger).1', '+', null
+    );
+    rules.defineRule('skillModifier.Spellcraft',
+      'skillNotes.magicalTalent(Magician).1', '+', null
+    );
+    rules.defineRule('skillModifier.Use Magic Device',
+      'skillNotes.magicalTalent(Magician).1', '+', null
+    );
+    rules.defineRule('skillModifier.Sleight Of Hand',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Stealth',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
     rules.defineRule('skillNotes.eyeForDetail',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('skillNotes.heraldicExpertise',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('skillNotes.magicalTalent(Bard)',
+    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
+      'archivistLevel', '=', 'source>=11 ? "; all skills are class skills" : ""'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
+      'archivistLevel', '=', 'source>=17 ? "; may take 10 on any skill" : ""'
+    );
+    rules.defineRule('skillNotes.loreMaster',
+      'archivistLevel', '^=', 'Math.floor((source + 4) / 6)'
+    );
+    rules.defineRule('skillNotes.magicalTalent(Magician).1',
+      'features.Magical Talent (Magician)', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('skillNotes.masterOfDeception',
+    rules.defineRule('skillNotes.masterOfDeception.1',
+      'features.Master Of Deception', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('skillNotes.streetwise',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('skillNotes.worldTraveler(Bard)',
+    rules.defineRule('skillNotes.worldTraveler(SeaSinger).1',
+      'features.World Traveler (Sea Singer)', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
