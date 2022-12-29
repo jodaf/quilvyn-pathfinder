@@ -1482,7 +1482,7 @@ PFAPG.FEATURES = {
   'Timely Tip':
     'Section=combat ' +
     'Note="Successful disarm maneuver negates foe shield bonus for 1 rd"',
-  'Trick Shot':
+  'Trick Shot (Archer)':
     'Section=combat ' +
     'Note="R30\' May use bow shot to perform -4 CMB %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'}"',
   'Twin Blades':
@@ -1506,6 +1506,58 @@ PFAPG.FEATURES = {
   'Whirlwind Blitz':
     'Section=combat ' +
     'Note="May make full-attack action or use Whirlwind Attack as a standard action"',
+
+  // Monk
+  'Adamantine Monk':'Section=combat Note="FILL"',
+  'Ancient Healing Hand':'Section=combat Note="FILL"',
+  'Aspect Master':'Section=combat Note="FILL"',
+  'Aspect Of The Carp:Aspect':'Section=combat Note="FILL"',
+  'Aspect Of The Ki-Rin:Aspect':'Section=combat Note="FILL"',
+  'Aspect Of The Monkey:Aspect':'Section=combat Note="FILL"',
+  'Aspect Of The Oni:Aspect':'Section=combat Note="FILL"',
+  'Aspect Of The Owl':'Section=combat Note="FILL"',
+  'Aspect Of The Tiger:Aspect':'Section=combat Note="FILL"',
+  'Bastion Stance':'Section=combat Note="FILL"',
+  'Drunken Courage':'Section=combat Note="FILL"',
+  'Drunken Ki':'Section=combat Note="FILL"',
+  'Drunken Resilience':'Section=combat Note="FILL"',
+  'Drunken Strength':'Section=combat Note="FILL"',
+  'Evasion':'Section=combat Note="FILL"',
+  'Firewater Breath':'Section=combat Note="FILL"',
+  'Flurry Of Blows (Bow)':'Section=combat Note="FILL"',
+  'Immortality':'Section=combat Note="FILL"',
+  'Iron Limb Defense':'Section=combat Note="FILL"',
+  'Iron Monk':'Section=combat Note="FILL"',
+  'Ki Arrows':'Section=combat Note="FILL"',
+  'Ki Focus Bow':'Section=combat Note="FILL"',
+  'Ki Mystic':'Section=combat Note="FILL"',
+  'Ki Pool (Bow Range)':'Section=combat Note="FILL"',
+  'Ki Pool (Throw Range)':'Section=combat Note="FILL"',
+  'Ki Sacrifice':'Section=combat Note="FILL"',
+  'Ki Weapons':'Section=combat Note="FILL"',
+  'Learned Master':'Section=combat Note="FILL"',
+  'Life From A Stone':'Section=combat Note="FILL"',
+  'Life Funnel':'Section=combat Note="FILL"',
+  'Mysic Persistence':'Section=combat Note="FILL"',
+  'Mystic Insight':'Section=combat Note="FILL"',
+  'Mystic Prescience':'Section=combat Note="FILL"',
+  'Mystic Visions':'Section=combat Note="FILL"',
+  'Point Blank Master':'Section=combat Note="FILL"',
+  'Pure Power':'Section=combat Note="FILL"',
+  'Reflexive Shot':'Section=combat Note="FILL"',
+  'Sipping Demon':'Section=combat Note="FILL"',
+  'Slow Time':'Section=combat Note="FILL"',
+  'Steal Ki':'Section=combat Note="FILL"',
+  'Touch Of Peace':'Section=combat Note="FILL"',
+  'Touch Of Surrender':'Section=combat Note="FILL"',
+  'Trick Shot (Zen Archer)':'Section=combat Note="FILL"',
+  'True Sacrifice':'Section=combat Note="FILL"',
+  'Uncanny Initiative':'Section=combat Note="FILL"',
+  'Versatile Improvisation':'Section=combat Note="FILL"',
+  'Vow Of Silence':'Section=combat Note="FILL"',
+  'Way Of The Bow':'Section=combat Note="FILL"',
+  'Way Of The Weapon Master':'Section=combat Note="FILL"',
+  'Zen Archery':'Section=combat Note="FILL"',
 
   // New base classes
   'Acid Bomb':
@@ -2850,6 +2902,7 @@ PFAPG.LANGUAGES = {
 };
 PFAPG.PATHS = {
 
+  // Barbarian
   'Breaker':
     'Group=Barbarian ' +
     'Level=levels.Barbarian ' +
@@ -2899,6 +2952,7 @@ PFAPG.PATHS = {
     'Group=Barbarian ' +
     'Level=levels.Barbarian',
 
+  // Bard
   'Arcane Duelist':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -2962,6 +3016,7 @@ PFAPG.PATHS = {
       '"15:Slip Through The Crowd",1:Gladhanding,1:Streetwise,' +
       '"5:Quick Change"',
 
+  // Cleric
   'Agathion Subdomain':
     Pathfinder.PATHS['Good Domain'].replace('Holy Lance', 'Protective Aura'),
   'Ancestors Subdomain':
@@ -3103,6 +3158,7 @@ PFAPG.PATHS = {
   'Winds Subdomain':
     Pathfinder.PATHS['Air Domain'].replace('Lightning Arc', 'Wind Blast'),
 
+  // Druid
   'Aquatic Druid':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -3187,11 +3243,12 @@ PFAPG.PATHS = {
       '"1:Serpent Totem:Totem",' +
       '"1:Wolf Totem:Totem"',
 
+  // Fighter
   'Archer':
     'Group=Fighter ' +
     'Level=levels.Fighter ' +
     'Features=' +
-      '2:Hawkeye,"3:Trick Shot","5:Expert Archer","9:Safe Shot",' +
+      '2:Hawkeye,"3:Trick Shot (Archer)","5:Expert Archer","9:Safe Shot",' +
       '"13:Evasive Archer",17:Volley,"19:Ranged Defense"',
   'Crossbowman':
     'Group=Fighter ' +
@@ -3266,6 +3323,74 @@ PFAPG.PATHS = {
       '"5:Reliable Strike","9:Mirror Move","13:Deadly Critical",' +
       '"17:Critical Specialist","19:Unstoppable Strike"',
 
+  // Monk
+  'Drunken Master':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"3:Drunken Ki","5:Drunken Strength","11:Drunken Courage",' +
+      '"13:Drunken Resilience","19:Firewater Breath"',
+  'Hungry Ghost Monk':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Punishing Kick","5:Steal Ki","7:Life Funnel",' +
+      '"11:Life From A Stone","13:Sipping Demon"',
+  'Ki Mystic':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"5:Mystic Insight","11:Mystic Visions","13:Mystic Prescience",' +
+      '"19:Mysic Persistence"',
+  'Monk Of The Empty Hand':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Flurry Of Blows","3:Versatile Improvisation",' +
+      '"4:Ki Pool (Throw Range)","5:Ki Weapons"',
+  'Monk Of The Four Winds':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Elemental Fist","12:Slow Time","17:Aspect Master","20:Immortality" ' +
+    'Selectables=' +
+      '"17:Aspect Of The Carp:Aspect","17:Aspect Of The Ki-Rin:Aspect",' +
+      '"17:Aspect Of The Monkey:Aspect","17:Aspect Of The Oni:Aspect",' +
+      '"17:Aspect Of The Owl","17:Aspect Of The Tiger:Aspect"',
+  'Monk Of The Healing Hand':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"7:Ancient Healing Hand","11:Ki Sacrifice","20:True Sacrifice"',
+  'Monk Of The Lotus':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Touch Of Serenity","12:Touch Of Surrender","15:Touch Of Peace",' +
+      '"17:Learned Master"',
+  'Monk Of The Sacred Mountain':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"2:Iron Monk","4:Bastion Stance","5:Iron Limb Defense",' +
+      '"9:Adamantine Monk","17:Vow Of Silence"',
+  'Weapon Adept':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Perfect Strike","2:Way Of The Weapon Master","9:Evasion",' +
+      '"17:Uncanny Initiative","20:Pure Power"',
+  'Zen Archer':
+    'Group=Monk ' +
+    'Level=levels.Monk ' +
+    'Features=' +
+      '"1:Weapon Proficiency(Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
+      '"1:Flurry Of Blows (Bow)","1:Perfect Strike","2:Way Of The Bow",' +
+      '"3:Zen Archery","3:Point Blank Master","4:Ki Pool (Bow Range)",' +
+      '"5:Ki Arrows","9:Reflexive Shot","11:Trick Shot (Zen Archer)",' +
+      '"17:Ki Focus Bow"',
+
+  // Oracle
   'Battle Mystery':
     'Group="Oracle" ' +
     'Level=levels.Oracle ' +
@@ -5145,6 +5270,19 @@ PFAPG.CLASSES = {
       '"1:Two-Handed Fighter:Archetype",' + 
       '"1:Two-Weapon Warrior:Archetype",' + 
       '"1:Weapon Master:Archetype"',
+  'Monk':
+    'Selectables=' +
+      '"1:Core Monk:Archetype",' +
+      '"1:Drunken Master:Archetype",' +
+      '"1:Hungry Ghost Monk:Archetype",' +
+      '"1:Ki Mystic:Archetype",' +
+      '"1:Monk Of The Empty Hand:Archetype",' +
+      '"1:Monk Of The Four Winds:Archetype",' +
+      '"1:Monk Of The Healing Hand:Archetype",' +
+      '"1:Monk Of The Lotus:Archetype",' +
+      '"1:Monk Of The Sacred Mountain:Archetype",' +
+      '"1:Weapon Adept:Archetype",' +
+      '"1:Zen Archer:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -6292,7 +6430,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Overhand Chop', '=', '0',
       'fighterFeatures.Phalanx Fighting', '=', '0',
       'fighterFeatures.Steadfast Pike', '=', '0',
-      'fighterFeatures.Trick Shot', '=', '0',
+      'fighterFeatures.Trick Shot (Archer)', '=', '0',
       'fighterFeatures.Weapon Training (Weapon Master)', '=', '0'
     );
     rules.defineRule('fighterHasBravery',
@@ -6359,6 +6497,139 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('skillNotes.hawkeye', classLevel, '=', 'Math.floor((source + 2) / 4)');
     rules.defineRule
       ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
+  } else if(name == 'Monk') {
+    rules.defineRule
+      ('monkFeatures.Abundant Step', 'monkHasAbundantStep', '?', null);
+    rules.defineRule
+      ('monkFeatures.Diamond Body', 'monkHasDiamondBody', '?', null);
+    rules.defineRule
+      ('monkFeatures.Diamond Soul', 'monkHasDiamondSoul', '?', null);
+    rules.defineRule('monkFeatures.Empty Body', 'monkHasEmptyBody', '?', null);
+    rules.defineRule('monkFeatures.Evasion', 'monkHasEvasion', '?', null);
+    rules.defineRule('monkFeatures.High Jump', 'monkHasHighJump', '?', null);
+    rules.defineRule
+      ('monkFeatures.Improved Evasion', 'monkHasImprovedEvasion', '?', null);
+    rules.defineRule
+      ('monkFeatures.ManeuverTraining', 'monkHasManeuverTraining', '?', null);
+    rules.defineRule
+      ('monkFeatures.Perfect Self', 'monkHasPerfectSelf', '?', null);
+    rules.defineRule
+      ('monkFeatures.Purity Of Body', 'monkHasPurityOfBody', '?', null);
+    rules.defineRule
+      ('monkFeatures.Quivering Palm', 'monkHasQuiveringPalm', '?', null);
+    rules.defineRule('monkFeatures.Slow Fall', 'monkHasSlowFall', '?', null);
+    rules.defineRule('monkFeatures.Still Mind', 'monkHasStillMind', '?', null);
+    rules.defineRule
+      ('monkFeatures.Stunning Fist', 'monkHasStunningFist', '?', null);
+    rules.defineRule
+      ('monkFeatures.Timeless Body', 'monkHasTimelessBody', '?', null);
+    rules.defineRule('monkFeatures.Tongue Of Sun And Moon',
+      'monkHasTongueOfSunAndMoon', '?', null
+    );
+    rules.defineRule
+      ('monkFeatures.Wholeness Of Body', 'monkHasWholenessOfBody', '?', null);
+    rules.defineRule('monkHasAbundantStep',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Slow Time', '=', '0',
+      'monkFeatures.Touch Of Surrender', '=', '0'
+    );
+    rules.defineRule('monkHasDiamondBody',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Drunken Courage', '=', '0',
+      'monkFeatures.Ki Sacrifice', '=', '0',
+      'monkFeatures.Ki Weapons', '=', '0',
+      'monkFeatures.Life From A Stone', '=', '0',
+      'monkFeatures.Mystic Visions', '=', '0',
+      'monkFeatures.Trick Shot (Zen Archer)', '=', '0'
+    );
+    rules.defineRule('monkHasDiamondSoul',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Drunken Resilience', '=', '0',
+      'monkFeatures.Mystic Prescience', '=', '0',
+      'monkFeatures.Sipping Demon', '=', '0'
+    );
+    rules.defineRule('monkHasEmptyBody',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Firewater Breath', '=', '0',
+      'monkFeatures.Mystic Persistence', '=', '0'
+    );
+    rules.defineRule('monkHasEvasion',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Iron Monk', '=', '0',
+      'monkFeatures.Way Of The Bow', '=', '0',
+      'monkFeatures.Way Of The Weapon Master', '=', '0'
+    );
+    rules.defineRule('monkHasHighJump',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Iron Limb Defense', '=', '0'
+    );
+    rules.defineRule('monkHasImprovedEvasion',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Adamantine Monk', '=', '0',
+      'monkFeatures.Reflexive Shot', '=', '0'
+    );
+    rules.defineRule('monkHasManeuverTraining',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Zen Archery', '=', '0'
+    );
+    rules.defineRule('monkHasPerfectSelf',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Immortality', '=', '0',
+      'monkFeatures.Pure Power', '=', '0',
+      'monkFeatures.True Sacrifice', '=', '0'
+    );
+    rules.defineRule('monkHasPurityOfBody',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Drunken Strength', '=', '0',
+      'monkFeatures.Ki Arrows', '=', '0',
+      'monkFeatures.Ki Weapons', '=', '0',
+      'monkFeatures.Mystic Insight', '=', '0',
+      'monkFeatures.Steal Ki', '=', '0'
+    );
+    rules.defineRule('monkHasQuiveringPalm',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Ki Sacrifice', '=', '0',
+      'monkFeatures.Touch Of Peace', '=', '0'
+    );
+    rules.defineRule('monkHasSlowFall',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Bastion Stance', '=', '0'
+    );
+    rules.defineRule('monkHasStillMind',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Drunken Ki', '=', '0',
+      'monkFeatures.Ki Mystic', '=', '0',
+      'monkFeatures.Point Blank Master', '=', '0',
+      'monkFeatures.Versatile Improvisation', '=', '0'
+    );
+    rules.defineRule('monkHasStunningFist',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Elemental Fist', '=', '0',
+      'monkFeatures.Perfect Strike', '=', '0',
+      'monkFeatures.Punishing Kick', '=', '0',
+      'monkFeatures.Touch Of Serenity', '=', '0'
+    );
+    rules.defineRule('monkHasTimelessBody',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Aspect Master', '=', '0',
+      'monkFeatures.Uncanny Initiative', '=', '0'
+    );
+    rules.defineRule('monkHasTongueOfSunAndMoon',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Ki Focus Bow', '=', '0',
+      'monkFeatures.Learned Master', '=', '0',
+      'monkFeatures.Vow Of Silence', '=', '0'
+    );
+    rules.defineRule('monkHasWholenessOfBody',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Ancient Healing Hand', '=', '0',
+      'monkFeatures.Life Funnel', '=', '0'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Monk (Aspect)',
+      'monkOfTheFourWindsLevel', '=', '1'
+    );
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
