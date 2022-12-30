@@ -799,7 +799,8 @@ Pathfinder.FEATS = {
 Pathfinder.FEATURES = {
   // Shared with SRD35
   'A Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
-  'Abundant Step':'Section=feature Note="Use 2 ki to teleport self %V\'"',
+  'Abundant Step':
+    'Section=magic Note="May spend 2 Ki Points to teleport self %V\'"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
@@ -874,7 +875,8 @@ Pathfinder.FEATURES = {
   'Empower Spell':
     'Section=magic ' +
     'Note="x1.5 chosen spell variable effects uses +2 spell slot"',
-  'Empty Body':'Section=feature Note="Use 3 ki for 1 min on Ethereal plane"',
+  'Empty Body':
+    'Section=magic Note="May spend 3 Ki Points for 1 min on Ethereal plane"',
   'Endurance':'Section=save Note="+4 extended physical action"',
   'Enlarge Spell':
     'Section=magic Note="x2 chosen spell range uses +1 spell slot"',
@@ -906,7 +908,7 @@ Pathfinder.FEATURES = {
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Flurry Of Blows':
     'Section=combat ' +
-    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks, use 1 ki for additional %8"',
+    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks; may spend 1 Ki Point for additional %8"',
   'Forge Ring':'Section=magic Note="Create and mend magic rings"',
   'Gnome Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Charisma/-2 Strength"',
@@ -1145,7 +1147,8 @@ Pathfinder.FEATURES = {
   'Weapon Specialization (%weapon)':
     'Section=combat Note="+2 %weapon Damage Modifier"',
   'Whirlwind Attack':'Section=combat Note="Attack all foes in reach"',
-  'Wholeness Of Body':'Section=magic Note="Use 2 ki to heal %V HP to self"',
+  'Wholeness Of Body':
+    'Section=magic Note="May spend 2 Ki Points to heal %V HP to self"',
   'Widen Spell':'Section=magic Note="x2 area of affect uses +3 spell slot"',
   'Wild Empathy':'Section=skill Note="+%V Diplomacy (animals)"',
   'Wild Shape':
@@ -1611,7 +1614,8 @@ Pathfinder.FEATURES = {
   'Hellfire':
     'Section=magic ' +
     'Note="R60\' 10\' radius %Vd6 HP (DC %1 Ref half), good target shaken for %2 rd %3/dy"',
-  'High Jump':'Section=skill Note="+%V Acrobatics (jump), use 1 ki for +20"',
+  'High Jump':
+    'Section=skill Note="+%V Acrobatics (jump); may spend 1 Ki Point for +20"',
   'Highlander':
     'Section=skill ' +
     'Note="+1 Stealth/+1 Stealth (hilly and rocky areas)/Stealth is a class skill"',
@@ -1672,9 +1676,9 @@ Pathfinder.FEATURES = {
     'Section=feature ' +
     'Note="Reroll attack, critical, or check to overcome spell resistance %V/dy"',
   'Jack-Of-All-Trades':'Section=skill Note="May use any skill untrained%1%2"',
-  'Ki Dodge':'Section=combat Note="Use 1 ki for +4 AC"',
+  'Ki Dodge':'Section=combat Note="May spend 1 Ki Point for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
-  'Ki Speed':'Section=ability Note="Use 1 ki for +20 Speed"',
+  'Ki Speed':'Section=ability Note="May spend 1 Ki Point for +20 Speed"',
   'Killer':'Section=combat Note="Extra damage on critical hit"',
   'Knockback':
     'Section=combat Note="Successful Bull Rush during rage does %V HP"',
@@ -4054,9 +4058,9 @@ Pathfinder.CLASSES = {
       '"1:Armor Class Bonus","1:Flurry Of Blows","1:Improved Unarmed Strike",' +
       '"1:Increased Unarmed Damage","1:Stunning Fist","1:Two-Weapon Fighting",'+
       '2:Evasion,"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
-      '"4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall",' +
-      '"5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
-      '"8:Condition Fist","8:Improved Two-Weapon Fighting",' +
+      '"4:Condition Fist","4:Ki Dodge","4:Ki Pool","4:Ki Speed",' +
+      '"4:Ki Strike","4:Slow Fall","5:High Jump","5:Purity Of Body",' +
+      '"7:Wholeness Of Body","8:Improved Two-Weapon Fighting",' +
       '"9:Improved Evasion","11:Diamond Body","12:Abundant Step",' +
       '"13:Diamond Soul","15:Greater Two-Weapon Fighting",' +
       '"15:Quivering Palm","17:Timeless Body",' +
