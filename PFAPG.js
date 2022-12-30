@@ -1520,7 +1520,7 @@ PFAPG.FEATURES = {
       '"%{speed}\' Swim",' +
       '"Has Amphibious features"',
   'Aspect Of The Ki-Rin':
-    'Section=ability Note="May fly %{speed}\' each rd"',
+    'Section=ability Note="May fly %{speed}\' each rd between landings"',
   'Aspect Of The Monkey':
     'Section=ability,feature ' +
     'Note=' +
@@ -1536,22 +1536,24 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May forego move for immunity to knocked prone%{levels.Monk>=16 ? \' and forced move\' : \'\'} next rd"',
   'Drunken Courage':
-    'Section=save Note="Immunity to fear w/at least 1 Ki Point"',
+    'Section=save Note="Immunity to fear when Drunken Ki Pool is not empty"',
   'Drunken Ki':
     'Section=feature ' +
-    'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out AOO"',
+    'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out AOO when Drunken Ki Pool is not empty"',
   'Drunken Resilience':
-    'Section=combat Note="DR %{(levels.Monk-10)//3}/- w/at least 1 Ki Point"',
+    'Section=combat ' +
+    'Note="DR %{(levels.Monk-10)//3}/- when Drunken Ki Pool is not empty"',
   'Drunken Strength':
     'Section=combat ' +
-    'Note="May spend Ki Points for +1d6 HP damage each (%{levels.Monk//5}d6 max)"',
+    'Note="May spend 1 Ki Point for +1d6 HP damage when Drunken Ki Pool is not empty%{levels.Monk>=10 ? \'; may spend 2\' + (levels.Monk>=15 ? \'-\' + levels.Monk//5 : \'\') + \' Drunken Ki Points to increase up to \' + levels.Monk//5 + \'d6\' : \'\'}"',
   'Firewater Breath':
     'Section=combat ' +
-    'Note="R30\' cone from alcohol inflicts 20d6 HP fire; costs 4 Ki Points"',
+    'Note="May spend 4 Ki Points when Drunken Ki Pool is not empty for R30\' cone from alcohol drink that inflicts 20d6 HP fire (DC %{10+levels.Monk//2+wisdomModifier} Ref half)"',
   'Flurry Of Blows (Zen Archer)':
     'Section=combat Note="May only make Flurry Of Blows attacks with bow"',
   'Immortality':
-    'Section=feature Note="Does not age; spontaneously reincarnates if killed"',
+    'Section=feature ' +
+    'Note="Does not age; spontaneously reincarnates after 1 dy if killed"',
   'Iron Limb Defense':
     'Section=combat ' +
     'Note="May forego move for +2 AC and CMD next round; may spend 1 Ki Point for +4 AC and CMD"',
@@ -1568,18 +1570,18 @@ PFAPG.FEATURES = {
     'Section=ability,skill ' +
     'Note=' +
       '"May spend 1 Ki Point for +4 on any ability check",' +
-      '"+2 Knowledge w/at least 1 Ki Point/May spend 1 Ki Point for +4 on any skill check"',
+      '"+2 Knowledge when Ki Pool is not empty/May spend 1 Ki Point for +4 on any skill check"',
   'Ki Pool (Zen Archer)':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to increase bow range by 50\' for 1 rd"',
   'Ki Pool (Ki Mystic)':'Section=feature Note="+2 Ki Pool points"',
   'Ki Pool (Monk Of The Empty Hand)':
-    'Section=combat Note="May spend 1 Ki Point for +20\' throw range"',
+    'Section=combat Note="May spend 1 Ki Point for +20\' throw range for 1 rd"',
   'Ki Sacrifice':
-    'Section=magic Note="May use entire Ki Pool (min 6) for effects of <i>Raise Dead</i>%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8)\' : \'\'}; Ki Points replenish after 1 dy"',
+    'Section=magic Note="May spend entire Ki Pool (min 6) for effects of <i>Raise Dead</i>%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8)\' : \'\'}; Ki Points replenish after 1 dy"',
   'Ki Weapons':
     'Section=combat ' +
-    'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/improvised weapon%{levels.Monk>=11 ? \'/May spend \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give improvised weapon enhancement bonus or abilities\' : \'\'}"',
+    'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give improvised weapon enhancement bonus or abilities for 1 rd\' : \'\'}"',
   'Learned Master':
     'Section=skill ' +
     'Note="Knowledge is a class skill/Linguistics is a class skill/+%V Knowledge/+%V Linguistics"',
@@ -1587,7 +1589,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May use Steal Ki and Life Funnel on non-living foe"',
   'Life Funnel':
     'Section=combat ' +
-    'Note="Scoring a critical hit or reducing foe to 0 HP w/at least 1 Ki Point restores $L HP to self"',
+    'Note="Scoring a critical hit or reducing foe to 0 HP when Ki Pool is not empty restores %{levels.Monk} HP to self"',
   'Mystic Insight':
     'Section=combat ' +
     'Note="R30\' May spend 2 Ki Points to give ally attack or save reroll"',
@@ -1602,12 +1604,12 @@ PFAPG.FEATURES = {
   'Reflexive Shot':'Section=combat Note="May make AOO w/bow"',
   'Sipping Demon':
     'Section=combat ' +
-    'Note="Self gains +1 temporary HP from successful attack (+2 from crit; %{levels.Monk} HP max) w/at least 1 Ki Point"',
+    'Note="Self gains +1 temporary HP for 1 hr from successful attack (+2 from crit; %{levels.Monk} temporary HP max) when Ki Pool is not empty"',
   'Slow Time':
     'Section=combat Note="May spend 6 Ki Points for 2 extra standard actions"',
   'Steal Ki':
     'Section=combat ' +
-    'Note="Scoring a critical hit or reducing living foe to 0 HP w/at least 1 Ki Point transfers 1 Ki Point from foe to self%{levels.Monk>=11 \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
+    'Note="Scoring a critical hit or reducing living foe to 0 HP when Ki Pool is not empty transfers 1 Ki Point from foe to self%{levels.Monk>=11 ? \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
   'Touch Of Peace':
     'Section=magic ' +
     'Note="May spend 6 Ki Points for <i>Charm Monster</i> effect when attack drops foe to 0 HP"',
@@ -2637,15 +2639,15 @@ PFAPG.FEATURES = {
     'Note="Natural weapons considered magic and silver for overcoming DR"',
   'Elemental Fist':
     'Section=combat ' +
-    'Note="Successful Elemental Strike inflicts +%Vd6 HP of choice of energy type"',
+    'Note="Successful attack inflicts +%Vd6 HP of choice of energy type"',
   'Elemental Focus (Acid)':
-    'Section=feature Note="+%V DC on spells that inflict acid damage"',
+    'Section=magic Note="+%V DC on spells that inflict acid damage"',
   'Elemental Focus (Cold)':
-    'Section=feature Note="+%V DC on spells that inflict cold damage"',
+    'Section=magic Note="+%V DC on spells that inflict cold damage"',
   'Elemental Focus (Electricity)':
-    'Section=feature Note="+%V DC on spells that inflict electricity damage"',
+    'Section=magic Note="+%V DC on spells that inflict electricity damage"',
   'Elemental Focus (Fire)':
-    'Section=feature Note="+%V DC on spells that inflict fire damage"',
+    'Section=magic Note="+%V DC on spells that inflict fire damage"',
   'Elemental Spell (Acid)':
     'Section=magic Note="May convert half of spell damage to acid damage"',
   'Elemental Spell (Cold)':
@@ -3415,8 +3417,8 @@ PFAPG.PATHS = {
     'Group=Monk ' +
     'Level=levels.Monk ' +
     'Features=' +
-      '"3:Ki Pool (Ki Mystic)","5:Mystic Insight","11:Mystic Visions",' +
-      '"13:Mystic Prescience","19:Mystic Persistence"',
+      '"3:Ki Pool","3:Ki Pool (Ki Mystic)","5:Mystic Insight",' +
+      '"11:Mystic Visions","13:Mystic Prescience","19:Mystic Persistence"',
   'Monk Of The Empty Hand':
     'Group=Monk ' +
     'Level=levels.Monk ' +
@@ -5769,7 +5771,7 @@ PFAPG.talentRules = function(
 ) {
   Pathfinder.talentRules(rules, feats, features, goodies, languages, skills);
   for(let feat in feats)
-    PFAPG.raceRulesExtra(rules, feat);
+    PFAPG.featRulesExtra(rules, feat);
   rules.defineRule('traitCount', '', '=', '2');
 };
 
@@ -6592,7 +6594,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'zenArcherLevel', '+', 'source>=10 ? 1 : null'
     );
     rules.defineRule('combatNotes.punishingKick',
-      'hungyGhostMonkLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
+      'hungryGhostMonkLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
     );
     rules.defineRule('combatNotes.touchOfSerenity',
       'monkOfTheLotusLevel', '+', 'Math.floor(source / 6)'
@@ -6620,7 +6622,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.deepDrinker', '+', '1'
     );
     rules.defineRule('featureNotes.kiPool',
-      'featuresNotes.kiMystic', '+=', 'source>=3 ? 2 : null'
+      'featureNotes.kiPool(KiMystic)', '+=', '2',
+      // Force to exactly 2 points at level 3; above rule handles higher levels
+      'kiMysticLevel', 'v=', 'source==3 ? 2 : null'
     );
     rules.defineRule('featureNotes.wayOfTheBow.1',
       'features.Way Of The Bow', '?', null,
@@ -6633,6 +6637,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
     rules.defineRule
       ('monkFeatures.Abundant Step', 'monkHasAbundantStep', '?', null);
+    rules.defineRule
+      ('monkFeatures.Condition Fist', 'monkHasStunningFist', '?', null);
     rules.defineRule
       ('monkFeatures.Diamond Body', 'monkHasDiamondBody', '?', null);
     rules.defineRule
@@ -7226,7 +7232,7 @@ PFAPG.featRulesExtra = function(rules, name) {
       'features.Greater Shield Focus', '+', '1'
     );
   } else if(name == 'Keen Scent') {
-    rules.defineRules('features.Scent', 'featureRules.keenScent', '=', '1');
+    rules.defineRule('features.Scent', 'featureRules.keenScent', '=', '1');
   } else if(name == 'Major Spell Expertise') {
     rules.defineRule('magicNotes.majorSpellExpertise',
       'feats.Major Spell Expertise', '=', null
