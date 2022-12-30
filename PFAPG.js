@@ -1508,56 +1508,130 @@ PFAPG.FEATURES = {
     'Note="May make full-attack action or use Whirlwind Attack as a standard action"',
 
   // Monk
-  'Adamantine Monk':'Section=combat Note="FILL"',
-  'Ancient Healing Hand':'Section=combat Note="FILL"',
-  'Aspect Master':'Section=combat Note="FILL"',
-  'Aspect Of The Carp:Aspect':'Section=combat Note="FILL"',
-  'Aspect Of The Ki-Rin:Aspect':'Section=combat Note="FILL"',
-  'Aspect Of The Monkey:Aspect':'Section=combat Note="FILL"',
-  'Aspect Of The Oni:Aspect':'Section=combat Note="FILL"',
-  'Aspect Of The Owl':'Section=combat Note="FILL"',
-  'Aspect Of The Tiger:Aspect':'Section=combat Note="FILL"',
-  'Bastion Stance':'Section=combat Note="FILL"',
-  'Drunken Courage':'Section=combat Note="FILL"',
-  'Drunken Ki':'Section=combat Note="FILL"',
-  'Drunken Resilience':'Section=combat Note="FILL"',
-  'Drunken Strength':'Section=combat Note="FILL"',
-  'Evasion':'Section=combat Note="FILL"',
-  'Firewater Breath':'Section=combat Note="FILL"',
-  'Flurry Of Blows (Bow)':'Section=combat Note="FILL"',
-  'Immortality':'Section=combat Note="FILL"',
-  'Iron Limb Defense':'Section=combat Note="FILL"',
-  'Iron Monk':'Section=combat Note="FILL"',
-  'Ki Arrows':'Section=combat Note="FILL"',
-  'Ki Focus Bow':'Section=combat Note="FILL"',
-  'Ki Mystic':'Section=combat Note="FILL"',
-  'Ki Pool (Bow Range)':'Section=combat Note="FILL"',
-  'Ki Pool (Throw Range)':'Section=combat Note="FILL"',
-  'Ki Sacrifice':'Section=combat Note="FILL"',
-  'Ki Weapons':'Section=combat Note="FILL"',
-  'Learned Master':'Section=combat Note="FILL"',
-  'Life From A Stone':'Section=combat Note="FILL"',
-  'Life Funnel':'Section=combat Note="FILL"',
-  'Mysic Persistence':'Section=combat Note="FILL"',
-  'Mystic Insight':'Section=combat Note="FILL"',
-  'Mystic Prescience':'Section=combat Note="FILL"',
-  'Mystic Visions':'Section=combat Note="FILL"',
-  'Point Blank Master':'Section=combat Note="FILL"',
-  'Pure Power':'Section=combat Note="FILL"',
-  'Reflexive Shot':'Section=combat Note="FILL"',
-  'Sipping Demon':'Section=combat Note="FILL"',
-  'Slow Time':'Section=combat Note="FILL"',
-  'Steal Ki':'Section=combat Note="FILL"',
-  'Touch Of Peace':'Section=combat Note="FILL"',
-  'Touch Of Surrender':'Section=combat Note="FILL"',
-  'Trick Shot (Zen Archer)':'Section=combat Note="FILL"',
-  'True Sacrifice':'Section=combat Note="FILL"',
-  'Uncanny Initiative':'Section=combat Note="FILL"',
-  'Versatile Improvisation':'Section=combat Note="FILL"',
-  'Vow Of Silence':'Section=combat Note="FILL"',
-  'Way Of The Bow':'Section=combat Note="FILL"',
-  'Way Of The Weapon Master':'Section=combat Note="FILL"',
-  'Zen Archery':'Section=combat Note="FILL"',
+  'Adamantine Monk':
+    'Section=combat Note="DR %V/-; may spend 1 Ki Point to dbl for 1 rd"',
+  'Ancient Healing Hand':
+    'Section=combat ' +
+    'Note="May spend 2 Ki Points to give %{levels.Monk} HP healing to another"',
+  'Aspect Master':'Section=combat Note="1 Selection"',
+  'Aspect Of The Carp':
+    'Section=ability,feature ' +
+    'Note=' +
+      '"%{speed}\' Swim",' +
+      '"Has Amphibious features"',
+  'Aspect Of The Ki-Rin':
+    'Section=ability Note="May fly %{speed}\' each rd"',
+  'Aspect Of The Monkey':
+    'Section=ability,feature ' +
+    'Note=' +
+      '"%{speed}\' Climb",' +
+      '"May use tail to pick up objects and make unarmed attacks"',
+  'Aspect Of The Oni':
+    'Section=magic ' +
+    'Note="May use effects of <i>Gaseous Form</i> %{levels.Monk} min/dy"',
+  'Aspect Of The Owl':'Section=ability Note="30\' Fly"',
+  'Aspect Of The Tiger':
+    'Section=combat Note="May charge %{speed*10}\' and pounce 1/hr"',
+  'Bastion Stance':
+    'Section=combat ' +
+    'Note="May forego move for immunity to knocked prone%{levels.Monk>=16 ? \' and forced move\' : \'\'} next rd"',
+  'Drunken Courage':
+    'Section=save Note="Immunity to fear w/at least 1 Ki Point"',
+  'Drunken Ki':
+    'Section=feature ' +
+    'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out AOO"',
+  'Drunken Resilience':
+    'Section=combat Note="DR %{(levels.Monk-10)//3}/- w/at least 1 Ki Point"',
+  'Drunken Strength':
+    'Section=combat ' +
+    'Note="May spend Ki Points for +1d6 HP damage each (%{levels.Monk//5}d6 max)"',
+  'Firewater Breath':
+    'Section=combat ' +
+    'Note="R30\' cone from alcohol inflicts 20d6 HP fire; costs 4 Ki Points"',
+  'Flurry Of Blows (Zen Archer)':
+    'Section=combat Note="May only make Flurry Of Blows attacks with bow"',
+  'Immortality':
+    'Section=feature Note="Does not age; spontaneously reincarnates if killed"',
+  'Iron Limb Defense':
+    'Section=combat ' +
+    'Note="May forego move for +2 AC and CMD next round; may spend 1 Ki Point for +4 AC and CMD"',
+  'Iron Monk':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+1 AC",' +
+      '"Has Toughness features"',
+  'Ki Arrows':
+    'Section=combat ' +
+    'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/bow"',
+  'Ki Focus Bow':'Section=combat Note="May use arrows for Ki attacks"',
+  'Ki Mystic':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"May spend 1 Ki Point for +4 on any ability check",' +
+      '"+2 Knowledge w/at least 1 Ki Point/May spend 1 Ki Point for +4 on any skill check"',
+  'Ki Pool (Zen Archer)':
+    'Section=combat ' +
+    'Note="May spend 1 Ki Point to increase bow range by 50\' for 1 rd"',
+  'Ki Pool (Ki Mystic)':'Section=feature Note="+2 Ki Pool points"',
+  'Ki Pool (Monk Of The Empty Hand)':
+    'Section=combat Note="May spend 1 Ki Point for +20\' throw range"',
+  'Ki Sacrifice':
+    'Section=magic Note="May use entire Ki Pool (min 6) for effects of <i>Raise Dead</i>%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8)\' : \'\'}; Ki Points replenish after 1 dy"',
+  'Ki Weapons':
+    'Section=combat ' +
+    'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/improvised weapon%{levels.Monk>=11 ? \'/May spend \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give improvised weapon enhancement bonus or abilities\' : \'\'}"',
+  'Learned Master':
+    'Section=skill ' +
+    'Note="Knowledge is a class skill/Linguistics is a class skill/+%V Knowledge/+%V Linguistics"',
+  'Life From A Stone':
+    'Section=combat Note="May use Steal Ki and Life Funnel on non-living foe"',
+  'Life Funnel':
+    'Section=combat ' +
+    'Note="Scoring a critical hit or reducing foe to 0 HP w/at least 1 Ki Point restores $L HP to self"',
+  'Mystic Insight':
+    'Section=combat ' +
+    'Note="R30\' May spend 2 Ki Points to give ally attack or save reroll"',
+  'Mystic Persistence':
+    'Section=combat ' +
+    'Note="20\' radius gives allies better of two attack and save rolls for 1 rd/2 Ki Points"',
+  'Mystic Prescience':'Section=combat Note="+%V AC/+%V CMD"',
+  'Mystic Visions':
+    'Section=magic ' +
+    'Note="May spend 2 Ki Points for effects of <i>Divination</i> spell"',
+  'Pure Power':'Section=ability Note="+2 Strength/+2 Dexterity/+2 Wisdom"',
+  'Reflexive Shot':'Section=combat Note="May make AOO w/bow"',
+  'Sipping Demon':
+    'Section=combat ' +
+    'Note="Self gains +1 temporary HP from successful attack (+2 from crit; %{levels.Monk} HP max) w/at least 1 Ki Point"',
+  'Slow Time':
+    'Section=combat Note="May spend 6 Ki Points for 2 extra standard actions"',
+  'Steal Ki':
+    'Section=combat ' +
+    'Note="Scoring a critical hit or reducing living foe to 0 HP w/at least 1 Ki Point transfers 1 Ki Point from foe to self%{levels.Monk>=11 \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
+  'Touch Of Peace':
+    'Section=magic ' +
+    'Note="May spend 6 Ki Points for <i>Charm Monster</i> effect when attack drops foe to 0 HP"',
+  'Touch Of Surrender':
+    'Section=magic ' +
+    'Note="May trade damage on attack for <i>Charm Monster</i> effect for $L dy 1/dy"',
+  'Trick Shot (Zen Archer)':
+    'Section=combat Note="May spend 1 Ki Pool to ignore concealment, 2 to ignore total concealment or cover, or 3 to ignore total cover w/bow shot for 1 rd"',
+  'True Sacrifice':
+    'Section=magic ' +
+    'Note="May permanently destroy self for R50\' True Resurrection affecting dead allies"',
+  'Uncanny Initiative':'Section=combat Note="May choose Initiative"',
+  'Versatile Improvisation':
+    'Section=combat Note="May change damage type of improvised weapon"',
+  'Vow Of Silence':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+2 AC/+2 CMD",' +
+      '"+4 Perception/+4 Sense Motive/+4 Sealth"',
+  'Way Of The Bow':
+    'Section=feature Note="+1 General Feat (Weapon Focus (bow))%1"',
+  'Way Of The Weapon Master':
+     'Section=combat Note="+1 General Feat (Weapon Focus (monk weapon))%1"',
+  'Zen Archery':'Section=combat Note="+%V bow attacks"',
 
   // New base classes
   'Acid Bomb':
@@ -2563,7 +2637,7 @@ PFAPG.FEATURES = {
     'Note="Natural weapons considered magic and silver for overcoming DR"',
   'Elemental Fist':
     'Section=combat ' +
-    'Note="Successful Elemental Strike inflicts +1d6 HP of choice of energy type"',
+    'Note="Successful Elemental Strike inflicts +%Vd6 HP of choice of energy type"',
   'Elemental Focus (Acid)':
     'Section=feature Note="+%V DC on spells that inflict acid damage"',
   'Elemental Focus (Cold)':
@@ -2742,7 +2816,7 @@ PFAPG.FEATURES = {
   'Pass for Human':'Section=skill Note="+10 Disguise (pass as human)"',
   'Perfect Strike':
     'Section=combat ' +
-    'Note="Use better of two rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %{level//4>?1}/dy"',
+    'Note="Use better of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %{level//4>?1}/dy"',
   'Persistent Spell':
     'Section=magic ' +
     'Note="Cast spell forcing target to take worse of 2 saving throws uses +2 spell slot"',
@@ -2755,7 +2829,8 @@ PFAPG.FEATURES = {
   'Preferred Spell':
     'Section=magic Note="May cast %V chosen spells in place of prepared spell"',
   'Punishing Kick':
-    'Section=feature Note="Successful kick attack pushes foe 5\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %{level//5>?1}/dy"',
+    'Section=combat ' +
+    'Note="Successful kick attack pushes foe %V\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %{level//5>?1}/dy"',
   'Pushing Assault':
     'Section=combat ' +
     'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
@@ -2871,7 +2946,7 @@ PFAPG.FEATURES = {
     'Note="Cast spell to inflict deafness for spell level rd instead of damage (spell save or Fort neg) uses +2 spell slot"',
   'Touch Of Serenity':
     'Section=combat ' +
-    'Note="May trade damage on attack for preventing spellcasting for 1 rd (DC %{10+level//2+wisdomModifier} Will neg)"',
+    'Note="May trade damage on attack for preventing spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg)"',
   'Trick Riding':
     'Section=skill ' +
     'Note="DC 15 or lower ride checks automatically succeed, no penalty for bareback riding, may use Mounted Combat to negate 2 hits/rd"',
@@ -3340,23 +3415,28 @@ PFAPG.PATHS = {
     'Group=Monk ' +
     'Level=levels.Monk ' +
     'Features=' +
-      '"5:Mystic Insight","11:Mystic Visions","13:Mystic Prescience",' +
-      '"19:Mysic Persistence"',
+      '"3:Ki Pool (Ki Mystic)","5:Mystic Insight","11:Mystic Visions",' +
+      '"13:Mystic Prescience","19:Mystic Persistence"',
   'Monk Of The Empty Hand':
     'Group=Monk ' +
     'Level=levels.Monk ' +
     'Features=' +
-      '"1:Flurry Of Blows","3:Versatile Improvisation",' +
-      '"4:Ki Pool (Throw Range)","5:Ki Weapons"',
+      '"1:Weapon Proficiency (Shuriken)","1:Flurry Of Blows",' +
+      '"3:Versatile Improvisation","4:Ki Pool (Monk Of The Empty Hand)",' +
+      '"5:Ki Weapons"',
+      // TODO Additional choices for bonus feats
   'Monk Of The Four Winds':
     'Group=Monk ' +
     'Level=levels.Monk ' +
     'Features=' +
       '"1:Elemental Fist","12:Slow Time","17:Aspect Master","20:Immortality" ' +
     'Selectables=' +
-      '"17:Aspect Of The Carp:Aspect","17:Aspect Of The Ki-Rin:Aspect",' +
-      '"17:Aspect Of The Monkey:Aspect","17:Aspect Of The Oni:Aspect",' +
-      '"17:Aspect Of The Owl","17:Aspect Of The Tiger:Aspect"',
+      '"alignment !~ \'Evil\' ? 17:Aspect Of The Carp:Aspect",' +
+      '"alignment == \'Lawful Good\' ? 17:Aspect Of The Ki-Rin:Aspect",' +
+      '"17:Aspect Of The Monkey:Aspect",' +
+      '"alignment =~ \'Evil\' ? 17:Aspect Of The Oni:Aspect",' +
+      '"17:Aspect Of The Owl:Aspect",' +
+      '"17:Aspect Of The Tiger:Aspect"',
   'Monk Of The Healing Hand':
     'Group=Monk ' +
     'Level=levels.Monk ' +
@@ -3385,10 +3465,11 @@ PFAPG.PATHS = {
     'Level=levels.Monk ' +
     'Features=' +
       '"1:Weapon Proficiency(Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
-      '"1:Flurry Of Blows (Bow)","1:Perfect Strike","2:Way Of The Bow",' +
-      '"3:Zen Archery","3:Point Blank Master","4:Ki Pool (Bow Range)",' +
-      '"5:Ki Arrows","9:Reflexive Shot","11:Trick Shot (Zen Archer)",' +
-      '"17:Ki Focus Bow"',
+      '"1:Flurry Of Blows (Zen Archer)","1:Perfect Strike",' +
+      '"2:Way Of The Bow","3:Zen Archery","3:Point Blank Master",' +
+      '"4:Ki Pool (Bow Range)","5:Ki Arrows","9:Reflexive Shot",' +
+      '"11:Trick Shot (Zen Archer)","17:Ki Focus Bow"',
+      // TODO Different choices for bonus feats
 
   // Oracle
   'Battle Mystery':
@@ -6498,6 +6579,58 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
   } else if(name == 'Monk') {
+    rules.defineRule('combatNotes.adamantineMonk',
+      classLevel, '=', 'Math.floor((source - 6) / 3)'
+    );
+    rules.defineRule('combatNotes.elementalFist',
+      'monkOfTheFourWindsLevel', '+', 'Math.floor(source / 5)'
+    );
+    rules.defineRule
+      ('combatNotes.mysticPrescience', classLevel, '=', 'source>=20 ? 4 : 2');
+    rules.defineRule('combatNotes.perfectStrike',
+      'weaponAdeptLevel', '+', 'source>=10 ? 1 : null',
+      'zenArcherLevel', '+', 'source>=10 ? 1 : null'
+    );
+    rules.defineRule('combatNotes.punishingKick',
+      'hungyGhostMonkLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
+    );
+    rules.defineRule('combatNotes.touchOfSerenity',
+      'monkOfTheLotusLevel', '+', 'Math.floor(source / 6)'
+    );
+    rules.defineRule('combatNotes.zenArchery',
+      'wisdomModifier', '=', null,
+      'dexterityModifier', '+', null
+    );
+    rules.defineRule
+      ('compositeLongbowAttackModifier', 'combatNotes.zenArchery', '+', null);
+    rules.defineRule
+      ('compositeShortbowAttackModifier', 'combatNotes.zenArchery', '+', null);
+    rules.defineRule
+      ('longbowAttackModifier', 'combatNotes.zenArchery', '+', null);
+    rules.defineRule
+      ('shortbowAttackModifier', 'combatNotes.zenArchery', '+', null);
+    rules.defineRule('featCounts.General',
+      'featureNotes.wayOfTheBow', '+', '1',
+      'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null',
+      'featureNotes.wayOfTheWeaponMaster', '+', '1',
+      'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
+    );
+    rules.defineRule('featureNotes.drunkenKi',
+      '', '=', '1',
+      'featureNotes.deepDrinker', '+', '1'
+    );
+    rules.defineRule('featureNotes.kiPool',
+      'featuresNotes.kiMystic', '+=', 'source>=3 ? 2 : null'
+    );
+    rules.defineRule('featureNotes.wayOfTheBow.1',
+      'features.Way Of The Bow', '?', null,
+      classLevel, '=', 'source>=10 ? "/+1 General Feat (Weapon Specialization (Bow))" : ""'
+    );
+    rules.defineRule('featureNotes.wayOfTheWeaponMaster.1',
+      'features.Way Of The Weapon Master', '?', null,
+      classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
+    );
+    rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
     rules.defineRule
       ('monkFeatures.Abundant Step', 'monkHasAbundantStep', '?', null);
     rules.defineRule
@@ -6525,6 +6658,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('monkFeatures.Timeless Body', 'monkHasTimelessBody', '?', null);
     rules.defineRule('monkFeatures.Tongue Of Sun And Moon',
       'monkHasTongueOfSunAndMoon', '?', null
+    );
+    rules.defineRule('monkFeatures.Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
+      'monkHasWeaponProficiency', '?', null
     );
     rules.defineRule
       ('monkFeatures.Wholeness Of Body', 'monkHasWholenessOfBody', '?', null);
@@ -6620,6 +6756,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'monkFeatures.Learned Master', '=', '0',
       'monkFeatures.Vow Of Silence', '=', '0'
     );
+    rules.defineRule('monkHasWeaponProficiency',
+      'levels.Monk', '=', '1',
+      'monkFeatures.Monk Of The Empty Hand', '=', '0'
+    );
     rules.defineRule('monkHasWholenessOfBody',
       'levels.Monk', '=', '1',
       'monkFeatures.Ancient Healing Hand', '=', '0',
@@ -6629,6 +6769,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
     rules.defineRule('selectableFeatureCount.Monk (Aspect)',
       'monkOfTheFourWindsLevel', '=', '1'
+    );
+    rules.defineRule('skillNotes.learnedMaster',
+      'wisdomModifier', '=', null,
+      'intelligenceModifier', '+', null
     );
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
@@ -7047,6 +7191,8 @@ PFAPG.featRulesExtra = function(rules, name) {
       '', '=', '1',
       'magicNotes.greaterElementalFocus(' + energy + ')', '+', '1'
     );
+  } else if(name == 'Elemental Fist') {
+    rules.defineRule('combatNotes.elementalFist', '', '=', '1');
   } else if(name == 'Extra Bombs') {
     rules.defineRule('combatNotes.bomb', 'combatNotes.extraBombs', '+', null);
     rules.defineRule
@@ -7089,9 +7235,15 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.minorSpellExpertise',
       'feats.Minor Spell Expertise', '=', null
     );
+  } else if(name == 'Perfect Strike') {
+    rules.defineRule('combatNotes.perfectStrike', '', '=', '2');
   } else if(name == 'Preferred Spell') {
     rules.defineRule
       ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
+  } else if(name == 'Punishing Kick') {
+    rules.defineRule('combatNotes.punishingKick', '', '=', '5');
+  } else if(name == 'Touch Of Serenity') {
+    rules.defineRule('combatNotes.touchOfSerenity', '', '=', '1');
   }
 };
 
