@@ -1512,7 +1512,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="DR %V/-; may spend 1 Ki Point to dbl for 1 rd"',
   'Ancient Healing Hand':
     'Section=combat ' +
-    'Note="May spend 2 Ki Points to give %{levels.Monk} HP healing to another"',
+    'Note="May spend 2 Ki Points to restore %{levels.Monk} HP to another"',
   'Aspect Master':'Section=combat Note="1 Selection"',
   'Aspect Of The Carp':
     'Section=ability,feature ' +
@@ -1534,7 +1534,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May charge %{speed*10}\' and pounce 1/hr"',
   'Bastion Stance':
     'Section=combat ' +
-    'Note="May forego move for immunity to knocked prone%{levels.Monk>=16 ? \' and forced move\' : \'\'} next rd"',
+    'Note="May forego move for immunity to knocked prone%{levels.Monk>=16 ? \' and forced move\' : \'\'} for 1 rd"',
   'Drunken Courage':
     'Section=save Note="Immunity to fear when Drunken Ki Pool is not empty"',
   'Drunken Ki':
@@ -1556,7 +1556,7 @@ PFAPG.FEATURES = {
     'Note="Does not age; spontaneously reincarnates after 1 dy if killed"',
   'Iron Limb Defense':
     'Section=combat ' +
-    'Note="May forego move for +2 AC and CMD next round; may spend 1 Ki Point for +4 AC and CMD"',
+    'Note="May forego move for +2 AC and CMD for 1 rd; may spend 1 Ki Point for +4 AC and CMD"',
   'Iron Monk':
     'Section=combat,feature ' +
     'Note=' +
@@ -1565,7 +1565,9 @@ PFAPG.FEATURES = {
   'Ki Arrows':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/bow"',
-  'Ki Focus Bow':'Section=combat Note="May use arrows for Ki attacks"',
+  'Ki Focus Bow':
+    'Section=combat ' +
+    'Note="May use arrows for Ki attacks when Ki Pool is not empty"',
   'Ki Mystic':
     'Section=ability,skill ' +
     'Note=' +
@@ -1578,13 +1580,13 @@ PFAPG.FEATURES = {
   'Ki Pool (Monk Of The Empty Hand)':
     'Section=combat Note="May spend 1 Ki Point for +20\' throw range for 1 rd"',
   'Ki Sacrifice':
-    'Section=magic Note="May spend entire Ki Pool (min 6) for effects of <i>Raise Dead</i>%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8)\' : \'\'}; Ki Points replenish after 1 dy"',
+    'Section=magic Note="May spend entire Ki Pool in 1 hr ritual for effects of <i>Raise Dead</i> (min 6 Ki Points)%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8 Ki Points)\' : \'\'}; Ki Points replenish after 1 dy"',
   'Ki Weapons':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give improvised weapon enhancement bonus or abilities for 1 rd\' : \'\'}"',
   'Learned Master':
     'Section=skill ' +
-    'Note="Knowledge is a class skill/Linguistics is a class skill/+%V Knowledge/+%V Linguistics"',
+    'Note="Knowledge is a class skill/Linguistics is a class skill/+%1 Knowledge/+%1 Linguistics"',
   'Life From A Stone':
     'Section=combat Note="May use Steal Ki and Life Funnel on non-living foe"',
   'Life Funnel':
@@ -1600,6 +1602,7 @@ PFAPG.FEATURES = {
   'Mystic Visions':
     'Section=magic ' +
     'Note="May spend 2 Ki Points for effects of <i>Divination</i> spell"',
+  'Point Blank Master':'Section=feature Note="Has Point-Blank Shot features"',
   'Pure Power':'Section=ability Note="+2 Strength/+2 Dexterity/+2 Wisdom"',
   'Reflexive Shot':'Section=combat Note="May make AOO w/bow"',
   'Sipping Demon':
@@ -1612,16 +1615,16 @@ PFAPG.FEATURES = {
     'Note="Scoring a critical hit or reducing living foe to 0 HP when Ki Pool is not empty transfers 1 Ki Point from foe to self%{levels.Monk>=11 ? \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
   'Touch Of Peace':
     'Section=magic ' +
-    'Note="May spend 6 Ki Points for <i>Charm Monster</i> effect when attack drops foe to 0 HP"',
+    'Note="May spend 6 Ki Points to have attack inflict <i>Charm Monster</i> effect for %{levels.Monk} dy instead of HP damage 1/dy"',
   'Touch Of Surrender':
     'Section=magic ' +
-    'Note="May trade damage on attack for <i>Charm Monster</i> effect for $L dy 1/dy"',
+    'Note="May spend 6 Ki Points to add <i>Charm Monster</i> effect for %{levels.Monk} dy to damage that reduces foe to 0 HP"',
   'Trick Shot (Zen Archer)':
-    'Section=combat Note="May spend 1 Ki Pool to ignore concealment, 2 to ignore total concealment or cover, or 3 to ignore total cover w/bow shot for 1 rd"',
+    'Section=combat Note="May spend 1 Ki Point to ignore concealment, 2 to ignore total concealment or cover, or 3 to ignore total cover w/bow shot for 1 rd"',
   'True Sacrifice':
     'Section=magic ' +
-    'Note="May permanently destroy self for R50\' True Resurrection affecting dead allies"',
-  'Uncanny Initiative':'Section=combat Note="May choose Initiative"',
+    'Note="May permanently destroy self for R50\' <i>True Resurrection</i> of allies\' corpses"',
+  'Uncanny Initiative':'Section=combat Note="May choose Initiative value"',
   'Versatile Improvisation':
     'Section=combat Note="May change damage type of improvised weapon"',
   'Vow Of Silence':
@@ -1632,7 +1635,7 @@ PFAPG.FEATURES = {
   'Way Of The Bow':
     'Section=feature Note="+1 General Feat (Weapon Focus (bow))%1"',
   'Way Of The Weapon Master':
-     'Section=combat Note="+1 General Feat (Weapon Focus (monk weapon))%1"',
+     'Section=feature Note="+1 General Feat (Weapon Focus (monk weapon))%1"',
   'Zen Archery':'Section=combat Note="+%V bow attacks"',
 
   // New base classes
@@ -2869,13 +2872,13 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May reduce two-handed weapon damage by half for +4 AC and CMD"',
   'Shield Specialization (Buckler)':
-    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Specialization (Heavy)':
-    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Specialization (Light)':
-    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Specialization (Tower)':
-    'Section=feature Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Wall':
     'Section=combat ' +
     'Note="+1 AC when adjacent ally has same feat and buckler or light shield; +2 heavy or tower shield"',
@@ -3469,7 +3472,7 @@ PFAPG.PATHS = {
       '"1:Weapon Proficiency(Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
       '"1:Flurry Of Blows (Zen Archer)","1:Perfect Strike",' +
       '"2:Way Of The Bow","3:Zen Archery","3:Point Blank Master",' +
-      '"4:Ki Pool (Bow Range)","5:Ki Arrows","9:Reflexive Shot",' +
+      '"4:Ki Pool (Zen Archer)","5:Ki Arrows","9:Reflexive Shot",' +
       '"11:Trick Shot (Zen Archer)","17:Ki Focus Bow"',
       // TODO Different choices for bonus feats
 
@@ -6601,7 +6604,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.zenArchery',
       'wisdomModifier', '=', null,
-      'dexterityModifier', '+', null
+      'dexterityModifier', '+', '-source'
     );
     rules.defineRule
       ('compositeLongbowAttackModifier', 'combatNotes.zenArchery', '+', null);
@@ -6611,6 +6614,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('longbowAttackModifier', 'combatNotes.zenArchery', '+', null);
     rules.defineRule
       ('shortbowAttackModifier', 'combatNotes.zenArchery', '+', null);
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
     rules.defineRule('featCounts.General',
       'featureNotes.wayOfTheBow', '+', '1',
       'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null',
@@ -6634,6 +6639,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Way Of The Weapon Master', '?', null,
       classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
     );
+    rules.defineRule
+      ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
     rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
     rules.defineRule
       ('monkFeatures.Abundant Step', 'monkHasAbundantStep', '?', null);
@@ -6649,7 +6656,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('monkFeatures.Improved Evasion', 'monkHasImprovedEvasion', '?', null);
     rules.defineRule
-      ('monkFeatures.ManeuverTraining', 'monkHasManeuverTraining', '?', null);
+      ('monkFeatures.Maneuver Training', 'monkHasManeuverTraining', '?', null);
     rules.defineRule
       ('monkFeatures.Perfect Self', 'monkHasPerfectSelf', '?', null);
     rules.defineRule
@@ -6662,8 +6669,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('monkFeatures.Stunning Fist', 'monkHasStunningFist', '?', null);
     rules.defineRule
       ('monkFeatures.Timeless Body', 'monkHasTimelessBody', '?', null);
-    rules.defineRule('monkFeatures.Tongue Of Sun And Moon',
-      'monkHasTongueOfSunAndMoon', '?', null
+    rules.defineRule('monkFeatures.Tongue Of The Sun And Moon',
+      'monkHasTongueOfTheSunAndMoon', '?', null
     );
     rules.defineRule('monkFeatures.Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
       'monkHasWeaponProficiency', '?', null
@@ -6699,7 +6706,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'levels.Monk', '=', '1',
       'monkFeatures.Iron Monk', '=', '0',
       'monkFeatures.Way Of The Bow', '=', '0',
-      'monkFeatures.Way Of The Weapon Master', '=', '0'
+      // Way Of The Weapon Master delays Evasion to level 9
+      'weaponAdeptLevel', '=', 'source<9 ? 0 : null'
     );
     rules.defineRule('monkHasHighJump',
       'levels.Monk', '=', '1',
@@ -6708,7 +6716,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('monkHasImprovedEvasion',
       'levels.Monk', '=', '1',
       'monkFeatures.Adamantine Monk', '=', '0',
-      'monkFeatures.Reflexive Shot', '=', '0'
+      'monkFeatures.Reflexive Shot', '=', '0',
+      // Weapon Adept replaces Improved Evasion with Evasion
+      'weaponAdeptLevel', '=', '0'
     );
     rules.defineRule('monkHasManeuverTraining',
       'levels.Monk', '=', '1',
@@ -6756,7 +6766,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'monkFeatures.Aspect Master', '=', '0',
       'monkFeatures.Uncanny Initiative', '=', '0'
     );
-    rules.defineRule('monkHasTongueOfSunAndMoon',
+    rules.defineRule('monkHasTongueOfTheSunAndMoon',
       'levels.Monk', '=', '1',
       'monkFeatures.Ki Focus Bow', '=', '0',
       'monkFeatures.Learned Master', '=', '0',
@@ -6776,10 +6786,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Monk (Aspect)',
       'monkOfTheFourWindsLevel', '=', '1'
     );
-    rules.defineRule('skillNotes.learnedMaster',
+    rules.defineRule('skillNotes.learnedMaster.1',
+      'features.Learned Master', '?', null,
       'wisdomModifier', '=', null,
-      'intelligenceModifier', '+', null
+      'intelligenceModifier', '+', '-source'
     );
+    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(skill => {
+      if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
+        rules.defineRule
+          ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
+    });
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
