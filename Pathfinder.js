@@ -1329,6 +1329,8 @@ Pathfinder.FEATURES = {
   'Channel Energy':
     'Section=magic ' +
     'Note="R30\' Heal or inflict %1d6 HP (DC %2 Will half) %V/dy"',
+  'Channel Positive Energy':
+    'Section=magic Note="May expend 2 Lay On Hands uses for Channel Energy"',
   'Channel Smite':
     'Section=combat ' +
     'Note="Focus Channel Energy damage into melee weapon attack"',
@@ -4083,7 +4085,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Martial)",' +
       '1:Aura,"1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
-      '"4:Channel Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
+      '"4:Channel Positive Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
       '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
       '"20:Holy Champion" ' +
     'Selectables=' +
@@ -4100,8 +4102,8 @@ Pathfinder.CLASSES = {
     'SpellAbility=charisma ' +
     'SpellSlots=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
-      'P2:8=0;9=1;12=2;16=3;20=4,' +
-      'P3:19=0;11=1;15=2;19=3,' +
+      'P2:7=0;8=1;12=2;16=3;20=4,' +
+      'P3:10=0;11=1;15=2;19=3,' +
       'P4:13=0;14=1;18=2;20=3',
   'Ranger':
     'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
@@ -5546,6 +5548,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.divineMount',
       'companionPaladinLevel', '=', 'Math.floor((source - 1) / 4)'
     );
+    rules.defineRule
+      ('features.Channel Energy', 'features.Channel Positive Energy', '=', '1');
     // Other Channel Energy calculations handled in Cleric rules
     rules.defineRule('magicNotes.channelEnergy.1',
       'levels.Paladin', '+=', 'Math.floor((source + 1) / 2)'
