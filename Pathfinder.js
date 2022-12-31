@@ -968,7 +968,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="No penalty for improvised weapon, improvised damage +1 step, crit x2@19"',
   'Increased Damage Reduction':'Section=combat Note="+%V DR/- during rage"',
-  'Increased Unarmed Damage':'Section=combat Note="%V"',
   'Indomitable Will':'Section=save Note="+4 Will vs. enchantment during rage"',
   'Inspire Competence':
     'Section=magic Note="R30\' Allies +%V skill checks while performing"',
@@ -1137,6 +1136,11 @@ Pathfinder.FEATURES = {
     'Note="+1 AC wielding two weapons (+2 fighting defensively)"',
   'Two-Weapon Fighting':
     'Section=combat Note="Reduce on-hand penalty by 2, off-hand by 6"',
+  'Unarmed Strike':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Unarmed hit inflicts %V HP",' +
+      '"Has Improved Unarmed Strike features"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
   'Uncanny Dodge':'Section=combat Note="Always adds Dex modifier to AC"',
   'Venom Immunity':'Section=save Note="Immune to poisons"',
@@ -4055,9 +4059,9 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
-      '"1:Armor Class Bonus","1:Flurry Of Blows","1:Improved Unarmed Strike",' +
-      '"1:Increased Unarmed Damage","1:Stunning Fist","1:Two-Weapon Fighting",'+
-      '2:Evasion,"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
+      '"1:Armor Class Bonus","1:Flurry Of Blows","1:Stunning Fist",' +
+      '"1:Two-Weapon Fighting","1:Unarmed Strike",2:Evasion,' +
+      '"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
       '"4:Condition Fist","4:Ki Dodge","4:Ki Pool","4:Ki Speed",' +
       '"4:Ki Strike","4:Slow Fall","5:High Jump","5:Purity Of Body",' +
       '"7:Wholeness Of Body","8:Improved Two-Weapon Fighting",' +
@@ -5461,7 +5465,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // NOTE Our rule engine doesn't support modifying a value via indexing.
     // Here, we work around this limitation by defining rules that set global
     // values as a side effect, then use these values in our calculations.
-    rules.defineRule('combatNotes.increasedUnarmedDamage',
+    rules.defineRule('combatNotes.unarmedStrike',
       'levels.Monk', '=',
         'SRD35.SMALL_DAMAGE["monk"] = ' +
         'SRD35.LARGE_DAMAGE["monk"] = ' +
@@ -5470,6 +5474,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Small', '=', 'SRD35.SMALL_DAMAGE[SRD35.SMALL_DAMAGE["monk"]]',
       'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
+    rules.defineRule('features.Improved Unarmed Strike',
+      'featureNotes.unarmedStrike', '=', '1'
+    );
+    rules.defineRule
+      ('unarmedDamageDice', 'combatNotes.unarmedStrike', '=', null);
     rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
   } else if(name == 'Paladin') {
