@@ -1638,6 +1638,47 @@ PFAPG.FEATURES = {
      'Section=feature Note="+1 General Feat (Weapon Focus (monk weapon))%1"',
   'Zen Archery':'Section=combat Note="+%V bow attacks"',
 
+  // Paladin
+  'Aura Of Healing':
+    'Section=magic ' +
+    'Note="May expend 1 Channel Energy use for 30\' radius that stabilizes, gives immunity to bleed damage and save vs. affliction, and heals HD HP to allies for %{levels.Paladin} rd"',
+  'Aura Of Life':
+    'Section=combat ' +
+    'Note="10\' radius inflicts on undead -4 Will vs. positive energy and no recovery of HP from channeled negative energy"',
+  'Call Celestial Ally':
+    'Section=magic ' +
+    'Note="May cast <i>%{levels.Paladin<12? \'Lesser \' : levels.Paladin>=16 ? \'Greater \' : \'\'}Planar Ally</i> 1/wk"',
+  'Divine Armor':
+    'Section=combat ' +
+    'Note="Armor lights 30\' radius and gives +%{(levels.Paladin-2)//3} AC or special properties"',
+  'Divine Holy Symbol':
+    'Section=magic ' +
+    'Note="Gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, %{(levels.Paladin-1)//4}/dy"',
+  'Hospitaler':
+    'Section=magic ' +
+    'Note="May use Channel Energy w/out expending Lay On Hands"',
+  "Knight's Charge":
+    'Section=combat ' +
+    'Note="Mounted charge provokes no AOO/Mounted Smite Evil inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
+  'Power Of Faith':'Section=feature Note="FILL"',
+  'Shared Defense':
+    'Section=magic ' +
+    'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
+  'Shining Light':
+    'Section=combat ' +
+    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd (1d4 rd dragon, outsider, or undead) on evil creatures (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2} HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
+  'Skilled Rider':
+    'Section=companion,skill ' +
+    'Note=' +
+      '"+%V saves",' +
+      '"No Ride armor penalty"',
+  'Undead Annihilation':
+    'Section=combat ' +
+    'Note="Use of Smite Evil vs. undead destroys foe below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
+  'Undead Scourge':
+    'Section=combat ' +
+    'Note="Smite Evile does not dbl damage vs. evil dragons and outsiders"',
+
   // New base classes
   'Acid Bomb':
     'Section=combat ' +
@@ -3475,6 +3516,45 @@ PFAPG.PATHS = {
       '"4:Ki Pool (Zen Archer)","5:Ki Arrows","9:Reflexive Shot",' +
       '"11:Trick Shot (Zen Archer)","17:Ki Focus Bow"',
       // TODO Different choices for bonus feats
+
+  // Paladin
+  'Divine Defender':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"3:Shared Defense"',
+  'Hospitaler':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"11:Aura Of Healing"',
+  'Sacred Servant':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"4:Domain","8:Call Celestial Ally" ' +
+    'Selectables=' +
+      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 4:' + x + ':Domain"').join(',') + ' ' +
+    'SpellSlots=' +
+      'Domain1:4=0;5=1,' +
+      'Domain2:7=0;8=1,' +
+      'Domain3:10=0;11=1,' +
+      'Domain4:13=0;14=1',
+  'Shining Knight':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"3:Skilled Rider","11:Knight\'s Charge"',
+  'Undead Scourge':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"8:Aura Of Life","11:Undead Annihilation"',
+  'Warrior Of The Holy Light':
+    'Group=Paladin ' +
+    'Level=levels.Paladin ' +
+    'Features=' +
+      '"4:Power Of Faith","14:Shining Light"',
 
   // Oracle
   'Battle Mystery':
@@ -5369,6 +5449,17 @@ PFAPG.CLASSES = {
       '"1:Monk Of The Sacred Mountain:Archetype",' +
       '"1:Weapon Adept:Archetype",' +
       '"1:Zen Archer:Archetype"',
+  'Paladin':
+    'Selectables=' +
+      '"1:Core Paladin:Archetype",' +
+      '"1:Divine Defender:Archetype",' +
+      '"1:Hospitaler:Archetype",' +
+      '"1:Sacred Servant:Archetype",' +
+      '"1:Shining Knight:Archetype",' +
+      '"1:Undead Scourge:Archetype",' +
+      '"1:Warrior Of The Holy Light:Archetype",' +
+      '"features.Divine Defender ? 5:Divine Armor:Divine Bond",' +
+      '"features.Sacred Servant ? 5:Divine Holy Symbol:Divine Bond"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -6796,6 +6887,91 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
     });
+  } else if(name == 'Paladin') {
+    rules.defineRule('animalCompanionStats.Save Fort',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Ref',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Will',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule
+      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
+    rules.defineRule('magicNotes.sharedDefense.1',
+      'features.Shared Defense', '?', null,
+      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, bleed immunity, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and bleed immunity," : source>=6 ? ", plus automatic stabilization," : ""'
+    );
+    rules.defineRule('combatNotes.smiteEvil.3',
+      'hospitalerLevel', 'v', 'Math.floor((source - 1) / 6)',
+      'sacredServantLevel', 'v', 'Math.floor((source - 1) / 6)'
+    );
+    rules.defineRule('magicNotes.channelEnergy.1',
+      // Replace generic Paladin level computation w/Hospitaler-specific
+      'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule
+      ('paladinFeatures.Aura Of Faith', 'paladinHasAuraOfFaith', '?', null);
+    rules.defineRule
+      ('paladinFeatures.Aura Of Justice', 'paladinHasAuraOfJustice', '?', null);
+    rules.defineRule
+      ('paladinFeatures.Aura Of Resolve', 'paladinHasAuraOfResolve', '?', null);
+    rules.defineRule
+      ('paladinFeatures.Divine Health', 'paladinHasDivineHealth', '?', null);
+    rules.defineRule('paladinFeatures.Mercy', 'paladinHasMercy', '?', null);
+    rules.defineRule
+      ('paladinFeatures.Smite Evil', 'paladinHasSmiteEvil', '?', null);
+    rules.defineRule('paladinHasAuraOfFaith',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Shining Light', '=', '0'
+    );
+    rules.defineRule('paladinHasAuraOfJustice',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Aura Of Healing', '=', '0',
+      "paladinFeatures.Knight's Charge", '=', '0',
+      'paladinFeatures.Undead Annihilation', '=', '0'
+    );
+    rules.defineRule('paladinHasAuraOfResolve',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Call Celestial Ally', '=', '0',
+      'paladinFeatures.Aura Of Life', '=', '0'
+    );
+    rules.defineRule('paladinHasDivineHealth',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Skilled Rider', '=', '0'
+    );
+    rules.defineRule('paladinHasMercy',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Shared Defense', '=', '0'
+    );
+    rules.defineRule('paladinHasSmiteEvil',
+      'levels.Paladin', '=', '1',
+      'hospitalerLevel', '=', 'source<7 ? 0 : null'
+    );
+    rules.defineRule('paladinHasSpells',
+      'levels.Paladin', '=', '1',
+      'paladinFeatures.Power Of Faith', '=', '0'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Paladin (Archetype)', classLevel, '=', '1');
+    rules.defineRule
+      ('selectableFeatureCount.Paladin (Mercy)', 'paladinHasMercy', '?', null);
+    rules.defineRule('selectableFeatureCount.Paladin (Domain)',
+      'sacredServantLevel', '=', 'source>=4 ? 1 : null'
+    );
+    rules.defineRule('skillModifier.Ride',
+      'skillNotes.skilledRider', '+', '0', // Italics
+      'skillNotes.skilledRider.1', '+', null
+    );
+    rules.defineRule('skillNotes.skilledRider.1',
+      'features.Skilled Rider', '?', null,
+      'skillNotes.armorSkillCheckPenalty', '=', null
+    );
+    rules.defineRule('spellSlots.P1', 'paladinHasSpells', '?', null);
+    rules.defineRule('spellSlots.P2', 'paladinHasSpells', '?', null);
+    rules.defineRule('spellSlots.P3', 'paladinHasSpells', '?', null);
+    rules.defineRule('spellSlots.P4', 'paladinHasSpells', '?', null);
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
