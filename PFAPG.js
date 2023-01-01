@@ -1641,7 +1641,7 @@ PFAPG.FEATURES = {
   // Paladin
   'Aura Of Healing':
     'Section=magic ' +
-    'Note="May expend 1 Channel Energy use for 30\' radius that stabilizes, gives immunity to bleed damage and save vs. affliction, and heals HD HP to allies for %{levels.Paladin} rd"',
+    'Note="May expend 1 Channel Energy use for 30\' radius that gives allies stabilization, immunity to bleed damage, save vs. affliction, and HD HP healing for %{levels.Paladin} rd"',
   'Aura Of Life':
     'Section=combat ' +
     'Note="10\' radius inflicts on undead -4 Will vs. positive energy and no recovery of HP from channeled negative energy"',
@@ -1650,23 +1650,30 @@ PFAPG.FEATURES = {
     'Note="May cast <i>%{levels.Paladin<12? \'Lesser \' : levels.Paladin>=16 ? \'Greater \' : \'\'}Planar Ally</i> 1/wk"',
   'Divine Armor':
     'Section=combat ' +
-    'Note="Armor lights 30\' radius and gives +%{(levels.Paladin-2)//3} AC or special properties"',
+    'Note="Armor lights 30\' radius and gives +%{(levels.Paladin-2)//3} AC or special properties for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
   'Divine Holy Symbol':
     'Section=magic ' +
-    'Note="Gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, %{(levels.Paladin-1)//4}/dy"',
+    'Note="Holy symbol lights 30\' radius and gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
   'Hospitaler':
     'Section=magic ' +
     'Note="May use Channel Energy w/out expending Lay On Hands"',
   "Knight's Charge":
     'Section=combat ' +
-    'Note="Mounted charge provokes no AOO/Mounted Smite Evil inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
-  'Power Of Faith':'Section=feature Note="FILL"',
+    'Note="Mounted charge provokes no AOO/Smite Evil at end of mounted charge inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
+  'Light Of Faith':
+    'Section=magic ' +
+    'Note="May use Lay On Hands for %{levels.Paladin>=20 ? 60 : 30}\' radius that %{levels.Paladin>=12 ? \'acts as <i>Daylight</i> spell and \' : \'\'}gives allies +%{levels.Paladin>=20 ? 2 : 1} AC, attack, damage, and saves vs. fear%1"',
+  'Power Of Faith':
+   'Section=feature,magic ' +
+   'Note=' +
+     '"Has Light Of Faith feature",' +
+     '"+%{levels.Paladin//4} daily uses of Lay On Hands"',
   'Shared Defense':
     'Section=magic ' +
     'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
   'Shining Light':
     'Section=combat ' +
-    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd (1d4 rd dragon, outsider, or undead) on evil creatures (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2} HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
+    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd on evil creatures (1d4 rd blindness on dragon, outsider, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
   'Skilled Rider':
     'Section=companion,skill ' +
     'Note=' +
@@ -1674,10 +1681,32 @@ PFAPG.FEATURES = {
       '"No Ride armor penalty"',
   'Undead Annihilation':
     'Section=combat ' +
-    'Note="Use of Smite Evil vs. undead destroys foe below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
+    'Note="Smite Evil hit on undead destroys foe below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
   'Undead Scourge':
     'Section=combat ' +
-    'Note="Smite Evile does not dbl damage vs. evil dragons and outsiders"',
+    'Note="No dbl damage on Smite Evil vs. dragons or outsiders"',
+
+  // Ranger
+  'Adaptation':'Section=feature Note="FILL"',
+  'Blend In':'Section=feature Note="FILL"',
+  'Dual Form Shifter':'Section=feature Note="FILL"',
+  'Favored Community':'Section=feature Note="FILL"',
+  "Hunter's Tricks":'Section=feature Note="FILL"',
+  'Improved Empathic Link':'Section=feature Note="FILL"',
+  'Improved Ranger\'s Luck':'Section=feature Note="FILL"',
+  'Inspired Moment':'Section=feature Note="FILL"',
+  'Master Shifter':'Section=feature Note="FILL"',
+  'Mounted Bond':'Section=feature Note="FILL"',
+  'Push Through':'Section=feature Note="FILL"',
+  "Ranger's Focus":'Section=feature Note="FILL"',
+  "Ranger's Luck":'Section=feature Note="FILL"',
+  "Shifter's Blessing":'Section=feature Note="FILL"',
+  'Spiritual Bond':'Section=feature Note="FILL"',
+  'Spirt Bond':'Section=feature Note="FILL"',
+  'Strong Bond':'Section=feature Note="FILL"',
+  'Terrain Bond':'Section=feature Note="FILL"',
+  'Trapfinding':'Section=feature Note="FILL"',
+  'Wisdom Of The Spirit':'Section=feature Note="FILL"',
 
   // New base classes
   'Acid Bomb':
@@ -3555,6 +3584,49 @@ PFAPG.PATHS = {
     'Level=levels.Paladin ' +
     'Features=' +
       '"4:Power Of Faith","14:Shining Light"',
+
+  // Ranger
+  'Beast Master':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"4:Animal Companion","6:Improved Empathic Link","12:Strong Bond"',
+  'Guide':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"1:Ranger\'s Focus","4:Terrain Bond","9:Ranger\'s Luck",' +
+      '"11:Inspired Moment","16:Improved Ranger\'s Luck"',
+  'Horse Lord':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"4:Mounted Bond","12:Strong Bond","17:Spiritual Bond"',
+  'Infiltrator':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"3:Adaptation"',
+  'Shapeshifter':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"3:Shifter\'s Blessing","12:Dual Form Shifter","20:Master Shifter"',
+  'Skirmisher':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"5:Hunter\'s Tricks"',
+  'Spirit Ranger':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"4:Spirt Bond","12:Wisdom Of The Spirit"',
+  'Urban Ranger':
+    'Group=Ranger ' +
+    'Level=levels.Ranger ' +
+    'Features=' +
+      '"3:Favored Community","3:Trapfinding","7:Push Through","12:Blend In"',
 
   // Oracle
   'Battle Mystery':
@@ -5460,6 +5532,61 @@ PFAPG.CLASSES = {
       '"1:Warrior Of The Holy Light:Archetype",' +
       '"features.Divine Defender ? 5:Divine Armor:Divine Bond",' +
       '"features.Sacred Servant ? 5:Divine Holy Symbol:Divine Bond"',
+  'Ranger':
+    'Selectables=' +
+      '"2:Combat Style (Crossbow):Combat Style",' +
+      '"2:Combat Style (Mounted Combat):Combat Style",' +
+      '"2:Combat Style (Natural Weapon):Combat Style",' +
+      '"2:Combat Style (Two-Handed Weapon):Combat Style",' +
+      '"2:Combat Style (Weapon And Shield):Combat Style",' +
+      '"2:Deadly Aim:Crossbow Feat",' +
+      '"2:Focused Shot:Crossbow Feat",' +
+      '"2:Precise Shot:Crossbow Feat",' +
+      '"2:Rapid Reload:Crossbow Feat",' +
+      '"6:Crossbow Mastery:Crossbow Feat",' +
+      '"6:Improved Precise Shot:Crossbow Feat",' +
+      '"10:Pinpoint Targeting:Crossbow Feat",' +
+      '"10:Shot On The Run:Crossbow Feat",' +
+      '"2:Mounted Combat:Mounted Combat Feat",' +
+      '"2:Mounted Archery:Mounted Combat Feat",' +
+      '"2:Ride-By Attack:Mounted Combat Feat",' +
+      '"6:Mounted Shield:Mounted Combat Feat",' +
+      '"6:Spirited Charge:Mounted Combat Feat",' +
+      '"10:Mounted Skirmisher:Mounted Combat Feat",' +
+      '"10:Unseat:Mounted Combat Feat",' +
+      '"2:Aspect Of The Beast:Natural Weapon Feat",' +
+      '"2:Improved Natural Weapon:Natural Weapon Feat",' +
+      '"2:Rending Claws:Natural Weapon Feat",' +
+      '"2:Weapon Focus:Natural Weapon Feat",' +
+      '"6:Eldritch Fangs:Natural Weapon Feat",' +
+      '"6:Vital Strike:Natural Weapon Feat",' +
+      '"10:Multiattack:Natural Weapon Feat",' +
+      '"10:Improved Vital Strike:Natural Weapon Feat",' +
+      '"2:Cleave:Two-Handed Weapon Feat",' +
+      '"2:Power Attack:Two-Handed Weapon Feat",' +
+      '"2:Pushing Assault:Two-Handed Weapon Feat",' +
+      '"2:Shield Of Swings:Two-Handed Weapon Feat",' +
+      '"6:Furious Focus:Two-Handed Weapon Feat",' +
+      '"6:Great Cleave:Two-Handed Weapon Feat",' +
+      '"10:Dreadful Carnage:Two-Handed Weapon Feat",' +
+      '"10:Improved Sunder:Two-Handed Weapon Feat",' +
+      '"2:Improved Shield Bash:Weapon And Shield Feat",' +
+      '"2:Shield Focus:Weapon And Shield Feat",' +
+      '"2:Shield Slam:Weapon And Shield Feat",' +
+      '"2:Two-Weapon Fighting:Weapon And Shield Feat",' +
+      '"6:Saving Shield:Weapon And Shield Feat",' +
+      '"6:Shield Master:Weapon And Shield Feat",' +
+      '"10:Bashing Finish:Weapon And Shield Feat",' +
+      '"10:Greater Shield Focus:Weapon And Shield Feat",' +
+      '"1:Beast Master:Archetype",' +
+      '"1:Core Ranger:Archetype",' +
+      '"1:Guide:Archetype",' +
+      '"1:Horse Lord:Archetype",' +
+      '"1:Infiltrator:Archetype",' +
+      '"1:Shapeshifter:Archetype",' +
+      '"1:Skirmisher:Archetype",' +
+      '"1:Spirit Ranger:Archetype",' +
+      '"1:Urban Ranger:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -6901,15 +7028,23 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('companionNotes.skilledRider', 'charismaModifier', '=', null);
     rules.defineRule('magicNotes.sharedDefense.1',
       'features.Shared Defense', '?', null,
-      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, bleed immunity, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and bleed immunity," : source>=6 ? ", plus automatic stabilization," : ""'
+      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
     );
     rules.defineRule('combatNotes.smiteEvil.3',
-      'hospitalerLevel', 'v', 'Math.floor((source - 1) / 6)',
-      'sacredServantLevel', 'v', 'Math.floor((source - 1) / 6)'
+      'hospitalerLevel', 'v', 'Math.floor((source + 5) / 6)',
+      'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
+    rules.defineRule
+      ('features.Light Of Faith', 'featureNotes.powerOfFaith', '=', '1');
     rules.defineRule('magicNotes.channelEnergy.1',
       // Replace generic Paladin level computation w/Hospitaler-specific
       'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
+    rules.defineRule('magicNotes.lightOfFaith.1',
+      'features.Light Of Faith', '?', null,
+      classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating critical hit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating critical hit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
     );
     rules.defineRule
       ('paladinFeatures.Aura Of Faith', 'paladinHasAuraOfFaith', '?', null);
@@ -6972,6 +7107,29 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('spellSlots.P2', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlots.P3', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlots.P4', 'paladinHasSpells', '?', null);
+  } else if(name == 'Ranger') {
+    rules.defineRule
+      ('selectableFeatureCount.Ranger (Archetype)', classLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Ranger (Crossbow Feat)',
+      'features.Combat Style (Crossbow)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Mounted Combat Feat)',
+      'features.Combat Style (Mounted Combat)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Natural Weapon Feat)',
+      'features.Combat Style (Natural Weapon)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Two-Handed Weapon Feat)',
+      'features.Combat Style (Two-Handed Weapon)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Weapon And Shield Feat)',
+      'features.Combat Style (Weapon And Shield)', '?', null,
+      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+    );
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
