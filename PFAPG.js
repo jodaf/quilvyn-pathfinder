@@ -2736,7 +2736,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May make Intimidation check to shake foe for HP rd (crit also frightened 1 rd) after inflicting nonlethal damage"',
   'Expanded Arcana':
-    'Section=magic Note="+1 spells know (+2 of lower than max level)"',
+    'Section=magic Note="+1 spells known (+2 of lower than max level)"',
   'Extra Bombs':'Section=combat Note="+%V bombs/dy"',
   'Extra Discovery':'Section=feature Note="+%V discoveries"',
   'Extra Hex':'Section=feature Note="+%V hexes"',
@@ -6008,26 +6008,26 @@ PFAPG.classRulesExtra = function(rules, name) {
       'combatNotes.naturalToughness.1', '+', null
     );
     rules.defineRule('barbarianHasDamageReduction',
-      'levels.Barbarian', '=', '1',
+      classLevel, '=', '1',
       'barbarianFeatures.Invulnerability', '=', '0',
       'barbarianFeatures.Keen Senses (Barbarian)', '=', '0',
       'barbarianFeatures.Natural Toughness', '=', '0'
     );
     rules.defineRule('barbarianHasFastMovement',
-      'levels.Barbarian', '=', '1',
+      classLevel, '=', '1',
       'barbarianFeatures.Destructive', '=', '0',
       'barbarianFeatures.Fast Rider', '=', '0',
       'barbarianFeatures.Raging Drunk', '=', '0',
       'barbarianFeatures.Skilled Thrower', '=', '0'
     );
     rules.defineRule('barbarianHasImprovedUncannyDodge',
-      'levels.Barbarian', '=', '1',
+      classLevel, '=', '1',
       'barbarianFeatures.Bestial Mount', '=', '0',
       'barbarianFeatures.Improved Savage Grapple', '=', '0',
       'barbarianFeatures.Invulnerability', '=', '0'
     );
     rules.defineRule('barbarianHasTrapSense',
-      'levels.Barbarian', '=', '1',
+      classLevel, '=', '1',
       'barbarianFeatures.Battle Scavenger', '=', '0',
       'barbarianFeatures.Elemental Fury', '=', '0',
       'barbarianFeatures.Extreme Endurance', '=', '0',
@@ -6036,7 +6036,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'barbarianFeatures.Sixth Sense', '=', '0'
     );
     rules.defineRule('barbarianHasUncannyDodge',
-      'levels.Barbarian', '=', '1',
+      classLevel, '=', '1',
       'barbarianFeatures.Bestial Mount', '=', '0',
       'barbarianFeatures.Invulnerability', '=', '0',
       'barbarianFeatures.Savage Grapple', '=', '0'
@@ -6145,7 +6145,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Bard') {
     rules.defineRule('bardHasBardicKnowledge',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Arcane Strike', '=', '0',
       'bardFeatures.Eye For Detail', '=', '0',
       'bardFeatures.Heraldic Expertise', '=', '0',
@@ -6155,39 +6155,39 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.World Traveler (Sea Singer)', '=', '0'
     );
     rules.defineRule('bardHasCountersong',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Gladhanding', '=', '0',
       'bardFeatures.Improved Counterspell', '=', '0',
       'bardFeatures.Rallying Cry', '=', '0',
       'bardFeatures.Sea Shanty', '=', '0'
     );
     rules.defineRule('bardHasDeadlyPerformance',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Spell Catching', '=', '0'
     );
     rules.defineRule('bardHasDirgeOfDoom',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Glorious Epic', '=', '0',
       'bardFeatures.Spell Suppression', '=', '0'
     );
     rules.defineRule('bardHasFascinate',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Inspiring Blow', '=', '0'
     );
     rules.defineRule('bardHasFrighteningTune',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Metamagic Mastery (Magician)', '=', '0',
       'bardFeatures.Scandal', '=', '0'
     );
     rules.defineRule('bardHasInspireCompetence',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Harmless Performer', '=', '0',
       'bardFeatures.Mockery', '=', '0',
       'bardFeatures.Sea Shanty', '=', '0',
       'bardFeatures.Trap Sense', '=', '0'
     );
     rules.defineRule('bardHasInspireCourage',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Careful Teamwork', '=', '0',
       'bardFeatures.Disappearing Act', '=', '0',
       'bardFeatures.Dweomercraft', '=', '0',
@@ -6196,33 +6196,33 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Stealspell', '=', '0'
     );
     rules.defineRule('bardHasInspireGreatness',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Dramatic Subtext', '=', '0',
       'bardFeatures.Madcap Prank', '=', '0',
       'bardFeatures.True Confession', '=', '0'
     );
     rules.defineRule('bardHasInspireHeroics',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Greater Stealspell', '=', '0',
       'bardFeatures.Show Yourselves', '=', '0',
       'bardFeatures.Slip Through The Crowd', '=', '0'
     );
     rules.defineRule('bardHasJackOfAllTrades',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Arcane Armor', '=', '0',
       'bardFeatures.Song Of The Fallen', '=', '0',
       'bardFeatures.Wand Mastery', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
     );
     rules.defineRule('bardHasLoreMaster',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Arcane Bond', '=', '0',
       'bardFeatures.Quick Change', '=', '0',
       'bardFeatures.Sneak Attack', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
     );
     rules.defineRule('bardHasMassSuggestion',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Battle Song', '=', '0',
       'bardFeatures.Call The Storm', '=', '0',
       'bardFeatures.Mass Bladethirst', '=', '0',
@@ -6230,11 +6230,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Pedantic Lecture', '=', '0'
     );
     rules.defineRule('bardHasSoothingPerformance',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Berserkergang', '=', '0'
     );
     rules.defineRule('bardHasSuggestion',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Bladethirst', '=', '0',
       'bardFeatures.Incite Rage', '=', '0',
       'bardFeatures.Lamentable Belaborment', '=', '0',
@@ -6242,7 +6242,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Whistle The Wind', '=', '0'
     );
     rules.defineRule('bardHasVersatilePerformance',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Arcane Investigation', '=', '0',
       'bardFeatures.Archivist', '=', '0',
       'bardFeatures.Combat Casting', '=', '0',
@@ -6251,7 +6251,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Sneakspell', '=', '0'
     );
     rules.defineRule('bardHasWellVersed',
-      'levels.Bard', '=', '1',
+      classLevel, '=', '1',
       'bardFeatures.Arcane Insight', '=', '0',
       'bardFeatures.Combat Casting', '=', '0',
       'bardFeatures.Extended Performance', '=', '0',
@@ -6393,12 +6393,12 @@ PFAPG.classRulesExtra = function(rules, name) {
   } else if(name == 'Cleric') {
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
-      'levels.Cleric', '=', 'Math.floor(source / 2)'
+      classLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
     rules.defineRule('combatNotes.rage(Cleric).1',
       'features.Rage (Cleric)', '?', null,
-      'levels.Cleric', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
+      classLevel, '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
     );
     rules.defineRule
       ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
@@ -6411,7 +6411,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Greater Chaos Totem', '+', '1'
     );
     rules.defineRule('skillNotes.eyesOfTheHawk',
-      'levels.Cleric', '=', 'Math.max(Math.floor(source / 2), 1)'
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
   } else if(name == 'Druid') {
     var allFeats = rules.getChoices('feats');
@@ -6424,7 +6424,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'armorWeight', '=', 'source <= 1 ? 1 : null'
     );
     rules.defineRule('druidHasAThousandFaces',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Deep Diver', '=', '0',
       'druidFeatures.Dunemeld', '=', '0',
       'druidFeatures.Evasion', '=', '0',
@@ -6436,11 +6436,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Totemic Summons', '=', '0'
     );
     rules.defineRule('druidHasNatureSense',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Cavesense', '=', '0'
     );
     rules.defineRule('druidHasResistNaturesLure',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Arctic Endurance', '=', '0',
       'druidFeatures.Desert Endurance', '=', '0',
       'druidFeatures.Miasma', '=', '0',
@@ -6453,11 +6453,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Torrid Endurance', '=', '0'
     );
     rules.defineRule('druidHasSpontaneousDruidSpell',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Spontaneous Casting', '=', '0'
     );
     rules.defineRule('druidHasTracklessStep',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       // BD5 Miasma replaces D3 Trackless Step
       'blightDruidLevel', '=', '0',
       'druidFeatures.Icewalking', '=', '0',
@@ -6471,7 +6471,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'jungleDruidLevel', '=', '0'
     );
     rules.defineRule('druidHasVenomImmunity',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Blightblooded', '=', '0',
       'druidFeatures.Canny Charger', '=', '0',
       'druidFeatures.Mental Strength', '=', '0',
@@ -6482,11 +6482,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Animal Shaman Feat Bonus', '=', '0'
     );
     rules.defineRule('druidHasWildEmpathy',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Vermin Empathy', '=', '0'
     );
     rules.defineRule('druidHasWildShape',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'aquaticDruidLevel', '=', 'source>=6 ? null : 0',
       'arcticDruidLevel', '=', 'source>=6 ? null : 0',
       'caveDruidLevel', '=', 'source>=6 ? null : 0',
@@ -6499,7 +6499,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalShamanLevel', '=', 'source>=6 ? null : 0'
     );
     rules.defineRule('druidHasWoodlandStride',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'druidFeatures.Aquatic Adaptation', '=', '0',
       'druidFeatures.Arctic Native', '=', '0',
       'druidFeatures.Desert Native', '=', '0',
@@ -6569,7 +6569,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Wolf Totem', '=', '"canine"'
     );
     rules.defineRule('isNotUrbanDruid',
-      'levels.Druid', '=', '1',
+      classLevel, '=', '1',
       'features.Urban Druid', '=', '0'
     );
     rules.defineRule
@@ -6687,7 +6687,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.savageCharge.1',
       'features.Savage Charge', '?', null,
-      'levels.Fighter', '=', 'source / 2',
+      classLevel, '=', 'source / 2',
       'combatNotes.greaterSavageCharge', '*', '0.5'
     );
     rules.defineRule('combatNotes.shieldMastery.1',
@@ -6713,7 +6713,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.shieldedFortress', '=', 'source=="Improved Evasion" ? 1 : null'
     );
     rules.defineRule('fighterHasArmorMastery',
-      'levels.Fighter', '=', '1',
+      classLevel, '=', '1',
       'fighterFeatures.Deadly Defense', '=', '0',
       'fighterFeatures.Devastating Blow', '=', '0',
       'fighterFeatures.Indomitable Steed', '=', '0',
@@ -6725,7 +6725,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Unstoppable Strike', '=', '0'
     );
     rules.defineRule('fighterHasArmorTraining',
-      'levels.Fighter', '=', '1',
+      classLevel, '=', '1',
       'fighterFeatures.Active Defense', '=', '0',
       'fighterFeatures.Armored Charger', '=', '0',
       'fighterFeatures.Deadshot', '=', '0',
@@ -6738,7 +6738,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Weapon Training (Weapon Master)', '=', '0'
     );
     rules.defineRule('fighterHasBravery',
-      'levels.Fighter', '=', '1',
+      classLevel, '=', '1',
       'fighterFeatures.Agility', '=', '0',
       'fighterFeatures.Deceptive Strike', '=', '0',
       'fighterFeatures.Hawkeye', '=', '0',
@@ -6750,14 +6750,14 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Weapon Guard', '=', '0'
     );
     rules.defineRule('fighterHasWeaponMastery',
-      'levels.Fighter', '=', '1',
+      classLevel, '=', '1',
       'fighterFeatures.Natural Weapon Mastery', '=', '0',
       'fighterFeatures.Shield Ward', '=', '0',
       'fighterFeatures.Shielded Fortress', '=', '0',
       'fighterFeatures.Whirlwind Blitz', '=', '0'
     );
     rules.defineRule('fighterHasWeaponTraining',
-      'levels.Fighter', '=', '1',
+      classLevel, '=', '1',
       'fighterFeatures.Crossbow Expert', '=', '0',
       'fighterFeatures.Expert Archer', '=', '0',
       'fighterFeatures.Leaping Attack', '=', '0',
@@ -6896,12 +6896,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('monkFeatures.Wholeness Of Body', 'monkHasWholenessOfBody', '?', null);
     rules.defineRule('monkHasAbundantStep',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Slow Time', '=', '0',
       'monkFeatures.Touch Of Surrender', '=', '0'
     );
     rules.defineRule('monkHasDiamondBody',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Drunken Courage', '=', '0',
       'monkFeatures.Ki Sacrifice', '=', '0',
       'monkFeatures.Ki Weapons', '=', '0',
@@ -6910,46 +6910,46 @@ PFAPG.classRulesExtra = function(rules, name) {
       'monkFeatures.Trick Shot (Zen Archer)', '=', '0'
     );
     rules.defineRule('monkHasDiamondSoul',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Drunken Resilience', '=', '0',
       'monkFeatures.Mystic Prescience', '=', '0',
       'monkFeatures.Sipping Demon', '=', '0'
     );
     rules.defineRule('monkHasEmptyBody',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Firewater Breath', '=', '0',
       'monkFeatures.Mystic Persistence', '=', '0'
     );
     rules.defineRule('monkHasEvasion',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Iron Monk', '=', '0',
       'monkFeatures.Way Of The Bow', '=', '0',
       // Way Of The Weapon Master delays Evasion to level 9
       'weaponAdeptLevel', '=', 'source<9 ? 0 : null'
     );
     rules.defineRule('monkHasHighJump',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Iron Limb Defense', '=', '0'
     );
     rules.defineRule('monkHasImprovedEvasion',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Adamantine Monk', '=', '0',
       'monkFeatures.Reflexive Shot', '=', '0',
       // Weapon Adept replaces Improved Evasion with Evasion
       'weaponAdeptLevel', '=', '0'
     );
     rules.defineRule('monkHasManeuverTraining',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Zen Archery', '=', '0'
     );
     rules.defineRule('monkHasPerfectSelf',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Immortality', '=', '0',
       'monkFeatures.Pure Power', '=', '0',
       'monkFeatures.True Sacrifice', '=', '0'
     );
     rules.defineRule('monkHasPurityOfBody',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Drunken Strength', '=', '0',
       'monkFeatures.Ki Arrows', '=', '0',
       'monkFeatures.Ki Weapons', '=', '0',
@@ -6957,45 +6957,45 @@ PFAPG.classRulesExtra = function(rules, name) {
       'monkFeatures.Steal Ki', '=', '0'
     );
     rules.defineRule('monkHasQuiveringPalm',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Ki Sacrifice', '=', '0',
       'monkFeatures.Touch Of Peace', '=', '0'
     );
     rules.defineRule('monkHasSlowFall',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Bastion Stance', '=', '0'
     );
     rules.defineRule('monkHasStillMind',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Drunken Ki', '=', '0',
       'monkFeatures.Ki Mystic', '=', '0',
       'monkFeatures.Point Blank Master', '=', '0',
       'monkFeatures.Versatile Improvisation', '=', '0'
     );
     rules.defineRule('monkHasStunningFist',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Elemental Fist', '=', '0',
       'monkFeatures.Perfect Strike', '=', '0',
       'monkFeatures.Punishing Kick', '=', '0',
       'monkFeatures.Touch Of Serenity', '=', '0'
     );
     rules.defineRule('monkHasTimelessBody',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Aspect Master', '=', '0',
       'monkFeatures.Uncanny Initiative', '=', '0'
     );
     rules.defineRule('monkHasTongueOfTheSunAndMoon',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Ki Focus Bow', '=', '0',
       'monkFeatures.Learned Master', '=', '0',
       'monkFeatures.Vow Of Silence', '=', '0'
     );
     rules.defineRule('monkHasWeaponProficiency',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Monk Of The Empty Hand', '=', '0'
     );
     rules.defineRule('monkHasWholenessOfBody',
-      'levels.Monk', '=', '1',
+      classLevel, '=', '1',
       'monkFeatures.Ancient Healing Hand', '=', '0',
       'monkFeatures.Life Funnel', '=', '0'
     );
@@ -7058,34 +7058,34 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('paladinFeatures.Smite Evil', 'paladinHasSmiteEvil', '?', null);
     rules.defineRule('paladinHasAuraOfFaith',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Shining Light', '=', '0'
     );
     rules.defineRule('paladinHasAuraOfJustice',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Aura Of Healing', '=', '0',
       "paladinFeatures.Knight's Charge", '=', '0',
       'paladinFeatures.Undead Annihilation', '=', '0'
     );
     rules.defineRule('paladinHasAuraOfResolve',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Call Celestial Ally', '=', '0',
       'paladinFeatures.Aura Of Life', '=', '0'
     );
     rules.defineRule('paladinHasDivineHealth',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Skilled Rider', '=', '0'
     );
     rules.defineRule('paladinHasMercy',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Shared Defense', '=', '0'
     );
     rules.defineRule('paladinHasSmiteEvil',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'hospitalerLevel', '=', 'source<7 ? 0 : null'
     );
     rules.defineRule('paladinHasSpells',
-      'levels.Paladin', '=', '1',
+      classLevel, '=', '1',
       'paladinFeatures.Power Of Faith', '=', '0'
     );
     rules.defineRule
@@ -7109,27 +7109,128 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('spellSlots.P4', 'paladinHasSpells', '?', null);
   } else if(name == 'Ranger') {
     rules.defineRule
+      ('rangerFeatures.Camouflage', 'rangerHasCamouflage', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Endurance', 'rangerHasEndurance', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Evasion', 'rangerHasEvasion', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Favored Enemy', 'rangerHasFavoredEnemy', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Favored Terrain', 'rangerHasFavoredTerrain', '?', null);
+    rules.defineRule('rangerFeatures.Hide In Plain Sight',
+      'rangerHasHideInPlainSight', '?', null
+    );
+    rules.defineRule('rangerFeatures.Improved Evasion',
+      'rangerHasImprovedEvasion', '?', null
+    );
+    rules.defineRule
+      ('rangerFeatures.Improved Quarry', 'rangerHasImprovedQuarry', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Master Hunter', 'rangerHasMasterHunter', '?', null);
+    rules.defineRule('rangerFeatures.Quarry', 'rangerHasQuarry', '?', null);
+    rules.defineRule
+      ('rangerFeatures.Woodland Stride', 'rangerHasWoodlandStride', '?', null);
+    rules.defineRule('rangerHasCamouflage',
+      classLevel, '=', '1',
+      'rangerFeatures.Blend In', '=', '0',
+      'rangerFeatures.Dual Form Shifter', '=', '0',
+      'rangerFeatures.Strong Bond', '=', '0',
+      'rangerFeatures.Wisdom Of The Spirits', '=', '0'
+    );
+    rules.defineRule('rangerHasEndurance',
+      classLevel, '=', '1',
+      'rangerFeatures.Trapfinding', '=', '0'
+    );
+    rules.defineRule('rangerHasEvasion',
+      classLevel, '=', '1',
+      "rangerFeatures.Ranger's Luck", '=', '0'
+    );
+    rules.defineRule('rangerHasFavoredEnemy',
+      classLevel, '=', '1',
+      "rangerFeatures.Ranger's Focus", '=', '0'
+    );
+    rules.defineRule('rangerHasFavoredTerrain',
+      classLevel, '=', '1',
+      'rangerFeatures.Adaptation', '=', '0',
+      'rangerFeatures.Favored Community', '=', '0'
+    );
+    rules.defineRule('rangerHasHideInPlainSight',
+      classLevel, '=', '1',
+      'rangerFeatures.Invisibility Trick', '=', '0',
+      'rangerFeatures.Spiritual Bond', '=', '0'
+    );
+    rules.defineRule('rangerHasHuntersBond',
+      classLevel, '=', '1',
+      'rangerFeatures.Beast Master', '=', '0',
+      'rangerFeatures.Guide', '=', '0',
+      'rangerFeatures.Horse Lord', '=', '0',
+      'rangerFeatures.Spirit Bond', '=', '0'
+    );
+    rules.defineRule('rangerHasImprovedEvasion',
+      classLevel, '=', '1',
+      "rangerFeatures.Improved Ranger's Luck", '=', '0'
+    );
+    rules.defineRule('rangerHasImprovedQuarry',
+      classLevel, '=', '1',
+      'rangerFeatures.Inspired Moment', '=', '0'
+    );
+    rules.defineRule('rangerHasMasterHunter',
+      classLevel, '=', '1',
+      'rangerFeatures.Master Shifter', '=', '0'
+    );
+    rules.defineRule('rangerHasQuarry',
+      classLevel, '=', '1',
+      'rangerFeatures.Inspired Moment', '=', '0'
+    );
+    rules.defineRule('rangerHasSpells',
+      classLevel, '=', '1',
+      "rangerFeatures.Hunter's Tricks", '=', '0'
+    );
+    rules.defineRule('rangerHasWoodlandStride',
+      classLevel, '=', '1',
+      'rangerFeatures.Push Through', '=', '0'
+    );
+    rules.defineRule
       ('selectableFeatureCount.Ranger (Archetype)', classLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Ranger (Archery Feat)',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
+    );
     rules.defineRule('selectableFeatureCount.Ranger (Crossbow Feat)',
       'features.Combat Style (Crossbow)', '?', null,
-      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Hunter's Bond)",
+      'rangerHasHuntersBond', '?', null
     );
     rules.defineRule('selectableFeatureCount.Ranger (Mounted Combat Feat)',
       'features.Combat Style (Mounted Combat)', '?', null,
-      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Natural Weapon Feat)',
       'features.Combat Style (Natural Weapon)', '?', null,
-      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Two-Handed Weapon Feat)',
       'features.Combat Style (Two-Handed Weapon)', '?', null,
-      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
+    );
+    rules.defineRule('selectableFeatureCount.Ranger (Two-Weapon Feat)',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Weapon And Shield Feat)',
       'features.Combat Style (Weapon And Shield)', '?', null,
-      'levels.Ranger', '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
+      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
+      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
     );
+    rules.defineRule('spellSlots.R1', 'rangerHasSpells', '?', null);
+    rules.defineRule('spellSlots.R2', 'rangerHasSpells', '?', null);
+    rules.defineRule('spellSlots.R3', 'rangerHasSpells', '?', null);
+    rules.defineRule('spellSlots.R4', 'rangerHasSpells', '?', null);
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
