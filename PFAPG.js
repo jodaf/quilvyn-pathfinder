@@ -1687,25 +1687,143 @@ PFAPG.FEATURES = {
     'Note="No dbl damage on Smite Evil vs. dragons or outsiders"',
 
   // Ranger
-  'Adaptation':'Section=feature Note="FILL"',
+  'Adaptation':
+    'Section=feature ' +
+    'Note="May use special ability of %{(levels.Ranger+2)//5} favored enemy %{levels.Ranger*10} min/dy"',
+  'Aiding Attack':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to give ally +2 next attack on foe hit by self for 1 rd"',
   'Blend In':'Section=feature Note="FILL"',
-  'Dual Form Shifter':'Section=feature Note="FILL"',
+  'Bolster Companion':
+    'Section=companion ' +
+    'Note="May use Hunter\'s Trick to give animal companion immediate +4 AC, +4 CMD, and half damage reduction when struck"',
+  'Catfall':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to ignore 20\' of falling damage"',
+  'Chameleon Step':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to move dbl speed w/out Stealth penalty"',
+  'Cunning Pantomime':
+    'Section=skill ' +
+    'Note="May use Hunter\'s Trick to communicate w/any speaking creature for 10 min; suffers -4 Bluff and Diplomacy"',
+  'Defensive Bow Stance':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to make ranged attack w/out provoking AOO for 1 rd"',
+  'Deft Stand':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to stand up w/out provoking AOO"',
+  'Distracting Attack':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to inflict -2 attacks on foe for 1 rd w/successful attack"',
+  'Dual Form Shifter':'Section=feature Note="May use 2 Shifter\'s Blessings simultaneously"',
   'Favored Community':'Section=feature Note="FILL"',
-  "Hunter's Tricks":'Section=feature Note="FILL"',
-  'Improved Empathic Link':'Section=feature Note="FILL"',
-  'Improved Ranger\'s Luck':'Section=feature Note="FILL"',
-  'Inspired Moment':'Section=feature Note="FILL"',
-  'Master Shifter':'Section=feature Note="FILL"',
-  'Mounted Bond':'Section=feature Note="FILL"',
+  'Form Of The Bear':
+    'Section=ability Note="+%V Strength and -%1 Spped in shifted form"',
+  'Form Of The Cat':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"+%V Speed in shifted form",' +
+      '"+%V Acrobatics and Climb in shifted form"',
+  'Form Of The Dragon':
+    'Section=ability,combat ' +
+    'Note=' +
+      '"%V\' Fly in shifted form",' +
+      '"+%V AC in shifted form"',
+  'Form Of The Eagle':
+    'Section=ability,skill ' +
+    'Note=' +
+     '"%V\' Fly in shifted form",' +
+     '"+10 Perception in shifted form"',
+  'Form Of The Jackal':
+    'Section=combat Note="May move %V speed w/out provoking AOO"',
+  'Form Of The Otter':
+    'Section=ability,skill ' +
+    'Note=' +
+      '"%V\' Swim in shifted form",' +
+      '"+%V Swim in shifted form"',
+  'Hateful Attack':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to dbl threat range against favored enemy for 1 rd"',
+  'Heel':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to move animal companion to self w/out AOO in starting square"',
+  'Hobbling Attack':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to inflict half speed for 1d4 rd with successful attack"',
+  "Hunter's Tricks":
+    'Section=combat Note="%V Selections %{levels.Ranger//2+wisdomModifier}/dy"',
+  'Improved Empathic Link':
+    'Section=companion ' +
+    'Note="May share emotions and see through companions eyes up to 1 mi"',
+  'Improved Ranger\'s Luck':
+    'Section=combat Note="Increased Ranger\'s Luck effects"',
+  'Inspired Moment':
+    'Section=combat ' +
+    'Note="Gains +10\' speed, dbl move, +4 AC, +4 attack, and confirm crit for 1 rd %{levels.Ranger>=19 ? 2 : 1}/dy"',
+  'Master Shifter':
+    'Section=feature ' +
+    'Note="Increased Shifter\'s Blessing effects; may polymorph instead"',
+  'Mounted Bond':'Section=feature Note="Has Animal Companion mount"',
   'Push Through':'Section=feature Note="FILL"',
-  "Ranger's Focus":'Section=feature Note="FILL"',
-  "Ranger's Luck":'Section=feature Note="FILL"',
-  "Shifter's Blessing":'Section=feature Note="FILL"',
-  'Spiritual Bond':'Section=feature Note="FILL"',
+  'Quick Climb':
+    'Section=skill ' +
+    'Note="May use Hunter\'s Trick to Climb at full speed w/out penalty for 1 rd"',
+  'Quick Healing':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Truck for swift action Heal skill or move action potion use on adjacent ally"',
+  "Ranger's Counsel":
+    'Section=skill ' +
+    'Note="R30\' May use Hunter\'s Trick to give allies +2 on choice of known skill"',
+  "Ranger's Focus":
+    'Section=combat ' +
+    'Note="+%{2+2*levels.Ranger//5} attack and damage on target until surrenders or unconscious %{(levels.Ranger+2)//3}/dy"',
+  "Ranger's Luck":
+    'Section=attack ' +
+    'Note="May gain%1 reroll attack or force foe gain%V1 reroll %{(levels.Ranger-4)//5}/dy"',
+  'Rattling Strike':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to shake foe for 1d4 rd w/successful attack"',
+  'Second Chance Strike':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to immediately reroll melee miss w/-5 attack"',
+  "Shifter's Blessing":
+    'Section=feature ' +
+    'Note="May use %{(levels.Ranger+2)//5} selections for %{levels.Ranger+wisdomModifier} rd %{(levels.Ranger+2)//5}/dy"',
+  "Sic 'em:":
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to give animal companion immediate attack on adjacent foe"',
+  'Skill Sage':
+    'Section=skill ' +
+    'Note="May use Hunter\'s Trick to take the better of 2 skill rolls"',
+  'Spiritual Bond':'Section=companion Note="R30\' Mount gains %{levels.Ranger} temporary HP and self may take half of mount\'s damage 1/dy"',
   'Spirt Bond':'Section=feature Note="FILL"',
-  'Strong Bond':'Section=feature Note="FILL"',
-  'Terrain Bond':'Section=feature Note="FILL"',
+  "Stag's Leap":
+    'Section=skill ' +
+    'Note="May use Hunter\'s Trick to make running jump w/out prior move"',
+  'Strong Bond':'Section=companion Note="+3 Companion Master Level"',
+  'Surprise Shift':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to move 5\' w/out provoking AOO"',
+  'Tangling Attack':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to inflict entangled w/successful attack"',
+  'Terrain Bond':
+    'Section=combat,skill ' +
+    'Note="Allies w/in sight gain +2 Initiative in favored terrain",' +
+         '"Allies w/in sight gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain"',
   'Trapfinding':'Section=feature Note="FILL"',
+  'Trick Shot':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to ignore concealment, soft cover, and partial cover w/ranged attack"',
+  'Uncanny Senses':
+    'Section=skill ' +
+    'Note="May use Hunter\'s Trick to gain +1 Perception for 1 rd"',
+  'Upending Strike':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to inflict trip w/successful attack"',
+  'Vengeance Strike':
+    'Section=combat ' +
+    'Note="May use Hunter\'s Trick to make immediate attack on adjacent foe that hits ally"',
   'Wisdom Of The Spirit':'Section=feature Note="FILL"',
 
   // New base classes
@@ -3601,7 +3719,8 @@ PFAPG.PATHS = {
     'Group=Ranger ' +
     'Level=levels.Ranger ' +
     'Features=' +
-      '"4:Mounted Bond","12:Strong Bond","17:Spiritual Bond"',
+      '"4:Animal Companion","4:Mounted Bond","12:Strong Bond",' +
+      '"17:Spiritual Bond"',
   'Infiltrator':
     'Group=Ranger ' +
     'Level=levels.Ranger ' +
@@ -5586,7 +5705,38 @@ PFAPG.CLASSES = {
       '"1:Shapeshifter:Archetype",' +
       '"1:Skirmisher:Archetype",' +
       '"1:Spirit Ranger:Archetype",' +
-      '"1:Urban Ranger:Archetype"',
+      '"1:Urban Ranger:Archetype",' +
+      '"3:Form Of The Bear:Shifter\'s Blessing",' +
+      '"3:Form Of The Cat:Shifter\'s Blessing",' +
+      '"3:Form Of The Dragon:Shifter\'s Blessing",' +
+      '"3:Form Of The Eagle:Shifter\'s Blessing",' +
+      '"3:Form Of The Jackal:Shifter\'s Blessing",' +
+      '"3:Form Of The Otter:Shifter\'s Blessing",' +
+      '"3:Aiding Attack:Hunters\'s Trick",' +
+      '"3:Bolster Companion:Hunters\'s Trick",' +
+      '"3:Catfall:Hunters\'s Trick",' +
+      '"3:Chameleon Step:Hunters\'s Trick",' +
+      '"3:Cunning Pantomime:Hunters\'s Trick",' +
+      '"3:Defensive Bow Stance:Hunters\'s Trick",' +
+      '"3:Deft Stand:Hunters\'s Trick",' +
+      '"3:Distracting Attack:Hunters\'s Trick",' +
+      '"3:Hateful Attack:Hunters\'s Trick",' +
+      '"3:Heel:Hunters\'s Trick",' +
+      '"3:Hobbling Attack:Hunters\'s Trick",' +
+      '"3:Quick Climb:Hunters\'s Trick",' +
+      '"3:Quick Healing:Hunters\'s Trick",' +
+      '"3:Ranger\'s Counsel:Hunters\'s Trick",' +
+      '"3:Rattling Strike:Hunters\'s Trick",' +
+      '"3:Second Chance Strike:Hunters\'s Trick",' +
+      '"3:Sic \'em:Hunters\'s Trick",' +
+      '"3:Skill Sage:Hunters\'s Trick",' +
+      '"3:Stag\'s Leap:Hunters\'s Trick",' +
+      '"3:Surprise Shift:Hunters\'s Trick",' +
+      '"3:Tangling Attack:Hunters\'s Trick",' +
+      '"3:Trick Shot:Hunters\'s Trick",' +
+      '"3:Uncanny Senses:Hunters\'s Trick",' +
+      '"3:Upending Strike:Hunters\'s Trick",' +
+      '"3:Vengeance Strike:Hunters\'s Trick"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -7108,6 +7258,46 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('spellSlots.P3', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlots.P4', 'paladinHasSpells', '?', null);
   } else if(name == 'Ranger') {
+    rules.defineRule('abilityNotes.formOfTheBear',
+      '', '=', '4',
+      'featureNotes.masterShifter', '^', '8'
+    );
+    rules.defineRule('abilityNotes.formOfTheBear.1',
+      '', '=', '10',
+      'featureNotes.masterShifter', 'v', '0'
+    );
+    rules.defineRule('abilityNotes.formOfTheCat',
+      '', '=', '10',
+      'featureNotes.masterShifter', '^', '20'
+    );
+    rules.defineRule('abilityNotes.formOfTheDragon',
+      '', '=', '0',
+      'featureNotes.masterShifter', '^', '30'
+    );
+    rules.defineRule('abilityNotes.formOfTheEagle',
+      '', '=', '0',
+      'featureNotes.masterShifter', '^', '40'
+    );
+    rules.defineRule('abilityNotes.formOfTheOtter',
+      '', '=', '30',
+      'featureNotes.masterShifter', '^', '60'
+    );
+    rules.defineRule('combatNotes.formOfTheDragon',
+      '', '=', '2',
+      'featureNotes.masterShifter', '^', '4'
+    );
+    rules.defineRule('combatNotes.formOfTheJackal',
+      '', '=', '"half"',
+      'featureNotes.masterShifter', '=', '"full"'
+    );
+    rules.defineRule("combatNotes.ranger'sLuck.1",
+      "rangerFeatures.Ranger's Luck", '?', null,
+      classLevel, '=', '""',
+      "combatNotes.increasedRanger'sLuck", '=', '" +4"'
+    );
+    rules.defineRule("featureNotes.shifter'sBlessing",
+      classLevel, '=', 'Math.floor((source + 2) / 5)'
+    );
     rules.defineRule
       ('rangerFeatures.Camouflage', 'rangerHasCamouflage', '?', null);
     rules.defineRule
@@ -7164,7 +7354,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '1',
       'rangerFeatures.Beast Master', '=', '0',
       'rangerFeatures.Guide', '=', '0',
-      'rangerFeatures.Horse Lord', '=', '0',
+      'rangerFeatures.Mounted Bond', '=', '0',
       'rangerFeatures.Spirit Bond', '=', '0'
     );
     rules.defineRule('rangerHasImprovedEvasion',
@@ -7204,6 +7394,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule("selectableFeatureCount.Ranger (Hunter's Bond)",
       'rangerHasHuntersBond', '?', null
     );
+    rules.defineRule("selectableFeatureCount.Ranger (Hunter's Trick)",
+      classLevel, '=', 'Math.floor((source - 3) / 2)'
+    );
     rules.defineRule('selectableFeatureCount.Ranger (Mounted Combat Feat)',
       'features.Combat Style (Mounted Combat)', '?', null,
       classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
@@ -7226,6 +7419,17 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Combat Style (Weapon And Shield)', '?', null,
       classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
       'beastMasterLevel', '+', 'source>=6 ? -1 : null'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
+      classLevel, '=', null
+    );
+    rules.defineRule('skillNotes.formOfTheCat',
+      '', '=', '4',
+      'featureNotes.masterShifter', '^', '10'
+    );
+    rules.defineRule('skillNotes.formOfTheOtter',
+      '', '=', '8',
+      'featureNotes.masterShifter', 'v', '5'
     );
     rules.defineRule('spellSlots.R1', 'rangerHasSpells', '?', null);
     rules.defineRule('spellSlots.R2', 'rangerHasSpells', '?', null);
