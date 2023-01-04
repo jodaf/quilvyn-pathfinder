@@ -818,7 +818,8 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Reroll concealed miss, no melee bonus to invisible foe, no skill check on blinded full speed move"',
   'Brew Potion':'Section=magic Note="Create potion for up to 3rd level spell"',
-  'Camouflage':'Section=skill Note="Hide in favored terrain"',
+  'Camouflage':
+    'Section=skill Note="May use Stealth to hide in favored terrain"',
   'Cleave':'Section=combat Note="-2 AC for attack against two foes"',
   'Combat Casting':
     'Section=skill ' +
@@ -7819,7 +7820,10 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
 
 /* Returns an array of plugins upon which this one depends. */
 Pathfinder.getPlugins = function() {
-  return [SRD35];
+  var result = [SRD35];
+  if(window.PFAPG != null && 'Oracle' in Pathfinder.rules.getChoices('levels'))
+    result.unshift(PFAPG);
+  return result;
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
