@@ -1631,7 +1631,7 @@ PFAPG.FEATURES = {
     'Section=combat,skill ' +
     'Note=' +
       '"+2 AC/+2 CMD",' +
-      '"+4 Perception/+4 Sense Motive/+4 Sealth"',
+      '"+4 Perception/+4 Sense Motive/+4 Stealth"',
   'Way Of The Bow':
     'Section=feature Note="+1 General Feat (Weapon Focus (bow))%1"',
   'Way Of The Weapon Master':
@@ -1693,10 +1693,12 @@ PFAPG.FEATURES = {
   'Aiding Attack':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to give ally +2 next attack on foe hit by self for 1 rd"',
-  'Blend In':'Section=feature Note="FILL"',
+  'Blend In':
+    'Section=skill ' +
+    'Note="May substitute Stealth for Disguise w/in favored community"',
   'Bolster Companion':
     'Section=companion ' +
-    'Note="May use Hunter\'s Trick to give animal companion immediate +4 AC, +4 CMD, and half damage reduction when struck"',
+    'Note="May use Hunter\'s Trick to give animal companion immediate +4 AC, +4 CMD, and half damage reduction when hit"',
   'Catfall':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to ignore 20\' of falling damage"',
@@ -1716,9 +1718,13 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to inflict -2 attacks on foe for 1 rd w/successful attack"',
   'Dual Form Shifter':'Section=feature Note="May use 2 Shifter\'s Blessings simultaneously"',
-  'Favored Community':'Section=feature Note="FILL"',
-  'Form Of The Bear':
-    'Section=ability Note="+%V Strength and -%1 Spped in shifted form"',
+  'Favored Community':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+2 Initiative w/in favored community",' +
+      '"%{(levels.Ranger+2)//5} Selections",' +
+      '"+2 or more Knowledge (Local), Perception, Stealth, and Survival w/in favored community"',
+  'Form Of The Bear':'Section=ability Note="+%V Strength%1 in shifted form"',
   'Form Of The Cat':
     'Section=ability,skill ' +
     'Note=' +
@@ -1745,58 +1751,68 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to dbl threat range against favored enemy for 1 rd"',
   'Heel':
-    'Section=combat ' +
-    'Note="May use Hunter\'s Trick to move animal companion to self w/out AOO in starting square"',
+    'Section=companion ' +
+    'Note="May use Hunter\'s Trick to move animal companion to self w/out provoking AOO in starting square"',
   'Hobbling Attack':
     'Section=combat ' +
-    'Note="May use Hunter\'s Trick to inflict half speed for 1d4 rd with successful attack"',
+    'Note="May use Hunter\'s Trick to inflict half Speed for 1d4 rd with successful attack"',
   "Hunter's Tricks":
-    'Section=combat Note="%V Selections %{levels.Ranger//2+wisdomModifier}/dy"',
+    'Section=feature ' +
+    'Note="May use %V selections %{levels.Ranger//2+wisdomModifier}/dy"',
   'Improved Empathic Link':
     'Section=companion ' +
     'Note="May share emotions and see through companions eyes up to 1 mi"',
   'Improved Ranger\'s Luck':
     'Section=combat Note="Increased Ranger\'s Luck effects"',
   'Inspired Moment':
-    'Section=combat ' +
-    'Note="Gains +10\' speed, dbl move, +4 AC, +4 attack, and confirm crit for 1 rd %{levels.Ranger>=19 ? 2 : 1}/dy"',
+    'Section=feature ' +
+    'Note="Self gains +10\' Speed, extra move, +4 AC and attack, +4 ability and skill checks, and confirm crit for 1 rd %{levels.Ranger>=19 ? 2 : 1}/dy"',
+  'Invisibility Trick':
+    'Section=magic ' +
+    'Note="My cast self <i>Greater Invisibility</i> %{wisdomModifier>?1}/dy"',
   'Master Shifter':
     'Section=feature ' +
     'Note="Increased Shifter\'s Blessing effects; may polymorph instead"',
   'Mounted Bond':'Section=feature Note="Has Animal Companion mount"',
-  'Push Through':'Section=feature Note="FILL"',
+  'Push Through':
+    'Section=combat ' +
+    'Note="Not slowed by difficult terrain and can move through spaces occupied by locals w/in favored community"',
   'Quick Climb':
     'Section=skill ' +
     'Note="May use Hunter\'s Trick to Climb at full speed w/out penalty for 1 rd"',
   'Quick Healing':
     'Section=combat ' +
     'Note="May use Hunter\'s Truck for swift action Heal skill or move action potion use on adjacent ally"',
+  'Quick Swim':
+    'Section=skill Note="May use Hunter\'s Truck for full speed Swim for 1 rd"',
   "Ranger's Counsel":
     'Section=skill ' +
     'Note="R30\' May use Hunter\'s Trick to give allies +2 on choice of known skill"',
   "Ranger's Focus":
     'Section=combat ' +
-    'Note="+%{2+2*levels.Ranger//5} attack and damage on target until surrenders or unconscious %{(levels.Ranger+2)//3}/dy"',
+    'Note="+%{2+2*levels.Ranger//5} attack and damage vs. target until surrenders or unconscious %{(levels.Ranger+2)//3}/dy"',
   "Ranger's Luck":
-    'Section=attack ' +
-    'Note="May gain%1 reroll attack or force foe gain%V1 reroll %{(levels.Ranger-4)//5}/dy"',
+    'Section=combat ' +
+    'Note="May gain%1 reroll attack or force foe%2 reroll %{(levels.Ranger-4)//5}/dy"',
   'Rattling Strike':
     'Section=combat ' +
-    'Note="May use Hunter\'s Trick to shake foe for 1d4 rd w/successful attack"',
+    'Note="May use Hunter\'s Trick to inflict shaken for 1d4 rd w/successful attack"',
   'Second Chance Strike':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to immediately reroll melee miss w/-5 attack"',
   "Shifter's Blessing":
     'Section=feature ' +
     'Note="May use %{(levels.Ranger+2)//5} selections for %{levels.Ranger+wisdomModifier} rd %{(levels.Ranger+2)//5}/dy"',
-  "Sic 'em:":
-    'Section=combat ' +
+  "Sic 'em":
+    'Section=companion ' +
     'Note="May use Hunter\'s Trick to give animal companion immediate attack on adjacent foe"',
   'Skill Sage':
     'Section=skill ' +
     'Note="May use Hunter\'s Trick to take the better of 2 skill rolls"',
+  'Spirit Bond':
+    'Section=magic ' +
+    'Note="May cast <i>Augury</i> and %{levels.Ranger//4} ranger spells w/in favored terrain 1/dy"',
   'Spiritual Bond':'Section=companion Note="R30\' Mount gains %{levels.Ranger} temporary HP and self may take half of mount\'s damage 1/dy"',
-  'Spirt Bond':'Section=feature Note="FILL"',
   "Stag's Leap":
     'Section=skill ' +
     'Note="May use Hunter\'s Trick to make running jump w/out prior move"',
@@ -1806,25 +1822,25 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to move 5\' w/out provoking AOO"',
   'Tangling Attack':
     'Section=combat ' +
-    'Note="May use Hunter\'s Trick to inflict entangled w/successful attack"',
+    'Note="May use Hunter\'s Trick to inflict entangled for 1 rd w/successful attack"',
   'Terrain Bond':
     'Section=combat,skill ' +
     'Note="Allies w/in sight gain +2 Initiative in favored terrain",' +
          '"Allies w/in sight gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain"',
-  'Trapfinding':'Section=feature Note="FILL"',
   'Trick Shot':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to ignore concealment, soft cover, and partial cover w/ranged attack"',
   'Uncanny Senses':
     'Section=skill ' +
-    'Note="May use Hunter\'s Trick to gain +1 Perception for 1 rd"',
+    'Note="May use Hunter\'s Trick to gain +10 Perception for 1 rd"',
   'Upending Strike':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to inflict trip w/successful attack"',
   'Vengeance Strike':
     'Section=combat ' +
-    'Note="May use Hunter\'s Trick to make immediate attack on adjacent foe that hits ally"',
-  'Wisdom Of The Spirit':'Section=feature Note="FILL"',
+    'Note="May use Hunter\'s Trick to make immediate attack on adjacent foe who hits ally"',
+  'Wisdom Of The Spirits':
+    'Section=magic Note="May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain"',
 
   // New base classes
   'Acid Bomb':
@@ -2175,7 +2191,7 @@ PFAPG.FEATURES = {
       '"May take 20 on all Knowledge"',
   'Final Revelation (Nature Mystery)':
     'Section=feature ' +
-    'Note="Cacooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
+    'Note="Cocooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
   'Final Revelation (Stone Mystery)':
     'Section=magic ' +
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid or earth spell w/out cost"',
@@ -3095,7 +3111,7 @@ PFAPG.FEATURES = {
     'Note="May use Metamagic feat for chosen spell w/out cost; gains dbl feat bonuses on spell"',
   'Spider Step':
     'Section=ability ' +
-    'Note="May move half Slow Fall distance (50\' max) across walls, ceiling, and unsupporting surfaces"',
+    'Note="May move half Slow Fall distance (50\' max) across walls, ceiling, and unsupportive surfaces"',
   'Stabbing Shot':
     'Section=combat Note="May replace first full-attack bow shot w/5\' push"',
   'Steel Soul':'Section=save Note="+2 vs. spells"',
@@ -3707,6 +3723,7 @@ PFAPG.PATHS = {
   'Beast Master':
     'Group=Ranger ' +
     'Level=levels.Ranger ' +
+    // Difference in class skills handled by classRulesExtra
     'Features=' +
       '"4:Animal Companion","6:Improved Empathic Link","12:Strong Bond"',
   'Guide':
@@ -3740,12 +3757,13 @@ PFAPG.PATHS = {
     'Group=Ranger ' +
     'Level=levels.Ranger ' +
     'Features=' +
-      '"4:Spirt Bond","12:Wisdom Of The Spirit"',
+      '"4:Spirit Bond","12:Wisdom Of The Spirits"',
   'Urban Ranger':
     'Group=Ranger ' +
     'Level=levels.Ranger ' +
     'Features=' +
-      '"3:Favored Community","3:Trapfinding","7:Push Through","12:Blend In"',
+      '"3:Favored Community","3:Trapfinding","7:Push Through","12:Blend In",' +
+      '"17:Invisibility Trick"',
 
   // Oracle
   'Battle Mystery':
@@ -4289,7 +4307,7 @@ PFAPG.SPELLS = {
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during judgement or smite for $L min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during judgment or smite for $L min"',
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
@@ -4649,7 +4667,7 @@ PFAPG.SPELLS = {
   "Nature's Exile":
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
-    'Description="Touched suffers permanent hostility from natural animals and -10 Survial (Will neg)"',
+    'Description="Touched suffers permanent hostility from natural animals and -10 Survival (Will neg)"',
   'Negate Aroma':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
@@ -4797,7 +4815,7 @@ PFAPG.SPELLS = {
   'Sanctify Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,P3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during judgement or smite for $L min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during judgment or smite for $L min"',
   'Saving Finale':
     'School=Evocation ' +
     'Level=B1 ' +
@@ -4877,7 +4895,7 @@ PFAPG.SPELLS = {
   'Spiritual Ally':
     'School=Evocation ' +
     'Level=C4,O4 ' +
-    'Description="R$RM\' Force being moves 30\'/rd and attacks at +%{baseAttack+wisdomModifier}, inflics 1d10+%{lvl//3<?5} HP for $L rd (DC d20+$L SR ends)"',
+    'Description="R$RM\' Force being moves 30\'/rd and attacks at +%{baseAttack+wisdomModifier}, inflicts 1d10+%{lvl//3<?5} HP for $L rd (DC d20+$L SR ends)"',
   'Spite':
     'School=Abjuration ' +
     'Level=Witch4 ' +
@@ -5660,12 +5678,9 @@ PFAPG.CLASSES = {
       '"2:Combat Style (Weapon And Shield):Combat Style",' +
       '"2:Deadly Aim:Crossbow Feat",' +
       '"2:Focused Shot:Crossbow Feat",' +
-      '"2:Precise Shot:Crossbow Feat",' +
       '"2:Rapid Reload:Crossbow Feat",' +
       '"6:Crossbow Mastery:Crossbow Feat",' +
-      '"6:Improved Precise Shot:Crossbow Feat",' +
-      '"10:Pinpoint Targeting:Crossbow Feat",' +
-      '"10:Shot On The Run:Crossbow Feat",' +
+      // Crossbow feats that duplicate other styles handled by classRulesExtra
       '"2:Mounted Combat:Mounted Combat Feat",' +
       '"2:Mounted Archery:Mounted Combat Feat",' +
       '"2:Ride-By Attack:Mounted Combat Feat",' +
@@ -5689,14 +5704,13 @@ PFAPG.CLASSES = {
       '"6:Great Cleave:Two-Handed Weapon Feat",' +
       '"10:Dreadful Carnage:Two-Handed Weapon Feat",' +
       '"10:Improved Sunder:Two-Handed Weapon Feat",' +
-      '"2:Improved Shield Bash:Weapon And Shield Feat",' +
       '"2:Shield Focus:Weapon And Shield Feat",' +
       '"2:Shield Slam:Weapon And Shield Feat",' +
-      '"2:Two-Weapon Fighting:Weapon And Shield Feat",' +
       '"6:Saving Shield:Weapon And Shield Feat",' +
       '"6:Shield Master:Weapon And Shield Feat",' +
       '"10:Bashing Finish:Weapon And Shield Feat",' +
       '"10:Greater Shield Focus:Weapon And Shield Feat",' +
+      // W&S feats that duplicate other styles handled by classRulesExtra
       '"1:Beast Master:Archetype",' +
       '"1:Core Ranger:Archetype",' +
       '"1:Guide:Archetype",' +
@@ -5712,31 +5726,32 @@ PFAPG.CLASSES = {
       '"3:Form Of The Eagle:Shifter\'s Blessing",' +
       '"3:Form Of The Jackal:Shifter\'s Blessing",' +
       '"3:Form Of The Otter:Shifter\'s Blessing",' +
-      '"3:Aiding Attack:Hunters\'s Trick",' +
-      '"3:Bolster Companion:Hunters\'s Trick",' +
-      '"3:Catfall:Hunters\'s Trick",' +
-      '"3:Chameleon Step:Hunters\'s Trick",' +
-      '"3:Cunning Pantomime:Hunters\'s Trick",' +
-      '"3:Defensive Bow Stance:Hunters\'s Trick",' +
-      '"3:Deft Stand:Hunters\'s Trick",' +
-      '"3:Distracting Attack:Hunters\'s Trick",' +
-      '"3:Hateful Attack:Hunters\'s Trick",' +
-      '"3:Heel:Hunters\'s Trick",' +
-      '"3:Hobbling Attack:Hunters\'s Trick",' +
-      '"3:Quick Climb:Hunters\'s Trick",' +
-      '"3:Quick Healing:Hunters\'s Trick",' +
-      '"3:Ranger\'s Counsel:Hunters\'s Trick",' +
-      '"3:Rattling Strike:Hunters\'s Trick",' +
-      '"3:Second Chance Strike:Hunters\'s Trick",' +
-      '"3:Sic \'em:Hunters\'s Trick",' +
-      '"3:Skill Sage:Hunters\'s Trick",' +
-      '"3:Stag\'s Leap:Hunters\'s Trick",' +
-      '"3:Surprise Shift:Hunters\'s Trick",' +
-      '"3:Tangling Attack:Hunters\'s Trick",' +
-      '"3:Trick Shot:Hunters\'s Trick",' +
-      '"3:Uncanny Senses:Hunters\'s Trick",' +
-      '"3:Upending Strike:Hunters\'s Trick",' +
-      '"3:Vengeance Strike:Hunters\'s Trick"',
+      '"3:Aiding Attack:Hunter\'s Trick",' +
+      '"3:Bolster Companion:Hunter\'s Trick",' +
+      '"3:Catfall:Hunter\'s Trick",' +
+      '"3:Chameleon Step:Hunter\'s Trick",' +
+      '"3:Cunning Pantomime:Hunter\'s Trick",' +
+      '"3:Defensive Bow Stance:Hunter\'s Trick",' +
+      '"3:Deft Stand:Hunter\'s Trick",' +
+      '"3:Distracting Attack:Hunter\'s Trick",' +
+      '"3:Hateful Attack:Hunter\'s Trick",' +
+      '"3:Heel:Hunter\'s Trick",' +
+      '"3:Hobbling Attack:Hunter\'s Trick",' +
+      '"3:Quick Climb:Hunter\'s Trick",' +
+      '"3:Quick Healing:Hunter\'s Trick",' +
+      '"3:Quick Swim:Hunter\'s Trick",' +
+      '"3:Ranger\'s Counsel:Hunter\'s Trick",' +
+      '"3:Rattling Strike:Hunter\'s Trick",' +
+      '"3:Second Chance Strike:Hunter\'s Trick",' +
+      '"3:Sic \'em:Hunter\'s Trick",' +
+      '"3:Skill Sage:Hunter\'s Trick",' +
+      '"3:Stag\'s Leap:Hunter\'s Trick",' +
+      '"3:Surprise Shift:Hunter\'s Trick",' +
+      '"3:Tangling Attack:Hunter\'s Trick",' +
+      '"3:Trick Shot:Hunter\'s Trick",' +
+      '"3:Uncanny Senses:Hunter\'s Trick",' +
+      '"3:Upending Strike:Hunter\'s Trick",' +
+      '"3:Vengeance Strike:Hunter\'s Trick"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -7253,18 +7268,17 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Skilled Rider', '?', null,
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
-    rules.defineRule('spellSlots.P1', 'paladinHasSpells', '?', null);
-    rules.defineRule('spellSlots.P2', 'paladinHasSpells', '?', null);
-    rules.defineRule('spellSlots.P3', 'paladinHasSpells', '?', null);
-    rules.defineRule('spellSlots.P4', 'paladinHasSpells', '?', null);
+    rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
+    rules.defineRule('spellSlotLevel.Paladin', 'paladinHasSpells', '?', null);
   } else if(name == 'Ranger') {
     rules.defineRule('abilityNotes.formOfTheBear',
       '', '=', '4',
       'featureNotes.masterShifter', '^', '8'
     );
     rules.defineRule('abilityNotes.formOfTheBear.1',
-      '', '=', '10',
-      'featureNotes.masterShifter', 'v', '0'
+      'features.Form Of The Bear', '?', null,
+      '', '=', '" and -10 Speed"',
+      'featureNotes.masterShifter', '=', '""'
     );
     rules.defineRule('abilityNotes.formOfTheCat',
       '', '=', '10',
@@ -7282,6 +7296,36 @@ PFAPG.classRulesExtra = function(rules, name) {
       '', '=', '30',
       'featureNotes.masterShifter', '^', '60'
     );
+    let allSkills = rules.getChoices('skills');
+    for(let s in allSkills) {
+      if(['Knowledge (Dungeoneering)', 'Knowledge (Geography)', 'Spellcraft'].includes(s) || s.startsWith('Profession')) {
+        rules.defineRule('rangerClassSkills.' + s,
+          'levels.Ranger', '=', '1',
+          'rangerFeatures.Beast Master', '=', '0'
+        );
+        rules.defineRule('classSkills.' + s,
+          'levels.Ranger', '=', 'null',
+          'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
+        );
+      } else if(['Handle Animal', 'Knowledge (Nature)'].includes(s)) {
+        rules.defineRule('rangerClassSkills.' + s,
+          'levels.Ranger', '=', '1',
+          'rangerFeatures.Urban Ranger', '=', '0'
+        );
+        rules.defineRule('classSkills.' + s,
+          'levels.Ranger', '=', 'null',
+          'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
+        );
+      }
+    }
+    ['Acrobatics', 'Escape Artist'].forEach(s => {
+      rules.defineRule
+        ('classSkills.' + s, 'rangerFeatures.Beast Master', '=', '1');
+    });
+    ['Disable Device', 'Knowledge (Local)'].forEach(s => {
+      rules.defineRule
+        ('classSkills.' + s, 'rangerFeatures.Urban Ranger', '=', '1');
+    });
     rules.defineRule('combatNotes.formOfTheDragon',
       '', '=', '2',
       'featureNotes.masterShifter', '^', '4'
@@ -7293,11 +7337,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule("combatNotes.ranger'sLuck.1",
       "rangerFeatures.Ranger's Luck", '?', null,
       classLevel, '=', '""',
-      "combatNotes.increasedRanger'sLuck", '=', '" +4"'
+      "combatNotes.improvedRanger'sLuck", '=', '" +4"'
     );
-    rules.defineRule("featureNotes.shifter'sBlessing",
+    rules.defineRule("combatNotes.ranger'sLuck.2",
+      "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
+    );
+    rules.defineRule("featureNotes.hunter'sTricks",
       classLevel, '=', 'Math.floor((source + 2) / 5)'
     );
+    rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
+    rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
     rules.defineRule
       ('rangerFeatures.Camouflage', 'rangerHasCamouflage', '?', null);
     rules.defineRule
@@ -7323,6 +7372,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('rangerFeatures.Woodland Stride', 'rangerHasWoodlandStride', '?', null);
     rules.defineRule('rangerHasCamouflage',
       classLevel, '=', '1',
+      // Presume Infiltrator losing Favored Terrain implies losing Camouflage
+      'rangerFeatures.Adaptation', '=', '0',
       'rangerFeatures.Blend In', '=', '0',
       'rangerFeatures.Dual Form Shifter', '=', '0',
       'rangerFeatures.Strong Bond', '=', '0',
@@ -7343,7 +7394,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('rangerHasFavoredTerrain',
       classLevel, '=', '1',
       'rangerFeatures.Adaptation', '=', '0',
-      'rangerFeatures.Favored Community', '=', '0'
+      'rangerFeatures.Favored Community', '=', '0',
+      "rangerFeatures.Shifter's Blessing", '=', '0'
     );
     rules.defineRule('rangerHasHideInPlainSight',
       classLevel, '=', '1',
@@ -7367,6 +7419,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('rangerHasMasterHunter',
       classLevel, '=', '1',
+      // Presume Guide losing Favored Enemy implies losing Master Hunter
+      'rangerFeatures.Guide', '=', '0',
       'rangerFeatures.Master Shifter', '=', '0'
     );
     rules.defineRule('rangerHasQuarry',
@@ -7395,7 +7449,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'rangerHasHuntersBond', '?', null
     );
     rules.defineRule("selectableFeatureCount.Ranger (Hunter's Trick)",
-      classLevel, '=', 'Math.floor((source - 3) / 2)'
+      'skirmisherLevel', '=', 'Math.floor((source - 3) / 2)'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Mounted Combat Feat)',
       'features.Combat Style (Mounted Combat)', '?', null,
@@ -7406,6 +7460,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Combat Style (Natural Weapon)', '?', null,
       classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
       'beastMasterLevel', '+', 'source>=6 ? -1 : null'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
+      'shapeshifterLevel', '=', 'Math.floor((source + 2) / 5)'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Two-Handed Weapon Feat)',
       'features.Combat Style (Two-Handed Weapon)', '?', null,
@@ -7420,9 +7477,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
       'beastMasterLevel', '+', 'source>=6 ? -1 : null'
     );
-    rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
-      classLevel, '=', null
-    );
     rules.defineRule('skillNotes.formOfTheCat',
       '', '=', '4',
       'featureNotes.masterShifter', '^', '10'
@@ -7431,10 +7485,24 @@ PFAPG.classRulesExtra = function(rules, name) {
       '', '=', '8',
       'featureNotes.masterShifter', 'v', '5'
     );
-    rules.defineRule('spellSlots.R1', 'rangerHasSpells', '?', null);
-    rules.defineRule('spellSlots.R2', 'rangerHasSpells', '?', null);
-    rules.defineRule('spellSlots.R3', 'rangerHasSpells', '?', null);
-    rules.defineRule('spellSlots.R4', 'rangerHasSpells', '?', null);
+    rules.defineRule('skillNotes.trapfinding',
+      'urbanRangerLevel', '+=', 'Math.floor(source / 2)'
+    );
+    // Handle style feats that duplicate those of core styles
+    let allSelectables = rules.getChoices('selectableFeatures');
+    ['Precise Shot', 'Improved Precise Shot', 'Pinpoint Targeting',
+     'Shot On The Run'].forEach(f => {
+      let entry = 'Ranger - ' + f;
+      if(entry in allSelectables)
+        allSelectables[entry] =
+          allSelectables[entry].replace('Type=', 'Type="Ranger (Crossbow Feat)",');
+    });
+    ['Improved Shield Bash', 'Two-Weapon Fighting'].forEach(f => {
+      let entry = 'Ranger - ' + f;
+      if(entry in allSelectables)
+        allSelectables[entry] =
+          allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
+    });
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
@@ -7922,7 +7990,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
   }
   if(name == 'Rage Subdomain') {
-    // Supress validation notes for Rage clerics w/barbarian powers
+    // Suppress validation notes for Rage clerics w/barbarian powers
     let allSelectables = rules.getChoices('selectableFeatures');
     let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
     powers.forEach(p => {
@@ -8267,7 +8335,7 @@ PFAPG.ruleNotes = function() {
   return '' +
     "<h2>Quilvyn Pathfinder Advanced Player's Guide Rule Set Notes</h2>\n" +
     '<p>\n' +
-    "Quilvyn Pathfinder Advanced Player's Guide Rule Set Version ' + PFAPG.VERSION + '\n" +
+    "Quilvyn Pathfinder Advanced Player's Guide Rule Set Version " + PFAPG.VERSION + '\n' +
     '</p>\n' +
     '<h3>Copyrights and Licensing</h3>\n' +
     '<p>\n' +
