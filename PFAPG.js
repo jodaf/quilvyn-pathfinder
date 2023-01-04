@@ -1842,6 +1842,71 @@ PFAPG.FEATURES = {
   'Wisdom Of The Spirits':
     'Section=magic Note="May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain"',
 
+  // Rogue
+  'Deadly Range':'Section=feature Note="FILL"',
+  'Accuracy':'Section=feature Note="FILL"',
+  'Another Day':'Section=feature Note="FILL"',
+  'Assault Leader':'Section=feature Note="FILL"',
+  'Befuddling Strike':'Section=feature Note="FILL"',
+  "Bravado's Blade":'Section=feature Note="FILL"',
+  'Brutal Beating':'Section=feature Note="FILL"',
+  'Camouflage (Rogue)':'Section=feature Note="FILL"',
+  'Canny Observer':'Section=feature Note="FILL"',
+  'Careful Disarm':'Section=feature Note="FILL"',
+  'Charmer':'Section=feature Note="FILL"',
+  'Coax Information':'Section=feature Note="FILL"',
+  'Combat Swipe':'Section=feature Note="FILL"',
+  'Cunning Trigger':'Section=feature Note="FILL"',
+  'Daring':'Section=feature Note="FILL"',
+  'Deadly Cocktail':'Section=feature Note="FILL"',
+  'Deadly Sneak':'Section=feature Note="FILL"',
+  'Distracting Attack':'Section=feature Note="FILL"',
+  'Distraction':'Section=feature Note="FILL"',
+  'Entanglements Of Blades':'Section=feature Note="FILL"',
+  'Expert Acrobat':'Section=feature Note="FILL"',
+  'Expert Leaper':'Section=feature Note="FILL"',
+  'Fast Fingers':'Section=feature Note="FILL"',
+  'Fast Getaway':'Section=feature Note="FILL"',
+  'Fast Picks':'Section=feature Note="FILL"',
+  'Fast Tumble':'Section=feature Note="FILL"',
+  'Fightening':'Section=feature Note="FILL"',
+  'Follow Clues':'Section=feature Note="FILL"',
+  'Follow Up':'Section=feature Note="FILL"',
+  'Frugal Trapsmith':'Section=feature Note="FILL"',
+  'Guileful Polyglot':'Section=feature Note="FILL"',
+  'Hard To Fool':'Section=feature Note="FILL"',
+  'Honeyed Words':'Section=feature Note="FILL"',
+  "Hunter's Surprise":'Section=feature Note="FILL"',
+  'Knock-Out Blow':'Section=feature Note="FILL"',
+  'Lasting Poison':'Section=feature Note="FILL"',
+  'Martial Training':'Section=feature Note="FILL"',
+  'Master Of Disguise':'Section=feature Note="FILL"',
+  'Master Poisoner':'Section=feature Note="FILL"',
+  'Measure The Mark':'Section=feature Note="FILL"',
+  'Nimble Climber':'Section=feature Note="FILL"',
+  'Offensive Defense':'Section=feature Note="FILL"',
+  'Peerless Maneuver':'Section=feature Note="FILL"',
+  // Poison Use in Pathfinder.js
+  'Positioning Attack':'Section=feature Note="FILL"',
+  'Powerful Sneak':'Section=feature Note="FILL"',
+  'Quick Disguise':'Section=feature Note="FILL"',
+  'Quick Trapsmith':'Section=feature Note="FILL"',
+  "Rake's Smile":'Section=feature Note="FILL"',
+  'Redirect Attack':'Section=feature Note="FILL"',
+  "Scout's Charge":'Section=feature Note="FILL"',
+  'Second Chance':'Section=feature Note="FILL"',
+  'Skilled Liar':'Section=feature Note="FILL"',
+  'Skirmisher':'Section=feature Note="FILL"',
+  'Snap Shot':'Section=feature Note="FILL"',
+  "Sniper's Eye":'Section=feature Note="FILL"',
+  'Stab And Grab':'Section=feature Note="FILL"',
+  'Stealthy Sniper':'Section=feature Note="FILL"',
+  'Strong Impression':'Section=feature Note="FILL"',
+  'Survivalist':'Section=feature Note="FILL"',
+  'Swift Poison':'Section=feature Note="FILL"',
+  'Thoughtful Reexamining':'Section=feature Note="FILL"',
+  'Trap Master':'Section=feature Note="FILL"',
+
   // Alchemist
   'Acid Bomb':
     'Section=combat ' +
@@ -3780,6 +3845,68 @@ PFAPG.PATHS = {
     'Features=' +
       '"3:Favored Community","3:Trapfinding","7:Push Through","12:Blend In",' +
       '"17:Invisibility Trick"',
+
+  // Rogue
+  'Acrobat':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Expert Acrobat","3:Second Chance"',
+  'Burglar':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"4:Careful Disarm","8:Distraction"',
+  'Cutpurse':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Measure The Mark","3:Stab And Grab"',
+  'Investigator':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Follow Up"',
+  'Poisoner':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Poison Use","3:Master Poisoner"',
+  'Rake':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"Bravado\'s Blade","3:Rake\'s Smile"',
+  'Scout':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"4:Scout\'s Charge","8:Skirmisher"',
+  'Sniper':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Accuracy","3:Deadly Range"',
+  'Spy':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Skilled Liar","3:Poison Use"',
+  'Swashbuckler':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Martial Training","3:Daring"',
+  'Thug':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"1:Fightening","3:Brutal Beating"',
+  'Trapsmith':
+    'Group=Rogue ' +
+    'Level=levels.Rogue ' +
+    'Features=' +
+      '"4:Careful Disarm","8:Trap Master"',
 
   // Oracle
   'Battle Mystery':
@@ -5768,6 +5895,32 @@ PFAPG.CLASSES = {
       '"3:Uncanny Senses:Hunter\'s Trick",' +
       '"3:Upending Strike:Hunter\'s Trick",' +
       '"3:Vengeance Strike:Hunter\'s Trick"',
+  'Rogue':
+    'Selectables=' +
+      '"Assault Leader","Befuddling Strike","Camouflage (Rogue)",' +
+      '"Canny Observer",Charmer,"Coax Information","Combat Swipe",' +
+      '"Cunning Trigger","Distracting Attack","Expert Leaper","Fast Fingers",' +
+      '"Fast Getaway","Fast Picks","Follow Clues","Guileful Polyglot",' +
+      '"Hard To Fool","Honeyed Words","Lasting Poison","Nimble Climber",' +
+      '"Offensive Defense","Peerless Maneuver","Positioning Attack",' +
+      '"Powerful Sneak","Quick Disguise","Quick Trapsmith","Snap Shot",' +
+      '"Sniper\'s Eye","Strong Impression",Survivalist,"Swift Poison",' +
+      '"10:Another Day","10:Deadly Cocktail","10:Deadly Sneak",' +
+      '"10:Entanglements Of Blades","10:Fast Tumble","10:Frugal Trapsmith",' +
+      '"10:Hunter\'s Surprise","10:Knock-Out Blow","10:Master Of Disguise",' +
+      '"10:Redirect Attack","10:Stealthy Sniper","10:Thoughtful Reexamining",' +
+      '"1:Acrobat:Archetype",' +
+      '"1:Burglar:Archetype",' +
+      '"1:Cutpurse:Archetype",' +
+      '"1:Investigator:Archetype",' +
+      '"1:Poisoner:Archetype",' +
+      '"1:Rake:Archetype",' +
+      '"1:Scout:Archetype",' +
+      '"1:Sniper:Archetype",' +
+      '"1:Spy:Archetype",' +
+      '"1:Swashbuckler:Archetype",' +
+      '"1:Thug:Archetype",' +
+      '"1:Trapsmith:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
