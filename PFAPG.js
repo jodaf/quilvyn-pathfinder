@@ -1842,49 +1842,311 @@ PFAPG.FEATURES = {
   'Wisdom Of The Spirits':
     'Section=magic Note="May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain"',
 
-  // New base classes
+  // Alchemist
   'Acid Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
-  'Acid Skin':
-    'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
-  'Act As One':
-    'Section=combat ' +
-    'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
-  'Agony Hex':
-    'Section=magic ' +
-    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
-  'Aid Allies (Cavalier)':
-    'Section=combat Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
-  'Air Barrier':
-    'Section=combat ' +
-    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Alchemy':
     'Section=magic,skill ' +
     'Note=' +
       '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
       '"+%V Craft (Alchemy)"',
+  'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
+  'Bomb':
+    'Section=combat ' +
+    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %V/dy"',
+  // 'Brew Potion' in SRD35.js
+  'Combine Extracts':
+    'Section=magic Note="May combine two effects into one extract"',
+  'Concentrate Poison':
+    'Section=feature ' +
+    'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
+  'Concussive Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
+  'Delayed Bomb':
+    'Section=combat ' +
+    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
+  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
+  'Discovery':'Section=feature Note="%V Selections"',
+  'Dispelling Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that dispels magic instead of inflicting damage"',
+  'Elixir Of Life':
+    'Section=magic ' +
+    'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
+  'Enhance Potion':
+    'Section=magic ' +
+    'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
+  'Eternal Potion':
+     'Section=magic Note="May make effects of 1 imbibed potion permanent"',
+  'Eternal Youth':
+    'Section=feature Note="Suffers no ability score penalties from age"',
+  'Explosive Bomb':
+    'Section=combat ' +
+    'Note="Direct hit from bomb inflicts 1d6 HP fire until extinguished; splash extends 10\'"',
+  'Extend Potion':
+     'Section=magic ' +
+     'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
+  'Fast Bombs':
+    'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
+  'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
+  'Feral Mutagen':
+    'Section=combat ' +
+    'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
+  'Force Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
+  'Frost Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
+  'Grand Discovery':'Section=feature Note="%V Selection"',
+  'Grand Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
+  'Greater Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
+  'Inferno Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
+  'Infuse Mutagen':
+     'Section=magic ' +
+     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
+  'Infusion':'Section=magic Note="Created extracts persist when not held"',
+  'Instant Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as an immediate action",' +
+      '"May create alchemical items as a full-round action"',
+  'Madness Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
+  'Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
+  'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
+  "Philosopher's Stone":
+    'Section=magic ' +
+    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
+  'Poison Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+  'Poison Resistance':'Section=save Note="Resistance %V poison"',
+  'Poison Touch':
+    'Section=combat ' +
+    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (Con neg)"',
+  // 'Poison Use' in Pathfinder.js
+  'Precise Bombs':
+    'Section=combat ' +
+    'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
+  'Shock Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
+  'Smoke Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
+  'Sticky Bomb':
+    'Section=combat ' +
+    'Note="Targets hit by bombs suffer splash damage on the following rd"',
+  'Stink Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
+  'Swift Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as a move action",' +
+      '"Creating alchemical items takes half normal time"',
+  'Swift Poisoning':
+    'Section=combat Note="May apply poison to a blade as a swift action"',
+  // 'Throw Anything' in Pathfinder.js
+  'True Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
+
+  // Cavalier
+  'Act As One':
+    'Section=combat ' +
+    'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
+  'Aid Allies (Cavalier)':
+    'Section=combat ' +
+    'Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
+  'Banner':
+    'Section=combat ' +
+    'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
+  'Braggart':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+2 attack on demoralized target",' +
+      '"Has Dazzling Display features"',
+  'By My Honor':
+    'Section=save Note="+2 choice of save while maintaining alignment"',
+  'Calling':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
+      '"+%V %1"',
+  'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
+  "Cavalier's Charge":
+    'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
+  'Challenge':
+    'Section=combat ' +
+    'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
+  'Demanding Challenge':
+    'Section=combat Note="Challenged target suffers -2 AC from others"',
+  'Expert Trainer':
+    'Section=skill ' +
+    'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
+  'For The Faith':
+    'Section=combat ' +
+    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
+  'For The King':
+    'Section=combat ' +
+    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
+  'Greater Banner':
+    'Section=combat ' +
+    'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
+  'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  "Knight's Challenge":
+    'Section=combat ' +
+    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
+  "Lion's Call":
+    'Section=combat ' +
+    'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
+  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  'Mighty Charge':
+    'Section=combat ' +
+    'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
+  'Moment Of Triumph':
+    'Section=feature ' +
+    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
+  'Mount':'Section=feature Note="Special bond and abilities"',
+  'Mounted Mastery':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
+      '"Gain 1 Order Of The Sword feat",' +
+      '"No armor check penalty for Ride"',
+  'Order':'Section=feature Note="1 Selection"',
+  'Order Of The Cockatrice':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} HP damage on target of challenge",' +
+      '"Must put own interest above others\'",' +
+      '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
+  'Order Of The Dragon':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
+      '"Must defend allies",' +
+      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
+  'Order Of The Lion':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
+      '"Must defend and obey sovereign",' +
+      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
+  'Order Of The Shield':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
+      '"Must defend the lives and property of common folks",' +
+      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
+  'Order Of The Star':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
+      '"Must protect and serve the faithful",' +
+      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
+  'Order Of The Sword':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
+      '"Must show honor, mercy, and charity",' +
+      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
+  'Protect The Meek':
+    'Section=combat ' +
+    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
+  'Resolute':
+    'Section=combat ' +
+    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
+  'Retribution':
+    'Section=combat ' +
+    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
+  'Shield Of The Liege':
+    'Section=combat ' +
+    'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
+  'Steal Glory':
+    'Section=combat ' +
+    'Note="May make AOO against threatened target when ally scores a critical hit"',
+  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
+  'Strategy':
+    'Section=combat ' +
+    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
+  'Supreme Charge':
+    'Section=combat ' +
+    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
+  'Tactician':
+    'Section=feature ' +
+    'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
+
+
+  // Inquisitor
+  'Bane':
+    'Section=combat ' +
+    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
+  'Cunning Initiative':'Section=combat Note="+%V Initiative"',
+  'Detect Alignment':
+    'Section=magic ' +
+    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
+  'Discern Lies':
+    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
+  'Domain':'Section=feature Note="1 Selection"',
+  'Exploit Weakness':
+    'Section=combat ' +
+    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
+  'Greater Bane':'Section=combat Note="Increased Bane effects"',
+  'Judgment':
+    'Section=combat ' +
+    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+  'Monster Lore':
+    'Section=skill ' +
+    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
+  'Orisons':'Section=magic Note="Knows level-0 spells"',
+  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
+  'Slayer':
+    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
+  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
+  'Stalwart':
+    'Section=save ' +
+    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
+  'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
+  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
+  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
+  // 'Track' in Pathfinder.js
+  'True Judgment':
+    'Section=combat ' +
+    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
+
+  // Oracle
+  'Acid Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
+  'Air Barrier':
+    'Section=combat ' +
+    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Arcane Archivist (Oracle)':
     'Section=magic ' +
     'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
   'Armor Of Bones':
     'Section=combat ' +
     'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
-  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
   'Automatic Writing':
     'Section=magic ' +
     'Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
-  'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Awesome Display':
     'Section=magic ' +
     'Note="Treat illusion targets as having %{charismaModifier>?0} fewer HD"',
-  'Bane':
-    'Section=combat ' +
-    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
-  'Banner':
-    'Section=combat ' +
-    'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
   'Battle Mystery':
     'Section=skill ' +
     'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
@@ -1897,58 +2159,20 @@ PFAPG.FEATURES = {
   'Bleeding Wounds':
     'Section=combat ' +
     'Note="Successful attack inflicts %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
-  'Blight Hex':
-    'Section=magic ' +
-    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{hexDC} Will neg)"',
   'Blizzard':
     'Section=combat ' +
     'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
   'Bonded Mount':'Section=feature Note="Has mount animal companion"',
-  'Braggart':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+2 attack on demoralized target",' +
-      '"Has Dazzling Display features"',
-  'Brain Drain':
-    'Section=feature ' +
-    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
-  'Bomb':
-    'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %V/dy"',
-  'Bond Senses':
-    'Section=feature ' +
-    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
   'Bones Mystery':
     'Section=skill ' +
     'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
-  // 'Brew Potion' in SRD35.js
+  'Brain Drain':
+    'Section=feature ' +
+    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
   'Burning Magic':
     'Section=magic ' +
     'Note="Successful fire spell inflicts 1/spell level HP fire for 1d4 rd (Ref ends)"',
-  'By My Honor':
-    'Section=save Note="+2 choice of save while maintaining alignment"',
-  'Cackle Hex':'Section=magic Note="R30\' Extends hex affects 1 rd"',
-  'Calling':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
-      '"+%V %1"',
-  'Cantrips':'Section=magic Note="May cast 0-level spells"',
-  'Cauldron Hex':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"Has Brew Potion features",' +
-      '"+4 Craft (Alchemy)"',
-  'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
-  "Cavalier's Charge":
-    'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
-  'Challenge':
-    'Section=combat ' +
-    'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
   'Channel':'Section=feature Note="Has Channel Energy feature"',
-  'Charm Hex':
-    'Section=skill ' +
-    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Cinder Dance':
     'Section=ability,feature ' +
     'Note=' +
@@ -1966,24 +2190,9 @@ PFAPG.FEATURES = {
   'Combat Healer':
     'Section=feature ' +
     'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
-  'Combine Extracts':
-    'Section=magic Note="May combine two effects into one extract"',
-  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
-  'Concentrate Poison':
-    'Section=feature ' +
-    'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
-  'Concussive Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
-  'Coven Hex':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May participate in hag coven",' +
-      '"May use aid another to give witches in 30\' radius +1 caster level for 1 rd"',
   'Crystal Sight':
     'Section=feature ' +
     'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
-  'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Deaf':
     'Section=combat,feature,magic,skill ' +
     'Note=' +
@@ -1991,178 +2200,27 @@ PFAPG.FEATURES = {
       '"Has %V",' +
       '"May cast all spells silently",' +
       '"+3 Perception (non-sound)"',
-  'Death Curse Hex':
-    'Section=magic ' +
-    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP)"',
   "Death's Touch":
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
   'Delay Affliction':
     'Section=save ' +
     'Note="May delay effects of failed save vs. disease or poison for %{levels.Oracle} %{levels.Oracle>=15 ? 3 : levels.Oracle >= 7 ? 2 : 1}/dy"',
-  'Delayed Bomb':
-    'Section=combat ' +
-    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
-  'Demanding Challenge':
-    'Section=combat Note="Challenged target suffers -2 AC from others"',
-  'Detect Alignment':
-    'Section=magic ' +
-    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
-  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
-  'Discern Lies':
-    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
-  'Disguise Hex':
-    'Section=magic ' +
-    'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
-  'Discovery':'Section=feature Note="%V Selections"',
-  'Dispelling Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that dispels magic instead of inflicting damage"',
-  'Domain':'Section=feature Note="1 Selection"',
   'Dweller In Darkness':
     'Section=magic ' +
     'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
   'Earth Glide':
     'Section=ability ' +
     'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
-  'Eidolon':'Section=feature Note="Special bond and abilities"',
-  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
-  'Eidolon Claws':'Section=companion Note="Claw attack inflicts %V HP each"',
-  'Eidolon Climb':'Section=companion Note="%V\' Climb speed"',
-  'Eidolon Gills':'Section=companion Note="May breathe underwater"',
-  'Eidolon Improved Damage':
-    'Section=companion ' +
-    'Note="Chosen natural attack inflicts 1 die type higher damage"',
-  'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
-  'Eidolon Magic Attacks':
-    'Section=companion ' +
-    'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
-  'Eidolon Mount':'Section=companion Note="Master may ride eidolon"',
-  'Eidolon Pincers':
-    'Section=companion Note="Pincer attack inflicts %V HP each"',
-  'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
-  'Eidolon Pull':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
-  'Eidolon Push':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
-  'Eidolon Reach':
-    'Section=companion Note="Reach for chosen natural attack increases 5\'"',
-  'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
-  'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
-  'Eidolon Slam':'Section=companion Note="Slam attack inflicts %V HP each"',
-  'Eidolon Sting':'Section=companion Note="Sting attack inflicts %V HP"',
-  'Eidolon Swim':'Section=companion Note="Can swim at full speed%1"',
-  'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
-  'Eidolon Tail Slap':'Section=companion Note="Slap attack inflicts %V HP"',
-  'Eidolon Tentacle':
-    'Section=companion Note="Tentacle attack inflicts %V HP each"',
-  'Eidolon Wing Buffet':
-    'Section=companion Note="Wing attack inflicts %V HP each"',
-  'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
-  'Eidolon Constrict (2)':
-    'Section=companion Note="Successful grapple doubles damage"',
-  'Eidolon Energy Attacks (2)':
-    'Section=companion ' +
-    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
-  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
-  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
-  'Eidolon Grab (2)':
-    'Section=companion ' +
-    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
-  'Eidolon Immunity (2)':
-    'Section=companion Note="Immune to chosen energy type"',
-  'Eidolon Limbs (2)':'Section=companion Note="+%V limbs"',
-  'Eidolon Poison (2)':
-    'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
-  'Eidolon Rake (2)':
-    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
-  'Eidolon Rend (2)':
-    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
-  'Eidolon Trample (2)':
-    'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
-  'Eidolon Tremorsense (2)':
-    'Section=companion Note="R30\' Senses creatures via ground vibrations"',
-  'Eidolon Trip (2)':
-    'Section=companion Note="Successful bite allows free CMB to trip"',
-  'Eidolon Weapon Training (2)':
-    'Section=companion Note="Proficient with simple%1 weapons"',
-  'Eidolon Blindsense (3)':
-    'Section=companion Note="R30\' May detect unseen creatures"',
-  'Eidolon Burrow (3)':
-    'Section=companion Note="May burrow through earth at half speed"',
-  'Eidolon Damage Reduction (3)':
-    'Section=companion Note="DR %V/opposite alignment"',
-  'Eidolon Frightful Presence (3)':
-    'Section=companion ' +
-    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
-  'Eidolon Swallow Whole (3)':
-    'Section=companion Note="May use CMB to swallow creature grappled by bite"',
-  'Eidolon Web (3)':
-    'Section=companion ' +
-    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
-  'Eidolon Blindsight (4)':
-    'Section=companion ' +
-    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
-  'Eidolon Breath Weapon (4)':
-    'Section=companion ' +
-    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
-  'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
-  'Eidolon Large (4)':
-    'Section=companion ' +
-    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
-  'Eidolon Spell Resistance (4)':
-    'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
-  'Elixir Of Life':
-    'Section=magic ' +
-    'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
   'Energy Body':
     'Section=feature ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
-  'Enhance Potion':
-    'Section=magic ' +
-    'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
   'Enhanced Cures':
      'Section=magic ' +
      'Note="Level-based healing by Cure spells gives %{levels.Oracle} HP"',
   'Erosion Touch':
     'Section=combat ' +
     'Note="Touch inflicts %{levels.Oracle}d6 HP to objects %{levels.Oracle//3>?1}/dy"',
-  'Eternal Potion':
-     'Section=magic Note="May make effects of 1 imbibed potion permanent"',
-  'Eternal Slumber Hex':
-    'Section=magic ' +
-    'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
-  'Eternal Youth':
-    'Section=feature Note="Suffers no ability score penalties from age"',
-  'Evil Eye Hex':
-    'Section=magic ' +
-    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
-  'Expert Trainer':
-    'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
-  'Exploit Weakness':
-    'Section=combat ' +
-    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
-  'Explosive Bomb':
-    'Section=combat ' +
-    'Note="Direct hit from bomb inflicts 1d6 HP fire until extinguished; splash extends 10\'"',
-  'Extend Potion':
-     'Section=magic ' +
-     'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
-  'Familiar Centipede':'Section=skill Note="+3 Stealth"',
-  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
-  'Familiar Fox':'Section=save Note="+2 Reflex"',
-  'Familiar Octopus':'Section=skill Note="+3 Swim"',
-  'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
-  'Familiar Spider':'Section=skill Note="+3 Climb"',
-  'Fast Bombs':
-    'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
-  'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
-  'Feral Mutagen':
-    'Section=combat ' +
-    'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
     'Note="May take full-attack action and move %{speed}\'/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{hitPoints*2} HP"',
@@ -2210,11 +2268,6 @@ PFAPG.FEATURES = {
   'Flame Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
-  'Flight Hex':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May cast <i>Feather Fall</i> at will%1",' +
-      '"+4 Swim"',
   'Fluid Nature':
     'Section=combat,feature ' +
     'Note=' +
@@ -2226,24 +2279,9 @@ PFAPG.FEATURES = {
   'Focused Trance':
     'Section=skill ' +
     'Note="Trance of 1d6 rd gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
-  'For The Faith':
-    'Section=combat ' +
-    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
-  'For The King':
-    'Section=combat ' +
-    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
-  'Force Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
-  'Forced Reincarnation Hex':
-    'Section=magic ' +
-    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
-  'Fortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Freezing Spells':
     'Section=magic ' +
     'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
@@ -2252,9 +2290,6 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
       '"R30\' Animals gain +%{charismaModifier} on all saves"',
-  'Frost Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
   'Gaseous Form':
     'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
   'Gaze Of Flames':
@@ -2262,32 +2297,12 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Can see through fire, fog, and smoke %{levels.Oracle} rd/dy",' +
       '"Can use <i>Clairvoyance</i> via flame %V rd/dy"',
-  'Grand Discovery':'Section=feature Note="%V Selection"',
-  'Grand Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
-  'Greater Bane':'Section=combat Note="Increased Bane effects"',
-  'Greater Banner':
-    'Section=combat ' +
-    'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
-  'Greater Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Shield Ally (Summoner)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+2 ally AC (+4 self) when eidolon is within reach",' +
-      '"+2 ally saves (+4 self) when eidolon is within reach"',
-  'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Guiding Star':
     'Section=feature,magic,skill ' +
     'Note=' +
       '"May determine precise location under clear night sky",' +
       '"+%{charismaModifier} wisdom-linked skills under clear night sky",' +
       '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night"',
-  "Hag's Eye Hex":
-    'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
   'Haunted':
     'Section=feature,magic ' +
     'Note=' +
@@ -2296,33 +2311,18 @@ PFAPG.FEATURES = {
   'Healing Hands':
     'Section=skill ' +
     'Note="+4 Heal/May use Heal on dbl number of people simultaneously"',
-  'Healing Hex':
-    'Section=feature Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
   'Heat Aura':
     'Section=combat ' +
     'Note="R10\' Heat blast inflicts %{levels.Oracle>?1}d4 HP fire, gives self 20% concealment for 1 rd %{(levels.Oracle+5)//5}/dy"',
   'Heavens Mystery':
     'Section=skill ' +
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
-  'Hex':'Section=feature Note="%V Selections"',
   'Ice Armor':
     'Section=combat ' +
     'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Icy Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
-  'Infuse Mutagen':
-     'Section=magic ' +
-     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
-  'Inferno Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
-  'Infusion':'Section=magic Note="Created extracts persist when not held"',
-  'Instant Alchemy':
-    'Section=combat,magic ' +
-    'Note=' +
-      '"May apply poison to a blade as an immediate action",' +
-      '"May create alchemical items as a full-round action"',
   'Interstellar Void':
     'Section=combat ' +
     'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
@@ -2332,30 +2332,17 @@ PFAPG.FEATURES = {
   'Iron Skin':
     'Section=magic ' +
     'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
-  'Judgment':
-    'Section=combat ' +
-    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
-  "Knight's Challenge":
-    'Section=combat ' +
-    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
   'Lame':
     'Section=ability,save ' +
     'Note=' +
       '"-%V Speed/Speed is unaffected by encumbrance%V",' +
       '"Immune to %V"',
-  'Life Bond':
-    'Section=combat ' +
-    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
-  'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
   'Life Leach':
     'Section=combat ' +
     'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
   'Life Link':
     'Section=combat ' +
     'Note="May establish bond with target that transfers 5 HP damage to self each rd while within $RM\'"',
-  'Life Link (Summoner)':
-    'Section=combat ' +
-    'Note="May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
   'Life Mystery':
     'Section=skill ' +
     'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
@@ -2363,27 +2350,15 @@ PFAPG.FEATURES = {
   'Lightning Breath':
     'Section=combat ' +
     'Note="R30\' Breath inflicts %{levels.Oracle}d4 electricity (Ref half) %{(levels.Oracle+5)//5}/dy"',
-  "Lion's Call":
-    'Section=combat ' +
-    'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
-  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
   'Lore Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Knowledge is a class skill"',
+  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
   'Lure Of The Heavens':
     'Section=feature,magic ' +
     'Note=' +
       '"Leaves no tracks",' +
       '"May <i>Levitate</i> 6\\" at will%V"',
-  'Madness Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
-  'Major Healing Hex':
-    'Section=feature ' +
-    'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
-  "Maker's Call":
-    'Section=magic ' +
-    'Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
@@ -2394,46 +2369,17 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Touch forces lycanthrope target into human form%{levels.Oracle>=5 \' or inflicts rage\' : \'\'} for %{levels.Oracle} rd %{levels.Oracle//5>?1}/dy",' +
       '"Immune to lycanthropy"',
-  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
-  'Merge Forms':
-    'Section=combat ' +
-    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
-  'Mighty Charge':
-    'Section=combat ' +
-    'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
   'Mighty Pebble':
     'Section=combat ' +
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
-  'Misfortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
-  'Moment Of Triumph':
-    'Section=feature ' +
-    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
-  'Monster Lore':
-    'Section=skill ' +
-    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
   'Moonlight Bridge':
     'Section=magic ' +
     'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaBonus}/dy"',
-  'Mount':'Section=feature Note="Special bond and abilities"',
-  'Mounted Mastery':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
-      '"Gain 1 Order Of The Sword feat",' +
-      '"No armor check penalty for Ride"',
-  'Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
   'Mystery':'Section=feature Note="1 Selection"',
-  'Natural Disaster Hex':
-    'Section=magic ' +
-    'Note="May use <i>Storm Of Vengeance</i> combined with <i>Earthquake</i> 1/dy"',
   'Natural Divination':
     'Section=feature ' +
     'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
@@ -2444,66 +2390,8 @@ PFAPG.FEATURES = {
   'Near Death':
     'Section=save ' +
     'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
-  'Nightmares Hex':
-    'Section=magic ' +
-    'Note="R60\' Can use <i>Nightmare</i> (DC %{hexDC} Will ends) at will"',
   "Oracle's Curse":'Section=feature Note="1 Selection"',
-  'Order':'Section=feature Note="1 Selection"',
-  'Order Of The Cockatrice':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} HP damage on target of challenge",' +
-      '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
-  'Order Of The Dragon':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
-      '"Must defend allies",' +
-      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
-  'Order Of The Lion':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
-      '"Must defend and obey sovereign",' +
-      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
-  'Order Of The Shield':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
-      '"Must defend the lives and property of common folks",' +
-      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
-  'Order Of The Star':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
-      '"Must protect and serve the faithful",' +
-      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
-  'Order Of The Sword':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
-      '"Must show honor, mercy, and charity",' +
-      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
-  'Orisons':'Section=magic Note="Knows level-0 spells"',
-  'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
-  "Philosopher's Stone":
-    'Section=magic ' +
-    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
-  'Poison Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
-  'Poison Resistance':'Section=save Note="Resistance %V poison"',
-  // 'Poison Use' in Pathfinder.js
-  'Poisonous Touch':
-    'Section=combat ' +
-    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (Con neg)"',
-  'Precise Bombs':
-    'Section=combat ' +
-    'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
-  'Protect The Meek':
-    'Section=combat ' +
-    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
+  // Orisons as Inquisitor
   'Punitive Transformation':
     'Section=magic ' +
     'Note="May cast <i>Baleful Polymorph</i>, lasting %{levels.Oracle} rd, %{charismaModifier}/dy"',
@@ -2518,35 +2406,14 @@ PFAPG.FEATURES = {
   'Resist Life':
     'Section=save ' +
     'Note="Save as undead vs. negative and positive energy%{levels.Oracle>=7 ? \', +\' + (levels.Oracle>=15 ? 6 : levels.Oracle>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
-  'Resolute':
-    'Section=combat ' +
-    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
-  'Retribution':
-    'Section=combat ' +
-    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
-  'Retribution Hex':
-    'Section=magic ' +
-    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Revelation':'Section=feature Note="%V Selections"',
   'Rock Throwing':
     'Section=combat ' +
     'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
   'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
-  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
   'Shard Explosion':
     'Section=combat ' +
     'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
-  'Shield Ally (Summoner)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+2 AC when eidolon is within reach",' +
-      '"+2 saves when eidolon is within reach"',
-  'Shield Of The Liege':
-    'Section=combat ' +
-    'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
-  'Shock Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
   'Sidestep Secret':
     'Section=combat,save ' +
     'Note=' +
@@ -2555,15 +2422,6 @@ PFAPG.FEATURES = {
   'Skill At Arms':
     'Section=combat ' +
     'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
-  'Slayer':
-    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
-  'Slumber Hex':
-    'Section=magic ' +
-    'Note="R30\' May inflict sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
-  'Smoke Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
-  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
   'Soul Siphon':
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
@@ -2587,24 +2445,10 @@ PFAPG.FEATURES = {
   'Spray Of Shooting Stars':
     'Section=combat ' +
     'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
-  'Stalwart':
-    'Section=save ' +
-    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
   'Star Chart':'Section=magic Note="May use <i>Commune</i> 1/dy"',
-  'Steal Glory':
-    'Section=combat ' +
-    'Note="May make AOO against threatened target when ally scores a critical hit"',
   'Steelbreaker Skin':
     'Section=combat ' +
     'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness\' : \'\'} for %{levels.Oracle} min 1/dy"',
-  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
-  'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Sticky Bomb':
-    'Section=combat ' +
-    'Note="Targets hit by bombs suffer splash damage on the following rd"',
-  'Stink Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
   'Stone Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
@@ -2613,32 +2457,10 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+4 CMD vs. bull rush and trip while standing on ground",' +
       '"Has %V feature"',
-  'Strategy':
-    'Section=combat ' +
-    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
-  'Summon Monster':
-    'Section=magic ' +
-    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'} for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
-  'Supreme Charge':
-    'Section=combat ' +
-    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
   'Surprising Charge':
     'Section=combat ' +
     'Note="May take extra move %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
-  'Swift Alchemy':
-    'Section=combat,magic ' +
-    'Note=' +
-      '"May apply poison to a blade as a move action",' +
-      '"Creating alchemical items takes half normal time"',
-  'Swift Poisoning':
-    'Section=combat Note="May apply poison to a blade as a swift action"',
-  'Tactician':
-    'Section=feature ' +
-    'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
-  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
   'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
-  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
-  // 'Throw Anything' in Pathfinder.js
   'Thunderburst':
     'Section=combat ' +
     'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
@@ -2647,9 +2469,6 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Can speak only chosen outsider or elemental language during combat",' +
       '"+%V Language Count%1"',
-  'Tongues Hex':
-    'Section=magic ' +
-    'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
   'Touch Of Acid':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
@@ -2659,30 +2478,15 @@ PFAPG.FEATURES = {
   'Touch Of Flame':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
-  // 'Track' in Pathfinder.js
   'Transcendental Bond':
     'Section=magic ' +
     'Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
-  'Transposition':
-    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
-  'True Judgment':
-    'Section=combat ' +
-    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
-  'True Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
-  'Twin Eidolon':
-    'Section=feature ' +
-    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
   'Undead Servitude':
     'Section=feature ' +
     'Note="Can use Command Undead feature %{charismaModifier+3}/dy"',
   'Undo Artifice':
     'Section=feature ' +
     'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
-  'Vision Hex':
-    'Section=feature ' +
-    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
   'Voice Of The Grave':
     'Section=magic ' +
     'Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
@@ -2692,9 +2496,6 @@ PFAPG.FEATURES = {
   'War Sight':
     'Section=combat ' +
     'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
-  'Ward Hex':
-    'Section=magic ' +
-    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
   'Wasting':
     'Section=save,skill ' +
     'Note=' +
@@ -2711,14 +2512,8 @@ PFAPG.FEATURES = {
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
-  'Waxen Image Hex':
-    'Section=feature ' +
-    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
   'Weapon Mastery':
     'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
-  'Weather Control Hex':
-    'Section=magic ' +
-    'Note="May use <i>Control Weather</i> after 1 hr ritual 1/dy"',
   'Whirlwind Lesson':
     'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
   'Wind Mystery':
@@ -2734,8 +2529,229 @@ PFAPG.FEATURES = {
   'Wintry Touch':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
+
+  // Summoner
+  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
+  'Bond Senses':
+    'Section=feature ' +
+    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
+  'Cantrips':'Section=magic Note="May cast 0-level spells"',
+  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
+  'Eidolon':'Section=feature Note="Special bond and abilities"',
+  'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
+  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
+  'Eidolon Blindsense (3)':
+    'Section=companion Note="R30\' May detect unseen creatures"',
+  'Eidolon Blindsight (4)':
+    'Section=companion ' +
+    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
+  'Eidolon Breath Weapon (4)':
+    'Section=companion ' +
+    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
+  'Eidolon Burrow (3)':
+    'Section=companion Note="May burrow through earth at half speed"',
+  'Eidolon Claws':'Section=companion Note="Claw attack inflicts %V HP each"',
+  'Eidolon Climb':'Section=companion Note="%V\' Climb speed"',
+  'Eidolon Constrict (2)':
+    'Section=companion Note="Successful grapple doubles damage"',
+  'Eidolon Damage Reduction (3)':
+    'Section=companion Note="DR %V/opposite alignment"',
+  'Eidolon Energy Attacks (2)':
+    'Section=companion ' +
+    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
+  'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
+  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
+  'Eidolon Frightful Presence (3)':
+    'Section=companion ' +
+    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
+  'Eidolon Gills':'Section=companion Note="May breathe underwater"',
+  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
+  'Eidolon Grab (2)':
+    'Section=companion ' +
+    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
+  'Eidolon Immunity (2)':
+    'Section=companion Note="Immune to chosen energy type"',
+  'Eidolon Improved Damage':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts 1 die type higher damage"',
+  'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
+  'Eidolon Large (4)':
+    'Section=companion ' +
+    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
+  'Eidolon Limbs (2)':'Section=companion Note="+%V limbs"',
+  'Eidolon Magic Attacks':
+    'Section=companion ' +
+    'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
+  'Eidolon Mount':'Section=companion Note="Master may ride eidolon"',
+  'Eidolon Pincers':
+    'Section=companion Note="Pincer attack inflicts %V HP each"',
+  'Eidolon Poison (2)':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
+  'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
+  'Eidolon Pull':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
+  'Eidolon Push':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
+  'Eidolon Rake (2)':
+    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
+  'Eidolon Reach':
+    'Section=companion Note="Reach for chosen natural attack increases 5\'"',
+  'Eidolon Rend (2)':
+    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
+  'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
+  'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
+  'Eidolon Slam':'Section=companion Note="Slam attack inflicts %V HP each"',
+  'Eidolon Spell Resistance (4)':
+    'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
+  'Eidolon Sting':'Section=companion Note="Sting attack inflicts %V HP"',
+  'Eidolon Swallow Whole (3)':
+    'Section=companion Note="May use CMB to swallow creature grappled by bite"',
+  'Eidolon Swim':'Section=companion Note="Can swim at full speed%1"',
+  'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
+  'Eidolon Tail Slap':'Section=companion Note="Slap attack inflicts %V HP"',
+  'Eidolon Tentacle':
+    'Section=companion Note="Tentacle attack inflicts %V HP each"',
+  'Eidolon Trample (2)':
+    'Section=companion ' +
+    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
+  'Eidolon Tremorsense (2)':
+    'Section=companion Note="R30\' Senses creatures via ground vibrations"',
+  'Eidolon Trip (2)':
+    'Section=companion Note="Successful bite allows free CMB to trip"',
+  'Eidolon Weapon Training (2)':
+    'Section=companion Note="Proficient with simple%1 weapons"',
+  'Eidolon Web (3)':
+    'Section=companion ' +
+    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
+  'Eidolon Wing Buffet':
+    'Section=companion Note="Wing attack inflicts %V HP each"',
+  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
+  'Greater Shield Ally (Summoner)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 ally AC (+4 self) when eidolon is within reach",' +
+      '"+2 ally saves (+4 self) when eidolon is within reach"',
+  'Life Bond':
+    'Section=combat ' +
+    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
+  'Life Link (Summoner)':
+    'Section=combat ' +
+    'Note="May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
+  "Maker's Call":
+    'Section=magic ' +
+    'Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
+  'Merge Forms':
+    'Section=combat ' +
+    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
+  'Shield Ally (Summoner)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 AC when eidolon is within reach",' +
+      '"+2 saves when eidolon is within reach"',
+  'Summon Monster':
+    'Section=magic ' +
+    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'} for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
+  'Transposition':
+    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
+  'Twin Eidolon':
+    'Section=feature ' +
+    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
+
+  // Witch
+  'Agony Hex':
+    'Section=magic ' +
+    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
+  'Blight Hex':
+    'Section=magic ' +
+    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{hexDC} Will neg)"',
+  'Cackle Hex':'Section=magic Note="R30\' Extends hex affects 1 rd"',
+  // Cantrips as Summoner
+  'Cauldron Hex':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Has Brew Potion features",' +
+      '"+4 Craft (Alchemy)"',
+  'Charm Hex':
+    'Section=skill ' +
+    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+  'Coven Hex':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May participate in hag coven",' +
+      '"May use aid another to give witches in 30\' radius +1 caster level for 1 rd"',
+  'Death Curse Hex':
+    'Section=magic ' +
+    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP)"',
+  'Disguise Hex':
+    'Section=magic ' +
+    'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
+  'Eternal Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
+  'Evil Eye Hex':
+    'Section=magic ' +
+    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
+  'Familiar Centipede':'Section=skill Note="+3 Stealth"',
+  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
+  'Familiar Fox':'Section=save Note="+2 Reflex"',
+  'Familiar Octopus':'Section=skill Note="+3 Swim"',
+  'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
+  'Familiar Spider':'Section=skill Note="+3 Climb"',
+  'Flight Hex':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast <i>Feather Fall</i> at will%1",' +
+      '"+4 Swim"',
+  'Forced Reincarnation Hex':
+    'Section=magic ' +
+    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
+  'Fortune Hex':
+    'Section=magic ' +
+    'Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+  "Hag's Eye Hex":
+    'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
+  'Healing Hex':
+    'Section=feature ' +
+    'Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
+  'Hex':'Section=feature Note="%V Selections"',
+  'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
+  'Major Healing Hex':
+    'Section=feature ' +
+    'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
+  'Misfortune Hex':
+    'Section=magic ' +
+    'Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+  'Natural Disaster Hex':
+    'Section=magic ' +
+    'Note="May use <i>Storm Of Vengeance</i> combined with <i>Earthquake</i> 1/dy"',
+  'Nightmares Hex':
+    'Section=magic ' +
+    'Note="R60\' Can use <i>Nightmare</i> (DC %{hexDC} Will ends) at will"',
+  'Retribution Hex':
+    'Section=magic ' +
+    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+  'Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' May inflict sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
+  'Tongues Hex':
+    'Section=magic ' +
+    'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
+  'Vision Hex':
+    'Section=feature ' +
+    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
+  'Ward Hex':
+    'Section=magic ' +
+    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
+  'Waxen Image Hex':
+    'Section=feature ' +
+    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
+  'Weather Control Hex':
+    'Section=magic ' +
+    'Note="May use <i>Control Weather</i> after 1 hr ritual 1/dy"',
   "Witch's Familiar":
     'Section=feature Note="Has Familiar features/Familiar stores spells"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -3964,7 +3980,7 @@ PFAPG.PATHS = {
     'Selectables=' +
       '"1:Acid Skin:Stone Revelation",' +
       '"1:Clobbering Strike:Stone Revelation",' +
-      '"1:Crystal Strike:Stone Revelation",' +
+      '"1:Crystal Sight:Stone Revelation",' +
       '"7:Earth Glide:Stone Revelation",' +
       '"1:Mighty Pebble:Stone Revelation",' +
       '"1:Rock Throwing:Stone Revelation",' +
@@ -5897,8 +5913,7 @@ PFAPG.CLASSES = {
       '1:Cantrips,1:Eidolon,"1:Life Link (Summoner)","1:Summon Monster",' +
       '"2:Bond Senses","4:Shield Ally (Summoner)","6:Maker\'s Call",' +
       '8:Transposition,10:Aspect,"12:Greater Shield Ally (Summoner)",' +
-      '"14:Life Bond","16:Merge Forms","18:Greater Aspect",19:Gate,' +
-      '"20:Twin Eidolon" ' +
+      '"14:Life Bond","16:Merge Forms","18:Greater Aspect","20:Twin Eidolon" ' +
     'Selectables=' +
       '"1:Eidolon Bite:Evolution",' +
       '"1:Eidolon Claws:Evolution",' +
