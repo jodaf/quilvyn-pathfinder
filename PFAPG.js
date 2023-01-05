@@ -1845,66 +1845,129 @@ PFAPG.FEATURES = {
   // Rogue
   'Deadly Range':'Section=feature Note="FILL"',
   'Accuracy':'Section=feature Note="FILL"',
-  'Another Day':'Section=feature Note="FILL"',
-  'Assault Leader':'Section=feature Note="FILL"',
+  'Another Day':
+    'Section=combat ' +
+    'Note="May take 5\' step to avoid disabling damage; staggered for 1 rd afterward"',
+  'Assault Leader':
+    'Section=combat ' +
+    'Note="May give immediate attack to flanking ally after missing flanked foe 1/dy"',
   'Befuddling Strike':'Section=feature Note="FILL"',
   "Bravado's Blade":'Section=feature Note="FILL"',
   'Brutal Beating':'Section=feature Note="FILL"',
-  'Camouflage (Rogue)':'Section=feature Note="FILL"',
-  'Canny Observer':'Section=feature Note="FILL"',
+  'Camouflage (Rogue)':
+    'Section=skill ' +
+    'Note="1 min prep gives +4 Stealth in same terrain for remainder of day 1/dy"',
+  'Canny Observer':
+    'Section=skill ' +
+    'Note="+4 Perception (hear conversation re: concealed items)"',
   'Careful Disarm':'Section=feature Note="FILL"',
-  'Charmer':'Section=feature Note="FILL"',
-  'Coax Information':'Section=feature Note="FILL"',
-  'Combat Swipe':'Section=feature Note="FILL"',
-  'Cunning Trigger':'Section=feature Note="FILL"',
+  'Charmer':
+    'Section=skill ' +
+    'Note="May take better of 2 Diplomacy rolls %{levels.Rogue//5+1}/dy"',
+  'Coax Information':
+    'Section=skill ' +
+    'Note="May use Bluff or Diplomancy instead of Intimidate to change foe attitude"',
+  'Combat Swipe':'Section=feature Note="Has Improved Steal feature"',
+  'Cunning Trigger':
+    'Section=combat Note="R30\' May use swift action to trigger self trap"',
   'Daring':'Section=feature Note="FILL"',
-  'Deadly Cocktail':'Section=feature Note="FILL"',
-  'Deadly Sneak':'Section=feature Note="FILL"',
-  'Distracting Attack':'Section=feature Note="FILL"',
+  'Deadly Cocktail':
+    'Section=combat Note="May apply 2 poison doses to a weapon at once"',
+  'Deadly Sneak':
+    'Section=combat Note="Treat 1s and 2s on Sneak Attack damage as 3s"',
+  'Distracting Attack (Rogue)':
+    'Section=combat ' +
+    'Note="May forego Sneak Attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
   'Distraction':'Section=feature Note="FILL"',
-  'Entanglements Of Blades':'Section=feature Note="FILL"',
-  'Expert Acrobat':'Section=feature Note="FILL"',
-  'Expert Leaper':'Section=feature Note="FILL"',
-  'Fast Fingers':'Section=feature Note="FILL"',
-  'Fast Getaway':'Section=feature Note="FILL"',
-  'Fast Picks':'Section=feature Note="FILL"',
-  'Fast Tumble':'Section=feature Note="FILL"',
+  'Entanglement Of Blades':
+    'Section=combat ' +
+    'Note="Successful Sneak Attack prevents foe 5\' step for 1 rd"',
+  'Expert Acrobat':
+    'Section=skill ' +
+    'Note="No light armor Acrobatics, Climb, Fly, Sleight Of Hand, or Stealth penalties/+2 Acrobatics and Fly in no armor"',
+  'Expert Leaper':
+    'Section=skill ' +
+    'Note="Always gains running start benefit/DC 15 Acrobatics negate 20\' falling damage"',
+  'Fast Fingers':
+    'Section=skill ' +
+    'Note="May take better of 2 Sleight Of Hand rolls %{levels.Rogue//5+1}/dy"',
+  'Fast Getaway':
+    'Section=combat ' +
+    'Note="May make immediate withdraw after successful Sneak Attack or Sleight Of Hand"',
+  'Fast Picks':'Section=skill Note="May open lock as a standard action"',
+  'Fast Tumble':
+    'Section=skill ' +
+    'Note="May use Acrobatics to move through threatened square w/out penalty"',
   'Fightening':'Section=feature Note="FILL"',
-  'Follow Clues':'Section=feature Note="FILL"',
+  'Follow Clues':'Section=skill Note="May use Perception to follow tracks"',
   'Follow Up':'Section=feature Note="FILL"',
-  'Frugal Trapsmith':'Section=feature Note="FILL"',
-  'Guileful Polyglot':'Section=feature Note="FILL"',
-  'Hard To Fool':'Section=feature Note="FILL"',
-  'Honeyed Words':'Section=feature Note="FILL"',
-  "Hunter's Surprise":'Section=feature Note="FILL"',
-  'Knock-Out Blow':'Section=feature Note="FILL"',
-  'Lasting Poison':'Section=feature Note="FILL"',
+  'Frugal Trapsmith':'Section=feature Note="May construct traps for 75% cost"',
+  'Guileful Polyglot':'Section=skill Note="+%V Language Count"',
+  'Hard To Fool':
+    'Section=skill ' +
+    'Note="May take better of 2 Sense Motive rolls %{levels.Rogue//5+1}/dy"',
+  'Honeyed Words':
+    'Section=skill ' +
+    'Note="May take better of 2 Bluff rolls %{levels.Rogue//5+1}/dy"',
+  "Hunter's Surprise":
+    'Section=combat ' +
+    'Note="May add Sneak Attack damage to successful attack on adjacent foe for 1 rd 1/dy"',
+  'Knock-Out Blow':
+    'Section=combat ' +
+    'Note="May forego Sneak Attack damage to inflict unconscious for 1d4 rd (DC {10+levels.Rogue//2+intelligenceModifier} Fort staggered 1 rd)"',
+  'Lasting Poison':
+    'Section=combat ' +
+    'Note="May apply poison to last 2 attacks; targets gain +2 save"',
   'Martial Training':'Section=feature Note="FILL"',
-  'Master Of Disguise':'Section=feature Note="FILL"',
+  'Master Of Disguise':'Section=skill Note="May gain +10 Disguise 1/dy"',
   'Master Poisoner':'Section=feature Note="FILL"',
   'Measure The Mark':'Section=feature Note="FILL"',
-  'Nimble Climber':'Section=feature Note="FILL"',
-  'Offensive Defense':'Section=feature Note="FILL"',
-  'Peerless Maneuver':'Section=feature Note="FILL"',
+  'Nimble Climber':
+    'Section=skill ' +
+    'Note="May take another DC +10 Climb check after failing to avoid fall"',
+  'Offensive Defense':
+    'Section=feature ' +
+    'Note="+%{sneakAttack} AC afer successful Sneak Attack for 1 rd"',
+  'Peerless Maneuver':
+    'Section=skill ' +
+    'Note="May take better of 2 Acrobatics rolls %{levels.Rogue//5+1}/dy"',
   // Poison Use in Pathfinder.js
-  'Positioning Attack':'Section=feature Note="FILL"',
-  'Powerful Sneak':'Section=feature Note="FILL"',
-  'Quick Disguise':'Section=feature Note="FILL"',
-  'Quick Trapsmith':'Section=feature Note="FILL"',
+  'Positioning Attack':
+    'Section=combat ' +
+    'Note="May move 30\' w/out provoking AOO after successful melee attack, ending adjacent to same foe, 1/dy"',
+  'Powerful Sneak':
+    'Section=combat Note="May trade -2 attack for rerolling Sneak Attack 1s"',
+  'Quick Disguise':
+    'Section=skill Note="Reduces time to create effective disguise"',
+  'Quick Trapsmith':
+    'Section=skill ' +
+    'Note="May set CR %{levels.Rogue//2} trap as full-round action"',
   "Rake's Smile":'Section=feature Note="FILL"',
-  'Redirect Attack':'Section=feature Note="FILL"',
-  "Scout's Charge":'Section=feature Note="FILL"',
-  'Second Chance':'Section=feature Note="FILL"',
+  'Redirect Attack':
+    'Section=combat ' +
+    'Note="May redirect successful hit on self to adjacent creature 1/dy"',
+  "Scout's Charge":
+    'Section=combat Note="Reduces sniping Stealth penalty to -10"',
+  'Second Chance (Rogue)':
+    'Section=skill ' +
+    'Note="May reroll Acrobatics, Climb, or Fly %{levels.Rogue//3}/dy"',
   'Skilled Liar':'Section=feature Note="FILL"',
   'Skirmisher':'Section=feature Note="FILL"',
-  'Snap Shot':'Section=feature Note="FILL"',
-  "Sniper's Eye":'Section=feature Note="FILL"',
+  'Snap Shot':
+    'Section=combat ' +
+    'Note="May make ranged attack at Initiative 20 during surprise round"',
+  "Sniper's Eye":
+    'Section=combat Note="R30\' May use ranged Sneak Attack on concealed foes"',
   'Stab And Grab':'Section=feature Note="FILL"',
   'Stealthy Sniper':'Section=feature Note="FILL"',
-  'Strong Impression':'Section=feature Note="FILL"',
-  'Survivalist':'Section=feature Note="FILL"',
-  'Swift Poison':'Section=feature Note="FILL"',
-  'Thoughtful Reexamining':'Section=feature Note="FILL"',
+  'Strong Impression':'Section=feature Note="Has Intimidating Prowess feature"',
+  'Survivalist':
+    'Section=skill Note="Heal is a class skill/Survival is a class skill"',
+  'Swift Poison':
+    'Section=combat Note="May apply poison to a weapon as a move action"',
+  'Thoughtful Reexamining':
+    'Section=skill ' +
+    'Note="May reroll Knowledge, Perception, or Sense Motive 1/dy"',
   'Trap Master':'Section=feature Note="FILL"',
 
   // Alchemist
@@ -5899,18 +5962,20 @@ PFAPG.CLASSES = {
     'Selectables=' +
       '"Assault Leader","Befuddling Strike","Camouflage (Rogue)",' +
       '"Canny Observer",Charmer,"Coax Information","Combat Swipe",' +
-      '"Cunning Trigger","Distracting Attack","Expert Leaper","Fast Fingers",' +
-      '"Fast Getaway","Fast Picks","Follow Clues","Guileful Polyglot",' +
-      '"Hard To Fool","Honeyed Words","Lasting Poison","Nimble Climber",' +
-      '"Offensive Defense","Peerless Maneuver","Positioning Attack",' +
-      '"Powerful Sneak","Quick Disguise","Quick Trapsmith","Snap Shot",' +
-      '"Sniper\'s Eye","Strong Impression",Survivalist,"Swift Poison",' +
-      '"10:Another Day","10:Deadly Cocktail","10:Deadly Sneak",' +
-      '"10:Entanglements Of Blades","10:Fast Tumble","10:Frugal Trapsmith",' +
+      '"Cunning Trigger","Distracting Attack (Rogue)","Expert Leaper",' +
+      '"Fast Fingers","Fast Getaway","Fast Picks","Follow Clues",' +
+      '"Guileful Polyglot","Hard To Fool","Honeyed Words","Lasting Poison",' +
+      '"Nimble Climber","Offensive Defense","Peerless Maneuver",' +
+      '"Positioning Attack","Powerful Sneak","Quick Disguise",' +
+      '"Quick Trapsmith","Snap Shot","Sniper\'s Eye","Strong Impression",' +
+      'Survivalist,"Swift Poison","10:Another Day","10:Deadly Cocktail",' +
+      '"10:Entanglement Of Blades","10:Fast Tumble","10:Frugal Trapsmith",' +
       '"10:Hunter\'s Surprise","10:Knock-Out Blow","10:Master Of Disguise",' +
       '"10:Redirect Attack","10:Stealthy Sniper","10:Thoughtful Reexamining",' +
+      '"features.Powerful Sneak ? 10:Deadly Sneak",' +
       '"1:Acrobat:Archetype",' +
       '"1:Burglar:Archetype",' +
+      '"1:Core Rogue:Archetype",' +
       '"1:Cutpurse:Archetype",' +
       '"1:Investigator:Archetype",' +
       '"1:Poisoner:Archetype",' +
@@ -7671,6 +7736,42 @@ PFAPG.classRulesExtra = function(rules, name) {
         allSelectables[entry] =
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
+  } else if(name == 'Rogue') {
+    rules.defineRule
+      ('features.Improved Steal', 'featureNotes.combatSwipe', '=', '1');
+    rules.defineRule('features.Intimidating Prowess',
+      'featureNotes.strongImpression', '=', '1'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
+    rules.defineRule('skillNotes.guilefulPolyglot',
+      '', '=', '2',
+      'skills.Linguistics', '+', '2'
+    );
+    rules.defineRule('skillNotes.expertAcrobat.1',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '?', 'source==1',
+      'skillNotes.armorSkillCheckPenalty', '=', null
+    );
+    rules.defineRule('skillNotes.expertAcrobat.2',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '=', 'source==0 ? 2 : null'
+    );
+    rules.defineRule('skillModifier.Acrobatics',
+      'skillNotes.expertAcrobat.1', '+', null,
+      'skillNotes.expertAcrobat.2', '+', null
+    );
+    rules.defineRule
+      ('skillModifier.Climb', 'skillNotes.expertAcrobat.1', '+', null);
+    rules.defineRule('skillModifier.Fly',
+      'skillNotes.expertAcrobat.1', '+', null,
+      'skillNotes.expertAcrobat.2', '+', null
+    );
+    rules.defineRule('skillModifier.Sleight Of Hand',
+      'skillNotes.expertAcrobat.1', '+', null
+    );
+    rules.defineRule
+      ('skillModifier.Stealth', 'skillNotes.expertAcrobat.1', '+', null);
   } else if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
       classLevel, '=', null,
