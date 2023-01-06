@@ -517,6 +517,916 @@ PFAPG.FEATS = {
 };
 PFAPG.FEATURES = {
 
+  // Alchemist
+  'Acid Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
+  'Alchemy':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
+      '"+%V Craft (Alchemy)"',
+  'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
+  'Bomb':
+    'Section=combat ' +
+    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %V/dy"',
+  // 'Brew Potion' in SRD35.js
+  'Combine Extracts':
+    'Section=magic Note="May combine two effects into one extract"',
+  'Concentrate Poison':
+    'Section=feature ' +
+    'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
+  'Concussive Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
+  'Delayed Bomb':
+    'Section=combat ' +
+    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
+  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
+  'Discovery':'Section=feature Note="%V Selections"',
+  'Dispelling Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that dispels magic instead of inflicting damage"',
+  'Elixir Of Life':
+    'Section=magic ' +
+    'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
+  'Enhance Potion':
+    'Section=magic ' +
+    'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
+  'Eternal Potion':
+     'Section=magic Note="May make effects of 1 imbibed potion permanent"',
+  'Eternal Youth':
+    'Section=feature Note="Suffers no ability score penalties from age"',
+  'Explosive Bomb':
+    'Section=combat ' +
+    'Note="Direct hit from bomb inflicts 1d6 HP fire until extinguished; splash extends 10\'"',
+  'Extend Potion':
+     'Section=magic ' +
+     'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
+  'Fast Bombs':
+    'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
+  'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
+  'Feral Mutagen':
+    'Section=combat ' +
+    'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
+  'Force Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
+  'Frost Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
+  'Grand Discovery':'Section=feature Note="%V Selection"',
+  'Grand Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
+  'Greater Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
+  'Inferno Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
+  'Infuse Mutagen':
+     'Section=magic ' +
+     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
+  'Infusion':'Section=magic Note="Created extracts persist when not held"',
+  'Instant Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as an immediate action",' +
+      '"May create alchemical items as a full-round action"',
+  'Madness Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
+  'Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
+  'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
+  "Philosopher's Stone":
+    'Section=magic ' +
+    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
+  'Poison Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+  'Poison Resistance':'Section=save Note="Resistance %V poison"',
+  'Poison Touch':
+    'Section=combat ' +
+    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (Con neg)"',
+  // 'Poison Use' in Pathfinder.js
+  'Precise Bombs':
+    'Section=combat ' +
+    'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
+  'Shock Bomb':
+    'Section=combat ' +
+    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
+  'Smoke Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
+  'Sticky Bomb':
+    'Section=combat ' +
+    'Note="Targets hit by bombs suffer splash damage on the following rd"',
+  'Stink Bomb':
+    'Section=combat ' +
+    'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
+  'Swift Alchemy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"May apply poison to a blade as a move action",' +
+      '"Creating alchemical items takes half normal time"',
+  'Swift Poisoning':
+    'Section=combat Note="May apply poison to a blade as a swift action"',
+  // 'Throw Anything' in Pathfinder.js
+  'True Mutagen':
+    'Section=magic ' +
+    'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
+
+  // Cavalier
+  'Act As One':
+    'Section=combat ' +
+    'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
+  'Aid Allies (Cavalier)':
+    'Section=combat ' +
+    'Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
+  'Banner':
+    'Section=combat ' +
+    'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
+  'Braggart':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+2 attack on demoralized target",' +
+      '"Has Dazzling Display features"',
+  'By My Honor':
+    'Section=save Note="+2 choice of save while maintaining alignment"',
+  'Calling':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
+      '"+%V %1"',
+  'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
+  "Cavalier's Charge":
+    'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
+  'Challenge':
+    'Section=combat ' +
+    'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
+  'Demanding Challenge':
+    'Section=combat Note="Challenged target suffers -2 AC from others"',
+  'Expert Trainer':
+    'Section=skill ' +
+    'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
+  'For The Faith':
+    'Section=combat ' +
+    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
+  'For The King':
+    'Section=combat ' +
+    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
+  'Greater Banner':
+    'Section=combat ' +
+    'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
+  'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  "Knight's Challenge":
+    'Section=combat ' +
+    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
+  "Lion's Call":
+    'Section=combat ' +
+    'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
+  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  'Mighty Charge':
+    'Section=combat ' +
+    'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
+  'Moment Of Triumph':
+    'Section=feature ' +
+    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
+  'Mount':'Section=feature Note="Special bond and abilities"',
+  'Mounted Mastery':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
+      '"Gain 1 Order Of The Sword feat",' +
+      '"No armor check penalty for Ride"',
+  'Order':'Section=feature Note="1 Selection"',
+  'Order Of The Cockatrice':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} HP damage on target of challenge",' +
+      '"Must put own interest above others\'",' +
+      '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
+  'Order Of The Dragon':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
+      '"Must defend allies",' +
+      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
+  'Order Of The Lion':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
+      '"Must defend and obey sovereign",' +
+      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
+  'Order Of The Shield':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
+      '"Must defend the lives and property of common folks",' +
+      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
+  'Order Of The Star':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
+      '"Must protect and serve the faithful",' +
+      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
+  'Order Of The Sword':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
+      '"Must show honor, mercy, and charity",' +
+      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
+  'Protect The Meek':
+    'Section=combat ' +
+    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
+  'Resolute':
+    'Section=combat ' +
+    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
+  'Retribution':
+    'Section=combat ' +
+    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
+  'Shield Of The Liege':
+    'Section=combat ' +
+    'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
+  'Steal Glory':
+    'Section=combat ' +
+    'Note="May make AOO against threatened target when ally scores a critical hit"',
+  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
+  'Strategy':
+    'Section=combat ' +
+    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
+  'Supreme Charge':
+    'Section=combat ' +
+    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
+  'Tactician':
+    'Section=feature ' +
+    'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
+
+
+  // Inquisitor
+  'Bane':
+    'Section=combat ' +
+    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
+  'Cunning Initiative':'Section=combat Note="+%V Initiative"',
+  'Detect Alignment':
+    'Section=magic ' +
+    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
+  'Discern Lies':
+    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
+  'Domain':'Section=feature Note="1 Selection"',
+  'Exploit Weakness':
+    'Section=combat ' +
+    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
+  'Greater Bane':'Section=combat Note="Increased Bane effects"',
+  'Judgment':
+    'Section=combat ' +
+    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+  'Monster Lore':
+    'Section=skill ' +
+    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
+  'Orisons':'Section=magic Note="Knows level-0 spells"',
+  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
+  'Slayer':
+    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
+  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
+  'Stalwart':
+    'Section=save ' +
+    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
+  'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
+  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
+  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
+  // 'Track' in Pathfinder.js
+  'True Judgment':
+    'Section=combat ' +
+    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
+
+  // Oracle
+  'Acid Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
+  'Air Barrier':
+    'Section=combat ' +
+    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
+  'Arcane Archivist (Oracle)':
+    'Section=magic ' +
+    'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
+  'Armor Of Bones':
+    'Section=combat ' +
+    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
+  'Automatic Writing':
+    'Section=magic ' +
+    'Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
+  'Awesome Display':
+    'Section=magic ' +
+    'Note="Treat illusion targets as having %{charismaModifier>?0} fewer HD"',
+  'Battle Mystery':
+    'Section=skill ' +
+    'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
+  'Battlecry':
+    'Section=combat ' +
+    'Note="R100\' Allies within hearing gain +%{levels.Oracle>=10 ? 2 : 1} attack, skill checks, and saves for %{charismaModifier} rd %{(levels.Oracle+5)//5}/dy"',
+  'Battlefield Clarity':
+    'Section=combat ' +
+    'Note="May make +4 reroll on failed save vs. blind, deaf, frightened, panicked, paralyzed, shaken, or stunned %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
+  'Bleeding Wounds':
+    'Section=combat ' +
+    'Note="Successful attack inflicts %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
+  'Blizzard':
+    'Section=combat ' +
+    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
+  'Bonded Mount':'Section=feature Note="Has mount animal companion"',
+  'Bones Mystery':
+    'Section=skill ' +
+    'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
+  'Brain Drain':
+    'Section=feature ' +
+    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
+  'Burning Magic':
+    'Section=magic ' +
+    'Note="Successful fire spell inflicts 1/spell level HP fire for 1d4 rd (Ref ends)"',
+  'Channel':'Section=feature Note="Has Channel Energy feature"',
+  'Cinder Dance':
+    'Section=ability,feature ' +
+    'Note=' +
+      '"+10 Speed",' +
+      '"Has %V features"',
+  'Clobbering Strike':
+    'Section=combat ' +
+    'Note="May make swift action trip attempt w/out AOO after critical hit"',
+  'Clouded Vision':
+    'Section=feature ' +
+    'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
+  'Coat Of Many Stars':
+    'Section=combat ' +
+    'Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
+  'Combat Healer':
+    'Section=feature ' +
+    'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
+  'Crystal Sight':
+    'Section=feature ' +
+    'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
+  'Deaf':
+    'Section=combat,feature,magic,skill ' +
+    'Note=' +
+      '"-%V Initiative",' +
+      '"Has %V",' +
+      '"May cast all spells silently",' +
+      '"+3 Perception (non-sound)"',
+  "Death's Touch":
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
+  'Delay Affliction':
+    'Section=save ' +
+    'Note="May delay effects of failed save vs. disease or poison for %{levels.Oracle} %{levels.Oracle>=15 ? 3 : levels.Oracle >= 7 ? 2 : 1}/dy"',
+  'Dweller In Darkness':
+    'Section=magic ' +
+    'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
+  'Earth Glide':
+    'Section=ability ' +
+    'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
+  'Energy Body':
+    'Section=feature ' +
+    'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
+  'Enhanced Cures':
+     'Section=magic ' +
+     'Note="Level-based healing by Cure spells gives %{levels.Oracle} HP"',
+  'Erosion Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts %{levels.Oracle}d6 HP to objects %{levels.Oracle//3>?1}/dy"',
+  'Final Revelation (Battle Mystery)':
+    'Section=combat ' +
+    'Note="May take full-attack action and move %{speed}\'/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{hitPoints*2} HP"',
+  'Final Revelation (Bones Mystery)':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"Automatically stabilize at negative HP",' +
+      '"May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy"',
+  'Final Revelation (Flame Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spell w/out cost"',
+  'Final Revelation (Heavens Mystery)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"Automatically stabilize at negative HP/Critical hits automatically confirmed",' +
+      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
+  'Final Revelation (Life Mystery)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"Remain alive until -%{hitPoints*2} HP",' +
+      '"Immune to bleed, death attack, exhausted, fatigued, nauseated effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
+  'Final Revelation (Lore Mystery)':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast <i>Wish</i> 1/dy",' +
+      '"May take 20 on all Knowledge"',
+  'Final Revelation (Nature Mystery)':
+    'Section=feature ' +
+    'Note="Cocooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
+  'Final Revelation (Stone Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid or earth spell w/out cost"',
+  'Final Revelation (Waves Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water spell w/out cost"',
+  'Final Revelation (Wind Mystery)':
+    'Section=magic ' +
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air or electricity spell w/out cost"',
+  'Fire Breath':
+    'Section=combat ' +
+    'Note="15\' cone inflicts %{levels.Oracle}d4 HP fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
+  'Firestorm':
+    'Section=combat ' +
+    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d6 HP fire (Ref half) for %{charismaModifier} rd 1/dy"',
+  'Flame Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
+  'Fluid Nature':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+2 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe critical confirmation",' +
+      '"Has %V features"',
+  'Fluid Travel':
+    'Section=ability ' +
+    'Note="May move full speed across liquid without contact damage%1"',
+  'Focused Trance':
+    'Section=skill ' +
+    'Note="Trance of 1d6 rd gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
+  'Form Of Flame':
+    'Section=magic ' +
+    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
+  'Freezing Spells':
+    'Section=magic ' +
+    'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
+  'Friend To The Animals':
+    'Section=magic,save ' +
+    'Note=' +
+      '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
+      '"R30\' Animals gain +%{charismaModifier} on all saves"',
+  'Gaseous Form':
+    'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
+  'Gaze Of Flames':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Can see through fire, fog, and smoke %{levels.Oracle} rd/dy",' +
+      '"Can use <i>Clairvoyance</i> via flame %V rd/dy"',
+  'Guiding Star':
+    'Section=feature,magic,skill ' +
+    'Note=' +
+      '"May determine precise location under clear night sky",' +
+      '"+%{charismaModifier} wisdom-linked skills under clear night sky",' +
+      '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night"',
+  'Haunted':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Malevolent spirits inflict minor annoyances",' +
+      '"Know %V spells"',
+  'Healing Hands':
+    'Section=skill ' +
+    'Note="+4 Heal/May use Heal on dbl number of people simultaneously"',
+  'Heat Aura':
+    'Section=combat ' +
+    'Note="R10\' Heat blast inflicts %{levels.Oracle>?1}d4 HP fire, gives self 20% concealment for 1 rd %{(levels.Oracle+5)//5}/dy"',
+  'Heavens Mystery':
+    'Section=skill ' +
+    'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
+  'Ice Armor':
+    'Section=combat ' +
+    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
+  'Icy Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
+  'Interstellar Void':
+    'Section=combat ' +
+    'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
+  'Invisibility':
+    'Section=magic ' +
+    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
+  'Iron Skin':
+    'Section=magic ' +
+    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
+  'Lame':
+    'Section=ability,save ' +
+    'Note=' +
+      '"-%V Speed/Speed is unaffected by encumbrance%V",' +
+      '"Immune to %V"',
+  'Life Leach':
+    'Section=combat ' +
+    'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
+  'Life Link':
+    'Section=combat ' +
+    'Note="May establish bond with target that transfers 5 HP damage to self each rd while within $RM\'"',
+  'Life Mystery':
+    'Section=skill ' +
+    'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
+  'Lifesense':'Section=feature Note="30\' Blindsight"',
+  'Lightning Breath':
+    'Section=combat ' +
+    'Note="R30\' Breath inflicts %{levels.Oracle}d4 electricity (Ref half) %{(levels.Oracle+5)//5}/dy"',
+  'Lore Mystery':
+    'Section=skill ' +
+    'Note="Appraise is a class skill/Knowledge is a class skill"',
+  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
+  'Lure Of The Heavens':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Leaves no tracks",' +
+      '"May <i>Levitate</i> 6\\" at will%V"',
+  'Maneuver Mastery':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+%{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
+      '"Has Improved Trip%V features"',
+  'Mantle Of Moonlight':
+    'Section=combat,save ' +
+    'Note=' +
+      '"Touch forces lycanthrope target into human form%{levels.Oracle>=5 \' or inflicts rage\' : \'\'} for %{levels.Oracle} rd %{levels.Oracle//5>?1}/dy",' +
+      '"Immune to lycanthropy"',
+  'Mental Acuity':'Section=ability Note="+%V Intelligence"',
+  'Mighty Pebble':
+    'Section=combat ' +
+    'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
+  'Molten Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
+  'Moonlight Bridge':
+    'Section=magic ' +
+    'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaBonus}/dy"',
+  'Mystery':'Section=feature Note="1 Selection"',
+  'Natural Divination':
+    'Section=feature ' +
+    'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
+  'Nature Mystery':
+    'Section=skill ' +
+    'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill/Swim is a class skill"',
+  "Nature's Whispers":'Section=combat Note="+%V AC/+%V CMD"',
+  'Near Death':
+    'Section=save ' +
+    'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
+  "Oracle's Curse":'Section=feature Note="1 Selection"',
+  // Orisons as Inquisitor
+  'Punitive Transformation':
+    'Section=magic ' +
+    'Note="May cast <i>Baleful Polymorph</i>, lasting %{levels.Oracle} rd, %{charismaModifier}/dy"',
+  'Raise The Dead':
+    'Section=magic ' +
+    'Note="Summoned %{levels.Oracle} HD %{levels.Oracle>= 15 ? \'advanced skeleton or zombie\' : levels.Oracle>=7 ? \'bloody skeleton or fast zombie\' : \'skeleton or zombie\'} serves for %{charismaModifier} rd"',
+  'Resiliency (Oracle)':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Not disabled or staggered at 0 HP",' +
+      '"Has %V features"',
+  'Resist Life':
+    'Section=save ' +
+    'Note="Save as undead vs. negative and positive energy%{levels.Oracle>=7 ? \', +\' + (levels.Oracle>=15 ? 6 : levels.Oracle>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
+  'Revelation':'Section=feature Note="%V Selections"',
+  'Rock Throwing':
+    'Section=combat ' +
+    'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
+  'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
+  'Shard Explosion':
+    'Section=combat ' +
+    'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
+  'Sidestep Secret':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%V AC",' +
+      '"+%V Reflex"',
+  'Skill At Arms':
+    'Section=combat ' +
+    'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
+  'Soul Siphon':
+    'Section=magic ' +
+    'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
+  'Spark Skin':
+    'Section=save ' +
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
+  'Speak With Animals (Oracle)':
+    'Section=magic ' +
+    'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
+  'Spirit Boost':
+    'Section=magic ' +
+    'Note="Up to %{levels.Oracle} excess HP from Cure spell become temporary HP for 1 rd"',
+  'Spirit Of Nature':
+    'Section=combat ' +
+    'Note="At negative HP, stabilize automatically%{levels.Oracle<10 ? \' in natural setting\' : \'\'}%{levels.Oracle>=15 ? \' and gain fast healing 3 for 1d4 rd\' : levels.Oracle>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
+  'Spirit Walk':
+    'Section=magic ' +
+    'Note="Self becomes incorporeal for %{levels.Oracle} rd %{levels.Oracle>=15 ? 2 : 1}/dy"',
+  'Spontaneous Symbology':
+    'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
+  'Spray Of Shooting Stars':
+    'Section=combat ' +
+    'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
+  'Star Chart':'Section=magic Note="May use <i>Commune</i> 1/dy"',
+  'Steelbreaker Skin':
+    'Section=combat ' +
+    'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness\' : \'\'} for %{levels.Oracle} min 1/dy"',
+  'Stone Mystery':
+    'Section=skill ' +
+    'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
+  'Stone Stability':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+4 CMD vs. bull rush and trip while standing on ground",' +
+      '"Has %V feature"',
+  'Surprising Charge':
+    'Section=combat ' +
+    'Note="May take extra move %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
+  'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
+  'Thunderburst':
+    'Section=combat ' +
+    'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
+  'Tongues':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Can speak only chosen outsider or elemental language during combat",' +
+      '"+%V Language Count%1"',
+  'Touch Of Acid':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
+  'Touch Of Electricity':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP electricity %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are shock\' : \'\'}"',
+  'Touch Of Flame':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
+  'Transcendental Bond':
+    'Section=magic ' +
+    'Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
+  'Undead Servitude':
+    'Section=feature ' +
+    'Note="Can use Command Undead feature %{charismaModifier+3}/dy"',
+  'Undo Artifice':
+    'Section=feature ' +
+    'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
+  'Voice Of The Grave':
+    'Section=magic ' +
+    'Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
+  'Vortex Spells':
+    'Section=magic ' +
+    'Note="Successful critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
+  'War Sight':
+    'Section=combat ' +
+    'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
+  'Wasting':
+    'Section=save,skill ' +
+    'Note=' +
+      '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%1",' +
+      '"-4 Charisma-based skills other than Intimidate"',
+  'Water Form':
+    'Section=magic ' +
+    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become water elemental for %{levels.Oracle} hr 1/dy"',
+  'Water Sight':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Can see normally through fog and mist",' +
+      '"May use <i>%V</i> via pool %{levels.Oracle} rd/dy"',
+  'Waves Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
+  'Weapon Mastery':
+    'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
+  'Whirlwind Lesson':
+    'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
+  'Wind Mystery':
+    'Section=skill ' +
+    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Fly is a class skill/Stealth is a class skill"',
+  'Wind Sight':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> on any unobstructed area %V rd/dy",' +
+      '"Ignore Perception wind penalties and 100\' distance penalties"',
+  'Wings Of Air':'Section=ability Note="Fly %{levels.Oracle>=10 ? 90 : 60}\'"',
+  'Wings Of Fire':'Section=ability Note="Fly 60\'"',
+  'Wintry Touch':
+    'Section=combat ' +
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
+
+  // Summoner
+  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
+  'Bond Senses':
+    'Section=feature ' +
+    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
+  'Cantrips':'Section=magic Note="May cast 0-level spells"',
+  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
+  'Eidolon':'Section=feature Note="Special bond and abilities"',
+  'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
+  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
+  'Eidolon Blindsense (3)':
+    'Section=companion Note="R30\' May detect unseen creatures"',
+  'Eidolon Blindsight (4)':
+    'Section=companion ' +
+    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
+  'Eidolon Breath Weapon (4)':
+    'Section=companion ' +
+    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
+  'Eidolon Burrow (3)':
+    'Section=companion Note="May burrow through earth at half speed"',
+  'Eidolon Claws':'Section=companion Note="Claw attack inflicts %V HP each"',
+  'Eidolon Climb':'Section=companion Note="%V\' Climb speed"',
+  'Eidolon Constrict (2)':
+    'Section=companion Note="Successful grapple doubles damage"',
+  'Eidolon Damage Reduction (3)':
+    'Section=companion Note="DR %V/opposite alignment"',
+  'Eidolon Energy Attacks (2)':
+    'Section=companion ' +
+    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
+  'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
+  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
+  'Eidolon Frightful Presence (3)':
+    'Section=companion ' +
+    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
+  'Eidolon Gills':'Section=companion Note="May breathe underwater"',
+  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
+  'Eidolon Grab (2)':
+    'Section=companion ' +
+    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
+  'Eidolon Immunity (2)':
+    'Section=companion Note="Immune to chosen energy type"',
+  'Eidolon Improved Damage':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts 1 die type higher damage"',
+  'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
+  'Eidolon Large (4)':
+    'Section=companion ' +
+    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
+  'Eidolon Limbs (2)':'Section=companion Note="+%V limbs"',
+  'Eidolon Magic Attacks':
+    'Section=companion ' +
+    'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
+  'Eidolon Mount':'Section=companion Note="Master may ride eidolon"',
+  'Eidolon Pincers':
+    'Section=companion Note="Pincer attack inflicts %V HP each"',
+  'Eidolon Poison (2)':
+    'Section=companion ' +
+    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
+  'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
+  'Eidolon Pull':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
+  'Eidolon Push':
+    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
+  'Eidolon Rake (2)':
+    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
+  'Eidolon Reach':
+    'Section=companion Note="Reach for chosen natural attack increases 5\'"',
+  'Eidolon Rend (2)':
+    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
+  'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
+  'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
+  'Eidolon Slam':'Section=companion Note="Slam attack inflicts %V HP each"',
+  'Eidolon Spell Resistance (4)':
+    'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
+  'Eidolon Sting':'Section=companion Note="Sting attack inflicts %V HP"',
+  'Eidolon Swallow Whole (3)':
+    'Section=companion Note="May use CMB to swallow creature grappled by bite"',
+  'Eidolon Swim':'Section=companion Note="Can swim at full speed%1"',
+  'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
+  'Eidolon Tail Slap':'Section=companion Note="Slap attack inflicts %V HP"',
+  'Eidolon Tentacle':
+    'Section=companion Note="Tentacle attack inflicts %V HP each"',
+  'Eidolon Trample (2)':
+    'Section=companion ' +
+    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
+  'Eidolon Tremorsense (2)':
+    'Section=companion Note="R30\' Senses creatures via ground vibrations"',
+  'Eidolon Trip (2)':
+    'Section=companion Note="Successful bite allows free CMB to trip"',
+  'Eidolon Weapon Training (2)':
+    'Section=companion Note="Proficient with simple%1 weapons"',
+  'Eidolon Web (3)':
+    'Section=companion ' +
+    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
+  'Eidolon Wing Buffet':
+    'Section=companion Note="Wing attack inflicts %V HP each"',
+  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
+  'Greater Shield Ally (Summoner)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 ally AC (+4 self) when eidolon is within reach",' +
+      '"+2 ally saves (+4 self) when eidolon is within reach"',
+  'Life Bond':
+    'Section=combat ' +
+    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
+  'Life Link (Summoner)':
+    'Section=combat ' +
+    'Note="May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
+  "Maker's Call":
+    'Section=magic ' +
+    'Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
+  'Merge Forms':
+    'Section=combat ' +
+    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
+  'Shield Ally (Summoner)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+2 AC when eidolon is within reach",' +
+      '"+2 saves when eidolon is within reach"',
+  'Summon Monster':
+    'Section=magic ' +
+    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'} for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
+  'Transposition':
+    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
+  'Twin Eidolon':
+    'Section=feature ' +
+    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
+
+  // Witch
+  'Agony Hex':
+    'Section=magic ' +
+    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
+  'Blight Hex':
+    'Section=magic ' +
+    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{hexDC} Will neg)"',
+  'Cackle Hex':'Section=magic Note="R30\' Extends hex affects 1 rd"',
+  // Cantrips as Summoner
+  'Cauldron Hex':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Has Brew Potion features",' +
+      '"+4 Craft (Alchemy)"',
+  'Charm Hex':
+    'Section=skill ' +
+    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+  'Coven Hex':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"May participate in hag coven",' +
+      '"May use aid another to give witches in 30\' radius +1 caster level for 1 rd"',
+  'Death Curse Hex':
+    'Section=magic ' +
+    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP)"',
+  'Disguise Hex':
+    'Section=magic ' +
+    'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
+  'Eternal Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
+  'Evil Eye Hex':
+    'Section=magic ' +
+    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
+  'Familiar Centipede':'Section=skill Note="+3 Stealth"',
+  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
+  'Familiar Fox':'Section=save Note="+2 Reflex"',
+  'Familiar Octopus':'Section=skill Note="+3 Swim"',
+  'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
+  'Familiar Spider':'Section=skill Note="+3 Climb"',
+  'Flight Hex':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast <i>Feather Fall</i> at will%1",' +
+      '"+4 Swim"',
+  'Forced Reincarnation Hex':
+    'Section=magic ' +
+    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
+  'Fortune Hex':
+    'Section=magic ' +
+    'Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+  "Hag's Eye Hex":
+    'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
+  'Healing Hex':
+    'Section=feature ' +
+    'Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
+  'Hex':'Section=feature Note="%V Selections"',
+  'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
+  'Major Healing Hex':
+    'Section=feature ' +
+    'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
+  'Misfortune Hex':
+    'Section=magic ' +
+    'Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+  'Natural Disaster Hex':
+    'Section=magic ' +
+    'Note="May use <i>Storm Of Vengeance</i> combined with <i>Earthquake</i> 1/dy"',
+  'Nightmares Hex':
+    'Section=magic ' +
+    'Note="R60\' Can use <i>Nightmare</i> (DC %{hexDC} Will ends) at will"',
+  'Retribution Hex':
+    'Section=magic ' +
+    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+  'Slumber Hex':
+    'Section=magic ' +
+    'Note="R30\' May inflict sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
+  'Tongues Hex':
+    'Section=magic ' +
+    'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
+  'Vision Hex':
+    'Section=feature ' +
+    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
+  'Ward Hex':
+    'Section=magic ' +
+    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
+  'Waxen Image Hex':
+    'Section=feature ' +
+    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
+  'Weather Control Hex':
+    'Section=magic ' +
+    'Note="May use <i>Control Weather</i> after 1 hr ritual 1/dy"',
+  "Witch's Familiar":
+    'Section=feature Note="Has Familiar features/Familiar stores spells"',
+
   // Barbarian
   'Beast Totem':'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
   'Battle Scavenger':
@@ -1843,24 +2753,33 @@ PFAPG.FEATURES = {
     'Section=magic Note="May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain"',
 
   // Rogue
-  'Deadly Range':'Section=feature Note="FILL"',
-  'Accuracy':'Section=feature Note="FILL"',
+  'Accuracy':
+    'Section=combat ' +
+    'Note="Suffers only half range penalty on bow and crossbow attacks"',
   'Another Day':
     'Section=combat ' +
     'Note="May take 5\' step to avoid disabling damage; staggered for 1 rd afterward"',
   'Assault Leader':
     'Section=combat ' +
     'Note="May give immediate attack to flanking ally after missing flanked foe 1/dy"',
-  'Befuddling Strike':'Section=feature Note="FILL"',
-  "Bravado's Blade":'Section=feature Note="FILL"',
-  'Brutal Beating':'Section=feature Note="FILL"',
+  'Befuddling Strike':
+    'Section=combat ' +
+    'Note="Successful Sneak Attack inflicts -2 attacks on self for 1d4 rd"',
+  "Bravado's Blade":
+    'Section=combat ' +
+    'Note="May forego 1d6 HP Sneak Attack damage for Intimidate check to demoralize; may foego additional 1d6 for +5 Intimidate each"',
+  'Brutal Beating':
+    'Section=combat ' +
+    'Note="May forego 1d6 HP Sneak Attack damage to inflict sickened for %{levels.Rogue//2} rd"',
   'Camouflage (Rogue)':
     'Section=skill ' +
     'Note="1 min prep gives +4 Stealth in same terrain for remainder of day 1/dy"',
   'Canny Observer':
     'Section=skill ' +
     'Note="+4 Perception (hear conversation re: concealed items)"',
-  'Careful Disarm':'Section=feature Note="FILL"',
+  'Careful Disarm':
+    'Section=skill ' +
+    'Note="Disable Device springs trap only on fail by 10+; dbl Trap Sense to avoid trap effects"',
   'Charmer':
     'Section=skill ' +
     'Note="May take better of 2 Diplomacy rolls %{levels.Rogue//5+1}/dy"',
@@ -1870,15 +2789,23 @@ PFAPG.FEATURES = {
   'Combat Swipe':'Section=feature Note="Has Improved Steal feature"',
   'Cunning Trigger':
     'Section=combat Note="R30\' May use swift action to trigger self trap"',
-  'Daring':'Section=feature Note="FILL"',
+  'Daring':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+%{levels.Rogue//3} vs. fear",' +
+      '"+%V Acrobatics"',
   'Deadly Cocktail':
     'Section=combat Note="May apply 2 poison doses to a weapon at once"',
+  'Deadly Range':
+    'Section=combat Note="+%{levels.Rogue//3*10}\' ranged Sneak Attack"',
   'Deadly Sneak':
     'Section=combat Note="Treat 1s and 2s on Sneak Attack damage as 3s"',
   'Distracting Attack (Rogue)':
     'Section=combat ' +
     'Note="May forego Sneak Attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
-  'Distraction':'Section=feature Note="FILL"',
+  'Distraction (Rogue)':
+    'Section=skill ' +
+    'Note="May use Bluff vs. Sense Motive to avoid detection after failed Stealth"',
   'Entanglement Of Blades':
     'Section=combat ' +
     'Note="Successful Sneak Attack prevents foe 5\' step for 1 rd"',
@@ -1898,9 +2825,13 @@ PFAPG.FEATURES = {
   'Fast Tumble':
     'Section=skill ' +
     'Note="May use Acrobatics to move through threatened square w/out penalty"',
-  'Fightening':'Section=feature Note="FILL"',
   'Follow Clues':'Section=skill Note="May use Perception to follow tracks"',
-  'Follow Up':'Section=feature Note="FILL"',
+  'Follow Up':
+    'Section=skill ' +
+    'Note="May roll 2 Diplomacy (gather information) checks, gaining info from both"',
+  'Frightening':
+    'Section=skill ' +
+    'Note="Shaken condition from successful Intimidate lasts +1 rd; may inflict frightened for 1 rd instead of shaken for 4+ rd"',
   'Frugal Trapsmith':'Section=feature Note="May construct traps for 75% cost"',
   'Guileful Polyglot':'Section=skill Note="+%V Language Count"',
   'Hard To Fool':
@@ -1918,10 +2849,15 @@ PFAPG.FEATURES = {
   'Lasting Poison':
     'Section=combat ' +
     'Note="May apply poison to last 2 attacks; targets gain +2 save"',
-  'Martial Training':'Section=feature Note="FILL"',
+  'Martial Training':
+    'Section=feature Note="Gains 1 Combat Feat (Martial Weapon Proficiency)"',
   'Master Of Disguise':'Section=skill Note="May gain +10 Disguise 1/dy"',
-  'Master Poisoner':'Section=feature Note="FILL"',
-  'Measure The Mark':'Section=feature Note="FILL"',
+  'Master Poisoner':
+    'Section=skill ' +
+    'Note="+%{levels.Rogue//2} Craft (Alchemy) (poisons)/May use Craft (Alchemy) and 1 hr lab work to change type of poison"',
+  'Measure The Mark':
+    'Section=skill ' +
+    'Note="Knows target Perception roll before Sleight Of Hand attempt; may make Bluff vs. Sense Motive to avoid detection after aborted Sleight Of Hand"',
   'Nimble Climber':
     'Section=skill ' +
     'Note="May take another DC +10 Climb check after failing to avoid fall"',
@@ -1942,24 +2878,30 @@ PFAPG.FEATURES = {
   'Quick Trapsmith':
     'Section=skill ' +
     'Note="May set CR %{levels.Rogue//2} trap as full-round action"',
-  "Rake's Smile":'Section=feature Note="FILL"',
+  "Rake's Smile":'Section=skill Note="+%V Bluff/+%V Diplomacy"',
   'Redirect Attack':
     'Section=combat ' +
     'Note="May redirect successful hit on self to adjacent creature 1/dy"',
   "Scout's Charge":
-    'Section=combat Note="Reduces sniping Stealth penalty to -10"',
+    'Section=combat ' +
+    'Note="Charge attack inflicts Sneak Attack damage (Uncanny Dodge neg)"',
   'Second Chance (Rogue)':
     'Section=skill ' +
-    'Note="May reroll Acrobatics, Climb, or Fly %{levels.Rogue//3}/dy"',
-  'Skilled Liar':'Section=feature Note="FILL"',
-  'Skirmisher':'Section=feature Note="FILL"',
+    'Note="May make -5 reroll on Acrobatics, Climb, or Fly %{levels.Rogue//3}/dy"',
+  'Skilled Liar':'Section=skill Note="+%{levels.Rogue//2>?1} Bluff (deceive)"',
+  'Skirmisher (Rogue)':
+    'Section=combat ' +
+    'Note="First attack after 10\' move inflicts Sneak Attack damage (Uncanny Dodge neg)"',
   'Snap Shot':
     'Section=combat ' +
     'Note="May make ranged attack at Initiative 20 during surprise round"',
   "Sniper's Eye":
     'Section=combat Note="R30\' May use ranged Sneak Attack on concealed foes"',
-  'Stab And Grab':'Section=feature Note="FILL"',
-  'Stealthy Sniper':'Section=feature Note="FILL"',
+  'Stab And Grab':
+    'Section=combat ' +
+    'Note="May inflict -5 Perception vs. Sleight Of Hand to steal from target after successful surprise round or Sneak Attack"',
+  'Stealthy Sniper':
+    'Section=combat Note="Reduces sniping Stealth penalty to -10"',
   'Strong Impression':'Section=feature Note="Has Intimidating Prowess feature"',
   'Survivalist':
     'Section=skill Note="Heal is a class skill/Survival is a class skill"',
@@ -1968,917 +2910,9 @@ PFAPG.FEATURES = {
   'Thoughtful Reexamining':
     'Section=skill ' +
     'Note="May reroll Knowledge, Perception, or Sense Motive 1/dy"',
-  'Trap Master':'Section=feature Note="FILL"',
-
-  // Alchemist
-  'Acid Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts acid damage instead of fire and additional 1d6 following round"',
-  'Alchemy':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May identify potions as with <i>Detect Magic</i> at will/May infuse extracts that duplicate spell effects",' +
-      '"+%V Craft (Alchemy)"',
-  'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
-  'Bomb':
-    'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (Ref half) splash %V/dy"',
-  // 'Brew Potion' in SRD35.js
-  'Combine Extracts':
-    'Section=magic Note="May combine two effects into one extract"',
-  'Concentrate Poison':
-    'Section=feature ' +
-    'Note="May combine two doses to increase frequency by 50% and save DC by 2 for 1 hr"',
-  'Concussive Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 sonic damage instead of fire and deafens on hit (Fort neg)"',
-  'Delayed Bomb':
-    'Section=combat ' +
-    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
-  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
-  'Discovery':'Section=feature Note="%V Selections"',
-  'Dispelling Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that dispels magic instead of inflicting damage"',
-  'Elixir Of Life':
-    'Section=magic ' +
-    'Note="May create elixir 1/dy that acts as <i>True Resurrection</i> spell"',
-  'Enhance Potion':
-    'Section=magic ' +
-    'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
-  'Eternal Potion':
-     'Section=magic Note="May make effects of 1 imbibed potion permanent"',
-  'Eternal Youth':
-    'Section=feature Note="Suffers no ability score penalties from age"',
-  'Explosive Bomb':
-    'Section=combat ' +
-    'Note="Direct hit from bomb inflicts 1d6 HP fire until extinguished; splash extends 10\'"',
-  'Extend Potion':
-     'Section=magic ' +
-     'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
-  'Fast Bombs':
-    'Section=combat Note="May use full attack to throw multiple bombs in a rd"',
-  'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
-  'Feral Mutagen':
-    'Section=combat ' +
-    'Note="Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate"',
-  'Force Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d4 force damage instead of fire and knocks prone on hit (Ref neg)"',
-  'Frost Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and staggers on hit (Fort neg)"',
-  'Grand Discovery':'Section=feature Note="%V Selection"',
-  'Grand Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Greater Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +4 AC and +6/+4/-2 to strength/intelligence, dexterity/wisdom, and constitution/charisma for %{levels.Alchemist*10} min"',
-  'Inferno Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
-  'Infuse Mutagen':
-     'Section=magic ' +
-     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
-  'Infusion':'Section=magic Note="Created extracts persist when not held"',
-  'Instant Alchemy':
-    'Section=combat,magic ' +
-    'Note=' +
-      '"May apply poison to a blade as an immediate action",' +
-      '"May create alchemical items as a full-round action"',
-  'Madness Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
-  'Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
-  'Persistent Mutagen':'Section=magic Note="Mutagen effects last 1 hr"',
-  "Philosopher's Stone":
-    'Section=magic ' +
-    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
-  'Poison Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that kills creatures up to 6 HD (Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
-  'Poison Resistance':'Section=save Note="Resistance %V poison"',
-  'Poison Touch':
-    'Section=combat ' +
-    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (Con neg)"',
-  // 'Poison Use' in Pathfinder.js
-  'Precise Bombs':
-    'Section=combat ' +
-    'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
-  'Shock Bomb':
-    'Section=combat ' +
-    'Note="Bomb inflicts %{(levels.Alchemist+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and dazzles for 1d4 rd"',
-  'Smoke Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
-  'Sticky Bomb':
-    'Section=combat ' +
-    'Note="Targets hit by bombs suffer splash damage on the following rd"',
-  'Stink Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that nauseates for 1d4+1 rd (Fort neg) in dbl splash radius for 1 rd"',
-  'Swift Alchemy':
-    'Section=combat,magic ' +
-    'Note=' +
-      '"May apply poison to a blade as a move action",' +
-      '"Creating alchemical items takes half normal time"',
-  'Swift Poisoning':
-    'Section=combat Note="May apply poison to a blade as a swift action"',
-  // 'Throw Anything' in Pathfinder.js
-  'True Mutagen':
-    'Section=magic ' +
-    'Note="May brew and drink potion that gives +8 AC and +8/-2 to strength, dexterity, and constitution/intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
-
-  // Cavalier
-  'Act As One':
-    'Section=combat ' +
-    'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
-  'Aid Allies (Cavalier)':
-    'Section=combat ' +
-    'Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
-  'Banner':
-    'Section=combat ' +
-    'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
-  'Braggart':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+2 attack on demoralized target",' +
-      '"Has Dazzling Display features"',
-  'By My Honor':
-    'Section=save Note="+2 choice of save while maintaining alignment"',
-  'Calling':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
-      '"+%V %1"',
-  'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
-  "Cavalier's Charge":
-    'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
-  'Challenge':
-    'Section=combat ' +
-    'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
-  'Demanding Challenge':
-    'Section=combat Note="Challenged target suffers -2 AC from others"',
-  'Expert Trainer':
+  'Trap Master':
     'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
-  'For The Faith':
-    'Section=combat ' +
-    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
-  'For The King':
-    'Section=combat ' +
-    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
-  'Greater Banner':
-    'Section=combat ' +
-    'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
-  'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
-  "Knight's Challenge":
-    'Section=combat ' +
-    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
-  "Lion's Call":
-    'Section=combat ' +
-    'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
-  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
-  'Mighty Charge':
-    'Section=combat ' +
-    'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
-  'Moment Of Triumph':
-    'Section=feature ' +
-    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
-  'Mount':'Section=feature Note="Special bond and abilities"',
-  'Mounted Mastery':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
-      '"Gain 1 Order Of The Sword feat",' +
-      '"No armor check penalty for Ride"',
-  'Order':'Section=feature Note="1 Selection"',
-  'Order Of The Cockatrice':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} HP damage on target of challenge",' +
-      '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
-  'Order Of The Dragon':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
-      '"Must defend allies",' +
-      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
-  'Order Of The Lion':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
-      '"Must defend and obey sovereign",' +
-      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
-  'Order Of The Shield':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
-      '"Must defend the lives and property of common folks",' +
-      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
-  'Order Of The Star':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
-      '"Must protect and serve the faithful",' +
-      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
-  'Order Of The Sword':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
-      '"Must show honor, mercy, and charity",' +
-      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
-  'Protect The Meek':
-    'Section=combat ' +
-    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
-  'Resolute':
-    'Section=combat ' +
-    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
-  'Retribution':
-    'Section=combat ' +
-    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
-  'Shield Of The Liege':
-    'Section=combat ' +
-    'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
-  'Steal Glory':
-    'Section=combat ' +
-    'Note="May make AOO against threatened target when ally scores a critical hit"',
-  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
-  'Strategy':
-    'Section=combat ' +
-    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
-  'Supreme Charge':
-    'Section=combat ' +
-    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
-  'Tactician':
-    'Section=feature ' +
-    'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
-
-
-  // Inquisitor
-  'Bane':
-    'Section=combat ' +
-    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
-  'Cunning Initiative':'Section=combat Note="+%V Initiative"',
-  'Detect Alignment':
-    'Section=magic ' +
-    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
-  'Discern Lies':
-    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
-  'Domain':'Section=feature Note="1 Selection"',
-  'Exploit Weakness':
-    'Section=combat ' +
-    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
-  'Greater Bane':'Section=combat Note="Increased Bane effects"',
-  'Judgment':
-    'Section=combat ' +
-    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
-  'Monster Lore':
-    'Section=skill ' +
-    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
-  'Orisons':'Section=magic Note="Knows level-0 spells"',
-  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
-  'Slayer':
-    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
-  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
-  'Stalwart':
-    'Section=save ' +
-    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
-  'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
-  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
-  // 'Track' in Pathfinder.js
-  'True Judgment':
-    'Section=combat ' +
-    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
-
-  // Oracle
-  'Acid Skin':
-    'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
-  'Air Barrier':
-    'Section=combat ' +
-    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
-  'Arcane Archivist (Oracle)':
-    'Section=magic ' +
-    'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
-  'Armor Of Bones':
-    'Section=combat ' +
-    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/bludgeoning\' : \'\'} for %{levels.Oracle} hr/dy"',
-  'Automatic Writing':
-    'Section=magic ' +
-    'Note="1 hr meditation yields results of %{levels.Oracle>=8 ? \'<i>Commune</i>\' : levels.Oracle>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
-  'Awesome Display':
-    'Section=magic ' +
-    'Note="Treat illusion targets as having %{charismaModifier>?0} fewer HD"',
-  'Battle Mystery':
-    'Section=skill ' +
-    'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
-  'Battlecry':
-    'Section=combat ' +
-    'Note="R100\' Allies within hearing gain +%{levels.Oracle>=10 ? 2 : 1} attack, skill checks, and saves for %{charismaModifier} rd %{(levels.Oracle+5)//5}/dy"',
-  'Battlefield Clarity':
-    'Section=combat ' +
-    'Note="May make +4 reroll on failed save vs. blind, deaf, frightened, panicked, paralyzed, shaken, or stunned %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
-  'Bleeding Wounds':
-    'Section=combat ' +
-    'Note="Successful attack inflicts %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
-  'Blizzard':
-    'Section=combat ' +
-    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
-  'Bonded Mount':'Section=feature Note="Has mount animal companion"',
-  'Bones Mystery':
-    'Section=skill ' +
-    'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
-  'Brain Drain':
-    'Section=feature ' +
-    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
-  'Burning Magic':
-    'Section=magic ' +
-    'Note="Successful fire spell inflicts 1/spell level HP fire for 1d4 rd (Ref ends)"',
-  'Channel':'Section=feature Note="Has Channel Energy feature"',
-  'Cinder Dance':
-    'Section=ability,feature ' +
-    'Note=' +
-      '"+10 Speed",' +
-      '"Has %V features"',
-  'Clobbering Strike':
-    'Section=combat ' +
-    'Note="May make swift action trip attempt w/out AOO after critical hit"',
-  'Clouded Vision':
-    'Section=feature ' +
-    'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
-  'Coat Of Many Stars':
-    'Section=combat ' +
-    'Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
-  'Combat Healer':
-    'Section=feature ' +
-    'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
-  'Crystal Sight':
-    'Section=feature ' +
-    'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
-  'Deaf':
-    'Section=combat,feature,magic,skill ' +
-    'Note=' +
-      '"-%V Initiative",' +
-      '"Has %V",' +
-      '"May cast all spells silently",' +
-      '"+3 Perception (non-sound)"',
-  "Death's Touch":
-    'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
-  'Delay Affliction':
-    'Section=save ' +
-    'Note="May delay effects of failed save vs. disease or poison for %{levels.Oracle} %{levels.Oracle>=15 ? 3 : levels.Oracle >= 7 ? 2 : 1}/dy"',
-  'Dweller In Darkness':
-    'Section=magic ' +
-    'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
-  'Earth Glide':
-    'Section=ability ' +
-    'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
-  'Energy Body':
-    'Section=feature ' +
-    'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
-  'Enhanced Cures':
-     'Section=magic ' +
-     'Note="Level-based healing by Cure spells gives %{levels.Oracle} HP"',
-  'Erosion Touch':
-    'Section=combat ' +
-    'Note="Touch inflicts %{levels.Oracle}d6 HP to objects %{levels.Oracle//3>?1}/dy"',
-  'Final Revelation (Battle Mystery)':
-    'Section=combat ' +
-    'Note="May take full-attack action and move %{speed}\'/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{hitPoints*2} HP"',
-  'Final Revelation (Bones Mystery)':
-    'Section=combat,magic ' +
-    'Note=' +
-      '"Automatically stabilize at negative HP",' +
-      '"May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy"',
-  'Final Revelation (Flame Mystery)':
-    'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spell w/out cost"',
-  'Final Revelation (Heavens Mystery)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"Automatically stabilize at negative HP/Critical hits automatically confirmed",' +
-      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
-  'Final Revelation (Life Mystery)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"Remain alive until -%{hitPoints*2} HP",' +
-      '"Immune to bleed, death attack, exhausted, fatigued, nauseated effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
-  'Final Revelation (Lore Mystery)':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May cast <i>Wish</i> 1/dy",' +
-      '"May take 20 on all Knowledge"',
-  'Final Revelation (Nature Mystery)':
-    'Section=feature ' +
-    'Note="Cocooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
-  'Final Revelation (Stone Mystery)':
-    'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid or earth spell w/out cost"',
-  'Final Revelation (Waves Mystery)':
-    'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water spell w/out cost"',
-  'Final Revelation (Wind Mystery)':
-    'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air or electricity spell w/out cost"',
-  'Fire Breath':
-    'Section=combat ' +
-    'Note="15\' cone inflicts %{levels.Oracle}d4 HP fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
-  'Firestorm':
-    'Section=combat ' +
-    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d6 HP fire (Ref half) for %{charismaModifier} rd 1/dy"',
-  'Flame Mystery':
-    'Section=skill ' +
-    'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
-  'Fluid Nature':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+2 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe critical confirmation",' +
-      '"Has %V features"',
-  'Fluid Travel':
-    'Section=ability ' +
-    'Note="May move full speed across liquid without contact damage%1"',
-  'Focused Trance':
-    'Section=skill ' +
-    'Note="Trance of 1d6 rd gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
-  'Form Of Flame':
-    'Section=magic ' +
-    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become fire elemental for %{levels.Oracle} hr 1/dy"',
-  'Freezing Spells':
-    'Section=magic ' +
-    'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
-  'Friend To The Animals':
-    'Section=magic,save ' +
-    'Note=' +
-      '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
-      '"R30\' Animals gain +%{charismaModifier} on all saves"',
-  'Gaseous Form':
-    'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
-  'Gaze Of Flames':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"Can see through fire, fog, and smoke %{levels.Oracle} rd/dy",' +
-      '"Can use <i>Clairvoyance</i> via flame %V rd/dy"',
-  'Guiding Star':
-    'Section=feature,magic,skill ' +
-    'Note=' +
-      '"May determine precise location under clear night sky",' +
-      '"+%{charismaModifier} wisdom-linked skills under clear night sky",' +
-      '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night"',
-  'Haunted':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"Malevolent spirits inflict minor annoyances",' +
-      '"Know %V spells"',
-  'Healing Hands':
-    'Section=skill ' +
-    'Note="+4 Heal/May use Heal on dbl number of people simultaneously"',
-  'Heat Aura':
-    'Section=combat ' +
-    'Note="R10\' Heat blast inflicts %{levels.Oracle>?1}d4 HP fire, gives self 20% concealment for 1 rd %{(levels.Oracle+5)//5}/dy"',
-  'Heavens Mystery':
-    'Section=skill ' +
-    'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
-  'Ice Armor':
-    'Section=combat ' +
-    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
-  'Icy Skin':
-    'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
-  'Interstellar Void':
-    'Section=combat ' +
-    'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
-  'Invisibility':
-    'Section=magic ' +
-    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
-  'Iron Skin':
-    'Section=magic ' +
-    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
-  'Lame':
-    'Section=ability,save ' +
-    'Note=' +
-      '"-%V Speed/Speed is unaffected by encumbrance%V",' +
-      '"Immune to %V"',
-  'Life Leach':
-    'Section=combat ' +
-    'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
-  'Life Link':
-    'Section=combat ' +
-    'Note="May establish bond with target that transfers 5 HP damage to self each rd while within $RM\'"',
-  'Life Mystery':
-    'Section=skill ' +
-    'Note="Handle Animal is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill"',
-  'Lifesense':'Section=feature Note="30\' Blindsight"',
-  'Lightning Breath':
-    'Section=combat ' +
-    'Note="R30\' Breath inflicts %{levels.Oracle}d4 electricity (Ref half) %{(levels.Oracle+5)//5}/dy"',
-  'Lore Mystery':
-    'Section=skill ' +
-    'Note="Appraise is a class skill/Knowledge is a class skill"',
-  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
-  'Lure Of The Heavens':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"Leaves no tracks",' +
-      '"May <i>Levitate</i> 6\\" at will%V"',
-  'Maneuver Mastery':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+%{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
-      '"Has Improved Trip%V features"',
-  'Mantle Of Moonlight':
-    'Section=combat,save ' +
-    'Note=' +
-      '"Touch forces lycanthrope target into human form%{levels.Oracle>=5 \' or inflicts rage\' : \'\'} for %{levels.Oracle} rd %{levels.Oracle//5>?1}/dy",' +
-      '"Immune to lycanthropy"',
-  'Mental Acuity':'Section=ability Note="+%V Intelligence"',
-  'Mighty Pebble':
-    'Section=combat ' +
-    'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4} on hit, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
-  'Molten Skin':
-    'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
-  'Moonlight Bridge':
-    'Section=magic ' +
-    'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaBonus}/dy"',
-  'Mystery':'Section=feature Note="1 Selection"',
-  'Natural Divination':
-    'Section=feature ' +
-    'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
-  'Nature Mystery':
-    'Section=skill ' +
-    'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill/Swim is a class skill"',
-  "Nature's Whispers":'Section=combat Note="+%V AC/+%V CMD"',
-  'Near Death':
-    'Section=save ' +
-    'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'"',
-  "Oracle's Curse":'Section=feature Note="1 Selection"',
-  // Orisons as Inquisitor
-  'Punitive Transformation':
-    'Section=magic ' +
-    'Note="May cast <i>Baleful Polymorph</i>, lasting %{levels.Oracle} rd, %{charismaModifier}/dy"',
-  'Raise The Dead':
-    'Section=magic ' +
-    'Note="Summoned %{levels.Oracle} HD %{levels.Oracle>= 15 ? \'advanced skeleton or zombie\' : levels.Oracle>=7 ? \'bloody skeleton or fast zombie\' : \'skeleton or zombie\'} serves for %{charismaModifier} rd"',
-  'Resiliency (Oracle)':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"Not disabled or staggered at 0 HP",' +
-      '"Has %V features"',
-  'Resist Life':
-    'Section=save ' +
-    'Note="Save as undead vs. negative and positive energy%{levels.Oracle>=7 ? \', +\' + (levels.Oracle>=15 ? 6 : levels.Oracle>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
-  'Revelation':'Section=feature Note="%V Selections"',
-  'Rock Throwing':
-    'Section=combat ' +
-    'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
-  'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
-  'Shard Explosion':
-    'Section=combat ' +
-    'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
-  'Sidestep Secret':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+%V AC",' +
-      '"+%V Reflex"',
-  'Skill At Arms':
-    'Section=combat ' +
-    'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
-  'Soul Siphon':
-    'Section=magic ' +
-    'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
-  'Spark Skin':
-    'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
-  'Speak With Animals (Oracle)':
-    'Section=magic ' +
-    'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
-  'Spirit Boost':
-    'Section=magic ' +
-    'Note="Up to %{levels.Oracle} excess HP from Cure spell become temporary HP for 1 rd"',
-  'Spirit Of Nature':
-    'Section=combat ' +
-    'Note="At negative HP, stabilize automatically%{levels.Oracle<10 ? \' in natural setting\' : \'\'}%{levels.Oracle>=15 ? \' and gain fast healing 3 for 1d4 rd\' : levels.Oracle>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
-  'Spirit Walk':
-    'Section=magic ' +
-    'Note="Self becomes incorporeal for %{levels.Oracle} rd %{levels.Oracle>=15 ? 2 : 1}/dy"',
-  'Spontaneous Symbology':
-    'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
-  'Spray Of Shooting Stars':
-    'Section=combat ' +
-    'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 fire (Ref half) %{(levels.Oracle+5)//5}/dy"',
-  'Star Chart':'Section=magic Note="May use <i>Commune</i> 1/dy"',
-  'Steelbreaker Skin':
-    'Section=combat ' +
-    'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness\' : \'\'} for %{levels.Oracle} min 1/dy"',
-  'Stone Mystery':
-    'Section=skill ' +
-    'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
-  'Stone Stability':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+4 CMD vs. bull rush and trip while standing on ground",' +
-      '"Has %V feature"',
-  'Surprising Charge':
-    'Section=combat ' +
-    'Note="May take extra move %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
-  'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
-  'Thunderburst':
-    'Section=combat ' +
-    'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
-  'Tongues':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"Can speak only chosen outsider or elemental language during combat",' +
-      '"+%V Language Count%1"',
-  'Touch Of Acid':
-    'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
-  'Touch Of Electricity':
-    'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP electricity %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are shock\' : \'\'}"',
-  'Touch Of Flame':
-    'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are flaming\' : \'\'}"',
-  'Transcendental Bond':
-    'Section=magic ' +
-    'Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
-  'Undead Servitude':
-    'Section=feature ' +
-    'Note="Can use Command Undead feature %{charismaModifier+3}/dy"',
-  'Undo Artifice':
-    'Section=feature ' +
-    'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
-  'Voice Of The Grave':
-    'Section=magic ' +
-    'Note="May <i>Speak With Dead</i> %{levels.Oracle} rd/dy%{levels.Oracle>=5 ? \', target -\' + (levels.Oracle//5*2) + \' to resist\' : \'\'}"',
-  'Vortex Spells':
-    'Section=magic ' +
-    'Note="Successful critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
-  'War Sight':
-    'Section=combat ' +
-    'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative Rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
-  'Wasting':
-    'Section=save,skill ' +
-    'Note=' +
-      '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%1",' +
-      '"-4 Charisma-based skills other than Intimidate"',
-  'Water Form':
-    'Section=magic ' +
-    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become water elemental for %{levels.Oracle} hr 1/dy"',
-  'Water Sight':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"Can see normally through fog and mist",' +
-      '"May use <i>%V</i> via pool %{levels.Oracle} rd/dy"',
-  'Waves Mystery':
-    'Section=skill ' +
-    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
-  'Weapon Mastery':
-    'Section=feature Note="+%V Feat Count (Weapon Focus%1 with chosen weapon)"',
-  'Whirlwind Lesson':
-    'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
-  'Wind Mystery':
-    'Section=skill ' +
-    'Note="Acrobatics is a class skill/Escape Artist is a class skill/Fly is a class skill/Stealth is a class skill"',
-  'Wind Sight':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> on any unobstructed area %V rd/dy",' +
-      '"Ignore Perception wind penalties and 100\' distance penalties"',
-  'Wings Of Air':'Section=ability Note="Fly %{levels.Oracle>=10 ? 90 : 60}\'"',
-  'Wings Of Fire':'Section=ability Note="Fly 60\'"',
-  'Wintry Touch':
-    'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
-
-  // Summoner
-  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
-  'Bond Senses':
-    'Section=feature ' +
-    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
-  'Cantrips':'Section=magic Note="May cast 0-level spells"',
-  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
-  'Eidolon':'Section=feature Note="Special bond and abilities"',
-  'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
-  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
-  'Eidolon Blindsense (3)':
-    'Section=companion Note="R30\' May detect unseen creatures"',
-  'Eidolon Blindsight (4)':
-    'Section=companion ' +
-    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
-  'Eidolon Breath Weapon (4)':
-    'Section=companion ' +
-    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
-  'Eidolon Burrow (3)':
-    'Section=companion Note="May burrow through earth at half speed"',
-  'Eidolon Claws':'Section=companion Note="Claw attack inflicts %V HP each"',
-  'Eidolon Climb':'Section=companion Note="%V\' Climb speed"',
-  'Eidolon Constrict (2)':
-    'Section=companion Note="Successful grapple doubles damage"',
-  'Eidolon Damage Reduction (3)':
-    'Section=companion Note="DR %V/opposite alignment"',
-  'Eidolon Energy Attacks (2)':
-    'Section=companion ' +
-    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
-  'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
-  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
-  'Eidolon Frightful Presence (3)':
-    'Section=companion ' +
-    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
-  'Eidolon Gills':'Section=companion Note="May breathe underwater"',
-  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
-  'Eidolon Grab (2)':
-    'Section=companion ' +
-    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
-  'Eidolon Immunity (2)':
-    'Section=companion Note="Immune to chosen energy type"',
-  'Eidolon Improved Damage':
-    'Section=companion ' +
-    'Note="Chosen natural attack inflicts 1 die type higher damage"',
-  'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
-  'Eidolon Large (4)':
-    'Section=companion ' +
-    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
-  'Eidolon Limbs (2)':'Section=companion Note="+%V limbs"',
-  'Eidolon Magic Attacks':
-    'Section=companion ' +
-    'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
-  'Eidolon Mount':'Section=companion Note="Master may ride eidolon"',
-  'Eidolon Pincers':
-    'Section=companion Note="Pincer attack inflicts %V HP each"',
-  'Eidolon Poison (2)':
-    'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
-  'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
-  'Eidolon Pull':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
-  'Eidolon Push':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
-  'Eidolon Rake (2)':
-    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
-  'Eidolon Reach':
-    'Section=companion Note="Reach for chosen natural attack increases 5\'"',
-  'Eidolon Rend (2)':
-    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
-  'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
-  'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
-  'Eidolon Slam':'Section=companion Note="Slam attack inflicts %V HP each"',
-  'Eidolon Spell Resistance (4)':
-    'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
-  'Eidolon Sting':'Section=companion Note="Sting attack inflicts %V HP"',
-  'Eidolon Swallow Whole (3)':
-    'Section=companion Note="May use CMB to swallow creature grappled by bite"',
-  'Eidolon Swim':'Section=companion Note="Can swim at full speed%1"',
-  'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
-  'Eidolon Tail Slap':'Section=companion Note="Slap attack inflicts %V HP"',
-  'Eidolon Tentacle':
-    'Section=companion Note="Tentacle attack inflicts %V HP each"',
-  'Eidolon Trample (2)':
-    'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
-  'Eidolon Tremorsense (2)':
-    'Section=companion Note="R30\' Senses creatures via ground vibrations"',
-  'Eidolon Trip (2)':
-    'Section=companion Note="Successful bite allows free CMB to trip"',
-  'Eidolon Weapon Training (2)':
-    'Section=companion Note="Proficient with simple%1 weapons"',
-  'Eidolon Web (3)':
-    'Section=companion ' +
-    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
-  'Eidolon Wing Buffet':
-    'Section=companion Note="Wing attack inflicts %V HP each"',
-  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
-  'Greater Shield Ally (Summoner)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+2 ally AC (+4 self) when eidolon is within reach",' +
-      '"+2 ally saves (+4 self) when eidolon is within reach"',
-  'Life Bond':
-    'Section=combat ' +
-    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
-  'Life Link (Summoner)':
-    'Section=combat ' +
-    'Note="May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
-  "Maker's Call":
-    'Section=magic ' +
-    'Note="May use <i>Dimension Door</i> to call bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
-  'Merge Forms':
-    'Section=combat ' +
-    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
-  'Shield Ally (Summoner)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+2 AC when eidolon is within reach",' +
-      '"+2 saves when eidolon is within reach"',
-  'Summon Monster':
-    'Section=magic ' +
-    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'} for %{levels.Summoner} min when eidolon not present %{3 + charismaModifier}/dy"',
-  'Transposition':
-    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
-  'Twin Eidolon':
-    'Section=feature ' +
-    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
-
-  // Witch
-  'Agony Hex':
-    'Section=magic ' +
-    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
-  'Blight Hex':
-    'Section=magic ' +
-    'Note="May kill all vegetation in %{levels.Witch * 10}\' radius or inflict -1 Con (DC %{hexDC} Will neg)"',
-  'Cackle Hex':'Section=magic Note="R30\' Extends hex affects 1 rd"',
-  // Cantrips as Summoner
-  'Cauldron Hex':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"Has Brew Potion features",' +
-      '"+4 Craft (Alchemy)"',
-  'Charm Hex':
-    'Section=skill ' +
-    'Note="Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
-  'Coven Hex':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May participate in hag coven",' +
-      '"May use aid another to give witches in 30\' radius +1 caster level for 1 rd"',
-  'Death Curse Hex':
-    'Section=magic ' +
-    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP)"',
-  'Disguise Hex':
-    'Section=magic ' +
-    'Note="May use <i>Disguise Self</i> for %{levels.Witch} hr/dy"',
-  'Eternal Slumber Hex':
-    'Section=magic ' +
-    'Note="R30\' Target sleeps permanently (DC %{hexDC} Will neg) 1/target/dy"',
-  'Evil Eye Hex':
-    'Section=magic ' +
-    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
-  'Familiar Centipede':'Section=skill Note="+3 Stealth"',
-  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
-  'Familiar Fox':'Section=save Note="+2 Reflex"',
-  'Familiar Octopus':'Section=skill Note="+3 Swim"',
-  'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
-  'Familiar Spider':'Section=skill Note="+3 Climb"',
-  'Flight Hex':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May cast <i>Feather Fall</i> at will%1",' +
-      '"+4 Swim"',
-  'Forced Reincarnation Hex':
-    'Section=magic ' +
-    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
-  'Fortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target gains reroll on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
-  "Hag's Eye Hex":
-    'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
-  'Healing Hex':
-    'Section=feature ' +
-    'Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
-  'Hex':'Section=feature Note="%V Selections"',
-  'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
-  'Major Healing Hex':
-    'Section=feature ' +
-    'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
-  'Misfortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target takes worse of two rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
-  'Natural Disaster Hex':
-    'Section=magic ' +
-    'Note="May use <i>Storm Of Vengeance</i> combined with <i>Earthquake</i> 1/dy"',
-  'Nightmares Hex':
-    'Section=magic ' +
-    'Note="R60\' Can use <i>Nightmare</i> (DC %{hexDC} Will ends) at will"',
-  'Retribution Hex':
-    'Section=magic ' +
-    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
-  'Slumber Hex':
-    'Section=magic ' +
-    'Note="R30\' May inflict sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
-  'Tongues Hex':
-    'Section=magic ' +
-    'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
-  'Vision Hex':
-    'Section=feature ' +
-    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
-  'Ward Hex':
-    'Section=magic ' +
-    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
-  'Waxen Image Hex':
-    'Section=feature ' +
-    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
-  'Weather Control Hex':
-    'Section=magic ' +
-    'Note="May use <i>Control Weather</i> after 1 hr ritual 1/dy"',
-  "Witch's Familiar":
-    'Section=feature Note="Has Familiar features/Familiar stores spells"',
+    'Note="May bypass trap on any successful Disable Device; may modify which creatures can safely pass trap"',
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -3914,12 +3948,12 @@ PFAPG.PATHS = {
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
     'Features=' +
-      '"1:Expert Acrobat","3:Second Chance"',
+      '"1:Expert Acrobat","3:Second Chance (Rogue)"',
   'Burglar':
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
     'Features=' +
-      '"4:Careful Disarm","8:Distraction"',
+      '"4:Careful Disarm","8:Distraction (Rogue)"',
   'Cutpurse':
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
@@ -3944,7 +3978,7 @@ PFAPG.PATHS = {
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
     'Features=' +
-      '"4:Scout\'s Charge","8:Skirmisher"',
+      '"4:Scout\'s Charge","8:Skirmisher (Rogue)"',
   'Sniper':
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
@@ -3964,7 +3998,7 @@ PFAPG.PATHS = {
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
     'Features=' +
-      '"1:Fightening","3:Brutal Beating"',
+      '"1:Frightening","3:Brutal Beating"',
   'Trapsmith':
     'Group=Rogue ' +
     'Level=levels.Rogue ' +
@@ -6400,7 +6434,403 @@ PFAPG.talentRules = function(
  */
 PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
-  if(name == 'Barbarian') {
+  if(name == 'Alchemist') {
+    rules.defineRule('combatNotes.bomb',
+      classLevel, '=', null,
+      'intelligenceModifier', '+', null
+    );
+    rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
+    rules.defineRule('featureNotes.discovery',
+      classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
+    );
+    rules.defineRule('featureNotes.grandDiscovery', classLevel, '=', '1');
+    rules.defineRule('saveNotes.poisonResistance',
+      classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
+    );
+    rules.defineRule('selectableFeatureCount.Alchemist (Discovery)',
+      'featureNotes.discovery', '=', null
+    );
+    rules.defineRule('selectableFeatureCount.Alchemist (Grand Discovery)',
+      'featureNotes.grandDiscovery', '=', null
+    );
+    rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
+    Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
+    rules.defineRule('bombDamageDice',
+      classLevel, '=', 'Math.floor((source + 1) / 2) + "d6"'
+    );
+    rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
+    rules.defineRule('weapons.Bomb', classLevel, '=', '1');
+  } else if(name == 'Cavalier') {
+    rules.defineRule
+      ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
+    rules.defineRule('companionMasterLevel', classLevel, '^=', null);
+    rules.defineRule
+      ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
+    rules.defineRule
+      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
+    rules.defineRule('featCount.Teamwork',
+      'featureNotes.greaterTactician', '+=', '1',
+      'featureNotes.masterTactician', '+=', '1'
+    );
+    rules.defineRule('featureNotes.cavalierFeatBonus',
+      classLevel, '+=', 'Math.floor(source / 6)'
+    );
+    rules.defineRule
+      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
+    rules.defineRule
+      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
+    rules.defineRule('features.Teamwork', 'features.Tactician', '=', null);
+    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
+    rules.defineRule('magicNotes.calling',
+      'magicNotes.calling.1', '?', null,
+      classLevel, '=', 'source>=2 ? Math.floor(source / 2) : null'
+    );
+    rules.defineRule('magicNotes.calling.1',
+      'magicNotes.calling.2', '=',
+        'source==1 ? "Channel Energy" : source== 2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
+    );
+    rules.defineRule('magicNotes.calling.2',
+      'features.Calling', '?', null,
+      'levels.Cleric', '=', '1',
+      'levels.Paladin', '+=', '2'
+    );
+    rules.defineRule('selectableFeatureCount.Cavalier (Order)',
+      'featureNotes.order', '=', null
+    );
+    let allFeats = rules.getChoices('feats');
+    ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
+     'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
+  } else if(name == 'Inquisitor') {
+    rules.defineRule('combatNotes.bane',
+      '', '=', '2',
+      'combatNotes.greaterBane', '+', '2'
+    );
+    rules.defineRule('combatNotes.cunningInitiative',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
+    rules.defineRule('featureNotes.teamworkFeat',
+      classLevel, '+=', 'Math.floor(source / 3)'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Inquisitor', 'levels.Inquisitor', '+=', '1');
+    rules.defineRule('skillNotes.sternGaze',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule
+      ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
+  } else if(name == 'Oracle') {
+    rules.defineRule('abilityNotes.armorSpeedAdjustment',
+      'abilityNotes.lame.1', '*', 'source.includes("armor") ? 0 : null'
+    );
+    rules.defineRule('abilityNotes.lame',
+      '', '=', '10',
+      'features.Slow', '+', '5'
+    );
+    rules.defineRule('abilityNotes.lame.1',
+      'features.Lame', '?', null,
+      classLevel, '=', 'source>10 ? " or armor" : ""'
+    );
+    rules.defineRule('combatNotes.deaf',
+      classLevel, '=', 'source<5 ? -4 : source<10 ? -2 : null'
+    );
+    rules.defineRule
+      ('featCount.General', 'featureNotes.weaponMastery', '+', null);
+    rules.defineRule('featureNotes.deaf',
+      classLevel, '=', 'source<10 ? null : source<15 ? "scent feature" : "scent feature, 30\' tremorsense"'
+    );
+    rules.defineRule('featureNotes.maneuverMastery',
+      classLevel, '=', 'source<7 ? null : source<11 ? "" : " and Greater Trip"'
+    );
+    rules.defineRule('featureNotes.resiliency(Oracle)',
+      classLevel, '=', 'source<7 ? null : "Diehard"'
+    );
+    rules.defineRule('featureNotes.revelation',
+      classLevel, '+=', 'Math.floor((source + 5) / 4)'
+    );
+    rules.defineRule
+      ('featureNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
+    rules.defineRule('featureNotes.tongues.1',
+      'features.Tongues', '?', null,
+      classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
+    );
+    rules.defineRule('featureNotes.weaponMastery',
+      classLevel, '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
+    );
+    rules.defineRule('featureNotes.weaponMastery.1',
+      'features.Weapon Mastery', '?', null,
+      classLevel, '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
+    );
+    rules.defineRule('features.Diehard',
+      'featureNotes.resiliency(Oracle)', '=', 'source.includes("Diehard") ? 1 : null'
+    );
+    rules.defineRule('features.Greater Trip',
+      'featureNotes.maneuverMastery', '=', 'source.includes("Greater") ? 1 : null'
+    );
+    rules.defineRule
+      ('features.Improved Trip', 'featureNotes.maneuverMastery', '=', '1');
+    rules.defineRule('features.Scent',
+      'featureNotes.deaf', '=', 'source.includes("scent") ? 1 : null'
+    );
+    rules.defineRule('magicNotes.haunted',
+      classLevel, '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>10 ? ", <i>Telekinesis</i>" : "") + (source>15 ? "<i>, Reverse Gravity</i>" : "")'
+    );
+    rules.defineRule('saveNotes.lame',
+      classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
+    );
+    rules.defineRule('saveNotes.wasting.1',
+      'features.Wasting', '?', null,
+      classLevel, '=', 'source>=5 ? "/Immune to sickened" + (source>=15 ? " and nauseated" : "") + " condition" : ""'
+    );
+    rules.defineRule('selectableFeatureCount.Oracle (Curse)',
+      "featureNotes.oracle'sCurse", '+=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
+      'featureNotes.mystery', '+=', '1'
+    );
+    let allSpells = rules.getChoices('spells');
+    ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
+     'Reverse Gravity'].forEach(s => {
+       let spell = QuilvynUtils.getKeys(allSpells, new RegExp(s + '\\('))[0];
+       let attrs = allSpells[spell];
+       let description = QuilvynUtils.getAttrValue(attrs, 'Description');
+       let level =
+         QuilvynUtils.getAttrValue(attrs, 'Level').replace(/\D*/, '') - 0;
+       let school = QuilvynUtils.getAttrValue(attrs, 'School');
+       let fullName =
+         s + ' (O' + level + ' [Haunted] ' + school.substring(0, 4) + ')';
+       Pathfinder.spellRules(
+         rules, fullName, school, 'O', level, description, false, []
+       );
+       rules.defineRule('spells.' + fullName,
+         'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
+       );
+    });
+  } else if(name == 'Summoner') {
+    rules.defineRule('companionMasterLevel', 'eidolonMasterLevel', '^=', null);
+    rules.defineRule('companionNotes.eidolonBite',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonBite.1',
+      'features.Eidolon Bite', '?', null,
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonBreathWeapon(4)',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonBreathWeapon(4).1',
+      'features.Eidolon Breath Weapon (4)', '?', null,
+      'summonerFeatures.Eidolon Breath Weapon', '=', 'source - 3'
+    );
+    rules.defineRule('companionNotes.eidolonClaws',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonClimb',
+      'summonerFeatures.Eidolon Climb', '=', '20 * source'
+    );
+    rules.defineRule('companionNotes.eidolonDamageReduction(3)',
+      'summonerFeatures.Eidolon Damage Reduction(3)', '=', 'source>=2 ? 10 : 5'
+    );
+    rules.defineRule('companionNotes.eidolonFastHealing(4)',
+      'summonerFeatures.Eidolon Breath Weapon', '=', 'Math.floor((source - 2) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonFrightfulPresence(3)',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Cha', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonGore(2)',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonImprovedNaturalArmor',
+      'summonerFeatures.Eidolon Improved Natural Armor', '=', '2 * source'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4)',
+      'summonerFeatures.Eidolon Large(4)', '=', 'source>=10 ? "Huge" : "Large"'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).1',
+      'features.Eidolon Large (4)', '?', null,
+      'companionStats.Size', '+', 'source=="H" ? 16 : 8'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).2',
+      'companionStats.Size', '+', 'source=="H" ? 8 : 4'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).3',
+      'companionStats.Size', '+', 'source=="H" ? 3 : 1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).4',
+      'companionStats.Size', '+', 'source=="H" ? 2 : 1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).5',
+      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).6',
+      'companionStats.Size', '+', 'source=="H" ? -2 : -1'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).7',
+      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
+    );
+    rules.defineRule('companionNotes.eidolonLarge(4).7',
+      'companionStats.Size', '+', 'source=="H" ? -8 : -4'
+    );
+    rules.defineRule
+      ('companionStats.Str, companionNotes.Large(4).1', '+', null);
+    rules.defineRule
+      ('companionStats.Con, companionNotes.Large(4).2', '+', null);
+    rules.defineRule
+      ('companionStats.AC, companionNotes.Large(4).3', '+', null);
+    rules.defineRule
+      ('companionStats.CMB, companionNotes.Large(4).4', '+', null);
+    rules.defineRule
+      ('companionStats.CMD, companionNotes.Large(4).4', '+', null);
+    rules.defineRule
+      ('companionStats.Dex, companionNotes.Large(4).5', '+', null);
+    rules.defineRule('companionAttack, companionNotes.Large(4).6', '+', null);
+    rules.defineRule('companionStats.Size',
+      'companionNotes.eidolonLarge(4)', '=', 'source.charAt(0)'
+    );
+    rules.defineRule('companionNotes.eidolonLimbs(2)',
+      'summonerFeatures.Eidolon Limbs(2)', '=', '2 * source'
+    );
+    rules.defineRule('companionNotes.eidolonPincers',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonPoison(2)',
+      'companionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'companionStats.Con', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonRake(2)',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonRend(2)',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonRend(2).1',
+      'features.Eidolon Rend (2)', '?', null,
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonSlam',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d8" : source=="L" ? "2d6" : "1d8"'
+    );
+    rules.defineRule('companionNotes.eidolonSting',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonSwim',
+      'summonerFeatures.Eidolon Swim', '=', 'source>=2 ? "+" ((source - 1) * 20) : ""'
+    );
+    rules.defineRule('companionNotes.eidolonTail',
+      'summonerFeatures.Eidolon Swim', '=', 'source * 2'
+    );
+    rules.defineRule('companionNotes.eidolonTailSlap',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonTentacle',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2)',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2).1',
+      'features.Eidolon Trample (2)', '?', null,
+      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
+    );
+    rules.defineRule('companionNotes.eidolonTrample(2).2',
+      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
+      'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonWeaponTraining(2).1',
+      'features.Eidolon Weapon Training (2)', '?', null,
+      'summonerFeatures.Eidolon Weapon Training', '=', 'source>=2 ? " and martial" : ""'
+    );
+    rules.defineRule('companionNotes.eidolonWeb(3)',
+      'animalCompanionStats.HD', '=', '10 + source',
+      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonWingBuffet',
+      'animalCompanionStats.Size', '=',
+        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    );
+    rules.defineRule('eidolonStats.AC',
+      'companionNotes.eidolonImprovedNaturalArmor', '+', null
+    );
+    rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
+    rules.defineRule('eidolonStats.AC',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[1, 1, 0, 0, 0, -1, -1, -1, -2, -2, -1, -3, -3, -2, -4, -4, -3, -5, -4, -4][source - 1]'
+    );
+    rules.defineRule('eidolonStats.BAB',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[0, 0, 1, 0, 1, 1, 2, 1, 1, 2, 3, 2, 2, 2, 3, 3, 3, 3, 4, 3][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Dex',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '+', '[0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Feats',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0][source - 1]'
+    );
+    rules.defineRule('eidolonStats.HD',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '+', 'source % 4 == 3 ? 0 : -1'
+    );
+    rules.defineRule('eidolonStats.Skills',
+      'features.Eidolon', '?', null,
+      'companionMasterLevel', '=', '[2, 5, 9, 8, 11, 14, 18, 17, 20, 23, 27, 26, 29, 32, 36, 35, 38, 41, 45, 44][source - 1]'
+    );
+    rules.defineRule('eidolonStats.Str', 'eidolonStats.Dex', '=', null);
+    ['AC', 'BAB', 'Dex', 'Feats', 'HD', 'Skills', 'Str'].forEach(stat => {
+      rules.defineRule
+        ('animalCompanionStats.' + stat, 'eidolonStats.' + stat, '+', null);
+    });
+    let features = [
+      '1:Companion Darkvision', '1:Link', '1:Share Spells',
+      '2:Companion Evasion', '5:Devotion', '7:Multiattack',
+      '11:Companion Improved Evasion'
+    ];
+    QuilvynRules.featureListRules
+      (rules, features, 'Animal Companion', 'eidolonMasterLevel', false);
+    rules.defineRule('featureNotes.aspect',
+      classLevel, '=', '2',
+      'featureNotes.greaterAspect', '+', '4'
+    );
+    rules.defineRule('magicNotes.summonMonster',
+      classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.floor((source - 1) / 2)]'
+    );
+    rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
+      classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
+    );
+  } else if(name == 'Witch') {
+    rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
+    rules.defineRule
+      ('features.Familiar', "featureNotes.witch'sFamiliar", '=', null);
+    rules.defineRule('hexDC',
+      classLevel, '=', '10 + source',
+      'intelligenceModifier', '+', null
+    );
+    rules.defineRule('magicNotes.flightHex.1',
+      'features.Flight Hex', '?', null,
+      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> %{levels.Witch} min/dy" : "")'
+    );
+    rules.defineRule
+      ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
+    rules.defineRule
+      ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
+  } else if(name == 'Barbarian') {
     rules.defineRule('armorClass',
       'combatNotes.nakedCourage.1', '+', null,
       'combatNotes.naturalToughness.1', '+', null
@@ -7738,24 +8168,62 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
   } else if(name == 'Rogue') {
     rules.defineRule
+      ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
+    rules.defineRule
       ('features.Improved Steal', 'featureNotes.combatSwipe', '=', '1');
     rules.defineRule('features.Intimidating Prowess',
       'featureNotes.strongImpression', '=', '1'
+    );
+    rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
+      'rogueHasImprovedUncannyDodge', '?', null
+    );
+    rules.defineRule
+      ('rogueFeatures.Trapfinding', 'rogueHasTrapfinding', '?', null);
+    rules.defineRule
+      ('rogueFeatures.Trap Sense', 'rogueHasTrapSense', '?', null);
+    rules.defineRule
+      ('rogueFeatures.Uncanny Dodge', 'rogueHasUncannyDodge', '?', null);
+    rules.defineRule('rogueHasImprovedUncannyDodge',
+      classLevel, '=', '1',
+      'rogueFeatures.Distraction (Rogue)', '=', '0',
+      'rogueFeatures.Skirmisher (Rogue)', '=', '0',
+      'rogueFeatures.Trap Master', '=', '0'
+    );
+    rules.defineRule('rogueHasTrapfinding',
+      classLevel, '=', '1',
+      'rogueFeatures.Accuracy', '=', '0',
+      "rogueFeatures.Bravado's Blade", '=', '0',
+      'rogueFeatures.Expert Acrobat', '=', '0',
+      'rogueFeatures.Follow Up', '=', '0',
+      'rogueFeatures.Frightening', '=', '0',
+      'rogueFeatures.Martial Training', '=', '0',
+      'rogueFeatures.Measure The Mark', '=', '0',
+      // Poison Use replaces Trapfinding for Poisoner, Trap Sense for Spy
+      'poisonerLevel', '=', '0',
+      'rogueFeatures.Skilled Liar', '=', '0'
+    );
+    rules.defineRule('rogueHasTrapSense',
+      classLevel, '=', '1',
+      'rogueFeatures.Brutal Beating', '=', '0',
+      'rogueFeatures.Daring', '=', '0',
+      'rogueFeatures.Deadly Range', '=', '0',
+      'rogueFeatures.Master Poisoner', '=', '0',
+      // Poison Use replaces Trapfinding for Poisoner, Trap Sense for Spy
+      'spyLevel', '=', '0',
+      "rogueFeatures.Rake's Smile", '=', '0',
+      'rogueFeatures.Second Chance (Rogue)', '=', '0',
+      'rogueFeatures.Stab And Grab', '=', '0'
+    );
+    rules.defineRule('rogueHasUncannyDodge',
+      classLevel, '=', '1',
+      'rogueFeatures.Careful Disarm', '=', '0',
+      "rogueFeatures.Scout's Charge", '=', '0'
     );
     rules.defineRule
       ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
     rules.defineRule('skillNotes.guilefulPolyglot',
       '', '=', '2',
       'skills.Linguistics', '+', '2'
-    );
-    rules.defineRule('skillNotes.expertAcrobat.1',
-      'skillNotes.expertAcrobat', '?', null,
-      'armorWeight', '?', 'source==1',
-      'skillNotes.armorSkillCheckPenalty', '=', null
-    );
-    rules.defineRule('skillNotes.expertAcrobat.2',
-      'skillNotes.expertAcrobat', '?', null,
-      'armorWeight', '=', 'source==0 ? 2 : null'
     );
     rules.defineRule('skillModifier.Acrobatics',
       'skillNotes.expertAcrobat.1', '+', null,
@@ -7772,402 +8240,19 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('skillModifier.Stealth', 'skillNotes.expertAcrobat.1', '+', null);
-  } else if(name == 'Alchemist') {
-    rules.defineRule('combatNotes.bomb',
-      classLevel, '=', null,
-      'intelligenceModifier', '+', null
-    );
-    rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
-    rules.defineRule('featureNotes.discovery',
-      classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
-    );
-    rules.defineRule('featureNotes.grandDiscovery', classLevel, '=', '1');
-    rules.defineRule('saveNotes.poisonResistance',
-      classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
-    );
-    rules.defineRule('selectableFeatureCount.Alchemist (Discovery)',
-      'featureNotes.discovery', '=', null
-    );
-    rules.defineRule('selectableFeatureCount.Alchemist (Grand Discovery)',
-      'featureNotes.grandDiscovery', '=', null
-    );
-    rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
-    Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
-    rules.defineRule('bombDamageDice',
-      classLevel, '=', 'Math.floor((source + 1) / 2) + "d6"'
-    );
-    rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
-    rules.defineRule('weapons.Bomb', classLevel, '=', '1');
-  } else if(name == 'Cavalier') {
     rules.defineRule
-      ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
-    rules.defineRule('companionMasterLevel', classLevel, '^=', null);
-    rules.defineRule
-      ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
-    rules.defineRule
-      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
-    rules.defineRule('featCount.Teamwork',
-      'featureNotes.greaterTactician', '+=', '1',
-      'featureNotes.masterTactician', '+=', '1'
+      ('skillNotes.daring', classLevel, '=', 'Math.floor(source / 3)');
+    rules.defineRule('skillNotes.expertAcrobat.1',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '?', 'source==1',
+      'skillNotes.armorSkillCheckPenalty', '=', null
     );
-    rules.defineRule('featureNotes.cavalierFeatBonus',
-      classLevel, '+=', 'Math.floor(source / 6)'
+    rules.defineRule('skillNotes.expertAcrobat.2',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '=', 'source==0 ? 2 : null'
     );
     rules.defineRule
-      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
-    rules.defineRule
-      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
-    rules.defineRule('features.Teamwork', 'features.Tactician', '=', null);
-    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
-    rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
-    rules.defineRule('magicNotes.calling',
-      'magicNotes.calling.1', '?', null,
-      classLevel, '=', 'source>=2 ? Math.floor(source / 2) : null'
-    );
-    rules.defineRule('magicNotes.calling.1',
-      'magicNotes.calling.2', '=',
-        'source==1 ? "Channel Energy" : source== 2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
-    );
-    rules.defineRule('magicNotes.calling.2',
-      'features.Calling', '?', null,
-      'levels.Cleric', '=', '1',
-      'levels.Paladin', '+=', '2'
-    );
-    rules.defineRule('selectableFeatureCount.Cavalier (Order)',
-      'featureNotes.order', '=', null
-    );
-    let allFeats = rules.getChoices('feats');
-    ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
-     'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
-  } else if(name == 'Inquisitor') {
-    rules.defineRule('combatNotes.bane',
-      '', '=', '2',
-      'combatNotes.greaterBane', '+', '2'
-    );
-    rules.defineRule('combatNotes.cunningInitiative',
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
-    rules.defineRule('featureNotes.teamworkFeat',
-      classLevel, '+=', 'Math.floor(source / 3)'
-    );
-    rules.defineRule
-      ('selectableFeatureCount.Inquisitor', 'levels.Inquisitor', '+=', '1');
-    rules.defineRule('skillNotes.sternGaze',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule
-      ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
-  } else if(name == 'Oracle') {
-    rules.defineRule('abilityNotes.armorSpeedAdjustment',
-      'abilityNotes.lame.1', '*', 'source.includes("armor") ? 0 : null'
-    );
-    rules.defineRule('abilityNotes.lame',
-      '', '=', '10',
-      'features.Slow', '+', '5'
-    );
-    rules.defineRule('abilityNotes.lame.1',
-      'features.Lame', '?', null,
-      classLevel, '=', 'source>10 ? " or armor" : ""'
-    );
-    rules.defineRule('combatNotes.deaf',
-      classLevel, '=', 'source<5 ? -4 : source<10 ? -2 : null'
-    );
-    rules.defineRule
-      ('featCount.General', 'featureNotes.weaponMastery', '+', null);
-    rules.defineRule('featureNotes.deaf',
-      classLevel, '=', 'source<10 ? null : source<15 ? "scent feature" : "scent feature, 30\' tremorsense"'
-    );
-    rules.defineRule('featureNotes.maneuverMastery',
-      classLevel, '=', 'source<7 ? null : source<11 ? "" : " and Greater Trip"'
-    );
-    rules.defineRule('featureNotes.resiliency(Oracle)',
-      classLevel, '=', 'source<7 ? null : "Diehard"'
-    );
-    rules.defineRule('featureNotes.revelation',
-      classLevel, '+=', 'Math.floor((source + 5) / 4)'
-    );
-    rules.defineRule
-      ('featureNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
-    rules.defineRule('featureNotes.tongues.1',
-      'features.Tongues', '?', null,
-      classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
-    );
-    rules.defineRule('featureNotes.weaponMastery',
-      classLevel, '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
-    );
-    rules.defineRule('featureNotes.weaponMastery.1',
-      'features.Weapon Mastery', '?', null,
-      classLevel, '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
-    );
-    rules.defineRule('features.Diehard',
-      'featureNotes.resiliency(Oracle)', '=', 'source.includes("Diehard") ? 1 : null'
-    );
-    rules.defineRule('features.Greater Trip',
-      'featureNotes.maneuverMastery', '=', 'source.includes("Greater") ? 1 : null'
-    );
-    rules.defineRule
-      ('features.Improved Trip', 'featureNotes.maneuverMastery', '=', '1');
-    rules.defineRule('features.Scent',
-      'featureNotes.deaf', '=', 'source.includes("scent") ? 1 : null'
-    );
-    rules.defineRule('magicNotes.haunted',
-      classLevel, '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>10 ? ", <i>Telekinesis</i>" : "") + (source>15 ? "<i>, Reverse Gravity</i>" : "")'
-    );
-    rules.defineRule('saveNotes.lame',
-      classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
-    );
-    rules.defineRule('saveNotes.wasting.1',
-      'features.Wasting', '?', null,
-      classLevel, '=', 'source>=5 ? "/Immune to sickened" + (source>=15 ? " and nauseated" : "") + " condition" : ""'
-    );
-    rules.defineRule('selectableFeatureCount.Oracle (Curse)',
-      "featureNotes.oracle'sCurse", '+=', '1'
-    );
-    rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
-      'featureNotes.mystery', '+=', '1'
-    );
-    let allSpells = rules.getChoices('spells');
-    ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
-     'Reverse Gravity'].forEach(s => {
-       let spell = QuilvynUtils.getKeys(allSpells, new RegExp(s + '\\('))[0];
-       let attrs = allSpells[spell];
-       let description = QuilvynUtils.getAttrValue(attrs, 'Description');
-       let level =
-         QuilvynUtils.getAttrValue(attrs, 'Level').replace(/\D*/, '') - 0;
-       let school = QuilvynUtils.getAttrValue(attrs, 'School');
-       let fullName =
-         s + ' (O' + level + ' [Haunted] ' + school.substring(0, 4) + ')';
-       Pathfinder.spellRules(
-         rules, fullName, school, 'O', level, description, false, []
-       );
-       rules.defineRule('spells.' + fullName,
-         'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
-       );
-    });
-  } else if(name == 'Summoner') {
-    rules.defineRule('companionMasterLevel', 'eidolonMasterLevel', '^=', null);
-    rules.defineRule('companionNotes.eidolonBite',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonBite.1',
-      'features.Eidolon Bite', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
-    rules.defineRule('companionNotes.eidolonBreathWeapon(4)',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonBreathWeapon(4).1',
-      'features.Eidolon Breath Weapon (4)', '?', null,
-      'summonerFeatures.Eidolon Breath Weapon', '=', 'source - 3'
-    );
-    rules.defineRule('companionNotes.eidolonClaws',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonClimb',
-      'summonerFeatures.Eidolon Climb', '=', '20 * source'
-    );
-    rules.defineRule('companionNotes.eidolonDamageReduction(3)',
-      'summonerFeatures.Eidolon Damage Reduction(3)', '=', 'source>=2 ? 10 : 5'
-    );
-    rules.defineRule('companionNotes.eidolonFastHealing(4)',
-      'summonerFeatures.Eidolon Breath Weapon', '=', 'Math.floor((source - 2) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonFrightfulPresence(3)',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Cha', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonGore(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonImprovedNaturalArmor',
-      'summonerFeatures.Eidolon Improved Natural Armor', '=', '2 * source'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4)',
-      'summonerFeatures.Eidolon Large(4)', '=', 'source>=10 ? "Huge" : "Large"'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).1',
-      'features.Eidolon Large (4)', '?', null,
-      'companionStats.Size', '+', 'source=="H" ? 16 : 8'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).2',
-      'companionStats.Size', '+', 'source=="H" ? 8 : 4'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).3',
-      'companionStats.Size', '+', 'source=="H" ? 3 : 1'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).4',
-      'companionStats.Size', '+', 'source=="H" ? 2 : 1'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).5',
-      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).6',
-      'companionStats.Size', '+', 'source=="H" ? -2 : -1'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).7',
-      'companionStats.Size', '+', 'source=="H" ? -4 : -2'
-    );
-    rules.defineRule('companionNotes.eidolonLarge(4).7',
-      'companionStats.Size', '+', 'source=="H" ? -8 : -4'
-    );
-    rules.defineRule
-      ('companionStats.Str, companionNotes.Large(4).1', '+', null);
-    rules.defineRule
-      ('companionStats.Con, companionNotes.Large(4).2', '+', null);
-    rules.defineRule
-      ('companionStats.AC, companionNotes.Large(4).3', '+', null);
-    rules.defineRule
-      ('companionStats.CMB, companionNotes.Large(4).4', '+', null);
-    rules.defineRule
-      ('companionStats.CMD, companionNotes.Large(4).4', '+', null);
-    rules.defineRule
-      ('companionStats.Dex, companionNotes.Large(4).5', '+', null);
-    rules.defineRule('companionAttack, companionNotes.Large(4).6', '+', null);
-    rules.defineRule('companionStats.Size',
-      'companionNotes.eidolonLarge(4)', '=', 'source.charAt(0)'
-    );
-    rules.defineRule('companionNotes.eidolonLimbs(2)',
-      'summonerFeatures.Eidolon Limbs(2)', '=', '2 * source'
-    );
-    rules.defineRule('companionNotes.eidolonPincers',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonPoison(2)',
-      'companionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'companionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonRake(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonRend(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonRend(2).1',
-      'features.Eidolon Rend (2)', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
-    rules.defineRule('companionNotes.eidolonSlam',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d8" : source=="L" ? "2d6" : "1d8"'
-    );
-    rules.defineRule('companionNotes.eidolonSting',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonSwim',
-      'summonerFeatures.Eidolon Swim', '=', 'source>=2 ? "+" ((source - 1) * 20) : ""'
-    );
-    rules.defineRule('companionNotes.eidolonTail',
-      'summonerFeatures.Eidolon Swim', '=', 'source * 2'
-    );
-    rules.defineRule('companionNotes.eidolonTailSlap',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonTentacle',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2).1',
-      'features.Eidolon Trample (2)', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2).2',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonWeaponTraining(2).1',
-      'features.Eidolon Weapon Training (2)', '?', null,
-      'summonerFeatures.Eidolon Weapon Training', '=', 'source>=2 ? " and martial" : ""'
-    );
-    rules.defineRule('companionNotes.eidolonWeb(3)',
-      'animalCompanionStats.HD', '=', '10 + source',
-      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonWingBuffet',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('eidolonStats.AC',
-      'companionNotes.eidolonImprovedNaturalArmor', '+', null
-    );
-    rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
-    rules.defineRule('eidolonStats.AC',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '=', '[1, 1, 0, 0, 0, -1, -1, -1, -2, -2, -1, -3, -3, -2, -4, -4, -3, -5, -4, -4][source - 1]'
-    );
-    rules.defineRule('eidolonStats.BAB',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '=', '[0, 0, 1, 0, 1, 1, 2, 1, 1, 2, 3, 2, 2, 2, 3, 3, 3, 3, 4, 3][source - 1]'
-    );
-    rules.defineRule('eidolonStats.Dex',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '+', '[0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2][source - 1]'
-    );
-    rules.defineRule('eidolonStats.Feats',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '=', '[0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0][source - 1]'
-    );
-    rules.defineRule('eidolonStats.HD',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '+', 'source % 4 == 3 ? 0 : -1'
-    );
-    rules.defineRule('eidolonStats.Skills',
-      'features.Eidolon', '?', null,
-      'companionMasterLevel', '=', '[2, 5, 9, 8, 11, 14, 18, 17, 20, 23, 27, 26, 29, 32, 36, 35, 38, 41, 45, 44][source - 1]'
-    );
-    rules.defineRule('eidolonStats.Str', 'eidolonStats.Dex', '=', null);
-    ['AC', 'BAB', 'Dex', 'Feats', 'HD', 'Skills', 'Str'].forEach(stat => {
-      rules.defineRule
-        ('animalCompanionStats.' + stat, 'eidolonStats.' + stat, '+', null);
-    });
-    let features = [
-      '1:Companion Darkvision', '1:Link', '1:Share Spells',
-      '2:Companion Evasion', '5:Devotion', '7:Multiattack',
-      '11:Companion Improved Evasion'
-    ];
-    QuilvynRules.featureListRules
-      (rules, features, 'Animal Companion', 'eidolonMasterLevel', false);
-    rules.defineRule('featureNotes.aspect',
-      classLevel, '=', '2',
-      'featureNotes.greaterAspect', '+', '4'
-    );
-    rules.defineRule('magicNotes.summonMonster',
-      classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.floor((source - 1) / 2)]'
-    );
-    rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
-      classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
-    );
-  } else if(name == 'Witch') {
-    rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
-    rules.defineRule
-      ('features.Familiar', "featureNotes.witch'sFamiliar", '=', null);
-    rules.defineRule('hexDC',
-      classLevel, '=', '10 + source',
-      'intelligenceModifier', '+', null
-    );
-    rules.defineRule('magicNotes.flightHex.1',
-      'features.Flight Hex', '?', null,
-      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> %{levels.Witch} min/dy" : "")'
-    );
-    rules.defineRule
-      ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
-    rules.defineRule
-      ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
+      ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
   }
 };
 
