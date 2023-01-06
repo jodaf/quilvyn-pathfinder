@@ -2764,22 +2764,22 @@ PFAPG.FEATURES = {
     'Note="May give immediate attack to flanking ally after missing flanked foe 1/dy"',
   'Befuddling Strike':
     'Section=combat ' +
-    'Note="Successful Sneak Attack inflicts -2 attacks on self for 1d4 rd"',
+    'Note="Successful sneak attack inflicts -2 attacks on self for 1d4 rd"',
   "Bravado's Blade":
     'Section=combat ' +
-    'Note="May forego 1d6 HP Sneak Attack damage for Intimidate check to demoralize; may foego additional 1d6 for +5 Intimidate each"',
+    'Note="May forego 1d6 HP sneak attack damage for Intimidate check to demoralize; +5 Intimidate per each additional 1d6 HP"',
   'Brutal Beating':
     'Section=combat ' +
-    'Note="May forego 1d6 HP Sneak Attack damage to inflict sickened for %{levels.Rogue//2} rd"',
+    'Note="May forego 1d6 HP sneak attack damage to inflict sickened for %{levels.Rogue//2} rd"',
   'Camouflage (Rogue)':
     'Section=skill ' +
-    'Note="1 min prep gives +4 Stealth in same terrain for remainder of day 1/dy"',
+    'Note="1 min prep using local foliage gives +4 Stealth in same terrain for remainder of day 1/dy"',
   'Canny Observer':
     'Section=skill ' +
-    'Note="+4 Perception (hear conversation re: concealed items)"',
+    'Note="+4 Perception (hear conversation about concealed items)"',
   'Careful Disarm':
     'Section=skill ' +
-    'Note="Disable Device springs trap only on fail by 10+; dbl Trap Sense to avoid trap effects"',
+    'Note="Disable Device springs trap only on fail by 10+; dbl Trap Sense to avoid trap effects on failure"',
   'Charmer':
     'Section=skill ' +
     'Note="May take better of 2 Diplomacy rolls %{levels.Rogue//5+1}/dy"',
@@ -2795,33 +2795,36 @@ PFAPG.FEATURES = {
       '"+%{levels.Rogue//3} vs. fear",' +
       '"+%V Acrobatics"',
   'Deadly Cocktail':
-    'Section=combat Note="May apply 2 poison doses to a weapon at once"',
+    'Section=combat Note="May apply 2 different poisons or 2 doses of 1 poison (+2 save DC, +50% frequency) to a weapon at once"',
   'Deadly Range':
-    'Section=combat Note="+%{levels.Rogue//3*10}\' ranged Sneak Attack"',
+    'Section=combat Note="+%{levels.Rogue//3*10}\' ranged sneak attack"',
   'Deadly Sneak':
-    'Section=combat Note="Treat 1s and 2s on Sneak Attack damage as 3s"',
+    'Section=combat ' +
+    'Note="During full attack action, may trade -2 attack for treating sneak attack 1s and 2s as 3s"',
   'Distracting Attack (Rogue)':
     'Section=combat ' +
-    'Note="May forego Sneak Attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
+    'Note="May forego sneak attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
   'Distraction (Rogue)':
     'Section=skill ' +
     'Note="May use Bluff vs. Sense Motive to avoid detection after failed Stealth"',
   'Entanglement Of Blades':
     'Section=combat ' +
-    'Note="Successful Sneak Attack prevents foe 5\' step for 1 rd"',
+    'Note="Successful sneak attack prevents foe 5\' step for 1 rd"',
   'Expert Acrobat':
     'Section=skill ' +
     'Note="No light armor Acrobatics, Climb, Fly, Sleight Of Hand, or Stealth penalties/+2 Acrobatics and Fly in no armor"',
   'Expert Leaper':
     'Section=skill ' +
-    'Note="Always gains running start benefit/DC 15 Acrobatics negate 20\' falling damage"',
+    'Note="Always gains running start benefit on jumps/Successful DC 15 Acrobatics negates 20\' damage on deliberate falls"',
   'Fast Fingers':
     'Section=skill ' +
     'Note="May take better of 2 Sleight Of Hand rolls %{levels.Rogue//5+1}/dy"',
   'Fast Getaway':
     'Section=combat ' +
-    'Note="May make immediate withdraw after successful Sneak Attack or Sleight Of Hand"',
-  'Fast Picks':'Section=skill Note="May open lock as a standard action"',
+    'Note="May make immediate withdraw after successful sneak attack or Sleight Of Hand"',
+  'Fast Picks':
+    'Section=skill ' +
+    'Note="May use Disable Device to open lock as a standard action"',
   'Fast Tumble':
     'Section=skill ' +
     'Note="May use Acrobatics to move through threatened square w/out penalty"',
@@ -2842,15 +2845,15 @@ PFAPG.FEATURES = {
     'Note="May take better of 2 Bluff rolls %{levels.Rogue//5+1}/dy"',
   "Hunter's Surprise":
     'Section=combat ' +
-    'Note="May add Sneak Attack damage to successful attack on adjacent foe for 1 rd 1/dy"',
+    'Note="May add sneak attack damage to successful attack on adjacent foe for 1 rd 1/dy"',
   'Knock-Out Blow':
     'Section=combat ' +
-    'Note="May forego Sneak Attack damage to inflict unconscious for 1d4 rd (DC {10+levels.Rogue//2+intelligenceModifier} Fort staggered 1 rd)"',
+    'Note="May forego sneak attack damage to inflict unconscious for 1d4 rd (DC %{10+levels.Rogue//2+intelligenceModifier} Fort staggered 1 rd)"',
   'Lasting Poison':
     'Section=combat ' +
     'Note="May apply poison to last 2 attacks; targets gain +2 save"',
   'Martial Training':
-    'Section=feature Note="Gains 1 Combat Feat (Martial Weapon Proficiency)"',
+    'Section=feature Note="Gains 1 Combat Feat (Martial Weapon Proficiency)/May choose Combat Trick rogue talent twice"',
   'Master Of Disguise':'Section=skill Note="May gain +10 Disguise 1/dy"',
   'Master Poisoner':
     'Section=skill ' +
@@ -2860,10 +2863,10 @@ PFAPG.FEATURES = {
     'Note="Knows target Perception roll before Sleight Of Hand attempt; may make Bluff vs. Sense Motive to avoid detection after aborted Sleight Of Hand"',
   'Nimble Climber':
     'Section=skill ' +
-    'Note="May take another DC +10 Climb check after failing to avoid fall"',
+    'Note="Successful DC +10 Climb check after failed Climb avoids falling"',
   'Offensive Defense':
     'Section=feature ' +
-    'Note="+%{sneakAttack} AC afer successful Sneak Attack for 1 rd"',
+    'Note="Gains +%{sneakAttack} AC after successful sneak attack for 1 rd"',
   'Peerless Maneuver':
     'Section=skill ' +
     'Note="May take better of 2 Acrobatics rolls %{levels.Rogue//5+1}/dy"',
@@ -2872,7 +2875,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May move 30\' w/out provoking AOO after successful melee attack, ending adjacent to same foe, 1/dy"',
   'Powerful Sneak':
-    'Section=combat Note="May trade -2 attack for rerolling Sneak Attack 1s"',
+    'Section=combat ' +
+    'Note="During full attack action, may trade -2 attack for treating sneak attack 1s as 2s"',
   'Quick Disguise':
     'Section=skill Note="Reduces time to create effective disguise"',
   'Quick Trapsmith':
@@ -2884,22 +2888,22 @@ PFAPG.FEATURES = {
     'Note="May redirect successful hit on self to adjacent creature 1/dy"',
   "Scout's Charge":
     'Section=combat ' +
-    'Note="Charge attack inflicts Sneak Attack damage (Uncanny Dodge neg)"',
+    'Note="Charge attack inflicts sneak attack damage (Uncanny Dodge neg)"',
   'Second Chance (Rogue)':
     'Section=skill ' +
     'Note="May make -5 reroll on Acrobatics, Climb, or Fly %{levels.Rogue//3}/dy"',
   'Skilled Liar':'Section=skill Note="+%{levels.Rogue//2>?1} Bluff (deceive)"',
   'Skirmisher (Rogue)':
     'Section=combat ' +
-    'Note="First attack after 10\' move inflicts Sneak Attack damage (Uncanny Dodge neg)"',
+    'Note="First attack after 10\' move inflicts sneak attack damage (Uncanny Dodge neg)"',
   'Snap Shot':
     'Section=combat ' +
     'Note="May make ranged attack at Initiative 20 during surprise round"',
   "Sniper's Eye":
-    'Section=combat Note="R30\' May use ranged Sneak Attack on concealed foes"',
+    'Section=combat Note="R30\' May use ranged sneak attack on concealed foes"',
   'Stab And Grab':
     'Section=combat ' +
-    'Note="May inflict -5 Perception vs. Sleight Of Hand to steal from target after successful surprise round or Sneak Attack"',
+    'Note="May inflict -5 Perception vs. Sleight Of Hand to steal from target after successful surprise or sneak attack"',
   'Stealthy Sniper':
     'Section=combat Note="Reduces sniping Stealth penalty to -10"',
   'Strong Impression':'Section=feature Note="Has Intimidating Prowess feature"',
@@ -2912,7 +2916,7 @@ PFAPG.FEATURES = {
     'Note="May reroll Knowledge, Perception, or Sense Motive 1/dy"',
   'Trap Master':
     'Section=skill ' +
-    'Note="May bypass trap on any successful Disable Device; may modify which creatures can safely pass trap"',
+    'Note="May bypass trap on any successful Disable Device; may change which creatures can safely pass trap"',
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
