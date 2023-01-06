@@ -2918,6 +2918,58 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May bypass trap on any successful Disable Device; may change which creatures can safely pass trap"',
 
+  // Sorcerer
+  'Aquatic Adaptation (Sorcerer)':'Section=feature Note="FILL"',
+  'Aquatic Telepathy':'Section=feature Note="FILL"',
+  'Aurora Borealis':'Section=feature Note="FILL"',
+  'Avatar Of Chaos':'Section=feature Note="FILL"',
+  'Blizzard (Sorcerer)':'Section=feature Note="FILL"',
+  'Breaching The Gulf':'Section=feature Note="FILL"',
+  'Child Of Ancient Winters':'Section=feature Note="FILL"',
+  'Cold Steel':'Section=feature Note="FILL"',
+  'Combat Precognition':'Section=feature Note="FILL"',
+  'Crystal Shard':'Section=feature Note="FILL"',
+  'Deep One':'Section=feature Note="FILL"',
+  'Dehydrating Touch':'Section=feature Note="FILL"',
+  'Den Of Vipers':'Section=feature Note="FILL"',
+  'Dreamshaper':'Section=feature Note="FILL"',
+  'Earth Glide (Sorcerer)':'Section=feature Note="FILL"',
+  'Enveloping Darkness':'Section=feature Note="FILL"',
+  'Eye Of Somnus':'Section=feature Note="FILL"',
+  'Icewalker':'Section=feature Note="FILL"',
+  'Lullaby':'Section=feature Note="FILL"',
+  'Massmorph':'Section=feature Note="FILL"',
+  'Minute Meteors':'Section=feature Note="FILL"',
+  'Nighteye':'Section=feature Note="FILL"',
+  'Photosynthesis':'Section=feature Note="FILL"',
+  'Protean Resistances':'Section=feature Note="FILL"',
+  'Protoplasm':'Section=feature Note="FILL"',
+  'Raise The Deep':'Section=feature Note="FILL"',
+  'Reality Wrinkle':'Section=feature Note="FILL"',
+  'Ride The Lightning':'Section=feature Note="FILL"',
+  'Rockseer':'Section=feature Note="FILL"',
+  'Rooting':'Section=feature Note="FILL"',
+  'Scaled Soul':'Section=feature Note="FILL"',
+  'Serpent\'s Fang':'Section=feature Note="FILL"',
+  'Serpentfriend':'Section=feature Note="FILL"',
+  'Shadow Master':'Section=feature Note="FILL"',
+  'Shadow Well':'Section=feature Note="FILL"',
+  'Shadowstrike':'Section=feature Note="FILL"',
+  'Shepherd Of The Trees':'Section=feature Note="FILL"',
+  'Snakeskin':'Section=feature Note="FILL"',
+  'Snow Shroud':'Section=feature Note="FILL"',
+  'Solipsism':'Section=feature Note="FILL"',
+  'Spatial Tear':'Section=feature Note="FILL"',
+  'Starborn':'Section=feature Note="FILL"',
+  'Storm Lord':'Section=feature Note="FILL"',
+  'Stormchild':'Section=feature Note="FILL"',
+  'Strength Of Stone':'Section=feature Note="FILL"',
+  'Tanglevine':'Section=feature Note="FILL"',
+  'Thunderbolt':'Section=feature Note="FILL"',
+  'Thunderstance':'Section=feature Note="FILL"',
+  'Tremor':'Section=feature Note="FILL"',
+  'Voidwalker':'Section=feature Note="FILL"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -4009,6 +4061,226 @@ PFAPG.PATHS = {
     'Features=' +
       '"4:Careful Disarm","8:Trap Master"',
 
+  // Sorcerer
+  'Bloodline Aquatic':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Dehydrating Touch","3:Aquatic Adaptation (Sorcerer)",' +
+      '"9:Aquatic Telepathy","15:Raise The Deep","20:Deep One" ' +
+    'Feats=' +
+      'Athletic,"Brew Potion","Defensive Combat Training",Dodge,Mobility,' +
+      '"Silent Spell","Skill Focus (Swim)",Toughness ' +
+    'Skills=Swim ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Aquatic1:3=1,' +
+      'Aquatic2:5=1,' +
+      'Aquatic3:7=1,' +
+      'Aquatic4:9=1,' +
+      'Aquatic5:11=1,' +
+      'Aquatic6:13=1,' +
+      'Aquatic7:15=1,' +
+      'Aquatic8:17=1,' +
+      'Aquatic9:19=1',
+  'Bloodline Boreal':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Cold Steel",3:Icewalker,"9:Snow Shroud","15:Blizzard (Sorcerer)",' +
+      '"20:Child Of Ancient Winters" ' +
+    'Feats=' +
+      // Also Exotic Weapon Proficiency (*), handled in classRulesExtra
+      '"Arcane Strike",Diehard,"Empower Spell",Endurance,"Power Attack",' +
+      '"Skill Focus (Intimidate)",Toughness ' +
+    'Skills=Survival ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Boreal1:3=1,' +
+      'Boreal2:5=1,' +
+      'Boreal3:7=1,' +
+      'Boreal4:9=1,' +
+      'Boreal5:11=1,' +
+      'Boreal6:13=1,' +
+      'Boreal7:15=1,' +
+      'Boreal8:17=1,' +
+      'Boreal9:19=1',
+  'Bloodline Deep Earth':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Tremor,3:Rockseer,"9:Crystal Shard","15:Earth Glide (Sorcerer)",' +
+      '"20:Strength Of Stone" ' +
+    'Feats=' +
+      '"Acrobatic Steps",Alertness,Blind-Fight,"Forge Ring","Nimble Moves",' +
+      '"Skill Focus (Perception)",Stealthy,"Still Spell" ' +
+    'Skills="Knowledge (Dungeoneering)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      '"Deep Earth1:3=1",' +
+      '"Deep Earth2:5=1",' +
+      '"Deep Earth3:7=1",' +
+      '"Deep Earth4:9=1",' +
+      '"Deep Earth5:11=1",' +
+      '"Deep Earth6:13=1",' +
+      '"Deep Earth7:15=1",' +
+      '"Deep Earth8:17=1",' +
+      '"Deep Earth9:19=1"',
+  'Bloodline Dreamspun':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Lullaby,"3:Combat Precognition",9:Dreamshaper,"15:Eye Of Somnus",' +
+      '20:Solipsism ' +
+    'Feats=' +
+      'Alertness,Blind-Fight,"Combat Expertise",Deceitful,"Heighten Spell",' +
+      '"Improved Feint",Persuasive,"Skill Focus (Sense Motive)" ' +
+    'Skills="Sense Motive" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Dreamspun1:3=1,' +
+      'Dreamspun2:5=1,' +
+      'Dreamspun3:7=1,' +
+      'Dreamspun4:9=1,' +
+      'Dreamspun5:11=1,' +
+      'Dreamspun6:13=1,' +
+      'Dreamspun7:15=1,' +
+      'Dreamspun8:17=1,' +
+      'Dreamspun9:19=1',
+  'Bloodline Protean':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Protoplasm,"3:Protean Resistances","9:Reality Wrinkle",' +
+      '"15:Spatial Tear","20:Avatar Of Chaos" ' +
+    'Feats=' +
+      // Also Skill Focus (Craft (*)), handled in classRulesExtra
+      '"Agile Maneuvers","Defensive Combat Training","Enlarge Spell",' +
+      '"Great Fortitude","Improved Great Fortitude",' +
+      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
+      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
+      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
+      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
+      'Toughness ' +
+    'Skills="Knowledge (Planes)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Protean1:3=1,' +
+      'Protean2:5=1,' +
+      'Protean3:7=1,' +
+      'Protean4:9=1,' +
+      'Protean5:11=1,' +
+      'Protean6:13=1,' +
+      'Protean7:15=1,' +
+      'Protean8:17=1,' +
+      'Protean9:19=1',
+  'Bloodline Serpentine':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Serpent\'s Fang",3:Serpentfriend,9:Snakeskin,"15:Den Of Vipers",' +
+      '"20:Scaled Soul" ' +
+    'Feats=' +
+      '"Combat Casting","Combat Reflexes",Deceitful,"Deft Hands",Persuasive,' +
+      '"Silent Spell","Skill Focus (Bluff)",Stealthy ' +
+    'Skills=Diplomacy ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Serpentine1:3=1,' +
+      'Serpentine2:5=1,' +
+      'Serpentine3:7=1,' +
+      'Serpentine4:9=1,' +
+      'Serpentine5:11=1,' +
+      'Serpentine6:13=1,' +
+      'Serpentine7:15=1,' +
+      'Serpentine8:17=1,' +
+      'Serpentine9:19=1',
+  'Bloodline Shadow':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Shadowstrike,3:Nighteye,"9:Shadow Well","15:Enveloping Darkness",' +
+      '"20:Shadow Master" ' +
+    'Feats=' +
+      'Acrobatic,Blind-Fight,Dodge,"Quick Draw","Silent Spell",' +
+      '"Skill Focus (Stealth)",Stealthy,"Weapon Finesse" ' +
+    'Skills=Stealth ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Shadow1:3=1,' +
+      'Shadow2:5=1,' +
+      'Shadow3:7=1,' +
+      'Shadow4:9=1,' +
+      'Shadow5:11=1,' +
+      'Shadow6:13=1,' +
+      'Shadow7:15=1,' +
+      'Shadow8:17=1,' +
+      'Shadow9:19=1',
+  'Bloodline Starsoul':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '"1:Minute Meteors",3:Voidwalker,"9:Aurora Borealis",' +
+      '"15:Breaching The Gulf",20:Starborn ' +
+    'Feats=' +
+      'Blind-Fight,"Craft Rod",Dodge,Endurance,"Improved Counterspell",' +
+      '"Improved Iron Will","Iron Will","Quicken Spell",' +
+      '"Skill Focus (Perception)",Toughness ' +
+    'Skills="Knowledge (Nature)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Starsoul1:3=1,' +
+      'Starsoul2:5=1,' +
+      'Starsoul3:7=1,' +
+      'Starsoul4:9=1,' +
+      'Starsoul5:11=1,' +
+      'Starsoul6:13=1,' +
+      'Starsoul7:15=1,' +
+      'Starsoul8:17=1,' +
+      'Starsoul9:19=1',
+  'Bloodline Stormborn':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Thunderstance,3:Stormchild,9:Thunderbolt,"15:Ride The Lightning",' +
+      '"20:Storm Lord" ' +
+    'Feats=' +
+      '"Deadly Aim",Dodge,"Enlarge Spell","Far Shot","Great Fortitude",' +
+      '"Point-Blank Shot","Skill Focus (Fly)","Wind Stance" ' +
+    'Skills="Knowledge (Nature)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Stormborn1:3=1,' +
+      'Stormborn2:5=1,' +
+      'Stormborn3:7=1,' +
+      'Stormborn4:9=1,' +
+      'Stormborn5:11=1,' +
+      'Stormborn6:13=1,' +
+      'Stormborn7:15=1,' +
+      'Stormborn8:17=1,' +
+      'Stormborn9:19=1',
+  'Bloodline Verdant':
+    'Group=Sorcerer ' +
+    'Level=levels.Sorcerer ' +
+    'Features=' +
+      '1:Tanglevine,3:Photosynthesis,9:Massmorph,15:Rooting,' +
+      '"20:Shepherd Of The Trees" ' +
+    'Feats=' +
+      '"Acrobatic Steps","Craft Staff",Endurance,"Extend Spell",Fleet,' +
+      '"Nimble Moves","Skill Focus (Knowledge (Nature))",Toughness ' +
+    'Skills="Knowledge (Nature)" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Verdant1:3=1,' +
+      'Verdant2:5=1,' +
+      'Verdant3:7=1,' +
+      'Verdant4:9=1,' +
+      'Verdant5:11=1,' +
+      'Verdant6:13=1,' +
+      'Verdant7:15=1,' +
+      'Verdant8:17=1,' +
+      'Verdant9:19=1',
+
   // Oracle
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -4314,7 +4586,7 @@ PFAPG.SPELLS = {
     'Description="Touched creature gains triple carrying capacity for %{lvl*2} rd"',
   'Aqueous Orb':
     'School=Conjuration ' +
-    'Level=D3,W3,Summoner3 ' +
+    'Level=Aquatic3,D3,W3,Summoner3 ' +
     'Description="R$RM\' 10\' diameter sphere douses fires, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), jumps or moves 30\'/rd for $L rd"',
   'Arcane Concordance':
     'School=Evocation ' +
@@ -4478,7 +4750,7 @@ PFAPG.SPELLS = {
     'Description="Self gains +4 Stealth and 20% miss from non-adjacent foes for $L min"',
   'Clashing Rocks':
     'School=Conjuration ' +
-    'Level=D9,W9,Stone9 ' +
+    'Level=D9,"Deep Earth9",W9,Stone9 ' +
     'Description="R$RL\' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (Ref half HP only)"',
   'Cleanse':
     'School=Evocation ' +
@@ -4606,7 +4878,7 @@ PFAPG.SPELLS = {
     'Description="R$RL\' Self can view from higher point for $L min"',
   'Elemental Aura':
     'School=Evocation ' +
-    'Level=Alchemist3,W3 ' +
+    'Level=Alchemist3,Boreal3,W3 ' +
     'Description="Creatures adjacent to self suffer 2d6 HP energy damage (Ref half), plus energy effects, for $L rd"',
   'Elemental Speech':
     'School=Divination ' +
@@ -4646,7 +4918,7 @@ PFAPG.SPELLS = {
     'Description="Touched eidolon gains 2-point evolution for $L min"',
   'Expeditious Excavation':
     'School=Transmutation ' +
-    'Level=D1,W1 ' +
+    'Level="Deep Earth1",D1,W1 ' +
     'Description="R$RS\' Moves 5\' cu of dirt"',
   'Expend':
     'School=Abjuration ' +
@@ -4750,7 +5022,7 @@ PFAPG.SPELLS = {
     'Description="R30\' Self and %{lvl//2} willing pre-selected targets teleport to prepared location"',
   'Geyser':
     'School=Conjuration ' +
-    'Level=D4,W5,Waves5 ' +
+    'Level=Aquatic4,D4,W5,Waves5 ' +
     'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), then 1d6 HP fire in %{lvl*5}\' radius for conc + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
@@ -4818,7 +5090,7 @@ PFAPG.SPELLS = {
     'Description="Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken) (Will neg) for $L rd"',
   'Hydraulic Push':
     'School=Evocation ' +
-    'Level=D1,W1 ' +
+    'Level=Aquatic1,D1,W1 ' +
     'Description="R$RS\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes fires"',
   'Hydraulic Torrent':
     'School=Evocation ' +
@@ -5078,7 +5350,7 @@ PFAPG.SPELLS = {
     'Description="Reshapes touched corpse to look like another creature"',
   'Seamantle':
     'School=Conjuration ' +
-    'Level=D8,W8,Waves8 ' +
+    'Level=Aquatic8,D8,W8,Waves8 ' +
     'Description="30\' water column gives self +8 AC, +4 Reflex, and 30\' slam attack for $L min"',
   'Seek Thoughts':
     'School=Divination ' +
@@ -5102,7 +5374,7 @@ PFAPG.SPELLS = {
     'Description="$L targets in 15\' radius gain +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. chosen foe for 1 min"',
   'Shifting Sand':
     'School=Transmutation ' +
-    'Level=D3,W3 ' +
+    'Level=D3,"Deep Earth3",W3 ' +
     'Description="R$RM\' 10\' radius moves 10\'/rd, creates difficult terrain, entangles and knocks prone (Ref neg) for $L rd"',
   'Sift':
     'School=Divination ' +
@@ -5118,7 +5390,7 @@ PFAPG.SPELLS = {
     'Description="Touched unconscious creature animates and moves at half speed for $L hr"',
   'Slipstream':
     'School=Conjuration ' +
-    'Level=D2,Oceans2,R2,W2,Waves2 ' +
+    'Level=Aquatic2,D2,Oceans2,R2,W2,Waves2 ' +
     'Description="Creates wave that moves touched 10\'/rd for %{lvl*10} min"',
   'Snake Staff':
     'School=Transmutation ' +
@@ -5318,7 +5590,7 @@ PFAPG.SPELLS = {
     'Description="Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for $L min"',
   'World Wave':
     'School=Transmutation ' +
-    'Level=D9,Exploration9,W9,Nature9 ' +
+    'Level=Aquatic9,D9,Exploration9,W9,Nature9 ' +
     'Description="Earth or water tsunami inflicts 6d6 HP bludgeoning for $L rd or swell inflicts 1d6 HP bludgeoning for $L hr"',
   'Wrath':
     'School=Enchantment ' +
@@ -5341,23 +5613,24 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Animal Shapes':'Feather7,Fur7,Nature8',
   'Animate Dead':'Bones3,O3,Souls3,Undeath3',
   'Animate Objects':'O6',
-  'Animate Plants':'Decay7,Growth7',
+  'Animate Plants':'Decay7,Growth7,Verdant8',
   'Animate Rope':'Construct1',
   'Antilife Shell':'Fur6,O6,Souls6',
   'Antimagic Field':'Defense6,Divine6,Purity6,O8',
   'Arcane Eye':'Arcana4',
   'Arcane Lock':'Wards1',
   'Arcane Sight':'Inquisitor3',
-  'Astral Projection':'O9',
+  'Astral Projection':'Dreamspun9,O9',
   'Atonement':'Inquisitor5,O5,Purity5',
-  'Augury':'Fate2,O2',
+  'Augury':'Dreamspun2,Fate2,O2',
   'Awaken':'Nature5',
   'Bane':'Curse1,Inquisitor1,O1',
   'Banishment':'Inquisitor5,O6',
-  'Barkskin':'Decay2,Defense2,Growth2,Nature2',
+  'Barkskin':'Decay2,Defense2,Growth2,Nature2,Verdant2',
   "Bear's Endurance":'O2',
   'Beast Shape I':'Fur3',
   'Beast Shape III':'Feather5,Fur5',
+  'Beast Shape IV':'Aquatic6',
   'Bestow Curse':'Curse3,O3',
   'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
   'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6,O7',
@@ -5367,16 +5640,18 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Bless Weapon':'Heroism2',
   'Blight':'Seasons4',
   'Blindness/Deafness':'Loss2,Night2,O3',
+  'Blink':'Starsoul3',
+  'Blur':'Protean2',
   'Break Enchantment':'Curse5,Fate5,Inquisitor5,O5,Restoration5,Revolution5',
   'Breath Of Life':'Life5,O5',
   "Bull's Strength":'Ferocity2,O2,Rage2,Resolve2',
   'Burning Hands':'Ash1,Flame1,Smoke1',
   'Call Lightning':'Catastrophe3,Seasons3,Storms3',
-  'Call Lightning Storm':'Storms5',
+  'Call Lightning Storm':'Starsoul4,Storms5',
   'Calm Animals':'Feather1',
   'Calm Emotions':'Family2,Inquisitor2,O2',
   'Cause Fear':'Bones1,Daemon1,Inquisitor1,Murder1,O1,Undeath1',
-  'Chain Lightning':'Cloud6,Heavens6',
+  'Chain Lightning':'Cloud6,Heavens6,Stormborn6',
   'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Protean4',
   'Charm Animal':'Nature1',
   'Charm Monster':'Love5,Lust5',
@@ -5386,20 +5661,20 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cloak Of Chaos':'"Azata Chaos8","Demon Chaos8",O8,Protean8',
   'Color Spray':'Heavens1',
   'Command':'"Devil Evil1","Devil Law1",Inquisitor1,O1,Toil1',
-  'Command Plants':'Growth4',
+  'Command Plants':'Growth4,Verdant4',
   'Command Undead':'Inevitable3',
   'Commune':'Inquisitor5,O5',
   'Comprehend Languages':'Inquisitor1,Language1,Memory1,O1,Thought1',
-  'Cone Of Cold':'Ice6,Oceans6',
-  'Confusion':'Deception4,Lust4,Thievery4',
+  'Cone Of Cold':'Boreal5,Ice6,Oceans6',
+  'Confusion':'Deception4,Lust4,Protean4,Thievery4',
   'Consecrate':'Inquisitor2,O2',
   'Contact Other Plane':'Lore5',
   'Contagion':'Decay3,O3',
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
   'Control Undead':'Bones7',
-  'Control Water':'Ice4,O4,Oceans4',
-  'Control Weather':'Battle7,Catastrophe7,O7,Seasons7,Storms7,Wind7',
+  'Control Water':'Aquatic5,Ice4,O4,Oceans4',
+  'Control Weather':'Battle7,Catastrophe7,O7,Seasons7,Stormborn7,Storms7,Wind7',
   'Control Winds':'Cloud5,Seasons6,Wind5,Winds5',
   'Create Food And Water':'Family3,O3',
   'Create Greater Undead':'Murder8,O8,Undeath8',
@@ -5413,13 +5688,15 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cure Serious Wounds':'Inquisitor3,O3,Restoration3,Resurrection3',
   'Curse Water':'Inquisitor1,O1',
   'Darkness':'Inquisitor2,O2',
+  'Darkvision':'"Deep Earth2",Shadow2',
   'Daylight':'Day3,Heavens3,Inquisitor3,Light3,O3',
   'Daze':'Inquisitor0',
   'Death Knell':'Inquisitor2,Murder2,O2',
   'Death Ward':'Inquisitor4,Murder4,O4,Souls4',
   'Deathwatch':'Ancestors1,O1,Souls1',
-  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3',
-  'Delay Poison':'Inquisitor2,O2',
+  'Deep Slumber':'Dreamspun3',
+  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3,Shadow3',
+  'Delay Poison':'Inquisitor2,O2,Serpentine2',
   'Demand':'Leadership8,Lust8,Martyr8',
   'Desecrate':'Inquisitor2,O2',
   'Destruction':'Ancestors7,Murder7,O7,Souls7,Undeath7',
@@ -5439,7 +5716,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Discern Lies':'Inquisitor4,Leadership4,Martyr4,O4',
   'Discern Location':'O8',
   'Disguise Self':'Deception1,Inquisitor1,Thievery1',
-  'Disintegrate':'Ash7,Rage7',
+  'Disintegrate':'Ash7,Protean6,Rage7',
   'Dismissal':'Inquisitor4,O4',
   'Dispel Chaos':'"Archon Law5","Devil Law5",Inquisitor5,O5',
   'Dispel Evil':'Agathion5,"Archon Good5","Azata Good5",Inquisitor5,O5',
@@ -5449,22 +5726,23 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Displacement':'Protean3',
   'Disrupt Undead':'Inquisitor0',
   'Disrupting Weapon':'Inquisitor5,O5',
-  'Divination':'Inquisitor4,Memory4,O4,Thought4',
+  'Divination':'Dreamspun4,Inquisitor4,Memory4,O4,Thought4',
   'Divine Favor':'"Archon Good1","Archon Law1",Inquisitor1,Martyr1,O1',
   'Divine Power':'Blood4,Inquisitor4,O4,Tactics4',
-  'Dominate Monster':'Love9,Lust9',
+  'Dominate Monster':'Love9,Lust9,Serpentine9',
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
+  'Dream':'Dreamspun5',
   "Eagle's Splendor":'O2',
-  'Earthquake':'Battle8,Catastrophe8,Caves8,O8,Rage8',
+  'Earthquake':'Battle8,Catastrophe8,Caves8,"Deep Earth8",O8,Rage8',
   'Elemental Body IV':'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7',
   'Elemental Swarm':'Caves9,Metal9,Smoke9',
   'Endure Elements':'Day1,O1',
   'Energy Drain':'Loss9,O9,Undeath9',
   'Enervation':'Loss5,Undeath4',
-  'Enlarge Person':'Battle1,Ferocity1,Growth1',
-  'Entangle':'Decay1',
+  'Enlarge Person':'Boreal1,Battle1,Ferocity1,Growth1',
+  'Entangle':'Decay1,Verdant1',
   'Enthrall':'Inquisitor2,Leadership2,Love2,O2,Revolution2',
-  'Entropic Shield':'O1',
+  'Entropic Shield':'Protean1,O1',
   'Ethereal Jaunt':'O7,Thievery7',
   'Etherealness':'O9',
   'Expeditious Retreat':'"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
@@ -5491,12 +5769,14 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Freedom':'Freedom9,Revolution9',
   'Freedom Of Movement':'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4',
   'Freezing Sphere':'Ice7',
-  'Gaseous Form':'Cloud3,Winds3',
+  'Gaseous Form':'Cloud3,Protean3,Winds3',
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6',
   'Gentle Repose':'Ancestors2,O2,Souls2',
   'Ghoul Touch':'Undeath2',
+  'Giant Form I':'Boreal7',
   'Giant Vermin':'O4',
+  'Glitterdust':'Starsoul2',
   'Glyph Of Warding':'Home3,Inquisitor3,O3,Wards3',
   'Goodberry':'Seasons1',
   'Grasping Hand':'Ferocity7,Resolve7',
@@ -5507,14 +5787,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Greater Invisibility':'Inquisitor4',
   'Greater Magic Weapon':'Inquisitor3,O4',
   'Greater Planar Ally':'O8,Tactics8',
+  'Greater Polymorph':'Protean7',
+  'Greater Prying Eyes':'Starsoul8',
   'Greater Restoration':'Life7,O7',
   'Greater Scrying':'O7',
-  'Greater Shadow Evocation':'Loss8,Night8',
+  'Greater Shadow Evocation':'Loss8,Night8,Shadow8',
   'Greater Spell Immunity':'O8',
   'Greater Teleport':'Exploration7,Trade7',
   'Guards And Wards':'Home7,Wards6',
   'Guidance':'Inquisitor0,O0',
-  'Gust Of Wind':'Catastrophe2,Wind2',
+  'Gust Of Wind':'Catastrophe2,Stormborn2,Wind2',
   'Hallow':'Inquisitor5,O5',
   'Halt Undead':'Inquisitor3',
   'Harm':'Catastrophe6,Decay6,Inquisitor6,O6',
@@ -5525,7 +5807,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Heroism':'Heroism3,Inquisitor3,Love4',
   'Hide From Undead':'Inquisitor1,O1',
   'Hold Animal':'Fur2',
-  'Hold Monster':'Inquisitor4',
+  'Hold Monster':'Inquisitor4,Serpentine5',
   'Hold Person':'Inquisitor2,O2',
   'Holy Aura':'Agathion8,"Archon Good8","Azata Good8",Heroism8,Honor8,O8',
   'Holy Smite':'Agathion4,"Archon Good4","Azata Good4",Heroism4,Honor4,Inquisitor4,O4',
@@ -5533,6 +5815,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Holy Word':'Agathion7,"Archon Good7","Azata Good7",Inquisitor6,O7',
   'Horrid Wilting':'Bones8,Ice8,Oceans8',
   'Hypnotic Pattern':'Heavens2',
+  'Hypnotism':'Serpentine1',
   'Ice Storm':'Ice5,Oceans5,Seasons5',
   'Identify':'Divine1,Lore1',
   'Imbue With Spell Ability':'Divine4,Family4,Home4,O4',
@@ -5548,6 +5831,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Invisibility':'Inquisitor2,Thievery2',
   'Invisibility Purge':'Inquisitor3,O3',
   'Iron Body':'Metal8',
+  'Irresistible Dance':'Serpentine8',
   'Keen Edge':'Inquisitor3,Murder3',
   'Knock':'Inquisitor2',
   'Legend Lore':'Inquisitor6,Lore4,Memory7,Thought7',
@@ -5557,6 +5841,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Lesser Planar Binding':'Wards5',
   'Lesser Restoration':'Inquisitor2,Life2,O2',
   'Light':'Inquisitor0,O0',
+  'Lightning Bolt':'Stormborn3',
   'Limited Wish':'Construct7',
   'Locate Creature':'Exploration4',
   'Locate Object':'Exploration2,Inquisitor3,Lore3,O3,Thievery3,Trade2',
@@ -5571,7 +5856,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Magic Stone':'Caves1,Metal1,O1,Stone1',
   'Magic Vestment':'Battle3,Inquisitor3,Martyr3,O3,Resolve3,Tactics3',
   'Magic Weapon':'Blood1,Inquisitor1,O1,Tactics1',
-  'Major Creation':'Construct6,Toil6',
+  'Major Creation':'Construct6,Protean5,Toil6',
   'Make Whole':'O2',
   'Mark Of Justice':'Inquisitor5,O5',
   "Mass Bear's Endurance":'O6',
@@ -5588,23 +5873,24 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mass Inflict Serious Wounds':'Blood7,O7',
   'Mass Invisibility':'Deception8,Thievery8',
   "Mass Owl's Wisdom":'Lore6,O6',
+  'Mass Suggestion':'Serpentine6',
   'Meld Into Stone':'O3,Stone3',
   'Mending':'O0',
-  'Meteor Swarm':'Heavens9',
+  'Meteor Swarm':'Boreal9,Heavens9,Starsoul9',
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8',
   'Minor Creation':'Construct4,Toil4',
   'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9',
   'Mirror Image':'Deception2',
   'Mislead':'Deception6,Fate6,Thievery6',
   'Modify Memory':'Loss6,Memory6',
-  'Moment Of Prescience':'Curse8,Fate8,Lore8,Memory8',
+  'Moment Of Prescience':'Curse8,Dreamspun8,Fate8,Lore8,Memory8',
   'Neutralize Poison':'Inquisitor4,Life3,O4,Restoration4',
   'Nightmare':'Insanity5,Night6,Nightmare5',
   'Nondetection':'Deception3,Inquisitor3',
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
-  'Overland Flight':'Heavens5,Trade5',
+  'Overland Flight':'Heavens5,Starsoul5,Stormborn5,Trade5',
   "Owl's Wisdom":'O2',
   'Phantasmal Killer':'Nightmare4',
   'Phase Door':'Exploration8,Trade8',
@@ -5612,10 +5898,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Planar Binding':'Daemon6,"Demon Chaos6","Demon Evil6","Devil Evil6","Devil Law6",Inevitable6,Protean6',
   'Plane Shift':'Freedom5,O5',
   'Plant Growth':'Growth3',
-  'Poison':'Decay4,O4',
-  'Polar Ray':'Ice9',
-  'Polymorph Any Object':'Construct8',
-  'Power Word Blind':'Loss7,Night7,Tactics7',
+  'Plant Shape III':'Verdant7',
+  'Poison':'Decay4,O4,Serpentine4',
+  'Polar Ray':'Boreal8,Ice9',
+  'Polymorph Any Object':'Construct8,Protean8',
+  'Power Word Blind':'Loss7,Night7,Shadow7,Tactics7',
   'Power Word Kill':'Blood9,Tactics9',
   'Power Word Stun':'Blood8',
   'Prayer':'"Archon Good3","Archon Law3",Inquisitor3,Leadership3,O3',
@@ -5631,9 +5918,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Protection From Spells':'Arcana8,Divine8',
   'Purify Food And Drink':'O0',
   'Pyrotechnics':'Smoke2',
-  'Rage':'"Demon Chaos3","Demon Evil3",Ferocity3,Insanity3,Nightmare3,Rage3',
+  'Rage':
+    'Boreal2,"Demon Chaos3","Demon Evil3",Ferocity3,Insanity3,Nightmare3,Rage3',
   'Rainbow Pattern':'Heavens4',
   'Raise Dead':'Resurrection5,O5',
+  'Ray Of Enfeeblement':'Shadow1',
   'Read Magic':'Inquisitor0,O0',
   'Refuge':'Family7,Freedom7,O7,Revolution7',
   'Regenerate':'O7,Restoration7',
@@ -5642,14 +5931,15 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Remove Disease':'Inquisitor3,O3,Restoration2',
   'Remove Fear':'Inquisitor1,O1,Revolution1',
   'Remove Paralysis':'Freedom2,Inquisitor2,O2',
-  'Repel Metal Or Stone':'Stone8',
+  'Repel Metal Or Stone':'"Deep Earth7",Stone8',
   'Repel Vermin':'O4',
   'Repel Wood':'Growth6',
-  'Repulsion':'Inquisitor6,Leadership7,Martyr7,O7,Purity7',
+  'Repulsion':'Inquisitor6,Leadership7,Martyr7,O7,Purity7,Starsoul6',
   'Resist Energy':'Flame2,Inquisitor2,O2',
   'Resistance':'Inquisitor0,O0',
   'Restoration':'Inquisitor4,Life4,O4',
   'Resurrection':'Divine7,O7,Resurrection7',
+  'Reverse Gravity':'Starsoul7',
   'Righteous Might':'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5',
   'Sanctuary':'Freedom1,Inquisitor1,O1',
   'Scintillating Pattern':'Insanity8,Nightmare8',
@@ -5658,47 +5948,51 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Secret Page':'Wards2',
   'See Invisibility':'Inquisitor2',
   'Sending':'Inquisitor4,O4',
-  'Shades':'Night9',
-  'Shadow Conjuration':'Loss4,Night4',
-  'Shambler':'Decay9,Growth9',
-  'Shapechange':'Feather9,Fur9',
+  'Shades':'Night9,Shadow9',
+  'Shadow Conjuration':'Loss4,Night4,Shadow4',
+  'Shadow Evocation':'Shadow5',
+  'Shadow Walk':'Dreamspun6,Shadow6',
+  'Shambler':'Decay9,Growth9,Verdant9',
+  'Shapechange':'Feather9,Fur9,Protean9',
   'Shatter':'O2',
   'Shield':'Defense1',
   'Shield Of Faith':'Agathion1,Heroism1,Honor1,Inquisitor1,O1',
   'Shield Of Law':'"Archon Law8","Devil Law8",Inevitable8,O8',
   'Shield Other':'Home2,Inquisitor2,Martyr2,O2,Purity2',
-  'Shout':'Catastrophe5,Rage5',
+  'Shocking Grasp':'Stormborn1',
+  'Shout':'Catastrophe5,Rage5,Stormborn4',
   'Silence':'Inquisitor2,O2',
   'Slay Living':'Ancestors5,Bones5,O5,Souls5,Undeath5',
-  'Sleep':'Night1',
+  'Sleep':'Dreamspun1,Night1',
   'Sleet Storm':'Storms4',
   'Solid Fog':'Cloud4',
   'Soul Bind':'O9',
   'Sound Burst':'O2',
   'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3',
-  'Speak With Plants':'Nature3',
+  'Speak With Plants':'Nature3,Verdant3',
   'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4',
   'Spell Resistance':'Arcana5,Defense5,Inquisitor5,O5',
   'Spell Turning':'Arcana7,Curse7,Fate7',
-  'Spike Stones':'Caves4,Metal4',
+  'Spike Stones':'Caves4,"Deep Earth5",Metal4',
   'Spiritual Weapon':'Blood2,Inquisitor2,O2',
   'Stabilize':'Inquisitor0,O0',
   'Statue':'Stone7,Toil8',
   'Status':'O2',
   'Stinking Cloud':'Smoke3',
   'Stone Shape':'Construct3,Metal3,O3,Toil3',
-  'Stone Tell':'Nature6,Stone6',
-  'Stoneskin':'Inquisitor4,Stone5',
-  'Storm Of Vengeance':'Battle9,Cloud9,Leadership9,Martyr9,O9,Seasons9,Storms9',
+  'Stone Tell':'"Deep Earth6",Nature6,Stone6',
+  'Stoneskin':'"Deep Earth4",Inquisitor4,Stone5',
+  'Storm Of Vengeance':
+    'Battle9,Cloud9,Leadership9,Martyr9,O9,Seasons9,Stormborn9,Storms9',
   'Suggestion':'"Devil Evil3","Devil Law3",Love3,Lust3',
   'Summon Monster I':'O1',
   'Summon Monster II':'O2',
-  'Summon Monster III':'O3',
+  'Summon Monster III':'O3,Serpentine3',
   'Summon Monster IV':'O4',
   'Summon Monster IX':'Agathion9,"Archon Good9","Archon Law9","Azata Chaos9","Azata Good9",Daemon9,"Demon Chaos9","Demon Evil9","Devil Evil9","Devil Law9",Inevitable9,O9,Protean9',
   'Summon Monster V':'Flame5,Night5,O5',
   'Summon Monster VI':'O6',
-  'Summon Monster VII':'O7',
+  'Summon Monster VII':'Aquatic7,O7,Serpentine7',
   'Summon Monster VIII':'O8',
   "Summon Nature's Ally IV":'Feather4,Fur4',
   "Summon Nature's Ally VIII":'Feather8,Fur8',
@@ -5718,6 +6012,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Time Stop':'Deception9,Lore9,Thievery9',
   'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2',
+  'Transformation':'Boreal6',
+  'Transport Via Plants':'Verdant6',
   'Trap The Soul':'Souls9',
   'True Resurrection':'Life9,O9,Resurrection9',
   'True Seeing':'Inquisitor5,Memory5,O5',
@@ -5727,21 +6023,22 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Unhallow':'Inquisitor5,O5',
   'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8",O8',
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
+  'Unseen Servant':'Starsoul1',
   'Vampiric Touch':'Blood3,Daemon3',
   'Virtue':'Inquisitor0,O0',
-  'Vision':'Lore7',
+  'Vision':'Dreamspun7,Lore7',
   'Wail Of The Banshee':'Ancestors9,Bones9',
   'Wall Of Fire':'Ash4,Battle4,Flame4,Smoke4',
-  'Wall Of Ice':'Waves4',
+  'Wall Of Ice':'Boreal4,Waves4',
   'Wall Of Iron':'Metal6',
   'Wall Of Stone':'Caves5,Metal5,O5,Stone4',
-  'Wall Of Thorns':'Blood5,Decay5',
+  'Wall Of Thorns':'Blood5,Decay5,Verdant5',
   'Water Breathing':'Ice3,O3,Waves3',
   'Water Walk':'O3,Oceans3',
   'Waves Of Exhaustion':'Ancestors8,Souls8,Toil7',
   'Waves Of Fatigue':'Toil5',
   'Weird':'Insanity9,Nightmare9',
-  'Whirlwind':'Cloud8,Storms8,Wind8,Winds8',
+  'Whirlwind':'Cloud8,Storms8,Stormborn8,Wind8,Winds8',
   'Whispering Wind':'Inquisitor2,Winds1',
   'Wind Walk':'O6,Winds6',
   'Wind Wall':'Cloud2,O3,Winds2',
@@ -5778,252 +6075,6 @@ PFAPG.WEAPONS = {
   'Wooden Stake':'Level=1 Category=Li Damage=d4 Range=10'
 };
 PFAPG.CLASSES = {
-  'Barbarian':
-    'Selectables=' +
-      '"features.Lesser Beast Totem ? 6:Beast Totem",' +
-      '"features.Beast Totem ? 10:Greater Beast Totem",' +
-      '"2:Lesser Beast Totem",' +
-      '"6:Boasting Taunt",' +
-      '"2:Brawler",' +
-      '"features.Brawler ? 2:Greater Brawler",' +
-      '"features.Lesser Chaos Totem ? 6:Chaos Totem",' +
-      '"features.Chaos Totem ? 10:Greater Chaos Totem",' +
-      '"2:Lesser Chaos Totem",' +
-      '"12:Come And Get Me",' +
-      '"features.Superstition ? 8:Disruptive",' +
-      '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
-      '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
-      '"4:Lesser Elemental Rage",' +
-      '"features.Greater Energy Resistance ? 12:Energy Absorption (Rage)",' +
-      '"features.Energy Absorption (Rage) ? 16:Energy Eruption",' +
-      '"2:Energy Resistance",' +
-      '"features.Energy Resistance ? 8:Greater Energy Resistance",' +
-      '"2:Ferocious Mount",' +
-      '"features.Ferocious Mount ? 8:Greater Ferocious Mount",' +
-      '"features.Ferocious Mount ? 8:Ferocious Trample",' +
-      '"features.Ferocious Trample ? 12:Greater Ferocious Trample",' +
-      '"features.Lesser Fiend Totem ? 6:Fiend Totem",' +
-      '"features.Fiend Totem ? 10:Greater Fiend Totem",' +
-      '"2:Lesser Fiend Totem",' +
-      '"10:Flesh Wound",' +
-      '"2:Good For What Ails You",' +
-      '"6:Ground Breaker",' +
-      '"6:Guarded Life",' +
-      '"features.Lesser Hurling ? 8:Hurling",' +
-      '"features.Hurling ? 12:Greater Hurling",' +
-      '"2:Lesser Hurling",' +
-      '"features.Lesser Hurling ? 8:Hurling Charge",' +
-      '"features.Reckless Abandon ? 2:Inspire Ferocity",' +
-      '2:Knockdown,' +
-      '"2:Liquid Courage",' +
-      '"2:Overbearing Advance",' +
-      '"features.Overbearing Advance ? 6:Overbearing Onslaught",' +
-      '"2:Reckless Abandon",' +
-      '"2:Roaring Drunk",' +
-      '2:Smasher,' +
-      '"features.Disruptive ? 12:Spellbreaker",' +
-      '"features.Ferocious Mount ? 6:Spirit Steed",' +
-      '"features.Lesser Spirit Totem ? 6:Spirit Totem",' +
-      '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
-      '"2:Lesser Spirit Totem",' +
-      '"2:Staggering Drunk",' +
-      '"features.Superstition ? 2:Witch Hunter",' +
-      '"1:Breaker:Archetype",' +
-      '"1:Brutal Pugilist:Archetype",' +
-      '"1:Core Barbarian:Archetype",' +
-      '"1:Drunken Brute:Archetype",' +
-      '"1:Elemental Kin:Archetype",' +
-      '"1:Hurler:Archetype",' +
-      '"1:Invulnerable Rager:Archetype",' +
-      '"1:Mounted Fury:Archetype",' +
-      '"1:Savage Barbarian:Archetype",' +
-      '"1:Superstitious:Archetype",' +
-      '"1:Totem Warrior:Archetype"',
-  'Bard':
-    'Selectables=' +
-      '"1:Arcane Duelist:Archetype",' +
-      '"1:Archivist:Archetype",' +
-      '"1:Core Bard:Archetype",' +
-      '"1:Court Bard:Archetype",' +
-      '"1:Detective:Archetype",' +
-      '"1:Magician:Archetype",' +
-      '"1:Sandman:Archetype",' +
-      '"1:Savage Skald:Archetype",' +
-      '"1:Sea Singer:Archetype",' +
-      '"1:Street Performer:Archetype",' +
-      // Need to list Bonded Object here since it's available via two Archetypes
-      '"1:Bonded Object:Arcane Bond"',
-  'Cleric':
-    'Selectables=' +
-      QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
-  'Druid':
-    'Selectables=' +
-      '"1:Aquatic Druid:Archetype",' +
-      '"1:Arctic Druid:Archetype",' +
-      '"1:Blight Druid:Archetype",' +
-      '"1:Cave Druid:Archetype",' +
-      '"1:Core Druid:Archetype",' +
-      '"1:Desert Druid:Archetype",' +
-      '"1:Jungle Druid:Archetype",' +
-      '"1:Mountain Druid:Archetype",' +
-      '"1:Plains Druid:Archetype",' +
-      '"1:Swamp Druid:Archetype",' +
-      '"1:Urban Druid:Archetype",' +
-      '"1:Animal Shaman:Archetype",' +
-      '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
-      '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
-      '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
-      '"features.Blight Druid ? 1:Destruction Domain:Nature Bond"',
-  'Fighter':
-    'Selectables=' +
-      '"1:Archer:Archetype",' + 
-      '"1:Core Fighter:Archetype",' + 
-      '"1:Crossbowman:Archetype",' + 
-      '"1:Free Hand Fighter:Archetype",' + 
-      '"1:Mobile Fighter:Archetype",' + 
-      '"1:Phalanx Soldier:Archetype",' + 
-      '"1:Polearm Master:Archetype",' + 
-      '"1:Roughrider:Archetype",' + 
-      '"1:Savage Warrior:Archetype",' + 
-      '"1:Shielded Fighter:Archetype",' + 
-      '"1:Two-Handed Fighter:Archetype",' + 
-      '"1:Two-Weapon Warrior:Archetype",' + 
-      '"1:Weapon Master:Archetype"',
-  'Monk':
-    'Selectables=' +
-      '"1:Core Monk:Archetype",' +
-      '"1:Drunken Master:Archetype",' +
-      '"1:Hungry Ghost Monk:Archetype",' +
-      '"1:Ki Mystic:Archetype",' +
-      '"1:Monk Of The Empty Hand:Archetype",' +
-      '"1:Monk Of The Four Winds:Archetype",' +
-      '"1:Monk Of The Healing Hand:Archetype",' +
-      '"1:Monk Of The Lotus:Archetype",' +
-      '"1:Monk Of The Sacred Mountain:Archetype",' +
-      '"1:Weapon Adept:Archetype",' +
-      '"1:Zen Archer:Archetype"',
-  'Paladin':
-    'Selectables=' +
-      '"1:Core Paladin:Archetype",' +
-      '"1:Divine Defender:Archetype",' +
-      '"1:Hospitaler:Archetype",' +
-      '"1:Sacred Servant:Archetype",' +
-      '"1:Shining Knight:Archetype",' +
-      '"1:Undead Scourge:Archetype",' +
-      '"1:Warrior Of The Holy Light:Archetype",' +
-      '"features.Divine Defender ? 5:Divine Armor:Divine Bond",' +
-      '"features.Sacred Servant ? 5:Divine Holy Symbol:Divine Bond"',
-  'Ranger':
-    'Selectables=' +
-      '"2:Combat Style (Crossbow):Combat Style",' +
-      '"2:Combat Style (Mounted Combat):Combat Style",' +
-      '"2:Combat Style (Natural Weapon):Combat Style",' +
-      '"2:Combat Style (Two-Handed Weapon):Combat Style",' +
-      '"2:Combat Style (Weapon And Shield):Combat Style",' +
-      '"2:Deadly Aim:Crossbow Feat",' +
-      '"2:Focused Shot:Crossbow Feat",' +
-      '"2:Rapid Reload:Crossbow Feat",' +
-      '"6:Crossbow Mastery:Crossbow Feat",' +
-      // Crossbow feats that duplicate other styles handled by classRulesExtra
-      '"2:Mounted Combat:Mounted Combat Feat",' +
-      '"2:Mounted Archery:Mounted Combat Feat",' +
-      '"2:Ride-By Attack:Mounted Combat Feat",' +
-      '"6:Mounted Shield:Mounted Combat Feat",' +
-      '"6:Spirited Charge:Mounted Combat Feat",' +
-      '"10:Mounted Skirmisher:Mounted Combat Feat",' +
-      '"10:Unseat:Mounted Combat Feat",' +
-      '"2:Aspect Of The Beast:Natural Weapon Feat",' +
-      '"2:Improved Natural Weapon:Natural Weapon Feat",' +
-      '"2:Rending Claws:Natural Weapon Feat",' +
-      '"2:Weapon Focus:Natural Weapon Feat",' +
-      '"6:Eldritch Fangs:Natural Weapon Feat",' +
-      '"6:Vital Strike:Natural Weapon Feat",' +
-      '"10:Multiattack:Natural Weapon Feat",' +
-      '"10:Improved Vital Strike:Natural Weapon Feat",' +
-      '"2:Cleave:Two-Handed Weapon Feat",' +
-      '"2:Power Attack:Two-Handed Weapon Feat",' +
-      '"2:Pushing Assault:Two-Handed Weapon Feat",' +
-      '"2:Shield Of Swings:Two-Handed Weapon Feat",' +
-      '"6:Furious Focus:Two-Handed Weapon Feat",' +
-      '"6:Great Cleave:Two-Handed Weapon Feat",' +
-      '"10:Dreadful Carnage:Two-Handed Weapon Feat",' +
-      '"10:Improved Sunder:Two-Handed Weapon Feat",' +
-      '"2:Shield Focus:Weapon And Shield Feat",' +
-      '"2:Shield Slam:Weapon And Shield Feat",' +
-      '"6:Saving Shield:Weapon And Shield Feat",' +
-      '"6:Shield Master:Weapon And Shield Feat",' +
-      '"10:Bashing Finish:Weapon And Shield Feat",' +
-      '"10:Greater Shield Focus:Weapon And Shield Feat",' +
-      // W&S feats that duplicate other styles handled by classRulesExtra
-      '"1:Beast Master:Archetype",' +
-      '"1:Core Ranger:Archetype",' +
-      '"1:Guide:Archetype",' +
-      '"1:Horse Lord:Archetype",' +
-      '"1:Infiltrator:Archetype",' +
-      '"1:Shapeshifter:Archetype",' +
-      '"1:Skirmisher:Archetype",' +
-      '"1:Spirit Ranger:Archetype",' +
-      '"1:Urban Ranger:Archetype",' +
-      '"3:Form Of The Bear:Shifter\'s Blessing",' +
-      '"3:Form Of The Cat:Shifter\'s Blessing",' +
-      '"3:Form Of The Dragon:Shifter\'s Blessing",' +
-      '"3:Form Of The Eagle:Shifter\'s Blessing",' +
-      '"3:Form Of The Jackal:Shifter\'s Blessing",' +
-      '"3:Form Of The Otter:Shifter\'s Blessing",' +
-      '"3:Aiding Attack:Hunter\'s Trick",' +
-      '"3:Bolster Companion:Hunter\'s Trick",' +
-      '"3:Catfall:Hunter\'s Trick",' +
-      '"3:Chameleon Step:Hunter\'s Trick",' +
-      '"3:Cunning Pantomime:Hunter\'s Trick",' +
-      '"3:Defensive Bow Stance:Hunter\'s Trick",' +
-      '"3:Deft Stand:Hunter\'s Trick",' +
-      '"3:Distracting Attack:Hunter\'s Trick",' +
-      '"3:Hateful Attack:Hunter\'s Trick",' +
-      '"3:Heel:Hunter\'s Trick",' +
-      '"3:Hobbling Attack:Hunter\'s Trick",' +
-      '"3:Quick Climb:Hunter\'s Trick",' +
-      '"3:Quick Healing:Hunter\'s Trick",' +
-      '"3:Quick Swim:Hunter\'s Trick",' +
-      '"3:Ranger\'s Counsel:Hunter\'s Trick",' +
-      '"3:Rattling Strike:Hunter\'s Trick",' +
-      '"3:Second Chance Strike:Hunter\'s Trick",' +
-      '"3:Sic \'em:Hunter\'s Trick",' +
-      '"3:Skill Sage:Hunter\'s Trick",' +
-      '"3:Stag\'s Leap:Hunter\'s Trick",' +
-      '"3:Surprise Shift:Hunter\'s Trick",' +
-      '"3:Tangling Attack:Hunter\'s Trick",' +
-      '"3:Trick Shot:Hunter\'s Trick",' +
-      '"3:Uncanny Senses:Hunter\'s Trick",' +
-      '"3:Upending Strike:Hunter\'s Trick",' +
-      '"3:Vengeance Strike:Hunter\'s Trick"',
-  'Rogue':
-    'Selectables=' +
-      '"Assault Leader","Befuddling Strike","Camouflage (Rogue)",' +
-      '"Canny Observer",Charmer,"Coax Information","Combat Swipe",' +
-      '"Cunning Trigger","Distracting Attack (Rogue)","Expert Leaper",' +
-      '"Fast Fingers","Fast Getaway","Fast Picks","Follow Clues",' +
-      '"Guileful Polyglot","Hard To Fool","Honeyed Words","Lasting Poison",' +
-      '"Nimble Climber","Offensive Defense","Peerless Maneuver",' +
-      '"Positioning Attack","Powerful Sneak","Quick Disguise",' +
-      '"Quick Trapsmith","Snap Shot","Sniper\'s Eye","Strong Impression",' +
-      'Survivalist,"Swift Poison","10:Another Day","10:Deadly Cocktail",' +
-      '"10:Entanglement Of Blades","10:Fast Tumble","10:Frugal Trapsmith",' +
-      '"10:Hunter\'s Surprise","10:Knock-Out Blow","10:Master Of Disguise",' +
-      '"10:Redirect Attack","10:Stealthy Sniper","10:Thoughtful Reexamining",' +
-      '"features.Powerful Sneak ? 10:Deadly Sneak",' +
-      '"1:Acrobat:Archetype",' +
-      '"1:Burglar:Archetype",' +
-      '"1:Core Rogue:Archetype",' +
-      '"1:Cutpurse:Archetype",' +
-      '"1:Investigator:Archetype",' +
-      '"1:Poisoner:Archetype",' +
-      '"1:Rake:Archetype",' +
-      '"1:Scout:Archetype",' +
-      '"1:Sniper:Archetype",' +
-      '"1:Spy:Archetype",' +
-      '"1:Swashbuckler:Archetype",' +
-      '"1:Thug:Archetype",' +
-      '"1:Trapsmith:Archetype"',
   'Alchemist':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -6280,7 +6331,265 @@ PFAPG.CLASSES = {
     'Skills=' +
       'Craft,Fly,Heal,Intimidate,"Knowledge (Arcana)","Knowledge (History)",' +
       '"Knowledge (Nature)","Knowledge (Planes)",Profession,Spellcraft,' +
-      '"Use Magic Device"'
+      '"Use Magic Device"',
+  'Barbarian':
+    'Selectables=' +
+      '"features.Lesser Beast Totem ? 6:Beast Totem",' +
+      '"features.Beast Totem ? 10:Greater Beast Totem",' +
+      '"2:Lesser Beast Totem",' +
+      '"6:Boasting Taunt",' +
+      '"2:Brawler",' +
+      '"features.Brawler ? 2:Greater Brawler",' +
+      '"features.Lesser Chaos Totem ? 6:Chaos Totem",' +
+      '"features.Chaos Totem ? 10:Greater Chaos Totem",' +
+      '"2:Lesser Chaos Totem",' +
+      '"12:Come And Get Me",' +
+      '"features.Superstition ? 8:Disruptive",' +
+      '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
+      '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
+      '"4:Lesser Elemental Rage",' +
+      '"features.Greater Energy Resistance ? 12:Energy Absorption (Rage)",' +
+      '"features.Energy Absorption (Rage) ? 16:Energy Eruption",' +
+      '"2:Energy Resistance",' +
+      '"features.Energy Resistance ? 8:Greater Energy Resistance",' +
+      '"2:Ferocious Mount",' +
+      '"features.Ferocious Mount ? 8:Greater Ferocious Mount",' +
+      '"features.Ferocious Mount ? 8:Ferocious Trample",' +
+      '"features.Ferocious Trample ? 12:Greater Ferocious Trample",' +
+      '"features.Lesser Fiend Totem ? 6:Fiend Totem",' +
+      '"features.Fiend Totem ? 10:Greater Fiend Totem",' +
+      '"2:Lesser Fiend Totem",' +
+      '"10:Flesh Wound",' +
+      '"2:Good For What Ails You",' +
+      '"6:Ground Breaker",' +
+      '"6:Guarded Life",' +
+      '"features.Lesser Hurling ? 8:Hurling",' +
+      '"features.Hurling ? 12:Greater Hurling",' +
+      '"2:Lesser Hurling",' +
+      '"features.Lesser Hurling ? 8:Hurling Charge",' +
+      '"features.Reckless Abandon ? 2:Inspire Ferocity",' +
+      '2:Knockdown,' +
+      '"2:Liquid Courage",' +
+      '"2:Overbearing Advance",' +
+      '"features.Overbearing Advance ? 6:Overbearing Onslaught",' +
+      '"2:Reckless Abandon",' +
+      '"2:Roaring Drunk",' +
+      '2:Smasher,' +
+      '"features.Disruptive ? 12:Spellbreaker",' +
+      '"features.Ferocious Mount ? 6:Spirit Steed",' +
+      '"features.Lesser Spirit Totem ? 6:Spirit Totem",' +
+      '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
+      '"2:Lesser Spirit Totem",' +
+      '"2:Staggering Drunk",' +
+      '"features.Superstition ? 2:Witch Hunter",' +
+      '"1:Breaker:Archetype",' +
+      '"1:Brutal Pugilist:Archetype",' +
+      '"1:Core Barbarian:Archetype",' +
+      '"1:Drunken Brute:Archetype",' +
+      '"1:Elemental Kin:Archetype",' +
+      '"1:Hurler:Archetype",' +
+      '"1:Invulnerable Rager:Archetype",' +
+      '"1:Mounted Fury:Archetype",' +
+      '"1:Savage Barbarian:Archetype",' +
+      '"1:Superstitious:Archetype",' +
+      '"1:Totem Warrior:Archetype"',
+  'Bard':
+    'Selectables=' +
+      '"1:Arcane Duelist:Archetype",' +
+      '"1:Archivist:Archetype",' +
+      '"1:Core Bard:Archetype",' +
+      '"1:Court Bard:Archetype",' +
+      '"1:Detective:Archetype",' +
+      '"1:Magician:Archetype",' +
+      '"1:Sandman:Archetype",' +
+      '"1:Savage Skald:Archetype",' +
+      '"1:Sea Singer:Archetype",' +
+      '"1:Street Performer:Archetype",' +
+      // Need to list Bonded Object here since it's available via two Archetypes
+      '"1:Bonded Object:Arcane Bond"',
+  'Cleric':
+    'Selectables=' +
+      QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
+  'Druid':
+    'Selectables=' +
+      '"1:Aquatic Druid:Archetype",' +
+      '"1:Arctic Druid:Archetype",' +
+      '"1:Blight Druid:Archetype",' +
+      '"1:Cave Druid:Archetype",' +
+      '"1:Core Druid:Archetype",' +
+      '"1:Desert Druid:Archetype",' +
+      '"1:Jungle Druid:Archetype",' +
+      '"1:Mountain Druid:Archetype",' +
+      '"1:Plains Druid:Archetype",' +
+      '"1:Swamp Druid:Archetype",' +
+      '"1:Urban Druid:Archetype",' +
+      '"1:Animal Shaman:Archetype",' +
+      '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
+      '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
+      '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
+      '"features.Blight Druid ? 1:Destruction Domain:Nature Bond"',
+  'Fighter':
+    'Selectables=' +
+      '"1:Archer:Archetype",' + 
+      '"1:Core Fighter:Archetype",' + 
+      '"1:Crossbowman:Archetype",' + 
+      '"1:Free Hand Fighter:Archetype",' + 
+      '"1:Mobile Fighter:Archetype",' + 
+      '"1:Phalanx Soldier:Archetype",' + 
+      '"1:Polearm Master:Archetype",' + 
+      '"1:Roughrider:Archetype",' + 
+      '"1:Savage Warrior:Archetype",' + 
+      '"1:Shielded Fighter:Archetype",' + 
+      '"1:Two-Handed Fighter:Archetype",' + 
+      '"1:Two-Weapon Warrior:Archetype",' + 
+      '"1:Weapon Master:Archetype"',
+  'Monk':
+    'Selectables=' +
+      '"1:Core Monk:Archetype",' +
+      '"1:Drunken Master:Archetype",' +
+      '"1:Hungry Ghost Monk:Archetype",' +
+      '"1:Ki Mystic:Archetype",' +
+      '"1:Monk Of The Empty Hand:Archetype",' +
+      '"1:Monk Of The Four Winds:Archetype",' +
+      '"1:Monk Of The Healing Hand:Archetype",' +
+      '"1:Monk Of The Lotus:Archetype",' +
+      '"1:Monk Of The Sacred Mountain:Archetype",' +
+      '"1:Weapon Adept:Archetype",' +
+      '"1:Zen Archer:Archetype"',
+  'Paladin':
+    'Selectables=' +
+      '"1:Core Paladin:Archetype",' +
+      '"1:Divine Defender:Archetype",' +
+      '"1:Hospitaler:Archetype",' +
+      '"1:Sacred Servant:Archetype",' +
+      '"1:Shining Knight:Archetype",' +
+      '"1:Undead Scourge:Archetype",' +
+      '"1:Warrior Of The Holy Light:Archetype",' +
+      '"features.Divine Defender ? 5:Divine Armor:Divine Bond",' +
+      '"features.Sacred Servant ? 5:Divine Holy Symbol:Divine Bond"',
+  'Ranger':
+    'Selectables=' +
+      '"2:Combat Style (Crossbow):Combat Style",' +
+      '"2:Combat Style (Mounted Combat):Combat Style",' +
+      '"2:Combat Style (Natural Weapon):Combat Style",' +
+      '"2:Combat Style (Two-Handed Weapon):Combat Style",' +
+      '"2:Combat Style (Weapon And Shield):Combat Style",' +
+      '"2:Deadly Aim:Crossbow Feat",' +
+      '"2:Focused Shot:Crossbow Feat",' +
+      '"2:Rapid Reload:Crossbow Feat",' +
+      '"6:Crossbow Mastery:Crossbow Feat",' +
+      // Crossbow feats that duplicate other styles handled by classRulesExtra
+      '"2:Mounted Combat:Mounted Combat Feat",' +
+      '"2:Mounted Archery:Mounted Combat Feat",' +
+      '"2:Ride-By Attack:Mounted Combat Feat",' +
+      '"6:Mounted Shield:Mounted Combat Feat",' +
+      '"6:Spirited Charge:Mounted Combat Feat",' +
+      '"10:Mounted Skirmisher:Mounted Combat Feat",' +
+      '"10:Unseat:Mounted Combat Feat",' +
+      '"2:Aspect Of The Beast:Natural Weapon Feat",' +
+      '"2:Improved Natural Weapon:Natural Weapon Feat",' +
+      '"2:Rending Claws:Natural Weapon Feat",' +
+      '"2:Weapon Focus:Natural Weapon Feat",' +
+      '"6:Eldritch Fangs:Natural Weapon Feat",' +
+      '"6:Vital Strike:Natural Weapon Feat",' +
+      '"10:Multiattack:Natural Weapon Feat",' +
+      '"10:Improved Vital Strike:Natural Weapon Feat",' +
+      '"2:Cleave:Two-Handed Weapon Feat",' +
+      '"2:Power Attack:Two-Handed Weapon Feat",' +
+      '"2:Pushing Assault:Two-Handed Weapon Feat",' +
+      '"2:Shield Of Swings:Two-Handed Weapon Feat",' +
+      '"6:Furious Focus:Two-Handed Weapon Feat",' +
+      '"6:Great Cleave:Two-Handed Weapon Feat",' +
+      '"10:Dreadful Carnage:Two-Handed Weapon Feat",' +
+      '"10:Improved Sunder:Two-Handed Weapon Feat",' +
+      '"2:Shield Focus:Weapon And Shield Feat",' +
+      '"2:Shield Slam:Weapon And Shield Feat",' +
+      '"6:Saving Shield:Weapon And Shield Feat",' +
+      '"6:Shield Master:Weapon And Shield Feat",' +
+      '"10:Bashing Finish:Weapon And Shield Feat",' +
+      '"10:Greater Shield Focus:Weapon And Shield Feat",' +
+      // W&S feats that duplicate other styles handled by classRulesExtra
+      '"1:Beast Master:Archetype",' +
+      '"1:Core Ranger:Archetype",' +
+      '"1:Guide:Archetype",' +
+      '"1:Horse Lord:Archetype",' +
+      '"1:Infiltrator:Archetype",' +
+      '"1:Shapeshifter:Archetype",' +
+      '"1:Skirmisher:Archetype",' +
+      '"1:Spirit Ranger:Archetype",' +
+      '"1:Urban Ranger:Archetype",' +
+      '"3:Form Of The Bear:Shifter\'s Blessing",' +
+      '"3:Form Of The Cat:Shifter\'s Blessing",' +
+      '"3:Form Of The Dragon:Shifter\'s Blessing",' +
+      '"3:Form Of The Eagle:Shifter\'s Blessing",' +
+      '"3:Form Of The Jackal:Shifter\'s Blessing",' +
+      '"3:Form Of The Otter:Shifter\'s Blessing",' +
+      '"3:Aiding Attack:Hunter\'s Trick",' +
+      '"3:Bolster Companion:Hunter\'s Trick",' +
+      '"3:Catfall:Hunter\'s Trick",' +
+      '"3:Chameleon Step:Hunter\'s Trick",' +
+      '"3:Cunning Pantomime:Hunter\'s Trick",' +
+      '"3:Defensive Bow Stance:Hunter\'s Trick",' +
+      '"3:Deft Stand:Hunter\'s Trick",' +
+      '"3:Distracting Attack:Hunter\'s Trick",' +
+      '"3:Hateful Attack:Hunter\'s Trick",' +
+      '"3:Heel:Hunter\'s Trick",' +
+      '"3:Hobbling Attack:Hunter\'s Trick",' +
+      '"3:Quick Climb:Hunter\'s Trick",' +
+      '"3:Quick Healing:Hunter\'s Trick",' +
+      '"3:Quick Swim:Hunter\'s Trick",' +
+      '"3:Ranger\'s Counsel:Hunter\'s Trick",' +
+      '"3:Rattling Strike:Hunter\'s Trick",' +
+      '"3:Second Chance Strike:Hunter\'s Trick",' +
+      '"3:Sic \'em:Hunter\'s Trick",' +
+      '"3:Skill Sage:Hunter\'s Trick",' +
+      '"3:Stag\'s Leap:Hunter\'s Trick",' +
+      '"3:Surprise Shift:Hunter\'s Trick",' +
+      '"3:Tangling Attack:Hunter\'s Trick",' +
+      '"3:Trick Shot:Hunter\'s Trick",' +
+      '"3:Uncanny Senses:Hunter\'s Trick",' +
+      '"3:Upending Strike:Hunter\'s Trick",' +
+      '"3:Vengeance Strike:Hunter\'s Trick"',
+  'Rogue':
+    'Selectables=' +
+      '"Assault Leader","Befuddling Strike","Camouflage (Rogue)",' +
+      '"Canny Observer",Charmer,"Coax Information","Combat Swipe",' +
+      '"Cunning Trigger","Distracting Attack (Rogue)","Expert Leaper",' +
+      '"Fast Fingers","Fast Getaway","Fast Picks","Follow Clues",' +
+      '"Guileful Polyglot","Hard To Fool","Honeyed Words","Lasting Poison",' +
+      '"Nimble Climber","Offensive Defense","Peerless Maneuver",' +
+      '"Positioning Attack","Powerful Sneak","Quick Disguise",' +
+      '"Quick Trapsmith","Snap Shot","Sniper\'s Eye","Strong Impression",' +
+      'Survivalist,"Swift Poison","10:Another Day","10:Deadly Cocktail",' +
+      '"10:Entanglement Of Blades","10:Fast Tumble","10:Frugal Trapsmith",' +
+      '"10:Hunter\'s Surprise","10:Knock-Out Blow","10:Master Of Disguise",' +
+      '"10:Redirect Attack","10:Stealthy Sniper","10:Thoughtful Reexamining",' +
+      '"features.Powerful Sneak ? 10:Deadly Sneak",' +
+      '"1:Acrobat:Archetype",' +
+      '"1:Burglar:Archetype",' +
+      '"1:Core Rogue:Archetype",' +
+      '"1:Cutpurse:Archetype",' +
+      '"1:Investigator:Archetype",' +
+      '"1:Poisoner:Archetype",' +
+      '"1:Rake:Archetype",' +
+      '"1:Scout:Archetype",' +
+      '"1:Sniper:Archetype",' +
+      '"1:Spy:Archetype",' +
+      '"1:Swashbuckler:Archetype",' +
+      '"1:Thug:Archetype",' +
+      '"1:Trapsmith:Archetype"',
+  'Sorcerer':
+    'Selectables=' +
+      '"1:Bloodline Aquatic:Bloodline",' +
+      '"1:Bloodline Boreal:Bloodline",' +
+      '"1:Bloodline Deep Earth:Bloodline",' +
+      '"1:Bloodline Dreamspun:Bloodline",' +
+      '"1:Bloodline Protean:Bloodline",' +
+      '"1:Bloodline Serpentine:Bloodline",' +
+      '"1:Bloodline Shadow:Bloodline",' +
+      '"1:Bloodline Starsoul:Bloodline",' +
+      '"1:Bloodline Stormborn:Bloodline",' +
+      '"1:Bloodline Verdant:Bloodline"'
 };
 PFAPG.PRESTIGES = {
 };
@@ -8257,6 +8566,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
+  } else if(name == 'Sorcerer') {
+    let allFeats = rules.getChoices('feats');
+    for(let f in allFeats) {
+      if(f.startsWith('Exotic Weapon Proficiency'))
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Boreal",');
+      else if(f.startsWith('Skill Focus (Craft'))
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Protean",');
+    }
   }
 };
 
