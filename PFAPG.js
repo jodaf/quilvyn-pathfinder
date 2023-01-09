@@ -886,7 +886,7 @@ PFAPG.FEATURES = {
     'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
   'Earth Glide':
     'Section=ability ' +
-    'Note="Can move %{speed}\' through earth %{levels.Oracle} min/dy"',
+    'Note="Can move %{speed}\' through earth, leaving no trace, %{levels.Oracle} min/dy"',
   'Energy Body':
     'Section=feature ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
@@ -2924,7 +2924,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"%{levels.Sorcerer>=15 ? 60 : 30}\' Swim",' +
       '"+1 AC",' +
-      '"60\' blindsense in water",' +
+      '"%{levels.Sorcerer>=15 ? 60 : 30}\' blindsense underwater",' +
       '"Cold resistance 5"',
   'Aquatic Telepathy':
     'Section=feature,magic ' +
@@ -2945,28 +2945,28 @@ PFAPG.FEATURES = {
   'Bloodline Aquatic':
     'Section=magic ' +
     'Note="+1 Caster Level on water spells/Summoned water and swimming creatures gain +1 attack and damage"',
-  'Bloodline Boreal':'Section=magic Note="+1 DC on cold spells"',
-  'Bloodline Deep Earth':'Section=magic Note="+1 DC spells cast underground"',
+  'Bloodline Boreal':'Section=magic Note="+1 save DC on cold spells"',
+  'Bloodline Deep Earth':
+    'Section=magic Note="+1 save DC on spells cast underground"',
   'Bloodline Dreamspun':
     'Section=magic ' +
-    'Note="Casting targeted spells gives half spell level bonus to AC and saves vs. target for 1 rd"',
+    'Note="Casting targeted spells gives +0.5/spell level to AC and saves vs. target for 1 rd"',
   'Bloodline Protean':
-    'Section=magic ' +
-    'Note="+4 DC to dispel self transmutation and creation spells"',
+    'Section=magic Note="+4 dispel DC on transmutation and creation spells"',
   'Bloodline Serpentine':
     'Section=magic ' +
-    'Note="Language-dependent spells may affect animals, magical beasts, and monstrous humanoids"',
+    'Note="May affect animals, magical beasts, and monstrous humanoids with mind-affecting and language-dependent spells"',
   'Bloodline Shadow':
     'Section=magic ' +
-    'Note="Casting darkness or shadow spell gives spell level bonus to Stealth for 1d4 rd"',
+    'Note="Casting darkness or shadow spell gives +1/spell level to Stealth for 1d4 rd"',
   'Bloodline Starsoul':
     'Section=magic ' +
     'Note="Evocation spells inflict dazzled for 1 rd/spell level"',
   'Bloodline Stormborn':
-    'Section=magic Note="+1 DC on electricity and sonic spells"',
+    'Section=magic Note="+1 save DC on electricity and sonic spells"',
   'Bloodline Verdant':
     'Section=magic ' +
-    'Note="Casting personal spell gives +1/spell level bonus to AC for 1d4 rd"',
+    'Note="Casting personal spell gives +1/spell level to AC for 1d4 rd"',
   'Breaching The Gulf':
     'Section=magic ' +
     'Note="+3 caster level on teleportaion spells/R30\' May teleport target to void, inflicting 6d6 HP cold/rd and suffocation (DC %{10+levels.Sorcerer//2+charismaModifier} Will neg or ends) 1/dy"',
@@ -2985,38 +2985,40 @@ PFAPG.FEATURES = {
   'Deep One':
     'Section=feature,magic,save ' +
     'Note=' +
-      '"Has 60\' blindsense, 120\' blindsight underwater, and Evasion features",' +
+      '"Has 60\' blindsense/Has 120\' blindsight and Evasion feature underwater",' +
       '"Has continuous <i>Freedom Of Movement</i> effects",' +
       '"Has DR 10/piercing, cold resistance 20, and immunity to water pressure damage"',
   'Dehydrating Touch':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Sorcerer} HP nonlethal (plants and water creatures lethal) and sickened for 1 rd %{charismaModifier+3}/dy"',
+    'Note="Touch inflicts 1d6+%{levels.Sorcerer//2} HP nonlethal (oozes, plants, and water creatures lethal) and sickened for 1 rd %{charismaModifier+3}/dy"',
   'Den Of Vipers':
     'Section=magic ' +
-    'Note="May gain <i>Summon Swarm</i> effects w/serpents that inflict Con damage and entanglement 1/dy"',
+    'Note="May use <i>Summon Swarm</i> effects w/serpents that inflict Con damage and entanglement 1/dy"',
   'Dreamshaper':
-    'Section=magic Note="May gain mental <i>Modify Memory</i> or <i>Speak With Dead</i> effects (DC %{10+levels.Sorcerer+charismaModifier} neg) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
+    'Section=magic Note="May use <i>Modify Memory</i> or mental <i>Speak With Dead</i> effects (DC %{10+levels.Sorcerer//2+charismaModifier} neg) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Earth Glide (Sorcerer)':
     'Section=ability ' +
     'Note="May move through earth and stone at half speed for %{levels.Sorcerer}/dy"',
   'Enveloping Darkness':
-    'Section=magic Note="May create entangling <i>Deeper Darkness</i> 1/dy"',
+    'Section=magic ' +
+    'Note="May use entangling <i>Deeper Darkness</i> effects 1/dy"',
   'Eye Of Somnus':
     'Section=magic ' +
-    'Note="May gain <i>Arcane Eye</i> and <i>Symbol Of Sleep</i> effecs 1/dy"',
+    'Note="May use <i>Arcane Eye</i> effects, optionally with <i>Symbol Of Sleep</i> effects, 1/dy"',
   'Icewalker':
     'Section=ability,save ' +
     'Note=' +
-      '"May move across ice and snow w/no penalty%{levels.Sorcerer>=9 ? \' and <i>Spider Climb</i> icy surfaces\' : \'\'}",' +
+      '"Moves across ice and snow at full speed w/out leaving tracks%{levels.Sorcerer>=9 ? \'/May <i>Spider Climb</i> icy surfaces\' : \'\'}",' +
       '"Has cold resistance %{levels.Sorcerer>=9 ? 10 : 5}"',
   'Lullaby':
     'Section=magic ' +
     'Note="May cast <i>Lullaby</i> that inflicts -4 saves vs. sleep effects for 1 min %{charismaModifier+3}/dy"',
   'Massmorph':
-    'Section=magic Note="May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i>%{levels.Sorcerer>=15 ? \' or <i>Plant Shape I\' + (levels.Sorcerer>=20 ? \'I\' : \'\') : \'\'} 1/dy"',
-  'Minute Meteors':'Section=magic Note="R30\' 5\' diameter inflicts 1d4+{levels.Sorcerer//2} HP fire (DC %{10+levels.Sorcerer//2+charismaModifier} Ref neg) %{charismaModifier+3}/dy"',
+    'Section=magic Note="May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i>%{levels.Sorcerer>=15 ? \' or <i>Plant Shape I\' + (levels.Sorcerer>=20 ? \'I\' : \'\') : \'\'}</i> 1/dy"',
+  'Minute Meteors':'Section=magic Note="R30\' 5\' diameter inflicts 1d4+%{levels.Sorcerer//2} HP fire (DC %{10+levels.Sorcerer//2+charismaModifier} Ref neg) %{charismaModifier+3}/dy"',
   'Nighteye':
-    'Section=feature Note="+%{levels.Sorcerer>=9 ? 60 : 30}\' Darkvision"',
+    'Section=feature ' +
+    'Note="%{(features.Darkvision ? 60 : 0) + (levels.Sorcerer>=9 ? 60 : 30)}\' b/w vision in darkness"',
   'Photosynthesis':
     'Section=feature,save ' +
     'Note=' +
@@ -3024,41 +3026,42 @@ PFAPG.FEATURES = {
       '"+%{levels.Sorcerer>=9 ? 4 : 2} vs. poison and sleep"',
   'Protean Resistances':
     'Section=save ' +
-    'Note="Has acid resistance %{levels.Sorcerer>=10 ? 10 : 5}/+%{levels.Sorcerer>=9 ? 4 : 2} vs. polymorph, petrification, and transmutation"',
+    'Note="Has acid resistance %{levels.Sorcerer>=9 ? 10 : 5}/+%{levels.Sorcerer>=9 ? 4 : 2} vs. polymorph, petrification, and transmutation"',
   'Protoplasm':
     'Section=magic ' +
     'Note="R30\' Hurled protoplasm inflicts entanglement and 1 HP acid/rd for 1d3 rd %{charismaModifier+3}/dy"',
   'Raise The Deep':
-    'Section=magic Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> even w/no water present 1/dy"',
+    'Section=magic Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> even when no water present 1/dy"',
   'Reality Wrinkle':
     'Section=combat ' +
-    'Note="10\' radius gives 20% miss chance vs. attacks from outside for %{levels.Sorcerer} rd/dy"',
+    'Note="10\' radius inflicts 20% miss chance on outside attacks for %{levels.Sorcerer} rd/dy"',
   'Ride The Lightning':
-    'Section=combat ' +
-    'Note="Full-round action moves self %{speed*10}\' w/out AOO, inflicts Thunderbolt effects for %{levels.Sorcerer} rd 1/dy"',
+    'Section=magic ' +
+    'Note="Full-round action moves self %{speed*10}\' w/out AOO, inflicts Thunderbolt effect for %{levels.Sorcerer} rd 1/dy"',
   'Rockseer':
-    'Section=feature,magic ' +
+    'Section=feature,magic,skill ' +
     'Note=' +
-      '"%{race==\'Dwarf\' ? \'+2 Stonecunning\' : \'Has Stonecunning feature\'}%{levels.Sorcerer>=9 ? \'/Has 30\' tremorsense\' : \'\'}",' +
-      '"Can see through solid objects for %{levels.Sorcerer}/dy"',
+      '"Has Stonecunning feature%{levels.Sorcerer>=9 ? \'/Has 30\\\' tremorsense\' : \'\'}",' +
+      '"Can see through solid objects for %{levels.Sorcerer} rd/dy",' +
+      '"+2 Perception (stone)"',
   'Rooting':
     'Section=magic ' +
-    'Note="May suffer 5\' speed to gain +4 AC, +10 CMD vs. bull rush, overrun, reposition, and trip, 30\' tremorsense, and regain 1 HP/rd for %{levels.Sorcerer} min/dy"',
+    'Note="May suffer Speed reduction to 5\' to gain +4 AC, +10 CMD vs. bull rush, overrun, reposition, and trip, 30\' tremorsense, and regain 1 HP/rd for %{levels.Sorcerer} min/dy"',
   'Scaled Soul':
     'Section=combat,feature,magic,save ' +
     'Note=' +
-      '"May use Serpent\'s Fang at will, inflicting damage to any ability",' +
+      '"May use Serpent\'s Fang at will, inflicting damage on choice of ability",' +
       '"Has shapechanger subtype",' +
       '"May assume form of reptilian humanoid or snake at will",' +
       '"Immune to poison and paralysis"',
-  'Serpent\'s Fang':
-    'Section=combat Note="%{levels.Sorcerer>=5 ? \'Magical f\' : \'F\'}angs inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Con/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} neg or%{levels.Sorcerer>=7 \' twice to\' : \'\'} end) for %{charismaModifier+3} rd/dy"',
+  "Serpent's Fang":
+    'Section=combat Note="%{levels.Sorcerer>=5 ? \'Magical f\' : \'F\'}angs inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Con/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} neg or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
   'Serpentfriend':
     'Section=feature,magic ' +
     'Note=' +
-      '"Has Familiar features (Viper)",' +
+      '"Has Familiar feature (Viper)",' +
       '"May use <i>Speak With Animals</i> at will with reptiles"',
-  'Shadow Master':
+  'Shadow Master (Sorcerer)':
     'Section=feature,magic ' +
     'Note=' +
       '"No sight penalty from natural or magical darkness",' +
@@ -3066,11 +3069,11 @@ PFAPG.FEATURES = {
   'Shadow Well':
     'Section=magic,skill ' +
     'Note=' +
-      '"R60\' May use <i>Dimension Door</i> to swap places w/ally%{levels.Sorcerer>=13 ? \' or swap 2 allies\' : \'\'} %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}",' +
-      '"May use Stealth while being obseved if w/in 10\' of shadow"',
+      '"R60\' May use <i>Dimension Door</i> effects in darkness or dim light to swap places w/ally%{levels.Sorcerer>=13 ? \' or swap 2 allies\' : \'\'} %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy",' +
+      '"May use Stealth while being observed when w/in 10\' of shadow"',
   'Shadowstrike':
     'Section=combat ' +
-    'Note="Touch inflicts 1d4 HP nonlethal and dazzled for 1 min (Darkvision or Low-Light Vision HP only) %{charismaModifier+3}/dy"',
+    'Note="Touch inflicts 1d4 HP+%{levels.Sorcerer//2} nonlethal and dazzled for 1 min (Darkvision or Low-Light Vision HP only) %{charismaModifier+3}/dy"',
   'Shepherd Of The Trees':
     'Section=combat,feature,save ' +
     'Note=' +
@@ -3093,11 +3096,11 @@ PFAPG.FEATURES = {
     'Section=magic Note="May become incorporeal %{levels.Sorcerer} min/dy"',
   'Spatial Tear':
     'Section=magic ' +
-    'Note="May gain <i>Dimension Door</i> and <i>Black Tentacles</i> effects %{levels.Sorcerer>=20 ? 2 : 1}/dy"',
+    'Note="May use combined <i>Dimension Door</i> and <i>Black Tentacles</i> effects %{levels.Sorcerer>=20 ? 2 : 1}/dy"',
   'Starborn':
     'Section=combat,feature,save ' +
     'Note=' +
-      '"Self regains 1 HP/rd",' +
+      '"Self regains 1 HP/rd at night when outdoors",' +
       '"No sight penalty from natural or magical darkness",' +
       '"Immune to cold and blindness"',
   'Storm Lord':
@@ -3110,21 +3113,21 @@ PFAPG.FEATURES = {
     'Section=feature,save ' +
     'Note=' +
       '"Has 60\' bindsense vs. concealment from fog, mist, and weather",' +
-      '"Has resistance to electricity 5 and sonic 5/Treats wind effects as %{levels.Sorcerer>=9 \'two steps\' : \'one step\'} less"',
+      '"Has resistance to electricity 5 and sonic 5/Treats wind effects as %{levels.Sorcerer>=9 ? \'2 steps\' : \'1 step\'} less"',
   'Strength Of Stone':
     'Section=ability,combat,save ' +
     'Note=' +
       '"Suffers no penalty for squeezing through tight spaces",' +
-      '"Immune to bull rush, drag, grapple, reposition, and trip maneuvers and push and pull effects when standing on ground",' +
-      '"Has DR 10/adamantine, immunity to petrification"',
+      '"Has DR 10/adamantine/Immune to bull rush, drag, grapple, reposition, and trip maneuvers and push and pull effects when standing on ground",' +
+      '"Immune to petrification"',
   'Tanglevine':
     'Section=combat ' +
     'Note="May make R15\' +%{levels.Sorcerer+charismaModifier} CMB disarm, steal, or trip maneuver %{charismaModifier+3}/dy"',
   'Thunderbolt':
-    'Section=magic Note="R120\' 5\' radius inflicts %{levels.Sorcerer}d6 HP (half electricity, half sonic) (DC %{10+levels.Sorcerer//2+charismaModifier} Ref half HP only) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
+    'Section=magic Note="R120\' 5\' radius inflicts %{levels.Sorcerer}d6 HP (half electricity, half sonic) (DC %{10+levels.Sorcerer//2+charismaModifier} Ref half) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Thunderstaff':
     'Section=magic ' +
-    'Note="Touched weapon gains <i>Shock</i> property for %{levels.Sorcerer//2>?1} rd %{charismaModifier+3}/dy"',
+    'Note="Touched weapon gains <i>Shock</i> property for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or <i>Shocking Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
   'Tremor':
     'Section=combat ' +
     'Note="R30\' Shaking ground inflicts +%{levels.Sorcerer+charismaModifier} CMB trip on target %{charismaModifier+3}/dy"',
@@ -4364,7 +4367,7 @@ PFAPG.PATHS = {
     'Level=levels.Sorcerer ' +
     'Features=' +
       '1:Shadowstrike,3:Nighteye,"9:Shadow Well","15:Enveloping Darkness",' +
-      '"20:Shadow Master" ' +
+      '"20:Shadow Master (Sorcerer)" ' +
     'Feats=' +
       'Acrobatic,Blind-Fight,Dodge,"Quick Draw","Silent Spell",' +
       '"Skill Focus (Stealth)",Stealthy,"Weapon Finesse" ' +
@@ -6207,7 +6210,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Wind Walk':'O6,Winds6',
   'Wind Wall':'Cloud2,O3,Winds2',
   'Wood Shape':'Construct2,Toil2',
-  'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Protean7',
+  'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Proteus7',
   'Word Of Recall':'O6',
   'Zone Of Truth':'Honor2,Inquisitor2,O2'
 };
@@ -8746,28 +8749,33 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('combatNotes.snakeskin', classLevel, '=', 'Math.floor((source-5) / 4)');
     rules.defineRule
+      ('damageReduction.adamantine', 'combatNotes.strengthOfStone', '+=', '10');
+    rules.defineRule
       ('damageReduction.piercing', 'saveNotes.deepOne', '+=', '10');
     rules.defineRule('featureNotes.aquaticAdaptation(Sorcerer)',
-      classLevel, '?', 'source>=15'
+      classLevel, '?', 'source>=9'
     );
-    rules.defineRule('featureNotes.serpentFriend.1',
-      'featureNotes.serpentFriend', '?', null,
+    rules.defineRule('featureNotes.serpentfriend.1',
+      'featureNotes.serpentfriend', '?', null,
       classLevel, '=', 'source - 2'
     );
     rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
     rules.defineRule
-      ('familiarMasterLevel', 'featureNotes.serpentFriend.1', '+=', null);
-    rules.defineRule('features.Darkvision', 'features.Nighteye', '=', '1');
+      ('familiarMasterLevel', 'featureNotes.serpentfriend.1', '+=', null);
     rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
     rules.defineRule
-      ('features.Low-Light Vision', 'features.Voidwalker', '=', '1');
+      ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
     rules.defineRule
-      ('features.Familiar', 'featureNotes.serpentFriend', '=', '1');
+      ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
+    rules.defineRule
+      ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
     rules.defineRule('magicNotes.rockseer', classLevel, '?', 'source>=15');
     rules.defineRule
       ('saveNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
     rules.defineRule
       ('skillNotes.snakeskin', classLevel, '=', 'Math.floor((source - 1) / 4)');
+    rules.defineRule
+      ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
   }
 };
 
