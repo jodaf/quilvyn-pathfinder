@@ -47,7 +47,8 @@ function PFAPG(edition, rules) {
   msAfter = new Date().getTime();
   //console.log('combatRules took ' + (msAfter - msBefore) + ' ms');
   msBefore = new Date().getTime();
-  PFAPG.magicRules(rules, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
+  PFAPG.magicRules
+    (rules, PFAPG.SCHOOLS, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
   msAfter = new Date().getTime();
   //console.log('magicRules took ' + (msAfter - msBefore) + ' ms');
   msBefore = new Date().getTime();
@@ -884,9 +885,9 @@ PFAPG.FEATURES = {
   'Dweller In Darkness':
     'Section=magic ' +
     'Note="Can use <i>Phantasmal Killer</i>%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
-  'Earth Glide':
+  'Earth Glide (Oracle)':
     'Section=ability ' +
-    'Note="Can move %{speed}\' through earth, leaving no trace, %{levels.Oracle} min/dy"',
+    'Note="Can move at full speed through earth, leaving no trace, %{levels.Oracle} min/dy"',
   'Energy Body':
     'Section=feature ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy on undead, and heals ally 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
@@ -2996,9 +2997,9 @@ PFAPG.FEATURES = {
     'Note="May use <i>Summon Swarm</i> effects w/serpents that inflict Con damage and entanglement 1/dy"',
   'Dreamshaper':
     'Section=magic Note="May use <i>Modify Memory</i> or mental <i>Speak With Dead</i> effects (DC %{10+levels.Sorcerer//2+charismaModifier} neg) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
-  'Earth Glide (Sorcerer)':
+  'Earth Glide':
     'Section=ability ' +
-    'Note="May move through earth and stone at half speed for %{levels.Sorcerer}/dy"',
+    'Note="May move through earth and stone at half speed for %V rd/dy"',
   'Enveloping Darkness':
     'Section=magic ' +
     'Note="May use entangling <i>Deeper Darkness</i> effects 1/dy"',
@@ -3136,6 +3137,134 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Has Low-Light Vision feature%{levels.Sorcerer>=9 ? \'/Does not need to breathe\' : \'\'}",' +
       '"Has resistance to cold 5, resistance to fire 5"',
+
+  // Wizard
+  'Acid Cloud':
+    'Section=magic ' +
+    'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fort half HP only) %{intelligenceModifier+3}/dy"',
+  'Air Supremecy':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May cast self <i>Feather Fall</i>%{levels.Wizard>=5 ? \', <i>Levitate</i>\' : \'\'}%{levels.Wizard>=10 ? \', Fly\' : \'\'} at will",' +
+      '"%V Fly"',
+  'Augment':
+    'Section=magic ' +
+    'Note="Touch gives +%{levels.Wizard>=10 ? 4 : 2} ability or +%{1+levels.Wizard//5} AC for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
+  'Aura Of Banishment':
+    'Section=magic ' +
+    'Note="30\' radius staggers summoned creatures (Will neg), then returns them to their home plane (Will neg) %{levels.Wizard} rd/dy"',
+  'Battleshaping':
+    'Section=magic Note="May use%{levels.Wizard>=11 ? 2 : \'\'} +1 magical claw, bite, or gore %{intelligenceModifier+3}/dy"',
+  'Bedeviling Aura':
+    'Section=combat ' +
+    'Note="30\' inflicts half speed, cannot take AOO, and flanked on foes for %{levels.Wizard} rd/dy"',
+  'Beguiling Touch':
+    'Section=magic ' +
+    'Note="May use touch for <i>Charm Monster</i> effects (%{levels.Wizard+1} HD or DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
+  'Binding Darkness':
+    'Section=magic ' +
+    'Note="R30\' Ranged touch inflicts entanglement for %{1+levels.Wizard//5} rd (half in bright light) %{intelligenceModifier+3}/dy"',
+  'Bolster':
+    'Section=magic ' +
+    'Note="Touched undead gains +%{1+levels.Wizard//5} attack and saves, +2 turn resistance, and +1 temporary HP/HD for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
+  'Cold Blast':
+    'Section=combat ' +
+    'Note="5\' radius inflicts 16d+%{levels.Wizard//2} HP cold and staggered (DC %{10+levels.Wizard//2+intelligenceModifier} half HP only) %{intelligenceModifier+3}/dy"',
+  'Counterspell Mastery':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Has Improved Counterspell feature",' +
+      '"May use higher-level spell to counter as an immediate action %{(levels.Wizard-2)//4}/dy"',
+  'Create Gear':
+    'Section=magic ' +
+    'Note="May create and retain for 1 min a %{levels.Wizard} lb simple item %{intelligenceModifier+3}/dy"',
+  "Creator's Will":
+    'Section=magic ' +
+    'Note="May cast <i>%{levels.Wizard>=12 ? \'Major\' : \'Minor\'} Image</i> %{levels.Wizard//2}/dy"',
+  'Cyclone':
+    'Section=combat ' +
+    'Note="10\' radius inflicts automatic miss on ranged attacks, flying creatures fall from sky (DC %{10+levels.Wizard} Fly neg), and ground creatures cannot pass (DC %{10+levels.Wizard} Str neg) for %{levels.Wizard} rd/dy"',
+  'Dancing Flame':
+    'Section=magic ' +
+    'Note="May move nonmagical fire 30\', remove squares from self instantaneous fire spell, or move effect of longer self fire spell %{levels.Wizard//2}/dy"',
+  'Disruption':
+    'Section=combat ' +
+    'Note="Touch inflicts required DC 15 + dbl spell level concentation to use spell for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
+  // Earth Glide as Sorcerer
+  'Earth Supremecy':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"+%{2+levels.Wizard//5} CMD vs. bull rush, drag, overrun, reposition, and trip when grounded/+1 attack and damage when self and foe grounded",' +
+      '"Earth and stone do not block spell line of sight"',
+  'Elemental Manipulation':
+    'Section=magic ' +
+    'Note="30\' radius modifies energy type of spells and supernatural effects from casters and creatures up to %{levels.Wizard} level or HD %{levels.Wizard} rd/dy"',
+  'Fire Jet':
+    'Section=magic ' +
+    'Note="20\' line inflicts 1d6+%{levels.Wizard//2} HP fire and 1d6 HP fire next rd (DC %{10+levels.Wizard//2+intelligenceModifier} Ref half first rd only) %{intelligenceModifier+3}/dy"',
+  'Fire Supremecy':
+    'Section=combat,save ' +
+    'Note=' +
+      '"When w/in 5\' of a fire, foes suffer %{levels.Wizard//2>?1} HP fire on successful melee attack",' +
+      '"%{levels.Wizard==20 ? \'Immune\' : levels.Wizard>=10 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
+  'Force Of Will':
+    'Section=magic ' +
+    'Note="R60\' May transmit thoughts to%{levels.Wizard>=11 ? \' and from\' : \'\'} charmed and dominated creatures%{levels.Wizard>=20 ? \'/Target of self enchantment spell affected for 1 rd after successful save\' : \'\'}"',
+  'Foretell':
+    'Section=combat ' +
+    'Note="30\' radius gives allies +2 or foes -2 on ability checks, attack, saves, and skill checks for %{levels.Wizard} rd/dy"',
+  'Healing Grace':
+    'Section=magic ' +
+    'Note="Self targeted and area effect spells heal %{levels.Wizard>=20 ? 3 : levels.Wizard >= 11 ? 2 : 1} HP per spell level"',
+  'Irresistible Demand':
+    'Section=magic ' +
+    'Note="May use <i>Dominate Monster</i> effects on creatures up to %{levels.Wizard} HD (DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) %{levels.Wizard} rd/dy"',
+  'Lightning Flash':
+    'Section=combat ' +
+    'Note="5\' radius inflicts 1d6+%{levels.Wizard//2} HP electricity and dazzled for 1d4 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Ref half HP only) %{intelligenceModifier+3}/dy"',
+  'Lingering Evocations':
+    'Section=magic ' +
+    'Note="Evocation spells last +%{levels.Wizard//2>?1} rd%{levels.Wizard>=20 ? \'/Dispel checks vs. self evocation spells take worse of 2 rolls\' : \'\'}"',
+  'Perfection Of Self':
+    'Section=ability ' +
+    'Note="May gain +%{levels.Wizard//2<?10} on choice of ability for 1 rd %{levels.Wizard}/dy"',
+  'Prescience':
+    'Section=combat ' +
+    'Note="May substitute pre-rolled d20 value for any d20 roll for 1 rd %{intelligenceModifier+3}/dy"',
+  'Send Senses':
+    'Section=magic ' +
+    'Note="R%{100+levels.Wizard*10}\' May see or hear remotely for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
+  'Shadow Step':
+    'Section=magic ' +
+    'Note="May teleport %{levels.Wizard*30}\'/dy (5\' minimum each time), gaining effects of <i>Blur</i> for 1 rd; bringing others uses equal portion of daily distance"',
+  'Shape Emotions':
+    'Section=magic ' +
+    'Note="30\' radius gives allies +4 saves vs. mind-affecting effects and reduction of fear by 1 step or inflicts -2 vs. mind-affecting effects on foes for %{levesl.Wizard} rd/dy"',
+  'Share Essence':
+    'Section=magic ' +
+    'Note="Touch gives 1d6+%{levels.Wizard//2} temporary HP for 1 hr and self suffers equal HP nonlethal %{intelligenceModifier+3}/dy"',
+  'Shift':
+    'Section=magic Note="May use <i>Dimension Door</i> effects to move %{levels.Wizard//2*5>?5}\' %{intelligenceModifier+3}/dy"',
+  'Terror':
+    'Section=combat ' +
+    'Note="Touch causes target to provoke AOO (%{levels.Wizard+1} HD neg) %{intelligenceModifier+3}/dy"',
+  'Unstable Bonds':
+    'Section=combat ' +
+    'Note="Touch inflicts shaken and staggered on summoned creature for %{levels.Wizard} rd %{intelligenceModifier+3}/dy"',
+  'Versatile Evocation':
+    'Section=magic ' +
+    'Note="May change type of damage done by self spell %{intelligenceModifier+3}/dy"',
+  'Water Supremecy':
+    'Section=ability,feature,skill ' +
+    'Note=' +
+      '"%%{speed}\' Swim",' +
+      '"May hold breath %{constitution*4} rd",' +
+      '"%V Swim"',
+  'Wave':
+    'Section=magic ' +
+    'Note="%{5*levels.Wizard}\'x20\' wave moves away 30\'/rd, douses flames, caster level vs. CMD to knock prone or carry away, %{levels.Wizard//2} rd/dy"',
+  'Wind Servant':
+    'Section=magic Note="May blow %{levels.Wizard} lb object 30\' %{intelligenceModifier+3}/dy"',
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -4276,7 +4405,7 @@ PFAPG.PATHS = {
     'Group=Sorcerer ' +
     'Level=levels.Sorcerer ' +
     'Features=' +
-      '1:Tremor,3:Rockseer,"9:Crystal Shard","15:Earth Glide (Sorcerer)",' +
+      '1:Tremor,3:Rockseer,"9:Crystal Shard","15:Earth Glide",' +
       '"20:Strength Of Stone" ' +
     'Feats=' +
       '"Acrobatic Steps",Alertness,Blind-Fight,"Forge Ring","Nimble Moves",' +
@@ -4648,7 +4777,7 @@ PFAPG.PATHS = {
       '"1:Acid Skin:Stone Revelation",' +
       '"1:Clobbering Strike:Stone Revelation",' +
       '"1:Crystal Sight:Stone Revelation",' +
-      '"7:Earth Glide:Stone Revelation",' +
+      '"7:Earth Glide (Oracle):Stone Revelation",' +
       '"1:Mighty Pebble:Stone Revelation",' +
       '"1:Rock Throwing:Stone Revelation",' +
       '"1:Shard Explosion:Stone Revelation",' +
@@ -4710,6 +4839,76 @@ PFAPG.PATHS = {
 
 };
 PFAPG.RACES = {
+};
+PFAPG.SCHOOLS = {
+  'Air':
+    'Features="1:Air Supremecy","1:Lightning Flash",8:Cyclone',
+  'Earth':
+    'Features="1:Earth Supremecy","1:Acid Cloud","8:Earth Glide"',
+  'Fire':
+    'Features="1:Fire Supremecy","1:Fire Jet","8:Dancing Flame"',
+  'Water':
+    'Features="1:Water Supremecy","1:Cold Blast",8:Wave',
+  'Admixture':
+    Pathfinder.SCHOOLS.Evocation
+      .replace('Force Missile', 'Versatile Evocation')
+      .replace('Elemental Wall', 'Elemental Manipulation'),
+  'Banishment':
+    Pathfinder.SCHOOLS.Abjuration
+      .replace('Absorption Power', 'Unstable Bonds')
+      .replace('Protective Ward', 'Aura Of Banishment'),
+  'Controller':
+    Pathfinder.SCHOOLS.Enchantment
+      .replace('Enchanting Smile', 'Force Of Will')
+      .replace('Aura Of Despair', 'Irresistible Demand'),
+  'Counterspell':
+    Pathfinder.SCHOOLS.Abjuration
+      .replace('Protective Ward', 'Disruption')
+      .replace('Energy Absorption', 'Counterspell Mastery'),
+  'Creation':
+    Pathfinder.SCHOOLS.Conjuration
+      .replace('Acid Dart', 'Create Gear')
+      .replace('Dimensional Steps', "Creator's Will"),
+  'Enhancement':
+    Pathfinder.SCHOOLS.Abjuration
+      .replace('Telekinetic Fist', 'Augment')
+      .replace('Change Shape', 'Perfection Of Self'),
+  'Foresight':
+    Pathfinder.SCHOOLS.Divination
+      .replace("Diviner's Fortune", 'Prescience')
+      .replace('Scrying Adept', 'Foretell'),
+  'Generation':
+    Pathfinder.SCHOOLS.Evocation
+      .replace('Intense Spells', 'Lingering Evocations')
+      .replace('Force Missile', 'Wind Servant'),
+  'Life':
+    Pathfinder.SCHOOLS.Evocation
+      .replace('Power Over Undead', 'Healing Grace')
+      .replace('Grave Touch', 'Share Essence'),
+  'Manipulator':
+    Pathfinder.SCHOOLS.Enchantment
+      .replace('Dazing Touch', 'Beguiling Touch')
+      .replace('Aura Of Despair', 'Shape Emotions'),
+  'Phantasm':
+    Pathfinder.SCHOOLS.Illusion
+      .replace('Blinding Ray', 'Terror')
+      .replace('Invisibility Field', 'Bedeviling Aura'),
+  'Scryer':
+    Pathfinder.SCHOOLS.Divination
+      .replace("Diviner's Fortune", 'Send Senses'),
+  'Shadow':
+    Pathfinder.SCHOOLS.Illusion
+      .replace('Blinding Ray', 'Binding Darkness')
+      .replace('Invisibility Field', 'Shadow Step'),
+  'Shapechange':
+    Pathfinder.SCHOOLS.Transmutation
+      .replace('Telekinetic Fist', 'Battleshaping'),
+  'Teleportation':
+    Pathfinder.SCHOOLS.Conjuration
+      .replace('Acid Dart', 'Shift'),
+  'Undead':
+    Pathfinder.SCHOOLS.Necromancy
+      .replace('Grave Touch', 'Bolster')
 };
 PFAPG.SHIELDS = {
   'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
@@ -6756,7 +6955,10 @@ PFAPG.CLASSES = {
       '"1:Bloodline Shadow:Bloodline",' +
       '"1:Bloodline Starsoul:Bloodline",' +
       '"1:Bloodline Stormborn:Bloodline",' +
-      '"1:Bloodline Verdant:Bloodline"'
+      '"1:Bloodline Verdant:Bloodline"',
+  'Wizard':
+    'Selectables=' +
+      QuilvynUtils.getKeys(PFAPG.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',')
 };
 PFAPG.PRESTIGES = {
 };
@@ -6862,7 +7064,20 @@ PFAPG.identityRules = function(
 };
 
 /* Defines rules related to magic use. */
-PFAPG.magicRules = function(rules, spells, spellsLevels) {
+PFAPG.magicRules = function(rules, schools, spells, spellsLevels) {
+  Pathfinder.magicRules(rules, schools, {}, {});
+  for(let s in schools) {
+    Pathfinder.choiceRules(rules, 'Feature',
+      'School Specialization (' + s + ')',
+      Pathfinder.FEATURES['School Specialization (%school)'].replaceAll('%school', s)
+    );
+    if(['Air', 'Earth', 'Fire', 'Water'].includes(s)) {
+      Pathfinder.choiceRules(rules, 'Feature',
+        'School Opposition (' + s + ')',
+        Pathfinder.FEATURES['School Opposition (%school)'].replaceAll('%school', s)
+      );
+    }
+  }
   let allSpells = Object.assign({}, spells, spellsLevels);
   for(let s in allSpells) {
     let attrs = allSpells[s];
@@ -8741,6 +8956,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       else if(f.startsWith('Skill Focus (Craft'))
         allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Protean",');
     }
+    rules.defineRule('abilityNotes.earthGlide', 'deepEarthLevel', '+=', null);
     rules.defineRule
       ('combatNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
     rules.defineRule('combatNotes.combatPrecognition',
@@ -8776,6 +8992,68 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('skillNotes.snakeskin', classLevel, '=', 'Math.floor((source - 1) / 4)');
     rules.defineRule
       ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
+  } else if(name == 'Wizard') {
+    let allSchools = rules.getChoices('schools');
+    for(var s in allSchools) {
+      if(!(s in PFAPG.SCHOOLS))
+        continue;
+      let elementalSchool = ['Air', 'Earth', 'Fire', 'Water'].includes(s);
+      if(elementalSchool) {
+        let oppositeSchool = {
+          'Air':'Earth', 'Earth':'Air', 'Fire':'Water', 'Water':'Fire'
+        };
+        rules.defineRule('wizardFeatures.School Opposition (' + oppositeSchool[s] + ')',
+          'wizardFeatures.School Specialization (' + s + ')', '=', '1'
+        );
+        rules.defineRule('features.School Opposition (' + oppositeSchool[s] + ')',
+          'wizardFeatures.School Opposition (' + oppositeSchool[s] + ')', '=', '1'
+        );
+      } else {
+        rules.defineRule('selectableFeatureCount.Wizard (Opposition)',
+          'wizardFeatures.School Specialization (' + s + ')', '=', '2'
+        );
+      }
+      for(var i = 1; i <= 9; i++) {
+        rules.defineRule('spellSlots.W' + i,
+          'magicNotes.schoolSpecialization(' + s + ')', '+', '1'
+        );
+      }
+      if(!elementalSchool) {
+        let baseSchool = {
+          'Admixture':'Evocation', 'Banishment':'Abjuration',
+          'Controller':'Enchantment', 'Counterspell':'Abjuration',
+          'Creation':'Conjuration', 'Enhancement':'Abjuration',
+          'Foresight':'Divination', 'Generation':'Evocation',
+          'Life':'Evocation', 'Manipulator':'Enchantment',
+          'Phantasm':'Illusion', 'Scryer':'Divination',
+          'Shadow':'Illusion', 'Shapechange':'Transmutation',
+          'Teleportation':'Conjuration', 'Undead':'Necromancy'
+        };
+        let note = 'validationNotes.' + s.toLowerCase() + 'SchoolBase';
+        rules.defineChoice('notes', note + ':Cannot oppose base school');
+        rules.defineRule(note,
+          'features.School Specialization (' + s + ')', '?', null,
+          'features.School Opposition (' + baseSchool[s] + ')', '=', '1'
+        );
+      }
+    }
+    rules.defineRule('abilityNotes.earthGlide', 'earthLevel', '+=', null);
+    rules.defineRule
+      ('abilityNotes.waterSupremecy', classLevel, '?', 'source>=10');
+    rules.defineRule
+      ('magicNotes.earthSupremecy', classLevel, '?', 'source>=20');
+    rules.defineRule('skillModifier.Fly',
+      'skillNotes.airSupremecy', '+', 'source.startsWith("+") ? source - 0 : 6'
+    );
+    rules.defineRule('skillNotes.airSupremecy',
+      classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
+    );
+    rules.defineRule('skillModifier.Swim',
+      'skillNotes.waterSupremecy', '+', 'source.startsWith("+") ? source-0 : 6'
+    );
+    rules.defineRule('skillNotes.waterSupremecy',
+      classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
+    );
   }
 };
 
