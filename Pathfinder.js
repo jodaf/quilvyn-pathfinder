@@ -17,7 +17,7 @@ Place, Suite 330, Boston, MA 02111-1307 USA.
 
 /*jshint esversion: 6 */
 /* jshint forin: false */
-/* globals ObjectViewer, Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
+/* globals ObjectViewer, PFAPG, Quilvyn, QuilvynRules, QuilvynUtils, SRD35 */
 "use strict";
 
 /*
@@ -1831,7 +1831,8 @@ Pathfinder.FEATURES = {
          '"Resistance 10 to acid and cold, immune fire and poison"',
   'Power Of Wyrms':'Section=save Note="Immune to paralysis and sleep"',
   'Power Over Undead':
-    'Section=feature Note="+1 General Feat (Command Undead or Turn Undead)"',
+    'Section=feature ' +
+    'Note="Has Channel Energy feature/+1 General Feat (Command Undead or Turn Undead)"',
   'Powerful Blow':'Section=combat Note="+%V HP 1/rage"',
   'Proper Training':
     'Section=skill ' +
@@ -2747,8 +2748,7 @@ Pathfinder.SCHOOLS = {
       '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
   'Necromancy':
     'Features=' +
-      '"1:Channel Energy","1:Power Over Undead","1:Grave Touch Necromantic",' +
-      '"8:Life Sight"',
+      '"1:Power Over Undead","1:Grave Touch Necromantic","8:Life Sight"',
   'Transmutation':
     'Features=' +
       '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
@@ -7455,6 +7455,8 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'features.Command Undead || features.Turn Undead'
     );
     rules.defineRule('channelLevel', schoolLevel, '+=', null);
+    rules.defineRule
+      ('features.Channel Energy', 'featureNotes.powerOverUndead', '=', '1');
     // Other Channel Energy calculations handled in Cleric rules
     rules.defineRule('magicNotes.channelEnergy',
       'magicNotes.intelligenceChannelEnergyAdjustment', '+', null
@@ -7773,7 +7775,6 @@ Pathfinder.choiceEditorElements = function(rules, type) {
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
   SRD35.randomizeOneAttribute.apply(this, [attributes, attribute]);
-  let attr;
   let attrs;
   let choices;
   let howMany;
