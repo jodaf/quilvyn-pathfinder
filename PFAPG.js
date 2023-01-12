@@ -522,7 +522,7 @@ PFAPG.FEATURES = {
   'Ancient Enmity':'Section=combat Note="+1 attack vs. elves"',
   'Craftsman':
     'Section=skill ' +
-    'Note="+2 Craft and +2 Profession to create metal and stone objects"',
+    'Note="+2 Craft and Profession to create metal and stone objects"',
   'Deep Warrior':'Section=combat Note="+2 AC and grapple CMB vs. aberrations"',
   'Lorekeeper (Dwarf)':
     'Section=skill Note="+2 Knowlege (History) (dwarves and dwarven enemies)"',
@@ -536,7 +536,7 @@ PFAPG.FEATURES = {
   'Stonesinger':'Section=magic Note="+1 caster level on Earth spells"',
   'Stubborn':
     'Section=save ' +
-    'Note="+2 Will vs. charm and compulsion; may take second save 1 rd after failing"',
+    'Note="+2 Will vs. charm and compulsion; may attempt save again 1 rd after failing"',
 
   // Elf
   'Desert Runner':
@@ -549,29 +549,29 @@ PFAPG.FEATURES = {
   'Lightbringer':
     'Section=magic,save ' +
     'Note=' +
-      '"+1 caster level on light-based spells%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>",' +
-      '"Immune to light-based blindness and dazzled"',
+      '"+1 caster level on light-based spells%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>\' : \'\'}",' +
+      '"Immune to light-based blindness and dazzle"',
   'Silent Hunter':
     'Section=skill ' +
     'Note="Reduce moving Stealth penalty by 5/May use -20 Stealth while running"',
   'Spirit Of The Waters':
-    'Section=combat,skill ' +
+    'Section=feature,skill ' +
     'Note=' +
-      '"Weapon Proficiency (Longspear/Net/Trident)",' +
+      '"Has Weapon Proficiency (Longspear/Net/Trident)",' +
       '"+4 Swim/May take 10 while swimming/May learn Aquan"',
   'Woodcraft':
     'Section=skill ' +
-    'Note="+1 Knowledge (Nature)/+1 Survival/Addition +1 to both in forests"',
+    'Note="+1 Knowledge (Nature)/+1 Survival/Additional +1 to both in forests"',
 
   // Gnome
-  'Academician':'Section=skill Note="+2 choice of Knowledge skill"',
+  'Academician':'Section=skill Note="+2 choice of Knowledge"',
   'Eternal Hope':
     'Section=feature,save ' +
     'Note=' +
       '"May reroll 1 on d20 1/dy",' +
       '"+2 vs. fear and despair"',
   'Gift Of Tongues':
-    'Section=skill Note="+1 Bluff/+1 Diplomacy/+%V Language Count"',
+    'Section=skill Note="+1 Bluff/+1 Diplomacy/+%1 Language Count"',
   'Magical Linguist':
     'Section=magic,save ' +
     'Note=' +
@@ -596,13 +596,13 @@ PFAPG.FEATURES = {
   'Arcane Training':
     'Section=feature,magic ' +
     'Note=' +
-      '"Favored class must be arcane spellcasting class",' +
+      '"Favored class must include arcane spellcasting",' +
       '"+1 caster level on favored class spell trigger and completion items"',
   'Dual Minded':'Section=save Note="+2 Will"',
   'Integrated':'Section=skill Note="+1 Bluff/+1 Disguise/+1 Knowledge (Local)"',
   'Sociable (Half-Elf)':
     'Section=skill ' +
-    'Note="May make second attempt at changing attitude using Diplomacy even after -5 failure"',
+    'Note="May make second Diplomacy attempt to change attitude even after -5 failure"',
   'Water Child':
       'Section=skill ' +
       'Note="+4 Swim/May take 10 while swimming/May learn Aquan"',
@@ -616,15 +616,16 @@ PFAPG.FEATURES = {
   'Bestial':'Section=skill Note="+2 Perception"',
   'Cavewight':
     'Section=skill ' +
-    'Note="+1 Knowledge (Dungeoneering)/+1 Survival (underground)"',
+    'Note="+1 Knowledge (Dungeoneering) (underground)/+1 Survival (underground)"',
   'Chain Fighter':
     'Section=feature ' +
-    'Note="Weapon Proficiency (Flail/Heavy Flail)/Weapon Familiarity (Spike Chain)"',
+    'Note="Weapon Proficiency (Flail/Heavy Flail)/Weapon Familiarity (Dire Flail/Spike Chain)"',
   'Gatecrasher':
     'Section=combat Note="+2 Strength checks (break objects)/+2 Sunder CMB"',
   'Plagueborn':
     'Section=save ' +
-    'Note="+2 vs. disease, injested poison, nauseated, and sickened"',
+    'Note="+2 vs. disease, ingested poison, nauseated, and sickened"',
+  'Rock Climber':'Section=skill Note="+1 Acrobatics/+1 Climb"',
   'Sacred Tattoo':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Scavenger':
     'Section=skill ' +
@@ -637,7 +638,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+10 Speed when fearful",' +
       '"+1 Initiative/+1 attack when flanking/+1 AC when fearful",' +
-      '"-2 vs. fear/No morale benefit on fear saves"',
+      '"-2 vs. fear/No morale bonus on fear saves"',
   'Outrider':'Section=skill Note="+2 Handle Animal/+2 Ride"',
   'Low Blow':
     'Section=combat Note="+1 crit confirmation on larger foe"',
@@ -665,7 +666,7 @@ PFAPG.FEATURES = {
   'Eye For Talent':
     'Section=feature,skill ' +
     'Note=' +
-      '"Animal Companion or Familiar gains +2 on choice of ability",' +
+      '"Animal companion or familiar gains +2 on choice of ability",' +
       '"+2 Sense Motive"',
   'Heart Of The Fields':
     'Section=save,skill ' +
@@ -681,7 +682,7 @@ PFAPG.FEATURES = {
   'Heart Of The Wilderness':
     'Section=combat,skill ' +
     'Note=' +
-      '"+5 stabilization checks/Does not die until -%{consitution+5} HP",' +
+      '"+5 stabilization checks/Does not die until -%{constitution+5} HP",' +
       '"+%V Survival"',
 
   // Alchemist
@@ -5067,7 +5068,7 @@ PFAPG.RACES = {
         '"1:Integrated:Racial Trait",' +
         '"1:Sociable (Half-Elf):Racial Trait",' +
         '"1:Water Child:Racial Trait",' +
-      '"1:Multitalented:Racial Trait", ' +
+      '"1:Multitalented:Racial Trait",' +
         '"1:Arcane Training:Racial Trait",' +
         '"1:Water Child:Racial Trait"',
   'Half-Orc':
@@ -5078,6 +5079,7 @@ PFAPG.RACES = {
       '"1:Intimidating:Racial Trait",' +
         '"1:Cavewight:Racial Trait",' +
         '"1:Plagueborn:Racial Trait",' +
+        '"1:Rock Climber:Racial Trait",' +
         '"1:Scavenger:Racial Trait",' +
       '"1:Orc Ferocity:Racial Trait",' +
         '"1:Beastmaster:Racial Trait",' +
@@ -9885,11 +9887,29 @@ PFAPG.raceRulesExtra = function(rules, name) {
     );
   } else if(name == 'Half-Orc') {
     alternatives = [
-      ['Weapon Familiarity (Orc Double Axe)', 'Chain Fighter', 'Intimidating',
-       'Cavewight', 'Plagueborn', 'Scavenger'],
+      ['Weapon Familiarity (Orc Double Axe)', 'Chain Fighter'],
+      ['Intimidating', 'Cavewight', 'Plagueborn', 'Rock Climber', 'Scavenger'],
       ['Orc Ferocity', 'Beastmaster', 'Bestial', 'Gatecrasher', 'Plagueborn',
        'Sacred Tattoo', 'Toothy']
     ];
+    rules.defineRule('features.Weapon Familiarity (Dire Flail)',
+      'featureNotes.chainFighter', '=', '1'
+    );
+    rules.defineRule('features.Weapon Familiarity (Net)',
+      'featureNotes.beastmaster', '=', '1'
+    );
+    rules.defineRule('features.Weapon Familiarity (Spiked Chain)',
+      'featureNotes.chainFighter', '=', '1'
+    );
+    rules.defineRule('features.Weapon Familiarity (Whip)',
+      'featureNotes.beastmaster', '=', '1'
+    );
+    rules.defineRule('features.Weapon Proficiency (Flail)',
+      'featureNotes.chainFighter', '=', '1'
+    );
+    rules.defineRule('features.Weapon Proficiency (Heavy Flail)',
+      'featureNotes.chainFighter', '=', '1'
+    );
     rules.defineRule('selectableFeatureCount.Half-Orc (Racial Trait)',
       'half-OrcFeatures.Plagueborn', '+', '-1'
     );
@@ -9913,6 +9933,15 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'elfFeatures.Lightbringing', '+', '-1',
       'elfFeatures.Spirit Of The Waters', '+', '-1'
     );
+    rules.defineRule('features.Weapon Proficiency (Longspear)',
+      'featureNotes.spiritOfTheWaters', '=', '1'
+    );
+    rules.defineRule('features.Weapon Proficiency (Net)',
+      'featureNotes.spiritOfTheWaters', '=', '1'
+    );
+    rules.defineRule('features.Weapon Proficiency (Trident)',
+      'featureNotes.spiritOfTheWaters', '=', '1'
+    );
   } else if(name.match(/Gnome/)) {
     alternatives = [
       ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
@@ -9923,8 +9952,10 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ['Obsessive', 'Academician'],
       ['Resist Illusion', 'Magical Linguist', 'Pyromaniac']
     ];
-    rules.defineRule
-      ('skillNotes.giftOfTongues', 'skills.Linguistics', '+', null);
+    rules.defineRule('skillNotes.giftOfTongues.1',
+      '', '=', '0',
+      'skills.Linguistics', '+', null
+    );
     rules.defineRule('selectableFeatureCount.Gnome (Racial Trait)',
       'gnomeFeatures.Eternal Hope', '+', '-1',
       'gnomeFeatures.Gift Of Tongues', '+', '-1',
