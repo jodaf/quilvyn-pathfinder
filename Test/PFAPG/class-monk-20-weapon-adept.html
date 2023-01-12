@@ -13,18 +13,18 @@ var attributes = {
   "feats.Point-Blank Shot":1, "feats.Power Attack":1, "feats.Skill Focus (Knowledge (Planes))":1, 
   "feats.Skill Focus (Knowledge (Religion))":1, "feats.Skill Focus (Perform (Keyboard))":1, 
   "feats.Skill Focus (Profession (Scribe))":1, "feats.Skill Focus (Spellcraft)":1, "feats.Swap Places":1, 
-  "gender":"Female", "hitPoints":94, "intelligence":12, "languages.Halfling":1, "levels.Monk":20, 
-  "name":"Class-Monk 20-Weapon Adept", "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
-  "selectableFeatures.Human - Skilled":1, "selectableFeatures.Monk - Catch Off-Guard":1, 
-  "selectableFeatures.Monk - Gorgon's Fist":1, "selectableFeatures.Monk - Improved Critical (Halfling Sling Staff)":1, 
-  "selectableFeatures.Monk - Improved Critical (Light Shield)":1, "selectableFeatures.Monk - Improved Critical (Sap)":1, 
-  "selectableFeatures.Monk - Mobility":1, "selectableFeatures.Monk - Weapon Adept":1, "shield":"None", 
-  "skills.Climb":10, "skills.Craft (Alchemy)":4, "skills.Disable Device":20, "skills.Heal":1, 
-  "skills.Intimidate":1, "skills.Knowledge (Planes)":1, "skills.Knowledge (Religion)":10, 
-  "skills.Perception":20, "skills.Perform (Comedy)":20, "skills.Perform (Keyboard)":1, 
-  "skills.Profession (Scribe)":1, "skills.Ride":20, "skills.Spellcraft":1, "skills.Stealth":8, 
-  "skills.Use Magic Device":2, "strength":14, "traits.Caretaker":1, "traits.Dangerously Curious":1, 
-  "weapons.Dagger":1, "weapons.Shuriken":1, "weapons.Unarmed":1, "wisdom":12
+  "feats.Weapon Focus (Shuriken)":1, "gender":"Female", "hitPoints":94, "intelligence":12, 
+  "languages.Halfling":1, "levels.Monk":20, "name":"Class-Monk 20-Weapon Adept", "race":"Human", 
+  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Monk - Catch Off-Guard":1, "selectableFeatures.Monk - Gorgon's Fist":1, 
+  "selectableFeatures.Monk - Improved Critical (Halfling Sling Staff)":1, "selectableFeatures.Monk - Improved Critical (Light Shield)":1, 
+  "selectableFeatures.Monk - Improved Critical (Sap)":1, "selectableFeatures.Monk - Mobility":1, 
+  "selectableFeatures.Monk - Weapon Adept":1, "shield":"None", "skills.Climb":10, "skills.Craft (Alchemy)":4, 
+  "skills.Disable Device":20, "skills.Heal":1, "skills.Intimidate":1, "skills.Knowledge (Planes)":1, 
+  "skills.Knowledge (Religion)":10, "skills.Perception":20, "skills.Perform (Comedy)":20, 
+  "skills.Perform (Keyboard)":1, "skills.Profession (Scribe)":1, "skills.Ride":20, "skills.Spellcraft":1, 
+  "skills.Stealth":8, "skills.Use Magic Device":2, "strength":14, "traits.Caretaker":1, 
+  "traits.Dangerously Curious":1, "weapons.Dagger":1, "weapons.Shuriken":1, "weapons.Unarmed":1, "wisdom":12
 };
   </script>
 </head>
@@ -90,7 +90,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Critical Focus; Intimidating Prowess; Persuasive; Point-Blank Shot; Power Attack; Skill Focus (Knowledge (Planes)); Skill Focus (Knowledge (Religion)); Skill Focus (Perform (Keyboard)); Skill Focus (Profession (Scribe)); Skill Focus (Spellcraft); Swap Places</td>
+        <td><b>Feats</b>: Critical Focus; Intimidating Prowess; Persuasive; Point-Blank Shot; Power Attack; Skill Focus (Knowledge (Planes)); Skill Focus (Knowledge (Religion)); Skill Focus (Perform (Keyboard)); Skill Focus (Profession (Scribe)); Skill Focus (Spellcraft); Swap Places; Weapon Focus (Shuriken)</td>
         <td><b>Traits</b>: Caretaker; Dangerously Curious</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Monk Features</b>: Abundant Step; Armor Class Bonus; Catch Off-Guard; Diamond Body; Diamond Soul; Empty Body; Evasion; Fast Movement; Flurry Of Blows; Gorgon's Fist; Greater Two-Weapon Fighting; High Jump; Improved Critical (Halfling Sling Staff); Improved Critical (Light Shield); Improved Critical (Sap); Improved Two-Weapon Fighting; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Mobility; Perfect Strike; Pure Power; Purity Of Body; Quivering Palm; Slow Fall; Still Mind; Tongue Of The Sun And Moon; Two-Weapon Fighting; Unarmed Strike; Uncanny Initiative; Way Of The Weapon Master; Weapon Adept; Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear); Wholeness Of Body</td>
@@ -207,7 +207,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+18 d4+3 x2@19 R10'); Shuriken (+19 d2+3 x2@20 R10'); Unarmed (+18 2d10+3 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+18 d4+3 x2@19 R10'); Shuriken (+20 d2+3 x2@20 R10'); Unarmed (+18 2d10+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -236,6 +236,8 @@ var attributes = {
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Unarmed Strike: Unarmed hit inflicts 2d10 HP</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Weapon Focus (Shuriken): +1 Shuriken Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: No penalty for improvised melee weapon, unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
@@ -315,16 +317,6 @@ var attributes = {
       <td>Empty Body: May spend 3 Ki Points for 1 min on Ethereal plane</td>
     </tr><tr style="text-align:center">
       <td>Wholeness Of Body: May spend 2 Ki Points to heal 20 HP to self</td>
-    </tr></table>
-</td>
-  </tr></table>
-</td>
-</tr><tr style="text-align:center">
-  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
-  <tr style="text-align:center">
-    <td>    <table id="ValidationPart" style="width:100%">
-    <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Feat Allocation: 12 available vs. 11 allocated</td>
     </tr></table>
 </td>
   </tr></table>
