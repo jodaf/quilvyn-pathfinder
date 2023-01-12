@@ -1807,7 +1807,7 @@ Pathfinder.FEATURES = {
          '"Ignored by unintelligent undead",' +
          '"Immune to paralysis, sleep, cold, and non-lethal damage, +4 vs. spells from undead"',
   'Orc Blood':'Section=feature Note="Orc and human for racial effects"',
-  'Orc Ferocity':'Section=combat Note="Fight below zero HP for 1 rd 1/dy"',
+  'Orc Ferocity':'Section=combat Note="May fight below zero HP for 1 rd 1/dy"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill ' +
@@ -5449,7 +5449,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('damageReduction.Chaotic', 'combatNotes.perfectSelf', '^=', '10');
     rules.defineRule
-      ('featureNotes.abundantStep', 'levels.Monk', '=', 'source * 40 + 400');
+      ('magicNotes.abundantStep', 'levels.Monk', '=', 'source * 40 + 400');
     rules.defineRule('featureNotes.kiPool',
       'levels.Monk', '=', 'Math.floor(source / 2)',
       'wisdomModifier', '+', null
