@@ -518,6 +518,172 @@ PFAPG.FEATS = {
 };
 PFAPG.FEATURES = {
 
+  // Dwarf
+  'Ancient Enmity':'Section=combat Note="+1 attack vs. elves"',
+  'Craftsman':
+    'Section=skill ' +
+    'Note="+2 Craft and +2 Profession to create metal and stone objects"',
+  'Deep Warrior':'Section=combat Note="+2 AC and grapple CMB vs. aberrations"',
+  'Lorekeeper (Dwarf)':
+    'Section=skill Note="+2 Knowlege (History) (dwarves and dwarven enemies)"',
+  'Magic Resistant':
+    'Section=magic,save ' +
+    'Note=' +
+      '"-2 arcane spell concentration",' +
+      '"SR %{level+5}"',
+  'Relentless':
+    'Section=combat Note="+2 bull rush and overrun when standing on ground"',
+  'Stonesinger':'Section=magic Note="+1 caster level on Earth spells"',
+  'Stubborn':
+    'Section=save ' +
+    'Note="+2 Will vs. charm and compulsion; may take second save 1 rd after failing"',
+
+  // Elf
+  'Desert Runner':
+    'Section=save ' +
+    'Note="+4 vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
+  'Dreamspeaker':
+    'Section=magic ' +
+    'Note="+1 divination and sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
+  'Eternal Grudge':'Section=combat Note="+1 attack vs. dwarves and orcs"',
+  'Lightbringer':
+    'Section=magic,save ' +
+    'Note=' +
+      '"+1 caster level on light-based spells%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>",' +
+      '"Immune to light-based blindness and dazzled"',
+  'Silent Hunter':
+    'Section=skill ' +
+    'Note="Reduce moving Stealth penalty by 5/May use -20 Stealth while running"',
+  'Spirit Of The Waters':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Weapon Proficiency (Longspear/Net/Trident)",' +
+      '"+4 Swim/May take 10 while swimming/May learn Aquan"',
+  'Woodcraft':
+    'Section=skill ' +
+    'Note="+1 Knowledge (Nature)/+1 Survival/Addition +1 to both in forests"',
+
+  // Gnome
+  'Academician':'Section=skill Note="+2 choice of Knowledge skill"',
+  'Eternal Hope':
+    'Section=feature,save ' +
+    'Note=' +
+      '"May reroll 1 on d20 1/dy",' +
+      '"+2 vs. fear and despair"',
+  'Gift Of Tongues':
+    'Section=skill Note="+1 Bluff/+1 Diplomacy/+%V Language Count"',
+  'Magical Linguist':
+    'Section=magic,save ' +
+    'Note=' +
+      '"+1 save DC on language-dependent and magical writing spells%{charisma>=11 ? \'/May cast <i>Arcane Mark</i>, <i>Comprehend Languages</i>, <i>Message</i>, <i>Read Magic</i> 1/dy\' : \'\'}",' +
+      '"+2 vs. language-dependent and magical writing spells"',
+  'Master Tinker':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Proficient with any self-made weapon",' +
+      '"+1 Disable Device/+1 Knowledge (Dungeoneering)"',
+  'Pyromaniac':
+    'Section=magic ' +
+    'Note="+1 caster level on fire spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Pretidigitation</i>, <i>Produce Flame</i> 1/dy\' : \'\'}"',
+  'Warden Of Nature':
+    'Section=combat ' +
+    'Note="+2 AC and +1 attack vs. aberrations, oozes, and vermin"',
+
+  // Half-Elf
+  'Ancestral Arms':
+    'Section=feature ' +
+    'Note="+1 General Feat (Exotic Weapon Proficiency or Martial Weapon Proficiency)"',
+  'Arcane Training':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Favored class must be arcane spellcasting class",' +
+      '"+1 caster level on favored class spell trigger and completion items"',
+  'Dual Minded':'Section=save Note="+2 Will"',
+  'Integrated':'Section=skill Note="+1 Bluff/+1 Disguise/+1 Knowledge (Local)"',
+  'Sociable (Half-Elf)':
+    'Section=skill ' +
+    'Note="May make second attempt at changing attitude using Diplomacy even after -5 failure"',
+  'Water Child':
+      'Section=skill ' +
+      'Note="+4 Swim/May take 10 while swimming/May learn Aquan"',
+
+  // Half-Orc
+  'Beastmaster':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Weapon Familiarity (Net/Whip)",' +
+      '"+2 Handle Animal"',
+  'Bestial':'Section=skill Note="+2 Perception"',
+  'Cavewight':
+    'Section=skill ' +
+    'Note="+1 Knowledge (Dungeoneering)/+1 Survival (underground)"',
+  'Chain Fighter':
+    'Section=feature ' +
+    'Note="Weapon Proficiency (Flail/Heavy Flail)/Weapon Familiarity (Spike Chain)"',
+  'Gatecrasher':
+    'Section=combat Note="+2 Strength checks (break objects)/+2 Sunder CMB"',
+  'Plagueborn':
+    'Section=save ' +
+    'Note="+2 vs. disease, injested poison, nauseated, and sickened"',
+  'Sacred Tattoo':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
+  'Scavenger':
+    'Section=skill ' +
+    'Note="+2 Appraise/+2 Perception (find hidden objects, note spoiled food, identify poison by taste)"',
+  'Toothy':'Section=combat Note="Bite inflicts 1d4 HP piercing"',
+
+  // Halfling
+  'Craven':
+    'Section=ability,combat,save ' +
+    'Note=' +
+      '"+10 Speed when fearful",' +
+      '"+1 Initiative/+1 attack when flanking/+1 AC when fearful",' +
+      '"-2 vs. fear/No morale benefit on fear saves"',
+  'Outrider':'Section=skill Note="+2 Handle Animal/+2 Ride"',
+  'Low Blow':
+    'Section=combat Note="+1 crit confirmation on larger foe"',
+  'Practicality':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+2 vs. illusions",' +
+      '"+2 choice of Craft or Profession/+2 Sense Motive"',
+  'Swift As Shadows':
+    'Section=skill ' +
+    'Note="Reduce penalty for moving Stealth by 5, sniping Stealth by 10"',
+  'Underfoot (Halfling)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 AC vs. larger foes",' +
+      '"+1 Reflex vs. trample"',
+  'Wanderlust':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 caster level on movement spells",' +
+      '"+2 Knowledge (Geography)/+2 Survival"',
+  'Warslinger':'Section=combat Note="May reload a sling as a free action"',
+
+  // Human
+  'Eye For Talent':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Animal Companion or Familiar gains +2 on choice of ability",' +
+      '"+2 Sense Motive"',
+  'Heart Of The Fields':
+    'Section=save,skill ' +
+    'Note=' +
+      '"May ignore fatigued or exhasted effect 1/dy",' +
+      '"+%{level//2} on choice of Craft or Profession"',
+  'Heart Of The Streets':
+    'Section=ability,combat,save ' +
+    'Note=' +
+      '"Crowds count as normal terrain",' +
+      '"+1 AC when adjacent to 2 allies",' +
+      '"+1 Reflex when adjacent to 2 allies"',
+  'Heart Of The Wilderness':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+5 stabilization checks/Does not die until -%{consitution+5} HP",' +
+      '"+%V Survival"',
+
   // Alchemist
   'Acid Bomb':
     'Section=combat ' +
@@ -4839,6 +5005,113 @@ PFAPG.PATHS = {
 
 };
 PFAPG.RACES = {
+  'Dwarf':
+    'Selectables=' +
+      '"1:Dwarf Hatred:Racial Trait",' +
+        '"1:Ancient Enmity:Racial Trait",' +
+      '"1:Greed:Racial Trait",' +
+        '"1:Craftsman:Racial Trait",' +
+        '"1:Lorekeeper (Dwarf):Racial Trait",' +
+      '"1:Defensive Training:Racial Trait",' +
+        '"1:Deep Warrior:Racial Trait",' +
+      '"1:Hardy:Racial Trait",' +
+        '"1:Magic Resistant:Racial Trait",' +
+        '"1:Stubborn:Racial Trait",' +
+      '"1:Stability:Racial Trait",' +
+        '"1:Relentless:Racial Trait",' +
+      '"1:Stonecunning:Racial Trait",' +
+        '"1:Stonesinger:Racial Trait"',
+  'Elf':
+    'Selectables=' +
+      // Lightbringer, Spirit Of The Waters each replace 2 core traits
+      '"1:Weapon Familiarity (Elven Curve Blade):Racial Trait",' +
+        '"1:Spirit Of The Waters:Racial Trait",' +
+      '"1:Elven Immunities:Racial Trait",' +
+        '"1:Dreamspeaker:Racial Trait",' +
+        '"1:Lightbringer:Racial Trait",' +
+      '"1:Elven Magic:Racial Trait",' +
+        '"1:Desert Runner:Racial Trait",' +
+        '"1:Eternal Grudge",' +
+        '"1:Lightbringer:Racial Trait",' +
+        '"1:Silent Hunter:Racial Trait",' +
+        '"1:Spirit Of The Waters:Racial Trait",' +
+        '"1:Woodcraft:Racial Trait"',
+  'Gnome':
+    'Selectables=' +
+      // Eternal Hope, Gift Of Tongues, Magical Linguist, Master Tinker,
+      // Pyromaniac, Warden Of Nature each replace 2 core traits
+      '"1:Defensive Training:Racial Trait",' +
+        '"1:Eternal Hope:Racial Trait",' +
+        '"1:Gift Of Tongues:Racial Trait",' +
+        '"1:Master Tinker:Racial Trait",' +
+        '"1:Warden Of Nature:Racial Trait",' +
+      '"1:Gnome Hatred:Racial Trait",' +
+        '"1:Eternal Hope:Racial Trait",' +
+        '"1:Gift Of Tongues:Racial Trait",' +
+        '"1:Master Tinker:Racial Trait",' +
+        '"1:Warden Of Nature:Racial Trait",' +
+      '"1:Gnome Magic:Racial Trait",' +
+        '"1:Magical Linguist:Racial Trait",' +
+        '"1:Pyromaniac:Racial Trait",' +
+      '"1:Obsessive:Racial Trait",' +
+        '"1:Academician:Racial Trait",' +
+      '"1:Resist Illusion:Racial Trait",' +
+        '"1:Magical Linguist:Racial Trait",' +
+        '"1:Pyromaniac:Racial Trait"',
+  'Half-Elf':
+    'Selectables=' +
+      // Water Child replaces 2 core traits
+      '"1:Adaptability:Racial Trait",' +
+        '"1:Ancestral Arms:Racial Trait",' +
+        '"1:Dual Minded:Racial Trait",' +
+        '"1:Integrated:Racial Trait",' +
+        '"1:Sociable (Half-Elf):Racial Trait",' +
+        '"1:Water Child:Racial Trait",' +
+      '"1:Multitalented:Racial Trait", ' +
+        '"1:Arcane Training:Racial Trait",' +
+        '"1:Water Child:Racial Trait"',
+  'Half-Orc':
+    'Selectables=' +
+      // Plagueborn replaces 2 core traits
+      '"1:Weapon Familiarity (Orc Double Axe):Racial Trait",' +
+        '"1:Chain Fighter:Racial Trait",' +
+      '"1:Intimidating:Racial Trait",' +
+        '"1:Cavewight:Racial Trait",' +
+        '"1:Plagueborn:Racial Trait",' +
+        '"1:Scavenger:Racial Trait",' +
+      '"1:Orc Ferocity:Racial Trait",' +
+        '"1:Beastmaster:Racial Trait",' +
+        '"1:Bestial:Racial Trait",' +
+        '"1:Gatecrasher:Racial Trait",' +
+        '"1:Plagueborn:Racial Trait",' +
+        '"1:Sacred Tattoo:Racial Trait",' +
+        '"1:Toothy:Racial Trait"',
+  'Halfling':
+    'Selectables=' +
+      // Craven, Practicality, Wanderlust each replace 2 core traits
+      '"1:Fearless:Racial Trait",' +
+        '"1:Craven:Racial Trait",' +
+        '"1:Practicality:Racial Trait",' +
+        '"1:Wanderlust:Racial Trait",' +
+      '"1:Halfling Luck:Racial Trait",' +
+        '"1:Craven:Racial Trait",' +
+        '"1:Underfoot (Halfling):Racial Trait",' +
+        '"1:Wanderlust:Racial Trait",' +
+      '"1:Keen Senses:Racial Trait",' +
+        '"1:Low Blow:Racial Trait",' +
+      '"1:Sure-Footed:Racial Trait",' +
+        '"1:Outrider:Racial Trait",' +
+        '"1:Practicality:Racial Trait",' +
+        '"1:Swift As Shadows:Racial Trait",' +
+        '"1:Warslinger:Racial Trait"',
+  'Human':
+    'Selectables=' +
+      '"1:Bonus Feat:Racial Trait",' +
+        '"1:Eye For Talent:Racial Trait",' +
+      '"1:Skilled:Racial Trait",' +
+        '"1:Heart Of The Fields:Racial Trait",' +
+        '"1:Heart Of The Streets:Racial Trait",' +
+        '"1:Heart Of The Wilderness:Racial Trait"'
 };
 PFAPG.SCHOOLS = {
   'Air':
@@ -7035,8 +7308,20 @@ PFAPG.identityRules = function(
       delete newClasses[clas];
     }
   }
+  // PFAPG defines no new races, but this code supports the possibility anyway
+  let newRaces = Object.assign({}, races);
+  for(let race in races) {
+    let features = QuilvynUtils.getAttrValue(races[race], 'Features');
+    let selectables =
+      QuilvynUtils.getAttrValueArray(races[race], 'Selectables');
+    if(!features) {
+      QuilvynRules.featureListRules
+        (rules, selectables, race, race.charAt(0).toLowerCase() + race.substring(1).replaceAll(' ' , '') + 'Level', true);
+      delete newRaces[race];
+    }
+  }
   Pathfinder.identityRules(
-    rules, alignments, newClasses, {}, factions, paths, races, tracks,
+    rules, alignments, newClasses, {}, factions, paths, newRaces, tracks,
     traits, prestigeClasses, npcClasses
   );
   for(let clas in classes)
@@ -9586,6 +9871,112 @@ PFAPG.pathRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to raceRules.
  */
 PFAPG.raceRulesExtra = function(rules, name) {
+  let alternatives = [];
+  let prefix =
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
+  if(name == 'Half-Elf') {
+    alternatives = [
+      ['Adaptability', 'Ancestral Arms', 'Dual Minded', 'Integrated',
+       'Sociable (Half-Elf)', 'Water Child'],
+      ['Multitalented', 'Arcane Training', 'Water Child']
+    ];
+    rules.defineRule('selectableFeatureCount.Half-Elf (Racial Trait)',
+      'half-ElfFeatures.Water Child', '+', '-1'
+    );
+  } else if(name == 'Half-Orc') {
+    alternatives = [
+      ['Weapon Familiarity (Orc Double Axe)', 'Chain Fighter', 'Intimidating',
+       'Cavewight', 'Plagueborn', 'Scavenger'],
+      ['Orc Ferocity', 'Beastmaster', 'Bestial', 'Gatecrasher', 'Plagueborn',
+       'Sacred Tattoo', 'Toothy']
+    ];
+    rules.defineRule('selectableFeatureCount.Half-Orc (Racial Trait)',
+      'half-OrcFeatures.Plagueborn', '+', '-1'
+    );
+  } else if(name.match(/Dwarf/)) {
+    alternatives = [
+      ['Dwarf Hatred', 'Ancient Enmity'],
+      ['Greed', 'Craftsman', 'Lorekeeper'],
+      ['Defensive Training', 'Deep Warrior'],
+      ['Hardy', 'Magic Resistant', 'Stubborn'],
+      ['Stability', 'Relentless'],
+      ['Stonecunning', 'Stonesinger']
+    ];
+  } else if(name.match(/Elf/)) {
+    alternatives = [
+      ['Weapon Familiarity (Elven Curve Blade)', 'Spirit Of The Waters'],
+      ['Elven Immunities', 'Dreamspeaker', 'Lightbringer'],
+      ['Elven Magic', 'Desert Runner', 'Eternal Grudge', 'Lightbringer',
+       'Silent Hunter', 'Spirit Of The Waters', 'Woodcraft']
+    ];
+    rules.defineRule('selectableFeatureCount.Elf (Racial Trait)',
+      'elfFeatures.Lightbringing', '+', '-1',
+      'elfFeatures.Spirit Of The Waters', '+', '-1'
+    );
+  } else if(name.match(/Gnome/)) {
+    alternatives = [
+      ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
+       'Warden Of Nature'],
+      ['Gnome Hatred', 'Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
+       'Warden Of Nature'],
+      ['Gnome Magic', 'Magical Linguist', 'Pyromaniac'],
+      ['Obsessive', 'Academician'],
+      ['Resist Illusion', 'Magical Linguist', 'Pyromaniac']
+    ];
+    rules.defineRule
+      ('skillNotes.giftOfTongues', 'skills.Linguistics', '+', null);
+    rules.defineRule('selectableFeatureCount.Gnome (Racial Trait)',
+      'gnomeFeatures.Eternal Hope', '+', '-1',
+      'gnomeFeatures.Gift Of Tongues', '+', '-1',
+      'gnomeFeatures.Magical Linguist', '+', '-1',
+      'gnomeFeatures.Master Tinker', '+', '-1',
+      'gnomeFeatures.Pyromaniac', '+', '-1',
+      'gnomeFeatures.Warden Of Nature', '+', '-1'
+    );
+  } else if(name.match(/Halfling/)) {
+    alternatives = [
+      ['Fearless', 'Craven', 'Practicality', 'Wanderlust'],
+      ['Halfling Luck', 'Craven', 'Underfoot (Halfling)', 'Wanderlust'],
+      ['Keen Senses', 'Low Blow'],
+      ['Sure-Footed', 'Outrider', 'Practicality', 'Swift As Shadows',
+       'Warslinger']
+    ];
+    rules.defineRule('selectableFeatureCount.Halfling (Racial Trait)',
+      'halflingFeatures.Craven', '+', '-1',
+      'halflingFeatures.Practicality', '+', '-1',
+      'halflingFeatures.Wanderlust', '+', '-1'
+    );
+  } else if(name.match(/Human/)) {
+    alternatives = [
+      ['Bonus Feat','Eye For Talent'],
+      ['Skilled', 'Heart Of The Fields', 'Heart Of The Streets',
+       'Heart Of The Wilderness']
+    ];
+    rules.defineRule('skillNotes.heartOfTheWilderness',
+      'level', '=', 'Math.floor(source / 2)'
+    );
+  }
+  if(alternatives.length > 0) {
+    rules.defineRule('selectableFeatureCount.' + name + ' (Racial Trait)',
+      prefix + 'Level', '=', alternatives.length
+    );
+    for(let i = 0; i < alternatives.length; i++) {
+      let group = alternatives[i];
+      // Override level-based feature acquisition
+      rules.defineRule
+        (prefix + 'Features.' + group[0], prefix + 'Level', '=', 'null');
+      group.forEach(choice => {
+        let note =
+          'validationNotes.' + prefix + '-' + choice.replaceAll(' ' , '') + 'Alternatives' + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.charAt(i);
+        let text = 'May only select one from ' + name + ' features ' + group.join(', ');
+        rules.defineChoice('notes', note + ':' + text);
+        rules.defineRule(note, prefix + 'Features.' + choice, '?', null);
+        group.filter(alt => alt != choice).forEach(alt => {
+          rules.defineRule(note, prefix + 'Features.' + alt, '+=', '1');
+        });
+      });
+    }
+  }
 };
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
