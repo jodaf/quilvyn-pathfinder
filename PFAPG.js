@@ -131,53 +131,53 @@ PFAPG.FEATS = {
     'Require=' +
       '"features.Shield Master",' +
       '"features.Two-Weapon Fighting",' +
-      '"baseAttackBonus >= 11"',
+      '"baseAttack >= 11"',
   'Bloody Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttackBonus >= 6"',
+    'Require="features.Power Attack","baseAttack >= 6"',
   'Bodyguard':'Type=General,Fighter Require="features.Combat Reflexes"',
   "In Harm's Way":'Type=General,Fighter Require="features.Bodyguard"',
   // Also, age >= 100
   'Breadth Of Experience':'Type=General Require="race =~ \'Dwarf|Elf|Gnome\'"',
   'Bull Rush Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Bull Rush","baseAttackBonus >= 9"',
+    'Require="features.Improved Bull Rush","baseAttack >= 9"',
   'Charge Through':
     'Type=General,Fighter ' +
-    'Require="features.Improved Overrun","baseAttackBonus >= 1"',
+    'Require="features.Improved Overrun","baseAttack >= 1"',
   'Childlike':'Type=General Require="charisma >= 13","race =~ \'Halfling\'"',
   'Cockatrice Strike':
     'Type=General,Fighter ' +
-    'Require="features.Medusa\'s Wrath","baseAttackBonus >= 14"',
+    'Require="features.Medusa\'s Wrath","baseAttack >= 14"',
   'Combat Patrol':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Combat Reflexes",' +
       'features.Mobility,' +
-      '"baseAttackBonus >= 5"',
+      '"baseAttack >= 5"',
   // TODO
   // 'Cooperative Crafting':'Type=General Require=""'1 rank in any Craft skill, any item creation feat 
   'Cosmopolitan':'Type=General',
   'Covering Defense':
     'Type=General,Feature ' +
-    'Require="features.Shield Focus","baseAttackBonus >= 6"',
+    'Require="features.Shield Focus","baseAttack >= 6"',
   'Crippling Critical':
     'Type=General,Fighter ' +
-    'Require="features.Critical Focus","baseAttackBonus >= 13"',
+    'Require="features.Critical Focus","baseAttack >= 13"',
   'Crossbow Mastery':
     'Type=General,Fighter ' +
     'Require="dexterity >= 15","features.Rapid Reload","features.Rapid Shot"',
   'Dastardly Finish':'Type=General,Fighter Require="sneakAttack >= 5"',
   'Dazing Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttackBonus >= 11"',
+    'Require="features.Power Attack","baseAttack >= 11"',
   'Deep Drinker':
     'Type=General ' +
     'Require="constitution >= 13","levels.Monk >= 11","features.Drunken Ki"',
   'Deepsight':'Type=General Require="features.Darkvision"',
   'Disarming Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Disarm","baseAttackBonus >= 9"',
+    'Require="features.Improved Disarm","baseAttack >= 9"',
   'Disrupting Shot':
     'Type=General,Fighter ' +
     'Require=' +
@@ -193,14 +193,14 @@ PFAPG.FEATS = {
     'Require=' +
       '"strength >= 15",' +
       '"features.Natural Weapons",' +
-      '"baseAttackBonus >= 6"',
+      '"baseAttack >= 6"',
   'Elemental Fist':
     'Type=General,Fighter ' +
     'Require=' +
       '"constitution >= 13",' +
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
-      '"baseAttackBonus >= 8"',
+      '"baseAttack >= 8"',
   'Elemental Focus (Acid)':'Type=General',
   'Elemental Focus (Cold)':'Type=General',
   'Elemental Focus (Electricity)':'Type=General',
@@ -238,16 +238,16 @@ PFAPG.FEATS = {
     'Type=General,Fighter Require="dexterity >= 13","features.Step Up"',
   'Step Up and Strike':
     'Type=General,Fighter ' +
-    'Require="features.Following Step","baseAttackBonus >= 6"',
+    'Require="features.Following Step","baseAttack >= 6"',
   'Furious Focus':
     'Type=General,Fighter ' +
-    'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Dreadful Carnage':
     'Type=General,Fighter ' +
-    'Require="strength >= 15","features.Furious Focus","baseAttackBonus >= 11"',
+    'Require="strength >= 15","features.Furious Focus","baseAttack >= 11"',
   'Gang Up':'Type=General,Fighter Require="features.Combat Expertise"',
   'Team Up':
-    'Type=General,Fighter Require=features.Gang-Up,"baseAttackBonus >= 6"',
+    'Type=General,Fighter Require=features.Gang-Up,"baseAttack >= 6"',
   'Gnome Trickster':
     'Type=General ' +
     'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
@@ -269,21 +269,21 @@ PFAPG.FEATS = {
     'Type=General,Fighter Require="features.Combat Expertise"',
   'Greater Dirty Trick':
     'Type=General,Fighter ' +
-    'Require="features.Improved Dirty Trick","baseAttackBonus >= 6"',
+    'Require="features.Improved Dirty Trick","baseAttack >= 6"',
   'Improved Drag':'Type=General,Fighter Require="features.Power Attack"',
   'Greater Drag':
     'Type=General,Fighter ' +
-    'Require="features.Improved Drag","baseAttackBonus >= 6"',
+    'Require="features.Improved Drag","baseAttack >= 6"',
   'Improved Reposition':
     'Type=General,Fighter Require="features.Combat Expertise"',
   'Greater Reposition':
     'Type=General,Fighter ' +
-    'Require="features.Improved Reposition","baseAttackBonus >= 6"',
+    'Require="features.Improved Reposition","baseAttack >= 6"',
   'Improved Share Spells':'Type=General Require="skills.Spellcraft >= 10"',
   'Improved Steal':'Type=General,Fighter Require="features.Combat Expertise"',
   'Greater Steal':
     'Type=General,Fighter ' +
-    'Require="features.Improved Steal","baseAttackBonus >= 6"',
+    'Require="features.Improved Steal","baseAttack >= 6"',
   'Improved Stonecunning':
     'Type=General ' +
     'Require="wisdom >= 13","race =~ \'Dwarf\'",features.Stonecunning',
@@ -331,7 +331,7 @@ PFAPG.FEATS = {
     'Require="skills.Spellcraft >= 15","features.Improved Counterspell"',
   'Parting Shot':
     'Type=General,Fighter ' +
-    'Require="features.Shot on the Run","baseAttackBonus >= 6"',
+    'Require="features.Shot on the Run","baseAttack >= 6"',
   'Pass for Human':
     'Type=General Require="race =~ \'Half-Elf|Half-Orc|Halfling\'"',
   'Perfect Strike':
@@ -340,7 +340,7 @@ PFAPG.FEATS = {
       '"dexterity >= 13",' +
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
-      '"baseAttackBonus >= 8"',
+      '"baseAttack >= 8"',
   // TODO
   // 'Point-Blank Master':'Type=General,Fighter Require=""'Weapon Specialization with a ranged weapon
   'Practiced Tactician':'Type=General Require=features.Tactician',
@@ -352,32 +352,32 @@ PFAPG.FEATS = {
       '"constitution >= 13",' +
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
-      '"baseAttackBonus >= 8"',
+      '"baseAttack >= 8"',
   'Pushing Assault':
     'Type=General,Fighter ' +
-    'Require="strength >= 15","features.Power Attack","baseAttackBonus >= 1"',
+    'Require="strength >= 15","features.Power Attack","baseAttack >= 1"',
   'Racial Heritage':'Type=General Require="race =~ \'Human\'"',
   'Raging Vitality':'Type=General Require="constitution >= 15",features.Rage',
   'Razortusk':'Type=General Require="race == \'Half-Orc\'"',
   'Rending Claws':
     'Type=General,Fighter ' +
-    'Require="strength >= 13",weapons.Claws,"baseAttackBonus >= 6"',
+    'Require="strength >= 13",weapons.Claws,"baseAttack >= 6"',
   'Repositioning Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Reposition","baseAttackBonus >= 9"',
+    'Require="features.Improved Reposition","baseAttack >= 9"',
   'Saving Shield':'Type=General,Fighter Require="features.Shield Proficiency"',
   'Second Chance':
     'Type=General,Fighter ' +
-    'Require="features.Combat Expertise","baseAttackBonus >= 6"',
+    'Require="features.Combat Expertise","baseAttack >= 6"',
   'Improved Second Chance':
     'Type=General,Fighter ' +
-    'Require="features.Second Chance","baseAttackBonus >= 11"',
-  'Shadow Strike':'Type=General,Fighter Require="baseAttackBonus >= 1"',
+    'Require="features.Second Chance","baseAttack >= 11"',
+  'Shadow Strike':'Type=General,Fighter Require="baseAttack >= 1"',
   'Shared Insight':'Type=General Require="wisdom >= 13","race == \'Half-Elf\'"',
   'Sharp Senses':'Type=General Require="features.Keen Senses"',
   'Shield Of Swings':
     'Type=General,Fighter ' +
-    'Require="strength >= 13","features.Power Attack","baseAttackBonus >= 1"',
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require="features.Shield Focus","features.Fighter >= 4"',
@@ -442,14 +442,14 @@ PFAPG.FEATS = {
       '"race =~ \'Dwarf\'"',
   'Stunning Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttackBonus >= 16"',
+    'Require="features.Power Attack","baseAttack >= 16"',
   "Summoner's Call":'Type=General Require=features.Eidolon',
   'Sundering Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Sunder","baseAttackBonus >= 9"',
+    'Require="features.Improved Sunder","baseAttack >= 9"',
   'Swift Aid':
     'Type=General,Fighter ' +
-    'Require="features.Combat Expertise","baseAttackBonus >= 6"',
+    'Require="features.Combat Expertise","baseAttack >= 6"',
   'Taunt':'Type=General Require="charisma >= 13",features.Small',
   'Teleport Tactician':
     'Type=General,Fighter ' +
@@ -464,14 +464,14 @@ PFAPG.FEATS = {
     'Require=' +
       '"wisdom >= 18",' +
       '"features.Improved Unarmed Strike",' +
-      '"baseAttackBonus >= 8"',
+      '"baseAttack >= 8"',
   'Trick Riding':
     'Type=General,Fighter Require="skills.Ride >= 9","features.Mounted Combat"',
   'Mounted Skirmisher':
     'Type=General,Fighter Require="skills.Ride >= 14","features.Trick Riding"',
   'Tripping Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Trip","baseAttackBonus >= 9"',
+    'Require="features.Improved Trip","baseAttack >= 9"',
   'Under and Over':
     'Type=General,Fighter Require="features.Agile Maneuvers",features.Small',
   'Underfoot':
@@ -508,10 +508,10 @@ PFAPG.FEATS = {
   'Coordinated Maneuvers':'Type=Teamwork,Fighter',
   'Duck and Cover':'Type=Teamwork',
   'Lookout':'Type=Teamwork,Fighter',
-  'Outflank':'Type=Teamwork,Fighter Require="baseAttackBonus >= 4"',
+  'Outflank':'Type=Teamwork,Fighter Require="baseAttack >= 4"',
   'Paired Opportunists':'Type=Teamwork,Fighter',
   'Precise Strike':
-    'Type=Teamwork,Fighter Require="dexterity >= 13","baseAttackBonus >= 1"',
+    'Type=Teamwork,Fighter Require="dexterity >= 13","baseAttack >= 1"',
   'Shield Wall':'Type=Teamwork,Fighter Require="features.Shield Proficiency"',
   'Shielded Caster':'Type=Teamwork',
   'Swap Places':'Type=Teamwork,Fighter'
@@ -841,7 +841,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
   'Challenge':
     'Section=combat ' +
-    'Note="Gain +%{levels.Cavalier} HP damage on chosen foe and suffer -2 AC against other foes 1/dy"',
+    'Note="Self inflicts +%{levels.Cavalier} HP damage on chosen foe and suffers -2 AC against other foes %{(levels.Cavalier+2)//3}/dy"',
   'Demanding Challenge':
     'Section=combat Note="Challenged target suffers -2 AC from others"',
   'Expert Trainer':
@@ -849,7 +849,7 @@ PFAPG.FEATURES = {
     'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
   'For The Faith':
     'Section=combat ' +
-    'Note="R30\' May grant +%{charismaBonus>?1} to self attack and +%{charismaBonus//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
+    'Note="R30\' May grant +%{charismaModifier>?1} to self attack and +%{charismaModifier//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
   'For The King':
     'Section=combat ' +
     'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
@@ -859,7 +859,7 @@ PFAPG.FEATURES = {
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
-    'Note="Additional daily challenge with +%{charismaBonus} attack and damage and +4 to confirm critical hits"',
+    'Note="Additional daily challenge with +%{charismaModifier} attack and damage and +4 to confirm critical hits"',
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
@@ -870,7 +870,10 @@ PFAPG.FEATURES = {
   'Moment Of Triumph':
     'Section=feature ' +
     'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
-  'Mount':'Section=feature Note="Special bond and abilities"',
+  'Mount':'Section=feature,skill ' +
+    'Note=' +
+      '"Has Animal Companion feature w/mount",' +
+      '"No armor check penalty for Ride w/mount"',
   'Mounted Mastery':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -935,10 +938,10 @@ PFAPG.FEATURES = {
     'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
   'Supreme Charge':
     'Section=combat ' +
-    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttackBonus+10} Will staggered 1d4 rd)"',
+    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttack+10} Will staggered 1d4 rd)"',
   'Tactician':
     'Section=feature ' +
-    'Note="Has Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
+    'Note="Gain 1 Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
 
 
   // Inquisitor
@@ -1212,7 +1215,7 @@ PFAPG.FEATURES = {
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
-      '"+%{levels.Oracle - baseAttackBonus} on chosen combat maneuver",' +
+      '"+%{levels.Oracle - baseAttack} on chosen combat maneuver",' +
       '"Has Improved Trip%V features"',
   'Mantle Of Moonlight':
     'Section=combat,save ' +
@@ -1228,7 +1231,7 @@ PFAPG.FEATURES = {
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
   'Moonlight Bridge':
     'Section=magic ' +
-    'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaBonus}/dy"',
+    'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaModifier}/dy"',
   'Mystery':'Section=feature Note="1 Selection"',
   'Natural Divination':
     'Section=feature ' +
@@ -3491,7 +3494,7 @@ PFAPG.FEATURES = {
     'Note="Unarmed crit petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
   'Combat Patrol':
     'Section=combat ' +
-    'Note="May use full-round action to increase threat area by %{baseAttackBonus//5}\'"',
+    'Note="May use full-round action to increase threat area by %{baseAttack//5}\'"',
   'Cooperative Crafting':
     'Section=skill ' +
     'Note="Assisting another gives +2 Craft or Spellcraft and dbl GP value"',
@@ -3509,14 +3512,14 @@ PFAPG.FEATURES = {
     'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : 1} AC to adjacent ally"',
   'Crippling Critical':
     'Section=combat ' +
-    'Note="Critical hit reduces foe speed by half for 1 min (DC %{10 + baseAttackBonus} Fort 1d4 rd)"',
+    'Note="Critical hit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fort 1d4 rd)"',
   'Crossbow Mastery':
     'Section=combat Note="May reload crossbow as free action w/out AOO"',
   'Dastardly Finish':
     'Section=combat Note="May coup de grace cowering and stunned targets"',
   'Dazing Assault':
     'Section=feature ' +
-    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttackBonus} neg)"',
+    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} neg)"',
   'Dazing Spell':
     'Section=magic ' +
     'Note="May forego spell damage to daze target for spell level rd (spell save or Will neg)"',
@@ -3831,7 +3834,7 @@ PFAPG.FEATURES = {
     'Note="+4 Bluff (conceal feelings or motives), foe suffers +5 Sense Motive DC"',
   'Stunning Assault':
     'Section=combat ' +
-    'Note="May trade -5 attack for 1 rd stun (DC %{10+baseAttackBonus} neg)"',
+    'Note="May trade -5 attack for 1 rd stun (DC %{10+baseAttack} neg)"',
   "Summoner's Call":
     'Section=companion ' +
     'Note="Summoned eidolon gains chose of +2 Strength, Dexterity, or Constitution for 10 min"',
@@ -6771,7 +6774,7 @@ PFAPG.CLASSES = {
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple/Martial)",' +
+      '"1:Weapon Proficiency (Martial)",' +
       '1:Challenge,1:Mount,1:Order,1:Tactician,"3:Cavalier\'s Charge",' +
       '"4:Expert Trainer",5:Banner,"6:Cavalier Feat Bonus",' +
       '"9:Greater Tactician","11:Mighty Charge","12:Demanding Challenge",' +
@@ -7458,12 +7461,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
     rules.defineRule
+      ('features.Animal Companion', 'featureNotes.mount', '=', '1');
+    rules.defineRule
       ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
     rules.defineRule
       ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
     rules.defineRule('featCount.Teamwork',
       'featureNotes.greaterTactician', '+=', '1',
-      'featureNotes.masterTactician', '+=', '1'
+      'featureNotes.masterTactician', '+=', '1',
+      'featureNotes.tactician', '+=', '1'
     );
     rules.defineRule('featureNotes.cavalierFeatBonus',
       classLevel, '+=', 'Math.floor(source / 6)'
@@ -7491,6 +7497,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
       'featureNotes.order', '=', null
+    );
+    rules.defineRule('skillModifier.Ride', 'skillNotes.mount.1', '+', null);
+    rules.defineRule('skillNotes.mount.1',
+      'skillNotes.mount', '?', null,
+      'skillNotes.armorSkillCheckPenalty', '=', null
     );
     let allFeats = rules.getChoices('feats');
     ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
@@ -10024,6 +10035,21 @@ PFAPG.raceRulesExtra = function(rules, name) {
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 PFAPG.randomizeOneAttribute = function(attributes, attribute) {
+  if(attribute == 'companion' && 'levels.Cavalier' in attributes) {
+    let howMany = 1;
+    for(let attr in attributes) {
+      if(attr.startsWith('animalCompanion.'))
+        howMany = 0;
+    }
+    if(howMany > 0) {
+      let choices =
+        'features.Small' in attributes && attributes['levels.Cavalier'] >= 4 ?
+          ['Pony', 'Wolf', 'Boar', 'Dog'] :
+        'features.Small' in attributes ? ['Pony', 'Wolf'] : ['Camel', 'Horse'];
+      attributes['animalCompanion.' + choices[QuilvynUtils.random(0, choices.length - 1)]] = 1;
+      attributes.animalCompanionName = SRD35.randomName(null);
+    }
+  }
   if(attribute == 'companion' && 'levels.Summoner' in attributes) {
     let choices = [];
     let howMany = 1;
