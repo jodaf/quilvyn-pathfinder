@@ -817,10 +817,10 @@ PFAPG.FEATURES = {
   // Cavalier
   'Act As One':
     'Section=combat ' +
-    'Note="R30\' May grant move, +2 melee attack, and +2 AC to each ally 1/combat"',
+    'Note="R30\' May give immediate move, +2 melee attack, and +2 AC to each ally 1/combat"',
   'Aid Allies (Cavalier)':
     'Section=combat ' +
-    'Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
+    'Note="Aid Another action gives ally +%{(levels.Cavalier+4)//6+2} AC, attack, save, or skill check"',
   'Banner':
     'Section=combat ' +
     'Note="R60\' Allies gain +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
@@ -834,8 +834,8 @@ PFAPG.FEATURES = {
   'Calling':
     'Section=feature,magic ' +
     'Note=' +
-      '"May gain +%{charismaModifier} on chosen ability check, attack, save, or skill check within 1 min after prayer 4/dy",' +
-      '"+%V %1"',
+      '"May gain +%{charismaModifier} on choice of ability check, attack, save, or skill check within 1 min after prayer 1/choice/dy",' +
+      '"+%V Channel Energy and Lay On Hands level"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
     'Section=combat ' +
@@ -850,27 +850,27 @@ PFAPG.FEATURES = {
     'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach mount in 1/7 time (DC +5)"',
   'For The Faith':
     'Section=combat ' +
-    'Note="R30\' May grant +%{charismaModifier>?1} to self attack and +%{charismaModifier//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
+    'Note="R30\' May give self +%{charismaModifier>?1} attack and allies +%{charismaModifier//2>?1} attack for 1 rd %{levels.Cavalier//4-1}/dy"',
   'For The King':
     'Section=combat ' +
-    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
+    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd 1/combat"',
   'Greater Banner':
     'Section=combat ' +
     'Note="R60\' Allies gain +2 save vs. charm and compulsion/Waving banner gives allies additional save vs. spell or effect"',
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
-    'Note="Additional daily challenge with +%{charismaModifier} attack and damage and +4 to confirm critical hits"',
+    'Note="Gain additional daily challenge w/+%{charismaModifier} attack and damage and +4 to confirm critical hits"',
   "Lion's Call":
     'Section=combat ' +
-    'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
+    'Note="R60\' May give allies +%{charismaModifier} save vs. fear and +1 attack for %{levels.Cavalier} rd and immediate save vs. frightened or panicked"',
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat/May use Tactician to share 2 Teamwork feats w/allies"',
   'Mighty Charge':
     'Section=combat ' +
     'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out AOO after successful mounted charge"',
   'Moment Of Triumph':
     'Section=feature ' +
-    'Note="May automatically confirm critical threats and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC 1/dy"',
+    'Note="May automatically confirm critical threats and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
   'Mount':'Section=companion,feature,skill ' +
     'Note=' +
       '"Mount has Light Armor Proficiency feature but lacks Share Spells feature",' +
@@ -879,7 +879,7 @@ PFAPG.FEATURES = {
   'Mounted Mastery':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+4 AC vs. attack set against mounted charge/Adds mount\'s strength modifier to charge damage",' +
+      '"+4 AC vs. attack set against mounted charge/+%{((animalCompanionStats.Str||10)-10)//2} mounted charge damage",' +
       '"Gain 1 Order Of The Sword feat",' +
       '"No armor check penalty for Ride"',
   'Order':'Section=feature Note="1 Selection"',
@@ -892,27 +892,27 @@ PFAPG.FEATURES = {
   'Order Of The Dragon':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"Allies receive +%{levels.Cavalier//4+1} attack on challenge target",' +
+      '"Allies gain +%{levels.Cavalier//4+1} attack on threatened challenge target",' +
       '"Must defend allies",' +
-      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (protect allies)"',
+      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (care for allies)"',
   'Order Of The Lion':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
       '"Must defend and obey sovereign",' +
-      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
+      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/May use Knowledge (Nobility) untrained/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
   'Order Of The Shield':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
-      '"Must defend the lives and property of common folks",' +
+      '"Must defend the lives and prosperity of common folk",' +
       '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
   'Order Of The Star':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} saves while attacking challenge target",' +
+      '"+%{levels.Cavalier//4+1} saves while threatening challenge target",' +
       '"Must protect and serve the faithful",' +
-      '"Heal is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
+      '"Heal is a class skill/Knowledge (Religion) is a class skill/May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
   'Order Of The Sword':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -921,23 +921,25 @@ PFAPG.FEATURES = {
       '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
   'Protect The Meek':
     'Section=combat ' +
-    'Note="May move and attack as an immediate action; staggered for 1 rd afterward"',
+    'Note="May take immediate move and attack; staggered for 1 rd afterward"',
   'Resolute':
     'Section=combat ' +
-    'Note="In heavy armor, may convert %{(levels.Cavalier+4)/6} HP taken from each attack to nonlethal"',
+    'Note="May convert %{(levels.Cavalier+2)//4} HP damage per attack to nonlethal when wearing heavy armor"',
   'Retribution':
     'Section=combat ' +
-    'Note="May make AOO against adjacent foe who strikes fellow member of the faith 1/rd"',
+    'Note="May make +2 AOO against adjacent foe who strikes self or follower of the same faith 1/rd"',
   'Shield Of The Liege':
     'Section=combat ' +
-    'Note="May redirect attack on adjacent ally to self/Adjacent allies gain +2 AC"',
+    'Note="Adjacent allies gain +2 AC/May redirect attack on adjacent ally to self"',
   'Steal Glory':
     'Section=combat ' +
     'Note="May make AOO against threatened target when ally scores a critical hit"',
-  'Stem The Tide':'Section=feature Note="Has Stand Still features"',
+  'Stem The Tide':
+    'Section=feature ' +
+    'Note="Has Stand Still features; may halt foe using attack instead of maneuver"',
   'Strategy':
     'Section=combat ' +
-    'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
+    'Note="R30\' May give each ally +2 AC for 1 rd, +2 attack for 1 rd, or immediate move 1/combat"',
   'Supreme Charge':
     'Section=combat ' +
     'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
@@ -7495,19 +7497,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
-    rules.defineRule('magicNotes.calling',
-      'magicNotes.calling.1', '?', null,
-      classLevel, '=', 'source>=2 ? Math.floor(source / 2) : null'
-    );
-    rules.defineRule('magicNotes.calling.1',
-      'magicNotes.calling.2', '=',
-        'source==1 ? "Channel Energy" : source== 2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
-    );
-    rules.defineRule('magicNotes.calling.2',
-      'features.Calling', '?', null,
-      'levels.Cleric', '=', '1',
-      'levels.Paladin', '+=', '2'
-    );
+    rules.defineRule
+      ('magicNotes.calling', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
       'featureNotes.order', '=', null
     );
@@ -7516,6 +7507,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.mount', '?', null,
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
+    // Reversal of Ride armor penalty is handled by Mount feature; this noop
+    // gets Mounted Mastery skill note displayed in italics
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.mountedMastery', '+', '0');
     let allFeats = rules.getChoices('feats');
     ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
      'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
