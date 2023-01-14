@@ -823,11 +823,11 @@ PFAPG.FEATURES = {
     'Note="Aid Another action gives +%{(levels.Cavalier+4)//6} AC, attack, save, or skill check"',
   'Banner':
     'Section=combat ' +
-    'Note="R60\' allies +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
+    'Note="R60\' Allies gain +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
   'Braggart':
     'Section=combat,feature ' +
     'Note=' +
-      '"+2 attack on demoralized target",' +
+      '"+2 attack vs. demoralized target",' +
       '"Has Dazzling Display features"',
   'By My Honor':
     'Section=save Note="+2 choice of save while maintaining alignment"',
@@ -838,7 +838,8 @@ PFAPG.FEATURES = {
       '"+%V %1"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
-    'Section=combat Note="+4 mounted melee attack; no AC penalty afterward"',
+    'Section=combat ' +
+    'Note="+4 mounted charge attack/No AC penalty after mounted charge"',
   'Challenge':
     'Section=combat ' +
     'Note="Self inflicts +%{levels.Cavalier} HP damage on chosen foe and suffers -2 AC against other foes %{(levels.Cavalier+2)//3}/dy"',
@@ -846,7 +847,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Challenged target suffers -2 AC from others"',
   'Expert Trainer':
     'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (mount)/Teach mount in 1/7 time (DC +5)"',
+    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach mount in 1/7 time (DC +5)"',
   'For The Faith':
     'Section=combat ' +
     'Note="R30\' May grant +%{charismaModifier>?1} to self attack and +%{charismaModifier//2>?1} to allies %{levels.Cavalier//4-1}/dy"',
@@ -855,7 +856,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd"',
   'Greater Banner':
     'Section=combat ' +
-    'Note="R60\' allies +2 save vs. charm and compulsion; waving grants allies additional saving throw vs. spells"',
+    'Note="R60\' Allies gain +2 save vs. charm and compulsion/Waving banner gives allies additional save vs. spell or effect"',
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
@@ -863,17 +864,18 @@ PFAPG.FEATURES = {
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} vs. fear and +1 attack for %{levels.Cavalier} rd"',
-  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
+  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat/May use Tactician to share 2 Teamwork feats w/allies"',
   'Mighty Charge':
     'Section=combat ' +
-    'Note="Dbl threat range while mounted; free bull rush, disarm, sunder, or trip afterward w/out AOO"',
+    'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out AOO after successful mounted charge"',
   'Moment Of Triumph':
     'Section=feature ' +
-    'Note="Automatically confirms critical threats and gains +%{charismaModifier} on ability checks, attack, damage, saves, skillChecks, and AC 1/dy"',
-  'Mount':'Section=feature,skill ' +
+    'Note="May automatically confirm critical threats and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC 1/dy"',
+  'Mount':'Section=companion,feature,skill ' +
     'Note=' +
+      '"Mount has Light Armor Proficiency feature but lacks Share Spells feature",' +
       '"Has Animal Companion feature w/mount",' +
-      '"No armor check penalty for Ride w/mount"',
+      '"No Ride armor check penalty w/mount"',
   'Mounted Mastery':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -884,7 +886,7 @@ PFAPG.FEATURES = {
   'Order Of The Cockatrice':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} HP damage on target of challenge",' +
+      '"+%{levels.Cavalier//4+1} HP damage vs. challenge target",' +
       '"Must put own interest above others\'",' +
       '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
   'Order Of The Dragon':
@@ -938,10 +940,10 @@ PFAPG.FEATURES = {
     'Note="R30\' Grant immediate move, +2 AC for 1 rd, or +2 attack for 1 rd to each ally"',
   'Supreme Charge':
     'Section=combat ' +
-    'Note="Charge does dbl damage (lance triple); critical hit stuns for 1d4 rd (DC %{baseAttack+10} Will staggered 1d4 rd)"',
+    'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
     'Section=feature ' +
-    'Note="Gain 1 Teamwork feat/R30\' may grant Teamwork feat to allies for %{levels.Cavalier//2+1} rd %{levels.Cavalier//5+1}/dy"',
+    'Note="Gain 1 Teamwork feat/R30\' may share Teamwork feat w/allies for %{levels.Cavalier//2+3} rd %{levels.Cavalier//5+1}/dy"',
 
 
   // Inquisitor
@@ -3756,12 +3758,13 @@ PFAPG.FEATURES = {
   'Raging Vitality':
     'Section=combat Note="+2 Con during rage; rage continues if unconscious"',
   'Ray Shield':'Section=combat Note="No damage from ranged touch hit 1/rd"',
-  'Razortusk':'Section=combat Note="Bite does 1d4 HP damage"',
+  'Razortusk':'Section=combat Note="Bite inflicts 1d4 HP damage"',
   'Reach Spell':
     'Section=magic ' +
     'Note="Cast spell at longer rage uses +1 spell slot/range increase"',
   'Rending Claws':
-    'Section=combat Note="Second claw hit in 1 rd does +1d6 HP damage 1/rd"',
+    'Section=combat ' +
+    'Note="Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd"',
   'Repositioning Strike':
     'Section=combat Note="May move foe w/critical hit that exceeds foe CMD"',
   'Saving Shield':
@@ -5210,7 +5213,7 @@ PFAPG.SPELLS = {
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,W2 ' +
-    'Description="Poison affecting touched takes effect immediately or does dbl damage for half duration"',
+    'Description="Poison affecting touched takes effect immediately or inflicts dbl damage for half duration"',
   'Acid Pit':
     'School=Conjuration ' +
     'Level=W4,Summoner4 ' +
@@ -7457,6 +7460,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
     rules.defineRule('weapons.Bomb', classLevel, '=', '1');
   } else if(name == 'Cavalier') {
+    rules.defineRule('animalCompanionFeatures.Light Armor Proficiency',
+      'companionNotes.mount', '=', '1'
+    );
+    rules.defineRule('animalCompanionFeatures.Share Spells',
+      'animalCompanionHasShareSpells', '?', null
+    );
+    rules.defineRule('animalCompanionHasShareSpells',
+      'companionMasterLevel', '=', '1',
+      'companionNotes.mount', '=', '0'
+    );
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
