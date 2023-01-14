@@ -957,23 +957,26 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
   'Discern Lies':
-    'Section=magic Note="May use <i>Discern Lies</i> %{levels.Inquisitor}/dy"',
-  'Domain':'Section=feature Note="1 Selection"',
+    'Section=magic ' +
+    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor}/dy"',
+  'Domain (Inquisitor)':'Section=feature Note="1 Selection"',
   'Exploit Weakness':
     'Section=combat ' +
-    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 energy damage HP/die vs. vulnerable foe"',
+    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe"',
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Judgment':
     'Section=combat ' +
-    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3}/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl on confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR/%{(levels.Inquisitor+5)//5} %{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. crit confirm\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{2+levels.Inquisitor//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
   'Orisons':'Section=magic Note="Knows level-0 spells"',
   'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
   'Slayer':
-    'Section=combat Note="+5 Inquisitor level for chosen judgment effects"',
-  'Solo Tactics':'Section=combat Note="All allies count for Teamwork features"',
+    'Section=combat ' +
+    'Note="Effects of choice of judgment increase to: destruction (+%{(levels.Inquisitor+8)//3} weapon damage), healing (regains +%{(levels.Inquisitor+8)//3} HP/rd), justice (+%{(levels.Inquisitor+10)//5} attack), piercing (+%{(levels.Inquisitor+8)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+10)//5} AC), purity (+%{(levels.Inquisitor+10)//5} saves), resiliency (gain DR %{(levels.Inquisitor+10)//5}/opposed alignment), resistance (resistance %{2+levels.Inquisitor//8*2} to chosen energy)"',
+  'Solo Tactics':
+    'Section=combat Note="All allies count for Teamwork feat bonuses"',
   'Stalwart':
     'Section=save ' +
     'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
@@ -983,7 +986,7 @@ PFAPG.FEATURES = {
   // 'Track' in Pathfinder.js
   'True Judgment':
     'Section=combat ' +
-    'Note="Successful judgment attack kills foe (Fort neg) 1/1d4 rd"',
+    'Note="Successful judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg) 1/1d4 rd"',
 
   // Oracle
   'Acid Skin':
@@ -2746,6 +2749,7 @@ PFAPG.FEATURES = {
   'Divine Holy Symbol':
     'Section=magic ' +
     'Note="Holy symbol lights 30\' radius and gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
+  'Domain (Paladin)':'Section=feature Note="1 Selection"',
   'Hospitaler':
     'Section=magic ' +
     'Note="May use Channel Energy w/out expending Lay On Hands"',
@@ -4407,7 +4411,7 @@ PFAPG.PATHS = {
     'Group=Paladin ' +
     'Level=levels.Paladin ' +
     'Features=' +
-      '"4:Domain","8:Call Celestial Ally" ' +
+      '"4:Domain (Paladin)","8:Call Celestial Ally" ' +
     'Selectables=' +
       QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 4:' + x + ':Domain"').join(',') + ' ' +
     'SpellSlots=' +
@@ -6814,28 +6818,28 @@ PFAPG.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Simple/Hand Crossbow/Longbow/Repeating Crossbow/Shortbow)",' +
-      '1:Domain,1:Judgment,"1:Monster Lore",1:Orisons,"1:Stern Gaze",' +
-      '"2:Cunning Initiative","2:Detect Alignment",2:Track,"3:Solo Tactics",' +
-      '"3:Teamwork Feat",5:Bane,"5:Discern Lies","8:Second Judgment",' +
-      '11:Stalwart,"12:Greater Bane","14:Exploit Weakness",' +
-      '"16:Third Judgment",17:Slayer,"20:True Judgment" ' +
+      '"1:Domain (Inquisitor)",1:Judgment,"1:Monster Lore",1:Orisons,' +
+      '"1:Stern Gaze","2:Cunning Initiative","2:Detect Alignment",2:Track,' +
+      '"3:Solo Tactics","3:Teamwork Feat",5:Bane,"5:Discern Lies",' +
+      '"8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
+      '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment" '+
     'Selectables=' +
-      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + '"').join(',') + ' ' +
+      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + ':Domain"').join(',') + ' ' +
     'CasterLevelDivine=levels.Inquisitor ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
       'Inquisitor0:1=4;2=5;3=6,' +
-      'Inquisitor1:1=2;2=3;3=4;7=5;11=6,' +
-      'Inquisitor2:4=2;5=3;6=4;10=5;14=6,' +
-      'Inquisitor3:7=2;8=3;9=4;13=5;17=6,' +
-      'Inquisitor4:10=2;11=3;12=4;16=5;20=6,' +
-      'Inquisitor5:13=2;14=3;15=4;19=5,' +
-      'Inquisitor6:16=2;17=3;18=4;20=5 ' +
+      'Inquisitor1:1=1;2=2;3=3;5=4;9=5,' +
+      'Inquisitor2:4=1;5=2;6=3;8=4;12=5,' +
+      'Inquisitor3:7=1;8=2;9=3;11=4;15=5,' +
+      'Inquisitor4:10=1;11=2;12=3;14=4;18=5,' +
+      'Inquisitor5:13=1;14=2;15=3;17=4;19=5,' +
+      'Inquisitor6:16=1;17=2;18=3;19=4;20=5 ' +
     'Skills=' +
       'Bluff,Climb,Craft,Diplomacy,Disguise,Heal,Intimidate,' +
-      '"Knowledge (Arcana)","Knowledge (Dungeoneering)","Knowledge (Planes)",' +
-      '"Knowledge (Religion)",Perception,Profession,Ride,"Sense Motive",' +
-      'Spellcraft,Stealth,Survival,Swim',
+      '"Knowledge (Arcana)","Knowledge (Dungeoneering)","Knowledge (Nature)",' +
+      '"Knowledge (Planes)","Knowledge (Religion)",Perception,Profession,' +
+      'Ride,"Sense Motive",Spellcraft,Stealth,Survival,Swim',
   'Oracle':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
@@ -7515,20 +7519,33 @@ PFAPG.classRulesExtra = function(rules, name) {
     ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
      'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
   } else if(name == 'Inquisitor') {
+    let allDeities = rules.getChoices('deities');
+    for(let d in allDeities) {
+       QuilvynUtils.getAttrValueArray(allDeities[d], 'Weapon').forEach(w => {
+         rules.defineRule('inquisitorFeatures.Weapon Proficiency (' + w + ')',
+           'levels.Inquisitor', '?', null,
+           'deityFavoredWeapons', '=',
+             'source.split("/").includes("' + w + '") ? 1 : null'
+         );
+         rules.defineRule('features.Weapon Proficiency (' + w + ')',
+           'inquisitorFeatures.Weapon Proficiency (' + w + ')', '=', '1'
+         );
+       });
+    }
     rules.defineRule('combatNotes.bane',
       '', '=', '2',
       'combatNotes.greaterBane', '+', '2'
     );
-    rules.defineRule('combatNotes.cunningInitiative',
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
+    rules.defineRule
+      ('combatNotes.cunningInitiative', 'wisdomModifier', '=', null);
     rules.defineRule
       ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
     rules.defineRule('featureNotes.teamworkFeat',
       classLevel, '+=', 'Math.floor(source / 3)'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Inquisitor', 'levels.Inquisitor', '+=', '1');
+    rules.defineRule('selectableFeatureCount.Inquisitor (Domain)',
+      'featureNotes.domain(Inquisitor)', '+=', '1'
+    );
     rules.defineRule('skillNotes.sternGaze',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
@@ -8933,7 +8950,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('selectableFeatureCount.Paladin (Mercy)', 'paladinHasMercy', '?', null);
     rules.defineRule('selectableFeatureCount.Paladin (Domain)',
-      'sacredServantLevel', '=', 'source>=4 ? 1 : null'
+      'featureNotes.domain(Paladin)', '=', '1'
     );
     rules.defineRule('skillModifier.Ride',
       'skillNotes.skilledRider', '+', '0', // Italics
