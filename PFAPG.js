@@ -991,7 +991,7 @@ PFAPG.FEATURES = {
   // Oracle
   'Acid Skin':
     'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
   'Air Barrier':
     'Section=combat ' +
     'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
@@ -1015,7 +1015,7 @@ PFAPG.FEATURES = {
     'Note="R100\' Allies within hearing gain +%{levels.Oracle>=10 ? 2 : 1} attack, skill checks, and saves for %{charismaModifier} rd %{(levels.Oracle+5)//5}/dy"',
   'Battlefield Clarity':
     'Section=combat ' +
-    'Note="May make +4 reroll on failed save vs. blind, deaf, frightened, panicked, paralyzed, shaken, or stunned %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
+    'Note="May make +4 reroll on failed save vs. blind, deaf, frightened, panicked, paralyzed, shaken, or stunned %{levels.Oracle>=15 ? 3 : levels.Oracle>=7 ? 2 : 1}/dy"',
   'Bleeding Wounds':
     'Section=combat ' +
     'Note="Successful attack inflicts %{(levels.Oracle+5)//5} HP bleeding each rd (DC 15 Heal or healing effect ends)"',
@@ -1043,7 +1043,7 @@ PFAPG.FEATURES = {
     'Note="May make swift action trip attempt w/out AOO after critical hit"',
   'Clouded Vision':
     'Section=feature ' +
-    'Note="%{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
+    'Note="Has %{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
   'Coat Of Many Stars':
     'Section=combat ' +
     'Note="Conjured coat gives +%{(levels.Oracle+5)//4*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/slashing\' : \'\'} for %{levels.Oracle}/dy"',
@@ -1056,10 +1056,10 @@ PFAPG.FEATURES = {
   'Deaf':
     'Section=combat,feature,magic,skill ' +
     'Note=' +
-      '"-%V Initiative",' +
-      '"Has %V",' +
+      '"%V Initiative",' +
+      '"Cannot hear%1",' +
       '"May cast all spells silently",' +
-      '"+3 Perception (non-sound)"',
+      '"Automatically fails Perception (sound)/-4 opposed Perception%{levels.Oracle>=5 ? \'/+3 Perception (non-sound)\' : \'\'}"',
   "Death's Touch":
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP negative energy (undead heals and gives +1 channel resistance for 1 min) %{charismaModifier+3}/dy"',
@@ -1182,20 +1182,20 @@ PFAPG.FEATURES = {
     'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Icy Skin':
     'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
   'Interstellar Void':
     'Section=combat ' +
     'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
   'Invisibility':
     'Section=magic ' +
-    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> %{levels.Oracle} rd/dy\' : \'\'}"',
+    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> \' + levels.Oracle \' rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
-    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{source>=15 ? 2 : 1}/dy"',
+    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{levels.Oracle>=15 ? 2 : 1}/dy"',
   'Lame':
     'Section=ability,save ' +
     'Note=' +
-      '"-%V Speed/Speed is unaffected by encumbrance%V",' +
+      '"%V Speed/Speed is unaffected by encumbrance%1",' +
       '"Immune to %V"',
   'Life Leach':
     'Section=combat ' +
@@ -1235,7 +1235,7 @@ PFAPG.FEATURES = {
     'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4}, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Molten Skin':
     'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
   'Moonlight Bridge':
     'Section=magic ' +
     'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaModifier}/dy"',
@@ -1287,7 +1287,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min, heals %{levels.Oracle} to self %{(levels.Oracle-3)//4}/dy"',
   'Spark Skin':
     'Section=save ' +
-    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : source>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
+    'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
   'Speak With Animals (Oracle)':
     'Section=magic ' +
     'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
@@ -1319,13 +1319,13 @@ PFAPG.FEATURES = {
       '"Has %V feature"',
   'Surprising Charge':
     'Section=combat ' +
-    'Note="May take extra move %{source>=15 ? 3 : source>=7 ? 2 : 1}/dy"',
+    'Note="May take extra move %{levels.Oracle>=15 ? 3 : levels.Oracle>=7 ? 2 : 1}/dy"',
   'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
   'Thunderburst':
     'Section=combat ' +
     'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
   'Tongues':
-    'Section=combat,feature ' +
+    'Section=combat,skill ' +
     'Note=' +
       '"Can speak only chosen outsider or elemental language during combat",' +
       '"+%V Language Count%1"',
@@ -7556,20 +7556,21 @@ PFAPG.classRulesExtra = function(rules, name) {
       'abilityNotes.lame.1', '*', 'source.includes("armor") ? 0 : null'
     );
     rules.defineRule('abilityNotes.lame',
-      '', '=', '10',
+      '', '=', '-10',
       'features.Slow', '+', '5'
     );
     rules.defineRule('abilityNotes.lame.1',
       'features.Lame', '?', null,
-      classLevel, '=', 'source>10 ? " or armor" : ""'
+      classLevel, '=', 'source>=10 ? " or armor" : ""'
     );
     rules.defineRule('combatNotes.deaf',
       classLevel, '=', 'source<5 ? -4 : source<10 ? -2 : null'
     );
     rules.defineRule
       ('featCount.General', 'featureNotes.weaponMastery', '+', null);
-    rules.defineRule('featureNotes.deaf',
-      classLevel, '=', 'source<10 ? null : source<15 ? "scent feature" : "scent feature, 30\' tremorsense"'
+    rules.defineRule('featureNotes.deaf.1',
+      'features.Deaf', '?', null,
+      classLevel, '=', 'source<10 ? \'\' : source<15 ? "/Has Scent feature" : "/Has Scent feature and 30\' Tremorsense"'
     );
     rules.defineRule('featureNotes.maneuverMastery',
       classLevel, '=', 'source<7 ? null : source<11 ? "" : " and Greater Trip"'
@@ -7579,12 +7580,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
-    );
-    rules.defineRule
-      ('featureNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
-    rules.defineRule('featureNotes.tongues.1',
-      'features.Tongues', '?', null,
-      classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
     );
     rules.defineRule('featureNotes.weaponMastery',
       classLevel, '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
@@ -7602,13 +7597,15 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Improved Trip', 'featureNotes.maneuverMastery', '=', '1');
     rules.defineRule('features.Scent',
-      'featureNotes.deaf', '=', 'source.includes("scent") ? 1 : null'
+      'featureNotes.deaf.1', '=', 'source.includes("Scent") ? 1 : null'
     );
+    rules.defineRule('initiative', 'combatNotes.deaf', '+', null);
+    rules.defineRule('languageCount', 'skillNotes.tongues', '+', null);
     rules.defineRule('magicNotes.haunted',
-      classLevel, '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>10 ? ", <i>Telekinesis</i>" : "") + (source>15 ? "<i>, Reverse Gravity</i>" : "")'
+      classLevel, '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>=5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>=10 ? ", <i>Telekinesis</i>" : "") + (source>=15 ? "<i>, Reverse Gravity</i>" : "")'
     );
     rules.defineRule('saveNotes.lame',
-      classLevel, '=', 'source<5 ? null : source<15 ? "fatigued condition" : "fatigued and exhausted conditions"'
+      classLevel, '=', 'source<5 ? null : source<15 ? "fatigued" : "fatigued and exhausted"'
     );
     rules.defineRule('saveNotes.wasting.1',
       'features.Wasting', '?', null,
@@ -7620,6 +7617,19 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
       'featureNotes.mystery', '+=', '1'
     );
+    rules.defineRule
+      ('skillNotes.tongues', classLevel, '=', 'source<5 ? 1 : 2');
+    rules.defineRule('skillNotes.tongues.1',
+      'features.Tongues', '?', null,
+      classLevel, '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
+    );
+    rules.defineRule('speed', 'abilityNotes.lame', '+', null);
+    let allSkills = rules.getChoices('skills');
+    for(let skill in allSkills) {
+      if(skill != 'Intimidate' && allSkills[skill].match(/charisma/i))
+        rules.defineRule
+          ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
+    }
     let allSpells = rules.getChoices('spells');
     ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
      'Reverse Gravity'].forEach(s => {
