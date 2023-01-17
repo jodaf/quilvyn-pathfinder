@@ -641,7 +641,7 @@ PFAPG.FEATURES = {
       '"-2 vs. fear/No morale bonus on fear saves"',
   'Outrider':'Section=skill Note="+2 Handle Animal/+2 Ride"',
   'Low Blow':
-    'Section=combat Note="+1 crit confirmation on larger foe"',
+    'Section=combat Note="+1 confirm crit on larger foe"',
   'Practicality':
     'Section=save,skill ' +
     'Note=' +
@@ -860,7 +860,7 @@ PFAPG.FEATURES = {
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
-    'Note="Gain additional daily challenge w/+%{charismaModifier} attack and damage and +4 to confirm critical hits"',
+    'Note="Gain additional daily challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit"',
   "Lion's Call":
     'Section=combat ' +
     'Note="R60\' May give allies +%{charismaModifier} save vs. fear and +1 attack for %{levels.Cavalier} rd and immediate save vs. frightened or panicked"',
@@ -870,7 +870,7 @@ PFAPG.FEATURES = {
     'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out AOO after successful mounted charge"',
   'Moment Of Triumph':
     'Section=feature ' +
-    'Note="May automatically confirm critical threats and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
+    'Note="May automatically confirm crit and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
   'Mount':'Section=companion,feature,skill ' +
     'Note=' +
       '"Mount has Light Armor Proficiency feature but lacks Share Spells feature",' +
@@ -965,7 +965,7 @@ PFAPG.FEATURES = {
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Judgment':
     'Section=combat ' +
-    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. crit confirm\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{2+levels.Inquisitor//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{2+levels.Inquisitor//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
@@ -993,7 +993,7 @@ PFAPG.FEATURES = {
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to acid"',
   'Air Barrier':
     'Section=combat ' +
-    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
+    'Note="Conjured air shell gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \' and foe 50% ranged miss chance\' : \'\'} for %{levels.Oracle} hr/dy"',
   'Arcane Archivist (Oracle)':
     'Section=magic ' +
     'Note="May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy"',
@@ -1020,14 +1020,14 @@ PFAPG.FEATURES = {
     'Note="Successful negative energy spell inflicts %{(levels.Oracle+5)//5} HP bleeding/rd (DC 15 Heal or healing effect ends)"',
   'Blizzard':
     'Section=combat ' +
-    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
-  'Bonded Mount':'Section=feature Note="Has mount animal companion"',
+    'Note="%{levels.Oracle} 10\' cu inflict %{levels.Oracle}d4 HP cold (DC %{10+levels.Oracle//2+charismaModifier} Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
+  'Bonded Mount':'Section=feature "Has Animal Companion feature w/mount"',
   'Bones Mystery':
     'Section=skill ' +
     'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
   'Brain Drain':
     'Section=feature ' +
-    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields single Knowledge check at target\'s bonus (Will neg) %{(levels.Oracle+5)//5}/dy"',
+    'Note="R100\' Mental probe inflicts %{levels.Oracle}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (Will neg) for %{charismaModifier} rd %{(levels.Oracle+5)//5}/dy"',
   'Burning Magic':
     'Section=magic ' +
     'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (DC %{10+levels.Oracle//2+charismaModifier} Ref ends)"',
@@ -1038,8 +1038,8 @@ PFAPG.FEATURES = {
       '"+10 Speed",' +
       '"Has %V features"',
   'Clobbering Strike':
-    'Section=combat ' +
-    'Note="May make swift action trip attempt w/out AOO after critical hit"',
+    'Section=magic ' +
+    'Note="May make swift action trip attempt w/out AOO after critical hit w/attack spell"',
   'Clouded Vision':
     'Section=feature ' +
     'Note="Has %{levels.Oracle>=5? 60 : 30}\' vision and darkvision%{levels.Oracle>=10 ? \\", 30\' Blindsense\\" : \'\'}%{levels.Oracle>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
@@ -1051,7 +1051,7 @@ PFAPG.FEATURES = {
     'Note="May use two spell slots to cast quickened Cure spell %{(levels.Oracle-3)//4}/dy"',
   'Crystal Sight':
     'Section=feature ' +
-    'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal"',
+    'Note="Can see through %{levels.Oracle}\' earth and %{levels.Oracle}\\" metal for %{levels.Oracle} rd/dy"',
   'Deaf':
     'Section=combat,feature,magic,skill ' +
     'Note=' +
@@ -1070,7 +1070,7 @@ PFAPG.FEATURES = {
     'Note="Can use <i>Phantasmal Killer</i> effects%{levels.Oracle>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
   'Earth Glide (Oracle)':
     'Section=ability ' +
-    'Note="Can move at full speed through earth, leaving no trace, %{levels.Oracle} min/dy"',
+    'Note="Can move at full speed through earth, leaving no trace, %{levels.Oracle} min/dy; including others uses equal portion of daily time"',
   'Energy Body':
     'Section=feature ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{levels.Oracle} HP positive energy when undead hits self w/melee attack, and heals target 1d6+%{levels.Oracle} HP 1/rd for %{levels.Oracle} rd/dy"',
@@ -1079,7 +1079,7 @@ PFAPG.FEATURES = {
      'Note="Level-based healing by Cure spells gives %{levels.Oracle} HP"',
   'Erosion Touch':
     'Section=combat ' +
-    'Note="Touch inflicts %{levels.Oracle}d6 HP to objects %{levels.Oracle//3>?1}/dy"',
+    'Note="Touch inflicts %{levels.Oracle}d6 HP to objects and constructs %{levels.Oracle//3+1}/dy"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
     'Note="May take full-attack action and move %{speed}\' as full-round action/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{constitution*2} HP"',
@@ -1094,7 +1094,7 @@ PFAPG.FEATURES = {
   'Final Revelation (Heavens Mystery)':
     'Section=combat,feature,save ' +
     'Note=' +
-      '"Automatically stabilize at negative HP/Critical hits automatically confirmed",' +
+      '"Automatically stabilize at negative HP/Automatically confirm crit",' +
       '"Automatically reborn 3 dy after death",' +
       '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
   'Final Revelation (Life Mystery)':
@@ -1112,13 +1112,13 @@ PFAPG.FEATURES = {
     'Note="Cocooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
   'Final Revelation (Stone Mystery)':
     'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid or earth spells w/out cost"',
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid and earth spells w/out cost"',
   'Final Revelation (Waves Mystery)':
     'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water spells w/out cost"',
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water and cold spells w/out cost"',
   'Final Revelation (Wind Mystery)':
     'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air or electricity spells w/out cost"',
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air and electricity spells w/out cost"',
   'Fire Breath':
     'Section=combat ' +
     'Note="15\' cone inflicts %{levels.Oracle}d4 HP fire (DC %{10+levels.Oracle//2+charismaModifier} Ref half) %{1+levels.Oracle//5}/dy"',
@@ -1131,27 +1131,27 @@ PFAPG.FEATURES = {
   'Fluid Nature':
     'Section=combat,feature ' +
     'Note=' +
-      '"+2 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe critical confirmation",' +
+      '"+4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe confirm crit",' +
       '"Has %V features"',
   'Fluid Travel':
     'Section=ability ' +
-    'Note="May move full speed across liquid without contact damage%1"',
+    'Note="May move full speed across liquid without contact damage%1 %{levels.Oracle} hr/dy"',
   'Focused Trance':
     'Section=skill ' +
-    'Note="Trance of 1d6 rd gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill test %{charismaModifier}/dy"',
+    'Note="1d6 rd trance gives +%{levels.Oracle} save vs. sonic and gaze attack and 1 +20 intelligence skill check %{charismaModifier}/dy"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{levels.Oracle>=13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle>=9 ? \'II\' : \'I\'}</i> effects to become %{levels.Oracle>=13 ? \'huge\' : levels.Oracle>=11 ? \'large\' : levels.Oracle>=9 ? \'medium\' : \'small\'} fire elemental for %{levels.Oracle} hr 1/dy"',
   'Freezing Spells':
     'Section=magic ' +
-    'Note="Spells that do cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
+    'Note="Spells that inflict cold damage slow target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
   'Friend To The Animals':
     'Section=magic,save ' +
     'Note=' +
       '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
       '"R30\' Animals gain +%{charismaModifier} on all saves"',
   'Gaseous Form':
-    'Section=magic Note="May use <i>Gaseous Form</i> %{levels.Oracle} min/dy"',
+    'Section=magic Note="May use <i>Gaseous Form</i> effects %{levels.Oracle} min/dy; including others uses equal portion of daily time"',
   'Gaze Of Flames':
     'Section=feature,magic ' +
     'Note=' +
@@ -1179,7 +1179,7 @@ PFAPG.FEATURES = {
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
   'Ice Armor':
     'Section=combat ' +
-    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \', DR 5/piercing\' : \'\'} for %{levels.Oracle} hr/dy"',
+    'Note="Conjured armor gives +%{((levels.Oracle+5)//4)*2>?4} AC%{levels.Oracle>=13 ? \' and DR 5/piercing\' : \'\'} (+2 in cold, -2 in heat) for %{levels.Oracle} hr/dy"',
   'Icy Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
@@ -1188,7 +1188,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Inflicts %{levels.Oracle}d6 HP cold%{levels.Oracle>=15 ? \', exhausted, stunned 1 rd\' : levels.Oracle>=10 ? \', fatigued\' : \'\'} (DC %{10+levels.Oracle//2+charismaModifier} Fort half HP only) %{levels.Oracle>=10 ? 2 : 1}/dy"',
   'Invisibility':
     'Section=magic ' +
-    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> \' + levels.Oracle \' rd/dy\' : \'\'}"',
+    'Note="May use <i>Invisibility</i> %{levels.Oracle} min/dy%{levels.Oracle>=9 ? \' or <i>Greater Invisibility</i> \' + levels.Oracle + \' rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
     'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{levels.Oracle>=15 ? 2 : 1}/dy"',
@@ -1199,7 +1199,7 @@ PFAPG.FEATURES = {
       '"Immune to %V"',
   'Life Leach':
     'Section=combat ' +
-    'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
+    'Note="R30\' Target suffers %{levels.Oracle<?10}d6 HP (DC %{10+levels.Oracle//2+charismaModifier} Fort half), self gains equal temporary HP for %{charismaModifier} hr %{(levels.Oracle-3)//4}/dy"',
   'Life Link':
     'Section=combat ' +
     'Note="R%{levels.Oracle*10+100}\' May establish bond with up to %{levels.Oracle} targets that transfers 5 HP/rd damage to self"',
@@ -1209,11 +1209,11 @@ PFAPG.FEATURES = {
   'Lifesense':'Section=feature Note="Has 30\' Blindsight"',
   'Lightning Breath':
     'Section=combat ' +
-    'Note="R30\' Breath inflicts %{levels.Oracle}d4 electricity (Ref half) %{(levels.Oracle+5)//5}/dy"',
+    'Note="30\' line inflicts %{levels.Oracle}d4 HP electricity (DC %{10+levels.Oracle//2+charismaModifier} Ref half) %{levels.Oracle//5+1}/dy"',
   'Lore Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Knowledge is a class skill"',
-  'Lore Keeper (Oracle)':'Section=skill Note="+%V Knowledge"',
+  'Lore Keeper (Oracle)':'Section=skill Note="+%1 all Knowledge"',
   'Lure Of The Heavens':
     'Section=feature,magic ' +
     'Note=' +
@@ -1232,7 +1232,7 @@ PFAPG.FEATURES = {
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Mighty Pebble':
     'Section=combat ' +
-    'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6+%{levels.Oracle//4}, half in 5\' radius (Ref neg) %{(levels.Oracle+5)//5}/dy"',
+    'Note="R20\' Thrown pebble +%{levels.Oracle//4} attack inflicts %{levels.Oracle//2>?1}d6, half in 5\' radius (DC %{10+levels.Oracle//2+charismaModifier} Ref neg) %{(levels.Oracle+5)//5}/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -1242,10 +1242,10 @@ PFAPG.FEATURES = {
   'Mystery':'Section=feature Note="1 Selection"',
   'Natural Divination':
     'Section=feature ' +
-    'Note="10 min nature study grants 1 +%{charismaModifier} save, 1 +10 skill check, or 1 +1 Initiative"',
+    'Note="10 min nature study grants 1 +%{charismaModifier} save, +10 skill check, or +1 Initiative w/in 1 dy %{levels.Oracle//4+1}/dy"',
   'Nature Mystery':
     'Section=skill ' +
-    'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Survival is a class skill/Swim is a class skill"',
+    'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Ride is a class skill/Survival is a class skill/Swim is a class skill"',
   "Nature's Whispers":'Section=combat Note="+%V AC/+%V CMD"',
   'Near Death':
     'Section=save ' +
@@ -1254,7 +1254,7 @@ PFAPG.FEATURES = {
   // Orisons as Inquisitor
   'Punitive Transformation':
     'Section=magic ' +
-    'Note="May cast <i>Baleful Polymorph</i>, lasting %{levels.Oracle} rd, %{charismaModifier}/dy"',
+    'Note="May use <i>Baleful Polymorph</i> effects, lasting %{levels.Oracle} rd, to transform target into harmless animal %{charismaModifier}/dy"',
   'Raise The Dead':
     'Section=magic ' +
     'Note="Summoned %{levels.Oracle} HD %{levels.Oracle>= 15 ? \'advanced skeleton or zombie\' : levels.Oracle>=7 ? \'bloody skeleton or fast zombie\' : \'skeleton or zombie\'} serves for %{charismaModifier} rd %{levels.Oracle>=10 ? 2 : 1}/dy"',
@@ -1269,16 +1269,16 @@ PFAPG.FEATURES = {
   'Revelation':'Section=feature Note="%V Selections"',
   'Rock Throwing':
     'Section=combat ' +
-    'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1}"',
+    'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1} HP"',
   'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
   'Shard Explosion':
     'Section=combat ' +
-    'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 (Ref half) and difficult terrain for 1 rd %{(levels.Oracle+5)//5}/dy"',
+    'Note="10\' radius inflicts %{levels.Oracle//2>?1}d6 HP piercing (DC %{10+levels.Oracle//2+charismaModifier} Ref half) and difficult terrain for 1 rd %{levels.Oracle//5+1}/dy"',
   'Sidestep Secret':
     'Section=combat,save ' +
     'Note=' +
-      '"+%V AC",' +
-      '"+%V Reflex"',
+      '"Dexterity Armor Class adjustment uses Charisma instead",' +
+      '"Dexterity Reflex adjustment uses Charisma instead"',
   'Skill At Arms':
     'Section=combat ' +
     'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
@@ -1290,13 +1290,13 @@ PFAPG.FEATURES = {
     'Note="%{levels.Oracle>=17 ? \'Immune\' : levels.Oracle>=11 ? \'Resistance 20\' : levels.Oracle>=5 ? \'Resistance 10\' : \'Resistance 5\'} to electricity"',
   'Speak With Animals (Oracle)':
     'Section=magic ' +
-    'Note="May converse at will with %{(levels.Oracle+3)//3} chosen animal types"',
+    'Note="May converse at will with %{levels.Oracle//3+1} chosen animal types"',
   'Spirit Boost':
     'Section=magic ' +
     'Note="Up to %{levels.Oracle} excess HP from Cure spell become temporary HP for 1 rd"',
   'Spirit Of Nature':
     'Section=combat ' +
-    'Note="At negative HP, stabilize automatically%{levels.Oracle<10 ? \' in natural setting\' : \'\'}%{levels.Oracle>=15 ? \' and gain fast healing 3 for 1d4 rd\' : levels.Oracle>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
+    'Note="At negative HP%{levels.Oracle<10 ? \' in natural setting\' : \'\'}, stabilize automatically%{levels.Oracle>=15 ? \' and gain fast healing 3 for 1d4 rd\' : levels.Oracle>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
   'Spirit Walk':
     'Section=magic ' +
     'Note="May become incorporeal for %{levels.Oracle} rd %{levels.Oracle>=15 ? 2 : 1}/dy"',
@@ -1310,7 +1310,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Commune</i> effects via 10 min contemplation 1/dy"',
   'Steelbreaker Skin':
     'Section=combat ' +
-    'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness\' : \'\'} for %{levels.Oracle} min 1/dy"',
+    'Note="Skin inflicts %{levels.Oracle} HP on striking weapon%{levels.Oracle>=15 ? \', ignoring 10 points of hardness,\' : \'\'} for %{levels.Oracle} min 1/dy"',
   'Stone Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Climb is a class skill/Intimidate is a class skill/Survival is a class skill"',
@@ -1318,14 +1318,15 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"+4 CMD vs. bull rush and trip while standing on ground",' +
-      '"Has %V feature"',
+      '"Has %V"',
   'Surprising Charge':
     'Section=combat ' +
     'Note="May make immediate move %{levels.Oracle>=15 ? 3 : levels.Oracle>=7 ? 2 : 1}/dy"',
-  'Think On It':'Section=skill Note="May reroll failed Knowledge at +10 1/day"',
+  'Think On It':
+    'Section=skill Note="May make +10 reroll on failed Knowledge 1/day"',
   'Thunderburst':
     'Section=combat ' +
-    'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
+    'Note="R100\' %{(levels.Oracle+9)//4*5>?20}\' radius inflicts %{levels.Oracle}d6 HP bludgeoning and 1 hr deafness (DC %{10+levels.Oracle//2+charismaModifier} Fort half HP only) %{(levels.Oracle-3)//4>?1}/dy"',
   'Tongues':
     'Section=combat,skill ' +
     'Note=' +
@@ -1336,39 +1337,39 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP acid %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
   'Touch Of Electricity':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP electricity %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are shock\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP electricity %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons have <i>shock</i> property\' : \'\'}"',
   'Touch Of Flame':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'/Wielded weapons have <i>flaming</i> property\' : \'\'}"',
   'Transcendental Bond':
     'Section=magic ' +
-    'Note="May use <i>Telepathic Bond</i>%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} %{levels.Oracle}/dy"',
+    'Note="May use <i>Telepathic Bond</i> effects%{levels.Oracle>=10 ? \' and cast touch spell\' : \'\'} on %{charismaModifier} allies %{levels.Oracle} rd/dy"',
   'Undead Servitude':'Section=magic Note="May use Command Undead %V/dy"',
   'Undo Artifice':
     'Section=feature ' +
-    'Note="May disintegrate nonliving item into raw materials (Fort neg) %{charismaModifier}/dy"',
+    'Note="May disintegrate nonliving item into raw materials (DC %{10+levels.Oracle//2+charismaModifier} Fort neg) %{charismaModifier}/dy"',
   'Voice Of The Grave':
     'Section=magic ' +
     'Note="May use <i>Speak With Dead</i> effects (DC %{spellDifficultyClass.O + 3 + levels.Oracle//5*2} Will neg) %{levels.Oracle} rd/dy"',
   'Vortex Spells':
     'Section=magic ' +
-    'Note="Successful critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
+    'Note="Critical hit with spell staggers target for 1%{levels.Oracle>=11 ? \'d4\' : \'\'} rd"',
   'War Sight':
     'Section=combat ' +
     'Note="May take choice of %{levels.Oracle>=11 ? 3 : 2} Initiative rolls%{levels.Oracle>=7 ? \'/May always act in surprise round\' : \'\'}"',
   'Wasting':
     'Section=save,skill ' +
     'Note=' +
-      '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%1",' +
+      '"%{levels.Oracle>=10 ? \'Immune to\' : \'+4 vs.\'} disease%{levels.Oracle>=5 ? \'/Immune to sickened\' : \'\'}%{levels.Oracle>=15 ? \' and nauseated\' : \'\'}",' +
       '"-4 Charisma-based skills other than Intimidate"',
   'Water Form':
     'Section=magic ' +
-    'Note="May use <i>Elemental Body %{levels.Oracle>= 13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle >= 9 ? \'II\' : \'I\'}</i> to become water elemental for %{levels.Oracle} hr 1/dy"',
+    'Note="May use <i>Elemental Body %{levels.Oracle>=13 ? \'IV\' : levels.Oracle>=11 ? \'III\' : levels.Oracle>=9 ? \'II\' : \'I\'}</i> effects to become %{levels.Oracle>=13 ? \'huge\' : levels.Oracle>=11 ? \'large\' : levels.Oracle>=9 ? \'medium\' : \'small\'} water elemental for %{levels.Oracle} hr 1/dy"',
   'Water Sight':
     'Section=feature,magic ' +
     'Note=' +
       '"Can see normally through fog and mist",' +
-      '"May use <i>%V</i> via pool %{levels.Oracle} rd/dy"',
+      '"May use <i>%V</i> effects via pool %{levels.Oracle} rd/dy"',
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
@@ -1382,13 +1383,13 @@ PFAPG.FEATURES = {
   'Wind Sight':
     'Section=magic,skill ' +
     'Note=' +
-      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> on any unobstructed area %V rd/dy",' +
+      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> effects on any unobstructed area %V rd/dy",' +
       '"Ignore Perception wind penalties and 100\' distance penalties"',
-  'Wings Of Air':'Section=ability Note="Fly %{levels.Oracle>=10 ? 90 : 60}\'"',
+  'Wings Of Air':'Section=ability Note="Fly %{levels.Oracle>=10 ? 90 : 60}\' for %{levels.Oracle} min/dy"',
   'Wings Of Fire':'Section=ability Note="Fly 60\' %{levels.Oracle} min/dy"',
   'Wintry Touch':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP fire %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons are frost\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{levels.Oracle//2} HP cold %{charismaModifier+3}/dy%{levels.Oracle>=11 ? \'; wielded weapons have <i>frost</i> property\' : \'\'}"',
 
   // Summoner
   'Aspect':'Section=feature Note="May apply %V evolution points to self"',
@@ -2473,7 +2474,7 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter-1)//4} attack, damage, and grapple CMB/CMD w/natural weapons"',
   'Natural Weapon Mastery':
     'Section=combat ' +
-    'Note="Critical confirmed, +1 damage multiplier, no disarm w/chosen natural weapon"',
+    'Note="Automatically confirm crit, +1 damage multiplier, no disarm w/chosen natural weapon"',
   'Overhand Chop':
     'Section=combat ' +
     'Note="+%{strengthModifier*2-(strengthModifier*1.5//1)} damage on single attack w/two-handed weapon"',
@@ -2667,7 +2668,7 @@ PFAPG.FEATURES = {
     'Section=ability,skill ' +
     'Note=' +
       '"May spend 1 Ki Point for +4 on any ability check",' +
-      '"+2 Knowledge when Ki Pool is not empty/May spend 1 Ki Point for +4 on any skill check"',
+      '"+2 all Knowledge when Ki Pool is not empty/May spend 1 Ki Point for +4 on any skill check"',
   'Ki Pool (Zen Archer)':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to increase bow range by 50\' for 1 rd"',
@@ -2681,7 +2682,7 @@ PFAPG.FEATURES = {
     'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give improvised weapon enhancement bonus or abilities for 1 rd\' : \'\'}"',
   'Learned Master':
     'Section=skill ' +
-    'Note="Knowledge is a class skill/Linguistics is a class skill/+%1 Knowledge/+%1 Linguistics"',
+    'Note="Knowledge is a class skill/Linguistics is a class skill/+%1 all Knowledge/+%1 Linguistics"',
   'Life From A Stone':
     'Section=combat Note="May use Steal Ki and Life Funnel on non-living foe"',
   'Life Funnel':
@@ -3421,7 +3422,7 @@ PFAPG.FEATURES = {
     'Note="R%{100+levels.Wizard*10}\' May see or hear remotely for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   'Shadow Step':
     'Section=magic ' +
-    'Note="May teleport %{levels.Wizard*30}\'/dy (5\' increments), reappearing 5\' off target and gaining effects of <i>Blur</i> for 1 rd; bringing others uses equal portion of daily distance"',
+    'Note="May teleport %{levels.Wizard*30}\'/dy (5\' increments), reappearing 5\' off target and gaining effects of <i>Blur</i> for 1 rd; including others uses equal portion of daily distance"',
   'Shape Emotions':
     'Section=magic ' +
     'Note="30\' radius gives allies +4 saves vs. mind-affecting effects and reduction of fear by 1 step or inflicts -2 vs. mind-affecting effects on foes for %{levels.Wizard} rd/dy"',
@@ -3466,7 +3467,7 @@ PFAPG.FEATURES = {
     'Note="Cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
   'Aspect Of The Beast (Claws Of The Beast)':
     'Section=combat ' +
-    'Note="Claws do %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
+    'Note="Claws inflict %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
   'Aspect Of The Beast (Night Senses)':'Section=feature Note="%V"',
   "Aspect Of The Beast (Predator's Leap)":
     'Section=skill Note="May make running jump without running beforehand"',
@@ -3486,7 +3487,7 @@ PFAPG.FEATURES = {
   'Bouncing Spell':'Section=magic Note="May redirect ineffectual spell"',
   'Breadth Of Experience':
     'Section=skill ' +
-    'Note="+2 Knowledge/+2 Profession/May use Knowledge and Profession untrained"',
+    'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
   'Bull Rush Strike':
     'Section=combat Note="May push on critical hit that exceeds foe CMD"',
   'Charge Through':
@@ -4912,7 +4913,7 @@ PFAPG.PATHS = {
       '"1:Automatic Writing:Lore Revelation",' +
       '"1:Brain Drain:Lore Revelation",' +
       '"1:Focused Trance:Lore Revelation",' +
-      '"1:Lore Keeper:Lore Revelation",' +
+      '"1:Lore Keeper (Oracle):Lore Revelation",' +
       '"7:Mental Acuity:Lore Revelation",' +
       '"1:Sidestep Secret:Lore Revelation",' +
       '"11:Spontaneous Symbology:Lore Revelation",' +
@@ -7589,6 +7590,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Weapon Mastery', '?', null,
       classLevel, '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
     );
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
     rules.defineRule('features.Armor Proficiency (Heavy)',
       'combatNotes.skillAtArms', '=', '1'
     );
@@ -7608,10 +7611,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('saveNotes.lame',
       classLevel, '=', 'source<5 ? null : source<15 ? "fatigued" : "fatigued and exhausted"'
-    );
-    rules.defineRule('saveNotes.wasting.1',
-      'features.Wasting', '?', null,
-      classLevel, '=', 'source>=5 ? "/Immune to sickened" + (source>=15 ? " and nauseated" : "") + " condition" : ""'
     );
     rules.defineRule('selectableFeatureCount.Oracle (Curse)',
       "featureNotes.oracle'sCurse", '+=', '1'
@@ -9540,6 +9539,12 @@ PFAPG.featRulesExtra = function(rules, name) {
       'features.Low-Light Vision', '=', '"30\' b/w vision in darkness"',
       'features.Darkvision', '=', '"+30\' Darkvision"'
     );
+  } else if(name == 'Breadth Of Knowledge') {
+    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(s => {
+      if(s.startsWith('Knowledge') || s.startsWith('Profession'))
+        rules.defineRule
+          ('skillModifier.' + s, 'skillNotes.breadthOfExperience', '+', '2');
+    });
   } else if((matchInfo = name.match(/^Elemental Focus .(Acid|Cold|Electricity|Fire).$/)) != null) {
     let energy = matchInfo[1];
     rules.defineRule('magicNotes.elementalFocus(' + energy + ')',
@@ -9877,13 +9882,19 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'levels.Oracle', '+=', '10 + Math.floor(source / 2)'
     );
   } else if(name == 'Lore Mystery') {
-    // NOTE: This calculation is correct only if taken at 1st level
+    // NOTE: This calculation works only if taken at lowest possible (7th) level
     rules.defineRule('abilityNotes.mentalAcuity',
-      pathLevel, '=', 'Math.floor((source + 2) / 3)'
+      pathLevel, '=', 'Math.floor((source - 4) / 3)'
     );
-    rules.defineRule('combatNotes.sidestepSecret',
+    rules.defineRule('combatNotes.sidestepSecret.1',
+      'combatNotes.sidestepSecret', '?', null,
+      'saveNotes.sidestepSecret', '?', null, // For italics
       'charismaModifier', '=', null,
-      'dexterityModifier', '+', '-source'
+      'dexterityModifier', '+', '-source',
+      '', '^', '0'
+    );
+    rules.defineRule('combatNotes.dexterityArmorClassAdjustment',
+      'combatNotes.sidestepSecret.1', '+', null
     );
     rules.defineRule('magicNotes.whirlwindLesson.1',
       'features.Whirlwind Lesson', '?', null,
@@ -9891,29 +9902,33 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('magicNotes.whirlwindLesson.2', 'charismaModifier', '=', null);
-    rules.defineRule('saveNotes.sidestepSecret',
+    rules.defineRule('saveNotes.dexterityReflexAdjustment',
+      'combatNotes.sidestepSecret.1', '+', null
+    );
+    rules.defineRule('skillNotes.loreKeeper(Oracle).1',
+      'skillNotes.loreKeeper(Oracle)', '?', null,
+      'charismaModifier', '=', null,
+      'intelligenceModifier', '+', '-source',
+      '', '^', '0'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('skills'), /Knowledge/).forEach(s => {
+      rules.defineRule
+        ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
+    });
+  } else if(name == 'Nature Mystery') {
+    rules.defineRule("combatNotes.nature'sWhispers",
       'charismaModifier', '=', null,
       'dexterityModifier', '+', '-source'
     );
-    rules.defineRule('skillNotes.loreKeeper(Oracle)',
-      'charismaModifier', '=', null,
-      'intelligenceModifier', '+', '-source'
-    );
-  } else if(name == 'Lore Mystery') {
     rules.defineRule('companionOracleLevel',
       'oracleFeatures.Bonded Mount', '?', null,
       'levels.Oracle', '=', null
     );
     rules.defineRule
       ('companionMasterLevel', 'companionOracleLevel', '^=', null);
-  } else if(name == 'Nature Mystery') {
-    rules.defineRule("combatNotes.nature'sWhispers",
-      'charismaModifier', '=', null,
-      'dexterityModifier', '+', '-source'
-    );
   } else if(name == 'Stone Mystery') {
     rules.defineRule('featureNotes.stoneStability',
-      pathLevel, '=', 'source<5 ? null : source<10 ? "Improved Trip" : "Improved Trip and Greater Trip"'
+      pathLevel, '=', 'source<5 ? null : source<10 ? "Improved Trip feature" : "Improved Trip and Greater Trip features"'
     );
     rules.defineRule('features.Greater Trip',
       'featureNotes.stoneStability', '=', 'source.includes("Greater Trip") ? 1 : null'
@@ -9922,8 +9937,8 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
     );
   } else if(name == 'Waves Mystery') {
-    rules.defineRule('abilityNotes.fluidTravel',
-      pathLevel, '=', 'source>=7 ? "/May breathe water and swim 60\'/rd underwater" : ""'
+    rules.defineRule('abilityNotes.fluidTravel.1',
+      pathLevel, '=', 'source>=7 ? " or breathe water and swim 60\'/rd underwater" : ""'
     );
     rules.defineRule('featureNotes.fluidNature',
       pathLevel, '=', 'source>=5 ? "Dodge" : null'
@@ -10087,7 +10102,9 @@ PFAPG.raceRulesExtra = function(rules, name) {
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 PFAPG.randomizeOneAttribute = function(attributes, attribute) {
-  if(attribute == 'companion' && 'levels.Cavalier' in attributes) {
+  if(attribute == 'companion' &&
+      ('levels.Cavalier' in attributes ||
+       'selectableFeatures.Oracle - Bonded Mount' in attributes)) {
     let howMany = 1;
     for(let attr in attributes) {
       if(attr.startsWith('animalCompanion.'))
