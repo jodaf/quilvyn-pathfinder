@@ -1404,7 +1404,7 @@ PFAPG.FEATURES = {
   // Summoner
   'Ability Score Increase':
     'Section=companion ' +
-    'Note="+%{levels.Summoner>=15 ? 3 : levels.Summoner>=10 ? 2 : 1} distributed among eidolon abilites"',
+    'Note="+%{levels.Summoner>=15 ? 3 : levels.Summoner>=10 ? 2 : 1} distributed among eidolon abilities"',
   'Aspect':'Section=feature Note="May apply %V evolution points to self"',
   'Bond Senses':
     'Section=feature ' +
@@ -1418,7 +1418,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="R30\' May detect unseen creatures"',
   'Eidolon Blindsight (4)':
     'Section=companion ' +
-    'Note="R30\' Unaffected darkness and foe invisibility and concealment"',
+    'Note="R30\' Unaffected by darkness or foe invisibility or concealment"',
   'Eidolon Breath Weapon (4)':
     'Section=companion ' +
     'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
@@ -1429,17 +1429,17 @@ PFAPG.FEATURES = {
     'Note="Claw attacks inflicts %V+%{strengthModifier} HP each"',
   'Eidolon Climb':'Section=companion Note="%V\' Climb"',
   'Eidolon Constrict (2)':
-    'Section=companion Note="Successful grapple doubles damage"',
+    'Section=companion Note="Successful grapple gives dbl damage"',
   'Eidolon Damage Reduction (3)':
     'Section=companion Note="DR %V/opposite alignment"',
   'Eidolon Energy Attacks (2)':
     'Section=companion ' +
-    'Note="Natural attack inflicts 1d6 HP of chosen energy Type"',
+    'Note="Natural attack inflicts 1d6 HP of chosen energy type"',
   'Eidolon Fast Healing (4)':'Section=companion Note="Heals %V HP/rd"',
-  'Eidolon Flight (2)':'Section=companion Note="May fly at full speed"',
+  'Eidolon Flight (2)':'Section=companion Note="%V\' Fly"',
   'Eidolon Frightful Presence (3)':
     'Section=companion ' +
-    'Note="R30\' Foes frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
+    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
   'Eidolon Gills':'Section=companion Note="May breathe underwater"',
   'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
   'Eidolon Grab (2)':
@@ -1449,7 +1449,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="Immune to chosen energy type"',
   'Eidolon Improved Damage':
     'Section=companion ' +
-    'Note="Chosen natural attack inflicts 1 die type higher damage"',
+    'Note="Chosen natural attack inflicts damage 1 die type higher"',
   'Eidolon Improved Natural Armor':'Section=companion Note="+%V natural armor"',
   'Eidolon Large (4)':
     'Section=companion ' +
@@ -1461,15 +1461,17 @@ PFAPG.FEATURES = {
   'Eidolon Mount':'Section=companion Note="Self may ride eidolon"',
   'Eidolon Pincers':
     'Section=companion ' +
-    'Note="Pincer attacks inflicts %V+%{strengthModifier} HP each"',
+    'Note="Pincer attacks inflict %V+%{strengthModifier} HP each"',
   'Eidolon Poison (2)':
     'Section=companion ' +
     'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
   'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
   'Eidolon Pull':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' pull"',
+    'Section=companion ' +
+    'Note="Chosen natural attack allows free CMB for 5\' pull"',
   'Eidolon Push':
-    'Section=companion Note="Chosen natural attack allows CMB for 5\' push"',
+    'Section=companion ' +
+    'Note="Chosen natural attack allows free CMB for 5\' push"',
   'Eidolon Rake (2)':
     'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
   'Eidolon Reach':
@@ -1494,7 +1496,8 @@ PFAPG.FEATURES = {
   'Eidolon Swim':'Section=companion Note="%V\' Swim"',
   'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
   'Eidolon Tail Slap':
-    'Section=companion Note="Slap attacks inflict %V+%{strengthModifier} HP"',
+    'Section=companion ' +
+    'Note="Slap attacks inflict %V+%{strengthModifier} HP each"',
   'Eidolon Tentacle':
     'Section=companion ' +
     'Note="Tentacle attacks inflict %V+%{strengthModifier} HP each"',
@@ -3143,7 +3146,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"%{levels.Sorcerer>=15 ? 60 : 30}\' Swim",' +
       '"+1 AC",' +
-      '"%{levels.Sorcerer>=15 ? 60 : 30}\' blindsense underwater",' +
+      '"%{levels.Sorcerer>=15 ? 60 : 30}\' Blindsense underwater",' +
       '"Cold resistance 5"',
   'Aquatic Telepathy':
     'Section=feature,magic ' +
@@ -3204,7 +3207,7 @@ PFAPG.FEATURES = {
   'Deep One':
     'Section=feature,magic,save ' +
     'Note=' +
-      '"Has 60\' blindsense/Has 120\' Blindsight and Evasion feature underwater",' +
+      '"Has 60\' Blindsense/Has 120\' Blindsight and Evasion feature underwater",' +
       '"Has continuous <i>Freedom Of Movement</i> effects",' +
       '"Has DR 10/piercing, cold resistance 20, and immunity to water pressure damage"',
   'Dehydrating Touch':
@@ -3331,7 +3334,7 @@ PFAPG.FEATURES = {
   'Stormchild':
     'Section=feature,save ' +
     'Note=' +
-      '"Has 60\' bindsense vs. concealment from fog, mist, and weather",' +
+      '"Has 60\' Blindsense vs. concealment from fog, mist, and weather",' +
       '"Has resistance to electricity 5 and sonic 5/Treats wind effects as %{levels.Sorcerer>=9 ? \'2 steps\' : \'1 step\'} less"',
   'Strength Of Stone':
     'Section=ability,combat,save ' +
@@ -7764,6 +7767,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('companionNotes.eidolonFastHealing(4)',
       'summonerFeatures.Eidolon Breath Weapon', '=', 'Math.floor((source - 2) / 2)'
+    );
+    rules.defineRule('companionNotes.eidolonFlight(2)',
+      'animalCompanion.Biped Eidolon', '=', '10',
+      'animalCompanion.Quadruped Eidolon', '=', '20',
+      'animalCompanion.Serpentine Eidolon', '=', '0',
+      'summonerFeatures.Eidolon Flight (2)', '+', 'source * 20'
     );
     rules.defineRule('companionNotes.eidolonFrightfulPresence(3)',
       'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
