@@ -59,7 +59,7 @@ function PFAPG(edition, rules) {
   msBefore = new Date().getTime();
   PFAPG.identityRules(
     rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
-    PFAPG.TRAITS, PFAPG.PRESTIGES, {}
+    PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, {}
   );
   msAfter = new Date().getTime();
   //console.log('identityRules took ' + (msAfter - msBefore) + ' ms');
@@ -1413,7 +1413,10 @@ PFAPG.FEATURES = {
   'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
   'Eidolon':'Section=feature Note="Special bond and abilities"',
   'Eidolon Ability Increase (2)':'Section=companion Note="+2 chosen ability"',
-  'Eidolon Bite':'Section=companion Note="Bite attack inflicts %V+%1 HP"',
+  'Eidolon Arms (2)':'Section=companion Note="Has %V pairs of arms"',
+  'Eidolon Bite':
+    'Section=companion ' +
+    'Note="Bite attack inflicts %{animalCompanionStats.Size==\'H\' ? \'2d6\' : animalCompanionStats.Size==\'L\' ? \'1d8\' : \'1d6\'}+%{(animalCompanionStats.Str-10)//2*1.5//1} HP"',
   'Eidolon Blindsense (3)':
     'Section=companion Note="R30\' May detect unseen creatures"',
   'Eidolon Blindsight (4)':
@@ -1421,12 +1424,12 @@ PFAPG.FEATURES = {
     'Note="R30\' Unaffected by darkness or foe invisibility or concealment"',
   'Eidolon Breath Weapon (4)':
     'Section=companion ' +
-    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %V Ref half) %1/dy"',
+    'Note="30\' cone inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Ref half) %V/dy"',
   'Eidolon Burrow (3)':
     'Section=companion Note="May burrow through earth at half speed"',
   'Eidolon Claws':
     'Section=companion ' +
-    'Note="Claw attacks inflicts %V+%{strengthModifier} HP each"',
+    'Note="Claw attacks inflicts 1d%{animalCompanionStats.Size==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Climb':'Section=companion Note="%V\' Climb"',
   'Eidolon Constrict (2)':
     'Section=companion Note="Successful grapple gives dbl damage"',
@@ -1439,12 +1442,14 @@ PFAPG.FEATURES = {
   'Eidolon Flight (2)':'Section=companion Note="%V\' Fly"',
   'Eidolon Frightful Presence (3)':
     'Section=companion ' +
-    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %V Will neg)"',
+    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will neg)"',
   'Eidolon Gills':'Section=companion Note="May breathe underwater"',
-  'Eidolon Gore (2)':'Section=companion Note="Horn attack inflicts %V HP"',
+  'Eidolon Gore (2)':
+    'Section=companion ' +
+    'Note="Horn attack inflicts %{animalCompanionStats.Size==\'H\' ? \'2d6\' : animalCompanionStats.Size==\'L\' ? \'1d8\' : \'1d6\'} HP"',
   'Eidolon Grab (2)':
     'Section=companion ' +
-    'Note="Successful chosen natural attack allows free CMB to grapple; +4 grapple CMB"',
+    'Note="Successful chosen natural attack allows free CMB to grapple/+4 grapple CMB"',
   'Eidolon Immunity (2)':
     'Section=companion Note="Immune to chosen energy type"',
   'Eidolon Improved Damage':
@@ -1454,17 +1459,18 @@ PFAPG.FEATURES = {
   'Eidolon Large (4)':
     'Section=companion ' +
     'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, and +%4 CMB/CMD, suffers %5 Dex, %6 Attack, -%7 Fly, -%8 Stealth"',
-  'Eidolon Limbs (2)':'Section=companion Note="Has %V limbs"',
+  'Eidolon Legs (2)':
+    'Section=companion Note="Has %V pairs of legs; gives +%1 speed"',
   'Eidolon Magic Attacks':
     'Section=companion ' +
     'Note="Attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
   'Eidolon Mount':'Section=companion Note="Self may ride eidolon"',
   'Eidolon Pincers':
     'Section=companion ' +
-    'Note="Pincer attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Pincer attacks inflict %{animalCompanionStats.Size==\'H\' ? \'2d6\' : animalCompanionStats.Size==\'L\' ? \'1d8\' : \'1d6\'}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Poison (2)':
     'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %V Fort neg) 1/rd"',
+    'Note="Chosen natural attack inflicts +1d4 Str damage (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
   'Eidolon Pounce':'Section=companion Note="May make full attack after charge"',
   'Eidolon Pull':
     'Section=companion ' +
@@ -1473,37 +1479,39 @@ PFAPG.FEATURES = {
     'Section=companion ' +
     'Note="Chosen natural attack allows free CMB for 5\' push"',
   'Eidolon Rake (2)':
-    'Section=companion Note="Claw rake on grappled foe inflicts 2x%V HP"',
+    'Section=companion ' +
+    'Note="Claw rake on grappled foe inflicts 2 x 1d%{animalCompanionStats.Size==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4} HP"',
   'Eidolon Reach':
     'Section=companion Note="+5\' reach w/chosen natural attack"',
   'Eidolon Resistance':
     'Section=companion ' +
     'Note="Resistance %{(levels.Summoner+5)//5*5<?15} to chosen energy type"',
   'Eidolon Rend (2)':
-    'Section=companion Note="2 successful claw attacks inflicts %V+%1 HP"',
+    'Section=companion ' +
+    'Note="2 successful claw attacks inflict +1d%{animalCompanionStats.Sizes==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4}+%{(animalCompanionStats.Str-10)//2*1.5//1} HP"',
   'Eidolon Scent':'Section=companion Note="R30\' May detect foes by smell"',
   'Eidolon Skilled':'Section=companion Note="+8 on chosen skill"',
   'Eidolon Slam':
     'Section=companion ' +
-    'Note="Slam attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Slam attacks inflict %{animalCompanionStats.Size==\'H\' ? \'2d8\' : animalCompanionStats.Size==\'L\' ? \'2d6\' : \'1d8\'}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Spell Resistance (4)':
     'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
   'Eidolon Sting':
     'Section=companion ' +
-    'Note="Sting attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Sting attacks inflict 1d%{animalCompanionStats.Size==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Swallow Whole (3)':
     'Section=companion Note="May use CMB to swallow creature grappled by bite"',
   'Eidolon Swim':'Section=companion Note="%V\' Swim"',
   'Eidolon Tail':'Section=companion Note="+%V Acrobatics (balance)"',
   'Eidolon Tail Slap':
     'Section=companion ' +
-    'Note="Slap attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Slap attacks inflict %{animalCompanionStats.Size==\'H\' ? \'2d6\' : animalCompanionStats.Size==\'L\' ? \'1d8\' : \'1d6\'}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Tentacle':
     'Section=companion ' +
-    'Note="Tentacle attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Tentacle attacks inflict 1d%{animalCompanionStats.Size==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Eidolon Trample (2)':
     'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %V+%1 HP (DC %2 Ref half)"',
+    'Note="Full-round automatic overrun inflicts %{animalCompanionStats.Size==\'H\' ? \'2d6\' : animalCompanionStats.Size==\'L\' ? \'1d8\' : \'1d6\'}+%{10+(animalCompanionStats.Str-10)//2*1.5//1} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
   'Eidolon Tremorsense (2)':
     'Section=companion Note="R30\' Senses creatures via ground vibrations"',
   'Eidolon Trip (2)':
@@ -1512,10 +1520,10 @@ PFAPG.FEATURES = {
     'Section=companion Note="Proficient with simple%1 weapons"',
   'Eidolon Web (3)':
     'Section=companion ' +
-    'Note="R50\' May entangle target (DC %V Escape Artist or -4 Str neg) 8/dy"',
+    'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Str neg) 8/dy"',
   'Eidolon Wing Buffet':
     'Section=companion ' +
-    'Note="Wing attacks inflict %V+%{strengthModifier} HP each"',
+    'Note="Wing attacks inflict 1d%{animalCompanionStats.Size==\'H\' ? 8 : animalCompanionStats.Size==\'L\' ? 6 : 4}+%{(animalCompanionStats.Str-10)//2} HP each"',
   'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
   'Greater Shield Ally (Summoner)':
     'Section=combat,save ' +
@@ -6943,13 +6951,14 @@ PFAPG.CLASSES = {
       '"1:Eidolon Tentacle:Evolution",' +
       '"1:Eidolon Wing Buffet:Evolution",' +
       '"1:Eidolon Ability Increase (2):Evolution",' +
+      '"1:Eidolon Arms (2):Evolution",' +
       '"1:Eidolon Constrict (2):Evolution",' +
       '"5:Eidolon Energy Attacks (2):Evolution",' +
       '"5:Eidolon Flight (2):Evolution",' +
       '"1:Eidolon Gore (2):Evolution",' +
       '"1:Eidolon Grab (2):Evolution",' +
       '"7:Eidolon Immunity (2):Evolution",' +
-      '"1:Eidolon Limbs (2):Evolution",' +
+      '"1:Eidolon Legs (2):Evolution",' +
       '"7:Eidolon Poison (2):Evolution",' +
       '"4:Eidolon Rake (2):Evolution",' +
       '"6:Eidolon Rend (2):Evolution",' +
@@ -7293,7 +7302,121 @@ PFAPG.CLASSES = {
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',')
 };
-PFAPG.PRESTIGES = {
+PFAPG.PRESTIGE_CLASSES = {
+  'Battle Herald':
+    'Require=' +
+      '"baseAttack >= 4",' +
+      '"features.Challenge","features.Inspire Courage",' +
+      '"skills.Diplomacy >= 5","skills.Intimidate >= 5",' +
+      '"skills.Perform (Oratory) >= 5","skills.Profession (Soldier) >= 2" ' +
+    'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Bluff,Craft,Diplomacy,"Handle Animal",Heal,Intimidate,' +
+      '"Knowledge (Engineering)","Knowledge (History)","Knowledge (Local)",' +
+      '"Knowledge (Nobility)",Perception,Profession,Ride,"Sense Motive" ' +
+    'Features=' +
+      '"1:Inspiring Command","1:Improved Leadership","1:Voice Of Authority",' +
+      '"2:Easy March","4:Inspire Greatness",5:Banner,' +
+      '"6:Battle Herald Feat Bonus","7:Demanding Challenge",' +
+      '"8:Persistent Commands","9:Inspire Last Stand","10:Complex Commands"',
+  'Holy Vindicator':
+    'Require=' +
+      '"baseAttack >= 5",' +
+      '"features.Channel Energy",' +
+      '"skills.Knowledge (Religion) >= 5",' +
+      '"features.Alignment Channel || features.Elemental Channel",' +
+      '"casterLevelDivine >= 1" ' +
+    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Climb,Heal,Intimidate,"Knowledge (Planes)","Knowledge (Religion)",' +
+      'Ride,"Sense Motive",Spellcraft,Swim ' +
+    'Features=' +
+      '"1:Channel Energy","1:Vindicator\'s Shield",2:Stigmata,' +
+      '"2:Caster Level Bonus","3:Faith Healing","4:Divine Wrath",5:Bloodfire,' +
+      '"5:Channel Smite","6:Versatile Channel","7:Divine Judgment",' +
+      '9:Bloodrain,"10:Divine Retribution"',
+  'Horizon Walker':
+    'Require=' +
+      '"skills.Knowledge (Geography) >= 6",' +
+      '"features.Endurance" ' +
+    'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
+    'Skills=' +
+      'Climb,Diplomacy,"Handle Animal","Knowledge (Geography)",' +
+      '"Knowledge (Nature)","Knowledge (Planes)",Linguistics,Perception,' +
+      'Stealth,Survival,Swim ' +
+    'Features=' +
+      '"1:Favored Terrain","2:Terrain Mastery","3:Terrain Dominance",' +
+      '"10:Master Of All Lands"',
+  'Master Chymist':
+    'Require=' +
+      '"spellSlots.Extract3 >= 1",' +
+      'features.Mutagen,"features.Feral Mutagen||features.Infuse Mutagen" ' +
+    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
+    'Skills=' +
+      'Acrobatics,Climb,"Escape Artist",Intimidate,' +
+      '"Knowledge (Dungeoneering)","Sense Motive",Stealth,Swim ' +
+    'Features=' +
+      '1:Bomb-Thrower,"1:Mutagenic Form",1:Mutate,"2:Advanced Mutagen",' +
+      '"2:Caster Level Bonus",3:Brutality',
+  'Master Spy':
+    'Require=' +
+      'features.Deceitful,"features.Iron Will",' +
+      '"skills.Bluff >= 7","skills.Disguise >= 7","skills.Perception >= 5",' +
+      '"skills.Sense Motive >= 5" ' +
+    'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
+    'Skills=' +
+      'Bluff,Diplomacy,"Disable Device",Disguise,"Escape Artist",Knowledge,' +
+      'Linguistics,Perception,"Sense Motive","Sleight Of Hand",Stealth,' +
+      '"Use Magic Device" ' +
+    'Features=' +
+      '"1:Art Of Deception","1:Master Of Disguise","1:Sneak Attack",' +
+      '"2:Glib Lie","2:Mask Alignment","3:Nonmagical Aura",' +
+      '"3:Superficial Knowledge","4:Concealed Thoughts","4:Quick Change",' +
+      '"5:Elude Detection","5:Slippery Mind","6:Shift Alignment",' +
+      '"8:Death Attack","8:Fool Casting","9:Hidden Mind",10:Assumption',
+  'Nature Warden':
+    'Require=' +
+      '"baseAttack >= 4",' +
+      '"features.Animal Companion","features.Favored Terrain",' +
+      '"features.Wild Empathy",' +
+      '"skills.Handle Animal >= 5","skills.Knowledge (Geography) >= 5",' +
+      '"skills.Knowledge (Nature) >= 5","skills.Survival >= 5" ' +
+    'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Climb,"Handle Animal",Heal,"Knowledge (Geography)",' +
+      '"Knowledge (Nature)",Perception,Ride,"Sense Motive",Survival,Swim ' +
+    'Features=' +
+      '"1:Companion Bond","1:Natural Empathy","2:Mystic Harmony",' +
+      '"2:Wild Stride","2:Caster Level Bonus","3:Animal Speech",4:Silverclaw,' +
+      '"5:Favored Terrain",5:Survivalist,6:Woodforging,"7:Companion Walk",' +
+      '"7:Plant Speech",8:Ironpaw,"9:Guarded Lands","10:Companion Soul"',
+  'Rage Prophet':
+    'Require=' +
+      '"baseAttack >= 5",' +
+      '"features.Oracle\'s Curse","features.Moment Of Clarity",' +
+      '"skills.Knowledge (Religion) >= 5",' +
+      '"casterLevelDivine >= 1" ' +
+    'HitDie=d10 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Climb,Heal,Intimidate,"Knowledge (History)","Knowledge (Religion)",' +
+      '"Sense Motive",Spellcraft,Swim ' +
+    'Features=' +
+      '"1:Savage Seer","1:Spirit Guide","2:Rage Prophet Mystery",' +
+      '"2:Raging Healer","2:Caster Level Bonus","3:Indomitable Caster",' +
+      '4:Ragecaster,"5:Spirit Guardian","6:Enduring Rage",' +
+      '"8:Raging Spellstrength","9:Spirit Warrior","10:Greater Rage"',
+  'Stalwart Defender':
+    'Require=' +
+      '"baseAttack >= 7",' +
+      'features.Dodge,features.Endurance,features.Toughness,' +
+      '"Armor Proficiency (Medium) || Armor Proficiency (Heavy)" ' +
+    'HitDie=d12 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Acrobatics,Climb,Intimidate,Perception,"Sense Motive" ' +
+    'Features=' +
+      '"1:AC Bonus","1:Defensive Stance","2:Defensive Power",' +
+      '"3:Uncanny Dodge","5:Damage Reduction","7:Improved Uncanny Dodge",' +
+      '"9:Mobile Defense","10:Last Word"'
 };
 PFAPG.DEITIES = {
   // clerics with no deity still get two domains.
@@ -7731,29 +7854,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
     );
     rules.defineRule('companionMasterLevel', 'eidolonMasterLevel', '^=', null);
-    rules.defineRule('companionNotes.eidolonBite',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonBite.1',
-      'features.Eidolon Bite', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
     rules.defineRule('companionNotes.eidolonBreathWeapon(4)',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonBreathWeapon(4).1',
-      'features.Eidolon Breath Weapon (4)', '?', null,
-      'summonerFeatures.Eidolon Breath Weapon', '=', 'source - 3'
-    );
-    rules.defineRule('companionNotes.eidolonClaws',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+      'summonerFeatures.Eidolon Breath Weapon', '=', null
     );
     rules.defineRule('companionNotes.eidolonClimb',
       // Serpentine get free 20' Climb. All get 20' per Eidolon Climb, with
-      // non-Serpentine getting their full speed for the first Climb
+      // non-Serpentine getting their full speed for the first
       'animalCompanion.Biped Eidolon', '+', '10',
       'animalCompanion.Quadruped Eidolon', '+', '20',
       'animalCompanion.Serpentine Eidolon', '+=', '20',
@@ -7766,7 +7872,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Eidolon Damage Reduction(3)', '=', 'source>=2 ? 10 : 5'
     );
     rules.defineRule('companionNotes.eidolonFastHealing(4)',
-      'summonerFeatures.Eidolon Breath Weapon', '=', 'Math.floor((source - 2) / 2)'
+      'summonerFeatures.Eidolon Fast Healing', '=', null
     );
     rules.defineRule('companionNotes.eidolonFlight(2)',
       'animalCompanion.Biped Eidolon', '=', '10',
@@ -7774,19 +7880,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanion.Serpentine Eidolon', '=', '0',
       'summonerFeatures.Eidolon Flight (2)', '+', 'source * 20'
     );
-    rules.defineRule('companionNotes.eidolonFrightfulPresence(3)',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Cha', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonGore(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
     rules.defineRule('companionNotes.eidolonImprovedNaturalArmor',
       'summonerFeatures.Eidolon Improved Natural Armor', '=', '2 * source'
     );
     rules.defineRule('companionNotes.eidolonLarge(4)',
-      'summonerFeatures.Eidolon Large(4)', '=', 'source>=10 ? "Huge" : "Large"'
+      'summonerFeatures.Eidolon Large(4)', '=', 'source>=2 ? "Huge" : "Large"'
     );
     rules.defineRule('companionNotes.eidolonLarge(4).1',
       'features.Eidolon Large (4)', '?', null,
@@ -7830,43 +7928,14 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionMasterLevel', '=', '1',
       'eidolonMasterLevel', '=', '0'
     );
-    rules.defineRule('companionStats.Size',
-      'companionNotes.eidolonLarge(4)', '=', 'source.charAt(0)'
+    rules.defineRule('companionNotes.eidolonArms(2)',
+      'summonerFeatures.Eidolon Arms (2)', '=', null
     );
-    rules.defineRule('companionNotes.eidolonLimbs(2)',
-      'animalCompanion.Biped Eidolon', '+=', '4',
-      'animalCompanion.Quadruped Eidolon', '+=', '4',
-      'animalCompanion.Small Biped Eidolon', '+=', '4',
-      'animalCompanion.Small Quadruped Eidolon', '+=', '4',
-      'summonerFeatures.Eidolon Limbs (2)', '+=', '2 * source'
+    rules.defineRule('companionNotes.eidolonLegs(2)',
+      'summonerFeatures.Eidolon Legs (2)', '=', null
     );
-    rules.defineRule('companionNotes.eidolonPincers',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonPoison(2)',
-      'companionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'companionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonRake(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonRend(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonRend(2).1',
-      'features.Eidolon Rend (2)', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
-    rules.defineRule('companionNotes.eidolonSlam',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d8" : source=="L" ? "2d6" : "1d8"'
-    );
-    rules.defineRule('companionNotes.eidolonSting',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    rules.defineRule('companionNotes.eidolonLegs(2).1',
+      'companionNotes.eidolonLegs(2)', '=', 'source * 10'
     );
     rules.defineRule('companionNotes.eidolonSwim',
       'animalCompanion.Biped Eidolon', '=', '10',
@@ -7879,37 +7948,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanion.Small Serpentine Eidolon', '+=', '2',
       'summonerFeatures.Eidolon Tail', '+=', 'source * 2'
     );
-    rules.defineRule('companionNotes.eidolonTailSlap',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonTentacle',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2)',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "2d6" : source=="L" ? "1d8" : "1d6"'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2).1',
-      'features.Eidolon Trample (2)', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(((source - 10) / 2) * 1.5)'
-    );
-    rules.defineRule('companionNotes.eidolonTrample(2).2',
-      'animalCompanionStats.HD', '=', '10 + Math.floor(source / 2)',
-      'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)'
-    );
     rules.defineRule('companionNotes.eidolonWeaponTraining(2).1',
       'features.Eidolon Weapon Training (2)', '?', null,
       'summonerFeatures.Eidolon Weapon Training', '=', 'source>=2 ? " and martial" : ""'
     );
-    rules.defineRule('companionNotes.eidolonWeb(3)',
-      'animalCompanionStats.HD', '=', '10 + source',
-      'animalCompanionStats.Con', '+', 'Math.floor((source - 10) / 2)'
-    );
-    rules.defineRule('companionNotes.eidolonWingBuffet',
-      'animalCompanionStats.Size', '=',
-        'source=="H" ? "1d8" : source=="L" ? "1d6" : "1d4"'
+    rules.defineRule('companionStats.Size',
+      'companionNotes.eidolonLarge(4)', '=', 'source.charAt(0)'
     );
     rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
     rules.defineRule('eidolonSaveFort',
@@ -7940,35 +7984,39 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '2',
       'featureNotes.greaterAspect', '+', '4'
     );
-    rules.defineRule('features.Eidolon Bite',
+    rules.defineRule('summonerFeatures.Eidolon Arms (2)',
+      'animalCompanion.Biped Eidolon', '=', '1',
+      'animalCompanion.Small Biped Eidolon', '=', '1'
+    );
+    rules.defineRule('summonerFeatures.Eidolon Bite',
       'animalCompanion.Quadruped Eidolon', '=', '1',
       'animalCompanion.Serpentine Eidolon', '=', '1',
       'animalCompanion.Small Quadruped Eidolon', '=', '1',
       'animalCompanion.Small Serpentine Eidolon', '=', '1'
     );
-    rules.defineRule('features.Eidolon Claws',
+    rules.defineRule('summonerFeatures.Eidolon Claws',
       'animalCompanion.Biped Eidolon', '=', '1',
       'animalCompanion.Small Biped Eidolon', '=', '1'
     );
-    rules.defineRule('features.Eidolon Climb',
+    rules.defineRule('summonerFeatures.Eidolon Climb',
       'animalCompanion.Serpentine Eidolon', '=', '1',
       'animalCompanion.Small Serpentine Eidolon', '=', '1'
     );
-    rules.defineRule('features.Eidolon Limbs (2)',
-      'animalCompanion.Biped Eidolon', '=', '2',
+    rules.defineRule('summonerFeatures.Eidolon Legs (2)',
+      'animalCompanion.Biped Eidolon', '=', '1',
       'animalCompanion.Quadruped Eidolon', '=', '2',
-      'animalCompanion.Small Biped Eidolon', '=', '2',
+      'animalCompanion.Small Biped Eidolon', '=', '1',
       'animalCompanion.Small Quadruped Eidolon', '=', '2'
     );
-    rules.defineRule('features.Eidolon Reach',
+    rules.defineRule('summonerFeatures.Eidolon Reach',
       'animalCompanion.Serpentine Eidolon', '=', '1',
       'animalCompanion.Small Serpentine Eidolon', '=', '1'
     );
-    rules.defineRule('features.Eidolon Tail',
+    rules.defineRule('summonerFeatures.Eidolon Tail',
       'animalCompanion.Serpentine Eidolon', '=', '1',
       'animalCompanion.Small Serpentine Eidolon', '=', '1'
     );
-    rules.defineRule('features.Eidolon Tail Slap',
+    rules.defineRule('summonerFeatures.Eidolon Tail Slap',
       'animalCompanion.Serpentine Eidolon', '=', '1',
       'animalCompanion.Small Serpentine Eidolon', '=', '1'
     );
