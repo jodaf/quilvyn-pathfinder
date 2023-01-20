@@ -7822,7 +7822,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionIsNotEidolon', '?', null
     );
     rules.defineRule('animalCompanionStats.AC',
-      'eidolonMasterLevel', '+', '[0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 4][source - 1]',
+      'eidolonMasterLevel', '+', '(Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)) * 2',
       'companionNotes.improvedNaturalArmorEvolution', '+', null,
       'companionNotes.largeEvolution.3', '+', null,
       'companionNotes.largeEvolution.5', '+', 'Math.floor(source / 2)',
@@ -7834,15 +7834,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionNotes.smallEvolution', '+', '-2'
     );
     rules.defineRule('animalCompanionStats.Dex',
-      'eidolonMasterLevel', '+', '[0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2][source - 1]',
+      'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
       'companionNotes.largeEvolution.5', '+', null,
       'companionNotes.smallEvolution', '+', '2'
     );
     rules.defineRule('animalCompanionStats.Feats',
-      'eidolonMasterLevel', '+', '[0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0][source - 1]'
+      'eidolonMasterLevel', '=', 'Math.floor((source - 1) / 8) * 3 + Math.floor((((source - 1) % 8) + 1) / 3) + 1'
     );
     rules.defineRule('animalCompanionStats.HD',
-      'eidolonMasterLevel', '+', 'source % 4 == 3 ? 0 : -1'
+      'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
     );
     rules.defineRule
       ('animalCompanionStats.Save Fort', 'eidolonSaveFort', '=', null);
@@ -7855,10 +7855,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionNotes.smallEvolution', '=', '"S"'
     );
     rules.defineRule('animalCompanionStats.Skills',
-      'eidolonMasterLevel', '+', '[2, 5, 9, 8, 11, 14, 18, 17, 20, 23, 27, 26, 29, 32, 36, 35, 38, 41, 45, 44][source - 1]'
+      'eidolonMasterLevel', '=', '(source - Math.floor(source / 4)) * 4'
     );
     rules.defineRule('animalCompanionStats.Str',
-      'eidolonMasterLevel', '+', '[0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2][source - 1]',
+      'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
       'companionNotes.largeEvolution.1', '+', null,
       'companionNotes.smallEvolution', '+', '-4'
     );
@@ -7869,11 +7869,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionACBoosts',
       'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
     );
+    rules.defineRule('companionAttack',
+      'eidolonAttackAdjustment', '+', null,
+      'companionNotes.largeEvolution.6', '+', null,
+      'companionNotes.smallEvolution', '+', '1'
+    );
     rules.defineRule('companionAttackBoosts',
       'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
     );
-    rules.defineRule
-      ('companionAttack', 'companionAttackBoosts', '+', 'source + 1');
     rules.defineRule('companionBAB',
       'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
     );
@@ -7926,10 +7929,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.largeEvolution.8',
       'companionNotes.largeEvolution', '=', 'source=="Huge" ? -8 : -4'
     );
-    rules.defineRule('companionAttack',
-      'companionNotes.largeEvolution.6', '+', null,
-      'companionNotes.smallEvolution', '+', '1'
-    );
     rules.defineRule('companionIsNotEidolon',
       'companionMasterLevel', '=', '1',
       'eidolonMasterLevel', '=', '0'
@@ -7953,6 +7952,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('companionNotes.weaponTrainingEvolution.1',
       'summonerFeatures.Weapon Training Evolution', '=', 'source>=2 ? " and martial" : ""'
+    );
+    rules.defineRule('eidolonAttackAdjustment',
+      'animalCompanionStats.HD', '=', 'Math.floor((source + 3) / 4)'
     );
     rules.defineRule('eidolonDamage',
       'features.Eidolon', '?', null,
