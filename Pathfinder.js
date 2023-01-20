@@ -4572,13 +4572,13 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
   rules.defineRule('animalCompanionStats.CMB',
     'companionBAB', '=', null,
     'companionCMBAbility', '+', 'Math.floor((source - 10) / 2)',
-    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : source=="H" ? 2 : null'
   );
   rules.defineRule('animalCompanionStats.CMD',
     'companionBAB', '=', 'source + 10',
     'animalCompanionStats.Dex', '+', 'Math.floor((source - 10) / 2)',
     'animalCompanionStats.Str', '+', 'Math.floor((source - 10) / 2)',
-    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : null'
+    'animalCompanionStats.Size', '+', 'source=="D" ? -4 : source=="T" ? -2 : source=="S" ? -1 : source=="L" ? 1 : source=="H" ? 2 : null'
   );
   rules.defineRule('tinyCompanionCMBAbility',
     'animalCompanionStats.Size', '?', 'source == "T" || source == "D"',
