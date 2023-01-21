@@ -3154,7 +3154,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"%{levels.Sorcerer>=15 ? 60 : 30}\' Swim",' +
       '"+1 AC",' +
-      '"%{levels.Sorcerer>=15 ? 60 : 30}\' Blindsense underwater",' +
+      '"Has %{levels.Sorcerer>=15 ? 60 : 30}\' Blindsense underwater",' +
       '"Cold resistance 5"',
   'Aquatic Telepathy':
     'Section=feature,magic ' +
@@ -7942,6 +7942,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Weapon Training Evolution', '=', 'source>=2 ? " and martial" : ""'
     );
     rules.defineRule('eidolonAttackAdjustment',
+      'features.eidolon', '?', null,
       'animalCompanionStats.HD', '=', 'Math.floor((source + 3) / 4)'
     );
     rules.defineRule('eidolonDamage',
@@ -7958,9 +7959,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
     rules.defineRule('eidolonPrimaryDamageBonus',
+      'features.Eidolon', '?', null,
       'animalCompanionStats.Str', '=', 'Math.floor(Math.floor((source - 10) / 2) * 1.5)'
     );
     rules.defineRule('eidolonSecondaryDamageBonus',
+      'features.Eidolon', '?', null,
       'animalCompanionStats.Str', '=', 'Math.floor((source - 10) / 2)'
     );
     rules.defineRule('eidolonSaveFort',
