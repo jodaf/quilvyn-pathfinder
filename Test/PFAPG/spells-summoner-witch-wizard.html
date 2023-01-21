@@ -18,11 +18,10 @@ var attributes = {
   "intelligence":13, "languages.Dwarven":1, "levels.Summoner":7, "levels.Witch":6, 
   "levels.Wizard":7, "name":"Spells-Summoner Witch Wizard", "race":"Human", 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
-  "selectableFeatures.Summoner - Eidolon Bite":1, "selectableFeatures.Summoner - Eidolon Gills":1, 
-  "selectableFeatures.Summoner - Eidolon Mount":1, "selectableFeatures.Summoner - Eidolon Rend (2)":1, 
-  "selectableFeatures.Summoner - Eidolon Scent":1, "selectableFeatures.Summoner - Eidolon Skilled":1, 
-  "selectableFeatures.Summoner - Eidolon Sting":1, "selectableFeatures.Summoner - Eidolon Tentacle":1, 
-  "selectableFeatures.Summoner - Eidolon Trample (2)":1, "selectableFeatures.Summoner - Eidolon Wing Buffet":1, 
+  "selectableFeatures.Summoner - Bite Evolution":1, "selectableFeatures.Summoner - Eidolon Skilled":1, 
+  "selectableFeatures.Summoner - Gills Evolution":1, "selectableFeatures.Summoner - Mount Evolution":1, 
+  "selectableFeatures.Summoner - Rend Evolution":1, "selectableFeatures.Summoner - Scent Evolution":1, 
+  "selectableFeatures.Summoner - Tentacle Evolution":1, "selectableFeatures.Summoner - Trample Evolution":1, 
   "selectableFeatures.Witch - Cackle Hex":1, "selectableFeatures.Witch - Cauldron Hex":1, 
   "selectableFeatures.Witch - Flight Hex":1, "selectableFeatures.Witch - Healing Hex":1, 
   "selectableFeatures.Wizard - Bonded Object":1, "selectableFeatures.Wizard - School Opposition (Conjuration)":1, 
@@ -115,7 +114,7 @@ var attributes = {
         <td><b>Feats</b>: Acrobatic; Arcane Strike; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Medium Armor Proficiency; Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
         <td><b>Witch Features</b>: Cackle Hex; Cantrips; Cauldron Hex; Flight Hex; Healing Hex; Hex; Weapon Proficiency (Simple); Witch's Familiar</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bond Senses; Cantrips; Eidolon Bite; Eidolon Gills; Eidolon Mount; Eidolon Rend (2); Eidolon Scent; Eidolon Skilled; Eidolon Sting; Eidolon Tentacle; Eidolon Trample (2); Eidolon Wing Buffet; Eidolon; Life Link (Summoner); Maker's Call; Shield Ally (Summoner); Summon Monster; Weapon Proficiency (Simple)</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Bite Evolution: 2; Bond Senses: 1; Cantrips: 1; Eidolon: 1; Gills Evolution: 1; Life Link (Summoner): 1; Limbs (Legs) Evolution: 2; Maker's Call: 1; Mount Evolution: 1; Rend Evolution: 1; Scent Evolution: 1; Shield Ally (Summoner): 1; Simple Somatics: 1; Summon Monster: 1; Tentacle Evolution: 1; Trample Evolution: 1; Weapon Proficiency (Simple): 1</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Wizard Features</b>: Bonded Object; Force Missile; Intense Spells; School Opposition (Conjuration); School Opposition (Transmutation); School Specialization (Evocation); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
       </tr></table>
@@ -210,8 +209,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Companion Alertness: +2 Perception, Sense Motive when companion in reach</td>
       </tr><tr style="text-align:center">
-        <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
-      </tr><tr style="text-align:center">
         <td>School Specialization (Evocation): +2 Spellcraft (Evocation effects)</td>
       </tr></table>
 </td>
@@ -267,7 +264,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Arcane Strike: May imbue weapons with +4 magic damage bonus for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Life Link (Summoner): May transfers damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100' to have full HP</td>
+        <td>Life Link (Summoner): May transfer damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100' to have full HP</td>
       </tr><tr style="text-align:center">
         <td>Shield Ally (Summoner): +2 AC when eidolon is within reach</td>
       </tr></table>
@@ -297,7 +294,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: Summoner1: 5; Summoner2: 4; Summoner3: 2; W0: 4; W1: 6; W2: 4; W3: 3; W4: 2; Witch0: 4; Witch1: 4; Witch2: 3; Witch3: 2</td>
+        <td><b>Spell Slots</b>: Summoner0: 6; Summoner1: 5; Summoner2: 4; Summoner3: 2; W0: 4; W1: 6; W2: 4; W3: 3; W4: 2; Witch0: 4; Witch1: 4; Witch2: 3; Witch3: 2</td>
         <td><b>Spell DC</b>: Summoner: 13; W: 11; Witch: 11</td>
       </tr></table>
 </td>
@@ -406,6 +403,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>School Specialization (Evocation): Extra Evocation spell/dy each spell level</i></td>
     </tr><tr style="text-align:center">
+      <td><i>Simple Somatics: No arcane spell failure in light armor</i></td>
+    </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 20%</td>
     </tr><tr style="text-align:center">
       <td>Bonded Object: May cast known spell through object</td>
@@ -428,7 +427,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Intense Spells: +3 Evocation spell damage</td>
     </tr><tr style="text-align:center">
-      <td>Maker's Call: May use <i>Dimension Door</i> to call bring eidolon adjacent 1/dy</td>
+      <td>Maker's Call: May use <i>Dimension Door</i> effects to bring eidolon adjacent 1/dy</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Conjuration): Double cost to cast Conjuration spells</td>
     </tr><tr style="text-align:center">
@@ -438,7 +437,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Silent Spell: Cast spell w/out speech uses +1 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Summon Monster: May cast <i>Summon Monster IV</i> for 7 min when eidolon not present 6/dy</td>
+      <td>Summon Monster: May cast <i>Summon Monster IV</i>, lasting 7 min, when eidolon not present 6/dy</td>
     </tr><tr style="text-align:center">
       <td>Widen Spell: x2 area of affect uses +3 spell slot</td>
     </tr></table>
@@ -452,9 +451,9 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Animal Companion</b>: Quadruped Eidolon "Rilnigod"</td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Darkvision; Companion Evasion; Devotion; Link; Multiattack; Share Spells</td>
+      <td><b>Animal Companion Features</b>: Ability Score Increase; Companion Darkvision; Companion Evasion; Devotion; Link (Summoner); Multiattack; Share Spells (Summoner)</td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Stats</b>: AC: 6; CMB: 7; CMD: 20; Cha: 11; Con: 13; Dex: 16; Feats: 3; HD: 6; HP: 33; Initiative: 3; Int: 7; Melee: +5 1d6+4; Save Fort: 6; Save Ref: 8; Save Will: 2; Size: M; Skills: 24; Str: 16; Tricks: 24; Wis: 10</td>
+      <td><b>Animal Companion Stats</b>: AC: 21; CMB: 9; CMD: 22; Cha: 11; Con: 13; Dex: 17; Feats: 3; HD: 6; HP: 33; Initiative: 3; Int: 7; Melee: +7 1d6+4; Save Fort: 6; Save Ref: 8; Save Will: 2; Size: M; Skills: 24; Str: 17; Wis: 10</td>
     </tr><tr style="text-align:center">
       <td><b>Familiar</b>: Raven "Ulne"</td>
     </tr><tr style="text-align:center">
@@ -464,6 +463,12 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Companion Notes</b>:       <table id="CompanionNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Limbs (Legs) Evolution: Has 2 pairs of legs; gives +20 speed</i></td>
+      </tr><tr style="text-align:center">
+        <td>Ability Score Increase: +1 distributed among eidolon abilities</td>
+      </tr><tr style="text-align:center">
+        <td>Bite Evolution: Bite attack inflicts 1d6+4 HP</td>
+      </tr><tr style="text-align:center">
         <td>Companion Darkvision: 60' b/w vision in darkness</td>
       </tr><tr style="text-align:center">
         <td>Companion Evasion: Reflex save yields no damage instead of half</td>
@@ -474,33 +479,29 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Devotion: +4 Will vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Eidolon Bite: Bite attack inflicts 1d6+4 HP</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Gills: May breathe underwater</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Mount: Master may ride eidolon</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Rend (2): 2 successful claw attacks inflicts 1d4+4 HP</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Scent: R30' May detect foes by smell</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Skilled: +8 on chosen skill</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Sting: Sting attack inflicts 1d4 HP</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Tentacle: Tentacle attack inflicts 1d4 HP each</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Trample (2): Full-round automatic overrun inflicts 1d6+4 HP (DC 16 Ref half)</td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon Wing Buffet: Wing attack inflicts 1d4 HP each</td>
-      </tr><tr style="text-align:center">
         <td>Empathic Link: Share emotions up to 1 mile</td>
       </tr><tr style="text-align:center">
+        <td>Gills Evolution: May breathe underwater</td>
+      </tr><tr style="text-align:center">
+        <td>Link (Summoner): May communicate w/eidolon over any distance/Shares magic item slots w/eidolon</td>
+      </tr><tr style="text-align:center">
+        <td>Mount Evolution: Self may ride eidolon</td>
+      </tr><tr style="text-align:center">
         <td>Multiattack: Reduce additional attack penalty to -2 or second attack at -5</td>
+      </tr><tr style="text-align:center">
+        <td>Rend Evolution: 2 successful claw attacks inflict 1d4+4 HP</td>
+      </tr><tr style="text-align:center">
+        <td>Scent Evolution: R30' May detect foes by smell</td>
+      </tr><tr style="text-align:center">
+        <td>Share Spells (Summoner): May cast spells that effect self on eidolon instead</td>
       </tr><tr style="text-align:center">
         <td>Share Spells: Master share self spell w/companion w/in 5'</td>
       </tr><tr style="text-align:center">
         <td>Speak With Master: Talk w/master in secret language</td>
+      </tr><tr style="text-align:center">
+        <td>Tentacle Evolution: Tentacle attacks inflict 1d4+3 HP each</td>
+      </tr><tr style="text-align:center">
+        <td>Trample Evolution: Full-round automatic overrun inflicts 1d6+4 HP (DC 16 Ref half)</td>
       </tr></table>
 </td>
     </tr></table>
