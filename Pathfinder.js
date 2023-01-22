@@ -4558,6 +4558,10 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
     'companionMasterLevel', '=', 'source + 1 - Math.floor((source + 1) / 4)'
   );
   // Pathfinder-specific attributes
+  rules.defineChoice('notes',
+    'animalCompanionStats.CMB:%S',
+    'familiarStats.CMB:%S'
+  ); 
   rules.defineRule('animalCompanionStats.Feats',
     'companionMasterLevel', '=',
     'source >= 18 ? 8 : source >= 10 ? Math.floor((source + 5) / 3) : ' +
