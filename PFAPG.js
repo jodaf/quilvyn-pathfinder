@@ -1616,12 +1616,12 @@ PFAPG.FEATURES = {
   "Hag's Eye Hex":
     'Section=magic Note="Can use <i>Arcane Eye</i> %{levels.Witch} min/dy"',
   'Healing Hex':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="May cast <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> at will 1/target/dy"',
   'Hex':'Section=feature Note="%V Selections"',
   'Life Giver Hex':'Section=magic Note="May use <i>Resurrection</i> 1/dy"',
   'Major Healing Hex':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="May cast <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> at will 1/target/dy"',
   'Misfortune Hex':
     'Section=magic ' +
@@ -1642,13 +1642,13 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Can understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
   'Vision Hex':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
   'Ward Hex':
     'Section=magic ' +
     'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or failed save"',
   'Waxen Image Hex':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends)"',
   'Weather Control Hex':
     'Section=magic ' +
@@ -6989,8 +6989,14 @@ PFAPG.CLASSES = {
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Simple)",' +
-      '1:Cantrips,1:Hex,"1:Witch\'s Familiar" ' +
+      '1:Cantrips,1:Hex,1:Patron,"1:Witch\'s Familiar" ' +
     'Selectables=' +
+      '"1:Agility Patron:Patron","1:Animals Patron:Patron",' +
+      '"1:Deception Patron:Patron","1:Elements Patron:Patron",' +
+      '"1:Endurance Patron:Patron","1:Plague Patron:Patron",' +
+      '"1:Shadow Patron:Patron","1:Strength Patron:Patron",' +
+      '"1:Transformation Patron:Patron","1:Trickery Patron:Patron",' +
+      '"1:Water Patron:Patron","1:Wisdom Patron:Patron",' +
       '"1:Blight Hex:Hex",' +
       '"1:Cackle Hex:Hex",' +
       '"1:Cauldron Hex:Hex",' +
@@ -8114,6 +8120,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
     rules.defineRule
       ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
+    rules.defineRule('selectableFeatureCount.Witch (Patron)',
+      'featureNotes.patron', '+=', '1'
+    );
   } else if(name == 'Barbarian') {
     rules.defineRule('armorClass',
       'combatNotes.nakedCourage.1', '+', null,
