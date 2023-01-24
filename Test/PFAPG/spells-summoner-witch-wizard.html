@@ -7,7 +7,7 @@
   <script>
 var attributes = {
   "_path":"ztest/pfapg/spells/summoner witch wizard", 
-  "alignment":"Neutral", "animalCompanion.Quadruped Eidolon":1, 
+  "alignment":"Neutral", "animalCompanion.Biped Eidolon":1, 
   "animalCompanionName":"Rilnigod", "armor":"Hide", "charisma":16, "constitution":15, "deity":"None", 
   "dexterity":11, "experience":57, "experienceTrack":"PSOP", "faction":"Silver Crusade", 
   "familiar.Raven":1, "familiarName":"Ulne", "feats.Acrobatic":1, "feats.Arcane Strike":1, 
@@ -18,12 +18,12 @@ var attributes = {
   "intelligence":13, "languages.Dwarven":1, "levels.Summoner":7, "levels.Witch":6, 
   "levels.Wizard":7, "name":"Spells-Summoner Witch Wizard", "race":"Human", 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
-  "selectableFeatures.Summoner - Bite Evolution":1, "selectableFeatures.Summoner - Eidolon Skilled":1, 
-  "selectableFeatures.Summoner - Gills Evolution":1, "selectableFeatures.Summoner - Mount Evolution":1, 
-  "selectableFeatures.Summoner - Rend Evolution":1, "selectableFeatures.Summoner - Scent Evolution":1, 
-  "selectableFeatures.Summoner - Tentacle Evolution":1, "selectableFeatures.Summoner - Trample Evolution":1, 
-  "selectableFeatures.Witch - Cackle Hex":1, "selectableFeatures.Witch - Cauldron Hex":1, 
-  "selectableFeatures.Witch - Flight Hex":1, "selectableFeatures.Witch - Healing Hex":1, 
+  "selectableFeatures.Summoner - Eidolon Skilled":1, "selectableFeatures.Summoner - Flight Evolution":1, 
+  "selectableFeatures.Summoner - Gills Evolution":1, "selectableFeatures.Summoner - Gore Evolution":1, 
+  "selectableFeatures.Summoner - Scent Evolution":1, "selectableFeatures.Summoner - Skilled Evolution":1, 
+  "selectableFeatures.Summoner - Trample Evolution":1, "selectableFeatures.Witch - Cackle Hex":1, 
+  "selectableFeatures.Witch - Cauldron Hex":1, "selectableFeatures.Witch - Flight Hex":1, 
+  "selectableFeatures.Witch - Healing Hex":1, "selectableFeatures.Witch - Strength Patron":1, 
   "selectableFeatures.Wizard - Bonded Object":1, "selectableFeatures.Wizard - School Opposition (Conjuration)":1, 
   "selectableFeatures.Wizard - School Opposition (Transmutation)":1, "selectableFeatures.Wizard - School Specialization (Evocation)":1, 
   "shield":"None", "skills.Appraise":1, "skills.Climb":7, "skills.Craft (Alchemy)":1, 
@@ -47,9 +47,8 @@ var attributes = {
   "spells.Share Senses(W4 Divi)":1, "spells.Spiked Pit(Summoner3 Conj)":1, "spells.Spite(Witch4 Abju)":1, 
   "spells.Stumble Gap(W1 Conj)":1, "spells.Suffocation(W5 Necr)":1, "spells.Summon Eidolon(Summoner2 Conj)":1, 
   "spells.Transmogrify(Summoner4 Tran)":1, "spells.Twilight Knife(W3 Evoc)":1, "spells.Unfetter(Summoner1 Tran)":1, 
-  "spells.Wall Of Suppression(W9 Abju)":1, "strength":6, "traits.Mathematical Prodigy":1, 
-  "traits.Scholar Of The Great Beyond":1, "weapons.Bardiche":1, "weapons.Light Hammer":1, "weapons.Spiked Armor":1, 
-  "wisdom":11
+  "spells.Wall Of Suppression(W9 Abju)":1, "strength":6, "weapons.Bardiche":1, "weapons.Light Hammer":1, 
+  "weapons.Spiked Armor":1, "wisdom":11
 };
   </script>
 </head>
@@ -105,16 +104,15 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11; Wizard: 1</td>
-        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Summoner (Evolution): 10; Witch (Hex): 4; Wizard (Arcane Bond): 1; Wizard (Opposition): 2; Wizard (Specialization): 1</td>
+        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Summoner (Evolution): 10; Witch (Hex): 4; Witch (Patron): 1; Wizard (Arcane Bond): 1; Wizard (Opposition): 2; Wizard (Specialization): 1</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Arcane Strike; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Medium Armor Proficiency; Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
-        <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
-        <td><b>Witch Features</b>: Cackle Hex; Cantrips; Cauldron Hex; Flight Hex; Healing Hex; Hex; Patron; Weapon Proficiency (Simple); Witch's Familiar</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Bite Evolution: 2; Bond Senses: 1; Cantrips: 1; Eidolon: 1; Gills Evolution: 1; Life Link (Summoner): 1; Limbs (Legs) Evolution: 2; Maker's Call: 1; Mount Evolution: 1; Rend Evolution: 1; Scent Evolution: 1; Shield Ally (Summoner): 1; Simple Somatics: 1; Summon Monster: 1; Tentacle Evolution: 1; Trample Evolution: 1; Weapon Proficiency (Simple): 1</td>
+        <td><b>Witch Features</b>: Cackle Hex; Cantrips; Cauldron Hex; Flight Hex; Healing Hex; Hex; Patron; Strength Patron; Weapon Proficiency (Simple); Witch's Familiar</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bond Senses; Cantrips; Claws Evolution; Eidolon; Flight Evolution; Gills Evolution; Gore Evolution; Life Link (Summoner); Limbs (Arms) Evolution; Limbs (Legs) Evolution; Maker's Call; Scent Evolution; Shield Ally (Summoner); Simple Somatics; Skilled Evolution; Summon Monster; Trample Evolution; Weapon Proficiency (Simple)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Wizard Features</b>: Bonded Object; Force Missile; Intense Spells; School Opposition (Conjuration); School Opposition (Transmutation); School Specialization (Evocation); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
       </tr></table>
@@ -127,6 +125,8 @@ var attributes = {
         <td><i>Cauldron Hex: Has Brew Potion feature</i></td>
       </tr><tr style="text-align:center">
         <td><i>Hex: 4 Selections</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Patron: 1 Selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Witch's Familiar: Has Familiar feature/Familiar stores spells</i></td>
       </tr><tr style="text-align:center">
@@ -192,10 +192,6 @@ var attributes = {
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +20</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Mathematical Prodigy: +1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Scholar Of The Great Beyond: +1 Knowledge (History)/+1 Knowledge (Planes)/choice is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Profession (Scribe)): +3 Profession (Scribe)</i></td>
       </tr><tr style="text-align:center">
@@ -429,6 +425,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Maker's Call: May use <i>Dimension Door</i> effects to bring eidolon adjacent 1/dy</td>
     </tr><tr style="text-align:center">
+      <td>Patron: Knows additional spells</td>
+    </tr><tr style="text-align:center">
       <td>School Opposition (Conjuration): Double cost to cast Conjuration spells</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Transmutation): Double cost to cast Transmutation spells</td>
@@ -449,11 +447,11 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="NotesPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Animal Companion</b>: Quadruped Eidolon "Rilnigod"</td>
+      <td><b>Animal Companion</b>: Biped Eidolon "Rilnigod"</td>
     </tr><tr style="text-align:center">
       <td><b>Animal Companion Features</b>: Ability Score Increase; Companion Darkvision; Companion Evasion; Devotion; Link (Summoner); Multiattack; Share Spells (Summoner)</td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Stats</b>: AC: 21; CMB: +9; CMD: 22; Cha: 11; Con: 13; Dex: 17; Feats: 3; HD: 6; HP: 33; Initiative: +3; Int: 7; Melee: +7 1d6+4; Save Fort: +6; Save Ref: +8; Save Will: +2; Size: M; Skills: 24; Str: 17; Wis: 10</td>
+      <td><b>Animal Companion Stats</b>: AC: 20; CMB: +10; CMD: 22; Cha: 11; Con: 13; Dex: 15; Feats: 3; HD: 6; HP: 33; Initiative: +2; Int: 7; Melee: +8 2@1d4+6; Save Fort: +6; Save Ref: +4; Save Will: +5; Size: M; Skills: 24; Str: 19; Wis: 10</td>
     </tr><tr style="text-align:center">
       <td><b>Familiar</b>: Raven "Ulne"</td>
     </tr><tr style="text-align:center">
@@ -463,11 +461,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Companion Notes</b>:       <table id="CompanionNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Limbs (Legs) Evolution: Has 2 pairs of legs; +20 speed</i></td>
+        <td><i>Limbs (Legs) Evolution: Has 1 pairs of legs; +10 speed</i></td>
       </tr><tr style="text-align:center">
         <td>Ability Score Increase: +1 distributed among eidolon abilities</td>
       </tr><tr style="text-align:center">
-        <td>Bite Evolution: Bite attack inflicts 1d6+4 HP</td>
+        <td>Claws Evolution: Claw attacks inflicts 1d4+6 HP each</td>
       </tr><tr style="text-align:center">
         <td>Companion Darkvision: 60' b/w vision in darkness</td>
       </tr><tr style="text-align:center">
@@ -481,15 +479,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Empathic Link: Share emotions up to 1 mile</td>
       </tr><tr style="text-align:center">
+        <td>Flight Evolution: 30' Fly</td>
+      </tr><tr style="text-align:center">
         <td>Gills Evolution: May breathe underwater</td>
+      </tr><tr style="text-align:center">
+        <td>Gore Evolution: Horn attack inflicts 1d6+6 HP</td>
+      </tr><tr style="text-align:center">
+        <td>Limbs (Arms) Evolution: Has 1 pairs of arms</td>
       </tr><tr style="text-align:center">
         <td>Link (Summoner): May communicate w/eidolon over any distance/Shares magic item slots w/eidolon</td>
       </tr><tr style="text-align:center">
-        <td>Mount Evolution: Self may ride eidolon</td>
-      </tr><tr style="text-align:center">
         <td>Multiattack: Reduce additional attack penalty to -2 or second attack at -5</td>
-      </tr><tr style="text-align:center">
-        <td>Rend Evolution: 2 successful claw attacks inflict 1d4+4 HP</td>
       </tr><tr style="text-align:center">
         <td>Scent Evolution: R30' May detect foes by smell</td>
       </tr><tr style="text-align:center">
@@ -497,11 +497,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Share Spells: Master share self spell w/companion w/in 5'</td>
       </tr><tr style="text-align:center">
+        <td>Skilled Evolution: +8 on each of 1 chosen skill(s)</td>
+      </tr><tr style="text-align:center">
         <td>Speak With Master: Talk w/master in secret language</td>
       </tr><tr style="text-align:center">
-        <td>Tentacle Evolution: Tentacle attacks inflict 1d4+3 HP each</td>
-      </tr><tr style="text-align:center">
-        <td>Trample Evolution: Full-round automatic overrun inflicts 1d6+4 HP (DC 16 Ref half)</td>
+        <td>Trample Evolution: Full-round automatic overrun inflicts 1d6+6 HP (DC 17 Ref half)</td>
       </tr></table>
 </td>
     </tr></table>
