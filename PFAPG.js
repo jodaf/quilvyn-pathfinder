@@ -237,7 +237,7 @@ PFAPG.FEATS = {
     'Type=General,Fighter Require="intelligence >= 13","features.Precise Shot"',
   'Following Step':
     'Type=General,Fighter Require="dexterity >= 13","features.Step Up"',
-  'Step Up and Strike':
+  'Step Up And Strike':
     'Type=General,Fighter ' +
     'Require="features.Following Step","baseAttack >= 6"',
   'Furious Focus':
@@ -1636,6 +1636,11 @@ PFAPG.FEATURES = {
   'Nightmares Hex':
     'Section=magic ' +
     'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends) at will"',
+  'Patron':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"1 Selection",' +
+      '"Knows additional spells"',
   'Retribution Hex':
     'Section=magic ' +
     'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
@@ -3879,7 +3884,7 @@ PFAPG.FEATURES = {
   'Stabbing Shot':
     'Section=combat Note="May replace first full-attack bow shot w/5\' push"',
   'Steel Soul':'Section=save Note="+2 vs. spells"',
-  'Step Up and Strike':'Section=combat Note="May make AOO after Step Up"',
+  'Step Up And Strike':'Section=combat Note="May make AOO after Step Up"',
   'Stone Sense':
     'Section=feature ' +
     'Note="10\' May sense location of creatures in contact with ground"',
@@ -5258,6 +5263,9 @@ PFAPG.SHIELDS = {
 };
 PFAPG.SKILLS = {
 };
+// As noted below, the following two spell lists include Witch spells that are
+// restricted to particluar patrons. randomizeOneElement takes steps to ensure
+// that these spells are not randomly assigned to an unqualified character.
 PFAPG.SPELLS = {
 
   'Absorbing Touch':
@@ -5730,7 +5738,7 @@ PFAPG.SPELLS = {
     'Description="R30\' Self and %{lvl//2} willing pre-selected targets teleport to prepared location"',
   'Geyser':
     'School=Conjuration ' +
-    'Level=Aquatic4,D4,W5,Waves5 ' +
+    'Level=Aquatic4,D4,W5,Waves5,Witch5 ' + // Witch Water
     'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), then 1d6 HP fire in %{lvl*5}\' radius for conc + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
@@ -6058,7 +6066,7 @@ PFAPG.SPELLS = {
     'Description="Reshapes touched corpse to look like another creature"',
   'Seamantle':
     'School=Conjuration ' +
-    'Level=Aquatic8,D8,W8,Waves8 ' +
+    'Level=Aquatic8,D8,W8,Waves8,Witch8 ' + // Witch Water
     'Description="30\' water column gives self +8 AC, +4 Reflex, and 30\' slam attack for $L min"',
   'Seek Thoughts':
     'School=Divination ' +
@@ -6098,7 +6106,7 @@ PFAPG.SPELLS = {
     'Description="Touched unconscious creature animates and moves at half speed for $L hr"',
   'Slipstream':
     'School=Conjuration ' +
-    'Level=Aquatic2,D2,Oceans2,R2,W2,Waves2 ' +
+    'Level=Aquatic2,D2,Oceans2,R2,W2,Waves2,Witch2 ' + // Witch Water
     'Description="Creates wave that moves touched 10\'/rd for %{lvl*10} min"',
   'Snake Staff':
     'School=Transmutation ' +
@@ -6218,7 +6226,7 @@ PFAPG.SPELLS = {
     'Description="R$RM\' Removes polymorph effects from %{lvl//3} targets (Will neg for ability, DC 11+effect level for spells) for $L rd"',
   'Tsunami':
     'School=Conjuration ' +
-    'Level=D9,Oceans9,W9,Waves9 ' +
+    'Level=D9,Oceans9,W9,Waves9,Witch9 ' + // Witch Water
     'Description="R$RL\' 10\'x10\'x%{lvl*2}\' wave moves 60\'/rd (water) or 30\'/rd (land), inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
   'Twilight Knife':
     'School=Evocation ' +
@@ -6266,7 +6274,7 @@ PFAPG.SPELLS = {
     'Description="Self moves insect swarm that attacks all creatures for $L rd"',
   'Vortex':
     'School=Evocation ' +
-    'Level=D7,W7,Waves7 ' +
+    'Level=D7,W7,Waves7,Witch7 ' + // Witch Elements
     'Description="R$RL\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg), then 1d8 HP/rd for $L rd"',
   'Wake Of Light':
     'School=Evocation ' +
@@ -6319,12 +6327,13 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,O2,Proteus2',
   'Alter Self':'Witch2',
   'Analyze Dweomer':'Arcana6,Witch6',
-  'Animal Shapes':'Feather7,Fur7,Nature8',
-  'Animate Dead':'Bones3,O3,Souls3,Undeath3',
+  'Animal Growth':'Witch5', // Witch Animals
+  'Animal Shapes':'Feather7,Fur7,Nature8,Witch8', // Witch Agility, Animals
+  'Animate Dead':'Bones3,O3,Souls3,Undeath3,Witch4', // Witch Plague
   'Animate Objects':'O6,Witch6',
   'Animate Plants':'Decay7,Growth7,Verdant8',
-  'Animate Rope':'Construct1',
-  'Antilife Shell':'Fur6,O6,Souls6',
+  'Animate Rope':'Construct1,Witch1', // Witch Trickery
+  'Antilife Shell':'Fur6,O6,Souls6,Witch6', // Witch Animals
   'Antimagic Field':'Defense6,Divine6,Purity6,O8',
   'Antipathy':'Witch8',
   'Arcane Eye':'Arcana4,Witch4',
@@ -6339,35 +6348,37 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Bane':'Curse1,Inquisitor1,O1',
   'Banishment':'Inquisitor5,O6',
   'Barkskin':'Decay2,Defense2,Growth2,Nature2,Verdant2',
-  "Bear's Endurance":'O2',
-  'Beast Shape I':'Fur3',
-  'Beast Shape III':'Feather5,Fur5',
-  'Beast Shape IV':'Aquatic6',
+  "Bear's Endurance":'O2,Witch2', // Witch Endurance, Transformation
+  'Beast Shape I':'Fur3,Witch3', // Witch Transformation
+  'Beast Shape II':'Witch4', // Witch Transformation
+  'Beast Shape III':'Feather5,Fur5,Witch5', // Witch Transformation
+  'Beast Shape IV':'Aquatic6,Witch7', // Witch Animals
   'Bestow Curse':'Curse3,O3,Witch3',
   'Black Tentacles':'Witch4',
   'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
   'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6,O7',
   'Bleed':'Inquisitor0,O0,Witch0',
   'Bless':'Family1,Inquisitor1,Leadership1,O1,Resolve1',
-  'Bless Water':'Divine2,Inquisitor1,O1',
+  'Bless Water':'Divine2,Inquisitor1,O1,Witch1', // Witch Water
   'Bless Weapon':'Heroism2',
   'Blight':'Seasons4,Witch5',
   'Blindness/Deafness':'Loss2,Night2,O3,Witch2',
-  'Blink':'Starsoul3',
+  'Blink':'Starsoul3,Witch3', // Witch Deception
   'Blur':'Protean2',
   'Break Enchantment':
     'Curse5,Fate5,Inquisitor5,O5,Restoration5,Revolution5,Witch5',
   'Breath Of Life':'Life5,O5',
-  "Bull's Strength":'Ferocity2,O2,Rage2,Resolve2',
+  "Bull's Strength":'Ferocity2,O2,Rage2,Resolve2,Witch2', // Witch Strength
   'Burning Hands':'Ash1,Flame1,Smoke1,Witch1',
   'Call Lightning':'Catastrophe3,Seasons3,Storms3',
   'Call Lightning Storm':'Starsoul4,Storms5',
   'Calm Animals':'Feather1',
   'Calm Emotions':'Family2,Inquisitor2,O2',
+  "Cat's Grace":'Witch2', // Witch Agility
   'Cause Fear':'Bones1,Daemon1,Inquisitor1,Murder1,O1,Undeath1,Witch1',
   'Chain Lightning':'Cloud6,Heavens6,Stormborn6,Witch7',
   'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Proteus4',
-  'Charm Animal':'Nature1',
+  'Charm Animal':'Nature1,Witch1', // Witch Animals
   'Charm Monster':'Love5,Lust5,Witch4',
   'Charm Person':'Love1,Lust1,Witch1',
   'Chill Touch':'Witch1',
@@ -6380,24 +6391,24 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Color Spray':'Heavens1',
   'Command':'"Devil Evil1","Devil Law1",Inquisitor1,O1,Toil1,Witch1',
   'Command Plants':'Growth4,Verdant4',
-  'Command Undead':'Inevitable3',
+  'Command Undead':'Inevitable3,Witch2', // Witch Plague
   'Commune':'Inquisitor5,O5',
   'Comprehend Languages':'Inquisitor1,Language1,Memory1,O1,Thought1,Witch1',
   'Cone Of Cold':'Boreal5,Ice6,Oceans6,Witch6',
   'Confusion':'Deception4,Lust4,Protean4,Thievery4,Witch4',
   'Consecrate':'Inquisitor2,O2',
   'Contact Other Plane':'Lore5,Witch5',
-  'Contagion':'Decay3,O3',
+  'Contagion':'Decay3,O3,Witch3', // Witch Plague
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
-  'Control Undead':'Bones7',
-  'Control Water':'Aquatic5,Ice4,O4,Oceans4',
+  'Control Undead':'Bones7,Witch7', // Witch Plague
+  'Control Water':'Aquatic5,Ice4,O4,Oceans4,Witch4', // Witch Water
   'Control Weather':
     'Battle7,Catastrophe7,O7,Seasons7,Stormborn7,Storms7,Wind7,Witch7',
   'Control Winds':'Cloud5,Seasons6,Wind5,Winds5',
   'Create Food And Water':'Family3,O3',
-  'Create Greater Undead':'Murder8,O8,Undeath8',
-  'Create Undead':'Murder6,O6,Undeath6',
+  'Create Greater Undead':'Murder8,O8,Undeath8,Witch8', // Witch Plague
+  'Create Undead':'Murder6,O6,Undeath6,Witch6', // Witch Plague
   'Create Water':'Inquisitor0,O0',
   'Creeping Doom':'Nature7',
   'Crushing Hand':'Ferocity9,Resolve9',
@@ -6406,9 +6417,9 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cure Light Wounds':'Inquisitor1,O1,Restoration1,Resurrection1,Witch1',
   'Cure Moderate Wounds':'Inquisitor2,O2,Resurrection2,Witch2',
   'Cure Serious Wounds':'Inquisitor3,O3,Restoration3,Resurrection3,Witch4',
-  'Curse Water':'Inquisitor1,O1',
+  'Curse Water':'Inquisitor1,O1,Witch1', // Witch Water
   'Dancing Lights':'Witch0',
-  'Darkness':'Inquisitor2,O2',
+  'Darkness':'Inquisitor2,O2,Witch2', // Witch Shadow
   'Darkvision':'Deep2,Shadow2',
   'Daylight':'Day3,Heavens3,Inquisitor3,Light3,O3',
   'Daze':'Inquisitor0,Witch0',
@@ -6417,7 +6428,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Death Ward':'Inquisitor4,Murder4,O4,Souls4,Witch4',
   'Deathwatch':'Ancestors1,O1,Souls1',
   'Deep Slumber':'Dreamspun3,Witch3',
-  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3,Shadow3',
+  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3,Shadow3,Witch3',// Witch Shadow
   'Delay Poison':'Inquisitor2,O2,Serpentine2,Witch2',
   'Demand':'Leadership8,Lust8,Martyr8,Witch8',
   'Desecrate':'Inquisitor2,O2',
@@ -6431,7 +6442,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Detect Secret Doors':'Witch1',
   'Detect Scrying':'Inquisitor4,Witch4',
   'Detect Thoughts':'Inquisitor2,Thought2,Witch2',
-  'Detect Undead':'Inquisitor1,Life1,O1',
+  'Detect Undead':'Inquisitor1,Life1,O1,Witch1', // Witch Plague
   'Dictum':'"Archon Law7","Devil Law7",Inevitable7,Inquisitor6,O7',
   'Dimension Door':'Trade4,Witch4',
   'Dimensional Anchor':'Inquisitor3,O4,Wards4',
@@ -6450,24 +6461,28 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Disrupt Undead':'Inquisitor0',
   'Disrupting Weapon':'Inquisitor5,O5',
   'Divination':'Dreamspun4,Inquisitor4,Memory4,O4,Thought4,Witch4',
-  'Divine Favor':'"Archon Good1","Archon Law1",Inquisitor1,Martyr1,O1',
-  'Divine Power':'Blood4,Inquisitor4,O4,Tactics4',
+  'Divine Favor':
+    '"Archon Good1","Archon Law1",Inquisitor1,Martyr1,O1,Witch1', // Witch Strength
+  'Divine Power':'Blood4,Inquisitor4,O4,Tactics4,Witch4', // Witch Strength
+  'Dominate Animal':'Witch3', // Witch Animals
   'Dominate Monster':'Love9,Lust9,Serpentine9,Witch9',
   'Dominate Person':'Witch5',
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
-  'Dream':'Dreamspun5',
+  'Dream':'Dreamspun5,Witch5', // Witch Wisdom
   "Eagle's Splendor":'O2',
   'Earthquake':'Battle8,Catastrophe8,Caves8,Deep8,O8,Rage8',
-  'Elemental Body IV':'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7',
+  'Elemental Body III':'Witch6', // Witch Water
+  'Elemental Body IV':
+    'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7,Witch7', // Witch Water
   'Elemental Swarm':'Caves9,Metal9,Smoke9,Witch9',
-  'Endure Elements':'Day1,O1',
-  'Energy Drain':'Loss9,O9,Undeath9',
+  'Endure Elements':'Day1,O1,Witch1', // Witch Endurance
+  'Energy Drain':'Loss9,O9,Undeath9,Witch9', // Witch Plague
   'Enervation':'Loss5,Undeath4,Witch4',
   'Enlarge Person':'Boreal1,Battle1,Ferocity1,Growth1,Witch1',
   'Entangle':'Decay1,Verdant1',
   'Enthrall':'Inquisitor2,Leadership2,Love2,O2,Revolution2,Witch2',
   'Entropic Shield':'Protean1,O1',
-  'Ethereal Jaunt':'O7,Thievery7',
+  'Ethereal Jaunt':'O7,Thievery7,Witch7',
   'Etherealness':'O9',
   'Expeditious Retreat':'"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
   'Explosive Runes':'Language4',
@@ -6483,26 +6498,33 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Find Traps':'Inquisitor2,O2,Witch2',
   'Fire Seeds':'Ash6,Day6,Flame6,Light6,Smoke6',
   'Fire Shield':'Ash5,Day4,Light4,Smoke5',
-  'Fire Storm':'Flame7,O8',
-  'Fireball':'Ash3,Flame3',
-  'Flame Strike':'Day5,Inquisitor5,Light5,O5',
+  'Fire Storm':'Flame7,O8,Witch8', // Witch Elements
+  'Fireball':'Ash3,Flame3,Witch3', // Witch Elements
+  'Flame Strike':'Day5,Inquisitor5,Light5,O5,Witch5', // Witch Elements
+  'Flaming Sphere':'Witch2', // Witch Elements
   'Floating Disk':'Trade1',
   'Flesh To Stone':'Witch6',
   'Fly':'"Azata Chaos3","Azata Good3",Exploration3,Feather3,Trade3,Witch3',
   'Fog Cloud':'Battle2,Ice2,Seasons2,Storms2,Witch2',
   'Forbiddance':'Inquisitor6,O6',
   'Foresight':'Memory9,Thought9,Witch9',
+  'Form Of The Dragon I':'Witch6', // Witch Transformation
+  'Form Of The Dragon II':'Witch7', // Witch Transformation
+  'Form Of The Dragon III':'Witch8', // Witch Transformation
   'Freedom':'Freedom9,Revolution9',
-  'Freedom Of Movement':'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4',
-  'Freezing Sphere':'Ice7',
+  'Freedom Of Movement':
+    'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4,Witch4', // Witch Agility
+  'Freezing Sphere':'Ice7,Witch6', // Witch Elements
   'Gaseous Form':'Cloud3,Protean3,Winds3',
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6,Witch6',
   'Gentle Repose':'Ancestors2,O2,Souls2,Witch2',
   'Ghoul Touch':'Undeath2',
-  'Giant Form I':'Boreal7',
-  'Giant Vermin':'O4',
+  'Giant Form I':'Boreal7,Witch7', // Witch Strength
+  'Giant Form II':'Witch8', // Witch Strength
+  'Giant Vermin':'O4,Witch5', // Witch Plague
   'Glitterdust':'Starsoul2,Witch2',
+  'Globe Of Invulnerability':'Witch6', // Witch Wisdom
   'Glyph Of Warding':'Home3,Inquisitor3,O3,Wards3,Witch3',
   'Goodberry':'Seasons1',
   'Grasping Hand':'Ferocity7,Resolve7',
@@ -6512,21 +6534,24 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Greater Glyph Of Warding':'Inquisitor6,Language6,O6',
   'Greater Heroism':'Heroism6,Witch6',
   'Greater Invisibility':'Inquisitor4',
-  'Greater Magic Weapon':'Inquisitor3,O4',
+  'Greater Magic Weapon':'Inquisitor3,O4,Witch3', // Witch Strength
   'Greater Planar Ally':'O8,Tactics8',
   'Greater Polymorph':'Protean7',
   'Greater Prying Eyes':'Starsoul8,Witch8',
-  'Greater Restoration':'Life7,O7',
+  'Greater Restoration':'Life7,O7,Witch7', // Witch Endurance
   'Greater Scrying':'O7,Witch7',
-  'Greater Shadow Evocation':'Loss8,Night8,Shadow8',
+  'Greater Shadow Conjuration':'Witch7', // Witch Shadow
+  'Greater Shadow Evocation':'Loss8,Night8,Shadow8,Witch8', // Witch Shadow
   'Greater Spell Immunity':'O8',
   'Greater Teleport':'Exploration7,Trade7,Witch7',
   'Guards And Wards':'Home7,Wards6,Witch6',
   'Guidance':'Inquisitor0,O0,Witch0',
   'Gust Of Wind':'Catastrophe2,Stormborn2,Wind2',
   'Hallow':'Inquisitor5,O5',
+  'Hallucinatory Terrain':'Witch4', // Witch Trickery
   'Halt Undead':'Inquisitor3',
   'Harm':'Catastrophe6,Decay6,Inquisitor6,O6,Witch7',
+  'Haste':'Witch3', // Witch Agility
   'Heal':'Inquisitor6,Life6,O6,Restoration6,Resurrection6,Witch7',
   'Heat Metal':'Light2,Metal2',
   'Helping Hand':'O3',
@@ -6555,15 +6580,17 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Insanity':'Insanity7,Love7,Lust7,Nightmare7,Witch7',
   'Insect Plague':'O5',
   'Instant Summons':'Language7,Wards7,Witch7',
-  'Invisibility':'Inquisitor2,Thievery2',
+  'Invisibility':'Inquisitor2,Thievery2,Witch2', // Witch Deception
   'Invisibility Purge':'Inquisitor3,O3',
-  'Iron Body':'Metal8',
+  'Iron Body':'Metal8,Witch8', // Witch Endurance
   'Irresistible Dance':'Serpentine8,Witch8',
+  'Jump':'Witch1', // Witch Agility, Transformation
   'Keen Edge':'Inquisitor3,Murder3',
   'Knock':'Inquisitor2',
   'Legend Lore':'Inquisitor6,Lore4,Memory7,Thought7,Witch6',
   'Lesser Confusion':'Insanity1,Nightmare1,Proteus1',
   'Lesser Geas':'Inquisitor4,Witch4',
+  'Lesser Globe Of Invulnerability':'Witch4', // Witch Wisdom
   'Lesser Planar Ally':'O4',
   'Lesser Planar Binding':'Wards5',
   'Lesser Restoration':'Inquisitor2,Life2,O2',
@@ -6574,7 +6601,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Locate Creature':'Exploration4,Witch4',
   'Locate Object':'Exploration2,Inquisitor3,Lore3,O3,Thievery3,Trade2,Witch3',
   'Mage Armor':'Witch1',
-  "Mage's Disjunction":'Arcana9',
+  "Mage's Disjunction":'Arcana9,Witch9', // Witch Wisdom
   'Magic Aura':'Arcana1',
   'Magic Circle Against Chaos':'Inquisitor3,O3',
   'Magic Circle Against Evil':'Inquisitor3,O3',
@@ -6584,13 +6611,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Magic Jar':'Witch5',
   'Magic Mouth':'Arcana2',
   'Magic Stone':'Caves1,Metal1,O1,Stone1',
-  'Magic Vestment':'Battle3,Inquisitor3,Martyr3,O3,Resolve3,Tactics3',
+  'Magic Vestment':
+    'Battle3,Inquisitor3,Martyr3,O3,Resolve3,Tactics3,Witch3', // Witch Wisdom
   'Magic Weapon':'Blood1,Inquisitor1,O1,Tactics1',
+  'Major Image':'Witch3', // Witch Trickery
   'Major Creation':'Construct6,Protean5,Toil6,Witch5',
   'Make Whole':'O2',
   'Mark Of Justice':'Inquisitor5,O5,Witch5',
-  "Mass Bear's Endurance":'O6',
-  "Mass Bull's Strength":'Battle6,Ferocity6,O6',
+  "Mass Bear's Endurance":'O6,Witch6', // Witch Endurance
+  "Mass Bull's Strength":'Battle6,Ferocity6,O6,Witch6', // Witch Strength
+  "Mass Cat's Grace":'Witch6', // Witch Agility
   'Mass Charm Monster':'Witch8',
   'Mass Cure Critical Wounds':
     'Family8,Home8,O8,Restoration8,Resurrection8,Witch9',
@@ -6605,20 +6635,21 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mass Inflict Light Wounds':'Inquisitor5,O5,Witch6',
   'Mass Inflict Moderate Wounds':'Inquisitor6,O6,Witch7',
   'Mass Inflict Serious Wounds':'Blood7,O7,Witch8',
-  'Mass Invisibility':'Deception8,Thievery8',
+  'Mass Invisibility':'Deception8,Thievery8,Witch7', // Witch Deception
   "Mass Owl's Wisdom":'Lore6,O6',
   'Mass Suggestion':'Serpentine6,Witch6',
   'Maze':'Witch8',
   'Meld Into Stone':'O3,Stone3',
   'Mending':'O0,Witch0',
   'Message':'Witch0',
-  'Meteor Swarm':'Boreal9,Heavens9,Starsoul9',
+  'Meteor Swarm':'Boreal9,Heavens9,Starsoul9,Witch9', // Witch Elements
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8,Witch8',
   'Mind Fog':'Witch5',
   'Minor Creation':'Construct4,Toil4,Witch4',
-  'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9',
-  'Mirror Image':'Deception2',
-  'Mislead':'Deception6,Fate6,Thievery6',
+  'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9,Witch9', // Witch Endurance
+  'Mirage Arcana':'Witch5', // Witch Trickery
+  'Mirror Image':'Deception2,Witch2', // Witch Trickery
+  'Mislead':'Deception6,Fate6,Thievery6,Witch6', // Witch Trickery
   'Modify Memory':'Loss6,Memory6',
   'Moment Of Prescience':'Curse8,Dreamspun8,Fate8,Lore8,Memory8,Witch8',
   'Mount':'Witch1',
@@ -6629,7 +6660,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1,Witch1',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
   'Overland Flight':'Heavens5,Starsoul5,Stormborn5,Trade5,Witch5',
-  "Owl's Wisdom":'O2',
+  "Owl's Wisdom":'O2,Witch2', // Witch Wisdom
+  'Passwall':'Witch5', // Witch Deception
   'Phantasmal Killer':'Nightmare4,Witch4',
   'Phase Door':'Exploration8,Trade8,Witch7',
   'Planar Ally':'Agathion6,"Archon Good6","Archon Law6","Azata Chaos6","Azata Good6",O6',
@@ -6639,6 +6671,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Plant Shape III':'Verdant7',
   'Poison':'Decay4,O4,Serpentine4,Witch4',
   'Polar Ray':'Boreal8,Ice9',
+  'Polymorph':'Witch5', // Witch Agility
   'Polymorph Any Object':'Construct8,Protean8',
   'Power Word Blind':'Loss7,Night7,Shadow7,Tactics7,Witch7',
   'Power Word Kill':'Blood9,Tactics9,Witch9',
@@ -6647,13 +6680,14 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Prismatic Sphere':'Construct9,Day9,Defense9,Light9,Purity9,Toil9',
   'Prismatic Spray':'Heavens7',
   'Produce Flame':'Ash2',
+  'Programmed Image':'Witch6', // Witch Deception
   'Project Image':'Deception7',
   'Protection From Chaos':'Inevitable1,Inquisitor1,O1,Purity1',
-  'Protection From Energy':'Defense3,Inquisitor3,O3',
+  'Protection From Energy':'Defense3,Inquisitor3,O3,Witch3', // Witch Endurance
   'Protection From Evil':'Inquisitor1,O1,Purity1',
   'Protection From Good':'Inquisitor1,O1,Purity1',
   'Protection From Law':'Inquisitor1,O1,Purity1',
-  'Protection From Spells':'Arcana8,Divine8',
+  'Protection From Spells':'Arcana8,Divine8,Witch8', // Witch Wisdom
   'Prying Eyes':'Witch5',
   'Purify Food And Drink':'O0',
   'Pyrotechnics':'Smoke2',
@@ -6681,11 +6715,13 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Resistance':'Inquisitor0,O0,Witch0',
   'Restoration':'Inquisitor4,Life4,O4',
   'Resurrection':'Divine7,O7,Resurrection7,Witch8',
-  'Reverse Gravity':'Starsoul7',
-  'Righteous Might':'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5',
+  'Reverse Gravity':'Starsoul7,Witch7', // Witch Trickery
+  'Righteous Might':
+    'Battle5,Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5,Witch5', // Witch Strength
   'Sanctuary':'Freedom1,Inquisitor1,O1',
   'Scare':'Witch2',
-  'Scintillating Pattern':'Insanity8,Nightmare8',
+  'Scintillating Pattern':'Insanity8,Nightmare8,Witch8', // Witch Deception
+  'Screen':'Witch8', // Witch Trickery
   'Scrying':'O5,Witch4',
   'Searing Light':'Honor3,Inquisitor3,O3',
   'Secret Chest':'Witch5',
@@ -6694,32 +6730,37 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'See Invisibility':'Inquisitor2,Witch2',
   'Sending':'Inquisitor4,O4',
   'Sepia Snake Sigil':'Witch3',
-  'Shades':'Night9,Shadow9',
-  'Shadow Conjuration':'Loss4,Night4,Shadow4',
-  'Shadow Evocation':'Shadow5',
-  'Shadow Walk':'Dreamspun6,Shadow6',
+  'Shades':'Night9,Shadow9,Witch9', // Witch Shadow
+  'Shadow Conjuration':'Loss4,Night4,Shadow4,Witch4', // Witch Shadow
+  'Shadow Evocation':'Shadow5,Witch5', // Witch Shadow
+  'Shadow Walk':'Dreamspun6,Shadow6,Witch6', // Witch Shadow
   'Shambler':'Decay9,Growth9,Verdant9',
-  'Shapechange':'Feather9,Fur9,Protean9',
+  'Shapechange':
+    'Feather9,Fur9,Protean9,Witch9', // Witch Agility, Strength, Transformation
   'Shatter':'O2',
   'Shield':'Defense1',
-  'Shield Of Faith':'Agathion1,Heroism1,Honor1,Inquisitor1,O1',
+  'Shield Of Faith':
+    'Agathion1,Heroism1,Honor1,Inquisitor1,O1,Witch1', // Witch Wisdom
   'Shield Of Law':'"Archon Law8","Devil Law8",Inevitable8,O8',
   'Shield Other':'Home2,Inquisitor2,Martyr2,O2,Purity2',
-  'Shocking Grasp':'Stormborn1',
+  'Shocking Grasp':'Stormborn1,Witch1', // Witch Elements
   'Shout':'Catastrophe5,Rage5,Stormborn4',
   'Silence':'Inquisitor2,O2',
+  'Silent Image':'Witch1', // Witch Shadow
   'Slay Living':'Ancestors5,Bones5,O5,Souls5,Undeath5,Witch6',
   'Sleep':'Dreamspun1,Night1,Witch1',
   'Sleet Storm':'Storms4,Witch3',
   'Solid Fog':'Cloud4,Witch4',
   'Soul Bind':'O9,Witch9',
   'Sound Burst':'O2',
+  'Speak With Animals':'Witch2', // Witch Animals
   'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3,Witch3',
   'Speak With Plants':'Nature3,Verdant3',
   'Spectral Hand':'Witch2',
-  'Spell Immunity':'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4',
-  'Spell Resistance':'Arcana5,Defense5,Inquisitor5,O5',
-  'Spell Turning':'Arcana7,Curse7,Fate7',
+  'Spell Immunity':
+    'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4,Witch4', // Witch Endurance
+  'Spell Resistance':'Arcana5,Defense5,Inquisitor5,O5,Witch5',// Witch Endurance
+  'Spell Turning':'Arcana7,Curse7,Fate7,Witch7', // Witch Wisdom
   'Spike Stones':'Caves4,Deep5,Metal4',
   'Spiritual Weapon':'Blood2,Inquisitor2,O2',
   'Stabilize':'Inquisitor0,O0,Witch0',
@@ -6743,8 +6784,9 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Summon Monster VI':'O6,Witch6',
   'Summon Monster VII':'Aquatic7,O7,Serpentine7,Witch7',
   'Summon Monster VIII':'O8,Witch8',
-  "Summon Nature's Ally IV":'Feather4,Fur4',
+  "Summon Nature's Ally IV":'Feather4,Fur4,Witch4', // Witch Animals
   "Summon Nature's Ally VIII":'Feather8,Fur8',
+  "Summon Nature's Ally IX":'Witch9', // Witch Animals
   'Sunbeam':'Day7,Light7',
   'Sunburst':'Day8,Heavens8,Light8,Seasons8',
   'Symbol Of Death':'Language8,O8,Wards8,Witch8',
@@ -6760,7 +6802,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Teleport':'Exploration5,Witch5',
   'Teleport Object':'Witch7',
   'Teleportation Circle':'Language9,Wards9,Witch9',
-  'Time Stop':'Deception9,Lore9,Thievery9',
+  'Time Stop':'Deception9,Lore9,Thievery9,Witch9', // Witch Deception, Trickery
   'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4,Witch3',
   'Touch Of Fatigue':'Witch0',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2,Witch2',
@@ -6777,15 +6819,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
   'Unseen Servant':'Starsoul1,Witch1',
   'Vampiric Touch':'Blood3,Daemon3,Witch3',
+  'Ventriloquism':'Witch1', // Witch Decpetion
   'Virtue':'Inquisitor0,O0',
   'Vision':'Dreamspun7,Lore7,Witch7',
   'Wail Of The Banshee':'Ancestors9,Bones9,Witch9',
   'Wall Of Fire':'Ash4,Battle4,Flame4,Smoke4',
-  'Wall Of Ice':'Boreal4,Waves4',
+  'Wall Of Ice':'Boreal4,Waves4,Witch4', // Witch Elements
   'Wall Of Iron':'Metal6',
   'Wall Of Stone':'Caves5,Metal5,O5,Stone4',
   'Wall Of Thorns':'Blood5,Decay5,Verdant5',
-  'Water Breathing':'Ice3,O3,Waves3',
+  'Water Breathing':'Ice3,O3,Waves3,Witch3', // Witch Water
   'Water Walk':'O3,Oceans3,Witch3',
   'Waves Of Exhaustion':'Ancestors8,Souls8,Toil7,Witch7',
   'Waves Of Fatigue':'Toil5,Witch5',
