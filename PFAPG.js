@@ -156,8 +156,9 @@ PFAPG.FEATS = {
       '"features.Combat Reflexes",' +
       'features.Mobility,' +
       '"baseAttack >= 5"',
-  // TODO
-  // 'Cooperative Crafting':'Type=General Require=""'1 rank in any Craft skill, any item creation feat 
+  'Cooperative Crafting':
+    'Type=General ' +
+    'Require="Sum \'skills.Craft\' > 0","sumItemCreationFeats > 0"',
   'Cosmopolitan':'Type=General',
   'Covering Defense':
     'Type=General,Feature ' +
@@ -167,7 +168,10 @@ PFAPG.FEATS = {
     'Require="features.Critical Focus","baseAttack >= 13"',
   'Crossbow Mastery':
     'Type=General,Fighter ' +
-    'Require="dexterity >= 15","features.Rapid Reload","features.Rapid Shot"',
+    'Require=' +
+      '"dexterity >= 15",' +
+      '"Sum \'features.Rapid Reload\' > 0",' +
+      '"features.Rapid Shot"',
   'Dastardly Finish':'Type=General,Fighter Require="sneakAttack >= 5"',
   'Dazing Assault':
     'Type=General,Fighter ' +
@@ -193,7 +197,7 @@ PFAPG.FEATS = {
     'Type=General ' +
     'Require=' +
       '"strength >= 15",' +
-      '"features.Natural Weapons",' +
+      '"weapons.Claws",' +
       '"baseAttack >= 6"',
   'Elemental Fist':
     'Type=General,Fighter ' +
@@ -214,15 +218,15 @@ PFAPG.FEATS = {
     'Type=General Require="features.Elemental Focus (Electricity)"',
   'Greater Elemental Focus (Fire)':
     'Type=General Require="features.Elemental Focus (Fire)"',
-  'Elven Accuracy':'Type=General,Fighter Require="race =~ \'Elf\'"',
+  'Elven Accuracy':'Type=General,Fighter Require="race == \'Elf\'"',
   'Enforcer':'Type=General,Fighter Require=skills.Intimidate',
   'Expanded Arcana':'Type=General Require="casterLevel >= 1"',
   'Extra Bombs':'Type=General Require=features.Bomb',
   'Extra Discovery':'Type=General Require=features.Discovery',
   'Extra Hex':'Type=General Require=features.Hex',
-  'Extra Rage Power':'Type=General Require="features.Rage Power"',
+  'Extra Rage Power':'Type=General Require="features.Rage Powers"',
   'Extra Revelation':'Type=General Require=features.Revelation',
-  'Extra Rogue Talent':'Type=General Require="features.Rogue Talent"',
+  'Extra Rogue Talent':'Type=General Require="features.Rogue Talents"',
   'Fast Drinker':
     'Type=General Require="constitution >= 18","features.Drunken Ki"',
   'Fast Healer':
@@ -248,7 +252,7 @@ PFAPG.FEATS = {
     'Require="strength >= 15","features.Furious Focus","baseAttack >= 11"',
   'Gang Up':'Type=General,Fighter Require="features.Combat Expertise"',
   'Team Up':
-    'Type=General,Fighter Require=features.Gang-Up,"baseAttack >= 6"',
+    'Type=General,Fighter Require="features.Gang Up","baseAttack >= 6"',
   'Gnome Trickster':
     'Type=General ' +
     'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
@@ -262,7 +266,7 @@ PFAPG.FEATS = {
     'Type=General Require=features.Diehard,"save.Fortitude >= 4"',
   'Improved Blind-Fight':
     'Type=General,Fighter ' +
-     'Require="skills.Perception >= 10",features.Blind-Fight"',
+     'Require="skills.Perception >= 10",features.Blind-Fight',
   'Greater Blind-Fight':
     'Type=General,Fighter ' +
     'Require="skills.Perception >= 15","features.Improved Blind-Fight"',
@@ -316,9 +320,11 @@ PFAPG.FEATS = {
   'Low Profile':'Type=General,Fighter Require="dexterity >= 13",features.Small',
   'Lucky Halfling':'Type=General Require="race =~ \'Halfling\'"',
   'Master Alchemist':'Type=General Require="skills.Craft (Alchemy) >= 5"',
-  // TODO
-  // 'Minor Spell Expertise':'Type=General Require=""'Cast 4th-level spells
-  // 'Major Spell Expertise':'Type=General Require=""'Minor Spell Expertise, cast 9th-level spells
+  // TODO Require L4 spells
+  'Minor Spell Expertise':'Type=General',
+  // TODO Require L9 spells
+  'Major Spell Expertise':
+    'Type=General Require="features.Minor Spell Expertise"',
   'Missile Shield':
     'Type=General,Fighter Require="dexterity >= 13","features.Shield Focus"',
   'Ray Shield':
@@ -332,7 +338,7 @@ PFAPG.FEATS = {
     'Require="skills.Spellcraft >= 15","features.Improved Counterspell"',
   'Parting Shot':
     'Type=General,Fighter ' +
-    'Require="features.Shot on the Run","baseAttack >= 6"',
+    'Require="features.Shot On The Run","baseAttack >= 6"',
   'Pass for Human':
     'Type=General Require="race =~ \'Half-Elf|Half-Orc|Halfling\'"',
   'Perfect Strike':
@@ -342,8 +348,8 @@ PFAPG.FEATS = {
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
       '"baseAttack >= 8"',
-  // TODO
-  // 'Point-Blank Master':'Type=General,Fighter Require=""'Weapon Specialization with a ranged weapon
+  // TODO Weapon Specialization (ranged weapon)
+  'Point-Blank Master':'Type=General,Fighter',
   'Practiced Tactician':'Type=General Require=features.Tactician',
   'Preferred Spell':
     'Type=General Require="skills.Spellcraft >= 5","features.Heighten Spell"',
@@ -381,39 +387,39 @@ PFAPG.FEATS = {
     'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","features.Fighter >= 4"',
+    'Require="features.Shield Focus","levels.Fighter >= 4"',
   'Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","features.Fighter >= 4"',
+    'Require="features.Shield Focus","levels.Fighter >= 4"',
   'Shield Specialization (Light)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","features.Fighter >= 4"',
+    'Require="features.Shield Focus","levels.Fighter >= 4"',
   'Shield Specialization (Tower)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","features.Fighter >= 4"',
+    'Require="features.Shield Focus","levels.Fighter >= 4"',
   'Greater Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Greater Shield Focus",' +
-      '"features.Shield Specialization",' +
+      '"features.Shield Specialization (Buckler)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Greater Shield Focus",' +
-      '"features.Shield Specialization",' +
+      '"features.Shield Specialization (Heavy)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Light)':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Greater Shield Focus",' +
-      '"features.Shield Specialization",' +
+      '"features.Shield Specialization (Light)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Tower)':
     'Type=General,Fighter ' +
     'Require=' +
       '"features.Greater Shield Focus",' +
-      '"features.Shield Specialization",' +
+      '"features.Shield Specialization (Tower)",' +
       '"levels.Fighter >= 12"',
   'Sidestep':
     'Type=General,Fighter ' +
@@ -473,7 +479,7 @@ PFAPG.FEATS = {
   'Tripping Strike':
     'Type=General,Fighter ' +
     'Require="features.Improved Trip","baseAttack >= 9"',
-  'Under and Over':
+  'Under And Over':
     'Type=General,Fighter Require="features.Agile Maneuvers",features.Small',
   'Underfoot':
     'Type=General,Fighter ' +
@@ -712,7 +718,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
   'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
-  'Discovery':'Section=feature Note="%V Selections"',
+  'Discovery':'Section=feature Note="%V selections"',
   'Dispelling Bomb':
     'Section=combat ' +
     'Note="May create bomb that dispels magic instead of inflicting damage"',
@@ -744,7 +750,7 @@ PFAPG.FEATURES = {
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{levels.Alchemist//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
-  'Grand Discovery':'Section=feature Note="%V Selection/+2 Discovery"',
+  'Grand Discovery':'Section=feature Note="%V selection/+2 Discovery"',
   'Grand Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
@@ -883,7 +889,7 @@ PFAPG.FEATURES = {
       '"+4 AC vs. attack set against mounted charge/+%{((animalCompanionStats.Str||10)-10)//2} mounted charge damage",' +
       '"Gain 1 Order Of The Sword feat",' +
       '"No armor check penalty for Ride"',
-  'Order':'Section=feature Note="1 Selection"',
+  'Order':'Section=feature Note="1 selection"',
   'Order Of The Cockatrice':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -959,7 +965,7 @@ PFAPG.FEATURES = {
   'Discern Lies':
     'Section=magic ' +
     'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor}/dy"',
-  'Domain (Inquisitor)':'Section=feature Note="1 Selection"',
+  'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
     'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe"',
@@ -1240,7 +1246,7 @@ PFAPG.FEATURES = {
   'Moonlight Bridge':
     'Section=magic ' +
     'Note="10\' x %{levels.Oracle*10}\' span provides passage for 1 dy or until self crosses %{charismaModifier}/dy"',
-  'Mystery':'Section=feature Note="1 Selection"',
+  'Mystery':'Section=feature Note="1 selection"',
   'Natural Divination':
     'Section=feature ' +
     'Note="10 min nature study grants 1 +%{charismaModifier} save, +10 skill check, or +1 Initiative w/in 1 dy %{levels.Oracle//4+1}/dy"',
@@ -1251,7 +1257,7 @@ PFAPG.FEATURES = {
   'Near Death':
     'Section=save ' +
     'Note="+%{levels.Oracle>=11 ? 4 : 2} vs. disease, mental effects, poison%{levels.Oracle>=7 ? \', death effects, sleep effects, stunning\' : \'\'}"',
-  "Oracle's Curse":'Section=feature Note="1 Selection"',
+  "Oracle's Curse":'Section=feature Note="1 selection"',
   // Orisons as Inquisitor
   'Punitive Transformation':
     'Section=magic ' +
@@ -1267,7 +1273,7 @@ PFAPG.FEATURES = {
   'Resist Life':
     'Section=save ' +
     'Note="Save as undead vs. negative and positive energy%{levels.Oracle>=7 ? \' w/+\' + (levels.Oracle>=15 ? 6 : levels.Oracle>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
-  'Revelation':'Section=feature Note="%V Selections"',
+  'Revelation':'Section=feature Note="%V selections"',
   'Rock Throwing':
     'Section=combat ' +
     'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1} HP"',
@@ -1621,7 +1627,7 @@ PFAPG.FEATURES = {
   'Healing Hex':
     'Section=magic ' +
     'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects at will 1/target/dy"',
-  'Hex':'Section=feature Note="%V Selections"',
+  'Hex':'Section=feature Note="%V selections"',
   'Life Giver Hex':
     'Section=magic Note="May use <i>Resurrection</i> effects 1/dy"',
   'Major Healing Hex':
@@ -1639,7 +1645,7 @@ PFAPG.FEATURES = {
   'Patron':
     'Section=feature,magic ' +
     'Note=' +
-      '"1 Selection",' +
+      '"1 selection",' +
       '"Knows additional spells"',
   'Retribution Hex':
     'Section=magic ' +
@@ -2209,7 +2215,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+4 Wild Shape level w/totem animal",' +
       '"+4 Wild Empathy w/totem animal"',
-  'Animal Shaman Feat Bonus':'Section=feature Note="%V Selections"',
+  'Animal Shaman Feat Bonus':'Section=feature Note="%V selections"',
   'Aquatic Adaptation':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -2661,7 +2667,7 @@ PFAPG.FEATURES = {
   'Ancient Healing Hand':
     'Section=combat ' +
     'Note="May spend 2 Ki Points to restore %{levels.Monk} HP to another"',
-  'Aspect Master':'Section=combat Note="1 Selection"',
+  'Aspect Master':'Section=combat Note="1 selection"',
   'Aspect Of The Carp':
     'Section=ability,feature ' +
     'Note=' +
@@ -2802,7 +2808,7 @@ PFAPG.FEATURES = {
   'Divine Holy Symbol':
     'Section=magic ' +
     'Note="Holy symbol lights 30\' radius and gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
-  'Domain (Paladin)':'Section=feature Note="1 Selection"',
+  'Domain (Paladin)':'Section=feature Note="1 selection"',
   'Hospitaler':
     'Section=magic ' +
     'Note="May use Channel Energy w/out expending Lay On Hands"',
@@ -2871,7 +2877,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+2 Initiative w/in favored community",' +
-      '"%{(levels.Ranger+2)//5} Selections",' +
+      '"%{(levels.Ranger+2)//5} selections",' +
       '"+2 or more Knowledge (Local), Perception, Stealth, and Survival w/in favored community"',
   'Form Of The Bear':'Section=ability Note="+%V Strength%1 in shifted form"',
   'Form Of The Cat':
@@ -3605,7 +3611,7 @@ PFAPG.FEATURES = {
       '"May use Reflex roll of adjacent ally who also has this feat; knocked prone afterward",' +
       '"+2 AC vs. ranged if adjacent ally also has this feat"',
   'Eagle Eyes':'Section=skill Note="Ignore -5 penalties on visual Perception"',
-  'Eclectic':'Section=feature Note="Additional favored class"',
+  'Eclectic':'Section=feature Note="May choose 1 additional favored class"',
   'Ectoplasmic Spell':
     'Section=magic ' +
     'Note="Cast spell targeting incorporeal or ethereal target uses +1 spell slot"',
@@ -3636,7 +3642,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May reroll bow miss due to concealment"',
   'Enforcer':
     'Section=combat ' +
-    'Note="May make Intimidation check to shake foe for HP rd (crit also frightened 1 rd) after inflicting nonlethal damage"',
+    'Note="Successful Intimidation check after inflicting nonlethal damage shakes foe for HP rd (crit also frightens 1 rd)"',
   'Expanded Arcana':
     'Section=magic Note="+1 spells known (+2 of lower than max level)"',
   'Extra Bombs':'Section=combat Note="+%V bombs/dy"',
@@ -3644,11 +3650,12 @@ PFAPG.FEATURES = {
   'Extra Hex':'Section=feature Note="+%V hexes"',
   'Extra Rage Power':'Section=feature Note="+%V powers"',
   'Extra Revelation':'Section=feature Note="+%V revelations"',
-  'Extra Rogue Talent':'Section=feature Note="+%V talents"',
+  'Extra Rogue Talent':'Section=feature Note="+%V selection"',
   'Fast Drinker':
     'Section=feature Note="Drinking for temporary Ki is a swift action"',
   'Fast Healer':
-    'Section=combat Note="Regain +%{constitutionModifier//2>?1} when healing"',
+    'Section=combat ' +
+    'Note="Regain +%{constitutionModifier//2>?1} HP from healing"',
   'Favored Defense':
     'Section=combat ' +
     'Note="+Half favored enemy bonus to AC and CMD vs. chosen enemy"',
@@ -3706,7 +3713,8 @@ PFAPG.FEATURES = {
   'Heroic Defiance':
     'Section=combat Note="May delay effects of harmful condition 1 rd 1/dy"',
   'Heroic Recovery':
-    'Section=save Note="May reroll failed Fort vs. harmful condition 1/dy"',
+    'Section=save ' +
+    'Note="May roll additional Fort save vs. harmful condition 1/dy"',
   'Improved Blind-Fight':
     'Section=combat ' +
     'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
@@ -3770,7 +3778,7 @@ PFAPG.FEATURES = {
     'Note="May use %V chosen 5th level spells as spell-like ability 2/dy"',
   'Master Alchemist':
     'Section=skill ' +
-    'Note="+2 Craft (Alchemy)/Create %{intelligenceModifier} potion doses simultaneously/Craft alchemical items in 1/10 time"',
+    'Note="+2 Craft (Alchemy)/May create %{intelligenceModifier>?1} potion doses simultaneously/May craft alchemical items for 1/10 cost"',
   'Merciful Spell':
     'Section=magic Note="May cast spells to inflict nonlethal damage"',
   'Minor Spell Expertise':
@@ -3813,7 +3821,7 @@ PFAPG.FEATURES = {
     'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
   'Racial Heritage':
     'Section=feature ' +
-    'Note="Count as both human and chosen race for racial effects"',
+    'Note="Counts as both human and chosen race for racial effects"',
   'Raging Vitality':
     'Section=combat Note="+2 Con during rage; rage continues if unconscious"',
   'Ray Shield':'Section=combat Note="No damage from ranged touch hit 1/rd"',
@@ -3931,7 +3939,7 @@ PFAPG.FEATURES = {
   'Tripping Strike':
     'Section=combat ' +
     'Note="May inflict trip w/critical hit that exceeds foe CMD"',
-  'Under and Over':
+  'Under And Over':
     'Section=combat ' +
     'Note="May make immediate +2 trip attack after larger foe grapple fails"',
   'Underfoot':
@@ -7287,7 +7295,10 @@ PFAPG.CLASSES = {
       '"6:Spirited Charge:Mounted Combat Feat",' +
       '"10:Mounted Skirmisher:Mounted Combat Feat",' +
       '"10:Unseat:Mounted Combat Feat",' +
-      '"2:Aspect Of The Beast:Natural Weapon Feat",' +
+      '"2:Aspect Of The Beast (Claws Of The Beast):Natural Weapon Feat",' +
+      '"2:Aspect Of The Beast (Night Senses):Natural Weapon Feat",' +
+      '"2:Aspect Of The Beast (Predator\'s Leap):Natural Weapon Feat",' +
+      '"2:Aspect Of The Beast (Wild Insinct):Natural Weapon Feat",' +
       '"2:Improved Natural Weapon:Natural Weapon Feat",' +
       '"2:Rending Claws:Natural Weapon Feat",' +
       '"2:Weapon Focus:Natural Weapon Feat",' +
@@ -9878,7 +9889,11 @@ PFAPG.classRulesExtra = function(rules, name) {
  */
 PFAPG.featRulesExtra = function(rules, name) {
   let matchInfo;
-  if(name == 'Aspect Of The Beast (Night Senses)') {
+  if(name == 'Aspect Of The Beast (Claws Of The Beast)') {
+    rules.defineRule('weapons.Claws',
+      'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
+    );
+  } else if(name == 'Aspect Of The Beast (Night Senses)') {
     rules.defineRule('featureNotes.aspectOfTheBeast(NightSenses)',
       '', '=', '"x2 normal distance in poor light"',
       'features.Low-Light Vision', '=', '"30\' b/w vision in darkness"',
