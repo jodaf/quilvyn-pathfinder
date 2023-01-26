@@ -339,7 +339,7 @@ PFAPG.FEATS = {
   'Parting Shot':
     'Type=General,Fighter ' +
     'Require="features.Shot On The Run","baseAttack >= 6"',
-  'Pass for Human':
+  'Pass For Human':
     'Type=General Require="race =~ \'Half-Elf|Half-Orc|Halfling\'"',
   'Perfect Strike':
     'Type=General,Fighter ' +
@@ -952,7 +952,7 @@ PFAPG.FEATURES = {
     'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
     'Section=feature ' +
-    'Note="Gain 1 Teamwork feat/R30\' may share Teamwork feat w/allies for %{levels.Cavalier//2+3} rd %{levels.Cavalier//5+1}/dy"',
+    'Note="Gain 1 Teamwork feat/R30\' May share Teamwork feat w/allies for %{levels.Cavalier//2+3} rd %V/dy"',
 
   // Inquisitor
   'Bane':
@@ -3522,13 +3522,13 @@ PFAPG.FEATURES = {
     'Section=feature Note="Use spell slot to gain +1 AC/slot level"',
   'Arcane Talent':
     'Section=magic ' +
-    'Note="Cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
+    'Note="May cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
   'Aspect Of The Beast (Claws Of The Beast)':
     'Section=combat ' +
     'Note="Claws inflict %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
   'Aspect Of The Beast (Night Senses)':'Section=feature Note="%V"',
   "Aspect Of The Beast (Predator's Leap)":
-    'Section=skill Note="May make running jump without running beforehand"',
+    'Section=skill Note="May make running jump from standing start"',
   'Aspect Of The Beast (Wild Instinct)':
     'Section=combat,skill ' +
     'Note=' +
@@ -3610,14 +3610,15 @@ PFAPG.FEATURES = {
     'Note=' +
       '"May use Reflex roll of adjacent ally who also has this feat; knocked prone afterward",' +
       '"+2 AC vs. ranged if adjacent ally also has this feat"',
-  'Eagle Eyes':'Section=skill Note="Ignore -5 penalties on visual Perception"',
+  'Eagle Eyes':
+    'Section=skill Note="Ignores -5 distance penalties on visual Perception"',
   'Eclectic':'Section=feature Note="May choose 1 additional favored class"',
   'Ectoplasmic Spell':
     'Section=magic ' +
     'Note="Cast spell targeting incorporeal or ethereal target uses +1 spell slot"',
   'Eldritch Claws':
     'Section=combat ' +
-    'Note="Natural weapons considered magic and silver for overcoming DR"',
+    'Note="Natural weapons are considered magic and silver for overcoming DR"',
   'Elemental Fist':
     'Section=combat ' +
     'Note="Successful attack inflicts +%Vd6 HP of choice of energy type"',
@@ -3645,12 +3646,12 @@ PFAPG.FEATURES = {
     'Note="Successful Intimidation check after inflicting nonlethal damage shakes foe for HP rd (crit also frightens 1 rd)"',
   'Expanded Arcana':
     'Section=magic Note="+1 spells known (+2 of lower than max level)"',
-  'Extra Bombs':'Section=combat Note="+%V bombs/dy"',
-  'Extra Discovery':'Section=feature Note="+%V discoveries"',
-  'Extra Hex':'Section=feature Note="+%V hexes"',
-  'Extra Rage Power':'Section=feature Note="+%V powers"',
-  'Extra Revelation':'Section=feature Note="+%V revelations"',
-  'Extra Rogue Talent':'Section=feature Note="+%V selection"',
+  'Extra Bombs':'Section=combat Note="+%V/dy"',
+  'Extra Discovery':'Section=feature Note="+%V selections"',
+  'Extra Hex':'Section=feature Note="+%V selections"',
+  'Extra Rage Power':'Section=feature Note="+%V selections"',
+  'Extra Revelation':'Section=feature Note="+%V selections"',
+  'Extra Rogue Talent':'Section=feature Note="+%V selections"',
   'Fast Drinker':
     'Section=feature Note="Drinking for temporary Ki is a swift action"',
   'Fast Healer':
@@ -3661,7 +3662,7 @@ PFAPG.FEATURES = {
     'Note="+Half favored enemy bonus to AC and CMD vs. chosen enemy"',
   'Fight On':
     'Section=combat ' +
-    'Note="Gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
+    'Note="May gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
   'Flyby Attack':
     'Section=combat Note="May take action any time during fly move"',
   'Focused Shot':
@@ -3680,7 +3681,8 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy"',
   'Go Unnoticed':
-    'Section=skill Note="May use Stealth to hide from flat-footed foes"',
+    'Section=skill ' +
+    'Note="May use Stealth to hide from flat-footed foes during 1st rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
     'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no attack bonus"',
@@ -3735,11 +3737,13 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May share non-instantaneous self spells w/companion; halves duration"',
   'Improved Sidestep':
-    'Section=combat Note="May move on next rd after Sidestep"',
+    'Section=combat Note="May move normally on next rd after Sidestep"',
   'Improved Steal':
     'Section=combat ' +
     'Note="+2 CMB to steal from foe w/out AOO/+2 CMD vs. steal attempts"',
-  'Improved Stonecunning':'Section=skill Note="+4 Perception (stone)"',
+  'Improved Stonecunning':
+    'Section=skill ' +
+    'Note="+4 Perception (stone); replaces +2 from Stonecunning feature"',
   "In Harm's Way":
     'Section=combat ' +
     'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
@@ -3749,7 +3753,7 @@ PFAPG.FEATURES = {
   'Ironguts':
     'Section=save,skill ' +
     'Note=' +
-      '"+2 vs. ingested nauseated or sickened condition",' +
+      '"+2 vs. nauseated or sickened condition from ingestion",' +
       '"+2 Survival (find food for self)"',
   'Ironhide':'Section=combat Note="+1 AC"',
   'Keen Scent':'Section=feature Note="Has Scent features"',
@@ -3758,21 +3762,22 @@ PFAPG.FEATURES = {
     'Note="May throw foe into adjacent square after successful unarmed trip"',
   'Leaf Singer':
     'Section=feature ' +
-    'Note="Dbl range or area of effect of Bardic Performance in forest/+2 Bardic Performance DC vs. feys"',
+    'Note="Dbl range or area of effect of audible Bardic Performance in forest/+2 Bardic Performance DC vs. feys"',
   'Light Step':
-    'Section=ability Note="Ignore difficult terrain in natural environments"',
+    'Section=ability ' +
+    'Note="Treats difficult terrain as normal terrain in natural environments"',
   'Lingering Performance':
     'Section=feature ' +
-    'Note="Bardic Performance effects last 2 rd after performance ends"',
+    'Note="Bardic Performance effects continue for 2 rd after performance ends"',
   'Lingering Spell':
     'Section=magic ' +
-    'Note="Cast instantaneous spell to last 1 extra rd uses +1 spell slot"',
+    'Note="May cast instantaneous spell w/duration 1 rd; uses +1 spell slot"',
   'Lookout':
     'Section=combat ' +
     'Note="May act in surprise round when adjacent ally has same feat and can act"',
-  'Low Profile':'Section=combat Note="+1 AC (ranged)"',
+  'Low Profile':'Section=combat Note="+1 AC vs. ranged"',
   'Lucky Halfling':
-    'Section=save Note="R30\' May share saving throw w/ally 1/dy"',
+    'Section=save Note="R30\' May reroll ally saving throw 1/dy"',
   'Major Spell Expertise':
     'Section=magic ' +
     'Note="May use %V chosen 5th level spells as spell-like ability 2/dy"',
@@ -3798,7 +3803,8 @@ PFAPG.FEATURES = {
     'Note="+4 AOO and share ally AOO when ally has same feat and threatens same foe"',
   'Parry Spell':'Section=magic Note="Countered spell turns back on caster"',
   'Parting Shot':'Section=combat Note="May make ranged attack during withdraw"',
-  'Pass for Human':'Section=skill Note="+10 Disguise (pass as human)"',
+  'Pass For Human':
+    'Section=skill Note="+10 Disguise (pass as human); may take 10 on check"',
   'Perfect Strike':
     'Section=combat ' +
     'Note="Use better of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %{level//4>?1}/dy"',
@@ -3808,7 +3814,7 @@ PFAPG.FEATURES = {
   'Point-Blank Master':
     'Section=combat Note="No AOO when firing chosen ranged weapon"',
   'Practiced Tactician':
-    'Section=combat Note="May give allies a teamwork feat +1/dy"',
+    'Section=feature Note="May use Tactician feature +%V/dy"',
   'Precise Strike':
     'Section=combat Note="+1d6 damage when flanking ally has same feat"',
   'Preferred Spell':
@@ -3823,9 +3829,11 @@ PFAPG.FEATURES = {
     'Section=feature ' +
     'Note="Counts as both human and chosen race for racial effects"',
   'Raging Vitality':
-    'Section=combat Note="+2 Con during rage; rage continues if unconscious"',
+    'Section=combat ' +
+    'Note="+2 Con during rage; rage continues while unconscious"',
   'Ray Shield':'Section=combat Note="No damage from ranged touch hit 1/rd"',
-  'Razortusk':'Section=combat Note="Bite inflicts 1d4 HP damage"',
+  'Razortusk':
+    'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
     'Section=magic ' +
     'Note="Cast spell at longer rage uses +1 spell slot/range increase"',
@@ -3846,8 +3854,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May inflict precision damage on targets w/partial concealment"',
   'Shared Insight':
-    'Section=combat ' +
-    'Note="$30\' May forego move to give allies +2 Perception for %{wisdomModifier} rd"',
+    'Section=skill ' +
+    'Note="R30\' May use move to give allies +2 Perception for %{wisdomModifier>?1} rd"',
   'Sharp Senses':'Section=skill Note="+2 Perception"',
   'Shield Of Swings':
     'Section=combat ' +
@@ -3871,18 +3879,18 @@ PFAPG.FEATURES = {
     'Note="Cast spell to inflict sickness for spell level rd instead of damage (spell save or Fort neg) uses +2 spell slot"',
   'Sidestep':
     'Section=combat ' +
-    'Note="May move 5\' w/in threatened area after foe miss w/out AOO"',
+    'Note="May move 5\' w/in threatened area w/out AOO after foe miss; suffers -5\' move next rd"',
   'Smash':
     'Section=ability,combat ' +
     'Note=' +
       '"+5 Strength (force door)",' +
-      '"Ignore 5 points of attack target hardness"',
+      '"Attacks on unattended objects ignore 5 points of hardness"',
   'Smell Fear':
     'Section=skill ' +
-    'Note="+4 Perception (smell shaken, frightened, and panicked creatures)"',
+    'Note="+4 Perception (smell shaken, frightened, and panicked creatures); may use Perception instead of Sense Motive with such creatures"',
   'Sociable':
     'Section=skill ' +
-    'Note="R30\' +2 ally Diplomacy for %{charismaModifier>?1} rd"',
+    'Note="R30\' May use move to give allies +2 Diplomacy for %{charismaModifier>?1} rd"',
   'Spell Perfection':
     'Section=magic ' +
     'Note="May use Metamagic feat for chosen spell w/out cost; gains dbl feat bonuses on spell"',
@@ -3890,15 +3898,17 @@ PFAPG.FEATURES = {
     'Section=ability ' +
     'Note="May move half Slow Fall distance (50\' max) across walls, ceiling, and unsupportive surfaces"',
   'Stabbing Shot':
-    'Section=combat Note="May replace first full-attack bow shot w/5\' push"',
-  'Steel Soul':'Section=save Note="+2 vs. spells"',
+    'Section=combat ' +
+    'Note="May use first full-attack bow attack to push adjacent foe 5\'"',
+  'Steel Soul':
+    'Section=save Note="+4 vs. spells; replaces +2 from Hardy feature"',
   'Step Up And Strike':'Section=combat Note="May make AOO after Step Up"',
   'Stone Sense':
     'Section=feature ' +
-    'Note="10\' May sense location of creatures in contact with ground"',
+    'Note="R10\' May sense location of creatures in contact with ground"',
   'Stone Singer':
     'Section=feature ' +
-    'Note="Dbl range or area of effect of Bardic Performance underground/+2 Bardic Performance DC vs. earth creatures"',
+    'Note="Dbl range or area of effect of audible Bardic Performance underground, also affecting creatures w/tremorsense/+2 Bardic Performance DC vs. earth creatures"',
   'Stone-Faced':
     'Section=skill ' +
     'Note="+4 Bluff (conceal feelings or motives), foe suffers +5 Sense Motive DC"',
@@ -3917,7 +3927,8 @@ PFAPG.FEATURES = {
   'Swift Aid':
     'Section=combat ' +
     'Note="Swift Aid Another action gives ally +1 AC or +1 next attack"',
-  'Taunt':'Section=skill Note="May use Bluff to demoralize foes"',
+  'Taunt':
+    'Section=skill Note="May use Bluff w/out size penalty to demoralize foes"',
   'Team Up':
     'Section=combat ' +
     'Note="May use Aid Another as a move action when self and 2 allies threaten same foe"',
@@ -3941,11 +3952,11 @@ PFAPG.FEATURES = {
     'Note="May inflict trip w/critical hit that exceeds foe CMD"',
   'Under And Over':
     'Section=combat ' +
-    'Note="May make immediate +2 trip attack after larger foe grapple fails"',
+    'Note="May make immediate +2 trip maneuver w/no AOO after larger foe grapple fails"',
   'Underfoot':
     'Section=combat,skill ' +
     'Note=' +
-      '"+2 AC (AOO from moving through larger foe threat area)",' +
+      '"+2 AC vs. AOO from moving through larger foe threat area",' +
       '"+4 Acrobatics (move past larger foes w/out AOO)"',
   'Vermin Heart':
     'Section=magic,skill ' +
@@ -3954,7 +3965,7 @@ PFAPG.FEATURES = {
       '"May use Wild Empathy w/vermin"',
   'War Singer':
     'Section=feature ' +
-    'Note="Dbl range or area of effect of Bardic Performance on battlefield/+2 Bardic Performance DC vs. orcs"',
+    'Note="Dbl range or area of effect of audible Bardic Performance on battlefield/+2 Bardic Performance DC vs. orcs"',
   'Well-Prepared':
     'Section=skill ' +
     'Note="May use Sleight Of Hand (DC 10 + GP cost) to produce required mundane item 1/dy"'
@@ -6785,10 +6796,9 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Summon Monster I':'O1,Witch1',
   'Summon Monster II':'O2,Witch2',
   'Summon Monster III':'O3,Serpentine3,Witch3',
-  'Summon Monster V':'Witch5',
   'Summon Monster IV':'O4,Witch4',
   'Summon Monster IX':'Agathion9,"Archon Good9","Archon Law9","Azata Chaos9","Azata Good9",Daemon9,"Demon Chaos9","Demon Evil9","Devil Evil9","Devil Law9",Inevitable9,O9,Proteus9,Witch9',
-  'Summon Monster V':'Flame5,Night5,O5',
+  'Summon Monster V':'Flame5,Night5,O5,Witch5',
   'Summon Monster VI':'O6,Witch6',
   'Summon Monster VII':'Aquatic7,O7,Serpentine7,Witch7',
   'Summon Monster VIII':'O8,Witch8',
@@ -7777,6 +7787,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
     rules.defineRule
       ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
+    rules.defineRule
+      ('featureNotes.tactician', classLevel, '=', 'Math.floor(source / 5) + 1');
     rules.defineRule('features.Teamwork', 'features.Tactician', '=', null);
     rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
     rules.defineRule
@@ -9890,16 +9902,20 @@ PFAPG.classRulesExtra = function(rules, name) {
 PFAPG.featRulesExtra = function(rules, name) {
   let matchInfo;
   if(name == 'Aspect Of The Beast (Claws Of The Beast)') {
+    rules.defineRule('features.Weapon Proficiency (Claws)',
+      'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
+    );
     rules.defineRule('weapons.Claws',
       'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
     );
+    Pathfinder.weaponRules(rules, 'Claws', 1, '2h', 'd4', 20, 2);
   } else if(name == 'Aspect Of The Beast (Night Senses)') {
     rules.defineRule('featureNotes.aspectOfTheBeast(NightSenses)',
       '', '=', '"x2 normal distance in poor light"',
       'features.Low-Light Vision', '=', '"30\' b/w vision in darkness"',
       'features.Darkvision', '=', '"+30\' Darkvision"'
     );
-  } else if(name == 'Breadth Of Knowledge') {
+  } else if(name == 'Breadth Of Experience') {
     QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(s => {
       if(s.startsWith('Knowledge') || s.startsWith('Profession'))
         rules.defineRule
@@ -9940,13 +9956,8 @@ PFAPG.featRulesExtra = function(rules, name) {
       ('featureNotes.rogueTalents', 'featureNotes.extraRogueTalent', '+', null);
     rules.defineRule
       ('featureNotes.extraRogueTalent', 'feats.Extra Rogue Talent', '=', null);
-  } else if((matchInfo = name.match(/^Shield Specialization .(.*)./)) != null) {
-    rules.defineRule('combatNotes.shieldSpecialization(' + matchInfo[1] + ')',
-      '', '=', '1',
-      'features.Greater Shield Focus', '+', '1'
-    );
   } else if(name == 'Keen Scent') {
-    rules.defineRule('features.Scent', 'featureRules.keenScent', '=', '1');
+    rules.defineRule('features.Scent', 'featureNotes.keenScent', '=', '1');
   } else if(name == 'Major Spell Expertise') {
     rules.defineRule('magicNotes.majorSpellExpertise',
       'feats.Major Spell Expertise', '=', null
@@ -9955,6 +9966,12 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.minorSpellExpertise',
       'feats.Minor Spell Expertise', '=', null
     );
+  } else if(name == 'Practiced Tactician') {
+    rules.defineRule('featureNotes.practicedTactician',
+      'feats.Practiced Tactician', '=', null
+    );
+    rules.defineRule
+      ('featureNotes.tactician', 'featureNotes.practicedTactician', '+', null);
   } else if(name == 'Perfect Strike') {
     rules.defineRule('combatNotes.perfectStrike', '', '=', '2');
   } else if(name == 'Preferred Spell') {
@@ -9962,6 +9979,16 @@ PFAPG.featRulesExtra = function(rules, name) {
       ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
   } else if(name == 'Punishing Kick') {
     rules.defineRule('combatNotes.punishingKick', '', '=', '5');
+  } else if(name == 'Razortusk') {
+    rules.defineRule
+      ('features.Weapon Proficiency (Bite)', 'combatNotes.razortusk', '=', '1');
+    rules.defineRule('weapons.Bite', 'combatNotes.razortusk', '=', '1');
+    Pathfinder.weaponRules(rules, 'Bite', 1, 'Un', 'd4', 20, 2);
+  } else if((matchInfo = name.match(/^Shield Specialization .(.*)./)) != null) {
+    rules.defineRule('combatNotes.shieldSpecialization(' + matchInfo[1] + ')',
+      '', '=', '1',
+      'features.Greater Shield Focus', '+', '1'
+    );
   } else if(name == 'Touch Of Serenity') {
     rules.defineRule('combatNotes.touchOfSerenity', '', '=', '1');
   }
