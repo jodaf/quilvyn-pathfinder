@@ -72,14 +72,13 @@ var computed = {
   "features.Acrobatic":1, "features.Armor Proficiency (Medium)":1, "features.Bane":1, 
   "features.Coordinated Defense":1, "features.Coordinated Maneuvers":1, "features.Cunning Initiative":1, 
   "features.Detect Alignment":1, "features.Discern Lies":1, "features.Domain (Inquisitor)":1, 
-  "features.Duck and Cover":1, "features.Eclectic":1, "features.Exploit Weakness":1, 
-  "features.Eye For Talent":1, "features.Greater Bane":1, "features.Heart Of The Fields":1, 
-  "features.Human Ability Adjustment":1, "features.Judgment":1, "features.Monster Lore":1, "features.Orisons":1, 
-  "features.Outflank":1, "features.Second Judgment":1, "features.Shield Proficiency":1, 
-  "features.Shield Wall":1, "features.Simple Weapon Proficiency":1, 
-  "features.Skill Focus (Craft (Armor))":1, "features.Skill Focus (Knowledge (Arcana))":1, 
-  "features.Skill Focus (Knowledge (Engineering))":1, "features.Slayer":1, "features.Solo Tactics":1, 
-  "features.Spell Focus (Evocation)":1, "features.Spell Focus (Illusion)":1, 
+  "features.Eclectic":1, "features.Exploit Weakness":1, "features.Eye For Talent":1, 
+  "features.Greater Bane":1, "features.Heart Of The Fields":1, "features.Human Ability Adjustment":1, 
+  "features.Judgment":1, "features.Monster Lore":1, "features.Orisons":1, "features.Outflank":1, 
+  "features.Second Judgment":1, "features.Shield Proficiency":1, "features.Shield Wall":1, 
+  "features.Simple Weapon Proficiency":1, "features.Skill Focus (Craft (Armor))":1, 
+  "features.Skill Focus (Knowledge (Arcana))":1, "features.Skill Focus (Knowledge (Engineering))":1, "features.Slayer":1, 
+  "features.Solo Tactics":1, "features.Spell Focus (Evocation)":1, "features.Spell Focus (Illusion)":1, 
   "features.Spell Focus (Transmutation)":1, "features.Stalwart":1, "features.Stern Gaze":1, "features.Swap Places":1, 
   "features.Teamwork Feat":1, "features.Third Judgment":1, "features.Thundering Spell":1, 
   "features.Track":1, "features.Travel Domain":1, "features.True Judgment":1, 
@@ -174,7 +173,7 @@ var computed = {
   "spellSlotLevel.Inquisitor":20, "spellSlots.Inquisitor0":6, "spellSlots.Inquisitor1":6, 
   "spellSlots.Inquisitor2":6, "spellSlots.Inquisitor3":5, "spellSlots.Inquisitor4":5, 
   "spellSlots.Inquisitor5":5, "spellSlots.Inquisitor6":5, "spot":"+2", "strength":8, "strength.1":-1, 
-  "strengthModifier":-1, "sumFighterFeats":5, "sumMetamagicFeats":1, "sumTeamworkFeats":6, 
+  "strengthModifier":-1, "sumFighterFeats":5, "sumMetamagicFeats":1, "sumTeamworkFeats":5, 
   "sumWizardFeats":1, "traitCount":2, "unarmedAttackModifier":14, "unarmedDamageDice":"d3", 
   "unarmedDamageModifier":-1, "unarmedThreatRange":1, "validationNotes.abilityMinimum":0, 
   "validationNotes.abilityModifierSum":0, "validationNotes.arcaneArcherClassAlt.4":0, 
@@ -182,10 +181,10 @@ var computed = {
   "validationNotes.druid-DarknessDomainSelectableFeatureAlt.0":0, "validationNotes.eclecticFeat":0, "validationNotes.featAllocation":0, 
   "validationNotes.featAllocation.1":16, "validationNotes.featAllocation.2":16, 
   "validationNotes.holyVindicatorClassAlt.3":0, "validationNotes.human-EyeForTalentSelectableFeature":0, 
-  "validationNotes.human-HeartOfTheFieldsSelectableFeature":0, "validationNotes.improvisedWeaponMasteryFeatAlt.1":0, 
-  "validationNotes.inquisitor-TravelDomainSelectableFeature":0, "validationNotes.languageAllocation":0, 
-  "validationNotes.languageAllocation.1":1, "validationNotes.languageAllocation.2":1, 
-  "validationNotes.levelAllocation":0, "validationNotes.levelAllocation.1":20, 
+  "validationNotes.human-HeartOfTheFieldsSelectableFeature":0, "validationNotes.improvedShareSpellsFeatAlt.1":0, 
+  "validationNotes.improvisedWeaponMasteryFeatAlt.1":0, "validationNotes.inquisitor-TravelDomainSelectableFeature":0, 
+  "validationNotes.languageAllocation":0, "validationNotes.languageAllocation.1":1, 
+  "validationNotes.languageAllocation.2":1, "validationNotes.levelAllocation":0, "validationNotes.levelAllocation.1":20, 
   "validationNotes.levelAllocation.2":20, "validationNotes.masterChymistClassAlt.2":0, 
   "validationNotes.outflankFeat":0, "validationNotes.powerOverUndeadAlt.0":0, 
   "validationNotes.selectableFeatureAllocation":0, "validationNotes.selectableFeatureAllocation.1":3, 
@@ -390,9 +389,9 @@ var computed = {
       </tr><tr style="text-align:center">
         <td>Bane: Gains +2 attack and +4d6 HP damage with chosen weapon vs. specified creature type for 20 rd/dy</td>
       </tr><tr style="text-align:center">
-        <td>Coordinated Defense: +2 CMD (+4 vs. larger foe) when adjacent ally also has this feat</td>
+        <td>Coordinated Defense: +2 CMD (+4 vs. larger foe) when adjacent ally has same feat</td>
       </tr><tr style="text-align:center">
-        <td>Coordinated Maneuvers: +2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally also has this feat</td>
+        <td>Coordinated Maneuvers: +2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally has same feat</td>
       </tr><tr style="text-align:center">
         <td>Exploit Weakness: Critical hit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe</td>
       </tr><tr style="text-align:center">
@@ -402,13 +401,13 @@ var computed = {
       </tr><tr style="text-align:center">
         <td>Second Judgment: May use 2 judgments simultaneously</td>
       </tr><tr style="text-align:center">
-        <td>Shield Wall: +1 AC when adjacent ally has same feat and buckler or light shield; +2 heavy or tower shield</td>
+        <td>Shield Wall: +1 shielded AC when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield</td>
       </tr><tr style="text-align:center">
         <td>Slayer: Effects of choice of judgment increase to: destruction (+9 weapon damage), healing (regains +9 HP/rd), justice (+6 attack), piercing (+9 concentration and caster level to overcome spell resistance), protection (+6 AC), purity (+6 saves), resiliency (gain DR 6/opposed alignment), resistance (resistance 6 to chosen energy)</td>
       </tr><tr style="text-align:center">
         <td>Solo Tactics: All allies count for Teamwork feat bonuses</td>
       </tr><tr style="text-align:center">
-        <td>Swap Places: May swap places w/adjacent ally has same feat; ally suffers no AOO</td>
+        <td>Swap Places: May swap places w/adjacent ally who has same feat; ally suffers no AOO</td>
       </tr><tr style="text-align:center">
         <td>Third Judgment: May use 3 judgments simultaneously</td>
       </tr><tr style="text-align:center">
@@ -465,7 +464,7 @@ var computed = {
     </tr><tr style="text-align:center">
       <td>Orisons: Knows level-0 spells</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: Cast spell to inflict deafness for spell level rd instead of damage (spell save or Fort neg) uses +2 spell slot</td>
+      <td>Thundering Spell: Target damaged by spell becomes deafened (spell save or Fort neg) for spell level rd; uses +2 spell slot</td>
     </tr></table>
 </td>
   </tr></table>
