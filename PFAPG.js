@@ -206,18 +206,26 @@ PFAPG.FEATS = {
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
       '"baseAttack >= 8"',
-  'Elemental Focus (Acid)':'Type=General',
-  'Elemental Focus (Cold)':'Type=General',
-  'Elemental Focus (Electricity)':'Type=General',
-  'Elemental Focus (Fire)':'Type=General',
+  'Elemental Focus (Acid)':'Type=General Imply="casterLevel >= 1"',
+  'Elemental Focus (Cold)':'Type=General Imply="casterLevel >= 1"',
+  'Elemental Focus (Electricity)':'Type=General Imply="casterLevel >= 1"',
+  'Elemental Focus (Fire)':'Type=General Imply="casterLevel >= 1"',
   'Greater Elemental Focus (Acid)':
-    'Type=General Require="features.Elemental Focus (Acid)"',
+    'Type=General ' +
+    'Require="features.Elemental Focus (Acid)" ' +
+    'Imply="casterLevel >= 1"',
   'Greater Elemental Focus (Cold)':
-    'Type=General Require="features.Elemental Focus (Cold)"',
+    'Type=General ' +
+    'Require="features.Elemental Focus (Cold)" ' +
+    'Imply="casterLevel >= 1"',
   'Greater Elemental Focus (Electricity)':
-    'Type=General Require="features.Elemental Focus (Electricity)"',
+    'Type=General ' +
+    'Require="features.Elemental Focus (Electricity)" ' +
+    'Imply="casterLevel >= 1"',
   'Greater Elemental Focus (Fire)':
-    'Type=General Require="features.Elemental Focus (Fire)"',
+    'Type=General ' +
+    'Require="features.Elemental Focus (Fire)" ' +
+    'Imply="casterLevel >= 1"',
   'Elven Accuracy':'Type=General,Fighter Require="race == \'Elf\'"',
   'Enforcer':'Type=General,Fighter Require=skills.Intimidate',
   'Expanded Arcana':'Type=General Require="casterLevel >= 1"',
@@ -284,7 +292,12 @@ PFAPG.FEATS = {
   'Greater Reposition':
     'Type=General,Fighter ' +
     'Require="features.Improved Reposition","baseAttack >= 6"',
-  'Improved Share Spells':'Type=General Require="skills.Spellcraft >= 10"',
+  'Improved Share Spells':
+    'Type=General ' +
+    'Require=' +
+      '"skills.Spellcraft >= 10",' +
+      '"features.Animal Companion || features.Familiar" ' +
+    'Imply="casterLevel >= 1"',
   'Improved Steal':'Type=General,Fighter Require="features.Combat Expertise"',
   'Greater Steal':
     'Type=General,Fighter ' +
@@ -335,7 +348,8 @@ PFAPG.FEATS = {
     'Require="features.Mounted Combat","features.Shield Focus"',
   'Parry Spell':
     'Type=General ' +
-    'Require="skills.Spellcraft >= 15","features.Improved Counterspell"',
+    'Require="skills.Spellcraft >= 15","features.Improved Counterspell" ' +
+    'Imply="casterLevel >= 1"',
   'Parting Shot':
     'Type=General,Fighter ' +
     'Require="features.Shot On The Run","baseAttack >= 6"',
@@ -352,7 +366,9 @@ PFAPG.FEATS = {
   'Point-Blank Master':'Type=General,Fighter',
   'Practiced Tactician':'Type=General Require=features.Tactician',
   'Preferred Spell':
-    'Type=General Require="skills.Spellcraft >= 5","features.Heighten Spell"',
+    'Type=General ' +
+    'Require="skills.Spellcraft >= 5","features.Heighten Spell" ' +
+    'Imply="casterLevel >= 1"',
   'Punishing Kick':
     'Type=General,Fighter ' +
     'Require=' +
@@ -431,7 +447,9 @@ PFAPG.FEATS = {
     'Require="features.Power Attack","race == \'Half-Orc\'"',
   'Sociable':'Type=General Require="charisma >= 13","race == \'Half-Elf\'"',
   'Spell Perfection':
-    'Type=General Require="skills.Spellcraft >= 15","sumMetamagicFeats >= 3"',
+    'Type=General ' +
+    'Require="skills.Spellcraft >= 15","sumMetamagicFeats >= 3"' +
+    'Imply="casterLevel >= 1"',
   'Spider Step':
     'Type=General ' +
     'Require="skills.Acrobatics >= 6","skills.Climb >= 6","levels.Monk >= 6"',
@@ -465,7 +483,9 @@ PFAPG.FEATS = {
       'features.Disruptive,' +
       'features.Spellbreaker',
   'Tenacious Transmutation':
-    'Type=General Require="features.Spell Focus (Transmutation)"',
+    'Type=General ' +
+    'Require="features.Spell Focus (Transmutation)" ' +
+    'Imply="casterLevel >= 1"',
   'Touch Of Serenity':
     'Type=General,Fighter ' +
     'Require=' +
@@ -513,7 +533,7 @@ PFAPG.FEATS = {
   'Allied Spellcaster':'Type=Teamwork Require="casterLevel >= 1"',
   'Coordinated Defense':'Type=Teamwork,Fighter',
   'Coordinated Maneuvers':'Type=Teamwork,Fighter',
-  'Duck and Cover':'Type=Teamwork',
+  'Duck And Cover':'Type=Teamwork',
   'Lookout':'Type=Teamwork,Fighter',
   'Outflank':'Type=Teamwork,Fighter Require="baseAttack >= 4"',
   'Paired Opportunists':'Type=Teamwork,Fighter',
@@ -713,7 +733,7 @@ PFAPG.FEATURES = {
     'Note="1 min process combines two poison doses; yields +50% frequency and +2 save DC for 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 sonic damage instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Delayed Bomb':
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
@@ -746,7 +766,7 @@ PFAPG.FEATURES = {
     'Note="Imbibing mutagen grants 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 force damage instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
+    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{levels.Alchemist//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
@@ -1311,7 +1331,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
   'Spray Of Shooting Stars':
     'Section=combat ' +
-    'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 fire (DC %{10+levels.Oracle//2+charismaModifier} Ref half) %{(levels.Oracle+5)//5}/dy"',
+    'Note="R60\' 5\' radius inflicts %{levels.Oracle}d4 HP fire (DC %{10+levels.Oracle//2+charismaModifier} Ref half) %{(levels.Oracle+5)//5}/dy"',
   'Star Chart':
     'Section=magic ' +
     'Note="May use <i>Commune</i> effects via 10 min contemplation 1/dy"',
@@ -3514,12 +3534,12 @@ PFAPG.FEATURES = {
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
     'Section=magic ' +
-    'Note="+2 to overcome spell resistance when adjacent ally has same feat, +4 and +1 spell level with same spell"',
+    'Note="+2 to overcome spell resistance when adjacent ally has same feat; +4 and +1 caster level when ally has same spell"',
   'Arcane Blast':
     'Section=magic ' +
     'Note="R30\' ranged touch uses spell slot to inflict 2d6 HP + 1d6 HP/slot level"',
   'Arcane Shield':
-    'Section=feature Note="Use spell slot to gain +1 AC/slot level"',
+    'Section=magic Note="May use spell slot to gain +1 AC/slot level for 1 rd"',
   'Arcane Talent':
     'Section=magic ' +
     'Note="May cast chosen W0 spell 3/dy (DC %{10+charismaModifier})"',
@@ -3542,7 +3562,8 @@ PFAPG.FEATURES = {
   'Bodyguard':
     'Section=combat ' +
     'Note="May use AOO on aid another action to improve adjacent ally\'s AC"',
-  'Bouncing Spell':'Section=magic Note="May redirect ineffectual spell"',
+  'Bouncing Spell':
+    'Section=magic Note="May redirect ineffectual spell; uses +1 spell slot"',
   'Breadth Of Experience':
     'Section=skill ' +
     'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
@@ -3555,10 +3576,10 @@ PFAPG.FEATURES = {
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
   'Cloud Step':
     'Section=magic ' +
-    'Note="May <i>Air Walk</i> half of Slow Fall distance (50\' max)"',
+    'Note="May use <i>Air Walk</i> effects for half of Slow Fall distance (50\' max)"',
   'Cockatrice Strike':
     'Section=combat ' +
-    'Note="Unarmed crit petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
+    'Note="Critical hit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
   'Combat Patrol':
     'Section=combat ' +
     'Note="May use full-round action to increase threat area by %{baseAttack//5}\'"',
@@ -3567,10 +3588,10 @@ PFAPG.FEATURES = {
     'Note="Assisting another gives +2 Craft or Spellcraft and dbl GP value"',
   'Coordinated Defense':
     'Section=combat ' +
-    'Note="+2 CMD (+4 vs. larger foe) when adjacent ally also has this feat"',
+    'Note="+2 CMD (+4 vs. larger foe) when adjacent ally has same feat"',
   'Coordinated Maneuvers':
     'Section=combat ' +
-    'Note="+2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally also has this feat"',
+    'Note="+2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally has same feat"',
   'Cosmopolitan':
     'Section=skill ' +
     'Note="+2 Language Count/Two chosen Int, Wis, or Cha skills are class skills"',
@@ -3589,8 +3610,8 @@ PFAPG.FEATURES = {
     'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} neg)"',
   'Dazing Spell':
     'Section=magic ' +
-    'Note="May forego spell damage to daze target for spell level rd (spell save or Will neg)"',
-  'Deep Drinker':'Section=feature Note="Gain 2 temporary ki from Drunken Ki"',
+    'Note="Target damaged by spell becomes dazed (spell save or Will neg) for spell level rd; uses +3 spell slot"',
+  'Deep Drinker':'Section=feature Note="Increased Drunken Ki effects"',
   'Deepsight':'Section=feature Note="120\' Darkvision"',
   'Disarming Strike':
     'Section=combat Note="May disarm on critical hit that exceeds foe CMD"',
@@ -3598,54 +3619,59 @@ PFAPG.FEATURES = {
     'Section=combat ' +
      'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
   'Disruptive Spell':
-    'Section=magic Note="Effect of disruptive spell last for 1 rd"',
+    'Section=magic ' +
+    'Note="Effects of disruptive spell continue for 1 rd; uses +1 spell slot"',
   "Diviner's Delving":
     'Section=magic ' +
-    'Note="+2 checks to overcome divination spell resistance; concentration divinations require 1 fewer rd"',
+    'Note="Gives +2 checks to overcome divination spell resistance; concentration divinations require 1 fewer rd"',
   'Dreadful Carnage':
     'Section=combat ' +
     'Note="R30\' May make Intimidation check to demoralize foes after reducing foe to 0 HP"',
   'Duck And Cover':
     'Section=combat,save ' +
     'Note=' +
-      '"May use Reflex roll of adjacent ally who also has this feat; knocked prone afterward",' +
-      '"+2 AC vs. ranged if adjacent ally also has this feat"',
+      '"May use Reflex roll of adjacent ally who has same feat; knocked prone afterward",' +
+      '"+2 AC vs. ranged if adjacent ally w/shield has same feat"',
   'Eagle Eyes':
     'Section=skill Note="Ignores -5 distance penalties on visual Perception"',
   'Eclectic':'Section=feature Note="May choose 1 additional favored class"',
   'Ectoplasmic Spell':
     'Section=magic ' +
-    'Note="Cast spell targeting incorporeal or ethereal target uses +1 spell slot"',
+    'Note="May cast spell targeting incorporeal or ethereal target; uses +1 spell slot"',
   'Eldritch Claws':
     'Section=combat ' +
     'Note="Natural weapons are considered magic and silver for overcoming DR"',
   'Elemental Fist':
     'Section=combat ' +
-    'Note="Successful attack inflicts +%Vd6 HP of choice of energy type"',
+    'Note="Unarmed hit inflicts +%Vd6 HP of choice of energy type 1/rd %1/dy"',
   'Elemental Focus (Acid)':
-    'Section=magic Note="+%V DC on spells that inflict acid damage"',
+    'Section=magic Note="+%V save DC on spells that inflict acid damage"',
   'Elemental Focus (Cold)':
-    'Section=magic Note="+%V DC on spells that inflict cold damage"',
+    'Section=magic Note="+%V save DC on spells that inflict cold damage"',
   'Elemental Focus (Electricity)':
-    'Section=magic Note="+%V DC on spells that inflict electricity damage"',
+    'Section=magic ' +
+    'Note="+%V save DC on spells that inflict electricity damage"',
   'Elemental Focus (Fire)':
-    'Section=magic Note="+%V DC on spells that inflict fire damage"',
+    'Section=magic Note="+%V save DC on spells that inflict fire damage; uses +1 spell slot"',
   'Elemental Spell (Acid)':
-    'Section=magic Note="May convert half of spell damage to acid damage"',
+    'Section=magic ' +
+    'Note="May convert half or all spell damage to acid damage; uses +1 spell slot"',
   'Elemental Spell (Cold)':
-    'Section=magic Note="May convert half of spell damage to cold damage"',
+    'Section=magic ' +
+    'Note="May convert half or all spell damage to cold damage; uses +1 spell slot"',
   'Elemental Spell (Electricity)':
     'Section=magic ' +
-    'Note="May convert half of spell damage to electricity damage"',
+    'Note="May convert half or all spell damage to electricity damage; uses +1 spell slot"',
   'Elemental Spell (Fire)':
-    'Section=magic Note="May convert half of spell damage to fire damage"',
+    'Section=magic ' +
+    'Note="May convert half or all spell damage to fire damage; uses +1 spell slot"',
   'Elven Accuracy':
     'Section=combat Note="May reroll bow miss due to concealment"',
   'Enforcer':
     'Section=combat ' +
     'Note="Successful Intimidation check after inflicting nonlethal damage shakes foe for HP rd (crit also frightens 1 rd)"',
   'Expanded Arcana':
-    'Section=magic Note="+1 spells known (+2 of lower than max level)"',
+    'Section=magic Note="+%V spells known, or +%1 of lower than max level"',
   'Extra Bombs':'Section=combat Note="+%V/dy"',
   'Extra Discovery':'Section=feature Note="+%V selections"',
   'Extra Hex':'Section=feature Note="+%V selections"',
@@ -3653,13 +3679,13 @@ PFAPG.FEATURES = {
   'Extra Revelation':'Section=feature Note="+%V selections"',
   'Extra Rogue Talent':'Section=feature Note="+%V selections"',
   'Fast Drinker':
-    'Section=feature Note="Drinking for temporary Ki is a swift action"',
+    'Section=feature Note="May drink for temporary Ki as a swift action"',
   'Fast Healer':
     'Section=combat ' +
     'Note="Regain +%{constitutionModifier//2>?1} HP from healing"',
   'Favored Defense':
     'Section=combat ' +
-    'Note="+Half favored enemy bonus to AC and CMD vs. chosen enemy"',
+    'Note="Add half favored enemy bonus to AC and CMD vs. %V chosen favored enemy"',
   'Fight On':
     'Section=combat ' +
     'Note="May gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
@@ -3670,7 +3696,7 @@ PFAPG.FEATURES = {
     'Note="R30\' +%{intelligenceModifier} HP damage on bow or crossbow attack"',
   'Focused Spell':
     'Section=magic ' +
-    'Note="Chosen target suffers +2 save DC on spell w/multiple targets"',
+    'Note="Chosen multi-target spell target suffers +2 save DC; uses +1 spell slot"',
   'Following Step':'Section=combat Note="May use Step Up to move 10\'"',
   'Furious Focus':
     'Section=combat ' +
@@ -3690,13 +3716,13 @@ PFAPG.FEATURES = {
     'Section=combat Note="Dirty Trick penalty extends +1d4+ rd"',
   'Greater Drag':'Section=combat Note="+2 checks to drag foe"',
   'Greater Elemental Focus (Acid)':
-    'Section=magic Note="Increased Elemental Focus Effects"',
+    'Section=magic Note="Increased Elemental Focus (Acid) effects"',
   'Greater Elemental Focus (Cold)':
-    'Section=magic Note="Increased Elemental Focus Effects"',
+    'Section=magic Note="Increased Elemental Focus (Cold) effects"',
   'Greater Elemental Focus (Electricity)':
-    'Section=magic Note="Increased Elemental Focus Effects"',
+    'Section=magic Note="Increased Elemental Focus (Electricity) effects"',
   'Greater Elemental Focus (Fire)':
-    'Section=magic Note="Increased Elemental Focus Effects"',
+    'Section=magic Note="Increased Elemental Focus (Fire) effects"',
   'Greater Reposition':'Section=combat Note="+2 checks to move foe"',
   'Greater Shield Specialization (Buckler)':
     'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
@@ -3735,7 +3761,7 @@ PFAPG.FEATURES = {
     'Note="May proceed w/additional attacks after failed Second Chance at -5 attack"',
   'Improved Share Spells':
     'Section=magic ' +
-    'Note="May share non-instantaneous self spells w/companion; halves duration"',
+    'Note="R5\' May share non-instantaneous self spells w/companion; halves spell effects duration"',
   'Improved Sidestep':
     'Section=combat Note="May move normally on next rd after Sidestep"',
   'Improved Steal':
@@ -3749,7 +3775,7 @@ PFAPG.FEATURES = {
     'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
   'Intensified Spell':
     'Section=magic ' +
-    'Note="Cast spell inflicts damage as caster level %{casterLevel+5} uses +1 spell slot"',
+    'Note="May inflict spell damage as caster level %{casterLevel+5}; uses +1 spell slot"',
   'Ironguts':
     'Section=save,skill ' +
     'Note=' +
@@ -3774,13 +3800,13 @@ PFAPG.FEATURES = {
     'Note="May cast instantaneous spell w/duration 1 rd; uses +1 spell slot"',
   'Lookout':
     'Section=combat ' +
-    'Note="May act in surprise round when adjacent ally has same feat and can act"',
+    'Note="May act in surprise round when adjacent ally has same feat and can act; may take move and standard action if both could normally act"',
   'Low Profile':'Section=combat Note="+1 AC vs. ranged"',
   'Lucky Halfling':
     'Section=save Note="R30\' May reroll ally saving throw 1/dy"',
   'Major Spell Expertise':
     'Section=magic ' +
-    'Note="May use %V chosen 5th level spells as spell-like ability 2/dy"',
+    'Note="May use %V chosen spell(s) of 5th level or lower as spell-like ability 2/dy"',
   'Master Alchemist':
     'Section=skill ' +
     'Note="+2 Craft (Alchemy)/May create %{intelligenceModifier>?1} potion doses simultaneously/May craft alchemical items for 1/10 cost"',
@@ -3788,7 +3814,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="May cast spells to inflict nonlethal damage"',
   'Minor Spell Expertise':
     'Section=magic ' +
-    'Note="May use %V chosen 1st level spells as spell-like ability 2/dy"',
+    'Note="May use %V chosen spell(s) of 1st level as spell-like ability 2/dy"',
   'Missile':'Section=combat Note="No damage from ranged hit 1/rd"',
   'Mounted Shield':
     'Section=combat ' +
@@ -3807,21 +3833,22 @@ PFAPG.FEATURES = {
     'Section=skill Note="+10 Disguise (pass as human); may take 10 on check"',
   'Perfect Strike':
     'Section=combat ' +
-    'Note="Use better of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %{level//4>?1}/dy"',
+    'Note="My use better of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %1/dy"',
   'Persistent Spell':
     'Section=magic ' +
-    'Note="Cast spell forcing target to take worse of 2 saving throws uses +2 spell slot"',
+    'Note="May force spell target to take worse of 2 saving throws; uses +2 spell slot"',
   'Point-Blank Master':
     'Section=combat Note="No AOO when firing chosen ranged weapon"',
   'Practiced Tactician':
     'Section=feature Note="May use Tactician feature +%V/dy"',
   'Precise Strike':
-    'Section=combat Note="+1d6 damage when flanking ally has same feat"',
+    'Section=combat Note="+1d6 HP damage when flanking ally has same feat"',
   'Preferred Spell':
-    'Section=magic Note="May cast %V chosen spells in place of prepared spell"',
+    'Section=magic ' +
+    'Note="May cast %V chosen spell(s) in place of prepared spell"',
   'Punishing Kick':
     'Section=combat ' +
-    'Note="Successful kick attack pushes foe %V\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %{level//5>?1}/dy"',
+    'Note="Successful kick attack pushes foe %V\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %1/dy"',
   'Pushing Assault':
     'Section=combat ' +
     'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
@@ -3836,7 +3863,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
     'Section=magic ' +
-    'Note="Cast spell at longer rage uses +1 spell slot/range increase"',
+    'Note="May cast spell at longer range; uses +1 spell slot/range increase"',
   'Rending Claws':
     'Section=combat ' +
     'Note="Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd"',
@@ -3849,7 +3876,7 @@ PFAPG.FEATURES = {
     'Note="May forego additional attacks to reroll miss on first"',
   'Selective Spell':
     'Section=magic ' +
-    'Note="May protect from damage ability modifier targets in spell effect area"',
+    'Note="May protect from damage ability modifier targets in spell effect area; uses +1 spell slot"',
   'Shadow Strike':
     'Section=combat ' +
     'Note="May inflict precision damage on targets w/partial concealment"',
@@ -3870,13 +3897,13 @@ PFAPG.FEATURES = {
     'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Wall':
     'Section=combat ' +
-    'Note="+1 AC when adjacent ally has same feat and buckler or light shield; +2 heavy or tower shield"',
+    'Note="+1 shielded AC when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield"',
   'Shielded Caster':
     'Section=magic ' +
-    'Note="+4 concentration when adjacent ally has same feat, +5 with ally buckler or light shield, +6 with ally heavy or tower shield"',
+    'Note="+4 concentration when adjacent ally has same feat and no shield, +5 w/buckler or light shield, +6 w/heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature"',
   'Sickening Spell':
     'Section=magic ' +
-    'Note="Cast spell to inflict sickness for spell level rd instead of damage (spell save or Fort neg) uses +2 spell slot"',
+    'Note="Target damaged by spell becomes sickened (spell save or Fort neg) for spell level rd; uses +2 spell slot"',
   'Sidestep':
     'Section=combat ' +
     'Note="May move 5\' w/in threatened area w/out AOO after foe miss; suffers -5\' move next rd"',
@@ -3893,7 +3920,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use move to give allies +2 Diplomacy for %{charismaModifier>?1} rd"',
   'Spell Perfection':
     'Section=magic ' +
-    'Note="May use Metamagic feat for chosen spell w/out cost; gains dbl feat bonuses on spell"',
+    'Note="May use metamagic feat for chosen spell w/out cost; spell gains dbl other feat bonuses"',
   'Spider Step':
     'Section=ability ' +
     'Note="May move half Slow Fall distance (50\' max) across walls, ceiling, and unsupportive surfaces"',
@@ -3917,13 +3944,13 @@ PFAPG.FEATURES = {
     'Note="May trade -5 attack for 1 rd stun (DC %{10+baseAttack} neg)"',
   "Summoner's Call":
     'Section=companion ' +
-    'Note="Summoned eidolon gains chose of +2 Strength, Dexterity, or Constitution for 10 min"',
+    'Note="Summoned eidolon gains choice of +2 strength, dexterity, or constitution for 10 min"',
   'Sundering Strike':
     'Section=combat ' +
     'Note="May inflict sundering damage to weapon w/critical hit that exceeds foe CMD"',
   'Swap Places':
     'Section=combat ' +
-    'Note="May swap places w/adjacent ally has same feat; ally suffers no AOO"',
+    'Note="May swap places w/adjacent ally who has same feat; ally suffers no AOO"',
   'Swift Aid':
     'Section=combat ' +
     'Note="Swift Aid Another action gives ally +1 AC or +1 next attack"',
@@ -3937,13 +3964,13 @@ PFAPG.FEATURES = {
     'Note="Foe teleporting to/from threatened square provokes AOO"',
   'Tenacious Transmutation':
     'Section=magic ' +
-    'Note="+2 DC to dispel self transmutation; effects linger 1 rd after dispel"',
+    'Note="Gives +2 DC to dispel effects of self transmutation spell; effects continue 1 rd after dispel"',
   'Thundering Spell':
     'Section=magic ' +
-    'Note="Cast spell to inflict deafness for spell level rd instead of damage (spell save or Fort neg) uses +2 spell slot"',
+    'Note="Target damaged by spell becomes deafened (spell save or Fort neg) for spell level rd; uses +2 spell slot"',
   'Touch Of Serenity':
     'Section=combat ' +
-    'Note="May trade damage on attack for preventing spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg)"',
+    'Note="May forego attack damage for preventing spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
   'Trick Riding':
     'Section=skill ' +
     'Note="DC 15 or lower ride checks automatically succeed, no penalty for bareback riding, may use Mounted Combat to negate 2 hits/rd"',
@@ -9042,6 +9069,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'Math.floor((source - 6) / 3)'
     );
     rules.defineRule('combatNotes.elementalFist',
+      '', '=', '1',
       'monkOfTheFourWindsLevel', '+', 'Math.floor(source / 5)'
     );
     rules.defineRule
@@ -9929,6 +9957,27 @@ PFAPG.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Elemental Fist') {
     rules.defineRule('combatNotes.elementalFist', '', '=', '1');
+    rules.defineRule('combatNotes.elementalFist.1',
+      'features.Elemental Fist', '?', null,
+      'level', '=', 'Math.floor(source / 4)',
+      'combatNotes.elementalFist.2', '^', null
+    );
+    rules.defineRule('combatNotes.elementalFist.2',
+      'features.Elemental Fist', '?', null,
+      'levels.Monk', '=', null,
+      'combatNotes.elementalFist.3', '+', 'Math.floor(source / 4)'
+    );
+    rules.defineRule('combatNotes.elementalFist.3',
+      'features.Elemental Fist', '?', null,
+      'level', '=', null,
+      'levels.Monk', '+', '-source'
+    );
+  } else if(name == 'Expanded Arcana') {
+    rules.defineRule
+      ('magicNotes.expandedArcana', 'feats.Expanded Arcana', '=', null);
+    rules.defineRule('magicNotes.expandedArcana.1',
+      'feats.Expanded Arcana', '=', 'source * 2'
+    );
   } else if(name == 'Extra Bombs') {
     rules.defineRule('combatNotes.bomb', 'combatNotes.extraBombs', '+', null);
     rules.defineRule
@@ -9956,6 +10005,9 @@ PFAPG.featRulesExtra = function(rules, name) {
       ('featureNotes.rogueTalents', 'featureNotes.extraRogueTalent', '+', null);
     rules.defineRule
       ('featureNotes.extraRogueTalent', 'feats.Extra Rogue Talent', '=', null);
+  } else if(name == 'Favored Defense') {
+    rules.defineRule
+      ('combatNotes.favoredDefense', 'feats.Favored Defense', '=', null);
   } else if(name == 'Keen Scent') {
     rules.defineRule('features.Scent', 'featureNotes.keenScent', '=', '1');
   } else if(name == 'Major Spell Expertise') {
@@ -9966,19 +10018,49 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.minorSpellExpertise',
       'feats.Minor Spell Expertise', '=', null
     );
+  } else if(name == 'Perfect Strike') {
+    rules.defineRule('combatNotes.perfectStrike', '', '=', '2');
+    rules.defineRule('combatNotes.perfectStrike.1',
+      'features.Perfect Strike', '?', null,
+      'level', '=', 'Math.floor(source / 4)',
+      'combatNotes.perfectStrike.2', '^', null
+    );
+    rules.defineRule('combatNotes.perfectStrike.2',
+      'features.Perfect Strike', '?', null,
+      'levels.Monk', '=', null,
+      'combatNotes.perfectStrike.3', '+', 'Math.floor(source / 4)'
+    );
+    rules.defineRule('combatNotes.perfectStrike.3',
+      'features.Perfect Strike', '?', null,
+      'level', '=', null,
+      'levels.Monk', '+', '-source'
+    );
   } else if(name == 'Practiced Tactician') {
     rules.defineRule('featureNotes.practicedTactician',
       'feats.Practiced Tactician', '=', null
     );
     rules.defineRule
       ('featureNotes.tactician', 'featureNotes.practicedTactician', '+', null);
-  } else if(name == 'Perfect Strike') {
-    rules.defineRule('combatNotes.perfectStrike', '', '=', '2');
   } else if(name == 'Preferred Spell') {
     rules.defineRule
       ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
   } else if(name == 'Punishing Kick') {
     rules.defineRule('combatNotes.punishingKick', '', '=', '5');
+    rules.defineRule('combatNotes.punishingKick.1',
+      'features.Punishing Kick', '?', null,
+      'level', '=', 'Math.floor(source / 4)',
+      'combatNotes.punishingKick.2', '^', null
+    );
+    rules.defineRule('combatNotes.punishingKick.2',
+      'features.Punishing Kick', '?', null,
+      'levels.Monk', '=', null,
+      'combatNotes.punishingKick.3', '+', 'Math.floor(source / 4)'
+    );
+    rules.defineRule('combatNotes.punishingKick.3',
+      'features.Punishing Kick', '?', null,
+      'level', '=', null,
+      'levels.Monk', '+', '-source'
+    );
   } else if(name == 'Razortusk') {
     rules.defineRule
       ('features.Weapon Proficiency (Bite)', 'combatNotes.razortusk', '=', '1');
@@ -9991,6 +10073,21 @@ PFAPG.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Touch Of Serenity') {
     rules.defineRule('combatNotes.touchOfSerenity', '', '=', '1');
+    rules.defineRule('combatNotes.touchOfSerenity.1',
+      'features.Touch Of Serenity', '?', null,
+      'level', '=', 'Math.floor(source / 4)',
+      'combatNotes.touchOfSerenity.2', '^', null
+    );
+    rules.defineRule('combatNotes.touchOfSerenity.2',
+      'features.Touch Of Serenity', '?', null,
+      'levels.Monk', '=', null,
+      'combatNotes.touchOfSerenity.3', '+', 'Math.floor(source / 4)'
+    );
+    rules.defineRule('combatNotes.touchOfSerenity.3',
+      'features.Touch Of Serenity', '?', null,
+      'level', '=', null,
+      'levels.Monk', '+', '-source'
+    );
   }
 };
 
