@@ -3558,7 +3558,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May make free shield bash after critical hit"',
   'Bloody Assault':
     'Section=combat ' +
-    'Note="May trade -5 attack for extra 1d4 HP bleeding damage (DC 15 Heal ends)"',
+    'Note="May suffer -5 attack to inflict 1d4 HP/rd bleed damage (DC 15 Heal ends)"',
   'Bodyguard':
     'Section=combat ' +
     'Note="May use AOO on aid another action to improve adjacent ally\'s AC"',
@@ -3568,7 +3568,8 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
   'Bull Rush Strike':
-    'Section=combat Note="May push on critical hit that exceeds foe CMD"',
+    'Section=combat ' +
+    'Note="May push on critical hit confirm that exceeds foe CMD"',
   'Charge Through':
     'Section=combat Note="May attempt free overrun during charge"',
   'Childlike':
@@ -3582,7 +3583,7 @@ PFAPG.FEATURES = {
     'Note="Critical hit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
   'Combat Patrol':
     'Section=combat ' +
-    'Note="May use full-round action to increase threat area by %{baseAttack//5}\'"',
+    'Note="May use full-round action to increase threat area by %{baseAttack//5*5}\'"',
   'Cooperative Crafting':
     'Section=skill ' +
     'Note="Assisting another gives +2 Craft or Spellcraft and dbl GP value"',
@@ -3597,7 +3598,7 @@ PFAPG.FEATURES = {
     'Note="+2 Language Count/Two chosen Int, Wis, or Cha skills are class skills"',
   'Covering Defense':
     'Section=combat ' +
-    'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : 1} AC to adjacent ally"',
+    'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : shield==\'None\' ? 0 : 1} AC to adjacent ally"',
   'Crippling Critical':
     'Section=combat ' +
     'Note="Critical hit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fort 1d4 rd)"',
@@ -3606,15 +3607,16 @@ PFAPG.FEATURES = {
   'Dastardly Finish':
     'Section=combat Note="May coup de grace cowering and stunned targets"',
   'Dazing Assault':
-    'Section=feature ' +
-    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} neg)"',
+    'Section=combat ' +
+    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} Fort neg)"',
   'Dazing Spell':
     'Section=magic ' +
     'Note="Target damaged by spell becomes dazed (spell save or Will neg) for spell level rd; uses +3 spell slot"',
   'Deep Drinker':'Section=feature Note="Increased Drunken Ki effects"',
   'Deepsight':'Section=feature Note="120\' Darkvision"',
   'Disarming Strike':
-    'Section=combat Note="May disarm on critical hit that exceeds foe CMD"',
+    'Section=combat ' +
+    'Note="May disarm on critical hit confirm that exceeds foe CMD"',
   'Disrupting Shot':
     'Section=combat ' +
      'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
@@ -3700,9 +3702,10 @@ PFAPG.FEATURES = {
   'Following Step':'Section=combat Note="May use Step Up to move 10\'"',
   'Furious Focus':
     'Section=combat ' +
-    'Note="Ignore penalty on first attack using Power Attack w/two-handed weapon"',
+    'Note="Ignores penalty on first attack using two-handed Power Attack"',
   'Gang Up':
-    'Section=feature Note="Considered flanking regardless of ally position"',
+    'Section=feature ' +
+    'Note="Always considered flanking when two allies threaten same foe"',
   'Gnome Trickster':
     'Section=magic ' +
     'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy"',
@@ -3711,9 +3714,10 @@ PFAPG.FEATURES = {
     'Note="May use Stealth to hide from flat-footed foes during 1st rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
-    'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no attack bonus"',
+    'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no ranged attack bonus"',
   'Greater Dirty Trick':
-    'Section=combat Note="Dirty Trick penalty extends +1d4+ rd"',
+    'Section=combat ' +
+    'Note="+2 CMB and CMD on dirty tricks/Dirty Trick penalty extends +1d4+ rd"',
   'Greater Drag':'Section=combat Note="+2 checks to drag foe"',
   'Greater Elemental Focus (Acid)':
     'Section=magic Note="Increased Elemental Focus (Acid) effects"',
@@ -3734,7 +3738,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
   'Greater Steal':
     'Section=combat ' +
-    'Note="+2 CMB to steal from foe; foe does not notice successful steal"',
+    'Note="+2 CMB to steal from foe; foe does not notice successful steal until after combat"',
   'Groundling':
     'Section=magic ' +
     'Note="May use <i>Speak With Animals</i> w/burrowing animals at will"',
@@ -3747,26 +3751,26 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
   'Improved Dirty Trick':
-    'Section=combat Note="+2 CMB, +2 CMD, and no AOO w/dirty tricks"',
+    'Section=combat ' +
+    'Note="No AOO on Dirty Trick, +2 Dirty Trick check, +2 Dirty Trick CMD"',
   'Improved Drag':
-    'Section=combat Note="+2 CMB to drag foe w/out AOO/+2 CMD vs. drag"',
+    'Section=combat Note="No AOO on Drag, +2 Drag check, +2 Drag CMD"',
   'Improved Ki Throw':
     'Section=feature ' +
     'Note="May use Ki Throw for -4 bull rush on another target"',
   'Improved Reposition':
     'Section=combat ' +
-    'Note="+2 CMB to move foe w/out AOO/+2 CMD vs. move attempts"',
+    'Note="No AOO on Reposition, +2 Reposition check, +2 Reposition CMD"',
   'Improved Second Chance':
     'Section=combat ' +
-    'Note="May proceed w/additional attacks after failed Second Chance at -5 attack"',
+    'Note="May proceed w/additional attacks after Second Chance at -5 attack"',
   'Improved Share Spells':
     'Section=magic ' +
     'Note="R5\' May share non-instantaneous self spells w/companion; halves spell effects duration"',
   'Improved Sidestep':
     'Section=combat Note="May move normally on next rd after Sidestep"',
   'Improved Steal':
-    'Section=combat ' +
-    'Note="+2 CMB to steal from foe w/out AOO/+2 CMD vs. steal attempts"',
+    'Section=combat Note="No AOO on Steal, +2 Steal check, +2 Steal CMD"',
   'Improved Stonecunning':
     'Section=skill ' +
     'Note="+4 Perception (stone); replaces +2 from Stonecunning feature"',
@@ -3815,7 +3819,7 @@ PFAPG.FEATURES = {
   'Minor Spell Expertise':
     'Section=magic ' +
     'Note="May use %V chosen spell(s) of 1st level as spell-like ability 2/dy"',
-  'Missile':'Section=combat Note="No damage from ranged hit 1/rd"',
+  'Missile Shield':'Section=combat Note="No damage from ranged hit 1/rd"',
   'Mounted Shield':
     'Section=combat ' +
     'Note="Add shield bonus to mount AC and Ride checks to avoid mount damage"',
@@ -3828,7 +3832,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="+4 AOO and share ally AOO when ally has same feat and threatens same foe"',
   'Parry Spell':'Section=magic Note="Countered spell turns back on caster"',
-  'Parting Shot':'Section=combat Note="May make ranged attack during withdraw"',
+  'Parting Shot':
+    'Section=combat Note="May make ranged attack during withdraw action"',
   'Pass For Human':
     'Section=skill Note="+10 Disguise (pass as human); may take 10 on check"',
   'Perfect Strike':
@@ -3858,7 +3863,8 @@ PFAPG.FEATURES = {
   'Raging Vitality':
     'Section=combat ' +
     'Note="+2 Con during rage; rage continues while unconscious"',
-  'Ray Shield':'Section=combat Note="No damage from ranged touch hit 1/rd"',
+  'Ray Shield':
+    'Section=combat Note="No damage from ranged touch hit 1/rd when shielded"',
   'Razortusk':
     'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
@@ -3868,12 +3874,13 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd"',
   'Repositioning Strike':
-    'Section=combat Note="May move foe w/critical hit that exceeds foe CMD"',
+    'Section=combat ' +
+    'Note="May move foe w/critical hit confirm that exceeds foe CMD"',
   'Saving Shield':
     'Section=combat Note="May use shield to give adjacent ally +2 AC"',
   'Second Chance':
     'Section=combat ' +
-    'Note="May forego additional attacks to reroll miss on first"',
+    'Note="May forego additional attacks to reroll miss on first attack"',
   'Selective Spell':
     'Section=magic ' +
     'Note="May protect from damage ability modifier targets in spell effect area; uses +1 spell slot"',
@@ -3886,7 +3893,7 @@ PFAPG.FEATURES = {
   'Sharp Senses':'Section=skill Note="+2 Perception"',
   'Shield Of Swings':
     'Section=combat ' +
-    'Note="May reduce two-handed weapon damage by half for +4 AC and CMD"',
+    'Note="May reduce two-handed weapon full-attack damage by half to gain +4 AC and CMD"',
   'Shield Specialization (Buckler)':
     'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Specialization (Heavy)':
@@ -3941,27 +3948,27 @@ PFAPG.FEATURES = {
     'Note="+4 Bluff (conceal feelings or motives), foe suffers +5 Sense Motive DC"',
   'Stunning Assault':
     'Section=combat ' +
-    'Note="May trade -5 attack for 1 rd stun (DC %{10+baseAttack} neg)"',
+    'Note="May suffer -5 attack to inflict 1 rd stun (DC %{10+baseAttack} Fort neg)"',
   "Summoner's Call":
     'Section=companion ' +
     'Note="Summoned eidolon gains choice of +2 strength, dexterity, or constitution for 10 min"',
   'Sundering Strike':
     'Section=combat ' +
-    'Note="May inflict sundering damage to weapon w/critical hit that exceeds foe CMD"',
+    'Note="May damage foe weapon w/critical hit confirm that exceeds foe CMD"',
   'Swap Places':
     'Section=combat ' +
     'Note="May swap places w/adjacent ally who has same feat; ally suffers no AOO"',
   'Swift Aid':
     'Section=combat ' +
-    'Note="Swift Aid Another action gives ally +1 AC or +1 next attack"',
+    'Note="Swift aid another action gives ally +1 AC or +1 next attack"',
   'Taunt':
     'Section=skill Note="May use Bluff w/out size penalty to demoralize foes"',
   'Team Up':
     'Section=combat ' +
-    'Note="May use Aid Another as a move action when self and 2 allies threaten same foe"',
+    'Note="May use aid another as a move action when self and 2 allies threaten same foe"',
   'Teleport Tactician':
     'Section=combat ' +
-    'Note="Foe teleporting to/from threatened square provokes AOO"',
+    'Note="Foe teleporting to or from threatened square provokes AOO"',
   'Tenacious Transmutation':
     'Section=magic ' +
     'Note="Gives +2 DC to dispel effects of self transmutation spell; effects continue 1 rd after dispel"',
@@ -3973,10 +3980,10 @@ PFAPG.FEATURES = {
     'Note="May forego attack damage for preventing spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
   'Trick Riding':
     'Section=skill ' +
-    'Note="DC 15 or lower ride checks automatically succeed, no penalty for bareback riding, may use Mounted Combat to negate 2 hits/rd"',
+    'Note="In light or no armor, gain automatic success on DC 15 or lower Ride checks, no penalty for bareback riding, and negate 2 hits on mount/rd using Mounted Combat"',
   'Tripping Strike':
     'Section=combat ' +
-    'Note="May inflict trip w/critical hit that exceeds foe CMD"',
+    'Note="May inflict trip w/critical hit confirm that exceeds foe CMD"',
   'Under And Over':
     'Section=combat ' +
     'Note="May make immediate +2 trip maneuver w/no AOO after larger foe grapple fails"',
@@ -5310,7 +5317,7 @@ PFAPG.SHIELDS = {
 PFAPG.SKILLS = {
 };
 // As noted below, the following two spell lists include Witch spells that are
-// restricted to particluar patrons. randomizeOneElement takes steps to ensure
+// restricted to particular patrons. randomizeOneElement takes steps to ensure
 // that these spells are not randomly assigned to an unqualified character.
 PFAPG.SPELLS = {
 
@@ -6864,7 +6871,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
   'Unseen Servant':'Starsoul1,Witch1',
   'Vampiric Touch':'Blood3,Daemon3,Witch3',
-  'Ventriloquism':'Witch1', // Witch Decpetion
+  'Ventriloquism':'Witch1', // Witch Deception
   'Virtue':'Inquisitor0,O0',
   'Vision':'Dreamspun7,Lore7,Witch7',
   'Wail Of The Banshee':'Ancestors9,Bones9,Witch9',
@@ -7335,7 +7342,7 @@ PFAPG.CLASSES = {
       '"2:Aspect Of The Beast (Claws Of The Beast):Natural Weapon Feat",' +
       '"2:Aspect Of The Beast (Night Senses):Natural Weapon Feat",' +
       '"2:Aspect Of The Beast (Predator\'s Leap):Natural Weapon Feat",' +
-      '"2:Aspect Of The Beast (Wild Insinct):Natural Weapon Feat",' +
+      '"2:Aspect Of The Beast (Wild Instinct):Natural Weapon Feat",' +
       '"2:Improved Natural Weapon:Natural Weapon Feat",' +
       '"2:Rending Claws:Natural Weapon Feat",' +
       '"2:Weapon Focus:Natural Weapon Feat",' +
