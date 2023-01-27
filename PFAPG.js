@@ -333,11 +333,12 @@ PFAPG.FEATS = {
   'Low Profile':'Type=General,Fighter Require="dexterity >= 13",features.Small',
   'Lucky Halfling':'Type=General Require="race =~ \'Halfling\'"',
   'Master Alchemist':'Type=General Require="skills.Craft (Alchemy) >= 5"',
-  // TODO Require L4 spells
-  'Minor Spell Expertise':'Type=General',
-  // TODO Require L9 spells
+  'Minor Spell Expertise':'Type=General Require="maxSpellLevel >= 4"',
   'Major Spell Expertise':
-    'Type=General Require="features.Minor Spell Expertise"',
+    'Type=General ' +
+    'Require=' +
+      '"features.Minor Spell Expertise",' +
+      '"maxSpellLevel >= 9"',
   'Missile Shield':
     'Type=General,Fighter Require="dexterity >= 13","features.Shield Focus"',
   'Ray Shield':
@@ -362,8 +363,8 @@ PFAPG.FEATS = {
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
       '"baseAttack >= 8"',
-  // TODO Weapon Specialization (ranged weapon)
-  'Point-Blank Master':'Type=General,Fighter',
+  'Point Blank Master':
+    'Type=General,Fighter Require="rangedWeaponSpecialization > 0"',
   'Practiced Tactician':'Type=General Require=features.Tactician',
   'Preferred Spell':
     'Type=General ' +
@@ -2255,10 +2256,10 @@ PFAPG.FEATURES = {
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in cold terrain"',
   'Bear Totem':
     'Section=feature ' +
-    'Note="Must choose bear animal companion or one of Animal, Earth, Protection, or Strength Domains"',
+    'Note="Must choose Animal Companion (bear) or one of Animal, Earth, Protection, or Strength Domains for Nature Bond"',
   'Blight Druid':
     'Section=feature ' +
-    'Note="May choose Familiar or Darkness, Death, or Destruction Domain, but not Animal Companion, for Nature Bond"',
+    'Note="Must choose Familiar or Darkness, Death, or Destruction Domain for Nature Bond"',
   'Blightblooded':
     'Section=save Note="Immune to disease, sickened, and nauseated"',
   'Canny Charger':
@@ -2295,7 +2296,7 @@ PFAPG.FEATURES = {
       '"Transformation gives +%{levels.Druid} Stealth in desert terrain"',
   'Eagle Totem':
     'Section=feature ' +
-    'Note="Must choose eagle animal companion or one of Air, Animal, Nobility, or Weather Domains"',
+    'Note="Must choose Animal Companion (eagle) or one of Air, Animal, Nobility, or Weather Domains for Nature Bond"',
   'Flurry Form':
     'Section=magic,skill ' +
     'Note=' +
@@ -2315,7 +2316,7 @@ PFAPG.FEATURES = {
   'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
   'Lion Totem':
     'Section=feature ' +
-    'Note="Must choose lion animal companion or one of Animal, Glory, Nobility, or Sun Domains"',
+    'Note="Must choose Animal Companion (lion) or one of Animal, Glory, Nobility, or Sun Domains for Nature Bond"',
   'Lorekeeper':
     'Section=skill ' +
     'Note="+2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill"',
@@ -2384,7 +2385,7 @@ PFAPG.FEATURES = {
       '"Has aquatic subtype and amphibious trait; comfortable down to -50F"',
   'Serpent Totem':
     'Section=feature ' +
-    'Note="Must choose snake animal companion or one of Animal, Charm, Trickery, or Water Domains"',
+    'Note="Must choose Animal Companion (snake) or one of Animal, Charm, Trickery, or Water Domains for Nature Bond"',
   'Shaded Vision':
     'Section=save ' +
     'Note="+2 vs. gaze, figments, and patterns; immune to blinded and dazzled"',
@@ -2440,7 +2441,7 @@ PFAPG.FEATURES = {
     'Section=ability Note="May move at full speed through narrow passages"',
   'Urban Druid':
     'Section=feature ' +
-    'Note="May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond"',
+    'Note="Must choose Nature Bond from Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, and Weather domains"',
   'Verdant Sentinel':
     'Section=magic Note="May cast <i>Tree Shape</i> at will"',
   'Vermin Empathy':
@@ -2448,7 +2449,7 @@ PFAPG.FEATURES = {
     'Note="+%{levels.Druid+charismaModifier} Diplomacy (vermin, disease-bearing)/+%{levels.Druid+charismaModifier-4} Diplomacy (other animals)"',
   'Wolf Totem':
     'Section=feature ' +
-    'Note="Must choose wolf animal companion or one of Animal, Community, Liberation, or Travel Domains"',
+    'Note="Must choose Animal Companion (wolf) or one of Animal, Community, Liberation, or Travel Domains for Nature Bond"',
 
   // Fighter
   'Active Defense':
@@ -2776,7 +2777,6 @@ PFAPG.FEATURES = {
   'Mystic Visions':
     'Section=magic ' +
     'Note="May spend 2 Ki Points for effects of <i>Divination</i> spell"',
-  'Point Blank Master':'Section=feature Note="Has Point-Blank Shot features"',
   'Pure Power':'Section=ability Note="+2 Strength/+2 Dexterity/+2 Wisdom"',
   'Reflexive Shot':'Section=combat Note="May make AOO w/bow"',
   'Sipping Demon':
@@ -3842,8 +3842,9 @@ PFAPG.FEATURES = {
   'Persistent Spell':
     'Section=magic ' +
     'Note="May force spell target to take worse of 2 saving throws; uses +2 spell slot"',
-  'Point-Blank Master':
-    'Section=combat Note="No AOO when firing chosen ranged weapon"',
+  'Point Blank Master':
+    'Section=combat ' +
+    'Note="Using chosen ranged weapon while threatened provokes no foe AOO"',
   'Practiced Tactician':
     'Section=feature Note="May use Tactician feature +%V/dy"',
   'Precise Strike':
@@ -4322,16 +4323,7 @@ PFAPG.PATHS = {
     'Level=levels.Druid ' +
     'Features=' +
       '"1:Spontaneous Casting","2:Lorekeeper","4:Resist Temptation",' +
-      '"6:A Thousand Faces","9:Mental Strength" ' +
-    'Selectables=' +
-      '"1:Charm Domain:Nature Bond",' +
-      '"1:Community Domain:Nature Bond",' +
-      '"1:Knowledge Domain:Nature Bond",' +
-      '"1:Nobility Domain:Nature Bond",' +
-      '"1:Protection Domain:Nature Bond",' +
-      '"1:Repose Domain:Nature Bond",' +
-      '"1:Rune Domain:Nature Bond"',
-      // TODO Weather Domain -- overlaps w/other druids
+      '"6:A Thousand Faces","9:Mental Strength"',
   'Animal Shaman':
     'Group="Druid" ' +
     'Level=levels.Druid ' +
@@ -4455,7 +4447,6 @@ PFAPG.PATHS = {
       '"1:Weapon Proficiency (Shuriken)","1:Flurry Of Blows",' +
       '"3:Versatile Improvisation","4:Ki Pool (Monk Of The Empty Hand)",' +
       '"5:Ki Weapons"',
-      // TODO Additional choices for bonus feats
   'Monk Of The Four Winds':
     'Group=Monk ' +
     'Level=levels.Monk ' +
@@ -4500,7 +4491,6 @@ PFAPG.PATHS = {
       '"2:Way Of The Bow","3:Zen Archery","3:Point Blank Master",' +
       '"4:Ki Pool (Zen Archer)","5:Ki Arrows","9:Reflexive Shot",' +
       '"11:Trick Shot (Zen Archer)","17:Ki Focus Bow"',
-      // TODO Different choices for bonus feats
 
   // Paladin
   'Divine Defender':
@@ -7278,9 +7268,28 @@ PFAPG.CLASSES = {
       '"1:Urban Druid:Archetype",' +
       '"1:Animal Shaman:Archetype",' +
       '"features.Blight Druid ? 1:Familiar:Nature Bond",' +
-      '"features.Blight Druid || features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
+      '"features.Urban Druid || ' +
+       'features.Serpent Totem ? 1:Charm Domain:Nature Bond",' +
+      '"features.Urban Druid || ' +
+       'features.Wolf Totem ? 1:Community Domain:Nature Bond",' +
+      '"features.Blight Druid || ' +
+       'features.Cave Druid ? 1:Darkness Domain:Nature Bond",' +
       '"features.Blight Druid ? 1:Death Domain:Nature Bond",' +
-      '"features.Blight Druid ? 1:Destruction Domain:Nature Bond"',
+      '"features.Blight Druid ? 1:Destruction Domain:Nature Bond",' +
+      '"features.Lion Totem ? 1:Glory Domain:Nature Bond",' +
+      '"features.Urban Druid ? 1:Knowledge Domain:Nature Bond",' +
+      '"features.Wolf Totem ? 1:Liberation Domain:Nature Bond",' +
+      '"features.Urban Druid || ' +
+       'features.Eagle Totem || ' +
+       'features.Lion Totem ? 1:Nobility Domain:Nature Bond",' +
+      '"features.Urban Druid || ' +
+       'features.Bear Totem ? 1:Protection Domain:Nature Bond",' +
+      '"features.Urban Druid ? 1:Repose Domain:Nature Bond",' +
+      '"features.Urban Druid ? 1:Rune Domain:Nature Bond",' +
+      '"features.Bear Totem ? 1:Strength Domain:Nature Bond",' +
+      '"features.Lion Totem ? 1:Sun Domain:Nature Bond",' +
+      '"features.Wolf Totem ? 1:Travel Domain:Nature Bond",' +
+      '"features.Serpent Totem ? 1:Trickery Domain:Nature Bond"',
   'Fighter':
     'Selectables=' +
       '"1:Archer:Archetype",' + 
@@ -7308,7 +7317,20 @@ PFAPG.CLASSES = {
       '"1:Monk Of The Lotus:Archetype",' +
       '"1:Monk Of The Sacred Mountain:Archetype",' +
       '"1:Weapon Adept:Archetype",' +
-      '"1:Zen Archer:Archetype"',
+      '"1:Zen Archer:Archetype",' +
+      '"features.Monk Of The Empty Hand ? 6:Improved Dirty Trick",' +
+      '"features.Monk Of The Empty Hand ? 6:Improved Steal",' +
+      '"features.Monk Of The Empty Hand ? 6:Improvised Weapon Mastery",' +
+      '"features.Zen Archer ? 1:Far Shot",' +
+      '"features.Zen Archer ? 1:Point-Blank Shot",' +
+      '"features.Zen Archer ? 1:Precise Shot",' +
+      '"features.Zen Archer ? 1:Rapid Shot",' +
+      '"features.Zen Archer ? 6:Focused Shot",' +
+      '"features.Zen Archer ? 6:Improved Precise Shot",' +
+      '"features.Zen Archer ? 6:Manyshot",' +
+      '"features.Zen Archer ? 6:Parting Shot",' +
+      '"features.Zen Archer ? 10:Pinpoint Targeting",' +
+      '"features.Zen Archer ? 10:Shot On The Run"',
   'Paladin':
     'Selectables=' +
       '"1:Core Paladin:Archetype",' +
@@ -8838,30 +8860,55 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Serpent Totem', '=', '"snake"',
       'features.Wolf Totem', '=', '"canine"'
     );
-    rules.defineRule('isNotUrbanDruid',
-      classLevel, '=', '1',
-      'features.Urban Druid', '=', '0'
-    );
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
     rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
       'features.Animal Shaman', '?', null,
       classLevel, '=', '1'
     );
-    rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
-      'isNotUrbanDruid', '?', null
+    // Extend Nature Bond validations w/APG restrictions
+    rules.defineRule('validationNotes.druid-AnimalCompanionSelectableFeature',
+      'druidFeatures.Blight Druid', '+', '-1',
+      'druidFeatures.Urban Druid', '+', '-1'
     );
-    rules.defineRule('selectableFeatureCount.Urban Druid (Nature Bond)',
-      'features.Urban Druid', '?', null,
-      classLevel, '=', '1'
+    rules.defineRule('validationNotes.druid-AirDomainSelectableFeature',
+      'druidFeatures.Cave Druid', '+', '-1',
+      'druidFeatures.Urban Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1',
+      'druidFeatures.Eagle Totem', '+', '1'
     );
-    rules.defineChoice('notes',
-      'validationNotes.blightDruidCompanion:Blight Druids may not have an animal companion'
+    rules.defineRule('validationNotes.druid-AnimalDomainSelectableFeature',
+      'druidFeatures.Urban Druid', '+', '-1'
     );
-    rules.defineRule('validationNotes.blightDruidCompanion',
-      'blightDruidLevel', '=', '0',
-      'druidFeatures.Animal Companion', '+', '-1'
+    rules.defineRule('validationNotes.druid-EarthDomainSelectableFeature',
+      'druidFeatures.Urban Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1',
+      'druidFeatures.Bear Totem', '+', '1'
     );
+    rules.defineRule('validationNotes.druid-FireDomainSelectableFeature',
+      'druidFeatures.Urban Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1'
+    );
+    rules.defineRule('validationNotes.druid-PlantDomainSelectableFeature',
+      'druidFeatures.Urban Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1'
+    );
+    rules.defineRule('validationNotes.druid-WaterDomainSelectableFeature',
+      'druidFeatures.Urban Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1',
+      'druidFeature.Serpent Totem', '+', '1'
+    );
+    rules.defineRule('validationNotes.druid-WeatherDomainSelectableFeature',
+      'druidFeatures.Cave Druid', '+', '-1',
+      'druidFeature.Animal Shaman', '+', '-1',
+      'druidFeature.Eagle Totem', '+', '1'
+    );
+    let allNotes = rules.getChoices('notes');
+    allNotes['validationNotes.druid-AnimalCompanionSelectableFeature'] = 'Requires specific Druid archetype';
+    Pathfinder.DRUID_DOMAINS.forEach(d => {
+      allNotes['validationNotes.druid-' + d.replaceAll(' ', '') + 'SelectableFeature'] =
+        'Requires specific Druid archetype';
+    });
     rules.defineRule('wildShapeLevel',
       'aquaticDruidLevel', '+', '-2',
       'arcticDruidLevel', '+', '-2',
@@ -8895,8 +8942,6 @@ PFAPG.classRulesExtra = function(rules, name) {
      'Spring Attack'].forEach(f => {
       allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
     });
-    // TODO Disable Air Domain and Weather Domain selectable for Blight Druid
-    // TODO Disable Knowledge (Geography) class skill for Cave Druid
   } else if(name == 'Fighter') {
     QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(weapon => {
       if(weapon.match(/\b(long|short)?bow\b/i)) {
@@ -9284,6 +9329,20 @@ PFAPG.classRulesExtra = function(rules, name) {
       if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
+    });
+    // Disallow certain monk bonus feats unavailable to Zen Archer archetype
+    ['Catch Off-Guard', 'Improved Grapple', 'Scorpion Style', 'Throw Anything',
+     "Gorgon's Fist", 'Improved Bull Rush', 'Improved Disarm', 'Improved Feint',
+     'Improved Trip', "Medusa's Wrath", 'Spring Attack'].forEach(s => {
+      let allNotes = rules.getChoices('notes');
+      let note =
+        'validationNotes.monk-' + s.replaceAll(' ', '') + 'SelectableFeature';
+      if(!(note in allNotes)) {
+        console.log('Cannot find note ' + note);
+      } else {
+        rules.defineRule(note, 'features.Zen Archer', '+', '-1');
+        allNotes[note] += ' and not Zen Archer';
+      }
     });
   } else if(name == 'Paladin') {
     rules.defineRule('animalCompanionStats.Save Fort',
@@ -10042,6 +10101,13 @@ PFAPG.featRulesExtra = function(rules, name) {
       'level', '=', null,
       'levels.Monk', '+', '-source'
     );
+  } else if(name == 'Point Blank Master') {
+    let allWeapons = rules.getChoices('weapons');
+    for(let w in allWeapons)
+      if(allWeapons[w].includes('Category=R'))
+        rules.defineRule('rangedWeaponSpecialization',
+          'features.Weapon Specialization (' + w + ')', '+=', '1'
+        );
   } else if(name == 'Practiced Tactician') {
     rules.defineRule('featureNotes.practicedTactician',
       'feats.Practiced Tactician', '=', null
@@ -10637,6 +10703,14 @@ PFAPG.ruleNotes = function() {
     '<p>\n' +
     "Quilvyn Pathfinder Advanced Player's Guide Rule Set Version " + PFAPG.VERSION + '\n' +
     '</p>\n' +
+    '<h3>Known Bugs</h3>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Quilvyn does not remove Knowledge (Nature) from the list of druid\n' +
+    '    class skills for the Cave Druid archetype.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '<h3>Copyrights and Licensing</h3>\n' +
     '<h3>Copyrights and Licensing</h3>\n' +
     '<p>\n' +
     'Pathfinder material is Open Game Content from the Pathfinder ' +

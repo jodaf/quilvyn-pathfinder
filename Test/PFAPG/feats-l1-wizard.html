@@ -8,7 +8,7 @@
 var attributes = {
   "_path":"ztest/pfapg/feats/l1 wizard", 
   "alignment":"Lawful Neutral", "armor":"None", "charisma":17, "constitution":12, "deity":"Urgathoa", 
-  "dexterity":10, "experience":44, "experienceTrack":"PSOP", "faction":"The Concordance", 
+  "dexterity":10, "experience":50, "experienceTrack":"PSOP", "faction":"The Concordance", 
   "feats.Arcane Blast":1, "feats.Arcane Shield":1, "feats.Bouncing Spell":1, "feats.Brew Potion":1, 
   "feats.Cooperative Crafting":1, "feats.Dazing Spell":1, "feats.Disruptive Spell":1, 
   "feats.Diviner's Delving":1, "feats.Ectoplasmic Spell":1, "feats.Elemental Focus (Acid)":1, 
@@ -20,12 +20,12 @@ var attributes = {
   "feats.Reach Spell":1, "feats.Selective Spell":1, "feats.Sickening Spell":1, 
   "feats.Spell Focus (Divination)":1, "feats.Spell Focus (Transmutation)":1, "feats.Spell Perfection":1, 
   "feats.Tenacious Transmutation":1, "feats.Thundering Spell":1, "gender":"Female", "hitPoints":51, 
-  "intelligence":15, "languages.Gnoll":1, "languages.Halfling":1, "levels.Wizard":15, 
+  "intelligence":15, "languages.Gnoll":1, "languages.Halfling":1, "levels.Wizard":17, 
   "name":"Feats-L1 Wizard", "race":"Human", "selectableFeatures.Human - Eye For Talent":1, 
-  "selectableFeatures.Human - Heart Of The Streets":1, "selectableFeatures.Wizard - Bonded Object":1, 
+  "selectableFeatures.Human - Heart Of The Streets":1, "selectableFeatures.Wizard - Familiar":1, 
   "selectableFeatures.Wizard - School Opposition (Abjuration)":1, "selectableFeatures.Wizard - School Opposition (Enchantment)":1, 
   "selectableFeatures.Wizard - School Specialization (Illusion)":1, "shield":"None", "skills.Craft (Alchemy)":8, "skills.Craft (Armor)":6, 
-  "skills.Diplomacy":1, "skills.Fly":15, "skills.Intimidate":7, "skills.Knowledge (Geography)":7, 
+  "skills.Diplomacy":9, "skills.Fly":15, "skills.Intimidate":7, "skills.Knowledge (Geography)":7, 
   "skills.Sense Motive":1, "skills.Spellcraft":15, "strength":14, "weapons.Brass Knuckles":1, 
   "weapons.Gauntlet":1, "weapons.Light Crossbow":1, "weapons.Nunchaku":1, "wisdom":13
 };
@@ -34,7 +34,7 @@ var attributes = {
 <body>
 <table id="_top" style="border:1px solid black; width:100%">
 <tr style="text-align:center">
-  <td style="border:1px solid black"><b>Feats-L1 Wizard</b> — <b>Female</b> <b>Human</b> <b>Wizard: 15</b></td>
+  <td style="border:1px solid black"><b>Feats-L1 Wizard</b> — <b>Female</b> <b>Human</b> <b>Wizard: 17</b></td>
 </tr><tr style="text-align:center">
   <td style="border:1px solid black">  <table id="Attributes" style="width:100%">
   <tr style="text-align:center">
@@ -59,8 +59,8 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td>    <table id="AbilityStats" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Experience</b>: 44/45 (PSOP)</td>
-      <td><b>Level</b>: 15</td>
+      <td><b>Experience</b>: 50/51 (PSOP)</td>
+      <td><b>Level</b>: 17</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -82,7 +82,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feat Count</b>: General: 8; Wizard: 3</td>
+        <td><b>Feat Count</b>: General: 9; Wizard: 3</td>
         <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Wizard (Arcane Bond): 1; Wizard (Opposition): 2; Wizard (Specialization): 1</td>
       </tr></table>
 </td>
@@ -91,17 +91,23 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Blast; Arcane Shield; Bouncing Spell; Brew Potion; Cooperative Crafting; Dazing Spell; Disruptive Spell; Diviner's Delving; Ectoplasmic Spell; Elemental Focus (Acid); Elemental Spell (Acid); Expanded Arcana; Focused Spell; Greater Elemental Focus (Acid); Heighten Spell; Improved Counterspell; Improved Share Spells; Intensified Spell; Lingering Spell; Major Spell Expertise; Merciful Spell; Minor Spell Expertise; Parry Spell; Persistent Spell; Preferred Spell; Reach Spell; Selective Spell; Sickening Spell; Spell Focus (Divination); Spell Focus (Transmutation); Spell Perfection; Tenacious Transmutation; Thundering Spell</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Streets; Human Ability Adjustment</td>
-        <td><b>Wizard Features</b>: Blinding Ray; Bonded Object; Extended Illusions; School Opposition (Abjuration); School Opposition (Enchantment); School Specialization (Illusion); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
+        <td><b>Wizard Features</b>: Blinding Ray; Extended Illusions; Familiar; School Opposition (Abjuration); School Opposition (Enchantment); School Specialization (Illusion); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: Eye For Talent: Animal companion or familiar gains +2 on choice of ability</td>
+      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td>Eye For Talent: Animal companion or familiar gains +2 on choice of ability</td>
+      </tr><tr style="text-align:center">
+        <td>Familiar: Special bond and abilities</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td>    <table id="SkillPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Skills</b> (60 ranks, max 15 each):</td>
+      <td><b>Skills</b> (68 ranks, max 17 each):</td>
     </tr><tr style="text-align:center">
       <td>      <table id="Skills" style="width:100%">
       <col style="width:33%"/>
@@ -116,7 +122,7 @@ var attributes = {
         <td>Intimidate: (cha;cc) 7 (+10)</td>
         <td>Spellcraft: (int) 15 (+20)</td>
       </tr><tr style="text-align:left">
-        <td>Diplomacy: (cha;cc) 1 (+4)</td>
+        <td>Diplomacy: (cha;cc) 9 (+12)</td>
         <td>Knowledge (Geography): (int) 7 (+12)</td>
         <td></td>
       </tr></table>
@@ -130,7 +136,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Intelligence Skill Ranks Adjustment: +30</i></td>
+        <td><i>Intelligence Skill Ranks Adjustment: +34</i></td>
       </tr><tr style="text-align:center">
         <td>Cooperative Crafting: Assisting another gives +2 Craft or Spellcraft and dbl GP value</td>
       </tr><tr style="text-align:center">
@@ -148,12 +154,12 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="CombatStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Hit Points</b>: 66</td>
+        <td><b>Hit Points</b>: 68</td>
         <td><b>Initiative</b>: +0</td>
         <td><b>Armor Class</b>: 10</td>
         <td><b>Attacks Per Round</b>: 2</td>
-        <td><b>Base/Melee/Ranged Attack</b>: +7/+9/+7</td>
-        <td><b>Combat Maneuver Bonus/Defense</b>: +9/19</td>
+        <td><b>Base/Melee/Ranged Attack</b>: +8/+10/+8</td>
+        <td><b>Combat Maneuver Bonus/Defense</b>: +10/20</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -169,13 +175,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Brass Knuckles (+9 d3+2 x2@20); Gauntlet (+9 d3+2 x2@20); Light Crossbow (+7 d8 x2@19 R80'); Nunchaku (+5 d6+2 x2@20); Unarmed (+9 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Brass Knuckles (+10 d3+2 x2@20); Gauntlet (+10 d3+2 x2@20); Light Crossbow (+8 d8 x2@19 R80'); Nunchaku (+6 d6+2 x2@20); Unarmed (+10 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +15</i></td>
+        <td><i>Constitution Hit Points Adjustment: +17</i></td>
       </tr><tr style="text-align:center">
         <td><i>Nonproficient Weapon Penalty.Nunchaku: -4 attack</i></td>
       </tr><tr style="text-align:center">
@@ -191,7 +197,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Save</b>: Fortitude: +6; Reflex: +5; Will: +10</td>
+        <td><b>Save</b>: Fortitude: +6; Reflex: +5; Will: +11</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -215,7 +221,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: W0: 4; W1: 6; W2: 6; W3: 5; W4: 5; W5: 5; W6: 4; W7: 3; W8: 2</td>
+        <td><b>Spell Slots</b>: W0: 4; W1: 6; W2: 6; W3: 5; W4: 5; W5: 5; W6: 5; W7: 4; W8: 3; W9: 2</td>
         <td><b>Spell DC</b>: W: 12</td>
       </tr></table>
 </td>
@@ -240,8 +246,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Blinding Ray: R30' Ranged touch blinds or dazzles target for 1 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Bonded Object: May cast known spell through object</td>
-    </tr><tr style="text-align:center">
       <td>Bouncing Spell: May redirect ineffectual spell; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
@@ -260,7 +264,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
     </tr><tr style="text-align:center">
-      <td>Extended Illusions: Illusion duration increased 7 rd</td>
+      <td>Extended Illusions: Illusion duration increased 8 rd</td>
     </tr><tr style="text-align:center">
       <td>Focused Spell: Chosen multi-target spell target suffers +2 save DC; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
@@ -270,7 +274,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Improved Share Spells: R5' May share non-instantaneous self spells w/companion; halves spell effects duration</td>
     </tr><tr style="text-align:center">
-      <td>Intensified Spell: May inflict spell damage as caster level 20; uses +1 spell slot</td>
+      <td>Intensified Spell: May inflict spell damage as caster level 22; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
       <td>Lingering Spell: May cast instantaneous spell w/duration 1 rd; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
@@ -312,13 +316,7 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
-      <tr style="text-align:center">
-        <td>Feat Allocation: 11 available vs. 33 allocated</td>
-      </tr><tr style="text-align:center">
-        <td>Improved Share Spells Feat: Requires spellcraft skill (currently 15) >= 10 and animal companion feature or familiar feature</td>
-      </tr></table>
-</td>
+      <td><b>Validation Errors</b>: Feat Allocation: 12 available vs. 33 allocated</td>
     </tr></table>
 </td>
   </tr></table>

@@ -10,15 +10,15 @@ var attributes = {
   "alignment":"Lawful Evil", "armor":"None", "charisma":16, "constitution":17, "deity":"Lamashtu", 
   "dexterity":17, "experience":58, "experienceTrack":"PSOP", "faction":"Qadira", 
   "feats.Critical Focus":1, "feats.Intimidating Prowess":1, "feats.Persuasive":1, 
-  "feats.Power Attack":1, "feats.Precise Shot":1, "feats.Skill Focus (Knowledge (Planes))":1, 
+  "feats.Point-Blank Shot":1, "feats.Power Attack":1, "feats.Skill Focus (Knowledge (Planes))":1, 
   "feats.Skill Focus (Knowledge (Religion))":1, "feats.Skill Focus (Perform (Comedy))":1, 
   "feats.Skill Focus (Perform (Keyboard))":1, "feats.Skill Focus (Ride)":1, "feats.Skill Focus (Spellcraft)":1, 
   "feats.Swap Places":1, "gender":"Female", "hitPoints":94, "intelligence":12, 
   "languages.Halfling":1, "levels.Monk":20, "name":"Class-Monk 20-Zen Archer", "race":"Human", 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
-  "selectableFeatures.Monk - Catch Off-Guard":1, "selectableFeatures.Monk - Gorgon's Fist":1, 
-  "selectableFeatures.Monk - Improved Critical (Halfling Sling Staff)":1, "selectableFeatures.Monk - Improved Critical (Light Shield)":1, 
-  "selectableFeatures.Monk - Improved Critical (Sap)":1, "selectableFeatures.Monk - Mobility":1, 
+  "selectableFeatures.Monk - Improved Critical (Halfling Sling Staff)":1, "selectableFeatures.Monk - Improved Critical (Light Pick)":1, 
+  "selectableFeatures.Monk - Improved Critical (Light Shield)":1, "selectableFeatures.Monk - Improved Critical (Sap)":1, 
+  "selectableFeatures.Monk - Mobility":1, "selectableFeatures.Monk - Pinpoint Targeting":1, 
   "selectableFeatures.Monk - Zen Archer":1, "shield":"None", "skills.Climb":10, "skills.Craft (Alchemy)":4, 
   "skills.Disable Device":20, "skills.Heal":1, "skills.Intimidate":1, "skills.Knowledge (Planes)":1, 
   "skills.Knowledge (Religion)":10, "skills.Perception":20, "skills.Perform (Comedy)":20, 
@@ -88,18 +88,16 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Critical Focus; Intimidating Prowess; Persuasive; Power Attack; Precise Shot; Skill Focus (Knowledge (Planes)); Skill Focus (Knowledge (Religion)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Keyboard)); Skill Focus (Ride); Skill Focus (Spellcraft); Swap Places</td>
+        <td><b>Feats</b>: Critical Focus; Intimidating Prowess; Persuasive; Point-Blank Shot; Power Attack; Skill Focus (Knowledge (Planes)); Skill Focus (Knowledge (Religion)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Keyboard)); Skill Focus (Ride); Skill Focus (Spellcraft); Swap Places</td>
         <td><b>Traits</b>: Caretaker; Dangerously Curious</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Monk Features</b>: Abundant Step; Armor Class Bonus; Catch Off-Guard; Diamond Soul; Empty Body; Fast Movement; Flurry Of Blows (Zen Archer); Flurry Of Blows; Gorgon's Fist; Greater Two-Weapon Fighting; High Jump; Improved Critical (Halfling Sling Staff); Improved Critical (Light Shield); Improved Critical (Sap); Improved Two-Weapon Fighting; Ki Arrows; Ki Dodge; Ki Focus Bow; Ki Pool (Zen Archer); Ki Pool; Ki Speed; Ki Strike; Mobility; Perfect Self; Perfect Strike; Point Blank Master; Quivering Palm; Reflexive Shot; Slow Fall; Timeless Body; Trick Shot (Zen Archer); Two-Weapon Fighting; Unarmed Strike; Way Of The Bow; Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear); Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Shortbow); Wholeness Of Body; Zen Archer; Zen Archery</td>
+        <td><b>Monk Features</b>: Abundant Step; Armor Class Bonus; Diamond Soul; Empty Body; Fast Movement; Flurry Of Blows (Zen Archer); Flurry Of Blows; Greater Two-Weapon Fighting; High Jump; Improved Critical (Halfling Sling Staff); Improved Critical (Light Pick); Improved Critical (Light Shield); Improved Critical (Sap); Improved Two-Weapon Fighting; Ki Arrows; Ki Dodge; Ki Focus Bow; Ki Pool (Zen Archer); Ki Pool; Ki Speed; Ki Strike; Mobility; Perfect Self; Perfect Strike; Pinpoint Targeting; Point Blank Master; Quivering Palm; Reflexive Shot; Slow Fall; Timeless Body; Trick Shot (Zen Archer); Two-Weapon Fighting; Unarmed Strike; Way Of The Bow; Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear); Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Shortbow); Wholeness Of Body; Zen Archer; Zen Archery</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Point Blank Master: Has Point-Blank Shot features</i></td>
       </tr><tr style="text-align:center">
         <td><i>Unarmed Strike: Has Improved Unarmed Strike features</i></td>
       </tr><tr style="text-align:center">
@@ -226,6 +224,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Halfling Sling Staff): x2 Halfling Sling Staff Threat Range</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Improved Critical (Light Pick): x2 Light Pick Threat Range</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Improved Critical (Light Shield): x2 Light Shield Threat Range</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Sap): x2 Sap Threat Range</i></td>
@@ -242,15 +242,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Zen Archery: +-2 bow attacks</i></td>
       </tr><tr style="text-align:center">
-        <td>Catch Off-Guard: No penalty for improvised melee weapon, unarmed foes flat-footed</td>
-      </tr><tr style="text-align:center">
         <td>Critical Focus: +4 confirm critical</td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows (Zen Archer): May only make Flurry Of Blows attacks with bow</td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows: Full-round +20/+20/+15/+15/+10/+10/+5 monk weapon attacks; may spend 1 Ki Point for additional +20</td>
-      </tr><tr style="text-align:center">
-        <td>Gorgon's Fist: Unarmed attack vs. slowed foe staggers (DC 21 Fort neg)</td>
       </tr><tr style="text-align:center">
         <td>Greater Two-Weapon Fighting: Third off-hand -10 attack</td>
       </tr><tr style="text-align:center">
@@ -272,11 +268,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Perfect Strike: My use better of 3 rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham 20/dy</td>
       </tr><tr style="text-align:center">
+        <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
+      </tr><tr style="text-align:center">
+        <td>Point Blank Master: Using chosen ranged weapon while threatened provokes no foe AOO</td>
+      </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
         <td>Power Attack: Trade up to -4 attack for double damage bonus</td>
-      </tr><tr style="text-align:center">
-        <td>Precise Shot: No penalty on shot into melee</td>
       </tr><tr style="text-align:center">
         <td>Quivering Palm: Struck foe dies 1/dy (DC 21 Fort neg)</td>
       </tr><tr style="text-align:center">

@@ -14,7 +14,7 @@ var attributes = {
   "feats.Aspect Of The Beast (Wild Instinct)":1, "feats.Eldritch Claws":1, "feats.Rending Claws":1, "feats.Vermin Heart":1, 
   "gender":"Female", "hitPoints":57, "intelligence":11, "languages.Aquan":1, "languages.Auran":1, 
   "languages.Gnoll":1, "levels.Druid":10, "name":"Feats-L1 Druid", "race":"Elf", 
-  "selectableFeatures.Druid - Animal Companion":1, "selectableFeatures.Druid - Urban Druid":1, 
+  "selectableFeatures.Druid - Urban Druid":1, "selectableFeatures.Druid - Weather Domain":1, 
   "selectableFeatures.Elf - Elven Immunities":1, "selectableFeatures.Elf - Elven Magic":1, 
   "selectableFeatures.Elf - Weapon Familiarity (Elven Curve Blade)":1, "shield":"None", "skills.Appraise":5, "skills.Bluff":2, "skills.Climb":5, 
   "skills.Craft (Alchemy)":5, "skills.Craft (Bows)":1, "skills.Escape Artist":2, 
@@ -71,7 +71,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 5</td>
-        <td><b>Selectable Feature Count</b>: Druid (Archetype): 1; Elf (Racial Trait): 3; Urban Druid (Nature Bond): 1</td>
+        <td><b>Selectable Feature Count</b>: Druid (Archetype): 1; Druid (Nature Bond): 1; Elf (Racial Trait): 3</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -79,19 +79,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Aspect Of The Beast (Claws Of The Beast); Aspect Of The Beast (Night Senses); Aspect Of The Beast (Predator's Leap); Aspect Of The Beast (Wild Instinct); Eldritch Claws; Rending Claws; Vermin Heart</td>
         <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)</td>
-        <td><b>Druid Features</b>: A Thousand Faces; Animal Companion; Armor Proficiency (Medium); Lorekeeper; Mental Strength; Nature Bond; Nature Sense; Resist Temptation; Shield Proficiency; Spontaneous Casting; Urban Druid; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape</td>
+        <td><b>Druid Features</b>: A Thousand Faces; Armor Proficiency (Medium); Lightning Lord; Lorekeeper; Mental Strength; Nature Bond; Nature Sense; Resist Temptation; Shield Proficiency; Spontaneous Casting; Storm Burst; Urban Druid; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Weather Domain; Wild Empathy; Wild Shape</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
         <td>Aspect Of The Beast (Night Senses): 30' b/w vision in darkness</td>
       </tr><tr style="text-align:center">
         <td>Low-Light Vision: x2 normal distance in poor light</td>
       </tr><tr style="text-align:center">
-        <td>Urban Druid: May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond</td>
+        <td>Urban Druid: Must choose Nature Bond from Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, and Weather domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -218,6 +216,8 @@ var attributes = {
         <td>Eldritch Claws: Natural weapons are considered magic and silver for overcoming DR</td>
       </tr><tr style="text-align:center">
         <td>Rending Claws: Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd</td>
+      </tr><tr style="text-align:center">
+        <td>Storm Burst: R30' Touch 1d6+5 HP non-lethal and -2 attack 4/dy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -253,8 +253,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: D0: 4; D1: 5; D2: 4; D3: 3; D4: 3; D5: 2</td>
-        <td><b>Spell DC</b>: D: 11</td>
+        <td><b>Spell Slots</b>: D0: 4; D1: 5; D2: 4; D3: 3; D4: 3; D5: 2; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1</td>
+        <td><b>Spell DC</b>: D: 11; Domain: 11</td>
       </tr></table>
 </td>
     </tr></table>
@@ -267,6 +267,8 @@ var attributes = {
       <td>A Thousand Faces: <i>Alter Self</i> at will</td>
     </tr><tr style="text-align:center">
       <td>Elven Magic: +2 checks to overcome spell resistance</td>
+    </tr><tr style="text-align:center">
+      <td>Lightning Lord: <i>Call Lightning</i> 10 bolts/dy</td>
     </tr><tr style="text-align:center">
       <td>Spontaneous Casting: May cast domain spell in place of prepared spell</td>
     </tr><tr style="text-align:center">

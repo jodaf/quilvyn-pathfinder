@@ -16,7 +16,7 @@ var attributes = {
   "hitPoints":143, "intelligence":13, "languages.Dwarven":1, "levels.Cleric":10, 
   "levels.Druid":10, "name":"Spells-Cleric Druid", "race":"Human", 
   "selectableFeatures.Cleric - Arcana Subdomain":1, "selectableFeatures.Cleric - Deception Subdomain":1, 
-  "selectableFeatures.Druid - Fire Domain":1, "selectableFeatures.Druid - Urban Druid":1, 
+  "selectableFeatures.Druid - Core Druid":1, "selectableFeatures.Druid - Fire Domain":1, 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"None", 
   "skills.Appraise":1, "skills.Climb":7, "skills.Craft (Alchemy)":1, "skills.Craft (Traps)":7, 
   "skills.Diplomacy":1, "skills.Disable Device":10, "skills.Escape Artist":10, "skills.Fly":20, 
@@ -103,7 +103,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11</td>
-        <td><b>Selectable Feature Count</b>: Cleric: 2; Druid (Archetype): 1; Human (Racial Trait): 2; Urban Druid (Nature Bond): 1</td>
+        <td><b>Selectable Feature Count</b>: Cleric: 2; Druid (Archetype): 1; Druid (Nature Bond): 1; Human (Racial Trait): 2</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -112,7 +112,7 @@ var attributes = {
         <td><b>Feats</b>: Command Undead; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Light Armor Proficiency; Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Druid Features</b>: A Thousand Faces; Armor Proficiency (Medium); Fire Bolt; Fire Domain; Fire Resistance; Lorekeeper; Mental Strength; Nature Bond; Nature Sense; Resist Temptation; Shield Proficiency; Spontaneous Casting; Urban Druid; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape</td>
+        <td><b>Druid Features</b>: Armor Proficiency (Medium); Core Druid; Fire Bolt; Fire Domain; Fire Resistance; Nature Bond; Nature Sense; Resist Nature's Lure; Shield Proficiency; Spontaneous Druid Spell; Trackless Step; Venom Immunity; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
         <td><b>Cleric Features</b>: Arcana Subdomain; Arcane Beacon; Armor Proficiency (Medium); Aura; Channel Energy; Deception Subdomain; Dispelling Touch; Fire Bolt; Fire Resistance; Master's Illusion; Shield Proficiency; Spontaneous Cleric Spell; Sudden Shift; Weapon Proficiency (Simple)</td>
       </tr></table>
 </td>
@@ -121,7 +121,9 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Urban Druid: May choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather domain, but not Animal Companion, for Nature Bond</td>
+        <td>Trackless Step: Untrackable outdoors</td>
+      </tr><tr style="text-align:center">
+        <td>Woodland Stride: Normal movement through undergrowth</td>
       </tr></table>
 </td>
     </tr></table>
@@ -152,7 +154,7 @@ var attributes = {
         <td>Knowledge (Nature): (int) 1 (+7)</td>
         <td>Survival: (wis) 3 (+11)</td>
       </tr><tr style="text-align:left">
-        <td>Diplomacy: (cha) 1 (+9)</td>
+        <td>Diplomacy: (cha) 1 (+7)</td>
         <td>Perception: (wis) 4 (+7)</td>
         <td>Swim: (str) 2 (+0)</td>
       </tr><tr style="text-align:left">
@@ -171,8 +173,6 @@ var attributes = {
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +20</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Lorekeeper: +2 Diplomacy/+2 Knowledge (History)/+2 Knowledge (Local)/+2 Knowledge (Nobility)/Diplomacy is a class skill/Knowledge (History) is a class skill/Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Mathematical Prodigy: +1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -262,9 +262,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Fire Resistance: Resistance 10 to fire</i></td>
       </tr><tr style="text-align:center">
-        <td>Mental Strength: Immune to charm and compulsion</td>
+        <td>Resist Nature's Lure: +4 vs. spells of feys and spells targeting plants</td>
       </tr><tr style="text-align:center">
-        <td>Resist Temptation: +2 vs. divinations and enchantments</td>
+        <td>Venom Immunity: Immune to poisons</td>
       </tr></table>
 </td>
     </tr></table>
@@ -425,8 +425,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Greater Elemental Focus (Acid): Increased Elemental Focus (Acid) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>A Thousand Faces: <i>Alter Self</i> at will</td>
-    </tr><tr style="text-align:center">
       <td>Arcane Beacon: 15' radius gives arcane spells +1 caster level or DC for 1 rd 3/dy</td>
     </tr><tr style="text-align:center">
       <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
@@ -445,13 +443,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Silent Spell: Cast spell w/out speech uses +1 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Casting: May cast domain spell in place of prepared spell</td>
-    </tr><tr style="text-align:center">
       <td>Spontaneous Cleric Spell: Cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+    </tr><tr style="text-align:center">
+      <td>Spontaneous Druid Spell: Cast <i>Summon Nature's Ally</i> in place of known spell</td>
     </tr><tr style="text-align:center">
       <td>Widen Spell: x2 area of affect uses +3 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Wild Shape: Change into creature of size tiny-large/small elemental for 6 hr 2/dy</td>
+      <td>Wild Shape: Change into creature of size diminutive-huge/large elemental/plant for 10 hr 4/dy</td>
     </tr></table>
 </td>
   </tr></table>
