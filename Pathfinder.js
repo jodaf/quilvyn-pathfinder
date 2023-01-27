@@ -5057,6 +5057,12 @@ Pathfinder.classRules = function(
   // Override SRD35 skillPoints rule
   rules.defineRule
     ('skillPoints', 'levels.' + name, '+', 'source * ' + skillPoints);
+  // Calculate maxSpellLevel for PFAPG
+  spellSlots.forEach(s => {
+    let m = s.match(/^([^:]+(\d+)):/);
+    if(m)
+      rules.defineRule('maxSpellLevel', 'spellSlots.' + m[1], '^=', m[2]);
+  });
 };
 
 /*
