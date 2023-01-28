@@ -3601,6 +3601,35 @@ PFAPG.FEATURES = {
       '"+%V Tactician level",' +
       '"+2 Diplomacy/+2 Intimidate/Allies gain +%V Perception and Sense Motive to hear commands and to interpet messages given using Bluff"',
 
+  // Holy Vindicator
+  'Bloodfire':
+    'Section=combat ' +
+    'Note="Channel Smite while using Stigmatia inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC %1 Will ends)"',
+  'Bloodrain':
+    'Section=magic ' +
+    'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %1 Will ends)"',
+  // Caster Level Bonus as Pathfinder.js
+  // Channel Smite as Pathfinder.js
+  'Divine Judgment':
+    'Section=magic ' +
+    'Note="May use level 1 spell slot to infict <i>Death Knell</i> on foe in respose to reducing foe to negative HP"',
+  'Divine Retribution':
+    'Section=magic ' +
+    'Note="May use level 3 spell slot to infict <i>Bestow Curse</i> on foe in respose to critical hit to self or foe"',
+  'Divine Wrath':
+    'Section=magic ' +
+    'Note="May use level 1 spell slot to infict <i>Doom</i> on foe in respose to critical hit to self or foe"',
+  'Faith Healing':'Section=magic Note="Self Cure spells have %V effects"',
+  'Stigmata':
+    'Section=magic ' +
+    'Note="May suffer %V HP/rd bleed damage to gain +%V choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will"',
+  'Versatile Channel':
+    'Section=magic ' +
+    'Note="May use Channel Energy to affect 30\' cone or 120\' line"',
+  "Vindicator's Shield":
+    'Section=combat ' +
+    'Note="May use Channel Energy to gain +%{magicNotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -7582,13 +7611,15 @@ PFAPG.PRESTIGE_CLASSES = {
       '"baseAttack >= 5",' +
       '"features.Channel Energy",' +
       '"skills.Knowledge (Religion) >= 5",' +
-      '"features.Alignment Channel || features.Elemental Channel",' +
+      '"Sum \'features.(Alignment|Elemental) Channel\' > 0",' +
       '"casterLevelDivine >= 1" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Climb,Heal,Intimidate,"Knowledge (Planes)","Knowledge (Religion)",' +
       'Ride,"Sense Motive",Spellcraft,Swim ' +
     'Features=' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
+      '"1:Weapon Proficiency (Martial)",' +
       '"1:Channel Energy","1:Vindicator\'s Shield",2:Stigmata,' +
       '"2:Caster Level Bonus","3:Faith Healing","4:Divine Wrath",5:Bloodfire,' +
       '"5:Channel Smite","6:Versatile Channel","7:Divine Judgment",' +
@@ -10106,6 +10137,20 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.voiceOfAuthority', classLevel, '=', null);
     rules.defineRule
       ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
+  } else if(name == 'Holy Vindicator') {
+    rules.defineRule('channelLevel', classLevel, '+=', null);
+    rules.defineRule('combatNotes.bloodfire.1',
+      'channelLevel', '+=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.bloodrain.1',
+      'channelLevel', '+=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.casterLevelBonus', classLevel, '+=', null);
+    rules.defineRule
+      ('magicNotes.stigmata', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('magicNotes.faithHealing',
+      classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
+    );
   }
 };
 
@@ -10547,17 +10592,12 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'charismaModifier', '=', null
     );
   } else if(name == 'Life Mystery') {
+    rules.defineRule('channelLevel', pathLevel, '+=', null);
     rules.defineRule
       ('features.Channel Energy', 'featureNotes.channel', '=', '1');
     // Oracle channeling gives two fewer uses/dy than Cleric
     rules.defineRule
       ('magicNotes.channelEnergy', 'featureNotes.channel', '+', '-2');
-    rules.defineRule('magicNotes.channelEnergy.1',
-      'levels.Oracle', '+=', 'Math.floor((source + 1) / 2)'
-    );
-    rules.defineRule('magicNotes.channelEnergy.2',
-      'levels.Oracle', '+=', '10 + Math.floor(source / 2)'
-    );
   } else if(name == 'Lore Mystery') {
     // NOTE: This calculation works only if taken at lowest possible (7th) level
     rules.defineRule('abilityNotes.mentalAcuity',
