@@ -1334,7 +1334,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="May expend 2 Lay On Hands uses for Channel Energy"',
   'Channel Smite':
     'Section=combat ' +
-    'Note="Focus Channel Energy damage into melee weapon attack"',
+    'Note="May inflict Channel Energy damage using melee weapon attack"',
   'Chaos Blade':
     'Section=combat Note="Add <i>anarchic</i> to weapon for %1 rd %V/dy"',
   'Charming Smile':'Section=magic Note="<i>Charm Person</i> effect for %1 rd/dy (DC %V Will neg)"',
