@@ -1411,7 +1411,7 @@ Pathfinder.FEATURES = {
   'Demonic Might':
     'Section=feature,save ' +
     'Note="Telepathy 60\'","Resistance 10 to acid, cold, and fire"',
-  'Dervish':'Section=combat Note="+1 AC vs. move AOO"',
+  'Dervish':'Section=combat Note="+1 AC vs. movement AOO"',
   'Desert Child':'Section=save Note="+4 heat stamina, +1 vs. fire effects"',
   'Desert Shadow':'Section=skill Note="Full speed Stealth in desert"',
   'Destiny Realized':
@@ -1702,7 +1702,7 @@ Pathfinder.FEATURES = {
   'Lightning Arc':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Lightning Lord':'Section=magic Note="<i>Call Lightning</i> %V bolts/dy"',
   'Lightning Stance':
-    'Section=combat Note="50% concealment with 2 move or withdraw actions"',
+    'Section=combat Note="50% concealment with dbl move or withdraw action"',
   'Log Roller':'Section=combat,skill Note="+1 CMD vs. Trip","+1 Acrobatics"',
   'Long Limbs':'Section=combat Note="+%V\' touch attack range"',
   'Lore Keeper':
@@ -1832,7 +1832,7 @@ Pathfinder.FEATURES = {
   'Power Of Wyrms':'Section=save Note="Immune to paralysis and sleep"',
   'Power Over Undead':
     'Section=feature ' +
-    'Note="Has Channel Energy feature/+1 General Feat (Command Undead or Turn Undead)"',
+    'Note="+1 General Feat (Command Undead or Turn Undead); may use %{3 + intelligenceModifier}/dy"',
   'Powerful Blow':'Section=combat Note="+%V HP 1/rage"',
   'Proper Training':
     'Section=skill ' +
@@ -5223,10 +5223,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Bard', '=', '1 + Math.floor((source + 1) / 6)'
     );
     rules.defineRule('magicNotes.inspireGreatness',
-      'levels.Bard', '=', 'Math.floor((source - 6) / 3)'
+      'levels.Bard', '=', 'source>=9 ? Math.floor((source - 6) / 3) : null'
     );
     rules.defineRule('magicNotes.inspireHeroics',
-      'levels.Bard', '=', 'Math.floor((source - 12) / 3)'
+      'levels.Bard', '=', 'source>=15 ? Math.floor((source - 12) / 3) : null'
     );
     rules.defineRule('magicNotes.massSuggestion',
       'levels.Bard', '=', '10 + Math.floor(source / 2)',
@@ -5269,11 +5269,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.channelEnergy.1',
       'features.Channel Energy', '?', null,
-      'levels.Cleric', '+=', 'Math.floor((source + 1) / 2)'
+      'channelLevel', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule('magicNotes.channelEnergy.2',
       'features.Channel Energy', '?', null,
-      'levels.Cleric', '+=', '10 + Math.floor(source / 2)',
+      'channelLevel', '+=', '10 + Math.floor(source / 2)',
       'magicNotes.charismaChannelEnergyAdjustment', '+', null
     );
     rules.defineRule('magicNotes.charismaChannelEnergyAdjustment',
@@ -5561,13 +5561,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('features.Channel Energy', 'features.Channel Positive Energy', '=', '1');
-    // Other Channel Energy calculations handled in Cleric rules
-    rules.defineRule('magicNotes.channelEnergy.1',
-      'levels.Paladin', '+=', 'Math.floor((source + 1) / 2)'
-    );
-    rules.defineRule('magicNotes.channelEnergy.2',
-      'levels.Paladin', '+=', '10 + Math.floor(source / 2)'
-    );
     rules.defineRule('magicNotes.holyChampion', 'levels.Paladin', '=', null);
     rules.defineRule('magicNotes.layOnHands',
       'levels.Paladin', '=', 'Math.floor(source / 2)'
@@ -5791,7 +5784,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'Math.floor((source - 2) / 2)'
     );
     rules.defineRule('magicNotes.casterLevelBonus',
-      'levels.Arcane Archer', '=',
+      'levels.Arcane Archer', '+=',
       'source >= 2 ? source - Math.floor((source + 3) / 4) : null'
     );
 
@@ -6011,7 +6004,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Mystic Theurge') {
 
     rules.defineRule('magicNotes.casterLevelBonus',
-      'levels.Mystic Theurge', '=', null
+      'levels.Mystic Theurge', '+=', null
     );
     rules.defineRule('magicNotes.combinedSpells',
       'levels.Mystic Theurge', '+=', 'Math.floor((source + 1) / 2)'
@@ -7465,21 +7458,6 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'features.Command Undead || features.Turn Undead'
     );
     rules.defineRule('channelLevel', schoolLevel, '+=', null);
-    rules.defineRule
-      ('features.Channel Energy', 'featureNotes.powerOverUndead', '=', '1');
-    // Other Channel Energy calculations handled in Cleric rules
-    rules.defineRule('magicNotes.channelEnergy',
-      'magicNotes.intelligenceChannelEnergyAdjustment', '+', null
-    );
-    rules.defineRule('magicNotes.channelEnergy.1', schoolLevel, '+=', '0');
-    rules.defineRule('magicNotes.channelEnergy.2',
-      schoolLevel, '+=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.intelligenceChannelEnergyAdjustment',
-      schoolLevel, '?', null,
-      'intelligenceModifier', '=', null,
-      'charismaModifier', '+', '-source'
-    );
     rules.defineRule('featureNotes.lifeSight',
       schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
     );
@@ -7490,6 +7468,12 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.graveTouchNecromantic.1',
       'features.Grave Touch Necromantic', '?', null,
       'intelligenceModifier', '=', 'source + 3'
+    );
+    rules.defineRule('validationNotes.commandUndeadFeat',
+      'featureNotes.powerOverUndead', '^', '0'
+    );
+    rules.defineRule('validationNotes.turnUndeadFeat',
+      'featureNotes.powerOverUndead', '^', '0'
     );
   } else if(name == 'Transmutation') {
     rules.defineRule('abilityNotes.physicalEnhancement',
