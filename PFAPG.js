@@ -851,7 +851,7 @@ PFAPG.FEATURES = {
     'Note="Aid Another action gives ally +%{(levels.Cavalier+4)//6+2} AC, attack, save, or skill check"',
   'Banner':
     'Section=combat ' +
-    'Note="R60\' Allies gain +%{levels.Cavalier//5+1} save vs. fear and +%{levels.Cavalier//5} charge attack when banner visible"',
+    'Note="R60\' Allies gain +%{bannerLevel//5+1} save vs. fear and +%{bannerLevel//5} charge attack when banner visible"',
   'Braggart':
     'Section=combat,feature ' +
     'Note=' +
@@ -973,7 +973,7 @@ PFAPG.FEATURES = {
     'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
     'Section=feature ' +
-    'Note="Gain 1 Teamwork feat/R30\' May share Teamwork feat w/allies for %{levels.Cavalier//2+3} rd %V/dy"',
+    'Note="Gain 1 Teamwork feat/R30\' May share Teamwork feat w/allies for %{tacticianLevel//2+3} rd %V/dy"',
 
   // Inquisitor
   'Bane':
@@ -2135,7 +2135,7 @@ PFAPG.FEATURES = {
   'Insane Focus':
     'Section=magic ' +
     'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) for 1 min %{wisdomModifier+3}/dy"',
-  'Inspiring Command':
+  'Inspiring Command (Cleric)':
     'Section=magic ' +
     'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
   'Killing Blow':
@@ -3530,6 +3530,77 @@ PFAPG.FEATURES = {
   'Wind Servant':
     'Section=magic Note="May blow %{levels.Wizard} lb object 30\' %{intelligenceModifier+3}/dy"',
 
+  // Battle Herald
+  // Banner as Cavalier
+  'Battle Magic':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives target +%{inspiringCommandBonus} caster level and concentration checks"',
+  'Complex Commands':
+    'Section=magic Note="May have 2 inspiring commands active simultaneously"',
+  // Demanding Challenge as Cavalier
+  'Easy March':
+    'Section=magic ' +
+    'Note="Allies can hustle or force march w/out ill effects %{inspiringCommandBonus} hr/dy"',
+  'Improved Leadership':
+    'Section=feature Note="+%{inspiringCommandBonus} Leadership score"',
+  // Inspire Greatness as Bard
+  'Inspire Hardiness':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies DR %{inspiringCommandBonus}/-"',
+  'Inspire Last Stand':
+    'Section=magic ' +
+    'Note="R30\' Allies below 0 HP remain conscious, stable, and able to act, and gain Inspire Courage effects if conscious"',
+  'Inspired Tactics':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} CMB, AC vs. combat maneuver AOO, and crit confirm"',
+  'Inspiring Command':
+    'Section=feature ' +
+    'Note="%V selections/Has Inspire Courage feature/Inspiring Command effect for %1 rd/dy%{levels.Bard ? \'/May use Bardic Performance for Inspiring Command effects\' : \'\'}"',
+  'Keep Your Heads':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} Will save and concentration checks"',
+  'None Shall Fall':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives %{inspiringCommandBonus} allies additional +%{inspiringCommandBonus} save vs. poison and 1d6 HP healing"',
+  'Persistent Commands':
+    'Section=magic ' +
+    'Note="May allow inspiring commands to continue for %{charismaModifier} rd while incapacitated"',
+  'Pincer Maneuver':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} AC vs. movement AOO and +%{inspiringCommandBonus} attack and damage when flanking"',
+  'Rally':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies additional +%{inspiringCommandBonus} save vs. fear"',
+  'Reveille':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command awkakens allies and gives additional +%{inspiringCommandBonus} save vs. exhaustion, fatigue, and sleep"',
+  'Scatter':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives %{inspiringCommandBonus} allies 20% concealment when moving more than 5\'"',
+  'Shake It Off':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives target additional +%{inspiringCommandBonus} vs. ongoing condition"',
+  'Sound The Charge':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} attack and damage and +%{inspiringCommandBonus*5}\' charge speed"',
+  'Sound The Retreat':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies 50% concealment with dbl move or withdraw action"',
+  'Stand Firm (Battle Herald)':
+    'Section=magic ' +
+    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} CMD and Fort saves"',
+  'Teamwork':
+    'Section=magic ' +
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} aid another rolls and effects"',
+  'Tuck And Roll':
+    'Section=magic ' +
+    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Ref saves"',
+  'Voice Of Authority':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"+%V Tactician level",' +
+      '"+2 Diplomacy/+2 Intimidate/Allies gain +%V Perception and Sense Motive to hear commands and to interpet messages given using Bluff"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -4004,6 +4075,7 @@ PFAPG.FEATURES = {
   'Well-Prepared':
     'Section=skill ' +
     'Note="May use Sleight Of Hand (DC 10 + GP cost) to produce required mundane item 1/dy"'
+
 };
 PFAPG.LANGUAGES = {
 };
@@ -4203,7 +4275,7 @@ PFAPG.PATHS = {
   'Language Subdomain':
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Rune Shift'),
   'Leadership Subdomain':
-    Pathfinder.PATHS['Nobility Domain'].replace('Inspiring Word', 'Inspiring Command'),
+    Pathfinder.PATHS['Nobility Domain'].replace('Inspiring Word', 'Inspiring Command (Cleric)'),
   'Light Subdomain':
     Pathfinder.PATHS['Sun Domain'].replace("Sun's Blessing", 'Blinding Flash'),
   'Loss Subdomain':
@@ -7486,9 +7558,25 @@ PFAPG.PRESTIGE_CLASSES = {
       '"Knowledge (Nobility)",Perception,Profession,Ride,"Sense Motive" ' +
     'Features=' +
       '"1:Inspiring Command","1:Improved Leadership","1:Voice Of Authority",' +
-      '"2:Easy March","4:Inspire Greatness",5:Banner,' +
-      '"6:Battle Herald Feat Bonus","7:Demanding Challenge",' +
-      '"8:Persistent Commands","9:Inspire Last Stand","10:Complex Commands"',
+      '"2:Easy March","4:Inspire Greatness",5:Banner,"6:Teamwork Feat",' +
+      '"7:Demanding Challenge","8:Persistent Commands",' +
+      '"9:Inspire Last Stand","10:Complex Commands" ' +
+    'Selectables=' +
+      '"1:Battle Magic:Inspiring Command",' +
+      '"1:Inspire Hardiness:Inspiring Command",' +
+      '"1:Inspired Tactics:Inspiring Command",' +
+      '"1:Keep Your Heads:Inspiring Command",' +
+      '"1:None Shall Fall:Inspiring Command",' +
+      '"1:Pincer Maneuver:Inspiring Command",' +
+      '"1:Rally:Inspiring Command",' +
+      '"1:Reveille:Inspiring Command",' +
+      '"1:Scatter:Inspiring Command",' +
+      '"1:Shake It Off:Inspiring Command",' +
+      '"1:Sound The Charge:Inspiring Command",' +
+      '"features.Scatter ? 1:Sound The Retreat:Inspiring Command",' +
+      '"1:Stand Firm (Battle Herald):Inspiring Command",' +
+      '"1:Teamwork:Inspiring Command",' +
+      '"1:Tuck And Roll:Inspiring Command"',
   'Holy Vindicator':
     'Require=' +
       '"baseAttack >= 5",' +
@@ -7822,6 +7910,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionMasterLevel', '=', '1',
       'companionNotes.mount', '=', '0'
     );
+    rules.defineRule('bannerLevel', classLevel, '+=', null);
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
@@ -7843,9 +7932,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
     rules.defineRule
       ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
-    rules.defineRule
-      ('featureNotes.tactician', classLevel, '=', 'Math.floor(source / 5) + 1');
-    rules.defineRule('features.Teamwork', 'features.Tactician', '=', null);
+    rules.defineRule('featureNotes.tactician',
+      'tacticianLevel', '=', 'Math.floor(source / 5) + 1'
+    );
     rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
@@ -7859,6 +7948,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.mount', '?', null,
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
+    rules.defineRule('tacticianLevel', classLevel, '=', null);
     // Reversal of Ride armor penalty is handled by Mount feature; this noop
     // gets Mounted Mastery skill note displayed in italics
     rules.defineRule
@@ -9986,6 +10076,36 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.waterSupremacy',
       classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
     );
+  } else if(name == 'Battle Herald') {
+    rules.defineRule('bannerLevel', classLevel, '+=', null);
+    rules.defineRule
+      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
+    rules.defineRule
+      ('featureNotes.teamworkFeat', classLevel, '+=', 'source>=6 ? 1 : null');
+    rules.defineRule('featureNotes.inspiringCommand',
+      classLevel, '=', 'Math.floor((source + 1) / 2)'
+    );
+    rules.defineRule('featureNotes.inspiringCommand.1',
+      'charismaModifier', '=', '4 + source',
+      classLevel, '+', '(source - 1) * 2'
+    );
+    rules.defineRule('featureNotes.voiceOfAuthority', classLevel, '=', null);
+    rules.defineRule
+      ('features.Inspire Courage', 'featureNotes.inspiringCommand', '=', '1');
+    rules.defineRule('inspiringCommandBonus',
+      classLevel, '+=', 'Math.floor((source + 2) / 3)'
+    );
+    rules.defineRule
+      ('magicNotes.inspireCourage', 'inspiringCommandBonus', '+=', null);
+    rules.defineRule('magicNotes.inspireGreatness',
+      classLevel, '+=', 'Math.floor((source - 1) / 3)'
+    );
+    rules.defineRule('selectableFeatureCount.Battle Herald (Inspiring Command)',
+      'featureNotes.inspiringCommand', '=', null
+    );
+    rules.defineRule('skillNotes.voiceOfAuthority', classLevel, '=', null);
+    rules.defineRule
+      ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
   }
 };
 
