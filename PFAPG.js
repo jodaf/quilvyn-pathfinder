@@ -3630,6 +3630,74 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May use Channel Energy to gain +%{magicNotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
 
+  // Horizon Walker
+  'Master Of All Lands':'Section=feature Note="FILL"',
+  'Terrain Dominance':'Section=feature Note="%V selections"',
+  'Terrain Dominance (Aligned Plane (%alignment))':'Section=feature Note="FILL"',
+  'Terrain Dominance (Astral Plane)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Cold)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Desert)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Ethereal Plane)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Forest)':'Section=skill Note="FILL"',
+  'Terrain Dominance (Jungle)':'Section=skill Note="FILL"',
+  'Terrain Dominance (Mountain)':'Section=skill Note="FILL"',
+  'Terrain Dominance (Plains)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Plane Of Air)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Plane Of Earth)':'Section=combat Note="FILL"',
+  'Terrain Dominance (Plane Of Fire)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Plane Of Water)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Swamp)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Underground)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Urban)':'Section=feature Note="FILL"',
+  'Terrain Dominance (Water)':'Section=feature Note="FILL"',
+  'Terrain Mastery':'Section=feature Note="%V selections"',
+  'Terrain Mastery (Aligned Plane (%alignment))':
+     'Section=ability ' +
+     'Note="May cause detection spells report self alignment as %alignment"',
+  'Terrain Mastery (Astral Plane)':
+    'Section=feature Note="+30\' Fly on planes w/no or subjective gravity"',
+  'Terrain Mastery (Cold)':'Section=save Note="Resistance 10 to cold"',
+  'Terrain Mastery (Desert)':'Section=save Note="Immune to exhaustion"',
+  'Terrain Mastery (Ethereal Plane)':
+    'Section=combat ' +
+    'Note="Ignores fog and miss concealment; treats total concealment as concealment"',
+  'Terrain Mastery (Forest)':'Section=skill Note="+4 Stealth"',
+  'Terrain Mastery (Jungle)':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+4 CMD vs. grapple",' +
+      '"+4 Escape Artist"',
+  'Terrain Mastery (Mountain)':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Retains Dex bonus to AC when climbing",' +
+      '"+4 Climb"',
+  'Terrain Mastery (Plains)':
+    'Section=ability Note="No speed reduction from medium load or armor"',
+  'Terrain Mastery (Plane Of Air)':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 attack and damage vs. flying creatures",' +
+      '"+4 Fly"',
+  'Terrain Mastery (Plane Of Earth)':
+    'Section=combat Note="Gains DR 1/adamantine"',
+  'Terrain Mastery (Plane Of Fire)':'Section=save Note="Resistance 10 to fire"',
+  'Terrain Mastery (Plane Of Water)':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+1 attack and damage vs. swimming creatures",' +
+      '"May breathe water",' +
+      '"+4 Swim"',
+  'Terrain Mastery (Swamp)':'Section=skill Note="+4 Perception"',
+  'Terrain Mastery (Underground)':
+    'Section=feature Note="Has Blind-Fight feature"',
+  'Terrain Mastery (Urban)':'Section=skill Note="+4 Diplomacy"',
+  'Terrain Mastery (Water)':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 attack and damage vs. swimming creatures",' +
+      '"+4 Swim"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -7635,7 +7703,83 @@ PFAPG.PRESTIGE_CLASSES = {
       'Stealth,Survival,Swim ' +
     'Features=' +
       '"1:Favored Terrain","2:Terrain Mastery","3:Terrain Dominance",' +
-      '"10:Master Of All Lands"',
+      '"10:Master Of All Lands" ' +
+    'Selectables=' +
+      '"features.Terrain Mastery (Aligned Plane (Chaotic Evil)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Chaotic Evil)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Chaotic Good)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Chaotic Good)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Chaotic Neutral)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Chaotic Neutral)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Lawful Evil)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Lawful Evil)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Lawful Good)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Lawful Good)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Lawful Neutral)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Lawful Neutral)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Neutral Evil)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Neutral Evil)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Neutral Good)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Neutral Good)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Aligned Plane (Neutral)) ? ' +
+        '3:Terrain Dominance (Aligned Plane (Neutral)):Terrain Dominance",' +
+      '"features.Terrain Mastery (Astral Plane) ? ' +
+        '3:Terrain Dominance (Astral Plane):Terrain Dominance",' +
+      '"features.Terrain Mastery (Cold) ? ' +
+        '3:Terrain Dominance (Cold):Terrain Dominance",' +
+      '"features.Terrain Mastery (Desert) ? ' +
+        '3:Terrain Dominance (Desert):Terrain Dominance",' +
+      '"features.Terrain Mastery (Ethereal Plane) ? ' +
+        '3:Terrain Dominance (Ethereal Plane):Terrain Dominance",' +
+      '"features.Terrain Mastery (Forest) ? ' +
+        '3:Terrain Dominance (Forest):Terrain Dominance",' +
+      '"features.Terrain Mastery (Jungle) ? ' +
+        '3:Terrain Dominance (Jungle):Terrain Dominance",' +
+      '"features.Terrain Mastery (Mountain) ? ' +
+        '3:Terrain Dominance (Mountain):Terrain Dominance",' +
+      '"features.Terrain Mastery (Plains) ? ' +
+        '3:Terrain Dominance (Plains):Terrain Dominance",' +
+      '"features.Terrain Mastery (Plane Of Air) ? ' +
+        '3:Terrain Dominance (Plane Of Air):Terrain Dominance",' +
+      '"features.Terrain Mastery (Plane Of Earth) ? ' +
+        '3:Terrain Dominance (Plane Of Earth):Terrain Dominance",' +
+      '"features.Terrain Mastery (Plane Of Fire) ? ' +
+        '3:Terrain Dominance (Plane Of Fire):Terrain Dominance",' +
+      '"features.Terrain Mastery (Plane Of Water) ? ' +
+        '3:Terrain Dominance (Plane Of Water):Terrain Dominance",' +
+      '"features.Terrain Mastery (Swamp) ? ' +
+        '3:Terrain Dominance (Swamp):Terrain Dominance",' +
+      '"features.Terrain Mastery (Underground) ? ' +
+        '3:Terrain Dominance (Underground):Terrain Dominance",' +
+      '"features.Terrain Mastery (Urban) ? ' +
+        '3:Terrain Dominance (Urban):Terrain Dominance",' +
+      '"features.Terrain Mastery (Water) ? ' +
+        '3:Terrain Dominance (Water):Terrain Dominance",' +
+      '"2:Terrain Mastery (Aligned Plane (Chaotic Evil)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Chaotic Good)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Chaotic Neutral)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Lawful Evil)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Lawful Good)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Lawful Neutral)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Neutral Evil)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Neutral Good)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Aligned Plane (Neutral)):Terrain Mastery",' +
+      '"2:Terrain Mastery (Astral Plane):Terrain Mastery",' +
+      '"2:Terrain Mastery (Cold):Terrain Mastery",' +
+      '"2:Terrain Mastery (Desert):Terrain Mastery",' +
+      '"2:Terrain Mastery (Ethereal Plane):Terrain Mastery",' +
+      '"2:Terrain Mastery (Forest):Terrain Mastery",' +
+      '"2:Terrain Mastery (Jungle):Terrain Mastery",' +
+      '"2:Terrain Mastery (Mountain):Terrain Mastery",' +
+      '"2:Terrain Mastery (Plains):Terrain Mastery",' +
+      '"2:Terrain Mastery (Plane Of Air):Terrain Mastery",' +
+      '"2:Terrain Mastery (Plane Of Earth):Terrain Mastery",' +
+      '"2:Terrain Mastery (Plane Of Fire):Terrain Mastery",' +
+      '"2:Terrain Mastery (Plane Of Water):Terrain Mastery",' +
+      '"2:Terrain Mastery (Swamp):Terrain Mastery",' +
+      '"2:Terrain Mastery (Underground):Terrain Mastery",' +
+      '"2:Terrain Mastery (Urban):Terrain Mastery",' +
+      '"2:Terrain Mastery (Water):Terrain Mastery"',
   'Master Chymist':
     'Require=' +
       '"spellSlots.Extract3 >= 1",' +
@@ -10150,6 +10294,25 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('magicNotes.stigmata', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.faithHealing',
       classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
+    );
+  } else if(name == 'Horizon Walker') {
+    rules.defineRule('damageReduction.Adamantime',
+      'combatNotes.planeOfEarthMastery', '=', '1'
+    );
+    rules.defineRule('featureNotes.terrainDominance',
+      classLevel, '=', 'Math.floor(source / 3)'
+    );
+    rules.defineRule('featureNotes.terrainMastery',
+      classLevel, '=', 'Math.floor(source / 2) - (source==10 ? 1 : 0)'
+    );
+    rules.defineRule('features.Blind-Fight',
+      'featureNotes.terrainMastery(Underground)', '=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Horizon Walker (Terrain Dominance)',
+      'featureNotes.terrainDominance', '+', null
+    );
+    rules.defineRule('selectableFeatureCount.Horizon Walker (Terrain Mastery)',
+      'featureNotes.terrainMastery', '=', null
     );
   }
 };
