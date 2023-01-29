@@ -725,7 +725,7 @@ PFAPG.FEATURES = {
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{levels.Alchemist+1)//2+intelligenceModifier} HP (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) splash %V/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+effectiveAlchemistLevel//2+intelligenceModifier} Ref half) splash %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
     'Section=magic Note="Combining two effects into one extract uses +2 slot"',
@@ -777,7 +777,7 @@ PFAPG.FEATURES = {
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
   'Greater Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +4 AC and +6/-2 and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
+    'Note="May brew and drink potion that gives +4 AC and +6/-2 and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{effectiveAlchemistLevel*10} min"',
   'Inferno Bomb':
     'Section=combat ' +
     'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
@@ -3631,36 +3631,75 @@ PFAPG.FEATURES = {
     'Note="May use Channel Energy to gain +%{magicNotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
 
   // Horizon Walker
-  'Master Of All Lands':'Section=feature Note="FILL"',
-  'Terrain Dominance':'Section=feature Note="%V selections"',
-  'Terrain Dominance (Aligned Plane (%alignment))':'Section=feature Note="FILL"',
-  'Terrain Dominance (Astral Plane)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Cold)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Desert)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Ethereal Plane)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Forest)':'Section=skill Note="FILL"',
-  'Terrain Dominance (Jungle)':'Section=skill Note="FILL"',
-  'Terrain Dominance (Mountain)':'Section=skill Note="FILL"',
-  'Terrain Dominance (Plains)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Plane Of Air)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Plane Of Earth)':'Section=combat Note="FILL"',
-  'Terrain Dominance (Plane Of Fire)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Plane Of Water)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Swamp)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Underground)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Urban)':'Section=feature Note="FILL"',
-  'Terrain Dominance (Water)':'Section=feature Note="FILL"',
-  'Terrain Mastery':'Section=feature Note="%V selections"',
+  'Master Of All Lands':
+    'Section=feature,save ' +
+    'Note=' +
+      '"+2 Favored Terrain bonus in all terrins",' +
+      '"Automatically succeeds on natural temperature and weather saves; R60\' allies receive +2 (+4 in mastered terrain)"',
+  'Terrain Dominance':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"Applies Favored Terrain bonus when dealing w/creatures native to terrain",' +
+      '"%V selections",' +
+      '"Applies Favored Terrain bonus when dealing w/creatures native to terrain"',
+  'Terrain Dominance (Aligned Plane (%alignment))':
+    'Section=combat ' +
+    'Note="Weapons count as opposite alignment for overcoming DR"',
+  'Terrain Dominance (Astral Plane)':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"+1 attack and damage vs. outsiders",' +
+      '"May use <i>Dimension Door</i> effects %{3+wisdomModifier}/dy"',
+  'Terrain Dominance (Cold)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 attack and damage vs. cold creatures",' +
+      '"Resistance 20 to cold"',
+  'Terrain Dominance (Desert)':
+    'Section=save Note="Resistance 10 to fire/Immune to fatigue"',
+  'Terrain Dominance (Ethereal Plane)':
+    'Section=magic Note="May use <i>Etheral Jaunt</i> effects 1/dy"',
+  'Terrain Dominance (Forest)':
+    'Section=magic ' +
+    'Note="May use <i>Hallucinatory Terrain</i> effects to create forest images %{3+wisdomModifier}/dy"',
+  'Terrain Dominance (Jungle)':
+    'Section=magic ' +
+    'Note="May use <i>Charm Monster</i> effects on jungle creatures %{3+wisdomModifier}/dy"',
+  'Terrain Dominance (Mountain)':'Section=combat Note="Gains DR 2/adamantine"',
+  'Terrain Dominance (Plains)':'Section=ability Note="+10 Speed"',
+  'Terrain Dominance (Plane Of Air)':
+    'Section=magic Note="May use <i>Fly</i> effects %{3+wisdomModifier}/dy"',
+  'Terrain Dominance (Plane Of Earth)':
+    'Section=feature Note="Has 30\' Tremorsense"',
+  'Terrain Dominance (Plane Of Fire)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 attack and damage vs. fire creatures",' +
+      '"Resistance 20 to fire"',
+  'Terrain Dominance (Plane Of Water)':
+    'Section=feature Note="Always able to move freely underwater"',
+  'Terrain Dominance (Swamp)':'Section=feature Note="Has 30\' Tremorsense"',
+  'Terrain Dominance (Underground)':'Section=feature Note="+60\' Darkvision"',
+  'Terrain Dominance (Urban)':
+    'Section=magic ' +
+    'Note="May use <i>Charm Person</i> effects %{3+wisdomModifier}/dy"',
+  'Terrain Dominance (Water)':'Section=ability Note="+20\' Swim"',
+  'Terrain Mastery':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"%V selections",' +
+      '"R30\' May give allies +2 Climb, Perception, Stealth, and Survival for %{wisdomModifier>?1} rd"',
   'Terrain Mastery (Aligned Plane (%alignment))':
      'Section=ability ' +
      'Note="May cause detection spells report self alignment as %alignment"',
   'Terrain Mastery (Astral Plane)':
-    'Section=feature Note="+30\' Fly on planes w/no or subjective gravity"',
+    'Section=ability Note="+30\' Fly on planes w/no or subjective gravity"',
   'Terrain Mastery (Cold)':'Section=save Note="Resistance 10 to cold"',
-  'Terrain Mastery (Desert)':'Section=save Note="Immune to exhaustion"',
+  'Terrain Mastery (Desert)':
+    'Section=save Note="Immune to exhaustion; becomes fatigued instead"',
   'Terrain Mastery (Ethereal Plane)':
     'Section=combat ' +
-    'Note="Ignores fog and miss concealment; treats total concealment as concealment"',
+    'Note="No miss chance from foe fog and miss concealment; 20% miss chance from total concealment"',
   'Terrain Mastery (Forest)':'Section=skill Note="+4 Stealth"',
   'Terrain Mastery (Jungle)':
     'Section=combat,skill ' +
@@ -3673,7 +3712,7 @@ PFAPG.FEATURES = {
       '"Retains Dex bonus to AC when climbing",' +
       '"+4 Climb"',
   'Terrain Mastery (Plains)':
-    'Section=ability Note="No speed reduction from medium load or armor"',
+    'Section=ability Note="No speed reduction from medium armor or load"',
   'Terrain Mastery (Plane Of Air)':
     'Section=combat,skill ' +
     'Note=' +
@@ -3697,6 +3736,49 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+1 attack and damage vs. swimming creatures",' +
       '"+4 Swim"',
+
+  // Master Chymist
+  'Advanced Mutagen':'Section=feature Note="%V selections"',
+  'Bomb-Thrower':'Section=combat Note="Increased Bomb effects"',
+  'Brutality':
+    'Section=combat ' +
+    'Note="%V damage w/simple weapons and natural attacks in mutagenic form"',
+  'Burly':
+    'Section=ability,combat,skill ' +
+    'Note=' +
+      '"+%V Strength and Constitution checks in mutagenic form",' +
+      '"+%V CMB and CMD in mutagenic form",' +
+      '"+%V Strength-linked skill checks in mutagenic form"',
+  // Caster Level Bonus as Pathfinder.js
+  'Disguise':'Section=feature Note="FILL"',
+  'Draconic Mutagen':'Section=feature Note="FILL"',
+  'Dual Mind':'Section=feature Note="FILL"',
+  'Evasion (Master Chymist)':
+    'Section=save ' +
+    'Note="Reflex save yields no damage instead of half in mutagenic form"',
+  'Extended Mutagen':'Section=feature Note="FILL"',
+  // Feral Mutagen as Alchemist
+  'Furious Mutagen':'Section=feature Note="FILL"',
+  // Grand Mutagen as Alchemist
+  // Greater Mutagen as Alchemist
+  'Growth Mutagen':
+    'Section=feature Note="Increases one size category in mutagenic form"',
+  'Mutagenic Form':'Section=feature Note="FILL"',
+  'Mutate':'Section=feature Note="FILL"',
+  'Night Vision (Master Chymist)':
+    'Section=feature ' +
+    'Note="Has 60\' Darkvision and Low-Light Vision in mutagenic form"',
+  'Nimble':
+    'Section=ability,combat,skill ' +
+    'Note=' +
+      '"+%V Dexterity checks in mutagenic form",' +
+      '"+%V AC and CMD in mutagenic form",' +
+      '"+%V Dexterity-linked skill checks in mutagenic form"',
+  'Restoring Change':
+    'Section=combat ' +
+    'Note="Changing to/from mutagenic form restores 1d8+%{level} HP"',
+  'Scent (Master Chymist)':
+    'Section=feature Note="Has Scent feature in mutagenic form"',
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -6533,12 +6615,12 @@ PFAPG.SPELLS = {
 PFAPG.SPELLS_LEVELS_ADDED = {
 
   'Acid Splash':'Inquisitor0',
-  'Aid':'Curse2,Inquisitor2,O2,Tactics2',
-  'Air Walk':'O4,Winds4',
+  'Aid':'Alchemist2,Curse2,Inquisitor2,O2,Tactics2',
+  'Air Walk':'Alchemist4,O4,Winds4',
   'Alarm':'Home1,Inquisitor1',
   'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,O2,Proteus2',
-  'Alter Self':'Witch2',
-  'Analyze Dweomer':'Arcana6,Witch6',
+  'Alter Self':'Alchemist2,Witch2',
+  'Analyze Dweomer':'Alchemist6,Arcana6,Witch6',
   'Animal Growth':'Witch5', // Witch Animals
   'Animal Shapes':'Feather7,Fur7,Nature8,Witch8', // Witch Agility, Animals
   'Animate Dead':'Bones3,O3,Souls3,Undeath3,Witch4', // Witch Plague
@@ -6548,10 +6630,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Antilife Shell':'Fur6,O6,Souls6,Witch6', // Witch Animals
   'Antimagic Field':'Defense6,Divine6,Purity6,O8',
   'Antipathy':'Witch8',
-  'Arcane Eye':'Arcana4,Witch4',
+  'Arcane Eye':'Alchemist4,Arcana4,Witch4',
   'Arcane Lock':'Wards1',
   'Arcane Mark':'Witch0',
-  'Arcane Sight':'Inquisitor3,Witch3',
+  'Arcane Sight':'Alchemist3,Inquisitor3,Witch3',
   'Astral Projection':'Dreamspun9,O9,Witch9',
   'Atonement':'Inquisitor5,O5,Purity5',
   'Augury':'Dreamspun2,Fate2,O2,Witch2',
@@ -6559,12 +6641,12 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Baleful Polymorph':'Witch5',
   'Bane':'Curse1,Inquisitor1,O1',
   'Banishment':'Inquisitor5,O6',
-  'Barkskin':'Decay2,Defense2,Growth2,Nature2,Verdant2',
-  "Bear's Endurance":'O2,Witch2', // Witch Endurance, Transformation
-  'Beast Shape I':'Fur3,Witch3', // Witch Transformation
-  'Beast Shape II':'Witch4', // Witch Transformation
-  'Beast Shape III':'Feather5,Fur5,Witch5', // Witch Transformation
-  'Beast Shape IV':'Aquatic6,Witch7', // Witch Animals
+  'Barkskin':'Alchemist2,Decay2,Defense2,Growth2,Nature2,Verdant2',
+  "Bear's Endurance":'Alchemist2,O2,Witch2', // Witch Endurance, Transformation
+  'Beast Shape I':'Alchemist3,Fur3,Witch3', // Witch Transformation
+  'Beast Shape II':'Alchemist4,Witch4', // Witch Transformation
+  'Beast Shape III':'Alchemist5,Feather5,Fur5,Witch5', // Witch Transformation
+  'Beast Shape IV':'Alchemist6,Aquatic6,Witch7', // Witch Animals
   'Bestow Curse':'Curse3,O3,Witch3',
   'Black Tentacles':'Witch4',
   'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
@@ -6576,17 +6658,18 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Blight':'Seasons4,Witch5',
   'Blindness/Deafness':'Loss2,Night2,O3,Witch2',
   'Blink':'Starsoul3,Witch3', // Witch Deception
-  'Blur':'Protean2',
+  'Blur':'Alchemist2,Protean2',
   'Break Enchantment':
     'Curse5,Fate5,Inquisitor5,O5,Restoration5,Revolution5,Witch5',
   'Breath Of Life':'Life5,O5',
-  "Bull's Strength":'Ferocity2,O2,Rage2,Resolve2,Witch2', // Witch Strength
+  "Bull's Strength":
+    'Alchemist2,Ferocity2,O2,Rage2,Resolve2,Witch2', // Witch Strength
   'Burning Hands':'Ash1,Flame1,Smoke1,Witch1',
   'Call Lightning':'Catastrophe3,Seasons3,Storms3',
   'Call Lightning Storm':'Starsoul4,Storms5',
   'Calm Animals':'Feather1',
   'Calm Emotions':'Family2,Inquisitor2,O2',
-  "Cat's Grace":'Witch2', // Witch Agility
+  "Cat's Grace":'Alchemist2,Witch2', // Witch Agility
   'Cause Fear':'Bones1,Daemon1,Inquisitor1,Murder1,O1,Undeath1,Witch1',
   'Chain Lightning':'Cloud6,Heavens6,Stormborn6,Witch7',
   'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Proteus4',
@@ -6605,11 +6688,12 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Command Plants':'Growth4,Verdant4',
   'Command Undead':'Inevitable3,Witch2', // Witch Plague
   'Commune':'Inquisitor5,O5',
-  'Comprehend Languages':'Inquisitor1,Language1,Memory1,O1,Thought1,Witch1',
+  'Comprehend Languages':
+    'Alchemist1,Inquisitor1,Language1,Memory1,O1,Thought1,Witch1',
   'Cone Of Cold':'Boreal5,Ice6,Oceans6,Witch6',
   'Confusion':'Deception4,Lust4,Protean4,Thievery4,Witch4',
   'Consecrate':'Inquisitor2,O2',
-  'Contact Other Plane':'Lore5,Witch5',
+  'Contact Other Plane':'Alchemist5,Lore5,Witch5',
   'Contagion':'Decay3,O3,Witch3', // Witch Plague
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
@@ -6625,23 +6709,25 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Creeping Doom':'Nature7',
   'Crushing Hand':'Ferocity9,Resolve9',
   'Crushing Despair':'Witch4',
-  'Cure Critical Wounds':'Inquisitor4,O4,Resurrection4,Witch5',
-  'Cure Light Wounds':'Inquisitor1,O1,Restoration1,Resurrection1,Witch1',
-  'Cure Moderate Wounds':'Inquisitor2,O2,Resurrection2,Witch2',
-  'Cure Serious Wounds':'Inquisitor3,O3,Restoration3,Resurrection3,Witch4',
+  'Cure Critical Wounds':'Alchemist4,Inquisitor4,O4,Resurrection4,Witch5',
+  'Cure Light Wounds':
+    'Alchemist1,Inquisitor1,O1,Restoration1,Resurrection1,Witch1',
+  'Cure Moderate Wounds':'Alchemist2,Inquisitor2,O2,Resurrection2,Witch2',
+  'Cure Serious Wounds':
+    'Alchemist3,Inquisitor3,O3,Restoration3,Resurrection3,Witch4',
   'Curse Water':'Inquisitor1,O1,Witch1', // Witch Water
   'Dancing Lights':'Witch0',
   'Darkness':'Inquisitor2,O2,Witch2', // Witch Shadow
-  'Darkvision':'Deep2,Shadow2',
+  'Darkvision':'Alchemist2,Deep2,Shadow2',
   'Daylight':'Day3,Heavens3,Inquisitor3,Light3,O3',
   'Daze':'Inquisitor0,Witch0',
   'Daze Monster':'Witch2',
   'Death Knell':'Inquisitor2,Murder2,O2,Witch2',
-  'Death Ward':'Inquisitor4,Murder4,O4,Souls4,Witch4',
+  'Death Ward':'Alchemist4,Inquisitor4,Murder4,O4,Souls4,Witch4',
   'Deathwatch':'Ancestors1,O1,Souls1',
   'Deep Slumber':'Dreamspun3,Witch3',
   'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3,Shadow3,Witch3',// Witch Shadow
-  'Delay Poison':'Inquisitor2,O2,Serpentine2,Witch2',
+  'Delay Poison':'Alchemist2,Inquisitor2,O2,Serpentine2,Witch2',
   'Demand':'Leadership8,Lust8,Martyr8,Witch8',
   'Desecrate':'Inquisitor2,O2',
   'Destruction':'Ancestors7,Murder7,O7,Souls7,Undeath7,Witch8',
@@ -6651,17 +6737,17 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Detect Law':'Inquisitor1,O1',
   'Detect Magic':'Inquisitor0,O0,Witch0',
   'Detect Poison':'Inquisitor0,O0,Witch0',
-  'Detect Secret Doors':'Witch1',
+  'Detect Secret Doors':'Alchemist1,Witch1',
   'Detect Scrying':'Inquisitor4,Witch4',
-  'Detect Thoughts':'Inquisitor2,Thought2,Witch2',
-  'Detect Undead':'Inquisitor1,Life1,O1,Witch1', // Witch Plague
+  'Detect Thoughts':'Alchemist2,Inquisitor2,Thought2,Witch2',
+  'Detect Undead':'Alchemist1,Inquisitor1,Life1,O1,Witch1', // Witch Plague
   'Dictum':'"Archon Law7","Devil Law7",Inevitable7,Inquisitor6,O7',
   'Dimension Door':'Trade4,Witch4',
   'Dimensional Anchor':'Inquisitor3,O4,Wards4',
   'Dimensional Lock':'O8',
-  'Discern Lies':'Inquisitor4,Leadership4,Martyr4,O4,Witch4',
+  'Discern Lies':'Alchemist4,Inquisitor4,Leadership4,Martyr4,O4,Witch4',
   'Discern Location':'O8,Witch8',
-  'Disguise Self':'Deception1,Inquisitor1,Thievery1',
+  'Disguise Self':'Alchemist1,Deception1,Inquisitor1,Thievery1',
   'Disintegrate':'Ash7,Protean6,Rage7',
   'Dismissal':'Inquisitor4,O4',
   'Dispel Chaos':'"Archon Law5","Devil Law5",Inquisitor5,O5',
@@ -6669,7 +6755,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dispel Good':'Daemon5,"Demon Evil5","Devil Evil5",Inquisitor5,O5',
   'Dispel Law':'"Azata Chaos5","Demon Chaos5",Inquisitor5,Proteus5,O5',
   'Dispel Magic':'Arcana3,Divine3,Inquisitor3,O3,Witch3',
-  'Displacement':'Proteus3',
+  'Displacement':'Alchemist3,Proteus3',
   'Disrupt Undead':'Inquisitor0',
   'Disrupting Weapon':'Inquisitor5,O5',
   'Divination':'Dreamspun4,Inquisitor4,Memory4,O4,Thought4,Witch4',
@@ -6680,28 +6766,31 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dominate Monster':'Love9,Lust9,Serpentine9,Witch9',
   'Dominate Person':'Witch5',
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
-  'Dream':'Dreamspun5,Witch5', // Witch Wisdom
-  "Eagle's Splendor":'O2',
+  'Dream':'Alchemist5,Dreamspun5,Witch5', // Witch Wisdom
+  "Eagle's Splendor":'Alchemist2,O2',
   'Earthquake':'Battle8,Catastrophe8,Caves8,Deep8,O8,Rage8',
-  'Elemental Body III':'Witch6', // Witch Water
+  'Elemental Body I':'Alchemist4',
+  'Elemental Body II':'Alchemist5',
+  'Elemental Body III':'Alchemist6,Witch6', // Witch Water
   'Elemental Body IV':
     'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7,Witch7', // Witch Water
   'Elemental Swarm':'Caves9,Metal9,Smoke9,Witch9',
-  'Endure Elements':'Day1,O1,Witch1', // Witch Endurance
+  'Endure Elements':'Alchemist1,Day1,O1,Witch1', // Witch Endurance
   'Energy Drain':'Loss9,O9,Undeath9,Witch9', // Witch Plague
   'Enervation':'Loss5,Undeath4,Witch4',
-  'Enlarge Person':'Boreal1,Battle1,Ferocity1,Growth1,Witch1',
+  'Enlarge Person':'Alchemist1,Boreal1,Battle1,Ferocity1,Growth1,Witch1',
   'Entangle':'Decay1,Verdant1',
   'Enthrall':'Inquisitor2,Leadership2,Love2,O2,Revolution2,Witch2',
   'Entropic Shield':'Protean1,O1',
   'Ethereal Jaunt':'O7,Thievery7,Witch7',
   'Etherealness':'O9',
-  'Expeditious Retreat':'"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
+  'Expeditious Retreat':
+    'Alchemist1,"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
   'Explosive Runes':'Language4',
-  'Eyebite':'Curse6,Witch6',
+  'Eyebite':'Alchemist6,Curse6,Witch6',
   'Fabricate':'Construct5',
   'Faerie Fire':'Light1',
-  'False Life':'Bones2,Witch2',
+  'False Life':'Alchemist2,Bones2,Witch2',
   'False Vision':'Deception5,Thievery5',
   'Fear':'Bones4,Inquisitor4,Witch4',
   'Feather Fall':'Feather2',
@@ -6709,30 +6798,32 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Find The Path':'Exploration6,Inquisitor6,O6,Thought6,Trade6,Witch6',
   'Find Traps':'Inquisitor2,O2,Witch2',
   'Fire Seeds':'Ash6,Day6,Flame6,Light6,Smoke6',
-  'Fire Shield':'Ash5,Day4,Light4,Smoke5',
+  'Fire Shield':'Alchemist4,Ash5,Day4,Light4,Smoke5',
   'Fire Storm':'Flame7,O8,Witch8', // Witch Elements
   'Fireball':'Ash3,Flame3,Witch3', // Witch Elements
   'Flame Strike':'Day5,Inquisitor5,Light5,O5,Witch5', // Witch Elements
   'Flaming Sphere':'Witch2', // Witch Elements
   'Floating Disk':'Trade1',
   'Flesh To Stone':'Witch6',
-  'Fly':'"Azata Chaos3","Azata Good3",Exploration3,Feather3,Trade3,Witch3',
+  'Fly':
+    'Alchemist3,"Azata Chaos3","Azata Good3",Exploration3,Feather3,Trade3,Witch3',
   'Fog Cloud':'Battle2,Ice2,Seasons2,Storms2,Witch2',
   'Forbiddance':'Inquisitor6,O6',
   'Foresight':'Memory9,Thought9,Witch9',
-  'Form Of The Dragon I':'Witch6', // Witch Transformation
+  'Form Of The Dragon I':'Alchemist6,Witch6', // Witch Transformation
   'Form Of The Dragon II':'Witch7', // Witch Transformation
   'Form Of The Dragon III':'Witch8', // Witch Transformation
+  "Fox's Cunning":'Alchemist2',
   'Freedom':'Freedom9,Revolution9',
   'Freedom Of Movement':
-    'Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4,Witch4', // Witch Agility
+    'Alchemist4,Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4,Witch4', // Witch Agility
   'Freezing Sphere':'Ice7,Witch6', // Witch Elements
-  'Gaseous Form':'Cloud3,Protean3,Winds3',
+  'Gaseous Form':'Alchemist3,Cloud3,Protean3,Winds3',
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6,Witch6',
   'Gentle Repose':'Ancestors2,O2,Souls2,Witch2',
   'Ghoul Touch':'Undeath2',
-  'Giant Form I':'Boreal7,Witch7', // Witch Strength
+  'Giant Form I':'Alchemist6,Boreal7,Witch7', // Witch Strength
   'Giant Form II':'Witch8', // Witch Strength
   'Giant Vermin':'O4,Witch5', // Witch Plague
   'Glitterdust':'Starsoul2,Witch2',
@@ -6745,7 +6836,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Greater Dispel Magic':'Freedom6,Inquisitor6,O6,Witch6',
   'Greater Glyph Of Warding':'Inquisitor6,Language6,O6',
   'Greater Heroism':'Heroism6,Witch6',
-  'Greater Invisibility':'Inquisitor4',
+  'Greater Invisibility':'Alchemist4,Inquisitor4',
   'Greater Magic Weapon':'Inquisitor3,O4,Witch3', // Witch Strength
   'Greater Planar Ally':'O8,Tactics8',
   'Greater Polymorph':'Protean7',
@@ -6763,12 +6854,12 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Hallucinatory Terrain':'Witch4', // Witch Trickery
   'Halt Undead':'Inquisitor3',
   'Harm':'Catastrophe6,Decay6,Inquisitor6,O6,Witch7',
-  'Haste':'Witch3', // Witch Agility
-  'Heal':'Inquisitor6,Life6,O6,Restoration6,Resurrection6,Witch7',
+  'Haste':'Alchemist3,Witch3', // Witch Agility
+  'Heal':'Alchemist6,Inquisitor6,Life6,O6,Restoration6,Resurrection6,Witch7',
   'Heat Metal':'Light2,Metal2',
   'Helping Hand':'O3',
   "Heroes' Feast":'Family6,Home6,Inquisitor6,O6,Resolve6',
-  'Heroism':'Heroism3,Inquisitor3,Love4,Witch3',
+  'Heroism':'Alchemist3,Heroism3,Inquisitor3,Love4,Witch3',
   'Hide From Undead':'Inquisitor1,O1',
   'Hold Animal':'Fur2',
   'Hold Monster':'Inquisitor4,Serpentine5,Witch5',
@@ -6781,7 +6872,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Hypnotic Pattern':'Heavens2',
   'Hypnotism':'Serpentine1,Witch1',
   'Ice Storm':'Ice5,Oceans5,Seasons5,Witch4',
-  'Identify':'Divine1,Lore1,Witch1',
+  'Identify':'Alchemist1,Divine1,Lore1,Witch1',
   'Imbue With Spell Ability':'Divine4,Family4,Home4,O4',
   'Implosion':'Catastrophe9,O9,Rage9',
   'Incendiary Cloud':'Ash8,Flame8,Smoke8',
@@ -6792,11 +6883,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Insanity':'Insanity7,Love7,Lust7,Nightmare7,Witch7',
   'Insect Plague':'O5',
   'Instant Summons':'Language7,Wards7,Witch7',
-  'Invisibility':'Inquisitor2,Thievery2,Witch2', // Witch Deception
+  'Invisibility':'Alchemist2,Inquisitor2,Thievery2,Witch2', // Witch Deception
   'Invisibility Purge':'Inquisitor3,O3',
   'Iron Body':'Metal8,Witch8', // Witch Endurance
   'Irresistible Dance':'Serpentine8,Witch8',
-  'Jump':'Witch1', // Witch Agility, Transformation
+  'Jump':'Alchemist1,Witch1', // Witch Agility, Transformation
   'Keen Edge':'Inquisitor3,Murder3',
   'Knock':'Inquisitor2',
   'Legend Lore':'Inquisitor6,Lore4,Memory7,Thought7,Witch6',
@@ -6805,8 +6896,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Lesser Globe Of Invulnerability':'Witch4', // Witch Wisdom
   'Lesser Planar Ally':'O4',
   'Lesser Planar Binding':'Wards5',
-  'Lesser Restoration':'Inquisitor2,Life2,O2',
-  'Levitate':'Witch2',
+  'Lesser Restoration':'Alchemist2,Inquisitor2,Life2,O2',
+  'Levitate':'Alchemist2,Witch2',
   'Light':'Inquisitor0,O0,Witch0',
   'Lightning Bolt':'Stormborn3,Witch3',
   'Limited Wish':'Construct7',
@@ -6820,7 +6911,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Magic Circle Against Good':'Inquisitor3,O3',
   'Magic Circle Against Law':'Inquisitor3,O3',
   'Magic Fang':'Fur1',
-  'Magic Jar':'Witch5',
+  'Magic Jar':'Alchemist5,Witch5',
   'Magic Mouth':'Arcana2',
   'Magic Stone':'Caves1,Metal1,O1,Stone1',
   'Magic Vestment':
@@ -6861,18 +6952,18 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9,Witch9', // Witch Endurance
   'Mirage Arcana':'Witch5', // Witch Trickery
   'Mirror Image':'Deception2,Witch2', // Witch Trickery
-  'Mislead':'Deception6,Fate6,Thievery6,Witch6', // Witch Trickery
+  'Mislead':'Alchemist6,Deception6,Fate6,Thievery6,Witch6', // Witch Trickery
   'Modify Memory':'Loss6,Memory6',
   'Moment Of Prescience':'Curse8,Dreamspun8,Fate8,Lore8,Memory8,Witch8',
   'Mount':'Witch1',
-  'Neutralize Poison':'Inquisitor4,Life3,O4,Restoration4,Witch4',
-  'Nightmare':'Insanity5,Night6,Nightmare5',
-  'Nondetection':'Deception3,Inquisitor3',
+  'Neutralize Poison':'Alchemist4,Inquisitor4,Life3,O4,Restoration4,Witch4',
+  'Nightmare':'Alchemist5,Insanity5,Night6,Nightmare5',
+  'Nondetection':'Alchemist3,Deception3,Inquisitor3',
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1,Witch1',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
-  'Overland Flight':'Heavens5,Starsoul5,Stormborn5,Trade5,Witch5',
-  "Owl's Wisdom":'O2,Witch2', // Witch Wisdom
+  'Overland Flight':'Alchemist5,Heavens5,Starsoul5,Stormborn5,Trade5,Witch5',
+  "Owl's Wisdom":'Alchemist2,O2,Witch2', // Witch Wisdom
   'Passwall':'Witch5', // Witch Deception
   'Phantasmal Killer':'Nightmare4,Witch4',
   'Phase Door':'Exploration8,Trade8,Witch7',
@@ -6880,10 +6971,12 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Planar Binding':'Daemon6,"Demon Chaos6","Demon Evil6","Devil Evil6","Devil Law6",Inevitable6,Proteus6',
   'Plane Shift':'Freedom5,O5,Witch7',
   'Plant Growth':'Growth3',
+  'Plant Shape I':'Alchemist5',
+  'Plant Shape I':'Alchemist6',
   'Plant Shape III':'Verdant7',
   'Poison':'Decay4,O4,Serpentine4,Witch4',
   'Polar Ray':'Boreal8,Ice9',
-  'Polymorph':'Witch5', // Witch Agility
+  'Polymorph':'Alchemist5,Witch5', // Witch Agility
   'Polymorph Any Object':'Construct8,Protean8',
   'Power Word Blind':'Loss7,Night7,Shadow7,Tactics7,Witch7',
   'Power Word Kill':'Blood9,Tactics9,Witch9',
@@ -6894,8 +6987,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Produce Flame':'Ash2',
   'Programmed Image':'Witch6', // Witch Deception
   'Project Image':'Deception7',
+  'Protection From Arrows':'Alchemist2',
   'Protection From Chaos':'Inevitable1,Inquisitor1,O1,Purity1',
-  'Protection From Energy':'Defense3,Inquisitor3,O3,Witch3', // Witch Endurance
+  'Protection From Energy':
+    'Alchemist3,Defense3,Inquisitor3,O3,Witch3', // Witch Endurance
   'Protection From Evil':'Inquisitor1,O1,Purity1',
   'Protection From Good':'Inquisitor1,O1,Purity1',
   'Protection From Law':'Inquisitor1,O1,Purity1',
@@ -6904,28 +6999,28 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Purify Food And Drink':'O0',
   'Pyrotechnics':'Smoke2',
   'Rage':
-    'Boreal2,"Demon Chaos3","Demon Evil3",Ferocity3,Insanity3,Nightmare3,Rage3,Witch3',
+    'Alchemist3,Boreal2,"Demon Chaos3","Demon Evil3",Ferocity3,Insanity3,Nightmare3,Rage3,Witch3',
   'Rainbow Pattern':'Heavens4',
   'Raise Dead':'Resurrection5,O5,Witch6',
   'Ray Of Enfeeblement':'Shadow1,Witch1',
   'Ray Of Exhaustion':'Witch3',
   'Read Magic':'Inquisitor0,O0,Witch0',
-  'Reduce Person':'Witch1',
+  'Reduce Person':'Alchemist1,Witch1',
   'Refuge':'Family7,Freedom7,O7,Revolution7,Witch9',
   'Regenerate':'O7,Restoration7,Witch7',
   'Reincarnate':'Witch5',
-  'Remove Blindness/Deafness':'O3,Purity3,Witch3',
-  'Remove Curse':'Freedom3,Inquisitor3,O3,Revolution3,Witch3',
-  'Remove Disease':'Inquisitor3,O3,Restoration2,Witch3',
+  'Remove Blindness/Deafness':'Alchemist3,O3,Purity3,Witch3',
+  'Remove Curse':'Alchemist3,Freedom3,Inquisitor3,O3,Revolution3,Witch3',
+  'Remove Disease':'Alchemist3,Inquisitor3,O3,Restoration2,Witch3',
   'Remove Fear':'Inquisitor1,O1,Revolution1',
   'Remove Paralysis':'Freedom2,Inquisitor2,O2',
   'Repel Metal Or Stone':'Deep7,Stone8',
   'Repel Vermin':'O4',
   'Repel Wood':'Growth6',
   'Repulsion':'Inquisitor6,Leadership7,Martyr7,O7,Purity7,Starsoul6',
-  'Resist Energy':'Flame2,Inquisitor2,O2',
+  'Resist Energy':'Alchemist2,Flame2,Inquisitor2,O2',
   'Resistance':'Inquisitor0,O0,Witch0',
-  'Restoration':'Inquisitor4,Life4,O4',
+  'Restoration':'Alchemist4,Inquisitor4,Life4,O4',
   'Resurrection':'Divine7,O7,Resurrection7,Witch8',
   'Reverse Gravity':'Starsoul7,Witch7', // Witch Trickery
   'Righteous Might':
@@ -6939,18 +7034,18 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Secret Chest':'Witch5',
   'Secret Page':'Wards2',
   'Secure Shelter':'Witch4',
-  'See Invisibility':'Inquisitor2,Witch2',
-  'Sending':'Inquisitor4,O4',
+  'See Invisibility':'Alchemist2,Inquisitor2,Witch2',
+  'Sending':'Alchemist5,Inquisitor4,O4',
   'Sepia Snake Sigil':'Witch3',
   'Shades':'Night9,Shadow9,Witch9', // Witch Shadow
   'Shadow Conjuration':'Loss4,Night4,Shadow4,Witch4', // Witch Shadow
   'Shadow Evocation':'Shadow5,Witch5', // Witch Shadow
-  'Shadow Walk':'Dreamspun6,Shadow6,Witch6', // Witch Shadow
+  'Shadow Walk':'Alchemist6,Dreamspun6,Shadow6,Witch6', // Witch Shadow
   'Shambler':'Decay9,Growth9,Verdant9',
   'Shapechange':
     'Feather9,Fur9,Protean9,Witch9', // Witch Agility, Strength, Transformation
   'Shatter':'O2',
-  'Shield':'Defense1',
+  'Shield':'Alchemist1,Defense1',
   'Shield Of Faith':
     'Agathion1,Heroism1,Honor1,Inquisitor1,O1,Witch1', // Witch Wisdom
   'Shield Of Law':'"Archon Law8","Devil Law8",Inevitable8,O8',
@@ -6970,19 +7065,21 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Speak With Plants':'Nature3,Verdant3',
   'Spectral Hand':'Witch2',
   'Spell Immunity':
-    'Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4,Witch4', // Witch Endurance
-  'Spell Resistance':'Arcana5,Defense5,Inquisitor5,O5,Witch5',// Witch Endurance
+    'Alchemist4,Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4,Witch4', // Witch Endurance
+  'Spell Resistance':
+    'Alchemist5,Arcana5,Defense5,Inquisitor5,O5,Witch5',// Witch Endurance
   'Spell Turning':'Arcana7,Curse7,Fate7,Witch7', // Witch Wisdom
   'Spike Stones':'Caves4,Deep5,Metal4',
+  'Spider Climb':'Alchemist2',
   'Spiritual Weapon':'Blood2,Inquisitor2,O2',
   'Stabilize':'Inquisitor0,O0,Witch0',
-  'Statue':'Stone7,Toil8',
+  'Statue':'Alchemist6,Stone7,Toil8',
   'Status':'O2,Witch2',
   'Stinking Cloud':'Smoke3,Witch3',
   'Stone Shape':'Construct3,Metal3,O3,Toil3',
   'Stone Tell':'Deep6,Nature6,Stone6',
   'Stone To Flesh':'Witch6',
-  'Stoneskin':'Deep4,Inquisitor4,Stone5',
+  'Stoneskin':'Alchemist4,Deep4,Inquisitor4,Stone5',
   'Storm Of Vengeance':
     'Battle9,Cloud9,Leadership9,Martyr9,O9,Seasons9,Stormborn9,Storms9,Witch9',
   'Suggestion':'"Devil Evil3","Devil Law3",Love3,Lust3,Witch3',
@@ -7014,17 +7111,17 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Teleport Object':'Witch7',
   'Teleportation Circle':'Language9,Wards9,Witch9',
   'Time Stop':'Deception9,Lore9,Thievery9,Witch9', // Witch Deception, Trickery
-  'Tongues':'Agathion3,Inquisitor2,Language3,Lore2,O4,Witch3',
+  'Tongues':'Alchemist3,Agathion3,Inquisitor2,Language3,Lore2,O4,Witch3',
   'Touch Of Fatigue':'Witch0',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2,Witch2',
-  'Transformation':'Boreal6,Witch6',
+  'Transformation':'Alchemist6,Boreal6,Witch6',
   'Transport Via Plants':'Verdant6',
   'Trap The Soul':'Souls9,Witch8',
   'True Resurrection':'Life9,O9,Resurrection9',
-  'True Seeing':'Inquisitor5,Memory5,O5,Witch6',
-  'True Strike':'Catastrophe1,Fate1,Inquisitor1,Rage1',
+  'True Seeing':'Alchemist6,Inquisitor5,Memory5,O5,Witch6',
+  'True Strike':'Alchemist1,Catastrophe1,Fate1,Inquisitor1,Rage1',
   'Undeath To Death':'Inquisitor6,O6',
-  'Undetectable Alignment':'Inquisitor2,O2',
+  'Undetectable Alignment':'Alchemist2,Inquisitor2,O2',
   'Unhallow':'Inquisitor5,O5',
   'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8",O8',
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
@@ -7039,7 +7136,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Wall Of Iron':'Metal6',
   'Wall Of Stone':'Caves5,Metal5,O5,Stone4',
   'Wall Of Thorns':'Blood5,Decay5,Verdant5',
-  'Water Breathing':'Ice3,O3,Waves3,Witch3', // Witch Water
+  'Water Breathing':'Alchemist3,Ice3,O3,Waves3,Witch3', // Witch Water
   'Water Walk':'O3,Oceans3,Witch3',
   'Waves Of Exhaustion':'Ancestors8,Souls8,Toil7,Witch7',
   'Waves Of Fatigue':'Toil5,Witch5',
@@ -7047,7 +7144,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Weird':'Insanity9,Nightmare9',
   'Whirlwind':'Cloud8,Storms8,Stormborn8,Wind8,Winds8',
   'Whispering Wind':'Inquisitor2,Winds1',
-  'Wind Walk':'O6,Winds6',
+  'Wind Walk':'Alchemist6,O6,Winds6',
   'Wind Wall':'Cloud2,O3,Winds2',
   'Wood Shape':'Construct2,Toil2',
   'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Proteus7',
@@ -7116,12 +7213,12 @@ PFAPG.CLASSES = {
     'CasterLevelArcane=levels.Alchemist ' +
     'SpellAbility=intelligence ' +
     'SpellSlots=' +
-      'Extract1:1=1;2=2;3=3;5=4;9=5,' +
-      'Extract2:4=1;5=2;6=3;8=4;12=5,' +
-      'Extract3:7=1;8=2;9=3;11=4;15=5,' +
-      'Extract4:10=1;11=2;12=3;14=4;18=5,' +
-      'Extract5:13=1;14=2;15=3;17=4;19=5,' +
-      'Extract6:16=1;17=2;18=3;19=4;20=5 ' +
+      'Alchemist1:1=1;2=2;3=3;5=4;9=5,' +
+      'Alchemist2:4=1;5=2;6=3;8=4;12=5,' +
+      'Alchemist3:7=1;8=2;9=3;11=4;15=5,' +
+      'Alchemist4:10=1;11=2;12=3;14=4;18=5,' +
+      'Alchemist5:13=1;14=2;15=3;17=4;19=5,' +
+      'Alchemist6:16=1;17=2;18=3;19=4;20=5 ' +
     'Skills=' +
       'Appraise,Craft,"Disable Device",Fly,Heal,"Knowledge (Arcana)",' +
       '"Knowledge (Nature)",Perception,Profession,"Sleight Of Hand",' +
@@ -7730,7 +7827,7 @@ PFAPG.PRESTIGE_CLASSES = {
       '"features.Terrain Mastery (Desert) ? ' +
         '3:Terrain Dominance (Desert):Terrain Dominance",' +
       '"features.Terrain Mastery (Ethereal Plane) ? ' +
-        '3:Terrain Dominance (Ethereal Plane):Terrain Dominance",' +
+        '7:Terrain Dominance (Ethereal Plane):Terrain Dominance",' +
       '"features.Terrain Mastery (Forest) ? ' +
         '3:Terrain Dominance (Forest):Terrain Dominance",' +
       '"features.Terrain Mastery (Jungle) ? ' +
@@ -7742,13 +7839,13 @@ PFAPG.PRESTIGE_CLASSES = {
       '"features.Terrain Mastery (Plane Of Air) ? ' +
         '3:Terrain Dominance (Plane Of Air):Terrain Dominance",' +
       '"features.Terrain Mastery (Plane Of Earth) ? ' +
-        '3:Terrain Dominance (Plane Of Earth):Terrain Dominance",' +
+        '5:Terrain Dominance (Plane Of Earth):Terrain Dominance",' +
       '"features.Terrain Mastery (Plane Of Fire) ? ' +
         '3:Terrain Dominance (Plane Of Fire):Terrain Dominance",' +
       '"features.Terrain Mastery (Plane Of Water) ? ' +
         '3:Terrain Dominance (Plane Of Water):Terrain Dominance",' +
       '"features.Terrain Mastery (Swamp) ? ' +
-        '3:Terrain Dominance (Swamp):Terrain Dominance",' +
+        '5:Terrain Dominance (Swamp):Terrain Dominance",' +
       '"features.Terrain Mastery (Underground) ? ' +
         '3:Terrain Dominance (Underground):Terrain Dominance",' +
       '"features.Terrain Mastery (Urban) ? ' +
@@ -7782,15 +7879,31 @@ PFAPG.PRESTIGE_CLASSES = {
       '"2:Terrain Mastery (Water):Terrain Mastery"',
   'Master Chymist':
     'Require=' +
-      '"spellSlots.Extract3 >= 1",' +
-      'features.Mutagen,"features.Feral Mutagen||features.Infuse Mutagen" ' +
+      '"spellSlots.Alchemist3 >= 1",' +
+      'features.Mutagen,"features.Feral Mutagen || features.Infuse Mutagen" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Skills=' +
       'Acrobatics,Climb,"Escape Artist",Intimidate,' +
       '"Knowledge (Dungeoneering)","Sense Motive",Stealth,Swim ' +
     'Features=' +
       '1:Bomb-Thrower,"1:Mutagenic Form",1:Mutate,"2:Advanced Mutagen",' +
-      '"2:Caster Level Bonus",3:Brutality',
+      '"2:Caster Level Bonus",3:Brutality ' +
+    'Selectables=' +
+      '"2:Burly:Advanced Mutagen",' +
+      '"2:Disguise:Advanced Mutagen",' +
+      '"2:Draconic Mutagen:Advanced Mutagen",' +
+      '"2:Dual Mind:Advanced Mutagen",' +
+      '"2:Evasion:Advanced Mutagen",' +
+      '"2:Extended Mutagen:Advanced Mutagen",' +
+      '"2:Feral Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 11 ? 2:Furious Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16 ? 2:Grand Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 12 ? 2:Greater Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16 ? 2:Growth Mutagen:Advanced Mutagen",' +
+      '"2:Night Vision (Master Chymist):Advanced Mutagen",' +
+      '"2:Nimble:Advanced Mutagen",' +
+      '"2:Restoring Change:Advanced Mutagen",' +
+      '"2:Scent (Master Chymist):Advanced Mutagen"',
   'Master Spy':
     'Require=' +
       'features.Deceitful,"features.Iron Will",' +
@@ -7906,6 +8019,10 @@ PFAPG.aideRules = function(rules, companions, familiars) {
 PFAPG.combatRules = function(rules, armors, shields, weapons) {
   Pathfinder.combatRules(rules, armors, shields, weapons);
   // No changes needed to the rules defined by Pathfinder method
+  rules.defineChoice('notes',
+    'damageReduction.Adamantine:%V/%N',
+    'damageReduction.Piercing:%V/%N'
+  );
 };
 
 /* Defines rules related to basic character identity. */
@@ -8051,6 +8168,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'intelligenceModifier', '+', null
     );
     rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
+    rules.defineRule('effectiveAlchemistLevel',
+      'levels.Alchemist', '=', null,
+      'levels.Master Chymist', '+', null
+    );
     rules.defineRule('featureNotes.discovery',
       classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
     );
@@ -10038,9 +10159,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('combatNotes.snakeskin', classLevel, '=', 'Math.floor((source-5) / 4)');
     rules.defineRule
-      ('damageReduction.adamantine', 'combatNotes.strengthOfStone', '+=', '10');
+      ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
     rules.defineRule
-      ('damageReduction.piercing', 'saveNotes.deepOne', '+=', '10');
+      ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
     rules.defineRule('featureNotes.aquaticAdaptation(Sorcerer)',
       classLevel, '?', 'source>=9'
     );
@@ -10296,8 +10417,19 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
     );
   } else if(name == 'Horizon Walker') {
-    rules.defineRule('damageReduction.Adamantime',
-      'combatNotes.planeOfEarthMastery', '=', '1'
+    rules.defineRule('abilityNotes.armorSpeedAdjustment',
+      'abilityNotes.terrainMastery(Plains).1', '^', 'source <= 2 ? 0 : null'
+    );
+    rules.defineRule('abilityNotes.terrainMastery(Plains).1',
+      'features.Terrain Mastery (Plains)', '?', null,
+      'armorWeight', '=', null
+    );
+    rules.defineRule('combatNotes.favoredTerrain',
+      classLevel, '+=', 'source - Math.floor(source / 3)'
+    );
+    rules.defineRule('damageReduction.Adamantine',
+      'combatNotes.terrainMastery(PlaneOfEarth)', '=', '1',
+      'combatNotes.terrainDominance(Mountain)', '=', '2'
     );
     rules.defineRule('featureNotes.terrainDominance',
       classLevel, '=', 'Math.floor(source / 3)'
@@ -10314,6 +10446,44 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Horizon Walker (Terrain Mastery)',
       'featureNotes.terrainMastery', '=', null
     );
+    rules.defineRule('skillNotes.favoredTerrain',
+      classLevel, '+=', 'source - Math.floor(source / 3)'
+    );
+  } else if(name == 'Master Chymist') {
+    rules.defineRule
+      ('abilityNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('combatNotes.bomb',
+      classLevel, '+', null,
+      'combatNotes.bomb-Thrower', '+', '0'
+    );
+    rules.defineRule
+      ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3)');
+    rules.defineRule
+      ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('featureNotes.advancedMutagen',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('features.Darkvision',
+      'featureNotes.nightVision(MasterChymist)', '=', '1'
+    );
+    rules.defineRule('features.Low-Light Vision',
+      'featureNotes.nightVision(MasterChymist)', '=', '1'
+    );
+    rules.defineRule
+      ('features.Scent', 'featureNotes.scent(MasterChymist)', '=', '1');
+    rules.defineRule('knowsGrowthExtract',
+      'spells.Enlarge Person(Alchemist1 Tran)', '=', '1',
+      'spells.Giant Form I(Alchemist6 Tran)', '=', '1',
+      'spells.Polymorph(Alchemist5 Tran)', '=', '1'
+    );
+    rules.defineRule('magicNotes.casterLevelBonus',
+      classLevel, '+=', 'source - 1 - Math.floor(source / 4)'
+    );
+    rules.defineRule('selectableFeatureCount.Master Chymist (Advanced Mutagen)',
+      'featureNotes.advancedMutagen', '=', null
+    );
+    rules.defineRule
+      ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
   }
 };
 
