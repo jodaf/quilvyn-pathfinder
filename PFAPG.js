@@ -3839,6 +3839,43 @@ PFAPG.FEATURES = {
   'Scent (Master Chymist)':
     'Section=feature Note="Has Scent feature in mutagenic form"',
 
+  // Master Spy
+  'Art Of Deception':
+    'Section=skill Note="+%V Bluff/+%V Disguise/+%V Sense Motive"',
+  'Assumption':
+    'Section=magic ' +
+    'Note="May take aura of touched helpless creature, redirecting detection spells to self"',
+  'Concealed Thoughts':
+    'Section=save ' +
+    'Note="May control effect of spells that detect surface thoughts when cast on self"',
+  // Death Attack as Pathfinder.js
+  'Elude Detection':'Section=save Note="May gain SR %V (divination) at will"',
+  'Fool Casting':
+    'Section=save ' +
+    'Note="Successful save vs. control spell allows partial effects, dismissable at well"',
+  'Glib Lie':
+    'Section=save ' +
+    'Note="Truth-detecting magic requires DC %V caster level check to be effective"',
+  'Hidden Mind':'Section=save Note="Immune to divination and mental effects"',
+  'Mask Alignment':
+    'Section=save ' +
+    'Note="May cause alignment detection spells directed at self to report choice of alignment"',
+  'Master Of Disguise (Master Spy)':
+    'Section=skill ' +
+    'Note="May create disguise in half time; reduces disguise penalties by 1"',
+  'Nonmagical Aura':
+    'Section=magic Note="May use <i>Magic Aura</i> effects to mask aura 2/dy"',
+  'Quick Change (Master Spy)':
+    'Section=skill ' +
+    'Note="May suffer %V penalty on Disguise to assume disguise in 2d4 rd"',
+  'Shift Alignment':
+    'Section=save ' +
+    'Note="May modify alignment to change alignment-specific effects of magic directed at self"',
+  // Slippery Mind as Pathfinder.js
+  'Superficial Knowledge':
+    'Section=skill ' +
+    'Note="May make +%V untrained Knowledge checks related to cover identity"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -7031,7 +7068,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Plane Shift':'Freedom5,O5,Witch7',
   'Plant Growth':'Growth3',
   'Plant Shape I':'Alchemist5',
-  'Plant Shape I':'Alchemist6',
+  'Plant Shape II':'Alchemist6',
   'Plant Shape III':'Verdant7',
   'Poison':'Decay4,O4,Serpentine4,Witch4',
   'Polar Ray':'Boreal8,Ice9',
@@ -7983,11 +8020,12 @@ PFAPG.PRESTIGE_CLASSES = {
       'Linguistics,Perception,"Sense Motive","Sleight Of Hand",Stealth,' +
       '"Use Magic Device" ' +
     'Features=' +
-      '"1:Art Of Deception","1:Master Of Disguise","1:Sneak Attack",' +
-      '"2:Glib Lie","2:Mask Alignment","3:Nonmagical Aura",' +
-      '"3:Superficial Knowledge","4:Concealed Thoughts","4:Quick Change",' +
-      '"5:Elude Detection","5:Slippery Mind","6:Shift Alignment",' +
-      '"8:Death Attack","8:Fool Casting","9:Hidden Mind",10:Assumption',
+      '"1:Art Of Deception","1:Master Of Disguise (Master Spy)",' +
+      '"1:Sneak Attack","2:Glib Lie","2:Mask Alignment","3:Nonmagical Aura",' +
+      '"3:Superficial Knowledge","4:Concealed Thoughts",' +
+      '"4:Quick Change (Master Spy)","5:Elude Detection","5:Slippery Mind",' +
+      '"6:Shift Alignment","8:Death Attack","8:Fool Casting","9:Hidden Mind",' +
+      '10:Assumption',
   'Nature Warden':
     'Require=' +
       '"baseAttack >= 4",' +
@@ -10572,6 +10610,20 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('skillNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+  } else if(name == 'Master Spy') {
+    rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
+    rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
+    rules.defineRule('saveNotes.glibLie', classLevel, '=', 'source + 15');
+    rules.defineRule('saveNotes.eludeDetection', classLevel, '=', 'source+15');
+    rules.defineRule('skillNotes.artOfDeception', classLevel, '=', null);
+    rules.defineRule ('skillNotes.quickChange(MasterSpy)',
+      classLevel, '=', 'source>=8 ? -5 : -10'
+    );
+    rules.defineRule('skillNotes.superficialKnowledge',
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('sneakAttack', classLevel, '+=', 'Math.floor((source + 2) / 3)');
   }
 };
 
@@ -11291,7 +11343,6 @@ PFAPG.ruleNotes = function() {
     '    class skills for the Cave Druid archetype.\n' +
     '  </li>\n' +
     '</ul>\n' +
-    '<h3>Copyrights and Licensing</h3>\n' +
     '<h3>Copyrights and Licensing</h3>\n' +
     '<p>\n' +
     'Pathfinder material is Open Game Content from the Pathfinder ' +
