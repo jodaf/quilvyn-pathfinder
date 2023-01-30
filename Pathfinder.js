@@ -5810,7 +5810,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Assassin') {
 
     rules.defineRule('combatNotes.deathAttack',
-      'levels.Assassin', '+=', '10 + source',
+      '', '=', '10',
+      'levels.Assassin', '+=', null,
       'intelligenceModifier', '+', null
     );
     rules.defineRule
