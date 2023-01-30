@@ -725,7 +725,7 @@ PFAPG.FEATURES = {
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+effectiveAlchemistLevel//2+intelligenceModifier} Ref half) splash %V/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) splash %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
     'Section=magic Note="Combining two effects into one extract uses +2 slot"',
@@ -797,7 +797,7 @@ PFAPG.FEATURES = {
     'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
   'Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{levels.Alchemist*10} min"',
+    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %V min"',
   'Persistent Mutagen':'Section=magic Note="Mutagen effects last %{levels.Alchemist} hr"',
   "Philosopher's Stone":
     'Section=magic ' +
@@ -3742,7 +3742,7 @@ PFAPG.FEATURES = {
   'Bomb-Thrower':'Section=combat Note="Increased Bomb effects"',
   'Brutality':
     'Section=combat ' +
-    'Note="%V damage w/simple weapons and natural attacks in mutagenic form"',
+    'Note="+%V damage w/simple weapons and natural attacks in mutagenic form"',
   'Burly':
     'Section=ability,combat,skill ' +
     'Note=' +
@@ -3750,21 +3750,80 @@ PFAPG.FEATURES = {
       '"+%V CMB and CMD in mutagenic form",' +
       '"+%V Strength-linked skill checks in mutagenic form"',
   // Caster Level Bonus as Pathfinder.js
-  'Disguise':'Section=feature Note="FILL"',
-  'Draconic Mutagen':'Section=feature Note="FILL"',
-  'Dual Mind':'Section=feature Note="FILL"',
+  'Disguise':
+    'Section=save ' +
+    'Note="Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves"',
+  'Draconic (Black) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"60\' line inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to acid"',
+  'Draconic (Blue) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"60\' line inflicts 8d8 electricity (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to electricity"',
+  'Draconic (Brass) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"60\' line inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to fire"',
+  'Draconic (Bronze) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"60\' line inflicts 8d8 electricity (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to electricity"',
+  'Draconic (Copper) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"60\' line inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to acid"',
+  'Draconic (Gold) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"30\' cone inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to fire"',
+  'Draconic (Green) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"30\' cone inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to acid"',
+  'Draconic (Red) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"30\' cone inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to fire"',
+  'Draconic (Silver) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"30\' cone inflicts 8d8 cold (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to cold"',
+  'Draconic (White) Mutagen':
+    'Section=combat,save ' +
+    'Note=' +
+      '"30\' cone inflicts 8d8 cold (DC %V Ref half) 1/transformation",' +
+      '"Resistance 20 to cold"',
+  'Dual Mind':
+    'Section=save ' +
+    'Note="+2 Will/Gains additional save vs. enchantment after 1 rd; success forces form change"',
   'Evasion (Master Chymist)':
     'Section=save ' +
     'Note="Reflex save yields no damage instead of half in mutagenic form"',
-  'Extended Mutagen':'Section=feature Note="FILL"',
+  'Extended Mutagen':'Section=magic Note="Dbl mutagen duration"',
   // Feral Mutagen as Alchemist
-  'Furious Mutagen':'Section=feature Note="FILL"',
+  'Furious Mutagen':
+    'Section=combat ' +
+    'Note="Feral Mutagen bite and claw damage increases by 1 die step"',
   // Grand Mutagen as Alchemist
   // Greater Mutagen as Alchemist
   'Growth Mutagen':
-    'Section=feature Note="Increases one size category in mutagenic form"',
-  'Mutagenic Form':'Section=feature Note="FILL"',
-  'Mutate':'Section=feature Note="FILL"',
+    'Section=feature Note="Mutagenic form increases size category by 1 step"',
+  'Mutagenic Form':
+    'Section=feature ' +
+    'Note="Has alternate humanoid form w/own personality and alignment"',
+  'Mutate':
+    'Section=feature ' +
+    'Note="May assume mutagenic form %V/dy; failed Fort save or critical hit forces change (DC 25 Will neg)"',
   'Night Vision (Master Chymist)':
     'Section=feature ' +
     'Note="Has 60\' Darkvision and Low-Light Vision in mutagenic form"',
@@ -7891,9 +7950,18 @@ PFAPG.PRESTIGE_CLASSES = {
     'Selectables=' +
       '"2:Burly:Advanced Mutagen",' +
       '"2:Disguise:Advanced Mutagen",' +
-      '"2:Draconic Mutagen:Advanced Mutagen",' +
-      '"2:Dual Mind:Advanced Mutagen",' +
-      '"2:Evasion:Advanced Mutagen",' +
+      '"2:Draconic (Black) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Blue) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Green) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Red) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (White) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Brass) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Bronze) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Copper) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Gold) Mutagen:Advanced Mutagen",' +
+      '"2:Draconic (Silver) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 10 ? 2:Dual Mind:Advanced Mutagen",' +
+      '"2:Evasion (Master Chymist):Advanced Mutagen",' +
       '"2:Extended Mutagen:Advanced Mutagen",' +
       '"2:Feral Mutagen:Advanced Mutagen",' +
       '"effectiveAlchemistLevel >= 11 ? 2:Furious Mutagen:Advanced Mutagen",' +
@@ -8179,6 +8247,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Throw Anything',
       'featureNotes.throwAnything(Alchemist)', '=', '1'
     );
+    rules.defineRule('magicNotes.mutagen', classLevel, '=', 'source * 10');
     rules.defineRule('saveNotes.poisonResistance',
       classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
     );
@@ -8191,7 +8260,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
     Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
     rules.defineRule('bombDamageDice',
-      classLevel, '=', 'Math.floor((source + 1) / 2) + "d6"'
+      'effectiveAlchemistLevel', '=', 'Math.floor((source + 1) / 2) + "d6"'
     );
     rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
     rules.defineRule('weapons.Bomb', classLevel, '=', '1');
@@ -10451,17 +10520,32 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
   } else if(name == 'Master Chymist') {
     rules.defineRule
-      ('abilityNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('combatNotes.bomb',
-      classLevel, '+', null,
-      'combatNotes.bomb-Thrower', '+', '0'
-    );
+      ('abilityNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
-      ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3)');
+      ('abilityNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('bloodlineDraconicLevel',
+      'levels.Master Chymist', '+=', null
+    );
+    // Noop for italics
+    rules.defineRule('combatNotes.bomb', 'combatNotes.bomb-Thrower', '+', '0');
+    rules.defineRule
+      ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3) * 2');
+    rules.defineRule
+      ('combatNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
+    ['Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red',
+     'Silver', 'White'].forEach(c => {
+      rules.defineRule('combatNotes.draconic(' + c + ')Mutagen',
+        classLevel, '=', '10 + source',
+        'intelligenceModifier', '+', null
+      );
+    });
     rules.defineRule
       ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('featureNotes.advancedMutagen',
       classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('featureNotes.mutate',
+      classLevel, '=', 'source>=10 ? 5 : source>= 8 ? 4 : source>=5 ? 3 : 2'
     );
     rules.defineRule('features.Darkvision',
       'featureNotes.nightVision(MasterChymist)', '=', '1'
@@ -10479,9 +10563,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - Math.floor(source / 4)'
     );
+    rules.defineRule
+      ('magicNotes.mutagen', 'magicNotes.extendedMutagen', '*', '2');
     rules.defineRule('selectableFeatureCount.Master Chymist (Advanced Mutagen)',
       'featureNotes.advancedMutagen', '=', null
     );
+    rules.defineRule
+      ('skillNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
   }
