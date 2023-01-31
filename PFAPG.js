@@ -3894,7 +3894,7 @@ PFAPG.FEATURES = {
   // Favored Terrain as Pathfinder.js
   'Guarded Lands':
     'Section=feature ' +
-    'Note="May gain +2 Favored Terrain and +2 Favored Enemy bonuses in %{wisdomModifier>?1} 1 mile sq areas"',
+    'Note="May gain +2 Favored Terrain and +2 Favored Enemy bonuses in %{wisdomModifier>?1} chosen 1 mile sq areas"',
   'Ironpaw':
     'Section=companion,magic ' +
     'Note=' +
@@ -3917,10 +3917,10 @@ PFAPG.FEATURES = {
     'Section=feature Note="No penalty from improvised weapon and tool use%1"',
   'Wild Stride':
     'Section=feature ' +
-    'Note="Self and animal companion may move normally through hazards while in favored terrain"',
+    'Note="Self and animal companion may move normally through natural hazards while in favored terrain"',
   'Woodforging':
     'Section=magic ' +
-    'Note="May combine <i>Wood Shape<i/> and <i>Ironwood</i> effects 1/dy"',
+    'Note="May combine <i>Wood Shape</i> and <i>Ironwood</i> effects 1/dy"',
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
