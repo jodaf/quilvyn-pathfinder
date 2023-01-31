@@ -3922,6 +3922,23 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May combine <i>Wood Shape</i> and <i>Ironwood</i> effects 1/dy"',
 
+  // Rage Prophet
+  // Caster Level Bonus as Pathfinder.js
+  'Enduring Rage':
+    'Section=magic Note="May use spell slot to extend range spell level rd"',
+  // Greater Rage as Pathfinder.js
+  'Indomitable Caster':
+    'Section=magic Note="+%{constitutionModifier} concentration checks"',
+  'Rage Prophet Mystery':'Section=feature Note="FILL"',
+  'Ragecaster':'Section=feature Note="FILL"',
+  'Raging Healer':'Section=magic Note="May cast self Cure spells while raging"',
+  'Raging Spellstrength':
+    'Section=magic Note="May cast self personal spells while raging"',
+  'Savage Seer':'Section=combat Note="+%V Rage Power Level"',
+  'Spirit Guardian':'Section=feature Note="FILL"',
+  'Spirit Guide':'Section=feature Note="FILL"',
+  'Spirit Warrior':'Section=feature Note="FILL"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -7442,7 +7459,7 @@ PFAPG.CLASSES = {
       '"1:Lame:Curse","1:Tongues:Curse","1:Wasting:Curse",' +
       // Need to list Combat Healer here since it's available via two Mysteries
       '"7:Combat Healer:Battle Revelation,Life Revelation" ' +
-    'CasterLevelArcane=levels.Oracle ' +
+    'CasterLevelDivine=levels.Oracle ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
       'O0:1=4;2=5;4=6;6=7;8=8;10=9,' +
@@ -10719,6 +10736,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.naturalEmpathy', classLevel, '=', null);
     rules.defineRule('skillNotes.naturalEmpathy.1',
       classLevel, '=', 'source>=4 ? "/May use Wild Empathy w/magical beasts" + (source>=10 ? ", vermin, and plant creatures" : source>=7 ? " and vermin" : "") + " w/out penalty" : ""'
+    );
+  } else if(name == 'Rage Prophet') {
+    rules.defineRule('combatNotes.savageSeer', classLevel, '=', null);
+    rules.defineRule('magicNotes.casterLevelBonus',
+      classLevel, '+=', 'source - 1 - (source>=8 ? 2 : source>=5 ? 1 : 0)'
     );
   }
 };
