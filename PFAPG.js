@@ -3876,6 +3876,52 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May make +%V untrained Knowledge checks related to cover identity"',
 
+  // Nature Warden
+  'Animal Speech':
+    'Section=magic ' +
+    'Note="May use <i>Speak With Animals</i> effects at will in favored terrain, 1/dy elsewhere"',
+  // Caster Level Bonus as Pathfinder.js
+  'Companion Bond (Nature Warden)':
+    'Section=companion Note="Has Empathic Link feature%1"',
+  'Companion Soul':
+    'Section=companion,magic ' +
+    'Note=' +
+      '"Additional +4 Will vs. enchantment",' +
+      '"May use <i>Scry</i> effects on and restore life to animal companion"',
+  'Companion Walk':
+    'Section=companion ' +
+    'Note="May affect companion w/self travel and polymorph spells"',
+  // Favored Terrain as Pathfinder.js
+  'Guarded Lands':
+    'Section=feature ' +
+    'Note="May gain +2 Favored Terrain and +2 Favored Enemy bonuses in %{wisdomModifier>?1} 1 mile sq areas"',
+  'Ironpaw':
+    'Section=companion,magic ' +
+    'Note=' +
+      '"May give animal companion DR %V/cold iron/Natural weapons are considered cold iron for overcoming DR",' +
+      '"May give summoned creatures DR %V/cold iron/Natural weapons are considered cold iron for overcoming DR"',
+  'Mystic Harmony':
+    'Section=combat Note="Adds half favored terrain bonus to AC"',
+  'Natural Empathy':
+    'Section=skill ' +
+    'Note="+%V Wild Empathy checks/May use Wild Empathy to demoralize%1"',
+  'Plant Speech':
+    'Section=magic ' +
+    'Note="May use <i>Speak With Plants</i> effects at will in favored terrain, 1/dy elsewhere"',
+  'Silverclaw':
+    'Section=companion,magic ' +
+    'Note=' +
+      '"Animal companion gains DR %V/silver/Natural weapons are considered silver for overcoming DR",' +
+      '"Summoned creatures gain DR %V/silver/Natural weapons are considered silver for overcoming DR"',
+  'Survivalist (Nature Warden)':
+    'Section=feature Note="No penalty from improvised weapon and tool use%1"',
+  'Wild Stride':
+    'Section=feature ' +
+    'Note="Self and animal companion may move normally through hazards while in favored terrain"',
+  'Woodforging':
+    'Section=magic ' +
+    'Note="May combine <i>Wood Shape<i/> and <i>Ironwood</i> effects 1/dy"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -8032,16 +8078,19 @@ PFAPG.PRESTIGE_CLASSES = {
       '"features.Animal Companion","features.Favored Terrain",' +
       '"features.Wild Empathy",' +
       '"skills.Handle Animal >= 5","skills.Knowledge (Geography) >= 5",' +
-      '"skills.Knowledge (Nature) >= 5","skills.Survival >= 5" ' +
+      '"skills.Knowledge (Nature) >= 5","skills.Survival >= 5",' +
+      'hasLevel2DivineSpells ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Climb,"Handle Animal",Heal,"Knowledge (Geography)",' +
       '"Knowledge (Nature)",Perception,Ride,"Sense Motive",Survival,Swim ' +
     'Features=' +
-      '"1:Companion Bond","1:Natural Empathy","2:Mystic Harmony",' +
-      '"2:Wild Stride","2:Caster Level Bonus","3:Animal Speech",4:Silverclaw,' +
-      '"5:Favored Terrain",5:Survivalist,6:Woodforging,"7:Companion Walk",' +
-      '"7:Plant Speech",8:Ironpaw,"9:Guarded Lands","10:Companion Soul"',
+      '"1:Companion Bond (Nature Warden)","1:Natural Empathy",' +
+      '"2:Mystic Harmony","2:Wild Stride","2:Caster Level Bonus",' +
+      '"3:Animal Speech",4:Silverclaw,"5:Favored Terrain",' +
+      '"5:Survivalist (Nature Warden)",6:Woodforging,"7:Companion Walk",' +
+      '"7:Plant Speech",8:Ironpaw,' +
+      '"9:Guarded Lands","10:Companion Soul"',
   'Rage Prophet':
     'Require=' +
       '"baseAttack >= 5",' +
@@ -10624,6 +10673,53 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('sneakAttack', classLevel, '+=', 'Math.floor((source + 2) / 3)');
+  } else if(name == 'Nature Warden') {
+    let allClasses =
+     Object.assign({}, rules.getChoices('levels'),
+                       rules.getChoices('prestiges'),
+                       rules.getChoices('npcs'));
+    for(let c in allClasses) {
+      if(allClasses[c].includes('CasterLevelDivine=') &&
+         allClasses[c].includes('SpellSlots=')) {
+        let slots =
+          allClasses[c].replace(/.*SpellSlots/, '').replace(/\s.*/, '');
+        let matchInfo = slots.match(/\w+2:/g);
+        if(matchInfo) {
+          matchInfo.forEach(m => {
+            rules.defineRule('hasLevel2DivineSpells',
+              'spellSlots.' + m.replace(':', ''), '=', '1'
+            );
+          });
+        }
+      }
+    }
+    rules.defineRule('combatNotes.favoredTerrain',
+      classLevel, '+=', 'Math.floor(source / 5)'
+    );
+    rules.defineRule('companionMasterLevel', classLevel, '+', null);
+    rules.defineRule('companionNotes.companionBond(NatureWarden).1',
+      classLevel, '=', 'source>=5 ? "/Companion shares Favored Terrain benefits" : ""'
+    );
+    rules.defineRule('companionNotes.ironpaw', classLevel, '=', null);
+    rules.defineRule('companionNotes.silverclaw', classLevel, '=', null);
+    rules.defineRule('featureNotes.survivalist(NatureWarden).1',
+      classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork" : ""',
+    );
+    rules.defineRule('features.Empathic Link',
+      'companionNotes.companionBond(NatureWarden)', '=', '1'
+    );
+    rules.defineRule('magicNotes.casterLevelBonus',
+      classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
+    );
+    rules.defineRule('magicNotes.ironpaw', classLevel, '=', null);
+    rules.defineRule('magicNotes.silverclaw', classLevel, '=', null);
+    rules.defineRule('skillNotes.favoredTerrain',
+      classLevel, '+=', 'Math.floor(source / 5)'
+    );
+    rules.defineRule('skillNotes.naturalEmpathy', classLevel, '=', null);
+    rules.defineRule('skillNotes.naturalEmpathy.1',
+      classLevel, '=', 'source>=4 ? "/May use Wild Empathy w/magical beasts" + (source>=10 ? ", vermin, and plant creatures" : source>=7 ? " and vermin" : "") + " w/out penalty" : ""'
+    );
   }
 };
 
