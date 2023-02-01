@@ -38,31 +38,15 @@ function PFAPG(edition, rules) {
   if(rules == null)
     rules = Pathfinder.rules;
 
-  let msBefore = new Date().getTime();
   PFAPG.aideRules(rules, PFAPG.ANIMAL_COMPANIONS, PFAPG.FAMILIARS);
-  let msAfter = new Date().getTime();
-  //console.log('aideRules took ' + (msAfter - msBefore) + ' ms');
-  msBefore = new Date().getTime();
   PFAPG.combatRules(rules, PFAPG.ARMORS, PFAPG.SHIELDS, PFAPG.WEAPONS);
-  msAfter = new Date().getTime();
-  //console.log('combatRules took ' + (msAfter - msBefore) + ' ms');
-  msBefore = new Date().getTime();
   PFAPG.magicRules
     (rules, PFAPG.SCHOOLS, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
-  msAfter = new Date().getTime();
-  //console.log('magicRules took ' + (msAfter - msBefore) + ' ms');
-  msBefore = new Date().getTime();
-  PFAPG.talentRules
-    (rules, PFAPG.FEATS, PFAPG.FEATURES, {}, PFAPG.LANGUAGES, PFAPG.SKILLS);
-  msAfter = new Date().getTime();
-  //console.log('talentRules took ' + (msAfter - msBefore) + ' ms');
-  msBefore = new Date().getTime();
+  PFAPG.talentRules(rules, PFAPG.FEATS, PFAPG.FEATURES, {}, {}, PFAPG.SKILLS);
   PFAPG.identityRules(
     rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
     PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, {}
   );
-  msAfter = new Date().getTime();
-  //console.log('identityRules took ' + (msAfter - msBefore) + ' ms');
 
   rules.randomizeOneAttribute = PFAPG.randomizeOneAttribute;
 
@@ -71,8 +55,7 @@ function PFAPG(edition, rules) {
 PFAPG.VERSION = '2.3.1.0';
 
 PFAPG.ANIMAL_COMPANIONS = {
-  // Eidolons have the same stats as animal companions with modified
-  // calculations.
+  // Eidolons share stats w/animal companions with modified calculations.
   // Attack, Dam, AC include all modifiers
   'Biped Eidolon':
     'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=13 Attack=3 ' +
@@ -92,15 +75,16 @@ PFAPG.ARMORS = {
   'Wooden':'AC=3 Weight=1 Dex=3 Skill=1 Spell=15'
 };
 PFAPG.FAMILIARS = {
+  // Attack, Dam, AC include all modifiers
   'Centipede':
     'Str=1 Dex=17 Con=10 Int=0 Wis=10 Cha=2 HD=1 AC=17 Attack=5 Dam=1d3-5 ' +
     'Size=T',
   'Crab':
-    'Str=7 Dex=15 Con=12 Int=0 Wis=10 Cha=2 HD=1 AC=18 Attack=0 Dam=1d2-2 ' +
+    'Str=7 Dex=15 Con=12 Int=0 Wis=10 Cha=2 HD=1 AC=18 Attack=0 Dam=2@1d2-2 ' +
     'Size=T',
   // Dog + young: Size -1 (AC, Attack +1) Dam -1 die step Str -4 Con -4 Dex +4
   'Fox':
-    'Str=9 Dex=17 Con=11 Int=2 Wis=12 Cha=6 HD=1 AC=14 Attack=3 Dam=1d3+1 ' +
+    'Str=9 Dex=17 Con=11 Int=2 Wis=12 Cha=6 HD=1 AC=14 Attack=4 Dam=1d3+1 ' +
     'Size=T',
   // Octopus + young
   'Octopus':
@@ -120,36 +104,60 @@ PFAPG.FEATS = {
   'Arcane Talent':
     'Type=General Require="charisma >= 10","race =~ \'Elf|Gnome\'"',
   'Aspect Of The Beast (Claws Of The Beast)':
-    'Type=General Require="features.Wild Shape"',
+    'Type=General ' +
+    'Require=' +
+      '"features.Wild Shape || rangerFeatures.Combat Style (Natural Weapon)"',
   'Aspect Of The Beast (Night Senses)':
-    'Type=General Require="features.Wild Shape"',
+    'Type=General ' +
+    'Require=' +
+      '"features.Wild Shape || rangerFeatures.Combat Style (Natural Weapon)"',
   "Aspect Of The Beast (Predator's Leap)":
-    'Type=General Require="features.Wild Shape"',
+    'Type=General ' +
+    'Require=' +
+      '"features.Wild Shape || rangerFeatures.Combat Style (Natural Weapon)"',
   'Aspect Of The Beast (Wild Instinct)':
-    'Type=General Require="features.Wild Shape"',
+    'Type=General ' +
+    'Require=' +
+      '"features.Wild Shape || rangerFeatures.Combat Style (Natural Weapon)"',
   'Bashing Finish':
     'Type=General,Fighter ' +
     'Require=' +
+      '"features.Improved Shield Bash",' +
       '"features.Shield Master",' +
       '"features.Two-Weapon Fighting",' +
       '"baseAttack >= 11"',
   'Bloody Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttack >= 6"',
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 6"',
   'Bodyguard':'Type=General,Fighter Require="features.Combat Reflexes"',
   "In Harm's Way":'Type=General,Fighter Require="features.Bodyguard"',
   // Also, age >= 100
-  'Breadth Of Experience':'Type=General Require="race =~ \'Dwarf|Elf|Gnome\'"',
+  'Breadth Of Experience':
+    'Type=General ' +
+    // Allow Elf subraces; disallow Half-Elf
+    'Require="race =~ \'Dwarf|^Elf| Elf|Gnome\'"',
   'Bull Rush Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Bull Rush","baseAttack >= 9"',
+    'Require=' +
+      '"strength >= 13",' +
+      '"features.Improved Bull Rush",' +
+      '"features.Power Attack",' +
+      '"baseAttack >= 9"',
   'Charge Through':
     'Type=General,Fighter ' +
-    'Require="features.Improved Overrun","baseAttack >= 1"',
+    'Require=' +
+      '"strength >= 13",' +
+      '"features.Improved Overrun",' +
+      '"features.Power Attack",' +
+      '"baseAttack >= 1"',
   'Childlike':'Type=General Require="charisma >= 13","race =~ \'Halfling\'"',
   'Cockatrice Strike':
     'Type=General,Fighter ' +
-    'Require="features.Medusa\'s Wrath","baseAttack >= 14"',
+    'Require=' +
+      '"features.Improved Unarmed Strike",' +
+      '"features.Gorgon\'s Fist",' +
+      '"features.Medusa\'s Wrath",' +
+      '"baseAttack >= 14"',
   'Combat Patrol':
     'Type=General,Fighter ' +
     'Require=' +
@@ -161,7 +169,7 @@ PFAPG.FEATS = {
     'Require="Sum \'skills.Craft\' > 0","sumItemCreationFeats > 0"',
   'Cosmopolitan':'Type=General',
   'Covering Defense':
-    'Type=General,Feature ' +
+    'Type=General,Fighter ' +
     'Require="features.Shield Focus","baseAttack >= 6"',
   'Crippling Critical':
     'Type=General,Fighter ' +
@@ -170,19 +178,24 @@ PFAPG.FEATS = {
     'Type=General,Fighter ' +
     'Require=' +
       '"dexterity >= 15",' +
+      '"features.Point-Blank Shot",' +
       '"Sum \'features.Rapid Reload\' > 0",' +
       '"features.Rapid Shot"',
   'Dastardly Finish':'Type=General,Fighter Require="sneakAttack >= 5"',
   'Dazing Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttack >= 11"',
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 11"',
   'Deep Drinker':
     'Type=General ' +
     'Require="constitution >= 13","levels.Monk >= 11","features.Drunken Ki"',
   'Deepsight':'Type=General Require="features.Darkvision"',
   'Disarming Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Disarm","baseAttack >= 9"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Disarm",' +
+      '"baseAttack >= 9"',
   'Disrupting Shot':
     'Type=General,Fighter ' +
     'Require=' +
@@ -194,10 +207,10 @@ PFAPG.FEATS = {
   'Eagle Eyes':'Type=General Require="wisdom >= 13","features.Keen Senses"',
   'Eclectic':'Type=General Require="race =~ \'Human\'"',
   'Eldritch Claws':
-    'Type=General ' +
+    'Type=General,Fighter ' +
     'Require=' +
       '"strength >= 15",' +
-      '"weapons.Claws",' +
+      '"weapons.Bite || weapons.Claws",' +
       '"baseAttack >= 6"',
   'Elemental Fist':
     'Type=General,Fighter ' +
@@ -226,7 +239,10 @@ PFAPG.FEATS = {
     'Type=General ' +
     'Require="features.Elemental Focus (Fire)" ' +
     'Imply="casterLevel >= 1"',
-  'Elven Accuracy':'Type=General,Fighter Require="race == \'Elf\'"',
+  'Elven Accuracy':
+    'Type=General,Fighter ' +
+    // Allow Elf subraces; disallow Half-Elf
+    'Require="race =~ \'^Elf| Elf\'"',
   'Enforcer':'Type=General,Fighter Require=skills.Intimidate',
   'Expanded Arcana':'Type=General Require="casterLevel >= 1"',
   'Extra Bombs':'Type=General Require=features.Bomb',
@@ -246,21 +262,40 @@ PFAPG.FEATS = {
   // From Bestiary; needed for Eagle Shaman
   'Flyby Attack':'Type=General Require=skills.Fly',
   'Focused Shot':
-    'Type=General,Fighter Require="intelligence >= 13","features.Precise Shot"',
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Point-Blank Shot",' +
+      '"features.Precise Shot"',
   'Following Step':
     'Type=General,Fighter Require="dexterity >= 13","features.Step Up"',
   'Step Up And Strike':
     'Type=General,Fighter ' +
-    'Require="features.Following Step","baseAttack >= 6"',
+    'Require=' +
+      '"dexterity >= 13",' +
+      '"features.Following Step",' +
+      '"features.Step Up",' +
+      '"baseAttack >= 6"',
   'Furious Focus':
     'Type=General,Fighter ' +
     'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Dreadful Carnage':
     'Type=General,Fighter ' +
-    'Require="strength >= 15","features.Furious Focus","baseAttack >= 11"',
-  'Gang Up':'Type=General,Fighter Require="features.Combat Expertise"',
+    'Require=' +
+      '"strength >= 15",' +
+      '"features.Power Attack",' +
+      '"features.Furious Focus",' +
+      '"baseAttack >= 11"',
+  'Gang Up':
+    'Type=General,Fighter ' +
+    'Require="intelligence >= 13","features.Combat Expertise"',
   'Team Up':
-    'Type=General,Fighter Require="features.Gang Up","baseAttack >= 6"',
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Gang Up",' +
+      '"baseAttack >= 6"',
   'Gnome Trickster':
     'Type=General ' +
     'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
@@ -269,9 +304,11 @@ PFAPG.FEATS = {
     'Type=General ' +
     'Require="charisma >= 13","race =~ \'Gnome\'","features.Gnome Magic"',
   'Heroic Defiance':
-    'Type=General Require=features.Diehard,"save.Fortitude >= 8"',
+    'Type=General ' +
+    'Require=features.Diehard,features.Endurance,"save.Fortitude >= 8"',
   'Heroic Recovery':
-    'Type=General Require=features.Diehard,"save.Fortitude >= 4"',
+    'Type=General ' +
+    'Require=features.Diehard,features.Endurance,"save.Fortitude >= 4"',
   'Improved Blind-Fight':
     'Type=General,Fighter ' +
      'Require="skills.Perception >= 10",features.Blind-Fight',
@@ -279,35 +316,54 @@ PFAPG.FEATS = {
     'Type=General,Fighter ' +
     'Require="skills.Perception >= 15","features.Improved Blind-Fight"',
   'Improved Dirty Trick':
-    'Type=General,Fighter Require="features.Combat Expertise"',
+    'Type=General,Fighter ' +
+    'Require="intelligence >= 13","features.Combat Expertise"',
   'Greater Dirty Trick':
     'Type=General,Fighter ' +
-    'Require="features.Improved Dirty Trick","baseAttack >= 6"',
-  'Improved Drag':'Type=General,Fighter Require="features.Power Attack"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Dirty Trick",' +
+      '"baseAttack >= 6"',
+  'Improved Drag':
+    'Type=General,Fighter ' +
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Greater Drag':
     'Type=General,Fighter ' +
-    'Require="features.Improved Drag","baseAttack >= 6"',
+    'Require=' +
+      '"strength >= 13",' +
+      '"features.Improved Drag",' +
+      '"features.Power Attack",' +
+      '"baseAttack >= 6"',
   'Improved Reposition':
-    'Type=General,Fighter Require="features.Combat Expertise"',
+    'Type=General,Fighter ' +
+    'Require="intelligence >= 13","features.Combat Expertise"',
   'Greater Reposition':
     'Type=General,Fighter ' +
-    'Require="features.Improved Reposition","baseAttack >= 6"',
+    'Require=' +
+      '"intelligence >= 13","features.Improved Reposition","baseAttack >= 6"',
   'Improved Share Spells':
     'Type=General ' +
     'Require=' +
       '"skills.Spellcraft >= 10",' +
       '"features.Animal Companion || features.Familiar" ' +
     'Imply="casterLevel >= 1"',
-  'Improved Steal':'Type=General,Fighter Require="features.Combat Expertise"',
+  'Improved Steal':
+    'Type=General,Fighter ' +
+    'Require="intelligence >= 13","features.Combat Expertise"',
   'Greater Steal':
     'Type=General,Fighter ' +
-    'Require="features.Improved Steal","baseAttack >= 6"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Steal",' +
+      '"baseAttack >= 6"',
   'Improved Stonecunning':
     'Type=General ' +
     'Require="wisdom >= 13","race =~ \'Dwarf\'",features.Stonecunning',
   'Stone Sense':
     'Type=General ' +
-    'Require="skills.Perception >= 10","features.Improved Stonecunning"',
+    'Require="features.Improved Stonecunning","skills.Perception >= 10"',
   'Ironguts':
     'Type=General Require="constitution >= 13","race =~ \'Dwarf|Orc\'"',
   'Ironhide':
@@ -328,7 +384,8 @@ PFAPG.FEATS = {
     'Require=' +
       '"features.Acrobatic Steps",' +
       '"features.Nimble Moves",' +
-      '"race == \'Elf\'"',
+      // Allow Elf subraces; disallow Half-Elf
+      '"race =~ \'^Elf| Elf\'"',
   'Lingering Performance':'Type=General Require="features.Bardic Performance"',
   'Low Profile':'Type=General,Fighter Require="dexterity >= 13",features.Small',
   'Lucky Halfling':'Type=General Require="race =~ \'Halfling\'"',
@@ -353,7 +410,13 @@ PFAPG.FEATS = {
     'Imply="casterLevel >= 1"',
   'Parting Shot':
     'Type=General,Fighter ' +
-    'Require="features.Shot On The Run","baseAttack >= 6"',
+    'Require=' +
+      '"dexterity >= 13",' +
+      'features.Dodge,' +
+      'features.Mobility,' +
+      '"features.Point-Blank Shot",' +
+      '"features.Shot On The Run",' +
+      '"baseAttack >= 6"',
   'Pass For Human':
     'Type=General Require="race =~ \'Half-Elf|Half-Orc|Halfling\'"',
   'Perfect Strike':
@@ -388,14 +451,25 @@ PFAPG.FEATS = {
     'Require="strength >= 13",weapons.Claws,"baseAttack >= 6"',
   'Repositioning Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Reposition","baseAttack >= 9"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Reposition",' +
+      '"baseAttack >= 9"',
   'Saving Shield':'Type=General,Fighter Require="features.Shield Proficiency"',
   'Second Chance':
     'Type=General,Fighter ' +
-    'Require="features.Combat Expertise","baseAttack >= 6"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"baseAttack >= 6"',
   'Improved Second Chance':
     'Type=General,Fighter ' +
-    'Require="features.Second Chance","baseAttack >= 11"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Second Chance",' +
+      '"baseAttack >= 11"',
   'Shadow Strike':'Type=General,Fighter Require="baseAttack >= 1"',
   'Shared Insight':'Type=General Require="wisdom >= 13","race == \'Half-Elf\'"',
   'Sharp Senses':'Type=General Require="features.Keen Senses"',
@@ -404,37 +478,53 @@ PFAPG.FEATS = {
     'Require="strength >= 13","features.Power Attack","baseAttack >= 1"',
   'Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","levels.Fighter >= 4"',
+    'Require=' +
+      '"features.Shield Proficiency",' +
+      '"features.Shield Focus",' +
+      '"levels.Fighter >= 4"',
   'Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","levels.Fighter >= 4"',
+    'Require=' +
+      '"features.Shield Proficiency",' +
+      '"features.Shield Focus",' +
+      '"levels.Fighter >= 4"',
   'Shield Specialization (Light)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","levels.Fighter >= 4"',
+    'Require=' +
+      '"features.Shield Proficiency",' +
+      '"features.Shield Focus",' +
+      '"levels.Fighter >= 4"',
   'Shield Specialization (Tower)':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","levels.Fighter >= 4"',
+    'Require=' +
+      '"features.Tower Shield Proficiency",' +
+      '"features.Shield Focus",' +
+      '"levels.Fighter >= 4"',
   'Greater Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require=' +
+      '"features.Shield Proficiency",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Buckler)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
     'Require=' +
+      '"features.Shield Proficiency",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Heavy)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Light)':
     'Type=General,Fighter ' +
     'Require=' +
+      '"features.Shield Proficiency",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Light)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Tower)':
     'Type=General,Fighter ' +
     'Require=' +
+      '"features.Tower Shield Proficiency",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Tower)",' +
       '"levels.Fighter >= 12"',
@@ -442,7 +532,12 @@ PFAPG.FEATS = {
     'Type=General,Fighter ' +
     'Require="dexterity >= 13",features.Dodge,features.Mobility',
   'Improved Sidestep':
-    'Type=General,Fighter Require="dexterity >= 15",features.Sidestep',
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"dexterity >= 15",' +
+      'features.Dodge,' +
+      'features.Mobility,' +
+      'features.Sidestep',
   'Smash':
     'Type=General,Fighter ' +
     'Require="features.Power Attack","race == \'Half-Orc\'"',
@@ -468,14 +563,21 @@ PFAPG.FEATS = {
       '"race =~ \'Dwarf\'"',
   'Stunning Assault':
     'Type=General,Fighter ' +
-    'Require="features.Power Attack","baseAttack >= 16"',
+    'Require="strength >= 13","features.Power Attack","baseAttack >= 16"',
   "Summoner's Call":'Type=General Require=features.Eidolon',
   'Sundering Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Sunder","baseAttack >= 9"',
+    'Require=' +
+      '"strength >= 13",' +
+      '"features.Improved Sunder",' +
+      '"features.Power Attack",' +
+      '"baseAttack >= 9"',
   'Swift Aid':
     'Type=General,Fighter ' +
-    'Require="features.Combat Expertise","baseAttack >= 6"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"baseAttack >= 6"',
   'Taunt':'Type=General Require="charisma >= 13",features.Small',
   'Teleport Tactician':
     'Type=General,Fighter ' +
@@ -496,10 +598,18 @@ PFAPG.FEATS = {
   'Trick Riding':
     'Type=General,Fighter Require="skills.Ride >= 9","features.Mounted Combat"',
   'Mounted Skirmisher':
-    'Type=General,Fighter Require="skills.Ride >= 14","features.Trick Riding"',
+    'Type=General,Fighter ' +
+    'Require=' +
+      '"skills.Ride >= 14",' +
+      '"features.Mounted Combat",' +
+      '"features.Trick Riding"',
   'Tripping Strike':
     'Type=General,Fighter ' +
-    'Require="features.Improved Trip","baseAttack >= 9"',
+    'Require=' +
+      '"intelligence >= 13",' +
+      '"features.Combat Expertise",' +
+      '"features.Improved Trip",' +
+      '"baseAttack >= 9"',
   'Under And Over':
     'Type=General,Fighter Require="features.Agile Maneuvers",features.Small',
   'Underfoot':
@@ -541,7 +651,7 @@ PFAPG.FEATS = {
   'Precise Strike':
     'Type=Teamwork,Fighter Require="dexterity >= 13","baseAttack >= 1"',
   'Shield Wall':'Type=Teamwork,Fighter Require="features.Shield Proficiency"',
-  'Shielded Caster':'Type=Teamwork',
+  'Shielded Caster':'Type=Teamwork Imply="casterLevel >= 1"',
   'Swap Places':'Type=Teamwork,Fighter'
 };
 PFAPG.FEATURES = {
@@ -4461,8 +4571,6 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May use Sleight Of Hand (DC 10 + GP cost) to produce required mundane item 1/dy"'
 
-};
-PFAPG.LANGUAGES = {
 };
 PFAPG.PATHS = {
 
