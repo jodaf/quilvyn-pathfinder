@@ -3573,7 +3573,7 @@ PFAPG.FEATURES = {
     'Note="R60\' Inspiring Command gives allies additional +%{inspiringCommandBonus} save vs. fear"',
   'Reveille':
     'Section=magic ' +
-    'Note="R60\' Inspiring Command awkakens allies and gives additional +%{inspiringCommandBonus} save vs. exhaustion, fatigue, and sleep"',
+    'Note="R60\' Inspiring Command awakens allies and gives additional +%{inspiringCommandBonus} save vs. exhaustion, fatigue, and sleep"',
   'Scatter':
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives %{inspiringCommandBonus} allies 20% concealment when moving more than 5\'"',
@@ -3599,12 +3599,12 @@ PFAPG.FEATURES = {
     'Section=feature,skill ' +
     'Note=' +
       '"+%V Tactician level",' +
-      '"+2 Diplomacy/+2 Intimidate/Allies gain +%V Perception and Sense Motive to hear commands and to interpet messages given using Bluff"',
+      '"+2 Diplomacy/+2 Intimidate/Allies gain +%V Perception and Sense Motive to hear commands and to interpret messages given using Bluff"',
 
   // Holy Vindicator
   'Bloodfire':
     'Section=combat ' +
-    'Note="Channel Smite while using Stigmatia inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC %1 Will ends)"',
+    'Note="Channel Smite while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC %1 Will ends)"',
   'Bloodrain':
     'Section=magic ' +
     'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %1 Will ends)"',
@@ -3612,13 +3612,13 @@ PFAPG.FEATURES = {
   // Channel Smite as Pathfinder.js
   'Divine Judgment':
     'Section=magic ' +
-    'Note="May use level 1 spell slot to infict <i>Death Knell</i> on foe in respose to reducing foe to negative HP"',
+    'Note="May use level 1 spell slot to inflict <i>Death Knell</i> on foe in response to reducing foe to negative HP"',
   'Divine Retribution':
     'Section=magic ' +
-    'Note="May use level 3 spell slot to infict <i>Bestow Curse</i> on foe in respose to critical hit to self or foe"',
+    'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to critical hit to self or foe"',
   'Divine Wrath':
     'Section=magic ' +
-    'Note="May use level 1 spell slot to infict <i>Doom</i> on foe in respose to critical hit to self or foe"',
+    'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to critical hit to self or foe"',
   'Faith Healing':'Section=magic Note="Self Cure spells have %V effects"',
   'Stigmata':
     'Section=magic ' +
@@ -3634,7 +3634,7 @@ PFAPG.FEATURES = {
   'Master Of All Lands':
     'Section=feature,save ' +
     'Note=' +
-      '"+2 Favored Terrain bonus in all terrins",' +
+      '"+2 Favored Terrain bonus in all terrains",' +
       '"Automatically succeeds on natural temperature and weather saves; R60\' allies receive +2 (+4 in mastered terrain)"',
   'Terrain Dominance':
     'Section=combat,feature,skill ' +
@@ -3852,7 +3852,7 @@ PFAPG.FEATURES = {
   'Elude Detection':'Section=save Note="May gain SR %V (divination) at will"',
   'Fool Casting':
     'Section=save ' +
-    'Note="Successful save vs. control spell allows partial effects, dismissable at well"',
+    'Note="Successful save vs. control spell allows partial effects, dismissible at well"',
   'Glib Lie':
     'Section=save ' +
     'Note="Truth-detecting magic requires DC %V caster level check to be effective"',
@@ -3948,26 +3948,44 @@ PFAPG.FEATURES = {
 
   // Stalwart Defender
   'AC Bonus':'Section=combat Note="+%V AC"',
-  'Bulwark':'Section=combat Note="FILL"',
-  'Clear Mind':'Section=combat Note="FILL"',
-  'Damage Reduction':'Section=feature Note="FILL"',
+  'Bulwark':'Section=skill Note="+%V foe DC for Bluff and movement Acrobatics"',
+  // Clear Mind as Pathfinder.js
+  // Damage Reduction as Pathfinder.js
   'Defensive Powers':'Section=feature Note="%V selections"',
-  'Defensive Stance':'Section=feature Note="FILL"',
-  'Fearless Defense':'Section=combat Note="FILL"',
-  'Halting Blow':'Section=combat Note="FILL"',
-  'Immobile':'Section=combat Note="FILL"',
-  'Improved Uncanny Dodge':'Section=feature Note="FILL"',
-  'Increased Damage Reduction (Stalwart Defender)':'Section=combat Note="FILL"',
-  'Intercept':'Section=combat Note="FILL"',
-  'Internal Fortitude':'Section=combat Note="FILL"',
-  'Last Word':'Section=feature Note="FILL"',
-  'Mighty Resilience':'Section=combat Note="FILL"',
-  'Mobile Defense':'Section=feature Note="FILL"',
-  'Renewed Defense':'Section=combat Note="FILL"',
-  'Roused Defense':'Section=combat Note="FILL"',
-  'Smash (Stalwart Defender)':'Section=combat Note="FILL"',
+  'Defensive Stance':
+    'Section=combat ' +
+    'Note="Immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest"',
+  'Fearless Defense':
+    'Section=save Note="Immune to shaken and frightened during stance"',
+  'Halting Blow':
+    'Section=combat Note="Successful movement AOO halts foe during stance"',
+  'Immobile':
+    'Section=combat ' +
+    'Note="+%V CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
+  // Improved Uncanny Dodge as Pathfinder.js
+  'Increased Damage Reduction (Stalwart Defender)':
+    'Section=combat Note="DR/- increases by %V during stance"',
+  'Intercept':
+    'Section=combat ' +
+    'Note="May redirect attack on adjacent ally to self w/automatic hit 1/rd"',
+  // Internal Fortitude as Pathfinder.js
+  'Last Word':
+    'Section=combat ' +
+    'Note="May make extra attack w/dbl damage when hit to self results in negative HP or unconsciousness"',
+  'Mighty Resilience':
+    'Section=combat ' +
+    'Note="May negate extra damage from critical hit or sneak attack 1/stance"',
+  'Mobile Defense':'Section=combat Note="May take 5\' step during stance"',
+  'Renewed Defense':
+    'Section=combat Note="May regain %Vd8 HP 1/dy during stance"',
+  'Roused Defense':
+    'Section=combat ' +
+    'Note="May use stance while fatigued; immune to fatigued during stance, exhausted afterward"',
+  'Smash (Stalwart Defender)':
+    'Section=combat ' +
+    'Note="May make extra shield bash or slam attack for 1d%{features.Small ? 3 : 4}+%{strengthModifier//2} 1/rd during stance"',
   // Uncanny Dodge as Pathfinder.js
-  'Unexpected Strike (Stalwart Defender)':'Section=combat Note="FILL"',
+  // Unexpected Strike as Pathfinder.js
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -8180,7 +8198,7 @@ PFAPG.PRESTIGE_CLASSES = {
       '"2:Renewed Defense:Defensive Power",' +
       '"2:Roused Defense:Defensive Power",' +
       '"2:Smash (Stalwart Defender):Defensive Power",' +
-      '"4:Unexpected Strike (Stalwart Defender):Defensive Power"'
+      '"4:Unexpected Strike:Defensive Power"'
 };
 PFAPG.DEITIES = {
   // clerics with no deity still get two domains.
@@ -10801,12 +10819,42 @@ PFAPG.classRulesExtra = function(rules, name) {
   } else if(name == 'Stalwart Defender') {
     rules.defineRule
       ('combatNotes.aCBonus', classLevel, '=', 'Math.floor((source + 2) / 3)');
+    // Can reuse barbarian DR feature, but they don't stack
+    rules.defineRule('combatNotes.damageReduction',
+      classLevel, '^=', 'source>=10 ? 5 : source>=7 ? 3 : source>=5 ? 1 : null'
+    );
+    rules.defineRule('combatNotes.defensiveStance',
+      '', '=', '4',
+      'constitutionModifier', '+', null,
+      classLevel, '+', '(source - 1) * 2'
+    );
+    rules.defineRule('combatNotes.immobile', classLevel, '=', null);
+    rules.defineRule('combatNotes.increasedDamageReduction',
+      'stalwartDefenderFeatures.Increased Damage Reduction', '=', null
+    );
+    rules.defineRule
+      ('combatNotes.renewedDefense', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('featureNotes.defensivePowers',
       classLevel, '=', 'Math.floor(source /2 )'
     );
     rules.defineRule('selectableFeatureCount.Stalwart Defender (Defensive Power)',
       'featureNotes.defensivePowers', '=', null
     );
+    rules.defineRule('skillNotes.bulwark',
+      'skillNotes.armorSkillCheckPenalty', '=', '-source'
+    );
+    rules.defineRule
+      ('uncannyDodgeSources', classLevel, '+=', 'source>=3 ? 1 : null');
+    // Extend notes for rage features reused for defensive stance
+    ['Clear Mind', 'Internal Fortitude', 'Unexpected Strike'].forEach(f => {
+      let section =
+        QuilvynUtils.getAttrValue(Pathfinder.FEATURES[f], 'Section');
+      let note = section + 'Notes.' + f.charAt(0).toLowerCase() + f.substring(1).replaceAll(' ', '');
+      if(note in rules.getChoices('notes'))
+        rules.getChoices('notes')[note] += ' or stance';
+      else
+        console.log(note + '?');
+    });
   }
 };
 
