@@ -42,7 +42,7 @@ function PFAPG(edition, rules) {
   PFAPG.combatRules(rules, PFAPG.ARMORS, PFAPG.SHIELDS, PFAPG.WEAPONS);
   PFAPG.magicRules
     (rules, PFAPG.SCHOOLS, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
-  PFAPG.talentRules(rules, PFAPG.FEATS, PFAPG.FEATURES, {}, {}, PFAPG.SKILLS);
+  PFAPG.talentRules(rules, PFAPG.FEATS, PFAPG.FEATURES, {}, {}, {});
   PFAPG.identityRules(
     rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
     PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, {}
@@ -671,10 +671,10 @@ PFAPG.FEATURES = {
       '"SR %{level+5}"',
   'Relentless':
     'Section=combat Note="+2 bull rush and overrun when standing on ground"',
-  'Stonesinger':'Section=magic Note="+1 caster level on Earth spells"',
+  'Stonesinger':'Section=magic Note="+1 caster level on earth spells"',
   'Stubborn':
     'Section=save ' +
-    'Note="+2 Will vs. charm and compulsion; may attempt save again 1 rd after failing"',
+    'Note="+2 Will vs. charm and compulsion; may re-attempt save 1 rd after failing"',
 
   // Elf
   'Desert Runner':
@@ -691,7 +691,7 @@ PFAPG.FEATURES = {
       '"Immune to light-based blindness and dazzle"',
   'Silent Hunter':
     'Section=skill ' +
-    'Note="Reduce moving Stealth penalty by 5/May use -20 Stealth while running"',
+    'Note="Reduces moving Stealth penalty by 5/May use -20 Stealth while running"',
   'Spirit Of The Waters':
     'Section=feature,skill ' +
     'Note=' +
@@ -740,7 +740,7 @@ PFAPG.FEATURES = {
   'Integrated':'Section=skill Note="+1 Bluff/+1 Disguise/+1 Knowledge (Local)"',
   'Sociable (Half-Elf)':
     'Section=skill ' +
-    'Note="May make second Diplomacy attempt to change attitude even after -5 failure"',
+    'Note="May re-attempt Diplomacy to change attitude after -5 failure"',
   'Water Child':
       'Section=skill ' +
       'Note="+4 Swim/May take 10 while swimming/May learn Aquan"',
@@ -777,9 +777,8 @@ PFAPG.FEATURES = {
       '"+10 Speed when fearful",' +
       '"+1 Initiative/+1 attack when flanking/+1 AC when fearful",' +
       '"-2 vs. fear/No morale bonus on fear saves"',
+  'Low Blow':'Section=combat Note="+1 crit confirm on larger foe"',
   'Outrider':'Section=skill Note="+2 Handle Animal/+2 Ride"',
-  'Low Blow':
-    'Section=combat Note="+1 confirm crit on larger foe"',
   'Practicality':
     'Section=save,skill ' +
     'Note=' +
@@ -787,7 +786,7 @@ PFAPG.FEATURES = {
       '"+2 choice of Craft or Profession/+2 Sense Motive"',
   'Swift As Shadows':
     'Section=skill ' +
-    'Note="Reduce penalty for moving Stealth by 5, sniping Stealth by 10"',
+    'Note="Reduces penalty for moving Stealth by 5, sniping Stealth by 10"',
   'Underfoot (Halfling)':
     'Section=combat,save ' +
     'Note=' +
@@ -835,7 +834,7 @@ PFAPG.FEATURES = {
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) splash %V/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+effectiveAlchemistLevel//2+intelligenceModifier} Ref half) splash %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
     'Section=magic Note="Combining two effects into one extract uses +2 slot"',
@@ -881,7 +880,8 @@ PFAPG.FEATURES = {
   'Frost Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{levels.Alchemist//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
-  'Grand Discovery':'Section=feature Note="%V selection/+2 Discovery"',
+  'Grand Discovery':
+    'Section=feature Note="1 selection/+2 Discovery selections"',
   'Grand Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
@@ -908,7 +908,8 @@ PFAPG.FEATURES = {
   'Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %V min"',
-  'Persistent Mutagen':'Section=magic Note="Mutagen effects last %{levels.Alchemist} hr"',
+  'Persistent Mutagen':
+    'Section=magic Note="Mutagen effects last %{levels.Alchemist} hr"',
   "Philosopher's Stone":
     'Section=magic ' +
     'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
@@ -5424,6 +5425,38 @@ PFAPG.PATHS = {
       'Verdant8:17=1,' +
       'Verdant9:19=1',
 
+  // Cavalier
+  'Order Of The Cockatrice':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '2:Braggart,"8:Steal Glory","15:Moment Of Triumph"',
+  'Order Of The Dragon':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '"2:Aid Allies (Cavalier)",8:Strategy,"15:Act As One"',
+  'Order Of The Lion':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '"2:Lion\'s Call","8:For The King","15:Shield Of The Liege"',
+  'Order Of The Shield':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '2:Resolute,"8:Stem The Tide","15:Protect The Meek"',
+  'Order Of The Star':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '2:Calling,"8:For The Faith",15:Retribution',
+  'Order Of The Sword':
+    'Group=Cavalier ' +
+    'Level=levels.Cavalier ' +
+    'Features=' +
+      '"2:By My Honor","8:Mounted Mastery","15:Knight\'s Challenge"',
+
   // Oracle
   'Battle Mystery':
     'Group="Oracle" ' +
@@ -5869,10 +5902,9 @@ PFAPG.SHIELDS = {
   'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
   'Light Wooden Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5'
 };
-PFAPG.SKILLS = {
-};
 // As noted below, the following two spell lists include Witch spells that are
-// restricted to particular patrons. randomizeOneElement takes steps to ensure
+// restricted to particular patrons and Oracle spells that are restricted to
+// the Rage Prophet prestige class. randomizeOneElement takes steps to ensure
 // that these spells are not randomly assigned to an unqualified character.
 PFAPG.SPELLS = {
 
@@ -6944,7 +6976,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Antilife Shell':'Fur6,O6,Souls6,Witch6', // Witch Animals
   'Antimagic Field':'Defense6,Divine6,Purity6,O8',
   'Antipathy':'Witch8',
-  'Arcane Eye':'Alchemist4,Arcana4,Witch4',
+  'Arcane Eye':'Alchemist4,Arcana4,O4,Witch4', // Rage Prophet
   'Arcane Lock':'Wards1',
   'Arcane Mark':'Witch0',
   'Arcane Sight':'Alchemist3,Inquisitor3,Witch3',
@@ -7080,7 +7112,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dominate Monster':'Love9,Lust9,Serpentine9,Witch9',
   'Dominate Person':'Witch5',
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
-  'Dream':'Alchemist5,Dreamspun5,Witch5', // Witch Wisdom
+  'Dream':'Alchemist5,Dreamspun5,O5,Witch5', // Witch Wisdom, Rage Prophet
   "Eagle's Splendor":'Alchemist2,O2',
   'Earthquake':'Battle8,Catastrophe8,Caves8,Deep8,O8,Rage8',
   'Elemental Body I':'Alchemist4',
@@ -7348,13 +7380,14 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Secret Chest':'Witch5',
   'Secret Page':'Wards2',
   'Secure Shelter':'Witch4',
-  'See Invisibility':'Alchemist2,Inquisitor2,Witch2',
+  'See Invisibility':'Alchemist2,Inquisitor2,O2,Witch2', // Rage Prophet
   'Sending':'Alchemist5,Inquisitor4,O4',
   'Sepia Snake Sigil':'Witch3',
   'Shades':'Night9,Shadow9,Witch9', // Witch Shadow
   'Shadow Conjuration':'Loss4,Night4,Shadow4,Witch4', // Witch Shadow
   'Shadow Evocation':'Shadow5,Witch5', // Witch Shadow
-  'Shadow Walk':'Alchemist6,Dreamspun6,Shadow6,Witch6', // Witch Shadow
+  'Shadow Walk':
+    'Alchemist6,Dreamspun6,O6,Shadow6,Witch6', // Witch Shadow, Rage Prophet
   'Shambler':'Decay9,Growth9,Verdant9',
   'Shapechange':
     'Feather9,Fur9,Protean9,Witch9', // Witch Agility, Strength, Transformation
@@ -7377,7 +7410,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Speak With Animals':'Witch2', // Witch Animals
   'Speak With Dead':'Ancestors3,Inquisitor3,Memory3,O3,Witch3',
   'Speak With Plants':'Nature3,Verdant3',
-  'Spectral Hand':'Witch2',
+  'Spectral Hand':'O2,Witch2', // Rage Prophet
   'Spell Immunity':
     'Alchemist4,Defense4,Ferocity4,Inquisitor4,O4,Purity4,Resolve4,Witch4', // Witch Endurance
   'Spell Resistance':
@@ -7439,11 +7472,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Unhallow':'Inquisitor5,O5',
   'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8",O8',
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
-  'Unseen Servant':'Starsoul1,Witch1',
+  'Unseen Servant':'Starsoul1,O1,Witch1', // Rage Prophet
   'Vampiric Touch':'Blood3,Daemon3,Witch3',
   'Ventriloquism':'Witch1', // Witch Deception
   'Virtue':'Inquisitor0,O0',
-  'Vision':'Dreamspun7,Lore7,Witch7',
+  'Vision':'Dreamspun7,Lore7,O7,Witch7', // Rage Prophet
   'Wail Of The Banshee':'Ancestors9,Bones9,Witch9',
   'Wall Of Fire':'Ash4,Battle4,Flame4,Smoke4',
   'Wall Of Ice':'Boreal4,Waves4,Witch4', // Witch Elements
@@ -7457,7 +7490,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Web':'Witch2',
   'Weird':'Insanity9,Nightmare9',
   'Whirlwind':'Cloud8,Storms8,Stormborn8,Wind8,Winds8',
-  'Whispering Wind':'Inquisitor2,Winds1',
+  'Whispering Wind':'Inquisitor2,O2,Winds1', //Rage Prophet
   'Wind Walk':'Alchemist6,O6,Winds6',
   'Wind Wall':'Cloud2,O3,Winds2',
   'Wood Shape':'Construct2,Toil2',
@@ -7545,25 +7578,7 @@ PFAPG.CLASSES = {
       '1:Challenge,1:Mount,1:Order,1:Tactician,"3:Cavalier\'s Charge",' +
       '"4:Expert Trainer",5:Banner,"6:Cavalier Feat Bonus",' +
       '"9:Greater Tactician","11:Mighty Charge","12:Demanding Challenge",' +
-      '"14:Greater Banner","17:Master Tactician","20:Supreme Charge",' +
-      '"features.Order Of The Cockatrice ? 2:Braggart",' +
-      '"features.Order Of The Cockatrice ? 8:Steal Glory",' +
-      '"features.Order Of The Cockatrice ? 15:Moment Of Triumph",' +
-      '"features.Order Of The Dragon ? 2:Aid Allies (Cavalier)",' +
-      '"features.Order Of The Dragon ? 8:Strategy",' +
-      '"features.Order Of The Dragon ? 15:Act As One",' +
-      '"features.Order Of The Lion ? 2:Lion\'s Call",' +
-      '"features.Order Of The Lion ? 8:For The King",' +
-      '"features.Order Of The Lion ? 15:Shield Of The Liege",' +
-      '"features.Order Of The Shield ? 2:Resolute",' +
-      '"features.Order Of The Shield ? 8:Stem The Tide",' +
-      '"features.Order Of The Shield ? 15:Protect The Meek",' +
-      '"features.Order Of The Star ? 2:Calling",' +
-      '"features.Order Of The Star ? 8:For The Faith",' +
-      '"features.Order Of The Star ? 15:Retribution",' +
-      '"features.Order Of The Sword ? 2:By My Honor",' +
-      '"features.Order Of The Sword ? 8:Mounted Mastery",' +
-      '"features.Order Of The Sword ? 15:Knight\'s Challenge" ' +
+      '"14:Greater Banner","17:Master Tactician","20:Supreme Charge" ' +
     'Selectables=' +
       '"1:Order Of The Cockatrice:Order","1:Order Of The Dragon:Order",' +
       '"1:Order Of The Lion:Order","1:Order Of The Shield:Order",' +
@@ -7643,16 +7658,20 @@ PFAPG.CLASSES = {
     'Selectables=' +
       '"1:Bite Evolution:Evolution",' +
       '"features.Limbs (Arms) Evolution || features.Limbs (Legs) Evolution ? 1:Claws Evolution:Evolution",' +
-      '"1:Climb Evolution:Evolution","1:Gills Evolution:Evolution",' +
+      '"1:Climb Evolution:Evolution",' +
+      '"1:Gills Evolution:Evolution",' +
       '"1:Improved Damage Evolution:Evolution",' +
       '"1:Improved Natural Armor Evolution:Evolution",' +
       '"1:Magic Attacks Evolution:Evolution",' +
       '"animalCompanion.Quadruped Eidolon || animalCompanion.Serpentine Eidolon ? 1:Mount Evolution:Evolution",' +
       '"features.Limbs (Arms) Evolution ? 1:Pincers Evolution:Evolution",' +
       '"animalCompanion.Quadruped Eidolon ? 1:Pounce Evolution:Evolution",' +
-      '"1:Pull Evolution:Evolution","1:Push Evolution:Evolution",' +
-      '"1:Reach Evolution:Evolution","1:Resistance Evolution:Evolution",' +
-      '"1:Scent Evolution:Evolution","1:Skilled Evolution:Evolution",' +
+      '"1:Pull Evolution:Evolution",' +
+      '"1:Push Evolution:Evolution",' +
+      '"1:Reach Evolution:Evolution",' +
+      '"1:Resistance Evolution:Evolution",' +
+      '"1:Scent Evolution:Evolution",' +
+      '"1:Skilled Evolution:Evolution",' +
       '"features.Limbs (Arms) Evolution ? 1:Slam Evolution:Evolution",' +
       '"1:Small Eidolon:Evolution:0",' +
       '"features.Tail Evolution ? 1:Sting Evolution:Evolution",' +
@@ -7664,18 +7683,21 @@ PFAPG.CLASSES = {
       '"1:Ability Increase Evolution:Evolution:2",' +
       '"animalCompanion.Serpentine Eidolon ? 1:Constrict Evolution:Evolution:2",' +
       '"5:Energy Attacks Evolution:Evolution:2",' +
-      '"5:Flight Evolution:Evolution:2","1:Gore Evolution:Evolution:2",' +
+      '"5:Flight Evolution:Evolution:2",' +
+      '"1:Gore Evolution:Evolution:2",' +
       '"1:Grab Evolution:Evolution:2",' +
       '"7:Immunity Evolution:Evolution:2",' +
       '"1:Limbs (Arms) Evolution:Evolution:2",' +
       '"1:Limbs (Legs) Evolution:Evolution:2",' +
       '"7:Poison Evolution:Evolution:2",' +
-      '"4:Rake Evolution:Evolution:2","6:Rend Evolution:Evolution:2",' +
+      '"4:Rake Evolution:Evolution:2",' +
+      '"6:Rend Evolution:Evolution:2",' +
       '"animalCompanion.Biped Eidolon || animalCompanion.Quadruped Eidolon ? 1:Trample Evolution:Evolution:2",' +
       '"7:Tremorsense Evolution:Evolution:2",' +
       '"features.Bite Evolution ? 1:Trip Evolution:Evolution:2",' +
       '"1:Weapon Training Evolution:Evolution:2",' +
-      '"9:Blindsense Evolution:Evolution:3","9:Burrow Evolution:Evolution:3",' +
+      '"9:Blindsense Evolution:Evolution:3",' +
+      '"9:Burrow Evolution:Evolution:3",' +
       '"9:Damage Reduction Evolution:Evolution:3",' +
       '"11:Frightful Presence Evolution:Evolution:3",' +
       '"features.Grab Evolution ? 9:Swallow Whole Evolution:Evolution:3",' +
@@ -8375,10 +8397,9 @@ PFAPG.identityRules = function(
 ) {
   let newClasses = Object.assign({}, classes);
   for(let clas in classes) {
-    let hitDie = QuilvynUtils.getAttrValue(classes[clas], 'HitDie');
-    let selectables =
-      QuilvynUtils.getAttrValueArray(classes[clas], 'Selectables');
-    if(!hitDie) {
+    if(!QuilvynUtils.getAttrValue(classes[clas], 'HitDie')) {
+      let selectables =
+        QuilvynUtils.getAttrValueArray(classes[clas], 'Selectables');
       QuilvynRules.featureListRules
         (rules, selectables, clas, 'levels.' + clas, true);
       delete newClasses[clas];
@@ -8387,10 +8408,9 @@ PFAPG.identityRules = function(
   // PFAPG defines no new races, but this code supports the possibility anyway
   let newRaces = Object.assign({}, races);
   for(let race in races) {
-    let features = QuilvynUtils.getAttrValue(races[race], 'Features');
-    let selectables =
-      QuilvynUtils.getAttrValueArray(races[race], 'Selectables');
-    if(!features) {
+    if(!QuilvynUtils.getAttrValue(races[race], 'Features')) {
+      let selectables =
+        QuilvynUtils.getAttrValueArray(races[race], 'Selectables');
       QuilvynRules.featureListRules
         (rules, selectables, race, race.charAt(0).toLowerCase() + race.substring(1).replaceAll(' ' , '') + 'Level', true);
       delete newRaces[race];
@@ -8401,6 +8421,8 @@ PFAPG.identityRules = function(
     traits, prestigeClasses, npcClasses
   );
   if('Summoner' in newClasses) {
+    // Create an invisible selectable feature that consumes the excess
+    // evolution points required for some evolutions.
     let summonerSelectables =
       QuilvynUtils.getAttrValueArray(newClasses.Summoner, 'Selectables');
     summonerSelectables.forEach(s => {
@@ -8414,6 +8436,15 @@ PFAPG.identityRules = function(
         );
       }
     });
+    // Override consumption values for a few evolutions that consume a
+    // different value with multiple selections.
+    rules.defineRule('selectableFeatures.excessEvolutionPoints',
+      'selectableFeatures.Summoner - Flight Evolution', '+=', '1',
+      'selectableFeatures.Summoner - Damage Reduction Evolution', '+=', '2 + source - 1',
+      'selectableFeatures.Summoner - Breath Weapon Evolution', '+=', '3',
+      'selectableFeatures.Summoner - Fast Healing Evolution', '+=', '3 + source - 1',
+      'selectableFeatures.Summoner - Large Evolution', '+=', '3 + (source - 1) * 5'
+    );
   }
   for(let clas in classes)
     PFAPG.classRulesExtra(rules, clas);
@@ -8421,6 +8452,7 @@ PFAPG.identityRules = function(
     PFAPG.classRulesExtra(rules, clas);
   for(let clas in npcClasses)
     PFAPG.classRulesExtra(rules, clas);
+  // Append subdomains to each deity's list of domains
   for(let deity in deities) {
     let domains = QuilvynUtils.getAttrValueArray(deities[deity], 'Domain');
     if(rules.deityStats.domains[deity] == null)
@@ -8442,18 +8474,6 @@ PFAPG.identityRules = function(
 /* Defines rules related to magic use. */
 PFAPG.magicRules = function(rules, schools, spells, spellsLevels) {
   Pathfinder.magicRules(rules, schools, {}, {});
-  for(let s in schools) {
-    if(['Air', 'Earth', 'Fire', 'Water'].includes(s)) {
-      Pathfinder.choiceRules(rules, 'Feature',
-        'School Specialization (' + s + ')',
-        Pathfinder.FEATURES['School Specialization (%school)'].replaceAll('%school', s)
-      );
-      Pathfinder.choiceRules(rules, 'Feature',
-        'School Opposition (' + s + ')',
-        Pathfinder.FEATURES['School Opposition (%school)'].replaceAll('%school', s)
-      );
-    }
-  }
   let allSpells = Object.assign({}, spells, spellsLevels);
   for(let s in allSpells) {
     let attrs = allSpells[s];
@@ -8507,18 +8527,15 @@ PFAPG.classRulesExtra = function(rules, name) {
   let classLevel = 'levels.' + name;
   if(name == 'Alchemist') {
     rules.defineRule('combatNotes.bomb',
+      // Master Chymist level does not change bombs/dy
       classLevel, '=', null,
       'intelligenceModifier', '+', null
     );
     rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
-    rules.defineRule('effectiveAlchemistLevel',
-      'levels.Alchemist', '=', null,
-      'levels.Master Chymist', '+', null
-    );
+    rules.defineRule('effectiveAlchemistLevel', 'levels.Alchemist', '=', null);
     rules.defineRule('featureNotes.discovery',
       classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
     );
-    rules.defineRule('featureNotes.grandDiscovery', classLevel, '=', '1');
     rules.defineRule('features.Throw Anything',
       'featureNotes.throwAnything(Alchemist)', '=', '1'
     );
@@ -8530,7 +8547,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.discovery', '=', null
     );
     rules.defineRule('selectableFeatureCount.Alchemist (Grand Discovery)',
-      'featureNotes.grandDiscovery', '=', null
+      'featureNotes.grandDiscovery', '=', '1'
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
     Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
@@ -8558,8 +8575,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('features.Animal Companion', 'featureNotes.mount', '=', '1');
     rules.defineRule
       ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
-    rules.defineRule
-      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
     rules.defineRule('featCount.Teamwork',
       'featureNotes.greaterTactician', '+=', '1',
       'featureNotes.masterTactician', '+=', '1',
@@ -8568,18 +8583,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.cavalierFeatBonus',
       classLevel, '+=', 'Math.floor(source / 6)'
     );
-    rules.defineRule
-      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
-    rules.defineRule
-      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
     rules.defineRule('featureNotes.tactician',
       'tacticianLevel', '=', 'Math.floor(source / 5) + 1'
     );
-    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
-    rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
-    rules.defineRule
-      ('magicNotes.calling', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
       'featureNotes.order', '=', null
     );
@@ -8589,10 +8595,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
     rules.defineRule('tacticianLevel', classLevel, '=', null);
-    // Reversal of Ride armor penalty is handled by Mount feature; this noop
-    // gets Mounted Mastery skill note displayed in italics
-    rules.defineRule
-      ('skillModifier.Ride', 'skillNotes.mountedMastery', '+', '0');
     let allFeats = rules.getChoices('feats');
     ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
      'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
@@ -8710,24 +8712,6 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
-    let allSpells = rules.getChoices('spells');
-    ['Mage Hand', 'Ghost Sound', 'Levitate', 'Minor Image', 'Telekinesis',
-     'Reverse Gravity'].forEach(s => {
-       let spell = QuilvynUtils.getKeys(allSpells, new RegExp(s + '\\('))[0];
-       let attrs = allSpells[spell];
-       let description = QuilvynUtils.getAttrValue(attrs, 'Description');
-       let level =
-         QuilvynUtils.getAttrValue(attrs, 'Level').replace(/\D*/, '') - 0;
-       let school = QuilvynUtils.getAttrValue(attrs, 'School');
-       let fullName =
-         s + ' (O' + level + ' [Haunted] ' + school.substring(0, 4) + ')';
-       Pathfinder.spellRules(
-         rules, fullName, school, 'O', level, description, false, []
-       );
-       rules.defineRule('spells.' + fullName,
-         'magicNotes.haunted', '=', 'source.includes("' + s + '") ? 1 : null'
-       );
-    });
   } else if(name == 'Summoner') {
     rules.defineRule
       ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
@@ -8943,7 +8927,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanionStats.HD', '+', '2 + Math.floor(source / 2)'
     );
     rules.defineRule('eidolonSpeed',
-      // Note that the free legs evolution will give biped +10 and quad +20
+      // Note that the free legs evolution gives biped +10 and quad +20
       'animalCompanion.Biped Eidolon', '=', '20',
       'animalCompanion.Quadruped Eidolon', '=', '20',
       'animalCompanion.Serpentine Eidolon', '=', '20',
@@ -8966,14 +8950,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
       classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
-    );
-    rules.defineRule('selectableFeatures.excessEvolutionPoints',
-      // Modify # evolution points required for 2nd selection of some evolutions
-      'selectableFeatures.Summoner - Flight Evolution', '+=', '1',
-      'selectableFeatures.Summoner - Damage Reduction Evolution', '+=', '2 + source - 1',
-      'selectableFeatures.Summoner - Breath Weapon Evolution', '+=', '3',
-      'selectableFeatures.Summoner - Fast Healing Evolution', '+=', '3 + source - 1',
-      'selectableFeatures.Summoner - Large Evolution', '+=', '3 + (source - 1) * 5'
     );
     rules.defineRule('summonerFeatures.Bite Evolution',
       'animalCompanion.Quadruped Eidolon', '+=', '1',
@@ -10538,6 +10514,14 @@ PFAPG.classRulesExtra = function(rules, name) {
         continue;
       let elementalSchool = ['Air', 'Earth', 'Fire', 'Water'].includes(s);
       if(elementalSchool) {
+        Pathfinder.choiceRules(rules, 'Feature',
+          'School Specialization (' + s + ')',
+          Pathfinder.FEATURES['School Specialization (%school)'].replaceAll('%school', s)
+        );
+        Pathfinder.choiceRules(rules, 'Feature',
+          'School Opposition (' + s + ')',
+          Pathfinder.FEATURES['School Opposition (%school)'].replaceAll('%school', s)
+        );
         let oppositeSchool = {
           'Air':'Earth', 'Earth':'Air', 'Fire':'Water', 'Water':'Fire'
         };
@@ -10817,6 +10801,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule
+      ('effectiveAlchemistLevel', 'levels.Master Chymist', '+', null);
     rules.defineRule('featureNotes.advancedMutagen',
       classLevel, '=', 'Math.floor(source / 2)'
     );
@@ -11489,6 +11475,25 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.windSight',
       'mysteryLevel', '=', 'source>=7 ? source : null'
     );
+  } else if(name == 'Order Of The Cockatrice') {
+    rules.defineRule
+      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
+  } else if(name == 'Order Of The Shield') {
+    rules.defineRule
+      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
+  } else if(name == 'Order Of The Star') {
+    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
+    rules.defineRule
+      ('magicNotes.calling', pathLevel, '=', 'Math.floor(source / 2)');
+  } else if(name == 'Order Of The Sword') {
+    rules.defineRule
+      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
+    // Reversal of Ride armor penalty is handled by Mount feature; this noop
+    // gets Mounted Mastery skill note displayed in italics
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.mountedMastery', '+', '0');
   }
 };
 
@@ -11681,6 +11686,20 @@ PFAPG.ruleNotes = function() {
     '<p>\n' +
     "Quilvyn Pathfinder Advanced Player's Guide Rule Set Version " + PFAPG.VERSION + '\n' +
     '</p>\n' +
+    '<h3>Usage notes</h3>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Quilvyn gives the Oracle class its own spell list ("O" spells),\n' +
+    '    rather than taking spells from the Cleric list. The Oracle spell\n' +
+    '    list includes spells particular to the Rage Prophet prestige\n' +
+    '    class; Quilvyn randomly assigns these spells only to characters\n' +
+    '    with Rage Prophet levels.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn includes in the Witch spell list spells that are made\n' +
+    '    available by specific patrons. Quilvyn randomly assigns these\n' +
+    '    spells only to characters with the appropriate patron.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
     '<h3>Known Bugs</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
