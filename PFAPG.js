@@ -3946,6 +3946,29 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons <i>ghost touch</i> property for 1 rd"',
 
+  // Stalwart Defender
+  'AC Bonus':'Section=combat Note="+%V AC"',
+  'Bulwark':'Section=combat Note="FILL"',
+  'Clear Mind':'Section=combat Note="FILL"',
+  'Damage Reduction':'Section=feature Note="FILL"',
+  'Defensive Powers':'Section=feature Note="%V selections"',
+  'Defensive Stance':'Section=feature Note="FILL"',
+  'Fearless Defense':'Section=combat Note="FILL"',
+  'Halting Blow':'Section=combat Note="FILL"',
+  'Immobile':'Section=combat Note="FILL"',
+  'Improved Uncanny Dodge':'Section=feature Note="FILL"',
+  'Increased Damage Reduction (Stalwart Defender)':'Section=combat Note="FILL"',
+  'Intercept':'Section=combat Note="FILL"',
+  'Internal Fortitude':'Section=combat Note="FILL"',
+  'Last Word':'Section=feature Note="FILL"',
+  'Mighty Resilience':'Section=combat Note="FILL"',
+  'Mobile Defense':'Section=feature Note="FILL"',
+  'Renewed Defense':'Section=combat Note="FILL"',
+  'Roused Defense':'Section=combat Note="FILL"',
+  'Smash (Stalwart Defender)':'Section=combat Note="FILL"',
+  // Uncanny Dodge as Pathfinder.js
+  'Unexpected Strike (Stalwart Defender)':'Section=combat Note="FILL"',
+
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
   'Allied Spellcaster':
@@ -8134,14 +8157,30 @@ PFAPG.PRESTIGE_CLASSES = {
     'Require=' +
       '"baseAttack >= 7",' +
       'features.Dodge,features.Endurance,features.Toughness,' +
-      '"Armor Proficiency (Medium) || Armor Proficiency (Heavy)" ' +
+      '"features.Armor Proficiency (Medium) || features.Armor Proficiency (Heavy)" ' +
     'HitDie=d12 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Acrobatics,Climb,Intimidate,Perception,"Sense Motive" ' +
     'Features=' +
-      '"1:AC Bonus","1:Defensive Stance","2:Defensive Power",' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
+      '"1:Tower Shield Proficiency","1:Weapon Proficiency (Martial)",' +
+      '"1:AC Bonus","1:Defensive Stance","2:Defensive Powers",' +
       '"3:Uncanny Dodge","5:Damage Reduction","7:Improved Uncanny Dodge",' +
-      '"9:Mobile Defense","10:Last Word"'
+      '"9:Mobile Defense","10:Last Word" ' +
+    'Selectables=' +
+      '"2:Bulwark:Defensive Power",' +
+      '"2:Clear Mind:Defensive Power",' +
+      '"4:Fearless Defense:Defensive Power",' +
+      '"features.Bulwark ? 2:Halting Blow:Defensive Power",' +
+      '"4:Immobile:Defensive Power",' +
+      '"6:Increased Damage Reduction (Stalwart Defender):Defensive Power",' +
+      '"2:Intercept:Defensive Power",' +
+      '"2:Internal Fortitude:Defensive Power",' +
+      '"6:Mighty Resilience:Defensive Power",' +
+      '"2:Renewed Defense:Defensive Power",' +
+      '"2:Roused Defense:Defensive Power",' +
+      '"2:Smash (Stalwart Defender):Defensive Power",' +
+      '"4:Unexpected Strike (Stalwart Defender):Defensive Power"'
 };
 PFAPG.DEITIES = {
   // clerics with no deity still get two domains.
@@ -10728,7 +10767,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.ironpaw', classLevel, '=', null);
     rules.defineRule('companionNotes.silverclaw', classLevel, '=', null);
     rules.defineRule('featureNotes.survivalist(NatureWarden).1',
-      classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork" : ""',
+      classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork" : ""'
     );
     rules.defineRule('features.Empathic Link',
       'companionNotes.companionBond(NatureWarden)', '=', '1'
@@ -10759,6 +10798,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('magicNotes.spiritGuardian', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.spiritWarrior', classLevel, '=', null);
     rules.defineRule('mysteryLevel', classLevel, '+=', null);
+  } else if(name == 'Stalwart Defender') {
+    rules.defineRule
+      ('combatNotes.aCBonus', classLevel, '=', 'Math.floor((source + 2) / 3)');
+    rules.defineRule('featureNotes.defensivePowers',
+      classLevel, '=', 'Math.floor(source /2 )'
+    );
+    rules.defineRule('selectableFeatureCount.Stalwart Defender (Defensive Power)',
+      'featureNotes.defensivePowers', '=', null
+    );
   }
 };
 
