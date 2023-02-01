@@ -1353,7 +1353,7 @@ Pathfinder.FEATURES = {
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="2 %3 attacks %V+%1 HP for %2 rd/dy"',
-  'Clear Mind':'Section=save Note="Reroll Will save 1/rage"',
+  'Clear Mind':'Section=save Note="May reroll Will save 1/rage"',
   'Cold Resistance':'Section=save Note="Resistance %V to cold"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
@@ -1672,7 +1672,7 @@ Pathfinder.FEATURES = {
     'Note="R30\' word imparts +2 attack, skill, ability, and save to target for %V rd %1/dy"',
   'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
   'Internal Fortitude':
-    'Section=save Note="Cannot be sickened or nauseated during rage"',
+    'Section=save Note="Immune to sickened and nauseated during rage"',
   'Intimidating Glare':
     'Section=skill ' +
     'Note="Successful Intimidate during rage shakes foe for at least 1d4 rd"',
@@ -2039,7 +2039,8 @@ Pathfinder.FEATURES = {
   'Two-Weapon Rend':'Section=combat Note="Extra 1d10+%1 HP from double hit"',
   'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
   'Undead Slayer':'Section=combat Note="+1 damage vs. undead"',
-  'Unexpected Strike':'Section=combat Note="AOO when foe enters threat 1/rage"',
+  'Unexpected Strike':
+    'Section=combat Note="May make AOO when foe enters threat area 1/rage"',
   'Unflappable':
     'Section=save,skill Note="+1 vs. fear","+3 resist Intimidate DC"',
   'Unity':'Section=save Note="R30\' Allies use your saving throw %V/dy"',
@@ -5099,7 +5100,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Barbarian', '^=', 'Math.floor((source - 4) / 3)'
     );
     rules.defineRule('combatNotes.increasedDamageReduction',
-      'features.Increased Damage Reduction', '=', null
+      'barbarianFeatures.Increased Damage Reduction', '=', null
     );
     rules.defineRule('combatNotes.guardedStance',
       'ragePowerLevel', '=', '1 + Math.floor(source / 6)'
