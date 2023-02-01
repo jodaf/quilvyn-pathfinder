@@ -3954,7 +3954,7 @@ PFAPG.FEATURES = {
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
-    'Note="Immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest"',
+    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest"',
   'Fearless Defense':
     'Section=save Note="Immune to shaken and frightened during stance"',
   'Halting Blow':
@@ -3963,21 +3963,20 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="+%V CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
   // Improved Uncanny Dodge as Pathfinder.js
-  'Increased Damage Reduction (Stalwart Defender)':
-    'Section=combat Note="DR/- increases by %V during stance"',
+  // Increased Damage Reduction as Pathfinder.js
   'Intercept':
-    'Section=combat ' +
-    'Note="May redirect attack on adjacent ally to self w/automatic hit 1/rd"',
+    'Section=combat Note="May suffer hit from attack on adjacent ally 1/rd"',
   // Internal Fortitude as Pathfinder.js
   'Last Word':
     'Section=combat ' +
     'Note="May make extra attack w/dbl damage when hit to self results in negative HP or unconsciousness"',
   'Mighty Resilience':
     'Section=combat ' +
-    'Note="May negate extra damage from critical hit or sneak attack 1/stance"',
+    'Note="May negate extra damage and effects from critical hit or sneak attack 1/stance"',
   'Mobile Defense':'Section=combat Note="May take 5\' step during stance"',
   'Renewed Defense':
-    'Section=combat Note="May regain %Vd8 HP 1/dy during stance"',
+    'Section=combat ' +
+    'Note="May regain %Vd8+%{constitutionModifier} HP 1/dy during stance"',
   'Roused Defense':
     'Section=combat ' +
     'Note="May use stance while fatigued; immune to fatigued during stance, exhausted afterward"',
@@ -8191,7 +8190,7 @@ PFAPG.PRESTIGE_CLASSES = {
       '"4:Fearless Defense:Defensive Power",' +
       '"features.Bulwark ? 2:Halting Blow:Defensive Power",' +
       '"4:Immobile:Defensive Power",' +
-      '"6:Increased Damage Reduction (Stalwart Defender):Defensive Power",' +
+      '"6:Increased Damage Reduction:Defensive Power",' +
       '"2:Intercept:Defensive Power",' +
       '"2:Internal Fortitude:Defensive Power",' +
       '"6:Mighty Resilience:Defensive Power",' +
@@ -10829,6 +10828,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '+', '(source - 1) * 2'
     );
     rules.defineRule('combatNotes.immobile', classLevel, '=', null);
+    rules.defineRule
+      ('combatNotes.improvedUncannyDodge', classLevel, '+=', null);
     rules.defineRule('combatNotes.increasedDamageReduction',
       'stalwartDefenderFeatures.Increased Damage Reduction', '=', null
     );
@@ -10840,13 +10841,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Stalwart Defender (Defensive Power)',
       'featureNotes.defensivePowers', '=', null
     );
-    rules.defineRule('skillNotes.bulwark',
-      'skillNotes.armorSkillCheckPenalty', '=', '-source'
-    );
+    rules.defineRule
+      ('skillNotes.bulwark', 'skillNotes.armorSkillCheckPenalty', '=', null);
     rules.defineRule
       ('uncannyDodgeSources', classLevel, '+=', 'source>=3 ? 1 : null');
     // Extend notes for rage features reused for defensive stance
-    ['Clear Mind', 'Internal Fortitude', 'Unexpected Strike'].forEach(f => {
+    ['Clear Mind', 'Increased Damage Reduction', 'Internal Fortitude',
+     'Unexpected Strike'].forEach(f => {
       let section =
         QuilvynUtils.getAttrValue(Pathfinder.FEATURES[f], 'Section');
       let note = section + 'Notes.' + f.charAt(0).toLowerCase() + f.substring(1).replaceAll(' ', '');
