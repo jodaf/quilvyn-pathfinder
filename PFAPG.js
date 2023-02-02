@@ -3769,7 +3769,7 @@ PFAPG.FEATURES = {
   'Terrain Dominance (Desert)':
     'Section=save Note="Resistance 10 to fire/Immune to fatigue"',
   'Terrain Dominance (Ethereal Plane)':
-    'Section=magic Note="May use <i>Etheral Jaunt</i> effects 1/dy"',
+    'Section=magic Note="May use <i>Ethereal Jaunt</i> effects 1/dy"',
   'Terrain Dominance (Forest)':
     'Section=magic ' +
     'Note="May use <i>Hallucinatory Terrain</i> effects to create forest images %{3+wisdomModifier}/dy"',
@@ -9325,15 +9325,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       'magicianLevel', '+=', 'source>=5 ? 1 : null'
     );
     rules.defineRule('skillModifier.Bluff',
-      'skillNotes.masterOfDeception', '+', 'null', // No-op for italics
+      'skillNotes.masterOfDeception', '+', 'null', // italics no-op
       'skillNotes.masterOfDeception.1', '+', null
     );
     rules.defineRule('skillModifier.Knowledge (Arcana)',
-      'skillNotes.magicalTalent(Magician)', '+', 'null', // No-op for italics
+      'skillNotes.magicalTalent(Magician)', '+', 'null', // italics no-op
       'skillNotes.magicalTalent(Magician).1', '+', null
     );
     rules.defineRule('skillModifier.Knowledge (Geography)',
-      'skillNotes.worldTraveler(SeaSinger)', '+', 'null', // No-op for italics
+      'skillNotes.worldTraveler(SeaSinger)', '+', 'null', // italics no-op
       'skillNotes.worldTraveler(SeaSinger).1', '+', null
     );
     rules.defineRule('skillModifier.Knowledge (Local)',
@@ -9686,9 +9686,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.deadshot',
       'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
-      'combatNotes.greaterDeadshot.1', '^', null,
-      // Noop to get combatNotes.greaterDeadshot to appear in italics
-      'combatNotes.greaterDeadshot', '+', '0'
+      'combatNotes.greaterDeadshot', '+', 'null', // italics no-op
+      'combatNotes.greaterDeadshot.1', '^', null
     );
     rules.defineRule('combatNotes.greaterDeadshot.1',
       'features.Greater Deadshot', '?', null,
@@ -9810,8 +9809,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.armoredCharger.1',
       'features.Armored Charger', '?', null,
       'skillNotes.armorSkillCheckPenalty', '=', null,
-      // Noop to get Armored Charger note in italics
-      'skillNotes.armoredCharger', '+', '0'
+      'skillNotes.armoredCharger', '+', 'null' // italics no-op
     );
     rules.defineRule
       ('skillNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
@@ -10462,51 +10460,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
-  } else if(name == 'Sorcerer') {
-    let allFeats = rules.getChoices('feats');
-    for(let f in allFeats) {
-      if(f.startsWith('Exotic Weapon Proficiency'))
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Boreal",');
-      else if(f.startsWith('Skill Focus (Craft'))
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Protean",');
-    }
-    rules.defineRule
-      ('abilityNotes.earthGlide', 'bloodlineDeepEarthLevel', '+=', null);
-    rules.defineRule
-      ('combatNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
-    rules.defineRule('combatNotes.combatPrecognition',
-      classLevel, '=', 'Math.floor((source + 1) / 4)'
-    );
-    rules.defineRule
-      ('combatNotes.snakeskin', classLevel, '=', 'Math.floor((source-5) / 4)');
-    rules.defineRule
-      ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
-    rules.defineRule
-      ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
-    rules.defineRule('featureNotes.aquaticAdaptation(Sorcerer)',
-      classLevel, '?', 'source>=9'
-    );
-    rules.defineRule('featureNotes.serpentfriend.1',
-      'featureNotes.serpentfriend', '?', null,
-      classLevel, '=', 'source - 2'
-    );
-    rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
-    rules.defineRule
-      ('familiarMasterLevel', 'featureNotes.serpentfriend.1', '+=', null);
-    rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
-    rules.defineRule
-      ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
-    rules.defineRule
-      ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
-    rules.defineRule
-      ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
-    rules.defineRule('magicNotes.rockseer', classLevel, '?', 'source>=15');
-    rules.defineRule
-      ('saveNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
-    rules.defineRule
-      ('skillNotes.snakeskin', classLevel, '=', 'Math.floor((source - 1) / 4)');
-    rules.defineRule
-      ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
   } else if(name == 'Wizard') {
     let allSchools = rules.getChoices('schools');
     for(var s in allSchools) {
@@ -10786,8 +10739,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bloodlineDraconicLevel',
       'levels.Master Chymist', '+=', null
     );
-    // Noop for italics
-    rules.defineRule('combatNotes.bomb', 'combatNotes.bomb-Thrower', '+', '0');
+    rules.defineRule('combatNotes.bomb',
+      'combatNotes.bomb-Thrower', '+', 'null' // italics no-op
+    );
     rules.defineRule
       ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3) * 2');
     rules.defineRule
@@ -11405,7 +11359,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.sidestepSecret.1',
       'combatNotes.sidestepSecret', '?', null,
-      'saveNotes.sidestepSecret', '?', null, // For italics
+      'saveNotes.sidestepSecret', '?', null, // italics no-op
       'charismaModifier', '=', null,
       'dexterityModifier', '+', '-source',
       '', '^', '0'
@@ -11490,10 +11444,63 @@ PFAPG.pathRulesExtra = function(rules, name) {
   } else if(name == 'Order Of The Sword') {
     rules.defineRule
       ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
-    // Reversal of Ride armor penalty is handled by Mount feature; this noop
-    // gets Mounted Mastery skill note displayed in italics
+    // Reversal of Ride armor penalty is handled by Mount feature
+    rules.defineRule('skillModifier.Ride',
+      'skillNotes.mountedMastery', '+', 'null' // italics no-op
+    );
+  } else if (name == 'Bloodline Aquatic') {
     rules.defineRule
-      ('skillModifier.Ride', 'skillNotes.mountedMastery', '+', '0');
+      ('combatNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
+    rules.defineRule
+      ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
+    rules.defineRule
+      ('featureNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
+    rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
+    rules.defineRule
+      ('saveNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
+  } else if (name == 'Bloodline Boreal') {
+    let allFeats = rules.getChoices('feats');
+    for(let f in allFeats) {
+      if(f.startsWith('Exotic Weapon Proficiency'))
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Boreal",');
+    }
+  } else if (name == 'Bloodline Deep Earth') {
+    rules.defineRule('abilityNotes.earthGlide', pathLevel, '+=', null);
+    rules.defineRule
+      ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
+    rules.defineRule
+      ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
+    rules.defineRule('magicNotes.rockseer', pathLevel, '?', 'source>=15');
+    rules.defineRule
+      ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
+  } else if (name == 'Bloodline Dreamspun') {
+    rules.defineRule('combatNotes.combatPrecognition',
+      pathLevel, '=', 'Math.floor((source + 1) / 4)'
+    );
+  } else if (name == 'Bloodline Protean') {
+    let allFeats = rules.getChoices('feats');
+    for(let f in allFeats) {
+      if(f.startsWith('Skill Focus (Craft'))
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Protean",');
+    }
+  } else if (name == 'Bloodline Serpentine') {
+    rules.defineRule
+      ('combatNotes.snakeskin', pathLevel, '=', 'Math.floor((source-5) / 4)');
+    rules.defineRule('featureNotes.serpentfriend.1',
+      'featureNotes.serpentfriend', '?', null,
+      pathLevel, '=', 'source - 2'
+    );
+    rules.defineRule
+      ('familiarMasterLevel', 'featureNotes.serpentfriend.1', '+=', null);
+    rules.defineRule
+      ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
+    rules.defineRule
+      ('skillNotes.snakeskin', pathLevel, '=', 'Math.floor((source - 1) / 4)');
+  } else if (name == 'Bloodline Starsoul') {
+    rules.defineRule
+      ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
+  } else if (name == 'Bloodline Stormborn') {
+    rules.defineRule('featureNotes.stormchild', pathLevel, '?', 'source>=9');
   }
 };
 
@@ -11642,6 +11649,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 PFAPG.randomizeOneAttribute = function(attributes, attribute) {
+  // TODO Avoid inappropriate selection of Witch sponsor and Rage Prophet spells
   if(attribute == 'companion' &&
       ('levels.Cavalier' in attributes ||
        'selectableFeatures.Oracle - Bonded Mount' in attributes)) {
@@ -11690,7 +11698,7 @@ PFAPG.ruleNotes = function() {
     '<ul>\n' +
     '  <li>\n' +
     '    Quilvyn gives the Oracle class its own spell list ("O" spells),\n' +
-    '    rather than taking spells from the Cleric list. The Oracle spell\n' +
+    '    rather than using spells from the Cleric list. The Oracle spell\n' +
     '    list includes spells particular to the Rage Prophet prestige\n' +
     '    class; Quilvyn randomly assigns these spells only to characters\n' +
     '    with Rage Prophet levels.\n' +
