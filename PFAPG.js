@@ -801,9 +801,9 @@ PFAPG.FEATURES = {
 
   // Human
   'Eye For Talent':
-    'Section=feature,skill ' +
+    'Section=companion,skill ' +
     'Note=' +
-      '"Animal companion or familiar gains +2 on choice of ability",' +
+      '"Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability",' +
       '"+2 Sense Motive"',
   'Heart Of The Fields':
     'Section=save,skill ' +
@@ -819,7 +819,7 @@ PFAPG.FEATURES = {
   'Heart Of The Wilderness':
     'Section=combat,skill ' +
     'Note=' +
-      '"+5 stabilization checks/Does not die until -%{constitution+5} HP",' +
+      '"+5 stabilization checks/Does not die until -%{constitution+level//2} HP",' +
       '"+%V Survival"',
 
   // Alchemist
@@ -11628,22 +11628,28 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.' + name + ' (Racial Trait)',
       prefix + 'Level', '=', alternatives.length
     );
-    for(let i = 0; i < alternatives.length; i++) {
-      let group = alternatives[i];
+    alternatives.forEach(group => {
       // Override level-based feature acquisition
       rules.defineRule
         (prefix + 'Features.' + group[0], prefix + 'Level', '=', 'null');
       group.forEach(choice => {
         let note =
-          'validationNotes.' + prefix + '-' + choice.replaceAll(' ' , '') + 'Alternatives' + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.charAt(i);
-        let text = 'May only select one from ' + name + ' features ' + group.join(', ');
+          'validationNotes.' + prefix + '-' + choice.replaceAll(' ' , '') + 'Alternatives';
+        let prohibited = [];
+        alternatives.forEach(group => {
+          if(group.includes(choice))
+            prohibited = prohibited.concat(group.filter(x => x != choice));
+        });
+        let text = choice + ' may not be combined with ' + 
+            prohibited.join(prohibited.length == 2 ? ' or ' : ', ');
+        text = text.replace(/,([^,]*)$/, ', or $1');
         rules.defineChoice('notes', note + ':' + text);
-        rules.defineRule(note, prefix + 'Features.' + choice, '?', null);
-        group.filter(alt => alt != choice).forEach(alt => {
-          rules.defineRule(note, prefix + 'Features.' + alt, '+=', '1');
+        rules.defineRule(note, prefix + 'Features.' + choice, '=', '0');
+        prohibited.forEach(alt => {
+          rules.defineRule(note, prefix + 'Features.' + alt, '+', '1');
         });
       });
-    }
+    });
   }
 };
 
