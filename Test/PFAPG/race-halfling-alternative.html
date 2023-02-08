@@ -11,14 +11,15 @@ var attributes = {
   "dexterity":12, "experience":904, "experienceTrack":"3.5", "faction":"Liberty's Edge", 
   "feats.Skill Focus (Fly)":1, "feats.Swap Places":1, "gender":"Male", "hitPoints":10, "intelligence":14, 
   "languages.Aquan":1, "languages.Goblin":1, "levels.Fighter":1, 
-  "name":"Race-Halfling-Alternative", "race":"Halfling", "selectableFeatures.Fighter - Core Fighter":1, 
-  "selectableFeatures.Halfling - Craven":1, "selectableFeatures.Halfling - Low Blow":1, 
-  "selectableFeatures.Halfling - Outrider":1, "selectableFeatures.Halfling - Practicality":1, 
-  "selectableFeatures.Halfling - Swift As Shadows":1, "selectableFeatures.Halfling - Underfoot (Halfling)":1, 
-  "selectableFeatures.Halfling - Wanderlust":1, "selectableFeatures.Halfling - Warslinger":1, "shield":"Buckler", 
-  "skills.Acrobatics":1, "skills.Fly":1, "skills.Handle Animal":1, "skills.Survival":1, 
-  "strength":14, "traits.History Of Heresy":1, "traits.Indomitable Faith":1, 
-  "weapons.Chakram":1, "weapons.Glaive-Guisarme":1, "weapons.Spear":1, "wisdom":12
+  "name":"Race-Halfling-Alternative", "notes":"* Practicality: +2 Craft (Alchemy) skill", "race":"Halfling", 
+  "selectableFeatures.Fighter - Core Fighter":1, "selectableFeatures.Halfling - Craven":1, 
+  "selectableFeatures.Halfling - Low Blow":1, "selectableFeatures.Halfling - Outrider":1, 
+  "selectableFeatures.Halfling - Practicality":1, "selectableFeatures.Halfling - Swift As Shadows":1, 
+  "selectableFeatures.Halfling - Underfoot (Halfling)":1, "selectableFeatures.Halfling - Wanderlust":1, 
+  "selectableFeatures.Halfling - Warslinger":1, "shield":"Buckler", "skills.Craft (Alchemy)":1, "skills.Fly":1, 
+  "skills.Handle Animal":1, "skills.Survival":1, "strength":14, "traits.History Of Heresy":1, 
+  "traits.Indomitable Faith":1, "weapons.Chakram":1, "weapons.Glaive-Guisarme":1, "weapons.Spear":1, 
+  "wisdom":12
 };
   </script>
 </head>
@@ -102,7 +103,7 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Acrobatics: (dex;cc) 1 (+0)</td>
+        <td>Craft (Alchemy): (int) 1 (+8)</td>
         <td>Handle Animal: (cha) 1 (+7)</td>
         <td></td>
       </tr><tr style="text-align:left">
@@ -117,6 +118,8 @@ var attributes = {
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
         <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Goodies Craft (Alchemy): +2 Craft (Alchemy)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -227,17 +230,23 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
   <tr style="text-align:center">
-    <td><b>Magic Notes</b>: Wanderlust: +1 caster level on movement spells</td>
+    <td><b>Magic Notes</b>: Wanderlust: +1 caster level on movement spells and abilities</td>
   </tr></table>
 </td>
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
   <tr style="text-align:center">
+    <td>    <table id="NotesPart" style="width:100%">
+    <tr style="text-align:center">
+      <td>* Practicality: +2 Craft (Alchemy) skill</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Halfling-Craven Alternatives: Craven may not be combined with Fearless, Practicality, Wanderlust, Halfling Luck, Underfoot (Halfling), or Wanderlust</td>
+        <td>Halfling-Craven Alternatives: Craven may not be combined with Fearless, Practicality, Wanderlust, Halfling Luck, or Underfoot (Halfling)</td>
       </tr><tr style="text-align:center">
         <td>Halfling-Outrider Alternatives: Outrider may not be combined with Sure-Footed, Practicality, Swift As Shadows, or Warslinger</td>
       </tr><tr style="text-align:center">
@@ -247,7 +256,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Halfling-Underfoot (Halfling) Alternatives: Underfoot (Halfling) may not be combined with Halfling Luck, Craven, or Wanderlust</td>
       </tr><tr style="text-align:center">
-        <td>Halfling-Wanderlust Alternatives: Wanderlust may not be combined with Fearless, Craven, Practicality, Halfling Luck, Craven, or Underfoot (Halfling)</td>
+        <td>Halfling-Wanderlust Alternatives: Wanderlust may not be combined with Fearless, Craven, Practicality, Halfling Luck, or Underfoot (Halfling)</td>
       </tr><tr style="text-align:center">
         <td>Halfling-Warslinger Alternatives: Warslinger may not be combined with Sure-Footed, Outrider, Practicality, or Swift As Shadows</td>
       </tr><tr style="text-align:center">

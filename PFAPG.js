@@ -795,7 +795,7 @@ PFAPG.FEATURES = {
   'Wanderlust':
     'Section=magic,skill ' +
     'Note=' +
-      '"+1 caster level on movement spells",' +
+      '"+1 caster level on movement spells and abilities",' +
       '"+2 Knowledge (Geography)/+2 Survival"',
   'Warslinger':'Section=combat Note="May reload a sling as a free action"',
 
@@ -11613,7 +11613,10 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'halflingFeatures.Craven', '+', '-1',
       'halflingFeatures.Practicality', '+', '-1',
       'halflingFeatures.Wanderlust', '+', '-1'
-    );
+    ); 
+    QuilvynRules.prerequisiteRules
+      (rules, 'sanity', 'practicality', 'features.Practicality',
+       "Sum 'skills.Craft' > 0 || Sum 'skills.Profession' > 0 || skills.Sense Motive > 0");
   } else if(name.match(/Human/)) {
     alternatives = [
       ['Bonus Feat','Eye For Talent'],
@@ -11640,6 +11643,9 @@ PFAPG.raceRulesExtra = function(rules, name) {
           if(group.includes(choice))
             prohibited = prohibited.concat(group.filter(x => x != choice));
         });
+        // Filter duplicates
+        prohibited =
+          prohibited.filter((item, idx) => prohibited.indexOf(item) == idx);
         let text = choice + ' may not be combined with ' + 
             prohibited.join(prohibited.length == 2 ? ' or ' : ', ');
         text = text.replace(/,([^,]*)$/, ', or $1');
