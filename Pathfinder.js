@@ -7832,6 +7832,15 @@ Pathfinder.ruleNotes = function() {
     '<p>\n' +
     'Quilvyn Pathfinder Rule Set Version ' + Pathfinder.VERSION + '\n' +
     '</p>\n' +
+    '<h3>Usage Notes</h3>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Quilvyn provides no specific place to record character favored\n' +
+    '    classes. When this information is important (e.g., for characters\n' +
+    '    with levels in a non-favored class), you can list favored classes\n' +
+    '    in the notes section.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
     '<h3>Known Bugs</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
