@@ -1564,7 +1564,7 @@ Pathfinder.FEATURES = {
   'Gentle Rest':
     'Section=magic Note="Touch staggers for 1 rd (undead for %1 rd) %V/dy"',
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
-  'Gnome Magic':'Section=magic Note="+1 Spell DC (Illusion)"',
+  'Gnome Magic':'Section=magic Note="+1 Spell DC (Illusion)%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy\' : \'\'}"',
   'Gold Finger':
     'Section=skill ' +
     'Note="+1 Disable Device/+1 Sleight Of Hand/choice is a class skill"',
@@ -7341,6 +7341,8 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   if(name.match(/Gnome/)) {
     rules.defineRule('spellSlots.Gnomish0', 'charisma', '?', 'source >= 11');
     rules.defineRule('spellSlots.Gnomish1', 'charisma', '?', 'source >= 11');
+    rules.defineRule
+      ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
   } else if(name == 'Half-Elf') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
