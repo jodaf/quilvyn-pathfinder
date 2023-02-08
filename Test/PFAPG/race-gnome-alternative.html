@@ -12,14 +12,16 @@ var attributes = {
   "feats.Skill Focus (Fly)":1, "feats.Swap Places":1, "gender":"Male", "hitPoints":10, "intelligence":18, 
   "languages.Aquan":1, "languages.Elven":1, "languages.Gnoll":1, "languages.Goblin":1, 
   "languages.Ignan":1, "languages.Infernal":1, "levels.Fighter":1, "name":"Race-Gnome-Alternative", 
-  "race":"Gnome", "selectableFeatures.Fighter - Core Fighter":1, 
+  "notes":"* Academician: +2 Knowledge (Engineering) skill", "race":"Gnome", "selectableFeatures.Fighter - Core Fighter":1, 
   "selectableFeatures.Gnome - Academician":1, "selectableFeatures.Gnome - Eternal Hope":1, 
   "selectableFeatures.Gnome - Gift Of Tongues":1, "selectableFeatures.Gnome - Magical Linguist":1, 
   "selectableFeatures.Gnome - Master Tinker":1, "selectableFeatures.Gnome - Pyromaniac":1, 
-  "selectableFeatures.Gnome - Warden Of Nature":1, "shield":"Buckler", "skills.Diplomacy":1, "skills.Fly":1, 
-  "skills.Knowledge (Engineering)":1, "skills.Linguistics":1, "skills.Perception":1, "skills.Swim":1, 
-  "strength":14, "traits.History Of Heresy":1, "traits.Indomitable Faith":1, 
-  "weapons.Chakram":1, "weapons.Glaive-Guisarme":1, "weapons.Spear":1, "wisdom":12
+  "selectableFeatures.Gnome - Warden Of Nature":1, "shield":"Buckler", "skills.Bluff":1, "skills.Diplomacy":1, "skills.Fly":1, 
+  "skills.Knowledge (Engineering)":1, "skills.Linguistics":1, "skills.Perception":1, 
+  "spells.Arcane Mark(Gnomish0 Univ)":1, "spells.Comprehend Languages(Gnomish1 Divi)":1, 
+  "spells.Message(Gnomish0 Tran)":1, "spells.Read Magic(Gnomish0 Divi)":1, "strength":14, 
+  "traits.History Of Heresy":1, "traits.Indomitable Faith":1, "weapons.Chakram":1, 
+  "weapons.Glaive-Guisarme":1, "weapons.Spear":1, "wisdom":12
 };
   </script>
 </head>
@@ -109,13 +111,13 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Diplomacy: (cha;cc) 1 (+3)</td>
-        <td>Knowledge (Engineering): (int) 1 (+9)</td>
-        <td>Perception: (wis;cc) 1 (+4)</td>
-      </tr><tr style="text-align:left">
+        <td>Bluff: (cha;cc) 1 (+3)</td>
         <td>Fly: (dex;cc) 1 (+4)</td>
         <td>Linguistics: (int;cc) 1 (+5)</td>
-        <td>Swim: (str) 1 (+2)</td>
+      </tr><tr style="text-align:left">
+        <td>Diplomacy: (cha;cc) 1 (+3)</td>
+        <td>Knowledge (Engineering): (int) 1 (+11)</td>
+        <td>Perception: (wis;cc) 1 (+4)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -126,6 +128,8 @@ var attributes = {
         <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Gift Of Tongues: +1 Bluff/+1 Diplomacy/+1 Language Count</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Goodies Knowledge (Engineering): +2 Knowledge (Engineering)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
@@ -196,6 +200,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Master Tinker: Proficient with any self-made weapon</td>
       </tr><tr style="text-align:center">
+        <td>Pyromaniac: +1 alchemist level for bomb fire damage</td>
+      </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/adjacent ally who has same feat; ally suffers no AOO</td>
       </tr><tr style="text-align:center">
         <td>Warden Of Nature: +2 AC and +1 attack vs. aberrations, oozes, and vermin</td>
@@ -243,11 +249,23 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Arcane Mark (Gnomish0 Univ): Permanent personal rune inscribed on touched</td>
+    </tr><tr style="text-align:left">
+      <td>Comprehend Languages (Gnomish1 Divi): Self understands all languages for 10 min</td>
+    </tr><tr style="text-align:left">
+      <td>Message (Gnomish0 Tran): R110' 1 targets hold 10-min whispered dialogue</td>
+    </tr><tr style="text-align:left">
+      <td>Read Magic (Gnomish0 Divi): Self reads magical writing for 10 min</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
       <td>Magical Linguist: +1 save DC on language-dependent and magical writing spells/May cast <i>Arcane Mark</i>, <i>Comprehend Languages</i>, <i>Message</i>, and <i>Read Magic</i> 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Pyromaniac: +1 caster level on fire spells/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy</td>
+      <td>Pyromaniac: +1 caster level on fire and flame spells/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy</td>
     </tr></table>
 </td>
   </tr></table>
@@ -255,6 +273,12 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
   <tr style="text-align:center">
+    <td>    <table id="NotesPart" style="width:100%">
+    <tr style="text-align:center">
+      <td>* Academician: +2 Knowledge (Engineering) skill</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">

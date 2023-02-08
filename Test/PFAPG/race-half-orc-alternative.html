@@ -9,17 +9,17 @@ var attributes = {
   "_path":"ztest/pfapg/race/half-orc/alternative", 
   "alignment":"Chaotic Good", "armor":"Chain Shirt", "charisma":11, "constitution":11, "deity":"Sarenrae", 
   "dexterity":12, "experience":904, "experienceTrack":"3.5", "faction":"Liberty's Edge", 
-  "feats.Skill Focus (Intimidate)":1, "feats.Swap Places":1, "gender":"Male", "hitPoints":10, "intelligence":14, 
-  "languages.Aquan":1, "languages.Goblin":1, "levels.Fighter":1, 
+  "feats.Skill Focus (Climb)":1, "feats.Swap Places":1, "gender":"Male", "hitPoints":10, "intelligence":16, 
+  "languages.Aquan":1, "languages.Celestial":1, "languages.Goblin":1, "levels.Fighter":1, 
   "name":"Race-Half-Orc-Alternative", "race":"Half-Orc", "selectableFeatures.Fighter - Core Fighter":1, 
   "selectableFeatures.Half-Orc - Beastmaster":1, "selectableFeatures.Half-Orc - Bestial":1, 
   "selectableFeatures.Half-Orc - Cavewight":1, "selectableFeatures.Half-Orc - Chain Fighter":1, 
   "selectableFeatures.Half-Orc - Gatecrasher":1, "selectableFeatures.Half-Orc - Plagueborn":1, 
   "selectableFeatures.Half-Orc - Rock Climber":1, "selectableFeatures.Half-Orc - Sacred Tattoo":1, 
   "selectableFeatures.Half-Orc - Scavenger":1, "selectableFeatures.Half-Orc - Toothy":1, "shield":"Buckler", 
-  "skills.Climb":1, "skills.Handle Animal":1, "skills.Intimidate":1, "skills.Perception":1, 
-  "strength":14, "traits.History Of Heresy":1, "traits.Indomitable Faith":1, 
-  "weapons.Chakram":1, "weapons.Glaive-Guisarme":1, "weapons.Spear":1, "wisdom":12
+  "skills.Acrobatics":1, "skills.Appraise":1, "skills.Climb":1, "skills.Handle Animal":1, 
+  "skills.Perception":1, "strength":14, "traits.History Of Heresy":1, "traits.Indomitable Faith":1, 
+  "weapons.Dire Flail":1, "weapons.Net":1, "weapons.Spiked Chain":1, "weapons.Whip":1, "wisdom":12
 };
   </script>
 </head>
@@ -35,7 +35,7 @@ var attributes = {
       <td><b>Strength</b>: 14 (+2)</td>
       <td><b>Dexterity</b>: 12 (+1)</td>
       <td><b>Constitution</b>: 11 (+0)</td>
-      <td><b>Intelligence</b>: 14 (+2)</td>
+      <td><b>Intelligence</b>: 16 (+3)</td>
       <td><b>Wisdom</b>: 12 (+1)</td>
       <td><b>Charisma</b>: 11 (+0)</td>
     </tr></table>
@@ -75,7 +75,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Skill Focus (Intimidate); Swap Places</td>
+        <td><b>Feats</b>: Skill Focus (Climb); Swap Places</td>
         <td><b>Traits</b>: History Of Heresy; Indomitable Faith</td>
         <td><b>Half-Orc Features</b>: Beastmaster; Bestial; Cavewight; Chain Fighter; Darkvision; Gatecrasher; Half-Orc Ability Adjustment; Orc Blood; Plagueborn; Rock Climber; Sacred Tattoo; Scavenger; Toothy; Weapon Proficiency (Falchion/Greataxe)</td>
         <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Core Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
@@ -98,24 +98,24 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td>    <table id="SkillPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Skills</b> (4 ranks, max 1 each):</td>
+      <td><b>Skills</b> (5 ranks, max 1 each):</td>
     </tr><tr style="text-align:center">
       <td>      <table id="Skills" style="width:100%">
       <col style="width:33%"/>
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Climb: (str) 1 (+4)</td>
-        <td>Intimidate: (cha) 1 (+7)</td>
-        <td></td>
-      </tr><tr style="text-align:left">
-        <td>Handle Animal: (cha) 1 (+6)</td>
+        <td>Acrobatics: (dex;cc) 1 (+0)</td>
+        <td>Climb: (str) 1 (+7)</td>
         <td>Perception: (wis;cc) 1 (+4)</td>
+      </tr><tr style="text-align:left">
+        <td>Appraise: (int;cc) 1 (+6)</td>
+        <td>Handle Animal: (cha) 1 (+6)</td>
         <td></td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Languages</b>: Aquan; Common; Goblin; Orc</td>
+      <td><b>Languages</b>: Aquan; Celestial; Common; Goblin; Orc</td>
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
@@ -125,15 +125,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Bestial: +2 Perception</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Intelligence Language Adjustment: +2</i></td>
+        <td><i>Intelligence Language Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Intelligence Skill Ranks Adjustment: +2</i></td>
+        <td><i>Intelligence Skill Ranks Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rock Climber: +1 Acrobatics/+1 Climb</i></td>
       </tr><tr style="text-align:center">
         <td><i>Scavenger: +2 Appraise/+2 Perception (find hidden objects, note spoiled food, identify poison by taste)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Skill Focus (Intimidate): +3 Intimidate</i></td>
+        <td><i>Skill Focus (Climb): +3 Climb</i></td>
       </tr><tr style="text-align:center">
         <td>Cavewight: +1 Knowledge (Dungeoneering) (underground)/+1 Survival (underground)</td>
       </tr></table>
@@ -170,7 +170,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Chakram (+2 d8+2 x2@20 R30'); Glaive-Guisarme (+2 d10+2 x3@20); Spear (+2 d8+2 x3@20 R20'); Unarmed (+3 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Bite (+3 d4+2 x2@20); Dire Flail (+2 d8+2/d8+2 x2@20); Net (+2 d0+2 x2@20 R10'); Spiked Chain (+2 2d4+2 x2@20); Unarmed (+3 d3+2 x2@20); Whip (+3 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -184,13 +184,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Toothy: Bite inflicts 1d4 HP piercing</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
       </tr><tr style="text-align:center">
         <td>Gatecrasher: +2 Strength checks (break objects)/+2 Sunder CMB</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/adjacent ally who has same feat; ally suffers no AOO</td>
-      </tr><tr style="text-align:center">
-        <td>Toothy: Bite inflicts 1d4 HP piercing</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
