@@ -674,12 +674,12 @@ PFAPG.FEATURES = {
   'Stonesinger':'Section=magic Note="+1 caster level on earth spells"',
   'Stubborn':
     'Section=save ' +
-    'Note="+2 Will vs. charm and compulsion; may re-attempt save 1 rd after failing"',
+    'Note="+2 Will vs. charm and compulsion; may retry save 1 rd after failing"',
 
   // Elf
   'Desert Runner':
     'Section=save ' +
-    'Note="+4 vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
+    'Note="+4 Con and Fort vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
   'Dreamspeaker':
     'Section=magic ' +
     'Note="+1 divination and sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
@@ -687,7 +687,7 @@ PFAPG.FEATURES = {
   'Lightbringer':
     'Section=magic,save ' +
     'Note=' +
-      '"+1 caster level on light-based spells%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>\' : \'\'}",' +
+      '"+1 caster level on light-based spells and abilities%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>\' : \'\'}",' +
       '"Immune to light-based blindness and dazzle"',
   'Silent Hunter':
     'Section=skill ' +
@@ -713,16 +713,16 @@ PFAPG.FEATURES = {
   'Magical Linguist':
     'Section=magic,save ' +
     'Note=' +
-      '"+1 save DC on language-dependent and magical writing spells%{charisma>=11 ? \'/May cast <i>Arcane Mark</i>, <i>Comprehend Languages</i>, <i>Message</i>, <i>Read Magic</i> 1/dy\' : \'\'}",' +
+      '"+1 save DC on language-dependent and magical writing spells%{charisma>=11 ? \'/May cast <i>Arcane Mark</i>, <i>Comprehend Languages</i>, <i>Message</i>, and <i>Read Magic</i> 1/dy\' : \'\'}",' +
       '"+2 vs. language-dependent and magical writing spells"',
   'Master Tinker':
     'Section=combat,skill ' +
     'Note=' +
       '"Proficient with any self-made weapon",' +
-      '"+1 Disable Device/+1 Knowledge (Dungeoneering)"',
+      '"+1 Disable Device/+1 Knowledge (Engineering)"',
   'Pyromaniac':
     'Section=magic ' +
-    'Note="+1 caster level on fire spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, <i>Produce Flame</i> 1/dy\' : \'\'}"',
+    'Note="+1 caster level on fire spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy\' : \'\'}"',
   'Warden Of Nature':
     'Section=combat ' +
     'Note="+2 AC and +1 attack vs. aberrations, oozes, and vermin"',
@@ -740,7 +740,7 @@ PFAPG.FEATURES = {
   'Integrated':'Section=skill Note="+1 Bluff/+1 Disguise/+1 Knowledge (Local)"',
   'Sociable (Half-Elf)':
     'Section=skill ' +
-    'Note="May re-attempt Diplomacy to change attitude after -5 failure"',
+    'Note="May retry Diplomacy to change attitude after failing by 5 or more"',
   'Water Child':
       'Section=skill ' +
       'Note="+4 Swim/May take 10 while swimming/May learn Aquan"',
@@ -6978,7 +6978,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Antipathy':'Witch8',
   'Arcane Eye':'Alchemist4,Arcana4,O4,Witch4', // Rage Prophet
   'Arcane Lock':'Wards1',
-  'Arcane Mark':'Witch0',
+  'Arcane Mark':'Gnomish0,Witch0',
   'Arcane Sight':'Alchemist3,Inquisitor3,Witch3',
   'Astral Projection':'Dreamspun9,O9,Witch9',
   'Atonement':'Inquisitor5,O5,Purity5',
@@ -7035,7 +7035,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Command Undead':'Inevitable3,Witch2', // Witch Plague
   'Commune':'Inquisitor5,O5',
   'Comprehend Languages':
-    'Alchemist1,Inquisitor1,Language1,Memory1,O1,Thought1,Witch1',
+    'Alchemist1,Gnomish1,Inquisitor1,Language1,Memory1,O1,Thought1,Witch1',
   'Cone Of Cold':'Boreal5,Ice6,Oceans6,Witch6',
   'Confusion':'Deception4,Lust4,Protean4,Thievery4,Witch4',
   'Consecrate':'Inquisitor2,O2',
@@ -7149,6 +7149,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Fireball':'Ash3,Flame3,Witch3', // Witch Elements
   'Flame Strike':'Day5,Inquisitor5,Light5,O5,Witch5', // Witch Elements
   'Flaming Sphere':'Witch2', // Witch Elements
+  'Flare':'Gnomish0',
   'Floating Disk':'Trade1',
   'Flesh To Stone':'Witch6',
   'Fly':
@@ -7290,7 +7291,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Maze':'Witch8',
   'Meld Into Stone':'O3,Stone3',
   'Mending':'O0,Witch0',
-  'Message':'Witch0',
+  'Message':'Gnomish0,Witch0',
   'Meteor Swarm':'Boreal9,Heavens9,Starsoul9,Witch9', // Witch Elements
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8,Witch8',
   'Mind Fog':'Witch5',
@@ -7330,7 +7331,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Prayer':'"Archon Good3","Archon Law3",Inquisitor3,Leadership3,O3',
   'Prismatic Sphere':'Construct9,Day9,Defense9,Light9,Purity9,Toil9',
   'Prismatic Spray':'Heavens7',
-  'Produce Flame':'Ash2',
+  'Produce Flame':'Ash2,Gnomish1',
   'Programmed Image':'Witch6', // Witch Deception
   'Project Image':'Deception7',
   'Protection From Arrows':'Alchemist2',
@@ -7350,7 +7351,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Raise Dead':'Resurrection5,O5,Witch6',
   'Ray Of Enfeeblement':'Shadow1,Witch1',
   'Ray Of Exhaustion':'Witch3',
-  'Read Magic':'Inquisitor0,O0,Witch0',
+  'Read Magic':'Gnomish0,Inquisitor0,O0,Witch0',
   'Reduce Person':'Alchemist1,Witch1',
   'Refuge':'Family7,Freedom7,O7,Revolution7,Witch9',
   'Regenerate':'O7,Restoration7,Witch7',
@@ -11588,8 +11589,9 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ['Obsessive', 'Academician'],
       ['Resist Illusion', 'Magical Linguist', 'Pyromaniac']
     ];
+    rules.defineRule('languageCount', 'skillNotes.giftOfTongues.1', '+', null);
     rules.defineRule('skillNotes.giftOfTongues.1',
-      'skillNotes.Gift Of Tongues', '?', null,
+      'features.Gift Of Tongues', '?', null,
       '', '=', '0',
       'skills.Linguistics', '+', null
     );
@@ -11694,6 +11696,25 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
       attributes['animalCompanion.' + choices[QuilvynUtils.random(0, choices.length - 1)]] = 1;
       attributes.animalCompanionName = SRD35.randomName(null);
     }
+  }
+  if(attribute == 'spells' &&
+     (attributes.race+'').match(/Gnome/) &&
+     attributes.charisma >= 11) {
+    let gnomishSpells =
+      'selectableFeatures.Gnome - Gnome Magic' in attributes ?
+        ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
+      : 'selectableFeatures.Gnome - Magical Linguist' in attributes ?
+        ['Arcane Mark', 'Comprehend Languages', 'Message', 'Read Magic']
+      : 'selectableFeatures.Gnome - Pyromaniac' in attributes ?
+        ['Dancing Lights', 'Flare', 'Prestidigitation', 'Produce Flame']
+      : [];
+    gnomishSpells.forEach(s => {
+      let spells =
+        QuilvynUtils.getKeys
+          (this.getChoices('spells'), new RegExp(s + '\\s*\\(Gnomish'));
+      if(spells.length > 0)
+        attributes['spells.' + spells[0]] = 1;
+    });
   }
   Pathfinder.randomizeOneAttribute.apply
     (Pathfinder.rules, [attributes, attribute]);
