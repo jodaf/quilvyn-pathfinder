@@ -663,15 +663,18 @@ PFAPG.FEATURES = {
     'Note="+2 Craft and Profession to create metal and stone objects"',
   'Deep Warrior':'Section=combat Note="+2 AC and grapple CMB vs. aberrations"',
   'Lorekeeper (Dwarf)':
-    'Section=skill Note="+2 Knowledge (History) (dwarves and dwarven enemies)"',
+    'Section=skill ' +
+    'Note="+2 Knowledge (History) (dwarves and dwarven enemies); may use untrained"',
   'Magic Resistant':
     'Section=magic,save ' +
     'Note=' +
       '"-2 arcane spell concentration",' +
       '"SR %{level+5}"',
   'Relentless':
-    'Section=combat Note="+2 bull rush and overrun when standing on ground"',
-  'Stonesinger':'Section=magic Note="+1 caster level on earth spells"',
+    'Section=combat ' +
+    'Note="+2 CMB to bull rush and overrun when standing on ground"',
+  'Stonesinger':
+    'Section=magic Note="+1 caster level on earth and stone spells"',
   'Stubborn':
     'Section=save ' +
     'Note="+2 Will vs. charm and compulsion; may retry save 1 rd after failing"',
@@ -679,10 +682,10 @@ PFAPG.FEATURES = {
   // Elf
   'Desert Runner':
     'Section=save ' +
-    'Note="+4 Con and Fort vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
+    'Note="+4 Constitution and Fortitude vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
   'Dreamspeaker':
     'Section=magic ' +
-    'Note="+1 divination and sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
+    'Note="+1 Spell DC (Divination)/+1 sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
   'Eternal Grudge':'Section=combat Note="+1 attack vs. dwarves and orcs"',
   'Lightbringer':
     'Section=magic,save ' +
@@ -721,8 +724,10 @@ PFAPG.FEATURES = {
       '"Proficient with any self-made weapon",' +
       '"+1 Disable Device/+1 Knowledge (Engineering)"',
   'Pyromaniac':
-    'Section=magic ' +
-    'Note="+1 caster level on fire spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy\' : \'\'}"',
+    'Section=combat,magic ' +
+    'Note=' +
+      '"+1 alchemist level for bomb fire damage",' +
+      '"+1 caster level on fire and flame spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy\' : \'\'}"',
   'Warden Of Nature':
     'Section=combat ' +
     'Note="+2 AC and +1 attack vs. aberrations, oozes, and vermin"',
@@ -834,7 +839,7 @@ PFAPG.FEATURES = {
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+effectiveAlchemistLevel//2+intelligenceModifier} Ref half) splash %V/dy"',
+    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) splash %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
     'Section=magic Note="Combining two effects into one extract uses +2 slot"',
@@ -843,7 +848,7 @@ PFAPG.FEATURES = {
     'Note="1 min process combines two poison doses; yields +50% frequency and +2 save DC for 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Delayed Bomb':
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
@@ -876,15 +881,15 @@ PFAPG.FEATURES = {
     'Note="Imbibing mutagen grants 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
+    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
   'Frost Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Grand Discovery':
     'Section=feature Note="1 selection/+2 Discovery selections"',
   'Grand Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
+    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{effectiveAlchemistLevel*10} min"',
   'Greater Mutagen':
     'Section=magic ' +
     'Note="May brew and drink potion that gives +4 AC and +6/-2 and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{effectiveAlchemistLevel*10} min"',
@@ -909,7 +914,7 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %V min"',
   'Persistent Mutagen':
-    'Section=magic Note="Mutagen effects last %{levels.Alchemist} hr"',
+    'Section=magic Note="Mutagen effects last %{effectiveAlchemistLevel} hr"',
   "Philosopher's Stone":
     'Section=magic ' +
     'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
@@ -926,7 +931,7 @@ PFAPG.FEATURES = {
     'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
   'Shock Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{levels.Alchemist//2+1}d6+%{intelligenceModifier} electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
+    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d6+%{intelligenceModifier} electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
@@ -951,7 +956,7 @@ PFAPG.FEATURES = {
     'Note="Has Throw Anything feature; throws inflict +%{intelligenceModifier} HP damage"',
   'True Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +8 AC, +8 to strength, dexterity, and constitution, and -2 intelligence, wisdom, and charisma for %{levels.Alchemist*10} min"',
+    'Note="May brew and drink potion that gives +8 AC, +8 to strength, dexterity, and constitution, and -2 intelligence, wisdom, and charisma for %{effectiveAlchemistLevel*10} min"',
 
   // Cavalier
   'Act As One':
@@ -8540,7 +8545,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Throw Anything',
       'featureNotes.throwAnything(Alchemist)', '=', '1'
     );
-    rules.defineRule('magicNotes.mutagen', classLevel, '=', 'source * 10');
+    rules.defineRule
+      ('magicNotes.mutagen', 'effectiveAlchemistLevel', '=', 'source * 10');
     rules.defineRule('saveNotes.poisonResistance',
       classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
     );
@@ -8556,7 +8562,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'effectiveAlchemistLevel', '=', 'Math.floor((source + 1) / 2) + "d6"'
     );
     rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
-    rules.defineRule('weapons.Bomb', classLevel, '=', '1');
+    rules.defineRule('weapons.Bomb', 'effectiveAlchemistLevel', '=', '1');
   } else if(name == 'Cavalier') {
     rules.defineRule('animalCompanionFeatures.Light Armor Proficiency',
       'companionNotes.mount', '=', '1'
@@ -10740,9 +10746,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bloodlineDraconicLevel',
       'levels.Master Chymist', '+=', null
     );
-    rules.defineRule('combatNotes.bomb',
-      'combatNotes.bomb-Thrower', '+', 'null' // italics no-op
-    );
     rules.defineRule
       ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3) * 2');
     rules.defineRule
@@ -10756,8 +10759,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule
-      ('effectiveAlchemistLevel', 'levels.Master Chymist', '+', null);
+    rules.defineRule('effectiveAlchemistLevel',
+      'combatNotes.bomb-Thrower', '+', 'null', // italics no-op
+      'levels.Master Chymist', '+', null
+    );
     rules.defineRule('featureNotes.advancedMutagen',
       classLevel, '=', 'Math.floor(source / 2)'
     );
@@ -11550,10 +11555,11 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Half-Orc (Racial Trait)',
       'half-OrcFeatures.Plagueborn', '+', '-1'
     );
+    rules.defineRule('weapons.Bite', 'combatNotes.toothy', '=', '1');
   } else if(name.match(/Dwarf/)) {
     alternatives = [
       ['Dwarf Hatred', 'Ancient Enmity'],
-      ['Greed', 'Craftsman', 'Lorekeeper'],
+      ['Greed', 'Craftsman', 'Lorekeeper (Dwarf)'],
       ['Defensive Training', 'Deep Warrior'],
       ['Hardy', 'Magic Resistant', 'Stubborn'],
       ['Stability', 'Relentless'],
@@ -11566,10 +11572,6 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ['Elven Magic', 'Desert Runner', 'Eternal Grudge', 'Lightbringer',
        'Silent Hunter', 'Spirit Of The Waters', 'Woodcraft']
     ];
-    rules.defineRule('selectableFeatureCount.Elf (Racial Trait)',
-      'elfFeatures.Lightbringer', '+', '-1',
-      'elfFeatures.Spirit Of The Waters', '+', '-1'
-    );
     rules.defineRule('features.Weapon Proficiency (Longspear)',
       'featureNotes.spiritOfTheWaters', '=', '1'
     );
@@ -11578,6 +11580,10 @@ PFAPG.raceRulesExtra = function(rules, name) {
     );
     rules.defineRule('features.Weapon Proficiency (Trident)',
       'featureNotes.spiritOfTheWaters', '=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Elf (Racial Trait)',
+      'elfFeatures.Lightbringer', '+', '-1',
+      'elfFeatures.Spirit Of The Waters', '+', '-1'
     );
   } else if(name.match(/Gnome/)) {
     alternatives = [
@@ -11589,6 +11595,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ['Obsessive', 'Academician'],
       ['Resist Illusion', 'Magical Linguist', 'Pyromaniac']
     ];
+    rules.defineRule('combatNotes.pyromaniac', '?', 'levels.Alchemist', null);
     rules.defineRule('languageCount', 'skillNotes.giftOfTongues.1', '+', null);
     rules.defineRule('skillNotes.giftOfTongues.1',
       'features.Gift Of Tongues', '?', null,
