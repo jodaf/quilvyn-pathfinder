@@ -11586,14 +11586,16 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'elfFeatures.Lightbringer', '+', '-1',
       'elfFeatures.Spirit Of The Waters', '+', '-1'
     );
-    /* TODO
     Pathfinder.featureSpells(rules,
-      'Dreamspeaker', 'ElfDream', 'charisma', 'level', ['Dream']
+      'Dreamspeaker', 'Dreamspeaker', 'charisma', 'level', ['Dream']
     );
+    rules.defineRule
+      ('casterLevels.Dreamspeaker', 'charisma', '?', 'source >= 15');
     Pathfinder.featureSpells(rules,
-      'Lightbringer', 'ElfLight', 'intelligence', 'level', ['Light']
+      'Lightbringer', 'Lightbringer', 'intelligence', 'level', ['Light']
     );
-    */
+    rules.defineRule
+      ('casterLevels.Lightbringer', 'intelligence', '?', 'source>=10');
   } else if(name.match(/Gnome/)) {
     alternatives = [
       ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
@@ -11619,6 +11621,18 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'gnomeFeatures.Pyromaniac', '+', '-1',
       'gnomeFeatures.Warden Of Nature', '+', '-1'
     );
+    Pathfinder.featureSpells(rules,
+      'Magical Linguist', 'MagicalLinguist', 'charisma', 'level',
+      ['Arcane Mark', 'Comprehend Languages', 'Message', 'Read Magic']
+    );
+    rules.defineRule
+      ('casterLevels.MagicalLinguist', 'charisma', '?', 'source >= 11');
+    Pathfinder.featureSpells(rules,
+      'Pyromaniac', 'Pyromaniac', 'charisma', 'level',
+      ['Dancing Lights', 'Flare', 'Prestidigitation', 'Produce Flame']
+    );
+    rules.defineRule
+      ('casterLevels.Pyromaniac', 'charisma', '?', 'source >= 11');
   } else if(name.match(/Halfling/)) {
     alternatives = [
       ['Fearless', 'Craven', 'Practicality', 'Wanderlust'],
