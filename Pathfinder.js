@@ -798,7 +798,8 @@ Pathfinder.FEATS = {
 };
 Pathfinder.FEATURES = {
   // Shared with SRD35
-  'A Thousand Faces':'Section=magic Note="<i>Alter Self</i> at will"',
+  'A Thousand Faces':
+    'Section=magic Note="May use <i>Alter Self</i> effects at will"',
   'Abundant Step':
     'Section=magic Note="May spend 2 Ki Points to teleport self %V\'"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -855,7 +856,8 @@ Pathfinder.FEATURES = {
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="Deliver touch spells if in contact w/master when cast"',
-  'Detect Evil':'Section=magic Note="R60\' <i>Detect Evil</i> at will"',
+  'Detect Evil':
+    'Section=magic Note="May use <i>Detect Evil</i> effects at will"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
   'Diamond Body':'Section=save Note="Immune to poison"',
   'Diamond Soul':'Section=save Note="Spell resistance %V"',
@@ -1040,7 +1042,6 @@ Pathfinder.FEATURES = {
   'Rapid Reload (Light)':
     'Section=combat Note="Reload Light Crossbow as free action"',
   'Rapid Shot':'Section=combat Note="Normal and extra ranged -2 attacks"',
-  'Remove Disease':'Section=magic Note="<i>Remove Disease</i> %V/week"',
   'Resist Illusion':'Section=save Note="+2 vs. illusions"',
   "Resist Nature's Lure":
     'Section=save Note="+4 vs. spells of feys and spells targeting plants"',
@@ -2193,7 +2194,8 @@ Pathfinder.FEATURES = {
   'Phase Arrow':
     'Section=combat Note="Arrow passes through normal obstacles %V/dy"',
   'Poison Use':
-    'Section=feature Note="No chance of self-poisoning when applying to blade"',
+    'Section=feature ' +
+    'Note="No chance of self-poisoning when applying to a weapon"',
   'Precise Strike (Duelist)':
     'Section=combat ' +
     'Note="+%V HP damage with light or one-handed piercing weapon"',
@@ -5326,6 +5328,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     }
     rules.defineRule('wildShapeLevel', 'levels.Druid', '=', null);
 
+    /* TODO Postponed
+    Pathfinder.featureSpells(rules,
+      'A Thousand Faces', 'DruidFaces', 'wisdom', 'levels.Druid',
+      ['Alter Self']
+    );
+    */
+
   } else if(name == 'Fighter') {
 
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
@@ -5570,9 +5579,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Paladin', '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
-    rules.defineRule('magicNotes.removeDisease',
-      'levels.Paladin', '=', 'Math.floor((source - 3) / 3)'
-    );
     rules.defineRule('saveNotes.divineGrace', 'charismaModifier', '=', null);
     rules.defineRule('selectableFeatureCount.Paladin (Divine Bond)',
       'levels.Paladin', '=', 'source >= 5 ? 1 : null'
@@ -5592,6 +5598,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.join(", ") : ""'
       );
     }
+    /* TODO Postponed
+    Pathfinder.featureSpells(rules,
+      'Detect Evil', 'PaladinDetect', 'charisma', 'levels.Paladin',
+      ['Detect Evil']
+    );
+    */
 
   } else if(name == 'Ranger') {
 
@@ -6122,7 +6134,7 @@ Pathfinder.companionRules = function(
   SRD35.companionRules
     (rules, name, str, dex, con, intel, wis, cha, 1, ac, attack, damage, size, level);
   if(name.startsWith('Advanced ') && level) {
-    var name = name.replace('Advanced ', '');
+    name = name.replace('Advanced ', '');
     rules.defineRule
       ('animalCompanionStats.Advance Level', 'animalCompanion.' + name, '=', level);
   }
@@ -6478,6 +6490,57 @@ Pathfinder.featRulesExtra = function(rules, name) {
 Pathfinder.featureRules = function(rules, name, sections, notes) {
   SRD35.featureRules(rules, name, sections, notes);
   // No changes needed to the rules defined by SRD35 method
+};
+
+/*
+ * Defines in #rules# the rules to grant the spells listed in #spellList# when
+ * feature #feature# is acquired. #spellType# contains the spell group and
+ * spellAbility the associated ability. Each element of #spellList# has the
+ * format "[min level:]spell name[,spell name...]". If min level is provided,
+ * the spells listed in that element are not acquired until the character's
+ * value of #levelAttr# reaches that level.
+ */
+Pathfinder.featureSpells = function(
+  rules, feature, spellType, spellAbility, levelAttr, spellList
+) {
+
+  let allSpells = rules.getChoices('spells');
+
+  spellList.forEach(nameList => {
+    let minLevel = 1;
+    if(nameList.match(/^\d+:/)) {
+      minLevel = nameList.split(':')[0] - 0;
+      nameList = nameList.split(':')[1];
+    }
+    nameList.split(',').forEach(name => {
+      let spell = QuilvynUtils.getKeys(allSpells, '^' + name + '\\(')[0];
+      if(!spell) {
+        console.log('Unknown spell "' + name + '" for feature ' + feature);
+      } else {
+        let spellAttrs = allSpells[spell];
+        let spellDescription =
+          QuilvynUtils.getAttrValue(spellAttrs, 'Description');
+        let spellLevel =
+          QuilvynUtils.getAttrValue(spellAttrs, 'Level').match(/\d/)[0] - 0;
+        let spellSchool = QuilvynUtils.getAttrValue(spellAttrs, 'School');
+        let fullName = name + '(' + spellType + spellLevel + ' ' + spellSchool.substring(0, 4) + ')';
+        Pathfinder.spellRules(
+          rules, fullName, spellSchool, spellType, spellLevel, spellDescription,
+          false
+        );
+        rules.defineRule('spells.' + fullName, 'features.' + feature, '=', '1');
+        if(minLevel > 1)
+          rules.defineRule
+            ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
+      }
+    });
+  });
+  rules.defineRule('casterLevels.' + spellType, levelAttr, '=', null);
+  rules.defineRule('spellDifficultyClass.' + spellType,
+    'casterLevels.' + spellType, '?', null,
+    spellAbility + 'Modifier', '=', '10 + source'
+  );
+
 };
 
 /*
