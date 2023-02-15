@@ -685,7 +685,8 @@ PFAPG.FEATURES = {
     'Note="+4 Constitution and Fortitude vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
   'Dreamspeaker':
     'Section=magic ' +
-    'Note="+1 Spell DC (Divination)/+1 sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
+    'Note=' +
+      '"+1 Spell DC (Divination)/+1 sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
   'Eternal Grudge':'Section=combat Note="+1 attack vs. dwarves and orcs"',
   'Lightbringer':
     'Section=magic,save ' +
@@ -848,7 +849,7 @@ PFAPG.FEATURES = {
     'Note="1 min process combines two poison doses; yields +50% frequency and +2 save DC for 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Delayed Bomb':
     'Section=combat ' +
     'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
@@ -881,10 +882,10 @@ PFAPG.FEATURES = {
     'Note="Imbibing mutagen grants 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
+    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
   'Frost Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Grand Discovery':
     'Section=feature Note="1 selection/+2 Discovery selections"',
   'Grand Mutagen':
@@ -921,7 +922,7 @@ PFAPG.FEATURES = {
   'Poison Bomb':
     'Section=combat ' +
     'Note="May create bomb that kills creatures up to 6 HD (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
-  'Poison Resistance':'Section=save Note="Resistance %V poison"',
+  'Poison Resistance':'Section=save Note="%V to poison"',
   'Poison Touch':
     'Section=combat ' +
     'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Con neg)"',
@@ -931,7 +932,7 @@ PFAPG.FEATURES = {
     'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
   'Shock Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{effectiveAlchemistLevel//2+1}d6+%{intelligenceModifier} electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
+    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
@@ -947,10 +948,10 @@ PFAPG.FEATURES = {
   'Swift Alchemy':
     'Section=combat,magic ' +
     'Note=' +
-      '"May apply poison to a blade as a move action",' +
+      '"May apply poison to a weapon as a move action",' +
       '"May create alchemical items in half normal time"',
   'Swift Poisoning':
-    'Section=combat Note="May apply poison to a blade as a swift action"',
+    'Section=combat Note="May apply poison to a weapon as a swift action"',
   'Throw Anything (Alchemist)':
     'Section=feature ' +
     'Note="Has Throw Anything feature; throws inflict +%{intelligenceModifier} HP damage"',
@@ -2827,7 +2828,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May forego move for immunity to knocked prone%{levels.Monk>=16 ? \' and forced move\' : \'\'} for 1 rd"',
   'Drunken Courage':
-    'Section=save Note="Immunity to fear when Drunken Ki Pool is not empty"',
+    'Section=save Note="Immune to fear when Drunken Ki Pool is not empty"',
   'Drunken Ki':
     'Section=feature ' +
     'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out AOO when Drunken Ki Pool is not empty"',
@@ -3319,7 +3320,7 @@ PFAPG.FEATURES = {
     'Section=magic,save ' +
     'Note=' +
       '"+2 save DC and spell penetration vs. lawful creatures",' +
-      '"Immunity to acid, petrification, and polymorph"',
+      '"Immune to acid, petrification, and polymorph"',
   'Blizzard (Sorcerer)':
     'Section=magic ' +
     'Note="May cast combined <i>Control Winds</i> and <i>Sleet Storm</i> centered on self 1/dy"',
@@ -8548,7 +8549,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.mutagen', 'effectiveAlchemistLevel', '=', 'source * 10');
     rules.defineRule('saveNotes.poisonResistance',
-      classLevel, '=', 'source>=10 ? Infinity : source>=8 ? 6 : source>= 5 ? 4 : 2'
+      classLevel, '=', 'source<10 ? "Resistance " + (source>=8 ? 6 : source>=6 ? 4 : 2) : "Immune"'
     );
     rules.defineRule('selectableFeatureCount.Alchemist (Discovery)',
       'featureNotes.discovery', '=', null
@@ -11585,6 +11586,14 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'elfFeatures.Lightbringer', '+', '-1',
       'elfFeatures.Spirit Of The Waters', '+', '-1'
     );
+    /* TODO
+    Pathfinder.featureSpells(rules,
+      'Dreamspeaker', 'ElfDream', 'charisma', 'level', ['Dream']
+    );
+    Pathfinder.featureSpells(rules,
+      'Lightbringer', 'ElfLight', 'intelligence', 'level', ['Light']
+    );
+    */
   } else if(name.match(/Gnome/)) {
     alternatives = [
       ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
