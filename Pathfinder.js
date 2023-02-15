@@ -2699,11 +2699,7 @@ Pathfinder.RACES = {
       '"Weapon Familiarity (Gnome Hooked Hammer)",' +
       '"Defensive Training","Gnome Hatred","Gnome Magic","Keen Senses",' +
       '"Low-Light Vision",Obsessive,"Resist Illusion",Slow,Small ' +
-    'Languages=Common,Gnome,Sylvan ' +
-    'SpellAbility=charisma ' +
-    'SpellSlots=' +
-      '"Gnomish0:1=3",' +
-      '"Gnomish1:1=1"',
+    'Languages=Common,Gnome,Sylvan',
   'Half-Elf':
     'Features=' +
       '"Half-Elf Ability Adjustment",' +
@@ -2966,7 +2962,7 @@ Pathfinder.SPELLS = {
   'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3 Liquid=Potion',
   'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4 Liquid=Potion',
   'Curse Water':'Level=C1',
-  'Dancing Lights':'Level=B0,Gnomish0,Rogue0,W0',
+  'Dancing Lights':'Level=B0,Rogue0,W0',
   'Darkness':
     'Level=Adept2,B2,C2,W2 ' +
     'Description="Touched reduces light level by 1 in 20\' radius for $L min" ' +   'Liquid=Oil',
@@ -3115,7 +3111,7 @@ Pathfinder.SPELLS = {
   'Gate':'Level=C9,Celestial9,Glory9,W9',
   'Geas/Quest':'Level=B6,C6,Charm6,Nobility6,W6',
   'Gentle Repose':'Level=C2,Repose2,W3 Liquid=Oil',
-  'Ghost Sound':'Level=Adept0,B0,Gnomish0,Rogue0,W0',
+  'Ghost Sound':'Level=Adept0,B0,Rogue0,W0',
   'Ghoul Touch':'Level=W2',
   'Giant Vermin':
     'Level=C4,D4 ' +
@@ -3373,7 +3369,7 @@ Pathfinder.SPELLS = {
   'Power Word Kill':'Level=W9,War9',
   'Power Word Stun':'Level=Arcane8,Infernal8,W8,War8',
   'Prayer':'Level=C3,Community3,P3',
-  'Prestidigitation':'Level=B0,Gnomish0,Rogue0,W0',
+  'Prestidigitation':'Level=B0,Rogue0,W0',
   'Prismatic Sphere':'Level=Artifice9,Protection9,Sun9,W9',
   'Prismatic Spray':'Level=W7',
   'Prismatic Wall':'Level=W8',
@@ -3492,7 +3488,7 @@ Pathfinder.SPELLS = {
   'Song Of Discord':'Level=B5',
   'Soul Bind':'Level=C9,W9',
   'Sound Burst':'Level=B2,C2',
-  'Speak With Animals':'Level=Animal1,B3,D1,Gnomish1,R1',
+  'Speak With Animals':'Level=Animal1,B3,D1,R1',
   'Speak With Dead':'Level=C3,Knowledge3,Repose3',
   'Speak With Plants':'Level=B4,D3,R2',
   'Spectral Hand':'Level=W2',
@@ -6523,7 +6519,9 @@ Pathfinder.featureSpells = function(
         let spellLevel =
           QuilvynUtils.getAttrValue(spellAttrs, 'Level').match(/\d/)[0] - 0;
         let spellSchool = QuilvynUtils.getAttrValue(spellAttrs, 'School');
-        let fullName = name + '(' + spellType + spellLevel + ' ' + spellSchool.substring(0, 4) + ')';
+        let schoolAbbr = (spellSchool || 'Universal').substring(0, 4);
+        let fullName =
+          name + '(' + spellType + spellLevel + ' ' + schoolAbbr + ')';
         Pathfinder.spellRules(
           rules, fullName, spellSchool, spellType, spellLevel, spellDescription,
           false
@@ -6535,7 +6533,10 @@ Pathfinder.featureSpells = function(
       }
     });
   });
-  rules.defineRule('casterLevels.' + spellType, levelAttr, '=', null);
+  rules.defineRule('casterLevels.' + spellType,
+    'features.' + feature, '?', null,
+    levelAttr, '=', null
+  );
   rules.defineRule('spellDifficultyClass.' + spellType,
     'casterLevels.' + spellType, '?', null,
     spellAbility + 'Modifier', '=', '10 + source'
@@ -7402,10 +7403,14 @@ Pathfinder.raceRules = function(
  */
 Pathfinder.raceRulesExtra = function(rules, name) {
   if(name.match(/Gnome/)) {
-    rules.defineRule('spellSlots.Gnomish0', 'charisma', '?', 'source >= 11');
-    rules.defineRule('spellSlots.Gnomish1', 'charisma', '?', 'source >= 11');
     rules.defineRule
       ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
+    Pathfinder.featureSpells(rules,
+      'Gnome Magic', 'GnomeMagic', 'charisma', 'level',
+      ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
+    );
+    rules.defineRule
+      ('spellDifficultyClass.GnomeMagic', 'charisma', '?', 'source >= 11');
   } else if(name == 'Half-Elf') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
