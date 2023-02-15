@@ -6526,7 +6526,8 @@ Pathfinder.featureSpells = function(
           rules, fullName, spellSchool, spellType, spellLevel, spellDescription,
           false
         );
-        rules.defineRule('spells.' + fullName, 'features.' + feature, '=', '1');
+        rules.defineRule
+          ('spells.' + fullName, 'casterLevels.' + spellType, '=', '1');
         if(minLevel > 1)
           rules.defineRule
             ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
@@ -7410,7 +7411,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
       ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
     );
     rules.defineRule
-      ('spellDifficultyClass.GnomeMagic', 'charisma', '?', 'source >= 11');
+      ('casterLevels.GnomeMagic', 'charisma', '?', 'source >= 11');
   } else if(name == 'Half-Elf') {
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'adaptability', 'features.Adaptability',
