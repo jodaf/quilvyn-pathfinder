@@ -1111,7 +1111,7 @@ Pathfinder.FEATURES = {
   'Still Spell':
     'Section=magic Note="Cast spell w/out movement uses +1 spell slot"',
   'Stonecunning':
-    'Section=skill Note="+2 Perception (stone), automatic check w/in 10\'"',
+    'Section=skill Note="+%V Perception (stone), automatic check w/in 10\'"',
   'Stunning Fist':
     'Section=combat Note="Struck foe stunned for 1 rd %V/dy (DC %1 Fort neg)"',
   'Suggestion':
@@ -7420,6 +7420,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
+    rules.defineRule('skillNotes.stonecunning', '', '=', '2');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
     rules.defineRule('skillPoints', 'skillNotes.skilled', '+', null);
