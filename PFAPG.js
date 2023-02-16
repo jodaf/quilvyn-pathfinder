@@ -1089,8 +1089,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
-    'Section=feature ' +
-    'Note="Gain 1 Teamwork feat/R30\' May share Teamwork feat w/allies for %{tacticianLevel//2+3} rd %V/dy"',
+    'Section=combat,feature ' +
+    'Note=' +
+      '"R30\' May share Teamwork feat w/allies for %{tacticianLevel//2+3} rd %V/dy",' +
+      '"Gain 1 Teamwork feat"',
 
   // Inquisitor
   'Bane':
@@ -4121,7 +4123,7 @@ PFAPG.FEATURES = {
     'Note="Claws inflict %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
   'Aspect Of The Beast (Night Senses)':'Section=feature Note="%V"',
   "Aspect Of The Beast (Predator's Leap)":
-    'Section=skill Note="May make running jump from standing start"',
+    'Section=skill Note="May jump from standing start w/out increased DC"',
   'Aspect Of The Beast (Wild Instinct)':
     'Section=combat,skill ' +
     'Note=' +
@@ -4263,7 +4265,7 @@ PFAPG.FEATURES = {
     'Note="Add half favored enemy bonus to AC and CMD vs. %V chosen favored enemy"',
   'Fight On':
     'Section=combat ' +
-    'Note="May gain %{constitutionModifier} temporary HP for 1 min when brought to 0 HP 1/dy"',
+    'Note="May gain %{constitutionModifier} temporary HP for 1 min when brought to 0 or negative HP 1/dy"',
   'Flyby Attack':
     'Section=combat Note="May take action any time during fly move"',
   'Focused Shot':
@@ -4344,9 +4346,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May move normally on next rd after Sidestep"',
   'Improved Steal':
     'Section=combat Note="No AOO on Steal, +2 Steal check, +2 Steal CMD"',
-  'Improved Stonecunning':
-    'Section=skill ' +
-    'Note="+4 Perception (stone); replaces +2 from Stonecunning feature"',
+  'Improved Stonecunning':'Section=skill Note="Increased Stonecunning effects"',
   "In Harm's Way":
     'Section=combat ' +
     'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
@@ -4356,7 +4356,7 @@ PFAPG.FEATURES = {
   'Ironguts':
     'Section=save,skill ' +
     'Note=' +
-      '"+2 vs. nauseated or sickened condition from ingestion",' +
+      '"+2 vs. ingested poisons, nauseated, and sickened",' +
       '"+2 Survival (find food for self)"',
   'Ironhide':'Section=combat Note="+1 AC"',
   'Keen Scent':'Section=feature Note="Has Scent features"',
@@ -4419,7 +4419,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Using chosen ranged weapon while threatened provokes no foe AOO"',
   'Practiced Tactician':
-    'Section=feature Note="May use Tactician feature +%V/dy"',
+    'Section=combat Note="May use Tactician feature +%V/dy"',
   'Precise Strike':
     'Section=combat Note="+1d6 HP damage when flanking ally has same feat"',
   'Preferred Spell':
@@ -4519,7 +4519,7 @@ PFAPG.FEATURES = {
     'Note="Dbl range or area of effect of audible Bardic Performance underground, also affecting creatures w/tremorsense/+2 Bardic Performance DC vs. earth creatures"',
   'Stone-Faced':
     'Section=skill ' +
-    'Note="+4 Bluff (conceal feelings or motives), foe suffers +5 Sense Motive DC"',
+    'Note="+4 Bluff (lying and concealing feelings or motives), foe suffers +5 Sense Motive DC"',
   'Stunning Assault':
     'Section=combat ' +
     'Note="May suffer -5 attack to inflict 1 rd stun (DC %{10+baseAttack} Fort neg)"',
@@ -4569,11 +4569,11 @@ PFAPG.FEATURES = {
   'Vermin Heart':
     'Section=magic,skill ' +
     'Note=' +
-      '"May target vermin with animal spells",' +
+      '"May target vermin with animal spells and abilities",' +
       '"May use Wild Empathy w/vermin"',
   'War Singer':
     'Section=feature ' +
-    'Note="Dbl range or area of effect of audible Bardic Performance on battlefield/+2 Bardic Performance DC vs. orcs"',
+    'Note="Dbl range or area of effect of audible Bardic Performance in clash of 12 or more combatants/+2 Bardic Performance DC vs. orcs"',
   'Well-Prepared':
     'Section=skill ' +
     'Note="May use Sleight Of Hand (DC 10 + GP cost) to produce required mundane item 1/dy"'
@@ -8578,6 +8578,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bannerLevel', classLevel, '+=', null);
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
+    rules.defineRule('combatNotes.tactician',
+      'tacticianLevel', '=', 'Math.floor(source / 5) + 1'
+    );
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
     rules.defineRule
       ('features.Animal Companion', 'featureNotes.mount', '=', '1');
@@ -8590,9 +8593,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('featureNotes.cavalierFeatBonus',
       classLevel, '+=', 'Math.floor(source / 6)'
-    );
-    rules.defineRule('featureNotes.tactician',
-      'tacticianLevel', '=', 'Math.floor(source / 5) + 1'
     );
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
       'featureNotes.order', '=', null
@@ -10999,6 +10999,9 @@ PFAPG.featRulesExtra = function(rules, name) {
   } else if(name == 'Favored Defense') {
     rules.defineRule
       ('combatNotes.favoredDefense', 'feats.Favored Defense', '=', null);
+  } else if(name == 'Improved Stonecunning') {
+    rules.defineRule
+      ('skillNotes.stonecunning', 'skillNotes.improvedStonecunning', '+', '2');
   } else if(name == 'Keen Scent') {
     rules.defineRule('features.Scent', 'featureNotes.keenScent', '=', '1');
   } else if(name == 'Major Spell Expertise') {
@@ -11034,11 +11037,11 @@ PFAPG.featRulesExtra = function(rules, name) {
           'features.Weapon Specialization (' + w + ')', '+=', '1'
         );
   } else if(name == 'Practiced Tactician') {
-    rules.defineRule('featureNotes.practicedTactician',
+    rules.defineRule('combatNotes.practicedTactician',
       'feats.Practiced Tactician', '=', null
     );
     rules.defineRule
-      ('featureNotes.tactician', 'featureNotes.practicedTactician', '+', null);
+      ('combatNotes.tactician', 'combatNotes.practicedTactician', '+', null);
   } else if(name == 'Preferred Spell') {
     rules.defineRule
       ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
