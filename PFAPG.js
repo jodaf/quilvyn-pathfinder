@@ -4151,8 +4151,8 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
   'Cloud Step':
-    'Section=magic ' +
-    'Note="May use <i>Air Walk</i> effects for half of Slow Fall distance (50\' max)"',
+    'Section=ability ' +
+    'Note="May walk half of Slow Fall distance (50\' max) on air for 1 rd"',
   'Cockatrice Strike':
     'Section=combat ' +
     'Note="Critical hit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
@@ -10999,6 +10999,11 @@ PFAPG.featRulesExtra = function(rules, name) {
   } else if(name == 'Favored Defense') {
     rules.defineRule
       ('combatNotes.favoredDefense', 'feats.Favored Defense', '=', null);
+  } else if(name == 'Gnome Trickster') {
+    Pathfinder.featureSpells(rules,
+      'Gnome Trickster', 'GnomeTrickster', 'charisma', 'level',
+      ['Mage Hand', 'Prestidigitation']
+    );
   } else if(name == 'Improved Stonecunning') {
     rules.defineRule
       ('skillNotes.stonecunning', 'skillNotes.improvedStonecunning', '+', '2');
