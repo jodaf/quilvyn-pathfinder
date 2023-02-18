@@ -4508,8 +4508,7 @@ PFAPG.FEATURES = {
   'Stabbing Shot':
     'Section=combat ' +
     'Note="May use first full-attack bow attack to push adjacent foe 5\'"',
-  'Steel Soul':
-    'Section=save Note="+4 vs. spells; replaces +2 from Hardy feature"',
+  'Steel Soul':'Section=save Note="Increased Hardy effects"',
   'Step Up And Strike':'Section=combat Note="May make AOO after Step Up"',
   'Stone Sense':
     'Section=feature ' +
@@ -11566,6 +11565,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
     );
     rules.defineRule('weapons.Bite', 'combatNotes.toothy', '=', '1');
   } else if(name.match(/Dwarf/)) {
+    rules.defineRule('saveNotes.hardy.1', 'saveNotes.steelSoul', '+', '2');
     alternatives = [
       ['Dwarf Hatred', 'Ancient Enmity'],
       ['Greed', 'Craftsman', 'Lorekeeper (Dwarf)'],
