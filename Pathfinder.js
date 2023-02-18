@@ -1612,7 +1612,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="R30\' +%V attack w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
     'Section=combat Note="R30\' +%V w/melee weapon %1/dy"',
-  'Hardy':'Section=save Note="+2 vs. poison and spells"',
+  'Hardy':'Section=save Note="+%V vs. poison/+%1 vs. spells"',
   "Healer's Blessing":
     'Section=magic Note="<i>Cure</i> spells heal 50% more HP"',
   'Heavenly Fire':
@@ -7420,6 +7420,8 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   } else if(name.match(/Dwarf/)) {
     rules.defineRule
       ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
+    rules.defineRule('saveNotes.hardy', '', '=', '2');
+    rules.defineRule('saveNotes.hardy.1', '', '=', '2');
     rules.defineRule('skillNotes.stonecunning', '', '=', '2');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
