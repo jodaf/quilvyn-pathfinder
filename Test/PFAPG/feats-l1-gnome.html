@@ -26,8 +26,9 @@ var attributes = {
   "skills.Escape Artist":2, "skills.Intimidate":5, "skills.Knowledge (Engineering)":2, 
   "skills.Linguistics":2, "skills.Perception":5, "skills.Perform (Dance)":1, 
   "skills.Perform (Keyboard)":8, "skills.Profession (Librarian)":5, "skills.Sense Motive":5, 
-  "skills.Stealth":9, "skills.Survival":7, "strength":13, "weapons.Dart":1, "weapons.Greataxe":1, 
-  "weapons.Heavy Mace":1, "weapons.Light Mace":1, "wisdom":13
+  "skills.Stealth":9, "skills.Survival":7, "spells.Acid Splash(ArcaneTalent0 Conj)":1, 
+  "strength":13, "weapons.Dart":1, "weapons.Greataxe":1, "weapons.Heavy Mace":1, 
+  "weapons.Light Mace":1, "wisdom":13
 };
   </script>
 </head>
@@ -158,9 +159,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Expert Acrobat: No light armor Acrobatics, Climb, Fly, Sleight Of Hand, or Stealth penalties/+2 Acrobatics and Fly in no armor</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Keen Senses: +2 Perception</i></td>
+        <td><i>Keen Senses: +4 Perception</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Sharp Senses: +2 Perception</i></td>
+        <td><i>Sharp Senses: Increased Keen Senses effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Small: +2 Fly/-4 Intimidate/+4 Stealth</i></td>
       </tr><tr style="text-align:center">
@@ -293,7 +294,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell DC</b>: Gnome Magic: 15; Gnome Trickster: 15; Rogue: 10</td>
+        <td><b>Spell Slots</b>: Arcane Talent0</td>
+        <td><b>Spell DC</b>: Arcane Talent: 15; Gnome Magic: 15; Gnome Trickster: 15</td>
       </tr></table>
 </td>
     </tr></table>
@@ -301,9 +303,11 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
+      <td>Acid Splash (Arcane Talent0 Conj): R50' Ranged touch inflicts 1d3 HP</td>
+    </tr><tr style="text-align:left">
       <td>Dancing Lights (Gnome Magic0 Evoc): R200' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (Gnome Magic0 Illu): R50' Produces sound volume of 20 humans (DC 16 Will disbelieve) for 10 rd</td>
+      <td>Ghost Sound (Gnome Magic0 Illu): R50' Produces sound volume of 20 humans (DC 15 Will disbelieve) for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Mage Hand (Gnome Trickster0 Tran): R50' Self moves up to 5 lb target 15'/rd for conc</td>
     </tr><tr style="text-align:left">
@@ -319,9 +323,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Gnome Magic: +1 Spell DC (Illusion)/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy</i></td>
     </tr><tr style="text-align:center">
-      <td>Arcane Spell Failure: 15%</td>
-    </tr><tr style="text-align:center">
-      <td>Arcane Talent: May cast chosen W0 spell 3/dy (DC 15)</td>
+      <td>Arcane Talent: May cast chosen level 0 spell 3/dy</td>
     </tr><tr style="text-align:center">
       <td>Gnome Trickster: May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy</td>
     </tr><tr style="text-align:center">
