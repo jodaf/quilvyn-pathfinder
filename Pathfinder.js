@@ -1726,7 +1726,7 @@ Pathfinder.FEATURES = {
   'Magical Lineage':
     'Section=magic Note="-1 spell level for chosen spell metamagic"',
   'Magical Talent':'Section=magic Note="Use chosen cantrip 1/dy"',
-  'Major Magic':'Section=magic Note="May cast chosen W1 spell 2/dy"',
+  'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
   'Master Craftsman (%craftSkill)':
     'Section=feature,skill ' +
@@ -1769,7 +1769,7 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, Survival/choice is a class skill"',
   'Mind Over Matter':'Section=save Note="+1 Will"',
-  'Minor Magic':'Section=magic Note="May cast chosen W0 spell 3/dy"',
+  'Minor Magic':'Section=magic Note="May cast chosen level 0 spell 3/dy"',
   'Missionary':
     'Section=magic,skill ' +
     'Note="+1 caster level and save DC on 3 spells",' +
