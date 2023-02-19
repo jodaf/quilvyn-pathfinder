@@ -1726,7 +1726,7 @@ Pathfinder.FEATURES = {
   'Magical Lineage':
     'Section=magic Note="-1 spell level for chosen spell metamagic"',
   'Magical Talent':'Section=magic Note="Use chosen cantrip 1/dy"',
-  'Major Magic':'Section=magic Note="Cast W1 spell 2/dy"',
+  'Major Magic':'Section=magic Note="May cast chosen W1 spell 2/dy"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
   'Master Craftsman (%craftSkill)':
     'Section=feature,skill ' +
@@ -1769,7 +1769,7 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, Survival/choice is a class skill"',
   'Mind Over Matter':'Section=save Note="+1 Will"',
-  'Minor Magic':'Section=magic Note="Cast W0 spell 3/dy"',
+  'Minor Magic':'Section=magic Note="May cast chosen W0 spell 3/dy"',
   'Missionary':
     'Section=magic,skill ' +
     'Note="+1 caster level and save DC on 3 spells",' +
@@ -3022,7 +3022,7 @@ Pathfinder.SPELLS = {
   'Dispel Evil':'Level=C5,Good5,P4',
   'Dispel Good':'Level=C5,Evil5',
   'Dispel Law':'Level=C5,Chaos5',
-  'Dispel Magic':'Level=Arcane3,B3,C3,D4,Magic3,P3,Rogue3,W3 Liquid=Potion',
+  'Dispel Magic':'Level=Arcane3,B3,C3,D4,Magic3,P3,W3 Liquid=Potion',
   'Displacement':'Level=B3,W3 Liquid=Potion',
   'Disrupt Undead':'Level=Rogue0,W0',
   'Disrupting Weapon':'Level=C5',
@@ -4159,13 +4159,7 @@ Pathfinder.CLASSES = {
       '"10:Improved Evasion",10:Opportunist,"10:Skill Mastery",' +
       '"10:Slippery Mind",' +
       '"features.Minor Magic ? 2:Major Magic",' +
-      '"features.Major Magic ? 10:Dispelling Attack" ' +
-    'CasterLevelArcane=levels.Rogue ' +
-    'SpellAbility=intelligence ' +
-    'SpellSlots=' +
-      'Rogue0:2=1,' +
-      'Rogue1:2=1,' +
-      'Rogue3:10=1',
+      '"features.Major Magic ? 10:Dispelling Attack"',
   'Sorcerer':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
@@ -5705,12 +5699,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('sneakAttack',
       'levels.Rogue', '+=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '?', null);
-    rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '?', null);
-    rules.defineRule
-      ('spellSlots.Rogue3', 'features.Dispelling Attack', '?', null);
     rules.defineRule('uncannyDodgeSources',
       'levels.Rogue', '+=', 'source >= 4 ? 1 : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Dispelling Attack', 'Rogue', 'intelligence', 'levels.Rogue',
+      ['Dispel Magic']
+    );
+    rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '=', null);
+    rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '=', null);
+    // Override featureRules requirement for Dispelling Attack
+    rules.defineRule('casterLevels.Rogue',
+      'features.Minor Magic', '?', null,
+      'features.Dispelling Attack', '+', 'null'
     );
 
   } else if(name == 'Sorcerer') {
