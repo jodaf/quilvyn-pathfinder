@@ -1233,7 +1233,8 @@ Pathfinder.FEATURES = {
     'Note="Speak any language",' +
          '"Immune to acid, cold, and petrification, resistance 10 to electricity and fire, +4 vs. poison"',
   'Attuned To The Ancestors':
-    'Section=magic Note="<i>Hide From Undead</i> for %V rd 1/dy"',
+    'Section=magic ' +
+    'Note="Self becomes imperceptible to unintelligent undead for %V rd 1/dy"',
   'Aura Of Despair':
     'Section=magic ' +
     'Note="R30\' Foes -2 ability, attack, damage, save, and skill for %V rd/dy"',
