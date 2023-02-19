@@ -9,7 +9,7 @@ var attributes = {
   "_path":"ztest/pathfinder/traits", 
   "alignment":"Neutral", "armor":"Chain Shirt", "charisma":14, "constitution":12, "deity":"Pharasma", 
   "dexterity":12, "experience":5000, "experienceTrack":"3.5", "faction":"Andoran", 
-  "feats.Combat Casting":1, "feats.Skill Focus (Heal)":1, "feats.Skill Focus (Knowledge (Arcana))":1, 
+  "feats.Skill Focus (Heal)":1, "feats.Skill Focus (Knowledge (Arcana))":1, "feats.Toughness":1, 
   "gender":"Male", "hitPoints":10, "intelligence":7, "languages.Aklo":1, "levels.Rogue":3, 
   "name":"Traits", "race":"Human", "selectableFeatures.Rogue - Resiliency":1, "shield":"None", 
   "skills.Acrobatics":1, "skills.Appraise":1, "skills.Bluff":1, "skills.Climb":1, 
@@ -125,7 +125,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Combat Casting; Skill Focus (Heal); Skill Focus (Knowledge (Arcana))</td>
+        <td><b>Feats</b>: Skill Focus (Heal); Skill Focus (Knowledge (Arcana)); Toughness</td>
         <td><b>Traits</b>: A Sure Thing; Adopted; Aid Allies; Anatomist; Ancient Historian; Animal Friend; Apothecary; Arcane Archivist; Armor Expert; Attuned To The Ancestors; Bad Reputation; Balanced Offensive; Beastspeaker; Beneficent Touch; Birthmark; Bitter Nobleman; Brute; Bullied; Bully; Canter; Captain's Blade; Caretaker; Charming; Child Of Nature; Child Of The Streets; Child Of The Temple; Classically Schooled; Comparative Religion; Courageous; Dangerously Curious; Deft Dodger; Demon Hunter; Dervish; Desert Child; Desert Shadow; Devil's Mark; Devotee Of The Green; Dirty Fighter; Divine Courtesan; Divine Warrior; Dunewalker; Ear For Music; Ease Of Faith; Eastern Mysteries; Elven Reflexes; Exile; Expert Duelist; Explorer; Eyes And Ears Of The City; Failed Apprentice; Fashionable; Fast-Talker; Fencer; Fiendish Presence; Fires Of Hell; Flame Of The Dawnflower; Focused Mind; Force For Good; Forlorn; Fortified Drinker; Fortified; Freedom Fighter; Gifted Adept; Gold Finger; Goldsniffer; Greasy Palm; Guardian Of The Forge; Halfling Freedom Fighter; Hedge Magician; Highlander; History Of Heresy; Horse Lord; Hunter's Eye; I Know A Guy; Impressive Presence; Indomitable Faith; Indomitable; Influential; Insider Knowledge; Killer; Librarian; Log Roller; Lore Seeker; Loyalty; Magic Is Life; Magical Knack; Magical Lineage; Magical Talent; Master Of Pentacles; Mathematical Prodigy; Medic; Meridian Strike; Meticulous Artisan; Militia Veteran; Mind Over Matter; Missionary; Mummy-Touched; Natural Negotiator; Natural-Born Leader; Observant; Outcast; Patient Optimist; Performance Artist; Planar Voyager; Poverty-Stricken; Proper Training; Rapscallion; Reactionary; Resilient; Reverent Wielder; Rich Parents; River Rat; Rousing Oratory; Sacred Conduit; Sacred Touch; Savanna Child; Scholar Of Balance; Scholar Of Ruins; Scholar Of The Great Beyond; Secrets Of The Sphinx; Shadow Diplomat; Sheriff; Shiv; Skeptic; Smuggler; Soul Drinker; Starchild; Storyteller; Suspicious; Tavern Owner; Teaching Mistake; Tireless; Tomb Raider; Trouper; Tunnel Fighter; Undead Slayer; Unflappable; Unorthodox Strategy; Upstanding; Vagabond Child; Veteran Of Battle; Vindictive; Warrior Of Old; Watchdog; Weapon Style; Well-Informed; Whistleblower; Wisdom In The Flesh; World Traveler</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Resiliency; Rogue Talents; Sneak Attack; Trap Sense; Trapfinding; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
@@ -321,8 +321,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Charming: +1 Bluff and Diplomacy w/attracted creatures</td>
       </tr><tr style="text-align:center">
-        <td>Combat Casting: +4 concentration to cast spell while on defensive or grappling</td>
-      </tr><tr style="text-align:center">
         <td>Demon Hunter: +3 Knowledge (Planes) wrt demons</td>
       </tr><tr style="text-align:center">
         <td>Desert Shadow: Full speed Stealth in desert</td>
@@ -391,7 +389,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="CombatStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Hit Points</b>: 14</td>
+        <td><b>Hit Points</b>: 17</td>
         <td><b>Initiative</b>: +11</td>
         <td><b>Armor Class</b>: 16</td>
         <td><b>Attacks Per Round</b>: 1</td>
@@ -441,6 +439,8 @@ var attributes = {
         <td><i>Strength Damage Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Tireless: +1 HP</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Toughness: +3 HP</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -582,20 +582,8 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
   <tr style="text-align:center">
-    <td>    <table id="SpellPart" style="width:100%">
-    <tr style="text-align:center">
-      <td>      <table id="SpellStats" style="width:100%">
-      <tr style="text-align:center">
-        <td><b>Spell DC</b>: Rogue: 8</td>
-      </tr></table>
-</td>
-    </tr></table>
-</td>
-  </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Arcane Spell Failure: 20%</td>
-    </tr><tr style="text-align:center">
       <td>Attuned To The Ancestors: Self becomes imperceptible to unintelligent undead for 1 rd 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Beneficent Touch: Reroll healing spell 1s 1/dy</td>

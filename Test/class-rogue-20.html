@@ -9,12 +9,12 @@ var attributes = {
   "_path":"ztest/pathfinder/class/rogue 20", 
   "alignment":"Lawful Neutral", "armor":"Leather", "charisma":12, "constitution":14, "deity":"Asmodeus", 
   "dexterity":14, "experience":201262, "experienceTrack":"3.5", "faction":"Liberty's Edge", 
-  "feats.Acrobatic":1, "feats.Empower Spell":1, "feats.Run":1, "feats.Skill Focus (Bluff)":1, 
-  "feats.Skill Focus (Escape Artist)":1, "feats.Skill Focus (Knowledge (Planes))":1, 
+  "feats.Acrobatic":1, "feats.Run":1, "feats.Skill Focus (Bluff)":1, 
+  "feats.Skill Focus (Escape Artist)":1, "feats.Skill Focus (Heal)":1, "feats.Skill Focus (Knowledge (Planes))":1, 
   "feats.Skill Focus (Perform (Comedy))":1, "feats.Skill Focus (Perform (Dance))":1, 
   "feats.Skill Focus (Perform (Oratory))":1, "feats.Skill Focus (Profession (Tanner))":1, 
-  "feats.Skill Focus (Use Magic Device)":1, "feats.Spell Focus (Enchantment)":1, "feats.Strike Back":1, 
-  "feats.Weapon Focus (Sickle)":1, "gender":"Female", "hitPoints":78, "intelligence":15, "languages.Abyssal":1, 
+  "feats.Skill Focus (Use Magic Device)":1, "feats.Strike Back":1, "feats.Toughness":1, "feats.Weapon Focus (Sickle)":1, 
+  "gender":"Female", "hitPoints":78, "intelligence":15, "languages.Abyssal":1, 
   "languages.Auran":1, "levels.Rogue":20, "name":"Class-Rogue 20", "race":"Half-Elf", 
   "selectableFeatures.Rogue - Bleeding Attack":1, "selectableFeatures.Rogue - Combat Trick":1, 
   "selectableFeatures.Rogue - Crippling Strike":1, "selectableFeatures.Rogue - Defensive Roll":1, 
@@ -34,9 +34,9 @@ var attributes = {
   "skills.Perception":10, "skills.Perform (Comedy)":1, "skills.Perform (Dance)":1, 
   "skills.Perform (Oratory)":1, "skills.Perform (Sing)":20, "skills.Profession (Tanner)":2, 
   "skills.Sense Motive":8, "skills.Stealth":10, "skills.Swim":12, "skills.Use Magic Device":20, 
-  "spells.Daze(Rogue0 Ench)":1, "spells.Dispel Magic(Rogue3 Abju)":1, "spells.Magic Missile(Rogue1 Evoc)":1, 
-  "spells.Sleep(Rogue1 Ench)":1, "strength":8, "weapons.Javelin":1, "weapons.Sickle":1, 
-  "weapons.Spiked Gauntlet":1, "wisdom":13
+  "spells.Daze(Rogue0 Ench)":1, "spells.Dispel Magic(Rogue3 Abju)":1, "spells.Sleep(Rogue1 Ench)":1, 
+  "strength":8, "weapons.Javelin":1, "weapons.Sickle":1, "weapons.Spiked Gauntlet":1, 
+  "wisdom":13
 };
   </script>
 </head>
@@ -100,7 +100,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Acrobatic; Empower Spell; Run; Skill Focus (Bluff); Skill Focus (Escape Artist); Skill Focus (Knowledge (Planes)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Dance)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Skill Focus (Use Magic Device); Spell Focus (Enchantment); Strike Back; Weapon Focus (Sickle)</td>
+        <td><b>Feats</b>: Acrobatic; Run; Skill Focus (Bluff); Skill Focus (Escape Artist); Skill Focus (Heal); Skill Focus (Knowledge (Planes)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Dance)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Skill Focus (Use Magic Device); Strike Back; Toughness; Weapon Focus (Sickle)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
         <td><b>Rogue Features</b>: Armor Proficiency (Light); Bleeding Attack; Combat Trick; Crippling Strike; Defensive Roll; Dispelling Attack; Evasion; Fast Stealth; Feat Bonus; Finesse Rogue; Improved Evasion; Improved Uncanny Dodge; Ledge Walker; Major Magic; Master Strike; Minor Magic; Opportunist; Quick Disable; Resiliency; Rogue Crawl; Rogue Talents; Rogue Weapon Training; Skill Mastery; Slippery Mind; Slow Reactions; Sneak Attack; Stand Up; Surprise Attack; Trap Sense; Trap Spotter; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
       </tr></table>
@@ -148,7 +148,7 @@ var attributes = {
         <td>Perform (Sing): (cha) 20 (+24)</td>
       </tr><tr style="text-align:left">
         <td>Bluff: (cha) 20 (+30)</td>
-        <td>Heal: (wis;cc) 1 (+2)</td>
+        <td>Heal: (wis;cc) 1 (+5)</td>
         <td>Profession (Tanner): (wis) 2 (+9)</td>
       </tr><tr style="text-align:left">
         <td>Climb: (str) 2 (+4)</td>
@@ -189,6 +189,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Escape Artist): +3 Escape Artist</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Skill Focus (Heal): +3 Heal</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Skill Focus (Knowledge (Planes)): +3 Knowledge (Planes)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Perform (Comedy)): +3 Perform (Comedy)</i></td>
@@ -227,7 +229,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="CombatStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Hit Points</b>: 118</td>
+        <td><b>Hit Points</b>: 138</td>
         <td><b>Initiative</b>: +2</td>
         <td><b>Armor Class</b>: 14</td>
         <td><b>Attacks Per Round</b>: 3</td>
@@ -263,6 +265,8 @@ var attributes = {
         <td><i>Strength Attack Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Toughness: +20 HP</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Finesse: +3 light melee weapon attack (dex instead of str)</i></td>
       </tr><tr style="text-align:center">
@@ -334,7 +338,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: Rogue0: 1; Rogue1: 2; Rogue3: 1</td>
+        <td><b>Spell Slots</b>: Rogue0; Rogue1</td>
         <td><b>Spell DC</b>: Rogue: 12</td>
       </tr></table>
 </td>
@@ -343,31 +347,21 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Daze (Rogue0 Ench): R75' Humanoid target w/up to 4 HD loses next action (DC 13 Will neg)</td>
+      <td>Daze (Rogue0 Ench): R75' Humanoid target w/up to 4 HD loses next action (DC 12 Will neg)</td>
     </tr><tr style="text-align:left">
       <td>Dispel Magic (Rogue3 Abju): R300' Self d20+10 check vs. 11+caster level cancels spells or effects in 20' radius</td>
     </tr><tr style="text-align:left">
-      <td>Magic Missile (Rogue1 Evoc): R300' 5 missiles inflict 1d4+1 HP each in 15' radius</td>
-    </tr><tr style="text-align:left">
-      <td>Sleep (Rogue1 Ench): R300' 4 HD creatures in 10' radius sleep for 20 min (DC 14 Will neg)</td>
+      <td>Sleep (Rogue1 Ench): R300' 4 HD creatures in 10' radius sleep for 20 min (DC 13 Will neg)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Intelligence Rogue Spell Slot Bonus: Spell level Rogue1, Rogue2</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
-    </tr><tr style="text-align:center">
-      <td>Arcane Spell Failure: 10%</td>
-    </tr><tr style="text-align:center">
       <td>Dispelling Attack: Sneak attack acts as <i>Dispel Magic</i> on target</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: x1.5 chosen spell variable effects uses +2 spell slot</td>
+      <td>Major Magic: May cast chosen W1 spell 2/dy</td>
     </tr><tr style="text-align:center">
-      <td>Major Magic: Cast W1 spell 2/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Minor Magic: Cast W0 spell 3/dy</td>
+      <td>Minor Magic: May cast chosen W0 spell 3/dy</td>
     </tr></table>
 </td>
   </tr></table>
