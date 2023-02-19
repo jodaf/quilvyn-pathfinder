@@ -983,7 +983,7 @@ Pathfinder.FEATURES = {
   'Inspire Heroics':
     'Section=magic Note="R30\' %V allies +4 AC and saves while performing"',
   'Iron Will':'Section=save Note="+2 Will"',
-  'Keen Senses':'Section=skill Note="+2 Perception"',
+  'Keen Senses':'Section=skill Note="+%V Perception"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
   'Large':
     'Section=ability,combat,skill ' +
@@ -5708,10 +5708,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '=', null);
     rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '=', null);
-    // Override featureRules requirement for Dispelling Attack
+    // Override casterLevels.Rogue requirement created by featureSpells
     rules.defineRule('casterLevels.Rogue',
-      'features.Minor Magic', '?', null,
-      'features.Dispelling Attack', '+', 'null'
+      'features.Dispelling Attack', '+', 'null',
+      'features.Minor Magic', '?', null
     );
 
   } else if(name == 'Sorcerer') {
@@ -6528,8 +6528,7 @@ Pathfinder.featureSpells = function(
           rules, fullName, spellSchool, spellType, spellLevel, spellDescription,
           false
         );
-        rules.defineRule
-          ('spells.' + fullName, 'casterLevels.' + spellType, '=', '1');
+        rules.defineRule('spells.' + fullName, 'features.' + feature, '=', null);
         if(minLevel > 1)
           rules.defineRule
             ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
@@ -7405,6 +7404,9 @@ Pathfinder.raceRules = function(
  * derived directly from the attributes passed to raceRules.
  */
 Pathfinder.raceRulesExtra = function(rules, name) {
+  if(name.match(/Elf|Gnome|Halfling/)) {
+    rules.defineRule('skillNotes.keenSenses', '', '=', '2');
+  }
   if(name.match(/Gnome/)) {
     rules.defineRule
       ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
