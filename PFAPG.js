@@ -4149,9 +4149,7 @@ PFAPG.FEATURES = {
   'Childlike':
     'Section=skill ' +
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
-  'Cloud Step':
-    'Section=ability ' +
-    'Note="May walk half of Slow Fall distance (50\' max) on air for 1 rd"',
+  'Cloud Step':'Section=ability Note="May walk %V\' on air for 1 rd"',
   'Cockatrice Strike':
     'Section=combat ' +
     'Note="Critical hit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
@@ -4179,7 +4177,8 @@ PFAPG.FEATURES = {
   'Crossbow Mastery':
     'Section=combat Note="May reload crossbow as free action w/out AOO"',
   'Dastardly Finish':
-    'Section=combat Note="May coup de grace cowering and stunned targets"',
+    'Section=combat ' +
+    'Note="May deliver coup de grace to cowering or stunned targets"',
   'Dazing Assault':
     'Section=combat ' +
     'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} Fort neg)"',
@@ -4206,8 +4205,8 @@ PFAPG.FEATURES = {
   'Duck And Cover':
     'Section=combat,save ' +
     'Note=' +
-      '"May use Reflex roll of adjacent ally who has same feat; knocked prone afterward",' +
-      '"+2 AC vs. ranged if adjacent ally w/shield has same feat"',
+      '"+2 AC vs. ranged if adjacent ally w/shield has same feat",' +
+      '"May use Reflex save roll of adjacent ally who has same feat; knocked prone afterward"',
   'Eagle Eyes':
     'Section=skill Note="Ignores -5 distance penalties on visual Perception"',
   'Eclectic':'Section=feature Note="May choose 1 additional favored class"',
@@ -4245,7 +4244,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May reroll bow miss due to concealment"',
   'Enforcer':
     'Section=combat ' +
-    'Note="Successful Intimidation check after inflicting nonlethal damage shakes foe for HP rd (crit also frightens 1 rd)"',
+    'Note="Successful Intimidation after inflicting nonlethal damage shakes foe for 1 rd/HP damage; crit also frightens 1 rd"',
   'Expanded Arcana':
     'Section=magic Note="+%V spells known, or +%1 of lower than max level"',
   'Extra Bombs':'Section=combat Note="+%V/dy"',
@@ -4258,7 +4257,7 @@ PFAPG.FEATURES = {
     'Section=feature Note="May drink for temporary Ki as a swift action"',
   'Fast Healer':
     'Section=combat ' +
-    'Note="Regain +%{constitutionModifier//2>?1} HP from healing"',
+    'Note="Any healing restores +%{constitutionModifier//2>?1} HP"',
   'Favored Defense':
     'Section=combat ' +
     'Note="Add half favored enemy bonus to AC and CMD vs. %V chosen favored enemy"',
@@ -4285,7 +4284,7 @@ PFAPG.FEATURES = {
     'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy"',
   'Go Unnoticed':
     'Section=skill ' +
-    'Note="May use Stealth to hide from flat-footed foes during 1st rd of combat"',
+    'Note="May use Stealth to hide from flat-footed foes during first rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
     'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no ranged attack bonus"',
@@ -4361,7 +4360,7 @@ PFAPG.FEATURES = {
   'Keen Scent':'Section=feature Note="Has Scent features"',
   'Ki Throw':
     'Section=feature ' +
-    'Note="May throw foe into adjacent square after successful unarmed trip"',
+    'Note="May throw foe into adjacent unoccupied square w/out provoking AOO after successful unarmed trip"',
   'Leaf Singer':
     'Section=feature ' +
     'Note="Dbl range or area of effect of audible Bardic Performance in forest/+2 Bardic Performance DC vs. feys"',
@@ -4376,7 +4375,7 @@ PFAPG.FEATURES = {
     'Note="May cast instantaneous spell w/duration 1 rd; uses +1 spell slot"',
   'Lookout':
     'Section=combat ' +
-    'Note="May act in surprise round when adjacent ally has same feat and can act; may take move and standard action if both could normally act"',
+    'Note="When adjacent ally has same feat, may take move and standard actions in surprise round if self and ally can both act; otherwise, gains surprise round action after ally"',
   'Low Profile':'Section=combat Note="+1 AC vs. ranged"',
   'Lucky Halfling':
     'Section=save Note="R30\' May reroll ally saving throw 1/dy"',
@@ -4410,7 +4409,7 @@ PFAPG.FEATURES = {
     'Section=skill Note="+10 Disguise (pass as human); may take 10 on check"',
   'Perfect Strike':
     'Section=combat ' +
-    'Note="My use better of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %1/dy"',
+    'Note="May use best of %V rolls when attacking w/kama, nunchaku, quarterstaff, sai or siangham %1/dy"',
   'Persistent Spell':
     'Section=magic ' +
     'Note="May force spell target to take worse of 2 saving throws; uses +2 spell slot"',
@@ -4426,7 +4425,7 @@ PFAPG.FEATURES = {
     'Note="May cast %V chosen spell(s) in place of prepared spell"',
   'Punishing Kick':
     'Section=combat ' +
-    'Note="Successful kick attack pushes foe %V\' or knocks prone (DC %{10+level//2+wisdomModifier} neg) %1/dy"',
+    'Note="Successful kick attack inflicts choice of %V\' push or knocked prone (DC %{10+level//2+wisdomModifier} neg) %1/dy"',
   'Pushing Assault':
     'Section=combat ' +
     'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
@@ -4477,7 +4476,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
   'Shield Wall':
     'Section=combat ' +
-    'Note="+1 shielded AC when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield"',
+    'Note="+1 shield AC bonus when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield"',
   'Shielded Caster':
     'Section=magic ' +
     'Note="+4 concentration when adjacent ally has same feat and no shield, +5 w/buckler or light shield, +6 w/heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature"',
@@ -4490,7 +4489,7 @@ PFAPG.FEATURES = {
   'Smash':
     'Section=ability,combat ' +
     'Note=' +
-      '"+5 Strength (force door)",' +
+      '"+5 Strength checks to force doors",' +
       '"Attacks on inanimate, unattended objects ignore 5 points of hardness"',
   'Smell Fear':
     'Section=skill ' +
@@ -4503,7 +4502,7 @@ PFAPG.FEATURES = {
     'Note="May use metamagic feat for chosen spell w/out cost; spell gains dbl other feat bonuses"',
   'Spider Step':
     'Section=ability ' +
-    'Note="May move half Slow Fall distance (50\' max) across walls, ceiling, and unsupportive surfaces"',
+    'Note="May move %V\' across walls, ceiling, and unsupportive surfaces for 1 rd"',
   'Stabbing Shot':
     'Section=combat ' +
     'Note="May use first full-attack bow attack to stab and push adjacent foe 5\'; all attacks suffer -2 penalty"',
@@ -4523,7 +4522,7 @@ PFAPG.FEATURES = {
     'Note="May suffer -5 attack to inflict 1 rd stun (DC %{10+baseAttack} Fort neg)"',
   "Summoner's Call":
     'Section=companion ' +
-    'Note="Summoned eidolon gains choice of +2 strength, dexterity, or constitution for 10 min"',
+    'Note="Summoned eidolon gains choice of +2 Str, Dex, or Con for 10 min"',
   'Sundering Strike':
     'Section=combat ' +
     'Note="May damage foe weapon w/critical hit confirm that exceeds foe CMD"',
@@ -4549,7 +4548,7 @@ PFAPG.FEATURES = {
     'Note="Target damaged by spell becomes deafened (spell save or Fort neg) for spell level rd; uses +2 spell slot"',
   'Touch Of Serenity':
     'Section=combat ' +
-    'Note="May forego attack damage for preventing spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
+    'Note="May forego attack damage to prevent foe attack or spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
   'Trick Riding':
     'Section=skill ' +
     'Note="In light or no armor, gain automatic success on DC 15 or lower Ride checks, no penalty for bareback riding, and negate 2 hits on mount/rd using Mounted Combat"',
@@ -9833,6 +9832,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
   } else if(name == 'Monk') {
+    rules.defineRule('abilityNotes.cloudStep',
+      classLevel, '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
+    );
+    rules.defineRule('abilityNotes.spiderStep',
+      classLevel, '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
+    );
     rules.defineRule('combatNotes.adamantineMonk',
       classLevel, '=', 'Math.floor((source - 6) / 3)'
     );
