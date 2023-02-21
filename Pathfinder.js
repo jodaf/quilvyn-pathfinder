@@ -1074,7 +1074,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Take 10 despite distraction on %V chosen skills"',
   'Slippery Mind':'Section=save Note="Second save vs. enchantment"',
   'Slow':'Section=ability Note="-10 Speed"',
-  'Slow Fall':'Section=save Note="Subtract %V\' from falling damage distance"',
+  'Slow Fall':'Section=save Note="Takes %V damage from falling"',
   'Small':
     'Section=ability,combat,skill ' +
     'Note="x0.75 Load Max",' +
@@ -5469,7 +5469,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.diamondSoul', 'levels.Monk', '+=', '10+source');
     rules.defineRule('saveNotes.slowFall',
       'levels.Monk', '=',
-      'source < 4 ? null : source < 20 ? Math.floor(source / 2) * 10 : "all"'
+      'source<4 ? null : source<20 ? Math.floor(source/2) * -10  + "\'" : "no"'
     );
     rules.defineRule('selectableFeatureCount.Monk',
       'levels.Monk', '=', '1 + Math.floor((source + 2) / 4)'
