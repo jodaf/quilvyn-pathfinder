@@ -4113,7 +4113,7 @@ PFAPG.FEATURES = {
     'Note="+2 to overcome spell resistance when adjacent ally has same feat; +4 and +1 caster level when ally has same spell"',
   'Arcane Blast':
     'Section=magic ' +
-    'Note="R30\' ranged touch uses spell slot to inflict 2d6 HP + 1d6 HP/slot level"',
+    'Note="R30\' Ranged touch uses spell slot (level 1 minimum) to inflict 2d6 HP + 1d6 HP/slot level"',
   'Arcane Shield':
     'Section=magic Note="May use spell slot to gain +1 AC/slot level for 1 rd"',
   'Arcane Talent':'Section=magic Note="May cast chosen level 0 spell 3/dy"',
@@ -4195,7 +4195,7 @@ PFAPG.FEATURES = {
      'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
   'Disruptive Spell':
     'Section=magic ' +
-    'Note="Effects of disruptive spell continue for 1 rd; uses +1 spell slot"',
+    'Note="Target of spell must make concentration check to use spell or spell-like ability for 1 rd; uses +1 spell slot"',
   "Diviner's Delving":
     'Section=magic ' +
     'Note="Gives +2 checks to overcome divination spell resistance; concentration divinations require 1 fewer rd"',
@@ -4206,7 +4206,7 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"+2 AC vs. ranged if adjacent ally w/shield has same feat",' +
-      '"May use Reflex save roll of adjacent ally who has same feat; knocked prone afterward"',
+      '"May use rolled Reflex save die of adjacent ally who has same feat; knocked prone afterward"',
   'Eagle Eyes':
     'Section=skill Note="Ignores -5 distance penalties on visual Perception"',
   'Eclectic':'Section=feature Note="May choose 1 additional favored class"',
@@ -4257,7 +4257,7 @@ PFAPG.FEATURES = {
     'Section=feature Note="May drink for temporary Ki as a swift action"',
   'Fast Healer':
     'Section=combat ' +
-    'Note="Any healing restores +%{constitutionModifier//2>?1} HP"',
+    'Note="Any healing restores %{constitutionModifier//2>?1} additional HP"',
   'Favored Defense':
     'Section=combat ' +
     'Note="Add half favored enemy bonus to AC and CMD vs. %V chosen favored enemy"',
@@ -4271,7 +4271,7 @@ PFAPG.FEATURES = {
     'Note="R30\' +%{intelligenceModifier} HP damage on bow or crossbow attack"',
   'Focused Spell':
     'Section=magic ' +
-    'Note="Chosen multi-target spell target suffers +2 save DC; uses +1 spell slot"',
+    'Note="One chosen target of a multi-target spell suffers +2 save DC; uses +1 spell slot"',
   'Following Step':'Section=combat Note="May use Step Up to move 10\'"',
   'Furious Focus':
     'Section=combat ' +
@@ -4349,8 +4349,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
   'Intensified Spell':
-    'Section=magic ' +
-    'Note="May inflict spell damage as caster level %{casterLevel+5}; uses +1 spell slot"',
+    'Section=magic Note="Raises spell damage cap by 5 HD; uses +1 spell slot"',
   'Ironguts':
     'Section=save,skill ' +
     'Note=' +
@@ -4441,7 +4440,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
     'Section=magic ' +
-    'Note="May cast spell at longer range; uses +1 spell slot/range increase"',
+    'Note="May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase"',
   'Rending Claws':
     'Section=combat ' +
     'Note="Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd"',
@@ -4455,6 +4454,8 @@ PFAPG.FEATURES = {
     'Note="May forego additional attacks to reroll miss on first attack"',
   'Selective Spell':
     'Section=magic ' +
+    // Can't incorporate ability modifier value, since feat can be applied to
+    // spells from different sources.
     'Note="May protect from damage ability modifier targets in spell effect area; uses +1 spell slot"',
   'Shadow Strike':
     'Section=combat ' +
@@ -4499,7 +4500,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use move to give allies +2 Diplomacy for %{charismaModifier>?1} rd"',
   'Spell Perfection':
     'Section=magic ' +
-    'Note="May use metamagic feat for chosen spell w/out cost; spell gains dbl other feat bonuses"',
+    'Note="May use metamagic feat for one chosen spell w/out cost; spell gains dbl other feat bonuses"',
   'Spider Step':
     'Section=ability ' +
     'Note="May move %V\' across walls, ceiling, and unsupportive surfaces for 1 rd"',
@@ -11781,6 +11782,16 @@ PFAPG.ruleNotes = function() {
     '    Quilvyn includes in the Witch spell list spells that are made\n' +
     '    available by specific patrons. Quilvyn randomly assigns these\n' +
     '    spells only to characters with the appropriate patron.\n' +
+    '  </li>\n' +
+    '</ul>\n' +
+    '<h3>Limitations</h3>\n' +
+    '<ul>\n' +
+    '  <li>\n' +
+    '    Quilvyn does not note that save DCs for spells cast via the\n' +
+    '    Major/Minor Spell Expertise feats are chrisma-based.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn does not note the Expanded Arcana requirement that the\n' +
+    '    character has levels in a class with limited spells known.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Known Bugs</h3>\n' +
