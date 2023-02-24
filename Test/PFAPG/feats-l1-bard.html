@@ -9,18 +9,18 @@ var attributes = {
   "_path":"ztest/pfapg/feats/l1 bard", 
   "alignment":"Chaotic Neutral", "armor":"Quilted Cloth", "charisma":13, "constitution":15, 
   "deity":"Pharasma", "dexterity":13, "experience":29, "experienceTrack":"PSOP", 
-  "faction":"The Concordance", "feats.Leaf Singer":1, "feats.Lingering Performance":1, 
-  "feats.Stone Singer":1, "feats.War Singer":1, "gender":"Female", "hitPoints":53, "intelligence":16, 
-  "languages.Aklo":1, "languages.Auran":1, "languages.Elven":1, "languages.Terran":1, 
-  "languages.Undercommon":1, "levels.Bard":10, "name":"Feats-L1 Bard", "race":"Half-Orc", 
-  "selectableFeatures.Bard - Detective":1, "selectableFeatures.Half-Orc - Cavewight":1, 
-  "selectableFeatures.Half-Orc - Orc Ferocity":1, "selectableFeatures.Half-Orc - Weapon Familiarity (Orc Double Axe)":1, 
-  "shield":"Light Steel Quickdraw", "skills.Appraise":10, "skills.Bluff":9, "skills.Climb":10, 
-  "skills.Craft (Traps)":5, "skills.Disguise":2, "skills.Heal":5, "skills.Knowledge (Dungeoneering)":2, 
-  "skills.Linguistics":2, "skills.Perception":2, "skills.Perform (Percussion)":1, 
-  "skills.Perform (Wind)":5, "skills.Profession (Soldier)":2, "skills.Sense Motive":10, 
-  "skills.Stealth":5, "skills.Survival":10, "skills.Use Magic Device":10, "strength":15, 
-  "weapons.Gauntlet":1, "weapons.Heavy Mace":1, "weapons.Sap":1, "wisdom":13
+  "faction":"The Concordance", "feats.Expanded Arcana":1, "feats.Leaf Singer":1, 
+  "feats.Lingering Performance":1, "feats.Stone Singer":1, "feats.War Singer":1, "gender":"Female", 
+  "hitPoints":53, "intelligence":16, "languages.Aklo":1, "languages.Auran":1, 
+  "languages.Elven":1, "languages.Terran":1, "languages.Undercommon":1, "levels.Bard":10, 
+  "name":"Feats-L1 Bard", "race":"Half-Orc", "selectableFeatures.Bard - Detective":1, 
+  "selectableFeatures.Half-Orc - Cavewight":1, "selectableFeatures.Half-Orc - Orc Ferocity":1, 
+  "selectableFeatures.Half-Orc - Weapon Familiarity (Orc Double Axe)":1, "shield":"Light Steel Quickdraw", "skills.Appraise":10, "skills.Bluff":9, 
+  "skills.Climb":10, "skills.Craft (Traps)":5, "skills.Disguise":2, "skills.Heal":5, 
+  "skills.Knowledge (Dungeoneering)":2, "skills.Linguistics":2, "skills.Perception":2, 
+  "skills.Perform (Percussion)":1, "skills.Perform (Wind)":5, "skills.Profession (Soldier)":2, 
+  "skills.Sense Motive":10, "skills.Stealth":5, "skills.Survival":10, "skills.Use Magic Device":10, 
+  "strength":15, "weapons.Gauntlet":1, "weapons.Heavy Mace":1, "weapons.Sap":1, "wisdom":13
 };
   </script>
 </head>
@@ -76,7 +76,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Leaf Singer; Lingering Performance; Stone Singer; War Singer</td>
+        <td><b>Feats</b>: Expanded Arcana; Leaf Singer; Lingering Performance; Stone Singer; War Singer</td>
         <td><b>Half-Orc Features</b>: Cavewight; Darkvision; Half-Orc Ability Adjustment; Orc Blood; Orc Ferocity; Weapon Familiarity (Orc Double Axe); Weapon Proficiency (Falchion/Greataxe)</td>
         <td><b>Bard Features</b>: Arcane Insight; Arcane Investigation; Armor Proficiency (Light); Bardic Performance; Careful Teamwork; Countersong; Detective; Dirge Of Doom; Distraction; Eye For Detail; Fascinate; Inspire Competence; Jack-Of-All-Trades; Lore Master; Shield Proficiency; Simple Somatics; Suggestion; True Confession; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)</td>
       </tr></table>
@@ -265,6 +265,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Distraction: R30' Perform check vs. visual magic while performing</td>
     </tr><tr style="text-align:center">
+      <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
+    </tr><tr style="text-align:center">
       <td>Fascinate: R90' Hold 4 creatures spellbound while performing (DC 16 Will neg)</td>
     </tr><tr style="text-align:center">
       <td>Inspire Competence: R30' Allies +3 skill checks while performing</td>
@@ -281,8 +283,6 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Feat Allocation: 5 available vs. 4 allocated</td>
-      </tr><tr style="text-align:center">
         <td>Leaf Singer Feat: Requires charisma (currently 13) >= 13, bardic performance feature (currently 1) and race (currently Half-Orc) matches 'Elf'</td>
       </tr><tr style="text-align:center">
         <td>Stone Singer Feat: Requires charisma (currently 13) >= 13, bardic performance feature (currently 1) and race (currently Half-Orc) matches 'Dwarf'</td>
