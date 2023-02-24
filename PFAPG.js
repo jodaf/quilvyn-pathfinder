@@ -4137,7 +4137,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May use AOO on aid another action to improve adjacent ally\'s AC"',
   'Bouncing Spell':
-    'Section=magic Note="May redirect ineffectual spell; uses +1 spell slot"',
+    'Section=magic ' +
+    'Note="May redirect ineffective spell to another target; uses +1 spell slot"',
   'Breadth Of Experience':
     'Section=skill ' +
     'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
@@ -4158,7 +4159,7 @@ PFAPG.FEATURES = {
     'Note="May use full-round action to increase threat area by %{baseAttack//5*5}\'"',
   'Cooperative Crafting':
     'Section=skill ' +
-    'Note="Assisting another gives +2 Craft or Spellcraft and dbl GP value"',
+    'Note="Assisting another gives +2 Craft or Spellcraft and dbl daily output"',
   'Coordinated Defense':
     'Section=combat ' +
     'Note="+2 CMD (+4 vs. larger foe) when adjacent ally has same feat"',
@@ -4167,7 +4168,7 @@ PFAPG.FEATURES = {
     'Note="+2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally has same feat"',
   'Cosmopolitan':
     'Section=skill ' +
-    'Note="+2 Language Count/Two chosen Int, Wis, or Cha skills are class skills"',
+    'Note="+2 Language Count/Choice of 2 Int, Wis, or Cha skills are class skills"',
   'Covering Defense':
     'Section=combat ' +
     'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : shield==\'None\' ? 0 : 1} AC to adjacent ally"',
@@ -4319,7 +4320,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May delay effects of harmful condition 1 rd 1/dy"',
   'Heroic Recovery':
     'Section=save ' +
-    'Note="May roll additional Fort save vs. harmful condition 1/dy"',
+    'Note="May roll additional Fortitude save vs. harmful condition 1/dy"',
   'Improved Blind-Fight':
     'Section=combat ' +
     'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
@@ -4338,7 +4339,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May proceed w/additional attacks after Second Chance at -5 attack"',
   'Improved Share Spells':
-    'Section=magic ' +
+    'Section=companion ' +
     'Note="R5\' May share non-instantaneous self spells w/companion; halves spell effects duration"',
   'Improved Sidestep':
     'Section=combat Note="May move normally on next rd after Sidestep"',
@@ -4374,13 +4375,13 @@ PFAPG.FEATURES = {
     'Note="May cast instantaneous spell w/duration 1 rd; uses +1 spell slot"',
   'Lookout':
     'Section=combat ' +
-    'Note="When adjacent ally has same feat, may take move and standard actions in surprise round if self and ally can both act; otherwise, gains surprise round action after ally"',
+    'Note="When adjacent ally has same feat, may take move and standard actions in surprise round if both self and ally can act; if only ally can act, gains surprise round action after ally"',
   'Low Profile':'Section=combat Note="+1 AC vs. ranged"',
   'Lucky Halfling':
     'Section=save Note="R30\' May reroll ally saving throw 1/dy"',
   'Major Spell Expertise':
     'Section=magic ' +
-    'Note="May use %V chosen spell(s) of 5th level or lower as spell-like ability 2/dy"',
+    'Note="May use %V chosen spell of 5th level or lower as spell-like ability 2/dy"',
   'Master Alchemist':
     'Section=skill ' +
     'Note="+2 Craft (Alchemy)/May create %{intelligenceModifier>?1} potion doses simultaneously/May craft alchemical items for 1/10 cost"',
@@ -4388,7 +4389,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="May cast spells to inflict nonlethal damage"',
   'Minor Spell Expertise':
     'Section=magic ' +
-    'Note="May use %V chosen spell(s) of 1st level as spell-like ability 2/dy"',
+    'Note="May use %V chosen spell of 1st level as spell-like ability 2/dy"',
   'Missile Shield':'Section=combat Note="No damage from ranged hit 1/rd"',
   'Mounted Shield':
     'Section=combat ' +
@@ -4400,7 +4401,7 @@ PFAPG.FEATURES = {
     'Note="+4 flanking attack when ally has same feat; critical hit gives ally AOO"',
   'Paired Opportunists':
     'Section=combat ' +
-    'Note="+4 AOO and share ally AOO when ally has same feat and threatens same foe"',
+    'Note="+4 AOO and share ally AOO when adjacent ally has same feat and threatens same foe"',
   'Parry Spell':'Section=magic Note="Countered spell turns back on caster"',
   'Parting Shot':
     'Section=combat Note="May make ranged attack during withdraw action"',
@@ -4459,7 +4460,7 @@ PFAPG.FEATURES = {
     'Note="May protect from damage ability modifier targets in spell effect area; uses +1 spell slot"',
   'Shadow Strike':
     'Section=combat ' +
-    'Note="May inflict precision damage on targets w/partial concealment"',
+    'Note="May inflict precision damage on targets w/concealment"',
   'Shared Insight':
     'Section=skill ' +
     'Note="R30\' May use move to give allies +2 Perception for %{wisdomModifier>?1} rd"',
@@ -4543,7 +4544,7 @@ PFAPG.FEATURES = {
     'Note="Foe teleporting to or from threatened square provokes AOO"',
   'Tenacious Transmutation':
     'Section=magic ' +
-    'Note="Gives +2 DC to dispel effects of self transmutation spell; effects continue 1 rd after dispel"',
+    'Note="Self transmutation spell gains +2 DC to dispel, and effects continue 1 rd after successful dispel"',
   'Thundering Spell':
     'Section=magic ' +
     'Note="Target damaged by spell becomes deafened (spell save or Fort neg) for spell level rd; uses +2 spell slot"',
