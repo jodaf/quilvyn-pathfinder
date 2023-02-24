@@ -132,7 +132,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +34</i></td>
       </tr><tr style="text-align:center">
-        <td>Cooperative Crafting: Assisting another gives +2 Craft or Spellcraft and dbl GP value</td>
+        <td>Cooperative Crafting: Assisting another gives +2 Craft or Spellcraft and dbl daily output</td>
       </tr><tr style="text-align:center">
         <td>School Specialization (Illusion): +2 Spellcraft (Illusion effects)</td>
       </tr></table>
@@ -240,7 +240,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Blinding Ray: R30' Ranged touch blinds or dazzles target for 1 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Bouncing Spell: May redirect ineffectual spell; uses +1 spell slot</td>
+      <td>Bouncing Spell: May redirect ineffective spell to another target; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
@@ -264,17 +264,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Improved Counterspell: Counter using higher-level spell from same school</td>
     </tr><tr style="text-align:center">
-      <td>Improved Share Spells: R5' May share non-instantaneous self spells w/companion; halves spell effects duration</td>
-    </tr><tr style="text-align:center">
       <td>Intensified Spell: Raises spell damage cap by 5 HD; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
       <td>Lingering Spell: May cast instantaneous spell w/duration 1 rd; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Major Spell Expertise: May use 1 chosen spell(s) of 5th level or lower as spell-like ability 2/dy</td>
+      <td>Major Spell Expertise: May use 1 chosen spell of 5th level or lower as spell-like ability 2/dy</td>
     </tr><tr style="text-align:center">
       <td>Merciful Spell: May cast spells to inflict nonlethal damage</td>
     </tr><tr style="text-align:center">
-      <td>Minor Spell Expertise: May use 1 chosen spell(s) of 1st level as spell-like ability 2/dy</td>
+      <td>Minor Spell Expertise: May use 1 chosen spell of 1st level as spell-like ability 2/dy</td>
     </tr><tr style="text-align:center">
       <td>Parry Spell: Countered spell turns back on caster</td>
     </tr><tr style="text-align:center">
@@ -296,7 +294,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Spell Perfection: May use metamagic feat for one chosen spell w/out cost; spell gains dbl other feat bonuses</td>
     </tr><tr style="text-align:center">
-      <td>Tenacious Transmutation: Gives +2 DC to dispel effects of self transmutation spell; effects continue 1 rd after dispel</td>
+      <td>Tenacious Transmutation: Self transmutation spell gains +2 DC to dispel, and effects continue 1 rd after successful dispel</td>
     </tr><tr style="text-align:center">
       <td>Thundering Spell: Target damaged by spell becomes deafened (spell save or Fort neg) for spell level rd; uses +2 spell slot</td>
     </tr></table>
@@ -308,7 +306,13 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="NotesPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Companion Notes</b>: Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
+      <td><b>Companion Notes</b>:       <table id="CompanionNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td>Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
+      </tr><tr style="text-align:center">
+        <td>Improved Share Spells: R5' May share non-instantaneous self spells w/companion; halves spell effects duration</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
