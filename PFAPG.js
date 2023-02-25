@@ -4375,7 +4375,7 @@ PFAPG.FEATURES = {
     'Note="May cast instantaneous spell w/duration 1 rd; uses +1 spell slot"',
   'Lookout':
     'Section=combat ' +
-    'Note="When adjacent ally has same feat, may take move and standard actions in surprise round if both self and ally can act; if only ally can act, gains surprise round action after ally"',
+    'Note="When adjacent ally has same feat, may take move and standard actions in surprise round if both self and ally can act; if only ally can act, self gains surprise round action after ally"',
   'Low Profile':'Section=combat Note="+1 AC vs. ranged"',
   'Lucky Halfling':
     'Section=save Note="R30\' May reroll ally saving throw 1/dy"',
@@ -8394,7 +8394,9 @@ PFAPG.aideRules = function(rules, companions, familiars) {
 /* Defines rules related to combat. */
 PFAPG.combatRules = function(rules, armors, shields, weapons) {
   Pathfinder.combatRules(rules, armors, shields, weapons);
-  // No changes needed to the rules defined by Pathfinder method
+  // Remove crit info for mancatcher--it doesn't crit
+  delete rules.choices.notes['weapons.Mancatcher'];
+  rules.defineChoice('notes', 'weapons.Mancatcher:%V (%1 %2%3)');
   rules.defineChoice('notes',
     'damageReduction.Adamantine:%V/%N',
     'damageReduction.Piercing:%V/%N'
