@@ -17,14 +17,14 @@ var attributes = {
   "prestige.Nature Warden":10, "race":"Human", "selectableFeatures.Human - Eye For Talent":1, 
   "selectableFeatures.Human - Heart Of The Streets":1, "selectableFeatures.Ranger - Animal Companion":1, 
   "selectableFeatures.Ranger - Combat Style (Mounted Combat)":1, "selectableFeatures.Ranger - Guide":1, 
-  "selectableFeatures.Ranger - Mounted Shield":1, "shield":"None", "skills.Acrobatics":10, "skills.Bluff":5, "skills.Climb":2, 
-  "skills.Craft (Alchemy)":8, "skills.Craft (Bows)":1, "skills.Craft (Weapons)":1, "skills.Diplomacy":2, 
-  "skills.Escape Artist":1, "skills.Handle Animal":5, "skills.Heal":1, "skills.Intimidate":2, 
-  "skills.Knowledge (Dungeoneering)":17, "skills.Knowledge (Geography)":5, "skills.Knowledge (Nature)":5, 
-  "skills.Perception":4, "skills.Perform (Wind)":17, "skills.Profession (Tanner)":2, "skills.Ride":2, 
-  "skills.Sense Motive":17, "skills.Stealth":3, "skills.Survival":5, "skills.Use Magic Device":1, 
-  "strength":10, "weapons.Heavy Mace":1, "weapons.Heavy Spiked Shield":1, "weapons.Spear":1, 
-  "wisdom":14
+  "selectableFeatures.Ranger - Mounted Shield":1, "shield":"Heavy Wooden", "skills.Acrobatics":10, "skills.Bluff":5, 
+  "skills.Climb":2, "skills.Craft (Alchemy)":8, "skills.Craft (Bows)":1, 
+  "skills.Craft (Weapons)":1, "skills.Diplomacy":2, "skills.Escape Artist":1, "skills.Handle Animal":5, 
+  "skills.Heal":1, "skills.Intimidate":2, "skills.Knowledge (Dungeoneering)":17, 
+  "skills.Knowledge (Geography)":5, "skills.Knowledge (Nature)":5, "skills.Perception":4, 
+  "skills.Perform (Wind)":17, "skills.Profession (Tanner)":2, "skills.Ride":2, "skills.Sense Motive":17, 
+  "skills.Stealth":3, "skills.Survival":5, "skills.Use Magic Device":1, "strength":10, 
+  "weapons.Heavy Spiked Shield":1, "weapons.Light Mace":1, "wisdom":14
 };
   </script>
 </head>
@@ -120,21 +120,21 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Acrobatics: (dex;cc) 10 (+6)</td>
+        <td>Acrobatics: (dex;cc) 10 (+4)</td>
         <td>Handle Animal: (cha) 5 (+10)</td>
         <td>Profession (Tanner): (wis) 2 (+7)</td>
       </tr><tr style="text-align:left">
         <td>Bluff: (cha;cc) 5 (+7)</td>
         <td>Heal: (wis) 1 (+9)</td>
-        <td>Ride: (dex) 2 (+1)</td>
+        <td>Ride: (dex) 2 (-1)</td>
       </tr><tr style="text-align:left">
-        <td>Climb: (str) 2 (+2)</td>
+        <td>Climb: (str) 2 (+0)</td>
         <td>Intimidate: (cha) 2 (+7)</td>
         <td>Sense Motive: (wis) 17 (+24)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Alchemy): (int) 8 (+13)</td>
         <td>Knowledge (Dungeoneering): (int) 17 (+22)</td>
-        <td>Stealth: (dex) 3 (+2)</td>
+        <td>Stealth: (dex) 3 (+0)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 1 (+9)</td>
         <td>Knowledge (Geography): (int) 5 (+10)</td>
@@ -148,7 +148,7 @@ var attributes = {
         <td>Perception: (wis) 4 (+9)</td>
         <td></td>
       </tr><tr style="text-align:left">
-        <td>Escape Artist: (dex;cc) 1 (+0)</td>
+        <td>Escape Artist: (dex;cc) 1 (-2)</td>
         <td>Perform (Wind): (cha;cc) 17 (+19)</td>
         <td></td>
       </tr></table>
@@ -158,7 +158,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -5 Dex- and Str-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Eye For Talent: +2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
@@ -202,7 +202,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 158</td>
         <td><b>Initiative</b>: -1</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>Armor Class</b>: 15</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +14/+14/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +14/23</td>
@@ -220,8 +220,8 @@ var attributes = {
       <td>      <table id="Gear" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
-        <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Mace (+14 d8 x2@20); Heavy Spiked Shield (+14 d6 x2@20); Spear (+14 d8 x3@20 R20'); Unarmed (+14 d3 x2@20)</td>
+        <td><b>Shield</b>: Heavy Wooden</td>
+        <td><b>Weapons</b>: Heavy Spiked Shield (+14 d6 x2@20); Light Mace (+14 d6 x2@20); Unarmed (+14 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -236,6 +236,8 @@ var attributes = {
         <td>Favored Terrain: +2 or more Initiative in 3 terrain type(s)</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Streets: +1 AC when adjacent to 2 allies</td>
+      </tr><tr style="text-align:center">
+        <td>Mounted Shield: +2 mount AC and Ride checks to avoid mount damage</td>
       </tr><tr style="text-align:center">
         <td>Mystic Harmony: Adds half favored terrain bonus to AC</td>
       </tr><tr style="text-align:center">
