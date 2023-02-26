@@ -403,7 +403,8 @@ PFAPG.FEATS = {
     'Require="dexterity >= 15","features.Missile Shield",features.Spellbreaker',
   'Mounted Shield':
     'Type=General,Fighter ' +
-    'Require="features.Mounted Combat","features.Shield Focus"',
+    'Require="features.Mounted Combat","features.Shield Focus" ' +
+    'Imply="shield != \'None\'"',
   'Parry Spell':
     'Type=General ' +
     'Require="skills.Spellcraft >= 15","features.Improved Counterspell" ' +
@@ -427,7 +428,7 @@ PFAPG.FEATS = {
       '"wisdom >= 13",' +
       '"features.Improved Unarmed Strike",' +
       '"baseAttack >= 8"',
-  'Point Blank Master':
+  'Point-Blank Master':
     'Type=General,Fighter Require="rangedWeaponSpecialization > 0"',
   'Practiced Tactician':'Type=General Require=features.Tactician',
   'Preferred Spell':
@@ -876,7 +877,8 @@ PFAPG.FEATURES = {
      'Section=magic ' +
      'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
   'Fast Bombs':
-    'Section=combat Note="May use full attack to throw multiple bombs per rd"',
+    'Section=combat ' +
+    'Note="May use full-attack action to throw multiple bombs per rd"',
   'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
   'Feral Mutagen':
     'Section=combat ' +
@@ -1079,7 +1081,7 @@ PFAPG.FEATURES = {
     'Note="Adjacent allies gain +2 AC/May redirect attack on adjacent ally to self"',
   'Steal Glory':
     'Section=combat ' +
-    'Note="May make AOO against threatened target when ally scores a critical hit"',
+    'Note="May make AOO against threatened target when ally scores a crit"',
   'Stem The Tide':
     'Section=feature ' +
     'Note="Has Stand Still features; may halt foe using attack instead of maneuver"',
@@ -1187,7 +1189,7 @@ PFAPG.FEATURES = {
       '"Has %V features"',
   'Clobbering Strike':
     'Section=magic ' +
-    'Note="May make swift action trip attempt w/out AOO after critical hit w/attack spell"',
+    'Note="May make swift action trip attempt w/out AOO after crit w/attack spell"',
   'Clouded Vision':
     'Section=feature ' +
     'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and darkvision%{mysteryLevel>=10 ? \\", 30\' Blindsense\\" : \'\'}%{mysteryLevel>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
@@ -1230,7 +1232,7 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts %{mysteryLevel}d6 HP to objects and constructs %{mysteryLevel//3+1}/dy"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
-    'Note="May take full-attack action and move %{speed}\' as full-round action/Critical hits ignore DR/+4 AC vs. critical hits/Remain alive until -%{constitution*2} HP"',
+    'Note="May take full-attack action and move %{speed}\' as a full-round action/Critical hits ignore DR/+4 AC vs. crit/Remain alive until -%{constitution*2} HP"',
   'Final Revelation (Bones Mystery)':
     'Section=combat,magic ' +
     'Note=' +
@@ -1279,7 +1281,7 @@ PFAPG.FEATURES = {
   'Fluid Nature':
     'Section=combat,feature ' +
     'Note=' +
-      '"+4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe confirm crit",' +
+      '"+4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe crit confirm",' +
       '"Has %V features"',
   'Fluid Travel':
     'Section=ability ' +
@@ -1633,7 +1635,7 @@ PFAPG.FEATURES = {
     'Section=companion ' +
     'Note="Chosen natural attack inflicts +1d4 %V damage (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
   'Pounce Evolution':
-    'Section=companion Note="May make full attack after charge"',
+    'Section=companion Note="May take full-attack action after a charge"',
   'Pull Evolution':
     'Section=companion ' +
     'Note="Choice of %V natural attacks each allow free combat maneuver for 5\' pull"',
@@ -1827,7 +1829,7 @@ PFAPG.FEATURES = {
   'Chaos Totem':
     'Section=combat,skill ' +
     'Note=' +
-      '"25% chance to ignore critical hit and sneak attack damage during rage",' +
+      '"25% chance to ignore crit and sneak attack damage during rage",' +
       '"+4 Escape Artist during rage"',
   'Come And Get Me':
     'Section=combat ' +
@@ -1870,7 +1872,7 @@ PFAPG.FEATURES = {
     'Note="Alcohol gives save vs. condition or poison during rage"',
   'Greater Beast Totem':
     'Section=combat ' +
-    'Note="May make full attack at the end of a charge/Increased Lesser Beast Totem effects"',
+    'Note="May take full-attack action after a charge/Increased Lesser Beast Totem effects"',
   'Greater Brawler':
     'Section=combat ' +
     'Note="Has Two-Weapon Fighting features for Unarmed Strike during rage"',
@@ -2051,7 +2053,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} neg)"',
   'Inspiring Blow':
     'Section=combat ' +
-    'Note="Bardic Performance following critical hit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 next attack for 1 rd"',
+    'Note="Bardic Performance following crit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
     'Note="Bardic Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
@@ -2590,14 +2592,14 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Reduces contact damage from natural attack by %{levels.Fighter//2}"',
   'Critical Specialist':
-    'Section=combat Note="+4 DC vs. critical effects from chosen weapon"',
+    'Section=combat Note="+4 DC on crit effects from chosen weapon"',
   'Crossbow Expert':'Section=combat Note="+%V attack and damage w/crossbows"',
   'Deadly Critical':
     'Section=combat ' +
-    'Note="May apply +1 critical multiplier w/chosen weapon %{(levels.Fighter-10)//3}/dy"',
+    'Note="May apply +1 crit multiplier w/chosen weapon %{(levels.Fighter-10)//3}/dy"',
   'Deadly Defense':
     'Section=combat ' +
-    'Note="May make AOO on every attacking foe after full attack w/both weapons"',
+    'Note="May make AOO on every attacking foe after full-attack action w/both weapons"',
   'Deadshot':'Section=combat Note="+%V damage w/readied crossbow"',
   'Deceptive Strike':
     'Section=combat,skill ' +
@@ -2606,7 +2608,7 @@ PFAPG.FEATURES = {
      '"+%{(levels.Fighter+2)//4} Bluff (feint or create distraction to hide)"',
   'Defensive Flurry':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+1)//4} AC when making full attack w/two weapons"',
+    'Note="+%{(levels.Fighter+1)//4} AC when taking full-attack action w/two weapons"',
   'Deft Doublestrike':
     'Section=combat ' +
     'Note="May make disarm or trip w/out AOO after hitting foe w/both weapons"',
@@ -2656,7 +2658,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+%V CMB on bull rush and overrun"',
   'Leap From The Saddle':
     'Section=combat ' +
-    'Note="DC 20 Ride check allows full attack after mount move"',
+    'Note="DC 20 Ride check allows full-attack action after mount move"',
   'Leaping Attack':
     'Section=combat ' +
     'Note="+%{(levels.Fighter-1)//4} attack and damage after 5\' move"',
@@ -2722,7 +2724,7 @@ PFAPG.FEATURES = {
     'Note="Successful disarm maneuver redirects attack from self to foe"',
   'Ride Them Down':
     'Section=combat ' +
-    'Note="May make full attack%{features.Trample ? \' or overrun\' : \'\'} during mount move"',
+    'Note="May take full-attack action%{features.Trample ? \' or overrun\' : \'\'} during mount move"',
   'Safe Shot':'Section=combat Note="%V attack does not provoke AOO"',
   'Savage Charge':
     'Section=combat ' +
@@ -2782,7 +2784,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use bow shot to perform -4 CMB %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'}"',
   'Twin Blades':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter-1)//4} attack and damage when making full attack w/two weapons or double weapon"',
+    'Note="+%{(levels.Fighter-1)//4} attack and damage when taking full-attack action w/two weapons or double weapon"',
   'Unavoidable Onslaught':
     'Section=combat ' +
     'Note="May make mounted charge past allies and over difficult terrain"',
@@ -2800,7 +2802,7 @@ PFAPG.FEATURES = {
      'Note="+%{(levels.Fighter+1)//4} attack and damage w/chosen weapon"',
   'Whirlwind Blitz':
     'Section=combat ' +
-    'Note="May make full-attack action or use Whirlwind Attack as a standard action"',
+    'Note="May take full-attack or Whirlwind Attack as a standard action"',
 
   // Monk
   'Adamantine Monk':
@@ -2886,7 +2888,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May use Steal Ki and Life Funnel on non-living foe"',
   'Life Funnel':
     'Section=combat ' +
-    'Note="Scoring a critical hit or reducing foe to 0 HP when Ki Pool is not empty restores %{levels.Monk} HP to self"',
+    'Note="Scoring a crit or reducing foe to 0 HP when Ki Pool is not empty restores %{levels.Monk} HP to self"',
   'Mystic Insight':
     'Section=combat ' +
     'Note="R30\' May spend 2 Ki Points to give ally attack or save reroll"',
@@ -2906,7 +2908,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May spend 6 Ki Points for 2 extra standard actions"',
   'Steal Ki':
     'Section=combat ' +
-    'Note="Scoring a critical hit or reducing living foe to 0 HP when Ki Pool is not empty transfers 1 Ki Point from foe to self%{levels.Monk>=11 ? \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
+    'Note="Scoring a crit or reducing living foe to 0 HP when Ki Pool is not empty transfers 1 Ki Point from foe to self%{levels.Monk>=11 ? \' and gives +\' + wisdomModifier + \' save vs. disease\' : \'\'}"',
   'Touch Of Peace':
     'Section=magic ' +
     'Note="May spend 6 Ki Points to have attack inflict <i>Charm Monster</i> effect for %{levels.Monk} dy instead of HP damage 1/dy"',
@@ -3185,7 +3187,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="+%{levels.Rogue//3*10}\' ranged sneak attack"',
   'Deadly Sneak':
     'Section=combat ' +
-    'Note="During full attack action, may trade -2 attack for treating sneak attack 1s and 2s as 3s"',
+    'Note="During full-attack action, may trade -2 attack for treating sneak attack 1s and 2s as 3s"',
   'Distracting Attack (Rogue)':
     'Section=combat ' +
     'Note="May forego sneak attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
@@ -3261,7 +3263,7 @@ PFAPG.FEATURES = {
     'Note="May move 30\' w/out provoking AOO after successful melee attack, ending adjacent to same foe, 1/dy"',
   'Powerful Sneak':
     'Section=combat ' +
-    'Note="During full attack action, may trade -2 attack for treating sneak attack 1s as 2s"',
+    'Note="During full-attack action, may trade -2 attack for treating sneak attack 1s as 2s"',
   'Quick Disguise':
     'Section=skill Note="Reduces time to create effective disguise"',
   'Quick Trapsmith':
@@ -3359,7 +3361,7 @@ PFAPG.FEATURES = {
     'Section=feature,save ' +
     'Note=' +
       '"Has cold subtype",' +
-      '"Has immunity to fatigue, exhaustion, sneak attacks, and critical hits/Has vulnerability to fire"',
+      '"Has immunity to fatigue, exhaustion, sneak attacks, and crit/Has vulnerability to fire"',
   'Cold Steel':
     'Section=magic ' +
     'Note="Touched weapon gains <i>Frost</i> property for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or <i>Icy Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
@@ -3735,10 +3737,10 @@ PFAPG.FEATURES = {
     'Note="May use level 1 spell slot to inflict <i>Death Knell</i> on foe in response to reducing foe to negative HP"',
   'Divine Retribution':
     'Section=magic ' +
-    'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to critical hit to self or foe"',
+    'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to crit to self or foe"',
   'Divine Wrath':
     'Section=magic ' +
-    'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to critical hit to self or foe"',
+    'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to crit to self or foe"',
   'Faith Healing':'Section=magic Note="Self Cure spells have %V effects"',
   'Stigmata':
     'Section=magic ' +
@@ -3943,7 +3945,7 @@ PFAPG.FEATURES = {
     'Note="Has alternate humanoid form w/own personality and alignment"',
   'Mutate':
     'Section=feature ' +
-    'Note="May assume mutagenic form %V/dy; failed Fort save or critical hit forces change (DC 25 Will neg)"',
+    'Note="May assume mutagenic form %V/dy; failed Fort save or crit forces change (DC 25 Will neg)"',
   'Night Vision (Master Chymist)':
     'Section=feature ' +
     'Note="Has 60\' Darkvision and Low-Light Vision in mutagenic form"',
@@ -4092,7 +4094,7 @@ PFAPG.FEATURES = {
     'Note="May make extra attack w/dbl damage when hit to self results in negative HP or unconsciousness"',
   'Mighty Resilience':
     'Section=combat ' +
-    'Note="May negate extra damage and effects from critical hit or sneak attack 1/stance"',
+    'Note="May negate extra damage and effects from crit or sneak attack 1/stance"',
   'Mobile Defense':'Section=combat Note="May take 5\' step during stance"',
   'Renewed Defense':
     'Section=combat ' +
@@ -4128,14 +4130,13 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+2 Initiative",' +
       '"+2 Survival"',
-  'Bashing Finish':
-    'Section=combat Note="May make free shield bash after critical hit"',
+  'Bashing Finish':'Section=combat Note="May make free shield bash after crit"',
   'Bloody Assault':
     'Section=combat ' +
-    'Note="May suffer -5 attack to inflict 1d4 HP/rd bleed damage (DC 15 Heal ends)"',
+    'Note="May suffer -5 attack to inflict 1d4 HP/rd bleed damage (DC 15 Heal or magical healing ends)"',
   'Bodyguard':
     'Section=combat ' +
-    'Note="May use AOO on aid another action to improve adjacent ally\'s AC"',
+    'Note="May use AOO for aid another action to give adjacent ally +2 AC"',
   'Bouncing Spell':
     'Section=magic ' +
     'Note="May redirect ineffective spell to another target; uses +1 spell slot"',
@@ -4143,8 +4144,7 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
   'Bull Rush Strike':
-    'Section=combat ' +
-    'Note="May push on critical hit confirm that exceeds foe CMD"',
+    'Section=combat Note="May push foe on crit confirm that exceeds foe CMD"',
   'Charge Through':
     'Section=combat Note="May attempt free overrun during charge"',
   'Childlike':
@@ -4189,8 +4189,7 @@ PFAPG.FEATURES = {
   'Deep Drinker':'Section=feature Note="Increased Drunken Ki effects"',
   'Deepsight':'Section=feature Note="120\' Darkvision"',
   'Disarming Strike':
-    'Section=combat ' +
-    'Note="May disarm on critical hit confirm that exceeds foe CMD"',
+    'Section=combat Note="May disarm foe on crit confirm that exceeds foe CMD"',
   'Disrupting Shot':
     'Section=combat ' +
      'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
@@ -4202,7 +4201,7 @@ PFAPG.FEATURES = {
     'Note="Gives +2 checks to overcome divination spell resistance; concentration divinations require 1 fewer rd"',
   'Dreadful Carnage':
     'Section=combat ' +
-    'Note="R30\' May make Intimidation check to demoralize foes after reducing foe to 0 HP"',
+    'Note="R30\' May make Intimidation check to demoralize foes after reducing foe to 0 or negative HP"',
   'Duck And Cover':
     'Section=combat,save ' +
     'Note=' +
@@ -4276,9 +4275,9 @@ PFAPG.FEATURES = {
   'Following Step':'Section=combat Note="May use Step Up to move 10\'"',
   'Furious Focus':
     'Section=combat ' +
-    'Note="Ignores penalty on first attack using two-handed Power Attack"',
+    'Note="Suffers no penalty on first attack using two-handed Power Attack"',
   'Gang Up':
-    'Section=feature ' +
+    'Section=combat ' +
     'Note="Always considered flanking when two allies threaten same foe"',
   'Gnome Trickster':
     'Section=magic ' +
@@ -4288,7 +4287,7 @@ PFAPG.FEATURES = {
     'Note="May use Stealth to hide from flat-footed foes during first rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
-    'Note="No penalty for foe partial concealment, 20% chance for full; located unseen attacker gets no ranged attack bonus"',
+    'Note="No miss chance from foe concealment, 20% chance for total concealment; located unseen attacker gains no ranged attack bonus"',
   'Greater Dirty Trick':
     'Section=combat ' +
     'Note="+2 CMB and CMD on dirty tricks/Dirty Trick penalty extends +1d4+ rd"',
@@ -4323,7 +4322,7 @@ PFAPG.FEATURES = {
     'Note="May roll additional Fortitude save vs. harmful condition 1/dy"',
   'Improved Blind-Fight':
     'Section=combat ' +
-    'Note="R30\' Located unseen attacker gains no ranged attack bonus"',
+    'Note="No miss chance from foe concealment; R30\' located unseen attacker gains no ranged attack bonus"',
   'Improved Dirty Trick':
     'Section=combat ' +
     'Note="No AOO on Dirty Trick, +2 Dirty Trick check, +2 Dirty Trick CMD"',
@@ -4337,7 +4336,7 @@ PFAPG.FEATURES = {
     'Note="No AOO on Reposition, +2 Reposition check, +2 Reposition CMD"',
   'Improved Second Chance':
     'Section=combat ' +
-    'Note="May proceed w/additional attacks after Second Chance at -5 attack"',
+    'Note="May make remaining attacks of full-attack action after Second Chance, suffering -5 penalty"',
   'Improved Share Spells':
     'Section=companion ' +
     'Note="R5\' May share non-instantaneous self spells w/companion; halves spell effects duration"',
@@ -4348,7 +4347,7 @@ PFAPG.FEATURES = {
   'Improved Stonecunning':'Section=skill Note="Increased Stonecunning effects"',
   "In Harm's Way":
     'Section=combat ' +
-    'Note="May suffer damage from attack aimed at adjacent ally when using aid another"',
+    'Note="May suffer all damage from attack aimed at adjacent ally when using aid another"',
   'Intensified Spell':
     'Section=magic Note="Raises spell damage cap by 5 HD; uses +1 spell slot"',
   'Ironguts':
@@ -4392,19 +4391,19 @@ PFAPG.FEATURES = {
     'Note="May use %V chosen spell of 1st level as spell-like ability 2/dy"',
   'Missile Shield':'Section=combat Note="No damage from ranged hit 1/rd"',
   'Mounted Shield':
-    'Section=combat ' +
-    'Note="Add shield bonus to mount AC and Ride checks to avoid mount damage"',
+    'Section=combat Note="+%V mount AC and Ride checks to avoid mount damage"',
   'Mounted Skirmisher':
-    'Section=combat Note="May take full-attack action after mount move"',
+    'Section=combat Note="May take full-attack action during mount move"',
   'Outflank':
     'Section=combat ' +
-    'Note="+4 flanking attack when ally has same feat; critical hit gives ally AOO"',
+    'Note="+4 flanking attack when ally has same feat; crit gives ally AOO"',
   'Paired Opportunists':
     'Section=combat ' +
     'Note="+4 AOO and share ally AOO when adjacent ally has same feat and threatens same foe"',
   'Parry Spell':'Section=magic Note="Countered spell turns back on caster"',
   'Parting Shot':
-    'Section=combat Note="May make ranged attack during withdraw action"',
+    'Section=combat ' +
+    'Note="May make ranged attack during withdraw action 1/encounter"',
   'Pass For Human':
     'Section=skill Note="+10 Disguise (pass as human); may take 10 on check"',
   'Perfect Strike':
@@ -4413,7 +4412,7 @@ PFAPG.FEATURES = {
   'Persistent Spell':
     'Section=magic ' +
     'Note="May force spell target to take worse of 2 saving throws; uses +2 spell slot"',
-  'Point Blank Master':
+  'Point-Blank Master':
     'Section=combat ' +
     'Note="Using chosen ranged weapon while threatened provokes no foe AOO"',
   'Practiced Tactician':
@@ -4428,7 +4427,7 @@ PFAPG.FEATURES = {
     'Note="Successful kick attack inflicts choice of %V\' push or knocked prone (DC %{10+level//2+wisdomModifier} neg) %1/dy"',
   'Pushing Assault':
     'Section=combat ' +
-    'Note="May trade Power Attack damage bonus for 5\' push (10\' if critical hit)"',
+    'Note="May trade Power Attack damage bonus for 5\' push (10\' on crit)"',
   'Racial Heritage':
     'Section=feature ' +
     'Note="Counts as both human and chosen race for racial effects"',
@@ -4436,7 +4435,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="+2 Con during rage; rage continues while unconscious"',
   'Ray Shield':
-    'Section=combat Note="No damage from ranged touch hit 1/rd when shielded"',
+    'Section=combat Note="Shield absorbs damage from ranged touch hit 1/rd"',
   'Razortusk':
     'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
@@ -4446,13 +4445,12 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Second claw hit in 1 rd inflicts +1d6 HP damage 1/rd"',
   'Repositioning Strike':
-    'Section=combat ' +
-    'Note="May move foe w/critical hit confirm that exceeds foe CMD"',
+    'Section=combat Note="May move foe w/crit confirm that exceeds foe CMD"',
   'Saving Shield':
     'Section=combat Note="May use shield to give adjacent ally +2 AC"',
   'Second Chance':
     'Section=combat ' +
-    'Note="May forego additional attacks to reroll miss on first attack"',
+    'Note="May forego additional attacks of full-attack action to reroll miss on first attack"',
   'Selective Spell':
     'Section=magic ' +
     // Can't incorporate ability modifier value, since feat can be applied to
@@ -4467,15 +4465,15 @@ PFAPG.FEATURES = {
   'Sharp Senses':'Section=skill Note="Increased Keen Senses effects"',
   'Shield Of Swings':
     'Section=combat ' +
-    'Note="May reduce two-handed weapon full-attack damage by half to gain +4 AC and CMD"',
+    'Note="May reduce two-handed weapon full-attack action damage by half to gain +4 AC and CMD"',
   'Shield Specialization (Buckler)':
-    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
   'Shield Specialization (Heavy)':
-    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
   'Shield Specialization (Light)':
-    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
   'Shield Specialization (Tower)':
-    'Section=combat Note="+2 AC vs. critical hit/+%V CMD"',
+    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
   'Shield Wall':
     'Section=combat ' +
     'Note="+1 shield AC bonus when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield"',
@@ -4507,7 +4505,7 @@ PFAPG.FEATURES = {
     'Note="May move %V\' across walls, ceiling, and unsupportive surfaces for 1 rd"',
   'Stabbing Shot':
     'Section=combat ' +
-    'Note="May use first full-attack bow attack to stab and push adjacent foe 5\'; all attacks suffer -2 penalty"',
+    'Note="May use first full-attack action bow attack to stab and push adjacent foe 5\'; all attacks suffer -2 penalty"',
   'Steel Soul':'Section=save Note="Increased Hardy effects"',
   'Step Up And Strike':'Section=combat Note="May make AOO after Step Up"',
   'Stone Sense':
@@ -4527,13 +4525,13 @@ PFAPG.FEATURES = {
     'Note="Summoned eidolon gains choice of +2 Str, Dex, or Con for 10 min"',
   'Sundering Strike':
     'Section=combat ' +
-    'Note="May damage foe weapon w/critical hit confirm that exceeds foe CMD"',
+    'Note="May damage foe weapon w/crit confirm that exceeds foe CMD"',
   'Swap Places':
     'Section=combat ' +
     'Note="May swap places w/adjacent ally who has same feat; ally suffers no AOO"',
   'Swift Aid':
     'Section=combat ' +
-    'Note="Swift aid another action gives ally +1 AC or +1 next attack"',
+    'Note="Aid another as swift action gives ally +1 AC or +1 on next attack"',
   'Taunt':
     'Section=skill Note="May use Bluff w/out size penalty to demoralize foes"',
   'Team Up':
@@ -4552,11 +4550,13 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May forego attack damage to prevent foe attack or spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
   'Trick Riding':
-    'Section=skill ' +
-    'Note="In light or no armor, gain automatic success on DC 15 or lower Ride checks, no penalty for bareback riding, and negate 2 hits on mount/rd using Mounted Combat"',
+    'Section=combat,skill ' +
+    'Note=' +
+      '"In light or no armor, may negate 2 hits on mount/rd using Mounted Combat",' +
+      '"In light or no armor, gains automatic success on DC 15 or lower Ride checks and suffers no penalty for bareback riding"',
   'Tripping Strike':
     'Section=combat ' +
-    'Note="May inflict trip w/critical hit confirm that exceeds foe CMD"',
+    'Note="May inflict trip w/crit confirm that exceeds foe CMD"',
   'Under And Over':
     'Section=combat ' +
     'Note="May make immediate +2 trip maneuver w/no AOO after larger foe grapple fails"',
@@ -5059,7 +5059,7 @@ PFAPG.PATHS = {
     'Features=' +
       '"1:Weapon Proficiency(Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
       '"1:Flurry Of Blows (Zen Archer)","1:Perfect Strike",' +
-      '"2:Way Of The Bow","3:Zen Archery","3:Point Blank Master",' +
+      '"2:Way Of The Bow","3:Zen Archery","3:Point-Blank Master",' +
       '"4:Ki Pool (Zen Archer)","5:Ki Arrows","9:Reflexive Shot",' +
       '"11:Trick Shot (Zen Archer)","17:Ki Focus Bow"',
 
@@ -6944,7 +6944,7 @@ PFAPG.SPELLS = {
   'Weapon Of Awe':
     'School=Transmutation ' +
     'Level=C2,Inquisitor2,O2,P2 ' +
-    'Description="Touched weapon gains +2 damage and crit hit inflicts shaken for $L min"',
+    'Description="Touched weapon gains +2 damage and crit inflicts shaken for $L min"',
   'Winds Of Vengeance':
     'School=Transmutation ' +
     'Level=C9,D9,O9,W9,Wind9,Winds9 ' +
@@ -10010,7 +10010,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '1',
       'monkFeatures.Drunken Ki', '=', '0',
       'monkFeatures.Ki Mystic', '=', '0',
-      'monkFeatures.Point Blank Master', '=', '0',
+      'monkFeatures.Point-Blank Master', '=', '0',
       'monkFeatures.Versatile Improvisation', '=', '0'
     );
     rules.defineRule('monkHasStunningFist',
@@ -10099,7 +10099,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
     rules.defineRule('magicNotes.lightOfFaith.1',
       'features.Light Of Faith', '?', null,
-      classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating critical hit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating critical hit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
+      classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
     );
     rules.defineRule
       ('paladinFeatures.Aura Of Faith', 'paladinHasAuraOfFaith', '?', null);
@@ -11040,6 +11040,12 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.minorSpellExpertise',
       'feats.Minor Spell Expertise', '=', null
     );
+  } else if(name == 'Mounted Shield') {
+    rules.defineRule('combatNotes.mountedShield',
+      'shield', '=', 'source=="None" ? 0 : source.match(/Heavy/) ? 2 : source.match(/Tower/) ? 4 : 1',
+      'combatNotes.shieldFocus', '+', '1',
+      'combatNotes.greaterShieldFocus', '+', '1'
+    );
   } else if(name == 'Perfect Strike') {
     rules.defineRule('combatNotes.perfectStrike', '', '=', '2');
     rules.defineRule('combatNotes.perfectStrike.1',
@@ -11057,7 +11063,7 @@ PFAPG.featRulesExtra = function(rules, name) {
       'level', '=', null,
       'levels.Monk', '+', '-source'
     );
-  } else if(name == 'Point Blank Master') {
+  } else if(name == 'Point-Blank Master') {
     let allWeapons = rules.getChoices('weapons');
     for(let w in allWeapons)
       if(allWeapons[w].includes('Category=R'))
