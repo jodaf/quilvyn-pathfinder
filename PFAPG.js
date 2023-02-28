@@ -11803,7 +11803,7 @@ PFAPG.ruleNotes = function() {
     '<ul>\n' +
     '  <li>\n' +
     '    Quilvyn does not note that save DCs for spells cast via the\n' +
-    '    Major/Minor Spell Expertise feats are chrisma-based.\n' +
+    '    Major/Minor Spell Expertise feats are charisma-based.\n' +
     '  </li><li>\n' +
     '    Quilvyn does not note the Expanded Arcana requirement that the\n' +
     '    character has levels in a class with limited spells known.\n' +
