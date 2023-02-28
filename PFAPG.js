@@ -4287,11 +4287,13 @@ PFAPG.FEATURES = {
     'Note="May use Stealth to hide from flat-footed foes during first rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
-    'Note="No miss chance from foe concealment, 20% chance for total concealment; located unseen attacker gains no ranged attack bonus"',
+    'Note="No miss chance from foe concealment, 20% chance from total concealment; located unseen attacker gains no ranged attack bonus"',
   'Greater Dirty Trick':
     'Section=combat ' +
-    'Note="+2 CMB and CMD on dirty tricks/Dirty Trick penalty extends +1d4+ rd"',
-  'Greater Drag':'Section=combat Note="+2 checks to drag foe"',
+    'Note="+2 dirty trick CMB%{$\'features.Improved Dirty Trick\' ? \' (+4 total w/Improved Dirty Trick)\' : \'\'}/Dirty Trick penalty lasts 1d4 rd + 1 rd/5 over target CMD and requires standard action to remove"',
+  'Greater Drag':
+    'Section=combat ' +
+    'Note="+2 drag CMB%{$\'features.Improved Drag\' ? \' (+4 total w/Improved Drag)\' : \'\'}/Drag target provokes AOO"',
   'Greater Elemental Focus (Acid)':
     'Section=magic Note="Increased Elemental Focus (Acid) effects"',
   'Greater Elemental Focus (Cold)':
@@ -4300,18 +4302,20 @@ PFAPG.FEATURES = {
     'Section=magic Note="Increased Elemental Focus (Electricity) effects"',
   'Greater Elemental Focus (Fire)':
     'Section=magic Note="Increased Elemental Focus (Fire) effects"',
-  'Greater Reposition':'Section=combat Note="+2 checks to move foe"',
+  'Greater Reposition':
+    'Section=combat ' +
+    'Note="+2 reposition CMB%{$\'features.Improved Reposition\' ? \' (+4 total w/Improved Reposition)\' : \'\'}/Reposition target provokes AOO"',
   'Greater Shield Specialization (Buckler)':
-    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+    'Section=combat Note="+2 AC vs. crit%{$\'features.Shield Specialization (Buckler)\' ? \' (+4 total w/Shield Specialization (Buckler))\' : \'\'}; may negate crit 1/dy"',
   'Greater Shield Specialization (Heavy)':
-    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+    'Section=combat Note="+2 AC vs. crit%{$\'features.Shield Specialization (Heavy)\' ? \' (+4 total w/Shield Specialization (Heavy))\' : \'\'}; may negate crit 1/dy"',
   'Greater Shield Specialization (Light)':
-    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+    'Section=combat Note="+2 AC vs. crit%{$\'features.Shield Specialization (Light)\' ? \' (+4 total w/Shield Specialization (Light))\' : \'\'}; may negate crit 1/dy"',
   'Greater Shield Specialization (Tower)':
-    'Section=combat Note="+2 AC vs. crit, may negate crit 1/dy"',
+    'Section=combat Note="+2 AC vs. crit%{$\'features.Shield Specialization (Tower)\' ? \' (+4 total w/Shield Specialization (Tower))\' : \'\'}; may negate crit 1/dy"',
   'Greater Steal':
     'Section=combat ' +
-    'Note="+2 CMB to steal from foe; foe does not notice successful steal until after combat"',
+    'Note="+2 steal CMB%{$\'features.Improved Steal\' ? \' (+4 total w/Improved Steal)\' : \'\'}/Target does not notice successful steal until after combat"',
   'Groundling':
     'Section=magic ' +
     'Note="May use <i>Speak With Animals</i> w/burrowing animals at will"',
@@ -4325,15 +4329,16 @@ PFAPG.FEATURES = {
     'Note="No miss chance from foe concealment; R30\' located unseen attacker gains no ranged attack bonus"',
   'Improved Dirty Trick':
     'Section=combat ' +
-    'Note="No AOO on Dirty Trick, +2 Dirty Trick check, +2 Dirty Trick CMD"',
+    'Note="May perform dirty trick w/out provoking AOO/+2 dirty trick CMB and CMD"',
   'Improved Drag':
-    'Section=combat Note="No AOO on Drag, +2 Drag check, +2 Drag CMD"',
+    'Section=combat ' +
+    'Note="May perform drag w/out provoking AOO/+2 drag CMB and CMD"',
   'Improved Ki Throw':
     'Section=feature ' +
     'Note="May use Ki Throw for -4 bull rush on another target"',
   'Improved Reposition':
     'Section=combat ' +
-    'Note="No AOO on Reposition, +2 Reposition check, +2 Reposition CMD"',
+    'Note="May perform reposition w/out provoking AOO/+2 reposition CMB and CMD"',
   'Improved Second Chance':
     'Section=combat ' +
     'Note="May make remaining attacks of full-attack action after Second Chance, suffering -5 penalty"',
@@ -4343,7 +4348,8 @@ PFAPG.FEATURES = {
   'Improved Sidestep':
     'Section=combat Note="May move normally on next rd after Sidestep"',
   'Improved Steal':
-    'Section=combat Note="No AOO on Steal, +2 Steal check, +2 Steal CMD"',
+    'Section=combat ' +
+    'Note="May perform steal w/out provoking AOO/+2 Steal CMB and CMD"',
   'Improved Stonecunning':'Section=skill Note="Increased Stonecunning effects"',
   "In Harm's Way":
     'Section=combat ' +
