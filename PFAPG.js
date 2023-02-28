@@ -170,7 +170,8 @@ PFAPG.FEATS = {
   'Cosmopolitan':'Type=General',
   'Covering Defense':
     'Type=General,Fighter ' +
-    'Require="features.Shield Focus","baseAttack >= 6"',
+    'Require="features.Shield Focus","baseAttack >= 6" ' +
+    'Imply="shield =~ \'Light|Heavy|Tower\'"',
   'Crippling Critical':
     'Type=General,Fighter ' +
     'Require="features.Critical Focus","baseAttack >= 13"',
@@ -397,7 +398,9 @@ PFAPG.FEATS = {
       '"features.Minor Spell Expertise",' +
       '"maxSpellLevel >= 9"',
   'Missile Shield':
-    'Type=General,Fighter Require="dexterity >= 13","features.Shield Focus"',
+    'Type=General,Fighter ' +
+    'Require="dexterity >= 13","features.Shield Focus" ' +
+    'Imply="shield =~ \'Light|Heavy|Tower\'"',
   'Ray Shield':
     'Type=General,Fighter ' +
     'Require="dexterity >= 15","features.Missile Shield",features.Spellbreaker',
@@ -458,7 +461,10 @@ PFAPG.FEATS = {
       '"features.Combat Expertise",' +
       '"features.Improved Reposition",' +
       '"baseAttack >= 9"',
-  'Saving Shield':'Type=General,Fighter Require="features.Shield Proficiency"',
+  'Saving Shield':
+    'Type=General,Fighter ' +
+    'Require="features.Shield Proficiency" ' +
+    'Imply="shield =~ \'Light|Heavy|Tower\'"',
   'Second Chance':
     'Type=General,Fighter ' +
     'Require=' +
@@ -1015,7 +1021,7 @@ PFAPG.FEATURES = {
   'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat/May use Tactician to share 2 Teamwork feats w/allies"',
   'Mighty Charge':
     'Section=combat ' +
-    'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out AOO after successful mounted charge"',
+    'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out provoking AOO after successful mounted charge"',
   'Moment Of Triumph':
     'Section=feature ' +
     'Note="May automatically confirm crit and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
@@ -1090,7 +1096,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May give each ally +2 AC for 1 rd, +2 attack for 1 rd, or immediate move 1/combat"',
   'Supreme Charge':
     'Section=combat ' +
-    'Note="Mounted charge inflicts dbl damage (lance triple)/Critical hit on mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
+    'Note="Mounted charge inflicts dbl damage (lance triple)/Crit during mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
     'Section=combat,feature ' +
     'Note=' +
@@ -1111,7 +1117,7 @@ PFAPG.FEATURES = {
   'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
-    'Note="Critical hit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe"',
+    'Note="Crit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe"',
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Judgment':
     'Section=combat ' +
@@ -1189,7 +1195,7 @@ PFAPG.FEATURES = {
       '"Has %V features"',
   'Clobbering Strike':
     'Section=magic ' +
-    'Note="May make swift action trip attempt w/out AOO after crit w/attack spell"',
+    'Note="May make swift action trip attempt w/out provoking AOO after crit w/attack spell"',
   'Clouded Vision':
     'Section=feature ' +
     'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and darkvision%{mysteryLevel>=10 ? \\", 30\' Blindsense\\" : \'\'}%{mysteryLevel>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
@@ -1232,7 +1238,7 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts %{mysteryLevel}d6 HP to objects and constructs %{mysteryLevel//3+1}/dy"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
-    'Note="May take full-attack action and move %{speed}\' as a full-round action/Critical hits ignore DR/+4 AC vs. crit/Remain alive until -%{constitution*2} HP"',
+    'Note="May take full-attack action and move %{speed}\' as a full-round action/Crit ignores DR/+4 AC vs. crit/Remain alive until -%{constitution*2} HP"',
   'Final Revelation (Bones Mystery)':
     'Section=combat,magic ' +
     'Note=' +
@@ -1503,7 +1509,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Speak With Dead</i> effects (DC %{spellDifficultyClass.O + 3 + mysteryLevel//5*2} Will neg) %{mysteryLevel} rd/dy"',
   'Vortex Spells':
     'Section=magic ' +
-    'Note="Critical hit with spell staggers target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
+    'Note="Crit w/spell staggers target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
   'War Sight':
     'Section=combat ' +
     'Note="May take choice of %{mysteryLevel>=11 ? 3 : 2} Initiative rolls%{mysteryLevel>=7 ? \'/May always act in surprise round\' : \'\'}"',
@@ -1880,8 +1886,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
   'Greater Elemental Rage':
-   'Section=combat ' +
-   'Note="Critical hits inflict +1d10 HP energy or better during rage"',
+   'Section=combat Note="Crit inflicts +1d10 HP energy or better during rage"',
   'Greater Energy Resistance':
     'Section=combat ' +
     'Note="May reduce damage from chosen energy attack by half 1/rage"',
@@ -1921,7 +1926,7 @@ PFAPG.FEATURES = {
     'Section=feature Note="Has Low-Light Vision%1 features"',
   'Knockdown':
     'Section=combat ' +
-    'Note="May make trip attack w/out AOO that inflicts %{strengthModifier} HP and knocks prone 1/rage"',
+    'Note="May make trip attack that inflicts %{strengthModifier} HP and knocks prone w/out provoking AOO 1/rage"',
   'Lesser Beast Totem':
     'Section=combat ' +
     'Note="Two claw attacks inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
@@ -1960,7 +1965,7 @@ PFAPG.FEATURES = {
     'Note="+%{armor==\'None\' ? 2 : 1} CMB or CMD on choice of %{levels.Barbarian//3} combat maneuvers"',
   'Raging Drunk':
     'Section=combat ' +
-    'Note="May drink alcohol or potion w/out AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated after rage"',
+    'Note="May drink alcohol or potion w/out provoking AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated after rage"',
   'Reckless Abandon':
     'Section=combat ' +
     'Note="May trade up to -%{ragePowerLevel//4+1} AC for equal attack bonus during rage"',
@@ -2262,7 +2267,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Gives %{levels.Cleric//3+1} allies +2 attack, AC, CMD, and skill checks for 1 rd"',
   'Killing Blow':
     'Section=combat ' +
-    'Note="Critical hit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
+    'Note="Crit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
   "Liberty's Blessing":
     'Section=magic Note="Touch gives additional save %{wisdomModifier+3}/dy"',
   'Malign Eye':
@@ -2270,7 +2275,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
   'Metal Fist':
     'Section=combat ' +
-    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out AOO for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out provoking AOO for 1 rd %{wisdomModifier+3}/dy"',
   'Night Hunter':
     'Section=feature ' +
     'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -2611,7 +2616,7 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter+1)//4} AC when taking full-attack action w/two weapons"',
   'Deft Doublestrike':
     'Section=combat ' +
-    'Note="May make disarm or trip w/out AOO after hitting foe w/both weapons"',
+    'Note="May make disarm or trip w/out provoking AOO after hitting foe w/both weapons"',
   'Deft Shield':
     'Section=combat,skill ' +
     'Note=' +
@@ -2688,7 +2693,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May use polearm or spear 1-handed w/shield"',
   'Piledriver':
     'Section=combat ' +
-    'Note="May make bull rush or trip w/out AOO after single attack w/two-handed weapon"',
+    'Note="May make bull rush or trip w/out provoking AOO after single attack w/two-handed weapon"',
   'Pole Fighting':
     'Section=combat ' +
     'Note="May make %{levels.Fighter<18 ? (levels.Fighter-18)//4 + \' \' : \'\'}polearm attack vs. adjacent foes"',
@@ -2836,7 +2841,7 @@ PFAPG.FEATURES = {
     'Section=save Note="Immune to fear when Drunken Ki Pool is not empty"',
   'Drunken Ki':
     'Section=feature ' +
-    'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out AOO when Drunken Ki Pool is not empty"',
+    'Note="Each alcoholic drink gives %V temporary Ki Point (%{(levels.Monk-1)//2} max) for 1 hr/May spend 1 Ki Point for 5\' swift action move w/out provoking AOO when Drunken Ki Pool is not empty"',
   'Drunken Resilience':
     'Section=combat ' +
     'Note="DR %{(levels.Monk-10)//3}/- when Drunken Ki Pool is not empty"',
@@ -3424,7 +3429,7 @@ PFAPG.FEATURES = {
     'Note="10\' radius inflicts 20% miss chance on outside attacks for %{levels.Sorcerer} rd/dy"',
   'Ride The Lightning':
     'Section=magic ' +
-    'Note="Full-round action moves self %{speed*10}\' w/out AOO, inflicts Thunderbolt effect for %{levels.Sorcerer} rd 1/dy"',
+    'Note="Full-round action moves self %{speed*10}\' w/out provoking AOO, inflicts Thunderbolt effect for %{levels.Sorcerer} rd 1/dy"',
   'Rockseer':
     'Section=feature,magic,skill ' +
     'Note=' +
@@ -4146,14 +4151,15 @@ PFAPG.FEATURES = {
   'Bull Rush Strike':
     'Section=combat Note="May push foe on crit confirm that exceeds foe CMD"',
   'Charge Through':
-    'Section=combat Note="May attempt free overrun during charge"',
+    'Section=combat ' +
+    'Note="May attempt free overrun during charge; failure ends charge"',
   'Childlike':
     'Section=skill ' +
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
   'Cloud Step':'Section=ability Note="May walk %V\' on air for 1 rd"',
   'Cockatrice Strike':
     'Section=combat ' +
-    'Note="Critical hit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
+    'Note="Crit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
   'Combat Patrol':
     'Section=combat ' +
     'Note="May use full-round action to increase threat area by %{baseAttack//5*5}\'"',
@@ -4174,9 +4180,10 @@ PFAPG.FEATURES = {
     'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : shield==\'None\' ? 0 : 1} AC to adjacent ally"',
   'Crippling Critical':
     'Section=combat ' +
-    'Note="Critical hit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fort 1d4 rd)"',
+    'Note="Crit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fort 1d4 rd)"',
   'Crossbow Mastery':
-    'Section=combat Note="May reload crossbow as free action w/out AOO"',
+    'Section=combat ' +
+    'Note="May reload crossbow as free action w/out provoking AOO"',
   'Dastardly Finish':
     'Section=combat ' +
     'Note="May deliver coup de grace to cowering or stunned targets"',
@@ -4192,7 +4199,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May disarm foe on crit confirm that exceeds foe CMD"',
   'Disrupting Shot':
     'Section=combat ' +
-     'Note="R30\' Casting opponent suffers +4 concentration DC from successful ranged attack"',
+     'Note="R30\' Casting opponent suffers +4 concentration DC from successful readied ranged attack"',
   'Disruptive Spell':
     'Section=magic ' +
     'Note="Target of spell must make concentration check to use spell or spell-like ability for 1 rd; uses +1 spell slot"',
@@ -4420,7 +4427,7 @@ PFAPG.FEATURES = {
     'Note="May force spell target to take worse of 2 saving throws; uses +2 spell slot"',
   'Point-Blank Master':
     'Section=combat ' +
-    'Note="Using chosen ranged weapon while threatened provokes no foe AOO"',
+    'Note="Using chosen ranged weapon while threatened provokes no AOO"',
   'Practiced Tactician':
     'Section=combat Note="May use Tactician feature +%V/dy"',
   'Precise Strike':
@@ -4491,7 +4498,7 @@ PFAPG.FEATURES = {
     'Note="Target damaged by spell becomes sickened (spell save or Fort neg) for spell level rd; uses +2 spell slot"',
   'Sidestep':
     'Section=combat ' +
-    'Note="May move 5\' w/in threatened area w/out AOO after foe miss; suffers -5\' move next rd"',
+    'Note="May move 5\' w/in threatened area w/out provoking AOO after foe miss; suffers -5\' move next rd"',
   'Smash':
     'Section=ability,combat ' +
     'Note=' +
@@ -4565,12 +4572,12 @@ PFAPG.FEATURES = {
     'Note="May inflict trip w/crit confirm that exceeds foe CMD"',
   'Under And Over':
     'Section=combat ' +
-    'Note="May make immediate +2 trip maneuver w/no AOO after larger foe grapple fails"',
+    'Note="May make immediate +2 trip maneuver w/out provoking AOO after larger foe grapple fails"',
   'Underfoot':
     'Section=combat,skill ' +
     'Note=' +
       '"+2 AC vs. AOO from moving through larger foe threat area",' +
-      '"+4 Acrobatics (move past larger foes w/out AOO)"',
+      '"+4 Acrobatics (move past larger foes w/out provoking AOO)"',
   'Vermin Heart':
     'Section=magic,skill ' +
     'Note=' +
@@ -5966,7 +5973,7 @@ PFAPG.SPELLS = {
   'Aspect Of The Bear':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
-    'Description="Self gains +2 AC and CMD, no AOO on bull rush, grapple, and overrun for $L min"',
+    'Description="Self gains +2 AC and CMD, does not provoke AOO on bull rush, grapple, and overrun for $L min"',
   'Aspect Of The Falcon':
     'School=Transmutation ' +
     'Level=D1,R1 ' +
@@ -5978,7 +5985,7 @@ PFAPG.SPELLS = {
   'Aspect Of The Wolf':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
-    'Description="Self gains +4 Strength and Dexterity, +2 trip attack, and swift trip w/no AOO for $L min"',
+    'Description="Self gains +4 Strength and Dexterity, +2 trip attack, and swift trip w/out provoking AOO for $L min"',
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -6794,7 +6801,7 @@ PFAPG.SPELLS = {
   'Stone Fist':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1 ' +
-    'Description="Self Unarmed Strikes inflict 1d%{features.Small ? 4 : 6}+%{strengthModifier} w/o AOO for $L min"',
+    'Description="Self Unarmed Strikes inflict 1d%{features.Small ? 4 : 6}+%{strengthModifier} w/out provoking AOO for $L min"',
   'Stormbolts':
     'School=Evocation ' +
     'Level=C8,D8,O8,W8,Witch8 ' +
@@ -11112,7 +11119,8 @@ PFAPG.featRulesExtra = function(rules, name) {
       ('skillNotes.keenSenses', 'skillNotes.sharpSenses', '+', '2');
   } else if((matchInfo = name.match(/^Shield Specialization .(.*)./)) != null) {
     rules.defineRule('combatNotes.shieldSpecialization(' + matchInfo[1] + ')',
-      '', '=', '1',
+      'shield', '=', 'source=="None" ? 0 : source.match(/Heavy/) ? 2 : source.match(/Tower/) ? 4 : 1',
+      'features.Shield Focus', '+', '1',
       'features.Greater Shield Focus', '+', '1'
     );
   } else if(name == 'Touch Of Serenity') {
