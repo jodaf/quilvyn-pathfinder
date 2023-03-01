@@ -4294,7 +4294,7 @@ PFAPG.FEATURES = {
     'Note="May use Stealth to hide from flat-footed foes during first rd of combat"',
   'Greater Blind-Fight':
     'Section=combat ' +
-    'Note="No miss chance from foe concealment, 20% chance from total concealment; located unseen attacker gains no ranged attack bonus"',
+    'Note="No miss chance from foe concealment, 20% miss chance from total concealment; located unseen attacker gains no ranged attack bonus"',
   'Greater Dirty Trick':
     'Section=combat ' +
     'Note="+2 dirty trick CMB%{$\'features.Improved Dirty Trick\' ? \' (+4 total w/Improved Dirty Trick)\' : \'\'}/Dirty Trick penalty lasts 1d4 rd + 1 rd/5 over target CMD and requires standard action to remove"',
