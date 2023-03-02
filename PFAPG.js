@@ -982,14 +982,15 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"+2 attack vs. demoralized target",' +
-      '"Has Dazzling Display features"',
+      '"Has Dazzling Display feature; may use unarmed"',
   'By My Honor':
-    'Section=save Note="+2 choice of save while maintaining alignment"',
+     'Section=save ' +
+     'Note="+2 chosen save unless alignment changes on chosen axis"',
   'Calling':
     'Section=feature,magic ' +
     'Note=' +
       '"May gain +%{charismaModifier} on choice of ability check, attack, save, or skill check within 1 min after prayer 1/choice/dy",' +
-      '"+%V Channel Energy and Lay On Hands level"',
+      '"+%1 %V level"',
   'Cavalier Feat Bonus':'Section=feature Note="Gain %V Fighter Feats"',
   "Cavalier's Charge":
     'Section=combat ' +
@@ -998,13 +999,14 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Self inflicts +%{levels.Cavalier} HP damage on chosen foe and suffers -2 AC against other foes %{(levels.Cavalier+2)//3}/dy"',
   'Demanding Challenge':
-    'Section=combat Note="Challenged target suffers -2 AC from others"',
+    'Section=combat ' +
+    'Note="Challenged target suffers -2 AC on attacks by others"',
   'Expert Trainer':
     'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach mount in 1/7 time (DC +5)"',
+    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach any mount in 1/7 time (DC +5)"',
   'For The Faith':
     'Section=combat ' +
-    'Note="R30\' May give self +%{charismaModifier>?1} attack and allies +%{charismaModifier//2>?1} attack for 1 rd %{levels.Cavalier//4-1}/dy"',
+    'Note="R30\' May give self +%{charismaModifier>?1} attack and allies who follow the same faith +%{charismaModifier//2>?1} attack for 1 rd %{levels.Cavalier//4-1}/dy"',
   'For The King':
     'Section=combat ' +
     'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd 1/combat"',
@@ -1014,11 +1016,15 @@ PFAPG.FEATURES = {
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
-    'Note="Gain additional daily challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit"',
+    'Note="Additional daily Challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit"',
   "Lion's Call":
     'Section=combat ' +
-    'Note="R60\' May give allies +%{charismaModifier} save vs. fear and +1 attack for %{levels.Cavalier} rd and immediate save vs. frightened or panicked"',
-  'Master Tactician':'Section=feature Note="Gain 1 Teamwork feat/May use Tactician to share 2 Teamwork feats w/allies"',
+    'Note="R60\' May use standard action speech to give allies +%{charismaModifier} save vs. fear and +1 attack for %{levels.Cavalier} rd and immediate save vs. frightened or panicked"',
+  'Master Tactician':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"May use Tactician to share 2 Teamwork feats w/allies",' +
+      '"Gain 1 Teamwork feat"',
   'Mighty Charge':
     'Section=combat ' +
     'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out provoking AOO after successful mounted charge"',
@@ -1042,7 +1048,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+%{levels.Cavalier//4+1} HP damage vs. challenge target",' +
       '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill/+%{charismaModifier} DC to intimidate"',
+      '"Appraise is a class skill/Perform is a class skill/Foes suffer +%{charismaModifier} DC to intimidate"',
   'Order Of The Dragon':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -1065,7 +1071,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} saves while threatening challenge target",' +
-      '"Must protect and serve the faithful",' +
+      '"Must protect and serve a faith and its members",' +
       '"Heal is a class skill/Knowledge (Religion) is a class skill/May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
   'Order Of The Sword':
     'Section=combat,feature,skill ' +
@@ -1081,7 +1087,7 @@ PFAPG.FEATURES = {
     'Note="May convert %{(levels.Cavalier+2)//4} HP damage per attack to nonlethal when wearing heavy armor"',
   'Retribution':
     'Section=combat ' +
-    'Note="May make +2 AOO against adjacent foe who strikes self or follower of the same faith 1/rd"',
+    'Note="May make +2 AOO against adjacent foe who strikes self or follower of the same faith 1/rd; foe crit allows Challenge use"',
   'Shield Of The Liege':
     'Section=combat ' +
     'Note="Adjacent allies gain +2 AC/May redirect attack on adjacent ally to self"',
@@ -1089,8 +1095,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May make AOO against threatened target when ally scores a crit"',
   'Stem The Tide':
-    'Section=feature ' +
-    'Note="Has Stand Still features; may halt foe using attack instead of maneuver"',
+    'Section=combat,feature ' +
+    'Note=' +
+      '"May halt foe using attack instead of maneuver",' +
+      '"Has Stand Still features"',
   'Strategy':
     'Section=combat ' +
     'Note="R30\' May give each ally +2 AC for 1 rd, +2 attack for 1 rd, or immediate move 1/combat"',
@@ -11497,11 +11505,22 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
   } else if(name == 'Order Of The Star') {
-    rules.defineRule('magicNotes.layOnHands', 'magicNotes.calling', '+', null);
+    rules.defineRule('magicNotes.calling',
+      'magicNotes.calling.2', '=', 'source==1 ? "Channel Energy" : source==2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
+    );
+    rules.defineRule('magicNotes.calling.1',
+      'features.calling', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.calling.2',
+      'features.Calling', '?', null,
+      'levels.Cleric', '+=', '1',
+      'levels.Paladin', '+=', '2'
+    );
     rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.calling', '+', null);
+      ('magicNotes.layOnHands', 'magicNotes.calling.1', '+', null);
     rules.defineRule
-      ('magicNotes.calling', pathLevel, '=', 'Math.floor(source / 2)');
+      ('magicNotes.layOnHands.1', 'magicNotes.calling.1', '+', null);
   } else if(name == 'Order Of The Sword') {
     rules.defineRule
       ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
