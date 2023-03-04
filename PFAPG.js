@@ -1003,7 +1003,7 @@ PFAPG.FEATURES = {
     'Note="Challenged target suffers -2 AC on attacks by others"',
   'Expert Trainer':
     'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach any mount in 1/7 time (DC +5)"',
+    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach any mount in 1/7 time (DC +5)/May train multiple mounts simultaneously (+2 DC/additional mount)"',
   'For The Faith':
     'Section=combat ' +
     'Note="R30\' May give self +%{charismaModifier>?1} attack and allies who follow the same faith +%{charismaModifier//2>?1} attack for 1 rd %{levels.Cavalier//4-1}/dy"',
@@ -1016,10 +1016,10 @@ PFAPG.FEATURES = {
   'Greater Tactician':'Section=feature Note="Gain 1 Teamwork feat"',
   "Knight's Challenge":
     'Section=combat ' +
-    'Note="Additional daily Challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit"',
+    'Note="May make additional Challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit 1/dy"',
   "Lion's Call":
     'Section=combat ' +
-    'Note="R60\' May use standard action speech to give allies +%{charismaModifier} save vs. fear and +1 attack for %{levels.Cavalier} rd and immediate save vs. frightened or panicked"',
+    'Note="R60\' May use standard action speech to give allies +%{charismaModifier} save vs. fear, +1 attack for %{levels.Cavalier} rd, and immediate save vs. frightened or panicked"',
   'Master Tactician':
     'Section=combat,feature ' +
     'Note=' +
@@ -1027,7 +1027,7 @@ PFAPG.FEATURES = {
       '"Gain 1 Teamwork feat"',
   'Mighty Charge':
     'Section=combat ' +
-    'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out provoking AOO after successful mounted charge"',
+    'Note="Dbl threat range during mounted charge/May make free bull rush, disarm, sunder, or trip w/out provoking AOO after successful mounted charge"',
   'Moment Of Triumph':
     'Section=combat ' +
     'Note="May automatically confirm crit and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
@@ -1046,38 +1046,38 @@ PFAPG.FEATURES = {
   'Order Of The Cockatrice':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} HP damage vs. challenge target",' +
+      '"+%{levels.Cavalier//4+1} HP damage during solo threat of Challenge target",' +
       '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill/Foes suffer +%{charismaModifier} DC to intimidate"',
+      '"Appraise is a class skill/Perform is a class skill/Foes suffer +%{charismaModifier} DC to demoralize using Intimidate"',
   'Order Of The Dragon':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"Allies gain +%{levels.Cavalier//4+1} attack on threatened challenge target",' +
-      '"Must defend allies",' +
+      '"Allies gain +%{levels.Cavalier//4+1} attack on threatened Challenge target",' +
+      '"Must protect allies from harm and defend their honor",' +
       '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (care for allies)"',
   'Order Of The Lion':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} AC vs. challenge target",' +
+      '"+%{levels.Cavalier//4+1} AC vs. Challenge target",' +
       '"Must defend and obey sovereign",' +
       '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/May use Knowledge (Nobility) untrained/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
   'Order Of The Shield':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} attack vs. challenge target for 1 min if target attacks another",' +
+      '"+%{levels.Cavalier//4+1} attack vs. Challenge target for 1 min if target attacks another",' +
       '"Must defend the lives and prosperity of common folk",' +
       '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
   'Order Of The Star':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} saves while threatening challenge target",' +
+      '"+%{levels.Cavalier//4+1} saves while threatening Challenge target",' +
       '"Must protect and serve a faith and its members",' +
       '"Heal is a class skill/Knowledge (Religion) is a class skill/May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
   'Order Of The Sword':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Cavalier//4+1} mounted attack vs. challenge target",' +
-      '"Must show honor, mercy, and charity",' +
+      '"+%{levels.Cavalier//4+1} mounted attack vs. Challenge target",' +
+      '"Must show honor, courage, mercy, and charity",' +
       '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
   'Protect The Meek':
     'Section=combat ' +
