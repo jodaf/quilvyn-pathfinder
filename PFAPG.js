@@ -1029,7 +1029,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Dbl threat range during mounted charge/Free bull rush, disarm, sunder, or trip w/out provoking AOO after successful mounted charge"',
   'Moment Of Triumph':
-    'Section=feature ' +
+    'Section=combat ' +
     'Note="May automatically confirm crit and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and AC for 1 rd 1/dy"',
   'Mount':'Section=companion,feature,skill ' +
     'Note=' +
@@ -1098,7 +1098,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"May halt foe using attack instead of maneuver",' +
-      '"Has Stand Still features"',
+      '"Has Stand Still feature"',
   'Strategy':
     'Section=combat ' +
     'Note="R30\' May give each ally +2 AC for 1 rd, +2 attack for 1 rd, or immediate move 1/combat"',
@@ -1200,7 +1200,7 @@ PFAPG.FEATURES = {
     'Section=ability,feature ' +
     'Note=' +
       '"+10 Speed",' +
-      '"Has %V features"',
+      '"Has %V"',
   'Clobbering Strike':
     'Section=magic ' +
     'Note="May make swift action trip attempt w/out provoking AOO after crit w/attack spell"',
@@ -1296,7 +1296,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"+4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe crit confirm",' +
-      '"Has %V features"',
+      '"Has %V"',
   'Fluid Travel':
     'Section=ability ' +
     'Note="May move full speed across liquid without contact damage%1 %{mysteryLevel} hr/dy"',
@@ -1426,7 +1426,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"Not disabled or staggered at 0 HP%{mysteryLevel>=11 ? \'/No HP loss from taking action while disabled\' : \'\'}",' +
-      '"Has %V features"',
+      '"Has %V"',
   'Resist Life':
     'Section=save ' +
     'Note="Save as undead vs. negative and positive energy%{mysteryLevel>=7 ? \' w/+\' + (mysteryLevel>=15 ? 6 : mysteryLevel>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
@@ -1833,13 +1833,13 @@ PFAPG.FEATURES = {
   'Battle Scavenger':
     'Section=combat ' +
     'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
-  'Bestial Mount':'Section=feature Note="Has Animal Companion features"',
+  'Bestial Mount':'Section=feature Note="Has Animal Companion feature"',
   'Blindsight':'Section=feature Note="Can maneuver and fight w/out vision"',
   'Boasting Taunt':
     'Section=combat ' +
     'Note="Successful Intimidate inflicts shaken on target until attacks self"',
   'Brawler':
-    'Section=combat Note="Has Improved Unarmed Strike features during rage"',
+    'Section=combat Note="Has Improved Unarmed Strike feature during rage"',
   'Chaos Totem':
     'Section=combat,skill ' +
     'Note=' +
@@ -1889,7 +1889,7 @@ PFAPG.FEATURES = {
     'Note="May take full-attack action after a charge/Increased Lesser Beast Totem effects"',
   'Greater Brawler':
     'Section=combat ' +
-    'Note="Has Two-Weapon Fighting features for Unarmed Strike during rage"',
+    'Note="Has Two-Weapon Fighting feature for Unarmed Strike during rage"',
   'Greater Chaos Totem':
     'Section=combat ' +
     'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
@@ -1931,7 +1931,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd"',
   'Invulnerability':'Section=combat Note="DR %V/-, dbl nonlethal"',
   'Keen Senses (Barbarian)':
-    'Section=feature Note="Has Low-Light Vision%1 features"',
+    'Section=feature Note="Has Low-Light Vision%1"',
   'Knockdown':
     'Section=combat ' +
     'Note="May make trip attack that inflicts %{strengthModifier} HP and knocks prone w/out provoking AOO 1/rage"',
@@ -2006,7 +2006,7 @@ PFAPG.FEATURES = {
   'Arcane Armor':
     'Section=feature,magic ' +
     'Note=' +
-      '"Has %V Armor Proficiency features",' +
+      '"Has %V Armor Proficiency",' +
       '"No arcane spell failure in %V armor"',
   'Arcane Insight':
     'Section=magic,save,skill ' +
@@ -2294,7 +2294,7 @@ PFAPG.FEATURES = {
     'Section=ability,feature ' +
     'Note=' +
       '"+%{10+levels.Cleric//5*5}\' Speed for 1 rd %{wisdomModifier+3}/dy",' +
-      '"Has Low-Light Vision features for 1 rd %{wisdomModifier+3}/dy"',
+      '"Has Low-Light Vision feature for 1 rd %{wisdomModifier+3}/dy"',
   'Protective Aura':
     'Section=magic ' +
     'Note="R30\' Allies gain +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
@@ -2762,13 +2762,13 @@ PFAPG.FEATURES = {
     'Section=combat,feature,save ' +
     'Note=' +
       '"Shield cannot be disarmed or sundered/Adds shield bonus to touch AC",' +
-      '"Has %V features w/shield",' +
+      '"Has %V feature w/shield",' +
       '"Adds shield bonus to Reflex saves"',
   'Shielded Fortress':
     'Section=combat,feature ' +
     'Note=' +
-      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion features for 1 rd",' +
-      '"Has %V features"',
+      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion feature for 1 rd",' +
+      '"Has %V feature"',
   'Singleton':
     'Section=combat ' +
     'Note="+%{(levels.Fighter+1)//6} attack and damage w/one-handed weapon and other hand free"',
@@ -2828,7 +2828,7 @@ PFAPG.FEATURES = {
     'Section=ability,feature ' +
     'Note=' +
       '"%{speed}\' Swim",' +
-      '"Has Amphibious features"',
+      '"Has Amphibious feature"',
   'Aspect Of The Ki-Rin':
     'Section=ability Note="May fly %{speed}\' each rd between landings"',
   'Aspect Of The Monkey':
@@ -2871,7 +2871,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"+1 AC",' +
-      '"Has Toughness features"',
+      '"Has Toughness feature"',
   'Ki Arrows':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to deal %{unarmedDamageDice}+%{unarmedDamageModifier} w/bow"',
@@ -4377,7 +4377,7 @@ PFAPG.FEATURES = {
       '"+2 vs. ingested poisons, nauseated, and sickened",' +
       '"+2 Survival (find food for self)"',
   'Ironhide':'Section=combat Note="+1 AC"',
-  'Keen Scent':'Section=feature Note="Has Scent features"',
+  'Keen Scent':'Section=feature Note="Has Scent feature"',
   'Ki Throw':
     'Section=feature ' +
     'Note="May throw foe into adjacent unoccupied square w/out provoking AOO after successful unarmed trip"',
@@ -8693,7 +8693,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=11 ? 2 : source>=7 ? 1 : null'
     );
     rules.defineRule('featureNotes.resiliency(Oracle)',
-      'mysteryLevel', '=', 'source<7 ? null : "Diehard"'
+      'mysteryLevel', '=', 'source<7 ? null : "Diehard feature"'
     );
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
@@ -9156,7 +9156,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('featureNotes.keenSenses(Barbarian).1',
       'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', '"" + (source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
+      classLevel, '=', '(source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
     );
     rules.defineRule
       ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
@@ -11389,7 +11389,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
   } else if(name == 'Flame Mystery') {
     rules.defineRule('featureNotes.cinderDance',
-      'mysteryLevel', '=', 'source>=10 ? "Nimble Moves and Acrobatic Steps" : source>=5 ? "Nimble Moves" : null'
+      'mysteryLevel', '=', 'source>=10 ? "Nimble Moves and Acrobatic Steps features" : source>=5 ? "Nimble Moves feature" : null'
     );
     rules.defineRule('features.Acrobatic Steps',
       'featureNotes.cinderDance', '=', 'source.includes("Acrobatic Steps") ? 1 : null'
@@ -11484,7 +11484,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=7 ? " or breathe water and swim 60\'/rd underwater" : ""'
     );
     rules.defineRule('featureNotes.fluidNature',
-      'mysteryLevel', '=', 'source>=5 ? "Dodge" : null'
+      'mysteryLevel', '=', 'source>=5 ? "Dodge feature" : null'
     );
     rules.defineRule('features.Dodge',
       'featureNotes.fluidNature', '=', 'source.includes("Dodge") ? 1 : null'
