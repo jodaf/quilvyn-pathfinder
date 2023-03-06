@@ -1125,31 +1125,55 @@ PFAPG.FEATURES = {
   'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
-    'Note="Crit ignores DR, negates regeneration for 1 rd/+1 HP energy damage/die vs. vulnerable foe"',
+    'Note="Crit ignores DR and negates regeneration for 1 rd/+1 HP per die energy damage vs. vulnerable foe"',
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Judgment':
     'Section=combat ' +
-    'Note="May pronounce one of these judgments, gaining specified bonus, %{(levels.Inquisitor+2)//3}/dy: destruction (+%{(levels.Inquisitor+3)//3} weapon damage), healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), piercing (+%{(levels.Inquisitor+3)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. confirm crit\' : \'\'}), purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), resistance (resistance %{2+levels.Inquisitor//3*2} to chosen energy), smiting (weapons count as magic%{levels.Inquisitor>=6 ? \', aligned\' : \'\'}%{levels.Inquisitor>=10 ? \', adamantine\' : \'\'} to overcome DR)"',
+    'Note="May pronounce one of these, gaining the specified bonus, %{(levels.Inquisitor+2)//3}/dy: ' +
+      'destruction (+%{(levels.Inquisitor+3)//3} weapon damage), ' +
+      'healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), ' +
+      'justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), ' +
+      'piercing (+%{(levels.Inquisitor+3)//3} concentration, +%{(levels.Inquisitor+3)//3} caster level to overcome spell resistance), ' +
+      'protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. confirm crit\' : \'\'}), ' +
+      'purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), ' +
+      'resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), ' +
+      'resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), ' +
+      'smiting (weapons count as magic%{levels.Inquisitor>=10 ? \', aligned, and adamantine\' : levels.Inquisitor>=6 ? \' and aligned\' : \'\'} to overcome DR)"',
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
   'Orisons':'Section=magic Note="Knows level-0 spells"',
-  'Second Judgment':'Section=combat Note="May use 2 judgments simultaneously"',
+  'Second Judgment':
+    'Section=combat ' +
+    'Note="May use 2 Judgments simultaneously; may change 1 as a swift action"',
   'Slayer':
     'Section=combat ' +
-    'Note="Effects of choice of judgment increase to: destruction (+%{(levels.Inquisitor+8)//3} weapon damage), healing (regains +%{(levels.Inquisitor+8)//3} HP/rd), justice (+%{(levels.Inquisitor+10)//5} attack), piercing (+%{(levels.Inquisitor+8)//3} concentration and caster level to overcome spell resistance), protection (+%{levels.Inquisitor+10)//5} AC), purity (+%{(levels.Inquisitor+10)//5} saves), resiliency (gain DR %{(levels.Inquisitor+10)//5}/opposed alignment), resistance (resistance %{2+levels.Inquisitor//8*2} to chosen energy)"',
+    'Note="Effects of choice of Judgment increase to: ' +
+      'destruction (+%{(levels.Inquisitor+8)//3} weapon damage), ' +
+      'healing (regains +%{(levels.Inquisitor+8)//3} HP/rd), ' +
+      'justice (+%{(levels.Inquisitor+10)//5} attack), ' +
+      'piercing (+%{(levels.Inquisitor+8)//3} concentration, +%{(levels.Inquisitor+8)//3} caster level to overcome spell resistance), ' +
+      'protection (+%{levels.Inquisitor+10)//5} AC), ' +
+      'purity (+%{(levels.Inquisitor+10)//5} saves), ' +
+      'resiliency (gain DR %{(levels.Inquisitor+10)//5}/opposed alignment), ' +
+      'resistance (resistance %{(levels.Inquisitor+8)//3*2} to chosen energy)"',
   'Solo Tactics':
-    'Section=combat Note="All allies count for Teamwork feat bonuses"',
+    'Section=combat ' +
+    'Note="All allies treated as having same Teamwork feats for determining feat bonuses"',
   'Stalwart':
     'Section=save ' +
-    'Note="Successful Fortitude or Will save yields no damage instead of half (heavy armor neg)"',
+    'Note="Successful Fortitude or Will save in medium or lighter armor yields no damage instead of half"',
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
-  'Third Judgment':'Section=combat Note="May use 3 judgments simultaneously"',
+  'Teamwork Feat':
+    'Section=feature ' +
+    'Note="Gains %V Teamwork feats; may exchange most recent %{wisdomModifier}/dy"',
+  'Third Judgment':
+    'Section=combat ' +
+    'Note="May use 3 Judgments simultaneously; may change 1 as a swift action"',
   // 'Track' in Pathfinder.js
   'True Judgment':
     'Section=combat ' +
-    'Note="Successful judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg) 1/1d4 rd"',
+    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg) 1/1d4 rd"',
 
   // Oracle
   'Acid Skin':
@@ -6205,7 +6229,7 @@ PFAPG.SPELLS = {
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during judgment or smite for $L min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during Judgment or Smite for $L min"',
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
@@ -6713,7 +6737,7 @@ PFAPG.SPELLS = {
   'Sanctify Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,P3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during judgment or smite for $L min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during Judgment or Smite for $L min"',
   'Saving Finale':
     'School=Evocation ' +
     'Level=B1 ' +
