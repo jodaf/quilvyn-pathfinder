@@ -7178,7 +7178,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Entangle':'Decay1,Verdant1',
   'Enthrall':'Inquisitor2,Leadership2,Love2,O2,Revolution2,Witch2',
   'Entropic Shield':'Protean1,O1',
-  'Ethereal Jaunt':'O7,Thievery7,Witch7',
+  'Ethereal Jaunt':'O7,Thievery7,Witch7', // Witch Agility
   'Etherealness':'O9',
   'Expeditious Retreat':
     'Alchemist1,"Azata Chaos1","Azata Good1",Exploration1,Inquisitor1',
@@ -7546,7 +7546,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Web':'Witch2',
   'Weird':'Insanity9,Nightmare9',
   'Whirlwind':'Cloud8,Storms8,Stormborn8,Wind8,Winds8',
-  'Whispering Wind':'Inquisitor2,O2,Winds1', //Rage Prophet
+  'Whispering Wind':'Inquisitor2,O2,Winds1', // Rage Prophet
   'Wind Walk':'Alchemist6,O6,Winds6',
   'Wind Wall':'Cloud2,O3,Winds2',
   'Wood Shape':'Construct2,Toil2',
@@ -11791,7 +11791,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
 
 /* Sets #attributes#'s #attribute# attribute to a random value. */
 PFAPG.randomizeOneAttribute = function(attributes, attribute) {
-  // TODO Avoid inappropriate selection of Witch sponsor and Rage Prophet spells
+  // Handle limited animal companion choices of Cavalier and Summoner classes
   if(attribute == 'companion' &&
       ('levels.Cavalier' in attributes ||
        'selectableFeatures.Oracle - Bonded Mount' in attributes)) {
@@ -11825,8 +11825,125 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
       attributes.animalCompanionName = SRD35.randomName(null);
     }
   }
+  // Avoid inappropriate selection of Witch sponsor and Rage Prophet spells
+  let removedSpells = null;
+  if(attribute == 'spells' &&
+     ('levels.Oracle' in attributes || 'levels.Witch' in attributes)) {
+    let qualifiedSpells = [];
+    let unqualifiedSpells = [];
+    let limitedSpells = {
+      'selectableFeatures.Witch - Agility Patron': [
+        'Jump(Witch1 Tran)', "Cat's Grace(Witch2 Tran)",
+        'Haste(Witch3 Tran)', 'Freedom Of Movement(Witch4 Abju)',
+        'Polymorph(Witch5 Tran)', "Mass Cat's Grace(Witch6 Tran)",
+        'Ethereal Jaunt(Witch7 Tran)', 'Animal Shapes(Witch8 Tran)',
+        'Shapechange(Witch9 Tran)'
+      ],
+      'selectableFeatures.Witch - Animals Patron': [
+        'Charm Animal(Witch1 Ench)', 'Speak With Animals(Witch2 Divi)',
+        'Dominate Animal(Witch3 Ench)', "Summon Nature's Ally IV(Witch4 Conj)",
+        'Animal Growth(Witch5 Tran)', 'Antilife Shell(Witch6 Abju)',
+        'Beast Shape IV(Witch7 Tran)', 'Animal Shapes(Witch8 Tran)',
+        "Summon Nature's Ally IX(Witch9 Conj)"
+      ],
+      'selectableFeatures.Witch - Deception Patron': [
+        'Ventriloquism(Witch1 Illu)', 'Invisibility(Witch2 Illu)',
+        'Blink(Witch3 Tran)', // Confusion is on the Witch4 spell list
+        'Passwall(Witch5 Tran)', 'Programmed Image(Witch6 Illu)',
+        'Mass Invisibility(Witch7 Illu)', 'Scintillating Pattern(Witch8 Illu)',
+        'Time Stop(Witch9 Tran)'
+      ],
+      'selectableFeatures.Witch - Elements Patron': [
+        'Shocking Grasp(Witch1 Evoc)', 'Flaming Sphere(Witch2 Evoc)',
+        'Fireball(Witch3 Evoc)', 'Wall Of Ice(Witch4 Evoc)',
+        'Flame Strike(Witch5 Evoc)', 'Freezing Sphere(Witch6 Evoc)',
+        'Vortex(Witch7 Evoc)', 'Fire Storm(Witch8 Evoc)',
+        'Meteor Swarm(Witch9 Evoc)'
+      ],
+      'selectableFeatures.Witch - Endurance Patron': [
+        'Endure Elements(Witch1 Abju)', "Bear's Endurance(Witch2 Tran)",
+        'Protection From Energy(Witch3 Abju)', 'Spell Immunity(Witch4 Abju)',
+        'Spell Resistance(Witch5 Abju)', "Mass Bear's Endurance(Witch6 Tran)",
+        'Greater Restoration(Witch7 Conj)', 'Iron Body(Witch8 Tran)',
+        'Miracle(Witch9 Evoc)'
+      ],
+      'selectableFeatures.Witch - Plague Patron': [
+        'Detect Undead(Witch1 Divi)', 'Command Undead(Witch2 Necr)',
+        'Contagion(Witch3 Necr)', 'Animate Dead(Witch4 Necr)',
+        'Giant Vermin(Witch5 Tran)', 'Create Undead(Witch6 Necr)',
+        'Control Undead(Witch7 Necr)', 'Create Greater Undead(Witch8 Necr)',
+        'Energy Drain(Witch9 Necr)'
+      ],
+      'selectableFeatures.Witch - Shadow Patron': [
+        'Silent Image(Witch1 Illu)', 'Darkness(Witch2 Evoc)',
+        'Deeper Darkness(Witch3 Evoc)', 'Shadow Conjuration(Witch4 Illu)',
+        'Shadow Evocation(Witch5 Illu)', 'Shadow Walk(Witch6 Illu)',
+        'Greater Shadow Conjuration(Witch7 Illu)',
+        'Greater Shadow Evocation(Witch8 Illu)', 'Shades(Witch9 Illu)'
+      ],
+      'selectableFeatures.Witch - Strength Patron': [
+        'Divine Favor(Witch1 Evoc)', "Bull's Strength(Witch2 Tran)",
+        'Greater Magic Weapon(Witch3 Tran)', 'Divine Power(Witch4 Evoc)',
+        'Righteous Might(Witch5 Tran)', "Mass Bull's Strength(Witch6 Tran)",
+        'Giant Form I(Witch7 Tran)', 'Giant Form II(Witch8 Tran)',
+        'Shapechange(Witch9 Tran)'
+      ],
+      'selectableFeatures.Witch - Transformation Patron': [
+        'Jump(Witch1 Tran)', "Bear's Endurance(Witch2 Tran)",
+        'Beast Shape I(Witch3 Tran)', 'Beast Shape II(Witch4 Tran)',
+        'Beast Shape III(Witch5 Tran)', 'Form Of The Dragon I(Witch6 Tran)',
+        'Form Of The Dragon II(Witch7 Tran)',
+        'Form Of The Dragon III(Witch8 Tran)', 'Shapechange(Witch9 Tran)'
+      ],
+      'selectableFeatures.Witch - Trickery Patron': [
+        'Animate Rope(Witch1 Tran)', 'Mirror Image(Witch2 Illu)',
+        'Major Image(Witch3 Illu)', 'Hallucinatory Terrain(Witch4 Illu)',
+        'Mirage Arcana(Witch5 Illu)', 'Mislead(Witch6 Illu)',
+        'Reverse Gravity(Witch7 Tran)', 'Screen(Witch8 Illu)',
+        'Time Stop(Witch9 Tran)'
+      ],
+      'selectableFeatures.Witch - Water Patron': [
+        'Bless Water(Witch1 Tran)', 'Curse Water(Witch1 Necr)',
+        'Slipstream(Witch2 Conj)', 'Water Breathing(Witch3 Tran)',
+        'Control Water(Witch4 Tran)', 'Geyser(Witch5 Conj)',
+        'Elemental Body III(Witch6 Tran)', 'Elemental Body IV(Witch7 Tran)',
+        'Seamantle(Witch8 Conj)', 'Tsunami(Witch9 Conj)'
+      ],
+      'selectableFeatures.Witch - Wisdom Patron': [
+        'Shield Of Faith(Witch1 Abju)', "Owl's Wisdom(Witch2 Tran)",
+        'Magic Vestment(Witch3 Tran)',
+        'Lesser Globe Of Invulnerability(Witch4 Abju)', 'Dream(Witch5 Illu)',
+        'Globe Of Invulnerability(Witch6 Abju)', 'Spell Turning(Witch7 Abju)',
+        'Protection From Spells(Witch8 Abju)', "Mage's Disjunction(Witch9 Abju)"
+      ],
+      'prestige.Rage Prophet': [
+        'Arcane Eye(O4 Divi)', 'Dream(O5 Illu)', 'See Invisibility(O2 Divi)',
+        'Shadow Walk(O6 Illu)', 'Spectral Hand(O2 Necr)',
+        'Unseen Servant(O1 Conj)', 'Vision(O7 Divi)', 'Whispering Wind(O2 Tran)'
+      ],
+    };
+    for(let l in limitedSpells) {
+      if(l in attributes)
+        qualifiedSpells = qualifiedSpells.concat(limitedSpells[l]);
+      else
+        unqualifiedSpells = unqualifiedSpells.concat(limitedSpells[l]);
+    }
+    removedSpells = {};
+    unqualifiedSpells = [...new Set(unqualifiedSpells)]; // remove duplicates
+    unqualifiedSpells.forEach(s => {
+      if(qualifiedSpells.includes(s))
+        ; // empty; handles spells appearing in multiple lists
+      else if(s in this.choices.spells) {
+        removedSpells[s] = this.choices.spells[s];
+        delete this.choices.spells[s];
+      } else
+        console.log('Unknown spell "' + s + '"');
+    });
+  }
   Pathfinder.randomizeOneAttribute.apply
     (Pathfinder.rules, [attributes, attribute]);
+  if(removedSpells)
+    Object.assign(this.choices.spells, removedSpells);
 };
 
 /* Returns HTML body content for user notes associated with this rule set. */
