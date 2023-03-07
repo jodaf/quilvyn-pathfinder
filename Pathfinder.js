@@ -6598,7 +6598,7 @@ Pathfinder.pathRules = function(
   );
 
   // Ensure that cleric domain features don't show for druids or vice versa.
-  if(Pathfinder.DRUID_DOMAINS.includes(name)) {
+  if(name.match(/ Domain$/)) {
     var groupFeatures = group.toLowerCase() + 'Features';
     for(var i = 0; i < features.length; i++) {
       var feature = features[i].replace(/^\d+:/, '');
