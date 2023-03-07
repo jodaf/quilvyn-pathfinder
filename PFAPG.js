@@ -1114,14 +1114,14 @@ PFAPG.FEATURES = {
   // Inquisitor
   'Bane':
     'Section=combat ' +
-    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. specified creature type for %{levels.Inquisitor} rd/dy"',
+    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. chosen creature type for %{levels.Inquisitor} rd/dy"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Detect Alignment':
     'Section=magic ' +
     'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
   'Discern Lies':
     'Section=magic ' +
-    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor}/dy"',
+    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor} rd/dy"',
   'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
@@ -1129,13 +1129,13 @@ PFAPG.FEATURES = {
   'Greater Bane':'Section=combat Note="Increased Bane effects"',
   'Judgment':
     'Section=combat ' +
-    'Note="May pronounce one of these, gaining the specified bonus, %{(levels.Inquisitor+2)//3}/dy: ' +
+    'Note="May pronounce one of these, gaining the specified bonus until combat ends, %{(levels.Inquisitor+2)//3}/dy: ' +
       'destruction (+%{(levels.Inquisitor+3)//3} weapon damage), ' +
-      'healing (regains +%{(levels.Inquisitor+3)//3} HP/rd), ' +
+      'healing (regains %{(levels.Inquisitor+3)//3} HP/rd), ' +
       'justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), ' +
       'piercing (+%{(levels.Inquisitor+3)//3} concentration, +%{(levels.Inquisitor+3)//3} caster level to overcome spell resistance), ' +
       'protection (+%{levels.Inquisitor+5)//5} AC%{levels.Inquisitor>=10 ? \', dbl vs. confirm crit\' : \'\'}), ' +
-      'purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curses, disease, and poison\' : \'\'}), ' +
+      'purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curse, disease, and poison\' : \'\'}), ' +
       'resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), ' +
       'resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), ' +
       'smiting (weapons count as magic%{levels.Inquisitor>=10 ? \', aligned, and adamantine\' : levels.Inquisitor>=6 ? \' and aligned\' : \'\'} to overcome DR)"',
@@ -1150,7 +1150,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Effects of choice of Judgment increase to: ' +
       'destruction (+%{(levels.Inquisitor+8)//3} weapon damage), ' +
-      'healing (regains +%{(levels.Inquisitor+8)//3} HP/rd), ' +
+      'healing (regains %{(levels.Inquisitor+8)//3} HP/rd), ' +
       'justice (+%{(levels.Inquisitor+10)//5} attack), ' +
       'piercing (+%{(levels.Inquisitor+8)//3} concentration, +%{(levels.Inquisitor+8)//3} caster level to overcome spell resistance), ' +
       'protection (+%{levels.Inquisitor+10)//5} AC), ' +
@@ -8670,6 +8670,12 @@ PFAPG.classRulesExtra = function(rules, name) {
            'inquisitorFeatures.Weapon Proficiency (' + w + ')', '=', '1'
          );
        });
+    }
+    let allPaths = Pathfinder.PATHS;
+    for(let p in allPaths) {
+      if(p.match(/ Domain$/))
+        rules.choiceRules
+          (rules, 'Path', p, allPaths[p].replaceAll('Cleric', 'Inquisitor'));
     }
     rules.defineRule('combatNotes.bane',
       '', '=', '2',
