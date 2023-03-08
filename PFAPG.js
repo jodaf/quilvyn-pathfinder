@@ -8697,12 +8697,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
     Pathfinder.featureSpells(rules,
-      'Detect Alignment', 'InquisitorAbility', 'charisma', 'levels.Inquisitor',
-      ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law']
-    );
-    Pathfinder.featureSpells(rules,
-      'Discern Lies', 'InquisitorAbility', 'charisma', 'levels.Inquisitor',
-      ['Discern Lies']
+      'Detect Alignment', 'Detection', 'charisma', 'levels.Inquisitor',
+      ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law',
+       '5:Discern Lies']
     );
   } else if(name == 'Oracle') {
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
