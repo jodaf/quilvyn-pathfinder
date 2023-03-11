@@ -839,46 +839,49 @@ PFAPG.FEATURES = {
   // Alchemist
   'Acid Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts acid damage instead of fire and direct hit an additional 1d6 HP the next round"',
+    'Note="Bomb inflicts acid damage instead of fire and direct hit an additional 1d6 HP acid the next round"',
   'Alchemy':
     'Section=magic,skill ' +
     'Note=' +
-      '"May infuse extracts that duplicate spell effects for 1 dy",' +
+      '"May infuse extracts that duplicate spell effects on self for 1 dy",' +
       '"+%V Craft (Alchemy)/May use Craft (Alchemy) to identify potions"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict full HP on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) splash %V/dy"',
+    'Note="May create bombs that inflict %{bombDamageDice}+%{intelligenceModifier} HP fire on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP fire splash (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
-    'Section=magic Note="Combining two effects into one extract uses +2 slot"',
+    'Section=magic ' +
+    'Note="Combining two formulae into one extract uses higher formula slot +2"',
   'Concentrate Poison':
     'Section=feature ' +
-    'Note="1 min process combines two poison doses; yields +50% frequency and +2 save DC for 1 hr"',
+    'Note="1 min process combines two poison doses; yields +50% frequency and +2 save DC within 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d4 HP sonic instead of fire and direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Delayed Bomb':
     'Section=combat ' +
-    'Note="May time bomb to explode after up to %{levels.Alchemist} rd"',
-  'Dilution':'Section=magic Note="May split potion or elixir into two doses"',
+    'Note="May time bomb to explode after up to %{levels.Alchemist} rd (<i>Dispel Magic</i> or DC %{10+levels.Alchemist+intelligenceModifier} Disable Device neg)"',
+  'Dilution':
+    'Section=magic Note="May split potion or elixir into two doses 1/dy"',
   'Discovery':'Section=feature Note="%V selections"',
   'Dispelling Bomb':
-    'Section=combat ' +
-    'Note="May create bomb that dispels magic instead of inflicting damage"',
+    'Section=magic ' +
+    'Note="May create bomb that inflicts <i>Dispel Magic</i> effects on hit instead of damage"',
   'Elixir Of Life':
     'Section=magic ' +
-    'Note="May create elixir that acts as <i>True Resurrection</i> or readied self <i>Resurrection</i> for %{intelligenceModifier} dy 1/dy"',
+    'Note="1 hr process creates elixir that acts as <i>True Resurrection</i> or readied self <i>Resurrection</i> for %{intelligenceModifier} dy 1/dy"',
   'Enhance Potion':
     'Section=magic ' +
     'Note="May cause imbibed potion to function at caster level %{levels.Alchemist} %{intelligenceModifier}/dy"',
   'Eternal Potion':
-     'Section=magic Note="May make effects of 1 imbibed potion permanent"',
+     'Section=magic ' +
+     'Note="May make effects of 1 imbibed extended potion permanent"',
   'Eternal Youth':
     'Section=ability Note="Suffers no ability score penalties from age"',
   'Explosive Bomb':
     'Section=combat ' +
-    'Note="Direct hit from bomb inflicts 1d6 HP fire/rd until extinguished; splash extends 10\'"',
+    'Note="Direct hit from bomb inflicts additional 1d6 HP fire/rd until extinguished; splash extends 10\'"',
   'Extend Potion':
      'Section=magic ' +
      'Note="May double duration of imbibed potion %{intelligenceModifier}/dy"',
@@ -887,61 +890,61 @@ PFAPG.FEATURES = {
     'Note="May use full-attack action to throw multiple bombs per rd"',
   'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
   'Feral Mutagen':
-    'Section=combat ' +
-    'Note="Imbibing mutagen grants 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
+    'Section=magic ' +
+    'Note="Mutagen gives 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
   'Frost Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d6+%{intelligenceModifier} cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="Bomb inflicts cold damage instead of fire and direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
   'Grand Discovery':
     'Section=feature Note="1 selection/+2 Discovery selections"',
   'Grand Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for %{effectiveAlchemistLevel*10} min"',
+    'Note="Mutagen gives +6 AC and +8/+6/+4 to choices of Strength, Dexterity, and Constitution and -2 to Intelligence, Wisdom, and Charisma for %{effectiveAlchemistLevel*10} min"',
   'Greater Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +4 AC and +6/-2 and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %{effectiveAlchemistLevel*10} min"',
+    'Note="Mutagen gives +4 AC and +6/-2 and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for %{effectiveAlchemistLevel*10} min"',
   'Inferno Bomb':
     'Section=combat ' +
-    'Note="May create bomb that inflicts 6d6 HP fire in dbl splash radius for %{levels.Alchemist} rd"',
+    'Note="May create bomb that obscures vision and inflicts 6d6 HP fire in dbl splash radius (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) for %{levels.Alchemist} rd"',
   'Infuse Mutagen':
      'Section=magic ' +
-     'Note="May retain multiple mutagens at the cost of 2 point intelligence damage per"',
+     'Note="May retain multiple mutagens; suffers -2 Intelligence/additional mutagen"',
   'Infusion':
     'Section=magic ' +
     'Note="Created extracts persist when not held and may be used by others"',
   'Instant Alchemy':
     'Section=combat,magic ' +
     'Note=' +
-      '"May apply poison to a blade as an immediate action",' +
+      '"May apply poison to a weapon as an immediate action",' +
       '"May create alchemical items as a full-round action"',
   'Madness Bomb':
     'Section=combat ' +
-    'Note="May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP"',
+    'Note="May create bomb that inflicts 1d4 points of Wisdom damage, reducing fire damage by 2d6 HP"',
   'Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for %V min"',
+    'Note="1 hr process creates potion that gives self +2 AC and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for %V min"',
   'Persistent Mutagen':
     'Section=magic Note="Mutagen effects last %{effectiveAlchemistLevel} hr"',
   "Philosopher's Stone":
     'Section=magic ' +
-    'Note="May create stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
+    'Note="1 dy process creates stone that turns base metals into silver and gold or creates <i>True Resurrection</i> oil"',
   'Poison Bomb':
     'Section=combat ' +
-    'Note="May create bomb that kills creatures up to 6 HD (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+    'Note="May create bomb that kills creatures up to 6 HD (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort 1d4 Constitution damage for 4-6 HD) and inflicts 1d4 Constitution damage on higher HD creatures (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
   'Poison Resistance':'Section=save Note="%V to poison"',
   'Poison Touch':
     'Section=combat ' +
-    'Note="Touch may inflict 1d3 constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Con neg)"',
+    'Note="Touch may inflict 1d3 Constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Con neg)"',
   // 'Poison Use' in Pathfinder.js
   'Precise Bombs':
     'Section=combat ' +
     'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
   'Shock Bomb':
     'Section=combat ' +
-    'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d6+%{intelligenceModifier} electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
+    'Note="Bomb inflicts electricity damage instead of fire and direct hit dazzles for 1d4 rd"',
   'Smoke Bomb':
     'Section=combat ' +
     'Note="May create bomb that obscures vision in dbl splash radius for %{levels.Alchemist} rd"',
@@ -950,7 +953,7 @@ PFAPG.FEATURES = {
     'Note="Direct hit by bomb inflicts splash damage the following rd"',
   'Sticky Poison':
     'Section=combat ' +
-    'Note="Poison applied to blade remains effective for %{intelligenceModifier} strikes"',
+    'Note="Poison applied to weapon remains effective for %{intelligenceModifier} strikes"',
   'Stink Bomb':
     'Section=combat ' +
     'Note="May create bomb that nauseates for 1d4+1 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg) in dbl splash radius for 1 rd"',
@@ -963,10 +966,10 @@ PFAPG.FEATURES = {
     'Section=combat Note="May apply poison to a weapon as a swift action"',
   'Throw Anything (Alchemist)':
     'Section=feature ' +
-    'Note="Has Throw Anything feature; throws inflict +%{intelligenceModifier} HP damage"',
+    'Note="Has Throw Anything feature/Splash weapons inflict +%{intelligenceModifier} HP damage"',
   'True Mutagen':
     'Section=magic ' +
-    'Note="May brew and drink potion that gives +8 AC, +8 to strength, dexterity, and constitution, and -2 intelligence, wisdom, and charisma for %{effectiveAlchemistLevel*10} min"',
+    'Note="Mutagen gives +8 AC, +8 to Strength, Dexterity, and Constitution, and -2 Intelligence, Wisdom, and Charisma for %{effectiveAlchemistLevel*10} min"',
 
   // Cavalier
   'Act As One':
@@ -1326,7 +1329,7 @@ PFAPG.FEATURES = {
     'Note="May move full speed across liquid without contact damage%1 %{mysteryLevel} hr/dy"',
   'Focused Trance':
     'Section=skill ' +
-    'Note="1d6 rd trance gives +%{mysteryLevel} save vs. sonic and gaze attack and 1 +20 intelligence skill check %{charismaModifier}/dy"',
+    'Note="1d6 rd trance gives +%{mysteryLevel} save vs. sonic and gaze attack and 1 +20 Intelligence skill check %{charismaModifier}/dy"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} fire elemental for %{mysteryLevel} hr 1/dy"',
@@ -1350,7 +1353,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"May determine precise location under clear night sky",' +
       '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night",' +
-      '"+%{charismaModifier} wisdom-linked skills under clear night sky"',
+      '"+%{charismaModifier} Wisdom-linked skills under clear night sky"',
   'Haunted':
     'Section=feature,magic ' +
     'Note=' +
@@ -1430,7 +1433,7 @@ PFAPG.FEATURES = {
   'Mystery':'Section=feature Note="1 selection"',
   'Natural Divination':
     'Section=feature ' +
-    'Note="10 min nature study grants 1 +%{charismaModifier} save, +10 skill check, or +1 Initiative w/in 1 dy %{mysteryLevel//4+1}/dy"',
+    'Note="10 min nature study gives 1 +%{charismaModifier} save, +10 skill check, or +1 Initiative w/in 1 dy %{mysteryLevel//4+1}/dy"',
   'Nature Mystery':
     'Section=skill ' +
     'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Ride is a class skill/Survival is a class skill/Swim is a class skill"',
@@ -1898,7 +1901,7 @@ PFAPG.FEATURES = {
     'Note="May give mount rage benefits when adjacent or mounted during rage"',
   'Ferocious Trample':
     'Section=combat ' +
-    'Note="Mount trample inflicts 1d8+strength (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Str Ref half) during rage"',
+    'Note="Mount trample inflicts 1d8+Strength Modifier (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Str Ref half) during rage"',
   'Fiend Totem':
     'Section=combat ' +
     'Note="Successful foe melee attack inflicts 1d6 HP on attacker during rage"',
@@ -2182,7 +2185,7 @@ PFAPG.FEATURES = {
     'Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Wand Mastery':
     'Section=magic ' +
-    'Note="Uses charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
+    'Note="Uses Charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
   'Whistle The Wind':
    'Section=magic ' +
    'Note="Bardic Performance acts as <i>Gust Of Wind</i> spell; 5 rd performance extends effect to 1 min"',
@@ -2560,7 +2563,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Comfortable to -50F",' +
       '"Immune to altitude sickness",' +
-      '"Retains dexterity bonus during climb"',
+      '"Retains Dexterity bonus during climb"',
   'Spontaneous Casting':
     'Section=magic Note="May cast domain spell in place of prepared spell"',
   'Sure-Footed (Druid)':
@@ -8610,6 +8613,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
     Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
+    // Remove crit info for bomb--it doesn't crit
+    delete rules.choices.notes['weapons.Bomb'];
+    rules.defineChoice('notes', 'weapons.Bomb:%V (%1 %2%3)');
     rules.defineRule('bombDamageDice',
       'effectiveAlchemistLevel', '=', 'Math.floor((source + 1) / 2) + "d6"'
     );
