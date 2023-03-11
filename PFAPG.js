@@ -965,8 +965,10 @@ PFAPG.FEATURES = {
   'Swift Poisoning':
     'Section=combat Note="May apply poison to a weapon as a swift action"',
   'Throw Anything (Alchemist)':
-    'Section=feature ' +
-    'Note="Has Throw Anything feature/Splash weapons inflict +%{intelligenceModifier} HP damage"',
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Splash weapons inflict +%{intelligenceModifier} HP damage",' +
+      '"Has Throw Anything feature"',
   'True Mutagen':
     'Section=magic ' +
     'Note="Mutagen gives +8 AC, +8 to Strength, Dexterity, and Constitution, and -2 Intelligence, Wisdom, and Charisma for %{effectiveAlchemistLevel*10} min"',
