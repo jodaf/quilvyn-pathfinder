@@ -118,9 +118,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Grand Discovery: 1 selection/+2 Discovery selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Throw Anything (Alchemist): Has Throw Anything feature; throws inflict +4 HP damage</i></td>
+        <td><i>Throw Anything (Alchemist): Has Throw Anything feature/Splash weapons inflict +4 HP damage</i></td>
       </tr><tr style="text-align:center">
-        <td>Concentrate Poison: 1 min process combines two poison doses; yields +50% frequency and +2 save DC for 1 hr</td>
+        <td>Concentrate Poison: 1 min process combines two poison doses; yields +50% frequency and +2 save DC within 1 hr</td>
       </tr><tr style="text-align:center">
         <td>Poison Use: No chance of self-poisoning when applying to a weapon</td>
       </tr></table>
@@ -240,35 +240,31 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Acid Bomb: Bomb inflicts acid damage instead of fire and direct hit an additional 1d6 HP the next round</td>
       </tr><tr style="text-align:center">
-        <td>Bomb: May create bombs that inflict full HP on hit and 14 HP (DC 24 Ref half) splash 24/dy</td>
+        <td>Bomb: May create bombs that inflict 10d6+4 HP fire on hit and 14 HP fire splash (DC 24 Ref half) 24/dy</td>
       </tr><tr style="text-align:center">
         <td>Concussive Bomb: Bomb inflicts 10d4 HP sonic instead of fire and direct hit deafens for 1 min (DC 24 Fort neg)</td>
       </tr><tr style="text-align:center">
-        <td>Delayed Bomb: May time bomb to explode after up to 20 rd</td>
+        <td>Delayed Bomb: May time bomb to explode after up to 20 rd (<i>Dispel Magic</i> or DC 34 Disable Device neg)</td>
       </tr><tr style="text-align:center">
-        <td>Dispelling Bomb: May create bomb that dispels magic instead of inflicting damage</td>
-      </tr><tr style="text-align:center">
-        <td>Explosive Bomb: Direct hit from bomb inflicts 1d6 HP fire/rd until extinguished; splash extends 10'</td>
+        <td>Explosive Bomb: Direct hit from bomb inflicts additional 1d6 HP fire/rd until extinguished; splash extends 10'</td>
       </tr><tr style="text-align:center">
         <td>Fast Bombs: May use full-attack action to throw multiple bombs per rd</td>
       </tr><tr style="text-align:center">
         <td>Fast Healing: Regains 5 HP/rd</td>
       </tr><tr style="text-align:center">
-        <td>Feral Mutagen: Imbibing mutagen grants 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate</td>
-      </tr><tr style="text-align:center">
         <td>Force Bomb: Bomb inflicts 10d4 HP force instead of fire and direct hit knocks prone (DC 24 Ref neg)</td>
       </tr><tr style="text-align:center">
         <td>Frost Bomb: Bomb inflicts 10d6+4 cold damage instead of fire and direct hit staggers (DC 24 Fort neg)</td>
       </tr><tr style="text-align:center">
-        <td>Inferno Bomb: May create bomb that inflicts 6d6 HP fire in dbl splash radius for 20 rd</td>
+        <td>Inferno Bomb: May create bomb that obscures vision and inflicts 6d6 HP fire in dbl splash radius (DC 24 Ref half) for 20 rd</td>
       </tr><tr style="text-align:center">
-        <td>Instant Alchemy: May apply poison to a blade as an immediate action</td>
+        <td>Instant Alchemy: May apply poison to a weapon as an immediate action</td>
       </tr><tr style="text-align:center">
-        <td>Madness Bomb: May create bomb that inflicts 1d4 points of wisdom damage, reducing fire damage by 2d6 HP</td>
+        <td>Madness Bomb: May create bomb that inflicts 1d4 points of Wisdom damage, reducing fire damage by 2d6 HP</td>
       </tr><tr style="text-align:center">
-        <td>Poison Bomb: May create bomb that kills creatures up to 6 HD (DC 24 Fort 1d4 constitution damage for 4-6 HD) and inflicts 1d4 constitution damage on higher HD creatures (DC 24 Fort half) in dbl splash radius for 20 rd</td>
+        <td>Poison Bomb: May create bomb that kills creatures up to 6 HD (DC 24 Fort 1d4 Constitution damage for 4-6 HD) and inflicts 1d4 Constitution damage on higher HD creatures (DC 24 Fort half) in dbl splash radius for 20 rd</td>
       </tr><tr style="text-align:center">
-        <td>Poison Touch: Touch may inflict 1d3 constitution damage/rd for 6 rd (DC 24 Con neg)</td>
+        <td>Poison Touch: Touch may inflict 1d3 Constitution damage/rd for 6 rd (DC 24 Con neg)</td>
       </tr><tr style="text-align:center">
         <td>Precise Bombs: May specify 4 squares in bomb splash radius that are unaffected</td>
       </tr><tr style="text-align:center">
@@ -278,7 +274,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Sticky Bomb: Direct hit by bomb inflicts splash damage the following rd</td>
       </tr><tr style="text-align:center">
-        <td>Sticky Poison: Poison applied to blade remains effective for 4 strikes</td>
+        <td>Sticky Poison: Poison applied to weapon remains effective for 4 strikes</td>
       </tr><tr style="text-align:center">
         <td>Stink Bomb: May create bomb that nauseates for 1d4+1 rd (DC 24 Fort neg) in dbl splash radius for 1 rd</td>
       </tr><tr style="text-align:center">
@@ -331,7 +327,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
-      <td>Combine Extracts: Combining two effects into one extract uses +2 slot</td>
+      <td>Combine Extracts: Combining two formulae into one extract uses higher formula slot +2</td>
     </tr><tr style="text-align:center">
       <td>Craft Magic Arms And Armor: Create and mend magic weapons, armor, and shields</td>
     </tr><tr style="text-align:center">
@@ -341,27 +337,31 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Craft Wand: Create wand for up to 4th level spell</td>
     </tr><tr style="text-align:center">
-      <td>Dilution: May split potion or elixir into two doses</td>
+      <td>Dilution: May split potion or elixir into two doses 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Elixir Of Life: May create elixir that acts as <i>True Resurrection</i> or readied self <i>Resurrection</i> for 4 dy 1/dy</td>
+      <td>Dispelling Bomb: May create bomb that inflicts <i>Dispel Magic</i> effects on hit instead of damage</td>
+    </tr><tr style="text-align:center">
+      <td>Elixir Of Life: 1 hr process creates elixir that acts as <i>True Resurrection</i> or readied self <i>Resurrection</i> for 4 dy 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Enhance Potion: May cause imbibed potion to function at caster level 20 4/dy</td>
     </tr><tr style="text-align:center">
-      <td>Eternal Potion: May make effects of 1 imbibed potion permanent</td>
+      <td>Eternal Potion: May make effects of 1 imbibed extended potion permanent</td>
     </tr><tr style="text-align:center">
       <td>Extend Potion: May double duration of imbibed potion 4/dy</td>
     </tr><tr style="text-align:center">
-      <td>Grand Mutagen: May brew and drink potion that gives +6 AC and +8/+6/+4 to choices of strength, dexterity, and constitution and -2 to intelligence, wisdom, and charisma for 200 min</td>
+      <td>Feral Mutagen: Mutagen gives 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate</td>
     </tr><tr style="text-align:center">
-      <td>Greater Mutagen: May brew and drink potion that gives +4 AC and +6/-2 and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for 200 min</td>
+      <td>Grand Mutagen: Mutagen gives +6 AC and +8/+6/+4 to choices of Strength, Dexterity, and Constitution and -2 to Intelligence, Wisdom, and Charisma for 200 min</td>
     </tr><tr style="text-align:center">
-      <td>Infuse Mutagen: May retain multiple mutagens at the cost of 2 point intelligence damage per</td>
+      <td>Greater Mutagen: Mutagen gives +4 AC and +6/-2 and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for 200 min</td>
+    </tr><tr style="text-align:center">
+      <td>Infuse Mutagen: May retain multiple mutagens; suffers -2 Intelligence/additional mutagen</td>
     </tr><tr style="text-align:center">
       <td>Infusion: Created extracts persist when not held and may be used by others</td>
     </tr><tr style="text-align:center">
       <td>Instant Alchemy: May create alchemical items as a full-round action</td>
     </tr><tr style="text-align:center">
-      <td>Mutagen: May brew and drink potion that gives +2 AC and +4/-2 to strength/intelligence, dexterity/wisdom, or constitution/charisma for 200 min</td>
+      <td>Mutagen: 1 hr process creates potion that gives self +2 AC and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for 200 min</td>
     </tr><tr style="text-align:center">
       <td>Persistent Mutagen: Mutagen effects last 20 hr</td>
     </tr><tr style="text-align:center">
@@ -369,7 +369,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Swift Alchemy: May create alchemical items in half normal time</td>
     </tr><tr style="text-align:center">
-      <td>True Mutagen: May brew and drink potion that gives +8 AC, +8 to strength, dexterity, and constitution, and -2 intelligence, wisdom, and charisma for 200 min</td>
+      <td>True Mutagen: Mutagen gives +8 AC, +8 to Strength, Dexterity, and Constitution, and -2 Intelligence, Wisdom, and Charisma for 200 min</td>
     </tr></table>
 </td>
   </tr></table>
