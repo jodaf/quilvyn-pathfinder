@@ -1223,7 +1223,7 @@ PFAPG.FEATURES = {
     'Note="R100\' Mental probe inflicts %{mysteryLevel}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (Will neg) for %{charismaModifier} rd %{(mysteryLevel+5)//5}/dy"',
   'Burning Magic':
     'Section=magic ' +
-    'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (DC %{10+mysteryLevel//2+charismaModifier} Ref ends)"',
+    'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Ref ends)"',
   'Channel':'Section=feature Note="Has Channel Energy feature"',
   'Cinder Dance':
     'Section=ability,feature ' +
@@ -1235,13 +1235,13 @@ PFAPG.FEATURES = {
     'Note="May make swift action trip attempt w/out provoking AOO after crit w/attack spell"',
   'Clouded Vision':
     'Section=feature ' +
-    'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and darkvision%{mysteryLevel>=10 ? \\", 30\' Blindsense\\" : \'\'}%{mysteryLevel>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
+    'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and Darkvision%{mysteryLevel>=10 ? \\", 30\' Blindsense\\" : \'\'}%{mysteryLevel>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
   'Coat Of Many Stars':
     'Section=combat ' +
     'Note="Conjured coat gives +%{(mysteryLevel+5)//4*2>?4} AC%{mysteryLevel>=13 ? \', DR 5/slashing\' : \'\'} for %{mysteryLevel} hr/dy"',
   'Combat Healer':
     'Section=feature ' +
-    'Note="May use two spell slots to cast quickened Cure spell %{(mysteryLevel-3)//4}/dy"',
+    'Note="May use two spell slots to cast <i>Cure</i> spell as a swift action %{(mysteryLevel-3)//4}/dy"',
   'Crystal Sight':
     'Section=feature ' +
     'Note="Can see through %{mysteryLevel}\' earth and %{mysteryLevel}\\" metal for %{mysteryLevel} rd/dy"',
@@ -1258,9 +1258,7 @@ PFAPG.FEATURES = {
   'Delay Affliction':
     'Section=save ' +
     'Note="May delay effects of failed save vs. disease or poison for %{mysteryLevel} hr %{mysteryLevel>=15 ? 3 : mysteryLevel >= 7 ? 2 : 1}/dy"',
-  'Dweller In Darkness':
-    'Section=magic ' +
-    'Note="Can use <i>Phantasmal Killer</i> effects%{mysteryLevel>=17 ? \' on multiple targets\' : \'\'} 1/dy"',
+  'Dweller In Darkness':'Section=magic Note="Can use <i>%V</i> effects 1/dy"',
   'Earth Glide (Oracle)':
     'Section=ability ' +
     'Note="Can move at full speed through earth, leaving no trace, %{mysteryLevel} min/dy; including others uses equal portion of daily time"',
@@ -1288,7 +1286,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature,save ' +
     'Note=' +
       '"Automatically stabilize at negative HP/Automatically confirm crit",' +
-      '"Automatically reborn 3 dy after death",' +
+      '"Automatic <i>Reincarnation</i> 3 dy after death; matures in 1 wk",' +
       '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
   'Final Revelation (Life Mystery)':
     'Section=combat,save ' +
@@ -1349,7 +1347,7 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"Can see through fire, fog, and smoke %{mysteryLevel} rd/dy",' +
-      '"R%{mysteryLevel*10}\' Can use <i>Clairvoyance</i> effects via flame %V rd/dy"',
+      '"R%{mysteryLevel*10}\' Can see out of any flame in range %V rd/dy"',
   'Guiding Star':
     'Section=feature,magic,skill ' +
     'Note=' +
@@ -1366,7 +1364,7 @@ PFAPG.FEATURES = {
     'Note="+4 Heal/May use Heal on dbl number of people simultaneously/May provide long-term care for self"',
   'Heat Aura':
     'Section=combat ' +
-    'Note="10\' radius inflicts %{mysteryLevel>?1}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} half), gives self 20% concealment for 1 rd %{(mysteryLevel+5)//5}/dy"',
+    'Note="10\' radius inflicts %{mysteryLevel//2>?1}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} half), gives self 20% concealment for 1 rd %{(mysteryLevel+5)//5}/dy"',
   'Heavens Mystery':
     'Section=skill ' +
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
@@ -1384,7 +1382,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Invisibility</i> %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> \' + mysteryLevel + \' rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
-    'Note="Self <i>Stoneskin</i> gives DR 10/adamantine %{mysteryLevel>=15 ? 2 : 1}/dy"',
+    'Note="May use self <i>Stoneskin</i> effects %{mysteryLevel>=15 ? 2 : 1}/dy"',
   'Lame':
     'Section=ability,save ' +
     'Note=' +
@@ -1420,7 +1418,7 @@ PFAPG.FEATURES = {
   'Mantle Of Moonlight':
     'Section=combat,save ' +
     'Note=' +
-      '"Touch forces lycanthrope target into human form%{mysteryLevel>=5 ? \' or inflicts rage\' : \'\'} for %{mysteryLevel} rd %{mysteryLevel//5>?1}/dy",' +
+      '"Touch forces lycanthrope target into human form%{mysteryLevel>=5 ? \' or inflicts <i>Rage</i>\' : \'\'} for %{mysteryLevel} rd %{mysteryLevel//5>?1}/dy",' +
       '"Immune to lycanthropy"',
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Mighty Pebble':
@@ -1566,7 +1564,7 @@ PFAPG.FEATURES = {
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
-  'Weapon Mastery':
+  'Weapon Mastery (Oracle)':
     'Section=feature Note="+%V General Feat (Weapon Focus%1 with chosen weapon)"',
   'Whirlwind Lesson':
     'Section=magic Note="May absorb lesson from magical tome in 8 hr%1"',
@@ -5537,7 +5535,7 @@ PFAPG.PATHS = {
       '"1:Skill At Arms:Battle Revelation",' +
       '"1:Surprising Charge:Battle Revelation",' +
       '"1:War Sight:Battle Revelation",' +
-      '"1:Weapon Mastery:Battle Revelation"',
+      '"1:Weapon Mastery (Oracle):Battle Revelation"',
   'Bones Mystery':
     'Group="Oracle" ' +
     'Level=levels.Oracle ' +
@@ -8705,7 +8703,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
     Pathfinder.featureSpells(rules,
-      'Detect Alignment', 'Detection', 'charisma', 'levels.Inquisitor',
+      'Detect Alignment', 'Detection', 'charisma', 'levels.Inquisitor', null,
       ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law',
        '5:Discern Lies']
     );
@@ -8726,7 +8724,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('featCount.General',
       'featureNotes.maneuverMastery', '+', null,
-      'featureNotes.weaponMastery', '+', null
+      'featureNotes.weaponMastery(Oracle)', '+', null
     );
     rules.defineRule('featureNotes.deaf.1',
       'features.Deaf', '?', null,
@@ -8741,11 +8739,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
     );
-    rules.defineRule('featureNotes.weaponMastery',
+    rules.defineRule('featureNotes.weaponMastery(Oracle)',
       'mysteryLevel', '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
     );
-    rules.defineRule('featureNotes.weaponMastery.1',
-      'features.Weapon Mastery', '?', null,
+    rules.defineRule('featureNotes.weaponMastery(Oracle).1',
+      'features.Weapon Mastery (Oracle)', '?', null,
       'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
     );
     rules.defineRule
@@ -8766,6 +8764,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('languageCount', 'skillNotes.tongues', '+', null);
     rules.defineRule('magicNotes.haunted',
       'mysteryLevel', '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>=5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>=10 ? ", <i>Telekinesis</i>" : "") + (source>=15 ? "<i>, Reverse Gravity</i>" : "")'
+    );
+    rules.defineRule('magicNotes.dwellerInDarkness',
+      'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
     );
     rules.defineRule('mysteryLevel', classLevel, '+=', null);
     rules.defineRule('saveNotes.lame',
@@ -8790,6 +8791,13 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
+    Pathfinder.featureSpells(rules,
+      'Iron Skin', 'IronSkin', 'wisdom', 'levels.Oracle', null, ['Stoneskin']
+    );
+    Pathfinder.featureSpells(rules,
+      'Mantle Of Moonlight', 'Moonlight', 'wisdom', 'levels.Oracle',
+      '10+mysteryLevel//2+wisdomModifier', ['Phantasmal Killer', '17:Weird']
+    );
   } else if(name == 'Summoner') {
     rules.defineRule
       ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
@@ -11088,7 +11096,7 @@ PFAPG.featRulesExtra = function(rules, name) {
       ('combatNotes.favoredDefense', 'feats.Favored Defense', '=', null);
   } else if(name == 'Gnome Trickster') {
     Pathfinder.featureSpells(rules,
-      'Gnome Trickster', 'GnomeTrickster', 'charisma', 'level',
+      'Gnome Trickster', 'GnomeTrickster', 'charisma', 'level', null,
       ['Mage Hand', 'Prestidigitation']
     );
   } else if(name == 'Improved Stonecunning') {
@@ -11704,12 +11712,12 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'elfFeatures.Spirit Of The Waters', '+', '-1'
     );
     Pathfinder.featureSpells(rules,
-      'Dreamspeaker', 'Dreamspeaker', 'charisma', 'level', ['Dream']
+      'Dreamspeaker', 'Dreamspeaker', 'charisma', 'level', null, ['Dream']
     );
     rules.defineRule
       ('casterLevels.Dreamspeaker', 'charisma', '?', 'source >= 15');
     Pathfinder.featureSpells(rules,
-      'Lightbringer', 'Lightbringer', 'intelligence', 'level', ['Light']
+      'Lightbringer', 'Lightbringer', 'intelligence', 'level', null, ['Light']
     );
     rules.defineRule
       ('casterLevels.Lightbringer', 'intelligence', '?', 'source>=10');
@@ -11739,13 +11747,13 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'gnomeFeatures.Warden Of Nature', '+', '-1'
     );
     Pathfinder.featureSpells(rules,
-      'Magical Linguist', 'MagicalLinguist', 'charisma', 'level',
+      'Magical Linguist', 'MagicalLinguist', 'charisma', 'level', null,
       ['Arcane Mark', 'Comprehend Languages', 'Message', 'Read Magic']
     );
     rules.defineRule
       ('casterLevels.MagicalLinguist', 'charisma', '?', 'source >= 11');
     Pathfinder.featureSpells(rules,
-      'Pyromaniac', 'Pyromaniac', 'charisma', 'level',
+      'Pyromaniac', 'Pyromaniac', 'charisma', 'level', null,
       ['Dancing Lights', 'Flare', 'Prestidigitation', 'Produce Flame']
     );
     rules.defineRule
