@@ -5703,7 +5703,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Rogue', '+=', 'source >= 4 ? 1 : null'
     );
     Pathfinder.featureSpells(rules,
-      'Dispelling Attack', 'Rogue', 'intelligence', 'levels.Rogue',
+      'Dispelling Attack', 'Rogue', 'intelligence', 'levels.Rogue', null,
       ['Dispel Magic']
     );
     rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '=', null);
@@ -6492,14 +6492,16 @@ Pathfinder.featureRules = function(rules, name, sections, notes) {
 
 /*
  * Defines in #rules# the rules to grant the spells listed in #spellList# when
- * feature #feature# is acquired. #spellType# contains the spell group and
- * spellAbility the associated ability. Each element of #spellList# has the
+ * feature #feature# is acquired. #spellType# contains the spell group,
+ * #spellAbility# the associated ability, and #levelAttr# the related
+ * character level. #dc#, if non-null, overrides the standard calculation of
+ * difficulty class for the spells.  Each element of #spellList# has the
  * format "[min level:]spell name[,spell name...]". If min level is provided,
  * the spells listed in that element are not acquired until the character's
  * value of #levelAttr# reaches that level.
  */
 Pathfinder.featureSpells = function(
-  rules, feature, spellType, spellAbility, levelAttr, spellList
+  rules, feature, spellType, spellAbility, levelAttr, dc, spellList
 ) {
 
   let allSpells = rules.getChoices('spells');
@@ -6532,6 +6534,23 @@ Pathfinder.featureSpells = function(
         if(minLevel > 1)
           rules.defineRule
             ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
+        if(dc != null) {
+          let allFormats = rules.getChoices('notes');
+          let s = 'spells.' + fullName;
+          if(s in allFormats) {
+            allFormats[s] =
+              allFormats[s].replaceAll(/DC %{[^}]*} Fort/g, 'DC %{' + dc + '} Fort');
+            allFormats[s] =
+              allFormats[s].replaceAll(/DC %{[^}]*} Ref/g, 'DC %{' + dc + '} Ref');
+            allFormats[s] =
+              allFormats[s].replaceAll(/DC %{[^}]*} Will/g, 'DC %{' + dc + '} Will');
+          } else {
+            console.log('No format for spell ' + fullName);
+          }
+          // Suppress computation and display of DC for these spells
+          rules.defineRule
+            ('spellDifficultyClass.' + spellType, 'suppressed', '?', 'null');
+        }
       }
     });
   });
@@ -7411,7 +7430,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
     rules.defineRule
       ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
     Pathfinder.featureSpells(rules,
-      'Gnome Magic', 'GnomeMagic', 'charisma', 'level',
+      'Gnome Magic', 'GnomeMagic', 'charisma', 'level', null,
       ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
     );
     rules.defineRule
