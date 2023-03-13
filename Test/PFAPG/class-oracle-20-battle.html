@@ -22,7 +22,7 @@ var attributes = {
   "selectableFeatures.Oracle - Iron Skin":1, "selectableFeatures.Oracle - Maneuver Mastery":1, 
   "selectableFeatures.Oracle - Resiliency (Oracle)":1, "selectableFeatures.Oracle - Skill At Arms":1, 
   "selectableFeatures.Oracle - Surprising Charge":1, "selectableFeatures.Oracle - War Sight":1, 
-  "selectableFeatures.Oracle - Weapon Mastery":1, "shield":"None", "skills.Craft (Bows)":2, "skills.Craft (Traps)":6, 
+  "selectableFeatures.Oracle - Weapon Mastery (Oracle)":1, "shield":"None", "skills.Craft (Bows)":2, "skills.Craft (Traps)":6, 
   "skills.Disguise":14, "skills.Escape Artist":8, "skills.Intimidate":2, 
   "skills.Knowledge (Engineering)":2, "skills.Knowledge (History)":10, "skills.Perception":2, 
   "skills.Perform (Dance)":10, "skills.Perform (Keyboard)":2, "skills.Profession (Librarian)":20, 
@@ -94,7 +94,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Expertise; Elemental Spell (Cold); Empower Spell; Greater Disarm; Heavy Armor Proficiency; Improved Disarm; Improved Unarmed Strike; Maximize Spell; Persistent Spell; Point-Blank Shot; Quicken Spell; Reach Spell; Silent Spell; Spell Focus (Enchantment); Step Up; Strike Back</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Battle Mystery; Battlecry; Battlefield Clarity; Clouded Vision; Combat Healer; Final Revelation (Battle Mystery); Iron Skin; Maneuver Mastery; Mystery; Oracle's Curse; Orisons; Resiliency (Oracle); Revelation; Shield Proficiency; Skill At Arms; Surprising Charge; War Sight; Weapon Mastery; Weapon Proficiency (Simple)</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Battle Mystery; Battlecry; Battlefield Clarity; Clouded Vision; Combat Healer; Final Revelation (Battle Mystery); Iron Skin; Maneuver Mastery; Mystery; Oracle's Curse; Orisons; Resiliency (Oracle); Revelation; Shield Proficiency; Skill At Arms; Surprising Charge; War Sight; Weapon Mastery (Oracle); Weapon Proficiency (Simple)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
@@ -113,11 +113,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Revelation: 6 selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Mastery: +3 General Feat (Weapon Focus, Improved Critical, and Greater Weapon Focus with chosen weapon)</i></td>
+        <td><i>Weapon Mastery (Oracle): +3 General Feat (Weapon Focus, Improved Critical, and Greater Weapon Focus with chosen weapon)</i></td>
       </tr><tr style="text-align:center">
-        <td>Clouded Vision: Has 60' vision and darkvision, 30' Blindsense, 15' Blindsight</td>
+        <td>Clouded Vision: Has 60' vision and Darkvision, 30' Blindsense, 15' Blindsight</td>
       </tr><tr style="text-align:center">
-        <td>Combat Healer: May use two spell slots to cast quickened Cure spell 4/dy</td>
+        <td>Combat Healer: May use two spell slots to cast <i>Cure</i> spell as a swift action 4/dy</td>
       </tr></table>
 </td>
     </tr></table>
@@ -242,8 +242,6 @@ var attributes = {
         <td>Surprising Charge: May make immediate move 3/dy</td>
       </tr><tr style="text-align:center">
         <td>War Sight: May take choice of 3 Initiative rolls/May always act in surprise round</td>
-      </tr><tr style="text-align:center">
-        <td>Weapon Mastery: Critical confirmed, +1 damage multiplier, no disarm w/chosen weapon</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -276,7 +274,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Battle1: 1; Battle2: 1; Battle3: 1; Battle4: 1; Battle5: 1; Battle6: 1; Battle7: 1; Battle8: 1; Battle9: 1; O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
-        <td><b>Spell DC</b>: Battle: 13; O: 13</td>
+        <td><b>Spell DC</b>: Battle: 13; Iron Skin: 12; O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -298,6 +296,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Righteous Might (Battle5 Tran): Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR 10/evil or DR 10/good for 20 rd</td>
     </tr><tr style="text-align:left">
+      <td>Stoneskin (Iron Skin4 Abju): Touched gains DR 10/adamantine for 150 HP or 200 min</td>
+    </tr><tr style="text-align:left">
       <td>Storm Of Vengeance (Battle9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (DC 22 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 22 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Fire (Battle4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
@@ -314,7 +314,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Empower Spell: x1.5 chosen spell variable effects uses +2 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Iron Skin: Self <i>Stoneskin</i> gives DR 10/adamantine 2/dy</td>
+      <td>Iron Skin: May use self <i>Stoneskin</i> effects 2/dy</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Maximize all chosen spell variable effects uses +3 spell slot</td>
     </tr><tr style="text-align:center">
