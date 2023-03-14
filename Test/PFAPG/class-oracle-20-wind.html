@@ -25,12 +25,11 @@ var attributes = {
   "skills.Craft (Armor)":2, "skills.Disguise":2, "skills.Escape Artist":5, "skills.Fly":5, 
   "skills.Heal":3, "skills.Knowledge (Nature)":5, "skills.Knowledge (Religion)":10, 
   "skills.Perform (Act)":2, "skills.Profession (Soldier)":2, "skills.Ride":5, "skills.Sense Motive":20, 
-  "skills.Stealth":5, "skills.Survival":17, "skills.Swim":5, "spells.Alter Winds(Wind1 Tran)":1, 
-  "spells.Cloak Of Winds(Wind3 Abju)":1, "spells.Control Weather(Wind7 Tran)":1, 
-  "spells.Control Winds(Wind5 Tran)":1, "spells.Gust Of Wind(Wind2 Evoc)":1, "spells.River Of Wind(Wind4 Evoc)":1, 
-  "spells.Sirocco(Wind6 Evoc)":1, "spells.Whirlwind(Wind8 Evoc)":1, "spells.Winds Of Vengeance(Wind9 Tran)":1, 
-  "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, 
-  "wisdom":15
+  "skills.Stealth":5, "skills.Survival":17, "skills.Swim":5, "spells.Alter Winds(O1 Tran)":1, 
+  "spells.Cloak Of Winds(O3 Abju)":1, "spells.Control Weather(O7 Tran)":1, "spells.Control Winds(O5 Tran)":1, 
+  "spells.Gust Of Wind(O2 Evoc)":1, "spells.River Of Wind(O4 Evoc)":1, "spells.Sirocco(O6 Evoc)":1, 
+  "spells.Whirlwind(O8 Evoc)":1, "spells.Winds Of Vengeance(O9 Tran)":1, "strength":11, 
+  "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, "wisdom":15
 };
   </script>
 </head>
@@ -260,8 +259,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6; Wind1: 1; Wind2: 1; Wind3: 1; Wind4: 1; Wind5: 1; Wind6: 1; Wind7: 1; Wind8: 1; Wind9: 1</td>
-        <td><b>Spell DC</b>: O: 13; Wind: 13</td>
+        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell DC</b>: O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -269,23 +268,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Alter Winds (Wind1 Tran): Severe winds in 10' radius around touched increased or decreased 1 step for 20 hr</td>
+      <td>Alter Winds (O1 Tran): Severe winds in 10' radius around touched increased or decreased 1 step for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Cloak Of Winds (Wind3 Abju): R75' Foes of target suffer -4 ranged attacks; Tiny foes cannot touch target (DC 16 Fort neg) for 20 min</td>
+      <td>Cloak Of Winds (O3 Abju): R75' Foes of target suffer -4 ranged attacks; Tiny foes cannot touch target (DC 16 Fort neg) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Control Weather (Wind7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (O7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Control Winds (Wind5 Tran): R800' Changes wind direction and speed 6 levels in 800'x40' cylinder for 200 min</td>
+      <td>Control Winds (O5 Tran): R800' Changes wind direction and speed 6 levels in 800'x40' cylinder for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Gust Of Wind (Wind2 Evoc): 60' 50 MPH gust affects medium or smaller creatures (DC 15 Fort neg) for 1 rd</td>
+      <td>Gust Of Wind (O2 Evoc): 60' 50 MPH gust affects medium or smaller creatures (DC 15 Fort neg) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>River Of Wind (Wind4 Evoc): 120' line inflicts 4d6 HP nonlethal and knocked prone (DC 17 Fort half HP only)</td>
+      <td>River Of Wind (O4 Evoc): 120' line inflicts 4d6 HP nonlethal and knocked prone (DC 17 Fort half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Sirocco (Wind6 Evoc): R300' 20' radius inflicts 4d6+20 HP fire, fatigues, and knocks prone (DC 19 Fort half HP only) for 20 rd</td>
+      <td>Sirocco (O6 Evoc): R300' 20' radius inflicts 4d6+20 HP fire, fatigues, and knocks prone (DC 19 Fort half HP only) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Whirlwind (Wind8 Evoc): R1200' Wind in 10' radius inflicts 3d6 HP, then 1d8 HP/rd for 20 rd (DC 21 Ref neg)</td>
+      <td>Whirlwind (O8 Evoc): R1200' Wind in 10' radius inflicts 3d6 HP, then 1d8 HP/rd for 20 rd (DC 21 Ref neg)</td>
     </tr><tr style="text-align:left">
-      <td>Winds Of Vengeance (Wind9 Tran): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (DC 22 Fort half HP only), for 20 min</td>
+      <td>Winds Of Vengeance (O9 Tran): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (DC 22 Fort half HP only), for 20 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

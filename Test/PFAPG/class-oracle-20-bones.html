@@ -25,11 +25,11 @@ var attributes = {
   "skills.Escape Artist":8, "skills.Intimidate":2, "skills.Knowledge (History)":10, 
   "skills.Perform (Dance)":10, "skills.Perform (Keyboard)":2, "skills.Profession (Librarian)":20, 
   "skills.Ride":2, "skills.Sense Motive":20, "skills.Stealth":20, 
-  "spells.Animate Dead(Bones3 Necr)":1, "spells.Cause Fear(Bones1 Necr)":1, "spells.Circle Of Death(Bones6 Necr)":1, 
-  "spells.Control Undead(Bones7 Necr)":1, "spells.False Life(Bones2 Necr)":1, "spells.Fear(Bones4 Necr)":1, 
-  "spells.Horrid Wilting(Bones8 Necr)":1, "spells.Slay Living(Bones5 Necr)":1, 
-  "spells.Wail Of The Banshee(Bones9 Necr)":1, "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, 
-  "weapons.Longspear":1, "wisdom":15
+  "spells.Animate Dead(O3 Necr)":1, "spells.Cause Fear(O1 Necr)":1, "spells.Circle Of Death(O6 Necr)":1, 
+  "spells.Control Undead(O7 Necr)":1, "spells.False Life(O2 Necr)":1, "spells.Fear(O4 Necr)":1, 
+  "spells.Horrid Wilting(O8 Necr)":1, "spells.Slay Living(O5 Necr)":1, "spells.Wail Of The Banshee(O9 Necr)":1, 
+  "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, 
+  "wisdom":15
 };
   </script>
 </head>
@@ -251,8 +251,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: Bones1: 1; Bones2: 1; Bones3: 1; Bones4: 1; Bones5: 1; Bones6: 1; Bones7: 1; Bones8: 1; Bones9: 1; O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
-        <td><b>Spell DC</b>: Bones: 13; O: 13</td>
+        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell DC</b>: O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -260,23 +260,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Dead (Bones3 Necr): Touched corpses become up to 40 HD of skeletons or zombies, obey self</td>
+      <td>Animate Dead (O3 Necr): Touched corpses become up to 40 HD of skeletons or zombies, obey self</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (Bones1 Necr): R75' Target w/up to 5 HD flees for 1d4 rd (DC 14 Will shaken for 1 rd)</td>
+      <td>Cause Fear (O1 Necr): R75' Target w/up to 5 HD flees for 1d4 rd (DC 14 Will shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Circle Of Death (Bones6 Necr): R300' 20d4 HD of creatures w/up to 8 HD in 40' radius slain (DC 19 Fort neg)</td>
+      <td>Circle Of Death (O6 Necr): R300' 20d4 HD of creatures w/up to 8 HD in 40' radius slain (DC 19 Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Control Undead (Bones7 Necr): R75' 40 HD undead in 15' radius obey self for 20 min (DC 20 Will neg)</td>
+      <td>Control Undead (O7 Necr): R75' 40 HD undead in 15' radius obey self for 20 min (DC 20 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>False Life (Bones2 Necr): Self gains 1d10+10 temporary HP for 20 hr</td>
+      <td>False Life (O2 Necr): Self gains 1d10+10 temporary HP for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fear (Bones4 Necr): R30' Cone causes creatures to flee for 20 rd (DC 17 Will shaken for 1 rd)</td>
+      <td>Fear (O4 Necr): R30' Cone causes creatures to flee for 20 rd (DC 17 Will shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Horrid Wilting (Bones8 Necr): R1200' Creatures in 30' radius suffer 20d6 HP (plants or water elementals 20d8 HP) (DC 21 Fort half)</td>
+      <td>Horrid Wilting (O8 Necr): R1200' Creatures in 30' radius suffer 20d6 HP (plants or water elementals 20d8 HP) (DC 21 Fort half)</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Bones5 Necr): Touched suffers 12d6+20 HP (DC 18 Fort 3d6+20 HP)</td>
+      <td>Slay Living (O5 Necr): Touched suffers 12d6+20 HP (DC 18 Fort 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Wail Of The Banshee (Bones9 Necr): R75' 20 targets in 40' radius suffer 200 HP (DC 22 Fort neg)</td>
+      <td>Wail Of The Banshee (O9 Necr): R75' 20 targets in 40' radius suffer 200 HP (DC 22 Fort neg)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

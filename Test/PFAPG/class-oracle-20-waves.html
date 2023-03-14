@@ -25,11 +25,11 @@ var attributes = {
   "skills.Craft (Armor)":2, "skills.Disguise":2, "skills.Escape Artist":2, "skills.Fly":5, 
   "skills.Heal":3, "skills.Knowledge (Nature)":5, "skills.Knowledge (Religion)":16, 
   "skills.Perform (Act)":2, "skills.Profession (Soldier)":2, "skills.Sense Motive":20, 
-  "skills.Survival":17, "skills.Swim":5, "spells.Fluid Form(Waves6 Tran)":1, 
-  "spells.Geyser(Waves5 Conj)":1, "spells.Seamantle(Waves8 Conj)":1, "spells.Slipstream(Waves2 Conj)":1, 
-  "spells.Touch Of The Sea(Waves1 Tran)":1, "spells.Tsunami(Waves9 Conj)":1, "spells.Vortex(Waves7 Evoc)":1, 
-  "spells.Wall Of Ice(Waves4 Evoc)":1, "spells.Water Breathing(Waves3 Tran)":1, "strength":11, 
-  "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, "wisdom":15
+  "skills.Survival":17, "skills.Swim":5, "spells.Fluid Form(O6 Tran)":1, "spells.Geyser(O5 Conj)":1, 
+  "spells.Seamantle(O8 Conj)":1, "spells.Slipstream(O2 Conj)":1, "spells.Touch Of The Sea(O1 Tran)":1, 
+  "spells.Tsunami(O9 Conj)":1, "spells.Vortex(O7 Evoc)":1, "spells.Wall Of Ice(O4 Evoc)":1, 
+  "spells.Water Breathing(O3 Tran)":1, "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, 
+  "weapons.Longspear":1, "wisdom":15
 };
   </script>
 </head>
@@ -261,8 +261,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6; Waves1: 1; Waves2: 1; Waves3: 1; Waves4: 1; Waves5: 1; Waves6: 1; Waves7: 1; Waves8: 1; Waves9: 1</td>
-        <td><b>Spell DC</b>: O: 13; Waves: 13</td>
+        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell DC</b>: O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -270,23 +270,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Fluid Form (Waves6 Tran): Self gains DR 10/slashing, +10 reach, +60' Swim, amphibious features, and ability to squeeze through cracks for 20 min</td>
+      <td>Fluid Form (O6 Tran): Self gains DR 10/slashing, +10 reach, +60' Swim, amphibious features, and ability to squeeze through cracks for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Geyser (Waves5 Conj): R1200' 5' sq inflicts 3d6 HP fire and 10d6 falling (DC 18 Ref half fire only), then 1d6 HP fire in 100' radius for conc + 1 rd</td>
+      <td>Geyser (O5 Conj): R1200' 5' sq inflicts 3d6 HP fire and 10d6 falling (DC 18 Ref half fire only), then 1d6 HP fire in 100' radius for conc + 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Seamantle (Waves8 Conj): 30' water column gives self +8 AC, +4 Reflex, and 30' slam attack for 20 min</td>
+      <td>Seamantle (O8 Conj): 30' water column gives self +8 AC, +4 Reflex, and 30' slam attack for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Slipstream (Waves2 Conj): Creates wave that moves touched 10'/rd for 200 min</td>
+      <td>Slipstream (O2 Conj): Creates wave that moves touched 10'/rd for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of The Sea (Waves1 Tran): Touched gains +30' swim speed and +8 Swim for 20 min</td>
+      <td>Touch Of The Sea (O1 Tran): Touched gains +30' swim speed and +8 Swim for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Tsunami (Waves9 Conj): R1200' 10'x10'x40' wave moves 60'/rd (water) or 30'/rd (land), inflicts 8d6 HP bludgeoning (DC 22 Fort half), +31 CMB to knock down and sweep away for 5 rd</td>
+      <td>Tsunami (O9 Conj): R1200' 10'x10'x40' wave moves 60'/rd (water) or 30'/rd (land), inflicts 8d6 HP bludgeoning (DC 22 Fort half), +31 CMB to knock down and sweep away for 5 rd</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (Waves7 Evoc): R1200' 15' radius inflicts 3d6 HP bludgeoning (DC 20 Ref neg), then 1d8 HP/rd for 20 rd</td>
+      <td>Vortex (O7 Evoc): R1200' 15' radius inflicts 3d6 HP bludgeoning (DC 20 Ref neg), then 1d8 HP/rd for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Ice (Waves4 Evoc): R300' Creates 20 10' x 20 inch thick ice wall or 23' hemisphere for 20 min</td>
+      <td>Wall Of Ice (O4 Evoc): R300' Creates 20 10' x 20 inch thick ice wall or 23' hemisphere for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (Waves3 Tran): Touched can breathe underwater for 40 hrs total</td>
+      <td>Water Breathing (O3 Tran): Touched can breathe underwater for 40 hrs total</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

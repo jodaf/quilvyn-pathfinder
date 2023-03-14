@@ -26,11 +26,11 @@ var attributes = {
   "skills.Knowledge (Arcana)":2, "skills.Knowledge (Engineering)":2, "skills.Knowledge (History)":5, 
   "skills.Perform (Dance)":20, "skills.Perform (Keyboard)":2, "skills.Profession (Librarian)":5, 
   "skills.Profession (Scribe)":2, "skills.Ride":2, "skills.Sense Motive":20, "skills.Stealth":20, 
-  "spells.Burning Hands(Flame1 Evoc)":1, "spells.Fiery Body(Flame9 Tran)":1, "spells.Fire Seeds(Flame6 Conj)":1, 
-  "spells.Fire Storm(Flame7 Evoc)":1, "spells.Fireball(Flame3 Evoc)":1, "spells.Incendiary Cloud(Flame8 Conj)":1, 
-  "spells.Resist Energy(Flame2 Abju)":1, "spells.Summon Monster V(Flame5 Conj)":1, 
-  "spells.Wall Of Fire(Flame4 Evoc)":1, "spells_filter":"(Flame", "strength":11, "weapons.Heavy Crossbow":1, 
-  "weapons.Heavy Mace":1, "weapons.Longspear":1, "wisdom":15
+  "spells.Burning Hands(O1 Evoc)":1, "spells.Fiery Body(O9 Tran)":1, "spells.Fire Seeds(O6 Conj)":1, 
+  "spells.Fire Storm(O8 Evoc)":1, "spells.Fireball(O3 Evoc)":1, "spells.Incendiary Cloud(O8 Conj)":1, 
+  "spells.Resist Energy(O2 Abju)":1, "spells.Summon Monster V(O5 Conj)":1, "spells.Wall Of Fire(O4 Evoc)":1, 
+  "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, 
+  "wisdom":15
 };
   </script>
 </head>
@@ -262,8 +262,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: Flame1: 1; Flame2: 1; Flame3: 1; Flame4: 1; Flame5: 1; Flame6: 1; Flame7: 1; Flame8: 1; Flame9: 1; O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
-        <td><b>Spell DC</b>: Flame: 13; O: 13</td>
+        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell DC</b>: O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -271,23 +271,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Burning Hands (Flame1 Evoc): R15' Cone inflicts 5d4 HP (DC 14 Ref half)</td>
+      <td>Burning Hands (O1 Evoc): R15' Cone inflicts 5d4 HP (DC 14 Ref half)</td>
     </tr><tr style="text-align:left">
-      <td>Fiery Body (Flame9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, 50% miss chance, regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for 20 min</td>
+      <td>Fiery Body (O9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, 50% miss chance, regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Seeds (Flame6 Conj): Touched 4 acorn grenades inflict 20d4 total or 8 berry bombs detonate on command to inflict 1d8+20 in 5' radius (DC 19 Ref half) for 200 min</td>
+      <td>Fire Seeds (O6 Conj): Touched 4 acorn grenades inflict 20d4 total or 8 berry bombs detonate on command to inflict 1d8+20 in 5' radius (DC 19 Ref half) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Storm (Flame7 Evoc): R300' 40 10' cu inflicts 20d6 HP, then 4d6 HP/rd until extinguished (DC 20 Ref half, initial damage only)</td>
+      <td>Fire Storm (O8 Evoc): R300' 40 10' cu inflicts 20d6 HP, then 4d6 HP/rd until extinguished (DC 21 Ref half, initial damage only)</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (Flame3 Evoc): R1200' Inflicts 10d6 HP (DC 16 Ref half) in 20' radius</td>
+      <td>Fireball (O3 Evoc): R1200' Inflicts 10d6 HP (DC 16 Ref half) in 20' radius</td>
     </tr><tr style="text-align:left">
-      <td>Incendiary Cloud (Flame8 Conj): R300' Fire in 20' radius inflicts 6d6 HP (DC 21 Ref half) while moving away 10'/rd for 20 rd</td>
+      <td>Incendiary Cloud (O8 Conj): R300' Fire in 20' radius inflicts 6d6 HP (DC 21 Ref half) while moving away 10'/rd for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Flame2 Abju): Touched gains resistance 30 to chosen energy for 200 min</td>
+      <td>Resist Energy (O2 Abju): Touched gains resistance 30 to chosen energy for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Monster V (Flame5 Conj): R75' 1 5th-, 1d3 4th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Monster V (O5 Conj): R75' 1 5th-, 1d3 4th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (Flame4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
+      <td>Wall Of Fire (O4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

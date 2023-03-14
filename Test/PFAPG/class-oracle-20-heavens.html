@@ -25,12 +25,11 @@ var attributes = {
   "skills.Fly":2, "skills.Knowledge (Arcana)":2, "skills.Knowledge (History)":10, 
   "skills.Perception":2, "skills.Perform (Dance)":10, "skills.Perform (Keyboard)":2, 
   "skills.Profession (Librarian)":20, "skills.Ride":2, "skills.Sense Motive":20, "skills.Stealth":20, 
-  "skills.Survival":2, "spells.Chain Lightning(Heavens6 Evoc)":1, 
-  "spells.Color Spray(Heavens1 Illu)":1, "spells.Daylight(Heavens3 Evoc)":1, 
-  "spells.Hypnotic Pattern(Heavens2 Illu)":1, "spells.Meteor Swarm(Heavens9 Evoc)":1, 
-  "spells.Overland Flight(Heavens5 Tran)":1, "spells.Prismatic Spray(Heavens7 Evoc)":1, 
-  "spells.Rainbow Pattern(Heavens4 Illu)":1, "spells.Sunburst(Heavens8 Evoc)":1, "strength":11, 
-  "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, "weapons.Longspear":1, "wisdom":15
+  "skills.Survival":2, "spells.Chain Lightning(O6 Evoc)":1, "spells.Color Spray(O1 Illu)":1, 
+  "spells.Daylight(O3 Evoc)":1, "spells.Hypnotic Pattern(O2 Illu)":1, "spells.Meteor Swarm(O9 Evoc)":1, 
+  "spells.Overland Flight(O5 Tran)":1, "spells.Prismatic Spray(O7 Evoc)":1, "spells.Rainbow Pattern(O4 Illu)":1, 
+  "spells.Sunburst(O8 Evoc)":1, "strength":11, "weapons.Heavy Crossbow":1, "weapons.Heavy Mace":1, 
+  "weapons.Longspear":1, "wisdom":15
 };
   </script>
 </head>
@@ -260,8 +259,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: Heavens1: 1; Heavens2: 1; Heavens3: 1; Heavens4: 1; Heavens5: 1; Heavens6: 1; Heavens7: 1; Heavens8: 1; Heavens9: 1; O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
-        <td><b>Spell DC</b>: Heavens: 13; O: 13</td>
+        <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 6; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell DC</b>: O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -269,25 +268,25 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Chain Lightning (Heavens6 Evoc): R1200' Bolt inflicts 20d6 HP to primary target (DC 19 Ref half) and 20 secondary targets in 30' radius (DC 19 Ref +2 half)</td>
+      <td>Chain Lightning (O6 Evoc): R1200' Bolt inflicts 20d6 HP to primary target (DC 19 Ref half) and 20 secondary targets in 30' radius (DC 19 Ref +2 half)</td>
     </tr><tr style="text-align:left">
-      <td>Color Spray (Heavens1 Illu): R15' Cone renders creatures with 2/4/any HD unconscious for 2d4 rd/blind for 1d4 rd/stunned for 1 rd (DC 14 Will neg)</td>
+      <td>Color Spray (O1 Illu): R15' Cone renders creatures with 2/4/any HD unconscious for 2d4 rd/blind for 1d4 rd/stunned for 1 rd (DC 14 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Daylight (Heavens3 Evoc): Touched increases light level by 1 in 60' radius for 200 min</td>
+      <td>Daylight (O3 Evoc): Touched increases light level by 1 in 60' radius for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Hypnotic Pattern (Heavens2 Illu): R300' Fascinates 2d4+10 HD of creatures in 10' radius for conc + 2 rd (DC 15 Will neg)</td>
+      <td>Hypnotic Pattern (O2 Illu): R300' Fascinates 2d4+10 HD of creatures in 10' radius for conc + 2 rd (DC 15 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Meteor Swarm (Heavens9 Evoc): R1200' 4 spheres inflict 6d6 HP fire in 40' radius (DC 22 Ref half), ranged touch +2d6 HP bludgeoning</td>
+      <td>Meteor Swarm (O9 Evoc): R1200' 4 spheres inflict 6d6 HP fire in 40' radius (DC 22 Ref half), ranged touch +2d6 HP bludgeoning</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (Heavens5 Tran): Self gains 40' fly speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (O5 Tran): Self gains 40' fly speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Phantasmal Killer (Moonlight4 Illu): R300' Fears of target create creature (DC 22 Will neg) whose touch kills target (DC 22 Fort suffers 3d6 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Prismatic Spray (Heavens7 Evoc): R60' Cone blinds targets w/up to 8 HD for 2d4 rd, other harmful effects</td>
+      <td>Prismatic Spray (O7 Evoc): R60' Cone blinds targets w/up to 8 HD for 2d4 rd, other harmful effects</td>
     </tr><tr style="text-align:left">
-      <td>Rainbow Pattern (Heavens4 Illu): R300' Fascinates 24 HD of creatures in 20' radius for conc + 20 rd (DC 17 Will neg)</td>
+      <td>Rainbow Pattern (O4 Illu): R300' Fascinates 24 HD of creatures in 20' radius for conc + 20 rd (DC 17 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Sunburst (Heavens8 Evoc): R1200' 80' radius blinds and inflicts 6d6 HP (undead and oozes 20d6 HP) (DC 21 Ref half, not blind)</td>
+      <td>Sunburst (O8 Evoc): R1200' 80' radius blinds and inflicts 6d6 HP (undead and oozes 20d6 HP) (DC 21 Ref half, not blind)</td>
     </tr><tr style="text-align:left">
       <td>Weird (Moonlight9 Illu): R300' Fears of targets in 15' radius create creatures (DC 22 Will neg) whose touch kills targets (DC 22 Fort suffer 3d6 HP, -1d4 Str, stunned for 1 rd)</td>
     </tr></table>
