@@ -6912,7 +6912,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Analyze Dweomer':'Alchemist6,Arcana6,Witch6',
   'Animal Growth':'Witch5', // Witch Animals
   'Animal Shapes':
-    'Feather7,Fur7,O8,Witch8', // Oracle Nature, Witch Agility, Animals
+    'Feather7,Fur7,O8,Witch8', // Oracle Nature; Witch Agility, Animals
   'Animate Dead':'O3,Souls3,Undeath3,Witch4', // Witch Plague
   'Animate Objects':'O6,Witch6',
   'Animate Plants':'Decay7,Growth7,Verdant8',
@@ -6963,7 +6963,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cause Fear':'Daemon1,Inquisitor1,Murder1,O1,Undeath1,Witch1',
   'Chain Lightning':'Cloud6,O6,Stormborn6,Witch7', // Oracle Heavens
   'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Proteus4',
-  'Charm Animal':'O1,Witch1', // Oracle Nature, Witch Animals
+  'Charm Animal':'O1,Witch1', // Oracle Nature; Witch Animals
   'Charm Monster':'Love5,Lust5,Witch4',
   'Charm Person':'Love1,Lust1,Witch1',
   'Chill Touch':'Witch1',
@@ -6987,7 +6987,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Contagion':'Decay3,O3,Witch3', // Witch Plague
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
-  'Control Undead':'O7,Witch7', // Oracle Bones, Witch Plague
+  'Control Undead':'O7,Witch7', // Oracle Bones; Witch Plague
   'Control Water':'Aquatic5,Ice4,O4,Oceans4,Witch4', // Witch Water
   'Control Weather':'Catastrophe7,O7,Seasons7,Stormborn7,Storms7,Witch7',
   'Control Winds':'Cloud5,O5,Seasons6,Winds5', // Oracle Wind
@@ -7055,7 +7055,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dominate Monster':'Love9,Lust9,Serpentine9,Witch9',
   'Dominate Person':'Witch5',
   'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
-  'Dream':'Alchemist5,Dreamspun5,O5,Witch5', // Witch Wisdom, Rage Prophet
+  'Dream':'Alchemist5,Dreamspun5,O5,Witch5', // Witch Wisdom; Rage Prophet
   "Eagle's Splendor":'Alchemist2,O2',
   'Earthquake':'Catastrophe8,Caves8,Deep8,O8,Rage8',
   'Elemental Body I':'Alchemist4',
@@ -7090,7 +7090,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Fire Seeds':'Ash6,Day6,Light6,O6,Smoke6', // Oracle Flame
   'Fire Shield':'Alchemist4,Ash5,Day4,Light4,Smoke5',
   'Fire Storm':'O8,Witch8', // Witch Elements
-  'Fireball':'Ash3,O3,Witch3', // Oracle Flame, Witch Elements
+  'Fireball':'Ash3,O3,Witch3', // Oracle Flame; Witch Elements
   'Flame Strike':'Day5,Inquisitor5,Light5,O5,Witch5', // Witch Elements
   'Flaming Sphere':'Witch2', // Witch Elements
   'Flare':'ArcaneTalent0',
@@ -7239,7 +7239,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mending':'ArcaneTalent0,O0,Witch0',
   'Message':'ArcaneTalent0,Witch0',
   'Meteor Swarm':
-    'Boreal9,O9,Starsoul9,Witch9', // Oracle Heavens, Witch Elements
+    'Boreal9,O9,Starsoul9,Witch9', // Oracle Heavens; Witch Elements
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8,Witch8',
   'Mind Fog':'Witch5',
   'Minor Creation':'Construct4,Toil4,Witch4',
@@ -7340,7 +7340,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Shadow Conjuration':'Loss4,Night4,Shadow4,Witch4', // Witch Shadow
   'Shadow Evocation':'Shadow5,Witch5', // Witch Shadow
   'Shadow Walk':
-    'Alchemist6,Dreamspun6,O6,Shadow6,Witch6', // Witch Shadow, Rage Prophet
+    'Alchemist6,Dreamspun6,O6,Shadow6,Witch6', // Witch Shadow; Rage Prophet
   'Shambler':'Decay9,Growth9,Verdant9',
   'Shapechange':
     'Feather9,Fur9,Protean9,Witch9', // Witch Agility, Strength, Transformation
@@ -7411,7 +7411,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Teleport Object':'Witch7',
   'Teleportation Circle':'Language9,Wards9,Witch9',
   'Time Stop':
-    'Deception9,O9,Thievery9,Witch9', // Oracle Lore, Witch Deception, Trickery
+    'Deception9,O9,Thievery9,Witch9', // Oracle Lore; Witch Deception, Trickery
   'Tongues':'Alchemist3,Agathion3,Inquisitor2,Language3,O4,Witch3',
   'Touch Of Fatigue':'ArcaneTalent0,Witch0',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2,Witch2',
@@ -7430,10 +7430,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Vampiric Touch':'Blood3,Daemon3,Witch3',
   'Ventriloquism':'Witch1', // Witch Deception
   'Virtue':'Inquisitor0,O0',
-  'Vision':'Dreamspun7,O7,Witch7', // Rage Prophet
+  'Vision':'Dreamspun7,O7,Witch7', // Oracle Lore; Rage Prophet
   'Wail Of The Banshee':'Ancestors9,O9,Witch9', // Oracle Bones
-  'Wall Of Fire':'Ash4,O4,Smoke4', // Oracle Flame
-  'Wall Of Ice':'Boreal4,O4,Witch4', // Oracle Waves, Witch Elements
+  'Wall Of Fire':'Ash4,O4,Smoke4', // Oracle Battle, Flame
+  'Wall Of Ice':'Boreal4,O4,Witch4', // Oracle Waves; Witch Elements
   'Wall Of Iron':'Metal6',
   'Wall Of Stone':'Caves5,Metal5,O5',
   'Wall Of Thorns':'Blood5,Decay5,Verdant5',
@@ -8680,6 +8680,17 @@ PFAPG.classRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
+    for(let feat in rules.getChoices('feats')) {
+      if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.weaponMastery(Oracle)', '^', '0');
+      } else if(feat.match(/^(Greater|Improved) (Bull Rush|Dirty Trick|Disarm|Drag|Grapple|Overrun|Reposition|Steal|Sunder|Trip)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
+      }
+    }
     let allSkills = rules.getChoices('skills');
     for(let skill in allSkills) {
       if(skill != 'Intimidate' && allSkills[skill].match(/charisma/i))
@@ -11754,6 +11765,56 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
     let qualifiedSpells = [];
     let unqualifiedSpells = [];
     let limitedSpells = {
+      'prestige.Rage Prophet': [
+        'Arcane Eye(O4 Divi)', 'Dream(O5 Illu)', 'See Invisibility(O2 Divi)',
+        'Shadow Walk(O6 Illu)', 'Spectral Hand(O2 Necr)',
+        'Unseen Servant(O1 Conj)', 'Vision(O7 Divi)', 'Whispering Wind(O2 Tran)'
+      ],
+      'selectableFeatures.Oracle - Battle Mystery': [
+        'Enlarge Person(O1 Tran)', 'Fog Cloud(O2 Conj)', 'Wall Of Fire(O4 Evoc)'
+      ],
+      'selectableFeatures.Oracle - Bones Mystery': [
+        'False Life(O2 Necr)', 'Fear(O4 Necr)', 'Circle Of Death(O6 Necr)',
+        'Control Undead(O7 Necr)', 'Horrid Wilting(O8 Necr)',
+        'Wail Of The Banshee(O9 Necr)'
+      ],
+      'selectableFeatures.Oracle - Flame Mystery': [
+        'Burning Hands(O1 Evoc)', 'Fireball(O3 Evoc)', 'Wall Of Fire(O4 Evoc)',
+        'Fire Seeds(O6 Conj)', 'Incendiary Cloud(O8 Conj)',
+        'Fiery Body(O9 Tran)'
+      ],
+      'selectableFeatures.Oracle - Heavens Mystery': [
+        'Color Spray(O1 Illu)', 'Hypnotic Pattern(O2 Illu)',
+        'Rainbow Pattern(O4 Illu)', 'Overland Flight(O5 Tran)',
+        'Chain Lightning(O6 Evoc)', 'Prismatic Spray(O7 Evoc)',
+        'Sunburst(O8 Evoc)', 'Meteor Swarm(O9 Evoc)'
+      ],
+      'selectableFeatures.Oracle - Lore Mystery': [
+        'Identify(O1 Divi)', 'Legend Lore(O4 Divi)',
+        'Contact Other Plane(O5 Divi)', 'Vision(O7 Divi)',
+        'Moment Of Prescience(O8 Divi)', 'Time Stop(O9 Tran)'
+      ],
+      'selectableFeatures.Oracle - Nature Mystery': [
+        'Charm Animal(O1 Ench)', 'Barkskin(O2 Tran)',
+        'Speak With Plants(B4 Divi)', 'Grove Of Respite(O4 Conj)',
+        'Awaken(O5 Tran)', 'Stone Tell(O6 Divi)', 'Creeping Doom(O7 Conj)',
+        'Animal Shapes(O8 Tran)', 'World Wave(O9 Tran)'
+      ],
+      'selectableFeatures.Oracle - Stone Mystery': [
+        'Stone Call(O2 Conj)', 'Stoneskin(O5 Abju)', 'Stone Tell(O6 Divi)',
+        'Statue(O7 Tran)', 'Repel Metal Or Stone(O8 Abju)',
+        'Clashing Rocks(O9 Conj)'
+      ],
+      'selectableFeatures.Oracle - Waves Mystery': [
+        'Touch Of The Sea(O1 Tran)', 'Slipstream(O2 Conj)',
+        'Wall Of Ice(O4 Evoc)', 'Geyser(O5 Conj)', 'Fluid Form(O6 Tran)',
+        'Vortex(O7 Evoc)', 'Seamantle(O8 Conj)', 'Tsunami(O9 Conj)'
+      ],
+      'selectableFeatures.Oracle - Wind Mystery': [
+        'Alter Winds(O1 Tran)', 'Gust Of Wind(O2 Evoc)',
+        'Cloak Of Winds(O3 Abju)', 'River Of Wind(O4 Evoc)',
+        'Control Winds(O5 Tran)', 'Sirocco(O6 Evoc)', 'Whirlwind(O8 Evoc)'
+      ],
       'selectableFeatures.Witch - Agility Patron': [
         'Jump(Witch1 Tran)', "Cat's Grace(Witch2 Tran)",
         'Haste(Witch3 Tran)', 'Freedom Of Movement(Witch4 Abju)',
@@ -11837,12 +11898,7 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
         'Lesser Globe Of Invulnerability(Witch4 Abju)', 'Dream(Witch5 Illu)',
         'Globe Of Invulnerability(Witch6 Abju)', 'Spell Turning(Witch7 Abju)',
         'Protection From Spells(Witch8 Abju)', "Mage's Disjunction(Witch9 Abju)"
-      ],
-      'prestige.Rage Prophet': [
-        'Arcane Eye(O4 Divi)', 'Dream(O5 Illu)', 'See Invisibility(O2 Divi)',
-        'Shadow Walk(O6 Illu)', 'Spectral Hand(O2 Necr)',
-        'Unseen Servant(O1 Conj)', 'Vision(O7 Divi)', 'Whispering Wind(O2 Tran)'
-      ],
+      ]
     };
     for(let l in limitedSpells) {
       if(l in attributes)
@@ -11880,9 +11936,10 @@ PFAPG.ruleNotes = function() {
     '  <li>\n' +
     '    Quilvyn gives the Oracle class its own spell list ("O" spells),\n' +
     '    rather than using spells from the Cleric list. The Oracle spell\n' +
-    '    list includes spells particular to the Rage Prophet prestige\n' +
-    '    class; Quilvyn randomly assigns these spells only to characters\n' +
-    '    with Rage Prophet levels.\n' +
+    '    list includes spells particular to individual mysteries and the\n' +
+    '    Rage Prophet prestige class; when randomly assigning spells,\n' +
+    '    Quilvyn restricts these spells to characters with the appropriate\n' +
+    '    mystery or Rage Prophet levels.\n' +
     '  </li><li>\n' +
     '    Quilvyn includes in the Witch spell list spells that are made\n' +
     '    available by specific patrons. Quilvyn randomly assigns these\n' +
