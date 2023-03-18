@@ -1316,7 +1316,7 @@ PFAPG.FEATURES = {
     'Note="15\' cone inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) %{1+mysteryLevel//5}/dy"',
   'Firestorm':
     'Section=combat ' +
-    'Note="%{mysteryLevel} adjacent 10\' cu inflict %{mysteryLevel}d6 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) for %{charismaModifier} rd 1/dy"',
+    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d6 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) for %{charismaModifier} rd 1/dy"',
   'Flame Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
@@ -1347,7 +1347,7 @@ PFAPG.FEATURES = {
   'Gaze Of Flames':
     'Section=feature,magic ' +
     'Note=' +
-      '"Can see through fire, fog, and smoke %{mysteryLevel} rd/dy",' +
+      '"Can see through fire, fog, and smoke",' +
       '"R%{mysteryLevel*10}\' Can see out of any flame in range %V rd/dy"',
   'Guiding Star':
     'Section=feature,magic,skill ' +
@@ -7114,7 +7114,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6,Witch6',
   'Gentle Repose':'Ancestors2,O2,Souls2,Witch2',
-  'Ghost Sound':'ArcaneTalent0',
+  'Ghost Sound':'ArcaneTalent0,O0', // Oracle Haunted
   'Ghoul Touch':'Undeath2',
   'Giant Form I':'Alchemist6,Boreal7,Witch7', // Witch Strength
   'Giant Form II':'Witch8', // Witch Strength
@@ -7190,14 +7190,14 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Lesser Planar Ally':'O4',
   'Lesser Planar Binding':'Wards5',
   'Lesser Restoration':'Alchemist2,Inquisitor2,O2',
-  'Levitate':'Alchemist2,Witch2',
+  'Levitate':'Alchemist2,O2,Witch2', // Oracle Haunted
   'Light':'ArcaneTalent0,Inquisitor0,O0,Witch0',
   'Lightning Bolt':'Stormborn3,Witch3',
   'Limited Wish':'Construct7',
   'Locate Creature':'Exploration4,Witch4',
   'Locate Object':'Exploration2,Inquisitor3,O3,Thievery3,Trade2,Witch3',
   'Mage Armor':'Witch1',
-  'Mage Hand':'ArcaneTalent0',
+  'Mage Hand':'ArcaneTalent0,O0', // Oracle Haunted
   "Mage's Disjunction":'Arcana9,Witch9', // Witch Wisdom
   'Magic Aura':'Arcana1',
   'Magic Circle Against Chaos':'Inquisitor3,O3',
@@ -7244,6 +7244,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8,Witch8',
   'Mind Fog':'Witch5',
   'Minor Creation':'Construct4,Toil4,Witch4',
+  'Minor Image':'O2', // Oracle Haunted
   'Miracle':'Curse9,Divine9,Family9,Fate9,Home9,O9,Witch9', // Witch Endurance
   'Mirage Arcana':'Witch5', // Witch Trickery
   'Mirror Image':'Deception2,Witch2', // Witch Trickery
@@ -7322,7 +7323,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Resistance':'ArcaneTalent0,Inquisitor0,O0,Witch0',
   'Restoration':'Alchemist4,Inquisitor4,O4',
   'Resurrection':'Divine7,O7,Resurrection7,Witch8',
-  'Reverse Gravity':'Starsoul7,Witch7', // Witch Trickery
+  'Reverse Gravity':'O7,Starsoul7,Witch7', // Oracle Haunted, Witch Trickery
   'Righteous Might':
     'Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5,Witch5', // Witch Strength
   'Sanctuary':'Freedom1,Inquisitor1,O1',
@@ -7407,6 +7408,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Symbol Of Stunning':'O7,Witch7',
   'Symbol Of Weakness':'O7,Witch7',
   'Sympathy':'Witch8',
+  'Telekinesis':'O5', // Oracle Haunted
   'Telepathic Bond':'Family5,Home5,Inquisitor5,Language5,Thought5,Witch5',
   'Teleport':'Exploration5,Witch5',
   'Teleport Object':'Witch7',
@@ -8703,14 +8705,24 @@ PFAPG.classRulesExtra = function(rules, name) {
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
     Pathfinder.featureSpells(rules,
-      'Iron Skin', 'IronSkin', 'wisdom', 'levels.Oracle', null, ['Stoneskin']
+      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
     );
     Pathfinder.featureSpells(rules,
-      'Mantle Of Moonlight', 'MantleOfMoonlight', 'wisdom', 'levels.Oracle',
+      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
+    Pathfinder.featureSpells(rules,
+      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
+    );
+    Pathfinder.featureSpells(rules,
+      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+wisdomModifier', ['Phantasmal Killer', '17:Weird']
     );
     Pathfinder.featureSpells(rules,
-      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'levels.Oracle',
+      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier',
       ['Speak With Dead']
     );
@@ -11793,6 +11805,11 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
         'Fire Seeds(O6 Conj)', 'Incendiary Cloud(O8 Conj)',
         'Fiery Body(O9 Tran)'
       ],
+      'selectableFeatures.Oracle - Haunted': [
+        'Mage Hand(O0 Tran)', 'Ghost Sound(O0 Illu)', 'Levitate(O2 Tran)',
+        'Minor Image(O2 Illu)', 'Telekinesis(O5 Tran)',
+        'Reverse Gravity(O7 Tran)'
+      ],
       'selectableFeatures.Oracle - Heavens Mystery': [
         'Color Spray(O1 Illu)', 'Hypnotic Pattern(O2 Illu)',
         'Rainbow Pattern(O4 Illu)', 'Overland Flight(O5 Tran)',
@@ -11946,10 +11963,10 @@ PFAPG.ruleNotes = function() {
     '  <li>\n' +
     '    Quilvyn gives the Oracle class its own spell list ("O" spells),\n' +
     '    rather than using spells from the Cleric list. The Oracle spell\n' +
-    '    list includes spells particular to individual mysteries and the\n' +
-    '    Rage Prophet prestige class; when randomly assigning spells,\n' +
-    '    Quilvyn restricts these spells to characters with the appropriate\n' +
-    '    mystery or Rage Prophet levels.\n' +
+    '    list includes spells particular to individual mysteries and curses\n' +
+    '    as well as those particular to the Rage Prophet prestige class;\n' +
+    '    when randomly assigning spells, Quilvyn restricts these spells to\n' +
+    '    characters with the appropriate feature or Rage Prophet levels.\n' +
     '  </li><li>\n' +
     '    Quilvyn includes in the Witch spell list spells that are made\n' +
     '    available by specific patrons. Quilvyn randomly assigns these\n' +
