@@ -5708,10 +5708,15 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('spellSlots.Rogue0', 'features.Minor Magic', '=', null);
     rules.defineRule('spellSlots.Rogue1', 'features.Major Magic', '=', null);
+    rules.defineRule('spellDifficultyClass.Rogue',
+      'features.Minor Magic', '?', null,
+      'intelligenceModifier', '=', '10 + source'
+    );
     // Override casterLevels.Rogue requirement created by featureSpells
     rules.defineRule('casterLevels.Rogue',
       'features.Dispelling Attack', '+', 'null',
-      'features.Minor Magic', '?', null
+      'features.Minor Magic', '?', null,
+      'levels.Rogue', '=', null
     );
 
   } else if(name == 'Sorcerer') {
@@ -6494,14 +6499,15 @@ Pathfinder.featureRules = function(rules, name, sections, notes) {
  * Defines in #rules# the rules to grant the spells listed in #spellList# when
  * feature #feature# is acquired. #spellType# contains the spell group,
  * #spellAbility# the associated ability, and #levelAttr# the related
- * character level. #dc#, if non-null, overrides the standard calculation of
- * difficulty class for the spells.  Each element of #spellList# has the
- * format "[min level:]spell name[,spell name...]". If min level is provided,
- * the spells listed in that element are not acquired until the character's
- * value of #levelAttr# reaches that level.
+ * character level. If non-null, #spellDC# specifies the expression for
+ * computing the DC for the spell; an empty string indicates that standard
+ * DC computation (10 + ability modifier + spell level). Each element of
+ * #spellList# has the format "[min level:]spell name[,spell name...]". If min
+ * level is provided, the spells listed in that element are not acquired until
+ * the character's value of #levelAttr# reaches that level.
  */
 Pathfinder.featureSpells = function(
-  rules, feature, spellType, spellAbility, levelAttr, dc, spellList
+  rules, feature, spellType, spellAbility, levelAttr, spellDC, spellList
 ) {
 
   let allSpells = rules.getChoices('spells');
@@ -6534,22 +6540,15 @@ Pathfinder.featureSpells = function(
         if(minLevel > 1)
           rules.defineRule
             ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
-        if(dc != null) {
+        if(spellDC != null) {
+          let dc = spellDC == '' ? spellAbility + 'Modifier + 10 + ' + spellLevel : spellDC;
           let allFormats = rules.getChoices('notes');
           let s = 'spells.' + fullName;
-          if(s in allFormats) {
+          if(s in allFormats)
             allFormats[s] =
-              allFormats[s].replaceAll(/DC %{[^}]*} Fort/g, 'DC %{' + dc + '} Fort');
-            allFormats[s] =
-              allFormats[s].replaceAll(/DC %{[^}]*} Ref/g, 'DC %{' + dc + '} Ref');
-            allFormats[s] =
-              allFormats[s].replaceAll(/DC %{[^}]*} Will/g, 'DC %{' + dc + '} Will');
-          } else {
+              allFormats[s].replaceAll(/DC %{[^}]*} (Fort|Ref|Will)/g, 'DC %{' + dc + '} $1');
+          else
             console.log('No format for spell ' + fullName);
-          }
-          // Suppress computation and display of DC for these spells
-          rules.defineRule
-            ('spellDifficultyClass.' + spellType, 'suppressed', '?', 'null');
         }
       }
     });
@@ -6557,10 +6556,6 @@ Pathfinder.featureSpells = function(
   rules.defineRule('casterLevels.' + spellType,
     'features.' + feature, '?', null,
     levelAttr, '=', null
-  );
-  rules.defineRule('spellDifficultyClass.' + spellType,
-    'casterLevels.' + spellType, '?', null,
-    spellAbility + 'Modifier', '=', '10 + source'
   );
 
 };
@@ -7430,7 +7425,7 @@ Pathfinder.raceRulesExtra = function(rules, name) {
     rules.defineRule
       ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
     Pathfinder.featureSpells(rules,
-      'Gnome Magic', 'GnomeMagic', 'charisma', 'level', null,
+      'Gnome Magic', 'GnomeMagic', 'charisma', 'level', '',
       ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
     );
     rules.defineRule
