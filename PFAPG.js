@@ -1213,7 +1213,7 @@ PFAPG.FEATURES = {
     'Note="Successful negative energy spell inflicts %{(mysteryLevel+5)//5} HP bleeding/rd (DC 15 Heal or healing effect ends)"',
   'Blizzard':
     'Section=combat ' +
-    'Note="%{mysteryLevel} 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Ref half) and reduces vision to 5\' for %{charismaModifier} rd 1/dy"',
+    'Note="%{mysteryLevel} 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Ref half), reduce vision to 5\', and inflict +5 Acrobatics DC for %{charismaModifier} rd 1/dy"',
   'Bonded Mount':'Section=feature Note="Has Animal Companion feature w/mount"',
   'Bones Mystery':
     'Section=skill ' +
@@ -1224,7 +1224,8 @@ PFAPG.FEATURES = {
   'Burning Magic':
     'Section=magic ' +
     'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Ref ends)"',
-  'Channel':'Section=feature Note="Has Channel Energy feature"',
+  'Channel':
+    'Section=feature Note="Has Channel Energy feature (positive energy only)"',
   'Cinder Dance':
     'Section=ability,feature ' +
     'Note=' +
@@ -1240,11 +1241,11 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Conjured coat gives +%{(mysteryLevel+5)//4*2>?4} AC%{mysteryLevel>=13 ? \', DR 5/slashing\' : \'\'} for %{mysteryLevel} hr/dy"',
   'Combat Healer':
-    'Section=feature ' +
+    'Section=magic ' +
     'Note="May use two spell slots to cast <i>Cure</i> spell as a swift action %{(mysteryLevel-3)//4}/dy"',
   'Crystal Sight':
     'Section=feature ' +
-    'Note="Can see through %{mysteryLevel}\' earth and %{mysteryLevel}\\" metal for %{mysteryLevel} rd/dy"',
+    'Note="Can see through %{mysteryLevel}\' earth, sand, or stone or %{mysteryLevel}\\" metal for %{mysteryLevel} rd/dy"',
   'Deaf':
     'Section=combat,feature,magic,skill ' +
     'Note=' +
@@ -1261,13 +1262,13 @@ PFAPG.FEATURES = {
   'Dweller In Darkness':'Section=magic Note="Can use <i>%V</i> effects 1/dy"',
   'Earth Glide (Oracle)':
     'Section=ability ' +
-    'Note="Can move at full speed through earth, leaving no trace, %{mysteryLevel} min/dy; including others uses equal portion of daily time"',
+    'Note="Can move at full speed through earth, leaving no trace, %{mysteryLevel} min/dy; including others uses equal portion of daily time for each"',
   'Energy Body':
-    'Section=feature ' +
+    'Section=combat ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{mysteryLevel} HP positive energy when undead hits self w/melee attack, and heals target 1d6+%{mysteryLevel} HP 1/rd for %{mysteryLevel} rd/dy"',
   'Enhanced Cures':
      'Section=magic ' +
-     'Note="Level-based healing by Cure spells gives %{mysteryLevel} HP"',
+     'Note="Caster level bonus for <i>Cure</i> spells is +%{mysteryLevel}"',
   'Erosion Touch':
     'Section=combat ' +
     'Note="Touch inflicts %{mysteryLevel}d6 HP to objects and constructs %{mysteryLevel//3+1}/dy"',
@@ -1342,7 +1343,7 @@ PFAPG.FEATURES = {
       '"Knows all <i>Summon Nature\'s Ally</i> spells",' +
       '"R30\' Animals gain +%{charismaModifier} on all saves"',
   'Gaseous Form':
-    'Section=magic Note="May use <i>Gaseous Form</i> effects %{mysteryLevel} min/dy; including others uses equal portion of daily time"',
+    'Section=magic Note="May use <i>Gaseous Form</i> effects %{mysteryLevel} min/dy; including others uses equal portion of daily time for each"',
   'Gaze Of Flames':
     'Section=feature,magic ' +
     'Note=' +
@@ -1370,7 +1371,7 @@ PFAPG.FEATURES = {
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
   'Ice Armor':
     'Section=combat ' +
-    'Note="Conjured armor gives +%{((mysteryLevel+5)//4)*2>?4} AC%{mysteryLevel>=13 ? \' and DR 5/piercing\' : \'\'} (+2 in cold, -2 in heat) for %{mysteryLevel} hr/dy"',
+    'Note="Conjured armor gives +%{((mysteryLevel+5)//4)*2>?4} AC%{mysteryLevel>=13 ? \' and DR 5/piercing\' : \'\'} (+2 for each in cold, -2 in heat) for %{mysteryLevel} hr/dy"',
   'Icy Skin':
     'Section=save ' +
     'Note="%{mysteryLevel>=17 ? \'Immune\' : mysteryLevel>=11 ? \'Resistance 20\' : mysteryLevel>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
@@ -1379,7 +1380,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Inflicts %{mysteryLevel}d6 HP cold%{mysteryLevel>=15 ? \', exhausted, stunned 1 rd\' : mysteryLevel>=10 ? \', fatigued\' : \'\'} (DC %{10+mysteryLevel//2+charismaModifier} Fort half HP only) %{mysteryLevel>=10 ? 2 : 1}/dy"',
   'Invisibility':
     'Section=magic ' +
-    'Note="May use <i>Invisibility</i> %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> \' + mysteryLevel + \' rd/dy\' : \'\'}"',
+    'Note="May use <i>Invisibility</i> effects %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> effects \' + mysteryLevel + \' rd/dy\' : \'\'}"',
   'Iron Skin':
     'Section=magic ' +
     'Note="May use self <i>Stoneskin</i> effects %{mysteryLevel>=15 ? 2 : 1}/dy"',
@@ -1433,7 +1434,7 @@ PFAPG.FEATURES = {
   'Mystery':'Section=feature Note="1 selection"',
   'Natural Divination':
     'Section=feature ' +
-    'Note="10 min nature study gives 1 +%{charismaModifier} save, +10 skill check, or +1 Initiative w/in 1 dy %{mysteryLevel//4+1}/dy"',
+    'Note="10 min nature study gives a single +%{charismaModifier} save, +10 skill check, or +4 Initiative w/in 1 dy %{mysteryLevel//4+1}/dy"',
   'Nature Mystery':
     'Section=skill ' +
     'Note="Climb is a class skill/Fly is a class skill/Knowledge (Nature) is a class skill/Ride is a class skill/Survival is a class skill/Swim is a class skill"',
@@ -1528,13 +1529,13 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP acid %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
   'Touch Of Electricity':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP electricity %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons have <i>shock</i> property\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP electricity %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 HP electricity\' : \'\'}"',
   'Touch Of Flame':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP fire %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'/Wielded weapons have <i>flaming</i> property\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP fire %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 HP fire\' : \'\'}"',
   'Transcendental Bond':
     'Section=magic ' +
-    'Note="May use <i>Telepathic Bond</i> effects%{mysteryLevel>=10 ? \' and cast touch spell\' : \'\'} on %{charismaModifier} allies %{mysteryLevel} rd/dy"',
+    'Note="May use <i>Telepathic Bond</i> effects on %{charismaModifier} allies %{mysteryLevel} rd/dy%{mysteryLevel>=10 ? \'; may cast touch spell on 1 of these remotely 1/dy\' : \'\'}"',
   'Undead Servitude':'Section=magic Note="May use Command Undead %V/dy"',
   'Undo Artifice':
     'Section=feature ' +
@@ -1575,12 +1576,12 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> effects on any unobstructed area %V rd/dy",' +
-      '"Ignore Perception wind penalties and 100\' distance penalties"',
+      '"Ignores Perception wind penalties and first 100\' distance penalties"',
   'Wings Of Air':'Section=ability Note="Fly %{mysteryLevel>=10 ? 90 : 60}\' for %{mysteryLevel} min/dy"',
   'Wings Of Fire':'Section=ability Note="Fly 60\' %{mysteryLevel} min/dy"',
   'Wintry Touch':
     'Section=combat ' +
-    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP cold %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons have <i>frost</i> property\' : \'\'}"',
+    'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP cold %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 cold\' : \'\'}"',
 
   // Summoner
   'Ability Increase Evolution':
@@ -3404,11 +3405,11 @@ PFAPG.FEATURES = {
       '"Has immunity to fatigue, exhaustion, sneak attacks, and crit/Has vulnerability to fire"',
   'Cold Steel':
     'Section=magic ' +
-    'Note="Touched weapon gains <i>Frost</i> property for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or <i>Icy Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
+    'Note="Touched weapon inflicts +1d6 HP cold for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or gains <i>Icy Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
   'Combat Precognition':'Section=combat Note="+%V Initiative"',
   'Crystal Shard':
     'Section=magic ' +
-    'Note="Touched weapon gains <i>Bane</i> property vs. earth, ooze, stone, and metal creatures for 1 min %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
+    'Note="Touched weapon gains +2 attack and +2d6 HP damage vs. earth, ooze, stone, and metal creatures for 1 min %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Deep One':
     'Section=feature,magic,save ' +
     'Note=' +
@@ -3554,7 +3555,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="R120\' 5\' radius inflicts %{levels.Sorcerer}d6 HP (half electricity, half sonic) (DC %{10+levels.Sorcerer//2+charismaModifier} Ref half) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Thunderstaff':
     'Section=magic ' +
-    'Note="Touched weapon gains <i>Shock</i> property for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or <i>Shocking Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
+    'Note="Touched weapon inflicts +1d6 HP electricity for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or gains <i>Shocking Burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
   'Tremor':
     'Section=combat ' +
     'Note="R30\' Shaking ground inflicts +%{levels.Sorcerer+charismaModifier} CMB trip on target %{charismaModifier+3}/dy"',
@@ -4100,13 +4101,13 @@ PFAPG.FEATURES = {
   'Savage Seer':'Section=combat Note="+%V Rage Power Level/+%V Mystery Level"',
   'Spirit Guardian':
     'Section=magic ' +
-    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons <i>ghost touch</i> property for 1 rd"',
+    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
   'Spirit Guide':
     'Section=magic ' +
     'Note="May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage"',
   'Spirit Warrior':
     'Section=magic ' +
-    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons <i>ghost touch</i> property for 1 rd"',
+    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
 
   // Stalwart Defender
   'AC Bonus':'Section=combat Note="+%V AC"',
@@ -11395,7 +11396,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.whirlwindLesson.1',
       'features.Whirlwind Lesson', '?', null,
-      'mysteryLevel', '=', 'source>=7 ? " and share with another " + (source>=15 ? source : 1) + " for %2 hr" : ""'
+      'mysteryLevel', '=', 'source>=7 ? " and share with " + (source>=15 ? source + " others" : "1 other") + " for %2 dy" : ""'
     );
     rules.defineRule('magicNotes.whirlwindLesson.2',
       'features.Whirlwind Lesson', '?', null,
