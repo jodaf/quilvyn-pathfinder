@@ -1198,7 +1198,7 @@ PFAPG.FEATURES = {
     'Note="1 hr meditation yields results of %{mysteryLevel>=8 ? \'<i>Commune</i>\' : mysteryLevel>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
   'Awesome Display':
     'Section=magic ' +
-    'Note="Treat illusion targets as having %{charismaModifier>?0} fewer HD"',
+    'Note="Treats illusion targets as having %{charismaModifier>?0} fewer HD"',
   'Battle Mystery':
     'Section=skill ' +
     'Note="Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill"',
@@ -1265,7 +1265,7 @@ PFAPG.FEATURES = {
     'Note="Can move at full speed through earth, leaving no trace, %{mysteryLevel} min/dy; including others uses equal portion of daily time for each"',
   'Energy Body':
     'Section=combat ' +
-    'Note="Energy form lights 10\' radius, inflicts 1d6+%{mysteryLevel} HP positive energy when undead hits self w/melee attack, and heals target 1d6+%{mysteryLevel} HP 1/rd for %{mysteryLevel} rd/dy"',
+    'Note="Energy form lights 10\' radius, inflicts 1d6+%{mysteryLevel} HP positive energy on undead w/unarmed attack or when undead hits self w/melee attack, and heals target 1d6+%{mysteryLevel} HP 1/rd for %{mysteryLevel} rd/dy"',
   'Enhanced Cures':
      'Section=magic ' +
      'Note="Caster level bonus for <i>Cure</i> spells is +%{mysteryLevel}"',
@@ -1274,7 +1274,7 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts %{mysteryLevel}d6 HP to objects and constructs %{mysteryLevel//3+1}/dy"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
-    'Note="May take full-attack action and move %{speed}\' as a full-round action/Crit ignores DR/+4 AC vs. crit/Remain alive until -%{constitution*2+1} HP"',
+    'Note="May take full-attack action and move %{speed}\' as a full-round action/Crit ignores DR/+4 AC vs. crit/Does not die until -%{constitution*2+1} HP"',
   'Final Revelation (Bones Mystery)':
     'Section=combat,magic ' +
     'Note=' +
@@ -1292,7 +1292,7 @@ PFAPG.FEATURES = {
   'Final Revelation (Life Mystery)':
     'Section=combat,save ' +
     'Note=' +
-      '"Remain alive until -%{constitution*2} HP",' +
+      '"Does not die until -%{constitution*2+1} HP",' +
       '"Immune to bleed, death attack, exhausted, fatigued, nauseated effects, negative levels, and sickened effects/Ability scores cannot be drained below 1/Automatic save vs. massive damage"',
   'Final Revelation (Lore Mystery)':
     'Section=magic,skill ' +
@@ -1353,7 +1353,7 @@ PFAPG.FEATURES = {
     'Section=feature,magic,skill ' +
     'Note=' +
       '"May determine precise location under clear night sky",' +
-      '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without penalty 1/night",' +
+      '"May use Empower Spell, Extend Spell, Silent Spell, or Still Spell outdoors without cost 1/night",' +
       '"+%{charismaModifier} Wisdom-linked skills under clear night sky"',
   'Haunted':
     'Section=feature,magic ' +
@@ -1462,7 +1462,7 @@ PFAPG.FEATURES = {
   'Rock Throwing':
     'Section=combat ' +
     'Note="R20\' Thrown rock +1 attack inflicts 2d%{features.Small ? 3 : 4}+%{(strengthModifier*1.5)//1} HP"',
-  'Safe Curing':'Section=magic Note="Cure spells do not provoke AOO"',
+  'Safe Curing':'Section=magic Note="<i>Cure</i> spells do not provoke AOO"',
   'Shard Explosion':
     'Section=combat ' +
     'Note="10\' radius inflicts %{mysteryLevel//2>?1}d6 HP piercing (DC %{10+mysteryLevel//2+charismaModifier} Ref half) and difficult terrain for 1 rd %{mysteryLevel//5+1}/dy"',
@@ -1485,7 +1485,7 @@ PFAPG.FEATURES = {
     'Note="May converse at will with %{mysteryLevel//3+1} chosen animal types"',
   'Spirit Boost':
     'Section=magic ' +
-    'Note="Up to %{mysteryLevel} excess HP from Cure spell become temporary HP for 1 rd"',
+    'Note="Up to %{mysteryLevel} excess HP from a <i>Cure</i> spell become temporary HP for 1 rd"',
   'Spirit Of Nature':
     'Section=combat ' +
     'Note="At negative HP%{mysteryLevel<10 ? \' in natural setting\' : \'\'}, stabilize automatically%{mysteryLevel>=15 ? \' and gain fast healing 3 for 1d4 rd\' : mysteryLevel>=5 ? \' and gain fast healing 1 for 1d4 rd\' : \'\'}"',
@@ -8705,6 +8705,10 @@ PFAPG.classRulesExtra = function(rules, name) {
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
     Pathfinder.featureSpells(rules,
+      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
+    );
+    Pathfinder.featureSpells(rules,
       'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
       'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
       ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
@@ -8718,13 +8722,19 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
     );
     Pathfinder.featureSpells(rules,
+      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
+      null, ['Levitate', '10:Fly']
+    );
+    Pathfinder.featureSpells(rules,
       'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+wisdomModifier', ['Phantasmal Killer', '17:Weird']
+      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
+    );
+    Pathfinder.featureSpells(rules,
+      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
     );
     Pathfinder.featureSpells(rules,
       'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier',
-      ['Speak With Dead']
+      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
     );
   } else if(name == 'Summoner') {
     rules.defineRule
