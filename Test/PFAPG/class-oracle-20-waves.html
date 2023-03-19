@@ -215,11 +215,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dodge: +1 AC/+1 CMD</i></td>
       </tr><tr style="text-align:center">
-        <td>Blizzard: 20 10' cu inflict 20d4 HP cold (DC 23 Ref half), reduce vision to 5', and inflict +5 Acrobatics DC for 3 rd 1/dy</td>
+        <td>Blizzard: 20 contiguous 10' cu inflict 20d4 HP cold (DC 23 Ref half), reduce vision to 5', and inflict +5 Acrobatics DC for 3 rd 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Fluid Nature: +4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe crit confirm</td>
       </tr><tr style="text-align:center">
-        <td>Ice Armor: Conjured armor gives +12 AC and DR 5/piercing (+2 for each in cold, -2 in heat) for 20 hr/dy</td>
+        <td>Ice Armor: Conjured armor gives +12 AC and DR 5/piercing (both +2 in cold, -2 in heat) for 20 hr/dy</td>
       </tr><tr style="text-align:center">
         <td>Improved Unarmed Strike: No AOO on Unarmed attack, may deal lethal damage</td>
       </tr><tr style="text-align:center">
@@ -270,9 +270,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
+      <td>Baleful Polymorph (Punative Transformation5 Tran): R75' Target becomes 1 HD creature (DC 23 Fort neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Elemental Body I (Water Form4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Elemental Body II (Water Form5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Elemental Body III (Water Form6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Elemental Body IV (Water Form7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 20 min</td>
+    </tr><tr style="text-align:left">
       <td>Fluid Form (O6 Tran): Self gains DR 10/slashing, +10 reach, +60' Swim, amphibious features, and ability to squeeze through cracks for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Geyser (O5 Conj): R1200' 5' sq inflicts 3d6 HP fire and 10d6 falling (DC 18 Ref half fire only), then 1d6 HP fire in 100' radius for conc + 1 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Greater Scrying (Water Sight7 Divi): Self views and casts detection and communication spells on target for 20 hr (DC 23 Will special neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Scrying (Water Sight4 Divi): Self views target for 20 min (DC 23 Will neg)</td>
     </tr><tr style="text-align:left">
       <td>Seamantle (O8 Conj): 30' water column gives self +8 AC, +4 Reflex, and 30' slam attack for 20 min</td>
     </tr><tr style="text-align:left">
@@ -300,9 +314,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Empower Spell: x1.5 chosen spell variable effects uses +2 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Final Revelation (Waves Mystery): May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water and cold spells w/out cost</td>
+      <td>Final Revelation (Waves Mystery): May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to cold and water spells w/out cost</td>
     </tr><tr style="text-align:center">
-      <td>Freezing Spells: Spells that inflict cold damage slow target for 1d4 rd</td>
+      <td>Freezing Spells: Target failed save on spells that inflict cold damage also slows target for 1d4 rd</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Maximize all chosen spell variable effects uses +3 spell slot</td>
     </tr><tr style="text-align:center">
