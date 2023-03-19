@@ -7,7 +7,7 @@
   <script>
 var attributes = {
   "_path":"ztest/pfapg/class/oracle 20/lore", 
-  "alignment":"Chaotic Evil", "armor":"Wooden", "charisma":18, "constitution":16, "deity":"Gorum", 
+  "alignment":"Chaotic Evil", "armor":"Leather", "charisma":18, "constitution":16, "deity":"Gorum", 
   "dexterity":7, "experience":58, "experienceTrack":"PSOP", "faction":"Osirion", 
   "feats.Elemental Spell (Cold)":1, "feats.Empower Spell":1, "feats.Improved Unarmed Strike":1, 
   "feats.Maximize Spell":1, "feats.Persistent Spell":1, "feats.Point-Blank Shot":1, 
@@ -109,8 +109,6 @@ var attributes = {
         <td><i>Oracle's Curse: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Revelation: 6 selections</i></td>
-      </tr><tr style="text-align:center">
-        <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check/rd at target's bonus (Will neg) for 4 rd 5/dy</td>
       </tr></table>
 </td>
     </tr></table>
@@ -135,7 +133,7 @@ var attributes = {
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 2 (+8)</td>
         <td>Knowledge (Arcana): (int) 16 (+23)</td>
-        <td>Ride: (dex;cc) 2 (-1)</td>
+        <td>Ride: (dex;cc) 2 (+0)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Traps): (int) 8 (+14)</td>
         <td>Knowledge (History): (int) 5 (+12)</td>
@@ -143,17 +141,17 @@ var attributes = {
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha) 2 (+5)</td>
         <td>Knowledge (Nature): (int) 10 (+17)</td>
-        <td>Stealth: (dex;cc) 10 (+7)</td>
+        <td>Stealth: (dex;cc) 10 (+8)</td>
       </tr><tr style="text-align:left">
         <td>Disguise: (cha;cc) 12 (+12)</td>
         <td>Perception: (wis;cc) 2 (+4)</td>
         <td>Survival: (wis;cc) 2 (+4)</td>
       </tr><tr style="text-align:left">
-        <td>Escape Artist: (dex;cc) 8 (+5)</td>
+        <td>Escape Artist: (dex;cc) 8 (+6)</td>
         <td>Perform (Comedy): (cha;cc) 10 (+10)</td>
         <td></td>
       </tr><tr style="text-align:left">
-        <td>Fly: (dex;cc) 2 (-1)</td>
+        <td>Fly: (dex;cc) 2 (+0)</td>
         <td>Perform (Dance): (cha;cc) 10 (+10)</td>
         <td></td>
       </tr></table>
@@ -163,8 +161,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +60</i></td>
@@ -179,7 +175,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Final Revelation (Lore Mystery): May take 20 on all Knowledge</td>
       </tr><tr style="text-align:center">
-        <td>Focused Trance: 1d6 rd trance gives +20 save vs. sonic and gaze attack and 1 +20 Intelligence skill check 4/dy</td>
+        <td>Focused Trance: 1d6 rd trance gives +20 save vs. sonic and gaze attack followed by a single +20 Intelligence skill check 4/dy</td>
       </tr><tr style="text-align:center">
         <td>Think On It: May make +10 reroll on failed Knowledge 1/day</td>
       </tr></table>
@@ -200,7 +196,7 @@ var attributes = {
         <td><b>Armor Class</b>: 16</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
-        <td><b>Combat Maneuver Bonus/Defense</b>: +15/28</td>
+        <td><b>Combat Maneuver Bonus/Defense</b>: +15/29</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -214,7 +210,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Gear" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor</b>: Wooden</td>
+        <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: None</td>
         <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
       </tr></table>
@@ -224,7 +220,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +3</i></td>
+        <td><i>Dexterity Armor Class Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
@@ -277,7 +273,13 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
+      <td>Augury (Automatic Writing2 Divi): Self has 90% chance to learn weal or woe outcome of act up to 30 min in the future</td>
+    </tr><tr style="text-align:left">
+      <td>Commune (Automatic Writing5 Divi): Deity answers 20 yes/no questions</td>
+    </tr><tr style="text-align:left">
       <td>Contact Other Plane (O5 Divi): Self asks 10 questions of extraplanar entity</td>
+    </tr><tr style="text-align:left">
+      <td>Divination (Automatic Writing4 Divi): Self has 90% chance to learn useful advice on act proposed up to 1 week in the future</td>
     </tr><tr style="text-align:left">
       <td>Identify (O1 Divi): R60' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or 60 rd</td>
     </tr><tr style="text-align:left">
@@ -289,11 +291,29 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Moment Of Prescience (O8 Divi): Self gains +20 attack, check, or save once w/in 20 hr</td>
     </tr><tr style="text-align:left">
+      <td>Symbol Of Death (Spontaneous Symbology8 Necr): R60' Rune slays (DC 24 Fort neg) in 60' radius when triggered for 200 min or 150 HP killed</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): R60' Rune panics 20 rd (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): R60' Rune causes insanity (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): R60' Rune causes pain (-4 attack and skill and ability checks) for 1 hr (DC 24 Fort neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): R60' Rune charms for 20 hrs (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): R60' Rune sleeps 10 HD or less for 3d6x10 min (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): R60' Rune stuns for 1d6 rd (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): R60' Rune inflicts -3d6 Strength (DC 24 Fort neg) in 60' radius when triggered for 200 min</td>
+    </tr><tr style="text-align:left">
       <td>Time Stop (O9 Tran): All but self halt and become invulnerable for 1d4+1 rd</td>
     </tr><tr style="text-align:left">
       <td>Tongues (O4 Divi): Touched communicate in any language for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Vision (O7 Divi): Self learns answer about target person, place, or object</td>
+    </tr><tr style="text-align:left">
+      <td>Wish (Lore Oracle9 Univ): Alters reality, with few limits</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -306,6 +326,8 @@ var attributes = {
       <td>Arcane Archivist (Oracle): May cast Sorcerer/Wizard spell from lore book using +1 spell slot 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Automatic Writing: 1 hr meditation yields results of <i>Commune</i> spell 1/dy</td>
+    </tr><tr style="text-align:center">
+      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check/rd at target's bonus (DC 24 Will neg) for 4 rd 5/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May convert half or all spell damage to cold damage; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
