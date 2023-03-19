@@ -1213,7 +1213,7 @@ PFAPG.FEATURES = {
     'Note="Successful negative energy spell inflicts %{(mysteryLevel+5)//5} HP bleeding/rd (DC 15 Heal or healing effect ends)"',
   'Blizzard':
     'Section=combat ' +
-    'Note="%{mysteryLevel} 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Ref half), reduce vision to 5\', and inflict +5 Acrobatics DC for %{charismaModifier} rd 1/dy"',
+    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Ref half), reduce vision to 5\', and inflict +5 Acrobatics DC for %{charismaModifier} rd 1/dy"',
   'Bonded Mount':'Section=feature Note="Has Animal Companion feature w/mount"',
   'Bones Mystery':
     'Section=skill ' +
@@ -1307,7 +1307,7 @@ PFAPG.FEATURES = {
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to acid and earth spells w/out cost"',
   'Final Revelation (Waves Mystery)':
     'Section=magic ' +
-    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to water and cold spells w/out cost"',
+    'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to cold and water spells w/out cost"',
   'Final Revelation (Wind Mystery)':
     'Section=magic ' +
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air and electricity spells w/out cost"',
@@ -1336,7 +1336,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} fire elemental for %{mysteryLevel} hr 1/dy"',
   'Freezing Spells':
     'Section=magic ' +
-    'Note="Spells that inflict cold damage slow target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
+    'Note="Target failed save on spells that inflict cold damage also slows target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
   'Friend To The Animals':
     'Section=magic,save ' +
     'Note=' +
@@ -1371,7 +1371,7 @@ PFAPG.FEATURES = {
     'Note="Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill"',
   'Ice Armor':
     'Section=combat ' +
-    'Note="Conjured armor gives +%{((mysteryLevel+5)//4)*2>?4} AC%{mysteryLevel>=13 ? \' and DR 5/piercing\' : \'\'} (+2 for each in cold, -2 in heat) for %{mysteryLevel} hr/dy"',
+    'Note="Conjured armor gives +%{((mysteryLevel+5)//4)*2>?4} AC%{mysteryLevel>=13 ? \' and DR 5/piercing (both\' : \'(\'} +2 in cold, -2 in heat) for %{mysteryLevel} hr/dy"',
   'Icy Skin':
     'Section=save ' +
     'Note="%{mysteryLevel>=17 ? \'Immune\' : mysteryLevel>=11 ? \'Resistance 20\' : mysteryLevel>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
@@ -1575,7 +1575,7 @@ PFAPG.FEATURES = {
   'Wind Sight':
     'Section=magic,skill ' +
     'Note=' +
-      '"May use <i>Clairaudience</i> and <i>Clairvoyance</i> effects on any unobstructed area %V rd/dy",' +
+      '"May use <i>Clairaudience/Clairvoyance</i> effects on any unobstructed area %V rd/dy",' +
       '"Ignores Perception wind penalties and first 100\' distance penalties"',
   'Wings Of Air':'Section=ability Note="Fly %{mysteryLevel>=10 ? 90 : 60}\' for %{mysteryLevel} min/dy"',
   'Wings Of Fire':'Section=ability Note="Fly 60\' %{mysteryLevel} min/dy"',
@@ -8736,6 +8736,14 @@ PFAPG.classRulesExtra = function(rules, name) {
        '13:Elemental Body IV']
     );
     Pathfinder.featureSpells(rules,
+      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
+      ['Gaseous Form']
+    );
+    Pathfinder.featureSpells(rules,
+      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
+      ['Invisibility', '9:Greater Invisibility']
+    );
+    Pathfinder.featureSpells(rules,
       'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
     );
     Pathfinder.featureSpells(rules,
@@ -8745,6 +8753,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier', ['5:Rage']
+    );
+    Pathfinder.featureSpells(rules,
+      'Punitive Transformation', 'PunativeTransformation', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Baleful Polymorph']
     );
     Pathfinder.featureSpells(rules,
       'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
@@ -8763,6 +8776,19 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
+    );
+    Pathfinder.featureSpells(rules,
+      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
+      ['7:Clairaudience/Clairvoyance']
     );
   } else if(name == 'Summoner') {
     rules.defineRule
