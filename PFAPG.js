@@ -1219,8 +1219,8 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
   'Brain Drain':
-    'Section=feature ' +
-    'Note="R100\' Mental probe inflicts %{mysteryLevel}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (Will neg) for %{charismaModifier} rd %{(mysteryLevel+5)//5}/dy"',
+    'Section=magic ' +
+    'Note="R100\' Mental probe inflicts %{mysteryLevel}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (DC %{10+mysteryLevel//2+charismaModifier} Will neg) for %{charismaModifier} rd %{(mysteryLevel+5)//5}/dy"',
   'Burning Magic':
     'Section=magic ' +
     'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Ref ends)"',
@@ -1330,7 +1330,7 @@ PFAPG.FEATURES = {
     'Note="May move full speed across liquid without contact damage%1 %{mysteryLevel} hr/dy"',
   'Focused Trance':
     'Section=skill ' +
-    'Note="1d6 rd trance gives +%{mysteryLevel} save vs. sonic and gaze attack and 1 +20 Intelligence skill check %{charismaModifier}/dy"',
+    'Note="1d6 rd trance gives +%{mysteryLevel} save vs. sonic and gaze attack followed by a single +20 Intelligence skill check %{charismaModifier}/dy"',
   'Form Of Flame':
     'Section=magic ' +
     'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} fire elemental for %{mysteryLevel} hr 1/dy"',
@@ -1424,7 +1424,7 @@ PFAPG.FEATURES = {
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Mighty Pebble':
     'Section=combat ' +
-    'Note="R20\' Thrown pebble +%{mysteryLevel//4} attack inflicts %{mysteryLevel//2>?1}d6, half in 5\' radius (DC %{10+mysteryLevel//2+charismaModifier} Ref neg) %{(mysteryLevel+5)//5}/dy"',
+    'Note="R20\' Thrown pebble +%{mysteryLevel//4} attack inflicts %{mysteryLevel//2>?1}d6+%{mysteryLevel//4} HP bludgeoning, half in 5\' radius (DC %{10+mysteryLevel//2+charismaModifier} Ref neg) %{(mysteryLevel+5)//5}/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{mysteryLevel>=17 ? \'Immune\' : mysteryLevel>=11 ? \'Resistance 20\' : mysteryLevel>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -7394,9 +7394,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Summon Monster VI':'O6,Witch6',
   'Summon Monster VII':'Aquatic7,O7,Serpentine7,Witch7',
   'Summon Monster VIII':'O8,Witch8',
-  "Summon Nature's Ally IV":'Feather4,Fur4,Witch4', // Witch Animals
-  "Summon Nature's Ally VIII":'Feather8,Fur8',
-  "Summon Nature's Ally IX":'Witch9', // Witch Animals
+  "Summon Nature's Ally I":'O1', // Oracle Nature
+  "Summon Nature's Ally II":'O2', // Oracle Nature
+  "Summon Nature's Ally III":'O3', // Oracle Nature
+  "Summon Nature's Ally IV":
+    'Feather4,Fur4,O4,Witch4', // Oracle Nature; Witch Animals
+  "Summon Nature's Ally V":'O5', // Oracle Nature
+  "Summon Nature's Ally VI":'O6', // Oracle Nature
+  "Summon Nature's Ally VII":'O7', // Oracle Nature
+  "Summon Nature's Ally VIII":'Feather8,Fur8,O8', // Oracle Nature
+  "Summon Nature's Ally IX":'O9,Witch9', // Oracle Nature; Witch Animals
   'Sunbeam':'Day7,Light7',
   'Sunburst':'Day8,Light8,O8,Seasons8', // Oracle Heavens
   'Symbol Of Death':'Language8,O8,Wards8,Witch8',
@@ -8617,6 +8624,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Lame', '?', null,
       'mysteryLevel', '=', 'source>=10 ? " or armor" : ""'
     );
+    rules.defineRule
+      ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
     rules.defineRule('combatNotes.deaf',
       'mysteryLevel', '=', 'source<5 ? -4 : source<10 ? -2 : null'
     );
@@ -8705,6 +8714,10 @@ PFAPG.classRulesExtra = function(rules, name) {
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
     Pathfinder.featureSpells(rules,
+      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
+      null, ['Augury', '5:Divination', '8:Commune']
+    );
+    Pathfinder.featureSpells(rules,
       'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
     );
@@ -8712,6 +8725,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
       'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
       ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
+    );
+    Pathfinder.featureSpells(rules,
+      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
+      'mysteryLevel', null, ['Wish']
     );
     Pathfinder.featureSpells(rules,
       'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
@@ -8730,7 +8747,18 @@ PFAPG.classRulesExtra = function(rules, name) {
       '10+mysteryLevel//2+charismaModifier', ['5:Rage']
     );
     Pathfinder.featureSpells(rules,
+      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
+       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
+       'Symbol Of Stunning', 'Symbol Of Weakness']
+    );
+    Pathfinder.featureSpells(rules,
       'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
+    );
+    Pathfinder.featureSpells(rules,
+      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
+      null, ['Telepathic Bond']
     );
     Pathfinder.featureSpells(rules,
       'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
@@ -11814,6 +11842,13 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
         'Burning Hands(O1 Evoc)', 'Fireball(O3 Evoc)', 'Wall Of Fire(O4 Evoc)',
         'Fire Seeds(O6 Conj)', 'Incendiary Cloud(O8 Conj)',
         'Fiery Body(O9 Tran)'
+      ],
+      'selectableFeatures.Oracle - Friend To The Animals': [
+        "Summon Nature's Ally I(O1 Conj)", "Summon Nature's Ally II(O2 Conj)",
+        "Summon Nature's Ally III(O3 Conj)", "Summon Nature's Ally IV(O4 Conj)",
+        "Summon Nature's Ally V(O5 Conj)", "Summon Nature's Ally VI(O6 Conj)",
+        "Summon Nature's Ally VII(O7 Conj)",
+        "Summon Nature's Ally VIII(O8 Conj)", "Summon Nature's Ally IX(O9 Conj)"
       ],
       'selectableFeatures.Oracle - Haunted': [
         'Mage Hand(O0 Tran)', 'Ghost Sound(O0 Illu)', 'Levitate(O2 Tran)',
