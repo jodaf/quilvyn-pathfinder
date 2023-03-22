@@ -5867,7 +5867,7 @@ PFAPG.SPELLS = {
   'Alchemical Allocation':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
-    'Description="Self gains effect of chosen potion in next rd w/out consuming it; may be used once per potion"',
+    'Description="Self gains effect of chosen potion in next rd w/out consuming it"',
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
@@ -5959,7 +5959,7 @@ PFAPG.SPELLS = {
   'Bloodhound':
     'School=Transmutation ' +
     'Level=Alchemist3,Inquisitor2,R2 ' +
-    'Description="Self gains Scent features, +8 Perception (smell), +4 Survival (track via scent), -4 save vs. odor, and DC 20 Perception to identify poison via smell for $L hr"',
+    'Description="Self gains Scent features, +8 Perception (smell), +4 Survival (track via scent), -4 save vs. odor, and DC 20 Perception to detect poison via smell for $L hr"',
   'Bloody Claws':
     'School=Necromancy ' +
     'Level=D4,R3 ' +
@@ -5975,7 +5975,7 @@ PFAPG.SPELLS = {
   'Borrow Skill':
     'School=Transmutation ' +
     'Level=B1 ' +
-    'Description="Self gains chosen skill ranks of touched for next attempt w/in $L rd"',
+    'Description="Self may use chosen skill ranks of touched for next attempt w/in $L rd"',
   'Bow Spirit':
     'School=Conjuration ' +
     'Level=R4 ' +
@@ -6115,11 +6115,11 @@ PFAPG.SPELLS = {
   'Deadly Finale':
     'School=Evocation ' +
     'Level=B6 ' +
-    'Description="R$RS\' Ending Bardic Performance inflicts 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd, (Fort neg bleed) on %{lvl//3} targets in 15\' radius"',
+    'Description="R$RS\' Ending Bardic Performance inflicts 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd (Fort neg bleed), on %{lvl//3} targets in 15\' radius"',
   'Deafening Song Bolt':
     'School=Evocation ' +
     'Level=B5 ' +
-    'Description="R$RS\' Ranged touch inflicts on 3 targets in 30\' radius 3d10 HP sonic and deafened for 1d6 rd"',
+    'Description="R$RS\' Ranged touch w/3 bolts in 15\' radius inflicts 3d10 HP sonic and deafened for 1d6 rd each"',
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
@@ -6163,7 +6163,7 @@ PFAPG.SPELLS = {
   'Draconic Reservoir':
     'School=Evocation ' +
     'Level=Alchemist3,W3 ' +
-    'Description="Touched can absorb, then release in +1d6 HP damage bonuses, %{lvl*6} HP of specified energy damage"',
+    'Description="Touched can absorb, then release in +1d6 HP damage bonuses, %{lvl*6} HP of specified energy damage w/in %{lvl*10} min"',
   "Dragon's Breath":
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
@@ -6295,7 +6295,7 @@ PFAPG.SPELLS = {
   'Foe To Friend':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="R$RM\' Redirects or negates foe attack (Will neg); foe counts as ally for flanking for 1 rd"',
+    'Description="R$RM\' Redirects or negates foe attack and self counts foe as ally for flanking for 1 rd (Will neg)"',
   'Follow Aura':
     'School=Divination ' +
     'Level=Inquisitor2 ' +
@@ -6311,7 +6311,7 @@ PFAPG.SPELLS = {
   'Frozen Note':
     'School=Enchantment ' +
     'Level=B5 ' +
-    'Description="Creatures up to %{lvl+3} HD in 30\' radius held spellbound (%{lvl-3}+ HD DC %{spellDifficultyClass.B+5} Will neg) for conc or $L rd"',
+    'Description="Creatures up to %{lvl+3} HD in 30\' radius held spellbound (%{lvl-3}-%{lvl+3} HD DC %{spellDifficultyClass.B+5} Will neg) for conc or $L rd"',
   'Gallant Inspiration':
     'School=Divination ' +
     'Level=B2 ' +
