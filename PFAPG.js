@@ -5855,7 +5855,7 @@ PFAPG.SPELLS = {
   'Absorbing Touch':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
-    'Description="Self hand absorbs %{lvl} lb object (Fort neg) for %{lvl} dy"',
+    'Description="Self hand absorbs touched %{lvl} lb object (Fort neg) for %{lvl} dy"',
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,W2 ' +
@@ -5879,7 +5879,7 @@ PFAPG.SPELLS = {
   'Amplify Elixir':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
-    'Description="Effects of potions consumed by self increased by 1/2 for %{lvl} rd"',
+    'Description="Variable effects of potions and elixirs consumed by self increase by 1/2 (dbl duration if no variable effects) for %{lvl} rd"',
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,O1,R1,W1,Summoner1 ' +
@@ -5955,11 +5955,11 @@ PFAPG.SPELLS = {
   'Blood Biography':
     'School=Divination ' +
     'Level=B2,C3,Inquisitor3,O3,W3 ' +
-    'Description="Touched blood identifies name and type of creature it came from and when and how it was shed (Will neg)"',
+    'Description="Target blood identifies name and type of creature it came from and when and how it was shed (Will neg)"',
   'Bloodhound':
     'School=Transmutation ' +
     'Level=Alchemist3,Inquisitor2,R2 ' +
-    'Description="Self gains Scent features, +8 Perception (smell), +4 Survival (track via scent), -4 save vs. odor, and DC 20 Perception to detect poison via smell for %{lvl} hr"',
+    'Description="Self gains Scent features, +8 Perception (smell), +4 Survival (track via scent), -4 save vs. odor, and DC 20 Perception to detect poison via scent for %{lvl} hr"',
   'Bloody Claws':
     'School=Necromancy ' +
     'Level=D4,R3 ' +
@@ -6111,7 +6111,7 @@ PFAPG.SPELLS = {
   'Dancing Lantern':
     'School=Transmutation ' +
     'Level=B1,C1,O1,R1,W1,Witch1 ' +
-    'Description="Touched lantern follows 5\' behind self for %{lvl} hr"',
+    'Description="Touched lantern lights magically and follows 5\' behind self for %{lvl} hr"',
   'Deadly Finale':
     'School=Evocation ' +
     'Level=B6 ' +
@@ -6143,7 +6143,7 @@ PFAPG.SPELLS = {
   'Detonate':
     'School=Evocation ' +
     'Level=Alchemist4,W4 ' +
-    'Description="15\'/30\' radius inflicts %{lvl}d8 HP/half chosen energy type (Ref half); self suffers half HP"',
+    'Description="15\'/30\' radius inflicts %{lvl}d8 HP/half chosen energy type (Ref half) in next rd; self suffers half HP"',
   'Devolution':
     'School=Transmutation ' +
     'Level=W3,Summoner3 ' +
@@ -6187,7 +6187,7 @@ PFAPG.SPELLS = {
   'Elemental Touch':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
-    'Description="Touch inflicts 1d6 HP chosen energy, plus energy effects, for %{lvl} rd"',
+    'Description="Touch inflicts 1d6 HP chosen energy, plus energy-specific effects, for %{lvl} rd"',
   'Elude Time':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
@@ -6199,7 +6199,7 @@ PFAPG.SPELLS = {
   'Enter Image':
     'School=Transmutation ' +
     'Level=B2,C3,O3,W3 ' +
-    'Description="R%{lvl*50}\' Self can interact via image of self for conc"',
+    'Description="R%{lvl*50}\' Self can inhabit and interact from images of self w/in range for conc"',
   'Euphoric Tranquility':
     'School=Enchantment ' +
     'Level=B6,C8,D8,Love8,O8,W8 ' +
@@ -6231,11 +6231,11 @@ PFAPG.SPELLS = {
   'Feather Step':
     'School=Transmutation ' +
     'Level=B1,D1,R1 ' +
-    'Description="R$RS\' Target ignores difficult terrain for %{lvl*10} min"',
+    'Description="R$RS\' Target treats difficult terrain as normal terrain for %{lvl*10} min"',
   'Mass Feather Step':
     'School=Transmutation ' +
     'Level=B3,D3,R3 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius ignore difficult terrain for %{lvl*10} min"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius treat difficult terrain as normal terrain for %{lvl*10} min"',
   'Fester':
     'School=Necromancy ' +
     'Level=Inquisitor3,Witch2 ' +
@@ -6303,7 +6303,7 @@ PFAPG.SPELLS = {
   "Fool's Forbiddance":
     'School=Abjuration ' +
     'Level=B6 ' +
-    'Description="10\' radius inflicts confusion on creatures (Will staggered) while in radius +1 rd for conc"',
+    'Description="10\' radius inflicts confusion on foes (Will staggered) while in radius +1 rd for conc"',
   'Forced Repentance':
     'School=Enchantment ' +
     'Level=Inquisitor4,P4 ' +
@@ -6359,7 +6359,7 @@ PFAPG.SPELLS = {
   'Heroic Finale':
     'School=Enchantment ' +
     'Level=B4 ' +
-    'Description="R$RS\' End of Bardic Performance allows target move or action"',
+    'Description="R$RS\' End of Bardic Performance allows target immediate move or standard action"',
   'Hidden Speech':
     'School=Transmutation ' +
     'Level=B2,Inquisitor3,Witch2 ' +
@@ -6375,7 +6375,7 @@ PFAPG.SPELLS = {
   'Honeyed Tongue':
     'School=Transmutation ' +
     'Level=B2,Inquisitor2,P1 ' +
-    'Description="Self gains best of two Diplomacy rolls to change attitude, +5 Diplomacy to gather information for %{lvl*10} min"',
+    'Description="Self gains best of two Diplomacy rolls to change attitude for %{lvl*10} min or +5 on next Diplomacy roll to gather information"',
   'Hungry Pit':
     'School=Conjuration ' +
     'Level=Caves6,W5,Summoner5 ' +
@@ -6423,7 +6423,7 @@ PFAPG.SPELLS = {
   "Jester's Jaunt":
     'School=Conjuration ' +
     'Level=B3 ' +
-    'Description="Touched teleported 30\' to safe spot (Will neg)"',
+    'Description="Touched teleported up to 30\' to safe spot (Will neg)"',
   'Keen Senses':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
@@ -6487,7 +6487,7 @@ PFAPG.SPELLS = {
   'Negate Aroma':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
-    'Description="R$RS\' Target loses odor (Fort neg) for %{lvl} hr"',
+    'Description="R$RS\' Target loses all odors (Fort neg) for %{lvl} hr"',
   'Oath Of Peace':
     'School=Abjuration ' +
     'Level=P4 ' +
@@ -6519,7 +6519,7 @@ PFAPG.SPELLS = {
   'Phantasmal Web':
     'School=Illusion ' +
     'Level=B5,Insanity6,W5 ' +
-    'Description="R$RM\' %{lvl} targets in 15\' radius suffer entanglement and nauseated (Will neg; Fort each rd neg nauseated) for %{lvl} rd"',
+    'Description="R$RM\' %{lvl} targets in 15\' radius suffer entanglement (Will neg) and nauseated (Fort each rd neg) for %{lvl} rd"',
   'Pied Piping':
     'School=Enchantment ' +
     'Level=B6 ' +
@@ -6531,11 +6531,11 @@ PFAPG.SPELLS = {
   'Planar Adaptation':
     'School=Transmutation ' +
     'Level=Alchemist5,C4,O4,W5,Summoner5 ' +
-    'Description="Self gains immunity to chosen planar harm and 20 energy resistance for %{lvl} hr"',
+    'Description="Self gains immunity to environmental harm from chosen plane and 20 resistance to an associated energy for %{lvl} hr"',
   'Mass Planar Adaptation':
     'School=Transmutation ' +
     'Level=W7,Summoner6 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius gain immunity to chosen planar harm and 20 energy resistance for %{lvl} hr"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius gain immunity to environmental harm from chosen plan and 20 resistance to an associated energy for %{lvl} hr"',
   'Pox Pustules':
     'School=Necromancy ' +
     'Level=D2,W2,Witch2 ' +
@@ -6547,7 +6547,7 @@ PFAPG.SPELLS = {
   'Purging Finale':
     'School=Conjuration ' +
     'Level=B3 ' +
-    'Description="R$RS\' End of Bardic Performance allows removing condition from target"',
+    'Description="R$RS\' End of Bardic Performance removes chosen condition from target"',
   'Purified Calling':
     'School=Conjuration ' +
     'Level=Summoner4 ' +
@@ -6599,7 +6599,7 @@ PFAPG.SPELLS = {
   'Resurgent Transformation':
     'School=Conjuration ' +
     'Level=Alchemist5 ' +
-    'Description="If taken to 1/4 HP w/in %{lvl} hr, self suffers 1d4 Intelligence and Wisdom damage, regains 4d8+%{lvl<?25} HP, and gains +4 Constitution, +4 Strength, DR 5/-, and Haste effects for %{lvl} rd, then suffers exhausted and 1d4 points Constitution damage"',
+    'Description="If reduced to %{hitPoints//4} HP w/in %{lvl} hr, self suffers 1d4 Intelligence and Wisdom damage, regains 4d8+%{lvl<?25} HP (25 HP maximum), and gains +4 Constitution, +4 Strength, DR 5/-, and Haste effects for %{lvl} rd, then suffers exhausted and 1d4 points Constitution damage"',
   'Retribution':
     'School=Necromancy ' +
     'Level=Inquisitor3 ' +
@@ -6607,7 +6607,7 @@ PFAPG.SPELLS = {
   'Reviving Finale':
     'School=Conjuration ' +
     'Level=B3 ' +
-    'Description="R$RS\' End of Bardic Performance causes 20\' radius to restore 2d6 HP to allies"',
+    'Description="End of Bardic Performance causes 20\' radius to restore 2d6 HP to allies"',
   'Righteous Vigor':
     'School=Enchantment ' +
     'Level=Inquisitor3,P2 ' +
@@ -6679,7 +6679,7 @@ PFAPG.SPELLS = {
   'Sift':
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
-    'Description="R30\' Self makes -5 Perception to note hidden details at range"',
+    'Description="R30\' Self makes -5 Perception to note fine details at range"',
   'Sirocco':
     'School=Evocation ' +
     'Level=D6,O6,Storms6,W6 ' + // Oracle Wind
@@ -6703,7 +6703,7 @@ PFAPG.SPELLS = {
   'Spark':
     'School=Evocation ' +
     'Level=ArcaneTalent0,B0,C0,D0,O0,W0,Witch0 ' +
-    'Description="R$RS\' Lights size fine flammable object (Fort neg)"',
+    'Description="R$RS\' Burns unattended Fine flammable object (Fort neg)"',
   'Spiked Pit':
     'School=Conjuration ' +
     'Level=Caves3,W3,Summoner3 ' +
@@ -6727,7 +6727,7 @@ PFAPG.SPELLS = {
   'Stone Fist':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1 ' +
-    'Description="Self unarmed attacks inflict 1d%{features.Small ? 4 : 6}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier < 0 ? strengthModifier : \'\'} HP bludgeoning w/out provoking AOO for %{lvl} min"',
+    'Description="Self unarmed attacks inflict 1d%{features.Small ? 4 : 6}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier < 0 ? strengthModifier : \'\'} HP bludgeoning w/out provoking AOO and ignore object hardness up to 7 for %{lvl} min"',
   'Stormbolts':
     'School=Evocation ' +
     'Level=C8,D8,O8,W8,Witch8 ' +
@@ -6763,7 +6763,7 @@ PFAPG.SPELLS = {
   'Thorn Body':
     'School=Transmutation ' +
     'Level=Alchemist3,D4 ' +
-    'Description="Melee hits on self inflict 1d6+%{lvl<?15} HP piercing on attacker, grapple 2d6+%{lvl<?15} HP, self unarmed attack +1d6 HP for %{lvl} rd"',
+    'Description="Foe melee hits inflict on attacker 1d6+%{lvl<?15} HP piercing, grapple 2d6+%{lvl<?15} HP, and self unarmed attack +1d6 HP for %{lvl} rd"',
   'Threefold Aspect':
     'School=Transmutation ' +
     'Level=D5,Witch4 ' +
@@ -6775,7 +6775,7 @@ PFAPG.SPELLS = {
   'Timely Inspiration':
     'School=Divination ' +
     'Level=B1 ' +
-    'Description="R$RS\' Target gains +%{lvl//5<?3} on failed attack or skill roll"',
+    'Description="R$RS\' Target retroactively gains +%{lvl//5<?3} on failed attack or skill roll"',
   'Tireless Pursuers':
     'School=Transmutation ' +
     'Level=Inquisitor4,R3 ' +
@@ -6787,11 +6787,11 @@ PFAPG.SPELLS = {
   'Touch Of Gracelessness':
     'School=Transmutation ' +
     'Level=B1,W1 ' +
-    'Description="Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone if moving more than half speed, and flying maneuverability reduced one step (Fort half Dexterity damage only) for %{lvl} rd"',
+    'Description="Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone by moving more than half speed, and flying maneuverability reduced one step (Fort half Dexterity damage only) for %{lvl} rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,O1,W1 ' + // Oracle Waves
-    'Description="Touched gains +30\' swim speed and +8 Swim for %{lvl} min"',
+    'Description="Touched gains +30\' swim speed and +8 Swim, plus may use run action and may always take 10 while swimming, for %{lvl} min"',
   'Transmogrify':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
@@ -6799,7 +6799,7 @@ PFAPG.SPELLS = {
   'Transmute Potion To Poison':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
-    'Description="Self transforms 1 potion to poison for %{lvl} min"',
+    'Description="Self may use any potion to poison a weapon for %{lvl} min"',
   'Treasure Stitching':
     'School=Transmutation ' +
     'Level=B4,C4,O4,W5 ' +
@@ -6831,11 +6831,11 @@ PFAPG.SPELLS = {
   'Unwilling Shield':
     'School=Necromancy ' +
     'Level=B5,Inquisitor5,W6,Witch6 ' +
-    'Description="R$RS\' Self gains half damage and +1 AC and saves, target suffers half of self damage (Will neg) for %{lvl} rd"',
+    'Description="R$RS\' Self gains half damage and +1 AC and saves, target suffers half of damage to self (Will neg) for %{lvl} rd"',
   'Unwitting Ally':
     'School=Enchantment ' +
     'Level=B0 ' +
-    'Description="R$RS\' Target counts as self ally for flanking (Will neg) for 1 rd"',
+    'Description="R$RS\' Self counts target as ally for flanking (Will neg), foes do not, for 1 rd"',
   'Vanish':
     'School=Illusion ' +
     'Level=B1,W1 ' +
@@ -6851,11 +6851,11 @@ PFAPG.SPELLS = {
   'Versatile Weapon':
     'School=Transmutation ' +
     'Level=B2,R2,W3 ' +
-    'Description="R$RS\' Target weapon bypasses DR from choice of bludgeoning, cold iron, piercing, silver, or slashing for %{lvl} min"',
+    'Description="R$RS\' Target weapon bypasses DR of choice of bludgeoning, cold iron, piercing, silver, or slashing for %{lvl} min"',
   'Vomit Swarm':
     'School=Conjuration ' +
     'Level=Alchemist2,Witch2 ' +
-    'Description="Self moves insect swarm that attacks all creatures for %{lvl} rd"',
+    'Description="Self moves insect swarm that attacks all other creatures for %{lvl} rd"',
   'Vortex':
     'School=Evocation ' +
     'Level=D7,O7,W7,Witch7 ' + // Oracle Waves, Witch Elements
@@ -6875,7 +6875,7 @@ PFAPG.SPELLS = {
   'Wandering Star Motes':
     'School=Illusion ' +
     'Level=B4,W4,Witch4 ' +
-    'Description="R$RS\' Target loses any concealment and suffers dazed (Will neg and transfers 30\' to nearest foe) for %{lvl} rd"',
+    'Description="R$RS\' Target loses any concealment and suffers dazed (Will ends and transfers 30\' to nearest foe) for %{lvl} rd"',
   'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
