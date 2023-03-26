@@ -5859,7 +5859,7 @@ PFAPG.SPELLS = {
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,W2 ' +
-    'Description="Poison affecting touched takes effect immediately or inflicts dbl damage for half duration"',
+    'Description="Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration"',
   'Acid Pit':
     'School=Conjuration ' +
     'Level=W4,Summoner4 ' +
@@ -5887,7 +5887,7 @@ PFAPG.SPELLS = {
   'Aqueous Orb':
     'School=Conjuration ' +
     'Level=Aquatic3,D3,W3,Summoner3 ' +
-    'Description="R$RM\' 10\' diameter sphere douses fires, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), moves 30\'/rd and rolls over 10\' obstacles for %{lvl} rd"',
+    'Description="R$RM\' 10\' diameter sphere douses normal fires and acts as <i>Dispel Magic</i> on magical ones, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), moves 30\'/rd and rolls over 10\' obstacles for %{lvl} rd"',
   'Arcane Concordance':
     'School=Evocation ' +
     'Level=B3 ' +
@@ -5903,11 +5903,11 @@ PFAPG.SPELLS = {
   'Aspect Of The Falcon':
     'School=Transmutation ' +
     'Level=D1,R1 ' +
-    'Description="Self gains +3 Perception, +1 ranged attack, and ranged crit of 19-20/x3 for %{lvl} min"',
+    'Description="Self gains +3 Perception, +1 ranged attack, and crit of 19-20/x3 w/bows and crossbows for %{lvl} min"',
   'Aspect Of The Stag':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
-    'Description="Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+%{baseAttack+(strengthModifier>?dexterityModifier)} 1d%{features.Small ? 8 : 6}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier<0 ? strengthModifier : \'\'} HP piercing x2@19) after successful foe AOO for %{lvl} min"',
+    'Description="Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+%{baseAttack+(strengthModifier>?dexterityModifier)} 1d%{features.Small ? 6 : 8}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier<0 ? strengthModifier : \'\'} HP piercing 19-20/x2) after successful foe AOO for %{lvl} min"',
   'Aspect Of The Wolf':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
@@ -5919,7 +5919,7 @@ PFAPG.SPELLS = {
   'Ball Lightning':
     'School=Evocation ' +
     'Level=D4,W4 ' +
-    'Description="R$RM\' %{(lvl+1)//4} 5\' spheres move 20\'/rd, inflict 3d6 HP electricity (Ref neg; -4 in metal armor) in same square for %{lvl} rd"',
+    'Description="R$RM\' %{(lvl+1)//4} 5\' spheres fly 20\'/rd, inflict 3d6 HP electricity (Ref neg; -4 in metal armor) in same square for %{lvl} rd"',
   'Banish Seeming':
     'School=Abjuration ' +
     'Level=Inquisitor3,Witch5 ' +
@@ -5943,11 +5943,11 @@ PFAPG.SPELLS = {
   'Blessing Of Courage and Life':
     'School=Conjuration ' +
     'Level=C2,O2,P2 ' +
-    'Description="R$RS\' Target gains +2 save vs. fear and death for %{lvl} min; may end to regain 1d8+%{lvl<?10} HP"',
+    'Description="R$RS\' Target gains +2 save vs. fear and death for %{lvl} min; target may end to regain 1d8+%{lvl<?10} HP"',
   'Blessing Of Fervor':
     'School=Transmutation ' +
     'Level=C4,O4 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius gain choice each rd from: +30 Speed; stand as swift action w/out provoking AOO; extra attack as part of full-attack action; +2 attack, damage, and Reflex; or use metamagic for free w/spell up to level 2 for %{lvl} rd"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius gain choice each rd from: +30 Speed; stand as swift action w/out provoking AOO; extra attack as part of full-attack action; +2 attack, AC, and Reflex; or use metamagic for free w/spell up to level 2 for %{lvl} rd"',
   'Blessing Of The Salamander':
     'School=Transmutation ' +
     'Level=D5,R4 ' +
@@ -5963,7 +5963,7 @@ PFAPG.SPELLS = {
   'Bloody Claws':
     'School=Necromancy ' +
     'Level=D4,R3 ' +
-    'Description="Touched inflicts +%{lvl//2} HP bleed w/natural attack for %{lvl} min"',
+    'Description="Touched inflicts +%{lvl//2} HP bleed w/natural slashing or piercing attack for %{lvl} min"',
   "Bomber's Eye":
     'School=Transmutation ' +
     'Level=Alchemist1 ' +
@@ -6003,7 +6003,7 @@ PFAPG.SPELLS = {
   'Burning Gaze':
     'School=Evocation ' +
     'Level=D2,W2,Witch2 ' +
-    'Description="R30\' Inflicts 1d6 HP fire/rd on target (Ref ends) for %{lvl} rd"',
+    'Description="R30\' Self inflicts 1d6 HP fire/rd on chosen target (Ref ends) each rd for %{lvl} rd"',
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
@@ -6023,7 +6023,7 @@ PFAPG.SPELLS = {
   'Call Animal':
     'School=Enchantment ' +
     'Level=D1,R1 ' +
-    'Description="Nearest wild animal of chosen type moves toward self for %{lvl} hr"',
+    'Description="Nearest wild animal of chosen type (CR %{lvl} max) moves toward self for %{lvl} hr"',
   'Campfire Wall':
     'School=Evocation ' +
     'Level=B3,D2,R2,W3 ' +
@@ -6063,7 +6063,7 @@ PFAPG.SPELLS = {
   'Cloak Of Shade':
     'School=Abjuration ' +
     'Level=D1,R1 ' +
-    'Description="%{lvl} touched treat sunlight as 1 level less severe and reduce penalties from sunlight by 1 for %{lvl} hr"',
+    'Description="%{lvl} touched treat heat from sunlight as 1 level less severe and reduce penalties from sunlight by 1 for %{lvl} hr"',
   'Cloak Of Winds':
     'School=Abjuration ' +
     'Level=D3,O3,R3,W3 ' + // Oracle Wind
@@ -6219,7 +6219,7 @@ PFAPG.SPELLS = {
   'Expeditious Excavation':
     'School=Transmutation ' +
     'Level=Deep1,D1,W1 ' +
-    'Description="R$RS\' Moves 5\' cu of dirt; creatures on top fall in pit (Ref neg)"',
+    'Description="R$RS\' Moves 5\' cu of dirt; creatures on top fall into pit (Ref neg)"',
   'Expend':
     'School=Abjuration ' +
     'Level=W7 ' +
@@ -6227,7 +6227,7 @@ PFAPG.SPELLS = {
   'Feast Of Ashes':
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
-    'Description="R$RS\' Target suffers starvation, eating causes 1 rd nausea (DC 12 Fort neg) for %{lvl*2} dy"',
+    'Description="R$RS\' Target suffers starvation (Fort neg) and eating causes 1 rd nausea (DC 12 Fort neg) for %{lvl*2} dy"',
   'Feather Step':
     'School=Transmutation ' +
     'Level=B1,D1,R1 ' +
@@ -6323,7 +6323,7 @@ PFAPG.SPELLS = {
   'Geyser':
     'School=Conjuration ' +
     'Level=Aquatic4,D4,O5,W5,Witch5 ' + // Oracle Waves, Witch Water
-    'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), then 1d6 HP fire in %{lvl*2.5//1}\' radius for conc + 1 rd"',
+    'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), and surrounding %{lvl*2.5//1}\' radius inflicts 1d6 HP fire, for conc + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
     'Level=B2,C2,Inquisitor2,O2,P1 ' +
@@ -6367,7 +6367,7 @@ PFAPG.SPELLS = {
   'Hide Campsite':
     'School=Illusion ' +
     'Level=D3,R2 ' +
-    'Description="R$RS\' 20\' cu covers camp activity (Will neg on entry) for %{lvl*2} hr"',
+    'Description="R$RS\' 20\' cu covers camp activity (Will neg on interaction) for %{lvl*2} hr"',
   'Holy Whisper':
     'School=Evocation ' +
     'Level=P3 ' +
@@ -6391,7 +6391,7 @@ PFAPG.SPELLS = {
   'Hydraulic Push':
     'School=Evocation ' +
     'Level=Aquatic1,D1,W1 ' +
-    'Description="R$RS\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes normal fires up to 5\' sq"',
+    'Description="R$RS\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes normal fire up to 5\' sq"',
   'Hydraulic Torrent':
     'School=Evocation ' +
     'Level=D3,W3 ' +
@@ -6451,11 +6451,11 @@ PFAPG.SPELLS = {
   'Lily Pad Stride':
     'School=Transmutation ' +
     'Level=D3 ' +
-    'Description="R$RL\' Self moves across liquid and others can follow w/DC 10 (half speed) or DC 15 (full speed) Acrobatics for %{lvl*10} min"',
+    'Description="R$RL\' Self moves across liquid and others can follow w/DC 10 Acrobatics (half speed; full speed inflicts -5 Acrobatics) for %{lvl*10} min"',
   'Lockjaw':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
-    'Description="Touched gains +4 CMB to grapple w/natural weapon for %{lvl} rd"',
+    'Description="Touched gains +4 CMB to grapple w/out provoking AOO after hit w/natural weapon for %{lvl} rd"',
   'Marks Of Forbiddance':
     'School=Abjuration ' +
     'Level=P3 ' +
@@ -6479,7 +6479,7 @@ PFAPG.SPELLS = {
   'Natural Rhythm':
     'School=Transmutation ' +
     'Level=D2 ' +
-    'Description="Touched gains +1 cumulative damage on natural attacks (max +5, miss resets to +0) for %{lvl} rd"',
+    'Description="Touched gains +1 cumulative damage using natural attacks (max +5, miss resets to +0) for %{lvl} rd"',
   "Nature's Exile":
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
@@ -6563,7 +6563,7 @@ PFAPG.SPELLS = {
   'Rampart':
     'School=Conjuration ' +
     'Level=D7,W7 ' +
-    'Description="R$RM\' Creates 5\'x10\'x%{lvl//2*10}\' linear or %{3+lvl}\' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)"',
+    'Description="R$RM\' Creates 5\'x10\'x%{lvl//2*10}\' linear or 5\'x%{3+lvl}\' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)"',
   'Rebuke':
     'School=Evocation ' +
     'Level=Inquisitor4 ' +
@@ -6651,7 +6651,7 @@ PFAPG.SPELLS = {
   'Seamantle':
     'School=Conjuration ' +
     'Level=Aquatic8,D8,O8,W8,Witch8 ' + // Oracle Waves, Witch Water
-    'Description="30\' water column gives self +8 AC, +4 Reflex, 30\' slam attack, and touch that extinguishes fires for %{lvl} min"',
+    'Description="30\' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30\' slam attack, and touch that extinguishes fires for %{lvl} min"',
   'Seek Thoughts':
     'School=Divination ' +
     'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,W3,Witch3 ' +
@@ -6675,7 +6675,7 @@ PFAPG.SPELLS = {
   'Shifting Sand':
     'School=Transmutation ' +
     'Level=D3,Deep3,W3 ' +
-    'Description="R$RM\' 10\' radius earth or sand moves 10\'/rd, creates difficult terrain, inflicts -%{lvl} Acrobatics, entangles, and knocks prone (Ref neg) for %{lvl} rd"',
+    'Description="R$RM\' 10\' radius earth or sand moves 10\'/rd, creates difficult terrain, inflicts -%{lvl} Acrobatics, and entangles and knocks prone (Ref neg) for %{lvl} rd"',
   'Sift':
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
@@ -6683,7 +6683,7 @@ PFAPG.SPELLS = {
   'Sirocco':
     'School=Evocation ' +
     'Level=D6,O6,Storms6,W6 ' + // Oracle Wind
-    'Description="R$RM\' 60\' high, 20\' radius inflicts 4d6+%{lvl} HP fire, fatigues, and knocks prone (Fort half HP only; flying creatures DC 15 Fly to avoid) for %{lvl} rd"',
+    'Description="R$RM\' 60\' high, 20\' radius inflicts 4d6+%{lvl} HP fire, fatigues, and knocks prone (Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for %{lvl} rd"',
   'Sleepwalk':
     'School=Enchantment ' +
     'Level=Inquisitor4,Witch4 ' +
@@ -6695,7 +6695,7 @@ PFAPG.SPELLS = {
   'Snake Staff':
     'School=Transmutation ' +
     'Level=C5,D5,O5 ' +
-    'Description="R$RM\' Transforms up to %{lvl} sticks in 15\' radius into snakes under self control for %{lvl} rd"',
+    'Description="R$RM\' Transforms up to %{lvl} sticks in 15\' radius into telepathically controlled snakes for %{lvl} rd"',
   'Solid Note':
     'School=Conjuration ' +
     'Level=B1 ' +
@@ -6723,7 +6723,7 @@ PFAPG.SPELLS = {
   'Stone Call':
     'School=Conjuration ' +
     'Level=D2,O2,R2,W2 ' + // Oracle Stone
-    'Description="R$RM\' 40\' radius inflicts 2d6 HP bludgeoning for 1 rd, difficult terrain for %{lvl-1} rd"',
+    'Description="R$RM\' 40\' radius inflicts 2d6 HP bludgeoning for 1 rd, then difficult terrain for %{lvl-1} rd"',
   'Stone Fist':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,W1 ' +
@@ -6807,11 +6807,11 @@ PFAPG.SPELLS = {
   'True Form':
     'School=Abjuration ' +
     'Level=D4,W4 ' +
-    'Description="R$RM\' Removes polymorph effects from %{lvl//3} targets in 15\' radius (Will neg for ability, DC 11+effect level for spells) for %{lvl} rd"',
+    'Description="R$RM\' Removes polymorph effects from %{lvl//3} targets in 15\' radius (Will neg for polymorph ability, DC 11+effect level for polymorph spell) for %{lvl} rd"',
   'Tsunami':
     'School=Conjuration ' +
     'Level=D9,O9,Oceans9,W9,Witch9 ' + // Oracle Waves, Witch Water
-    'Description="R$RL\' 10\'x10\'x%{lvl*2}\' wave moves 60\'/rd (water) or 30\'/rd (land), inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
+    'Description="R$RL\' 10\'x10\'x%{lvl*2}\' wave moves 30\'/60\'/rd over land/water, inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
   'Twilight Knife':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
@@ -6859,7 +6859,7 @@ PFAPG.SPELLS = {
   'Vortex':
     'School=Evocation ' +
     'Level=D7,O7,W7,Witch7 ' + // Oracle Waves, Witch Elements
-    'Description="R$RL\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (Ref neg) for %{lvl-1} rd"',
+    'Description="R$RL\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (Ref neg) for %{lvl-1} rd; self may eject creatures from vortex"',
   'Wake Of Light':
     'School=Evocation ' +
     'Level=P2 ' +
@@ -6885,13 +6885,13 @@ PFAPG.SPELLS = {
     'Level=C2,Inquisitor2,O2,P2 ' +
     'Description="Touched weapon or unarmed strike gains +2 damage and crit inflicts 1 rd shaken for %{lvl} min"',
   'Winds Of Vengeance':
-    'School=Transmutation ' +
+    'School=Evocation ' +
     'Level=C9,D9,O9,W9,Winds9 ' +
     'Description="Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for %{lvl} min"',
   'World Wave':
     'School=Transmutation ' +
     'Level=Aquatic9,D9,Exploration9,O9,W9 ' + // Oracle Nature
-    'Description="Self rides 20\'x10\' natural terrain oval that forms 30\' wave for %{lvl} rd or 5\' swell for %{lvl} hr, moves %{speed*8}\'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning (wave) to non-natural objects (constructs and undead suffer dbl)"',
+    'Description="Self rides 20\'x10\' natural terrain oval that forms 30\' wave for %{lvl} rd or 5\' swell for %{lvl} hr, moves %{speed*8}\'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects (constructs and undead suffer dbl HP)"',
   'Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor1 ' +
@@ -6899,7 +6899,7 @@ PFAPG.SPELLS = {
   'Wrathful Mantle':
     'School=Evocation ' +
     'Level=C3,O3,P3 ' +
-    'Description="Touched gains +%{lvl//4<?5} saves for %{lvl} min; dismissal inflicts 2d8 HP force to creatures in 5\' radius"'
+    'Description="Touched gains +%{lvl//4<?5} saves for %{lvl} min; target may dismiss to inflict 2d8 HP force to creatures in 5\' radius"'
 
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
