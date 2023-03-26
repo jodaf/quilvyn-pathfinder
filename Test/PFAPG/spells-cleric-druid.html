@@ -44,7 +44,7 @@ var attributes = {
   "spells.Spiritual Ally(C4 Evoc)":1, "spells.Stone Call(D2 Conj)":1, "spells.Stormbolts(C8 Evoc)":1, 
   "spells.Strong Jaw(D4 Tran)":1, "spells.Swarm Skin(D6 Tran)":1, "spells.Threefold Aspect(D5 Tran)":1, 
   "spells.True Form(D4 Abju)":1, "spells.Tsunami(D9 Conj)":1, "spells.Vortex(D7 Evoc)":1, 
-  "spells.Wall Of Lava(D8 Conj)":1, "spells.Weapon Of Awe(C2 Tran)":1, "spells.Winds Of Vengeance(C9 Tran)":1, 
+  "spells.Wall Of Lava(D8 Conj)":1, "spells.Weapon Of Awe(C2 Tran)":1, "spells.Winds Of Vengeance(C9 Evoc)":1, 
   "spells.World Wave(D9 Tran)":1, "spells.Wrathful Mantle(C3 Evoc)":1, "strength":6, 
   "traits.Mathematical Prodigy":1, "traits.Scholar Of The Great Beyond":1, "weapons.Bardiche":1, 
   "weapons.Light Hammer":1, "weapons.Spiked Armor":1, "wisdom":11
@@ -287,39 +287,39 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts dbl damage for half duration</td>
+      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration</td>
     </tr><tr style="text-align:left">
-      <td>Aqueous Orb (D3 Conj): R200' 10' diameter sphere douses fires, inflicts 2d6 HP nonlethal (DC 13 Ref neg) and engulfs (DC 13 Ref neg), moves 30'/rd and rolls over 10' obstacles for 10 rd</td>
+      <td>Aqueous Orb (D3 Conj): R200' 10' diameter sphere douses normal fires and acts as <i>Dispel Magic</i> on magical ones, inflicts 2d6 HP nonlethal (DC 13 Ref neg) and engulfs (DC 13 Ref neg), moves 30'/rd and rolls over 10' obstacles for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Aspect Of The Bear (D2 Tran): Self gains +2 AC and CMB, does not provoke AOO on bull rush, grapple, and overrun for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Falcon (D1 Tran): Self gains +3 Perception, +1 ranged attack, and ranged crit of 19-20/x3 for 10 min</td>
+      <td>Aspect Of The Falcon (D1 Tran): Self gains +3 Perception, +1 ranged attack, and crit of 19-20/x3 w/bows and crossbows for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Stag (D4 Tran): Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+14 1d6-2 HP piercing x2@19) after successful foe AOO for 10 min</td>
+      <td>Aspect Of The Stag (D4 Tran): Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+14 1d8-2 HP piercing 19-20/x2) after successful foe AOO for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Aspect Of The Wolf (D5 Tran): Self gains +4 Strength and Dexterity, Scent feature, +2 trip attack, and swift trip w/out provoking AOO for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Ball Lightning (D4 Evoc): R200' 2 5' spheres move 20'/rd, inflict 3d6 HP electricity (DC 14 Ref neg; -4 in metal armor) in same square for 10 rd</td>
+      <td>Ball Lightning (D4 Evoc): R200' 2 5' spheres fly 20'/rd, inflict 3d6 HP electricity (DC 14 Ref neg; -4 in metal armor) in same square for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Blessing Of Courage and Life (C2 Conj): R50' Target gains +2 save vs. fear and death for 10 min; may end to regain 1d8+10 HP</td>
+      <td>Blessing Of Courage and Life (C2 Conj): R50' Target gains +2 save vs. fear and death for 10 min; target may end to regain 1d8+10 HP</td>
     </tr><tr style="text-align:left">
-      <td>Blessing Of Fervor (C4 Tran): R50' 10 targets in 15' radius gain choice each rd from: +30 Speed; stand as swift action w/out provoking AOO; extra attack as part of full-attack action; +2 attack, damage, and Reflex; or use metamagic for free w/spell up to level 2 for 10 rd</td>
+      <td>Blessing Of Fervor (C4 Tran): R50' 10 targets in 15' radius gain choice each rd from: +30 Speed; stand as swift action w/out provoking AOO; extra attack as part of full-attack action; +2 attack, AC, and Reflex; or use metamagic for free w/spell up to level 2 for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Blessing Of The Salamander (D5 Tran): Touched gains fast healing 5, fire resistance 20, and +2 CMD for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Bloody Claws (D4 Necr): Touched inflicts +5 HP bleed w/natural attack for 10 min</td>
+      <td>Bloody Claws (D4 Necr): Touched inflicts +5 HP bleed w/natural slashing or piercing attack for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Bristle (D1 Tran): Touched may trade up to 3 natural armor bonus for equal damage bonus each rd for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Burning Gaze (D2 Evoc): R30' Inflicts 1d6 HP fire/rd on target (DC 12 Ref ends) for 10 rd</td>
+      <td>Burning Gaze (D2 Evoc): R30' Self inflicts 1d6 HP fire/rd on chosen target (DC 12 Ref ends) each rd for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Call Animal (D1 Ench): Nearest wild animal of chosen type moves toward self for 10 hr</td>
+      <td>Call Animal (D1 Ench): Nearest wild animal of chosen type (CR 10 max) moves toward self for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Clashing Rocks (D9 Conj): R800' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (DC 19 Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (DC 19 Ref half HP only)</td>
     </tr><tr style="text-align:left">
       <td>Cleanse (C5 Evoc): Self regains 4d8+10 HP, recovers from ability damage and conditions, and breaks one enchantment</td>
     </tr><tr style="text-align:left">
-      <td>Cloak Of Shade (D1 Abju): 10 touched treat sunlight as 1 level less severe and reduce penalties from sunlight by 1 for 10 hr</td>
+      <td>Cloak Of Shade (D1 Abju): 10 touched treat heat from sunlight as 1 level less severe and reduce penalties from sunlight by 1 for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Cloak Of Winds (D3 Abju): R50' Foes of target suffer -4 ranged attacks; Tiny foes cannot touch target, are pushed 50', and suffer 3d6 HP nonlethal (DC 13 Fort neg) for 10 min</td>
     </tr><tr style="text-align:left">
@@ -329,13 +329,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Eagle Eye (D2 Divi): R800' Self can view from higher point for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Expeditious Excavation (D1 Tran): R50' Moves 5' cu of dirt; creatures on top fall in pit (DC 11 Ref neg)</td>
+      <td>Expeditious Excavation (D1 Tran): R50' Moves 5' cu of dirt; creatures on top fall into pit (DC 11 Ref neg)</td>
     </tr><tr style="text-align:left">
-      <td>Feast Of Ashes (D2 Tran): R50' Target suffers starvation, eating causes 1 rd nausea (DC 12 Fort neg) for 20 dy</td>
+      <td>Feast Of Ashes (D2 Tran): R50' Target suffers starvation (DC 12 Fort neg) and eating causes 1 rd nausea (DC 12 Fort neg) for 20 dy</td>
     </tr><tr style="text-align:left">
       <td>Fire Snake (D5 Evoc): Adjacent 10 contiguous 5' sq w/in 60' inflict 10d6 HP fire (DC 15 Ref half)</td>
     </tr><tr style="text-align:left">
-      <td>Geyser (D4 Conj): R800' 5' sq inflicts 3d6 HP fire and 5d6 falling (DC 14 Ref half fire only), then 1d6 HP fire in 25' radius for conc + 1 rd</td>
+      <td>Geyser (D4 Conj): R800' 5' sq inflicts 3d6 HP fire and 5d6 falling (DC 14 Ref half fire only), and surrounding 25' radius inflicts 1d6 HP fire, for conc + 1 rd</td>
     </tr><tr style="text-align:left">
       <td>Glide (D2 Tran): Self falls 60'/rd and may move horizontally 300'/rd for 10 min</td>
     </tr><tr style="text-align:left">
@@ -345,9 +345,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Guiding Star (C3 Divi): Self aware of direction and distance to casting location for 10 dy</td>
     </tr><tr style="text-align:left">
-      <td>Hide Campsite (D3 Illu): R50' 20' cu covers camp activity (DC 13 Will neg on entry) for 20 hr</td>
+      <td>Hide Campsite (D3 Illu): R50' 20' cu covers camp activity (DC 13 Will neg on interaction) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Hydraulic Push (D1 Evoc): R50' Target suffers CMB +13 bull rush; extinguishes normal fires up to 5' sq</td>
+      <td>Hydraulic Push (D1 Evoc): R50' Target suffers CMB +13 bull rush; extinguishes normal fire up to 5' sq</td>
     </tr><tr style="text-align:left">
       <td>Hydraulic Torrent (D3 Evoc): Creatures in 60' line suffer CMB +13 bull rush; immovable objects 13 Strength to break; extinguishes normal fires</td>
     </tr><tr style="text-align:left">
@@ -355,13 +355,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Life Bubble (C5 Abju): 10 touched breathe freely, comfortable from -40F to 150F, and unaffected by pressure for 20 hr total</td>
     </tr><tr style="text-align:left">
-      <td>Lily Pad Stride (D3 Tran): R800' Self moves across liquid and others can follow w/DC 10 (half speed) or DC 15 (full speed) Acrobatics for 100 min</td>
+      <td>Lily Pad Stride (D3 Tran): R800' Self moves across liquid and others can follow w/DC 10 Acrobatics (half speed; full speed inflicts -5 Acrobatics) for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Lockjaw (D2 Tran): Touched gains +4 CMB to grapple w/natural weapon for 10 rd</td>
+      <td>Lockjaw (D2 Tran): Touched gains +4 CMB to grapple w/out provoking AOO after hit w/natural weapon for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Moonstruck (D4 Ench): R200' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for 8 rd, then suffers dazed for 1 rd (DC 14 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Natural Rhythm (D2 Tran): Touched gains +1 cumulative damage on natural attacks (max +5, miss resets to +0) for 10 rd</td>
+      <td>Natural Rhythm (D2 Tran): Touched gains +1 cumulative damage using natural attacks (max +5, miss resets to +0) for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Nature's Exile (D3 Tran): Touched suffers permanent hostility from natural animals and -10 Survival, and animal companion suffers -2 attack, skill checks, and saves (DC 13 Will neg)</td>
     </tr><tr style="text-align:left">
@@ -369,7 +369,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Pox Pustules (D2 Necr): R50' Target suffers sickened and -4 Dexterity (DC 12 Fort neg; full-round scratch neg sickened for 1 rd) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Rampart (D7 Conj): R200' Creates 5'x10'x50' linear or 13' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)</td>
+      <td>Rampart (D7 Conj): R200' Creates 5'x10'x50' linear or 5'x13' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)</td>
     </tr><tr style="text-align:left">
       <td>Rest Eternal (D5 Necr): Touched corpse requires DC 21 caster check to communicate, resurrect, or animate</td>
     </tr><tr style="text-align:left">
@@ -379,19 +379,19 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Scent Trail (D2 Tran): R50' 10 designated creatures in 15' radius gain +20 Survival to follow target trail and understand scent messages for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Seamantle (D8 Conj): 30' water column gives self +8 AC, +4 Reflex, 30' slam attack, and touch that extinguishes fires for 10 min</td>
+      <td>Seamantle (D8 Conj): 30' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30' slam attack, and touch that extinguishes fires for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -10 Acrobatics, entangles, and knocks prone (DC 13 Ref neg) for 10 rd</td>
+      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -10 Acrobatics, and entangles and knocks prone (DC 13 Ref neg) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigues, and knocks prone (DC 16 Fort half HP only; flying creatures DC 15 Fly to avoid) for 10 rd</td>
+      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigues, and knocks prone (DC 16 Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Slipstream (D2 Conj): Creates wave that moves touched 10'/rd (20' downhill) and gives +20' Swim for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Snake Staff (C5 Tran): R200' Transforms up to 10 sticks in 15' radius into snakes under self control for 10 rd</td>
+      <td>Snake Staff (C5 Tran): R200' Transforms up to 10 sticks in 15' radius into telepathically controlled snakes for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Spiritual Ally (C4 Evoc): R200' Force being moves 30'/rd and makes +14/+9/+4 attacks inflicting 1d10+3 HP for 10 rd (DC d20+10 SR ends)</td>
     </tr><tr style="text-align:left">
-      <td>Stone Call (D2 Conj): R200' 40' radius inflicts 2d6 HP bludgeoning for 1 rd, difficult terrain for 9 rd</td>
+      <td>Stone Call (D2 Conj): R200' 40' radius inflicts 2d6 HP bludgeoning for 1 rd, then difficult terrain for 9 rd</td>
     </tr><tr style="text-align:left">
       <td>Stormbolts (C8 Evoc): Targets in 30' radius suffer 10d8 HP electricity and stunned 1 rd (DC 18 Fort half HP only)</td>
     </tr><tr style="text-align:left">
@@ -401,21 +401,21 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Threefold Aspect (D5 Tran): Self may transform freely between young (+2 Dexterity and Constitution, -2 Wisdom), adult (+2 Wisdom and Intelligence, -2 Dexterity), and elderly (+4 Wisdom and Intelligence, -2 Strength and Dexterity) for 1 dy</td>
     </tr><tr style="text-align:left">
-      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in 15' radius (DC 14 Will neg for ability, DC 11+effect level for spells) for 10 rd</td>
+      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in 15' radius (DC 14 Will neg for polymorph ability, DC 11+effect level for polymorph spell) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 60'/rd (water) or 30'/rd (land), inflicts 8d6 HP bludgeoning (DC 19 Fort half), +21 CMB to knock down and sweep away for 5 rd</td>
+      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (DC 19 Fort half), +21 CMB to knock down and sweep away for 5 rd</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (D7 Evoc): R800' 15' radius inflicts 3d6 HP bludgeoning (DC 17 Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (DC 17 Ref neg) for 9 rd</td>
+      <td>Vortex (D7 Evoc): R800' 15' radius inflicts 3d6 HP bludgeoning (DC 17 Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (DC 17 Ref neg) for 9 rd; self may eject creatures from vortex</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Lava (D8 Conj): R200' Creates 10 contiguous 5' sq wall sections for 10 rd; foe strike inflicts 2d6 HP fire on weapon; passage (DC 25 Strength) inflicts 20d6 HP fire; R60' ranged touch inflicts 10d6 HP fire and destroys 1d4 sections 1/rd; half damage continues for 1d3 rd</td>
     </tr><tr style="text-align:left">
       <td>Weapon Of Awe (C2 Tran): Touched weapon or unarmed strike gains +2 damage and crit inflicts 1 rd shaken for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Winds Of Vengeance (C9 Tran): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (DC 19 Fort half HP only), for 10 min</td>
+      <td>Winds Of Vengeance (C9 Evoc): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (DC 19 Fort half HP only), for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>World Wave (D9 Tran): Self rides 20'x10' natural terrain oval that forms 30' wave for 10 rd or 5' swell for 10 hr, moves 160'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning (wave) to non-natural objects (constructs and undead suffer dbl)</td>
+      <td>World Wave (D9 Tran): Self rides 20'x10' natural terrain oval that forms 30' wave for 10 rd or 5' swell for 10 hr, moves 160'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects (constructs and undead suffer dbl HP)</td>
     </tr><tr style="text-align:left">
-      <td>Wrathful Mantle (C3 Evoc): Touched gains +2 saves for 10 min; dismissal inflicts 2d8 HP force to creatures in 5' radius</td>
+      <td>Wrathful Mantle (C3 Evoc): Touched gains +2 saves for 10 min; target may dismiss to inflict 2d8 HP force to creatures in 5' radius</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
