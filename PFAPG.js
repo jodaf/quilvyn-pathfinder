@@ -5923,7 +5923,7 @@ PFAPG.SPELLS = {
   'Banish Seeming':
     'School=Abjuration ' +
     'Level=Inquisitor3,Witch5 ' +
-    'Description="Touch dispels illusions and reverts magical transformations for %{lvl} rd"',
+    'Description="Touch gives +2 <i>Dispel Magic</i> effects vs. %{lvl//4} illusions or reverts magical transformations (check vs. target HD) for %{lvl} rd"',
   "Bard's Escape":
     'School=Conjuration ' +
     'Level=B5 ' +
@@ -5971,7 +5971,7 @@ PFAPG.SPELLS = {
   'Borrow Fortune':
     'School=Evocation ' +
     'Level=Fate3,O3 ' +
-    'Description="Self gains better of two immediate d20 rolls and suffers worse of two d20 rolls for 2 rd"',
+    'Description="Self gains better of two immediate d20 rolls, then suffers worse of two d20 rolls for 2 rd"',
   'Borrow Skill':
     'School=Transmutation ' +
     'Level=B1 ' +
@@ -5983,7 +5983,7 @@ PFAPG.SPELLS = {
   'Brand':
     'School=Transmutation ' +
     'Level=Inquisitor0 ' +
-    'Description="Inflicts 1 HP on touched to etch indelible mark (Fort neg, scraping to remove inflicts 1d6 HP) for %{lvl} dy"',
+    'Description="Inflicts 1 HP on touched to etch indelible mark (Fort neg, scraping to remove inflicts 1d6 HP and brand reappears if healed) for %{lvl} dy"',
   'Greater Brand':
     'School=Transmutation ' +
     'Level=Inquisitor4 ' +
@@ -6007,7 +6007,7 @@ PFAPG.SPELLS = {
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
-    'Description="Touched restraints or restraining creature suffers %{lvl<?5}d6 HP (Fort half); ignores hardness up to 10"',
+    'Description="Touched restraints suffer %{lvl<?5}d6 HP (Fort half (magical restraints)), ignoring hardness up to 10, or gives self free +%{lvl<?5} CMB and +%{lvl//2<?5} save attempt to break grapple"',
   'Cacophonous Call':
     'School=Enchantment ' +
     'Level=B2 ' +
@@ -6031,15 +6031,15 @@ PFAPG.SPELLS = {
   'Cast Out':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
-    'Description="Touched suffers 2d8+%{lvl<?15} HP and loss of %{lvl//4} magic effects (Will half HP and 1 effect)"',
+    'Description="Touched suffers 2d8+%{lvl<?15} HP and dispel of %{lvl//4} <i>Magic Jar</i> or enchantment effects (Will half HP and 1 effect)"',
   'Castigate':
     'School=Enchantment ' +
     'Level=Inquisitor2 ' +
-    'Description="R$RS\' Target suffers fear for %{lvl} rd (Will shaken for 1 rd; same deity -2)"',
+    'Description="R$RS\' Target suffers fear for %{lvl} rd (Will ends w/1 rd shaken%{deity != \'None\' ? \'; worshipers of \' + deity + \' save -2\' : \'\'})"',
   'Mass Castigate':
     'School=Enchantment ' +
     'Level=Inquisitor5 ' +
-    'Description="R$RM\' %{lvl} targets in 15\' radius suffer fear for %{lvl} rd (Will shaken for 1 rd; same deity -2)"',
+    'Description="R$RM\' %{lvl} targets in 15\' radius suffer fear for %{lvl} rd (Will ends w/1 rd shaken%{deity != \'None\' ? \'; worshipers of \' + deity + \' save -2\' : \'\'})"',
   'Challenge Evil':
     'School=Enchantment ' +
     'Level=P1 ' +
@@ -6071,7 +6071,7 @@ PFAPG.SPELLS = {
   'Confess':
     'School=Enchantment ' +
     'Level=Inquisitor2 ' +
-    'Description="R$RS\' Target must answer question truthfully or suffer 1d6 HP and 2d4 rd sickened (Will half HP only)"',
+    'Description="R$RS\' Target must answer one self question truthfully or suffer %{lvl//2<?5}d6 HP and 2d4 rd sickened (Will half HP only)"',
   'Contagious Flame':
     'School=Evocation ' +
     'Level=W6 ' +
@@ -6083,11 +6083,11 @@ PFAPG.SPELLS = {
   'Corruption Resistance':
     'School=Abjuration ' +
     'Level=Antipaladin2,Inquisitor2,P2 ' +
-    'Description="Touched gains DR %{lvl>=11?15:lvl>=7?10:5}/- vs. chosen alignment damage for %{lvl*10} min"',
+    'Description="Touched gains DR %{lvl>=11?15:lvl>=7?10:5}/- vs. chosen alignment magical damage for %{lvl*10} min"',
   "Coward's Lament":
     'School=Enchantment ' +
     'Level=Inquisitor4 ' +
-    'Description="R$RS\' Target suffers -1 AC, attack, and saves/rd unless attacks self (Will neg) for %{lvl} rd"',
+    'Description="R$RS\' Target suffers cumulative -1 AC, attack, and saves/rd (max -5, DC %{spellDifficultyClass.Inquisitor+4} Will neg 1 rd, attacking self resets to 0) for %{lvl} rd"',
   "Crafter's Curse":
     'School=Transmutation ' +
     'Level=W1 ' +
@@ -6123,7 +6123,7 @@ PFAPG.SPELLS = {
   'Defile Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,Antipaladin3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good during Judgment or Smite for %{lvl} min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good while using Judgment or Smite for %{lvl} min"',
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
@@ -6159,7 +6159,7 @@ PFAPG.SPELLS = {
   'Divine Vessel':
     'School=Transmutation ' +
     'Level=O8 ' +
-    'Description="Self gains size level and anarchic, axiomatic, celestial, or fiendish abilities for %{lvl} rd"',
+    'Description="Self gains size category, +6 Strength, +6 Constitution, +3 AC, 60\' Darkvision, SR %{12+lvl}, and alignment-specific effects for %{lvl} rd"',
   'Draconic Reservoir':
     'School=Evocation ' +
     'Level=Alchemist3,W3 ' +
@@ -6239,11 +6239,11 @@ PFAPG.SPELLS = {
   'Fester':
     'School=Necromancy ' +
     'Level=Inquisitor3,Witch2 ' +
-    'Description="R$RS\' Target suffers %{lvl+12} resistance to healing for %{lvl} rd (Fort 1 rd)"',
+    'Description="R$RS\' Target suffers SR %{lvl+12} to spells that grant healing or temporary HP for %{lvl} rd (Fort 1 rd)"',
   'Mass Fester':
     'School=Necromancy ' +
     'Level=Inquisitor6,Witch6 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius suffer %{lvl+12} resistance to healing for %{lvl} rd (Fort 1 rd)"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius suffer SR %{lvl+12} to spells that grant healing or temporary HP for %{lvl} rd (Fort 1 rd)"',
   'Fiery Body':
     'School=Transmutation ' +
     'Level=Ash9,O9,W9 ' + // Oracle Flame
@@ -6279,7 +6279,7 @@ PFAPG.SPELLS = {
   'Flames Of The Faithful':
     'School=Transmutation ' +
     'Level=Inquisitor2 ' +
-    'Description="Touched self weapon gains flaming or flaming burst features for %{lvl} rd"',
+    'Description="Touched self weapon inflicts +1d6 HP fire (crit while using Judgment also inflicts +1d10 HP fire or more) for %{lvl} rd"',
   'Flare Burst':
     'School=Evocation ' +
     'Level=B1,D1,W1 ' +
@@ -6299,7 +6299,7 @@ PFAPG.SPELLS = {
   'Follow Aura':
     'School=Divination ' +
     'Level=Inquisitor2 ' +
-    'Description="Self can track chosen alignment aura for %{lvl*10} min"',
+    'Description="Self can track chosen alignment %{lvl>=10 ? \'moderate or \' : \'\'}strong aura for %{lvl*10} min"',
   "Fool's Forbiddance":
     'School=Abjuration ' +
     'Level=B6 ' +
@@ -6307,7 +6307,7 @@ PFAPG.SPELLS = {
   'Forced Repentance':
     'School=Enchantment ' +
     'Level=Inquisitor4,P4 ' +
-    'Description="R$RS\' Evil target creature falls prone and makes confession for %{lvl} rd"',
+    'Description="R$RS\' Evil target creature (not of evil subtype) falls prone and makes confession (Will neg) for %{lvl} rd"',
   'Frozen Note':
     'School=Enchantment ' +
     'Level=B5 ' +
@@ -6383,7 +6383,7 @@ PFAPG.SPELLS = {
   "Hunter's Eye":
     'School=Divination ' +
     'Level=Inquisitor3,R2 ' +
-    'Description="R$RM\' Self can see invisible target and gains +20 Perception to locate target for %{lvl} min"',
+    'Description="R$RM\' Self can see target when invisible or concealed (except by darkness) and gains +20 Perception to locate target for %{lvl} min"',
   "Hunter's Howl":
     'School=Necromancy ' +
     'Level=R1 ' +
@@ -6495,7 +6495,7 @@ PFAPG.SPELLS = {
   "Oracle's Burden":
     'School=Necromancy ' +
     'Level=O2 ' +
-    'Description="R$RM\' Target suffers Oracle\'s Curse effects (Will neg) for %{lvl} min"',
+    'Description="R$RM\' Target suffers self Oracle\'s Curse effects (Will neg) for %{lvl} min"',
   'Pain Strike':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
@@ -6567,7 +6567,7 @@ PFAPG.SPELLS = {
   'Rebuke':
     'School=Evocation ' +
     'Level=Inquisitor4 ' +
-    'Description="Foes in 20\' radius suffer %{lvl//2<?5}d8 HP and staggered for 1 rd (worshipers of same deity %{lvl<?10}d6 and stunned for 1d4 rd) (Fort half HP only)"',
+    'Description="Foes in 20\' radius suffer %{lvl//2<?5}d8 HP (half sonic, half divine) and staggered for 1 rd %{deity!=\'None\' ? \'(worshipers of \' + deity + \' \' + (lvl<?10) + \'d6 HP and stunned for 1d4 rd) \' : \'\'}(Fort half HP only)"',
   'Rejuvenate Eidolon':
     'School=Conjuration ' +
     'Level=Summoner3 ' +
@@ -6587,7 +6587,7 @@ PFAPG.SPELLS = {
   'Resounding Blow':
     'School=Evocation ' +
     'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
-    'Description="Self hits w/held weapon inflict +1d6 HP sonic, crit inflicts stunned 1rd and deafened 1d6 rd (Fort neg), for %{lvl} rd"',
+    'Description="Self hits w/held weapon inflict +1d6 HP sonic, plus staggered 1 rd while using Judgment or Smite (Fort neg); crit inflicts stunned 1 rd and deafened 1d6 rd (Fort neg), for %{lvl} rd"',
   'Rest Eternal':
     'School=Necromancy ' +
     'Level=Ancestors4,C4,O4,D5,Witch5 ' +
@@ -6603,7 +6603,7 @@ PFAPG.SPELLS = {
   'Retribution':
     'School=Necromancy ' +
     'Level=Inquisitor3 ' +
-    'Description="R$RS\' Target who just damaged self suffers -4 attack, skill checks, and ability checks for %{lvl} rd (Fort 1 rd)"',
+    'Description="R$RS\' Target who just damaged self suffers -4 attack, skill checks, and ability checks for %{lvl} rd (Fort 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' save -2\' : \'\'})"',
   'Reviving Finale':
     'School=Conjuration ' +
     'Level=B3 ' +
@@ -6631,7 +6631,7 @@ PFAPG.SPELLS = {
   'Sanctify Armor':
     'School=Abjuration ' +
     'Level=Inquisitor4,P3 ' +
-    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil during Judgment or Smite for %{lvl} min"',
+    'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/evil while using Judgment or Smite for %{lvl} min"',
   'Saving Finale':
     'School=Evocation ' +
     'Level=B1 ' +
@@ -6671,7 +6671,7 @@ PFAPG.SPELLS = {
   'Shared Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor4 ' +
-    'Description="%{lvl} targets in 15\' radius gain +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. chosen foe for 1 min"',
+    'Description="%{lvl} targets in 15\' radius gain +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. targeted foe for 1 min"',
   'Shifting Sand':
     'School=Transmutation ' +
     'Level=D3,Deep3,W3 ' +
@@ -6687,7 +6687,7 @@ PFAPG.SPELLS = {
   'Sleepwalk':
     'School=Enchantment ' +
     'Level=Inquisitor4,Witch4 ' +
-    'Description="Touched unconscious creature animates and moves at half speed for %{lvl} hr"',
+    'Description="Touched unconscious creature animates and moves at half speed (Will neg) for %{lvl} hr"',
   'Slipstream':
     'School=Conjuration ' +
     'Level=Aquatic2,D2,O2,Oceans2,R2,W2,Witch2 ' + // Oracle Waves, Witch Water
@@ -6779,11 +6779,11 @@ PFAPG.SPELLS = {
   'Tireless Pursuers':
     'School=Transmutation ' +
     'Level=Inquisitor4,R3 ' +
-    'Description="Self and %{lvl//3} touched gain half damage from hustling and forced march and ignore fatigue for %{lvl} hr"',
+    'Description="Self and %{lvl//3} touched gain half damage from hustling and forced march and ignore travel fatigue for %{lvl} hr"',
   'Tireless Pursuit':
     'School=Transmutation ' +
     'Level=Inquisitor1,R1 ' +
-    'Description="Self gains half damage from hustling and forced march and ignores fatigue for %{lvl} hr"',
+    'Description="Self gains half damage from hustling and forced march and ignores travel fatigue for %{lvl} hr"',
   'Touch Of Gracelessness':
     'School=Transmutation ' +
     'Level=B1,W1 ' +
@@ -6879,7 +6879,7 @@ PFAPG.SPELLS = {
   'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
-    'Description="10\' radius around touched gives +%{lvl>=18?4:lvl>?12?3:2} AC and saves to fellow deists for %{lvl*10} min"',
+    'Description="10\' radius around touched gives +%{lvl>=18?4:lvl>=12?3:2} AC and saves to fellow believers for %{lvl*10} min"',
   'Weapon Of Awe':
     'School=Transmutation ' +
     'Level=C2,Inquisitor2,O2,P2 ' +
@@ -6895,7 +6895,7 @@ PFAPG.SPELLS = {
   'Wrath':
     'School=Enchantment ' +
     'Level=Inquisitor1 ' +
-    'Description="Self gains +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. chosen foe for 1 min"',
+    'Description="Self gains +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. targeted foe for 1 min"',
   'Wrathful Mantle':
     'School=Evocation ' +
     'Level=C3,O3,P3 ' +
