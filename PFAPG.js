@@ -3011,7 +3011,7 @@ PFAPG.FEATURES = {
     'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
   'Shining Light':
     'Section=combat ' +
-    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd on evil creatures (1d4 rd blindness on dragon, outsider, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
+    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
   'Skilled Rider':
     'Section=companion,skill ' +
     'Note=' +
@@ -5871,7 +5871,7 @@ PFAPG.SPELLS = {
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
-    'Description="Transforms touched %{lvl*5} object into edible substance"',
+    'Description="Transforms touched %{lvl*5} lb object into 1 day\'s food for %{lvl*5} Medium creatures"',
   'Alter Winds':
     'School=Transmutation ' +
     'Level=D1,O1,W1 ' + // Oracle Wind
@@ -5895,7 +5895,7 @@ PFAPG.SPELLS = {
   'Arrow Eruption':
     'School=Conjuration ' +
     'Level=R2,W2 ' +
-    'Description="R$RL\' Duplicates of killing arrow attack %{lvl<?15} foes in 30\' radius"',
+    'Description="R$RL\' Duplicates of arrow that killed in prior rd attack %{lvl<?15} foes in 30\' radius"',
   'Aspect Of The Bear':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
@@ -5935,7 +5935,7 @@ PFAPG.SPELLS = {
   'Bestow Grace':
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="Touched adds its charisma bonus to saves for %{lvl} min"',
+    'Description="Touched good creature adds its charisma bonus to saves for %{lvl} min"',
   'Blaze Of Glory':
     'School=Conjuration ' +
     'Level=P4 ' +
@@ -5979,7 +5979,7 @@ PFAPG.SPELLS = {
   'Bow Spirit':
     'School=Conjuration ' +
     'Level=R4 ' +
-    'Description="Conjured spirit attacks w/1 arrow or bolt each rd for %{lvl} rd"',
+    'Description="Conjured spirit attacks using self ammo, bonuses, and feats each rd for %{lvl} rd"',
   'Brand':
     'School=Transmutation ' +
     'Level=Inquisitor0 ' +
@@ -6007,7 +6007,7 @@ PFAPG.SPELLS = {
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
-    'Description="Touched restraints suffer %{lvl<?5}d6 HP (Fort half (magical restraints)), ignoring hardness up to 10, or gives self free +%{lvl<?5} CMB and +%{lvl//2<?5} save attempt to break grapple"',
+    'Description="Touched restraints suffer %{lvl<?5}d6 HP (Fort half (magical restraints)), ignoring hardness up to 10, or gives self free +%{lvl<?5} CMB and +%{lvl//2<?5} save attempt to break grapple (Fort neg)"',
   'Cacophonous Call':
     'School=Enchantment ' +
     'Level=B2 ' +
@@ -6043,7 +6043,7 @@ PFAPG.SPELLS = {
   'Challenge Evil':
     'School=Enchantment ' +
     'Level=P1 ' +
-    'Description="R$RS\' Target must fight you (self gains +2 attack) or suffer sickened (Will neg) for %{lvl} min"',
+    'Description="R$RS\' Evil target must attack self or suffer sickened (Will neg) and self gains +2 melee attack on target for %{lvl} min"',
   'Chameleon Stride':
     'School=Illusion ' +
     'Level=R2 ' +
@@ -6255,15 +6255,15 @@ PFAPG.SPELLS = {
   'Fire Of Entanglement':
     'School=Evocation ' +
     'Level=P2 ' +
-    'Description="Next Smite Evil hit inflicts entanglement for %{lvl} rd (Ref 1 rd)"',
+    'Description="Target of next Smite Evil hit suffers entanglement for %{lvl} rd (Ref 1 rd)"',
   'Fire Of Judgment':
     'School=Evocation ' +
     'Level=P3 ' +
-    'Description="Next Smite Evil hit inflicts 1d6 HP (evil outsider, dragon, or undead 1d10 HP) when attacking others for %{lvl} rd (Will 1 rd)"',
+    'Description="Target of next Smite Evil hit suffers 1d6 HP divine (1d10 HP on outsider, dragon, or undead), bypassing DR, when attacking anyone but self for %{lvl} rd (Will 1 rd)"',
   'Fire Of Vengeance':
     'School=Evocation ' +
     'Level=P4 ' +
-    'Description="Next Smite Evil hit inflicts 3d8 HP on first attack on other"',
+    'Description="Target of next Smite Evil hit suffers 3d8 HP fire on first attack on anyone but self"',
   'Fire Snake':
     'School=Evocation ' +
     'Level=D5,W5 ' +
@@ -6343,7 +6343,7 @@ PFAPG.SPELLS = {
   'Gravity Bow':
     'School=Transmutation ' +
     'Level=R1,W1 ' +
-    'Description="Self bow attacks inflict extra damage for %{lvl} min"',
+    'Description="Self bow inflicts damage as if 1 size larger for %{lvl} min"',
   'Grove Of Respite':
     'School=Conjuration ' +
     'Level=D4,O4,R4 ' + // Oracle Nature
@@ -6355,7 +6355,7 @@ PFAPG.SPELLS = {
   "Hero's Defiance":
     'School=Conjuration ' +
     'Level=P1 ' +
-    'Description="Expending Lay on Hands use on self when reduced to 0 HP heals +1d6 HP"',
+    'Description="Expending Lay on Hands use on self when reduced to 0 or negative HP heals +1d6 HP"',
   'Heroic Finale':
     'School=Enchantment ' +
     'Level=B4 ' +
@@ -6371,7 +6371,7 @@ PFAPG.SPELLS = {
   'Holy Whisper':
     'School=Evocation ' +
     'Level=P3 ' +
-    'Description="30\' cone sickens evil-aligned creatures and inflicts 2d8 HP on evil creatures and undead (Fort neg), gives good-aligned creatures +2 attack and damage for 1 rd"',
+    'Description="30\' cone sickens all evil creatures for %{lvl} rd and inflicts 2d8 HP on outsiders, dragons, and undead (Fort neg); also gives good creatures +2 attack and damage for 1 rd"',
   'Honeyed Tongue':
     'School=Transmutation ' +
     'Level=B2,Inquisitor2,P1 ' +
@@ -6387,7 +6387,7 @@ PFAPG.SPELLS = {
   "Hunter's Howl":
     'School=Necromancy ' +
     'Level=R1 ' +
-    'Description="Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken) (Will neg) for %{lvl} rd"',
+    'Description="Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken instead) (Will neg) for %{lvl} rd"',
   'Hydraulic Push':
     'School=Evocation ' +
     'Level=Aquatic1,D1,W1 ' +
@@ -6435,11 +6435,11 @@ PFAPG.SPELLS = {
   "Knight's Calling":
     'School=Enchantment ' +
     'Level=P1 ' +
-    'Description="R$RS\' Target must move to attack self (Will neg)"',
+    'Description="R$RS\' Target must move to attack self (Will neg) for 1 rd"',
   'Lead Blades':
     'School=Transmutation ' +
     'Level=R1 ' +
-    'Description="Self melee weapons inflict extra damage for %{lvl} min"',
+    'Description="Self melee weapons inflict damage as if 1 size larger for %{lvl} min"',
   'Life Bubble':
     'School=Abjuration ' +
     'Level=C5,D4,O5,R3,W5 ' +
@@ -6447,7 +6447,7 @@ PFAPG.SPELLS = {
   'Light Lance':
     'School=Evocation ' +
     'Level=P2 ' +
-    'Description="Self gains glowing +1 holy lance for %{lvl+1} rd"',
+    'Description="Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for %{lvl+1} rd"',
   'Lily Pad Stride':
     'School=Transmutation ' +
     'Level=D3 ' +
@@ -6459,7 +6459,7 @@ PFAPG.SPELLS = {
   'Marks Of Forbiddance':
     'School=Abjuration ' +
     'Level=P3 ' +
-    'Description="R$RS\' Ally target and foe target cannot attack one another (Will neg) for %{lvl} rd"',
+    'Description="R$RS\' Ally target and foe target cannot attack one another (Will neg 1 rd) for %{lvl} rd"',
   'Mask Dweomer':
     'School=Illusion ' +
     'Level=Witch1 ' +
@@ -6491,7 +6491,7 @@ PFAPG.SPELLS = {
   'Oath Of Peace':
     'School=Abjuration ' +
     'Level=P4 ' +
-    'Description="Self gains +5 AC and DR 10/evil for %{lvl} rd or until attacks"',
+    'Description="Self gains +5 AC and saves and DR 10/evil for %{lvl} rd or until attacks"',
   "Oracle's Burden":
     'School=Necromancy ' +
     'Level=O2 ' +
@@ -6507,7 +6507,7 @@ PFAPG.SPELLS = {
   "Paladin's Sacrifice":
     'School=Abjuration ' +
     'Level=P2 ' +
-    'Description="R$RS\' Immediate damage to target transferred to self"',
+    'Description="R$RS\' Immediate damage and negative effects to target transferred to self"',
   'Perceive Cues':
     'School=Transmutation ' +
     'Level=Alchemist2,Inquisitor2,R2,Witch2 ' +
@@ -6543,7 +6543,7 @@ PFAPG.SPELLS = {
   'Protective Spirit':
     'School=Conjuration ' +
     'Level=R2 ' +
-    'Description="+%{baseAttack+dexterityModifier} attack by spirit negates %{dexterityModifier>?1} AOO/rd on self for %{lvl} rd"',
+    'Description="Successful +%{baseAttack+dexterityModifier} attack by spirit negates %{dexterityModifier>?1} AOO/rd on self for %{lvl} rd"',
   'Purging Finale':
     'School=Conjuration ' +
     'Level=B3 ' +
@@ -6559,7 +6559,7 @@ PFAPG.SPELLS = {
   'Rally Point':
     'School=Enchantment ' +
     'Level=P1 ' +
-    'Description="R5\' Good creatures passing through 5\' sq gain +2 attacks, +2 saves, and %{lvl*2} temporary HP for 1 rd"',
+    'Description="R5\' Good creatures gain +2 attacks, +2 saves, and %{lvl*2} temporary HP for 1 rd on first pass through 5\' sq for %{lvl} min"',
   'Rampart':
     'School=Conjuration ' +
     'Level=D7,W7 ' +
@@ -6583,7 +6583,7 @@ PFAPG.SPELLS = {
   'Residual Tracking':
     'School=Divination ' +
     'Level=R1 ' +
-    'Description="Self sees creation of touched footprint"',
+    'Description="Self has vision of creation of touched footprint"',
   'Resounding Blow':
     'School=Evocation ' +
     'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
@@ -6623,7 +6623,7 @@ PFAPG.SPELLS = {
   'Sacrificial Oath':
     'School=Abjuration ' +
     'Level=Martyr6,P4 ' +
-    'Description="Self may suffer damage instead of touched target (refusal inflicts %{constitution} HP) for %{lvl} min"',
+    'Description="Self may suffer damage and negative effects instead of touched target (refusal inflicts %{constitution} HP on self) for %{lvl} min"',
   'Saddle Surge':
     'School=Transmutation ' +
     'Level=P2 ' +
@@ -6719,7 +6719,7 @@ PFAPG.SPELLS = {
   'Stay The Hand':
     'School=Enchantment ' +
     'Level=P4 ' +
-    'Description="$RM\' Target suffers negated attack (Will -5 attack and damage) and -2 attack and damage on targeted ally for %{lvl} rd"',
+    'Description="$RM\' Target suffers negated attack (Will -5 attack and damage) and -2 attack and damage on same creature for %{lvl} rd"',
   'Stone Call':
     'School=Conjuration ' +
     'Level=D2,O2,R2,W2 ' + // Oracle Stone
@@ -6843,11 +6843,11 @@ PFAPG.SPELLS = {
   'Veil Of Positive Energy':
     'School=Abjuration ' +
     'Level=P1 ' +
-    'Description="Self gains +2 AC and +2 saves vs. undead for %{lvl*10} min; dismissal inflicts %{lvl} HP to undead in 5\' radius"',
+    'Description="Self gains +2 AC and +2 saves vs. undead for %{lvl*10} min; dismissal inflicts %{lvl} HP on undead in 5\' radius"',
   'Venomous Bolt':
     'School=Necromancy ' +
     'Level=R3 ' +
-    'Description="Fired arrow or bold inflicts -1d3 Constitution/rd for 6 rd (Fort neg)"',
+    'Description="Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (Fort neg)"',
   'Versatile Weapon':
     'School=Transmutation ' +
     'Level=B2,R2,W3 ' +
