@@ -5319,12 +5319,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     }
     rules.defineRule('wildShapeLevel', 'levels.Druid', '=', null);
 
-    /* TODO Postponed
     Pathfinder.featureSpells(rules,
-      'A Thousand Faces', 'DruidFaces', 'wisdom', 'levels.Druid',
-      ['Alter Self']
+      'A Thousand Faces', 'AThousandFaces', 'wisdom', 'levels.Druid',
+      null, ['Alter Self']
     );
-    */
 
   } else if(name == 'Fighter') {
 
@@ -5589,12 +5587,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.join(", ") : ""'
       );
     }
-    /* TODO Postponed
     Pathfinder.featureSpells(rules,
-      'Detect Evil', 'PaladinDetect', 'charisma', 'levels.Paladin',
-      ['Detect Evil']
+      'Detect Evil', 'DetectEvil', 'charisma', 'levels.Paladin',
+      null, ['Detect Evil']
     );
-    */
 
   } else if(name == 'Ranger') {
 
