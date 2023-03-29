@@ -1082,7 +1082,7 @@ Pathfinder.FEATURES = {
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat ' +
-    'Note="+%V attack, +%1 HP damage, bypass DR, and +%2 AC vs. evil foe (dbl HP vs. outsider, dragon, or undead) %3/dy"',
+    'Note="+%V attack, +%1 HP damage, bypass DR, and +%2 AC on evil foe (dbl HP on outsider, dragon, or undead) %3/dy"',
   'Snatch Arrows':'Section=combat Note="Catch ranged weapons"',
   'Sneak Attack':
     'Section=combat ' +
