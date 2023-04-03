@@ -42,7 +42,7 @@ var attributes = {
   "spells.Mask Dweomer(Witch1 Illu)":1, "spells.Mass Fly(W7 Tran)":1, "spells.Mass Pain Strike(W5 Evoc)":1, 
   "spells.Mass Planar Adaptation(Summoner6 Tran)":1, "spells.Mass Suffocation(W9 Necr)":1, "spells.Pain Strike(W3 Evoc)":1, 
   "spells.Phantasmal Revenge(W7 Illu)":1, "spells.Purified Calling(Summoner4 Conj)":1, 
-  "spells.Putrefy Food And Drink(W0 Tran)":1, "spells.Rejuvenate Eidolon(Summoner3 Conj)":1, 
+  "spells.Putrefy Food And Drink(Witch0 Tran)":1, "spells.Rejuvenate Eidolon(Summoner3 Conj)":1, 
   "spells.Screech(Witch3 Evoc)":1, "spells.Sculpt Corpse(W1 Necr)":1, "spells.Shadow Projection(W4 Necr)":1, 
   "spells.Share Senses(W4 Divi)":1, "spells.Spiked Pit(Summoner3 Conj)":1, "spells.Spite(Witch4 Abju)":1, 
   "spells.Stumble Gap(W1 Conj)":1, "spells.Suffocation(W5 Necr)":1, "spells.Summon Eidolon(Summoner2 Conj)":1, 
@@ -297,91 +297,101 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Acid Pit (Summoner4 Conj): R170' Creates 10'x10' 30' deep extradimensional pit (Climb DC 30) that inflicts 2d6 HP acid for 8 rd</td>
+      <td>Acid Pit (Summoner4 Conj): R170' Creates 10'x10' 30' deep extradimensional pit containing 5' of acid for 8 rd; creatures on top fall in (DC 17 Ref neg, adjacent squares Ref+2; DC 30 Climb to exit) and suffer 2d6 HP acid/rd; objects suffer broken after 3 rd (DC 17 Fort delays 1 rd), then destroyed 1 rd later (DC 17 Fort delays 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Break (W1 Tran): R40' Target medium object becomes broken (DC 12 Fort neg)</td>
+      <td>Break (W1 Tran): R40' Medium object target becomes broken or already-broken object destroyed (DC 12 Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Calcific Touch (W4 Tran): Touched suffers permanent 1d4 Dex damage and effects of Slow spell (DC 15 Fort Dex only) 1/rd for 7 rd</td>
+      <td>Calcific Touch (W4 Tran): Touched suffers permanent 1d4 Dexterity damage and <i>Slow</i> effects (DC 15 Fort Dexterity damage only) 1/rd for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Contagious Flame (W6 Evoc): R40' 2 ranged touch rays in 15' radius inflict 4d6 HP fire, reflect to new targets for 3 rd</td>
+      <td>Contagious Flame (W6 Evoc): R40' 3 ranged touch rays in 15' radius each inflict 4d6 HP fire and move each rd up to 40' to a new target for 3 rd</td>
     </tr><tr style="text-align:left">
       <td>Crafter's Curse (W1 Tran): R40' Target suffers -5 Craft (DC 12 Will neg) for 7 dy</td>
     </tr><tr style="text-align:left">
-      <td>Create Pit (Summoner2 Conj): R170' Creates 10'x10' 30' deep extradimensional pit (Climb DC 25) for 8 rd</td>
+      <td>Create Pit (Summoner2 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 15 Ref neg, adjacent squares Ref+2; DC 25 Climb to exit)</td>
     </tr><tr style="text-align:left">
-      <td>Deflection (W7 Abju): Missed attacks on self reflected onto attacker for 7 rd</td>
+      <td>Cure Light Wounds (Healing Hex2 Conj): Touched heals (undead suffers) 1d8+5 HP (DC 13 Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Devolution (Summoner3 Tran): R40' Target eidolon loses 2 evolutions for 7 rd</td>
+      <td>Cure Moderate Wounds (Healing Hex3 Conj): Touched heals (undead suffers) 2d8+6 HP (DC 14 Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Enemy Hammer (W6 Tran): R680' Self can use target as 30' thrown weapon (DC 17 Fort neg, full-round resistance +4), inflicting 2d6 HP (medium target), for 7 rd</td>
+      <td>Deflection (W7 Abju): Missed attacks on self inflict new attack on attacker for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Evolution Surge (Summoner3 Tran): Touched eidolon gains 4-point evolution for 7 min</td>
+      <td>Devolution (Summoner3 Tran): R40' Target eidolon loses 2 evolutions (DC 16 Will neg) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Expend (W7 Abju): R170' 20' radius inflicts ineffectual use of ability</td>
+      <td>Enemy Hammer (W6 Tran): R680' Self can use target each rd for 30' +10 throw attack (DC 17 Fort neg 1 rd, full-round resistance +4), inflicting 2d6 HP (medium target), for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Fiery Body (W9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, 50% miss chance, regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for 7 min</td>
+      <td>Evolution Surge (Summoner3 Tran): Touched eidolon gains evolution costing up to 4 points for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Firebrand (W7 Tran): 1 targets in 15' radius gain torchlight, immunity to self fire spells, and 1d6 HP fire from attacks for 7 rd; may end for R30' ranged touch that inflicts 6d6 HP fire</td>
+      <td>Expend (W7 Abju): R170' 20' radius successively drains creatures' limited-use magical abilities (DC 18 Will ends)</td>
     </tr><tr style="text-align:left">
-      <td>Firefall (W4 Tran): R680' Target fire extinguished; 60' radius inflicts 5d6 HP fire and catch on fire (DC 15 Ref half HP only); 120' radius inflicts blinded for 1d4+1 rd (DC 15 Will neg)</td>
+      <td>Feather Fall (Flight Hex1 Tran): R40' 6 targets in 10' radius fall 60'/rd for 6 rd (DC 11 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Evolution Surge (Summoner4 Tran): Touched eidolon gains 6-point evolution for 7 min</td>
+      <td>Fiery Body (W9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Greater Rejuvenate Eidolon (Summoner5 Conj): Touched eidolon regains 5d10 HP+7 HP</td>
+      <td>Firebrand (W7 Tran): R40' 1 targets in 15' radius gain torchlight, immunity to self fire spells, and weapons inflict +1d6 HP fire for 7 rd; target may end for R30' ranged touch that inflicts 6d6 HP fire</td>
     </tr><tr style="text-align:left">
-      <td>Hungry Pit (W5 Conj): R170' Creates 10'x10' 30' deep extradimensional pit (Climb DC 35) that inflicts 4d6 HP bludgeoning (DC 16 Ref half) for 8 rd</td>
+      <td>Firefall (W4 Tran): R680' 60' radius around target fire inflicts 5d6 HP fire and catch on fire (DC 15 Ref half HP only) and 120' radius inflicts blinded for 1d4+1 rd (DC 15 Will neg); fire creature target suffers 7 HP; extinguishes normal target fire up 20' cu</td>
     </tr><tr style="text-align:left">
-      <td>Ill Omen (Witch1 Ench): R40' Target suffers worse of two rolls for next 2 d20 rolls (prayer negates 1) w/in 6 rd</td>
+      <td>Fly (Flight Hex3 Tran): Touched gains 60' fly speed and +3 Fly skill for 6 min</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Evolution Surge (Summoner2 Tran): Touched eidolon gains 2-point evolution for 7 min</td>
+      <td>Greater Evolution Surge (Summoner4 Tran): Touched eidolon gains 1 or 2 evolutions costing up to 6 points total for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Rejuvenate Eidolon (Summoner1 Conj): Touched eidolon regains 1d10 HP+5 HP</td>
+      <td>Greater Rejuvenate Eidolon (Summoner5 Conj): Touched eidolon regains 5d10+7 HP</td>
+    </tr><tr style="text-align:left">
+      <td>Hungry Pit (W5 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 16 Ref neg, adjacent squares Ref+2; DC 35 Climb to exit) and suffer 4d6 HP bludgeoning/rd (DC 16 Ref half)</td>
+    </tr><tr style="text-align:left">
+      <td>Ill Omen (Witch1 Ench): R40' Target suffers worse of two rolls for next 2 d20 rolls (aware target can use move action to negate 1) w/in 6 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Lesser Evolution Surge (Summoner2 Tran): Touched eidolon gains evolution costing up to 2 points for 7 min</td>
+    </tr><tr style="text-align:left">
+      <td>Lesser Rejuvenate Eidolon (Summoner1 Conj): Touched eidolon regains 1d10+5 HP</td>
+    </tr><tr style="text-align:left">
+      <td>Levitate (Flight Hex2 Tran): R40' Self moves willing target up and down 20'/rd for 6 min</td>
     </tr><tr style="text-align:left">
       <td>Mask Dweomer (Witch1 Illu): Spell aura on touched immune to <i>Detect Magic</i> for 6 dy</td>
     </tr><tr style="text-align:left">
       <td>Mass Fly (W7 Tran): R40' 7 targets in 15' radius gain 60' fly speed for 70 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Pain Strike (W5 Evoc): R40' 7 targets in 15' radius suffer 1d6 HP nonlethal and sickened (DC 16 Fort neg) and self gains +4 Intimidate for 7 rd</td>
+      <td>Mass Pain Strike (W5 Evoc): R40' 7 targets in 15' radius suffer 1d6 HP nonlethal/rd and sickened (DC 16 Fort neg) and self gains +4 Intimidate vs. targets for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mass Planar Adaptation (Summoner6 Tran): R40' 7 targets in 15' radius gain immunity to environmental harm from chosen plan and 20 resistance to an associated energy for 7 hr</td>
+      <td>Mass Planar Adaptation (Summoner6 Tran): R40' 7 targets in 15' radius gain immunity to environmental harm from chosen plane and 20 resistance to an associated energy for 7 hr</td>
     </tr><tr style="text-align:left">
-      <td>Mass Suffocation (W9 Necr): R40' 3 targets in 15' radius suffer unconsciousness next rd (DC 20 Fort staggered 1 rd), then -1 HP (DC 20 Fort delays 1 rd), then death (DC 20 Fort delays 1 rd) for 7 rd</td>
+      <td>Mass Suffocation (W9 Necr): R40' 3 targets in 15' radius drop to 0 HP next rd (DC 20 Fort staggered 1 rd), then drop to -1 HP (DC 20 Fort delays 1 rd), then die (DC 20 Fort delays 1 rd) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Pain Strike (W3 Evoc): R40' Target suffers 1d6 HP nonlethal and sickened (DC 14 Fort neg) and self gains +4 Intimidate for 7 rd</td>
+      <td>Pain Strike (W3 Evoc): R40' Target suffers 1d6 HP nonlethal/rd and sickened (DC 14 Fort neg) and self gains +4 Intimidate vs. target for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Phantasmal Revenge (W7 Illu): Spectre from touched 7-day-old corpse finds killer and inflicts 70 HP (DC 18 Will 5d6+7 HP)</td>
+      <td>Phantasmal Revenge (W7 Illu): Spectre from touched 7-day-old corpse finds killer and inflicts 70 HP (DC 18 Will neg; DC 18 Fort 5d6+7 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Purified Calling (Summoner4 Conj): Summons eidolon w/full HP and no ability damage or temporary conditions</td>
+      <td>Purified Calling (Summoner4 Conj): Subsequent summons brings eidolon w/full HP and no ability damage or temporary conditions</td>
     </tr><tr style="text-align:left">
-      <td>Putrefy Food And Drink (W0 Tran): R10' Fouls 7' cu food and water or single potion</td>
+      <td>Putrefy Food And Drink (Witch0 Tran): R10' Fouls single potion (DC 11 Will neg) or 6' cu food and water</td>
     </tr><tr style="text-align:left">
-      <td>Rejuvenate Eidolon (Summoner3 Conj): Touched eidolon regains 3d10 HP+7 HP</td>
+      <td>Rejuvenate Eidolon (Summoner3 Conj): Touched eidolon regains 3d10+7 HP</td>
     </tr><tr style="text-align:left">
       <td>Screech (Witch3 Evoc): Foes in 30' radius provoke AOO (DC 14 Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Sculpt Corpse (W1 Necr): Reshapes touched corpse to look like another creature</td>
+      <td>Sculpt Corpse (W1 Necr): Reshapes touched corpse to look like another creature (DC 12 Will detect (suspicious or familiar))</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Projection (W4 Necr): Self becomes shadow for 7 hr; death reduces body to -1 HP</td>
+      <td>Shadow Projection (W4 Necr): Self becomes undead shadow for 7 hr; death reduces body to -1 HP</td>
     </tr><tr style="text-align:left">
       <td>Share Senses (W4 Divi): R680' Self can use familiar's senses for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Spiked Pit (Summoner3 Conj): R170' Creates 10'x10' 30' deep extradimensional pit (Climb DC 20) that inflicts +2d6 HP piercing from fall and 1d6 HP piercing from contact for 8 rd</td>
+      <td>Spiked Pit (Summoner3 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 16 Ref neg, adjacent squares Ref+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing</td>
     </tr><tr style="text-align:left">
-      <td>Spite (Witch4 Abju): Damage to self triggers level 4 spell for 6 hr</td>
+      <td>Spite (Witch4 Abju): First successful melee attack or combat maneuver on self inflicts chosen touch spell up to level 4 on attacker w/in 6 hr</td>
     </tr><tr style="text-align:left">
       <td>Stumble Gap (W1 Conj): R40' 5' square inflicts 1d6 HP and knocked prone (DC 12 Ref -1 all rolls for 1 rd) for 8 rd</td>
     </tr><tr style="text-align:left">
-      <td>Suffocation (W5 Necr): R40' Target suffers unconsciousness next rd (DC 16 Fort staggered 1 rd), then -1 HP (DC 16 Fort delays 1 rd), then death (DC 16 Fort delays 1 rd) for 3 rd</td>
+      <td>Suffocation (W5 Necr): R40' Target drops to 0 HP next rd (DC 16 Fort staggered 1 rd), then drops to -1 HP (DC 16 Fort delays 1 rd), then dies (DC 16 Fort delays 1 rd) for 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Eidolon (Summoner2 Conj): R40' Teleports eidolon companion from home plane for 7 min</td>
+      <td>Summon Eidolon (Summoner2 Conj): R40' Brings eidolon companion from home plane for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Transmogrify (Summoner4 Tran): Modifies eidolon and self evolutions 1/dy</td>
+      <td>Transmogrify (Summoner4 Tran): Replaces evolutions applied to eidolon and self with others 1/dy</td>
     </tr><tr style="text-align:left">
-      <td>Twilight Knife (W3 Evoc): R40' Force knife flanks and attacks (+14) same foe as self, inflicts 1d4 HP plus 1d6 HP sneak attack for 7 rd</td>
+      <td>Twilight Knife (W3 Evoc): R40' Force knife flanks and makes +14 attacks on same foe as self, inflicts 1d4 HP plus 1d6 HP sneak attack for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Unfetter (Summoner1 Tran): R170' Negates eidolon distance limit and damage sharing for 70 min</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Suppression (W9 Abju): R170' Creates 14 5' sq wall sections that suppress passing magic effects for 7 rd for 70 min</td>
+      <td>Wall Of Suppression (W9 Abju): R170' Creates 14 5' sq wall sections that suppress for 7 rd passing magic effects and spells up to caster level 7 for 70 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -405,7 +415,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
-      <td>Cackle Hex: R30' Extends agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd</td>
+      <td>Cackle Hex: R30' Extends self agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Cantrips: May cast 0-level spells</td>
     </tr><tr style="text-align:center">
@@ -415,11 +425,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Enlarge Spell: x2 chosen spell range uses +1 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Flight Hex: May cast <i>Feather Fall</i> at will, <i>Levitate</i> 1/dy, use <i>Fly</i> effects 6 min/dy</td>
+      <td>Flight Hex: May use <i>Feather Fall</i> effects at will, <i>Levitate</i> 1/dy, <i>Fly</i> effects 6 min/dy</td>
     </tr><tr style="text-align:center">
       <td>Force Missile: <i>Magic Missile</i> 1d4+3 HP 4/dy</td>
     </tr><tr style="text-align:center">
-      <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects at will 1/target/dy</td>
+      <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Intense Spells: +3 Evocation spell damage</td>
     </tr><tr style="text-align:center">

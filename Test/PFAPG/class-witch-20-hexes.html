@@ -260,11 +260,47 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Arcane Eye (Hag's Eye Hex4 Divi): Invisible remote eye moves 30'/rd for undefined min</td>
+    </tr><tr style="text-align:left">
+      <td>Control Weather (Weather Control Hex7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+    </tr><tr style="text-align:left">
+      <td>Cure Critical Wounds (Major Healing Hex4 Conj): Touched heals (undead suffers) 4d8+20 HP (DC 16 Will half)</td>
+    </tr><tr style="text-align:left">
+      <td>Cure Light Wounds (Healing Hex2 Conj): Touched heals (undead suffers) 1d8+5 HP (DC 13 Will half)</td>
+    </tr><tr style="text-align:left">
+      <td>Cure Moderate Wounds (Healing Hex3 Conj): Touched heals (undead suffers) 2d8+10 HP (DC 14 Will half)</td>
+    </tr><tr style="text-align:left">
+      <td>Cure Serious Wounds (Major Healing Hex4 Conj): Touched heals (undead suffers) 3d8+15 HP (DC 16 Will half)</td>
+    </tr><tr style="text-align:left">
+      <td>Disguise Self (Disguise Hex1 Illu): Self changes appearance and gains +10 Disguise for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Earthquake (Natural Disaster Hex8 Evoc): R1200' Intense tremor shakes 80' radius for 1 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Feather Fall (Flight Hex1 Tran): R75' 20 targets in 10' radius fall 60'/rd for 20 rd (DC 11 Will neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Fly (Flight Hex3 Tran): Touched gains 60' fly speed and +10 Fly skill for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Levitate (Flight Hex2 Tran): R75' Self moves willing target up and down 20'/rd for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Nightmare (Nightmares Hex5 Illu): Target suffers 1d10 HP and fatigue (DC 22 Will neg (modified for familiarity w/target))</td>
+    </tr><tr style="text-align:left">
+      <td>Reincarnate (Forced Reincarnation Hex4 Tran): Restores willing soul, dead up to 1 week, to full health in a generated body</td>
+    </tr><tr style="text-align:left">
+      <td>Resurrection (Life Giver Hex7 Conj): Fully restores touched target dead 200 years w/loss of 1 level</td>
+    </tr><tr style="text-align:left">
+      <td>Sleep (Slumber Hex1 Ench): R300' 4 HD creatures in 10' radius sleep for 20 min (DC 11 Will neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Storm Of Vengeance (Natural Disaster Hex9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (DC 22 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 22 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Intelligence Witch Spell Slot Bonus: Spell level Witch1, Witch2</i></td>
     </tr><tr style="text-align:center">
-      <td>Agony Hex: R60' Target nauseated for 20 rd (DC 22 Fort ends) 1/target/dy</td>
+      <td>Agony Hex: R60' Target suffers nauseated for 20 rd (DC 22 Fort ends) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 10%</td>
     </tr><tr style="text-align:center">
@@ -272,15 +308,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
-      <td>Cackle Hex: R30' Extends agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd</td>
+      <td>Cackle Hex: R30' Extends self agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Cantrips: May cast 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Coven Hex: R30' May use aid another to give target w/coven hex +1 caster level for 1 rd</td>
+      <td>Coven Hex: R30' May use aid another to give target w/Coven Hex +1 caster level for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Craft Rod: Create magic rod</td>
     </tr><tr style="text-align:center">
-      <td>Death Curse Hex: R30' Target becomes fatigued (DC 22 Will neg), then exhausted, then dies (DC 22 Fort suffers 4d6+20 HP) 1/dy</td>
+      <td>Death Curse Hex: R30' Target becomes fatigued (DC 22 Will neg), then exhausted, then dies (DC 22 Fort suffers 4d6+20 HP) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Disguise Hex: May use <i>Disguise Self</i> effects for 20 hr/dy</td>
     </tr><tr style="text-align:center">
@@ -292,31 +328,31 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Extend Spell: x2 chosen spell duration uses +1 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Flight Hex: May cast <i>Feather Fall</i> at will, <i>Levitate</i> 1/dy, use <i>Fly</i> effects 20 min/dy</td>
+      <td>Flight Hex: May use <i>Feather Fall</i> effects at will, <i>Levitate</i> 1/dy, <i>Fly</i> effects 20 min/dy</td>
     </tr><tr style="text-align:center">
-      <td>Forced Reincarnation Hex: R30' Target killed and reincarnated (DC 22 Will neg) 1/target/dy</td>
+      <td>Forced Reincarnation Hex: R30' Target killed and receives <i>Reincarnate</i> (DC 22 Will neg) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Fortune Hex: R30' Target gains better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for 3 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
-      <td>Hag's Eye Hex: Can use <i>Arcane Eye</i> effects 20 min/dy</td>
+      <td>Hag's Eye Hex: Can use <i>Arcane Eye</i> effects 20 min/dy and share w/witches in 10' radius</td>
     </tr><tr style="text-align:center">
-      <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects at will 1/target/dy</td>
+      <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Life Giver Hex: May use <i>Resurrection</i> effects 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Major Healing Hex: May use <i>Cure Critical Wounds</i> effects at will 1/target/dy</td>
+      <td>Major Healing Hex: May use <i>Cure Critical Wounds</i> effects 1/target/dy</td>
     </tr><tr style="text-align:center">
-      <td>Misfortune Hex: R30' Target suffers worse of 2 rolls on ability checks, attack, saves, and skill checks (DC 22 Will neg) for 3 rd 1/target/dy</td>
+      <td>Misfortune Hex: R30' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC 22 Will neg) for 3 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Natural Disaster Hex: May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Nightmares Hex: R60' May use <i>Nightmare</i> effects (DC 22 Will ends) at will</td>
+      <td>Nightmares Hex: R60' May use <i>Nightmare</i> effects (DC 22 Will ends)</td>
     </tr><tr style="text-align:center">
       <td>Patron: Knows additional spells</td>
     </tr><tr style="text-align:center">
       <td>Retribution Hex: R60' Target suffers half of damage it inflicts (DC 22 Will neg) for 2 rd</td>
     </tr><tr style="text-align:center">
-      <td>Slumber Hex: R30' May inflict sleep (DC 22 neg) for 20 rd at will 1/target/dy</td>
+      <td>Slumber Hex: R30' May use <i>Sleep</i> effects (DC 22 Will neg) for 20 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Tongues Hex: May understand and speak any spoken language for 20 min/dy</td>
     </tr><tr style="text-align:center">
