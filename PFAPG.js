@@ -1756,13 +1756,13 @@ PFAPG.FEATURES = {
   // Witch
   'Agony Hex':
     'Section=magic ' +
-    'Note="R60\' Target nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
+    'Note="R60\' Target suffers nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
   'Blight Hex':
     'Section=magic ' +
     'Note="Touch kills vegetation in %{levels.Witch * 10}\' radius over 1 wk or inflicts -1 Con/dy"',
   'Cackle Hex':
     'Section=magic ' +
-    'Note="R30\' Extends agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd"',
+    'Note="R30\' Extends self agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd"',
   // Cantrips as Summoner
   'Cauldron Hex':
     'Section=feature,skill ' +
@@ -1776,10 +1776,10 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"May participate in a hag coven",' +
-      '"R30\' May use aid another to give target w/coven hex +1 caster level for 1 rd"',
+      '"R30\' May use aid another to give target w/Coven Hex +1 caster level for 1 rd"',
   'Death Curse Hex':
     'Section=magic ' +
-    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP) 1/dy"',
+    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP) 1/target/dy"',
   'Disguise Hex':
     'Section=magic ' +
     'Note="May use <i>Disguise Self</i> effects for %{levels.Witch} hr/dy"',
@@ -1798,35 +1798,35 @@ PFAPG.FEATURES = {
   'Flight Hex':
     'Section=magic,skill ' +
     'Note=' +
-      '"May cast <i>Feather Fall</i> at will%1",' +
+      '"May use <i>Feather Fall</i> effects at will%1",' +
       '"+4 Swim"',
   'Forced Reincarnation Hex':
     'Section=magic ' +
-    'Note="R30\' Target killed and reincarnated (DC %{hexDC} Will neg) 1/target/dy"',
+    'Note="R30\' Target killed and receives <i>Reincarnate</i> (DC %{hexDC} Will neg) 1/target/dy"',
   'Fortune Hex':
     'Section=magic ' +
     'Note="R30\' Target gains better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   "Hag's Eye Hex":
     'Section=magic ' +
-    'Note="Can use <i>Arcane Eye</i> effects %{levels.Witch} min/dy"',
+    'Note="Can use <i>Arcane Eye</i> effects %{levels.Witch} min/dy%{$\'features.Coven Hex\' ? \\" and share w/witches in 10\' radius\\" : \'\'}"',
   'Healing Hex':
     'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects at will 1/target/dy"',
+    'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects 1/target/dy"',
   'Hex':'Section=feature Note="%V selections"',
   'Life Giver Hex':
     'Section=magic Note="May use <i>Resurrection</i> effects 1/dy"',
   'Major Healing Hex':
     'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects at will 1/target/dy"',
+    'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy"',
   'Misfortune Hex':
     'Section=magic ' +
-    'Note="R30\' Target suffers worse of 2 rolls on ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Natural Disaster Hex':
     'Section=magic ' +
     'Note="May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy"',
   'Nightmares Hex':
     'Section=magic ' +
-    'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends) at will"',
+    'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends)"',
   'Patron':
     'Section=feature,magic ' +
     'Note=' +
@@ -1837,7 +1837,7 @@ PFAPG.FEATURES = {
     'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Slumber Hex':
     'Section=magic ' +
-    'Note="R30\' May inflict sleep (DC %{hexDC} neg) for %{levels.Witch} rd at will 1/target/dy"',
+    'Note="R30\' May use <i>Sleep</i> effects (DC %{hexDC} Will neg) for %{levels.Witch} rd 1/target/dy"',
   'Tongues Hex':
     'Section=magic ' +
     'Note="May understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
@@ -5863,7 +5863,7 @@ PFAPG.SPELLS = {
   'Acid Pit':
     'School=Conjuration ' +
     'Level=W4,Summoner4 ' +
-    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit (Climb DC 30) that inflicts 2d6 HP acid for %{lvl+1} rd"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit containing 5\' of acid for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 30 Climb to exit) and suffer 2d6 HP acid/rd; objects suffer broken after 3 rd (Fort delays 1 rd), then destroyed 1 rd later (Fort delays 1 rd)"',
   'Alchemical Allocation':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
@@ -5991,7 +5991,7 @@ PFAPG.SPELLS = {
   'Break':
     'School=Transmutation ' +
     'Level=W1 ' +
-    'Description="R$RS\' Target medium object becomes broken (Fort neg)"',
+    'Description="R$RS\' Medium object target becomes broken or already-broken object destroyed (Fort neg)"',
   'Brilliant Inspiration':
     'School=Evocation ' +
     'Level=B6,Leadership6 ' +
@@ -6019,7 +6019,7 @@ PFAPG.SPELLS = {
   'Calcific Touch':
     'School=Transmutation ' +
     'Level=W4 ' +
-    'Description="Touched suffers permanent 1d4 Dex damage and effects of Slow spell (Fort Dex only) 1/rd for %{lvl} rd"',
+    'Description="Touched suffers permanent 1d4 Dexterity damage and <i>Slow</i> effects (Fort Dexterity damage only) 1/rd for %{lvl} rd"',
   'Call Animal':
     'School=Enchantment ' +
     'Level=D1,R1 ' +
@@ -6075,7 +6075,7 @@ PFAPG.SPELLS = {
   'Contagious Flame':
     'School=Evocation ' +
     'Level=W6 ' +
-    'Description="R$RS\' %{(lvl+1)//4} ranged touch rays in 15\' radius inflict 4d6 HP fire, reflect to new targets for 3 rd"',
+    'Description="R$RS\' %{(lvl+1)//4>?3} ranged touch rays in 15\' radius each inflict 4d6 HP fire and move each rd up to $RS\' to a new target for 3 rd"',
   'Coordinated Effort':
     'School=Divination ' +
     'Level=B3,Inquisitor3 ' +
@@ -6099,7 +6099,7 @@ PFAPG.SPELLS = {
   'Create Pit':
     'School=Conjuration ' +
     'Level=Caves2,W2,Summoner2 ' +
-    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?30}\' deep extradimensional pit (Climb DC 25) for %{lvl+1} rd"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?30}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 25 Climb to exit)"',
   'Create Treasure Map':
     'School=Divination ' +
     'Level=B2,D3,R2,W2 ' +
@@ -6127,7 +6127,7 @@ PFAPG.SPELLS = {
   'Deflection':
     'School=Abjuration ' +
     'Level=Defense7,W7 ' +
-    'Description="Missed attacks on self reflected onto attacker for %{lvl} rd"',
+    'Description="Missed attacks on self inflict new attack on attacker for %{lvl} rd"',
   'Delayed Consumption':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
@@ -6147,7 +6147,7 @@ PFAPG.SPELLS = {
   'Devolution':
     'School=Transmutation ' +
     'Level=W3,Summoner3 ' +
-    'Description="R$RS\' Target eidolon loses %{lvl//5+1} evolutions for %{lvl} rd"',
+    'Description="R$RS\' Target eidolon loses %{lvl//5+1} evolutions (Will neg) for %{lvl} rd"',
   'Discordant Blast':
     'School=Evocation ' +
     'Level=B4 ' +
@@ -6195,7 +6195,7 @@ PFAPG.SPELLS = {
   'Enemy Hammer':
     'School=Transmutation ' +
     'Level=W6 ' +
-    'Description="R$RL\' Self can use target as 30\' thrown weapon (Fort neg, full-round resistance +4), inflicting 2d6 HP (medium target), for %{lvl} rd"',
+    'Description="R$RL\' Self can use target each rd for 30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack (Fort neg 1 rd, full-round resistance +4), inflicting 2d6 HP (medium target), for %{lvl} rd"',
   'Enter Image':
     'School=Transmutation ' +
     'Level=B2,C3,O3,W3 ' +
@@ -6207,15 +6207,15 @@ PFAPG.SPELLS = {
   'Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner3 ' +
-    'Description="Touched eidolon gains 4-point evolution for %{lvl} min"',
+    'Description="Touched eidolon gains evolution costing up to 4 points for %{lvl} min"',
   'Greater Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
-    'Description="Touched eidolon gains 6-point evolution for %{lvl} min"',
+    'Description="Touched eidolon gains 1 or 2 evolutions costing up to 6 points total for %{lvl} min"',
   'Lesser Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner2 ' +
-    'Description="Touched eidolon gains 2-point evolution for %{lvl} min"',
+    'Description="Touched eidolon gains evolution costing up to 2 points for %{lvl} min"',
   'Expeditious Excavation':
     'School=Transmutation ' +
     'Level=Deep1,D1,W1 ' +
@@ -6223,7 +6223,7 @@ PFAPG.SPELLS = {
   'Expend':
     'School=Abjuration ' +
     'Level=W7 ' +
-    'Description="R$RM\' 20\' radius inflicts ineffectual use of ability"',
+    'Description="R$RM\' 20\' radius successively drains creatures\' limited-use magical abilities (Will ends)"',
   'Feast Of Ashes':
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
@@ -6247,7 +6247,7 @@ PFAPG.SPELLS = {
   'Fiery Body':
     'School=Transmutation ' +
     'Level=Ash9,O9,W9 ' + // Oracle Flame
-    'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40\' Fly, dazzling brightness, 50% miss chance, regains HP/3 from fire damage, and suffers 2d6 HP/rd in water, for %{lvl} min"',
+    'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40\' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for %{lvl} min"',
   'Fire Breath':
     'School=Evocation ' +
     'Level=Alchemist2,W2 ' +
@@ -6271,11 +6271,11 @@ PFAPG.SPELLS = {
   'Firebrand':
     'School=Transmutation ' +
     'Level=W7 ' +
-    'Description="%{lvl//4} targets in 15\' radius gain torchlight, immunity to self fire spells, and 1d6 HP fire from attacks for %{lvl} rd; may end for R30\' ranged touch that inflicts 6d6 HP fire"',
+    'Description="R$RS\' %{lvl//4} targets in 15\' radius gain torchlight, immunity to self fire spells, and weapons inflict +1d6 HP fire for %{lvl} rd; target may end for R30\' ranged touch that inflicts 6d6 HP fire"',
   'Firefall':
     'School=Transmutation ' +
     'Level=W4 ' +
-    'Description="R$RL\' Target fire extinguished; 60\' radius inflicts 5d6 HP fire and catch on fire (Ref half HP only); 120\' radius inflicts blinded for 1d4+1 rd (Will neg)"',
+    'Description="R$RL\' 60\' radius around target fire inflicts 5d6 HP fire and catch on fire (Ref half HP only) and 120\' radius inflicts blinded for 1d4+1 rd (Will neg); fire creature target suffers %{lvl} HP; extinguishes normal target fire up 20\' cu"',
   'Flames Of The Faithful':
     'School=Transmutation ' +
     'Level=Inquisitor2 ' +
@@ -6379,7 +6379,7 @@ PFAPG.SPELLS = {
   'Hungry Pit':
     'School=Conjuration ' +
     'Level=Caves6,W5,Summoner5 ' +
-    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit (Climb DC 35) that inflicts 4d6 HP bludgeoning (Ref half) for %{lvl+1} rd"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 35 Climb to exit) and suffer 4d6 HP bludgeoning/rd (Ref half)"',
   "Hunter's Eye":
     'School=Divination ' +
     'Level=Inquisitor3,R2 ' +
@@ -6399,7 +6399,7 @@ PFAPG.SPELLS = {
   'Ill Omen':
     'School=Enchantment ' +
     'Level=Witch1 ' +
-    'Description="R$RS\' Target suffers worse of two rolls for next %{lvl//5+1} d20 rolls (prayer negates 1) w/in %{lvl} rd"',
+    'Description="R$RS\' Target suffers worse of two rolls for next %{lvl//5+1} d20 rolls (aware target can use move action to negate 1) w/in %{lvl} rd"',
   'Innocence':
     'School=Transmutation ' +
     'Level=B1 ' +
@@ -6499,11 +6499,11 @@ PFAPG.SPELLS = {
   'Pain Strike':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
-    'Description="R$RS\' Target suffers 1d6 HP nonlethal and sickened (Fort neg) and self gains +4 Intimidate for %{lvl<?10} rd"',
+    'Description="R$RS\' Target suffers 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. target for %{lvl<?10} rd"',
   'Mass Pain Strike':
     'School=Evocation ' +
     'Level=W5,Witch5 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius suffer 1d6 HP nonlethal and sickened (Fort neg) and self gains +4 Intimidate for %{lvl<?10} rd"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius suffer 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. targets for %{lvl<?10} rd"',
   "Paladin's Sacrifice":
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -6515,7 +6515,7 @@ PFAPG.SPELLS = {
   'Phantasmal Revenge':
     'School=Illusion ' +
     'Level=W7 ' +
-    'Description="Spectre from touched %{lvl}-day-old corpse finds killer and inflicts %{lvl*10} HP (Will 5d6+%{lvl} HP)"',
+    'Description="Spectre from touched %{lvl}-day-old corpse finds killer and inflicts %{lvl*10} HP (Will neg; DC %{spellDifficultyClass.W+7} Fort 5d6+%{lvl} HP)"',
   'Phantasmal Web':
     'School=Illusion ' +
     'Level=B5,Insanity6,W5 ' +
@@ -6535,7 +6535,7 @@ PFAPG.SPELLS = {
   'Mass Planar Adaptation':
     'School=Transmutation ' +
     'Level=W7,Summoner6 ' +
-    'Description="R$RS\' %{lvl} targets in 15\' radius gain immunity to environmental harm from chosen plan and 20 resistance to an associated energy for %{lvl} hr"',
+    'Description="R$RS\' %{lvl} targets in 15\' radius gain immunity to environmental harm from chosen plane and 20 resistance to an associated energy for %{lvl} hr"',
   'Pox Pustules':
     'School=Necromancy ' +
     'Level=D2,W2,Witch2 ' +
@@ -6551,11 +6551,11 @@ PFAPG.SPELLS = {
   'Purified Calling':
     'School=Conjuration ' +
     'Level=Summoner4 ' +
-    'Description="Summons eidolon w/full HP and no ability damage or temporary conditions"',
+    'Description="Subsequent summons brings eidolon w/full HP and no ability damage or temporary conditions"',
   'Putrefy Food And Drink':
     'School=Transmutation ' +
-    'Level=ArcaneTalent0,W0,Witch0 ' +
-    'Description="R10\' Fouls %{lvl}\' cu food and water or single potion"',
+    'Level=Witch0 ' +
+    'Description="R10\' Fouls single potion (Will neg) or %{lvl}\' cu food and water"',
   'Rally Point':
     'School=Enchantment ' +
     'Level=P1 ' +
@@ -6571,15 +6571,15 @@ PFAPG.SPELLS = {
   'Rejuvenate Eidolon':
     'School=Conjuration ' +
     'Level=Summoner3 ' +
-    'Description="Touched eidolon regains 3d10 HP+%{lvl<?10} HP"',
+    'Description="Touched eidolon regains 3d10+%{lvl<?10} HP"',
   'Greater Rejuvenate Eidolon':
     'School=Conjuration ' +
     'Level=Summoner5 ' +
-    'Description="Touched eidolon regains 5d10 HP+%{lvl<?20} HP"',
+    'Description="Touched eidolon regains 5d10+%{lvl<?20} HP"',
   'Lesser Rejuvenate Eidolon':
     'School=Conjuration ' +
     'Level=Summoner1 ' +
-    'Description="Touched eidolon regains 1d10 HP+%{lvl<?5} HP"',
+    'Description="Touched eidolon regains 1d10+%{lvl<?5} HP"',
   'Residual Tracking':
     'School=Divination ' +
     'Level=R1 ' +
@@ -6647,7 +6647,7 @@ PFAPG.SPELLS = {
   'Sculpt Corpse':
     'School=Necromancy ' +
     'Level=W1 ' +
-    'Description="Reshapes touched corpse to look like another creature"',
+    'Description="Reshapes touched corpse to look like another creature (Will detect (suspicious or familiar))"',
   'Seamantle':
     'School=Conjuration ' +
     'Level=Aquatic8,D8,O8,W8,Witch8 ' + // Oracle Waves, Witch Water
@@ -6659,7 +6659,7 @@ PFAPG.SPELLS = {
   'Shadow Projection':
     'School=Necromancy ' +
     'Level=W4 ' +
-    'Description="Self becomes shadow for %{lvl} hr; death reduces body to -1 HP"',
+    'Description="Self becomes undead shadow for %{lvl} hr; death reduces body to -1 HP"',
   'Share Language':
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,W2 ' +
@@ -6707,7 +6707,7 @@ PFAPG.SPELLS = {
   'Spiked Pit':
     'School=Conjuration ' +
     'Level=Caves3,W3,Summoner3 ' +
-    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?50}\' deep extradimensional pit (Climb DC 20) that inflicts +2d6 HP piercing from fall and 1d6 HP piercing from contact for %{lvl+1} rd"',
+    'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing"',
   'Spiritual Ally':
     'School=Evocation ' +
     'Level=C4,O4 ' +
@@ -6715,7 +6715,7 @@ PFAPG.SPELLS = {
   'Spite':
     'School=Abjuration ' +
     'Level=Witch4 ' +
-    'Description="Damage to self triggers level 4 spell for %{lvl} hr"',
+    'Description="First successful melee attack or combat maneuver on self inflicts chosen touch spell up to level 4 on attacker w/in %{lvl} hr"',
   'Stay The Hand':
     'School=Enchantment ' +
     'Level=P4 ' +
@@ -6747,15 +6747,15 @@ PFAPG.SPELLS = {
   'Suffocation':
     'School=Necromancy ' +
     'Level=Murder5,W5,Witch5 ' +
-    'Description="R$RS\' Target suffers unconsciousness next rd (Fort staggered 1 rd), then -1 HP (Fort delays 1 rd), then death (Fort delays 1 rd) for 3 rd"',
+    'Description="R$RS\' Target drops to 0 HP next rd (Fort staggered 1 rd), then drops to -1 HP (Fort delays 1 rd), then dies (Fort delays 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,W9,Witch9 ' +
-    'Description="R$RS\' %{lvl//2} targets in 15\' radius suffer unconsciousness next rd (Fort staggered 1 rd), then -1 HP (Fort delays 1 rd), then death (Fort delays 1 rd) for %{lvl} rd"',
+    'Description="R$RS\' %{lvl//2} targets in 15\' radius drop to 0 HP next rd (Fort staggered 1 rd), then drop to -1 HP (Fort delays 1 rd), then die (Fort delays 1 rd) for %{lvl} rd"',
   'Summon Eidolon':
     'School=Conjuration ' +
     'Level=Summoner2 ' +
-    'Description="R$RS\' Teleports eidolon companion from home plane for %{lvl} min"',
+    'Description="R$RS\' Brings eidolon companion from home plane for %{lvl} min"',
   'Swarm Skin':
     'School=Transmutation ' +
     'Level=D6,Witch6 ' +
@@ -6795,7 +6795,7 @@ PFAPG.SPELLS = {
   'Transmogrify':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
-    'Description="Modifies eidolon and self evolutions 1/dy"',
+    'Description="Replaces evolutions applied to eidolon and self with others 1/dy"',
   'Transmute Potion To Poison':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
@@ -6815,7 +6815,7 @@ PFAPG.SPELLS = {
   'Twilight Knife':
     'School=Evocation ' +
     'Level=W3,Witch3 ' +
-    'Description="R$RS\' Force knife flanks and attacks (+%{baseAttack+(intelligenceModifier>?charismaModifier)}) same foe as self, inflicts 1d4 HP plus %{lvl//4}d6 HP sneak attack for %{lvl} rd"',
+    'Description="R$RS\' Force knife flanks and makes +%{baseAttack+(intelligenceModifier>?charismaModifier)} attacks on same foe as self, inflicts 1d4 HP plus %{lvl//4}d6 HP sneak attack for %{lvl} rd"',
   'Twin Form':
     'School=Transmutation ' +
     'Level=Alchemist6 ' +
@@ -6871,7 +6871,7 @@ PFAPG.SPELLS = {
   'Wall Of Suppression':
     'School=Abjuration ' +
     'Level=W9 ' +
-    'Description="R$RM\' Creates %{lvl*2} 5\' sq wall sections that suppress passing magic effects for %{lvl} rd for %{lvl*10} min"',
+    'Description="R$RM\' Creates %{lvl*2} 5\' sq wall sections that suppress for %{lvl} rd passing magic effects and spells up to caster level %{lvl} for %{lvl*10} min"',
   'Wandering Star Motes':
     'School=Illusion ' +
     'Level=B4,W4,Witch4 ' +
@@ -9070,7 +9070,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.flightHex.1',
       'features.Flight Hex', '?', null,
-      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", use <i>Fly</i> effects %{levels.Witch} min/dy" : "")'
+      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> effects %{levels.Witch} min/dy" : "")'
     );
     rules.defineRule
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
@@ -9078,6 +9078,51 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
     rules.defineRule('selectableFeatureCount.Witch (Patron)',
       'featureNotes.patron', '+=', '1'
+    );
+    Pathfinder.featureSpells(rules,
+      "Hag's Eye Hex", "Hag'sEyeHex", 'intelligence', 'levels.Witch',
+      '10+levels.Witch//2+intelligenceModifier', ['Arcane Eye']
+    );
+    Pathfinder.featureSpells(rules,
+      'Disguise Hex', 'DisguiseHex', 'intelligence', 'levels.Witch', null,
+      ['Disguise Self']
+    );
+    Pathfinder.featureSpells(rules,
+      'Flight Hex', 'FlightHex', 'intelligence', 'levels.Witch', null,
+      ['Feather Fall', '3:Levitate', '5:Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Forced Reincarnation Hex', 'ForcedReincarnationHex', 'intelligence',
+      'levels.Witch', null, ['Reincarnate']
+    );
+    Pathfinder.featureSpells(rules,
+      'Healing Hex', 'HealingHex', 'intelligence', 'levels.Witch', null,
+      ['Cure Light Wounds', '5:Cure Moderate Wounds']
+    );
+    Pathfinder.featureSpells(rules,
+      'Life Giver Hex', 'LifeGiverHex', 'intelligence', 'levels.Witch', null,
+      ['Resurrection']
+    );
+    Pathfinder.featureSpells(rules,
+      'Major Healing Hex', 'MajorHealingHex', 'intelligence', 'levels.Witch',
+      null, ['Cure Serious Wounds', '15:Cure Critical Wounds']
+    );
+    Pathfinder.featureSpells(rules,
+      'Natural Disaster Hex', 'NaturalDisasterHex', 'intelligence',
+      'levels.Witch', '10+levels.Witch//2+intelligenceModifier',
+      ['Earthquake', 'Storm Of Vengeance']
+    );
+    Pathfinder.featureSpells(rules,
+      'Nightmares Hex', 'NightmaresHex', 'intelligence', 'levels.Witch',
+      '10+levels.Witch//2+intelligenceModifier', ['Nightmare']
+    );
+    Pathfinder.featureSpells(rules,
+      'Slumber Hex', 'SlumberHex', 'intelligence', 'levels.Witch', null,
+      ['Sleep']
+    );
+    Pathfinder.featureSpells(rules,
+      'Weather Control Hex', 'WeatherControlHex', 'intelligence',
+      'levels.Witch', null, ['Control Weather']
     );
   } else if(name == 'Barbarian') {
     rules.defineRule('armorClass',
