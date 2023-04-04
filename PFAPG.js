@@ -1762,7 +1762,7 @@ PFAPG.FEATURES = {
     'Note="Touch kills vegetation in %{levels.Witch * 10}\' radius over 1 wk or inflicts -1 Con/dy"',
   'Cackle Hex':
     'Section=magic ' +
-    'Note="R30\' Extends self agony, charm, evil eye, fortune, and misfortune hex affects for 1 rd"',
+    'Note="R30\' Extends self agony, charm, evil eye, fortune, and misfortune hex effects for 1 rd"',
   // Cantrips as Summoner
   'Cauldron Hex':
     'Section=feature,skill ' +
@@ -1771,7 +1771,7 @@ PFAPG.FEATURES = {
       '"+4 Craft (Alchemy)"',
   'Charm Hex':
     'Section=skill ' +
-    'Note="R30\' Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+    'Note="R30\' Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd 1/target/dy"',
   'Coven Hex':
     'Section=feature,magic ' +
     'Note=' +
@@ -1798,11 +1798,11 @@ PFAPG.FEATURES = {
   'Flight Hex':
     'Section=magic,skill ' +
     'Note=' +
-      '"May use <i>Feather Fall</i> effects at will%1",' +
+      '"May use self <i>Feather Fall</i> effects at will%1",' +
       '"+4 Swim"',
   'Forced Reincarnation Hex':
     'Section=magic ' +
-    'Note="R30\' Target killed and receives <i>Reincarnate</i> (DC %{hexDC} Will neg) 1/target/dy"',
+    'Note="R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will neg) 1/target/dy"',
   'Fortune Hex':
     'Section=magic ' +
     'Note="R30\' Target gains better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
@@ -1837,10 +1837,10 @@ PFAPG.FEATURES = {
     'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
   'Slumber Hex':
     'Section=magic ' +
-    'Note="R30\' May use <i>Sleep</i> effects (DC %{hexDC} Will neg) for %{levels.Witch} rd 1/target/dy"',
+    'Note="R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will neg) for %{levels.Witch} rd 1/target/dy"',
   'Tongues Hex':
     'Section=magic ' +
-    'Note="May understand%{levels.Witch>=5 ? \' and speak\' : \'\'} any spoken language for %{levels.Witch} min/dy"',
+    'Note="May use self <i>Comprehend Languages</i>%{levels.Witch>=5 ? \' and <i>Tongues</i>\' : \'\'} effects for %{levels.Witch} min/dy"',
   'Vision Hex':
     'Section=magic ' +
     'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
@@ -9070,7 +9070,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.flightHex.1',
       'features.Flight Hex', '?', null,
-      classLevel, '=', '(source>=3 ? ", <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", <i>Fly</i> effects %{levels.Witch} min/dy" : "")'
+      classLevel, '=', '(source>=3 ? ", self <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", self <i>Fly</i> effects %{levels.Witch} min/dy" : "")'
     );
     rules.defineRule
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
@@ -9080,7 +9080,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.patron', '+=', '1'
     );
     Pathfinder.featureSpells(rules,
-      "Hag's Eye Hex", "Hag'sEyeHex", 'intelligence', 'levels.Witch',
+      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', 'levels.Witch',
       '10+levels.Witch//2+intelligenceModifier', ['Arcane Eye']
     );
     Pathfinder.featureSpells(rules,
@@ -9119,6 +9119,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Slumber Hex', 'SlumberHex', 'intelligence', 'levels.Witch', null,
       ['Sleep']
+    );
+    Pathfinder.featureSpells(rules,
+      'Tongues Hex', 'TonguesHex', 'intelligence', 'levels.Witch', null,
+      ['Comprehend Languages', '5:Tongues']
     );
     Pathfinder.featureSpells(rules,
       'Weather Control Hex', 'WeatherControlHex', 'intelligence',
