@@ -1589,7 +1589,9 @@ PFAPG.FEATURES = {
   'Ability Score Increase':
     'Section=companion ' +
     'Note="+%{levels.Summoner>=15 ? 3 : levels.Summoner>=10 ? 2 : 1} distributed among eidolon abilities"',
-  'Aspect':'Section=feature Note="May apply %V evolution points to self"',
+  'Aspect':
+    'Section=feature ' +
+    'Note="May use 2 points from evolution pool to apply 2 points of evolutions to self"',
   'Bite Evolution':
     'Section=companion ' +
     'Note="Bite attack inflicts %{eidolonDamage}+%{eidolonPrimaryDamageBonus} HP"',
@@ -1600,7 +1602,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Unaffected by darkness or foe invisibility or concealment"',
   'Bond Senses':
     'Section=feature ' +
-    'Note="May use eidolon senses for %{levels.Summoner} rd/dy"',
+    'Note="May perceive via eidolon senses for %{levels.Summoner} rd/dy"',
   'Breath Weapon Evolution':
     'Section=companion ' +
     'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Ref half) %V/dy"',
@@ -1632,12 +1634,14 @@ PFAPG.FEATURES = {
   'Grab Evolution':
     'Section=companion ' +
     'Note="Successful chosen natural attack allows free combat maneuver to grapple/+4 grapple CMB"',
-  'Greater Aspect':'Section=feature Note="Increased Aspect Effects"',
+  'Greater Aspect':
+    'Section=feature ' +
+    'Note="May use 3 points from evolution pool to apply 6 points of evolutions to self"',
   'Greater Shield Ally (Summoner)':
     'Section=combat,save ' +
     'Note=' +
-      '"+2 ally AC (+4 self) when eidolon is within reach",' +
-      '"+2 ally saves (+4 self) when eidolon is within reach"',
+      '"Allies gain +2 AC and self gains +4 AC when eidolon is within reach",' +
+      '"Allies gain +2 saves and self gains +4 saves when eidolon is within reach"',
   'Immunity Evolution':
     'Section=companion Note="Immune to each of %V chosen energy type(s)"',
   'Improved Damage Evolution':
@@ -1650,7 +1654,7 @@ PFAPG.FEATURES = {
     'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, +%4 CMB/CMD, and %5\' reach; suffers %6 Dex, %7 Attack, %8 Fly, %9 Stealth"',
   'Life Bond':
     'Section=combat ' +
-    'Note="Damage that would reduce self to negative HP transferred to eidolon"',
+    'Note="Transfers to eidolon damage that would reduce self to negative HP"',
   'Life Link (Summoner)':
     'Section=combat ' +
     'Note="May transfer damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
@@ -1659,7 +1663,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="Has %V pairs of legs; +%1 speed"',
   'Link (Summoner)':
     'Section=companion ' +
-    'Note="May communicate w/eidolon over any distance/Shares magic item slots w/eidolon"',
+    'Note="May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon"',
   'Magic Attacks Evolution':
     'Section=companion ' +
     'Note="Natural attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
@@ -1698,12 +1702,12 @@ PFAPG.FEATURES = {
   'Scent Evolution':'Section=companion Note="R30\' May detect foes by smell"',
   'Share Spells (Summoner)':
     'Section=companion ' +
-    'Note="May cast spells that effect self on eidolon instead"',
+    'Note="May cast spells that affect self on eidolon as touch spells"',
   'Shield Ally (Summoner)':
     'Section=combat,save ' +
     'Note=' +
-      '"+2 AC when eidolon is within reach",' +
-      '"+2 saves when eidolon is within reach"',
+      '"Self gains +2 AC when eidolon is within reach",' +
+      '"Self gains +2 saves when eidolon is within reach"',
   'Skilled Evolution':
     'Section=companion Note="+8 on each of %V chosen skill(s)"',
   'Slam Evolution':
@@ -9019,10 +9023,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     ];
     QuilvynRules.featureListRules
       (rules, features, 'Animal Companion', 'eidolonMasterLevel', false);
-    rules.defineRule('featureNotes.aspect',
-      classLevel, '=', '2',
-      'featureNotes.greaterAspect', '+', '4'
-    );
     rules.defineRule('magicNotes.summonMonster',
       classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.min(Math.floor((source - 1) / 2), 8)]'
     );
@@ -9054,6 +9054,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('summonerFeatures.Tail Slap Evolution',
       'animalCompanion.Serpentine Eidolon', '+=', '1'
+    );
+    Pathfinder.featureSpells(rules,
+      "Maker's Call", 'MakersCall', 'charisma', 'levels.Summoner', null,
+      ['Dimension Door']
     );
     // Make sure the editor allows multiple selections of selectableFeatures
     rules.defineEditorElement('selectableFeatures');
