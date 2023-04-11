@@ -59,13 +59,13 @@ PFAPG.ANIMAL_COMPANIONS = {
   // Attack, Dam, AC include all modifiers
   'Biped Eidolon':
     'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=13 Attack=3 ' +
-    'Dam=2@1d4+3 Size=M', // Save F/R/W: G/B/G
+    'Dam=2@1d4+3 Size=M Speed=30', // Save F/R/W: G/B/G
   'Quadruped Eidolon':
     'Str=14 Dex=14 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=14 Attack=2 ' +
-    'Dam=1d6+2 Size=M', // Save F/R/W: G/G/B
+    'Dam=1d6+2 Size=M Speed=40', // Save F/R/W: G/G/B
   'Serpentine Eidolon':
     'Str=12 Dex=16 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=15 Attack=1 ' +
-    'Dam=1d6+1,1d6+1 Size=M' // Save F/R/W: B/G/G
+    'Dam=1d6+1,1d6+1 Size=M Speed=20' // Save F/R/W: B/G/G
 };
 PFAPG.ARMORS = {
   'Agile Breastplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
@@ -8842,7 +8842,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'companionNotes.smallEidolon', '+', '-4'
     );
     rules.defineRule
-      ('animalCompanionStats.Tricks', 'companionIsNotEidolon', '?', null);
+      ('animalCompanionStats.Tricks', 'eidolonMasterLevel', 'v', '0');
     rules.defineRule('companionNotes.burrowEvolution',
       'eidolonSpeed', '=', 'Math.floor(source / 2)',
       'summonerFeatures.Flight Evolution', '+', '(source - 1) * 20'
