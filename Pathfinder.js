@@ -118,60 +118,70 @@ Pathfinder.ANIMAL_COMPANIONS = {
   // Attack, Dam, AC include all modifiers
   'Ape':
     'Str=13 Dex=17 Con=10 Int=2 Wis=12 Cha=7 AC=14 Attack=1 ' +
-    'Dam=2@1d4+1,1d4+1 Size=M',
+    'Dam=2@1d4+1,1d4+1 Size=M Speed=30',
   'Badger':
-    'Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 AC=16 Attack=1 Dam=1d4 Size=S',
+    'Str=10 Dex=17 Con=15 Int=2 Wis=12 Cha=10 AC=16 Attack=1 Dam=1d4 ' +
+    'Size=S Speed=30',
   'Bear':
     'Str=15 Dex=15 Con=13 Int=2 Wis=12 Cha=6 AC=15 Attack=3 ' +
-    'Dam=2@1d3+2,1d4+2 Size=S',
+    'Dam=2@1d3+2,1d4+2 Size=S Speed=40',
   'Boar':
-    'Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4 AC=18 Attack=2 Dam=1d6+1 Size=S',
+    'Str=13 Dex=12 Con=15 Int=2 Wis=13 Cha=4 AC=18 Attack=2 Dam=1d6+1 ' +
+    'Size=S Speed=40',
   'Camel':
-    'Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4 AC=13 Attack=3 Dam=1d4+4 Size=L',
+    'Str=18 Dex=16 Con=14 Int=2 Wis=11 Cha=4 AC=13 Attack=3 Dam=1d4+4 ' +
+    'Size=L Speed=50',
   'Cheetah':
     'Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 AC=17 Attack=2 ' +
-    'Dam=2@1d2+1,1d4+1 Size=S',
+    'Dam=2@1d2+1,1d4+1 Size=S Speed=50',
   'Constrictor':
-    'Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2 AC=15 Attack=2 Dam=1d3+2 Size=M',
+    'Str=15 Dex=17 Con=13 Int=1 Wis=12 Cha=2 AC=15 Attack=2 Dam=1d3+2 ' +
+    'Size=M Speed=20',
   'Crocodile':
-    'Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2 AC=17 Attack=3 Dam=1d6+2 Size=S',
+    'Str=15 Dex=14 Con=15 Int=1 Wis=12 Cha=2 AC=17 Attack=3 Dam=1d6+2 ' +
+    'Size=S Speed=30',
   'Deinonychus':
     'Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 AC=15 Attack=1 Dam=2@1d6,1d4 ' +
-    'Size=S',
+    'Size=S Speed=60',
   'Dog':
-    'Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6 AC=16 Attack=2 Dam=1d4+1 Size=S',
+    'Str=13 Dex=17 Con=15 Int=2 Wis=12 Cha=6 AC=16 Attack=2 Dam=1d4+1 ' +
+    'Size=S Speed=40',
   'Eagle':
     'Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 AC=14 Attack=1 Dam=2@1d4,1d4 ' +
-    'Size=S',
+    'Size=S Speed=80',
   'Hawk':
     'Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 AC=14 Attack=1 Dam=2@1d4,1d4 ' +
-    'Size=S',
+    'Size=S Speed=80',
   'Horse':
     'Str=16 Dex=13 Con=15 Int=2 Wis=12 Cha=6 AC=14 Attack=2 ' +
-    'Dam=2@1d6+3,1d4+3 Size=L',
+    'Dam=2@1d6+3,1d4+3 Size=L Speed=50',
   'Leopard':
     'Str=12 Dex=21 Con=13 Int=2 Wis=12 Cha=6 AC=17 Attack=2 ' +
-    'Dam=2@1d2+1,1d4+1 Size=S',
+    'Dam=2@1d2+1,1d4+1 Size=S Speed=50',
   'Lion':
     'Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 AC=14 Attack=1 ' +
-    'Dam=2@1d4+1,1d6+1 Size=M',
+    'Dam=2@1d4+1,1d6+1 Size=M Speed=40',
   'Owl':
     'Str=10 Dex=15 Con=12 Int=2 Wis=14 Cha=6 AC=14 Attack=1 Dam=2@1d4,1d4 ' +
-    'Size=S',
+    'Size=S Speed=80',
   'Pony':
-    'Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4 AC=13 Attack=1 Dam=2@1d3+1 Size=M',
+    'Str=13 Dex=13 Con=12 Int=2 Wis=11 Cha=4 AC=13 Attack=1 Dam=2@1d3+1 ' +
+    'Size=M Speed=50',
   'Shark':
-    'Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2 AC=17 Attack=2 Dam=1d4+1 Size=S',
+    'Str=13 Dex=15 Con=15 Int=1 Wis=12 Cha=2 AC=17 Attack=2 Dam=1d4+1 ' +
+    'Size=S Speed=60',
   'Tiger':
     'Str=13 Dex=17 Con=13 Int=2 Wis=15 Cha=10 AC=14 Attack=1 ' +
-    'Dam=2@1d4+1,1d6+1 Size=M',
+    'Dam=2@1d4+1,1d6+1 Size=M Speed=40',
   'Velociraptor':
     'Str=11 Dex=17 Con=17 Int=2 Wis=12 Cha=14 AC=15 Attack=1 Dam=2@1d6,1d4 ' +
-    'Size=S',
+    'Size=S Speed=60',
   'Viper':
-    'Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2 AC=16 Attack=0 Dam=1d3-1 Size=S',
+    'Str=8 Dex=17 Con=11 Int=1 Wis=12 Cha=2 AC=16 Attack=0 Dam=1d3-1 ' +
+    'Size=S Speed=20',
   'Wolf':
-    'Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 AC=14 Attack=1 Dam=1d6+1 Size=M'
+    'Str=13 Dex=15 Con=15 Int=2 Wis=12 Cha=6 AC=14 Attack=1 Dam=1d6+1 ' +
+    'Size=M Speed=50'
 };
 Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
   'Advanced Ape': Pathfinder.ANIMAL_COMPANIONS.Ape +
@@ -257,69 +267,70 @@ Pathfinder.FAMILIARS = {
   // Attack, Dam, AC include all modifiers
   'Bat':
     'Str=1 Dex=15 Con=6 Int=2 Wis=14 Cha=5 HD=1 AC=16 Attack=6 Dam=1d3-5 ' +
-    'Size=D',
+    'Size=D Speed=40',
   'Cat':
     'Str=3 Dex=15 Con=8 Int=2 Wis=12 Cha=7 HD=1 AC=14 Attack=4 ' +
-    'Dam=2@1d2-4,1d3-4 Size=T',
+    'Dam=2@1d2-4,1d3-4 Size=T Speed=30',
   'Hawk':
     'Str=6 Dex=17 Con=11 Int=2 Wis=14 Cha=7 HD=1 AC=15 Attack=5 Dam=2@1d4-2 ' +
-    'Size=T',
+    'Size=T Speed=60',
   'Lizard':
     'Str=3 Dex=15 Con=8 Int=1 Wis=12 Cha=2 HD=1 AC=14 Attack=4 Dam=1d4-4 ' +
-    'Size=T',
+    'Size=T Speed=20',
   'Monkey':
     'Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5 HD=1 AC=14 Attack=4 Dam=1d3-4 ' +
-    'Size=T',
+    'Size=T Speed=30',
   'Owl':
     'Str=6 Dex=17 Con=11 Int=2 Wis=15 Cha=6 HD=1 AC=15 Attack=5 Dam=2@1d4-2 ' +
-    'Size=T',
+    'Size=T Speed=60',
   'Rat':
     'Str=2 Dex=15 Con=11 Int=2 Wis=13 Cha=2 HD=1 AC=14 Attack=4 Dam=1d3-4 ' +
-    'Size=T',
+    'Size=T Speed=15',
   'Raven':
     'Str=2 Dex=15 Con=8 Int=2 Wis=15 Cha=7 HD=1 AC=14 Attack=4 Dam=1d3-4 ' +
-    'Size=T',
+    'Size=T Speed=40',
   'Toad':
-    'Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4 HD=1 AC=15 Attack=0 Dam=0 Size=D',
+    'Str=1 Dex=12 Con=6 Int=1 Wis=15 Cha=4 HD=1 AC=15 Attack=0 Dam=0 ' +
+    'Size=D Speed=5',
   'Viper':
     'Str=4 Dex=17 Con=8 Int=1 Wis=13 Cha=2 HD=1 AC=16 Attack=5 Dam=1d2-2 ' +
-    'Size=T',
+    'Size=T Speed=20',
   'Weasel':
     'Str=3 Dex=15 Con=10 Int=2 Wis=12 Cha=5 HD=1 AC=15 Attack=4 Dam=1d3-4 ' +
-    'Size=T',
+    'Size=T Speed=20',
   'Air Elemental':
     'Str=12 Dex=17 Con=12 Int=4 Wis=11 Cha=11 HD=2 AC=17 Attack=6 Dam=1d4+1 ' +
-    'Size=S Level=5',
+    'Size=S Speed=100 Level=5',
   'Dire Rat':
     'Str=10 Dex=17 Con=13 Int=2 Wis=13 Cha=4 HD=1 AC=14 Attack=1 Dam=1d4 ' +
-    'Size=S Level=3',
+    'Size=S Speed=40 Level=3',
   'Earth Elemental':
     'Str=16 Dex=8 Con=13 Int=4 Wis=11 Cha=11 HD=2 AC=17 Attack=6 Dam=1d6+4 ' +
-    'Size=S Level=5',
+    'Size=S Speed=20 Level=5',
   'Fire Elemental':
     'Str=10 Dex=13 Con=10 Int=4 Wis=11 Cha=11 HD=2 AC=16 Attack=4 Dam=1d4 ' +
-    'Size=S Level=5',
+    'Size=S Speed=50 Level=5',
   'Homunculus':
     'Str=8 Dex=15 Con=0 Int=10 Wis=12 Cha=7 HD=2 AC=14 Attack=3 Dam=1d4-1 ' +
-    'Size=T Level=7',
+    'Size=T Speed=50 Level=7',
   'Imp':
     'Str=10 Dex=17 Con=10 Int=13 Wis=12 Cha=14 HD=3 AC=17 Attack=8 Dam=1d4 ' +
-    'Size=T Level=7',
+    'Size=T Speed=50 Level=7',
   'Mephit':
     'Str=13 Dex=15 Con=12 Int=6 Wis=11 Cha=14 HD=3 AC=17 Attack=5 Dam=1d3+1 ' +
-    'Size=S Level=7',
+    'Size=S Speed=40 Level=7',
   'Pseudodragon':
     'Str=7 Dex=15 Con=13 Int=10 Wis=12 Cha=10 HD=2 AC=16 Attack=6 ' +
-    'Dam=1d3-2,1d2-2 Size=T Level=7',
+    'Dam=1d3-2,1d2-2 Size=T Speed=60 Level=7',
   'Quasit':
     'Str=8 Dex=14 Con=11 Int=11 Wis=12 Cha=11 HD=3 AC=16 Attack=7 ' +
-    'Dam=1d3-1,1d4-1 Size=T Level=7',
+    'Dam=1d3-1,1d4-1 Size=T Speed=50 Level=7',
   'Stirge':
     'Str=3 Dex=19 Con=10 Int=1 Wis=12 Cha=6 HD=1 AC=16 Attack=7 Dam=0 Size=M ' +
-    'Level=5',
+    'Level=5 Speed=40',
   'Water Elemental':
     'Str=14 Dex=10 Con=13 Int=4 Wis=11 Cha=11 HD=2 AC=17 Attack=5 Dam=1d6+3 ' +
-    'Size=T Level=5'
+    'Size=T Speed=90 Level=5'
 };
 Pathfinder.FEATS = {
   'Acrobatic':'Type=General',
@@ -4659,6 +4670,28 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   );
   rules.defineSheetElement('Combat Maneuver Bonus', 'CombatManeuver/', '%V');
   rules.defineSheetElement('Combat Maneuver Defense', 'CombatManeuver/', '%V');
+  rules.defineSheetElement(
+    'CompanionTalents', 'CompanionAbilities/',
+    '<b>Tricks/Feats/Skills</b>: %V', '/'
+  );
+  rules.defineSheetElement
+    ('Animal Companion Stats.Tricks', 'CompanionTalents/', '%V');
+  rules.defineSheetElement
+    ('Animal Companion Stats.Feats', 'CompanionTalents/', '%V');
+  rules.defineSheetElement
+    ('Animal Companion Stats.Skills', 'CompanionTalents/', '%V');
+  rules.defineSheetElement(
+    'CompanionManeuver', 'CompanionSaves', '<b>CMB/CMD</b>: %V', '/'
+  );
+  rules.defineSheetElement
+    ('Animal Companion Stats.CMB', 'CompanionManeuver/', '%V');
+  rules.defineSheetElement
+    ('Animal Companion Stats.CMD', 'CompanionManeuver/', '%V');
+  rules.defineSheetElement(
+    'FamiliarManeuver', 'FamiliarSaves', '<b>CMB/CMD</b>: %V', '/'
+  );
+  rules.defineSheetElement('Familiar Stats.CMB', 'FamiliarManeuver/', '%V');
+  rules.defineSheetElement('Familiar Stats.CMD', 'FamiliarManeuver/', '%V');
 };
 
 /* Defines rules related to basic character identity. */
@@ -4819,6 +4852,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
       QuilvynUtils.getAttrValue(attrs, 'Size'),
+      QuilvynUtils.getAttrValue(attrs, 'Speed'),
       QuilvynUtils.getAttrValue(attrs, 'Level')
     );
   else if(type == 'Armor')
@@ -4872,6 +4906,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Attack'),
       QuilvynUtils.getAttrValueArray(attrs, 'Dam'),
       QuilvynUtils.getAttrValue(attrs, 'Size'),
+      QuilvynUtils.getAttrValue(attrs, 'Speed'),
       QuilvynUtils.getAttrValue(attrs, 'Level')
     );
   else if(type == 'Feat') {
@@ -6122,20 +6157,26 @@ Pathfinder.classRulesExtra = function(rules, name) {
  * Defines in #rules# the rules associated with animal companion #name#, which
  * has abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The companion has attack bonus #attack#, does
- * #damage# damage, and is size #size#. If specified, #level# indicates the
- * minimum master level the character needs to have this animal as a companion.
+ * #damage# damage, moves at #speed# (which may be fly or swim speed for
+ * creatures who normally use that form of movement) and is size #size#. If
+ * specified, #level# indicates the minimum master level the character needs to
+ * have this animal as a companion.
  */
 Pathfinder.companionRules = function(
-  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level
+  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size,
+  speed, level
 ) {
   // NOTE The PRD calculates HD from master level, in contrast to the SRD's
   // addition to a starting value
-  SRD35.companionRules
-    (rules, name, str, dex, con, intel, wis, cha, 1, ac, attack, damage, size, level);
+  SRD35.companionRules(
+    rules, name, str, dex, con, intel, wis, cha, 1, ac, attack, damage, size,
+    speed, level
+  );
   if(name.startsWith('Advanced ') && level) {
     name = name.replace('Advanced ', '');
-    rules.defineRule
-      ('animalCompanionStats.Advance Level', 'animalCompanion.' + name, '=', level);
+    rules.defineRule('animalCompanionStats.Advance Level',
+      'animalCompanion.' + name, '=', level
+    );
   }
 };
 
@@ -6179,14 +6220,19 @@ Pathfinder.factionRules = function(rules, name, seasons, successor) {
  * Defines in #rules# the rules associated with familiar #name#, which has
  * abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The familiar has attack bonus #attack#, does
- * #damage# damage, and is size #size#. If specified, #level# indicates the
- * minimum master level the character needs to have this animal as a familiar.
+ * #damage# damage, moves at #speed# (which may be fly or swim speed for
+ * creatures who normally use that form of movement) and is size #size#. If
+ * specified, #level# indicates the minimum master level the character needs to
+ * have this animal as a familiar.
  */
 Pathfinder.familiarRules = function(
-  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level
+  rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size,
+  speed, level
 ) {
-  SRD35.familiarRules
-    (rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size, level);
+  SRD35.familiarRules(
+    rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size,
+    speed, level
+  );
   // No changes needed to the rules defined by SRD35 method
 };
 
