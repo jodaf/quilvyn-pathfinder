@@ -1611,7 +1611,7 @@ PFAPG.FEATURES = {
   'Cantrips':'Section=magic Note="May cast 0-level spells"',
   'Claws Evolution':
     'Section=companion ' +
-    'Note="Claw attacks inflicts %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP each"',
+    'Note="Claw attacks inflict %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP each"',
   'Climb Evolution':'Section=companion Note="%V\' Climb"',
   'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
   'Constrict Evolution':
@@ -1660,7 +1660,7 @@ PFAPG.FEATURES = {
     'Note="May transfer damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
   'Limbs (Arms) Evolution':'Section=companion Note="Has %V pairs of arms"',
   'Limbs (Legs) Evolution':
-    'Section=companion Note="Has %V pairs of legs; +%1 speed"',
+    'Section=companion Note="%V pairs of legs give +%1 speed"',
   'Link (Summoner)':
     'Section=companion ' +
     'Note="May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon"',
@@ -8964,11 +8964,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Swim Evolution', '+', '(source - 1) * 20'
     );
     rules.defineRule('companionNotes.tailEvolution',
-      'animalCompanion.Serpentine Eidolon', '+=', '2',
-      'summonerFeatures.Tail Evolution', '+=', 'source * 2'
+      'summonerFeatures.Tail Evolution', '=', 'source * 2'
     );
     rules.defineRule('companionNotes.weaponTrainingEvolution.1',
       'summonerFeatures.Weapon Training Evolution', '=', 'source>=2 ? " and martial" : ""'
+    );
+    rules.defineRule('companionStats.Speed',
+      'companionNotes.limbs(Legs)Evolution.1', '+', null
     );
     rules.defineRule('eidolonAttackAdjustment',
       'features.eidolon', '?', null,
@@ -8989,7 +8991,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
     rules.defineRule('eidolonPrimaryDamageBonus',
       'features.Eidolon', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(Math.floor((source - 10) / 2) * 1.5)'
+      'animalCompanionStats.Str', '=', 'Math.floor(Math.floor((source - 10) / 2) * (source>=14 ? 1.5 : 1))'
     );
     rules.defineRule('eidolonSecondaryDamageBonus',
       'features.Eidolon', '?', null,
