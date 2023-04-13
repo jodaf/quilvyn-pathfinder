@@ -8836,6 +8836,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanionStats.Skills',
       'eidolonMasterLevel', '=', '(source - Math.floor(source / 4)) * 4'
     );
+    rules.defineRule('animalCompanionStats.Speed',
+      'companionNotes.limbs(Legs)Evolution.1', '+', null
+    );
     rules.defineRule('animalCompanionStats.Str',
       'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
       'companionNotes.largeEvolution.1', '+', null,
@@ -8968,9 +8971,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('companionNotes.weaponTrainingEvolution.1',
       'summonerFeatures.Weapon Training Evolution', '=', 'source>=2 ? " and martial" : ""'
-    );
-    rules.defineRule('companionStats.Speed',
-      'companionNotes.limbs(Legs)Evolution.1', '+', null
     );
     rules.defineRule('eidolonAttackAdjustment',
       'features.eidolon', '?', null,
