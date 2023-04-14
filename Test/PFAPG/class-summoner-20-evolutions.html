@@ -325,7 +325,7 @@ var attributes = {
         <td><b>Wis</b>: 10 (+0)</td>
         <td><b>Cha</b>: 11 (+0)</td>
         <td><b>Size</b>: L</td>
-        <td><b>Speed</b>: 40</td>
+        <td><b>Speed</b>: 30</td>
         <td><b>Tricks/Feats/Skills</b>: 0/8/60</td>
       </tr></table>
 </td>
@@ -335,7 +335,7 @@ var attributes = {
         <td><b>HD/HP</b>: 15/112</td>
         <td><b>Init</b>: +4</td>
         <td><b>AC</b>: 35</td>
-        <td><b>Attack</b>: +25 2@1d4+16</td>
+        <td><b>Attack</b>: +25 1d8+11,2@1d6+11,2d6+11,2@1d8+5,2d6+11,1d6+11,1d8+5,1d6+5,1d6+5</td>
         <td><b>CMB/CMD</b>: +27/41</td>
         <td><b>Fort/Ref/Will</b>: +12/+9/+9</td>
       </tr></table>
@@ -357,7 +357,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Ability Score Increase: +3 distributed among eidolon abilities</td>
     </tr><tr style="text-align:center">
-      <td>Bite Evolution: Bite attack inflicts 1d8+16 HP</td>
+      <td>Bite Evolution: Bite attack inflicts 1d8+11 HP</td>
     </tr><tr style="text-align:center">
       <td>Blindsense Evolution: R30' May detect unseen creatures</td>
     </tr><tr style="text-align:center">
@@ -367,7 +367,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Burrow Evolution: May burrow through earth at 15'</td>
     </tr><tr style="text-align:center">
-      <td>Claws Evolution: Claw attacks inflict 1d6+16 HP each</td>
+      <td>Claws Evolution: Claw attacks inflict 1d6+11 HP each</td>
     </tr><tr style="text-align:center">
       <td>Climb Evolution: 30' Climb</td>
     </tr><tr style="text-align:center">
@@ -393,7 +393,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Gills Evolution: May breathe underwater</td>
     </tr><tr style="text-align:center">
-      <td>Gore Evolution: Horn attack inflicts 1d8+16 HP</td>
+      <td>Gore Evolution: Horn attack inflicts 2d6+11 HP</td>
     </tr><tr style="text-align:center">
       <td>Grab Evolution: Successful chosen natural attack allows free combat maneuver to grapple/+4 grapple CMB</td>
     </tr><tr style="text-align:center">
@@ -411,7 +411,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Multiattack: Reduce additional attack penalty to -2 or second attack at -5</td>
     </tr><tr style="text-align:center">
-      <td>Pincers Evolution: Pincer attacks inflict 1d8+11 HP each</td>
+      <td>Pincers Evolution: Pincer attacks inflict 1d8+5 HP each</td>
     </tr><tr style="text-align:center">
       <td>Poison Evolution: Chosen natural attack inflicts +1d4 Str damage (DC 20 Fort neg) 1/rd</td>
     </tr><tr style="text-align:center">
@@ -421,11 +421,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Push Evolution: Choice of 1 natural attacks each allow free combat maneuver for 5' push</td>
     </tr><tr style="text-align:center">
-      <td>Rake Evolution: Claw rake on grappled foe inflicts 2 x 1d6+16 HP</td>
+      <td>Rake Evolution: Claw rake on grappled foe inflicts 2 x 1d6+11 HP</td>
     </tr><tr style="text-align:center">
       <td>Reach Evolution: Choice of 1 attacks each gains +5' reach</td>
     </tr><tr style="text-align:center">
-      <td>Rend Evolution: 2 successful claw attacks inflict 1d6+16 HP</td>
+      <td>Rend Evolution: 2 successful claw attacks inflict +1d6+11 HP</td>
     </tr><tr style="text-align:center">
       <td>Resistance Evolution: Resistance 15 to 1 chosen energy type(s)</td>
     </tr><tr style="text-align:center">
@@ -435,23 +435,23 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Skilled Evolution: +8 on each of 1 chosen skill(s)</td>
     </tr><tr style="text-align:center">
-      <td>Slam Evolution: Slam attacks inflict 2d6+16 HP each</td>
+      <td>Slam Evolution: Slam attacks inflict 2d6+11 HP each</td>
     </tr><tr style="text-align:center">
       <td>Spell Resistance Evolution: Has Spell Resistance 31</td>
     </tr><tr style="text-align:center">
-      <td>Sting Evolution: Sting attacks inflict 1d6+16 HP each</td>
+      <td>Sting Evolution: Sting attacks inflict 1d6+11 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Swallow Whole Evolution: May make combat maneuver to swallow creature grappled by bite, inflicting 1d8+16+1d6 HP/rd</td>
+      <td>Swallow Whole Evolution: May make combat maneuver to swallow creature grappled by bite, inflicting 1d8+11+1d6 HP/rd</td>
     </tr><tr style="text-align:center">
       <td>Swim Evolution: 30' Swim</td>
     </tr><tr style="text-align:center">
       <td>Tail Evolution: +2 Acrobatics (balance)</td>
     </tr><tr style="text-align:center">
-      <td>Tail Slap Evolution: Slap attacks inflict 1d8+11 HP each</td>
+      <td>Tail Slap Evolution: Slap attacks inflict 1d8+5 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Tentacle Evolution: Tentacle attacks inflict 1d6+11 HP each</td>
+      <td>Tentacle Evolution: Tentacle attacks inflict 1d6+5 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Trample Evolution: Full-round automatic overrun inflicts 1d8+16 HP (DC 28 Ref half)</td>
+      <td>Trample Evolution: Full-round automatic overrun inflicts 1d8+11 HP (DC 28 Ref half)</td>
     </tr><tr style="text-align:center">
       <td>Tremorsense Evolution: R30' Senses creatures via ground vibrations</td>
     </tr><tr style="text-align:center">
@@ -461,7 +461,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Web Evolution: R50' May entangle target (DC 20 Escape Artist or -4 Str neg) 8/dy</td>
     </tr><tr style="text-align:center">
-      <td>Wing Buffet Evolution: Wing attacks inflict 1d6+11 HP each</td>
+      <td>Wing Buffet Evolution: Wing attacks inflict 1d6+5 HP each</td>
     </tr></table>
 </td>
   </tr></table>
