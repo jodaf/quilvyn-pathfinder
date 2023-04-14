@@ -56,16 +56,16 @@ PFAPG.VERSION = '2.3.1.0';
 
 PFAPG.ANIMAL_COMPANIONS = {
   // Eidolons share stats w/animal companions with modified calculations.
-  // Attack, Dam, AC include all modifiers
+  // Damage is calculated from evolutions.
   'Biped Eidolon':
-    'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=13 Attack=3 ' +
-    'Dam=2@1d4+3 Size=M Speed=30', // Save F/R/W: G/B/G
+    'Str=16 Dex=12 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=13 Attack=3 Dam=0 ' +
+    'Size=M Speed=20', // Save F/R/W: G/B/G
   'Quadruped Eidolon':
-    'Str=14 Dex=14 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=14 Attack=2 ' +
-    'Dam=1d6+2 Size=M Speed=40', // Save F/R/W: G/G/B
+    'Str=14 Dex=14 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=14 Attack=2 Dam=0 ' +
+    'Size=M Speed=20', // Save F/R/W: G/G/B
   'Serpentine Eidolon':
-    'Str=12 Dex=16 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=15 Attack=1 ' +
-    'Dam=1d6+1,1d6+1 Size=M Speed=20' // Save F/R/W: B/G/G
+    'Str=12 Dex=16 Con=13 Int=7 Wis=10 Cha=11 HD=0 AC=15 Attack=1 Dam=0 ' +
+    'Size=M Speed=20' // Save F/R/W: B/G/G
 };
 PFAPG.ARMORS = {
   'Agile Breastplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
@@ -1594,7 +1594,7 @@ PFAPG.FEATURES = {
     'Note="May use 2 points from evolution pool to apply 2 points of evolutions to self"',
   'Bite Evolution':
     'Section=companion ' +
-    'Note="Bite attack inflicts %{eidolonDamage}+%{eidolonPrimaryDamageBonus} HP"',
+    'Note="Bite attack inflicts %{eidolonDamage}%{eidolonBiteDamageBonus} HP"',
   'Blindsense Evolution':
     'Section=companion Note="R30\' May detect unseen creatures"',
   'Blindsight Evolution':
@@ -1611,7 +1611,7 @@ PFAPG.FEATURES = {
   'Cantrips':'Section=magic Note="May cast 0-level spells"',
   'Claws Evolution':
     'Section=companion ' +
-    'Note="Claw attacks inflict %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP each"',
+    'Note="Claw attacks inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
   'Climb Evolution':'Section=companion Note="%V\' Climb"',
   'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
   'Constrict Evolution':
@@ -1630,7 +1630,7 @@ PFAPG.FEATURES = {
   'Gills Evolution':'Section=companion Note="May breathe underwater"',
   'Gore Evolution':
     'Section=companion ' +
-    'Note="Horn attack inflicts %{eidolonDamage}+%{eidolonPrimaryDamageBonus} HP"',
+    'Note="Horn attack inflicts %{eidolonDamageMajor}%{eidolonPrimaryDamageBonus} HP"',
   'Grab Evolution':
     'Section=companion ' +
     'Note="Successful chosen natural attack allows free combat maneuver to grapple/+4 grapple CMB"',
@@ -1676,7 +1676,7 @@ PFAPG.FEATURES = {
   'Mount Evolution':'Section=companion Note="Self may ride eidolon"',
   'Pincers Evolution':
     'Section=companion ' +
-    'Note="Pincer attacks inflict %{eidolonDamage}+%{eidolonSecondaryDamageBonus} HP each"',
+    'Note="Pincer attacks inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
   'Poison Evolution':
     'Section=companion ' +
     'Note="Chosen natural attack inflicts +1d4 %V damage (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
@@ -1690,7 +1690,7 @@ PFAPG.FEATURES = {
     'Note="Choice of %V natural attacks each allow free combat maneuver for 5\' push"',
   'Rake Evolution':
     'Section=companion ' +
-    'Note="Claw rake on grappled foe inflicts 2 x %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP"',
+    'Note="Claw rake on grappled foe inflicts 2 x %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP"',
   'Reach Evolution':
     'Section=companion Note="Choice of %V attacks each gains +5\' reach"',
   'Resistance Evolution':
@@ -1698,7 +1698,7 @@ PFAPG.FEATURES = {
     'Note="Resistance %{(levels.Summoner+5)//5*5<?15} to %V chosen energy type(s)"',
   'Rend Evolution':
     'Section=companion ' +
-    'Note="2 successful claw attacks inflict %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP"',
+    'Note="2 successful claw attacks inflict +%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP"',
   'Scent Evolution':'Section=companion Note="R30\' May detect foes by smell"',
   'Share Spells (Summoner)':
     'Section=companion ' +
@@ -1712,7 +1712,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="+8 on each of %V chosen skill(s)"',
   'Slam Evolution':
     'Section=companion ' +
-    'Note="Slam attacks inflict %{eidolonDamageMajor}+%{eidolonPrimaryDamageBonus} HP each"',
+    'Note="Slam attacks inflict %{eidolonDamageMajor}%{eidolonPrimaryDamageBonus} HP each"',
   'Small Eidolon':
     'Section=companion ' +
     'Note="Size is Small: gains +2 Dex, +1 AC, +1 attack, +2 Fly, and +4 Stealth; suffers -4 Str, -2 Con, -1 CMB/CMD, -1 damage die step"',
@@ -1720,24 +1720,24 @@ PFAPG.FEATURES = {
     'Section=companion Note="Has Spell Resistance %{levels.Summoner + 11}"',
   'Sting Evolution':
     'Section=companion ' +
-    'Note="Sting attacks inflict %{eidolonDamageMinor}+%{eidolonPrimaryDamageBonus} HP each"',
+    'Note="Sting attacks inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
   'Summon Monster':
     'Section=magic ' +
     'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'}, lasting %{levels.Summoner} min, when eidolon not present %{3 + charismaModifier}/dy"',
   'Swallow Whole Evolution':
     'Section=companion ' +
-    'Note="May make combat maneuver to swallow creature grappled by bite, inflicting %{eidolonDamage}+%{eidolonPrimaryDamageBonus}+1d6 HP/rd"',
+    'Note="May make combat maneuver to swallow creature grappled by bite, inflicting %{eidolonDamage}%{eidolonPrimaryDamageBonus}+1d6 HP/rd"',
   'Swim Evolution':'Section=companion Note="%V\' Swim"',
   'Tail Evolution':'Section=companion Note="+%V Acrobatics (balance)"',
   'Tail Slap Evolution':
     'Section=companion ' +
-    'Note="Slap attacks inflict %{eidolonDamage}+%{eidolonSecondaryDamageBonus} HP each"',
+    'Note="Slap attacks inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
   'Tentacle Evolution':
     'Section=companion ' +
-    'Note="Tentacle attacks inflict %{eidolonDamageMinor}+%{eidolonSecondaryDamageBonus} HP each"',
+    'Note="Tentacle attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
   'Trample Evolution':
     'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %{eidolonDamage}+%{eidolonPrimaryDamageBonus} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
+    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{eidolonPrimaryDamageBonus} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
   'Transposition':
     'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
   'Tremorsense Evolution':
@@ -1755,7 +1755,7 @@ PFAPG.FEATURES = {
     'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Str neg) 8/dy"',
   'Wing Buffet Evolution':
     'Section=companion ' +
-    'Note="Wing attacks inflict %{eidolonDamageMinor}+%{eidolonSecondaryDamageBonus} HP each"',
+    'Note="Wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
 
   // Witch
   'Agony Hex':
@@ -1979,7 +1979,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Attacks inflict +1d6 HP energy for 1 rd 1/rage"',
   'Lesser Fiend Totem':
     'Section=combat ' +
-    'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}+%{strengthModifier} HP during rage"',
+    'Note="Gore attack inflicts 1d%{features.Small ? 6 : 8}%{strengthModifier<0 ? strengthModifier : strengthModifier>0 ? \'+\' + strengthModifier : \'\'} HP during rage"',
   'Lesser Hurling':
     'Section=combat ' +
     'Note="R%V\' Ranged touched using thrown %1 object inflicts 1d6+%{strengthModifier} HP or more (DC %{10+levels.Barbarian//2+strengthModifier} Ref half) during rage"',
@@ -8345,7 +8345,25 @@ PFAPG.DEITIES = {
 /* Defines rules related to animal companions and familiars. */
 PFAPG.aideRules = function(rules, companions, familiars) {
   Pathfinder.aideRules(rules, companions, familiars);
-  // No changes needed to the rules defined by Pathfinder method
+  rules.defineRule
+    ('animalCompanionStats.Melee.1', 'eidolonEvolutionsDamage', '=', null);
+  rules.defineRule
+    ('animalCompanionStats.Melee.2', 'features.Eidolon', '=', '""');
+  // Quilvyn doesn't support rules that use concatenation to build a value, so
+  // we place the various evolution damage values into a global array, then use
+  // join to create the final value.
+  rules.defineRule('eidolonEvolutionsDamage',
+    'features.Eidolon', '?', '(PFAPG.EED = []) || true',
+    'features.Bite Evolution', '=', 'PFAPG.EED.push("%{eidolonDamage}%{eidolonBiteDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Claws Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Gore Evolution', '=', 'PFAPG.EED.push("%{eidolonDamageMajor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Pincers Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamage}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Slam Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMajor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Sting Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Tail Slap Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamage}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Tentacle Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMinor}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Wing Buffet Evolution', '=', 'PFAPG.EED.push("%{eidolonDamageMinor}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")'
+  );
 };
 
 /* Defines rules related to combat. */
@@ -8989,13 +9007,38 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanionStats.Size', '=', 'source=="S" ? "1d6" : source=="M" ? "1d8" : source=="L" ? "2d6" : "2d8"'
     );
     rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
+    rules.defineRule('eidolonNaturalAttackTypes',
+      'features.Bite Evolution', '+=', '1',
+      'features.Claws Evolution', '+=', '1',
+      'features.Gore Evolution', '+=', '1',
+      'features.Pincers Evolution', '+=', '1',
+      'features.Slam Evolution', '+=', '1',
+      'features.Sting Evolution', '+=', '1',
+      'features.Tail Slap Evolution', '+=', '1',
+      'features.Tentacle Evolution', '+=', '1',
+      'features.Wing Buffet Evolution', '+=', '1'
+    );
+    rules.defineRule('eidolonBiteDamageBonus',
+      'eidolonBiteDamageBonus.1', '=', 'source!=0 ? QuilvynUtils.signed(Math.floor(source)) : ""',
+      'eidolonSingleDamageBonus', '=', 'source!=0 ? QuilvynUtils.signed(source) : ""'
+    );
+    rules.defineRule('eidolonBiteDamageBonus.1',
+      'features.Bite Evolution', '=', 'source<2 ? 1 : 1.5',
+      'animalCompanionStats.Str', '*', 'Math.floor((source-10)/2)'
+    );
     rules.defineRule('eidolonPrimaryDamageBonus',
       'features.Eidolon', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor(Math.floor((source - 10) / 2) * (source>=14 ? 1.5 : 1))'
+      'animalCompanionStats.Str', '=', 'source<10||source>11 ? QuilvynUtils.signed(Math.floor((source-10)/2)) : ""',
+      'eidolonSingleDamageBonus', '=', 'source!=0 ? QuilvynUtils.signed(source) : ""'
     );
     rules.defineRule('eidolonSecondaryDamageBonus',
       'features.Eidolon', '?', null,
-      'animalCompanionStats.Str', '=', 'Math.floor((source - 10) / 2)'
+      'animalCompanionStats.Str', '=', 'source<10||source>13 ? QuilvynUtils.signed(Math.floor((source-10)/4)) : ""',
+      'eidolonSingleDamageBonus', '=', 'source!=0 ? QuilvynUtils.signed(source) : ""'
+    );
+    rules.defineRule('eidolonSingleDamageBonus',
+      'eidolonNaturalAttackTypes', '?', 'source<2',
+      'animalCompanionStats.Str', '=', 'source>13 ? Math.floor(Math.floor((source - 10) / 2) * 1.5) : null'
     );
     rules.defineRule('eidolonSaveFort',
       'animalCompanion.Serpentine Eidolon', '=', '0',
