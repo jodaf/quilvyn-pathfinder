@@ -1602,7 +1602,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Unaffected by darkness or foe invisibility or concealment"',
   'Bond Senses':
     'Section=feature ' +
-    'Note="May perceive via eidolon senses for %{levels.Summoner} rd/dy"',
+    'Note="May perceive via eidolon senses on same plane for %{levels.Summoner} rd/dy"',
   'Breath Weapon Evolution':
     'Section=companion ' +
     'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Ref half) %V/dy"',
@@ -1626,11 +1626,11 @@ PFAPG.FEATURES = {
   'Flight Evolution':'Section=companion Note="%V\' Fly"',
   'Frightful Presence Evolution':
     'Section=companion ' +
-    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will neg)"',
+    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will neg) for 3d6 rd"',
   'Gills Evolution':'Section=companion Note="May breathe underwater"',
   'Gore Evolution':
     'Section=companion ' +
-    'Note="Horn attack inflicts %{eidolonDamageMajor}%{eidolonPrimaryDamageBonus} HP"',
+    'Note="Horn attack inflicts %{eidolonDamage}%{eidolonPrimaryDamageBonus} HP"',
   'Grab Evolution':
     'Section=companion ' +
     'Note="Successful chosen natural attack allows free combat maneuver to grapple/+4 grapple CMB"',
@@ -1643,7 +1643,7 @@ PFAPG.FEATURES = {
       '"Allies gain +2 AC and self gains +4 AC when eidolon is within reach",' +
       '"Allies gain +2 saves and self gains +4 saves when eidolon is within reach"',
   'Immunity Evolution':
-    'Section=companion Note="Immune to each of %V chosen energy type(s)"',
+    'Section=companion Note="Immune to %V chosen energy type(s)"',
   'Improved Damage Evolution':
     'Section=companion ' +
     'Note="Choice of %V natural attacks each inflict damage 1 die type higher"',
@@ -1657,7 +1657,7 @@ PFAPG.FEATURES = {
     'Note="Transfers to eidolon damage that would reduce self to negative HP"',
   'Life Link (Summoner)':
     'Section=combat ' +
-    'Note="May transfer damage from eidolon to self to negate forced return to home plane; eidolon must stay w/in 100\' to have full HP"',
+    'Note="May transfer damage from eidolon to self to negate forced return to home plane/Eidolon must stay w/in 100\' to have full HP"',
   'Limbs (Arms) Evolution':'Section=companion Note="Has %V pairs of arms"',
   'Limbs (Legs) Evolution':
     'Section=companion Note="%V pairs of legs give +%1 speed"',
@@ -1679,26 +1679,26 @@ PFAPG.FEATURES = {
     'Note="Pincer attacks inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
   'Poison Evolution':
     'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 %V damage (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
+    'Note="Chosen natural attack inflicts +1d4 %V damage each rd for 4 rd (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
   'Pounce Evolution':
     'Section=companion Note="May take full-attack action after a charge"',
   'Pull Evolution':
     'Section=companion ' +
-    'Note="Choice of %V natural attacks each allow free combat maneuver for 5\' pull"',
+    'Note="Successful attack w/choice of %V natural attacks each allow free combat maneuver for 5\' pull"',
   'Push Evolution':
     'Section=companion ' +
-    'Note="Choice of %V natural attacks each allow free combat maneuver for 5\' push"',
+    'Note="Successful attack w/choice of %V natural attacks each allow free combat maneuver for 5\' push"',
   'Rake Evolution':
     'Section=companion ' +
     'Note="Claw rake on grappled foe inflicts 2 x %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP"',
   'Reach Evolution':
-    'Section=companion Note="Choice of %V attacks each gains +5\' reach"',
+    'Section=companion Note="Chosen natural attack gains +5\' reach"',
   'Resistance Evolution':
     'Section=companion ' +
     'Note="Resistance %{(levels.Summoner+5)//5*5<?15} to %V chosen energy type(s)"',
   'Rend Evolution':
     'Section=companion ' +
-    'Note="2 successful claw attacks inflict +%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP"',
+    'Note="2 successful claw attacks inflict +%{eidolonDamageMinor}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP"',
   'Scent Evolution':'Section=companion Note="R30\' May detect foes by smell"',
   'Share Spells (Summoner)':
     'Section=companion ' +
@@ -1737,7 +1737,7 @@ PFAPG.FEATURES = {
     'Note="Tentacle attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
   'Trample Evolution':
     'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{eidolonPrimaryDamageBonus} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
+    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
   'Transposition':
     'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
   'Tremorsense Evolution':
@@ -1755,7 +1755,7 @@ PFAPG.FEATURES = {
     'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Str neg) 8/dy"',
   'Wing Buffet Evolution':
     'Section=companion ' +
-    'Note="Wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
+    'Note="2 wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
 
   // Witch
   'Agony Hex':
@@ -7674,8 +7674,7 @@ PFAPG.CLASSES = {
       '"9:Breath Weapon Evolution:Evolution:4",' +
       '"11:Fast Healing Evolution:Evolution:4",' +
       '"8:Large Evolution:Evolution:4",' +
-      '"9:Spell Resistance Evolution:Evolution:4",' +
-      '"features.Large Evolution ? 13:Huge Evolution:Evolution:6" ' +
+      '"9:Spell Resistance Evolution:Evolution:4" ' +
     'CasterLevelArcane=levels.Summoner ' +
     'SpellAbility=charisma ' +
     'SpellSlots=' +
@@ -8356,7 +8355,7 @@ PFAPG.aideRules = function(rules, companions, familiars) {
     'features.Eidolon', '?', '(PFAPG.EED = []) || true',
     'features.Bite Evolution', '=', 'PFAPG.EED.push("%{eidolonDamage}%{eidolonBiteDamageBonus}") && PFAPG.EED.join(",")',
     'features.Claws Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
-    'features.Gore Evolution', '=', 'PFAPG.EED.push("%{eidolonDamageMajor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Gore Evolution', '=', 'PFAPG.EED.push("%{eidolonDamage}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Pincers Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamage}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Slam Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMajor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Sting Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
@@ -8970,9 +8969,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('companionNotes.pushEvolution',
       'summonerFeatures.Push Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.reachEvolution',
-      'summonerFeatures.Reach Evolution', '=', null
     );
     rules.defineRule('companionNotes.resistanceEvolution',
       'summonerFeatures.Resistance Evolution', '=', null
