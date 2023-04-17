@@ -16,7 +16,7 @@ var attributes = {
   "levels.Summoner":10, "name":"Class-Summoner 10-Large Serpentine Eidolon", "race":"Human", 
   "selectableFeatures.Human - Eye For Talent":1, "selectableFeatures.Human - Heart Of The Wilderness":1, 
   "selectableFeatures.Summoner - Breath Weapon Evolution":1, "selectableFeatures.Summoner - Large Evolution":1, 
-  "selectableFeatures.Summoner - Slam Evolution":1, "selectableFeatures.Summoner - Spell Resistance Evolution":1, 
+  "selectableFeatures.Summoner - Pull Evolution":1, "selectableFeatures.Summoner - Spell Resistance Evolution":1, 
   "selectableFeatures.Summoner - Tentacle Evolution":1, "shield":"None", "skills.Acrobatics":9, "skills.Appraise":1, 
   "skills.Craft (Traps)":2, "skills.Escape Artist":10, "skills.Intimidate":1, 
   "skills.Perform (Dance)":1, "skills.Sense Motive":1, "skills.Sleight Of Hand":3, "skills.Spellcraft":1, 
@@ -78,7 +78,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Climb Evolution; Enlarge Spell; Self-Sufficient; Skill Focus (Perform (Dance)); Skill Focus (Spellcraft)</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light); Aspect; Bite Evolution; Bond Senses; Breath Weapon Evolution; Cantrips; Climb Evolution; Eidolon; Large Evolution; Life Link (Summoner); Maker's Call; Reach Evolution; Shield Ally (Summoner); Simple Somatics; Slam Evolution; Spell Resistance Evolution; Summon Monster; Tail Evolution; Tail Slap Evolution; Tentacle Evolution; Transposition; Weapon Proficiency (Simple)</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light); Aspect; Bite Evolution; Bond Senses; Breath Weapon Evolution; Cantrips; Climb Evolution; Eidolon; Large Evolution; Life Link (Summoner); Maker's Call; Pull Evolution; Reach Evolution; Shield Ally (Summoner); Simple Somatics; Spell Resistance Evolution; Summon Monster; Tail Evolution; Tail Slap Evolution; Tentacle Evolution; Transposition; Weapon Proficiency (Simple)</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Wilderness; Human Ability Adjustment</td>
       </tr></table>
 </td>
@@ -283,7 +283,7 @@ var attributes = {
         <td><b>HD/HP</b>: 8/60</td>
         <td><b>Init</b>: +4</td>
         <td><b>AC</b>: 25</td>
-        <td><b>Attack</b>: +14 1d8+7,2d6+7,1d8+3,1d6+3</td>
+        <td><b>Attack</b>: +14 1d8+7,1d8+3,1d6+3</td>
         <td><b>CMB/CMD</b>: +16/30</td>
         <td><b>Fort/Ref/Will</b>: +5/+10/+6</td>
       </tr></table>
@@ -317,11 +317,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Multiattack: Reduce additional attack penalty to -2 or second attack at -5</td>
     </tr><tr style="text-align:center">
+      <td>Pull Evolution: Successful attack w/choice of 1 natural attacks each allow free combat maneuver for 5' pull</td>
+    </tr><tr style="text-align:center">
       <td>Reach Evolution: Chosen natural attack gains +5' reach</td>
     </tr><tr style="text-align:center">
       <td>Share Spells (Summoner): May cast spells that affect self on eidolon as touch spells</td>
-    </tr><tr style="text-align:center">
-      <td>Slam Evolution: Slam attacks inflict 2d6+7 HP each</td>
     </tr><tr style="text-align:center">
       <td>Spell Resistance Evolution: Has Spell Resistance 21</td>
     </tr><tr style="text-align:center">
@@ -330,16 +330,6 @@ var attributes = {
       <td>Tail Slap Evolution: Slap attacks inflict 1d8+3 HP each</td>
     </tr><tr style="text-align:center">
       <td>Tentacle Evolution: Tentacle attacks inflict 1d6+3 HP each</td>
-    </tr></table>
-</td>
-  </tr></table>
-</td>
-</tr><tr style="text-align:center">
-  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
-  <tr style="text-align:center">
-    <td>    <table id="ValidationPart" style="width:100%">
-    <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Summoner-Slam Evolution Selectable Feature: Requires limbs (arms) evolution feature and summoner level (currently 10)</td>
     </tr></table>
 </td>
   </tr></table>
