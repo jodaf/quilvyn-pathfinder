@@ -23,13 +23,13 @@ var attributes = {
   "selectableFeatures.Battle Herald - Reveille":1, "selectableFeatures.Battle Herald - Scatter":1, 
   "selectableFeatures.Battle Herald - Shake It Off":1, "selectableFeatures.Battle Herald - Sound The Charge":1, 
   "selectableFeatures.Battle Herald - Sound The Retreat":1, "selectableFeatures.Battle Herald - Stand Firm":1, 
-  "selectableFeatures.Battle Herald - Teamwork":1, "selectableFeatures.Battle Herald - Tuck And Roll":1, 
-  "selectableFeatures.Cavalier - Order Of The Sword":1, "selectableFeatures.Human - Bonus Feat":1, 
-  "selectableFeatures.Human - Heart Of The Fields":1, "shield":"Buckler", "skills.Diplomacy":5, "skills.Disable Device":1, 
-  "skills.Handle Animal":1, "skills.Intimidate":5, "skills.Knowledge (Dungeoneering)":1, 
-  "skills.Perform (Oratory)":5, "skills.Perform (Percussion)":1, "skills.Profession (Soldier)":2, 
-  "skills.Use Magic Device":1, "strength":17, "weapons.Dagger":1, "weapons.Lucerne Hammer":1, 
-  "weapons.Scimitar":1, "wisdom":15
+  "selectableFeatures.Battle Herald - Stand Firm (Battle Herald)":1, "selectableFeatures.Battle Herald - Teamwork":1, 
+  "selectableFeatures.Battle Herald - Tuck And Roll":1, "selectableFeatures.Cavalier - Order Of The Sword":1, 
+  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Heart Of The Fields":1, "shield":"Buckler", 
+  "skills.Diplomacy":5, "skills.Disable Device":1, "skills.Handle Animal":1, "skills.Intimidate":5, 
+  "skills.Knowledge (Dungeoneering)":1, "skills.Perform (Oratory)":5, "skills.Perform (Percussion)":1, 
+  "skills.Profession (Soldier)":2, "skills.Use Magic Device":1, "strength":17, "weapons.Dagger":1, 
+  "weapons.Lucerne Hammer":1, "weapons.Scimitar":1, "wisdom":15
 };
   </script>
 </head>
@@ -92,7 +92,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Armor Training; Coordinated Defense; Elemental Focus (Cold); Leadership; Merciful Spell; Paired Opportunists; Shielded Caster; Sickening Spell; Skill Focus (Knowledge (Dungeoneering)); Skill Focus (Perform (Percussion)); Throw Anything</td>
-        <td><b>Battle Herald Features</b>: Banner; Battle Magic; Complex Commands; Demanding Challenge; Easy March; Improved Leadership; Inspire Greatness; Inspire Hardiness; Inspire Last Stand; Inspired Tactics; Inspiring Command; Keep Your Heads; None Shall Fall; Persistent Commands; Pincer Maneuver; Rally; Reveille; Scatter; Shake It Off; Sound The Charge; Sound The Retreat; Teamwork Feat; Teamwork; Tuck And Roll; Voice Of Authority</td>
+        <td><b>Battle Herald Features</b>: Banner; Battle Magic; Complex Commands; Demanding Challenge; Easy March; Improved Leadership; Inspire Greatness; Inspire Hardiness; Inspire Last Stand; Inspired Tactics; Inspiring Command; Keep Your Heads; None Shall Fall; Persistent Commands; Pincer Maneuver; Rally; Reveille; Scatter; Shake It Off; Sound The Charge; Sound The Retreat; Stand Firm (Battle Herald); Teamwork Feat; Teamwork; Tuck And Roll; Voice Of Authority</td>
         <td><b>Cavalier Features</b>: Armor Proficiency (Heavy); By My Honor; Cavalier's Charge; Challenge; Mount; Order Of The Sword; Order; Shield Proficiency; Tactician; Weapon Proficiency (Martial)</td>
         <td><b>Human Features</b>: Bonus Feat; Heart Of The Fields; Human Ability Adjustment</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light); Bardic Performance; Countersong; Court Bard; Distraction; Fascinate; Heraldic Expertise; Mockery; Satire; Shield Proficiency; Simple Somatics; Versatile Performance; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip); Well-Versed</td>
@@ -346,6 +346,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Sound The Retreat: R60' Inspiring Command gives allies 50% concealment with dbl move or withdraw action</td>
     </tr><tr style="text-align:center">
+      <td>Stand Firm (Battle Herald): Inspiring Command gives allies +4 CMD and Fort saves</td>
+    </tr><tr style="text-align:center">
       <td>Teamwork: R60' Inspiring Command gives allies +4 aid another rolls and effects</td>
     </tr><tr style="text-align:center">
       <td>Tuck And Roll: Inspiring Command gives allies +4 Acrobatics and Ref saves</td>
@@ -403,7 +405,7 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Selectable Feature Allocation: 9 available vs. 19 allocated</td>
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 9 available vs. 20 allocated</td>
     </tr></table>
 </td>
   </tr></table>
