@@ -1621,7 +1621,7 @@ PFAPG.FEATURES = {
   'Eidolon':'Section=feature Note="Special bond and abilities"',
   'Energy Attacks Evolution':
     'Section=companion ' +
-    'Note="Natural attack inflicts 1d6 HP of chosen energy type"',
+    'Note="Natural attack inflicts +1d6 HP of chosen energy type"',
   'Fast Healing Evolution':'Section=companion Note="Heals %V HP/rd"',
   'Flight Evolution':'Section=companion Note="%V\' Fly"',
   'Frightful Presence Evolution':
@@ -1651,7 +1651,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="+%V natural armor"',
   'Large Evolution':
     'Section=companion ' +
-    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, +%4 CMB/CMD, and %5\' reach; suffers %6 Dex, %7 Attack, %8 Fly, %9 Stealth"',
+    'Note="Size is %V: gains +%1 Str, +%2 Con, +%3 AC, +%4 CMB/CMD%{$\'animalCompanion.Biped Eidolon\' || $\'features.Large Evolution\'>1 ? \', \' + ($\'animalCompanion.Biped Eidolon\' && $\'features.Large Evolution\'>1 ? 15 : 10) + \\"\' reach\\" : \'\'}; suffers %5 Dex, %6 Attack, %7 Fly, %8 Stealth"',
   'Life Bond':
     'Section=combat ' +
     'Note="Transfers to eidolon damage that would reduce self to negative HP"',
@@ -8831,7 +8831,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('animalCompanionStats.Dex',
       'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
-      'companionNotes.largeEvolution.6', '+', null,
+      'companionNotes.largeEvolution.5', '+', null,
       'companionNotes.smallEidolon', '+', '2'
     );
     rules.defineRule('animalCompanionStats.Feats',
@@ -8936,20 +8936,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Large Evolution', '=', null
     );
     rules.defineRule('companionNotes.largeEvolution.5',
-      'summonerFeatures.Large Evolution', '=', 'source==1 ? 10 : 15',
-      'animalCompanion.Quadruped Eidolon', 'v', '10',
-      'animalCompanion.Serpentine Eidolon', 'v', '10'
+      'summonerFeatures.Large Evolution', '=', 'source * -2'
     );
     rules.defineRule('companionNotes.largeEvolution.6',
-      'summonerFeatures.Large Evolution', '=', 'source * -2'
-    );
-    rules.defineRule('companionNotes.largeEvolution.7',
       'summonerFeatures.Large Evolution', '=', 'source * -1'
     );
-    rules.defineRule('companionNotes.largeEvolution.8',
+    rules.defineRule('companionNotes.largeEvolution.7',
       'summonerFeatures.Large Evolution', '=', 'source * -2'
     );
-    rules.defineRule('companionNotes.largeEvolution.9',
+    rules.defineRule('companionNotes.largeEvolution.8',
       'summonerFeatures.Large Evolution', '=', 'source * -4'
     );
     rules.defineRule('companionNotes.limbs(Arms)Evolution',
