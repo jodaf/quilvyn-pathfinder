@@ -5223,42 +5223,45 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'skillNotes.jack-Of-All-Trades.1', '=', 'source!="" ? 1 : null'
       );
     }
+    rules.defineRule('bardicPerformanceLevel', 'levels.Bard', '+=', null);
     rules.defineRule('featureNotes.bardicPerformance',
-      'levels.Bard', '=', '2 + 2 * source',
+      'bardicPerformanceLevel', '=', '2 + 2 * source',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.simpleSomatics.1', 'v', '0'
     );
     rules.defineRule('magicNotes.deadlyPerformance',
-      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.fascinate',
-      'levels.Bard', '=', 'Math.floor((source + 2) / 3)'
+      'bardicPerformanceLevel', '=', 'Math.floor((source + 2) / 3)'
     );
     rules.defineRule('magicNotes.fascinate.1',
-      'levels.Bard', '=', 'Math.floor(source / 2) + 10',
+      'bardicPerformanceLevel', '=', 'Math.floor(source / 2) + 10',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.frighteningTune',
-      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.inspireCompetence',
-      'levels.Bard', '=', '1 + Math.floor((source + 1) / 4)'
+      'bardicPerformanceLevel', '=', '1 + Math.floor((source + 1) / 4)'
     );
     rules.defineRule('magicNotes.inspireCourage',
-      'levels.Bard', '=', '1 + Math.floor((source + 1) / 6)'
+      'bardicPerformanceLevel', '=', '1 + Math.floor((source + 1) / 6)'
     );
     rules.defineRule('magicNotes.inspireGreatness',
-      'levels.Bard', '=', 'source>=9 ? Math.floor((source - 6) / 3) : null'
+      'bardicPerformanceLevel', '=',
+        'source>=9 ? Math.floor((source - 6) / 3) : null'
     );
     rules.defineRule('magicNotes.inspireHeroics',
-      'levels.Bard', '=', 'source>=15 ? Math.floor((source - 12) / 3) : null'
+      'bardicPerformanceLevel', '=',
+        'source>=15 ? Math.floor((source - 12) / 3) : null'
     );
     rules.defineRule('magicNotes.massSuggestion',
-      'levels.Bard', '=', '10 + Math.floor(source / 2)',
+      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
     rules.defineRule('magicNotes.simpleSomatics.1',
@@ -5267,7 +5270,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.suggestion',
       'charismaModifier', '=', '10 + source',
-      'levels.Bard', '+', 'Math.floor(source / 2)'
+      'bardicPerformanceLevel', '+', 'Math.floor(source / 2)'
     );
     rules.defineRule(/^skillModifier.Knowledge/,
       'skillNotes.bardicKnowledge', '+', null
@@ -6060,36 +6063,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Pathfinder Chronicler') {
 
+    rules.defineRule('bardicPerformanceLevel',
+      'levels.Pathfinder Chronicler', '+=', 'source>=3 ? source - 2 : null'
+    );
     // Set casterLevels.W to a minimal value so that spell DC will be
     // calculated even for non-Wizard Pathfinder Chroniclers.
     rules.defineRule('casterLevels.W',
       'levels.Pathfinder Chronicler', '=', 'source < 3 ? null : 1'
     );
-    rules.defineRule('featureNotes.bardicPerformance',
-      'levels.Pathfinder Chronicler', '+=', '2 + 2 * (source - 2)',
-      'charismaModifier', '+', null
-    );
     rules.defineRule
       ('featureNotes.pathfinding', 'levels.Pathfinder Chronicler', '=', null);
-    rules.defineRule('magicNotes.fascinate',
-      'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 3)'
-    );
-    rules.defineRule('magicNotes.fascinate.1',
-      'levels.Pathfinder Chronicler', '+=', '10 + Math.floor((source-2) / 2)',
-      'charismaModifier', '+', null
-    );
     rules.defineRule('magicNotes.inspireAction',
       'levels.Pathfinder Chronicler', '=',
       'source < 9 ? "move" : "move or standard"'
-    );
-    rules.defineRule('magicNotes.inspireCompetence',
-      'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('magicNotes.inspireCourage',
-      'levels.Pathfinder Chronicler', '+=', '1 + Math.floor((source - 1) / 6)'
-    );
-    rules.defineRule('magicNotes.suggestion',
-      'levels.Pathfinder Chronicler', '+', 'source<3 ? null : Math.floor(source / 2)'
     );
     rules.defineRule('saveNotes.liveToTellTheTale',
       'levels.Pathfinder Chronicler', '+=', 'Math.floor(source / 2)'
