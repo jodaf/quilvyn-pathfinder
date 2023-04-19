@@ -1169,7 +1169,8 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="Successful Fortitude or Will save in medium or lighter armor yields no damage instead of half"',
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Teamwork Feat':
+  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
+  'Teamwork Feat (Inquisitor)':
     'Section=feature ' +
     'Note="Gains %V Teamwork feats; may exchange most recent %{wisdomModifier}/dy"',
   'Third Judgment':
@@ -7564,8 +7565,8 @@ PFAPG.CLASSES = {
       '"1:Weapon Proficiency (Simple/Hand Crossbow/Longbow/Repeating Crossbow/Shortbow)",' +
       '"1:Domain (Inquisitor)",1:Judgment,"1:Monster Lore",1:Orisons,' +
       '"1:Stern Gaze","2:Cunning Initiative","2:Detect Alignment",2:Track,' +
-      '"3:Solo Tactics","3:Teamwork Feat",5:Bane,"5:Discern Lies",' +
-      '"8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
+      '"3:Solo Tactics","3:Teamwork Feat (Inquisitor)",5:Bane,' +
+      '"5:Discern Lies","8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
       '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment" '+
     'Selectables=' +
       QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + ':Domain"').join(',') + ' ' +
@@ -8619,9 +8620,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('combatNotes.cunningInitiative', 'wisdomModifier', '=', null);
-    rules.defineRule
-      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
-    rules.defineRule('featureNotes.teamworkFeat',
+    rules.defineRule('featCount.Teamwork',
+      'featureNotes.teamworkFeat(Inquisitor)', '+=', null
+    );
+    rules.defineRule('featureNotes.teamworkFeat(Inquisitor)',
       classLevel, '+=', 'Math.floor(source / 3)'
     );
     rules.defineRule('selectableFeatureCount.Inquisitor (Domain)',
