@@ -979,7 +979,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May give immediate move, +2 melee attack, and +2 AC to each ally 1/combat"',
   'Aid Allies (Cavalier)':
     'Section=combat ' +
-    'Note="Aid Another action gives ally +%{(levels.Cavalier+4)//6+2} AC, attack, save, or skill check"',
+    'Note="Aid another action gives ally +%{(levels.Cavalier+4)//6+2} AC, attack, save, or skill check"',
   'Banner':
     'Section=combat ' +
     'Note="R60\' Allies gain +%{bannerLevel//5+1} save vs. fear and +%{bannerLevel//5} charge attack when banner visible"',
@@ -3703,11 +3703,12 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives target +%{inspiringCommandBonus} caster level and concentration checks"',
   'Complex Commands':
-    'Section=magic Note="May have 2 inspiring commands active simultaneously"',
+    'Section=magic ' +
+    'Note="May have 2 inspiring commands%{levels.Bard ? \', or 1 inspiring command and 1 bardic performance,\' : \'\'} active simultaneously"',
   // Demanding Challenge as Cavalier
   'Easy March':
     'Section=magic ' +
-    'Note="Allies can hustle or force march w/out ill effects %{inspiringCommandBonus} hr/dy"',
+    'Note="R60\' Allies can hustle or force march w/out ill effects %{inspiringCommandBonus} hr/dy"',
   'Improved Leadership':
     'Section=feature Note="+%{inspiringCommandBonus} Leadership score"',
   // Inspire Greatness as Bard
@@ -3716,13 +3717,15 @@ PFAPG.FEATURES = {
     'Note="R60\' Inspiring Command gives allies DR %{inspiringCommandBonus}/-"',
   'Inspire Last Stand':
     'Section=magic ' +
-    'Note="R30\' Allies below 0 HP remain conscious, stable, and able to act, and gain Inspire Courage effects if conscious"',
+    'Note="R30\' Allies below 0 HP remain conscious, stable, staggered, and able to act, and gain Inspire Courage effects if conscious"',
   'Inspired Tactics':
     'Section=magic ' +
-    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} CMB, AC vs. combat maneuver AOO, and crit confirm"',
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} CMB, CMD, AC vs. combat maneuver AOO, and crit confirm"',
   'Inspiring Command':
-    'Section=feature ' +
-    'Note="%V selections/Has Inspire Courage feature/Inspiring Command effect for %1 rd/dy%{levels.Bard ? \'/May use Bardic Performance for Inspiring Command effects\' : \'\'}"',
+    'Section=feature,magic ' +
+    'Note=' +
+      '"%V selections/Has Inspire Courage feature",' +
+      '"Inspiring Command effect for %V rd/dy%{levels.Bard ? \'/May use Bardic Performance for Inspiring Command effects\' : \'\'}"',
   'Keep Your Heads':
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} Will save and concentration checks"',
@@ -3743,10 +3746,10 @@ PFAPG.FEATURES = {
     'Note="R60\' Inspiring Command awakens allies and gives additional +%{inspiringCommandBonus} save vs. exhaustion, fatigue, and sleep"',
   'Scatter':
     'Section=magic ' +
-    'Note="R60\' Inspiring Command gives %{inspiringCommandBonus} allies 20% concealment when moving more than 5\'"',
+    'Note="R60\' Inspiring Command gives %{inspiringCommandBonus} allies 20% concealment vs. ranged attacks when moving more than 5\'"',
   'Shake It Off':
     'Section=magic ' +
-    'Note="R60\' Inspiring Command gives target additional +%{inspiringCommandBonus} vs. ongoing condition"',
+    'Note="R60\' Inspiring Command gives target additional +%{inspiringCommandBonus} save vs. ongoing condition"',
   'Sound The Charge':
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} attack and damage and +%{inspiringCommandBonus*5}\' charge speed"',
@@ -3758,7 +3761,7 @@ PFAPG.FEATURES = {
     'Note="Inspiring Command gives allies +%{inspiringCommandBonus} CMD and Fort saves"',
   'Teamwork':
     'Section=magic ' +
-    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} aid another rolls and effects"',
+    'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} to aid another rolls and effects"',
   'Tuck And Roll':
     'Section=magic ' +
     'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Ref saves"',
@@ -8357,6 +8360,7 @@ PFAPG.aideRules = function(rules, companions, familiars) {
     'features.Claws Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Gore Evolution', '=', 'PFAPG.EED.push("%{eidolonDamage}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Pincers Evolution', '=', 'PFAPG.EED.push((2 * source) + "@%{eidolonDamage}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
+    'features.Rake Evolution', '=', 'PFAPG.EED.push("2@%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Slam Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMajor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Sting Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamageMinor}%{eidolonPrimaryDamageBonus}") && PFAPG.EED.join(",")',
     'features.Tail Slap Evolution', '=', 'PFAPG.EED.push((source>1 ? source + "@" : "") + "%{eidolonDamage}%{eidolonSecondaryDamageBonus}") && PFAPG.EED.join(",")',
@@ -8998,11 +9002,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       'animalCompanionStats.Size', '=', 'source=="S" ? "1d6" : source=="M" ? "1d8" : source=="L" ? "2d6" : "2d8"'
     );
     rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
-    rules.defineRule('eidolonNaturalAttackTypes',
+    rules.defineRule('eidolonNaturalAttacksAvailable',
+      classLevel, '=', '3 + Math.floor((source + 1) / 5)'
+    );
+    rules.defineRule('eidolonNaturalAttacksChosen',
       'features.Bite Evolution', '+=', '1',
       'features.Claws Evolution', '+=', '1',
       'features.Gore Evolution', '+=', '1',
       'features.Pincers Evolution', '+=', '1',
+      'features.Rake Evolution', '+=', '1',
       'features.Slam Evolution', '+=', '1',
       'features.Sting Evolution', '+=', '1',
       'features.Tail Slap Evolution', '+=', '1',
@@ -9028,7 +9036,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'eidolonSingleDamageBonus', '=', 'source!=0 ? QuilvynUtils.signed(source) : ""'
     );
     rules.defineRule('eidolonSingleDamageBonus',
-      'eidolonNaturalAttackTypes', '?', 'source<2',
+      'eidolonNaturalAttacksChosen', '?', 'source<2',
       'animalCompanionStats.Str', '=', 'source>13 ? Math.floor(Math.floor((source - 10) / 2) * 1.5) : null'
     );
     rules.defineRule('eidolonSaveFort',
@@ -9091,6 +9099,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('summonerFeatures.Tail Slap Evolution',
       'animalCompanion.Serpentine Eidolon', '+=', '1'
     );
+    QuilvynRules.validAllocationRules(
+      rules, 'eidolonNaturalAttacks', 'eidolonNaturalAttacksAvailable',
+      'eidolonNaturalAttacksChosen'
+    );
+    // Suppress error for allocating fewer than max natural attacks
+    rules.defineRule
+      ('validationNotes.eidolonNaturalAttacksAllocation', '', '^', '0');
     Pathfinder.featureSpells(rules,
       "Maker's Call", 'MakersCall', 'charisma', 'levels.Summoner', null,
       ['Dimension Door']
@@ -10829,6 +10844,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
   } else if(name == 'Battle Herald') {
     rules.defineRule('bannerLevel', classLevel, '+=', null);
+    rules.defineRule('inspireCourageLevel',
+      classLevel, '=', null,
+     'bardicPerformanceLevel', '+', null
+    );
     rules.defineRule
       ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
     rules.defineRule
@@ -10836,20 +10855,21 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.inspiringCommand',
       classLevel, '=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('featureNotes.inspiringCommand.1',
-      'charismaModifier', '=', '4 + source',
-      classLevel, '+', '(source - 1) * 2'
-    );
     rules.defineRule('featureNotes.voiceOfAuthority', classLevel, '=', null);
     rules.defineRule
       ('features.Inspire Courage', 'featureNotes.inspiringCommand', '=', '1');
     rules.defineRule('inspiringCommandBonus',
       classLevel, '+=', 'Math.floor((source + 2) / 3)'
     );
-    rules.defineRule
-      ('magicNotes.inspireCourage', 'inspiringCommandBonus', '+=', null);
+    rules.defineRule('magicNotes.inspireCourage',
+      'inspireCourageLevel', '=', '1 + Math.floor((source + 1) / 6)'
+    );
     rules.defineRule('magicNotes.inspireGreatness',
       classLevel, '+=', 'Math.floor((source - 1) / 3)'
+    );
+    rules.defineRule('magicNotes.inspiringCommand',
+      'charismaModifier', '=', '4 + source',
+      classLevel, '+', '(source - 1) * 2'
     );
     rules.defineRule('selectableFeatureCount.Battle Herald (Inspiring Command)',
       'featureNotes.inspiringCommand', '=', null
