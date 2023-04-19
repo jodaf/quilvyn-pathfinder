@@ -846,7 +846,8 @@ Pathfinder.FEATURES = {
   'Companion Improved Evasion':
     'Section=companion Note="Failed Reflex save yields half damage"',
   'Countersong':
-    'Section=magic Note="R30\' Perform check vs. sonic magic while performing"',
+    'Section=magic ' +
+    'Note="R30\' May use Perform check vs. sonic magic while performing"',
   'Craft Magic Arms And Armor':
     'Section=magic Note="Create and mend magic weapons, armor, and shields"',
   'Craft Rod':'Section=magic Note="Create magic rod"',
@@ -912,7 +913,7 @@ Pathfinder.FEATURES = {
   'Far Shot':'Section=combat Note="-1 range penalty"',
   'Fascinate':
     'Section=magic ' +
-    'Note="R90\' Hold %V creatures spellbound while performing (DC %1 Will neg)"',
+    'Note="R90\' May hold %V creatures spellbound while performing (DC %1 Will neg)"',
   'Fast Movement':'Section=ability Note="+%V Speed"',
   'Favored Enemy':
     'Section=combat,skill ' +
@@ -984,15 +985,16 @@ Pathfinder.FEATURES = {
   'Increased Damage Reduction':'Section=combat Note="+%V DR/- during rage"',
   'Indomitable Will':'Section=save Note="+4 Will vs. enchantment during rage"',
   'Inspire Competence':
-    'Section=magic Note="R30\' Allies +%V skill checks while performing"',
+    'Section=magic Note="R30\' Allies gain +%V skill checks while performing"',
   'Inspire Courage':
     'Section=magic ' +
-    'Note="Allies +%V attack, damage, charm and fear saves while performing"',
+    'Note="Allies gain +%V attack, damage, charm and fear saves while performing"',
   'Inspire Greatness':
     'Section=magic ' +
-    'Note="R30\' %V allies +2d10 HP, +2 attack, +1 Fortitude while performing"',
+    'Note="R30\' %V allies gain +2d10 HP, +2 attack, +1 Fortitude while performing"',
   'Inspire Heroics':
-    'Section=magic Note="R30\' %V allies +4 AC and saves while performing"',
+    'Section=magic ' +
+    'Note="R30\' %V allies gain +4 AC and saves while performing"',
   'Iron Will':'Section=save Note="+2 Will"',
   'Keen Senses':'Section=skill Note="+%V Perception"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
@@ -1444,7 +1446,7 @@ Pathfinder.FEATURES = {
   'Dimensional Hop':'Section=magic Note="Teleport up to %V\'/dy"',
   'Dimensional Steps':'Section=magic Note="Teleport up to %V\'/dy"',
   'Dirge Of Doom':
-    'Section=magic Note="R30\' Creatures shaken while performing"',
+    'Section=magic Note="R30\' Creatures become shaken while performing"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
   'Dispelling Attack':
     'Section=magic Note="Sneak attack acts as <i>Dispel Magic</i> on target"',
@@ -1453,7 +1455,7 @@ Pathfinder.FEATURES = {
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Distraction':
     'Section=magic ' +
-    'Note="R30\' Perform check vs. visual magic while performing"',
+    'Note="R30\' May use Perform check vs. visual magic while performing"',
   'Divine Courtesan':
     'Section=skill ' +
     'Note="+1 Diplomacy (gather information)/+1 Sense Motive/choice is a class skill"',
@@ -2102,7 +2104,7 @@ Pathfinder.FEATURES = {
   'Whistleblower':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Wind Stance':
-    'Section=combat Note="20% concealment when moving more than 5\'"',
+    'Section=combat Note="20% concealment vs. ranged attacks when moving more than 5\'"',
   'Wings Of Heaven':'Section=ability Note="Fly 60\'/good for %V min/dy"',
   'Wings':'Section=ability Note="Fly %V\'/average"',
   'Wisdom In The Flesh':
