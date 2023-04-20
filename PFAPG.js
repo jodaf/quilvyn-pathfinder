@@ -1119,7 +1119,7 @@ PFAPG.FEATURES = {
   // Inquisitor
   'Bane':
     'Section=combat ' +
-    'Note="Gains +2 attack and +%Vd6 HP damage with chosen weapon vs. chosen creature type for %{levels.Inquisitor} rd/dy"',
+    'Note="Self gains +2 attack and +%Vd6 HP damage with chosen weapon vs. chosen creature type for %{levels.Inquisitor} rd/dy"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Detect Alignment':
     'Section=magic ' +
@@ -2544,7 +2544,7 @@ PFAPG.FEATURES = {
   'Savanna Ambush':
     'Section=combat,skill ' +
     'Note=' +
-      '"Gains concealment when prone in natural surroundings; may stand from prone during surprise round as immediate action",' +
+      '"Self gains concealment when prone in natural surroundings and may stand from prone during surprise round as immediate action",' +
       '"No Stealth penalty when prone, -5 when crawling"',
   'Seaborn':
     'Section=ability,feature ' +
@@ -2589,19 +2589,19 @@ PFAPG.FEATURES = {
       '"+4 vs. disease and exceptional abilities of animals and magical beasts"',
   'Totem Transformation (Bear)':
     'Section=magic ' +
-    'Note="Gains <i>Speak With Animals</i> (mammals) at will and one of: +10\' speed and +4 Swim; Low-Light Vision and Scent; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/mammals at will and gains one of: +10\' speed and +4 Swim; Low-Light Vision and Scent; +2 AC and Endurance; 1d6 HP bite, 1d4 HP claws, and +2 grapple CMB for %{levels.Druid} min/dy"',
   'Totem Transformation (Eagle)':
     'Section=magic ' +
-    'Note="Gains <i>Speak With Animals</i> (birds) at will and one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/birds at will and gains one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
   'Totem Transformation (Lion)':
     'Section=magic ' +
-    'Note="Gains <i>Speak With Animals</i> (felines) at will and one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/felines at will and gains one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
   'Totem Transformation (Serpent)':
     'Section=magic ' +
-    'Note="Gains <i>Speak With Animals</i> (reptiles) at will and one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/reptiles at will and gains one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
   'Totem Transformation (Wolf)':
     'Section=magic ' +
-    'Note="Gains <i>Speak With Animals</i> (canines) at will and one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/canines at will and gains one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
   'Totemic Summons':
     'Section=magic ' +
     'Note="May cast <i>Summon Nature\'s Ally</i> to summon %V with %{levels.Druid} temporary HP"',
@@ -3299,7 +3299,7 @@ PFAPG.FEATURES = {
     'Note="Successful DC +10 Climb check after failed Climb avoids falling"',
   'Offensive Defense':
     'Section=feature ' +
-    'Note="Gains +%{sneakAttack} AC after successful sneak attack for 1 rd"',
+    'Note="Self gains +%{sneakAttack} AC after successful sneak attack for 1 rd"',
   'Peerless Maneuver':
     'Section=skill ' +
     'Note="May take better of 2 Acrobatics rolls %{levels.Rogue//5+1}/dy"',
@@ -3783,14 +3783,15 @@ PFAPG.FEATURES = {
   // Channel Smite as Pathfinder.js
   'Divine Judgment':
     'Section=magic ' +
-    'Note="May use level 1 spell slot to inflict <i>Death Knell</i> on foe in response to reducing foe to negative HP"',
+    'Note="May use level 2 spell slot to inflict <i>Death Knell</i> in response to reducing foe to negative HP"',
   'Divine Retribution':
     'Section=magic ' +
     'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to crit to self or foe"',
   'Divine Wrath':
     'Section=magic ' +
     'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to crit to self or foe"',
-  'Faith Healing':'Section=magic Note="Self Cure spells have %V effects"',
+  'Faith Healing':
+    'Section=magic Note="Self <i>Cure</i> spells have %V effects"',
   'Stigmata':
     'Section=magic ' +
     'Note="May suffer %V HP/rd bleed damage to gain +%V choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will"',
@@ -3810,12 +3811,12 @@ PFAPG.FEATURES = {
   'Terrain Dominance':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"Applies Favored Terrain bonus when dealing w/creatures native to terrain",' +
+      '"Applies Favored Terrain bonus when dealing w/creatures native to %V chosen favored terrains",' +
       '"%V selections",' +
-      '"Applies Favored Terrain bonus when dealing w/creatures native to terrain"',
+      '"Applies Favored Terrain bonus when dealing w/creatures native to %V chosen favored terrains"',
   'Terrain Dominance (Aligned Plane (%alignment))':
     'Section=combat ' +
-    'Note="Weapons count as opposite alignment for overcoming DR"',
+    'Note="Weapons count as opposite alignment component for overcoming DR"',
   'Terrain Dominance (Astral Plane)':
     'Section=combat,magic ' +
     'Note=' +
@@ -3836,7 +3837,7 @@ PFAPG.FEATURES = {
   'Terrain Dominance (Jungle)':
     'Section=magic ' +
     'Note="May use <i>Charm Monster</i> effects on jungle creatures %{3+wisdomModifier}/dy"',
-  'Terrain Dominance (Mountain)':'Section=combat Note="Gains DR 2/adamantine"',
+  'Terrain Dominance (Mountain)':'Section=combat Note="DR 2/adamantine"',
   'Terrain Dominance (Plains)':'Section=ability Note="+10 Speed"',
   'Terrain Dominance (Plane Of Air)':
     'Section=magic Note="May use <i>Fly</i> effects %{3+wisdomModifier}/dy"',
@@ -3859,18 +3860,18 @@ PFAPG.FEATURES = {
     'Section=feature,skill ' +
     'Note=' +
       '"%V selections",' +
-      '"R30\' May give allies +2 Climb, Perception, Stealth, and Survival for %{wisdomModifier>?1} rd"',
+      '"R30\' May give allies +2 Climb, Perception, Stealth, and Survival for %{wisdomModifier>?1} rd when in %V chosen favored terrains"',
   'Terrain Mastery (Aligned Plane (%alignment))':
      'Section=ability ' +
-     'Note="May cause detection spells report self alignment as %alignment"',
+     'Note="May cause detection spells to report self alignment as %alignment"',
   'Terrain Mastery (Astral Plane)':
-    'Section=ability Note="+30\' Fly on planes w/no or subjective gravity"',
+    'Section=ability Note="+30 Fly speed on planes w/no or subjective gravity"',
   'Terrain Mastery (Cold)':'Section=save Note="Resistance 10 to cold"',
   'Terrain Mastery (Desert)':
     'Section=save Note="Immune to exhaustion; becomes fatigued instead"',
   'Terrain Mastery (Ethereal Plane)':
     'Section=combat ' +
-    'Note="No miss chance from foe fog and miss concealment; 20% miss chance from total concealment"',
+    'Note="0% miss chance from foe fog and mist concealment and 20% from total concealment"',
   'Terrain Mastery (Forest)':'Section=skill Note="+4 Stealth"',
   'Terrain Mastery (Jungle)':
     'Section=combat,skill ' +
@@ -3890,7 +3891,7 @@ PFAPG.FEATURES = {
       '"+1 attack and damage vs. flying creatures",' +
       '"+4 Fly"',
   'Terrain Mastery (Plane Of Earth)':
-    'Section=combat Note="Gains DR 1/adamantine"',
+    'Section=combat Note="DR 1/adamantine"',
   'Terrain Mastery (Plane Of Fire)':'Section=save Note="Resistance 10 to fire"',
   'Terrain Mastery (Plane Of Water)':
     'Section=combat,feature,skill ' +
@@ -10887,11 +10888,28 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.bloodrain.1',
       'channelLevel', '+=', '10 + Math.floor(source / 2)'
     );
-    rules.defineRule('magicNotes.casterLevelBonus', classLevel, '+=', null);
+    rules.defineRule('magicNotes.casterLevelBonus',
+      classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
+    );
     rules.defineRule
       ('magicNotes.stigmata', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.faithHealing',
       classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
+    );
+    Pathfinder.featureSpells(rules,
+      'Divine Judgment', 'DivineJudgment', 'wisdom', 'levels.Holy Vindicator',
+      '', ['Death Knell']
+    );
+    Pathfinder.featureSpells(rules,
+      'Divine Retribution', 'DivineRetribution', 'wisdom', 'casterLevel', '',
+      ['Bestow Curse']
+    );
+    Pathfinder.featureSpells(rules,
+      'Divine Wrath', 'DivineWrath', 'wisdom', 'casterLevel', '', ['Doom']
+    );
+    Pathfinder.featureSpells(rules,
+      'Stigmata', 'Stigmata', 'wisdom', 'casterLevel', '',
+      ['Bleed', 'Stabilize']
     );
   } else if(name == 'Horizon Walker') {
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
@@ -10903,6 +10921,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.favoredTerrain',
       classLevel, '+=', 'source - Math.floor(source / 3)'
+    );
+    rules.defineRule('combatNotes.terrainDominance',
+      'featureNotes.terrainDominance', '=', null
     );
     rules.defineRule('damageReduction.Adamantine',
       'combatNotes.terrainMastery(PlaneOfEarth)', '=', '1',
@@ -10926,6 +10947,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.favoredTerrain',
       classLevel, '+=', 'source - Math.floor(source / 3)'
     );
+    rules.defineRule('skillNotes.terrainDominance',
+      'featureNotes.terrainDominance', '=', null
+    );
+    rules.defineRule
+      ('skillNotes.terrainMastery', 'featureNotes.terrainMastery', '=', null);
   } else if(name == 'Master Chymist') {
     rules.defineRule
       ('abilityNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
@@ -10982,6 +11008,30 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('skillNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Astral Plane)', 'AstralPlaneDominance', 'charisma',
+      'level', null, ['Dimension Door']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Ethereal Plane)', 'EtherealPlaneDominance',
+      'charisma', 'level', null, ['Etheral Jaunt']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Forest)', 'ForestDominance', 'charisma',
+      'level', null, ['Hallucinatory Terrain']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Jungle)', 'JungleDominance', 'charisma',
+      'level', null, ['Charm Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Plane Of Air)', 'PlaneOfAirDominance', 'charisma',
+      'level', null, ['Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Urban)', 'PlaneOfAirDominance', 'charisma',
+      'level', null, ['Charm Person']
+    );
   } else if(name == 'Master Spy') {
     rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
     rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
