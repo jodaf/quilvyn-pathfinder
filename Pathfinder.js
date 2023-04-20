@@ -6556,8 +6556,17 @@ Pathfinder.featureSpells = function(
         let spellAttrs = allSpells[spell];
         let spellDescription =
           QuilvynUtils.getAttrValue(spellAttrs, 'Description');
+        // Spell level can vary for different classes, and we don't have the
+        // info here to determine which is correct. At this point, we just use
+        // whichever level appears most often in the original spell definition.
+        let spellLevels =
+          QuilvynUtils.getAttrValueArray(spellAttrs, 'Level').map(x => x.match(/\d/)[0] - 0);
+        // Clever mode method from https://stackoverflow.com/questions/1053843/get-the-element-with-the-highest-occurrence-in-an-array
         let spellLevel =
-          QuilvynUtils.getAttrValue(spellAttrs, 'Level').match(/\d/)[0] - 0;
+          spellLevels.sort((a,b) =>
+            spellLevels.filter(v => v===a).length -
+            spellLevels.filter(v => v===b).length
+          ).pop();
         let spellSchool = QuilvynUtils.getAttrValue(spellAttrs, 'School');
         let schoolAbbr = (spellSchool || 'Universal').substring(0, 4);
         let fullName =
@@ -6566,7 +6575,8 @@ Pathfinder.featureSpells = function(
           rules, fullName, spellSchool, spellType, spellLevel, spellDescription,
           false
         );
-        rules.defineRule('spells.' + fullName, 'features.' + feature, '=', null);
+        rules.defineRule
+          ('spells.' + fullName, 'features.' + feature, '=', null);
         if(minLevel > 1)
           rules.defineRule
             ('spells.' + fullName, levelAttr, '?', 'source>=' + minLevel);
