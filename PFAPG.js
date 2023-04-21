@@ -3871,7 +3871,7 @@ PFAPG.FEATURES = {
     'Section=save Note="Immune to exhaustion; becomes fatigued instead"',
   'Terrain Mastery (Ethereal Plane)':
     'Section=combat ' +
-    'Note="0% miss chance from foe fog and mist concealment and 20% from total concealment"',
+    'Note="Suffers no miss chance from foe fog or mist concealment and only 20% miss chance from total concealment"',
   'Terrain Mastery (Forest)':'Section=skill Note="+4 Stealth"',
   'Terrain Mastery (Jungle)':
     'Section=combat,skill ' +
@@ -10952,6 +10952,30 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('skillNotes.terrainMastery', 'featureNotes.terrainMastery', '=', null);
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Astral Plane)', 'AstralPlaneDominance', 'charisma',
+      'level', null, ['Dimension Door']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Ethereal Plane)', 'EtherealPlaneDominance',
+      'charisma', 'level', null, ['Ethereal Jaunt']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Forest)', 'ForestDominance', 'charisma',
+      'level', '', ['Hallucinatory Terrain']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Jungle)', 'JungleDominance', 'charisma',
+      'level', '', ['Charm Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Plane Of Air)', 'PlaneOfAirDominance', 'charisma',
+      'level', null, ['Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Terrain Dominance (Urban)', 'UrbanDominance', 'charisma', 'level',
+      '', ['Charm Person']
+    );
   } else if(name == 'Master Chymist') {
     rules.defineRule
       ('abilityNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
@@ -11008,30 +11032,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('skillNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Astral Plane)', 'AstralPlaneDominance', 'charisma',
-      'level', null, ['Dimension Door']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Ethereal Plane)', 'EtherealPlaneDominance',
-      'charisma', 'level', null, ['Etheral Jaunt']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Forest)', 'ForestDominance', 'charisma',
-      'level', null, ['Hallucinatory Terrain']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Jungle)', 'JungleDominance', 'charisma',
-      'level', null, ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Plane Of Air)', 'PlaneOfAirDominance', 'charisma',
-      'level', null, ['Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Urban)', 'PlaneOfAirDominance', 'charisma',
-      'level', null, ['Charm Person']
-    );
   } else if(name == 'Master Spy') {
     rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
     rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
