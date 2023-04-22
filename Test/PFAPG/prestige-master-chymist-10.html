@@ -74,13 +74,13 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Run: +1 Run Speed Multiplier</i></td>
     </tr><tr style="text-align:center">
-      <td>Burly: +5 Strength and Constitution checks in mutagenic form</td>
+      <td>Burly: +5 Strength and Constitution checks while in mutagenic form</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
       <td>Nimble Moves: Move through difficult terrain 5'/rd as though normal terrain</td>
     </tr><tr style="text-align:center">
-      <td>Nimble: +5 Dexterity checks in mutagenic form</td>
+      <td>Nimble: +5 Dexterity checks while in mutagenic form</td>
     </tr></table>
 </td>
   </tr></table>
@@ -114,7 +114,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Discovery: 3 selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Night Vision (Master Chymist): Has 60' Darkvision and Low-Light Vision in mutagenic form</i></td>
+        <td><i>Night Vision (Master Chymist): Has 60' Darkvision and Low-Light Vision while in mutagenic form</i></td>
       </tr><tr style="text-align:center">
         <td><i>Scent (Master Chymist): Has Scent feature in mutagenic form</i></td>
       </tr><tr style="text-align:center">
@@ -130,7 +130,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Mutagenic Form: Has alternate humanoid form w/own personality and alignment</td>
       </tr><tr style="text-align:center">
-        <td>Mutate: May assume mutagenic form 5/dy; failed Fort save or crit forces change (DC 25 Will neg)</td>
+        <td>Mutate: May assume mutagenic form 5/dy or by consuming mutagen; suffering crit or failed Fort save forces use (DC 25 Will neg)</td>
       </tr><tr style="text-align:center">
         <td>Poison Use: No chance of self-poisoning when applying to a weapon</td>
       </tr><tr style="text-align:center">
@@ -197,9 +197,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Stealthy: +2 Escape Artist/+2 Stealth</i></td>
       </tr><tr style="text-align:center">
-        <td>Burly: +5 Strength-linked skill checks in mutagenic form</td>
+        <td>Burly: +5 Strength-linked skill checks while in mutagenic form</td>
       </tr><tr style="text-align:center">
-        <td>Nimble: +5 Dexterity-linked skill checks in mutagenic form</td>
+        <td>Nimble: +5 Dexterity-linked skill checks while in mutagenic form</td>
       </tr><tr style="text-align:center">
         <td>Run: +4 Acrobatics (running jump)</td>
       </tr></table>
@@ -250,6 +250,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Furious Mutagen: Feral Mutagen bite and claw damage increases by 1 die step</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
@@ -258,17 +260,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bomb: May create bombs that inflict 9d6+2 HP fire on hit and 11 HP fire splash (DC 15 Ref half) 9/dy</td>
       </tr><tr style="text-align:center">
-        <td>Brutality: +6 damage w/simple weapons and natural attacks in mutagenic form</td>
+        <td>Brutality: +6 damage w/simple weapons and natural attacks while in mutagenic form</td>
       </tr><tr style="text-align:center">
-        <td>Burly: +5 CMB and CMD in mutagenic form</td>
+        <td>Burly: +5 CMB and CMD while in mutagenic form</td>
       </tr><tr style="text-align:center">
         <td>Draconic (White) Mutagen: 30' cone inflicts 8d8 cold (DC 22 Ref half) 1/transformation</td>
       </tr><tr style="text-align:center">
-        <td>Furious Mutagen: Feral Mutagen bite and claw damage increases by 1 die step</td>
-      </tr><tr style="text-align:center">
         <td>Heart Of The Wilderness: +5 stabilization checks/Does not die until -16 HP</td>
       </tr><tr style="text-align:center">
-        <td>Nimble: +5 AC and CMD in mutagenic form</td>
+        <td>Nimble: +5 AC and CMD while in mutagenic form</td>
       </tr><tr style="text-align:center">
         <td>Precise Bombs: May specify 2 squares in bomb splash radius that are unaffected</td>
       </tr><tr style="text-align:center">
@@ -300,11 +300,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dual Mind: +2 Will/Gains additional save vs. enchantment after 1 rd; success forces form change</i></td>
       </tr><tr style="text-align:center">
-        <td>Disguise: Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves</td>
+        <td>Disguise: Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves; must wait 10 min between uses</td>
       </tr><tr style="text-align:center">
         <td>Draconic (White) Mutagen: Resistance 20 to cold</td>
       </tr><tr style="text-align:center">
-        <td>Evasion (Master Chymist): Reflex save yields no damage instead of half in mutagenic form</td>
+        <td>Evasion (Master Chymist): Reflex save yields no damage instead of half while in mutagenic form</td>
       </tr><tr style="text-align:center">
         <td>Poison Resistance: Resistance 4 to poison</td>
       </tr></table>
@@ -345,7 +345,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Dispelling Bomb: May create bomb that inflicts <i>Dispel Magic</i> effects on hit instead of damage</td>
     </tr><tr style="text-align:center">
-      <td>Feral Mutagen: Mutagen gives 2 claw attacks for 1d6 HP each, 1 bite attack for 1d8 HP damage, and +2 Intimidate</td>
+      <td>Feral Mutagen: Mutagen gives 2 claw attacks for 1d8 HP each, 1 bite attack for 1d10 HP damage, and +2 Intimidate</td>
     </tr><tr style="text-align:center">
       <td>Focused Spell: One chosen target of a multi-target spell suffers +2 save DC; uses +1 spell slot</td>
     </tr><tr style="text-align:center">
@@ -367,7 +367,15 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Selectable Feature Allocation: 10 available vs. 20 allocated</td>
+      <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td>Master Chymist-Draconic (White) Mutagen Selectable Feature: Requires effective alchemist level (currently 17) >= 16, form of the dragon spell I(Alchemist6 Tran) and master chymist level (currently 10) >= 2</td>
+      </tr><tr style="text-align:center">
+        <td>Master Chymist-Growth Mutagen Selectable Feature: Requires effective alchemist level (currently 17) >= 16, enlarge person spell(Alchemist1 Tran), giant form spell I(Alchemist6 Tran) or polymorph spell(Alchemist5 Tran) and master chymist level (currently 10) >= 2</td>
+      </tr><tr style="text-align:center">
+        <td>Selectable Feature Allocation: 10 available vs. 20 allocated</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr></table>
