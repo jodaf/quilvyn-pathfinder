@@ -891,7 +891,7 @@ PFAPG.FEATURES = {
   'Fast Healing':'Section=combat Note="Regains %V HP/rd"',
   'Feral Mutagen':
     'Section=magic ' +
-    'Note="Mutagen gives 2 claw attacks for 1d%{features.Small ? 4 : 6} HP each, 1 bite attack for 1d%{features.Small ? 6 : 8} HP damage, and +2 Intimidate"',
+    'Note="Mutagen gives 2 claw attacks for 1d%V HP each, 1 bite attack for 1d%1 HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
     'Note="Bomb inflicts %{(effectiveAlchemistLevel+1)//2}d4 HP force instead of fire and direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
@@ -3914,17 +3914,17 @@ PFAPG.FEATURES = {
   'Bomb-Thrower':'Section=combat Note="Increased Bomb effects"',
   'Brutality':
     'Section=combat ' +
-    'Note="+%V damage w/simple weapons and natural attacks in mutagenic form"',
+    'Note="+%V damage w/simple weapons and natural attacks while in mutagenic form"',
   'Burly':
     'Section=ability,combat,skill ' +
     'Note=' +
-      '"+%V Strength and Constitution checks in mutagenic form",' +
-      '"+%V CMB and CMD in mutagenic form",' +
-      '"+%V Strength-linked skill checks in mutagenic form"',
+      '"+%V Strength and Constitution checks while in mutagenic form",' +
+      '"+%V CMB and CMD while in mutagenic form",' +
+      '"+%V Strength-linked skill checks while in mutagenic form"',
   // Caster Level Bonus as Pathfinder.js
   'Disguise':
     'Section=save ' +
-    'Note="Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves"',
+    'Note="Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves; must wait 10 min between uses"',
   'Draconic (Black) Mutagen':
     'Section=combat,save ' +
     'Note=' +
@@ -3980,7 +3980,7 @@ PFAPG.FEATURES = {
     'Note="+2 Will/Gains additional save vs. enchantment after 1 rd; success forces form change"',
   'Evasion (Master Chymist)':
     'Section=save ' +
-    'Note="Reflex save yields no damage instead of half in mutagenic form"',
+    'Note="Reflex save yields no damage instead of half while in mutagenic form"',
   'Extended Mutagen':'Section=magic Note="Dbl mutagen duration"',
   // Feral Mutagen as Alchemist
   'Furious Mutagen':
@@ -3995,16 +3995,16 @@ PFAPG.FEATURES = {
     'Note="Has alternate humanoid form w/own personality and alignment"',
   'Mutate':
     'Section=feature ' +
-    'Note="May assume mutagenic form %V/dy; failed Fort save or crit forces change (DC 25 Will neg)"',
+    'Note="May assume mutagenic form %V/dy or by consuming mutagen; suffering crit or failed Fort save forces use (DC 25 Will neg)"',
   'Night Vision (Master Chymist)':
     'Section=feature ' +
-    'Note="Has 60\' Darkvision and Low-Light Vision in mutagenic form"',
+    'Note="Has 60\' Darkvision and Low-Light Vision while in mutagenic form"',
   'Nimble':
     'Section=ability,combat,skill ' +
     'Note=' +
-      '"+%V Dexterity checks in mutagenic form",' +
-      '"+%V AC and CMD in mutagenic form",' +
-      '"+%V Dexterity-linked skill checks in mutagenic form"',
+      '"+%V Dexterity checks while in mutagenic form",' +
+      '"+%V AC and CMD while in mutagenic form",' +
+      '"+%V Dexterity-linked skill checks while in mutagenic form"',
   'Restoring Change':
     'Section=combat ' +
     'Note="Changing to/from mutagenic form restores 1d8+%{level} HP"',
@@ -8199,24 +8199,24 @@ PFAPG.PRESTIGE_CLASSES = {
     'Selectables=' +
       '"2:Burly:Advanced Mutagen",' +
       '"2:Disguise:Advanced Mutagen",' +
-      '"2:Draconic (Black) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Blue) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Green) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Red) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (White) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Brass) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Bronze) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Copper) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Gold) Mutagen:Advanced Mutagen",' +
-      '"2:Draconic (Silver) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Black) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Blue) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Green) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Red) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (White) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Brass) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Bronze) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Copper) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Gold) Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Form Of The Dragon I(Alchemist6 Tran) ? 2:Draconic (Silver) Mutagen:Advanced Mutagen",' +
       '"effectiveAlchemistLevel >= 10 ? 2:Dual Mind:Advanced Mutagen",' +
       '"2:Evasion (Master Chymist):Advanced Mutagen",' +
       '"2:Extended Mutagen:Advanced Mutagen",' +
       '"2:Feral Mutagen:Advanced Mutagen",' +
-      '"effectiveAlchemistLevel >= 11 ? 2:Furious Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 11/features.Feral Mutagen ? 2:Furious Mutagen:Advanced Mutagen",' +
       '"effectiveAlchemistLevel >= 16 ? 2:Grand Mutagen:Advanced Mutagen",' +
       '"effectiveAlchemistLevel >= 12 ? 2:Greater Mutagen:Advanced Mutagen",' +
-      '"effectiveAlchemistLevel >= 16 ? 2:Growth Mutagen:Advanced Mutagen",' +
+      '"effectiveAlchemistLevel >= 16/spells.Enlarge Person(Alchemist1 Tran) || spells.Giant Form I(Alchemist6 Tran) || spells.Polymorph(Alchemist5 Tran) ? 2:Growth Mutagen:Advanced Mutagen",' +
       '"2:Night Vision (Master Chymist):Advanced Mutagen",' +
       '"2:Nimble:Advanced Mutagen",' +
       '"2:Restoring Change:Advanced Mutagen",' +
@@ -8531,6 +8531,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('features.Throw Anything',
       'featureNotes.throwAnything(Alchemist)', '=', '1'
+    );
+    rules.defineRule('magicNotes.feralMutagen',
+      '', '=', '6',
+      'features.Small', '+', '-2'
+    );
+    rules.defineRule('magicNotes.feralMutagen.1',
+      '', '=', '8',
+      'features.Small', '+', '-2'
     );
     rules.defineRule
       ('magicNotes.mutagen', 'effectiveAlchemistLevel', '=', 'source * 10');
@@ -11023,6 +11031,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - Math.floor(source / 4)'
     );
+    rules.defineRule
+      ('magicNotes.feralMutagen', 'combatNotes.furiousMutagen', '+', '2');
+    rules.defineRule
+      ('magicNotes.feralMutagen.1', 'combatNotes.furiousMutagen', '+', '2');
     rules.defineRule
       ('magicNotes.mutagen', 'magicNotes.extendedMutagen', '*', '2');
     rules.defineRule('selectableFeatureCount.Master Chymist (Advanced Mutagen)',
