@@ -1085,7 +1085,8 @@ Pathfinder.FEATURES = {
   'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
   'Skill Mastery':
     'Section=skill Note="Take 10 despite distraction on %V chosen skills"',
-  'Slippery Mind':'Section=save Note="Second save vs. enchantment"',
+  'Slippery Mind':
+    'Section=save Note="May attempt second save vs. enchantment in next rd"',
   'Slow':'Section=ability Note="-10 Speed"',
   'Slow Fall':'Section=save Note="Takes %V damage from falling"',
   'Small':
@@ -2142,7 +2143,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Critical hit causes follow-on damage"',
   'Death Attack':
     'Section=combat ' +
-    'Note="Sneak attack after 3 rd of study causes death or paralysis for 1d6+%1 rd (DC %V Fort neg)"',
+    'Note="Sneak attack w/melee weapon after 3 rd of study causes choice of death or paralysis for 1d6+%1 rd (DC %V Fort neg)"',
   'Deep Pockets':
     'Section=ability,feature,skill ' +
     'Note="%V Strength for light load",' +
@@ -3331,7 +3332,9 @@ Pathfinder.SPELLS = {
     'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0', // no liquid--10 min cast
   'Message':'Level=B0,Rogue0,W0',
   'Meteor Swarm':'Level=Infernal9,W9',
-  'Mind Blank':'Level=Aberrant8,Liberation8,Protection8,W8',
+  'Mind Blank':
+    'Level=Aberrant8,Liberation8,Protection8,W8 ' +
+    'Description="R$RS\' Target gains immunity to divination and +8 save vs. mental effects for 1 dy"',
   'Mind Fog':'Level=B5,W5',
   'Minor Creation':'Level=Adept4,Artifice4,W4',
   'Minor Image':'Level=B2,W2',
