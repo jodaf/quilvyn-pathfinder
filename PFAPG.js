@@ -3998,7 +3998,7 @@ PFAPG.FEATURES = {
     'Note="May assume mutagenic form %V/dy or by consuming mutagen; suffering crit or failed Fort save forces use (DC 25 Will neg)"',
   'Night Vision (Master Chymist)':
     'Section=feature ' +
-    'Note="Has 60\' Darkvision and Low-Light Vision while in mutagenic form"',
+    'Note="Has 60\' b/w vision in darkness and x2 normal distance in poor light while in mutagenic form"',
   'Nimble':
     'Section=ability,combat,skill ' +
     'Note=' +
@@ -4009,32 +4009,37 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Changing to/from mutagenic form restores 1d8+%{level} HP"',
   'Scent (Master Chymist)':
-    'Section=feature Note="Has Scent feature in mutagenic form"',
+    'Section=feature ' +
+    'Note="May detect creatures via smell while in mutagenic form"',
 
   // Master Spy
   'Art Of Deception':
     'Section=skill Note="+%V Bluff/+%V Disguise/+%V Sense Motive"',
   'Assumption':
     'Section=magic ' +
-    'Note="May take aura of touched helpless creature, redirecting detection spells to self"',
+    'Note="May copy aura of touched helpless creature, redirecting detection spells to self"',
   'Concealed Thoughts':
     'Section=save ' +
     'Note="May control effect of spells that detect surface thoughts when cast on self"',
   // Death Attack as Pathfinder.js
-  'Elude Detection':'Section=save Note="May gain SR %V (divination) at will"',
+  'Elude Detection':
+    'Section=save ' +
+    'Note="May gain SR %V vs. divination at will; must wait 1d4 rd between uses"',
   'Fool Casting':
     'Section=save ' +
-    'Note="Successful save vs. control spell allows partial effects, dismissible at well"',
+    'Note="Successful save vs. control spell allows partial effects, dismissible at will"',
   'Glib Lie':
     'Section=save ' +
     'Note="Truth-detecting magic requires DC %V caster level check to be effective"',
-  'Hidden Mind':'Section=save Note="Immune to divination and mental effects"',
+  'Hidden Mind':
+    'Section=save ' +
+    'Note="May gain immunity to divination and +8 save vs. mental effects at will; must wait 1d4 rd between uses"',
   'Mask Alignment':
     'Section=save ' +
     'Note="May cause alignment detection spells directed at self to report choice of alignment"',
   'Master Of Disguise (Master Spy)':
     'Section=skill ' +
-    'Note="May create disguise in half time; reduces disguise penalties by 1"',
+    'Note="May create a disguise in half time; reduces Disguise penalties by 1"',
   'Nonmagical Aura':
     'Section=magic Note="May use <i>Magic Aura</i> effects to mask aura 2/dy"',
   'Quick Change (Master Spy)':
@@ -4046,7 +4051,7 @@ PFAPG.FEATURES = {
   // Slippery Mind as Pathfinder.js
   'Superficial Knowledge':
     'Section=skill ' +
-    'Note="May make +%V untrained Knowledge checks related to cover identity"',
+    'Note="May make +%V untrained Knowledge and Profession checks related to cover identity"',
 
   // Nature Warden
   'Animal Speech':
@@ -4059,7 +4064,7 @@ PFAPG.FEATURES = {
     'Section=companion,magic ' +
     'Note=' +
       '"Additional +4 Will vs. enchantment",' +
-      '"May use <i>Scry</i> effects on and restore life to animal companion"',
+      '"May use <i>Scrying</i> and <i>Raise Dead</i> effects on animal companion"',
   'Companion Walk':
     'Section=companion ' +
     'Note="May affect companion w/self travel and polymorph spells"',
@@ -4076,7 +4081,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="Adds half favored terrain bonus to AC"',
   'Natural Empathy':
     'Section=skill ' +
-    'Note="+%V Wild Empathy checks/May use Wild Empathy to demoralize%1"',
+    'Note="+%V Wild Empathy checks when in favored terrain/May use Wild Empathy to demoralize%1"',
   'Plant Speech':
     'Section=magic ' +
     'Note="May use <i>Speak With Plants</i> effects at will in favored terrain, 1/dy elsewhere"',
@@ -4086,7 +4091,7 @@ PFAPG.FEATURES = {
       '"Animal companion gains DR %V/silver/Natural weapons are considered silver for overcoming DR",' +
       '"Summoned creatures gain DR %V/silver/Natural weapons are considered silver for overcoming DR"',
   'Survivalist (Nature Warden)':
-    'Section=feature Note="No penalty from improvised weapon and tool use%1"',
+    'Section=feature Note="No penalty for improvised weapon and tool use%1"',
   'Wild Stride':
     'Section=feature ' +
     'Note="Self and animal companion may move normally through natural hazards while in favored terrain"',
@@ -11015,14 +11020,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.mutate',
       classLevel, '=', 'source>=10 ? 5 : source>= 8 ? 4 : source>=5 ? 3 : 2'
     );
-    rules.defineRule('features.Darkvision',
-      'featureNotes.nightVision(MasterChymist)', '=', '1'
-    );
-    rules.defineRule('features.Low-Light Vision',
-      'featureNotes.nightVision(MasterChymist)', '=', '1'
-    );
-    rules.defineRule
-      ('features.Scent', 'featureNotes.scent(MasterChymist)', '=', '1');
     rules.defineRule('knowsGrowthExtract',
       'spells.Enlarge Person(Alchemist1 Tran)', '=', '1',
       'spells.Giant Form I(Alchemist6 Tran)', '=', '1',
@@ -11058,6 +11055,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('sneakAttack', classLevel, '+=', 'Math.floor((source + 2) / 3)');
+    Pathfinder.featureSpells(rules,
+      'Nonmagical Aura', 'NonmagicalAura', 'charisma', 'level', '',
+      ['Magic Aura']
+    );
   } else if(name == 'Nature Warden') {
     let allClasses =
      Object.assign({}, rules.getChoices('levels'),
@@ -11088,7 +11089,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.ironpaw', classLevel, '=', null);
     rules.defineRule('companionNotes.silverclaw', classLevel, '=', null);
     rules.defineRule('featureNotes.survivalist(NatureWarden).1',
-      classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork" : ""'
+      classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork after 1 min examination" : ""'
     );
     rules.defineRule('features.Empathic Link',
       'companionNotes.companionBond(NatureWarden)', '=', '1'
@@ -11104,6 +11105,22 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.naturalEmpathy', classLevel, '=', null);
     rules.defineRule('skillNotes.naturalEmpathy.1',
       classLevel, '=', 'source>=4 ? "/May use Wild Empathy w/magical beasts" + (source>=10 ? ", vermin, and plant creatures" : source>=7 ? " and vermin" : "") + " w/out penalty" : ""'
+    );
+    Pathfinder.featureSpells(rules,
+      'Animal Speech', 'AnimalSpeech', 'charisma', 'levels.Nature Warden', '',
+      ['Speak With Animals']
+    );
+    Pathfinder.featureSpells(rules,
+      'Woodforging', 'Woodforging', 'charisma', 'levels.Nature Warden', '',
+      ['Wood Shape', 'Ironwood']
+    );
+    Pathfinder.featureSpells(rules,
+      'Plant Speech', 'PlantSpeech', 'charisma', 'levels.Nature Warden', '',
+      ['Speak With Plants']
+    );
+    Pathfinder.featureSpells(rules,
+      'Companion Soul', 'CompanionSoul', 'charisma', 'levels.Nature Warden', '',
+      ['Scrying', 'Raise Dead']
     );
   } else if(name == 'Rage Prophet') {
     rules.defineRule('combatNotes.savageSeer', classLevel, '=', null);
@@ -11706,7 +11723,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'featureNotes.fluidNature', '=', 'source.includes("Dodge") ? 1 : null'
     );
     rules.defineRule('magicNotes.waterSight',
-      'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scry" : null'
+      'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scrying" : null'
     );
   } else if(name == 'Wind Mystery') {
     rules.defineRule
