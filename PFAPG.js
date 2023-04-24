@@ -692,9 +692,10 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="+4 Constitution and Fortitude vs. fatigue, exhaustion, and effects from running, forced marches, starvation, thirst, and hot and cold environments"',
   'Dreamspeaker':
-    'Section=magic ' +
+    'Section=magic,magic ' +
     'Note=' +
-      '"+1 Spell DC (Divination)/+1 sleep spell DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
+      '"+1 Spell DC (Divination)",' +
+      '"+1 <i>Sleep</i> DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
   'Eternal Grudge':'Section=combat Note="+1 attack vs. dwarves and orcs"',
   'Lightbringer':
     'Section=magic,save ' +
@@ -705,13 +706,16 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="Reduces moving Stealth penalty by 5/May use -20 Stealth while running"',
   'Spirit Of The Waters':
-    'Section=feature,skill ' +
+    'Section=feature,skill,skill ' +
     'Note=' +
       '"Has Weapon Proficiency (Longspear/Net/Trident)",' +
-      '"+4 Swim/May take 10 while swimming/May learn Aquan"',
+      '"+4 Swim",' +
+      '"May take 10 while swimming/May learn Aquan"',
   'Woodcraft':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Nature)/+1 Survival/Additional +1 to both in forests"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nature)/+1 Survival",' +
+      '"+1 Knowledge (Nature) (forests)/+1 Survival (forests)"',
 
   // Gnome
   'Academician':'Section=skill Note="+2 choice of Knowledge"',
@@ -756,8 +760,10 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May retry Diplomacy to change attitude after failing by 5 or more"',
   'Water Child':
-      'Section=skill ' +
-      'Note="+4 Swim/May take 10 while swimming/May learn Aquan"',
+      'Section=skill,skill ' +
+      'Note=' +
+        '"+4 Swim",' +
+        '"May take 10 while swimming/May learn Aquan"',
 
   // Half-Orc
   'Beastmaster':
@@ -780,24 +786,28 @@ PFAPG.FEATURES = {
   'Rock Climber':'Section=skill Note="+1 Acrobatics/+1 Climb"',
   'Sacred Tattoo':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Scavenger':
-    'Section=skill ' +
-    'Note="+2 Appraise/+2 Perception (find hidden objects, note spoiled food, identify poison by taste)"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+2 Appraise",' +
+      '"+2 Perception (find hidden objects, note spoiled food, identify poison by taste)"',
   'Toothy':'Section=combat Note="Bite inflicts 1d4 HP piercing"',
 
   // Halfling
   'Craven':
-    'Section=ability,combat,save ' +
+    'Section=ability,combat,combat,save ' +
     'Note=' +
       '"+10 Speed when fearful",' +
-      '"+1 Initiative/+1 attack when flanking/+1 AC when fearful",' +
+      '"+1 Initiative",' +
+      '"+1 attack when flanking/+1 AC when fearful",' +
       '"-2 vs. fear/No morale bonus on fear saves"',
   'Low Blow':'Section=combat Note="+1 crit confirm on larger foe"',
   'Outrider':'Section=skill Note="+2 Handle Animal/+2 Ride"',
   'Practicality':
-    'Section=save,skill ' +
+    'Section=save,skill,skill ' +
     'Note=' +
       '"+2 vs. illusions",' +
-      '"+2 choice of Craft or Profession/+2 Sense Motive"',
+      '"+2 Sense Motive",' +
+      '"+2 choice of Craft or Profession"',
   'Swift As Shadows':
     'Section=skill ' +
     'Note="Reduces penalty for moving Stealth by 5, sniping Stealth by 10"',
@@ -841,10 +851,11 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Bomb inflicts acid damage instead of fire and direct hit an additional 1d6 HP acid the next round"',
   'Alchemy':
-    'Section=magic,skill ' +
+    'Section=magic,skill,skill ' +
     'Note=' +
       '"May infuse extracts that duplicate spell effects on self for 1 dy",' +
-      '"+%V Craft (Alchemy)/May use Craft (Alchemy) to identify potions"',
+      '"+%V Craft (Alchemy)",' +
+      '"May use Craft (Alchemy) to identify potions"',
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
@@ -911,7 +922,7 @@ PFAPG.FEATURES = {
     'Note="May create bomb that obscures vision and inflicts 6d6 HP fire in dbl splash radius (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) for %{levels.Alchemist} rd"',
   'Infuse Mutagen':
      'Section=magic ' +
-     'Note="May retain multiple mutagens; suffers -2 Intelligence/additional mutagen"',
+     'Note="May retain multiple mutagens; suffers -2 Intelligence per additional mutagen"',
   'Infusion':
     'Section=magic ' +
     'Note="Created extracts persist when not held and may be used by others"',
@@ -1049,41 +1060,47 @@ PFAPG.FEATURES = {
       '"No armor check penalty for Ride"',
   'Order':'Section=feature Note="1 selection"',
   'Order Of The Cockatrice':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} HP damage during solo threat of Challenge target",' +
       '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill/Foes suffer +%{charismaModifier} DC to demoralize using Intimidate"',
+      '"Appraise is a class skill/Perform is a class skill",' +
+      '"Foes suffer +%{charismaModifier} DC to demoralize using Intimidate"',
   'Order Of The Dragon':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"Allies gain +%{levels.Cavalier//4+1} attack on threatened Challenge target",' +
       '"Must protect allies from harm and defend their honor",' +
-      '"Perception is a class skill/Survival is a class skill/+%{levels.Cavalier//2>?1} Survival (care for allies)"',
+      '"Perception is a class skill/Survival is a class skill",' +
+      '"+%{levels.Cavalier//2>?1} Survival (care for allies)"',
   'Order Of The Lion':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} AC vs. Challenge target",' +
       '"Must defend and obey sovereign",' +
-      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill/May use Knowledge (Nobility) untrained/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
+      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill",' +
+      '"May use Knowledge (Nobility) untrained/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
   'Order Of The Shield':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} attack vs. Challenge target for 1 min if target attacks another",' +
       '"Must defend the lives and prosperity of common folk",' +
-      '"Heal is a class skill/Knowledge (Local) is a class skill/+%{levels.Cavalier//2>?1} Heal (others)"',
+      '"Heal is a class skill/Knowledge (Local) is a class skill",' +
+      '"+%{levels.Cavalier//2>?1} Heal (others)"',
   'Order Of The Star':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} saves while threatening Challenge target",' +
       '"Must protect and serve a faith and its members",' +
-      '"Heal is a class skill/Knowledge (Religion) is a class skill/May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
+      '"Heal is a class skill/Knowledge (Religion) is a class skill",' +
+      '"May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
   'Order Of The Sword':
-    'Section=combat,feature,skill ' +
+    'Section=combat,feature,skill,skill ' +
     'Note=' +
       '"+%{levels.Cavalier//4+1} mounted attack vs. Challenge target",' +
       '"Must show honor, courage, mercy, and charity",' +
-      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill/+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
+      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill",' +
+      '"+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
   'Protect The Meek':
     'Section=combat ' +
     'Note="May take immediate move and attack; staggered for 1 rd afterward"',
@@ -1285,11 +1302,12 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spells w/out cost"',
   'Final Revelation (Heavens Mystery)':
-    'Section=combat,feature,save ' +
+    'Section=combat,feature,save,save ' +
     'Note=' +
       '"Automatically stabilize at negative HP/Automatically confirm crit",' +
       '"Automatic <i>Reincarnation</i> 3 dy after death; matures in 1 wk",' +
-      '"+%V Fortitude/+%V Reflex/+%V Will/Immune to fear"',
+      '"+%V Fortitude/+%V Reflex/+%V Will",' +
+      '"Immune to fear"',
   'Final Revelation (Life Mystery)':
     'Section=combat,save ' +
     'Note=' +
@@ -1362,8 +1380,10 @@ PFAPG.FEATURES = {
       '"Malevolent spirits inflict minor annoyances",' +
       '"Know %V spells"',
   'Healing Hands':
-    'Section=skill ' +
-    'Note="+4 Heal/May use Heal on dbl number of people simultaneously/May provide long-term care for self"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+4 Heal",' +
+      '"May use Heal on dbl number of people simultaneously/May provide long-term care for self"',
   'Heat Aura':
     'Section=combat ' +
     'Note="10\' radius inflicts %{mysteryLevel//2>?1}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} half), gives self 20% concealment for 1 rd %{(mysteryLevel+5)//5}/dy"',
@@ -1386,9 +1406,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May use self <i>Stoneskin</i> effects %{mysteryLevel>=15 ? 2 : 1}/dy"',
   'Lame':
-    'Section=ability,save ' +
+    'Section=ability,ability,save ' +
     'Note=' +
-      '"%V Speed/Speed is unaffected by encumbrance%1",' +
+      '"%V Speed",' +
+      '"Speed is unaffected by encumbrance%1",' +
       '"Immune to %V"',
   'Life Leach':
     'Section=combat ' +
@@ -1859,7 +1880,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May perform 1 hr ritual to use <i>Control Weather</i> effects 1/dy"',
   "Witch's Familiar":
-    'Section=feature Note="Has Familiar feature/Familiar stores spells"',
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Has Familiar feature",' +
+      '"Familiar stores spells"',
 
   // Barbarian
   'Beast Totem':'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
@@ -1918,8 +1942,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Alcohol gives save vs. condition or poison during rage"',
   'Greater Beast Totem':
-    'Section=combat ' +
-    'Note="May take full-attack action after a charge/Increased Lesser Beast Totem effects"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"Increased Lesser Beast Totem effects",' +
+      '"May take full-attack action after a charge"',
   'Greater Brawler':
     'Section=combat ' +
     'Note="Has Two-Weapon Fighting feature for Unarmed Strike during rage"',
@@ -1957,8 +1983,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May make +2 thrown attack while charging during rage"',
   'Improved Savage Grapple':
-    'Section=combat ' +
-    'Note="Increased Savage Grapple effects/Treated as one size larger for grappling and swallowing"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"Increased Savage Grapple effects",' +
+      '"Treated as one size larger for grappling and swallowing"',
   'Inspire Ferocity':
     'Section=combat ' +
     'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd"',
@@ -2019,7 +2047,10 @@ PFAPG.FEATURES = {
    'Section=combat ' +
    'Note="%V grappled penalties/Always has AOO vs. grapple; hit gives +2 vs. grapple"',
   'Sixth Sense':
-    'Section=combat Note="+%V Initiative/+%V AC during surprise rd"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V Initiative",' +
+      '"+%V AC during surprise rd"',
   'Skilled Thrower':
     'Section=combat Note="+10\' range for thrown weapons and objects"',
   'Smasher':'Section=combat Note="Attack ignores object hardness 1/rage"',
@@ -2077,8 +2108,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May expend spell slot to extend Bardic Performance effects"',
   'Eye For Detail':
-    'Section=skill ' +
-    'Note="+%V Diplomacy (gather information)/+%V Knowledge (Local)/+%V Perception/+%V Sense Motive"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V Knowledge (Local)/+%V Perception/+%V Sense Motive",' +
+      '"+%V Diplomacy (gather information)"',
   'Gladhanding':
     'Section=skill ' +
     'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
@@ -2092,8 +2125,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
   'Heraldic Expertise':
-    'Section=skill ' +
-    'Note="+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)/May reroll 1/dy"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)",' +
+      '"May reroll Diplomacy, Knowledge (History), Knowledge (Local), or Knowledge (Nobility) 1/dy"',
   'Incite Rage':
     'Section=magic ' +
     'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} neg)"',
@@ -2121,8 +2156,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Master Of Deception':
-    'Section=skill ' +
-    'Note="+%1 Bluff/+%1 Sleight Of Hand/+%1 Stealth/May disarm magical traps"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%1 Bluff/+%1 Sleight Of Hand/+%1 Stealth",' +
+      '"May disarm magical traps"',
   'Metamagic Mastery (Magician)':
     'Section=magic ' +
     'Note="May use Bardic Performance to apply metamagic feat to spell"',
@@ -2199,8 +2236,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{30+(levels.Bard-5)//5*10}\' radius, or +%{(levels.Bard-5)//5} targets"',
   'World Traveler (Sea Singer)':
-    'Section=skill ' +
-    'Note="+%1 Knowledge (Geography)/+%1 Knowledge (Local)/+%1 Knowledge (Nature)/+%1 Linguistics/May reroll %{(levels.Bard+5)//5}/dy"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%1 Knowledge (Geography)/+%1 Knowledge (Local)/+%1 Knowledge (Nature)/+%1 Linguistics",' +
+      '"May reroll Knowledge (Geography), Knowledge (Local), Knowledge (Nature), or Linguistics %{(levels.Bard+5)//5}/dy"',
 
   // Cleric
   'Adoration':
@@ -2683,8 +2722,10 @@ PFAPG.FEATURES = {
   'Greater Power Attack':
     'Section=combat Note="Power Attack w/two-handed weapon doubles damage"',
   'Greater Savage Charge':
-    'Section=combat ' +
-    'Note="Increased Savage Charge effects/May charge past allies and over difficult terrain"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"Increased Savage Charge effects",' +
+      '"May charge past allies and over difficult terrain"',
   'Hawkeye':
     'Section=combat,skill ' +
     'Note=' +
@@ -3286,7 +3327,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May apply poison to last 2 attacks; targets gain +2 save"',
   'Martial Training':
-    'Section=feature Note="Gains 1 Combat Feat (Martial Weapon Proficiency)/May choose Combat Trick rogue talent twice"',
+    'Section=feature,feature ' +
+    'Note=' +
+      '"Gains 1 Combat Feat (Martial Weapon Proficiency)",' +
+      '"May choose Combat Trick rogue talent twice"',
   'Master Of Disguise':'Section=skill Note="May gain +10 Disguise 1/dy"',
   'Master Poisoner':
     'Section=skill ' +
@@ -3548,10 +3592,11 @@ PFAPG.FEATURES = {
       '"Has 60\' Blindsense vs. concealment from fog, mist, and weather",' +
       '"Has resistance to electricity 5 and sonic 5/Treats wind effects as %{levels.Sorcerer>=9 ? \'2 steps\' : \'1 step\'} less"',
   'Strength Of Stone':
-    'Section=ability,combat,save ' +
+    'Section=ability,combat,combat,save ' +
     'Note=' +
       '"Suffers no penalty for squeezing through tight spaces",' +
-      '"Has DR 10/adamantine/Immune to bull rush, drag, grapple, reposition, and trip maneuvers and push and pull effects when standing on ground",' +
+      '"DR 10/adamantine",' +
+      '"Immune to bull rush, drag, grapple, reposition, and trip maneuvers and push and pull effects when standing on ground",' +
       '"Immune to petrification"',
   'Tanglevine':
     'Section=combat ' +
@@ -3767,10 +3812,11 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Ref saves"',
   'Voice Of Authority':
-    'Section=feature,skill ' +
+    'Section=feature,skill,skill ' +
     'Note=' +
       '"+%V Tactician level",' +
-      '"+2 Diplomacy/+2 Intimidate/Allies gain +%V Perception and Sense Motive to hear commands and to interpret messages given using Bluff"',
+      '"+2 Diplomacy/+2 Intimidate",' +
+      '"Allies gain +%V Perception and Sense Motive to hear commands and to interpret messages given using Bluff"',
 
   // Holy Vindicator
   'Bloodfire':
@@ -3828,7 +3874,8 @@ PFAPG.FEATURES = {
       '"+1 attack and damage vs. cold creatures",' +
       '"Resistance 20 to cold"',
   'Terrain Dominance (Desert)':
-    'Section=save Note="Resistance 10 to fire/Immune to fatigue"',
+    'Section=save ' +
+    'Note="Resistance 10 to fire/Immune to fatigue"',
   'Terrain Dominance (Ethereal Plane)':
     'Section=magic Note="May use <i>Ethereal Jaunt</i> effects 1/dy"',
   'Terrain Dominance (Forest)':
@@ -3976,8 +4023,10 @@ PFAPG.FEATURES = {
       '"30\' cone inflicts 8d8 cold (DC %V Ref half) 1/transformation",' +
       '"Resistance 20 to cold"',
   'Dual Mind':
-    'Section=save ' +
-    'Note="+2 Will/Gains additional save vs. enchantment after 1 rd; success forces form change"',
+    'Section=save,save ' +
+    'Note=' +
+      '"+2 Will",' +
+      '"Gains additional save vs. enchantment after 1 rd; success forces form change"',
   'Evasion (Master Chymist)':
     'Section=save ' +
     'Note="Reflex save yields no damage instead of half while in mutagenic form"',
@@ -4196,8 +4245,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May redirect ineffective spell to another target; uses +1 spell slot"',
   'Breadth Of Experience':
-    'Section=skill ' +
-    'Note="+2 all Knowledge/+2 all Profession/May use Knowledge and Profession untrained"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+2 all Knowledge/+2 all Profession",' +
+      '"May use Knowledge and Profession untrained"',
   'Bull Rush Strike':
     'Section=combat Note="May push foe on crit confirm that exceeds foe CMD"',
   'Charge Through':
@@ -4223,8 +4274,10 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="+2 CMB, +2 CMD, and +4 vs. grapple when adjacent ally has same feat"',
   'Cosmopolitan':
-    'Section=skill ' +
-    'Note="+2 Language Count/Choice of 2 Int, Wis, or Cha skills are class skills"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+2 Language Count",' +
+      '"Choice of 2 Int, Wis, or Cha skills are class skills"',
   'Covering Defense':
     'Section=combat ' +
     'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : shield==\'None\' ? 0 : 1} AC to adjacent ally"',
@@ -4445,8 +4498,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May use %V chosen spell of 5th level or lower as spell-like ability 2/dy"',
   'Master Alchemist':
-    'Section=skill ' +
-    'Note="+2 Craft (Alchemy)/May create %{intelligenceModifier>?1} potion doses simultaneously/May craft alchemical items for 1/10 cost"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+2 Craft (Alchemy)",' +
+      '"May create %{intelligenceModifier>?1} potion doses simultaneously/May craft alchemical items for 1/10 cost"',
   'Merciful Spell':
     'Section=magic Note="May cast spells to inflict nonlethal damage"',
   'Minor Spell Expertise':
@@ -4530,13 +4585,25 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="May reduce two-handed weapon full-attack action damage by half to gain +4 AC and CMD"',
   'Shield Specialization (Buckler)':
-    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V CMD",' +
+      '"+2 AC vs. crit"',
   'Shield Specialization (Heavy)':
-    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V CMD",' +
+      '"+2 AC vs. crit"',
   'Shield Specialization (Light)':
-    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V CMD",' +
+      '"+2 AC vs. crit"',
   'Shield Specialization (Tower)':
-    'Section=combat Note="+2 AC vs. crit/+%V CMD"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V CMD",' +
+      '"+2 AC vs. crit"',
   'Shield Wall':
     'Section=combat ' +
     'Note="+1 shield AC bonus when adjacent ally has same feat and buckler or light shield; +2 w/heavy or tower shield"',
@@ -8655,13 +8722,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
   } else if(name == 'Oracle') {
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
-      'abilityNotes.lame.1', '*', 'source.includes("armor") ? 0 : null'
+      'abilityNotes.lame-1.1', '*', 'source.includes("armor") ? 0 : null'
     );
     rules.defineRule('abilityNotes.lame',
       '', '=', '-10',
       'features.Slow', '+', '5'
     );
-    rules.defineRule('abilityNotes.lame.1',
+    rules.defineRule('abilityNotes.lame-1.1',
       'features.Lame', '?', null,
       'mysteryLevel', '=', 'source>=10 ? " or armor" : ""'
     );
@@ -9274,12 +9341,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.lesserBeastTotem',
       '', '=', '6',
       'features.Small', '+', '-2',
-      'features.Greater Beast Totem', '+', '2'
+      'combatNotes.greaterBeastTotem', '+', '2'
     );
     rules.defineRule('combatNotes.lesserBeastTotem.1',
       'features.Lesser Beast Totem', '?', null,
       '', '=', '2',
-      'features.Greater Beast Totem', '+', '1'
+      'combatNotes.greaterBeastTotem', '+', '1'
     );
     rules.defineRule('combatNotes.lesserChaosTotem',
       '', '=', '1',
@@ -9306,6 +9373,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
+    rules.defineRule
+      ('combatNotes.sixthSense-1', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule('companionBarbarianLevel',
       'features.Bestial Mount', '?', null,
       classLevel, '+=', 'Math.floor(source / 2)'
@@ -9556,6 +9625,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.masterOfDeception.1', '+', null
     );
     rules.defineRule('skillNotes.eyeForDetail',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.eyeForDetail-1',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('skillNotes.heraldicExpertise',
@@ -10891,6 +10963,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.inspiringCommand', '=', null
     );
     rules.defineRule('skillNotes.voiceOfAuthority', classLevel, '=', null);
+    rules.defineRule('skillNotes.voiceOfAuthority-1', classLevel, '=', null);
     rules.defineRule
       ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
   } else if(name == 'Holy Vindicator') {
