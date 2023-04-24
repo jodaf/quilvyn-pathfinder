@@ -9,7 +9,7 @@ var attributes = {
   "_path":"ztest/pfapg/prestige/rage prophet 10", 
   "alignment":"Chaotic Evil", "armor":"Studded Leather", "charisma":10, "constitution":18, 
   "deity":"Shelyn", "dexterity":11, "experience":36, "experienceTrack":"PSOP", 
-  "faction":"Taldor", "feats.Moment Of Clarity":1, "feats.Point-Blank Shot":1, 
+  "faction":"Taldor", "feats.Blind-Fight":1, "feats.Point-Blank Shot":1, 
   "feats.Shielded Caster":1, "feats.Skill Focus (Craft (Weapons))":1, 
   "feats.Skill Focus (Handle Animal)":1, "feats.Skill Focus (Linguistics)":1, "feats.Spell Focus (Evocation)":1, 
   "feats.Swap Places":1, "gender":"Male", "hitPoints":72, "intelligence":14, "languages.Aklo":1, 
@@ -79,7 +79,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Moment Of Clarity; Point-Blank Shot; Shielded Caster; Skill Focus (Craft (Weapons)); Skill Focus (Handle Animal); Skill Focus (Linguistics); Spell Focus (Evocation); Swap Places</td>
+        <td><b>Feats</b>: Blind-Fight; Point-Blank Shot; Shielded Caster; Skill Focus (Craft (Weapons)); Skill Focus (Handle Animal); Skill Focus (Linguistics); Spell Focus (Evocation); Swap Places</td>
         <td><b>Rage Prophet Features</b>: Caster Level Bonus; Enduring Rage; Greater Rage; Indomitable Caster; Rage Prophet Mystery; Ragecaster; Raging Healer; Raging Spellstrength; Savage Seer; Spirit Guardian; Spirit Guide; Spirit Warrior</td>
         <td><b>Oracle Features</b>: Armor Proficiency (Medium); Bones Mystery; Mystery; Oracle's Curse; Orisons; Revelation; Shield Proficiency; Voice Of The Grave; Wasting; Weapon Proficiency (Simple)</td>
         <td><b>Human Features</b>: Bonus Feat; Heart Of The Wilderness; Human Ability Adjustment</td>
@@ -209,6 +209,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
       </tr><tr style="text-align:center">
+        <td>Blind-Fight: Reroll concealed miss, no melee bonus to invisible foe, no skill check on blinded full speed move</td>
+      </tr><tr style="text-align:center">
         <td>Destructive: +1 damage vs. objects and with sunder</td>
       </tr><tr style="text-align:center">
         <td>Greater Rage: +6 Str, +6 Con, +3 Will during rage</td>
@@ -239,7 +241,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td>Wasting: Immune to disease/Immune to sickened and nauseated</td>
+        <td>Wasting: Immune to disease/Immune to sickened</td>
       </tr></table>
 </td>
     </tr></table>
@@ -260,7 +262,19 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Spells</b>:<br/>Speak With Dead (Voice Of The Grave3 Necr): R10' Self receives 10 answers from corpse (DC 20 Will neg)</td>
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Dancing Lights (Spirit Guide0 Evoc): R200' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+    </tr><tr style="text-align:left">
+      <td>Ghost Sound (Spirit Guide0 Illu): R50' Produces sound volume of 20 humans (DC 10 Will disbelieve) for 10 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Guidance (Spirit Guide0 Divi): Touched gains +1 next attack, save, or skill check for 1 min</td>
+    </tr><tr style="text-align:left">
+      <td>Mage Hand (Spirit Guide0 Tran): R50' Self moves up to 5 lb target 15'/rd for conc</td>
+    </tr><tr style="text-align:left">
+      <td>Speak With Dead (Voice Of The Grave3 Necr): R10' Self receives 5 answers from corpse (DC 15 Will neg)</td>
+    </tr></table>
+</td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
@@ -268,7 +282,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Evocation): +1 Spell DC (Evocation)</i></td>
     </tr><tr style="text-align:center">
-      <td>Enduring Rage: May use spell slot to extend range spell level rd</td>
+      <td>Enduring Rage: May use spell slot to extend rage 1 rd/spell level</td>
     </tr><tr style="text-align:center">
       <td>Indomitable Caster: +4 concentration checks</td>
     </tr><tr style="text-align:center">
@@ -276,21 +290,21 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Rage Prophet Mystery: Has access to additional spells</td>
     </tr><tr style="text-align:center">
-      <td>Ragecaster: +10 caster level during Moment Of Clarity/+4 spell DC during rage</td>
+      <td>Ragecaster: +2 caster level during Moment Of Clarity/+4 spell DC during rage</td>
     </tr><tr style="text-align:center">
-      <td>Raging Healer: May cast self Cure spells while raging</td>
+      <td>Raging Healer: May cast self <i>Cure</i> spells while raging</td>
     </tr><tr style="text-align:center">
       <td>Raging Spellstrength: May cast self personal spells while raging</td>
     </tr><tr style="text-align:center">
       <td>Shielded Caster: +4 concentration when adjacent ally has same feat and no shield, +5 w/buckler or light shield, +6 w/heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature</td>
     </tr><tr style="text-align:center">
-      <td>Spirit Guardian: Spirit Guide <i>Guidance</i> gives +5 bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd</td>
+      <td>Spirit Guardian: Increases Spirit Guide <i>Guidance</i> bonus to +5 vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Spirit Guide: May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage</td>
     </tr><tr style="text-align:center">
-      <td>Spirit Warrior: Spirit Guide <i>Guidance</i> gives +10 bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd</td>
+      <td>Spirit Warrior: Increases Spirit Guide <i>Guidance</i> bonus to +10 vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd</td>
     </tr><tr style="text-align:center">
-      <td>Voice Of The Grave: May use <i>Speak With Dead</i> effects 21 rd/dy; target suffers -8 save</td>
+      <td>Voice Of The Grave: May use <i>Speak With Dead</i> effects 11 rd/dy; target suffers -4 save</td>
     </tr></table>
 </td>
   </tr></table>
