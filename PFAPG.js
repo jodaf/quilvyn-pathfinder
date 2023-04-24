@@ -4155,26 +4155,27 @@ PFAPG.FEATURES = {
   // Rage Prophet
   // Caster Level Bonus as Pathfinder.js
   'Enduring Rage':
-    'Section=magic Note="May use spell slot to extend range spell level rd"',
+    'Section=magic Note="May use spell slot to extend rage 1 rd/spell level"',
   // Greater Rage as Pathfinder.js
   'Indomitable Caster':
     'Section=magic Note="+%{constitutionModifier} concentration checks"',
   'Rage Prophet Mystery':'Section=magic Note="Has access to additional spells"',
   'Ragecaster':
     'Section=magic Note="+%V caster level during Moment Of Clarity%1"',
-  'Raging Healer':'Section=magic Note="May cast self Cure spells while raging"',
+  'Raging Healer':
+    'Section=magic Note="May cast self <i>Cure</i> spells while raging"',
   'Raging Spellstrength':
     'Section=magic Note="May cast self personal spells while raging"',
   'Savage Seer':'Section=combat Note="+%V Rage Power Level/+%V Mystery Level"',
   'Spirit Guardian':
     'Section=magic ' +
-    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
+    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%V vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
   'Spirit Guide':
     'Section=magic ' +
     'Note="May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage"',
   'Spirit Warrior':
     'Section=magic ' +
-    'Note="Spirit Guide <i>Guidance</i> gives +%V bonus vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
+    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%V vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
 
   // Stalwart Defender
   'AC Bonus':'Section=combat Note="+%V AC"',
@@ -11203,7 +11204,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - (source>=8 ? 2 : source>=5 ? 1 : 0)'
     );
-    rules.defineRule('magicNotes.ragecaster', classLevel, '=', null);
+    rules.defineRule('magicNotes.ragecaster', 'levels.Barbarian', '=', null);
     rules.defineRule('magicNotes.ragecaster.1',
       'constitutionModifier', '=', '"/+" + source + " spell DC during rage"',
       classLevel, '=', 'source>=7 ? null : ""'
@@ -11211,7 +11212,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.spiritGuardian', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.spiritWarrior', classLevel, '=', null);
-    rules.defineRule('mysteryLevel', classLevel, '+=', null);
+    Pathfinder.featureSpells(rules,
+      'Spirit Guide', 'SpiritGuide', 'charisma', 'levels.Rage Prophet', '',
+      ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
+    );
   } else if(name == 'Stalwart Defender') {
     rules.defineRule
       ('combatNotes.aCBonus', classLevel, '=', 'Math.floor((source + 2) / 3)');
