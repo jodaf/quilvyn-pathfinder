@@ -1542,10 +1542,11 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="R100\' %{(mysteryLevel+9)//4*5>?20}\' radius inflicts %{mysteryLevel}d6 HP bludgeoning and 1 hr deafness (DC %{10+mysteryLevel//2+charismaModifier} Fort half HP only) %{(mysteryLevel-3)//4>?1}/dy"',
   'Tongues':
-    'Section=combat,skill ' +
+    'Section=combat,skill,skill ' +
     'Note=' +
       '"Can speak only chosen outsider or elemental language during combat",' +
-      '"+%V Language Count%1"',
+      '"+%V Language Count",' +
+      '"Can %V any spoken language"',
   'Touch Of Acid':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP acid %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 HP acid\' : \'\'}"',
@@ -4108,7 +4109,10 @@ PFAPG.FEATURES = {
     'Note="May use <i>Speak With Animals</i> effects at will in favored terrain, 1/dy elsewhere"',
   // Caster Level Bonus as Pathfinder.js
   'Companion Bond (Nature Warden)':
-    'Section=companion Note="Has Empathic Link feature%1"',
+    'Section=companion,companion ' +
+    'Note=' +
+      '"Has Empathic Link feature",' +
+      '"Companion shares Favored Terrain benefits"',
   'Companion Soul':
     'Section=companion,magic ' +
     'Note=' +
@@ -7678,15 +7682,15 @@ PFAPG.CLASSES = {
     'SpellAbility=charisma ' +
     'SpellSlots=' +
       'O0:1=4;2=5;4=6;6=7;8=8;10=9,' +
-      'O1:1=2;3=3;5=4;7=5,' +
-      'O2:4=1;5=2;7=3;9=4;11=5,' +
-      'O3:6=1;7=2;9=3;11=4,' +
-      'O4:8=1;9=2;11=3;13=4,' +
-      'O5:10=3;11=2;13=3;15=4,' +
-      'O6:12=1;13=2;15=3,' +
-      'O7:14=1;15=2;17=3,' +
-      'O8:16=1;17=2;19=3,' +
-      'O9:18=1;19=2;20=3 ' +
+      'O1:1=3;2=4;3=5;4=6,' +
+      'O2:4=3;5=4;6=5;7=6,' +
+      'O3:6=3;7=4;8=5;9=6,' +
+      'O4:8=3;9=4;10=5;11=6,' +
+      'O5:10=3;11=4;12=5;13=6,' +
+      'O6:12=3;13=4;14=5;15=6,' +
+      'O7:14=3;15=4;16=6;17=6,' +
+      'O8:16=3;17=4;18=5;19=6,' +
+      'O9:18=3;19=4;20=6 ' +
     'Skills=' +
       'Craft,Diplomacy,Heal,"Knowledge (History)","Knowledge (Planes)",' +
       '"Knowledge (Religion)",Profession,"Sense Motive",Spellcraft',
@@ -8799,9 +8803,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('skillNotes.tongues', 'mysteryLevel', '=', 'source<5 ? 1 : 2');
-    rules.defineRule('skillNotes.tongues.1',
-      'features.Tongues', '?', null,
-      'mysteryLevel', '=', 'source>=10 ? "/Can understand " + (source>=15 ? "and speak " : "") + "any spoken language" : ""'
+    rules.defineRule('skillNotes.tongues-1',
+      'mysteryLevel', '=', 'source>=15 ? "understand and speak" : source>=10 ? "understand" : null'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
     for(let feat in rules.getChoices('feats')) {
@@ -11156,8 +11159,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '+=', 'Math.floor(source / 5)'
     );
     rules.defineRule('companionMasterLevel', classLevel, '+', null);
-    rules.defineRule('companionNotes.companionBond(NatureWarden).1',
-      classLevel, '=', 'source>=5 ? "/Companion shares Favored Terrain benefits" : ""'
+    rules.defineRule('companionNotes.companionBond(NatureWarden)-1',
+      classLevel, '?', 'source>=5'
     );
     rules.defineRule('companionNotes.ironpaw', classLevel, '=', null);
     rules.defineRule('companionNotes.silverclaw', classLevel, '=', null);
