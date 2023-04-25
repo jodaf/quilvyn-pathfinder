@@ -1158,7 +1158,8 @@ Pathfinder.FEATURES = {
       '"Unarmed hit inflicts %V HP",' +
       '"Has Improved Unarmed Strike features"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
-  'Uncanny Dodge':'Section=combat Note="Always adds Dex modifier to AC"',
+  'Uncanny Dodge':
+    'Section=combat Note="Always adds Dex modifier to AC (foe feint neg)"',
   'Venom Immunity':'Section=save Note="Immune to poisons"',
   'Weapon Finesse':
     'Section=combat ' +
