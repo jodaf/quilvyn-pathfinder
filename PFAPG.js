@@ -4178,14 +4178,16 @@ PFAPG.FEATURES = {
     'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%V vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
 
   // Stalwart Defender
-  'AC Bonus':'Section=combat Note="+%V AC"',
-  'Bulwark':'Section=skill Note="+%V foe DC for Bluff and movement Acrobatics"',
+  'Armor Class Bonus (Stalwart Defender)':'Section=combat Note="+%V AC"',
+  'Bulwark':
+    'Section=skill ' +
+    'Note="+%V foe DC for Bluff and movement Acrobatics during stance"',
   // Clear Mind as Pathfinder.js
   // Damage Reduction as Pathfinder.js
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
-    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest"',
+    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest; fatigued afterwards for 2 rd per rd in stance"',
   'Fearless Defense':
     'Section=save Note="Immune to shaken and frightened during stance"',
   'Halting Blow':
@@ -4196,24 +4198,25 @@ PFAPG.FEATURES = {
   // Improved Uncanny Dodge as Pathfinder.js
   // Increased Damage Reduction as Pathfinder.js
   'Intercept':
-    'Section=combat Note="May suffer hit from attack on adjacent ally 1/rd"',
+    'Section=combat ' +
+    'Note="May suffer damage from attack directed at adjacent ally during stance 1/rd"',
   // Internal Fortitude as Pathfinder.js
   'Last Word':
     'Section=combat ' +
-    'Note="May make extra attack w/dbl damage when hit to self results in negative HP or unconsciousness"',
+    'Note="May make extra attack w/dbl damage when hit to self results in negative HP or unconsciousness 1/dy"',
   'Mighty Resilience':
     'Section=combat ' +
     'Note="May negate extra damage and effects from crit or sneak attack 1/stance"',
   'Mobile Defense':'Section=combat Note="May take 5\' step during stance"',
   'Renewed Defense':
     'Section=combat ' +
-    'Note="May regain %Vd8+%{constitutionModifier} HP 1/dy during stance"',
+    'Note="May regain %Vd8+%{constitutionModifier} HP during stance 1/dy"',
   'Roused Defense':
     'Section=combat ' +
-    'Note="May use stance while fatigued; immune to fatigued during stance, exhausted afterward"',
+    'Note="May use stance while fatigued; immune to fatigued during stance, exhausted afterward for 10 min per rd in stance"',
   'Smash (Stalwart Defender)':
     'Section=combat ' +
-    'Note="May make extra shield bash or slam attack for 1d%{features.Small ? 3 : 4}+%{strengthModifier//2} 1/rd during stance"',
+    'Note="May make extra shield bash or slam attack for 1d%{features.Small ? 3 : 4}+%{strengthModifier//2} HP 1/rd during stance"',
   // Uncanny Dodge as Pathfinder.js
   // Unexpected Strike as Pathfinder.js
 
@@ -8360,9 +8363,9 @@ PFAPG.PRESTIGE_CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
       '"1:Tower Shield Proficiency","1:Weapon Proficiency (Martial)",' +
-      '"1:AC Bonus","1:Defensive Stance","2:Defensive Powers",' +
-      '"3:Uncanny Dodge","5:Damage Reduction","7:Improved Uncanny Dodge",' +
-      '"9:Mobile Defense","10:Last Word" ' +
+      '"1:Armor Class Bonus (Stalwart Defender)","1:Defensive Stance",' +
+      '"2:Defensive Powers","3:Uncanny Dodge","5:Damage Reduction",' +
+      '"7:Improved Uncanny Dodge","9:Mobile Defense","10:Last Word" ' +
     'Selectables=' +
       '"2:Bulwark:Defensive Power",' +
       '"2:Clear Mind:Defensive Power",' +
@@ -11217,8 +11220,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
     );
   } else if(name == 'Stalwart Defender') {
-    rules.defineRule
-      ('combatNotes.aCBonus', classLevel, '=', 'Math.floor((source + 2) / 3)');
+    rules.defineRule('combatNotes.armorClassBonus(StalwartDefender)',
+      classLevel, '=', 'Math.floor((source + 2) / 3)'
+    );
     // Can reuse barbarian DR feature, but they don't stack
     rules.defineRule('combatNotes.damageReduction',
       classLevel, '^=', 'source>=10 ? 5 : source>=7 ? 3 : source>=5 ? 1 : null'
