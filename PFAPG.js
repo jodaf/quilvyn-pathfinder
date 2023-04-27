@@ -1188,15 +1188,17 @@ PFAPG.FEATURES = {
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
   'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
   'Teamwork Feat (Inquisitor)':
-    'Section=feature ' +
-    'Note="Gains %V Teamwork feats; may exchange most recent %{wisdomModifier}/dy"',
+    'Section=feature,feature ' +
+    'Note=' +
+      '"Gains %V Teamwork feats",' +
+      '"May exchange most recently acquired Teamwork feat %{wisdomModifier}/dy"',
   'Third Judgment':
     'Section=combat ' +
     'Note="May use 3 Judgments simultaneously; may change 1 as a swift action"',
   // 'Track' in Pathfinder.js
   'True Judgment':
     'Section=combat ' +
-    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg) 1/1d4 rd"',
+    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg); must wait 1d4 rd between uses"',
 
   // Oracle
   'Acid Skin':
