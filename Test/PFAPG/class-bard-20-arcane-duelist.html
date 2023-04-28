@@ -16,13 +16,13 @@ var attributes = {
   "hitPoints":104, "intelligence":15, "languages.Celestial":1, "languages.Ignan":1, 
   "languages.Infernal":1, "languages.Sylvan":1, "levels.Bard":20, 
   "name":"Class-Bard 20-Arcane Duelist", "race":"Human", "selectableFeatures.Bard - Arcane Duelist":1, 
-  "selectableFeatures.Bard - Bonded Object":1, "selectableFeatures.Human - Bonus Feat":1, 
-  "selectableFeatures.Human - Skilled":1, "shield":"Buckler", "skills.Climb":20, "skills.Craft (Bows)":1, 
-  "skills.Craft (Traps)":10, "skills.Disguise":10, "skills.Escape Artist":10, "skills.Fly":10, 
-  "skills.Heal":20, "skills.Knowledge (Arcana)":10, "skills.Knowledge (Local)":10, 
-  "skills.Linguistics":2, "skills.Perform (Keyboard)":1, "skills.Perform (Oratory)":2, 
-  "skills.Profession (Soldier)":18, "skills.Ride":20, "skills.Sleight Of Hand":6, "skills.Survival":20, 
-  "skills.Swim":10, "spells.Blindness/Deafness(B2 Necr)":1, "spells.Blood Biography(B2 Divi)":1, 
+  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"Buckler", 
+  "skills.Climb":20, "skills.Craft (Bows)":1, "skills.Craft (Traps)":10, "skills.Disguise":10, 
+  "skills.Escape Artist":10, "skills.Fly":10, "skills.Heal":20, "skills.Knowledge (Arcana)":10, 
+  "skills.Knowledge (Local)":10, "skills.Linguistics":2, "skills.Perform (Keyboard)":1, 
+  "skills.Perform (Oratory)":2, "skills.Profession (Soldier)":18, "skills.Ride":20, 
+  "skills.Sleight Of Hand":6, "skills.Survival":20, "skills.Swim":10, 
+  "spells.Blindness/Deafness(B2 Necr)":1, "spells.Blood Biography(B2 Divi)":1, 
   "spells.Cure Critical Wounds(B4 Conj)":1, "spells.Denounce(B4 Ench)":1, "spells.Detect Magic(B0 Divi)":1, 
   "spells.Disguise Self(B1 Illu)":1, "spells.Enthrall(B2 Ench)":1, "spells.Eyebite(B6 Necr)":1, 
   "spells.Frozen Note(B5 Ench)":1, "spells.Getaway(B6 Conj)":1, "spells.Ghost Sound(B0 Illu)":1, 
@@ -85,7 +85,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11</td>
-        <td><b>Selectable Feature Count</b>: Bard (Arcane Bond): 1; Bard (Archetype): 1; Human (Racial Trait): 2</td>
+        <td><b>Selectable Feature Count</b>: Bard (Archetype): 1; Human (Racial Trait): 2</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -94,7 +94,7 @@ var attributes = {
         <td><b>Feats</b>: Brew Potion; Catch Off-Guard; Craft Staff; Craft Wand; Endurance; Extra Performance; Improved Shield Bash; Lingering Performance; Point-Blank Shot; Skill Focus (Craft (Bows)); Skill Focus (Perform (Keyboard))</td>
         <td><b>Traits</b>: Caretaker; Deft Dodger</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Bard Features</b>: Arcane Armor; Arcane Bond; Arcane Duelist; Arcane Strike; Armor Proficiency (Light); Bardic Performance; Bladethirst; Bonded Object; Combat Casting; Deadly Performance; Dirge Of Doom; Disruptive; Distraction; Fascinate; Frightening Tune; Greater Penetrating Strike; Inspire Competence; Inspire Courage; Inspire Greatness; Inspire Heroics; Mass Bladethirst; Penetrating Strike; Rallying Cry; Shield Proficiency; Simple Somatics; Soothing Performance; Spellbreaker; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)</td>
+        <td><b>Bard Features</b>: Arcane Armor; Arcane Bond (Bard); Arcane Duelist; Arcane Strike; Armor Proficiency (Light); Bardic Performance; Bladethirst; Combat Casting; Deadly Performance; Dirge Of Doom; Disruptive; Distraction; Fascinate; Frightening Tune; Greater Penetrating Strike; Inspire Competence; Inspire Courage; Inspire Greatness; Inspire Heroics; Mass Bladethirst; Penetrating Strike; Rallying Cry; Shield Proficiency; Simple Somatics; Soothing Performance; Spellbreaker; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -216,7 +216,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
       </tr><tr style="text-align:center">
-        <td>Arcane Strike: May imbue weapons with +4 magic damage bonus for 1 rd</td>
+        <td>Arcane Strike: May imbue weapons with +5 magic damage bonus for 1 rd</td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: No penalty for improvised melee weapon, unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
@@ -353,9 +353,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Simple Somatics: No arcane spell failure in light armor</i></td>
     </tr><tr style="text-align:center">
-      <td>Bladethirst: R30' Bardic Performance gives weapon of one ally choice of +5 attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties</td>
+      <td>Arcane Bond (Bard): May cast known spell through object</td>
     </tr><tr style="text-align:center">
-      <td>Bonded Object: May cast known spell through object</td>
+      <td>Bladethirst: R30' Bardic Performance gives weapon of one ally choice of +5 attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties</td>
     </tr><tr style="text-align:center">
       <td>Brew Potion: Create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
