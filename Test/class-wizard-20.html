@@ -9,7 +9,7 @@ var attributes = {
   "_path":"ztest/pathfinder/class/wizard 20", 
   "alignment":"Neutral Good", "armor":"None", "charisma":12, "constitution":9, "deity":"Cayden Cailean", 
   "dexterity":11, "experience":190001, "experienceTrack":"3.5", "faction":"Qadira", 
-  "familiar.Monkey":1, "familiarName":"Bantcasho", "feats.Brew Potion":1, "feats.Combat Casting":1, 
+  "familiar.Owl":1, "familiarName":"Bantcasho", "feats.Brew Potion":1, "feats.Combat Casting":1, 
   "feats.Command Undead":1, "feats.Craft Staff":1, "feats.Craft Wondrous Item":1, "feats.Deceitful":1, 
   "feats.Extend Spell":1, "feats.Heighten Spell":1, "feats.Leadership":1, "feats.Maximize Spell":1, 
   "feats.Point-Blank Shot":1, "feats.Quicken Spell":1, "feats.Skill Focus (Knowledge (Local))":1, 
@@ -171,9 +171,8 @@ var attributes = {
   "spells.Wall Of Stone(W5 Conj)":1, "spells.Water Breathing(W3 Tran)":1, 
   "spells.Waves Of Exhaustion(W7 Necr)":1, "spells.Waves Of Fatigue(W5 Necr)":1, "spells.Web(W2 Conj)":1, 
   "spells.Weird(W9 Illu)":1, "spells.Whispering Wind(W2 Tran)":1, "spells.Wind Wall(W3 Evoc)":1, 
-  "spells.Wish(W9 Univ)":1, "strength":17, "traits.Freedom Fighter":1, 
-  "traits.Halfling Freedom Fighter":1, "weapons.Dagger":1, "weapons.Gauntlet":1, "weapons.Quarterstaff":1, 
-  "wisdom":5
+  "spells.Wish(W9 Univ)":1, "strength":17, "traits.Birthmark":1, "traits.Freedom Fighter":1, 
+  "weapons.Dagger":1, "weapons.Gauntlet":1, "weapons.Quarterstaff":1, "wisdom":5
 };
   </script>
 </head>
@@ -236,7 +235,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Brew Potion; Combat Casting; Command Undead; Craft Staff; Craft Wondrous Item; Deceitful; Extend Spell; Heighten Spell; Leadership; Maximize Spell; Point-Blank Shot; Quicken Spell; Skill Focus (Knowledge (Local)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Turn Undead</td>
-        <td><b>Traits</b>: Freedom Fighter; Halfling Freedom Fighter</td>
+        <td><b>Traits</b>: Birthmark; Freedom Fighter</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
         <td><b>Wizard Features</b>: Acid Dart Conjuration; Aura Of Despair; Blinding Ray; Bonded Object; Change Shape; Dazing Touch Enchantment; Dimensional Steps; Diviner's Fortune; Elemental Wall; Enchanting Smile; Energy Absorption; Extended Illusions; Familiar; Force Missile; Forewarned; Grave Touch Necromantic; Hand Of The Apprentice; Intense Spells; Invisibility Field; Life Sight; Metamagic Mastery; Physical Enhancement; Power Over Undead; Protective Ward; Resistance To Energy; School Opposition (Abjuration); School Opposition (Conjuration); School Opposition (Divination); School Opposition (Enchantment); School Opposition (Evocation); School Opposition (Illusion); School Opposition (Necromancy); School Opposition (Transmutation); School Specialization (Abjuration); School Specialization (Conjuration); School Specialization (Divination); School Specialization (Enchantment); School Specialization (Evocation); School Specialization (Illusion); School Specialization (Necromancy); School Specialization (None); School Specialization (Transmutation); Scribe Scroll; Scrying Adept; Summoner's Charm; Telekinetic Fist; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
       </tr></table>
@@ -303,11 +302,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Enchanting Smile: +6 Bluff/+6 Diplomacy/+6 Intimidate</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Familiar Monkey: +3 Acrobatics</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Freedom Fighter: +1 Stealth</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Halfling Freedom Fighter: +1 skills during escape/Escape Artist is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -324,6 +319,8 @@ var attributes = {
         <td>Combat Casting: +4 concentration to cast spell while on defensive or grappling</td>
       </tr><tr style="text-align:center">
         <td>Companion Alertness: +2 Perception, Sense Motive when companion in reach</td>
+      </tr><tr style="text-align:center">
+        <td>Familiar Owl: +3 Spot in shadows and darkness</td>
       </tr><tr style="text-align:center">
         <td>School Specialization (Abjuration): +2 Spellcraft (Abjuration effects)</td>
       </tr><tr style="text-align:center">
@@ -382,7 +379,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Forewarned: +10 Initiative/Take 20 on Initiative/Always act in surprise round</i></td>
+        <td><i>Forewarned: +10 Initiative</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -392,9 +389,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Command Undead: R30' Channel Energy to control 20 HD of undead (21 DC Will neg)</td>
       </tr><tr style="text-align:center">
-        <td>Freedom Fighter: +1 surprise attack</td>
+        <td>Forewarned-1: May always act in surprise round/May take 20 on Initiative</td>
       </tr><tr style="text-align:center">
-        <td>Halfling Freedom Fighter: +1 attack during escape</td>
+        <td>Freedom Fighter: +1 surprise attack</td>
       </tr><tr style="text-align:center">
         <td>Hand Of The Apprentice: R30' +12 w/melee weapon 5/dy</td>
       </tr><tr style="text-align:center">
@@ -415,6 +412,8 @@ var attributes = {
         <td><i>Constitution Fortitude Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: -3</i></td>
+      </tr><tr style="text-align:center">
+        <td>Birthmark: +2 vs. charm and compulsion</td>
       </tr><tr style="text-align:center">
         <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
@@ -1299,7 +1298,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Maximize all chosen spell variable effects uses +3 spell slot</td>
     </tr><tr style="text-align:center">
-      <td>Metamagic Mastery: Apply metamagic feat w/1 level reduction 7/dy</td>
+      <td>Metamagic Mastery: May apply metamagic feat w/1 level reduction 7/dy</td>
     </tr><tr style="text-align:center">
       <td>Protective Ward: R10' Allies +5 for 2 rd 5/dy</td>
     </tr><tr style="text-align:center">
@@ -1337,29 +1336,29 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="FamiliarPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Familiar</b>: Monkey "Bantcasho"</td>
+      <td><b>Familiar</b>: Owl "Bantcasho"</td>
     </tr><tr style="text-align:center">
       <td>      <table id="FamiliarAbilities" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Str</b>: 3 (-4)</td>
-        <td><b>Dex</b>: 15 (+2)</td>
-        <td><b>Con</b>: 10 (+0)</td>
+        <td><b>Str</b>: 6 (-2)</td>
+        <td><b>Dex</b>: 17 (+3)</td>
+        <td><b>Con</b>: 11 (+0)</td>
         <td><b>Int</b>: 15 (+2)</td>
-        <td><b>Wis</b>: 12 (+1)</td>
-        <td><b>Cha</b>: 5 (-3)</td>
+        <td><b>Wis</b>: 15 (+2)</td>
+        <td><b>Cha</b>: 6 (-2)</td>
         <td><b>Size</b>: T</td>
-        <td><b>Speed</b>: 30</td>
+        <td><b>Speed</b>: 60</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="FamiliarCombat" style="width:100%">
       <tr style="text-align:center">
         <td><b>HD/HP</b>: 20/26</td>
-        <td><b>Init</b>: +2</td>
-        <td><b>AC</b>: 24</td>
-        <td><b>Attack</b>: +14 1d3-4</td>
-        <td><b>CMB/CMD</b>: +10/16</td>
-        <td><b>Fort/Ref/Will</b>: +6/+8/+13</td>
+        <td><b>Init</b>: +3</td>
+        <td><b>AC</b>: 25</td>
+        <td><b>Attack</b>: +15 2@1d4-2</td>
+        <td><b>CMB/CMD</b>: +11/19</td>
+        <td><b>Fort/Ref/Will</b>: +6/+9/+14</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -1393,8 +1392,6 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Validation Warnings</b>: Familiar Monkey: Implies acrobatics skill</td>
-    </tr><tr style="text-align:center">
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
       <tr style="text-align:center">
         <td>Abjuration School Opposition: Cannot oppose specialized school</td>

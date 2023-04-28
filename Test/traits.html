@@ -10,20 +10,22 @@ var attributes = {
   "alignment":"Neutral", "armor":"Chain Shirt", "charisma":14, "constitution":12, "deity":"Pharasma", 
   "dexterity":12, "experience":5000, "experienceTrack":"3.5", "faction":"Andoran", 
   "feats.Skill Focus (Heal)":1, "feats.Skill Focus (Knowledge (Arcana))":1, "feats.Toughness":1, 
-  "gender":"Male", "hitPoints":10, "intelligence":7, "languages.Aklo":1, "levels.Rogue":3, 
+  "gender":"Male", "hitPoints":10, "intelligence":10, "languages.Aklo":1, "levels.Rogue":3, 
   "name":"Traits", "race":"Human", "selectableFeatures.Rogue - Resiliency":1, "shield":"None", 
   "skills.Acrobatics":1, "skills.Appraise":1, "skills.Bluff":1, "skills.Climb":1, 
-  "skills.Diplomacy":1, "skills.Escape Artist":1, "skills.Handle Animal":1, "skills.Heal":1, 
-  "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, "skills.Knowledge (Local)":1, 
-  "skills.Knowledge (Religion)":1, "skills.Perception":1, "skills.Ride":1, "skills.Sense Motive":1, 
-  "skills.Sleight Of Hand":1, "skills.Spellcraft":1, "skills.Stealth":1, "skills.Survival":1, 
-  "skills.Swim":1, "skills.Use Magic Device":1, "strength":17, "traits.A Sure Thing":1, 
-  "traits.Adopted":1, "traits.Aid Allies":1, "traits.Anatomist":1, "traits.Ancient Historian":1, 
-  "traits.Animal Friend":1, "traits.Apothecary":1, "traits.Arcane Archivist":1, "traits.Armor Expert":1, 
-  "traits.Attuned To The Ancestors":1, "traits.Bad Reputation":1, "traits.Balanced Offensive":1, 
-  "traits.Beastspeaker":1, "traits.Beneficent Touch":1, "traits.Birthmark":1, 
-  "traits.Bitter Nobleman":1, "traits.Brute":1, "traits.Bullied":1, "traits.Bully":1, "traits.Canter":1, 
-  "traits.Captain's Blade":1, "traits.Caretaker":1, "traits.Charming":1, "traits.Child Of Nature":1, 
+  "skills.Diplomacy":1, "skills.Escape Artist":1, "skills.Handle Animal":1, "skills.Heal":2, 
+  "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, "skills.Knowledge (Geography)":1, 
+  "skills.Knowledge (History)":1, "skills.Knowledge (Local)":1, "skills.Knowledge (Nature)":1, 
+  "skills.Knowledge (Religion)":1, "skills.Perception":1, "skills.Profession (Librarian)":2, "skills.Ride":1, 
+  "skills.Sense Motive":1, "skills.Sleight Of Hand":1, "skills.Spellcraft":1, "skills.Stealth":1, 
+  "skills.Survival":1, "skills.Swim":1, "skills.Use Magic Device":1, "strength":17, 
+  "traits.A Sure Thing":1, "traits.Adopted":1, "traits.Aid Allies":1, "traits.Anatomist":1, 
+  "traits.Ancient Historian":1, "traits.Animal Friend":1, "traits.Apothecary":1, 
+  "traits.Arcane Archivist":1, "traits.Armor Expert":1, "traits.Attuned To The Ancestors":1, 
+  "traits.Bad Reputation":1, "traits.Balanced Offensive":1, "traits.Beastspeaker":1, 
+  "traits.Beneficent Touch":1, "traits.Birthmark":1, "traits.Bitter Nobleman":1, "traits.Brute":1, 
+  "traits.Bullied":1, "traits.Bully":1, "traits.Canter":1, "traits.Captain's Blade":1, 
+  "traits.Caretaker":1, "traits.Charming":1, "traits.Child Of Nature":1, 
   "traits.Child Of The Streets":1, "traits.Child Of The Temple":1, "traits.Classically Schooled":1, 
   "traits.Comparative Religion":1, "traits.Courageous":1, "traits.Dangerously Curious":1, 
   "traits.Deft Dodger":1, "traits.Demon Hunter":1, "traits.Dervish":1, "traits.Desert Child":1, 
@@ -77,7 +79,7 @@ var attributes = {
       <td><b>Strength</b>: 17 (+3)</td>
       <td><b>Dexterity</b>: 12 (+1)</td>
       <td><b>Constitution</b>: 12 (+1)</td>
-      <td><b>Intelligence</b>: 7 (-2)</td>
+      <td><b>Intelligence</b>: 10 (+0)</td>
       <td><b>Wisdom</b>: 9 (-1)</td>
       <td><b>Charisma</b>: 14 (+2)</td>
     </tr></table>
@@ -158,7 +160,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td>    <table id="SkillPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Skills</b> (21 ranks, max 3 each):</td>
+      <td><b>Skills</b> (27 ranks, max 3 each):</td>
     </tr><tr style="text-align:center">
       <td>      <table id="Skills" style="width:100%">
       <col style="width:33%"/>
@@ -166,32 +168,40 @@ var attributes = {
       <col style="width:34%"/>
       <tr style="text-align:left">
         <td>Acrobatics: (dex) 1 (+5)</td>
-        <td>Heal: (wis) 1 (+7)</td>
+        <td>Knowledge (Arcana): (int) 1 (+9)</td>
         <td>Sense Motive: (wis) 1 (+9)</td>
       </tr><tr style="text-align:left">
-        <td>Appraise: (int) 1 (+2)</td>
-        <td>Intimidate: (cha) 1 (+10)</td>
+        <td>Appraise: (int) 1 (+4)</td>
+        <td>Knowledge (Geography): (int;cc) 1 (+3)</td>
         <td>Sleight Of Hand: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Bluff: (cha) 1 (+7)</td>
-        <td>Knowledge (Arcana): (int) 1 (+7)</td>
-        <td>Spellcraft: (int) 1 (+3)</td>
+        <td>Knowledge (History): (int;cc) 1 (+3)</td>
+        <td>Spellcraft: (int) 1 (+5)</td>
       </tr><tr style="text-align:left">
         <td>Climb: (str) 1 (+6)</td>
-        <td>Knowledge (Local): (int) 1 (+8)</td>
+        <td>Knowledge (Local): (int) 1 (+10)</td>
         <td>Stealth: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha) 1 (+10)</td>
-        <td>Knowledge (Religion): (int) 1 (+5)</td>
+        <td>Knowledge (Nature): (int;cc) 1 (+4)</td>
         <td>Survival: (wis) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Escape Artist: (dex) 1 (+5)</td>
-        <td>Perception: (wis) 1 (+5)</td>
+        <td>Knowledge (Religion): (int) 1 (+7)</td>
         <td>Swim: (str) 1 (+7)</td>
       </tr><tr style="text-align:left">
         <td>Handle Animal: (cha) 1 (+6)</td>
-        <td>Ride: (dex) 1 (+6)</td>
+        <td>Perception: (wis) 1 (+5)</td>
         <td>Use Magic Device: (cha) 1 (+8)</td>
+      </tr><tr style="text-align:left">
+        <td>Heal: (wis) 2 (+8)</td>
+        <td>Profession (Librarian): (wis) 2 (+5)</td>
+        <td></td>
+      </tr><tr style="text-align:left">
+        <td>Intimidate: (cha) 1 (+10)</td>
+        <td>Ride: (dex) 1 (+6)</td>
+        <td></td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -211,7 +221,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Bad Reputation: +2 Intimidate/Intimidate is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Bitter Nobleman: +1 Knowledge (Local)/Knowledge (Local) is a class skill/+1 choice of Bluff, Sleight Of Hand, Stealth/choice is a class skill</i></td>
+        <td><i>Bitter Nobleman: +1 Knowledge (Local)/Knowledge (Local) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Brute: +1 Intimidate/Intimidate is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -219,11 +229,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Caretaker: +1 Heal/Heal is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Child Of Nature: +1 Knowledge (Nature)/+1 Survival (finding food and water)/choice is a class skill</i></td>
+        <td><i>Child Of Nature: +1 Knowledge (Nature)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Child Of The Streets: +1 Sleight Of Hand/Sleight Of Hand is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Child Of The Temple: +1 Knowledge (Nobility)/+1 Knowledge (Religion)/choice is a class skill</i></td>
+        <td><i>Child Of The Temple: +1 Knowledge (Nobility)/+1 Knowledge (Religion)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Classically Schooled: +1 Spellcraft/Spellcraft is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -231,9 +241,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dangerously Curious: +1 Use Magic Device/Use Magic Device is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Devotee Of The Green: +1 Knowledge (Geography)/+1 Knowledge (Nature)/choice is a class skill</i></td>
+        <td><i>Devotee Of The Green: +1 Knowledge (Geography)/+1 Knowledge (Nature)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Divine Courtesan: +1 Diplomacy (gather information)/+1 Sense Motive/choice is a class skill</i></td>
+        <td><i>Divine Courtesan: +1 Sense Motive</i></td>
       </tr><tr style="text-align:center">
         <td><i>Ease Of Faith: +1 Diplomacy/Diplomacy is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -243,31 +253,29 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Fast-Talker: +1 Bluff/Bluff is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Fiendish Presence: +1 Diplomacy/+1 Sense Motive/choice is a class skill</i></td>
+        <td><i>Fiendish Presence: +1 Diplomacy/+1 Sense Motive</i></td>
       </tr><tr style="text-align:center">
         <td><i>Freedom Fighter: +1 Stealth</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Gold Finger: +1 Disable Device/+1 Sleight Of Hand/choice is a class skill</i></td>
+        <td><i>Gold Finger: +1 Disable Device/+1 Sleight Of Hand</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Guardian Of The Forge: +1 Knowledge (Engineering)/+1 Knowledge (History)/choice is a class skill</i></td>
+        <td><i>Guardian Of The Forge: +1 Knowledge (Engineering)/+1 Knowledge (History)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Halfling Freedom Fighter: +1 skills during escape/Escape Artist is a class skill</i></td>
+        <td><i>Halfling Freedom Fighter: Escape Artist is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Highlander: +1 Stealth/+1 Stealth (hilly and rocky areas)/Stealth is a class skill</i></td>
+        <td><i>Highlander: +1 Stealth/Stealth is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Horse Lord: +2 Ride/Ride is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>I Know AGuy: +1 Knowledge (Local)/+2 Diplomacy (gather information)</i></td>
+        <td><i>I Know AGuy: +1 Knowledge (Local)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Intelligence Skill Ranks Adjustment: -6</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Librarian: +1 Linguistics/+1 Profession (Librarian)/choice is a class skill/+1 reading bonus 1/dy</i></td>
+        <td><i>Librarian: +1 Linguistics/+1 Profession (Librarian)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Log Roller: +1 Acrobatics</i></td>
       </tr><tr style="text-align:center">
         <td><i>Lore Seeker: +1 Knowledge (Arcana)/Knowledge (Arcana) is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Mathematical Prodigy: +1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill</i></td>
+        <td><i>Mathematical Prodigy: +1 Knowledge (Arcana)/+1 Knowledge (Engineering)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Missionary: +1 Knowledge (Religion)/Knowledge (Religion) is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -279,15 +287,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>River Rat: +1 Swim/Swim is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Scholar Of Balance: +1 Knowledge (Nature)/+1 Knowledge (Planes)/choice is a class skill</i></td>
+        <td><i>Scholar Of Balance: +1 Knowledge (Nature)/+1 Knowledge (Planes)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Scholar Of Ruins: +1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)/choice is a class skill</i></td>
+        <td><i>Scholar Of Ruins: +1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Scholar Of The Great Beyond: +1 Knowledge (History)/+1 Knowledge (Planes)/choice is a class skill</i></td>
+        <td><i>Scholar Of The Great Beyond: +1 Knowledge (History)/+1 Knowledge (Planes)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Shadow Diplomat: +1 Diplomacy/Diplomacy is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Sheriff: +1 Knowledge (Local)/Knowledge (Local) is a class skill/Legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session</i></td>
+        <td><i>Sheriff: +1 Knowledge (Local)/Knowledge (Local) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Heal): +3 Heal</i></td>
       </tr><tr style="text-align:center">
@@ -295,31 +303,37 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +3 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Smuggler: +3 Sleight Of Hand (hide object)/Sleight Of Hand is a class skill</i></td>
+        <td><i>Smuggler: Sleight Of Hand is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Suspicious: +1 Sense Motive/Sense Motive is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Tavern Owner: +1 Knowledge (Local)/Knowledge (Local) is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Tomb Raider: +1 Knowledge (Dungeoneering)/+1 Perception/choice is a class skill</i></td>
+        <td><i>Tomb Raider: +1 Knowledge (Dungeoneering)/+1 Perception</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Upstanding: +1 Diplomacy/+1 Sense Motive/choice is a class skill</i></td>
+        <td><i>Upstanding: +1 Diplomacy/+1 Sense Motive</i></td>
       </tr><tr style="text-align:center">
         <td><i>Watchdog: +1 Sense Motive/Sense Motive is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Well-Informed: +1 Diplomacy (gather information)/+1 Knowledge (Local)/choice is a class skill</i></td>
+        <td><i>Well-Informed: +1 Knowledge (Local)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Whistleblower: +1 Sense Motive/Sense Motive is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td>Ancient Historian: +1 Choice of Knowledge (History), Linguistics/choice is a class skill, learn 1 ancient language</td>
+        <td>Ancient Historian: +1 Choice of Knowledge (History) or Linguistics/Choice of Knowledge (History) or Linguistics is a class skill/May learn 1 ancient language</td>
       </tr><tr style="text-align:center">
         <td>Beastspeaker: +1 Diplomacy (animals), no penalty w/elemental animals</td>
       </tr><tr style="text-align:center">
+        <td>Bitter Nobleman-1: +1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill</td>
+      </tr><tr style="text-align:center">
         <td>Canter: +5 Bluff (secret message)/+5 Sense Motive (secret message)</td>
       </tr><tr style="text-align:center">
-        <td>Captain's Blade: +1 Acrobatics, Climb when on ship/choice is a class skill</td>
+        <td>Captain's Blade: +1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Charming: +1 Bluff and Diplomacy w/attracted creatures</td>
+      </tr><tr style="text-align:center">
+        <td>Child Of Nature-1: +1 Survival (finding food and water)/Choice of Knowledge (Nature) or Survival is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Child Of The Temple-1: Choice of Knowledge (Nobility) or Knowledge (Religion) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Demon Hunter: +3 Knowledge (Planes) wrt demons</td>
       </tr><tr style="text-align:center">
@@ -327,41 +341,73 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Devil's Mark: +2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Ear For Music: +1 Perform choice/+2 Knowledge (Local) (art and music)</td>
+        <td>Devotee Of The Green-1: Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Fashionable: +1 Bluff, Diplomacy, and Sense Motive when well-dressed/choice is a class skill</td>
+        <td>Divine Courtesan-1: +1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Ear For Music: +1 choice of Perform/+2 Knowledge (Local) (art and music)</td>
+      </tr><tr style="text-align:center">
+        <td>Fashionable: +1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Fiendish Presence-1: Choice of Diplomacy or Sense Motive is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Gold Finger-1: Choice of Disable Device or Sleight Of Hand is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Goldsniffer: +2 Perception (metals, jewels, gems)</td>
       </tr><tr style="text-align:center">
+        <td>Guardian Of The Forge-1: Choice of Knowledge (Engineering) or Knowledge (History) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Halfling Freedom Fighter-1: +1 skills during escape</td>
+      </tr><tr style="text-align:center">
+        <td>Highlander-1: +1 Stealth (hilly and rocky areas)</td>
+      </tr><tr style="text-align:center">
+        <td>I Know AGuy-1: +2 Diplomacy (gather information)</td>
+      </tr><tr style="text-align:center">
         <td>Influential: +3 Diplomacy (requests)</td>
       </tr><tr style="text-align:center">
-        <td>Insider Knowledge: +1 choice of Diplomacy or Knowledge (Local)/choice is a class skill</td>
+        <td>Insider Knowledge: +1 choice of Diplomacy or Knowledge (Local)/Choice of Diplomacy of Knowledge (Local) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Librarian-1: Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus 1/dy</td>
+      </tr><tr style="text-align:center">
+        <td>Mathematical Prodigy-1: Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Medic: +2 Heal (disease, poison)</td>
       </tr><tr style="text-align:center">
         <td>Meticulous Artisan: +1 Craft for day job</td>
       </tr><tr style="text-align:center">
-        <td>Militia Veteran: +1 choice of Profession (Soldier), Ride, Survival/choice is a class skill</td>
+        <td>Militia Veteran: +1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Natural Negotiator: Choice of Diplomacy, Handle Animal is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Observant: +1 choice of Perception, Sense Motive/choice is a class skill</td>
+        <td>Observant: +1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Patient Optimist: +2 Diplomacy and 1 retry on unfriendly or hostile creatures</td>
       </tr><tr style="text-align:center">
-        <td>Performance Artist: +1 choice of Perform/choice is a class skill</td>
+        <td>Performance Artist: +1 choice of Perform/Choice of Perform is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Proper Training: +1 choice of Knowledge (Geography), Knowledge (History)/choice is a class skill</td>
+        <td>Proper Training: +1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Rousing Oratory: Choice of Perform is a class skill/R60' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Savanna Child: +1 choice of Handle Animal, Knowledge (Nature), Ride/choice is a class skill</td>
+        <td>Savanna Child: +1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Secrets Of The Sphinx: +2 Knowledge check 1/dy/choice of Knowledge is a class skill</td>
+        <td>Scholar Of Balance-1: Choice of Knowledge (Nature) or Knowledge (Planes) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Scholar Of Ruins-1: Choice of Knowledge (Dungeoneering) or Knowledge (Geography) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Scholar Of The Great Beyond-1: Choice of Knowledge (History) or Knowledge (Planes) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Secrets Of The Sphinx: +2 Knowledge check 1/dy/Choice of Knowledge is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Sheriff-1: Legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session</td>
+      </tr><tr style="text-align:center">
+        <td>Smuggler-1: +3 Sleight Of Hand (hide object)</td>
       </tr><tr style="text-align:center">
         <td>Starchild: +4 Survival (avoid becoming lost); know North</td>
       </tr><tr style="text-align:center">
-        <td>Storyteller: +1 choice of Knowledge check 1/scenario</td>
+        <td>Storyteller: +3 choice of Knowledge check 1/scenario</td>
+      </tr><tr style="text-align:center">
+        <td>Tomb Raider-1: Choice of Knowledge (Dungeoneering) or Perception is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Trapfinding: +1 Perception (traps)/+1 Disable Device (traps)</td>
       </tr><tr style="text-align:center">
@@ -371,11 +417,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Unorthodox Strategy: +2 Acrobatics (traverse threatened squares)</td>
       </tr><tr style="text-align:center">
-        <td>Vagabond Child: +1 choice of Disable Device, Escape Artist, Sleight Of Hand/choice is a class skill</td>
+        <td>Upstanding-1: Choice of Diplomacy or Sense Motive is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Wisdom In The Flesh: Use Wis modifier for chosen Str, Con, or Dex skill/choice is a class skill</td>
+        <td>Vagabond Child: +1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>World Traveler: +1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill</td>
+        <td>Well-Informed-1: +1 Diplomacy (gather information)/Choice of Diplomacy or Knowledge (Local) is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>Wisdom In The Flesh: Use Wis modifier for choice of Str, Con, or Dex skill/Choice of Str, Con, or Dex skill is a class skill</td>
+      </tr><tr style="text-align:center">
+        <td>World Traveler: +1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill</td>
       </tr></table>
 </td>
     </tr></table>
@@ -444,7 +494,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Veteran Of Battle: +1 Initiative/Draw weapon as free action during surprise round</i></td>
+        <td><i>Veteran Of Battle: +1 Initiative</i></td>
       </tr><tr style="text-align:center">
         <td><i>Warrior Of Old: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
@@ -476,7 +526,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Hunter's Eye: Proficiency and no penalty for 2nd range increment in longbow or shortbow</td>
       </tr><tr style="text-align:center">
-        <td>Impressive Presence: Adjacent foes shaken for 1 rd 1/dy (DC 13 Will neg)</td>
+        <td>Impressive Presence: Shakes adjacent foes for 1 rd 1/dy (DC 13 Will neg)</td>
       </tr><tr style="text-align:center">
         <td>Killer: Extra damage on critical hit</td>
       </tr><tr style="text-align:center">
@@ -499,6 +549,8 @@ var attributes = {
         <td>Tunnel Fighter: +2 Initiative (underground)/+1 critical damage (underground)</td>
       </tr><tr style="text-align:center">
         <td>Undead Slayer: +1 damage vs. undead</td>
+      </tr><tr style="text-align:center">
+        <td>Veteran Of Battle-1: May draw weapon as a free action during surprise round</td>
       </tr><tr style="text-align:center">
         <td>Vindictive: +1 damage vs. successful foe for 1 min 1/dy</td>
       </tr><tr style="text-align:center">
