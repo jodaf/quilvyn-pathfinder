@@ -2075,6 +2075,8 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Has %V Armor Proficiency",' +
       '"No arcane spell failure in %V armor"',
+  'Arcane Bond (Bard)':
+    'Section=magic Note="May cast known spell through object"',
   'Arcane Insight':
     'Section=magic,save,skill ' +
     'Note=' +
@@ -2140,7 +2142,7 @@ PFAPG.FEATURES = {
     'Note="Bardic Performance following crit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts choice of dazed or confused on fascinated creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="Bardic Performance inflicts choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Madcap Prank':
     'Section=magic ' +
     'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg) 1/rd"',
@@ -4778,7 +4780,7 @@ PFAPG.PATHS = {
       '"1:Arcane Strike","1:Rallying Cry",6:Bladethirst,' +
       '"18:Mass Bladethirst","2:Combat Casting",6:Disruptive,10:Spellbreaker,' +
       '"14:Penetrating Strike","18:Greater Penetrating Strike",' +
-      '"5:Arcane Bond","10:Arcane Armor"',
+      '"5:Arcane Bond (Bard)","10:Arcane Armor"',
   'Archivist':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -4805,7 +4807,7 @@ PFAPG.PATHS = {
       '1:Dweomercraft,"8:Spell Suppression",' +
       '"14:Metamagic Mastery (Magician)","1:Magical Talent (Magician)",' +
       '"1:Improved Counterspell","2:Extended Performance",' +
-      '"2:Expanded Repertoire","5:Arcane Bond","10:Wand Mastery"',
+      '"2:Expanded Repertoire","5:Arcane Bond (Bard)","10:Wand Mastery"',
   'Sandman':
     'Group=Bard ' +
     'Level=levels.Bard ' +
@@ -7903,9 +7905,7 @@ PFAPG.CLASSES = {
       '"1:Sandman:Archetype",' +
       '"1:Savage Skald:Archetype",' +
       '"1:Sea Singer:Archetype",' +
-      '"1:Street Performer:Archetype",' +
-      // Need to list Bonded Object here since it's available via two Archetypes
-      '"1:Bonded Object:Arcane Bond"',
+      '"1:Street Performer:Archetype"',
   'Cleric':
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.PATHS).filter(x => x.match(/Subdomain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Subdomain', '') + '\' ? 1:' + x + '"').join(','),
@@ -9491,7 +9491,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('bardHasLoreMaster',
       classLevel, '=', '1',
-      'bardFeatures.Arcane Bond', '=', '0',
+      'bardFeatures.Arcane Bond (Bard)', '=', '0',
       'bardFeatures.Quick Change', '=', '0',
       'bardFeatures.Sneak Attack', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
@@ -9596,10 +9596,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('saveNotes.trapSense', 'sandmanLevel', '+=', 'Math.floor(source / 3)');
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
-    rules.defineRule('selectableFeatureCount.Bard (Arcane Bond)',
-      'arcaneDuelistLevel', '+=', 'source>=5 ? 1 : null',
-      'magicianLevel', '+=', 'source>=5 ? 1 : null'
-    );
     rules.defineRule('skillModifier.Bluff',
       'skillNotes.masterOfDeception', '+', 'null', // italics no-op
       'skillNotes.masterOfDeception.1', '+', null
