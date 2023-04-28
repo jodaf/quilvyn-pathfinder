@@ -1210,11 +1210,12 @@ Pathfinder.FEATURES = {
   'Anatomist':'Section=combat Note="+1 critical hit rolls"',
   'Ancient Historian':
     'Section=skill ' +
-    'Note="+1 Choice of Knowledge (History), Linguistics/choice is a class skill, learn 1 ancient language"',
+    'Note="+1 Choice of Knowledge (History) or Linguistics/Choice of Knowledge (History) or Linguistics is a class skill/May learn 1 ancient language"',
   'Animal Friend':
     'Section=save,skill ' +
-    'Note="+1 Will when unhostile animal w/in 30\'",' +
-         '"Handle Animal is a class skill"',
+    'Note=' +
+      '"+1 Will when unhostile animal w/in 30\'",' +
+      '"Handle Animal is a class skill"',
   'Animal Fury':'Section=combat Note="%1 bite attack for %V+%2 HP during rage"',
   'Apothecary':
     'Section=feature,skill ' +
@@ -1283,8 +1284,10 @@ Pathfinder.FEATURES = {
   'Birthmark':'Section=save Note="+2 vs. charm and compulsion"',
   'Bit Of Luck':'Section=magic Note="Touch imparts reroll d20 for 1 rd %V/dy"',
   'Bitter Nobleman':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Local)/Knowledge (Local) is a class skill/+1 choice of Bluff, Sleight Of Hand, Stealth/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
+      '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
   'Blast Rune':
     'Section=magic ' +
     'Note="Rune in adjacent square causes 1d6+%1 HP energy damage for %V rd %2/dy"',
@@ -1335,7 +1338,7 @@ Pathfinder.FEATURES = {
     'Note="+5 Bluff (secret message)/+5 Sense Motive (secret message)"',
   "Captain's Blade":
     'Section=skill ' +
-    'Note="+1 Acrobatics, Climb when on ship/choice is a class skill"',
+    'Note="+1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill"',
   'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
   'Catch Off-Guard':
     'Section=combat ' +
@@ -1360,13 +1363,17 @@ Pathfinder.FEATURES = {
     'Note="+1 spell DC w/attracted creatures",' +
          '"+1 Bluff and Diplomacy w/attracted creatures"',
   'Child Of Nature':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Nature)/+1 Survival (finding food and water)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nature)",' +
+      '"+1 Survival (finding food and water)/Choice of Knowledge (Nature) or Survival is a class skill"',
   'Child Of The Streets':
     'Section=skill Note="+1 Sleight Of Hand/Sleight Of Hand is a class skill"',
   'Child Of The Temple':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Nobility)/+1 Knowledge (Religion)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nobility)/+1 Knowledge (Religion)",' +
+      '"Choice of Knowledge (Nobility) or Knowledge (Religion) is a class skill"',
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="2 %3 attacks %V+%1 HP for %2 rd/dy"',
@@ -1443,8 +1450,10 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders"',
   'Devotee Of The Green':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Geography)/+1 Knowledge (Nature)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
+      '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
   'Dimensional Hop':'Section=magic Note="Teleport up to %V\'/dy"',
   'Dimensional Steps':'Section=magic Note="Teleport up to %V\'/dy"',
   'Dirge Of Doom':
@@ -1459,8 +1468,10 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' May use Perform check vs. visual magic while performing"',
   'Divine Courtesan':
-    'Section=skill ' +
-    'Note="+1 Diplomacy (gather information)/+1 Sense Motive/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Sense Motive",' +
+      '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
   'Divine Mount':'Section=feature Note="Magically summon mount %V/dy"',
   'Divine Presence':
     'Section=magic Note="R30\' Allies DC %V <i>Sanctuary</i> for %1 rd/dy"',
@@ -1479,7 +1490,7 @@ Pathfinder.FEATURES = {
          '"+4 Fort vs. heat"',
   'Ear For Music':
     'Section=skill ' +
-    'Note="+1 Perform choice/+2 Knowledge (Local) (art and music)"',
+    'Note="+1 choice of Perform/+2 Knowledge (Local) (art and music)"',
   'Ease Of Faith':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Eastern Mysteries':'Section=magic Note="+2 spell DC 1/dy"',
@@ -1535,7 +1546,7 @@ Pathfinder.FEATURES = {
   'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
   'Fashionable':
     'Section=skill ' +
-    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/choice is a class skill"',
+    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
   'Fast Stealth':'Section=skill Note="Use Stealth at full speed"',
   'Fast-Talker':'Section=skill Note="+1 Bluff/Bluff is a class skill"',
   'Fated':
@@ -1550,7 +1561,10 @@ Pathfinder.FEATURES = {
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
   'Fey Magic':'Section=magic Note="Reroll check to overcome spell resistance"',
   'Fiendish Presence':
-    'Section=skill Note="+1 Diplomacy/+1 Sense Motive/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Diplomacy/+1 Sense Motive",' +
+      '"Choice of Diplomacy or Sense Motive is a class skill"',
   'Finesse Rogue':'Section=feature Note="Weapon Finesse"',
   'Fire Bolt':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
   'Fire Resistance':'Section=save Note="Resistance %V to fire"',
@@ -1564,7 +1578,10 @@ Pathfinder.FEATURES = {
     'Section=magic Note="+1 caster level on good-aligned spells"',
   'Force Missile':'Section=magic Note="<i>Magic Missile</i> 1d4+%V HP %1/dy"',
   'Forewarned':
-    'Section=combat Note="+%V Initiative/%1Always act in surprise round"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V Initiative",' +
+      '"May always act in surprise round%1"',
   'Forlorn':'Section=save Note="+1 Fortitude"',
   'Fortified Drinker':
     'Section=save Note="+2 vs. mental effects for 1 hr after drinking"',
@@ -1583,8 +1600,10 @@ Pathfinder.FEATURES = {
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
   'Gnome Magic':'Section=magic Note="+1 Spell DC (Illusion)%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy\' : \'\'}"',
   'Gold Finger':
-    'Section=skill ' +
-    'Note="+1 Disable Device/+1 Sleight Of Hand/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Disable Device/+1 Sleight Of Hand",' +
+      '"Choice of Disable Device or Sleight Of Hand is a class skill"',
   'Goldsniffer':'Section=skill Note="+2 Perception (metals, jewels, gems)"',
   "Gorgon's Fist":
     'Section=combat ' +
@@ -1615,15 +1634,18 @@ Pathfinder.FEATURES = {
   'Greed':'Section=skill Note="+2 Appraise (precious metals, gems)"',
   'Guarded Stance':'Section=combat Note="+%V AC for %1 rd during rage"',
   'Guardian Of The Forge':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Engineering)/+1 Knowledge (History)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
+      '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
   'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
   'Halfling Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Charisma/-2 Strength"',
   'Halfling Freedom Fighter':
-    'Section=combat,skill ' +
+    'Section=combat,skill,skill ' +
     'Note="+1 attack during escape",' +
-         '"+1 skills during escape/Escape Artist is a class skill"',
+         '"Escape Artist is a class skill",' +
+         '"+1 skills during escape"',
   'Hand Of The Acolyte':
     'Section=combat Note="R30\' +%V attack w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
@@ -1633,16 +1655,18 @@ Pathfinder.FEATURES = {
     'Section=magic Note="<i>Cure</i> spells heal 50% more HP"',
   'Heavenly Fire':
     'Section=magic ' +
-    'Note="R30\' Ranged touch heal good or harm evil 1d4+%1 HP %V/dy"',
+    'Note="R30\' Ranged touch heals good or harms evil 1d4+%1 HP %V/dy"',
   'Hedge Magician':'Section=magic Note="5% discount on magic craft cost"',
   'Hellfire':
     'Section=magic ' +
-    'Note="R60\' 10\' radius %Vd6 HP (DC %1 Ref half), good target shaken for %2 rd %3/dy"',
+    'Note="R60\' 10\' radius inflicts %Vd6 HP (DC %1 Ref half) and shakes good creatures for %2 rd %3/dy"',
   'High Jump':
     'Section=skill Note="+%V Acrobatics (jump); may spend 1 Ki Point for +20"',
   'Highlander':
-    'Section=skill ' +
-    'Note="+1 Stealth/+1 Stealth (hilly and rocky areas)/Stealth is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Stealth/Stealth is a class skill",' +
+      '"+1 Stealth (hilly and rocky areas)"',
   'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
   'Holy Champion':
     'Section=magic ' +
@@ -1655,11 +1679,13 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Proficiency and no penalty for 2nd range increment in longbow or shortbow"',
   'I Know A Guy':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Local)/+2 Diplomacy (gather information)"',
-  'Icicle':'Section=combat Note="R30\' touch 1d6+%1 HP %V/dy"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)",' +
+      '"+2 Diplomacy (gather information)"',
+  'Icicle':'Section=combat Note="R30\' touch inflicts 1d6+%1 HP %V/dy"',
   'Impressive Presence':
-    'Section=combat Note="Adjacent foes shaken for 1 rd 1/dy (DC %V Will neg)"',
+    'Section=combat Note="Shakes adjacent foes for 1 rd 1/dy (DC %V Will neg)"',
   'Improved Channel':'Section=magic Note="+2 Channel Energy DC"',
   'Improved Claws':'Section=combat Note="Claws do additional 1d6 %V HP"',
   'Improved Great Fortitude':'Section=save Note="Reroll Fort 1/dy"',
@@ -1683,7 +1709,7 @@ Pathfinder.FEATURES = {
          '"+3 Diplomacy (requests)"',
   'Insider Knowledge':
     'Section=skill ' +
-    'Note="+1 choice of Diplomacy or Knowledge (Local)/choice is a class skill"',
+    'Note="+1 choice of Diplomacy or Knowledge (Local)/Choice of Diplomacy of Knowledge (Local) is a class skill"',
   'Inspiring Word':
     'Section=magic ' +
     'Note="R30\' word imparts +2 attack, skill, ability, and save to target for %V rd %1/dy"',
@@ -1699,7 +1725,11 @@ Pathfinder.FEATURES = {
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="Reroll attack, critical, or check to overcome spell resistance %V/dy"',
-  'Jack-Of-All-Trades':'Section=skill Note="May use any skill untrained%1%2"',
+  'Jack-Of-All-Trades':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"May use any skill untrained%1",' +
+      '"All skills are class skills"',
   'Ki Dodge':'Section=combat Note="May spend 1 Ki Point for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="May spend 1 Ki Point for +20 Speed"',
@@ -1711,8 +1741,10 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Use Acrobatics along narrow surfaces at full speed"',
   'Liberation':'Section=magic Note="Ignore movement impediments for %V rd/dy"',
   'Librarian':
-    'Section=skill ' +
-    'Note="+1 Linguistics/+1 Profession (Librarian)/choice is a class skill/+1 reading bonus 1/dy"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Linguistics/+1 Profession (Librarian)",' +
+      '"Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus 1/dy"',
   'Life Sight':
     'Section=feature ' +
     'Note="R%V\' Blindsight for living and undead for %1 rd/dy"',
@@ -1762,27 +1794,30 @@ Pathfinder.FEATURES = {
   "Master's Illusion":
     'Section=magic Note="30\' radius <i>Veil</i> (DC %V Will disbelieve) for %1 rd/dy"',
   'Mathematical Prodigy':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Arcana)/+1 Knowledge (Engineering)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Arcana)/+1 Knowledge (Engineering)",' +
+      '"Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill"',
   'Medic':
     'Section=magic,skill ' +
-    'Note="+1 caster level with <i>Remove</i> healing",' +
-         '"+2 Heal (disease, poison)"',
+    'Note=' +
+      '"+1 caster level with <i>Remove</i> healing",' +
+      '"+2 Heal (disease, poison)"',
   "Medusa's Wrath":
     'Section=combat Note="2 extra unarmed attacks vs. diminished-capacity foe"',
   'Mercy':'Section=magic Note="Lay On Hands removes condition(s) %V"',
   'Meridian Strike':'Section=combat Note="Reroll crit damage 1s 1/dy"',
   'Metamagic Adept':
     'Section=magic ' +
-    'Note="Applying metamagic feat w/out increased casting time %V/dy"',
+    'Note="May apply metamagic feat w/out increased casting time %V/dy"',
   'Metamagic Mastery':
-    'Section=magic Note="Apply metamagic feat w/1 level reduction %V/dy"',
+    'Section=magic Note="May apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Might Of The Gods':'Section=magic Note="+%V Str checks for %1 rd/dy"',
   'Mighty Swing':'Section=combat Note="Critical confirmed 1/rage"',
   'Militia Veteran':
     'Section=skill ' +
-    'Note="+1 choice of Profession (Soldier), Ride, Survival/choice is a class skill"',
+    'Note="+1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill"',
   'Mind Over Matter':'Section=save Note="+1 Will"',
   'Minor Magic':'Section=magic Note="May cast chosen level 0 spell 3/dy"',
   'Missionary':
@@ -1809,13 +1844,13 @@ Pathfinder.FEATURES = {
     'Note="Move through difficult terrain 5\'/rd as though normal terrain"',
   'Nimbus Of Light':
     'Section=magic ' +
-    'Note="30\' radius <i>Daylight</i> does %V HP to undead for %1 rd/dy"',
+    'Note="30\' radius <i>Daylight</i> inflicts %V HP on undead for %1 rd/dy"',
   'No Escape':
     'Section=combat Note="Dbl speed to follow withdrawing foe 1/rage"',
   'Noble Leadership':'Section=feature Note="+2 Leadership"',
   'Observant':
     'Section=skill ' +
-    'Note="+1 choice of Perception, Sense Motive/choice is a class skill"',
+    'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
   'Obsessive':'Section=skill Note="+2 choice of Craft or Profession"',
   'On Dark Wings':'Section=ability Note="Fly 60\'/average"',
   'One Of Us':
@@ -1831,7 +1866,7 @@ Pathfinder.FEATURES = {
     'Note="+2 Diplomacy and 1 retry on unfriendly or hostile creatures"',
   'Penetrating Strike':'Section=combat Note="Focused weapons ignore DR 5/any"',
   'Performance Artist':
-    'Section=skill Note="+1 choice of Perform/choice is a class skill"',
+    'Section=skill Note="+1 choice of Perform/Choice of Perform is a class skill"',
   'Physical Enhancement':
     'Section=ability Note="+%V Choose %1 from Str, Dex, and Con"',
   'Pinpoint Targeting':
@@ -1853,7 +1888,7 @@ Pathfinder.FEATURES = {
   'Powerful Blow':'Section=combat Note="+%V HP 1/rage"',
   'Proper Training':
     'Section=skill ' +
-    'Note="+1 choice of Knowledge (Geography), Knowledge (History)/choice is a class skill"',
+    'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
   'Protective Ward':'Section=magic Note="R10\' Allies +%V for %1 rd %2/dy"',
   'Quarry':
     'Section=combat,skill ' +
@@ -1868,7 +1903,8 @@ Pathfinder.FEATURES = {
   'Rapscallion':'Section=combat,skill Note="+1 Initiative","+1 Escape Artist"',
   'Reactionary':'Section=combat Note="+2 Initiative"',
   'Rebuke Death':
-    'Section=magic Note="Touch creature below 0 HP to heal 1d4+%1 HP %V/dy"',
+    'Section=magic ' +
+    'Note="Touch restores 1d4+%1 HP to creature below 0 HP %V/dy"',
   'Remote Viewing':
     'Section=magic Note="<i>Clairaudience/Clairvoyance</i> for %V rd/dy"',
   'Renewed Vigor':'Section=magic Note="Heal %Vd8+%1 HP during rage 1/dy"',
@@ -1904,19 +1940,25 @@ Pathfinder.FEATURES = {
   'Sacred Touch':'Section=magic Note="Touch stabilizes"',
   'Savanna Child':
     'Section=skill ' +
-    'Note="+1 choice of Handle Animal, Knowledge (Nature), Ride/choice is a class skill"',
+    'Note="+1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill"',
   'Save Bonus':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Scent':'Section=feature Note="Detect creatures via smell"',
   'Scent Rage':'Section=feature Note="Detect creatures via smell during rage"',
   'Scholar Of Balance':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Nature)/+1 Knowledge (Planes)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nature)/+1 Knowledge (Planes)",' +
+      '"Choice of Knowledge (Nature) or Knowledge (Planes) is a class skill"',
   'Scholar Of Ruins':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)",' +
+      '"Choice of Knowledge (Dungeoneering) or Knowledge (Geography) is a class skill"',
   'Scholar Of The Great Beyond':
-    'Section=skill ' +
-    'Note="+1 Knowledge (History)/+1 Knowledge (Planes)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (History)/+1 Knowledge (Planes)",' +
+      '"Choice of Knowledge (History) or Knowledge (Planes) is a class skill"',
   'School Power':'Section=magic Note="+2 DC on spells from chosen school"',
   'Scorpion Style':
     'Section=combat ' +
@@ -1929,15 +1971,17 @@ Pathfinder.FEATURES = {
   'Secrets':'Section=feature Note="%V selections"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
-    'Note="+2 Knowledge check 1/dy/choice of Knowledge is a class skill"',
+    'Note="+2 Knowledge check 1/dy/Choice of Knowledge is a class skill"',
   'Selective Channeling':'Section=magic Note="Avoid up to %V targets"',
   'Shadow Diplomat':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Shatter Defenses':
     'Section=combat Note="Fearful struck foes flat-footed for 1 rd"',
   'Sheriff':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Local)/Knowledge (Local) is a class skill/Legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
+      '"Legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session"',
   'Shield Focus':'Section=combat Note="+1 AC"', // No change to CMD
   'Shield Master':
     'Section=combat ' +
@@ -1950,8 +1994,10 @@ Pathfinder.FEATURES = {
   'Skilled':'Section=skill Note="+%V Skill ranks"',
   'Slow Reactions':'Section=combat Note="Sneak attack target no AOO for 1 rd"',
   'Smuggler':
-    'Section=skill ' +
-    'Note="+3 Sleight Of Hand (hide object)/Sleight Of Hand is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"Sleight Of Hand is a class skill",' +
+      '"+3 Sleight Of Hand (hide object)"',
   'Soothing Performance':
     'Section=magic ' +
     'Note="R30\' <i>Mass Cure Serious Wounds</i> via 4 rd performance also removes fatigued, sickened, and shaken"',
@@ -2015,7 +2061,7 @@ Pathfinder.FEATURES = {
     'Section=save Note="+1 save after natural 1 save roll 1/scenario"',
   'Telekinetic Fist':'Section=magic Note="R30\' touch 1d4+%1 HP %V/dy"',
   'Terrifying Howl':
-    'Section=combat Note="R30\' Howl causes shaken for 1d4+1 rd (DC %V Will neg)"',
+    'Section=combat Note="R30\' Howl panics shaken foes for 1d4+1 rd (DC %V Will neg)"',
   'Throw Anything':
     'Section=combat ' +
     'Note="No penalty for improvised ranged weapon, +1 attack w/thrown splash"',
@@ -2025,8 +2071,10 @@ Pathfinder.FEATURES = {
          '"+1 HP"',
   'Tiring Critical':'Section=combat Note="Critical hit fatigues foe"',
   'Tomb Raider':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Dungeoneering)/+1 Perception/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Dungeoneering)/+1 Perception",' +
+      '"Choice of Knowledge (Dungeoneering) or Perception is a class skill"',
   'Touch Of Chaos':
     'Section=combat ' +
     'Note="Touch attack causes target to take worse result of d20 rerolls for 1 rd %V/dy"',
@@ -2068,16 +2116,21 @@ Pathfinder.FEATURES = {
   'Unusual Anatomy':
     'Section=combat Note="%V% chance to ignore critical hit and sneak attack"',
   'Upstanding':
-    'Section=skill Note="+1 Diplomacy/+1 Sense Motive/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Diplomacy/+1 Sense Motive",' +
+      '"Choice of Diplomacy or Sense Motive is a class skill"',
   'Vagabond Child':
     'Section=skill ' +
-    'Note="+1 choice of Disable Device, Escape Artist, Sleight Of Hand/choice is a class skill"',
+    'Note="+1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill"',
   'Versatile Performance':
     'Section=skill ' +
     'Note="Substitute %V Perform checks for associated skill checks"',
   'Veteran Of Battle':
-    'Section=combat ' +
-    'Note="+1 Initiative/Draw weapon as free action during surprise round"',
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+1 Initiative",' +
+      '"May draw weapon as a free action during surprise round"',
   'Vindictive':
     'Section=combat Note="+1 damage vs. successful foe for 1 min 1/dy"',
   'Vision Of Madness':
@@ -2100,8 +2153,10 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="%V attack, damage, CMB, and CMD w/weapons from chosen groups"',
   'Well-Informed':
-    'Section=skill ' +
-    'Note="+1 Diplomacy (gather information)/+1 Knowledge (Local)/choice is a class skill"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)",' +
+      '"+1 Diplomacy (gather information)/Choice of Diplomacy or Knowledge (Local) is a class skill"',
   'Well-Versed':'Section=save Note="+4 vs. bardic and sonic effects"',
   'Whistleblower':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
@@ -2111,14 +2166,14 @@ Pathfinder.FEATURES = {
   'Wings':'Section=ability Note="Fly %V\'/average"',
   'Wisdom In The Flesh':
     'Section=skill ' +
-    'Note="Use Wis modifier for chosen Str, Con, or Dex skill/choice is a class skill"',
+    'Note="Use Wis modifier for choice of Str, Con, or Dex skill/Choice of Str, Con, or Dex skill is a class skill"',
   'Within Reach':'Section=save Note="DC 20 Will save vs. fatal attack 1/dy"',
   'Wooden Fist':
     'Section=combat ' +
     'Note="+%V Unarmed damage and no AOO on Unarmed attacks for %1 rd/dy"',
   'World Traveler':
     'Section=skill ' +
-    'Note="+1 choice of Diplomacy, Knowledge (Local), Sense Motive/choice is a class skill"',
+    'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
   // Prestige classes
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
   'Angel Of Death':
@@ -2191,10 +2246,16 @@ Pathfinder.FEATURES = {
     'Note="Summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
   'Live To Tell The Tale':
     'Section=save Note="Extra saving throw vs ongoing condition %V/dy"',
-  'Lore':'Section=skill Note="+%V Knowledge/use any Knowledge untrained"',
+  'Lore':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V all Knowledge",' +
+      '"May use any Knowledge untrained"',
   'Master Scribe':
-    'Section=skill ' +
-    'Note="+%V Linguistics/+%V Profession (Scribe)/+%V Use Magic Device (scrolls)"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V Linguistics/+%V Profession (Scribe)",' +
+      '"+%V Use Magic Device (scrolls)"',
   'More Newfound Arcana':'Section=magic Note="Bonus level 2 spell"',
   'Newfound Arcana':'Section=magic Note="Bonus level 1 spell"',
   'No Retreat':'Section=combat Note="AOO on foe withdraw"',
@@ -5226,7 +5287,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     var allSkills = rules.getChoices('skills');
     for(var s in rules.getChoices('skills')) {
       rules.defineRule('classSkills.' + s,
-        'skillNotes.jack-Of-All-Trades.1', '=', 'source!="" ? 1 : null'
+        'skillNotes.jack-Of-All-Trades-1', '=', '1'
       );
     }
     rules.defineRule('bardicPerformanceLevel', 'levels.Bard', '+=', null);
@@ -5286,12 +5347,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.jack-Of-All-Trades.1',
       'features.Jack-Of-All-Trades', '?', null,
-      'levels.Bard', '=', 'source>=16 ? "; all skills are class skills" : ""'
-    );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
-      'features.Jack-Of-All-Trades', '?', null,
       'levels.Bard', '=', 'source>=19 ? "; may take 10 on any skill" : ""'
     );
+    rules.defineRule
+      ('skillNotes.jack-Of-All-Trades-1', 'levels.Bard', '?', 'source>=16');
     rules.defineRule('skillNotes.loreMaster',
       'levels.Bard', '=', 'Math.floor((source + 1) / 6)'
     );
@@ -6092,9 +6151,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.bardicKnowledge',
       'levels.Pathfinder Chronicler', '+=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('skillNotes.masterScribe',
-      'levels.Pathfinder Chronicler', '+=', null
-    );
+    rules.defineRule
+      ('skillNotes.masterScribe', 'levels.Pathfinder Chronicler', '+=', null);
+    rules.defineRule
+      ('skillNotes.masterScribe-1', 'levels.Pathfinder Chronicler', '+=', null);
 
   } else if(name == 'Shadowdancer') {
 
@@ -6293,7 +6353,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Arcane Strike') {
     rules.defineRule('combatNotes.arcaneStrike',
-      'casterLevelArcane', '=', 'Math.floor((source + 4) / 5)'
+      'casterLevelArcane', '=', '1 + Math.floor(source / 5)'
     );
   } else if(name == 'Athletic') {
     rules.defineRule('skillNotes.athletic',
@@ -7544,8 +7604,8 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.forewarned',
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('combatNotes.forewarned.1',
-      schoolLevel, '=', 'source==20 ? "Take 20 on Initiative/" : ""'
+    rules.defineRule('combatNotes.forewarned-1.1',
+      schoolLevel, '=', 'source==20 ? "/May take 20 on Initiative" : ""'
     );
     rules.defineRule("magicNotes.diviner'sFortune",
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
