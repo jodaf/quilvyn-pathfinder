@@ -74,11 +74,11 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Acrobatic Steps: Move through difficult terrain 20'/rd</td>
+      <td>Acrobatic Steps: May move 20'/rd through difficult terrain</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Rogue Crawl: Crawl at half speed</td>
+      <td>Rogue Crawl: May crawl at 15'</td>
     </tr></table>
 </td>
   </tr></table>
@@ -112,7 +112,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Feat Bonus: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Finesse Rogue: Weapon Finesse</i></td>
+        <td><i>Finesse Rogue: Has Weapon Finesse feature</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rogue Talents (Shadowdancer): 3 selections</i></td>
       </tr><tr style="text-align:center">
@@ -122,7 +122,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Darkvision: 60' b/w vision in darkness</td>
       </tr><tr style="text-align:center">
-        <td>Leadership: Attract followers</td>
+        <td>Leadership: Attracts followers</td>
       </tr></table>
 </td>
     </tr></table>
@@ -181,15 +181,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +17 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Fast Stealth: Use Stealth at full speed</td>
+        <td>Fast Stealth: Use Stealth at full speed w/out penalty</td>
       </tr><tr style="text-align:center">
-        <td>Hide In Plain Sight: Hide even when observed</td>
+        <td>Hide In Plain Sight: May hide even when observed</td>
       </tr><tr style="text-align:center">
-        <td>Ledge Walker: Use Acrobatics along narrow surfaces at full speed</td>
+        <td>Ledge Walker: May use Acrobatics along narrow surfaces at full speed</td>
       </tr><tr style="text-align:center">
-        <td>Quick Disable: Disable Device in half normal time</td>
+        <td>Quick Disable: May use Disable Device in half normal time</td>
       </tr><tr style="text-align:center">
-        <td>Skill Mastery: Take 10 despite distraction on 4 chosen skills</td>
+        <td>Skill Mastery: May take 10 despite distraction on 4 chosen skills</td>
       </tr><tr style="text-align:center">
         <td>Trap Spotter: Automatic Perception check w/in 10' of trap</td>
       </tr><tr style="text-align:center">
@@ -248,37 +248,39 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Finesse: +2 light melee weapon attack (dex instead of str)</i></td>
+        <td><i>Weapon Finesse: +2 light melee weapon attack (Dexterity instead of Strength)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Sap): +1 Sap Attack Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Attack: Sneak attack causes extra 4 HP/rd until healed</td>
+        <td>Bleeding Attack: Sneak attack inflicts 4 HP/rd (Magic healing or DC 15 Heal ends)</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: Flatfooted AOO, 2 AOO/rd</td>
+        <td>Combat Reflexes: May take AOO while flat-footed and 2 AOO/rd</td>
       </tr><tr style="text-align:center">
-        <td>Crippling Strike: 2 points Str damage from sneak attack</td>
+        <td>Crippling Strike: Sneak attack inflicts 2 points Strength damage</td>
       </tr><tr style="text-align:center">
-        <td>Defensive Roll: DC damage Reflex save vs. lethal blow for half damage</td>
+        <td>Defensive Roll: Successful DC damage Reflex save vs. lethal blow avoids half damage</td>
       </tr><tr style="text-align:center">
         <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 21+</td>
       </tr><tr style="text-align:center">
         <td>Mobility: +4 AC vs. movement AOO</td>
       </tr><tr style="text-align:center">
-        <td>Opportunist: AOO vs. foe struck by ally</td>
+        <td>Opportunist: May take AOO vs. foe struck by ally</td>
       </tr><tr style="text-align:center">
-        <td>Resiliency: 1 minute of 7 temporary HP when below 0 HP 1/dy</td>
+        <td>Resiliency: May gain 7 temporary HP for 1 min when below 0 HP 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Shadow Master: DR 10/-, critical hit blinds d6 rd in dim light</td>
+        <td>Shadow Master-1: Critical hit blinds for d6 rd in dim light</td>
       </tr><tr style="text-align:center">
-        <td>Slow Reactions: Sneak attack target no AOO for 1 rd</td>
+        <td>Shadow Master: DR 10/-</td>
       </tr><tr style="text-align:center">
-        <td>Sneak Attack: Hit inflicts +4d6 HP when foe flanked or denied Dex bonus </td>
+        <td>Slow Reactions: Sneak attack target may take no AOO for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Stand Up: Stand from prone as free action</td>
+        <td>Sneak Attack: Hit inflicts +4d6 HP when foe flanked or denied Dexterity bonus </td>
       </tr><tr style="text-align:center">
-        <td>Surprise Attack: All foes flat-footed during surprise round</td>
+        <td>Stand Up: May stand from prone as free action</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dex modifier to AC (foe feint neg)</td>
+        <td>Surprise Attack: All foes are flat-footed during surprise round</td>
+      </tr><tr style="text-align:center">
+        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -345,15 +347,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Minor Magic: May cast chosen level 0 spell 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Shadow Call: Mimics conjuration (creation or summoning) spell up to 6th level (DC 16 Will 20% effect) 4/dy</td>
+      <td>Shadow Call: May mimic conjuration (creation or summoning) spell up to 6th level (DC 16 Will 20% effect) 4/dy</td>
     </tr><tr style="text-align:center">
-      <td>Shadow Illusion: R800' 140' cu image (DC 10 Will disbelieve) for conc 5/dy</td>
+      <td>Shadow Illusion: R800' May create 140' cu image (DC 10 Will disbelieve) for conc 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Shadow Jump: Teleport between shadows 320'/dy</td>
+      <td>Shadow Jump: May teleport between shadows 320'/dy</td>
     </tr><tr style="text-align:center">
-      <td>Shadow Power: Mimics evocation spell up to 4rd level (DC 14 Will 20% effect) 2/dy</td>
+      <td>Shadow Power: May mimic evocation spell up to 4rd level (DC 14 Will 20% effect) 2/dy</td>
     </tr><tr style="text-align:center">
-      <td>Summon Shadow: Summon unturnable Shadow companion with 54 HP, character BAB and saves, +4 Will vs. channeled energy</td>
+      <td>Summon Shadow: May summon unturnable Shadow companion with 54 HP, +12 BAB, null/null/null Fort/Ref/Will, and +4 Will vs. channeled energy</td>
     </tr></table>
 </td>
   </tr></table>
