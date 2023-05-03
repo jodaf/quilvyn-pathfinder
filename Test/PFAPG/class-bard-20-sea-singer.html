@@ -177,7 +177,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Lore Master: May take 10 on any ranked Knowledge skill; may take 20 3/dy</td>
       </tr><tr style="text-align:center">
-        <td>Sea Shanty: R30' Allies may use self Perform to save vs. exhausted, fatigued, nauseated, and sickened</td>
+        <td>Sea Shanty: R30' May use Bardic Performance to allow Allies to use self Perform to save vs. exhausted, fatigued, nauseated, and sickened</td>
       </tr><tr style="text-align:center">
         <td>World Traveler (Sea Singer)-1: May reroll Knowledge (Geography), Knowledge (Local), Knowledge (Nature), or Linguistics 5/dy</td>
       </tr></table>
@@ -234,7 +234,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
-        <td>Sea Legs: +4 CMD vs. grapple, overrun, and trip</td>
+        <td>Sea Legs: +2 CMD vs. grapple, overrun, and trip</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -256,7 +256,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Endurance: +4 extended physical action</td>
       </tr><tr style="text-align:center">
-        <td>Sea Legs: +4 vs. air, water, and knocked prone</td>
+        <td>Sea Legs: +4 vs. air, water, slip, trip, and knocked prone</td>
       </tr></table>
 </td>
     </tr></table>
@@ -283,6 +283,12 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Blood Biography (B2 Divi): Target blood identifies name and type of creature it came from and when and how it was shed (DC 14 Will neg)</td>
     </tr><tr style="text-align:left">
+      <td>Control Water (Call The Storm4 Tran): Rnull' Raises or lowers undefined 10'x10'x2' of water null' for null min</td>
+    </tr><tr style="text-align:left">
+      <td>Control Weather (Call The Storm7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+    </tr><tr style="text-align:left">
+      <td>Control Winds (Call The Storm5 Tran): Rnull' Changes wind direction and speed null levels in null'x40' cylinder for null min</td>
+    </tr><tr style="text-align:left">
       <td>Cure Critical Wounds (B4 Conj): Touched heals (undead suffers) 4d8+20 HP (DC 16 Will half)</td>
     </tr><tr style="text-align:left">
       <td>Denounce (B4 Ench): R75' Creatures in 30' radius shift attitude toward target 2 levels worse (DC 16 Will neg) for 20 hr; target suffers -10 Diplomacy checks to improve attitude of those affected</td>
@@ -306,6 +312,8 @@ var attributes = {
       <td>Good Hope (B3 Ench): R300' 20 targets in 15' radius gain +2 attack, damage, saves, and checks for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Greater Shout (B6 Evoc): R60' Cone inflicts 10d6 HP, deafness for 4d6 rd, and stunning for 1 rd (DC 18 Fort half damage and deafness, no stunning)</td>
+    </tr><tr style="text-align:left">
+      <td>Gust Of Wind (Whistle The Wind2 Evoc): 60' 50 MPH gust affects medium or smaller creatures (DC 13 Fort neg) for 1 rd</td>
     </tr><tr style="text-align:left">
       <td>Irresistible Dance (B6 Ench): Touched dances (-4 AC, -10 Reflex) for d4+1 rd (DC 18 Will for 1 rd)</td>
     </tr><tr style="text-align:left">
@@ -341,6 +349,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Song Of Discord (B5 Ench): R300' Creatures in 20' radius have 50% chance each rd of attacking neighbor for 20 rd (DC 17 Will neg)</td>
     </tr><tr style="text-align:left">
+      <td>Storm Of Vengeance (Call The Storm9 Conj): Rnull' 360' radius storm deafens for 1d4x10 min (DC 21 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 21 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
+    </tr><tr style="text-align:left">
       <td>Summon Instrument (B0 Conj): Musical instrument appears for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Touch Of Gracelessness (B1 Tran): Touched suffers 1d6+5 Dexterity damage, knocked prone by moving more than half speed, and flying maneuverability reduced one step (DC 13 Fort half Dexterity damage only) for 20 rd</td>
@@ -361,7 +371,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Brew Potion: May create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
-      <td>Call The Storm: Bardic Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell</td>
+      <td>Call The Storm: May use Bardic Performance to use <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> effects</td>
     </tr><tr style="text-align:center">
       <td>Craft Staff: May create magic staves</td>
     </tr><tr style="text-align:center">
@@ -385,9 +395,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Soothing Performance: R30' May use <i>Mass Cure Serious Wounds</i> effects via 4 rd Bardic Performance; also removes fatigued, sickened, and shaken</td>
     </tr><tr style="text-align:center">
-      <td>Still Water: R30' Bardic Performance gives listeners -20 DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr</td>
+      <td>Still Water: R30' May use Bardic Performance to give listeners -20 DC (min DC 10) for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr</td>
     </tr><tr style="text-align:center">
-      <td>Whistle The Wind: Bardic Performance acts as <i>Gust Of Wind</i> spell; 5 rd performance extends effect to 1 min</td>
+      <td>Whistle The Wind: May use Bardic Performance to use <i>Gust Of Wind</i> effects; 5 rd performance extends effect to 1 min</td>
     </tr></table>
 </td>
   </tr></table>
