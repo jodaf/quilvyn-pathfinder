@@ -2086,32 +2086,34 @@ PFAPG.FEATURES = {
   'Arcane Investigation':'Section=magic Note="Has access to additional spells"',
   'Battle Song':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance affects all allies as <i>Rage</i> spell"',
+    'Note="R30\' May use Bardic Performance to affect all allies as <i>Rage</i> spell"',
   'Berserkergang':
     'Section=magic ' +
-    'Note="Bardic Performance suppresses pain, stun, and fear effects and gives DR5/- to %{(levels.Bard-9)//3} targets"',
+    'Note="May use Bardic Performance to suppress pain, stun, and fear effects and give DR5/- to %{(levels.Bard-9)//3} targets"',
   'Bladethirst':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives weapon of one ally choice of +%{(levels.Bard-3)//3} attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties"',
+    'Note="R30\' May use Bardic Performance to give weapon of one ally choice of +%{(levels.Bard-3)//3} attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties"',
   'Call The Storm':
     'Section=magic ' +
-    'Note="Bardic Performance acts as <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> spell"',
+    'Note="May use Bardic Performance to use <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> effects"',
   'Careful Teamwork':
     'Section=magic ' +
-    'Note="R30\' 3 rd Bardic Performance gives allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
+    'Note="R30\' May use 3 rd Bardic Performance to give allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
   'Disappearing Act':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance causes creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May use Bardic Performance to cause creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Dramatic Subtext':
     'Section=magic ' +
-    'Note="2 rd Bardic Performance allows casting spell w/out visual or audible components (opposed Perception vs. Sleight Of Hand to detect)"',
+    'Note="May use 2 rd Bardic Performance to cast spell w/out visual or audible components (opposed Perception vs. Sleight Of Hand to detect)"',
   'Dweomercraft':
     'Section=magic ' +
-    'Note="Bardic Performance gives allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
-  'Expanded Repertoire':'Section=magic Note="Has access to additional spells"',
+    'Note="May use Bardic Performance to give allies +%{(levels.Bard+7)//6} caster level checks, concentration, and spell attack"',
+  'Expanded Repertoire':
+    'Section=magic ' +
+    'Note="Knows %{(levels.Bard+2)//4} additional spells taken from any arcane class"',
   'Extended Performance':
     'Section=magic ' +
-    'Note="May expend spell slot to extend Bardic Performance effects"',
+    'Note="May expend spell slot to extend Bardic Performance effects 1 rd/spell level"',
   'Eye For Detail':
     'Section=skill,skill ' +
     'Note=' +
@@ -2119,33 +2121,33 @@ PFAPG.FEATURES = {
       '"+%V Diplomacy (gather information)"',
   'Gladhanding':
     'Section=skill ' +
-    'Note="Perform gains dbl normal pay/May use Bluff to improve attitude"',
+    'Note="Perform gains dbl normal pay/May use Bluff to improve target attitude for 1 min; 1 step worse afterwards"',
   'Glorious Epic':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
+    'Note="R30\' May use Bardic Performance to inflict flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
   'Greater Stealspell':
     'Section=magic ' +
-    'Note="Successful Stealspell reveals target\'s spells; may instead steal SR %{levels.Bard//2}"',
+    'Note="Successful Stealspell reveals target\'s spells and any spell resistance; may instead steal SR %{levels.Bard//2}"',
   'Harmless Performer':
     'Section=magic ' +
-    'Note="Bardic Performance causes foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
+    'Note="May use Bardic Performance to cause foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
   'Heraldic Expertise':
     'Section=skill,skill ' +
     'Note=' +
       '"+%V Diplomacy/+%V Knowledge (History)/+%V Knowledge (Local)/+%V Knowledge (Nobility)",' +
-      '"May reroll Diplomacy, Knowledge (History), Knowledge (Local), or Knowledge (Nobility) 1/dy"',
+      '"May reroll Diplomacy, Knowledge (History), Knowledge (Local), or Knowledge (Nobility) %{1+levels.Bard//5}/dy"',
   'Incite Rage':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance affects target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} neg)"',
+    'Note="R30\' May use Bardic Performance to affect target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Inspiring Blow':
     'Section=combat ' +
-    'Note="Bardic Performance following crit gives self %{charismaModifier>?0} temporary HP and R30\' allies +1 next attack for 1 rd"',
+    'Note="May use Bardic Performance following crit to give%{charismaModifier>0 ? \' self \' + charismaModifier + \' temporary HP and\' : \'\'} R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use Bardic Performance to inflict choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Madcap Prank':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts random negative effect on target (DC %{10+levels.Bard//2+charismaModifier} Ref neg) 1/rd"',
+    'Note="R30\' May use Bardic Performance to inflict on target random choice of blinded, dazzled, deafened, entangled, prone, or nauseated (DC %{10+levels.Bard//2+charismaModifier} Ref neg) for 1 rd"',
   'Magic Lore':
     'Section=save,skill ' +
     'Note=' +
@@ -2156,7 +2158,7 @@ PFAPG.FEATURES = {
     'Note="+%1 Knowledge (Arcana)/+%1 Spellcraft/+%1 Use Magic Device"',
   'Mass Bladethirst':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives +1 or better attack bonus to weapons of multiple allies"',
+    'Note="R30\' May use Bardic Performance to give +1 or better attack bonus to weapons of multiple allies"',
   'Mass Slumber Song':
     'Section=magic ' +
     'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
@@ -2164,19 +2166,19 @@ PFAPG.FEATURES = {
     'Section=skill,skill ' +
     'Note=' +
       '"+%1 Bluff/+%1 Sleight Of Hand/+%1 Stealth",' +
-      '"May disarm magical traps"',
+      '"May use Disable Device to disarm magical traps"',
   'Metamagic Mastery (Magician)':
     'Section=magic ' +
-    'Note="May use Bardic Performance to apply metamagic feat to spell"',
+    'Note="May end Bardic Performance to apply metamagic feat to spell w/out extending casting time"',
   'Mockery':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
+    'Note="May use Bardic Performance to inflict -%{(levels.Bard+5)//4>?2} on target Charisma and Charisma-based skill checks"',
   'Naturalist':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of creatures identified w/Knowledge check"',
+    'Note="R30\' May use Bardic Performance to give allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of creatures identified w/Knowledge check"',
   'Pedantic Lecture':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use Bardic Performance to inflict choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Probable Path':
     'Section=feature ' +
     'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
@@ -2185,23 +2187,23 @@ PFAPG.FEATURES = {
     'Note="May don disguise as standard action (-5 check)/May use Bluff as diversion to hide/May take 10 on Bluff and Disguise; may take 20 %{(levels.Bard+1)//6}/dy"',
   'Rallying Cry':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies use of self Intimidate check for save vs. fear and despair"',
+    'Note="R30\' May use Bardic Performance to give allies use of self Intimidate check for save vs. fear and despair"',
   'Satire':
     'Section=magic ' +
-    'Note="Bardic Performance inflicts -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm on foes w/in hearing"',
+    'Note="May use Bardic Performance to inflict -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm on foes w/in hearing"',
   'Scandal':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance inflicts 50% chance to attack nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
+    'Note="R30\' May use Bardic Performance to inflict on foes 50% chance of attacking nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Sea Legs':
     'Section=combat,save ' +
-    'Note="+4 CMD vs. grapple, overrun, and trip",' +
-    '"+4 vs. air, water, and knocked prone"',
+    'Note="+2 CMD vs. grapple, overrun, and trip",' +
+    '"+4 vs. air, water, slip, trip, and knocked prone"',
   'Sea Shanty':
     'Section=skill ' +
-    'Note="R30\' Allies may use self Perform to save vs. exhausted, fatigued, nauseated, and sickened"',
+    'Note="R30\' May use Bardic Performance to allow Allies to use self Perform to save vs. exhausted, fatigued, nauseated, and sickened"',
   'Show Yourselves':
     'Section=combat ' +
-    'Note="R30\' Bardic Performance compels foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May use Bardic Performance to compel foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg) and to prevent attacks until fully revealed"',
   'Slip Through The Crowd':
     'Section=magic Note="Disappearing Act allows affected allies to move through occupied squares and attack"',
   'Slumber Song':
@@ -2209,34 +2211,36 @@ PFAPG.FEATURES = {
     'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Sneakspell':
     'Section=magic ' +
-    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} spell DC and Bardic Performance vs. foes denied Dex bonus"',
+    'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} spell DC and Bardic Performance vs. foes denied Dexterity bonus"',
   'Song Of The Fallen':
     'Section=magic ' +
-    'Note="10 rd Bardic Performance summons barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
+    'Note="May use 10 rd Bardic Performance to summon barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
   'Spell Catching':
     'Section=magic ' +
-    'Note="Bardic Performance and successful caster level check (DC 10 + foe caster level) negates foe targeted spell and allows immediate recast"',
+    'Note="Successful save and caster level check (DC 10 + foe caster level) negates and allows immediate recast of foe spell targeted on self; costs Bardic Performance rds equal to spell level"',
   'Spell Suppression':
     'Section=magic ' +
-    'Note="May use Bardic Performance to counter spell of level equal to performance rds"',
+    'Note="May use Bardic Performance to counter Spellcraft-identified spell of level equal to or less than performance rds"',
   'Stealspell':
     'Section=magic ' +
     'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will neg) for duration of Bardic Performance"',
   'Still Water':
     'Section=magic ' +
-    'Note="R30\' Bardic Performance gives listeners -%{levels.Bard} DC for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr"',
+    'Note="R30\' May use Bardic Performance to give listeners -%{levels.Bard} DC (min DC 10) for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr"',
   'Streetwise':
-    'Section=skill ' +
-    'Note="+%V Bluff/+%V Disguise/+%V Knowledge (Local)/+%V Sleight Of Hand/+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V Bluff/+%V Disguise/+%V Knowledge (Local)/+%V Sleight Of Hand",' +
+      '"+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
   'True Confession':
     'Section=skill ' +
-    'Note="%{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive causes target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use %{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive to cause target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
   'Wand Mastery':
     'Section=magic ' +
-    'Note="Uses Charisma bonus%{levels.Bard>=16 ? \' and caster level\' : \'\'} to calculate save DC of wands"',
+    'Note="Uses Charisma bonus to calculate save DC%{levels.Bard>=16 ? \' and caster level to calculate effects\' : \'\'} of spells cast from wands"',
   'Whistle The Wind':
    'Section=magic ' +
-   'Note="Bardic Performance acts as <i>Gust Of Wind</i> spell; 5 rd performance extends effect to 1 min"',
+   'Note="May use Bardic Performance to use <i>Gust Of Wind</i> effects; 5 rd performance extends effect to 1 min"',
   'Wide Audience':
     'Section=magic ' +
     'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{30+(levels.Bard-5)//5*10}\' radius, or +%{(levels.Bard-5)//5} targets"',
@@ -9658,12 +9662,26 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.streetwise',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+    rules.defineRule('skillNotes.streetwise-1',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
     rules.defineRule('skillNotes.worldTraveler(SeaSinger).1',
       'features.World Traveler (Sea Singer)', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
-      ('sneakAttack', 'sandmanLevel', '+=', 'Math.floor(source / 5)');
+      ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
+    Pathfinder.featureSpells(rules,
+      'Call The Storm', 'Call The Storm', 'charisma', 'levels.Bard', '',
+      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
+    );
+    Pathfinder.featureSpells(rules,
+      'Incite Rage', 'InciteRage', 'charisma', 'levels.Bard', '', ['Rage']
+    );
+    Pathfinder.featureSpells(rules,
+      'Whistle The Wind', 'WhistleTheWind', 'charisma', 'levels.Bard', null,
+      ['Gust Of Wind']
+    );
   } else if(name == 'Cleric') {
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
