@@ -2256,13 +2256,13 @@ PFAPG.FEATURES = {
     'Note="May force foe to forego self attack (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{wisdomModifier+3}/dy"',
   'Animate Servant':
     'Section=magic ' +
-    'Note="Cast <i>Animate Object</i> %{(levels.Cleric-4)//4}/dy"',
+    'Note="May use <i>Animate Object</i> effects %{(levels.Cleric-4)//4}/dy"',
   'Anything To Please':
     'Section=magic ' +
     'Note="R30\' Target attempts to please self (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{(levels.Cleric-4)//4}/dy"',
   'Arcane Beacon':
     'Section=magic ' +
-    'Note="15\' radius gives arcane spells +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
+    'Note="15\' radius gives arcane casters choice of +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
   'Aura Of Chaos':
     'Section=combat ' +
     'Note="30\' radius randomizes foe actions (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
@@ -2296,7 +2296,9 @@ PFAPG.FEATURES = {
   'Cloud Of Smoke':
     'Section=magic ' +
     'Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
-  'Command':'Section=magic Note="Cast <i>Command</i> %{wisdomModifier+3}/dy"',
+  'Command':
+    'Section=magic ' +
+    'Note="May use <i>Command</i> effects %{wisdomModifier+3}/dy"',
   "Day's Resurgence":
     'Section=magic ' +
     'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
@@ -2317,7 +2319,7 @@ PFAPG.FEATURES = {
     'Note="May see through %{6+levels.Cleric}\\" material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
   "Elysium's Call":
     'Section=magic ' +
-    'Note="Touch gives immediate enchantment reroll, +2 save vs. enchantment, +2 CMB to escape grapple, and negate 5\' difficult terrain for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="Touch gives +2 saves and immediate fail reroll vs. enchantment and compulsion spells, +2 CMB to escape grapple, and negate 5\' difficult terrain/rd for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
@@ -2378,7 +2380,7 @@ PFAPG.FEATURES = {
       '"Has Low-Light Vision feature for 1 rd %{wisdomModifier+3}/dy"',
   'Protective Aura':
     'Section=magic ' +
-    'Note="R30\' Allies gain +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
+    'Note="R30\' May give allies +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
   'Purifying Touch':
     'Section=magic ' +
     'Note="Touch gives additional save vs. effects %{(levels.Cleric-2)//6}/dy"',
@@ -2406,7 +2408,8 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="+%{levels.Cleric//2>?1} Bluff, Diplomacy, or Sense Motive %{wisdomModifier+3}/dy"',
   'Speak With Dead':
-    'Section=magic Note="May ask question of corpse %{levels.Cleric}/dy"',
+    'Section=magic ' +
+    'Note="May receive answer to question from corpse w/no saving throw %{levels.Cleric}/dy"',
   'Sudden Shift':
     'Section=combat ' +
     'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
@@ -2444,7 +2447,7 @@ PFAPG.FEATURES = {
     'Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
   'Wounding Blade':
     'Section=magic ' +
-    'Note="Hit w/touched weapon causes 1 HP bleeding damage (DC 15 Heal or cure ends) for %{levels.Cleric//2} rd %{(levels.Cleric-4)//4}/dy"',
+    'Note="Hit w/touched weapon causes 1 HP bleeding/rd (DC 15 Heal or cure ends) for %{levels.Cleric//2} rd %{(levels.Cleric-4)//4}/dy"',
 
   // Druid
   'Animal Shaman':
@@ -4979,7 +4982,7 @@ PFAPG.PATHS = {
     Pathfinder.PATHS['Death Domain'].replace('Bleeding Touch', "Death's Kiss"),
   'Wards Subdomain':
     Pathfinder.PATHS['Rune Domain'].replace('Spell Rune', 'Warding Rune'),
-  'Winds Subdomain':
+  'Wind Subdomain':
     Pathfinder.PATHS['Air Domain'].replace('Lightning Arc', 'Wind Blast'),
 
   // Druid
@@ -6983,7 +6986,7 @@ PFAPG.SPELLS = {
     'Description="Touched weapon or unarmed strike gains +2 damage and crit inflicts 1 rd shaken for %{lvl} min"',
   'Winds Of Vengeance':
     'School=Evocation ' +
-    'Level=C9,D9,O9,W9,Winds9 ' +
+    'Level=C9,D9,O9,W9,Wind9 ' +
     'Description="Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for %{lvl} min"',
   'World Wave':
     'School=Transmutation ' +
@@ -7003,7 +7006,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
 
   'Acid Splash':'ArcaneTalent0,Inquisitor0',
   'Aid':'Alchemist2,Curse2,Inquisitor2,O2,Tactics2',
-  'Air Walk':'Alchemist4,O4,Winds4',
+  'Air Walk':'Alchemist4,O4,Wind4',
   'Alarm':'Home1,Inquisitor1',
   'Align Weapon':'Agathion2,"Archon Good2","Archon Law2","Azata Chaos2","Azata Good2",Daemon2,"Demon Chaos2","Demon Evil2","Devil Evil2","Devil Law2",Inevitable2,Inquisitor2,O2,Proteus2',
   'Alter Self':'Alchemist2,Witch2',
@@ -7088,7 +7091,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Control Undead':'O7,Witch7', // Oracle Bones; Witch Plague
   'Control Water':'Aquatic5,Ice4,O4,Oceans4,Witch4', // Witch Water
   'Control Weather':'Catastrophe7,O7,Seasons7,Stormborn7,Storms7,Witch7',
-  'Control Winds':'Cloud5,O5,Seasons6,Winds5', // Oracle Wind
+  'Control Winds':'Cloud5,O5,Seasons6,Wind5', // Oracle Wind
   'Create Food And Water':'Family3,O3',
   'Create Greater Undead':'Murder8,O8,Undeath8,Witch8', // Witch Plague
   'Create Undead':'Murder6,O6,Undeath6,Witch6', // Witch Plague
@@ -7160,7 +7163,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Elemental Body II':'Alchemist5',
   'Elemental Body III':'Alchemist6,Witch6', // Witch Water
   'Elemental Body IV':
-    'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Winds7,Witch7', // Witch Water
+    'Caves7,Cloud7,Metal7,Oceans7,Smoke7,Wind7,Witch7', // Witch Water
   'Elemental Swarm':'Caves9,Metal9,Smoke9,Witch9',
   'Endure Elements':'Alchemist1,Day1,O1,Witch1', // Witch Endurance
   'Energy Drain':'Loss9,O9,Undeath9,Witch9', // Witch Plague
@@ -7207,7 +7210,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Freedom Of Movement':
     'Alchemist4,Curse4,Fate4,Freedom4,Inquisitor4,O4,Revolution4,Witch4', // Witch Agility
   'Freezing Sphere':'Ice7,Witch6', // Witch Elements
-  'Gaseous Form':'Alchemist3,Cloud3,Protean3,Winds3',
+  'Gaseous Form':'Alchemist3,Cloud3,Protean3,Wind3',
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6,Witch6',
   'Gentle Repose':'Ancestors2,O2,Souls2,Witch2',
@@ -7550,10 +7553,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Waves Of Fatigue':'Toil5,Witch5',
   'Web':'Witch2',
   'Weird':'Insanity9,Nightmare9',
-  'Whirlwind':'Cloud8,O8,Storms8,Stormborn8,Winds8', // Oracle Wind
-  'Whispering Wind':'Inquisitor2,O2,Winds1', // Rage Prophet
-  'Wind Walk':'Alchemist6,O6,Winds6',
-  'Wind Wall':'Cloud2,O3,Winds2',
+  'Whirlwind':'Cloud8,O8,Storms8,Stormborn8,Wind8', // Oracle Wind
+  'Whispering Wind':'Inquisitor2,O2,Wind1', // Rage Prophet
+  'Wind Walk':'Alchemist6,O6,Wind6',
+  'Wind Wall':'Cloud2,O3,Wind2',
   'Wood Shape':'Construct2,Toil2',
   'Word Of Chaos':'"Azata Chaos7","Demon Chaos7",Inquisitor6,O7,Proteus7',
   'Word Of Recall':'O6',
@@ -9705,6 +9708,29 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.eyesOfTheHawk',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+    Pathfinder.featureSpells(rules,
+      'Animate Servant', 'AnimateServant', 'wisdom', 'levels.Cleric', null,
+      ['Animate Objects']
+    );
+    Pathfinder.featureSpells(rules,
+      'Command', 'Command', 'wisdom', 'levels.Cleric', '', ['Command']
+    );
+    Pathfinder.featureSpells(rules,
+      'Deadly Weather', 'DeadlyWeather', 'wisdom', 'levels.Cleric', '',
+      ['Call Lightning']
+    );
+    Pathfinder.featureSpells(rules,
+      'Protective Aura', 'ProtectiveAura', 'wisdom', 'levels.Cleric', null,
+      ['Protection From Evil']
+    );
+    Pathfinder.featureSpells(rules,
+      'Tunnel Running', 'TunnelRunning', 'wisdom', 'levels.Cleric', null,
+      ['Spider Climb']
+    );
+    Pathfinder.featureSpells(rules,
+      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
+      'levels.Cleric', null, ['Endure Elements']
+    );
   } else if(name == 'Druid') {
     var allFeats = rules.getChoices('feats');
     rules.defineRule('abilityNotes.naturalSwimmer',
@@ -11515,7 +11541,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     });
   }
   // Level-dependent domain code copied from Pathfinder for related subdomains.
-  if(name.match(/(Cloud|Winds) Subdomain/)) { // Air
+  if(name.match(/(Cloud|Wind) Subdomain/)) { // Air
     rules.defineRule
       ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('saveNotes.electricityResistance',
