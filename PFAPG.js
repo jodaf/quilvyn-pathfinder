@@ -2316,10 +2316,10 @@ PFAPG.FEATURES = {
     'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill check, or ability check for 1 rd %{wisdomModifier+3}/dy"',
   'Door Sight':
     'Section=magic ' +
-    'Note="May see through %{6+levels.Cleric}\\" material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
+    'Note="Concentation allows self to see through %{6+levels.Cleric}\\" touched material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
   "Elysium's Call":
     'Section=magic ' +
-    'Note="Touch gives +2 saves and immediate fail reroll vs. enchantment and compulsion spells, +2 CMB to escape grapple, and negate 5\' difficult terrain/rd for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="Touch gives immediate save reroll vs. charm and compulsion; also +2 saves vs. charm and compulsion, +2 CMB to escape grapple, and negation of 5\' difficult terrain/rd for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
@@ -2329,12 +2329,17 @@ PFAPG.FEATURES = {
   'Fearful Touch':
     'Section=combat ' +
     'Note="Touch inflicts -2 attack on self, loss of fear immunity, and -%{levels.Cleric//2>?1} save vs. fear for 1 rd %{wisdomModifier+3}/dy"',
+  'Feather Subdomain':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Casting flying spells on self improves maneuverability by 1 step",' +
+      '"Fly is a class skill"',
   'Ferocious Strike':
     'Section=combat ' +
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
   'Fury Of The Abyss':
     'Section=combat ' +
-    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, and CMB for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
   'Gale Aura':
     'Section=magic ' +
     'Note="30\' radius inflicts difficult terrain and no 5\' step %{levels.Cleric} rd/dy"',
@@ -2346,7 +2351,7 @@ PFAPG.FEATURES = {
     'Note="10 min ritual gives targets in %{levels.Cleric*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
   "Hell's Corruption":
     'Section=combat ' +
-    'Note="Touch inflicts -2 saves and worse of two skill rolls for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="Touch inflicts -2 saves and worse of two rolls on opposed skill checks for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Honor Bound':
     'Section=magic ' +
     'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
@@ -2360,7 +2365,8 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Crit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
   "Liberty's Blessing":
-    'Section=magic Note="Touch gives additional save %{wisdomModifier+3}/dy"',
+    'Section=magic ' +
+    'Note="Touch gives save vs. existing spell or effect w/in 1 min %{wisdomModifier+3}/dy"',
   'Malign Eye':
     'Section=magic ' +
     'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
@@ -2380,7 +2386,7 @@ PFAPG.FEATURES = {
       '"Has Low-Light Vision feature for 1 rd %{wisdomModifier+3}/dy"',
   'Protective Aura':
     'Section=magic ' +
-    'Note="R30\' May give allies +2 AC, +2 saves, and <i>Protection From Evil</i> effects %{levels.Cleric} rd/dy"',
+    'Note="R30\' May use <i>Protection From Evil</i> effects on allies %{levels.Cleric} rd/dy"',
   'Purifying Touch':
     'Section=magic ' +
     'Note="Touch gives additional save vs. effects %{(levels.Cleric-2)//6}/dy"',
@@ -8708,9 +8714,21 @@ PFAPG.classRulesExtra = function(rules, name) {
     }
     let allPaths = Pathfinder.PATHS;
     for(let p in allPaths) {
-      if(p.match(/ Domain$/))
-        rules.choiceRules
-          (rules, 'Path', p, allPaths[p].replaceAll('Cleric', 'Inquisitor'));
+      if(!p.match(/ Domain$/))
+        continue;
+      let pathFeatures =
+        QuilvynUtils.getAttrValueArray(Pathfinder.PATHS[p], 'Features');
+      let pathLevel =
+        p.charAt(0).toLowerCase() + p.substring(1).replaceAll(' ','') + 'Level';
+      rules.defineRule(pathLevel, 'levels.Inquisitor', '=', null);
+      QuilvynRules.featureListRules
+        (rules, pathFeatures, 'Inquisitor', pathLevel, false);
+      pathFeatures.forEach(f => {
+        f = f.replace(/^\d+:/, '');
+        rules.defineRule('clericFeatures.' + f, 'levels.Cleric', '?', null);
+        rules.defineRule
+          ('inquisitorFeatures.' + f, 'levels.Inquisitor', '?', null);
+      });
     }
     rules.defineRule('combatNotes.bane',
       '', '=', '2',
@@ -9675,7 +9693,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
     Pathfinder.featureSpells(rules,
-      'Call The Storm', 'Call The Storm', 'charisma', 'levels.Bard', '',
+      'Call The Storm', 'CallTheStorm', 'charisma', 'levels.Bard', '',
       ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
     );
     Pathfinder.featureSpells(rules,
@@ -9724,7 +9742,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Protection From Evil']
     );
     Pathfinder.featureSpells(rules,
-      'Tunnel Running', 'TunnelRunning', 'wisdom', 'levels.Cleric', null,
+      'Tunnel Runner', 'TunnelRunner', 'wisdom', 'levels.Cleric', null,
       ['Spider Climb']
     );
     Pathfinder.featureSpells(rules,
@@ -11551,8 +11569,6 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('companionClericLevel', pathLevel, '=', 'source - 3');
     rules.defineRule
       ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
-    if(name == 'Feather Subdomain')
-      rules.defineRule('classSkills.Fly', pathLevel, '=', '1');
   } else if(name.match(/(Construct|Toil) Subdomain/)) { // Artifice
     rules.defineRule("combatNotes.artificer'sTouch.1",
       pathLevel, '=', 'Math.floor(source / 2)'
@@ -11662,6 +11678,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
   } else if(name.match(/(Arcana|Divine) Subdomain/)) { // Magic
+    rules.defineRule('casterLevels.DispellingTouch', pathLevel, '=', null);
     rules.defineRule('magicNotes.dispellingTouch',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
@@ -11707,11 +11724,15 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
   } else if(name.match(/(Deception|Thievery) Subdomain/)) { // Trickery
-    rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
-    rules.defineRule("magicNotes.master'sIllusion",
-      pathLevel, '=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+    if(name == 'Deception Subdomain') {
+      rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
+      rules.defineRule("magicNotes.master'sIllusion",
+        pathLevel, '=', '10 + Math.floor(source / 2)'
+      );
+      rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+    }
+    if(name == 'Thievery Subdomain')
+      rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
   } else if(name.match(/(Blood|Tactics) Subdomain/)) { // War
     rules.defineRule('combatNotes.battleRage',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
