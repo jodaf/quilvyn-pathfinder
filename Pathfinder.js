@@ -1682,7 +1682,7 @@ Pathfinder.FEATURES = {
       '"+1 Stealth"',
   "Freedom's Call":
     'Section=magic ' +
-    'Note="R30\' Allies gain immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken %V rd/dy"',
+    'Note="R30\' May give allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken %V rd/dy"',
   'Frightening Tune':
     'Section=magic ' +
     'Note="R30\' Bardic Performance causes foes to flee (DC %V Will neg)"',
@@ -4986,9 +4986,22 @@ Pathfinder.identityRules = function(
   // Process paths before deities for domain definitions
   for(var path in paths) {
     rules.choiceRules(rules, 'Path', path, paths[path]);
-    if(Pathfinder.DRUID_DOMAINS.includes(path))
-      rules.choiceRules
-        (rules, 'Path', path, Pathfinder.PATHS[path].replaceAll('Cleric', 'Druid'));
+    if(Pathfinder.DRUID_DOMAINS.includes(path)) {
+      // Define domain features for Druids and ensure that clerics don't
+      // receive druid domain features or vice versa
+      let pathFeatures =
+        QuilvynUtils.getAttrValueArray(Pathfinder.PATHS[path], 'Features');
+      let pathLevel =
+        path.charAt(0).toLowerCase() + path.substring(1).replaceAll(' ', '') + 'Level';
+      rules.defineRule(pathLevel, 'levels.Druid', '=', null);
+      QuilvynRules.featureListRules
+        (rules, pathFeatures, 'Druid', pathLevel, false);
+      pathFeatures.forEach(f => {
+        f = f.replace(/^\d+:/, '');
+        rules.defineRule('clericFeatures.' + f, 'levels.Cleric', '?', null);
+        rules.defineRule('druidFeatures.' + f, 'levels.Druid', '?', null);
+      });
+    }
   }
   for(var deity in deities) {
     rules.choiceRules(rules, 'Deity', deity, deities[deity]);
@@ -6891,16 +6904,6 @@ Pathfinder.pathRules = function(
     spellSlots
   );
 
-  // Ensure that cleric domain features don't show for druids or vice versa.
-  if(name.match(/ Domain$/)) {
-    var groupFeatures = group.toLowerCase() + 'Features';
-    for(var i = 0; i < features.length; i++) {
-      var feature = features[i].replace(/^\d+:/, '');
-      rules.defineRule
-        (groupFeatures + '.' + feature, 'levels.' + group, '?', null);
-    }
-  }
-
   var pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
@@ -7535,6 +7538,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.dispellingTouch',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
+    Pathfinder.featureSpells(rules,
+      'Dispelling Touch', 'DispellingTouch', 'wisdom', pathLevel, '',
+      ['Dispel Magic']
+    );
 
   } else if(name == 'Nobility Domain') {
 
@@ -7641,6 +7648,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'wisdomModifier', '+', null
     );
     rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+    Pathfinder.featureSpells(rules,
+      "Master's Illusion", 'MastersIllusion', 'wisdom', pathLevel,
+      '10 + levels.Cleric // 2 + wisdomModifier', ['Veil']
+    );
 
   } else if(name == 'War Domain') {
 
