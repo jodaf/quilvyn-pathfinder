@@ -908,7 +908,9 @@ Pathfinder.FEATURES = {
   'Enlarge Spell':
     'Section=magic Note="May use +1 spell slot to dbl chosen spell range"',
   'Eschew Materials':'Section=magic Note="May cast spells w/out materials"',
-  'Evasion':'Section=save Note="Reflex save yields no damage instead of half"',
+  'Evasion':
+    'Section=save ' +
+    'Note="Reflex save in light or no armor yields no damage instead of half"',
   'Extend Spell':
     'Section=magic Note="May use +1 spell slot to dbl chosen spell duration"',
   'Familiar Bat':'Section=skill Note="+3 Fly"',
@@ -974,7 +976,8 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Disarm provokes no AOO, gains +2 Disarm check and CMD"',
   'Improved Evasion':
-    'Section=save Note="Failed Reflex save yields half damage"',
+    'Section=save ' +
+    'Note="Failed Reflex in light or no armor save yields half damage"',
   'Improved Familiar':'Section=feature Note="Has expanded Familiar choices"',
   'Improved Feint':
     'Section=combat Note="May make Bluff check to Feint as move action"',
@@ -999,7 +1002,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Gains second off-hand attack at -5 penalty"',
   'Improved Unarmed Strike':
     'Section=combat ' +
-    'Note="Unarmed attack provokes no AOO, may deal lethal damage"',
+    'Note="Unarmed attack provokes no AOO and may deal lethal damage"',
   'Improved Uncanny Dodge':
     'Section=combat ' +
     'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
@@ -1294,7 +1297,7 @@ Pathfinder.FEATURES = {
   "Artificer's Touch":
     'Section=combat,magic ' +
     'Note=' +
-      '"Touch attack on objects and constructs inflicts 1d6+%1 HP, bypassing DR and hardness, %V/dy",' +
+      '"Touch attack on objects and constructs inflicts 1d6+%1 HP, bypassing %{levels.Cleric} DR and hardness, %V/dy",' +
       '"May use <i>Mending</i> effects at will"',
   'Ascension':
     'Section=magic,save ' +
@@ -1313,7 +1316,7 @@ Pathfinder.FEATURES = {
     'Note="R10\' May expend 2 Smite Evil uses to give allies 1 use"',
   'Aura Of Madness':
     'Section=magic ' +
-    'Note="R30\' May use <i>Confusion</i> effects %V rd/dy (DC %1 Will neg)"',
+    'Note="R30\' May use <i>Confusion</i> effects (DC %1 Will neg) %V rd/dy"',
   'Aura Of Protection':
     'Section=magic ' +
     'Note="R30\' Allies gain +%V AC and resistance %1 to all energy %2 rd/dy"',
@@ -1346,7 +1349,7 @@ Pathfinder.FEATURES = {
       '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
   'Blast Rune':
     'Section=magic ' +
-    'Note="Rune in adjacent square inflicts 1d6+%1 HP energy damage for %V rd %2/dy"',
+    'Note="May create rune in adjacent unoccupied square that inflicts 1d6+%1 HP energy damage once w/in %V rd %2/dy"',
   'Bleeding Attack':
     'Section=combat ' +
     'Note="Sneak attack inflicts %V HP/rd (magic healing or DC 15 Heal ends)"',
@@ -1525,7 +1528,9 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
       '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
-  'Dimensional Hop':'Section=magic Note="May teleport %V\'/dy"',
+  'Dimensional Hop':
+    'Section=magic ' +
+    'Note="May teleport %V\'/dy; including others uses equal portion of daily distance"',
   'Dimensional Steps':'Section=magic Note="May teleport %V\'/dy"',
   'Dirge Of Doom':
     'Section=magic Note="R30\' Bardic Performance inflicts shaken"',
@@ -1838,6 +1843,11 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Successful Bull Rush during rage inflicts %V HP"',
   'Laughing Touch':
     'Section=magic Note="Touch inflicts laughter for 1 rd %V/dy"',
+  'Leadership (Nobility)':
+    'Section=feature,feature ' +
+    'Note=' +
+      '"Has Leadership feature",' +
+      '"+2 Leadership score"',
   'Ledge Walker':
     'Section=skill ' +
     'Note="May use Acrobatics along narrow surfaces at full speed"',
@@ -1855,7 +1865,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Lightning Lord':
     'Section=magic ' +
-    'Note="May use <i>Call Lightning</i> effects for %V bolts/dy"',
+    'Note="May use <i>Call Lightning</i> effects with multiple bolts w/in 15\' radius each rd for %V bolts/dy"',
   'Lightning Stance':
     'Section=combat Note="Dbl move or withdraw action gives 50% concealment"',
   'Log Roller':
@@ -1965,7 +1975,6 @@ Pathfinder.FEATURES = {
   'No Escape':
     'Section=combat ' +
     'Note="May move at dbl speed to follow withdrawing foe 1/rage"',
-  'Noble Leadership':'Section=feature Note="+2 Leadership"',
   'Observant':
     'Section=skill ' +
     'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
@@ -2177,7 +2186,7 @@ Pathfinder.FEATURES = {
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
   'Strength Surge':
     'Section=combat Note="May gain +%V Strength, CMB, or CMD check 1/rage"',
-  'Strength Surge Touch':
+  'Strength Surge (Cleric)':
     'Section=magic ' +
     'Note="Touch gives +%V melee attack and Strength check bonus for 1 rd %1/dy"',
   'Strike Back':
@@ -2639,7 +2648,7 @@ Pathfinder.PATHS = {
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
     'Features=' +
-      '"1:Inspiring Word","8:Noble Leadership"',
+      '"1:Inspiring Word","8:Leadership (Nobility)"',
   'Plant Domain':
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
@@ -2664,7 +2673,7 @@ Pathfinder.PATHS = {
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
     'Features=' +
-      '"1:Strength Surge Touch","8:Might Of The Gods"',
+      '"1:Strength Surge (Cleric)","8:Might Of The Gods"',
   'Sun Domain':
     'Group=Cleric ' +
     'Level=levels.Cleric ' +
@@ -7321,6 +7330,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
     rules.defineRule
       ('classSkills.Knowledge (Nature)', 'features.Animal Domain', '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Speak With Animals', 'SpeakWithAnimals', 'wisdom', pathLevel,
+      '10+casterLevels.SpeakWithAnimals//2+wisdomModifier',
+      ['Speak With Animals']
+    );
 
   } else if(name == 'Artifice Domain') {
 
@@ -7331,6 +7345,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.dancingWeapons',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
+    );
+    Pathfinder.featureSpells(rules,
+      "Artificer's Touch", 'ArtificersTouch', 'wisdom', pathLevel, null,
+      ['Mending']
     );
 
   } else if(name == 'Chaos Domain') {
@@ -7354,6 +7372,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.dazingTouch.1',
       'features.Dazing Touch', '?', null,
       'wisdomModifier', '=', 'source + 3'
+    );
+    Pathfinder.featureSpells(rules,
+      'Charming Smile', 'CharmingSmile', 'wisdom', pathLevel,
+      '10+casterLevels.CharmingSmile//2+wisdomModifier', ['Charm Person']
     );
 
   } else if(name == 'Community Domain') {
@@ -7450,6 +7472,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'features.Touch Of Glory', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+    Pathfinder.featureSpells(rules,
+      'Divine Presence', 'DivinePresence', 'wisdom', pathLevel,
+      '10+casterLevels.DivinePresence//2+wisdomModifier', ['Sanctuary']
+    );
 
   } else if(name == 'Good Domain') {
 
@@ -7481,6 +7507,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.loreKeeper',
       pathLevel, '=', 'source + 15',
       'wisdomModifier', '+', null
+    );
+    Pathfinder.featureSpells(rules,
+      'Remote Viewing', 'RemoteViewing', 'wisdom', pathLevel,
+      '10+casterLevels.RemoteViewing//2+wisdomModifier',
+      ['Clairaudience/Clairvoyance']
     );
 
   } else if(name == 'Law Domain') {
@@ -7524,6 +7555,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       'features.Vision Of Madness', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
+    Pathfinder.featureSpells(rules,
+      'Aura Of Madness', 'AuraOfMadness', 'wisdom', pathLevel,
+      '10+casterLevels.AuraOfMadness//2+wisdomModifier', ['Confusion']
+    );
 
   } else if(name == 'Magic Domain') {
 
@@ -7539,14 +7574,14 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
     Pathfinder.featureSpells(rules,
-      'Dispelling Touch', 'DispellingTouch', 'wisdom', pathLevel, '',
-      ['Dispel Magic']
+      'Dispelling Touch', 'DispellingTouch', 'wisdom', pathLevel,
+      '10+casterLevels.DispellingTouch//2+wisdomModifier', ['Dispel Magic']
     );
 
   } else if(name == 'Nobility Domain') {
 
     rules.defineRule
-      ('features.Leadership', 'featureNotes.nobleLeadership', '=', '1');
+      ('features.Leadership', 'featureNotes.leadership(Nobility)', '=', '1');
     rules.defineRule('magicNotes.inspiringWord',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
@@ -7609,11 +7644,11 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
     rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
     rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.strengthSurgeTouch',
+    rules.defineRule('magicNotes.strengthSurge(Cleric)',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('magicNotes.strengthSurgeTouch.1',
-      'features.Strength Surge Touch', '?', null,
+    rules.defineRule('magicNotes.strengthSurge(Cleric).1',
+      'features.Strength Surge (Cleric)', '?', null,
       'wisdomModifier', '=', 'source + 3'
     );
 
@@ -7630,6 +7665,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
+    Pathfinder.featureSpells(rules,
+      'Nimbus Of Light', 'NimbusOfLight', 'wisdom', pathLevel,
+      '10+casterLevels.NimbusOfLight//2+wisdomModifier', ['Daylight']
+    );
 
   } else if(name == 'Trickery Domain') {
 
@@ -7649,8 +7688,12 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
     Pathfinder.featureSpells(rules,
+      'Copycat', 'Copycat', 'wisdom', pathLevel,
+      '10+casterLevels.Copycat//2+wisdomModifier', ['Mirror Image']
+    );
+    Pathfinder.featureSpells(rules,
       "Master's Illusion", 'MastersIllusion', 'wisdom', pathLevel,
-      '10 + levels.Cleric // 2 + wisdomModifier', ['Veil']
+      '10+casterLevels.MastersIllusion//2+wisdomModifier', ['Veil']
     );
 
   } else if(name == 'War Domain') {
@@ -7681,6 +7724,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
+    Pathfinder.featureSpells(rules,
+      'Lightning Lord', 'LightningLord', 'wisdom', pathLevel,
+      '10+casterLevels.LightningLord//2+wisdomModifier', ['Call Lightning']
+    );
 
   }
 
