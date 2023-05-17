@@ -1366,6 +1366,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Ranged touch blinds or dazzles target for 1 rd %V/dy"',
   'Blindsense':'Section=feature Note="R%V\' May detect unseen creatures"',
+  'Blindsight':
+    'Section=feature Note="R%V\' Can maneuver and fight w/out vision"',
   'Bloodline Aberrant':'Section=magic Note="Polymorph spells last 50% longer"',
   'Bloodline Abyssal':'Section=magic Note="Summoned creatures gain DR %V/good"',
   'Bloodline Arcane':'Section=magic Note="+1 metamagicked spell DC"',
@@ -6962,6 +6964,8 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('combatNotes.unusualAnatomy', pathLevel, '=', 'source>=13 ? 50 : 25');
     rules.defineRule
       ('damageReduction.-', 'combatNotes.aberrantForm', '^=', '5');
+    rules.defineRule
+      ('featureNotes.blindsight', 'featureNotes.aberrantForm', '^=', '60');
     rules.defineRule
       ('magicNotes.acidicRay', pathLevel, '=', '1 + Math.floor(source / 2)');
     rules.defineRule('magicNotes.acidicRay.1',
