@@ -1256,7 +1256,7 @@ PFAPG.FEATURES = {
     'Note="May make swift action trip attempt w/out provoking AOO after crit w/attack spell"',
   'Clouded Vision':
     'Section=feature ' +
-    'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and Darkvision%{mysteryLevel>=10 ? \\", 30\' Blindsense\\" : \'\'}%{mysteryLevel>=15 ? \\", 15\' Blindsight\\" : \'\'}"',
+    'Note="Has %{mysteryLevel>=5? 60 : 30}\' vision and Darkvision%1%2"',
   'Coat Of Many Stars':
     'Section=combat ' +
     'Note="Conjured coat gives +%{(mysteryLevel+5)//4*2>?4} AC%{mysteryLevel>=13 ? \', DR 5/slashing\' : \'\'} for %{mysteryLevel} hr/dy"',
@@ -1623,8 +1623,7 @@ PFAPG.FEATURES = {
   'Blindsense Evolution':
     'Section=companion Note="R30\' May detect unseen creatures"',
   'Blindsight Evolution':
-    'Section=companion ' +
-    'Note="R30\' Unaffected by darkness or foe invisibility or concealment"',
+    'Section=companion Note="R30\' Can maneuver and fight w/out vision"',
   'Bond Senses':
     'Section=feature ' +
     'Note="May perceive via eidolon senses on same plane for %{levels.Summoner} rd/dy"',
@@ -1898,10 +1897,10 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Mount gains +2 Strength during rage",' +
       '"Has Animal Companion feature w/mount"',
-  'Blindsight':'Section=feature Note="Can maneuver and fight w/out vision"',
+  // Blindsight as Pathfinder.js
   'Boasting Taunt':
     'Section=combat ' +
-    'Note="Successful Intimidate during rage inflicts shaken on target until attacks self"',
+    'Note="Successful Intimidate during rage (+2 per alcoholic drink taken) inflicts shaken on target until attacks self"',
   'Brawler':'Section=combat Note="%V during rage"',
   'Chaos Totem':
     'Section=combat,skill ' +
@@ -2003,7 +2002,7 @@ PFAPG.FEATURES = {
       '"DR %V/- vs. nonlethal"',
   'Keen Senses (Barbarian)':
     'Section=feature ' +
-    'Note="Has Low-Light Vision (3x distance if already present)%1"',
+    'Note="Has Low-Light Vision (3x distance if already present)%1%2%3%4"',
   'Knockdown':
     'Section=combat ' +
     'Note="May make trip attack that inflicts %{strengthModifier} HP and knocks prone w/out provoking AOO 1/rage"',
@@ -2307,7 +2306,7 @@ PFAPG.FEATURES = {
     'Note="May suffer dbl damage from fire to gain immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
   'Cloud Of Smoke':
     'Section=magic ' +
-    'Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
+    'Note="R30\' 5\' radius inflicts -2 attack and Perception while in radius + 1 rd and gives concealment %{wisdomModifier+3}/dy"',
   'Command':
     'Section=magic ' +
     'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) 1/target/dy %{wisdomModifier+3}/dy"',
@@ -3493,9 +3492,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Touched weapon gains +2 attack and +2d6 HP damage vs. earth, ooze, stone, and metal creatures for 1 min %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Deep One':
-    'Section=feature,magic,save ' +
+    'Section=feature,feature,magic,save ' +
     'Note=' +
-      '"Has 60\' Blindsense/Has 120\' Blindsight and Evasion feature underwater",' +
+      '"Has 60\' Blindsense",' +
+      '"Has 120\' Blindsight and Evasion feature underwater",' +
       '"Has continuous <i>Freedom Of Movement</i> effects",' +
       '"Has DR 10/piercing, cold resistance 20, and immunity to water pressure damage"',
   'Dehydrating Touch':
@@ -6424,7 +6424,7 @@ PFAPG.SPELLS = {
   "Fool's Forbiddance":
     'School=Abjuration ' +
     'Level=B6 ' +
-    'Description="10\' radius inflicts confusion on foes (Will staggered) while in radius +1 rd for conc"',
+    'Description="10\' radius inflicts confusion on foes (Will staggered) while in radius + 1 rd for conc"',
   'Forced Repentance':
     'School=Enchantment ' +
     'Level=Inquisitor4,P4 ' +
@@ -8791,6 +8791,20 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.maneuverMastery', '+', null,
       'featureNotes.weaponMastery(Oracle)', '+', null
     );
+    rules.defineRule('featureNotes.blindsense',
+      'featureNote.cloudedVision.1', '^=', 'source.includes("30") ? 30 : null'
+    );
+    rules.defineRule('featureNotes.blindsight',
+      'featureNote.cloudedVision.2', '^=', 'source.includes("15") ? 15 : null'
+    );
+    rules.defineRule('featureNotes.cloudedVision.1',
+      'features.Clouded Vision', '?', null,
+      'mysteryLevel', '=', 'source>=10 ? ", 30\' Blindsense" : ""'
+    );
+    rules.defineRule('featureNotes.cloudedVision.2',
+      'features.Clouded Vision', '?', null,
+      'mysteryLevel', '=', 'source>=15 ? ", 15\' Blindsight" : ""'
+    );
     rules.defineRule('featureNotes.deaf.1',
       'features.Deaf', '?', null,
       'mysteryLevel', '=', 'source<10 ? \'\' : source<15 ? "/Has Scent feature" : "/Has Scent feature and 30\' Tremorsense"'
@@ -8815,6 +8829,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
     rules.defineRule('features.Armor Proficiency (Heavy)',
       'combatNotes.skillAtArms', '=', '1'
+    );
+    rules.defineRule('features.Blindsense',
+      'featureNotes.cloudedVision.1', '=', 'source.includes("Blindsense") ? 1 : null'
+    );
+    rules.defineRule('features.Blindsight',
+      'featureNotes.cloudedVision.2', '=', 'source.includes("Blindsight") ? 1 : null'
     );
     rules.defineRule('features.Diehard',
       'featureNotes.resiliency(Oracle)', '=', 'source.includes("Diehard") ? 1 : null'
@@ -9444,17 +9464,35 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.blindsense',
       'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
     );
+    rules.defineRule('featureNotes.blindsense',
+      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("30") ? 30 : null'
+    );
+    rules.defineRule('featureNotes.blindsight',
+      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("30") ? 30 : null'
+    );
     rules.defineRule('featureNotes.keenSenses(Barbarian).1',
       'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', '(source>=10 ? ", +60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", 30\' Blindsense" : "") + (source>=19 ? ", 30\' Blindsight" : "")'
+      classLevel, '=', 'source>=10 ? ", +60\' Darkvision" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).2',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=13 ? ", Scent" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).3',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=16 ? ", 30\' Blindsense" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).4',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=19 ? ", 30\' Blindsight" : ""'
     );
     rules.defineRule
       ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
     rules.defineRule('features.Blindsense',
-      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Blindsense") ? 1 : null'
+      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("Blindsense") ? 1 : null'
     );
     rules.defineRule('features.Blindsight',
-      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Blindsight") ? 1 : null'
+      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("Blindsight") ? 1 : null'
     );
     rules.defineRule('features.Darkvision',
       'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Darkvision") ? 1 : null'
@@ -9463,7 +9501,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.keenSenses(Barbarian)', '=', '1'
     );
     rules.defineRule('features.Scent',
-      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Scent") ? 1 : null'
+      'featureNotes.keenSenses(Barbarian).2', '=', 'source.includes("Scent") ? 1 : null'
     );
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
@@ -11858,10 +11896,13 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
     rules.defineRule
       ('features.Channel Energy', 'featureNotes.channel', '=', '1');
+    rules.defineRule
+      ('featureNotes.blindsight', 'featureNotes.lifesense', '^=', '30');
     rules.defineRule('featureNotes.channel.1',
       'features.Channel', '?', null,
       'mysteryLevel', '=', null
     );
+    rules.defineRule('features.Blindsight', 'featureNotes.lifesense', '=', '1');
     // Oracle channeling gives two fewer uses/dy than Cleric
     rules.defineRule
       ('magicNotes.channelEnergy', 'featureNotes.channel', '+', '-2');
@@ -11979,7 +12020,9 @@ PFAPG.pathRulesExtra = function(rules, name) {
       ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
     rules.defineRule
       ('featureNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
-    rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
+    rules.defineRule
+      ('featureNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
+    rules.defineRule('features.Blindsense', 'featureNotes.deepOne', '=', '1');
     rules.defineRule
       ('saveNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
   } else if (name == 'Bloodline Boreal') {
