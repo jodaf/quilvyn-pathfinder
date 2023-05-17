@@ -1892,14 +1892,17 @@ PFAPG.FEATURES = {
   'Beast Totem':'Section=combat Note="+%{ragePowerLevel//4+1} AC during rage"',
   'Battle Scavenger':
     'Section=combat ' +
-    'Note="No attack penalty and +%{(levels.Barbarian-3)//3} damage w/improvised and broken weapons"',
-  'Bestial Mount':'Section=feature Note="Has Animal Companion feature"',
+    'Note="No attack penalty and +%{levels.Barbarian//3} damage w/improvised and broken weapons"',
+  'Bestial Mount':
+    'Section=companion,feature ' +
+    'Note=' +
+      '"Mount gains +2 Strength during rage",' +
+      '"Has Animal Companion feature w/mount"',
   'Blindsight':'Section=feature Note="Can maneuver and fight w/out vision"',
   'Boasting Taunt':
     'Section=combat ' +
-    'Note="Successful Intimidate inflicts shaken on target until attacks self"',
-  'Brawler':
-    'Section=combat Note="Has Improved Unarmed Strike feature during rage"',
+    'Note="Successful Intimidate during rage inflicts shaken on target until attacks self"',
+  'Brawler':'Section=combat Note="%V during rage"',
   'Chaos Totem':
     'Section=combat,skill ' +
     'Note=' +
@@ -1907,13 +1910,15 @@ PFAPG.FEATURES = {
       '"+4 Escape Artist during rage"',
   'Come And Get Me':
     'Section=combat ' +
-    'Note="May trade +4 foe attack and damage for AOO before every foe attack during rage"',
+    'Note="May suffer +4 foe attack and damage to gain AOO before every foe attack during rage"',
   'Destructive':
     'Section=combat ' +
     'Note="+%{levels.Barbarian//2>?1} damage vs. objects and with sunder"',
+  'Disruptive (Barbarian)':
+    'Section=combat Note="+4 foe defensive spell DC during rage"',
   'Elemental Fury':
     'Section=combat ' +
-    'Note="Taking %{levels.Barbarian} HP energy damage adds %{levels.Barbarian//3} to daily rage rds"',
+    'Note="Suffering %{levels.Barbarian} HP energy damage increases daily rage rd by %{levels.Barbarian//3}"',
   'Elemental Rage':
     'Section=combat Note="Attacks inflict +1d6 HP energy during rage"',
   'Energy Absorption (Rage)':
@@ -1921,20 +1926,20 @@ PFAPG.FEATURES = {
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
   'Energy Eruption':
     'Section=combat ' +
-    'Note="May convert energy damage to self to R60\' line or R30\' cone breath attack of equal HP (DC %{10+ragePowerLevel//2+constitutionModifier} half) 1/rage"',
+    'Note="May convert energy damage to self to R60\' line or R30\' cone breath attack of equal HP (DC %{10+ragePowerLevel//2+constitutionModifier} Ref half) 1/rage"',
   'Energy Resistance':
     'Section=save ' +
-    'Note="Resistance %{ragePowerLevel//2>?1} to chosen energy during rage"',
+    'Note="Resistance %{ragePowerLevel//2>?1} to %V chosen energy during rage"',
   'Extreme Endurance':
     'Section=save ' +
-    'Note="Inured to choice of hot or cold climate/Resistance %{(levels.Barbarian-3)//3} to choice of fire or cold"',
-  'Fast Rider':'Section=feature Note="+10\' Mount speed"',
+    'Note="Comfortable to choice of -50F or 140F/Resistance %{(levels.Barbarian-3)//3} to choice of cold or fire"',
+  'Fast Rider':'Section=companion Note="Mount gains +10\' speed"',
   'Ferocious Mount':
     'Section=combat ' +
-    'Note="May give mount rage benefits when adjacent or mounted during rage"',
+    'Note="May give mount rage benefits when adjacent or mounted during rage; uses equal amount of daily rage rd"',
   'Ferocious Trample':
     'Section=combat ' +
-    'Note="Mount trample inflicts 1d8+Strength Modifier (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Str Ref half) during rage"',
+    'Note="Mount trample inflicts 1d8+1.5xStrength (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Strength Ref half) during rage"',
   'Fiend Totem':
     'Section=combat ' +
     'Note="Successful foe melee attack inflicts 1d6 HP on attacker during rage"',
@@ -1948,10 +1953,10 @@ PFAPG.FEATURES = {
     'Section=combat,combat ' +
     'Note=' +
       '"Increased Lesser Beast Totem effects",' +
-      '"May take full-attack action after a charge"',
+      '"May take full-attack action after a charge during rage"',
   'Greater Brawler':
     'Section=combat ' +
-    'Note="Has Two-Weapon Fighting feature for Unarmed Strike during rage"',
+    'Note="Penalty for Unarmed attack w/both hands reduced by 2 on-hand and by 6 off-hand during rage"',
   'Greater Chaos Totem':
     'Section=combat ' +
     'Note="DR %{ragePowerLevel//2}/lawful and weapons are chaotic during rage"',
@@ -1959,7 +1964,7 @@ PFAPG.FEATURES = {
    'Section=combat Note="Crit inflicts +1d10 HP energy or better during rage"',
   'Greater Energy Resistance':
     'Section=combat ' +
-    'Note="May reduce damage from chosen energy attack by half 1/rage"',
+    'Note="May halve damage from chosen energy attack before applying Energy Resistance 1/rage"',
   'Greater Ferocious Mount':
     'Section=combat ' +
     'Note="May give mount rage power benefits when mounted during rage"',
@@ -1968,23 +1973,21 @@ PFAPG.FEATURES = {
     'Note="Mount may trample targets of same size and overrun during rage"',
   'Greater Fiend Totem':
     'Section=combat ' +
-    'Note="Adjacent good creatures suffer 2d6 HP slashing and shaken and neutral creatures shaken during range"',
-  'Greater Hurling':
-    'Section=combat Note="May hurl +30\' or +2 size objects during rage"',
+    'Note="Adjacent good creatures suffer 2d6 HP slashing and shaken and neutral creatures shaken during rage"',
+  'Greater Hurling':'Section=combat Note="Increased Lesser Hurling effects"',
   'Greater Spirit Totem':
     'Section=combat ' +
-    'Note="Spirits inflict 1d8 HP negative energy on adjacent foes, may attack 15\' away for 1d6 HP during rage"',
+    'Note="Spirits inflict 1d8 HP negative energy on adjacent foes and may make +%{baseAttack+charismaModifier} attack 15\' away that inflicts 1d6 HP during rage"',
   'Ground Breaker':
     'Section=combat ' +
-    'Note="Successful attack on floor inflicts knocked prone on adjacent (DC 15 Ref neg) and creates difficult terrain 1/rage"',
+    'Note="Successful attack on floor inflicts knocked prone on adjacent creatures (DC 15 Ref neg) and creates difficult terrain 1/rage"',
   'Guarded Life':
     'Section=combat ' +
-    'Note="%{ragePowerLevel} HP damage converted to nonlethal when taken to negative HP and stabilize automatically during rage"',
-  'Hurling':
-    'Section=combat Note="May hurl +20\' or +1 size objects during rage"',
+    'Note="Stabilizes automatically and converts %{ragePowerLevel} HP damage to nonlethal when taken to negative HP during rage"',
+  'Hurling':'Section=combat Note="Increased Lesser Hurling effects"',
   'Hurling Charge':
     'Section=combat ' +
-    'Note="May make +2 thrown attack while charging during rage"',
+    'Note="May make +2 thrown attack while making 20\'+ charge attack during rage"',
   'Improved Savage Grapple':
     'Section=combat,combat ' +
     'Note=' +
@@ -1992,21 +1995,26 @@ PFAPG.FEATURES = {
       '"Treated as one size larger for grappling and swallowing"',
   'Inspire Ferocity':
     'Section=combat ' +
-    'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd"',
-  'Invulnerability':'Section=combat Note="DR %V/-, dbl nonlethal"',
+    'Note="R30\' May share Reckless Abandon ability with allies for %{charismaModifier} rd during rage"',
+  'Invulnerability':
+    'Section=combat,combat ' +
+    'Note=' +
+      '"DR %V/-",' +
+      '"DR %V/- vs. nonlethal"',
   'Keen Senses (Barbarian)':
-    'Section=feature Note="Has Low-Light Vision%1"',
+    'Section=feature ' +
+    'Note="Has Low-Light Vision (3x distance if already present)%1"',
   'Knockdown':
     'Section=combat ' +
     'Note="May make trip attack that inflicts %{strengthModifier} HP and knocks prone w/out provoking AOO 1/rage"',
   'Lesser Beast Totem':
     'Section=combat ' +
-    'Note="Two claw attacks inflict 1d%V+%{strengthModifier}x%1@20 HP during rage"',
+    'Note="Two claw attacks inflict 1d%V+%{strengthModifier} x%1@20 HP slashing during rage"',
   'Lesser Chaos Totem':
     'Section=combat,save ' +
     'Note=' +
       '"+%V AC vs. lawful foe during rage",' +
-      '"+%V save vs. confusion, insanity, polymorph, and lawful effects during rage"',
+      '"+%V vs. confusion, insanity, polymorph, and lawful effects during rage"',
   'Lesser Elemental Rage':
     'Section=combat Note="Attacks inflict +1d6 HP energy for 1 rd 1/rage"',
   'Lesser Fiend Totem':
@@ -2017,38 +2025,38 @@ PFAPG.FEATURES = {
     'Note="R%V\' Ranged touched using thrown %1 object inflicts 1d6+%{strengthModifier} HP or more (DC %{10+levels.Barbarian//2+strengthModifier} Ref half) during rage"',
   'Lesser Spirit Totem':
     'Section=combat ' +
-    'Note="Spirit attack inflicts 1d4+%{charismaModifier} HP negative energy 1/rd during rage"',
+    'Note="Spirits\' +%{baseAttack+charismaModifier} attack inflicts 1d4+%{charismaModifier} HP negative energy 1/rd during rage"',
   'Liquid Courage':
     'Section=save ' +
-    'Note="Alcohol gives up to +%{ragePowerLevel//4} save vs. mind-affecting effects during rage"',
+    'Note="Alcohol gives +1 per drink (max +%{ragePowerLevel//4}) vs. mind-affecting effects during rage"',
   'Naked Courage':
     'Section=combat,save ' +
     'Note=' +
       '"+%V AC in no armor",' +
-      '"+%{(levels.Barbarian+3)//6} save vs. fear in no armor"',
+      '"+%{(levels.Barbarian+3)//6} vs. fear in no armor"',
   'Natural Toughness':'Section=combat Note="+%V AC in no armor"',
   'Overbearing Advance':
     'Section=combat ' +
     'Note="Successful overrun inflicts %{strengthModifier} HP during rage"',
   'Overbearing Onslaught':
-    'Section=combat Note="May make additional -2 CMB overruns during rage"',
+    'Section=combat Note="May make additional overruns during rage, suffering -2 CMB for each"',
   'Pit Fighter':
     'Section=combat ' +
     'Note="+%{armor==\'None\' ? 2 : 1} CMB or CMD on choice of %{levels.Barbarian//3} combat maneuvers"',
   'Raging Drunk':
     'Section=combat ' +
-    'Note="May drink alcohol or potion w/out provoking AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated after rage"',
+    'Note="May drink alcohol or potion w/out provoking AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated for 1 rd after rage (Internal Fortitude neg)"',
   'Reckless Abandon':
     'Section=combat ' +
-    'Note="May trade up to -%{ragePowerLevel//4+1} AC for equal attack bonus during rage"',
+    'Note="May suffer up to -%{ragePowerLevel//4+1} AC to gain equal attack bonus during rage"',
   'Roaring Drunk':
     'Section=save,skill ' +
     'Note=' +
-      '"Alcohol gives up to +%{ragePowerLevel//4} vs. fear during rage",' +
-      '"Alcohol gives up to +%{ragePowerLevel//4} Intimidate during rage"',
+      '"Alcohol gives +1 per drink (max +%{ragePowerLevel//4}) vs. fear during rage",' +
+      '"Alcohol gives +1 per drink (max +%{ragePowerLevel//4}) Intimidate during rage"',
   'Savage Grapple':
    'Section=combat ' +
-   'Note="%V grappled penalties/Always has AOO vs. grapple; hit gives +2 vs. grapple"',
+   'Note="%V grappled penalties/May always take AOO vs. grapple; hit gives +2 CMD vs. grapple"',
   'Sixth Sense':
     'Section=combat,combat ' +
     'Note=' +
@@ -2056,18 +2064,22 @@ PFAPG.FEATURES = {
       '"+%V AC during surprise rd"',
   'Skilled Thrower':
     'Section=combat Note="+10\' range for thrown weapons and objects"',
-  'Smasher':'Section=combat Note="Attack ignores object hardness 1/rage"',
+  'Smasher':'Section=combat Note="May ignore object hardness on attack 1/rage"',
+  'Spellbreaker (Barbarian)':
+    'Section=combat ' +
+    'Note="May take AOO after foe failed defensive casting during rage"',
   'Spirit Steed':
     'Section=combat ' +
-    'Note="Mount gains DR %{ragePowerLevel//2}/magic and magic natural weapons during rage"',
+    'Note="Mount gains magic natural weapons and DR %{ragePowerLevel//2}/magic during rage"',
   'Spirit Totem':
     'Section=combat ' +
     'Note="Spirits give 20% miss chance vs. ranged and non-adjacent attacks during rage"',
   'Staggering Drunk':
     'Section=combat ' +
-    'Note="Alcohol gives up to +%{ragePowerLevel//4} AC vs. AOO during rage"',
+    'Note="Alcohol gives +1 per drink (max +%{ragePowerLevel//4}) AC during rage"',
   'Witch Hunter':
-    'Section=combat Note="+%{ragePowerLevel//4+1} damage vs. spell users"',
+    'Section=combat ' +
+    'Note="+%{ragePowerLevel//4+1} damage vs. spell users during rage"',
 
   // Bard
   'Arcane Armor':
@@ -2280,25 +2292,25 @@ PFAPG.FEATURES = {
     'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
   'Aura Of Repetition':
     'Section=combat ' +
-    'Note="R30\' Forces foes to repeat prior action (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="R30\' May force foes to repeat prior action (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
   'Bestow Resolve':
     'Section=magic ' +
-    'Note="R20\' Gives allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
+    'Note="R20\' May give allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
   'Binding Ties':
     'Section=magic ' +
     'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
   'Blinding Flash':
     'Section=magic ' +
-    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg), dazzles for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg) and dazzles all creatures for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Body Of Ice':
     'Section=combat ' +
-    'Note="May trade dbl damage from fire for immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
+    'Note="May suffer dbl damage from fire to gain immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
   'Cloud Of Smoke':
     'Section=magic ' +
     'Note="R30\' 5\' radius inflicts -2 attack and Perception and gives concealment %{wisdomModifier+3}/dy"',
   'Command':
     'Section=magic ' +
-    'Note="May use <i>Command</i> effects %{wisdomModifier+3}/dy"',
+    'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) 1/target/dy %{wisdomModifier+3}/dy"',
   "Day's Resurgence":
     'Section=magic ' +
     'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
@@ -2339,22 +2351,22 @@ PFAPG.FEATURES = {
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
   'Fury Of The Abyss':
     'Section=combat ' +
-    'Note="May trade -2 AC for +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="May suffer -2 AC to gain +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
   'Gale Aura':
     'Section=magic ' +
-    'Note="30\' radius inflicts difficult terrain and no 5\' step %{levels.Cleric} rd/dy"',
+    'Note="30\' radius inflicts difficult terrain when moving toward self and no 5\' step %{levels.Cleric} rd/dy"',
   'Gift Of Life':
     'Section=magic ' +
     'Note="Touched corpse dead up to 1 min regains life w/%{levels.Cleric//2} HP for %{levels.Cleric} rd %{(levels.Cleric-4)//4}/dy"',
   'Guarded Hearth':
     'Section=magic ' +
-    'Note="10 min ritual gives targets in %{levels.Cleric*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
+    'Note="10 min ritual gives targets in %{levels.Cleric//2*5}\' radius notice of intruders and +%{wisdomModifier} attack and saves for %{levels.Cleric} hr 1/dy"',
   "Hell's Corruption":
     'Section=combat ' +
     'Note="Touch inflicts -2 saves and worse of two rolls on opposed skill checks for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Honor Bound':
     'Section=magic ' +
-    'Note="Touch gives additional save vs. enchantment %{wisdomModifier+3}/dy"',
+    'Note="Touch gives additional saves vs. existing charm and compulsion effects %{wisdomModifier+3}/dy"',
   'Insane Focus':
     'Section=magic ' +
     'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) for 1 min %{wisdomModifier+3}/dy"',
@@ -2372,7 +2384,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
   'Metal Fist':
     'Section=combat ' +
-    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP w/out provoking AOO for 1 rd %{wisdomModifier+3}/dy"',
+    'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP, ignoring hardness 10, w/out provoking AOO for 1 rd %{wisdomModifier+3}/dy"',
   'Night Hunter':
     'Section=feature ' +
     'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -2389,7 +2401,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use <i>Protection From Evil</i> effects on allies %{levels.Cleric} rd/dy"',
   'Purifying Touch':
     'Section=magic ' +
-    'Note="Touch gives additional save vs. effects %{(levels.Cleric-2)//6}/dy"',
+    'Note="Touch gives additional saves vs. existing effects %{(levels.Cleric-2)//6}/dy"',
   'Rage (Cleric)':
     'Section=combat ' +
     'Note="+4 Str, +4 Con, +2 Will, -2 AC and %1 powers %{levels.Cleric} rd/dy"',
@@ -2466,19 +2478,19 @@ PFAPG.FEATURES = {
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in aquatic terrain",' +
-      '"Cannot be tracked in aquatic environments",' +
+      '"Cannot be tracked in aquatic terrain",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in aquatic terrain"',
   'Aquatic Druid':
     'Section=skill ' +
-    'Note="Wild Empathy works only with swimming and water creatures"',
+    'Note="Wild Empathy works only with swimming and water creatures; may influence those w/intelligence below 4"',
   'Arctic Endurance':
-    'Section=save Note="Comfortable down to -50F; immune to dazzled"',
+    'Section=save Note="Comfortable down to -50F/Immune to dazzled"',
   'Arctic Native':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+%{levels.Druid//2} Initiative in cold terrain",' +
-      '"Cannot be tracked in cold environments",' +
-      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in cold terrain"',
+      '"+%{levels.Druid//2} Initiative in cold or icy terrain",' +
+      '"Cannot be tracked in cold or icy terrain",' +
+      '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in cold or icy terrain"',
   'Bear Totem':
     'Section=feature ' +
     'Note="Must choose Animal Companion (bear) or one of Animal, Earth, Protection, or Strength Domains for Nature Bond"',
@@ -2494,30 +2506,30 @@ PFAPG.FEATURES = {
     'Section=feature,magic,skill ' +
     'Note=' +
       '"May choose Darkness Domain, but not Air Domain or Weather Domain, for Nature Bond",' +
-      '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into ooze\':\'\'}",' +
+      '"Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into ooze w/immunity to poison, sneak attack, and crit\':\'\'}",' +
       '"-4 Wild Empathy (oozes)"',
   'Cavesense':
     'Section=skill ' +
     'Note="Knowledge (Dungeoneering) is a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
   'Deep Diver':
     'Section=combat ' +
-    'Note="DR %{levels.Druid//2}/- vs. grappling spells, crushing spells, slashing, and piercing; immune to deep water pressure"',
+    'Note="DR %{levels.Druid//2}/slashing or piercing vs. grappling and crushing/Immune to deep water pressure"',
   'Desert Druid':
     'Section=magic ' +
     'Note="Cannot Wild Shape into plant creature%{levels.Druid>=10 ? \'; May Wild Shape into vermin\':\'\'}"',
   'Desert Endurance':
     'Section=feature ' +
-    'Note="Comfortable to 140F; reduced need for food and drink"',
+    'Note="Comfortable to 140F and has reduced need for food and drink"',
   'Desert Native':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in desert terrain",' +
-      '"Cannot be tracked in desert environments",' +
+      '"Cannot be tracked in desert terrain",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in desert terrain"',
   'Dunemeld':
     'Section=magic,skill ' +
     'Note=' +
-      '"May assume insubstantial sand form",' +
+      '"May assume insubstantial sand form w/10\' land and burrow speed",' +
       '"Transformation gives +%{levels.Druid} Stealth in desert terrain"',
   'Eagle Totem':
     'Section=feature ' +
@@ -2536,7 +2548,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in jungle terrain",' +
-      '"Cannot be tracked in jungle environments",' +
+      '"Cannot be tracked in jungle terrain",' +
       '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in jungle terrain"',
   'Lightfoot':'Section=feature Note="Undetectable via tremorsense"',
   'Lion Totem':
@@ -2549,12 +2561,12 @@ PFAPG.FEATURES = {
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in swamp terrain",' +
-      '"Cannot be tracked in swamp environments",' +
+      '"Cannot be tracked in swamp terrain",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, Survival, and Swim in swamp terrain"',
   'Mental Strength':'Section=save Note="Immune to charm and compulsion"',
   'Miasma':
     'Section=combat ' +
-    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd"',
+    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd 1/creature/dy; animals, feys, and plants instead nauseated for 1 rd, then sickened for 1 min"',
   'Mountain Druid':
     'Section=magic ' +
     'Note="Cannot Wild Shape into plant creature%{levels.Druid>=12 ? \'; May Wild Shape into giant\':\'\'}"',
@@ -2562,31 +2574,33 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"+4 CMD vs. forced movement attempts",' +
-      '"Immune to petrified, +4 vs. forced movement"',
+      '"Immune to petrified/+4 vs. forced movement"',
   'Mountain Stone':
     'Section=magic Note="May transform into stone outcrop at will"',
   'Mountaineer':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in mountainous terrain",' +
-      '"Cannot be tracked in mountainous environments",' +
+      '"Cannot be tracked in mountainous terrain",' +
       '"+%{levels.Druid//2} Climb, Knowledge (Geography), Perception, Stealth, and Survival in mountainous terrain"',
   'Natural Swimmer':'Section=ability Note="%V\' Swim speed"',
   'Plaguebearer':
     'Section=combat ' +
-    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg)"',
+    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg and immune for 1 dy)"',
   'Plains Traveler':
     'Section=combat,feature,skill ' +
     'Note=' +
       '"+%{levels.Druid//2} Initiative in plains terrain",' +
-      '"Cannot be tracked in plains environments",' +
+      '"Cannot be tracked in plains terrain",' +
       '"+%{levels.Druid//2} Knowledge (Geography), Perception, Stealth, and Survival in plains terrain"',
   'Pond Scum':
     'Section=combat,save ' +
     'Note=' +
       '"DR %{levels.Druid//2}/- vs. swarms",' +
       '"+4 vs. disease and abilities of monstrous humanoids"',
-  "Resist Ocean's Fury":'Section=save Note="+4 vs. water spells and creatures"',
+  "Resist Ocean's Fury":
+    'Section=save ' +
+    'Note="+4 vs. water spells and abilities of aquatic and water creatures"',
   'Resist Subterranean Corruption':
     'Section=save Note="+2 vs. abilities of oozes and aberrations"',
   'Resist Temptation':'Section=save Note="+2 vs. divinations and enchantments"',
@@ -2601,7 +2615,7 @@ PFAPG.FEATURES = {
   'Savanna Ambush':
     'Section=combat,skill ' +
     'Note=' +
-      '"Self gains concealment when prone in natural surroundings and may stand from prone during surprise round as immediate action",' +
+      '"Self gains concealment when prone in natural surroundings and may stand from prone during surprise round as an immediate action",' +
       '"No Stealth penalty when prone, -5 when crawling"',
   'Seaborn':
     'Section=ability,feature ' +
@@ -2613,7 +2627,7 @@ PFAPG.FEATURES = {
     'Note="Must choose Animal Companion (snake) or one of Animal, Charm, Trickery, or Water Domains for Nature Bond"',
   'Shaded Vision':
     'Section=save ' +
-    'Note="+2 vs. gaze, figments, and patterns; immune to blinded and dazzled"',
+    'Note="+2 vs. gaze, figments, and patterns/Immune to blinded and dazzled"',
   'Slippery':
     'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
   'Snowcaster':
@@ -2652,10 +2666,10 @@ PFAPG.FEATURES = {
     'Note="Self may use <i>Speak With Animals</i> w/birds at will and gains one of: 30\' fly speed; Low-Light Vision and +4 Perception; 1d4 HP bite and 1d4 HP talons for %{levels.Druid} min/dy"',
   'Totem Transformation (Lion)':
     'Section=magic ' +
-    'Note="Self may use <i>Speak With Animals</i> w/felines at will and gains one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, Rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/felines at will and gains one of: +20\' speed; Low-Light Vision and Scent; 1d4 HP bite, 1d4 HP claws, rake, and +2 grapple CMB for %{levels.Druid} min/dy"',
   'Totem Transformation (Serpent)':
     'Section=magic ' +
-    'Note="Self may use <i>Speak With Animals</i> w/reptiles at will and gains one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
+    'Note="Self may use <i>Speak With Animals</i> w/reptiles at will and gains one of: 20\' climb and 20\' swim; +2 AC; Low-Light Vision and Scent; +2 grapple CMB and 1d4 HP bite plus 1 Con damage poison for %{levels.Druid} min/dy"',
   'Totem Transformation (Wolf)':
     'Section=magic ' +
     'Note="Self may use <i>Speak With Animals</i> w/canines at will and gains one of: +20\' speed; Low-Light Vision, Scent, and +4 Survival (tracking via scent); 1d4 HP bite with trip and +2 trip CMB for %{levels.Druid} min/dy"',
@@ -3287,12 +3301,13 @@ PFAPG.FEATURES = {
       '"+%{levels.Rogue//3} vs. fear",' +
       '"+%V Acrobatics"',
   'Deadly Cocktail':
-    'Section=combat Note="May apply 2 different poisons or 2 doses of 1 poison (+2 save DC, +50% frequency) to a weapon at once"',
+    'Section=combat ' +
+    'Note="May apply 2 different poisons or 2 doses of 1 poison (+2 save DC, +50% frequency) to a weapon at once"',
   'Deadly Range':
     'Section=combat Note="+%{levels.Rogue//3*10}\' ranged sneak attack"',
   'Deadly Sneak':
     'Section=combat ' +
-    'Note="During full-attack action, may trade -2 attack for treating sneak attack 1s and 2s as 3s"',
+    'Note="During full-attack action, may suffer -2 attack to gain treating sneak attack 1s and 2s as 3s"',
   'Distracting Attack (Rogue)':
     'Section=combat ' +
     'Note="May forego sneak attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
@@ -3371,7 +3386,7 @@ PFAPG.FEATURES = {
     'Note="May move 30\' w/out provoking AOO after successful melee attack, ending adjacent to same foe, 1/dy"',
   'Powerful Sneak':
     'Section=combat ' +
-    'Note="During full-attack action, may trade -2 attack for treating sneak attack 1s as 2s"',
+    'Note="During full-attack action, may suffer -2 attack to gain treating sneak attack 1s as 2s"',
   'Quick Disguise':
     'Section=skill Note="Reduces time to create effective disguise"',
   'Quick Trapsmith':
@@ -4100,7 +4115,7 @@ PFAPG.FEATURES = {
     'Note="Truth-detecting magic requires DC %V caster level check to be effective"',
   'Hidden Mind':
     'Section=save ' +
-    'Note="May gain immunity to divination and +8 save vs. mental effects at will; must wait 1d4 rd between uses"',
+    'Note="May gain immunity to divination and +8 vs. mental effects at will; must wait 1d4 rd between uses"',
   'Mask Alignment':
     'Section=save ' +
     'Note="May cause alignment detection spells directed at self to report choice of alignment"',
@@ -4907,7 +4922,7 @@ PFAPG.PATHS = {
   'Feather Subdomain':
     Pathfinder.PATHS['Animal Domain'].replace('Speak With Animals', 'Eyes Of The Hawk'),
   'Ferocity Subdomain':
-    Pathfinder.PATHS['Strength Domain'].replace('Strength Surge Touch', 'Ferocious Strike'),
+    Pathfinder.PATHS['Strength Domain'].replace('Strength Surge (Cleric)', 'Ferocious Strike'),
   'Freedom Subdomain':
     Pathfinder.PATHS['Liberation Domain'].replace('Liberation', "Liberty's Blessing"),
   'Fur Subdomain':
@@ -4939,7 +4954,7 @@ PFAPG.PATHS = {
   'Lust Subdomain':
     Pathfinder.PATHS['Charm Domain'].replace('Charming Smile', 'Anything To Please'),
   'Martyr Subdomain':
-    Pathfinder.PATHS['Nobility Domain'].replace('Noble Leadership', 'Sacrificial Bond'),
+    Pathfinder.PATHS['Nobility Domain'].replace('Leadership (Nobility)', 'Sacrificial Bond'),
   'Memory Subdomain':
     Pathfinder.PATHS['Knowledge Domain'].replace('Lore Keeper', 'Recall'),
   'Metal Subdomain':
@@ -7858,7 +7873,7 @@ PFAPG.CLASSES = {
       '"features.Chaos Totem ? 10:Greater Chaos Totem",' +
       '"2:Lesser Chaos Totem",' +
       '"12:Come And Get Me",' +
-      '"features.Superstition ? 8:Disruptive",' +
+      '"features.Superstition ? 8:Disruptive (Barbarian)",' +
       '"features.Lesser Elemental Rage ? 8:Elemental Rage",' +
       '"features.Elemental Rage ? 12:Greater Elemental Rage",' +
       '"4:Lesser Elemental Rage",' +
@@ -7889,7 +7904,7 @@ PFAPG.CLASSES = {
       '"2:Reckless Abandon",' +
       '"2:Roaring Drunk",' +
       '2:Smasher,' +
-      '"features.Disruptive ? 12:Spellbreaker",' +
+      '"features.Disruptive (Barbarian) ? 12:Spellbreaker (Barbarian)",' +
       '"features.Ferocious Mount ? 6:Spirit Steed",' +
       '"features.Lesser Spirit Totem ? 6:Spirit Totem",' +
       '"features.Spirit Totem ? 10:Greater Spirit Totem",' +
@@ -9354,8 +9369,15 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('barbarianFeatures.Uncanny Dodge',
       'barbarianHasUncannyDodge', '?', 'source == 1'
     );
+    rules.defineRule('combatNotes.brawler',
+      '', '=', '"Unarmed attack provokes no AOO and may deal lethal damage"',
+      'features.Improved Unarmed Strike', '=', '"Unarmed attacks inflict %{features.Small ? \'1d4\' : \'1d6\'}"'
+    );
     rules.defineRule('combatNotes.invulnerability',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('combatNotes.invulnerability-1',
+      'combatNotes.invulnerability', '=', 'source * 2'
     );
     rules.defineRule('combatNotes.lesserHurling',
       '', '=', '10',
@@ -9416,13 +9438,15 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
     rules.defineRule
+      ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
+    rules.defineRule
       ('damageReduction.-', 'combatNotes.invulnerability', '^=', null);
     rules.defineRule('featureNotes.blindsense',
       'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
     );
     rules.defineRule('featureNotes.keenSenses(Barbarian).1',
       'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', '(source>=10 ? ", 60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", Blindsense" : "") + (source>=19 ? ", Blindsight" : "")'
+      classLevel, '=', '(source>=10 ? ", +60\' Darkvision" : "") + (source>=13 ? ", Scent" : "") + (source>=16 ? ", 30\' Blindsense" : "") + (source>=19 ? ", 30\' Blindsight" : "")'
     );
     rules.defineRule
       ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
@@ -9617,6 +9641,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
     );
+    rules.defineRule('saveNotes.energyResistance',
+      'barbarianFeatures.Energy Resistance', '=', null
+    );
     rules.defineRule
       ('saveNotes.trapSense', 'sandmanLevel', '+=', 'Math.floor(source / 3)');
     rules.defineRule
@@ -9731,7 +9758,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Animate Objects']
     );
     Pathfinder.featureSpells(rules,
-      'Command', 'Command', 'wisdom', 'levels.Cleric', '', ['Command']
+      'Command', 'Command', 'wisdom', 'levels.Cleric',
+      '10+inevitableSubdomainLevel//2+wisdomModifier', ['Command']
     );
     Pathfinder.featureSpells(rules,
       'Deadly Weather', 'DeadlyWeather', 'wisdom', 'levels.Cleric', '',
@@ -9890,19 +9918,37 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Wolf Totem', '?', null,
       'featureNotes.animalShamanFeatBonus', '=', null
     );
-    rules.defineRule('magicNotes.totemTransformation',
-      'features.Bear Totem', '=', '"mammals"',
-      'features.Eagle Totem', '=', '"birds"',
-      'features.Lion Totem', '=', '"felines"',
-      'features.Serpent Totem', '=', '"reptiles"',
-      'features.Wolf Totem', '=', '"canines"'
-    );
     rules.defineRule('magicNotes.totemicSummons',
       'features.Bear Totem', '=', '"bear"',
       'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
       'features.Lion Totem', '=', '"feline"',
       'features.Serpent Totem', '=', '"snake"',
       'features.Wolf Totem', '=', '"canine"'
+    );
+    rules.defineRule('magicNotes.wildShape',
+      // Archetype-specific Wild Shape progressions
+      'caveDruidLevel', '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium ooze" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large ooze" : ' +
+        '"diminutive-huge/elemental/large ooze"',
+      'desertDruidLevel', '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium vermin" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large vermin" : ' +
+        '"diminutive-huge/elemental/huge vermin"',
+      'mountainDruidLevel', '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large giant" : ' +
+        'source < 16 ? "diminutive-huge/elemental/large giant" : ' +
+        '"diminutive-huge/elemental/huge giant"'
     );
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
@@ -9986,6 +10032,14 @@ PFAPG.classRulesExtra = function(rules, name) {
      'Spring Attack'].forEach(f => {
       allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
     });
+    Pathfinder.featureSpells(rules,
+      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', 'levels.Druid', null,
+      ['Tree Shape']
+    );
+    Pathfinder.featureSpells(rules,
+      'Slippery', 'Slippery', 'wisdom', 'levels.Druid', null,
+      ['Freedom Of Movement']
+    );
   } else if(name == 'Fighter') {
     QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(weapon => {
       if(weapon.match(/\b(long|short)?bow\b/i)) {
@@ -11569,6 +11623,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('companionClericLevel', pathLevel, '=', 'source - 3');
     rules.defineRule
       ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
+    rules.defineRule('casterLevels.SpeakWithAnimals', pathLevel, '=', null);
   } else if(name.match(/(Construct|Toil) Subdomain/)) { // Artifice
     rules.defineRule("combatNotes.artificer'sTouch.1",
       pathLevel, '=', 'Math.floor(source / 2)'
@@ -11588,6 +11643,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.charmingSmile.1', pathLevel, '=', null);
     rules.defineRule('magicNotes.dazingTouch', pathLevel, '=', null);
+    rules.defineRule('casterLevels.CharmingSmile', pathLevel, '=', null);
   } else if(name.match(/(Family|Home) Subdomain/)) { // Community
     rules.defineRule('magicNotes.calmingTouch.1', pathLevel, '=', null);
     rules.defineRule
@@ -11639,6 +11695,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.divinePresence.1', pathLevel, '=', null);
     rules.defineRule('magicNotes.touchOfGlory', pathLevel, '=', null);
+    rules.defineRule('casterLevels.DivinePresence', pathLevel, '=', null);
   } else if(name.match(/(Agathion|Archon Good|Azata Good) Subdomain/)) { // Good
     rules.defineRule('combatNotes.holyLance',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
@@ -11654,6 +11711,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
   } else if(name.match(/(Memory|Thought) Subdomain/)) { // Knowledge
     rules.defineRule('magicNotes.remoteViewing', pathLevel, '=', null);
     rules.defineRule('skillNotes.loreKeeper', pathLevel, '=', 'source + 15');
+    rules.defineRule('casterLevels.RemoteViewing', pathLevel, '=', null);
   } else if(name.match(/(Archon Law|Devil Law|Inevitable) Subdomain/)) { // Law
     rules.defineRule('combatNotes.staffOfOrder',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
@@ -11677,11 +11735,13 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.visionOfMadness.1',
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
+    rules.defineRule('casterLevels.AuraOfMadness', pathLevel, '=', null);
   } else if(name.match(/(Arcana|Divine) Subdomain/)) { // Magic
     rules.defineRule('casterLevels.DispellingTouch', pathLevel, '=', null);
     rules.defineRule('magicNotes.dispellingTouch',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
+    rules.defineRule('casterLevels.DispellingTouch', pathLevel, '=', null);
   } else if(name.match(/(Leadership|Martyr) Subdomain/)) { // Nobility
     rules.defineRule('magicNotes.inspiringWord',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -11713,13 +11773,14 @@ PFAPG.pathRulesExtra = function(rules, name) {
   } else if(name.match(/(Ferocity|Resolve) Subdomain/)) { // Strength
     rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
     rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.strengthSurgeTouch',
+    rules.defineRule('magicNotes.strengthSurge(Cleric)',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
   } else if(name.match(/(Day|Light) Subdomain/)) { // Sun
     rules.defineRule("magicNotes.sun'sBlessing", pathLevel, '=', null);
     rules.defineRule('magicNotes.nimbusOfLight', pathLevel, '=', null);
     rules.defineRule('magicNotes.nimbusOfLight.1', pathLevel, '=', null);
+    rules.defineRule('casterLevels.NimbusOfLight', pathLevel, '=', null);
   } else if(name.match(/(Exploration|Trade) Subdomain/)) { // Travel
     rules.defineRule
       ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
@@ -11733,6 +11794,8 @@ PFAPG.pathRulesExtra = function(rules, name) {
     }
     if(name == 'Thievery Subdomain')
       rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
+    rules.defineRule('casterLevels.Copycat', pathLevel, '=', null);
+    rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
   } else if(name.match(/(Blood|Tactics) Subdomain/)) { // War
     rules.defineRule('combatNotes.battleRage',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -11748,6 +11811,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
+    rules.defineRule('casterLevels.LightningLord', pathLevel, '=', null);
   } else if(name == 'Bones Mystery') {
     rules.defineRule
       ('channelLevel', 'magicNotes.undeadServitude.1', '=', null);
