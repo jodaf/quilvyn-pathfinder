@@ -1002,7 +1002,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Gains second off-hand attack at -5 penalty"',
   'Improved Unarmed Strike':
     'Section=combat ' +
-    'Note="Unarmed attack provokes no AOO and may deal lethal damage"',
+    'Note="Unarmed attack provokes no AOO and may inflict lethal damage"',
   'Improved Uncanny Dodge':
     'Section=combat ' +
     'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
