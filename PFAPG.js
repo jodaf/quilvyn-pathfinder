@@ -3059,40 +3059,37 @@ PFAPG.FEATURES = {
   // Paladin
   'Aura Of Healing':
     'Section=magic ' +
-    'Note="May expend 1 Channel Energy use for 30\' radius that gives allies stabilization, immunity to bleed damage, save vs. affliction, and HD HP healing for %{levels.Paladin} rd"',
+    'Note="May expend 1 Channel Energy use for 30\' radius that gives allies stabilization, immunity to bleed damage, save vs. existing affliction 1/dy, and HD HP healing 1/use for %{levels.Paladin} rd"',
   'Aura Of Life':
     'Section=combat ' +
     'Note="10\' radius inflicts on undead -4 Will vs. positive energy and no recovery of HP from channeled negative energy"',
   'Call Celestial Ally':
     'Section=magic ' +
     'Note="May cast <i>%{levels.Paladin<12? \'Lesser \' : levels.Paladin>=16 ? \'Greater \' : \'\'}Planar Ally</i> 1/wk"',
-  'Divine Armor':
+  'Channel Positive Energy (Hospitaler)':
+    'Section=magic ' +
+    'Note="May use Channel Energy effects %{charismaModifier + 3}/dy"',
+  'Divine Bond (Armor)':
     'Section=combat ' +
     'Note="Armor lights 30\' radius and gives +%{(levels.Paladin-2)//3} AC or special properties for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
-  'Divine Holy Symbol':
+  'Divine Bond (Holy Symbol)':
     'Section=magic ' +
     'Note="Holy symbol lights 30\' radius and gives %{(levels.Paladin-2)//3} choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for %{levels.Paladin} min %{(levels.Paladin-1)//4}/dy"',
   'Domain (Paladin)':'Section=feature Note="1 selection"',
-  'Hospitaler':
-    'Section=magic ' +
-    'Note="May use Channel Energy w/out expending Lay On Hands"',
   "Knight's Charge":
     'Section=combat ' +
-    'Note="Mounted charge provokes no AOO/Smite Evil at end of mounted charge inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
-  'Light Of Faith':
-    'Section=magic ' +
-    'Note="May use Lay On Hands for %{levels.Paladin>=20 ? 60 : 30}\' radius that %{levels.Paladin>=12 ? \'acts as <i>Daylight</i> spell and \' : \'\'}gives allies +%{levels.Paladin>=20 ? 2 : 1} AC, attack, damage, and saves vs. fear%1"',
+    'Note="Mounted charge provokes no AOO/Smite Evil at end of mounted charge inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg) for %{levels.Paladin//2} rd"',
   'Power Of Faith':
-   'Section=feature,magic ' +
+   'Section=magic,magic ' +
    'Note=' +
-     '"Has Light Of Faith feature",' +
-     '"+%{levels.Paladin//4} daily uses of Lay On Hands"',
+     '"+%{levels.Paladin//4} daily uses of Lay On Hands",' +
+     '"May use Lay On Hands for %{levels.Paladin>=20 ? 60 : 30}\' radius that %{levels.Paladin>=12 ? \'acts as <i>Daylight</i> spell and \' : \'\'}gives allies +%{levels.Paladin>=20 ? 2 : 1} AC, attack, damage, and saves vs. fear%1 for 1 min"',
   'Shared Defense':
     'Section=magic ' +
     'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
   'Shining Light':
     'Section=combat ' +
-    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and blindness 1 rd on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
+    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and 1 rd blindness on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
   'Skilled Rider':
     'Section=companion,skill ' +
     'Note=' +
@@ -3101,9 +3098,6 @@ PFAPG.FEATURES = {
   'Undead Annihilation':
     'Section=combat ' +
     'Note="Smite Evil hit on undead destroys foe below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
-  'Undead Scourge':
-    'Section=combat ' +
-    'Note="No dbl damage on Smite Evil vs. dragons or outsiders"',
 
   // Ranger
   'Adaptation':
@@ -5246,6 +5240,7 @@ PFAPG.PATHS = {
     'Group=Paladin ' +
     'Level=levels.Paladin ' +
     'Features=' +
+      '"4:Channel Positive Energy (Hospitaler)",' +
       '"11:Aura Of Healing"',
   'Sacred Servant':
     'Group=Paladin ' +
@@ -8027,8 +8022,8 @@ PFAPG.CLASSES = {
       '"1:Shining Knight:Archetype",' +
       '"1:Undead Scourge:Archetype",' +
       '"1:Warrior Of The Holy Light:Archetype",' +
-      '"features.Divine Defender ? 5:Divine Armor:Divine Bond",' +
-      '"features.Sacred Servant ? 5:Divine Holy Symbol:Divine Bond"',
+      '"features.Divine Defender ? 5:Divine Bond (Armor):Divine Bond",' +
+      '"features.Sacred Servant ? 5:Divine Bond (Holy Symbol):Divine Bond"',
   'Ranger':
     'Selectables=' +
       '"2:Combat Style (Crossbow):Combat Style",' +
@@ -10538,6 +10533,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('companionNotes.skilledRider', 'charismaModifier', '=', null);
+    rules.defineRule('features.Channel Energy',
+      'features.Channel Positive Energy (Hospitaler)', '=', '1'
+    );
     rules.defineRule('magicNotes.sharedDefense.1',
       'features.Shared Defense', '?', null,
       classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
@@ -10547,15 +10545,15 @@ PFAPG.classRulesExtra = function(rules, name) {
       'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
     rules.defineRule
-      ('features.Light Of Faith', 'featureNotes.powerOfFaith', '=', '1');
+      ('combatNotes.smiteEvil.5', 'undeadScourgeLevel', '=', '"undead"');
     rules.defineRule('magicNotes.channelEnergy.1',
       // Replace generic Paladin level computation w/Hospitaler-specific
       'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
     );
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
-    rules.defineRule('magicNotes.lightOfFaith.1',
-      'features.Light Of Faith', '?', null,
+    rules.defineRule('magicNotes.powerOfFaith-1.1',
+      'features.Power Of Faith', '?', null,
       classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
     );
     rules.defineRule
@@ -10564,6 +10562,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('paladinFeatures.Aura Of Justice', 'paladinHasAuraOfJustice', '?', null);
     rules.defineRule
       ('paladinFeatures.Aura Of Resolve', 'paladinHasAuraOfResolve', '?', null);
+    rules.defineRule
+      ('paladinFeatures.Channel Positive Energy', 'paladinHasChannelPositiveEnergy', '?', null);
     rules.defineRule
       ('paladinFeatures.Divine Health', 'paladinHasDivineHealth', '?', null);
     rules.defineRule('paladinFeatures.Mercy', 'paladinHasMercy', '?', null);
@@ -10583,6 +10583,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '1',
       'paladinFeatures.Call Celestial Ally', '=', '0',
       'paladinFeatures.Aura Of Life', '=', '0'
+    );
+    rules.defineRule('paladinHasChannelPositiveEnergy',
+      classLevel, '=', '1',
+      'paladinFeatures.Channel Positive Energy (Hospitaler)', '=', '0'
     );
     rules.defineRule('paladinHasDivineHealth',
       classLevel, '=', '1',
@@ -10617,6 +10621,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Paladin', 'paladinHasSpells', '?', null);
+    Pathfinder.featureSpells(rules,
+      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', 'levels.Paladin',
+      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
+    );
+    Pathfinder.featureSpells(rules,
+      'Power Of Faith', 'PowerOfFaith', 'wisdom', 'warriorOfTheHolyLightLevel',
+      null, ['12:Daylight']
+    );
   } else if(name == 'Ranger') {
     rules.defineRule('abilityNotes.formOfTheBear',
       '', '=', '4',
