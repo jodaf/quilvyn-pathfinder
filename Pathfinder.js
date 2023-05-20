@@ -1133,7 +1133,7 @@ Pathfinder.FEATURES = {
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat ' +
-    'Note="Gains +%V attack, +%1 HP damage, bypass DR, and +%2 AC on evil foe (dbl HP on outsider, dragon, or undead) %3/dy"',
+    'Note="Gains +%V attack, +%1 HP damage, bypass DR, and +%2 AC on evil foe (+%4 HP on %5) %3/dy"',
   'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
   'Sneak Attack':
     'Section=combat ' +
@@ -5823,13 +5823,23 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('combatNotes.smiteEvil', 'charismaModifier', '=', 'Math.max(source, 0)');
-    rules.defineRule('combatNotes.smiteEvil.1', 'levels.Paladin', '=', null);
+    rules.defineRule('combatNotes.smiteEvil.1',
+      'features.Smite Evil', '?', null,
+      'levels.Paladin', '=', null
+    );
     rules.defineRule('combatNotes.smiteEvil.2',
       'features.Smite Evil', '?', null,
       'charismaModifier', '=', 'source > 0 ? source : 0'
     );
     rules.defineRule('combatNotes.smiteEvil.3',
+      'features.Smite Evil', '?', null,
       'levels.Paladin', '=', 'Math.floor((source + 2) / 3)'
+    );
+    rules.defineRule
+      ('combatNotes.smiteEvil.4', 'combatNotes.smiteEvil.1', '=', 'source * 2');
+    rules.defineRule('combatNotes.smiteEvil.5',
+      'features.Smite Evil', '?', null,
+      '', '=', '"outsider, dragon, or undead"'
     );
     rules.defineRule
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
