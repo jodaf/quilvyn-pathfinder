@@ -16,7 +16,7 @@ var attributes = {
   "gender":"Female", "hitPoints":124, "intelligence":14, "languages.Sylvan":1, 
   "languages.Terran":1, "levels.Paladin":20, "name":"Class-Paladin 20-Sacred Servant", 
   "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
-  "selectableFeatures.Human - Skilled":1, "selectableFeatures.Paladin - Divine Holy Symbol":1, 
+  "selectableFeatures.Human - Skilled":1, "selectableFeatures.Paladin - Divine Bond (Holy Symbol)":1, 
   "selectableFeatures.Paladin - Good Domain":1, "selectableFeatures.Paladin - Mercy (Blinded)":1, 
   "selectableFeatures.Paladin - Mercy (Deafened)":1, "selectableFeatures.Paladin - Mercy (Diseased)":1, 
   "selectableFeatures.Paladin - Mercy (Paralyzed)":1, "selectableFeatures.Paladin - Mercy (Poisoned)":1, 
@@ -88,7 +88,7 @@ var attributes = {
         <td><b>Feats</b>: Animal Affinity; Combat Casting; Coordinated Defense; Eclectic; Elemental Channel (Air); Elemental Spell (Electricity); Selective Channeling; Skill Focus (Bluff); Skill Focus (Knowledge (History)); Skill Focus (Knowledge (Local)); Thundering Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Suspicious</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Faith; Aura Of Justice; Aura Of Righteousness; Aura; Call Celestial Ally; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Divine Holy Symbol; Domain (Paladin); Good Domain; Holy Champion; Lay On Hands; Mercy (Blinded); Mercy (Deafened); Mercy (Diseased); Mercy (Paralyzed); Mercy (Poisoned); Mercy (Shaken); Mercy; Resist Evil; Sacred Servant; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Faith; Aura Of Justice; Aura Of Righteousness; Aura; Call Celestial Ally; Channel Positive Energy; Detect Evil; Divine Bond (Holy Symbol); Divine Grace; Divine Health; Domain (Paladin); Good Domain; Holy Champion; Lay On Hands; Mercy (Blinded); Mercy (Deafened); Mercy (Diseased); Mercy (Paralyzed); Mercy (Poisoned); Mercy (Shaken); Mercy; Resist Evil; Sacred Servant; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -219,7 +219,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elemental Channel (Air): May use Channel Energy to heal or harm Air outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: Gains +3 attack, +20 HP damage, bypass DR, and +3 AC on evil foe (dbl HP on outsider, dragon, or undead) 4/dy</td>
+        <td>Smite Evil: Gains +3 attack, +20 HP damage, bypass DR, and +3 AC on evil foe (+40 HP on outsider, dragon, or undead) 4/dy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -272,13 +272,19 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Dispel Evil (Good5 Abju): Self gains +4 AC vs. evil and dismisses evil creature via touch (DC 16 Will neg) or spell</td>
     </tr><tr style="text-align:left">
+      <td>Greater Planar Ally (Call Celestial Ally8 Conj): Self purchases service from extraplanar creature w/up to 18 HD</td>
+    </tr><tr style="text-align:left">
       <td>Holy Aura (Good8 Abju): 20 creatures in 20' radius gain +4 AC and saves and SR 25 (evil), suppress mental control, and blind successful evil attacker (DC 19 Fort neg) for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Holy Smite (Good4 Evoc): R300' Evil creatures in 20' radius suffer 5d8 HP and blindness for 1 rd, neutral half (DC 15 Will half)</td>
     </tr><tr style="text-align:left">
       <td>Holy Word (Good7 Evoc): Nongood creatures in 40' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (DC 18 Will neg)/blinded for 2d4 rd (DC 18 Will for 1d4 rd)/paralyzed for 1d10 min (DC 18 Will for 1 rd)/killed (DC 18 Will suffer 3d6+20 HP) and banished (DC 18 Will neg)</td>
     </tr><tr style="text-align:left">
+      <td>Lesser Planar Ally (Call Celestial Ally4 Conj): Self purchases service from extraplanar creature w/up to 6 HD</td>
+    </tr><tr style="text-align:left">
       <td>Magic Circle Against Evil (Good3 Abju): 10' radius from touched gives +2 AC and saves, extra save to suppress mental control, bars contact and entry by evil summoned creatures (SR neg) for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Planar Ally (Call Celestial Ally6 Conj): Self purchases service from extraplanar creature w/up to 12 HD</td>
     </tr><tr style="text-align:left">
       <td>Protection From Evil (Good1 Abju): Touched gains +2 AC and saves, suppresses mental control, and bars contact by nongood summoned creatures for 20 min</td>
     </tr><tr style="text-align:left">
@@ -302,7 +308,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Detect Evil: May use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
-      <td>Divine Holy Symbol: Holy symbol lights 30' radius and gives 6 choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for 20 min 4/dy</td>
+      <td>Divine Bond (Holy Symbol): Holy symbol lights 30' radius and gives 6 choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for 20 min 4/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Electricity): May convert half or all spell damage to electricity damage; uses +1 spell slot</td>
     </tr><tr style="text-align:center">

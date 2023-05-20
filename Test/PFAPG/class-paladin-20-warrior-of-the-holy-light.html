@@ -92,8 +92,6 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Power Of Faith: Has Light Of Faith feature</i></td>
-      </tr><tr style="text-align:center">
         <td>Eclectic: May choose 1 additional favored class</td>
       </tr></table>
 </td>
@@ -217,9 +215,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elemental Channel (Air): May use Channel Energy to heal or harm Air outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Shining Light: 30' radius inflicts 10d6 HP and blindness 1 rd on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC 23 Ref half HP only); good creatures regain 10d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd 3/dy</td>
+        <td>Shining Light: 30' radius inflicts 10d6 HP and 1 rd blindness on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC 23 Ref half HP only); good creatures regain 10d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd 3/dy</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: Gains +3 attack, +20 HP damage, bypass DR, and +3 AC on evil foe (dbl HP on outsider, dragon, or undead) 7/dy</td>
+        <td>Smite Evil: Gains +3 attack, +20 HP damage, bypass DR, and +3 AC on evil foe (+40 HP on outsider, dragon, or undead) 7/dy</td>
       </tr><tr style="text-align:center">
         <td>Step Up: May match foe 5' step</td>
       </tr></table>
@@ -255,7 +253,13 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
   <tr style="text-align:center">
-    <td><b>Spells</b>:<br/>Detect Evil (Detect Evil1 Divi): R60' Cone gives self info on evil auras for conc or 200 min</td>
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Daylight (Power Of Faith3 Evoc): Touched increases light level by 1 in 60' radius for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Detect Evil (Detect Evil1 Divi): R60' Cone gives self info on evil auras for conc or 200 min</td>
+    </tr></table>
+</td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
@@ -275,9 +279,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Lay On Hands: May harm undead or heal 10d6 HP 14/dy</td>
     </tr><tr style="text-align:center">
-      <td>Light Of Faith: May use Lay On Hands for 60' radius that acts as <i>Daylight</i> spell and gives allies +2 AC, attack, damage, and saves vs. fear, 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage</td>
-    </tr><tr style="text-align:center">
       <td>Mercy: Lay On Hands removes condition(s) blinded, deafened, diseased, paralyzed, poisoned, shaken</td>
+    </tr><tr style="text-align:center">
+      <td>Power Of Faith-1: May use Lay On Hands for 60' radius that acts as <i>Daylight</i> spell and gives allies +2 AC, attack, damage, and saves vs. fear, 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage for 1 min</td>
     </tr><tr style="text-align:center">
       <td>Selective Channeling: May withhold Channel Energy effects from up to 3 targets</td>
     </tr></table>
