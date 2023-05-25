@@ -16,10 +16,10 @@ var attributes = {
   "feats.Skill Focus (Knowledge (Planes))":1, "feats.Strike Back":1, "gender":"Male", "hitPoints":106, "intelligence":15, 
   "languages.Celestial":1, "languages.Halfling":1, "levels.Ranger":20, 
   "name":"Class-Ranger 20-Urban Ranger", "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
-  "selectableFeatures.Human - Skilled":1, "selectableFeatures.Ranger - Combat Style (Archery)":1, 
-  "selectableFeatures.Ranger - Far Shot":1, "selectableFeatures.Ranger - Focused Shot":1, 
-  "selectableFeatures.Ranger - Furious Focus":1, "selectableFeatures.Ranger - Manyshot":1, 
-  "selectableFeatures.Ranger - Point-Blank Shot":1, "selectableFeatures.Ranger - Rapid Shot":1, 
+  "selectableFeatures.Human - Skilled":1, "selectableFeatures.Ranger - Combat Style (Weapon And Shield)":1, 
+  "selectableFeatures.Ranger - Focused Shot":1, "selectableFeatures.Ranger - Furious Focus":1, 
+  "selectableFeatures.Ranger - Saving Shield":1, "selectableFeatures.Ranger - Shield Focus":1, 
+  "selectableFeatures.Ranger - Shield Master":1, "selectableFeatures.Ranger - Shield Slam":1, 
   "selectableFeatures.Ranger - Urban Ranger":1, "shield":"None", "skills.Acrobatics":2, "skills.Climb":14, 
   "skills.Craft (Traps)":20, "skills.Diplomacy":10, "skills.Disable Device":2, "skills.Disguise":10, 
   "skills.Handle Animal":20, "skills.Heal":10, "skills.Knowledge (Geography)":2, 
@@ -77,7 +77,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11</td>
-        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archery Feat): 5; Ranger (Archetype): 1; Ranger (Combat Style): 1; Ranger (Hunter's Bond): 1</td>
+        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archetype): 1; Ranger (Combat Style): 1; Ranger (Hunter's Bond): 1; Ranger (Weapon And Shield Feat): 5</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -86,7 +86,7 @@ var attributes = {
         <td><b>Feats</b>: Deadly Aim; Elemental Focus (Electricity); Expanded Arcana; Lightning Reflexes; Quicken Spell; Reach Spell; Shield Focus; Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (Planes)); Strike Back</td>
         <td><b>Traits</b>: Adopted; Reactionary</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Blend In; Combat Style (Archery); Evasion; Far Shot; Favored Community; Favored Enemy; Focused Shot; Furious Focus; Improved Evasion; Improved Quarry; Invisibility Trick; Manyshot; Master Hunter; Point-Blank Shot; Push Through; Quarry; Rapid Shot; Shield Proficiency; Swift Tracker; Track; Trapfinding; Urban Ranger; Weapon Proficiency (Martial); Wild Empathy</td>
+        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Blend In; Combat Style (Weapon And Shield); Evasion; Favored Community; Favored Enemy; Focused Shot; Furious Focus; Improved Evasion; Improved Quarry; Invisibility Trick; Master Hunter; Push Through; Quarry; Saving Shield; Shield Focus; Shield Master; Shield Proficiency; Shield Slam; Swift Tracker; Track; Trapfinding; Urban Ranger; Weapon Proficiency (Martial); Wild Empathy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -234,8 +234,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
       </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
-      </tr><tr style="text-align:center">
         <td>Favored Community: +2 Initiative w/in favored community</td>
       </tr><tr style="text-align:center">
         <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
@@ -244,17 +242,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Furious Focus: Suffers no penalty on first attack using two-handed Power Attack</td>
       </tr><tr style="text-align:center">
-        <td>Manyshot: May fire 2 arrows simultaneously</td>
-      </tr><tr style="text-align:center">
         <td>Master Hunter: Full attack vs. favored enemy kills (DC 23 Fort neg) 1/dy/favored enemy type</td>
-      </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
         <td>Push Through: Not slowed by difficult terrain and can move through spaces occupied by locals w/in favored community</td>
       </tr><tr style="text-align:center">
         <td>Quarry: +4 attack, critical confirmed vs. target</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at -2 penalty</td>
+        <td>Saving Shield: May use shield to give adjacent ally +2 AC</td>
+      </tr><tr style="text-align:center">
+        <td>Shield Master: No penalty on shield attacks/May apply shield enhancements to attack and damage</td>
+      </tr><tr style="text-align:center">
+        <td>Shield Slam: Shield Bash inflicts Bull Rush</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
       </tr></table>

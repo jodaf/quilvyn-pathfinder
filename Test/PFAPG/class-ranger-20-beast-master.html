@@ -17,9 +17,9 @@ var attributes = {
   "gender":"Male", "hitPoints":106, "intelligence":15, "languages.Celestial":1, 
   "languages.Halfling":1, "levels.Ranger":20, "name":"Class-Ranger 20-Beast Master", "race":"Human", 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
-  "selectableFeatures.Ranger - Beast Master":1, "selectableFeatures.Ranger - Combat Style (Archery)":1, 
-  "selectableFeatures.Ranger - Far Shot":1, "selectableFeatures.Ranger - Manyshot":1, 
-  "selectableFeatures.Ranger - Point-Blank Shot":1, "selectableFeatures.Ranger - Rapid Shot":1, "shield":"None", 
+  "selectableFeatures.Ranger - Beast Master":1, "selectableFeatures.Ranger - Combat Style (Crossbow)":1, 
+  "selectableFeatures.Ranger - Crossbow Mastery":1, "selectableFeatures.Ranger - Deadly Aim":1, 
+  "selectableFeatures.Ranger - Focused Shot":1, "selectableFeatures.Ranger - Rapid Reload":1, "shield":"None", 
   "skills.Acrobatics":2, "skills.Climb":20, "skills.Craft (Traps)":18, "skills.Diplomacy":10, 
   "skills.Disguise":10, "skills.Escape Artist":1, "skills.Handle Animal":10, "skills.Heal":10, 
   "skills.Intimidate":1, "skills.Knowledge (Dungeoneering)":2, "skills.Knowledge (Geography)":2, 
@@ -76,7 +76,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11</td>
-        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archery Feat): 4; Ranger (Archetype): 1; Ranger (Combat Style): 1</td>
+        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archetype): 1; Ranger (Combat Style): 1; Ranger (Crossbow Feat): 4</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -85,7 +85,7 @@ var attributes = {
         <td><b>Feats</b>: Deadly Aim; Elemental Focus (Electricity); Expanded Arcana; Lightning Reflexes; Quicken Spell; Reach Spell; Shield Focus; Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (Planes)); Strike Back</td>
         <td><b>Traits</b>: Adopted; Reactionary</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Medium); Beast Master; Combat Style (Archery); Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Hide In Plain Sight; Improved Empathic Link; Improved Evasion; Improved Quarry; Manyshot; Master Hunter; Point-Blank Shot; Quarry; Rapid Shot; Shield Proficiency; Strong Bond; Swift Tracker; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
+        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Medium); Beast Master; Combat Style (Crossbow); Crossbow Mastery; Deadly Aim; Endurance; Evasion; Favored Enemy; Favored Terrain; Focused Shot; Hide In Plain Sight; Improved Empathic Link; Improved Evasion; Improved Quarry; Master Hunter; Quarry; Rapid Reload; Shield Proficiency; Strong Bond; Swift Tracker; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -233,23 +233,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
+        <td>Crossbow Mastery: May reload crossbow as free action w/out provoking AOO</td>
       </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
+        <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
       </tr><tr style="text-align:center">
         <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
       </tr><tr style="text-align:center">
         <td>Favored Terrain: +2 or more Initiative in 4 terrain type(s)</td>
       </tr><tr style="text-align:center">
-        <td>Manyshot: May fire 2 arrows simultaneously</td>
+        <td>Focused Shot: R30' +2 HP damage on bow or crossbow attack</td>
       </tr><tr style="text-align:center">
         <td>Master Hunter: Full attack vs. favored enemy kills (DC 23 Fort neg) 1/dy/favored enemy type</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
-      </tr><tr style="text-align:center">
         <td>Quarry: +4 attack, critical confirmed vs. target</td>
-      </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at -2 penalty</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
       </tr></table>
