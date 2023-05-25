@@ -3492,12 +3492,13 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Touched metal or stone weapon gains +2 attack and +2d6 HP damage vs. earth, ooze, stone, and metal creatures for 1 min %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Deep One':
-    'Section=feature,feature,magic,save ' +
+    'Section=feature,feature,magic,save,save ' +
     'Note=' +
       '"Has 60\' Blindsense",' +
       '"Has 120\' Blindsight and Evasion feature underwater",' +
       '"Has continuous <i>Freedom Of Movement</i> effects",' +
-      '"Has DR 10/piercing, cold resistance 20, and immunity to water pressure damage"',
+      '"DR 10/piercing",' +
+      '"Resistance 20 to cold/Immune to water pressure damage"',
   'Dehydrating Touch':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Sorcerer//2} HP nonlethal (oozes, plants, and water creatures lethal) and sickened for 1 rd %{charismaModifier+3}/dy"',
@@ -3542,7 +3543,7 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Hurled protoplasm inflicts entanglement and 1 HP acid/rd for 1d3 rd %{charismaModifier+3}/dy"',
   'Raise The Deep':
-    'Section=magic Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> even when no water present 1/dy"',
+    'Section=magic Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> for %{levels.Sorcerer} rd even when no water present 1/dy"',
   'Reality Wrinkle':
     'Section=combat ' +
     'Note="10\' radius inflicts 20% miss chance on outside attacks for %{levels.Sorcerer} rd/dy"',
@@ -12101,11 +12102,11 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     Pathfinder.featureSpells(rules,
       'Raise The Deep', 'RaiseTheDeep', 'charisma', pathLevel, null,
-      ['Freedom Of Movement']
+      ['Control Water']
     );
     Pathfinder.featureSpells(rules,
       'Deep One', 'DeepOne', 'charisma', pathLevel, null,
-      ['Control Water']
+      ['Freedom Of Movement']
     );
   } else if (name == 'Bloodline Boreal') {
     rules.defineRule('magicNotes.icewalker', pathLevel, '?', 'source>=9');
