@@ -1280,9 +1280,6 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="May delay effects of failed save vs. disease or poison for %{mysteryLevel} hr %{mysteryLevel>=15 ? 3 : mysteryLevel >= 7 ? 2 : 1}/dy"',
   'Dweller In Darkness':'Section=magic Note="Can use <i>%V</i> effects 1/dy"',
-  'Earth Glide (Oracle)':
-    'Section=ability ' +
-    'Note="Can move through earth %{speed}\'/rd, leaving no trace, %{mysteryLevel} min/dy; including others uses equal portion of daily time for each"',
   'Energy Body':
     'Section=combat ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{mysteryLevel} HP positive energy on undead w/unarmed attack or when undead hits self w/melee attack, and heals target 1d6+%{mysteryLevel} HP 1/rd for %{mysteryLevel} rd/dy"',
@@ -3511,7 +3508,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="May use <i>Modify Memory</i> or mental <i>Speak With Dead</i> effects %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Earth Glide':
     'Section=ability ' +
-    'Note="May move through earth and stone %{speed//2}\'/rd, leaving no trace, for %V/dy"',
+    'Note="May move through earth and stone%1, leaving no trace, for %V/dy"',
   'Enveloping Darkness':
     'Section=magic ' +
     'Note="May use entangling <i>Deeper Darkness</i> effects 1/dy"',
@@ -3658,7 +3655,7 @@ PFAPG.FEATURES = {
   // Wizard
   'Acid Cloud':
     'Section=magic ' +
-    'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fort half HP only) %{intelligenceModifier+3}/dy"',
+    'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fort half HP only; exit neg) %{intelligenceModifier+3}/dy"',
   'Air Supremacy':
     'Section=magic,skill ' +
     'Note=' +
@@ -3669,18 +3666,18 @@ PFAPG.FEATURES = {
     'Note="Touch gives +%{levels.Wizard>=10 ? 4 : 2} ability or +%{1+levels.Wizard//5} AC for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   'Aura Of Banishment':
     'Section=magic ' +
-    'Note="30\' radius staggers summoned creatures (Will neg); next rd returns them to their home plane (Will neg) %{levels.Wizard} rd/dy"',
+    'Note="30\' radius staggers summoned creatures (Will neg), then returns them to their home plane (Will delays 1 rd) %{levels.Wizard} rd/dy"',
   'Battleshaping':
-    'Section=magic Note="May use%{levels.Wizard>=11 ? \' 2\' : \'\'} +1 magical claw, bite, or gore %{intelligenceModifier+3}/dy"',
+    'Section=magic Note="May use%{levels.Wizard>=11 ? \' 2\' : \'\'} +%{levels.Wizard//4} magical claw, bite, or gore for 1 rd %{intelligenceModifier+3}/dy"',
   'Bedeviling Aura':
     'Section=combat ' +
     'Note="30\' radius inflicts half speed, cannot take AOO, and flanked on foes for %{levels.Wizard} rd/dy"',
   'Beguiling Touch':
     'Section=magic ' +
-    'Note="May touch for <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostile, or DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
+    'Note="May touch for <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostility, or DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
   'Binding Darkness':
     'Section=magic ' +
-    'Note="R30\' Ranged touch inflicts entanglement for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
+    'Note="R30\' Ranged touch inflicts entanglement and concealment for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
   'Bolster':
     'Section=magic ' +
     'Note="Touched undead gains +%{1+levels.Wizard//5} attack and saves, +2 turn resistance, and +1 temporary HP/HD for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
@@ -3703,16 +3700,16 @@ PFAPG.FEATURES = {
     'Note="10\' radius negates ranged attacks, knocks flying creatures to the ground (DC %{10+levels.Wizard} Fly neg), and bars passage to ground creatures (DC %{10+levels.Wizard} Str neg) for %{levels.Wizard} rd/dy"',
   'Dancing Flame':
     'Section=magic ' +
-    'Note="May move nonmagical fire 30\', remove squares from self instantaneous fire spell, or move effect of longer self fire spell %{levels.Wizard//2}/dy"',
+    'Note="May move nonmagical fire 30\', remove squares from self instantaneous fire spell area, or move effect of longer self fire spell %{levels.Wizard//2}/dy"',
   'Disruption':
     'Section=combat ' +
-    'Note="Touch inflicts DC 15 + dbl spell level concentration to use spell for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
+    'Note="Touch inflicts DC 15 + 2 x spell level concentration to use spell for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   // Earth Glide as Sorcerer
   'Earth Supremacy':
     'Section=combat,magic ' +
     'Note=' +
       '"+%{2+levels.Wizard//5} CMD vs. bull rush, drag, overrun, reposition, and trip when touching ground/+1 attack and damage when self and foe touching ground",' +
-      '"Earth and stone do not block spell line of sight"',
+      '"Earth and stone do not block spell effects"',
   'Elemental Manipulation':
     'Section=magic ' +
     'Note="30\' radius modifies energy type of spells and supernatural effects from casters up to level %{levels.Wizard} and creatures up to %{levels.Wizard} HD %{levels.Wizard} rd/dy"',
@@ -3722,7 +3719,7 @@ PFAPG.FEATURES = {
   'Fire Supremacy':
     'Section=combat,save ' +
     'Note=' +
-      '"Surrounding flames inflict %{levels.Wizard//2>?1} HP fire on successful melee attack when w/in 5\' of a fire",' +
+      '"May use adjacent fire to inflict %{levels.Wizard//2>?1} HP fire on successful melee attacker",' +
       '"%{levels.Wizard==20 ? \'Immune\' : levels.Wizard>=10 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
   'Force Of Will':
     'Section=magic ' +
@@ -3753,7 +3750,7 @@ PFAPG.FEATURES = {
     'Note="R%{100+levels.Wizard*10}\' May see or hear remotely for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   'Shadow Step':
     'Section=magic ' +
-    'Note="May teleport %{levels.Wizard*30}\'/dy (5\' increments), reappearing 5\' off target and gaining effects of <i>Blur</i> for 1 rd; including others uses equal portion of daily distance"',
+    'Note="May teleport %{levels.Wizard*30}\'/dy (5\' increments), reappearing 5\' off target and gaining foe 20% miss chance for 1 rd; including others uses equal portion of daily distance"',
   'Shape Emotions':
     'Section=magic ' +
     'Note="30\' radius gives allies +4 saves vs. mind-affecting effects and reduction of fear by 1 step or inflicts -2 vs. mind-affecting effects on foes for %{levels.Wizard} rd/dy"',
@@ -3779,9 +3776,9 @@ PFAPG.FEATURES = {
       '"%V Swim"',
   'Wave':
     'Section=magic ' +
-    'Note="%{5*levels.Wizard}\'x20\' wave moves away 30\'/rd, douses flames, and knocks prone or carries away (caster level vs. CMD; DC %{10+levels.Wizard//2+intelligenceModifier} Str to end) %{levels.Wizard//2} rd/dy"',
+    'Note="%{5*levels.Wizard}\'x20\' wave moves away 30\'/rd, douses normal fires, and knocks prone or carries away (caster level vs. CMD; DC %{10+levels.Wizard//2+intelligenceModifier} Str to end) %{levels.Wizard//2} rd/dy"',
   'Wind Servant':
-    'Section=magic Note="May blow %{levels.Wizard} lb object 30\' %{intelligenceModifier+3}/dy"',
+    'Section=magic Note="May blow %{levels.Wizard} lb object 30\', hit target w/ranged touch %{intelligenceModifier+3}/dy"',
 
   // Battle Herald
   // Banner as Cavalier
@@ -5751,7 +5748,7 @@ PFAPG.PATHS = {
       '"1:Acid Skin:Stone Revelation",' +
       '"1:Clobbering Strike:Stone Revelation",' +
       '"1:Crystal Sight:Stone Revelation",' +
-      '"7:Earth Glide (Oracle):Stone Revelation",' +
+      '"7:Earth Glide:Stone Revelation",' +
       '"1:Mighty Pebble:Stone Revelation",' +
       '"1:Rock Throwing:Stone Revelation",' +
       '"1:Shard Explosion:Stone Revelation",' +
@@ -8781,6 +8778,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.lame-1.1', '*', 'source.includes("armor") ? 0 : null'
     );
+    rules.defineRule
+      ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      'mysteryLevel', '=', '""'
+    );
     rules.defineRule('abilityNotes.lame',
       '', '=', '-10',
       'features.Slow', '+', '5'
@@ -11137,6 +11140,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('abilityNotes.earthGlide', 'earthLevel', '=', 'source + " rd"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      'earthLevel', '=', '""'
+    );
     rules.defineRule
       ('abilityNotes.waterSupremacy', classLevel, '?', 'source>=10');
     rules.defineRule
@@ -11152,6 +11159,25 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.waterSupremacy',
       classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
+    );
+    Pathfinder.featureSpells(rules,
+      'Air Supremacy', 'AirSupremacy', 'intelligence', classLevel, null,
+      ['Feather Fall', '5:Levitate', '10:Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Beguiling Touch', 'BeguilingTouch', 'intelligence', classLevel,
+      '10+manipulatorLevel//2+intelligenceModifier', ['Dominate Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      "Creator's Will", 'CreatorsWill', 'intelligence', classLevel, null,
+      ['Minor Creation', '8:Major Creation']
+    );
+    Pathfinder.featureSpells(rules,
+      'Irresistible Demand', 'IrresistibleDemand', 'intelligence', classLevel,
+      '10+controllerLevel//2+intelligenceModifier', ['Dominate Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      'Shift', 'Shift', 'intelligence', classLevel, null, ['Dimension Door']
     );
   } else if(name == 'Battle Herald') {
     rules.defineRule('bannerLevel', classLevel, '+=', null);
@@ -12132,6 +12158,10 @@ PFAPG.pathRulesExtra = function(rules, name) {
   } else if (name == 'Bloodline Deep Earth') {
     rules.defineRule
       ('abilityNotes.earthGlide', pathLevel, '=', 'source + " min"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      pathLevel, '=', '" at half speed"'
+    );
     rules.defineRule
       ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
     rules.defineRule
