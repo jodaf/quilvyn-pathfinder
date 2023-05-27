@@ -1599,7 +1599,7 @@ Pathfinder.FEATURES = {
   'Elemental Resistance':'Section=save Note="Resistance %V to %1"',
   'Elemental Wall':
     'Section=magic ' +
-    'Note="May use <i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> effects %V rd/dy"',
+    'Note="May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects %V rd/dy"',
   'Elf Blood':
     'Section=feature Note="Counts as both elf and human for racial effects"',
   'Elven Magic':
@@ -2197,7 +2197,7 @@ Pathfinder.FEATURES = {
   'Stunning Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts stunned (DC %V Fort staggered) for 1d4 rd"',
-  "Summoner's Charm":'Section=magic Note="+%V rd summoning duration"',
+  "Summoner's Charm":'Section=magic Note="%V summoning duration"',
   "Sun's Blessing":
     'Section=magic ' +
     'Note="Channel Energy inflicts +%V HP on undead and negates channel resistance"',
@@ -6080,6 +6080,20 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Wizard', '=', 'source >= 8 ? Math.floor((source - 6) / 2) : null'
     );
 
+    Pathfinder.featureSpells(rules,
+      'Change Shape', 'ChangeShape', 'intelligence', 'levels.Wizard', null,
+      ['Beast Shape II', 'Elemental Body I', '12:Beast Shape III',
+       '12:Elemental Body II']
+    );
+    Pathfinder.featureSpells(rules,
+      'Elemental Wall', 'ElementalWall', 'intelligence', 'levels.Wizard', null,
+      ['Wall Of Fire']
+    );
+    Pathfinder.featureSpells(rules,
+      'Scrying Adept', 'ScryingAdept', 'intelligence', 'levels.Wizard', null,
+      ['Detect Scrying']
+    );
+
   } else if(name == 'Adept') {
 
     rules.defineRule
@@ -7846,7 +7860,7 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
     rules.defineRule("magicNotes.summoner'sCharm",
-      schoolLevel, '=', 'source>=20 ? "unlimited" : Math.max(Math.floor(source / 2), 1)'
+      schoolLevel, '=', 'source<20 ? Math.max(Math.floor(source / 2), 1) + "rd" : "Unlimited"'
     );
   } else if(name == 'Divination') {
     rules.defineRule('combatNotes.forewarned',
