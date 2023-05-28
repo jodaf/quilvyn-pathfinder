@@ -45,7 +45,7 @@ function PFAPG(edition, rules) {
   PFAPG.talentRules(rules, PFAPG.FEATS, PFAPG.FEATURES, {}, {}, {});
   PFAPG.identityRules(
     rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
-    PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, {}
+    PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, PFAPG.NPC_CLASSES
   );
 
   rules.randomizeOneAttribute = PFAPG.randomizeOneAttribute;
@@ -3652,6 +3652,45 @@ PFAPG.FEATURES = {
       '"Does not need to breathe",' +
       '"Resistance 5 to cold/Resistance 5 to fire"',
 
+  // Antipaladin
+  'Aura Of Cowardice':'Section=combat Note="R10\' Foes suffer -4 vs. fear"',
+  'Aura Of Depravity':
+    'Section=combat,combat ' +
+    'Note=' +
+      '"DR 5/good",' +
+      '"R10\' Foes suffer -4 saves vs. compulsion"',
+  'Aura Of Despair':'Section=combat Note="R10\' Foes suffer -2 on all saves"',
+  // Aura as Pathfinder.js
+  'Aura Of Sin':
+    'Section=combat ' +
+    'Note="R10\' Self weapons and all attacks on foes considered evil for overcoming DR"',
+  'Aura Of Vengeance':
+    'Section=combat Note="R10\' May expend 2 Smite Good uses to grant Smite Good to all allies; must be used w/in 1 rd; bonuses last 1 min"',
+  'Channel Negative Energy':
+    'Section=magic ' +
+    'Note="May expend 2 Touch Of Corruption uses to use Channel Energy effects"',
+  'Cruelty':'Section=magic Note="Touch Of Corruption inflicts condition(s) %V"',
+  'Detect Good':
+    'Section=magic Note="May use <i>Detect Good</i> effects at will"',
+  'Fiendish Boon':'Section=feature Note="1 selection"',
+  'Fiendish Servant':
+    'Section=magic ' +
+    'Note="May use <i>Summon Monster %V</i> to permanently summon a chaotic or evil creature or fiendish animal"',
+  'Fiendish Weapon':
+    'Section=combat ' +
+    'Note="May add %V enhancements and properties to weapon for %1 min %2/dy"',
+  'Plague Bringer':'Section=save Note="Immune to effects of disease"',
+  'Smite Good':
+    'Section=combat ' +
+    'Note="Gains +%V attack, +%1 HP damage, bypass DR, and +%2 AC on good foe (+%4 HP on %5) %3/dy"',
+  'Touch Of Corruption':'Section=magic Note="Touch inflicts %{levels.Antipaladin//2}d6 HP %{levels.Antipaladin//2+charismaModifier}/dy"',
+  'Unholy Champion':
+    'Section=combat,magic ' +
+    'Note=' +
+      '"DR 10/good",' +
+      '"Channel Negative Energy and Touch Of Corruption effects maximized/Smite Good inflicts <i>Banishment</i> effects (DC %V neg)"',
+  'Unholy Resilience':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
+
   // Wizard
   'Acid Cloud':
     'Section=magic ' +
@@ -7039,7 +7078,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Animal Growth':'Witch5', // Witch Animals
   'Animal Shapes':
     'Feather7,Fur7,O8,Witch8', // Oracle Nature; Witch Agility, Animals
-  'Animate Dead':'O3,Souls3,Undeath3,Witch4', // Witch Plague
+  'Animate Dead':'Antipaladin3,O3,Souls3,Undeath3,Witch4', // Witch Plague
   'Animate Objects':'O6,Witch6',
   'Animate Plants':'Decay7,Growth7,Verdant8',
   'Animate Rope':'Construct1,Witch1', // Witch Trickery
@@ -7055,7 +7094,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Augury':'Dreamspun2,Fate2,O2,Witch2',
   'Awaken':'O5', // Oracle Nature
   'Baleful Polymorph':'Witch5',
-  'Bane':'Curse1,Inquisitor1,O1',
+  'Bane':'Antipaladin1,Curse1,Inquisitor1,O1',
   'Banishment':'Inquisitor5,O6',
   'Barkskin':'Alchemist2,Decay2,Defense2,Growth2,O2,Verdant2', // Oracle Nature
   "Bear's Endurance":'Alchemist2,O2,Witch2', // Witch Endurance, Transformation
@@ -7063,7 +7102,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Beast Shape II':'Alchemist4,Witch4', // Witch Transformation
   'Beast Shape III':'Alchemist5,Feather5,Fur5,Witch5', // Witch Transformation
   'Beast Shape IV':'Alchemist6,Aquatic6,Witch7', // Witch Animals
-  'Bestow Curse':'Curse3,O3,Witch3',
+  'Bestow Curse':'Antipaladin3,Curse3,O3,Witch3',
   'Black Tentacles':'Witch4',
   'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
   'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6,O7',
@@ -7072,21 +7111,21 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Bless Water':'Divine2,Inquisitor1,O1,Witch1', // Witch Water
   'Bless Weapon':'Heroism2',
   'Blight':'Seasons4,Witch5',
-  'Blindness/Deafness':'Loss2,Night2,O3,Witch2',
+  'Blindness/Deafness':'Antipaladin2,Loss2,Night2,O3,Witch2',
   'Blink':'Starsoul3,Witch3', // Witch Deception
   'Blur':'Alchemist2,Protean2',
   'Break Enchantment':
     'Curse5,Fate5,Inquisitor5,O5,Restoration5,Revolution5,Witch5',
   'Breath Of Life':'O5',
   "Bull's Strength":
-    'Alchemist2,Ferocity2,O2,Rage2,Resolve2,Witch2', // Witch Strength
+    'Alchemist2,Antipaladin2,Ferocity2,O2,Rage2,Resolve2,Witch2', // Witch Strength
   'Burning Hands':'Ash1,O1,Smoke1,Witch1', // Oracle Flame
   'Call Lightning':'Catastrophe3,Seasons3,Storms3',
   'Call Lightning Storm':'Starsoul4,Storms5',
   'Calm Animals':'Feather1',
   'Calm Emotions':'Family2,Inquisitor2,O2',
   "Cat's Grace":'Alchemist2,Witch2', // Witch Agility
-  'Cause Fear':'Daemon1,Inquisitor1,Murder1,O1,Undeath1,Witch1',
+  'Cause Fear':'Antipaladin1,Daemon1,Inquisitor1,Murder1,O1,Undeath1,Witch1',
   'Chain Lightning':'Cloud6,O6,Stormborn6,Witch7', // Oracle Heavens
   'Chaos Hammer':'"Azata Chaos4","Demon Chaos4",Inquisitor4,O4,Proteus4',
   'Charm Animal':'O1,Witch1', // Oracle Nature; Witch Animals
@@ -7100,7 +7139,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cloudkill':'Witch5',
   'Cloak Of Chaos':'"Azata Chaos8","Demon Chaos8",O8,Proteus8',
   'Color Spray':'O1', // Oracle Heavens
-  'Command':'"Devil Evil1","Devil Law1",Inquisitor1,O1,Toil1,Witch1',
+  'Command':
+    'Antipaladin1,"Devil Evil1","Devil Law1",Inquisitor1,O1,Toil1,Witch1',
   'Command Plants':'Growth4,Verdant4',
   'Command Undead':'Inevitable3,Witch2', // Witch Plague
   'Commune':'Inquisitor5,O5',
@@ -7110,7 +7150,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Confusion':'Deception4,Lust4,Protean4,Thievery4,Witch4',
   'Consecrate':'Inquisitor2,O2',
   'Contact Other Plane':'Alchemist5,O5,Witch5', // Oracle Lore
-  'Contagion':'Decay3,O3,Witch3', // Witch Plague
+  'Contagion':'Antipaladin3,Decay3,O3,Witch3', // Witch Plague
   'Continual Flame':'Day2,Inquisitor3,O3',
   'Control Plants':'Decay8,Growth8',
   'Control Undead':'O7,Witch7', // Oracle Bones; Witch Plague
@@ -7130,28 +7170,28 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cure Moderate Wounds':'Alchemist2,Inquisitor2,O2,Resurrection2,Witch2',
   'Cure Serious Wounds':
     'Alchemist3,Inquisitor3,O3,Restoration3,Resurrection3,Witch4',
-  'Curse Water':'Inquisitor1,O1,Witch1', // Witch Water
+  'Curse Water':'Antipaladin1,Inquisitor1,O1,Witch1', // Witch Water
   'Dancing Lights':'ArcaneTalent0,Witch0',
-  'Darkness':'Inquisitor2,O2,Witch2', // Witch Shadow
-  'Darkvision':'Alchemist2,Deep2,Shadow2',
+  'Darkness':'Antipaladin2,Inquisitor2,O2,Witch2', // Witch Shadow
+  'Darkvision':'Alchemist2,Antipaladin2,Deep2,Shadow2',
   'Daylight':'Day3,Inquisitor3,Light3,O3',
   'Daze':'ArcaneTalent0,Inquisitor0,Witch0',
   'Daze Monster':'Witch2',
-  'Death Knell':'Inquisitor2,Murder2,O2,Witch2',
+  'Death Knell':'Antipaladin1,Inquisitor2,Murder2,O2,Witch2',
   'Death Ward':'Alchemist4,Inquisitor4,Murder4,O4,Souls4,Witch4',
   'Deathwatch':'Ancestors1,O1,Souls1',
   'Deep Slumber':'Dreamspun3,Witch3',
-  'Deeper Darkness':'Inquisitor3,Loss3,Night3,O3,Shadow3,Witch3',// Witch Shadow
+  'Deeper Darkness':'Antipaladin3,Inquisitor3,Loss3,Night3,O3,Shadow3,Witch3',// Witch Shadow
   'Delay Poison':'Alchemist2,Inquisitor2,O2,Serpentine2,Witch2',
   'Demand':'Leadership8,Lust8,Martyr8,Witch8',
-  'Desecrate':'Inquisitor2,O2',
+  'Desecrate':'Antipaladin2,Inquisitor2,O2',
   'Destruction':'Ancestors7,Murder7,O7,Souls7,Undeath7,Witch8',
   'Detect Chaos':'Inquisitor1,O1',
   'Detect Evil':'Inquisitor1,O1',
   'Detect Good':'Inquisitor1,O1',
   'Detect Law':'Inquisitor1,O1',
   'Detect Magic':'ArcaneTalent0,Inquisitor0,O0,Witch0',
-  'Detect Poison':'ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Detect Poison':'Antipaladin1,ArcaneTalent0,Inquisitor0,O0,Witch0',
   'Detect Secret Doors':'Alchemist1,Witch1',
   'Detect Scrying':'Inquisitor4,Witch4',
   'Detect Thoughts':'Alchemist2,Inquisitor2,Thought2,Witch2',
@@ -7162,14 +7202,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dimensional Lock':'O8',
   'Discern Lies':'Alchemist4,Inquisitor4,Leadership4,Martyr4,O4,Witch4',
   'Discern Location':'O8,Witch8',
-  'Disguise Self':'Alchemist1,Deception1,Inquisitor1,Thievery1',
+  'Disguise Self':'Alchemist1,Antipaladin1,Deception1,Inquisitor1,Thievery1',
   'Disintegrate':'Ash7,Protean6,Rage7',
   'Dismissal':'Inquisitor4,O4',
   'Dispel Chaos':'"Archon Law5","Devil Law5",Inquisitor5,O5',
   'Dispel Evil':'Agathion5,"Archon Good5","Azata Good5",Inquisitor5,O5',
-  'Dispel Good':'Daemon5,"Demon Evil5","Devil Evil5",Inquisitor5,O5',
-  'Dispel Law':'"Azata Chaos5","Demon Chaos5",Inquisitor5,Proteus5,O5',
-  'Dispel Magic':'Arcana3,Divine3,Inquisitor3,O3,Witch3',
+  'Dispel Good':
+    'Antipaladin4,Daemon5,"Demon Evil5","Devil Evil5",Inquisitor5,O5',
+  'Dispel Law':
+    'Antipaladin4,"Azata Chaos5","Demon Chaos5",Inquisitor5,Proteus5,O5',
+  'Dispel Magic':'Antipaladin3,Arcana3,Divine3,Inquisitor3,O3,Witch3',
   'Displacement':'Alchemist3,Proteus3',
   'Disrupt Undead':'ArcaneTalent0,Inquisitor0',
   'Disrupting Weapon':'Inquisitor5,O5',
@@ -7180,9 +7222,9 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Dominate Animal':'Witch3', // Witch Animals
   'Dominate Monster':'Love9,Lust9,Serpentine9,Witch9',
   'Dominate Person':'Witch5',
-  'Doom':'"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
+  'Doom':'Antipaladin1,"Demon Chaos1","Demon Evil1",Inquisitor1,O1',
   'Dream':'Alchemist5,Dreamspun5,O5,Witch5', // Witch Wisdom; Rage Prophet
-  "Eagle's Splendor":'Alchemist2,O2',
+  "Eagle's Splendor":'Alchemist2,Antipaladin2,O2',
   'Earthquake':'Catastrophe8,Caves8,Deep8,O8,Rage8',
   'Elemental Body I':'Alchemist4',
   'Elemental Body II':'Alchemist5',
@@ -7208,7 +7250,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Faerie Fire':'Light1',
   'False Life':'Alchemist2,O2,Witch2', // Oracle Bones
   'False Vision':'Deception5,Thievery5',
-  'Fear':'Inquisitor4,O4,Witch4', // Oracle Bones
+  'Fear':'Antipaladin4,Inquisitor4,O4,Witch4', // Oracle Bones
   'Feather Fall':'Feather2',
   'Feeblemind':'Witch5',
   'Find The Path':'Exploration6,Inquisitor6,O6,Thought6,Trade6,Witch6',
@@ -7254,8 +7296,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Greater Dispel Magic':'Freedom6,Inquisitor6,O6,Witch6',
   'Greater Glyph Of Warding':'Inquisitor6,Language6,O6',
   'Greater Heroism':'Heroism6,Witch6',
-  'Greater Invisibility':'Alchemist4,Inquisitor4',
-  'Greater Magic Weapon':'Inquisitor3,O4,Witch3', // Witch Strength
+  'Greater Invisibility':'Alchemist4,Antipaladin4,Inquisitor4',
+  'Greater Magic Weapon':'Antipaladin3,Inquisitor3,O4,Witch3', // Witch Strength
   'Greater Planar Ally':'O8,Tactics8',
   'Greater Polymorph':'Protean7',
   'Greater Prying Eyes':'Starsoul8,Witch8',
@@ -7281,7 +7323,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Hide From Undead':'Inquisitor1,O1',
   'Hold Animal':'Fur2',
   'Hold Monster':'Inquisitor4,Serpentine5,Witch5',
-  'Hold Person':'Inquisitor2,O2,Witch2',
+  'Hold Person':'Antipaladin2,Inquisitor2,O2,Witch2',
   'Holy Aura':'Agathion8,"Archon Good8","Azata Good8",Heroism8,Honor8,O8',
   'Holy Smite':'Agathion4,"Archon Good4","Azata Good4",Heroism4,Honor4,Inquisitor4,O4',
   'Holy Sword':'Heroism7,Honor7',
@@ -7295,13 +7337,14 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Implosion':'Catastrophe9,O9,Rage9',
   'Incendiary Cloud':'Ash8,O8,Smoke8', // Oracle Flame
   'Inflict Critical Wounds':'Catastrophe4,Inquisitor4,O4,Rage4,Witch5',
-  'Inflict Light Wounds':'Inquisitor1,O1,Witch1',
-  'Inflict Moderate Wounds':'Inquisitor2,O2,Witch2',
-  'Inflict Serious Wounds':'Inquisitor3,O3,Witch4',
+  'Inflict Light Wounds':'Antipaladin1,Inquisitor1,O1,Witch1',
+  'Inflict Moderate Wounds':'Antipaladin3,Inquisitor2,O2,Witch2',
+  'Inflict Serious Wounds':'Antipaladin4,Inquisitor3,O3,Witch4',
   'Insanity':'Insanity7,Love7,Lust7,Nightmare7,Witch7',
   'Insect Plague':'O5',
   'Instant Summons':'Language7,Wards7,Witch7',
-  'Invisibility':'Alchemist2,Inquisitor2,Thievery2,Witch2', // Witch Deception
+  'Invisibility':
+    'Alchemist2,Antipaladin2,Inquisitor2,Thievery2,Witch2', // Witch Deception
   'Invisibility Purge':'Inquisitor3,O3',
   'Iron Body':'Metal8,Witch8', // Witch Endurance
   'Irresistible Dance':'Serpentine8,Witch8',
@@ -7327,15 +7370,15 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Magic Aura':'Arcana1',
   'Magic Circle Against Chaos':'Inquisitor3,O3',
   'Magic Circle Against Evil':'Inquisitor3,O3',
-  'Magic Circle Against Good':'Inquisitor3,O3',
-  'Magic Circle Against Law':'Inquisitor3,O3',
+  'Magic Circle Against Good':'Antipaladin3,Inquisitor3,O3',
+  'Magic Circle Against Law':'Antipaladin3,Inquisitor3,O3',
   'Magic Fang':'Fur1',
   'Magic Jar':'Alchemist5,Witch5',
   'Magic Mouth':'Arcana2',
   'Magic Stone':'Caves1,Metal1,O1',
   'Magic Vestment':
     'Inquisitor3,Martyr3,O3,Resolve3,Tactics3,Witch3', // Witch Wisdom
-  'Magic Weapon':'Blood1,Inquisitor1,O1,Tactics1',
+  'Magic Weapon':'Antipaladin1,Blood1,Inquisitor1,O1,Tactics1',
   'Major Image':'Witch3', // Witch Trickery
   'Major Creation':'Construct6,Protean5,Toil6,Witch5',
   'Make Whole':'O2',
@@ -7380,7 +7423,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mount':'Witch1',
   'Neutralize Poison':'Alchemist4,Inquisitor4,O4,Restoration4,Witch4',
   'Nightmare':'Alchemist5,Insanity5,Night6,Nightmare5',
-  'Nondetection':'Alchemist3,Deception3,Inquisitor3',
+  'Nondetection':'Alchemist3,Antipaladin3,Deception3,Inquisitor3',
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1,Witch1',
   'Open/Close':'ArcaneTalent0',
@@ -7398,7 +7441,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Plant Shape I':'Alchemist5',
   'Plant Shape II':'Alchemist6',
   'Plant Shape III':'Verdant7',
-  'Poison':'Decay4,O4,Serpentine4,Witch4',
+  'Poison':'Antipaladin4,Decay4,O4,Serpentine4,Witch4',
   'Polar Ray':'Boreal8,Ice9',
   'Polymorph':'Alchemist5,Witch5', // Witch Agility
   'Polymorph Any Object':'Construct8,Protean8',
@@ -7417,8 +7460,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Protection From Energy':
     'Alchemist3,Defense3,Inquisitor3,O3,Witch3', // Witch Endurance
   'Protection From Evil':'Inquisitor1,O1,Purity1',
-  'Protection From Good':'Inquisitor1,O1,Purity1',
-  'Protection From Law':'Inquisitor1,O1,Purity1',
+  'Protection From Good':'Antipaladin1,Inquisitor1,O1,Purity1',
+  'Protection From Law':'Antipaladin1,Inquisitor1,O1,Purity1',
   'Protection From Spells':'Arcana8,Divine8,Witch8', // Witch Wisdom
   'Prying Eyes':'Witch5',
   'Purify Food And Drink':'O0',
@@ -7430,7 +7473,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Ray Of Enfeeblement':'Shadow1,Witch1',
   'Ray Of Exhaustion':'Witch3',
   'Ray Of Frost':'ArcaneTalent0',
-  'Read Magic':'ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Read Magic':'Antipaladin1,ArcaneTalent0,Inquisitor0,O0,Witch0',
   'Reduce Person':'Alchemist1,Witch1',
   'Refuge':'Family7,Freedom7,O7,Revolution7,Witch9',
   'Regenerate':'O7,Restoration7,Witch7',
@@ -7452,7 +7495,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Righteous Might':
     'Ferocity5,Growth5,Heroism5,Honor5,Inquisitor5,O5,Resolve5,Witch5', // Witch Strength
   'Sanctuary':'Freedom1,Inquisitor1,O1',
-  'Scare':'Witch2',
+  'Scare':'Antipaladin2,Witch2',
   'Scintillating Pattern':'Insanity8,Nightmare8,Witch8', // Witch Deception
   'Screen':'Witch8', // Witch Trickery
   'Scrying':'O5,Witch4',
@@ -7479,9 +7522,9 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Shield Other':'Home2,Inquisitor2,Martyr2,O2,Purity2',
   'Shocking Grasp':'Stormborn1,Witch1', // Witch Elements
   'Shout':'Catastrophe5,Rage5,Stormborn4',
-  'Silence':'Inquisitor2,O2',
+  'Silence':'Antipaladin2,Inquisitor2,O2',
   'Silent Image':'Witch1', // Witch Shadow
-  'Slay Living':'Ancestors5,O5,Souls5,Undeath5,Witch6',
+  'Slay Living':'Ancestors5,Antipaladin4,O5,Souls5,Undeath5,Witch6',
   'Sleep':'Dreamspun1,Night1,Witch1',
   'Sleet Storm':'Storms4,Witch3',
   'Solid Fog':'Cloud4,Witch4',
@@ -7510,10 +7553,10 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Storm Of Vengeance':
     'Cloud9,Leadership9,Martyr9,O9,Seasons9,Stormborn9,Storms9,Witch9',
   'Suggestion':'"Devil Evil3","Devil Law3",Love3,Lust3,Witch3',
-  'Summon Monster I':'O1,Witch1',
-  'Summon Monster II':'O2,Witch2',
-  'Summon Monster III':'O3,Serpentine3,Witch3',
-  'Summon Monster IV':'O4,Witch4',
+  'Summon Monster I':'Antipaladin1,O1,Witch1',
+  'Summon Monster II':'Antipaladin2,O2,Witch2',
+  'Summon Monster III':'Antipaladin3,O3,Serpentine3,Witch3',
+  'Summon Monster IV':'Antipaladin4,O4,Witch4',
   'Summon Monster IX':'Agathion9,"Archon Good9","Archon Law9","Azata Chaos9","Azata Good9",Daemon9,"Demon Chaos9","Demon Evil9","Devil Evil9","Devil Law9",Inevitable9,O9,Proteus9,Witch9',
   'Summon Monster V':'Night5,O5,Witch5',
   'Summon Monster VI':'O6,Witch6',
@@ -7557,12 +7600,12 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'True Seeing':'Alchemist6,Inquisitor5,Memory5,O5,Witch6',
   'True Strike':'Alchemist1,Catastrophe1,Fate1,Inquisitor1,Rage1',
   'Undeath To Death':'Inquisitor6,O6',
-  'Undetectable Alignment':'Alchemist2,Inquisitor2,O2',
+  'Undetectable Alignment':'Alchemist2,Antipaladin2,Inquisitor2,O2',
   'Unhallow':'Inquisitor5,O5',
   'Unholy Aura':'Daemon8,"Demon Evil8","Devil Evil8",O8',
   'Unholy Blight':'Daemon4,"Demon Evil4","Devil Evil4",Inquisitor4,O4',
   'Unseen Servant':'Starsoul1,O1,Witch1', // Rage Prophet
-  'Vampiric Touch':'Blood3,Daemon3,Witch3',
+  'Vampiric Touch':'Antipaladin3,Blood3,Daemon3,Witch3',
   'Ventriloquism':'Witch1', // Witch Deception
   'Virtue':'Inquisitor0,O0',
   'Vision':'Dreamspun7,O7,Witch7', // Oracle Lore; Rage Prophet
@@ -8159,6 +8202,36 @@ PFAPG.CLASSES = {
   'Wizard':
     'Selectables=' +
       QuilvynUtils.getKeys(PFAPG.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',')
+};
+PFAPG.NPC_CLASSES = {
+  'Antipaladin':
+    'Require="alignment == \'Chaotic Evil\'" ' +
+    'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Features=' +
+      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
+      '"1:Weapon Proficiency (Martial)",' +
+      '1:Aura,"1:Detect Good","1:Smite Good","2:Unholy Resilience",' +
+      '"2:Touch Of Corruption","3:Aura Of Cowardice","3:Plague Bringer",' +
+      '3:Cruelty,"4:Channel Negative Energy","5:Fiendish Boon",' +
+      '"8:Aura Of Despair","11:Aura Of Vengeance","14:Aura Of Sin",' +
+      '"17:Aura Of Depravity","20:Unholy Champion" ' +
+    'Selectables=' +
+      '"5:Fiendish Servant:Fiendish Boon","5:Fiendish Weapon:Fiendish Boon",' +
+      '"3:Cruelty (Fatigued):Cruelty","3:Cruelty (Shaken):Cruelty",' +
+      '"3:Cruelty (Sickened):Cruelty","6:Cruelty (Dazed):Cruelty",' +
+      '"6:Cruelty (Diseased):Cruelty","6:Cruelty (Staggered):Cruelty",' +
+      '"9:Cruelty (Cursed):Cruelty","9:Cruelty (Exhausted):Cruelty",' +
+      '"9:Cruelty (Frightened):Cruelty","9:Cruelty (Nauseated):Cruelty",' +
+      '"9:Cruelty (Poisoned):Cruelty","12:Cruelty (Blinded):Cruelty",' +
+      '"12:Cruelty (Deafened):Cruelty","12:Cruelty (Paralyzed):Cruelty",' +
+      '"12:Cruelty (Stunned):Cruelty" ' +
+    'CasterLevelDivine="levels.Antipaladin >= 4 ? levels.Antipaladin - 3 : null" ' +
+    'SpellAbility=charisma ' +
+    'SpellSlots=' +
+      'Antipaladin1:4=0;5=1;9=2;13=3;17=4,' +
+      'Antipaladin2:7=0;8=1;12=2;16=3;20=4,' +
+      'Antipaladin3:10=0;11=1;15=2;19=3,' +
+      'Antipaladin4:13=0;14=1;18=2;20=3',
 };
 PFAPG.PRESTIGE_CLASSES = {
   'Battle Herald':
@@ -10640,6 +10713,71 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Power Of Faith', 'PowerOfFaith', 'wisdom', 'warriorOfTheHolyLightLevel',
       null, ['12:Daylight']
+    );
+  } else if(name == 'Antipaladin') {
+    rules.defineRule
+      ('channelLevel', 'levels.Antipaladin', '+=', 'source>=4 ? source : null');
+    rules.defineRule('combatNotes.fiendishWeapon',
+      'levels.Antipaladin', '=', 'Math.floor((source - 2) / 3)'
+    );
+    rules.defineRule
+      ('combatNotes.fiendishWeapon.1', 'levels.Antipaladin', '=', null);
+    rules.defineRule('combatNotes.fiendishWeapon.2',
+      'levels.Antipaladin', '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule
+      ('combatNotes.smiteGood', 'charismaModifier', '=', 'Math.max(source, 0)');
+    rules.defineRule('combatNotes.smiteGood.1',
+      'features.Smite Good', '?', null,
+      classLevel, '=', null
+    );
+    rules.defineRule('combatNotes.smiteGood.2',
+      'features.Smite Good', '?', null,
+      'charismaModifier', '=', 'source > 0 ? source : 0'
+    );
+    rules.defineRule('combatNotes.smiteGood.3',
+      'features.Smite Good', '?', null,
+      classLevel, '=', 'Math.floor((source + 2) / 3)'
+    );
+    rules.defineRule
+      ('combatNotes.smiteGood.4', 'combatNotes.smiteGood.1', '=', 'source * 2');
+    rules.defineRule('combatNotes.smiteGood.5',
+      'features.Smite Good', '?', null,
+      '', '=', '"outsider, dragon, cleric, or paladin"'
+    );
+    rules.defineRule
+      ('features.Channel Energy', 'features.Channel Negative Energy', '=', '1');
+    rules.defineRule('magicNotes.fiendishServant',
+      classLevel, '=', 'source>=17 ? "IX" : ["III", "IV", "V", "VI", "VII", "VIII"][Math.floor((source - 5)/ 2)]'
+    );
+    rules.defineRule('saveNotes.unholyResilience',
+      'charismaModifier', '=', 'Math.max(source, 0)'
+    );
+    rules.defineRule('selectableFeatureCount.Antipaladin (Fiendish Bond)',
+      'levels.Antipaladin', '=', 'source >= 5 ? 1 : null'
+    );
+    rules.defineRule('selectableFeatureCount.Antipaladin (Cruelty)',
+      'levels.Antipaladin', '=', 'Math.floor(source / 3)'
+    );
+    let cruelties =
+      QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Cruelty/).map(x => x.replace(/^.*Cruelty/, 'Cruelty'));
+    // Rule used only for its side-effect
+    rules.defineRule('magicNotes.cruelty',
+      'levels.Antipaladin', '=', '(Pathfinder.crueltiesTaken=[]) ? null : null'
+    );
+    for(let i = 0; i < cruelties.length; i++) {
+      let cruelty = cruelties[i];
+      rules.defineRule('magicNotes.cruelty',
+        'antipaladinFeatures.' + cruelty, '=', 'Pathfinder.crueltiesTaken.push("' + cruelty.replace(/Cruelty..|.$/g, '').toLowerCase() + '") ? Pathfinder.crueltiesTaken.join(", ") : ""'
+      );
+    }
+    Pathfinder.featureSpells(rules,
+      'Detect Good', 'DetectGood', 'charisma', 'levels.Antipaladin', null,
+      ['Detect Good']
+    );
+    Pathfinder.featureSpells(rules,
+      'Unholy Champion', 'UnholyChampion', 'charisma', 'levels.Antipaladin',
+      '', ['Banishment']
     );
   } else if(name == 'Ranger') {
     rules.defineRule('abilityNotes.formOfTheBear',
