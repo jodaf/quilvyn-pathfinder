@@ -3653,42 +3653,46 @@ PFAPG.FEATURES = {
       '"Resistance 5 to cold/Resistance 5 to fire"',
 
   // Antipaladin
-  'Aura Of Cowardice':'Section=combat Note="R10\' Foes suffer -4 vs. fear"',
+  'Aura Of Cowardice':
+    'Section=combat ' +
+    'Note="R10\' Foes suffer -4 vs. fear and lose immunity to fear"',
   'Aura Of Depravity':
     'Section=combat,combat ' +
     'Note=' +
       '"DR 5/good",' +
       '"R10\' Foes suffer -4 saves vs. compulsion"',
   'Aura Of Despair':'Section=combat Note="R10\' Foes suffer -2 on all saves"',
-  // Aura as Pathfinder.js
+  'Aura Of Evil':'Section=feature Note="Visible to <i>Detect Evil</i>"',
   'Aura Of Sin':
     'Section=combat ' +
-    'Note="R10\' Self weapons and all attacks on foes considered evil for overcoming DR"',
+    'Note="Self weapons and R10\' attacks considered evil for overcoming DR"',
   'Aura Of Vengeance':
     'Section=combat Note="R10\' May expend 2 Smite Good uses to grant Smite Good to all allies; must be used w/in 1 rd; bonuses last 1 min"',
   'Channel Negative Energy':
     'Section=magic ' +
     'Note="May expend 2 Touch Of Corruption uses to use Channel Energy effects"',
-  'Cruelty':'Section=magic Note="Touch Of Corruption inflicts condition(s) %V"',
+  'Cruelty':'Section=magic Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fort neg)"',
   'Detect Good':
     'Section=magic Note="May use <i>Detect Good</i> effects at will"',
   'Fiendish Boon':'Section=feature Note="1 selection"',
   'Fiendish Servant':
     'Section=magic ' +
-    'Note="May use <i>Summon Monster %V</i> to permanently summon a chaotic or evil creature or fiendish animal"',
+    'Note="May use <i>Summon Monster %V</i> to permanently summon %{levels.Antipaladin>=11 ? \'an advanced\' : \'a\'} chaotic evil creature or fiendish animal%{levels.Antipaladin>=15 ? \' w/SR \' + (levels.Antipaladin+11) : \'\'}"',
   'Fiendish Weapon':
     'Section=combat ' +
     'Note="May add %V enhancements and properties to weapon for %1 min %2/dy"',
   'Plague Bringer':'Section=save Note="Immune to effects of disease"',
   'Smite Good':
     'Section=combat ' +
-    'Note="Gains +%V attack, +%1 HP damage, bypass DR, and +%2 AC on good foe (+%4 HP on %5) %3/dy"',
-  'Touch Of Corruption':'Section=magic Note="Touch inflicts %{levels.Antipaladin//2}d6 HP %{levels.Antipaladin//2+charismaModifier}/dy"',
+    'Note="May gain +%{charismaModifier>?0} attack, +%{levels.Antipaladin} HP damage, bypass DR, and +%{charismaModifier>?0} AC vs. chosen good foe (+%{levels.Antipaladin*2} HP on first hit vs. %1) %V/dy"',
+  'Touch Of Corruption':
+    'Section=magic ' +
+    'Note="Touch inflicts %Vd6 HP w/out provoking AOO or heals undead %1/dy"',
   'Unholy Champion':
     'Section=combat,magic ' +
     'Note=' +
       '"DR 10/good",' +
-      '"Channel Negative Energy and Touch Of Corruption effects maximized/Smite Good inflicts <i>Banishment</i> effects (DC %V neg)"',
+      '"Channel Negative Energy and Touch Of Corruption effects maximized/Smite Good inflicts <i>Banishment</i> effects"',
   'Unholy Resilience':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
 
   // Wizard
@@ -8207,10 +8211,14 @@ PFAPG.NPC_CLASSES = {
   'Antipaladin':
     'Require="alignment == \'Chaotic Evil\'" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
+    'Skills=' +
+      'Bluff,Craft,Disguise,"Handle Animal",Intimidate,' +
+      '"Knowledge (Religion)",Profession,Ride,"Sense Motive",Spellcraft,' +
+      'Stealth ' +
     'Features=' +
       '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
-      '1:Aura,"1:Detect Good","1:Smite Good","2:Unholy Resilience",' +
+      '"1:Aura Of Evil","1:Detect Good","1:Smite Good","2:Unholy Resilience",' +
       '"2:Touch Of Corruption","3:Aura Of Cowardice","3:Plague Bringer",' +
       '3:Cruelty,"4:Channel Negative Energy","5:Fiendish Boon",' +
       '"8:Aura Of Despair","11:Aura Of Vengeance","14:Aura Of Sin",' +
@@ -9899,7 +9907,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'levels.Cleric', null, ['Endure Elements']
     );
   } else if(name == 'Druid') {
-    var allFeats = rules.getChoices('feats');
+    let allFeats = rules.getChoices('feats');
     rules.defineRule('abilityNotes.naturalSwimmer',
       'speed', '=', 'Math.floor(source / 2)',
       'abilityNotes.seaborn', '*', '2'
@@ -10625,12 +10633,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Shared Defense', '?', null,
       classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
     );
-    rules.defineRule('combatNotes.smiteEvil.3',
+    rules.defineRule('combatNotes.smiteEvil',
       'hospitalerLevel', 'v', 'Math.floor((source + 5) / 6)',
       'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
     rules.defineRule
-      ('combatNotes.smiteEvil.5', 'undeadScourgeLevel', '=', '"undead"');
+      ('combatNotes.smiteEvil.1', 'undeadScourgeLevel', '=', '"undead"');
     rules.defineRule('magicNotes.channelEnergy.1',
       // Replace generic Paladin level computation w/Hospitaler-specific
       'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
@@ -10725,30 +10733,31 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.fiendishWeapon.2',
       'levels.Antipaladin', '=', 'Math.floor((source - 1) / 4)'
     );
-    rules.defineRule
-      ('combatNotes.smiteGood', 'charismaModifier', '=', 'Math.max(source, 0)');
-    rules.defineRule('combatNotes.smiteGood.1',
-      'features.Smite Good', '?', null,
-      classLevel, '=', null
-    );
-    rules.defineRule('combatNotes.smiteGood.2',
-      'features.Smite Good', '?', null,
-      'charismaModifier', '=', 'source > 0 ? source : 0'
-    );
-    rules.defineRule('combatNotes.smiteGood.3',
+    rules.defineRule('combatNotes.smiteGood',
       'features.Smite Good', '?', null,
       classLevel, '=', 'Math.floor((source + 2) / 3)'
     );
-    rules.defineRule
-      ('combatNotes.smiteGood.4', 'combatNotes.smiteGood.1', '=', 'source * 2');
-    rules.defineRule('combatNotes.smiteGood.5',
+    rules.defineRule('combatNotes.smiteGood.1',
       'features.Smite Good', '?', null,
       '', '=', '"outsider, dragon, cleric, or paladin"'
+    );
+    rules.defineRule('damageReduction.good',
+      'combatNotes.auraOfDepravity', '^=', '5',
+      'combatNotes.unholyChampion', '^=', '10'
     );
     rules.defineRule
       ('features.Channel Energy', 'features.Channel Negative Energy', '=', '1');
     rules.defineRule('magicNotes.fiendishServant',
       classLevel, '=', 'source>=17 ? "IX" : ["III", "IV", "V", "VI", "VII", "VIII"][Math.floor((source - 5)/ 2)]'
+    );
+    rules.defineRule('magicNotes.touchOfCorruption',
+      'levels.Antipaladin', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.touchOfCorruption.1',
+      'levels.Antipaladin', '=', 'Math.floor(source / 2)',
+      'charismaModifier', '+', null,
+      'magicNotes.extraChannel', '+', '4',
+      'magicNotes.extraLayOnHands', '+', null
     );
     rules.defineRule('saveNotes.unholyResilience',
       'charismaModifier', '=', 'Math.max(source, 0)'
@@ -10761,6 +10770,21 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     let cruelties =
       QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Cruelty/).map(x => x.replace(/^.*Cruelty/, 'Cruelty'));
+    let details = {
+      'Cruelty (Blinded)':' for %{levels.Antipaladin} rd',
+      'Cruelty (Cursed)':' as <i>Bestow Curse</i>',
+      'Cruelty (Dazed)':' for 1 rd',
+      'Cruelty (Diseased)':' as <i>Contagion</i>',
+      'Cruelty (Deafened)':' for %{levels.Antipaladin} rd',
+      'Cruelty (Frightened)':' for %{levels.Antipaladin//2} rd',
+      'Cruelty (Nauseated)':' for %{levels.Antipaladin//3} rd',
+      'Cruelty (Paralyzed)':' for 1 rd',
+      'Cruelty (Poisoned)':' as <i>Poison</i>',
+      'Cruelty (Shaken)':' for %{levels.Antipaladin} rd',
+      'Cruelty (Sickened)':' for %{levels.Antipaladin} rd',
+      'Cruelty (Staggered)':' for %{levels.Antipaladin//2} rd',
+      'Cruelty (Stunned)':' for %{levels.Antipaladin//4} rd'
+    };
     // Rule used only for its side-effect
     rules.defineRule('magicNotes.cruelty',
       'levels.Antipaladin', '=', '(Pathfinder.crueltiesTaken=[]) ? null : null'
@@ -10768,9 +10792,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     for(let i = 0; i < cruelties.length; i++) {
       let cruelty = cruelties[i];
       rules.defineRule('magicNotes.cruelty',
-        'antipaladinFeatures.' + cruelty, '=', 'Pathfinder.crueltiesTaken.push("' + cruelty.replace(/Cruelty..|.$/g, '').toLowerCase() + '") ? Pathfinder.crueltiesTaken.join(", ") : ""'
+        'antipaladinFeatures.' + cruelty, '=', 'Pathfinder.crueltiesTaken.push("' + cruelty.replace(/Cruelty..|.$/g, '').toLowerCase() + (details[cruelty] || '') + '") ? Pathfinder.crueltiesTaken.join(", ") : ""'
       );
     }
+    Pathfinder.featureSpells(rules,
+      'Cruelty', 'Cruelty', 'charisma', 'levels.Antipaladin',
+      '10+levels.Antipaladin//2+charismaModifier',
+      ['Bestow Curse', 'Contagion', 'Poison']
+    );
     Pathfinder.featureSpells(rules,
       'Detect Good', 'DetectGood', 'charisma', 'levels.Antipaladin', null,
       ['Detect Good']
@@ -11101,7 +11130,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
   } else if(name == 'Wizard') {
     let allSchools = rules.getChoices('schools');
-    for(var s in allSchools) {
+    for(let s in allSchools) {
       if(!(s in PFAPG.SCHOOLS))
         continue;
       let elementalSchool = ['Air', 'Earth', 'Fire', 'Water'].includes(s);
@@ -11123,7 +11152,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule('features.School Opposition (' + oppositeSchool[s] + ')',
           'wizardFeatures.School Opposition (' + oppositeSchool[s] + ')', '=', '1'
         );
-        for(var i = 1; i <= 9; i++) {
+        for(let i = 1; i <= 9; i++) {
           rules.defineRule('spellSlots.W' + i,
             'magicNotes.schoolSpecialization(' + s + ')', '+', '1'
           );
@@ -11858,7 +11887,7 @@ PFAPG.featRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to pathRules.
  */
 PFAPG.pathRulesExtra = function(rules, name) {
-  var pathLevel =
+  let pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
   if(name.match(/Mystery/)) {
     rules.defineRule('selectableFeatureCount.Oracle (' + name.replace('Mystery', 'Revelation') + ')',
