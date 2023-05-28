@@ -105,13 +105,15 @@ var attributes = {
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Ranger Features</b>: Armor Proficiency (Medium); Combat Style (Archery); Companion Bond; Core Ranger; Endurance; Evasion; Favored Enemy; Favored Terrain; Improved Precise Shot; Pinpoint Targeting; Point-Blank Shot; Shield Proficiency; Swift Tracker; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Resolve; Aura; Channel Positive Energy; Core Paladin; Detect Evil; Divine Grace; Divine Health; Divine Weapon; Lay On Hands; Mercy (Cursed); Mercy (Dazed); Mercy (Diseased); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Good; Aura Of Resolve; Channel Positive Energy; Core Paladin; Detect Evil; Divine Grace; Divine Health; Divine Weapon; Lay On Hands; Mercy (Cursed); Mercy (Dazed); Mercy (Diseased); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td>Aura Of Good: Visible to <i>Detect Good</i></td>
       </tr><tr style="text-align:center">
         <td>Woodland Stride: May move normally through undergrowth</td>
       </tr></table>
@@ -251,7 +253,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: Gains +3 attack, +10 HP damage, bypass DR, and +3 AC on evil foe (+20 HP on outsider, dragon, or undead) 4/dy</td>
+        <td>Smite Evil: May gain +3 attack, +10 HP damage, bypass DR, and +3 AC vs. chosen evil foe (+20 HP on first hit vs. outsider, dragon, or undead) 4/dy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -374,8 +376,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Greater Elemental Focus (Acid): Increased Elemental Focus (Acid) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
-    </tr><tr style="text-align:center">
       <td>Channel Energy: R30' May heal or inflict 5d6 HP (DC 18 Will half) 6/dy</td>
     </tr><tr style="text-align:center">
       <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
@@ -390,7 +390,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Lay On Hands: May harm undead or heal 5d6 HP 8/dy</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes condition(s) cursed, dazed, diseased</td>
+      <td>Mercy: Lay On Hands removes cursed, dazed, diseased</td>
     </tr><tr style="text-align:center">
       <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
     </tr><tr style="text-align:center">
