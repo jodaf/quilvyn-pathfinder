@@ -822,10 +822,11 @@ Pathfinder.FEATURES = {
   'Augment Summoning':
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
   'Aura':
-    'Section=magic ' +
+    'Section=feature ' +
     'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
   'Aura Of Courage':
     'Section=save Note="Immune to fear/R10\' Allies +4 vs. fear"',
+  'Aura Of Good':'Section=feature Note="Visible to <i>Detect Good</i>"',
   'Bardic Knowledge':
     'Section=skill,skill ' +
     'Note=' +
@@ -1133,7 +1134,7 @@ Pathfinder.FEATURES = {
          '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat ' +
-    'Note="Gains +%V attack, +%1 HP damage, bypass DR, and +%2 AC on evil foe (+%4 HP on %5) %3/dy"',
+    'Note="May gain +%{charismaModifier>?0} attack, +%{levels.Paladin} HP damage, bypass DR, and +%{charismaModifier>?0} AC vs. chosen evil foe (+%{levels.Paladin*2} HP on first hit vs. %1) %V/dy"',
   'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
   'Sneak Attack':
     'Section=combat ' +
@@ -1932,7 +1933,7 @@ Pathfinder.FEATURES = {
   "Medusa's Wrath":
     'Section=combat ' +
     'Note="May make 2 extra unarmed attacks vs. diminished-capacity foe"',
-  'Mercy':'Section=magic Note="Lay On Hands removes condition(s) %V"',
+  'Mercy':'Section=magic Note="Lay On Hands removes %V"',
   'Meridian Strike':'Section=combat Note="May reroll crit damage 1s 1/dy"',
   'Metamagic Adept':
     'Section=magic ' +
@@ -4349,7 +4350,7 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
-      '1:Aura,"1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
+      '"1:Aura Of Good","1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
       '"4:Channel Positive Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
       '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
@@ -5821,23 +5822,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.divineWeapon.2',
       'levels.Paladin', '=', 'Math.floor((source - 1) / 4)'
     );
-    rules.defineRule
-      ('combatNotes.smiteEvil', 'charismaModifier', '=', 'Math.max(source, 0)');
-    rules.defineRule('combatNotes.smiteEvil.1',
-      'features.Smite Evil', '?', null,
-      'levels.Paladin', '=', null
-    );
-    rules.defineRule('combatNotes.smiteEvil.2',
-      'features.Smite Evil', '?', null,
-      'charismaModifier', '=', 'source > 0 ? source : 0'
-    );
-    rules.defineRule('combatNotes.smiteEvil.3',
-      'features.Smite Evil', '?', null,
+    rules.defineRule('combatNotes.smiteEvil',
       'levels.Paladin', '=', 'Math.floor((source + 2) / 3)'
     );
-    rules.defineRule
-      ('combatNotes.smiteEvil.4', 'combatNotes.smiteEvil.1', '=', 'source * 2');
-    rules.defineRule('combatNotes.smiteEvil.5',
+    rules.defineRule('combatNotes.smiteEvil.1',
       'features.Smite Evil', '?', null,
       '', '=', '"outsider, dragon, or undead"'
     );
