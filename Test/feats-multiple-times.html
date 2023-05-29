@@ -95,7 +95,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Extra Ki: 2; Extra Lay On Hands: 2; Extra Mercy: 2; Extra Performance: 2; Extra Rage: 2; Fleet: 2</td>
         <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Divine Mount; Lay On Hands; Mercy (Dazed); Mercy (Fatigued); Mercy (Shaken); Mercy (Staggered); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Divine Mount; Lay On Hands; Mercy (Dazed); Mercy (Fatigued); Mercy (Shaken); Mercy (Staggered); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
         <td><b>Monk Features</b>: Armor Class Bonus; Condition Fist; Dodge; Evasion; Fast Movement; Flurry Of Blows; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Scorpion Style; Slow Fall; Still Mind; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)</td>
         <td><b>Cleric Features</b>: Acid Dart; Armor Proficiency (Medium); Aura; Channel Energy; Earth Domain; Good Domain; Shield Proficiency; Spontaneous Cleric Spell; Touch Of Good; Weapon Proficiency (Simple); Weapon Proficiency (Warhammer)</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Courage; Shield Proficiency; Simple Somatics; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)</td>
@@ -110,6 +110,10 @@ var attributes = {
         <td><i>Extra Performance: Bardic Performance +12 rd/dy</i></td>
       </tr><tr style="text-align:center">
         <td><i>Unarmed Strike: Has Improved Unarmed Strike features</i></td>
+      </tr><tr style="text-align:center">
+        <td>Aura Of Good: Visible to <i>Detect Good</i></td>
+      </tr><tr style="text-align:center">
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
       </tr><tr style="text-align:center">
         <td>Bardic Performance: May use Bardic Performance effect 18 rd/dy</td>
       </tr><tr style="text-align:center">
@@ -235,7 +239,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Scorpion Style: Unarmed hit slows foe to 5' for 1 rd (DC 17 Fort neg)</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: Gains +2 attack, +6 HP damage, bypass DR, and +2 AC on evil foe (+12 HP on outsider, dragon, or undead) 2/dy</td>
+        <td>Smite Evil: May gain +2 attack, +6 HP damage, bypass DR, and +2 AC vs. chosen evil foe (+12 HP on first hit vs. outsider, dragon, or undead) 2/dy</td>
       </tr><tr style="text-align:center">
         <td>Stunning Fist: Unarmed strike inflicts stunned for 1 rd 4/dy (DC 17 Fort neg)</td>
       </tr><tr style="text-align:center">
@@ -334,8 +338,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Acid Dart: R30' Ranged touch inflicts 1d6 HP 4/dy</td>
     </tr><tr style="text-align:center">
-      <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
-    </tr><tr style="text-align:center">
       <td>Channel Energy: R30' May heal or inflict 4d6 HP (DC 15 Will half) 5/dy</td>
     </tr><tr style="text-align:center">
       <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
@@ -354,7 +356,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Lay On Hands: May harm undead or heal 3d6 HP 9/dy</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes condition(s) dazed, fatigued, shaken, staggered</td>
+      <td>Mercy: Lay On Hands removes dazed, fatigued, shaken, staggered</td>
     </tr><tr style="text-align:center">
       <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
     </tr><tr style="text-align:center">

@@ -457,7 +457,7 @@ var attributes = {
         <td><b>Feats</b>: Alignment Channel (Good); Channel Smite; Cleave; Diehard; Empower Spell; Endurance; Point-Blank Shot; Power Attack; Quick Draw; Weapon Focus (Shortbow); Widen Spell</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Wizard Features</b>: Bonded Object; Protective Ward; Resistance To Energy; School Opposition (Enchantment); School Opposition (Necromancy); School Specialization (Abjuration); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Lay On Hands; Mercy (Fatigued); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Lay On Hands; Mercy (Fatigued); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
         <td><b>Druid Features</b>: Animal Companion; Animal Domain; Armor Proficiency (Medium); Nature Bond; Nature Sense; Resist Nature's Lure; Shield Proficiency; Speak With Animals; Spontaneous Druid Spell; Trackless Step; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
         <td><b>Cleric Features</b>: Agile Feet; Animal Companion; Armor Proficiency (Medium); Aura; Channel Energy; Copycat; Shield Proficiency; Speak With Animals; Spontaneous Cleric Spell; Travel Domain; Travel Speed; Trickery Domain; Weapon Proficiency (Simple)</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Competence; Inspire Courage; Shield Proficiency; Simple Somatics; Versatile Performance; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip); Well-Versed</td>
@@ -471,6 +471,10 @@ var attributes = {
         <td>Agile Feet: Unaffected by difficult terrain for 1 rd 4/dy</td>
       </tr><tr style="text-align:center">
         <td>Animal Companion: Special bond and abilities</td>
+      </tr><tr style="text-align:center">
+        <td>Aura Of Good: Visible to <i>Detect Good</i></td>
+      </tr><tr style="text-align:center">
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
       </tr><tr style="text-align:center">
         <td>Bardic Performance: May use Bardic Performance effect 8 rd/dy</td>
       </tr><tr style="text-align:center">
@@ -603,6 +607,8 @@ var attributes = {
         <td>Power Attack: May suffer up to -4 attack to gain dbl damage bonus</td>
       </tr><tr style="text-align:center">
         <td>Quick Draw: May draw weapon as free action</td>
+      </tr><tr style="text-align:center">
+        <td>Smite Evil: May gain +0 attack, +4 HP damage, bypass DR, and +0 AC vs. chosen evil foe (+8 HP on first hit vs. outsider, dragon, or undead) 2/dy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -2697,8 +2703,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Wisdom Druid Spell Slot Bonus: Spell level D1</i></td>
     </tr><tr style="text-align:center">
-      <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
-    </tr><tr style="text-align:center">
       <td>Bonded Object: May cast known spell through object</td>
     </tr><tr style="text-align:center">
       <td>Channel Energy: R30' May heal or inflict 4d6 HP (DC 12 Will half) 1/dy</td>
@@ -2723,7 +2727,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Lay On Hands: May harm undead or heal 2d6 HP 0/dy</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes condition(s) fatigued</td>
+      <td>Mercy: Lay On Hands removes fatigued</td>
     </tr><tr style="text-align:center">
       <td>Protective Ward: R10' Allies gain +1 AC for 2 rd 5/dy</td>
     </tr><tr style="text-align:center">

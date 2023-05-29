@@ -484,7 +484,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Beast Shape I (W3 Tran): Self becomes small (+2 Dexterity, +1 AC) or medium (+2 Strength, +2 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
+      <td>Beast Shape II (Change Shape4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
+    </tr><tr style="text-align:left">
       <td>Beast Shape II (W4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Beast Shape III (Change Shape5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Beast Shape III (W5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for 20 min</td>
     </tr><tr style="text-align:left">
@@ -588,6 +592,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Detect Poison (W0 Divi): R75' Self detects poison in target, DC 20 Wis or Alchemy check for type</td>
     </tr><tr style="text-align:left">
+      <td>Detect Scrying (Scrying Adept4 Divi): R40' Self detects scrying and makes opposed caster check to see source for 1 dy</td>
+    </tr><tr style="text-align:left">
       <td>Detect Scrying (W4 Divi): R40' Self detects scrying and makes opposed caster check to see source for 1 dy</td>
     </tr><tr style="text-align:left">
       <td>Detect Secret Doors (W1 Divi): R60' Cone gives self info on secret doors for conc or 20 min</td>
@@ -624,7 +630,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Eagle's Splendor (W2 Tran): Touched gains +4 Charisma for 20 min</td>
     </tr><tr style="text-align:left">
+      <td>Elemental Body I (Change Shape4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+    </tr><tr style="text-align:left">
       <td>Elemental Body I (W4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Elemental Body II (Change Shape5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Body II (W5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1210,6 +1220,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Wail Of The Banshee (W9 Necr): R75' 20 targets in 40' radius suffer 200 HP (DC 21 Fort neg)</td>
     </tr><tr style="text-align:left">
+      <td>Wall Of Fire (Elemental Wall4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
+    </tr><tr style="text-align:left">
       <td>Wall Of Fire (W4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Force (W5 Evoc): R75' Creates impassible and immobile 20 x 10' sq wall for 20 rd</td>
@@ -1280,7 +1292,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Diviner's Fortune: Touch gives +10 attack, skill, ability, and save for 1 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Elemental Wall: May use <i>Wall Of Fire</i>/<i>Acid</i>/<i>Cold</i>/<i>Electricity</i> effects 20 rd/dy</td>
+      <td>Elemental Wall: May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects 20 rd/dy</td>
     </tr><tr style="text-align:center">
       <td>Extend Spell: May use +1 spell slot to dbl chosen spell duration</td>
     </tr><tr style="text-align:center">
@@ -1324,7 +1336,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Scrying Adept: Has continuous <i>Detect Scrying</i> effects/+1 scrying subject familiarity</td>
     </tr><tr style="text-align:center">
-      <td>Summoner's Charm: +unlimited rd summoning duration</td>
+      <td>Summoner's Charm: Unlimited summoning duration</td>
     </tr><tr style="text-align:center">
       <td>Telekinetic Fist: R30' Ranged touch inflicts 1d4+10 HP 5/dy</td>
     </tr></table>
