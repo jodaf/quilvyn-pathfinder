@@ -7848,7 +7848,7 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
     rules.defineRule("magicNotes.summoner'sCharm",
-      schoolLevel, '=', 'source<20 ? Math.max(Math.floor(source / 2), 1) + "rd" : "Unlimited"'
+      schoolLevel, '=', 'source<20 ? "+" + Math.max(Math.floor(source / 2), 1) + " rd" : "Unlimited"'
     );
   } else if(name == 'Divination') {
     rules.defineRule('combatNotes.forewarned',
