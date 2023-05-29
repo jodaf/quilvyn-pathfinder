@@ -11333,7 +11333,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     Pathfinder.featureSpells(rules,
       'Beguiling Touch', 'BeguilingTouch', 'intelligence', classLevel,
-      '10+manipulatorLevel//2+intelligenceModifier', ['Dominate Monster']
+      '10+manipulatorLevel//2+intelligenceModifier', ['Charm Monster']
     );
     Pathfinder.featureSpells(rules,
       "Creator's Will", 'CreatorsWill', 'intelligence', classLevel, null,
