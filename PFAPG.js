@@ -3711,7 +3711,7 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="30\' radius staggers summoned creatures (Will neg), then returns them to their home plane (Will delays 1 rd) %{levels.Wizard} rd/dy"',
   'Battleshaping':
-    'Section=magic Note="May use%{levels.Wizard>=11 ? \' 2\' : \'\'} +%{levels.Wizard//4} magical claw, bite, or gore for 1 rd %{intelligenceModifier+3}/dy"',
+    'Section=magic Note="May use%{levels.Wizard>=11 ? \' 2\' : \'\'} magical claw, bite, or gore w/+%{levels.Wizard//4} attack and damage for 1 rd %{intelligenceModifier+3}/dy"',
   'Bedeviling Aura':
     'Section=combat ' +
     'Note="30\' radius inflicts half speed, cannot take AOO, and flanked on foes for %{levels.Wizard} rd/dy"',
