@@ -16,10 +16,10 @@ var attributes = {
   "gender":"Male", "hitPoints":106, "intelligence":15, "languages.Celestial":1, 
   "languages.Halfling":1, "levels.Ranger":20, "name":"Class-Ranger 20-Guide", "race":"Human", 
   "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
-  "selectableFeatures.Ranger - Bashing Finish":1, "selectableFeatures.Ranger - Cleave":1, 
-  "selectableFeatures.Ranger - Combat Style (Two-Weapon Combat)":1, "selectableFeatures.Ranger - Focused Shot":1, 
-  "selectableFeatures.Ranger - Guide":1, "selectableFeatures.Ranger - Power Attack":1, 
-  "selectableFeatures.Ranger - Shield Master":1, "shield":"None", "skills.Acrobatics":2, "skills.Climb":20, 
+  "selectableFeatures.Ranger - Cleave":1, "selectableFeatures.Ranger - Combat Style (Two-Handed Weapon)":1, 
+  "selectableFeatures.Ranger - Furious Focus":1, "selectableFeatures.Ranger - Great Cleave":1, 
+  "selectableFeatures.Ranger - Guide":1, "selectableFeatures.Ranger - Improved Sunder":1, 
+  "selectableFeatures.Ranger - Shield Of Swings":1, "shield":"None", "skills.Acrobatics":2, "skills.Climb":20, 
   "skills.Craft (Traps)":20, "skills.Diplomacy":10, "skills.Disguise":10, "skills.Handle Animal":20, 
   "skills.Heal":10, "skills.Knowledge (Geography)":2, "skills.Knowledge (Planes)":1, 
   "skills.Perception":9, "skills.Perform (Comedy)":2, "skills.Profession (Librarian)":2, 
@@ -75,7 +75,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: General: 11</td>
-        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archetype): 1; Ranger (Combat Style): 1; Ranger (Two-Weapon Feat): 5</td>
+        <td><b>Selectable Feature Count</b>: Human (Racial Trait): 2; Ranger (Archetype): 1; Ranger (Combat Style): 1; Ranger (Two-Handed Weapon Feat): 5</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -84,7 +84,7 @@ var attributes = {
         <td><b>Feats</b>: Deadly Aim; Elemental Focus (Electricity); Expanded Arcana; Lightning Reflexes; Quicken Spell; Reach Spell; Shield Focus; Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (Planes)); Strike Back</td>
         <td><b>Traits</b>: Adopted; Reactionary</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Bashing Finish; Camouflage; Cleave; Combat Style (Two-Weapon Combat); Endurance; Favored Terrain; Focused Shot; Guide; Hide In Plain Sight; Improved Ranger's Luck; Inspired Moment; Power Attack; Ranger's Focus; Ranger's Luck; Shield Master; Shield Proficiency; Swift Tracker; Terrain Bond; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
+        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Camouflage; Cleave; Combat Style (Two-Handed Weapon); Endurance; Favored Terrain; Furious Focus; Great Cleave; Guide; Hide In Plain Sight; Improved Ranger's Luck; Improved Sunder; Inspired Moment; Ranger's Focus; Ranger's Luck; Shield Of Swings; Shield Proficiency; Swift Tracker; Terrain Bond; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -157,13 +157,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Camouflage: May use Stealth to hide in favored terrain</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in 4 terrain type(s)</td>
+        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in 4 terrain type(s)</td>
       </tr><tr style="text-align:center">
         <td>Hide In Plain Sight: May hide even when observed</td>
       </tr><tr style="text-align:center">
         <td>Swift Tracker: May track at full speed</td>
       </tr><tr style="text-align:center">
-        <td>Terrain Bond: Allies w/in sight gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain</td>
+        <td>Terrain Bond: Allies w/in sight and hearing gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain</td>
       </tr><tr style="text-align:center">
         <td>Track: +10 Survival to follow creatures' trail</td>
       </tr><tr style="text-align:center">
@@ -224,27 +224,27 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Bashing Finish: May make free shield bash after crit</td>
-      </tr><tr style="text-align:center">
         <td>Cleave: May suffer -2 AC to gain attack against two foes</td>
       </tr><tr style="text-align:center">
         <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
       </tr><tr style="text-align:center">
         <td>Favored Terrain: +2 or more Initiative in 4 terrain type(s)</td>
       </tr><tr style="text-align:center">
-        <td>Focused Shot: R30' +2 HP damage on bow or crossbow attack</td>
+        <td>Furious Focus: Suffers no penalty on first attack using two-handed Power Attack</td>
       </tr><tr style="text-align:center">
-        <td>Power Attack: May suffer up to -6 attack to gain dbl damage bonus</td>
+        <td>Great Cleave: May cleave w/out limit</td>
       </tr><tr style="text-align:center">
-        <td>Ranger's Focus: +10 attack and damage vs. target until surrenders or unconscious 7/dy</td>
+        <td>Improved Sunder: Sunder provokes no AOO, gains +2 Sunder check and CMD</td>
+      </tr><tr style="text-align:center">
+        <td>Ranger's Focus: +10 attack and damage vs. target until surrenders or reduced to 0 or negative HP 7/dy</td>
       </tr><tr style="text-align:center">
         <td>Ranger's Luck: May gain +4 reroll attack or force foe -4 reroll 3/dy</td>
       </tr><tr style="text-align:center">
-        <td>Shield Master: No penalty on shield attacks/May apply shield enhancements to attack and damage</td>
+        <td>Shield Of Swings: May reduce two-handed weapon full-attack action damage by half to gain +4 AC and CMD</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
       </tr><tr style="text-align:center">
-        <td>Terrain Bond: Allies w/in sight gain +2 Initiative in favored terrain</td>
+        <td>Terrain Bond: Allies w/in sight and hearing gain +2 Initiative in favored terrain</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
