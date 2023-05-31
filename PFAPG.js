@@ -2324,7 +2324,7 @@ PFAPG.FEATURES = {
     'Note="R15\' Divine spell cast on self gives allies +2 next attack, skill check, or ability check for 1 rd %{wisdomModifier+3}/dy"',
   'Door Sight':
     'Section=magic ' +
-    'Note="Concentation allows self to see through %{6+levels.Cleric}\\" touched material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
+    'Note="Concentration allows self to see through %{6+levels.Cleric}\\" touched material for 10 min after 1 min touch %{wisdomModifier+3}/dy"',
   "Elysium's Call":
     'Section=magic ' +
     'Note="Touch gives immediate save reroll vs. charm and compulsion; also +2 saves vs. charm and compulsion, +2 CMB to escape grapple, and negation of 5\' difficult terrain/rd for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -2949,7 +2949,7 @@ PFAPG.FEATURES = {
     'Section=combat Note="May charge %{speed*10}\' and pounce 1/hr"',
   'Bastion Stance':
     'Section=combat ' +
-    'Note="%{levels.Monk>=16 ? \'Immune to teleporation,\' : \'May forego move for 1 rd immunity to \'} knocked prone and forced move"',
+    'Note="%{levels.Monk>=16 ? \'Immune to teleportation,\' : \'May forego move for 1 rd immunity to \'} knocked prone and forced move"',
   'Drunken Courage':
     'Section=save Note="Min 1 drunken Ki Point gives immunity to fear"',
   'Drunken Ki':
@@ -9032,7 +9032,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       '10+mysteryLevel//2+charismaModifier', ['5:Rage']
     );
     Pathfinder.featureSpells(rules,
-      'Punitive Transformation', 'PunativeTransformation', 'charisma',
+      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
       'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
       ['Baleful Polymorph']
     );
