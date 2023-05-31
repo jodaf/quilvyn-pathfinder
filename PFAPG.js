@@ -2506,7 +2506,7 @@ PFAPG.FEATURES = {
       '"-4 Wild Empathy (oozes)"',
   'Cavesense':
     'Section=skill ' +
-    'Note="Knowledge (Dungeoneering) is a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
+    'Note="Knowledge (Dungeoneering) is a class skill/Knowledge (Geography) is not a class skill/+2 Knowledge (Dungeoneering)/+2 Survival"',
   'Deep Diver':
     'Section=combat ' +
     'Note="DR %{levels.Druid//2}/slashing or piercing vs. grappling and crushing/Immune to deep water pressure"',
@@ -3105,6 +3105,9 @@ PFAPG.FEATURES = {
   'Aiding Attack':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to give ally +2 next attack on foe hit by self for 1 rd"',
+  'Beast Master':
+    'Section=skill ' +
+    'Note="+2 Handle Animal (companion)/+2 Wild Empathy (companion)"',
   'Blend In':
     'Section=skill ' +
     'Note="May substitute Stealth for Disguise w/in favored community"',
@@ -3133,9 +3136,9 @@ PFAPG.FEATURES = {
   'Favored Community':
     'Section=combat,feature,skill ' +
     'Note=' +
-      '"+2 Initiative w/in favored community",' +
+      '"+2 or more Initiative w/in favored community",' +
       '"%{(levels.Ranger+2)//5} selections",' +
-      '"+2 or more Knowledge (Local), Perception, Stealth, and Survival w/in favored community"',
+      '"+2 or more Knowledge (Local), Perception, Stealth, and Survival and leaves no trail w/in favored community"',
   'Form Of The Bear':'Section=ability Note="+%V Strength%1 in shifted form"',
   'Form Of The Cat':
     'Section=ability,skill ' +
@@ -3145,12 +3148,12 @@ PFAPG.FEATURES = {
   'Form Of The Dragon':
     'Section=ability,combat ' +
     'Note=' +
-      '"%V\' Fly in shifted form",' +
+      '"Fly %V\'/average in shifted form",' +
       '"+%V AC in shifted form"',
   'Form Of The Eagle':
     'Section=ability,skill ' +
     'Note=' +
-     '"%V\' Fly in shifted form",' +
+     '"Fly %V\'/good in shifted form",' +
      '"+10 Perception in shifted form"',
   'Form Of The Jackal':
     'Section=combat Note="May move %V speed w/out provoking AOO"',
@@ -3167,7 +3170,10 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to move animal companion to self w/out provoking AOO in starting square"',
   'Hobbling Attack':
     'Section=combat ' +
-    'Note="May use Hunter\'s Trick to inflict half Speed for 1d4 rd with successful attack"',
+    'Note="May use Hunter\'s Trick to inflict half Speed on land for 1d4 rd with successful attack"',
+  'Horse Lord':
+    'Section=skill ' +
+    'Note="+2 Handle Animal (companion)/+2 Wild Empathy (companion)"',
   "Hunter's Tricks":
     'Section=feature ' +
     'Note="May use %V selections %{levels.Ranger//2+wisdomModifier}/dy"',
@@ -3194,15 +3200,15 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to Climb at full speed w/out penalty for 1 rd"',
   'Quick Healing':
     'Section=combat ' +
-    'Note="May use Hunter\'s Truck for swift action Heal skill or move action potion use on adjacent ally"',
+    'Note="May use Hunter\'s Trick for swift action Heal skill or move action potion use on adjacent unconscious ally"',
   'Quick Swim':
-    'Section=skill Note="May use Hunter\'s Truck for full speed Swim for 1 rd"',
+    'Section=skill Note="May use Hunter\'s Trick for full speed Swim for 1 rd"',
   "Ranger's Counsel":
     'Section=skill ' +
-    'Note="R30\' May use Hunter\'s Trick to give allies +2 on choice of known skill"',
+    'Note="R30\' May use Hunter\'s Trick to give allies +2 on self choice of known skill"',
   "Ranger's Focus":
     'Section=combat ' +
-    'Note="+%{2+2*levels.Ranger//5} attack and damage vs. target until surrenders or unconscious %{(levels.Ranger+2)//3}/dy"',
+    'Note="+%{2+2*levels.Ranger//5} attack and damage vs. target until surrenders or reduced to 0 or negative HP %{(levels.Ranger+2)//3}/dy"',
   "Ranger's Luck":
     'Section=combat ' +
     'Note="May gain%1 reroll attack or force foe%2 reroll %{(levels.Ranger-4)//5}/dy"',
@@ -3220,7 +3226,7 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to give animal companion immediate attack on adjacent foe"',
   'Skill Sage':
     'Section=skill ' +
-    'Note="May use Hunter\'s Trick to take the better of 2 skill rolls"',
+    'Note="May use Hunter\'s Trick to take the better of 2 rolls on a known skill"',
   'Spirit Bond':
     'Section=magic ' +
     'Note="May cast <i>Augury</i> and %{levels.Ranger//4} ranger spells w/in favored terrain 1/dy"',
@@ -3237,8 +3243,9 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to inflict entangled for 1 rd w/successful attack"',
   'Terrain Bond':
     'Section=combat,skill ' +
-    'Note="Allies w/in sight gain +2 Initiative in favored terrain",' +
-         '"Allies w/in sight gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain"',
+    'Note=' +
+      '"Allies w/in sight and hearing gain +2 Initiative in favored terrain",' +
+      '"Allies w/in sight and hearing gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain"',
   'Trick Shot':
     'Section=combat ' +
     'Note="May use Hunter\'s Trick to ignore concealment, soft cover, and partial cover w/ranged attack"',
@@ -3700,10 +3707,11 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fort half HP only; exit neg) %{intelligenceModifier+3}/dy"',
   'Air Supremacy':
-    'Section=magic,skill ' +
+    'Section=magic,skill,skill ' +
     'Note=' +
       '"May cast self <i>Feather Fall</i>%{levels.Wizard>=5 ? \', <i>Levitate</i>\' : \'\'}%{levels.Wizard>=10 ? \', <i>Fly</i>\' : \'\'} at will",' +
-      '"%V Fly"',
+      '"+%V Fly",' +
+      '"Automatic nat 20 on Fly"',
   'Augment':
     'Section=magic ' +
     'Note="Touch gives +%{levels.Wizard>=10 ? 4 : 2} ability or +%{1+levels.Wizard//5} AC for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
@@ -3812,11 +3820,12 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May change type of damage done by self energy spell %{intelligenceModifier+3}/dy"',
   'Water Supremacy':
-    'Section=ability,feature,skill ' +
+    'Section=ability,feature,skill,skill ' +
     'Note=' +
       '"%{speed}\' Swim",' +
       '"May hold breath for %{constitution*4} rd",' +
-      '"%V Swim"',
+      '"+%V Swim",' +
+      '"Automatic nat 20 on Swim"',
   'Wave':
     'Section=magic ' +
     'Note="%{5*levels.Wizard}\'x20\' wave moves away 30\'/rd, douses normal fires, and knocks prone or carries away (caster level vs. CMD; DC %{10+levels.Wizard//2+intelligenceModifier} Str to end) %{levels.Wizard//2} rd/dy"',
@@ -8720,7 +8729,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'intelligenceModifier', '+', null
     );
     rules.defineRule('combatNotes.fastHealing', classLevel, '+=', '5');
-    rules.defineRule('effectiveAlchemistLevel', 'levels.Alchemist', '=', null);
+    rules.defineRule('effectiveAlchemistLevel', classLevel, '=', null);
     rules.defineRule('featureNotes.discovery',
       classLevel, '=', 'Math.floor(source / 2) + (source==20 ? 1 : 0)'
     );
@@ -8803,7 +8812,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     for(let d in allDeities) {
        QuilvynUtils.getAttrValueArray(allDeities[d], 'Weapon').forEach(w => {
          rules.defineRule('inquisitorFeatures.Weapon Proficiency (' + w + ')',
-           'levels.Inquisitor', '?', null,
+           classLevel, '?', null,
            'deityFavoredWeapons', '=',
              'source.split("/").includes("' + w + '") ? 1 : null'
          );
@@ -8820,14 +8829,14 @@ PFAPG.classRulesExtra = function(rules, name) {
         QuilvynUtils.getAttrValueArray(Pathfinder.PATHS[p], 'Features');
       let pathLevel =
         p.charAt(0).toLowerCase() + p.substring(1).replaceAll(' ','') + 'Level';
-      rules.defineRule(pathLevel, 'levels.Inquisitor', '=', null);
+      rules.defineRule(pathLevel, classLevel, '=', null);
       QuilvynRules.featureListRules
         (rules, pathFeatures, 'Inquisitor', pathLevel, false);
       pathFeatures.forEach(f => {
         f = f.replace(/^\d+:/, '');
         rules.defineRule('clericFeatures.' + f, 'levels.Cleric', '?', null);
         rules.defineRule
-          ('inquisitorFeatures.' + f, 'levels.Inquisitor', '?', null);
+          ('inquisitorFeatures.' + f, classLevel, '?', null);
       });
     }
     rules.defineRule('combatNotes.bane',
@@ -8851,7 +8860,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
     Pathfinder.featureSpells(rules,
-      'Detect Alignment', 'Detection', 'charisma', 'levels.Inquisitor', '',
+      'Detect Alignment', 'Detection', 'charisma', classLevel, '',
       ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law',
        '5:Discern Lies']
     );
@@ -9350,7 +9359,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('validationNotes.eidolonNaturalAttacksAllocation', '', '^', '0');
     Pathfinder.featureSpells(rules,
-      "Maker's Call", 'MakersCall', 'charisma', 'levels.Summoner', null,
+      "Maker's Call", 'MakersCall', 'charisma', classLevel, null,
       ['Dimension Door']
     );
     // Make sure the editor allows multiple selections of selectableFeatures
@@ -9368,7 +9377,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.flightHex.1',
       'features.Flight Hex', '?', null,
-      classLevel, '=', '(source>=3 ? ", self <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", self <i>Fly</i> effects %{levels.Witch} min/dy" : "")'
+      classLevel, '=', '(source>=3 ? ", self <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", self <i>Fly</i> effects %{' + classLevel + '} min/dy" : "")'
     );
     rules.defineRule
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
@@ -9378,53 +9387,52 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.patron', '+=', '1'
     );
     Pathfinder.featureSpells(rules,
-      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', 'levels.Witch',
-      '10+levels.Witch//2+intelligenceModifier', ['Arcane Eye']
+      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', classLevel,
+      '10+' + classLevel + '//2+intelligenceModifier', ['Arcane Eye']
     );
     Pathfinder.featureSpells(rules,
-      'Disguise Hex', 'DisguiseHex', 'intelligence', 'levels.Witch', null,
+      'Disguise Hex', 'DisguiseHex', 'intelligence', classLevel, null,
       ['Disguise Self']
     );
     Pathfinder.featureSpells(rules,
-      'Flight Hex', 'FlightHex', 'intelligence', 'levels.Witch', null,
+      'Flight Hex', 'FlightHex', 'intelligence', classLevel, null,
       ['Feather Fall', '3:Levitate', '5:Fly']
     );
     Pathfinder.featureSpells(rules,
       'Forced Reincarnation Hex', 'ForcedReincarnationHex', 'intelligence',
-      'levels.Witch', null, ['Reincarnate']
+      classLevel, null, ['Reincarnate']
     );
     Pathfinder.featureSpells(rules,
-      'Healing Hex', 'HealingHex', 'intelligence', 'levels.Witch', null,
+      'Healing Hex', 'HealingHex', 'intelligence', classLevel, null,
       ['Cure Light Wounds', '5:Cure Moderate Wounds']
     );
     Pathfinder.featureSpells(rules,
-      'Life Giver Hex', 'LifeGiverHex', 'intelligence', 'levels.Witch', null,
+      'Life Giver Hex', 'LifeGiverHex', 'intelligence', classLevel, null,
       ['Resurrection']
     );
     Pathfinder.featureSpells(rules,
-      'Major Healing Hex', 'MajorHealingHex', 'intelligence', 'levels.Witch',
+      'Major Healing Hex', 'MajorHealingHex', 'intelligence', classLevel,
       null, ['Cure Serious Wounds', '15:Cure Critical Wounds']
     );
     Pathfinder.featureSpells(rules,
       'Natural Disaster Hex', 'NaturalDisasterHex', 'intelligence',
-      'levels.Witch', '10+levels.Witch//2+intelligenceModifier',
+      classLevel, '10+' + classLevel + '//2+intelligenceModifier',
       ['Earthquake', 'Storm Of Vengeance']
     );
     Pathfinder.featureSpells(rules,
-      'Nightmares Hex', 'NightmaresHex', 'intelligence', 'levels.Witch',
-      '10+levels.Witch//2+intelligenceModifier', ['Nightmare']
+      'Nightmares Hex', 'NightmaresHex', 'intelligence', classLevel,
+      '10+' + classLevel + '//2+intelligenceModifier', ['Nightmare']
     );
     Pathfinder.featureSpells(rules,
-      'Slumber Hex', 'SlumberHex', 'intelligence', 'levels.Witch', null,
-      ['Sleep']
+      'Slumber Hex', 'SlumberHex', 'intelligence', classLevel, null, ['Sleep']
     );
     Pathfinder.featureSpells(rules,
-      'Tongues Hex', 'TonguesHex', 'intelligence', 'levels.Witch', null,
+      'Tongues Hex', 'TonguesHex', 'intelligence', classLevel, null,
       ['Comprehend Languages', '5:Tongues']
     );
     Pathfinder.featureSpells(rules,
-      'Weather Control Hex', 'WeatherControlHex', 'intelligence',
-      'levels.Witch', null, ['Control Weather']
+      'Weather Control Hex', 'WeatherControlHex', 'intelligence', classLevel,
+      null, ['Control Weather']
     );
   } else if(name == 'Barbarian') {
     rules.defineRule('armorClass',
@@ -9849,14 +9857,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
     Pathfinder.featureSpells(rules,
-      'Call The Storm', 'CallTheStorm', 'charisma', 'levels.Bard', '',
+      'Call The Storm', 'CallTheStorm', 'charisma', classLevel, '',
       ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
     );
     Pathfinder.featureSpells(rules,
-      'Incite Rage', 'InciteRage', 'charisma', 'levels.Bard', '', ['Rage']
+      'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
     );
     Pathfinder.featureSpells(rules,
-      'Whistle The Wind', 'WhistleTheWind', 'charisma', 'levels.Bard', null,
+      'Whistle The Wind', 'WhistleTheWind', 'charisma', classLevel, null,
       ['Gust Of Wind']
     );
   } else if(name == 'Cleric') {
@@ -9883,28 +9891,28 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     Pathfinder.featureSpells(rules,
-      'Animate Servant', 'AnimateServant', 'wisdom', 'levels.Cleric', null,
+      'Animate Servant', 'AnimateServant', 'wisdom', classLevel, null,
       ['Animate Objects']
     );
     Pathfinder.featureSpells(rules,
-      'Command', 'Command', 'wisdom', 'levels.Cleric',
-      '10+inevitableSubdomainLevel//2+wisdomModifier', ['Command']
+      'Command', 'Command', 'wisdom', classLevel,
+      '10+' + classLevel + '//2+wisdomModifier', ['Command']
     );
     Pathfinder.featureSpells(rules,
-      'Deadly Weather', 'DeadlyWeather', 'wisdom', 'levels.Cleric', '',
+      'Deadly Weather', 'DeadlyWeather', 'wisdom', classLevel, '',
       ['Call Lightning']
     );
     Pathfinder.featureSpells(rules,
-      'Protective Aura', 'ProtectiveAura', 'wisdom', 'levels.Cleric', null,
+      'Protective Aura', 'ProtectiveAura', 'wisdom', classLevel, null,
       ['Protection From Evil']
     );
     Pathfinder.featureSpells(rules,
-      'Tunnel Runner', 'TunnelRunner', 'wisdom', 'levels.Cleric', null,
+      'Tunnel Runner', 'TunnelRunner', 'wisdom', classLevel, null,
       ['Spider Climb']
     );
     Pathfinder.featureSpells(rules,
       'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
-      'levels.Cleric', null, ['Endure Elements']
+      classLevel, null, ['Endure Elements']
     );
   } else if(name == 'Druid') {
     let allFeats = rules.getChoices('feats');
@@ -9915,6 +9923,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.runLikeTheWind.1',
       'features.Natural Swimmer', '?', null,
       'armorWeight', '=', 'source <= 1 ? 1 : null'
+    );
+    rules.defineRule('classSkills.Knowledge (Nature)',
+      classLevel, '=', 'null',
+      'druidClassSkills.Knowledge (Nature)', '=', '1'
+    );
+    rules.defineRule('druidClassSkills.Knowledge (Nature)',
+      classLevel, '=', '1',
+      'skillNotes.cavesense', '=', '0'
     );
     rules.defineRule('druidHasAThousandFaces',
       classLevel, '=', '1',
@@ -10162,11 +10178,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
     });
     Pathfinder.featureSpells(rules,
-      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', 'levels.Druid', null,
+      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', classLevel, null,
       ['Tree Shape']
     );
     Pathfinder.featureSpells(rules,
-      'Slippery', 'Slippery', 'wisdom', 'levels.Druid', null,
+      'Slippery', 'Slippery', 'wisdom', classLevel, null,
       ['Freedom Of Movement']
     );
   } else if(name == 'Fighter') {
@@ -10591,27 +10607,27 @@ PFAPG.classRulesExtra = function(rules, name) {
       }
     });
     Pathfinder.featureSpells(rules,
-      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', 'levels.Monk', null,
+      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', classLevel, null,
       ['Gaseous Form']
     );
     Pathfinder.featureSpells(rules,
-      'Ki Sacrifice', 'KiSacrifice', 'charisma', 'levels.Monk', null,
+      'Ki Sacrifice', 'KiSacrifice', 'charisma', classLevel, null,
       ['Raise Dead', '15:Resurrection']
     );
     Pathfinder.featureSpells(rules,
-      'Mystic Visions', 'MysticVisions', 'charisma', 'levels.Monk', null,
+      'Mystic Visions', 'MysticVisions', 'charisma', classLevel, null,
       ['Divination']
     );
     Pathfinder.featureSpells(rules,
-      'Touch Of Peace', 'TouchOfPeace', 'charisma', 'levels.Monk', null,
+      'Touch Of Peace', 'TouchOfPeace', 'charisma', classLevel, null,
       ['Charm Monster']
     );
     Pathfinder.featureSpells(rules,
-      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', 'levels.Monk', null,
+      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', classLevel, null,
       ['Charm Monster']
     );
     Pathfinder.featureSpells(rules,
-      'True Sacrifice', 'TrueSacrifice', 'charisma', 'levels.Monk', null,
+      'True Sacrifice', 'TrueSacrifice', 'charisma', classLevel, null,
       ['True Resurrection']
     );
   } else if(name == 'Paladin') {
@@ -10715,7 +10731,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Paladin', 'paladinHasSpells', '?', null);
     Pathfinder.featureSpells(rules,
-      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', 'levels.Paladin',
+      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
       null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
     );
     Pathfinder.featureSpells(rules,
@@ -10724,14 +10740,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
   } else if(name == 'Antipaladin') {
     rules.defineRule
-      ('channelLevel', 'levels.Antipaladin', '+=', 'source>=4 ? source : null');
+      ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
     rules.defineRule('combatNotes.fiendishWeapon',
-      'levels.Antipaladin', '=', 'Math.floor((source - 2) / 3)'
+      classLevel, '=', 'Math.floor((source - 2) / 3)'
     );
-    rules.defineRule
-      ('combatNotes.fiendishWeapon.1', 'levels.Antipaladin', '=', null);
+    rules.defineRule('combatNotes.fiendishWeapon.1', classLevel, '=', null);
     rules.defineRule('combatNotes.fiendishWeapon.2',
-      'levels.Antipaladin', '=', 'Math.floor((source - 1) / 4)'
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
     rules.defineRule('combatNotes.smiteGood',
       'features.Smite Good', '?', null,
@@ -10751,10 +10766,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source>=17 ? "IX" : ["III", "IV", "V", "VI", "VII", "VIII"][Math.floor((source - 5)/ 2)]'
     );
     rules.defineRule('magicNotes.touchOfCorruption',
-      'levels.Antipaladin', '=', 'Math.floor(source / 2)'
+      classLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.touchOfCorruption.1',
-      'levels.Antipaladin', '=', 'Math.floor(source / 2)',
+      classLevel, '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null,
       'magicNotes.extraChannel', '+', '4',
       'magicNotes.extraLayOnHands', '+', null
@@ -10763,31 +10778,31 @@ PFAPG.classRulesExtra = function(rules, name) {
       'charismaModifier', '=', 'Math.max(source, 0)'
     );
     rules.defineRule('selectableFeatureCount.Antipaladin (Fiendish Bond)',
-      'levels.Antipaladin', '=', 'source >= 5 ? 1 : null'
+      classLevel, '=', 'source >= 5 ? 1 : null'
     );
     rules.defineRule('selectableFeatureCount.Antipaladin (Cruelty)',
-      'levels.Antipaladin', '=', 'Math.floor(source / 3)'
+      classLevel, '=', 'Math.floor(source / 3)'
     );
     let cruelties =
       QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Cruelty/).map(x => x.replace(/^.*Cruelty/, 'Cruelty'));
     let details = {
-      'Cruelty (Blinded)':' for %{levels.Antipaladin} rd',
+      'Cruelty (Blinded)':' for %{' + classLevel + '} rd',
       'Cruelty (Cursed)':' as <i>Bestow Curse</i>',
       'Cruelty (Dazed)':' for 1 rd',
       'Cruelty (Diseased)':' as <i>Contagion</i>',
-      'Cruelty (Deafened)':' for %{levels.Antipaladin} rd',
-      'Cruelty (Frightened)':' for %{levels.Antipaladin//2} rd',
-      'Cruelty (Nauseated)':' for %{levels.Antipaladin//3} rd',
+      'Cruelty (Deafened)':' for %{' + classLevel + '} rd',
+      'Cruelty (Frightened)':' for %{' + classLevel + '//2} rd',
+      'Cruelty (Nauseated)':' for %{' + classLevel + '//3} rd',
       'Cruelty (Paralyzed)':' for 1 rd',
       'Cruelty (Poisoned)':' as <i>Poison</i>',
-      'Cruelty (Shaken)':' for %{levels.Antipaladin} rd',
-      'Cruelty (Sickened)':' for %{levels.Antipaladin} rd',
-      'Cruelty (Staggered)':' for %{levels.Antipaladin//2} rd',
-      'Cruelty (Stunned)':' for %{levels.Antipaladin//4} rd'
+      'Cruelty (Shaken)':' for %{' + classLevel + '} rd',
+      'Cruelty (Sickened)':' for %{' + classLevel + '} rd',
+      'Cruelty (Staggered)':' for %{' + classLevel + '//2} rd',
+      'Cruelty (Stunned)':' for %{' + classLevel + '//4} rd'
     };
     // Rule used only for its side-effect
     rules.defineRule('magicNotes.cruelty',
-      'levels.Antipaladin', '=', '(Pathfinder.crueltiesTaken=[]) ? null : null'
+      classLevel, '=', '(Pathfinder.crueltiesTaken=[]) ? null : null'
     );
     for(let i = 0; i < cruelties.length; i++) {
       let cruelty = cruelties[i];
@@ -10796,17 +10811,16 @@ PFAPG.classRulesExtra = function(rules, name) {
       );
     }
     Pathfinder.featureSpells(rules,
-      'Cruelty', 'Cruelty', 'charisma', 'levels.Antipaladin',
-      '10+levels.Antipaladin//2+charismaModifier',
+      'Cruelty', 'Cruelty', 'charisma', classLevel,
+      '10+' + classLevel + '//2+charismaModifier',
       ['Bestow Curse', 'Contagion', 'Poison']
     );
     Pathfinder.featureSpells(rules,
-      'Detect Good', 'DetectGood', 'charisma', 'levels.Antipaladin', null,
-      ['Detect Good']
+      'Detect Good', 'DetectGood', 'charisma', classLevel, null, ['Detect Good']
     );
     Pathfinder.featureSpells(rules,
-      'Unholy Champion', 'UnholyChampion', 'charisma', 'levels.Antipaladin',
-      '', ['Banishment']
+      'Unholy Champion', 'UnholyChampion', 'charisma', classLevel, '',
+      ['Banishment']
     );
   } else if(name == 'Ranger') {
     rules.defineRule('abilityNotes.formOfTheBear',
@@ -10838,24 +10852,25 @@ PFAPG.classRulesExtra = function(rules, name) {
     for(let s in allSkills) {
       if(['Knowledge (Dungeoneering)', 'Knowledge (Geography)', 'Spellcraft'].includes(s) || s.startsWith('Profession')) {
         rules.defineRule('rangerClassSkills.' + s,
-          'levels.Ranger', '=', '1',
+          classLevel, '=', '1',
           'rangerFeatures.Beast Master', '=', '0'
         );
         rules.defineRule('classSkills.' + s,
-          'levels.Ranger', '=', 'null',
+          classLevel, '=', 'null',
           'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
         );
       } else if(['Handle Animal', 'Knowledge (Nature)'].includes(s)) {
         rules.defineRule('rangerClassSkills.' + s,
-          'levels.Ranger', '=', '1',
+          classLevel, '=', '1',
           'rangerFeatures.Urban Ranger', '=', '0'
         );
         rules.defineRule('classSkills.' + s,
-          'levels.Ranger', '=', 'null',
+          classLevel, '=', 'null',
           'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
         );
       }
     }
+
     ['Acrobatics', 'Escape Artist'].forEach(s => {
       rules.defineRule
         ('classSkills.' + s, 'rangerFeatures.Beast Master', '=', '1');
@@ -10881,7 +10896,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
     );
     rules.defineRule("featureNotes.hunter'sTricks",
-      classLevel, '=', 'Math.floor((source + 2) / 5)'
+      classLevel, '=', 'Math.floor((source - 3) / 2)'
     );
     rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
@@ -11041,6 +11056,21 @@ PFAPG.classRulesExtra = function(rules, name) {
         allSelectables[entry] =
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
+    Pathfinder.featureSpells(rules,
+      'Invisibility Trick', 'InvisibilityTrick', 'wisdom', classLevel, null,
+      ['Greater Invisibility']
+    );
+    Pathfinder.featureSpells(rules,
+      'Master Shifter', 'MasterShifter', 'wisdom', classLevel, null,
+      ['Beast Shape IV', 'Form Of The Dragon I']
+    );
+    Pathfinder.featureSpells(rules,
+      'Spirit Bond', 'SpiritBond', 'wisdom', classLevel, null, ['Augury']
+    );
+    Pathfinder.featureSpells(rules,
+      'Wisdom Of The Spirits', 'WisdomOfTheSpirits', 'wisdom', classLevel,
+      null, ['Divination']
+    );
   } else if(name == 'Rogue') {
     rules.defineRule
       ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
@@ -11315,18 +11345,16 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('abilityNotes.waterSupremacy', classLevel, '?', 'source>=10');
     rules.defineRule
       ('magicNotes.earthSupremacy', classLevel, '?', 'source>=20');
-    rules.defineRule('skillModifier.Fly',
-      'skillNotes.airSupremacy', '+', 'isNaN(source) ? 6 : source'
-    );
     rules.defineRule('skillNotes.airSupremacy',
-      classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
+      classLevel, '=', '2 + Math.floor(source / 5)'
     );
-    rules.defineRule('skillModifier.Swim',
-      'skillNotes.waterSupremacy', '+', 'isNaN(source) ? 6 : source'
-    );
+    rules.defineRule
+      ('skillNotes.airSupremacy-1', classLevel, '?', 'source>=20');
     rules.defineRule('skillNotes.waterSupremacy',
-      classLevel, '=', 'source<20 ? "+" + (2 + Math.floor(source / 5)) : "Automatic nat 20"'
+      classLevel, '=', '2 + Math.floor(source / 5)'
     );
+    rules.defineRule
+      ('skillNotes.waterSupremacy-1', classLevel, '?', 'source>=20');
     Pathfinder.featureSpells(rules,
       'Air Supremacy', 'AirSupremacy', 'intelligence', classLevel, null,
       ['Feather Fall', '5:Levitate', '10:Fly']
@@ -11399,8 +11427,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
     );
     Pathfinder.featureSpells(rules,
-      'Divine Judgment', 'DivineJudgment', 'wisdom', 'levels.Holy Vindicator',
-      '', ['Death Knell']
+      'Divine Judgment', 'DivineJudgment', 'wisdom', classLevel, '',
+      ['Death Knell']
     );
     Pathfinder.featureSpells(rules,
       'Divine Retribution', 'DivineRetribution', 'wisdom', 'casterLevel', '',
@@ -11483,9 +11511,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('abilityNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule
       ('abilityNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('bloodlineDraconicLevel',
-      'levels.Master Chymist', '+=', null
-    );
+    rules.defineRule('bloodlineDraconicLevel', classLevel, '+=', null);
     rules.defineRule
       ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3) * 2');
     rules.defineRule
@@ -11501,7 +11527,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('effectiveAlchemistLevel',
       'combatNotes.bomb-Thrower', '+', 'null', // italics no-op
-      'levels.Master Chymist', '+', null
+      classLevel, '+', null
     );
     rules.defineRule('featureNotes.advancedMutagen',
       classLevel, '=', 'Math.floor(source / 2)'
@@ -11596,19 +11622,19 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source>=4 ? "/May use Wild Empathy w/magical beasts" + (source>=10 ? ", vermin, and plant creatures" : source>=7 ? " and vermin" : "") + " w/out penalty" : ""'
     );
     Pathfinder.featureSpells(rules,
-      'Animal Speech', 'AnimalSpeech', 'charisma', 'levels.Nature Warden', '',
+      'Animal Speech', 'AnimalSpeech', 'charisma', classLevel, '',
       ['Speak With Animals']
     );
     Pathfinder.featureSpells(rules,
-      'Woodforging', 'Woodforging', 'charisma', 'levels.Nature Warden', '',
+      'Woodforging', 'Woodforging', 'charisma', classLevel, '',
       ['Wood Shape', 'Ironwood']
     );
     Pathfinder.featureSpells(rules,
-      'Plant Speech', 'PlantSpeech', 'charisma', 'levels.Nature Warden', '',
+      'Plant Speech', 'PlantSpeech', 'charisma', classLevel, '',
       ['Speak With Plants']
     );
     Pathfinder.featureSpells(rules,
-      'Companion Soul', 'CompanionSoul', 'charisma', 'levels.Nature Warden', '',
+      'Companion Soul', 'CompanionSoul', 'charisma', classLevel, '',
       ['Scrying', 'Raise Dead']
     );
   } else if(name == 'Rage Prophet') {
@@ -11625,7 +11651,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('magicNotes.spiritGuardian', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.spiritWarrior', classLevel, '=', null);
     Pathfinder.featureSpells(rules,
-      'Spirit Guide', 'SpiritGuide', 'charisma', 'levels.Rage Prophet', '',
+      'Spirit Guide', 'SpiritGuide', 'charisma', classLevel, '',
       ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
     );
   } else if(name == 'Stalwart Defender') {
@@ -12848,13 +12874,6 @@ PFAPG.ruleNotes = function() {
     '  </li><li>\n' +
     '    Quilvyn does not note the Expanded Arcana requirement that the\n' +
     '    character has levels in a class with limited spells known.\n' +
-    '  </li>\n' +
-    '</ul>\n' +
-    '<h3>Known Bugs</h3>\n' +
-    '<ul>\n' +
-    '  <li>\n' +
-    '    Quilvyn does not remove Knowledge (Nature) from the list of druid\n' +
-    '    class skills for the Cave Druid archetype.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Copyrights and Licensing</h3>\n' +
