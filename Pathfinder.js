@@ -1647,7 +1647,7 @@ Pathfinder.FEATURES = {
   'Favored Terrain':
     'Section=combat,skill ' +
     'Note="+2 or more Initiative in %V terrain type(s)",' +
-         '"+2 or more Knowledge (Geography), Perception, Stealth, Survival, leaves no trail in %V terrain type(s)"',
+         '"+2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in %V terrain type(s)"',
   'Fearless Rage':
     'Section=save Note="Cannot be shaken or frightened during rage"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
@@ -1780,7 +1780,7 @@ Pathfinder.FEATURES = {
     'Note="Lay On Hands effects maximized/Smite Evil inflicts <i>Banishment</i> effects (DC %V neg)"',
   'Holy Lance':
     'Section=combat Note="May add <i>holy</i> property to weapon for %1 rd %V/dy"',
-  'Horse Lord':'Section=skill Note="+2 Ride/Ride is a class skill"',
+  'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
   "Hunter's Eye":
     'Section=combat ' +
@@ -4114,7 +4114,7 @@ Pathfinder.TRAITS = {
   'Fiendish Presence':'Type=Faction Subtype=Cheliax',
   'Fires Of Hell':'Type=Faction Subtype=Cheliax',
   'Fortified':'Type=Faction Subtype="Shadow Lodge"',
-  'Horse Lord':'Type=Faction Subtype=Qadira',
+  'Horse Lord (Trait)':'Type=Faction Subtype=Qadira',
   "Hunter's Eye":'Type=Faction Subtype=Andoran',
   'I Know A Guy':'Type=Faction Subtype=Sczarni',
   'Medic':'Type=Faction Subtype="Shadow Lodge"',
