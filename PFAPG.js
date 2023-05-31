@@ -9926,7 +9926,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('classSkills.Knowledge (Nature)',
       classLevel, '=', 'null',
-      'druidClassSkills.Knowledge (Nature)', '=', '1'
+      'druidClassSkills.Knowledge (Nature)', '=', 'source==1 ? 1 : null'
     );
     rules.defineRule('druidClassSkills.Knowledge (Nature)',
       classLevel, '=', '1',
