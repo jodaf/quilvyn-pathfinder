@@ -2700,7 +2700,7 @@ PFAPG.FEATURES = {
       '"No armor skill check penalty for Ride"',
   'Backswing':
     'Section=combat ' +
-    'Note="Increases damage bonus on second and following attacks w/two-handed weapon to +%{strengthModifier*2>?0}"',
+    'Note="+%V damage on second and following attacks w/two-handed weapon"',
   'Careful Claw':
     'Section=combat ' +
     'Note="Reduces contact damage from natural attack by %{levels.Fighter//2}"',
@@ -2794,8 +2794,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="Automatically confirm crit, +1 damage multiplier, no disarm w/chosen natural weapon"',
   'Overhand Chop':
-    'Section=combat ' +
-    'Note="Increases damage bonus on single attack w/two-handed weapon to +%{strengthModifier*2>?0}"',
+    'Section=combat Note="+%V damage on single attack w/two-handed weapon"',
   'Penetrating Shot':
     'Section=combat ' +
     'Note="Crit w/crossbow threatens additional inline targets w/-4 attack"',
@@ -10219,6 +10218,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       }
     });
     rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
+    rules.defineRule('combatNotes.backswing',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
+    );
     rules.defineRule('combatNotes.crossbowExpert',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
@@ -10251,6 +10253,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.irresistibleAdvance',
       'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
+    );
+    rules.defineRule('combatNotes.overhandChop',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
     );
     rules.defineRule('combatNotes.polearmTraining',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
