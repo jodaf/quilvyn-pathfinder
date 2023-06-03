@@ -1071,7 +1071,8 @@ Pathfinder.FEATURES = {
   'Point-Blank Shot':
     'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
   'Power Attack':
-    'Section=combat Note="May suffer up to -%V attack to gain dbl damage bonus"',
+    'Section=combat ' +
+    'Note="May suffer -%V attack to gain +%1 damage (+%2 when wielding weapon w/two hands)"',
   'Precise Shot':'Section=combat Note="Suffers no penalty on shot into melee"',
   'Purity Of Body':'Section=save Note="Immune to all disease"',
   'Quick Draw':'Section=combat Note="May draw weapon as free action"',
@@ -6703,7 +6704,14 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Power Attack') {
     rules.defineRule('combatNotes.powerAttack',
-      'baseAttack', '=', '1 + Math.floor(source / 4)'
+      'baseAttack', '=', 'Math.floor((source + 4) / 4)'
+    );
+    rules.defineRule('combatNotes.powerAttack.1',
+      'features.Power Attack', '?', null,
+      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 2'
+    );
+    rules.defineRule('combatNotes.powerAttack.2',
+      'combatNotes.powerAttack.1', '=', 'Math.floor(source * 1.5)'
     );
   } else if(name == 'Scorpion Style') {
     rules.defineRule('combatNotes.scorpionStyle', 'wisdomModifier', '=', null);
