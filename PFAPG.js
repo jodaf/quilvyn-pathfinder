@@ -2863,7 +2863,7 @@ PFAPG.FEATURES = {
   'Shield Ward':
     'Section=combat,feature,save ' +
     'Note=' +
-      '"Shield cannot be disarmed or sundered/Adds shield bonus to touch AC",' +
+      '"Shield cannot be disarmed or sundered/+%V touch AC",' +
       '"Has Evasion feature when using shield",' +
       '"+%V Reflex"',
   'Shielded Fortress':
@@ -10279,6 +10279,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'combatNotes.shieldMastery', '?', null,
       'shield', '=', 'source=="None" ? null : 5'
     );
+    rules.defineRule
+      ('combatNotes.shieldWard', 'saveNotes.shieldWard', '=', null);
     rules.defineRule('combatNotes.towerShieldPenalty',
       'combatNotes.deftShield', '+', null
     );
