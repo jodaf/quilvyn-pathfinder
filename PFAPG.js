@@ -3685,7 +3685,7 @@ PFAPG.FEATURES = {
   'Fiendish Boon':'Section=feature Note="1 selection"',
   'Fiendish Servant':
     'Section=magic ' +
-    'Note="May use <i>Summon Monster %V</i> to permanently summon %{levels.Antipaladin>=11 ? \'an advanced\' : \'a\'} chaotic evil creature or fiendish animal%{levels.Antipaladin>=15 ? \' w/SR \' + (levels.Antipaladin+11) : \'\'}"',
+    'Note="May use <i>Summon Monster %V</i> effects to permanently summon %{levels.Antipaladin>=11 ? \'an advanced\' : \'a\'} chaotic evil creature or fiendish animal%{levels.Antipaladin>=15 ? \' w/SR \' + (levels.Antipaladin+11) : \'\'}"',
   'Fiendish Weapon':
     'Section=combat ' +
     'Note="May add %V enhancements and properties to weapon for %1 min %2/dy"',
@@ -10679,21 +10679,17 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanionStats.Save Will',
       'companionNotes.skilledRider', '+', null
     );
-    rules.defineRule
-      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
-    rules.defineRule('features.Channel Energy',
-      'features.Channel Positive Energy (Hospitaler)', '=', '1'
-    );
-    rules.defineRule('magicNotes.sharedDefense.1',
-      'features.Shared Defense', '?', null,
-      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
-    );
     rules.defineRule('combatNotes.smiteEvil',
       'hospitalerLevel', 'v', 'Math.floor((source + 5) / 6)',
       'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
     rules.defineRule
       ('combatNotes.smiteEvil.1', 'undeadScourgeLevel', '=', '"undead"');
+    rules.defineRule
+      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
+    rules.defineRule('features.Channel Energy',
+      'features.Channel Positive Energy (Hospitaler)', '=', '1'
+    );
     rules.defineRule('magicNotes.channelEnergy.1',
       // Replace generic Paladin level computation w/Hospitaler-specific
       'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
@@ -10703,6 +10699,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.powerOfFaith-1.1',
       'features.Power Of Faith', '?', null,
       classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
+    );
+    rules.defineRule('magicNotes.sharedDefense.1',
+      'features.Shared Defense', '?', null,
+      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
     );
     rules.defineRule
       ('paladinFeatures.Aura Of Faith', 'paladinHasAuraOfFaith', '?', null);
@@ -10816,7 +10816,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.unholyResilience',
       'charismaModifier', '=', 'Math.max(source, 0)'
     );
-    rules.defineRule('selectableFeatureCount.Antipaladin (Fiendish Bond)',
+    rules.defineRule('selectableFeatureCount.Antipaladin (Fiendish Boon)',
       classLevel, '=', 'source >= 5 ? 1 : null'
     );
     rules.defineRule('selectableFeatureCount.Antipaladin (Cruelty)',
@@ -10856,6 +10856,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     Pathfinder.featureSpells(rules,
       'Detect Good', 'DetectGood', 'charisma', classLevel, null, ['Detect Good']
+    );
+    Pathfinder.featureSpells(rules,
+      'Fiendish Servant', 'FiendishServant', 'charisma', classLevel, null,
+      ['Summon Monster IX']
     );
     Pathfinder.featureSpells(rules,
       'Unholy Champion', 'UnholyChampion', 'charisma', classLevel, '',
