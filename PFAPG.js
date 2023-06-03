@@ -2700,16 +2700,17 @@ PFAPG.FEATURES = {
       '"No armor skill check penalty for Ride"',
   'Backswing':
     'Section=combat ' +
-    'Note="+%{strengthModifier*2-(strengthModifier*1.5//1)} damage on multiple attacks w/two-handed weapon"',
+    'Note="Increases damage bonus on second and following attacks w/two-handed weapon to +%{strengthModifier*2>?0}"',
   'Careful Claw':
     'Section=combat ' +
     'Note="Reduces contact damage from natural attack by %{levels.Fighter//2}"',
   'Critical Specialist':
-    'Section=combat Note="+4 DC on crit effects from chosen weapon"',
+    'Section=combat ' +
+    'Note="Foe suffers +4 DC on crit effects from chosen weapon"',
   'Crossbow Expert':'Section=combat Note="+%V attack and damage w/crossbows"',
   'Deadly Critical':
     'Section=combat ' +
-    'Note="May apply +1 crit multiplier w/chosen weapon %{(levels.Fighter-10)//3}/dy"',
+    'Note="May add 1 to crit multiplier w/chosen weapon %{(levels.Fighter-10)//3}/dy"',
   'Deadly Defense':
     'Section=combat ' +
     'Note="May make AOO on every attacking foe after full-attack action w/both weapons"',
@@ -2724,15 +2725,15 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter+1)//4} AC when taking full-attack action w/two weapons"',
   'Deft Doublestrike':
     'Section=combat ' +
-    'Note="May make disarm or trip w/out provoking AOO after hitting foe w/both weapons"',
+    'Note="May make disarm, sunder, or trip w/out provoking AOO after hitting foe w/both weapons"',
   'Deft Shield':
     'Section=combat,skill ' +
     'Note=' +
       '"Reduces tower shield attack penalty by %V",' +
-      '"Reduces armor skill check penalty w/tower shield by %V"',
+      '"Reduces tower shield skill check penalty by %V"',
   'Devastating Blow':
     'Section=combat ' +
-    'Note="May suffer -5 two-handed weapon attack for automatic crit"',
+    'Note="May suffer -5 two-handed weapon attack for crit threat on any hit"',
   'Doublestrike':
     'Section=combat Note="May attack w/two weapons as a single action"',
   'Elusive':'Section=combat Note="+%V AC in light armor"',
@@ -2748,7 +2749,8 @@ PFAPG.FEATURES = {
   'Flexible Flanker':'Section=combat Note="May flank from adjacent square"',
   'Greater Deadshot':'Section=combat Note="Increased Deadshot effects"',
   'Greater Power Attack':
-    'Section=combat Note="Power Attack w/two-handed weapon doubles damage"',
+    'Section=combat ' +
+    'Note="Using Power Attack w/two-handed weapon increases damage bonus to +%V"',
   'Greater Savage Charge':
     'Section=combat,combat ' +
     'Note=' +
@@ -2765,21 +2767,21 @@ PFAPG.FEATURES = {
   'Improved Deadshot':
     'Section=combat Note="Crossbow readied attack negates target Dex AC bonus"',
   'Indomitable Steed':
-    'Section=combat Note="Self and gain mount DR 5/- when mounted"',
+    'Section=combat Note="Self and mount gain DR 5/- when mounted"',
   'Interference':
     'Section=combat ' +
-    'Note="Successful disarm maneuver makes foe flat-footed for 1 rd or until hit"',
+    'Note="Successful disarm or trip maneuver makes foe flat-footed for 1 rd or until hit"',
   'Irresistible Advance':
     'Section=combat Note="+%V CMB on bull rush and overrun"',
   'Leap From The Saddle':
     'Section=combat ' +
-    'Note="DC 20 Ride check allows full-attack action after mount move"',
+    'Note="Successful DC 20 Ride check allows full-attack action after mount move"',
   'Leaping Attack':
     'Section=combat ' +
     'Note="+%{(levels.Fighter-1)//4} attack and damage after 5\' move"',
   'Meteor Shot':
     'Section=combat ' +
-    'Note="May inflict bull rush or trip via successful -4 crossbow attack"',
+    'Note="May suffer -4 attack to have successful crossbow attack also inflict bull rush or trip"',
   'Mirror Move':
     'Section=combat Note="+%{(levels.Fighter+1)//4} AC vs. chosen weapon"',
   'Mounted Mettle':
@@ -2787,45 +2789,44 @@ PFAPG.FEATURES = {
     'Note="Self and mount gain +%{(levels.Fighter-1)//4} attack and damage when adjacent or mounted"',
   'Natural Savagery':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter-1)//4} attack, damage, and grapple CMB/CMD w/natural weapons"',
+    'Note="+%{(levels.Fighter-1)//4} attack and damage w/natural weapons and grapple CMB/CMD"',
   'Natural Weapon Mastery':
     'Section=combat ' +
     'Note="Automatically confirm crit, +1 damage multiplier, no disarm w/chosen natural weapon"',
   'Overhand Chop':
     'Section=combat ' +
-    'Note="+%{strengthModifier*2-(strengthModifier*1.5//1)} damage on single attack w/two-handed weapon"',
+    'Note="Increases damage bonus on single attack w/two-handed weapon to +%{strengthModifier*2>?0}"',
   'Penetrating Shot':
     'Section=combat ' +
-    'Note="Successful crossbow attack threatens additional inline targets w/-4 attack"',
+    'Note="Crit w/crossbow threatens additional inline targets w/-4 attack"',
   'Perfect Balance':
     'Section=combat Note="Reduces two-weapon fighting penalties by 1"',
   'Phalanx Fighting':
     'Section=combat Note="May use polearm or spear 1-handed w/shield"',
   'Piledriver':
     'Section=combat ' +
-    'Note="May make bull rush or trip w/out provoking AOO after single attack w/two-handed weapon"',
+    'Note="May make bull rush or trip w/out provoking AOO after successful single attack w/two-handed weapon"',
   'Pole Fighting':
     'Section=combat ' +
-    'Note="May make %{levels.Fighter<18 ? (levels.Fighter-18)//4 + \' \' : \'\'}polearm attack vs. adjacent foes"',
+    'Note="May make %{levels.Fighter<18 ? (levels.Fighter-18)//4 + \' \' : \'\'}spear or polearm attack vs. adjacent foes"',
   'Polearm Parry':
     'Section=combat ' +
     'Note="May give ally attacked by threatened foe +2 AC and DR 5/- vs. attack"',
   'Polearm Training':
-    'Section=combat ' +
-    'Note="+%{(levels.Fighter-1)//4} attack and damage w/polearms"',
+    'Section=combat Note="+%V attack and damage w/spears and polearms"',
   'Quick Sniper':
     'Section=combat,skill ' +
     'Note=' +
-      '"Can return fire immediately when hit by ranged attack",' +
+      '"May return fire immediately w/loaded crossbow when hit by ranged attack",' +
       '"+%{levels.Fighter//2} Stealth when sniping"',
   'Ranged Defense':
     'Section=combat Note="DR 5/- vs. ranged/May catch and re-fire arrow"',
   'Rapid Attack':
     'Section=combat ' +
-    'Note="May combine move w/full-attack action minus highest bonus attack"',
+    'Note="May combine move w/full-attack action; loses highest bonus attack"',
   'Ready Pike':
     'Section=combat ' +
-    'Note="May brace weapon for +%{(levels.Fighter-1)//4} attack and damage %{(levels.Fighter-1)//4}/dy"',
+    'Note="May brace weapon as an immediate action for +%{(levels.Fighter-1)//4} attack and damage %{(levels.Fighter-1)//4}/dy"',
   'Relentless Steed':
     'Section=combat,skill ' +
     'Note=' +
@@ -2833,10 +2834,10 @@ PFAPG.FEATURES = {
       '"May reroll Ride or mount save %{(levels.Fighter-7)//4}/dy"',
   'Reliable Strike':
     'Section=combat ' +
-    'Note="May reroll attack, crit, miss chance, or damage %{levels.Fighter//5}/dy"',
+    'Note="May reroll attack, crit, miss chance, or damage w/chosen weapon %{levels.Fighter//5}/dy"',
   'Reversal':
     'Section=combat ' +
-    'Note="Successful disarm maneuver redirects attack from self to foe"',
+    'Note="Successful disarm maneuver redirects attack from self to target"',
   'Ride Them Down':
     'Section=combat ' +
     'Note="May take full-attack action%{features.Trample ? \' or overrun\' : \'\'} during mount move"',
@@ -2858,45 +2859,46 @@ PFAPG.FEATURES = {
     'Note="+%{(levels.Fighter-1)//4} shield bash attack and damage/Full attack may alternate freely between shield and weapon"',
   'Shield Guard':
     'Section=combat ' +
-    'Note="Foes in chosen adjacent square(s) cannot flank self or help others flank"',
+    'Note="Foes in adjacent chosen %V cannot flank self or help others flank"',
   'Shield Mastery':'Section=combat Note="DR 5/- w/shield"',
   'Shield Ward':
     'Section=combat,feature,save ' +
     'Note=' +
       '"Shield cannot be disarmed or sundered/Adds shield bonus to touch AC",' +
-      '"Has %V feature w/shield",' +
-      '"Adds shield bonus to Reflex saves"',
+      '"Has Evasion feature when using shield",' +
+      '"+%V Reflex"',
   'Shielded Fortress':
     'Section=combat,feature ' +
     'Note=' +
-      '"Shield cannot be disarmed or sundered/May use move to provide adjacent allies with Evasion feature for 1 rd",' +
-      '"Has %V feature"',
+      '"Shield cannot be disarmed or sundered/May use move to give Evasion feature to adjacent allies for 1 rd/May use immedate action to give Improved Evasion feature to 1 adjacent ally for 1 rd",' +
+      '"Has Evasion feature when using shield; Improved Evasion when using tower shield"',
   'Singleton':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+1)//6} attack and damage w/one-handed weapon and other hand free"',
+    'Note="+%{(levels.Fighter+1)//6} attack and damage w/one-handed weapon when other hand free"',
   'Spark Of Life':
     'Section=save ' +
     'Note="+%{(levels.Fighter+2)//4} vs. energy drain and death effects"',
   'Stand Firm':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+2)//4} CMD vs. bull rush, drag, overrun, trip, and trample"',
+    'Note="+%{(levels.Fighter+2)//4} CMD vs. bull rush, drag, overrun, and trip and saves vs. trample damage"',
   'Steadfast Mount':
     'Section=combat ' +
     'Note="Mount gains +%{(levels.Fighter+2)//4} AC and saves when adjacent or mounted after 1 hr practice"',
   'Steadfast Pike':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+1)//4} readied attacks and AOO w/polearms"',
+    'Note="+%{(levels.Fighter+1)//4} readied attacks and AOO w/spears and polearms"',
   'Step Aside':
     'Section=combat ' +
-    'Note="May take 5\' step immediately after threatened foe; gains +2 AC vs. that foe for 1 rd"',
+    'Note="May follow foe 5\' step; gains +2 AC vs. that foe for 1 rd"',
   'Sweeping Fend':
-    'Section=combat Note="May use polearm for -4 CMB bull rush or trip"',
+    'Section=combat ' +
+    'Note="May use spear or polearm for -4 CMB bull rush or trip"',
   'Timely Tip':
     'Section=combat ' +
     'Note="Successful disarm maneuver negates foe shield bonus for 1 rd"',
   'Trick Shot (Archer)':
     'Section=combat ' +
-    'Note="R30\' May use bow shot to perform -4 CMB %{(levels.Fighter+1)//4} choices from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'}"',
+    'Note="R30\' May use bow shot to perform choice of %{(levels.Fighter+1)//4} selections from disarm, feint, sunder%{levels.Fighter>=11 ? \', bull rush, grapple, trip\':\'\'} at -4 CMB"',
   'Twin Blades':
     'Section=combat ' +
     'Note="+%{(levels.Fighter-1)//4} attack and damage when taking full-attack action w/two weapons or double weapon"',
@@ -2905,13 +2907,13 @@ PFAPG.FEATURES = {
     'Note="May make mounted charge past allies and over difficult terrain"',
   'Unstoppable Strike':
     'Section=combat ' +
-    'Note="May touch attack w/chosen weapon, ignoring DR or hardness, 1/rd"',
+    'Note="May make touch attack w/chosen weapon, ignoring DR or hardness, 1/rd"',
   'Volley':
     'Section=combat ' +
     'Note="May make full-round bow attack against all in 15\' radius"',
   'Weapon Guard':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+2)//4} vs. disarm, sunder, and saves vs. effects with chosen weapon"',
+    'Note="+%{(levels.Fighter+2)//4} CMD vs. disarm, sunder, and saves vs. effects with chosen weapon"',
   'Weapon Training (Weapon Master)':
      'Section=combat ' +
      'Note="+%{(levels.Fighter+1)//4} attack and damage w/chosen weapon"',
@@ -10186,22 +10188,34 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Freedom Of Movement']
     );
   } else if(name == 'Fighter') {
-    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(weapon => {
-      if(weapon.match(/\b(long|short)?bow\b/i)) {
-        let prefix =
-          weapon.charAt(0).toLowerCase() + weapon.substring(1).replaceAll(' ', '');
+    // Weapon lists from core Fighter rules and the APG gear list
+    let polearms = [
+     'Glaive', 'Guisarme', 'Halberd', 'Ranseur', 'Bardiche', 'Bec De Corbin',
+     'Bill', 'Glaive-Guisarme', 'Lucerne Hammer', 'Mancatcher'
+    ];
+    let spears = [
+     'Javelin', 'Lance', 'Longspear', 'Shortspear', 'Spear', 'Trident',
+     'Boar Spear', 'Chain Spear'
+    ];
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(w.match(/\b(long|short)?bow\b/i)) {
         rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+', null);
+          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+=', null);
         rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+', null);
-        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+', null);
-      } else if(weapon.match(/\bcrossbow\b/i)) {
-        let prefix =
-          weapon.charAt(0).toLowerCase() + weapon.substring(1).replaceAll(' ', '');
+          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+=', null);
+        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
+      } else if(w.match(/\bcrossbow\b/i)) {
         rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+', null);
+          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+=', null);
         rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+', null);
+          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
+      } else if(polearms.includes(w) || spears.includes(w)) {
+        rules.defineRule
+          (prefix+'AttackModifier', 'combatNotes.polearmTraining', '+=', null);
+        rules.defineRule
+          (prefix+'DamageModifier', 'combatNotes.polearmTraining', '+=', null);
       }
     });
     rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
@@ -10229,11 +10243,17 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Greater Deadshot', '?', null,
       'dexterityModifier', '=', null
     );
+    rules.defineRule('combatNotes.greaterPowerAttack',
+      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 4'
+    );
     rules.defineRule('combatNotes.hawkeye',
       classLevel, '=', 'Math.floor((source + 2) / 4) * 5'
     );
     rules.defineRule('combatNotes.irresistibleAdvance',
       'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
+    );
+    rules.defineRule('combatNotes.polearmTraining',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
     rules.defineRule('combatNotes.safeShot',
       'fighterFeatures.Archer', '=', '"Bow"',
@@ -10247,6 +10267,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source / 2',
       'combatNotes.greaterSavageCharge', '*', '0.5'
     );
+    rules.defineRule('combatNotes.shieldGuard',
+      'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
+    );
     rules.defineRule('combatNotes.shieldMastery.1',
       'combatNotes.shieldMastery', '?', null,
       'shield', '=', 'source=="None" ? null : 5'
@@ -10256,18 +10279,22 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.shieldMastery.1', '+=', null);
-    rules.defineRule('featureNotes.shieldWard',
+    rules.defineRule('featureNotes.shieldWard.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldWard', '?', null,
       'shield', '=', 'source=="None" ? null : "Evasion"'
     );
-    rules.defineRule('featureNotes.shieldedFortress',
+    rules.defineRule('featureNotes.shieldedFortress.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldedFortress', '?', null,
       'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
     );
     rules.defineRule('features.Evasion',
-      'featureNotes.shieldedFortress', '=', 'source=="Evasion" ? 1 : null',
-      'featureNotes.shieldWard', '=', 'source=="Evasion" ? 1 : null'
+      'featureNotes.shieldedFortress.1', '=', 'source=="Evasion" ? 1 : null',
+      'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
     );
     rules.defineRule('features.Improved Evasion',
-      'featureNotes.shieldedFortress', '=', 'source=="Improved Evasion" ? 1 : null'
+      'featureNotes.shieldedFortress.1', '=', 'source=="Improved Evasion" ? 1 : null'
     );
     rules.defineRule('fighterHasArmorMastery',
       classLevel, '=', '1',
@@ -10337,11 +10364,16 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('fighterFeatures.Weapon Training',
       'fighterHasWeaponTraining', '?', null
     );
+    rules.defineRule('saveNotes.shieldWard',
+      'armor', '=', 'source=="None" ? null : source.match(/Tower/) ? 4 : source.match(/Heavy/) ? 2 : 1'
+    );
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.deftShield.1', '+', '-source'
     );
+    rules.defineRule
+      ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
     rules.defineRule('skillNotes.armoredCharger.1',
       'features.Armored Charger', '?', null,
       'skillNotes.armorSkillCheckPenalty', '=', null,
