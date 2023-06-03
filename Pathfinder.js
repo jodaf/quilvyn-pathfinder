@@ -5828,7 +5828,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.smiteEvil.1',
       'features.Smite Evil', '?', null,
-      '', '=', '"outsider, dragon, or undead"'
+      '', '=', '"antipaladin, outsider, dragon, or undead"'
     );
     rules.defineRule
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
