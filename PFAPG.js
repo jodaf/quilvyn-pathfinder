@@ -1476,7 +1476,7 @@ PFAPG.FEATURES = {
     'Section=combat,feature ' +
     'Note=' +
       '"Not disabled or staggered at 0 HP%{mysteryLevel>=11 ? \'/No HP loss from taking action while disabled\' : \'\'}",' +
-      '"Has %V"',
+      '"Has Diehard feature"',
   'Resist Life':
     'Section=save ' +
     'Note="Save as undead vs. negative and positive energy%{mysteryLevel>=7 ? \' w/+\' + (mysteryLevel>=15 ? 6 : mysteryLevel>=11 ? 4 : 2) + \' channel resistance\' : \'\'}"',
@@ -8828,7 +8828,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('tacticianLevel', classLevel, '=', null);
     let allFeats = rules.getChoices('feats');
     ['Mounted Combat', 'Skill Focus (Ride)', 'Spirited Charge', 'Trample',
-     'Unseat'].forEach(x => allFeats[x] = allFeats[x].replace('Type=', 'Type="Order Of The Sword",'));
+     'Unseat'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=','Type="Order Of The Sword",');
+    });
   } else if(name == 'Inquisitor') {
     let allDeities = rules.getChoices('deities');
     for(let d in allDeities) {
@@ -8890,12 +8893,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.lame-1.1', '*', 'source.includes("armor") ? 0 : null'
     );
-    rules.defineRule
-      ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
-    rules.defineRule('abilityNotes.earthGlide.1',
-      'features.Earth Glide', '?', null,
-      'mysteryLevel', '=', '""'
-    );
     rules.defineRule('abilityNotes.lame',
       '', '=', '-10',
       'features.Slow', '+', '5'
@@ -8904,14 +8901,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Lame', '?', null,
       'mysteryLevel', '=', 'source>=10 ? " or armor" : ""'
     );
-    rules.defineRule
-      ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
     rules.defineRule('combatNotes.deaf',
       'mysteryLevel', '=', 'source<5 ? -4 : source<10 ? -2 : null'
-    );
-    rules.defineRule('featCount.General',
-      'featureNotes.maneuverMastery', '+', null,
-      'featureNotes.weaponMastery(Oracle)', '+', null
     );
     rules.defineRule('featureNotes.blindsense',
       'featureNote.cloudedVision.1', '^=', 'source.includes("30") ? 30 : null'
@@ -8931,26 +8922,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Deaf', '?', null,
       'mysteryLevel', '=', 'source<10 ? \'\' : source<15 ? "/Has Scent feature" : "/Has Scent feature and 30\' Tremorsense"'
     );
-    rules.defineRule('featureNotes.maneuverMastery',
-      'mysteryLevel', '=', 'source>=11 ? 2 : source>=7 ? 1 : null'
-    );
-    rules.defineRule('featureNotes.resiliency(Oracle)',
-      'mysteryLevel', '=', 'source<7 ? null : "Diehard feature"'
-    );
     rules.defineRule('featureNotes.revelation',
       classLevel, '+=', 'Math.floor((source + 5) / 4)'
-    );
-    rules.defineRule('featureNotes.weaponMastery(Oracle)',
-      'mysteryLevel', '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
-    );
-    rules.defineRule('featureNotes.weaponMastery(Oracle).1',
-      'features.Weapon Mastery (Oracle)', '?', null,
-      'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
-    );
-    rules.defineRule
-      ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
-    rules.defineRule('features.Armor Proficiency (Heavy)',
-      'combatNotes.skillAtArms', '=', '1'
     );
     rules.defineRule('features.Blindsense',
       'featureNotes.cloudedVision.1', '=', 'source.includes("Blindsense") ? 1 : null'
@@ -8958,26 +8931,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Blindsight',
       'featureNotes.cloudedVision.2', '=', 'source.includes("Blindsight") ? 1 : null'
     );
-    rules.defineRule('features.Diehard',
-      'featureNotes.resiliency(Oracle)', '=', 'source.includes("Diehard") ? 1 : null'
-    );
     rules.defineRule('features.Scent',
       'featureNotes.deaf.1', '=', 'source.includes("Scent") ? 1 : null'
-    );
-    rules.defineRule('features.Weapon Proficiency (Martial)',
-      'combatNotes.skillAtArms', '=', '1'
     );
     rules.defineRule('initiative', 'combatNotes.deaf', '+', null);
     rules.defineRule('languageCount', 'skillNotes.tongues', '+', null);
     rules.defineRule('magicNotes.haunted',
       'mysteryLevel', '=', '"<i>Mage Hand</i>, <i>Ghost Sound</i>" + (source>=5 ? ", <i>Levitate</i>, <i>Minor Image</i>" : "") + (source>=10 ? ", <i>Telekinesis</i>" : "") + (source>=15 ? "<i>, Reverse Gravity</i>" : "")'
-    );
-    rules.defineRule('magicNotes.dwellerInDarkness',
-      'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
-    );
-    rules.defineRule('magicNotes.voiceOfTheGrave.1',
-      'features.Voice Of The Grave', '?', null,
-      'mysteryLevel', '=', 'source>=5 ? "; target suffers -" + Math.floor(source / 5) * 2 + " save" : ""'
     );
     rules.defineRule('mysteryLevel', classLevel, '+=', null);
     rules.defineRule('saveNotes.lame',
@@ -8995,100 +8955,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=15 ? "understand and speak" : source>=10 ? "understand" : null'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
-    for(let feat in rules.getChoices('feats')) {
-      if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
-        let note =
-          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
-        rules.defineRule(note, 'featureNotes.weaponMastery(Oracle)', '^', '0');
-      } else if(feat.match(/^(Greater|Improved) (Bull Rush|Dirty Trick|Disarm|Drag|Grapple|Overrun|Reposition|Steal|Sunder|Trip)/)) {
-        let note =
-          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
-        rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
-      }
-    }
     let allSkills = rules.getChoices('skills');
     for(let skill in allSkills) {
       if(skill != 'Intimidate' && allSkills[skill].match(/charisma/i))
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
     }
-    Pathfinder.featureSpells(rules,
-      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
-      null, ['Augury', '5:Divination', '8:Commune']
-    );
-    Pathfinder.featureSpells(rules,
-      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
-    );
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
-    );
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
-      'mysteryLevel', null, ['Wish']
-    );
-    Pathfinder.featureSpells(rules,
-      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
-    Pathfinder.featureSpells(rules,
-      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
-      ['Gaseous Form']
-    );
-    Pathfinder.featureSpells(rules,
-      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
-      ['Invisibility', '9:Greater Invisibility']
-    );
-    Pathfinder.featureSpells(rules,
-      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
-    );
-    Pathfinder.featureSpells(rules,
-      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
-      null, ['Levitate', '10:Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
-    );
-    Pathfinder.featureSpells(rules,
-      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Baleful Polymorph']
-    );
-    Pathfinder.featureSpells(rules,
-      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
-       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
-       'Symbol Of Stunning', 'Symbol Of Weakness']
-    );
-    Pathfinder.featureSpells(rules,
-      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
-    );
-    Pathfinder.featureSpells(rules,
-      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
-      null, ['Telepathic Bond']
-    );
-    Pathfinder.featureSpells(rules,
-      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
-    );
-    Pathfinder.featureSpells(rules,
-      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
-      ['7:Clairaudience/Clairvoyance']
-    );
   } else if(name == 'Summoner') {
     rules.defineRule
       ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
@@ -9391,6 +9263,8 @@ PFAPG.classRulesExtra = function(rules, name) {
        'selectableFeatures', 'skills');
   } else if(name == 'Witch') {
     rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
+    rules.defineRule
+      ('features.Brew Potion', 'featureNotes.cauldronHex', '=', '1');
     rules.defineRule
       ('features.Familiar', "featureNotes.witch'sFamiliar", '=', null);
     rules.defineRule('hexDC',
@@ -12202,6 +12076,46 @@ PFAPG.pathRulesExtra = function(rules, name) {
       ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
     rules.defineRule('casterLevels.LightningLord', pathLevel, '=', null);
+  } else if(name == 'Battle Mystery') {
+    rules.defineRule('featCount.General',
+      'featureNotes.maneuverMastery', '+', null,
+      'featureNotes.weaponMastery(Oracle)', '+', null
+    );
+    rules.defineRule('featureNotes.maneuverMastery',
+      'mysteryLevel', '=', 'source>=11 ? 2 : source>=7 ? 1 : null'
+    );
+    rules.defineRule
+      ('featureNotes.resiliency(Oracle)', 'mysteryLevel', '?', 'source >= 7');
+    rules.defineRule('featureNotes.weaponMastery(Oracle)',
+      'mysteryLevel', '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
+    );
+    rules.defineRule('featureNotes.weaponMastery(Oracle).1',
+      'features.Weapon Mastery (Oracle)', '?', null,
+      'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
+    );
+    rules.defineRule('features.Armor Proficiency (Heavy)',
+      'combatNotes.skillAtArms', '=', '1'
+    );
+    rules.defineRule
+      ('features.Diehard', 'featureNotes.resiliency(Oracle)', '=', '1');
+    rules.defineRule('features.Weapon Proficiency (Martial)',
+      'combatNotes.skillAtArms', '=', '1'
+    );
+    Pathfinder.featureSpells(rules,
+      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
+    );
+    // Supress validation errors for Weapon Mastery and Maneuver Mastery feats
+    for(let feat in rules.getChoices('feats')) {
+      if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.weaponMastery(Oracle)', '^', '0');
+      } else if(feat.match(/^(Greater|Improved) (Bull Rush|Dirty Trick|Disarm|Drag|Grapple|Overrun|Reposition|Steal|Sunder|Trip)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
+      }
+    }
   } else if(name == 'Bones Mystery') {
     rules.defineRule
       ('channelLevel', 'magicNotes.undeadServitude.1', '=', null);
@@ -12215,11 +12129,24 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'features.Undead Servitude', '?', null,
       'mysteryLevel', '=', null
     );
+    rules.defineRule('magicNotes.voiceOfTheGrave.1',
+      'features.Voice Of The Grave', '?', null,
+      'mysteryLevel', '=', 'source>=5 ? "; target suffers -" + Math.floor(source / 5) * 2 + " save" : ""'
+    );
     rules.defineRule('validationNotes.extraChannelFeat',
       'features.Undead Servitude', '=', '0'
     );
     rules.defineRule('validationNotes.improvedChannelFeat',
       'features.Undead Servitude', '=', '0'
+    );
+    Pathfinder.featureSpells(rules,
+      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
+    );
+    Pathfinder.featureSpells(rules,
+      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
     );
   } else if(name == 'Flame Mystery') {
     rules.defineRule('featureNotes.cinderDance',
@@ -12234,7 +12161,15 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.gazeOfFlames',
       'mysteryLevel', '=', 'source>=7 ? source : null'
     );
+    Pathfinder.featureSpells(rules,
+      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
   } else if(name == 'Heavens Mystery') {
+    rules.defineRule('magicNotes.dwellerInDarkness',
+      'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
+    );
     rules.defineRule
       ('magicNotes.lureOfTheHeavens', 'mysteryLevel', '?', 'source>=5');
     rules.defineRule('magicNotes.lureOfTheHeavens.1',
@@ -12243,6 +12178,21 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('saveNotes.finalRevelation(HeavensMystery)',
       'charismaModifier', '=', null
+    );
+    Pathfinder.featureSpells(rules,
+      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
+    );
+    Pathfinder.featureSpells(rules,
+      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
+      null, ['Levitate', '10:Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
+    );
+    Pathfinder.featureSpells(rules,
+      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
     );
   } else if(name == 'Life Mystery') {
     rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
@@ -12294,7 +12244,24 @@ PFAPG.pathRulesExtra = function(rules, name) {
       rules.defineRule
         ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
     });
+    Pathfinder.featureSpells(rules,
+      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
+      null, ['Augury', '5:Divination', '8:Commune']
+    );
+    Pathfinder.featureSpells(rules,
+      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
+      'mysteryLevel', null, ['Wish']
+    );
+    Pathfinder.featureSpells(rules,
+      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
+       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
+       'Symbol Of Stunning', 'Symbol Of Weakness']
+    );
   } else if(name == 'Nature Mystery') {
+    rules.defineRule
+      ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
     rules.defineRule("combatNotes.nature'sWhispers",
       'charismaModifier', '=', null,
       'dexterityModifier', '+', '-source'
@@ -12305,7 +12272,19 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('companionMasterLevel', 'companionOracleLevel', '^=', null);
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
+      null, ['Telepathic Bond']
+    );
   } else if(name == 'Stone Mystery') {
+    rules.defineRule
+      ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      'mysteryLevel', '=', '""'
+    );
     rules.defineRule('featureNotes.stoneStability',
       'mysteryLevel', '=', 'source<5 ? null : source<10 ? "Improved Trip feature" : "Improved Trip and Greater Trip features"'
     );
@@ -12329,11 +12308,35 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.waterSight',
       'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scrying" : null'
     );
+    Pathfinder.featureSpells(rules,
+      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Baleful Polymorph']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
+    );
   } else if(name == 'Wind Mystery') {
-    rules.defineRule
-      ('features.Brew Potion', 'featureNotes.cauldronHex', '=', '1');
     rules.defineRule('magicNotes.windSight',
       'mysteryLevel', '=', 'source>=7 ? source : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
+      ['Gaseous Form']
+    );
+    Pathfinder.featureSpells(rules,
+      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
+      ['Invisibility', '9:Greater Invisibility']
+    );
+    Pathfinder.featureSpells(rules,
+      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
+      ['7:Clairaudience/Clairvoyance']
     );
   } else if(name == 'Order Of The Cockatrice') {
     rules.defineRule
