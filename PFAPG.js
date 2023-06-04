@@ -9491,6 +9491,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.energyResistance',
       'barbarianFeatures.Energy Resistance', '=', null
     );
+    rules.defineRule('saveNotes.lesserChaosTotem',
+      '', '=', '1',
+      'features.Chaos Totem', '+', '1',
+      'features.Greater Chaos Totem', '+', '1'
+    );
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Bard') {
@@ -9622,53 +9627,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
-  } else if(name == 'Cleric') {
-    rules.defineRule('clericRagePowerLevel',
-      'features.Rage (Cleric)', '?', null,
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
-    rules.defineRule('combatNotes.rage(Cleric).1',
-      'features.Rage (Cleric)', '?', null,
-      classLevel, '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
-    );
-    rules.defineRule
-      ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
-    rules.defineRule('features.Rage Powers',
-      'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
-    );
-    rules.defineRule('saveNotes.lesserChaosTotem',
-      '', '=', '1',
-      'features.Chaos Totem', '+', '1',
-      'features.Greater Chaos Totem', '+', '1'
-    );
-    rules.defineRule('skillNotes.eyesOfTheHawk',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Animate Servant', 'AnimateServant', 'wisdom', classLevel, null,
-      ['Animate Objects']
-    );
-    Pathfinder.featureSpells(rules,
-      'Command', 'Command', 'wisdom', classLevel,
-      '10+' + classLevel + '//2+wisdomModifier', ['Command']
-    );
-    Pathfinder.featureSpells(rules,
-      'Deadly Weather', 'DeadlyWeather', 'wisdom', classLevel, '',
-      ['Call Lightning']
-    );
-    Pathfinder.featureSpells(rules,
-      'Protective Aura', 'ProtectiveAura', 'wisdom', classLevel, null,
-      ['Protection From Evil']
-    );
-    Pathfinder.featureSpells(rules,
-      'Tunnel Runner', 'TunnelRunner', 'wisdom', classLevel, null,
-      ['Spider Climb']
-    );
-    Pathfinder.featureSpells(rules,
-      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
-      classLevel, null, ['Endure Elements']
-    );
   } else if(name == 'Druid') {
     let allFeats = rules.getChoices('feats');
     rules.defineRule('abilityNotes.naturalSwimmer',
@@ -11718,24 +11676,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'featureNotes.revelation', '=', null
     );
   }
-  if(name == 'Rage Subdomain') {
-    // Suppress validation notes for Rage clerics w/barbarian powers
-    let allSelectables = rules.getChoices('selectableFeatures');
-    let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
-    powers.forEach(p => {
-      let matchInfo =
-        Pathfinder.CLASSES.Barbarian.match('(\\d+):' + p) ||
-        PFAPG.CLASSES.Barbarian.match('(\\d+):' + p);
-      let level = matchInfo ? matchInfo[1] : '2';
-      let note = 'validationNotes.barbarian-' + p.replaceAll(' ', '') +
-                 'SelectableFeature';
-      rules.defineRule(note,
-        pathLevel, '+', 'source >= ' + level + ' ? 1 : null',
-        '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
-      );
-    });
-  }
-  // Level-dependent domain code copied from Pathfinder for related subdomains.
+  // pathLevel-dependent domain code copied from Pathfinder.js for subdomains
   if(name.match(/(Cloud|Wind) Subdomain/)) { // Air
     rules.defineRule
       ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
@@ -11754,6 +11695,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.dancingWeapons',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
+    rules.defineRule('casterLevels.ArtificersTouch', pathLevel, '=', null);
   } else if(name.match(/(Azata Chaos|Demon Chaos|Proteus) Subdomain/)) {// Chaos
     rules.defineRule('combatNotes.chaosBlade',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
@@ -11791,8 +11733,9 @@ PFAPG.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
   } else if(name.match(/(Caves|Metal) Subdomain/)) { // Earth
-    rules.defineRule
-      ('magicNotes.acidDart.1', pathLevel, '=', 'Math.floor(source / 2)');
+    rules.defineRule('magicNotes.acidDart.1',
+      pathLevel, '=', 'source>1 ? "+" + Math.floor(source / 2) : ""'
+    );
     rules.defineRule('saveNotes.acidResistance',
       pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
@@ -11813,8 +11756,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
   } else if(name.match(/(Heroism|Honor) Subdomain/)) { // Glory
     rules.defineRule('magicNotes.divinePresence',
-      pathLevel, '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
+      pathLevel, '=', '10 + Math.floor(source / 2)'
     );
     rules.defineRule('magicNotes.divinePresence.1', pathLevel, '=', null);
     rules.defineRule('magicNotes.touchOfGlory', pathLevel, '=', null);
@@ -11860,7 +11802,6 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('casterLevels.AuraOfMadness', pathLevel, '=', null);
   } else if(name.match(/(Arcana|Divine) Subdomain/)) { // Magic
-    rules.defineRule('casterLevels.DispellingTouch', pathLevel, '=', null);
     rules.defineRule('magicNotes.dispellingTouch',
       pathLevel, '=', 'Math.floor((source - 4) / 4)'
     );
@@ -11908,15 +11849,12 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule
       ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
   } else if(name.match(/(Deception|Thievery) Subdomain/)) { // Trickery
-    if(name == 'Deception Subdomain') {
-      rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
-      rules.defineRule("magicNotes.master'sIllusion",
-        pathLevel, '=', '10 + Math.floor(source / 2)'
-      );
-      rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
-    }
-    if(name == 'Thievery Subdomain')
-      rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
+    rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
+    rules.defineRule("magicNotes.master'sIllusion",
+      pathLevel, '=', '10 + Math.floor(source / 2)'
+    );
+    rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
+    rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
     rules.defineRule('casterLevels.Copycat', pathLevel, '=', null);
     rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
   } else if(name.match(/(Blood|Tactics) Subdomain/)) { // War
@@ -11935,7 +11873,8 @@ PFAPG.pathRulesExtra = function(rules, name) {
       ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
     rules.defineRule('casterLevels.LightningLord', pathLevel, '=', null);
-  } else if(name == 'Battle Mystery') {
+  }
+  if(name == 'Battle Mystery') {
     rules.defineRule('featCount.General',
       'featureNotes.maneuverMastery', '+', null,
       'featureNotes.weaponMastery(Oracle)', '+', null
@@ -12338,6 +12277,70 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.streetwise-1',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Agathion Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Protective Aura', 'ProtectiveAura', 'wisdom', pathLevel, null,
+      ['Protection From Evil']
+    );
+  } else if(name == 'Catastrophe Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Deadly Weather', 'DeadlyWeather', 'wisdom', pathLevel, '',
+      ['Call Lightning']
+    );
+  } else if(name == 'Caves Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Tunnel Runner', 'TunnelRunner', 'wisdom', pathLevel, null,
+      ['Spider Climb']
+    );
+  } else if(name == 'Construct Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Animate Servant', 'AnimateServant', 'wisdom', pathLevel, null,
+      ['Animate Objects']
+    );
+  } else if(name == 'Feather Subdomain') {
+    rules.defineRule('skillNotes.eyesOfTheHawk',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Inevitable Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Command', 'Command', 'wisdom', pathLevel,
+      '10+' + pathLevel + '//2+wisdomModifier', ['Command']
+    );
+  } else if(name == 'Rage Subdomain') {
+    rules.defineRule('clericRagePowerLevel',
+      'features.Rage (Cleric)', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
+    rules.defineRule('combatNotes.rage(Cleric).1',
+      'features.Rage (Cleric)', '?', null,
+      pathLevel, '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
+    );
+    rules.defineRule
+      ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
+    rules.defineRule('features.Rage Powers',
+      'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
+    );
+    // Suppress validation notes for barbarian powers
+    let allSelectables = rules.getChoices('selectableFeatures');
+    let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
+    powers.forEach(p => {
+      let matchInfo =
+        Pathfinder.CLASSES.Barbarian.match('(\\d+):' + p) ||
+        PFAPG.CLASSES.Barbarian.match('(\\d+):' + p);
+      let level = matchInfo ? matchInfo[1] : '2';
+      let note = 'validationNotes.barbarian-' + p.replaceAll(' ', '') +
+                 'SelectableFeature';
+      rules.defineRule(note,
+        pathLevel, '+', 'source >= ' + level + ' ? 1 : null',
+        '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
+      );
+    });
+  } else if(name == 'Seasons Subdomain') {
+    Pathfinder.featureSpells(rules,
+      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
+      pathLevel, null, ['Endure Elements']
     );
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
