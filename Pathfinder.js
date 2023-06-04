@@ -3580,7 +3580,8 @@ Pathfinder.SPELLS = {
   'Maze':'Level=W8',
   'Meld Into Stone':'Level=C3,D3',
   'Mending':
-    'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0', // no liquid--10 min cast
+    'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0 ' + // no liquid--10 min cast
+    'Description="R10\' Repairs minor damage to $L lb object"',
   'Message':'Level=B0,Rogue0,W0',
   'Meteor Swarm':'Level=Infernal9,W9',
   'Mind Blank':
