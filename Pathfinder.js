@@ -1897,7 +1897,7 @@ Pathfinder.FEATURES = {
   'Magical Knack':'Section=magic Note="+2 caster level (max %V)"',
   'Magical Lineage':
     'Section=magic Note="-1 spell level for chosen spell metamagic"',
-  'Magical Talent':'Section=magic Note="May use chosen cantrip 1/dy"',
+  'Magical Talent (Trait)':'Section=magic Note="May use chosen cantrip 1/dy"',
   'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
   'Master Craftsman (%craftSkill)':
@@ -2342,7 +2342,7 @@ Pathfinder.FEATURES = {
   'Wooden Fist':
     'Section=combat ' +
     'Note="+%V unarmed damage and no AOO on unarmed attacks %1 rd/dy"',
-  'World Traveler':
+  'World Traveler (Trait)':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
   // Prestige classes
@@ -4035,7 +4035,7 @@ Pathfinder.TRAITS = {
   'Magic Is Life':'Type=Religion Subtype=N',
   'Magical Knack':'Type=Basic Subtype=Magic',
   'Magical Lineage':'Type=Basic Subtype=Magic',
-  'Magical Talent':'Type=Basic Subtype=Magic',
+  'Magical Talent (Trait)':'Type=Basic Subtype=Magic',
   'Mathematical Prodigy':'Type=Basic Subtype=Magic',
   'Militia Veteran':'Type=Regional Subtype=Town,Village',
   'Missionary':'Type=Campaign Subtype=Outlander',
@@ -4065,7 +4065,7 @@ Pathfinder.TRAITS = {
   'Warrior Of Old':'Type=Race Subtype=Elf',
   'Well-Informed':'Type=Race Subtype=Halfling',
   'Wisdom In The Flesh':'Type=Religion Subtype=LN',
-  'World Traveler':'Type=Race Subtype=Human',
+  'World Traveler (Trait)':'Type=Race Subtype=Human',
   // Faction Traits - PS Roleplaying Guild Guide (v10.0)
   'A Sure Thing':'Type=Faction Subtype="Silver Crusade"',
   'Arcane Archivist':'Type=Faction Subtype="Dark Archive"',
