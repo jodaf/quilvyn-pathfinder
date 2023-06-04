@@ -7682,6 +7682,10 @@ Pathfinder.pathRulesExtra = function(rules, name) {
     rules.defineRule("magicNotes.sun'sBlessing", pathLevel, '=', null);
     rules.defineRule('magicNotes.nimbusOfLight', pathLevel, '=', null);
     rules.defineRule('magicNotes.nimbusOfLight.1', pathLevel, '=', null);
+    Pathfinder.featureSpells(rules,
+      'Nimbus Of Light', 'NimbusOfLight', 'wisdom', pathLevel,
+      '10+casterLevels.NimbusOfLight//2+wisdomModifier', ['Daylight']
+    );
 
   } else if(name == 'Travel Domain') {
 
@@ -7690,10 +7694,6 @@ Pathfinder.pathRulesExtra = function(rules, name) {
       ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
     rules.defineRule
       ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
-    Pathfinder.featureSpells(rules,
-      'Nimbus Of Light', 'NimbusOfLight', 'wisdom', pathLevel,
-      '10+casterLevels.NimbusOfLight//2+wisdomModifier', ['Daylight']
-    );
 
   } else if(name == 'Trickery Domain') {
 
