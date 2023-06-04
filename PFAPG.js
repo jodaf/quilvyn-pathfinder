@@ -2164,7 +2164,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+4 vs. magical traps and language- and symbol-based effects",' +
       '"+%{levels.Bard//2} Spellcraft (identify items and decipher scrolls)/May use Disable Device on magical traps"',
-  'Magical Talent (Magician)':
+  'Magical Talent':
     'Section=skill ' +
     'Note="+%1 Knowledge (Arcana)/+%1 Spellcraft/+%1 Use Magic Device"',
   'Mass Bladethirst':
@@ -2178,7 +2178,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+%1 Bluff/+%1 Sleight Of Hand/+%1 Stealth",' +
       '"May use Disable Device to disarm magical traps"',
-  'Metamagic Mastery (Magician)':
+  'Metamagic Mastery (Bard)':
     'Section=magic ' +
     'Note="May end Bardic Performance to apply metamagic feat to spell w/out extending casting time"',
   'Mockery':
@@ -2256,7 +2256,7 @@ PFAPG.FEATURES = {
   'Wide Audience':
     'Section=magic ' +
     'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{30+(levels.Bard-5)//5*10}\' radius, or +%{(levels.Bard-5)//5} targets"',
-  'World Traveler (Sea Singer)':
+  'World Traveler':
     'Section=skill,skill ' +
     'Note=' +
       '"+%1 Knowledge (Geography)/+%1 Knowledge (Local)/+%1 Knowledge (Nature)/+%1 Linguistics",' +
@@ -4910,7 +4910,7 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '1:Dweomercraft,"8:Spell Suppression",' +
-      '"14:Metamagic Mastery (Magician)","1:Magical Talent (Magician)",' +
+      '"14:Metamagic Mastery (Bard)","1:Magical Talent",' +
       '"1:Improved Counterspell","2:Extended Performance",' +
       '"2:Expanded Repertoire","5:Arcane Bond (Bard)","10:Wand Mastery"',
   'Sandman':
@@ -4931,7 +4931,7 @@ PFAPG.PATHS = {
     'Level=levels.Bard ' +
     'Features=' +
       '"1:Sea Shanty","3:Still Water","6:Whistle The Wind",' +
-      '"18:Call The Storm","1:World Traveler (Sea Singer)",2:Familiar,' +
+      '"18:Call The Storm","1:World Traveler",2:Familiar,' +
       '"2:Sea Legs"',
   'Street Performer':
     'Group=Bard ' +
@@ -8949,18 +8949,17 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
       'featureNotes.mystery', '+=', '1'
     );
+    let allSkills = rules.getChoices('skills');
+    for(let s in allSkills) {
+      if(s != 'Intimidate' && allSkills[s].match(/charisma/i))
+        rules.defineRule('skillModifier.' + s, 'skillNotes.wasting', '+', '-4');
+    }
     rules.defineRule
       ('skillNotes.tongues', 'mysteryLevel', '=', 'source<5 ? 1 : 2');
     rules.defineRule('skillNotes.tongues-1',
       'mysteryLevel', '=', 'source>=15 ? "understand and speak" : source>=10 ? "understand" : null'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
-    let allSkills = rules.getChoices('skills');
-    for(let skill in allSkills) {
-      if(skill != 'Intimidate' && allSkills[skill].match(/charisma/i))
-        rules.defineRule
-          ('skillModifier.' + skill, 'skillNotes.wasting', '+', '-4');
-    }
   } else if(name == 'Summoner') {
     rules.defineRule
       ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
@@ -9013,10 +9012,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('animalCompanionStats.Tricks', 'eidolonMasterLevel', 'v', '0');
-    rules.defineRule('companionNotes.burrowEvolution',
-      'eidolonSpeed', '=', 'Math.floor(source / 2)',
-      'summonerFeatures.Flight Evolution', '+', '(source - 1) * 20'
-    );
     rules.defineRule('companionACBoosts',
       'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
     );
@@ -9046,6 +9041,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.breathWeaponEvolution',
       'summonerFeatures.Breath Weapon Evolution', '=', null
     );
+    rules.defineRule('companionNotes.burrowEvolution',
+      'eidolonSpeed', '=', 'Math.floor(source / 2)'
+    );
     rules.defineRule('companionNotes.climbEvolution',
       // The first selection gives base speed; additional +20
       'eidolonSpeed', '=', null,
@@ -9061,6 +9059,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'summonerFeatures.Fast Healing Evolution', '=', null
     );
     rules.defineRule('companionNotes.flightEvolution',
+      // The first selection gives base speed; additional +20
       'eidolonSpeed', '=', null,
       'summonerFeatures.Flight Evolution', '+', '(source - 1) * 20'
     );
@@ -9264,9 +9263,11 @@ PFAPG.classRulesExtra = function(rules, name) {
   } else if(name == 'Witch') {
     rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
     rules.defineRule
+      ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
+    rules.defineRule
       ('features.Brew Potion', 'featureNotes.cauldronHex', '=', '1');
     rules.defineRule
-      ('features.Familiar', "featureNotes.witch'sFamiliar", '=', null);
+      ('features.Familiar', "featureNotes.witch'sFamiliar", '=', '1');
     rules.defineRule('hexDC',
       classLevel, '=', '10 + Math.floor(source / 2)',
       'intelligenceModifier', '+', null
@@ -9276,15 +9277,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '(source>=3 ? ", self <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", self <i>Fly</i> effects %{' + classLevel + '} min/dy" : "")'
     );
     rules.defineRule
-      ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
-    rules.defineRule
       ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
     rules.defineRule('selectableFeatureCount.Witch (Patron)',
       'featureNotes.patron', '+=', '1'
-    );
-    Pathfinder.featureSpells(rules,
-      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', classLevel,
-      '10+' + classLevel + '//2+intelligenceModifier', ['Arcane Eye']
     );
     Pathfinder.featureSpells(rules,
       'Disguise Hex', 'DisguiseHex', 'intelligence', classLevel, null,
@@ -9297,6 +9292,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Forced Reincarnation Hex', 'ForcedReincarnationHex', 'intelligence',
       classLevel, null, ['Reincarnate']
+    );
+    Pathfinder.featureSpells(rules,
+      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', classLevel,
+      '10+' + classLevel + '//2+intelligenceModifier', ['Arcane Eye']
     );
     Pathfinder.featureSpells(rules,
       'Healing Hex', 'HealingHex', 'intelligence', classLevel, null,
@@ -9331,6 +9330,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       null, ['Control Weather']
     );
   } else if(name == 'Barbarian') {
+    rules.defineRule
+      ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
     rules.defineRule('armorClass',
       'combatNotes.nakedCourage.1', '+', null,
       'combatNotes.naturalToughness.1', '+', null
@@ -9369,21 +9370,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'barbarianFeatures.Invulnerability', '=', '0',
       'barbarianFeatures.Savage Grapple', '=', '0'
     );
-    rules.defineRule('barbarianFeatures.Damage Reduction',
-      'barbarianHasDamageReduction', '?', 'source == 1'
-    );
-    rules.defineRule('barbarianFeatures.Fast Movement',
-      'barbarianHasFastMovement', '?', 'source == 1'
-    );
-    rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
-      'barbarianHasImprovedUncannyDodge', '?', 'source == 1'
-    );
-    rules.defineRule('barbarianFeatures.Trap Sense',
-      'barbarianHasTrapSense', '?', 'source == 1'
-    );
-    rules.defineRule('barbarianFeatures.Uncanny Dodge',
-      'barbarianHasUncannyDodge', '?', 'source == 1'
-    );
+    ['Damage Reduction', 'Fast Movement', 'Improved Uncanny Dodge',
+     'Trap Sense', 'Uncanny Dodge'].forEach(f => {
+      rules.defineRule('barbarianFeatures.' + f,
+        'barbarianHas' + f.replaceAll(/ |-/g, ''), '?', null
+      );
+    });
     rules.defineRule('combatNotes.brawler',
       '', '=', '"Unarmed attack provokes no AOO and may inflict lethal damage"',
       'features.Improved Unarmed Strike', '=', '"Unarmed attacks inflict %{features.Small ? \'1d4\' : \'1d6\'}"'
@@ -9453,8 +9445,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
     rules.defineRule
-      ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
-    rules.defineRule
       ('damageReduction.-', 'combatNotes.invulnerability', '^=', null);
     rules.defineRule('featureNotes.blindsense',
       'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
@@ -9498,6 +9488,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Scent',
       'featureNotes.keenSenses(Barbarian).2', '=', 'source.includes("Scent") ? 1 : null'
     );
+    rules.defineRule('saveNotes.energyResistance',
+      'barbarianFeatures.Energy Resistance', '=', null
+    );
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
   } else if(name == 'Bard') {
@@ -9506,10 +9499,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       'bardFeatures.Arcane Strike', '=', '0',
       'bardFeatures.Eye For Detail', '=', '0',
       'bardFeatures.Heraldic Expertise', '=', '0',
-      'bardFeatures.Magical Talent (Magician)', '=', '0',
+      'bardFeatures.Magical Talent', '=', '0',
       'bardFeatures.Master Of Deception', '=', '0',
       'bardFeatures.Streetwise', '=', '0',
-      'bardFeatures.World Traveler (Sea Singer)', '=', '0'
+      'bardFeatures.World Traveler', '=', '0'
     );
     rules.defineRule('bardHasCountersong',
       classLevel, '=', '1',
@@ -9533,14 +9526,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('bardHasFrighteningTune',
       classLevel, '=', '1',
-      'bardFeatures.Metamagic Mastery (Magician)', '=', '0',
+      'bardFeatures.Metamagic Mastery (Bard)', '=', '0',
       'bardFeatures.Scandal', '=', '0'
     );
     rules.defineRule('bardHasInspireCompetence',
       classLevel, '=', '1',
       'bardFeatures.Harmless Performer', '=', '0',
       'bardFeatures.Mockery', '=', '0',
-      'bardFeatures.Sea Shanty', '=', '0',
+      'bardFeatures.Still Water', '=', '0',
       'bardFeatures.Trap Sense', '=', '0'
     );
     rules.defineRule('bardHasInspireCourage',
@@ -9567,6 +9560,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasJackOfAllTrades',
       classLevel, '=', '1',
       'bardFeatures.Arcane Armor', '=', '0',
+      // Probable Path shifts rather than replaces Jack Of All Trades
       'bardFeatures.Song Of The Fallen', '=', '0',
       'bardFeatures.Wand Mastery', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
@@ -9574,6 +9568,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasLoreMaster',
       classLevel, '=', '1',
       'bardFeatures.Arcane Bond (Bard)', '=', '0',
+      // Jack Of All Trades displaces rather than replaces Lore Master
       'bardFeatures.Quick Change', '=', '0',
       'bardFeatures.Sneak Attack', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
@@ -9601,168 +9596,32 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasVersatilePerformance',
       classLevel, '=', '1',
       'bardFeatures.Arcane Investigation', '=', '0',
-      'bardFeatures.Archivist', '=', '0',
-      'bardFeatures.Combat Casting', '=', '0',
       'bardFeatures.Expanded Repertoire', '=', '0',
       'bardFeatures.Familiar', '=', '0',
-      'bardFeatures.Sneakspell', '=', '0'
+      'bardFeatures.Sneakspell', '=', '0',
+      // Easier to list these two archetypes rather than their features
+      'bardFeatures.Archivist', '=', '0',
+      'bardFeatures.Arcane Duelist', '=', '0'
     );
     rules.defineRule('bardHasWellVersed',
       classLevel, '=', '1',
       'bardFeatures.Arcane Insight', '=', '0',
-      'bardFeatures.Combat Casting', '=', '0',
       'bardFeatures.Extended Performance', '=', '0',
       'bardFeatures.Magic Lore', '=', '0',
-      'bardFeatures.Sea Legs', '=', '0'
+      'bardFeatures.Sea Legs', '=', '0',
+      // Easier to list this archetype rather than its feature
+      'bardFeatures.Arcane Duelist', '=', '0'
     );
-    rules.defineRule
-      ('bardFeatures.Bardic Knowledge', 'bardHasBardicKnowledge', '?', null);
-    rules.defineRule
-      ('bardFeatures.Countersong', 'bardHasCountersong', '?', null);
-    rules.defineRule('bardFeatures.Deadly Performance',
-      'bardHasDeadlyPerformance', '?', null
-    );
-    rules.defineRule
-      ('bardFeatures.Dirge Of Doom', 'bardHasDirgeOfDoom', '?', null);
-    rules.defineRule('bardFeatures.Fascinate', 'bardHasFascinate', '?', null);
-    rules.defineRule
-      ('bardFeatures.Frightening Tune', 'bardHasFrighteningTune', '?', null);
-    rules.defineRule('bardFeatures.Inspire Competence',
-      'bardHasInspireCompetence', '?', null
-    );
-    rules.defineRule
-      ('bardFeatures.Inspire Courage', 'bardHasInspireCourage', '?', null);
-    rules.defineRule
-      ('bardFeatures.Inspire Greatness', 'bardHasInspireGreatness', '?', null);
-    rules.defineRule
-      ('bardFeatures.Inspire Heroics', 'bardHasInspireHeroics', '?', null);
-    rules.defineRule
-      ('bardFeatures.Jack-Of-All-Trades', 'bardHasJackOfAllTrades', '?', null);
-    rules.defineRule
-      ('bardFeatures.Lore Master', 'bardHasLoreMaster', '?', null);
-    rules.defineRule
-      ('bardFeatures.Mass Suggestion', 'bardHasMassSuggestion', '?', null);
-    rules.defineRule('bardFeatures.Soothing Performance',
-      'bardHasSoothingPerformance', '?', null
-    );
-    rules.defineRule
-      ('bardFeatures.Suggestion', 'bardHasSuggestion', '?', null);
-    rules.defineRule('bardFeatures.Versatile Performance',
-      'bardHasVersatilePerformance', '?', null
-    );
-    rules.defineRule
-      ('bardFeatures.Well-Versed', 'bardHasWellVersed', '?', null);
-    rules.defineRule('familiarMasterLevel',
-      'seaSingerLevel', '+=', 'source>=2 ? source : null'
-    );
-    rules.defineRule('featureNotes.arcaneArmor',
-      classLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
-    );
-    rules.defineRule('features.Heavy Armor Proficiency',
-      'featureNotes.arcaneArmor', '=', 'source=="Heavy" ? 1 : null'
-    );
-    rules.defineRule('features.Medium Armor Proficiency',
-      'featureNotes.arcaneArmor', '=', '1'
-    );
-    rules.defineRule('magicNotes.arcaneArmor',
-      classLevel, '=', 'source>=16 ? "heavy" : "medium"'
-    );
-    rules.defineRule('magicNotes.arcaneArmor.1',
-      'magicNotes.arcaneArmor', '=', 'source=="heavy" ? -3 : -2',
-      'armorWeight', '+', null
-    );
-    rules.defineRule('magicNotes.arcaneSpellFailure',
-      'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
-    );
-    rules.defineRule('saveNotes.energyResistance',
-      'barbarianFeatures.Energy Resistance', '=', null
-    );
-    rules.defineRule
-      ('saveNotes.trapSense', 'sandmanLevel', '+=', 'Math.floor(source / 3)');
+    ['Bardic Knowledge', 'Countersong', 'Deadly Performance', 'Dirge Of Doom',
+     'Fascinate', 'Frightening Tune', 'Inspire Competence', 'Inspire Courage',
+     'Inspire Greatness', 'Inspire Heroics', 'Jack-Of-All-Trades',
+     'Lore Master', 'Mass Suggestion', 'Soothing Performance', 'Suggestion',
+     'Versatile Performance', 'Well-Versed'].forEach(f => {
+      rules.defineRule
+        ('bardFeatures.' + f, 'bardHas' + f.replaceAll(/ |-/g, ''), '?', null);
+    });
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
-    rules.defineRule('skillModifier.Bluff',
-      'skillNotes.masterOfDeception', '+', 'null', // italics no-op
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Arcana)',
-      'skillNotes.magicalTalent(Magician)', '+', 'null', // italics no-op
-      'skillNotes.magicalTalent(Magician).1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Geography)',
-      'skillNotes.worldTraveler(SeaSinger)', '+', 'null', // italics no-op
-      'skillNotes.worldTraveler(SeaSinger).1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Local)',
-      'skillNotes.worldTraveler(SeaSinger).1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Nature)',
-      'skillNotes.worldTraveler(SeaSinger).1', '+', null
-    );
-    rules.defineRule('skillModifier.Linguistics',
-      'skillNotes.worldTraveler(SeaSinger).1', '+', null
-    );
-    rules.defineRule('skillModifier.Spellcraft',
-      'skillNotes.magicalTalent(Magician).1', '+', null
-    );
-    rules.defineRule('skillModifier.Use Magic Device',
-      'skillNotes.magicalTalent(Magician).1', '+', null
-    );
-    rules.defineRule('skillModifier.Sleight Of Hand',
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillModifier.Stealth',
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillNotes.eyeForDetail',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.eyeForDetail-1',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.heraldicExpertise',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
-      'archivistLevel', '=', 'source>=11 ? "; all skills are class skills" : ""'
-    );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
-      'archivistLevel', '=', 'source>=17 ? "; may take 10 on any skill" : ""'
-    );
-    rules.defineRule('skillNotes.loreMaster',
-      'archivistLevel', '^=', 'Math.floor((source + 4) / 6)'
-    );
-    rules.defineRule('skillNotes.magicalTalent(Magician).1',
-      'features.Magical Talent (Magician)', '?', null,
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('skillNotes.masterOfDeception.1',
-      'features.Master Of Deception', '?', null,
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('skillNotes.streetwise',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.streetwise-1',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.worldTraveler(SeaSinger).1',
-      'features.World Traveler (Sea Singer)', '?', null,
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
-    Pathfinder.featureSpells(rules,
-      'Call The Storm', 'CallTheStorm', 'charisma', classLevel, '',
-      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
-    );
-    Pathfinder.featureSpells(rules,
-      'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
-    );
-    Pathfinder.featureSpells(rules,
-      'Whistle The Wind', 'WhistleTheWind', 'charisma', classLevel, null,
-      ['Gust Of Wind']
-    );
   } else if(name == 'Cleric') {
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
@@ -12368,7 +12227,119 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('skillModifier.Ride',
       'skillNotes.mountedMastery', '+', 'null' // italics no-op
     );
-  } else if (name == 'Bloodline Aquatic') {
+  } else if(name == 'Arcane Duelist') {
+    rules.defineRule('featureNotes.arcaneArmor',
+      pathLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
+    );
+    rules.defineRule('features.Heavy Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', 'source=="Heavy" ? 1 : null'
+    );
+    rules.defineRule('features.Medium Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', '1'
+    );
+    rules.defineRule('magicNotes.arcaneArmor',
+      pathLevel, '=', 'source>=16 ? "heavy" : "medium"'
+    );
+    rules.defineRule('magicNotes.arcaneArmor.1',
+      'magicNotes.arcaneArmor', '=', 'source=="heavy" ? -3 : -2',
+      'armorWeight', '+', null
+    );
+    rules.defineRule('magicNotes.arcaneSpellFailure',
+      'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
+    );
+  } else if(name == 'Archivist') {
+    rules.defineRule
+      ('skillNotes.loreMaster', pathLevel, '^=', 'Math.floor((source+4) / 6)');
+    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
+      pathLevel, '=', 'source>=11 ? "; all skills are class skills" : ""'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
+      pathLevel, '=', 'source>=17 ? "; may take 10 on any skill" : ""'
+    );
+  } else if(name == 'Court Bard') {
+    rules.defineRule('skillNotes.heraldicExpertise',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Detective') {
+    rules.defineRule('skillNotes.eyeForDetail',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.eyeForDetail-1',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Magician') {
+    rules.defineRule('skillModifier.Knowledge (Arcana)',
+      'skillNotes.magicalTalent', '+', 'null', // italics no-op
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillModifier.Spellcraft',
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillModifier.Use Magic Device',
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillNotes.magicalTalent.1',
+      'features.Magical Talent', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+  } else if(name == 'Sandman') {
+    rules.defineRule
+      ('saveNotes.trapSense', pathLevel, '+=', 'Math.floor(source / 3)');
+    rules.defineRule('skillModifier.Bluff',
+      'skillNotes.masterOfDeception', '+', 'null', // italics no-op
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Sleight Of Hand',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Stealth',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillNotes.masterOfDeception.1',
+      'features.Master Of Deception', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('sneakAttack', pathLevel, '=', 'Math.floor(source / 5)');
+  } else if(name == 'Savage Skald') {
+    Pathfinder.featureSpells(rules,
+      'Incite Rage', 'InciteRage', 'charisma', pathLevel, '', ['Rage']
+    );
+  } else if(name == 'Sea Singer') {
+    rules.defineRule
+      ('familiarMasterLevel', pathLevel, '+=', 'source>=2 ? source : null');
+    rules.defineRule('skillModifier.Knowledge (Geography)',
+      'skillNotes.worldTraveler', '+', 'null', // italics no-op
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Local)',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Nature)',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Linguistics',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillNotes.worldTraveler.1',
+      'features.World Traveler', '?', null,
+      pathLevel, '=', 'Math.floor(source / 2)'
+    );
+    Pathfinder.featureSpells(rules,
+      'Call The Storm', 'CallTheStorm', 'charisma', pathLevel, '',
+      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
+    );
+    Pathfinder.featureSpells(rules,
+      'Whistle The Wind', 'WhistleTheWind', 'charisma', pathLevel, null,
+      ['Gust Of Wind']
+    );
+  } else if(name == 'Street Performer') {
+    rules.defineRule('skillNotes.streetwise',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.streetwise-1',
+      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+  } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
       ('combatNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
     rules.defineRule
