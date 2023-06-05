@@ -9779,122 +9779,6 @@ PFAPG.classRulesExtra = function(rules, name) {
         'Requires specific Druid archetype';
     });
   } else if(name == 'Fighter') {
-    // Weapon lists from core Fighter rules and the APG gear list
-    let polearms = [
-     'Glaive', 'Guisarme', 'Halberd', 'Ranseur', 'Bardiche', 'Bec De Corbin',
-     'Bill', 'Glaive-Guisarme', 'Lucerne Hammer', 'Mancatcher'
-    ];
-    let spears = [
-     'Javelin', 'Lance', 'Longspear', 'Shortspear', 'Spear', 'Trident',
-     'Boar Spear', 'Chain Spear'
-    ];
-    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
-      let prefix =
-        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
-      if(w.match(/\b(long|short)?bow\b/i)) {
-        rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+=', null);
-        rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+=', null);
-        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
-      } else if(w.match(/\bcrossbow\b/i)) {
-        rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+=', null);
-        rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
-      } else if(polearms.includes(w) || spears.includes(w)) {
-        rules.defineRule
-          (prefix+'AttackModifier', 'combatNotes.polearmTraining', '+=', null);
-        rules.defineRule
-          (prefix+'DamageModifier', 'combatNotes.polearmTraining', '+=', null);
-      }
-    });
-    rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
-    rules.defineRule('combatNotes.backswing',
-      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
-    );
-    rules.defineRule('combatNotes.crossbowExpert',
-      classLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('combatNotes.elusive',
-      classLevel, '=', 'Math.floor((source + 2) / 4)'
-    );
-    rules.defineRule('combatNotes.elusive.1',
-      'armorWeight', '?', 'source<=1',
-      'combatNotes.elusive', '=', null
-    );
-    rules.defineRule
-      ('combatNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
-    rules.defineRule('combatNotes.expertArcher',
-      classLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('combatNotes.deadshot',
-      'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
-      'combatNotes.greaterDeadshot', '+', 'null', // italics no-op
-      'combatNotes.greaterDeadshot.1', '^', null
-    );
-    rules.defineRule('combatNotes.greaterDeadshot.1',
-      'features.Greater Deadshot', '?', null,
-      'dexterityModifier', '=', null
-    );
-    rules.defineRule('combatNotes.greaterPowerAttack',
-      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 4'
-    );
-    rules.defineRule('combatNotes.hawkeye',
-      classLevel, '=', 'Math.floor((source + 2) / 4) * 5'
-    );
-    rules.defineRule('combatNotes.irresistibleAdvance',
-      'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
-    );
-    rules.defineRule('combatNotes.overhandChop',
-      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
-    );
-    rules.defineRule('combatNotes.polearmTraining',
-      classLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('combatNotes.safeShot',
-      'fighterFeatures.Archer', '=', '"Bow"',
-      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
-    );
-    rules.defineRule('combatNotes.savageCharge',
-      'combatNotes.savageCharge.1', '=', 'Math.floor(source)'
-    );
-    rules.defineRule('combatNotes.savageCharge.1',
-      'features.Savage Charge', '?', null,
-      classLevel, '=', 'source / 2',
-      'combatNotes.greaterSavageCharge', '*', '0.5'
-    );
-    rules.defineRule('combatNotes.shieldGuard',
-      'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
-    );
-    rules.defineRule('combatNotes.shieldMastery.1',
-      'combatNotes.shieldMastery', '?', null,
-      'shield', '=', 'source=="None" ? null : 5'
-    );
-    rules.defineRule
-      ('combatNotes.shieldWard', 'saveNotes.shieldWard', '=', null);
-    rules.defineRule('combatNotes.towerShieldPenalty',
-      'combatNotes.deftShield', '+', null
-    );
-    rules.defineRule
-      ('damageReduction.-', 'combatNotes.shieldMastery.1', '+=', null);
-    rules.defineRule('featureNotes.shieldWard.1',
-      // Test note instead of feature for italics
-      'featureNotes.shieldWard', '?', null,
-      'shield', '=', 'source=="None" ? null : "Evasion"'
-    );
-    rules.defineRule('featureNotes.shieldedFortress.1',
-      // Test note instead of feature for italics
-      'featureNotes.shieldedFortress', '?', null,
-      'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
-    );
-    rules.defineRule('features.Evasion',
-      'featureNotes.shieldedFortress.1', '=', 'source=="Evasion" ? 1 : null',
-      'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
-    );
-    rules.defineRule('features.Improved Evasion',
-      'featureNotes.shieldedFortress.1', '=', 'source=="Improved Evasion" ? 1 : null'
-    );
     rules.defineRule('fighterHasArmorMastery',
       classLevel, '=', '1',
       'fighterFeatures.Deadly Defense', '=', '0',
@@ -9953,41 +9837,14 @@ PFAPG.classRulesExtra = function(rules, name) {
       'fighterFeatures.Singleton', '=', '0',
       'fighterFeatures.Twin Blades', '=', '0'
     );
-    rules.defineRule
-      ('fighterFeatures.Armor Mastery', 'fighterHasArmorMastery', '?', null);
-    rules.defineRule
-      ('fighterFeatures.Armor Training', 'fighterHasArmorTraining', '?', null);
-    rules.defineRule('fighterFeatures.Bravery', 'fighterHasBravery', '?', null);
-    rules.defineRule
-      ('fighterFeatures.Weapon Mastery', 'fighterHasWeaponMastery', '?', null);
-    rules.defineRule('fighterFeatures.Weapon Training',
-      'fighterHasWeaponTraining', '?', null
-    );
-    rules.defineRule('saveNotes.shieldWard',
-      'armor', '=', 'source=="None" ? null : source.match(/Tower/) ? 4 : source.match(/Heavy/) ? 2 : 1'
-    );
+    ['Armor Mastery', 'Armor Training', 'Bravery', 'Weapon Mastery',
+     'Weapon Training'].forEach(f => {
+      rules.defineRule('fighterFeatures.' + f,
+        'fighterHas' + f.replaceAll(/ /g, ''), '?', null
+      );
+    });
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
-    rules.defineRule('skillNotes.armorSkillCheckPenalty',
-      'skillNotes.deftShield.1', '+', '-source'
-    );
-    rules.defineRule
-      ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
-    rules.defineRule('skillNotes.armoredCharger.1',
-      'features.Armored Charger', '?', null,
-      'skillNotes.armorSkillCheckPenalty', '=', null,
-      'skillNotes.armoredCharger', '+', 'null' // italics no-op
-    );
-    rules.defineRule
-      ('skillNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
-    rules.defineRule('skillNotes.deftShield.1',
-      'shield', '?', 'source=="Tower"',
-      'skillNotes.deftShield', '=', null
-    );
-    rules.defineRule
-      ('skillNotes.hawkeye', classLevel, '=', 'Math.floor((source + 2) / 4)');
-    rules.defineRule
-      ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
   } else if(name == 'Monk') {
     rules.defineRule('abilityNotes.cloudStep',
       classLevel, '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
@@ -11754,6 +11611,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
     rules.defineRule('casterLevels.LightningLord', pathLevel, '=', null);
   }
+  // Oracle
   if(name == 'Battle Mystery') {
     rules.defineRule('featCount.General',
       'featureNotes.maneuverMastery', '+', null,
@@ -12016,6 +11874,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
       ['7:Clairaudience/Clairvoyance']
     );
+  // Cavalier
   } else if(name == 'Order Of The Cockatrice') {
     rules.defineRule
       ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
@@ -12046,6 +11905,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('skillModifier.Ride',
       'skillNotes.mountedMastery', '+', 'null' // italics no-op
     );
+  // Bard
   } else if(name == 'Arcane Duelist') {
     rules.defineRule('featureNotes.arcaneArmor',
       pathLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
@@ -12158,6 +12018,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.streetwise-1',
       pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+  // Cleric
   } else if(name == 'Agathion Subdomain') {
     Pathfinder.featureSpells(rules,
       'Protective Aura', 'ProtectiveAura', 'wisdom', pathLevel, null,
@@ -12222,6 +12083,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
       pathLevel, null, ['Endure Elements']
     );
+  // Druid
   } else if(name == 'Animal Shaman') {
     ['Bear', 'Eagle', 'Lion', 'Serpent', 'Wolf'].forEach(a => {
       rules.defineRule('featCount.' + a + ' Shaman',
@@ -12335,6 +12197,170 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
   } else if(name == 'Urban Druid') {
     rules.defineRule('wildShapeLevel', pathLevel, '+', '-4');
+  // Fighter
+  } else if(name == 'Archer') {
+    rules.defineRule('combatNotes.expertArcher',
+      pathLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.hawkeye',
+      pathLevel, '=', 'Math.floor((source + 2) / 4) * 5'
+    );
+    rules.defineRule
+      ('combatNotes.safeShot', 'fighterFeatures.Archer', '=', '"Bow"',);
+    rules.defineRule
+      ('skillNotes.hawkeye', pathLevel, '=', 'Math.floor((source + 2) / 4)');
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(w.match(/\b(long|short)?bow\b/i)) {
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+=', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+=', null);
+        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
+      }
+    });
+  } else if(name == 'Crossbowman') {
+    rules.defineRule('combatNotes.crossbowExpert',
+      pathLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.deadshot',
+      'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
+      'combatNotes.greaterDeadshot', '+', 'null', // italics no-op
+      'combatNotes.greaterDeadshot.1', '^', null
+    );
+    rules.defineRule('combatNotes.greaterDeadshot.1',
+      'features.Greater Deadshot', '?', null,
+      'dexterityModifier', '=', null
+    );
+    rules.defineRule('combatNotes.safeShot',
+      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(w.match(/\bcrossbow\b/i)) {
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+=', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
+      }
+    });
+  } else if(name == 'Free Hand Fighter') {
+    rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
+    rules.defineRule('combatNotes.elusive',
+      pathLevel, '=', 'Math.floor((source + 2) / 4)'
+    );
+    rules.defineRule('combatNotes.elusive.1',
+      'armorWeight', '?', 'source<=1',
+      'combatNotes.elusive', '=', null
+    );
+  } else if(name == 'Mobile Fighter') {
+    rules.defineRule
+      ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
+  } else if(name == 'Phalanx Soldier') {
+    rules.defineRule
+      ('combatNotes.deftShield', pathLevel, '=', 'source>=11 ? 2 : 1');
+    rules.defineRule('combatNotes.towerShieldPenalty',
+      'combatNotes.deftShield', '+', null
+    );
+    rules.defineRule('combatNotes.irresistibleAdvance',
+      'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
+    );
+    rules.defineRule('featureNotes.shieldedFortress.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldedFortress', '?', null,
+      'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
+    );
+    rules.defineRule('features.Evasion',
+      'featureNotes.shieldedFortress.1', '=', 'source=="Evasion" ? 1 : null'
+    );
+    rules.defineRule('features.Improved Evasion',
+      'featureNotes.shieldedFortress.1', '=', 'source=="Improved Evasion" ? 1 : null'
+    );
+    rules.defineRule('skillNotes.armorSkillCheckPenalty',
+      'skillNotes.deftShield.1', '+', '-source'
+    );
+    rules.defineRule
+      ('skillNotes.deftShield', pathLevel, '=', 'source>=11 ? 2 : 1');
+    rules.defineRule('skillNotes.deftShield.1',
+      'shield', '?', 'source=="Tower"',
+      'skillNotes.deftShield', '=', null
+    );
+  } else if(name == 'Polearm Master') {
+    // Weapon lists from core Fighter rules and the APG gear list
+    let polearms = [
+     'Glaive', 'Guisarme', 'Halberd', 'Ranseur', 'Bardiche', 'Bec De Corbin',
+     'Bill', 'Glaive-Guisarme', 'Lucerne Hammer', 'Mancatcher'
+    ];
+    let spears = [
+     'Javelin', 'Lance', 'Longspear', 'Shortspear', 'Spear', 'Trident',
+     'Boar Spear', 'Chain Spear'
+    ];
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(polearms.includes(w) || spears.includes(w)) {
+        rules.defineRule
+          (prefix+'AttackModifier', 'combatNotes.polearmTraining', '+=', null);
+        rules.defineRule
+          (prefix+'DamageModifier', 'combatNotes.polearmTraining', '+=', null);
+      }
+    });
+    rules.defineRule('combatNotes.polearmTraining',
+      pathLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+  } else if(name == 'Roughrider') {
+    rules.defineRule('skillNotes.armoredCharger.1',
+      'features.Armored Charger', '?', null,
+      'skillNotes.armorSkillCheckPenalty', '=', null,
+      'skillNotes.armoredCharger', '+', 'null' // italics no-op
+    );
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
+  } else if(name == 'Savage Warrior') {
+    rules.defineRule('combatNotes.savageCharge',
+      'combatNotes.savageCharge.1', '=', 'Math.floor(source)'
+    );
+    rules.defineRule('combatNotes.savageCharge.1',
+      'features.Savage Charge', '?', null,
+      pathLevel, '=', 'source / 2',
+      'combatNotes.greaterSavageCharge', '*', '0.5'
+    );
+  } else if(name == 'Shielded Fighter') {
+    rules.defineRule('combatNotes.shieldGuard',
+      'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
+    );
+    rules.defineRule('combatNotes.shieldMastery.1',
+      'combatNotes.shieldMastery', '?', null,
+      'shield', '=', 'source=="None" ? null : 5'
+    );
+    rules.defineRule
+      ('combatNotes.shieldWard', 'saveNotes.shieldWard', '=', null);
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.shieldMastery.1', '+=', null);
+    rules.defineRule('featureNotes.shieldWard.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldWard', '?', null,
+      'shield', '=', 'source=="None" ? null : "Evasion"'
+    );
+    rules.defineRule('saveNotes.shieldWard',
+      'armor', '=', 'source=="None" ? null : source.match(/Tower/) ? 4 : source.match(/Heavy/) ? 2 : 1'
+    );
+    rules.defineRule('features.Evasion',
+      'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
+    );
+  } else if(name == 'Two-Handed Fighter') {
+    rules.defineRule('combatNotes.backswing',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
+    );
+    rules.defineRule('combatNotes.greaterPowerAttack',
+      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 4'
+    );
+    rules.defineRule('combatNotes.overhandChop',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
+    );
+  // Sorcerer
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
       ('combatNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
