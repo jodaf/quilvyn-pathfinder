@@ -2605,8 +2605,10 @@ PFAPG.FEATURES = {
     'Section=save Note="+2 vs. abilities of oozes and aberrations"',
   'Resist Temptation':'Section=save Note="+2 vs. divinations and enchantments"',
   'Run Like The Wind':
-    'Section=ability ' +
-    'Note="+10\' Speed in light armor/May dbl speed for 1 rd 1/hr"',
+    'Section=ability,ability ' +
+    'Note=' +
+      '"+10\' Speed in light or no armor",' +
+      '"May dbl speed for 1 rd 1/hr"',
   'Sandwalker':
     'Section=ability,skill ' +
     'Note=' +
@@ -2740,7 +2742,7 @@ PFAPG.FEATURES = {
     'Note="May suffer -5 two-handed weapon attack for crit threat on any hit"',
   'Doublestrike':
     'Section=combat Note="May attack w/two weapons as a single action"',
-  'Elusive':'Section=combat Note="+%V AC in light armor"',
+  'Elusive':'Section=combat Note="+%V AC in light or no armor"',
   'Equal Opportunity':'Section=combat Note="May make AOO w/two weapons"',
   'Evasive Archer':
     'Section=combat Note="+%{levels.Fighter>=17?4:2} AC vs. ranged attacks"',
@@ -9628,22 +9630,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
   } else if(name == 'Druid') {
-    let allFeats = rules.getChoices('feats');
-    rules.defineRule('abilityNotes.naturalSwimmer',
-      'speed', '=', 'Math.floor(source / 2)',
-      'abilityNotes.seaborn', '*', '2'
-    );
-    rules.defineRule('abilityNotes.runLikeTheWind.1',
-      'features.Natural Swimmer', '?', null,
-      'armorWeight', '=', 'source <= 1 ? 1 : null'
-    );
     rules.defineRule('classSkills.Knowledge (Geography)',
       classLevel, '=', 'null',
-      'druidClassSkills.Knowledge (Geography)', '=', 'source==1 ? 1 : null'
+      'druidHasKnowledgeGeography', '=', 'source==1 ? 1 : null'
     );
-    rules.defineRule('druidClassSkills.Knowledge (Geography)',
+    rules.defineRule('druidHasKnowledgeGeography',
       classLevel, '=', '1',
-      'skillNotes.cavesense', '=', '0'
+      'druidFeatures.Cavesense', '=', '0'
     );
     rules.defineRule('druidHasAThousandFaces',
       classLevel, '=', '1',
@@ -9654,8 +9647,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Mountain Stone', '=', '0',
       'druidFeatures.Plaguebearer', '=', '0',
       'druidFeatures.Slippery', '=', '0',
-      'druidFeatures.Verdant Sentinel', '=', '0',
-      'druidFeatures.Totemic Summons', '=', '0'
+      'druidFeatures.Totemic Summons', '=', '0',
+      'druidFeatures.Verdant Sentinel', '=', '0'
     );
     rules.defineRule('druidHasNatureSense',
       classLevel, '=', '1',
@@ -9680,8 +9673,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('druidHasTracklessStep',
       classLevel, '=', '1',
-      // BD5 Miasma replaces D3 Trackless Step
-      'blightDruidLevel', '=', '0',
       'druidFeatures.Icewalking', '=', '0',
       'druidFeatures.Lightfoot', '=', '0',
       'druidFeatures.Lorekeeper', '=', '0',
@@ -9690,7 +9681,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Sandwalker', '=', '0',
       'druidFeatures.Swamp Strider', '=', '0',
       'druidFeatures.Sure-Footed (Druid)', '=', '0',
-      'jungleDruidLevel', '=', '0'
+      // Easier to list these two archetypes rather than their features
+      'druidFeatures.Blight Druid', '=', '0',
+      'druidFeatures.Jungle Druid', '=', '0'
     );
     rules.defineRule('druidHasVenomImmunity',
       classLevel, '=', '1',
@@ -9730,90 +9723,18 @@ PFAPG.classRulesExtra = function(rules, name) {
       'druidFeatures.Mountaineer', '=', '0',
       'druidFeatures.Plains Traveler', '=', '0',
       'druidFeatures.Tunnelrunner', '=', '0',
+      // Woodland Stride for a Jungle Druid is delayed rather than replaced
       'jungleDruidLevel', '=', 'source>=3 ? null : 0'
     );
-    rules.defineRule
-      ('druidFeatures.A Thousand Faces', 'druidHasAThousandFaces', '?', null);
-    rules.defineRule
-      ('druidFeatures.Nature Sense', 'druidHasNatureSense', '?', null);
-    rules.defineRule("druidFeatures.Resist Nature's Lure",
-      'druidHasResistNaturesLure', '?', null
-    );
-    rules.defineRule('druidFeatures.Spontaneous Druid Spell',
-      'druidHasSpontaneousDruidSpell', '?', null
-    );
-    rules.defineRule
-      ('druidFeatures.Trackless Step', 'druidHasTracklessStep', '?', null);
-    rules.defineRule
-      ('druidFeatures.Venom Immunity', 'druidHasVenomImmunity', '?', null);
-    rules.defineRule
-      ('druidFeatures.Wild Empathy', 'druidHasWildEmpathy', '?', null);
-    rules.defineRule
-      ('druidFeatures.Wild Shape', 'druidHasWildShape', '?', null);
-    rules.defineRule
-      ('druidFeatures.Woodland Stride', 'druidHasWoodlandStride', '?', null);
-    rules.defineRule('featureNotes.animalShamanFeatBonus',
-      classLevel, '=', 'Math.floor((source - 5) / 4)'
-    );
-    rules.defineRule('familiarMasterLevel', 'blightDruidLevel', '+=', null);
-    rules.defineRule('featCount.Bear Shaman',
-      'features.Bear Totem', '?', null,
-      'featureNotes.animalShamanFeatBonus', '=', null
-    );
-    rules.defineRule('featCount.Eagle Shaman',
-      'features.Eagle Totem', '?', null,
-      'featureNotes.animalShamanFeatBonus', '=', null
-    );
-    rules.defineRule('featCount.Lion Shaman',
-      'features.Lion Totem', '?', null,
-      'featureNotes.animalShamanFeatBonus', '=', null
-    );
-    rules.defineRule('featCount.Serpent Shaman',
-      'features.Serpent Totem', '?', null,
-      'featureNotes.animalShamanFeatBonus', '=', null
-    );
-    rules.defineRule('featCount.Wolf Shaman',
-      'features.Wolf Totem', '?', null,
-      'featureNotes.animalShamanFeatBonus', '=', null
-    );
-    rules.defineRule('magicNotes.totemicSummons',
-      'features.Bear Totem', '=', '"bear"',
-      'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
-      'features.Lion Totem', '=', '"feline"',
-      'features.Serpent Totem', '=', '"snake"',
-      'features.Wolf Totem', '=', '"canine"'
-    );
-    rules.defineRule('magicNotes.wildShape',
-      // Archetype-specific Wild Shape progressions
-      'caveDruidLevel', '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental/medium ooze" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large ooze" : ' +
-        '"diminutive-huge/elemental/large ooze"',
-      'desertDruidLevel', '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental/medium vermin" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large vermin" : ' +
-        '"diminutive-huge/elemental/huge vermin"',
-      'mountainDruidLevel', '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large giant" : ' +
-        'source < 16 ? "diminutive-huge/elemental/large giant" : ' +
-        '"diminutive-huge/elemental/huge giant"'
-    );
+    ['A Thousand Faces', 'Nature Sense', "Resist Nature's Lure",
+     'Spontaneous Druid Spell', 'Trackless Step', 'Venom Immunity',
+     'Wild Empathy', 'Wild Shape', 'Woodland Stride'].forEach(f => {
+      rules.defineRule('druidFeatures.' + f,
+        'druidHas' + f.replaceAll(/ |'/g, ''), '?', null
+      );
+    });
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
-    rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
-      'features.Animal Shaman', '?', null,
-      classLevel, '=', '1'
-    );
     // Extend Nature Bond validations w/APG restrictions
     rules.defineRule('validationNotes.druid-AnimalCompanionSelectableFeature',
       'druidFeatures.Blight Druid', '+', '-1',
@@ -9857,47 +9778,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       allNotes['validationNotes.druid-' + d.replaceAll(' ', '') + 'SelectableFeature'] =
         'Requires specific Druid archetype';
     });
-    rules.defineRule('wildShapeLevel',
-      'aquaticDruidLevel', '+', '-2',
-      'arcticDruidLevel', '+', '-2',
-      'caveDruidLevel', '+', '-2',
-      'desertDruidLevel', '+', '-2',
-      'jungleDruidLevel', '+', '-2',
-      'mountainDruidLevel', '+', '-2',
-      'plainsDruidLevel', '+', '-2',
-      'swampDruidLevel', '+', '-2',
-      'urbanDruidLevel', '+', '-4',
-      'animalShamanLevel', '+', '-2'
-    );
-    rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
-    ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
-     'Toughness'].forEach(f => {
-      allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
-    });
-    ['Flyby Attack', 'Improved Lightning Reflexes', 'Lightning Reflexes',
-     'Skill Focus (Perception)', 'Wind Stance'].forEach(f => {
-      allFeats[f] = allFeats[f].replace('Type=', 'Type="Eagle Shaman",');
-    });
-    ['Dodge', 'Lunge', 'Improved Iron Will', 'Iron Will',
-     'Skill Focus (Acrobatics)'].forEach(f => {
-      allFeats[f] = allFeats[f].replace('Type=', 'Type="Lion Shaman",');
-    });
-    ['Combat Expertise', 'Improved Feint', 'Skill Focus (Bluff)', 'Stealthy',
-     'Strike Back'].forEach(f => {
-      allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
-    });
-    ['Greater Trip', 'Improved Trip', 'Mobility', 'Skill Focus (Stealth)',
-     'Spring Attack'].forEach(f => {
-      allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
-    });
-    Pathfinder.featureSpells(rules,
-      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', classLevel, null,
-      ['Tree Shape']
-    );
-    Pathfinder.featureSpells(rules,
-      'Slippery', 'Slippery', 'wisdom', classLevel, null,
-      ['Freedom Of Movement']
-    );
   } else if(name == 'Fighter') {
     // Weapon lists from core Fighter rules and the APG gear list
     let polearms = [
@@ -12342,6 +12222,119 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
       pathLevel, null, ['Endure Elements']
     );
+  } else if(name == 'Animal Shaman') {
+    ['Bear', 'Eagle', 'Lion', 'Serpent', 'Wolf'].forEach(a => {
+      rules.defineRule('featCount.' + a + ' Shaman',
+        'features.' + a + ' Totem', '?', null,
+        'featureNotes.animalShamanFeatBonus', '=', null
+      );
+    });
+    rules.defineRule('featureNotes.animalShamanFeatBonus',
+      pathLevel, '=', 'Math.floor((source - 5) / 4)'
+    );
+    rules.defineRule('magicNotes.totemicSummons',
+      'features.Bear Totem', '=', '"bear"',
+      'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
+      'features.Lion Totem', '=', '"feline"',
+      'features.Serpent Totem', '=', '"snake"',
+      'features.Wolf Totem', '=', '"canine"'
+    );
+    rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
+      'features.Animal Shaman', '?', null,
+      pathLevel, '=', '1'
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+    let allFeats = rules.getChoices('feats');
+    ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
+     'Toughness'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
+    });
+    ['Flyby Attack', 'Improved Lightning Reflexes', 'Lightning Reflexes',
+     'Skill Focus (Perception)', 'Wind Stance'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Eagle Shaman",');
+    });
+    ['Dodge', 'Lunge', 'Improved Iron Will', 'Iron Will',
+     'Skill Focus (Acrobatics)'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Lion Shaman",');
+    });
+    ['Combat Expertise', 'Improved Feint', 'Skill Focus (Bluff)', 'Stealthy',
+     'Strike Back'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
+    });
+    ['Greater Trip', 'Improved Trip', 'Mobility', 'Skill Focus (Stealth)',
+     'Spring Attack'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Wolf Shaman",');
+    });
+  } else if(name == 'Aquatic Druid') {
+    rules.defineRule('abilityNotes.naturalSwimmer',
+      'speed', '=', 'Math.floor(source / 2)',
+      'abilityNotes.seaborn', '*', '2'
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Arctic Druid') {
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Blight Druid') {
+    rules.defineRule('familiarMasterLevel', 'blightDruidLevel', '+=', null);
+  } else if(name == 'Cave Druid') {
+    rules.defineRule('magicNotes.wildShape',
+      pathLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium ooze" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large ooze" : ' +
+        '"diminutive-huge/elemental/large ooze"'
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Desert Druid') {
+    rules.defineRule('magicNotes.wildShape',
+      pathLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium vermin" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large vermin" : ' +
+        '"diminutive-huge/elemental/huge vermin"'
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Jungle Druid') {
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+    Pathfinder.featureSpells(rules,
+      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', pathLevel, null,
+      ['Tree Shape']
+    );
+  } else if(name == 'Mountain Druid') {
+    rules.defineRule('magicNotes.wildShape',
+      pathLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large giant" : ' +
+        'source < 16 ? "diminutive-huge/elemental/large giant" : ' +
+        '"diminutive-huge/elemental/huge giant"'
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Plains Druid') {
+    rules.defineRule('abilityNotes.runLikeTheWind.1',
+      'abilityNotes.runLikeTheWind', '?', null, // Italics
+      'armorWeight', '=', 'source <= 1 ? 1 : null'
+    );
+    rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Swamp Druid') {
+    Pathfinder.featureSpells(rules,
+      'Slippery', 'Slippery', 'wisdom', pathLevel, null,
+      ['Freedom Of Movement']
+    );
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
+  } else if(name == 'Urban Druid') {
+    rules.defineRule('wildShapeLevel', pathLevel, '+', '-4');
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
       ('combatNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
