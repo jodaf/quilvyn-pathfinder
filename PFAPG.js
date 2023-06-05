@@ -5306,7 +5306,7 @@ PFAPG.PATHS = {
     'Group=Monk ' +
     'Level=levels.Monk ' +
     'Features=' +
-      '"1:Weapon Proficiency(Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
+      '"1:Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
       '"1:Flurry Of Blows (Zen Archer)","1:Perfect Strike",' +
       '"2:Way Of The Bow","3:Zen Archery","3:Point-Blank Master",' +
       '"4:Ki Pool (Zen Archer)","5:Ki Arrows","9:Reflexive Shot",' +
@@ -9846,109 +9846,19 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
   } else if(name == 'Monk') {
-    rules.defineRule('abilityNotes.cloudStep',
-      classLevel, '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
-    );
-    rules.defineRule('abilityNotes.spiderStep',
-      classLevel, '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
-    );
-    rules.defineRule('combatNotes.adamantineMonk',
-      classLevel, '=', 'Math.floor((source - 6) / 3)'
-    );
-    rules.defineRule('combatNotes.adamantineMonk-1',
-      'combatNotes.adamantineMonk', '=', 'source * 2'
-    );
-    rules.defineRule('combatNotes.elementalFist',
-      '', '=', '1',
-      'monkOfTheFourWindsLevel', '+', 'Math.floor(source / 5)'
-    );
-    rules.defineRule
-      ('combatNotes.mysticPrescience', classLevel, '=', 'source>=20 ? 4 : 2');
-    rules.defineRule('combatNotes.perfectStrike',
-      'weaponAdeptLevel', '+', 'source>=10 ? 1 : null',
-      'zenArcherLevel', '+', 'source>=10 ? 1 : null'
-    );
-    rules.defineRule('combatNotes.punishingKick',
-      'hungryGhostMonkLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
-    );
-    rules.defineRule('combatNotes.touchOfSerenity',
-      'monkOfTheLotusLevel', '+', 'Math.floor(source / 6)'
-    );
-    rules.defineRule('combatNotes.zenArchery',
-      'wisdomModifier', '=', null,
-      'dexterityModifier', '+', '-source'
-    );
-    rules.defineRule
-      ('compositeLongbowAttackModifier', 'combatNotes.zenArchery', '+', null);
-    rules.defineRule
-      ('compositeShortbowAttackModifier', 'combatNotes.zenArchery', '+', null);
-    rules.defineRule
-      ('longbowAttackModifier', 'combatNotes.zenArchery', '+', null);
-    rules.defineRule
-      ('shortbowAttackModifier', 'combatNotes.zenArchery', '+', null);
-    rules.defineRule
-      ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
-    rules.defineRule('featCounts.General',
-      'featureNotes.wayOfTheBow', '+', '1',
-      'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null',
-      'featureNotes.wayOfTheWeaponMaster', '+', '1',
-      'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
-    );
-    rules.defineRule('featureNotes.drunkenKi',
-      '', '=', '1',
-      'featureNotes.deepDrinker', '+', '1'
-    );
-    rules.defineRule('featureNotes.kiPool',
-      'featureNotes.kiPool(KiMystic)', '+=', '2',
-      // Force to exactly 2 points at level 3; above rule handles higher levels
-      'kiMysticLevel', 'v=', 'source==3 ? 2 : null'
-    );
-    rules.defineRule('featureNotes.wayOfTheBow.1',
-      'features.Way Of The Bow', '?', null,
-      classLevel, '=', 'source>=10 ? "/+1 General Feat (Weapon Specialization (Bow))" : ""'
-    );
-    rules.defineRule('featureNotes.wayOfTheWeaponMaster.1',
-      'features.Way Of The Weapon Master', '?', null,
-      classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
-    );
-    rules.defineRule
-      ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
-    rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
-    rules.defineRule
-      ('monkFeatures.Abundant Step', 'monkHasAbundantStep', '?', null);
+    ['Abundant Step', 'Diamond Body', 'Diamond Soul', 'Empty Body', 'Evasion',
+     'High Jump', 'Improved Evasion', 'Maneuver Training', 'Perfect Self',
+     'Purity Of Body', 'Quivering Palm', 'Slow Fall', 'Still Mind',
+     'Stunning Fist', 'Timeless Body', 'Tongue Of The Sun And Moon',
+     'Wholeness Of Body'].forEach(f => {
+      rules.defineRule
+        ('monkFeatures.' + f, 'monkHas' + f.replaceAll(/ /g, ''), '?', null);
+    });
     rules.defineRule
       ('monkFeatures.Condition Fist', 'monkHasStunningFist', '?', null);
-    rules.defineRule
-      ('monkFeatures.Diamond Body', 'monkHasDiamondBody', '?', null);
-    rules.defineRule
-      ('monkFeatures.Diamond Soul', 'monkHasDiamondSoul', '?', null);
-    rules.defineRule('monkFeatures.Empty Body', 'monkHasEmptyBody', '?', null);
-    rules.defineRule('monkFeatures.Evasion', 'monkHasEvasion', '?', null);
-    rules.defineRule('monkFeatures.High Jump', 'monkHasHighJump', '?', null);
-    rules.defineRule
-      ('monkFeatures.Improved Evasion', 'monkHasImprovedEvasion', '?', null);
-    rules.defineRule
-      ('monkFeatures.Maneuver Training', 'monkHasManeuverTraining', '?', null);
-    rules.defineRule
-      ('monkFeatures.Perfect Self', 'monkHasPerfectSelf', '?', null);
-    rules.defineRule
-      ('monkFeatures.Purity Of Body', 'monkHasPurityOfBody', '?', null);
-    rules.defineRule
-      ('monkFeatures.Quivering Palm', 'monkHasQuiveringPalm', '?', null);
-    rules.defineRule('monkFeatures.Slow Fall', 'monkHasSlowFall', '?', null);
-    rules.defineRule('monkFeatures.Still Mind', 'monkHasStillMind', '?', null);
-    rules.defineRule
-      ('monkFeatures.Stunning Fist', 'monkHasStunningFist', '?', null);
-    rules.defineRule
-      ('monkFeatures.Timeless Body', 'monkHasTimelessBody', '?', null);
-    rules.defineRule('monkFeatures.Tongue Of The Sun And Moon',
-      'monkHasTongueOfTheSunAndMoon', '?', null
-    );
     rules.defineRule('monkFeatures.Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
       'monkHasWeaponProficiency', '?', null
     );
-    rules.defineRule
-      ('monkFeatures.Wholeness Of Body', 'monkHasWholenessOfBody', '?', null);
     rules.defineRule('monkHasAbundantStep',
       classLevel, '=', '1',
       'monkFeatures.Slow Time', '=', '0',
@@ -10055,69 +9965,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
-    rules.defineRule('selectableFeatureCount.Monk (Aspect)',
-      'monkOfTheFourWindsLevel', '=', '1'
-    );
-    rules.defineRule('skillNotes.learnedMaster.1',
-      'features.Learned Master', '?', null,
-      'wisdomModifier', '=', null,
-      'intelligenceModifier', '+', '-source'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(CompositeLongbow)',
-      'zenArcherLevel', '*', 'source>=6 ? 0 : null'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(CompositeShortbow)',
-      'zenArcherLevel', '*', 'source>=6 ? 0 : null'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(Longbow)',
-      'zenArcherLevel', '*', 'source>=6 ? 0 : null'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(Shortbow)',
-      'zenArcherLevel', '*', 'source>=6 ? 0 : null'
-    );
-    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(skill => {
-      if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
-        rules.defineRule
-          ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
-    });
-    // Disallow certain monk bonus feats unavailable to Zen Archer archetype
-    ['Catch Off-Guard', 'Improved Grapple', 'Scorpion Style', 'Throw Anything',
-     "Gorgon's Fist", 'Improved Bull Rush', 'Improved Disarm', 'Improved Feint',
-     'Improved Trip', "Medusa's Wrath", 'Spring Attack'].forEach(s => {
-      let allNotes = rules.getChoices('notes');
-      let note =
-        'validationNotes.monk-' + s.replaceAll(' ', '') + 'SelectableFeature';
-      if(!(note in allNotes)) {
-        console.log('Cannot find note ' + note);
-      } else {
-        rules.defineRule(note, 'features.Zen Archer', '+', '-1');
-        allNotes[note] += ' and not Zen Archer';
-      }
-    });
-    Pathfinder.featureSpells(rules,
-      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', classLevel, null,
-      ['Gaseous Form']
-    );
-    Pathfinder.featureSpells(rules,
-      'Ki Sacrifice', 'KiSacrifice', 'charisma', classLevel, null,
-      ['Raise Dead', '15:Resurrection']
-    );
-    Pathfinder.featureSpells(rules,
-      'Mystic Visions', 'MysticVisions', 'charisma', classLevel, null,
-      ['Divination']
-    );
-    Pathfinder.featureSpells(rules,
-      'Touch Of Peace', 'TouchOfPeace', 'charisma', classLevel, null,
-      ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', classLevel, null,
-      ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'True Sacrifice', 'TrueSacrifice', 'charisma', classLevel, null,
-      ['True Resurrection']
-    );
   } else if(name == 'Paladin') {
     rules.defineRule('animalCompanionStats.Save Fort',
       'companionNotes.skilledRider', '+', null
@@ -11228,6 +11075,10 @@ PFAPG.featRulesExtra = function(rules, name) {
         rules.defineRule
           ('skillModifier.' + s, 'skillNotes.breadthOfExperience', '+', '2');
     });
+  } else if(name == 'Cloud Step') {
+    rules.defineRule('abilityNotes.cloudStep',
+      'levels.Monk', '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
+    );
   } else if((matchInfo = name.match(/^Elemental Focus .(Acid|Cold|Electricity|Fire).$/)) != null) {
     let energy = matchInfo[1];
     rules.defineRule('magicNotes.elementalFocus(' + energy + ')',
@@ -11379,6 +11230,10 @@ PFAPG.featRulesExtra = function(rules, name) {
       'shield', '=', 'source=="None" ? 0 : source.match(/Heavy/) ? 2 : source.match(/Tower/) ? 4 : 1',
       'features.Shield Focus', '+', '1',
       'features.Greater Shield Focus', '+', '1'
+    );
+  } else if(name == 'Spider Step') {
+    rules.defineRule('abilityNotes.spiderStep',
+      'levels.Monk', '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
     );
   } else if(name == 'Touch Of Serenity') {
     rules.defineRule('combatNotes.touchOfSerenity', '', '=', '1');
@@ -12360,6 +12215,139 @@ PFAPG.pathRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.overhandChop',
       'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
     );
+  // Monk
+  } else if(name == 'Drunken Master') {
+    rules.defineRule('featureNotes.drunkenKi',
+      '', '=', '1',
+      'featureNotes.deepDrinker', '+', '1'
+    );
+  } else if(name == 'Hungry Ghost Monk') {
+    rules.defineRule('combatNotes.punishingKick',
+      pathLevel, '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
+    );
+  } else if(name == 'Ki Mystic') {
+    rules.defineRule
+      ('combatNotes.mysticPrescience', pathLevel, '=', 'source<20 ? 2 : 4');
+    Pathfinder.featureSpells(rules,
+      'Mystic Visions', 'MysticVisions', 'charisma', pathLevel, null,
+      ['Divination']
+    );
+  } else if(name == 'Monk Of The Empty Hand') {
+    rules.defineRule('featureNotes.kiPool',
+      'featureNotes.kiPool(KiMystic)', '+=', '2',
+      // Force to exactly 2 points at level 3; above rule handles higher levels
+      pathLevel, 'v=', 'source==3 ? 2 : null'
+    );
+  } else if(name == 'Monk Of The Four Winds') {
+    rules.defineRule('combatNotes.elementalFist',
+      '', '=', '1',
+      pathLevel, '+', 'Math.floor(source / 5)'
+    );
+    rules.defineRule
+      ('selectableFeatureCount.Monk (Aspect)', pathLevel, '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', pathLevel, null,
+      ['Gaseous Form']
+    );
+  } else if(name == 'Monk Of The Healing Hand') {
+    Pathfinder.featureSpells(rules,
+      'Ki Sacrifice', 'KiSacrifice', 'charisma', pathLevel, null,
+      ['Raise Dead', '15:Resurrection']
+    );
+    Pathfinder.featureSpells(rules,
+      'True Sacrifice', 'TrueSacrifice', 'charisma', pathLevel, null,
+      ['True Resurrection']
+    );
+  } else if(name == 'Monk Of The Lotus') {
+    rules.defineRule
+      ('combatNotes.touchOfSerenity', pathLevel, '+', 'Math.floor(source / 6)');
+    rules.defineRule('skillNotes.learnedMaster.1',
+      'features.Learned Master', '?', null,
+      'wisdomModifier', '=', null,
+      'intelligenceModifier', '+', '-source'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(skill => {
+      if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
+        rules.defineRule
+          ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
+    });
+    Pathfinder.featureSpells(rules,
+      'Touch Of Peace', 'TouchOfPeace', 'charisma', pathLevel, null,
+      ['Charm Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', pathLevel, null,
+      ['Charm Monster']
+    );
+  } else if(name == 'Monk Of The Sacred Mountain') {
+    rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
+    rules.defineRule('combatNotes.adamantineMonk',
+      pathLevel, '=', 'Math.floor((source - 6) / 3)'
+    );
+    rules.defineRule('combatNotes.adamantineMonk-1',
+      'combatNotes.adamantineMonk', '=', 'source * 2'
+    );
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
+  } else if(name == 'Weapon Adept') {
+    rules.defineRule
+      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null',);
+    rules.defineRule('featCounts.General',
+      'featureNotes.wayOfTheWeaponMaster', '+', '1',
+      'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
+    );
+    rules.defineRule('featureNotes.wayOfTheWeaponMaster.1',
+      'features.Way Of The Weapon Master', '?', null,
+      pathLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
+    );
+  } else if(name == 'Zen Archer') {
+    rules.defineRule
+      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null',);
+    rules.defineRule('combatNotes.zenArchery',
+      'wisdomModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+    rules.defineRule('featCounts.General',
+      'featureNotes.wayOfTheBow', '+', '1',
+      'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null'
+    );
+    rules.defineRule('featureNotes.wayOfTheBow.1',
+      'features.Way Of The Bow', '?', null,
+      pathLevel, '=', 'source>=10 ? "/+1 General Feat (Weapon Specialization (Bow))" : ""'
+    );
+    rules.defineRule
+      ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
+    ['Composite Longbow','Compsite Shortbow','Longbow','Shortbow'].forEach(w=>{
+      rules.defineRule(w.replaceAll(' ', '') + 'AttackModifier',
+        'combatNotes.zenArchery', '+', null
+      );
+    });
+    rules.defineRule('validationNotes.weaponSpecialization(CompositeLongbow)',
+      pathLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(CompositeShortbow)',
+      pathLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(Longbow)',
+      pathLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(Shortbow)',
+      pathLevel, '*', 'source<6 ? null : 0'
+    );
+    // Disallow certain monk bonus feats unavailable to Zen Archer archetype
+    ['Catch Off-Guard', 'Improved Grapple', 'Scorpion Style', 'Throw Anything',
+     "Gorgon's Fist", 'Improved Bull Rush', 'Improved Disarm', 'Improved Feint',
+     'Improved Trip', "Medusa's Wrath", 'Spring Attack'].forEach(s => {
+      let allNotes = rules.getChoices('notes');
+      let note =
+        'validationNotes.monk-' + s.replaceAll(' ', '') + 'SelectableFeature';
+      if(!(note in allNotes)) {
+        console.log('Cannot find note ' + note);
+      } else {
+        rules.defineRule(note, pathLevel, '+', '-1');
+        allNotes[note] += ' and not Zen Archer';
+      }
+    });
   // Sorcerer
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
