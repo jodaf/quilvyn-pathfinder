@@ -10106,114 +10106,21 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Banishment']
     );
   } else if(name == 'Ranger') {
-    rules.defineRule('abilityNotes.formOfTheBear',
-      '', '=', '4',
-      'featureNotes.masterShifter', '^', '8'
-    );
-    rules.defineRule('abilityNotes.formOfTheBear.1',
-      'features.Form Of The Bear', '?', null,
-      '', '=', '" and -10 Speed"',
-      'featureNotes.masterShifter', '=', '""'
-    );
-    rules.defineRule('abilityNotes.formOfTheCat',
-      '', '=', '10',
-      'featureNotes.masterShifter', '^', '20'
-    );
-    rules.defineRule('abilityNotes.formOfTheDragon',
-      '', '=', '0',
-      'featureNotes.masterShifter', '^', '30'
-    );
-    rules.defineRule('abilityNotes.formOfTheEagle',
-      '', '=', '0',
-      'featureNotes.masterShifter', '^', '40'
-    );
-    rules.defineRule('abilityNotes.formOfTheOtter',
-      '', '=', '30',
-      'featureNotes.masterShifter', '^', '60'
-    );
-    let allSkills = rules.getChoices('skills');
-    for(let s in allSkills) {
-      if(['Knowledge (Dungeoneering)', 'Knowledge (Geography)', 'Spellcraft'].includes(s) || s.startsWith('Profession')) {
-        rules.defineRule('rangerClassSkills.' + s,
-          classLevel, '=', '1',
-          'rangerFeatures.Beast Master', '=', '0'
-        );
-        rules.defineRule('classSkills.' + s,
-          classLevel, '=', 'null',
-          'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
-        );
-      } else if(['Handle Animal', 'Knowledge (Nature)'].includes(s)) {
-        rules.defineRule('rangerClassSkills.' + s,
-          classLevel, '=', '1',
-          'rangerFeatures.Urban Ranger', '=', '0'
-        );
-        rules.defineRule('classSkills.' + s,
-          classLevel, '=', 'null',
-          'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
-        );
-      }
-    }
-
-    ['Acrobatics', 'Escape Artist'].forEach(s => {
-      rules.defineRule
-        ('classSkills.' + s, 'rangerFeatures.Beast Master', '=', '1');
+    ['Camouflage', 'Endurance', 'Evasion', 'Favored Enemy', 'Favored Terrain',
+     'Hide In Plain Sight', 'Improved Evasion', 'Improved Quarry',
+     'Master Hunter', 'Quarry', 'Woodland Stride'].forEach(f => {
+      rules.defineRule('rangerFeatures.' + f,
+        'rangerHas' + f.replaceAll(/ /g, ''), '?', null
+      );
     });
-    ['Disable Device', 'Knowledge (Local)'].forEach(s => {
-      rules.defineRule
-        ('classSkills.' + s, 'rangerFeatures.Urban Ranger', '=', '1');
-    });
-    rules.defineRule('combatNotes.formOfTheDragon',
-      '', '=', '2',
-      'featureNotes.masterShifter', '^', '4'
-    );
-    rules.defineRule('combatNotes.formOfTheJackal',
-      '', '=', '"half"',
-      'featureNotes.masterShifter', '=', '"full"'
-    );
-    rules.defineRule("combatNotes.ranger'sLuck.1",
-      "rangerFeatures.Ranger's Luck", '?', null,
-      classLevel, '=', '""',
-      "combatNotes.improvedRanger'sLuck", '=', '" +4"'
-    );
-    rules.defineRule("combatNotes.ranger'sLuck.2",
-      "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
-    );
-    rules.defineRule("featureNotes.hunter'sTricks",
-      classLevel, '=', 'Math.floor((source - 3) / 2)'
-    );
-    rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
-    rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Camouflage', 'rangerHasCamouflage', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Endurance', 'rangerHasEndurance', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Evasion', 'rangerHasEvasion', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Favored Enemy', 'rangerHasFavoredEnemy', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Favored Terrain', 'rangerHasFavoredTerrain', '?', null);
-    rules.defineRule('rangerFeatures.Hide In Plain Sight',
-      'rangerHasHideInPlainSight', '?', null
-    );
-    rules.defineRule('rangerFeatures.Improved Evasion',
-      'rangerHasImprovedEvasion', '?', null
-    );
-    rules.defineRule
-      ('rangerFeatures.Improved Quarry', 'rangerHasImprovedQuarry', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Master Hunter', 'rangerHasMasterHunter', '?', null);
-    rules.defineRule('rangerFeatures.Quarry', 'rangerHasQuarry', '?', null);
-    rules.defineRule
-      ('rangerFeatures.Woodland Stride', 'rangerHasWoodlandStride', '?', null);
     rules.defineRule('rangerHasCamouflage',
       classLevel, '=', '1',
-      // Presume Infiltrator losing Favored Terrain implies losing Camouflage
-      'rangerFeatures.Adaptation', '=', '0',
       'rangerFeatures.Blend In', '=', '0',
       'rangerFeatures.Dual Form Shifter', '=', '0',
       'rangerFeatures.Strong Bond', '=', '0',
-      'rangerFeatures.Wisdom Of The Spirits', '=', '0'
+      'rangerFeatures.Wisdom Of The Spirits', '=', '0',
+      // Presume Infiltrator losing Favored Terrain implies losing Camouflage
+      'rangerFeatures.Adaptation', '=', '0'
     );
     rules.defineRule('rangerHasEndurance',
       classLevel, '=', '1',
@@ -10240,10 +10147,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('rangerHasHuntersBond',
       classLevel, '=', '1',
-      'rangerFeatures.Beast Master', '=', '0',
-      'rangerFeatures.Guide', '=', '0',
       'rangerFeatures.Mounted Bond', '=', '0',
-      'rangerFeatures.Spirit Bond', '=', '0'
+      'rangerFeatures.Spirit Bond', '=', '0',
+      'rangerFeatures.Terrain Bond', '=', '0',
+      // Easier to list this archetype rather than its feature
+      'rangerFeatures.Beast Master', '=', '0'
     );
     rules.defineRule('rangerHasImprovedEvasion',
       classLevel, '=', '1',
@@ -10255,9 +10163,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('rangerHasMasterHunter',
       classLevel, '=', '1',
+      'rangerFeatures.Master Shifter', '=', '0',
       // Presume Guide losing Favored Enemy implies losing Master Hunter
-      'rangerFeatures.Guide', '=', '0',
-      'rangerFeatures.Master Shifter', '=', '0'
+      'rangerFeatures.Guide', '=', '0'
     );
     rules.defineRule('rangerHasQuarry',
       classLevel, '=', '1',
@@ -10271,60 +10179,21 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', '1',
       'rangerFeatures.Push Through', '=', '0'
     );
+    rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
+    rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
     rules.defineRule
       ('selectableFeatureCount.Ranger (Archetype)', classLevel, '=', '1');
-    rules.defineRule('selectableFeatureCount.Ranger (Archery Feat)',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Crossbow Feat)',
-      'features.Combat Style (Crossbow)', '?', null,
-      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
+    ['Archery', 'Crossbow', 'Mounted Combat', 'Natural Weapon',
+     'Two-Handed Weapon', 'Two-Weapon', 'Weapon And Shield'].forEach(cs => {
+      rules.defineRule('selectableFeatureCount.Ranger (' + cs + ' Feat)',
+        'features.Combat Style (' + cs + ')', '?', null,
+        classLevel, '=', 'source>=2 ? Math.floor((source + 2) / 4) : null'
+      );
+    });
     rules.defineRule("selectableFeatureCount.Ranger (Hunter's Bond)",
       'rangerHasHuntersBond', '?', null
     );
-    rules.defineRule("selectableFeatureCount.Ranger (Hunter's Trick)",
-      'skirmisherLevel', '=', 'Math.floor((source - 3) / 2)'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Mounted Combat Feat)',
-      'features.Combat Style (Mounted Combat)', '?', null,
-      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Natural Weapon Feat)',
-      'features.Combat Style (Natural Weapon)', '?', null,
-      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
-      'shapeshifterLevel', '=', 'Math.floor((source + 2) / 5)'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Two-Handed Weapon Feat)',
-      'features.Combat Style (Two-Handed Weapon)', '?', null,
-      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Two-Weapon Feat)',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule('selectableFeatureCount.Ranger (Weapon And Shield Feat)',
-      'features.Combat Style (Weapon And Shield)', '?', null,
-      classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null',
-      'beastMasterLevel', '+', 'source>=6 ? -1 : null'
-    );
-    rules.defineRule('skillNotes.formOfTheCat',
-      '', '=', '4',
-      'featureNotes.masterShifter', '^', '10'
-    );
-    rules.defineRule('skillNotes.formOfTheOtter',
-      '', '=', '8',
-      'featureNotes.masterShifter', 'v', '5'
-    );
-    rules.defineRule('skillNotes.trapfinding',
-      'urbanRangerLevel', '+=', 'Math.floor(source / 2)'
-    );
-    // Handle style feats that duplicate those of core styles
+    // Handle new combat style selectables that duplicate those of core styles
     let allSelectables = rules.getChoices('selectableFeatures');
     ['Precise Shot', 'Improved Precise Shot', 'Pinpoint Targeting',
      'Shot On The Run'].forEach(f => {
@@ -10339,21 +10208,6 @@ PFAPG.classRulesExtra = function(rules, name) {
         allSelectables[entry] =
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
-    Pathfinder.featureSpells(rules,
-      'Invisibility Trick', 'InvisibilityTrick', 'wisdom', classLevel, null,
-      ['Greater Invisibility']
-    );
-    Pathfinder.featureSpells(rules,
-      'Master Shifter', 'MasterShifter', 'wisdom', classLevel, null,
-      ['Beast Shape IV', 'Form Of The Dragon I']
-    );
-    Pathfinder.featureSpells(rules,
-      'Spirit Bond', 'SpiritBond', 'wisdom', classLevel, null, ['Augury']
-    );
-    Pathfinder.featureSpells(rules,
-      'Wisdom Of The Spirits', 'WisdomOfTheSpirits', 'wisdom', classLevel,
-      null, ['Divination']
-    );
   } else if(name == 'Rogue') {
     rules.defineRule
       ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
@@ -12344,6 +12198,121 @@ PFAPG.pathRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Power Of Faith', 'PowerOfFaith', 'wisdom', pathLevel, null,
       ['12:Daylight']
+    );
+  // Ranger
+  } else if(name == 'Beast Master') {
+    let allSkills = rules.getChoices('skills');
+    for(let s in allSkills) {
+      if(['Knowledge (Dungeoneering)', 'Knowledge (Geography)', 'Spellcraft'].includes(s) || s.startsWith('Profession')) {
+        rules.defineRule('rangerClassSkills.' + s,
+          'levels.Ranger', '=', '1',
+          pathLevel, '=', '0'
+        );
+        rules.defineRule('classSkills.' + s,
+          'levels.Ranger', '=', 'null',
+          'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
+        );
+      }
+    }
+    rules.defineRule('classSkills.Acrobatics', pathLevel, '=', '1');
+    rules.defineRule('classSkills.Escape Artist', pathLevel, '=', '1');
+    ['Archery', 'Crossbow', 'Mounted Combat', 'Natural Weapon',
+     'Two-Handed Weapon', 'Two-Weapon', 'Weapon And Shield'].forEach(cs => {
+      rules.defineRule('selectableFeatureCount.Ranger (' + cs + ' Feat)',
+        'features.Improved Empathic Link', '+', '-1'
+      );
+    });
+  } else if(name == 'Guide') {
+    rules.defineRule("combatNotes.ranger'sLuck.1",
+      "rangerFeatures.Ranger's Luck", '?', null,
+      pathLevel, '=', '""',
+      "combatNotes.improvedRanger'sLuck", '=', '" +4"'
+    );
+    rules.defineRule("combatNotes.ranger'sLuck.2",
+      "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
+    );
+  } else if(name == 'Shapeshifter') {
+    rules.defineRule('abilityNotes.formOfTheBear',
+      '', '=', '4',
+      'featureNotes.masterShifter', '^', '8'
+    );
+    rules.defineRule('abilityNotes.formOfTheBear.1',
+      'features.Form Of The Bear', '?', null,
+      '', '=', '" and -10 Speed"',
+      'featureNotes.masterShifter', '=', '""'
+    );
+    rules.defineRule('abilityNotes.formOfTheCat',
+      '', '=', '10',
+      'featureNotes.masterShifter', '^', '20'
+    );
+    rules.defineRule('abilityNotes.formOfTheDragon',
+      '', '=', '0',
+      'featureNotes.masterShifter', '^', '30'
+    );
+    rules.defineRule('abilityNotes.formOfTheEagle',
+      '', '=', '0',
+      'featureNotes.masterShifter', '^', '40'
+    );
+    rules.defineRule('abilityNotes.formOfTheOtter',
+      '', '=', '30',
+      'featureNotes.masterShifter', '^', '60'
+    );
+    rules.defineRule('combatNotes.formOfTheDragon',
+      '', '=', '2',
+      'featureNotes.masterShifter', '^', '4'
+    );
+    rules.defineRule('combatNotes.formOfTheJackal',
+      '', '=', '"half"',
+      'featureNotes.masterShifter', '=', '"full"'
+    );
+    rules.defineRule('skillNotes.formOfTheCat',
+      '', '=', '4',
+      'featureNotes.masterShifter', '^', '10'
+    );
+    rules.defineRule('skillNotes.formOfTheOtter',
+      '', '=', '8',
+      'featureNotes.masterShifter', 'v', '5'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
+      pathLevel, '=', 'Math.floor((source + 2) / 5)'
+    );
+    Pathfinder.featureSpells(rules,
+      'Master Shifter', 'MasterShifter', 'wisdom', pathLevel, null,
+      ['Beast Shape IV', 'Form Of The Dragon I']
+    );
+  } else if(name == 'Skirmisher') {
+    rules.defineRule("featureNotes.hunter'sTricks",
+      pathLevel, '=', 'Math.floor((source - 3) / 2)'
+    );
+    rules.defineRule("selectableFeatureCount.Ranger (Hunter's Trick)",
+      pathLevel, '=', 'Math.floor((source - 3) / 2)'
+    );
+  } else if(name == 'Spirit Ranger') {
+    Pathfinder.featureSpells(rules,
+      'Spirit Bond', 'SpiritBond', 'wisdom', pathLevel, null, ['Augury']
+    );
+    Pathfinder.featureSpells(rules,
+      'Wisdom Of The Spirits', 'WisdomOfTheSpirits', 'wisdom', pathLevel, null,
+      ['Divination']
+    );
+  } else if(name == 'Urban Ranger') {
+    rules.defineRule
+      ('skillNotes.trapfinding', pathLevel, '+=', 'Math.floor(source / 2)');
+    ['Handle Animal', 'Knowledge (Nature)'].forEach(s => {
+      rules.defineRule('rangerClassSkills.' + s,
+        'levels.Ranger', '=', '1',
+        pathLevel, '=', '0'
+      );
+      rules.defineRule('classSkills.' + s,
+        'levels.Ranger', '=', 'null',
+        'rangerClassSkills.' + s, '=', 'source==1 ? 1 : null'
+      );
+    });
+    rules.defineRule('classSkills.Disable Device', pathLevel, '=', '1');
+    rules.defineRule('classSkills.Knowledge (Local)', pathLevel, '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Invisibility Trick', 'InvisibilityTrick', 'wisdom', pathLevel, null,
+      ['Greater Invisibility']
     );
   // Sorcerer
   } else if(name == 'Bloodline Aquatic') {
