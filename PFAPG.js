@@ -10209,22 +10209,11 @@ PFAPG.classRulesExtra = function(rules, name) {
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
   } else if(name == 'Rogue') {
-    rules.defineRule
-      ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
-    rules.defineRule
-      ('features.Improved Steal', 'featureNotes.combatSwipe', '=', '1');
-    rules.defineRule('features.Intimidating Prowess',
-      'featureNotes.strongImpression', '=', '1'
-    );
-    rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
-      'rogueHasImprovedUncannyDodge', '?', null
-    );
-    rules.defineRule
-      ('rogueFeatures.Trapfinding', 'rogueHasTrapfinding', '?', null);
-    rules.defineRule
-      ('rogueFeatures.Trap Sense', 'rogueHasTrapSense', '?', null);
-    rules.defineRule
-      ('rogueFeatures.Uncanny Dodge', 'rogueHasUncannyDodge', '?', null);
+    ['Improved Uncanny Dodge', 'Trapfinding', 'Trap Sense',
+     'Uncanny Dodge'].forEach(f => {
+      rules.defineRule
+        ('rogueFeatures.' + f, 'rogueHas' + f.replaceAll(/ /g, ''), '?', null);
+    });
     rules.defineRule('rogueHasImprovedUncannyDodge',
       classLevel, '=', '1',
       'rogueFeatures.Distraction (Rogue)', '=', '0',
@@ -10240,9 +10229,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'rogueFeatures.Frightening', '=', '0',
       'rogueFeatures.Martial Training', '=', '0',
       'rogueFeatures.Measure The Mark', '=', '0',
-      // Poison Use replaces Trapfinding for Poisoner, Trap Sense for Spy
-      'poisonerLevel', '=', '0',
-      'rogueFeatures.Skilled Liar', '=', '0'
+      'rogueFeatures.Skilled Liar', '=', '0',
+      // Easier to list this archetype rather than its feature
+      'rogueFeatures.Poisoner', '=', '0'
     );
     rules.defineRule('rogueHasTrapSense',
       classLevel, '=', '1',
@@ -10250,11 +10239,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'rogueFeatures.Daring', '=', '0',
       'rogueFeatures.Deadly Range', '=', '0',
       'rogueFeatures.Master Poisoner', '=', '0',
-      // Poison Use replaces Trapfinding for Poisoner, Trap Sense for Spy
-      'spyLevel', '=', '0',
       "rogueFeatures.Rake's Smile", '=', '0',
       'rogueFeatures.Second Chance (Rogue)', '=', '0',
-      'rogueFeatures.Stab And Grab', '=', '0'
+      'rogueFeatures.Stab And Grab', '=', '0',
+      // Easier to list this archetype rather than its feature
+      'rogueFeatures.Spy', '=', '0'
     );
     rules.defineRule('rogueHasUncannyDodge',
       classLevel, '=', '1',
@@ -10262,39 +10251,16 @@ PFAPG.classRulesExtra = function(rules, name) {
       "rogueFeatures.Scout's Charge", '=', '0'
     );
     rules.defineRule
-      ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
+      ('features.Improved Steal', 'featureNotes.combatSwipe', '=', '1');
+    rules.defineRule('features.Intimidating Prowess',
+      'featureNotes.strongImpression', '=', '1'
+    );
     rules.defineRule('skillNotes.guilefulPolyglot',
       '', '=', '2',
       'skills.Linguistics', '+', '2'
     );
-    rules.defineRule('skillModifier.Acrobatics',
-      'skillNotes.expertAcrobat.1', '+', null,
-      'skillNotes.expertAcrobat.2', '+', null
-    );
     rules.defineRule
-      ('skillModifier.Climb', 'skillNotes.expertAcrobat.1', '+', null);
-    rules.defineRule('skillModifier.Fly',
-      'skillNotes.expertAcrobat.1', '+', null,
-      'skillNotes.expertAcrobat.2', '+', null
-    );
-    rules.defineRule('skillModifier.Sleight Of Hand',
-      'skillNotes.expertAcrobat.1', '+', null
-    );
-    rules.defineRule
-      ('skillModifier.Stealth', 'skillNotes.expertAcrobat.1', '+', null);
-    rules.defineRule
-      ('skillNotes.daring', classLevel, '=', 'Math.floor(source / 3)');
-    rules.defineRule('skillNotes.expertAcrobat.1',
-      'skillNotes.expertAcrobat', '?', null,
-      'armorWeight', '?', 'source==1',
-      'skillNotes.armorSkillCheckPenalty', '=', null
-    );
-    rules.defineRule('skillNotes.expertAcrobat.2',
-      'skillNotes.expertAcrobat', '?', null,
-      'armorWeight', '=', 'source==0 ? 2 : null'
-    );
-    rules.defineRule
-      ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
+      ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
   } else if(name == 'Wizard') {
     let allSchools = rules.getChoices('schools');
     for(let s in allSchools) {
@@ -12314,6 +12280,40 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Invisibility Trick', 'InvisibilityTrick', 'wisdom', pathLevel, null,
       ['Greater Invisibility']
     );
+  // Rogue
+  } else if(name == 'Acrobat') {
+    rules.defineRule('skillModifier.Acrobatics',
+      'skillNotes.expertAcrobat.1', '+', null,
+      'skillNotes.expertAcrobat.2', '+', null
+    );
+    rules.defineRule
+      ('skillModifier.Climb', 'skillNotes.expertAcrobat.1', '+', null);
+    rules.defineRule('skillModifier.Fly',
+      'skillNotes.expertAcrobat.1', '+', null,
+      'skillNotes.expertAcrobat.2', '+', null
+    );
+    rules.defineRule('skillModifier.Sleight Of Hand',
+      'skillNotes.expertAcrobat.1', '+', null
+    );
+    rules.defineRule
+      ('skillModifier.Stealth', 'skillNotes.expertAcrobat.1', '+', null);
+    rules.defineRule('skillNotes.expertAcrobat.1',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '?', 'source==1',
+      'skillNotes.armorSkillCheckPenalty', '=', null
+    );
+    rules.defineRule('skillNotes.expertAcrobat.2',
+      'skillNotes.expertAcrobat', '?', null,
+      'armorWeight', '=', 'source==0 ? 2 : null'
+    );
+  } else if(name == 'Rake') {
+    rules.defineRule
+      ("skillNotes.rake'sSmile", pathLevel, '=', 'Math.floor(source / 3)');
+  } else if(name == 'Swashbuckler') {
+    rules.defineRule
+      ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
+    rules.defineRule
+      ('skillNotes.daring', pathLevel, '=', 'Math.floor(source / 3)');
   // Sorcerer
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
