@@ -6000,7 +6000,7 @@ PFAPG.SCHOOLS = {
       .replace('Energy Absorption', 'Counterspell Mastery'),
   'Creation':
     Pathfinder.SCHOOLS.Conjuration
-      .replace('Acid Dart Conjuration', 'Create Gear')
+      .replace('Acid Dart (Wizard)', 'Create Gear')
       .replace('Dimensional Steps', "Creator's Will"),
   'Enhancement':
     Pathfinder.SCHOOLS.Transmutation
@@ -6017,7 +6017,7 @@ PFAPG.SCHOOLS = {
   'Life':
     Pathfinder.SCHOOLS.Necromancy
       .replace('Power Over Undead', 'Healing Grace')
-      .replace('Grave Touch Necromantic', 'Share Essence'),
+      .replace('Grave Touch (Wizard)', 'Share Essence'),
   'Manipulator':
     Pathfinder.SCHOOLS.Enchantment
       .replace('Dazing Touch Enchantment', 'Beguiling Touch')
@@ -6038,10 +6038,10 @@ PFAPG.SCHOOLS = {
       .replace('Telekinetic Fist', 'Battleshaping'),
   'Teleportation':
     Pathfinder.SCHOOLS.Conjuration
-      .replace('Acid Dart Conjuration', 'Shift'),
+      .replace('Acid Dart (Wizard)', 'Shift'),
   'Undead':
     Pathfinder.SCHOOLS.Necromancy
-      .replace('Grave Touch Necromantic', 'Bolster')
+      .replace('Grave Touch (Wizard)', 'Bolster')
 };
 PFAPG.SHIELDS = {
   'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
@@ -8728,6 +8728,8 @@ PFAPG.magicRules = function(rules, schools, spells, spellsLevels) {
       rules.addChoice('spells', fullName, attrs);
     }
   }
+  for(let school in schools)
+    PFAPG.schoolRulesExtra(rules, school);
 };
 
 /* Defines rules related to character aptitudes. */
@@ -10266,8 +10268,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     for(let s in allSchools) {
       if(!(s in PFAPG.SCHOOLS))
         continue;
-      let elementalSchool = ['Air', 'Earth', 'Fire', 'Water'].includes(s);
-      if(elementalSchool) {
+      if(s.match(/^(Air|Earth|Fire|Water)$/)) {
         Pathfinder.choiceRules(rules, 'Feature',
           'School Specialization (' + s + ')',
           Pathfinder.FEATURES['School Specialization (%school)'].replaceAll('%school', s)
@@ -10306,56 +10307,18 @@ PFAPG.classRulesExtra = function(rules, name) {
         );
       }
     }
-    rules.defineRule('features.Improved Counterspell',
-      'featureNotes.counterspellMastery', '=', '1'
-    );
-    rules.defineRule('wizardFeatures.Acid Dart Conjuration',
-      'wizardHasAcidDartConjuration', '?', null
-    );
-    rules.defineRule
-      ('wizardFeatures.Aura Of Despair', 'wizardHasAuraOfDespair', '?', null);
-    rules.defineRule
-      ('wizardFeatures.Blinding Ray', 'wizardHasBlindingRay', '?', null);
-    rules.defineRule
-      ('wizardFeatures.Change Shape', 'wizardHasChangeShape', '?', null);
-    rules.defineRule('wizardFeatures.Dazing Touch Enchantment',
-      'wizardHasDazingTouchEnchantment', '?', null
-    );
-    rules.defineRule('wizardFeatures.Dimensional Steps',
-      'wizardHasDimensionalSteps', '?', null
-    );
-    rules.defineRule("wizardFeatures.Diviner's Fortune",
-      'wizardHasDivinersFortune', '?', null
-    );
-    rules.defineRule
-      ('wizardFeatures.Elemental Wall', 'wizardHasElementalWall', '?', null);
-    rules.defineRule('wizardFeatures.Enchanting Smile',
-      'wizardHasEnchantingSmile', '?', null
-    );
-    rules.defineRule('wizardFeatures.Energy Absorption',
-      'wizardHasEnergyAbsorption', '?', null
-    );
-    rules.defineRule
-      ('wizardFeatures.Force Missile', 'wizardHasForceMissile', '?', null);
-    rules.defineRule('wizardFeatures.Grave Touch Necromantic',
-      'wizardHasGraveTouchNecromantic', '?', null
-    );
-    rules.defineRule
-      ('wizardFeatures.Intense Spells', 'wizardHasIntenseSpells', '?', null);
-    rules.defineRule('wizardFeatures.Invisibility Field',
-      'wizardHasInvisibility Field', '?', null
-    );
-    rules.defineRule('wizardFeatures.Power Over Undead',
-      'wizardHasPowerOverUndead', '?', null
-    );
-    rules.defineRule
-      ('wizardFeatures.Protective Ward', 'wizardHasProtectiveWard', '?', null);
-    rules.defineRule
-      ('wizardFeatures.Scrying Adept', 'wizardHasScryingAdept', '?', null);
-    rules.defineRule('wizardFeatures.Telekinetic Fist',
-      'wizardHasTelekineticFist', '?', null
-    );
-    rules.defineRule('wizardHasAcidDartConjuration',
+    ['Acid Dart (Wizard)', 'Aura Of Despair', 'Blinding Ray', 'Change Shape',
+     'Dazing Touch Enchantment', 'Dimensional Steps', "Diviner's Fortune",
+     'Elemental Wall', 'Enchanting Smile', 'Energy Absorption', 'Force Missile',
+     'Grave Touch (Wizard)', 'Intense Spells', 'Invisibility Field',
+     'Power Over Undead', 'Protective Ward', 'Scrying Adept',
+      'Telekinetic Fist',
+    ].forEach(f => {
+      rules.defineRule('wizardFeatures.' + f,
+        'wizardHas' + f.replaceAll(/ |'/g, ''), '?', null
+      );
+    });
+    rules.defineRule('wizardHasAcidDart(Wizard)',
       'conjurationLevel', '=', '1',
       'wizardFeatures.Create Gear', '=', '0',
       'wizardFeatures.Shift', '=', '0'
@@ -10398,15 +10361,15 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('wizardHasEnergyAbsorption',
       'abjurationLevel', '=', '1',
       'wizardFeatures.Counterspell Mastery', '=', '0',
-      // Aura Of Banishment acquired at level 8 instead of 6
-      'banishmentLevel', '=', '0'
+      // Easier to list this archetype rather than its feature
+      'wizardFeatures.School Specialization (Banishment)', '=', '0'
     );
     rules.defineRule('wizardHasForceMissile',
       'evocationLevel', '=', '1',
       'wizardFeatures.Versatile Evocation', '=', '0',
       'wizardFeatures.Wind Servant', '=', '0'
     );
-    rules.defineRule('wizardHasGraveTouchNecromantic',
+    rules.defineRule('wizardHasGraveTouch(Wizard)',
       'necromancyLevel', '=', '1',
       'wizardFeatures.Bolster', '=', '0',
       'wizardFeatures.Share Essence', '=', '0'
@@ -10437,45 +10400,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'transmutationLevel', '=', '1',
       'wizardFeatures.Augment', '=', '0',
       'wizardFeatures.Battleshaping', '=', '0'
-    );
-    rules.defineRule
-      ('abilityNotes.earthGlide', 'earthLevel', '=', 'source + " rd"');
-    rules.defineRule('abilityNotes.earthGlide.1',
-      'features.Earth Glide', '?', null,
-      'earthLevel', '=', '""'
-    );
-    rules.defineRule
-      ('abilityNotes.waterSupremacy', classLevel, '?', 'source>=10');
-    rules.defineRule
-      ('magicNotes.earthSupremacy', classLevel, '?', 'source>=20');
-    rules.defineRule('skillNotes.airSupremacy',
-      classLevel, '=', '2 + Math.floor(source / 5)'
-    );
-    rules.defineRule
-      ('skillNotes.airSupremacy-1', classLevel, '?', 'source>=20');
-    rules.defineRule('skillNotes.waterSupremacy',
-      classLevel, '=', '2 + Math.floor(source / 5)'
-    );
-    rules.defineRule
-      ('skillNotes.waterSupremacy-1', classLevel, '?', 'source>=20');
-    Pathfinder.featureSpells(rules,
-      'Air Supremacy', 'AirSupremacy', 'intelligence', classLevel, null,
-      ['Feather Fall', '5:Levitate', '10:Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Beguiling Touch', 'BeguilingTouch', 'intelligence', classLevel,
-      '10+manipulatorLevel//2+intelligenceModifier', ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      "Creator's Will", 'CreatorsWill', 'intelligence', classLevel, null,
-      ['Minor Creation', '8:Major Creation']
-    );
-    Pathfinder.featureSpells(rules,
-      'Irresistible Demand', 'IrresistibleDemand', 'intelligence', classLevel,
-      '10+controllerLevel//2+intelligenceModifier', ['Dominate Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Shift', 'Shift', 'intelligence', classLevel, null, ['Dimension Door']
     );
   } else if(name == 'Battle Herald') {
     rules.defineRule('bannerLevel', classLevel, '+=', null);
@@ -12641,6 +12565,67 @@ PFAPG.raceRulesExtra = function(rules, name) {
         });
       });
     });
+  }
+};
+
+/*
+ * Defines in #rules# the rules associated with school #name# that cannot be
+ * derived directly from the parameters passed to schoolRules.
+ */
+PFAPG.schoolRulesExtra = function(rules, name) {
+  var prefix =
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','');
+  var schoolLevel = prefix + 'Level';
+  if(name == 'Air') {
+    rules.defineRule('skillNotes.airSupremacy',
+      schoolLevel, '=', '2 + Math.floor(source / 5)'
+    );
+    rules.defineRule
+      ('skillNotes.airSupremacy-1', schoolLevel, '?', 'source>=20');
+    Pathfinder.featureSpells(rules,
+      'Air Supremacy', 'AirSupremacy', 'intelligence', schoolLevel, null,
+      ['Feather Fall', '5:Levitate', '10:Fly']
+    );
+  } else if(name == 'Controller') {
+    Pathfinder.featureSpells(rules,
+      'Irresistible Demand', 'IrresistibleDemand', 'intelligence', schoolLevel,
+      '10+' + schoolLevel + '//2+intelligenceModifier', ['Dominate Monster']
+    );
+  } else if(name == 'Counterspell') {
+    rules.defineRule('features.Improved Counterspell',
+      'featureNotes.counterspellMastery', '=', '1'
+    );
+  } else if(name == 'Creation') {
+    Pathfinder.featureSpells(rules,
+      "Creator's Will", 'CreatorsWill', 'intelligence', schoolLevel, null,
+      ['Minor Creation', '8:Major Creation']
+    );
+  } else if(name == 'Earth') {
+    rules.defineRule
+      ('abilityNotes.earthGlide', schoolLevel, '=', 'source + " rd"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      schoolLevel, '=', '""'
+    );
+    rules.defineRule
+      ('magicNotes.earthSupremacy', schoolLevel, '?', 'source>=20');
+  } else if(name == 'Manipulator') {
+    Pathfinder.featureSpells(rules,
+      'Beguiling Touch', 'BeguilingTouch', 'intelligence', schoolLevel,
+      '10+manipulatorLevel//2+intelligenceModifier', ['Charm Monster']
+    );
+  } else if(name == 'Teleportation') {
+    Pathfinder.featureSpells(rules,
+      'Shift', 'Shift', 'intelligence', schoolLevel, null, ['Dimension Door']
+    );
+  } else if(name == 'Water') {
+    rules.defineRule
+      ('abilityNotes.waterSupremacy', schoolLevel, '?', 'source>=10');
+    rules.defineRule('skillNotes.waterSupremacy',
+      schoolLevel, '=', '2 + Math.floor(source / 5)'
+    );
+    rules.defineRule
+      ('skillNotes.waterSupremacy-1', schoolLevel, '?', 'source>=20');
   }
 };
 
