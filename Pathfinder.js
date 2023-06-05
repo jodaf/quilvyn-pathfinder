@@ -1231,7 +1231,7 @@ Pathfinder.FEATURES = {
          '"Has 60\' Blindsight"',
   'Acid Dart':
     'Section=magic Note="R30\' Ranged touch inflicts 1d6%1 HP %V/dy"',
-  'Acid Dart Conjuration':
+  'Acid Dart (Wizard)':
     'Section=magic Note="R30\' Ranged touch inflicts 1d6%1 HP %V/dy"',
   'Acid Resistance':'Section=save Note="Resistance %V to acid"',
   'Acidic Ray':'Section=magic Note="R30\' Ranged touch inflicts %Vd6 HP %1/dy"',
@@ -1712,7 +1712,7 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R60\' Skeletal arms claw 20\' radius, inflicting %Vd6 HP (DC %1 Ref half), for 1 rd %2/dy"',
   'Grave Touch':'Section=magic Note="Touch inflicts shaken for %V rd %1/dy"',
-  'Grave Touch Necromantic':
+  'Grave Touch (Wizard)':
     'Section=magic Note="Touch inflicts shaken for %V rd %1/dy"',
   'Greasy Palm':'Section=feature Note="10% discount on bribes"',
   'Greater Bull Rush':
@@ -2998,7 +2998,7 @@ Pathfinder.SCHOOLS = {
       '"1:Resistance To Energy","1:Protective Ward","6:Energy Absorption"',
   'Conjuration':
     'Features=' +
-      '"1:Acid Dart Conjuration","1:Summoner\'s Charm","8:Dimensional Steps"',
+      '"1:Acid Dart (Wizard)","1:Summoner\'s Charm","8:Dimensional Steps"',
   'Divination':
     'Features=' +
       '1:Forewarned,"1:Diviner\'s Fortune","8:Scrying Adept"',
@@ -3013,7 +3013,7 @@ Pathfinder.SCHOOLS = {
       '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
   'Necromancy':
     'Features=' +
-      '"1:Power Over Undead","1:Grave Touch Necromantic","8:Life Sight"',
+      '"1:Power Over Undead","1:Grave Touch (Wizard)","8:Life Sight"',
   'Transmutation':
     'Features=' +
       '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
@@ -7847,11 +7847,11 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       schoolLevel, '=', 'source >= 20 ? Infinity : source >= 11 ? 10 : 5'
     );
   } else if(name == 'Conjuration') {
-    rules.defineRule('magicNotes.acidDartConjuration',
+    rules.defineRule('magicNotes.acidDart(Wizard)',
       'intelligenceModifier', '=', 'source + 3'
     );
-    rules.defineRule('magicNotes.acidDartConjuration.1',
-      'features.Acid Dart Conjuration', '?', null,
+    rules.defineRule('magicNotes.acidDart(Wizard).1',
+      'features.Acid Dart (Wizard)', '?', null,
       schoolLevel, '=', 'source>1 ? "+" + Math.floor(source / 2) : ""'
     );
     rules.defineRule
@@ -7919,11 +7919,11 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
     );
     rules.defineRule('featureNotes.lifeSight.1', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.graveTouchNecromantic',
+    rules.defineRule('magicNotes.graveTouch(Wizard)',
       schoolLevel, '=', 'Math.max(1, Math.floor(source / 2))'
     );
-    rules.defineRule('magicNotes.graveTouchNecromantic.1',
-      'features.Grave Touch Necromantic', '?', null,
+    rules.defineRule('magicNotes.graveTouch(Wizard).1',
+      'features.Grave Touch (Wizard)', '?', null,
       'intelligenceModifier', '=', 'source + 3'
     );
     rules.defineRule('validationNotes.commandUndeadFeat',
