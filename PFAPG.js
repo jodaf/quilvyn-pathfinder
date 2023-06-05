@@ -9966,53 +9966,13 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
   } else if(name == 'Paladin') {
-    rules.defineRule('animalCompanionStats.Save Fort',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Ref',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Will',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule('combatNotes.smiteEvil',
-      'hospitalerLevel', 'v', 'Math.floor((source + 5) / 6)',
-      'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
-    );
-    rules.defineRule
-      ('combatNotes.smiteEvil.1', 'undeadScourgeLevel', '=', '"undead"');
-    rules.defineRule
-      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
-    rules.defineRule('features.Channel Energy',
-      'features.Channel Positive Energy (Hospitaler)', '=', '1'
-    );
-    rules.defineRule('magicNotes.channelEnergy.1',
-      // Replace generic Paladin level computation w/Hospitaler-specific
-      'hospitalerLevel', '+=', 'Math.floor((source - 2) / 2) - Math.floor((source + 1) / 2)'
-    );
-    rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
-    rules.defineRule('magicNotes.powerOfFaith-1.1',
-      'features.Power Of Faith', '?', null,
-      classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
-    );
-    rules.defineRule('magicNotes.sharedDefense.1',
-      'features.Shared Defense', '?', null,
-      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
-    );
-    rules.defineRule
-      ('paladinFeatures.Aura Of Faith', 'paladinHasAuraOfFaith', '?', null);
-    rules.defineRule
-      ('paladinFeatures.Aura Of Justice', 'paladinHasAuraOfJustice', '?', null);
-    rules.defineRule
-      ('paladinFeatures.Aura Of Resolve', 'paladinHasAuraOfResolve', '?', null);
-    rules.defineRule
-      ('paladinFeatures.Channel Positive Energy', 'paladinHasChannelPositiveEnergy', '?', null);
-    rules.defineRule
-      ('paladinFeatures.Divine Health', 'paladinHasDivineHealth', '?', null);
-    rules.defineRule('paladinFeatures.Mercy', 'paladinHasMercy', '?', null);
-    rules.defineRule
-      ('paladinFeatures.Smite Evil', 'paladinHasSmiteEvil', '?', null);
+    ['Aura Of Faith', 'Aura Of Justice', 'Aura Of Resolve',
+     'Channel Positive Energy', 'Divine Health', 'Mercy',
+     'Smite Evil'].forEach(f => {
+      rules.defineRule('paladinFeatures.' + f,
+        'paladinHas' + f.replaceAll(/ /g, ''), '?', null
+      );
+    });
     rules.defineRule('paladinHasAuraOfFaith',
       classLevel, '=', '1',
       'paladinFeatures.Shining Light', '=', '0'
@@ -10055,24 +10015,8 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Paladin (Domain)',
       'featureNotes.domain(Paladin)', '=', '1'
     );
-    rules.defineRule('skillModifier.Ride',
-      'skillNotes.skilledRider', '+', '0', // Italics
-      'skillNotes.skilledRider.1', '+', null
-    );
-    rules.defineRule('skillNotes.skilledRider.1',
-      'features.Skilled Rider', '?', null,
-      'skillNotes.armorSkillCheckPenalty', '=', null
-    );
     rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Paladin', 'paladinHasSpells', '?', null);
-    Pathfinder.featureSpells(rules,
-      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
-      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
-    );
-    Pathfinder.featureSpells(rules,
-      'Power Of Faith', 'PowerOfFaith', 'wisdom', 'warriorOfTheHolyLightLevel',
-      null, ['12:Daylight']
-    );
   } else if(name == 'Antipaladin') {
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
@@ -12348,6 +12292,59 @@ PFAPG.pathRulesExtra = function(rules, name) {
         allNotes[note] += ' and not Zen Archer';
       }
     });
+  // Paladin
+  } else if(name == 'Divine Defender') {
+    rules.defineRule('magicNotes.sharedDefense.1',
+      'features.Shared Defense', '?', null,
+      pathLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
+    );
+  } else if(name == 'Hospitaler') {
+    rules.defineRule
+      ('combatNotes.smiteEvil', pathLevel, 'v', 'Math.floor((source + 5) / 6)');
+    rules.defineRule('features.Channel Energy',
+      'features.Channel Positive Energy (Hospitaler)', '=', '1'
+    );
+    rules.defineRule('magicNotes.channelEnergy.1',
+      pathLevel, '+=', 'Math.floor((source-2) / 2) - Math.floor((source+1) / 2)'
+    );
+  } else if(name == 'Sacred Servant') {
+    rules.defineRule
+      ('combatNotes.smiteEvil', pathLevel, 'v', 'Math.floor((source + 5) / 6)');
+    Pathfinder.featureSpells(rules,
+      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', pathLevel,
+      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
+    );
+  } else if(name == 'Shining Knight') {
+    rules.defineRule('animalCompanionStats.Save Fort',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Ref',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Will',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule
+      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.skilledRider.1', '+', null);
+    rules.defineRule('skillNotes.skilledRider.1',
+      'skillNotes.skilledRider', '?', null, // Italics
+      'skillNotes.armorSkillCheckPenalty', '=', null
+    );
+  } else if(name == 'Undead Scourge') {
+    rules.defineRule('combatNotes.smiteEvil.1', pathLevel, '=', '"undead"');
+  } else if(name == 'Warrior Of The Holy Light') {
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
+    rules.defineRule('magicNotes.powerOfFaith-1.1',
+      'features.Power Of Faith', '?', null,
+      pathLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
+    );
+    Pathfinder.featureSpells(rules,
+      'Power Of Faith', 'PowerOfFaith', 'wisdom', pathLevel, null,
+      ['12:Daylight']
+    );
   // Sorcerer
   } else if(name == 'Bloodline Aquatic') {
     rules.defineRule
