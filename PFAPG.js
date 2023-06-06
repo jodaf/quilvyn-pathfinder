@@ -3929,10 +3929,10 @@ PFAPG.FEATURES = {
   // Holy Vindicator
   'Bloodfire':
     'Section=combat ' +
-    'Note="Channel Smite while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC %1 Will ends)"',
+    'Note="Channel Smite while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC %{10 + channelLevel//2} Will ends)"',
   'Bloodrain':
     'Section=magic ' +
-    'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %1 Will ends)"',
+    'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %{10 + channelLevel//2} Will ends)"',
   // Caster Level Bonus as Pathfinder.js
   // Channel Smite as Pathfinder.js
   'Divine Judgment':
@@ -3945,10 +3945,10 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to crit to self or foe"',
   'Faith Healing':
-    'Section=magic Note="Self <i>Cure</i> spells have %V effects"',
+    'Section=magic Note="Self <i>Cure</i> spells have %{$\'levels.Holy Vindicator\'>=8 ? \'maximum\' : \'x1.5\'} effects"',
   'Stigmata':
     'Section=magic ' +
-    'Note="May suffer %V HP/rd bleed damage to gain +%V choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will"',
+    'Note="May suffer %{$\'levels.Holy Vindicator\'//2} HP/rd bleed damage to gain +%{$\'levels.Holy Vindicator\'//2} choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will"',
   'Versatile Channel':
     'Section=magic ' +
     'Note="May use Channel Energy to affect 30\' cone or 120\' line"',
@@ -10436,19 +10436,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
   } else if(name == 'Holy Vindicator') {
     rules.defineRule('channelLevel', classLevel, '+=', null);
-    rules.defineRule('combatNotes.bloodfire.1',
-      'channelLevel', '+=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.bloodrain.1',
-      'channelLevel', '+=', '10 + Math.floor(source / 2)'
-    );
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
-    );
-    rules.defineRule
-      ('magicNotes.stigmata', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('magicNotes.faithHealing',
-      classLevel, '=', 'source>=8 ? "maximum" : "x1.5"'
     );
     Pathfinder.featureSpells(rules,
       'Divine Judgment', 'DivineJudgment', 'wisdom', classLevel, '',
