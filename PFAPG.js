@@ -4069,13 +4069,13 @@ PFAPG.FEATURES = {
   'Bomb-Thrower':'Section=combat Note="Increased Bomb effects"',
   'Brutality':
     'Section=combat ' +
-    'Note="+%V damage w/simple weapons and natural attacks while in mutagenic form"',
+    'Note="+%{$\'levels.Master Chymist\'//3*2} damage w/simple weapons and natural attacks while in mutagenic form"',
   'Burly':
     'Section=ability,combat,skill ' +
     'Note=' +
-      '"+%V Strength and Constitution checks while in mutagenic form",' +
-      '"+%V CMB and CMD while in mutagenic form",' +
-      '"+%V Strength-linked skill checks while in mutagenic form"',
+      '"+%{$\'levels.Master Chymist\'//2} Strength and Constitution checks while in mutagenic form",' +
+      '"+%{$\'levels.Master Chymist\'//2} CMB and CMD while in mutagenic form",' +
+      '"+%{$\'levels.Master Chymist\'//2} Strength-linked skill checks while in mutagenic form"',
   // Caster Level Bonus as Pathfinder.js
   'Disguise':
     'Section=save ' +
@@ -4159,9 +4159,9 @@ PFAPG.FEATURES = {
   'Nimble':
     'Section=ability,combat,skill ' +
     'Note=' +
-      '"+%V Dexterity checks while in mutagenic form",' +
-      '"+%V AC and CMD while in mutagenic form",' +
-      '"+%V Dexterity-linked skill checks while in mutagenic form"',
+      '"+%{$\'levels.Master Chymist\'//2} Dexterity checks while in mutagenic form",' +
+      '"+%{$\'levels.Master Chymist\'//2} AC and CMD while in mutagenic form",' +
+      '"+%{$\'levels.Master Chymist\'//2} Dexterity-linked skill checks while in mutagenic form"',
   'Restoring Change':
     'Section=combat ' +
     'Note="Changing to/from mutagenic form restores 1d8+%{level} HP"',
@@ -10520,15 +10520,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       '', ['Charm Person']
     );
   } else if(name == 'Master Chymist') {
-    rules.defineRule
-      ('abilityNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule
-      ('abilityNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('bloodlineDraconicLevel', classLevel, '+=', null);
-    rules.defineRule
-      ('combatNotes.brutality', classLevel, '=', 'Math.floor(source / 3) * 2');
-    rules.defineRule
-      ('combatNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
     ['Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red',
      'Silver', 'White'].forEach(c => {
       rules.defineRule('combatNotes.draconic(' + c + ')Mutagen',
@@ -10536,8 +10528,6 @@ PFAPG.classRulesExtra = function(rules, name) {
         'intelligenceModifier', '+', null
       );
     });
-    rules.defineRule
-      ('combatNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('effectiveAlchemistLevel',
       'combatNotes.bomb-Thrower', '+', 'null', // italics no-op
       classLevel, '+', null
@@ -10565,10 +10555,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Master Chymist (Advanced Mutagen)',
       'featureNotes.advancedMutagen', '=', null
     );
-    rules.defineRule
-      ('skillNotes.burly', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule
-      ('skillNotes.nimble', classLevel, '=', 'Math.floor(source / 2)');
   } else if(name == 'Master Spy') {
     rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
     rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
