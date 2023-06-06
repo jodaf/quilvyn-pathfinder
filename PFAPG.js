@@ -1186,7 +1186,7 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="Successful Fortitude or Will save in medium or lighter armor yields no damage instead of half"',
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Teamwork Feat':'Section=feature Note="Gains %V Teamwork feats"',
+  'Teamwork Feat':'Section=feature Note="Gains 1 Teamwork feat"',
   'Teamwork Feat (Inquisitor)':
     'Section=feature,feature ' +
     'Note=' +
@@ -3924,7 +3924,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+%V Tactician level",' +
       '"+2 Diplomacy/+2 Intimidate",' +
-      '"Allies gain +%V Perception and Sense Motive to hear commands and to interpret messages given using Bluff"',
+      '"Allies gain +%{$\'levels.Battle Herald\'} Perception and Sense Motive to hear commands and to interpret messages given using Bluff"',
 
   // Holy Vindicator
   'Bloodfire':
@@ -10408,9 +10408,7 @@ PFAPG.classRulesExtra = function(rules, name) {
      'bardicPerformanceLevel', '+', null
     );
     rules.defineRule
-      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', null);
-    rules.defineRule
-      ('featureNotes.teamworkFeat', classLevel, '+=', 'source>=6 ? 1 : null');
+      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', '1');
     rules.defineRule('featureNotes.inspiringCommand',
       classLevel, '=', 'Math.floor((source + 1) / 2)'
     );
@@ -10434,7 +10432,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.inspiringCommand', '=', null
     );
     rules.defineRule('skillNotes.voiceOfAuthority', classLevel, '=', null);
-    rules.defineRule('skillNotes.voiceOfAuthority-1', classLevel, '=', null);
     rules.defineRule
       ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
   } else if(name == 'Holy Vindicator') {
