@@ -48,6 +48,15 @@ function PFAPG(edition, rules) {
     PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, PFAPG.NPC_CLASSES
   );
 
+  for(let c in PFAPG.CLASSES) {
+    QuilvynUtils.getAttrValueArray(PFAPG.CLASSES[c], 'Selectables').forEach(s=>{
+      if(s.match(/:Archetype|:Mystery|:Order|:Patron/)) {
+        rules.defineChoice
+          ('subclasses', c + ' - ' + s.replace(/^\d+:/, '').replace(/:.*/, ''));
+      }
+    });
+  }
+  rules.defineChoice('preset', 'selectableFeatures:Subclass,set,subclasses');
   rules.randomizeOneAttribute = PFAPG.randomizeOneAttribute;
 
 }
@@ -2875,7 +2884,7 @@ PFAPG.FEATURES = {
   'Shielded Fortress':
     'Section=combat,feature ' +
     'Note=' +
-      '"Shield cannot be disarmed or sundered/May use move to give Evasion feature to adjacent allies for 1 rd/May use immedate action to give Improved Evasion feature to 1 adjacent ally for 1 rd",' +
+      '"Shield cannot be disarmed or sundered/May use move to give Evasion feature to adjacent allies for 1 rd/May use immediate action to give Improved Evasion feature to 1 adjacent ally for 1 rd",' +
       '"Has Evasion feature when using shield; Improved Evasion when using tower shield"',
   'Singleton':
     'Section=combat ' +
@@ -3587,7 +3596,7 @@ PFAPG.FEATURES = {
       '"Immune to poison and paralysis"',
   "Serpent's Fang":
     'Section=combat ' +
-    'Note="%{levels.Sorcerer>=5 ? \'Magical f\' : \'F\'}angs inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Con/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} neg or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
+    'Note="%{levels.Sorcerer>=5 ? \'Magical fangs\' : \'Fangs\'} inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Con/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} neg or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
   'Serpentfriend':
     'Section=feature,magic ' +
     'Note=' +
@@ -4372,7 +4381,8 @@ PFAPG.FEATURES = {
   'Childlike':
     'Section=skill ' +
     'Note="May take 10 on Bluff (appear innocent)/+2 Disguise (human child)"',
-  'Cloud Step':'Section=ability Note="May walk %V\' on air for 1 rd"',
+  'Cloud Step':
+    'Section=ability Note="May walk %{levels.Monk//2*5<?50}\' on air for 1 rd"',
   'Cockatrice Strike':
     'Section=combat ' +
     'Note="Crit on full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
@@ -4751,7 +4761,7 @@ PFAPG.FEATURES = {
     'Note="May use metamagic feat for one chosen spell w/out cost; spell gains dbl other feat bonuses"',
   'Spider Step':
     'Section=ability ' +
-    'Note="May move %V\' across walls, ceiling, and unsupportive surfaces for 1 rd"',
+    'Note="May move %{levels.Monk//2*5<?50}\' across walls, ceiling, and unsupportive surfaces for 1 rd"',
   'Stabbing Shot':
     'Section=combat ' +
     'Note="May use first full-attack action bow attack to stab and push adjacent foe 5\'; all attacks suffer -2 penalty"',
@@ -10665,7 +10675,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       if(note in rules.getChoices('notes'))
         rules.getChoices('notes')[note] += ' or stance';
       else
-        console.log(note + '?');
+        console.log('Cannot find note ' + note);
     });
   }
 };
@@ -10707,10 +10717,6 @@ PFAPG.featRulesExtra = function(rules, name) {
         rules.defineRule
           ('skillModifier.' + s, 'skillNotes.breadthOfExperience', '+', '2');
     });
-  } else if(name == 'Cloud Step') {
-    rules.defineRule('abilityNotes.cloudStep',
-      'levels.Monk', '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
-    );
   } else if((matchInfo = name.match(/^Elemental Focus .(Acid|Cold|Electricity|Fire).$/)) != null) {
     let energy = matchInfo[1];
     rules.defineRule('magicNotes.elementalFocus(' + energy + ')',
@@ -10862,10 +10868,6 @@ PFAPG.featRulesExtra = function(rules, name) {
       'shield', '=', 'source=="None" ? 0 : source.match(/Heavy/) ? 2 : source.match(/Tower/) ? 4 : 1',
       'features.Shield Focus', '+', '1',
       'features.Greater Shield Focus', '+', '1'
-    );
-  } else if(name == 'Spider Step') {
-    rules.defineRule('abilityNotes.spiderStep',
-      'levels.Monk', '=', 'Math.min(Math.floor(source / 2) * 5, 50)'
     );
   } else if(name == 'Touch Of Serenity') {
     rules.defineRule('combatNotes.touchOfSerenity', '', '=', '1');
@@ -11127,7 +11129,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
     );
-    // Supress validation errors for Weapon Mastery and Maneuver Mastery feats
+    // Suppress validation errors for Weapon Mastery and Maneuver Mastery feats
     for(let feat in rules.getChoices('feats')) {
       if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
         let note =
@@ -11949,7 +11951,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
-    ['Composite Longbow','Compsite Shortbow','Longbow','Shortbow'].forEach(w=>{
+    ['Composite Longbow','Composite Shortbow','Longbow','Shortbow'].forEach(w=>{
       rules.defineRule(w.replaceAll(' ', '') + 'AttackModifier',
         'combatNotes.zenArchery', '+', null
       );
@@ -12807,6 +12809,14 @@ PFAPG.ruleNotes = function() {
     '    Quilvyn includes in the Witch spell list spells that are made\n' +
     '    available by specific patrons. Quilvyn randomly assigns these\n' +
     '    spells only to characters with the appropriate patron.\n' +
+    '  </li><li>\n' +
+    '    Q changes three cleric subdomain names slightly in order to avoid\n' +
+    '    overlapping spell lists with sorcerer bloodlines: arcane to arcana;\n'+
+    '    protean to proteus; undead to undeath.\n' +
+    '  </li><li>\n' +
+    '    You can define characters with class features from the core rules\n' +
+    '    by selecting the Core archetypes. For example, selecting Core Bard\n' +
+    '    gives you a character with the core rule bard features.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Limitations</h3>\n' +
