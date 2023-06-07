@@ -4181,13 +4181,13 @@ PFAPG.FEATURES = {
   // Death Attack as Pathfinder.js
   'Elude Detection':
     'Section=save ' +
-    'Note="May gain SR %V vs. divination at will; must wait 1d4 rd between uses"',
+    'Note="May gain SR %{$\'levels.Master Spy\'+15} vs. divination at will; must wait 1d4 rd between uses"',
   'Fool Casting':
     'Section=save ' +
     'Note="Successful save vs. control spell allows partial effects, dismissible at will"',
   'Glib Lie':
     'Section=save ' +
-    'Note="Truth-detecting magic requires DC %V caster level check to be effective"',
+    'Note="Truth-detecting magic requires DC %{$\'levels.Master Spy\'+15} caster level check to be effective"',
   'Hidden Mind':
     'Section=save ' +
     'Note="May gain immunity to divination and +8 vs. mental effects at will; must wait 1d4 rd between uses"',
@@ -4201,14 +4201,14 @@ PFAPG.FEATURES = {
     'Section=magic Note="May use <i>Magic Aura</i> effects to mask aura 2/dy"',
   'Quick Change (Master Spy)':
     'Section=skill ' +
-    'Note="May suffer %V penalty on Disguise to assume disguise in 2d4 rd"',
+    'Note="May suffer %{$\'levels.Master Spy\'<8 ? -10 : -5} penalty on Disguise to assume disguise in 2d4 rd"',
   'Shift Alignment':
     'Section=save ' +
     'Note="May modify alignment to change alignment-specific effects of magic directed at self"',
   // Slippery Mind as Pathfinder.js
   'Superficial Knowledge':
     'Section=skill ' +
-    'Note="May make +%V untrained Knowledge and Profession checks related to cover identity"',
+    'Note="May make +%{$\'levels.Master Spy\'//2} untrained Knowledge and Profession checks related to cover identity"',
 
   // Nature Warden
   'Animal Speech':
@@ -10558,15 +10558,7 @@ PFAPG.classRulesExtra = function(rules, name) {
   } else if(name == 'Master Spy') {
     rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
     rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
-    rules.defineRule('saveNotes.glibLie', classLevel, '=', 'source + 15');
-    rules.defineRule('saveNotes.eludeDetection', classLevel, '=', 'source+15');
     rules.defineRule('skillNotes.artOfDeception', classLevel, '=', null);
-    rules.defineRule ('skillNotes.quickChange(MasterSpy)',
-      classLevel, '=', 'source>=8 ? -5 : -10'
-    );
-    rules.defineRule('skillNotes.superficialKnowledge',
-      classLevel, '=', 'Math.floor(source / 2)'
-    );
     rules.defineRule
       ('sneakAttack', classLevel, '+=', 'Math.floor((source + 2) / 3)');
     Pathfinder.featureSpells(rules,
