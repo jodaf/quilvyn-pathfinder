@@ -4235,8 +4235,8 @@ PFAPG.FEATURES = {
   'Ironpaw':
     'Section=companion,magic ' +
     'Note=' +
-      '"May give animal companion DR %V/cold iron/Natural weapons are considered cold iron for overcoming DR",' +
-      '"May give summoned creatures DR %V/cold iron/Natural weapons are considered cold iron for overcoming DR"',
+      '"May give animal companion DR %{$\'levels.Nature Warden\'}/cold iron/Natural weapons are considered cold iron for overcoming DR",' +
+      '"May give summoned creatures DR %{$\'levels.Nature Warden\'}/cold iron/Natural weapons are considered cold iron for overcoming DR"',
   'Mystic Harmony':
     'Section=combat Note="Adds half favored terrain bonus to AC"',
   'Natural Empathy':
@@ -4248,8 +4248,8 @@ PFAPG.FEATURES = {
   'Silverclaw':
     'Section=companion,magic ' +
     'Note=' +
-      '"Animal companion gains DR %V/silver/Natural weapons are considered silver for overcoming DR",' +
-      '"Summoned creatures gain DR %V/silver/Natural weapons are considered silver for overcoming DR"',
+      '"Animal companion gains DR %{$\'levels.Nature Warden\'}/silver/Natural weapons are considered silver for overcoming DR",' +
+      '"Summoned creatures gain DR %{$\'levels.Nature Warden\'}/silver/Natural weapons are considered silver for overcoming DR"',
   'Survivalist (Nature Warden)':
     'Section=feature Note="No penalty for improvised weapon and tool use%1"',
   'Wild Stride':
@@ -10592,8 +10592,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('companionNotes.companionBond(NatureWarden)-1',
       classLevel, '?', 'source>=5'
     );
-    rules.defineRule('companionNotes.ironpaw', classLevel, '=', null);
-    rules.defineRule('companionNotes.silverclaw', classLevel, '=', null);
     rules.defineRule('featureNotes.survivalist(NatureWarden).1',
       classLevel, '=', 'source>=10 ? "/Improvised weapons and tools are considered masterwork after 1 min examination" : ""'
     );
@@ -10603,8 +10601,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
     );
-    rules.defineRule('magicNotes.ironpaw', classLevel, '=', null);
-    rules.defineRule('magicNotes.silverclaw', classLevel, '=', null);
     rules.defineRule('skillNotes.favoredTerrain',
       classLevel, '+=', 'Math.floor(source / 5)'
     );
@@ -11713,7 +11709,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       pathLevel, '=', 'Math.floor((source + 2) / 4) * 5'
     );
     rules.defineRule
-      ('combatNotes.safeShot', 'fighterFeatures.Archer', '=', '"Bow"',);
+      ('combatNotes.safeShot', 'fighterFeatures.Archer', '=', '"Bow"');
     rules.defineRule
       ('skillNotes.hawkeye', pathLevel, '=', 'Math.floor((source + 2) / 4)');
     QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
@@ -11943,7 +11939,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
       ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
   } else if(name == 'Weapon Adept') {
     rules.defineRule
-      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null',);
+      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null');
     rules.defineRule('featCounts.General',
       'featureNotes.wayOfTheWeaponMaster', '+', '1',
       'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
@@ -11954,7 +11950,7 @@ PFAPG.pathRulesExtra = function(rules, name) {
     );
   } else if(name == 'Zen Archer') {
     rules.defineRule
-      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null',);
+      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null');
     rules.defineRule('combatNotes.zenArchery',
       'wisdomModifier', '=', null,
       'dexterityModifier', '+', '-source'
