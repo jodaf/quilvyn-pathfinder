@@ -4268,7 +4268,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="+%{constitutionModifier} concentration checks"',
   'Rage Prophet Mystery':'Section=magic Note="Has access to additional spells"',
   'Ragecaster':
-    'Section=magic Note="+%V caster level during Moment Of Clarity%1"',
+    'Section=magic Note="+%{levels.Barbarian} caster level during Moment Of Clarity%{$\'levels.Rage Prophet\'>=7 ? \'/+\' + constitutionModifier + \' spell DC during rage\' : \'\'}"',
   'Raging Healer':
     'Section=magic Note="May cast self <i>Cure</i> spells while raging"',
   'Raging Spellstrength':
@@ -4276,13 +4276,13 @@ PFAPG.FEATURES = {
   'Savage Seer':'Section=combat Note="+%V Rage Power Level/+%V Mystery Level"',
   'Spirit Guardian':
     'Section=magic ' +
-    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%V vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
+    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%{$\'levels.Rage Prophet\'//2} vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for swift action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
   'Spirit Guide':
     'Section=magic ' +
     'Note="May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage"',
   'Spirit Warrior':
     'Section=magic ' +
-    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%V vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
+    'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%{$\'levels.Rage Prophet\'} vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for immediate action to give armor and weapons inflict full damage on incorporeal creatures for 1 rd"',
 
   // Stalwart Defender
   'Armor Class Bonus (Stalwart Defender)':'Section=combat Note="+%V AC"',
@@ -4294,14 +4294,14 @@ PFAPG.FEATURES = {
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
-    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %V rd/8 hr rest; fatigued afterwards for 2 rd per rd in stance"',
+    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %{($\'levels.Stalwart Defender\' - 1) * 2 + constitutionModifier + 4} rd/8 hr rest; fatigued afterwards for 2 rd per rd in stance"',
   'Fearless Defense':
     'Section=save Note="Immune to shaken and frightened during stance"',
   'Halting Blow':
     'Section=combat Note="Successful movement AOO halts foe during stance"',
   'Immobile':
     'Section=combat ' +
-    'Note="+%V CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
+    'Note="+%{$\'levels.Stalwart Defender\'} CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
   // Improved Uncanny Dodge as Pathfinder.js
   // Increased Damage Reduction as Pathfinder.js
   'Intercept':
@@ -4317,7 +4317,7 @@ PFAPG.FEATURES = {
   'Mobile Defense':'Section=combat Note="May take 5\' step during stance"',
   'Renewed Defense':
     'Section=combat ' +
-    'Note="May regain %Vd8+%{constitutionModifier} HP during stance 1/dy"',
+    'Note="May regain %{$\'levels.Stalwart Defender\'//2}d8+%{constitutionModifier} HP during stance 1/dy"',
   'Roused Defense':
     'Section=combat ' +
     'Note="May use stance while fatigued; immune to fatigued during stance, exhausted afterward for 10 min per rd in stance"',
@@ -10629,14 +10629,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - (source>=8 ? 2 : source>=5 ? 1 : 0)'
     );
-    rules.defineRule('magicNotes.ragecaster', 'levels.Barbarian', '=', null);
-    rules.defineRule('magicNotes.ragecaster.1',
-      'constitutionModifier', '=', '"/+" + source + " spell DC during rage"',
-      classLevel, '=', 'source>=7 ? null : ""'
-    );
-    rules.defineRule
-      ('magicNotes.spiritGuardian', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('magicNotes.spiritWarrior', classLevel, '=', null);
     Pathfinder.featureSpells(rules,
       'Spirit Guide', 'SpiritGuide', 'charisma', classLevel, '',
       ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
@@ -10649,19 +10641,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.damageReduction',
       classLevel, '^=', 'source>=10 ? 5 : source>=7 ? 3 : source>=5 ? 1 : null'
     );
-    rules.defineRule('combatNotes.defensiveStance',
-      '', '=', '4',
-      'constitutionModifier', '+', null,
-      classLevel, '+', '(source - 1) * 2'
-    );
-    rules.defineRule('combatNotes.immobile', classLevel, '=', null);
     rules.defineRule
       ('combatNotes.improvedUncannyDodge', classLevel, '+=', null);
     rules.defineRule('combatNotes.increasedDamageReduction',
       'stalwartDefenderFeatures.Increased Damage Reduction', '=', null
     );
-    rules.defineRule
-      ('combatNotes.renewedDefense', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('featureNotes.defensivePowers',
       classLevel, '=', 'Math.floor(source /2 )'
     );
