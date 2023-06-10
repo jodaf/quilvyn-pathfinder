@@ -1399,7 +1399,7 @@ Pathfinder.FEATURES = {
     'Note="Touch heals 1d6+%1 nonlethal HP and removes fatigued, shaken, and sickened %V/dy"',
   'Canter':
     'Section=skill ' +
-    'Note="+5 Bluff (secret message)/+5 Sense Motive (secret message)"',
+    'Note="+5 Sense Motive (intercept secret message)/+5 ally Bluff (deliver secret message to self)"',
   "Captain's Blade":
     'Section=skill ' +
     'Note="+1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill"',
@@ -1501,7 +1501,7 @@ Pathfinder.FEATURES = {
   'Demon Hunter':
     'Section=skill,save ' +
     'Note=' +
-      '"+3 Knowledge (Planes) wrt demons",' +
+      '"+3 Knowledge (Planes) (demons)",' +
       '"+2 Will vs. demonic mental spells and effects"',
   'Demon Resistances':
     'Section=save Note="Resistance %V to electricity and %1 to poison"',
@@ -1665,7 +1665,8 @@ Pathfinder.FEATURES = {
   'Fire Resistance':'Section=save Note="Resistance %V to fire"',
   'Fires Of Hell':
     'Section=combat Note="Flaming blade inflicts +1 damage for %V rd 1/dy"',
-  'Flame Of The Dawnflower':'Section=combat Note="+2 scimitar critical damage"',
+  'Flame Of The Dawnflower':
+    'Section=combat Note="Crit w/scimitar inflicts +2 HP fire"',
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
   'Fleeting Glance':'Section=magic Note="May become invisible %V rd/dy"',
   'Focused Mind':'Section=magic Note="+2 concentration checks"',
@@ -1680,11 +1681,17 @@ Pathfinder.FEATURES = {
       '"May always act in surprise round%1"',
   'Forlorn':'Section=save Note="+1 Fortitude"',
   'Fortified Drinker':
-    'Section=save Note="+2 vs. mental effects for 1 hr after drinking"',
+    'Section=save Note="Drinking alcohol gives +2 vs. mental effects for 1 hr"',
   'Fortified':
     'Section=combat ' +
     'Note="May gain 20% chance to negate critical hit or sneak attack 1/dy"',
-  'Freedom Fighter':
+  'Freedom Fighter (Halfling)':
+    'Section=combat,skill,skill ' +
+    'Note=' +
+      '"+1 attack during escape",' +
+      '"Escape Artist is a class skill",' +
+      '"+1 skills during escape"',
+  "Freedom Fighter (Liberty's Edge)":
     'Section=combat,skill ' +
     'Note=' +
       '"+1 surprise attack",' +
@@ -1746,12 +1753,6 @@ Pathfinder.FEATURES = {
   'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
   'Halfling Ability Adjustment':
     'Section=ability Note="+2 Dexterity/+2 Charisma/-2 Strength"',
-  'Halfling Freedom Fighter':
-    'Section=combat,skill,skill ' +
-    'Note=' +
-      '"+1 attack during escape",' +
-      '"Escape Artist is a class skill",' +
-      '"+1 skills during escape"',
   'Hand Of The Acolyte':
     'Section=combat ' +
     'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
@@ -1764,7 +1765,8 @@ Pathfinder.FEATURES = {
   'Heavenly Fire':
     'Section=magic ' +
     'Note="R30\' Ranged touch heals good or harms evil 1d4+%1 HP %V/dy"',
-  'Hedge Magician':'Section=magic Note="5% discount on magic craft cost"',
+  'Hedge Magician':
+    'Section=skill Note="Cost to craft magic items is reduced by 5%"',
   'Hellfire':
     'Section=magic ' +
     'Note="R60\' 10\' radius inflicts %Vd6 HP (DC %1 Ref half) and shakes good creatures for %2 rd %3/dy"',
@@ -1842,7 +1844,9 @@ Pathfinder.FEATURES = {
   'Ki Dodge':'Section=combat Note="May spend 1 Ki Point for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="May spend 1 Ki Point for +20 Speed"',
-  'Killer':'Section=combat Note="Inflicts extra damage on critical hit"',
+  'Killer':
+    'Section=combat ' +
+    'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Knockback':
     'Section=combat Note="Successful Bull Rush during rage inflicts %V HP"',
   'Laughing Touch':
@@ -1886,17 +1890,19 @@ Pathfinder.FEATURES = {
   'Lore Seeker':
     'Section=magic,skill ' +
     'Note=' +
-      '"+1 caster level and save DC on 3 spells",' +
+      '"+1 caster level and save DC on chosen 3 arcane spells",' +
       '"+1 Knowledge (Arcana)/Knowledge (Arcana) is a class skill"',
   'Loyalty':'Section=save Note="+1 vs. enchantment"',
   'Lunge':'Section=combat Note="May suffer -2 AC to gain +5\' melee range"',
   'Magic Claws':'Section=combat Note="Claws are magical weapons"',
   'Magic Is Life':
     'Section=save ' +
-    'Note="+2 vs. death effects/Stabilizes automatically when enspelled"',
-  'Magical Knack':'Section=magic Note="+2 caster level (max %V)"',
+    'Note="+2 vs. death effects and stabilizes automatically when enspelled"',
+  'Magical Knack':
+    'Section=magic Note="Gains +2 caster level in chosen class (max %{level})"',
   'Magical Lineage':
-    'Section=magic Note="-1 spell level for chosen spell metamagic"',
+    'Section=magic ' +
+    'Note="Reduces spell level penalty by 1 for metamagic feats applied to chosen spell"',
   'Magical Talent (Trait)':'Section=magic Note="May use chosen cantrip 1/dy"',
   'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
@@ -1952,7 +1958,7 @@ Pathfinder.FEATURES = {
   'Missionary':
     'Section=magic,skill ' +
     'Note=' +
-      '"+1 caster level and save DC on 3 spells",' +
+      '"+1 caster level and save DC on 3 divine spells",' +
       '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
   'Moment Of Clarity':
     'Section=combat Note="May suspend rage effects for 1 rd 1/rage"',
@@ -2266,7 +2272,7 @@ Pathfinder.FEATURES = {
       '"+1 choice of Perform"',
   'Tunnel Fighter':
     'Section=combat ' +
-    'Note="+2 Initiative (underground)/+1 critical damage (underground)"',
+    'Note="+2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Two-Weapon Rend':'Section=combat Note="Double hit inflicts +1d10%1 HP"',
   'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
   'Undead Slayer':'Section=combat Note="+1 damage vs. undead"',
@@ -4022,10 +4028,10 @@ Pathfinder.TRAITS = {
   'Focused Mind':'Type=Basic Subtype=Magic',
   'Forlorn':'Type=Race Subtype=Elf',
   'Fortified Drinker':'Type=Religion Subtype=CG',
+  'Freedom Fighter (Halfling)':'Type=Race Subtype=Halfling',
   'Gifted Adept':'Type=Basic Subtype=Magic',
   'Goldsniffer':'Type=Race Subtype=Dwarf',
   'Guardian Of The Forge':'Type=Religion Subtype=LG',
-  'Halfling Freedom Fighter':'Type=Race Subtype=Halfling',
   'Hedge Magician':'Type=Basic Subtype=Magic',
   'Highlander':'Type=Regional Subtype=Hills,Mountains',
   'History Of Heresy':'Type=Basic Subtype=Faith',
@@ -4079,7 +4085,7 @@ Pathfinder.TRAITS = {
   'Expert Duelist':'Type=Faction Subtype="Sovereign Court"',
   'Fashionable':'Type=Faction Subtype="Sovereign Court"',
   'Force For Good':'Type=Faction Subtype="Silver Crusade"',
-  'Freedom Fighter':'Type=Faction Subtype="Liberty\'s Edge"',
+  "Freedom Fighter (Liberty's Edge)":'Type=Faction Subtype="Liberty\'s Edge"',
   'Gold Finger':'Type=Faction Subtype="The Exchange"',
   'Greasy Palm':'Type=Faction Subtype="The Exchange"',
   'Impressive Presence':'Type=Faction Subtype="Sovereign Court"',
@@ -8099,8 +8105,6 @@ Pathfinder.traitRulesExtra = function(rules, name) {
       'level', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
-  } else if(name == 'Magical Knack') {
-    rules.defineRule('magicNotes.magicalKnack', 'level', '=', null);
   } else if(name == 'River Rat') {
     rules.defineRule('daggerDamageModifier', 'combatNotes.riverRat', '+', '1');
     rules.defineRule
