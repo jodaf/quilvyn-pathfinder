@@ -7,7 +7,7 @@
   <script>
 var attributes = {
   "_path":"ztest/pathfinder/traits/apg", 
-  "alignment":"Neutral", "armor":"None", "charisma":10, "constitution":12, "deity":"Pharasma", 
+  "alignment":"Neutral", "armor":"None", "charisma":12, "constitution":12, "deity":"Pharasma", 
   "dexterity":12, "experience":9, "experienceTrack":"PSOP", "faction":"Andoran", 
   "feats.Acrobatic":1, "feats.Sickening Critical":1, "feats.Skill Focus (Acrobatics)":1, 
   "gender":"Male", "hitPoints":10, "intelligence":14, "languages.Aklo":1, "languages.Elven":1, 
@@ -23,11 +23,11 @@ var attributes = {
   "skills.Profession (Librarian)":1, "skills.Profession (Soldier)":1, "skills.Ride":1, "skills.Sense Motive":1, 
   "skills.Sleight Of Hand":1, "skills.Spellcraft":1, "skills.Stealth":1, "skills.Survival":1, 
   "skills.Swim":1, "skills.Use Magic Device":1, "spells.Bleed(W0 Necr)":1, 
-  "spells.Cause Fear(W1 Necr)":1, "spells.Comprehend Languages(W1 Divi)":1, "spells.Flare(W0 Evoc)":1, 
-  "spells.Ghost Sound(W0 Illu)":1, "spells.Magic Missile(W1 Evoc)":1, "spells.Touch Of Fatigue(W0 Necr)":1, 
-  "strength":10, "traits.Adopted":1, "traits.Anatomist":1, "traits.Animal Friend":1, 
-  "traits.Apothecary":1, "traits.Armor Expert":1, "traits.Birthmark":1, "traits.Bitter Nobleman":1, 
-  "traits.Brute":1, "traits.Bullied":1, "traits.Bully":1, "traits.Canter":1, 
+  "spells.Cause Fear(W1 Necr)":1, "spells.Comprehend Languages(W1 Divi)":1, "spells.Flare(Talent0 Evoc)":1, 
+  "spells.Flare(W0 Evoc)":1, "spells.Ghost Sound(W0 Illu)":1, "spells.Magic Missile(W1 Evoc)":1, 
+  "spells.Touch Of Fatigue(W0 Necr)":1, "strength":10, "traits.Adopted":1, "traits.Anatomist":1, 
+  "traits.Animal Friend":1, "traits.Apothecary":1, "traits.Armor Expert":1, "traits.Birthmark":1, 
+  "traits.Bitter Nobleman":1, "traits.Brute":1, "traits.Bullied":1, "traits.Bully":1, "traits.Canter":1, 
   "traits.Caretaker":1, "traits.Charming":1, "traits.Child Of Nature":1, 
   "traits.Child Of The Streets":1, "traits.Child Of The Temple":1, "traits.Classically Schooled":1, 
   "traits.Courageous":1, "traits.Dangerously Curious":1, "traits.Deft Dodger":1, 
@@ -68,7 +68,7 @@ var attributes = {
       <td><b>Constitution</b>: 12 (+1)</td>
       <td><b>Intelligence</b>: 14 (+2)</td>
       <td><b>Wisdom</b>: 14 (+2)</td>
-      <td><b>Charisma</b>: 10 (+0)</td>
+      <td><b>Charisma</b>: 12 (+1)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -149,7 +149,7 @@ var attributes = {
         <td>Knowledge (Engineering): (int) 1 (+8)</td>
         <td>Profession (Soldier): (wis) 1 (+6)</td>
       </tr><tr style="text-align:left">
-        <td>Bluff: (cha) 1 (+5)</td>
+        <td>Bluff: (cha) 1 (+6)</td>
         <td>Knowledge (Geography): (int) 1 (+8)</td>
         <td>Ride: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
@@ -157,7 +157,7 @@ var attributes = {
         <td>Knowledge (History): (int) 1 (+8)</td>
         <td>Sense Motive: (wis) 1 (+9)</td>
       </tr><tr style="text-align:left">
-        <td>Diplomacy: (cha) 1 (+5)</td>
+        <td>Diplomacy: (cha) 1 (+6)</td>
         <td>Knowledge (Local): (int) 1 (+11)</td>
         <td>Sleight Of Hand: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
@@ -169,7 +169,7 @@ var attributes = {
         <td>Knowledge (Nobility): (int) 1 (+7)</td>
         <td>Stealth: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
-        <td>Handle Animal: (cha) 1 (+5)</td>
+        <td>Handle Animal: (cha) 1 (+6)</td>
         <td>Knowledge (Planes): (int) 1 (+7)</td>
         <td>Survival: (wis) 1 (+8)</td>
       </tr><tr style="text-align:left">
@@ -177,12 +177,12 @@ var attributes = {
         <td>Knowledge (Religion): (int) 1 (+8)</td>
         <td>Swim: (str) 1 (+5)</td>
       </tr><tr style="text-align:left">
-        <td>Intimidate: (cha) 1 (+6)</td>
+        <td>Intimidate: (cha) 1 (+7)</td>
         <td>Perception: (wis) 1 (+7)</td>
-        <td>Use Magic Device: (cha) 1 (+5)</td>
+        <td>Use Magic Device: (cha) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Knowledge (Arcana): (int) 1 (+8)</td>
-        <td>Perform (String): (cha) 1 (+4)</td>
+        <td>Perform (String): (cha) 1 (+5)</td>
         <td></td>
       </tr></table>
 </td>
@@ -428,7 +428,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bullied: +1 unarmed AOO attack</td>
       </tr><tr style="text-align:center">
-        <td>Claws: 2 +2 attacks inflict 1d4 HP each 3 rd/dy</td>
+        <td>Claws: 2 +2 attacks inflict 1d4 HP each 4 rd/dy</td>
       </tr><tr style="text-align:center">
         <td>Dirty Fighter: +1 damage when flanking</td>
       </tr><tr style="text-align:center">
@@ -508,8 +508,8 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Spell Slots</b>: S0: 4; S1: 3</td>
-        <td><b>Spell DC</b>: Draconic: 10; S: 10</td>
+        <td><b>Spell Slots</b>: S0: 4; S1: 4; Talent0: 1</td>
+        <td><b>Spell DC</b>: Draconic: 11; S: 11; Talent: 11</td>
       </tr></table>
 </td>
     </tr></table>
@@ -517,24 +517,28 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Bleed (W0 Necr): R30' Stabilized target suffers 1 HP and resumes dying (DC 10 Will neg)</td>
+      <td>Bleed (W0 Necr): R30' Stabilized target suffers 1 HP and resumes dying (DC 11 Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (W1 Necr): R30' Target w/up to 5 HD flees for 1d4 rd (DC 11 Will shaken for 1 rd)</td>
+      <td>Cause Fear (W1 Necr): R30' Target w/up to 5 HD flees for 1d4 rd (DC 12 Will shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Comprehend Languages (W1 Divi): Self understands all languages for 30 min</td>
     </tr><tr style="text-align:left">
-      <td>Flare (W0 Evoc): R30' Target dazzled for 1 min (DC 10 Fort neg)</td>
+      <td>Flare (Talent0 Evoc): R35' Target dazzled for 1 min (DC 11 Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (W0 Illu): R30' Produces sound volume of 12 humans (DC 10 Will disbelieve) for 3 rd</td>
+      <td>Flare (W0 Evoc): R30' Target dazzled for 1 min (DC 11 Fort neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Ghost Sound (W0 Illu): R30' Produces sound volume of 12 humans (DC 11 Will disbelieve) for 3 rd</td>
     </tr><tr style="text-align:left">
       <td>Magic Missile (W1 Evoc): R130' 2 missiles inflict 1d4+1 HP each in 15' radius</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Fatigue (W0 Necr): Touch attack fatigues target for 3 rd (DC 10 Fort neg)</td>
+      <td>Touch Of Fatigue (W0 Necr): Touch attack fatigues target for 3 rd (DC 11 Fort neg)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
+      <td><i>Charisma Sorcerer Spell Slot Bonus: Spell level S1</i></td>
+    </tr><tr style="text-align:center">
       <td><i>Goodies Sorcerer Caster Level: +2 Sorcerer caster level</i></td>
     </tr><tr style="text-align:center">
       <td>Bloodline Draconic: +1 damage per die on cold spells</td>
@@ -555,7 +559,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Magical Lineage: Reduces spell level penalty by 1 for metamagic feats applied to chosen spell</td>
     </tr><tr style="text-align:center">
-      <td>Magical Talent (Trait): May use chosen cantrip 1/dy</td>
+      <td>Magical Talent (Trait): May use chosen Talent0 spell 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Missionary: +1 caster level and save DC on 3 divine spells</td>
     </tr><tr style="text-align:center">
