@@ -2523,7 +2523,55 @@ Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
     'Effect=add ' +
     'Value="$1 || $2" ' +
     'Attribute=combatManeuverDefense ' +
-    'Section=combat Note="%V CMD"'
+    'Section=combat Note="%V CMD"',
+  'Adept Caster Level':
+    'Pattern="([-+]\\d).*\\bAdept?\\s+caster\\s+level|\\bAdept?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Adept ' +
+    'Section=magic Note="%V Adept caster level"',
+  'Bard Caster Level':
+    'Pattern="([-+]\\d).*\\bB(ard)?\\s+caster\\s+level|\\bB(ard)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Bard ' +
+    'Section=magic Note="%V Bard caster level"',
+  'Cleric Caster Level':
+    'Pattern="([-+]\\d).*\\bC(leric)?\\s+caster\\s+level|\\bC(leric)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Cleric ' +
+    'Section=magic Note="%V Cleric caster level"',
+  'Druid Caster Level':
+    'Pattern="([-+]\\d).*\\bD(ruid)?\\s+caster\\s+level|\\bD(ruid)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Druid ' +
+    'Section=magic Note="%V Druid caster level"',
+  'Paladin Caster Level':
+    'Pattern="([-+]\\d).*\\bP(aladin)?\\s+caster\\s+level|\\bP(aladin)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Paladin ' +
+    'Section=magic Note="%V Paladin caster level"',
+  'Ranger Caster Level':
+    'Pattern="([-+]\\d).*\\bR(anger)?\\s+caster\\s+level|\\bR(anger)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Ranger ' +
+    'Section=magic Note="%V Ranger caster level"',
+  'Sorcerer Caster Level':
+    'Pattern="([-+]\\d).*\\bS(orcerer)?\\s+caster\\s+level|\\bS(orcerer)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $4" ' +
+    'Attribute=casterLevels.Sorcerer ' +
+    'Section=magic Note="%V Sorcerer caster level"',
+  'Wizard Caster Level':
+    'Pattern="([-+]\\d).*\\bW(izard)?\\s+caster\\s+level|\\bW(izard)?\\s+caster\\s+level\\s+([-+]\\d)" ' +
+    'Effect=add ' +
+    'Value="$1 || $8" ' +
+    'Attribute=casterLevels.Wizard ' +
+    'Section=magic Note="%V Wizard caster level"'
 });
 Pathfinder.LANGUAGES = {
   'Abyssal':'',
