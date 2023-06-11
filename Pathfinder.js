@@ -1308,7 +1308,7 @@ Pathfinder.FEATURES = {
       '"Immune to acid, cold, and petrification, resistance 10 to electricity and fire, +4 vs. poison"',
   'Attuned To The Ancestors':
     'Section=magic ' +
-    'Note="May become imperceptible to unintelligent undead for %V rd 1/dy"',
+    'Note="May become imperceptible to unintelligent undead for %{level//2>?1} rd 1/dy"',
   'Aura Of Despair':
     'Section=magic ' +
     'Note="R30\' Foes suffer -2 ability, attack, damage, save, and skill %V rd/dy"',
@@ -1333,7 +1333,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
     'Section=combat ' +
-    'Note="May use Acid Dart, Fire Bolt, Icicle, Lightning Arc, or Storm Burst Cleric domain power %V/dy"',
+    'Note="May use Acid Dart, Fire Bolt, Icicle, Lightning Arc, or Storm Burst Cleric domain power %{1+level//5}/dy"',
   'Bardic Performance':
     'Section=feature Note="May use Bardic Performance effect %V rd/dy"',
   'Battle Rage':
@@ -1664,7 +1664,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Fire Resistance':'Section=save Note="Resistance %V to fire"',
   'Fires Of Hell':
-    'Section=combat Note="Flaming blade inflicts +1 damage for %V rd 1/dy"',
+    'Section=combat Note="Flaming blade inflicts +1 damage for %{charismaModifier} rd 1/dy"',
   'Flame Of The Dawnflower':
     'Section=combat Note="Crit w/scimitar inflicts +2 HP fire"',
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
@@ -1795,7 +1795,7 @@ Pathfinder.FEATURES = {
       '"+2 Diplomacy (gather information)"',
   'Icicle':'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Impressive Presence':
-    'Section=combat Note="Shakes adjacent foes for 1 rd 1/dy (DC %V Will neg)"',
+    'Section=combat Note="Shakes adjacent foes for 1 rd 1/dy (DC %{10+level//2+charismaModifier} Will neg)"',
   'Improved Channel':'Section=magic Note="+2 Channel Energy DC"',
   'Improved Claws':'Section=combat Note="Claws inflict +1d6 %V HP"',
   'Improved Great Fortitude':'Section=save Note="May reroll Fort 1/dy"',
@@ -2192,7 +2192,9 @@ Pathfinder.FEATURES = {
   'Storm Burst':
     'Section=combat ' +
     'Note="R30\' Ranged touch inflicts 1d6+%1 HP non-lethal and -2 attack %V/dy"',
-  'Storyteller':'Section=skill Note="+%V choice of Knowledge 1/scenario"',
+  'Storyteller':
+    'Section=skill ' +
+    'Note="+%{intelligenceModifier+3>?1} choice of Knowledge 1/scenario"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
   'Strength Surge':
     'Section=combat Note="May gain +%V Strength, CMB, or CMD check 1/rage"',
@@ -8138,29 +8140,10 @@ Pathfinder.traitRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpert', '+', '-1'
     );
-  } else if(name == 'Attuned To The Ancestors') {
-    rules.defineRule('magicNotes.attunedToTheAncestors',
-      'level', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name == 'Balanced Offensive') {
-    rules.defineRule('combatNotes.balancedOffensive',
-      'level', '=', '1 + Math.floor(source / 5)'
-    );
-  } else if(name == 'Fires Of Hell') {
-    rules.defineRule('combatNotes.firesOfHell', 'charismaModifier', '=', null);
-  } else if(name == 'Impressive Presence') {
-    rules.defineRule('combatNotes.impressivePresence',
-      'level', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
   } else if(name == 'River Rat') {
     rules.defineRule('daggerDamageModifier', 'combatNotes.riverRat', '+', '1');
     rules.defineRule
       ('punchingDaggerDamageModifier', 'combatNotes.riverRat', '+', '1');
-  } else if(name == 'Storyteller') {
-    rules.defineRule('skillNotes.storyteller',
-      'intelligenceModifier', '=', 'Math.max(source + 3, 1)'
-    );
   }
 };
 
