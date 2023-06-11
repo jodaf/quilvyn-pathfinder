@@ -4346,7 +4346,7 @@ PFAPG.FEATURES = {
     'Note="R30\' Ranged touch uses spell slot (level 1 minimum) to inflict 2d6 HP + 1d6 HP/slot level"',
   'Arcane Shield':
     'Section=magic Note="May use spell slot to gain +1 AC/slot level for 1 rd"',
-  'Arcane Talent':'Section=magic Note="May cast chosen level 0 spell 3/dy"',
+  'Arcane Talent':'Section=magic Note="May cast chosen Talent0 spell 3/dy"',
   'Aspect Of The Beast (Claws Of The Beast)':
     'Section=combat ' +
     'Note="Claws inflict %{features.Small ? \'1d3\' : \'1d4\'} HP damage"',
@@ -6913,7 +6913,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Note becomes hand-sized physical object (%{lvl+10} Strength, %{10+charismaModifier} AC, %{2 + baseAttack + charismaModifier} CMD) for conc + %{lvl} rd"',
   'Spark':
     'School=Evocation ' +
-    'Level=ArcaneTalent0,B0,C0,D0,O0,W0,Witch0 ' +
+    'Level=Talent0,B0,C0,D0,O0,W0,Witch0 ' +
     'Description="R$RS\' Burns unattended Fine flammable object (Fort neg)"',
   'Spiked Pit':
     'School=Conjuration ' +
@@ -7115,7 +7115,7 @@ PFAPG.SPELLS = {
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
 
-  'Acid Splash':'ArcaneTalent0,Inquisitor0',
+  'Acid Splash':'Inquisitor0',
   'Aid':'Alchemist2,Curse2,Inquisitor2,O2,Tactics2',
   'Air Walk':'Alchemist4,O4,Wind4',
   'Alarm':'Home1,Inquisitor1',
@@ -7134,7 +7134,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Antipathy':'Witch8',
   'Arcane Eye':'Alchemist4,Arcana4,O4,Witch4', // Rage Prophet
   'Arcane Lock':'Wards1',
-  'Arcane Mark':'ArcaneTalent0,Witch0',
+  'Arcane Mark':'Witch0',
   'Arcane Sight':'Alchemist3,Inquisitor3,Witch3',
   'Astral Projection':'Dreamspun9,O9,Witch9',
   'Atonement':'Inquisitor5,O5,Purity5',
@@ -7153,7 +7153,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Black Tentacles':'Witch4',
   'Blade Barrier':'Blood6,Inquisitor6,O6,Tactics6',
   'Blasphemy':'Daemon7,"Demon Evil7","Devil Evil7",Inquisitor6,O7',
-  'Bleed':'ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Bleed':'Inquisitor0,O0,Witch0',
   'Bless':'Family1,Inquisitor1,Leadership1,O1,Resolve1',
   'Bless Water':'Divine2,Inquisitor1,O1,Witch1', // Witch Water
   'Bless Weapon':'Heroism2',
@@ -7218,11 +7218,11 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Cure Serious Wounds':
     'Alchemist3,Inquisitor3,O3,Restoration3,Resurrection3,Witch4',
   'Curse Water':'Antipaladin1,Inquisitor1,O1,Witch1', // Witch Water
-  'Dancing Lights':'ArcaneTalent0,Witch0',
+  'Dancing Lights':'Witch0',
   'Darkness':'Antipaladin2,Inquisitor2,O2,Witch2', // Witch Shadow
   'Darkvision':'Alchemist2,Antipaladin2,Deep2,Shadow2',
   'Daylight':'Day3,Inquisitor3,Light3,O3',
-  'Daze':'ArcaneTalent0,Inquisitor0,Witch0',
+  'Daze':'Inquisitor0,Witch0',
   'Daze Monster':'Witch2',
   'Death Knell':'Antipaladin1,Inquisitor2,Murder2,O2,Witch2',
   'Death Ward':'Alchemist4,Inquisitor4,Murder4,O4,Souls4,Witch4',
@@ -7237,8 +7237,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Detect Evil':'Inquisitor1,O1',
   'Detect Good':'Inquisitor1,O1',
   'Detect Law':'Inquisitor1,O1',
-  'Detect Magic':'ArcaneTalent0,Inquisitor0,O0,Witch0',
-  'Detect Poison':'Antipaladin1,ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Detect Magic':'Inquisitor0,O0,Witch0',
+  'Detect Poison':'Antipaladin1,Inquisitor0,O0,Witch0',
   'Detect Secret Doors':'Alchemist1,Witch1',
   'Detect Scrying':'Inquisitor4,Witch4',
   'Detect Thoughts':'Alchemist2,Inquisitor2,Thought2,Witch2',
@@ -7260,7 +7260,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
     'Antipaladin4,"Azata Chaos5","Demon Chaos5",Inquisitor5,Proteus5,O5',
   'Dispel Magic':'Antipaladin3,Arcana3,Divine3,Inquisitor3,O3,Witch3',
   'Displacement':'Alchemist3,Proteus3',
-  'Disrupt Undead':'ArcaneTalent0,Inquisitor0',
+  'Disrupt Undead':'Inquisitor0',
   'Disrupting Weapon':'Inquisitor5,O5',
   'Divination':'Dreamspun4,Inquisitor4,Memory4,O4,Thought4,Witch4',
   'Divine Favor':
@@ -7308,7 +7308,6 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Fireball':'Ash3,O3,Witch3', // Oracle Flame; Witch Elements
   'Flame Strike':'Day5,Inquisitor5,Light5,O5,Witch5', // Witch Elements
   'Flaming Sphere':'Witch2', // Witch Elements
-  'Flare':'ArcaneTalent0',
   'Floating Disk':'Trade1',
   'Flesh To Stone':'Witch6',
   'Fly':
@@ -7328,7 +7327,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Gate':'Heroism9,Honor9,O9,Trade9',
   'Geas/Quest':'Ancestors6,Honor6,Inquisitor5,Love6,Lust6,O6,Witch6',
   'Gentle Repose':'Ancestors2,O2,Souls2,Witch2',
-  'Ghost Sound':'ArcaneTalent0,O0', // Oracle Haunted
+  'Ghost Sound':'O0', // Oracle Haunted
   'Ghoul Touch':'Undeath2',
   'Giant Form I':'Alchemist6,Boreal7,Witch7', // Witch Strength
   'Giant Form II':'Witch8', // Witch Strength
@@ -7406,13 +7405,13 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Lesser Planar Binding':'Wards5',
   'Lesser Restoration':'Alchemist2,Inquisitor2,O2',
   'Levitate':'Alchemist2,O2,Witch2', // Oracle Haunted
-  'Light':'ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Light':'Inquisitor0,O0,Witch0',
   'Lightning Bolt':'Stormborn3,Witch3',
   'Limited Wish':'Construct7',
   'Locate Creature':'Exploration4,Witch4',
   'Locate Object':'Exploration2,Inquisitor3,O3,Thievery3,Trade2,Witch3',
   'Mage Armor':'Witch1',
-  'Mage Hand':'ArcaneTalent0,O0', // Oracle Haunted
+  'Mage Hand':'O0', // Oracle Haunted
   "Mage's Disjunction":'Arcana9,Witch9', // Witch Wisdom
   'Magic Aura':'Arcana1',
   'Magic Circle Against Chaos':'Inquisitor3,O3',
@@ -7452,8 +7451,8 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Mass Suggestion':'Serpentine6,Witch6',
   'Maze':'Witch8',
   'Meld Into Stone':'O3',
-  'Mending':'ArcaneTalent0,O0,Witch0',
-  'Message':'ArcaneTalent0,Witch0',
+  'Mending':'O0,Witch0',
+  'Message':'Witch0',
   'Meteor Swarm':
     'Boreal9,O9,Starsoul9,Witch9', // Oracle Heavens; Witch Elements
   'Mind Blank':'Defense8,Freedom8,Purity8,Revolution8,Thought8,Witch8',
@@ -7473,7 +7472,6 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Nondetection':'Alchemist3,Antipaladin3,Deception3,Inquisitor3',
   'Obscure Object':'Inquisitor3,O3',
   'Obscuring Mist':'Cloud1,Ice1,Loss1,O1,Oceans1,Storms1,Witch1',
-  'Open/Close':'ArcaneTalent0',
   "Order's Wrath":'"Archon Law4","Devil Law4",Inevitable4,Inquisitor4,O4',
   'Overland Flight':
     'Alchemist5,O5,Starsoul5,Stormborn5,Trade5,Witch5', // Oracle Heavens
@@ -7496,7 +7494,6 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Power Word Kill':'Blood9,Tactics9,Witch9',
   'Power Word Stun':'Blood8,Witch8',
   'Prayer':'"Archon Good3","Archon Law3",Inquisitor3,Leadership3,O3',
-  'Prestidigitation':'ArcaneTalent0',
   'Prismatic Sphere':'Construct9,Day9,Defense9,Light9,Purity9,Toil9',
   'Prismatic Spray':'O7', // Oracle Heavens
   'Produce Flame':'Ash2',
@@ -7519,8 +7516,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Raise Dead':'Resurrection5,O5,Witch6',
   'Ray Of Enfeeblement':'Shadow1,Witch1',
   'Ray Of Exhaustion':'Witch3',
-  'Ray Of Frost':'ArcaneTalent0',
-  'Read Magic':'Antipaladin1,ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Read Magic':'Antipaladin1,Inquisitor0,O0,Witch0',
   'Reduce Person':'Alchemist1,Witch1',
   'Refuge':'Family7,Freedom7,O7,Revolution7,Witch9',
   'Regenerate':'O7,Restoration7,Witch7',
@@ -7535,7 +7531,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Repel Wood':'Growth6',
   'Repulsion':'Inquisitor6,Leadership7,Martyr7,O7,Purity7,Starsoul6',
   'Resist Energy':'Alchemist2,Inquisitor2,O2',
-  'Resistance':'ArcaneTalent0,Inquisitor0,O0,Witch0',
+  'Resistance':'Inquisitor0,O0,Witch0',
   'Restoration':'Alchemist4,Inquisitor4,O4',
   'Resurrection':'Divine7,O7,Resurrection7,Witch8',
   'Reverse Gravity':'O7,Starsoul7,Witch7', // Oracle Haunted, Witch Trickery
@@ -7638,7 +7634,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Time Stop':
     'Deception9,O9,Thievery9,Witch9', // Oracle Lore; Witch Deception, Trickery
   'Tongues':'Alchemist3,Agathion3,Inquisitor2,Language3,O4,Witch3',
-  'Touch Of Fatigue':'ArcaneTalent0,Witch0',
+  'Touch Of Fatigue':'Witch0',
   'Touch Of Idiocy':'Insanity2,Lust2,Nightmare2,Witch2',
   'Transformation':'Alchemist6,Boreal6,Witch6',
   'Transport Via Plants':'Verdant6',
@@ -10687,14 +10683,13 @@ PFAPG.classRulesExtra = function(rules, name) {
 PFAPG.featRulesExtra = function(rules, name) {
   let matchInfo;
   if(name == 'Arcane Talent') {
-    rules.defineRule
-      ('spellSlots.ArcaneTalent0', 'features.Arcane Talent', '=', '1');
-    rules.defineRule('casterLevels.ArcaneTalent',
-      'features.Arcane Talent', '?', null,
+    rules.defineRule('spellSlots.Talent0', 'features.Arcane Talent', '=', '1');
+    rules.defineRule('casterLevels.Talent',
+      'spellSlots.Talent0', '?', null,
       'level', '=', null
     );
-    rules.defineRule('spellDifficultyClass.ArcaneTalent',
-      'casterLevels.ArcaneTalent', '?', null,
+    rules.defineRule('spellDifficultyClass.Talent',
+      'casterLevels.Talent', '?', null,
       'charismaModifier', '=', '10 + source'
     );
   } else if(name == 'Aspect Of The Beast (Claws Of The Beast)') {
