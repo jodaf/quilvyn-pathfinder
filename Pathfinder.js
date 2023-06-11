@@ -1903,7 +1903,8 @@ Pathfinder.FEATURES = {
   'Magical Lineage':
     'Section=magic ' +
     'Note="Reduces spell level penalty by 1 for metamagic feats applied to chosen spell"',
-  'Magical Talent (Trait)':'Section=magic Note="May use chosen cantrip 1/dy"',
+  'Magical Talent (Trait)':
+    'Section=magic Note="May use chosen Talent0 spell 1/dy"',
   'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
   'Maneuver Training':'Section=combat Note="+%V CMB"',
   'Master Craftsman (%craftSkill)':
@@ -3163,7 +3164,7 @@ Pathfinder.SPELLS = {
 
   'Acid Arrow':'Level=W2',
   'Acid Fog':'Level=W6',
-  'Acid Splash':'Level=Rogue0,W0',
+  'Acid Splash':'Level=Rogue0,Talent0,W0',
   'Aid':'Level=Adept2,C2,Luck2 Liquid=Potion',
   'Air Walk':'Level=Air4,C4,D4',
   'Alarm':'Level=B1,Destined1,R1,Rogue1,W1',
@@ -3194,7 +3195,7 @@ Pathfinder.SPELLS = {
     'Description="10\' radius bars animate plants for $L min"',
   'Arcane Eye':'Level=W4',
   'Arcane Lock':'Level=W2 Liquid=Oil',
-  'Arcane Mark':'Level=Rogue0,W0 Liquid=Oil',
+  'Arcane Mark':'Level=Rogue0,Talent0,W0 Liquid=Oil',
   'Arcane Sight':'Level=W3',
   'Astral Projection':'Level=C9,Travel9,W9',
   'Atonement':'Level=C5,D5',
@@ -3273,7 +3274,7 @@ Pathfinder.SPELLS = {
   'Create Food And Water':'Level=C3',
   'Create Greater Undead':'Level=C8,Death8,W8',
   'Create Undead':'Level=C6,Death6,Evil6,W6',
-  'Create Water':'Level=Adept0,C0,D0,P1',
+  'Create Water':'Level=Adept0,C0,D0,P1,Talent0',
   'Creeping Doom':'Level=D7',
   'Crushing Despair':'Level=B3,W4',
   'Crushing Hand':
@@ -3284,7 +3285,7 @@ Pathfinder.SPELLS = {
   'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3 Liquid=Potion',
   'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4 Liquid=Potion',
   'Curse Water':'Level=C1',
-  'Dancing Lights':'Level=B0,Rogue0,W0',
+  'Dancing Lights':'Level=B0,Rogue0,Talent0,W0',
   'Darkness':
     'Level=Adept2,B2,C2,W2 ' +
     'Description="Touched reduces light level by 1 in 20\' radius for $L min" ' +   'Liquid=Oil',
@@ -3293,7 +3294,7 @@ Pathfinder.SPELLS = {
     'Level=Adept3,B3,C3,D3,P3,W3 ' +
     'Description="Touched increases light level by 1 in 60\' radius for $L10 min" ' +
     'Liquid=Oil',
-  'Daze':'Level=B0,Rogue0,W0',
+  'Daze':'Level=B0,Rogue0,Talent0,W0',
   'Daze Monster':'Level=B2,W2',
   'Death Knell':'Level=C2,Death2',
   'Death Ward':
@@ -3318,8 +3319,8 @@ Pathfinder.SPELLS = {
   'Detect Evil':'Level=Adept1,C1',
   'Detect Good':'Level=Adept1,C1',
   'Detect Law':'Level=Adept1,C1',
-  'Detect Magic':'Level=Adept0,B0,C0,D0,Rogue0,W0',
-  'Detect Poison':'Level=C0,D0,P1,R1,Rogue0,W0',
+  'Detect Magic':'Level=Adept0,B0,C0,D0,Rogue0,Talent0,W0',
+  'Detect Poison':'Level=C0,D0,P1,R1,Rogue0,Talent0,W0',
   'Detect Scrying':'Level=B4,W4',
   'Detect Secret Doors':'Level=B1,Rogue1,W1',
   'Detect Snares And Pits':'Level=D1,R1',
@@ -3345,7 +3346,7 @@ Pathfinder.SPELLS = {
   'Dispel Law':'Level=C5,Chaos5',
   'Dispel Magic':'Level=Arcane3,B3,C3,D4,Magic3,P3,W3 Liquid=Potion',
   'Displacement':'Level=B3,W3 Liquid=Potion',
-  'Disrupt Undead':'Level=Rogue0,W0',
+  'Disrupt Undead':'Level=Rogue0,Talent0,W0',
   'Disrupting Weapon':'Level=C5',
   'Divination':'Level=C4,Knowledge4',
   'Divine Favor':'Level=C1,Nobility1,P1',
@@ -3404,7 +3405,7 @@ Pathfinder.SPELLS = {
   'Flaming Sphere':
     'Level=D2,W2 ' +
     'Description="R$RM\' 5\' diameter sphere inflicts 3d6 HP (Ref neg), jumps or moves 30\'/rd for $L rd"',
-  'Flare':'Level=B0,D0,Rogue0,W0',
+  'Flare':'Level=B0,D0,Rogue0,Talent0,W0',
   'Flesh To Stone':'Level=W6',
   'Floating Disk':'Level=Rogue1,W1',
   'Fly':
@@ -3433,7 +3434,7 @@ Pathfinder.SPELLS = {
   'Gate':'Level=C9,Celestial9,Glory9,W9',
   'Geas/Quest':'Level=B6,C6,Charm6,Nobility6,W6',
   'Gentle Repose':'Level=C2,Repose2,W3 Liquid=Oil',
-  'Ghost Sound':'Level=Adept0,B0,Rogue0,W0',
+  'Ghost Sound':'Level=Adept0,B0,Rogue0,Talent0,W0',
   'Ghoul Touch':'Level=W2',
   'Giant Vermin':
     'Level=C4,D4 ' +
@@ -3474,7 +3475,7 @@ Pathfinder.SPELLS = {
   'Greater Spell Immunity':'Level=C8',
   'Greater Teleport':'Level=Abyssal7,Arcane7,Infernal7,Travel7,W7',
   'Guards And Wards':'Level=W6',
-  'Guidance':'Level=Adept0,C0,D0 Liquid=Potion',
+  'Guidance':'Level=Adept0,C0,D0,Talent0 Liquid=Potion',
   'Gust Of Wind':'Level=D2,W2',
   'Hallow':
     'Level=C5,D5 ' +
@@ -3551,7 +3552,7 @@ Pathfinder.SPELLS = {
     'Liquid=Potion',
   'Keen Edge':'Level=W3 Liquid=Oil',
   'Knock':'Level=W2',
-  'Know Direction':'Level=B0,D0',
+  'Know Direction':'Level=B0,D0,Talent0',
   'Legend Lore':'Level=B4,Knowledge7,W6',
   'Lesser Confusion':
     'Level=B1,Madness1 ' +
@@ -3563,7 +3564,7 @@ Pathfinder.SPELLS = {
   'Lesser Restoration':'Level=C2,D2,P1 Liquid=Potion',
   'Levitate':'Level=W2 Liquid=Oil,Potion',
   'Light':
-    'Level=Adept0,B0,C0,D0,Rogue0,W0 ' +
+    'Level=Adept0,B0,C0,D0,Rogue0,Talent0,W0 ' +
     'Description="Touched gives 20\' normal light for $L10 min" ' +
     'Liquid=Oil',
   'Lightning Bolt':'Level=Adept3,W3',
@@ -3573,10 +3574,10 @@ Pathfinder.SPELLS = {
   'Locate Object':'Level=B2,C3,Travel2,W2',
   'Longstrider':'Level=D1,R1,Travel1', // no liquid--personal
   'Lullaby':
-    'Level=B0 ' +
+    'Level=B0,Talent0 ' +
     'Description="R$RM\' Creatures in 10\' radius suffer -5 Perception, -2 Will vs. sleep for conc + $L rd (Will neg)"',
   'Mage Armor':'Level=Draconic1,Rogue1,W1 Liquid=Potion',
-  'Mage Hand':'Level=B0,Rogue0,W0',
+  'Mage Hand':'Level=B0,Rogue0,Talent0,W0',
   'Mage\'s Disjunction':'Level=Magic9,W9',
   'Mage\'s Faithful Hound':'Level=W5',
   'Mage\'s Lucubration':'Level=W6',
@@ -3636,9 +3637,9 @@ Pathfinder.SPELLS = {
   'Maze':'Level=W8',
   'Meld Into Stone':'Level=C3,D3',
   'Mending':
-    'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,W0 ' + // no liquid--10 min cast
+    'Level=Adept0,Artifice0,B0,C0,D0,Rogue0,Talent0,W0 ' + // no liquid--10 min cast
     'Description="R10\' Repairs minor damage to $L lb object"',
-  'Message':'Level=B0,Rogue0,W0',
+  'Message':'Level=B0,Rogue0,Talent0,W0',
   'Meteor Swarm':'Level=Infernal9,W9',
   'Mind Blank':
     'Level=Aberrant8,Liberation8,Protection8,W8 ' +
@@ -3661,7 +3662,7 @@ Pathfinder.SPELLS = {
   'Nondetection':'Level=R4,Trickery3,W3 Liquid=Potion',
   'Obscure Object':'Level=B1,C3,W2 Liquid=Oil',
   'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Rogue1,Water1,W1,Weather1',
-  'Open/Close':'Level=B0,Rogue0,W0',
+  'Open/Close':'Level=B0,Rogue0,Talent0,W0',
   'Order\'s Wrath':'Level=C4,Law4',
   'Overland Flight':
     'Level=Arcane5,W5 ' +
@@ -3694,7 +3695,7 @@ Pathfinder.SPELLS = {
   'Power Word Kill':'Level=W9,War9',
   'Power Word Stun':'Level=Arcane8,Infernal8,W8,War8',
   'Prayer':'Level=C3,Community3,P3',
-  'Prestidigitation':'Level=B0,Rogue0,W0',
+  'Prestidigitation':'Level=B0,Rogue0,Talent0,W0',
   'Prismatic Sphere':'Level=Artifice9,Protection9,Sun9,W9',
   'Prismatic Spray':'Level=W7',
   'Prismatic Wall':'Level=W8',
@@ -3713,7 +3714,7 @@ Pathfinder.SPELLS = {
   'Prying Eyes':
     'Level=W5 ' +
     'Description="1d4+$L floating eyes (AC 18, 1 HP, +16 Stealth, +$Lmin15 Perception, Fly 30\') scout 1 mile for $L hr"',
-  'Purify Food And Drink':'Level=Adept0,C0,D0 Liquid=Oil',
+  'Purify Food And Drink':'Level=Adept0,C0,D0,Talent0 Liquid=Oil',
   'Pyrotechnics':'Level=B2,W2',
   'Quench':'Level=D3',
   'Rage':'Level=Abyssal3,B2,Destruction3,Madness3,W3 Liquid=Potion',
@@ -3723,8 +3724,8 @@ Pathfinder.SPELLS = {
     'Level=Rogue1,W1 ' +
     'Description="R$RS\' Ranged touch inflicts -1d6+$Ldiv2min5 Strength for $L rd"',
   'Ray Of Exhaustion':'Level=W3',
-  'Ray Of Frost':'Level=Rogue0,W0',
-  'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,Rogue0,W0',
+  'Ray Of Frost':'Level=Rogue0,Talent0,W0',
+  'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,Rogue0,Talent0,W0',
   'Reduce Animal':'Level=D2,R3 Liquid=Potion',
   'Reduce Person':'Level=Rogue1,W1 Liquid=Potion',
   'Refuge':'Level=C7,Community7,Liberation7,W9',
@@ -3748,7 +3749,7 @@ Pathfinder.SPELLS = {
   'Resilient Sphere':'Level=W4',
   'Resist Energy':
     'Level=Adept2,C2,Celestial2,D2,Draconic2,P2,R1,W2 Liquid=Potion',
-  'Resistance':'Level=B0,C0,D0,P1,Rogue0,W0 Liquid=Potion',
+  'Resistance':'Level=B0,C0,D0,P1,Rogue0,Talent0,W0 Liquid=Potion',
   'Restoration':'Level=Adept4,C4,P4',
   'Resurrection':'Level=C7',
   'Reverse Gravity':
@@ -3834,7 +3835,7 @@ Pathfinder.SPELLS = {
   'Stoneskin':'Level=Abyssal4,Adept4,D5,Earth6,Strength6,W4',
   'Storm Of Vengeance':'Level=C9,D9,Nobility9,Weather9',
   'Suggestion':'Level=B2,Charm3,Infernal3,W3',
-  'Summon Instrument':'Level=B0',
+  'Summon Instrument':'Level=B0,Talent0',
   'Summon Monster I':'Level=B1,C1,Rogue1,W1',
   'Summon Monster II':'Level=B2,C2,W2',
   'Summon Monster III':'Level=B3,C3,W3',
@@ -3876,7 +3877,7 @@ Pathfinder.SPELLS = {
   'Time Stop':'Level=Trickery9,W9',
   'Tiny Hut':'Level=B3,W3',
   'Tongues':'Level=Aberrant3,Adept3,B2,C4,W3 Liquid=Potion',
-  'Touch Of Fatigue':'Level=Adept0,Rogue0,W0',
+  'Touch Of Fatigue':'Level=Adept0,Rogue0,Talent0,W0',
   'Touch Of Idiocy':'Level=Madness2,W2',
   'Transformation':'Level=Abyssal6,W6',
   'Transmute Metal To Wood':'Level=D7',
@@ -3900,7 +3901,7 @@ Pathfinder.SPELLS = {
   'Vampiric Touch':'Level=Undead3,W3',
   'Veil':'Level=Aberrant6,B6,W6',
   'Ventriloquism':'Level=B1,Rogue1,W1',
-  'Virtue':'Level=C0,D0,P1 Liquid=Potion',
+  'Virtue':'Level=C0,D0,P1,Talent0 Liquid=Potion',
   'Vision':'Level=W7',
   'Wail Of The Banshee':
     'Level=Death9,Repose9,W9 ' +
@@ -3951,7 +3952,7 @@ Pathfinder.SPELLS = {
     'Description="Self becomes tiny (+8 Dexterity, -2 Strength, +3 AC) or large (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC) magical beast for $L min"',
   'Bleed':
     'School=Necromancy ' +
-    'Level=C0,Rogue0,W0 ' +
+    'Level=C0,Rogue0,Talent0,W0 ' +
     'Description="R$RS\' Stabilized target suffers 1 HP and resumes dying (Will neg)"',
   'Breath Of Life':
     'School=Conjuration ' +
@@ -4011,7 +4012,7 @@ Pathfinder.SPELLS = {
     'Description="Self becomes huge (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC) plant creature for $L min"',
   'Stabilize':
     'School=Conjuration ' +
-    'Level=Adept0,C0,D0 ' +
+    'Level=Adept0,C0,Talent0,D0 ' +
     'Description="R$RS\' Stabilizes target w/negative HP" ' +
     'Liquid=Potion'
 
@@ -8139,6 +8140,17 @@ Pathfinder.traitRulesExtra = function(rules, name) {
   if(name == 'Armor Expert') {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpert', '+', '-1'
+    );
+  } else if(name == 'Magical Talent (Trait)') {
+    rules.defineRule
+      ('spellSlots.Talent0', 'features.Magical Talent (Trait)', '=', '1');
+    rules.defineRule('casterLevels.Talent',
+      'spellSlots.Talent0', '?', null,
+      'level', '=', null
+    );
+    rules.defineRule('spellDifficultyClass.Talent',
+      'casterLevels.Talent', '?', null,
+      'charismaModifier', '=', '10 + source'
     );
   } else if(name == 'River Rat') {
     rules.defineRule('daggerDamageModifier', 'combatNotes.riverRat', '+', '1');
