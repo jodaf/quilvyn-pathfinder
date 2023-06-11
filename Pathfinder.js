@@ -2278,7 +2278,7 @@ Pathfinder.FEATURES = {
     'Note="+2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Two-Weapon Rend':'Section=combat Note="Double hit inflicts +1d10%1 HP"',
   'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
-  'Undead Slayer':'Section=combat Note="+1 damage vs. undead"',
+  'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
   'Unexpected Strike':
     'Section=combat Note="May take AOO when foe enters threat area 1/rage"',
   'Unflappable':
