@@ -24,9 +24,9 @@ var attributes = {
   "skills.Perform (String)":1, "skills.Profession (Librarian)":1, "skills.Ride":1, "skills.Sense Motive":1, 
   "skills.Sleight Of Hand":1, "skills.Spellcraft":1, "skills.Stealth":1, "skills.Survival":1, 
   "skills.Swim":1, "skills.Use Magic Device":1, "spells.Bleed(W0 Necr)":1, 
-  "spells.Cause Fear(W1 Necr)":1, "spells.Comprehend Languages(W1 Divi)":1, "spells.Flare(Talent0 Evoc)":1, 
-  "spells.Flare(W0 Evoc)":1, "spells.Ghost Sound(W0 Illu)":1, "spells.Magic Missile(W1 Evoc)":1, 
-  "spells.Touch Of Fatigue(W0 Necr)":1, "strength":10, "traits.A Sure Thing":1, "traits.Arcane Archivist":1, 
+  "spells.Cause Fear(W1 Necr)":1, "spells.Comprehend Languages(W1 Divi)":1, "spells.Flare(W0 Evoc)":1, 
+  "spells.Ghost Sound(W0 Illu)":1, "spells.Magic Missile(W1 Evoc)":1, "spells.Touch Of Fatigue(W0 Necr)":1, 
+  "strength":10, "traits.A Sure Thing":1, "traits.Arcane Archivist":1, 
   "traits.Balanced Offensive":1, "traits.Beastspeaker":1, "traits.Beneficent Touch":1, 
   "traits.Captain's Blade":1, "traits.Comparative Religion":1, "traits.Devil's Mark":1, 
   "traits.Expert Duelist":1, "traits.Fashionable":1, "traits.Force For Good":1, 
@@ -238,7 +238,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Beastspeaker: +1 Diplomacy (animals); no penalty w/elemental animals</td>
       </tr><tr style="text-align:center">
-        <td>Captain's Blade: +1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill</td>
+        <td>Captain's Blade: +1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Devil's Mark: +2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders</td>
       </tr><tr style="text-align:center">
@@ -252,19 +252,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Librarian-1: Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Natural Negotiator: Choice of Diplomacy, Handle Animal is a class skill</td>
+        <td>Natural Negotiator: Choice of Diplomacy or Handle Animal is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Observant: +1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Proper Training: +1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Rousing Oratory: Choice of Perform is a class skill/R60' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy</td>
+        <td>Rousing Oratory: Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Scholar Of Balance-1: Choice of Knowledge (Nature) or Knowledge (Planes) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Smuggler-1: +3 Sleight Of Hand (hide object)</td>
       </tr><tr style="text-align:center">
-        <td>Unflappable: +3 resist Intimidate DC</td>
+        <td>Unflappable: +3 DC on foe attempts to demoralize self using Intimidate</td>
       </tr><tr style="text-align:center">
         <td>Unorthodox Strategy: +2 Acrobatics (traverse threatened squares)</td>
       </tr><tr style="text-align:center">
@@ -315,25 +315,25 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Expert Duelist: +1 AC/+1 CMD</i></td>
+        <td><i>Expert Duelist: +1 AC and CMD when adjacent to a single foe</i></td>
       </tr><tr style="text-align:center">
         <td><i>Tireless: +1 HP</i></td>
       </tr><tr style="text-align:center">
-        <td>A Sure Thing: +2 attack vs. evil 1/dy</td>
+        <td>A Sure Thing: +2 attack vs. evil creature 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Balanced Offensive: May use Acid Dart, Fire Bolt, Icicle, Lightning Arc, or Storm Burst Cleric domain power 1/dy</td>
+        <td>Balanced Offensive: R30' Touch inflicts 1d6+2 HP choice of nonlethal plus -2 attack for 1 rd, acid, fire, cold, or electricity 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Claws: 2 +2 attacks inflict 1d4 HP each 4 rd/dy</td>
       </tr><tr style="text-align:center">
-        <td>Freedom Fighter (Liberty's Edge): +1 surprise attack</td>
+        <td>Freedom Fighter (Liberty's Edge): +1 attack during surprise rd</td>
       </tr><tr style="text-align:center">
-        <td>Impressive Presence: Shakes adjacent foes for 1 rd 1/dy (DC 13 Will neg)</td>
+        <td>Impressive Presence: May take full-round action that inflicts shaken on adjacent foes (DC 13 Will neg) for 1 rd 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Planar Voyager: +1 Initiative off Material Plane</td>
+        <td>Planar Voyager: +1 Initiative when not on Material Plane</td>
       </tr><tr style="text-align:center">
         <td>Sickening Critical: Critical hit inflicts sickened for 1 min</td>
       </tr><tr style="text-align:center">
-        <td>Soul Drinker: May gain temporary HP equal to slain foe's hit dice for 1 min 1/dy</td>
+        <td>Soul Drinker: May gain temporary HP equal to slain foe's HD for 1 min 1/dy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -355,9 +355,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Loyalty: +1 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Planar Voyager: +1 saves off Material Plane</td>
+        <td>Planar Voyager: +1 saves when not on Material Plane</td>
       </tr><tr style="text-align:center">
-        <td>Teaching Mistake: +1 save after natural 1 save roll 1/scenario</td>
+        <td>Teaching Mistake: +1 next save after nat 1 save roll 1/scenario</td>
       </tr><tr style="text-align:center">
         <td>Unflappable: +1 vs. fear</td>
       </tr></table>
@@ -388,8 +388,6 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Comprehend Languages (W1 Divi): Self understands all languages for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Flare (Talent0 Evoc): Rnull' Target dazzled for 1 min (DC 10 Fort neg)</td>
-    </tr><tr style="text-align:left">
       <td>Flare (W0 Evoc): R25' Target dazzled for 1 min (DC 11 Fort neg)</td>
     </tr><tr style="text-align:left">
       <td>Ghost Sound (W0 Illu): R25' Produces sound volume of 4 humans (DC 11 Will disbelieve) for 1 rd</td>
@@ -414,7 +412,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Influential: +1 DC on language-dependent spell 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Master Of Pentacles: +2 Conjuration spell caster level 1/dy</td>
+      <td>Master Of Pentacles: +2 caster level when casting a conjuration spell 1/dy</td>
     </tr></table>
 </td>
   </tr></table>

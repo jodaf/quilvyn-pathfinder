@@ -328,7 +328,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Canter: +5 Sense Motive (intercept secret message)/+5 ally Bluff (deliver secret message to self)</td>
       </tr><tr style="text-align:center">
-        <td>Captain's Blade: +1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill</td>
+        <td>Captain's Blade: +1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Charming: +1 Bluff and Diplomacy w/attracted creatures</td>
       </tr><tr style="text-align:center">
@@ -380,7 +380,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Militia Veteran: +1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Natural Negotiator: Choice of Diplomacy, Handle Animal is a class skill</td>
+        <td>Natural Negotiator: Choice of Diplomacy or Handle Animal is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Observant: +1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill</td>
       </tr><tr style="text-align:center">
@@ -390,7 +390,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Proper Training: +1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Rousing Oratory: Choice of Perform is a class skill/R60' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy</td>
+        <td>Rousing Oratory: Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Savanna Child: +1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill</td>
       </tr><tr style="text-align:center">
@@ -416,7 +416,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Trouper: +1 choice of Perform</td>
       </tr><tr style="text-align:center">
-        <td>Unflappable: +3 resist Intimidate DC</td>
+        <td>Unflappable: +3 DC on foe attempts to demoralize self using Intimidate</td>
       </tr><tr style="text-align:center">
         <td>Unorthodox Strategy: +2 Acrobatics (traverse threatened squares)</td>
       </tr><tr style="text-align:center">
@@ -479,7 +479,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Exile: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Expert Duelist: +1 AC/+1 CMD</i></td>
+        <td><i>Expert Duelist: +1 AC and CMD when adjacent to a single foe</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rapscallion: +1 Initiative</i></td>
       </tr><tr style="text-align:center">
@@ -501,13 +501,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Warrior Of Old: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td>A Sure Thing: +2 attack vs. evil 1/dy</td>
+        <td>A Sure Thing: +2 attack vs. evil creature 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Aid Allies: +1 on aid another actions</td>
       </tr><tr style="text-align:center">
         <td>Anatomist: +1 crit confirm</td>
       </tr><tr style="text-align:center">
-        <td>Balanced Offensive: May use Acid Dart, Fire Bolt, Icicle, Lightning Arc, or Storm Burst Cleric domain power 1/dy</td>
+        <td>Balanced Offensive: R30' Touch inflicts 1d6+1 HP choice of nonlethal plus -2 attack for 1 rd, acid, fire, cold, or electricity 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Bullied: +1 unarmed AOO attack</td>
       </tr><tr style="text-align:center">
@@ -525,11 +525,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Freedom Fighter (Halfling): +1 attack during escape</td>
       </tr><tr style="text-align:center">
-        <td>Freedom Fighter (Liberty's Edge): +1 surprise attack</td>
+        <td>Freedom Fighter (Liberty's Edge): +1 attack during surprise rd</td>
       </tr><tr style="text-align:center">
         <td>Hunter's Eye: Has Proficiency and suffers no penalty for 2nd range increment w/choice of longbow or shortbow</td>
       </tr><tr style="text-align:center">
-        <td>Impressive Presence: Shakes adjacent foes for 1 rd 1/dy (DC 13 Will neg)</td>
+        <td>Impressive Presence: May take full-round action that inflicts shaken on adjacent foes (DC 13 Will neg) for 1 rd 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Killer: Inflicts extra damage equal to weapon damage multiplier on critical hit</td>
       </tr><tr style="text-align:center">
@@ -537,7 +537,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Meridian Strike: May reroll crit damage 1s 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Planar Voyager: +1 Initiative off Material Plane</td>
+        <td>Planar Voyager: +1 Initiative when not on Material Plane</td>
       </tr><tr style="text-align:center">
         <td>Resiliency: May gain 3 temporary HP for 1 min when below 0 HP 1/dy</td>
       </tr><tr style="text-align:center">
@@ -547,7 +547,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Sneak Attack: Hit inflicts +2d6 HP when foe flanked or denied Dexterity bonus </td>
       </tr><tr style="text-align:center">
-        <td>Soul Drinker: May gain temporary HP equal to slain foe's hit dice for 1 min 1/dy</td>
+        <td>Soul Drinker: May gain temporary HP equal to slain foe's HD for 1 min 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Tunnel Fighter: +2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit</td>
       </tr><tr style="text-align:center">
@@ -615,13 +615,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Natural-Born Leader: +1 followers' Will vs. mind-altering effects</td>
       </tr><tr style="text-align:center">
-        <td>Planar Voyager: +1 saves off Material Plane</td>
+        <td>Planar Voyager: +1 saves when not on Material Plane</td>
       </tr><tr style="text-align:center">
         <td>Reverent Wielder: Equipment gains +1 saves</td>
       </tr><tr style="text-align:center">
         <td>Skeptic: +2 vs. illusions</td>
       </tr><tr style="text-align:center">
-        <td>Teaching Mistake: +1 save after natural 1 save roll 1/scenario</td>
+        <td>Teaching Mistake: +1 next save after nat 1 save roll 1/scenario</td>
       </tr><tr style="text-align:center">
         <td>Trap Sense: +1 Reflex and AC vs. traps</td>
       </tr><tr style="text-align:center">
@@ -676,7 +676,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Magical Talent (Trait): May use chosen Talent0 spell 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Master Of Pentacles: +2 Conjuration spell caster level 1/dy</td>
+      <td>Master Of Pentacles: +2 caster level when casting a conjuration spell 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Medic: +1 caster level on <i>Remove</i> spells</td>
     </tr><tr style="text-align:center">
