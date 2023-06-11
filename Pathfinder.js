@@ -1223,7 +1223,7 @@ Pathfinder.FEATURES = {
   'Woodland Stride':
     'Section=feature Note="May move normally through undergrowth"',
   // New features
-  'A Sure Thing':'Section=combat Note="+2 attack vs. evil 1/dy"',
+  'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
   'Aberrant Form':
     'Section=combat,combat,feature ' +
     'Note="DR 5/-",' +
@@ -1333,7 +1333,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
     'Section=combat ' +
-    'Note="May use Acid Dart, Fire Bolt, Icicle, Lightning Arc, or Storm Burst Cleric domain power %{1+level//5}/dy"',
+    'Note="R30\' Touch inflicts 1d6+%{level//2} HP choice of nonlethal plus -2 attack for 1 rd, acid, fire, cold, or electricity %{1+level//5}/dy"',
   'Bardic Performance':
     'Section=feature Note="May use Bardic Performance effect %V rd/dy"',
   'Battle Rage':
@@ -1402,7 +1402,7 @@ Pathfinder.FEATURES = {
     'Note="+5 Sense Motive (intercept secret message)/+5 ally Bluff (deliver secret message to self)"',
   "Captain's Blade":
     'Section=skill ' +
-    'Note="+1 Acrobatics and Climb when on ship/Choice of Acrobatics or Climb is a class skill"',
+    'Note="+1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill"',
   'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
   'Catch Off-Guard':
     'Section=combat ' +
@@ -1619,7 +1619,8 @@ Pathfinder.FEATURES = {
   'Exhausting Critical':
     'Section=combat Note="Critical hit inflicts exhausted"',
   'Exile':'Section=combat Note="+2 Initiative"',
-  'Expert Duelist':'Section=combat Note="+1 AC/+1 CMD"',
+  'Expert Duelist':
+    'Section=combat Note="+1 AC and CMD when adjacent to a single foe"',
   'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Extended Illusions':
     'Section=magic Note="Illusion duration increased by %V rd"',
@@ -1694,7 +1695,7 @@ Pathfinder.FEATURES = {
   "Freedom Fighter (Liberty's Edge)":
     'Section=combat,skill ' +
     'Note=' +
-      '"+1 surprise attack",' +
+      '"+1 attack during surprise rd",' +
       '"+1 Stealth"',
   "Freedom's Call":
     'Section=magic ' +
@@ -1795,7 +1796,8 @@ Pathfinder.FEATURES = {
       '"+2 Diplomacy (gather information)"',
   'Icicle':'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Impressive Presence':
-    'Section=combat Note="Shakes adjacent foes for 1 rd 1/dy (DC %{10+level//2+charismaModifier} Will neg)"',
+    'Section=combat ' +
+    'Note="May take full-round action that inflicts shaken on adjacent foes (DC %{10+level//2+charismaModifier} Will neg) for 1 rd 1/dy"',
   'Improved Channel':'Section=magic Note="+2 Channel Energy DC"',
   'Improved Claws':'Section=combat Note="Claws inflict +1d6 %V HP"',
   'Improved Great Fortitude':'Section=save Note="May reroll Fort 1/dy"',
@@ -1921,7 +1923,8 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Full attack vs. favored enemy kills (DC %V Fort neg) 1/dy/favored enemy type"',
   'Master Of Pentacles':
-    'Section=magic Note="+2 Conjuration spell caster level 1/dy"',
+    'Section=magic ' +
+    'Note="+2 caster level when casting a conjuration spell 1/dy"',
   'Master Strike':
     'Section=combat ' +
     'Note="Sneak attack inflicts choice of sleep, paralysis, or death (DC %V Fort neg)"',
@@ -1970,7 +1973,7 @@ Pathfinder.FEATURES = {
     'Section=feature,skill ' +
     'Note=' +
       '"+1 Language Count",' +
-      '"Choice of Diplomacy, Handle Animal is a class skill"',
+      '"Choice of Diplomacy or Handle Animal is a class skill"',
   'Natural-Born Leader':
     'Section=feature,save ' +
     'Note=' +
@@ -2016,8 +2019,8 @@ Pathfinder.FEATURES = {
   'Planar Voyager':
     'Section=combat,save ' +
     'Note=' +
-      '"+1 Initiative off Material Plane",' +
-      '"+1 saves off Material Plane"',
+      '"+1 Initiative when not on Material Plane",' +
+      '"+1 saves when not on Material Plane"',
   'Poverty-Stricken':
     'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Power Of The Pit':
@@ -2090,7 +2093,7 @@ Pathfinder.FEATURES = {
   'Roused Anger':'Section=combat Note="May rage when fatigued"',
   'Rousing Oratory':
     'Section=skill ' +
-    'Note="Choice of Perform is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
+    'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
   'Sacred Conduit':'Section=magic Note="+1 channeled energy save DC"',
   'Sacred Touch':'Section=magic Note="Touch stabilizes"',
   'Savanna Child':
@@ -2162,7 +2165,7 @@ Pathfinder.FEATURES = {
     'Note="R30\' May use <i>Mass Cure Serious Wounds</i> effects via 4 rd Bardic Performance; also removes fatigued, sickened, and shaken"',
   'Soul Drinker':
     'Section=combat ' +
-    'Note="May gain temporary HP equal to slain foe\'s hit dice for 1 min 1/dy"',
+    'Note="May gain temporary HP equal to slain foe\'s HD for 1 min 1/dy"',
   'Soul Of The Fey':
     'Section=combat,feature,magic,save ' +
     'Note=' +
@@ -2228,7 +2231,7 @@ Pathfinder.FEATURES = {
       '"Receives free lodging and 10% extra from treasure sale",' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
   'Teaching Mistake':
-    'Section=save Note="+1 save after natural 1 save roll 1/scenario"',
+    'Section=save Note="+1 next save after nat 1 save roll 1/scenario"',
   'Telekinetic Fist':
     'Section=magic Note="R30\' Ranged touch inflicts 1d4+%1 HP %V/dy"',
   'Terrifying Howl':
@@ -2285,7 +2288,7 @@ Pathfinder.FEATURES = {
     'Section=save,skill ' +
     'Note=' +
       '"+1 vs. fear",' +
-      '"+3 resist Intimidate DC"',
+      '"+3 DC on foe attempts to demoralize self using Intimidate"',
   'Unity':'Section=save Note="R30\' Allies may use your saving throw %V/dy"',
   'Unorthodox Strategy':
     'Section=skill Note="+2 Acrobatics (traverse threatened squares)"',
@@ -8141,6 +8144,10 @@ Pathfinder.traitRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpert', '+', '-1'
     );
+  } else if(name == 'Expert Duelist') {
+    rules.defineRule('armorClass', 'combatNotes.expertDuelist', '+', '1');
+    rules.defineRule
+      ('combatManeuverDefense', 'combatNotes.expertDuelist', '+', '1');
   } else if(name == 'Magical Talent (Trait)') {
     rules.defineRule
       ('spellSlots.Talent0', 'features.Magical Talent (Trait)', '=', '1');
