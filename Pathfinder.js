@@ -1333,7 +1333,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
     'Section=combat ' +
-    'Note="R30\' Touch inflicts 1d6+%{level//2} HP choice of nonlethal plus -2 attack for 1 rd, acid, fire, cold, or electricity %{1+level//5}/dy"',
+    'Note="R30\' Ranged touch inflicts 1d6+%{level//2} HP choice of nonlethal (plus -2 attack for 1 rd), acid, fire, cold, or electricity %{1+level//5}/dy"',
   'Bardic Performance':
     'Section=feature Note="May use Bardic Performance effect %V rd/dy"',
   'Battle Rage':
@@ -1901,7 +1901,7 @@ Pathfinder.FEATURES = {
     'Section=save ' +
     'Note="+2 vs. death effects and stabilizes automatically when enspelled"',
   'Magical Knack':
-    'Section=magic Note="Gains +2 caster level in chosen class (max %{level})"',
+    'Section=magic Note="Gains +2 caster level (max %{level}) in chosen class"',
   'Magical Lineage':
     'Section=magic ' +
     'Note="Reduces spell level penalty by 1 for metamagic feats applied to chosen spell"',
@@ -8307,19 +8307,44 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
   } else if(attribute == 'traits') {
     let allTraits = this.getChoices('traits');
     attrs = this.applyRules(attributes);
-    choices = [];
-    howMany = attrs.traitCount || 0;
-    for(let trait in allTraits) {
-      if(attrs['traits.' + trait])
-        howMany--;
-      else if(allTraits[trait].includes('Basic'))
-        choices.push(trait);
+    let allowedTraits = {}; // arrays of choices by trait type
+    for(let t in allTraits) {
+      let traitType = QuilvynUtils.getAttrValue(allTraits[t], 'Type');
+      let traitSubtype = QuilvynUtils.getAttrValue(allTraits[t], 'Subtype');
+      if(traitType == 'Basic')
+        traitType = traitSubtype;
+      if(!traitType ||
+         attrs['traits.' + t] ||
+         (traitType == 'Race' &&
+          !((attrs['race'] + '').match('(^| )' + traitSubtype))) ||
+         (traitType == 'Faction' && attrs['faction'] != traitSubtype) ||
+         (traitType == 'Religion' && attrs['deityAlignment'] != traitSubtype))
+        continue;
+      if(!(traitType in allowedTraits))
+        allowedTraits[traitType] = [];
+      allowedTraits[traitType].push(t);
     }
-    while(howMany > 0 && choices.length > 0) {
+    for(let a in attrs) {
+      if(!a.startsWith('traits.'))
+        continue;
+      let t = a.replace('traits.', '');
+      if(!t in allTraits)
+        continue;
+      let traitType = QuilvynUtils.getAttrValue(allTraits[t], 'Type');
+      let traitSubtype = QuilvynUtils.getAttrValue(allTraits[t], 'Subtype');
+      if(traitType == 'Basic')
+        traitType = traitSubtype;
+      if(traitType in allowedTraits)
+        delete allowedTraits[traitType];
+    }
+    howMany = attrs.traitCount || 0;
+    while(howMany > 0 && Object.keys(allowedTraits).length > 0) {
+      let traitType = QuilvynUtils.randomKey(allowedTraits);
+      choices = allowedTraits[traitType];
       let index = QuilvynUtils.random(0, choices.length - 1);
       attributes['traits.' + choices[index]] = 1;
-      choices.splice(index, 1);
       howMany--;
+      delete allowedTraits[traitType];
     }
   }
 };
