@@ -1513,8 +1513,7 @@ Pathfinder.FEATURES = {
   'Dervish':'Section=combat Note="+1 AC vs. movement AOO"',
   'Desert Child':'Section=save Note="+4 heat stamina, +1 vs. fire effects"',
   'Desert Shadow':
-    'Section=skill ' +
-    'Note="May use Stealth at full speed w/out penalty in desert"',
+    'Section=skill Note="May use Stealth at full speed w/out penalty"',
   'Destiny Realized':
     'Section=combat,magic ' +
     'Note=' +
@@ -1569,7 +1568,7 @@ Pathfinder.FEATURES = {
     'Section=ability,save ' +
     'Note=' +
       '"May move normally through sand",' +
-      '"+4 Fort vs. heat"',
+      '"+4 Fortitude vs. heat"',
   'Ear For Music':
     'Section=skill ' +
     'Note="+1 choice of Perform/+2 Knowledge (Local) (art and music)"',
@@ -1665,7 +1664,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Fire Resistance':'Section=save Note="Resistance %V to fire"',
   'Fires Of Hell':
-    'Section=combat Note="Flaming blade inflicts +1 damage for %{charismaModifier} rd 1/dy"',
+    'Section=combat Note="Flaming blade inflicts +1 HP fire for %{charismaModifier} rd 1/dy"',
   'Flame Of The Dawnflower':
     'Section=combat Note="Crit w/scimitar inflicts +2 HP fire"',
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
@@ -1924,7 +1923,7 @@ Pathfinder.FEATURES = {
     'Note="Full attack vs. favored enemy kills (DC %V Fort neg) 1/dy/favored enemy type"',
   'Master Of Pentacles':
     'Section=magic ' +
-    'Note="+2 caster level when casting a conjuration spell 1/dy"',
+    'Note="+2 caster level to determine duration when casting a conjuration spell 1/dy"',
   'Master Strike':
     'Section=combat ' +
     'Note="Sneak attack inflicts choice of sleep, paralysis, or death (DC %V Fort neg)"',
@@ -2010,7 +2009,7 @@ Pathfinder.FEATURES = {
   'Penetrating Strike':'Section=combat Note="Focused weapons ignore DR 5/any"',
   'Performance Artist':
     'Section=skill ' +
-    'Note="+1 choice of Perform/Choice of Perform is a class skill"',
+    'Note="+1 choice of Perform (+5 when performing for money)/Choice of Perform is a class skill"',
   'Physical Enhancement':
     'Section=ability ' +
     'Note="+%V Choose %1 from Strength, Dexterity, and Constitution"',
@@ -2314,7 +2313,8 @@ Pathfinder.FEATURES = {
       '"+1 Initiative",' +
       '"May draw weapon as a free action during surprise round"',
   'Vindictive':
-    'Section=combat Note="+1 damage vs. successful foe for 1 min 1/dy"',
+    'Section=combat ' +
+    'Note="May inflict +1 damage vs. successful attacker for 1 min 1/dy"',
   'Vision Of Madness':
     'Section=magic ' +
     'Note="Touch gives +%V attack, save, or skill, -%1 others for 3 rd %2/dy"',
