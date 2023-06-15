@@ -6069,11 +6069,11 @@ PFAPG.SPELLS = {
     'Description="Self hand absorbs touched %{lvl} lb object (Fort neg) for %{lvl} dy"',
   'Accelerate Poison':
     'School=Transmutation ' +
-    'Level=D2,R2,W2 ' +
+    'Level=D2,R2,S2,W2 ' +
     'Description="Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration"',
   'Acid Pit':
     'School=Conjuration ' +
-    'Level=W4,Summoner4 ' +
+    'Level=S4,W4,Summoner4 ' +
     'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit containing 5\' of acid for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 30 Climb to exit) and suffer 2d6 HP acid/rd; objects suffer broken after 3 rd (Fort delays 1 rd), then destroyed 1 rd later (Fort delays 1 rd)"',
   'Alchemical Allocation':
     'School=Transmutation ' +
@@ -6085,7 +6085,7 @@ PFAPG.SPELLS = {
     'Description="Transforms touched %{lvl*5} lb object into 1 day\'s food for %{lvl*5} Medium creatures"',
   'Alter Winds':
     'School=Transmutation ' +
-    'Level=D1,O1,W1 ' + // Oracle Wind
+    'Level=D1,O1,S1,W1 ' + // Oracle Wind
     'Description="%{lvl>=16 ? \'Severe\' : lvl>=10 ? \'Strong\' : lvl>=4 ? \'Moderate\' : \'Light\'} winds in 10\' radius around touched increased or decreased 1 step for %{lvl} hr"',
   'Amplify Elixir':
     'School=Transmutation ' +
@@ -6093,11 +6093,11 @@ PFAPG.SPELLS = {
     'Description="Variable effects of potions and elixirs consumed by self increase by 1/2 (dbl duration if no variable effects) for %{lvl} rd"',
   'Ant Haul':
     'School=Transmutation ' +
-    'Level=Alchemist1,C1,D1,O1,R1,W1,Summoner1 ' +
+    'Level=Alchemist1,C1,D1,O1,R1,S1,W1,Summoner1 ' +
     'Description="Touched creature gains triple carrying capacity for %{lvl*2} hr"',
   'Aqueous Orb':
     'School=Conjuration ' +
-    'Level=Aquatic3,D3,W3,Summoner3 ' +
+    'Level=Aquatic3,D3,S3,W3,Summoner3 ' +
     'Description="R$RM\' 10\' diameter sphere douses normal fires and acts as <i>Dispel Magic</i> on magical ones, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), moves 30\'/rd and rolls over 10\' obstacles for %{lvl} rd"',
   'Arcane Concordance':
     'School=Evocation ' +
@@ -6105,7 +6105,7 @@ PFAPG.SPELLS = {
     'Description="10\' radius gives +1 ally spell DC and free use of choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for %{lvl} rd"',
   'Arrow Eruption':
     'School=Conjuration ' +
-    'Level=R2,W2 ' +
+    'Level=R2,S2,W2 ' +
     'Description="R$RL\' Duplicates of arrow that killed in prior rd attack %{lvl<?15} foes in 30\' radius"',
   'Aspect Of The Bear':
     'School=Transmutation ' +
@@ -6129,7 +6129,7 @@ PFAPG.SPELLS = {
     'Description="Allies in 10\' radius gain immunity to fear for %{lvl*10} min"',
   'Ball Lightning':
     'School=Evocation ' +
-    'Level=D4,W4 ' +
+    'Level=D4,S4,W4 ' +
     'Description="R$RM\' %{(lvl+1)//4} 5\' spheres fly 20\'/rd, inflict 3d6 HP electricity (Ref neg; -4 in metal armor) in same square for %{lvl} rd"',
   'Banish Seeming':
     'School=Abjuration ' +
@@ -6165,7 +6165,7 @@ PFAPG.SPELLS = {
     'Description="Touched gains fast healing 5, fire resistance 20, and +2 CMD for %{lvl} rd"',
   'Blood Biography':
     'School=Divination ' +
-    'Level=B2,C3,Inquisitor3,O3,W3 ' +
+    'Level=B2,C3,Inquisitor3,O3,S3,W3 ' +
     'Description="Target blood identifies name and type of creature it came from and when and how it was shed (Will neg)"',
   'Bloodhound':
     'School=Transmutation ' +
@@ -6201,7 +6201,7 @@ PFAPG.SPELLS = {
     'Description="Inflicts 1d6 HP on touched to etch permanent indelible mark (Fort neg) that glows and sickens when w/in 30\' of self faith symbol"',
   'Break':
     'School=Transmutation ' +
-    'Level=W1 ' +
+    'Level=S1,W1 ' +
     'Description="R$RS\' Medium object target becomes broken or already-broken object destroyed (Fort neg)"',
   'Brilliant Inspiration':
     'School=Evocation ' +
@@ -6213,7 +6213,7 @@ PFAPG.SPELLS = {
     'Description="Touched may trade up to %{lvl//3<?5} natural armor bonus for equal damage bonus each rd for %{lvl} min"',
   'Burning Gaze':
     'School=Evocation ' +
-    'Level=D2,W2,Witch2 ' +
+    'Level=D2,S2,W2,Witch2 ' +
     'Description="R30\' Self inflicts 1d6 HP fire/rd on chosen target (Ref ends) each rd for %{lvl} rd"',
   'Burst Bonds':
     'School=Evocation ' +
@@ -6229,7 +6229,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' %{lvl} targets in 15\' radius suffer nauseated (Will neg) for %{lvl} rd"',
   'Calcific Touch':
     'School=Transmutation ' +
-    'Level=W4 ' +
+    'Level=S4,W4 ' +
     'Description="Touched suffers permanent 1d4 Dexterity damage and <i>Slow</i> effects (Fort Dexterity damage only) 1/rd for %{lvl} rd"',
   'Call Animal':
     'School=Enchantment ' +
@@ -6237,7 +6237,7 @@ PFAPG.SPELLS = {
     'Description="Nearest wild animal of chosen type (CR %{lvl} max) moves toward self for %{lvl} hr"',
   'Campfire Wall':
     'School=Evocation ' +
-    'Level=B3,D2,R2,W3 ' +
+    'Level=B3,D2,R2,S3,W3 ' +
     'Description="R$RS\' 20\' radius around fire blocks sight, inflicts 1d6 HP fire and 1d6 min glow on those passing toward fire for %{lvl*2} hr"',
   'Cast Out':
     'School=Abjuration ' +
@@ -6261,7 +6261,7 @@ PFAPG.SPELLS = {
     'Description="Self gains +4 Stealth and 20% miss from non-adjacent foes for %{lvl} min"',
   'Clashing Rocks':
     'School=Conjuration ' +
-    'Level=D9,Deep9,O9,W9 ' + // Oracle Stone
+    'Level=D9,Deep9,O9,S9,W9 ' + // Oracle Stone
     'Description="R$RL\' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (Ref half HP only)"',
   'Cleanse':
     'School=Evocation ' +
@@ -6269,7 +6269,7 @@ PFAPG.SPELLS = {
     'Description="Self regains 4d8+%{lvl<?25} HP, recovers from ability damage and conditions, and breaks one enchantment"',
   'Cloak Of Dreams':
     'School=Enchantment ' +
-    'Level=B5,Nightmare6,W6,Witch6 ' +
+    'Level=B5,Nightmare6,S6,W6,Witch6 ' +
     'Description="Creatures in 5\' radius fall asleep for 1 min (Will neg; creatures w/Scent -4) for %{lvl} rd"',
   'Cloak Of Shade':
     'School=Abjuration ' +
@@ -6277,7 +6277,7 @@ PFAPG.SPELLS = {
     'Description="%{lvl} touched treat heat from sunlight as 1 level less severe and reduce penalties from sunlight by 1 for %{lvl} hr"',
   'Cloak Of Winds':
     'School=Abjuration ' +
-    'Level=D3,O3,R3,W3 ' + // Oracle Wind
+    'Level=D3,O3,R3,S3,W3 ' + // Oracle Wind
     'Description="R$RS\' Foes of target suffer -4 ranged attacks; Tiny foes cannot touch target, are pushed %{lvl*5}\', and suffer 3d6 HP nonlethal (Fort neg) for %{lvl} min"',
   'Confess':
     'School=Enchantment ' +
@@ -6285,7 +6285,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Target must answer one self question truthfully or suffer %{lvl//2<?5}d6 HP and 2d4 rd sickened (Will half HP only)"',
   'Contagious Flame':
     'School=Evocation ' +
-    'Level=W6 ' +
+    'Level=S6,W6 ' +
     'Description="R$RS\' %{(lvl+1)//4>?3} ranged touch rays in 15\' radius each inflict 4d6 HP fire and move each rd up to $RS\' to a new target for 3 rd"',
   'Coordinated Effort':
     'School=Divination ' +
@@ -6301,19 +6301,19 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Target suffers cumulative -1 AC, attack, and saves/rd (max -5, DC %{spellDifficultyClass.Inquisitor+4} Will neg 1 rd, attacking self resets to 0) for %{lvl} rd"',
   "Crafter's Curse":
     'School=Transmutation ' +
-    'Level=W1 ' +
+    'Level=S1,W1 ' +
     'Description="R$RS\' Target suffers -5 Craft (Will neg) for %{lvl} dy"',
   "Crafter's Fortune":
     'School=Transmutation ' +
-    'Level=Alchemist1,W1 ' +
+    'Level=Alchemist1,S1,W1 ' +
     'Description="R$RS\' Target gains +5 on next Craft skill check w/in 10 dy"',
   'Create Pit':
     'School=Conjuration ' +
-    'Level=Caves2,W2,Summoner2 ' +
+    'Level=Caves2,S2,W2,Summoner2 ' +
     'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?30}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 25 Climb to exit)"',
   'Create Treasure Map':
     'School=Divination ' +
-    'Level=B2,D3,R2,W2 ' +
+    'Level=B2,D3,R2,S2,W2 ' +
     'Description="Allows use of 1-day-old corpse to create a map to %{lvl//3} treasures that it knew"',
   'Cup Of Dust':
     'School=Transmutation ' +
@@ -6321,7 +6321,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Target suffers dehydration (Fort neg) for %{lvl} dy"',
   'Dancing Lantern':
     'School=Transmutation ' +
-    'Level=B1,C1,O1,R1,W1,Witch1 ' +
+    'Level=B1,C1,O1,R1,S1,W1,Witch1 ' +
     'Description="Touched lantern lights magically and follows 5\' behind self for %{lvl} hr"',
   'Deadly Finale':
     'School=Evocation ' +
@@ -6337,7 +6337,7 @@ PFAPG.SPELLS = {
     'Description="Touched armor gives +%{lvl//4} AC, plus DR 5/good while using Judgment or Smite for %{lvl} min"',
   'Deflection':
     'School=Abjuration ' +
-    'Level=Defense7,W7 ' +
+    'Level=Defense7,S7,W7 ' +
     'Description="Missed attacks on self inflict new attack on attacker for %{lvl} rd"',
   'Delayed Consumption':
     'School=Transmutation ' +
@@ -6353,11 +6353,11 @@ PFAPG.SPELLS = {
     'Description="R$RL\' Cone gives self info on aberrations for conc or %{lvl*10} min"',
   'Detonate':
     'School=Evocation ' +
-    'Level=Alchemist4,W4 ' +
+    'Level=Alchemist4,S4,W4 ' +
     'Description="15\'/30\' radius inflicts %{lvl}d8 HP/half chosen energy type (Ref half) in next rd; self suffers half HP"',
   'Devolution':
     'School=Transmutation ' +
-    'Level=W3,Summoner3 ' +
+    'Level=S3,W3,Summoner3 ' +
     'Description="R$RS\' Target eidolon loses %{lvl//5+1} evolutions (Will neg) for %{lvl} rd"',
   'Discordant Blast':
     'School=Evocation ' +
@@ -6373,15 +6373,15 @@ PFAPG.SPELLS = {
     'Description="Self gains size category, +6 Strength, +6 Constitution, +3 AC, 60\' Darkvision, SR %{12+lvl}, and alignment-specific effects for %{lvl} rd"',
   'Draconic Reservoir':
     'School=Evocation ' +
-    'Level=Alchemist3,W3 ' +
+    'Level=Alchemist3,S3,W3 ' +
     'Description="Touched can absorb, then release in +1d6 HP damage bonuses, %{lvl*6} HP of specified energy damage w/in %{lvl*10} min"',
   "Dragon's Breath":
     'School=Evocation ' +
-    'Level=Alchemist4,W4 ' +
+    'Level=Alchemist4,S4,W4 ' +
     'Description="60\' line or 30\' cone inflicts %{lvl<?12}d6 HP specified energy damage (Ref half)"',
   'Dust Of Twilight':
     'School=Conjuration ' +
-    'Level=B2,W2 ' +
+    'Level=B2,S2,W2 ' +
     'Description="R$RM\' 5\' radius inflicts fatigue (Fort neg) and extinguishes mundane light and light spells up to level 2"',
   'Eagle Eye':
     'School=Divination ' +
@@ -6389,15 +6389,15 @@ PFAPG.SPELLS = {
     'Description="R$RL\' Self can view from higher point for %{lvl} min"',
   'Elemental Aura':
     'School=Evocation ' +
-    'Level=Alchemist3,Boreal3,W3 ' +
+    'Level=Alchemist3,Boreal3,S3,W3 ' +
     'Description="Creatures adjacent to self suffer 2d6 HP chosen energy plus energy-specific effects (Ref half HP only) for %{lvl} rd"',
   'Elemental Speech':
     'School=Divination ' +
-    'Level=B3,C3,D2,O3,W2 ' +
+    'Level=B3,C3,D2,O3,S2,W2 ' +
     'Description="Self can converse w/chosen element creatures for %{lvl} min"',
   'Elemental Touch':
     'School=Evocation ' +
-    'Level=Alchemist2,W2 ' +
+    'Level=Alchemist2,S2,W2 ' +
     'Description="Touch inflicts 1d6 HP chosen energy, plus energy-specific effects, for %{lvl} rd"',
   'Elude Time':
     'School=Transmutation ' +
@@ -6405,15 +6405,15 @@ PFAPG.SPELLS = {
     'Description="Self enters suspended animation, becoming impervious to damage, for up to %{lvl} min"',
   'Enemy Hammer':
     'School=Transmutation ' +
-    'Level=W6 ' +
+    'Level=S6,W6 ' +
     'Description="R$RL\' Self can use target each rd for 30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack (Fort neg 1 rd, full-round resistance +4), inflicting 2d6 HP (medium target), for %{lvl} rd"',
   'Enter Image':
     'School=Transmutation ' +
-    'Level=B2,C3,O3,W3 ' +
+    'Level=B2,C3,O3,S3,W3 ' +
     'Description="R%{lvl*50}\' Self can inhabit and interact from images of self w/in range for conc"',
   'Euphoric Tranquility':
     'School=Enchantment ' +
-    'Level=B6,C8,D8,Love8,O8,W8 ' +
+    'Level=B6,C8,D8,Love8,O8,S8,W8 ' +
     'Description="Touched treats all as friends (Will after attacked neg 1 rd), suffers half speed for %{lvl} rd"',
   'Evolution Surge':
     'School=Transmutation ' +
@@ -6429,11 +6429,11 @@ PFAPG.SPELLS = {
     'Description="Touched eidolon gains evolution costing up to 2 points for %{lvl} min"',
   'Expeditious Excavation':
     'School=Transmutation ' +
-    'Level=Deep1,D1,W1 ' +
+    'Level=Deep1,D1,S1,W1 ' +
     'Description="R$RS\' Moves 5\' cu of dirt; creatures on top fall into pit (Ref neg)"',
   'Expend':
     'School=Abjuration ' +
-    'Level=W7 ' +
+    'Level=S7,W7 ' +
     'Description="R$RM\' 20\' radius successively drains creatures\' limited-use magical abilities (Will ends)"',
   'Feast Of Ashes':
     'School=Transmutation ' +
@@ -6457,11 +6457,11 @@ PFAPG.SPELLS = {
     'Description="R$RS\' %{lvl} targets in 15\' radius suffer SR %{lvl+12} to spells that grant healing or temporary HP for %{lvl} rd (Fort 1 rd)"',
   'Fiery Body':
     'School=Transmutation ' +
-    'Level=Ash9,O9,W9 ' + // Oracle Flame
+    'Level=Ash9,O9,S9,W9 ' + // Oracle Flame
     'Description="Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40\' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for %{lvl} min"',
   'Fire Breath':
     'School=Evocation ' +
-    'Level=Alchemist2,W2 ' +
+    'Level=Alchemist2,S2,W2 ' +
     'Description="3 uses of 15\' cone inflict 4d6, 2d6, and 1d6 HP fire (Ref half) w/in %{lvl} rd"',
   'Fire Of Entanglement':
     'School=Evocation ' +
@@ -6477,15 +6477,15 @@ PFAPG.SPELLS = {
     'Description="Target of next Smite Evil hit suffers 3d8 HP fire on first attack on anyone but self"',
   'Fire Snake':
     'School=Evocation ' +
-    'Level=D5,W5 ' +
+    'Level=D5,S5,W5 ' +
     'Description="Adjacent %{lvl} contiguous 5\' sq w/in 60\' inflict %{lvl<?15}d6 HP fire (Ref half)"',
   'Firebrand':
     'School=Transmutation ' +
-    'Level=W7 ' +
+    'Level=S7,W7 ' +
     'Description="R$RS\' %{lvl//4} targets in 15\' radius gain torchlight, immunity to self fire spells, and weapons inflict +1d6 HP fire for %{lvl} rd; target may end for R30\' ranged touch that inflicts 6d6 HP fire"',
   'Firefall':
     'School=Transmutation ' +
-    'Level=W4 ' +
+    'Level=S4,W4 ' +
     'Description="R$RL\' 60\' radius around target fire inflicts 5d6 HP fire and catch on fire (Ref half HP only) and 120\' radius inflicts blinded for 1d4+1 rd (Will neg); fire creature target suffers %{lvl} HP; extinguishes normal target fire up 20\' cu"',
   'Flames Of The Faithful':
     'School=Transmutation ' +
@@ -6493,15 +6493,15 @@ PFAPG.SPELLS = {
     'Description="Touched self weapon inflicts +1d6 HP fire (crit while using Judgment also inflicts +1d10 HP fire or more) for %{lvl} rd"',
   'Flare Burst':
     'School=Evocation ' +
-    'Level=B1,D1,W1 ' +
+    'Level=B1,D1,S1,W1 ' +
     'Description="R$RS\' 10\' radius inflicts dazzled (Fort neg) for 1 min"',
   'Fluid Form':
     'School=Transmutation ' +
-    'Level=Alchemist4,O6,W6 ' + // Oracle Waves
+    'Level=Alchemist4,O6,S6,W6 ' + // Oracle Waves
     'Description="Self gains DR 10/slashing, +10 reach, +60\' Swim, amphibious features, and ability to squeeze through cracks for %{lvl} min"',
   'Mass Fly':
     'School=Transmutation ' +
-    'Level=Feather6,W7 ' +
+    'Level=Feather6,S7,W7 ' +
     'Description="R$RS\' %{lvl} targets in 15\' radius gain 60\' fly speed for %{lvl*10} min"',
   'Foe To Friend':
     'School=Enchantment ' +
@@ -6529,11 +6529,11 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Target immediately gains +2d4 on failed attack or skill roll"',
   'Getaway':
     'School=Conjuration ' +
-    'Level=B6,W6 ' +
+    'Level=B6,S6,W6 ' +
     'Description="R30\' Self and %{lvl//2} willing pre-selected targets teleport to prepared location"',
   'Geyser':
     'School=Conjuration ' +
-    'Level=Aquatic4,D4,O5,W5,Witch5 ' + // Oracle Waves, Witch Water
+    'Level=Aquatic4,D4,O5,S5,W5,Witch5 ' + // Oracle Waves, Witch Water
     'Description="R$RL\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), and surrounding %{lvl*2.5//1}\' radius inflicts 1d6 HP fire, for conc + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
@@ -6545,7 +6545,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' %{lvl} incorporeal targets in 15\' radius suffer half damage from normal attacks and full damage from magic and magic weapons for %{lvl} rd"',
   'Glide':
     'School=Transmutation ' +
-    'Level=D2,R1,W2,Summoner2,Witch2 ' +
+    'Level=D2,R1,S2,W2,Summoner2,Witch2 ' +
     'Description="Self falls 60\'/rd and may move horizontally 300\'/rd for %{lvl} min"',
   'Grace':
     'School=Abjuration ' +
@@ -6553,7 +6553,7 @@ PFAPG.SPELLS = {
     'Description="Self movement provokes no AOO for 1 rd"',
   'Gravity Bow':
     'School=Transmutation ' +
-    'Level=R1,W1 ' +
+    'Level=R1,S1,W1 ' +
     'Description="Self bow inflicts damage as if 1 size larger for %{lvl} min"',
   'Grove Of Respite':
     'School=Conjuration ' +
@@ -6589,7 +6589,7 @@ PFAPG.SPELLS = {
     'Description="Self gains best of two Diplomacy rolls to change attitude for %{lvl*10} min or +5 on next Diplomacy roll to gather information"',
   'Hungry Pit':
     'School=Conjuration ' +
-    'Level=Caves6,W5,Summoner5 ' +
+    'Level=Caves6,S5,W5,Summoner5 ' +
     'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 35 Climb to exit) and suffer 4d6 HP bludgeoning/rd (Ref half)"',
   "Hunter's Eye":
     'School=Divination ' +
@@ -6601,11 +6601,11 @@ PFAPG.SPELLS = {
     'Description="Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken instead) (Will neg) for %{lvl} rd"',
   'Hydraulic Push':
     'School=Evocation ' +
-    'Level=Aquatic1,D1,W1 ' +
+    'Level=Aquatic1,D1,S1,W1 ' +
     'Description="R$RS\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; extinguishes normal fire up to 5\' sq"',
   'Hydraulic Torrent':
     'School=Evocation ' +
-    'Level=D3,W3 ' +
+    'Level=D3,S3,W3 ' +
     'Description="Creatures in 60\' line suffer CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; immovable objects %{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} Strength to break; extinguishes normal fires"',
   'Ill Omen':
     'School=Enchantment ' +
@@ -6653,7 +6653,7 @@ PFAPG.SPELLS = {
     'Description="Self melee weapons inflict damage as if 1 size larger for %{lvl} min"',
   'Life Bubble':
     'School=Abjuration ' +
-    'Level=C5,D4,O5,R3,W5 ' +
+    'Level=C5,D4,O5,R3,S5,W5 ' +
     'Description="%{lvl} touched breathe freely, comfortable from -40F to 150F, and unaffected by pressure for %{lvl*2} hr total"',
   'Light Lance':
     'School=Evocation ' +
@@ -6677,11 +6677,11 @@ PFAPG.SPELLS = {
     'Description="Spell aura on touched immune to <i>Detect Magic</i> for %{lvl} dy"',
   'Memory Lapse':
     'School=Enchantment ' +
-    'Level=B1,Memory2,W1 ' +
+    'Level=B1,Memory2,S1,W1 ' +
     'Description="R$RS\' Target forgets prior rd (Will neg)"',
   'Moonstruck':
     'School=Enchantment ' +
-    'Level=D4,Insanity4,Rage6,W4,Witch4 ' +
+    'Level=D4,Insanity4,Rage6,S4,W4,Witch4 ' +
     'Description="R$RM\' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for %{lvl-2} rd, then suffers dazed for 1 rd (Will neg)"',
   'Nap Stack':
     'School=Necromancy ' +
@@ -6709,11 +6709,11 @@ PFAPG.SPELLS = {
     'Description="R$RM\' Target suffers self Oracle\'s Curse effects (Will neg) for %{lvl} min"',
   'Pain Strike':
     'School=Evocation ' +
-    'Level=W3,Witch3 ' +
+    'Level=S3,W3,Witch3 ' +
     'Description="R$RS\' Target suffers 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. target for %{lvl<?10} rd"',
   'Mass Pain Strike':
     'School=Evocation ' +
-    'Level=W5,Witch5 ' +
+    'Level=S5,W5,Witch5 ' +
     'Description="R$RS\' %{lvl} targets in 15\' radius suffer 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. targets for %{lvl<?10} rd"',
   "Paladin's Sacrifice":
     'School=Abjuration ' +
@@ -6725,11 +6725,11 @@ PFAPG.SPELLS = {
     'Description="Self gains +5 Perception and Sense Motive for %{lvl*10} min"',
   'Phantasmal Revenge':
     'School=Illusion ' +
-    'Level=W7 ' +
+    'Level=S7,W7 ' +
     'Description="Spectre from touched %{lvl}-day-old corpse finds killer and inflicts %{lvl*10} HP (Will neg; DC %{spellDifficultyClass.W+7} Fort 5d6+%{lvl} HP)"',
   'Phantasmal Web':
     'School=Illusion ' +
-    'Level=B5,Insanity6,W5 ' +
+    'Level=B5,Insanity6,S5,W5 ' +
     'Description="R$RM\' %{lvl} targets in 15\' radius suffer entanglement (Will neg) and nauseated (Fort each rd neg) for %{lvl} rd"',
   'Pied Piping':
     'School=Enchantment ' +
@@ -6741,15 +6741,15 @@ PFAPG.SPELLS = {
     'Description="R$RM\' Creatures regain 2d8+%{lvl<?20} HP (undead suffer %{lvl<?10}d6 HP (light-sensitive %{lvl<?10}d8)) on first contact w/5\' sq for %{lvl} rd"',
   'Planar Adaptation':
     'School=Transmutation ' +
-    'Level=Alchemist5,C4,O4,W5,Summoner5 ' +
+    'Level=Alchemist5,C4,O4,S5,W5,Summoner5 ' +
     'Description="Self gains immunity to environmental harm from chosen plane and 20 resistance to an associated energy for %{lvl} hr"',
   'Mass Planar Adaptation':
     'School=Transmutation ' +
-    'Level=W7,Summoner6 ' +
+    'Level=S7,W7,Summoner6 ' +
     'Description="R$RS\' %{lvl} targets in 15\' radius gain immunity to environmental harm from chosen plane and 20 resistance to an associated energy for %{lvl} hr"',
   'Pox Pustules':
     'School=Necromancy ' +
-    'Level=D2,W2,Witch2 ' +
+    'Level=D2,S2,W2,Witch2 ' +
     'Description="R$RS\' Target suffers sickened and -4 Dexterity (Fort neg; full-round scratch neg sickened for 1 rd) for %{lvl} min"',
   'Protective Spirit':
     'School=Conjuration ' +
@@ -6773,7 +6773,7 @@ PFAPG.SPELLS = {
     'Description="R5\' Good creatures gain +2 attacks, +2 saves, and %{lvl*2} temporary HP for 1 rd on first pass through 5\' sq for %{lvl} min"',
   'Rampart':
     'School=Conjuration ' +
-    'Level=D7,W7 ' +
+    'Level=D7,S7,W7 ' +
     'Description="R$RM\' Creates 5\'x10\'x%{lvl//2*10}\' linear or 5\'x%{3+lvl}\' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)"',
   'Rebuke':
     'School=Evocation ' +
@@ -6825,7 +6825,7 @@ PFAPG.SPELLS = {
     'Description="Touched gains +1 attack and 1d8 temporary HP from each successful attack (max +4/20 THP, miss resets to +0) for %{lvl} rd"',
   'River Of Wind':
     'School=Evocation ' +
-    'Level=D4,O4,W4 ' + // Oracle Wind
+    'Level=D4,O4,S4,W4 ' + // Oracle Wind
     'Description="5\'x120\' line inflicts 4d6 HP nonlethal and knocked prone (Fort half HP only), then 2d6 HP nonlethal, pushed 20\', and knocked prone (Fort 1d6 HP only) for %{lvl-1} rd"',
   'Sacred Bond':
     'School=Conjuration ' +
@@ -6857,27 +6857,27 @@ PFAPG.SPELLS = {
     'Description="Foes in 30\' radius provoke AOO (Fort neg)"',
   'Sculpt Corpse':
     'School=Necromancy ' +
-    'Level=W1 ' +
+    'Level=S1,W1 ' +
     'Description="Reshapes touched corpse to look like another creature (Will detect (suspicious or familiar))"',
   'Seamantle':
     'School=Conjuration ' +
-    'Level=Aquatic8,D8,O8,W8,Witch8 ' + // Oracle Waves, Witch Water
+    'Level=Aquatic8,D8,O8,S8,W8,Witch8 ' + // Oracle Waves, Witch Water
     'Description="30\' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30\' slam attack, and touch that extinguishes fires for %{lvl} min"',
   'Seek Thoughts':
     'School=Divination ' +
-    'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,W3,Witch3 ' +
+    'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,S3,W3,Witch3 ' +
     'Description="40\' radius gives self answer from nearby thoughts for conc or %{lvl} min (Will neg)"',
   'Shadow Projection':
     'School=Necromancy ' +
-    'Level=W4 ' +
+    'Level=S4,W4 ' +
     'Description="Self becomes undead shadow for %{lvl} hr; death reduces body to -1 HP"',
   'Share Language':
     'School=Divination ' +
-    'Level=B1,C2,D2,Language2,O2,W2 ' +
+    'Level=B1,C2,D2,Language2,O2,S2,W2 ' +
     'Description="Touched can use %{lvl//4+1} languages self knows for 1 dy"',
   'Share Senses':
     'School=Divination ' +
-    'Level=W4,Witch3 ' +
+    'Level=S4,W4,Witch3 ' +
     'Description="R$RL\' Self can use familiar\'s senses for %{lvl} min"',
   'Shared Wrath':
     'School=Enchantment ' +
@@ -6885,7 +6885,7 @@ PFAPG.SPELLS = {
     'Description="%{lvl} targets in 15\' radius gain +%{1>?lvl//3<?3} attack, damage, and spell resistance checks%{lvl>=12?\', plus dbl crit threat range,\':\'\'} vs. targeted foe for 1 min"',
   'Shifting Sand':
     'School=Transmutation ' +
-    'Level=D3,Deep3,W3 ' +
+    'Level=D3,Deep3,S3,W3 ' +
     'Description="R$RM\' 10\' radius earth or sand moves 10\'/rd, creates difficult terrain, inflicts -%{lvl} Acrobatics, and entangles and knocks prone (Ref neg) for %{lvl} rd"',
   'Sift':
     'School=Divination ' +
@@ -6893,7 +6893,7 @@ PFAPG.SPELLS = {
     'Description="R30\' Self makes -5 Perception to note fine details at range"',
   'Sirocco':
     'School=Evocation ' +
-    'Level=D6,O6,Storms6,W6 ' + // Oracle Wind
+    'Level=D6,O6,Storms6,S6,W6 ' + // Oracle Wind
     'Description="R$RM\' 60\' high, 20\' radius inflicts 4d6+%{lvl} HP fire, fatigues, and knocks prone (Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for %{lvl} rd"',
   'Sleepwalk':
     'School=Enchantment ' +
@@ -6901,7 +6901,7 @@ PFAPG.SPELLS = {
     'Description="Touched unconscious creature animates and moves at half speed (Will neg) for %{lvl} hr"',
   'Slipstream':
     'School=Conjuration ' +
-    'Level=Aquatic2,D2,O2,Oceans2,R2,W2,Witch2 ' + // Oracle Waves, Witch Water
+    'Level=Aquatic2,D2,O2,Oceans2,R2,S2,W2,Witch2 ' + // Oracle Waves, Witch Water
     'Description="Creates wave that moves touched 10\'/rd (20\' downhill) and gives +20\' Swim for %{lvl*10} min"',
   'Snake Staff':
     'School=Transmutation ' +
@@ -6913,11 +6913,11 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Note becomes hand-sized physical object (%{lvl+10} Strength, %{10+charismaModifier} AC, %{2 + baseAttack + charismaModifier} CMD) for conc + %{lvl} rd"',
   'Spark':
     'School=Evocation ' +
-    'Level=Talent0,B0,C0,D0,O0,W0,Witch0 ' +
+    'Level=Talent0,B0,C0,D0,O0,S0,W0,Witch0 ' +
     'Description="R$RS\' Burns unattended Fine flammable object (Fort neg)"',
   'Spiked Pit':
     'School=Conjuration ' +
-    'Level=Caves3,W3,Summoner3 ' +
+    'Level=Caves3,S3,W3,Summoner3 ' +
     'Description="R$RM\' Creates 10\'x10\' %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing"',
   'Spiritual Ally':
     'School=Evocation ' +
@@ -6933,15 +6933,15 @@ PFAPG.SPELLS = {
     'Description="$RM\' Target suffers negated attack (Will -5 attack and damage) and -2 attack and damage on same creature for %{lvl} rd"',
   'Stone Call':
     'School=Conjuration ' +
-    'Level=D2,O2,R2,W2 ' + // Oracle Stone
+    'Level=D2,O2,R2,S2,W2 ' + // Oracle Stone
     'Description="R$RM\' 40\' radius inflicts 2d6 HP bludgeoning for 1 rd, then difficult terrain for %{lvl-1} rd"',
   'Stone Fist':
     'School=Transmutation ' +
-    'Level=Alchemist1,D1,W1 ' +
+    'Level=Alchemist1,D1,S1,W1 ' +
     'Description="Self unarmed attacks inflict 1d%{features.Small ? 4 : 6}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier < 0 ? strengthModifier : \'\'} HP bludgeoning w/out provoking AOO and ignore object hardness up to 7 for %{lvl} min"',
   'Stormbolts':
     'School=Evocation ' +
-    'Level=C8,D8,O8,W8,Witch8 ' +
+    'Level=C8,D8,O8,S8,W8,Witch8 ' +
     'Description="Targets in 30\' radius suffer %{lvl}d8 HP electricity and stunned 1 rd (Fort half HP only)"',
   'Strong Jaw':
     'School=Transmutation ' +
@@ -6949,7 +6949,7 @@ PFAPG.SPELLS = {
     'Description="Touched natural weapon inflicts damage as +2 size for %{lvl} min"',
   'Stumble Gap':
     'School=Conjuration ' +
-    'Level=W1 ' +
+    'Level=S1,W1 ' +
     'Description="R$RS\' 5\' square inflicts 1d6 HP and knocked prone (Ref -1 all rolls for 1 rd) for %{lvl+1} rd"',
   'Stunning Finale':
     'School=Enchantment ' +
@@ -6957,11 +6957,11 @@ PFAPG.SPELLS = {
     'Description="R$RS\' End of Bardic Performance inflicts stunned 1 rd (Fort staggered 1 rd) on 3 targets in 15\' radius"',
   'Suffocation':
     'School=Necromancy ' +
-    'Level=Murder5,W5,Witch5 ' +
+    'Level=Murder5,S5,W5,Witch5 ' +
     'Description="R$RS\' Target drops to 0 HP next rd (Fort staggered 1 rd), then drops to -1 HP (Fort delays 1 rd), then dies (Fort delays 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
-    'Level=Murder9,W9,Witch9 ' +
+    'Level=Murder9,S9,W9,Witch9 ' +
     'Description="R$RS\' %{lvl//2} targets in 15\' radius drop to 0 HP next rd (Fort staggered 1 rd), then drop to -1 HP (Fort delays 1 rd), then die (Fort delays 1 rd) for %{lvl} rd"',
   'Summon Eidolon':
     'School=Conjuration ' +
@@ -6997,11 +6997,11 @@ PFAPG.SPELLS = {
     'Description="Self gains half damage from hustling and forced march and ignores travel fatigue for %{lvl} hr"',
   'Touch Of Gracelessness':
     'School=Transmutation ' +
-    'Level=B1,W1 ' +
+    'Level=B1,S1,W1 ' +
     'Description="Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone by moving more than half speed, and flying maneuverability reduced one step (Fort half Dexterity damage only) for %{lvl} rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
-    'Level=Alchemist1,D1,O1,W1 ' + // Oracle Waves
+    'Level=Alchemist1,D1,O1,S1,W1 ' + // Oracle Waves
     'Description="Touched gains +30\' swim speed and +8 Swim, plus may use run action and may always take 10 while swimming, for %{lvl} min"',
   'Transmogrify':
     'School=Transmutation ' +
@@ -7013,19 +7013,19 @@ PFAPG.SPELLS = {
     'Description="Self may use any potion to poison a weapon for %{lvl} min"',
   'Treasure Stitching':
     'School=Transmutation ' +
-    'Level=B4,C4,O4,W5 ' +
+    'Level=B4,C4,O4,S5,W5 ' +
     'Description="R$RS\' Transforms objects in 10\' cu into embroidery for %{lvl} dy"',
   'True Form':
     'School=Abjuration ' +
-    'Level=D4,W4 ' +
+    'Level=D4,S4,W4 ' +
     'Description="R$RM\' Removes polymorph effects from %{lvl//3} targets in 15\' radius (Will neg for polymorph ability, DC 11+effect level for polymorph spell) for %{lvl} rd"',
   'Tsunami':
     'School=Conjuration ' +
-    'Level=D9,O9,Oceans9,W9,Witch9 ' + // Oracle Waves, Witch Water
+    'Level=D9,O9,Oceans9,S9,W9,Witch9 ' + // Oracle Waves, Witch Water
     'Description="R$RL\' 10\'x10\'x%{lvl*2}\' wave moves 30\'/60\'/rd over land/water, inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
   'Twilight Knife':
     'School=Evocation ' +
-    'Level=W3,Witch3 ' +
+    'Level=S3,W3,Witch3 ' +
     'Description="R$RS\' Force knife flanks and makes +%{baseAttack+(intelligenceModifier>?charismaModifier)} attacks on same foe as self, inflicts 1d4 HP plus %{lvl//4}d6 HP sneak attack for %{lvl} rd"',
   'Twin Form':
     'School=Transmutation ' +
@@ -7041,7 +7041,7 @@ PFAPG.SPELLS = {
     'Description="Extract effects self as any known extract up to level 3"',
   'Unwilling Shield':
     'School=Necromancy ' +
-    'Level=B5,Inquisitor5,W6,Witch6 ' +
+    'Level=B5,Inquisitor5,S6,W6,Witch6 ' +
     'Description="R$RS\' Self gains half damage and +1 AC and saves, target suffers half of damage to self (Will neg) for %{lvl} rd"',
   'Unwitting Ally':
     'School=Enchantment ' +
@@ -7049,7 +7049,7 @@ PFAPG.SPELLS = {
     'Description="R$RS\' Self counts target as ally for flanking (Will neg), foes do not, for 1 rd"',
   'Vanish':
     'School=Illusion ' +
-    'Level=B1,W1 ' +
+    'Level=B1,S1,W1 ' +
     'Description="Touched becomes invisible for %{lvl<?5} rd or until attacks"',
   'Veil Of Positive Energy':
     'School=Abjuration ' +
@@ -7061,7 +7061,7 @@ PFAPG.SPELLS = {
     'Description="Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (Fort neg)"',
   'Versatile Weapon':
     'School=Transmutation ' +
-    'Level=B2,R2,W3 ' +
+    'Level=B2,R2,S3,W3 ' +
     'Description="R$RS\' Target weapon bypasses DR of choice of bludgeoning, cold iron, piercing, silver, or slashing for %{lvl} min"',
   'Vomit Swarm':
     'School=Conjuration ' +
@@ -7069,7 +7069,7 @@ PFAPG.SPELLS = {
     'Description="Self moves insect swarm that attacks all other creatures for %{lvl} rd"',
   'Vortex':
     'School=Evocation ' +
-    'Level=D7,O7,W7,Witch7 ' + // Oracle Waves, Witch Elements
+    'Level=D7,O7,S7,W7,Witch7 ' + // Oracle Waves, Witch Elements
     'Description="R$RL\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (Ref neg) for %{lvl-1} rd; self may eject creatures from vortex"',
   'Wake Of Light':
     'School=Evocation ' +
@@ -7077,15 +7077,15 @@ PFAPG.SPELLS = {
     'Description="10\'x120\' trail behind mount makes difficult terrain normal for good creatures and normal terrain difficult for evil creatures for %{lvl} rd"',
   'Wall Of Lava':
     'School=Conjuration ' +
-    'Level=D8,W8 ' +
+    'Level=D8,S8,W8 ' +
     'Description="R$RM\' Creates %{lvl} contiguous 5\' sq wall sections for %{lvl} rd; foe strike inflicts 2d6 HP fire on weapon; passage (DC 25 Strength) inflicts 20d6 HP fire; R60\' ranged touch inflicts 10d6 HP fire and destroys 1d4 sections 1/rd; half damage continues for 1d3 rd"',
   'Wall Of Suppression':
     'School=Abjuration ' +
-    'Level=W9 ' +
+    'Level=S9,W9 ' +
     'Description="R$RM\' Creates %{lvl*2} 5\' sq wall sections that suppress for %{lvl} rd passing magic effects and spells up to caster level %{lvl} for %{lvl*10} min"',
   'Wandering Star Motes':
     'School=Illusion ' +
-    'Level=B4,W4,Witch4 ' +
+    'Level=B4,S4,W4,Witch4 ' +
     'Description="R$RS\' Target loses any concealment and suffers dazed (Will ends and transfers 30\' to nearest foe) for %{lvl} rd"',
   'Ward The Faithful':
     'School=Abjuration ' +
@@ -7097,11 +7097,11 @@ PFAPG.SPELLS = {
     'Description="Touched weapon or unarmed strike gains +2 damage and crit inflicts 1 rd shaken for %{lvl} min"',
   'Winds Of Vengeance':
     'School=Evocation ' +
-    'Level=C9,D9,O9,W9,Wind9 ' +
+    'Level=C9,D9,O9,S9,W9,Wind9 ' +
     'Description="Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for %{lvl} min"',
   'World Wave':
     'School=Transmutation ' +
-    'Level=Aquatic9,D9,Exploration9,O9,W9 ' + // Oracle Nature
+    'Level=Aquatic9,D9,Exploration9,O9,S9,W9 ' + // Oracle Nature
     'Description="Self rides 20\'x10\' natural terrain oval that forms 30\' wave for %{lvl} rd or 5\' swell for %{lvl} hr, moves %{speed*8}\'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects (constructs and undead suffer dbl HP)"',
   'Wrath':
     'School=Enchantment ' +
@@ -8705,7 +8705,7 @@ PFAPG.magicRules = function(rules, schools, spells, spellsLevels) {
   for(let s in allSpells) {
     let attrs = allSpells[s];
     if(!attrs.includes('School=')) {
-      if(!Pathfinder.SPELLS[s]) {
+      if(!(s in Pathfinder.SPELLS)) {
         console.log('Unknown spell "' + s + '"');
         continue;
       }
