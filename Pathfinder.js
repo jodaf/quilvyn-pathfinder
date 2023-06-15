@@ -36,7 +36,7 @@ function Pathfinder() {
     return;
   }
 
-  var rules = new QuilvynRules('Pathfinder 1E', Pathfinder.VERSION);
+  let rules = new QuilvynRules('Pathfinder 1E', Pathfinder.VERSION);
   Pathfinder.rules = rules;
 
   rules.defineChoice('choices', Pathfinder.CHOICES);
@@ -50,8 +50,8 @@ function Pathfinder() {
   rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
   rules.ruleNotes = Pathfinder.ruleNotes;
 
-  SRD35.ABBREVIATIONS['CMB'] = 'Combat Maneuver Bonus';
-  SRD35.ABBREVIATIONS['CMD'] = 'Combat Maneuver Defense';
+  SRD35.ABBREVIATIONS.CMB = 'Combat Maneuver Bonus';
+  SRD35.ABBREVIATIONS.CMD = 'Combat Maneuver Defense';
 
   Pathfinder.createViewers(rules, SRD35.VIEWERS);
   rules.defineChoice('extras',
@@ -4020,7 +4020,7 @@ Pathfinder.SPELLS = {
     'Liquid=Potion'
 
 };
-for(var s in Pathfinder.SPELLS) {
+for(let s in Pathfinder.SPELLS) {
   Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
 }
 Pathfinder.TRACKS = {
@@ -5029,19 +5029,19 @@ Pathfinder.identityRules = function(
   QuilvynUtils.checkAttrTable(tracks, ['Progression']);
   QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
-  for(var alignment in alignments) {
+  for(let alignment in alignments) {
     rules.choiceRules(rules, 'Alignment', alignment, alignments[alignment]);
   }
-  for(var clas in classes) {
+  for(let clas in classes) {
     rules.choiceRules(rules, 'Class', clas, classes[clas]);
   }
   if(prestigeClasses) {
-    for(var pc in prestigeClasses) {
+    for(let pc in prestigeClasses) {
       rules.choiceRules(rules, 'Prestige', pc, prestigeClasses[pc]);
       rules.defineRule('levels.' + pc, 'prestige.' + pc, '=', null);
       // Pathfinder prestige classes use different progressions for saves
-      for(var save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
-        var value = QuilvynUtils.getAttrValue(prestigeClasses[pc], save);
+      for(let save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
+        let value = QuilvynUtils.getAttrValue(prestigeClasses[pc], save);
         rules.defineRule('class' + save + 'Bonus',
           'levels.' + pc, '+', 'Math.floor((source + 1) / ' + (value == '1/2' ? '2' : '3') + ')'
         );
@@ -5049,16 +5049,16 @@ Pathfinder.identityRules = function(
     }
   }
   if(npcClasses) {
-    for(var nc in npcClasses) {
+    for(let nc in npcClasses) {
       rules.choiceRules(rules, 'Npc', nc, npcClasses[nc]);
       rules.defineRule('levels.' + nc, 'npc.' + nc, '=', null);
     }
   }
-  for(var faction in factions) {
+  for(let faction in factions) {
     rules.choiceRules(rules, 'Faction', faction, factions[faction]);
   }
   // Process paths before deities for domain definitions
-  for(var path in paths) {
+  for(let path in paths) {
     rules.choiceRules(rules, 'Path', path, paths[path]);
     if(Pathfinder.DRUID_DOMAINS.includes(path)) {
       // Define domain features for Druids and ensure that clerics don't
@@ -5077,16 +5077,16 @@ Pathfinder.identityRules = function(
       });
     }
   }
-  for(var deity in deities) {
+  for(let deity in deities) {
     rules.choiceRules(rules, 'Deity', deity, deities[deity]);
   }
-  for(var race in races) {
+  for(let race in races) {
     rules.choiceRules(rules, 'Race', race, races[race]);
   }
-  for(var track in tracks) {
+  for(let track in tracks) {
     rules.choiceRules(rules, 'Track', track, tracks[track]);
   }
-  for(var trait in traits) {
+  for(let trait in traits) {
     rules.choiceRules(rules, 'Trait', trait, traits[trait]);
   }
 
@@ -5297,7 +5297,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
   else if(type == 'Skill') {
-    var untrained = QuilvynUtils.getAttrValue(attrs, 'Untrained');
+    let untrained = QuilvynUtils.getAttrValue(attrs, 'Untrained');
     Pathfinder.skillRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Ability'),
       untrained != 'n' && untrained != 'N',
@@ -5306,22 +5306,22 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     );
     Pathfinder.skillRulesExtra(rules, name);
   } else if(type == 'Spell') {
-    var description = QuilvynUtils.getAttrValue(attrs, 'Description');
-    var groupLevels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
-    var liquids = QuilvynUtils.getAttrValueArray(attrs, 'Liquid');
-    var school = QuilvynUtils.getAttrValue(attrs, 'School');
-    var schoolAbbr = (school || 'Universal').substring(0, 4);
-    for(var i = 0; i < groupLevels.length; i++) {
-      var matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
+    let description = QuilvynUtils.getAttrValue(attrs, 'Description');
+    let groupLevels = QuilvynUtils.getAttrValueArray(attrs, 'Level');
+    let liquids = QuilvynUtils.getAttrValueArray(attrs, 'Liquid');
+    let school = QuilvynUtils.getAttrValue(attrs, 'School');
+    let schoolAbbr = (school || 'Universal').substring(0, 4);
+    for(let i = 0; i < groupLevels.length; i++) {
+      let matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
       if(!matchInfo) {
         console.log('Bad level "' + groupLevels[i] + '" for spell ' + name);
         continue;
       }
-      var group = matchInfo[1];
-      var level = matchInfo[2] * 1;
-      var fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
+      let group = matchInfo[1];
+      let level = matchInfo[2] * 1;
+      let fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
       // TODO indicate domain spells in attributes?
-      var domainSpell = Pathfinder.PATHS[group + ' Domain'] != null;
+      let domainSpell = Pathfinder.PATHS[group + ' Domain'] != null;
       Pathfinder.spellRules
         (rules, fullName, school, group, level, description, domainSpell,
          liquids);
@@ -5402,8 +5402,8 @@ Pathfinder.classRules = function(
   casterLevelDivine, spellAbility, spellSlots
 ) {
   if(name == 'Monk') {
-    var allFeats = rules.getChoices('feats');
-    for(var feat in allFeats) {
+    let allFeats = rules.getChoices('feats');
+    for(let feat in allFeats) {
       if(feat.startsWith('Improved Critical'))
         selectables.push('10:' + feat);
     }
@@ -5437,8 +5437,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ('abilityNotes.fastMovement', 'levels.Barbarian', '+=', '10');
     rules.defineRule('combatNotes.animalFury',
       '', '=', '"d4"',
-      'features.Large', '=', '"' + SRD35.LARGE_DAMAGE['d4'] + '"',
-      'features.Small', '=', '"' + SRD35.SMALL_DAMAGE['d4'] + '"'
+      'features.Large', '=', '"' + SRD35.LARGE_DAMAGE.d4 + '"',
+      'features.Small', '=', '"' + SRD35.SMALL_DAMAGE.d4 + '"'
     );
     rules.defineRule('combatNotes.animalFury.1',
       'features.Animal Fury', '?', null,
@@ -5547,8 +5547,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
-    var allSkills = rules.getChoices('skills');
-    for(var s in rules.getChoices('skills')) {
+    for(let s in rules.getChoices('skills')) {
       rules.defineRule('classSkills.' + s,
         'skillNotes.jack-Of-All-Trades-1', '=', '1'
       );
@@ -5678,7 +5677,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Druid', '+=', null,
       'charismaModifier', '+', null
     );
-    for(var level = 1; level <= 9; level++) {
+    for(let level = 1; level <= 9; level++) {
       rules.defineRule('spellSlots.Domain' + level,
         'druidDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
       );
@@ -5938,14 +5937,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Paladin (Mercy)',
       'levels.Paladin', '=', 'Math.floor(source / 3)'
     );
-    var mercies =
+    let mercies =
       QuilvynUtils.getKeys(rules.getChoices('selectableFeatures'), /Mercy/).map(x => x.replace(/^.*Mercy/, 'Mercy'));
     // Rule used only for its side-effect
     rules.defineRule('magicNotes.mercy',
       'levels.Paladin', '=', '(Pathfinder.merciesTaken = []) ? null : null'
     );
-    for(var i = 0; i < mercies.length; i++) {
-      var mercy = mercies[i];
+    for(let i = 0; i < mercies.length; i++) {
+      let mercy = mercies[i];
       rules.defineRule('magicNotes.mercy',
         'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.join(", ") : ""'
       );
@@ -6106,12 +6105,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Wizard', '=', '1'
     );
 
-    var schools = rules.getChoices('schools');
-    for(var school in schools) {
+    let schools = rules.getChoices('schools');
+    for(let school in schools) {
       rules.defineRule('selectableFeatureCount.Wizard (Opposition)',
         'wizardFeatures.School Specialization (' + school + ')', '=', '2'
       );
-      for(var i = 1; i <= 9; i++) {
+      for(let i = 1; i <= 9; i++) {
         rules.defineRule('spellSlots.W' + i,
           'magicNotes.schoolSpecialization(' + school + ')', '+', '1'
         );
@@ -6349,8 +6348,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Loremaster') {
 
-    var allSkills = rules.getChoices('skills');
-    for(var skill in allSkills) {
+    let allSkills = rules.getChoices('skills');
+    for(let skill in allSkills) {
       if(skill.startsWith('Knowledge')) {
         rules.defineRule('countKnowledgeGe7',
           'skills.' + skill, '+=', 'source >= 7 ? 1 : null'
@@ -6515,10 +6514,10 @@ Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
   SRD35.deityRules(rules, name, alignment, domains, weapons);
   // Pathfinder clerics get proficiency in the deity's favored weapon without
   // taking the War domain, and the War domain does not grant Weapon Focus.
-  for(var i = 0; i < weapons.length; i++) {
-    var weapon = weapons[i];
-    var focusFeature = 'Weapon Focus (' + weapon + ')';
-    var proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
+  for(let i = 0; i < weapons.length; i++) {
+    let weapon = weapons[i];
+    let focusFeature = 'Weapon Focus (' + weapon + ')';
+    let proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
     rules.defineRule
       ('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
     rules.defineRule('clericFeatures.' + proficiencyFeature,
@@ -6578,7 +6577,7 @@ Pathfinder.featRules = function(rules, name, requires, implies, types) {
  */
 Pathfinder.featRulesExtra = function(rules, name) {
 
-  var matchInfo;
+  let matchInfo;
 
   if(name == 'Acrobatic') {
     rules.defineRule('skillNotes.acrobatic',
@@ -6795,7 +6794,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'skills.Survival', '+', 'source >= 10 ? 2 : null'
     );
   } else if((matchInfo = name.match(/^Skill\sFocus\s\((.*)\)$/)) != null) {
-    var skill = matchInfo[1];
+    let skill = matchInfo[1];
     rules.defineRule('skillNotes.skillFocus(' + skill.replaceAll(' ', '') + ')',
       'skills.' + skill, '=', 'source >= 10 ? 6 : 3'
     );
@@ -6984,7 +6983,7 @@ Pathfinder.pathRules = function(
   spellAbility, spellSlots
 ) {
 
-  var allFeats = rules.getChoices('feats');
+  let allFeats = rules.getChoices('feats');
   if(allFeats == null) {
     console.log('Feats not yet defined for path ' + name);
     return;
@@ -6995,7 +6994,7 @@ Pathfinder.pathRules = function(
     spellSlots
   );
 
-  var pathLevel =
+  let pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
   if(feats.length > 0) {
@@ -7004,13 +7003,13 @@ Pathfinder.pathRules = function(
       pathLevel, '+=', 'source >= 7 ? Math.floor((source - 1) / 6) : null'
     );
     if(name == 'Destined Bloodline') {
-      for(var feat in allFeats) {
+      for(let feat in allFeats) {
         if(feat.startsWith('Weapon Focus'))
           feats.push(feat);
       }
     }
-    for(var i = 0; i < feats.length; i++) {
-      var attrs = allFeats[feats[i]];
+    for(let i = 0; i < feats.length; i++) {
+      let attrs = allFeats[feats[i]];
       if(attrs == null) {
         console.log('Feat "' + feats[i] + '" undefined for bloodline ' + name);
       } else {
@@ -7020,7 +7019,7 @@ Pathfinder.pathRules = function(
   }
 
   if(skills.length > 0) {
-    var note = skills.join(' is a class skill/') + ' is a class skill';
+    let note = skills.join(' is a class skill/') + ' is a class skill';
     Pathfinder.featureRules(rules, name, ['skill'], [note]);
   }
 
@@ -7032,7 +7031,7 @@ Pathfinder.pathRules = function(
  */
 Pathfinder.pathRulesExtra = function(rules, name) {
 
-  var pathLevel =
+  let pathLevel =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
 
   if(name == 'Bloodline Aberrant') {
@@ -7162,15 +7161,15 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
   } else if(name == 'Bloodline Draconic') {
 
-    var colors = {
+    let colors = {
       'Black':'', 'Blue':'', 'Brass':'', 'Bronze':'', 'Copper':'', 'Gold':'',
       'Green':'', 'Red':'', 'Silver':'', 'White':''
     };
-    for(var color in colors) {
-      var energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
+    for(let color in colors) {
+      let energy = 'BlackCopperGreen'.indexOf(color) >= 0 ? 'acid' :
                    'SilverWhite'.indexOf(color) >= 0 ? 'cold' :
                    'BlueBronze'.indexOf(color) >= 0 ? 'electricity' : 'fire';
-      var subFeature = 'features.Bloodline Draconic (' + color + ')';
+      let subFeature = 'features.Bloodline Draconic (' + color + ')';
       rules.defineRule('bloodlineEnergy', subFeature, '=', '"' + energy + '"');
       rules.defineRule('bloodlineShape',
         subFeature, '=',  '"' + (color <= 'F' ? "60' line" : "30' cone") + '"'
@@ -7241,15 +7240,15 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 
   } else if(name == 'Bloodline Elemental') {
 
-    var elements = {'Air':'', 'Earth':'', 'Fire':'', 'Water':''};
-    for(var element in elements) {
-      var energy = element == 'Earth' ? 'acid' :
+    let elements = {'Air':'', 'Earth':'', 'Fire':'', 'Water':''};
+    for(let element in elements) {
+      let energy = element == 'Earth' ? 'acid' :
                    element == 'Water' ? 'cold' :
                    element == 'Air' ? 'electricity' : 'fire';
-      var movement = element == 'Air' ? "Fly 60'/average" :
+      let movement = element == 'Air' ? "Fly 60'/average" :
                      element == 'Earth' ? "Burrow 30'" :
                      element == 'Fire' ? 'Speed +30' : "Swim 60'";
-      var subFeature = 'features.Bloodline Elemental (' + element + ')';
+      let subFeature = 'features.Bloodline Elemental (' + element + ')';
       rules.defineRule('bloodlineEnergy', subFeature, '=', '"' + energy + '"');
       rules.defineRule
         ('bloodlineMovement', subFeature, '=',  '"' + movement + '"');
@@ -7884,9 +7883,9 @@ Pathfinder.schoolRules = function(rules, name, features) {
  */
 Pathfinder.schoolRulesExtra = function(rules, name) {
 
-  var prefix =
+  let prefix =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','');
-  var schoolLevel = prefix + 'Level';
+  let schoolLevel = prefix + 'Level';
 
   if(name == 'Abjuration') {
     rules.defineRule('magicNotes.protectiveWard',
@@ -8098,8 +8097,8 @@ Pathfinder.spellRules = function(
   // SRD35 uses wisdomModifier when calculating the save DC for Paladin
   // spells; in Pathfinder we override to use charismaModifier.
   if(casterGroup == 'P') {
-    var matchInfo;
-    var note = rules.getChoices('notes')[name];
+    let matchInfo;
+    let note = rules.getChoices('notes')[name];
     if(note != null && (matchInfo = note.match(/\(DC\s%(\d+)/)) != null)
       rules.defineRule(note + '.' + matchInfo[1],
         'charismaModifier', '=', '10 + source + ' + level
@@ -8112,8 +8111,8 @@ Pathfinder.spellRules = function(
  * has the level progression listed by #progression#.
  */
 Pathfinder.trackRules = function(rules, name, progression) {
-  var trackLevel = name + 'Level';
-  var trackNeeded = name + 'Needed';
+  let trackLevel = name + 'Level';
+  let trackNeeded = name + 'Needed';
   rules.defineRule('experienceNeeded', trackNeeded, '=', null);
   rules.defineRule('level', trackLevel, '=', null);
   rules.defineRule(trackLevel,
@@ -8188,8 +8187,8 @@ Pathfinder.weaponRules = function(
  * format #viewer# in #rules#.
  */
 Pathfinder.getFormats = function(rules, viewer) {
-  var result = SRD35.getFormats(rules, viewer);
-  for(var a in result)
+  let result = SRD35.getFormats(rules, viewer);
+  for(let a in result)
     result[a] = result[a].replaceAll('Skill Point', 'Skill Rank');
   return result;
 };
@@ -8199,7 +8198,7 @@ Pathfinder.createViewers = function(rules, viewers) {
   SRD35.createViewers(rules, viewers);
   if(viewers.includes('Stat Block')) {
     // Minor differences from SRD35 version
-    var viewer = new ObjectViewer();
+    let viewer = new ObjectViewer();
     viewer.addElements(
       {name: '_top', separator: '\n', columns: '1L'},
         {name: 'Name', within: '_top', format: '<div style="font-size:2em"><b>%V</b></div>'},
@@ -8258,7 +8257,7 @@ Pathfinder.createViewers = function(rules, viewers) {
  * item to #rules#.
  */
 Pathfinder.choiceEditorElements = function(rules, type) {
-  var result = [];
+  let result = [];
   if(type == 'Faction')
     result.push(
       // empty
@@ -8270,7 +8269,7 @@ Pathfinder.choiceEditorElements = function(rules, type) {
     );
   else {
     result = SRD35.choiceEditorElements(rules, type);
-    for(var i = 0; i < result.length; i++)
+    for(let i = 0; i < result.length; i++)
       result[i][1] = result[i][1].replaceAll('Skill Points', 'Skill Ranks');
   }
   return result;
@@ -8315,9 +8314,9 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       if(!traitType ||
          attrs['traits.' + t] ||
          (traitType == 'Race' &&
-          !((attrs['race'] + '').match('(^| )' + traitSubtype))) ||
-         (traitType == 'Faction' && attrs['faction'] != traitSubtype) ||
-         (traitType == 'Religion' && attrs['deityAlignment'] != traitSubtype))
+          !((attrs.race + '').match('(^| )' + traitSubtype))) ||
+         (traitType == 'Faction' && attrs.faction != traitSubtype) ||
+         (traitType == 'Religion' && attrs.deityAlignment != traitSubtype))
         continue;
       if(!(traitType in allowedTraits))
         allowedTraits[traitType] = [];
@@ -8327,7 +8326,7 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
       if(!a.startsWith('traits.'))
         continue;
       let t = a.replace('traits.', '');
-      if(!t in allTraits)
+      if(!(t in allTraits))
         continue;
       let traitType = QuilvynUtils.getAttrValue(allTraits[t], 'Type');
       let traitSubtype = QuilvynUtils.getAttrValue(allTraits[t], 'Subtype');
@@ -8350,7 +8349,7 @@ Pathfinder.randomizeOneAttribute = function(attributes, attribute) {
 
 /* Returns an array of plugins upon which this one depends. */
 Pathfinder.getPlugins = function() {
-  var result = [SRD35];
+  let result = [SRD35];
   if(window.PFAPG != null && 'Oracle' in Pathfinder.rules.getChoices('levels'))
     result.unshift(PFAPG);
   return result;
