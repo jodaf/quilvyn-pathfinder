@@ -4623,7 +4623,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"alignment !~ \'Lawful\'","sneakAttack >= 2",' +
       '"skills.Disable Device >= 4","skills.Escape Artist >= 4",' +
       '"skills.Knowledge (Arcana) >= 4","Sum \'^spells\\.Mage Hand\' >= 1",' +
-      '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
+      '"Sum \'^spells\\..*[BSW]3\' >= 0" ' +
     'HitDie=d6 Attack=1/2 SkillPoints=4 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Skills=' +
       'Acrobatics,Appraise,Bluff,Climb,Diplomacy,"Disable Device",Disguise,' +
@@ -4685,7 +4685,7 @@ Pathfinder.PRESTIGE_CLASSES = {
   'Eldritch Knight':
     'Require=' +
       '"features.Weapon Proficiency (Martial)",' +
-      '"Sum \'^spells\\..*[BW]3\' >= 0" ' +
+      '"Sum \'^spells\\..*[BSW]3\' >= 0" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Skills=' +
       'Climb,"Knowledge (Arcana)","Knowledge (Nobility)",Linguistics,Ride,' +
@@ -5279,9 +5279,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
-      QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
-      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots')
+      QuilvynUtils.getAttrValueArray(attrs, 'Languages')
     );
     Pathfinder.raceRulesExtra(rules, name);
   } else if(type == 'School') {
@@ -7819,18 +7817,12 @@ Pathfinder.pathRulesExtra = function(rules, name) {
 /*
  * Defines in #rules# the rules associated with race #name#, which has the list
  * of hard prerequisites #requires#. #features# and #selectables# list
- * associated features and #languages# any automatic languages. If the race
- * grants spell slots, #spellAbility# names the ability for computing spell
- * difficulty class, and #spellSlots# lists the number of spells per level per
- * day granted.
+ * associated features and #languages# any automatic languages.
  */
 Pathfinder.raceRules = function(
-  rules, name, requires, features, selectables, languages, spellAbility,
-  spellSlots
+  rules, name, requires, features, selectables, languages
 ) {
-  SRD35.raceRules
-    (rules, name, requires, features, selectables, languages, spellAbility,
-     spellSlots);
+  SRD35.raceRules(rules, name, requires, features, selectables, languages);
   // No changes needed to the rules defined by SRD35 method
 };
 
