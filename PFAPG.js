@@ -11872,8 +11872,9 @@ PFAPG.pathRulesExtra = function(rules, name) {
       '', '=', '1',
       pathLevel, '+', 'Math.floor(source / 5)'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Monk (Aspect)', pathLevel, '=', '1');
+    rules.defineRule('selectableFeatureCount.Monk (Aspect)',
+      pathLevel, '=', 'source>=17 ? 1 : null'
+    );
     Pathfinder.featureSpells(rules,
       'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', pathLevel, null,
       ['Gaseous Form']
@@ -12409,6 +12410,8 @@ PFAPG.raceRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('casterLevels.Dreamspeaker', 'charisma', '?', 'source >= 15');
+    rules.defineRule
+      ('spells.Dream(Dreamspeaker5 Illu)', 'charisma', '?', 'source>=15');
     Pathfinder.featureSpells(rules,
       'Lightbringer', 'Lightbringer', 'intelligence', 'level', '', ['Light']
     );
