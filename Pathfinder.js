@@ -87,9 +87,9 @@ Pathfinder.VERSION = '2.3.2.12';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = [
-  'Animal Companion', 'Armor', 'Class', 'Deity', 'Faction', 'Familiar', 'Feat',
-  'Feature', 'Goody', 'Language', 'Npc', 'Path', 'Prestige', 'Race', 'School',
-  'Shield', 'Skill', 'Spell', 'Track', 'Trait', 'Weapon'
+  'Animal Companion', 'Armor', 'Class', 'Class Feature', 'Deity', 'Faction',
+  'Familiar', 'Feat', 'Feature', 'Language', 'Npc', 'Prestige', 'Race',
+  'Race Feature', 'School', 'Shield', 'Skill', 'Spell', 'Trait', 'Weapon'
 ];
 /*
  * List of items handled by randomizeOneAttribute method. The order handles
@@ -5212,6 +5212,19 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots')
     );
     Pathfinder.classRulesExtra(rules, name);
+  } else if(type == 'Class Feature') {
+    let clas = QuilvynUtils.getAttrValue(attrs, 'Class');
+    let clasLevel = 'levels.' + clas;
+    let isSelectable = QuilvynUtils.getAttrValue(attrs, 'Selectable');
+    if(isSelectable == 'false')
+      isSelectable = false;
+    let level = QuilvynUtils.getAttrValue(attrs, 'Level');
+    let prerequisite = QuilvynUtils.getAttrValueArray(attrs, 'Prerequisite');
+    let featureSpec = level + ':' + name;
+    if(prerequisite.length > 0)
+      featureSpec = '"' + featureSpec.join('","') + '" ? ';
+    QuilvynRules.featureListRules
+      (rules, [featureSpec], clas, clasLevel, isSelectable);
   } else if(type == 'Deity')
     Pathfinder.deityRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Alignment'),
@@ -5282,6 +5295,20 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Languages')
     );
     Pathfinder.raceRulesExtra(rules, name);
+  } else if(type == 'Race Feature') {
+    let race = QuilvynUtils.getAttrValue(attrs, 'Race');
+    let raceLevel =
+      race.charAt(0).toLowerCase() + race.substring(1).replaceAll(' ', '') + 'Level';
+    let isSelectable = QuilvynUtils.getAttrValue(attrs, 'Selectable');
+    if(isSelectable == 'false')
+      isSelectable = false;
+    let level = QuilvynUtils.getAttrValue(attrs, 'Level');
+    let prerequisite = QuilvynUtils.getAttrValueArray(attrs, 'Prerequisite');
+    let featureSpec = level + ':' + name;
+    if(prerequisite.length > 0)
+      featureSpec = '"' + featureSpec.join('","') + '" ? ';
+    QuilvynRules.featureListRules
+      (rules, [featureSpec], race, raceLevel, isSelectable);
   } else if(type == 'School') {
     Pathfinder.schoolRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
@@ -8254,6 +8281,9 @@ Pathfinder.choiceEditorElements = function(rules, type) {
     result.push(
       // empty
     );
+  else if(type == 'Skill')
+    result =
+      SRD35.choiceEditorElements(rules, type).filter(x => x[0] != 'Synergy');
   else if(type == 'Trait')
     result.push(
       ['Type', 'Type', 'select-one', ['Basic', 'Campaign', 'Faction', 'Race', 'Regional', 'Religion']],
@@ -8361,6 +8391,9 @@ Pathfinder.ruleNotes = function() {
     '    classes. When this information is important (e.g., for characters\n' +
     '    with levels in a non-favored class), you can list favored classes\n' +
     '    in the notes section.\n' +
+    '  </li>\n<li>\n' +
+    '    Discussion of adding different types of homebrew options to the\n' +
+    '    Pathfinder rule set can be found in <a href="plugins/homebrew-pathfinder.html">Pathfinder Homebrew Examples</a>.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Known Bugs</h3>\n' +
