@@ -8391,7 +8391,7 @@ Pathfinder.ruleNotes = function() {
     '    classes. When this information is important (e.g., for characters\n' +
     '    with levels in a non-favored class), you can list favored classes\n' +
     '    in the notes section.\n' +
-    '  </li>\n<li>\n' +
+    '  </li><li>\n' +
     '    Discussion of adding different types of homebrew options to the\n' +
     '    Pathfinder rule set can be found in <a href="plugins/homebrew-pathfinder.html">Pathfinder Homebrew Examples</a>.\n' +
     '  </li>\n' +
