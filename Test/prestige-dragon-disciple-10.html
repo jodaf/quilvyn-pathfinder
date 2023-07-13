@@ -10,13 +10,13 @@ var attributes = {
   "alignment":"Lawful Good", "armor":"None", "charisma":16, "constitution":13, 
   "deity":"None", "dexterity":16, "experience":122125, "experienceTrack":"3.5", 
   "feats.Arcane Strike":1, "feats.Combat Casting":1, "feats.Craft Wondrous Item":1, 
-  "feats.Extend Spell":1, "feats.Great Fortitude":1, "feats.Improved Initiative":1, 
-  "feats.Improved Unarmed Strike":1, "feats.Point-Blank Shot":1, "feats.Rapid Shot":1, 
-  "feats.Simple Weapon Proficiency":1, "feats.Skill Focus (Fly)":1, "feats.Skill Focus (Knowledge (Arcana))":1, 
-  "feats.Toughness":1, "feats.Widen Spell":1, "gender":"Female", "hitPoints":85, "intelligence":11, 
-  "languages.Draconic":1, "languages.Gnoll":1, "levels.Sorcerer":6, 
-  "name":"Prestige-Dragon Disciple 10", "prestige.Dragon Disciple":10, "race":"Human", 
-  "selectableFeatures.Sorcerer - Bloodline Draconic (Black)":1, "shield":"None", "skills.Bluff":5, "skills.Craft (Bows)":8, "skills.Fly":2, 
+  "feats.Extend Spell":1, "feats.Improved Unarmed Strike":1, "feats.Point-Blank Shot":1, 
+  "feats.Rapid Shot":1, "feats.Simple Weapon Proficiency":1, "feats.Skill Focus (Fly)":1, 
+  "feats.Skill Focus (Knowledge (Arcana))":1, "feats.Toughness":1, "feats.Widen Spell":1, "gender":"Female", 
+  "hitPoints":85, "intelligence":11, "languages.Draconic":1, "languages.Gnoll":1, 
+  "levels.Sorcerer":6, "name":"Prestige-Dragon Disciple 10", "prestige.Dragon Disciple":10, 
+  "race":"Human", "selectableFeatures.Sorcerer - Bloodline Draconic (Black)":1, 
+  "shield":"None", "skills.Bluff":5, "skills.Craft (Bows)":8, "skills.Fly":2, 
   "skills.Intimidate":16, "skills.Knowledge (Arcana)":7, "skills.Knowledge (Dungeoneering)":7, 
   "skills.Linguistics":1, "skills.Perception":2, "skills.Spellcraft":16, 
   "spells.Cause Fear(S1 Necr)":1, "spells.Clairaudience/Clairvoyance(S3 Divi)":1, 
@@ -88,14 +88,14 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feat Count</b>: Bloodline Draconic: 5; General: 9</td>
-        <td><b>Selectable Feature Count</b>: Dragon Disciple (Bloodline): 0; Sorcerer (Bloodline): 1</td>
+        <td><b>Feat Count</b>: Bloodline Draconic: 3; General: 9</td>
+        <td><b>Selectable Feature Count</b>: Sorcerer (Bloodline)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Arcane Strike; Combat Casting; Craft Wondrous Item; Extend Spell; Great Fortitude; Improved Initiative; Improved Unarmed Strike; Point-Blank Shot; Rapid Shot; Simple Weapon Proficiency; Skill Focus (Fly); Skill Focus (Knowledge (Arcana)); Toughness; Widen Spell</td>
+        <td><b>Feats</b>: Arcane Strike; Combat Casting; Craft Wondrous Item; Extend Spell; Improved Unarmed Strike; Point-Blank Shot; Rapid Shot; Simple Weapon Proficiency; Skill Focus (Fly); Skill Focus (Knowledge (Arcana)); Toughness; Widen Spell</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Dragon Disciple Features</b>: Blindsense; Blood Of Dragons; Caster Level Bonus; Constitution Boost; Dragon Bite; Dragon Form; Intelligence Boost; Natural Armor; Strength Boost; Wings</td>
         <td><b>Sorcerer Features</b>: Bloodline Draconic (Black); Breath Weapon; Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple); Wings</td>
@@ -168,8 +168,8 @@ var attributes = {
       <td>      <table id="CombatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 133</td>
-        <td><b>Initiative</b>: +7</td>
-        <td><b>Armor Class</b>: 21</td>
+        <td><b>Initiative</b>: +3</td>
+        <td><b>Armor Class</b>: 24</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/25</td>
@@ -202,9 +202,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dragon Disciple Armor Class Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Initiative: +4 Initiative</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Natural Armor: +4 AC</i></td>
+        <td><i>Natural Armor: +7 AC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -216,9 +214,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Arcane Strike: May imbue weapons with +3 magic damage bonus for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Breath Weapon: 60' line acid 6d6 HP (16 DC Ref half) 1/dy</td>
+        <td>Breath Weapon: 60' line acid 16d6 HP (21 DC Ref half) 2/dy</td>
       </tr><tr style="text-align:center">
-        <td>Claws: 2 +12 attacks inflict 1d4+2 HP each 6 rd/dy</td>
+        <td>Claws: 2 +12 attacks inflict 1d6+2 HP each 6 rd/dy</td>
       </tr><tr style="text-align:center">
         <td>Dragon Bite: 1d6+3, 1d6 energy bite when using claws</td>
       </tr><tr style="text-align:center">
@@ -234,8 +232,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Save</b>: Fortitude: +11; Reflex: +8; Will: +12</td>
-        <td><b>Resistance</b>: Acid: 5</td>
+        <td><b>Save</b>: Fortitude: +9; Reflex: +8; Will: +12</td>
+        <td><b>Resistance</b>: Acid: 10</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -245,9 +243,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dragon Resistances: Resistance 5 to acid</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Great Fortitude: +2 Fortitude</i></td>
+        <td><i>Dragon Resistances: Resistance 10 to acid</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr></table>
@@ -280,6 +276,14 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Endure Elements (S1 Abju): Touched comfortable between -50F and 140F for 1 dy</td>
     </tr><tr style="text-align:left">
+      <td>Fear (Bloodline Draconic4 Necr): R30' Cone causes creatures to flee for 16 rd (DC 17 Will shaken for 1 rd)</td>
+    </tr><tr style="text-align:left">
+      <td>Fly (Bloodline Draconic3 Tran): Touched gains 60' fly speed and +8 Fly skill for 16 min</td>
+    </tr><tr style="text-align:left">
+      <td>Form Of The Dragon I (Bloodline Draconic6 Tran): Self becomes medium dragon (+4 Strength, +2 Constitution, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 16 min</td>
+    </tr><tr style="text-align:left">
+      <td>Form Of The Dragon II (Bloodline Draconic7 Tran): Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 16 min</td>
+    </tr><tr style="text-align:left">
       <td>Fox's Cunning (S2 Tran): Touched gains +4 Intelligence for 13 min</td>
     </tr><tr style="text-align:left">
       <td>Glitterdust (S2 Conj): R230' Creatures in 10' radius outlined and blind for 13 rd (DC 15 Will not blinded)</td>
@@ -292,7 +296,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Light (S0 Evoc): Touched gives 20' normal light for 130 min</td>
     </tr><tr style="text-align:left">
-      <td>Mage Armor (Bloodline Draconic1 Conj): Touched gains +4 AC for 6 hr</td>
+      <td>Mage Armor (Bloodline Draconic1 Conj): Touched gains +4 AC for 16 hr</td>
     </tr><tr style="text-align:left">
       <td>Mending (S0 Tran): R10' Repairs minor damage to 13 lb object</td>
     </tr><tr style="text-align:left">
@@ -314,9 +318,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Reduce Person (S1 Tran): R55' Target humanoid becomes half size (-2 Strength, +2 Dexterity, +1 attack, +1 AC) for 13 min (DC 14 Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 10 to chosen energy for 60 min</td>
+      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 30 to chosen energy for 160 min</td>
     </tr><tr style="text-align:left">
       <td>Shrink Item (S3 Tran): Touched 26' cu object becomes 1/16 size cloth for 13 dy (DC 16 Will neg)</td>
+    </tr><tr style="text-align:left">
+      <td>Spell Resistance (Bloodline Draconic5 Abju): Touched gains SR 28 for 16 min</td>
     </tr><tr style="text-align:left">
       <td>Tiny Hut (S3 Evoc): 20' sphere resists elements for 26 hr</td>
     </tr><tr style="text-align:left">

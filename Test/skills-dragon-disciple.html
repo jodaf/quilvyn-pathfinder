@@ -12,23 +12,24 @@ var attributes = {
   "experienceTrack":"3.5", "faction":"Silver Crusade", "feats.Combat Reflexes":1, 
   "feats.Skill Focus (Disguise)":1, "gender":"Male", "hitPoints":12, "intelligence":16, "languages.Draconic":1, 
   "languages.Dwarven":1, "languages.Halfling":1, "languages.Terran":1, 
-  "name":"Skills-Dragon Disciple", "prestige.Dragon Disciple":1, "race":"Human", "shield":"None", 
-  "skills.Acrobatics":1, "skills.Appraise":1, "skills.Bluff":1, "skills.Climb":1, 
-  "skills.Craft (Alchemy)":1, "skills.Craft (Armor)":1, "skills.Craft (Bows)":1, "skills.Craft (Traps)":1, 
-  "skills.Craft (Weapons)":1, "skills.Diplomacy":1, "skills.Disable Device":1, "skills.Disguise":1, 
-  "skills.Escape Artist":1, "skills.Fly":1, "skills.Handle Animal":1, "skills.Heal":1, 
-  "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, "skills.Knowledge (Dungeoneering)":1, 
-  "skills.Knowledge (Engineering)":1, "skills.Knowledge (Geography)":1, "skills.Knowledge (History)":1, 
-  "skills.Knowledge (Local)":1, "skills.Knowledge (Nature)":1, "skills.Knowledge (Nobility)":1, 
-  "skills.Knowledge (Planes)":1, "skills.Knowledge (Religion)":1, "skills.Linguistics":1, 
-  "skills.Perception":1, "skills.Perform (Act)":1, "skills.Perform (Comedy)":1, 
-  "skills.Perform (Dance)":1, "skills.Perform (Keyboard)":1, "skills.Perform (Oratory)":1, 
-  "skills.Perform (Percussion)":1, "skills.Perform (Sing)":1, "skills.Perform (String)":1, 
-  "skills.Perform (Wind)":1, "skills.Profession (Librarian)":1, "skills.Profession (Scribe)":1, 
-  "skills.Profession (Soldier)":1, "skills.Profession (Tanner)":1, "skills.Ride":1, "skills.Sense Motive":1, 
-  "skills.Sleight Of Hand":1, "skills.Spellcraft":1, "skills.Stealth":1, "skills.Survival":1, 
-  "skills.Swim":1, "skills.Use Magic Device":1, "strength":16, "weapons.Halberd":1, 
-  "weapons.Scythe":1, "weapons.Spiked Gauntlet":1, "wisdom":11
+  "name":"Skills-Dragon Disciple", "prestige.Dragon Disciple":1, "race":"Human", 
+  "selectableFeatures.Dragon Disciple - Bloodline Draconic (Black)":1, "shield":"None", "skills.Acrobatics":1, "skills.Appraise":1, 
+  "skills.Bluff":1, "skills.Climb":1, "skills.Craft (Alchemy)":1, "skills.Craft (Armor)":1, 
+  "skills.Craft (Bows)":1, "skills.Craft (Traps)":1, "skills.Craft (Weapons)":1, "skills.Diplomacy":1, 
+  "skills.Disable Device":1, "skills.Disguise":1, "skills.Escape Artist":1, "skills.Fly":1, 
+  "skills.Handle Animal":1, "skills.Heal":1, "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, 
+  "skills.Knowledge (Dungeoneering)":1, "skills.Knowledge (Engineering)":1, "skills.Knowledge (Geography)":1, 
+  "skills.Knowledge (History)":1, "skills.Knowledge (Local)":1, "skills.Knowledge (Nature)":1, 
+  "skills.Knowledge (Nobility)":1, "skills.Knowledge (Planes)":1, "skills.Knowledge (Religion)":1, 
+  "skills.Linguistics":1, "skills.Perception":1, "skills.Perform (Act)":1, 
+  "skills.Perform (Comedy)":1, "skills.Perform (Dance)":1, "skills.Perform (Keyboard)":1, 
+  "skills.Perform (Oratory)":1, "skills.Perform (Percussion)":1, "skills.Perform (Sing)":1, 
+  "skills.Perform (String)":1, "skills.Perform (Wind)":1, "skills.Profession (Librarian)":1, 
+  "skills.Profession (Scribe)":1, "skills.Profession (Soldier)":1, "skills.Profession (Tanner)":1, 
+  "skills.Ride":1, "skills.Sense Motive":1, "skills.Sleight Of Hand":1, "skills.Spellcraft":1, 
+  "skills.Stealth":1, "skills.Survival":1, "skills.Swim":1, "skills.Use Magic Device":1, 
+  "strength":16, "weapons.Halberd":1, "weapons.Scythe":1, "weapons.Spiked Gauntlet":1, 
+  "wisdom":11
 };
   </script>
 </head>
@@ -86,7 +87,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Reflexes; Skill Focus (Disguise)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Dragon Disciple Features</b>: Blood Of Dragons; Natural Armor</td>
+        <td><b>Dragon Disciple Features</b>: Blood Of Dragons; Bloodline Draconic (Black); Natural Armor</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -207,7 +208,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 11</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>Armor Class</b>: 15</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +0/+3/+0</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/13</td>
@@ -235,6 +236,8 @@ var attributes = {
         <td><i>Constitution Hit Points Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dragon Disciple Armor Class Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Natural Armor: +2 AC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Nonproficient Weapon Penalty.Halberd: -4 attack</i></td>
       </tr><tr style="text-align:center">
@@ -264,6 +267,12 @@ var attributes = {
   </tr></table>
 </td>
 </tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
+  <tr style="text-align:center">
+    <td><b>Magic Notes</b>: Bloodline Draconic: +1 damage per die on acid spells</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
@@ -271,8 +280,6 @@ var attributes = {
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
       <tr style="text-align:center">
         <td>Dragon Disciple Class: Requires draconic language (currently 1), race (currently Human) does not match 'Dragon', knowledge (arcana) skill (currently 1) >= 5, bard level, sorcerer level and sorcerer level == 0 or bloodline draconic feature (currently 1)</td>
-      </tr><tr style="text-align:center">
-        <td>Selectable Feature Allocation: 1 available vs. 0 allocated</td>
       </tr><tr style="text-align:center">
         <td>Skill Allocation: 6 available vs. 50 allocated</td>
       </tr></table>
