@@ -6474,16 +6474,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'features.Bloodline ' +  bloodline, '?', null,
         'levels.Sorcerer', '+=', null
       );
-      rules.defineRule('featCount.' + bloodline,
-        'bloodlineLevels.' + bloodline, '+=',
-          'source>=7 ? Math.floor((source - 1) / 6) : null'
+      rules.defineRule('featCount.Bloodline ' + bloodline,
+        'features.Bloodline ' + bloodline, '?', null,
+        classLevel, '+=', 'source>=7 ? Math.floor((source - 1) / 6) : null'
       );
       (bloodlineFeats[bloodline] || []).forEach(f => {
         let attrs = allFeats[f];
         if(attrs == null) {
           console.log('Feat "' + f + '" undefined for bloodline ' + bloodline);
         } else {
-          allFeats[f] = attrs.replace(/Type=/, 'Type="' + bloodline + '",');
+          allFeats[f] =
+            attrs.replace(/Type=/, 'Type="Bloodline ' + bloodline + '",');
         }
       });
     }
