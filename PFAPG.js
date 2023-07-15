@@ -10326,6 +10326,143 @@ PFAPG.classRulesExtra = function(rules, name) {
       });
     }
 
+    // Bloodline Aquatic
+    rules.defineRule
+      ('combatNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
+    rules.defineRule
+      ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
+    rules.defineRule('featureNotes.aquaticAdaptation(Sorcerer)',
+      classLevel, '?', 'source>=9'
+    );
+    rules.defineRule
+      ('featureNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
+    rules.defineRule
+      ('featureNotes.blindsight', 'featureNotes.deepOne', '^=', '120');
+    rules.defineRule('features.Blindsense', 'featureNotes.deepOne', '=', '1');
+    rules.defineRule('features.Blindsight', 'featureNotes.deepOne', '=', '1');
+    rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
+    rules.defineRule
+      ('saveNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
+    Pathfinder.featureSpells(rules,
+      'Aquatic Telepathy', 'AquaticTelepathy', 'charisma', classLevel, '',
+      ['Suggestion', '15:Demand', '15:Greater Planar Ally']
+    );
+    Pathfinder.featureSpells(rules,
+      'Raise The Deep', 'RaiseTheDeep', 'charisma', classLevel, null,
+      ['Control Water']
+    );
+    Pathfinder.featureSpells(rules,
+      'Deep One', 'DeepOne', 'charisma', classLevel, null,
+      ['Freedom Of Movement']
+    );
+    // Bloodline Boreal
+    rules.defineRule('magicNotes.icewalker', classLevel, '?', 'source>=9');
+    rules.defineRule('casterLevels.Blizzard', classLevel, '+=', null);
+    Pathfinder.featureSpells(rules,
+      'Blizzard (Sorcerer)', 'Blizzard', 'charisma', classLevel, '',
+      ['Control Winds', 'Sleet Storm']
+    );
+    Pathfinder.featureSpells(rules,
+      'Icewalker', 'Icewalker', 'charisma', classLevel, null, ['Spider Climb']
+    );
+    Pathfinder.featureSpells(rules,
+      'Snow Shroud', 'SnowShroud', 'charisma', classLevel, null,
+      ['Fire Shield']
+    );
+    // Bloodline Deep Earth
+    rules.defineRule
+      ('abilityNotes.earthGlide', classLevel, '=', 'source + " min"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      classLevel, '=', '" at half speed"'
+    );
+    rules.defineRule
+      ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
+    rules.defineRule
+      ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
+    rules.defineRule
+      ('features.Tremorsense', classLevel, '=', 'source>=9 ? 1 : null');
+    rules.defineRule('magicNotes.rockseer', classLevel, '?', 'source>=15');
+    rules.defineRule
+      ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
+    // Bloodline Dreamspun
+    rules.defineRule('combatNotes.combatPrecognition',
+      classLevel, '=', 'Math.floor((source + 1) / 4)'
+    );
+    Pathfinder.featureSpells(rules,
+      'Dreamshaper', 'Dreamshaper', 'charisma', classLevel,
+      '10 + ' + classLevel + '//2 + charismaModifier',
+      ['Modify Memory', 'Speak With Dead']
+    );
+    Pathfinder.featureSpells(rules,
+      'Eye Of Somnus', 'EyeOfSomnus', 'charisma', classLevel, '',
+      ['Arcane Eye', 'Symbol Of Sleep']
+    );
+    Pathfinder.featureSpells(rules,
+      'Lullaby', 'Lullaby', 'charisma', classLevel, '', ['Lullaby']
+    );
+    // Bloodline Protean
+    Pathfinder.featureSpells(rules,
+      'Spatial Tear', 'SpatialTear', 'charisma', classLevel, '',
+      ['Black Tentacles', 'Dimension Door']
+    );
+    // Bloodline Serpentine
+    rules.defineRule
+      ('combatNotes.snakeskin', classLevel, '=', 'Math.floor((source-5) / 4)');
+    rules.defineRule('featureNotes.serpentfriend.1',
+      'featureNotes.serpentfriend', '?', null,
+      classLevel, '=', 'source - 2'
+    );
+    rules.defineRule
+      ('familiarMasterLevel', 'featureNotes.serpentfriend.1', '+=', null);
+    rules.defineRule
+      ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
+    rules.defineRule
+      ('skillNotes.snakeskin', classLevel, '=', 'Math.floor((source - 1) / 4)');
+    Pathfinder.featureSpells(rules,
+      'Den Of Vipers', 'DenOfVipers', 'charisma', classLevel, '',
+      ['Creeping Doom']
+    );
+    Pathfinder.featureSpells(rules,
+      'Scaled Soul', 'ScaledSoul', 'charisma', classLevel, null,
+      ['Alter Self', 'Beast Shape III']
+    );
+    Pathfinder.featureSpells(rules,
+      'Serpentfriend', 'Serpentfriend', 'charisma', classLevel, '',
+      ['Speak With Animals']
+    );
+    // Bloodline Shadow
+    Pathfinder.featureSpells(rules,
+      'Enveloping Darkness', 'EnvelopingDarkness', 'charisma', classLevel, '',
+      ['Deeper Darkness']
+    );
+    Pathfinder.featureSpells(rules,
+      'Shadow Well', 'ShadowWell', 'charisma', classLevel, null,
+      ['Dimension Door']
+    );
+    // Bloodline Starsoul
+    rules.defineRule('featureNotes.voidwalker-1', classLevel, '?', 'source>=9');
+    rules.defineRule
+      ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Aurora Borealis', 'AuroraBorealis', 'charisma', classLevel,
+      '10 + ' + classLevel + '//2 + charismaModifier', ['Wall Of Fire']
+    );
+    // Bloodline Stormborn
+    rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
+    rules.defineRule('features.Blindsense', 'features.Stormchild', '=', '1');
+    rules.defineRule('features.Blindsight', 'features.Storm Lord', '=', '1');
+    // Bloodline Verdant
+    rules.defineRule('features.Tremorsense',
+      'features.Rooting', '=', '1',
+      'featureNotes.shepherdOfTheTrees', '=', '1'
+    );
+    Pathfinder.featureSpells(rules,
+      'Massmorph', 'Massmorph', 'charisma', classLevel, null,
+      ['Diminish Plants', 'Plant Growth', 'Tree Shape', '15:Plant Shape I',
+       '20:Plant Shape II']
+    );
+
   } else if(name == 'Wizard') {
 
     let allSchools = rules.getChoices('schools');
@@ -11998,152 +12135,6 @@ PFAPG.pathRulesExtra = function(rules, name) {
       ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
     rules.defineRule
       ('skillNotes.daring', pathLevel, '=', 'Math.floor(source / 3)');
-  // Sorcerer
-  } else if(name == 'Bloodline Aquatic') {
-    rules.defineRule
-      ('combatNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
-    rules.defineRule
-      ('damageReduction.Piercing', 'saveNotes.deepOne', '+=', '10');
-    rules.defineRule
-      ('featureNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
-    rules.defineRule
-      ('featureNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
-    rules.defineRule
-      ('featureNotes.blindsight', 'featureNotes.deepOne', '^=', '120');
-    rules.defineRule('features.Blindsense', 'featureNotes.deepOne', '=', '1');
-    rules.defineRule('features.Blindsight', 'featureNotes.deepOne', '=', '1');
-    rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
-    rules.defineRule
-      ('saveNotes.aquaticAdaptation(Sorcerer)', pathLevel, '?', 'source>=9');
-    Pathfinder.featureSpells(rules,
-      'Aquatic Telepathy', 'AquaticTelepathy', 'charisma', pathLevel, '',
-      ['Suggestion', '15:Demand', '15:Greater Planar Ally']
-    );
-    Pathfinder.featureSpells(rules,
-      'Raise The Deep', 'RaiseTheDeep', 'charisma', pathLevel, null,
-      ['Control Water']
-    );
-    Pathfinder.featureSpells(rules,
-      'Deep One', 'DeepOne', 'charisma', pathLevel, null,
-      ['Freedom Of Movement']
-    );
-  } else if (name == 'Bloodline Boreal') {
-    rules.defineRule('magicNotes.icewalker', pathLevel, '?', 'source>=9');
-    let allFeats = rules.getChoices('feats');
-    for(let f in allFeats) {
-      if(f.startsWith('Exotic Weapon Proficiency'))
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Boreal",');
-    }
-    rules.defineRule('casterLevels.Blizzard', pathLevel, '+=', null);
-    Pathfinder.featureSpells(rules,
-      'Blizzard (Sorcerer)', 'Blizzard', 'charisma', pathLevel, '',
-      ['Control Winds', 'Sleet Storm']
-    );
-    Pathfinder.featureSpells(rules,
-      'Icewalker', 'Icewalker', 'charisma', pathLevel, null, ['Spider Climb']
-    );
-    Pathfinder.featureSpells(rules,
-      'Snow Shroud', 'SnowShroud', 'charisma', pathLevel, null,
-      ['Fire Shield']
-    );
-  } else if (name == 'Bloodline Deep Earth') {
-    rules.defineRule
-      ('abilityNotes.earthGlide', pathLevel, '=', 'source + " min"');
-    rules.defineRule('abilityNotes.earthGlide.1',
-      'features.Earth Glide', '?', null,
-      pathLevel, '=', '" at half speed"'
-    );
-    rules.defineRule
-      ('damageReduction.Adamantine', 'combatNotes.strengthOfStone', '+=', '10');
-    rules.defineRule
-      ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
-    rules.defineRule
-      ('features.Tremorsense', pathLevel, '=', 'source>=9 ? 1 : null');
-    rules.defineRule('magicNotes.rockseer', pathLevel, '?', 'source>=15');
-    rules.defineRule
-      ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
-  } else if (name == 'Bloodline Dreamspun') {
-    rules.defineRule('combatNotes.combatPrecognition',
-      pathLevel, '=', 'Math.floor((source + 1) / 4)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Dreamshaper', 'Dreamshaper', 'charisma', pathLevel,
-      '10 + ' + pathLevel + '//2 + charismaModifier',
-      ['Modify Memory', 'Speak With Dead']
-    );
-    Pathfinder.featureSpells(rules,
-      'Eye Of Somnus', 'EyeOfSomnus', 'charisma', pathLevel, '',
-      ['Arcane Eye', 'Symbol Of Sleep']
-    );
-    Pathfinder.featureSpells(rules,
-      'Lullaby', 'Lullaby', 'charisma', pathLevel, '', ['Lullaby']
-    );
-  } else if (name == 'Bloodline Protean') {
-    let allFeats = rules.getChoices('feats');
-    for(let f in allFeats) {
-      if(f.startsWith('Skill Focus (Craft'))
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bloodline Protean",');
-    }
-    Pathfinder.featureSpells(rules,
-      'Spatial Tear', 'SpatialTear', 'charisma', pathLevel, '',
-      ['Black Tentacles', 'Dimension Door']
-    );
-  } else if (name == 'Bloodline Serpentine') {
-    rules.defineRule
-      ('combatNotes.snakeskin', pathLevel, '=', 'Math.floor((source-5) / 4)');
-    rules.defineRule('featureNotes.serpentfriend.1',
-      'featureNotes.serpentfriend', '?', null,
-      pathLevel, '=', 'source - 2'
-    );
-    rules.defineRule
-      ('familiarMasterLevel', 'featureNotes.serpentfriend.1', '+=', null);
-    rules.defineRule
-      ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
-    rules.defineRule
-      ('skillNotes.snakeskin', pathLevel, '=', 'Math.floor((source - 1) / 4)');
-    Pathfinder.featureSpells(rules,
-      'Den Of Vipers', 'DenOfVipers', 'charisma', pathLevel, '',
-      ['Creeping Doom']
-    );
-    Pathfinder.featureSpells(rules,
-      'Scaled Soul', 'ScaledSoul', 'charisma', pathLevel, null,
-      ['Alter Self', 'Beast Shape III']
-    );
-    Pathfinder.featureSpells(rules,
-      'Serpentfriend', 'Serpentfriend', 'charisma', pathLevel, '',
-      ['Speak With Animals']
-    );
-  } else if (name == 'Bloodline Shadow') {
-    Pathfinder.featureSpells(rules,
-      'Enveloping Darkness', 'EnvelopingDarkness', 'charisma', pathLevel, '',
-      ['Deeper Darkness']
-    );
-    Pathfinder.featureSpells(rules,
-      'Shadow Well', 'ShadowWell', 'charisma', pathLevel, null,
-      ['Dimension Door']
-    );
-  } else if (name == 'Bloodline Starsoul') {
-    rules.defineRule('featureNotes.voidwalker-1', pathLevel, '?', 'source>=9');
-    rules.defineRule
-      ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Aurora Borealis', 'AuroraBorealis', 'charisma', pathLevel,
-      '10 + ' + pathLevel + '//2 + charismaModifier', ['Wall Of Fire']
-    );
-  } else if (name == 'Bloodline Stormborn') {
-    rules.defineRule('featureNotes.stormchild', pathLevel, '?', 'source>=9');
-    rules.defineRule('features.Blindsense', 'features.Stormchild', '=', '1');
-    rules.defineRule('features.Blindsight', 'features.Storm Lord', '=', '1');
-  } else if (name == 'Bloodline Verdant') {
-    rules.defineRule('features.Tremorsense',
-      'features.Rooting', '=', '1',
-      'featureNotes.shepherdOfTheTrees', '=', '1'
-    );
-    Pathfinder.featureSpells(rules,
-      'Massmorph', 'Massmorph', 'charisma', pathLevel, null,
-      ['Diminish Plants', 'Plant Growth', 'Tree Shape', '15:Plant Shape I',
-       '20:Plant Shape II']
-    );
   }
 };
 
