@@ -77,11 +77,11 @@ PFAPG.ANIMAL_COMPANIONS = {
     'Size=M Speed=20' // Save F/R/W: B/G/G
 };
 PFAPG.ARMORS = {
-  'Agile Breastplate':'AC=6 Weight=2 Dex=3 Skill=4 Spell=25',
-  'Agile Half-Plate':'AC=8 Weight=2 Dex=0 Skill=7 Spell=40',
-  'Armored Coat':'AC=4 Weight=2 Dex=3 Skill=2 Spell=20',
-  'Quilted Cloth':'AC=1 Weight=1 Dex=8 Skill=0 Spell=10',
-  'Wooden':'AC=3 Weight=1 Dex=3 Skill=1 Spell=15'
+  'Agile Breastplate':'AC=6 Weight=Medium Dex=3 Skill=4 Spell=25',
+  'Agile Half-Plate':'AC=8 Weight=Medium Dex=0 Skill=7 Spell=40',
+  'Armored Coat':'AC=4 Weight=Medium Dex=3 Skill=2 Spell=20',
+  'Quilted Cloth':'AC=1 Weight=Light Dex=8 Skill=0 Spell=10',
+  'Wooden':'AC=3 Weight=Light Dex=3 Skill=1 Spell=15'
 };
 PFAPG.FAMILIARS = {
   // Attack, Dam, AC include all modifiers
@@ -5035,8 +5035,8 @@ PFAPG.SCHOOLS = {
       .replace('Grave Touch (Wizard)', 'Bolster')
 };
 PFAPG.SHIELDS = {
-  'Light Steel Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5',
-  'Light Wooden Quickdraw':'AC=1 Weight=1 Skill=2 Spell=5'
+  'Light Steel Quickdraw':'AC=1 Weight=Light Skill=2 Spell=5',
+  'Light Wooden Quickdraw':'AC=1 Weight=Light Skill=2 Spell=5'
 };
 // As noted below, the following two spell lists include Witch spells that are
 // restricted to particular patrons and Oracle spells that are restricted to
@@ -6654,28 +6654,28 @@ PFAPG.TRAITS = {
   // Already declared in Pathfinder.js
 };
 PFAPG.WEAPONS = {
-  'Bardiche':'Level=2 Category=2h Damage=d10 Threat=19',
-  'Battle Aspergillum':'Level=1 Category=Li Damage=d6',
-  'Bayonet':'Level=1 Category=2h Damage=d6',
-  'Bec De Corbin':'Level=2 Category=2h Damage=d10 Crit=3',
-  'Bill':'Level=2 Category=2h Damage=d8 Crit=3',
-  'Boar Spear':'Level=1 Category=2h Damage=d8',
-  'Boomerang':'Level=3 Category=R Damage=d6 Range=30',
-  'Brass Knuckles':'Level=0 Category=Un Damage=d3',
-  'Cestus':'Level=1 Category=Li Damage=d4 Threat=19',
-  'Chain Spear':'Level=3 Category=2h Damage=d6/d6',
-  'Chakram':'Level=2 Category=R Damage=d8 Range=30',
-  'Double Crossbow':'Level=3 Category=R Damage=d8 Threat=19 Range=80',
-  'Falcata':'Level=3 Category=1h Damage=d8 Threat=19 Crit=3',
-  'Glaive-Guisarme':'Level=2 Category=2h Damage=d10 Crit=3',
-  'Khopesh':'Level=3 Category=1h Damage=d8 Threat=19',
-  'Lucerne Hammer':'Level=2 Category=2h Damage=d12',
-  'Mancatcher':'Level=3 Category=2h Damage=d2',
-  'Pilum':'Level=2 Category=R Damage=d8 Range=20',
-  'Sword Cane':'Level=2 Category=1h Damage=d6',
-  'Swordbreaker Dagger':'Level=3 Category=Li Damage=d4',
-  'Temple Sword':'Level=3 Category=1h Damage=d8 Threat=19',
-  'Wooden Stake':'Level=1 Category=Li Damage=d4 Range=10'
+  'Bardiche':'Level=Martial Category=Two-Handed Damage=d10 Threat=19',
+  'Battle Aspergillum':'Level=Simple Category=Light Damage=d6',
+  'Bayonet':'Level=Simple Category=Two-Handed Damage=d6',
+  'Bec De Corbin':'Level=Martial Category=Two-Handed Damage=d10 Crit=3',
+  'Bill':'Level=Martial Category=Two-Handed Damage=d8 Crit=3',
+  'Boar Spear':'Level=Simple Category=Two-Handed Damage=d8',
+  'Boomerang':'Level=Exotic Category=Ranged Damage=d6 Range=30',
+  'Brass Knuckles':'Level=Unarmed Category=Unarmed Damage=d3',
+  'Cestus':'Level=Simple Category=Light Damage=d4 Threat=19',
+  'Chain Spear':'Level=Exotic Category=Two-Handed Damage=d6/d6',
+  'Chakram':'Level=Martial Category=Ranged Damage=d8 Range=30',
+  'Double Crossbow':'Level=Exotic Category=Ranged Damage=d8 Threat=19 Range=80',
+  'Falcata':'Level=Exotic Category=One-Handed Damage=d8 Threat=19 Crit=3',
+  'Glaive-Guisarme':'Level=Martial Category=Two-Handed Damage=d10 Crit=3',
+  'Khopesh':'Level=Exotic Category=One-Handed Damage=d8 Threat=19',
+  'Lucerne Hammer':'Level=Martial Category=Two-Handed Damage=d12',
+  'Mancatcher':'Level=Exotic Category=Two-Handed Damage=d2',
+  'Pilum':'Level=Martial Category=Ranged Damage=d8 Range=20',
+  'Sword Cane':'Level=Martial Category=One-Handed Damage=d6',
+  'Swordbreaker Dagger':'Level=Exotic Category=Light Damage=d4',
+  'Temple Sword':'Level=Exotic Category=One-Handed Damage=d8 Threat=19',
+  'Wooden Stake':'Level=Simple Category=Light Damage=d4 Range=10'
 };
 PFAPG.CLASSES = {
   'Alchemist':
@@ -9990,6 +9990,11 @@ PFAPG.classRulesExtra = function(rules, name) {
           ('paladinDomainLevel', 'paladinDomainLevels.' + domain, '^=', null);
       }
     }
+    for(let level = 1; level <= 9; level++) {
+      rules.defineRule('spellSlots.Domain' + level,
+        'paladinDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
+      );
+    }
 
   } else if(name == 'Antipaladin') {
 
@@ -10891,7 +10896,7 @@ PFAPG.featRulesExtra = function(rules, name) {
   } else if(name == 'Point-Blank Master') {
     let allWeapons = rules.getChoices('weapons');
     for(let w in allWeapons)
-      if(allWeapons[w].includes('Category=R'))
+      if(allWeapons[w].includes('Category=Ranged'))
         rules.defineRule('rangedWeaponSpecialization',
           'features.Weapon Specialization (' + w + ')', '+=', '1'
         );
