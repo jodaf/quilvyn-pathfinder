@@ -4853,107 +4853,6 @@ PFAPG.FEATURES = {
 
 };
 PFAPG.PATHS = {
-
-  // Sorcerer
-  'Bloodline Aquatic':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '"1:Dehydrating Touch","3:Aquatic Adaptation (Sorcerer)",' +
-      '"9:Aquatic Telepathy","15:Raise The Deep","20:Deep One" ' +
-    'Feats=' +
-      'Athletic,"Brew Potion","Defensive Combat Training",Dodge,Mobility,' +
-      '"Silent Spell","Skill Focus (Swim)",Toughness',
-  'Bloodline Boreal':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '"1:Cold Steel",3:Icewalker,"9:Snow Shroud","15:Blizzard (Sorcerer)",' +
-      '"20:Child Of Ancient Winters" ' +
-    'Feats=' +
-      // Also Exotic Weapon Proficiency (*), handled in classRulesExtra
-      '"Arcane Strike",Diehard,"Empower Spell",Endurance,"Power Attack",' +
-      '"Skill Focus (Intimidate)",Toughness',
-  'Bloodline Deep Earth':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Tremor,3:Rockseer,"9:Crystal Shard","15:Earth Glide",' +
-      '"20:Strength Of Stone" ' +
-    'Feats=' +
-      '"Acrobatic Steps",Alertness,Blind-Fight,"Forge Ring","Nimble Moves",' +
-      '"Skill Focus (Perception)",Stealthy,"Still Spell"',
-  'Bloodline Dreamspun':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Lullaby,"3:Combat Precognition",9:Dreamshaper,"15:Eye Of Somnus",' +
-      '20:Solipsism ' +
-    'Feats=' +
-      'Alertness,Blind-Fight,"Combat Expertise",Deceitful,"Heighten Spell",' +
-      '"Improved Feint",Persuasive,"Skill Focus (Sense Motive)"',
-  'Bloodline Protean':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Protoplasm,"3:Protean Resistances","9:Reality Wrinkle",' +
-      '"15:Spatial Tear","20:Avatar Of Chaos" ' +
-    'Feats=' +
-      // Also Skill Focus (Craft (*)), handled in classRulesExtra
-      '"Agile Maneuvers","Defensive Combat Training","Enlarge Spell",' +
-      '"Great Fortitude","Improved Great Fortitude",' +
-      '"Spell Focus (Abjuration)","Spell Focus (Conjuration)",' +
-      '"Spell Focus (Divination)","Spell Focus (Enchantment)",' +
-      '"Spell Focus (Evocation)","Spell Focus (Illusion)",' +
-      '"Spell Focus (Necromancy)","Spell Focus (Transmutation)",' +
-      'Toughness',
-  'Bloodline Serpentine':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '"1:Serpent\'s Fang",3:Serpentfriend,9:Snakeskin,"15:Den Of Vipers",' +
-      '"20:Scaled Soul" ' +
-    'Feats=' +
-      '"Combat Casting","Combat Reflexes",Deceitful,"Deft Hands",Persuasive,' +
-      '"Silent Spell","Skill Focus (Bluff)",Stealthy',
-  'Bloodline Shadow':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Shadowstrike,3:Nighteye,"9:Shadow Well","15:Enveloping Darkness",' +
-      '"20:Shadow Master (Sorcerer)" ' +
-    'Feats=' +
-      'Acrobatic,Blind-Fight,Dodge,"Quick Draw","Silent Spell",' +
-      '"Skill Focus (Stealth)",Stealthy,"Weapon Finesse"',
-  'Bloodline Starsoul':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '"1:Minute Meteors",3:Voidwalker,"9:Aurora Borealis",' +
-      '"15:Breaching The Gulf",20:Starborn ' +
-    'Feats=' +
-      'Blind-Fight,"Craft Rod",Dodge,Endurance,"Improved Counterspell",' +
-      '"Improved Iron Will","Iron Will","Quicken Spell",' +
-      '"Skill Focus (Perception)",Toughness',
-  'Bloodline Stormborn':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Thunderstaff,3:Stormchild,9:Thunderbolt,"15:Ride The Lightning",' +
-      '"20:Storm Lord" ' +
-    'Feats=' +
-      '"Deadly Aim",Dodge,"Enlarge Spell","Far Shot","Great Fortitude",' +
-      '"Point-Blank Shot","Skill Focus (Fly)","Wind Stance"',
-  'Bloodline Verdant':
-    'Group=Sorcerer ' +
-    'Level=levels.Sorcerer ' +
-    'Features=' +
-      '1:Tanglevine,3:Photosynthesis,9:Massmorph,15:Rooting,' +
-      '"20:Shepherd Of The Trees" ' +
-    'Feats=' +
-      '"Acrobatic Steps","Craft Staff",Endurance,"Extend Spell",Fleet,' +
-      '"Nimble Moves","Skill Focus (Knowledge (Nature))",Toughness'
-
 };
 PFAPG.RACES = {
   'Dwarf':
@@ -7766,21 +7665,13 @@ PFAPG.CLASSES = {
       '"paladinFeatures.Hospitaler ? 11:Aura Of Healing",' +
       '"paladinFeatures.Sacred Servant ? 4:Domain (Paladin)",' +
       '"paladinFeatures.Sacred Servant ? 8:Call Celestial Ally",' +
-/* TODO
-    'Selectables=' +
-      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 4:' + x + ':Domain"').join(',') + ' ' +
-    'SpellSlots=' +
-      'Domain1:4=0;5=1,' +
-      'Domain2:7=0;8=1,' +
-      'Domain3:10=0;11=1,' +
-      'Domain4:13=0;14=1',
-*/
       '"paladinFeatures.Shining Knight ? 3:Skilled Rider",' +
       '"paladinFeatures.Shining Knight ? 11:Knight\'s Charge",' +
       '"paladinFeatures.Undead Scourge ? 8:Aura Of Life",' +
       '"paladinFeatures.Undead Scourge ? 11:Undead Annihilation",' +
       '"paladinFeatures.Warrior Of The Holy Light ? 4:Power Of Faith",' +
-      '"paladinFeatures.Warrior Of The Holy Light ? 14:Shining Light" ' +
+      '"paladinFeatures.Warrior Of The Holy Light ? 14:Shining Light",' +
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('Domain')).map(x => x.replace('cleric', 'paladin').replace(/\d+/, x => Number(x) + 3)).join('","') + '" ' +
     'Selectables=' +
       '"1:Core Paladin:Archetype",' +
       '"1:Divine Defender:Archetype",' +
@@ -7790,7 +7681,8 @@ PFAPG.CLASSES = {
       '"1:Undead Scourge:Archetype",' +
       '"1:Warrior Of The Holy Light:Archetype",' +
       '"features.Divine Defender ? 5:Divine Bond (Armor):Divine Bond",' +
-      '"features.Sacred Servant ? 5:Divine Bond (Holy Symbol):Divine Bond"',
+      '"features.Sacred Servant ? 5:Divine Bond (Holy Symbol):Divine Bond",' +
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Selectables').filter(x => x.includes('Domain')).map(x => 'paladinFeatures.Sacred Servant && ' + x.replace('1:', '4:')).join('","') + '"',
   'Ranger':
     'Features=' +
       '"rangerFeatures.Beast Master || rangerFeatures.Horse Lord ? ' +
@@ -7957,6 +7849,57 @@ PFAPG.CLASSES = {
       '"1:Thug:Archetype",' +
       '"1:Trapsmith:Archetype"',
   'Sorcerer':
+    'Features=' +
+      '"sorcererFeatures.Bloodline Aquatic ? 1:Dehydrating Touch",' +
+      '"sorcererFeatures.Bloodline Aquatic ? 3:Aquatic Adaptation (Sorcerer)",'+
+      '"sorcererFeatures.Bloodline Aquatic ? 9:Aquatic Telepathy",' +
+      '"sorcererFeatures.Bloodline Aquatic ? 15:Raise The Deep",' +
+      '"sorcererFeatures.Bloodline Aquatic ? 20:Deep One",' +
+      '"sorcererFeatures.Bloodline Boreal ? 1:Cold Steel",' +
+      '"sorcererFeatures.Bloodline Boreal ? 3:Icewalker",' +
+      '"sorcererFeatures.Bloodline Boreal ? 9:Snow Shroud",' +
+      '"sorcererFeatures.Bloodline Boreal ? 15:Blizzard (Sorcerer)",' +
+      '"sorcererFeatures.Bloodline Boreal ? 20:Child Of Ancient Winters",' +
+      '"sorcererFeatures.Bloodline Deep Earth ? 1:Tremor",' +
+      '"sorcererFeatures.Bloodline Deep Earth ? 3:Rockseer",' +
+      '"sorcererFeatures.Bloodline Deep Earth ? 9:Crystal Shard",' +
+      '"sorcererFeatures.Bloodline Deep Earth ? 15:Earth Glide",' +
+      '"sorcererFeatures.Bloodline Deep Earth ? 20:Strength Of Stone",' +
+      '"sorcererFeatures.Bloodline Dreamspun ? 1:Lullaby",' +
+      '"sorcererFeatures.Bloodline Dreamspun ? 3:Combat Precognition",' +
+      '"sorcererFeatures.Bloodline Dreamspun ? 9:Dreamshaper",' +
+      '"sorcererFeatures.Bloodline Dreamspun ? 15:Eye Of Somnus",' +
+      '"sorcererFeatures.Bloodline Dreamspun ? 20:Solipsism",' +
+      '"sorcererFeatures.Bloodline Protean ? 1:Protoplasm",' +
+      '"sorcererFeatures.Bloodline Protean ? 3:Protean Resistances",' +
+      '"sorcererFeatures.Bloodline Protean ? 9:Reality Wrinkle",' +
+      '"sorcererFeatures.Bloodline Protean ? 15:Spatial Tear",' +
+      '"sorcererFeatures.Bloodline Protean ? 20:Avatar Of Chaos",' +
+      '"sorcererFeatures.Bloodline Serpentine ? 1:Serpent\'s Fang",' +
+      '"sorcererFeatures.Bloodline Serpentine ? 3:Serpentfriend",' +
+      '"sorcererFeatures.Bloodline Serpentine ? 9:Snakeskin",' +
+      '"sorcererFeatures.Bloodline Serpentine ? 15:Den Of Vipers",' +
+      '"sorcererFeatures.Bloodline Serpentine ? 20:Scaled Soul",' +
+      '"sorcererFeatures.Bloodline Shadow ? 1:Shadowstrike",' +
+      '"sorcererFeatures.Bloodline Shadow ? 3:Nighteye",' +
+      '"sorcererFeatures.Bloodline Shadow ? 9:Shadow Well",' +
+      '"sorcererFeatures.Bloodline Shadow ? 15:Enveloping Darkness",' +
+      '"sorcererFeatures.Bloodline Shadow ? 20:Shadow Master (Sorcerer)",' +
+      '"sorcererFeatures.Bloodline Starsoul ? 1:Minute Meteors",' +
+      '"sorcererFeatures.Bloodline Starsoul ? 3:Voidwalker",' +
+      '"sorcererFeatures.Bloodline Starsoul ? 9:Aurora Borealis",' +
+      '"sorcererFeatures.Bloodline Starsoul ? 15:Breaching The Gulf",' +
+      '"sorcererFeatures.Bloodline Starsoul ? 20:Starborn,' +
+      '"sorcererFeatures.Bloodline Stormborn ? 1:Thunderstaff",' +
+      '"sorcererFeatures.Bloodline Stormborn ? 3:Stormchild",' +
+      '"sorcererFeatures.Bloodline Stormborn ? 9:Thunderbolt",' +
+      '"sorcererFeatures.Bloodline Stormborn ? 15:Ride The Lightning",' +
+      '"sorcererFeatures.Bloodline Stormborn ? 20:Storm Lord",' +
+      '"sorcererFeatures.Bloodline Verdant ? 1:Tanglevine",' +
+      '"sorcererFeatures.Bloodline Verdant ? 3:Photosynthesis",' +
+      '"sorcererFeatures.Bloodline Verdant ? 9:Massmorph",' +
+      '"sorcererFeatures.Bloodline Verdant ? 15:Rooting",' +
+      '"sorcererFeatures.Bloodline Verdant ? 20:Shepherd Of The Trees" ' +
     'Selectables=' +
       '"1:Bloodline Aquatic:Bloodline",' +
       '"1:Bloodline Boreal:Bloodline",' +
@@ -8417,8 +8360,6 @@ PFAPG.identityRules = function(
   rules.defineRule('deityDomains',
     'deity', '=', QuilvynUtils.dictLit(rules.deityStats.domains) + '[source]'
   );
-  for(let path in paths)
-    PFAPG.pathRulesExtra(rules, path);
   for(let race in races)
     PFAPG.raceRulesExtra(rules, race);
 };
@@ -8478,8 +8419,11 @@ PFAPG.talentRules = function(
  * directly derived from the attributes passed to classRules.
  */
 PFAPG.classRulesExtra = function(rules, name) {
+
   let classLevel = 'levels.' + name;
+
   if(name == 'Alchemist') {
+
     rules.defineRule('combatNotes.bomb',
       // Master Chymist level does not change bombs/dy
       classLevel, '=', null,
@@ -8522,7 +8466,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('bombDamageModifier', 'intelligenceModifier', '=', null);
     rules.defineRule('weapons.Bomb', 'effectiveAlchemistLevel', '=', '1');
+
   } else if(name == 'Cavalier') {
+
     rules.defineRule('animalCompanionFeatures.Light Armor Proficiency',
       'companionNotes.mount', '=', '1'
     );
@@ -8567,7 +8513,39 @@ PFAPG.classRulesExtra = function(rules, name) {
       if(f in allFeats)
         allFeats[f] = allFeats[f].replace('Type=','Type="Order Of The Sword",');
     });
+    // Order Of The Cockatrice
+    rules.defineRule
+      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
+    // Order Of The Shield
+    rules.defineRule
+      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
+    // Order Of The Star
+    rules.defineRule('magicNotes.calling',
+      'magicNotes.calling.2', '=', 'source==1 ? "Channel Energy" : source==2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
+    );
+    rules.defineRule('magicNotes.calling.1',
+      'features.Calling', '?', null,
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('magicNotes.calling.2',
+      'features.Calling', '?', null,
+      'levels.Cleric', '+=', '1',
+      'levels.Paladin', '+=', '2'
+    );
+    rules.defineRule
+      ('magicNotes.layOnHands', 'magicNotes.calling.1', '+', null);
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.calling.1', '+', null);
+    // Order Of The Sword
+    rules.defineRule
+      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
+    // Reversal of Ride armor penalty is handled by Mount feature
+    rules.defineRule('skillModifier.Ride',
+      'skillNotes.mountedMastery', '+', 'null' // italics no-op
+    );
+
   } else if(name == 'Inquisitor') {
+
     let allDeities = rules.getChoices('deities');
     for(let d in allDeities) {
        QuilvynUtils.getAttrValueArray(allDeities[d], 'Weapon').forEach(w => {
@@ -8624,7 +8602,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law',
        '5:Discern Lies']
     );
+
   } else if(name == 'Oracle') {
+
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.lame-1.1', '*', 'source.includes("armor") ? 0 : null'
     );
@@ -8695,7 +8675,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=15 ? "understand and speak" : source>=10 ? "understand" : null'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
+
   } else if(name == 'Summoner') {
+
     rules.defineRule
       ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
     rules.defineRule('animalCompanionFeatures.Share Spells',
@@ -8995,7 +8977,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineEditorElement
       ('selectableFeatures', 'Selectable Features', 'setbag',
        'selectableFeatures', 'skills');
+
   } else if(name == 'Witch') {
+
     rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
     rules.defineRule
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
@@ -9064,7 +9048,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Weather Control Hex', 'WeatherControlHex', 'intelligence', classLevel,
       null, ['Control Weather']
     );
+
   } else if(name == 'Barbarian') {
+
     rules.defineRule
       ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
     rules.defineRule('armorClass',
@@ -9233,7 +9219,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
+
   } else if(name == 'Bard') {
+
     rules.defineRule('bardHasBardicKnowledge',
       classLevel, '=', '1',
       'bardFeatures.Arcane Strike', '=', '0',
@@ -9362,7 +9350,121 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
+    // Arcane Duelist
+    rules.defineRule('featureNotes.arcaneArmor',
+      classLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
+    );
+    rules.defineRule('features.Heavy Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', 'source=="Heavy" ? 1 : null'
+    );
+    rules.defineRule('features.Medium Armor Proficiency',
+      'featureNotes.arcaneArmor', '=', '1'
+    );
+    rules.defineRule('magicNotes.arcaneArmor',
+      classLevel, '=', 'source>=16 ? "heavy" : "medium"'
+    );
+    rules.defineRule('magicNotes.arcaneArmor.1',
+      'magicNotes.arcaneArmor', '=', 'source=="heavy" ? -3 : -2',
+      'armorWeight', '+', null
+    );
+    rules.defineRule('magicNotes.arcaneSpellFailure',
+      'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
+    );
+    // Archivist
+    rules.defineRule
+      ('skillNotes.loreMaster', classLevel, '^=', 'Math.floor((source+4) / 6)');
+    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
+      classLevel, '=', 'source>=11 ? "; all skills are class skills" : ""'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
+      classLevel, '=', 'source>=17 ? "; may take 10 on any skill" : ""'
+    );
+    // Court Bard
+    rules.defineRule('skillNotes.heraldicExpertise',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    // Detective
+    rules.defineRule('skillNotes.eyeForDetail',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.eyeForDetail-1',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    // Magician
+    rules.defineRule('skillModifier.Knowledge (Arcana)',
+      'skillNotes.magicalTalent', '+', 'null', // italics no-op
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillModifier.Spellcraft',
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillModifier.Use Magic Device',
+      'skillNotes.magicalTalent.1', '+', null
+    );
+    rules.defineRule('skillNotes.magicalTalent.1',
+      'features.Magical Talent', '?', null,
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    // Sandman
+    rules.defineRule
+      ('saveNotes.trapSense', classLevel, '+=', 'Math.floor(source / 3)');
+    rules.defineRule('skillModifier.Bluff',
+      'skillNotes.masterOfDeception', '+', 'null', // italics no-op
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Sleight Of Hand',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillModifier.Stealth',
+      'skillNotes.masterOfDeception.1', '+', null
+    );
+    rules.defineRule('skillNotes.masterOfDeception.1',
+      'features.Master Of Deception', '?', null,
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('sneakAttack', classLevel, '=', 'Math.floor(source / 5)');
+    // Savage Skald
+    Pathfinder.featureSpells(rules,
+      'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
+    );
+    // Sea Singer
+    rules.defineRule
+      ('familiarMasterLevel', classLevel, '+=', 'source>=2 ? source : null');
+    rules.defineRule('skillModifier.Knowledge (Geography)',
+      'skillNotes.worldTraveler', '+', 'null', // italics no-op
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Local)',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Knowledge (Nature)',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillModifier.Linguistics',
+      'skillNotes.worldTraveler.1', '+', null
+    );
+    rules.defineRule('skillNotes.worldTraveler.1',
+      'features.World Traveler', '?', null,
+      classLevel, '=', 'Math.floor(source / 2)'
+    );
+    Pathfinder.featureSpells(rules,
+      'Call The Storm', 'CallTheStorm', 'charisma', classLevel, '',
+      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
+    );
+    Pathfinder.featureSpells(rules,
+      'Whistle The Wind', 'WhistleTheWind', 'charisma', classLevel, null,
+      ['Gust Of Wind']
+    );
+    // Street Performer
+    rules.defineRule('skillNotes.streetwise',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    rules.defineRule('skillNotes.streetwise-1',
+      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+
   } else if(name == 'Druid') {
+
     rules.defineRule('classSkills.Knowledge (Geography)',
       classLevel, '=', 'null',
       'druidHasKnowledgeGeography', '=', 'source==1 ? 1 : null'
@@ -9512,7 +9614,125 @@ PFAPG.classRulesExtra = function(rules, name) {
       allNotes['validationNotes.druid-' + d.replaceAll(' ', '') + 'SelectableFeature'] =
         'Requires specific Druid archetype';
     });
+    // Animal Shaman
+    ['Bear', 'Eagle', 'Lion', 'Serpent', 'Wolf'].forEach(a => {
+      rules.defineRule('featCount.' + a + ' Shaman',
+        'features.' + a + ' Totem', '?', null,
+        'featureNotes.animalShamanFeatBonus', '=', null
+      );
+    });
+    rules.defineRule('featureNotes.animalShamanFeatBonus',
+      classLevel, '=', 'Math.floor((source - 5) / 4)'
+    );
+    rules.defineRule('magicNotes.totemicSummons',
+      'features.Bear Totem', '=', '"bear"',
+      'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
+      'features.Lion Totem', '=', '"feline"',
+      'features.Serpent Totem', '=', '"snake"',
+      'features.Wolf Totem', '=', '"canine"'
+    );
+    rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
+      'features.Animal Shaman', '?', null,
+      classLevel, '=', '1'
+    );
+    rules.defineRule('wildShapeLevel', 'features.Animal Shaman', '+', '-2');
+    let allFeats = rules.getChoices('feats');
+    ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
+     'Toughness'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
+    });
+    ['Flyby Attack', 'Improved Lightning Reflexes', 'Lightning Reflexes',
+     'Skill Focus (Perception)', 'Wind Stance'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Eagle Shaman",');
+    });
+    ['Dodge', 'Lunge', 'Improved Iron Will', 'Iron Will',
+     'Skill Focus (Acrobatics)'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Lion Shaman",');
+    });
+    ['Combat Expertise', 'Improved Feint', 'Skill Focus (Bluff)', 'Stealthy',
+     'Strike Back'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
+    });
+    ['Greater Trip', 'Improved Trip', 'Mobility', 'Skill Focus (Stealth)',
+     'Spring Attack'].forEach(f => {
+      if(f in allFeats)
+        allFeats[f] = allFeats[f].replace('Type=', 'Type="Wolf Shaman",');
+    });
+    // Aquatic Druid
+    rules.defineRule('abilityNotes.naturalSwimmer',
+      'speed', '=', 'Math.floor(source / 2)',
+      'abilityNotes.seaborn', '*', '2'
+    );
+    rules.defineRule('wildShapeLevel', 'features.Aquatic Druid', '+', '-2');
+    // Arctic Druid
+    rules.defineRule('wildShapeLevel', 'features.Arctic Druid', '+', '-2');
+    // Blight Druid
+    // TODO rules.defineRule('familiarMasterLevel', pathLevel, '+=', null);
+    // Cave Druid
+    // TODO
+    rules.defineRule('magicNotes.wildShape',
+      classLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium ooze" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large ooze" : ' +
+        '"diminutive-huge/elemental/large ooze"'
+    );
+    rules.defineRule('wildShapeLevel', 'features.Cave Druid', '+', '-2');
+    // Desert Druid
+    // TODO
+    rules.defineRule('magicNotes.wildShape',
+      classLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental/medium vermin" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large vermin" : ' +
+        '"diminutive-huge/elemental/huge vermin"'
+    );
+    rules.defineRule('wildShapeLevel', 'features.Desert Druid', '+', '-2');
+    // Jungle Druid
+    rules.defineRule('wildShapeLevel', 'features.Jungle Druid', '+', '-2');
+    Pathfinder.featureSpells(rules,
+      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', classLevel, null,
+      ['Tree Shape']
+    );
+    // Mountain Druid
+    // TODO
+    rules.defineRule('magicNotes.wildShape',
+      classLevel, '=',
+        'source < 6 ? null : ' +
+        'source < 8 ? "small-medium" : ' +
+        'source < 10 ? "tiny-large/small elemental" : ' +
+        'source < 12 ? "diminutive-huge/medium elemental" : ' +
+        'source < 14 ? "diminutive-huge/large elemental/large giant" : ' +
+        'source < 16 ? "diminutive-huge/elemental/large giant" : ' +
+        '"diminutive-huge/elemental/huge giant"'
+    );
+    rules.defineRule('wildShapeLevel', 'features.Mountain Druid', '+', '-2');
+    // Plains Druid
+    rules.defineRule('abilityNotes.runLikeTheWind.1',
+      'abilityNotes.runLikeTheWind', '?', null, // Italics
+      'armorWeight', '=', 'source <= 1 ? 1 : null'
+    );
+    rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
+    rules.defineRule('wildShapeLevel', 'features.Plains Druid', '+', '-2');
+    // Swamp Druid
+    Pathfinder.featureSpells(rules,
+      'Slippery', 'Slippery', 'wisdom', classLevel, null,
+      ['Freedom Of Movement']
+    );
+    rules.defineRule('wildShapeLevel', 'features.Swamp Druid', '+', '-2');
+    // Urban Druid
+    rules.defineRule('wildShapeLevel', 'features.Urban Druid', '+', '-4');
+
   } else if(name == 'Fighter') {
+
     rules.defineRule('fighterHasArmorMastery',
       classLevel, '=', '1',
       'fighterFeatures.Deadly Defense', '=', '0',
@@ -9579,7 +9799,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
+
   } else if(name == 'Monk') {
+
     ['Abundant Step', 'Diamond Body', 'Diamond Soul', 'Empty Body', 'Evasion',
      'High Jump', 'Improved Evasion', 'Maneuver Training', 'Perfect Self',
      'Purity Of Body', 'Quivering Palm', 'Slow Fall', 'Still Mind',
@@ -9699,7 +9921,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
+
   } else if(name == 'Paladin') {
+
     ['Aura Of Faith', 'Aura Of Justice', 'Aura Of Resolve',
      'Channel Positive Energy', 'Divine Health', 'Mercy',
      'Smite Evil'].forEach(f => {
@@ -9749,9 +9973,26 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Paladin (Domain)',
       'featureNotes.domain(Paladin)', '=', '1'
     );
+    rules.defineRule('casterLevels.Domain', 'paladinDomainLevel', '^=', null);
     rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Paladin', 'paladinHasSpells', '?', null);
+    for(let s in rules.getChoices('selectableFeatures')) {
+      if(s.match(/Paladin - .* Domain/)) {
+        let domain = s.replace('Paladin - ', '').replace(' Domain', '');
+        rules.defineRule('paladinDomainLevels.' + domain,
+          'paladinFeatures.' + domain + ' Domain', '?', null,
+          'levels.Paladin', '=', 'source>=4 ? source - 3 : null'
+        );
+        rules.defineRule('casterLevels.' + domain,
+          'paladinDomainLevels.' + domain, '^=', null
+        );
+        rules.defineRule
+          ('paladinDomainLevel', 'paladinDomainLevels.' + domain, '^=', null);
+      }
+    }
+
   } else if(name == 'Antipaladin') {
+
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
     rules.defineRule('combatNotes.fiendishWeapon',
@@ -9839,7 +10080,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Unholy Champion', 'UnholyChampion', 'charisma', classLevel, '',
       ['Banishment']
     );
+
   } else if(name == 'Ranger') {
+
     ['Camouflage', 'Endurance', 'Evasion', 'Favored Enemy', 'Favored Terrain',
      'Hide In Plain Sight', 'Improved Evasion', 'Improved Quarry',
      'Master Hunter', 'Quarry', 'Woodland Stride'].forEach(f => {
@@ -9942,7 +10185,9 @@ PFAPG.classRulesExtra = function(rules, name) {
         allSelectables[entry] =
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
+
   } else if(name == 'Rogue') {
+
     ['Improved Uncanny Dodge', 'Trapfinding', 'Trap Sense',
      'Uncanny Dodge'].forEach(f => {
       rules.defineRule
@@ -9995,7 +10240,89 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
+
+  } else if(name == 'Sorcerer') {
+
+    let allFeats = rules.getChoices('feats');
+    let bloodlineFeats = {
+      'Aquatic': [
+        'Athletic', 'Brew Potion', 'Defensive Combat Training', 'Dodge',
+        'Mobility', 'Silent Spell', 'Skill Focus (Swim)', 'Toughness'
+      ],
+      'Boreal': [
+        'Arcane Strike', 'Diehard', 'Empower Spell', 'Endurance',
+        'Power Attack', 'Skill Focus (Intimidate)', 'Toughness'
+      ],
+      'Deep Earth': [
+        'Acrobatic Steps', 'Alertness', 'Blind-Fight', 'Forge Ring',
+        'Nimble Moves', 'Skill Focus (Perception)', 'Stealthy', 'Still Spell'
+      ],
+      'Dreamspun': [
+        'Alertness', 'Blind-Fight', 'Combat Expertise', 'Deceitful',
+        'Heighten Spell', 'Improved Feint', 'Persuasive',
+        'Skill Focus (Sense Motive)'
+      ],
+      'Protean': [
+        'Agile Maneuvers', 'Defensive Combat Training', 'Enlarge Spell',
+        'Great Fortitude', 'Improved Great Fortitude', 'Toughness'
+      ],
+      'Serpentine': [
+        'Combat Casting', 'Combat Reflexes', 'Deceitful', 'Deft Hands',
+        'Persuasive', 'Silent Spell', 'Skill Focus (Bluff)', 'Stealthy'
+      ],
+      'Shadow': [
+        'Acrobatic', 'Blind-Fight', 'Dodge', 'Quick Draw', 'Silent Spell',
+        'Skill Focus (Stealth)', 'Stealthy', 'Weapon Finesse'
+      ],
+      'Starsoul': [
+        'Blind-Fight', 'Craft Rod', 'Dodge', 'Endurance',
+        'Improved Counterspell', 'Improved Iron Will', 'Iron Will',
+        'Quicken Spell', 'Skill Focus (Perception)', 'Toughness'
+      ],
+      'Stormborn': [
+        'Deadly Aim', 'Dodge', 'Enlarge Spell', 'Far Shot', 'Great Fortitude',
+        'Point-Blank Shot', 'Skill Focus (Fly)', 'Wind Stance'
+      ],
+      'Verdant': [
+        'Acrobatic Steps', 'Craft Staff', 'Endurance', 'Extend Spell', 'Fleet',
+        'Nimble Moves', 'Skill Focus (Knowledge (Nature))', 'Toughness'
+      ]
+    };
+    for(let f in allFeats) {
+      if(f.startsWith('Exotic Weapon Proficiency'))
+        bloodlineFeats['Boreal'].push(f);
+      else if(f.startsWith('Skill Focus (Craft'))
+        bloodlineFeats['Protean'].push(f);
+      else if(f.startsWith('Spell Focus'))
+        bloodlineFeats['Protean'].push(f);
+    }
+
+    for(let s in rules.getChoices('selectableFeatures')) {
+      if(!s.match(/Sorcerer - Bloodline .*/))
+        continue;
+      let bloodline =
+        s.replace('Sorcerer - Bloodline ', '').replace(/ \(.*\)/, '');
+      rules.defineRule('bloodlineLevels.' + bloodline,
+        'features.Bloodline ' +  bloodline, '?', null,
+        'levels.Sorcerer', '+=', null
+      );
+      rules.defineRule('featCount.Bloodline ' + bloodline,
+        'features.Bloodline ' + bloodline, '?', null,
+        classLevel, '+=', 'source>=7 ? Math.floor((source - 1) / 6) : null'
+      );
+      (bloodlineFeats[bloodline] || []).forEach(f => {
+        let attrs = allFeats[f];
+        if(attrs == null) {
+          console.log('Feat "' + f + '" undefined for bloodline ' + bloodline);
+        } else {
+          allFeats[f] =
+            attrs.replace(/Type=/, 'Type="Bloodline ' + bloodline + '",');
+        }
+      });
+    }
+
   } else if(name == 'Wizard') {
+
     let allSchools = rules.getChoices('schools');
     for(let s in allSchools) {
       if(!(s in PFAPG.SCHOOLS))
@@ -10133,7 +10460,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'wizardFeatures.Augment', '=', '0',
       'wizardFeatures.Battleshaping', '=', '0'
     );
+
   } else if(name == 'Battle Herald') {
+
     rules.defineRule('bannerLevel', classLevel, '+=', null);
     rules.defineRule('inspireCourageLevel',
       classLevel, '=', null,
@@ -10166,7 +10495,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.voiceOfAuthority', classLevel, '=', null);
     rules.defineRule
       ('tacticianLevel', 'featureNotes.voiceOfAuthority', '+', null);
+
   } else if(name == 'Holy Vindicator') {
+
     rules.defineRule('channelLevel', classLevel, '+=', null);
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
@@ -10186,7 +10517,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Stigmata', 'Stigmata', 'wisdom', 'casterLevel', '',
       ['Bleed', 'Stabilize']
     );
+
   } else if(name == 'Horizon Walker') {
+
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
       'abilityNotes.terrainMastery(Plains).1', '^', 'source <= 2 ? 0 : null'
     );
@@ -10251,7 +10584,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Terrain Dominance (Urban)', 'UrbanDominance', 'charisma', 'level',
       '', ['Charm Person']
     );
+
   } else if(name == 'Master Chymist') {
+
     rules.defineRule('bloodlineDraconicLevel', classLevel, '+=', null);
     ['Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red',
      'Silver', 'White'].forEach(c => {
@@ -10287,7 +10622,9 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Master Chymist (Advanced Mutagen)',
       'featureNotes.advancedMutagen', '=', null
     );
+
   } else if(name == 'Master Spy') {
+
     rules.defineRule('combatNotes.deathAttack', classLevel, '+=', null);
     rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
     rules.defineRule('skillNotes.artOfDeception', classLevel, '=', null);
@@ -10297,7 +10634,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Nonmagical Aura', 'NonmagicalAura', 'charisma', 'level', '',
       ['Magic Aura']
     );
+
   } else if(name == 'Nature Warden') {
+
     let allClasses =
      Object.assign({}, rules.getChoices('levels'),
                        rules.getChoices('prestiges'),
@@ -10356,7 +10695,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Companion Soul', 'CompanionSoul', 'charisma', classLevel, '',
       ['Scrying', 'Raise Dead']
     );
+
   } else if(name == 'Rage Prophet') {
+
     rules.defineRule('combatNotes.savageSeer', classLevel, '=', null);
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - (source>=8 ? 2 : source>=5 ? 1 : 0)'
@@ -10365,7 +10706,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Spirit Guide', 'SpiritGuide', 'charisma', classLevel, '',
       ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
     );
+
   } else if(name == 'Stalwart Defender') {
+
     rules.defineRule('combatNotes.armorClassBonus(StalwartDefender)',
       classLevel, '=', 'Math.floor((source + 2) / 3)'
     );
@@ -10399,7 +10742,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       else
         console.log('Cannot find note ' + note);
     });
+
   }
+
 };
 
 /*
@@ -11084,150 +11429,6 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
       ['7:Clairaudience/Clairvoyance']
     );
-  // Cavalier
-  } else if(name == 'Order Of The Cockatrice') {
-    rules.defineRule
-      ('features.Dazzling Display', 'featureNotes.braggart', '=', '1');
-  } else if(name == 'Order Of The Shield') {
-    rules.defineRule
-      ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
-  } else if(name == 'Order Of The Star') {
-    rules.defineRule('magicNotes.calling',
-      'magicNotes.calling.2', '=', 'source==1 ? "Channel Energy" : source==2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
-    );
-    rules.defineRule('magicNotes.calling.1',
-      'features.calling', '?', null,
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.calling.2',
-      'features.Calling', '?', null,
-      'levels.Cleric', '+=', '1',
-      'levels.Paladin', '+=', '2'
-    );
-    rules.defineRule
-      ('magicNotes.layOnHands', 'magicNotes.calling.1', '+', null);
-    rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.calling.1', '+', null);
-  } else if(name == 'Order Of The Sword') {
-    rules.defineRule
-      ('featCount.Order Of The Sword', 'featureNotes.mountedMastery', '=', '1');
-    // Reversal of Ride armor penalty is handled by Mount feature
-    rules.defineRule('skillModifier.Ride',
-      'skillNotes.mountedMastery', '+', 'null' // italics no-op
-    );
-  // Bard
-  } else if(name == 'Arcane Duelist') {
-    rules.defineRule('featureNotes.arcaneArmor',
-      pathLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
-    );
-    rules.defineRule('features.Heavy Armor Proficiency',
-      'featureNotes.arcaneArmor', '=', 'source=="Heavy" ? 1 : null'
-    );
-    rules.defineRule('features.Medium Armor Proficiency',
-      'featureNotes.arcaneArmor', '=', '1'
-    );
-    rules.defineRule('magicNotes.arcaneArmor',
-      pathLevel, '=', 'source>=16 ? "heavy" : "medium"'
-    );
-    rules.defineRule('magicNotes.arcaneArmor.1',
-      'magicNotes.arcaneArmor', '=', 'source=="heavy" ? -3 : -2',
-      'armorWeight', '+', null
-    );
-    rules.defineRule('magicNotes.arcaneSpellFailure',
-      'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
-    );
-  } else if(name == 'Archivist') {
-    rules.defineRule
-      ('skillNotes.loreMaster', pathLevel, '^=', 'Math.floor((source+4) / 6)');
-    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
-      pathLevel, '=', 'source>=11 ? "; all skills are class skills" : ""'
-    );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
-      pathLevel, '=', 'source>=17 ? "; may take 10 on any skill" : ""'
-    );
-  } else if(name == 'Court Bard') {
-    rules.defineRule('skillNotes.heraldicExpertise',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name == 'Detective') {
-    rules.defineRule('skillNotes.eyeForDetail',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.eyeForDetail-1',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name == 'Magician') {
-    rules.defineRule('skillModifier.Knowledge (Arcana)',
-      'skillNotes.magicalTalent', '+', 'null', // italics no-op
-      'skillNotes.magicalTalent.1', '+', null
-    );
-    rules.defineRule('skillModifier.Spellcraft',
-      'skillNotes.magicalTalent.1', '+', null
-    );
-    rules.defineRule('skillModifier.Use Magic Device',
-      'skillNotes.magicalTalent.1', '+', null
-    );
-    rules.defineRule('skillNotes.magicalTalent.1',
-      'features.Magical Talent', '?', null,
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-  } else if(name == 'Sandman') {
-    rules.defineRule
-      ('saveNotes.trapSense', pathLevel, '+=', 'Math.floor(source / 3)');
-    rules.defineRule('skillModifier.Bluff',
-      'skillNotes.masterOfDeception', '+', 'null', // italics no-op
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillModifier.Sleight Of Hand',
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillModifier.Stealth',
-      'skillNotes.masterOfDeception.1', '+', null
-    );
-    rules.defineRule('skillNotes.masterOfDeception.1',
-      'features.Master Of Deception', '?', null,
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('sneakAttack', pathLevel, '=', 'Math.floor(source / 5)');
-  } else if(name == 'Savage Skald') {
-    Pathfinder.featureSpells(rules,
-      'Incite Rage', 'InciteRage', 'charisma', pathLevel, '', ['Rage']
-    );
-  } else if(name == 'Sea Singer') {
-    rules.defineRule
-      ('familiarMasterLevel', pathLevel, '+=', 'source>=2 ? source : null');
-    rules.defineRule('skillModifier.Knowledge (Geography)',
-      'skillNotes.worldTraveler', '+', 'null', // italics no-op
-      'skillNotes.worldTraveler.1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Local)',
-      'skillNotes.worldTraveler.1', '+', null
-    );
-    rules.defineRule('skillModifier.Knowledge (Nature)',
-      'skillNotes.worldTraveler.1', '+', null
-    );
-    rules.defineRule('skillModifier.Linguistics',
-      'skillNotes.worldTraveler.1', '+', null
-    );
-    rules.defineRule('skillNotes.worldTraveler.1',
-      'features.World Traveler', '?', null,
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Call The Storm', 'CallTheStorm', 'charisma', pathLevel, '',
-      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
-    );
-    Pathfinder.featureSpells(rules,
-      'Whistle The Wind', 'WhistleTheWind', 'charisma', pathLevel, null,
-      ['Gust Of Wind']
-    );
-  } else if(name == 'Street Performer') {
-    rules.defineRule('skillNotes.streetwise',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('skillNotes.streetwise-1',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
   // Cleric
   } else if(name == 'Agathion Subdomain') {
     Pathfinder.featureSpells(rules,
@@ -11293,120 +11494,6 @@ PFAPG.pathRulesExtra = function(rules, name) {
       'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
       pathLevel, null, ['Endure Elements']
     );
-  // Druid
-  } else if(name == 'Animal Shaman') {
-    ['Bear', 'Eagle', 'Lion', 'Serpent', 'Wolf'].forEach(a => {
-      rules.defineRule('featCount.' + a + ' Shaman',
-        'features.' + a + ' Totem', '?', null,
-        'featureNotes.animalShamanFeatBonus', '=', null
-      );
-    });
-    rules.defineRule('featureNotes.animalShamanFeatBonus',
-      pathLevel, '=', 'Math.floor((source - 5) / 4)'
-    );
-    rules.defineRule('magicNotes.totemicSummons',
-      'features.Bear Totem', '=', '"bear"',
-      'features.Eagle Totem', '=', '"eagle, roc, or giant eagle"',
-      'features.Lion Totem', '=', '"feline"',
-      'features.Serpent Totem', '=', '"snake"',
-      'features.Wolf Totem', '=', '"canine"'
-    );
-    rules.defineRule('selectableFeatureCount.Animal Shaman (Totem)',
-      'features.Animal Shaman', '?', null,
-      pathLevel, '=', '1'
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-    let allFeats = rules.getChoices('feats');
-    ['Diehard', 'Endurance', 'Great Fortitude', 'Improved Great Fortitude',
-     'Toughness'].forEach(f => {
-      if(f in allFeats)
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Bear Shaman",');
-    });
-    ['Flyby Attack', 'Improved Lightning Reflexes', 'Lightning Reflexes',
-     'Skill Focus (Perception)', 'Wind Stance'].forEach(f => {
-      if(f in allFeats)
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Eagle Shaman",');
-    });
-    ['Dodge', 'Lunge', 'Improved Iron Will', 'Iron Will',
-     'Skill Focus (Acrobatics)'].forEach(f => {
-      if(f in allFeats)
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Lion Shaman",');
-    });
-    ['Combat Expertise', 'Improved Feint', 'Skill Focus (Bluff)', 'Stealthy',
-     'Strike Back'].forEach(f => {
-      if(f in allFeats)
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Serpent Shaman",');
-    });
-    ['Greater Trip', 'Improved Trip', 'Mobility', 'Skill Focus (Stealth)',
-     'Spring Attack'].forEach(f => {
-      if(f in allFeats)
-        allFeats[f] = allFeats[f].replace('Type=', 'Type="Wolf Shaman",');
-    });
-  } else if(name == 'Aquatic Druid') {
-    rules.defineRule('abilityNotes.naturalSwimmer',
-      'speed', '=', 'Math.floor(source / 2)',
-      'abilityNotes.seaborn', '*', '2'
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Arctic Druid') {
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Blight Druid') {
-    rules.defineRule('familiarMasterLevel', 'blightDruidLevel', '+=', null);
-  } else if(name == 'Cave Druid') {
-    rules.defineRule('magicNotes.wildShape',
-      pathLevel, '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental/medium ooze" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large ooze" : ' +
-        '"diminutive-huge/elemental/large ooze"'
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Desert Druid') {
-    rules.defineRule('magicNotes.wildShape',
-      pathLevel, '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental/medium vermin" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large vermin" : ' +
-        '"diminutive-huge/elemental/huge vermin"'
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Jungle Druid') {
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-    Pathfinder.featureSpells(rules,
-      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', pathLevel, null,
-      ['Tree Shape']
-    );
-  } else if(name == 'Mountain Druid') {
-    rules.defineRule('magicNotes.wildShape',
-      pathLevel, '=',
-        'source < 6 ? null : ' +
-        'source < 8 ? "small-medium" : ' +
-        'source < 10 ? "tiny-large/small elemental" : ' +
-        'source < 12 ? "diminutive-huge/medium elemental" : ' +
-        'source < 14 ? "diminutive-huge/large elemental/large giant" : ' +
-        'source < 16 ? "diminutive-huge/elemental/large giant" : ' +
-        '"diminutive-huge/elemental/huge giant"'
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Plains Druid') {
-    rules.defineRule('abilityNotes.runLikeTheWind.1',
-      'abilityNotes.runLikeTheWind', '?', null, // Italics
-      'armorWeight', '=', 'source <= 1 ? 1 : null'
-    );
-    rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Swamp Druid') {
-    Pathfinder.featureSpells(rules,
-      'Slippery', 'Slippery', 'wisdom', pathLevel, null,
-      ['Freedom Of Movement']
-    );
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-2');
-  } else if(name == 'Urban Druid') {
-    rules.defineRule('wildShapeLevel', pathLevel, '+', '-4');
   // Fighter
   } else if(name == 'Archer') {
     rules.defineRule('combatNotes.expertArcher',
