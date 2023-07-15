@@ -4125,7 +4125,6 @@ Pathfinder.CLASSES = {
       '"druidFeatures.Weather Domain ? 1:Storm Burst",' +
       '"druidFeatures.Weather Domain ? 8:Lightning Lord" ' +
     'Selectables=' +
-      '"1:Animal Companion:Nature Bond",' +
       '"1:Air Domain:Nature Bond",' +
       '"1:Animal Domain:Nature Bond",' +
       '"1:Earth Domain:Nature Bond",' +
