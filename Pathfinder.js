@@ -5233,7 +5233,6 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   }
   if(type != 'Feature' && type != 'Path' && type != 'Spell') {
     type = type == 'Class' ? 'levels' :
-    type = type == 'Deity' ? 'deities' :
     (type.substring(0,1).toLowerCase() + type.substring(1).replaceAll(' ', '') + 's');
     rules.addChoice(type, name, attrs);
   }
