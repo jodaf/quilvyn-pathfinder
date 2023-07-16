@@ -7399,7 +7399,7 @@ PFAPG.CLASSES = {
       '"druidFeatures.Desert Druid ? 9:Shaded Vision",' +
       '"druidFeatures.Desert Druid ? 13:Dunemeld",' +
       '"druidFeatures.Jungle Druid ? 2:Jungle Guardian",' +
-      '"druidFeatures.Jungle Druid ? 3:Woodland Stride",' +
+      // From level 2 '"druidFeatures.Jungle Druid ? 3:Woodland Stride",'+
       '"druidFeatures.Jungle Druid ? 4:Torrid Endurance",' +
       '"druidFeatures.Jungle Druid ? 13:Verdant Sentinel",' +
       '"druidFeatures.Mountain Druid ? 2:Mountaineer",' +
@@ -7419,7 +7419,7 @@ PFAPG.CLASSES = {
       '"druidFeatures.Urban Druid ? 1:Spontaneous Casting",' +
       '"druidFeatures.Urban Druid ? 2:Lorekeeper",' +
       '"druidFeatures.Urban Druid ? 4:Resist Temptation",' +
-      '"druidFeatures.Urban Druid ? 6:A Thousand Faces",' +
+      // From level 13 '"druidFeatures.Urban Druid ? 6:A Thousand Faces",' +
       '"druidFeatures.Urban Druid ? 9:Mental Strength",' +
       '"druidFeatures.Animal Shaman ? 5:Totemic Summons",' +
       '"druidFeatures.Animal Shaman ? 9:Animal Shaman Feat Bonus",' +
@@ -9495,143 +9495,66 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
-    // Archivists get Jack-Of-All-Trades and Lore Master early
-    rules.defineRule('archivistLevel',
-      'features.Archivist', '?', null,
-      classLevel, '=', null
-    );
-    rules.defineRule('bardFeatures.Jack-Of-All-Trades',
-      'archivistLevel', '=', 'source>=5 ? 1 : null'
-    );
-    rules.defineRule('bardFeatures.Lore Master',
-      'archivistLevel', '=', 'source>=2 ? 1 : null'
-    );
-    rules.defineRule('bardHasBardicKnowledge',
-      classLevel, '=', '1',
-      'bardFeatures.Arcane Strike', '=', '0',
-      'bardFeatures.Eye For Detail', '=', '0',
-      'bardFeatures.Heraldic Expertise', '=', '0',
-      'bardFeatures.Magical Talent', '=', '0',
-      'bardFeatures.Master Of Deception', '=', '0',
-      'bardFeatures.Streetwise', '=', '0',
-      'bardFeatures.World Traveler', '=', '0'
-    );
-    rules.defineRule('bardHasCountersong',
-      classLevel, '=', '1',
-      'bardFeatures.Gladhanding', '=', '0',
-      'bardFeatures.Improved Counterspell', '=', '0',
-      'bardFeatures.Rallying Cry', '=', '0',
-      'bardFeatures.Sea Shanty', '=', '0'
-    );
-    rules.defineRule('bardHasDeadlyPerformance',
-      classLevel, '=', '1',
-      'bardFeatures.Spell Catching', '=', '0'
-    );
-    rules.defineRule('bardHasDirgeOfDoom',
-      classLevel, '=', '1',
-      'bardFeatures.Glorious Epic', '=', '0',
-      'bardFeatures.Spell Suppression', '=', '0'
-    );
-    rules.defineRule('bardHasFascinate',
-      classLevel, '=', '1',
-      'bardFeatures.Inspiring Blow', '=', '0'
-    );
-    rules.defineRule('bardHasFrighteningTune',
-      classLevel, '=', '1',
-      'bardFeatures.Metamagic Mastery (Bard)', '=', '0',
-      'bardFeatures.Scandal', '=', '0'
-    );
-    rules.defineRule('bardHasInspireCompetence',
-      classLevel, '=', '1',
-      'bardFeatures.Harmless Performer', '=', '0',
-      'bardFeatures.Mockery', '=', '0',
-      'bardFeatures.Still Water', '=', '0',
-      'bardFeatures.Trap Sense', '=', '0'
-    );
-    rules.defineRule('bardHasInspireCourage',
-      classLevel, '=', '1',
-      'bardFeatures.Careful Teamwork', '=', '0',
-      'bardFeatures.Disappearing Act', '=', '0',
-      'bardFeatures.Dweomercraft', '=', '0',
-      'bardFeatures.Naturalist', '=', '0',
-      'bardFeatures.Satire', '=', '0',
-      'bardFeatures.Stealspell', '=', '0'
-    );
-    rules.defineRule('bardHasInspireGreatness',
-      classLevel, '=', '1',
-      'bardFeatures.Dramatic Subtext', '=', '0',
-      'bardFeatures.Madcap Prank', '=', '0',
-      'bardFeatures.True Confession', '=', '0'
-    );
-    rules.defineRule('bardHasInspireHeroics',
-      classLevel, '=', '1',
-      'bardFeatures.Greater Stealspell', '=', '0',
-      'bardFeatures.Show Yourselves', '=', '0',
-      'bardFeatures.Slip Through The Crowd', '=', '0'
-    );
-    rules.defineRule('bardHasJackOfAllTrades',
-      classLevel, '=', '1',
-      'bardFeatures.Arcane Armor', '=', '0',
-      // Archivist Probable Path shifts Jack-Of-All-Trades to earlier level
-      'bardFeatures.Song Of The Fallen', '=', '0',
-      'bardFeatures.Wand Mastery', '=', '0',
-      'bardFeatures.Wide Audience', '=', '0'
-    );
-    rules.defineRule('bardHasLoreMaster',
-      classLevel, '=', '1',
-      'bardFeatures.Arcane Bond (Bard)', '=', '0',
-      // Archivist Jack-Of-All-Trades shifts Lore Master to earlier level
-      'bardFeatures.Quick Change', '=', '0',
-      'bardFeatures.Sneak Attack', '=', '0',
-      'bardFeatures.Wide Audience', '=', '0'
-    );
-    rules.defineRule('bardHasMassSuggestion',
-      classLevel, '=', '1',
-      'bardFeatures.Battle Song', '=', '0',
-      'bardFeatures.Call The Storm', '=', '0',
-      'bardFeatures.Mass Bladethirst', '=', '0',
-      'bardFeatures.Mass Slumber Song', '=', '0',
-      'bardFeatures.Pedantic Lecture', '=', '0'
-    );
-    rules.defineRule('bardHasSoothingPerformance',
-      classLevel, '=', '1',
-      'bardFeatures.Berserkergang', '=', '0'
-    );
-    rules.defineRule('bardHasSuggestion',
-      classLevel, '=', '1',
-      'bardFeatures.Bladethirst', '=', '0',
-      'bardFeatures.Incite Rage', '=', '0',
-      'bardFeatures.Lamentable Belaborment', '=', '0',
-      'bardFeatures.Slumber Song', '=', '0',
-      'bardFeatures.Whistle The Wind', '=', '0'
-    );
-    rules.defineRule('bardHasVersatilePerformance',
-      classLevel, '=', '1',
-      'bardFeatures.Arcane Investigation', '=', '0',
-      'bardFeatures.Expanded Repertoire', '=', '0',
-      'bardFeatures.Familiar', '=', '0',
-      'bardFeatures.Sneakspell', '=', '0',
-      // Easier to list these two archetypes rather than their features
-      'bardFeatures.Archivist', '=', '0',
-      'bardFeatures.Arcane Duelist', '=', '0'
-    );
-    rules.defineRule('bardHasWellVersed',
-      classLevel, '=', '1',
-      'bardFeatures.Arcane Insight', '=', '0',
-      'bardFeatures.Extended Performance', '=', '0',
-      'bardFeatures.Magic Lore', '=', '0',
-      'bardFeatures.Sea Legs', '=', '0',
-      // Easier to list this archetype rather than its feature
-      'bardFeatures.Arcane Duelist', '=', '0'
-    );
-    ['Bardic Knowledge', 'Countersong', 'Deadly Performance', 'Dirge Of Doom',
-     'Fascinate', 'Frightening Tune', 'Inspire Competence', 'Inspire Courage',
-     'Inspire Greatness', 'Inspire Heroics', 'Jack-Of-All-Trades',
-     'Lore Master', 'Mass Suggestion', 'Soothing Performance', 'Suggestion',
-     'Versatile Performance', 'Well-Versed'].forEach(f => {
-      rules.defineRule
-        ('bardFeatures.' + f, 'bardHas' + f.replaceAll(/ |-/g, ''), '?', null);
-    });
+    let featureReplacements = {
+      'Bardic Knowledge':[
+        'Arcane Strike', 'Heraldic Expertise', 'Eye For Detail',
+        'Magical Talent', 'Master Of Deception', 'World Traveler', 'Streetwise'
+      ],
+      'Countersong':[
+        'Rallying Cry', 'Improved Counterspell', 'Sea Shanty', 'Gladhanding'
+      ],
+      'Deadly Performance':['Spell Catching'],
+      'Dirge Of Doom':['Glorious Epic', 'Spell Suppression'],
+      'Fascinate':['Inspiring Blow'],
+      'Frightening Tune':['Scandal', 'Metamagic Mastery (Bard)'],
+      'Inspire Competence':[
+        'Mockery', 'Trap Sense', 'Still Water', 'Harmless Performer'
+      ],
+      'Inspire Courage':[
+        'Naturalist', 'Satire', 'Careful Teamwork', 'Dweomercraft',
+        'Stealspell', 'Disappearing Act'
+      ],
+      'Inspire Greatness':[
+        'True Confession', 'Dramatic Subtext', 'Madcap Prank'
+      ],
+      'Inspire Heroics':[
+        'Show Yourselves', 'Greater Stealspell', 'Slip Through The Crowd'
+      ],
+      'Jack-Of-All-Trades':[
+        'Arcane Armor', 'Wide Audience', 'Wand Mastery', 'Song Of The Fallen'
+      ],
+      'Lore Master':[
+        'Arcane Bond (Bard)', 'Wide Audience', 'Sneak Attack', 'Quick Change'
+      ],
+      'Mass Suggestion':[
+        'Mass Bladethirst', 'Pedantic Lecture', 'Mass Slumber Song',
+        'Battle Song', 'Call The Storm'
+      ],
+      'Soothing Performance':['Berserkergang'],
+      'Suggestion':[
+        'Bladethirst', 'Lamentable Belaborment', 'Slumber Song', 'Incite Rage',
+        'Whistle The Wind'
+      ],
+      'Versatile Performance':[
+        // Easier to list Arcane Duelist and Archivist instead of features
+        'Arcane Duelist', 'Archivist', 'Arcane Investigation',
+        'Expanded Repertoire', 'Sneakspell', 'Familiar'
+      ],
+      'Well-Versed':[
+        // Easier to list Arcane Duelist instead of features
+        'Arcane Duelist', 'Magic Lore', 'Arcane Insight',
+        'Extended Performance', 'Sea Legs'
+      ]
+    };
+    for(let f in featureReplacements) {
+      let hasVar = 'bardHas' + f.replaceAll(/[- ]/g, '');
+      rules.defineRule(hasVar, classLevel, '=', '1');
+      featureReplacements[f].forEach(r => {
+        rules.defineRule(hasVar, 'bardFeatures.' + r, '=', '0');
+      });
+      rules.defineRule('bardFeatures.' + f, hasVar, '?', 'source==1');
+    };
+
     rules.defineRule
       ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
     // Arcane Duelist
@@ -9655,18 +9578,25 @@ PFAPG.classRulesExtra = function(rules, name) {
       'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
     );
     // Archivist
+    // Archivists get Jack-Of-All-Trades and Lore Master early
     rules.defineRule('archivistLevel',
       'bardFeatures.Archivist', '?', null,
       'levels.Bard', '=', null
     );
-    rules.defineRule('skillNotes.loreMaster',
-      'archivistLevel', '^=', 'Math.floor((source+4) / 6)'
+    rules.defineRule('bardFeatures.Jack-Of-All-Trades',
+      'archivistLevel', '=', 'source>=5 ? 1 : null'
+    );
+    rules.defineRule('bardFeatures.Lore Master',
+      'archivistLevel', '=', 'source>=2 ? 1 : null'
     );
     rules.defineRule('skillNotes.jack-Of-All-Trades-1',
       'archivistLevel', '=', 'source>=11 ? 1 : null'
     );
     rules.defineRule('skillNotes.jack-Of-All-Trades.1',
       'archivistLevel', '=', 'source>=17 ? "; may take 10 on any skill" : ""'
+    );
+    rules.defineRule('skillNotes.loreMaster',
+      'archivistLevel', '^=', 'Math.floor((source+4) / 6)'
     );
     // Court Bard
     rules.defineRule('skillNotes.heraldicExpertise',
@@ -9795,9 +9725,9 @@ PFAPG.classRulesExtra = function(rules, name) {
           'features.' + s + ' Subdomain', '?', null,
           'levels.Cleric', '=', null
         );
-        rules.defineRule('casterLevels.' + d, 'casterLevels.' + s, '^=', null);
         rules.defineRule
-          ('features.' + d + ' Domain', 'casterLevels.' + s, '=', '1');
+          ('clericDomainFeatures.' + d, 'casterLevels.' + s, '=', '1');
+        rules.defineRule('casterLevels.' + d, 'casterLevels.' + s, '^=', null);
         // Clerics w/no deity don't need to match deity domain
         rules.defineRule('validationNotes.cleric-' + s.replaceAll(' ', '') + 'SubdomainSelectableFeature',
           'deity', '+', 'source == "None" ? 1 : null'
@@ -9941,109 +9871,73 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Druid') {
 
+    let featureReplacements = {
+      'A Thousand Faces':[
+        'Deep Diver', 'Flurry Form', 'Plaguebearer', 'Dunemeld',
+        'Verdant Sentinel', 'Mountain Stone', 'Evasion', 'Slippery',
+        'Totemic Summons'
+      ],
+      'Nature Sense':['Cavesense'],
+      "Resist Nature's Lure":[
+        "Resist Ocean's Fury", 'Arctic Endurance', 'Miasma',
+        'Resist Subterranean Corruption', 'Desert Endurance',
+        'Torrid Endurance', 'Spire Walker', 'Savanna Ambush', 'Pond Scum',
+        'Resist Temptation'
+      ],
+      'Spontaneous Druid Spell':['Spontaneous Casting'],
+      'Trackless Step':[
+        // Easier to list Blight/Swamp Druid rather than their features
+        'Natural Swimmer', 'Icewalking', 'Blight Druid', 'Lightfoot',
+        'Sandwalker', 'Jungle Druid', 'Sure-Footed (Druid)',
+        'Run Like The Wind', 'Swamp Strider', 'Lorekeeper'
+      ],
+      'Venom Immunity':[
+        'Seaborn', 'Snowcaster', 'Blightblooded', 'Shaded Vision',
+        'Mountain Stance', 'Canny Charger', 'Mental Strength',
+        'Animal Shaman Feat Bonus'
+      ],
+      'Wild Empathy':['Vermin Empathy'],
+      'Woodland Stride':[
+        'Aquatic Adaptation', 'Arctic Native', 'Tunnelrunner', 'Desert Native',
+        'Mountaineer', 'Plains Traveler', 'Marshwight', 'Lorekeeper'
+      ]
+    };
+    for(let f in featureReplacements) {
+      let hasVar = 'druidHas' + f.replaceAll(/[ ']/g, '');
+      rules.defineRule(hasVar, classLevel, '=', '1');
+      featureReplacements[f].forEach(r => {
+        rules.defineRule(hasVar, 'druidFeatures.' + r, '=', '0');
+      });
+      rules.defineRule('druidFeatures.' + f, hasVar, '?', 'source==1');
+    };
     rules.defineRule('classSkills.Knowledge (Geography)',
       classLevel, '=', 'null',
       'druidHasKnowledgeGeography', '=', 'source==1 ? 1 : null'
     );
     rules.defineRule('druidHasKnowledgeGeography',
       classLevel, '=', '1',
-      'druidFeatures.Cavesense', '=', '0'
-    );
-    rules.defineRule('druidHasAThousandFaces',
-      classLevel, '=', '1',
-      'druidFeatures.Deep Diver', '=', '0',
-      'druidFeatures.Dunemeld', '=', '0',
-      'druidFeatures.Evasion', '=', '0',
-      'druidFeatures.Flurry Form', '=', '0',
-      'druidFeatures.Mountain Stone', '=', '0',
-      'druidFeatures.Plaguebearer', '=', '0',
-      'druidFeatures.Slippery', '=', '0',
-      'druidFeatures.Totemic Summons', '=', '0',
-      'druidFeatures.Verdant Sentinel', '=', '0'
-    );
-    rules.defineRule('druidHasNatureSense',
-      classLevel, '=', '1',
-      'druidFeatures.Cavesense', '=', '0'
-    );
-    rules.defineRule('druidHasResistNaturesLure',
-      classLevel, '=', '1',
-      'druidFeatures.Arctic Endurance', '=', '0',
-      'druidFeatures.Desert Endurance', '=', '0',
-      'druidFeatures.Miasma', '=', '0',
-      'druidFeatures.Pond Scum', '=', '0',
-      "druidFeatures.Resist Ocean's Fury", '=', '0',
-      'druidFeatures.Resist Subterranean Corruption', '=', '0',
-      'druidFeatures.Resist Temptation', '=', '0',
-      'druidFeatures.Savanna Ambush', '=', '0',
-      'druidFeatures.Spire Walker', '=', '0',
-      'druidFeatures.Torrid Endurance', '=', '0'
-    );
-    rules.defineRule('druidHasSpontaneousDruidSpell',
-      classLevel, '=', '1',
-      'druidFeatures.Spontaneous Casting', '=', '0'
-    );
-    rules.defineRule('druidHasTracklessStep',
-      classLevel, '=', '1',
-      'druidFeatures.Icewalking', '=', '0',
-      'druidFeatures.Lightfoot', '=', '0',
-      'druidFeatures.Lorekeeper', '=', '0',
-      'druidFeatures.Natural Swimmer', '=', '0',
-      'druidFeatures.Run Like The Wind', '=', '0',
-      'druidFeatures.Sandwalker', '=', '0',
-      'druidFeatures.Swamp Strider', '=', '0',
-      'druidFeatures.Sure-Footed (Druid)', '=', '0',
-      // Easier to list these two archetypes rather than their features
-      'druidFeatures.Blight Druid', '=', '0',
-      'druidFeatures.Jungle Druid', '=', '0'
-    );
-    rules.defineRule('druidHasVenomImmunity',
-      classLevel, '=', '1',
-      'druidFeatures.Blightblooded', '=', '0',
-      'druidFeatures.Canny Charger', '=', '0',
-      'druidFeatures.Mental Strength', '=', '0',
-      'druidFeatures.Mountain Stance', '=', '0',
-      'druidFeatures.Seaborn', '=', '0',
-      'druidFeatures.Shaded Vision', '=', '0',
-      'druidFeatures.Snowcaster', '=', '0',
-      'druidFeatures.Animal Shaman Feat Bonus', '=', '0'
-    );
-    rules.defineRule('druidHasWildEmpathy',
-      classLevel, '=', '1',
-      'druidFeatures.Vermin Empathy', '=', '0'
-    );
-    rules.defineRule('druidHasWildShape',
-      classLevel, '=', '1',
-      'aquaticDruidLevel', '=', 'source>=6 ? null : 0',
-      'arcticDruidLevel', '=', 'source>=6 ? null : 0',
-      'caveDruidLevel', '=', 'source>=6 ? null : 0',
-      'desertDruidLevel', '=', 'source>=6 ? null : 0',
-      'jungleDruidLevel', '=', 'source>=6 ? null : 0',
-      'mountainDruidLevel', '=', 'source>=6 ? null : 0',
-      'plainsDruidLevel', '=', 'source>=6 ? null : 0',
-      'swampDruidLevel', '=', 'source>=6 ? null : 0',
-      'urbanDruidLevel', '=', 'source>=8 ? null : 0',
-      'animalShamanLevel', '=', 'source>=6 ? null : 0'
+      'druidFeatures.Cave Druid', '=', '0'
     );
     rules.defineRule('druidHasWoodlandStride',
-      classLevel, '=', '1',
-      'druidFeatures.Aquatic Adaptation', '=', '0',
-      'druidFeatures.Arctic Native', '=', '0',
-      'druidFeatures.Desert Native', '=', '0',
-      'druidFeatures.Lorekeeper', '=', '0',
-      'druidFeatures.Marshwight', '=', '0',
-      'druidFeatures.Mountaineer', '=', '0',
-      'druidFeatures.Plains Traveler', '=', '0',
-      'druidFeatures.Tunnelrunner', '=', '0',
       // Woodland Stride for a Jungle Druid is delayed rather than replaced
       'jungleDruidLevel', '=', 'source>=3 ? null : 0'
     );
-    ['A Thousand Faces', 'Nature Sense', "Resist Nature's Lure",
-     'Spontaneous Druid Spell', 'Trackless Step', 'Venom Immunity',
-     'Wild Empathy', 'Wild Shape', 'Woodland Stride'].forEach(f => {
-      rules.defineRule('druidFeatures.' + f,
-        'druidHas' + f.replaceAll(/ |'/g, ''), '?', null
-      );
-    });
+    rules.defineRule('druidFeatures.A Thousand Faces',
+      // Urban Druid gets ATF early
+      'urbanDruidLevel', '=', 'source>=6 ? 1 : null'
+    );
+    rules.defineRule('druidFeatures.Wild Shape',
+      'wildShapeLevel', '?', 'source >= 4'
+    );
+
+    rules.defineRule('jungleDruidLevel',
+      'druidFeatures.Jungle Druid', '?', null,
+      classLevel, '=', null
+    );
+    rules.defineRule('urbanDruidLevel',
+      'druidFeatures.Urban Druid', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule
       ('selectableFeatureCount.Druid (Archetype)', classLevel, '=', '1');
     // Extend Nature Bond validations w/APG restrictions
@@ -10147,10 +10041,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     // Arctic Druid
     rules.defineRule('wildShapeLevel', 'features.Arctic Druid', '+', '-2');
     // Blight Druid
-    // TODO rules.defineRule('familiarMasterLevel', pathLevel, '+=', null);
+    rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
     // Cave Druid
-    // TODO
-    rules.defineRule('magicNotes.wildShape',
+    rules.defineRule('caveDruidWildShape',
+      'druidFeatures.Cave Druid', '?', null,
       classLevel, '=',
         'source < 6 ? null : ' +
         'source < 8 ? "small-medium" : ' +
@@ -10160,9 +10054,14 @@ PFAPG.classRulesExtra = function(rules, name) {
         '"diminutive-huge/elemental/large ooze"'
     );
     rules.defineRule('wildShapeLevel', 'features.Cave Druid', '+', '-2');
-    // Desert Druid
-    // TODO
     rules.defineRule('magicNotes.wildShape',
+      'caveDruidWildShape', '=', null,
+      'desertDruidWildShape', '=', null,
+      'mountainDruidWildShape', '=', null
+    );
+    // Desert Druid
+    rules.defineRule('desertDruidWildShape',
+      'druidFeatures.Desert Druid', '?', null,
       classLevel, '=',
         'source < 6 ? null : ' +
         'source < 8 ? "small-medium" : ' +
@@ -10179,8 +10078,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Tree Shape']
     );
     // Mountain Druid
-    // TODO
-    rules.defineRule('magicNotes.wildShape',
+    rules.defineRule('mountainDruidWildShape',
+      'druidFeatures.Mountain Druid', '?', null,
       classLevel, '=',
         'source < 6 ? null : ' +
         'source < 8 ? "small-medium" : ' +
