@@ -1870,7 +1870,7 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Successful Bull Rush during rage inflicts %V HP"',
   'Laughing Touch':
     'Section=magic Note="Touch inflicts laughter for 1 rd %V/dy"',
-  'Leadership (Nobility)':
+  'Leadership (Cleric)':
     'Section=feature,feature ' +
     'Note=' +
       '"Has Leadership feature",' +
@@ -3969,77 +3969,77 @@ Pathfinder.CLASSES = {
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Simple)",' +
       '1:Aura,"1:Channel Energy","1:Spontaneous Cleric Spell",' +
-      '"clericFeatures.Air Domain ? 1:Lightning Arc",' +
-      '"clericFeatures.Air Domain ? 6:Electricity Resistance",' +
-      '"clericFeatures.Animal Domain ? 1:Speak With Animals",' +
-      '"clericFeatures.Animal Domain ? 4:Animal Companion",' +
-      '"clericFeatures.Artifice Domain ? 1:Artificer\'s Touch",' +
-      '"clericFeatures.Artifice Domain ? 8:Dancing Weapons",' +
-      '"clericFeatures.Chaos Domain ? 1:Touch Of Chaos",' +
-      '"clericFeatures.Chaos Domain ? 8:Chaos Blade",' +
-      '"clericFeatures.Charm Domain ? 1:Dazing Touch",' +
-      '"clericFeatures.Charm Domain ? 8:Charming Smile",' +
-      '"clericFeatures.Community Domain ? 1:Calming Touch",' +
-      '"clericFeatures.Community Domain ? 8:Unity",' +
-      '"clericFeatures.Darkness Domain ? 1:Blind-Fight",' +
-      '"clericFeatures.Darkness Domain ? 1:Touch Of Darkness",' +
-      '"clericFeatures.Darkness Domain ? 8:Eyes Of Darkness",' +
-      '"clericFeatures.Death Domain ? 1:Bleeding Touch",' +
-      '"clericFeatures.Death Domain ? 8:Death\'s Embrace",' +
-      '"clericFeatures.Destruction Domain ? 1:Destructive Smite",' +
-      '"clericFeatures.Destruction Domain ? 8:Destructive Aura",' +
-      '"clericFeatures.Earth Domain ? 1:Acid Dart",' +
-      '"clericFeatures.Earth Domain ? 6:Acid Resistance",' +
-      '"clericFeatures.Evil Domain ? 1:Touch Of Evil",' +
-      '"clericFeatures.Evil Domain ? 8:Scythe Of Evil",' +
-      '"clericFeatures.Fire Domain ? 1:Fire Bolt",' +
-      '"clericFeatures.Fire Domain ? 6:Fire Resistance",' +
-      '"clericFeatures.Glory Domain ? 1:Undead Bane",' +
-      '"clericFeatures.Glory Domain ? 1:Touch Of Glory",' +
-      '"clericFeatures.Glory Domain ? 8:Divine Presence",' +
-      '"clericFeatures.Good Domain ? 1:Touch Of Good",' +
-      '"clericFeatures.Good Domain ? 8:Holy Lance",' +
-      '"clericFeatures.Healing Domain ? 1:Rebuke Death",' +
-      '"clericFeatures.Healing Domain ? 6:Healer\'s Blessing",' +
-      '"clericFeatures.Knowledge Domain ? 1:Lore Keeper",' +
-      '"clericFeatures.Knowledge Domain ? 6:Remote Viewing",' +
-      '"clericFeatures.Law Domain ? 1:Touch Of Law",' +
-      '"clericFeatures.Law Domain ? 8:Staff Of Order",' +
-      '"clericFeatures.Liberation Domain ? 1:Liberation",' +
-      '"clericFeatures.Liberation Domain ? 8:Freedom\'s Call",' +
-      '"clericFeatures.Luck Domain ? 1:Bit Of Luck",' +
-      '"clericFeatures.Luck Domain ? 6:Good Fortune",' +
-      '"clericFeatures.Madness Domain ? 1:Vision Of Madness",' +
-      '"clericFeatures.Madness Domain ? 8:Aura Of Madness",' +
-      '"clericFeatures.Magic Domain ? 1:Hand Of The Acolyte",' +
-      '"clericFeatures.Magic Domain ? 8:Dispelling Touch",' +
-      '"clericFeatures.Nobility Domain ? 1:Inspiring Word",' +
-      '"clericFeatures.Nobility Domain ? 8:Leadership (Nobility)",' +
-      '"clericFeatures.Plant Domain ? 1:Wooden Fist",' +
-      '"clericFeatures.Plant Domain ? 6:Bramble Armor",' +
-      '"clericFeatures.Protection Domain ? 1:Save Bonus",' +
-      '"clericFeatures.Protection Domain ? 1:Resistant Touch",' +
-      '"clericFeatures.Protection Domain ? 8:Aura Of Protection",' +
-      '"clericFeatures.Repose Domain ? 1:Gentle Rest",' +
-      '"clericFeatures.Repose Domain ? 8:Ward Against Death",' +
-      '"clericFeatures.Rune Domain ? 1:Scribe Scroll",' +
-      '"clericFeatures.Rune Domain ? 1:Blast Rune",' +
-      '"clericFeatures.Rune Domain ? 8:Spell Rune",' +
-      '"clericFeatures.Strength Domain ? 1:Strength Surge (Cleric)",' +
-      '"clericFeatures.Strength Domain ? 8:Might Of The Gods",' +
-      '"clericFeatures.Sun Domain ? 1:Sun\'s Blessing",' +
-      '"clericFeatures.Sun Domain ? 8:Nimbus Of Light",' +
-      '"clericFeatures.Travel Domain ? 1:Travel Speed",' +
-      '"clericFeatures.Travel Domain ? 1:Agile Feet",' +
-      '"clericFeatures.Travel Domain ? 8:Dimensional Hop",' +
-      '"clericFeatures.Trickery Domain ? 1:Copycat",' +
-      '"clericFeatures.Trickery Domain ? 8:Master\'s Illusion",' +
-      '"clericFeatures.War Domain ? 1:Battle Rage",' +
-      '"clericFeatures.War Domain ? 8:Weapon Master",' +
-      '"clericFeatures.Water Domain ? 1:Icicle",' +
-      '"clericFeatures.Water Domain ? 6:Cold Resistance",' +
-      '"clericFeatures.Weather Domain ? 1:Storm Burst",' +
-      '"clericFeatures.Weather Domain ? 8:Lightning Lord" ' +
+      '"features.Air Domain ? 1:Lightning Arc",' +
+      '"features.Air Domain ? 6:Electricity Resistance",' +
+      '"features.Animal Domain ? 1:Speak With Animals",' +
+      '"features.Animal Domain ? 4:Animal Companion",' +
+      '"features.Artifice Domain ? 1:Artificer\'s Touch",' +
+      '"features.Artifice Domain ? 8:Dancing Weapons",' +
+      '"features.Chaos Domain ? 1:Touch Of Chaos",' +
+      '"features.Chaos Domain ? 8:Chaos Blade",' +
+      '"features.Charm Domain ? 1:Dazing Touch",' +
+      '"features.Charm Domain ? 8:Charming Smile",' +
+      '"features.Community Domain ? 1:Calming Touch",' +
+      '"features.Community Domain ? 8:Unity",' +
+      '"features.Darkness Domain ? 1:Blind-Fight",' +
+      '"features.Darkness Domain ? 1:Touch Of Darkness",' +
+      '"features.Darkness Domain ? 8:Eyes Of Darkness",' +
+      '"features.Death Domain ? 1:Bleeding Touch",' +
+      '"features.Death Domain ? 8:Death\'s Embrace",' +
+      '"features.Destruction Domain ? 1:Destructive Smite",' +
+      '"features.Destruction Domain ? 8:Destructive Aura",' +
+      '"features.Earth Domain ? 1:Acid Dart",' +
+      '"features.Earth Domain ? 6:Acid Resistance",' +
+      '"features.Evil Domain ? 1:Touch Of Evil",' +
+      '"features.Evil Domain ? 8:Scythe Of Evil",' +
+      '"features.Fire Domain ? 1:Fire Bolt",' +
+      '"features.Fire Domain ? 6:Fire Resistance",' +
+      '"features.Glory Domain ? 1:Undead Bane",' +
+      '"features.Glory Domain ? 1:Touch Of Glory",' +
+      '"features.Glory Domain ? 8:Divine Presence",' +
+      '"features.Good Domain ? 1:Touch Of Good",' +
+      '"features.Good Domain ? 8:Holy Lance",' +
+      '"features.Healing Domain ? 1:Rebuke Death",' +
+      '"features.Healing Domain ? 6:Healer\'s Blessing",' +
+      '"features.Knowledge Domain ? 1:Lore Keeper",' +
+      '"features.Knowledge Domain ? 6:Remote Viewing",' +
+      '"features.Law Domain ? 1:Touch Of Law",' +
+      '"features.Law Domain ? 8:Staff Of Order",' +
+      '"features.Liberation Domain ? 1:Liberation",' +
+      '"features.Liberation Domain ? 8:Freedom\'s Call",' +
+      '"features.Luck Domain ? 1:Bit Of Luck",' +
+      '"features.Luck Domain ? 6:Good Fortune",' +
+      '"features.Madness Domain ? 1:Vision Of Madness",' +
+      '"features.Madness Domain ? 8:Aura Of Madness",' +
+      '"features.Magic Domain ? 1:Hand Of The Acolyte",' +
+      '"features.Magic Domain ? 8:Dispelling Touch",' +
+      '"features.Nobility Domain ? 1:Inspiring Word",' +
+      '"features.Nobility Domain ? 8:Leadership (Cleric)",' +
+      '"features.Plant Domain ? 1:Wooden Fist",' +
+      '"features.Plant Domain ? 6:Bramble Armor",' +
+      '"features.Protection Domain ? 1:Save Bonus",' +
+      '"features.Protection Domain ? 1:Resistant Touch",' +
+      '"features.Protection Domain ? 8:Aura Of Protection",' +
+      '"features.Repose Domain ? 1:Gentle Rest",' +
+      '"features.Repose Domain ? 8:Ward Against Death",' +
+      '"features.Rune Domain ? 1:Scribe Scroll",' +
+      '"features.Rune Domain ? 1:Blast Rune",' +
+      '"features.Rune Domain ? 8:Spell Rune",' +
+      '"features.Strength Domain ? 1:Strength Surge (Cleric)",' +
+      '"features.Strength Domain ? 8:Might Of The Gods",' +
+      '"features.Sun Domain ? 1:Sun\'s Blessing",' +
+      '"features.Sun Domain ? 8:Nimbus Of Light",' +
+      '"features.Travel Domain ? 1:Travel Speed",' +
+      '"features.Travel Domain ? 1:Agile Feet",' +
+      '"features.Travel Domain ? 8:Dimensional Hop",' +
+      '"features.Trickery Domain ? 1:Copycat",' +
+      '"features.Trickery Domain ? 8:Master\'s Illusion",' +
+      '"features.War Domain ? 1:Battle Rage",' +
+      '"features.War Domain ? 8:Weapon Master",' +
+      '"features.Water Domain ? 1:Icicle",' +
+      '"features.Water Domain ? 6:Cold Resistance",' +
+      '"features.Weather Domain ? 1:Storm Burst",' +
+      '"features.Weather Domain ? 8:Lightning Lord" ' +
     'Selectables=' +
       '"deityDomains =~ \'Air\' ? 1:Air Domain:Domain",' +
       '"deityDomains =~ \'Animal\' ? 1:Animal Domain:Domain",' +
