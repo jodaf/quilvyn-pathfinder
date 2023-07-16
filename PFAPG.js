@@ -2457,7 +2457,7 @@ PFAPG.FEATURES = {
     'Note="After foe miss, may teleport 10\' within foe threat range %{wisdomModifier+3}/dy"',
   'Surge':
     'Section=combat ' +
-    'Note="Wave inflicts %{levels.Cleric+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
+    'Note="Wave inflicts +%{levels.Cleric-0+wisdomModifier} CMB bull rush or drag %{wisdomModifier+3}/dy"',
   'Thief Of The Gods':
     'Section=skill ' +
     'Note="May take higher of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-6)//2}/dy"',
@@ -6765,9 +6765,10 @@ PFAPG.CLASSES = {
       '"1:Stern Gaze","2:Cunning Initiative","2:Detect Alignment",2:Track,' +
       '"3:Solo Tactics","3:Teamwork Feat (Inquisitor)",5:Bane,' +
       '"5:Discern Lies","8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
-      '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment" '+
+      '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment",'+
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('Domain')).map(x => x.replace('cleric', 'inquisitor')).join('","') + '" ' +
     'Selectables=' +
-      QuilvynUtils.getKeys(Pathfinder.PATHS).filter(x => x.match(/Domain$/)).map(x => '"deityDomains =~ \'' + x.replace(' Domain', '') + '\' ? 1:' + x + ':Domain"').join(',') + ' ' +
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Selectables').filter(x => x.includes('Domain')).join('","') + '" ' +
     'CasterLevelDivine=levels.Inquisitor ' +
     'SpellAbility=wisdom ' +
     'SpellSlots=' +
@@ -7058,7 +7059,7 @@ PFAPG.CLASSES = {
   'Barbarian':
     'Features=' +
       '"barbarianFeatures.Breaker ? 1:Destructive",' +
-      '"barbarianFeatures.Breaker ? 3:Battle Scavenger" ' +
+      '"barbarianFeatures.Breaker ? 3:Battle Scavenger",' +
       '"barbarianFeatures.Brutal Pugilist ? 2:Savage Grapple",' +
       '"barbarianFeatures.Brutal Pugilist ? 3:Pit Fighter",' +
       '"barbarianFeatures.Brutal Pugilist ? 5:Improved Savage Grapple",' +
@@ -7072,7 +7073,7 @@ PFAPG.CLASSES = {
       '"barbarianFeatures.Savage Barbarian ? 3:Naked Courage",' +
       '"barbarianFeatures.Savage Barbarian ? 7:Natural Toughness",' +
       '"barbarianFeatures.Superstitious ? 3:Sixth Sense",' +
-      '"barbarianFeatures.Superstitious ? 7:Keen Senses (Barbarian) ' +
+      '"barbarianFeatures.Superstitious ? 7:Keen Senses (Barbarian)" ' +
     'Selectables=' +
       '"barbarianFeatures.Lesser Beast Totem ? 6:Beast Totem",' +
       '"barbarianFeatures.Beast Totem ? 10:Greater Beast Totem",' +
@@ -7139,7 +7140,7 @@ PFAPG.CLASSES = {
     'Features=' +
       '"bardFeatures.Arcane Duelist ? 1:Arcane Strike",' +
       '"bardFeatures.Arcane Duelist ? 1:Rallying Cry",' +
-      '"bardFeatures.Arcane Duelist ? 6:Bladethirst,",' +
+      '"bardFeatures.Arcane Duelist ? 6:Bladethirst",' +
       '"bardFeatures.Arcane Duelist ? 18:Mass Bladethirst",' +
       '"bardFeatures.Arcane Duelist ? 2:Combat Casting",' +
       '"bardFeatures.Arcane Duelist ? 6:Disruptive",' +
@@ -7152,9 +7153,9 @@ PFAPG.CLASSES = {
       '"bardFeatures.Archivist ? 1:Naturalist",' +
       '"bardFeatures.Archivist ? 6:Lamentable Belaborment",' +
       '"bardFeatures.Archivist ? 18:Pedantic Lecture",' +
-      '"bardFeatures.Archivist ? 2:Lore Master",' +
+      // Moved from level 5 '"bardFeatures.Archivist ? 2:Lore Master",' +
       '"bardFeatures.Archivist ? 2:Magic Lore",' +
-      '"bardFeatures.Archivist ? 5:Jack-Of-All-Trades",' +
+      // Moved from level 10 '"bardFeatures.Archivist ? 5:Jack-Of-All-Trades",'+
       '"bardFeatures.Archivist ? 10:Probable Path",' +
       '"bardFeatures.Court Bard ? 1:Satire",' +
       '"bardFeatures.Court Bard ? 3:Mockery",' +
@@ -7204,7 +7205,7 @@ PFAPG.CLASSES = {
       '"bardFeatures.Street Performer ? 9:Madcap Prank",' +
       '"bardFeatures.Street Performer ? 15:Slip Through The Crowd",' +
       '"bardFeatures.Street Performer ? 1:Gladhanding",' +
-      '"bardFeatures.Street Performer ? 1:Streetwise,' +
+      '"bardFeatures.Street Performer ? 1:Streetwise",' +
       '"bardFeatures.Street Performer ? 5:Quick Change" ' +
     'Selectables=' +
       '"1:Arcane Duelist:Archetype",' +
@@ -7222,10 +7223,10 @@ PFAPG.CLASSES = {
       '"clericFeatures.Agathion Subdomain ? 8:Protective Aura",' +
       '"clericFeatures.Ancestors Subdomain ? 8:Speak With Dead",' +
       '"clericFeatures.Arcane Subdomain ? 1:Arcane Beacon",' +
-      '"clericFeatures.Archon Good Subomain || ' +
+      '"clericFeatures.Archon Good Subdomain || ' +
        'clericFeatures.Archon Law Subdomain ? 8:Aura Of Menace",' +
-      '"clericFeatures.Ash Subomain ? 8:Wall Of Ashes",' +
-      '"clericFeatures.Azata Chaos Subomain || ' +
+      '"clericFeatures.Ash Subdomain ? 8:Wall Of Ashes",' +
+      '"clericFeatures.Azata Chaos Subdomain || ' +
        'clericFeatures.Azata Good Subdomain ? 1:Elysium\'s Call",' +
       '"clericFeatures.Blood Subdomain ? 8:Wounding Blade",' +
       '"clericFeatures.Catastrophe Subdomain ? 8:Deadly Weather",' +
@@ -7243,14 +7244,14 @@ PFAPG.CLASSES = {
       '"clericFeatures.Devil Evil Subdomain || ' +
        'clericFeatures.Devil Law Subdomain ? 1:Hell\'s Corruption",' +
       '"clericFeatures.Divine Subdomain ? 1:Divine Vessel",' +
-      '"clericFeatures.Exporation Subdomain ? 1:Door Sight",' +
+      '"clericFeatures.Exploration Subdomain ? 1:Door Sight",' +
       '"clericFeatures.Family Subdomain ? 1:Binding Ties",' +
       '"clericFeatures.Fate Subdomain ? 8:Tugging Strands",' +
-      '"clericFeatures.Feather Domain ? 1:Eyes Of The Hawk",' +
+      '"clericFeatures.Feather Subdomain ? 1:Eyes Of The Hawk",' +
       '"clericFeatures.Ferocity Subdomain ? 1:Ferocious Strike",' +
       '"clericFeatures.Freedom Subdomain ? 1:Liberty\'s Blessing",' +
       '"clericFeatures.Fur Subdomain ? 1:Predator\'s Grace",' +
-      '"clericFeatures.Growth Subomain ? 1:Enlarge",' +
+      '"clericFeatures.Growth Subdomain ? 1:Enlarge",' +
       '"clericFeatures.Heroism Subdomain ? 8:Aura Of Heroism",' +
       '"clericFeatures.Home Subdomain ? 8:Guarded Hearth",' +
       '"clericFeatures.Honor Subdomain ? 1:Honor Bound",' +
@@ -7263,7 +7264,7 @@ PFAPG.CLASSES = {
       '"clericFeatures.Loss Subdomain ? 8:Aura Of Forgetfulness",' +
       '"clericFeatures.Love Subdomain ? 1:Adoration",' +
       '"clericFeatures.Lust Subdomain ? 8:Anything To Please",' +
-      '"clericFeatures.Martyr Subdomain ? 8:Sacrifical Bond",' +
+      '"clericFeatures.Martyr Subdomain ? 8:Sacrificial Bond",' +
       '"clericFeatures.Memory Subdomain ? 1:Recall",' +
       '"clericFeatures.Metal Subdomain ? 1:Metal Fist",' +
       '"clericFeatures.Murder Subdomain ? 8:Killing Blow",' +
@@ -8392,8 +8393,9 @@ PFAPG.magicRules = function(rules, schools, spells, spellsLevels) {
       let level = matchInfo[2] * 1;
       let fullName = s + '(' + group + level + ' ' + schoolAbbr + ')';
       let domainSpell =
-        Pathfinder.PATHS[group + ' Domain'] != null ||
-        PFAPG.PATHS[group + ' Subdomain'] != null;
+        (rules.getChoices('selectableFeatures') != null &&
+         ('Cleric - ' + group + ' Subdomain') in rules.getChoices('selectableFeatures')) ||
+        PFAPG.CLASSES.Cleric.includes(group + ' Subdomain');
       Pathfinder.spellRules
         (rules, fullName, school, group, level, description, domainSpell,
          liquids);
@@ -8559,23 +8561,25 @@ PFAPG.classRulesExtra = function(rules, name) {
          );
        });
     }
-    let allPaths = Pathfinder.PATHS;
-    for(let p in allPaths) {
-      if(!p.match(/ Domain$/))
-        continue;
-      let pathFeatures =
-        QuilvynUtils.getAttrValueArray(Pathfinder.PATHS[p], 'Features');
-      let pathLevel =
-        p.charAt(0).toLowerCase() + p.substring(1).replaceAll(' ','') + 'Level';
-      rules.defineRule(pathLevel, classLevel, '=', null);
-      QuilvynRules.featureListRules
-        (rules, pathFeatures, 'Inquisitor', pathLevel, false);
-      pathFeatures.forEach(f => {
-        f = f.replace(/^\d+:/, '');
-        rules.defineRule('clericFeatures.' + f, 'levels.Cleric', '?', null);
-        rules.defineRule
-          ('inquisitorFeatures.' + f, classLevel, '?', null);
-      });
+    for(let s in rules.getChoices('selectableFeatures')) {
+      if(s.match(/Inquisitor - .* Domain/)) {
+        let domain = s.replace('Inquisitor - ', '').replace(' Domain', '');
+        rules.defineRule('inquisitorDomainLevels.' + domain,
+          'inquisitorFeatures.' + domain + ' Domain', '?', null,
+          'levels.Inquisitor', '=', null
+        );
+        rules.defineRule('casterLevels.' + domain,
+          'inquisitorDomainLevels.' + domain, '^=', null
+        );
+        rules.defineRule('inquisitorDomainLevel',
+          'inquisitorDomainLevels.' + domain, '^=', null
+        );
+      }
+    }
+    for(let level = 1; level <= 9; level++) {
+      rules.defineRule('spellSlots.Domain' + level,
+        'inquisitorDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
+      );
     }
     rules.defineRule('combatNotes.bane',
       '', '=', '2',
@@ -8675,6 +8679,275 @@ PFAPG.classRulesExtra = function(rules, name) {
       'mysteryLevel', '=', 'source>=15 ? "understand and speak" : source>=10 ? "understand" : null'
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
+    let mysteries =
+      Object.keys(rules.getChoices('selectableFeatures')).filter(x => x.match(/Oracle - .* Mystery/)).map(x => x.replace('Oracle - (.*) Mystery', '$1'));
+    mysteries.forEach(m => {
+      rules.defineRule('selectableFeatureCount.Oracle (' + m + ' Revelation)',
+        'features.' + m + ' Mystery', '?', null,
+        'featureNotes.revelation', '=', null
+      );
+    });
+    // Battle Mystery
+    rules.defineRule('featCount.General',
+      'featureNotes.maneuverMastery', '+', null,
+      'featureNotes.weaponMastery(Oracle)', '+', null
+    );
+    rules.defineRule('featureNotes.maneuverMastery',
+      'mysteryLevel', '=', 'source>=11 ? 2 : source>=7 ? 1 : null'
+    );
+    rules.defineRule
+      ('featureNotes.resiliency(Oracle)', 'mysteryLevel', '?', 'source >= 7');
+    rules.defineRule('featureNotes.weaponMastery(Oracle)',
+      'mysteryLevel', '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
+    );
+    rules.defineRule('featureNotes.weaponMastery(Oracle).1',
+      'features.Weapon Mastery (Oracle)', '?', null,
+      'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
+    );
+    rules.defineRule('features.Armor Proficiency (Heavy)',
+      'combatNotes.skillAtArms', '=', '1'
+    );
+    rules.defineRule
+      ('features.Diehard', 'featureNotes.resiliency(Oracle)', '=', '1');
+    rules.defineRule('features.Weapon Proficiency (Martial)',
+      'combatNotes.skillAtArms', '=', '1'
+    );
+    Pathfinder.featureSpells(rules,
+      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
+    );
+    // Suppress validation errors for Weapon Mastery and Maneuver Mastery feats
+    for(let feat in rules.getChoices('feats')) {
+      if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.weaponMastery(Oracle)', '^', '0');
+      } else if(feat.match(/^(Greater|Improved) (Bull Rush|Dirty Trick|Disarm|Drag|Grapple|Overrun|Reposition|Steal|Sunder|Trip)/)) {
+        let note =
+          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
+        rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
+      }
+    }
+    // Bones Mystery
+    rules.defineRule('channelLevel', 'magicNotes.undeadServitude.1', '=', null);
+    rules.defineRule
+      ('features.Command Undead', 'features.Undead Servitude', '=', '1');
+    rules.defineRule('magicNotes.undeadServitude',
+      'charismaModifier', '=', '3 + source',
+      'magicNotes.extraChannel', '+', '2'
+    );
+    rules.defineRule('magicNotes.undeadServitude.1',
+      'features.Undead Servitude', '?', null,
+      'mysteryLevel', '=', null
+    );
+    rules.defineRule('magicNotes.voiceOfTheGrave.1',
+      'features.Voice Of The Grave', '?', null,
+      'mysteryLevel', '=', 'source>=5 ? "; target suffers -" + Math.floor(source / 5) * 2 + " save" : ""'
+    );
+    rules.defineRule('validationNotes.extraChannelFeat',
+      'features.Undead Servitude', '=', '0'
+    );
+    rules.defineRule('validationNotes.improvedChannelFeat',
+      'features.Undead Servitude', '=', '0'
+    );
+    Pathfinder.featureSpells(rules,
+      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
+    );
+    Pathfinder.featureSpells(rules,
+      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
+    );
+    // Flame Mystery
+    rules.defineRule('featureNotes.cinderDance',
+      'mysteryLevel', '=', 'source>=10 ? "Nimble Moves and Acrobatic Steps features" : source>=5 ? "Nimble Moves feature" : null'
+    );
+    rules.defineRule('features.Acrobatic Steps',
+      'featureNotes.cinderDance', '=', 'source.includes("Acrobatic Steps") ? 1 : null'
+    );
+    rules.defineRule('features.Nimble Moves',
+      'featureNotes.cinderDance', '=', 'source.includes("Nimble Moves") ? 1 : null'
+    );
+    rules.defineRule('magicNotes.gazeOfFlames',
+      'mysteryLevel', '=', 'source>=7 ? source : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
+    // Heavens Mystery
+    rules.defineRule('magicNotes.dwellerInDarkness',
+      'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
+    );
+    rules.defineRule
+      ('magicNotes.lureOfTheHeavens', 'mysteryLevel', '?', 'source>=5');
+    rules.defineRule('magicNotes.lureOfTheHeavens.1',
+      'features.Lure Of The Heavens', '?', null,
+      'mysteryLevel', '=', 'source>=10 ? ", <i>Fly</i> effects for " + source + " min/dy" : ""'
+    );
+    rules.defineRule('saveNotes.finalRevelation(HeavensMystery)',
+      'charismaModifier', '=', null
+    );
+    Pathfinder.featureSpells(rules,
+      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
+    );
+    Pathfinder.featureSpells(rules,
+      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
+      null, ['Levitate', '10:Fly']
+    );
+    Pathfinder.featureSpells(rules,
+      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
+    );
+    Pathfinder.featureSpells(rules,
+      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
+    );
+    // Life Mystery
+    rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
+    rules.defineRule
+      ('features.Channel Energy', 'featureNotes.channel', '=', '1');
+    rules.defineRule
+      ('featureNotes.blindsight', 'featureNotes.lifesense', '^=', '30');
+    rules.defineRule('featureNotes.channel.1',
+      'features.Channel', '?', null,
+      'mysteryLevel', '=', null
+    );
+    rules.defineRule('features.Blindsight', 'featureNotes.lifesense', '=', '1');
+    // Oracle channeling gives two fewer uses/dy than Cleric
+    rules.defineRule
+      ('magicNotes.channelEnergy', 'featureNotes.channel', '+', '-2');
+    // Lore Mystery
+    // NOTE: This calculation works only if taken at lowest possible (7th) level
+    rules.defineRule('abilityNotes.mentalAcuity',
+      'mysteryLevel', '=', 'Math.floor((source - 4) / 3)'
+    );
+    rules.defineRule('combatNotes.sidestepSecret.1',
+      'combatNotes.sidestepSecret', '?', null,
+      'saveNotes.sidestepSecret', '?', null, // italics no-op
+      'charismaModifier', '=', null,
+      'dexterityModifier', '+', '-source',
+      '', '^', '0'
+    );
+    rules.defineRule('combatNotes.dexterityArmorClassAdjustment',
+      'combatNotes.sidestepSecret.1', '+', null
+    );
+    rules.defineRule('magicNotes.whirlwindLesson.1',
+      'features.Whirlwind Lesson', '?', null,
+      'mysteryLevel', '=', 'source>=7 ? " and share with " + (source>=15 ? source + " others" : "1 other") + " for %2 dy" : ""'
+    );
+    rules.defineRule('magicNotes.whirlwindLesson.2',
+      'features.Whirlwind Lesson', '?', null,
+      'charismaModifier', '=', null
+    );
+    rules.defineRule('saveNotes.dexterityReflexAdjustment',
+      'combatNotes.sidestepSecret.1', '+', null
+    );
+    rules.defineRule('skillNotes.loreKeeper(Oracle).1',
+      'skillNotes.loreKeeper(Oracle)', '?', null,
+      'charismaModifier', '=', null,
+      'intelligenceModifier', '+', '-source',
+      '', '^', '0'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('skills'), /Knowledge/).forEach(s => {
+      rules.defineRule
+        ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
+    });
+    Pathfinder.featureSpells(rules,
+      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
+      null, ['Augury', '5:Divination', '8:Commune']
+    );
+    Pathfinder.featureSpells(rules,
+      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
+      'mysteryLevel', null, ['Wish']
+    );
+    Pathfinder.featureSpells(rules,
+      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
+       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
+       'Symbol Of Stunning', 'Symbol Of Weakness']
+    );
+    // Nature Mystery
+    rules.defineRule
+      ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
+    rules.defineRule("combatNotes.nature'sWhispers",
+      'charismaModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+    rules.defineRule('companionOracleLevel',
+      'oracleFeatures.Bonded Mount', '?', null,
+      'mysteryLevel', '=', null
+    );
+    rules.defineRule
+      ('companionMasterLevel', 'companionOracleLevel', '^=', null);
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
+      null, ['Telepathic Bond']
+    );
+    // Stone Mystery
+    rules.defineRule
+      ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
+    rules.defineRule('abilityNotes.earthGlide.1',
+      'features.Earth Glide', '?', null,
+      'mysteryLevel', '=', '""'
+    );
+    rules.defineRule('featureNotes.stoneStability',
+      'mysteryLevel', '=', 'source<5 ? null : source<10 ? "Improved Trip feature" : "Improved Trip and Greater Trip features"'
+    );
+    rules.defineRule('features.Greater Trip',
+      'featureNotes.stoneStability', '=', 'source.includes("Greater Trip") ? 1 : null'
+    );
+    rules.defineRule('features.Improved Trip',
+      'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
+    );
+    // Waves Mystery
+    rules.defineRule('abilityNotes.fluidTravel.1',
+      'features.Fluid Travel', '?', null,
+      'mysteryLevel', '=', 'source>=7 ? " or breathe water and swim 60\'/rd underwater" : ""'
+    );
+    rules.defineRule('featureNotes.fluidNature',
+      'mysteryLevel', '=', 'source>=5 ? "Dodge feature" : null'
+    );
+    rules.defineRule('features.Dodge',
+      'featureNotes.fluidNature', '=', 'source.includes("Dodge") ? 1 : null'
+    );
+    rules.defineRule('magicNotes.waterSight',
+      'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scrying" : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
+      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
+      ['Baleful Polymorph']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
+      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
+       '13:Elemental Body IV']
+    );
+    Pathfinder.featureSpells(rules,
+      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
+      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
+    );
+    // Wind Mystery
+    rules.defineRule('magicNotes.windSight',
+      'mysteryLevel', '=', 'source>=7 ? source : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
+      ['Gaseous Form']
+    );
+    Pathfinder.featureSpells(rules,
+      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
+      ['Invisibility', '9:Greater Invisibility']
+    );
+    Pathfinder.featureSpells(rules,
+      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
+      ['7:Clairaudience/Clairvoyance']
+    );
 
   } else if(name == 'Summoner') {
 
@@ -9222,6 +9495,17 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
+    // Archivists get Jack-Of-All-Trades and Lore Master early
+    rules.defineRule('archivistLevel',
+      'features.Archivist', '?', null,
+      classLevel, '=', null
+    );
+    rules.defineRule('bardFeatures.Jack-Of-All-Trades',
+      'archivistLevel', '=', 'source>=5 ? 1 : null'
+    );
+    rules.defineRule('bardFeatures.Lore Master',
+      'archivistLevel', '=', 'source>=2 ? 1 : null'
+    );
     rules.defineRule('bardHasBardicKnowledge',
       classLevel, '=', '1',
       'bardFeatures.Arcane Strike', '=', '0',
@@ -9288,7 +9572,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasJackOfAllTrades',
       classLevel, '=', '1',
       'bardFeatures.Arcane Armor', '=', '0',
-      // Probable Path shifts rather than replaces Jack Of All Trades
+      // Archivist Probable Path shifts Jack-Of-All-Trades to earlier level
       'bardFeatures.Song Of The Fallen', '=', '0',
       'bardFeatures.Wand Mastery', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
@@ -9296,7 +9580,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('bardHasLoreMaster',
       classLevel, '=', '1',
       'bardFeatures.Arcane Bond (Bard)', '=', '0',
-      // Jack Of All Trades displaces rather than replaces Lore Master
+      // Archivist Jack-Of-All-Trades shifts Lore Master to earlier level
       'bardFeatures.Quick Change', '=', '0',
       'bardFeatures.Sneak Attack', '=', '0',
       'bardFeatures.Wide Audience', '=', '0'
@@ -9371,13 +9655,18 @@ PFAPG.classRulesExtra = function(rules, name) {
       'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
     );
     // Archivist
-    rules.defineRule
-      ('skillNotes.loreMaster', classLevel, '^=', 'Math.floor((source+4) / 6)');
-    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
-      classLevel, '=', 'source>=11 ? "; all skills are class skills" : ""'
+    rules.defineRule('archivistLevel',
+      'bardFeatures.Archivist', '?', null,
+      'levels.Bard', '=', null
     );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.2',
-      classLevel, '=', 'source>=17 ? "; may take 10 on any skill" : ""'
+    rules.defineRule('skillNotes.loreMaster',
+      'archivistLevel', '^=', 'Math.floor((source+4) / 6)'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades-1',
+      'archivistLevel', '=', 'source>=11 ? 1 : null'
+    );
+    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
+      'archivistLevel', '=', 'source>=17 ? "; may take 10 on any skill" : ""'
     );
     // Court Bard
     rules.defineRule('skillNotes.heraldicExpertise',
@@ -9461,6 +9750,193 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.streetwise-1',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+
+  } else if(name == 'Cleric') {
+
+    let subdomains = {
+      'Air':['Cloud', 'Wind'],
+      'Animal':['Feather', 'Fur'],
+      'Artifice':['Construct', 'Toil'],
+      'Chaos':['Azata Chaos', 'Demon Chaos', 'Protean'],
+      'Charm':['Love', 'Lust'],
+      'Community':['Family', 'Home'],
+      'Darkness':['Loss', 'Night'],
+      'Death':['Murder', 'Undead'],
+      'Destruction':['Catastrophe', 'Rage'],
+      'Earth':['Caves', 'Metal'],
+      'Evil':['Daemon', 'Demon Evil', 'Devil Evil'],
+      'Fire':['Ash', 'Smoke'],
+      'Glory':['Heroism', 'Honor'],
+      'Good':['Agathion', 'Archon Good', 'Azata Good'],
+      'Healing':['Restoration', 'Resurrection'],
+      'Knowledge':['Memory', 'Thought'],
+      'Law':['Archon Law', 'Devil Law', 'Inevitable'],
+      'Liberation':['Freedom', 'Revolution'],
+      'Luck':['Curse', 'Fate'],
+      'Madness':['Insanity', 'Nightmare'],
+      'Magic':['Arcane', 'Divine'],
+      'Nobility':['Leadership', 'Martyr'],
+      'Plant':['Decay', 'Growth'],
+      'Protection':['Defense', 'Purity'],
+      'Repose':['Ancestors', 'Souls'],
+      'Rune':['Language', 'Wards'],
+      'Strength':['Ferocity', 'Resolve'],
+      'Sun':['Day', 'Light'],
+      'Travel':['Exploration', 'Trade'],
+      'Trickery':['Deception', 'Thievery'],
+      'War':['Blood', 'Tactics'],
+      'Water':['Ice', 'Oceans'],
+      'Weather':['Seasons', 'Storms']
+    };
+    for(let d in subdomains) {
+      subdomains[d].forEach(s => {
+        rules.defineRule('casterLevels.' + s,
+          'features.' + s + ' Subdomain', '?', null,
+          'levels.Cleric', '=', null
+        );
+        rules.defineRule('casterLevels.' + d, 'casterLevels.' + s, '^=', null);
+        rules.defineRule
+          ('features.' + d + ' Domain', 'casterLevels.' + s, '=', '1');
+        // Clerics w/no deity don't need to match deity domain
+        rules.defineRule('validationNotes.cleric-' + s.replaceAll(' ', '') + 'SubdomainSelectableFeature',
+          'deity', '+', 'source == "None" ? 1 : null'
+        );
+      });
+    }
+    let featureReplacements = {
+      'Acid Dart':['Metal Fist'],
+      'Acid Resistance':['Tunnel Runner'],
+      'Agile Feet':['Door Sight', 'Silver-Tongued Haggler'],
+      'Aura Of Protection':['Purifying Touch'],
+      'Battle Rage':['Seize The Initiative'],
+      'Bit Of Luck':['Malign Eye'],
+      'Bleeding Touch':["Death's Kiss"],
+      'Bramble Armor':['Aura Of Decay'],
+      'Calming Touch':['Binding Ties'],
+      'Charming Smile':['Anything To Please'],
+      'Chaos Blade':['Aura Of Chaos'],
+      'Cold Resistance':['Body Of Ice'],
+      'Copycat':['Sudden Shift'],
+      'Dancing Weapons':['Animate Servant', 'Aura Of Repetition'],
+      'Dazing Touch':['Adoration'],
+      "Death's Embrace":['Killing Blow'],
+      'Destructive Aura':['Deadly Weather', 'Rage (Cleric)'],
+      'Divine Presence':['Aura Of Heroism'],
+      'Electricity Resistance':['Thundercloud'],
+      'Eyes Of Darkness':['Aura Of Forgetfulness'],
+      'Fire Resistance':['Wall Of Ashes'],
+      'Fire Bolt':['Cloud Of Smoke'],
+      "Freedom's Call":['Powerful Persuader'],
+      'Gentle Rest':['Touch The Spirit World'],
+      'Good Fortune':['Tugging Strands'],
+      'Icicle':['Surge'],
+      'Hand Of The Acolyte':['Arcane Beacon', 'Divine Vessel'],
+      "Healer's Blessing":['Gift Of Life'],
+      'Holy Lance':['Protective Aura', 'Aura Of Menace'],
+      'Inspiring Word':['Inspiring Command (Cleric)'],
+      'Leadership (Cleric)':['Sacrificial Bond'],
+      'Liberation':["Liberty's Blessing"],
+      'Lightning Arc':['Wind Blast'],
+      'Lightning Lord':['Gale Aura'],
+      'Lore Keeper':['Recall'],
+      "Master's Illusion":['Thief Of The Gods'],
+      'Might Of The Gods':['Bestow Resolve'],
+      'Nimbus Of Light':["Day's Resurgence"],
+      'Rebuke Death':['Restorative Touch'],
+      'Remote Viewing':['Read Minds'],
+      'Resistant Touch':['Deflection Aura'],
+      'Scythe Of Evil':['Whispering Evil'],
+      'Speak With Animals':['Eyes Of The Hawk', "Predator's Grace"],
+      'Spell Rune':['Rune Shift', 'Warding Rune'],
+      'Staff Of Order':['Aura Of Menace'],
+      'Storm Burst':['Untouched By The Seasons'],
+      'Strength Surge (Cleric)':['Ferocious Strike'],
+      "Sun's Blessing":['Blinding Flash'],
+      'Touch Of Chaos':["Elysium's Call", 'Fury Of The Abyss'],
+      'Touch Of Darkness':['Night Hunter'],
+      'Touch Of Evil':['Fury Of The Abyss', "Hell's Corruption"],
+      'Touch Of Glory':['Honor Bound'],
+      'Touch Of Good':["Elysium's Call"],
+      'Touch Of Law':["Hell's Corruption", 'Command'],
+      'Unity':['Guarded Hearth'],
+      'Vision Of Madness':['Insane Focus', 'Fearful Touch'],
+      'Ward Against Death':['Speak With Dead'],
+      'Weapon Master':['Wounding Blade'],
+      'Wooden Fist':['Enlarge'],
+    };
+    for(let f in featureReplacements) {
+      let hasVar = 'clericHas' + f.replaceAll(/[ ']/g, '');
+      rules.defineRule(hasVar, classLevel, '=', '1');
+      featureReplacements[f].forEach(r => {
+        rules.defineRule(hasVar, 'clericFeatures.' + r, '=', '0');
+      });
+      rules.defineRule('clericFeatures.' + f, hasVar, '?', 'source==1');
+    };
+
+    // Agathion
+    Pathfinder.featureSpells(rules,
+      'Protective Aura', 'ProtectiveAura', 'wisdom', 'casterLevels.Agathion',
+      null, ['Protection From Evil']
+    );
+    // Catastrophe
+    Pathfinder.featureSpells(rules,
+      'Deadly Weather', 'DeadlyWeather', 'wisdom', 'casterLevels.Catastrophe',
+      '', ['Call Lightning']
+    );
+    // Caves
+    Pathfinder.featureSpells(rules,
+      'Tunnel Runner', 'TunnelRunner', 'wisdom', 'casterLevels.Caves', null,
+      ['Spider Climb']
+    );
+    // Construct
+    Pathfinder.featureSpells(rules,
+      'Animate Servant', 'AnimateServant', 'wisdom', 'casterLevels.Construct',
+      null, ['Animate Objects']
+    );
+    // Feather
+    rules.defineRule('skillNotes.eyesOfTheHawk',
+      'casterLevels.Feather', '=', 'Math.max(Math.floor(source / 2), 1)'
+    );
+    // Inevitable
+    Pathfinder.featureSpells(rules,
+      'Command', 'Command', 'wisdom', 'casterLevels.Inevitable',
+      '10+casterLevels.Inevitable//2+wisdomModifier', ['Command']
+    );
+    // Rage
+    rules.defineRule('clericRagePowerLevel',
+      'features.Rage (Cleric)', '?', null,
+      'casterLevels.Rage', '=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
+    rules.defineRule('combatNotes.rage(Cleric).1',
+      'features.Rage (Cleric)', '?', null,
+      'casterLevels.Rage', '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
+    );
+    rules.defineRule
+      ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
+    rules.defineRule('features.Rage Powers',
+      'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
+    );
+    // Suppress validation notes for barbarian powers
+    let allSelectables = rules.getChoices('selectableFeatures');
+    let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
+    powers.forEach(p => {
+      let matchInfo =
+        Pathfinder.CLASSES.Barbarian.match('(\\d+):' + p) ||
+        PFAPG.CLASSES.Barbarian.match('(\\d+):' + p);
+      let level = matchInfo ? matchInfo[1] : '2';
+      let note = 'validationNotes.barbarian-' + p.replaceAll(' ', '') +
+                 'SelectableFeature';
+      rules.defineRule(note,
+        'casterLevels.Rage', '+', 'source >= ' + level + ' ? 1 : null',
+        '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
+      );
+    });
+    // Seasons
+    Pathfinder.featureSpells(rules,
+      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
+      'casterLevels.Seasons', null, ['Endure Elements']
     );
 
   } else if(name == 'Druid') {
@@ -9799,6 +10275,168 @@ PFAPG.classRulesExtra = function(rules, name) {
     });
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
+    // Archer
+    rules.defineRule('combatNotes.expertArcher',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.hawkeye',
+      classLevel, '=', 'Math.floor((source + 2) / 4) * 5'
+    );
+    rules.defineRule
+      ('combatNotes.safeShot', 'fighterFeatures.Archer', '=', '"Bow"');
+    rules.defineRule
+      ('skillNotes.hawkeye', classLevel, '=', 'Math.floor((source + 2) / 4)');
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(w.match(/\b(long|short)?bow\b/i)) {
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+=', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+=', null);
+        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
+      }
+    });
+    // Crossbowman
+    rules.defineRule('combatNotes.crossbowExpert',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    rules.defineRule('combatNotes.deadshot',
+      'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
+      'combatNotes.greaterDeadshot', '+', 'null', // italics no-op
+      'combatNotes.greaterDeadshot.1', '^', null
+    );
+    rules.defineRule('combatNotes.greaterDeadshot.1',
+      'features.Greater Deadshot', '?', null,
+      'dexterityModifier', '=', null
+    );
+    rules.defineRule('combatNotes.safeShot',
+      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(w.match(/\bcrossbow\b/i)) {
+        rules.defineRule
+          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+=', null);
+        rules.defineRule
+          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
+      }
+    });
+    // Free Hand Fighter
+    rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
+    rules.defineRule('combatNotes.elusive',
+      classLevel, '=', 'Math.floor((source + 2) / 4)'
+    );
+    rules.defineRule('combatNotes.elusive.1',
+      'armorWeight', '?', 'source<=1',
+      'combatNotes.elusive', '=', null
+    );
+    // Mobile Fighter
+    rules.defineRule
+      ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
+    // Phalanx Soldier
+    rules.defineRule
+      ('combatNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
+    rules.defineRule('combatNotes.towerShieldPenalty',
+      'combatNotes.deftShield', '+', null
+    );
+    rules.defineRule('combatNotes.irresistibleAdvance',
+      'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
+    );
+    rules.defineRule('featureNotes.shieldedFortress.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldedFortress', '?', null,
+      'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
+    );
+    rules.defineRule('features.Evasion',
+      'featureNotes.shieldedFortress.1', '=', 'source=="Evasion" ? 1 : null'
+    );
+    rules.defineRule('features.Improved Evasion',
+      'featureNotes.shieldedFortress.1', '=', 'source=="Improved Evasion" ? 1 : null'
+    );
+    rules.defineRule('skillNotes.armorSkillCheckPenalty',
+      'skillNotes.deftShield.1', '+', '-source'
+    );
+    rules.defineRule
+      ('skillNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
+    rules.defineRule('skillNotes.deftShield.1',
+      'shield', '?', 'source=="Tower"',
+      'skillNotes.deftShield', '=', null
+    );
+    // Polearm Master
+    // Weapon lists from core Fighter rules and the APG gear list
+    let polearms = [
+     'Glaive', 'Guisarme', 'Halberd', 'Ranseur', 'Bardiche', 'Bec De Corbin',
+     'Bill', 'Glaive-Guisarme', 'Lucerne Hammer', 'Mancatcher'
+    ];
+    let spears = [
+     'Javelin', 'Lance', 'Longspear', 'Shortspear', 'Spear', 'Trident',
+     'Boar Spear', 'Chain Spear'
+    ];
+    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
+      let prefix =
+        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
+      if(polearms.includes(w) || spears.includes(w)) {
+        rules.defineRule
+          (prefix+'AttackModifier', 'combatNotes.polearmTraining', '+=', null);
+        rules.defineRule
+          (prefix+'DamageModifier', 'combatNotes.polearmTraining', '+=', null);
+      }
+    });
+    rules.defineRule('combatNotes.polearmTraining',
+      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    );
+    // Roughrider
+    rules.defineRule('skillNotes.armoredCharger.1',
+      'features.Armored Charger', '?', null,
+      'skillNotes.armorSkillCheckPenalty', '=', null,
+      'skillNotes.armoredCharger', '+', 'null' // italics no-op
+    );
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
+    // Savage Warrior
+    rules.defineRule('combatNotes.savageCharge',
+      'combatNotes.savageCharge.1', '=', 'Math.floor(source)'
+    );
+    rules.defineRule('combatNotes.savageCharge.1',
+      'features.Savage Charge', '?', null,
+      classLevel, '=', 'source / 2',
+      'combatNotes.greaterSavageCharge', '*', '0.5'
+    );
+    // Shielded Fighter
+    rules.defineRule('combatNotes.shieldGuard',
+      'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
+    );
+    rules.defineRule('combatNotes.shieldMastery.1',
+      'combatNotes.shieldMastery', '?', null,
+      'shield', '=', 'source=="None" ? null : 5'
+    );
+    rules.defineRule
+      ('combatNotes.shieldWard', 'saveNotes.shieldWard', '=', null);
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.shieldMastery.1', '+=', null);
+    rules.defineRule('featureNotes.shieldWard.1',
+      // Test note instead of feature for italics
+      'featureNotes.shieldWard', '?', null,
+      'shield', '=', 'source=="None" ? null : "Evasion"'
+    );
+    rules.defineRule('saveNotes.shieldWard',
+      'armor', '=', 'source=="None" ? null : source.match(/Tower/) ? 4 : source.match(/Heavy/) ? 2 : 1'
+    );
+    rules.defineRule('features.Evasion',
+      'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
+    );
+    // Two-Handed Fighter
+    rules.defineRule('combatNotes.backswing',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
+    );
+    rules.defineRule('combatNotes.greaterPowerAttack',
+      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 4'
+    );
+    rules.defineRule('combatNotes.overhandChop',
+      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
+    );
 
   } else if(name == 'Monk') {
 
@@ -9921,6 +10559,141 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
+    // Drunken Master
+    rules.defineRule('featureNotes.drunkenKi',
+      '', '=', '1',
+      'featureNotes.deepDrinker', '+', '1'
+    );
+    // Hungry Ghost Monk
+    rules.defineRule('combatNotes.punishingKick',
+      classLevel, '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
+    );
+    // Ki Mystic
+    rules.defineRule
+      ('combatNotes.mysticPrescience', classLevel, '=', 'source<20 ? 2 : 4');
+    Pathfinder.featureSpells(rules,
+      'Mystic Visions', 'MysticVisions', 'charisma', classLevel, null,
+      ['Divination']
+    );
+    // Monk Of The Empty Hand
+    rules.defineRule('featureNotes.kiPool',
+      'featureNotes.kiPool(KiMystic)', '+=', '2',
+      // Force to exactly 2 points at level 3; above rule handles higher levels
+      classLevel, 'v=', 'source==3 ? 2 : null'
+    );
+    // Monk Of The Four Winds
+    rules.defineRule('combatNotes.elementalFist',
+      '', '=', '1',
+      classLevel, '+', 'Math.floor(source / 5)'
+    );
+    rules.defineRule('selectableFeatureCount.Monk (Aspect)',
+      'features.Monk Of The Four Winds', '?', null,
+      classLevel, '=', 'source>=17 ? 1 : null'
+    );
+    Pathfinder.featureSpells(rules,
+      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', classLevel, null,
+      ['Gaseous Form']
+    );
+    // Monk Of The Healing Hand
+    Pathfinder.featureSpells(rules,
+      'Ki Sacrifice', 'KiSacrifice', 'charisma', classLevel, null,
+      ['Raise Dead', '15:Resurrection']
+    );
+    Pathfinder.featureSpells(rules,
+      'True Sacrifice', 'TrueSacrifice', 'charisma', classLevel, null,
+      ['True Resurrection']
+    );
+    // Monk Of The Lotus
+    rules.defineRule('combatNotes.touchOfSerenity',
+      classLevel, '+', 'Math.floor(source / 6)'
+    );
+    rules.defineRule('skillNotes.learnedMaster.1',
+      'features.Learned Master', '?', null,
+      'wisdomModifier', '=', null,
+      'intelligenceModifier', '+', '-source'
+    );
+    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(skill => {
+      if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
+        rules.defineRule
+          ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
+    });
+    Pathfinder.featureSpells(rules,
+      'Touch Of Peace', 'TouchOfPeace', 'charisma', classLevel, null,
+      ['Charm Monster']
+    );
+    Pathfinder.featureSpells(rules,
+      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', classLevel, null,
+      ['Charm Monster']
+    );
+    // Monk Of The Sacred Mountain
+    rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
+    rules.defineRule('combatNotes.adamantineMonk',
+      classLevel, '=', 'Math.floor((source - 6) / 3)'
+    );
+    rules.defineRule('combatNotes.adamantineMonk-1',
+      'combatNotes.adamantineMonk', '=', 'source * 2'
+    );
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
+    // Weapon Adept
+    rules.defineRule
+      ('combatNotes.perfectStrike', classLevel, '+', 'source>=10 ? 1 : null');
+    rules.defineRule('featCounts.General',
+      'featureNotes.wayOfTheWeaponMaster', '+', '1',
+      'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
+    );
+    rules.defineRule('featureNotes.wayOfTheWeaponMaster.1',
+      'features.Way Of The Weapon Master', '?', null,
+      classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
+    );
+    // Zen Archer
+    rules.defineRule
+      ('combatNotes.perfectStrike', classLevel, '+', 'source>=10 ? 1 : null');
+    rules.defineRule('combatNotes.zenArchery',
+      'wisdomModifier', '=', null,
+      'dexterityModifier', '+', '-source'
+    );
+    rules.defineRule('featCounts.General',
+      'featureNotes.wayOfTheBow', '+', '1',
+      'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null'
+    );
+    rules.defineRule('featureNotes.wayOfTheBow.1',
+      'features.Way Of The Bow', '?', null,
+      classLevel, '=', 'source>=10 ? "/+1 General Feat (Weapon Specialization (Bow))" : ""'
+    );
+    rules.defineRule
+      ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
+    ['Composite Longbow','Composite Shortbow','Longbow','Shortbow'].forEach(w=>{
+      rules.defineRule(w.replaceAll(' ', '') + 'AttackModifier',
+        'combatNotes.zenArchery', '+', null
+      );
+    });
+    rules.defineRule('validationNotes.weaponSpecialization(CompositeLongbow)',
+      classLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(CompositeShortbow)',
+      classLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(Longbow)',
+      classLevel, '*', 'source<6 ? null : 0'
+    );
+    rules.defineRule('validationNotes.weaponSpecialization(Shortbow)',
+      classLevel, '*', 'source<6 ? null : 0'
+    );
+    // Disallow certain monk bonus feats unavailable to Zen Archer archetype
+    ['Catch Off-Guard', 'Improved Grapple', 'Scorpion Style', 'Throw Anything',
+     "Gorgon's Fist", 'Improved Bull Rush', 'Improved Disarm', 'Improved Feint',
+     'Improved Trip', "Medusa's Wrath", 'Spring Attack'].forEach(s => {
+      let allNotes = rules.getChoices('notes');
+      let note =
+        'validationNotes.monk-' + s.replaceAll(' ', '') + 'SelectableFeature';
+      if(!(note in allNotes)) {
+        console.log('Cannot find note ' + note);
+      } else {
+        rules.defineRule(note, 'features.Zen Archer', '+', '-1');
+        allNotes[note] += ' and not Zen Archer';
+      }
+    });
 
   } else if(name == 'Paladin') {
 
@@ -9995,6 +10768,60 @@ PFAPG.classRulesExtra = function(rules, name) {
         'paladinDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
       );
     }
+    // Divine Defender
+    rules.defineRule('magicNotes.sharedDefense.1',
+      'features.Shared Defense', '?', null,
+      classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
+    );
+    // Hospitaler
+    rules.defineRule('combatNotes.smiteEvil',
+      classLevel, 'v', 'Math.floor((source + 5) / 6)'
+    );
+    rules.defineRule('features.Channel Energy',
+      'features.Channel Positive Energy (Hospitaler)', '=', '1'
+    );
+    rules.defineRule('magicNotes.channelEnergy.1',
+      classLevel, '+=', 'Math.floor((source-2)/2) - Math.floor((source+1)/2)'
+    );
+    // Sacred Servant
+    rules.defineRule('combatNotes.smiteEvil',
+      classLevel, 'v', 'Math.floor((source + 5) / 6)'
+    );
+    Pathfinder.featureSpells(rules,
+      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
+      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
+    );
+    // Shining Knight
+    rules.defineRule('animalCompanionStats.Save Fort',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Ref',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Save Will',
+      'companionNotes.skilledRider', '+', null
+    );
+    rules.defineRule
+      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
+    rules.defineRule
+      ('skillModifier.Ride', 'skillNotes.skilledRider.1', '+', null);
+    rules.defineRule('skillNotes.skilledRider.1',
+      'skillNotes.skilledRider', '?', null, // Italics
+      'skillNotes.armorSkillCheckPenalty', '=', null
+    );
+    // Undead Scourge
+    rules.defineRule('combatNotes.smiteEvil.1', classLevel, '=', '"undead"');
+    // Warrior Of The Holy Light
+    rules.defineRule
+      ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
+    rules.defineRule('magicNotes.powerOfFaith-1.1',
+      'features.Power Of Faith', '?', null,
+      classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
+    );
+    Pathfinder.featureSpells(rules,
+      'Power Of Faith', 'PowerOfFaith', 'wisdom', classLevel, null,
+      ['12:Daylight']
+    );
 
   } else if(name == 'Antipaladin') {
 
@@ -11244,898 +12071,6 @@ PFAPG.featRulesExtra = function(rules, name) {
       'features.Touch Of Serenity', '?', null,
       'level', '=', null,
       'levels.Monk', '+', '-source'
-    );
-  }
-};
-
-/*
- * Defines in #rules# the rules associated with bloodline #name# that cannot be
- * derived directly from the attributes passed to pathRules.
- */
-PFAPG.pathRulesExtra = function(rules, name) {
-  let pathLevel =
-    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','') + 'Level';
-  if(name.match(/Mystery/)) {
-    rules.defineRule('selectableFeatureCount.Oracle (' + name.replace('Mystery', 'Revelation') + ')',
-      'features.' + name, '?', null,
-      'featureNotes.revelation', '=', null
-    );
-  }
-  // pathLevel-dependent domain code copied from Pathfinder.js for subdomains
-  if(name.match(/(Cloud|Wind) Subdomain/)) { // Air
-    rules.defineRule
-      ('combatNotes.lightningArc.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('saveNotes.electricityResistance',
-      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
-    );
-  } else if(name.match(/(Feather|Fur) Subdomain/)) { // Animal
-    rules.defineRule('companionClericLevel', pathLevel, '=', 'source - 3');
-    rules.defineRule
-      ('magicNotes.speakWithAnimals', pathLevel, '=', 'source + 3');
-    rules.defineRule('casterLevels.SpeakWithAnimals', pathLevel, '=', null);
-  } else if(name.match(/(Construct|Toil) Subdomain/)) { // Artifice
-    rules.defineRule("combatNotes.artificer'sTouch.1",
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.dancingWeapons',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('casterLevels.ArtificersTouch', pathLevel, '=', null);
-  } else if(name.match(/(Azata Chaos|Demon Chaos|Protean) Subdomain/)) {// Chaos
-    rules.defineRule('combatNotes.chaosBlade',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule
-      ('combatNotes.chaosBlade.1', pathLevel, '=', 'Math.floor(source / 2)');
-  } else if(name.match(/(Love|Lust) Subdomain/)) { // Charm
-    rules.defineRule('magicNotes.charmingSmile',
-      pathLevel, '=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.charmingSmile.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.dazingTouch', pathLevel, '=', null);
-    rules.defineRule('casterLevels.CharmingSmile', pathLevel, '=', null);
-  } else if(name.match(/(Family|Home) Subdomain/)) { // Community
-    rules.defineRule('magicNotes.calmingTouch.1', pathLevel, '=', null);
-    rules.defineRule
-      ('saveNotes.unity', pathLevel, '=', 'Math.floor((source - 4) / 4)');
-  } else if(name.match(/(Loss|Night) Subdomain/)) { // Darkness
-    rules.defineRule('combatNotes.touchOfDarkness',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('featureNotes.eyesOfDarkness',
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-  } else if(name.match(/(Murder|Undead) Subdomain/)) { // Death
-    rules.defineRule('combatNotes.bleedingTouch',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-  } else if(name.match(/(Catastrophe|Rage) Subdomain/)) { // Destruction
-    rules.defineRule('combatNotes.destructiveAura',
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.destructiveAura.1', pathLevel, '=', null);
-    rules.defineRule('combatNotes.destructiveSmite',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-  } else if(name.match(/(Caves|Metal) Subdomain/)) { // Earth
-    rules.defineRule('magicNotes.acidDart.1',
-      pathLevel, '=', 'source>1 ? "+" + Math.floor(source / 2) : ""'
-    );
-    rules.defineRule('saveNotes.acidResistance',
-      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
-    );
-  } else if(name.match(/(Daemon|Demon Evil|Devil Evil) Subdomain/)) { // Evil
-    rules.defineRule('combatNotes.scytheOfEvil',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule
-      ('combatNotes.scytheOfEvil.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('combatNotes.touchOfEvil',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-  } else if(name.match(/(Ash|Smoke) Subdomain/)) { // Fire
-    rules.defineRule
-      ('combatNotes.fireBolt.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('saveNotes.fireResistance',
-      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
-    );
-  } else if(name.match(/(Heroism|Honor) Subdomain/)) { // Glory
-    rules.defineRule('magicNotes.divinePresence',
-      pathLevel, '=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.divinePresence.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.touchOfGlory', pathLevel, '=', null);
-    rules.defineRule('casterLevels.DivinePresence', pathLevel, '=', null);
-  } else if(name.match(/(Agathion|Archon Good|Azata Good) Subdomain/)) { // Good
-    rules.defineRule('combatNotes.holyLance',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule
-      ('combatNotes.holyLance.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('magicNotes.touchOfGood',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-  } else if(name.match(/(Restoration|Resurrection) Subdomain/)) { // Healing
-    rules.defineRule
-      ('magicNotes.rebukeDeath.1', pathLevel, '=', 'Math.floor(source / 2)');
-  } else if(name.match(/(Memory|Thought) Subdomain/)) { // Knowledge
-    rules.defineRule('magicNotes.remoteViewing', pathLevel, '=', null);
-    rules.defineRule('skillNotes.loreKeeper', pathLevel, '=', 'source + 15');
-    rules.defineRule('casterLevels.RemoteViewing', pathLevel, '=', null);
-  } else if(name.match(/(Archon Law|Devil Law|Inevitable) Subdomain/)) { // Law
-    rules.defineRule('combatNotes.staffOfOrder',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule
-      ('combatNotes.staffOfOrder.1', pathLevel, '=', 'Math.floor(source / 2)');
-  } else if(name.match(/(Freedom|Revolution) Subdomain/)) { // Liberation
-    rules.defineRule("magicNotes.freedom'sCall", pathLevel, '=', null);
-    rules.defineRule('magicNotes.liberation', pathLevel, '=', null);
-  } else if(name.match(/(Curse|Fate) Subdomain/)) { // Luck
-    rules.defineRule
-      ('magicNotes.goodFortune', pathLevel, '=', 'Math.floor(source / 6)');
-  } else if(name.match(/(Insanity|Nightmare) Subdomain/)) { // Madness
-    rules.defineRule('magicNotes.auraOfMadness', pathLevel, '=', null);
-    rules.defineRule('magicNotes.auraOfMadness.1',
-      pathLevel, '=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.visionOfMadness',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.visionOfMadness.1',
-      pathLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('casterLevels.AuraOfMadness', pathLevel, '=', null);
-  } else if(name.match(/(Arcane|Divine) Subdomain/)) { // Magic
-    rules.defineRule('magicNotes.dispellingTouch',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('casterLevels.DispellingTouch', pathLevel, '=', null);
-  } else if(name.match(/(Leadership|Martyr) Subdomain/)) { // Nobility
-    rules.defineRule('magicNotes.inspiringWord',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name.match(/(Decay|Growth) Subdomain/)) { // Plant
-    rules.defineRule('combatNotes.brambleArmor', pathLevel, '=', null);
-    rules.defineRule('combatNotes.brambleArmor.1',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.woodenFist',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name.match(/(Defense|Purity) Subdomain/)) { // Protection
-    rules.defineRule('magicNotes.auraOfProtection',
-      pathLevel, '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('magicNotes.auraOfProtection.1',
-      pathLevel, '=', 'source>=14 ? 10 : 5'
-    );
-    rules.defineRule('magicNotes.auraOfProtection.2', pathLevel, '=', null);
-    rules.defineRule
-      ('saveNotes.saveBonus', pathLevel, '=', '1 + Math.floor(source / 5)');
-  } else if(name.match(/(Ancestors|Souls) Subdomain/)) { // Repose
-    rules.defineRule('magicNotes.wardAgainstDeath', pathLevel, '=', null);
-  } else if(name.match(/(Language|Wards) Subdomain/)) { // Rune
-    rules.defineRule('magicNotes.blastRune', pathLevel, '=', null);
-    rules.defineRule
-      ('magicNotes.blastRune.1', pathLevel, '=', 'Math.floor(source / 2)');
-  } else if(name.match(/(Ferocity|Resolve) Subdomain/)) { // Strength
-    rules.defineRule('magicNotes.mightOfTheGods', pathLevel, '=', null);
-    rules.defineRule('magicNotes.mightOfTheGods.1', pathLevel, '=', null);
-    rules.defineRule('magicNotes.strengthSurge(Cleric)',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name.match(/(Day|Light) Subdomain/)) { // Sun
-    rules.defineRule("magicNotes.sun'sBlessing", pathLevel, '=', null);
-    rules.defineRule('magicNotes.nimbusOfLight', pathLevel, '=', null);
-    rules.defineRule('magicNotes.nimbusOfLight.1', pathLevel, '=', null);
-    rules.defineRule('casterLevels.NimbusOfLight', pathLevel, '=', null);
-  } else if(name.match(/(Exploration|Trade) Subdomain/)) { // Travel
-    rules.defineRule
-      ('magicNotes.dimensionalHop', pathLevel, '=', '10 * source');
-  } else if(name.match(/(Deception|Thievery) Subdomain/)) { // Trickery
-    rules.defineRule('magicNotes.copycat', pathLevel, '=', null);
-    rules.defineRule("magicNotes.master'sIllusion",
-      pathLevel, '=', '10 + Math.floor(source / 2)'
-    );
-    rules.defineRule("magicNotes.master'sIllusion.1", pathLevel, '=', null);
-    rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
-    rules.defineRule('casterLevels.Copycat', pathLevel, '=', null);
-    rules.defineRule('casterLevels.MastersIllusion', pathLevel, '=', null);
-  } else if(name.match(/(Blood|Tactics) Subdomain/)) { // War
-    rules.defineRule('combatNotes.battleRage',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.weaponMaster', pathLevel, '=', null);
-  } else if(name.match(/(Ice|Oceans) Subdomain/)) { // Water
-    rules.defineRule
-      ('combatNotes.icicle.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('saveNotes.coldResistance',
-      pathLevel, '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
-    );
-  } else if(name.match(/(Seasons|Storms) Subdomain/)) { // Weather
-    rules.defineRule
-      ('combatNotes.stormBurst.1', pathLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('magicNotes.lightningLord', pathLevel, '=', null);
-    rules.defineRule('casterLevels.LightningLord', pathLevel, '=', null);
-  }
-  // Oracle
-  if(name == 'Battle Mystery') {
-    rules.defineRule('featCount.General',
-      'featureNotes.maneuverMastery', '+', null,
-      'featureNotes.weaponMastery(Oracle)', '+', null
-    );
-    rules.defineRule('featureNotes.maneuverMastery',
-      'mysteryLevel', '=', 'source>=11 ? 2 : source>=7 ? 1 : null'
-    );
-    rules.defineRule
-      ('featureNotes.resiliency(Oracle)', 'mysteryLevel', '?', 'source >= 7');
-    rules.defineRule('featureNotes.weaponMastery(Oracle)',
-      'mysteryLevel', '=', 'source>=12 ? 3 : source>=8 ? 2 : 1'
-    );
-    rules.defineRule('featureNotes.weaponMastery(Oracle).1',
-      'features.Weapon Mastery (Oracle)', '?', null,
-      'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
-    );
-    rules.defineRule('features.Armor Proficiency (Heavy)',
-      'combatNotes.skillAtArms', '=', '1'
-    );
-    rules.defineRule
-      ('features.Diehard', 'featureNotes.resiliency(Oracle)', '=', '1');
-    rules.defineRule('features.Weapon Proficiency (Martial)',
-      'combatNotes.skillAtArms', '=', '1'
-    );
-    Pathfinder.featureSpells(rules,
-      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
-    );
-    // Suppress validation errors for Weapon Mastery and Maneuver Mastery feats
-    for(let feat in rules.getChoices('feats')) {
-      if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
-        let note =
-          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
-        rules.defineRule(note, 'featureNotes.weaponMastery(Oracle)', '^', '0');
-      } else if(feat.match(/^(Greater|Improved) (Bull Rush|Dirty Trick|Disarm|Drag|Grapple|Overrun|Reposition|Steal|Sunder|Trip)/)) {
-        let note =
-          'validationNotes.' + feat.charAt(0).toLowerCase() + feat.substring(1).replaceAll(' ', '') + 'Feat';
-        rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
-      }
-    }
-  } else if(name == 'Bones Mystery') {
-    rules.defineRule
-      ('channelLevel', 'magicNotes.undeadServitude.1', '=', null);
-    rules.defineRule
-      ('features.Command Undead', 'features.Undead Servitude', '=', '1');
-    rules.defineRule('magicNotes.undeadServitude',
-      'charismaModifier', '=', '3 + source',
-      'magicNotes.extraChannel', '+', '2'
-    );
-    rules.defineRule('magicNotes.undeadServitude.1',
-      'features.Undead Servitude', '?', null,
-      'mysteryLevel', '=', null
-    );
-    rules.defineRule('magicNotes.voiceOfTheGrave.1',
-      'features.Voice Of The Grave', '?', null,
-      'mysteryLevel', '=', 'source>=5 ? "; target suffers -" + Math.floor(source / 5) * 2 + " save" : ""'
-    );
-    rules.defineRule('validationNotes.extraChannelFeat',
-      'features.Undead Servitude', '=', '0'
-    );
-    rules.defineRule('validationNotes.improvedChannelFeat',
-      'features.Undead Servitude', '=', '0'
-    );
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
-    );
-    Pathfinder.featureSpells(rules,
-      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
-    );
-  } else if(name == 'Flame Mystery') {
-    rules.defineRule('featureNotes.cinderDance',
-      'mysteryLevel', '=', 'source>=10 ? "Nimble Moves and Acrobatic Steps features" : source>=5 ? "Nimble Moves feature" : null'
-    );
-    rules.defineRule('features.Acrobatic Steps',
-      'featureNotes.cinderDance', '=', 'source.includes("Acrobatic Steps") ? 1 : null'
-    );
-    rules.defineRule('features.Nimble Moves',
-      'featureNotes.cinderDance', '=', 'source.includes("Nimble Moves") ? 1 : null'
-    );
-    rules.defineRule('magicNotes.gazeOfFlames',
-      'mysteryLevel', '=', 'source>=7 ? source : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
-  } else if(name == 'Heavens Mystery') {
-    rules.defineRule('magicNotes.dwellerInDarkness',
-      'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
-    );
-    rules.defineRule
-      ('magicNotes.lureOfTheHeavens', 'mysteryLevel', '?', 'source>=5');
-    rules.defineRule('magicNotes.lureOfTheHeavens.1',
-      'features.Lure Of The Heavens', '?', null,
-      'mysteryLevel', '=', 'source>=10 ? ", <i>Fly</i> effects for " + source + " min/dy" : ""'
-    );
-    rules.defineRule('saveNotes.finalRevelation(HeavensMystery)',
-      'charismaModifier', '=', null
-    );
-    Pathfinder.featureSpells(rules,
-      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
-    );
-    Pathfinder.featureSpells(rules,
-      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
-      null, ['Levitate', '10:Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
-    );
-    Pathfinder.featureSpells(rules,
-      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
-    );
-  } else if(name == 'Life Mystery') {
-    rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
-    rules.defineRule
-      ('features.Channel Energy', 'featureNotes.channel', '=', '1');
-    rules.defineRule
-      ('featureNotes.blindsight', 'featureNotes.lifesense', '^=', '30');
-    rules.defineRule('featureNotes.channel.1',
-      'features.Channel', '?', null,
-      'mysteryLevel', '=', null
-    );
-    rules.defineRule('features.Blindsight', 'featureNotes.lifesense', '=', '1');
-    // Oracle channeling gives two fewer uses/dy than Cleric
-    rules.defineRule
-      ('magicNotes.channelEnergy', 'featureNotes.channel', '+', '-2');
-  } else if(name == 'Lore Mystery') {
-    // NOTE: This calculation works only if taken at lowest possible (7th) level
-    rules.defineRule('abilityNotes.mentalAcuity',
-      'mysteryLevel', '=', 'Math.floor((source - 4) / 3)'
-    );
-    rules.defineRule('combatNotes.sidestepSecret.1',
-      'combatNotes.sidestepSecret', '?', null,
-      'saveNotes.sidestepSecret', '?', null, // italics no-op
-      'charismaModifier', '=', null,
-      'dexterityModifier', '+', '-source',
-      '', '^', '0'
-    );
-    rules.defineRule('combatNotes.dexterityArmorClassAdjustment',
-      'combatNotes.sidestepSecret.1', '+', null
-    );
-    rules.defineRule('magicNotes.whirlwindLesson.1',
-      'features.Whirlwind Lesson', '?', null,
-      'mysteryLevel', '=', 'source>=7 ? " and share with " + (source>=15 ? source + " others" : "1 other") + " for %2 dy" : ""'
-    );
-    rules.defineRule('magicNotes.whirlwindLesson.2',
-      'features.Whirlwind Lesson', '?', null,
-      'charismaModifier', '=', null
-    );
-    rules.defineRule('saveNotes.dexterityReflexAdjustment',
-      'combatNotes.sidestepSecret.1', '+', null
-    );
-    rules.defineRule('skillNotes.loreKeeper(Oracle).1',
-      'skillNotes.loreKeeper(Oracle)', '?', null,
-      'charismaModifier', '=', null,
-      'intelligenceModifier', '+', '-source',
-      '', '^', '0'
-    );
-    QuilvynUtils.getKeys(rules.getChoices('skills'), /Knowledge/).forEach(s => {
-      rules.defineRule
-        ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
-    });
-    Pathfinder.featureSpells(rules,
-      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
-      null, ['Augury', '5:Divination', '8:Commune']
-    );
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
-      'mysteryLevel', null, ['Wish']
-    );
-    Pathfinder.featureSpells(rules,
-      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
-       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
-       'Symbol Of Stunning', 'Symbol Of Weakness']
-    );
-  } else if(name == 'Nature Mystery') {
-    rules.defineRule
-      ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
-    rules.defineRule("combatNotes.nature'sWhispers",
-      'charismaModifier', '=', null,
-      'dexterityModifier', '+', '-source'
-    );
-    rules.defineRule('companionOracleLevel',
-      'oracleFeatures.Bonded Mount', '?', null,
-      'mysteryLevel', '=', null
-    );
-    rules.defineRule
-      ('companionMasterLevel', 'companionOracleLevel', '^=', null);
-    rules.defineRule
-      ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
-      null, ['Telepathic Bond']
-    );
-  } else if(name == 'Stone Mystery') {
-    rules.defineRule
-      ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
-    rules.defineRule('abilityNotes.earthGlide.1',
-      'features.Earth Glide', '?', null,
-      'mysteryLevel', '=', '""'
-    );
-    rules.defineRule('featureNotes.stoneStability',
-      'mysteryLevel', '=', 'source<5 ? null : source<10 ? "Improved Trip feature" : "Improved Trip and Greater Trip features"'
-    );
-    rules.defineRule('features.Greater Trip',
-      'featureNotes.stoneStability', '=', 'source.includes("Greater Trip") ? 1 : null'
-    );
-    rules.defineRule('features.Improved Trip',
-      'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
-    );
-  } else if(name == 'Waves Mystery') {
-    rules.defineRule('abilityNotes.fluidTravel.1',
-      'features.Fluid Travel', '?', null,
-      'mysteryLevel', '=', 'source>=7 ? " or breathe water and swim 60\'/rd underwater" : ""'
-    );
-    rules.defineRule('featureNotes.fluidNature',
-      'mysteryLevel', '=', 'source>=5 ? "Dodge feature" : null'
-    );
-    rules.defineRule('features.Dodge',
-      'featureNotes.fluidNature', '=', 'source.includes("Dodge") ? 1 : null'
-    );
-    rules.defineRule('magicNotes.waterSight',
-      'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scrying" : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Baleful Polymorph']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
-    );
-  } else if(name == 'Wind Mystery') {
-    rules.defineRule('magicNotes.windSight',
-      'mysteryLevel', '=', 'source>=7 ? source : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
-      ['Gaseous Form']
-    );
-    Pathfinder.featureSpells(rules,
-      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
-      ['Invisibility', '9:Greater Invisibility']
-    );
-    Pathfinder.featureSpells(rules,
-      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
-      ['7:Clairaudience/Clairvoyance']
-    );
-  // Cleric
-  } else if(name == 'Agathion Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Protective Aura', 'ProtectiveAura', 'wisdom', pathLevel, null,
-      ['Protection From Evil']
-    );
-  } else if(name == 'Catastrophe Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Deadly Weather', 'DeadlyWeather', 'wisdom', pathLevel, '',
-      ['Call Lightning']
-    );
-  } else if(name == 'Caves Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Tunnel Runner', 'TunnelRunner', 'wisdom', pathLevel, null,
-      ['Spider Climb']
-    );
-  } else if(name == 'Construct Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Animate Servant', 'AnimateServant', 'wisdom', pathLevel, null,
-      ['Animate Objects']
-    );
-  } else if(name == 'Feather Subdomain') {
-    rules.defineRule('skillNotes.eyesOfTheHawk',
-      pathLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-  } else if(name == 'Inevitable Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Command', 'Command', 'wisdom', pathLevel,
-      '10+' + pathLevel + '//2+wisdomModifier', ['Command']
-    );
-  } else if(name == 'Rage Subdomain') {
-    rules.defineRule('clericRagePowerLevel',
-      'features.Rage (Cleric)', '?', null,
-      pathLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('ragePowerLevel', 'clericRagePowerLevel', '+=', null);
-    rules.defineRule('combatNotes.rage(Cleric).1',
-      'features.Rage (Cleric)', '?', null,
-      pathLevel, '=', 'source>=16 ? 2 : source>=12 ? 1 : 0'
-    );
-    rules.defineRule
-      ('featureNotes.ragePowers', 'combatNotes.rage(Cleric).1', '+=', null);
-    rules.defineRule('features.Rage Powers',
-      'combatNotes.rage(Cleric).1', '=', 'source>0 ? 1 : null'
-    );
-    // Suppress validation notes for barbarian powers
-    let allSelectables = rules.getChoices('selectableFeatures');
-    let powers = QuilvynUtils.getKeys(allSelectables).filter(x => x.startsWith('Barbarian') && !allSelectables[x].includes('Archetype')).map(x => x.replace('Barbarian - ', ''));
-    powers.forEach(p => {
-      let matchInfo =
-        Pathfinder.CLASSES.Barbarian.match('(\\d+):' + p) ||
-        PFAPG.CLASSES.Barbarian.match('(\\d+):' + p);
-      let level = matchInfo ? matchInfo[1] : '2';
-      let note = 'validationNotes.barbarian-' + p.replaceAll(' ', '') +
-                 'SelectableFeature';
-      rules.defineRule(note,
-        pathLevel, '+', 'source >= ' + level + ' ? 1 : null',
-        '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
-      );
-    });
-  } else if(name == 'Seasons Subdomain') {
-    Pathfinder.featureSpells(rules,
-      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
-      pathLevel, null, ['Endure Elements']
-    );
-  // Fighter
-  } else if(name == 'Archer') {
-    rules.defineRule('combatNotes.expertArcher',
-      pathLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('combatNotes.hawkeye',
-      pathLevel, '=', 'Math.floor((source + 2) / 4) * 5'
-    );
-    rules.defineRule
-      ('combatNotes.safeShot', 'fighterFeatures.Archer', '=', '"Bow"');
-    rules.defineRule
-      ('skillNotes.hawkeye', pathLevel, '=', 'Math.floor((source + 2) / 4)');
-    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
-      let prefix =
-        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
-      if(w.match(/\b(long|short)?bow\b/i)) {
-        rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.expertArcher', '+=', null);
-        rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.expertArcher', '+=', null);
-        rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
-      }
-    });
-  } else if(name == 'Crossbowman') {
-    rules.defineRule('combatNotes.crossbowExpert',
-      pathLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-    rules.defineRule('combatNotes.deadshot',
-      'dexterityModifier', '=', 'Math.max(Math.floor(source / 2), 1)',
-      'combatNotes.greaterDeadshot', '+', 'null', // italics no-op
-      'combatNotes.greaterDeadshot.1', '^', null
-    );
-    rules.defineRule('combatNotes.greaterDeadshot.1',
-      'features.Greater Deadshot', '?', null,
-      'dexterityModifier', '=', null
-    );
-    rules.defineRule('combatNotes.safeShot',
-      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
-    );
-    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
-      let prefix =
-        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
-      if(w.match(/\bcrossbow\b/i)) {
-        rules.defineRule
-          (prefix + 'AttackModifier', 'combatNotes.crossbowExpert', '+=', null);
-        rules.defineRule
-          (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
-      }
-    });
-  } else if(name == 'Free Hand Fighter') {
-    rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
-    rules.defineRule('combatNotes.elusive',
-      pathLevel, '=', 'Math.floor((source + 2) / 4)'
-    );
-    rules.defineRule('combatNotes.elusive.1',
-      'armorWeight', '?', 'source<=1',
-      'combatNotes.elusive', '=', null
-    );
-  } else if(name == 'Mobile Fighter') {
-    rules.defineRule
-      ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
-  } else if(name == 'Phalanx Soldier') {
-    rules.defineRule
-      ('combatNotes.deftShield', pathLevel, '=', 'source>=11 ? 2 : 1');
-    rules.defineRule('combatNotes.towerShieldPenalty',
-      'combatNotes.deftShield', '+', null
-    );
-    rules.defineRule('combatNotes.irresistibleAdvance',
-      'shield', '=', 'source=="None" ? 0 : source=="Buckler" ? 1 : source=="Tower" ? 4 : source.match(/Light/) ? 2 : 3'
-    );
-    rules.defineRule('featureNotes.shieldedFortress.1',
-      // Test note instead of feature for italics
-      'featureNotes.shieldedFortress', '?', null,
-      'shield', '=', 'source=="None" ? null : source=="Tower" ? "Improved Evasion" : "Evasion"'
-    );
-    rules.defineRule('features.Evasion',
-      'featureNotes.shieldedFortress.1', '=', 'source=="Evasion" ? 1 : null'
-    );
-    rules.defineRule('features.Improved Evasion',
-      'featureNotes.shieldedFortress.1', '=', 'source=="Improved Evasion" ? 1 : null'
-    );
-    rules.defineRule('skillNotes.armorSkillCheckPenalty',
-      'skillNotes.deftShield.1', '+', '-source'
-    );
-    rules.defineRule
-      ('skillNotes.deftShield', pathLevel, '=', 'source>=11 ? 2 : 1');
-    rules.defineRule('skillNotes.deftShield.1',
-      'shield', '?', 'source=="Tower"',
-      'skillNotes.deftShield', '=', null
-    );
-  } else if(name == 'Polearm Master') {
-    // Weapon lists from core Fighter rules and the APG gear list
-    let polearms = [
-     'Glaive', 'Guisarme', 'Halberd', 'Ranseur', 'Bardiche', 'Bec De Corbin',
-     'Bill', 'Glaive-Guisarme', 'Lucerne Hammer', 'Mancatcher'
-    ];
-    let spears = [
-     'Javelin', 'Lance', 'Longspear', 'Shortspear', 'Spear', 'Trident',
-     'Boar Spear', 'Chain Spear'
-    ];
-    QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
-      let prefix =
-        w.charAt(0).toLowerCase() + w.substring(1).replaceAll(' ', '');
-      if(polearms.includes(w) || spears.includes(w)) {
-        rules.defineRule
-          (prefix+'AttackModifier', 'combatNotes.polearmTraining', '+=', null);
-        rules.defineRule
-          (prefix+'DamageModifier', 'combatNotes.polearmTraining', '+=', null);
-      }
-    });
-    rules.defineRule('combatNotes.polearmTraining',
-      pathLevel, '=', 'Math.floor((source - 1) / 4)'
-    );
-  } else if(name == 'Roughrider') {
-    rules.defineRule('skillNotes.armoredCharger.1',
-      'features.Armored Charger', '?', null,
-      'skillNotes.armorSkillCheckPenalty', '=', null,
-      'skillNotes.armoredCharger', '+', 'null' // italics no-op
-    );
-    rules.defineRule
-      ('skillModifier.Ride', 'skillNotes.armoredCharger.1', '+', null);
-  } else if(name == 'Savage Warrior') {
-    rules.defineRule('combatNotes.savageCharge',
-      'combatNotes.savageCharge.1', '=', 'Math.floor(source)'
-    );
-    rules.defineRule('combatNotes.savageCharge.1',
-      'features.Savage Charge', '?', null,
-      pathLevel, '=', 'source / 2',
-      'combatNotes.greaterSavageCharge', '*', '0.5'
-    );
-  } else if(name == 'Shielded Fighter') {
-    rules.defineRule('combatNotes.shieldGuard',
-      'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
-    );
-    rules.defineRule('combatNotes.shieldMastery.1',
-      'combatNotes.shieldMastery', '?', null,
-      'shield', '=', 'source=="None" ? null : 5'
-    );
-    rules.defineRule
-      ('combatNotes.shieldWard', 'saveNotes.shieldWard', '=', null);
-    rules.defineRule
-      ('damageReduction.-', 'combatNotes.shieldMastery.1', '+=', null);
-    rules.defineRule('featureNotes.shieldWard.1',
-      // Test note instead of feature for italics
-      'featureNotes.shieldWard', '?', null,
-      'shield', '=', 'source=="None" ? null : "Evasion"'
-    );
-    rules.defineRule('saveNotes.shieldWard',
-      'armor', '=', 'source=="None" ? null : source.match(/Tower/) ? 4 : source.match(/Heavy/) ? 2 : 1'
-    );
-    rules.defineRule('features.Evasion',
-      'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
-    );
-  } else if(name == 'Two-Handed Fighter') {
-    rules.defineRule('combatNotes.backswing',
-      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
-    );
-    rules.defineRule('combatNotes.greaterPowerAttack',
-      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 4'
-    );
-    rules.defineRule('combatNotes.overhandChop',
-      'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
-    );
-  // Monk
-  } else if(name == 'Drunken Master') {
-    rules.defineRule('featureNotes.drunkenKi',
-      '', '=', '1',
-      'featureNotes.deepDrinker', '+', '1'
-    );
-  } else if(name == 'Hungry Ghost Monk') {
-    rules.defineRule('combatNotes.punishingKick',
-      pathLevel, '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
-    );
-  } else if(name == 'Ki Mystic') {
-    rules.defineRule
-      ('combatNotes.mysticPrescience', pathLevel, '=', 'source<20 ? 2 : 4');
-    Pathfinder.featureSpells(rules,
-      'Mystic Visions', 'MysticVisions', 'charisma', pathLevel, null,
-      ['Divination']
-    );
-  } else if(name == 'Monk Of The Empty Hand') {
-    rules.defineRule('featureNotes.kiPool',
-      'featureNotes.kiPool(KiMystic)', '+=', '2',
-      // Force to exactly 2 points at level 3; above rule handles higher levels
-      pathLevel, 'v=', 'source==3 ? 2 : null'
-    );
-  } else if(name == 'Monk Of The Four Winds') {
-    rules.defineRule('combatNotes.elementalFist',
-      '', '=', '1',
-      pathLevel, '+', 'Math.floor(source / 5)'
-    );
-    rules.defineRule('selectableFeatureCount.Monk (Aspect)',
-      pathLevel, '=', 'source>=17 ? 1 : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', pathLevel, null,
-      ['Gaseous Form']
-    );
-  } else if(name == 'Monk Of The Healing Hand') {
-    Pathfinder.featureSpells(rules,
-      'Ki Sacrifice', 'KiSacrifice', 'charisma', pathLevel, null,
-      ['Raise Dead', '15:Resurrection']
-    );
-    Pathfinder.featureSpells(rules,
-      'True Sacrifice', 'TrueSacrifice', 'charisma', pathLevel, null,
-      ['True Resurrection']
-    );
-  } else if(name == 'Monk Of The Lotus') {
-    rules.defineRule
-      ('combatNotes.touchOfSerenity', pathLevel, '+', 'Math.floor(source / 6)');
-    rules.defineRule('skillNotes.learnedMaster.1',
-      'features.Learned Master', '?', null,
-      'wisdomModifier', '=', null,
-      'intelligenceModifier', '+', '-source'
-    );
-    QuilvynUtils.getKeys(rules.getChoices('skills')).forEach(skill => {
-      if(skill == 'Linguistics' || skill.startsWith('Knowledge'))
-        rules.defineRule
-          ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
-    });
-    Pathfinder.featureSpells(rules,
-      'Touch Of Peace', 'TouchOfPeace', 'charisma', pathLevel, null,
-      ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', pathLevel, null,
-      ['Charm Monster']
-    );
-  } else if(name == 'Monk Of The Sacred Mountain') {
-    rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
-    rules.defineRule('combatNotes.adamantineMonk',
-      pathLevel, '=', 'Math.floor((source - 6) / 3)'
-    );
-    rules.defineRule('combatNotes.adamantineMonk-1',
-      'combatNotes.adamantineMonk', '=', 'source * 2'
-    );
-    rules.defineRule
-      ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
-  } else if(name == 'Weapon Adept') {
-    rules.defineRule
-      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null');
-    rules.defineRule('featCounts.General',
-      'featureNotes.wayOfTheWeaponMaster', '+', '1',
-      'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
-    );
-    rules.defineRule('featureNotes.wayOfTheWeaponMaster.1',
-      'features.Way Of The Weapon Master', '?', null,
-      pathLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
-    );
-  } else if(name == 'Zen Archer') {
-    rules.defineRule
-      ('combatNotes.perfectStrike', pathLevel, '+', 'source>=10 ? 1 : null');
-    rules.defineRule('combatNotes.zenArchery',
-      'wisdomModifier', '=', null,
-      'dexterityModifier', '+', '-source'
-    );
-    rules.defineRule('featCounts.General',
-      'featureNotes.wayOfTheBow', '+', '1',
-      'featureNotes.wayOfTheBow.1', '+', 'source.includes("+1") ? 1 : null'
-    );
-    rules.defineRule('featureNotes.wayOfTheBow.1',
-      'features.Way Of The Bow', '?', null,
-      pathLevel, '=', 'source>=10 ? "/+1 General Feat (Weapon Specialization (Bow))" : ""'
-    );
-    rules.defineRule
-      ('features.Point-Blank Shot', 'featureNotes.pointBlankMaster', '=', '1');
-    ['Composite Longbow','Composite Shortbow','Longbow','Shortbow'].forEach(w=>{
-      rules.defineRule(w.replaceAll(' ', '') + 'AttackModifier',
-        'combatNotes.zenArchery', '+', null
-      );
-    });
-    rules.defineRule('validationNotes.weaponSpecialization(CompositeLongbow)',
-      pathLevel, '*', 'source<6 ? null : 0'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(CompositeShortbow)',
-      pathLevel, '*', 'source<6 ? null : 0'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(Longbow)',
-      pathLevel, '*', 'source<6 ? null : 0'
-    );
-    rules.defineRule('validationNotes.weaponSpecialization(Shortbow)',
-      pathLevel, '*', 'source<6 ? null : 0'
-    );
-    // Disallow certain monk bonus feats unavailable to Zen Archer archetype
-    ['Catch Off-Guard', 'Improved Grapple', 'Scorpion Style', 'Throw Anything',
-     "Gorgon's Fist", 'Improved Bull Rush', 'Improved Disarm', 'Improved Feint',
-     'Improved Trip', "Medusa's Wrath", 'Spring Attack'].forEach(s => {
-      let allNotes = rules.getChoices('notes');
-      let note =
-        'validationNotes.monk-' + s.replaceAll(' ', '') + 'SelectableFeature';
-      if(!(note in allNotes)) {
-        console.log('Cannot find note ' + note);
-      } else {
-        rules.defineRule(note, pathLevel, '+', '-1');
-        allNotes[note] += ' and not Zen Archer';
-      }
-    });
-  // Paladin
-  } else if(name == 'Divine Defender') {
-    rules.defineRule('magicNotes.sharedDefense.1',
-      'features.Shared Defense', '?', null,
-      pathLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
-    );
-  } else if(name == 'Hospitaler') {
-    rules.defineRule
-      ('combatNotes.smiteEvil', pathLevel, 'v', 'Math.floor((source + 5) / 6)');
-    rules.defineRule('features.Channel Energy',
-      'features.Channel Positive Energy (Hospitaler)', '=', '1'
-    );
-    rules.defineRule('magicNotes.channelEnergy.1',
-      pathLevel, '+=', 'Math.floor((source-2) / 2) - Math.floor((source+1) / 2)'
-    );
-  } else if(name == 'Sacred Servant') {
-    rules.defineRule
-      ('combatNotes.smiteEvil', pathLevel, 'v', 'Math.floor((source + 5) / 6)');
-    Pathfinder.featureSpells(rules,
-      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', pathLevel,
-      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
-    );
-  } else if(name == 'Shining Knight') {
-    rules.defineRule('animalCompanionStats.Save Fort',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Ref',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Will',
-      'companionNotes.skilledRider', '+', null
-    );
-    rules.defineRule
-      ('companionNotes.skilledRider', 'charismaModifier', '=', null);
-    rules.defineRule
-      ('skillModifier.Ride', 'skillNotes.skilledRider.1', '+', null);
-    rules.defineRule('skillNotes.skilledRider.1',
-      'skillNotes.skilledRider', '?', null, // Italics
-      'skillNotes.armorSkillCheckPenalty', '=', null
-    );
-  } else if(name == 'Undead Scourge') {
-    rules.defineRule('combatNotes.smiteEvil.1', pathLevel, '=', '"undead"');
-  } else if(name == 'Warrior Of The Holy Light') {
-    rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
-    rules.defineRule('magicNotes.powerOfFaith-1.1',
-      'features.Power Of Faith', '?', null,
-      pathLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
-    );
-    Pathfinder.featureSpells(rules,
-      'Power Of Faith', 'PowerOfFaith', 'wisdom', pathLevel, null,
-      ['12:Daylight']
     );
   }
 };
