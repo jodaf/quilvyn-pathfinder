@@ -6766,7 +6766,7 @@ PFAPG.CLASSES = {
       '"3:Solo Tactics","3:Teamwork Feat (Inquisitor)",5:Bane,' +
       '"5:Discern Lies","8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
       '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment",'+
-      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('Domain')).map(x => x.replace('cleric', 'inquisitor')).join('","') + '" ' +
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('clericDomainFeatures')).map(x => x.replace(/clericDomainFeatures.(\w*)/, 'inquisitorFeatures.$1 Domain')).join('","') + '" ' +
     'Selectables=' +
       '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Selectables').filter(x => x.includes('Domain')).join('","') + '" ' +
     'CasterLevelDivine=levels.Inquisitor ' +
@@ -7535,7 +7535,7 @@ PFAPG.CLASSES = {
       '"fighterFeatures.Two-Handed Fighter ? 2:Shattering Strike",' +
       '"fighterFeatures.Two-Handed Fighter ? 3:Overhand Chop",' +
       '"fighterFeatures.Two-Handed Fighter ? 7:Backswing",' +
-      '"fighterFeatures.Two-Handed Fighter ? 11:Piledriver,' +
+      '"fighterFeatures.Two-Handed Fighter ? 11:Piledriver",' +
       '"fighterFeatures.Two-Handed Fighter ? 15:Greater Power Attack",' +
       '"fighterFeatures.Two-Handed Fighter ? 19:Devastating Blow",' +
       '"fighterFeatures.Two-Weapon Warrior ? 3:Defensive Flurry",' +
@@ -7672,7 +7672,7 @@ PFAPG.CLASSES = {
       '"paladinFeatures.Undead Scourge ? 11:Undead Annihilation",' +
       '"paladinFeatures.Warrior Of The Holy Light ? 4:Power Of Faith",' +
       '"paladinFeatures.Warrior Of The Holy Light ? 14:Shining Light",' +
-      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('Domain')).map(x => x.replace('cleric', 'paladin').replace(/\d+/, x => Number(x) + 3)).join('","') + '" ' +
+      '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('clericDomainFeatures')).map(x => x.replace(/clericDomainFeatures.(\w*)/, 'paladinFeatures.$1 Domain')).join('","') + '" ' +
     'Selectables=' +
       '"1:Core Paladin:Archetype",' +
       '"1:Divine Defender:Archetype",' +
@@ -8548,7 +8548,7 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Inquisitor') {
 
-    let allDeities = rules.getChoices('deities');
+    let allDeities = rules.getChoices('deitys');
     for(let d in allDeities) {
        QuilvynUtils.getAttrValueArray(allDeities[d], 'Weapon').forEach(w => {
          rules.defineRule('inquisitorFeatures.Weapon Proficiency (' + w + ')',
@@ -10108,70 +10108,40 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Fighter') {
 
-    rules.defineRule('fighterHasArmorMastery',
-      classLevel, '=', '1',
-      'fighterFeatures.Deadly Defense', '=', '0',
-      'fighterFeatures.Devastating Blow', '=', '0',
-      'fighterFeatures.Indomitable Steed', '=', '0',
-      'fighterFeatures.Penetrating Shot', '=', '0',
-      'fighterFeatures.Polearm Parry', '=', '0',
-      'fighterFeatures.Ranged Defense', '=', '0',
-      'fighterFeatures.Reversal', '=', '0',
-      'fighterFeatures.Shield Mastery', '=', '0',
-      'fighterFeatures.Unstoppable Strike', '=', '0'
-    );
-    rules.defineRule('fighterHasArmorTraining',
-      classLevel, '=', '1',
-      'fighterFeatures.Active Defense', '=', '0',
-      'fighterFeatures.Armored Charger', '=', '0',
-      'fighterFeatures.Deadshot', '=', '0',
-      'fighterFeatures.Defensive Flurry', '=', '0',
-      'fighterFeatures.Elusive', '=', '0',
-      'fighterFeatures.Overhand Chop', '=', '0',
-      'fighterFeatures.Phalanx Fighting', '=', '0',
-      'fighterFeatures.Steadfast Pike', '=', '0',
-      'fighterFeatures.Trick Shot (Archer)', '=', '0',
-      'fighterFeatures.Weapon Training (Weapon Master)', '=', '0'
-    );
-    rules.defineRule('fighterHasBravery',
-      classLevel, '=', '1',
-      'fighterFeatures.Agility', '=', '0',
-      'fighterFeatures.Deceptive Strike', '=', '0',
-      'fighterFeatures.Hawkeye', '=', '0',
-      'fighterFeatures.Pole Fighting', '=', '0',
-      'fighterFeatures.Shattering Strike', '=', '0',
-      'fighterFeatures.Spark Of Life', '=', '0',
-      'fighterFeatures.Stand Firm', '=', '0',
-      'fighterFeatures.Steadfast Mount', '=', '0',
-      'fighterFeatures.Weapon Guard', '=', '0'
-    );
-    rules.defineRule('fighterHasWeaponMastery',
-      classLevel, '=', '1',
-      'fighterFeatures.Natural Weapon Mastery', '=', '0',
-      'fighterFeatures.Shield Ward', '=', '0',
-      'fighterFeatures.Shielded Fortress', '=', '0',
-      'fighterFeatures.Whirlwind Blitz', '=', '0'
-    );
-    rules.defineRule('fighterHasWeaponTraining',
-      classLevel, '=', '1',
-      'fighterFeatures.Crossbow Expert', '=', '0',
-      'fighterFeatures.Expert Archer', '=', '0',
-      'fighterFeatures.Leaping Attack', '=', '0',
-      'fighterFeatures.Mounted Mettle', '=', '0',
-      'fighterFeatures.Natural Savagery', '=', '0',
-      'fighterFeatures.Polearm Training', '=', '0',
-      'fighterFeatures.Ready Pike', '=', '0',
-      'fighterFeatures.Reliable Strike', '=', '0',
-      'fighterFeatures.Shield Fighter', '=', '0',
-      'fighterFeatures.Singleton', '=', '0',
-      'fighterFeatures.Twin Blades', '=', '0'
-    );
-    ['Armor Mastery', 'Armor Training', 'Bravery', 'Weapon Mastery',
-     'Weapon Training'].forEach(f => {
-      rules.defineRule('fighterFeatures.' + f,
-        'fighterHas' + f.replaceAll(/ /g, ''), '?', null
-      );
-    });
+    let featureReplacements = {
+      'Armor Mastery':[
+        'Ranged Defense', 'Penetrating Shot', 'Reversal', 'Polearm Parry',
+        'Indomitable Steed', 'Shield Mastery', 'Devastating Blow',
+        'Deadly Defense', 'Unstoppable Strike'
+      ],
+      'Armor Training':[
+        // Note Rapid Attack (Mobile Fighter) kills AT3+4
+        'Trick Shot (Archer)', 'Deadshot', 'Elusive', 'Phalanx Fighting',
+        'Steadfast Pike', 'Armored Charger', 'Active Defense',
+        'Overhand Chop', 'Defensive Flurry', 'Weapon Training (Weapon Master)'
+      ],
+      'Bravery':[
+        'Hawkeye', 'Deceptive Strike', 'Agility', 'Stand Firm', 'Pole Fighting',
+        'Steadfast Mount', 'Spark Of Life', 'Shattering Strike', 'Weapon Guard'
+      ],
+      'Weapon Mastery':[
+        'Whirlwind Blitz', 'Shielded Fortress', 'Natural Weapon Mastery',
+        'Shield Ward'
+      ],
+      'Weapon Training':[
+        'Expert Archer', 'Crossbow Expert', 'Singleton', 'Leaping Attack',
+        'Ready Pike', 'Polearm Training', 'Mounted Mettle', 'Natural Savagery',
+        'Shield Fighter', 'Twin Blades', 'Reliable Strike'
+      ]
+    };
+    for(let f in featureReplacements) {
+      let hasVar = 'fighterHas' + f.replaceAll(/[ ']/g, '');
+      rules.defineRule(hasVar, classLevel, '=', '1');
+      featureReplacements[f].forEach(r => {
+        rules.defineRule(hasVar, 'fighterFeatures.' + r, '=', '0');
+      });
+      rules.defineRule('fighterFeatures.' + f, hasVar, '?', 'source==1');
+    };
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
     // Archer
