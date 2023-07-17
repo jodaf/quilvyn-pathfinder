@@ -2113,21 +2113,6 @@ PFAPG.FEATURES = {
   'Bladethirst':
     'Section=magic ' +
     'Note="R30\' May use Bardic Performance to give weapon of one ally choice of +%{(levels.Bard-3)//3} attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties"',
-  'Bloodline Aquatic':'Section=skill Note="Swim is a class skill"',
-  'Bloodline Boreal':'Section=skill Note="Survival is a class skill"',
-  'Bloodline Deep Earth':
-    'Section=skill Note="Knowledge (Dungeoneering) is a class skill"',
-  'Bloodline Dreamspun':'Section=skill Note="Sense Motive is a class skill"',
-  'Bloodline Protean':
-    'Section=skill Note="Knowledge (Planes) is a class skill"',
-  'Bloodline Serpentine':'Section=skill Note="Diplomacy is a class skill"',
-  'Bloodline Shadow':'Section=skill Note="Stealth is a class skill"',
-  'Bloodline Starsoul':
-    'Section=skill Note="Knowledge (Nature) is a class skill"',
-  'Bloodline Stormborn':
-    'Section=skill Note="Knowledge (Nature) is a class skill"',
-  'Bloodline Verdant':
-    'Section=skill Note="Knowledge (Nature) is a class skill"',
   'Call The Storm':
     'Section=magic ' +
     'Note="May use Bardic Performance to use <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> effects"',
@@ -3492,30 +3477,55 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May use combined <i>Control Winds</i> and <i>Sleet Storm</i> effects centered on self 1/dy"',
   'Bloodline Aquatic':
-    'Section=magic ' +
-    'Note="+1 Caster Level on water spells/Summoned water and swimming creatures gain +1 attack and damage"',
-  'Bloodline Boreal':'Section=magic Note="+1 save DC on cold spells"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 Caster Level on water spells/Summoned water and swimming creatures gain +1 attack and damage",' +
+      '"Swim is a class skill"',
+  'Bloodline Boreal':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 save DC on cold spells",' +
+      '"Survival is a class skill"',
   'Bloodline Deep Earth':
-    'Section=magic Note="+1 save DC on spells cast underground"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 save DC on spells cast underground",' +
+      '"Knowledge (Dungeoneering) is a class skill"',
   'Bloodline Dreamspun':
-    'Section=magic ' +
-    'Note="Casting targeted spells gives +0.5/spell level to AC and saves vs. target for 1 rd"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Casting targeted spells gives +0.5/spell level to AC and saves vs. target for 1 rd",' +
+      '"Sense Motive is a class skill"',
   'Bloodline Protean':
-    'Section=magic Note="+4 dispel DC on transmutation and creation spells"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+4 dispel DC on transmutation and creation spells",' +
+      '"Knowledge (Planes) is a class skill"',
   'Bloodline Serpentine':
-    'Section=magic ' +
-    'Note="May affect animals, magical beasts, and monstrous humanoids with mind-affecting and language-dependent spells"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"May affect animals, magical beasts, and monstrous humanoids with mind-affecting and language-dependent spells",' +
+      '"Diplomacy is a class skill"',
   'Bloodline Shadow':
-    'Section=magic ' +
-    'Note="Casting darkness or shadow spell gives +1/spell level to Stealth for 1d4 rd"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Casting darkness or shadow spell gives +1/spell level to Stealth for 1d4 rd",' +
+      '"Stealth is a class skill"',
   'Bloodline Starsoul':
-    'Section=magic ' +
-    'Note="Evocation spells inflict dazzled for 1 rd/spell level"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Evocation spells inflict dazzled for 1 rd/spell level",' +
+      '"Knowledge (Nature) is a class skill"',
   'Bloodline Stormborn':
-    'Section=magic Note="+1 save DC on electricity and sonic spells"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 save DC on electricity and sonic spells",' +
+      '"Knowledge (Nature) is a class skill"',
   'Bloodline Verdant':
-    'Section=magic ' +
-    'Note="Casting personal spell gives +1/spell level to AC for 1d4 rd"',
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Casting personal spell gives +1/spell level to AC for 1d4 rd",' +
+      '"Knowledge (Nature) is a class skill"',
   'Breaching The Gulf':
     'Section=magic ' +
     'Note="+3 caster level on teleportation spells/R30\' May teleport target to void, inflicting 6d6 HP cold/rd and suffocation (DC %{10+levels.Sorcerer//2+charismaModifier} Will neg or ends) 1/dy"',
@@ -7474,7 +7484,8 @@ PFAPG.CLASSES = {
       '"fighterFeatures.Archer ? 2:Hawkeye",' +
       '"fighterFeatures.Archer ? 3:Trick Shot (Archer)",' +
       '"fighterFeatures.Archer ? 5:Expert Archer",' +
-      '"fighterFeatures.Archer ? 9:Safe Shot",' +
+      '"fighterFeatures.Archer || ' +
+       'fighterFeatures.Crossbowman ? 9:Safe Shot",' +
       '"fighterFeatures.Archer ? 13:Evasive Archer",' +
       '"fighterFeatures.Archer ? 17:Volley",' +
       '"fighterFeatures.Archer ? 19:Ranged Defense",' +
@@ -7483,7 +7494,7 @@ PFAPG.CLASSES = {
       '"fighterFeatures.Crossbowman ? 7:Improved Deadshot",' +
       '"fighterFeatures.Crossbowman ? 9:Quick Sniper",' +
       '"fighterFeatures.Crossbowman ? 11:Greater Deadshot",' +
-      '"fighterFeatures.Crossbowman ? 13:Safe Shot",' +
+      // Handled above '"fighterFeatures.Crossbowman ? 13:Safe Shot",' +
       '"fighterFeatures.Crossbowman ? 15:Pinpoint Targeting",' +
       '"fighterFeatures.Crossbowman ? 17:Meteor Shot",' +
       '"fighterFeatures.Crossbowman ? 19:Penetrating Shot",' +
@@ -7579,7 +7590,6 @@ PFAPG.CLASSES = {
       '"monkFeatures.Hungry Ghost Monk ? 7:Life Funnel",' +
       '"monkFeatures.Hungry Ghost Monk ? 11:Life From A Stone",' +
       '"monkFeatures.Hungry Ghost Monk ? 13:Sipping Demon",' +
-      '"monkFeatures.Ki Mystic ? 3:Ki Pool",' +
       '"monkFeatures.Ki Mystic ? 3:Ki Pool (Ki Mystic)",' +
       '"monkFeatures.Ki Mystic ? 5:Mystic Insight",' +
       '"monkFeatures.Ki Mystic ? 11:Mystic Visions",' +
@@ -7587,7 +7597,6 @@ PFAPG.CLASSES = {
       '"monkFeatures.Ki Mystic ? 19:Mystic Persistence",' +
       '"monkFeatures.Monk Of The Empty Hand ? ' +
         '1:Weapon Proficiency (Shuriken)",' +
-      '"monkFeatures.Monk Of The Empty Hand ? 1:Flurry Of Blows",' +
       '"monkFeatures.Monk Of The Empty Hand ? 3:Versatile Improvisation",' +
       '"monkFeatures.Monk Of The Empty Hand ? ' +
         '4:Ki Pool (Monk Of The Empty Hand)",' +
@@ -7611,7 +7620,6 @@ PFAPG.CLASSES = {
       '"monkFeatures.Weapon Adept || monkFeatures.Zen Archer ? ' +
         '1:Perfect Strike",' +
       '"monkFeatures.Weapon Adept ? 2:Way Of The Weapon Master",' +
-      '"monkFeatures.Weapon Adept ? 9:Evasion",' +
       '"monkFeatures.Weapon Adept ? 17:Uncanny Initiative",' +
       '"monkFeatures.Weapon Adept ? 20:Pure Power",' +
       '"monkFeatures.Zen Archer ? 1:Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Shortbow)",' +
@@ -7806,7 +7814,8 @@ PFAPG.CLASSES = {
       '"rogueFeatures.Cutpurse ? 1:Measure The Mark",' +
       '"rogueFeatures.Cutpurse ? 3:Stab And Grab",' +
       '"rogueFeatures.Investigator ? 1:Follow Up",' +
-      '"rogueFeatures.Poisoner ? 1:Poison Use",' +
+      '"rogueFeatures.Poisoner || ' +
+       'rogueFeatures.Poisoner ? 1:Poison Use",' +
       '"rogueFeatures.Poisoner ? 3:Master Poisoner",' +
       '"rogueFeatures.Rake ? Bravado\'s Blade",' +
       '"rogueFeatures.Rake ? 3:Rake\'s Smile",' +
@@ -7815,7 +7824,7 @@ PFAPG.CLASSES = {
       '"rogueFeatures.Sniper ? 1:Accuracy",' +
       '"rogueFeatures.Sniper ? 3:Deadly Range",' +
       '"rogueFeatures.Spy ? 1:Skilled Liar",' +
-      '"rogueFeatures.Spy ? 3:Poison Use",' +
+      // Handled above '"rogueFeatures.Spy ? 3:Poison Use",' +
       '"rogueFeatures.Swashbuckler ? 1:Martial Training",' +
       '"rogueFeatures.Swashbuckler ? 3:Daring",' +
       '"rogueFeatures.Thug ? 1:Frightening",' +
@@ -8423,6 +8432,7 @@ PFAPG.talentRules = function(
 PFAPG.classRulesExtra = function(rules, name) {
 
   let classLevel = 'levels.' + name;
+  let featureReplacements = null;
 
   if(name == 'Alchemist') {
 
@@ -9495,7 +9505,7 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
-    let featureReplacements = {
+    featureReplacements = {
       'Bardic Knowledge':[
         'Arcane Strike', 'Heraldic Expertise', 'Eye For Detail',
         'Magical Talent', 'Master Of Deception', 'World Traveler', 'Streetwise'
@@ -9545,14 +9555,6 @@ PFAPG.classRulesExtra = function(rules, name) {
         'Arcane Duelist', 'Magic Lore', 'Arcane Insight',
         'Extended Performance', 'Sea Legs'
       ]
-    };
-    for(let f in featureReplacements) {
-      let hasVar = 'bardHas' + f.replaceAll(/[- ]/g, '');
-      rules.defineRule(hasVar, classLevel, '=', '1');
-      featureReplacements[f].forEach(r => {
-        rules.defineRule(hasVar, 'bardFeatures.' + r, '=', '0');
-      });
-      rules.defineRule('bardFeatures.' + f, hasVar, '?', 'source==1');
     };
 
     rules.defineRule
@@ -9734,7 +9736,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         );
       });
     }
-    let featureReplacements = {
+    featureReplacements = {
       'Acid Dart':['Metal Fist'],
       'Acid Resistance':['Tunnel Runner'],
       'Agile Feet':['Door Sight', 'Silver-Tongued Haggler'],
@@ -9794,14 +9796,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Ward Against Death':['Speak With Dead'],
       'Weapon Master':['Wounding Blade'],
       'Wooden Fist':['Enlarge'],
-    };
-    for(let f in featureReplacements) {
-      let hasVar = 'clericHas' + f.replaceAll(/[ ']/g, '');
-      rules.defineRule(hasVar, classLevel, '=', '1');
-      featureReplacements[f].forEach(r => {
-        rules.defineRule(hasVar, 'clericFeatures.' + r, '=', '0');
-      });
-      rules.defineRule('clericFeatures.' + f, hasVar, '?', 'source==1');
     };
 
     // Agathion
@@ -9871,7 +9865,7 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Druid') {
 
-    let featureReplacements = {
+    featureReplacements = {
       'A Thousand Faces':[
         'Deep Diver', 'Flurry Form', 'Plaguebearer', 'Dunemeld',
         'Verdant Sentinel', 'Mountain Stone', 'Evasion', 'Slippery',
@@ -9902,14 +9896,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'Mountaineer', 'Plains Traveler', 'Marshwight', 'Lorekeeper'
       ]
     };
-    for(let f in featureReplacements) {
-      let hasVar = 'druidHas' + f.replaceAll(/[ ']/g, '');
-      rules.defineRule(hasVar, classLevel, '=', '1');
-      featureReplacements[f].forEach(r => {
-        rules.defineRule(hasVar, 'druidFeatures.' + r, '=', '0');
-      });
-      rules.defineRule('druidFeatures.' + f, hasVar, '?', 'source==1');
-    };
+
     rules.defineRule('classSkills.Knowledge (Geography)',
       classLevel, '=', 'null',
       'druidHasKnowledgeGeography', '=', 'source==1 ? 1 : null'
@@ -10108,7 +10095,7 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Fighter') {
 
-    let featureReplacements = {
+    featureReplacements = {
       'Armor Mastery':[
         'Ranged Defense', 'Penetrating Shot', 'Reversal', 'Polearm Parry',
         'Indomitable Steed', 'Shield Mastery', 'Devastating Blow',
@@ -10134,14 +10121,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'Shield Fighter', 'Twin Blades', 'Reliable Strike'
       ]
     };
-    for(let f in featureReplacements) {
-      let hasVar = 'fighterHas' + f.replaceAll(/[ ']/g, '');
-      rules.defineRule(hasVar, classLevel, '=', '1');
-      featureReplacements[f].forEach(r => {
-        rules.defineRule(hasVar, 'fighterFeatures.' + r, '=', '0');
-      });
-      rules.defineRule('fighterFeatures.' + f, hasVar, '?', 'source==1');
-    };
+
     rules.defineRule
       ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
     // Archer
@@ -10167,6 +10147,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       }
     });
     // Crossbowman
+    rules.defineRule('levelsUntilSafeShot',
+      'fighterFeatures.Archer', '=', '9',
+      'fighterFeatures.Crossbowman', '=', '13',
+      classLevel, '+', '-source'
+    );
     rules.defineRule('combatNotes.crossbowExpert',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
@@ -10180,7 +10165,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'dexterityModifier', '=', null
     );
     rules.defineRule('combatNotes.safeShot',
-      'fighterFeatures.Crossbowman', '=', '"Crossbow"'
+      'fighterFeatures.Crossbowman', '=', '"Crossbow"',
+      'levelsUntilSafeShot', '?', 'source<=0'
     );
     QuilvynUtils.getKeys(rules.getChoices('weapons')).forEach(w => {
       let prefix =
@@ -10309,123 +10295,51 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Monk') {
 
-    ['Abundant Step', 'Diamond Body', 'Diamond Soul', 'Empty Body', 'Evasion',
-     'High Jump', 'Improved Evasion', 'Maneuver Training', 'Perfect Self',
-     'Purity Of Body', 'Quivering Palm', 'Slow Fall', 'Still Mind',
-     'Stunning Fist', 'Timeless Body', 'Tongue Of The Sun And Moon',
-     'Wholeness Of Body'].forEach(f => {
-      rules.defineRule
-        ('monkFeatures.' + f, 'monkHas' + f.replaceAll(/ /g, ''), '?', null);
-    });
+    featureReplacements = {
+      'Abundant Step':['Slow Time', 'Touch Of Surrender'],
+      'Diamond Body':[
+        'Drunken Courage', 'Life From A Stone', 'Mystic Visions', 'Ki Weapons',
+        'Ki Sacrifice', 'Trick Shot (Zen Archer)'
+      ],
+      'Diamond Soul':[
+        'Drunken Resilience', 'Sipping Demon', 'Mystic Prescience'
+      ],
+      'Empty Body':['Firewater Breath', 'Mystic Persistence'],
+      'Evasion':['Iron Monk', 'Adamantine Monk', 'Way Of The Bow'],
+      'High Jump':['Iron Limb Defense'],
+      'Improved Evasion':['Adamantine Monk', 'Reflexive Shot', 'Weapon Adept'],
+      'Maneuver Training':['Zen Archery'],
+      'Perfect Self':['Immortality', 'True Sacrifice', 'Pure Power'],
+      'Purity Of Body':[
+        'Drunken Strength', 'Steal Ki', 'Mystic Insight', 'Ki Weapons',
+        'Ki Arrows'
+      ],
+      'Quivering Palm':['Ki Sacrifice', 'Touch Of Peace'],
+      'Slow Fall':['Bastion Stance'],
+      'Still Mind':[
+        'Drunken Ki', 'Ki Mystic', 'Versatile Improvisation',
+        'Point-Blank Master'
+      ],
+      'Stunning Fist':[
+        'Punishing Kick', 'Elemental Fist', 'Touch Of Serenity',
+        'Perfect Strike'
+      ],
+      'Timeless Body':['Aspect Master', 'Uncanny Initiative'],
+      'Tongue Of The Sun And Moon':[
+        'Learned Master', 'Vow Of Silence', 'Ki Focus Bow'
+      ],
+      'Wholeness Of Body':['Life Funnel', 'Ancient Healing Hand']
+    };
     rules.defineRule
       ('monkFeatures.Condition Fist', 'monkHasStunningFist', '?', null);
     rules.defineRule('monkFeatures.Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)',
       'monkHasWeaponProficiency', '?', null
     );
-    rules.defineRule('monkHasAbundantStep',
-      classLevel, '=', '1',
-      'monkFeatures.Slow Time', '=', '0',
-      'monkFeatures.Touch Of Surrender', '=', '0'
-    );
-    rules.defineRule('monkHasDiamondBody',
-      classLevel, '=', '1',
-      'monkFeatures.Drunken Courage', '=', '0',
-      'monkFeatures.Ki Sacrifice', '=', '0',
-      'monkFeatures.Ki Weapons', '=', '0',
-      'monkFeatures.Life From A Stone', '=', '0',
-      'monkFeatures.Mystic Visions', '=', '0',
-      'monkFeatures.Trick Shot (Zen Archer)', '=', '0'
-    );
-    rules.defineRule('monkHasDiamondSoul',
-      classLevel, '=', '1',
-      'monkFeatures.Drunken Resilience', '=', '0',
-      'monkFeatures.Mystic Prescience', '=', '0',
-      'monkFeatures.Sipping Demon', '=', '0'
-    );
-    rules.defineRule('monkHasEmptyBody',
-      classLevel, '=', '1',
-      'monkFeatures.Firewater Breath', '=', '0',
-      'monkFeatures.Mystic Persistence', '=', '0'
-    );
-    rules.defineRule('monkHasEvasion',
-      classLevel, '=', '1',
-      'monkFeatures.Iron Monk', '=', '0',
-      'monkFeatures.Way Of The Bow', '=', '0',
-      // Way Of The Weapon Master delays Evasion to level 9
-      'weaponAdeptLevel', '=', 'source<9 ? 0 : null'
-    );
-    rules.defineRule('monkHasHighJump',
-      classLevel, '=', '1',
-      'monkFeatures.Iron Limb Defense', '=', '0'
-    );
-    rules.defineRule('monkHasImprovedEvasion',
-      classLevel, '=', '1',
-      'monkFeatures.Adamantine Monk', '=', '0',
-      'monkFeatures.Reflexive Shot', '=', '0',
-      // Weapon Adept replaces Improved Evasion with Evasion
-      'weaponAdeptLevel', '=', '0'
-    );
-    rules.defineRule('monkHasManeuverTraining',
-      classLevel, '=', '1',
-      'monkFeatures.Zen Archery', '=', '0'
-    );
-    rules.defineRule('monkHasPerfectSelf',
-      classLevel, '=', '1',
-      'monkFeatures.Immortality', '=', '0',
-      'monkFeatures.Pure Power', '=', '0',
-      'monkFeatures.True Sacrifice', '=', '0'
-    );
-    rules.defineRule('monkHasPurityOfBody',
-      classLevel, '=', '1',
-      'monkFeatures.Drunken Strength', '=', '0',
-      'monkFeatures.Ki Arrows', '=', '0',
-      'monkFeatures.Ki Weapons', '=', '0',
-      'monkFeatures.Mystic Insight', '=', '0',
-      'monkFeatures.Steal Ki', '=', '0'
-    );
-    rules.defineRule('monkHasQuiveringPalm',
-      classLevel, '=', '1',
-      'monkFeatures.Ki Sacrifice', '=', '0',
-      'monkFeatures.Touch Of Peace', '=', '0'
-    );
-    rules.defineRule('monkHasSlowFall',
-      classLevel, '=', '1',
-      'monkFeatures.Bastion Stance', '=', '0'
-    );
-    rules.defineRule('monkHasStillMind',
-      classLevel, '=', '1',
-      'monkFeatures.Drunken Ki', '=', '0',
-      'monkFeatures.Ki Mystic', '=', '0',
-      'monkFeatures.Point-Blank Master', '=', '0',
-      'monkFeatures.Versatile Improvisation', '=', '0'
-    );
-    rules.defineRule('monkHasStunningFist',
-      classLevel, '=', '1',
-      'monkFeatures.Elemental Fist', '=', '0',
-      'monkFeatures.Perfect Strike', '=', '0',
-      'monkFeatures.Punishing Kick', '=', '0',
-      'monkFeatures.Touch Of Serenity', '=', '0'
-    );
-    rules.defineRule('monkHasTimelessBody',
-      classLevel, '=', '1',
-      'monkFeatures.Aspect Master', '=', '0',
-      'monkFeatures.Uncanny Initiative', '=', '0'
-    );
-    rules.defineRule('monkHasTongueOfTheSunAndMoon',
-      classLevel, '=', '1',
-      'monkFeatures.Ki Focus Bow', '=', '0',
-      'monkFeatures.Learned Master', '=', '0',
-      'monkFeatures.Vow Of Silence', '=', '0'
-    );
     rules.defineRule('monkHasWeaponProficiency',
       classLevel, '=', '1',
       'monkFeatures.Monk Of The Empty Hand', '=', '0'
     );
-    rules.defineRule('monkHasWholenessOfBody',
-      classLevel, '=', '1',
-      'monkFeatures.Ancient Healing Hand', '=', '0',
-      'monkFeatures.Life Funnel', '=', '0'
-    );
+
     rules.defineRule
       ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
     // Drunken Master
@@ -10445,10 +10359,14 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Divination']
     );
     // Monk Of The Empty Hand
+    rules.defineRule('emptyHandLevel',
+      'monkFeatures.Monk Of The Empty Hand', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('featureNotes.kiPool',
       'featureNotes.kiPool(KiMystic)', '+=', '2',
       // Force to exactly 2 points at level 3; above rule handles higher levels
-      classLevel, 'v=', 'source==3 ? 2 : null'
+      'emptyHandLevel', 'v=', 'source==3 ? 2 : null'
     );
     // Monk Of The Four Winds
     rules.defineRule('combatNotes.elementalFist',
@@ -10505,6 +10423,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
     // Weapon Adept
+    // WA delays Evasion to level 9
+    rules.defineRule('weaponAdeptLevel',
+      'monkFeatures.Weapon Adept', '?', null,
+      classLevel, '=', null
+    );
+    rules.defineRule('monkHasEvasion',
+      'weaponAdeptLevel', '=', 'source<9 ? 0 : null'
+    );
     rules.defineRule
       ('combatNotes.perfectStrike', classLevel, '+', 'source>=10 ? 1 : null');
     rules.defineRule('featCounts.General',
@@ -10516,8 +10442,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
     );
     // Zen Archer
-    rules.defineRule
-      ('combatNotes.perfectStrike', classLevel, '+', 'source>=10 ? 1 : null');
+    // combatNotes.perfectStrike as Weapon Adept
     rules.defineRule('combatNotes.zenArchery',
       'wisdomModifier', '=', null,
       'dexterityModifier', '+', '-source'
@@ -11087,6 +11012,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     // Rake
     rules.defineRule
       ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
+    // Spy
+    rules.defineRule('levelsUntilPoisonUse',
+      'rogueFeatures.Poisoner', '=', '1',
+      'rogueFeatures.Spy', '=', '3',
+      classLevel, '+', '-source'
+    );
+    rules.defineRule
+      ('rogueFeatures.Poison Use', 'levelsUntilPoisonUse', '?', 'source<=0');
     // Swashbucker
     rules.defineRule
       ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
@@ -11142,11 +11075,11 @@ PFAPG.classRulesExtra = function(rules, name) {
     };
     for(let f in allFeats) {
       if(f.startsWith('Exotic Weapon Proficiency'))
-        bloodlineFeats['Boreal'].push(f);
+        bloodlineFeats.Boreal.push(f);
       else if(f.startsWith('Skill Focus (Craft'))
-        bloodlineFeats['Protean'].push(f);
+        bloodlineFeats.Protean.push(f);
       else if(f.startsWith('Spell Focus'))
-        bloodlineFeats['Protean'].push(f);
+        bloodlineFeats.Protean.push(f);
     }
 
     for(let s in rules.getChoices('selectableFeatures')) {
@@ -11732,6 +11665,19 @@ PFAPG.classRulesExtra = function(rules, name) {
         console.log('Cannot find note ' + note);
     });
 
+  }
+
+  if(featureReplacements) {
+    for(let f in featureReplacements) {
+      let prefix =
+        name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
+      let hasVar = prefix + 'Has' + f.replaceAll(/[- ]/g, '');
+      rules.defineRule(hasVar, classLevel, '=', '1');
+      featureReplacements[f].forEach(r => {
+        rules.defineRule(hasVar, prefix + 'Features.' + r, '=', '0');
+      });
+      rules.defineRule(prefix + 'Features.' + f, hasVar, '?', 'source==1');
+    }
   }
 
 };
