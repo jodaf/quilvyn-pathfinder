@@ -43,6 +43,7 @@ function Pathfinder() {
   rules.choiceEditorElements = Pathfinder.choiceEditorElements;
   rules.choiceRules = Pathfinder.choiceRules;
   rules.editorElements = SRD35.initialEditorElements();
+  rules.getChoices = SRD35.getChoices;
   rules.getFormats = Pathfinder.getFormats;
   rules.getPlugins = Pathfinder.getPlugins;
   rules.makeValid = SRD35.makeValid;
@@ -4113,7 +4114,7 @@ Pathfinder.CLASSES = {
       '"druidFeatures.Air Domain ? 1:Lightning Arc",' +
       '"druidFeatures.Air Domain ? 6:Electricity Resistance",' +
       '"druidFeatures.Animal Domain ? 1:Speak With Animals",' +
-      '"druidFeatures.Animal Domain ? 4:Animal Companion",' +
+      // '"druidFeatures.Animal Domain ? 4:Animal Companion",' +
       '"druidFeatures.Earth Domain ? 1:Acid Dart",' +
       '"druidFeatures.Earth Domain ? 6:Acid Resistance",' +
       '"druidFeatures.Fire Domain ? 1:Fire Bolt",' +
@@ -4126,6 +4127,7 @@ Pathfinder.CLASSES = {
       '"druidFeatures.Weather Domain ? 8:Lightning Lord" ' +
     'Selectables=' +
       '"1:Air Domain:Nature Bond",' +
+      '"1:Animal Companion:Nature Bond",' +
       '"1:Animal Domain:Nature Bond",' +
       '"1:Earth Domain:Nature Bond",' +
       '"1:Fire Domain:Nature Bond",' +
