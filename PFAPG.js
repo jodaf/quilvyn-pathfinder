@@ -7694,8 +7694,6 @@ PFAPG.CLASSES = {
       '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Selectables').filter(x => x.includes('Domain')).map(x => 'paladinFeatures.Sacred Servant && ' + x.replace('1:', '4:')).join('","') + '"',
   'Ranger':
     'Features=' +
-      '"rangerFeatures.Beast Master || rangerFeatures.Horse Lord ? ' +
-        '4:Animal Companion",' +
       '"rangerFeatures.Beast Master ? 6:Improved Empathic Link",' +
       '"rangerFeatures.Beast Master || rangerFeatures.Horse Lord ? ' +
         '12:Strong Bond",' +
@@ -7704,7 +7702,6 @@ PFAPG.CLASSES = {
       '"rangerFeatures.Guide ? 9:Ranger\'s Luck",' +
       '"rangerFeatures.Guide ? 11:Inspired Moment",' +
       '"rangerFeatures.Guide ? 16:Improved Ranger\'s Luck",' +
-      // Handled above '"rangerFeatures.Horse Lord ? 4:Animal Companion",' +
       '"rangerFeatures.Horse Lord ? 4:Mounted Bond",' +
       // Handled above '"rangerFeatures.Horse Lord ? 12:Strong Bond",' +
       '"rangerFeatures.Horse Lord ? 17:Spiritual Bond",' +
@@ -7814,10 +7811,9 @@ PFAPG.CLASSES = {
       '"rogueFeatures.Cutpurse ? 1:Measure The Mark",' +
       '"rogueFeatures.Cutpurse ? 3:Stab And Grab",' +
       '"rogueFeatures.Investigator ? 1:Follow Up",' +
-      '"rogueFeatures.Poisoner || ' +
-       'rogueFeatures.Poisoner ? 1:Poison Use",' +
+      '"rogueFeatures.Poisoner || rogueFeatures.Spy ? 1:Poison Use",' +
       '"rogueFeatures.Poisoner ? 3:Master Poisoner",' +
-      '"rogueFeatures.Rake ? Bravado\'s Blade",' +
+      '"rogueFeatures.Rake ? 1:Bravado\'s Blade",' +
       '"rogueFeatures.Rake ? 3:Rake\'s Smile",' +
       '"rogueFeatures.Scout ? 4:Scout\'s Charge",' +
       '"rogueFeatures.Scout ? 8:Skirmisher (Rogue)",' +
@@ -10491,54 +10487,21 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Paladin') {
 
-    ['Aura Of Faith', 'Aura Of Justice', 'Aura Of Resolve',
-     'Channel Positive Energy', 'Divine Health', 'Mercy',
-     'Smite Evil'].forEach(f => {
-      rules.defineRule('paladinFeatures.' + f,
-        'paladinHas' + f.replaceAll(/ /g, ''), '?', null
-      );
-    });
-    rules.defineRule('paladinHasAuraOfFaith',
-      classLevel, '=', '1',
-      'paladinFeatures.Shining Light', '=', '0'
-    );
-    rules.defineRule('paladinHasAuraOfJustice',
-      classLevel, '=', '1',
-      'paladinFeatures.Aura Of Healing', '=', '0',
-      "paladinFeatures.Knight's Charge", '=', '0',
-      'paladinFeatures.Undead Annihilation', '=', '0'
-    );
-    rules.defineRule('paladinHasAuraOfResolve',
-      classLevel, '=', '1',
-      'paladinFeatures.Call Celestial Ally', '=', '0',
-      'paladinFeatures.Aura Of Life', '=', '0'
-    );
-    rules.defineRule('paladinHasChannelPositiveEnergy',
-      classLevel, '=', '1',
-      'paladinFeatures.Channel Positive Energy (Hospitaler)', '=', '0'
-    );
-    rules.defineRule('paladinHasDivineHealth',
-      classLevel, '=', '1',
-      'paladinFeatures.Skilled Rider', '=', '0'
-    );
-    rules.defineRule('paladinHasMercy',
-      classLevel, '=', '1',
-      'paladinFeatures.Shared Defense', '=', '0'
-    );
-    rules.defineRule('paladinHasSmiteEvil',
-      classLevel, '=', '1',
-      'hospitalerLevel', '=', 'source<7 ? 0 : null'
-    );
+    featureReplacements = {
+      'Aura Of Faith':['Shining Light'],
+      'Aura Of Justice':[
+        'Aura Of Healing', "Knight's Charge", 'Undead Annihilation'
+      ],
+      'Aura Of Resolve':['Call Celestial Ally', 'Aura Of Life'],
+      'Channel Positive Energy':[
+        'Channel Positive Energy (Hospitaler)'
+      ],
+      'Divine Health':['Skilled Rider'],
+      'Mercy':['Shared Defense']
+    };
     rules.defineRule('paladinHasSpells',
       classLevel, '=', '1',
       'paladinFeatures.Power Of Faith', '=', '0'
-    );
-    rules.defineRule
-      ('selectableFeatureCount.Paladin (Archetype)', classLevel, '=', '1');
-    rules.defineRule
-      ('selectableFeatureCount.Paladin (Mercy)', 'paladinHasMercy', '?', null);
-    rules.defineRule('selectableFeatureCount.Paladin (Domain)',
-      'featureNotes.domain(Paladin)', '=', '1'
     );
     rules.defineRule('casterLevels.Domain', 'paladinDomainLevel', '^=', null);
     rules.defineRule('casterLevels.Paladin', 'paladinHasSpells', '?', null);
@@ -10557,29 +10520,46 @@ PFAPG.classRulesExtra = function(rules, name) {
           ('paladinDomainLevel', 'paladinDomainLevels.' + domain, '^=', null);
       }
     }
-    for(let level = 1; level <= 9; level++) {
+    for(let level = 1; level <= 4; level++) {
       rules.defineRule('spellSlots.Domain' + level,
-        'paladinDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
+        'paladinDomainLevel', '?', null,
+        'spellSlots.P' + level, '=', '1'
       );
     }
+
+    rules.defineRule
+      ('selectableFeatureCount.Paladin (Archetype)', classLevel, '=', '1');
+    rules.defineRule
+      ('selectableFeatureCount.Paladin (Mercy)', 'paladinHasMercy', '?', null);
+    rules.defineRule('selectableFeatureCount.Paladin (Domain)',
+      'featureNotes.domain(Paladin)', '=', '1'
+    );
     // Divine Defender
     rules.defineRule('magicNotes.sharedDefense.1',
       'features.Shared Defense', '?', null,
       classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
     );
     // Hospitaler
+    rules.defineRule('hospitalerLevel',
+      'paladinFeatures.Hospitaler', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('combatNotes.smiteEvil',
-      classLevel, 'v', 'Math.floor((source + 5) / 6)'
+      'hospitalerLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
     rules.defineRule('features.Channel Energy',
       'features.Channel Positive Energy (Hospitaler)', '=', '1'
     );
     rules.defineRule('magicNotes.channelEnergy.1',
-      classLevel, '+=', 'Math.floor((source-2)/2) - Math.floor((source+1)/2)'
+      'hospitalerLevel', '+=', 'Math.floor((source-2)/2) - Math.floor((source+1)/2)'
     );
     // Sacred Servant
+    rules.defineRule('sacredServantLevel',
+      'paladinFeatures.Sacred Servant', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('combatNotes.smiteEvil',
-      classLevel, 'v', 'Math.floor((source + 5) / 6)'
+      'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
     );
     Pathfinder.featureSpells(rules,
       'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
@@ -10604,7 +10584,9 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
     // Undead Scourge
-    rules.defineRule('combatNotes.smiteEvil.1', classLevel, '=', '"undead"');
+    rules.defineRule('combatNotes.smiteEvil.1',
+      'paladinFeatures.Undead Scourge', '=', '"undead"'
+    );
     // Warrior Of The Holy Light
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
@@ -10709,78 +10691,33 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Ranger') {
 
-    ['Camouflage', 'Endurance', 'Evasion', 'Favored Enemy', 'Favored Terrain',
-     'Hide In Plain Sight', 'Improved Evasion', 'Improved Quarry',
-     'Master Hunter', 'Quarry', 'Woodland Stride'].forEach(f => {
-      rules.defineRule('rangerFeatures.' + f,
-        'rangerHas' + f.replaceAll(/ /g, ''), '?', null
-      );
-    });
-    rules.defineRule('rangerHasCamouflage',
-      classLevel, '=', '1',
-      'rangerFeatures.Blend In', '=', '0',
-      'rangerFeatures.Dual Form Shifter', '=', '0',
-      'rangerFeatures.Strong Bond', '=', '0',
-      'rangerFeatures.Wisdom Of The Spirits', '=', '0',
-      // Presume Infiltrator losing Favored Terrain implies losing Camouflage
-      'rangerFeatures.Adaptation', '=', '0'
-    );
-    rules.defineRule('rangerHasEndurance',
-      classLevel, '=', '1',
-      'rangerFeatures.Trapfinding', '=', '0'
-    );
-    rules.defineRule('rangerHasEvasion',
-      classLevel, '=', '1',
-      "rangerFeatures.Ranger's Luck", '=', '0'
-    );
-    rules.defineRule('rangerHasFavoredEnemy',
-      classLevel, '=', '1',
-      "rangerFeatures.Ranger's Focus", '=', '0'
-    );
-    rules.defineRule('rangerHasFavoredTerrain',
-      classLevel, '=', '1',
-      'rangerFeatures.Adaptation', '=', '0',
-      'rangerFeatures.Favored Community', '=', '0',
-      "rangerFeatures.Shifter's Blessing", '=', '0'
-    );
-    rules.defineRule('rangerHasHideInPlainSight',
-      classLevel, '=', '1',
-      'rangerFeatures.Invisibility Trick', '=', '0',
-      'rangerFeatures.Spiritual Bond', '=', '0'
-    );
-    rules.defineRule('rangerHasHuntersBond',
-      classLevel, '=', '1',
-      'rangerFeatures.Mounted Bond', '=', '0',
-      'rangerFeatures.Spirit Bond', '=', '0',
-      'rangerFeatures.Terrain Bond', '=', '0',
-      // Easier to list this archetype rather than its feature
-      'rangerFeatures.Beast Master', '=', '0'
-    );
-    rules.defineRule('rangerHasImprovedEvasion',
-      classLevel, '=', '1',
-      "rangerFeatures.Improved Ranger's Luck", '=', '0'
-    );
-    rules.defineRule('rangerHasImprovedQuarry',
-      classLevel, '=', '1',
-      'rangerFeatures.Inspired Moment', '=', '0'
-    );
-    rules.defineRule('rangerHasMasterHunter',
-      classLevel, '=', '1',
-      'rangerFeatures.Master Shifter', '=', '0',
-      // Presume Guide losing Favored Enemy implies losing Master Hunter
-      'rangerFeatures.Guide', '=', '0'
-    );
-    rules.defineRule('rangerHasQuarry',
-      classLevel, '=', '1',
-      'rangerFeatures.Inspired Moment', '=', '0'
-    );
+    featureReplacements = {
+      'Camouflage':[
+        'Strong Bond', 'Dual Form Shifter', 'Wisdom Of The Spirits', 'Blend In',
+        // Presume losing Favored Terrain implies losing Camouflage
+        'Adaptation'
+      ],
+      'Evasion':["Ranger's Luck"],
+      'Endurance':['Trapfinding'],
+      'Favored Enemy':["Ranger's Focus"],
+      'Favored Terrain':[
+        'Adaptation', "Shifter's Blessing", 'Favored Community'
+      ],
+      'Hide In Plain Sight':['Spiritual Bond', 'Invisibility Trick'],
+      "Hunter's Bond":[
+        // Easier to list Beast Master rather than its feature
+        'Beast Master', 'Terrain Bond', 'Mounted Bond', 'Spirit Bond'
+      ],
+      'Improved Evasion':["Improved Ranger's Luck"],
+      'Improved Quarry':['Inspired Moment'],
+        // Presume losing Favored Enemy implies losing Master Hunter
+      'Master Hunter':['Master Shifter', "Ranger's Focus"],
+      'Quarry':['Inspired Moment'],
+      'Woodland Stride':['Push Through']
+    };
     rules.defineRule('rangerHasSpells',
       classLevel, '=', '1',
       "rangerFeatures.Hunter's Tricks", '=', '0'
-    );
-    rules.defineRule('rangerHasWoodlandStride',
-      classLevel, '=', '1',
-      'rangerFeatures.Push Through', '=', '0'
     );
     rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
@@ -10811,6 +10748,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         allSelectables[entry] =
           allSelectables[entry].replace('Type=', 'Type="Ranger (Weapon And Shield Feat)",');
     });
+
     // Beast Master
     let allSkills = rules.getChoices('skills');
     for(let s in allSkills) {
@@ -10835,6 +10773,13 @@ PFAPG.classRulesExtra = function(rules, name) {
         'features.Improved Empathic Link', '+', '-1'
       );
     });
+    rules.defineRule('beastMasterLevel',
+      'rangerFeatures.Beast Master', '?', null,
+      classLevel, '=', null
+    );
+    rules.defineRule('rangerFeatures.Animal Companion',
+      'beastMasterLevel', '=', 'source>=4 ? 1 : null'
+    );
     // Guide
     rules.defineRule("combatNotes.ranger'sLuck.1",
       "rangerFeatures.Ranger's Luck", '?', null,
@@ -10843,6 +10788,10 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule("combatNotes.ranger'sLuck.2",
       "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
+    );
+    // Horse Lord
+    rules.defineRule('rangerFeatures.Animal Companion',
+      'features.Mounted Bond', '=', '1'
     );
     // Shapeshifter
     rules.defineRule('abilityNotes.formOfTheBear',
@@ -10887,6 +10836,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.masterShifter', 'v', '5'
     );
     rules.defineRule("selectableFeatureCount.Ranger (Shifter's Blessing)",
+      'rangerFeatures.Shapeshifter', '?', null,
       classLevel, '=', 'Math.floor((source + 2) / 5)'
     );
     Pathfinder.featureSpells(rules,
@@ -10898,6 +10848,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'Math.floor((source - 3) / 2)'
     );
     rules.defineRule("selectableFeatureCount.Ranger (Hunter's Trick)",
+      'rangerFeatures.Skirmisher', '?', null,
       classLevel, '=', 'Math.floor((source - 3) / 2)'
     );
     // Spirit Ranger
@@ -10932,47 +10883,26 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Rogue') {
 
+    featureReplacements = {
+      'Improved Uncanny Dodge':['Distraction', 'Skirmisher', 'Trap Master'],
+      'Trapfinding':[
+        // Easier to list Poisoner rather than its feature
+        'Expert Acrobat', 'Measure The Mark', 'Follow Up', 'Poisoner',
+        "Bravado's Blade", 'Accuracy', 'Skilled Liar', 'Martial Training',
+        'Frightening'
+      ],
+      'Trap Sense':[
+        'Second Chance (Rogue)', 'Stab And Grab', 'Master Poisoner',
+        // Easier to list Spy rather than its feature
+        "Rake's Smile", 'Deadly Range', 'Spy', 'Daring', 'Brutal Beating'
+      ],
+      'Uncanny Dodge':["Scout's Charge", 'Careful Disarm']
+    };
     ['Improved Uncanny Dodge', 'Trapfinding', 'Trap Sense',
      'Uncanny Dodge'].forEach(f => {
       rules.defineRule
         ('rogueFeatures.' + f, 'rogueHas' + f.replaceAll(/ /g, ''), '?', null);
     });
-    rules.defineRule('rogueHasImprovedUncannyDodge',
-      classLevel, '=', '1',
-      'rogueFeatures.Distraction (Rogue)', '=', '0',
-      'rogueFeatures.Skirmisher (Rogue)', '=', '0',
-      'rogueFeatures.Trap Master', '=', '0'
-    );
-    rules.defineRule('rogueHasTrapfinding',
-      classLevel, '=', '1',
-      'rogueFeatures.Accuracy', '=', '0',
-      "rogueFeatures.Bravado's Blade", '=', '0',
-      'rogueFeatures.Expert Acrobat', '=', '0',
-      'rogueFeatures.Follow Up', '=', '0',
-      'rogueFeatures.Frightening', '=', '0',
-      'rogueFeatures.Martial Training', '=', '0',
-      'rogueFeatures.Measure The Mark', '=', '0',
-      'rogueFeatures.Skilled Liar', '=', '0',
-      // Easier to list this archetype rather than its feature
-      'rogueFeatures.Poisoner', '=', '0'
-    );
-    rules.defineRule('rogueHasTrapSense',
-      classLevel, '=', '1',
-      'rogueFeatures.Brutal Beating', '=', '0',
-      'rogueFeatures.Daring', '=', '0',
-      'rogueFeatures.Deadly Range', '=', '0',
-      'rogueFeatures.Master Poisoner', '=', '0',
-      "rogueFeatures.Rake's Smile", '=', '0',
-      'rogueFeatures.Second Chance (Rogue)', '=', '0',
-      'rogueFeatures.Stab And Grab', '=', '0',
-      // Easier to list this archetype rather than its feature
-      'rogueFeatures.Spy', '=', '0'
-    );
-    rules.defineRule('rogueHasUncannyDodge',
-      classLevel, '=', '1',
-      'rogueFeatures.Careful Disarm', '=', '0',
-      "rogueFeatures.Scout's Charge", '=', '0'
-    );
     rules.defineRule
       ('features.Improved Steal', 'featureNotes.combatSwipe', '=', '1');
     rules.defineRule('features.Intimidating Prowess',
@@ -11671,7 +11601,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     for(let f in featureReplacements) {
       let prefix =
         name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
-      let hasVar = prefix + 'Has' + f.replaceAll(/[- ]/g, '');
+      let hasVar = prefix + 'Has' + f.replaceAll(/[-' ]/g, '');
       rules.defineRule(hasVar, classLevel, '=', '1');
       featureReplacements[f].forEach(r => {
         rules.defineRule(hasVar, prefix + 'Features.' + r, '=', '0');
