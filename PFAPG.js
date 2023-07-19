@@ -9623,6 +9623,10 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'Math.floor(source / 2)'
     );
     // Sandman
+    rules.defineRule('sandmanLevel',
+      'bardFeatures.Sandman', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule
       ('saveNotes.trapSense', classLevel, '+=', 'Math.floor(source / 3)');
     rules.defineRule('skillModifier.Bluff',
@@ -9639,7 +9643,8 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Master Of Deception', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
-    rules.defineRule('sneakAttack', classLevel, '=', 'Math.floor(source / 5)');
+    rules.defineRule
+      ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
     // Savage Skald
     Pathfinder.featureSpells(rules,
       'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
