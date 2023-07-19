@@ -7895,7 +7895,7 @@ PFAPG.CLASSES = {
       '"sorcererFeatures.Bloodline Starsoul ? 3:Voidwalker",' +
       '"sorcererFeatures.Bloodline Starsoul ? 9:Aurora Borealis",' +
       '"sorcererFeatures.Bloodline Starsoul ? 15:Breaching The Gulf",' +
-      '"sorcererFeatures.Bloodline Starsoul ? 20:Starborn,' +
+      '"sorcererFeatures.Bloodline Starsoul ? 20:Starborn",' +
       '"sorcererFeatures.Bloodline Stormborn ? 1:Thunderstaff",' +
       '"sorcererFeatures.Bloodline Stormborn ? 3:Stormchild",' +
       '"sorcererFeatures.Bloodline Stormborn ? 9:Thunderbolt",' +
@@ -8686,7 +8686,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('speed', 'abilityNotes.lame', '+', null);
     let mysteries =
-      Object.keys(rules.getChoices('selectableFeatures')).filter(x => x.match(/Oracle - .* Mystery/)).map(x => x.replace('Oracle - (.*) Mystery', '$1'));
+      Object.keys(rules.getChoices('selectableFeatures')).filter(x => x.match(/Oracle - .* Mystery/)).map(x => x.replace(/Oracle - (.*) Mystery/, '$1'));
     mysteries.forEach(m => {
       rules.defineRule('selectableFeatureCount.Oracle (' + m + ' Revelation)',
         'features.' + m + ' Mystery', '?', null,
@@ -10344,8 +10344,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.deepDrinker', '+', '1'
     );
     // Hungry Ghost Monk
+    rules.defineRule('hungryGhostLevel',
+      'monkFeatures.Hungrey Ghost Monk', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('combatNotes.punishingKick',
-      classLevel, '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
+      'hungryGhostLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
     );
     // Ki Mystic
     rules.defineRule
@@ -10365,9 +10369,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'emptyHandLevel', 'v=', 'source==3 ? 2 : null'
     );
     // Monk Of The Four Winds
+    rules.defineRule('fourWindsLevel',
+      'monkFeatures.Monk Of The Four Winds', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('combatNotes.elementalFist',
       '', '=', '1',
-      classLevel, '+', 'Math.floor(source / 5)'
+      'fourWindsLevel', '+', 'Math.floor(source / 5)'
     );
     rules.defineRule('selectableFeatureCount.Monk (Aspect)',
       'features.Monk Of The Four Winds', '?', null,
@@ -10387,8 +10395,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['True Resurrection']
     );
     // Monk Of The Lotus
+    rules.defineRule('lotusLevel',
+      'monkFeatures.Monk Of The Lotus', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule('combatNotes.touchOfSerenity',
-      classLevel, '+', 'Math.floor(source / 6)'
+      'lotusLevel', '+', 'Math.floor(source / 6)'
     );
     rules.defineRule('skillNotes.learnedMaster.1',
       'features.Learned Master', '?', null,
@@ -10428,7 +10440,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'weaponAdeptLevel', '=', 'source<9 ? 0 : null'
     );
     rules.defineRule
-      ('combatNotes.perfectStrike', classLevel, '+', 'source>=10 ? 1 : null');
+      ('combatNotes.perfectStrike', 'weaponAdeptLevel', '+', 'source>=10 ? 1 : null');
     rules.defineRule('featCounts.General',
       'featureNotes.wayOfTheWeaponMaster', '+', '1',
       'featureNotes.wayOfTheWeaponMaster.1', '+', 'source.includes("+1") ? 1 : null'
@@ -10522,8 +10534,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     }
     for(let level = 1; level <= 4; level++) {
       rules.defineRule('spellSlots.Domain' + level,
-        'paladinDomainLevel', '?', null,
-        'spellSlots.P' + level, '=', '1'
+        'paladinDomainLevel', '+=', 'source>=' + (level * 3 + 1) + ' ? 1 : null'
       );
     }
 
@@ -11065,6 +11076,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Deep One', 'DeepOne', 'charisma', classLevel, null,
       ['Freedom Of Movement']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Aquatic', 'BloodlineAquatic', 'charisma',
+      'bloodlineLevels.Aquatic', '',
+      ['3:Hydraulic Push', '5:Slipstream', '7:Aqueous Orb',
+       '9:Geyser', '11:Control Water', '13:Beast Shape IV',
+       '15:Summon Monster VII', '17:Seamantle', '19:World Wave']
+    );
     // Bloodline Boreal
     rules.defineRule('magicNotes.icewalker', classLevel, '?', 'source>=9');
     rules.defineRule('casterLevels.Blizzard', classLevel, '+=', null);
@@ -11079,7 +11097,18 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Snow Shroud', 'SnowShroud', 'charisma', classLevel, null,
       ['Fire Shield']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Boreal', 'BloodlineBoreal', 'charisma',
+      'bloodlineLevels.Boreal', '',
+      ['3:Enlarge Person', '5:Rage', '7:Elemental Aura',
+       '9:Wall Of Ice', '11:Cone Of Cold', '13:Transformation',
+       '15:Giant Form I', '17:Polar Ray', '19:Meteor Swarm']
+    );
     // Bloodline Deep Earth
+    rules.defineRule('deepEarthLevel',
+      'sorcererFeatures.Bloodline Deep Earth', '?', null,
+      classLevel, '=', null
+    );
     rules.defineRule
       ('abilityNotes.earthGlide', classLevel, '=', 'source + " min"');
     rules.defineRule('abilityNotes.earthGlide.1',
@@ -11091,10 +11120,17 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Stonecunning', 'featureNotes.rockseer', '=', '1');
     rules.defineRule
-      ('features.Tremorsense', classLevel, '=', 'source>=9 ? 1 : null');
+      ('features.Tremorsense', 'deepEarthLevel', '=', 'source>=9 ? 1 : null');
     rules.defineRule('magicNotes.rockseer', classLevel, '?', 'source>=15');
     rules.defineRule
       ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
+    Pathfinder.featureSpells(rules,
+      'Bloodline Deep Earth', 'BloodlineDeepEarth', 'charisma',
+      'bloodlineLevels.Deep Earth', '',
+      ['3:Expeditious Excavation', '5:Darkvision', '7:Shifting Sand',
+       '9:Stoneskin', '11:Spike Stones', '13:Stone Tell',
+       '15:Repel Metal Or Stone', '17:Earthquake', '19:Clashing Rocks']
+    );
     // Bloodline Dreamspun
     rules.defineRule('combatNotes.combatPrecognition',
       classLevel, '=', 'Math.floor((source + 1) / 4)'
@@ -11111,10 +11147,24 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Lullaby', 'Lullaby', 'charisma', classLevel, '', ['Lullaby']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Dreamspun', 'BloodlineDreamspun', 'charisma',
+      'bloodlineLevels.Dreamspun', '',
+      ['3:Sleep', '5:Augury', '7:Deep Slumber',
+       '9:Divination', '11:Dream', '13:Shadow Walk',
+       '15:Vision', '17:Moment Of Prescience', '19:Astral Projection']
+    );
     // Bloodline Protean
     Pathfinder.featureSpells(rules,
       'Spatial Tear', 'SpatialTear', 'charisma', classLevel, '',
       ['Black Tentacles', 'Dimension Door']
+    );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Protean', 'BloodlineProtean', 'charisma',
+      'bloodlineLevels.Protean', '',
+      ['3:Entropic Shield', '5:Blur', '7:Gaseous Form',
+       '9:Confusion', '11:Major Creation', '13:Disintegrate',
+       '15:Greater Polymorph', '17:Polymorph Any Object', '19:Shapechange']
     );
     // Bloodline Serpentine
     rules.defineRule
@@ -11141,6 +11191,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Serpentfriend', 'Serpentfriend', 'charisma', classLevel, '',
       ['Speak With Animals']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Serpentine', 'BloodlineSerpentine', 'charisma',
+      'bloodlineLevels.Serpentine', '',
+      ['3:Hypnotism', '5:Delay Poison', '7:Summon Monster III',
+       '9:Poison', '11:Hold Monster', '13:Mass Suggestion',
+       '15:Summon Monster VII', '17:Irresistible Dance', '19:Dominate Monster']
+    );
     // Bloodline Shadow
     Pathfinder.featureSpells(rules,
       'Enveloping Darkness', 'EnvelopingDarkness', 'charisma', classLevel, '',
@@ -11150,6 +11207,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Shadow Well', 'ShadowWell', 'charisma', classLevel, null,
       ['Dimension Door']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Shadow', 'BloodlineShadow', 'charisma',
+      'bloodlineLevels.Shadow', '',
+      ['3:Ray Of Enfeeblement', '5:Darkvision', '7:Deeper Darkness',
+       '9:Shadow Conjuration', '11:Shadow Evocation', '13:Shadow Walk',
+       '15:Power Word Blind', '17:Greater Shadow Evocation', '19:Shades']
+    );
     // Bloodline Starsoul
     rules.defineRule('featureNotes.voidwalker-1', classLevel, '?', 'source>=9');
     rules.defineRule
@@ -11158,10 +11222,24 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Aurora Borealis', 'AuroraBorealis', 'charisma', classLevel,
       '10 + ' + classLevel + '//2 + charismaModifier', ['Wall Of Fire']
     );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Starsoul', 'BloodlineStarsoul', 'charisma',
+      'bloodlineLevels.Starsoul', '',
+      ['3:Unseen Servant', '5:Glitterdust', '7:Blink',
+       '9:Call Lightning Storm', '11:Overland Flight', '13:Repulsion',
+       '15:Reverse Gravity', '17:Greater Prying Eyes', '19:Meteor Swarm']
+    );
     // Bloodline Stormborn
     rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
     rules.defineRule('features.Blindsense', 'features.Stormchild', '=', '1');
     rules.defineRule('features.Blindsight', 'features.Storm Lord', '=', '1');
+    Pathfinder.featureSpells(rules,
+      'Bloodline Stormborn', 'BloodlineStormborn', 'charisma',
+      'bloodlineLevels.Stormborn', '',
+      ['3:Shocking Grasp', '5:Gust Of Wind', '7:Lightning Bolt',
+       '9:Shout', '11:Overland Flight', '13:Chain Lightning',
+       '15:Control Weather', '17:Whirlwind', '19:Storm Of Vengeance']
+    );
     // Bloodline Verdant
     rules.defineRule('features.Tremorsense',
       'features.Rooting', '=', '1',
@@ -11171,6 +11249,13 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Massmorph', 'Massmorph', 'charisma', classLevel, null,
       ['Diminish Plants', 'Plant Growth', 'Tree Shape', '15:Plant Shape I',
        '20:Plant Shape II']
+    );
+    Pathfinder.featureSpells(rules,
+      'Bloodline Verdant', 'BloodlineVerdant', 'charisma',
+      'bloodlineLevels.Verdant', '',
+      ['3:Entangle', '5:Barkskin', '7:Speak With Plants',
+       '9:Command Plants', '11:Wall Of Thorns', '13:Transport Via Plants',
+       '15:Plant Shape III', '17:Animate Plants', '19:Shambler']
     );
 
   } else if(name == 'Wizard') {
