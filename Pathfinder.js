@@ -2708,80 +2708,109 @@ Pathfinder.SHIELDS = {
   'Tower':'AC=4 Weight=Tower Skill=10 Spell=50'
 };
 Pathfinder.SKILLS = {
-  'Acrobatics':'Ability=dexterity Class=Barbarian,Bard,Monk,Rogue',
-  'Appraise':'Ability=intelligence Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
-  'Bluff':'Ability=charisma Class=Bard,Rogue,Sorcerer',
+  'Acrobatics':
+    'Ability=dexterity Untrained=true Class=Barbarian,Bard,Monk,Rogue',
+  'Appraise':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
+  'Bluff':'Ability=charisma Untrained=true Class=Bard,Rogue,Sorcerer',
   'Climb':
-    'Ability=strength Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
-  'Craft (Alchemy)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Craft (Armor)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Craft (Bows)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Craft (Traps)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Craft (Weapons)':'Ability=intelligence Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Diplomacy':'Ability=charisma Class=Bard,Cleric,Paladin,Rogue',
-  'Disable Device':'Ability=dexterity Untrained=n Class=Rogue',
-  'Disguise':'Ability=charisma Class=Bard,Rogue',
-  'Escape Artist':'Ability=dexterity Class=Bard,Monk,Rogue',
-  'Fly':'Ability=dexterity Class=Druid,Sorcerer,Wizard',
+    'Ability=strength Untrained=true ' +
+    'Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
+  'Craft (Alchemy)':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Armor)':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Bows)':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Traps)':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Craft (Weapons)':
+    'Ability=intelligence Untrained=true ' +
+    'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
+  'Diplomacy':'Ability=charisma Untrained=true Class=Bard,Cleric,Paladin,Rogue',
+  'Disable Device':'Ability=dexterity Untrained=false Class=Rogue',
+  'Disguise':'Ability=charisma Untrained=true Class=Bard,Rogue',
+  'Escape Artist':'Ability=dexterity Untrained=true Class=Bard,Monk,Rogue',
+  'Fly':'Ability=dexterity Untrained=true Class=Druid,Sorcerer,Wizard',
   'Handle Animal':
-    'Ability=charisma Untrained=n Class=Barbarian,Druid,Fighter,Paladin,Ranger',
-  'Heal':'Ability=wisdom Class=Cleric,Druid,Paladin,Ranger',
+    'Ability=charisma Untrained=false ' +
+    'Class=Barbarian,Druid,Fighter,Paladin,Ranger',
+  'Heal':'Ability=wisdom Untrained=true Class=Cleric,Druid,Paladin,Ranger',
   'Intimidate':
-    'Ability=charisma Class=Barbarian,Bard,Fighter,Monk,Ranger,Rogue,Sorcerer',
+    'Ability=charisma Untrained=true ' +
+    'Class=Barbarian,Bard,Fighter,Monk,Ranger,Rogue,Sorcerer',
   'Knowledge (Arcana)':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Sorcerer,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Cleric,Sorcerer,Wizard',
   'Knowledge (Dungeoneering)':
-    'Ability=intelligence Untrained=n Class=Bard,Fighter,Ranger,Rogue,Wizard',
+    'Ability=intelligence Untrained=false ' +
+    'Class=Bard,Fighter,Ranger,Rogue,Wizard',
   'Knowledge (Engineering)':
-    'Ability=intelligence Untrained=n Class=Bard,Fighter,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Fighter,Wizard',
   'Knowledge (Geography)':
-    'Ability=intelligence Untrained=n Class=Bard,Druid,Ranger,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Druid,Ranger,Wizard',
   'Knowledge (History)':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Monk,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Cleric,Monk,Wizard',
   'Knowledge (Local)':
-    'Ability=intelligence Untrained=n Class=Bard,Rogue,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Rogue,Wizard',
   'Knowledge (Nature)':
-    'Ability=intelligence Untrained=n Class=Barbarian,Bard,Druid,Ranger,Wizard',
+    'Ability=intelligence Untrained=false ' +
+    'Class=Barbarian,Bard,Druid,Ranger,Wizard',
   'Knowledge (Nobility)':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Paladin,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Cleric,Paladin,Wizard',
   'Knowledge (Planes)':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Wizard',
+    'Ability=intelligence Untrained=false Class=Bard,Cleric,Wizard',
   'Knowledge (Religion)':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Monk,Paladin,Wizard',
+    'Ability=intelligence Untrained=false ' +
+    'Class=Bard,Cleric,Monk,Paladin,Wizard',
   'Linguistics':
-    'Ability=intelligence Untrained=n Class=Bard,Cleric,Rogue,Wizard',
-  'Perception':'Ability=wisdom Class=Barbarian,Bard,Druid,Monk,Ranger,Rogue',
-  'Perform (Act)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Comedy)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Dance)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Keyboard)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Oratory)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Percussion)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Sing)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (String)':'Ability=charisma Class=Bard,Monk,Rogue',
-  'Perform (Wind)':'Ability=charisma Class=Bard,Monk,Rogue',
+    'Ability=intelligence Untrained=false Class=Bard,Cleric,Rogue,Wizard',
+  'Perception':
+    'Ability=wisdom Untrained=true ' +
+    'Class=Barbarian,Bard,Druid,Monk,Ranger,Rogue',
+  'Perform (Act)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Comedy)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Dance)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Keyboard)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Oratory)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Percussion)':
+    'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Sing)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (String)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Wind)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
   'Profession (Librarian)':
-    'Ability=wisdom Untrained=n ' +
+    'Ability=wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Soldier)':
-    'Ability=wisdom Untrained=n ' +
+    'Ability=wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Scribe)':
-    'Ability=wisdom Untrained=n ' +
+    'Ability=wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Tanner)':
-    'Ability=wisdom Untrained=n ' +
+    'Ability=wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Ride':'Ability=dexterity Class=Barbarian,Druid,Fighter,Monk,Paladin,Ranger',
-  'Sense Motive':'Ability=wisdom Class=Bard,Cleric,Monk,Paladin,Rogue',
-  'Sleight Of Hand':'Ability=dexterity Untrained=n Class=Bard,Rogue',
+  'Ride':
+    'Ability=dexterity Untrained=true ' +
+    'Class=Barbarian,Druid,Fighter,Monk,Paladin,Ranger',
+  'Sense Motive':
+    'Ability=wisdom Untrained=true Class=Bard,Cleric,Monk,Paladin,Rogue',
+  'Sleight Of Hand':'Ability=dexterity Untrained=false Class=Bard,Rogue',
   'Spellcraft':
-    'Ability=intelligence Untrained=n ' +
+    'Ability=intelligence Untrained=false ' +
     'Class=Bard,Cleric,Druid,Paladin,Ranger,Sorcerer,Wizard',
-  'Stealth':'Ability=dexterity Class=Bard,Monk,Ranger,Rogue',
-  'Survival':'Ability=wisdom Class=Barbarian,Druid,Fighter,Ranger',
-  'Swim':'Ability=strength Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
-  'Use Magic Device':'Ability=charisma Untrained=n Class=Bard,Rogue,Sorcerer'
+  'Stealth':'Ability=dexterity Untrained=true Class=Bard,Monk,Ranger,Rogue',
+  'Survival':
+    'Ability=wisdom Untrained=true Class=Barbarian,Druid,Fighter,Ranger',
+  'Swim':
+    'Ability=strength Untrained=true ' +
+    'Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
+  'Use Magic Device':
+    'Ability=charisma Untrained=false Class=Bard,Rogue,Sorcerer'
 };
 Pathfinder.SPELLS = {
 
@@ -2798,11 +2827,11 @@ Pathfinder.SPELLS = {
   'Analyze Dweomer':'Level=B6,S6,W6',
   'Animal Growth':
     'Level=D5,R4,S5,W5 ' +
-    'Description="R$RM\' $Ldiv2 animal targets in 15\' radius dbl size (+8 Strength, +4 Constitution, +2 AC, -2 Dexterity) for $L min (Fort neg)"',
+    'Description="R%{100+lvl*10}\' $Ldiv2 animal targets in 15\' radius dbl size (+8 Strength, +4 Constitution, +2 AC, -2 Dexterity) for $L min (Fort neg)"',
   'Animal Messenger':'Level=B2,D2,R1',
   'Animal Shapes':
     'Level=Animal7,D8 ' +
-    'Description="R$RS\' $L willing targets in 15\' radius become chosen diminutive - huge animal or small - medium magical beast for $L hr"',
+    'Description="R%{25+lvl//2*5}\' $L willing targets in 15\' radius become chosen diminutive - huge animal or small - medium magical beast for $L hr"',
   'Animal Trance':'Level=Adept2,B2,D2',
   'Animate Dead':'Level=Adept3,C3,Death3,S4,W4',
   'Animate Objects':'Level=B6,C6,Chaos6',
@@ -2833,7 +2862,7 @@ Pathfinder.SPELLS = {
   'Binding':'Level=S8,W8',
   'Black Tentacles':
     'Level=S4,W4 ' +
-    'Description="R$RM\' Tentacles in 20\' radius grapple (BAB +%{casterLevel+5}) and inflict 1d6+4 HP/rd for $L rd"',
+    'Description="R%{100+lvl*10}\' Tentacles in 20\' radius grapple (BAB +%{casterLevel+5}) and inflict 1d6+4 HP/rd for $L rd"',
   'Blade Barrier':'Level=C6,Good6,War6',
   'Blasphemy':
     'Level=C7,Evil7 ' +
@@ -2857,7 +2886,7 @@ Pathfinder.SPELLS = {
   'Cause Fear':'Level=Adept1,B1,C1,Death1,Rogue1,S1,W1',
   'Chain Lightning':
     'Level=Air6,S6,W6 ' +
-    'Description="R$RL\' Bolt inflicts ${Lmin20}d6 HP to primary target (Ref half) and $Lmin20 secondary targets in 30\' radius (Ref +2 half)"',
+    'Description="R%{400+lvl*40}\' Bolt inflicts ${Lmin20}d6 HP to primary target (Ref half) and $Lmin20 secondary targets in 30\' radius (Ref +2 half)"',
   'Changestaff':'Level=D7',
   'Chaos Hammer':'Level=C4,Chaos4',
   'Charm Animal':'Level=D1,R1',
@@ -2869,7 +2898,7 @@ Pathfinder.SPELLS = {
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
   'Clenched Fist':
     'Level=Strength8,S8,W8 ' +
-    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus12 bull rush and +$Lplus11+mod melee attack that inflicts 1d8+11 HP and stuns for 1 rd (Fort neg) for $L rd"',
+    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus12 bull rush and +$Lplus11+mod melee attack that inflicts 1d8+11 HP and stuns for 1 rd (Fort neg) for $L rd"',
   'Cloak Of Chaos':'Level=C8,Chaos8',
   'Clone':'Level=S8,W8',
   'Cloudkill':'Level=S5,W5',
@@ -2883,7 +2912,7 @@ Pathfinder.SPELLS = {
   'Cone Of Cold':'Level=S5,W5,Water6',
   'Confusion':
     'Level=B3,Madness4,Trickery4,S4,W4 ' +
-    'Description="R$RM\' Creatures in 15\' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for $L rd (Will neg)"',
+    'Description="R%{100+lvl*10}\' Creatures in 15\' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for $L rd (Will neg)"',
   'Consecrate':'Level=C2',
   'Contact Other Plane':'Level=S5,W5',
   'Contagion':'Level=Adept3,C3,D3,S4,W4',
@@ -2902,7 +2931,7 @@ Pathfinder.SPELLS = {
   'Crushing Despair':'Level=B3,S4,W4',
   'Crushing Hand':
     'Level=Strength9,S9,W9 ' +
-    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus13 bull rush and +$Lplus13 grapple that inflicts 2d6+12 HP for $L rd"',
+    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus13 bull rush and +$Lplus13 grapple that inflicts 2d6+12 HP for $L rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
   'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2 Liquid=Potion',
   'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3 Liquid=Potion',
@@ -2933,10 +2962,10 @@ Pathfinder.SPELLS = {
   'Demand':'Level=Charm8,Nobility8,S8,W8',
   'Desecrate':
     'Level=C2 ' +
-    'Description="R$RS\' 20\' radius gives +3 DC vs. negative channel, undead +1 attack, damage, saves, and 1 temporary HP/HD for $L2 hr"',
+    'Description="R%{25+lvl//2*5}\' 20\' radius gives +3 DC vs. negative channel, undead +1 attack, damage, saves, and 1 temporary HP/HD for $L2 hr"',
   'Destruction':
     'Level=C7,Death7,Repose7 ' +
-    'Description="R$RS\' Target suffers $L10 HP, consumed if slain (Fort 10d6 HP)"',
+    'Description="R%{25+lvl//2*5}\' Target suffers $L10 HP, consumed if slain (Fort 10d6 HP)"',
   'Detect Animals Or Plants':'Level=D1,R1',
   'Detect Chaos':'Level=Adept1,C1',
   'Detect Evil':'Level=Adept1,C1',
@@ -2962,7 +2991,7 @@ Pathfinder.SPELLS = {
   'Disintegrate':'Level=Destruction7,S6,W6',
   'Dismissal':
     'Level=C4,S5,W5 ' +
-    'Description="R$RS\' Returns target to native plane (Will neg)"',
+    'Description="R%{25+lvl//2*5}\' Returns target to native plane (Will neg)"',
   'Dispel Chaos':'Level=C5,Law5,P4',
   'Dispel Evil':'Level=C5,Good5,P4',
   'Dispel Good':'Level=C5,Evil5',
@@ -2990,7 +3019,7 @@ Pathfinder.SPELLS = {
   'Enlarge Person':'Level=Rogue1,Strength1,S1,W1 Liquid=Potion',
   'Entangle':
     'Level=D1,Plant1,R1 ' +
-    'Description="R$RL\' Creatures in 40\' radius entangled for $L min (Ref neg)"',
+    'Description="R%{400+lvl*40}\' Creatures in 40\' radius entangled for $L min (Ref neg)"',
   'Enthrall':'Level=B2,C2,Nobility2',
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rogue1,Rune1,S1,W1 Liquid=Oil',
@@ -3012,14 +3041,14 @@ Pathfinder.SPELLS = {
     'Description="Self gains +$Ldiv2min10 Perception to uncover traps for $L min"',
   'Finger Of Death':
     'Level=D8,S7,W7 ' +
-    'Description="R$RS\' Target suffers $L10 HP (Fort 3d6+$L HP)"',
+    'Description="R%{25+lvl//2*5}\' Target suffers $L10 HP (Fort 3d6+$L HP)"',
   'Fire Seeds':
     'Level=D6,Fire6,Sun6 ' +
     'Description="Touched 4 acorn grenades inflict ${Lmin20}d4 total or 8 berry bombs detonate on command to inflict 1d8+$L in 5\' radius (Ref half) for $L10 min"',
   'Fire Shield':'Level=Fire5,Sun4,S4,W4',
   'Fire Storm':
     'Level=C8,D7 ' +
-    'Description="R$RM\' $L2 10\' cu inflicts ${Lmin20}d6 HP, then 4d6 HP/rd until extinguished (Ref half, initial damage only)"',
+    'Description="R%{100+lvl*10}\' $L2 10\' cu inflicts ${Lmin20}d6 HP, then 4d6 HP/rd until extinguished (Ref half, initial damage only)"',
   'Fire Trap':'Level=D2,S4,W4 Liquid=Oil',
   'Fireball':'Level=Fire3,S3,W3',
   'Flame Arrow':'Level=S3,W3 Liquid=Oil',
@@ -3027,7 +3056,7 @@ Pathfinder.SPELLS = {
   'Flame Strike':'Level=C5,D4,Sun5,War5',
   'Flaming Sphere':
     'Level=D2,S2,W2 ' +
-    'Description="R$RM\' 5\' diameter sphere inflicts 3d6 HP (Ref neg), jumps or moves 30\'/rd for $L rd"',
+    'Description="R%{100+lvl*10}\' 5\' diameter sphere inflicts 3d6 HP (Ref neg), jumps or moves 30\'/rd for $L rd"',
   'Flare':'Level=B0,D0,Rogue0,Talent0,S0,W0',
   'Flesh To Stone':'Level=S6,W6',
   'Floating Disk':'Level=Rogue1,S1,W1',
@@ -3039,17 +3068,17 @@ Pathfinder.SPELLS = {
   'Forbiddance':'Level=C6',
   'Forcecage':
     'Level=S7,W7 ' +
-    'Description="R$RS\' Traps targets in 20\' cage or 10\' cube for $L rd"',
+    'Description="R%{25+lvl//2*5}\' Traps targets in 20\' cage or 10\' cube for $L rd"',
   'Forceful Hand':
     'Level=S6,W6 ' +
-    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus9 bull rush for $L rd"',
+    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus9 bull rush for $L rd"',
   'Foresight':'Level=D9,Knowledge9,S9,W9',
   'Fox\'s Cunning':'Level=B2,S2,W2 Liquid=Potion',
   'Freedom':'Level=Liberation9,S9,W9',
   'Freedom Of Movement':'Level=B4,C4,D4,Liberation4,Luck4,R4',
   'Freezing Sphere':
     'Level=S6,W6 ' +
-    'Description="R$RL\' 40\' radius inflicts ${Lmin15}d6 HP (Ref half)"',
+    'Description="R%{400+lvl*40}\' 40\' radius inflicts ${Lmin15}d6 HP (Ref half)"',
   'Gaseous Form':
     'Level=Air3,B3,S3,W3 ' +
     'Description="Touched becomes insubstantial (DR 10/magic, immune to poison, sneak attacks, and critical hits, unable to use spell components, fly 10\') for $L2 min" ' +
@@ -3061,7 +3090,7 @@ Pathfinder.SPELLS = {
   'Ghoul Touch':'Level=S2,W2',
   'Giant Vermin':
     'Level=C4,D4 ' +
-    'Description="R$RS\' ${lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, ${lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or ${lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey self for $L min"',
+    'Description="R%{25+lvl//2*5}\' ${lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, ${lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or ${lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey self for $L min"',
   'Glibness':
     'Level=B3 ' +
     'Description="Self gains +20 Bluff, SR $Lplus15 (magical lie detection) for $L10 min"',
@@ -3072,10 +3101,10 @@ Pathfinder.SPELLS = {
   'Goodberry':'Level=D1 Liquid=Oil',
   'Grasping Hand':
     'Level=Strength7,S7,W7 ' +
-    'Description="R$RM\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus11 bull rush and +$Lplus11 grapple for $L rd"',
+    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +$Lplus11 bull rush and +$Lplus11 grapple for $L rd"',
   'Grease':
     'Level=B1,Rogue1,S1,W1 ' +
-    'Description="R$RS\' Object or 10\' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for $L min" ' +
+    'Description="R%{25+lvl//2*5}\' Object or 10\' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for $L min" ' +
     'Liquid=Oil',
   'Greater Arcane Sight':'Level=S7,W7',
   'Greater Command':'Level=C5,Nobility5',
@@ -3113,7 +3142,7 @@ Pathfinder.SPELLS = {
   'Helping Hand':'Level=C3',
   'Heroes\' Feast':
     'Level=B6,C6,Community6 ' +
-    'Description="R$RS\' Food for $L creatures cures sickness, poison, and disease, gives 1d8+$Ldiv2min10 temporary HP, +1 attack and Will saves, and +4 vs. poison and fear for 12 hr"',
+    'Description="R%{25+lvl//2*5}\' Food for $L creatures cures sickness, poison, and disease, gives 1d8+$Ldiv2min10 temporary HP, +1 attack and Will saves, and +4 vs. poison and fear for 12 hr"',
   'Heroism':'Level=B2,Charm4,S3,W3 Liquid=Potion',
   'Hide From Animals':'Level=D1,R1 Liquid=Potion',
   'Hide From Undead':'Level=C1 Liquid=Potion',
@@ -3133,7 +3162,7 @@ Pathfinder.SPELLS = {
   'Hypnotism':'Level=B1,Rogue1,S1,W1',
   'Ice Storm':
     'Level=D4,S4,W4,Water5,Weather5 ' +
-    'Description="R$RL\' Hail in 20\' radius inflicts 3d6 HP bludgeoning, 2d6 HP cold, -4 Perception for $L rd"',
+    'Description="R%{400+lvl*40}\' Hail in 20\' radius inflicts 3d6 HP bludgeoning, 2d6 HP cold, -4 Perception for $L rd"',
   'Identify':
     'Level=Magic1,B1,Rogue1,S1,W1 ' +
     'Description="R60\' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or $L3 rd"',
@@ -3142,21 +3171,21 @@ Pathfinder.SPELLS = {
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
   'Implosion':
     'Level=C9,Destruction9 ' +
-    'Description="R$RS\' 1 target/rd suffers $L10 HP for conc or $Ldiv2 rd (Fort neg)"',
+    'Description="R%{25+lvl//2*5}\' 1 target/rd suffers $L10 HP for conc or $Ldiv2 rd (Fort neg)"',
   'Imprisonment':'Level=S9,W9',
   'Incendiary Cloud':
     'Level=Fire8,S8,W8 ' +
-    'Description="R$RM\' Fire in 20\' radius inflicts 6d6 HP (Ref half) while moving away 10\'/rd for $L rd"',
+    'Description="R%{100+lvl*10}\' Fire in 20\' radius inflicts 6d6 HP (Ref half) while moving away 10\'/rd for $L rd"',
   'Inflict Critical Wounds':'Level=C4,Destruction4',
   'Inflict Light Wounds':'Level=C1',
   'Inflict Moderate Wounds':'Level=C2',
   'Inflict Serious Wounds':'Level=C3',
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
-    'Description="R$RM\' Target permanently randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest permanently (Will neg)"',
+    'Description="R%{100+lvl*10}\' Target permanently randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest permanently (Will neg)"',
   'Insect Plague':
     'Level=C5,D5 ' +
-    'Description="R$RL\' $Ldiv3min6 wasp swarms inflict 2d6 HP and -1 Dexterity (DC 13 Fort neg) for $L min"',
+    'Description="R%{400+lvl*40}\' $Ldiv3min6 wasp swarms inflict 2d6 HP and -1 Dexterity (DC 13 Fort neg) for $L min"',
   'Instant Summons':'Level=Rune7,S7,W7',
   'Interposing Hand':'Level=S5,W5',
   'Invisibility':'Level=Adept2,B2,Trickery2,S2,W2 Liquid=Oil,Potion',
@@ -3179,7 +3208,7 @@ Pathfinder.SPELLS = {
   'Legend Lore':'Level=B4,Knowledge7,S6,W6',
   'Lesser Confusion':
     'Level=B1,Madness1 ' +
-    'Description="R$RM\' Target randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest for 1 rd (Will neg)"',
+    'Description="R%{100+lvl*10}\' Target randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest for 1 rd (Will neg)"',
   'Lesser Geas':'Level=B3,S4,W4',
   'Lesser Globe Of Invulnerability':'Level=S4,W4',
   'Lesser Planar Ally':'Level=C4',
@@ -3198,7 +3227,7 @@ Pathfinder.SPELLS = {
   'Longstrider':'Level=D1,R1,Travel1', // no liquid--personal
   'Lullaby':
     'Level=B0,Talent0 ' +
-    'Description="R$RM\' Creatures in 10\' radius suffer -5 Perception, -2 Will vs. sleep for conc + $L rd (Will neg)"',
+    'Description="R%{100+lvl*10}\' Creatures in 10\' radius suffer -5 Perception, -2 Will vs. sleep for conc + $L rd (Will neg)"',
   'Mage Armor':'Level=Rogue1,S1,W1 Liquid=Potion',
   'Mage Hand':'Level=B0,Rogue0,Talent0,S0,W0',
   'Mage\'s Disjunction':'Level=Magic9,S9,W9',
@@ -3266,7 +3295,7 @@ Pathfinder.SPELLS = {
   'Meteor Swarm':'Level=S9,W9',
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
-    'Description="R$RS\' Target gains immunity to divination and +8 save vs. mental effects for 1 dy"',
+    'Description="R%{25+lvl//2*5}\' Target gains immunity to divination and +8 save vs. mental effects for 1 dy"',
   'Mind Fog':'Level=B5,S5,W5',
   'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
   'Minor Image':'Level=B2,S2,W2',
@@ -3311,7 +3340,7 @@ Pathfinder.SPELLS = {
     'Description="Touched suffers -1d3 Constitution/rd for 6 rd (Fort neg)"',
   'Polar Ray':
     'Level=S8,W8 ' +
-    'Description="R$RM\' Ranged touch inflicts ${Lmin25}d6 HP, -1d4 Dexterity"',
+    'Description="R%{100+lvl*10}\' Ranged touch inflicts ${Lmin25}d6 HP, -1d4 Dexterity"',
   'Polymorph':'Level=Adept4,S5,W5',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
@@ -3345,7 +3374,7 @@ Pathfinder.SPELLS = {
   'Raise Dead':'Level=Adept5,C5',
   'Ray Of Enfeeblement':
     'Level=Rogue1,S1,W1 ' +
-    'Description="R$RS\' Ranged touch inflicts -1d6+$Ldiv2min5 Strength for $L rd"',
+    'Description="R%{25+lvl//2*5}\' Ranged touch inflicts -1d6+$Ldiv2min5 Strength for $L rd"',
   'Ray Of Exhaustion':'Level=S3,W3',
   'Ray Of Frost':'Level=Rogue0,Talent0,S0,W0',
   'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,Rogue0,Talent0,S0,W0',
@@ -3377,7 +3406,7 @@ Pathfinder.SPELLS = {
   'Resurrection':'Level=C7',
   'Reverse Gravity':
     'Level=D8,S7,W7 ' +
-    'Description="R$RM\' Objects in $L 10\' cu fall upward for $L rd"',
+    'Description="R%{100+lvl*10}\' Objects in $L 10\' cu fall upward for $L rd"',
   'Righteous Might':
     'Level=C5,Glory5,Strength5 ' +
     'Description="Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR ${lvl>14?10:5}/evil or DR ${lvl>14?10:5}/good for $L rd"',
@@ -3405,7 +3434,7 @@ Pathfinder.SPELLS = {
   'Shadow Walk':'Level=B5,Darkness6,S6,W6',
   'Shambler':
     'Level=D9,Plant9 ' +
-    'Description="R$RM\' Creates 1d4+2 advanced shambling mounds in 15\' radius that fight for 7 dy or guard for 7 mo"',
+    'Description="R%{100+lvl*10}\' Creates 1d4+2 advanced shambling mounds in 15\' radius that fight for 7 dy or guard for 7 mo"',
   'Shapechange':'Level=Animal9,D9,S9,W9',
   'Shatter':'Level=B2,C2,Destruction2,S2,W2',
   'Shield':'Level=Rogue1,S1,W1',
@@ -3418,7 +3447,7 @@ Pathfinder.SPELLS = {
   'Shrink Item':'Level=S3,W3 Liquid=Oil',
   'Silence':
     'Level=B2,C2 ' +
-    'Description="R$RL\' Bars sound in 20\' radius for $L rd"',
+    'Description="R%{400+lvl*40}\' Bars sound in 20\' radius for $L rd"',
   'Silent Image':'Level=B1,Rogue1,S1,W1',
   'Simulacrum':'Level=S7,W7',
   'Slay Living':
@@ -3427,13 +3456,13 @@ Pathfinder.SPELLS = {
   'Sleep':'Level=Adept1,B1,Rogue1,S1,W1',
   'Sleet Storm':
     'Level=D3,S3,W3,Weather4 ' +
-    'Description="R$RL\' Sleet in 40\' radius binds, requires DC 10 Acrobatics to move for $L rd"',
+    'Description="R%{400+lvl*40}\' Sleet in 40\' radius binds, requires DC 10 Acrobatics to move for $L rd"',
   'Slow':'Level=B3,S3,W3',
   'Snare':'Level=D3,R2',
   'Soften Earth And Stone':'Level=D2,Earth2',
   'Solid Fog':
     'Level=S4,W4 ' +
-    'Description="R$RM\' Fog in 20\' radius obscures vision, reduces Speed to half, and imposes -2 attack and damage for $L min"',
+    'Description="R%{100+lvl*10}\' Fog in 20\' radius obscures vision, reduces Speed to half, and imposes -2 attack and damage for $L min"',
   'Song Of Discord':'Level=B5',
   'Soul Bind':'Level=C9,S9,W9',
   'Sound Burst':'Level=B2,C2',
@@ -3528,7 +3557,7 @@ Pathfinder.SPELLS = {
   'Vision':'Level=S7,W7',
   'Wail Of The Banshee':
     'Level=Death9,Repose9,S9,W9 ' +
-    'Description="R$RS\' $L targets in 40\' radius suffer $L10 HP (Fort neg)"',
+    'Description="R%{25+lvl//2*5}\' $L targets in 40\' radius suffer $L10 HP (Fort neg)"',
   'Wall Of Fire':'Level=Adept4,D5,Fire4,S4,W4',
   'Wall Of Force':'Level=S5,W5',
   'Wall Of Ice':'Level=S4,W4',
@@ -3542,7 +3571,7 @@ Pathfinder.SPELLS = {
   'Waves Of Fatigue':'Level=S5,W5',
   'Web':
     'Level=Adept2,S2,W2 ' +
-    'Description="R$RM\' Webs in 20\' radius entangle (Ref neg, Str or Escape Artist break), burning inflicts 2d4 HP for $L10 min"',
+    'Description="R%{100+lvl*10}\' Webs in 20\' radius entangle (Ref neg, Str or Escape Artist break), burning inflicts 2d4 HP for $L10 min"',
   'Weird':'Level=Madness9,S9,W9',
   'Whirlwind':'Level=Air8,D8,Weather8',
   'Whispering Wind':'Level=B2,S2,W2',
@@ -3576,7 +3605,7 @@ Pathfinder.SPELLS = {
   'Bleed':
     'School=Necromancy ' +
     'Level=C0,Rogue0,Talent0,S0,W0 ' +
-    'Description="R$RS\' Stabilized target suffers 1 HP and resumes dying (Will neg)"',
+    'Description="R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (Will neg)"',
   'Breath Of Life':
     'School=Conjuration ' +
     'Level=C5,Healing5 ' +
@@ -3636,7 +3665,7 @@ Pathfinder.SPELLS = {
   'Stabilize':
     'School=Conjuration ' +
     'Level=Adept0,C0,Talent0,D0 ' +
-    'Description="R$RS\' Stabilizes target w/negative HP" ' +
+    'Description="R%{25+lvl//2*5}\' Stabilizes target w/negative HP" ' +
     'Liquid=Potion'
 
 };
