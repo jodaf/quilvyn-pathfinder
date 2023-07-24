@@ -6738,7 +6738,7 @@ PFAPG.CLASSES = {
       '"20:Poison Touch:Grand Discovery",' +
       '"20:True Mutagen:Grand Discovery" ' +
     'CasterLevelArcane=levels.Alchemist ' +
-    'SpellAbility=intelligence ' +
+    'SpellAbility=Intelligence ' +
     'SpellSlots=' +
       'Alchemist1:1=1;2=2;3=3;5=4;9=5,' +
       'Alchemist2:4=1;5=2;6=3;8=4;12=5,' +
@@ -6798,7 +6798,7 @@ PFAPG.CLASSES = {
     'Selectables=' +
       '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Selectables').filter(x => x.includes('Domain')).join('","') + '" ' +
     'CasterLevelDivine=levels.Inquisitor ' +
-    'SpellAbility=wisdom ' +
+    'SpellAbility=Wisdom ' +
     'SpellSlots=' +
       'Inquisitor0:1=4;2=5;3=6,' +
       'Inquisitor1:1=1;2=2;3=3;5=4;9=5,' +
@@ -6938,7 +6938,7 @@ PFAPG.CLASSES = {
       // Need to list Combat Healer here since it's available via two Mysteries
       '"7:Combat Healer:Battle Revelation,Life Revelation" ' +
     'CasterLevelDivine=levels.Oracle ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'O0:1=4;2=5;4=6;6=7;8=8;10=9,' +
       'O1:1=3;2=4;3=5;4=6,' +
@@ -7016,7 +7016,7 @@ PFAPG.CLASSES = {
       '"8:Large Evolution:Evolution:4",' +
       '"9:Spell Resistance Evolution:Evolution:4" ' +
     'CasterLevelArcane=levels.Summoner ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'Summoner0:1=4;2=5;3=6,' +
       'Summoner1:1=1;2=2;3=3;5=4;9=5,' +
@@ -7068,7 +7068,7 @@ PFAPG.CLASSES = {
       '"18:Life Giver Hex:Hex",' +
       '"18:Natural Disaster Hex:Hex" ' +
     'CasterLevelArcane=levels.Witch ' +
-    'SpellAbility=intelligence ' +
+    'SpellAbility=Intelligence ' +
     'SpellSlots=' +
       'Witch0:1=3;2=4,' +
       'Witch1:1=1;2=2;4=3;7=4,' +
@@ -7966,7 +7966,7 @@ PFAPG.NPC_CLASSES = {
       '"12:Cruelty (Deafened):Cruelty","12:Cruelty (Paralyzed):Cruelty",' +
       '"12:Cruelty (Stunned):Cruelty" ' +
     'CasterLevelDivine="levels.Antipaladin >= 4 ? levels.Antipaladin - 3 : null" ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'Antipaladin1:4=0;5=1;9=2;13=3;17=4,' +
       'Antipaladin2:7=0;8=1;12=2;16=3;20=4,' +

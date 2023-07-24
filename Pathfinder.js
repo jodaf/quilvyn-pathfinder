@@ -2709,108 +2709,108 @@ Pathfinder.SHIELDS = {
 };
 Pathfinder.SKILLS = {
   'Acrobatics':
-    'Ability=dexterity Untrained=true Class=Barbarian,Bard,Monk,Rogue',
+    'Ability=Dexterity Untrained=true Class=Barbarian,Bard,Monk,Rogue',
   'Appraise':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Bard,Cleric,Rogue,Sorcerer,Wizard',
-  'Bluff':'Ability=charisma Untrained=true Class=Bard,Rogue,Sorcerer',
+  'Bluff':'Ability=Charisma Untrained=true Class=Bard,Rogue,Sorcerer',
   'Climb':
-    'Ability=strength Untrained=true ' +
+    'Ability=Strength Untrained=true ' +
     'Class=Barbarian,Bard,Druid,Fighter,Monk,Ranger,Rogue',
   'Craft (Alchemy)':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Craft (Armor)':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Craft (Bows)':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Craft (Traps)':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Craft (Weapons)':
-    'Ability=intelligence Untrained=true ' +
+    'Ability=Intelligence Untrained=true ' +
     'Class=Barbarian,Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
-  'Diplomacy':'Ability=charisma Untrained=true Class=Bard,Cleric,Paladin,Rogue',
-  'Disable Device':'Ability=dexterity Untrained=false Class=Rogue',
-  'Disguise':'Ability=charisma Untrained=true Class=Bard,Rogue',
-  'Escape Artist':'Ability=dexterity Untrained=true Class=Bard,Monk,Rogue',
-  'Fly':'Ability=dexterity Untrained=true Class=Druid,Sorcerer,Wizard',
+  'Diplomacy':'Ability=Charisma Untrained=true Class=Bard,Cleric,Paladin,Rogue',
+  'Disable Device':'Ability=Dexterity Untrained=false Class=Rogue',
+  'Disguise':'Ability=Charisma Untrained=true Class=Bard,Rogue',
+  'Escape Artist':'Ability=Dexterity Untrained=true Class=Bard,Monk,Rogue',
+  'Fly':'Ability=Dexterity Untrained=true Class=Druid,Sorcerer,Wizard',
   'Handle Animal':
-    'Ability=charisma Untrained=false ' +
+    'Ability=Charisma Untrained=false ' +
     'Class=Barbarian,Druid,Fighter,Paladin,Ranger',
-  'Heal':'Ability=wisdom Untrained=true Class=Cleric,Druid,Paladin,Ranger',
+  'Heal':'Ability=Wisdom Untrained=true Class=Cleric,Druid,Paladin,Ranger',
   'Intimidate':
-    'Ability=charisma Untrained=true ' +
+    'Ability=Charisma Untrained=true ' +
     'Class=Barbarian,Bard,Fighter,Monk,Ranger,Rogue,Sorcerer',
   'Knowledge (Arcana)':
-    'Ability=intelligence Untrained=false Class=Bard,Cleric,Sorcerer,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Cleric,Sorcerer,Wizard',
   'Knowledge (Dungeoneering)':
-    'Ability=intelligence Untrained=false ' +
+    'Ability=Intelligence Untrained=false ' +
     'Class=Bard,Fighter,Ranger,Rogue,Wizard',
   'Knowledge (Engineering)':
-    'Ability=intelligence Untrained=false Class=Bard,Fighter,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Fighter,Wizard',
   'Knowledge (Geography)':
-    'Ability=intelligence Untrained=false Class=Bard,Druid,Ranger,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Druid,Ranger,Wizard',
   'Knowledge (History)':
-    'Ability=intelligence Untrained=false Class=Bard,Cleric,Monk,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Cleric,Monk,Wizard',
   'Knowledge (Local)':
-    'Ability=intelligence Untrained=false Class=Bard,Rogue,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Rogue,Wizard',
   'Knowledge (Nature)':
-    'Ability=intelligence Untrained=false ' +
+    'Ability=Intelligence Untrained=false ' +
     'Class=Barbarian,Bard,Druid,Ranger,Wizard',
   'Knowledge (Nobility)':
-    'Ability=intelligence Untrained=false Class=Bard,Cleric,Paladin,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Cleric,Paladin,Wizard',
   'Knowledge (Planes)':
-    'Ability=intelligence Untrained=false Class=Bard,Cleric,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Cleric,Wizard',
   'Knowledge (Religion)':
-    'Ability=intelligence Untrained=false ' +
+    'Ability=Intelligence Untrained=false ' +
     'Class=Bard,Cleric,Monk,Paladin,Wizard',
   'Linguistics':
-    'Ability=intelligence Untrained=false Class=Bard,Cleric,Rogue,Wizard',
+    'Ability=Intelligence Untrained=false Class=Bard,Cleric,Rogue,Wizard',
   'Perception':
-    'Ability=wisdom Untrained=true ' +
+    'Ability=Wisdom Untrained=true ' +
     'Class=Barbarian,Bard,Druid,Monk,Ranger,Rogue',
-  'Perform (Act)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Comedy)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Dance)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Keyboard)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Oratory)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Act)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Comedy)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Dance)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Keyboard)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Oratory)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
   'Perform (Percussion)':
-    'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Sing)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (String)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
-  'Perform (Wind)':'Ability=charisma Untrained=true Class=Bard,Monk,Rogue',
+    'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Sing)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (String)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
+  'Perform (Wind)':'Ability=Charisma Untrained=true Class=Bard,Monk,Rogue',
   'Profession (Librarian)':
-    'Ability=wisdom Untrained=false ' +
+    'Ability=Wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Soldier)':
-    'Ability=wisdom Untrained=false ' +
+    'Ability=Wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Scribe)':
-    'Ability=wisdom Untrained=false ' +
+    'Ability=Wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Profession (Tanner)':
-    'Ability=wisdom Untrained=false ' +
+    'Ability=Wisdom Untrained=false ' +
     'Class=Bard,Cleric,Druid,Fighter,Monk,Paladin,Ranger,Rogue,Sorcerer,Wizard',
   'Ride':
-    'Ability=dexterity Untrained=true ' +
+    'Ability=Dexterity Untrained=true ' +
     'Class=Barbarian,Druid,Fighter,Monk,Paladin,Ranger',
   'Sense Motive':
-    'Ability=wisdom Untrained=true Class=Bard,Cleric,Monk,Paladin,Rogue',
-  'Sleight Of Hand':'Ability=dexterity Untrained=false Class=Bard,Rogue',
+    'Ability=Wisdom Untrained=true Class=Bard,Cleric,Monk,Paladin,Rogue',
+  'Sleight Of Hand':'Ability=Dexterity Untrained=false Class=Bard,Rogue',
   'Spellcraft':
-    'Ability=intelligence Untrained=false ' +
+    'Ability=Intelligence Untrained=false ' +
     'Class=Bard,Cleric,Druid,Paladin,Ranger,Sorcerer,Wizard',
-  'Stealth':'Ability=dexterity Untrained=true Class=Bard,Monk,Ranger,Rogue',
+  'Stealth':'Ability=Dexterity Untrained=true Class=Bard,Monk,Ranger,Rogue',
   'Survival':
-    'Ability=wisdom Untrained=true Class=Barbarian,Druid,Fighter,Ranger',
+    'Ability=Wisdom Untrained=true Class=Barbarian,Druid,Fighter,Ranger',
   'Swim':
-    'Ability=strength Untrained=true ' +
+    'Ability=Strength Untrained=true ' +
     'Class=Barbarian,Druid,Fighter,Monk,Ranger,Rogue',
   'Use Magic Device':
-    'Ability=charisma Untrained=false Class=Bard,Rogue,Sorcerer'
+    'Ability=Charisma Untrained=false Class=Bard,Rogue,Sorcerer'
 };
 Pathfinder.SPELLS = {
 
@@ -3897,7 +3897,7 @@ Pathfinder.WEAPONS = {
   'Longspear':'Level=Simple Category=Two-Handed Damage=d8 Crit=3',
   'Longsword':'Level=Martial Category=One-Handed Damage=d8 Threat=19',
   'Morningstar':'Level=Simple Category=One-Handed Damage=d8',
-  'Net':'Level=Exotic Category=Ranged Damage=d0 Range=10',
+  'Net':'Level=Exotic Category=Ranged Damage=None Range=10',
   'Nunchaku':'Level=Exotic Category=Light Damage=d6',
   'Orc Double Axe':'Level=Exotic Category=Two-Handed Damage=d8/d8 Crit=3',
   'Punching Dagger':'Level=Simple Category=Light Damage=d4 Crit=3',
@@ -3984,7 +3984,7 @@ Pathfinder.CLASSES = {
       '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
       '"20:Deadly Performance" ' +
     'CasterLevelArcane=levels.Bard ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'B0:1=4;2=5;3=6,' +
       'B1:1=1;2=2;3=3;5=4;9=5,' +
@@ -4109,7 +4109,7 @@ Pathfinder.CLASSES = {
       '"deityDomains =~ \'Water\' ? 1:Water Domain:Domain",' +
       '"deityDomains =~ \'Weather\' ? 1:Weather Domain:Domain" ' +
     'CasterLevelDivine=levels.Cleric ' +
-    'SpellAbility=wisdom ' +
+    'SpellAbility=Wisdom ' +
     'SpellSlots=' +
       'C0:1=3;2=4,' +
       'C1:1=1;2=2;4=3;7=4,' +
@@ -4165,7 +4165,7 @@ Pathfinder.CLASSES = {
       '"1:Weather Domain:Nature Bond" ' +
     'Languages=Druidic ' +
     'CasterLevelDivine=levels.Druid ' +
-    'SpellAbility=wisdom ' +
+    'SpellAbility=Wisdom ' +
     'SpellSlots=' +
       'D0:1=3;2=4,' +
       'D1:1=1;2=2;4=3;7=4,' +
@@ -4239,7 +4239,7 @@ Pathfinder.CLASSES = {
       '"12:Mercy (Deafened):Mercy","12:Mercy (Paralyzed):Mercy",' +
       '"12:Mercy (Stunned):Mercy" ' +
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'P1:4=0;5=1;9=2;13=3;17=4,' +
       'P2:7=0;8=1;12=2;16=3;20=4,' +
@@ -4275,7 +4275,7 @@ Pathfinder.CLASSES = {
       '"10:Greater Two-Weapon Fighting:Two-Weapon Feat",' +
       '"10:Two-Weapon Rend:Two-Weapon Feat" ' +
     'CasterLevelDivine="levels.Ranger >= 4 ? levels.Ranger - 3 : null" ' +
-    'SpellAbility=wisdom ' +
+    'SpellAbility=Wisdom ' +
     'SpellSlots=' +
       'R1:4=0;5=1;9=2;13=3;17=4,' +
       'R2:7=0;8=1;12=2;16=3;20=4,' +
@@ -4396,7 +4396,7 @@ Pathfinder.CLASSES = {
       '"1:Bonded Object:Arcane Bond",' +
       '"1:Familiar:Arcane Bond" ' +
     'CasterLevelArcane=levels.Sorcerer ' +
-    'SpellAbility=charisma ' +
+    'SpellAbility=Charisma ' +
     'SpellSlots=' +
       'S0:1=4;2=5;4=6;6=7;8=8;10=9,' +
       'S1:1=3;2=4;3=5;4=6,' +
@@ -4421,7 +4421,7 @@ Pathfinder.CLASSES = {
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',') + ',' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Opposition (' + x + '):Opposition"').join(',') + ' ' +
     'CasterLevelArcane=levels.Wizard ' +
-    'SpellAbility=intelligence ' +
+    'SpellAbility=Intelligence ' +
     'SpellSlots=' +
       'W0:1=3;2=4,' +
       'W1:1=1;2=2;4=3;7=4,' +
@@ -4442,7 +4442,7 @@ Pathfinder.NPC_CLASSES = {
     'Skills=' +
       'Craft,"Handle Animal",Heal,Knowledge,Profession,Spellcraft,Survival ' +
     'CasterLevelDivine=levels.Adept ' +
-    'SpellAbility=wisdom ' +
+    'SpellAbility=Wisdom ' +
     'SpellSlots=' +
       'Adept0:1=3,' +
       'Adept1:1=1;3=2;7=3,' +
@@ -8007,7 +8007,7 @@ Pathfinder.skillRules = function(
     'classSkillBump.' + name, '+', null,
     'classSkills.' + name, '+', '0'
   );
-  if(ability == 'strength' || ability == 'dexterity') {
+  if(ability.match(/^(strength|dexterity)$/i)) {
     rules.defineRule('skillModifier.' + name,
       'skillNotes.armorSkillCheckPenalty', '+', '-source'
     );
