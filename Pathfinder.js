@@ -62,7 +62,7 @@ function Pathfinder() {
   rules.defineChoice('preset',
     'race:Race,select-one,races', 'experienceTrack:Track,select-one,tracks',
     'levels:Class Levels,bag,levels', 'prestige:Prestige Levels,bag,prestiges',
-    'npc:NPC Levels,bag,npcs');
+    'npc:NPC Levels,bag,nPCs');
 
   Pathfinder.abilityRules(rules);
   Pathfinder.aideRules
@@ -4953,7 +4953,7 @@ Pathfinder.identityRules = function(
   }
   if(npcClasses) {
     for(let nc in npcClasses) {
-      rules.choiceRules(rules, 'Npc', nc, npcClasses[nc]);
+      rules.choiceRules(rules, 'NPC', nc, npcClasses[nc]);
       rules.defineRule('levels.' + nc, 'npc.' + nc, '=', null);
     }
   }
@@ -5079,7 +5079,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
-  else if(type == 'Class' || type == 'Npc' || type == 'Prestige') {
+  else if(type == 'Class' || type == 'NPC' || type == 'Prestige') {
     Pathfinder.classRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValue(attrs, 'HitDie'),

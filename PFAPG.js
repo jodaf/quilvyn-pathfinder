@@ -11600,7 +11600,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     let allClasses =
      Object.assign({}, rules.getChoices('levels'),
                        rules.getChoices('prestiges'),
-                       rules.getChoices('npcs'));
+                       rules.getChoices('nPCs'));
     for(let c in allClasses) {
       if(allClasses[c].includes('CasterLevelDivine=') &&
          allClasses[c].includes('SpellSlots=')) {
