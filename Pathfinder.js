@@ -37,11 +37,13 @@ function Pathfinder() {
   }
 
   let rules = new QuilvynRules('Pathfinder 1E', Pathfinder.VERSION);
+  rules.plugin = Pathfinder;
   Pathfinder.rules = rules;
 
   rules.defineChoice('choices', Pathfinder.CHOICES);
   rules.choiceEditorElements = Pathfinder.choiceEditorElements;
   rules.choiceRules = Pathfinder.choiceRules;
+  rules.removeChoice = SRD35.removeChoice;
   rules.editorElements = SRD35.initialEditorElements();
   rules.getChoices = SRD35.getChoices;
   rules.getFormats = Pathfinder.getFormats;
