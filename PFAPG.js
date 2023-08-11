@@ -786,7 +786,7 @@ PFAPG.FEATURES = {
     'Note="+1 Knowledge (Dungeoneering) (underground)/+1 Survival (underground)"',
   'Chain Fighter':
     'Section=feature ' +
-    'Note="Weapon Proficiency (Flail/Heavy Flail)/Weapon Familiarity (Dire Flail/Spike Chain)"',
+    'Note="Weapon Proficiency (Flail/Heavy Flail)/Weapon Familiarity (Dire Flail/Spiked Chain)"',
   'Gatecrasher':
     'Section=combat Note="+2 Strength checks (break objects)/+2 Sunder CMB"',
   'Plagueborn':
@@ -8600,6 +8600,8 @@ PFAPG.classRulesExtra = function(rules, name) {
         );
       }
     }
+    rules.defineRule
+      ('casterLevels.Domain', 'inquisitorDomainLevel', '^=', null);
     for(let level = 1; level <= 9; level++) {
       rules.defineRule('spellSlots.Domain' + level,
         'inquisitorDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
