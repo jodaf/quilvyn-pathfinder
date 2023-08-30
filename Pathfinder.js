@@ -3449,7 +3449,7 @@ Pathfinder.SPELLS = {
   'Shrink Item':'Level=S3,W3 Liquid=Oil',
   'Silence':
     'Level=B2,C2 ' +
-    'Description="R%{400+lvl*40}\' Bars sound in 20\' radius for $L rd"',
+    'Description="R%{400+lvl*40}\' Bars sound in 20\' radius (Will neg if targeted) for $L rd"',
   'Silent Image':'Level=B1,Rogue1,S1,W1',
   'Simulacrum':'Level=S7,W7',
   'Slay Living':
@@ -5264,7 +5264,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     console.log('Unknown choice type "' + type + '"');
     return;
   }
-  if(type != 'Feature' && type != 'Path' && type != 'Spell') {
+  if(type != 'Spell') {
     type = type == 'Class' ? 'levels' :
     (type.substring(0,1).toLowerCase() + type.substring(1).replaceAll(' ', '') + 's');
     rules.addChoice(type, name, attrs);
