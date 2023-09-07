@@ -3717,7 +3717,8 @@ PFAPG.FEATURES = {
     'Note=' +
       '"DR 5/good",' +
       '"R10\' Foes suffer -4 saves vs. compulsion"',
-  'Aura Of Despair':'Section=combat Note="R10\' Foes suffer -2 on all saves"',
+  'Aura Of Despair (Antipaladin)':
+    'Section=combat Note="R10\' Foes suffer -2 on all saves"',
   'Aura Of Evil':'Section=feature Note="Visible to <i>Detect Evil</i>"',
   'Aura Of Sin':
     'Section=combat ' +
@@ -7953,8 +7954,8 @@ PFAPG.NPC_CLASSES = {
       '"1:Aura Of Evil","1:Detect Good","1:Smite Good","2:Unholy Resilience",' +
       '"2:Touch Of Corruption","3:Aura Of Cowardice","3:Plague Bringer",' +
       '3:Cruelty,"4:Channel Negative Energy","5:Fiendish Boon",' +
-      '"8:Aura Of Despair","11:Aura Of Vengeance","14:Aura Of Sin",' +
-      '"17:Aura Of Depravity","20:Unholy Champion" ' +
+      '"8:Aura Of Despair (Antipaladin)","11:Aura Of Vengeance",' +
+      '"14:Aura Of Sin","17:Aura Of Depravity","20:Unholy Champion" ' +
     'Selectables=' +
       '"5:Fiendish Servant:Fiendish Boon","5:Fiendish Weapon:Fiendish Boon",' +
       '"3:Cruelty (Fatigued):Cruelty","3:Cruelty (Shaken):Cruelty",' +
@@ -8483,7 +8484,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'featureNotes.grandDiscovery', '=', '1'
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
-    Pathfinder.weaponRules(rules, 'Bomb', 3, 'R', '1d6', 20, 2, 20);
+    Pathfinder.weaponRules(rules, 'Bomb', 'Exotic', 'Ranged', '1d6', 20, 2, 20);
     // Remove crit info for bomb--it doesn't crit
     delete rules.choices.notes['weapons.Bomb'];
     rules.defineChoice('notes', 'weapons.Bomb:%V (%1 %2%3)');
@@ -11745,7 +11746,7 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('weapons.Claws',
       'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
     );
-    Pathfinder.weaponRules(rules, 'Claws', 1, '2h', 'd4', 20, 2);
+    Pathfinder.weaponRules(rules, 'Claws', 'Unarmed', 'Unarmed', 'd4', 20, 2);
   } else if(name == 'Aspect Of The Beast (Night Senses)') {
     rules.defineRule('featureNotes.aspectOfTheBeast(NightSenses)',
       '', '=', '"x2 normal distance in poor light"',
@@ -11900,7 +11901,7 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Weapon Proficiency (Bite)', 'combatNotes.razortusk', '=', '1');
     rules.defineRule('weapons.Bite', 'combatNotes.razortusk', '=', '1');
-    Pathfinder.weaponRules(rules, 'Bite', 1, 'Un', 'd4', 20, 2);
+    Pathfinder.weaponRules(rules, 'Bite', 'Unarmed', 'Unarmed', 'd4', 20, 2);
   } else if(name == 'Sharp Senses') {
     rules.defineRule
       ('skillNotes.keenSenses', 'skillNotes.sharpSenses', '+', '2');
