@@ -12,9 +12,10 @@ quilvyn-core package.
 
 ### Installation
 
-To use quilvyn-pathfinder, unbundle the release package into the plugins/
-subdirectory within the Quilvyn installation directory, then append the
-following lines to the file plugins/plugins.js:
+To use quilvyn-pathfinder, unbundle the release package, making sure that the
+contents of the plugins/ and Images/ subdirectories are placed into the
+corresponding Quilvyn installation subdirectories, then append the following
+lines to the file plugins/plugins.js:
 
     RULESETS['Pathfinder 1E'] = {
       url:'plugins/Pathfinder.js',
