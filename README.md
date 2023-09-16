@@ -31,5 +31,5 @@ lines to the file plugins/plugins.js:
 ### Usage
 
 Once the quilvyn-pathfinder package is installed as described above, start
-Quilvyn and check the box next to "Pathfinder 1E" from the rule sets menu in
-the initial window.
+Quilvyn and check the boxes next to "Pathfinder 1E" and/or "Pathfinder 1E
+Advanced Player's Guide" from the rule sets menu in the initial window.
