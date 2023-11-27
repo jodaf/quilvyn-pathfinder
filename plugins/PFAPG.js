@@ -62,7 +62,7 @@ function PFAPG(edition, rules) {
 
 }
 
-PFAPG.VERSION = '2.4.1.0';
+PFAPG.VERSION = '2.4.1.1';
 
 PFAPG.ANIMAL_COMPANIONS = {
   // Eidolons share stats w/animal companions with modified calculations.
@@ -2860,7 +2860,7 @@ PFAPG.FEATURES = {
     'Note="May suffer -%V AC to gain +%{levels.Fighter//2} bull rush and overrun and make a +%{levels.Fighter//2} attack w/a natural weapon at end of a charge"',
   'Shattering Strike':
     'Section=combat ' +
-    'Note="+%{(levels.Fighter+2)//4} CMB/CMD on sunder and damage vs. objects"',
+    'Note="+%{(levels.Fighter+2)//4} CMB and CMD on sunder and damage vs. objects"',
   'Shield Ally':
     'Section=combat ' +
     'Note="May use heavy or tower shield move to give self and adjacent allies +%{levels.Fighter>=17 ? 4 : 2} AC and +%{levels.Fighter>=17 ? 2 : 1} Reflex%{levels.Fighter>=13 ? \' (or 1 adjacent ally \' + (levels.Fighter>=17 ? \'Improved Evasion, +8 AC, and +4 Reflex)\' : \'Evasion, +4 AC, and +2 Reflex)\') : \'\'} for 1 rd"',
