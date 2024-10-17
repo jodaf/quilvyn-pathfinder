@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.0';
+Pathfinder.VERSION = '2.4.1.1';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
