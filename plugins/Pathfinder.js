@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.1';
+Pathfinder.VERSION = '2.4.1.2';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
@@ -2327,9 +2327,33 @@ Pathfinder.FEATURES = {
   'Vagabond Child':
     'Section=skill ' +
     'Note="+1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill"',
-  'Versatile Performance':
+  'Versatile Performance':'Section=feature Note="%V selections"',
+  'Versatile Skill (Act)':
+    'Section=skill Note="Can use Perform (Act) in place of Bluff and Disguise"',
+  'Versatile Skill (Comedy)':
     'Section=skill ' +
-    'Note="May substitute %V Perform checks for associated skill checks"',
+    'Note="Can use Perform (Comedy) in place of Bluff and Intimidate"',
+  'Versatile Skill (Dance)':
+    'Section=skill ' +
+    'Note="Can use Perform (Dance) in place of Acrobatics and Fly"',
+  'Versatile Skill (Keyboard)':
+    'Section=skill ' +
+    'Note="Can use Perform (Keyboard) in place of Diplomacy and Intimidate"',
+  'Versatile Skill (Oratory)':
+    'Section=skill ' +
+    'Note="Can use Perform (Oratory) in place of Diplomacy and Sense Motive"',
+  'Versatile Skill (Percussion)':
+    'Section=skill ' +
+    'Note="Can use Perform (Percussion) in place of Handle Animal and Intimidate"',
+  'Versatile Skill (Sing)':
+    'Section=skill ' +
+    'Note="Can use Perform (Sing) in place of Bluff and Sense Motive"',
+  'Versatile Skill (String)':
+    'Section=skill ' +
+    'Note="Can use Perform (String) in place of Bluff and Diplomacy"',
+  'Versatile Skill (Wind)':
+    'Section=skill ' +
+    'Note="Can use Perform (Wind) in place of Diplomacy and Handle Animal"',
   'Veteran Of Battle':
     'Section=combat,combat ' +
     'Note=' +
@@ -3998,6 +4022,16 @@ Pathfinder.CLASSES = {
       '"10:Jack-Of-All-Trades","12:Soothing Performance",' +
       '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
       '"20:Deadly Performance" ' +
+    'Selectables=' +
+      '"1:Versatile Skill (Act):Versatile Skill",' +
+      '"1:Versatile Skill (Comedy):Versatile Skill",' +
+      '"1:Versatile Skill (Dance):Versatile Skill",' +
+      '"1:Versatile Skill (Keyboard):Versatile Skill",' +
+      '"1:Versatile Skill (Oratory):Versatile Skill",' +
+      '"1:Versatile Skill (Percussion):Versatile Skill",' +
+      '"1:Versatile Skill (Sing):Versatile Skill",' +
+      '"1:Versatile Skill (String):Versatile Skill",' +
+      '"1:Versatile Skill (Wind):Versatile Skill" ' +
     'CasterLevelArcane=levels.Bard ' +
     'SpellAbility=Charisma ' +
     'SpellSlots=' +
@@ -5483,6 +5517,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'bardicPerformanceLevel', '=', '2 + 2 * source',
       'charismaModifier', '+', null
     );
+    rules.defineRule('featureNotes.versatilePerformance',
+      classLevel, '=', 'Math.floor((source + 2) / 4)'
+    );
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.simpleSomatics.1', 'v', '0'
     );
@@ -5527,6 +5564,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'charismaModifier', '=', '10 + source',
       'bardicPerformanceLevel', '+', 'Math.floor(source / 2)'
     );
+    rules.defineRule('selectableFeatureCount.Bard (Versatile Skill)',
+      'featureNotes.versatilePerformance', '=', null
+    );
     rules.defineRule(/^skillModifier.Knowledge/,
       'skillNotes.bardicKnowledge', '+', null
     );
@@ -5541,9 +5581,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ('skillNotes.jack-Of-All-Trades-1', classLevel, '?', 'source>=16');
     rules.defineRule('skillNotes.loreMaster',
       classLevel, '=', 'Math.floor((source + 1) / 6)'
-    );
-    rules.defineRule('skillNotes.versatilePerformance',
-      classLevel, '=', 'Math.floor((source + 2) / 4)'
     );
 
   } else if(name == 'Cleric') {
