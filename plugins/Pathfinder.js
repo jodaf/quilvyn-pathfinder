@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.2';
+Pathfinder.VERSION = '2.4.1.3';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
@@ -514,13 +514,13 @@ Pathfinder.FEATS = {
       '"features.Vital Strike"',
   'Greater Weapon Focus (%weapon)':
     'Type=Fighter ' +
-    'Imply="weapons.%weapon" ' +
+    'Imply="ownedWeapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
       '"levels.Fighter >= 8"',
   'Greater Weapon Specialization (%weapon)':
     'Type=Fighter ' +
-    'Imply="weapons.%weapon" ' +
+    'Imply="ownedWeapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
       '"features.Greater Weapon Focus (%weapon)",' +
@@ -535,7 +535,7 @@ Pathfinder.FEATS = {
   'Improved Channel':'Type=General Require="features.Channel Energy"',
   'Improved Counterspell':'Type=General Imply="casterLevel >= 1"',
   'Improved Critical (%weapon)':
-    'Type=Fighter Require="baseAttack >= 8" Imply="weapons.%weapon"',
+    'Type=Fighter Require="baseAttack >= 8" Imply="ownedWeapons.%weapon"',
   'Improved Disarm':
     'Type=Fighter Require="intelligence >= 13","features.Combat Expertise"',
   'Improved Familiar':'Type=General Require="features.Familiar"',
@@ -766,10 +766,10 @@ Pathfinder.FEATS = {
     'Type=Fighter ' +
     'Imply="dexterityModifier > strengthModifier"',
   'Weapon Focus (%weapon)':
-    'Type=Fighter Require="baseAttack >= 1" Imply="weapons.%weapon"',
+    'Type=Fighter Require="baseAttack >= 1" Imply="ownedWeapons.%weapon"',
   'Weapon Specialization (%weapon)':
     'Type=Fighter ' +
-    'Imply="weapons.%weapon" ' +
+    'Imply="ownedWeapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
       '"levels.Fighter >= 4"',
