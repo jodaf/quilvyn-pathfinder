@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.3';
+Pathfinder.VERSION = '2.4.1.4';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
@@ -2571,6 +2571,18 @@ Pathfinder.FEATURES = {
     'Note="May use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance"'
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
+  'Combat Maneuver Bonus':
+    'Pattern="([-+]\\d+).*\\bcmb|\\bcmb\\s+([-+]\\d+)" ' +
+    'Effect=add ' +
+    'Value="$1 || $2" ' +
+    'Attribute=combatManeuverBonus ' +
+    'Section=combat Note="%V CMB"',
+  'Combat Maneuver Defense':
+    'Pattern="([-+]\\d+).*\\bcmd|\\bcmd\\s+([-+]\\d+)" ' +
+    'Effect=add ' +
+    'Value="$1 || $2" ' +
+    'Attribute=combatManeuverDefense ' +
+    'Section=combat Note="%V CMD"',
   'Protection CMD':
     'Pattern="([-+]\\d+).*\\bprotection|\\bprotection\\s+([-+]\\d+)" ' +
     'Effect=add ' +
