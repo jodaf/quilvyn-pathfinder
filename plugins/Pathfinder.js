@@ -1,5 +1,5 @@
 /*
-Copyright 2023, James J. Hayes
+Copyright 2026, James J. Hayes
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.4';
+Pathfinder.VERSION = '2.4.1.5';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
@@ -8114,6 +8114,34 @@ Pathfinder.spellRules = function(
       rules.defineRule(note + '.' + matchInfo[1],
         'charismaModifier', '=', '10 + source + ' + level
       );
+  }
+  // SRD35 specifies the caster level of Paladins and Rangers to be half their
+  // class level; Pathfinder specifies class level - 3. This difference doesn't
+  // affect the spell itself, since casterLevel.{Paladin,Ranger} is calculated
+  // differently in the two plugins, but we have to adjust the notes for
+  // potions and scrolls that calculate the minimum caster level required to
+  // cast the corresponding spell.
+  if(casterGroup == 'P' || casterGroup == 'R') {
+    let notes = rules.getChoices('notes');
+    let note;
+    liquids.forEach(liquid => {
+      if(liquid != 'None') {
+        let liquidName = 'potions.' + name.replace('(', ' ' + liquid + ' (');
+        note = notes[liquidName];
+        if(note) {
+          // casterLevels.[PR] may be resolved to a value, so handle both
+          note = note.replaceAll(/(casterLevels.[PR]|\d+)\s*\/\/\s*2/g, '$1-3');
+          notes[liquidName] = note;
+        }
+      }
+    });
+    let scrollName = 'scrolls.' + name;
+    note = notes[scrollName];
+    if(note) {
+      // casterLevels.[PR] may be resolved to a value, so handle both
+      note = note.replaceAll(/(casterLevels.[PR]|\d+)\s*\/\/\s*2/g, '$1-3');
+      notes[scrollName] = note;
+    }
   }
 };
 
