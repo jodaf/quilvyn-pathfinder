@@ -86,7 +86,7 @@ function Pathfinder() {
 
 }
 
-Pathfinder.VERSION = '2.4.1.5';
+Pathfinder.VERSION = '2.4.1.6';
 
 /* List of choices that can be expanded by house rules. */
 Pathfinder.CHOICES = SRD35.CHOICES.concat('Faction', 'Trait');
@@ -2408,6 +2408,9 @@ Pathfinder.FEATURES = {
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
   'Angel Of Death':
     'Section=combat Note="Death attack disintegrates corpse 1/dy"',
+  'Arcane Caster Level Bonus':
+    'Section=magic ' +
+    'Note="+%V arcane base class level for spells known and spells per day"',
   'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
   'Arrow Of Death':
     'Section=combat Note="Special arrow kills foe (DC %V Fort neg)"',
@@ -2439,6 +2442,9 @@ Pathfinder.FEATURES = {
   'Diverse Training':
     'Section=feature ' +
     'Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
+  'Divine Caster Level Bonus':
+    'Section=magic ' +
+    'Note="+%V divine base class level for spells known and spells per day"',
   'Dodge Trick':'Section=combat Note="+1 AC"',
   'Dragon Bite':'Section=combat Note="1d%V+%1%2 bite when using claws"',
   'Dragon Disciple':'Section=combat Note="+%V"',
@@ -4552,8 +4558,8 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
       '"1:Weapon Proficiency (Martial)",' +
-      '"1:Enhance Arrows (Magic)","2:Caster Level Bonus","2:Imbue Arrow",' +
-      '"3:Enhance Arrows (Elemental)","4:Seeker Arrow",' +
+      '"1:Enhance Arrows (Magic)","2:Arcane Caster Level Bonus",' +
+      '"2:Imbue Arrow","3:Enhance Arrows (Elemental)","4:Seeker Arrow",' +
       '"5:Enhance Arrows (Distance)","6:Phase Arrow","8:Hail Of Arrows",' +
       '"9:Enhance Arrows (Aligned)","10:Arrow Of Death"',
   'Arcane Trickster':
@@ -4597,7 +4603,7 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
-      '"1:Blood Of Dragons","1:Natural Armor","2:Caster Level Bonus",' +
+      '"1:Blood Of Dragons","1:Natural Armor","2:Arcane Caster Level Bonus",' +
       '"2:Dragon Bite","2:Strength Boost",5:Blindsense,' +
       '"6:Constitution Boost","7:Dragon Form","8:Intelligence Boost",9:Wings ' +
     'Selectables=' +
@@ -4634,7 +4640,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Climb,"Knowledge (Arcana)","Knowledge (Nobility)",Linguistics,Ride,' +
       '"Sense Motive",Spellcraft,Swim ' +
     'Features=' +
-      '"1:Diverse Training","2:Caster Level Bonus","10:Spell Critical"',
+      '"1:Diverse Training","2:Arcane Caster Level Bonus","10:Spell Critical"',
   'Loremaster':
     'Require=' +
       '"Sum \'^features\\.Skill Focus .Knowledge\' >= 0",' +
@@ -4666,7 +4672,8 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       '"Knowledge (Arcana)","Knowledge (Religion)","Sense Motive",Spellcraft ' +
     'Features=' +
-      '"1:Caster Level Bonus","1:Combined Spells","10:Spell Synthesis"',
+      '"1:Arcane Caster Level Bonus","1:Divine Caster Level Bonus",' +
+      '"1:Combined Spells","10:Spell Synthesis"',
   'Pathfinder Chronicler':
     'Require=' +
       '"skills.Linguistics >= 3","skills.Perform (Oratory) >= 5",' +
@@ -7100,7 +7107,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule(
       'combatNotes.seekerArrow', classLevel, '=', 'Math.floor((source - 2) / 2)'
     );
-    rules.defineRule('magicNotes.casterLevelBonus',
+    rules.defineRule('magicNotes.arcaneCasterLevelBonus',
       classLevel, '+=',
       'source >= 2 ? source - Math.floor((source + 3) / 4) : null'
     );
@@ -7196,7 +7203,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('intelligence', 'abilityNotes.intelligenceBoost', '+', '2');
-    rules.defineRule('magicNotes.casterLevelBonus',
+    rules.defineRule('magicNotes.arcaneCasterLevelBonus',
       classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
     );
     rules.defineRule
@@ -7254,7 +7261,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     rules.defineRule
       ('featCount.Fighter', classLevel, '+=', 'Math.floor((source + 3) / 4)');
-    rules.defineRule('magicNotes.casterLevelBonus',
+    rules.defineRule('magicNotes.arcaneCasterLevelBonus',
       classLevel, '+=', 'source > 1 ? source - 1 : null'
     );
 
@@ -7303,7 +7310,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Mystic Theurge') {
 
-    rules.defineRule('magicNotes.casterLevelBonus', classLevel, '+=', null);
+    rules.defineRule
+      ('magicNotes.arcaneCasterLevelBonus', classLevel, '+=', null);
+    rules.defineRule
+      ('magicNotes.divineCasterLevelBonus', classLevel, '+=', null);
     rules.defineRule('magicNotes.combinedSpells',
       classLevel, '+=', 'Math.floor((source + 1) / 2)'
     );
