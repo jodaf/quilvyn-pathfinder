@@ -8376,12 +8376,12 @@ PFAPG.identityRules = function(
       'selectableFeatures.Summoner - Large Evolution', '+=', '3 + (source - 1) * 5'
     );
   }
-  for(let clas in classes)
-    PFAPG.classRulesExtra(rules, clas);
-  for(let clas in prestigeClasses)
-    PFAPG.classRulesExtra(rules, clas);
-  for(let clas in npcClasses)
-    PFAPG.classRulesExtra(rules, clas);
+  for(let c in classes)
+    PFAPG.classRulesExtra(rules, c, classes[c]);
+  for(let c in prestigeClasses)
+    PFAPG.classRulesExtra(rules, c, prestigeClasses[c]);
+  for(let c in npcClasses)
+    PFAPG.classRulesExtra(rules, c, npcClasses[c]);
   // Append subdomains to each deity's list of domains
   for(let deity in deities) {
     let domains = QuilvynUtils.getAttrValueArray(deities[deity], 'Domain');
@@ -8451,13 +8451,40 @@ PFAPG.talentRules = function(
 };
 
 /*
- * Defines in #rules# the rules associated with class #name# that cannot be
- * directly derived from the attributes passed to classRules.
+ * Defines in #rules# the rules associated with class #name#, which has
+ * attributes #attrs#, that cannot be directly derived from the attributes
+ * passed to classRules.
  */
-PFAPG.classRulesExtra = function(rules, name) {
+PFAPG.classRulesExtra = function(rules, name, attrs) {
 
   let classLevel = 'levels.' + name;
   let featureReplacements = null;
+
+  // For classes that include a core archetype selectable, default to using
+  // that selecteable if no archetype is selected, thereby supporting the
+  // display of characters created by the core Pathfinder plugin
+  let archetypes =
+    QuilvynUtils.getAttrValueArray(attrs, 'Selectables').filter(x => x.match(/:Archetype$/)).map(x => x.replace(/^\d+:/, '').replace(':Archetype', ''));
+  if(archetypes.length > 0) {
+    rules.defineRule
+      ('selectableFeatureCount.' + name + ' (Archetype)', classLevel, '=', '1');
+    let coreArchetype = 'Core ' + name;
+    let prefix = name.toLowerCase().replaceAll(' ', '');
+    if(archetypes.includes(coreArchetype)) {
+      let defaultFlag = prefix + 'DefaultsToCore';
+      rules.defineRule(defaultFlag,
+        classLevel, '=', '1',
+        'suppressUseOfDefaults', '=', '0' // see randomizeOneCharacter
+      );
+      archetypes.forEach(a => {
+        if(a != coreArchetype)
+          rules.defineRule(defaultFlag, prefix + 'Features.' + a, '=', '0');
+      });
+      rules.defineRule('selectableFeatures.' + name + ' - ' + coreArchetype,
+        defaultFlag, '=', 'source==1 ? 1 : null'
+      );
+    }
+  }
 
   if(name == 'Alchemist') {
 
@@ -8724,6 +8751,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         'featureNotes.revelation', '=', null
       );
     });
+
     // Battle Mystery
     rules.defineRule('featCount.General',
       'featureNotes.maneuverMastery', '+', null,
@@ -8764,6 +8792,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule(note, 'featureNotes.maneuverMastery', '^', '0');
       }
     }
+
     // Bones Mystery
     rules.defineRule('channelLevel', 'magicNotes.undeadServitude.1', '=', null);
     rules.defineRule
@@ -8795,6 +8824,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
     );
+
     // Flame Mystery
     rules.defineRule('featureNotes.cinderDance',
       'mysteryLevel', '=', 'source>=10 ? "Nimble Moves and Acrobatic Steps features" : source>=5 ? "Nimble Moves feature" : null'
@@ -8813,6 +8843,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
        '13:Elemental Body IV']
     );
+
     // Heavens Mystery
     rules.defineRule('magicNotes.dwellerInDarkness',
       'mysteryLevel', '=', 'source>=17 ? "Weird" : "Phantasmal Killer"'
@@ -8841,6 +8872,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     Pathfinder.featureSpells(rules,
       'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
     );
+
     // Life Mystery
     rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
     rules.defineRule
@@ -8906,6 +8938,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
        'Symbol Of Stunning', 'Symbol Of Weakness']
     );
+
     // Nature Mystery
     rules.defineRule
       ('animalCompanionStats.Int', 'featureNotes.bondedMount', '^', '6');
@@ -8925,6 +8958,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
       null, ['Telepathic Bond']
     );
+
     // Stone Mystery
     rules.defineRule
       ('abilityNotes.earthGlide', 'mysteryLevel', '=', 'source + " min"');
@@ -8941,6 +8975,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Improved Trip',
       'featureNotes.stoneStability', '=', 'source.includes("Improved Trip") ? 1 : null'
     );
+
     // Waves Mystery
     rules.defineRule('abilityNotes.fluidTravel.1',
       'features.Fluid Travel', '?', null,
@@ -8969,6 +9004,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
       '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
     );
+
     // Wind Mystery
     rules.defineRule('magicNotes.windSight',
       'mysteryLevel', '=', 'source>=7 ? source : null'
@@ -9361,61 +9397,133 @@ PFAPG.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Barbarian') {
 
-    rules.defineRule
-      ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
-    rules.defineRule('armorClass',
-      'combatNotes.nakedCourage.1', '+', null,
-      'combatNotes.naturalToughness.1', '+', null
+    featureReplacements = {
+      'Damage Reduction':[
+        'Invulnerability', 'Keen Senses (Barbarian)', 'Natural Toughness'
+      ],
+      'Fast Movement':[
+        'Destructive', 'Fast Rider', 'Raging Drunk', 'Skilled Thrower'
+      ],
+      'Improved Uncanny Dodge':[
+        'Bestial Mount', 'Improved Savage Grapple', 'Invulnerability'
+      ],
+      'Trap Sense':[
+        'Battle Scavenger', 'Elemental Fury', 'Extreme Endurance',
+        'Naked Courage', 'Pit Fighter', 'Sixth Sense'
+      ],
+      'Uncanny Dodge':[
+        'Bestial Mount', 'Invulnerability', 'Savage Grapple'
+      ]
+    };
+
+    // Breaker
+
+    // Brutal Pugilist
+    rules.defineRule('combatNotes.savageGrapple',
+      '', '=', '"Half"',
+      'combatNotes.improvedSavageGrapple', '=', '"No"'
     );
-    rules.defineRule('barbarianHasDamageReduction',
-      classLevel, '=', '1',
-      'barbarianFeatures.Invulnerability', '=', '0',
-      'barbarianFeatures.Keen Senses (Barbarian)', '=', '0',
-      'barbarianFeatures.Natural Toughness', '=', '0'
-    );
-    rules.defineRule('barbarianHasFastMovement',
-      classLevel, '=', '1',
-      'barbarianFeatures.Destructive', '=', '0',
-      'barbarianFeatures.Fast Rider', '=', '0',
-      'barbarianFeatures.Raging Drunk', '=', '0',
-      'barbarianFeatures.Skilled Thrower', '=', '0'
-    );
-    rules.defineRule('barbarianHasImprovedUncannyDodge',
-      classLevel, '=', '1',
-      'barbarianFeatures.Bestial Mount', '=', '0',
-      'barbarianFeatures.Improved Savage Grapple', '=', '0',
-      'barbarianFeatures.Invulnerability', '=', '0'
-    );
-    rules.defineRule('barbarianHasTrapSense',
-      classLevel, '=', '1',
-      'barbarianFeatures.Battle Scavenger', '=', '0',
-      'barbarianFeatures.Elemental Fury', '=', '0',
-      'barbarianFeatures.Extreme Endurance', '=', '0',
-      'barbarianFeatures.Naked Courage', '=', '0',
-      'barbarianFeatures.Pit Fighter', '=', '0',
-      'barbarianFeatures.Sixth Sense', '=', '0'
-    );
-    rules.defineRule('barbarianHasUncannyDodge',
-      classLevel, '=', '1',
-      'barbarianFeatures.Bestial Mount', '=', '0',
-      'barbarianFeatures.Invulnerability', '=', '0',
-      'barbarianFeatures.Savage Grapple', '=', '0'
-    );
-    ['Damage Reduction', 'Fast Movement', 'Improved Uncanny Dodge',
-     'Trap Sense', 'Uncanny Dodge'].forEach(f => {
-      rules.defineRule('barbarianFeatures.' + f,
-        'barbarianHas' + f.replaceAll(/ |-/g, ''), '?', null
-      );
-    });
-    rules.defineRule('combatNotes.brawler',
-      '', '=', '"Unarmed attack provokes no AOO and may inflict lethal damage"',
-      'features.Improved Unarmed Strike', '=', '"Unarmed attacks inflict %{features.Small ? \'1d4\' : \'1d6\'}"'
-    );
+
+    // Drunken Brute
+
+    // Elemental Kin
+
+    // Hurler
+
+    // Invulnerable Rager
     rules.defineRule('combatNotes.invulnerability',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule('combatNotes.invulnerability-1',
       'combatNotes.invulnerability', '=', 'source * 2'
+    );
+    rules.defineRule
+      ('damageReduction.-', 'combatNotes.invulnerability', '^=', null);
+
+    // Mounted Fury
+    rules.defineRule
+      ('animalCompanionStats.Speed', 'companionNotes.fastRider', '+', '10');
+    rules.defineRule('companionBarbarianLevel',
+      'features.Bestial Mount', '?', null,
+      classLevel, '+=', 'Math.floor(source / 2)'
+    );
+    rules.defineRule
+      ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
+    rules.defineRule
+      ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
+
+    // Savage Barbarian
+    rules.defineRule('armorClass',
+      'combatNotes.nakedCourage.1', '+', null,
+      'combatNotes.naturalToughness.1', '+', null
+    );
+    rules.defineRule('combatNotes.nakedCourage',
+      classLevel, '=', 'Math.floor((source + 3) / 6)'
+    );
+    rules.defineRule('combatNotes.nakedCourage.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.nakedCourage', '=', null
+    );
+    rules.defineRule('combatNotes.naturalToughness',
+      classLevel, '=', 'Math.floor((source - 4) / 3)'
+    );
+    rules.defineRule('combatNotes.naturalToughness.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.naturalToughness', '=', null
+    );
+
+    // Superstitious
+    rules.defineRule
+      ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
+    rules.defineRule
+      ('combatNotes.sixthSense-1', classLevel, '=', 'Math.floor(source / 3)');
+    rules.defineRule('featureNotes.blindsense',
+      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("30") ? 30 : null'
+    );
+    rules.defineRule('featureNotes.blindsense',
+      'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
+    );
+    rules.defineRule('featureNotes.blindsight',
+      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("30") ? 30 : null'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).1',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=10 ? ", +60\' Darkvision" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).2',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=13 ? ", Scent" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).3',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=16 ? ", 30\' Blindsense" : ""'
+    );
+    rules.defineRule('featureNotes.keenSenses(Barbarian).4',
+      'features.Keen Senses (Barbarian)', '?', null,
+      classLevel, '=', 'source>=19 ? ", 30\' Blindsight" : ""'
+    );
+    rules.defineRule('features.Blindsense',
+      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("Blindsense") ? 1 : null'
+    );
+    rules.defineRule('features.Blindsight',
+      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("Blindsight") ? 1 : null'
+    );
+    rules.defineRule('features.Darkvision',
+      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Darkvision") ? 1 : null'
+    );
+    rules.defineRule('features.Low-Light Vision',
+      'featureNotes.keenSenses(Barbarian)', '=', '1'
+    );
+    rules.defineRule('features.Scent',
+      'featureNotes.keenSenses(Barbarian).2', '=', 'source.includes("Scent") ? 1 : null'
+    );
+
+    // Totem Warrior
+
+    // Rage Powers
+    rules.defineRule('combatNotes.brawler',
+      '', '=', '"Unarmed attack provokes no AOO and may inflict lethal damage"',
+      'features.Improved Unarmed Strike', '=', '"Unarmed attacks inflict %{features.Small ? \'1d4\' : \'1d6\'}"'
     );
     rules.defineRule('combatNotes.lesserHurling',
       '', '=', '10',
@@ -9447,78 +9555,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Chaos Totem', '+', '1',
       'features.Greater Chaos Totem', '+', '1'
     );
-    rules.defineRule('combatNotes.nakedCourage',
-      classLevel, '=', 'Math.floor((source + 3) / 6)'
-    );
-    rules.defineRule('combatNotes.nakedCourage.1',
-      'armor', '?', 'source == "None"',
-      'combatNotes.nakedCourage', '=', null
-    );
-    rules.defineRule('combatNotes.naturalToughness',
-      classLevel, '=', 'Math.floor((source - 4) / 3)'
-    );
-    rules.defineRule('combatNotes.naturalToughness.1',
-      'armor', '?', 'source == "None"',
-      'combatNotes.naturalToughness', '=', null
-    );
-    rules.defineRule('combatNotes.savageGrapple',
-      '', '=', '"Half"',
-      'combatNotes.improvedSavageGrapple', '=', '"No"'
-    );
-    rules.defineRule
-      ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
-    rules.defineRule
-      ('combatNotes.sixthSense-1', classLevel, '=', 'Math.floor(source / 3)');
-    rules.defineRule('companionBarbarianLevel',
-      'features.Bestial Mount', '?', null,
-      classLevel, '+=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('companionMasterLevel', 'companionBarbarianLevel', '+=', null);
-    rules.defineRule
-      ('damageReduction.-', 'combatNotes.invulnerability', '^=', null);
-    rules.defineRule('featureNotes.blindsense',
-      'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
-    );
-    rules.defineRule('featureNotes.blindsense',
-      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("30") ? 30 : null'
-    );
-    rules.defineRule('featureNotes.blindsight',
-      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("30") ? 30 : null'
-    );
-    rules.defineRule('featureNotes.keenSenses(Barbarian).1',
-      'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', 'source>=10 ? ", +60\' Darkvision" : ""'
-    );
-    rules.defineRule('featureNotes.keenSenses(Barbarian).2',
-      'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', 'source>=13 ? ", Scent" : ""'
-    );
-    rules.defineRule('featureNotes.keenSenses(Barbarian).3',
-      'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', 'source>=16 ? ", 30\' Blindsense" : ""'
-    );
-    rules.defineRule('featureNotes.keenSenses(Barbarian).4',
-      'features.Keen Senses (Barbarian)', '?', null,
-      classLevel, '=', 'source>=19 ? ", 30\' Blindsight" : ""'
-    );
-    rules.defineRule
-      ('features.Animal Companion', 'featureNotes.bestialMount', '=', '1');
-    rules.defineRule('features.Blindsense',
-      'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("Blindsense") ? 1 : null'
-    );
-    rules.defineRule('features.Blindsight',
-      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("Blindsight") ? 1 : null'
-    );
-    rules.defineRule('features.Darkvision',
-      'featureNotes.keenSenses(Barbarian).1', '=', 'source.includes("Darkvision") ? 1 : null'
-    );
-    rules.defineRule('features.Low-Light Vision',
-      'featureNotes.keenSenses(Barbarian)', '=', '1'
-    );
-    rules.defineRule('features.Scent',
-      'featureNotes.keenSenses(Barbarian).2', '=', 'source.includes("Scent") ? 1 : null'
-    );
     rules.defineRule('saveNotes.energyResistance',
       'barbarianFeatures.Energy Resistance', '=', null
     );
@@ -9527,8 +9563,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Chaos Totem', '+', '1',
       'features.Greater Chaos Totem', '+', '1'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Barbarian (Archetype)', classLevel, '=', '1');
 
   } else if(name == 'Bard') {
 
@@ -9584,8 +9618,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       ]
     };
 
-    rules.defineRule
-      ('selectableFeatureCount.Bard (Archetype)', classLevel, '=', '1');
     // Arcane Duelist
     rules.defineRule('featureNotes.arcaneArmor',
       classLevel, '=', 'source>=16 ? "Heavy" : "Medium"'
@@ -9606,6 +9638,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.arcaneArmor.1', 'v', 'source<=0 ? 0 : null'
     );
+
     // Archivist
     // Archivists get Jack-Of-All-Trades and Lore Master early
     rules.defineRule('archivistLevel',
@@ -9627,10 +9660,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.loreMaster',
       'archivistLevel', '^=', 'Math.floor((source+4) / 6)'
     );
+
     // Court Bard
     rules.defineRule('skillNotes.heraldicExpertise',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+
     // Detective
     rules.defineRule('skillNotes.eyeForDetail',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -9638,6 +9673,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.eyeForDetail-1',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+
     // Magician
     rules.defineRule('skillModifier.Knowledge (Arcana)',
       'skillNotes.magicalTalent', '+', 'null', // italics no-op
@@ -9653,6 +9689,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Magical Talent', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
     );
+
     // Sandman
     rules.defineRule('sandmanLevel',
       'bardFeatures.Sandman', '?', null,
@@ -9676,10 +9713,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
+
     // Savage Skald
     Pathfinder.featureSpells(rules,
       'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
     );
+
     // Sea Singer
     rules.defineRule
       ('familiarMasterLevel', classLevel, '+=', 'source>=2 ? source : null');
@@ -9708,6 +9747,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Whistle The Wind', 'WhistleTheWind', 'charisma', classLevel, null,
       ['Gust Of Wind']
     );
+
     // Street Performer
     rules.defineRule('skillNotes.streetwise',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -9835,30 +9875,36 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Protective Aura', 'ProtectiveAura', 'wisdom', 'casterLevels.Agathion',
       null, ['Protection From Evil']
     );
+
     // Catastrophe
     Pathfinder.featureSpells(rules,
       'Deadly Weather', 'DeadlyWeather', 'wisdom', 'casterLevels.Catastrophe',
       '', ['Call Lightning']
     );
+
     // Caves
     Pathfinder.featureSpells(rules,
       'Tunnel Runner', 'TunnelRunner', 'wisdom', 'casterLevels.Caves', null,
       ['Spider Climb']
     );
+
     // Construct
     Pathfinder.featureSpells(rules,
       'Animate Servant', 'AnimateServant', 'wisdom', 'casterLevels.Construct',
       null, ['Animate Objects']
     );
+
     // Feather
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'casterLevels.Feather', '=', 'Math.max(Math.floor(source / 2), 1)'
     );
+
     // Inevitable
     Pathfinder.featureSpells(rules,
       'Command', 'Command', 'wisdom', 'casterLevels.Inevitable',
       '10+casterLevels.Inevitable//2+wisdomModifier', ['Command']
     );
+
     // Rage
     rules.defineRule('clericRagePowerLevel',
       'features.Rage (Cleric)', '?', null,
@@ -9889,6 +9935,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
       );
     });
+
     // Seasons
     Pathfinder.featureSpells(rules,
       'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
@@ -10003,6 +10050,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       allNotes['validationNotes.druid-' + d.replaceAll(' ', '') + 'SelectableFeature'] =
         'Requires specific Druid archetype';
     });
+
     // Animal Shaman
     ['Bear', 'Eagle', 'Lion', 'Serpent', 'Wolf'].forEach(a => {
       rules.defineRule('featCount.' + a + ' Shaman',
@@ -10051,16 +10099,20 @@ PFAPG.classRulesExtra = function(rules, name) {
       if(f in allFeats)
         allFeats[f] = allFeats[f].replace('Type=', 'Type="Wolf Shaman",');
     });
+
     // Aquatic Druid
     rules.defineRule('abilityNotes.naturalSwimmer',
       'speed', '=', 'Math.floor(source / 2)',
       'abilityNotes.seaborn', '*', '2'
     );
     rules.defineRule('wildShapeLevel', 'features.Aquatic Druid', '+', '-2');
+
     // Arctic Druid
     rules.defineRule('wildShapeLevel', 'features.Arctic Druid', '+', '-2');
+
     // Blight Druid
     rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
+
     // Cave Druid
     rules.defineRule('caveDruidWildShape',
       'druidFeatures.Cave Druid', '?', null,
@@ -10078,6 +10130,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'desertDruidWildShape', '=', null,
       'mountainDruidWildShape', '=', null
     );
+
     // Desert Druid
     rules.defineRule('desertDruidWildShape',
       'druidFeatures.Desert Druid', '?', null,
@@ -10090,12 +10143,14 @@ PFAPG.classRulesExtra = function(rules, name) {
         '"diminutive-huge/elemental/huge vermin"'
     );
     rules.defineRule('wildShapeLevel', 'features.Desert Druid', '+', '-2');
+
     // Jungle Druid
     rules.defineRule('wildShapeLevel', 'features.Jungle Druid', '+', '-2');
     Pathfinder.featureSpells(rules,
       'Verdant Sentinel', 'VerdantSentinel', 'wisdom', classLevel, null,
       ['Tree Shape']
     );
+
     // Mountain Druid
     rules.defineRule('mountainDruidWildShape',
       'druidFeatures.Mountain Druid', '?', null,
@@ -10109,6 +10164,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         '"diminutive-huge/elemental/huge giant"'
     );
     rules.defineRule('wildShapeLevel', 'features.Mountain Druid', '+', '-2');
+
     // Plains Druid
     rules.defineRule('abilityNotes.runLikeTheWind.1',
       'abilityNotes.runLikeTheWind', '?', null, // Italics
@@ -10116,12 +10172,14 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('speed', 'abilityNotes.runLikeTheWind.1', '+', '10');
     rules.defineRule('wildShapeLevel', 'features.Plains Druid', '+', '-2');
+
     // Swamp Druid
     Pathfinder.featureSpells(rules,
       'Slippery', 'Slippery', 'wisdom', classLevel, null,
       ['Freedom Of Movement']
     );
     rules.defineRule('wildShapeLevel', 'features.Swamp Druid', '+', '-2');
+
     // Urban Druid
     rules.defineRule('wildShapeLevel', 'features.Urban Druid', '+', '-4');
 
@@ -10154,8 +10212,6 @@ PFAPG.classRulesExtra = function(rules, name) {
       ]
     };
 
-    rules.defineRule
-      ('selectableFeatureCount.Fighter (Archetype)', classLevel, '=', '1');
     // Archer
     rules.defineRule('combatNotes.expertArcher',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
@@ -10178,6 +10234,7 @@ PFAPG.classRulesExtra = function(rules, name) {
         rules.defineRule(prefix + 'Range', 'combatNotes.hawkeye', '+=', null);
       }
     });
+
     // Crossbowman
     rules.defineRule('levelsUntilSafeShot',
       'fighterFeatures.Archer', '=', '9',
@@ -10210,6 +10267,7 @@ PFAPG.classRulesExtra = function(rules, name) {
           (prefix + 'DamageModifier', 'combatNotes.crossbowExpert', '+=', null);
       }
     });
+
     // Free Hand Fighter
     rules.defineRule('armorClass', 'combatNotes.elusive.1', '+', null);
     rules.defineRule('combatNotes.elusive',
@@ -10219,9 +10277,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'armorWeight', '?', 'source<=1',
       'combatNotes.elusive', '=', null
     );
+
     // Mobile Fighter
     rules.defineRule
       ('skillNotes.armorTraining', 'fighterFeatures.Mobile Fighter', 'v', '2');
+
     // Phalanx Soldier
     rules.defineRule
       ('combatNotes.deftShield', classLevel, '=', 'source>=11 ? 2 : 1');
@@ -10251,6 +10311,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'shield', '?', 'source=="Tower"',
       'skillNotes.deftShield', '=', null
     );
+
     // Polearm Master
     // Weapon lists from core Fighter rules and the APG gear list
     let polearms = [
@@ -10274,6 +10335,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.polearmTraining',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
+
     // Roughrider
     rules.defineRule('skillNotes.armoredCharger.1',
       'features.Armored Charger', '?', null,
@@ -10291,6 +10353,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source / 2',
       'combatNotes.greaterSavageCharge', '*', '0.5'
     );
+
     // Shielded Fighter
     rules.defineRule('combatNotes.shieldGuard',
       'shield', '=', 'source=="None" ? null : source.match(/Tower/) ? "3 contiguous squares" : source.match(/Heavy/) ? "2 contiguous squares" : "square"'
@@ -10314,6 +10377,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('features.Evasion',
       'featureNotes.shieldWard.1', '=', 'source=="Evasion" ? 1 : null'
     );
+
     // Two-Handed Fighter
     rules.defineRule('combatNotes.backswing',
       'strengthModifier', '=', 'Math.max(source*2 - Math.floor(source*1.5), 0)'
@@ -10372,13 +10436,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'monkFeatures.Monk Of The Empty Hand', '=', '0'
     );
 
-    rules.defineRule
-      ('selectableFeatureCount.Monk (Archetype)', classLevel, '=', '1');
     // Drunken Master
     rules.defineRule('featureNotes.drunkenKi',
       '', '=', '1',
       'featureNotes.deepDrinker', '+', '1'
     );
+
     // Hungry Ghost Monk
     rules.defineRule('hungryGhostLevel',
       'monkFeatures.Hungry Ghost Monk', '?', null,
@@ -10387,6 +10450,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.punishingKick',
       'hungryGhostLevel', '+', 'source>=10 ? Math.floor((source-5) / 5) * 5 : null'
     );
+
     // Ki Mystic
     rules.defineRule
       ('combatNotes.mysticPrescience', classLevel, '=', 'source<20 ? 2 : 4');
@@ -10394,6 +10458,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Mystic Visions', 'MysticVisions', 'charisma', classLevel, null,
       ['Divination']
     );
+
     // Monk Of The Empty Hand
     rules.defineRule('emptyHandLevel',
       'monkFeatures.Monk Of The Empty Hand', '?', null,
@@ -10404,6 +10469,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       // Force to exactly 2 points at level 3; above rule handles higher levels
       'emptyHandLevel', 'v=', 'source==3 ? 2 : null'
     );
+
     // Monk Of The Four Winds
     rules.defineRule('fourWindsLevel',
       'monkFeatures.Monk Of The Four Winds', '?', null,
@@ -10421,6 +10487,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', classLevel, null,
       ['Gaseous Form']
     );
+
     // Monk Of The Healing Hand
     Pathfinder.featureSpells(rules,
       'Ki Sacrifice', 'KiSacrifice', 'charisma', classLevel, null,
@@ -10430,6 +10497,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'True Sacrifice', 'TrueSacrifice', 'charisma', classLevel, null,
       ['True Resurrection']
     );
+
     // Monk Of The Lotus
     rules.defineRule('lotusLevel',
       'monkFeatures.Monk Of The Lotus', '?', null,
@@ -10456,6 +10524,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Touch Of Surrender', 'TouchOfSurrender', 'charisma', classLevel, null,
       ['Charm Monster']
     );
+
     // Monk Of The Sacred Mountain
     rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
     rules.defineRule('combatNotes.adamantineMonk',
@@ -10466,6 +10535,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.adamantineMonk', '+=', null);
+
     // Weapon Adept
     // WA delays Evasion to level 9
     rules.defineRule('weaponAdeptLevel',
@@ -10485,6 +10555,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'features.Way Of The Weapon Master', '?', null,
       classLevel, '=', 'source>=6 ? "/+1 General Feat (Weapon Specialization (monk weapon))" : ""'
     );
+
     // Zen Archer
     // combatNotes.perfectStrike as Weapon Adept
     rules.defineRule('combatNotes.zenArchery',
@@ -10575,17 +10646,17 @@ PFAPG.classRulesExtra = function(rules, name) {
     }
 
     rules.defineRule
-      ('selectableFeatureCount.Paladin (Archetype)', classLevel, '=', '1');
-    rules.defineRule
       ('selectableFeatureCount.Paladin (Mercy)', 'paladinHasMercy', '?', null);
     rules.defineRule('selectableFeatureCount.Paladin (Domain)',
       'featureNotes.domain(Paladin)', '=', '1'
     );
+
     // Divine Defender
     rules.defineRule('magicNotes.sharedDefense.1',
       'features.Shared Defense', '?', null,
       classLevel, '=', 'source>=18 ? ", plus automatic stabilization, immunity to bleed damage, and 25% chance to negate sneak attack and crit damage," : source>=12 ? ", plus automatic stabilization and immunity to bleed damage," : source>=6 ? ", plus automatic stabilization," : ""'
     );
+
     // Hospitaler
     rules.defineRule('hospitalerLevel',
       'paladinFeatures.Hospitaler', '?', null,
@@ -10600,6 +10671,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.channelEnergy.1',
       'hospitalerLevel', '+=', 'Math.floor((source-2)/2) - Math.floor((source+1)/2)'
     );
+
     // Sacred Servant
     rules.defineRule('sacredServantLevel',
       'paladinFeatures.Sacred Servant', '?', null,
@@ -10612,6 +10684,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
       null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
     );
+
     // Shining Knight
     rules.defineRule('animalCompanionStats.Save Fort',
       'companionNotes.skilledRider', '+', null
@@ -10630,10 +10703,12 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.skilledRider', '?', null, // Italics
       'skillNotes.armorSkillCheckPenalty', '=', null
     );
+
     // Undead Scourge
     rules.defineRule('combatNotes.smiteEvil.1',
       'paladinFeatures.Undead Scourge', '=', '"undead"'
     );
+
     // Warrior Of The Holy Light
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.powerOfFaith', '+', null);
@@ -10768,8 +10843,6 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('casterLevels.Ranger', 'rangerHasSpells', '?', null);
     rules.defineRule('spellSlotLevel.Ranger', 'rangerHasSpells', '?', null);
-    rules.defineRule
-      ('selectableFeatureCount.Ranger (Archetype)', classLevel, '=', '1');
     ['Archery', 'Crossbow', 'Mounted Combat', 'Natural Weapon',
      'Two-Handed Weapon', 'Two-Weapon', 'Weapon And Shield'].forEach(cs => {
       rules.defineRule('selectableFeatureCount.Ranger (' + cs + ' Feat)',
@@ -10827,6 +10900,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule('rangerFeatures.Animal Companion',
       'beastMasterLevel', '=', 'source>=4 ? 1 : null'
     );
+
     // Guide
     rules.defineRule("combatNotes.ranger'sLuck.1",
       "rangerFeatures.Ranger's Luck", '?', null,
@@ -10836,10 +10910,12 @@ PFAPG.classRulesExtra = function(rules, name) {
     rules.defineRule("combatNotes.ranger'sLuck.2",
       "combatNotes.ranger'sLuck.1", '=', 'source ? " -4" : ""'
     );
+
     // Horse Lord
     rules.defineRule('rangerFeatures.Animal Companion',
       'features.Mounted Bond', '=', '1'
     );
+
     // Shapeshifter
     rules.defineRule('abilityNotes.formOfTheBear',
       '', '=', '4',
@@ -10890,6 +10966,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Master Shifter', 'MasterShifter', 'wisdom', classLevel, null,
       ['Beast Shape IV', 'Form Of The Dragon I']
     );
+
     // Skirmisher
     rules.defineRule("featureNotes.hunter'sTricks",
       classLevel, '=', 'Math.floor((source - 3) / 2)'
@@ -10898,6 +10975,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'rangerFeatures.Skirmisher', '?', null,
       classLevel, '=', 'Math.floor((source - 3) / 2)'
     );
+
     // Spirit Ranger
     Pathfinder.featureSpells(rules,
       'Spirit Bond', 'SpiritBond', 'wisdom', classLevel, null, ['Augury']
@@ -10906,6 +10984,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       'Wisdom Of The Spirits', 'WisdomOfTheSpirits', 'wisdom', classLevel, null,
       ['Divination']
     );
+
     // Urban Ranger
     rules.defineRule
       ('skillNotes.trapfinding', classLevel, '+=', 'Math.floor(source / 2)');
@@ -10959,8 +11038,7 @@ PFAPG.classRulesExtra = function(rules, name) {
       '', '=', '2',
       'skills.Linguistics', '+', '2'
     );
-    rules.defineRule
-      ('selectableFeatureCount.Rogue (Archetype)', classLevel, '=', '1');
+
     // Acrobat
     rules.defineRule('skillModifier.Acrobatics',
       'skillNotes.expertAcrobat.1', '+', null,
@@ -10986,9 +11064,11 @@ PFAPG.classRulesExtra = function(rules, name) {
       'skillNotes.expertAcrobat', '?', null,
       'armorWeight', '=', 'source==0 ? 2 : null'
     );
+
     // Rake
     rules.defineRule
       ("skillNotes.rake'sSmile", classLevel, '=', 'Math.floor(source / 3)');
+
     // Spy
     rules.defineRule('levelsUntilPoisonUse',
       'rogueFeatures.Poisoner', '=', '1',
@@ -10997,6 +11077,7 @@ PFAPG.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('rogueFeatures.Poison Use', 'levelsUntilPoisonUse', '?', 'source<=0');
+
     // Swashbucker
     rules.defineRule
       ('featCount.Combat', 'featureNotes.martialTraining', '+=', '1');
@@ -11119,6 +11200,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Geyser', '11:Control Water', '13:Beast Shape IV',
        '15:Summon Monster VII', '17:Seamantle', '19:World Wave']
     );
+
     // Bloodline Boreal
     rules.defineRule('magicNotes.icewalker', classLevel, '?', 'source>=9');
     rules.defineRule('casterLevels.Blizzard', classLevel, '+=', null);
@@ -11140,6 +11222,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Wall Of Ice', '11:Cone Of Cold', '13:Transformation',
        '15:Giant Form I', '17:Polar Ray', '19:Meteor Swarm']
     );
+
     // Bloodline Deep Earth
     rules.defineRule('deepEarthLevel',
       'sorcererFeatures.Bloodline Deep Earth', '?', null,
@@ -11167,6 +11250,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Stoneskin', '11:Spike Stones', '13:Stone Tell',
        '15:Repel Metal Or Stone', '17:Earthquake', '19:Clashing Rocks']
     );
+
     // Bloodline Dreamspun
     rules.defineRule('combatNotes.combatPrecognition',
       classLevel, '=', 'Math.floor((source + 1) / 4)'
@@ -11190,6 +11274,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Divination', '11:Dream', '13:Shadow Walk',
        '15:Vision', '17:Moment Of Prescience', '19:Astral Projection']
     );
+
     // Bloodline Protean
     Pathfinder.featureSpells(rules,
       'Spatial Tear', 'SpatialTear', 'charisma', classLevel, '',
@@ -11202,6 +11287,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Confusion', '11:Major Creation', '13:Disintegrate',
        '15:Greater Polymorph', '17:Polymorph Any Object', '19:Shapechange']
     );
+
     // Bloodline Serpentine
     rules.defineRule
       ('combatNotes.snakeskin', classLevel, '=', 'Math.floor((source-5) / 4)');
@@ -11234,6 +11320,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Poison', '11:Hold Monster', '13:Mass Suggestion',
        '15:Summon Monster VII', '17:Irresistible Dance', '19:Dominate Monster']
     );
+
     // Bloodline Shadow
     Pathfinder.featureSpells(rules,
       'Enveloping Darkness', 'EnvelopingDarkness', 'charisma', classLevel, '',
@@ -11250,6 +11337,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Shadow Conjuration', '11:Shadow Evocation', '13:Shadow Walk',
        '15:Power Word Blind', '17:Greater Shadow Evocation', '19:Shades']
     );
+
     // Bloodline Starsoul
     rules.defineRule('featureNotes.voidwalker-1', classLevel, '?', 'source>=9');
     rules.defineRule
@@ -11265,6 +11353,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Call Lightning Storm', '11:Overland Flight', '13:Repulsion',
        '15:Reverse Gravity', '17:Greater Prying Eyes', '19:Meteor Swarm']
     );
+
     // Bloodline Stormborn
     rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
     rules.defineRule('features.Blindsense', 'features.Stormchild', '=', '1');
@@ -11276,6 +11365,7 @@ PFAPG.classRulesExtra = function(rules, name) {
        '9:Shout', '11:Overland Flight', '13:Chain Lightning',
        '15:Control Weather', '17:Whirlwind', '19:Storm Of Vengeance']
     );
+
     // Bloodline Verdant
     rules.defineRule('features.Tremorsense',
       'features.Rooting', '=', '1',
@@ -11946,11 +12036,11 @@ PFAPG.featRulesExtra = function(rules, name) {
  * derived directly from the attributes passed to raceRules.
  */
 PFAPG.raceRulesExtra = function(rules, name) {
-  let alternatives = [];
+  let alternateRacialTraits = []; // core trait listed first in each group
   let prefix =
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
   if(name == 'Half-Elf') {
-    alternatives = [
+    alternateRacialTraits = [
       ['Adaptability', 'Ancestral Arms', 'Dual Minded', 'Integrated',
        'Sociable (Half-Elf)', 'Water Child'],
       ['Multitalented', 'Arcane Training', 'Water Child']
@@ -11959,7 +12049,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'half-ElfFeatures.Water Child', '+', '-1'
     );
   } else if(name == 'Half-Orc') {
-    alternatives = [
+    alternateRacialTraits = [
       ['Weapon Familiarity (Orc Double Axe)', 'Chain Fighter'],
       ['Intimidating', 'Cavewight', 'Plagueborn', 'Rock Climber', 'Scavenger'],
       ['Orc Ferocity', 'Beastmaster', 'Bestial', 'Gatecrasher', 'Plagueborn',
@@ -11989,7 +12079,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule('weapons.Bite', 'combatNotes.toothy', '=', '1');
   } else if(name.match(/Dwarf/)) {
     rules.defineRule('saveNotes.hardy.1', 'saveNotes.steelSoul', '+', '2');
-    alternatives = [
+    alternateRacialTraits = [
       ['Dwarf Hatred', 'Ancient Enmity'],
       ['Greed', 'Craftsman', 'Lorekeeper (Dwarf)'],
       ['Defensive Training', 'Deep Warrior'],
@@ -11998,7 +12088,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ['Stonecunning', 'Stonesinger']
     ];
   } else if(name.match(/Elf/)) {
-    alternatives = [
+    alternateRacialTraits = [
       ['Weapon Familiarity (Elven Curve Blade)', 'Spirit Of The Waters'],
       ['Elven Immunities', 'Dreamspeaker', 'Lightbringer'],
       ['Elven Magic', 'Desert Runner', 'Eternal Grudge', 'Lightbringer',
@@ -12030,7 +12120,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule
       ('casterLevels.Lightbringer', 'intelligence', '?', 'source>=10');
   } else if(name.match(/Gnome/)) {
-    alternatives = [
+    alternateRacialTraits = [
       ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
        'Warden Of Nature'],
       ['Gnome Hatred', 'Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
@@ -12067,7 +12157,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule
       ('casterLevels.Pyromaniac', 'charisma', '?', 'source >= 11');
   } else if(name.match(/Halfling/)) {
-    alternatives = [
+    alternateRacialTraits = [
       ['Fearless', 'Craven', 'Practicality', 'Wanderlust'],
       ['Halfling Luck', 'Craven', 'Underfoot (Halfling)', 'Wanderlust'],
       ['Keen Senses', 'Low Blow'],
@@ -12083,8 +12173,8 @@ PFAPG.raceRulesExtra = function(rules, name) {
       (rules, 'sanity', 'practicality', 'features.Practicality',
        "Sum 'skills.Craft' > 0 || Sum 'skills.Profession' > 0 || skills.Sense Motive > 0");
   } else if(name.match(/Human/)) {
-    alternatives = [
-      ['Bonus Feat','Eye For Talent'],
+    alternateRacialTraits = [
+      ['Bonus Feat', 'Eye For Talent'],
       ['Skilled', 'Heart Of The Fields', 'Heart Of The Streets',
        'Heart Of The Wilderness']
     ];
@@ -12092,19 +12182,31 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'level', '=', 'Math.floor(source / 2)'
     );
   }
-  if(alternatives.length > 0) {
+  if(alternateRacialTraits.length > 0) {
     rules.defineRule('selectableFeatureCount.' + name + ' (Racial Trait)',
-      prefix + 'Level', '=', alternatives.length
+      prefix + 'Level', '=', alternateRacialTraits.length
     );
-    alternatives.forEach(group => {
+    alternateRacialTraits.forEach(group => {
+      let defaultAttr =
+        prefix + 'DefaultsTo' + group[0].replaceAll(' ', '') + 'Feature';
+      rules.defineRule(defaultAttr,
+        prefix + 'Level', '=', '1',
+        'suppressUseOfDefaults', '=', '0' // see randomizeOneCharacter
+      );
       // Override level-based feature acquisition
       rules.defineRule
         (prefix + 'Features.' + group[0], prefix + 'Level', '=', 'null');
+      rules.defineRule('selectableFeatures.' + name + ' - ' + group[0],
+        defaultAttr, '=', 'source==1 ? 1 : null'
+      );
       group.forEach(choice => {
+        if(choice != group[0])
+          rules.defineRule
+            (defaultAttr, prefix + 'Features.' + choice, '=', '0');
         let note =
           'validationNotes.' + prefix + '-' + choice.replaceAll(' ' , '') + 'Alternatives';
         let prohibited = [];
-        alternatives.forEach(group => {
+        alternateRacialTraits.forEach(group => {
           if(group.includes(choice))
             prohibited = prohibited.concat(group.filter(x => x != choice));
         });
@@ -12393,8 +12495,17 @@ PFAPG.randomizeOneAttribute = function(attributes, attribute) {
         console.log('Unknown spell "' + s + '"');
     });
   }
+  // {class,race}RulesExtra defaults characters to the archetypes and racial
+  // traits from the core rules, allowing characters created with only the core
+  // plugin to display correctly when the PFAPG plugin is loaded. However, this
+  // also causes the randomizer to avoid selecting archetypes and racial traits,
+  // believing that values have already been selected. Here we temporarily tell
+  // {class,race}RulesExtra *not* to do such defaulting so that randomization
+  // of these attributes will work properly.
+  attributes.suppressUseOfDefaults = 1;
   Pathfinder.randomizeOneAttribute.apply
     (Pathfinder.rules, [attributes, attribute]);
+  delete attributes.suppressUseOfDefaults;
   if(removedSpells)
     Object.assign(this.choices.spells, removedSpells);
 };
@@ -12409,32 +12520,36 @@ PFAPG.ruleNotes = function() {
     '<h3>Usage notes</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    Quilvyn gives the Oracle class its own spell list ("O" spells),\n' +
-    '    rather than using spells from the Cleric list. The Oracle spell\n' +
-    '    list includes spells particular to individual mysteries and curses\n' +
-    '    as well as those particular to the Rage Prophet prestige class;\n' +
-    '    when randomly assigning spells, Quilvyn restricts these spells to\n' +
+    '    Quilvyn gives the Oracle class its own spell list ("O" spells),' +
+    '    rather than using spells from the Cleric list. The Oracle spell' +
+    '    list includes spells particular to individual mysteries and curses' +
+    '    as well as those particular to the Rage Prophet prestige class;' +
+    '    when randomly assigning spells, Quilvyn restricts these spells to' +
     '    characters with the appropriate feature or Rage Prophet levels.\n' +
     '  </li><li>\n' +
-    '    Quilvyn includes in the Witch spell list spells that are made\n' +
-    '    available by specific patrons. Quilvyn randomly assigns these\n' +
+    '    Quilvyn includes in the Witch spell list spells that are made' +
+    '    available by specific patrons. Quilvyn randomly assigns these' +
     '    spells only to characters with the appropriate patron.\n' +
     '  </li><li>\n' +
-    '    You can define characters with class features from the core rules\n' +
-    '    by selecting the Core archetypes. For example, selecting Core Bard\n' +
-    '    gives you a character with the core rule bard features.\n' +
+    '    You can define characters with class features from the core rules' +
+    '    by selecting the Core archetypes&mdash;for example, selecting Core' +
+    '    Bard gives you a character with the core rules\' bard features. The' +
+    '    PFAPG plugin defaults to giving characters the core archetypes, as' +
+    '    well as the core rules\' racial traits, if no alternatives are' +
+    '    selected. This allows characters generated using only the' +
+    '    Pathfinder base plugin to display properly.\n' +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Limitations</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    Quilvyn does not note that save DCs for spells cast via the\n' +
+    '    Quilvyn does not note that save DCs for spells cast via the' +
     '    Major/Minor Spell Expertise feats are charisma-based.\n' +
     '  </li><li>\n' +
-    '    Quilvyn does not note the Expanded Arcana requirement that the\n' +
+    '    Quilvyn does not note the Expanded Arcana requirement that the' +
     '    character has levels in a class with limited spells known.\n' +
     '  </li><li>\n' +
-    '    Quilvyn does not note the age requirement (100 years or older) for\n' +
+    '    Quilvyn does not note the age requirement (100 years or older) for' +
     '    the Breadth Of Experience feat.\n' +
     '  </li>\n' +
     '</ul>\n' +
