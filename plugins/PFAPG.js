@@ -62,7 +62,7 @@ function PFAPG(edition, rules) {
 
 }
 
-PFAPG.VERSION = '2.4.1.1';
+PFAPG.VERSION = '2.4.1.2';
 
 PFAPG.ANIMAL_COMPANIONS = {
   // Eidolons share stats w/animal companions with modified calculations.
