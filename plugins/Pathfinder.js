@@ -210,19 +210,19 @@ Object.assign(Pathfinder.ANIMAL_COMPANIONS, {
     ' Level=7 Size=L Attack=4 AC=13 Dam=1d8+5 Str=21 Dex=13 Con=19'
 });
 Pathfinder.ARMORS = {
-  'None':'AC=0 Weight=None Dex=10 Skill=0 Spell=0',
-  'Padded':'AC=1 Weight=Light Dex=8 Skill=0 Spell=5',
-  'Leather':'AC=2 Weight=Light Dex=6 Skill=0 Spell=10',
-  'Studded Leather':'AC=3 Weight=Light Dex=5 Skill=1 Spell=15',
-  'Chain Shirt':'AC=4 Weight=Light Dex=4 Skill=2 Spell=20',
-  'Hide':'AC=4 Weight=Medium Dex=4 Skill=3 Spell=20',
-  'Scale Mail':'AC=5 Weight=Medium Dex=3 Skill=4 Spell=25',
-  'Chainmail':'AC=6 Weight=Medium Dex=2 Skill=5 Spell=30',
-  'Breastplate':'AC=5 Weight=Medium Dex=3 Skill=4 Spell=25',
-  'Splint Mail':'AC=7 Weight=Heavy Dex=0 Skill=7 Spell=40',
-  'Banded Mail':'AC=7 Weight=Heavy Dex=1 Skill=6 Spell=35',
-  'Half Plate':'AC=8 Weight=Heavy Dex=0 Skill=7 Spell=40',
-  'Full Plate':'AC=9 Weight=Heavy Dex=1 Skill=6 Spell=35'
+  'None':SRD35.ARMORS.None,
+  'Padded':SRD35.ARMORS.Padded,
+  'Leather':SRD35.ARMORS.Leather,
+  'Studded Leather':SRD35.ARMORS['Studded Leather'],
+  'Chain Shirt':SRD35.ARMORS['Chain Shirt'],
+  'Hide':SRD35.ARMORS.Hide + ' AC=4',
+  'Scale Mail':SRD35.ARMORS['Scale Mail'] + ' AC=5',
+  'Chainmail':SRD35.ARMORS.Chainmail + ' AC=6',
+  'Breastplate':SRD35.ARMORS.Breastplate + ' AC=6',
+  'Splint Mail':SRD35.ARMORS['Splint Mail'] + ' AC=7',
+  'Banded Mail':SRD35.ARMORS['Banded Mail'] + ' AC=7',
+  'Half Plate':SRD35.ARMORS['Half Plate'] + ' AC=8',
+  'Full Plate':SRD35.ARMORS['Full Plate'] + ' AC=9'
 };
 Pathfinder.FACTIONS = {
   'Andoran':'Season=1,2,3,4,5 Successor="Liberty\'s Edge"',
@@ -415,7 +415,7 @@ Pathfinder.FEATS = {
   'Extra Performance':'Type=General Require="features.Bardic Performance"',
   'Extra Rage':'Type=General Require=features.Rage',
   'Far Shot':'Type=Fighter Require="features.Point-Blank Shot"',
-  'Fleet':'Type=General Imply="armorWeight < 2"',
+  'Fleet':'Type=General Imply="armorWeight =~ \'None|Light\'"',
   'Forge Ring':'Type="Item Creation",Wizard Require="casterLevel >= 7"',
   "Gorgon's Fist":
     'Type=Fighter ' +
@@ -478,7 +478,7 @@ Pathfinder.FEATS = {
       '"baseAttack >= 1",' +
       '"levels.Fighter >= 8",' +
       '"features.Shield Focus",' +
-      '"features.Shield Proficiency"',
+      '"armorProficiency.Shield"',
   'Greater Spell Focus (%school)':
     'Type=General Require="features.Spell Focus (%school)"',
   'Greater Spell Penetration':
@@ -559,7 +559,7 @@ Pathfinder.FEATS = {
       '"features.Point-Blank Shot",' +
       '"features.Precise Shot"',
   'Improved Shield Bash':
-    'Type=Fighter Require="features.Shield Proficiency"',
+    'Type=Fighter Require="armorProficiency.Shield"',
   'Improved Sunder':
     'Type=Fighter ' +
     'Require="baseAttack >= 1","strength >= 13","features.Power Attack"',
@@ -661,13 +661,13 @@ Pathfinder.FEATS = {
       '"features.Dazzling Display"',
   'Shield Focus':
     'Type=Fighter ' +
-    'Require="baseAttack >= 1","features.Shield Proficiency"',
+    'Require="baseAttack >= 1","armorProficiency.Shield"',
   'Shield Master':
     'Type=Fighter ' +
     'Require=' +
       '"baseAttack >= 11",' +
       '"features.Improved Shield Bash",' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Shield Slam",' +
       '"features.Two-Weapon Fighting"',
   'Shield Proficiency':'Type=Fighter',
@@ -676,7 +676,7 @@ Pathfinder.FEATS = {
     'Require=' +
       '"baseAttack >= 6",' +
       '"features.Improved Shield Bash",' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Two-Weapon Fighting"',
   'Shot On The Run':
     'Type=Fighter ' +
@@ -816,6 +816,7 @@ Pathfinder.FEATURES = {
   'Blind-Fight':
     'Section=combat ' +
     'Note="May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded"',
+  'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
   'Brew Potion':
     'Section=magic Note="May create potion for up to 3rd level spell"',
   'Camouflage':
@@ -872,7 +873,7 @@ Pathfinder.FEATURES = {
     'Note="Remains conscious, stable, and able to act with negative HP"',
   'Divine Grace':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Divine Health':'Section=save Note="Immune to disease"',
-  'Dodge':'Section=combat Note="+1 AC/+1 CMD"',
+  'Dodge':SRD35.FEATURES.Dodge,
   'Dwarf Ability Adjustment':
     'Section=ability Note="+2 Constitution/+2 Wisdom/-2 Charisma"',
   'Dwarf Hatred':'Section=combat Note="+1 attack vs. goblinoid and orc"',
@@ -1111,13 +1112,14 @@ Pathfinder.FEATURES = {
     'Section=skill Note="May take 10 despite distraction on %V chosen skills"',
   'Slippery Mind':
     'Section=save Note="May attempt second save vs. enchantment in next rd"',
-  'Slow':'Section=ability Note="-10 Speed"',
   'Slow Fall':'Section=save Note="Takes %V damage from falling"',
   'Small':
+    // changed effects
     'Section=ability,combat,skill ' +
-    'Note="x0.75 Load Max",' +
-         '"+1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
-         '"+2 Fly/-4 Intimidate/+4 Stealth"',
+    'Note=' +
+      '"x0.75 Load Max",' +
+      '"+1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
+      '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Smite Evil':
     'Section=combat ' +
     'Note="May gain +%{charismaModifier>?0} attack, +%{levels.Paladin} HP damage, bypass DR, and +%{charismaModifier>?0} AC vs. chosen evil foe (+%{levels.Paladin*2} HP on first hit vs. %1) %V/dy"',
@@ -1125,8 +1127,8 @@ Pathfinder.FEATURES = {
   'Sneak Attack':
     'Section=combat ' +
     'Note="Hit inflicts +%Vd6 HP when foe is flanked or denied Dexterity bonus"',
-  'Speak With Like Animals':
-    'Section=companion Note="May talk w/similar creatures"',
+  'Speak With Animals Of Its Kind':
+    SRD35.FEATURES['Speak With Animals Of Its Kind'],
   'Speak With Master':
     'Section=companion Note="May talk w/master in secret language"',
   'Special Mount':'Section=feature Note="Magical mount w/special abilities"',
@@ -1188,9 +1190,7 @@ Pathfinder.FEATURES = {
       '"Unarmed hit inflicts %V HP",' +
       '"Has Improved Unarmed Strike features"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
-  'Uncanny Dodge':
-    'Section=combat ' +
-    'Note="Always adds Dexterity modifier to AC (foe feint neg)"',
+  'Uncanny Dodge':SRD35.FEATURES['Uncanny Dodge'],
   'Venom Immunity':'Section=save Note="Immune to poisons"',
   'Weapon Finesse':
     'Section=combat ' +
@@ -1990,7 +1990,8 @@ Pathfinder.FEATURES = {
     'Section=combat Note="May suspend rage effects for 1 rd 1/rage"',
   'Multitalented':'Section=feature Note="May choose two favored classes"',
   'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
-  'Natural Armor':'Section=combat Note="+%V AC"', // No bonus to CMD
+  'Natural Armor':
+    'Section=combat Note="+%V natural armor bonus to Armor Class"',
   'Natural Negotiator':
     'Section=feature,skill ' +
     'Note=' +
@@ -2589,12 +2590,6 @@ Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
     'Value="$1 || $2" ' +
     'Attribute=combatManeuverDefense ' +
     'Section=combat Note="%V CMD"',
-  'Protection CMD':
-    'Pattern="([-+]\\d+).*\\bprotection|\\bprotection\\s+([-+]\\d+)" ' +
-    'Effect=add ' +
-    'Value="$1 || $2" ' +
-    'Attribute=combatManeuverDefense ' +
-    'Section=combat Note="%V CMD"',
   'Adept Caster Level':
     'Pattern="([-+]\\d+).*\\bAdept?\\s+caster\\s+level|\\bAdept?\\s+caster\\s+level\\s+([-+]\\d+)" ' +
     'Effect=add ' +
@@ -2671,48 +2666,62 @@ Pathfinder.PATHS = {
 };
 Pathfinder.RACES = {
   'Dwarf':
+    'Size=Medium ' +
+    'Speed=20 ' +
     'Features=' +
       '"Dwarf Ability Adjustment",' +
-      '"Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe)",' +
-      '"Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)",' +
-      'Darkvision,"Defensive Training","Dwarf Hatred",Greed,Hardy,Slow,' +
+      '"Weapon Familiarity (Dwarven Urgosh; Dwarven Waraxe)",' +
+      '"Weapon Proficiency (Battleaxe; Heavy Pick; Warhammer)",' +
+      'Darkvision,"Defensive Training","Dwarf Hatred",Greed,Hardy,' +
       'Steady,Stability,Stonecunning ' +
     'Languages=Common,Dwarven',
   'Elf':
+    'Size=Medium ' +
+    'Speed=30 ' +
     'Features=' +
       '"Elf Ability Adjustment",' +
       '"Weapon Familiarity (Elven Curve Blade)",' +
-      '"Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)",' +
+      '"Weapon Proficiency (Composite Longbow; Composite Shortbow; Longbow; Longsword; Rapier; Shortbow)",' +
       '"Elven Immunities","Elven Magic","Keen Senses","Low-Light Vision" ' +
     'Languages=Common,Elven',
   'Gnome':
+    'Size=Small ' +
+    'Speed=20 ' +
     'Features=' +
       '"Gnome Ability Adjustment",' +
       '"Weapon Familiarity (Gnome Hooked Hammer)",' +
       '"Defensive Training","Gnome Hatred","Gnome Magic","Keen Senses",' +
-      '"Low-Light Vision",Obsessive,"Resist Illusion",Slow,Small ' +
+      '"Low-Light Vision",Obsessive,"Resist Illusion" ' +
     'Languages=Common,Gnome,Sylvan',
   'Half-Elf':
+    'Size=Medium ' +
+    'Speed=30 ' +
     'Features=' +
       '"Half-Elf Ability Adjustment",' +
       'Adaptability,"Elf Blood","Elven Immunities","Keen Senses",' +
       '"Low-Light Vision",Multitalented, ' +
     'Languages=Common,Elven',
   'Half-Orc':
+    'Size=Medium ' +
+    'Speed=30 ' +
     'Features=' +
       '"Half-Orc Ability Adjustment",' +
       '"Weapon Familiarity (Orc Double Axe)",' +
-      '"Weapon Proficiency (Falchion/Greataxe)",' +
+      '"Weapon Proficiency (Falchion; Greataxe)",' +
       'Darkvision,Intimidating,"Orc Blood","Orc Ferocity" ' +
     'Languages=Common,Orc',
   'Halfling':
+    'Size=Small ' +
+    'Speed=20 ' +
     'Features=' +
       '"Halfling Ability Adjustment",' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)",' +
-      'Fearless,"Halfling Luck","Keen Senses",Slow,Small,Sure-Footed ' +
+      'Fearless,"Halfling Luck","Keen Senses",Sure-Footed ' +
     'Languages=Common,Halfling',
   'Human':
+    'Size=Medium ' +
+    'Speed=30 ' +
     'Features=' +
       '"Human Ability Adjustment",' +
       '"Bonus Feat",Skilled ' +
@@ -2745,13 +2754,13 @@ Pathfinder.SCHOOLS = {
       '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
 };
 Pathfinder.SHIELDS = {
-  'Buckler':'AC=1 Weight=Light Skill=1 Spell=5',
-  'Heavy Steel':'AC=2 Weight=Heavy Skill=2 Spell=15',
-  'Heavy Wooden':'AC=2 Weight=Heavy Skill=2 Spell=15',
-  'Light Steel':'AC=1 Weight=Light Skill=1 Spell=5',
-  'Light Wooden':'AC=1 Weight=Light Skill=1 Spell=5',
-  'None':'AC=0 Weight=None Skill=0 Spell=0',
-  'Tower':'AC=4 Weight=Tower Skill=10 Spell=50'
+  'None':SRD35.SHIELDS.None,
+  'Buckler':SRD35.SHIELDS.Buckler,
+  'Light Wooden':SRD35.SHIELDS['Light Wooden'],
+  'Light Steel':SRD35.SHIELDS['Light Steel'],
+  'Heavy Wooden':SRD35.SHIELDS['Heavy Wooden'],
+  'Heavy Steel':SRD35.SHIELDS['Heavy Steel'],
+  'Tower':SRD35.SHIELDS.Tower
 };
 Pathfinder.SKILLS = {
   'Acrobatics':
@@ -3984,7 +3993,7 @@ Pathfinder.WEAPONS = {
   'Throwing Axe':'Level=Martial Category=Light Damage=d6 Range=10',
   'Trident':'Level=Martial Category=One-Handed Damage=d8 Range=10',
   'Two-Bladed Sword':'Level=Exotic Category=Two-Handed Damage=d8/d8 Threat=19',
-  'Unarmed':'Level=Unarmed Category=Unarmed Damage=d3',
+  'Unarmed Strike':'Level=Unarmed Category=Unarmed Damage=d3',
   'Warhammer':'Level=Martial Category=One-Handed Damage=d8 Crit=3',
   'Whip':'Level=Exotic Category=One-Handed Damage=d3'
 };
@@ -3993,8 +4002,8 @@ Pathfinder.CLASSES = {
     'Require="alignment !~ \'Lawful\'" ' +
     'HitDie=d12 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Fast Movement",1:Rage,"2:Rage Powers","2:Uncanny Dodge",' +
       '"3:Trap Sense","5:Improved Uncanny Dodge","7:Damage Reduction",' +
       '"11:Greater Rage","14:Indomitable Will","17:Tireless Rage",' +
@@ -4031,8 +4040,8 @@ Pathfinder.CLASSES = {
   'Bard':
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)",' +
+      '"1:Armor Proficiency (Light; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip)",' +
       '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
       '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
       '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
@@ -4063,8 +4072,8 @@ Pathfinder.CLASSES = {
   'Cleric':
     'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons)",' +
       '1:Aura,"1:Channel Energy","1:Spontaneous Cleric Spell",' +
       '"clericDomainFeatures.Air ? 1:Lightning Arc",' +
       '"clericDomainFeatures.Air ? 6:Electricity Resistance",' +
@@ -4198,11 +4207,14 @@ Pathfinder.CLASSES = {
       'Domain8:15=1,' +
       'Domain9:17=1',
   'Druid':
-    'Require="alignment =~ \'Neutral\'","armor =~ \'None|Hide|Leather|Padded\'","shield =~ \'None|Wooden\'" ' +
+    'Require=' +
+      '"alignment =~ \'Neutral\'",' +
+      '"armor =~ \'None|Hide|Leather|Padded\'",' +
+      '"shield =~ \'None|Wooden\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear)",' +
       '"1:Nature Bond","1:Nature Sense","1:Spontaneous Druid Spell",' +
       '"1:Wild Empathy","2:Woodland Stride","3:Trackless Step",' +
       '"4:Resist Nature\'s Lure","4:Wild Shape","9:Venom Immunity",' +
@@ -4247,16 +4259,15 @@ Pathfinder.CLASSES = {
   'Fighter':
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Tower Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '2:Bravery,"3:Armor Training","5:Weapon Training","19:Armor Mastery",' +
       '"20:Weapon Mastery"',
   'Monk':
     'Require="alignment =~ \'Lawful\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)",' +
+      '"1:Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)",' +
       '"1:Armor Class Bonus","1:Flurry Of Blows","1:Stunning Fist",' +
       '"1:Two-Weapon Fighting","1:Unarmed Strike",2:Evasion,' +
       '"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
@@ -4288,8 +4299,8 @@ Pathfinder.CLASSES = {
     'Require="alignment == \'Lawful Good\'" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Aura Of Good","1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
       '"4:Channel Positive Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
@@ -4315,8 +4326,8 @@ Pathfinder.CLASSES = {
   'Ranger':
     'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Favored Enemy",1:Track,"1:Wild Empathy",3:Endurance,' +
       '"3:Favored Terrain","7:Woodland Stride","8:Swift Tracker",9:Evasion,' +
       '11:Quarry,12:Camouflage,"16:Improved Evasion",' +
@@ -4352,7 +4363,7 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)",' +
       '"1:Sneak Attack",1:Trapfinding,2:Evasion,"2:Rogue Talents",' +
       '"3:Trap Sense","4:Uncanny Dodge","8:Improved Uncanny Dodge",' +
       '"20:Master Strike" ' +
@@ -4383,7 +4394,7 @@ Pathfinder.CLASSES = {
   'Sorcerer':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)",' +
+      '"1:Weapon Proficiency (Simple Weapons)",' +
       '"1:Eschew Materials",' +
       '"sorcererFeatures.Bloodline Aberrant ? 1:Acidic Ray",' +
       '"sorcererFeatures.Bloodline Aberrant ? 3:Long Limbs",' +
@@ -4478,7 +4489,7 @@ Pathfinder.CLASSES = {
   'Wizard':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)",' +
+      '"1:Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)",' +
       '"1:Scribe Scroll",' +
       '"features.School Specialization (None) ? 1:Hand Of The Apprentice",' +
       '"features.School Specialization (None) ? 8:Metamagic Mastery" ' +
@@ -4505,7 +4516,7 @@ Pathfinder.NPC_CLASSES = {
   'Adept':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)","2:Familiar" ' +
+      '"1:Weapon Proficiency (Simple Weapons)","2:Familiar" ' +
     'Skills=' +
       'Craft,"Handle Animal",Heal,Knowledge,Profession,Spellcraft,Survival ' +
     'CasterLevelDivine=levels.Adept ' +
@@ -4520,8 +4531,8 @@ Pathfinder.NPC_CLASSES = {
   'Aristocrat':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)" ' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)" ' +
     'Skills=' +
       'Appraise,Bluff,Craft,Diplomacy,Disguise,"Handle Animal",Intimidate,' +
       'Knowledge,Linguistics,Perception,Perform,Profession,Ride,' +
@@ -4529,18 +4540,18 @@ Pathfinder.NPC_CLASSES = {
   'Commoner':
     'HitDie=d4 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)" ' +
+      '"1:Weapon Proficiency (Simple Weapons)" ' +
     'Skills=Climb,Craft,"Handle Animal",Perception,Profession,Ride,Swim',
   'Expert':
     'HitDie=d6 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Simple)"',
+      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Simple Weapons)"',
     // 10 skills of player's choice
   'Warrior':
     'HitDie=d8 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)" ' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Martial Weapons)" ' +
     'Skills=Climb,Craft,"Handle Animal",Intimidate,Profession,Ride,Swim'
 };
 Pathfinder.PRESTIGE_CLASSES = {
@@ -4556,8 +4567,8 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Perception,Ride,Stealth,Survival ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Martial Weapons)",' +
       '"1:Enhance Arrows (Magic)","2:Arcane Caster Level Bonus",' +
       '"2:Imbue Arrow","3:Enhance Arrows (Elemental)","4:Seeker Arrow",' +
       '"5:Enhance Arrows (Distance)","6:Phase Arrow","8:Hail Of Arrows",' +
@@ -4587,7 +4598,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"Sleight Of Hand",Stealth,Swim,"Use Magic Device" ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Punching Dagger/Rapier/Sap/Shortbow/Composite Shortbow/Short Sword)",' +
+      '"1:Weapon Proficiency (Dagger; Dart; Hand Crossbow; Heavy Crossbow; Light Crossbow; Punching Dagger; Rapier; Sap; Shortbow; Composite Shortbow; Short Sword)",' +
       '"1:Death Attack","1:Poison Use","1:Sneak Attack",' +
       '"2:Save Bonus Against Poison","2:Uncanny Dodge","4:Hidden Weapons",' +
       '"4:True Death","5:Improved Uncanny Dodge","6:Quiet Death",' +
@@ -4626,14 +4637,15 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Acrobatics,Bluff,"Escape Artist",Perception,Perform,"Sense Motive" ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Canny Defense","1:Precise Strike (Duelist)","2:Improved Reaction",' +
       '2:Parry,"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
       '"6:Acrobatic Charge","7:Elaborate Defense","9:Deflect Arrows",' +
       '"9:No Retreat","10:Crippling Critical (Duelist)"',
   'Eldritch Knight':
     'Require=' +
-      '"features.Weapon Proficiency (Martial)",' +
+      '"features.Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"Sum \'^spells\\..*[BSW]3\' >= 0" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Skills=' +
@@ -4701,7 +4713,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Perform,"Sleight Of Hand",Stealth ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Club/Composite Shortbow/Dagger/Dart/Hand Crossbow/Heavy Crossbow/Light Crossbow/Mace/Morningstar/Punching Dagger/Quarterstaff/Rapier/Sap/Shortbow/Short Sword)",' +
+      '"1:Weapon Proficiency (Club; Composite Shortbow; Dagger; Dart; Hand Crossbow; Heavy Crossbow; Light Crossbow; Mace; Morningstar; Punching Dagger; Quarterstaff; Rapier; Sap; Shortbow; Short Sword)",' +
       '"1:Hide In Plain Sight",2:Darkvision,2:Evasion,"2:Uncanny Dodge",' +
       '"3:Rogue Talents (Shadowdancer)","3:Shadow Illusion",' +
       '"3:Summon Shadow","4:Shadow Call","4:Shadow Jump","5:Defensive Roll",' +
@@ -4772,7 +4784,7 @@ Pathfinder.DEITIES = {
     'Domain=Glory,Good,Law,Sun,War',
   'Irori':
     'Alignment=LN ' +
-    'Weapon=Unarmed ' +
+    'Weapon="Unarmed Strike" ' +
     'Domain=Healing,Knowledge,Law,Rune,Strength',
   'Lamashtu':
     'Alignment=CE ' +
@@ -4950,7 +4962,9 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
   rules.defineRule('combatManeuverDefense',
     'baseAttack', '=', '10 + source',
     'strengthModifier', '+', null,
-    'combatNotes.dexterityArmorClassAdjustment', '+', null
+    'dexterityModifier', '+', null,
+    'armorClassDeflectionModifier', '+', null,
+    'armorClassDodgeModifier', '+', null
   );
   rules.defineSheetElement(
     'CombatManeuver', 'CombatStats/',
@@ -4996,7 +5010,7 @@ Pathfinder.identityRules = function(
   // Note addition of feats and skills to SRD35's list
   QuilvynUtils.checkAttrTable
     (paths, ['Group', 'Level', 'Features', 'Selectables', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots']);
-  QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots']);
+  QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots', 'Size', 'Speed']);
   QuilvynUtils.checkAttrTable(tracks, ['Progression']);
   QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
@@ -5102,7 +5116,7 @@ Pathfinder.talentRules = function(
     ('featCount.General', 'level', '=', 'Math.floor((source + 1) / 2)');
   rules.defineRule('maxAllowedSkillAllocation', 'level', '=', null);
   rules.defineChoice
-    ('notes', 'skillNotes.armorSkillCheckPenalty:-%V Dex- and Str-based skills');
+    ('notes', 'skillNotes.armorSkillCheckPenalty:%V Dexterity- and Strength-based skills');
   rules.defineRule('skillNotes.armorSwimCheckPenalty', 'level', '?', 'false');
   // Define specific attributes for Stat Block character sheet format
   rules.defineRule
@@ -5163,22 +5177,22 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelArcane'),
       QuilvynUtils.getAttrValue(attrs, 'CasterLevelDivine'),
       QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
-      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots')
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots'),
+      QuilvynUtils.getAttrValueArray(attrs, 'SpellsAvailable')
     );
     Pathfinder.classRulesExtra(rules, name);
+    if(type == 'Prestige')
+      rules.defineRule('levels.' + name, 'prestige.' + name, '=', null);
+    else if(type == 'NPC')
+      rules.defineRule('levels.' + name, 'npc.' + name, '=', null);
   } else if(type == 'Class Feature') {
-    let clas = QuilvynUtils.getAttrValue(attrs, 'Class');
-    let clasLevel = 'levels.' + clas;
-    let isSelectable = QuilvynUtils.getAttrValue(attrs, 'Selectable');
-    if(isSelectable == 'false')
-      isSelectable = false;
-    let level = QuilvynUtils.getAttrValue(attrs, 'Level');
-    let prerequisite = QuilvynUtils.getAttrValueArray(attrs, 'Prerequisite');
-    let featureSpec = level + ':' + name;
-    if(prerequisite.length > 0)
-      featureSpec = '"' + featureSpec.join('","') + '" ? ';
-    QuilvynRules.featureListRules
-      (rules, [featureSpec], clas, clasLevel, isSelectable);
+    SRD35.classFeatureRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Require'),
+      QuilvynUtils.getAttrValue(attrs, 'Class'),
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Selectable'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Replace')
+    );
   } else if(type == 'Deity')
     Pathfinder.deityRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Alignment'),
@@ -5216,10 +5230,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   } else if(type == 'Feature')
     Pathfinder.featureRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Section'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Note')
+      QuilvynUtils.getAttrValueArray(attrs, 'Note'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
+      QuilvynUtils.getAttrValue(attrs, 'SpellAbility')
     );
-  else if(type == 'Language')
-    Pathfinder.languageRules(rules, name);
   else if(type == 'Goody')
     Pathfinder.goodyRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Pattern'),
@@ -5229,39 +5243,26 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Section'),
       QuilvynUtils.getAttrValueArray(attrs, 'Note')
     );
-  else if(type == 'Path') {
-    Pathfinder.pathRules(rules, name,
-      QuilvynUtils.getAttrValue(attrs, 'Group'),
-      QuilvynUtils.getAttrValue(attrs, 'Level'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Features'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Feats'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Skills'),
-      QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
-      QuilvynUtils.getAttrValueArray(attrs, 'SpellSlots')
-    );
-  } else if(type == 'Race') {
+  else if(type == 'Language')
+    Pathfinder.languageRules(rules, name);
+  else if(type == 'Race') {
     Pathfinder.raceRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
       QuilvynUtils.getAttrValueArray(attrs, 'Features'),
       QuilvynUtils.getAttrValueArray(attrs, 'Selectables'),
-      QuilvynUtils.getAttrValueArray(attrs, 'Languages')
+      QuilvynUtils.getAttrValueArray(attrs, 'Languages'),
+      QuilvynUtils.getAttrValue(attrs, 'Size'),
+      QuilvynUtils.getAttrValue(attrs, 'Speed')
     );
     Pathfinder.raceRulesExtra(rules, name);
   } else if(type == 'Race Feature') {
-    let race = QuilvynUtils.getAttrValue(attrs, 'Race');
-    let raceLevel =
-      race.charAt(0).toLowerCase() + race.substring(1).replaceAll(' ', '') + 'Level';
-    let isSelectable = QuilvynUtils.getAttrValue(attrs, 'Selectable');
-    if(isSelectable == 'false')
-      isSelectable = false;
-    let level = QuilvynUtils.getAttrValue(attrs, 'Level');
-    let prerequisite = QuilvynUtils.getAttrValueArray(attrs, 'Prerequisite');
-    let featureSpec = level + ':' + name;
-    if(prerequisite.length > 0)
-      featureSpec = '"' + featureSpec.join('","') + '" ? ';
-    QuilvynRules.featureListRules
-      (rules, [featureSpec], race, raceLevel, isSelectable);
+    SRD35.raceFeatureRules(rules, name,
+      QuilvynUtils.getAttrValueArray(attrs, 'Require'),
+      QuilvynUtils.getAttrValue(attrs, 'Race'),
+      QuilvynUtils.getAttrValue(attrs, 'Level'),
+      QuilvynUtils.getAttrValue(attrs, 'Selectable'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Replace')
+    );
   } else if(type == 'School') {
     Pathfinder.schoolRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Features')
@@ -5271,6 +5272,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     Pathfinder.shieldRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'AC'),
       QuilvynUtils.getAttrValue(attrs, 'Weight'),
+      QuilvynUtils.getAttrValue(attrs, 'Dex'),
       QuilvynUtils.getAttrValue(attrs, 'Skill'),
       QuilvynUtils.getAttrValue(attrs, 'Spell')
     );
@@ -5278,7 +5280,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     let untrained = QuilvynUtils.getAttrValue(attrs, 'Untrained');
     Pathfinder.skillRules(rules, name,
       QuilvynUtils.getAttrValue(attrs, 'Ability'),
-      untrained != 'n' && untrained != 'N',
+      untrained && !(untrained+'').match(/(^n|false)$/i),
       QuilvynUtils.getAttrValueArray(attrs, 'Class'),
       QuilvynUtils.getAttrValueArray(attrs, 'Synergy')
     );
@@ -5289,24 +5291,24 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     let liquids = QuilvynUtils.getAttrValueArray(attrs, 'Liquid');
     let school = QuilvynUtils.getAttrValue(attrs, 'School');
     let schoolAbbr = (school || 'Universal').substring(0, 4);
-    for(let i = 0; i < groupLevels.length; i++) {
-      let matchInfo = groupLevels[i].match(/^(\D+)(\d+)$/);
+    groupLevels.forEach(gl => {
+      let matchInfo = (gl + '').match(/^(\D+)(\d+)$/);
       if(!matchInfo) {
         console.log('Bad level "' + groupLevels[i] + '" for spell ' + name);
-        continue;
+      } else {
+        let group = matchInfo[1];
+        let level = matchInfo[2] * 1;
+        let fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
+        let domainSpell =
+          (rules.getChoices('selectableFeatures') != null &&
+           ('Cleric - ' + group + ' Domain') in rules.getChoices('selectableFeatures')) ||
+          Pathfinder.CLASSES.Cleric.includes(group + ' Domain');
+        Pathfinder.spellRules
+          (rules, fullName, school, group, level, description, domainSpell,
+           liquids);
+        rules.addChoice('spells', fullName, attrs);
       }
-      let group = matchInfo[1];
-      let level = matchInfo[2] * 1;
-      let fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
-      let domainSpell =
-        (rules.getChoices('selectableFeatures') != null &&
-         ('Cleric - ' + group + ' Domain') in rules.getChoices('selectableFeatures')) ||
-        Pathfinder.CLASSES.Cleric.includes(group + ' Domain');
-      Pathfinder.spellRules
-        (rules, fullName, school, group, level, description, domainSpell,
-         liquids);
-      rules.addChoice('spells', fullName, attrs);
-    }
+    });
   } else if(type == 'Track')
     Pathfinder.trackRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Progression')
@@ -5324,7 +5326,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValue(attrs, 'Damage'),
       QuilvynUtils.getAttrValue(attrs, 'Threat'),
       QuilvynUtils.getAttrValue(attrs, 'Crit'),
-      QuilvynUtils.getAttrValue(attrs, 'Range')
+      QuilvynUtils.getAttrValue(attrs, 'Range'),
+      QuilvynUtils.getAttrValueArray(attrs, 'Properties')
     );
   else {
     console.log('Unknown choice type "' + type + '"');
@@ -5372,13 +5375,14 @@ Pathfinder.armorRules = function(
  * Javascript expression for determining the caster level for the class; these
  * can incorporate a class level attribute (e.g., 'levels.Cleric') or the
  * character level attribute 'level'. If the class grants spell slots,
- * #spellAbility# names the ability for computing spell difficulty class, and
- * #spellSlots# lists the number of spells per level per day granted.
+ * #spellAbility# names the ability for computing spell difficulty class,
+ * #spellSlots# lists the number of spells per level per day granted, and
+ * #spellsAvailable# list the number of spells known at each level.
  */
 Pathfinder.classRules = function(
   rules, name, requires, hitDie, attack, skillPoints, saveFort, saveRef,
   saveWill, skills, features, selectables, languages, casterLevelArcane,
-  casterLevelDivine, spellAbility, spellSlots
+  casterLevelDivine, spellAbility, spellSlots, spellsAvailable
 ) {
   if(name == 'Monk') {
     let allFeats = rules.getChoices('feats');
@@ -5390,7 +5394,7 @@ Pathfinder.classRules = function(
   SRD35.classRules(
     rules, name, requires, hitDie, attack, skillPoints, saveFort, saveRef,
     saveWill, skills, features, selectables, languages, casterLevelArcane,
-    casterLevelDivine, spellAbility, spellSlots
+    casterLevelDivine, spellAbility, spellSlots, spellsAvailable
   );
   // Override SRD35 skillPoints rule
   rules.defineRule
@@ -5575,9 +5579,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null
     );
+    // Compute in simpleSomatics.1 so that note will show even if character is
+    // wearing heavy armor
     rules.defineRule('magicNotes.simpleSomatics.1',
       'magicNotes.simpleSomatics', '?', null,
-      'armorWeight', '=', 'source <= 1 ? 1 : null'
+      'armorWeight', '=', '"MediumHeavy".includes(source) ? null : 1'
     );
     rules.defineRule('magicNotes.suggestion',
       'charismaModifier', '=', '10 + source',
@@ -6123,7 +6129,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('abilityNotes.armorTraining.1',
       'abilityNotes.armorTraining', '=', 'source == "heavy" ? 3 : 2',
-      'armorWeight', '+', '-source'
+      'armorWeight', '+', '{None:0, Light:-1, Medium:-2, Heavy:-3}[source]'
     );
     rules.defineRule('armorClass', 'combatNotes.armorTraining', '+', null);
     rules.defineRule
@@ -6135,7 +6141,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.armorTraining',
       'dexterityModifier', '=', null,
-      'combatNotes.dexterityArmorClassAdjustment', '+', '-source',
+      'dexterityArmorClassModifier', '+', '-source',
       classLevel, 'v', 'Math.min(Math.floor((source + 1) / 4), 4)',
       '', '^', '0'
     );
@@ -6153,7 +6159,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '=', 'Math.floor((source + 2) / 4)'
     );
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
-      'skillNotes.armorTraining', '+', '-source'
+      'skillNotes.armorTraining', '+', null
     );
     rules.defineRule('skillNotes.armorTraining',
       classLevel, '=', 'Math.min(Math.floor((source + 1) / 4), 4)'
@@ -6276,10 +6282,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
     rules.defineRule('features.Improved Unarmed Strike',
-      'featureNotes.unarmedStrike', '=', '1'
+      'combatNotes.unarmedStrike', '=', '1'
     );
     rules.defineRule
-      ('unarmedDamageDice', 'combatNotes.unarmedStrike', '=', null);
+      ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
     rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
   } else if(name == 'Paladin') {
@@ -7238,7 +7244,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, 'v', null
     );
     rules.defineRule('combatNotes.cannyDefense.1',
-      'armorWeight', '?', 'source <= 1',
+      'armorWeight', '?', '"NoneLight".includes(source)',
       'shield', '?', 'source == "None"',
       'combatNotes.cannyDefense', '=', null
     );
@@ -7254,7 +7260,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('save.Reflex', 'saveNotes.grace.1', '+', '2');
     rules.defineRule('saveNotes.grace.1',
       'saveNotes.grace', '?', null,
-      'armorWeight', '=', 'source <= 1 ? 2 : null'
+      'armorWeight', '=', '"NoneLight".includes(source) ? 2 : null'
     );
 
   } else if(name == 'Eldritch Knight') {
@@ -7432,7 +7438,7 @@ Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
     rules.defineRule('clericFeatures.' + proficiencyFeature,
       'levels.Cleric', '?', null,
       'deityFavoredWeapon', '=', 'source.indexOf("'+weapon+'")>=0 ? 1 : null',
-      'featureNotes.weaponOfWar', '=', 'null'
+      'combatNotes.weaponOfWar', '=', 'null'
     );
   }
 };
@@ -7635,7 +7641,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.rage', 'combatNotes.extraRage', '+', null);
   } else if(name == 'Fleet') {
     rules.defineRule('abilityNotes.fleet',
-      'armorWeight', '?', 'source < 2',
+      'armorWeight', '?', '"NoneLight".includes(source)',
       'feats.Fleet', '=', 'source * 5'
     );
     rules.defineRule('speed', 'abilityNotes.fleet', '+', null);
@@ -7772,10 +7778,14 @@ Pathfinder.featRulesExtra = function(rules, name) {
 /*
  * Defines in #rules# the rules associated with feature #name#. #sections# lists
  * the sections of the notes related to the feature and #notes# the note texts;
- * the two must have the same number of elements.
+ * the two must have the same number of elements. #spells# lists any spells
+ * acquired as part of the feature, and #spellAbility# is the ability used to
+ * calculate attack and difficulty class for these spells.
  */
-Pathfinder.featureRules = function(rules, name, sections, notes) {
-  SRD35.featureRules(rules, name, sections, notes);
+Pathfinder.featureRules = function(
+  rules, name, sections, notes, spells, spellAbility
+) {
+  SRD35.featureRules(rules, name, sections, notes, spells, spellAbility);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -7846,12 +7856,14 @@ Pathfinder.pathRules = function(
 /*
  * Defines in #rules# the rules associated with race #name#, which has the list
  * of hard prerequisites #requires#. #features# and #selectables# list
- * associated features and #languages# any automatic languages.
+ * associated features and #languages# any automatic languages. #size# and
+ * #speed# give the race's size (one of Small, Medium, or Large) and speed.
  */
 Pathfinder.raceRules = function(
-  rules, name, requires, features, selectables, languages
+  rules, name, requires, features, selectables, languages, size, speed
 ) {
-  SRD35.raceRules(rules, name, requires, features, selectables, languages);
+  SRD35.raceRules
+    (rules, name, requires, features, selectables, languages, size, speed);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -8041,14 +8053,15 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
 
 /*
  * Defines in #rules# the rules associated with shield #name#, which adds #ac#
- * to the character's armor class, requires a #profLevel# proficiency level to
- * use effectively, imposes #skillPenalty# on specific skills
- * and yields a #spellFail# percent chance of arcane spell failure.
+ * to the character's armor class, requires a #weight# proficiency level to
+ * use effectively, allows a maximum dex bonus to ac of #maxDex#, imposes
+ * #skillFail# on specific skills and yields a #spellFail# percent chance of
+ * arcane spell failure.
  */
 Pathfinder.shieldRules = function(
-  rules, name, ac, profLevel, skillFail, spellFail
+  rules, name, ac, weight, maxDex, skillFail, spellFail
 ) {
-  SRD35.shieldRules(rules, name, ac, profLevel, skillFail, spellFail);
+  SRD35.shieldRules(rules, name, ac, weight, maxDex, skillFail, spellFail);
   // No changes needed to the rules defined by SRD35 method
 };
 
@@ -8083,7 +8096,7 @@ Pathfinder.skillRules = function(
   );
   if(ability.match(/^(strength|dexterity)$/i)) {
     rules.defineRule('skillModifier.' + name,
-      'skillNotes.armorSkillCheckPenalty', '+', '-source'
+      'skillNotes.armorSkillCheckPenalty', '+', null
     );
   }
   if(name.startsWith('Craft'))
@@ -8189,7 +8202,7 @@ Pathfinder.traitRules = function(rules, name, type, subtype) {
 Pathfinder.traitRulesExtra = function(rules, name) {
   if(name == 'Armor Expert') {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
-      'skillNotes.armorExpert', '+', '-1'
+      'skillNotes.armorExpert', '+', '1'
     );
   } else if(name == 'Expert Duelist') {
     rules.defineRule('armorClass', 'combatNotes.expertDuelist', '+', '1');
@@ -8220,13 +8233,16 @@ Pathfinder.traitRulesExtra = function(rules, name) {
  * equivalents). The weapon does #damage# HP on a successful attack and
  * threatens x#critMultiplier# (default 2) damage on a roll of #threat# (default
  * 20). If specified, the weapon can be used as a ranged weapon with a range
- * increment of #range# feet.
+ * increment of #range# feet. #properties# lists any additional properties of
+ * the weapon, such as "Thrown" or "Reach".
  */
 Pathfinder.weaponRules = function(
-  rules, name, profLevel, category, damage, threat, critMultiplier, range
+  rules, name, profLevel, category, damage, threat, critMultiplier, range,
+  properties
 ) {
   SRD35.weaponRules(
-    rules, name, profLevel, category, damage, threat, critMultiplier, range
+    rules, name, profLevel, category, damage, threat, critMultiplier, range,
+    properties
   );
   // No changes needed to the rules defined by SRD35 method
 };
