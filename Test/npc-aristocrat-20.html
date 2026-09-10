@@ -50,6 +50,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 190001/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/150</td>
       <td><b>Light/Med/Max Load:</b> 33/66/100</td>
     </tr></table>
@@ -79,7 +80,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Expertise; Improved Shield Bash; Leadership; Negotiator; Run; Self-Sufficient; Simple Weapon Proficiency; Skill Focus (Ride); Stealthy; Strike Back; Vital Strike</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Aristocrat Features</b>: Armor Proficiency (Heavy); Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Aristocrat Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield); Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -130,7 +131,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -160,7 +161,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 128</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/10/15</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+15</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +15/25</td>
@@ -169,9 +170,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -179,12 +179,14 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Light Wooden</td>
-        <td><b>Weapons</b>: Light Crossbow (+15 d8 x2@19 R80'); Longsword (+15 d8 x2@19); Trident (+15 d8 x2@20 R10'); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Light Crossbow (+15 d8 x2@19 R80'); Longsword (+15 d8 x2@19); Trident (+15 d8 x2@20 R10'); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor +4; Deflection +0; Dexterity +0; Dodge +0; Natural Armor +0; Shield +1; Size +0</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td>Combat Expertise: May suffer up to -4 attack to gain equal AC bonus</td>

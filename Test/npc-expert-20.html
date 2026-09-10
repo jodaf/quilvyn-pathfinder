@@ -18,8 +18,7 @@ var attributes = {
   "skills.Climb":10, "skills.Craft (Traps)":10, "skills.Disguise":20, "skills.Escape Artist":20, 
   "skills.Handle Animal":14, "skills.Knowledge (Arcana)":10, "skills.Perform (String)":10, 
   "skills.Sense Motive":10, "skills.Sleight Of Hand":20, "skills.Spellcraft":14, "skills.Survival":20, 
-  "skills.Use Magic Device":20, "strength":13, "weapons.Longspear":1, "weapons.Sickle":1, 
-  "weapons.Unarmed":1, "wisdom":13
+  "skills.Use Magic Device":20, "strength":13, "weapons.Longspear":1, "weapons.Sickle":1, "wisdom":13
 };
   </script>
 </head>
@@ -52,6 +51,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 190001/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 50/100/150</td>
     </tr></table>
@@ -81,7 +81,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Deceitful; Far Shot; Improved Initiative; Investigator; Iron Will; Leadership; Nimble Moves; Point-Blank Shot; Shield Proficiency; Stealthy; Weapon Focus (Sickle)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Expert Features</b>: Armor Proficiency (Light); Weapon Proficiency (Simple)</td>
+        <td><b>Expert Features</b>: Armor Proficiency (Light); Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -130,7 +130,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Deceitful: +2 Bluff/+4 Disguise</i></td>
       </tr><tr style="text-align:center">
@@ -168,7 +168,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 57</td>
         <td><b>Initiative</b>: +5</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+16/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +16/27</td>
@@ -177,9 +177,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -187,17 +186,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Longspear (+15 d8+1 x3@20); Sickle (+17 d6+1 x2@20); Unarmed (+16 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Longspear (+15 d8+1 x3@20); Sickle (+17 d6+1 x2@20); Unarmed Strike (+16 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor +4; Deflection +0; Dexterity +1; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Far Shot: Reduces range penalty by 1 per range increment</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Initiative: +4 Initiative</i></td>
       </tr><tr style="text-align:center">
@@ -205,11 +206,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Sickle): +1 Sickle Attack Modifier</i></td>
-      </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr></table>

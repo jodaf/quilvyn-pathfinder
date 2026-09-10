@@ -42,8 +42,7 @@ var attributes = {
   "skills.Escape Artist":6, "skills.Handle Animal":10, "skills.Intimidate":12, 
   "skills.Knowledge (History)":7, "skills.Perception":2, "skills.Profession (Scribe)":10, 
   "skills.Profession (Soldier)":5, "skills.Profession (Tanner)":2, "skills.Ride":12, "skills.Swim":2, 
-  "strength":14, "weapons.Bite":1, "weapons.Longsword":1, "weapons.Morningstar":1, 
-  "weapons.Scythe":1, "wisdom":13
+  "strength":14, "weapons.Bite":1, "weapons.Longsword":1, "weapons.Morningstar":1, "wisdom":13
 };
   </script>
 </head>
@@ -76,6 +75,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 150000/153000 (3.5)</td>
       <td><b>Level</b>: 17</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/90</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -111,7 +111,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic Steps; Bleeding Critical; Blinding Critical; Catch Off-Guard; Cleave; Combat Expertise; Combat Reflexes; Critical Focus; Critical Mastery; Dazzling Display; Deadly Stroke; Deafening Critical; Deflect Arrows; Diehard; Disruptive; Dodge; Double Slice; Endurance; Exhausting Critical; Far Shot; Gorgon's Fist; Great Cleave; Great Fortitude; Greater Bull Rush; Greater Disarm; Greater Feint; Greater Grapple; Greater Overrun; Greater Penetrating Strike; Greater Shield Focus; Greater Sunder; Greater Trip; Greater Two-Weapon Fighting; Greater Vital Strike; Greater Weapon Focus (Longsword); Greater Weapon Specialization (Longsword); Improved Bull Rush; Improved Disarm; Improved Feint; Improved Grapple; Improved Great Fortitude; Improved Iron Will; Improved Lightning Reflexes; Improved Overrun; Improved Precise Shot; Improved Shield Bash; Improved Sunder; Improved Trip; Improved Two-Weapon Fighting; Improved Unarmed Strike; Improved Vital Strike; Improvised Weapon Mastery; Iron Will; Lightning Reflexes; Lightning Stance; Manyshot; Medusa's Wrath; Mobility; Mounted Archery; Mounted Combat; Nimble Moves; Penetrating Strike; Pinpoint Targeting; Point-Blank Shot; Power Attack; Precise Shot; Rapid Shot; Ride-By Attack; Scorpion Style; Shatter Defenses; Shield Focus; Shield Master; Shield Slam; Shot On The Run; Sickening Critical; Snatch Arrows; Spellbreaker; Spirited Charge; Spring Attack; Staggering Critical; Stand Still; Stunning Critical; Stunning Fist; Tiring Critical; Trample; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Unseat; Vital Strike; Weapon Focus (Longsword); Weapon Specialization (Longsword); Whirlwind Attack; Wind Stance</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Armor Training; Bravery; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial); Weapon Training</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -150,7 +150,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Armor Training: Reduces armor skill check penalty by 4</i></td>
       </tr><tr style="text-align:center">
@@ -174,7 +174,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 67</td>
         <td><b>Initiative</b>: +4</td>
-        <td><b>Armor Class</b>: 24</td>
+        <td><b>AC/Touch/Flat</b>: 25/15/20</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +17/+19/+21</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +19/34</td>
@@ -183,9 +183,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -193,33 +192,33 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Banded Mail</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Bite; Longsword (+21 d8+6 x2@19); Morningstar (+19 d8+2 x2@20); Scythe (+18 2d4+2 x4@20); Unarmed (+19 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Bite; Longsword (+21 d8+6 x2@19); Morningstar (+19 d8+2 x2@20); Unarmed Strike (+19 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Training: +3 Dexterity AC bonus</i></td>
+        <td><i>Armor Class Modifiers: Armor +7; Deflection +0; Dexterity +4; Dodge +1; Natural Armor +0; Shield +3; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Greater Shield Focus: +1 AC</i></td>
+        <td><i>Far Shot: Reduces range penalty by 1 per range increment</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Greater Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Weapon Focus (Longsword): +1 Longsword Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Weapon Specialization (Longsword): +2 Longsword Damage Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Longsword): +1 Longsword Attack Modifier</i></td>
       </tr><tr style="text-align:center">
@@ -256,8 +255,6 @@ var attributes = {
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
       </tr><tr style="text-align:center">
         <td>Exhausting Critical: Critical hit inflicts exhausted</td>
-      </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
       </tr><tr style="text-align:center">
         <td>Gorgon's Fist: Unarmed attack vs. slowed foe staggers (DC 19 Fort neg)</td>
       </tr><tr style="text-align:center">

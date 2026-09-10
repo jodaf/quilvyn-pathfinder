@@ -52,6 +52,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 10895/15000 (3.5)</td>
       <td><b>Level</b>: 5</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -76,7 +77,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Enlarge Spell; Natural Spell; Scribe Scroll; Widen Spell</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Druid Features</b>: Armor Proficiency (Medium); Fire Bolt; Fire Domain; Nature Bond; Nature Sense; Resist Nature's Lure; Shield Proficiency; Spontaneous Druid Spell; Trackless Step; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
+        <td><b>Druid Features</b>: Armor Proficiency (Light; Medium; Shield); Fire Bolt; Fire Domain; Nature Bond; Nature Sense; Resist Nature's Lure; Spontaneous Druid Spell; Trackless Step; Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -123,7 +124,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -149,7 +150,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 24</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/12/13</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +3/+3/+5</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/15</td>
@@ -158,9 +159,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Limited</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Shortspear; Sickle; Sling; Spear</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -168,15 +168,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: Light Wooden</td>
-        <td><b>Weapons</b>: Dart (+5 d4 x2@20 R20'); Scimitar (+3 d6 x2@18); Unarmed (+3 d3 x2@20)</td>
+        <td><b>Weapons</b>: Dart (+5 d4 x2@20 R20'); Scimitar (+3 d6 x2@18); Unarmed Strike (+3 d3 x2@20); Unarmed</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +5</i></td>
+        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +2; Dodge +0; Natural Armor +0; Shield +1; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +5</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -223,23 +223,23 @@ var attributes = {
     <tr style="text-align:left">
       <td>Bull's Strength (D2 Tran): Touched gains +4 Strength for 5 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Animals Or Plants (D1 Divi): R600' Cone gives self info on animals and plants for conc or 50 min</td>
+      <td>Detect Animals Or Plants (D1 Divi): 600' cone reveals the presence and condition of a chosen kind of animal or plant for concentration up to 50 min; can change the chosen kind each rd</td>
     </tr><tr style="text-align:left">
-      <td>Detect Magic (D0 Divi): R60' Cone gives self info on magical auras for conc or 5 min</td>
+      <td>Detect Magic (D0 Divi): 60' cone reveals the presence, power, and schools of magical auras for concentration up to 5 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Poison (D0 Divi): R35' Self detects poison in target, DC 20 Wis or Alchemy check for type</td>
+      <td>Detect Poison (D0 Divi): R35' Reveals the presence of poison in the target; a successful DC 20 Wisdom or Craft (Alchemy) check reveals the type</td>
     </tr><tr style="text-align:left">
-      <td>Flare (D0 Evoc): R35' Target dazzled (DC 12 Fort neg) for 1 min</td>
+      <td>Flare (D0 Evoc): R35' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Know Direction (D0 Divi): Self learns direction of north</td>
+      <td>Know Direction (D0 Divi): Reveals the direction of north</td>
     </tr><tr style="text-align:left">
-      <td>Produce Flame (D1 Evoc): Creates throwable torch flames that inflict 1d6+5 HP for 5 min</td>
+      <td>Produce Flame (D1 Evoc): Produces a torch flame in self hand for 5 min; can be used repeatedly for a ranged touch attack that inflicts 1d6+5 HP fire, reducing the duration by 1 min for each attack</td>
     </tr><tr style="text-align:left">
       <td>Resistance (D0 Abju): Touched gains +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Shillelagh (D1 Tran): S/M/L staff gains +1 attack, 1d8+1/2d6+1/3d6+1 damage (DC 13 Will neg) for 5 min</td>
+      <td>Shillelagh (D1 Tran): Touched small, medium, or large staff gains +1 attacks and inflicts 1d8+1 HP, 2d6+1 HP, or 3d6+1 HP (save Will negates) when wielded by self for 5 min</td>
     </tr><tr style="text-align:left">
-      <td>Wood Shape (D2 Tran): Self reshapes 15' cu of wood (DC 14 Will neg)</td>
+      <td>Wood Shape (D2 Tran): Reshapes a 15 cubic feet piece of wood (save Will negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

@@ -60,6 +60,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 2/3 (PSOP)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 30/60/90</td>
     </tr></table>
@@ -89,7 +90,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Skill Focus (Craft (Weapons)); Skill Focus (Knowledge (Engineering)); Throw Anything</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -120,7 +121,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -5 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -5 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -146,7 +147,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 9</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 17</td>
+        <td><b>AC/Touch/Flat</b>: 17/11/16</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+0/+2</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +0/11</td>
@@ -155,9 +156,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -165,15 +165,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Scale Mail</td>
         <td><b>Shield</b>: Light Steel</td>
-        <td><b>Weapons</b>: Heavy Pick (+0 d6-1 x4@20); Light Pick (+0 d4-1 x4@20); Longbow (+2 d8-1 x3@20 R100'); Unarmed (+0 d3-1 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Pick (+0 d6-1 x4@20); Light Pick (+0 d4-1 x4@20); Longbow (+2 d8-1 x3@20 R100'); Unarmed Strike (+0 d3-1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: -1</i></td>
+        <td><i>Armor Class Modifiers: Armor +5; Deflection +0; Dexterity +1; Dodge +0; Natural Armor +0; Shield +1; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -209,19 +209,19 @@ var attributes = {
   <tr style="text-align:center">
     <td><b>Potions/Oils</b>:<br/>    <table id="Potions" style="width:100%">
     <tr style="text-align:left">
-      <td>Cure Light Wounds Potion (Adept1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (Adept1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (B1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (B1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (C1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (C1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (D1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (D1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (Healing1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (Healing1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (P1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds Potion (P1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds Potion (R2 Conj): Touched heals (undead suffers) 1d8+4 HP (DC 13 Will half)</td>
+      <td>Cure Light Wounds Potion (R2 Conj): Touched regains 1d8+4 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom Potion (C2 Tran): Touched gains +4 Wisdom for 3 min</td>
     </tr><tr style="text-align:left">
@@ -239,19 +239,19 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Scrolls</b>:<br/>    <table id="Scrolls" style="width:100%">
     <tr style="text-align:left">
-      <td>Cure Light Wounds (Adept1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (Adept1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (B1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (B1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (C1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (C1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (D1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (D1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (Healing1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (Healing1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (P1 Conj): Touched heals (undead suffers) 1d8+1 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (P1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (R2 Conj): Touched heals (undead suffers) 1d8+4 HP (DC 13 Will half)</td>
+      <td>Cure Light Wounds (R2 Conj): Touched regains 1d8+4 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom (C2 Tran): Touched gains +4 Wisdom for 3 min</td>
     </tr><tr style="text-align:left">
