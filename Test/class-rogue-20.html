@@ -70,6 +70,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 201262/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/150</td>
       <td><b>Light/Med/Max Load:</b> 26/53/80</td>
     </tr></table>
@@ -102,7 +103,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Run; Skill Focus (Bluff); Skill Focus (Escape Artist); Skill Focus (Heal); Skill Focus (Knowledge (Planes)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Dance)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Skill Focus (Use Magic Device); Strike Back; Toughness; Weapon Focus (Sickle)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Rogue Features</b>: Armor Proficiency (Light); Bleeding Attack; Combat Trick; Crippling Strike; Defensive Roll; Dispelling Attack; Evasion; Fast Stealth; Feat Bonus; Finesse Rogue; Improved Evasion; Improved Uncanny Dodge; Ledge Walker; Major Magic; Master Strike; Minor Magic; Opportunist; Quick Disable; Resiliency; Rogue Crawl; Rogue Talents; Rogue Weapon Training; Skill Mastery; Slippery Mind; Slow Reactions; Sneak Attack; Stand Up; Surprise Attack; Trap Sense; Trap Spotter; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
+        <td><b>Rogue Features</b>: Armor Proficiency (Light); Bleeding Attack; Combat Trick; Crippling Strike; Defensive Roll; Dispelling Attack; Evasion; Fast Stealth; Feat Bonus; Finesse Rogue; Improved Evasion; Improved Uncanny Dodge; Ledge Walker; Major Magic; Master Strike; Minor Magic; Opportunist; Quick Disable; Resiliency; Rogue Crawl; Rogue Talents; Rogue Weapon Training; Skill Mastery; Slippery Mind; Slow Reactions; Sneak Attack; Stand Up; Surprise Attack; Trap Sense; Trap Spotter; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -231,7 +232,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 138</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 14</td>
+        <td><b>AC/Touch/Flat</b>: 14/12/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+14/+17</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +14/26</td>
@@ -241,8 +242,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Hand Crossbow; Rapier; Sap; Short Sword; Shortbow; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -250,15 +250,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Javelin (+17 d6-1 x2@20 R30'); Sickle (+18 d6-1 x2@20); Spiked Gauntlet (+17 d4-1 x2@20); Unarmed (+17 d3-1 x2@20)</td>
+        <td><b>Weapons</b>: Javelin (+17 d6-1 x2@20 R30'); Sickle (+18 d6-1 x2@20); Spiked Gauntlet (+17 d4-1 x2@20); Unarmed Strike (+17 d3-1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +40</i></td>
+        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +2; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +40</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -267,6 +267,8 @@ var attributes = {
         <td><i>Strength Damage Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Toughness: +20 HP</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Finesse: +3 light melee weapon attack (Dexterity instead of Strength)</i></td>
       </tr><tr style="text-align:center">
@@ -298,7 +300,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Surprise Attack: All foes are flat-footed during surprise round</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -347,11 +349,11 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Daze (Rogue0 Ench): R75' Humanoid target w/up to 4 HD loses next action (DC 12 Will neg)</td>
+      <td>Daze (Rogue0 Ench): R75' Humanoid target with up to 4 HD loses its actions for 1 rd (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Dispel Magic (Rogue3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
     </tr><tr style="text-align:left">
-      <td>Sleep (Rogue1 Ench): R300' 4 HD of creatures in 10' radius sleep (DC 13 Will neg) for 20 min</td>
+      <td>Sleep (Rogue1 Ench): R300' 4 HD of creatures in a 10' radius fall asleep (save Will negates), moving upward from those with the lowest HD, for 20 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

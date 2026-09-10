@@ -798,7 +798,9 @@ Pathfinder.FEATURES = {
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
   'Animal Domain':'Section=skill Note="Knowledge (Nature) is a class skill"',
   'Animal Companion':'Section=feature Note="Special bond and abilities"',
-  'Armor Class Bonus':'Section=combat Note="+%V AC/+%V CMD"',
+  'Armor Class Bonus':
+    'Section=combat ' +
+    'Note="+%V Armor Class and CMD; encumbrance or armor negates"',
   'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
   'Augment Summoning':
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
@@ -1281,7 +1283,7 @@ Pathfinder.FEATURES = {
     'Section=ability,combat,skill ' +
     'Note=' +
       '"No speed penalty in %V armor",' +
-      '"+%V Dexterity AC bonus",' +
+      '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
       '"Reduces armor skill check penalty by %V"',
   "Artificer's Touch":
     'Section=combat,magic ' +
@@ -1760,7 +1762,7 @@ Pathfinder.FEATURES = {
     'Note="+2 overrun checks, may take AOO on foes knocked prone"',
   'Greater Penetrating Strike':
     'Section=combat Note="Focused weapons ignore DR 5/- or DR 10/any"',
-  'Greater Shield Focus':'Section=combat Note="+1 AC"', // No change to CMD
+  'Greater Shield Focus':'Section=combat Note="+1 shield bonus to Armor Class"',
   'Greater Sunder':
     'Section=combat Note="+2 sunder checks, foe takes excess damage"',
   'Greater Trip':
@@ -2166,7 +2168,7 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
       '"May use legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session"',
-  'Shield Focus':'Section=combat Note="+1 AC"', // No change to CMD
+  'Shield Focus':'Section=combat Note="+1 shield bonus to Armor Class"',
   'Shield Master':
     'Section=combat ' +
     'Note="No penalty on shield attacks/May apply shield enhancements to attack and damage"',
@@ -6131,9 +6133,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'abilityNotes.armorTraining', '=', 'source == "heavy" ? 3 : 2',
       'armorWeight', '+', '{None:0, Light:-1, Medium:-2, Heavy:-3}[source]'
     );
-    rules.defineRule('armorClass', 'combatNotes.armorTraining', '+', null);
     rules.defineRule
-      ('combatManeuverDefense', 'combatNotes.armorTraining', '+', null);
+      ('armorDexterityMaximum', 'combatNotes.armorTraining', '+', null);
     rules.defineRule('combatNotes.armorMastery.1',
       'combatNotes.armorMastery', '?', null,
       'armor', '=', 'source != "None" ? 1 : null',
@@ -6229,6 +6230,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'armor', '?', 'source == "None"',
       classLevel, '+=', 'Math.floor(source / 4)',
       'wisdomModifier', '+', 'Math.max(source, 0)'
+    );
+    // N.B.: this untyped bonus applies to both flat-footed and touch
+    rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
+    // Display the Armor Class Bonus note even when armored
+    rules.defineRule('combatNotes.armorClassBonus',
+      classLevel, '=', 'Math.floor(source / 4)', // Changed from SRD35
+      'wisdomModifier', '+', 'source>0 ? source : null'
+    );
+    rules.defineRule('combatNotes.armorClassBonus.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.armorClassBonus', '=', null
     );
     rules.defineRule('combatNotes.conditionFist',
       classLevel, '=', '"fatigued" + ' +
@@ -7786,7 +7798,11 @@ Pathfinder.featureRules = function(
   rules, name, sections, notes, spells, spellAbility
 ) {
   SRD35.featureRules(rules, name, sections, notes, spells, spellAbility);
-  // No changes needed to the rules defined by SRD35 method
+  if(name.match(/^(Greater )?Shield Focus$/))
+    // Override ^= from SRD35.featureRules with +
+    rules.defineRule('armorClassShieldModifier',
+      'combatNotes.' + name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', ''), '+', '1'
+    );
 };
 
 /*

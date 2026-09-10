@@ -10,7 +10,7 @@ var attributes = {
   "alignment":"Chaotic Good", "animalCompanion.Boar":1, "animalCompanionName":"Pulmocwhu", 
   "armor":"Padded", "charisma":11, "constitution":10, "deity":"Desna", "dexterity":13, 
   "experience":190001, "experienceTrack":"3.5", "faction":"Grand Lodge", "feats.Alertness":1, 
-  "feats.Critical Focus":1, "feats.Fleet":1, "feats.Improved Critical (Unarmed)":1, 
+  "feats.Critical Focus":1, "feats.Fleet":1, "feats.Improved Critical (Unarmed Strike)":1, 
   "feats.Quick Draw":1, "feats.Run":1, "feats.Skill Focus (Intimidate)":1, 
   "feats.Skill Focus (Perform (Act))":1, "feats.Skill Focus (Survival)":1, "feats.Skill Focus (Use Magic Device)":1, 
   "feats.Vital Strike":1, "gender":"Male", "hitPoints":133, "intelligence":14, 
@@ -85,6 +85,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 190001/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 35/175</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -115,9 +116,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Alertness; Critical Focus; Fleet; Improved Critical (Unarmed); Quick Draw; Run; Skill Focus (Intimidate); Skill Focus (Perform (Act)); Skill Focus (Survival); Skill Focus (Use Magic Device); Vital Strike</td>
+        <td><b>Feats</b>: Alertness; Critical Focus; Fleet; Improved Critical (Unarmed Strike); Quick Draw; Run; Skill Focus (Intimidate); Skill Focus (Perform (Act)); Skill Focus (Survival); Skill Focus (Use Magic Device); Vital Strike</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Medium); Camouflage; Combat Style (Archery); Combat Style (Two-Weapon Combat); Companion Bond; Double Slice; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Greater Two-Weapon Fighting; Hide In Plain Sight; Improved Evasion; Improved Precise Shot; Improved Quarry; Improved Shield Bash; Improved Two-Weapon Fighting; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Precise Shot; Quarry; Quick Draw; Rapid Shot; Shield Proficiency; Shot On The Run; Swift Tracker; Track; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
+        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Light; Medium; Shield); Camouflage; Combat Style (Archery); Combat Style (Two-Weapon Combat); Companion Bond; Double Slice; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Greater Two-Weapon Fighting; Hide In Plain Sight; Improved Evasion; Improved Precise Shot; Improved Quarry; Improved Shield Bash; Improved Two-Weapon Fighting; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Precise Shot; Quarry; Quick Draw; Rapid Shot; Shot On The Run; Swift Tracker; Track; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -184,7 +185,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Alertness: +2 Perception/+2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Quarry: May take 20 to track target</i></td>
       </tr><tr style="text-align:center">
@@ -236,7 +237,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 133</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/11/11</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+20/+21</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +20/31</td>
@@ -245,9 +246,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -255,29 +255,29 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Padded</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Falchion (+19 2d4 x2@18); Heavy Spiked Shield (+20 d6 x2@20); Shortspear (+20 d6 x2@20 R40'); Unarmed (+20 d3 x2@19)</td>
+        <td><b>Weapons</b>: Falchion (+19 2d4 x2@18); Heavy Spiked Shield (+20 d6 x2@20); Shortspear (+20 d6 x2@20 R40'); Unarmed Strike (+20 d3 x2@19)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor +1; Deflection +0; Dexterity +1; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Critical (Unarmed): x2 Unarmed Threat Range</i></td>
+        <td><i>Far Shot: Reduces range penalty by 1 per range increment</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Improved Critical (Unarmed Strike): x2 Unarmed Strike Threat Range</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Quarry: +4 attack vs. target</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td>Companion Bond: R30' May give half favored enemy bonus to allies for 4 rd</td>
       </tr><tr style="text-align:center">
         <td>Critical Focus: +4 crit confirm</td>
       </tr><tr style="text-align:center">
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
-      </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
       </tr><tr style="text-align:center">
         <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
       </tr><tr style="text-align:center">
@@ -362,107 +362,107 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Alarm (R1 Abju): R65' Entry into 20' radius triggers audible or mental alarm for 34 hr</td>
+      <td>Alarm (R1 Abju): R65' Entry into a 20' radius by a Tiny or larger creature triggers a choice of an audible or mental alarm (password negates) for 34 hr</td>
     </tr><tr style="text-align:left">
-      <td>Animal Growth (R4 Tran): R270' 8 animal targets in 15' radius dbl size (+8 Strength, +4 Constitution, +2 AC, -2 Dexterity) for 17 min (DC 18 Fort neg)</td>
+      <td>Animal Growth (R4 Tran): R270' 8 animal targets in 15' radius dbl size (+8 Strength, +4 Constitution, +2 AC, -2 Dexterity) for 17 min (Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Animal Messenger (R1 Ench): R65' Tiny animal target goes to specified place for 17 dy</td>
+      <td>Animal Messenger (R1 Ench): R65' Tiny animal target travels to a specified place for 17 days</td>
     </tr><tr style="text-align:left">
       <td>Barkskin (R2 Tran): Touched gains +5 natural armor for 170 min</td>
     </tr><tr style="text-align:left">
       <td>Bear's Endurance (R2 Tran): Touched gains +4 Constitution for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Calm Animals (R1 Ench): R65' 2d4+17 HD of animals in 15' radius become docile (DC 15 Will neg) for 17 min</td>
+      <td>Calm Animals (R1 Ench): R65' 2d4+17 HD of animals in a 15' radius become docile (save Will negates) for 17 min</td>
     </tr><tr style="text-align:left">
       <td>Cat's Grace (R2 Tran): Touched gains +4 Dexterity for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Charm Animal (R1 Ench): R65' Target treats self as trusted friend (DC 15 Will neg) for 17 hr</td>
+      <td>Charm Animal (R1 Ench): R65' Target animal treats self as a trusted friend (save Will negates; +5 if being threatened) for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (R3 Tran): R65' 34 HD plant creatures in 15' radius obey self (DC 17 Will neg) for 17 dy</td>
+      <td>Command Plants (R3 Tran): R65' 34 HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for 17 days, obeying commands only with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Commune With Nature (R4 Divi): Self learns natural facts for 17 mile radius outdoors, 1700' radius underground</td>
+      <td>Commune With Nature (R4 Divi): Reveals three nature facts about the surrounding 17 miles outdoors or 1700' underground</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (R2 Conj): Touched heals (undead suffers) 1d8+5 HP (DC 16 Will half)</td>
+      <td>Cure Light Wounds (R2 Conj): Touched regains 1d8+5 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Moderate Wounds (R3 Conj): Touched heals (undead suffers) 2d8+10 HP (DC 17 Will half)</td>
+      <td>Cure Moderate Wounds (R3 Conj): Touched regains 2d8+10 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Serious Wounds (R4 Conj): Touched heals (undead suffers) 3d8+15 HP (DC 18 Will half)</td>
+      <td>Cure Serious Wounds (R4 Conj): Touched regains 3d8+15 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Darkvision (R3 Tran): Touched sees 60' in total darkness for 17 hr</td>
+      <td>Darkvision (R3 Tran): Gives touched 60' black and white vision in total darkness for 17 hr</td>
     </tr><tr style="text-align:left">
       <td>Delay Poison (R1 Conj): Touched gains immunity to poison for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Detect Animals Or Plants (R1 Divi): R1080' Cone gives self info on animals and plants for conc or 170 min</td>
+      <td>Detect Animals Or Plants (R1 Divi): 1080' cone reveals the presence and condition of a chosen kind of animal or plant for concentration up to 170 min; can change the chosen kind each rd</td>
     </tr><tr style="text-align:left">
-      <td>Detect Poison (R1 Divi): R65' Self detects poison in target, DC 20 Wis or Alchemy check for type</td>
+      <td>Detect Poison (R1 Divi): R65' Reveals the presence of poison in the target; a successful DC 20 Wisdom or Craft (Alchemy) check reveals the type</td>
     </tr><tr style="text-align:left">
-      <td>Detect Snares And Pits (R1 Divi): R60' Cone gives self info on traps for conc or 170 min</td>
+      <td>Detect Snares And Pits (R1 Divi): 60' cone reveals traps and their triggers for concentration up to 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Diminish Plants (R3 Tran): Prunes 1080' or stunts growth of normal plants in 1/2 mile radius</td>
+      <td>Diminish Plants (R3 Tran): Prunes normal vegetation in a 1080' radius or stunts the growth of normal plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Endure Elements (R1 Abju): Touched remains comfortable between -50F and 140F for 1 dy</td>
+      <td>Endure Elements (R1 Abju): Touched remains comfortable between -50F and 140F for 1 day</td>
     </tr><tr style="text-align:left">
-      <td>Entangle (R1 Tran): R1080' Creatures in 40' radius entangled for 17 min (DC 15 Ref neg)</td>
+      <td>Entangle (R1 Tran): R1080' Creatures in 40' radius entangled for 17 min (Ref neg)</td>
     </tr><tr style="text-align:left">
-      <td>Freedom Of Movement (R4 Abju): Touched moves freely for 170 min</td>
+      <td>Freedom Of Movement (R4 Abju): Allows touched to ignore movement impediments for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Greater Magic Fang (R3 Tran): R65' target natural weapon gains +4 attack and damage for 17 hr</td>
+      <td>Greater Magic Fang (R3 Tran): R65' target gains +4 attacks and damage when using a specified magic weapon, or +1 attacks and damage when using any natural weapon, for 17 hr</td>
     </tr><tr style="text-align:left">
       <td>Hide From Animals (R1 Abju): 17 touched become imperceptible to animals for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Hold Animal (R2 Ench): R270' Immobilizes target animal (DC 16 Will neg) for 17 rd</td>
+      <td>Hold Animal (R2 Ench): R270' Paralyzes the animal target (save Will negates; additional saves each rd end) for 17 rd</td>
     </tr><tr style="text-align:left">
       <td>Jump (R1 Tran): Touched +30 Acrobatics (jump) for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Longstrider (R1 Tran): Self gains +10' Speed for 17 hr</td>
+      <td>Longstrider (R1 Tran): Gives self +10' Speed for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Magic Fang (R1 Tran): Touched natural weapon gains +1 attack and damage for 17 min</td>
+      <td>Magic Fang (R1 Tran): Touched gains +1 attacks and damage when using a specified natural weapon for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Neutralize Poison (R3 Conj): Touched neutralized 170 min, immunized, or detoxified</td>
+      <td>Neutralize Poison (R3 Conj): Touched gains immunity to poison or has its poison neutralized for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (R4 Abju): Touched gains SR 28 (divination) (self SR 32) for 17 hr</td>
+      <td>Nondetection (R4 Abju): Touched gains SR 28 vs. divination, or self or a possession gains SR 32, for 17 hr</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom (R2 Tran): Touched gains +4 Wisdom for 17 min</td>
     </tr><tr style="text-align:left">
       <td>Pass Without Trace (R1 Tran): 17 touched leave no tracks or scent for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Plant Growth (R3 Tran): Vegetation in 1080' radius becomes dense or 1/2 mile radius increases productivity</td>
+      <td>Plant Growth (R3 Tran): Causes vegetation in a 1080' radius to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Energy (R2 Abju): Touched gains resistance 120 to chosen energy for 170 min</td>
+      <td>Protection From Energy (R2 Abju): Touched gains immunity to a choice of acid, cold, electricity, fire, or sonic for 170 min or until 120 HP have been negated</td>
     </tr><tr style="text-align:left">
-      <td>Read Magic (R1 Divi): Self can read magical writing for 170 min</td>
+      <td>Read Magic (R1 Divi): Allows self to read magical writing for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Reduce Animal (R3 Tran): Touched willing animal becomes half size (-2 Strength, +2 Dexterity, +1 attack, +1 AC) for 17 hr</td>
+      <td>Reduce Animal (R3 Tran): Touched willing animal becomes half size, suffering -2 Strength and gaining +2 Dexterity, +1 attacks, and a +1 size bonus to Armor Class, for 17 hr</td>
     </tr><tr style="text-align:left">
       <td>Remove Disease (R3 Conj): Self makes caster level check to cure touched of all diseases</td>
     </tr><tr style="text-align:left">
-      <td>Repel Vermin (R3 Abju): 10' radius bars vermin (DC 17 Will neg for 5 HD or more but inflicts 2d6 HP) for 170 min</td>
+      <td>Repel Vermin (R3 Abju): 10' radius bars vermin (save Will for vermin with at least 5 HD inflicts 2d6 HP) for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (R1 Abju): Touched gains resistance 30 to chosen energy for 170 min</td>
+      <td>Resist Energy (R1 Abju): Touched gains resistance 30 to a choice of acid, cold, electricity, fire, or sonic for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Snare (R2 Tran): Touched vine, thong, or rope becomes DC 23 trap until triggered</td>
+      <td>Snare (R2 Tran): Touched vine, thong, or rope becomes a trap until triggered; a DC 23 Search check notices the trap, and a DC 23 Escape Artist or Strength check escapes from it</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (R1 Divi): Self converses w/animals for 17 min</td>
+      <td>Speak With Animals (R1 Divi): Allows self to converse with animals for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Plants (R2 Divi): Self converses w/plants for 17 min</td>
+      <td>Speak With Plants (R2 Divi): Allows self to converse with plants and plant creatures for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Spike Growth (R2 Tran): R270' Spikes on vegetation in 20' sq inflict 1d4 HP each 5' movement and slow to half speed for 1 dy (DC 16 Ref neg) for 17 hr</td>
+      <td>Spike Growth (R2 Tran): R270' Vegetation in a 340 square foot area inflicts 1d4 HP piercing for each 5' of movement and slows creatures to half Speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally I (R1 Conj): R65' 1 1st-level creature appears and fights foes for 17 rd</td>
+      <td>Summon Nature's Ally I (R1 Conj): R65' Summons a 1st-level creature that fights foes and obeys orders for 17 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally II (R2 Conj): R65' 1 2nd- or 1d3 1st-level creatures appear and fight foes for 17 rd</td>
+      <td>Summon Nature's Ally II (R2 Conj): R65' Summons 1 2nd-level or 1d3 1st-level creatures that fight foes and obey orders for 17 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally III (R3 Conj): R65' 1 3rd-, 1d3 2nd-, or 1d4+1 1st-level creatures appear and fight foes for 17 rd</td>
+      <td>Summon Nature's Ally III (R3 Conj): R65' Summons 1 3rd-level, 1d3 2nd-level, or 1d4+1 1st-level creatures that fight foes and obey orders for 17 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally IV (R4 Conj): R65' 1 4th-, 1d3 3rd-, or 1d4+1 lower-level creatures appear and fight foes for 17 rd</td>
+      <td>Summon Nature's Ally IV (R4 Conj): R65' Summons 1 4th-level, 1d3 3rd-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 17 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tree Shape (R3 Tran): Self becomes tree for 17 hr</td>
+      <td>Tree Shape (R3 Tran): Converts self into a tree for 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Tree Stride (R4 Conj): Self teleports 3000' via like trees 17 times w/in 17 hr</td>
+      <td>Tree Stride (R4 Conj): Allows self to move between like trees, up to 500' or 3000' depending on the species, 17 times within 17 hr</td>
     </tr><tr style="text-align:left">
-      <td>Water Walk (R3 Tran): 17 touched can walk on liquid as if it were a solid surface for 170 min</td>
+      <td>Water Walk (R3 Tran): Allows 17 touched creatures to walk on liquid as if it were a solid surface for 170 min</td>
     </tr><tr style="text-align:left">
-      <td>Wind Wall (R2 Evoc): R270' 170'x5' curtain of air scatters objects and deflects arrows and bolts for 17 rd</td>
+      <td>Wind Wall (R2 Evoc): R270' Creates a 170'x85'x2' curtain of air that scatters objects, bars gasses and Small or smaller flying creatures, and deflects arrows and bolts for 17 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -501,12 +501,14 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Evasion; Companion Improved Evasion; Devotion; Link; Multiattack; Share Spells</td>
+      <td><b>Animal Companion Features</b>: Bonus Tricks; Companion Evasion; Companion Improved Evasion; Devotion; Link; Multiattack; Share Spells</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 6 additional tricks, requiring no training time or Handle Animal checks</td>
+    </tr><tr style="text-align:center">
       <td>Companion Evasion: Reflex save yields no damage instead of half</td>
     </tr><tr style="text-align:center">
       <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>

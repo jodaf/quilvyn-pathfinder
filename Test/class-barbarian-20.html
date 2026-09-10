@@ -68,6 +68,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 209492/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -102,7 +103,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Defensive Combat Training; Great Fortitude; Leadership; Skill Focus (Climb); Skill Focus (Disable Device); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Perform (Wind)); Skill Focus (Sense Motive); Step Up; Throw Anything</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Medium); Clear Mind; Damage Reduction; Fast Movement; Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Rage; Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent Rage; Shield Proficiency; Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Martial)</td>
+        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Light; Medium; Shield); Clear Mind; Damage Reduction; Fast Movement; Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Rage; Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent Rage; Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -159,7 +160,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -6 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -6 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -201,7 +202,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 132</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 19</td>
+        <td><b>AC/Touch/Flat</b>: 20/12/20</td>
         <td><b>Damage Reduction</b>: 5/-</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+23/+22</td>
@@ -211,9 +212,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -221,21 +221,23 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Breastplate</td>
         <td><b>Shield</b>: Heavy Steel</td>
-        <td><b>Weapons</b>: Blowgun (+22 d2 x2@20 R20'); Heavy Crossbow (+22 d10 x2@19 R120'); Punching Dagger (+23 d4+3 x3@20); Unarmed (+23 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Blowgun (+22 d2 x2@20 R20'); Heavy Crossbow (+22 d10 x2@19 R120'); Punching Dagger (+23 d4+3 x3@20); Unarmed Strike (+23 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Damage Reduction: DR 5/-</i></td>
+        <td><i>Armor Class Modifiers: Armor +6; Deflection +0; Dexterity +2; Dodge +0; Natural Armor +0; Shield +2; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Damage Reduction: DR 5/-</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +3</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
         <td>Animal Fury: +15 bite attack inflicts d4+3 HP during rage</td>
       </tr><tr style="text-align:center">
@@ -279,7 +281,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Tireless Rage: Suffers no fatigue after rage</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr><tr style="text-align:center">
         <td>Unexpected Strike: May take AOO when foe enters threat area 1/rage</td>
       </tr></table>
