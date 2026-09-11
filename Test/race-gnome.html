@@ -75,12 +75,12 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Lightning Reflexes; Shield Focus</td>
-        <td><b>Gnome Features</b>: Defensive Training; Gnome Ability Adjustment; Gnome Hatred; Gnome Magic; Keen Senses; Low-Light Vision; Obsessive; Resist Illusion; Weapon Familiarity (Gnome Hooked Hammer)</td>
+        <td><b>Gnome Features</b>: Defensive Training; Gnome Ability Adjustment; Gnome Hatred; Gnome Magic; Illusion Resistance; Keen Senses; Low-Light Vision; Obsessive; Weapon Familiarity (Gnome Hooked Hammer)</td>
         <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: Low-Light Vision: x2 normal distance in poor light</td>
+      <td><b>Feature Notes</b>: Low-Light Vision: Can see double the normal distance in poor light</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -107,7 +107,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Small: +2 Fly/-4 Intimidate/+4 Stealth</i></td>
       </tr><tr style="text-align:center">
-        <td>Obsessive: +2 choice of Craft or Profession</td>
+        <td>Obsessive: +2 on a choice of Craft or Profession</td>
       </tr></table>
 </td>
     </tr></table>
@@ -155,9 +155,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Small: +1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD</i></td>
       </tr><tr style="text-align:center">
-        <td>Defensive Training: +4 AC vs. giant creatures</td>
+        <td>Defensive Training: +4 dodge bonus to Armor Class vs. creatures with the giant type</td>
       </tr><tr style="text-align:center">
-        <td>Gnome Hatred: +1 attack vs. goblinoid and reptilian</td>
+        <td>Gnome Hatred: +1 attacks vs. goblinoid and reptilian</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -173,7 +173,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Lightning Reflexes: +2 Reflex</i></td>
       </tr><tr style="text-align:center">
-        <td>Resist Illusion: +2 vs. illusions</td>
+        <td>Illusion Resistance: +2 vs. illusions</td>
       </tr></table>
 </td>
     </tr></table>
@@ -183,19 +183,29 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
   <tr style="text-align:center">
-    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
-    <tr style="text-align:left">
-      <td>Dancing Lights (Gnome Magic0 Evoc): RNaN' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
-    </tr><tr style="text-align:left">
-      <td>Ghost Sound (Gnome Magic0 Illu): RNaN' Produces the sound volume of 20 humans (save Will upon interaction disbelieves) for NaN rd</td>
-    </tr><tr style="text-align:left">
-      <td>Prestidigitation (Gnome Magic0 Univ): R10' Allows performing minor magic effects for 1 hr</td>
-    </tr><tr style="text-align:left">
-      <td>Speak With Animals (Gnome Magic1 Divi): Allows self to converse with animals for NaN min</td>
+    <td>    <table id="SpellPart" style="width:100%">
+    <tr style="text-align:center">
+      <td>      <table id="SpellStats" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Spell DC</b>: Gnome Magic: 12</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Magic Notes</b>: <i>Gnome Magic: +1 Spell DC (Illusion)/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy</i></td>
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Dancing Lights (Gnome Magic0 Evoc): R110' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
+    </tr><tr style="text-align:left">
+      <td>Ghost Sound (Gnome Magic0 Illu): R25' Produces the sound volume of 4 humans (save Will upon interaction disbelieves) for 1 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Prestidigitation (Gnome Magic0 Univ): R10' Allows performing minor magic effects for 1 hr</td>
+    </tr><tr style="text-align:left">
+      <td>Speak With Animals (Gnome Magic1 Divi): Allows self to converse with animals for 1 min</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
+    <td><b>Magic Notes</b>: <i>Gnome Magic: +1 Spell DC (Illusion)/Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day</i></td>
   </tr></table>
 </td>
 </tr></table>

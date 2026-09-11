@@ -788,6 +788,95 @@ Pathfinder.FEATS = {
     'Type=Fighter Require="baseAttack >= 6","dexterity >= 15","features.Dodge"'
 };
 Pathfinder.FEATURES = {
+
+  // Races
+
+  // Dwarf
+  'Darkvision':SRD35.FEATURES.Darkvision,
+  'Defensive Training':SRD35.FEATURES['Dodge Giants'],
+  'Dwarf Ability Adjustment':
+    SRD35.FEATURES['Dwarf Ability Adjustment']
+    .replace('+2 Constitution', '+2 Constitution/+2 Wisdom'),
+  'Dwarf Hatred':SRD35.FEATURES['Dwarf Enmity'],
+  'Greed':'Section=skill Note="+2 Appraise with precious metals and gems"',
+  'Hardy':
+    'Section=save ' +
+    'Note="+%V vs. poison/+%1 vs. spells and spell-like abilities"',
+  'Stability':
+    SRD35.FEATURES.Stability
+    .replace('+4', '+4 CMD'),
+  'Steady':SRD35.FEATURES.Steady,
+  'Stonecunning':
+    'Section=skill ' +
+    'Note="+%V Perception for unusual stonework and makes an automatic check when within 10\'"',
+
+  // Elf
+  'Elf Ability Adjustment':
+    SRD35.FEATURES['Elf Ability Adjustment']
+    .replace('+2 Dexterity', '+2 Dexterity/+2 Intelligence'),
+  'Elven Immunities':SRD35.FEATURES['Elf Resistances'],
+  'Elven Magic':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+2 checks to overcome spell resistance",' +
+      '"+2 Spellcraft to identify magic item properties"',
+  'Keen Senses':'Section=skill Note="+%V Perception"',
+  'Low-Light Vision':SRD35.FEATURES['Low-Light Vision'],
+
+  // Gnome
+  // Defensive Training as above
+  'Gnome Ability Adjustment':
+    SRD35.FEATURES['Gnome Ability Adjustment']
+    .replace('+2 Constitution', '+2 Constitution/+2 Charisma'),
+  'Gnome Hatred':
+    SRD35.FEATURES['Gnome Enmity']
+    .replace('kobold', 'reptilian'),
+  'Gnome Magic':
+    'Section=magic ' +
+    'Note="+1 Spell DC (Illusion)%{charisma>10 ? \'/Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day\' : \'\'}" ' +
+    'Spells="Dancing Lights","Ghost Sound","Prestidigitation","Speak With Animals" ' +
+    'SpellAbility=Charisma',
+  'Illusion Resistance':SRD35.FEATURES['Resist Illusion'],
+  // Keen Senses as above
+  // Low-Light Vision as above
+  'Obsessive':'Section=skill Note="+2 on a choice of Craft or Profession"',
+
+  // Half-Elf
+  'Adaptability':'Section=feature Note="+1 General Feat (Skill Focus)"',
+  'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
+  'Elf Blood':
+    SRD35.FEATURES['Elven Blood']
+    .replace('an elf', 'both elf and human'),
+  // Elven Immunities as above
+  // Keen Senses as above
+  // Low-Light Vision as above
+  'Multitalented':'Section=feature Note="Can choose two favored classes"',
+
+  // Half-Orc
+  // Darkvision as above
+  'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
+  'Intimidating':'Section=skill Note="+2 Intimidate"',
+  'Orc Blood':
+    SRD35.FEATURES['Orc Blood']
+    .replace('an orc', 'both orc and human'),
+  'Orc Ferocity':
+    'Section=combat ' +
+    'Note="Can continue to fight for 1 rd when brought to negative hit points once per day"',
+
+  // Halfling
+  'Fearless':SRD35.FEATURES['Resist Fear'],
+  'Halfling Ability Adjustment':
+    SRD35.FEATURES['Halfling Ability Adjustment']
+    .replace('+2 Dexterity', '+2 Dexterity/+2 Charisma'),
+  'Halfling Luck':SRD35.FEATURES.Fortunate,
+  // Keen Senses as above
+  'Sure-Footed':'Section=skill Note="+2 Acrobatics/+2 Climb"',
+
+  // Human
+  'Bonus Feat':SRD35.FEATURES['Human Feat Bonus'],
+  'Human Ability Adjustment':'Section=ability Note="+2 any"',
+  'Skilled':'Section=skill Note="+%V Skill ranks"',
+
   // Shared with SRD35
   'A Thousand Faces':
     'Section=magic Note="May use <i>Alter Self</i> effects at will"',
@@ -854,7 +943,6 @@ Pathfinder.FEATURES = {
   'Crippling Strike':
     'Section=combat Note="Sneak attack inflicts 2 points Strength damage"',
   'Damage Reduction':'Section=combat Note="DR %V/-"',
-  'Darkvision':'Section=feature Note="60\' b/w vision in darkness"',
   'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
   'Defensive Roll':
     'Section=combat ' +
@@ -876,11 +964,6 @@ Pathfinder.FEATURES = {
   'Divine Grace':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Divine Health':'Section=save Note="Immune to disease"',
   'Dodge':SRD35.FEATURES.Dodge,
-  'Dwarf Ability Adjustment':
-    'Section=ability Note="+2 Constitution/+2 Wisdom/-2 Charisma"',
-  'Dwarf Hatred':'Section=combat Note="+1 attack vs. goblinoid and orc"',
-  'Elf Ability Adjustment':
-    'Section=ability Note="+2 Dexterity/+2 Intelligence/-2 Constitution"',
   'Elven Immunities':
     'Section=save Note="Immune to sleep effects, +2 vs. enchantment"',
   'Empathic Link':'Section=companion Note="May share emotions up to 1 mile"',
@@ -920,15 +1003,11 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+2 or more attack and damage vs. %V type(s) of creatures",' +
       '"+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
-  'Fearless':'Section=save Note="+2 vs. fear"',
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Flurry Of Blows':
     'Section=combat ' +
     'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks; may spend 1 Ki Point for additional %8"',
   'Forge Ring':'Section=magic Note="May create and mend magic rings"',
-  'Gnome Ability Adjustment':
-    'Section=ability Note="+2 Constitution/+2 Charisma/-2 Strength"',
-  'Gnome Hatred':'Section=combat Note="+1 attack vs. goblinoid and reptilian"',
   'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
   'Great Cleave':'Section=combat Note="May cleave w/out limit"',
   'Great Fortitude':'Section=save Note="+2 Fortitude"',
@@ -944,8 +1023,6 @@ Pathfinder.FEATURES = {
     'Section=combat Note="+1 %weapon Attack Modifier"',
   'Greater Weapon Specialization (%weapon)':
     'Section=combat Note="+2 %weapon Damage Modifier"',
-  'Half-Orc Ability Adjustment':'Section=ability Note="+2 any"',
-  'Halfling Luck':'Section=save Note="+1 Fortitude/+1 Reflex/+1 Will"',
   'Heighten Spell':
     'Section=magic Note="May cast chosen spell at a higher level"',
   'Hide In Plain Sight':'Section=skill Note="May hide even when observed"',
@@ -1009,7 +1086,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Bardic Performance gives %V allies +4 AC and saves"',
   'Iron Will':'Section=save Note="+2 Will"',
-  'Keen Senses':'Section=skill Note="+%V Perception"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
   'Knowledge Domain':
     'Section=skill Note="All Knowledge skills are class skills"',
@@ -1024,7 +1100,6 @@ Pathfinder.FEATURES = {
   'Link':
     'Section=skill ' +
     'Note="+4 Handle Animal (companion)/+4 Wild Empathy (companion)"',
-  'Low-Light Vision':'Section=feature Note="x2 normal distance in poor light"',
   'Low-Light Rage':
     'Section=feature Note="Gains x2 normal distance in poor light during rage"',
   'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%1 Use Magic Device"',
@@ -1148,14 +1223,11 @@ Pathfinder.FEATURES = {
     'Note="May cast <i>Summon Nature\'s Ally</i> in place of known spell"',
   'Spring Attack':
     'Section=combat Note="May move before and after melee attack w/out AOO"',
-  'Stability':'Section=combat Note="+4 CMD vs. Bull Rush and Trip"',
   'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
   'Still Mind':'Section=save Note="+2 vs. enchantment"',
   'Still Spell':
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out movement"',
-  'Stonecunning':
-    'Section=skill Note="+%V Perception (stone), automatic check w/in 10\'"',
   'Stunning Fist':
     'Section=combat ' +
     'Note="Unarmed strike inflicts stunned for 1 rd %V/dy (DC %1 Fort neg)"',
@@ -1224,7 +1296,6 @@ Pathfinder.FEATURES = {
   'Acidic Ray':'Section=magic Note="R30\' Ranged touch inflicts %Vd6 HP %1/dy"',
   'Acrobatic Steps':
     'Section=ability Note="May move normally through difficult terrain 20\'/rd "',
-  'Adaptability':'Section=feature Note="+1 General Feat (Skill Focus)"',
   'Added Summonings':
     'Section=magic ' +
     'Note="<i>Summon Monster</i> brings additional demon or fiendish creature"',
@@ -1408,7 +1479,6 @@ Pathfinder.FEATURES = {
       '"Spells affect corporeal undead",' +
       '"Knowledge (Religion) is a class skill"',
   'Bonded Object':'Section=magic Note="May cast known spell through object"',
-  'Bonus Feat':'Section=feature Note="+1 General Feat"',
   'Bramble Armor':
     'Section=combat ' +
     'Note="Thorny hide inflicts 1d6+%1 HP on striking foes %V rd/dy"',
@@ -1519,7 +1589,6 @@ Pathfinder.FEATURES = {
   "Death's Gift":
     'Section=save Note="Resistance %V to cold/DR %1/- vs. non-lethal"',
   'Defensive Combat Training':'Section=combat Note="+%V CMD"',
-  'Defensive Training':'Section=combat Note="+4 AC vs. giant creatures"',
   'Deft Dodger':'Section=save Note="+1 Reflex"',
   'Demon Hunter':
     'Section=skill,save ' +
@@ -1624,13 +1693,6 @@ Pathfinder.FEATURES = {
   'Elemental Wall':
     'Section=magic ' +
     'Note="May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects %V rd/dy"',
-  'Elf Blood':
-    'Section=feature Note="Counts as both elf and human for racial effects"',
-  'Elven Magic':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+2 checks to overcome spell resistance",' +
-      '"+2 Spellcraft (identify magic item properties)"',
   'Elven Reflexes':'Section=combat Note="+2 Initiative"',
   'Enchanting Smile':
     'Section=save,skill ' +
@@ -1728,7 +1790,6 @@ Pathfinder.FEATURES = {
   'Gentle Rest':
     'Section=magic Note="Touch inflicts staggered for 1 rd (undead for %1 rd) %V/dy"',
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
-  'Gnome Magic':'Section=magic Note="+1 Spell DC (Illusion)%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy\' : \'\'}"',
   'Gold Finger':
     'Section=skill,skill ' +
     'Note=' +
@@ -1766,23 +1827,18 @@ Pathfinder.FEATURES = {
   'Greater Trip':
     'Section=combat Note="+2 trip checks, may take AOO on tripped foes"',
   'Greater Vital Strike':'Section=combat Note="4x base damage"',
-  'Greed':'Section=skill Note="+2 Appraise (precious metals, gems)"',
   'Guarded Stance':'Section=combat Note="+%V AC for %1 rd during rage"',
   'Guardian Of The Forge':
     'Section=skill,skill ' +
     'Note=' +
       '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
       '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
-  'Half-Elf Ability Adjustment':'Section=ability Note="+2 any"',
-  'Halfling Ability Adjustment':
-    'Section=ability Note="+2 Dexterity/+2 Charisma/-2 Strength"',
   'Hand Of The Acolyte':
     'Section=combat ' +
     'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
     'Section=combat ' +
     'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
-  'Hardy':'Section=save Note="+%V vs. poison/+%1 vs. spells"',
   "Healer's Blessing":
     'Section=magic Note="<i>Cure</i> spells heal 50% more HP"',
   'Heavenly Fire':
@@ -1807,7 +1863,6 @@ Pathfinder.FEATURES = {
   'Holy Lance':
     'Section=combat Note="May add <i>holy</i> property to weapon for %1 rd %V/dy"',
   'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
-  'Human Ability Adjustment':'Section=ability Note="+2 any"',
   "Hunter's Eye":
     'Section=combat ' +
     'Note="Has Proficiency and suffers no penalty for 2nd range increment w/choice of longbow or shortbow"',
@@ -1855,7 +1910,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="Successful Intimidate during rage shakes foe for 1d4+ rd"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
-  'Intimidating':'Section=skill Note="+2 Intimidate"',
   'Invisibility Field':'Section=magic Note="May become invisible %V rd/dy"',
   'It Was Meant To Be':
     'Section=feature ' +
@@ -1988,7 +2042,6 @@ Pathfinder.FEATURES = {
       '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
   'Moment Of Clarity':
     'Section=combat Note="May suspend rage effects for 1 rd 1/rage"',
-  'Multitalented':'Section=feature Note="May choose two favored classes"',
   'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
   'Natural Armor':
     'Section=combat Note="+%V natural armor bonus to Armor Class"',
@@ -2015,7 +2068,6 @@ Pathfinder.FEATURES = {
   'Observant':
     'Section=skill ' +
     'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
-  'Obsessive':'Section=skill Note="+2 choice of Craft or Profession"',
   'On Dark Wings':'Section=ability Note="Fly 60\'/average"',
   'One Of Us':
     'Section=combat,feature,save ' +
@@ -2023,9 +2075,6 @@ Pathfinder.FEATURES = {
       '"DR 5/-",' +
       '"Ignored by unintelligent undead",' +
       '"Immune to paralysis, sleep, cold, and non-lethal damage, +4 vs. spells from undead"',
-  'Orc Blood':
-    'Section=feature Note="Counts as both orc and human for racial effects"',
-  'Orc Ferocity':'Section=combat Note="May fight below zero HP for 1 rd 1/dy"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill ' +
@@ -2175,7 +2224,6 @@ Pathfinder.FEATURES = {
   'Sickening Critical':
     'Section=combat Note="Critical hit inflicts sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
-  'Skilled':'Section=skill Note="+%V Skill ranks"',
   'Slow Reactions':
     'Section=combat Note="Sneak attack target may take no AOO for 1 rd"',
   'Smuggler':
@@ -2212,9 +2260,6 @@ Pathfinder.FEATURES = {
   'Starchild':
     'Section=skill ' +
     'Note="+4 Survival (avoid becoming lost)/Always know direction of north"',
-  'Steady':
-    'Section=ability ' +
-    'Note="Suffers no speed penalty in heavy armor or with heavy load"',
   'Step Up':'Section=combat Note="May match foe 5\' step"',
   'Storm Burst':
     'Section=combat ' +
@@ -2241,7 +2286,6 @@ Pathfinder.FEATURES = {
   'Superstition':
     'Section=save ' +
     'Note="+%V vs. spells, supernatural, and spell-like abilities during rage"',
-  'Sure-Footed':'Section=skill Note="+2 Acrobatics/+2 Climb"',
   'Surprise Accuracy':'Section=combat Note="May gain +%V attack 1/rage"',
   'Surprise Attack':
     'Section=combat Note="All foes are flat-footed during surprise round"',
@@ -2675,8 +2719,8 @@ Pathfinder.RACES = {
       '"Dwarf Ability Adjustment",' +
       '"Weapon Familiarity (Dwarven Urgosh; Dwarven Waraxe)",' +
       '"Weapon Proficiency (Battleaxe; Heavy Pick; Warhammer)",' +
-      'Darkvision,"Defensive Training","Dwarf Hatred",Greed,Hardy,' +
-      'Steady,Stability,Stonecunning ' +
+      '"Darkvision","Defensive Training","Dwarf Hatred","Greed","Hardy",' +
+      '"Stability","Steady","Stonecunning" ' +
     'Languages=Common,Dwarven',
   'Elf':
     'Size=Medium ' +
@@ -2693,16 +2737,16 @@ Pathfinder.RACES = {
     'Features=' +
       '"Gnome Ability Adjustment",' +
       '"Weapon Familiarity (Gnome Hooked Hammer)",' +
-      '"Defensive Training","Gnome Hatred","Gnome Magic","Keen Senses",' +
-      '"Low-Light Vision",Obsessive,"Resist Illusion" ' +
+      '"Defensive Training","Gnome Hatred","Gnome Magic",' +
+      '"Illusion Resistance","Keen Senses","Low-Light Vision","Obsessive" ' +
     'Languages=Common,Gnome,Sylvan',
   'Half-Elf':
     'Size=Medium ' +
     'Speed=30 ' +
     'Features=' +
       '"Half-Elf Ability Adjustment",' +
-      'Adaptability,"Elf Blood","Elven Immunities","Keen Senses",' +
-      '"Low-Light Vision",Multitalented, ' +
+      '"Adaptability","Elf Blood","Elven Immunities","Keen Senses",' +
+      '"Low-Light Vision","Multitalented" ' +
     'Languages=Common,Elven',
   'Half-Orc':
     'Size=Medium ' +
@@ -2711,7 +2755,7 @@ Pathfinder.RACES = {
       '"Half-Orc Ability Adjustment",' +
       '"Weapon Familiarity (Orc Double Axe)",' +
       '"Weapon Proficiency (Falchion; Greataxe)",' +
-      'Darkvision,Intimidating,"Orc Blood","Orc Ferocity" ' +
+      '"Darkvision","Intimidating","Orc Blood","Orc Ferocity" ' +
     'Languages=Common,Orc',
   'Halfling':
     'Size=Small ' +
@@ -2720,14 +2764,14 @@ Pathfinder.RACES = {
       '"Halfling Ability Adjustment",' +
       '"Weapon Familiarity (Halfling Sling Staff)",' +
       '"Weapon Proficiency (Sling)",' +
-      'Fearless,"Halfling Luck","Keen Senses",Sure-Footed ' +
+      '"Fearless","Halfling Luck","Keen Senses","Sure-Footed" ' +
     'Languages=Common,Halfling',
   'Human':
     'Size=Medium ' +
     'Speed=30 ' +
     'Features=' +
       '"Human Ability Adjustment",' +
-      '"Bonus Feat",Skilled ' +
+      '"Bonus Feat","Skilled" ' +
     'Languages=Common'
 };
 Pathfinder.SCHOOLS = {
@@ -7901,12 +7945,29 @@ Pathfinder.raceRulesExtra = function(rules, name) {
   if(name.match(/Elf|Gnome|Halfling/)) {
     rules.defineRule('skillNotes.keenSenses', '', '=', '2');
   }
-  if(name.match(/Gnome/)) {
+  if(name.match(/Dwarf/)) {
+    rules.defineRule
+      ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
+    rules.defineRule('saveNotes.hardy', '', '=', '2');
+    rules.defineRule('saveNotes.hardy.1',
+      'features.Hardy', '?', null,
+      '', '=', '2'
+    );
+    rules.defineRule('skillNotes.stonecunning', '', '=', '2');
+  } else if(name.match(/Gnome/)) {
     rules.defineRule
       ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
-    Pathfinder.featureSpells(rules,
-      'Gnome Magic', 'GnomeMagic', 'charisma', 'level', '',
-      ['Dancing Lights','Ghost Sound','Prestidigitation','Speak With Animals']
+    rules.defineRule('spells.Dancing Lights(GnomeMagic0 Evoc)',
+      'charisma', '?', 'source>10'
+    );
+    rules.defineRule('spells.Ghost Sound(GnomeMagic0 Illu)',
+      'charisma', '?', 'source>10'
+    );
+    rules.defineRule('spells.Prestidigitation(GnomeMagic0 Univ)',
+      'charisma', '?', 'source>10'
+    );
+    rules.defineRule('spells.Speak With Animals(GnomeMagic1 Divi)',
+      'charisma', '?', 'source>10'
     );
     rules.defineRule
       ('casterLevels.GnomeMagic', 'charisma', '?', 'source >= 11');
@@ -7915,12 +7976,6 @@ Pathfinder.raceRulesExtra = function(rules, name) {
       rules, 'validation', 'adaptability', 'features.Adaptability',
       'Sum \'features.Skill Focus\' >= 1'
     );
-  } else if(name.match(/Dwarf/)) {
-    rules.defineRule
-      ('abilityNotes.armorSpeedAdjustment', 'abilityNotes.steady', '^', '0');
-    rules.defineRule('saveNotes.hardy', '', '=', '2');
-    rules.defineRule('saveNotes.hardy.1', '', '=', '2');
-    rules.defineRule('skillNotes.stonecunning', '', '=', '2');
   } else if(name.match(/Human/)) {
     rules.defineRule('skillNotes.skilled', 'level', '=', null);
     rules.defineRule('skillPoints', 'skillNotes.skilled', '+', null);
