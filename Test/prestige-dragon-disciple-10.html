@@ -61,6 +61,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 122125/136000 (3.5)</td>
       <td><b>Level</b>: 16</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -97,8 +98,8 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Strike; Combat Casting; Craft Wondrous Item; Extend Spell; Improved Unarmed Strike; Point-Blank Shot; Rapid Shot; Simple Weapon Proficiency; Skill Focus (Fly); Skill Focus (Knowledge (Arcana)); Toughness; Widen Spell</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Dragon Disciple Features</b>: Arcane Caster Level Bonus; Blindsense; Blood Of Dragons; Constitution Boost; Dragon Bite; Dragon Form; Intelligence Boost; Natural Armor; Strength Boost; Wings</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Black); Breath Weapon; Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple); Wings</td>
+        <td><b>Dragon Disciple Features</b>: Arcane Caster Level Bonus; Blindsense; Blood Of Dragons; Constitution Boost; Dragon Bite; Dragon Form; Intelligence Boost; Natural Armor Increase; Strength Boost; Wings</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Black); Breath Weapon; Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple Weapons); Wings</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -169,7 +170,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 133</td>
         <td><b>Initiative</b>: +3</td>
-        <td><b>Armor Class</b>: 24</td>
+        <td><b>AC/Touch/Flat</b>: 21/13/18</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/25</td>
@@ -178,9 +179,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -188,21 +187,21 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+12 d4+2 x2@19 R10'); Morningstar (+12 d8+3 x2@20); Spiked Gauntlet (+12 d4+2 x2@20); Unarmed (+12 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+12 d4+2 x2@19 R10'); Morningstar (+12 d8+3 x2@20); Spiked Gauntlet (+12 d4+2 x2@20); Unarmed Strike (+12 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +32</i></td>
+        <td><i>Armor Class Modifiers: Armor +0; Deflection +0; Dexterity +3; Dodge +0; Natural Armor +8; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +3</i></td>
+        <td><i>Constitution Hit Points Adjustment: +32</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dragon Disciple Armor Class Adjustment: +4</i></td>
+        <td><i>Natural Armor Increase: +4 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Natural Armor: +7 AC</i></td>
+        <td><i>Natural Armor: +4 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -268,65 +267,65 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Cause Fear (S1 Necr): R55' Target w/up to 5 HD flees for 1d4 rd (DC 14 Will shaken for 1 rd)</td>
+      <td>Cause Fear (S1 Necr): R55' Target with up to 5 HD becomes frightened and flees for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Clairaudience/Clairvoyance (S3 Divi): 920' Self gains choice of remote sight or hearing for 13 min</td>
+      <td>Clairaudience/Clairvoyance (S3 Divi): 920' Self gains a choice of remote sight or hearing of a known location for 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Magic (S0 Divi): R60' Cone gives self info on magical auras for conc or 13 min</td>
+      <td>Detect Magic (S0 Divi): 60' cone reveals the presence, power, and schools of magical auras for concentration up to 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 1 dy</td>
+      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 1 day</td>
     </tr><tr style="text-align:left">
-      <td>Fear (Bloodline Draconic4 Necr): R30' Cone causes creatures to flee for 16 rd (DC 17 Will shaken for 1 rd)</td>
+      <td>Fear (Bloodline Draconic4 Necr): 30' cone causes creatures to flee for NaN rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Bloodline Draconic3 Tran): Touched gains 60' fly speed and +8 Fly skill for 16 min</td>
+      <td>Fly (Bloodline Draconic3 Tran): Touched gains 60' fly speed and +NaN Fly skill for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon I (Bloodline Draconic6 Tran): Self becomes medium dragon (+4 Strength, +2 Constitution, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (DC 19 Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 16 min</td>
+      <td>Form Of The Dragon I (Bloodline Draconic6 Tran): Self becomes medium dragon (+4 Strength, +2 Constitution, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Form Of The Dragon II (Bloodline Draconic7 Tran): Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (DC 20 Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 16 min</td>
+      <td>Form Of The Dragon II (Bloodline Draconic7 Tran): Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for NaN min</td>
     </tr><tr style="text-align:left">
       <td>Fox's Cunning (S2 Tran): Touched gains +4 Intelligence for 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Glitterdust (S2 Conj): R230' Creatures in 10' radius outlined and blinded for 13 rd (DC 15 Will outlined only)</td>
+      <td>Glitterdust (S2 Conj): R230' Outlines and blinds creatures in a 10' radius (save Will outlined only) for 13 rd</td>
     </tr><tr style="text-align:left">
-      <td>Grease (S1 Conj): R55' Object or 10' sq becomes slippery, causing falls (DC 14 Ref DC 10 Acrobatics for half speed) for 13 min</td>
+      <td>Grease (S1 Conj): R55' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Hideous Laughter (S2 Ench): R55' Target ROFL (DC 15 Will neg) for 13 rd</td>
+      <td>Hideous Laughter (S2 Ench): R55' Target falls into uncontrollable laughter (save Will negates, creatures of a different type than the caster gain +4) for 13 rd</td>
     </tr><tr style="text-align:left">
-      <td>Hypnotic Pattern (S2 Illu): R230' Fascinates 2d4+10 HD of creatures in 10' radius (DC 15 Will neg) for conc + 2 rd</td>
+      <td>Hypnotic Pattern (S2 Illu): R230' Fascinates 2d4+10 HD of creatures in a 10' radius (save Will negates), working upward from those with the fewest HD, for concentration + 2 rd</td>
     </tr><tr style="text-align:left">
       <td>Light (S0 Evoc): Touched gives 20' normal light for 130 min</td>
     </tr><tr style="text-align:left">
-      <td>Mage Armor (Bloodline Draconic1 Conj): Touched gains +4 AC for 16 hr</td>
+      <td>Mage Armor (Bloodline Draconic1 Conj): Gives touched a +4 armor bonus for NaN hr</td>
     </tr><tr style="text-align:left">
       <td>Mending (S0 Tran): R10' Repairs minor damage to 13 lb object</td>
     </tr><tr style="text-align:left">
-      <td>Message (S0 Tran): R230' 13 targets hold whispered dialogue for 130 min</td>
+      <td>Message (S0 Tran): R230' Allows self to exchange whispered messages with 13 targets for 130 min; messages can circumvent barriers, but 1' of stone, 1" of metal, a thin sheet of lead, or 3' of wood or dirt blocks the spell</td>
     </tr><tr style="text-align:left">
-      <td>Misdirection (S2 Illu): R55' Redirects divinations upon target for 13 hr</td>
+      <td>Misdirection (S2 Illu): R55' Divination spells cast upon a target show the auras of another selected object or creature (save Will by the diviner negates) for 13 hr</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (S3 Abju): Touched gains SR 24 (divination) (self SR 28) for 13 hr</td>
+      <td>Nondetection (S3 Abju): Touched gains SR 24 vs. divination, or self or a possession gains SR 28, for 13 hr</td>
     </tr><tr style="text-align:left">
-      <td>Obscuring Mist (S1 Conj): Fog in 20' radius obscures vision for 13 min</td>
+      <td>Obscuring Mist (S1 Conj): Fog in a 20' radius obscures vision for 13 min</td>
     </tr><tr style="text-align:left">
       <td>Protection From Chaos (S1 Abju): Touched gains +2 AC and saves vs. chaotic creatures, suppresses mental control, and bars contact by chaotic summoned creatures for 13 min</td>
     </tr><tr style="text-align:left">
       <td>Protection From Good (S1 Abju): Touched gains +2 AC and saves vs. good creatures, suppresses mental control, and bars contact by good summoned creatures for 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Pyrotechnics (S2 Tran): R920' Target fire becomes fireworks (R120' blinded for 1d4+1 rd (DC 15 Will neg)) or choking smoke in 20' radius (suffer -4 Strength and Dexterity for d4+1 rd (DC 15 Fort neg)) for 13 rd</td>
+      <td>Pyrotechnics (S2 Tran): R920' Target fire shoots fireworks, blinding creatures within 120' for 1d4+1 rd (save Will negates), or emits a 20' radius of choking smoke for 13 rd, inflicting -4 Strength and Dexterity for 1d4+1 rd (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Read Magic (S0 Divi): Self can read magical writing for 130 min</td>
+      <td>Read Magic (S0 Divi): Allows self to read magical writing for 130 min</td>
     </tr><tr style="text-align:left">
-      <td>Reduce Person (S1 Tran): R55' Target humanoid becomes half size (-2 Strength, +2 Dexterity, +1 attack, +1 AC) (DC 14 Fort neg) for 13 min</td>
+      <td>Reduce Person (S1 Tran): R55' Target humanoid becomes half size (save Fortitude negates), suffering -2 Strength and gaining +2 Dexterity, +1 attacks, and a +1 size bonus to Armor Class, for 13 min</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 30 to chosen energy for 160 min</td>
+      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 10 to a choice of acid, cold, electricity, fire, or sonic for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Shrink Item (S3 Tran): Touched 26' cu object becomes 1/16 size cloth (DC 16 Will neg) for 13 dy</td>
+      <td>Shrink Item (S3 Tran): Reduces touched 26 cubic foot object to a 1/16-sized cloth (save Will negates) for 13 days</td>
     </tr><tr style="text-align:left">
-      <td>Spell Resistance (Bloodline Draconic5 Abju): Touched gains SR 28 for 16 min</td>
+      <td>Spell Resistance (Bloodline Draconic5 Abju): Gives touched SR NaN for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Tiny Hut (S3 Evoc): 20' sphere resists elements for 26 hr</td>
+      <td>Tiny Hut (S3 Evoc): Creates a 20'-radius sphere that provides shelter for 10 Medium creatures, resisting heat, cold, and weather, for 26 hr</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Fatigue (S0 Necr): Touch inflicts fatigue for 13 rd (DC 13 Fort neg)</td>
+      <td>Touch Of Fatigue (S0 Necr): Touch attack inflicts fatigue for 13 rd (save Fortitude negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

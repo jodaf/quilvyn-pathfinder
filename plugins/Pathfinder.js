@@ -327,12 +327,12 @@ Pathfinder.FEATS = {
     'Require=' +
       '"casterLevel >= 7",' +
       '"features.Arcane Armor Training",' +
-      '"features.Armor Proficiency (Medium)"',
+      '"armorProficiency.Medium"',
   'Arcane Armor Training':
     'Type=Fighter ' +
     'Require=' +
       '"casterLevel >= 3",' +
-      '"features.Armor Proficiency (Light)"',
+      '"armorProficiency.Light"',
   'Arcane Strike':'Type=Fighter Require="casterLevelArcane >= 1"',
   'Athletic':'Type=General',
   'Augment Summoning':
@@ -527,7 +527,7 @@ Pathfinder.FEATS = {
       '"features.Weapon Specialization (%weapon)",' +
       '"levels.Fighter >= 12"',
   'Heavy Armor Proficiency':
-    'Type=Fighter Require="features.Armor Proficiency (Medium)"',
+    'Type=Fighter Require="armorProficiency.Medium"',
   'Heighten Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Improved Bull Rush':
     'Type=Fighter ' +
@@ -608,7 +608,7 @@ Pathfinder.FEATS = {
     'Type=General Require="skills.%professionSkill >= 5"',
   'Maximize Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
   'Medium Armor Proficiency':
-    'Type=Fighter Require="features.Armor Proficiency (Light)"',
+    'Type=Fighter Require="armorProficiency.Light"',
   "Medusa's Wrath":
     'Type=Fighter ' +
     'Require=' +
@@ -1187,10 +1187,8 @@ Pathfinder.FEATURES = {
   'Two-Weapon Fighting':
     'Section=combat Note="Reduces on-hand penalty by 2 and off-hand by 6"',
   'Unarmed Strike':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"Unarmed hit inflicts %V HP",' +
-      '"Has Improved Unarmed Strike features"',
+    'Section=combat ' +
+    'Note="Unarmed hit inflicts %V HP/Has the Improved Unarmed Strike feature"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
   'Uncanny Dodge':SRD35.FEATURES['Uncanny Dodge'],
   'Venom Immunity':'Section=save Note="Immune to poisons"',
@@ -2423,7 +2421,9 @@ Pathfinder.FEATURES = {
   'Bonus Language':'Section=feature Note="+%V Language Count"',
   'Call Down The Legends':
     'Section=magic Note="May summon 2d4 level 4 construct barbarians 1/wk"',
-  'Canny Defense':'Section=combat Note="+%V AC in light or no armor"',
+  'Canny Defense':
+    'Section=combat ' +
+    'Note="+%V dodge bonus to Armor Class; holding a shield or wearing medium or heavy armor negates"',
   'Caster Level Bonus':
     'Section=magic ' +
     'Note="+%V base class level for spells known and spells per day"',
@@ -2448,7 +2448,7 @@ Pathfinder.FEATURES = {
   'Divine Caster Level Bonus':
     'Section=magic ' +
     'Note="+%V divine base class level for spells known and spells per day"',
-  'Dodge Trick':'Section=combat Note="+1 AC"',
+  'Dodge Trick':'Section=combat Note="+1 dodge bonus to Armor Class"',
   'Dragon Bite':'Section=combat Note="1d%V+%1%2 bite when using claws"',
   'Dragon Disciple':'Section=combat Note="+%V"',
   'Dragon Form':
@@ -2503,6 +2503,7 @@ Pathfinder.FEATURES = {
       '"+%V Linguistics/+%V Profession (Scribe)",' +
       '"+%V Use Magic Device (scrolls)"',
   'More Newfound Arcana':'Section=magic Note="+1 level 2 spells known"',
+  'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
   'Newfound Arcana':'Section=magic Note="+1 level 1 spells known"',
   'No Retreat':'Section=combat Note="May take AOO on foe withdraw"',
   'Parry':
@@ -4553,7 +4554,7 @@ Pathfinder.NPC_CLASSES = {
     'HitDie=d8 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
-      '"1:Weapon Proficiency (Martial Weapons)" ' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)" ' +
     'Skills=Climb,Craft,"Handle Animal",Intimidate,Profession,Ride,Swim'
 };
 Pathfinder.PRESTIGE_CLASSES = {
@@ -4616,9 +4617,10 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
-      '"1:Blood Of Dragons","1:Natural Armor","2:Arcane Caster Level Bonus",' +
-      '"2:Dragon Bite","2:Strength Boost",5:Blindsense,' +
-      '"6:Constitution Boost","7:Dragon Form","8:Intelligence Boost",9:Wings ' +
+      '"1:Blood Of Dragons","1:Natural Armor Increase",' +
+      '"2:Arcane Caster Level Bonus","2:Dragon Bite","2:Strength Boost",' +
+      '"5:Blindsense","6:Constitution Boost","7:Dragon Form",' +
+      '"8:Intelligence Boost",9:Wings ' +
     'Selectables=' +
       '"1:Bloodline Draconic (Black):Bloodline",' +
       '"1:Bloodline Draconic (Blue):Bloodline",' +
@@ -6293,11 +6295,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Small', '=', 'SRD35.SMALL_DAMAGE[SRD35.SMALL_DAMAGE["monk"]]',
       'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
+    rules.defineRule
+      ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
     rules.defineRule('features.Improved Unarmed Strike',
       'combatNotes.unarmedStrike', '=', '1'
     );
-    rules.defineRule
-      ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
     rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
   } else if(name == 'Paladin') {
@@ -7185,8 +7187,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.strengthBoost',
       classLevel, '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
     );
-    rules.defineRule('armorClass',
-      'combatNotes.dragonDiscipleArmorClassAdjustment', '+', null
+    // Natural armor bonuses don't normally stack. However, the text for the
+    // Natural Armor Increase feature states that it gives "an increase to the
+    // character’s existing natural armor"--a rephrase of "it stacks"--so
+    // override the ^= rule generated by featureRules.
+    rules.defineRule('armorClassNaturalArmorModifier',
+      'combatNotes.naturalArmorIncrease', '+=', null
     );
     rules.defineRule('combatNotes.breathWeapon',
       classLevel, '+=', 'source >= 3 ? 1 : null'
@@ -7205,11 +7211,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Dragon Bite', '?', null,
       classLevel, '=', 'source >= 6 ? ", 1d6 energy" : ""'
     );
-    rules.defineRule('combatNotes.dragonDiscipleArmorClassAdjustment',
+    rules.defineRule('combatNotes.naturalArmorIncrease',
       classLevel, '+=', 'Math.floor((source + 2) / 3)'
-    );
-    rules.defineRule('combatNotes.naturalArmor',
-      classLevel, '+', 'source >= 7 ? 3 : source >= 4 ? 2 : 1'
     );
     rules.defineRule
       ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
@@ -7250,7 +7253,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Duelist') {
 
-    rules.defineRule('armorClass', 'combatNotes.cannyDefense.1', '+', null);
+    rules.defineRule
+      ('armorClassDodgeModifier', 'combatNotes.cannyDefense.1', '+', null);
     rules.defineRule('combatNotes.cannyDefense',
       'intelligenceModifier', '+=', 'source < 0 ? null : source',
       classLevel, 'v', null
@@ -7756,6 +7760,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Toughness') {
     rules.defineRule
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
+  } else if(name.match(/^(Tower )?Shield Proficiency/)) {
+    rules.defineRule('armorProficiency.' + name.replace(' Proficiency', ''),
+      'features.' + name, '=', '1'
+    );
   } else if(name == 'Turn Undead') {
     rules.defineRule('combatNotes.turnUndead',
       'channelLevel', '=', '10 + Math.floor(source / 2)',
@@ -7772,15 +7780,15 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'strengthModifier', '+', '-source'
     );
   } else if(name == 'Simple Weapon Proficiency') {
-    rules.defineRule('features.Weapon Proficiency (Simple)',
+    rules.defineRule('weaponProficiency.Simple Weapons',
       'features.' + name, '=', '1'
     );
   } else if((matchInfo = name.match(/^(Exotic|Martial)\sWeapon\sProficiency.\((.*)\)$/)) != null) {
-    rules.defineRule('features.Weapon Proficiency (' + matchInfo[2] + ')',
+    rules.defineRule('weaponProficiency.' + matchInfo[2],
       'features.' + name, '=', '1'
     );
   } else if((matchInfo = name.match(/^(Heavy|Medium|Light)\sArmor\sProficiency$/)) != null) {
-    rules.defineRule('features.Armor Proficiency (' + matchInfo[1] + ')',
+    rules.defineRule('armorProficiency.' + matchInfo[1],
       'features.' + name, '=', '1'
     );
   }

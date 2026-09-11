@@ -12,7 +12,7 @@ var attributes = {
   "experienceTrack":"3.5", "feats.Craft Wondrous Item":1, "feats.Empower Spell":1, "feats.Endurance":1, 
   "feats.Great Fortitude":1, "feats.Leadership":1, "feats.Point-Blank Shot":1, 
   "feats.Skill Focus (Disable Device)":1, "feats.Spell Focus (Divination)":1, "feats.Stealthy":1, "feats.Toughness":1, 
-  "feats.Weapon Focus (Dagger)":1, "feats.Weapon Focus (Unarmed)":1, "gender":"Male", "hitPoints":58, 
+  "feats.Weapon Focus (Dagger)":1, "feats.Weapon Focus (Unarmed Strike)":1, "gender":"Male", "hitPoints":58, 
   "intelligence":10, "levels.Rogue":4, "levels.Sorcerer":6, 
   "name":"Prestige-Arcane Trickster 10", "prestige.Arcane Trickster":10, "race":"Human", 
   "selectableFeatures.Rogue - Fast Stealth":1, "selectableFeatures.Rogue - Rogue Weapon Training":1, 
@@ -73,6 +73,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 193085/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -95,11 +96,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Feats</b>: Craft Wondrous Item; Empower Spell; Endurance; Great Fortitude; Leadership; Point-Blank Shot; Skill Focus (Disable Device); Spell Focus (Divination); Stealthy; Toughness; Weapon Focus (Dagger); Weapon Focus (Unarmed)</td>
+        <td><b>Feats</b>: Craft Wondrous Item; Empower Spell; Endurance; Great Fortitude; Leadership; Point-Blank Shot; Skill Focus (Disable Device); Spell Focus (Divination); Stealthy; Toughness; Weapon Focus (Dagger); Weapon Focus (Unarmed Strike)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Arcane Trickster Features</b>: Caster Level Bonus; Impromptu Sneak Attack; Invisible Thief; Ranged Legerdemain; Sneak Attack; Surprise Spells; Tricky Spells</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple)</td>
-        <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Fast Stealth; Rogue Talents; Rogue Weapon Training; Sneak Attack; Trap Sense; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Fast Stealth; Rogue Talents; Rogue Weapon Training; Sneak Attack; Trap Sense; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -152,7 +153,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bloodline Draconic: Perception is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -182,7 +183,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 138</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/10/15</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +11/+14/+11</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +14/24</td>
@@ -192,8 +193,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Hand Crossbow; Rapier; Sap; Short Sword; Shortbow; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -201,15 +201,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+15 d4+3 x2@19 R10'); Gauntlet (+14 d3+3 x2@20); Unarmed (+15 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+15 d4+3 x2@19 R10'); Gauntlet (+14 d3+3 x2@20); Unarmed Strike (+15 d3+3 x2@20); Unarmed</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor +4; Deflection +0; Dexterity +0; Dodge +0; Natural Armor +1; Shield +0; Size +0</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Natural Armor: +1 AC</i></td>
+        <td><i>Natural Armor: +1 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -219,9 +221,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Dagger): +1 Dagger Attack Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Focus (Unarmed): +1 Unarmed Attack Modifier</i></td>
+        <td><i>Weapon Focus (Unarmed Strike): +1 Unarmed Strike Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td>Claws: 2 +14 attacks inflict 1d4+3 HP each 3 rd/dy</td>
       </tr><tr style="text-align:center">
@@ -235,7 +239,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Surprise Spells: Spells inflict sneak attack damage vs. flat-footed foes</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -283,113 +287,113 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Alarm (S1 Abju): R65' Entry into 20' radius triggers audible or mental alarm for 32 hr</td>
+      <td>Alarm (S1 Abju): R65' Entry into a 20' radius by a Tiny or larger creature triggers a choice of an audible or mental alarm (password negates) for 32 hr</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Lock (S2 Abju): Magical lock on touched door, portal, or chest inflicts +10 DC to open</td>
+      <td>Arcane Lock (S2 Abju): Increases by 10 the DC for others to open a touched door, portal, or chest</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Mark (S0 Univ): Inscribes permanent personal rune on touched</td>
+      <td>Arcane Mark (S0 Univ): Inscribes a personal rune on touched, lasting a month on a creature or permanently on an object</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Sight (S3 Divi): R120' Self sees auras and spell abilities for 16 min; successful DC 15+level Spellcraft reveals school</td>
+      <td>Arcane Sight (S3 Divi): R120' Reveals auras and spell abilities for 16 min; a successful DC 15+level Spellcraft reveals their schools</td>
     </tr><tr style="text-align:left">
       <td>Bear's Endurance (S2 Tran): Touched gains +4 Constitution for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Blindness/Deafness (S2 Necr): R260' Target suffers self choice of blindness or deafness (DC 12 Fort neg) permanently</td>
+      <td>Blindness/Deafness (S2 Necr): R260' Target suffers a choice of permanent blindness or deafness (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Blur (S2 Illu): Foes attacking touched have 20% miss chance for 16 min</td>
+      <td>Blur (S2 Illu): Attacks on touched have a 20% miss chance for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Circle Of Death (S6 Necr): R260' 16d4 HD of creatures w/up to 8 HD in 40' radius slain (DC 16 Fort neg)</td>
+      <td>Circle Of Death (S6 Necr): R260' Kills 16d4 HD of creatures with up to 8 HD in a 40' radius (save Fortitude negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
-      <td>Comprehend Languages (S1 Divi): Self understands all languages for 160 min</td>
+      <td>Comprehend Languages (S1 Divi): Allows self to understand touched written text and words spoken in any language by touched creatures for 160 min</td>
     </tr><tr style="text-align:left">
-      <td>Continual Flame (S2 Evoc): Touched emits heatless torch flame permanently</td>
+      <td>Continual Flame (S2 Evoc): Touched permanently emits a heatless torch flame</td>
     </tr><tr style="text-align:left">
-      <td>Create Greater Undead (S8 Necr): R65' Creates shadow, wraith from physical remains</td>
+      <td>Create Greater Undead (S8 Necr): R65' Creates a wraith or shadow from physical remains</td>
     </tr><tr style="text-align:left">
-      <td>Dancing Lights (S0 Evoc): R260' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+      <td>Dancing Lights (S0 Evoc): R260' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Magic (S0 Divi): R60' Cone gives self info on magical auras for conc or 16 min</td>
+      <td>Detect Magic (S0 Divi): 60' cone reveals the presence, power, and schools of magical auras for concentration up to 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Undead (S1 Divi): R60' Cone gives self info on undead auras for conc or 16 min</td>
+      <td>Detect Undead (S1 Divi): 60' cone reveals undead and their strengths for concentration up to 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Displacement (S3 Illu): Foes attacking touched suffer 50% miss chance for 16 rd</td>
+      <td>Displacement (S3 Illu): Foes attacking touched suffer a 50% miss chance for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Dominate Person (S5 Ench): R65' Target humanoid obeys self thoughts (DC 15 Will neg) for 16 dy</td>
+      <td>Dominate Person (S5 Ench): R65' Target humanoid obeys mental commands (save Will negates) for 16 days; concentration allows receiving sensory info from the target</td>
     </tr><tr style="text-align:left">
-      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 1 dy</td>
+      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 1 day</td>
     </tr><tr style="text-align:left">
-      <td>Fabricate (S5 Tran): R65' Creates 160' cu (16' cu mineral) of finished items from raw materials</td>
+      <td>Fabricate (S5 Tran): R65' Creates finished items from 160 cubic feet of raw materials, or 16 cubic feet if working with minerals</td>
     </tr><tr style="text-align:left">
-      <td>Feather Fall (S1 Tran): R65' 16 targets in 10' radius fall 60'/rd (DC 11 Will neg) for 16 rd</td>
+      <td>Feather Fall (S1 Tran): R65' 16 falling targets in a 10' radius slow to 60' per rd (save Will negates) for 16 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Dispel Magic (S6 Abju): R260' Successful d20+16 check vs. 11+caster level cancels 4 targeted spells or 1 spell or curse on each creature in a 20' radius</td>
     </tr><tr style="text-align:left">
-      <td>Greater Planar Binding (S8 Conj): Traps extraplanar creature(s) w/up to 18 HD (DC 18 Will neg) until they escape (SR, dimensional travel, or 23 Cha) or perform a task (Opposed Charisma neg)</td>
+      <td>Greater Planar Binding (S8 Conj): Traps 1-3 extraplanar creatures with up to 18 HD total in a <i>Magic Circle</i> (save Will negates) until they perform a task (opposed Charisma allows refusal), escape via SR, dimensional travel, or a 23 Charisma check, or 16 days pass</td>
     </tr><tr style="text-align:left">
       <td>Greater Prying Eyes (S8 Divi): 1d4+16 floating eyes (AC 18, 1 HP, +16 Stealth, +16 Perception, Fly 30') with True Seeing scout 1 mile for 16 hr</td>
     </tr><tr style="text-align:left">
       <td>Jump (S1 Tran): Touched +30 Acrobatics (jump) for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Knock (S2 Tran): R260' Opens stuck, barred, locked, or magically held door, chest, or shackle</td>
+      <td>Knock (S2 Tran): R260' Opens a stuck, barred, locked, or magically held door, chest, or shackle and suppresses <i>Arcane Lock</i> for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Geas (S4 Ench): R65' Target w/up to 7 HD must complete task (DC 14 Will neg)</td>
+      <td>Lesser Geas (S4 Ench): R65' Compels a target with up to 7 HD to complete a specified task (save Will negates) within 16 days, suffering -2 to each ability score (maximum -8, and no score can drop below 1) for each 24 hr spent without obeying; this infliction ends 24 hr after resuming the task</td>
     </tr><tr style="text-align:left">
-      <td>Mage Armor (Bloodline Draconic1 Conj): Touched gains +4 AC for 6 hr</td>
+      <td>Mage Armor (Bloodline Draconic1 Conj): Gives touched a +4 armor bonus for NaN hr</td>
     </tr><tr style="text-align:left">
-      <td>Mage Hand (S0 Tran): R65' Self moves up to 5 lb target 15'/rd for conc</td>
+      <td>Mage Hand (S0 Tran): R65' Allows self to use move actions to move a target object up to 5 lb 15' per rd for concentration</td>
     </tr><tr style="text-align:left">
-      <td>Mage's Lucubration (S6 Tran): Self recalls spell up to 5th level from past day</td>
+      <td>Mage's Lucubration (S6 Tran): Restores a spell of up to 5th level cast within the past 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Mage's Magnificent Mansion (S7 Conj): R65' Creates door to extradimensional mansion for 32 hr</td>
+      <td>Mage's Magnificent Mansion (S7 Conj): R65' Allows self and designated creatures to enter an extradimensional dwelling with provisions for 192 for 32 hr</td>
     </tr><tr style="text-align:left">
-      <td>Mage's Sword (S7 Evoc): R65' Unattended force blade attacks at +19+mod and inflicts 4d6+3 HP x2@19 for 16 rd</td>
+      <td>Mage's Sword (S7 Evoc): R65' Unattended force makes +19+modifier attacks that inflict 4d6+3 HP force (potential critical on a 19) on a designated foe for 16 rd; can use standard actions to change its target</td>
     </tr><tr style="text-align:left">
-      <td>Mass Enlarge Person (S4 Tran): R65' 16 target humanoids in 15' radius dbl size (+2 Strength, -2 Dexterity, -1 attack, -1 AC) (DC 14 Fort neg) for 16 min</td>
+      <td>Mass Enlarge Person (S4 Tran): R65' 16 humanoid targets in a 15' radius double in size, gaining +2 Strength and suffering -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class (save Fortitude negates), for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Hold Person (S7 Ench): R260' Immobilizes targets in 15' radius (DC 17 Will neg) for 16 rd</td>
+      <td>Mass Hold Person (S7 Ench): R260' Paralyzes humanoid targets in a 15' radius (save Will negates; additional saves each rd end) for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mass Reduce Person (S4 Tran): R65' 16 target humanoids in 15' radius become half size (-2 Strength, +2 Dexterity, +1 attack, +1 AC) (DC 14 Fort neg) for 16 min</td>
+      <td>Mass Reduce Person (S4 Tran): R65' 16 target humanoids in a 15' radius become half size (save Fortitude negates), suffering -2 Strength and gaining +2 Dexterity, +1 attacks, and a +1 size bonus to Armor Class, for 16 min</td>
     </tr><tr style="text-align:left">
       <td>Mending (S0 Tran): R10' Repairs minor damage to 16 lb object</td>
     </tr><tr style="text-align:left">
-      <td>Mirage Arcana (S5 Illu): R1040' Creates 16 20' cu terrain or structure illusion (DC 15 Will disbelieve) for conc + 16 hr</td>
+      <td>Mirage Arcana (S5 Illu): R1040' Changes the look, sound, touch, and smell of 320 cubic feet of terrain and structures (save Will upon interaction disbelieves) for concentration + 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Move Earth (S6 Tran): R1040' Slowly digs 7500' cu dirt</td>
+      <td>Move Earth (S6 Tran): R1040' Excavates 150'x150'x10' of dirt every 10 min for up to 250 min</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (S3 Abju): Touched gains SR 27 (divination) (self SR 31) for 16 hr</td>
+      <td>Nondetection (S3 Abju): Touched gains SR 27 vs. divination, or self or a possession gains SR 31, for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Open/Close (S0 Tran): R65' Target up to 30 lb opens or closes (DC 10 Will neg)</td>
+      <td>Open/Close (S0 Tran): R65' Target object of up to 30 lb opens or closes (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Passwall (S5 Tran): Creates 8'x5'x20' passage through wood, stone, or plaster for 16 hr</td>
+      <td>Passwall (S5 Tran): Creates an 8'x5'x20' passage through wood, stone, or plaster for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Polymorph (S5 Tran): Touched willing target becomes different creature for 16 min</td>
+      <td>Polymorph (S5 Tran): Touched willing target becomes a different creature with up to 15 HD for 16 min</td>
     </tr><tr style="text-align:left">
       <td>Prying Eyes (S5 Divi): 1d4+16 floating eyes (AC 18, 1 HP, +16 Stealth, +15 Perception, Fly 30') scout 1 mile for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Ray Of Exhaustion (S3 Necr): R65' Ranged touch inflicts exhaustion (DC 13 Fort fatigued) for 16 min</td>
+      <td>Ray Of Exhaustion (S3 Necr): R65' Ranged touch inflicts exhaustion (save Fortitude inflicts fatigued) for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Resilient Sphere (S4 Evoc): R65' Impassible and immobile 16'-diameter sphere surrounds target for 16 min (DC 14 Ref neg)</td>
+      <td>Resilient Sphere (S4 Evoc): R65' Creates an impassible and immobile 16'-diameter sphere that surrounds the target (save Reflex negates) for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 10 to chosen energy for 60 min</td>
+      <td>Resist Energy (Bloodline Draconic2 Abju): Touched gains resistance 10 to a choice of acid, cold, electricity, fire, or sonic for NaN min</td>
     </tr><tr style="text-align:left">
       <td>Reverse Gravity (S7 Tran): R260' Objects in 16 10' cu fall upward for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Scrying (S4 Divi): Self views target (DC 15 Will neg) for 16 min</td>
+      <td>Scrying (S4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Slow (S3 Tran): R65' 16 creatures in 15' radius take one action per rd, suffer -1 AC, attack, and Reflex, and slow to half Speed (DC 13 Will neg) for 16 rd</td>
+      <td>Slow (S3 Tran): R65' 16 creatures in a 15' radius can take no more than one action per turn, suffer -1 Armor Class, attacks, and Reflex saves, and slow to half Speed (save Will negates) for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Suggestion (S3 Ench): R65' Target follows reasonable suggestion (DC 13 Will neg) for 16 hr</td>
+      <td>Suggestion (S3 Ench): R65' Target follows a reasonable suggestion (save Will negates) for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Summon Monster V (S5 Conj): R65' 1 5th-, 1d3 4th-, or 1d4+1 lower-level creatures appear and fight foes for 16 rd</td>
+      <td>Summon Monster V (S5 Conj): R65' Summons 1 5th-level, 1d3 4th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tongues (S3 Divi): Touched can communicate in any language for 160 min</td>
+      <td>Tongues (S3 Divi): Allows touched to communicate in any language for 160 min</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Fatigue (S0 Necr): Touch inflicts fatigue for 16 rd (DC 10 Fort neg)</td>
+      <td>Touch Of Fatigue (S0 Necr): Touch attack inflicts fatigue for 16 rd (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Transformation (S6 Tran): Self gains +4 Strength, Dexterity, Constitution, and AC, +5 Fortitude, martial weapon proficiency, and BAB 16, but cannot cast spells, for 16 rd</td>
+      <td>Transformation (S6 Tran): Gives self +4 Strength, Dexterity, Constitution, and natural armor bonus, +5 Fortitude, simple and martial weapon proficiency, and a +16 BAB, but prevents the casting of spells, for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Undeath To Death (S6 Necr): R260' Destroys 16d4 HD of undead w/up to 8 HD each in 40' radius (DC 16 Will neg)</td>
+      <td>Undeath To Death (S6 Necr): R260' Destroys 16d4 HD of undead with up to 8 HD in a 40' radius (save Will negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
-      <td>Vision (S7 Divi): Self learns answer about target person, place, or object</td>
+      <td>Vision (S7 Divi): Allows a successful caster level check to answer a question about a specified person, place, or object; the DC varies from 20 to 30 depending on the familiarity of the subject</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

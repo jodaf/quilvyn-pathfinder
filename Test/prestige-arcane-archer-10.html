@@ -63,6 +63,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 155274/171000 (3.5)</td>
       <td><b>Level</b>: 18</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -93,9 +94,9 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Reflexes; Empower Spell; Extend Spell; Improved Initiative; Maximize Spell; Point-Blank Shot; Power Attack; Precise Shot; Quicken Spell; Skill Focus (Ride); Skill Focus (Survival); Spell Focus (Enchantment); Stealthy; Weapon Focus (Longbow)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Arcane Archer Features</b>: Arcane Caster Level Bonus; Armor Proficiency (Medium); Arrow Of Death; Enhance Arrows (Aligned); Enhance Arrows (Distance); Enhance Arrows (Elemental); Enhance Arrows (Magic); Hail Of Arrows; Imbue Arrow; Phase Arrow; Seeker Arrow; Shield Proficiency; Weapon Proficiency (Martial)</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Claws; Eschew Materials; Weapon Proficiency (Simple)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Armor Training; Bravery; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial); Weapon Training</td>
+        <td><b>Arcane Archer Features</b>: Arcane Caster Level Bonus; Armor Proficiency (Light; Medium; Shield); Arrow Of Death; Enhance Arrows (Aligned); Enhance Arrows (Distance); Enhance Arrows (Elemental); Enhance Arrows (Magic); Hail Of Arrows; Imbue Arrow; Phase Arrow; Seeker Arrow; Weapon Proficiency (Martial Weapons)</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Claws; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -144,7 +145,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -12 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -12 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Armor Training: Reduces armor skill check penalty by 2</i></td>
       </tr><tr style="text-align:center">
@@ -176,7 +177,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 136</td>
         <td><b>Initiative</b>: +6</td>
-        <td><b>Armor Class</b>: 21</td>
+        <td><b>AC/Touch/Flat</b>: 21/12/19</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +17/+19/+19</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +19/31</td>
@@ -185,9 +186,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -195,15 +195,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Scale Mail</td>
         <td><b>Shield</b>: Tower</td>
-        <td><b>Weapons</b>: Heavy Pick (+17 d6+2 x4@20); Heavy Spiked Shield (+17 d6+2 x2@20); Longbow (+18 d8 x3@20 R100'); Shortspear (+17 d6+2 x2@20 R20'); Unarmed (+17 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Pick (+17 d6+2 x4@20); Heavy Spiked Shield (+17 d6+2 x2@20); Longbow (+18 d8 x3@20 R100'); Shortspear (+17 d6+2 x2@20 R20'); Unarmed Strike (+17 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +36</i></td>
+        <td><i>Armor Class Modifiers: Armor +5; Deflection +0; Dexterity +2; Dodge +0; Natural Armor +0; Shield +4; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 2</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Constitution Hit Points Adjustment: +36</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -213,7 +215,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Tower Shield Penalty: -2 attack</i></td>
+        <td><i>Tower Shield Penalty: -2 attacks</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Longbow): +1 Longbow Attack Modifier</i></td>
       </tr><tr style="text-align:center">
@@ -286,55 +288,55 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Rope (S1 Tran): R180' 90' rope obeys self for 8 rd</td>
+      <td>Animate Rope (S1 Tran): R180' 90' rope obeys self for 8 rd; can entangle a target within 1' of it with a successful ranged touch attack (DC 20 Escape Artist ends, and DC 23 Strength breaks the rope)</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Mark (S0 Univ): Inscribes permanent personal rune on touched</td>
+      <td>Arcane Mark (S0 Univ): Inscribes a personal rune on touched, lasting a month on a creature or permanently on an object</td>
     </tr><tr style="text-align:left">
-      <td>Detect Secret Doors (S1 Divi): R60' Cone gives self info on secret doors for conc or 8 min</td>
+      <td>Detect Secret Doors (S1 Divi): 60' cone reveals secret doors and their mechanisms for concentration up to 8 min</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (S3 Evoc): R720' Inflicts 8d6 HP (DC 12 Ref half) in 20' radius</td>
+      <td>Fireball (S3 Evoc): R720' Inflicts 8d6 HP fire in a 20' radius (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Flaming Sphere (S2 Evoc): R180' 5' diameter sphere inflicts 3d6 HP (DC 11 Ref neg), jumps or moves 30'/rd for 8 rd</td>
+      <td>Flaming Sphere (S2 Evoc): R180' 5' diameter sphere inflicts 3d6 HP (Ref neg), jumps or moves 30'/rd for 8 rd</td>
     </tr><tr style="text-align:left">
-      <td>Flare (S0 Evoc): R45' Target dazzled (DC 9 Fort neg) for 1 min</td>
+      <td>Flare (S0 Evoc): R45' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
       <td>Fox's Cunning (S2 Tran): Touched gains +4 Intelligence for 8 min</td>
     </tr><tr style="text-align:left">
-      <td>Greater Magic Weapon (S3 Tran): R45' target weapon gains +2 attack and damage for 8 hr</td>
+      <td>Greater Magic Weapon (S3 Tran): R45' Target weapon or up to 50 projectiles in a container gain +2 attacks and damage for 8 hr</td>
     </tr><tr style="text-align:left">
       <td>Identify (S1 Divi): R60' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or 24 rd</td>
     </tr><tr style="text-align:left">
-      <td>Illusory Wall (S4 Illu): R45' Creates permanent illusionary 1'x10'x10' surface (DC 13 Will disbelieve)</td>
+      <td>Illusory Wall (S4 Illu): R45' Permanently creates an illusionary 1'x10'x10' surface (save Will upon interaction disbelieves)</td>
     </tr><tr style="text-align:left">
       <td>Jump (S1 Tran): Touched +20 Acrobatics (jump) for 8 min</td>
     </tr><tr style="text-align:left">
-      <td>Obscure Object (S2 Abju): Touched gains immunity to divination (DC 11 Will neg) for 8 hr</td>
+      <td>Obscure Object (S2 Abju): Touched object gains immunity to divination (save Will negates) for 8 hr</td>
     </tr><tr style="text-align:left">
-      <td>Open/Close (S0 Tran): R45' Target up to 30 lb opens or closes (DC 9 Will neg)</td>
+      <td>Open/Close (S0 Tran): R45' Target object of up to 30 lb opens or closes (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Phantom Steed (S3 Conj): Creates mount (15 HP, AC 18, move 80') that only target can ride for 8 hr</td>
     </tr><tr style="text-align:left">
-      <td>Phantom Trap (S2 Illu): Touched object appears trapped</td>
+      <td>Phantom Trap (S2 Illu): Makes the touched object appear trapped</td>
     </tr><tr style="text-align:left">
-      <td>Pyrotechnics (S2 Tran): R720' Target fire becomes fireworks (R120' blinded for 1d4+1 rd (DC 11 Will neg)) or choking smoke in 20' radius (suffer -4 Strength and Dexterity for d4+1 rd (DC 11 Fort neg)) for 8 rd</td>
+      <td>Pyrotechnics (S2 Tran): R720' Target fire shoots fireworks, blinding creatures within 120' for 1d4+1 rd (save Will negates), or emits a 20' radius of choking smoke for 8 rd, inflicting -4 Strength and Dexterity for 1d4+1 rd (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
       <td>Ray Of Enfeeblement (S1 Necr): R45' Ranged touch inflicts -1d6+4 Strength for 8 rd</td>
     </tr><tr style="text-align:left">
-      <td>Ray Of Frost (S0 Evoc): R45' Ranged touch inflicts 1d3 HP</td>
+      <td>Ray Of Frost (S0 Evoc): R45' Ranged touch inflicts 1d3 HP cold</td>
     </tr><tr style="text-align:left">
-      <td>Secret Page (S3 Tran): Hides content of touched page permanently</td>
+      <td>Secret Page (S3 Tran): Permanently alters the text on a touched page so that a password is required to read it</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Conjuration (S4 Illu): Mimics conjuration (creation or summoning) spell up to 3rd level (DC 13 Will 20% effect)</td>
+      <td>Shadow Conjuration (S4 Illu): Mimics a creation or summoning conjuration spell of up to 3rd level (save Will reduces the mimicked spell's effects by 80%); mimicked spells are subject to SR and have a save DC as a 4th-level spell, and creatures summoned by a mimicked spell have 20% of their normal hit points</td>
     </tr><tr style="text-align:left">
-      <td>Shield (S1 Abju): Self gains +4 AC and immunity to <i>Magic Missile</i> for 8 min</td>
+      <td>Shield (S1 Abju): Creates a disk that gives self a +4 shield bonus to Armor Class and immunity to <i>Magic Missile</i> for 8 min</td>
     </tr><tr style="text-align:left">
       <td>Solid Fog (S4 Conj): R180' Fog in 20' radius obscures vision, reduces Speed to half, and imposes -2 attack and damage for 8 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Monster II (S2 Conj): R45' 1 2nd- or 1d3 1st-level creatures appear and fight foes for 8 rd</td>
+      <td>Summon Monster II (S2 Conj): R45' Summons 1 2nd-level or 1d3 1st-level creatures that fight foes and obey orders for 8 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tiny Hut (S3 Evoc): 20' sphere resists elements for 16 hr</td>
+      <td>Tiny Hut (S3 Evoc): Creates a 20'-radius sphere that provides shelter for 10 Medium creatures, resisting heat, cold, and weather, for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Fatigue (S0 Necr): Touch inflicts fatigue for 8 rd (DC 9 Fort neg)</td>
+      <td>Touch Of Fatigue (S0 Necr): Touch attack inflicts fatigue for 8 rd (save Fortitude negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

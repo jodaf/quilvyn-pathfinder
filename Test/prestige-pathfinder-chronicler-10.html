@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 106866/120000 (3.5)</td>
       <td><b>Level</b>: 15</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 86/100/150</td>
     </tr></table>
@@ -97,7 +98,7 @@ var attributes = {
         <td><b>Feats</b>: Acrobatic Steps; Craft Wondrous Item; Simple Weapon Proficiency; Skill Focus (Diplomacy); Skill Focus (Knowledge (Religion)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Two-Weapon Fighting</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
         <td><b>Pathfinder Chronicler Features</b>: Bardic Knowledge; Bardic Performance; Call Down The Legends; Countersong; Deep Pockets; Dirge Of Doom; Distraction; Epic Tales; Fascinate; Greater Epic Tales; Improved Aid; Inspire Action; Inspire Competence; Inspire Courage; Lay Of The Exalted Dead; Live To Tell The Tale; Master Scribe; Pathfinding; Suggestion; Whispering Campaign</td>
-        <td><b>Bard Features</b>: Armor Proficiency (Light); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Competence; Inspire Courage; Lore Master; Shield Proficiency; Simple Somatics; Versatile Performance; Versatile Skill (Comedy); Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip); Well-Versed</td>
+        <td><b>Bard Features</b>: Armor Proficiency (Light; Shield); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Competence; Inspire Courage; Lore Master; Simple Somatics; Versatile Performance; Versatile Skill (Comedy); Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip); Well-Versed</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -162,7 +163,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -4 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -4 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bardic Knowledge: +7 all Knowledge</i></td>
       </tr><tr style="text-align:center">
@@ -210,7 +211,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 59</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 18</td>
+        <td><b>AC/Touch/Flat</b>: 18/12/16</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+11/+12</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +11/23</td>
@@ -219,9 +220,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Shield</td>
+        <td><b>Weapon Proficiency</b>: Longsword; Rapier; Sap; Short Sword; Shortbow; Simple Weapons; Whip</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -229,15 +229,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Heavy Wooden</td>
-        <td><b>Weapons</b>: Club (+11 d6+1 x2@20 R10'); Heavy Mace (+11 d8+1 x2@20); Longsword (+11 d8+1 x2@19); Unarmed (+11 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Club (+11 d6+1 x2@20 R10'); Heavy Mace (+11 d8+1 x2@20); Longsword (+11 d8+1 x2@19); Unarmed Strike (+11 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: -15</i></td>
+        <td><i>Armor Class Modifiers: Armor +4; Deflection +0; Dexterity +2; Dodge +0; Natural Armor +0; Shield +2; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: -15</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -292,33 +292,33 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Calm Emotions (B2 Ench): R150' Creatures in 20' radius pacified (DC 15 Will neg) for conc or 5 rd</td>
+      <td>Calm Emotions (B2 Ench): R150' Pacifies creatures in a 20' radius (save Will negates), negating rage and morale bonuses, for concentration up to 5 rd or until any target is attacked</td>
     </tr><tr style="text-align:left">
-      <td>Comprehend Languages (B1 Divi): Self understands all languages for 50 min</td>
+      <td>Comprehend Languages (B1 Divi): Allows self to understand touched written text and words spoken in any language by touched creatures for 50 min</td>
     </tr><tr style="text-align:left">
-      <td>Dancing Lights (B0 Evoc): R150' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+      <td>Dancing Lights (B0 Evoc): R150' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Secret Doors (B1 Divi): R60' Cone gives self info on secret doors for conc or 5 min</td>
+      <td>Detect Secret Doors (B1 Divi): 60' cone reveals secret doors and their mechanisms for concentration up to 5 min</td>
     </tr><tr style="text-align:left">
-      <td>Erase (B1 Tran): R35' Two pages of writing vanish (magical writing DC 15 caster check neg)</td>
+      <td>Erase (B1 Tran): R35' Two pages of writing vanish; magical writing requires a successful 1d20+5 caster check with a DC of 15</td>
     </tr><tr style="text-align:left">
-      <td>Flare (B0 Evoc): R35' Target dazzled (DC 13 Fort neg) for 1 min</td>
+      <td>Flare (B0 Evoc): R35' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (B0 Illu): R35' Produces sound volume of 20 humans (DC 13 Will disbelieve) for 5 rd</td>
+      <td>Ghost Sound (B0 Illu): R35' Produces the sound volume of 20 humans (save Will upon interaction disbelieves) for 5 rd</td>
     </tr><tr style="text-align:left">
-      <td>Heroism (B2 Ench): Touched gains +2 attack, saves, and skill checks for 50 min</td>
+      <td>Heroism (B2 Ench): Touched gains +2 attacks, saves, and skill checks for 50 min</td>
     </tr><tr style="text-align:left">
       <td>Identify (B1 Divi): R60' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or 15 rd</td>
     </tr><tr style="text-align:left">
-      <td>Lullaby (B0 Ench): R150' Creatures in 10' radius suffer -5 Perception, -2 Will vs. sleep for conc + 5 rd (DC 13 Will neg)</td>
+      <td>Lullaby (B0 Ench): R150' Creatures in 10' radius suffer -5 Perception, -2 Will vs. sleep for conc + 5 rd (Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Rage (B2 Ench): R150' 1 willing targets in 15' radius gain +2 Strength, +2 Constitution, and +1 Will and suffer -2 AC for conc + 5 rd</td>
+      <td>Rage (B2 Ench): R150' Willing target gains +2 Strength, +2 Constitution, and +1 Will and suffers -2 Armor Class for concentration + 5 rd</td>
     </tr><tr style="text-align:left">
       <td>Resistance (B0 Abju): Touched gains +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Instrument (B0 Conj): Musical instrument appears for 5 min</td>
+      <td>Summon Instrument (B0 Conj): Summons a specified musical instrument, small enough to be held and playable only by self, for 5 min</td>
     </tr><tr style="text-align:left">
-      <td>Undetectable Alignment (B1 Abju): R35' Conceals target alignment (DC 14 Will neg) for 1 dy</td>
+      <td>Undetectable Alignment (B1 Abju): R35' Conceals the target's alignment from divination (save Will negates) for 24 hr</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

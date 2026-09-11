@@ -50,6 +50,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 127744/136000 (3.5)</td>
       <td><b>Level</b>: 16</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 33/66/100</td>
     </tr></table>
@@ -81,8 +82,8 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic Steps; Acrobatic; Blind-Fight; Dodge; Great Fortitude; Improved Unarmed Strike; Investigator; Mobility; Negotiator; Quick Draw; Simple Weapon Proficiency; Vital Strike; Weapon Finesse</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Duelist Features</b>: Acrobatic Charge; Armor Proficiency (Light); Canny Defense; Combat Reflexes; Crippling Critical (Duelist); Deflect Arrows; Elaborate Defense; Enhanced Mobility; Grace; Improved Reaction; No Retreat; Parry; Precise Strike (Duelist); Riposte; Weapon Proficiency (Martial)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Armor Training; Bravery; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial); Weapon Training</td>
+        <td><b>Duelist Features</b>: Acrobatic Charge; Armor Proficiency (Light); Canny Defense; Combat Reflexes; Crippling Critical (Duelist); Deflect Arrows; Elaborate Defense; Enhanced Mobility; Grace; Improved Reaction; No Retreat; Parry; Precise Strike (Duelist); Riposte; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -141,18 +142,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 135</td>
         <td><b>Initiative</b>: +5</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/13/10</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +16/+16/+17</td>
-        <td><b>Combat Maneuver Bonus/Defense</b>: +16/28</td>
+        <td><b>Combat Maneuver Bonus/Defense</b>: +16/29</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -160,21 +160,23 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Composite Shortbow (+17 d6 x3@20 R70'); Guisarme (+16 2d4 x3@20); Light Pick (+17 d4 x4@20); Unarmed (+17 d3 x2@20)</td>
+        <td><b>Weapons</b>: Composite Shortbow (+17 d6 x3@20 R70'); Guisarme (+16 2d4 x3@20); Light Pick (+17 d4 x4@20); Unarmed Strike (+17 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Canny Defense: +1 AC in light or no armor</i></td>
+        <td><i>Armor Class Modifiers: Armor +0; Deflection +0; Dexterity +1; Dodge +2; Natural Armor +0; Shield +0; Size +0</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Canny Defense: +1 dodge bonus to Armor Class; holding a shield or wearing medium or heavy armor negates</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +32</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Reaction: +4 Initiative</i></td>
       </tr><tr style="text-align:center">
