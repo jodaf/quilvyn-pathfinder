@@ -1642,7 +1642,8 @@ Pathfinder.FEATURES = {
     'Section=combat Note="Critical hit inflicts exhausted"',
   'Exile':'Section=combat Note="+2 Initiative"',
   'Expert Duelist':
-    'Section=combat Note="+1 AC and CMD when adjacent to a single foe"',
+    'Section=combat ' +
+    'Note="+1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class"',
   'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Extended Illusions':
     'Section=magic Note="Illusion duration increased by %V rd"',
@@ -1693,8 +1694,7 @@ Pathfinder.FEATURES = {
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
   'Fleeting Glance':'Section=magic Note="May become invisible %V rd/dy"',
   'Focused Mind':'Section=magic Note="+2 concentration checks"',
-  'Force For Good':
-    'Section=magic Note="+1 caster level on good-aligned spells"',
+  'Force For Good':'Section=magic Note="+1 caster level on Good spells"',
   'Force Missile':
     'Section=magic Note="<i>Magic Missile</i> inflicts 1d4+%V HP %1/dy"',
   'Forewarned':
@@ -4571,7 +4571,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Perception,Ride,Stealth,Survival ' +
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
-      '"1:Weapon Proficiency (Martial Weapons)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Enhance Arrows (Magic)","2:Arcane Caster Level Bonus",' +
       '"2:Imbue Arrow","3:Enhance Arrows (Elemental)","4:Seeker Arrow",' +
       '"5:Enhance Arrows (Distance)","6:Phase Arrow","8:Hail Of Arrows",' +
@@ -4649,7 +4649,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"9:No Retreat","10:Crippling Critical (Duelist)"',
   'Eldritch Knight':
     'Require=' +
-      '"features.Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
+      '"weaponProficiency.Martial Weapons",' +
       '"Sum \'^spells\\..*[BSW]3\' >= 0" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Skills=' +
@@ -5082,6 +5082,8 @@ Pathfinder.identityRules = function(
   );
   rules.defineRule
     ('combatNotes.favoredClassHitPoints', 'favoredClassHitPoints', '=', null);
+  rules.defineRule('features.Large', 'size', '=', 'source=="Large" ? 1 : null');
+  rules.defineRule('features.Small', 'size', '=', 'source=="Small" ? 1 : null');
   rules.defineRule
     ('skillNotes.favoredClassSkillRanks', 'favoredClassSkillPoints', '=',null);
   rules.defineRule
@@ -7254,7 +7256,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Duelist') {
 
     rules.defineRule
-      ('armorClassDodgeModifier', 'combatNotes.cannyDefense.1', '+', null);
+      ('armorClassDodgeModifier', 'combatNotes.cannyDefense.1', '+=', null);
     rules.defineRule('combatNotes.cannyDefense',
       'intelligenceModifier', '+=', 'source < 0 ? null : source',
       classLevel, 'v', null
@@ -8228,10 +8230,6 @@ Pathfinder.traitRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpert', '+', '1'
     );
-  } else if(name == 'Expert Duelist') {
-    rules.defineRule('armorClass', 'combatNotes.expertDuelist', '+', '1');
-    rules.defineRule
-      ('combatManeuverDefense', 'combatNotes.expertDuelist', '+', '1');
   } else if(name == 'Magical Talent (Trait)') {
     rules.defineRule
       ('spellSlots.Talent0', 'features.Magical Talent (Trait)', '=', '1');

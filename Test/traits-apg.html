@@ -50,7 +50,7 @@ var attributes = {
   "traits.Undead Slayer":1, "traits.Vagabond Child":1, "traits.Veteran Of Battle":1, 
   "traits.Warrior Of Old":1, "traits.Well-Informed":1, "traits.Wisdom In The Flesh":1, 
   "traits.World Traveler (Trait)":1, "weapons.Dagger":1, "weapons.Punching Dagger":1, "weapons.Shortspear":1, 
-  "weapons.Unarmed":1, "wisdom":14
+  "wisdom":14
 };
   </script>
 </head>
@@ -84,6 +84,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 9/12 (PSOP)</td>
       <td><b>Level</b>: 4</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 33/66/100</td>
     </tr></table>
@@ -109,8 +110,8 @@ var attributes = {
         <td><b>Feats</b>: Acrobatic; Sickening Critical; Skill Focus (Acrobatics)</td>
         <td><b>Traits</b>: Adopted; Anatomist; Animal Friend; Apothecary; Armor Expert; Birthmark; Bitter Nobleman; Brute; Bullied; Bully; Canter; Caretaker; Charming; Child Of Nature; Child Of The Streets; Child Of The Temple; Classically Schooled; Courageous; Dangerously Curious; Deft Dodger; Demon Hunter; Desert Child; Devotee Of The Green; Dirty Fighter; Divine Courtesan; Divine Warrior; Ear For Music; Ease Of Faith; Elven Reflexes; Exile; Eyes And Ears Of The City; Failed Apprentice; Fast-Talker; Fencer; Flame Of The Dawnflower; Focused Mind; Forlorn; Fortified Drinker; Freedom Fighter (Halfling); Gifted Adept; Goldsniffer; Guardian Of The Forge; Hedge Magician; Highlander; History Of Heresy; Indomitable Faith; Killer; Log Roller; Lore Seeker; Magic Is Life; Magical Knack; Magical Lineage; Magical Talent (Trait); Mathematical Prodigy; Militia Veteran; Missionary; Natural-Born Leader; Outcast; Patient Optimist; Poverty-Stricken; Rapscallion; Reactionary; Resilient; Rich Parents; River Rat; Sacred Conduit; Sacred Touch; Savanna Child; Scholar Of Ruins; Scholar Of The Great Beyond; Sheriff; Skeptic; Starchild; Suspicious; Tavern Owner; Tunnel Fighter; Undead Slayer; Vagabond Child; Veteran Of Battle; Warrior Of Old; Well-Informed; Wisdom In The Flesh; World Traveler (Trait)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Expert Features</b>: Armor Proficiency (Light); Weapon Proficiency (Simple)</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Claws; Eschew Materials; Weapon Proficiency (Simple)</td>
+        <td><b>Expert Features</b>: Armor Proficiency (Light); Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Claws; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -379,7 +380,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 14</td>
         <td><b>Initiative</b>: +11</td>
-        <td><b>Armor Class</b>: 11</td>
+        <td><b>AC/Touch/Flat</b>: 11/11/10</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +2/+2/+3</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +2/13</td>
@@ -389,8 +390,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -398,15 +398,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+2 d4+1 x2@19 R10'); Punching Dagger (+2 d4+1 x3@20); Shortspear (+2 d6 x2@20 R20'); Unarmed (+2 d3 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+2 d4+1 x2@19 R10'); Punching Dagger (+2 d4+1 x3@20); Shortspear (+2 d6 x2@20 R20'); Unarmed Strike (+2 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +4</i></td>
+        <td><i>Armor Class Modifiers: Armor +0; Deflection +0; Dexterity +1; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -517,21 +517,21 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Bleed (S0 Necr): R30' Stabilized target suffers 1 HP and resumes dying (DC 11 Will neg)</td>
+      <td>Bleed (S0 Necr): R30' Stabilized target suffers 1 HP and resumes dying (Will neg)</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (S1 Necr): R30' Target w/up to 5 HD flees for 1d4 rd (DC 12 Will shaken for 1 rd)</td>
+      <td>Cause Fear (S1 Necr): R30' Target with up to 5 HD becomes frightened and flees for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Comprehend Languages (S1 Divi): Self understands all languages for 30 min</td>
+      <td>Comprehend Languages (S1 Divi): Allows self to understand touched written text and words spoken in any language by touched creatures for 30 min</td>
     </tr><tr style="text-align:left">
-      <td>Flare (S0 Evoc): R30' Target dazzled (DC 11 Fort neg) for 1 min</td>
+      <td>Flare (S0 Evoc): R30' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Flare (Talent0 Evoc): R35' Target dazzled (DC 11 Fort neg) for 1 min</td>
+      <td>Flare (Talent0 Evoc): R35' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (S0 Illu): R30' Produces sound volume of 12 humans (DC 11 Will disbelieve) for 3 rd</td>
+      <td>Ghost Sound (S0 Illu): R30' Produces the sound volume of 12 humans (save Will upon interaction disbelieves) for 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Magic Missile (S1 Evoc): R130' 2 missiles inflict 1d4+1 HP each in 15' radius</td>
+      <td>Magic Missile (S1 Evoc): R130' 2 missiles in a 15' radius each inflict 1d4+1 HP force</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Fatigue (S0 Necr): Touch inflicts fatigue for 3 rd (DC 11 Fort neg)</td>
+      <td>Touch Of Fatigue (S0 Necr): Touch attack inflicts fatigue for 3 rd (save Fortitude negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

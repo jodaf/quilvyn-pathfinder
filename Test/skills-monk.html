@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 750/1000 (3.5)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -86,17 +87,11 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Reflexes; Skill Focus (Disguise)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Monk Features</b>: Armor Class Bonus; Flurry Of Blows; Improved Grapple; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club/Dagger/Handaxe/Heavy Crossbow/Javelin/Kama/Light Crossbow/Nunchaku/Quarterstaff/Sai/Shortspear/Short Sword/Shuriken/Siangham/Sling/Spear)</td>
+        <td><b>Monk Features</b>: Armor Class Bonus; Flurry Of Blows; Improved Grapple; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
-      <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Unarmed Strike: Has Improved Unarmed Strike features</i></td>
-      </tr></table>
-</td>
+      <td><b>Feature Notes</b>: <i>Bonus Feat: +1 General Feat</i></td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -205,7 +200,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 11</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/10/12</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +0/+3/+0</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/13</td>
@@ -214,9 +209,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Limited</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Short Sword; Shortspear; Shuriken; Siangham; Sling; Spear</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -224,19 +217,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Halberd (-1 d10+4 x3@20); Scythe (-1 2d4+4 x4@20); Spiked Gauntlet (-1 d4+3 x2@20); Unarmed (+3 d6+3 x2@20)</td>
+        <td><b>Weapons</b>: Halberd (-1 d10+4 x3@20); Scythe (-1 2d4+4 x4@20); Spiked Gauntlet (-1 d4+3 x2@20); Unarmed Strike (+3 d6+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +0; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -1</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Halberd: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Scythe: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Spiked Gauntlet: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -244,7 +233,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Unarmed Strike: Unarmed hit inflicts d6 HP</i></td>
+        <td><i>Unarmed Strike: Unarmed hit inflicts d6 HP/Has the Improved Unarmed Strike feature</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Halberd: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Scythe: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Spiked Gauntlet: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Combat Reflexes: May take AOO while flat-footed and 1 AOO/rd</td>
       </tr><tr style="text-align:center">

@@ -46,6 +46,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 413/1300 (Fast)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 50/100/150</td>
     </tr></table>
@@ -54,8 +55,6 @@ var attributes = {
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Dwarf Ability Adjustment: +2 Constitution/+2 Wisdom/-2 Charisma</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Slow: -10 Speed</i></td>
     </tr><tr style="text-align:center">
       <td><i>Steady: Suffers no speed penalty in heavy armor or with heavy load</i></td>
     </tr></table>
@@ -76,8 +75,8 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Lightning Reflexes; Shield Focus</td>
-        <td><b>Dwarf Features</b>: Darkvision; Defensive Training; Dwarf Ability Adjustment; Dwarf Hatred; Greed; Hardy; Slow; Stability; Steady; Stonecunning; Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe); Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Dwarf Features</b>: Darkvision; Defensive Training; Dwarf Ability Adjustment; Dwarf Hatred; Greed; Hardy; Stability; Steady; Stonecunning; Weapon Familiarity (Dwarven Urgosh; Dwarven Waraxe); Weapon Proficiency (Battleaxe; Heavy Pick; Warhammer)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -104,7 +103,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -5 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -5 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td>Greed: +2 Appraise (precious metals, gems)</td>
       </tr><tr style="text-align:center">
@@ -124,7 +123,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 14</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 17</td>
+        <td><b>AC/Touch/Flat</b>: 17/10/17</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+2/+1</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +2/12</td>
@@ -133,9 +132,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Battleaxe; Heavy Pick; Martial Weapons; Simple Weapons; Warhammer</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -143,15 +141,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chainmail</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dart (+1 d4+1 x2@20 R20'); Javelin (+1 d6+1 x2@20 R30'); Punching Dagger (+2 d4+1 x3@20); Unarmed (+2 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Dart (+1 d4+1 x2@20 R20'); Javelin (+1 d6+1 x2@20 R30'); Punching Dagger (+2 d4+1 x3@20); Unarmed Strike (+2 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor +6; Deflection +0; Dexterity +0; Dodge +0; Natural Armor +0; Shield +1; Size +0</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
