@@ -957,6 +957,70 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Can take an AOO when a foe enters threat area once per rage"',
 
+  // Bard
+  'Bardic Knowledge':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V all Knowledge",' +
+      '"Can use any Knowledge skill untrained"',
+  'Bardic Performance':
+    'Section=skill ' +
+    'Note="Can use Bardic Performance effects %{bardicPerformanceLevel*2+2+charismaModifier+(skillNotes.extraPerformance||0)} rd per day, starting or changing each as a %{bardicPerformanceLevel<7?\'standard\':bardicPerformanceLevel<13?\'move\':\'swift\'} action"',
+  'Cantrips':'Section=magic Note="Knows 0-level spells"',
+  'Countersong':
+    'Section=skill ' +
+    'Note="R30\' Can allow listeners to substitute the Bardic Performance check for saves vs. sonic magic and give them additional saves each rd vs. existing effects"',
+  'Deadly Performance':
+    'Section=skill ' +
+    'Note="R30\' Can use Bardic Performance to kill a target (save Will DC %{10+bardicPerformanceLevel//2+charismaModifier} inflicts staggered for 1d4 rd and prevents additional attempts for 24 hr)"',
+  'Dirge Of Doom':
+    'Section=skill ' +
+    'Note="R30\' Can use Bardic Performance to inflict shaken on foes"',
+  'Distraction':
+    'Section=skill ' +
+    'Note="R30\' Can allow listeners to substitute the Bardic Performance check for saves vs. pattern and figment illusions and give them additional saves each rd vs. existing effects"',
+  'Fascinate':
+    SRD35.FEATURES.Fascinate
+    .replace('vs. Perform check', 'DC %{10+bardicPerformanceLevel//2+charismaModifier}'),
+  'Frightening Tune':
+    'Section=skill ' +
+    'Note="R30\' Can use Bardic Performance to cause foes to flee (save Will DC %{10+bardicPerformanceLevel//2+charismaModifier} negates for 24 hr)"',
+  'Inspire Competence':
+    'Section=skill ' +
+    'Note="R30\' Can use Bardic Performance to give allies +%{(bardicPerformanceLevel+5)//4} skill checks"',
+  'Inspire Courage':
+    'Section=skill ' +
+    'Note="Can use Bardic Performance to give allies +%{(inspireCourageLevel+7)//6} attack, damage, and charm and fear saves"',
+  'Inspire Greatness':
+    SRD35.FEATURES['Inspire Greatness']
+    .replace('Bardic Music', 'Bardic Performance')
+    .replace(/, lasting.*ends/, ''),
+  'Inspire Heroics':
+    SRD35.FEATURES['Inspire Heroics']
+    .replace('Bardic Music', 'Bardic Performance')
+    .replaceAll('levels.Bard', 'bardicPerformanceLevel')
+    .replace(/, lasting.*ends/, ''),
+  'Jack-Of-All-Trades':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"Can use any skill untrained%{levels.Bard>18?\' and can take 10 on any skill\':\'\'}",' +
+      '"All skills are class skills"',
+  'Lore Master':
+    'Section=skill ' +
+    'Note="Can take 10 on any ranked Knowledge skill and can take 20 on any Knowledge skill %{levels.Bard>10?(levels.Bard+1)//6+\' times\':\'once\'} per day"',
+  'Mass Suggestion':SRD35.FEATURES['Mass Suggestion'],
+  'Simple Somatics':SRD35.FEATURES['Simple Somatics'],
+  'Soothing Performance':
+    'Section=magic ' +
+    'Note="R30\' Can use a 4 rd Bardic Performance to invoke <i>Mass Cure Serious Wounds</i> effects; also removes fatigued, sickened, and shaken" ' +
+    'Spells="Mass Cure Serious Wounds" ' +
+    'SpellAbility=Charisma',
+  'Suggestion':SRD35.FEATURES.Suggestion,
+  'Versatile Performance':'Section=feature Note="%V selections"',
+  'Well-Versed':
+    'Section=save ' +
+    'Note="+4 vs. bardic performance, sonic, and language-dependent effects"',
+
   // Shared with SRD35
   'A Thousand Faces':
     'Section=magic Note="May use <i>Alter Self</i> effects at will"',
@@ -979,11 +1043,6 @@ Pathfinder.FEATURES = {
   'Aura Of Courage':
     'Section=save Note="Immune to fear/R10\' Allies +4 vs. fear"',
   'Aura Of Good':'Section=feature Note="Visible to <i>Detect Good</i>"',
-  'Bardic Knowledge':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+%V all Knowledge",' +
-      '"May use any Knowledge untrained"',
   'Blind-Fight':
     'Section=combat ' +
     'Note="May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded"',
@@ -1008,9 +1067,6 @@ Pathfinder.FEATURES = {
     'Section=companion Note="Reflex save yields no damage instead of half"',
   'Companion Improved Evasion':
     'Section=companion Note="Failed Reflex save yields half damage"',
-  'Countersong':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives Perform check vs. sonic magic"',
   'Craft Magic Arms And Armor':
     'Section=magic ' +
     'Note="May create and mend magic weapons, armor, and shields"',
@@ -1074,9 +1130,6 @@ Pathfinder.FEATURES = {
   'Familiar':'Section=feature Note="Special bond and abilities"',
   'Far Shot':
     'Section=combat Note="Reduces range penalty by 1 per range increment"',
-  'Fascinate':
-    'Section=magic ' +
-    'Note="R90\' Bardic Performance holds %V creatures spellbound (DC %1 Will neg)"',
   'Fast Movement (Monk)':SRD35.FEATURES['Fast Movement (Monk)'],
   'Favored Enemy':
     'Section=combat,skill ' +
@@ -1145,18 +1198,6 @@ Pathfinder.FEATURES = {
   'Improvised Weapon Mastery':
     'Section=combat ' +
     'Note="Suffers no penalty for improvised weapon, gains +1 damage step and crit 19-20/x2 on improvised weapon"',
-  'Inspire Competence':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives allies +%V skill checks"',
-  'Inspire Courage':
-    'Section=magic ' +
-    'Note="Bardic Performance gives allies +%V attack, damage, and charm and fear saves"',
-  'Inspire Greatness':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives %V allies 2d10 temporary HP, +2 attack, and +1 Fortitude"',
-  'Inspire Heroics':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives %V allies +4 AC and saves"',
   'Iron Will':'Section=save Note="+2 Will"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
   'Knowledge Domain':
@@ -1176,9 +1217,6 @@ Pathfinder.FEATURES = {
     'Section=feature Note="Gains x2 normal distance in poor light during rage"',
   'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%1 Use Magic Device"',
   'Manyshot':'Section=combat Note="May fire 2 arrows simultaneously"',
-  'Mass Suggestion':
-    'Section=magic ' +
-    'Note="May use <i>Suggestion</i> effects on all fascinated creatures (DC %V Will neg)"',
   'Maximize Spell':
     'Section=magic ' +
     'Note="May use +3 spell slot to maximize all variable effects on chosen spell"',
@@ -1249,8 +1287,6 @@ Pathfinder.FEATURES = {
   'Silent Spell':
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out speech"',
-  'Simple Somatics':
-    'Section=magic Note="Suffers no arcane spell failure in light armor"',
   'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
   'Skill Mastery':
     'Section=skill Note="May take 10 despite distraction on %V chosen skills"',
@@ -1298,9 +1334,6 @@ Pathfinder.FEATURES = {
   'Stunning Fist':
     'Section=combat ' +
     'Note="Unarmed strike inflicts stunned for 1 rd %V/dy (DC %1 Fort neg)"',
-  'Suggestion':
-    'Section=magic ' +
-    'Note="May use <i>Suggestion</i> effects on 1 fascinated creature (DC %V Will neg)"',
   'Swift Tracker':'Section=skill Note="May track at full speed"',
   'Timeless Body':'Section=feature Note="Suffers no aging penalties"',
   'Tongue Of The Sun And Moon':
@@ -1455,8 +1488,6 @@ Pathfinder.FEATURES = {
   'Balanced Offensive':
     'Section=combat ' +
     'Note="R30\' Ranged touch inflicts 1d6+%{level//2} HP choice of nonlethal (plus -2 attack for 1 rd), acid, fire, cold, or electricity %{1+level//5}/dy"',
-  'Bardic Performance':
-    'Section=feature Note="May use Bardic Performance effect %V rd/dy"',
   'Battle Rage':
     'Section=combat Note="Touch gives +%V damage bonus for 1 rd %1/dy"',
   'Beastspeaker':
@@ -1638,9 +1669,6 @@ Pathfinder.FEATURES = {
     'Note="R30\' May use Intimidate to demoralize foes using focused weapon"',
   'Deadly Aim':
     'Section=combat Note="May suffer -%V ranged attack to gain +%1 damage"',
-  'Deadly Performance':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance kills target (DC %V Will staggered for 1d4 rd)"',
   'Deadly Stroke':
     'Section=combat ' +
     'Note="x2 damage and 1 point Constitution damage w/focused weapon against stunned or flat-footed foe"',
@@ -1689,17 +1717,12 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="May teleport %V\'/dy; including others uses equal portion of daily distance"',
   'Dimensional Steps':'Section=magic Note="May teleport %V\'/dy"',
-  'Dirge Of Doom':
-    'Section=magic Note="R30\' Bardic Performance inflicts shaken"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
   'Dispelling Attack':
     'Section=magic Note="Sneak attack acts as <i>Dispel Magic</i> on target"',
   'Dispelling Touch':
     'Section=magic Note="Touch inflicts <i>Dispel Magic</i> %V/dy"',
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
-  'Distraction':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance gives Perform check vs. visual magic"',
   'Divine Courtesan':
     'Section=skill,skill ' +
     'Note=' +
@@ -1775,7 +1798,7 @@ Pathfinder.FEATURES = {
   'Extra Ki':'Section=feature Note="+%V Ki pool"',
   'Extra Lay On Hands':'Section=magic Note="Lay On Hands +%V/dy"',
   'Extra Mercy':'Section=magic Note="+%V Mercy effects"',
-  'Extra Performance':'Section=feature Note="Bardic Performance +%V rd/dy"',
+  'Extra Performance':'Section=skill Note="Bardic Performance +%V rd/dy"',
   'Extra Rage':'Section=combat Note="Rage +%V rd/dy"',
   'Eyes And Ears Of The City':
     'Section=skill Note="+1 Perception/Perception is a class skill"',
@@ -1844,9 +1867,6 @@ Pathfinder.FEATURES = {
   "Freedom's Call":
     'Section=magic ' +
     'Note="R30\' May give allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken %V rd/dy"',
-  'Frightening Tune':
-    'Section=magic ' +
-    'Note="R30\' Bardic Performance causes foes to flee (DC %V Will neg)"',
   'Gentle Rest':
     'Section=magic Note="Touch inflicts staggered for 1 rd (undead for %1 rd) %V/dy"',
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
@@ -1968,11 +1988,6 @@ Pathfinder.FEATURES = {
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="May reroll attack, critical, or check to overcome spell resistance %V/dy"',
-  'Jack-Of-All-Trades':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"May use any skill untrained%1",' +
-      '"All skills are class skills"',
   'Ki Dodge':'Section=combat Note="May spend 1 Ki Point for +4 AC"',
   'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
   'Ki Speed':'Section=ability Note="May spend 1 Ki Point for +20 Speed"',
@@ -2014,9 +2029,6 @@ Pathfinder.FEATURES = {
   'Long Limbs':'Section=combat Note="+%V\' touch attack range"',
   'Lore Keeper':
     'Section=skill Note="Touch attack provides info as per %V Knowledge check"',
-  'Lore Master':
-    'Section=skill ' +
-    'Note="May take 10 on any ranked Knowledge skill; may take 20 %V/dy"',
   'Lore Seeker':
     'Section=magic,skill ' +
     'Note=' +
@@ -2265,9 +2277,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"Sleight Of Hand is a class skill",' +
       '"+3 Sleight Of Hand (hide object)"',
-  'Soothing Performance':
-    'Section=magic ' +
-    'Note="R30\' May use <i>Mass Cure Serious Wounds</i> effects via 4 rd Bardic Performance; also removes fatigued, sickened, and shaken"',
   'Soul Drinker':
     'Section=combat ' +
     'Note="May gain temporary HP equal to slain foe\'s HD for 1 min 1/dy"',
@@ -2394,7 +2403,6 @@ Pathfinder.FEATURES = {
   'Vagabond Child':
     'Section=skill ' +
     'Note="+1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill"',
-  'Versatile Performance':'Section=feature Note="%V selections"',
   'Versatile Skill (Act)':
     'Section=skill Note="Can use Perform (Act) in place of Bluff and Disguise"',
   'Versatile Skill (Comedy)':
@@ -2453,7 +2461,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Local)",' +
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Knowledge (Local) is a class skill"',
-  'Well-Versed':'Section=save Note="+4 vs. bardic and sonic effects"',
   'Whistleblower':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Wind Stance':
@@ -4111,13 +4118,13 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip)",' +
-      '"1:Bardic Knowledge","1:Bardic Performance",1:Countersong,' +
-      '1:Distraction,1:Fascinate,"1:Inspire Courage","1:Simple Somatics",' +
-      '"2:Versatile Performance",2:Well-Versed,"3:Inspire Competence",' +
-      '"5:Lore Master",6:Suggestion,"8:Dirge Of Doom","9:Inspire Greatness",' +
-      '"10:Jack-Of-All-Trades","12:Soothing Performance",' +
-      '"14:Frightening Tune","15:Inspire Heroics","18:Mass Suggestion",' +
-      '"20:Deadly Performance" ' +
+      '"1:Bardic Knowledge","1:Bardic Performance","1:Countersong",' +
+      '"1:Distraction","1:Fascinate","1:Inspire Courage",' +
+      '"1:Simple Somatics","2:Versatile Performance","2:Well-Versed",' +
+      '"3:Inspire Competence","5:Lore Master","6:Suggestion",' +
+      '"8:Dirge Of Doom","9:Inspire Greatness","10:Jack-Of-All-Trades",' +
+      '"12:Soothing Performance","14:Frightening Tune","15:Inspire Heroics",' +
+      '"18:Mass Suggestion","20:Deadly Performance" ' +
     'Selectables=' +
       '"1:Versatile Skill (Act):Versatile Skill",' +
       '"1:Versatile Skill (Comedy):Versatile Skill",' +
@@ -4131,13 +4138,21 @@ Pathfinder.CLASSES = {
     'CasterLevelArcane=levels.Bard ' +
     'SpellAbility=Charisma ' +
     'SpellSlots=' +
-      'B0:1=4;2=5;3=6,' +
-      'B1:1=1;2=2;3=3;5=4;9=5,' +
-      'B2:4=1;5=2;6=3;8=4;12=5,' +
-      'B3:7=1;8=2;9=3;11=4;15=5,' +
-      'B4:10=1;11=2;12=3;14=4;18=5,' +
-      'B5:13=1;14=2;15=3;17=4;19=5,' +
-      'B6:16=1;17=2;18=3;19=4;20=5',
+      'B0:4@1;5@2;6@3,' +
+      'B1:1@1;2@2;3@3;4@5;5@9,' +
+      'B2:1@4;2@5;3@6;4@8;5@12,' +
+      'B3:1@7;2@8;3@9;4@11;5@15,' +
+      'B4:1@10;2@11;3@12;4@14;5@18,' +
+      'B5:1@13;2@14;3@15;4@17;5@19,' +
+      'B6:1@16;2@17;3@18;4@19;5@20 ' +
+    'SpellsAvailable=' +
+      'B0:4@1;5@2;6@3,' +
+      'B1:2@1;3@2;4@3;5@7;6@11,' +
+      'B2:2@4;3@5;4@6;5@10;6@14,' +
+      'B3:2@7;3@8;4@9;5@13;6@17,' +
+      'B4:2@10;3@11;4@12;5@16;6@20,' +
+      'B5:2@13;3@14;4@15;5@19,' +
+      'B6:2@16;3@17;4@18;5@20',
   'Cleric':
     'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
@@ -5074,7 +5089,7 @@ Pathfinder.identityRules = function(
 
   QuilvynUtils.checkAttrTable(alignments, []);
   QuilvynUtils.checkAttrTable
-    (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots']);
+    (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'SpellsAvailable']);
   QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
   QuilvynUtils.checkAttrTable(factions, ['Season', 'Successor']);
   // Note addition of feats and skills to SRD35's list
@@ -5536,54 +5551,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Bard') {
 
-    for(let s in rules.getChoices('skills')) {
-      rules.defineRule('classSkills.' + s,
-        'skillNotes.jack-Of-All-Trades-1', '=', '1'
-      );
-    }
     rules.defineRule('bardicPerformanceLevel', classLevel, '+=', null);
-    rules.defineRule('featureNotes.bardicPerformance',
-      'bardicPerformanceLevel', '=', '2 + 2 * source',
-      'charismaModifier', '+', null
-    );
     rules.defineRule('featureNotes.versatilePerformance',
       classLevel, '=', 'Math.floor((source + 2) / 4)'
     );
+    rules.defineRule
+      ('inspireCourageLevel', 'bardicPerformanceLevel', '+=', null);
     rules.defineRule('magicNotes.arcaneSpellFailure',
       'magicNotes.simpleSomatics.1', 'v', '0'
-    );
-    rules.defineRule('magicNotes.deadlyPerformance',
-      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.fascinate',
-      'bardicPerformanceLevel', '=', 'Math.floor((source + 2) / 3)'
-    );
-    rules.defineRule('magicNotes.fascinate.1',
-      'bardicPerformanceLevel', '=', 'Math.floor(source / 2) + 10',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.frighteningTune',
-      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('magicNotes.inspireCompetence',
-      'bardicPerformanceLevel', '=', '1 + Math.floor((source + 1) / 4)'
-    );
-    rules.defineRule('magicNotes.inspireCourage',
-      'bardicPerformanceLevel', '=', '1 + Math.floor((source + 1) / 6)'
-    );
-    rules.defineRule('magicNotes.inspireGreatness',
-      'bardicPerformanceLevel', '=',
-        'source>=9 ? Math.floor((source - 6) / 3) : null'
-    );
-    rules.defineRule('magicNotes.inspireHeroics',
-      'bardicPerformanceLevel', '=',
-        'source>=15 ? Math.floor((source - 12) / 3) : null'
-    );
-    rules.defineRule('magicNotes.massSuggestion',
-      'bardicPerformanceLevel', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
     );
     // Compute in simpleSomatics.1 so that note will show even if character is
     // wearing heavy armor
@@ -5591,28 +5566,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'magicNotes.simpleSomatics', '?', null,
       'armorWeight', '=', '"MediumHeavy".includes(source) ? null : 1'
     );
-    rules.defineRule('magicNotes.suggestion',
-      'charismaModifier', '=', '10 + source',
-      'bardicPerformanceLevel', '+', 'Math.floor(source / 2)'
-    );
     rules.defineRule('selectableFeatureCount.Bard (Versatile Skill)',
       'featureNotes.versatilePerformance', '=', null
-    );
-    rules.defineRule(/^skillModifier.Knowledge/,
-      'skillNotes.bardicKnowledge', '+', null
     );
     rules.defineRule('skillNotes.bardicKnowledge',
       classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('skillNotes.jack-Of-All-Trades.1',
-      'features.Jack-Of-All-Trades', '?', null,
-      classLevel, '=', 'source>=19 ? "; may take 10 on any skill" : ""'
-    );
     rules.defineRule
       ('skillNotes.jack-Of-All-Trades-1', classLevel, '?', 'source>=16');
-    rules.defineRule('skillNotes.loreMaster',
-      classLevel, '=', 'Math.floor((source + 1) / 6)'
-    );
 
   } else if(name == 'Cleric') {
 
@@ -7357,9 +7318,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('saveNotes.liveToTellTheTale',
       classLevel, '+=', 'Math.floor(source / 2)'
     );
-    rules.defineRule(/^skillModifier.Knowledge/,
-      'skillNotes.bardicKnowledge', '+', null
-    );
     rules.defineRule('skillNotes.bardicKnowledge',
       classLevel, '+=', 'Math.max(1, Math.floor(source / 2))'
     );
@@ -7647,11 +7605,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'magicNotes.extraMercy', '+', null
     );
   } else if(name == 'Extra Performance') {
-    rules.defineRule('featureNotes.extraPerformance',
+    rules.defineRule('skillNotes.extraPerformance',
       'feats.Extra Performance', '=', 'source * 6'
-    );
-    rules.defineRule('featureNotes.bardicPerformance',
-      'featureNotes.extraPerformance', '+', null
     );
   } else if(name == 'Extra Rage') {
     rules.defineRule
@@ -8138,8 +8093,13 @@ Pathfinder.skillRules = function(
   }
   if(name.startsWith('Craft'))
     rules.addChoice('craftSkills', name, '');
+  else if(name.startsWith('Knowledge'))
+    rules.defineRule
+      ('skillModifier.' + name, 'skillNotes.bardicKnowledge', '+', null);
   else if(name.startsWith('Profession'))
     rules.addChoice('professionSkills', name, '');
+  rules.defineRule
+    ('classSkills.' + name, 'skillNotes.jack-Of-All-Trades-1', '=', '1');
 };
 
 /*
