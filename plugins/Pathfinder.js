@@ -877,6 +877,86 @@ Pathfinder.FEATURES = {
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
   'Skilled':'Section=skill Note="+%V Skill ranks"',
 
+  // Class
+
+  // Barbarian
+  'Animal Fury':
+    'Section=combat ' +
+    'Note="Can use a +%{baseAttack-5} bite attack during rage that inflicts %V+%{(strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))//2} HP; a hit also gives +2 on a subsequent grapple check"',
+  'Clear Mind':'Section=save Note="Can reroll a Will save once per rage"',
+  'Fast Movement (Barbarian)':SRD35.FEATURES['Fast Movement (Barbarian)'],
+  'Guarded Stance':
+    'Section=combat ' +
+    'Note="Can gain a +%{ragePowerLevel//6+1} dodge bonus to Armor Class for %{(constitutionModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))>?1} rd during rage"',
+  'Fearless Rage':
+    'Section=save Note="Has immunity to shaken and frightened during rage"',
+  'Greater Rage':SRD35.FEATURES['Greater Rage'],
+  'Improved Uncanny Dodge':SRD35.FEATURES['Improved Uncanny Dodge'],
+  'Increased Damage Reduction':'Section=combat Note="Has +%V DR/- during rage"',
+  'Indomitable Will':SRD35.FEATURES['Indomitable Will'],
+  'Internal Fortitude':
+    'Section=save Note="Has immunity to sickened and nauseated during rage"',
+  'Intimidating Glare':
+    'Section=skill ' +
+    'Note="Successful Intimidate during rage shakes the target for 1d4 rd plus 1 rd per 5 points over the DC"',
+  'Knockback':
+    'Section=combat ' +
+    'Note="Successful Bull Rush during rage inflicts %{strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0)} HP"',
+  // Low-Light Vision as above TODO but only during rage
+  'Mighty Rage':SRD35.FEATURES['Mighty Rage'],
+  'Mighty Swing':
+    'Section=combat Note="Can automatically confirm a crit once per rage"',
+  'Moment Of Clarity':
+    'Section=combat Note="Can suspend rage effects for 1 rd once per rage"',
+  'Night Vision':'Section=feature Note="Has 60\' Darkvision during rage"',
+  'No Escape':
+    'Section=combat ' +
+    'Note="Can use an immediate action to follow a withdrawing foe at 2x normal speed once per rage"',
+  'Powerful Blow':
+    'Section=combat ' +
+    'Note="Can use a swift action before an attack to inflict +%{ragePowerLevel//4+1} HP once per rage"',
+  'Quick Reflexes':
+    'Section=combat Note="Can make an additional AOO each rd during rage"',
+  'Rage':
+    'Section=combat ' +
+    'Note="Can gain +%{combatNotes.mightyRage?8:combatNotes.greaterRage?6:4} Strength, +%{combatNotes.mightyRage?8:combatNotes.greaterRage?6:4} Constitution, and +%{combatNotes.mightyRage?4:combatNotes.greaterRage?3:2} Will and suffer -2 Armor Class%{combatNotes.tirelessRage?\'\':\', becoming fatigued afterward for twice as many rd,\'} for %V rd per 8 hr of rest"',
+  'Rage Powers':'Section=feature Note="%V selections"',
+  'Raging Climber':'Section=skill Note="+%{ragePowerLevel} Climb during rage"',
+  'Raging Leaper':
+    'Section=skill ' +
+    'Note="+%{ragePowerLevel} Acrobatics for jumping during rage"',
+  'Raging Swimmer':'Section=skill Note="+%{ragePowerLevel} Swim during rage"',
+  'Renewed Vigor':
+    'Section=combat ' +
+    'Note="Can recover %{ragePowerLevel//4>?1}d8+%{constitutionModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0)} hit points during rage once per day"',
+  'Rolling Dodge':
+    'Section=combat ' +
+    'Note="Can gain a +%{ragePowerLevel//6+1} dodge bonus to Armor Class vs. ranged attacks for %{(constitutionModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))>?1} rd during rage"',
+  'Roused Anger':
+    'Section=combat ' +
+    'Note="Can rage when fatigued, gaining immuity to fatigued but becoming exhausted for 10 min per rd raging afterward"',
+  'Scent':'Section=feature Note="Can detect creatures via smell"', // TODO only during rage
+  'Strength Surge':
+    'Section=combat ' +
+    'Note="Can use an immediate action to gain +%{ragePowerLevel} on a Strength, CMB, or CMD check once per rage"',
+  'Superstition':
+    'Section=save ' +
+    'Note="+%{ragePowerLevel//4+2} vs. spells, supernatural, and spell-like abilities during rage and cannot willingly fail a save"',
+  'Surprise Accuracy':
+    'Section=combat ' +
+    'Note="Can use a swift action to gain +%{ragePowerLevel//4+1} on an attack once per rage"',
+  'Swift Foot':'Section=ability Note="Gains +%V Speed during rage"',
+  'Terrifying Howl':
+    'Section=combat ' +
+    'Note="R30\' Can emit a howl that panics shaken foes (save Will DC %{10+ragePowerLevel//2+strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0)} negates) for 1d4+1 rd; a creature can be targeted only once per 24 hr"',
+  'Tireless Rage':SRD35.FEATURES['Tireless Rage'],
+  'Trap Sense':
+    'Section=save Note="+%V Reflex and dodge bonus to Armor Class vs. traps"',
+  'Uncanny Dodge':SRD35.FEATURES['Uncanny Dodge'],
+  'Unexpected Strike':
+    'Section=combat ' +
+    'Note="Can take an AOO when a foe enters threat area once per rage"',
+
   // Shared with SRD35
   'A Thousand Faces':
     'Section=magic Note="May use <i>Alter Self</i> effects at will"',
@@ -997,7 +1077,7 @@ Pathfinder.FEATURES = {
   'Fascinate':
     'Section=magic ' +
     'Note="R90\' Bardic Performance holds %V creatures spellbound (DC %1 Will neg)"',
-  'Fast Movement':'Section=ability Note="+%V Speed"',
+  'Fast Movement (Monk)':SRD35.FEATURES['Fast Movement (Monk)'],
   'Favored Enemy':
     'Section=combat,skill ' +
     'Note=' +
@@ -1011,9 +1091,6 @@ Pathfinder.FEATURES = {
   'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
   'Great Cleave':'Section=combat Note="May cleave w/out limit"',
   'Great Fortitude':'Section=save Note="+2 Fortitude"',
-  'Greater Rage':
-    'Section=combat ' +
-    'Note="Gains +6 Strength, +6 Constitution, +3 Will during rage"',
   'Greater Spell Focus (%school)':'Section=magic Note="+1 Spell DC (%school)"',
   'Greater Spell Penetration':
     'Section=magic Note="+2 checks to overcome spell resistance"',
@@ -1065,14 +1142,9 @@ Pathfinder.FEATURES = {
   'Improved Unarmed Strike':
     'Section=combat ' +
     'Note="Unarmed attack provokes no AOO and may inflict lethal damage"',
-  'Improved Uncanny Dodge':
-    'Section=combat ' +
-    'Note="Cannot be flanked, sneak attack only by rogue level %V+"',
   'Improvised Weapon Mastery':
     'Section=combat ' +
     'Note="Suffers no penalty for improvised weapon, gains +1 damage step and crit 19-20/x2 on improvised weapon"',
-  'Increased Damage Reduction':'Section=combat Note="+%V DR/- during rage"',
-  'Indomitable Will':'Section=save Note="+4 Will vs. enchantment during rage"',
   'Inspire Competence':
     'Section=magic ' +
     'Note="R30\' Bardic Performance gives allies +%V skill checks"',
@@ -1110,8 +1182,6 @@ Pathfinder.FEATURES = {
   'Maximize Spell':
     'Section=magic ' +
     'Note="May use +3 spell slot to maximize all variable effects on chosen spell"',
-  'Mighty Rage':
-    'Section=combat Note="Gains +8 Strength, +8 Constitution, +4 Will during rage"',
   'Mobility':'Section=combat Note="+4 AC vs. movement AOO"',
   'Mounted Archery':
     'Section=combat Note="Suffers half normal mounted ranged weapon penalty"',
@@ -1143,9 +1213,6 @@ Pathfinder.FEATURES = {
     'Section=magic Note="May use +4 spell slot to cast chosen spell as a free action 1/rd"',
   'Quivering Palm':
     'Section=combat Note="Unarmed strike kills 1/dy (DC %V Fort neg)"',
-  'Rage':
-    'Section=combat ' +
-    'Note="Gains +4 Strength, +4 Constitution, +2 Will, -2 AC for %V rd/8 hr rest"',
   'Rapid Reload (Hand)':
     'Section=combat Note="May reload a hand crossbow as a free action"',
   'Rapid Reload (Heavy)':
@@ -1236,7 +1303,6 @@ Pathfinder.FEATURES = {
     'Note="May use <i>Suggestion</i> effects on 1 fascinated creature (DC %V Will neg)"',
   'Swift Tracker':'Section=skill Note="May track at full speed"',
   'Timeless Body':'Section=feature Note="Suffers no aging penalties"',
-  'Tireless Rage':'Section=combat Note="Suffers no fatigue after rage"',
   'Tongue Of The Sun And Moon':
     'Section=feature Note="May speak w/any living creature"',
   'Toughness':'Section=combat Note="+%V HP"',
@@ -1245,7 +1311,6 @@ Pathfinder.FEATURES = {
   'Trample':
     'Section=combat ' +
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
-  'Trap Sense':'Section=save Note="+%V Reflex and AC vs. traps"',
   'Trapfinding':
     'Section=skill Note="+%V Perception (traps)/+%V Disable Device (traps)"',
   'Trickery Domain':
@@ -1262,7 +1327,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Unarmed hit inflicts %V HP/Has the Improved Unarmed Strike feature"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
-  'Uncanny Dodge':SRD35.FEATURES['Uncanny Dodge'],
+  // Uncanny Dodge as above
   'Venom Immunity':'Section=save Note="Immune to poisons"',
   'Weapon Finesse':
     'Section=combat ' +
@@ -1326,8 +1391,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Will when within 30\' of an unhostile animal",' +
       '"Handle Animal is a class skill"',
-  'Animal Fury':
-    'Section=combat Note="%1 bite attack inflicts %V+%2 HP during rage"',
   'Apothecary':
     'Section=feature,skill ' +
     'Note=' +
@@ -1538,7 +1601,6 @@ Pathfinder.FEATURES = {
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="2 %3 attacks inflict %V%1 HP each %2 rd/dy"',
-  'Clear Mind':'Section=save Note="May reroll Will save 1/rage"',
   'Cold Resistance':'Section=save Note="Resistance %V to cold"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
@@ -1735,8 +1797,6 @@ Pathfinder.FEATURES = {
     'Section=combat,skill ' +
     'Note="+2 or more Initiative in %V terrain type(s)",' +
          '"+2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in %V terrain type(s)"',
-  'Fearless Rage':
-    'Section=save Note="Cannot be shaken or frightened during rage"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
   'Fey Magic':
     'Section=magic Note="May reroll check to overcome spell resistance"',
@@ -1827,7 +1887,6 @@ Pathfinder.FEATURES = {
   'Greater Trip':
     'Section=combat Note="+2 trip checks, may take AOO on tripped foes"',
   'Greater Vital Strike':'Section=combat Note="4x base damage"',
-  'Guarded Stance':'Section=combat Note="+%V AC for %1 rd during rage"',
   'Guardian Of The Forge':
     'Section=skill,skill ' +
     'Note=' +
@@ -1904,11 +1963,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Gives target +2 attack, skill, ability, and save for %V rd %1/dy"',
   'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
-  'Internal Fortitude':
-    'Section=save Note="Immune to sickened and nauseated during rage"',
-  'Intimidating Glare':
-    'Section=skill ' +
-    'Note="Successful Intimidate during rage shakes foe for 1d4+ rd"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
   'Invisibility Field':'Section=magic Note="May become invisible %V rd/dy"',
   'It Was Meant To Be':
@@ -1925,8 +1979,6 @@ Pathfinder.FEATURES = {
   'Killer':
     'Section=combat ' +
     'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
-  'Knockback':
-    'Section=combat Note="Successful Bull Rush during rage inflicts %V HP"',
   'Laughing Touch':
     'Section=magic Note="Touch inflicts laughter for 1 rd %V/dy"',
   'Leadership (Cleric)':
@@ -2029,7 +2081,6 @@ Pathfinder.FEATURES = {
     'Section=magic Note="May apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Might Of The Gods':'Section=magic Note="+%V Strength checks %1 rd/dy"',
-  'Mighty Swing':'Section=combat Note="May automatically confirm crit 1/rage"',
   'Militia Veteran':
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill"',
@@ -2040,8 +2091,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 caster level and save DC on 3 divine spells",' +
       '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
-  'Moment Of Clarity':
-    'Section=combat Note="May suspend rage effects for 1 rd 1/rage"',
   'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
   'Natural Armor':
     'Section=combat Note="+%V natural armor bonus to Armor Class"',
@@ -2056,15 +2105,11 @@ Pathfinder.FEATURES = {
       '"+1 Leadership score",' +
       '"+1 followers\' Will vs. mind-altering effects"',
   'New Arcana':'Section=magic Note="+%V spells known"',
-  'Night Vision':'Section=feature Note="60\' Darkvision during rage"',
   'Nimble Moves':
     'Section=ability Note="May move normally through difficult terrain 5\'/rd"',
   'Nimbus Of Light':
     'Section=magic ' +
     'Note="30\' radius <i>Daylight</i> inflicts %V HP on undead %1 rd/dy"',
-  'No Escape':
-    'Section=combat ' +
-    'Note="May move at dbl speed to follow withdrawing foe 1/rage"',
   'Observant':
     'Section=skill ' +
     'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
@@ -2104,7 +2149,6 @@ Pathfinder.FEATURES = {
   'Power Over Undead':
     'Section=feature ' +
     'Note="+1 General Feat (Command Undead or Turn Undead); may use %{3 + intelligenceModifier}/dy"',
-  'Powerful Blow':'Section=combat Note="May inflict +%V HP 1/rage"',
   'Proper Training':
     'Section=skill ' +
     'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
@@ -2117,11 +2161,6 @@ Pathfinder.FEATURES = {
       '"May take %V to track target"',
   'Quick Disable':
     'Section=skill Note="May use Disable Device in half normal time"',
-  'Quick Reflexes':'Section=combat Note="+1 AOO/rd during rage"',
-  'Rage Powers':'Section=feature Note="%V selections"',
-  'Raging Climber':'Section=skill Note="+%V Climb during rage"',
-  'Raging Leaper':'Section=skill Note="+%V Acrobatics (jump) during rage"',
-  'Raging Swimmer':'Section=skill Note="+%V Swim during rage"',
   'Rapscallion':
     'Section=combat,skill ' +
     'Note=' +
@@ -2134,7 +2173,6 @@ Pathfinder.FEATURES = {
   'Remote Viewing':
     'Section=magic ' +
     'Note="May use <i>Clairaudience/Clairvoyance</i> effects %V rd/dy"',
-  'Renewed Vigor':'Section=magic Note="May regain %Vd8+%1 HP during rage 1/dy"',
   'Resiliency':
     'Section=combat ' +
     'Note="May gain %V temporary HP for 1 min when below 0 HP 1/dy"',
@@ -2160,9 +2198,6 @@ Pathfinder.FEATURES = {
   'Rogue Talents (Shadowdancer)':'Section=feature Note="%V selections"',
   'Rogue Weapon Training':
     'Section=feature Note="Gain 1 Fighter Feat (Weapon Focus)"',
-  'Rolling Dodge':
-    'Section=combat Note="+%V AC vs. ranged for %1 rd during rage"',
-  'Roused Anger':'Section=combat Note="May rage when fatigued"',
   'Rousing Oratory':
     'Section=skill ' +
     'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
@@ -2172,7 +2207,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill"',
   'Save Bonus':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
-  'Scent':'Section=feature Note="May detect creatures via smell"',
   'Scent Rage':
     'Section=feature Note="May detect creatures via smell during rage"',
   'Scholar Of Balance':
@@ -2268,8 +2302,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+%{intelligenceModifier+3>?1} choice of Knowledge 1/scenario"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
-  'Strength Surge':
-    'Section=combat Note="May gain +%V Strength, CMB, or CMD check 1/rage"',
   'Strength Surge (Cleric)':
     'Section=magic ' +
     'Note="Touch gives +%V melee attack and Strength check bonus for 1 rd %1/dy"',
@@ -2283,15 +2315,10 @@ Pathfinder.FEATURES = {
   "Sun's Blessing":
     'Section=magic ' +
     'Note="Channel Energy inflicts +%V HP on undead and negates channel resistance"',
-  'Superstition':
-    'Section=save ' +
-    'Note="+%V vs. spells, supernatural, and spell-like abilities during rage"',
-  'Surprise Accuracy':'Section=combat Note="May gain +%V attack 1/rage"',
   'Surprise Attack':
     'Section=combat Note="All foes are flat-footed during surprise round"',
   'Suspicious':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Swift Foot':'Section=ability Note="+5 Speed during rage"',
   'Tavern Owner':
     'Section=feature,skill ' +
     'Note=' +
@@ -2301,9 +2328,6 @@ Pathfinder.FEATURES = {
     'Section=save Note="+1 next save after nat 1 save roll 1/scenario"',
   'Telekinetic Fist':
     'Section=magic Note="R30\' Ranged touch inflicts 1d4+%1 HP %V/dy"',
-  'Terrifying Howl':
-    'Section=combat ' +
-    'Note="R30\' Howl panics shaken foes (DC %V Will neg) for 1d4+1 rd"',
   'Throw Anything':
     'Section=combat ' +
     'Note="No penalty for improvised ranged weapon, +1 attack w/thrown splash"',
@@ -2349,8 +2373,6 @@ Pathfinder.FEATURES = {
   'Two-Weapon Rend':'Section=combat Note="Double hit inflicts +1d10%1 HP"',
   'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
   'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
-  'Unexpected Strike':
-    'Section=combat Note="May take AOO when foe enters threat area 1/rage"',
   'Unflappable':
     'Section=save,skill ' +
     'Note=' +
@@ -4051,10 +4073,10 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
-      '"1:Fast Movement",1:Rage,"2:Rage Powers","2:Uncanny Dodge",' +
-      '"3:Trap Sense","5:Improved Uncanny Dodge","7:Damage Reduction",' +
-      '"11:Greater Rage","14:Indomitable Will","17:Tireless Rage",' +
-      '"20:Mighty Rage" ' +
+      '"1:Fast Movement (Barbarian)","1:Rage","2:Rage Powers",' +
+      '"2:Uncanny Dodge","3:Trap Sense","5:Improved Uncanny Dodge",' +
+      '"7:Damage Reduction","11:Greater Rage","14:Indomitable Will",' +
+      '"17:Tireless Rage","20:Mighty Rage" ' +
     'Selectables=' +
       '"2:Animal Fury:Rage Power",' +
       '"8:Clear Mind:Rage Power",' +
@@ -4082,7 +4104,7 @@ Pathfinder.CLASSES = {
       '"2:Superstition:Rage Power",' +
       '"2:Surprise Accuracy:Rage Power",' +
       '"2:Swift Foot:Rage Power",' +
-      '"8:Terrifying Howl:Rage Power",' +
+      '"features.Intimidating Glare ? 8:Terrifying Howl:Rage Power",' +
       '"4:Unexpected Strike:Rage Power"',
   'Bard':
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/2 Will=1/2 ' +
@@ -4317,7 +4339,7 @@ Pathfinder.CLASSES = {
       '"1:Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)",' +
       '"1:Armor Class Bonus","1:Flurry Of Blows","1:Stunning Fist",' +
       '"1:Two-Weapon Fighting","1:Unarmed Strike",2:Evasion,' +
-      '"3:Fast Movement","3:Maneuver Training","3:Still Mind",' +
+      '"3:Fast Movement (Monk)","3:Maneuver Training","3:Still Mind",' +
       '"4:Condition Fist","4:Ki Dodge","4:Ki Pool","4:Ki Speed",' +
       '"4:Ki Strike","4:Slow Fall","5:High Jump","5:Purity Of Body",' +
       '"7:Wholeness Of Body","8:Improved Two-Weapon Fighting",' +
@@ -5468,26 +5490,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
   if(name == 'Barbarian') {
 
     rules.defineRule('ragePowerLevel', classLevel, '=', null);
-    rules.defineRule
-      ('abilityNotes.fastMovement', classLevel, '+=', '10');
+    rules.defineRule('abilityNotes.fastMovement(Barbarian).1',
+      'armorWeight', '?', 'source != "Heavy"',
+      'abilityNotes.fastMovement(Barbarian)', '=', '10'
+    );
     rules.defineRule('combatNotes.animalFury',
       '', '=', '"d4"',
       'features.Large', '=', '"' + SRD35.LARGE_DAMAGE.d4 + '"',
       'features.Small', '=', '"' + SRD35.SMALL_DAMAGE.d4 + '"'
     );
-    rules.defineRule('combatNotes.animalFury.1',
-      'features.Animal Fury', '?', null,
-      'baseAttack', '=', 'source>=5 ? "+" + (source - 5) : source'
-    );
-    rules.defineRule('combatNotes.animalFury.2',
-      'features.Animal Fury', '?', null,
-      'combatNotes.animalFury.3', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.animalFury.3',
-      'features.Animal Fury', '?', null,
-      'strengthModifier', '=', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
+    rules.defineRule('abilityNotes.swiftFoot',
+      'barbarianFeatures.Swift Foot', '=', 'source * 5'
     );
     rules.defineRule('combatNotes.damageReduction',
       classLevel, '^=', 'Math.floor((source - 4) / 3)'
@@ -5495,78 +5508,21 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.increasedDamageReduction',
       'barbarianFeatures.Increased Damage Reduction', '=', null
     );
-    rules.defineRule('combatNotes.guardedStance',
-      'ragePowerLevel', '=', '1 + Math.floor(source / 6)'
-    );
-    rules.defineRule('combatNotes.guardedStance.1',
-      'features.Guarded Stance', '?', null,
-      'combatNotes.guardedStance.2', '=', 'Math.max(source, 1)'
-    );
-    rules.defineRule('combatNotes.guardedStance.2',
-      'features.Guarded Stance', '?', null,
-      'constitutionModifier', '=', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
-    );
-    rules.defineRule('combatNotes.knockback',
-      'strengthModifier', '=', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
-    );
-    rules.defineRule('combatNotes.powerfulBlow',
-      'ragePowerLevel', '=', '1 + Math.floor(source / 4)'
-    );
     rules.defineRule('combatNotes.rage',
       'constitutionModifier', '=', '4 + source',
       classLevel, '+', '(source - 1) * 2'
-    );
-    rules.defineRule('combatNotes.rollingDodge',
-      'ragePowerLevel', '=', '1 + Math.floor(source / 6)'
-    );
-    rules.defineRule('combatNotes.rollingDodge.1',
-      'features.Rolling Dodge', '?', null,
-      'combatNotes.rollingDodge.2', '=', 'Math.max(source, 1)'
-    );
-    rules.defineRule('combatNotes.rollingDodge.2',
-      'features.Rolling Dodge', '?', null,
-      'constitutionModifier', '=', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
-    );
-    rules.defineRule('combatNotes.strengthSurge', 'ragePowerLevel', '=', null);
-    rules.defineRule('combatNotes.surpriseAccuracy',
-      'ragePowerLevel', '=', '1 + Math.floor(source / 4)'
-    );
-    rules.defineRule('combatNotes.terrifyingHowl',
-      'ragePowerLevel', '=', '10 + Math.floor(source / 2)',
-      'strengthModifier', '+', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.damageReduction', '^=', null);
     rules.defineRule
       ('featureNotes.ragePowers', classLevel, '=', 'Math.floor(source / 2)');
-    rules.defineRule('magicNotes.renewedVigor',
-      'ragePowerLevel', '=', 'Math.floor(source / 4)'
-    );
-    rules.defineRule('magicNotes.renewedVigor.1',
-      'features.Renewed Vigor', '?', null,
-      'constitutionModifier', '=', 'source + 2',
-      'features.Greater Rage', '+', '1',
-      'features.Mighty Rage', '+', '1'
-    );
     rules.defineRule('selectableFeatureCount.Barbarian (Rage Power)',
       'featureNotes.ragePowers', '+=', null
     );
-    rules.defineRule('saveNotes.superstition',
-      'ragePowerLevel', '=', '2 + Math.floor(source / 4)'
-    );
     rules.defineRule
       ('saveNotes.trapSense', classLevel, '+=', 'Math.floor(source / 3)');
-    rules.defineRule('skillNotes.ragingClimber', 'ragePowerLevel', '=', null);
-    rules.defineRule('skillNotes.ragingLeaper', 'ragePowerLevel', '=', null);
-    rules.defineRule('skillNotes.ragingSwimmer', 'ragePowerLevel', '=', null);
+    rules.defineRule
+      ('speed', 'abilityNotes.fastMovement(Barbarian).1', '+', null);
     rules.defineRule('barbarianFeatures.Improved Uncanny Dodge',
       'barbarianFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source>=2 ? 1 : null'
@@ -6216,7 +6172,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Monk') {
 
-    rules.defineRule('abilityNotes.fastMovement',
+    rules.defineRule('abilityNotes.fastMovement(Monk)',
       classLevel, '+=', '10 * Math.floor(source / 3)'
     );
     rules.defineRule('abilityNotes.unarmoredSpeedBonus',
@@ -6328,7 +6284,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '=', '1 + Math.floor((source + 2) / 4)'
     );
     rules.defineRule('skillNotes.highJump', classLevel, '=', null);
-    rules.defineRule('speed', 'abilityNotes.fastMovement', '+', null);
+    rules.defineRule('speed', 'abilityNotes.fastMovement(Monk)', '+', null);
     // NOTE Our rule engine doesn't support modifying a value via indexing.
     // Here, we work around this limitation by defining rules that set global
     // values as a side effect, then use these values in our calculations.

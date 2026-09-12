@@ -78,11 +78,11 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Armor Speed Adjustment: -10</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Fast Movement: +10 Speed</i></td>
+      <td><i>Fast Movement (Barbarian): +10 Speed; heavy armor or a heavy load negates</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Swift Foot: +5 Speed during rage</td>
+      <td>Swift Foot: Gains +5 Speed during rage</td>
     </tr></table>
 </td>
   </tr></table>
@@ -103,7 +103,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Defensive Combat Training; Great Fortitude; Leadership; Skill Focus (Climb); Skill Focus (Disable Device); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Perform (Wind)); Skill Focus (Sense Motive); Step Up; Throw Anything</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Light; Medium; Shield); Clear Mind; Damage Reduction; Fast Movement; Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Rage; Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent Rage; Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Light; Medium; Shield); Clear Mind; Damage Reduction; Fast Movement (Barbarian); Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Rage; Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent Rage; Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -117,7 +117,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Low-Light Rage: Gains x2 normal distance in poor light during rage</td>
       </tr><tr style="text-align:center">
-        <td>Night Vision: 60' Darkvision during rage</td>
+        <td>Night Vision: Has 60' Darkvision during rage</td>
       </tr><tr style="text-align:center">
         <td>Scent Rage: May detect creatures via smell during rage</td>
       </tr></table>
@@ -180,11 +180,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Intimidating Glare: Successful Intimidate during rage shakes foe for 1d4+ rd</td>
+        <td>Intimidating Glare: Successful Intimidate during rage shakes the target for 1d4 rd plus 1 rd per 5 points over the DC</td>
       </tr><tr style="text-align:center">
         <td>Raging Climber: +20 Climb during rage</td>
       </tr><tr style="text-align:center">
-        <td>Raging Leaper: +20 Acrobatics (jump) during rage</td>
+        <td>Raging Leaper: +20 Acrobatics for jumping during rage</td>
       </tr><tr style="text-align:center">
         <td>Raging Swimmer: +20 Swim during rage</td>
       </tr></table>
@@ -233,57 +233,59 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Greater Rage: Has increased Rage effects</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Mighty Rage: Has increased Rage effects</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Tireless Rage: Has increased rage effects</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
-        <td>Animal Fury: +15 bite attack inflicts d4+3 HP during rage</td>
+        <td>Animal Fury: Can use a +15 bite attack during rage that inflicts d4+3 HP; a hit also gives +2 on a subsequent grapple check</td>
       </tr><tr style="text-align:center">
-        <td>Greater Rage: Gains +6 Strength, +6 Constitution, +3 Will during rage</td>
+        <td>Guarded Stance: Can gain a +4 dodge bonus to Armor Class for 4 rd during rage</td>
       </tr><tr style="text-align:center">
-        <td>Guarded Stance: +4 AC for 4 rd during rage</td>
+        <td>Improved Uncanny Dodge: Cannot be flanked and can be sneak attacked only by rogue of level 24 or higher</td>
       </tr><tr style="text-align:center">
-        <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 24+</td>
-      </tr><tr style="text-align:center">
-        <td>Increased Damage Reduction: +1 DR/- during rage</td>
+        <td>Increased Damage Reduction: Has +1 DR/- during rage</td>
       </tr><tr style="text-align:center">
         <td>Knockback: Successful Bull Rush during rage inflicts 7 HP</td>
       </tr><tr style="text-align:center">
-        <td>Mighty Rage: Gains +8 Strength, +8 Constitution, +4 Will during rage</td>
+        <td>Mighty Swing: Can automatically confirm a crit once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Mighty Swing: May automatically confirm crit 1/rage</td>
+        <td>Moment Of Clarity: Can suspend rage effects for 1 rd once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Moment Of Clarity: May suspend rage effects for 1 rd 1/rage</td>
+        <td>No Escape: Can use an immediate action to follow a withdrawing foe at 2x normal speed once per rage</td>
       </tr><tr style="text-align:center">
-        <td>No Escape: May move at dbl speed to follow withdrawing foe 1/rage</td>
+        <td>Powerful Blow: Can use a swift action before an attack to inflict +6 HP once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Powerful Blow: May inflict +6 HP 1/rage</td>
+        <td>Quick Reflexes: Can make an additional AOO each rd during rage</td>
       </tr><tr style="text-align:center">
-        <td>Quick Reflexes: +1 AOO/rd during rage</td>
+        <td>Rage: Can gain +8 Strength, +8 Constitution, and +4 Will and suffer -2 Armor Class for 42 rd per 8 hr of rest</td>
       </tr><tr style="text-align:center">
-        <td>Rage: Gains +4 Strength, +4 Constitution, +2 Will, -2 AC for 42 rd/8 hr rest</td>
+        <td>Renewed Vigor: Can recover 5d8+4 hit points during rage once per day</td>
       </tr><tr style="text-align:center">
-        <td>Rolling Dodge: +4 AC vs. ranged for 4 rd during rage</td>
+        <td>Rolling Dodge: Can gain a +4 dodge bonus to Armor Class vs. ranged attacks for 4 rd during rage</td>
       </tr><tr style="text-align:center">
-        <td>Roused Anger: May rage when fatigued</td>
+        <td>Roused Anger: Can rage when fatigued, gaining immuity to fatigued but becoming exhausted for 10 min per rd raging afterward</td>
       </tr><tr style="text-align:center">
         <td>Step Up: May match foe 5' step</td>
       </tr><tr style="text-align:center">
-        <td>Strength Surge: May gain +20 Strength, CMB, or CMD check 1/rage</td>
+        <td>Strength Surge: Can use an immediate action to gain +20 on a Strength, CMB, or CMD check once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Surprise Accuracy: May gain +6 attack 1/rage</td>
+        <td>Surprise Accuracy: Can use a swift action to gain +6 on an attack once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Terrifying Howl: R30' Howl panics shaken foes (DC 27 Will neg) for 1d4+1 rd</td>
+        <td>Terrifying Howl: R30' Can emit a howl that panics shaken foes (save Will DC 27 negates) for 1d4+1 rd; a creature can be targeted only once per 24 hr</td>
       </tr><tr style="text-align:center">
         <td>Throw Anything: No penalty for improvised ranged weapon, +1 attack w/thrown splash</td>
       </tr><tr style="text-align:center">
-        <td>Tireless Rage: Suffers no fatigue after rage</td>
-      </tr><tr style="text-align:center">
         <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr><tr style="text-align:center">
-        <td>Unexpected Strike: May take AOO when foe enters threat area 1/rage</td>
+        <td>Unexpected Strike: Can take an AOO when a foe enters threat area once per rage</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -299,27 +301,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Great Fortitude: +2 Fortitude</i></td>
       </tr><tr style="text-align:center">
-        <td>Clear Mind: May reroll Will save 1/rage</td>
+        <td>Clear Mind: Can reroll a Will save once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Fearless Rage: Cannot be shaken or frightened during rage</td>
+        <td>Fearless Rage: Has immunity to shaken and frightened during rage</td>
       </tr><tr style="text-align:center">
         <td>Indomitable Will: +4 Will vs. enchantment during rage</td>
       </tr><tr style="text-align:center">
-        <td>Internal Fortitude: Immune to sickened and nauseated during rage</td>
+        <td>Internal Fortitude: Has immunity to sickened and nauseated during rage</td>
       </tr><tr style="text-align:center">
-        <td>Superstition: +7 vs. spells, supernatural, and spell-like abilities during rage</td>
+        <td>Superstition: +7 vs. spells, supernatural, and spell-like abilities during rage and cannot willingly fail a save</td>
       </tr><tr style="text-align:center">
-        <td>Trap Sense: +6 Reflex and AC vs. traps</td>
+        <td>Trap Sense: +6 Reflex and dodge bonus to Armor Class vs. traps</td>
       </tr></table>
 </td>
     </tr></table>
 </td>
-  </tr></table>
-</td>
-</tr><tr style="text-align:center">
-  <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
-  <tr style="text-align:center">
-    <td><b>Magic Notes</b>: Renewed Vigor: May regain 5d8+4 HP during rage 1/dy</td>
   </tr></table>
 </td>
 </tr><tr style="text-align:center">
