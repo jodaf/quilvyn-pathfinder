@@ -1035,13 +1035,15 @@ Pathfinder.FEATURES = {
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to electricity"',
   'Lightning Arc':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP electricity %{wisdomModifier+3} times per day"',
   // Animal Domain
   'Animal Domain':'Section=skill Note="Knowledge (Nature) is a class skill"',
   'Animal Companion':SRD35.FEATURES['Animal Companion'],
   'Speak With Animals':
     'Section=magic ' +
-    'Note="Can use <i>Speak With Animals</i> effects for %{levels.Cleric+3} rd per day"',
+    'Note="Can use <i>Speak With Animals</i> effects for %{levels.Cleric+3} rd per day" ' +
+    'Spells="Speak With Animals" ' +
+    'SpellAbility=Charisma',
   // Artifice Domain
   "Artificer's Touch":
     'Section=combat,magic ' +
@@ -1063,7 +1065,7 @@ Pathfinder.FEATURES = {
   // Charm Domain
   'Charming Smile':
     'Section=magic ' +
-    'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} for %{levels.Cleric} rd per day" ' +
+    'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier}) for %{levels.Cleric} rd per day" ' +
     'Spells="Charm Person" ' +
     'SpellAbility=Charisma',
   'Dazing Touch':
@@ -1093,14 +1095,14 @@ Pathfinder.FEATURES = {
   // Destruction Domain
   'Destructive Aura':
     'Section=combat ' +
-    'Note="Attacks made on targets within 30\' inflict +%{levels.Cleric//2} HP and automatically confirm crit threats for %{levels.Cleric} rd per day"',
+    'Note="Attacks by any creature vs. a target within a 30\' emanation inflict +%{levels.Cleric//2} HP and automatically confirm crit threats for %{levels.Cleric} rd per day"',
   'Destructive Smite':
     'Section=combat ' +
     'Note="Melee attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
   // Earth Domain
   'Acid Dart':
-    'Section=magic ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6%{levels.Cleric//2} HP acid %{wisdomModifier+3} times per day"',
   'Acid Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to acid"',
@@ -1114,7 +1116,7 @@ Pathfinder.FEATURES = {
   // Fire Domain
   'Fire Bolt':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP fire %{wisdomModifier+3} times per day"',
   'Fire Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to fire"',
@@ -1211,8 +1213,8 @@ Pathfinder.FEATURES = {
     'Note="Unarmed attacks inflict +%{levels.Cleric//2} HP and provoke no AOO for %{wisdomModifier+3} rd per day"',
   // Protection Domain
   'Aura Of Protection':
-    'Section=magic ' +
-    'Note="R30\' Allies gain +%V AC and resistance %1 to all energy %2 rd/dy"',
+    'Section=combat ' +
+    'Note="30\' emanation gives allies a +%{(levels.Cleric-4)//4} deflection bonus to Armor Class and resistance %{levels.Cleric<14?5:10} to all energy for %{levels.Cleric} rd per day"',
   'Protection Domain':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Resistant Touch':
     'Section=magic ' +
@@ -1234,10 +1236,10 @@ Pathfinder.FEATURES = {
   // Strength Domain
   'Might Of The Gods':
     'Section=magic ' +
-    'Note="Can add +%{levels.Cleric//2} Strength for %{wisdomModifier+3} rd per day"',
+    'Note="Can add +%{levels.Cleric} Strength for %{wisdomModifier+3} rd per day"',
   'Strength Surge (Cleric)':
     'Section=magic ' +
-    'Note="Touch gives +%{levels.Cleric//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch gives a +%{levels.Cleric//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
   // Sun Domain
   'Nimbus Of Light':
     'Section=magic ' +
@@ -1263,7 +1265,7 @@ Pathfinder.FEATURES = {
     'SpellAbility=Charisma',
   "Master's Illusion":
     'Section=magic ' +
-    'Note="30\' radius invokes <i>Veil</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} disbelieve) for %{levels.Cleric} rd per day" ' +
+    'Note="30\' emanation invokes <i>Veil</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} disbelieve) for %{levels.Cleric} rd per day" ' +
     'Spells="Veil" ' +
     'SpellAbility=Charisma',
   'Trickery Domain':
@@ -1281,7 +1283,7 @@ Pathfinder.FEATURES = {
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to cold"',
   'Icicle':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP cold %{wisdomModifier+3} times per day"',
   // Weather Domain
   'Lightning Lord':
     'Section=magic ' +

@@ -74,7 +74,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Chaos); Channel Smite; Command Undead; Elemental Channel (Air); Extra Channel; Improved Channel; Selective Channeling; Turn Undead</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Animal Domain; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Plant Domain; Speak With Animals; Spontaneous Cleric Spell; Weapon Proficiency (Simple Weapons); Weapon Proficiency (Trident); Wooden Fist</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Animal Domain; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Orisons; Plant Domain; Speak With Animals; Spontaneous Casting (Cleric); Weapon Proficiency (Simple Weapons); Wooden Fist</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -82,7 +82,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -169,7 +169,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Turn Undead: R30' Channel Energy causes undead to flee for 1 min (DC 11 Will neg)</td>
       </tr><tr style="text-align:center">
-        <td>Wooden Fist: +1 unarmed damage and no AOO on unarmed attacks 5 rd/dy</td>
+        <td>Wooden Fist: Unarmed attacks inflict +0 HP and provoke no AOO for 5 rd per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -198,7 +198,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 3; C1: 2; Domain1: 1</td>
-        <td><b>Spell DC</b>: C: 12; Domain: 12</td>
+        <td><b>Spell DC</b>: C: 12; Domain: 12; Speak With Animals: 11</td>
       </tr></table>
 </td>
     </tr></table>
@@ -214,27 +214,29 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Purify Food And Drink (C0 Tran): R10' Makes 1 cubic foot of food and water safe to consume (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for NaN min</td>
+      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for 1 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +1</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Extra Channel: Channel Energy +2/dy</i></td>
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 1d6 HP (DC 11 Will half) 6/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
+      <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 11 half) to all creatures within 30' 6 times per day</td>
     </tr><tr style="text-align:center">
       <td>Improved Channel: +2 Channel Energy DC</td>
     </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
       <td>Selective Channeling: May withhold Channel Energy effects from up to 1 targets</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Animals: May use <i>Speak With Animals</i> effects 4 rd/dy</td>
+      <td>Speak With Animals: Can use <i>Speak With Animals</i> effects for 4 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
   </tr></table>

@@ -100,7 +100,7 @@ var attributes = {
         <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow; Composite Shortbow; Longbow; Longsword; Rapier; Shortbow)</td>
         <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Divine Mount; Lay On Hands; Mercy (Dazed); Mercy (Fatigued); Mercy (Shaken); Mercy (Staggered); Mercy; Smite Evil; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
         <td><b>Monk Features</b>: Armor Class Bonus; Condition Fist; Dodge; Evasion; Fast Movement (Monk); Flurry Of Blows; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Scorpion Style; Slow Fall; Still Mind; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)</td>
-        <td><b>Cleric Features</b>: Acid Dart; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Earth Domain; Good Domain; Spontaneous Cleric Spell; Touch Of Good; Weapon Proficiency (Simple Weapons); Weapon Proficiency (Warhammer)</td>
+        <td><b>Cleric Features</b>: Acid Dart; Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Earth Domain; Good Domain; Orisons; Spontaneous Casting (Cleric); Touch Of Good; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light; Shield); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Courage; Simple Somatics; Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip)</td>
         <td><b>Barbarian Features</b>: Armor Proficiency (Light; Medium; Shield); Fast Movement (Barbarian); Rage; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
@@ -112,7 +112,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Aura Of Good: Visible to <i>Detect Good</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
         <td>Divine Mount: May magically summon mount 1/dy</td>
       </tr><tr style="text-align:center">
@@ -235,6 +235,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Unarmed Strike: Unarmed hit inflicts d8 HP/Has the Improved Unarmed Strike feature</i></td>
       </tr><tr style="text-align:center">
+        <td>Acid Dart: R30' Ranged touch attack inflicts 1d60 HP acid 4 times per day</td>
+      </tr><tr style="text-align:center">
         <td>Condition Fist: May use Stunning Fist to inflict fatigued</td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows: Full-round +2/+2 monk weapon attacks; may spend 1 Ki Point for additional +2</td>
@@ -335,8 +337,6 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Charisma Bard Spell Slot Bonus: Spell level B1, B2</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Charisma Paladin Spell Slot Bonus: Spell level P1, P2</i></td>
     </tr><tr style="text-align:center">
       <td><i>Extra Lay On Hands: Lay On Hands +4/dy</i></td>
@@ -347,9 +347,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1</i></td>
     </tr><tr style="text-align:center">
-      <td>Acid Dart: R30' Ranged touch inflicts 1d6 HP 4/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 4d6 HP (DC 15 Will half) 5/dy</td>
+      <td>Channel Energy: Can restore 4d6 hit points or inflict the same amount (save Will DC 15 half) to all creatures within 30' 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
     </tr><tr style="text-align:center">
@@ -361,9 +361,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Mercy: Lay On Hands removes dazed, fatigued, shaken, staggered</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Touch Of Good: Touch gives +1 attack, skill, ability, and save for 1 rd 4/dy</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
+    </tr><tr style="text-align:center">
+      <td>Touch Of Good: Touch gives +1 attacks, skill checks, ability checks, and saves for 1 rd 4 times per day</td>
     </tr></table>
 </td>
   </tr></table>

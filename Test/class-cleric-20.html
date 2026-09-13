@@ -292,7 +292,9 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Travel Speed: +10 Speed</i></td>
+      <td><i>Travel Domain: +10 Speed</i></td>
+    </tr><tr style="text-align:center">
+      <td>Agile Feet: Can ignore difficult terrain for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -315,7 +317,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Deadly Aim; Eschew Materials; Heighten Spell; Quicken Spell; Skill Focus (Climb); Skill Focus (Knowledge (Engineering)); Skill Focus (Perform (Act)); Spell Focus (Evocation); Still Spell; Toughness; Weapon Focus (Unarmed Strike)</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Acid Dart; Acid Resistance; Agile Feet; Air Domain; Animal Companion; Animal Domain; Armor Proficiency (Light; Medium; Shield); Artifice Domain; Artificer's Touch; Aura Of Madness; Aura Of Protection; Aura; Battle Rage; Bit Of Luck; Blast Rune; Bleeding Touch; Blind-Fight; Bramble Armor; Calming Touch; Channel Energy; Chaos Blade; Chaos Domain; Charm Domain; Charming Smile; Cold Resistance; Community Domain; Copycat; Dancing Weapons; Darkness Domain; Dazing Touch; Death Domain; Death's Embrace; Destruction Domain; Destructive Aura; Destructive Smite; Dimensional Hop; Dispelling Touch; Divine Presence; Earth Domain; Electricity Resistance; Evil Domain; Eyes Of Darkness; Fire Bolt; Fire Domain; Fire Resistance; Freedom's Call; Gentle Rest; Glory Domain; Good Domain; Good Fortune; Hand Of The Acolyte; Healer's Blessing; Healing Domain; Holy Lance; Icicle; Inspiring Word; Knowledge Domain; Law Domain; Leadership (Cleric); Liberation Domain; Liberation; Lightning Arc; Lightning Lord; Lore Keeper; Luck Domain; Madness Domain; Magic Domain; Master's Illusion; Might Of The Gods; Nimbus Of Light; Nobility Domain; Plant Domain; Protection Domain; Rebuke Death; Remote Viewing; Repose Domain; Resistant Touch; Rune Domain; Save Bonus; Scribe Scroll; Scythe Of Evil; Speak With Animals; Spell Rune; Spontaneous Cleric Spell; Staff Of Order; Storm Burst; Strength Domain; Strength Surge (Cleric); Sun Domain; Sun's Blessing; Touch Of Chaos; Touch Of Darkness; Touch Of Evil; Touch Of Glory; Touch Of Good; Touch Of Law; Travel Domain; Travel Speed; Trickery Domain; Undead Bane; Unity; Vision Of Madness; War Domain; Ward Against Death; Water Domain; Weapon Master; Weapon Proficiency (Simple Weapons); Weather Domain; Wooden Fist</td>
+        <td><b>Cleric Features</b>: Acid Dart; Acid Resistance; Agile Feet; Air Domain; Aligned Spells; Animal Companion; Animal Domain; Armor Proficiency (Light; Medium; Shield); Artifice Domain; Artificer's Touch; Aura Of Madness; Aura Of Protection; Aura; Battle Rage; Bit Of Luck; Blast Rune; Bleeding Touch; Bramble Armor; Calming Touch; Channel Energy; Chaos Blade; Chaos Domain; Charm Domain; Charming Smile; Cold Resistance; Community Domain; Copycat; Dancing Weapons; Darkness Domain; Dazing Touch; Death Domain; Death's Embrace; Destruction Domain; Destructive Aura; Destructive Smite; Dimensional Hop; Dispelling Touch; Divine Presence; Earth Domain; Electricity Resistance; Evil Domain; Eyes Of Darkness; Fire Bolt; Fire Domain; Fire Resistance; Freedom's Call; Gentle Rest; Glory Domain; Good Domain; Good Fortune; Hand Of The Acolyte; Healer's Blessing; Healing Domain; Holy Lance; Icicle; Inspiring Word; Knowledge Domain; Law Domain; Leadership (Cleric); Liberation Domain; Liberation; Lightning Arc; Lightning Lord; Lore Keeper; Luck Domain; Madness Domain; Magic Domain; Master's Illusion; Might Of The Gods; Nimbus Of Light; Nobility Domain; Orisons; Plant Domain; Protection Domain; Rebuke Death; Remote Viewing; Repose Domain; Resistant Touch; Rune Domain; Scythe Of Evil; Speak With Animals; Spell Rune; Spontaneous Casting (Cleric); Staff Of Order; Storm Burst; Strength Domain; Strength Surge (Cleric); Sun Domain; Sun's Blessing; Touch Of Chaos; Touch Of Darkness; Touch Of Evil; Touch Of Glory; Touch Of Good; Touch Of Law; Travel Domain; Travel Speed; Trickery Domain; Unity; Vision Of Madness; War Domain; Ward Against Death; Water Domain; Weapon Master; Weapon Proficiency (Simple Weapons); Weather Domain; Wooden Fist</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -323,15 +325,11 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Leadership (Cleric): Has Leadership feature</i></td>
+        <td><i>Leadership (Cleric): Has the Leadership feature</i></td>
       </tr><tr style="text-align:center">
-        <td>Agile Feet: Unaffected by difficult terrain for 1 rd 5/dy</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
-      </tr><tr style="text-align:center">
-        <td>Eyes Of Darkness: May see normally in any lighting 10 rd/dy</td>
+        <td>Eyes Of Darkness: Can see normally in any lighting, including magical darkness, for 10 rd per day</td>
       </tr><tr style="text-align:center">
         <td>Leadership (Cleric): +2 Leadership score</td>
       </tr><tr style="text-align:center">
@@ -392,7 +390,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
       </tr><tr style="text-align:center">
-        <td>Lore Keeper: Touch attack provides info as per 37 Knowledge check</td>
+        <td>Lore Keeper: Touch attack reveals info as per a 37 Knowledge check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -436,6 +434,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Darkness Domain: Has the Blind-Fight feature</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
@@ -448,53 +448,59 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Unarmed Strike): +1 Unarmed Strike Attack Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td>Artificer's Touch: Touch attack on objects and constructs inflicts 1d6+10 HP, bypassing 20 DR and hardness, 5/dy</td>
+        <td>Acid Dart: R30' Ranged touch attack inflicts 1d610 HP acid 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Battle Rage: Touch gives +10 damage bonus for 1 rd 5/dy</td>
+        <td>Artificer's Touch: Touch attack on objects and constructs inflicts 1d6+10 HP, bypassing 20 DR and hardness, 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Touch: Touch attack inflicts 1d6 HP/rd for 10 rd (magic healing or DC 15 Heal ends) 5/dy</td>
+        <td>Aura Of Protection: 30' emanation gives allies a +4 deflection bonus to Armor Class and resistance 10 to all energy for 20 rd per day</td>
+      </tr><tr style="text-align:center">
+        <td>Battle Rage: Touch gives a +10 damage bonus for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Bleeding Touch: Touch attack inflicts 1d6 HP each rd for 10 rd (magical healing or a DC 15 Heal ends) 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
       </tr><tr style="text-align:center">
-        <td>Bramble Armor: Thorny hide inflicts 1d6+10 HP on striking foes 20 rd/dy</td>
+        <td>Bramble Armor: Successful melee attackers without reach suffer 1d6+10 HP piercing for 20 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Chaos Blade: May add <i>anarchic</i> property to weapon for 10 rd 4/dy</td>
+        <td>Chaos Blade: Touched weapon gains the <i>anarchic</i> quality for 10 rd 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Dancing Weapons: May add <i>dancing</i> property to weapon for 4 rd 4/dy</td>
+        <td>Dancing Weapons: Touched weapon gains the <i>dancing</i> quality for 4 rd 4 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Dazing Touch: Touch attack dazes a foe with up to 20 HD for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Deadly Aim: May suffer -4 ranged attack to gain +8 damage</td>
       </tr><tr style="text-align:center">
-        <td>Death's Embrace: Healed by channeled negative energy</td>
+        <td>Death's Embrace: Regains hit points from channeled negative energy</td>
       </tr><tr style="text-align:center">
-        <td>Destructive Aura: R30' Attacks inflict +10 damage and automatic crit confirm 20 rd/dy</td>
+        <td>Destructive Aura: Attacks by any creature vs. a target within a 30' emanation inflict +10 HP and automatically confirm crit threats for 20 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Destructive Smite: Attack inflicts +10 HP 5/dy</td>
+        <td>Destructive Smite: Melee attack inflicts +10 HP 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Fire Bolt: R30' Ranged touch inflicts 1d6+10 HP 5/dy</td>
+        <td>Fire Bolt: R30' Ranged touch attack inflicts 1d6+10 HP fire 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Hand Of The Acolyte: R30' May make +17 ranged attack w/melee weapon 5/dy</td>
+        <td>Hand Of The Acolyte: R30' Can make a +17 ranged attack with a melee weapon 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Holy Lance: May add <i>holy</i> property to weapon for 10 rd 4/dy</td>
+        <td>Holy Lance: Touched weapon gains the <i>holy</i> quality for 10 rd 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Icicle: R30' Ranged touch inflicts 1d6+10 HP 5/dy</td>
+        <td>Icicle: R30' Ranged touch attack inflicts 1d6+10 HP cold 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Lightning Arc: R30' Ranged touch inflicts 1d6+10 HP 5/dy</td>
+        <td>Lightning Arc: R30' Ranged touch attack inflicts 1d6+10 HP electricity 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Scythe Of Evil: May add <i>unholy</i> property to weapon for 10 rd 4/dy</td>
+        <td>Scythe Of Evil: Touched weapon gains the <i>unholy</i> quality for 10 rd 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Staff Of Order: May add <i>axiomatic</i> property to weapon for 10 rd 4/dy</td>
+        <td>Staff Of Order: Touched weapon gains the <i>axiomatic</i> quality for 10 rd 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Storm Burst: R30' Ranged touch inflicts 1d6+10 HP non-lethal and -2 attack 5/dy</td>
+        <td>Storm Burst: R30' Ranged touch attack inflicts 1d6+10 HP non-lethal and -2 attacks for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Touch Of Chaos: Touch attack causes target to take worse result of d20 rerolls for 1 rd 5/dy</td>
+        <td>Touch Of Chaos: Touch attack causes the target to take the worse result of 2 d20 rolls for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Touch Of Darkness: Touch attack inflicts 20% miss chance for 10 rd 5/dy</td>
+        <td>Touch Of Darkness: Touch attack inflicts a 20% miss chance on attacks for 10 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Touch Of Evil: Touch inflicts sickened for 10 rd 5/dy</td>
+        <td>Touch Of Evil: Touch inflicts sickened and susceptibility to good-targeted spells for 10 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Weapon Master: May use additional combat feat 20 rd/dy</td>
+        <td>Weapon Master: Can use the effects of additional combat feats for 20 rd per day; must meet any feat prerequsites</td>
       </tr><tr style="text-align:center">
-        <td>Wooden Fist: +10 unarmed damage and no AOO on unarmed attacks 5 rd/dy</td>
+        <td>Wooden Fist: Unarmed attacks inflict +10 HP and provoke no AOO for 5 rd per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -507,23 +513,23 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Acid Resistance: Resistance immune to acid</i></td>
+        <td><i>Acid Resistance: Has immunity to acid</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Cold Resistance: Resistance immune to cold</i></td>
+        <td><i>Cold Resistance: Has immunity to cold</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Electricity Resistance: Resistance immune to electricity</i></td>
+        <td><i>Electricity Resistance: Has immunity to electricity</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Fire Resistance: Resistance immune to fire</i></td>
+        <td><i>Fire Resistance: Has immunity to fire</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Save Bonus: +5 Fortitude/+5 Reflex/+5 Will</i></td>
+        <td><i>Protection Domain: +5 Fortitude/+5 Reflex/+5 Will</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Unity: R30' Allies may use your saving throw 4/dy</td>
+        <td>Unity: R30' Can allow allies to use self saving throw vs. an effect that affects both 4 times per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -538,7 +544,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
-        <td><b>Spell DC</b>: C: 12; Domain: 12</td>
+        <td><b>Spell DC</b>: Artificers Touch: 12; Aura Of Madness: 13; C: 12; Charming Smile: 13; Copycat: 13; Dispelling Touch: 13; Divine Presence: 13; Domain: 12; Lightning Lord: 13; Masters Illusion: 13; Nimbus Of Light: 13; Remote Viewing: 13; Speak With Animals: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -648,7 +654,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Burning Hands (Fire1 Evoc): 15' cone inflicts 5d4 HP fire (save Reflex (DC +1) half)</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Lightning Lord3 Evoc): RNaN' 1 bolt per rd inflicts 3d6 HP electricity (or 3d10 HP during a storm) (save Reflex (DC +1) half) for NaN min or 10 bolts</td>
+      <td>Call Lightning (Lightning Lord3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity (or 3d10 HP during a storm) (save Reflex (DC +1) half) for 20 min or 10 bolts</td>
     </tr><tr style="text-align:left">
       <td>Call Lightning (Weather3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity (or 3d10 HP during a storm) (save Reflex (DC +1) half) for 20 min or 10 bolts</td>
     </tr><tr style="text-align:left">
@@ -672,11 +678,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Charm Person (Charm1 Ench): R75' Target humanoid treats self as a trusted friend (save Will negates; +5 if being threatened) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Charm Person (Charming Smile1 Ench): RNaN' Target humanoid treats self as a trusted friend (save Will negates; +5 if being threatened) for NaN hr</td>
+      <td>Charm Person (Charming Smile1 Ench): R75' Target humanoid treats self as a trusted friend (save Will negates; +5 if being threatened) for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Clairaudience/Clairvoyance (Knowledge3 Divi): 1200' Self gains a choice of remote sight or hearing of a known location for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Clairaudience/Clairvoyance (Remote Viewing3 Divi): NaN' Self gains a choice of remote sight or hearing of a known location for NaN min</td>
+      <td>Clairaudience/Clairvoyance (Remote Viewing3 Divi): 1200' Self gains a choice of remote sight or hearing of a known location for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Clenched Fist (Strength8 Evoc): R300' 10' hand (AC 20, 128 HP) moves 60'/rd, gives +4 AC, and performs +32 bull rush and +31+mod melee attack that inflicts 1d8+11 HP and stuns for 1 rd (Fort neg) for 20 rd</td>
     </tr><tr style="text-align:left">
@@ -696,7 +702,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Cone Of Cold (Water6 Evoc): 60' cone inflicts 15d6 HP cold (save Reflex (DC +1) half)</td>
     </tr><tr style="text-align:left">
-      <td>Confusion (Aura Of Madness4 Ench): RNaN' Creatures in 15' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for NaN rd (Will neg)</td>
+      <td>Confusion (Aura Of Madness4 Ench): R300' Creatures in 15' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for 20 rd (Will neg)</td>
     </tr><tr style="text-align:left">
       <td>Confusion (Madness4 Ench): R300' Creatures in 15' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for 20 rd (Will neg)</td>
     </tr><tr style="text-align:left">
@@ -760,7 +766,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Daylight (C3 Evoc): Touched increases light level by 1 in 60' radius for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Daylight (Nimbus Of Light3 Evoc): Touched increases light level by 1 in 60' radius for NaN min</td>
+      <td>Daylight (Nimbus Of Light3 Evoc): Touched increases light level by 1 in 60' radius for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Death Knell (C2 Necr): Touched with negative hit points dies (save Will negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
     </tr><tr style="text-align:left">
@@ -852,7 +858,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Dispel Magic (C3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Magic (Dispelling Touch3 Abju): RNaN' Successful d20+NaN check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
+      <td>Dispel Magic (Dispelling Touch3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
     </tr><tr style="text-align:left">
       <td>Dispel Magic (Magic3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
     </tr><tr style="text-align:left">
@@ -1210,7 +1216,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Mending (Artifice0 Tran): R10' Repairs minor damage to 20 lb object</td>
     </tr><tr style="text-align:left">
-      <td>Mending (Artificers Touch0 Tran): R10' Repairs minor damage to NaN lb object</td>
+      <td>Mending (Artificers Touch0 Tran): R10' Repairs minor damage to 20 lb object</td>
     </tr><tr style="text-align:left">
       <td>Mending (C0 Tran): R10' Repairs minor damage to 20 lb object</td>
     </tr><tr style="text-align:left">
@@ -1226,7 +1232,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Miracle (Luck9 Evoc): Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 5,000 XP to request</td>
     </tr><tr style="text-align:left">
-      <td>Mirror Image (Copycat2 Illu): Creates 1d4+8 copies of self that randomly misdirect attacks for NaN min; the duplicates have Armor Class 14, and any hit on one destroys it</td>
+      <td>Mirror Image (Copycat2 Illu): Creates 1d4+6 copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 14, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
       <td>Mirror Image (Trickery2 Illu): Creates 1d4+6 copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 14, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
@@ -1378,7 +1384,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Sanctuary (C1 Abju): Foes cannot attack touched (save Will negates) for 20 rd; target attacking ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Sanctuary (Divine Presence1 Abju): Foes cannot attack touched (save Will negates) for NaN rd; target attacking ends the spell</td>
+      <td>Sanctuary (Divine Presence1 Abju): Foes cannot attack touched (save Will negates) for 20 rd; target attacking ends the spell</td>
     </tr><tr style="text-align:left">
       <td>Sanctuary (Glory1 Abju): Foes cannot attack touched (save Will negates) for 20 rd; target attacking ends the spell</td>
     </tr><tr style="text-align:left">
@@ -1448,7 +1454,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Speak With Animals (Animal1 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for NaN min</td>
+      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Speak With Dead (C3 Necr): R10' Target corpse answers 10 questions (save Will negates) asked within 20 min</td>
     </tr><tr style="text-align:left">
@@ -1596,7 +1602,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Unholy Blight (Evil4 Evoc): R300' 20' radius inflicts 5d8 HP (or 20d6 HP to outsiders) and sickened for 1d4 rd on good creatures (save Will (DC +1) half HP only) and half as many HP on neutral ones (save Will (DC +1) half)</td>
     </tr><tr style="text-align:left">
-      <td>Veil (Masters Illusion6 Illu): RNaN' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + NaN hr</td>
+      <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Virtue (C0 Tran): Gives touched 1 temporary HP for 1 min</td>
     </tr><tr style="text-align:left">
@@ -1648,97 +1654,93 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
+      <td><i>Rune Domain: Has the Scribe Scroll feature</i></td>
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Evocation): +1 Spell DC (Evocation)</i></td>
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Acid Dart: R30' Ranged touch inflicts 1d6+10 HP 5/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Artificer's Touch: May use <i>Mending</i> effects at will</td>
+      <td>Artificer's Touch: Can use <i>Mending</i> effects at will</td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Madness: R30' May use <i>Confusion</i> effects (DC 22 Will neg) 20 rd/dy</td>
+      <td>Aura Of Madness: 30' emanation inflicts <i>Confusion</i> effects (save Will DC 22 negates for 24 hr) for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Protection: R30' Allies gain +4 AC and resistance 10 to all energy 20 rd/dy</td>
+      <td>Bit Of Luck: Touch gives d20 rerolls for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Bit Of Luck: Touch gives d20 reroll for 1 rd 5/dy</td>
+      <td>Blast Rune: Can create a rune in an adjacent unoccupied square that inflicts 1d6+10 HP of a choice of acid, cold, electricity, or fire damage once within 20 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Blast Rune: May create rune in adjacent unoccupied square that inflicts 1d6+10 HP energy damage once w/in 20 rd 5/dy</td>
+      <td>Calming Touch: Touch restores 1d6+20 nonlethal hit points and removes fatigued, shaken, and sickened conditions 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Calming Touch: Touch heals 1d6+20 nonlethal HP and removes fatigued, shaken, and sickened 5/dy</td>
+      <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 6 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 23 Will half) 6/dy</td>
+      <td>Charming Smile: Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC 22) for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Charming Smile: May use <i>Charm Person</i> effects 20 rd/dy (DC 22 Will neg)</td>
+      <td>Copycat: Can use <i>Mirror Image</i> effects to create a single copy for 20 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Copycat: May use <i>Mirror Image</i> effects for 20 rd 5/dy</td>
+      <td>Dimensional Hop: Can teleport 200' per day; including others uses an equal portion of the daily distance</td>
     </tr><tr style="text-align:center">
-      <td>Dazing Touch: Touch attack dazes 20 HD foe for 1 rd 5/dy</td>
+      <td>Dispelling Touch: Touch invokes <i>Dispel Magic</i> effects 4 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Dimensional Hop: May teleport 200'/dy; including others uses equal portion of daily distance</td>
-    </tr><tr style="text-align:center">
-      <td>Dispelling Touch: Touch inflicts <i>Dispel Magic</i> 4/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Divine Presence: R30' Allies gain DC 22 <i>Sanctuary</i> 20 rd/dy</td>
+      <td>Divine Presence: 30' emanation gives allies DC 22 <i>Sanctuary</i> effects for 20 rd per day; self attacking ends</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: May cast spells w/out materials</td>
     </tr><tr style="text-align:center">
-      <td>Freedom's Call: R30' May give allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken 20 rd/dy</td>
+      <td>Freedom's Call: 30' emanation gives allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Gentle Rest: Touch inflicts staggered for 1 rd (undead for 2 rd) 5/dy</td>
+      <td>Gentle Rest: Touch inflicts staggered for 1 rd (undead for 2 rd), or asleep on an already-staggered creature, 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Good Fortune: May reroll any roll d20 3/dy</td>
+      <td>Glory Domain: +2 save DC on channeled energy to harm undead</td>
     </tr><tr style="text-align:center">
-      <td>Healer's Blessing: <i>Cure</i> spells heal 50% more HP</td>
+      <td>Healer's Blessing: <i>Cure</i> spells restore 50% more hit points</td>
     </tr><tr style="text-align:center">
       <td>Heighten Spell: May cast chosen spell at a higher level</td>
     </tr><tr style="text-align:center">
-      <td>Inspiring Word: R30' Gives target +2 attack, skill, ability, and save for 10 rd 5/dy</td>
+      <td>Inspiring Word: R30' Gives the target +2 attacks, skill checks, ability checks, and saves for 10 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Liberation: May ignore movement impediments 20 rd/dy</td>
+      <td>Liberation: Can ignore movement impediments for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Lightning Lord: May use <i>Call Lightning</i> effects with multiple bolts w/in 15' radius each rd for 20 bolts/dy</td>
+      <td>Lightning Lord: Can use <i>Call Lightning</i> effects on targets within 15' for 20 bolts per day</td>
     </tr><tr style="text-align:center">
-      <td>Master's Illusion: May use 30' radius <i>Veil</i> effects (DC 22 Will disbelieve) 20 rd/dy</td>
+      <td>Master's Illusion: 30' emanation invokes <i>Veil</i> effects (save Will DC 22 disbelieve) for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Might Of The Gods: +20 Strength checks 20 rd/dy</td>
+      <td>Might Of The Gods: Can add +20 Strength for 5 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Nimbus Of Light: 30' radius <i>Daylight</i> inflicts 20 HP on undead 20 rd/dy</td>
+      <td>Nimbus Of Light: 30' emanation invokes <i>Daylight</i> effects, inflicts 20 HP on undead, and dispels spells with the Darkness descriptor for 20 rd per day</td>
+    </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
     </tr><tr style="text-align:center">
-      <td>Rebuke Death: Touch restores 1d4+10 HP to creature below 0 HP 5/dy</td>
+      <td>Rebuke Death: Touch restores 1d4+10 hit points to a creature with negative hit points 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Remote Viewing: May use <i>Clairaudience/Clairvoyance</i> effects 20 rd/dy</td>
+      <td>Remote Viewing: Can use <i>Clairaudience/Clairvoyance</i> effects for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Resistant Touch: Touch transfers resistance bonus to ally for 1 min 5/dy</td>
+      <td>Resistant Touch: Touch transfers resistance bonus to an ally for 1 min 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Scribe Scroll: May create scroll of any known spell</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Animals: May use <i>Speak With Animals</i> effects 23 rd/dy</td>
+      <td>Speak With Animals: Can use <i>Speak With Animals</i> effects for 23 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Spell Rune: May add known spell to Blast Rune</td>
+      <td>Spell Rune: Can add a known spell of up to level 8 to the effects of Blast Rune</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
       <td>Still Spell: May use +1 spell slot to cast chosen spell w/out movement</td>
     </tr><tr style="text-align:center">
-      <td>Strength Surge (Cleric): Touch gives +10 melee attack and Strength check bonus for 1 rd 5/dy</td>
+      <td>Strength Surge (Cleric): Touch gives a +10 melee attack and Strength check bonus for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Sun's Blessing: Channel Energy inflicts +20 HP on undead and negates channel resistance</td>
     </tr><tr style="text-align:center">
-      <td>Touch Of Glory: Touch gives +20 Charisma check bonus w/in 1 hr 5/dy</td>
+      <td>Touch Of Glory: Touch gives +20 on a Charisma check within 1 hr 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Touch Of Good: Touch gives +10 attack, skill, ability, and save for 1 rd 5/dy</td>
+      <td>Touch Of Good: Touch gives +10 attacks, skill checks, ability checks, and saves for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Touch Of Law: Touched may take 11 on all d20 rolls for 1 rd 5/dy</td>
+      <td>Touch Of Law: Touched can take 11 on all d20 rolls for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Undead Bane: +2 DC on energy channeled to harm undead</td>
+      <td>Vision Of Madness: Gives touched +10 on a choice of attacks, saves, or skill checks and -10 on the others for 3 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Vision Of Madness: Touch gives +10 attack, save, or skill, -10 others for 3 rd 5/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Ward Against Death: R30' Gives immunity to death effects, energy drain, and negative levels 20 rd/dy</td>
+      <td>Ward Against Death: 30' emanation gives living creatures immunity to death effects, energy drain, and negative level effects for 20 rd per day</td>
     </tr></table>
 </td>
   </tr></table>
@@ -1781,6 +1783,8 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
+      <td>Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
+    </tr><tr style="text-align:center">
       <td>Bonus Tricks: Companion can learn 6 additional tricks, requiring no training time or Handle Animal checks</td>
     </tr><tr style="text-align:center">
       <td>Companion Evasion: Reflex save yields no damage instead of half</td>

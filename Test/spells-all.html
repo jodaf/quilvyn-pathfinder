@@ -433,7 +433,9 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Travel Speed: +10 Speed</i></td>
+      <td><i>Travel Domain: +10 Speed</i></td>
+    </tr><tr style="text-align:center">
+      <td>Agile Feet: Can ignore difficult terrain for 1 rd 4 times per day</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -459,7 +461,7 @@ var attributes = {
         <td><b>Wizard Features</b>: Bonded Object; Protective Ward; Resistance To Energy; School Opposition (Enchantment); School Opposition (Necromancy); School Specialization (Abjuration); Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
         <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Lay On Hands; Mercy (Fatigued); Mercy; Smite Evil; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
         <td><b>Druid Features</b>: Animal Companion; Animal Domain; Armor Proficiency (Light; Medium; Shield); Nature Bond; Nature Sense; Resist Nature's Lure; Speak With Animals; Spontaneous Druid Spell; Trackless Step; Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
-        <td><b>Cleric Features</b>: Agile Feet; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Copycat; Spontaneous Cleric Spell; Travel Domain; Travel Speed; Trickery Domain; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Cleric Features</b>: Agile Feet; Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Copycat; Orisons; Spontaneous Casting (Cleric); Travel Domain; Travel Speed; Trickery Domain; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light; Shield); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Competence; Inspire Courage; Simple Somatics; Versatile Performance; Versatile Skill (Dance); Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip); Well-Versed</td>
       </tr></table>
 </td>
@@ -470,13 +472,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Versatile Performance: 1 selections</i></td>
       </tr><tr style="text-align:center">
-        <td>Agile Feet: Unaffected by difficult terrain for 1 rd 4/dy</td>
-      </tr><tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
         <td>Aura Of Good: Visible to <i>Detect Good</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
         <td>Trackless Step: Untrackable outdoors</td>
       </tr><tr style="text-align:center">
@@ -669,7 +667,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: B0: 6; B1: 4; B2: 2</td>
         <td><b>Spell Slots</b>: B0: 6; B1: 3; B2: 1; C0: 4; C1: 4; C2: 2; D0: 4; D1: 4; D2: 2; Domain1: 2; Domain2: 2; P1: 0; W0: 4; W1: 5; W2: 4</td>
-        <td><b>Spell DC</b>: B: 8; C: 11; D: 11; Domain: 11; P: 8; W: 12</td>
+        <td><b>Spell DC</b>: B: 8; C: 11; Copycat: 8; D: 11; Domain: 11; P: 8; Speak With Animals: 8; W: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -1911,7 +1909,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Mirror Image (B2 Illu): Creates 1d4+1 copies of self that randomly misdirect attacks for 4 min; the duplicates have Armor Class 11, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
-      <td>Mirror Image (Copycat2 Illu): Creates 1d4+8 copies of self that randomly misdirect attacks for NaN min; the duplicates have Armor Class 11, and any hit on one destroys it</td>
+      <td>Mirror Image (Copycat2 Illu): Creates 1d4+6 copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 11, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
       <td>Mirror Image (W2 Illu): Creates 1d4+1 copies of self that randomly misdirect attacks for 4 min; the duplicates have Armor Class 11, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
@@ -2355,7 +2353,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Speak With Animals (D1 Divi): Allows self to converse with animals for 4 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for NaN min</td>
+      <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Speak With Dead (C3 Necr): R10' Target corpse answers 2 questions (save Will negates) asked within 4 min</td>
     </tr><tr style="text-align:left">
@@ -2707,8 +2705,6 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: -2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1, W2</i></td>
     </tr><tr style="text-align:center">
       <td><i>School Specialization (Abjuration): +1 Abjuration spell/dy in each spell level</i></td>
@@ -2719,13 +2715,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Wisdom Druid Spell Slot Bonus: Spell level D1</i></td>
     </tr><tr style="text-align:center">
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
       <td>Bonded Object: May cast known spell through object</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 4d6 HP (DC 12 Will half) 1/dy</td>
+      <td>Channel Energy: Can restore 4d6 hit points or inflict the same amount (save Will DC 12 half) to all creatures within 30' once per day</td>
     </tr><tr style="text-align:center">
       <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
     </tr><tr style="text-align:center">
-      <td>Copycat: May use <i>Mirror Image</i> effects for 4 rd 4/dy</td>
+      <td>Copycat: Can use <i>Mirror Image</i> effects to create a single copy for 4 rd 4 times per day</td>
     </tr><tr style="text-align:center">
       <td>Detect Evil: May use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
@@ -2735,6 +2733,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Mercy: Lay On Hands removes fatigued</td>
     </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
       <td>Protective Ward: R10' Allies gain +1 AC for 2 rd 5/dy</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Enchantment): Casting Enchantment spells requires two spell slots each</td>
@@ -2743,9 +2743,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Scribe Scroll: May create scroll of any known spell</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Animals: May use <i>Speak With Animals</i> effects 7 rd/dy</td>
+      <td>Speak With Animals: Can use <i>Speak With Animals</i> effects for 7 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
       <td>Spontaneous Druid Spell: May cast <i>Summon Nature's Ally</i> in place of known spell</td>
     </tr><tr style="text-align:center">
@@ -2791,6 +2791,8 @@ var attributes = {
 </td>
     </tr></table>
 </td>
+  </tr><tr style="text-align:center">
+    <td><b>Companion Notes</b>: Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
   </tr></table>
 </td>
 </tr><tr style="text-align:center">

@@ -111,7 +111,7 @@ var attributes = {
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Mystic Theurge Features</b>: Arcane Caster Level Bonus; Combined Spells; Divine Caster Level Bonus; Spell Synthesis</td>
         <td><b>Wizard Features</b>: Bonded Object; Hand Of The Apprentice; School Specialization (None); Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Destruction Domain; Destructive Smite; Spontaneous Cleric Spell; Storm Burst; Weapon Proficiency (Greataxe); Weapon Proficiency (Simple Weapons); Weather Domain</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Destruction Domain; Destructive Smite; Orisons; Spontaneous Casting (Cleric); Storm Burst; Weapon Proficiency (Simple Weapons); Weather Domain</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -119,7 +119,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -212,13 +212,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Destructive Smite: Attack inflicts +2 HP 4/dy</td>
+        <td>Destructive Smite: Melee attack inflicts +2 HP 4 times per day</td>
       </tr><tr style="text-align:center">
         <td>Hand Of The Apprentice: R30' May make +11 ranged attack w/melee weapon 4/dy</td>
       </tr><tr style="text-align:center">
         <td>Lunge: May suffer -2 AC to gain +5' melee range</td>
       </tr><tr style="text-align:center">
-        <td>Storm Burst: R30' Ranged touch inflicts 1d6+2 HP non-lethal and -2 attack 4/dy</td>
+        <td>Storm Burst: R30' Ranged touch attack inflicts 1d6+2 HP non-lethal and -2 attacks for 1 rd 4 times per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -425,11 +425,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1</i></td>
     </tr><tr style="text-align:center">
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 35%</td>
     </tr><tr style="text-align:center">
       <td>Bonded Object: May cast known spell through object</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 2d6 HP (DC 12 Will half) 3/dy</td>
+      <td>Channel Energy: Can restore 2d6 hit points or inflict the same amount (save Will DC 12 half) to all creatures within 30' 3 times per day</td>
     </tr><tr style="text-align:center">
       <td>Combined Spells: May place spells up to level 5 into +1 spell slots from different class</td>
     </tr><tr style="text-align:center">
@@ -437,11 +439,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Eschew Materials: May cast spells w/out materials</td>
     </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
       <td>Scribe Scroll: May create scroll of any known spell</td>
     </tr><tr style="text-align:center">
       <td>Spell Synthesis: May cast two spells simultaneously w/+2 checks to overcome spell resistance and target -2 saves 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
       <td>Widen Spell: May use +3 spell slot to dbl chosen spell area of affect</td>
     </tr></table>
