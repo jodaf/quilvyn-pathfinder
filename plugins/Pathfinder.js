@@ -1021,6 +1021,277 @@ Pathfinder.FEATURES = {
     'Section=save ' +
     'Note="+4 vs. bardic performance, sonic, and language-dependent effects"',
 
+  // Cleric
+  'Aligned Spells':SRD35.FEATURES['Aligned Spells'],
+  'Aura':SRD35.FEATURES.Aura,
+  'Channel Energy':
+    'Section=magic ' +
+    'Note="Can restore %1d6 hit points or inflict the same amount (save Will DC %{10+channelLevel//2+charismaModifier} half) to all creatures within 30\' %{%V>1?\'%V times\':\'once\'} per day"',
+  'Orisons':'Section=magic Note="Knows 0-level spells"',
+  'Spontaneous Casting (Cleric)':SRD35.FEATURES['Spontaneous Casting (Cleric)'],
+  // Air Domain
+  'Electricity Resistance':
+    'Section=save ' +
+    'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to electricity"',
+  'Lightning Arc':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+  // Animal Domain
+  'Animal Domain':'Section=skill Note="Knowledge (Nature) is a class skill"',
+  'Animal Companion':SRD35.FEATURES['Animal Companion'],
+  'Speak With Animals':
+    'Section=magic ' +
+    'Note="Can use <i>Speak With Animals</i> effects for %{levels.Cleric+3} rd per day"',
+  // Artifice Domain
+  "Artificer's Touch":
+    'Section=combat,magic ' +
+    'Note=' +
+      '"Touch attack on objects and constructs inflicts 1d6+%{levels.Cleric//2} HP, bypassing %{levels.Cleric} DR and hardness, %{wisdomModifier+3} times per day",' +
+      '"Can use <i>Mending</i> effects at will" ' +
+    'Spells="Mending" ' +
+    'SpellAbility=Wisdom',
+  'Dancing Weapons':
+    'Section=combat ' +
+    'Note="Touched weapon gains the <i>dancing</i> quality for 4 rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  // Chaos Domain
+  'Chaos Blade':
+    'Section=combat ' +
+    'Note="Touched weapon gains the <i>anarchic</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  'Touch Of Chaos':
+    'Section=combat ' +
+    'Note="Touch attack causes the target to take the worse result of 2 d20 rolls for 1 rd %{wisdomModifier+3} times per day"',
+  // Charm Domain
+  'Charming Smile':
+    'Section=magic ' +
+    'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} for %{levels.Cleric} rd per day" ' +
+    'Spells="Charm Person" ' +
+    'SpellAbility=Charisma',
+  'Dazing Touch':
+    'Section=combat ' +
+    'Note="Touch attack dazes a foe with up to %{levels.Cleric} HD for 1 rd %{wisdomModifier+3} times per day"',
+  // Community Domain
+  'Calming Touch':
+    'Section=magic ' +
+    'Note="Touch restores 1d6+%{levels.Cleric} nonlethal hit points and removes fatigued, shaken, and sickened conditions %{wisdomModifier+3} times per day"',
+  'Unity':
+    'Section=save ' +
+    'Note="R30\' Can allow allies to use self saving throw vs. an effect that affects both %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  // Darkness Domain
+  'Darkness Domain':'Section=combat Note="Has the Blind-Fight feature"',
+  'Eyes Of Darkness':
+    'Section=feature ' +
+    'Note="Can see normally in any lighting, including magical darkness, for %{levels.Cleric//2} rd per day"',
+  'Touch Of Darkness':
+    'Section=combat ' +
+    'Note="Touch attack inflicts a 20% miss chance on attacks for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+  // Death Domain
+  'Bleeding Touch':
+    'Section=combat ' +
+    'Note="Touch attack inflicts 1d6 HP each rd for %{levels.Cleric//2>?1} rd (magical healing or a DC 15 Heal ends) %{wisdomModifier+3} times per day"',
+  "Death's Embrace":
+    'Section=combat Note="Regains hit points from channeled negative energy"',
+  // Destruction Domain
+  'Destructive Aura':
+    'Section=combat ' +
+    'Note="Attacks made on targets within 30\' inflict +%{levels.Cleric//2} HP and automatically confirm crit threats for %{levels.Cleric} rd per day"',
+  'Destructive Smite':
+    'Section=combat ' +
+    'Note="Melee attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+  // Earth Domain
+  'Acid Dart':
+    'Section=magic ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+  'Acid Resistance':
+    'Section=save ' +
+    'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to acid"',
+  // Evil Domain
+  'Scythe Of Evil':
+    'Section=combat ' +
+    'Note="Touched weapon gains the <i>unholy</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  'Touch Of Evil':
+    'Section=combat ' +
+    'Note="Touch inflicts sickened and susceptibility to good-targeted spells for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+  // Fire Domain
+  'Fire Bolt':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+  'Fire Resistance':
+    'Section=save ' +
+    'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to fire"',
+  // Glory Domain
+  'Divine Presence':
+    'Section=magic ' +
+    'Note="30\' emanation gives allies DC %{10+levels.Cleric//2+wisdomModifier} <i>Sanctuary</i> effects for %{levels.Cleric} rd per day; self attacking ends" ' +
+    'Spells="Sanctuary" ' +
+    'SpellAbility=Charisma',
+  'Glory Domain':
+    'Section=magic Note="+2 save DC on channeled energy to harm undead"',
+  'Touch Of Glory':
+    'Section=magic ' +
+    'Note="Touch gives +%{levels.Cleric} on a Charisma check within 1 hr %{wisdomModifier+3} times per day"',
+  // Good Domain
+  'Holy Lance':
+    'Section=combat ' +
+    'Note="Touched weapon gains the <i>holy</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  'Touch Of Good':
+    'Section=magic ' +
+    'Note="Touch gives +%{levels.Cleric//2>?1} attacks, skill checks, ability checks, and saves for 1 rd %{wisdomModifier+3} times per day"',
+  // Healing Domain
+  "Healer's Blessing":
+    'Section=magic Note="<i>Cure</i> spells restore 50% more hit points"',
+  'Rebuke Death':
+    'Section=magic ' +
+    'Note="Touch restores 1d4+%{levels.Cleric//2} hit points to a creature with negative hit points %{wisdomModifier+3} times per day"',
+  // Knowledge Domain
+  'Knowledge Domain':
+    'Section=skill Note="All Knowledge skills are class skills"',
+  'Lore Keeper':
+    'Section=skill ' +
+    'Note="Touch attack reveals info as per a %{15+levels.Cleric+wisdomModifier} Knowledge check"',
+  'Remote Viewing':
+    'Section=magic ' +
+    'Note="Can use <i>Clairaudience/Clairvoyance</i> effects for %{levels.Cleric} rd per day" ' +
+    'Spells="Clairaudience/Clairvoyance" ' +
+    'SpellAbility=Charisma',
+  // Law Domain
+  'Staff Of Order':
+    'Section=combat ' +
+    'Note="Touched weapon gains the <i>axiomatic</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+  'Touch Of Law':
+    'Section=magic ' +
+    'Note="Touched can take 11 on all d20 rolls for 1 rd %{wisdomModifier+3} times per day"',
+  // Liberation Domain
+  "Freedom's Call":
+    'Section=magic ' +
+    'Note="30\' emanation gives allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions for %{levels.Cleric} rd per day"',
+  'Liberation':
+    'Section=magic ' +
+    'Note="Can ignore movement impediments for %{levels.Cleric} rd per day"',
+  // Luck Domain
+  'Bit Of Luck':
+    'Section=magic ' +
+    'Note="Touch gives d20 rerolls for 1 rd %{wisdomModifier+3} times per day"',
+  'Good Fortune':
+    SRD35.FEATURES['Luck Domain']
+    .replace('a roll', 'a d20 roll')
+    .replace('once', "%{levels.Cleric>11?levels.Cleric//6+' times':'once'}"),
+  // Madness Domain
+  'Aura Of Madness':
+    'Section=magic ' +
+    'Note="30\' emanation inflicts <i>Confusion</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} negates for 24 hr) for %{levels.Cleric} rd per day" ' +
+    'Spells="Confusion" ' +
+    'SpellAbility=Charisma',
+  'Vision Of Madness':
+    'Section=magic ' +
+    'Note="Gives touched +%{levels.Cleric//2>?1} on a choice of attacks, saves, or skill checks and -%{levels.Cleric//2>?1} on the others for 3 rd %{wisdomModifier+3} times per day"',
+  // Magic Domain
+  'Dispelling Touch':
+    'Section=magic ' +
+    'Note="Touch invokes <i>Dispel Magic</i> effects %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day" ' +
+    'Spells="Dispel Magic" ' +
+    'SpellAbility=Charisma',
+  'Hand Of The Acolyte':
+    'Section=combat ' +
+    'Note="R30\' Can make a +%{rangedAttack-dexterityModifier+wisdomModifier} ranged attack with a melee weapon %{wisdomModifier+3} times per day"',
+  // Nobility Domain
+  'Inspiring Word':
+    'Section=magic ' +
+    'Note="R30\' Gives the target +2 attacks, skill checks, ability checks, and saves for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+  'Leadership (Cleric)':
+    'Section=feature,feature ' +
+    'Note=' +
+      '"Has the Leadership feature",' +
+      '"+2 Leadership score"',
+  // Plant Domain
+  'Bramble Armor':
+    'Section=combat ' +
+    'Note="Successful melee attackers without reach suffer 1d6+%{levels.Cleric//2} HP piercing for %{levels.Cleric} rd per day"',
+  'Wooden Fist':
+    'Section=combat ' +
+    'Note="Unarmed attacks inflict +%{levels.Cleric//2} HP and provoke no AOO for %{wisdomModifier+3} rd per day"',
+  // Protection Domain
+  'Aura Of Protection':
+    'Section=magic ' +
+    'Note="R30\' Allies gain +%V AC and resistance %1 to all energy %2 rd/dy"',
+  'Protection Domain':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
+  'Resistant Touch':
+    'Section=magic ' +
+    'Note="Touch transfers resistance bonus to an ally for 1 min %{wisdomModifier+3} times per day"',
+  // Repose Domain
+  'Gentle Rest':
+    'Section=magic ' +
+    'Note="Touch inflicts staggered for 1 rd (undead for %{wisdomModifier} rd), or asleep on an already-staggered creature, %{wisdomModifier+3} times per day"',
+  'Ward Against Death':
+    'Section=magic ' +
+    'Note="30\' emanation gives living creatures immunity to death effects, energy drain, and negative level effects for %{levels.Cleric} rd per day"',
+  // Rune Domain
+  'Blast Rune':
+    'Section=magic ' +
+    'Note="Can create a rune in an adjacent unoccupied square that inflicts 1d6+%{levels.Cleric//2} HP of a choice of acid, cold, electricity, or fire damage once within %{levels.Cleric} rd %{wisdomModifier+3} times per day"',
+  'Rune Domain':'Section=magic Note="Has the Scribe Scroll feature"',
+  'Spell Rune':
+    'Section=magic Note="Can add a known spell of up to level %{spellSlots.C9?8:spellSlots.C8?7:spellSlots.C7?6:spellSlots.C6?5:spellSlots.C5?4:3} to the effects of Blast Rune"',
+  // Strength Domain
+  'Might Of The Gods':
+    'Section=magic ' +
+    'Note="Can add +%{levels.Cleric//2} Strength for %{wisdomModifier+3} rd per day"',
+  'Strength Surge (Cleric)':
+    'Section=magic ' +
+    'Note="Touch gives +%{levels.Cleric//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
+  // Sun Domain
+  'Nimbus Of Light':
+    'Section=magic ' +
+    'Note="30\' emanation invokes <i>Daylight</i> effects, inflicts %{levels.Cleric} HP on undead, and dispels spells with the Darkness descriptor for %{levels.Cleric} rd per day" ' +
+    'Spells="Daylight" ' +
+    'SpellAbility=Charisma',
+  "Sun's Blessing":
+    'Section=magic ' +
+    'Note="Channel Energy inflicts +%{levels.Cleric} HP on undead and negates channel resistance"',
+  // Travel Domain
+  'Agile Feet':
+    'Section=ability ' +
+    'Note="Can ignore difficult terrain for 1 rd %{wisdomModifier+3} times per day"',
+  'Dimensional Hop':
+    'Section=magic ' +
+    'Note="Can teleport %{levels.Cleric*10}\' per day; including others uses an equal portion of the daily distance"',
+  'Travel Domain':'Section=ability Note="+10 Speed"',
+  // Trickery Domain
+  'Copycat':
+    'Section=magic ' +
+    'Note="Can use <i>Mirror Image</i> effects to create a single copy for %{levels.Cleric} rd %{wisdomModifier+3} times per day" ' +
+    'Spells="Mirror Image" ' +
+    'SpellAbility=Charisma',
+  "Master's Illusion":
+    'Section=magic ' +
+    'Note="30\' radius invokes <i>Veil</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} disbelieve) for %{levels.Cleric} rd per day" ' +
+    'Spells="Veil" ' +
+    'SpellAbility=Charisma',
+  'Trickery Domain':
+    'Section=skill Note="Bluff is a class skill/Disguise is a class skill/Stealth is a class skill"',
+  // War Domain
+  'Battle Rage':
+    'Section=combat ' +
+    'Note="Touch gives a +%{levels.Cleric//2>?1} damage bonus for 1 rd %{wisdomModifier+3} times per day"',
+  'Weapon Master':
+    'Section=combat ' +
+    'Note="Can use the effects of additional combat feats for %{levels.Cleric} rd per day; must meet any feat prerequsites"',
+  // Water Domain
+  'Cold Resistance':
+    'Section=save ' +
+    'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to cold"',
+  'Icicle':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+  // Weather Domain
+  'Lightning Lord':
+    'Section=magic ' +
+    'Note="Can use <i>Call Lightning</i> effects on targets within 15\' for %{levels.Cleric} bolts per day" ' +
+    'Spells="Call Lightning" ' +
+    'SpellAbility=Charisma',
+  'Storm Burst':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP non-lethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
+
   // Shared with SRD35
   'A Thousand Faces':
     'Section=magic Note="May use <i>Alter Self</i> effects at will"',
@@ -1029,17 +1300,12 @@ Pathfinder.FEATURES = {
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
-  'Animal Domain':'Section=skill Note="Knowledge (Nature) is a class skill"',
-  'Animal Companion':'Section=feature Note="Special bond and abilities"',
   'Armor Class Bonus':
     'Section=combat ' +
     'Note="+%V Armor Class and CMD; encumbrance or armor negates"',
   'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
   'Augment Summoning':
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
-  'Aura':
-    'Section=feature ' +
-    'Note="Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment"',
   'Aura Of Courage':
     'Section=save Note="Immune to fear/R10\' Allies +4 vs. fear"',
   'Aura Of Good':'Section=feature Note="Visible to <i>Detect Good</i>"',
@@ -1200,8 +1466,6 @@ Pathfinder.FEATURES = {
     'Note="Suffers no penalty for improvised weapon, gains +1 damage step and crit 19-20/x2 on improvised weapon"',
   'Iron Will':'Section=save Note="+2 Will"',
   'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
-  'Knowledge Domain':
-    'Section=skill Note="All Knowledge skills are class skills"',
   'Large':
     'Section=ability,combat,skill ' +
     'Note="x2 Load Max",' +
@@ -1318,9 +1582,6 @@ Pathfinder.FEATURES = {
     'Section=magic Note="+2 checks to overcome spell resistance"',
   'Spirited Charge':
     'Section=combat Note="x2 damage (x3 lance) on mounted charge"',
-  'Spontaneous Cleric Spell':
-    'Section=magic ' +
-    'Note="May cast <i>Cure</i> or <i>Inflict</i> in place of known spell"',
   'Spontaneous Druid Spell':
     'Section=magic ' +
     'Note="May cast <i>Summon Nature\'s Ally</i> in place of known spell"',
@@ -1346,8 +1607,6 @@ Pathfinder.FEATURES = {
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
   'Trapfinding':
     'Section=skill Note="+%V Perception (traps)/+%V Disable Device (traps)"',
-  'Trickery Domain':
-    'Section=skill Note="Bluff is a class skill/Disguise is a class skill/Stealth is a class skill"',
   'Turn Undead':
     'Section=combat ' +
     'Note="R30\' Channel Energy causes undead to flee for 1 min (DC %V Will neg)"',
@@ -1386,11 +1645,8 @@ Pathfinder.FEATURES = {
     'Note="DR 5/-",' +
          '"Immune to critical hit and sneak attack",' +
          '"Has 60\' Blindsight"',
-  'Acid Dart':
-    'Section=magic Note="R30\' Ranged touch inflicts 1d6%1 HP %V/dy"',
   'Acid Dart (Wizard)':
     'Section=magic Note="R30\' Ranged touch inflicts 1d6%1 HP %V/dy"',
-  'Acid Resistance':'Section=save Note="Resistance %V to acid"',
   'Acidic Ray':'Section=magic Note="R30\' Ranged touch inflicts %Vd6 HP %1/dy"',
   'Acrobatic Steps':
     'Section=ability Note="May move normally through difficult terrain 20\'/rd "',
@@ -1398,8 +1654,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="<i>Summon Monster</i> brings additional demon or fiendish creature"',
   'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
-  'Agile Feet':
-    'Section=feature Note="Unaffected by difficult terrain for 1 rd %V/dy"',
   'Agile Maneuvers':'Section=combat Note="+%V CMB"',
   'Aid Allies':'Section=combat Note="+1 on aid another actions"',
   'Alien Resistance':'Section=save Note="Spell resistance %V"',
@@ -1450,11 +1704,6 @@ Pathfinder.FEATURES = {
       '"No speed penalty in %V armor",' +
       '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
       '"Reduces armor skill check penalty by %V"',
-  "Artificer's Touch":
-    'Section=combat,magic ' +
-    'Note=' +
-      '"Touch attack on objects and constructs inflicts 1d6+%1 HP, bypassing %{levels.Cleric} DR and hardness, %V/dy",' +
-      '"May use <i>Mending</i> effects at will"',
   'Ascension':
     'Section=magic,save ' +
     'Note=' +
@@ -1470,12 +1719,6 @@ Pathfinder.FEATURES = {
   'Aura Of Justice':
     'Section=combat ' +
     'Note="R10\' May expend 2 Smite Evil uses to give allies 1 use"',
-  'Aura Of Madness':
-    'Section=magic ' +
-    'Note="R30\' May use <i>Confusion</i> effects (DC %1 Will neg) %V rd/dy"',
-  'Aura Of Protection':
-    'Section=magic ' +
-    'Note="R30\' Allies gain +%V AC and resistance %1 to all energy %2 rd/dy"',
   'Aura Of Resolve':
     'Section=save Note="Immune to charm/R10\' Allies gain +4 vs. charm"',
   'Aura Of Righteousness':
@@ -1488,31 +1731,22 @@ Pathfinder.FEATURES = {
   'Balanced Offensive':
     'Section=combat ' +
     'Note="R30\' Ranged touch inflicts 1d6+%{level//2} HP choice of nonlethal (plus -2 attack for 1 rd), acid, fire, cold, or electricity %{1+level//5}/dy"',
-  'Battle Rage':
-    'Section=combat Note="Touch gives +%V damage bonus for 1 rd %1/dy"',
   'Beastspeaker':
     'Section=skill ' +
     'Note="+1 Diplomacy (animals); no penalty w/elemental animals"',
   'Beneficent Touch':'Section=magic Note="May reroll healing spell 1s 1/dy"',
   'Birthmark':'Section=save Note="+2 vs. charm and compulsion"',
-  'Bit Of Luck':'Section=magic Note="Touch gives d20 reroll for 1 rd %V/dy"',
   'Bitter Nobleman':
     'Section=skill,skill ' +
     'Note=' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
       '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
-  'Blast Rune':
-    'Section=magic ' +
-    'Note="May create rune in adjacent unoccupied square that inflicts 1d6+%1 HP energy damage once w/in %V rd %2/dy"',
   'Bleeding Attack':
     'Section=combat ' +
     'Note="Sneak attack inflicts %V HP/rd (magic healing or DC 15 Heal ends)"',
   'Bleeding Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts 2d6 HP/rd (magic healing or DC 15 Heal ends)"',
-  'Bleeding Touch':
-    'Section=combat ' +
-    'Note="Touch attack inflicts 1d6 HP/rd for %V rd (magic healing or DC 15 Heal ends) %1/dy"',
   'Blinding Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts permanent blindness (DC %V Fort dazzled for 1d4 rd)"',
@@ -1573,17 +1807,11 @@ Pathfinder.FEATURES = {
       '"Spells affect corporeal undead",' +
       '"Knowledge (Religion) is a class skill"',
   'Bonded Object':'Section=magic Note="May cast known spell through object"',
-  'Bramble Armor':
-    'Section=combat ' +
-    'Note="Thorny hide inflicts 1d6+%1 HP on striking foes %V rd/dy"',
   'Bravery':'Section=save Note="+%V vs. fear"',
   'Breath Weapon':'Section=combat Note="%1 %2 %3d6 HP (%4 DC Ref half) %V/dy"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
   'Bullied':'Section=combat Note="+1 unarmed AOO attack"',
   'Bully':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
-  'Calming Touch':
-    'Section=magic ' +
-    'Note="Touch heals 1d6+%1 nonlethal HP and removes fatigued, shaken, and sickened %V/dy"',
   'Canter':
     'Section=skill ' +
     'Note="+5 Sense Motive (intercept secret message)/+5 ally Bluff (deliver secret message to self)"',
@@ -1598,20 +1826,12 @@ Pathfinder.FEATURES = {
   'Change Shape':
     'Section=magic ' +
     'Note="May use <i>Beast Shape %1</i> or <i>Elemental Body %2</i> effects %V rd/dy"',
-  'Channel Energy':
-    'Section=magic ' +
-    'Note="R30\' May heal or inflict %1d6 HP (DC %2 Will half) %V/dy"',
   'Channel Positive Energy':
     'Section=magic ' +
     'Note="May expend 2 Lay On Hands uses to use Channel Energy effects"',
   'Channel Smite':
     'Section=combat ' +
     'Note="May inflict Channel Energy damage using melee weapon attack"',
-  'Chaos Blade':
-    'Section=combat Note="May add <i>anarchic</i> property to weapon for %1 rd %V/dy"',
-  'Charming Smile':
-    'Section=magic ' +
-    'Note="May use <i>Charm Person</i> effects %1 rd/dy (DC %V Will neg)"',
   'Charming':
     'Section=magic,skill ' +
     'Note=' +
@@ -1632,7 +1852,6 @@ Pathfinder.FEATURES = {
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="2 %3 attacks inflict %V%1 HP each %2 rd/dy"',
-  'Cold Resistance':'Section=save Note="Resistance %V to cold"',
   'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
     'Section=combat ' +
@@ -1647,21 +1866,15 @@ Pathfinder.FEATURES = {
     'Section=combat Note="May use Stunning Fist to inflict %V"',
   'Conviction':
     'Section=feature Note="May reroll ability, attack, skill, or save 1/dy"',
-  'Copycat':
-    'Section=magic Note="May use <i>Mirror Image</i> effects for %V rd %1/dy"',
   'Corrupting Touch':
     'Section=magic Note="Touch inflicts shaken for %V rd %1/dy"',
   'Courageous':'Section=save Note="+2 vs. fear"',
   'Critical Focus':'Section=combat Note="+4 crit confirm"',
   'Critical Mastery':
     'Section=combat Note="May apply two effects to critical hits"',
-  'Dancing Weapons':
-    'Section=combat Note="May add <i>dancing</i> property to weapon for 4 rd %V/dy"',
   'Dangerously Curious':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Dazing Touch':
-    'Section=magic Note="Touch attack dazes %V HD foe for 1 rd %1/dy"',
   'Dazing Touch Enchantment':
     'Section=magic Note="Touch attack dazes %V HD foe for 1 rd %1/dy"',
   'Dazzling Display':
@@ -1675,7 +1888,6 @@ Pathfinder.FEATURES = {
   'Deafening Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts permanent deafness (DC %V Fort deaf for 1 rd)"',
-  "Death's Embrace":'Section=combat Note="Healed by channeled negative energy"',
   "Death's Gift":
     'Section=save Note="Resistance %V to cold/DR %1/- vs. non-lethal"',
   'Defensive Combat Training':'Section=combat Note="+%V CMD"',
@@ -1701,10 +1913,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"Automatic spell crit confirm, foe crit confirm requires natural 20",' +
       '"May automatically overcome spell resistance 1/dy"',
-  'Destructive Aura':
-    'Section=combat ' +
-    'Note="R30\' Attacks inflict +%V damage and automatic crit confirm %1 rd/dy"',
-  'Destructive Smite':'Section=combat Note="Attack inflicts +%V HP %1/dy"',
   "Devil's Mark":
     'Section=skill ' +
     'Note="+2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders"',
@@ -1713,15 +1921,10 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
       '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
-  'Dimensional Hop':
-    'Section=magic ' +
-    'Note="May teleport %V\'/dy; including others uses equal portion of daily distance"',
   'Dimensional Steps':'Section=magic Note="May teleport %V\'/dy"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
   'Dispelling Attack':
     'Section=magic Note="Sneak attack acts as <i>Dispel Magic</i> on target"',
-  'Dispelling Touch':
-    'Section=magic Note="Touch inflicts <i>Dispel Magic</i> %V/dy"',
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Divine Courtesan':
     'Section=skill,skill ' +
@@ -1729,9 +1932,6 @@ Pathfinder.FEATURES = {
       '"+1 Sense Motive",' +
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
   'Divine Mount':'Section=feature Note="May magically summon mount %V/dy"',
-  'Divine Presence':
-    'Section=magic ' +
-    'Note="R30\' Allies gain DC %V <i>Sanctuary</i> %1 rd/dy"',
   'Divine Warrior':'Section=magic Note="+1 damage w/enspelled melee weapons"',
   'Divine Weapon':
     'Section=combat Note="May add %V enhancements and properties to weapon for %1 min %2/dy"',
@@ -1752,7 +1952,6 @@ Pathfinder.FEATURES = {
   'Ease Of Faith':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Eastern Mysteries':'Section=magic Note="+2 spell DC 1/dy"',
-  'Electricity Resistance':'Section=save Note="Resistance %V to electricity"',
   'Elemental Blast':
     'Section=combat ' +
     'Note="R60\' 20\' radius inflicts %Vd6 HP %3 (DC %1 Ref half) %2/dy"',
@@ -1802,8 +2001,6 @@ Pathfinder.FEATURES = {
   'Extra Rage':'Section=combat Note="Rage +%V rd/dy"',
   'Eyes And Ears Of The City':
     'Section=skill Note="+1 Perception/Perception is a class skill"',
-  'Eyes Of Darkness':
-    'Section=feature Note="May see normally in any lighting %V rd/dy"',
   'Failed Apprentice':'Section=save Note="+1 vs. arcane spells"',
   'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
   'Fashionable':
@@ -1829,9 +2026,6 @@ Pathfinder.FEATURES = {
       '"+1 Diplomacy/+1 Sense Motive",' +
       '"Choice of Diplomacy or Sense Motive is a class skill"',
   'Finesse Rogue':'Section=feature Note="Has Weapon Finesse feature"',
-  'Fire Bolt':
-    'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
-  'Fire Resistance':'Section=save Note="Resistance %V to fire"',
   'Fires Of Hell':
     'Section=combat Note="Flaming blade inflicts +1 HP fire for %{charismaModifier} rd 1/dy"',
   'Flame Of The Dawnflower':
@@ -1864,11 +2058,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 attack during surprise rd",' +
       '"+1 Stealth"',
-  "Freedom's Call":
-    'Section=magic ' +
-    'Note="R30\' May give allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken %V rd/dy"',
-  'Gentle Rest':
-    'Section=magic Note="Touch inflicts staggered for 1 rd (undead for %1 rd) %V/dy"',
   'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
   'Gold Finger':
     'Section=skill,skill ' +
@@ -1912,14 +2101,9 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
       '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
-  'Hand Of The Acolyte':
-    'Section=combat ' +
-    'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
   'Hand Of The Apprentice':
     'Section=combat ' +
     'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
-  "Healer's Blessing":
-    'Section=magic Note="<i>Cure</i> spells heal 50% more HP"',
   'Heavenly Fire':
     'Section=magic ' +
     'Note="R30\' Ranged touch heals good or harms evil 1d4+%1 HP %V/dy"',
@@ -1939,8 +2123,6 @@ Pathfinder.FEATURES = {
   'Holy Champion':
     'Section=magic ' +
     'Note="Lay On Hands effects maximized/Smite Evil inflicts <i>Banishment</i> effects (DC %V neg)"',
-  'Holy Lance':
-    'Section=combat Note="May add <i>holy</i> property to weapon for %1 rd %V/dy"',
   'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
   "Hunter's Eye":
     'Section=combat ' +
@@ -1950,7 +2132,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Local)",' +
       '"+2 Diplomacy (gather information)"',
-  'Icicle':'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Impressive Presence':
     'Section=combat ' +
     'Note="May take full-round action that inflicts shaken on adjacent foes (DC %{10+level//2+charismaModifier} Will neg) for 1 rd 1/dy"',
@@ -1979,9 +2160,6 @@ Pathfinder.FEATURES = {
   'Insider Knowledge':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy or Knowledge (Local)/Choice of Diplomacy of Knowledge (Local) is a class skill"',
-  'Inspiring Word':
-    'Section=magic ' +
-    'Note="R30\' Gives target +2 attack, skill, ability, and save for %V rd %1/dy"',
   'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
   'Invisibility Field':'Section=magic Note="May become invisible %V rd/dy"',
@@ -1996,16 +2174,9 @@ Pathfinder.FEATURES = {
     'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Laughing Touch':
     'Section=magic Note="Touch inflicts laughter for 1 rd %V/dy"',
-  'Leadership (Cleric)':
-    'Section=feature,feature ' +
-    'Note=' +
-      '"Has Leadership feature",' +
-      '"+2 Leadership score"',
   'Ledge Walker':
     'Section=skill ' +
     'Note="May use Acrobatics along narrow surfaces at full speed"',
-  'Liberation':
-    'Section=magic Note="May ignore movement impediments %V rd/dy"',
   'Librarian':
     'Section=skill,skill ' +
     'Note=' +
@@ -2014,11 +2185,6 @@ Pathfinder.FEATURES = {
   'Life Sight':
     'Section=feature ' +
     'Note="R%V\' May use Blindsight effects w/living and undead %1 rd/dy"',
-  'Lightning Arc':
-    'Section=combat Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
-  'Lightning Lord':
-    'Section=magic ' +
-    'Note="May use <i>Call Lightning</i> effects with multiple bolts w/in 15\' radius each rd for %V bolts/dy"',
   'Lightning Stance':
     'Section=combat Note="Dbl move or withdraw action gives 50% concealment"',
   'Log Roller':
@@ -2027,8 +2193,6 @@ Pathfinder.FEATURES = {
       '"+1 CMD vs. Trip",' +
       '"+1 Acrobatics"',
   'Long Limbs':'Section=combat Note="+%V\' touch attack range"',
-  'Lore Keeper':
-    'Section=skill Note="Touch attack provides info as per %V Knowledge check"',
   'Lore Seeker':
     'Section=magic,skill ' +
     'Note=' +
@@ -2068,9 +2232,6 @@ Pathfinder.FEATURES = {
   'Master Strike':
     'Section=combat ' +
     'Note="Sneak attack inflicts choice of sleep, paralysis, or death (DC %V Fort neg)"',
-  "Master's Illusion":
-    'Section=magic ' +
-    'Note="May use 30\' radius <i>Veil</i> effects (DC %V Will disbelieve) %1 rd/dy"',
   'Mathematical Prodigy':
     'Section=skill,skill ' +
     'Note=' +
@@ -2092,7 +2253,6 @@ Pathfinder.FEATURES = {
   'Metamagic Mastery':
     'Section=magic Note="May apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
-  'Might Of The Gods':'Section=magic Note="+%V Strength checks %1 rd/dy"',
   'Militia Veteran':
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill"',
@@ -2119,9 +2279,6 @@ Pathfinder.FEATURES = {
   'New Arcana':'Section=magic Note="+%V spells known"',
   'Nimble Moves':
     'Section=ability Note="May move normally through difficult terrain 5\'/rd"',
-  'Nimbus Of Light':
-    'Section=magic ' +
-    'Note="30\' radius <i>Daylight</i> inflicts %V HP on undead %1 rd/dy"',
   'Observant':
     'Section=skill ' +
     'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
@@ -2179,21 +2336,12 @@ Pathfinder.FEATURES = {
       '"+1 Initiative",' +
       '"+1 Escape Artist"',
   'Reactionary':'Section=combat Note="+2 Initiative"',
-  'Rebuke Death':
-    'Section=magic ' +
-    'Note="Touch restores 1d4+%1 HP to creature below 0 HP %V/dy"',
-  'Remote Viewing':
-    'Section=magic ' +
-    'Note="May use <i>Clairaudience/Clairvoyance</i> effects %V rd/dy"',
   'Resiliency':
     'Section=combat ' +
     'Note="May gain %V temporary HP for 1 min when below 0 HP 1/dy"',
   'Resilient':'Section=save Note="+1 Fortitude"',
   'Resistance To Energy':
     'Section=save Note="Resistance %V to chosen energy type each dy"',
-  'Resistant Touch':
-    'Section=magic ' +
-    'Note="Touch transfers resistance bonus to ally for 1 min %V/dy"',
   'Reverent Wielder':
     'Section=combat,save ' +
     'Note=' +
@@ -2218,7 +2366,6 @@ Pathfinder.FEATURES = {
   'Savanna Child':
     'Section=skill ' +
     'Note="+1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill"',
-  'Save Bonus':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Scent Rage':
     'Section=feature Note="May detect creatures via smell during rage"',
   'Scholar Of Balance':
@@ -2243,8 +2390,6 @@ Pathfinder.FEATURES = {
   'Scrying Adept':
     'Section=magic ' +
     'Note="Has continuous <i>Detect Scrying</i> effects/+1 scrying subject familiarity"',
-  'Scythe Of Evil':
-    'Section=combat Note="May add <i>unholy</i> property to weapon for %1 rd %V/dy"',
   'Secrets':'Section=feature Note="%V selections"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
@@ -2287,13 +2432,8 @@ Pathfinder.FEATURES = {
       '"Animals attack self only if magically compelled",' +
       '"May use <i>Shadow Walk</i> effects 1/dy",' +
       '"Immune to poison"',
-  'Speak With Animals':
-    'Section=magic Note="May use <i>Speak With Animals</i> effects %V rd/dy"',
-  'Spell Rune':'Section=magic Note="May add known spell to Blast Rune"',
   'Spellbreaker':
     'Section=combat Note="May take AOO after foe failed defensive casting"',
-  'Staff Of Order':
-    'Section=combat Note="May add <i>axiomatic</i> property to weapon for %1 rd %V/dy"',
   'Staggering Critical':
     'Section=combat ' +
     'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort staggered for 1 rd)"',
@@ -2304,16 +2444,10 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+4 Survival (avoid becoming lost)/Always know direction of north"',
   'Step Up':'Section=combat Note="May match foe 5\' step"',
-  'Storm Burst':
-    'Section=combat ' +
-    'Note="R30\' Ranged touch inflicts 1d6+%1 HP non-lethal and -2 attack %V/dy"',
   'Storyteller':
     'Section=skill ' +
     'Note="+%{intelligenceModifier+3>?1} choice of Knowledge 1/scenario"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
-  'Strength Surge (Cleric)':
-    'Section=magic ' +
-    'Note="Touch gives +%V melee attack and Strength check bonus for 1 rd %1/dy"',
   'Strike Back':
     'Section=combat ' +
     'Note="May ready melee attack against melee foes that are out of range"',
@@ -2321,9 +2455,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical hit inflicts stunned (DC %V Fort staggered) for 1d4 rd"',
   "Summoner's Charm":'Section=magic Note="%V summoning duration"',
-  "Sun's Blessing":
-    'Section=magic ' +
-    'Note="Channel Energy inflicts +%V HP on undead and negates channel resistance"',
   'Surprise Attack':
     'Section=combat Note="All foes are flat-footed during surprise round"',
   'Suspicious':
@@ -2351,26 +2482,11 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Dungeoneering)/+1 Perception",' +
       '"Choice of Knowledge (Dungeoneering) or Perception is a class skill"',
-  'Touch Of Chaos':
-    'Section=combat ' +
-    'Note="Touch attack causes target to take worse result of d20 rerolls for 1 rd %V/dy"',
-  'Touch Of Darkness':
-    'Section=combat ' +
-    'Note="Touch attack inflicts 20% miss chance for %V rd %1/dy"',
   'Touch Of Destiny':
     'Section=magic ' +
     'Note="Touch gives +%V attack, skill, ability, save for 1 rd %1/dy"',
-  'Touch Of Evil':'Section=combat Note="Touch inflicts sickened for %V rd %1/dy"',
-  'Touch Of Glory':
-    'Section=magic Note="Touch gives +%V Charisma check bonus w/in 1 hr %1/dy"',
-  'Touch Of Good':
-    'Section=magic ' +
-    'Note="Touch gives +%V attack, skill, ability, and save for 1 rd %1/dy"',
-  'Touch Of Law':
-    'Section=magic Note="Touched may take 11 on all d20 rolls for 1 rd %V/dy"',
   'Trap Spotter':
     'Section=skill Note="Automatic Perception check w/in 10\' of trap"',
-  'Travel Speed':'Section=ability Note="+10 Speed"',
   'Trouper':
     'Section=save,skill ' +
     'Note=' +
@@ -2380,14 +2496,12 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="+2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Two-Weapon Rend':'Section=combat Note="Double hit inflicts +1d10%1 HP"',
-  'Undead Bane':'Section=magic Note="+2 DC on energy channeled to harm undead"',
   'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
   'Unflappable':
     'Section=save,skill ' +
     'Note=' +
       '"+1 vs. fear",' +
       '"+3 DC on foe attempts to demoralize self using Intimidate"',
-  'Unity':'Section=save Note="R30\' Allies may use your saving throw %V/dy"',
   'Unorthodox Strategy':
     'Section=skill Note="+2 Acrobatics (traverse threatened squares)"',
   'Unseat':
@@ -2437,18 +2551,10 @@ Pathfinder.FEATURES = {
   'Vindictive':
     'Section=combat ' +
     'Note="May inflict +1 damage vs. successful attacker for 1 min 1/dy"',
-  'Vision Of Madness':
-    'Section=magic ' +
-    'Note="Touch gives +%V attack, save, or skill, -%1 others for 3 rd %2/dy"',
   'Vital Strike':'Section=combat Note="2x base damage"',
-  'Ward Against Death':
-    'Section=magic ' +
-    'Note="R30\' Gives immunity to death effects, energy drain, and negative levels %V rd/dy"',
   'Warrior Of Old':'Section=combat Note="+2 Initiative"',
   'Watchdog':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Weapon Master':
-    'Section=combat Note="May use additional combat feat %V rd/dy"',
   'Weapon Mastery':
     'Section=combat ' +
     'Note="Automatic crit confirm, +1 damage multiplier, and no disarm w/chosen weapon"',
@@ -2472,9 +2578,6 @@ Pathfinder.FEATURES = {
     'Note="May use Wisdom modifier for choice of Strength, Constitution, or Dexterity skill/Choice of Strength, Constitution, or Dexterity skill is a class skill"',
   'Within Reach':
     'Section=save Note="May make DC 20 Will save vs. fatal attack 1/dy"',
-  'Wooden Fist':
-    'Section=combat ' +
-    'Note="+%V unarmed damage and no AOO on unarmed attacks %1 rd/dy"',
   'World Traveler (Trait)':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
@@ -4158,7 +4261,8 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons)",' +
-      '1:Aura,"1:Channel Energy","1:Spontaneous Cleric Spell",' +
+      '"1:Aligned Spells","1:Aura","1:Channel Energy","1:Orisons",' +
+      '"1:Spontaneous Casting (Cleric)",' +
       '"clericDomainFeatures.Air ? 1:Lightning Arc",' +
       '"clericDomainFeatures.Air ? 6:Electricity Resistance",' +
       '"clericDomainFeatures.Animal ? 1:Speak With Animals",' +
@@ -4171,7 +4275,6 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Charm ? 8:Charming Smile",' +
       '"clericDomainFeatures.Community ? 1:Calming Touch",' +
       '"clericDomainFeatures.Community ? 8:Unity",' +
-      '"clericDomainFeatures.Darkness ? 1:Blind-Fight",' +
       '"clericDomainFeatures.Darkness ? 1:Touch Of Darkness",' +
       '"clericDomainFeatures.Darkness ? 8:Eyes Of Darkness",' +
       '"clericDomainFeatures.Death ? 1:Bleeding Touch",' +
@@ -4184,7 +4287,6 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Evil ? 8:Scythe Of Evil",' +
       '"clericDomainFeatures.Fire ? 1:Fire Bolt",' +
       '"clericDomainFeatures.Fire ? 6:Fire Resistance",' +
-      '"clericDomainFeatures.Glory ? 1:Undead Bane",' +
       '"clericDomainFeatures.Glory ? 1:Touch Of Glory",' +
       '"clericDomainFeatures.Glory ? 8:Divine Presence",' +
       '"clericDomainFeatures.Good ? 1:Touch Of Good",' +
@@ -4207,12 +4309,10 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Nobility ? 8:Leadership (Cleric)",' +
       '"clericDomainFeatures.Plant ? 1:Wooden Fist",' +
       '"clericDomainFeatures.Plant ? 6:Bramble Armor",' +
-      '"clericDomainFeatures.Protection ? 1:Save Bonus",' +
       '"clericDomainFeatures.Protection ? 1:Resistant Touch",' +
       '"clericDomainFeatures.Protection ? 8:Aura Of Protection",' +
       '"clericDomainFeatures.Repose ? 1:Gentle Rest",' +
       '"clericDomainFeatures.Repose ? 8:Ward Against Death",' +
-      '"clericDomainFeatures.Rune ? 1:Scribe Scroll",' +
       '"clericDomainFeatures.Rune ? 1:Blast Rune",' +
       '"clericDomainFeatures.Rune ? 8:Spell Rune",' +
       '"clericDomainFeatures.Strength ? 1:Strength Surge (Cleric)",' +
@@ -4234,24 +4334,20 @@ Pathfinder.CLASSES = {
       '"deityDomains =~ \'Air\' ? 1:Air Domain:Domain",' +
       '"deityDomains =~ \'Animal\' ? 1:Animal Domain:Domain",' +
       '"deityDomains =~ \'Artifice\' ? 1:Artifice Domain:Domain",' +
-      '"alignment =~ \'Chaotic\' && deityDomains =~ \'Chaos\' ? ' +
-        '1:Chaos Domain:Domain",' +
+      '"alignment =~ \'Chaotic\' && deityDomains =~ \'Chaos\' ? 1:Chaos Domain:Domain",' +
       '"deityDomains =~ \'Charm\' ? 1:Charm Domain:Domain",' +
       '"deityDomains =~ \'Community\' ? 1:Community Domain:Domain",' +
       '"deityDomains =~ \'Darkness\' ? 1:Darkness Domain:Domain",' +
       '"deityDomains =~ \'Death\' ? 1:Death Domain:Domain",' +
       '"deityDomains =~ \'Destruction\' ? 1:Destruction Domain:Domain",' +
       '"deityDomains =~ \'Earth\' ? 1:Earth Domain:Domain",' +
-      '"alignment =~ \'Evil\' && deityDomains =~ \'Evil\' ? ' +
-        '1:Evil Domain:Domain",' +
+      '"alignment =~ \'Evil\' && deityDomains =~ \'Evil\' ? 1:Evil Domain:Domain",' +
       '"deityDomains =~ \'Fire\' ? 1:Fire Domain:Domain",' +
       '"deityDomains =~ \'Glory\' ? 1:Glory Domain:Domain",' +
-      '"alignment =~ \'Good\' && deityDomains =~ \'Good\' ? ' +
-        '1:Good Domain:Domain",' +
+      '"alignment =~ \'Good\' && deityDomains =~ \'Good\' ? 1:Good Domain:Domain",' +
       '"deityDomains =~ \'Healing\' ? 1:Healing Domain:Domain",' +
       '"deityDomains =~ \'Knowledge\' ? 1:Knowledge Domain:Domain",' +
-      '"alignment =~ \'Lawful\' && deityDomains =~ \'Law\' ? ' +
-        '1:Law Domain:Domain",' +
+      '"alignment =~ \'Lawful\' && deityDomains =~ \'Law\' ? 1:Law Domain:Domain",' +
       '"deityDomains =~ \'Liberation\' ? 1:Liberation Domain:Domain",' +
       '"deityDomains =~ \'Luck\' ? 1:Luck Domain:Domain",' +
       '"deityDomains =~ \'Madness\' ? 1:Madness Domain:Domain",' +
@@ -4271,25 +4367,25 @@ Pathfinder.CLASSES = {
     'CasterLevelDivine=levels.Cleric ' +
     'SpellAbility=Wisdom ' +
     'SpellSlots=' +
-      'C0:1=3;2=4,' +
-      'C1:1=1;2=2;4=3;7=4,' +
-      'C2:3=1;4=2;6=3;9=4,' +
-      'C3:5=1;6=2;8=3;11=4,' +
-      'C4:7=1;8=2;10=3;13=4,' +
-      'C5:9=1;10=2;12=3;15=4,' +
-      'C6:11=1;12=2;14=3;17=4,' +
-      'C7:13=1;14=2;16=3;19=4,' +
-      'C8:15=1;16=2;18=3;20=4,' +
-      'C9:17=1;18=2;19=3;20=4,' +
-      'Domain1:1=1,' +
-      'Domain2:3=1,' +
-      'Domain3:5=1,' +
-      'Domain4:7=1,' +
-      'Domain5:9=1,' +
-      'Domain6:11=1,' +
-      'Domain7:13=1,' +
-      'Domain8:15=1,' +
-      'Domain9:17=1',
+      'C0:3@1;4@2,' +
+      'C1:1@1;2@2;3@4;4@7,' +
+      'C2:1@3;2@4;3@6;4@9,' +
+      'C3:1@5;2@6;3@8;4@11,' +
+      'C4:1@7;2@8;3@10;4@13,' +
+      'C5:1@9;2@10;3@12;4@15,' +
+      'C6:1@11;2@12;3@14;4@17,' +
+      'C7:1@13;2@14;3@16;4@19,' +
+      'C8:1@15;2@16;3@18;4@20,' +
+      'C9:1@17;2@18;3@19;4@20,' +
+      'Domain1:1@1,' +
+      'Domain2:1@3,' +
+      'Domain3:1@5,' +
+      'Domain4:1@7,' +
+      'Domain5:1@9,' +
+      'Domain6:1@11,' +
+      'Domain7:1@13,' +
+      'Domain8:1@15,' +
+      'Domain9:1@17',
   'Druid':
     'Require=' +
       '"alignment =~ \'Neutral\'",' +
@@ -5581,20 +5677,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('classSkills.Knowledge', 'skillNotes.knowledgeDomain', '=', '1');
     rules.defineRule('magicNotes.channelEnergy',
-      'magicNotes.charismaChannelEnergyAdjustment', '=', '3 + source'
+      'charismaModifier', '=', '3 + source'
     );
     rules.defineRule('magicNotes.channelEnergy.1',
       'features.Channel Energy', '?', null,
       'channelLevel', '+=', 'Math.floor((source + 1) / 2)'
-    );
-    rules.defineRule('magicNotes.channelEnergy.2',
-      'features.Channel Energy', '?', null,
-      'channelLevel', '+=', '10 + Math.floor(source / 2)',
-      'magicNotes.charismaChannelEnergyAdjustment', '+', null
-    );
-    rules.defineRule('magicNotes.charismaChannelEnergyAdjustment',
-      'features.Channel Energy', '?', null,
-      'charismaModifier', '=', null
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric (Domain)', classLevel, '=', '2');
@@ -5621,413 +5708,37 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     // Air Domain
     rules.defineRule
-      ('combatNotes.lightningArc', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.lightningArc.1',
-      'casterLevels.Air', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
       ('resistance.Electricity', 'saveNotes.electricityResistance', '^=', null);
+    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('saveNotes.electricityResistance',
       'casterLevels.Air', '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
-
     // Animal Domain
     rules.defineRule
-      ('companionMasterLevel', 'companionClericLevel', '^=', null);
-    rules.defineRule('companionClericLevel',
-      'clericFeatures.Animal Domain', '?', null,
-      'casterLevels.Animal', '=', 'source - 3'
-    );
-    rules.defineRule
-      ('magicNotes.speakWithAnimals', 'casterLevels.Animal', '=', 'source + 3');
-    Pathfinder.featureSpells(rules,
-      'Speak With Animals', 'SpeakWithAnimals', 'wisdom', 'casterLevels.Animal',
-      '10+casterLevels.SpeakWithAnimals//2+wisdomModifier',
-      ['Speak With Animals']
-    );
-
-    // Artifice Domain
-    rules.defineRule
-      ("combatNotes.artificer'sTouch", 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule("combatNotes.artificer'sTouch.1",
-      'casterLevels.Artifice', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.dancingWeapons',
-      'casterLevels.Artifice', '=', 'Math.floor((source - 4) / 4)'
-    );
-    Pathfinder.featureSpells(rules,
-      "Artificer's Touch", 'ArtificersTouch', 'wisdom',
-      'casterLevels.Artifice', null, ['Mending']
-    );
-
-    // Chaos Domain
-    rules.defineRule('combatNotes.chaosBlade',
-      'casterLevels.Chaos', '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('combatNotes.chaosBlade.1',
-      'casterLevels.Chaos', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('combatNotes.touchOfChaos', 'wisdomModifier', '=', 'source + 3');
-
-    // Charm Domain
-    rules.defineRule('magicNotes.charmingSmile',
-      'casterLevels.Charm', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule
-      ('magicNotes.charmingSmile.1', 'casterLevels.Charm', '=', null);
-    rules.defineRule('magicNotes.dazingTouch', 'casterLevels.Charm', '=', null);
-    rules.defineRule('magicNotes.dazingTouch.1',
-      'features.Dazing Touch', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    Pathfinder.featureSpells(rules,
-      'Charming Smile', 'CharmingSmile', 'wisdom', 'casterLevels.Charm',
-      '10+casterLevels.CharmingSmile//2+wisdomModifier', ['Charm Person']
-    );
-
-    // Community Domain
-    rules.defineRule
-      ('magicNotes.calmingTouch', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule
-      ('magicNotes.calmingTouch.1', 'casterLevels.Community', '=', null);
-    rules.defineRule('saveNotes.unity',
-      'casterLevels.Community', '=', 'Math.floor((source - 4) / 4)'
-    );
-
-    // Darkness Domain
-    rules.defineRule('combatNotes.touchOfDarkness',
-      'casterLevels.Darkness', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.touchOfDarkness.1',
-      'features.Touch Of Darkness', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('featureNotes.eyesOfDarkness',
-      'casterLevels.Darkness', '=', 'Math.floor(source / 2)'
-    );
-
-    // Death Domain
-    rules.defineRule('combatNotes.bleedingTouch',
-      'casterLevels.Death', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.bleedingTouch.1',
-      'features.Bleeding Touch', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
-    // Destruction Domain
-    rules.defineRule('combatNotes.destructiveAura',
-      'casterLevels.Destruction', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('combatNotes.destructiveAura.1', 'casterLevels.Destruction', '=', null);
-    rules.defineRule('combatNotes.destructiveSmite',
-      'casterLevels.Destruction', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.destructiveSmite.1',
-      'features.Destructive Smite', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
+      ('companionMasterLevel', 'casterLevels.Animal', '^=', 'source - 3');
     // Earth Domain
     rules.defineRule
-      ('magicNotes.acidDart', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.acidDart.1',
-      'casterLevels.Earth', '=', 'source>1 ? "+" + Math.floor(source / 2) : ""'
-    );
-    rules.defineRule('resistance.Acid', 'saveNotes.acidResistance', '^=', null);
+      ('resistance.Acid', 'saveNotes.acidResistance', '^=', null);
+    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('saveNotes.acidResistance',
       'casterLevels.Earth', '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
-
-    // Evil Domain
-    rules.defineRule('combatNotes.scytheOfEvil',
-      'casterLevels.Evil', '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('combatNotes.scytheOfEvil.1',
-      'casterLevels.Evil', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('combatNotes.touchOfEvil',
-      'casterLevels.Evil', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('combatNotes.touchOfEvil.1',
-      'features.Touch Of Evil', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
     // Fire Domain
     rules.defineRule
-      ('combatNotes.fireBolt', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.fireBolt.1',
-      'casterLevels.Fire', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('resistance.Fire', 'saveNotes.fireResistance', '^=', null);
+      ('resistance.Fire', 'saveNotes.fireResistance', '^=', null);
+    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('saveNotes.fireResistance',
       'casterLevels.Fire', '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
     );
-
-    // Glory Domain
-    rules.defineRule('magicNotes.divinePresence',
-      'casterLevels.Glory', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule
-      ('magicNotes.divinePresence.1', 'casterLevels.Glory', '=', null);
-    rules.defineRule
-      ('magicNotes.touchOfGlory', 'casterLevels.Glory', '=', null);
-    rules.defineRule('magicNotes.touchOfGlory.1',
-      'features.Touch Of Glory', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    Pathfinder.featureSpells(rules,
-      'Divine Presence', 'DivinePresence', 'wisdom', 'casterLevels.Glory',
-      '10+casterLevels.DivinePresence//2+wisdomModifier', ['Sanctuary']
-    );
-
-    // Good Domain
-    rules.defineRule('combatNotes.holyLance',
-      'casterLevels.Good', '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('combatNotes.holyLance.1',
-      'casterLevels.Good', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.touchOfGood',
-      'casterLevels.Good', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.touchOfGood.1',
-      'features.Touch Of Good', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
-    // Healing Domain
-    rules.defineRule
-      ('magicNotes.rebukeDeath', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.rebukeDeath.1',
-      'casterLevels.Healing', '=', 'Math.floor(source / 2)'
-    );
-
-    // Knowledge Domain
-    rules.defineRule
-      ('magicNotes.remoteViewing', 'casterLevels.Knowledge', '=', null);
-    rules.defineRule('skillNotes.loreKeeper',
-      'casterLevels.Knowledge', '=', 'source + 15',
-      'wisdomModifier', '+', null
-    );
-    Pathfinder.featureSpells(rules,
-      'Remote Viewing', 'RemoteViewing', 'wisdom', 'casterLevels.Knowledge',
-      '10+casterLevels.RemoteViewing//2+wisdomModifier',
-      ['Clairaudience/Clairvoyance']
-    );
-
-    // Law Domain
-    rules.defineRule('combatNotes.staffOfOrder',
-      'casterLevels.Law', '=', 'Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('combatNotes.staffOfOrder.1',
-      'casterLevels.Law', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('magicNotes.touchOfLaw', 'wisdomModifier', '=', 'source + 3');
-
-    // Liberation Domain
-    rules.defineRule
-      ("magicNotes.freedom'sCall", 'casterLevels.Liberation', '=', null);
-    rules.defineRule
-      ('magicNotes.liberation', 'casterLevels.Liberation', '=', null);
-
-    // Luck Domain
-    rules.defineRule
-      ('magicNotes.bitOfLuck', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.goodFortune',
-      'casterLevels.Luck', '=', 'Math.floor(source / 6)'
-    );
-
-    // Madness Domain
-    rules.defineRule
-      ('magicNotes.auraOfMadness', 'casterLevels.Madness', '=', null);
-    rules.defineRule('magicNotes.auraOfMadness.1',
-      'features.Aura Of Madness', '?', null,
-      'casterLevels.Madness', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('magicNotes.visionOfMadness',
-      'casterLevels.Madness', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.visionOfMadness.1',
-      'features.Vision Of Madness', '?', null,
-      'casterLevels.Madness', '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.visionOfMadness.2',
-      'features.Vision Of Madness', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    Pathfinder.featureSpells(rules,
-      'Aura Of Madness', 'AuraOfMadness', 'wisdom', 'casterLevels.Madness',
-      '10+casterLevels.AuraOfMadness//2+wisdomModifier', ['Confusion']
-    );
-
-    // Magic Domain
-    rules.defineRule('combatNotes.handOfTheAcolyte',
-      'baseAttack', '=', null,
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule('combatNotes.handOfTheAcolyte.1',
-      'features.Hand Of The Acolyte', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.dispellingTouch',
-      'casterLevels.Magic', '=', 'Math.floor((source - 4) / 4)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Dispelling Touch', 'DispellingTouch', 'wisdom', 'casterLevels.Magic',
-      '10+casterLevels.DispellingTouch//2+wisdomModifier', ['Dispel Magic']
-    );
-
-    // Nobility Domain
-    rules.defineRule
-      ('features.Leadership', 'featureNotes.leadership(Cleric)', '=', '1');
-    rules.defineRule('magicNotes.inspiringWord',
-      'casterLevels.Nobility', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('magicNotes.inspiringWord.1',
-      'features.Inspiring Word', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
-    // Plant Domain
-    rules.defineRule
-      ('combatNotes.brambleArmor', 'casterLevels.Plant', '=', null);
-    rules.defineRule('combatNotes.brambleArmor.1',
-      'casterLevels.Plant', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.woodenFist',
-      'casterLevels.Plant', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.woodenFist.1',
-      'features.Wooden Fist', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
     // Protection Domain
-    rules.defineRule('magicNotes.auraOfProtection',
-      'casterLevels.Protection', '=', 'Math.floor((source - 4) / 4)'
+    rules.defineRule('saveNotes.protectionDomain',
+      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
     );
-    rules.defineRule('magicNotes.auraOfProtection.1',
-      'casterLevels.Protection', '=', 'source>=14 ? 10 : 5'
-    );
-    rules.defineRule
-      ('magicNotes.auraOfProtection.2', 'casterLevels.Protection', '=', null);
-    rules.defineRule
-      ('magicNotes.resistantTouch', 'wisdomModifier', '=', '3 + source');
-    rules.defineRule('saveNotes.saveBonus',
-      'casterLevels.Protection', '=', '1 + Math.floor(source / 5)'
-    );
-
-    // Repose Domain
-    rules.defineRule
-      ('magicNotes.gentleRest', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.gentleRest.1',
-      'features.Gentle Rest', '?', null,
-      'wisdomModifier', '=', null
-    );
-    rules.defineRule
-      ('magicNotes.wardAgainstDeath', 'casterLevels.Repose', '=', null);
-
-    // Rune Domain
-    rules.defineRule('magicNotes.blastRune', 'casterLevels.Rune', '=', null);
-    rules.defineRule('magicNotes.blastRune.1',
-      'features.Blast Rune', '?', null,
-      'casterLevels.Rune', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('magicNotes.blastRune.2',
-      'features.Blast Rune', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
-    // Strength Domain
-    rules.defineRule
-      ('magicNotes.mightOfTheGods', 'casterLevels.Strength', '=', null);
-    rules.defineRule
-      ('magicNotes.mightOfTheGods.1', 'casterLevels.Strength', '=', null);
-    rules.defineRule('magicNotes.strengthSurge(Cleric)',
-      'casterLevels.Strength', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('magicNotes.strengthSurge(Cleric).1',
-      'features.Strength Surge (Cleric)', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-
-    // Sun Domain
-    rules.defineRule("magicNotes.sun'sBlessing", 'casterLevels.Sun', '=', null);
-    rules.defineRule('magicNotes.nimbusOfLight', 'casterLevels.Sun', '=', null);
-    rules.defineRule
-      ('magicNotes.nimbusOfLight.1', 'casterLevels.Sun', '=', null);
-    Pathfinder.featureSpells(rules,
-      'Nimbus Of Light', 'NimbusOfLight', 'wisdom', 'casterLevels.Sun',
-      '10+casterLevels.NimbusOfLight//2+wisdomModifier', ['Daylight']
-    );
-
-    // Travel Domain
-    rules.defineRule('speed', 'abilityNotes.travelSpeed', '+', '10');
-    rules.defineRule
-      ('featureNotes.agileFeet', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule
-      ('magicNotes.dimensionalHop', 'casterLevels.Travel', '=', '10 * source');
-
-    // Trickery Domain
-    rules.defineRule('magicNotes.copycat', 'casterLevels.Trickery', '=', null);
-    rules.defineRule('magicNotes.copycat.1',
-      'features.Copycat', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule("magicNotes.master'sIllusion",
-      'casterLevels.Trickery', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-    rules.defineRule
-      ("magicNotes.master'sIllusion.1", 'casterLevels.Trickery', '=', null);
-    Pathfinder.featureSpells(rules,
-      'Copycat', 'Copycat', 'wisdom', 'casterLevels.Trickery',
-      '10+casterLevels.Copycat//2+wisdomModifier', ['Mirror Image']
-    );
-    Pathfinder.featureSpells(rules,
-      "Master's Illusion", 'MastersIllusion', 'wisdom', 'casterLevels.Trickery',
-      '10+casterLevels.MastersIllusion//2+wisdomModifier', ['Veil']
-    );
-
-    // War Domain
-    rules.defineRule('combatNotes.battleRage',
-      'casterLevels.War', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('combatNotes.battleRage.1',
-      'features.Battle Rage', '?', null,
-      'wisdomModifier', '=', 'source + 3'
-    );
-    rules.defineRule('combatNotes.weaponMaster', 'casterLevels.War', '=', null);
-
     // Water Domain
-    rules.defineRule('combatNotes.icicle', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.icicle.1',
-      'casterLevels.Water', '=', 'Math.floor(source / 2)'
-    );
     rules.defineRule('resistance.Cold', 'saveNotes.coldResistance', '^=', null);
+    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('saveNotes.coldResistance',
       'casterLevels.Water', '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
-    );
-
-    // Weather Domain
-    rules.defineRule
-      ('combatNotes.stormBurst', 'wisdomModifier', '=', 'source + 3');
-    rules.defineRule('combatNotes.stormBurst.1',
-      'casterLevels.Weather', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('magicNotes.lightningLord', 'casterLevels.Weather', '=', null);
-    Pathfinder.featureSpells(rules,
-      'Lightning Lord', 'LightningLord', 'wisdom', 'casterLevels.Weather',
-      '10+casterLevels.LightningLord//2+wisdomModifier', ['Call Lightning']
     );
 
   } else if(name == 'Druid') {
