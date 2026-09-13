@@ -1294,9 +1294,27 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Weather//2} HP non-lethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
 
+  // Druid
+  'A Thousand Faces':SRD35.FEATURES['A Thousand Faces'],
+  // Aligned Spells as above
+  // Animal Companion as above
+  'Nature Bond':'Section=feature Note="1 selection"',
+  'Nature Sense':SRD35.FEATURES['Nature Sense'],
+  // Orisons as above
+  "Resist Nature's Lure":
+    SRD35.FEATURES["Resist Nature's Lure"]
+    .replace('fey creatures', 'fey creatures and effects that target plants'),
+  'Spontaneous Casting (Druid)':SRD35.FEATURES['Spontaneous Casting (Druid)'],
+  'Timeless Body':SRD35.FEATURES['Timeless Body'],
+  'Trackless Step':SRD35.FEATURES['Trackless Step'],
+  'Venom Immunity':SRD35.FEATURES['Venom Immunity'],
+  'Wild Empathy':SRD35.FEATURES['Wild Empathy'],
+  'Wild Shape':
+    'Section=magic ' +
+    'Note="Can change into a %{wildShapeLevel<6?\'small\':wildShapeLevel<8?\'tiny\':\'diminutive\'} to %{wildShapeLevel<6?\'medium\':wildShapeLevel<8?\'large\':\'huge\'} animal%{wildShapeLevel>=8?\', a small to \'+(wildShapeLevel<10?\'medium\':wildShapeLevel<12?\'large\':\'huge\')+\' plant,\':\'\'}%{wildShapeLevel>=6?\' or a \'+(wildShapeLevel<8?\'small\':wildShapeLevel<10?\'small to medium\':wildShapeLevel<12?\'small to large\':\'small to huge\')+\' elemental\':\'\'} for %{wildShapeLevel} hr %{wildShapeLevel<20?(wildShapeLevel>=6?(wildShapeLevel-2)//2+\' times\':\'once\')+\' per day\':\'at will\'}"',
+  'Woodland Stride':SRD35.FEATURES['Woodland Stride'],
+
   // Shared with SRD35
-  'A Thousand Faces':
-    'Section=magic Note="May use <i>Alter Self</i> effects at will"',
   'Abundant Step':
     'Section=magic Note="May spend 2 Ki Points to teleport self %V\'"',
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -1496,7 +1514,6 @@ Pathfinder.FEATURES = {
     'Section=companion ' +
     'Note="Reduces additional attack penalty to -2 or gives second attack at -5"',
   'Natural Spell':'Section=magic Note="May cast spells during Wild Shape"',
-  'Nature Sense':'Section=skill Note="+2 Knowledge (Nature)/+2 Survival"',
   'Opportunist':
     'Section=combat Note="May take an AOO targeting a foe struck by an ally"',
   'Perfect Self':
@@ -1527,8 +1544,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="May make normal and extra ranged attacks at a -2 penalty"',
   'Resist Illusion':'Section=save Note="+2 vs. illusions"',
-  "Resist Nature's Lure":
-    'Section=save Note="+4 vs. spells of feys and spells targeting plants"',
   'Ride-By Attack':
     'Section=combat Note="May move before and after mounted attack w/out AOO"',
   'Run':
@@ -1598,12 +1613,10 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Unarmed strike inflicts stunned for 1 rd %V/dy (DC %1 Fort neg)"',
   'Swift Tracker':'Section=skill Note="May track at full speed"',
-  'Timeless Body':'Section=feature Note="Suffers no aging penalties"',
   'Tongue Of The Sun And Moon':
     'Section=feature Note="May speak w/any living creature"',
   'Toughness':'Section=combat Note="+%V HP"',
   'Track':'Section=skill Note="+%V Survival to follow creatures\' trail"',
-  'Trackless Step':'Section=feature Note="Untrackable outdoors"',
   'Trample':
     'Section=combat ' +
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
@@ -1622,7 +1635,6 @@ Pathfinder.FEATURES = {
     'Note="Unarmed hit inflicts %V HP/Has the Improved Unarmed Strike feature"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
   // Uncanny Dodge as above
-  'Venom Immunity':'Section=save Note="Immune to poisons"',
   'Weapon Finesse':
     'Section=combat ' +
     'Note="+%V light melee weapon attack (Dexterity instead of Strength)"',
@@ -1635,11 +1647,6 @@ Pathfinder.FEATURES = {
   'Widen Spell':
     'Section=magic ' +
     'Note="May use +3 spell slot to dbl chosen spell area of affect"',
-  'Wild Empathy':'Section=skill Note="+%V Diplomacy (animals)"',
-  'Wild Shape':
-    'Section=magic Note="May change into creature of size %V for %1 hr %2/dy"',
-  'Woodland Stride':
-    'Section=feature Note="May move normally through undergrowth"',
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
   'Aberrant Form':
@@ -4397,10 +4404,10 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
       '"1:Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear)",' +
-      '"1:Nature Bond","1:Nature Sense","1:Spontaneous Druid Spell",' +
-      '"1:Wild Empathy","2:Woodland Stride","3:Trackless Step",' +
-      '"4:Resist Nature\'s Lure","4:Wild Shape","9:Venom Immunity",' +
-      '"13:A Thousand Faces","15:Timeless Body",' +
+      '"1:Aligned Spells","1:Nature Bond","1:Nature Sense","1:Orisons",' +
+      '"1:Spontaneous Casting (Druid)","1:Wild Empathy","2:Woodland Stride",' +
+      '"3:Trackless Step","4:Resist Nature\'s Lure","4:Wild Shape",' +
+      '"9:Venom Immunity","13:A Thousand Faces","15:Timeless Body",' +
       '"druidFeatures.Air Domain ? 1:Lightning Arc",' +
       '"druidFeatures.Air Domain ? 6:Electricity Resistance",' +
       '"druidFeatures.Animal Domain ? 1:Speak With Animals",' +
@@ -5676,8 +5683,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Cleric') {
 
     rules.defineRule('channelLevel', classLevel, '+=', null);
-    rules.defineRule
-      ('classSkills.Knowledge', 'skillNotes.knowledgeDomain', '=', '1');
     rules.defineRule('magicNotes.channelEnergy',
       'charismaModifier', '=', '3 + source'
     );
@@ -5768,21 +5773,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('druidFeatures.Animal Companion',
       'druidDomainLevels.Animal', '=', 'source>=4 ? 1 : null'
     );
-    rules.defineRule('magicNotes.wildShape',
-      'wildShapeLevel', '=',
-        'source < 4 ? null : ' +
-        'source < 6 ? "small-medium" : ' +
-        'source < 8 ? "tiny-large/small elemental" : ' +
-        'source < 10 ? "diminutive-huge/medium elemental" : ' +
-        'source < 12 ? "diminutive-huge/large elemental/plant" : ' +
-        '"diminutive-huge/elemental/plant"'
-    );
-    rules.defineRule('magicNotes.wildShape.1', 'wildShapeLevel', '=', null);
-    rules.defineRule('magicNotes.wildShape.2',
-      'wildShapeLevel', '=', 'source==20 ? "unlimited" : Math.floor((source - 2) / 2)'
-    );
     rules.defineRule('selectableFeatureCount.Druid (Nature Bond)',
-      'druidFeatures.Nature Bond', '=', '1'
+      'featureNotes.natureBond', '=', '1'
     );
     rules.defineRule('skillNotes.wildEmpathy',
       classLevel, '+=', null,
