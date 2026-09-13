@@ -1035,140 +1035,140 @@ Pathfinder.FEATURES = {
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to electricity"',
   'Lightning Arc':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP electricity %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Air//2} HP electricity %{wisdomModifier+3} times per day"',
   // Animal Domain
   'Animal Domain':'Section=skill Note="Knowledge (Nature) is a class skill"',
   'Animal Companion':SRD35.FEATURES['Animal Companion'],
   'Speak With Animals':
     'Section=magic ' +
-    'Note="Can use <i>Speak With Animals</i> effects for %{levels.Cleric+3} rd per day" ' +
+    'Note="Can use <i>Speak With Animals</i> effects for %{casterLevels.Animal+3} rd per day" ' +
     'Spells="Speak With Animals" ' +
     'SpellAbility=Charisma',
   // Artifice Domain
   "Artificer's Touch":
     'Section=combat,magic ' +
     'Note=' +
-      '"Touch attack on objects and constructs inflicts 1d6+%{levels.Cleric//2} HP, bypassing %{levels.Cleric} DR and hardness, %{wisdomModifier+3} times per day",' +
+      '"Touch attack on objects and constructs inflicts 1d6+%{casterLevels.Artifice//2} HP, bypassing %{casterLevels.Artifice} DR and hardness, %{wisdomModifier+3} times per day",' +
       '"Can use <i>Mending</i> effects at will" ' +
     'Spells="Mending" ' +
     'SpellAbility=Wisdom',
   'Dancing Weapons':
     'Section=combat ' +
-    'Note="Touched weapon gains the <i>dancing</i> quality for 4 rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="Touched weapon gains the <i>dancing</i> quality for 4 rd %{casterLevels.Artifice>11?(casterLevels.Artifice-4)//4+\' times\':\'once\'} per day"',
   // Chaos Domain
   'Chaos Blade':
     'Section=combat ' +
-    'Note="Touched weapon gains the <i>anarchic</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="Touched weapon gains the <i>anarchic</i> quality for %{casterLevels.Chaos//2} rd %{casterLevels.Chaos>11?(casterLevels.Chaos-4)//4+\' times\':\'once\'} per day"',
   'Touch Of Chaos':
     'Section=combat ' +
     'Note="Touch attack causes the target to take the worse result of 2 d20 rolls for 1 rd %{wisdomModifier+3} times per day"',
   // Charm Domain
   'Charming Smile':
     'Section=magic ' +
-    'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier}) for %{levels.Cleric} rd per day" ' +
+    'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+casterLevels.Charm//2+wisdomModifier}) for %{casterLevels.Charm} rd per day" ' +
     'Spells="Charm Person" ' +
     'SpellAbility=Charisma',
   'Dazing Touch':
     'Section=combat ' +
-    'Note="Touch attack dazes a foe with up to %{levels.Cleric} HD for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch attack dazes a foe with up to %{casterLevels.Charm} HD for 1 rd %{wisdomModifier+3} times per day"',
   // Community Domain
   'Calming Touch':
     'Section=magic ' +
-    'Note="Touch restores 1d6+%{levels.Cleric} nonlethal hit points and removes fatigued, shaken, and sickened conditions %{wisdomModifier+3} times per day"',
+    'Note="Touch restores 1d6+%{casterLevels.Community} nonlethal hit points and removes fatigued, shaken, and sickened conditions %{wisdomModifier+3} times per day"',
   'Unity':
     'Section=save ' +
-    'Note="R30\' Can allow allies to use self saving throw vs. an effect that affects both %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="R30\' Can allow allies to use self saving throw vs. an effect that affects both %{casterLevels.Community>11?(casterLevels.Community-4)//4+\' times\':\'once\'} per day"',
   // Darkness Domain
   'Darkness Domain':'Section=combat Note="Has the Blind-Fight feature"',
   'Eyes Of Darkness':
     'Section=feature ' +
-    'Note="Can see normally in any lighting, including magical darkness, for %{levels.Cleric//2} rd per day"',
+    'Note="Can see normally in any lighting, including magical darkness, for %{casterLevels.Darkness//2} rd per day"',
   'Touch Of Darkness':
     'Section=combat ' +
-    'Note="Touch attack inflicts a 20% miss chance on attacks for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+    'Note="Touch attack inflicts a 20% miss chance on attacks for %{casterLevels.Darkness//2>?1} rd %{wisdomModifier+3} times per day"',
   // Death Domain
   'Bleeding Touch':
     'Section=combat ' +
-    'Note="Touch attack inflicts 1d6 HP each rd for %{levels.Cleric//2>?1} rd (magical healing or a DC 15 Heal ends) %{wisdomModifier+3} times per day"',
+    'Note="Touch attack inflicts 1d6 HP each rd for %{casterLevels.Death//2>?1} rd (magical healing or a DC 15 Heal ends) %{wisdomModifier+3} times per day"',
   "Death's Embrace":
     'Section=combat Note="Regains hit points from channeled negative energy"',
   // Destruction Domain
   'Destructive Aura':
     'Section=combat ' +
-    'Note="Attacks by any creature vs. a target within a 30\' emanation inflict +%{levels.Cleric//2} HP and automatically confirm crit threats for %{levels.Cleric} rd per day"',
+    'Note="Attacks by any creature vs. a target within a 30\' emanation inflict +%{casterLevels.Destruction//2} HP and automatically confirm crit threats for %{casterLevels.Destruction} rd per day"',
   'Destructive Smite':
     'Section=combat ' +
-    'Note="Melee attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3} times per day"',
+    'Note="Melee attack inflicts +%{casterLevels.Destruction//2} HP %{wisdomModifier+3} times per day"',
   // Earth Domain
   'Acid Dart':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6%{levels.Cleric//2} HP acid %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6%{casterLevels.Earth//2} HP acid %{wisdomModifier+3} times per day"',
   'Acid Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to acid"',
   // Evil Domain
   'Scythe Of Evil':
     'Section=combat ' +
-    'Note="Touched weapon gains the <i>unholy</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="Touched weapon gains the <i>unholy</i> quality for %{casterLevels.Evil//2} rd %{casterLevels.Evil>11?(casterLevels.Evil-4)//4+\' times\':\'once\'} per day"',
   'Touch Of Evil':
     'Section=combat ' +
-    'Note="Touch inflicts sickened and susceptibility to good-targeted spells for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+    'Note="Touch inflicts sickened and susceptibility to good-targeted spells for %{casterLevels.Evil//2>?1} rd %{wisdomModifier+3} times per day"',
   // Fire Domain
   'Fire Bolt':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP fire %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Fire//2} HP fire %{wisdomModifier+3} times per day"',
   'Fire Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to fire"',
   // Glory Domain
   'Divine Presence':
     'Section=magic ' +
-    'Note="30\' emanation gives allies DC %{10+levels.Cleric//2+wisdomModifier} <i>Sanctuary</i> effects for %{levels.Cleric} rd per day; self attacking ends" ' +
+    'Note="30\' emanation gives allies DC %{10+casterLevels.Glory//2+wisdomModifier} <i>Sanctuary</i> effects for %{casterLevels.Glory} rd per day; self attacking ends" ' +
     'Spells="Sanctuary" ' +
     'SpellAbility=Charisma',
   'Glory Domain':
     'Section=magic Note="+2 save DC on channeled energy to harm undead"',
   'Touch Of Glory':
     'Section=magic ' +
-    'Note="Touch gives +%{levels.Cleric} on a Charisma check within 1 hr %{wisdomModifier+3} times per day"',
+    'Note="Touch gives +%{casterLevels.Glory} on a Charisma check within 1 hr %{wisdomModifier+3} times per day"',
   // Good Domain
   'Holy Lance':
     'Section=combat ' +
-    'Note="Touched weapon gains the <i>holy</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="Touched weapon gains the <i>holy</i> quality for %{casterLevels.Good//2} rd %{casterLevels.Good>11?(casterLevels.Good-4)//4+\' times\':\'once\'} per day"',
   'Touch Of Good':
     'Section=magic ' +
-    'Note="Touch gives +%{levels.Cleric//2>?1} attacks, skill checks, ability checks, and saves for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch gives +%{casterLevels.Good//2>?1} attacks, skill checks, ability checks, and saves for 1 rd %{wisdomModifier+3} times per day"',
   // Healing Domain
   "Healer's Blessing":
     'Section=magic Note="<i>Cure</i> spells restore 50% more hit points"',
   'Rebuke Death':
     'Section=magic ' +
-    'Note="Touch restores 1d4+%{levels.Cleric//2} hit points to a creature with negative hit points %{wisdomModifier+3} times per day"',
+    'Note="Touch restores 1d4+%{casterLevels.Healing//2} hit points to a creature with negative hit points %{wisdomModifier+3} times per day"',
   // Knowledge Domain
   'Knowledge Domain':
     'Section=skill Note="All Knowledge skills are class skills"',
   'Lore Keeper':
     'Section=skill ' +
-    'Note="Touch attack reveals info as per a %{15+levels.Cleric+wisdomModifier} Knowledge check"',
+    'Note="Touch attack reveals info as per a %{15+casterLevels.Knowledge+wisdomModifier} Knowledge check"',
   'Remote Viewing':
     'Section=magic ' +
-    'Note="Can use <i>Clairaudience/Clairvoyance</i> effects for %{levels.Cleric} rd per day" ' +
+    'Note="Can use <i>Clairaudience/Clairvoyance</i> effects for %{casterLevels.Knowledge} rd per day" ' +
     'Spells="Clairaudience/Clairvoyance" ' +
     'SpellAbility=Charisma',
   // Law Domain
   'Staff Of Order':
     'Section=combat ' +
-    'Note="Touched weapon gains the <i>axiomatic</i> quality for %{levels.Cleric//2} rd %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day"',
+    'Note="Touched weapon gains the <i>axiomatic</i> quality for %{casterLevels.Law//2} rd %{casterLevels.Law>11?(casterLevels.Law-4)//4+\' times\':\'once\'} per day"',
   'Touch Of Law':
     'Section=magic ' +
     'Note="Touched can take 11 on all d20 rolls for 1 rd %{wisdomModifier+3} times per day"',
   // Liberation Domain
   "Freedom's Call":
     'Section=magic ' +
-    'Note="30\' emanation gives allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions for %{levels.Cleric} rd per day"',
+    'Note="30\' emanation gives allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions for %{casterLevels.Liberation} rd per day"',
   'Liberation':
     'Section=magic ' +
-    'Note="Can ignore movement impediments for %{levels.Cleric} rd per day"',
+    'Note="Can ignore movement impediments for %{casterLevels.Liberation} rd per day"',
   // Luck Domain
   'Bit Of Luck':
     'Section=magic ' +
@@ -1176,20 +1176,20 @@ Pathfinder.FEATURES = {
   'Good Fortune':
     SRD35.FEATURES['Luck Domain']
     .replace('a roll', 'a d20 roll')
-    .replace('once', "%{levels.Cleric>11?levels.Cleric//6+' times':'once'}"),
+    .replace('once', "%{casterLevels.Luck>11?casterLevels.Luck//6+' times':'once'}"),
   // Madness Domain
   'Aura Of Madness':
     'Section=magic ' +
-    'Note="30\' emanation inflicts <i>Confusion</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} negates for 24 hr) for %{levels.Cleric} rd per day" ' +
+    'Note="30\' emanation inflicts <i>Confusion</i> effects (save Will DC %{10+casterLevels.Madness//2+wisdomModifier} negates for 24 hr) for %{casterLevels.Madness} rd per day" ' +
     'Spells="Confusion" ' +
     'SpellAbility=Charisma',
   'Vision Of Madness':
     'Section=magic ' +
-    'Note="Gives touched +%{levels.Cleric//2>?1} on a choice of attacks, saves, or skill checks and -%{levels.Cleric//2>?1} on the others for 3 rd %{wisdomModifier+3} times per day"',
+    'Note="Gives touched +%{casterLevels.Madness//2>?1} on a choice of attacks, saves, or skill checks and -%{casterLevels.Madness//2>?1} on the others for 3 rd %{wisdomModifier+3} times per day"',
   // Magic Domain
   'Dispelling Touch':
     'Section=magic ' +
-    'Note="Touch invokes <i>Dispel Magic</i> effects %{levels.Cleric>11?(levels.Cleric-4)//4+\' times\':\'once\'} per day" ' +
+    'Note="Touch invokes <i>Dispel Magic</i> effects %{casterLevels.Magic>11?(casterLevels.Magic-4)//4+\' times\':\'once\'} per day" ' +
     'Spells="Dispel Magic" ' +
     'SpellAbility=Charisma',
   'Hand Of The Acolyte':
@@ -1198,7 +1198,7 @@ Pathfinder.FEATURES = {
   // Nobility Domain
   'Inspiring Word':
     'Section=magic ' +
-    'Note="R30\' Gives the target +2 attacks, skill checks, ability checks, and saves for %{levels.Cleric//2>?1} rd %{wisdomModifier+3} times per day"',
+    'Note="R30\' Gives the target +2 attacks, skill checks, ability checks, and saves for %{casterLevels.Nobility//2>?1} rd %{wisdomModifier+3} times per day"',
   'Leadership (Cleric)':
     'Section=feature,feature ' +
     'Note=' +
@@ -1207,14 +1207,14 @@ Pathfinder.FEATURES = {
   // Plant Domain
   'Bramble Armor':
     'Section=combat ' +
-    'Note="Successful melee attackers without reach suffer 1d6+%{levels.Cleric//2} HP piercing for %{levels.Cleric} rd per day"',
+    'Note="Successful melee attackers without reach suffer 1d6+%{casterLevels.Plant//2} HP piercing for %{casterLevels.Plant} rd per day"',
   'Wooden Fist':
     'Section=combat ' +
-    'Note="Unarmed attacks inflict +%{levels.Cleric//2} HP and provoke no AOO for %{wisdomModifier+3} rd per day"',
+    'Note="Unarmed attacks inflict +%{casterLevels.Plant//2} HP and provoke no AOO for %{wisdomModifier+3} rd per day"',
   // Protection Domain
   'Aura Of Protection':
     'Section=combat ' +
-    'Note="30\' emanation gives allies a +%{(levels.Cleric-4)//4} deflection bonus to Armor Class and resistance %{levels.Cleric<14?5:10} to all energy for %{levels.Cleric} rd per day"',
+    'Note="30\' emanation gives allies a +%{(casterLevels.Protection-4)//4} deflection bonus to Armor Class and resistance %{casterLevels.Protection<14?5:10} to all energy for %{casterLevels.Protection} rd per day"',
   'Protection Domain':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Resistant Touch':
     'Section=magic ' +
@@ -1225,47 +1225,47 @@ Pathfinder.FEATURES = {
     'Note="Touch inflicts staggered for 1 rd (undead for %{wisdomModifier} rd), or asleep on an already-staggered creature, %{wisdomModifier+3} times per day"',
   'Ward Against Death':
     'Section=magic ' +
-    'Note="30\' emanation gives living creatures immunity to death effects, energy drain, and negative level effects for %{levels.Cleric} rd per day"',
+    'Note="30\' emanation gives living creatures immunity to death effects, energy drain, and negative level effects for %{casterLevels.Repose} rd per day"',
   // Rune Domain
   'Blast Rune':
     'Section=magic ' +
-    'Note="Can create a rune in an adjacent unoccupied square that inflicts 1d6+%{levels.Cleric//2} HP of a choice of acid, cold, electricity, or fire damage once within %{levels.Cleric} rd %{wisdomModifier+3} times per day"',
+    'Note="Can create a rune in an adjacent unoccupied square that inflicts 1d6+%{casterLevels.Rune//2} HP of a choice of acid, cold, electricity, or fire damage once within %{casterLevels.Rune} rd %{wisdomModifier+3} times per day"',
   'Rune Domain':'Section=magic Note="Has the Scribe Scroll feature"',
   'Spell Rune':
     'Section=magic Note="Can add a known spell of up to level %{spellSlots.C9?8:spellSlots.C8?7:spellSlots.C7?6:spellSlots.C6?5:spellSlots.C5?4:3} to the effects of Blast Rune"',
   // Strength Domain
   'Might Of The Gods':
     'Section=magic ' +
-    'Note="Can add +%{levels.Cleric} Strength for %{wisdomModifier+3} rd per day"',
+    'Note="Can add +%{casterLevels.Strength} Strength for %{wisdomModifier+3} rd per day"',
   'Strength Surge (Cleric)':
     'Section=magic ' +
-    'Note="Touch gives a +%{levels.Cleric//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch gives a +%{casterLevels.Strength//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
   // Sun Domain
   'Nimbus Of Light':
     'Section=magic ' +
-    'Note="30\' emanation invokes <i>Daylight</i> effects, inflicts %{levels.Cleric} HP on undead, and dispels spells with the Darkness descriptor for %{levels.Cleric} rd per day" ' +
+    'Note="30\' emanation invokes <i>Daylight</i> effects, inflicts %{casterLevels.Sun} HP on undead, and dispels spells with the Darkness descriptor for %{casterLevels.Sun} rd per day" ' +
     'Spells="Daylight" ' +
     'SpellAbility=Charisma',
   "Sun's Blessing":
     'Section=magic ' +
-    'Note="Channel Energy inflicts +%{levels.Cleric} HP on undead and negates channel resistance"',
+    'Note="Channel Energy inflicts +%{casterLevels.Sun} HP on undead and negates channel resistance"',
   // Travel Domain
   'Agile Feet':
     'Section=ability ' +
     'Note="Can ignore difficult terrain for 1 rd %{wisdomModifier+3} times per day"',
   'Dimensional Hop':
     'Section=magic ' +
-    'Note="Can teleport %{levels.Cleric*10}\' per day; including others uses an equal portion of the daily distance"',
+    'Note="Can teleport %{casterLevels.Travel*10}\' per day; including others uses an equal portion of the daily distance"',
   'Travel Domain':'Section=ability Note="+10 Speed"',
   // Trickery Domain
   'Copycat':
     'Section=magic ' +
-    'Note="Can use <i>Mirror Image</i> effects to create a single copy for %{levels.Cleric} rd %{wisdomModifier+3} times per day" ' +
+    'Note="Can use <i>Mirror Image</i> effects to create a single copy for %{casterLevels.Trickery} rd %{wisdomModifier+3} times per day" ' +
     'Spells="Mirror Image" ' +
     'SpellAbility=Charisma',
   "Master's Illusion":
     'Section=magic ' +
-    'Note="30\' emanation invokes <i>Veil</i> effects (save Will DC %{10+levels.Cleric//2+wisdomModifier} disbelieve) for %{levels.Cleric} rd per day" ' +
+    'Note="30\' emanation invokes <i>Veil</i> effects (save Will DC %{10+casterLevels.Trickery//2+wisdomModifier} disbelieve) for %{casterLevels.Trickery} rd per day" ' +
     'Spells="Veil" ' +
     'SpellAbility=Charisma',
   'Trickery Domain':
@@ -1273,26 +1273,26 @@ Pathfinder.FEATURES = {
   // War Domain
   'Battle Rage':
     'Section=combat ' +
-    'Note="Touch gives a +%{levels.Cleric//2>?1} damage bonus for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch gives a +%{casterLevels.War//2>?1} damage bonus for 1 rd %{wisdomModifier+3} times per day"',
   'Weapon Master':
     'Section=combat ' +
-    'Note="Can use the effects of additional combat feats for %{levels.Cleric} rd per day; must meet any feat prerequsites"',
+    'Note="Can use the effects of additional combat feats for %{casterLevels.War} rd per day; must meet any feat prerequsites"',
   // Water Domain
   'Cold Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to cold"',
   'Icicle':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP cold %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Water//2} HP cold %{wisdomModifier+3} times per day"',
   // Weather Domain
   'Lightning Lord':
     'Section=magic ' +
-    'Note="Can use <i>Call Lightning</i> effects on targets within 15\' for %{levels.Cleric} bolts per day" ' +
+    'Note="Can use <i>Call Lightning</i> effects on targets within 15\' for %{casterLevels.Weather} bolts per day" ' +
     'Spells="Call Lightning" ' +
     'SpellAbility=Charisma',
   'Storm Burst':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Cleric//2} HP non-lethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Weather//2} HP non-lethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
 
   // Shared with SRD35
   'A Thousand Faces':
