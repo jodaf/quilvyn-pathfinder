@@ -1314,6 +1314,25 @@ Pathfinder.FEATURES = {
     'Note="Can change into a %{wildShapeLevel<6?\'small\':wildShapeLevel<8?\'tiny\':\'diminutive\'} to %{wildShapeLevel<6?\'medium\':wildShapeLevel<8?\'large\':\'huge\'} animal%{wildShapeLevel>=8?\', a small to \'+(wildShapeLevel<10?\'medium\':wildShapeLevel<12?\'large\':\'huge\')+\' plant,\':\'\'}%{wildShapeLevel>=6?\' or a \'+(wildShapeLevel<8?\'small\':wildShapeLevel<10?\'small to medium\':wildShapeLevel<12?\'small to large\':\'small to huge\')+\' elemental\':\'\'} for %{wildShapeLevel} hr %{wildShapeLevel<20?(wildShapeLevel>=6?(wildShapeLevel-2)//2+\' times\':\'once\')+\' per day\':\'at will\'}"',
   'Woodland Stride':SRD35.FEATURES['Woodland Stride'],
 
+  // Fighter
+  'Armor Mastery':
+    'Section=combat Note="Has DR 5/- when using armor or a shield"',
+  'Armor Training':
+    'Section=ability,combat,skill ' +
+    'Note=' +
+      '"No speed penalty in %V armor",' +
+      '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
+      '"Reduces armor skill check penalty by %V"',
+  'Bonus Feats (Fighter)':'Section=feature Note="%V Selections"',
+  'Bravery':'Section=save Note="+%V vs. fear"',
+  'Weapon Mastery':
+    'Section=combat ' +
+    'Note="Crit threats with a chosen weapon are automatically confirmed and gain +1 damage multiplier; cannot be disarmed when wielding this weapon"',
+  'Weapon Training':
+    'Section=combat ' +
+    // TODO Implement? Group properties on weapons?
+    'Note="%V attacks, damage, CMB, and CMD with weapons from chosen groups"',
+
   // Shared with SRD35
   'Abundant Step':
     'Section=magic Note="May spend 2 Ki Points to teleport self %V\'"',
@@ -1706,13 +1725,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="May imbue weapons with +%V magic damage bonus for 1 rd"',
   'Armor Expert':'Section=skill Note="Reduces armor skill check penalty by 1"',
-  'Armor Mastery':'Section=combat Note="DR 5/- when using armor or shield"',
-  'Armor Training':
-    'Section=ability,combat,skill ' +
-    'Note=' +
-      '"No speed penalty in %V armor",' +
-      '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
-      '"Reduces armor skill check penalty by %V"',
   'Ascension':
     'Section=magic,save ' +
     'Note=' +
@@ -1816,7 +1828,6 @@ Pathfinder.FEATURES = {
       '"Spells affect corporeal undead",' +
       '"Knowledge (Religion) is a class skill"',
   'Bonded Object':'Section=magic Note="May cast known spell through object"',
-  'Bravery':'Section=save Note="+%V vs. fear"',
   'Breath Weapon':'Section=combat Note="%1 %2 %3d6 HP (%4 DC Ref half) %V/dy"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
   'Bullied':'Section=combat Note="+1 unarmed AOO attack"',
@@ -2564,13 +2575,7 @@ Pathfinder.FEATURES = {
   'Warrior Of Old':'Section=combat Note="+2 Initiative"',
   'Watchdog':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Weapon Mastery':
-    'Section=combat ' +
-    'Note="Automatic crit confirm, +1 damage multiplier, and no disarm w/chosen weapon"',
   'Weapon Style':'Section=combat Note="Proficient with choice of monk weapon"',
-  'Weapon Training':
-    'Section=combat ' +
-    'Note="%V attack, damage, CMB, and CMD w/weapons from chosen groups"',
   'Well-Informed':
     'Section=skill,skill ' +
     'Note=' +
@@ -4450,8 +4455,8 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
-      '2:Bravery,"3:Armor Training","5:Weapon Training","19:Armor Mastery",' +
-      '"20:Weapon Mastery"',
+      '"1:Bonus Feats (Fighter)","2:Bravery","3:Armor Training",' +
+      '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
   'Monk':
     'Require="alignment =~ \'Lawful\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
@@ -5794,13 +5799,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Fighter') {
 
     rules.defineRule('abilityNotes.armorSpeedAdjustment',
-      'abilityNotes.armorTraining.1', '^', 'source >= 0 ? 0 : null'
+      'abilityNotes.armorTraining.1', '^', 'source>=0 ? 0 : null'
     );
     rules.defineRule('abilityNotes.armorTraining',
-      classLevel, '=', 'source >= 7 ? "heavy" : "medium"'
+      classLevel, '=', 'source>=7 ? "heavy" : "medium"'
     );
     rules.defineRule('abilityNotes.armorTraining.1',
-      'abilityNotes.armorTraining', '=', 'source == "heavy" ? 3 : 2',
+      'abilityNotes.armorTraining', '=', 'source=="heavy" ? 3 : 2',
       'armorWeight', '+', '{None:0, Light:-1, Medium:-2, Heavy:-3}[source]'
     );
     rules.defineRule
@@ -5823,7 +5828,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.armorMastery.1', '^=', '5');
-    rules.defineRule('featCount.Fighter',
+    rules.defineRule
+      ('featCount.Fighter', 'featureNotes.bonusFeats(Fighter)', '+=', null);
+    rules.defineRule('featureNotes.bonusFeats(Fighter)',
       classLevel, '=', '1 + Math.floor(source / 2)'
     );
     rules.defineRule('saveNotes.bravery',
