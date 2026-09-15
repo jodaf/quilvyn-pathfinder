@@ -1386,6 +1386,44 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Can spend 2 Ki Points to restore %{levels.Monk} hit points to self"',
 
+  // Paladin
+  'Aura Of Courage':SRD35.FEATURES['Aura Of Courage'],
+  'Aura Of Faith':'Section=combat Note="R10\' Weapons count as good-aligned"',
+  'Aura Of Good':SRD35.FEATURES['Aura Of Good'],
+  'Aura Of Righteousness':
+    SRD35.FEATURES['Aura Of Courage']
+    .replaceAll('fear', 'compulsion')
+    .replace('Section=', 'Section=combat,')
+    .replace('Note=', 'Note="Has DR %V/evil",'),
+  'Aura Of Justice':
+    'Section=combat ' +
+    'Note="R10\' Can expend 2 Smite Evil uses to give allies 1 use"',
+  'Aura Of Resolve':
+    SRD35.FEATURES['Aura Of Courage']
+    .replaceAll('fear', 'charm'),
+  'Channel Positive Energy':
+    'Section=magic ' +
+    'Note="Can expend 2 Lay On Hands uses to use Channel Energy effects"',
+  'Detect Evil':SRD35.FEATURES['Detect Evil'],
+  'Divine Grace':SRD35.FEATURES['Divine Grace'],
+  'Divine Health':SRD35.FEATURES['Divine Health'],
+  'Divine Mount':
+    'Section=feature ' +
+    'Note="Can magically summon a mount %{%V>1?%V+\' times\':\'once\'} per day"',
+  'Divine Weapon':
+    'Section=combat ' +
+    'Note="Can add %V enhancements and properties to a weapon for %1 min %{%2>1?\'%2+\' times\':\'once\'} per day"',
+  'Holy Champion':
+    'Section=magic ' +
+    'Note="Lay On Hands effects are maximized/Smite Evil inflicts <i>Banishment</i> effects (DC %V neg)"',
+  'Lay On Hands':
+    'Section=magic ' +
+    'Note="Touch restores %Vd6 hit points %{%1>1?%1+\' times\':\'once\'} per day"',
+  'Mercy':'Section=magic Note="Lay On Hands also removes %V"',
+  'Smite Evil':
+    'Section=combat ' +
+    'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin*2} HP on first the hit if the target is %1"',
+
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
@@ -1393,9 +1431,6 @@ Pathfinder.FEATURES = {
   'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
   'Augment Summoning':
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
-  'Aura Of Courage':
-    'Section=save Note="Immune to fear/R10\' Allies +4 vs. fear"',
-  'Aura Of Good':'Section=feature Note="Visible to <i>Detect Good</i>"',
   'Blind-Fight':
     'Section=combat ' +
     'Note="May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded"',
@@ -1442,15 +1477,11 @@ Pathfinder.FEATURES = {
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="May deliver touch spells if in contact w/master when cast"',
-  'Detect Evil':
-    'Section=magic Note="May use <i>Detect Evil</i> effects at will"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
   'Diamond Soul':'Section=save Note="Spell resistance %V"',
   'Diehard':
     'Section=combat ' +
     'Note="Remains conscious, stable, and able to act with negative HP"',
-  'Divine Grace':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
-  'Divine Health':'Section=save Note="Immune to disease"',
   'Dodge':SRD35.FEATURES.Dodge,
   'Elven Immunities':
     'Section=save Note="Immune to sleep effects, +2 vs. enchantment"',
@@ -1544,7 +1575,6 @@ Pathfinder.FEATURES = {
     'Note="x2 Load Max",' +
          '"-1 AC/-1 Melee Attack/-1 Ranged Attack/+1 CMB/+1 CMD",' +
          '"-2 Fly/+4 Intimidate/-4 Stealth"',
-  'Lay On Hands':'Section=magic Note="May harm undead or heal %Vd6 HP %1/dy"',
   'Leadership':'Section=feature Note="Attracts followers"',
   'Lightning Reflexes':'Section=save Note="+2 Reflex"',
   'Link':
@@ -1625,9 +1655,6 @@ Pathfinder.FEATURES = {
       '"x0.75 Load Max",' +
       '"+1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
       '"+2 Fly/-4 Intimidate/+4 Stealth"',
-  'Smite Evil':
-    'Section=combat ' +
-    'Note="May gain +%{charismaModifier>?0} attack, +%{levels.Paladin} HP damage, bypass DR, and +%{charismaModifier>?0} AC vs. chosen evil foe (+%{levels.Paladin*2} HP on first hit vs. %1) %V/dy"',
   'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
   'Sneak Attack':
     'Section=combat ' +
@@ -1751,16 +1778,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Foes suffer -2 ability, attack, damage, save, and skill %V rd/dy"',
   'Aura Of Faith':'Section=combat Note="R10\' Weapons considered good-aligned"',
-  'Aura Of Justice':
-    'Section=combat ' +
-    'Note="R10\' May expend 2 Smite Evil uses to give allies 1 use"',
-  'Aura Of Resolve':
-    'Section=save Note="Immune to charm/R10\' Allies gain +4 vs. charm"',
-  'Aura Of Righteousness':
-    'Section=combat,save ' +
-    'Note=' +
-      '"DR %V/evil",' +
-      '"Immune to compulsion/R10\' Allies gain +4 vs. compulsion"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
@@ -1860,9 +1877,6 @@ Pathfinder.FEATURES = {
   'Change Shape':
     'Section=magic ' +
     'Note="May use <i>Beast Shape %1</i> or <i>Elemental Body %2</i> effects %V rd/dy"',
-  'Channel Positive Energy':
-    'Section=magic ' +
-    'Note="May expend 2 Lay On Hands uses to use Channel Energy effects"',
   'Channel Smite':
     'Section=combat ' +
     'Note="May inflict Channel Energy damage using melee weapon attack"',
@@ -1963,10 +1977,7 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Sense Motive",' +
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
-  'Divine Mount':'Section=feature Note="May magically summon mount %V/dy"',
   'Divine Warrior':'Section=magic Note="+1 damage w/enspelled melee weapons"',
-  'Divine Weapon':
-    'Section=combat Note="May add %V enhancements and properties to weapon for %1 min %2/dy"',
   "Diviner's Fortune":
     'Section=magic ' +
     'Note="Touch gives +%V attack, skill, ability, and save for 1 rd %1/dy"',
@@ -2150,9 +2161,6 @@ Pathfinder.FEATURES = {
       '"+1 Stealth/Stealth is a class skill",' +
       '"+1 Stealth (hilly and rocky areas)"',
   'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
-  'Holy Champion':
-    'Section=magic ' +
-    'Note="Lay On Hands effects maximized/Smite Evil inflicts <i>Banishment</i> effects (DC %V neg)"',
   'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
   "Hunter's Eye":
     'Section=combat ' +
@@ -2271,7 +2279,6 @@ Pathfinder.FEATURES = {
   "Medusa's Wrath":
     'Section=combat ' +
     'Note="May make 2 extra unarmed attacks vs. diminished-capacity foe"',
-  'Mercy':'Section=magic Note="Lay On Hands removes %V"',
   'Meridian Strike':'Section=combat Note="May reroll crit damage 1s 1/dy"',
   'Metamagic Adept':
     'Section=magic ' +
@@ -4504,8 +4511,7 @@ Pathfinder.CLASSES = {
       '"1:Aura Of Good","1:Detect Evil","1:Smite Evil","2:Divine Grace",' +
       '"2:Lay On Hands","3:Aura Of Courage","3:Divine Health",3:Mercy,' +
       '"4:Channel Positive Energy","8:Aura Of Resolve","11:Aura Of Justice",' +
-      '"14:Aura Of Faith","17:Aura Of Righteousness","17:Resist Evil",' +
-      '"20:Holy Champion" ' +
+      '"14:Aura Of Faith","17:Aura Of Righteousness","20:Holy Champion" ' +
     'Selectables=' +
       '"5:Divine Mount:Divine Bond","5:Divine Weapon:Divine Bond",' +
       '"3:Mercy (Fatigued):Mercy","3:Mercy (Shaken):Mercy",' +
@@ -5973,12 +5979,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.divineWeapon.2',
       classLevel, '=', 'Math.floor((source - 1) / 4)'
     );
-    rules.defineRule('combatNotes.smiteEvil',
-      classLevel, '=', 'Math.floor((source + 2) / 3)'
-    );
     rules.defineRule('combatNotes.smiteEvil.1',
       'features.Smite Evil', '?', null,
-      '', '=', '"antipaladin, outsider, dragon, or undead"'
+      '', '=', '"an antipaladin, outsider, dragon, or undead"'
     );
     rules.defineRule
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
