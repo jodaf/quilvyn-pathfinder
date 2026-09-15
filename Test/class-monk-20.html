@@ -70,7 +70,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Half-Elf Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Ki Speed: May spend 1 Ki Point for +20 Speed</td>
+      <td>Ki Speed: Can spend 1 Ki Point to gain +20 Speed for 1 rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -91,7 +91,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Dodge; Improved Critical (Unarmed Strike); Improved Grapple; Improved Lightning Reflexes; Intimidating Prowess; Lightning Reflexes; Mounted Combat; Skill Focus (Bluff); Skill Focus (Perform (Percussion)); Toughness</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Monk Features</b>: Abundant Step; Armor Class Bonus; Condition Fist; Diamond Body; Diamond Soul; Empty Body; Evasion; Fast Movement (Monk); Flurry Of Blows; Greater Two-Weapon Fighting; High Jump; Improved Bull Rush; Improved Critical (Dwarven Urgosh); Improved Critical (Elven Curve Blade); Improved Critical (Light Shield); Improved Critical (Orc Double Axe); Improved Critical (Repeating Light Crossbow); Improved Evasion; Improved Two-Weapon Fighting; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Perfect Self; Purity Of Body; Quivering Palm; Slow Fall; Still Mind; Stunning Fist; Timeless Body; Tongue Of The Sun And Moon; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear); Wholeness Of Body</td>
+        <td><b>Monk Features</b>: Abundant Step; Armor Class Bonus; Diamond Body; Diamond Soul; Empty Body; Evasion; Fast Movement (Monk); Flurry Of Blows; Greater Two-Weapon Fighting; High Jump; Improved Bull Rush; Improved Critical (Dwarven Urgosh); Improved Critical (Elven Curve Blade); Improved Critical (Light Shield); Improved Critical (Orc Double Axe); Improved Critical (Repeating Light Crossbow); Improved Evasion; Improved Two-Weapon Fighting; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Perfect Self; Purity Of Body; Quivering Palm; Slow Fall; Still Mind; Stunning Fist; Timeless Body; Tongue Of The Sun And Moon; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear); Wholeness Of Body</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -101,13 +101,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
-        <td>Ki Pool: 12 points refills w/8 hours rest</td>
-      </tr><tr style="text-align:center">
         <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr><tr style="text-align:center">
         <td>Multitalented: Can choose two favored classes</td>
-      </tr><tr style="text-align:center">
-        <td>Tongue Of The Sun And Moon: May speak w/any living creature</td>
       </tr></table>
 </td>
     </tr></table>
@@ -164,7 +160,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Perform (Percussion)): +6 Perform (Percussion)</i></td>
       </tr><tr style="text-align:center">
-        <td>High Jump: +20 Acrobatics (jump); may spend 1 Ki Point for +20</td>
+        <td>High Jump: +20 Acrobatics on jumps; can spend 1 Ki Point to gain +20</td>
+      </tr><tr style="text-align:center">
+        <td>Tongue Of The Sun And Moon: Can converse with any living creature</td>
       </tr></table>
 </td>
     </tr></table>
@@ -228,13 +226,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Maneuver Training: +5 CMB</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Perfect Self: DR 10/chaotic</i></td>
+        <td><i>Perfect Self: Has DR 10/chaotic</i></td>
       </tr><tr style="text-align:center">
         <td><i>Toughness: +20 HP</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Unarmed Strike: Unarmed hit inflicts 2d10 HP/Has the Improved Unarmed Strike feature</i></td>
-      </tr><tr style="text-align:center">
-        <td>Condition Fist: May use Stunning Fist to inflict fatigued/sickened/staggered/blind/deafened/paralyzed</td>
+        <td><i>Unarmed Strike: Unarmed Strike inflicts 2d10 HP/Has the Improved Unarmed Strike feature</i></td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows: Full-round +18/+18/+13/+13/+8/+8/+3 monk weapon attacks; may spend 1 Ki Point for additional +18</td>
       </tr><tr style="text-align:center">
@@ -248,17 +244,23 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Ki Dodge: May spend 1 Ki Point for +4 AC</td>
+        <td>Ki Dodge: Can spend 1 Ki Point to gain a +4 dodge bonus to Armor Class for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Ki Strike: Unarmed attack is magic/cold iron/silver/lawful/adamantine</td>
+        <td>Ki Pool: 12 points; refills after 8 hr rest/Can spend 1 point for an additional Flurry Of Blows attack at the highest bonus</td>
+      </tr><tr style="text-align:center">
+        <td>Ki Strike: When Ki Pool contains at least 1 point, Unarmed Strikes count as magic, cold iron, silver, lawful, and adamantine weapons</td>
       </tr><tr style="text-align:center">
         <td>Mounted Combat: Successful Ride skill check (DC foe attack roll) negates mount damage 1/rd</td>
       </tr><tr style="text-align:center">
-        <td>Quivering Palm: Unarmed strike kills 1/dy (DC 22 Fort neg)</td>
+        <td>Quivering Palm: Can kill a struck foe within 20 days (save Fortitude DC 22 negates) once per day</td>
       </tr><tr style="text-align:center">
-        <td>Stunning Fist: Unarmed strike inflicts stunned for 1 rd 20/dy (DC 22 Fort neg)</td>
+        <td>Stunning Fist: Unarmed Strike can inflict stunned for 1 rd, fatiged, sickened for 1 min, staggered for 1d6+1 rd, permanently blind or deafened, or paralyzed for 1d6+1 rd (save Fortitude DC 22 negates) 20 times per day</td>
       </tr><tr style="text-align:center">
         <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+      </tr><tr style="text-align:center">
+        <td>Unarmed Strike: Can make an Unarmed Strike when hands are full and adds full Strength modifier to all Unarmed Strike damage</td>
+      </tr><tr style="text-align:center">
+        <td>Wholeness Of Body: Can spend 2 Ki Points to restore 20 hit points to self</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -277,25 +279,25 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Diamond Soul: Spell resistance 30</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Improved Evasion: Has increased Evasion effects</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Lightning Reflexes: +2 Reflex</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Diamond Body: Immune to poison</td>
+        <td>Diamond Body: Has immunity to poison</td>
       </tr><tr style="text-align:center">
         <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
-      </tr><tr style="text-align:center">
-        <td>Improved Evasion: Failed Reflex in light or no armor save yields half damage</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage; medium or heavy armor negates</td>
       </tr><tr style="text-align:center">
         <td>Improved Lightning Reflexes: May reroll Ref 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Perfect Self: Treated as outsider for magic saves</td>
+        <td>Perfect Self: Treated as an outsider for magic saves</td>
       </tr><tr style="text-align:center">
-        <td>Purity Of Body: Immune to all disease</td>
+        <td>Purity Of Body: Has immunity to all diseases</td>
       </tr><tr style="text-align:center">
-        <td>Slow Fall: Takes no damage from falling</td>
+        <td>Slow Fall: Takes no falling damage when adjacent to a wall</td>
       </tr><tr style="text-align:center">
         <td>Still Mind: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
@@ -319,11 +321,9 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Abundant Step: May spend 2 Ki Points to teleport self 1200'</td>
+      <td>Abundant Step: Can spend 2 Ki Points to teleport self 1200'</td>
     </tr><tr style="text-align:center">
-      <td>Empty Body: May spend 3 Ki Points for 1 min on Ethereal plane</td>
-    </tr><tr style="text-align:center">
-      <td>Wholeness Of Body: May spend 2 Ki Points to heal 20 HP to self</td>
+      <td>Empty Body: Can spend 3 Ki Points to become ethereal for 1 min</td>
     </tr></table>
 </td>
   </tr></table>

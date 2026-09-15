@@ -77,7 +77,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Fleet: +10 Speed in light or no armor</i></td>
     </tr><tr style="text-align:center">
-      <td>Ki Speed: May spend 1 Ki Point for +20 Speed</td>
+      <td>Ki Speed: Can spend 1 Ki Point to gain +20 Speed for 1 rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -99,7 +99,7 @@ var attributes = {
         <td><b>Feats</b>: Extra Ki: 2; Extra Lay On Hands: 2; Extra Mercy: 2; Extra Performance: 2; Extra Rage: 2; Fleet: 2</td>
         <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow; Composite Shortbow; Longbow; Longsword; Rapier; Shortbow)</td>
         <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Divine Mount; Lay On Hands; Mercy (Dazed); Mercy (Fatigued); Mercy (Shaken); Mercy (Staggered); Mercy; Smite Evil; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
-        <td><b>Monk Features</b>: Armor Class Bonus; Condition Fist; Dodge; Evasion; Fast Movement (Monk); Flurry Of Blows; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Scorpion Style; Slow Fall; Still Mind; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)</td>
+        <td><b>Monk Features</b>: Armor Class Bonus; Dodge; Evasion; Fast Movement (Monk); Flurry Of Blows; Ki Dodge; Ki Pool; Ki Speed; Ki Strike; Maneuver Training; Scorpion Style; Slow Fall; Still Mind; Stunning Fist; Two-Weapon Fighting; Unarmed Strike; Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)</td>
         <td><b>Cleric Features</b>: Acid Dart; Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Earth Domain; Good Domain; Orisons; Spontaneous Casting (Cleric); Touch Of Good; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Bard Features</b>: Armor Proficiency (Light; Shield); Bardic Knowledge; Bardic Performance; Countersong; Distraction; Fascinate; Inspire Courage; Simple Somatics; Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip)</td>
         <td><b>Barbarian Features</b>: Armor Proficiency (Light; Medium; Shield); Fast Movement (Barbarian); Rage; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
@@ -115,8 +115,6 @@ var attributes = {
         <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
         <td>Divine Mount: May magically summon mount 1/dy</td>
-      </tr><tr style="text-align:center">
-        <td>Ki Pool: 7 points refills w/8 hours rest</td>
       </tr><tr style="text-align:center">
         <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr></table>
@@ -223,6 +221,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Bonus: +2 Armor Class and CMD; encumbrance or armor negates</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Armor Class Modifiers: Armor +3; Deflection +0; Dexterity +0; Dodge +1; Natural Armor +0; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +26</i></td>
@@ -233,19 +233,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Maneuver Training: +1 CMB</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Unarmed Strike: Unarmed hit inflicts d8 HP/Has the Improved Unarmed Strike feature</i></td>
+        <td><i>Unarmed Strike: Unarmed Strike inflicts d8 HP/Has the Improved Unarmed Strike feature</i></td>
       </tr><tr style="text-align:center">
         <td>Acid Dart: R30' Ranged touch attack inflicts 1d60 HP acid 4 times per day</td>
-      </tr><tr style="text-align:center">
-        <td>Condition Fist: May use Stunning Fist to inflict fatigued</td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows: Full-round +2/+2 monk weapon attacks; may spend 1 Ki Point for additional +2</td>
       </tr><tr style="text-align:center">
         <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Ki Dodge: May spend 1 Ki Point for +4 AC</td>
+        <td>Ki Dodge: Can spend 1 Ki Point to gain a +4 dodge bonus to Armor Class for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Ki Strike: Unarmed attack is magic</td>
+        <td>Ki Pool: 7 points; refills after 8 hr rest/Can spend 1 point for an additional Flurry Of Blows attack at the highest bonus</td>
+      </tr><tr style="text-align:center">
+        <td>Ki Strike: When Ki Pool contains at least 1 point, Unarmed Strikes count as magic weapons</td>
+      </tr><tr style="text-align:center">
+        <td>Quivering Palm: Can kill a struck foe within 4 days (save Fortitude DC 13 negates) once per day</td>
       </tr><tr style="text-align:center">
         <td>Rage: Can gain +4 Strength, +4 Constitution, and +2 Will and suffer -2 Armor Class, becoming fatigued afterward for twice as many rd, for 18 rd per 8 hr of rest</td>
       </tr><tr style="text-align:center">
@@ -253,9 +255,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Smite Evil: May gain +2 attack, +6 HP damage, bypass DR, and +2 AC vs. chosen evil foe (+12 HP on first hit vs. antipaladin, outsider, dragon, or undead) 2/dy</td>
       </tr><tr style="text-align:center">
-        <td>Stunning Fist: Unarmed strike inflicts stunned for 1 rd 4/dy (DC 17 Fort neg)</td>
+        <td>Stunning Fist: Unarmed Strike can inflict stunned for 1 rd or fatiged (save Fortitude DC 17 negates) 6 times per day</td>
       </tr><tr style="text-align:center">
         <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+      </tr><tr style="text-align:center">
+        <td>Unarmed Strike: Can make an Unarmed Strike when hands are full and adds full Strength modifier to all Unarmed Strike damage</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -279,9 +283,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half; medium or heavy armor negates</td>
       </tr><tr style="text-align:center">
-        <td>Slow Fall: Takes -20' damage from falling</td>
+        <td>Slow Fall: Subtracts 20' from falling damage distance when adjacent to a wall</td>
       </tr><tr style="text-align:center">
         <td>Still Mind: +2 vs. enchantment</td>
       </tr></table>

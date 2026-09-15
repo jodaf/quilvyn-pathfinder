@@ -1333,15 +1333,63 @@ Pathfinder.FEATURES = {
     // TODO Implement? Group properties on weapons?
     'Note="%V attacks, damage, CMB, and CMD with weapons from chosen groups"',
 
-  // Shared with SRD35
+  // Monk
   'Abundant Step':
-    'Section=magic Note="May spend 2 Ki Points to teleport self %V\'"',
+    'Section=magic ' +
+    'Note="Can spend 2 Ki Points to teleport self %{levels.Monk*40+400}\'"',
+  'Armor Class Bonus':
+    SRD35.FEATURES['Armor Class Bonus']
+    .replace('Armor Class', 'Armor Class and CMD'),
+  'Diamond Body':SRD35.FEATURES['Diamond Body'],
+  'Diamond Soul':SRD35.FEATURES['Diamond Soul'],
+  'Empty Body':
+    'Section=magic Note="Can spend 3 Ki Points to become ethereal for 1 min"',
+  'Evasion':SRD35.FEATURES.Evasion,
+  'Fast Movement (Monk)':SRD35.FEATURES['Fast Movement (Monk)'],
+  'Flurry Of Blows':
+    'Section=combat ' +
+    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks; may spend 1 Ki Point for additional %8"',
+  'High Jump':
+    'Section=skill ' +
+    'Note="+%{levels.Monk} Acrobatics on jumps; can spend 1 Ki Point to gain +20"',
+  'Improved Evasion':SRD35.FEATURES['Improved Evasion'],
+  'Ki Dodge':
+    'Section=combat ' +
+    'Note="Can spend 1 Ki Point to gain a +4 dodge bonus to Armor Class for 1 rd"',
+  'Ki Pool':
+    'Section=combat ' +
+    'Note="%V points; refills after 8 hr rest/Can spend 1 point for an additional Flurry Of Blows attack at the highest bonus"',
+  'Ki Speed':
+    'Section=ability Note="Can spend 1 Ki Point to gain +20 Speed for 1 rd"',
+  'Ki Strike':
+    'Section=combat ' +
+    'Note="When Ki Pool contains at least 1 point, Unarmed Strikes count as magic%{levels.Monk>15?\', cold iron, silver, lawful, and adamantine\':levels.Monk>9?\', cold iron, silver, and lawful\':levels.Monk>6?\', cold iron, and silver\':\'\'} weapons"',
+  'Maneuver Training':'Section=combat Note="+%V CMB"',
+  'Perfect Self':
+    SRD35.FEATURES['Perfect Self']
+    .replace('magic', 'chaotic'),
+  'Purity Of Body':
+    SRD35.FEATURES['Purity Of Body']
+    .replace('natural', 'all'),
+  'Quivering Palm':
+    SRD35.FEATURES['Quivering Palm']
+    .replace('week', 'day'),
+  'Slow Fall':SRD35.FEATURES['Slow Fall'],
+  'Still Mind':SRD35.FEATURES['Still Mind'],
+  'Stunning Fist':
+    SRD35.FEATURES['Stunning Fist']
+    .replace('stunned for 1 rd', "stunned for 1 rd%{levels.Monk>3?(levels.Monk>7?',':' or')+' fatiged':''}%{levels.Monk>7?(levels.Monk>11?',':', or')+' sickened for 1 min':''}%{levels.Monk>11?(levels.Monk>15?',':', or')+' staggered for 1d6+1 rd':''}%{levels.Monk>15?(levels.Monk>19?',':', or')+' permanently blind or deafened':''}%{levels.Monk>19?', or paralyzed for 1d6+1 rd':''}"),
+  // Timeless Body as above
+  'Tongue Of The Sun And Moon':SRD35.FEATURES['Tongue Of The Sun And Moon'],
+  'Unarmed Strike':SRD35.FEATURES['Unarmed Strike'],
+  'Wholeness Of Body':
+    'Section=combat ' +
+    'Note="Can spend 2 Ki Points to restore %{levels.Monk} hit points to self"',
+
+  // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
-  'Armor Class Bonus':
-    'Section=combat ' +
-    'Note="+%V Armor Class and CMD; encumbrance or armor negates"',
   'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
   'Augment Summoning':
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
@@ -1397,7 +1445,6 @@ Pathfinder.FEATURES = {
   'Detect Evil':
     'Section=magic Note="May use <i>Detect Evil</i> effects at will"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
-  'Diamond Body':'Section=save Note="Immune to poison"',
   'Diamond Soul':'Section=save Note="Spell resistance %V"',
   'Diehard':
     'Section=combat ' +
@@ -1411,15 +1458,10 @@ Pathfinder.FEATURES = {
   'Empower Spell':
     'Section=magic ' +
     'Note="May use +2 spell slot to increase chosen spell variable effects by 50%"',
-  'Empty Body':
-    'Section=magic Note="May spend 3 Ki Points for 1 min on Ethereal plane"',
   'Endurance':'Section=save Note="+4 extended physical action"',
   'Enlarge Spell':
     'Section=magic Note="May use +1 spell slot to dbl chosen spell range"',
   'Eschew Materials':'Section=magic Note="May cast spells w/out materials"',
-  'Evasion':
-    'Section=save ' +
-    'Note="Reflex save in light or no armor yields no damage instead of half"',
   'Extend Spell':
     'Section=magic Note="May use +1 spell slot to dbl chosen spell duration"',
   'Familiar Bat':'Section=skill Note="+3 Fly"',
@@ -1435,16 +1477,12 @@ Pathfinder.FEATURES = {
   'Familiar':'Section=feature Note="Special bond and abilities"',
   'Far Shot':
     'Section=combat Note="Reduces range penalty by 1 per range increment"',
-  'Fast Movement (Monk)':SRD35.FEATURES['Fast Movement (Monk)'],
   'Favored Enemy':
     'Section=combat,skill ' +
     'Note=' +
       '"+2 or more attack and damage vs. %V type(s) of creatures",' +
       '"+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
-  'Flurry Of Blows':
-    'Section=combat ' +
-    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks; may spend 1 Ki Point for additional %8"',
   'Forge Ring':'Section=magic Note="May create and mend magic rings"',
   'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
   'Great Cleave':'Section=combat Note="May cleave w/out limit"',
@@ -1472,9 +1510,6 @@ Pathfinder.FEATURES = {
   'Improved Disarm':
     'Section=combat ' +
     'Note="Disarm provokes no AOO, gains +2 Disarm check and CMD"',
-  'Improved Evasion':
-    'Section=save ' +
-    'Note="Failed Reflex in light or no armor save yields half damage"',
   'Improved Familiar':'Section=feature Note="Has expanded Familiar choices"',
   'Improved Feint':
     'Section=combat Note="May make Bluff check to Feint as a move action"',
@@ -1504,7 +1539,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Suffers no penalty for improvised weapon, gains +1 damage step and crit 19-20/x2 on improvised weapon"',
   'Iron Will':'Section=save Note="+2 Will"',
-  'Ki Strike':'Section=combat Note="Unarmed attack is %V"',
   'Large':
     'Section=ability,combat,skill ' +
     'Note="x2 Load Max",' +
@@ -1535,11 +1569,6 @@ Pathfinder.FEATURES = {
   'Natural Spell':'Section=magic Note="May cast spells during Wild Shape"',
   'Opportunist':
     'Section=combat Note="May take an AOO targeting a foe struck by an ally"',
-  'Perfect Self':
-    'Section=combat,save ' +
-    'Note=' +
-      '"DR 10/chaotic",' +
-      '"Treated as outsider for magic saves"',
   'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
   'Point-Blank Shot':
     'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
@@ -1547,12 +1576,9 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="May suffer -%V attack to gain +%1 damage (+%2 when wielding weapon w/two hands)"',
   'Precise Shot':'Section=combat Note="Suffers no penalty on shot into melee"',
-  'Purity Of Body':'Section=save Note="Immune to all disease"',
   'Quick Draw':'Section=combat Note="May draw a weapon as a free action"',
   'Quicken Spell':
     'Section=magic Note="May use +4 spell slot to cast chosen spell as a free action 1/rd"',
-  'Quivering Palm':
-    'Section=combat Note="Unarmed strike kills 1/dy (DC %V Fort neg)"',
   'Rapid Reload (Hand)':
     'Section=combat Note="May reload a hand crossbow as a free action"',
   'Rapid Reload (Heavy)':
@@ -1592,7 +1618,6 @@ Pathfinder.FEATURES = {
     'Section=skill Note="May take 10 despite distraction on %V chosen skills"',
   'Slippery Mind':
     'Section=save Note="May attempt second save vs. enchantment in next rd"',
-  'Slow Fall':'Section=save Note="Takes %V damage from falling"',
   'Small':
     // changed effects
     'Section=ability,combat,skill ' +
@@ -1624,16 +1649,10 @@ Pathfinder.FEATURES = {
   'Spring Attack':
     'Section=combat Note="May move before and after melee attack w/out AOO"',
   'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
-  'Still Mind':'Section=save Note="+2 vs. enchantment"',
   'Still Spell':
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out movement"',
-  'Stunning Fist':
-    'Section=combat ' +
-    'Note="Unarmed strike inflicts stunned for 1 rd %V/dy (DC %1 Fort neg)"',
   'Swift Tracker':'Section=skill Note="May track at full speed"',
-  'Tongue Of The Sun And Moon':
-    'Section=feature Note="May speak w/any living creature"',
   'Toughness':'Section=combat Note="+%V HP"',
   'Track':'Section=skill Note="+%V Survival to follow creatures\' trail"',
   'Trample':
@@ -1649,9 +1668,6 @@ Pathfinder.FEATURES = {
     'Note="+1 AC when wielding two weapons; +2 when fighting defensively"',
   'Two-Weapon Fighting':
     'Section=combat Note="Reduces on-hand penalty by 2 and off-hand by 6"',
-  'Unarmed Strike':
-    'Section=combat ' +
-    'Note="Unarmed hit inflicts %V HP/Has the Improved Unarmed Strike feature"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
   // Uncanny Dodge as above
   'Weapon Finesse':
@@ -1661,8 +1677,6 @@ Pathfinder.FEATURES = {
   'Weapon Specialization (%weapon)':
     'Section=combat Note="+2 %weapon Damage Modifier"',
   'Whirlwind Attack':'Section=combat Note="May attack all foes w/in reach"',
-  'Wholeness Of Body':
-    'Section=magic Note="May spend 2 Ki Points to heal %V HP to self"',
   'Widen Spell':
     'Section=magic ' +
     'Note="May use +3 spell slot to dbl chosen spell area of affect"',
@@ -1882,8 +1896,6 @@ Pathfinder.FEATURES = {
   'Comparative Religion':
     'Section=skill ' +
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
-  'Condition Fist':
-    'Section=combat Note="May use Stunning Fist to inflict %V"',
   'Conviction':
     'Section=feature Note="May reroll ability, attack, skill, or save 1/dy"',
   'Corrupting Touch':
@@ -2132,8 +2144,6 @@ Pathfinder.FEATURES = {
   'Hellfire':
     'Section=magic ' +
     'Note="R60\' 10\' radius inflicts %Vd6 HP (DC %1 Ref half) and shakes good creatures for %2 rd %3/dy"',
-  'High Jump':
-    'Section=skill Note="+%V Acrobatics (jump); may spend 1 Ki Point for +20"',
   'Highlander':
     'Section=skill,skill ' +
     'Note=' +
@@ -2186,9 +2196,6 @@ Pathfinder.FEATURES = {
   'It Was Meant To Be':
     'Section=feature ' +
     'Note="May reroll attack, critical, or check to overcome spell resistance %V/dy"',
-  'Ki Dodge':'Section=combat Note="May spend 1 Ki Point for +4 AC"',
-  'Ki Pool':'Section=feature Note="%V points refills w/8 hours rest"',
-  'Ki Speed':'Section=ability Note="May spend 1 Ki Point for +20 Speed"',
   'Killer':
     'Section=combat ' +
     'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
@@ -2232,7 +2239,6 @@ Pathfinder.FEATURES = {
   'Magical Talent (Trait)':
     'Section=magic Note="May use chosen Talent0 spell 1/dy"',
   'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
-  'Maneuver Training':'Section=combat Note="+%V CMB"',
   'Master Craftsman (%craftSkill)':
     'Section=feature,skill ' +
     'Note=' +
@@ -4465,13 +4471,13 @@ Pathfinder.CLASSES = {
       '"1:Armor Class Bonus","1:Flurry Of Blows","1:Stunning Fist",' +
       '"1:Two-Weapon Fighting","1:Unarmed Strike",2:Evasion,' +
       '"3:Fast Movement (Monk)","3:Maneuver Training","3:Still Mind",' +
-      '"4:Condition Fist","4:Ki Dodge","4:Ki Pool","4:Ki Speed",' +
-      '"4:Ki Strike","4:Slow Fall","5:High Jump","5:Purity Of Body",' +
-      '"7:Wholeness Of Body","8:Improved Two-Weapon Fighting",' +
-      '"9:Improved Evasion","11:Diamond Body","12:Abundant Step",' +
-      '"13:Diamond Soul","15:Greater Two-Weapon Fighting",' +
-      '"15:Quivering Palm","17:Timeless Body",' +
-      '"17:Tongue Of The Sun And Moon","19:Empty Body","20:Perfect Self" ' +
+      '"4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall",' +
+      '"5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
+      '"8:Improved Two-Weapon Fighting","9:Improved Evasion",' +
+      '"11:Diamond Body","12:Abundant Step","13:Diamond Soul",' +
+      '"15:Greater Two-Weapon Fighting","15:Quivering Palm",' +
+      '"17:Timeless Body","17:Tongue Of The Sun And Moon","19:Empty Body",' +
+      '"20:Perfect Self" ' +
     'Selectables=' +
       '"1:Catch Off-Guard:Bonus Feat",' +
       '"1:Combat Reflexes:Bonus Feat",' +
@@ -5861,6 +5867,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanionStats.Save Will',
       'companionNotes.shareSavingThrows.3', '+', null
     );
+    // N.B.: this untyped bonus applies to both flat-footed and touch
+    rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
+    // Display the Armor Class Bonus note even when armored
+    rules.defineRule('combatNotes.armorClassBonus',
+      classLevel, '=', 'Math.floor(source / 4)', // Changed from SRD35
+      'wisdomModifier', '+', 'source>0 ? source : null'
+    );
+    rules.defineRule('combatNotes.armorClassBonus.1',
+      'armor', '?', 'source == "None"',
+      'combatNotes.armorClassBonus', '=', null
+    );
     // fob.0 isn't displayed--used only to ease prefixing '+' as appropriate
     rules.defineRule('combatNotes.flurryOfBlows.0',
       classLevel, '=', 'source - 2',
@@ -5896,36 +5913,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.flurryOfBlows.8',
       'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "+" + source : source'
     );
-    rules.defineRule('combatNotes.kiStrike',
-      classLevel, '=',
-      '"magic" + ' +
-      '(source < 7 ? "" : "/cold iron/silver") + ' +
-      '(source < 10 ? "" : "/lawful") + ' +
-      '(source < 16 ? "" : "/adamantine")'
-    );
-    rules.defineRule('combatNotes.armorClassBonus',
-      'armor', '?', 'source == "None"',
-      classLevel, '+=', 'Math.floor(source / 4)',
-      'wisdomModifier', '+', 'Math.max(source, 0)'
-    );
-    // N.B.: this untyped bonus applies to both flat-footed and touch
-    rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
-    // Display the Armor Class Bonus note even when armored
-    rules.defineRule('combatNotes.armorClassBonus',
-      classLevel, '=', 'Math.floor(source / 4)', // Changed from SRD35
-      'wisdomModifier', '+', 'source>0 ? source : null'
-    );
-    rules.defineRule('combatNotes.armorClassBonus.1',
-      'armor', '?', 'source == "None"',
-      'combatNotes.armorClassBonus', '=', null
-    );
-    rules.defineRule('combatNotes.conditionFist',
-      classLevel, '=', '"fatigued" + ' +
-        '(source < 8 ? "" : "/sickened") + ' +
-        '(source < 12 ? "" : "/staggered") + ' +
-        '(source < 16 ? "" : "/blind/deafened") + ' +
-        '(source < 20 ? "" : "/paralyzed")'
-    );
     rules.defineRule('combatNotes.maneuverTraining',
       classLevel, '=', 'Math.floor((source + 3) / 4)'
     );
@@ -5933,30 +5920,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '+=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule('combatNotes.stunningFist', classLevel, '^=', null);
-    rules.defineRule('combatNotes.stunningFist.1',
-      'features.Stunning Fist', '?', null,
-      'level', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
     rules.defineRule
       ('damageReduction.Chaotic', 'combatNotes.perfectSelf', '^=', '10');
-    rules.defineRule
-      ('magicNotes.abundantStep', classLevel, '=', 'source * 40 + 400');
-    rules.defineRule('featureNotes.kiPool',
+    rules.defineRule('combatNotes.kiPool',
       classLevel, '=', 'Math.floor(source / 2)',
       'wisdomModifier', '+', null
     );
-    rules.defineRule('magicNotes.wholenessOfBody', classLevel, '=', null);
-    rules.defineRule('saveNotes.diamondSoul', classLevel, '+=', '10+source');
-    rules.defineRule('saveNotes.slowFall',
-      classLevel, '=',
-      'source<4 ? null : source<20 ? Math.floor(source/2) * -10  + "\'" : "no"'
-    );
-    rules.defineRule('selectableFeatureCount.Monk (Bonus Feat)',
-      classLevel, '=', '1 + Math.floor((source + 2) / 4)'
-    );
-    rules.defineRule('skillNotes.highJump', classLevel, '=', null);
     rules.defineRule('speed', 'abilityNotes.fastMovement(Monk)', '+', null);
     // NOTE Our rule engine doesn't support modifying a value via indexing.
     // Here, we work around this limitation by defining rules that set global
@@ -5972,8 +5941,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
-    rules.defineRule('features.Improved Unarmed Strike',
-      'combatNotes.unarmedStrike', '=', '1'
+    rules.defineRule
+      ('saveNotes.diamondSoul', classLevel, '=', '10 + source');
+    rules.defineRule('selectableFeatureCount.Monk (Bonus Feat)',
+      classLevel, '=', '1 + Math.floor((source + 2) / 4)'
     );
     rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
@@ -7304,7 +7275,7 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Extra Ki') {
     rules.defineRule
       ('featureNotes.extraKi', 'feats.Extra Ki', '=', 'source * 2');
-    rules.defineRule('featureNotes.kiPool', 'featureNotes.extraKi', '+', null);
+    rules.defineRule('combatNotes.kiPool', 'featureNotes.extraKi', '+', null);
   } else if(name == 'Extra Lay On Hands') {
     rules.defineRule('magicNotes.extraLayOnHands',
       'feats.Extra Lay On Hands', '=', 'source * 2'
@@ -7418,14 +7389,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
   } else if(name == 'Stunning Critical') {
     rules.defineRule
       ('combatNotes.stunningCritical', 'baseAttack', '=', '10 + source');
-  } else if(name == 'Stunning Fist') {
-    rules.defineRule
-      ('combatNotes.stunningFist', 'level', '^=', 'Math.floor(source / 4)');
-    rules.defineRule('combatNotes.stunningFist.1',
-      'features.Stunning Fist', '?', null,
-      'level', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
   } else if(name == 'Toughness') {
     rules.defineRule
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
