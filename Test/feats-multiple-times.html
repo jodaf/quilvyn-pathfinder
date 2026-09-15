@@ -114,7 +114,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
-        <td>Divine Mount: May magically summon mount 1/dy</td>
+        <td>Divine Mount: Can magically summon a companion mount once per day; death of the mount inflicts -1 attacks and damage for 30 days or until a Paladin level is gained</td>
       </tr><tr style="text-align:center">
         <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr></table>
@@ -235,7 +235,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Unarmed Strike: Unarmed Strike inflicts d8 HP/Has the Improved Unarmed Strike feature</i></td>
       </tr><tr style="text-align:center">
-        <td>Acid Dart: R30' Ranged touch attack inflicts 1d60 HP acid 4 times per day</td>
+        <td>Acid Dart: R30' Ranged touch attack inflicts 1d6+0 HP acid 4 times per day</td>
       </tr><tr style="text-align:center">
         <td>Flurry Of Blows: Full-round +2/+2 monk weapon attacks; may spend 1 Ki Point for additional +2</td>
       </tr><tr style="text-align:center">
@@ -253,7 +253,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Scorpion Style: Unarmed hit slows foe to 5' for 1 rd (DC 17 Fort neg)</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: May gain +2 attack, +6 HP damage, bypass DR, and +2 AC vs. chosen evil foe (+12 HP on first hit vs. antipaladin, outsider, dragon, or undead) 2/dy</td>
+        <td>Smite Evil: Can gain +2 attack, inflict +6 HP, bypass DR, and gain a +2 deflection bonus to Armor Class vs. a chosen evil foe 2 times per day; does an additional +6 HP on first the hit if the target is an antipaladin, outsider, dragon, or undead</td>
       </tr><tr style="text-align:center">
         <td>Stunning Fist: Unarmed Strike can inflict stunned for 1 rd or fatiged (save Fortitude DC 17 negates) 6 times per day</td>
       </tr><tr style="text-align:center">
@@ -266,20 +266,23 @@ var attributes = {
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +17; Reflex: +10; Will: +16</td>
+        <td><b>Resistance</b>: Disease: immune; Fear: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Aura Of Courage: Has immunity to fear</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Divine Grace: +2 Fortitude/+2 Reflex/+2 Will</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Divine Health: Has immunity to disease</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Courage: Immune to fear/R10' Allies +4 vs. fear</td>
-      </tr><tr style="text-align:center">
-        <td>Divine Health: Immune to disease</td>
+        <td>Aura Of Courage: Allies within 10' gain +4 saves vs. fear</td>
       </tr><tr style="text-align:center">
         <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
@@ -303,7 +306,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: B0: 4; B1: 2</td>
         <td><b>Spell Slots</b>: B0: 4; B1: 2; C0: 3; C1: 2; Domain1: 1; P1: 2</td>
-        <td><b>Spell DC</b>: B: 12; C: 11; Domain: 11; P: 12</td>
+        <td><b>Spell DC</b>: B: 12; C: 11; Detect Evil: 12; Domain: 11; P: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -315,7 +318,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Cure Light Wounds (B1 Conj): Touched regains 1d8+1 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to NaN min</td>
+      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 130 min</td>
     </tr><tr style="text-align:left">
       <td>Detect Good (C1 Divi): 60' cone reveals the presence and power of good auras for concentration up to 10 min</td>
     </tr><tr style="text-align:left">
@@ -355,15 +358,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Channel Energy: Can restore 4d6 hit points or inflict the same amount (save Will DC 15 half) to all creatures within 30' 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
+      <td>Channel Positive Energy: Can expend 2 Lay On Hands uses to use Channel Energy effects</td>
     </tr><tr style="text-align:center">
-      <td>Detect Evil: May use <i>Detect Evil</i> effects at will</td>
+      <td>Detect Evil: Can use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
       <td>Elven Magic: +2 checks to overcome spell resistance</td>
     </tr><tr style="text-align:center">
-      <td>Lay On Hands: May harm undead or heal 3d6 HP 9/dy</td>
+      <td>Lay On Hands: Touch restores 3d6 hit points 9 times per day; use on undead instead inflicts HP</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes dazed, fatigued, shaken, staggered</td>
+      <td>Mercy: Lay On Hands also removes dazed, fatigued, shaken, staggered</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">

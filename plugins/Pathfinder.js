@@ -1102,7 +1102,7 @@ Pathfinder.FEATURES = {
   // Earth Domain
   'Acid Dart':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6%{casterLevels.Earth//2} HP acid %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Earth//2} HP acid %{wisdomModifier+3} times per day"',
   'Acid Resistance':
     'Section=save ' +
     'Note="Has %{!%V?\'immunity\':\'resistance %V\'} to acid"',
@@ -1388,7 +1388,9 @@ Pathfinder.FEATURES = {
 
   // Paladin
   'Aura Of Courage':SRD35.FEATURES['Aura Of Courage'],
-  'Aura Of Faith':'Section=combat Note="R10\' Weapons count as good-aligned"',
+  'Aura Of Faith':
+    'Section=combat ' +
+    'Note="Self weapons and attacks vs. foes within 10\' count as good-aligned"',
   'Aura Of Good':SRD35.FEATURES['Aura Of Good'],
   'Aura Of Righteousness':
     SRD35.FEATURES['Aura Of Courage']
@@ -1397,7 +1399,7 @@ Pathfinder.FEATURES = {
     .replace('Note=', 'Note="Has DR %V/evil",'),
   'Aura Of Justice':
     'Section=combat ' +
-    'Note="R10\' Can expend 2 Smite Evil uses to give allies 1 use"',
+    'Note="Can expend 2 Smite Evil uses to allow allies within 10\' to Smite Evil for 1 min"',
   'Aura Of Resolve':
     SRD35.FEATURES['Aura Of Courage']
     .replaceAll('fear', 'charm'),
@@ -1409,20 +1411,37 @@ Pathfinder.FEATURES = {
   'Divine Health':SRD35.FEATURES['Divine Health'],
   'Divine Mount':
     'Section=feature ' +
-    'Note="Can magically summon a mount %{%V>1?%V+\' times\':\'once\'} per day"',
+    'Note="Can magically summon a companion mount %{levels.Paladin>8?(levels.Paladin-1)//4+\' times\':\'once\'} per day; death of the mount inflicts -1 attacks and damage for 30 days or until a Paladin level is gained"',
   'Divine Weapon':
     'Section=combat ' +
-    'Note="Can add %V enhancements and properties to a weapon for %1 min %{%2>1?\'%2+\' times\':\'once\'} per day"',
+    'Note="Can add %{(levels.Paladin-2)//3} +1 enhancements (stack with an existing enhancement to a maximum of +5) or choices of <i>axiomatic</i>, <i>brilliant energy</i>, <i>defending</i>, <i>disruption</i>, <i>flaming</i>, <i>flaming burst</i>, <i>holy</i>, <i>keen</i>, <i>merciful</i>, and <i>speed</i> to a chosen weapon for %{levels.Paladin} min %{levels.Paladin>8?(levels.Paladin-1)//4+\' times\':\'once\'} per day; destruction of the weapon inflicts -1 attacks and damage for 30 days or until a Paladin level is gained"',
   'Holy Champion':
     'Section=magic ' +
-    'Note="Lay On Hands effects are maximized/Smite Evil inflicts <i>Banishment</i> effects (DC %V neg)"',
+    'Note="Channel Positive Energy and Lay On Hands heal or inflict the maximum possible hit points/Using Smite Evil vs. an outsider immediately ends the use and inflicts <i>Banishment</i> effects" ' +
+    'Spells="Banishment" ' +
+    'SpellAbility=Charisma',
   'Lay On Hands':
     'Section=magic ' +
-    'Note="Touch restores %Vd6 hit points %{%1>1?%1+\' times\':\'once\'} per day"',
+    'Note="Touch restores %Vd6 hit points %{%1>1?%1+\' times\':\'once\'} per day; use on undead instead inflicts HP"',
   'Mercy':'Section=magic Note="Lay On Hands also removes %V"',
+  'Mercy (Cursed)':
+    'Section=magic ' +
+    'Note="Lay On Hands acts as a <i>Remove Curse</i> spell" ' +
+    'Spells="Remove Curse" ' +
+    'SpellAbility=Charisma',
+  'Mercy (Diseased)':
+    'Section=magic ' +
+    'Note="Lay On Hands acts as a <i>Remove Disease</i> spell" ' +
+    'Spells="Remove Disease" ' +
+    'SpellAbility=Charisma',
+  'Mercy (Poisoned)':
+    'Section=magic ' +
+    'Note="Lay On Hands acts as a <i>Neutralize Poison</i> spell" ' +
+    'Spells="Neutralize Poison" ' +
+    'SpellAbility=Charisma',
   'Smite Evil':
     'Section=combat ' +
-    'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin*2} HP on first the hit if the target is %1"',
+    'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin} HP on first the hit if the target is %1"',
 
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -1715,7 +1734,7 @@ Pathfinder.FEATURES = {
          '"Immune to critical hit and sneak attack",' +
          '"Has 60\' Blindsight"',
   'Acid Dart (Wizard)':
-    'Section=magic Note="R30\' Ranged touch inflicts 1d6%1 HP %V/dy"',
+    'Section=magic Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Acidic Ray':'Section=magic Note="R30\' Ranged touch inflicts %Vd6 HP %1/dy"',
   'Acrobatic Steps':
     'Section=ability Note="May move normally through difficult terrain 20\'/rd "',
@@ -4346,7 +4365,6 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Strength ? 8:Might Of The Gods",' +
       '"clericDomainFeatures.Sun ? 1:Sun\'s Blessing",' +
       '"clericDomainFeatures.Sun ? 8:Nimbus Of Light",' +
-      '"clericDomainFeatures.Travel ? 1:Travel Speed",' +
       '"clericDomainFeatures.Travel ? 1:Agile Feet",' +
       '"clericDomainFeatures.Travel ? 8:Dimensional Hop",' +
       '"clericDomainFeatures.Trickery ? 1:Copycat",' +
@@ -4517,8 +4535,10 @@ Pathfinder.CLASSES = {
       '"3:Mercy (Fatigued):Mercy","3:Mercy (Shaken):Mercy",' +
       '"3:Mercy (Sickened):Mercy","6:Mercy (Dazed):Mercy",' +
       '"6:Mercy (Diseased):Mercy","6:Mercy (Staggered):Mercy",' +
-      '"9:Mercy (Cursed):Mercy","9:Mercy (Exhausted):Mercy",' +
-      '"9:Mercy (Frightened):Mercy","9:Mercy (Nauseated):Mercy",' +
+      '"9:Mercy (Cursed):Mercy",' +
+      '"features.Mercy (Fatigued) ? 9:Mercy (Exhausted):Mercy",' +
+      '"features.Mercy (Shaken) ? 9:Mercy (Frightened):Mercy",' +
+      '"features.Mercy (Sickened) ? 9:Mercy (Nauseated):Mercy",' +
       '"9:Mercy (Poisoned):Mercy","12:Mercy (Blinded):Mercy",' +
       '"12:Mercy (Deafened):Mercy","12:Mercy (Paralyzed):Mercy",' +
       '"12:Mercy (Stunned):Mercy" ' +
@@ -5972,12 +5992,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.auraOfRighteousness',
       classLevel, '=', 'source >= 20 ? 10 : 5'
     );
-    rules.defineRule('combatNotes.divineWeapon',
-      classLevel, '=', 'Math.floor((source - 2) / 3)'
-    );
-    rules.defineRule('combatNotes.divineWeapon.1', classLevel, '=', null);
-    rules.defineRule('combatNotes.divineWeapon.2',
-      classLevel, '=', 'Math.floor((source - 1) / 4)'
+    rules.defineRule('combatNotes.smiteEvil',
+      classLevel, '+=', '1 + Math.floor((source - 1) / 3)'
     );
     rules.defineRule('combatNotes.smiteEvil.1',
       'features.Smite Evil', '?', null,
@@ -6010,12 +6026,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('damageReduction.Evil', 'combatNotes.auraOfRighteousness', '^=', null);
-    rules.defineRule('featureNotes.divineMount',
-      'companionPaladinLevel', '=', 'Math.floor((source - 1) / 4)'
-    );
     rules.defineRule
       ('features.Channel Energy', 'features.Channel Positive Energy', '=', '1');
-    rules.defineRule('magicNotes.holyChampion', classLevel, '=', null);
     rules.defineRule('magicNotes.layOnHands',
       classLevel, '=', 'Math.floor(source / 2)'
     );
@@ -7613,7 +7625,7 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     );
     rules.defineRule('magicNotes.acidDart(Wizard).1',
       'features.Acid Dart (Wizard)', '?', null,
-      schoolLevel, '=', 'source>1 ? "+" + Math.floor(source / 2) : ""'
+      schoolLevel, '=', 'Math.floor(source / 2)'
     );
     rules.defineRule
       ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
