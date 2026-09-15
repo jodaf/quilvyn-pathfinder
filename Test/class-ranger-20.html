@@ -120,13 +120,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alertness; Critical Focus; Fleet; Improved Critical (Unarmed Strike); Quick Draw; Run; Skill Focus (Intimidate); Skill Focus (Perform (Act)); Skill Focus (Survival); Skill Focus (Use Magic Device); Vital Strike</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Light; Medium; Shield); Camouflage; Combat Style (Archery); Combat Style (Two-Weapon Combat); Companion Bond; Double Slice; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Greater Two-Weapon Fighting; Hide In Plain Sight; Improved Evasion; Improved Precise Shot; Improved Quarry; Improved Shield Bash; Improved Two-Weapon Fighting; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Precise Shot; Quarry; Quick Draw; Rapid Shot; Shot On The Run; Swift Tracker; Track; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
+        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Light; Medium; Shield); Camouflage; Combat Style (Archery); Combat Style (Two-Weapon Combat); Combat Style; Companion Bond; Double Slice; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Greater Two-Weapon Fighting; Hide In Plain Sight; Hunter's Bond; Improved Evasion; Improved Precise Shot; Improved Quarry; Improved Shield Bash; Improved Two-Weapon Fighting; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Precise Shot; Quarry; Quick Draw; Rapid Shot; Shot On The Run; Swift Tracker; Track; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
         <td><i>Adaptability: +1 General Feat (Skill Focus)</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Combat Style: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Hunter's Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
@@ -185,7 +189,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: May take 20 to track target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -201,23 +205,25 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Use Magic Device): +6 Use Magic Device</i></td>
       </tr><tr style="text-align:center">
-        <td>Camouflage: May use Stealth to hide in favored terrain</td>
+        <td>Camouflage: Can use Hide in any favored terrain</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 bonuses on Bluff, Listen, Sense Motive, Spot, and Survival distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in 4 terrain type(s)</td>
+        <td>Favored Terrain: Has 7 +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among 4 terrain types and and leaves no trail in those terrains</td>
       </tr><tr style="text-align:center">
-        <td>Hide In Plain Sight: May hide even when observed</td>
+        <td>Hide In Plain Sight: Can Stealth in favored terrains even when observed</td>
       </tr><tr style="text-align:center">
         <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: May take 20 to track target</td>
+        <td>Master Hunter: Can take 20 when tracking at full Speed</td>
+      </tr><tr style="text-align:center">
+        <td>Quarry: Can take 20 to track quarry at full Speed</td>
       </tr><tr style="text-align:center">
         <td>Run: +4 Acrobatics (running jump)</td>
       </tr><tr style="text-align:center">
-        <td>Swift Tracker: May track at full speed</td>
+        <td>Swift Tracker: Can track at full speed with no penalty to Survival and at double speed at a -10 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Track: +10 Survival to follow creatures' trail</td>
+        <td>Track: +10 Survival to follow creatures' trails</td>
       </tr><tr style="text-align:center">
         <td>Wild Empathy: Can make a +20 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 imposes a -4 penalty on the check</td>
       </tr></table>
@@ -267,19 +273,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Unarmed Strike): x2 Unarmed Strike Threat Range</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: +4 attack vs. target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td>Companion Bond: R30' May give half favored enemy bonus to allies for 4 rd</td>
+        <td>Companion Bond: R30' Can use a move action to give half of a favored enemy bonus to allies for 4 rd</td>
       </tr><tr style="text-align:center">
         <td>Critical Focus: +4 crit confirm</td>
       </tr><tr style="text-align:center">
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 damage bonuses distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Initiative in 4 terrain type(s)</td>
+        <td>Favored Terrain: Has 7 +2 Initiative bonuses distributed among 4 terrain types</td>
       </tr><tr style="text-align:center">
         <td>Greater Two-Weapon Fighting: May make third off-hand attack at -10 penalty</td>
       </tr><tr style="text-align:center">
@@ -291,7 +297,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Manyshot: May fire 2 arrows simultaneously</td>
       </tr><tr style="text-align:center">
-        <td>Master Hunter: Full attack vs. favored enemy kills (DC 24 Fort neg) 1/dy/favored enemy type</td>
+        <td>Master Hunter: Full attack vs. favored enemy kills or inflicts nonlethal HP equal to the target's current hit points (save Fortitude DC 24 negates) once per day per favored enemy type</td>
       </tr><tr style="text-align:center">
         <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
       </tr><tr style="text-align:center">
@@ -299,7 +305,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Precise Shot: Suffers no penalty on shot into melee</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: +4 attack, critical confirmed vs. target</td>
+        <td>Quarry: Can use a free action to gain +4 attacks and automatically confirm crit threats vs. a chosen favored enemy target once per 10 min</td>
       </tr><tr style="text-align:center">
         <td>Quick Draw: May draw a weapon as a free action</td>
       </tr><tr style="text-align:center">

@@ -1292,7 +1292,7 @@ Pathfinder.FEATURES = {
     'SpellAbility=Charisma',
   'Storm Burst':
     'Section=combat ' +
-    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Weather//2} HP non-lethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Weather//2} HP nonlethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
 
   // Druid
   'A Thousand Faces':SRD35.FEATURES['A Thousand Faces'],
@@ -1443,6 +1443,46 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin} HP on first the hit if the target is %1"',
 
+  // Ranger
+  // Animal Companion as above
+  'Camouflage':
+    SRD35.FEATURES['Camouflage']
+    .replace('natural', 'favored'),
+  'Combat Style':SRD35.FEATURES['Combat Style'],
+  'Companion Bond':
+    'Section=combat ' +
+    'Note="R30\' Can use a move action to give half of a favored enemy bonus to allies for %{wisdomModifier>?1} rd"',
+  // Evasion as above
+  'Favored Enemy':SRD35.FEATURES['Favored Enemy'],
+  'Favored Terrain':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"%{combatNotes.favoredTerrain>1?\'Has \'+(combatNotes.favoredTerrain*2-1)+\' +2 Initiative bonuses distributed among %V terrain types\':\'+2 Initiative in a chosen terrain type\'}",' +
+      '"%{skillNotes.favoredTerrain>1?\'Has \'+(skillNotes.favoredTerrain*2-1)+\' +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among %V terrain types and and leaves no trail in those terrains\':\'+2 Knowledge (Geography), Perception, Stealth, and survival in a chosen terrain type and leaves no tracks in that terrain\'}"',
+  'Hide In Plain Sight':
+    'Section=skill Note="Can Stealth in favored terrains even when observed"',
+  "Hunter's Bond":'Section=feature Note="1 selection"',
+  // Improved Evasion as above
+  'Improved Quarry':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Has increased Quarry effects",' +
+      '"Has increased Quarry effects"',
+  'Master Hunter':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Full attack vs. favored enemy kills or inflicts nonlethal HP equal to the target\'s current hit points (save Fortitude DC %V negates) once per day per favored enemy type",' +
+      '"Can take 20 when tracking at full Speed"',
+  'Quarry':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Can use a %{combatNotes.improvedQuarry?\'free\':\'standard\'} action to gain +%{combatNotes.improvedQuarry?4:2} attacks and automatically confirm crit threats vs. a chosen favored enemy target once per %{combatNotes.improvedQuarry?\'10 min\':\'24 hr\'}",' +
+      '"Can take %{combatNotes.improvedQuarry?20:10} to track quarry at full Speed"',
+  'Swift Tracker':SRD35.FEATURES['Swift Tracker'],
+  'Track':'Section=skill Note="+%V Survival to follow creatures\' trails"',
+  // Wild Empathy as above
+  // Woodland Stride as above
+
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
@@ -1456,8 +1496,6 @@ Pathfinder.FEATURES = {
   'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
   'Brew Potion':
     'Section=magic Note="May create potion for up to 3rd level spell"',
-  'Camouflage':
-    'Section=skill Note="May use Stealth to hide in favored terrain"',
   'Cleave':
     'Section=combat Note="May suffer -2 AC to gain attack against two foes"',
   'Combat Casting':
@@ -1527,11 +1565,6 @@ Pathfinder.FEATURES = {
   'Familiar':'Section=feature Note="Special bond and abilities"',
   'Far Shot':
     'Section=combat Note="Reduces range penalty by 1 per range increment"',
-  'Favored Enemy':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+2 or more attack and damage vs. %V type(s) of creatures",' +
-      '"+2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. %V type(s) of creatures"',
   'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Forge Ring':'Section=magic Note="May create and mend magic rings"',
   'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
@@ -1548,7 +1581,6 @@ Pathfinder.FEATURES = {
     'Section=combat Note="+2 %weapon Damage Modifier"',
   'Heighten Spell':
     'Section=magic Note="May cast chosen spell at a higher level"',
-  'Hide In Plain Sight':'Section=skill Note="May hide even when observed"',
   'Improved Bull Rush':
     'Section=combat ' +
     'Note="Bull Rush provokes no AOO, gains +2 Bull Rush check and CMD"',
@@ -1698,9 +1730,7 @@ Pathfinder.FEATURES = {
   'Still Spell':
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out movement"',
-  'Swift Tracker':'Section=skill Note="May track at full speed"',
   'Toughness':'Section=combat Note="+%V HP"',
-  'Track':'Section=skill Note="+%V Survival to follow creatures\' trail"',
   'Trample':
     'Section=combat ' +
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
@@ -1923,9 +1953,6 @@ Pathfinder.FEATURES = {
   'Command Undead':
     'Section=combat ' +
     'Note="R30\' May use Channel Energy to control %1 HD of undead (%V DC Will neg)"',
-  'Companion Bond':
-    'Section=combat ' +
-    'Note="R30\' May give half favored enemy bonus to allies for %V rd"',
   'Comparative Religion':
     'Section=skill ' +
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
@@ -1954,7 +1981,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical hit inflicts permanent deafness (DC %V Fort deaf for 1 rd)"',
   "Death's Gift":
-    'Section=save Note="Resistance %V to cold/DR %1/- vs. non-lethal"',
+    'Section=save Note="Resistance %V to cold/DR %1/- vs. nonlethal"',
   'Defensive Combat Training':'Section=combat Note="+%V CMD"',
   'Deft Dodger':'Section=save Note="+1 Reflex"',
   'Demon Hunter':
@@ -2075,10 +2102,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+%V AC when surprised",' +
       '"+%V saves when surprised"',
-  'Favored Terrain':
-    'Section=combat,skill ' +
-    'Note="+2 or more Initiative in %V terrain type(s)",' +
-         '"+2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in %V terrain type(s)"',
   'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
   'Fey Magic':
     'Section=magic Note="May reroll check to overcome spell resistance"',
@@ -2197,11 +2220,6 @@ Pathfinder.FEATURES = {
   'Improved Great Fortitude':'Section=save Note="May reroll Fort 1/dy"',
   'Improved Iron Will':'Section=save Note="May reroll Will 1/dy"',
   'Improved Lightning Reflexes':'Section=save Note="May reroll Ref 1/dy"',
-  'Improved Quarry':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+4 attack vs. target",' +
-      '"May take 20 to track target"',
   'Improved Vital Strike':'Section=combat Note="3x base damage"',
   'Incorporeal Form':
     'Section=magic Note="May become incorporeal for %V rd 1/dy"',
@@ -2276,9 +2294,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"May use %professionSkill with Craft Magic Arms And Armor and Craft Wondrous Item",' +
       '"+2 %professionSkill"',
-  'Master Hunter':
-    'Section=combat ' +
-    'Note="Full attack vs. favored enemy kills (DC %V Fort neg) 1/dy/favored enemy type"',
   'Master Of Pentacles':
     'Section=magic ' +
     'Note="+2 caster level to determine duration when casting a conjuration spell 1/dy"',
@@ -2340,7 +2355,7 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"DR 5/-",' +
       '"Ignored by unintelligent undead",' +
-      '"Immune to paralysis, sleep, cold, and non-lethal damage, +4 vs. spells from undead"',
+      '"Immune to paralysis, sleep, cold, and nonlethal damage, +4 vs. spells from undead"',
   'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
   'Patient Optimist':
     'Section=skill ' +
@@ -2375,11 +2390,6 @@ Pathfinder.FEATURES = {
     'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
   'Protective Ward':
     'Section=magic Note="R10\' Allies gain +%V AC for %1 rd %2/dy"',
-  'Quarry':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+%V attack, critical confirmed vs. target",' +
-      '"May take %V to track target"',
   'Quick Disable':
     'Section=skill Note="May use Disable Device in half normal time"',
   'Rapscallion':
@@ -4554,10 +4564,11 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
-      '"1:Favored Enemy",1:Track,"1:Wild Empathy",3:Endurance,' +
-      '"3:Favored Terrain","7:Woodland Stride","8:Swift Tracker",9:Evasion,' +
-      '11:Quarry,12:Camouflage,"16:Improved Evasion",' +
-      '"17:Hide In Plain Sight","19:Improved Quarry","20:Master Hunter" ' +
+      '"1:Favored Enemy","1:Track","1:Wild Empathy","2:Combat Style",' +
+      '"3:Endurance","3:Favored Terrain","4:Hunter\'s Bond",' +
+      '"7:Woodland Stride","8:Swift Tracker","9:Evasion","11:Quarry",' +
+      '"12:Camouflage","16:Improved Evasion","17:Hide In Plain Sight",' +
+      '"19:Improved Quarry","20:Master Hunter" ' +
     'Selectables=' +
       '"2:Combat Style (Archery):Combat Style",' +
       '"2:Combat Style (Two-Weapon Combat):Combat Style",' +
@@ -6067,14 +6078,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.favoredTerrain',
       classLevel, '+=', 'Math.floor((source + 2) / 5)'
     );
-    rules.defineRule('combatNotes.companionBond', 'wisdomModifier', '=', null);
     rules.defineRule('combatNotes.masterHunter',
       classLevel, '=', '10 + Math.floor(source / 2)',
       'wisdomModifier', '+', null
-    );
-    rules.defineRule('combatNotes.quarry',
-      '', '=', '2',
-      'combatNotes.improvedQuarry', '^', '4'
     );
     rules.defineRule
       ('companionMasterLevel', 'companionRangerLevel', '^=', null);
@@ -6087,10 +6093,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source >= 2 ? Math.floor((source + 2) / 4) : null'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Combat Style)',
-      classLevel, '=', 'source >= 2 ? 1 : null'
+      'featureNotes.combatStyle', '=', '1'
     );
     rules.defineRule("selectableFeatureCount.Ranger (Hunter's Bond)",
-      classLevel, '=', 'source >= 4 ? 1 : null'
+      "featureNotes.hunter'sBond", '=', '1'
     );
     rules.defineRule('selectableFeatureCount.Ranger (Two-Weapon Feat)',
       'features.Combat Style (Two-Weapon Combat)', '?', null,
@@ -6101,10 +6107,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.favoredTerrain',
       classLevel, '+=', 'Math.floor((source + 2) / 5)'
-    );
-    rules.defineRule('skillNotes.quarry',
-      '', '=', '10',
-      'skillNotes.improvedQuarry', '^', '20'
     );
     rules.defineRule('skillNotes.track',
       classLevel, '+=', 'Math.max(1, Math.floor(source / 2))'
