@@ -19,15 +19,15 @@ var attributes = {
   "selectableFeatures.Rogue - Bleeding Attack":1, "selectableFeatures.Rogue - Combat Trick":1, 
   "selectableFeatures.Rogue - Crippling Strike":1, "selectableFeatures.Rogue - Defensive Roll":1, 
   "selectableFeatures.Rogue - Dispelling Attack":1, "selectableFeatures.Rogue - Fast Stealth":1, 
-  "selectableFeatures.Rogue - Feat Bonus":1, "selectableFeatures.Rogue - Finesse Rogue":1, 
+  "selectableFeatures.Rogue - Feat (Rogue)":1, "selectableFeatures.Rogue - Finesse Rogue":1, 
   "selectableFeatures.Rogue - Improved Evasion":1, "selectableFeatures.Rogue - Ledge Walker":1, 
   "selectableFeatures.Rogue - Major Magic":1, "selectableFeatures.Rogue - Minor Magic":1, 
   "selectableFeatures.Rogue - Opportunist":1, "selectableFeatures.Rogue - Quick Disable":1, 
   "selectableFeatures.Rogue - Resiliency":1, "selectableFeatures.Rogue - Rogue Crawl":1, 
-  "selectableFeatures.Rogue - Rogue Weapon Training":1, "selectableFeatures.Rogue - Skill Mastery":1, 
-  "selectableFeatures.Rogue - Slippery Mind":1, "selectableFeatures.Rogue - Slow Reactions":1, 
-  "selectableFeatures.Rogue - Stand Up":1, "selectableFeatures.Rogue - Surprise Attack":1, 
-  "selectableFeatures.Rogue - Trap Spotter":1, "shield":"None", "skills.Acrobatics":20, "skills.Appraise":12, 
+  "selectableFeatures.Rogue - Skill Mastery":1, "selectableFeatures.Rogue - Slippery Mind":1, 
+  "selectableFeatures.Rogue - Slow Reactions":1, "selectableFeatures.Rogue - Stand Up":1, 
+  "selectableFeatures.Rogue - Surprise Attack":1, "selectableFeatures.Rogue - Trap Spotter":1, 
+  "selectableFeatures.Rogue - Weapon Training (Rogue)":1, "shield":"None", "skills.Acrobatics":20, "skills.Appraise":12, 
   "skills.Bluff":20, "skills.Climb":2, "skills.Craft (Armor)":1, "skills.Craft (Traps)":20, 
   "skills.Diplomacy":20, "skills.Disguise":10, "skills.Escape Artist":2, "skills.Handle Animal":4, 
   "skills.Heal":1, "skills.Knowledge (Arcana)":2, "skills.Knowledge (Planes)":1, 
@@ -82,7 +82,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Half-Elf Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Rogue Crawl: May crawl 15'/rd</td>
+      <td>Rogue Crawl: Has a 15' Speed and can take a 5' Step while crawling</td>
     </tr></table>
 </td>
   </tr></table>
@@ -103,7 +103,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Run; Skill Focus (Bluff); Skill Focus (Escape Artist); Skill Focus (Heal); Skill Focus (Knowledge (Planes)); Skill Focus (Perform (Comedy)); Skill Focus (Perform (Dance)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Skill Focus (Use Magic Device); Strike Back; Toughness; Weapon Focus (Sickle)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Rogue Features</b>: Armor Proficiency (Light); Bleeding Attack; Combat Trick; Crippling Strike; Defensive Roll; Dispelling Attack; Evasion; Fast Stealth; Feat Bonus; Finesse Rogue; Improved Evasion; Improved Uncanny Dodge; Ledge Walker; Major Magic; Master Strike; Minor Magic; Opportunist; Quick Disable; Resiliency; Rogue Crawl; Rogue Talents; Rogue Weapon Training; Skill Mastery; Slippery Mind; Slow Reactions; Sneak Attack; Stand Up; Surprise Attack; Trap Sense; Trap Spotter; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
+        <td><b>Rogue Features</b>: Advanced Talents; Armor Proficiency (Light); Bleeding Attack; Combat Trick; Crippling Strike; Defensive Roll; Dispelling Attack; Evasion; Fast Stealth; Feat (Rogue); Finesse Rogue; Improved Evasion; Improved Uncanny Dodge; Ledge Walker; Major Magic; Master Strike; Minor Magic; Opportunist; Quick Disable; Resiliency; Rogue Crawl; Rogue Talents; Skill Mastery; Slippery Mind; Slow Reactions; Sneak Attack; Stand Up; Surprise Attack; Trap Sense; Trap Spotter; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword); Weapon Training (Rogue)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -111,15 +111,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Adaptability: +1 General Feat (Skill Focus)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Combat Trick: Gain 1 Fighter Feat</i></td>
+        <td><i>Advanced Talents: Has additional Rogue Talent choices</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Feat Bonus: +1 General Feat</i></td>
+        <td><i>Combat Trick: +1 Fighter Feat</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Finesse Rogue: Has Weapon Finesse feature</i></td>
+        <td><i>Feat (Rogue): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Finesse Rogue: Has the Weapon Finesse feature</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rogue Talents: 10 selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Rogue Weapon Training: Gain 1 Fighter Feat (Weapon Focus)</i></td>
+        <td><i>Weapon Training (Rogue): +1 Fighter Feat (Weapon Focus)</i></td>
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
@@ -204,19 +206,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Use Magic Device): +6 Use Magic Device</i></td>
       </tr><tr style="text-align:center">
-        <td>Fast Stealth: May use Stealth at full speed w/out penalty</td>
+        <td>Fast Stealth: Can use Stealth at full speed without penalty</td>
       </tr><tr style="text-align:center">
-        <td>Ledge Walker: May use Acrobatics along narrow surfaces at full speed</td>
+        <td>Ledge Walker: Can use Acrobatics along narrow surfaces at full speed and is not flat-footed when on one</td>
       </tr><tr style="text-align:center">
-        <td>Quick Disable: May use Disable Device in half normal time</td>
+        <td>Quick Disable: Can use Disable Device in half the normal time</td>
       </tr><tr style="text-align:center">
         <td>Run: +4 Acrobatics (running jump)</td>
       </tr><tr style="text-align:center">
-        <td>Skill Mastery: May take 10 despite distraction on 5 chosen skills</td>
+        <td>Skill Mastery: Can take 10 despite distraction on 5 chosen skills</td>
       </tr><tr style="text-align:center">
-        <td>Trap Spotter: Automatic Perception check w/in 10' of trap</td>
+        <td>Trap Spotter: Makes an automatic Perception check when within 10' of a trap</td>
       </tr><tr style="text-align:center">
-        <td>Trapfinding: +10 Perception (traps)/+10 Disable Device (traps)</td>
+        <td>Trapfinding: +10 Perception to locate traps and Disable Device to disam them</td>
       </tr></table>
 </td>
     </tr></table>
@@ -274,31 +276,29 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Sickle): +1 Sickle Attack Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Attack: Sneak attack inflicts 10 HP/rd (magic healing or DC 15 Heal ends)</td>
+        <td>Bleeding Attack: Sneak Attack inflicts 10 HP each rd (magical healing or a DC 15 Heal ends)</td>
       </tr><tr style="text-align:center">
-        <td>Crippling Strike: Sneak attack inflicts 2 points Strength damage</td>
-      </tr><tr style="text-align:center">
-        <td>Defensive Roll: Successful Reflex (DC damage) vs. lethal blow reduces damage by half</td>
+        <td>Crippling Strike: Sneak Attack also inflicts 2 points of Strength damage</td>
       </tr><tr style="text-align:center">
         <td>Improved Uncanny Dodge: Cannot be flanked and can be sneak attacked only by rogue of level 24 or higher</td>
       </tr><tr style="text-align:center">
-        <td>Master Strike: Sneak attack inflicts choice of sleep, paralysis, or death (DC 22 Fort neg)</td>
+        <td>Master Strike: Sneak Attack inflicts a choice of sleep for 1d4 hr, paralysis for 2d6 rd, or death (save Fortitude DC 22 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Opportunist: May take an AOO targeting a foe struck by an ally</td>
+        <td>Opportunist: Can make an AOO targeting a foe just struck by an ally once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Resiliency: May gain 20 temporary HP for 1 min when below 0 HP 1/dy</td>
+        <td>Resiliency: Can gain 20 temporary hit points for 1 min when taken to negative hit points once per day</td>
       </tr><tr style="text-align:center">
         <td>Run: Retains Dexterity bonus to AC while running</td>
       </tr><tr style="text-align:center">
-        <td>Slow Reactions: Sneak attack target may take no AOO for 1 rd</td>
+        <td>Slow Reactions: Prevents Sneak Attack target from taking AOO for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Sneak Attack: Hit inflicts +10d6 HP when foe is flanked or denied Dexterity bonus</td>
+        <td>Sneak Attack: Melee hit or ranged hit within 30' inflicts +10d6 HP when the target is flanked or denied its Dexterity bonus</td>
       </tr><tr style="text-align:center">
-        <td>Stand Up: May stand from prone as free action</td>
+        <td>Stand Up: Can stand from prone as free action</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
       </tr><tr style="text-align:center">
-        <td>Surprise Attack: All foes are flat-footed during surprise round</td>
+        <td>Surprise Attack: Treats all foes as flat-footed during the surprise round</td>
       </tr><tr style="text-align:center">
         <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
@@ -320,11 +320,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
+        <td>Defensive Roll: Successful Reflex (DC damage) vs. a blow that would reduce hit points to or below 0 reduces the damage by half; cannot be used vs. an attack that negates Dexterity bonus to Armor Class</td>
+      </tr><tr style="text-align:center">
         <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
         <td>Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage; medium or heavy armor negates</td>
       </tr><tr style="text-align:center">
-        <td>Slippery Mind: May attempt second save vs. enchantment in next rd</td>
+        <td>Slippery Mind: Can attempt a second save vs. enchantment in the following rd</td>
       </tr><tr style="text-align:center">
         <td>Trap Sense: +6 Reflex and dodge bonus to Armor Class vs. traps</td>
       </tr></table>
@@ -341,7 +343,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Rogue0; Rogue1</td>
-        <td><b>Spell DC</b>: Rogue: 12</td>
+        <td><b>Spell DC</b>: Dispelling Attack: 11; Rogue: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -351,6 +353,8 @@ var attributes = {
     <tr style="text-align:left">
       <td>Daze (Rogue0 Ench): R75' Humanoid target with up to 4 HD loses its actions for 1 rd (save Will negates)</td>
     </tr><tr style="text-align:left">
+      <td>Dispel Magic (Dispelling Attack3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
+    </tr><tr style="text-align:left">
       <td>Dispel Magic (Rogue3 Abju): R300' Successful d20+20 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
     </tr><tr style="text-align:left">
       <td>Sleep (Rogue1 Ench): R300' 4 HD of creatures in a 10' radius fall asleep (save Will negates), moving upward from those with the lowest HD, for 20 min</td>
@@ -359,11 +363,11 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Dispelling Attack: Sneak attack acts as <i>Dispel Magic</i> on target</td>
+      <td>Dispelling Attack: Sneak attack acts as <i>Dispel Magic</i> vs. the lowest-level spell affecting the target</td>
     </tr><tr style="text-align:center">
-      <td>Major Magic: May cast chosen level 1 spell 2/dy</td>
+      <td>Major Magic: Can cast a chosen W1 spell 2 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Minor Magic: May cast chosen level 0 spell 3/dy</td>
+      <td>Minor Magic: Can cast a chosen W0 spell 3 times per day</td>
     </tr></table>
 </td>
   </tr></table>

@@ -1483,6 +1483,74 @@ Pathfinder.FEATURES = {
   // Wild Empathy as above
   // Woodland Stride as above
 
+  // Rogue
+  'Advanced Talents':
+    'Section=feature Note="Has additional Rogue Talent choices"',
+  'Bleeding Attack':
+    'Section=combat ' +
+    'Note="Sneak Attack inflicts %{combatNotes.sneakAttack} HP each rd (magical healing or a DC 15 Heal ends)"',
+  'Feat (Rogue)':'Section=feature Note="+1 General Feat"',
+  'Combat Trick':'Section=feature Note="+1 Fighter Feat"',
+  'Crippling Strike':SRD35.FEATURES['Crippling Strike'],
+  'Defensive Roll':SRD35.FEATURES['Defensive Roll'],
+  'Dispelling Attack':
+    'Section=magic ' +
+    'Note="Sneak attack acts as <i>Dispel Magic</i> vs. the lowest-level spell affecting the target" ' +
+    'Spells="Dispel Magic" ' +
+    'SpellAbility=Charisma',
+  // Evasion as above
+  'Fast Stealth':
+    'Section=skill Note="Can use Stealth at full speed without penalty"',
+  'Finesse Rogue':'Section=feature Note="Has the Weapon Finesse feature"',
+  // Improved Evasion as above
+  // Improved Uncanny Dodge as above
+  'Ledge Walker':
+    'Section=skill ' +
+    'Note="Can use Acrobatics along narrow surfaces at full speed and is not flat-footed when on one"',
+  'Minor Magic':
+    // TODO: implement?
+    'Section=magic Note="Can cast a chosen W0 spell 3 times per day"',
+  'Major Magic':
+    // TODO: implement?
+    'Section=magic Note="Can cast a chosen W1 spell 2 times per day"',
+  'Master Strike':
+    'Section=combat ' +
+    'Note="Sneak Attack inflicts a choice of sleep for 1d4 hr, paralysis for 2d6 rd, or death (save Fortitude DC %{10+levels.Rogue//2+intelligenceModifier} negates)"',
+  'Opportunist':SRD35.FEATURES.Opportunist,
+  'Quick Disable':
+    'Section=skill Note="Can use Disable Device in half the normal time"',
+  'Resiliency':
+    'Section=combat ' +
+    'Note="Can gain %{(rogueFeatures.Resiliency?levels.Rogue:0)+(shadowdancerFeatures.Resiliency?levels.Shadowdancer:0)} temporary hit points for 1 min when taken to negative hit points once per day"',
+  'Rogue Crawl':
+    'Section=ability ' +
+    'Note="Has a %{speed//2}\' Speed and can take a 5\' Step while crawling"',
+  'Rogue Talents':
+    'Section=feature ' +
+    'Note="%V selection%{featureNotes.rogueTalents>1?\'s\':\'\'}"',
+  'Skill Mastery':SRD35.FEATURES['Skill Mastery'],
+  'Slippery Mind':SRD35.FEATURES['Slippery Mind'],
+  'Slow Reactions':
+    'Section=combat ' +
+    'Note="Prevents Sneak Attack target from taking AOO for 1 rd"',
+  'Sneak Attack':
+    'Section=combat ' +
+    'Note="Melee hit or ranged hit within 30\' inflicts +%Vd6 HP when the target is flanked or denied its Dexterity bonus"',
+  'Stand Up':'Section=combat Note="Can stand from prone as free action"',
+  'Surprise Attack':
+    'Section=combat ' +
+    'Note="Treats all foes as flat-footed during the surprise round"',
+  // Trap Sense as above
+  'Trap Spotter':
+    'Section=skill ' +
+    'Note="Makes an automatic Perception check when within 10\' of a trap"',
+  'Trapfinding':
+    'Section=skill ' +
+    'Note="+%V Perception to locate traps and Disable Device to disam them"',
+  // Uncanny Dodge as above
+  'Weapon Training (Rogue)':
+    'Section=feature Note="+1 Fighter Feat (Weapon Focus)"',
+
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
@@ -1521,13 +1589,8 @@ Pathfinder.FEATURES = {
     'Section=magic Note="May create wands for up to 4th level spell"',
   'Craft Wondrous Item':
     'Section=magic Note="May create and mend miscellaneous magic items"',
-  'Crippling Strike':
-    'Section=combat Note="Sneak attack inflicts 2 points Strength damage"',
   'Damage Reduction':'Section=combat Note="DR %V/-"',
   'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
-  'Defensive Roll':
-    'Section=combat ' +
-    'Note="Successful Reflex (DC damage) vs. lethal blow reduces damage by half"',
   'Deflect Arrows':
     'Section=combat Note="Suffers no damage from ranged hit 1/rd"',
   'Deft Hands':'Section=skill Note="+%V Disable Device/+%1 Sleight Of Hand"',
@@ -1565,7 +1628,6 @@ Pathfinder.FEATURES = {
   'Familiar':'Section=feature Note="Special bond and abilities"',
   'Far Shot':
     'Section=combat Note="Reduces range penalty by 1 per range increment"',
-  'Feat Bonus':'Section=feature Note="+1 General Feat"',
   'Forge Ring':'Section=magic Note="May create and mend magic rings"',
   'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
   'Great Cleave':'Section=combat Note="May cleave w/out limit"',
@@ -1648,8 +1710,6 @@ Pathfinder.FEATURES = {
     'Section=companion ' +
     'Note="Reduces additional attack penalty to -2 or gives second attack at -5"',
   'Natural Spell':'Section=magic Note="May cast spells during Wild Shape"',
-  'Opportunist':
-    'Section=combat Note="May take an AOO targeting a foe struck by an ally"',
   'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
   'Point-Blank Shot':
     'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
@@ -1695,10 +1755,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out speech"',
   'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
-  'Skill Mastery':
-    'Section=skill Note="May take 10 despite distraction on %V chosen skills"',
-  'Slippery Mind':
-    'Section=save Note="May attempt second save vs. enchantment in next rd"',
   'Small':
     // changed effects
     'Section=ability,combat,skill ' +
@@ -1707,9 +1763,6 @@ Pathfinder.FEATURES = {
       '"+1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
       '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
-  'Sneak Attack':
-    'Section=combat ' +
-    'Note="Hit inflicts +%Vd6 HP when foe is flanked or denied Dexterity bonus"',
   'Speak With Animals Of Its Kind':
     SRD35.FEATURES['Speak With Animals Of Its Kind'],
   'Speak With Master':
@@ -1734,8 +1787,6 @@ Pathfinder.FEATURES = {
   'Trample':
     'Section=combat ' +
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
-  'Trapfinding':
-    'Section=skill Note="+%V Perception (traps)/+%V Disable Device (traps)"',
   'Turn Undead':
     'Section=combat ' +
     'Note="R30\' Channel Energy causes undead to flee for 1 min (DC %V Will neg)"',
@@ -1842,9 +1893,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
       '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
-  'Bleeding Attack':
-    'Section=combat ' +
-    'Note="Sneak attack inflicts %V HP/rd (magic healing or DC 15 Heal ends)"',
   'Bleeding Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts 2d6 HP/rd (magic healing or DC 15 Heal ends)"',
@@ -1949,7 +1997,6 @@ Pathfinder.FEATURES = {
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
   'Claws':'Section=combat Note="2 %3 attacks inflict %V%1 HP each %2 rd/dy"',
-  'Combat Trick':'Section=feature Note="Gain 1 Fighter Feat"',
   'Command Undead':
     'Section=combat ' +
     'Note="R30\' May use Channel Energy to control %1 HD of undead (%V DC Will neg)"',
@@ -2015,8 +2062,6 @@ Pathfinder.FEATURES = {
       '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
   'Dimensional Steps':'Section=magic Note="May teleport %V\'/dy"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
-  'Dispelling Attack':
-    'Section=magic Note="Sneak attack acts as <i>Dispel Magic</i> on target"',
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Divine Courtesan':
     'Section=skill,skill ' +
@@ -2095,7 +2140,6 @@ Pathfinder.FEATURES = {
   'Fashionable':
     'Section=skill ' +
     'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
-  'Fast Stealth':'Section=skill Note="May use Stealth at full speed w/out penalty"',
   'Fast-Talker':'Section=skill Note="+1 Bluff/Bluff is a class skill"',
   'Fated':
     'Section=combat,save ' +
@@ -2110,7 +2154,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Diplomacy/+1 Sense Motive",' +
       '"Choice of Diplomacy or Sense Motive is a class skill"',
-  'Finesse Rogue':'Section=feature Note="Has Weapon Finesse feature"',
   'Fires Of Hell':
     'Section=combat Note="Flaming blade inflicts +1 HP fire for %{charismaModifier} rd 1/dy"',
   'Flame Of The Dawnflower':
@@ -2246,9 +2289,6 @@ Pathfinder.FEATURES = {
     'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
   'Laughing Touch':
     'Section=magic Note="Touch inflicts laughter for 1 rd %V/dy"',
-  'Ledge Walker':
-    'Section=skill ' +
-    'Note="May use Acrobatics along narrow surfaces at full speed"',
   'Librarian':
     'Section=skill,skill ' +
     'Note=' +
@@ -2283,7 +2323,6 @@ Pathfinder.FEATURES = {
     'Note="Reduces spell level penalty by 1 for metamagic feats applied to chosen spell"',
   'Magical Talent (Trait)':
     'Section=magic Note="May use chosen Talent0 spell 1/dy"',
-  'Major Magic':'Section=magic Note="May cast chosen level 1 spell 2/dy"',
   'Master Craftsman (%craftSkill)':
     'Section=feature,skill ' +
     'Note=' +
@@ -2297,9 +2336,6 @@ Pathfinder.FEATURES = {
   'Master Of Pentacles':
     'Section=magic ' +
     'Note="+2 caster level to determine duration when casting a conjuration spell 1/dy"',
-  'Master Strike':
-    'Section=combat ' +
-    'Note="Sneak attack inflicts choice of sleep, paralysis, or death (DC %V Fort neg)"',
   'Mathematical Prodigy':
     'Section=skill,skill ' +
     'Note=' +
@@ -2324,7 +2360,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill"',
   'Mind Over Matter':'Section=save Note="+1 Will"',
-  'Minor Magic':'Section=magic Note="May cast chosen level 0 spell 3/dy"',
   'Missionary':
     'Section=magic,skill ' +
     'Note=' +
@@ -2390,17 +2425,12 @@ Pathfinder.FEATURES = {
     'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
   'Protective Ward':
     'Section=magic Note="R10\' Allies gain +%V AC for %1 rd %2/dy"',
-  'Quick Disable':
-    'Section=skill Note="May use Disable Device in half normal time"',
   'Rapscallion':
     'Section=combat,skill ' +
     'Note=' +
       '"+1 Initiative",' +
       '"+1 Escape Artist"',
   'Reactionary':'Section=combat Note="+2 Initiative"',
-  'Resiliency':
-    'Section=combat ' +
-    'Note="May gain %V temporary HP for 1 min when below 0 HP 1/dy"',
   'Resilient':'Section=save Note="+1 Fortitude"',
   'Resistance To Energy':
     'Section=save Note="Resistance %V to chosen energy type each dy"',
@@ -2415,11 +2445,7 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 damage w/daggers",' +
       '"+1 Swim/Swim is a class skill"',
-  'Rogue Crawl':'Section=ability Note="May crawl %{speed//2}\'/rd"',
-  'Rogue Talents':'Section=feature Note="%V selections"',
   'Rogue Talents (Shadowdancer)':'Section=feature Note="%V selections"',
-  'Rogue Weapon Training':
-    'Section=feature Note="Gain 1 Fighter Feat (Weapon Focus)"',
   'Rousing Oratory':
     'Section=skill ' +
     'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
@@ -2477,8 +2503,6 @@ Pathfinder.FEATURES = {
   'Sickening Critical':
     'Section=combat Note="Critical hit inflicts sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
-  'Slow Reactions':
-    'Section=combat Note="Sneak attack target may take no AOO for 1 rd"',
   'Smuggler':
     'Section=skill,skill ' +
     'Note=' +
@@ -2501,7 +2525,6 @@ Pathfinder.FEATURES = {
     'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort staggered for 1 rd)"',
   'Stand Still':
     'Section=combat Note="May use AOO for CMB check to halt foe movement"',
-  'Stand Up':'Section=combat Note="May stand from prone as free action"',
   'Starchild':
     'Section=skill ' +
     'Note="+4 Survival (avoid becoming lost)/Always know direction of north"',
@@ -2517,8 +2540,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Critical hit inflicts stunned (DC %V Fort staggered) for 1d4 rd"',
   "Summoner's Charm":'Section=magic Note="%V summoning duration"',
-  'Surprise Attack':
-    'Section=combat Note="All foes are flat-footed during surprise round"',
   'Suspicious':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Tavern Owner':
@@ -2547,8 +2568,6 @@ Pathfinder.FEATURES = {
   'Touch Of Destiny':
     'Section=magic ' +
     'Note="Touch gives +%V attack, skill, ability, save for 1 rd %1/dy"',
-  'Trap Spotter':
-    'Section=skill Note="Automatic Perception check w/in 10\' of trap"',
   'Trouper':
     'Section=save,skill ' +
     'Note=' +
@@ -4601,9 +4620,9 @@ Pathfinder.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)",' +
-      '"1:Sneak Attack",1:Trapfinding,2:Evasion,"2:Rogue Talents",' +
+      '"1:Sneak Attack","1:Trapfinding","2:Evasion","2:Rogue Talents",' +
       '"3:Trap Sense","4:Uncanny Dodge","8:Improved Uncanny Dodge",' +
-      '"20:Master Strike" ' +
+      '"10:Advanced Talents","20:Master Strike" ' +
     'Selectables=' +
       '"2:Bleeding Attack:Talent",' +
       '"2:Combat Trick:Talent",' +
@@ -4618,10 +4637,10 @@ Pathfinder.CLASSES = {
       '"2:Stand Up:Talent",' +
       '"2:Surprise Attack:Talent",' +
       '"2:Trap Spotter:Talent",' +
-      '"2:Rogue Weapon Training:Talent",' +
+      '"2:Weapon Training (Rogue):Talent",' +
       '"10:Crippling Strike:Talent",' +
       '"10:Defensive Roll:Talent",' +
-      '"10:Feat Bonus:Talent",' +
+      '"10:Feat (Rogue):Talent",' +
       '"10:Improved Evasion:Talent",' +
       '"10:Opportunist:Talent",' +
       '"10:Skill Mastery:Talent",' +
@@ -4972,11 +4991,11 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"3:Stand Up:Talent",' +
       '"3:Surprise Attack:Talent",' +
       '"3:Trap Spotter:Talent",' +
-      '"3:Rogue Weapon Training:Talent",' +
+      '"3:Weapon Training (Rogue):Talent",' +
       '"3:Crippling Strike:Talent",' +
       '"3:Defensive Roll:Talent",' +
       '"3:Dispelling Attack:Talent",' +
-      '"3:Feat Bonus:Talent",' +
+      '"3:Feat (Rogue):Talent",' +
       '"3:Improved Evasion:Talent",' +
       '"3:Opportunist:Talent",' +
       '"3:Skill Mastery:Talent",' +
@@ -6120,29 +6139,22 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     QuilvynRules.prerequisiteRules(
       rules, 'validation', 'rogueWeaponTraining',
-      'features.Rogue Weapon Training', 'Sum \'features\\.Weapon Focus\' >= 1'
-    );
-    rules.defineRule('combatNotes.bleedingAttack',
-      classLevel, '+=', 'Math.floor((source + 1) / 2)'
+      'features.Weapon Training (Rogue)', 'Sum \'features\\.Weapon Focus\' >= 1'
     );
     rules.defineRule('combatNotes.improvedUncannyDodge',
       classLevel, '+=', null,
       '', '+', '4'
     );
-    rules.defineRule('combatNotes.masterStrike',
-      classLevel, '+=', '10 + Math.floor(source / 2)',
-      'intelligenceModifier', '+', null
-    );
-    rules.defineRule('combatNotes.resiliency', classLevel, '=', null);
     rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
     rules.defineRule('featCount.Fighter',
       'featureNotes.combatTrick', '+=', '1',
-      'featureNotes.rogueWeaponTraining', '+=', '1'
+      'featureNotes.weaponTraining(Rogue)', '+=', '1'
     );
     rules.defineRule
       ('features.Weapon Finesse', 'featureNotes.finesseRogue', '=', '1');
     rules.defineRule('featureNotes.rogueTalents',
-      classLevel, '+=', 'Math.floor(source / 2)'
+      classLevel, '+=', 'Math.floor(source / 2)',
+      'featureNotes.advancedTalents', '+', 'null' // italics
     );
     rules.defineRule('rogueFeatures.Improved Uncanny Dodge',
       'rogueFeatures.Uncanny Dodge', '?', null,
@@ -6153,10 +6165,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('selectableFeatureCount.Rogue (Talent)',
       'featureNotes.rogueTalents', '+=', null
-    );
-    rules.defineRule('skillNotes.skillMastery',
-      'intelligenceModifier', '=', 'source + 3',
-      'rogueFeatures.Skill Mastery', '*', null
     );
     rules.defineRule('skillNotes.trapfinding',
       classLevel, '+=', 'Math.floor(source / 2)'

@@ -15,7 +15,7 @@ var attributes = {
   "feats.Weapon Focus (Dagger)":1, "feats.Weapon Focus (Unarmed Strike)":1, "gender":"Male", "hitPoints":58, 
   "intelligence":10, "levels.Rogue":4, "levels.Sorcerer":6, 
   "name":"Prestige-Arcane Trickster 10", "prestige.Arcane Trickster":10, "race":"Human", 
-  "selectableFeatures.Rogue - Fast Stealth":1, "selectableFeatures.Rogue - Rogue Weapon Training":1, 
+  "selectableFeatures.Rogue - Fast Stealth":1, "selectableFeatures.Rogue - Weapon Training (Rogue)":1, 
   "selectableFeatures.Sorcerer - Bloodline Draconic (Silver)":1, "shield":"None", "skills.Appraise":10, "skills.Climb":10, 
   "skills.Craft (Alchemy)":2, "skills.Disable Device":10, "skills.Disguise":10, "skills.Escape Artist":5, 
   "skills.Fly":10, "skills.Intimidate":4, "skills.Knowledge (Arcana)":5, 
@@ -99,7 +99,7 @@ var attributes = {
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
         <td><b>Arcane Trickster Features</b>: Caster Level Bonus; Impromptu Sneak Attack; Invisible Thief; Ranged Legerdemain; Sneak Attack; Surprise Spells; Tricky Spells</td>
         <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Claws; Dragon Resistances; Eschew Materials; Magic Claws; Natural Armor; Weapon Proficiency (Simple Weapons)</td>
-        <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Fast Stealth; Rogue Talents; Rogue Weapon Training; Sneak Attack; Trap Sense; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
+        <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Fast Stealth; Rogue Talents; Sneak Attack; Trap Sense; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword); Weapon Training (Rogue)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -109,7 +109,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Rogue Talents: 2 selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Rogue Weapon Training: Gain 1 Fighter Feat (Weapon Focus)</i></td>
+        <td><i>Weapon Training (Rogue): +1 Fighter Feat (Weapon Focus)</i></td>
       </tr><tr style="text-align:center">
         <td>Leadership: Attracts followers</td>
       </tr></table>
@@ -162,11 +162,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Stealthy: +2 Escape Artist/+2 Stealth</i></td>
       </tr><tr style="text-align:center">
-        <td>Fast Stealth: May use Stealth at full speed w/out penalty</td>
+        <td>Fast Stealth: Can use Stealth at full speed without penalty</td>
       </tr><tr style="text-align:center">
         <td>Ranged Legerdemain: May attempt R30' Disable Device or Sleight Of Hand at +5 DC</td>
       </tr><tr style="text-align:center">
-        <td>Trapfinding: +2 Perception (traps)/+2 Disable Device (traps)</td>
+        <td>Trapfinding: +2 Perception to locate traps and Disable Device to disam them</td>
       </tr></table>
 </td>
     </tr></table>
@@ -234,7 +234,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
-        <td>Sneak Attack: Hit inflicts +7d6 HP when foe is flanked or denied Dexterity bonus</td>
+        <td>Sneak Attack: Melee hit or ranged hit within 30' inflicts +7d6 HP when the target is flanked or denied its Dexterity bonus</td>
       </tr><tr style="text-align:center">
         <td>Surprise Spells: Spells inflict sneak attack damage vs. flat-footed foes</td>
       </tr><tr style="text-align:center">
