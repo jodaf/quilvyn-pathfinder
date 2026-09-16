@@ -54,7 +54,6 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 15431/23000 (Slow)</td>
       <td><b>Level</b>: 4</td>
-      <td><b>Speed/Run</b>: 30/30</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
 </td>
@@ -76,17 +75,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Blind-Fight; Flail Expert; Glib</td>
         <td><b>Traits</b>: Child Of Infamy</td>
-        <td><b>Wizard Features</b>: Bonded Object; Force Missile; Intense Spells; School Opposition (Abjuration); School Opposition (Illusion); School Specialization (Evocation); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
-        <td><b>Druid Features</b>: Animal Companion; Armor Proficiency (Medium); Nature Bond; Nature Sense; Shield Proficiency; Spontaneous Druid Spell; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura; Channel Energy; Knowledge Domain; Lore Keeper; Shield Proficiency; Spontaneous Cleric Spell; Weapon Proficiency (Simple)</td>
+        <td><b>Wizard Features</b>: Bonded Object; Force Missile; Intense Spells; School Opposition (Abjuration); School Opposition (Illusion); School Specialization (Evocation); Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
+        <td><b>Druid Features</b>: Aligned Spells; Animal Companion; Armor Proficiency (Light; Medium; Shield); Nature Bond; Nature Sense; Orisons; Spontaneous Casting (Druid); Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Knowledge Domain; Lore Keeper; Orisons; Spontaneous Casting (Cleric); Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
+        <td><i>Nature Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -123,11 +122,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Nature Sense: +2 Knowledge (Nature)/+2 Survival</i></td>
       </tr><tr style="text-align:center">
-        <td>Lore Keeper: Touch attack provides info as per 16 Knowledge check</td>
+        <td>Lore Keeper: Touch attack reveals info as per a 16 Knowledge check</td>
       </tr><tr style="text-align:center">
         <td>School Specialization (Evocation): +2 Spellcraft (Evocation effects)</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +3 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +3 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 imposes a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -143,7 +142,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 28</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 11</td>
+        <td><b>AC/Touch/Flat</b>: 11/11/10</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +0/+2/+1</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +2/13</td>
@@ -152,9 +151,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Dart; Heavy Crossbow; Light Crossbow; Quarterstaff; Scimitar; Scythe; Shortspear; Sickle; Simple Weapons; Sling; Spear</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -162,23 +160,21 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Mithral Breastplate</td>
         <td><b>Shield</b>: Light Mithril</td>
-        <td><b>Weapons</b>: Boomerang; Flail (-2 d8+2 x2@20); Heavy Crossbow (+1 d10 x2@19 R120'); Unarmed (+2 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Boomerang; Flail (-2 d8+2 x2@20); Heavy Crossbow (+1 d10 x2@19 R120'); Unarmed Strike (+2 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor %1; Deflection %2; Dexterity %3; Dodge %4; Natural Armor %5; Shield %6; Size %7</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Boomerang: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Flail: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Flail: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
       </tr></table>
@@ -213,19 +209,21 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1</i></td>
     </tr><tr style="text-align:center">
       <td><i>School Specialization (Evocation): +1 Evocation spell/dy in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td>Bonded Object: May cast known spell through object</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 1d6 HP (DC 12 Will half) 5/dy</td>
+      <td>Bonded Object: Can cast a known spell through a chosen object</td>
+    </tr><tr style="text-align:center">
+      <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 12 half) to all creatures within 30' 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Force Missile: <i>Magic Missile</i> inflicts 1d4+1 HP 4/dy</td>
     </tr><tr style="text-align:center">
       <td>Intense Spells: +1 Evocation spell damage</td>
+    </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Abjuration): Casting Abjuration spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
@@ -233,9 +231,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Scribe Scroll: May create scroll of any known spell</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Druid Spell: May cast <i>Summon Nature's Ally</i> in place of known spell</td>
+      <td>Spontaneous Casting (Druid): Can cast <i>Summon Nature's Ally</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
   </tr></table>
@@ -254,6 +252,8 @@ var attributes = {
       <td><b>Familiar</b>: Lemure</td>
     </tr></table>
 </td>
+  </tr><tr style="text-align:center">
+    <td><b>Companion Notes</b>: Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
   </tr></table>
 </td>
 </tr><tr style="text-align:center">

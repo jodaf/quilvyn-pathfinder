@@ -95,7 +95,7 @@ var attributes = {
         <td><b>Feats</b>: Combat Reflexes; Empower Spell; Extend Spell; Improved Initiative; Maximize Spell; Point-Blank Shot; Power Attack; Precise Shot; Quicken Spell; Skill Focus (Ride); Skill Focus (Survival); Spell Focus (Enchantment); Stealthy; Weapon Focus (Longbow)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
         <td><b>Arcane Archer Features</b>: Arcane Caster Level Bonus; Armor Proficiency (Light; Medium; Shield); Arrow Of Death; Enhance Arrows (Aligned); Enhance Arrows (Distance); Enhance Arrows (Elemental); Enhance Arrows (Magic); Hail Of Arrows; Imbue Arrow; Phase Arrow; Seeker Arrow; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Claws; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Bloodline; Cantrips; Claws; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
       </tr></table>
 </td>
@@ -103,6 +103,8 @@ var attributes = {
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
         <td><i>Adaptability: +1 General Feat (Skill Focus)</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bloodline: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): 4 Selections</i></td>
       </tr><tr style="text-align:center">
@@ -223,7 +225,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Arrow Of Death: Special arrow kills foe (DC 19 Fort neg)</td>
       </tr><tr style="text-align:center">
-        <td>Claws: 2 +19 attacks inflict 1d4+2 HP each 2 rd/dy</td>
+        <td>Claws: Can make 2 +19 attacks that inflict 1d4+2 HP each for 2 rd per day</td>
       </tr><tr style="text-align:center">
         <td>Combat Reflexes: May take AOO while flat-footed and 3 AOO/rd</td>
       </tr><tr style="text-align:center">
@@ -281,6 +283,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: S0: 8; S1: 5; S2: 3; S3: 2; S4: 1</td>
         <td><b>Spell Slots</b>: S0: 8; S1: 6; S2: 6; S3: 5; S4: 3</td>
         <td><b>Spell DC</b>: S: 9</td>
       </tr></table>
@@ -350,11 +353,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 75%</td>
     </tr><tr style="text-align:center">
-      <td>Bloodline Draconic: +1 damage per die on electricity spells</td>
+      <td>Bloodline Draconic: Spells with the electricity descriptor inflict +1 HP per die</td>
+    </tr><tr style="text-align:center">
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
     </tr><tr style="text-align:center">
-      <td>Eschew Materials: May cast spells w/out materials</td>
+      <td>Eschew Materials: Can cast spells without materials</td>
     </tr><tr style="text-align:center">
       <td>Extend Spell: May use +1 spell slot to dbl chosen spell duration</td>
     </tr><tr style="text-align:center">

@@ -83,13 +83,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Craft Wand; Forge Ring; Skill Focus (Craft (Armor)); Skill Focus (Diplomacy); Skill Focus (Knowledge (Planes))</td>
         <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Claws; Dragon Resistances; Eschew Materials; Natural Armor; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Sorcerer Features</b>: Bloodline Draconic (Bronze); Bloodline; Cantrips; Claws; Dragon Resistances; Eschew Materials; Natural Armor; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Bleeding Touch; Channel Energy; Death Domain; Hand Of The Acolyte; Magic Domain; Orisons; Spontaneous Casting (Cleric); Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Bloodline: 1 selection</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Bonus Feat: +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
@@ -181,7 +183,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Natural Armor: +1 natural armor bonus to Armor Class</i></td>
+        <td><i>Dragon Resistances: +1 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
@@ -191,7 +193,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bleeding Touch: Touch attack inflicts 1d6 HP each rd for 2 rd (magical healing or a DC 15 Heal ends) 2 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Claws: 2 +4 attacks inflict 1d4-1 HP each 2 rd/dy</td>
+        <td>Claws: Can make 2 +4 attacks that inflict 1d4-1 HP each for 2 rd per day</td>
       </tr><tr style="text-align:center">
         <td>Hand Of The Acolyte: R30' Can make a +4 ranged attack with a melee weapon 2 times per day</td>
       </tr></table>
@@ -210,7 +212,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dragon Resistances: Resistance 5 to electricity</i></td>
+        <td><i>Dragon Resistances: Has resistance 5 to electricity</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: -1</i></td>
       </tr></table>
@@ -226,6 +228,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: S0: 6; S1: 3; S2: 1</td>
         <td><b>Spell Slots</b>: C0: 4; C1: 3; C2: 2; Domain1: 1; Domain2: 1; S0: 6; S1: 6; S2: 3</td>
         <td><b>Spell DC</b>: C: 9; Domain: 9; S: 9</td>
       </tr></table>
@@ -267,7 +270,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Light (C0 Evoc): Touched gives 20' normal light for 40 min</td>
     </tr><tr style="text-align:left">
-      <td>Mage Armor (Bloodline Draconic1 Conj): Gives touched a +4 armor bonus for NaN hr</td>
+      <td>Mage Armor (Bloodline Draconic1 Conj): Gives touched a +4 armor bonus for 4 hr</td>
     </tr><tr style="text-align:left">
       <td>Mage Hand (S0 Tran): R35' Allows self to use move actions to move a target object up to 5 lb 15' per rd for concentration</td>
     </tr><tr style="text-align:left">
@@ -303,13 +306,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 10%</td>
     </tr><tr style="text-align:center">
-      <td>Bloodline Draconic: +1 damage per die on electricity spells</td>
+      <td>Bloodline Draconic: Spells with the electricity descriptor inflict +1 HP per die</td>
+    </tr><tr style="text-align:center">
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Channel Energy: Can restore 2d6 hit points or inflict the same amount (save Will DC 11 half) to all creatures within 30' 2 times per day</td>
     </tr><tr style="text-align:center">
       <td>Craft Wand: May create wands for up to 4th level spell</td>
     </tr><tr style="text-align:center">
-      <td>Eschew Materials: May cast spells w/out materials</td>
+      <td>Eschew Materials: Can cast spells without materials</td>
     </tr><tr style="text-align:center">
       <td>Forge Ring: May create and mend magic rings</td>
     </tr><tr style="text-align:center">
