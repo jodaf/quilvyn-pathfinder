@@ -1719,7 +1719,8 @@ Pathfinder.FEATURES = {
       '"+2 compulsion spell DC",' +
       '"Knowledge (Nature) is a class skill"',
   'Fleeting Glance':
-    'Section=magic Note="Can become invisible %{levels.Sorcerer} rd per day"',
+    'Section=magic ' +
+    'Note="Can use <i>Greater Invisibility</i> effects for %{levels.Sorcerer} rd per day"',
   'Fey Magic':
     'Section=magic Note="Can reroll checks to overcome spell resistance"',
   'Laughing Touch':
@@ -3236,7 +3237,7 @@ Pathfinder.SPELLS = {
   'Binding':'Level=S8,W8',
   'Black Tentacles':
     'Level=S4,W4 ' +
-    'Description="R%{100+lvl*10}\' Tentacles in 20\' radius grapple (BAB +%{casterLevel+5}) and inflict 1d6+4 HP/rd for %{lvl} rd"',
+    'Description="R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (BAB +%{casterLevel+5}) and inflict 1d6+4 HP/rd for %{lvl} rd"',
   'Blade Barrier':'Level=C6,Good6,War6',
   'Blasphemy':
     'Level=C7,Evil7 ' +
@@ -6363,97 +6364,77 @@ Pathfinder.classRulesExtra = function(rules, name) {
       });
     }
 
+    rules.defineRule('casterLevels.Bloodline', classLevel, '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Aberrant', 'BloodlineAberrant', 'charisma',
-      'bloodlineLevels.Aberrant', '',
+      'Bloodline Aberrant', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Enlarge Person', '5:See Invisibility', '7:Tongues',
        '9:Black Tentacles', '11:Feeblemind', '13:Veil',
        '15:Plane Shift', '17:Mind Blank', '19:Shapechange']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineAberrant', 'bloodlineLevels.Aberrant', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Abyssal', 'BloodlineAbyssal', 'charisma',
-      'bloodlineLevels.Abyssal', '',
+      'Bloodline Abyssal', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Cause Fear', "5:Bull\'s Strength", '7:Rage',
        '9:Stoneskin', '11:Dismissal', '13:Transformation',
        '15:Greater Teleport', '17:Unholy Aura', '19:Summon Monster IX']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineAbyssal', 'bloodlineLevels.Abyssal', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Arcane', 'BloodlineArcane', 'charisma',
-      'bloodlineLevels.Arcane', '',
+      'Bloodline Arcane', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Identify', '5:Invisibility', '7:Dispel Magic',
        '9:Dimension Door', '11:Overland Flight', '13:True Seeing',
        '15:Greater Teleport', '17:Power Word Stun', '19:Wish']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineArcane', 'bloodlineLevels.Arcane', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Celestial', 'BloodlineCelestial', 'charisma',
-      'bloodlineLevels.Celestial', '',
+      'Bloodline Celestial', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Bless', '5:Resist Energy', '7:Magic Circle Against Evil',
        '9:Remove Curse', '11:Flame Strike', '13:Greater Dispel Magic',
        '15:Banishment', '17:Sunburst', '19:Gate']
     );
-    rules.defineRule('casterLevels.BloodlineCelestial',
-      'bloodlineLevels.Celestial', '=', null
-    );
     Pathfinder.featureSpells(rules,
-      'Bloodline Destined', 'BloodlineDestined', 'charisma',
-      'bloodlineLevels.Destined', '',
+      'Bloodline Destined', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Alarm', '5:Blur', '7:Protection From Energy',
        '9:Freedom Of Movement', '11:Break Enchantment', '13:Mislead',
        '15:Spell Turning', '17:Moment Of Prescience', '19:Foresight']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineDestined', 'bloodlineLevels.Destined', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Draconic', 'BloodlineDraconic', 'charisma',
-      'bloodlineLevels.Draconic', '',
+      'Bloodline Draconic', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Mage Armor', '5:Resist Energy', '7:Fly',
        '9:Fear', '11:Spell Resistance', '13:Form Of The Dragon I',
        '15:Form Of The Dragon II', '17:Form Of The Dragon III', '19:Wish']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineDraconic', 'bloodlineLevels.Draconic', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Elemental', 'BloodlineElemental', 'charisma',
-      'bloodlineLevels.Elemental', '',
+      'Bloodline Elemental', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Burning Hands', '5:Scorching Ray', '7:Protection From Energy',
        '9:Elemental Body I', '11:Elemental Body II', '13:Elemental Body III',
        '15:Elemental Body IV', '17:Summon Monster VIII', '19:Elemental Swarm']
     );
-    rules.defineRule('casterLevels.BloodlineElemental',
-      'bloodlineLevels.Elemental', '=', null
-    );
     Pathfinder.featureSpells(rules,
-      'Bloodline Fey', 'BloodlineFey', 'charisma', 'bloodlineLevels.Fey', '',
+      'Bloodline Fey', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Entangle', '5:Hideous Laughter', '7:Deep Slumber',
        '9:Poison', '11:Tree Stride', '13:Mislead',
        '15:Phase Door', '17:Irresistible Dance', '19:Shapechange']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineFey', 'bloodlineLevels.Fey', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Infernal', 'BloodlineInfernal', 'charisma',
-      'bloodlineLevels.Infernal', '',
+      'Bloodline Infernal', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Protection From Good', '5:Scorching Ray', '7:Suggestion',
        '9:Charm Monster', '11:Dominate Person', '13:Planar Binding',
        '15:Greater Teleport', '17:Power Word Stun', '19:Meteor Swarm']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineInfernal', 'bloodlineLevels.Infernal', '=', null);
     Pathfinder.featureSpells(rules,
-      'Bloodline Undead', 'BloodlineUndead', 'charisma',
-      'bloodlineLevels.Undead', '',
+      'Bloodline Undead', 'Bloodline', 'charisma',
+      'casterLevels.Bloodline', '',
       ['3:Chill Touch', '5:False Life', '7:Vampiric Touch',
        '9:Animate Dead', '11:Waves Of Fatigue', '13:Undeath To Death',
        '15:Finger Of Death', '17:Horrid Wilting', '19:Energy Drain']
     );
-    rules.defineRule
-      ('casterLevels.BloodlineUndead', 'bloodlineLevels.Undead', '=', null);
 
     // Bloodline Aberrant
     rules.defineRule
@@ -6615,14 +6596,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ['9:Greater Invisibility']
     );
     rules.defineRule
-      ('casterLevels.FleetingGlace', 'casterLevels.Sorcerer', '=', null);
+      ('casterLevels.FleetingGlance', 'bloodlineLevels.Fey', '=', null);
     Pathfinder.featureSpells(rules,
-      'Soul Of The Fey', 'Soul Of The Fey', 'charisma',
-      'bloodlineLevels.Fey', '',
+      'Soul Of The Fey', 'SoulOfTheFey', 'charisma', 'bloodlineLevels.Fey', '',
       ['20:Shadow Walk']
     );
     rules.defineRule
-      ('casterLevels.SoulOfTheFey', 'casterLevels.Sorcerer', '=', null);
+      ('casterLevels.SoulOfTheFey', 'bloodlineLevels.Fey', '=', null);
 
     // Bloodline Infernal
     rules.defineRule('resistance.Acid', 'saveNotes.powerOfThePit', '^=', '10');
@@ -6852,6 +6832,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'selectableFeatureCount.Dragon Disciple (Bloodline)', '+=', 'source == 1 ? 0 : null',
       classLevel, '+', null
     );
+    rules.defineRule('casterLevels.Bloodline', classLevel, '+=', null);
 
   } else if(name == 'Duelist') {
 
