@@ -1448,7 +1448,7 @@ Pathfinder.FEATURES = {
   // Ranger
   // Animal Companion as above
   'Camouflage':
-    SRD35.FEATURES['Camouflage']
+    SRD35.FEATURES.Camouflage
     .replace('natural', 'favored'),
   'Combat Style':SRD35.FEATURES['Combat Style'],
   'Companion Bond':
@@ -1836,7 +1836,6 @@ Pathfinder.FEATURES = {
     'Section=companion ' +
     'Note="May deliver touch spells if in contact w/master when cast"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
-  'Diamond Soul':'Section=save Note="Spell resistance %V"',
   'Diehard':
     'Section=combat ' +
     'Note="Remains conscious, stable, and able to act with negative HP"',
@@ -1844,8 +1843,6 @@ Pathfinder.FEATURES = {
   'Elemental Wall':
     'Section=magic ' +
     'Note="May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects %V rd/dy"',
-  'Elven Immunities':
-    'Section=save Note="Immune to sleep effects, +2 vs. enchantment"',
   'Empathic Link':'Section=companion Note="May share emotions up to 1 mile"',
   'Empower Spell':
     'Section=magic ' +
@@ -1869,7 +1866,6 @@ Pathfinder.FEATURES = {
   'Far Shot':
     'Section=combat Note="Reduces range penalty by 1 per range increment"',
   'Forge Ring':'Section=magic Note="May create and mend magic rings"',
-  'Good Fortune':'Section=magic Note="May reroll any roll d20 %V/dy"',
   'Great Cleave':'Section=combat Note="May cleave w/out limit"',
   'Great Fortitude':'Section=save Note="+2 Fortitude"',
   'Greater Spell Focus (%school)':'Section=magic Note="+1 Spell DC (%school)"',
@@ -2098,7 +2094,6 @@ Pathfinder.FEATURES = {
   'Aura Of Despair':
     'Section=magic ' +
     'Note="R30\' Foes suffer -2 ability, attack, damage, save, and skill %V rd/dy"',
-  'Aura Of Faith':'Section=combat Note="R10\' Weapons considered good-aligned"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
@@ -5630,7 +5625,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
     groupLevels.forEach(gl => {
       let matchInfo = (gl + '').match(/^(\D+)(\d+)$/);
       if(!matchInfo) {
-        console.log('Bad level "' + groupLevels[i] + '" for spell ' + name);
+        console.log('Bad level "' + gl + '" for spell ' + name);
       } else {
         let group = matchInfo[1];
         let level = matchInfo[2] * 1;
@@ -6445,12 +6440,12 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('resistance.Electricity',
       'saveNotes.demonResistances', '^=', null,
-      'saveNotes.demonicMight', '=', 'Infinity',
+      'saveNotes.demonicMight', '=', 'Infinity'
     );
     rules.defineRule('resistance.Fire', 'saveNotes.demonicMight', '^=', '10');
     // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('resistance.Poison',
-      'saveNotes.demonicMight', '=', 'Infinity',
+      'saveNotes.demonicMight', '=', 'Infinity'
     );
     rules.defineRule('saveNotes.demonResistances',
       'bloodlineLevels.Abyssal', '=', 'source>=9 ? 10 : 5'
