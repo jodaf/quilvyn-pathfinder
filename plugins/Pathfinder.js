@@ -945,7 +945,9 @@ Pathfinder.FEATURES = {
   'Surprise Accuracy':
     'Section=combat ' +
     'Note="Can use a swift action to gain +%{ragePowerLevel//4+1} on an attack once per rage"',
-  'Swift Foot':'Section=ability Note="Gains +%V Speed during rage"',
+  'Swift Foot':
+    'Section=ability ' +
+    'Note="Gains +%{$\'barbarianFeatures.Swift Foot\'*5} Speed during rage"',
   'Terrifying Howl':
     'Section=combat ' +
     'Note="R30\' Can emit a howl that panics shaken foes (save Will DC %{10+ragePowerLevel//2+strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0)} negates) for 1d4+1 rd; a creature can be targeted only once per 24 hr"',
@@ -1324,7 +1326,7 @@ Pathfinder.FEATURES = {
       '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
       '"Reduces armor skill check penalty by %V"',
   'Bonus Feats (Fighter)':'Section=feature Note="%V Selections"',
-  'Bravery':'Section=save Note="+%V vs. fear"',
+  'Bravery':'Section=save Note="+%{(levels.Fighter+2)//4} vs. fear"',
   'Weapon Mastery':
     'Section=combat ' +
     'Note="Crit threats with a chosen weapon are automatically confirmed and gain +1 damage multiplier; cannot be disarmed when wielding this weapon"',
@@ -1984,7 +1986,6 @@ Pathfinder.FEATURES = {
   'Scribe Scroll':'Section=magic Note="May create scroll of any known spell"',
   'Scry On Familiar':'Section=companion Note="Master may view companion 1/dy"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
-  'Share Saving Throws':'Section=companion Note="+%1 Fort/+%2 Ref/+%3 Will"',
   'Share Spells':
     'Section=companion Note="Master may share self spell w/adjacent companion"',
   'Shot On The Run':
@@ -5762,9 +5763,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Large', '=', '"' + SRD35.LARGE_DAMAGE.d4 + '"',
       'features.Small', '=', '"' + SRD35.SMALL_DAMAGE.d4 + '"'
     );
-    rules.defineRule('abilityNotes.swiftFoot',
-      'barbarianFeatures.Swift Foot', '=', 'source * 5'
-    );
     rules.defineRule('combatNotes.damageReduction',
       classLevel, '^=', 'Math.floor((source - 4) / 3)'
     );
@@ -5856,8 +5854,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       }
     }
 
-    // Air Domain
     // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
+    // Air Domain
     rules.defineRule
       ('resistance.Electricity', 'saveNotes.electricityResistance', '^=', null);
     rules.defineRule('saveNotes.electricityResistance',
@@ -5867,7 +5865,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('companionMasterLevel', 'casterLevels.Animal', '^=', 'source - 3');
     // Earth Domain
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule
       ('resistance.Acid', 'saveNotes.acidResistance', '^=', null);
     rules.defineRule('saveNotes.acidResistance',
@@ -5884,7 +5881,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'levels.Cleric', '=', '1 + Math.floor(source / 5)'
     );
     // Water Domain
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('resistance.Cold', 'saveNotes.coldResistance', '^=', null);
     rules.defineRule('saveNotes.coldResistance',
       'casterLevels.Water', '=', 'source>=20 ? Infinity : source>=12 ? 20 : 10'
@@ -5972,9 +5968,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.bonusFeats(Fighter)',
       classLevel, '=', '1 + Math.floor(source / 2)'
     );
-    rules.defineRule('saveNotes.bravery',
-      classLevel, '=', 'Math.floor((source + 2) / 4)'
-    );
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorTraining', '+', null
     );
@@ -5990,15 +5983,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.unarmoredSpeedBonus',
       'armor', '?', 'source == "None"',
       classLevel, '=', 'Math.floor(source / 3) * 10'
-    );
-    rules.defineRule('animalCompanionStats.Save Fort',
-      'companionNotes.shareSavingThrows.1', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Ref',
-      'companionNotes.shareSavingThrows.2', '+', null
-    );
-    rules.defineRule('animalCompanionStats.Save Will',
-      'companionNotes.shareSavingThrows.3', '+', null
     );
     // N.B.: this untyped bonus applies to both flat-footed and touch
     rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
@@ -6048,10 +6032,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.maneuverTraining',
       classLevel, '=', 'Math.floor((source + 3) / 4)'
-    );
-    rules.defineRule('combatNotes.quiveringPalm',
-      classLevel, '+=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
     );
     rules.defineRule
       ('damageReduction.Chaotic', 'combatNotes.perfectSelf', '^=', '10');
