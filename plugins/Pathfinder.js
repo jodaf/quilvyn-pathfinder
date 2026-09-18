@@ -1350,7 +1350,7 @@ Pathfinder.FEATURES = {
   'Fast Movement (Monk)':SRD35.FEATURES['Fast Movement (Monk)'],
   'Flurry Of Blows':
     'Section=combat ' +
-    'Note="Full-round %1%2%3%4%5%6%7 monk weapon attacks; may spend 1 Ki Point for additional %8"',
+    'Note="Can make %1%2%3%4%5%6%7 monk weapon attacks as a full-round action and can spend 1 Ki Point for an additional %8 attack"',
   'High Jump':
     'Section=skill ' +
     'Note="+%{levels.Monk} Acrobatics on jumps; can spend 1 Ki Point to gain +20"',
@@ -1408,6 +1408,7 @@ Pathfinder.FEATURES = {
   'Channel Positive Energy':
     'Section=magic ' +
     'Note="Can expend 2 Lay On Hands uses to use Channel Energy effects"',
+  'Companion Spell Resistance':SRD35.FEATURES['Companion Spell Resistance'],
   'Detect Evil':SRD35.FEATURES['Detect Evil'],
   'Divine Grace':SRD35.FEATURES['Divine Grace'],
   'Divine Health':SRD35.FEATURES['Divine Health'],
@@ -1473,7 +1474,7 @@ Pathfinder.FEATURES = {
   'Master Hunter':
     'Section=combat,skill ' +
     'Note=' +
-      '"Full attack vs. favored enemy kills or inflicts nonlethal HP equal to the target\'s current hit points (save Fortitude DC %V negates) once per day per favored enemy type",' +
+      '"Full attack vs. favored enemy kills or inflicts nonlethal HP equal to the target\'s current hit points (save Fortitude DC %{10+levels.Ranger//2+wisdomModifier} negates) once per day per favored enemy type",' +
       '"Can take 20 when tracking at full Speed"',
   'Quarry':
     'Section=combat,skill ' +
@@ -5975,10 +5976,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('abilityNotes.fastMovement(Monk)',
       classLevel, '+=', '10 * Math.floor(source / 3)'
     );
-    rules.defineRule('abilityNotes.unarmoredSpeedBonus',
-      'armor', '?', 'source == "None"',
-      classLevel, '=', 'Math.floor(source / 3) * 10'
-    );
     // N.B.: this untyped bonus applies to both flat-footed and touch
     rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
     // Display the Armor Class Bonus note even when armored
@@ -6061,13 +6058,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanion.Celestial',
       'companionPaladinLevel', '=', 'source >= 11 ? 1 : null'
     );
-    rules.defineRule('animalCompanionFeatures.Companion Resist Spells',
+    rules.defineRule('animalCompanionFeatures.Companion Spell Resistance',
       'companionPaladinLevel', '=', 'source >= 15 ? 1 : null'
     );
     rules.defineRule
       ('animalCompanionStats.Int', 'companionPaladinLevel', '^', '6');
     rules.defineRule('animalCompanionStats.SR',
-      'companionPaladinLevel', '^=', 'source >= 15 ? source + 11 : null'
+      'companionNotes.companionSpellResistance', '^=', null
     );
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
@@ -6083,36 +6080,22 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
+    rules.defineRule('companionNotes.companionSpellResistance',
+      'companionPaladinLevel', '=', 'source + 11'
+    );
     rules.defineRule('companionPaladinLevel',
       'paladinFeatures.Divine Mount', '?', null,
       classLevel, '=', null
-    );
-    rules.defineRule('companionNotes.shareSavingThrows.1',
-      // Use base note in calculation so Quilvyn displays it in italics
-      'companionNotes.shareSavingThrows', '?', null,
-      'classFortitudeBonus', '=', null,
-      'animalCompanionStats.HD', '+', '-(' + SRD35.SAVE_BONUS_HALF + ')',
-      '', '^', '0'
-    );
-    rules.defineRule('companionNotes.shareSavingThrows.2',
-      'companionNotes.shareSavingThrows', '?', null,
-      'classReflexBonus', '=', null,
-      'animalCompanionStats.HD', '+', '-(' + SRD35.SAVE_BONUS_HALF + ')',
-      '', '^', '0'
-    );
-    rules.defineRule('companionNotes.shareSavingThrows.3',
-      'companionNotes.shareSavingThrows', '?', null,
-      'classWillBonus', '=', null,
-      'animalCompanionStats.HD', '+', '-(' + SRD35.SAVE_BONUS_THIRD + ')',
-      '', '^', '0'
     );
     rules.defineRule
       ('damageReduction.Evil', 'combatNotes.auraOfRighteousness', '^=', null);
     rules.defineRule
       ('features.Channel Energy', 'features.Channel Positive Energy', '=', '1');
-    rules.defineRule('magicNotes.layOnHands',
-      classLevel, '=', 'Math.floor(source / 2)'
+    rules.defineRule('features.Companion Spell Resistance',
+      'animalCompanionFeatures.Companion Spell Resistance', '=', null
     );
+    rules.defineRule
+      ('magicNotes.layOnHands', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.layOnHands.1',
       classLevel, '=', 'Math.floor(source / 2)',
       'charismaModifier', '+', null
@@ -6148,10 +6131,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.favoredTerrain',
       classLevel, '+=', 'Math.floor((source + 2) / 5)'
-    );
-    rules.defineRule('combatNotes.masterHunter',
-      classLevel, '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
     );
     rules.defineRule
       ('companionMasterLevel', 'companionRangerLevel', '^=', null);
@@ -6246,10 +6225,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Sorcerer') {
 
+    rules.defineRule('casterLevels.S', 'casterLevels.Sorcerer', '^=', null);
     rules.defineRule('selectableFeatureCount.Sorcerer (Bloodline)',
       'featureNotes.bloodline', '=', '1'
     );
-    rules.defineRule('casterLevels.S', 'casterLevels.Sorcerer', '^=', null);
     rules.defineRule('spellDifficultyClass.S',
       'casterLevels.S', '?', null,
       'charismaModifier', '=', '10 + source'
@@ -6443,7 +6422,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'saveNotes.demonicMight', '=', 'Infinity'
     );
     rules.defineRule('resistance.Fire', 'saveNotes.demonicMight', '^=', '10');
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('resistance.Poison',
       'saveNotes.demonicMight', '=', 'Infinity'
     );
@@ -6461,11 +6439,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'sorcererFeatures.Familiar', '?', null,
       'levels.Sorcerer', '=', null
     );
-    rules.defineRule('selectableFeatureCount.Sorcerer (Arcane Bond)',
-      'featureNotes.arcaneBond', '=', '1'
-    );
     rules.defineRule('magicNotes.newArcana',
       'bloodlineLevels.Arcane', '=', 'Math.floor((source - 5) / 4)'
+    );
+    rules.defineRule('selectableFeatureCount.Sorcerer (Arcane Bond)',
+      'featureNotes.arcaneBond', '=', '1'
     );
     rules.defineRule('spellsAvailable.S', 'magicNotes.newArcana', '+=', null);
 
@@ -6475,7 +6453,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'saveNotes.celestialResistances', '^=', null,
       'saveNotes.ascension', '=', 'Infinity'
     );
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     rules.defineRule('resistance.Cold',
       'saveNotes.celestialResistances', '^=', null,
       'saveNotes.ascension', '=', 'Infinity'
@@ -6483,12 +6460,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('resistance.Electricity', 'saveNotes.ascension', '^=', '10');
     rules.defineRule('resistance.Fire', 'saveNotes.ascension', '^=', '10');
+    rules.defineRule
+      ('resistance.Petrification', 'saveNotes.ascension', '=', 'Infinity');
     rules.defineRule('saveNotes.celestialResistances',
       'bloodlineLevels.Celestial', '=', 'source>=9 ? 10 : 5'
     );
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
-    rules.defineRule
-      ('resistance.Petrification', 'saveNotes.ascension', '=', 'Infinity');
 
     // Bloodline Draconic
     let colors = {
@@ -6595,7 +6571,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
     // Bloodline Undead
     rules.defineRule('damageReduction.-', 'combatNotes.oneOfUs', '^=', '5');
-    // N.B. Quilvyn.js replaces Infinity with "immune" on the character sheet
     ['Cold', 'Nonlethal', 'Paralysis', 'Sleep'].forEach(c => {
       rules.defineRule
        ('resistance.' + c, 'saveNotes.oneOfUs', '^=', 'Infinity');
