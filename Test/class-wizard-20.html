@@ -217,7 +217,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>Half-Elf Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Physical Enhancement: +5 Choose 2 from Strength, Dexterity, and Constitution</td>
+      <td>Physical Enhancement: Gains +5 to 2 choices of Strength, Dexterity, and Constitution each day</td>
     </tr></table>
 </td>
   </tr></table>
@@ -239,7 +239,7 @@ var attributes = {
         <td><b>Feats</b>: Brew Potion; Combat Casting; Command Undead; Craft Staff; Craft Wondrous Item; Deceitful; Extend Spell; Heighten Spell; Leadership; Maximize Spell; Point-Blank Shot; Quicken Spell; Skill Focus (Knowledge (Local)); Skill Focus (Perform (Oratory)); Skill Focus (Profession (Tanner)); Turn Undead</td>
         <td><b>Traits</b>: Birthmark; Freedom Fighter (Liberty's Edge)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Wizard Features</b>: Acid Dart (Wizard); Aura Of Despair; Blinding Ray; Bonded Object; Change Shape; Dazing Touch Enchantment; Dimensional Steps; Diviner's Fortune; Elemental Wall; Enchanting Smile; Energy Absorption; Extended Illusions; Familiar; Force Missile; Forewarned; Grave Touch (Wizard); Hand Of The Apprentice; Intense Spells; Invisibility Field; Life Sight; Metamagic Mastery; Physical Enhancement; Power Over Undead; Protective Ward; Resistance To Energy; School Opposition (Abjuration); School Opposition (Conjuration); School Opposition (Divination); School Opposition (Enchantment); School Opposition (Evocation); School Opposition (Illusion); School Opposition (Necromancy); School Opposition (Transmutation); School Specialization (Abjuration); School Specialization (Conjuration); School Specialization (Divination); School Specialization (Enchantment); School Specialization (Evocation); School Specialization (Illusion); School Specialization (Necromancy); School Specialization (None); School Specialization (Transmutation); Scribe Scroll; Scrying Adept; Summoner's Charm; Telekinetic Fist; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
+        <td><b>Wizard Features</b>: Acid Dart (Conjuration); Arcane Bond; Aura Of Despair; Blinding Ray; Bonded Object; Bonus Feats (Wizard); Change Shape; Dazing Touch (Enchantment); Dimensional Steps; Diviner's Fortune; Elemental Wall; Enchanting Smile; Energy Absorption; Extended Illusions; Familiar; Force Missile; Forewarned; Grave Touch (Necromancy); Hand Of The Apprentice; Intense Spells; Invisibility Field; Life Sight; Metamagic Mastery; Physical Enhancement; Power Over Undead; Protective Ward; Resistance; School Opposition (Abjuration); School Opposition (Conjuration); School Opposition (Divination); School Opposition (Enchantment); School Opposition (Evocation); School Opposition (Illusion); School Opposition (Necromancy); School Opposition (Transmutation); School Specialization (Abjuration); School Specialization (Conjuration); School Specialization (Divination); School Specialization (Enchantment); School Specialization (Evocation); School Specialization (Illusion); School Specialization (Necromancy); School Specialization (None); School Specialization (Transmutation); School Specialization; Scribe Scroll; Scrying Adept; Summoner's Charm; Telekinetic Fist; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -247,17 +247,21 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Adaptability: +1 General Feat (Skill Focus)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Power Over Undead: +1 General Feat (Command Undead or Turn Undead); may use 5/dy</i></td>
+        <td><i>Arcane Bond: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feats (Wizard): +4 Wizard Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Power Over Undead: +1 General Feat (Command Undead or Turn Undead), usable 5 times per day</i></td>
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
         <td>Leadership: Attracts followers</td>
       </tr><tr style="text-align:center">
-        <td>Life Sight: R40' May use Blindsight effects w/living and undead 20 rd/dy</td>
-      </tr><tr style="text-align:center">
         <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr><tr style="text-align:center">
         <td>Multitalented: Can choose two favored classes</td>
+      </tr><tr style="text-align:center">
+        <td>School Specialization: 1 selection</td>
       </tr></table>
 </td>
     </tr></table>
@@ -321,6 +325,8 @@ var attributes = {
         <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
       </tr><tr style="text-align:center">
         <td>Familiar Owl: +3 Spot in shadows and darkness</td>
+      </tr><tr style="text-align:center">
+        <td>Life Sight: R40' Can use Blindsight to detect living and undead creatures for 20 rd per day</td>
       </tr><tr style="text-align:center">
         <td>School Specialization (Abjuration): +2 Spellcraft (Abjuration effects)</td>
       </tr><tr style="text-align:center">
@@ -387,15 +393,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
+        <td>Acid Dart (Conjuration): R30' Ranged touch attack inflicts 1d6+10 HP acid 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Blinding Ray: R30' Ranged touch attack blinds a target with up to 20 HD or dazzles a target with more for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
         <td>Command Undead: R30' May use Channel Energy to control 20 HD of undead (21 DC Will neg)</td>
       </tr><tr style="text-align:center">
-        <td>Forewarned: May always act in surprise round/May take 20 on Initiative</td>
+        <td>Forewarned: Can always act during the surprise round/Can take 20 on Initiative</td>
       </tr><tr style="text-align:center">
         <td>Freedom Fighter (Liberty's Edge): +1 attack during surprise rd</td>
       </tr><tr style="text-align:center">
-        <td>Hand Of The Apprentice: R30' May make +12 ranged attack w/melee weapon 5/dy</td>
+        <td>Hand Of The Apprentice: R30' Can make a +12 ranged attack with a melee weapon 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+      </tr><tr style="text-align:center">
+        <td>Telekinetic Fist: R30' Ranged touch attack inflicts 1d4+10 HP bludgeoning 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Turn Undead: R30' Channel Energy causes undead to flee for 1 min (DC 21 Will neg)</td>
       </tr></table>
@@ -420,11 +432,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elven Immunities: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Enchanting Smile: Successful save reflects enchantment spells onto caster</td>
+        <td>Enchanting Smile: Successful saves reflect enchantment spells onto the caster</td>
       </tr><tr style="text-align:center">
-        <td>Energy Absorption: Ignores 60 HP energy damage/dy</td>
+        <td>Energy Absorption: Ignores 60 HP of energy damage per day</td>
       </tr><tr style="text-align:center">
-        <td>Resistance To Energy: Resistance immune to chosen energy type each dy</td>
+        <td>Resistance: Gains immunity to a chosen energy type each day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -439,7 +451,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: W0: 4; W1: 13; W2: 13; W3: 12; W4: 12; W5: 12; W6: 12; W7: 12; W8: 12; W9: 12</td>
-        <td><b>Spell DC</b>: W: 12</td>
+        <td><b>Spell DC</b>: Change Shape: 11; Elemental Wall: 11; Invisibility Field: 11; Scrying Adept: 11; W: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -487,11 +499,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Beast Shape I (W3 Tran): Self becomes small (+2 Dexterity, +1 AC) or medium (+2 Strength, +2 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape II (Change Shape4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for NaN min</td>
+      <td>Beast Shape II (Change Shape4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Beast Shape II (W4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape III (Change Shape5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for NaN min</td>
+      <td>Beast Shape III (Change Shape5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Beast Shape III (W5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for 20 min</td>
     </tr><tr style="text-align:left">
@@ -633,11 +645,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Eagle's Splendor (W2 Tran): Touched gains +4 Charisma for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body I (Change Shape4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for NaN min</td>
+      <td>Elemental Body I (Change Shape4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Body I (W4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body II (Change Shape5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for NaN min</td>
+      <td>Elemental Body II (Change Shape5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Body II (W5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
@@ -746,6 +758,8 @@ var attributes = {
       <td>Greater Dispel Magic (W6 Abju): R300' Successful d20+20 check vs. 11+caster level cancels 5 targeted spells or 1 spell or curse on each creature in a 20' radius</td>
     </tr><tr style="text-align:left">
       <td>Greater Heroism (W6 Ench): Touched gains +4 attacks, saves, and skill checks, +20 temporary hit points, and immunity to fear for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Greater Invisibility (Invisibility Field4 Illu): Touched becomes invisible for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Invisibility (W4 Illu): Touched becomes invisible for 20 rd</td>
     </tr><tr style="text-align:left">
@@ -1223,7 +1237,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Wail Of The Banshee (W9 Necr): R75' 20 targets in 40' radius suffer 200 HP (Fort neg)</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (Elemental Wall4 Evoc): RNaN' Creates a NaN'x20' wall or a NaN'x20' ring that inflicts 2d4 HP fire to creatures within 10', 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + NaN rd</td>
+      <td>Wall Of Fire (Elemental Wall4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10', 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Fire (W4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10', 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
@@ -1257,65 +1271,61 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1, W2</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Abjuration): +1 Abjuration spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Abjuration): +1 Abjuration spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Conjuration): +1 Conjuration spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Conjuration): +1 Conjuration spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Divination): +1 Divination spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Divination): +1 Divination spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Enchantment): +1 Enchantment spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Enchantment): +1 Enchantment spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Evocation): +1 Evocation spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Evocation): +1 Evocation spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Illusion): +1 Illusion spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Illusion): +1 Illusion spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Necromancy): +1 Necromancy spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Necromancy): +1 Necromancy spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Transmutation): +1 Transmutation spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Transmutation): +1 Transmutation spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td>Acid Dart (Wizard): R30' Ranged touch inflicts 1d6+10 HP 5/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Aura Of Despair: R30' Foes suffer -2 ability, attack, damage, save, and skill 20 rd/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Blinding Ray: R30' Ranged touch blinds or dazzles target for 1 rd 5/dy</td>
+      <td>Aura Of Despair: R30' Foes suffer -2 ability checks, attacks, damage, saves, and skill checks for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Bonded Object: Can cast a known spell through a chosen object</td>
     </tr><tr style="text-align:center">
       <td>Brew Potion: May create potion for up to 3rd level spell</td>
     </tr><tr style="text-align:center">
-      <td>Change Shape: May use <i>Beast Shape III</i> or <i>Elemental Body II</i> effects 20 rd/dy</td>
+      <td>Change Shape: Can use <i>Beast Shape III</i> or <i>Elemental Body II</i> effects for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Craft Staff: May create magic staves</td>
     </tr><tr style="text-align:center">
       <td>Craft Wondrous Item: May create and mend miscellaneous magic items</td>
     </tr><tr style="text-align:center">
-      <td>Dazing Touch Enchantment: Touch attack dazes 20 HD foe for 1 rd 5/dy</td>
+      <td>Dazing Touch (Enchantment): Touch dazes a foe with up to 20 HD for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Dimensional Steps: May teleport 600'/dy</td>
+      <td>Dimensional Steps: Can teleport 600' per day</td>
     </tr><tr style="text-align:center">
-      <td>Diviner's Fortune: Touch gives +10 attack, skill, ability, and save for 1 rd 5/dy</td>
+      <td>Diviner's Fortune: Touch gives +10 attacks, skill checks, ability checks, and saves for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Elemental Wall: May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects 20 rd/dy</td>
+      <td>Elemental Wall: Can use <i>Wall Of Fire</i> effects to inflict acid, cold, electricity, or fire damage for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Extend Spell: May use +1 spell slot to dbl chosen spell duration</td>
     </tr><tr style="text-align:center">
-      <td>Extended Illusions: Illusion duration increased by unlimited rd</td>
+      <td>Extended Illusions: Increases the duration of Illusion spells by 10 rd and can make permanent 1 Illusion spell at a time</td>
     </tr><tr style="text-align:center">
-      <td>Force Missile: <i>Magic Missile</i> inflicts 1d4+10 HP 5/dy</td>
+      <td>Force Missile: Missile automatically hits, inflicting 1d4+10 HP force, 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Grave Touch (Wizard): Touch inflicts shaken for 10 rd 5/dy</td>
+      <td>Grave Touch (Necromancy): Touch inflicts shaken on living creatures for 10 rd and frightens already-shaken creatures with up to 19 HD for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Heighten Spell: May cast chosen spell at a higher level</td>
     </tr><tr style="text-align:center">
-      <td>Intense Spells: +10 Evocation spell damage, use best of two rolls to overcome resistance on Evocation spells</td>
+      <td>Intense Spells: Evocation spells inflict +10 HP and can use the better of 2 rolls to overcome SR</td>
     </tr><tr style="text-align:center">
-      <td>Invisibility Field: May become invisible 20 rd/dy</td>
+      <td>Invisibility Field: Can use swift actions to invoke <i>Greater Invisibility</i> effects for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
     </tr><tr style="text-align:center">
-      <td>Metamagic Mastery: May apply metamagic feat w/1 level reduction 7/dy</td>
+      <td>Metamagic Mastery: Can apply a metamagic feat to a spell without changing its level or casting time 7 times per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses</td>
     </tr><tr style="text-align:center">
-      <td>Protective Ward: R10' Allies gain +5 AC for 2 rd 5/dy</td>
+      <td>Protective Ward: R10' Allies gain a +5 deflection bonus to Armor Class for 2 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
     </tr><tr style="text-align:center">
@@ -1337,11 +1347,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Scribe Scroll: May create scroll of any known spell</td>
     </tr><tr style="text-align:center">
-      <td>Scrying Adept: Has continuous <i>Detect Scrying</i> effects/+1 scrying subject familiarity</td>
+      <td>Scrying Adept: Has continuous <i>Detect Scrying</i> effects/Gains +1 familiarity step when scrying</td>
     </tr><tr style="text-align:center">
-      <td>Summoner's Charm: Unlimited summoning duration</td>
-    </tr><tr style="text-align:center">
-      <td>Telekinetic Fist: R30' Ranged touch inflicts 1d4+10 HP 5/dy</td>
+      <td>Summoner's Charm: Increases the duration of summoning spells by 10 rd and can make permanent 1 <i>Summon Monster</i> spell at a time</td>
     </tr></table>
 </td>
   </tr></table>

@@ -873,7 +873,7 @@ Pathfinder.FEATURES = {
   'Sure-Footed':'Section=skill Note="+2 Acrobatics/+2 Climb"',
 
   // Human
-  'Bonus Feat':SRD35.FEATURES['Human Feat Bonus'],
+  'Bonus Feat (Human)':SRD35.FEATURES['Bonus Feat (Human)'],
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
   'Skilled':'Section=skill Note="+%V Skill ranks"',
 
@@ -1070,9 +1070,9 @@ Pathfinder.FEATURES = {
     'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+casterLevels.Charm//2+wisdomModifier}) for %{casterLevels.Charm} rd per day" ' +
     'Spells="Charm Person" ' +
     'SpellAbility=Charisma',
-  'Dazing Touch':
+  'Dazing Touch (Charm)':
     'Section=combat ' +
-    'Note="Touch attack dazes a foe with up to %{casterLevels.Charm} HD for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch dazes a foe with up to %{casterLevels.Charm} HD for 1 rd %{wisdomModifier+3} times per day"',
   // Community Domain
   'Calming Touch':
     'Section=magic ' +
@@ -1102,7 +1102,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Melee attack inflicts +%{casterLevels.Destruction//2} HP %{wisdomModifier+3} times per day"',
   // Earth Domain
-  'Acid Dart':
+  'Acid Dart (Earth)':
     'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Earth//2} HP acid %{wisdomModifier+3} times per day"',
   'Acid Resistance':
@@ -1325,7 +1325,7 @@ Pathfinder.FEATURES = {
       '"No speed penalty in %V armor",' +
       '"Raises armor maximum Dexterity bonus to Armor Class by %V",' +
       '"Reduces armor skill check penalty by %V"',
-  'Bonus Feats (Fighter)':'Section=feature Note="%V Selections"',
+  'Bonus Feats (Fighter)':SRD35.FEATURES['Bonus Feats (Fighter)'],
   'Bravery':'Section=save Note="+%{(levels.Fighter+2)//4} vs. fear"',
   'Weapon Mastery':
     'Section=combat ' +
@@ -1342,6 +1342,7 @@ Pathfinder.FEATURES = {
   'Armor Class Bonus':
     SRD35.FEATURES['Armor Class Bonus']
     .replace('Armor Class', 'Armor Class and CMD'),
+  'Bonus Feats (Monk)':SRD35.FEATURES['Bonus Feats (Monk)'],
   'Diamond Body':SRD35.FEATURES['Diamond Body'],
   'Diamond Soul':SRD35.FEATURES['Diamond Soul'],
   'Empty Body':
@@ -1565,7 +1566,7 @@ Pathfinder.FEATURES = {
       '"Has immunity to critical hits and Sneak Attacks",' +
       '"Has 60\' Blindsight"',
   'Acidic Ray':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts %{1+levels.Sorcerer//2}d6 HP acid %{charismaModifier+3} times per day"',
   'Alien Resistance':'Section=save Note="Has Spell Resistance %V"',
   'Bloodline Aberrant':
@@ -1640,7 +1641,7 @@ Pathfinder.FEATURES = {
     'Section=feature ' +
     'Note="Can reroll an ability check, attack, skill check, or save once per day"',
   'Heavenly Fire':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts 1d4+%{levels.Sorcerer//2} HP on an evil target or restores the same amount to a good one %{charismaModifier+3} times per day"',
   'Wings Of Heaven':
     'Section=ability ' +
@@ -1711,7 +1712,7 @@ Pathfinder.FEATURES = {
   'Elemental Movement (Fire)':'Section=ability Note="+30 Speed"',
   'Elemental Movement (Water)':'Section=ability Note="Has a 60\' swim Speed"',
   'Elemental Ray':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Sorcerer//2} HP %{bloodlineEnergy} %{charismaModifier+3} times per day"',
   'Elemental Resistance':
     'Section=save Note="Has resistance %V to %{bloodlineEnergy}"',
@@ -1723,7 +1724,9 @@ Pathfinder.FEATURES = {
       '"Knowledge (Nature) is a class skill"',
   'Fleeting Glance':
     'Section=magic ' +
-    'Note="Can use <i>Greater Invisibility</i> effects for %{levels.Sorcerer} rd per day"',
+    'Note="Can use <i>Greater Invisibility</i> effects for %{levels.Sorcerer} rd per day" ' +
+    'Spells="Greater Invisibility" ' +
+    'SpellAbility=Charisma',
   'Fey Magic':
     'Section=magic Note="Can reroll checks to overcome spell resistance"',
   'Laughing Touch':
@@ -1760,7 +1763,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"R60\' Has full vision in complete darkness, including magical darkness",' +
       '"Has resistance 10 to acid and cold and immunity to fire and poison"',
-
   // Undead
   'Bloodline Undead':
     'Section=magic,skill ' +
@@ -1775,9 +1777,9 @@ Pathfinder.FEATURES = {
   'Grasp Of The Dead':
     'Section=magic ' +
     'Note="R60\' 20\' radius inflicts %{levels.Sorcerer}d6 HP slashing and grappled (save Reflex DC %{10+levels.Sorcerer//2+charismaModifier} half HP only) for 1 rd %{levels.Sorcerer<17?1:levels.Sorcerer<20?2:3} times per day"',
-  'Grave Touch':
+  'Grave Touch (Undead)':
     'Section=combat ' +
-    'Note="Touch inflicts shaken on living targets for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>1?\' and frightens already-shaken creatures with up to \'+(levels.Sorcerer-1)+\' HD for 1 rd\':\'\'} %{charismaModifier+3} times per day"',
+    'Note="Touch inflicts shaken on living creatures for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>1?\' and frightens already-shaken creatures with up to \'+(levels.Sorcerer-1)+\' HD for 1 rd\':\'\'} %{charismaModifier+3} times per day"',
   'Incorporeal Form':
     'Section=magic ' +
     'Note="Can become incorporeal for %{levels.Sorcerer} rd once per day"',
@@ -1789,6 +1791,118 @@ Pathfinder.FEATURES = {
       '"Ignored by unintelligent undead",' +
       '"Has immunity to paralysis, sleep, cold, and nonlethal",' +
       '"+4 vs. spells and spell-like abilities cast by undead"',
+
+  // Wizard
+  // Arcane Bond as above
+  // Bonded Object as above
+  'Bonus Feats (Wizard)':SRD35.FEATURES['Bonus Feats (Wizard)'],
+  // Cantrips as above
+  // Familiar as above
+  'School Opposition (%school)':
+    'Section=magic Note="Casting %school spells requires two spell slots each"',
+  'School Specialization':SRD35.FEATURES['School Specialization'],
+  'School Specialization (%school)':
+    SRD35.FEATURES['School Specialization (%school)'],
+  // Abjuration
+  'Energy Absorption':
+    'Section=save ' +
+    'Note="Ignores %{levels.Wizard*3} HP of energy damage per day"',
+  'Protective Ward':
+    'Section=magic ' +
+    'Note="R10\' Allies gain a +%{levels.Wizard//5+1} deflection bonus to Armor Class for %{intelligenceModifier} rd %{intelligenceModifier+3} times per day"',
+  'Resistance':
+    'Section=save ' +
+    'Note="Gains %{levels.Wizard<11?\'resistance 5\':levels.Wizard<20?\'resistance 10\':\'immunity\'} to a chosen energy type each day"',
+  // Conjuration
+  'Acid Dart (Conjuration)':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d6+%{levels.Wizard//2} HP acid %{intelligenceModifier+3} times per day"',
+  'Dimensional Steps':
+    'Section=magic Note="Can teleport %{levels.Wizard*30}\' per day"',
+  "Summoner's Charm":
+    'Section=magic ' +
+    'Note="Increases the duration of summoning spells by %{levels.Wizard//2>?1} rd%{levels.Wizard>19?\' and can make permanent 1 <i>Summon Monster</i> spell at a time\':\'\'}"',
+  // Divination
+  "Diviner's Fortune":
+    'Section=magic ' +
+    'Note="Touch gives +%{levels.Wizard//2>?1} attacks, skill checks, ability checks, and saves for 1 rd %{intelligenceModifier+3} times per day"',
+  'Forewarned':
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+%V Initiative",' +
+      '"Can always act during the surprise round%{levels.Wizard>19?\'/Can take 20 on Initiative\':\'\'}"',
+  'Scrying Adept':
+    'Section=magic ' +
+    'Note="Has continuous <i>Detect Scrying</i> effects/Gains +1 familiarity step when scrying" ' +
+    'Spells="Detect Scrying" ' +
+    'SpellAbility=Charisma',
+  // Enchantment
+  'Aura Of Despair':
+    'Section=magic ' +
+    'Note="R30\' Foes suffer -2 ability checks, attacks, damage, saves, and skill checks for %{levels.Wizard} rd per day"',
+  'Dazing Touch (Enchantment)':
+    'Section=magic ' +
+    'Note="Touch dazes a foe with up to %{casterLevels.Wizard} HD for 1 rd %{intelligenceModifier+3} times per day"',
+  'Enchanting Smile':
+    'Section=save,skill ' +
+    'Note=' +
+      '"Successful saves reflect enchantment spells onto the caster",' +
+      '"+%V Bluff/+%V Diplomacy/+%V Intimidate"',
+  // Evocation
+  'Elemental Wall':
+    'Section=magic ' +
+    'Note="Can use <i>Wall Of Fire</i> effects to inflict acid, cold, electricity, or fire damage for %{levels.Wizard} rd per day" ' +
+    'Spells="Wall Of Fire" ' +
+    'SpellAbility=Charisma',
+  'Force Missile':
+    'Section=magic ' +
+    'Note="Missile automatically hits, inflicting 1d4+%{levels.Wizard//2>?1} HP force, %{intelligenceModifier+3} times per day"',
+  'Intense Spells':
+    'Section=magic ' +
+    'Note="Evocation spells inflict +%{levels.Wizard//2>?1} HP%{levels.Wizard>19?\' and can use the better of 2 rolls to overcome SR\':\'\'}"',
+  // Illusion
+  'Blinding Ray':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack blinds a target with up to %{levels.Wizard} HD or dazzles a target with more for 1 rd %{intelligenceModifier+3} times per day"',
+  'Extended Illusions':
+    'Section=magic ' +
+    'Note="Increases the duration of Illusion spells by %{levels.Wizard//2} rd%{levels.Wizard>19?\' and can make permanent 1 Illusion spell at a time\':\'\'}"',
+  'Invisibility Field':
+    'Section=magic ' +
+    'Note="Can use swift actions to invoke <i>Greater Invisibility</i> effects for %{levels.Wizard} rd per day" ' +
+    'Spells="Greater Invisibility" ' +
+    'SpellAbility=Charisma',
+  // Necromancy
+  'Grave Touch (Necromancy)':
+    'Section=magic ' +
+    'Note="Touch inflicts shaken on living creatures for %{levels.Wizard//2>?1} rd%{levels.Wizard>1?\' and frightens already-shaken creatures with up to \'+(levels.Wizard-1)+\' HD for 1 rd\':\'\'} %{intelligenceModifier+3} times per day"',
+  'Life Sight':
+    'Section=skill ' +
+    'Note="R%{(levels.Wizard-4)//4*10}\' Can use Blindsight to detect living and undead creatures for %{levels.Wizard} rd per day"',
+  'Power Over Undead':
+    'Section=feature ' +
+    'Note="+1 General Feat (Command Undead or Turn Undead), usable %{3+intelligenceModifier} times per day"',
+  // Transmutation
+  'Change Shape':
+    'Section=magic ' +
+    'Note="Can use <i>Beast Shape II%{levels.Wizard<12?\'\':\'I\'}</i> or <i>Elemental Body I%{levels.Wizard<12?\'\':\'I\'}</i> effects for %{levels.Wizard} rd per day" ' +
+    'Spells=' +
+      '"Beast Shape II","Elemental Body I",' +
+      '"12:Beast Shape III","12:Elemental Body II" ' +
+    'SpellAbility=Charisma',
+  'Physical Enhancement':
+    'Section=ability ' +
+    'Note="Gains +%{levels.Wizard//5+1} to %{levels.Wizard>19?\'2 choices\':\'a choice\'} of Strength, Dexterity, and Constitution each day"',
+  'Telekinetic Fist':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch attack inflicts 1d4+%{levels.Wizard//2} HP bludgeoning %{intelligenceModifier+3} times per day"',
+  // Universalist
+  'Hand Of The Apprentice':
+    'Section=combat ' +
+    'Note="R30\' Can make a +%{rangedAttack-dexterityModifier+intelligenceModifier} ranged attack with a melee weapon %{intelligenceModifier+3} times per day"',
+  'Metamagic Mastery':
+    'Section=magic ' +
+    'Note="Can apply a metamagic feat to a spell without changing its level or casting time %{levels.Wizard>9?(levels.Wizard-6)//2+\' times\':\'once\'} per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses"',
 
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -1841,9 +1955,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Remains conscious, stable, and able to act with negative HP"',
   'Dodge':SRD35.FEATURES.Dodge,
-  'Elemental Wall':
-    'Section=magic ' +
-    'Note="May use <i>Wall Of Fire</i> w/acid, cold, electricity, or fire effects %V rd/dy"',
   'Empathic Link':'Section=companion Note="May share emotions up to 1 mile"',
   'Empower Spell':
     'Section=magic ' +
@@ -1974,12 +2085,6 @@ Pathfinder.FEATURES = {
     'Note="+1 Run Speed Multiplier",' +
          '"Retains Dexterity bonus to AC while running",' +
          '"+4 Acrobatics (running jump)"',
-  'School Opposition (%school)':
-    'Section=magic Note="Casting %school spells requires two spell slots each"',
-  'School Specialization (%school)':
-    'Section=magic,skill ' +
-    'Note="+1 %school spell/dy in each spell level",' +
-         '"+2 Spellcraft (%school effects)"',
   'Scribe Scroll':'Section=magic Note="May create scroll of any known spell"',
   'Scry On Familiar':'Section=companion Note="Master may view companion 1/dy"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
@@ -2045,8 +2150,6 @@ Pathfinder.FEATURES = {
     'Note="May use +3 spell slot to dbl chosen spell area of affect"',
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
-  'Acid Dart (Wizard)':
-    'Section=magic Note="R30\' Ranged touch inflicts 1d6+%1 HP %V/dy"',
   'Acrobatic Steps':
     'Section=ability Note="May move normally through difficult terrain 20\'/rd "',
   'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
@@ -2092,9 +2195,6 @@ Pathfinder.FEATURES = {
   'Attuned To The Ancestors':
     'Section=magic ' +
     'Note="May become imperceptible to unintelligent undead for %{level//2>?1} rd 1/dy"',
-  'Aura Of Despair':
-    'Section=magic ' +
-    'Note="R30\' Foes suffer -2 ability, attack, damage, save, and skill %V rd/dy"',
   'Bad Reputation':
     'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
   'Balanced Offensive':
@@ -2116,9 +2216,6 @@ Pathfinder.FEATURES = {
   'Blinding Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts permanent blindness (DC %V Fort dazzled for 1d4 rd)"',
-  'Blinding Ray':
-    'Section=magic ' +
-    'Note="R30\' Ranged touch blinds or dazzles target for 1 rd %V/dy"',
   'Blindsight':
     'Section=feature Note="R%V\' Can maneuver and fight w/out vision"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
@@ -2134,9 +2231,6 @@ Pathfinder.FEATURES = {
   'Catch Off-Guard':
     'Section=combat ' +
     'Note="Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed"',
-  'Change Shape':
-    'Section=magic ' +
-    'Note="May use <i>Beast Shape %1</i> or <i>Elemental Body %2</i> effects %V rd/dy"',
   'Channel Smite':
     'Section=combat ' +
     'Note="May inflict Channel Energy damage using melee weapon attack"',
@@ -2172,8 +2266,6 @@ Pathfinder.FEATURES = {
   'Dangerously Curious':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Dazing Touch Enchantment':
-    'Section=magic Note="Touch attack dazes %V HD foe for 1 rd %1/dy"',
   'Dazzling Display':
     'Section=combat ' +
     'Note="R30\' May use Intimidate to demoralize foes using focused weapon"',
@@ -2204,7 +2296,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
       '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
-  'Dimensional Steps':'Section=magic Note="May teleport %V\'/dy"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
   'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Divine Courtesan':
@@ -2213,9 +2304,6 @@ Pathfinder.FEATURES = {
       '"+1 Sense Motive",' +
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
   'Divine Warrior':'Section=magic Note="+1 damage w/enspelled melee weapons"',
-  "Diviner's Fortune":
-    'Section=magic ' +
-    'Note="Touch gives +%V attack, skill, ability, and save for 1 rd %1/dy"',
   'Double Slice':
     'Section=combat Note="Adds full Strength modifier to off-hand damage"',
   'Dunewalker':
@@ -2242,12 +2330,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="May use Channel Energy to heal or harm Water outsiders"',
   'Elven Reflexes':'Section=combat Note="+2 Initiative"',
-  'Enchanting Smile':
-    'Section=save,skill ' +
-    'Note=' +
-      '"Successful save reflects enchantment spells onto caster",' +
-      '"+%V Bluff/+%V Diplomacy/+%V Intimidate"',
-  'Energy Absorption':'Section=save Note="Ignores %V HP energy damage/dy"',
   'Exhausting Critical':
     'Section=combat Note="Critical hit inflicts exhausted"',
   'Exile':'Section=combat Note="+2 Initiative"',
@@ -2255,8 +2337,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="+1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class"',
   'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
-  'Extended Illusions':
-    'Section=magic Note="Illusion duration increased by %V rd"',
   'Extra Channel':'Section=magic Note="Channel Energy +2/dy"',
   'Extra Ki':'Section=feature Note="+%V Ki pool"',
   'Extra Lay On Hands':'Section=magic Note="Lay On Hands +%V/dy"',
@@ -2284,13 +2364,6 @@ Pathfinder.FEATURES = {
   'Fleet':'Section=ability Note="+%V Speed in light or no armor"',
   'Focused Mind':'Section=magic Note="+2 concentration checks"',
   'Force For Good':'Section=magic Note="+1 caster level on Good spells"',
-  'Force Missile':
-    'Section=magic Note="<i>Magic Missile</i> inflicts 1d4+%V HP %1/dy"',
-  'Forewarned':
-    'Section=combat,combat ' +
-    'Note=' +
-      '"+%V Initiative",' +
-      '"May always act in surprise round%1"',
   'Forlorn':'Section=save Note="+1 Fortitude"',
   'Fortified Drinker':
     'Section=save Note="Drinking alcohol gives +2 vs. mental effects for 1 hr"',
@@ -2318,8 +2391,6 @@ Pathfinder.FEATURES = {
   "Gorgon's Fist":
     'Section=combat ' +
     'Note="Unarmed attack vs. slowed foe staggers (DC %V Fort neg)"',
-  'Grave Touch (Wizard)':
-    'Section=magic Note="Touch inflicts shaken for %V rd %1/dy"',
   'Greasy Palm':'Section=feature Note="10% discount on bribes"',
   'Greater Bull Rush':
     'Section=combat ' +
@@ -2347,9 +2418,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
       '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
-  'Hand Of The Apprentice':
-    'Section=combat ' +
-    'Note="R30\' May make +%V ranged attack w/melee weapon %1/dy"',
   'Hedge Magician':
     'Section=skill Note="Cost to craft magic items is reduced by 5%"',
   'Highlander':
@@ -2385,9 +2453,7 @@ Pathfinder.FEATURES = {
   'Insider Knowledge':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy or Knowledge (Local)/Choice of Diplomacy of Knowledge (Local) is a class skill"',
-  'Intense Spells':'Section=magic Note="+%V Evocation spell damage%1"',
   'Intimidating Prowess':'Section=skill Note="+%V Intimidate"',
-  'Invisibility Field':'Section=magic Note="May become invisible %V rd/dy"',
   'Killer':
     'Section=combat ' +
     'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
@@ -2396,9 +2462,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Linguistics/+1 Profession (Librarian)",' +
       '"Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus 1/dy"',
-  'Life Sight':
-    'Section=feature ' +
-    'Note="R%V\' May use Blindsight effects w/living and undead %1 rd/dy"',
   'Lightning Stance':
     'Section=combat Note="Dbl move or withdraw action gives 50% concealment"',
   'Log Roller':
@@ -2450,8 +2513,6 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="May make 2 extra unarmed attacks vs. diminished-capacity foe"',
   'Meridian Strike':'Section=combat Note="May reroll crit damage 1s 1/dy"',
-  'Metamagic Mastery':
-    'Section=magic Note="May apply metamagic feat w/1 level reduction %V/dy"',
   'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
   'Militia Veteran':
     'Section=skill ' +
@@ -2486,9 +2547,6 @@ Pathfinder.FEATURES = {
   'Performance Artist':
     'Section=skill ' +
     'Note="+1 choice of Perform (+5 when performing for money)/Choice of Perform is a class skill"',
-  'Physical Enhancement':
-    'Section=ability ' +
-    'Note="+%V Choose %1 from Strength, Dexterity, and Constitution"',
   'Pinpoint Targeting':
     'Section=combat Note="Ranged attack ignores armor bonus"',
   'Planar Voyager':
@@ -2498,14 +2556,9 @@ Pathfinder.FEATURES = {
       '"+1 saves when not on Material Plane"',
   'Poverty-Stricken':
     'Section=skill Note="+1 Survival/Survival is a class skill"',
-  'Power Over Undead':
-    'Section=feature ' +
-    'Note="+1 General Feat (Command Undead or Turn Undead); may use %{3 + intelligenceModifier}/dy"',
   'Proper Training':
     'Section=skill ' +
     'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
-  'Protective Ward':
-    'Section=magic Note="R10\' Allies gain +%V AC for %1 rd %2/dy"',
   'Rapscallion':
     'Section=combat,skill ' +
     'Note=' +
@@ -2513,8 +2566,6 @@ Pathfinder.FEATURES = {
       '"+1 Escape Artist"',
   'Reactionary':'Section=combat Note="+2 Initiative"',
   'Resilient':'Section=save Note="+1 Fortitude"',
-  'Resistance To Energy':
-    'Section=save Note="Resistance %V to chosen energy type each dy"',
   'Reverent Wielder':
     'Section=combat,save ' +
     'Note=' +
@@ -2555,9 +2606,6 @@ Pathfinder.FEATURES = {
   'Scorpion Style':
     'Section=combat ' +
     'Note="Unarmed hit slows foe to 5\' for %V rd (DC %1 Fort neg)"',
-  'Scrying Adept':
-    'Section=magic ' +
-    'Note="Has continuous <i>Detect Scrying</i> effects/+1 scrying subject familiarity"',
   'Secrets':'Section=feature Note="%V selections"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
@@ -2611,7 +2659,6 @@ Pathfinder.FEATURES = {
   'Stunning Critical':
     'Section=combat ' +
     'Note="Critical hit inflicts stunned (DC %V Fort staggered) for 1d4 rd"',
-  "Summoner's Charm":'Section=magic Note="%V summoning duration"',
   'Suspicious':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Tavern Owner':
@@ -2621,8 +2668,6 @@ Pathfinder.FEATURES = {
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
   'Teaching Mistake':
     'Section=save Note="+1 next save after nat 1 save roll 1/scenario"',
-  'Telekinetic Fist':
-    'Section=magic Note="R30\' Ranged touch inflicts 1d4+%1 HP %V/dy"',
   'Throw Anything':
     'Section=combat ' +
     'Note="No penalty for improvised ranged weapon, +1 attack w/thrown splash"',
@@ -3041,22 +3086,22 @@ Pathfinder.RACES = {
     'Speed=30 ' +
     'Features=' +
       '"Human Ability Adjustment",' +
-      '"Bonus Feat","Skilled" ' +
+      '"Bonus Feat (Human)","Skilled" ' +
     'Languages=Common'
 };
 Pathfinder.SCHOOLS = {
   'Abjuration':
     'Features=' +
-      '"1:Resistance To Energy","1:Protective Ward","6:Energy Absorption"',
+      '"1:Resistance","1:Protective Ward","6:Energy Absorption"',
   'Conjuration':
     'Features=' +
-      '"1:Acid Dart (Wizard)","1:Summoner\'s Charm","8:Dimensional Steps"',
+      '"1:Acid Dart (Conjuration)","1:Summoner\'s Charm","8:Dimensional Steps"',
   'Divination':
     'Features=' +
       '1:Forewarned,"1:Diviner\'s Fortune","8:Scrying Adept"',
   'Enchantment':
     'Features=' +
-      '"1:Enchanting Smile","1:Dazing Touch Enchantment","8:Aura Of Despair"',
+      '"1:Enchanting Smile","1:Dazing Touch (Enchantment)","8:Aura Of Despair"',
   'Evocation':
     'Features=' +
       '"1:Intense Spells","1:Force Missile","8:Elemental Wall"',
@@ -3065,7 +3110,7 @@ Pathfinder.SCHOOLS = {
       '"1:Extended Illusions","1:Blinding Ray","8:Invisibility Field"',
   'Necromancy':
     'Features=' +
-      '"1:Power Over Undead","1:Grave Touch (Wizard)","8:Life Sight"',
+      '"1:Power Over Undead","1:Grave Touch (Necromancy)","8:Life Sight"',
   'Transmutation':
     'Features=' +
       '"1:Physical Enhancement","1:Telekinetic Fist","8:Change Shape"'
@@ -4409,7 +4454,7 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Artifice ? 8:Dancing Weapons",' +
       '"clericDomainFeatures.Chaos ? 1:Touch Of Chaos",' +
       '"clericDomainFeatures.Chaos ? 8:Chaos Blade",' +
-      '"clericDomainFeatures.Charm ? 1:Dazing Touch",' +
+      '"clericDomainFeatures.Charm ? 1:Dazing Touch (Charm)",' +
       '"clericDomainFeatures.Charm ? 8:Charming Smile",' +
       '"clericDomainFeatures.Community ? 1:Calming Touch",' +
       '"clericDomainFeatures.Community ? 8:Unity",' +
@@ -4419,7 +4464,7 @@ Pathfinder.CLASSES = {
       '"clericDomainFeatures.Death ? 8:Death\'s Embrace",' +
       '"clericDomainFeatures.Destruction ? 1:Destructive Smite",' +
       '"clericDomainFeatures.Destruction ? 8:Destructive Aura",' +
-      '"clericDomainFeatures.Earth ? 1:Acid Dart",' +
+      '"clericDomainFeatures.Earth ? 1:Acid Dart (Earth)",' +
       '"clericDomainFeatures.Earth ? 6:Acid Resistance",' +
       '"clericDomainFeatures.Evil ? 1:Touch Of Evil",' +
       '"clericDomainFeatures.Evil ? 8:Scythe Of Evil",' +
@@ -4540,7 +4585,7 @@ Pathfinder.CLASSES = {
       '"druidFeatures.Air Domain ? 6:Electricity Resistance",' +
       '"druidFeatures.Animal Domain ? 1:Speak With Animals",' +
       // '"druidFeatures.Animal Domain ? 4:Animal Companion",' +
-      '"druidFeatures.Earth Domain ? 1:Acid Dart",' +
+      '"druidFeatures.Earth Domain ? 1:Acid Dart (Earth)",' +
       '"druidFeatures.Earth Domain ? 6:Acid Resistance",' +
       '"druidFeatures.Fire Domain ? 1:Fire Bolt",' +
       '"druidFeatures.Fire Domain ? 6:Fire Resistance",' +
@@ -4585,33 +4630,33 @@ Pathfinder.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club; Dagger; Handaxe; Heavy Crossbow; Javelin; Kama; Light Crossbow; Nunchaku; Quarterstaff; Sai; Shortspear; Short Sword; Shuriken; Siangham; Sling; Spear)",' +
-      '"1:Armor Class Bonus","1:Flurry Of Blows","1:Stunning Fist",' +
-      '"1:Two-Weapon Fighting","1:Unarmed Strike",2:Evasion,' +
-      '"3:Fast Movement (Monk)","3:Maneuver Training","3:Still Mind",' +
-      '"4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike","4:Slow Fall",' +
-      '"5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
+      '"1:Armor Class Bonus","1:Bonus Feats (Monk)","1:Flurry Of Blows",' +
+      '"1:Stunning Fist","1:Two-Weapon Fighting","1:Unarmed Strike",' +
+      '"2:Evasion","3:Fast Movement (Monk)","3:Maneuver Training",' +
+      '"3:Still Mind","4:Ki Dodge","4:Ki Pool","4:Ki Speed","4:Ki Strike",' +
+      '"4:Slow Fall","5:High Jump","5:Purity Of Body","7:Wholeness Of Body",' +
       '"8:Improved Two-Weapon Fighting","9:Improved Evasion",' +
       '"11:Diamond Body","12:Abundant Step","13:Diamond Soul",' +
       '"15:Greater Two-Weapon Fighting","15:Quivering Palm",' +
       '"17:Timeless Body","17:Tongue Of The Sun And Moon","19:Empty Body",' +
       '"20:Perfect Self" ' +
     'Selectables=' +
-      '"1:Catch Off-Guard:Bonus Feat",' +
-      '"1:Combat Reflexes:Bonus Feat",' +
-      '"1:Deflect Arrows:Bonus Feat",' +
-      '"1:Dodge:Bonus Feat",' +
-      '"1:Improved Grapple:Bonus Feat",' +
-      '"1:Scorpion Style:Bonus Feat",' +
-      '"1:Throw Anything:Bonus Feat",' +
-      '"6:Gorgon\'s Fist:Bonus Feat",' +
-      '"6:Improved Bull Rush:Bonus Feat",' +
-      '"6:Improved Disarm:Bonus Feat",' +
-      '"6:Improved Feint:Bonus Feat",' +
-      '"6:Improved Trip:Bonus Feat",' +
-      '"6:Mobility:Bonus Feat",' +
-      '"10:Medusa\'s Wrath:Bonus Feat",' +
-      '"10:Snatch Arrows:Bonus Feat",' +
-      '"10:Spring Attack:Bonus Feat"',
+      '"1:Catch Off-Guard:Bonus Feats",' +
+      '"1:Combat Reflexes:Bonus Feats",' +
+      '"1:Deflect Arrows:Bonus Feats",' +
+      '"1:Dodge:Bonus Feats",' +
+      '"1:Improved Grapple:Bonus Feats",' +
+      '"1:Scorpion Style:Bonus Feats",' +
+      '"1:Throw Anything:Bonus Feats",' +
+      '"6:Gorgon\'s Fist:Bonus Feats",' +
+      '"6:Improved Bull Rush:Bonus Feats",' +
+      '"6:Improved Disarm:Bonus Feats",' +
+      '"6:Improved Feint:Bonus Feats",' +
+      '"6:Improved Trip:Bonus Feats",' +
+      '"6:Mobility:Bonus Feats",' +
+      '"10:Medusa\'s Wrath:Bonus Feats",' +
+      '"10:Snatch Arrows:Bonus Feats",' +
+      '"10:Spring Attack:Bonus Feats"',
   'Paladin':
     'Require="alignment == \'Lawful Good\'" ' +
     'HitDie=d10 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
@@ -4761,7 +4806,7 @@ Pathfinder.CLASSES = {
       '"sorcererFeatures.Bloodline Infernal ? 9:Hellfire",' +
       '"sorcererFeatures.Bloodline Infernal ? 15:On Dark Wings",' +
       '"sorcererFeatures.Bloodline Infernal ? 20:Power Of The Pit",' +
-      '"sorcererFeatures.Bloodline Undead ? 1:Grave Touch",' +
+      '"sorcererFeatures.Bloodline Undead ? 1:Grave Touch (Undead)",' +
       '"sorcererFeatures.Bloodline Undead ? 3:Death\'s Gift",' +
       '"sorcererFeatures.Bloodline Undead ? 9:Grasp Of The Dead",' +
       '"sorcererFeatures.Bloodline Undead ? 15:Incorporeal Form",' +
@@ -4819,11 +4864,13 @@ Pathfinder.CLASSES = {
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)",' +
-      '"1:Scribe Scroll",' +
+      '"1:Arcane Bond","1:School Specialization","1:Scribe Scroll",' +
+      '"5:Bonus Feats (Wizard)",' +
       '"features.School Specialization (None) ? 1:Hand Of The Apprentice",' +
       '"features.School Specialization (None) ? 8:Metamagic Mastery" ' +
     'Selectables=' +
-      '"1:Bonded Object:Arcane Bond","1:Familiar:Arcane Bond",' +
+      '"1:Bonded Object:Arcane Bond",' +
+      '"1:Familiar:Arcane Bond",' +
       '"1:School Specialization (None):Specialization",'+
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Specialization (' + x + '):Specialization"').join(',') + ',' +
       QuilvynUtils.getKeys(SRD35.SCHOOLS).map(x => '"1:School Opposition (' + x + '):Opposition"').join(',') + ' ' +
@@ -6046,10 +6093,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
+    rules.defineRule('featureNotes.bonusFeats(Monk)',
+      classLevel, '=', '1 + Math.floor((source + 2) / 4)'
+    );
     rules.defineRule
       ('saveNotes.diamondSoul', classLevel, '=', '10 + source');
-    rules.defineRule('selectableFeatureCount.Monk (Bonus Feat)',
-      classLevel, '=', '1 + Math.floor((source + 2) / 4)'
+    rules.defineRule('selectableFeatureCount.Monk (Bonus Feats)',
+      'featureNotes.bonusFeats(Monk)', '=', null
     );
     rules.defineRule('spellResistance', 'saveNotes.diamondSoul', '^=', null);
 
@@ -6443,6 +6493,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'bloodlineLevels.Arcane', '=', 'Math.floor((source - 5) / 4)'
     );
     rules.defineRule('selectableFeatureCount.Sorcerer (Arcane Bond)',
+      'sorcererFeatures.Arcane Bond', '?', null,
       'featureNotes.arcaneBond', '=', '1'
     );
     rules.defineRule('spellsAvailable.S', 'magicNotes.newArcana', '+=', null);
@@ -6587,10 +6638,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '+=', null
     );
     rules.defineRule('featCount.Wizard',
-      classLevel, '=', 'source >= 5 ? Math.floor(source / 5) : null'
+      'featureNotes.bonusFeats(Wizard)', '+=', null
+    );
+    rules.defineRule('featureNotes.bonusFeats(Wizard)',
+      classLevel, '=', 'Math.floor(source / 5)'
     );
     rules.defineRule('selectableFeatureCount.Wizard (Arcane Bond)',
-      classLevel, '=', '1'
+      'wizardFeatures.Arcane Bond', '?', null,
+      'featureNotes.arcaneBond', '=', '1'
     );
     rules.defineRule('selectableFeatureCount.Wizard (Specialization)',
       classLevel, '=', '1'
@@ -6607,32 +6662,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
         );
       }
     }
-
-    rules.defineRule('combatNotes.handOfTheApprentice',
-      'baseAttack', '=', null,
-      'intelligenceModifier', '+', null
-    );
-    rules.defineRule('combatNotes.handOfTheApprentice.1',
-      'features.Hand Of The Apprentice', '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.metamagicMastery',
-      classLevel, '=', 'source >= 8 ? Math.floor((source - 6) / 2) : null'
-    );
-
-    Pathfinder.featureSpells(rules,
-      'Change Shape', 'ChangeShape', 'intelligence', classLevel, null,
-      ['Beast Shape II', 'Elemental Body I', '12:Beast Shape III',
-       '12:Elemental Body II']
-    );
-    Pathfinder.featureSpells(rules,
-      'Elemental Wall', 'ElementalWall', 'intelligence', classLevel, null,
-      ['Wall Of Fire']
-    );
-    Pathfinder.featureSpells(rules,
-      'Scrying Adept', 'ScryingAdept', 'intelligence', classLevel, null,
-      ['Detect Scrying']
-    );
 
   } else if(name == 'Adept') {
 
@@ -7474,84 +7503,17 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ','');
   let schoolLevel = prefix + 'Level';
 
-  if(name == 'Abjuration') {
-    rules.defineRule('magicNotes.protectiveWard',
-      schoolLevel, '=', '1 + Math.floor(source / 5)'
-    );
-    rules.defineRule('magicNotes.protectiveWard.1',
-      'features.Protective Ward', '?', null,
-      'intelligenceModifier', '=', null
-    );
-    rules.defineRule('magicNotes.protectiveWard.2',
-      'features.Protective Ward', '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
-    rules.defineRule
-      ('saveNotes.energyAbsorption', schoolLevel, '=', 'source * 3');
-    rules.defineRule('saveNotes.resistanceToEnergy',
-      schoolLevel, '=', 'source >= 20 ? Infinity : source >= 11 ? 10 : 5'
-    );
-  } else if(name == 'Conjuration') {
-    rules.defineRule('magicNotes.acidDart(Wizard)',
-      'intelligenceModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.acidDart(Wizard).1',
-      'features.Acid Dart (Wizard)', '?', null,
-      schoolLevel, '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule
-      ('magicNotes.dimensionalSteps', schoolLevel, '=', '30 * source');
-    rules.defineRule("magicNotes.summoner'sCharm",
-      schoolLevel, '=', 'source<20 ? "+" + Math.max(Math.floor(source / 2), 1) + " rd" : "Unlimited"'
-    );
-  } else if(name == 'Divination') {
+  if(name == 'Divination') {
     rules.defineRule('combatNotes.forewarned',
       schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('combatNotes.forewarned-1.1',
-      schoolLevel, '=', 'source==20 ? "/May take 20 on Initiative" : ""'
-    );
-    rules.defineRule("magicNotes.diviner'sFortune",
-      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule("magicNotes.diviner'sFortune.1",
-      "features.Diviner's Fortune", '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
   } else if(name == 'Enchantment') {
-    rules.defineRule('magicNotes.auraOfDespair', schoolLevel, '=', null);
-    rules.defineRule
-      ('magicNotes.dazingTouchEnchantment', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.dazingTouchEnchantment.1',
-      'features.Dazing Touch Enchantment', '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
     rules.defineRule
       ('saveNotes.enchantingSmile', schoolLevel, '?', 'source==20');
     rules.defineRule('skillNotes.enchantingSmile',
       schoolLevel, '=', '2 + Math.floor(source / 5)'
     );
-  } else if(name == 'Evocation') {
-    rules.defineRule('magicNotes.elementalWall', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.forceMissile',
-      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('magicNotes.forceMissile.1',
-      'features.Force Missile', '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.intenseSpells',
-      schoolLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-    rules.defineRule('magicNotes.intenseSpells.1',
-      schoolLevel, '=', 'source==20 ? ", use best of two rolls to overcome resistance on Evocation spells" : ""'
-    );
   } else if(name == 'Illusion') {
-    rules.defineRule
-      ('magicNotes.blindingRay', 'intelligenceModifier', '=', 'source + 3');
-    rules.defineRule('magicNotes.extendedIllusions',
-      schoolLevel, '=', 'source>=20 ? "unlimited" : Math.max(Math.floor(source / 2), 1)'
-    );
     rules.defineRule
       ('magicNotes.invisibilityField', schoolLevel, '=', null);
   } else if(name == 'Necromancy') {
@@ -7560,17 +7522,6 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'features.Command Undead || features.Turn Undead'
     );
     rules.defineRule('channelLevel', schoolLevel, '+=', null);
-    rules.defineRule('featureNotes.lifeSight',
-      schoolLevel, '=', '10 * Math.floor((source - 4) / 4)'
-    );
-    rules.defineRule('featureNotes.lifeSight.1', schoolLevel, '=', null);
-    rules.defineRule('magicNotes.graveTouch(Wizard)',
-      schoolLevel, '=', 'Math.max(1, Math.floor(source / 2))'
-    );
-    rules.defineRule('magicNotes.graveTouch(Wizard).1',
-      'features.Grave Touch (Wizard)', '?', null,
-      'intelligenceModifier', '=', 'source + 3'
-    );
     rules.defineRule('validationNotes.commandUndeadFeat',
       'featureNotes.powerOverUndead', '^', '0'
     );
@@ -7578,12 +7529,11 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'featureNotes.powerOverUndead', '^', '0'
     );
   } else if(name == 'Transmutation') {
-    rules.defineRule('abilityNotes.physicalEnhancement',
-      schoolLevel, '=', '1 + Math.floor(source / 5)'
+    rules.defineRule('spells.Beast Shape II(Change Shape4 Trans)',
+      'levels.Wizard', '?', 'source < 12'
     );
-    rules.defineRule('abilityNotes.physicalEnhancement.1',
-      'features.Physical Enhancement', '?', null,
-      schoolLevel, '=', 'source >= 20 ? 2 : 1'
+    rules.defineRule('spells.Elemental Body I(Change Shape4 Trans)',
+      'levels.Wizard', '?', 'source < 12'
     );
     rules.defineRule('magicNotes.changeShape', schoolLevel, '=', null);
     rules.defineRule('magicNotes.changeShape.1',
@@ -7593,13 +7543,6 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.changeShape.2',
       'features.Change Shape', '?', null,
       schoolLevel, '=', 'source >= 12 ? "II" : "I"'
-    );
-    rules.defineRule('magicNotes.telekineticFist',
-      'intelligenceModifier', '=', 'source + 3'
-    );
-    rules.defineRule('magicNotes.telekineticFist.1',
-      'features.Telekinetic Fist', '?', null,
-      schoolLevel, '=', 'Math.floor(source / 2)'
     );
   }
 

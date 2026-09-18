@@ -251,7 +251,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Strike; Blind-Fight; Catch Off-Guard; Cleave; Combat Casting; Combat Reflexes; Empower Spell; Endurance; Extend Spell; Great Fortitude; Improved Bull Rush; Improved Counterspell; Improved Sunder; Improved Unarmed Strike; Iron Will; Leadership; Lightning Reflexes; Persuasive; Point-Blank Shot; Power Attack; Precise Shot; Quicken Spell; Scorpion Style; Silent Spell; Skill Focus (Bluff); Skill Focus (Climb); Skill Focus (Diplomacy); Skill Focus (Fly); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Dungeoneering)); Skill Focus (Knowledge (History)); Skill Focus (Knowledge (Planes)); Skill Focus (Knowledge (Religion)); Skill Focus (Sense Motive); Spell Focus (Divination); Spell Focus (Illusion); Spell Focus (Necromancy); Spell Focus (Transmutation); Spell Penetration; Throw Anything; Toughness</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Sorcerer Features</b>: Aberrant Form; Acidic Ray; Added Summonings; Alien Resistance; Arcane Apotheosis; Arcane Bond; Ascension; Blindsense; Bloodline Aberrant; Bloodline Abyssal; Bloodline Arcane; Bloodline Celestial; Bloodline Destined; Bloodline Draconic (White); Bloodline Elemental (Water); Bloodline Fey; Bloodline Infernal; Bloodline Undead; Bloodline; Bonded Object; Breath Weapon; Cantrips; Celestial Resistances; Claws; Conviction; Corrupting Touch; Death's Gift; Demon Resistances; Demonic Might; Destiny Realized; Dragon Resistances; Elemental Blast; Elemental Body; Elemental Movement; Elemental Ray; Elemental Resistance; Eschew Materials; Familiar; Fated; Fey Magic; Fleeting Glance; Grasp Of The Dead; Grave Touch; Heavenly Fire; Hellfire; Incorporeal Form; Infernal Resistances; It Was Meant To Be; Laughing Touch; Long Limbs; Metamagic Adept; Natural Armor; New Arcana; On Dark Wings; One Of Us; Power Of The Pit; Power Of Wyrms; School Power; Soul Of The Fey; Strength Of The Abyss; Touch Of Destiny; Unusual Anatomy; Weapon Proficiency (Simple Weapons); Wings Of Heaven; Wings; Within Reach; Woodland Stride</td>
+        <td><b>Sorcerer Features</b>: Aberrant Form; Acidic Ray; Added Summonings; Alien Resistance; Arcane Apotheosis; Arcane Bond; Ascension; Blindsense; Bloodline Aberrant; Bloodline Abyssal; Bloodline Arcane; Bloodline Celestial; Bloodline Destined; Bloodline Draconic (White); Bloodline Elemental (Water); Bloodline Fey; Bloodline Infernal; Bloodline Undead; Bloodline; Bonded Object; Breath Weapon; Cantrips; Celestial Resistances; Claws; Conviction; Corrupting Touch; Death's Gift; Demon Resistances; Demonic Might; Destiny Realized; Dragon Resistances; Elemental Blast; Elemental Body; Elemental Movement; Elemental Ray; Elemental Resistance; Eschew Materials; Familiar; Fated; Fey Magic; Fleeting Glance; Grasp Of The Dead; Grave Touch (Undead); Heavenly Fire; Hellfire; Incorporeal Form; Infernal Resistances; It Was Meant To Be; Laughing Touch; Long Limbs; Metamagic Adept; Natural Armor; New Arcana; On Dark Wings; One Of Us; Power Of The Pit; Power Of Wyrms; School Power; Soul Of The Fey; Strength Of The Abyss; Touch Of Destiny; Unusual Anatomy; Weapon Proficiency (Simple Weapons); Wings Of Heaven; Wings; Within Reach; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -450,6 +450,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Aberrant Form: Has immunity to critical hits and Sneak Attacks</td>
       </tr><tr style="text-align:center">
+        <td>Acidic Ray: R30' Ranged touch attack inflicts 11d6 HP acid 6 times per day</td>
+      </tr><tr style="text-align:center">
         <td>Arcane Strike: May imbue weapons with +5 magic damage bonus for 1 rd</td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
@@ -470,9 +472,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elemental Body: Has immunity to critical hits and Sneak Attacks</td>
       </tr><tr style="text-align:center">
+        <td>Elemental Ray: R30' Ranged touch attack inflicts 1d6+10 HP cold 6 times per day</td>
+      </tr><tr style="text-align:center">
         <td>Fated: +5 AC when surprised</td>
       </tr><tr style="text-align:center">
-        <td>Grave Touch: Touch inflicts shaken on living targets for 10 rd and frightens already-shaken creatures with up to 19 HD for 1 rd 6 times per day</td>
+        <td>Grave Touch (Undead): Touch inflicts shaken on living creatures for 10 rd and frightens already-shaken creatures with up to 19 HD for 1 rd 6 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Heavenly Fire: R30' Ranged touch attack inflicts 1d4+10 HP on an evil target or restores the same amount to a good one 6 times per day</td>
       </tr><tr style="text-align:center">
         <td>Improved Bull Rush: Bull Rush provokes no AOO, gains +2 Bull Rush check and CMD</td>
       </tr><tr style="text-align:center">
@@ -582,7 +588,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3; S: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
-        <td><b>Spell DC</b>: S: 13</td>
+        <td><b>Spell DC</b>: Fleeting Glance: 13; S: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -1564,8 +1570,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Transmutation): +1 Spell DC (Transmutation)</i></td>
     </tr><tr style="text-align:center">
-      <td>Acidic Ray: R30' Ranged touch attack inflicts 11d6 HP acid 6 times per day</td>
-    </tr><tr style="text-align:center">
       <td>Added Summonings: <i>Summon Monster</i> brings an additional demon or fiendish creature</td>
     </tr><tr style="text-align:center">
       <td>Arcane Apotheosis: May expend 3 spell slots to power 1 magic item charge</td>
@@ -1596,8 +1600,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Destiny Realized: Can automatically overcome spell resistance once per day</td>
     </tr><tr style="text-align:center">
-      <td>Elemental Ray: R30' Ranged touch attack inflicts 1d6+10 HP cold 6 times per day</td>
-    </tr><tr style="text-align:center">
       <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Can cast spells without materials</td>
@@ -1609,8 +1611,6 @@ var attributes = {
       <td>Fleeting Glance: Can use <i>Greater Invisibility</i> effects for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Grasp Of The Dead: R60' 20' radius inflicts 20d6 HP slashing and grappled (save Reflex DC 23 half HP only) for 1 rd 3 times per day</td>
-    </tr><tr style="text-align:center">
-      <td>Heavenly Fire: R30' Ranged touch attack inflicts 1d4+10 HP on an evil target or restores the same amount to a good one 6 times per day</td>
     </tr><tr style="text-align:center">
       <td>Hellfire: R60' 10' radius inflicts 20d6 HP fire and shakes good creatures for 20 rd (save Reflex DC 23 half HP ony) 3 times per day</td>
     </tr><tr style="text-align:center">

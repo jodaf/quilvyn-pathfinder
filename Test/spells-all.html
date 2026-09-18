@@ -461,8 +461,8 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Good); Channel Smite; Cleave; Diehard; Empower Spell; Endurance; Point-Blank Shot; Power Attack; Quick Draw; Weapon Focus (Shortbow); Widen Spell</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Wizard Features</b>: Bonded Object; Protective Ward; Resistance To Energy; School Opposition (Enchantment); School Opposition (Necromancy); School Specialization (Abjuration); Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Wizard Features</b>: Arcane Bond; Bonded Object; Protective Ward; Resistance; School Opposition (Enchantment); School Opposition (Necromancy); School Specialization (Abjuration); School Specialization; Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
         <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Good; Channel Positive Energy; Detect Evil; Divine Grace; Divine Health; Lay On Hands; Mercy (Fatigued); Mercy; Smite Evil; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
         <td><b>Druid Features</b>: Aligned Spells; Animal Companion; Animal Domain; Armor Proficiency (Light; Medium; Shield); Nature Bond; Nature Sense; Orisons; Resist Nature's Lure; Speak With Animals; Spontaneous Casting (Druid); Trackless Step; Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
         <td><b>Cleric Features</b>: Agile Feet; Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Copycat; Orisons; Spontaneous Casting (Cleric); Travel Domain; Trickery Domain; Weapon Proficiency (Simple Weapons)</td>
@@ -472,7 +472,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Arcane Bond: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Nature Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -481,6 +483,8 @@ var attributes = {
         <td>Aura Of Good: Visible to <i>Detect Good</i></td>
       </tr><tr style="text-align:center">
         <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
+      </tr><tr style="text-align:center">
+        <td>School Specialization: 1 selection</td>
       </tr></table>
 </td>
     </tr></table>
@@ -654,7 +658,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Resist Nature's Lure: +4 vs. the spell-like abilities of fey creatures and effects that target plants</td>
       </tr><tr style="text-align:center">
-        <td>Resistance To Energy: Resistance 5 to chosen energy type each dy</td>
+        <td>Resistance: Gains resistance 5 to a chosen energy type each day</td>
       </tr><tr style="text-align:center">
         <td>Well-Versed: +4 vs. bardic performance, sonic, and language-dependent effects</td>
       </tr></table>
@@ -2712,7 +2716,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1, W2</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Abjuration): +1 Abjuration spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Abjuration): +1 Abjuration spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
       <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
@@ -2740,7 +2744,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Protective Ward: R10' Allies gain +1 AC for 2 rd 5/dy</td>
+      <td>Protective Ward: R10' Allies gain a +1 deflection bonus to Armor Class for 2 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Enchantment): Casting Enchantment spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
