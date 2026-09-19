@@ -832,8 +832,10 @@ Pathfinder.FEATURES = {
     SRD35.FEATURES['Gnome Enmity']
     .replace('kobold', 'reptilian'),
   'Gnome Magic':
-    'Section=magic ' +
-    'Note="+1 Spell DC (Illusion)%{charisma>10 ? \'/Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day\' : \'\'}" ' +
+    'Section=magic,magic ' +
+    'Note=' +
+      '"+1 Spell DC (Illusion)",' +
+      '"Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day" ' +
     'Spells="Dancing Lights","Ghost Sound","Prestidigitation","Speak With Animals" ' +
     'SpellAbility=Charisma',
   'Illusion Resistance':SRD35.FEATURES['Resist Illusion'],
@@ -902,13 +904,17 @@ Pathfinder.FEATURES = {
   'Knockback':
     'Section=combat ' +
     'Note="Successful Bull Rush during rage inflicts %{strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0)} HP"',
-  // Low-Light Vision as above TODO but only during rage
+  'Low-Light Vision (Barbarian)':
+    SRD35.FEATURES['Low-Light Vision']
+    .replace(/"$/, ' during rage"'),
   'Mighty Rage':SRD35.FEATURES['Mighty Rage'],
   'Mighty Swing':
     'Section=combat Note="Can automatically confirm a crit once per rage"',
   'Moment Of Clarity':
     'Section=combat Note="Can suspend rage effects for 1 rd once per rage"',
-  'Night Vision':'Section=feature Note="Has 60\' Darkvision during rage"',
+  'Night Vision':
+    SRD35.FEATURES['Darkvision']
+    .replace(/"$/, ' during rage"'),
   'No Escape':
     'Section=combat ' +
     'Note="Can use an immediate action to follow a withdrawing foe at 2x normal speed once per rage"',
@@ -934,8 +940,9 @@ Pathfinder.FEATURES = {
     'Note="Can gain a +%{ragePowerLevel//6+1} dodge bonus to Armor Class vs. ranged attacks for %{(constitutionModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))>?1} rd during rage"',
   'Roused Anger':
     'Section=combat ' +
-    'Note="Can rage when fatigued, gaining immuity to fatigued but becoming exhausted for 10 min per rd raging afterward"',
-  'Scent':'Section=feature Note="Can detect creatures via smell"', // TODO only during rage
+    'Note="Can rage when fatigued, gaining immuity to fatigued but becoming exhausted afterward for 10 min per rd raging"',
+  'Scent (Barbarian)':
+    'Section=skill Note="Can detect creatures via smell during rage"',
   'Strength Surge':
     'Section=combat ' +
     'Note="Can use an immediate action to gain +%{ragePowerLevel} on a Strength, CMB, or CMD check once per rage"',
@@ -971,7 +978,7 @@ Pathfinder.FEATURES = {
   'Cantrips':'Section=magic Note="Knows 0-level spells"',
   'Countersong':
     'Section=skill ' +
-    'Note="R30\' Can allow listeners to substitute the Bardic Performance check for saves vs. sonic magic and give them additional saves each rd vs. existing effects"',
+    'Note="R30\' Can allow listeners to substitute a Bardic Performance check for saves vs. sonic magic and give them additional saves each rd vs. existing effects"',
   'Deadly Performance':
     'Section=skill ' +
     'Note="R30\' Can use Bardic Performance to kill a target (save Will DC %{10+bardicPerformanceLevel//2+charismaModifier} inflicts staggered for 1d4 rd and prevents additional attempts for 24 hr)"',
@@ -980,7 +987,7 @@ Pathfinder.FEATURES = {
     'Note="R30\' Can use Bardic Performance to inflict shaken on foes"',
   'Distraction':
     'Section=skill ' +
-    'Note="R30\' Can allow listeners to substitute the Bardic Performance check for saves vs. pattern and figment illusions and give them additional saves each rd vs. existing effects"',
+    'Note="R30\' Can allow listeners to substitute a Bardic Performance check for saves vs. pattern and figment illusions and give them additional saves each rd vs. existing effects"',
   'Fascinate':
     SRD35.FEATURES.Fascinate
     .replace('vs. Perform check', 'DC %{10+bardicPerformanceLevel//2+charismaModifier}'),
@@ -1169,7 +1176,7 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="30\' emanation gives allies immunity to confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions for %{casterLevels.Liberation} rd per day"',
   'Liberation':
-    'Section=magic ' +
+    'Section=ability ' +
     'Note="Can ignore movement impediments for %{casterLevels.Liberation} rd per day"',
   // Luck Domain
   'Bit Of Luck':
@@ -1219,11 +1226,11 @@ Pathfinder.FEATURES = {
     'Note="30\' emanation gives allies a +%{(casterLevels.Protection-4)//4} deflection bonus to Armor Class and resistance %{casterLevels.Protection<14?5:10} to all energy for %{casterLevels.Protection} rd per day"',
   'Protection Domain':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
   'Resistant Touch':
-    'Section=magic ' +
+    'Section=save ' +
     'Note="Touch transfers resistance bonus to an ally for 1 min %{wisdomModifier+3} times per day"',
   // Repose Domain
   'Gentle Rest':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Touch inflicts staggered for 1 rd (undead for %{wisdomModifier} rd), or asleep on an already-staggered creature, %{wisdomModifier+3} times per day"',
   'Ward Against Death':
     'Section=magic ' +
@@ -1237,11 +1244,11 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Can add a known spell of up to level %{spellSlots.C9?8:spellSlots.C8?7:spellSlots.C7?6:spellSlots.C6?5:spellSlots.C5?4:3} to the effects of Blast Rune"',
   // Strength Domain
   'Might Of The Gods':
-    'Section=magic ' +
-    'Note="Can add +%{casterLevels.Strength} Strength for %{wisdomModifier+3} rd per day"',
+    'Section=ability ' +
+    'Note="Can gain +%{casterLevels.Strength} Strength for %{wisdomModifier+3} rd per day"',
   'Strength Surge (Cleric)':
     'Section=magic ' +
-    'Note="Touch gives a +%{casterLevels.Strength//2>?1} melee attack and Strength check bonus for 1 rd %{wisdomModifier+3} times per day"',
+    'Note="Touch gives +%{casterLevels.Strength//2>?1} melee attacks and Strength checks for 1 rd %{wisdomModifier+3} times per day"',
   // Sun Domain
   'Nimbus Of Light':
     'Section=magic ' +
@@ -1333,7 +1340,7 @@ Pathfinder.FEATURES = {
   'Weapon Training':
     'Section=combat ' +
     // TODO Implement? Group properties on weapons?
-    'Note="%V attacks, damage, CMB, and CMD with weapons from chosen groups"',
+    'Note="%V attacks, damage, CMB, and CMD with weapons from %1 chosen weapon group%{combatNotes.weaponTraining.1==1?\'\':\'s\'}"',
 
   // Monk
   'Abundant Step':
@@ -1359,9 +1366,7 @@ Pathfinder.FEATURES = {
   'Ki Dodge':
     'Section=combat ' +
     'Note="Can spend 1 Ki Point to gain a +4 dodge bonus to Armor Class for 1 rd"',
-  'Ki Pool':
-    'Section=combat ' +
-    'Note="%V points; refills after 8 hr rest/Can spend 1 point for an additional Flurry Of Blows attack at the highest bonus"',
+  'Ki Pool':'Section=combat Note="%V points; refills after 8 hr rest"',
   'Ki Speed':
     'Section=ability Note="Can spend 1 Ki Point to gain +20 Speed for 1 rd"',
   'Ki Strike':
@@ -1913,7 +1918,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
   'Blind-Fight':
     'Section=combat ' +
-    'Note="May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded"',
+    'Note="Can reroll misses due to concealment/Invisible foes gain no melee bonus/Requires no skill check to move full speed when blinded"',
   'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
   'Brew Potion':
     'Section=magic Note="May create potion for up to 3rd level spell"',
@@ -2041,8 +2046,6 @@ Pathfinder.FEATURES = {
   'Link':
     'Section=skill ' +
     'Note="+4 Handle Animal (companion)/+4 Wild Empathy (companion)"',
-  'Low-Light Rage':
-    'Section=feature Note="Gains x2 normal distance in poor light during rage"',
   'Magical Aptitude':'Section=skill Note="+%V Spellcraft/+%1 Use Magic Device"',
   'Manyshot':'Section=combat Note="May fire 2 arrows simultaneously"',
   'Maximize Spell':
@@ -2586,8 +2589,6 @@ Pathfinder.FEATURES = {
   'Savanna Child':
     'Section=skill ' +
     'Note="+1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill"',
-  'Scent Rage':
-    'Section=feature Note="May detect creatures via smell during rage"',
   'Scholar Of Balance':
     'Section=skill,skill ' +
     'Note=' +
@@ -4379,7 +4380,7 @@ Pathfinder.CLASSES = {
       '"8:Internal Fortitude:Rage Power",' +
       '"2:Intimidating Glare:Rage Power",' +
       '"2:Knockback:Rage Power",' +
-      '"2:Low-Light Rage:Rage Power",' +
+      '"2:Low-Light Vision (Barbarian):Rage Power",' +
       '"12:Mighty Swing:Rage Power",' +
       '"2:Moment Of Clarity:Rage Power",' +
       '"2:Night Vision:Rage Power",' +
@@ -4392,7 +4393,7 @@ Pathfinder.CLASSES = {
       '"8:Renewed Vigor:Rage Power",' +
       '"2:Rolling Dodge:Rage Power",' +
       '"2:Roused Anger:Rage Power",' +
-      '"2:Scent Rage:Rage Power",' +
+      '"2:Scent (Barbarian):Rage Power",' +
       '"2:Strength Surge:Rage Power",' +
       '"2:Superstition:Rage Power",' +
       '"2:Surprise Accuracy:Rage Power",' +
@@ -5967,10 +5968,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       );
     }
     rules.defineRule('wildShapeLevel', classLevel, '=', null);
-    Pathfinder.featureSpells(rules,
-      'A Thousand Faces', 'AThousandFaces', 'wisdom', classLevel,
-      null, ['Alter Self']
-    );
     rules.defineRule
       ('casterLevels.AThousandFaces', 'casterLevels.Druid', '=', null);
 
@@ -6001,8 +5998,11 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('combatNotes.weaponTraining',
       classLevel, '=',
-        '(source>=17 ? "+4/" : "") + (source>=13 ? "+3/" : "") + ' +
-        '(source>=9 ? "+2/" : "") + "+1"'
+        '(source>=17 ? "+4, " : "") + (source>=13 ? "+3, " : "") + ' +
+        '(source>=9 ? "+2, " : "") + "+1"'
+    );
+    rules.defineRule('combatNotes.weaponTraining.1',
+      'combatNotes.weaponTraining', '=', '(source+"").replace("+", "").replace(/,.*/, "")'
     );
     rules.defineRule
       ('damageReduction.-', 'combatNotes.armorMastery.1', '^=', '5');
@@ -6044,10 +6044,10 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "+" + source : source'
     );
     rules.defineRule('combatNotes.flurryOfBlows.2',
-      'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? "/+" + source : ("/" + source)'
+      'combatNotes.flurryOfBlows.0', '=', 'source>=0 ? ", +" + source : (", " + source)'
     );
     rules.defineRule('combatNotes.flurryOfBlows.3',
-      'combatNotes.flurryOfBlows.0', '=', 'source>=5 ? "/+" + (source - 5) : ("/" + (source - 5))',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=5 ? ", +" + (source - 5) : (", " + (source - 5))',
       classLevel, '=', 'source<6 ? "" : null'
     );
     rules.defineRule('combatNotes.flurryOfBlows.4',
@@ -6055,7 +6055,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source<8 ? "" : null'
     );
     rules.defineRule('combatNotes.flurryOfBlows.5',
-      'combatNotes.flurryOfBlows.0', '=', 'source>=10 ? "/+" + (source - 10) : ("/" + (source - 10))',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=10 ? ", +" + (source - 10) : (", " + (source - 10))',
       classLevel, '=', 'source<11 ? "" : null'
     );
     rules.defineRule('combatNotes.flurryOfBlows.6',
@@ -6063,7 +6063,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '=', 'source<15 ? "" : null'
     );
     rules.defineRule('combatNotes.flurryOfBlows.7',
-      'combatNotes.flurryOfBlows.0', '=', 'source>=15 ? "/+" + (source - 15) : ("/" + (source - 15))',
+      'combatNotes.flurryOfBlows.0', '=', 'source>=15 ? ", +" + (source - 15) : (", " + (source - 15))',
       classLevel, '=', 'source<16 ? "" : null'
     );
     rules.defineRule('combatNotes.flurryOfBlows.8',
@@ -6096,6 +6096,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.bonusFeats(Monk)',
       classLevel, '=', '1 + Math.floor((source + 2) / 4)'
     );
+    rules.defineRule
+      ('resistance.Disease', 'saveNotes.purityOfBody', '=', '"immune"');
     rules.defineRule
       ('saveNotes.diamondSoul', classLevel, '=', '10 + source');
     rules.defineRule('selectableFeatureCount.Monk (Bonus Feats)',
@@ -7457,8 +7459,9 @@ Pathfinder.raceRulesExtra = function(rules, name) {
     );
     rules.defineRule('skillNotes.stonecunning', '', '=', '2');
   } else if(name.match(/Gnome/)) {
+    rules.defineRule('magicNotes.gnomeMagic-1', 'charisma', '?', 'source>10');
     rules.defineRule
-      ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+', '1');
+      ('spellDCSchoolBonus.Illusion', 'magicNotes.gnomeMagic', '+=', '1');
     rules.defineRule('spells.Dancing Lights(GnomeMagic0 Evoc)',
       'charisma', '?', 'source>10'
     );

@@ -19,14 +19,14 @@ var attributes = {
   "selectableFeatures.Barbarian - Clear Mind":1, "selectableFeatures.Barbarian - Fearless Rage":1, 
   "selectableFeatures.Barbarian - Guarded Stance":1, "selectableFeatures.Barbarian - Increased Damage Reduction":1, 
   "selectableFeatures.Barbarian - Internal Fortitude":1, "selectableFeatures.Barbarian - Intimidating Glare":1, 
-  "selectableFeatures.Barbarian - Knockback":1, "selectableFeatures.Barbarian - Low-Light Rage":1, 
+  "selectableFeatures.Barbarian - Knockback":1, "selectableFeatures.Barbarian - Low-Light Vision (Barbarian)":1, 
   "selectableFeatures.Barbarian - Mighty Swing":1, "selectableFeatures.Barbarian - Moment Of Clarity":1, 
   "selectableFeatures.Barbarian - Night Vision":1, "selectableFeatures.Barbarian - No Escape":1, 
   "selectableFeatures.Barbarian - Powerful Blow":1, "selectableFeatures.Barbarian - Quick Reflexes":1, 
   "selectableFeatures.Barbarian - Raging Climber":1, "selectableFeatures.Barbarian - Raging Leaper":1, 
   "selectableFeatures.Barbarian - Raging Swimmer":1, "selectableFeatures.Barbarian - Renewed Vigor":1, 
   "selectableFeatures.Barbarian - Rolling Dodge":1, "selectableFeatures.Barbarian - Roused Anger":1, 
-  "selectableFeatures.Barbarian - Scent Rage":1, "selectableFeatures.Barbarian - Strength Surge":1, 
+  "selectableFeatures.Barbarian - Scent (Barbarian)":1, "selectableFeatures.Barbarian - Strength Surge":1, 
   "selectableFeatures.Barbarian - Superstition":1, "selectableFeatures.Barbarian - Surprise Accuracy":1, 
   "selectableFeatures.Barbarian - Swift Foot":1, "selectableFeatures.Barbarian - Terrifying Howl":1, 
   "selectableFeatures.Barbarian - Unexpected Strike":1, "shield":"Heavy Steel", "skills.Bluff":10, "skills.Climb":10, 
@@ -103,7 +103,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Defensive Combat Training; Great Fortitude; Leadership; Skill Focus (Climb); Skill Focus (Disable Device); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Perform (Wind)); Skill Focus (Sense Motive); Step Up; Throw Anything</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
-        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Light; Medium; Shield); Clear Mind; Damage Reduction; Fast Movement (Barbarian); Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Rage; Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent Rage; Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Barbarian Features</b>: Animal Fury; Armor Proficiency (Light; Medium; Shield); Clear Mind; Damage Reduction; Fast Movement (Barbarian); Fearless Rage; Greater Rage; Guarded Stance; Improved Uncanny Dodge; Increased Damage Reduction; Indomitable Will; Internal Fortitude; Intimidating Glare; Knockback; Low-Light Vision (Barbarian); Mighty Rage; Mighty Swing; Moment Of Clarity; Night Vision; No Escape; Powerful Blow; Quick Reflexes; Rage Powers; Rage; Raging Climber; Raging Leaper; Raging Swimmer; Renewed Vigor; Rolling Dodge; Roused Anger; Scent (Barbarian); Strength Surge; Superstition; Surprise Accuracy; Swift Foot; Terrifying Howl; Tireless Rage; Trap Sense; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -115,11 +115,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Leadership: Attracts followers</td>
       </tr><tr style="text-align:center">
-        <td>Low-Light Rage: Gains x2 normal distance in poor light during rage</td>
+        <td>Low-Light Vision (Barbarian): Can see double the normal distance in poor light during rage</td>
       </tr><tr style="text-align:center">
-        <td>Night Vision: Has 60' Darkvision during rage</td>
-      </tr><tr style="text-align:center">
-        <td>Scent Rage: May detect creatures via smell during rage</td>
+        <td>Night Vision: R60' Has black and white vision in complete darkness during rage</td>
       </tr></table>
 </td>
     </tr></table>
@@ -187,6 +185,8 @@ var attributes = {
         <td>Raging Leaper: +20 Acrobatics for jumping during rage</td>
       </tr><tr style="text-align:center">
         <td>Raging Swimmer: +20 Swim during rage</td>
+      </tr><tr style="text-align:center">
+        <td>Scent (Barbarian): Can detect creatures via smell during rage</td>
       </tr></table>
 </td>
     </tr></table>
@@ -271,7 +271,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Rolling Dodge: Can gain a +4 dodge bonus to Armor Class vs. ranged attacks for 4 rd during rage</td>
       </tr><tr style="text-align:center">
-        <td>Roused Anger: Can rage when fatigued, gaining immuity to fatigued but becoming exhausted for 10 min per rd raging afterward</td>
+        <td>Roused Anger: Can rage when fatigued, gaining immuity to fatigued but becoming exhausted afterward for 10 min per rd raging</td>
       </tr><tr style="text-align:center">
         <td>Step Up: May match foe 5' step</td>
       </tr><tr style="text-align:center">
