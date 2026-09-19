@@ -1915,6 +1915,11 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can apply a metamagic feat to a spell without changing its level or casting time %{levels.Wizard>9?(levels.Wizard-6)//2+\' times\':\'once\'} per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses"',
 
+  // Adept
+  'Summon Familiar':'Section=companion Note="Has the Familiar feature"',
+  // Expert
+  'Expert Skills':SRD35.FEATURES['Expert Skills'],
+
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
@@ -4897,7 +4902,7 @@ Pathfinder.NPC_CLASSES = {
   'Adept':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple Weapons)","2:Familiar" ' +
+      '"1:Weapon Proficiency (Simple Weapons)","2:Summon Familiar" ' +
     'Skills=' +
       'Craft,"Handle Animal",Heal,Knowledge,Profession,Spellcraft,Survival ' +
     'CasterLevelDivine=levels.Adept ' +
@@ -4926,8 +4931,8 @@ Pathfinder.NPC_CLASSES = {
   'Expert':
     'HitDie=d6 Attack=3/4 SkillPoints=6 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Simple Weapons)"',
-    // 10 skills of player's choice
+      '"1:Armor Proficiency (Light)","1:Weapon Proficiency (Simple Weapons)",' +
+      '"1:Expert Skills"',
   'Warrior':
     'HitDie=d8 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
@@ -6676,7 +6681,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule
       ('familiarMasterLevel', 'familiarAdeptLevel', '^=', null);
     rules.defineRule('familiarAdeptLevel',
-      'adeptFeatures.Familiar', '?', null,
+      'adeptFeatures.Summon Familiar', '?', null,
       classLevel, '=', null
     );
 
