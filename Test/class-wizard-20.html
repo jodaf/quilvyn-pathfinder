@@ -251,7 +251,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Wizard): +4 Wizard Feats</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Power Over Undead: +1 General Feat (Command Undead or Turn Undead), usable 5 times per day</i></td>
+        <td><i>Power Over Undead: +1 General Feat (Command Undead or Turn Undead)</i></td>
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
@@ -326,23 +326,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Familiar Owl: +3 Spot in shadows and darkness</td>
       </tr><tr style="text-align:center">
-        <td>Life Sight: R40' Can use Blindsight to detect living and undead creatures for 20 rd per day</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Abjuration): +2 Spellcraft (Abjuration effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Conjuration): +2 Spellcraft (Conjuration effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Divination): +2 Spellcraft (Divination effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Enchantment): +2 Spellcraft (Enchantment effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Evocation): +2 Spellcraft (Evocation effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Illusion): +2 Spellcraft (Illusion effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Necromancy): +2 Spellcraft (Necromancy effects)</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Transmutation): +2 Spellcraft (Transmutation effects)</td>
+        <td>Life Sight: R40' Can locate unseen living and undead creatures for 20 rd per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -395,17 +379,31 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Acid Dart (Conjuration): R30' Ranged touch attack inflicts 1d6+10 HP acid 5 times per day</td>
       </tr><tr style="text-align:center">
+        <td>Aura Of Despair: R30' Foes suffer -2 ability checks, attacks, damage, saves, and skill checks for 20 rd per day</td>
+      </tr><tr style="text-align:center">
         <td>Blinding Ray: R30' Ranged touch attack blinds a target with up to 20 HD or dazzles a target with more for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Command Undead: R30' May use Channel Energy to control 20 HD of undead (21 DC Will neg)</td>
+      </tr><tr style="text-align:center">
+        <td>Dazing Touch (Enchantment): Touch dazes a foe with up to 20 HD for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Diviner's Fortune: Touch gives +10 attacks, skill checks, ability checks, and saves for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Force Missile: Missile automatically hits, inflicting 1d4+10 HP force, 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Forewarned: Can always act during the surprise round/Can take 20 on Initiative</td>
       </tr><tr style="text-align:center">
         <td>Freedom Fighter (Liberty's Edge): +1 attack during surprise rd</td>
       </tr><tr style="text-align:center">
+        <td>Grave Touch (Necromancy): Touch inflicts shaken on living creatures for 10 rd and frightens already-shaken creatures with up to 19 HD for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
         <td>Hand Of The Apprentice: R30' Can make a +12 ranged attack with a melee weapon 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+      </tr><tr style="text-align:center">
+        <td>Power Over Undead: Can use chosen Power Over Undead feat 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Protective Ward: R10' Can give allies a +5 deflection bonus to Armor Class for 2 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Telekinetic Fist: R30' Ranged touch attack inflicts 1d4+10 HP bludgeoning 5 times per day</td>
       </tr><tr style="text-align:center">
@@ -498,8 +496,6 @@ var attributes = {
       <td>Bear's Endurance (W2 Tran): Touched gains +4 Constitution for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Beast Shape I (W3 Tran): Self becomes small (+2 Dexterity, +1 AC) or medium (+2 Strength, +2 AC) animal for 20 min</td>
-    </tr><tr style="text-align:left">
-      <td>Beast Shape II (Change Shape4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Beast Shape II (W4 Tran): Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for 20 min</td>
     </tr><tr style="text-align:left">
@@ -645,17 +641,15 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Eagle's Splendor (W2 Tran): Touched gains +4 Charisma for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body I (Change Shape4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
-    </tr><tr style="text-align:left">
       <td>Elemental Body I (W4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Body II (Change Shape5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Body II (W5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body III (W6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks for 20 min</td>
+      <td>Elemental Body III (W6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and Sneak Attacks for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (W7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 20 min</td>
+      <td>Elemental Body IV (W7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and Sneak Attacks, DR 5/- for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Endure Elements (W1 Abju): Touched remains comfortable between -50F and 140F for 1 day</td>
     </tr><tr style="text-align:left">
@@ -707,7 +701,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Floating Disk (W1 Evoc): R75' 3'-diameter, 1" thick force disk can hold 2000 lbs and follows self at a 5' distance, 3' off the ground, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fly (W3 Tran): Touched gains 60' fly speed and +10 Fly skill for 20 min</td>
+      <td>Fly (W3 Tran): Touched gains 60' fly Speed and +10 Fly skill for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Fog Cloud (W2 Conj): R300' 20' radius fog obscures vision for 200 min</td>
     </tr><tr style="text-align:left">
@@ -729,7 +723,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Freezing Sphere (W6 Evoc): R1200' 40' radius inflicts 15d6 HP (Ref half)</td>
     </tr><tr style="text-align:left">
-      <td>Gaseous Form (W3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, sneak attacks, and critical hits, unable to use spell components, fly 10') for 40 min</td>
+      <td>Gaseous Form (W3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, Sneak Attacks, and critical hits, unable to use spell components, fly 10') for 40 min</td>
     </tr><tr style="text-align:left">
       <td>Gate (W9 Conj): R300' Creates a 5'-20' diameter disk passage to another plane for concentration up to 20 rd, or, at the cost of 1000 XP, allows summoning extraplanar creatures—a named creature, a single creature of a named kind, or up to 40 HD of a named kind</td>
     </tr><tr style="text-align:left">
@@ -751,7 +745,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Grasping Hand (W7 Evoc): R300' 10' hand (AC 20, 53 HP) moves 60'/rd, gives +4 AC, and performs +31 bull rush and +31 grapple for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Grease (W1 Conj): R75' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for 20 min</td>
+      <td>Grease (W1 Conj): R75' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Greater Arcane Sight (W7 Divi): R120' Reveals auras, spell abilities, and spells affecting creatures and objects for 20 min</td>
     </tr><tr style="text-align:left">
@@ -967,7 +961,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Open/Close (W0 Tran): R75' Target object of up to 30 lb opens or closes (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (W5 Tran): Self gains 40' fly speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (W5 Tran): Self gains 40' fly Speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom (W2 Tran): Touched gains +4 Wisdom for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1287,8 +1281,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>School Specialization (Transmutation): +1 Transmutation spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Despair: R30' Foes suffer -2 ability checks, attacks, damage, saves, and skill checks for 20 rd per day</td>
-    </tr><tr style="text-align:center">
       <td>Bonded Object: Can cast a known spell through a chosen object</td>
     </tr><tr style="text-align:center">
       <td>Brew Potion: May create potion for up to 3rd level spell</td>
@@ -1299,11 +1291,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Craft Wondrous Item: May create and mend miscellaneous magic items</td>
     </tr><tr style="text-align:center">
-      <td>Dazing Touch (Enchantment): Touch dazes a foe with up to 20 HD for 1 rd 5 times per day</td>
-    </tr><tr style="text-align:center">
       <td>Dimensional Steps: Can teleport 600' per day</td>
-    </tr><tr style="text-align:center">
-      <td>Diviner's Fortune: Touch gives +10 attacks, skill checks, ability checks, and saves for 1 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Wall: Can use <i>Wall Of Fire</i> effects to inflict acid, cold, electricity, or fire damage for 20 rd per day</td>
     </tr><tr style="text-align:center">
@@ -1311,21 +1299,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Extended Illusions: Increases the duration of Illusion spells by 10 rd and can make permanent 1 Illusion spell at a time</td>
     </tr><tr style="text-align:center">
-      <td>Force Missile: Missile automatically hits, inflicting 1d4+10 HP force, 5 times per day</td>
-    </tr><tr style="text-align:center">
-      <td>Grave Touch (Necromancy): Touch inflicts shaken on living creatures for 10 rd and frightens already-shaken creatures with up to 19 HD for 1 rd 5 times per day</td>
-    </tr><tr style="text-align:center">
       <td>Heighten Spell: May cast chosen spell at a higher level</td>
     </tr><tr style="text-align:center">
       <td>Intense Spells: Evocation spells inflict +10 HP and can use the better of 2 rolls to overcome SR</td>
     </tr><tr style="text-align:center">
-      <td>Invisibility Field: Can use swift actions to invoke <i>Greater Invisibility</i> effects for 20 rd per day</td>
+      <td>Invisibility Field: Can use swift actions to invoke <i>Greater Invisibility</i> effects on self for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
     </tr><tr style="text-align:center">
       <td>Metamagic Mastery: Can apply a metamagic feat to a spell without changing its level or casting time 7 times per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses</td>
-    </tr><tr style="text-align:center">
-      <td>Protective Ward: R10' Allies gain a +5 deflection bonus to Armor Class for 2 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
     </tr><tr style="text-align:center">
@@ -1345,7 +1327,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>School Opposition (Transmutation): Casting Transmutation spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
-      <td>Scribe Scroll: May create scroll of any known spell</td>
+      <td>Scribe Scroll: Can create scrolls for known spells</td>
     </tr><tr style="text-align:center">
       <td>Scrying Adept: Has continuous <i>Detect Scrying</i> effects/Gains +1 familiarity step when scrying</td>
     </tr><tr style="text-align:center">
@@ -1392,11 +1374,11 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
+      <td><i>Companion Improved Evasion: Has increased Companion Evasion effects</i></td>
+    </tr><tr style="text-align:center">
       <td><i>Companion Spell Resistance: Companion has SR 25</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
-    </tr><tr style="text-align:center">
-      <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>
+      <td>Companion Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
       <td>Deliver Touch Spells: May deliver touch spells if in contact w/master when cast</td>
     </tr><tr style="text-align:center">

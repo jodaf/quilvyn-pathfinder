@@ -557,11 +557,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Inspire Courage: Can use Bardic Performance to give allies +1 attack, damage, and charm and fear saves</td>
       </tr><tr style="text-align:center">
-        <td>School Specialization (Abjuration): +2 Spellcraft (Abjuration effects)</td>
-      </tr><tr style="text-align:center">
         <td>Versatile Skill (Dance): Can use Perform (Dance) in place of Acrobatics and Fly</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: Can make a +2 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 imposes a -4 penalty on the check</td>
+        <td>Wild Empathy: Can make a +2 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -624,6 +622,8 @@ var attributes = {
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
         <td>Power Attack: May suffer -4 attack to gain +8 damage (+12 when wielding weapon w/two hands)</td>
+      </tr><tr style="text-align:center">
+        <td>Protective Ward: R10' Can give allies a +1 deflection bonus to Armor Class for 2 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Quick Draw: May draw a weapon as a free action</td>
       </tr><tr style="text-align:center">
@@ -1100,7 +1100,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Detect Evil (C1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 40 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 200 min</td>
+      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 40 min</td>
     </tr><tr style="text-align:left">
       <td>Detect Good (C1 Divi): 60' cone reveals the presence and power of good auras for concentration up to 40 min</td>
     </tr><tr style="text-align:left">
@@ -1244,9 +1244,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Elemental Body II (W5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 4 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body III (W6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks for 4 min</td>
+      <td>Elemental Body III (W6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and Sneak Attacks for 4 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (W7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 4 min</td>
+      <td>Elemental Body IV (W7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and Sneak Attacks, DR 5/- for 4 min</td>
     </tr><tr style="text-align:left">
       <td>Elemental Swarm (D9 Conj): R140' Summons at 10-min intervals from a chosen elemental plane a series of obedient elementals: 2d4 large; 1d4 huge; 1 greater, for 40 min</td>
     </tr><tr style="text-align:left">
@@ -1364,7 +1364,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Floating Disk (W1 Evoc): R35' 3'-diameter, 1" thick force disk can hold 400 lbs and follows self at a 5' distance, 3' off the ground, for 4 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fly (W3 Tran): Touched gains 60' fly speed and +2 Fly skill for 4 min</td>
+      <td>Fly (W3 Tran): Touched gains 60' fly Speed and +2 Fly skill for 4 min</td>
     </tr><tr style="text-align:left">
       <td>Fog Cloud (D2 Conj): R140' 20' radius fog obscures vision for 40 min</td>
     </tr><tr style="text-align:left">
@@ -1400,9 +1400,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Freezing Sphere (W6 Evoc): R560' 40' radius inflicts 4d6 HP (Ref half)</td>
     </tr><tr style="text-align:left">
-      <td>Gaseous Form (B3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, sneak attacks, and critical hits, unable to use spell components, fly 10') for 8 min</td>
+      <td>Gaseous Form (B3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, Sneak Attacks, and critical hits, unable to use spell components, fly 10') for 8 min</td>
     </tr><tr style="text-align:left">
-      <td>Gaseous Form (W3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, sneak attacks, and critical hits, unable to use spell components, fly 10') for 8 min</td>
+      <td>Gaseous Form (W3 Tran): Touched becomes insubstantial (DR 10/magic, immune to poison, Sneak Attacks, and critical hits, unable to use spell components, fly 10') for 8 min</td>
     </tr><tr style="text-align:left">
       <td>Gate (C9 Conj): R140' Creates a 5'-20' diameter disk passage to another plane for concentration up to 4 rd, or, at the cost of 1000 XP, allows summoning extraplanar creatures—a named creature, a single creature of a named kind, or up to 8 HD of a named kind</td>
     </tr><tr style="text-align:left">
@@ -1448,9 +1448,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Grasping Hand (W7 Evoc): R140' 10' hand (AC 20, 66 HP) moves 60'/rd, gives +4 AC, and performs +15 bull rush and +15 grapple for 4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Grease (B1 Conj): R35' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for 4 min</td>
+      <td>Grease (B1 Conj): R35' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for 4 min</td>
     </tr><tr style="text-align:left">
-      <td>Grease (W1 Conj): R35' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half speed) for 4 min</td>
+      <td>Grease (W1 Conj): R35' Object or 10' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for 4 min</td>
     </tr><tr style="text-align:left">
       <td>Greater Arcane Sight (W7 Divi): R120' Reveals auras, spell abilities, and spells affecting creatures and objects for 4 min</td>
     </tr><tr style="text-align:left">
@@ -1974,7 +1974,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Order's Wrath (C4 Evoc): R140' Chaotic creatures in a 30' cube suffer 2d8 HP, or trued6 HP to chaotic outsiders, and are dazed for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (W5 Tran): Self gains 40' fly speed and +2 Fly skill for 4 hr</td>
+      <td>Overland Flight (W5 Tran): Self gains 40' fly Speed and +2 Fly skill for 4 hr</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom (C2 Tran): Touched gains +4 Wisdom for 4 min</td>
     </tr><tr style="text-align:left">
@@ -2386,7 +2386,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Spike Growth (D3 Tran): R140' Vegetation in a 80 square foot area inflicts 1d4 HP piercing for each 5' of movement and slows creatures to half Speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 4 hr</td>
     </tr><tr style="text-align:left">
-      <td>Spike Stones (D4 Tran): R140' Stony ground in a 80 square foot area inflicts 1d8 HP piercing for each 5' movement and slows creatures to half speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 4 hr</td>
+      <td>Spike Stones (D4 Tran): R140' Stony ground in a 80 square foot area inflicts 1d8 HP piercing for each 5' movement and slows creatures to half Speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 4 hr</td>
     </tr><tr style="text-align:left">
       <td>Spiritual Weapon (C2 Evoc): R140' Creates a force weapon (+16 attacks; inflicts 1d8+1 HP force; crit same as the corresponding physical weapon) that attacks a designated foe for 4 rd; can use move actions to redirect to different targets, and the first attack on each creature is subject to SR</td>
     </tr><tr style="text-align:left">
@@ -2736,21 +2736,19 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Detect Evil: Can use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can use +2 spell slot to increase chosen spell variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Lay On Hands: Touch restores 2d6 hit points once per day; use on undead instead inflicts HP</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands also removes fatigued</td>
+      <td>Mercy: Lay On Hands also removes the fatigued condition</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
-    </tr><tr style="text-align:center">
-      <td>Protective Ward: R10' Allies gain a +1 deflection bonus to Armor Class for 2 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Enchantment): Casting Enchantment spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Necromancy): Casting Necromancy spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
-      <td>Scribe Scroll: May create scroll of any known spell</td>
+      <td>Scribe Scroll: Can create scrolls for known spells</td>
     </tr><tr style="text-align:center">
       <td>Speak With Animals: Can use <i>Speak With Animals</i> effects for 7 rd per day</td>
     </tr><tr style="text-align:center">
