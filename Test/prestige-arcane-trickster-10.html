@@ -97,7 +97,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Craft Wondrous Item; Empower Spell; Endurance; Great Fortitude; Leadership; Point-Blank Shot; Skill Focus (Disable Device); Spell Focus (Divination); Stealthy; Toughness; Weapon Focus (Dagger); Weapon Focus (Unarmed Strike)</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
-        <td><b>Arcane Trickster Features</b>: Caster Level Bonus; Impromptu Sneak Attack; Invisible Thief; Ranged Legerdemain; Sneak Attack; Surprise Spells; Tricky Spells</td>
+        <td><b>Arcane Trickster Features</b>: Arcane Caster Level Bonus; Impromptu Sneak Attack; Invisible Thief; Ranged Legerdemain; Sneak Attack; Surprise Spells; Tricky Spells</td>
         <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Bloodline; Cantrips; Claws; Dragon Resistances; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Rogue Features</b>: Armor Proficiency (Light); Evasion; Fast Stealth; Rogue Talents; Sneak Attack; Trap Sense; Trapfinding; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword); Weapon Training (Rogue)</td>
       </tr></table>
@@ -166,7 +166,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Fast Stealth: Can use Stealth at full Speed without penalty</td>
       </tr><tr style="text-align:center">
-        <td>Ranged Legerdemain: May attempt R30' Disable Device or Sleight Of Hand at +5 DC</td>
+        <td>Ranged Legerdemain: Can use Disable Device and Sleight Of Hand at a range of 30', increasing the DC by 5</td>
       </tr><tr style="text-align:center">
         <td>Trapfinding: +2 Perception to locate traps and Disable Device to disarm them</td>
       </tr></table>
@@ -230,13 +230,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Claws: Can make 2 +14 magical attacks that inflict 1d4+3 HP each for 3 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Impromptu Sneak Attack: May declare any attack a Sneak Attack 2/dy</td>
+        <td>Impromptu Sneak Attack: Can declare any melee attack or ranged attack within 30' a Sneak Attack 2 times per day</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
       </tr><tr style="text-align:center">
         <td>Sneak Attack: Melee hit or ranged hit within 30' inflicts +7d6 HP when the target is flanked or denied its Dexterity bonus</td>
-      </tr><tr style="text-align:center">
-        <td>Surprise Spells: Spells inflict Sneak Attack damage vs. flat-footed foes</td>
       </tr><tr style="text-align:center">
         <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
@@ -279,7 +277,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 2; S8: 1</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 6; S2: 6; S3: 6; S4: 6; S5: 6; S6: 6; S7: 5; S8: 3</td>
-        <td><b>Spell DC</b>: S: 10</td>
+        <td><b>Spell DC</b>: Invisible Thief: 10; S: 10</td>
       </tr></table>
 </td>
     </tr></table>
@@ -326,6 +324,8 @@ var attributes = {
       <td>Feather Fall (S1 Tran): R65' 16 falling targets in a 10' radius slow to 60' per rd (save Will negates) for 16 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Dispel Magic (S6 Abju): R260' Successful d20+16 check vs. 11+caster level cancels 4 targeted spells or 1 spell or curse on each creature in a 20' radius</td>
+    </tr><tr style="text-align:left">
+      <td>Greater Invisibility (Invisible Thief4 Illu): Touched becomes invisible for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Planar Binding (S8 Conj): Traps 1-3 extraplanar creatures with up to 18 HD total in a <i>Magic Circle</i> (save Will negates) until they perform a task (opposed Charisma allows refusal), escape via SR, dimensional travel, or a 23 Charisma check, or 16 days pass</td>
     </tr><tr style="text-align:left">
@@ -399,7 +399,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Caster Level Bonus: +10 base class level for spells known and spells per day</i></td>
+      <td><i>Arcane Caster Level Bonus: +10 arcane base class level for spells known and spells per day</i></td>
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Divination): +1 Spell DC (Divination)</i></td>
     </tr><tr style="text-align:center">
@@ -415,9 +415,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Can cast spells without materials</td>
     </tr><tr style="text-align:center">
-      <td>Invisible Thief: May become invisible 10 rd/dy</td>
+      <td>Invisible Thief: Can use <i>Greater Invisibility</i> effects on self for 10 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Tricky Spells: May use Silent Spell and Still Spell 5/dy</td>
+      <td>Surprise Spells: Spells that inflict HP damage also inflict Sneak Attack damage vs. flat-footed foes</td>
+    </tr><tr style="text-align:center">
+      <td>Tricky Spells: Can cast a spell without somatic or verbal components 5 times per day</td>
     </tr></table>
 </td>
   </tr></table>

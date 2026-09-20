@@ -1917,8 +1917,51 @@ Pathfinder.FEATURES = {
 
   // Adept
   'Summon Familiar':'Section=companion Note="Has the Familiar feature"',
+
   // Expert
   'Expert Skills':SRD35.FEATURES['Expert Skills'],
+
+  // Arcane Archer
+  'Arcane Caster Level Bonus':SRD35.FEATURES['Arcane Caster Level Bonus'],
+  'Arrow Of Death':
+    SRD35.FEATURES['Arrow Of Death']
+    .replace('20', '%{20+charismaModifier}'),
+  'Enhance Arrows (Aligned)':
+    'Section=combat ' +
+    'Note="Arrows fired by self gain a choice of <i>anarchic</i>, <i>axiomatic</i>, <i>holy</i>, or <i>unholy</i> each day"',
+  'Enhance Arrows (Distance)':
+    'Section=combat Note="Arrows fired by self have x2 range"',
+  'Enhance Arrows (Elemental)':
+    'Section=combat Note="Arrows fired by self gain a choice of %V each day"',
+  'Enhance Arrows (Magic)':
+    'Section=combat Note="Arrows fired by self have a +1 enhancement bonus"',
+  'Hail Of Arrows':SRD35.FEATURES['Hail Of Arrows'],
+  'Imbue Arrow':SRD35.FEATURES['Imbue Arrow'],
+  'Phase Arrow':
+    SRD35.FEATURES['Phase Arrow']
+    .replace(' once ', " %{$$'levels.Arcane Archer'>7?($$'levels.Arcane Archer'-4)//2+' times ':' once '}"),
+  'Seeker Arrow':
+    SRD35.FEATURES['Seeker Arrow']
+    .replace(' once ', " %{$$'levels.Arcane Archer'>5?($$'levels.Arcane Archer'-2)//2+' times ':' once '}"),
+
+  // Arcane Trickster
+  // Arcane Caster Level Bonus as above
+  'Impromptu Sneak Attack':SRD35.FEATURES['Impromptu Sneak Attack'],
+  'Invisible Thief':
+    'Section=magic ' +
+    'Note="Can use <i>Greater Invisibility</i> effects on self for %{$\'levels.Arcane Trickster\'} rd per day" ' +
+    'Spells="Greater Invisibility" ' +
+    'SpellAbility=Charisma',
+  'Ranged Legerdemain':
+    'Section=skill ' +
+    'Note="Can use Disable Device and Sleight Of Hand at a range of 30\', increasing the DC by 5"',
+  // Sneak Attack as above
+  'Surprise Spells':
+    'Section=magic ' +
+    'Note="Spells that inflict HP damage also inflict Sneak Attack damage vs. flat-footed foes"',
+  'Tricky Spells':
+    'Section=magic ' +
+    'Note="Can cast a spell without somatic or verbal components %{($\'levels.Arcane Trickster\'+1)//2} times per day"',
 
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -2775,16 +2818,12 @@ Pathfinder.FEATURES = {
   'World Traveler (Trait)':
     'Section=skill ' +
     'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
+
   // Prestige classes
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
   'Angel Of Death':
     'Section=combat Note="Death attack disintegrates corpse 1/dy"',
-  'Arcane Caster Level Bonus':
-    'Section=magic ' +
-    'Note="+%V arcane base class level for spells known and spells per day"',
   'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
-  'Arrow Of Death':
-    'Section=combat Note="Special arrow kills foe (DC %V Fort neg)"',
   'Blood Of Dragons':
     'Section=feature ' +
     'Note="Dragon Disciple level triggers Bloodline features"',
@@ -2824,13 +2863,6 @@ Pathfinder.FEATURES = {
   'Dragon Form':
     'Section=magic Note="May use <i>Form Of The Dragon %V</i> effects %1/dy"',
   'Elaborate Defense':'Section=combat Note="+%V AC when fighting defensively"',
-  'Enhance Arrows (Aligned)':
-    'Section=combat ' +
-    'Note="May add <i>anarchic</i>, <i>axiomatic</i>, <i>holy</i>, or <i>unholy</i> property to arrows"',
-  'Enhance Arrows (Distance)':'Section=combat Note="Arrows have dbl range"',
-  'Enhance Arrows (Elemental)':'Section=combat Note="Arrows gain choice of %V"',
-  'Enhance Arrows (Magic)':
-    'Section=combat Note="Arrows treated as +1 magic weapons"',
   'Enhanced Mobility':
     'Section=combat Note="+4 AC vs. movement AOO in light or no armor"',
   'Epic Tales':
@@ -2841,12 +2873,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Bardic Performance takes effect when read by others"',
   'Greater Lore':
     'Section=skill Note="+10 Spellcraft (identify magic item properties)"',
-  'Hail Of Arrows':
-    'Section=combat Note="May simultaneously fire arrows at %V targets 1/dy"',
   'Hidden Weapons':'Section=skill Note="+%V Sleight Of Hand (hide weapons)"',
-  'Imbue Arrow':'Section=magic Note="May center spell where arrow lands"',
-  'Impromptu Sneak Attack':
-    'Section=combat Note="May declare any attack a Sneak Attack %V/dy"',
   'Improved Aid':
     'Section=combat Note="Using aid another action gives +4 bonus"',
   'Improved Reaction':'Section=combat Note="+%V Initiative"',
@@ -2855,7 +2882,6 @@ Pathfinder.FEATURES = {
     'Note="May use Bardic Performance to give ally extra %V action"',
   'Instant Mastery':'Section=skill Note="Gains 4 ranks in untrained skill"',
   'Intelligence Boost':'Section=ability Note="+2 Intelligence"',
-  'Invisible Thief':'Section=magic Note="May become invisible %V rd/dy"',
   'Lay Of The Exalted Dead':
     'Section=magic ' +
     'Note="May summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
@@ -2886,8 +2912,6 @@ Pathfinder.FEATURES = {
       '"DC 15 Survival check gives Pathfinding benefits to %V companions",' +
       '"+5 vs. <i>Maze</i>",' +
       '"+5 Survival (avoid becoming lost)"',
-  'Phase Arrow':
-    'Section=combat Note="Arrow may pass through normal obstacles %V/dy"',
   'Poison Use':
     'Section=feature ' +
     'Note="No chance of self-poisoning when applying poison to a weapon"',
@@ -2896,16 +2920,11 @@ Pathfinder.FEATURES = {
     'Note="+%V HP damage with light or one-handed piercing weapon"',
   'Quiet Death':
     'Section=combat Note="May use Stealth to perform Death Attack unnoticed"',
-  'Ranged Legerdemain':
-    'Section=skill ' +
-    'Note="May attempt R30\' Disable Device or Sleight Of Hand at +5 DC"',
   'Riposte':'Section=combat Note="May take AOO after parry"',
   'Save Bonus Against Poison':'Section=save Note="+%V vs. poison"',
   'Secret Health':'Section=combat Note="+%V HP"',
   'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
   'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
-  'Seeker Arrow':
-    'Section=combat Note="Arrow may maneuver to target %V/dy"',
   'Shadow Call':
     'Section=magic ' +
     'Note="May mimic conjuration (creation or summoning) spell up to %1 level (DC %2 Will 20% effect) %V/dy"',
@@ -2931,14 +2950,9 @@ Pathfinder.FEATURES = {
   'Summon Shadow':
     'Section=magic ' +
     'Note="May summon unturnable Shadow companion with %V HP, +%{baseAttack} BAB, %{save.Fortitude>=0 ? \'+\' + save.Fortitude : save.Fortitude}/%{save.Reflex>=0 ? \'+\' + save.Reflex : save.Reflex}/%{save.Will>=0 ? \'+\' + save.Will : save.Will} Fort/Ref/Will, and +4 Will vs. channeled energy"',
-  'Surprise Spells':
-    'Section=combat ' +
-    'Note="Spells inflict Sneak Attack damage vs. flat-footed foes"',
   'Swift Death':
     'Section=combat Note="May make Death Attack w/out prior study 1/dy"',
   'The Lore Of True Stamina':'Section=save Note="+2 Fortitude"',
-  'Tricky Spells':
-    'Section=magic Note="May use Silent Spell and Still Spell %V/dy"',
   'True Death':
     'Section=combat ' +
     'Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
@@ -4971,9 +4985,9 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"Escape Artist",Knowledge,Perception,"Sense Motive","Sleight Of Hand",' +
       'Spellcraft,Stealth,Swim ' +
     'Features=' +
-        '"1:Caster Level Bonus","1:Ranged Legerdemain","2:Sneak Attack",' +
-        '"3:Impromptu Sneak Attack","5:Tricky Spells","9:Invisible Thief",' +
-        '"10:Surprise Spells"',
+      '"1:Arcane Caster Level Bonus","1:Ranged Legerdemain","2:Sneak Attack",' +
+      '"3:Impromptu Sneak Attack","5:Tricky Spells","9:Invisible Thief",' +
+      '"10:Surprise Spells"',
   'Assassin':
     'Require=' +
       '"alignment =~ \'Evil\'","skills.Disguise >= 2","skills.Stealth >= 5" ' +
@@ -6687,36 +6701,19 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Arcane Archer') {
 
-    rules.defineRule(
-      'combatNotes.arrowOfDeath', 'charismaModifier', '=', 'source + 20'
-    );
     rules.defineRule('combatNotes.enhanceArrows(Elemental)',
-     classLevel, '=',
-     'source<7 ? "<i>flaming</i>/<i>frost</i>/<i>shock</i>, inflicting +1d6 HP" : "<i>flaming burst</i>/<i>icy burst</i>/<i>shocking burst</i>, inflicting +1d6 HP +1d10 critical hit"'
-    );
-    rules.defineRule('combatNotes.hailOfArrows', classLevel, '+=', null);
-    rules.defineRule(
-      'combatNotes.phaseArrow', classLevel, '=', 'Math.floor((source - 4) / 2)'
-    );
-    rules.defineRule(
-      'combatNotes.seekerArrow', classLevel, '=', 'Math.floor((source - 2) / 2)'
+      classLevel, '=',
+      'source<7 ? "<i>flaming</i>, <i>frost</i>, or <i>shock</i>, inflicting +1d6 HP," : "<i>flaming burst</i>, <i>icy burst</i>, or <i>shocking burst</i>, inflicting +1d6 HP and +1d10 HP on a critical hit,"'
     );
     rules.defineRule('magicNotes.arcaneCasterLevelBonus',
-      classLevel, '+=',
-      'source >= 2 ? source - Math.floor((source + 3) / 4) : null'
+      classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
     );
 
   } else if(name == 'Arcane Trickster') {
 
-    rules.defineRule('combatNotes.impromptuSneakAttack',
-      classLevel, '+=', 'source < 7 ? 1 : 2'
-    );
     rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
-    rules.defineRule('magicNotes.casterLevelBonus', classLevel, '+=', null);
-    rules.defineRule('magicNotes.invisibleThief', classLevel, '+=', null);
-    rules.defineRule('magicNotes.trickySpells',
-      classLevel, '+=', 'Math.floor((source + 1) / 2)'
-    );
+    rules.defineRule
+      ('magicNotes.arcaneCasterLevelBonus', classLevel, '+=', null);
     rules.defineRule('sneakAttack', classLevel, '+=', 'Math.floor(source / 2)');
 
   } else if(name == 'Assassin') {
