@@ -4908,12 +4908,12 @@ Pathfinder.NPC_CLASSES = {
     'CasterLevelDivine=levels.Adept ' +
     'SpellAbility=Wisdom ' +
     'SpellSlots=' +
-      'Adept0:1=3,' +
-      'Adept1:1=1;3=2;7=3,' +
-      'Adept2:4=0;5=1;7=2;11=3,' +
-      'Adept3:8=0;9=1;11=2;15=3,' +
-      'Adept4:12=0;13=1;15=2;19=3,' +
-      'Adept5:16=0;17=1;19=2',
+      'Adept0:3@1,' +
+      'Adept1:1@1;2@3;3@7,' +
+      'Adept2:0@4;1@5;2@7;3@11,' +
+      'Adept3:0@8;1@9;2@11;3@15,' +
+      'Adept4:0@12;1@13;2@15;3@19,' +
+      'Adept5:0@16;1@17;2@19',
   'Aristocrat':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
