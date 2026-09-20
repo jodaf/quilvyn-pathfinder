@@ -1473,7 +1473,7 @@ Pathfinder.FEATURES = {
       '"%{combatNotes.favoredTerrain>1?\'Has \'+(combatNotes.favoredTerrain*2-1)+\' +2 Initiative bonuses distributed among %V terrain types\':\'+2 Initiative in a chosen terrain type\'}",' +
       '"%{skillNotes.favoredTerrain>1?\'Has \'+(skillNotes.favoredTerrain*2-1)+\' +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among %V terrain types and and leaves no trail in those terrains\':\'+2 Knowledge (Geography), Perception, Stealth, and survival in a chosen terrain type and leaves no tracks in that terrain\'}"',
   'Hide In Plain Sight':
-    'Section=skill Note="Can Stealth in favored terrains even when observed"',
+    'Section=skill Note="Can Stealth %V even when observed"',
   "Hunter's Bond":'Section=feature Note="1 selection"',
   // Improved Evasion as above
   'Improved Quarry':
@@ -1550,7 +1550,7 @@ Pathfinder.FEATURES = {
   'Stand Up':'Section=combat Note="Can stand from prone as free action"',
   'Surprise Attack':
     'Section=combat ' +
-    'Note="Treats all foes as flat-footed during the surprise round"',
+    'Note="Treats all foes as flat-footed during the surprise rd"',
   // Trap Sense as above
   'Trap Spotter':
     'Section=skill ' +
@@ -1839,7 +1839,7 @@ Pathfinder.FEATURES = {
     'Section=combat,combat ' +
     'Note=' +
       '"+%V Initiative",' +
-      '"Can always act during the surprise round%{levels.Wizard>19?\'/Can take 20 on Initiative\':\'\'}"',
+      '"Can always act during the surprise rd%{levels.Wizard>19?\'/Can take 20 on Initiative\':\'\'}"',
   'Scrying Adept':
     'Section=magic ' +
     'Note="Has continuous <i>Detect Scrying</i> effects/Gains +1 familiarity step when scrying" ' +
@@ -1962,6 +1962,49 @@ Pathfinder.FEATURES = {
   'Tricky Spells':
     'Section=magic ' +
     'Note="Can cast a spell without somatic or verbal components %{($\'levels.Arcane Trickster\'+1)//2} times per day"',
+
+  // Assassin
+  'Angel Of Death':
+    'Section=combat ' +
+    'Note="Successful Death Attack disintegrates the victim, preventing use of <i>Raise Dead</i> and <i>Resurrection</i>, once per day"',
+  'Death Attack':SRD35.FEATURES['Death Attack'],
+  // Hide In Plain Sight as above
+  'Hidden Weapons':
+    'Section=skill Note="+%{levels.Assassin} Sleight Of Hand to hide weapons"',
+  // Improved Uncanny Dodge as above
+  'Poison Use':SRD35.FEATURES['Poison Use'],
+  'Quiet Death':
+    'Section=combat ' +
+    'Note="Successful Stealth vs. Perception during a surprise rd allows performing a Death Attack without being noticed"',
+  'Save Bonus Against Poison':SRD35.FEATURES['Save Bonus Against Poison'],
+  // Sneak Attack as above
+  'Swift Death':
+    'Section=combat ' +
+    'Note="Can make a Death Attack without prior study once per ay"',
+  'True Death':
+    'Section=combat ' +
+    'Note="Raising a Death Attack victim requires a successful DC %{10+levels.Assassin} <i>Remove Curse</i> or DC %{15+levels.Assassin} caster level check"',
+  // Uncanny Dodge as above
+
+  // Dragon Disciple
+  'Ability Boost':SRD35.FEATURES['Ability Boost'],
+  // Arcane Caster Level Bonus as above
+  // Blindsense as above
+  'Blood Of Dragons':
+    'Section=feature ' +
+    'Note="Dragon Disciple level triggers Bloodline features"',
+  'Bloodline Feat':'Section=feature Note="+%V Bloodline Draconic feats"',
+  // Breath Weapon as above
+  'Dragon Bite':
+    'Section=combat ' +
+    'Note="Bite attack inflicts 1d%{features.Small?4:features.Large?8:6}+%{strengthModifier*1.5//1}%{$\'levels.Dragon Disciple\'>5?\' plus 1d6 \'+bloodlineEnergy:\'\'} when using claws"',
+  'Dragon Form':
+    'Section=magic ' +
+    'Note="Can use <i>Form Of The Dragon I%{$\'levels.Dragon Disciple\'<10?\'\':\'I\'}</i> effects %{$\'levels.Dragon Disciple\'<10?\'once\':\'2 times\'} per day" ' +
+    'Spells="Form Of The Dragon I","10:Form Of The Dragon II" ' +
+    'SpellAbility=Charisma',
+  'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
+  // Wings as above
 
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
@@ -2794,7 +2837,7 @@ Pathfinder.FEATURES = {
     'Section=combat,combat ' +
     'Note=' +
       '"+1 Initiative",' +
-      '"May draw weapon as a free action during surprise round"',
+      '"May draw weapon as a free action during a surprise rd"',
   'Vindictive':
     'Section=combat ' +
     'Note="May inflict +1 damage vs. successful attacker for 1 min 1/dy"',
@@ -2821,12 +2864,7 @@ Pathfinder.FEATURES = {
 
   // Prestige classes
   'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
-  'Angel Of Death':
-    'Section=combat Note="Death attack disintegrates corpse 1/dy"',
   'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
-  'Blood Of Dragons':
-    'Section=feature ' +
-    'Note="Dragon Disciple level triggers Bloodline features"',
   'Bonus Language':'Section=feature Note="+%V Language Count"',
   'Call Down The Legends':
     'Section=magic Note="May summon 2d4 level 4 construct barbarians 1/wk"',
@@ -2839,12 +2877,8 @@ Pathfinder.FEATURES = {
   'Combined Spells':
     'Section=magic ' +
     'Note="May place spells up to level %V into +1 spell slots from different class"',
-  'Constitution Boost':'Section=ability Note="+2 Constitution"',
   'Crippling Critical (Duelist)':
     'Section=combat Note="Critical hit inflicts follow-on damage"',
-  'Death Attack':
-    'Section=combat ' +
-    'Note="Sneak Attack w/melee weapon after 3 rd of study inflicts choice of death or paralysis for 1d6+%1 rd (DC %V Fort neg)"',
   'Deep Pockets':
     'Section=ability,feature,skill ' +
     'Note=' +
@@ -2858,10 +2892,7 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="+%V divine base class level for spells known and spells per day"',
   'Dodge Trick':'Section=combat Note="+1 dodge bonus to Armor Class"',
-  'Dragon Bite':'Section=combat Note="1d%V+%1%2 bite when using claws"',
   'Dragon Disciple':'Section=combat Note="+%V"',
-  'Dragon Form':
-    'Section=magic Note="May use <i>Form Of The Dragon %V</i> effects %1/dy"',
   'Elaborate Defense':'Section=combat Note="+%V AC when fighting defensively"',
   'Enhanced Mobility':
     'Section=combat Note="+4 AC vs. movement AOO in light or no armor"',
@@ -2873,7 +2904,6 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Bardic Performance takes effect when read by others"',
   'Greater Lore':
     'Section=skill Note="+10 Spellcraft (identify magic item properties)"',
-  'Hidden Weapons':'Section=skill Note="+%V Sleight Of Hand (hide weapons)"',
   'Improved Aid':
     'Section=combat Note="Using aid another action gives +4 bonus"',
   'Improved Reaction':'Section=combat Note="+%V Initiative"',
@@ -2881,7 +2911,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="May use Bardic Performance to give ally extra %V action"',
   'Instant Mastery':'Section=skill Note="Gains 4 ranks in untrained skill"',
-  'Intelligence Boost':'Section=ability Note="+2 Intelligence"',
   'Lay Of The Exalted Dead':
     'Section=magic ' +
     'Note="May summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
@@ -2899,7 +2928,6 @@ Pathfinder.FEATURES = {
       '"+%V Linguistics/+%V Profession (Scribe)",' +
       '"+%V Use Magic Device (scrolls)"',
   'More Newfound Arcana':'Section=magic Note="+1 level 2 spells known"',
-  'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
   'Newfound Arcana':'Section=magic Note="+1 level 1 spells known"',
   'No Retreat':'Section=combat Note="May take AOO on foe withdraw"',
   'Parry':
@@ -2912,16 +2940,10 @@ Pathfinder.FEATURES = {
       '"DC 15 Survival check gives Pathfinding benefits to %V companions",' +
       '"+5 vs. <i>Maze</i>",' +
       '"+5 Survival (avoid becoming lost)"',
-  'Poison Use':
-    'Section=feature ' +
-    'Note="No chance of self-poisoning when applying poison to a weapon"',
   'Precise Strike (Duelist)':
     'Section=combat ' +
     'Note="+%V HP damage with light or one-handed piercing weapon"',
-  'Quiet Death':
-    'Section=combat Note="May use Stealth to perform Death Attack unnoticed"',
   'Riposte':'Section=combat Note="May take AOO after parry"',
-  'Save Bonus Against Poison':'Section=save Note="+%V vs. poison"',
   'Secret Health':'Section=combat Note="+%V HP"',
   'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
   'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
@@ -2946,16 +2968,10 @@ Pathfinder.FEATURES = {
   'Spell Synthesis':
     'Section=magic ' +
     'Note="May cast two spells simultaneously w/+2 checks to overcome spell resistance and target -2 saves 1/dy"',
-  'Strength Boost':'Section=ability Note="+%V Strength"',
   'Summon Shadow':
     'Section=magic ' +
     'Note="May summon unturnable Shadow companion with %V HP, +%{baseAttack} BAB, %{save.Fortitude>=0 ? \'+\' + save.Fortitude : save.Fortitude}/%{save.Reflex>=0 ? \'+\' + save.Reflex : save.Reflex}/%{save.Will>=0 ? \'+\' + save.Will : save.Will} Fort/Ref/Will, and +4 Will vs. channeled energy"',
-  'Swift Death':
-    'Section=combat Note="May make Death Attack w/out prior study 1/dy"',
   'The Lore Of True Stamina':'Section=save Note="+2 Fortitude"',
-  'True Death':
-    'Section=combat ' +
-    'Note="Raising victim requires DC %V <i>Remove Curse</i> or DC %1 caster level check"',
   'True Lore':
     'Section=magic ' +
     'Note="May use <i>Legend Lore</i> or <i>Analyze Dweomer</i> effects 1/dy"',
@@ -5014,10 +5030,9 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Skills=' +
       'Diplomacy,"Escape Artist",Fly,Knowledge,Perception,Spellcraft ' +
     'Features=' +
-      '"1:Blood Of Dragons","1:Natural Armor Increase",' +
-      '"2:Arcane Caster Level Bonus","2:Dragon Bite","2:Strength Boost",' +
-      '"5:Blindsense","6:Constitution Boost","7:Dragon Form",' +
-      '"8:Intelligence Boost",9:Wings ' +
+      '"1:Blood Of Dragons","1:Natural Armor Increase","2:Ability Boost",' +
+      '"2:Arcane Caster Level Bonus","2:Bloodline Feat","2:Dragon Bite",' +
+      '"5:Blindsense","7:Dragon Form",9:Wings ' +
     'Selectables=' +
       '"1:Bloodline Draconic (Black):Bloodline",' +
       '"1:Bloodline Draconic (Blue):Bloodline",' +
@@ -6238,6 +6253,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.favoredTerrain',
       classLevel, '+=', 'Math.floor((source + 2) / 5)'
     );
+    rules.defineRule('skillNotes.hideInPlainSight',
+      'rangerFeatures.Hide In Plain Sight', '=', '"in a favored terrain"'
+    );
     rules.defineRule('skillNotes.track',
       classLevel, '+=', 'Math.max(1, Math.floor(source / 2))'
     );
@@ -6718,20 +6736,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Assassin') {
 
-    rules.defineRule('combatNotes.deathAttack',
-      '', '=', '10',
-      classLevel, '+=', null,
-      'intelligenceModifier', '+', null
-    );
-    rules.defineRule('combatNotes.deathAttack.1', classLevel, '+=', null);
     rules.defineRule('combatNotes.sneakAttack', 'sneakAttack', '=', null);
-    rules.defineRule('combatNotes.trueDeath', classLevel, '+=', '10 + source');
-    rules.defineRule
-      ('combatNotes.trueDeath.1', classLevel, '+=', '15 + source');
-    rules.defineRule('saveNotes.saveBonusAgainstPoison',
-      classLevel, '+=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('skillNotes.hiddenWeapons', classLevel, '=', null);
     rules.defineRule('assassinFeatures.Improved Uncanny Dodge',
       'assassinFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
@@ -6739,6 +6744,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.improvedUncannyDodge',
       classLevel, '+=', 'source >= 2 ? source : null',
       '', '+', '4'
+    );
+    rules.defineRule('skillNotes.hideInPlainSight',
+      'assassinFeatures.Hide In Plain Sight', '=', '"within 10\' of shadows"'
     );
     rules.defineRule
       ('uncannyDodgeSources', classLevel, '+=', 'source >= 2 ? 1 : null');
@@ -6755,9 +6763,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, '?', 'source>=9',
       'bloodlineLevels.Draconic', '=', 'source>=15 ? 30 : null'
     );
-    rules.defineRule('abilityNotes.strengthBoost',
-      classLevel, '+=', 'source>=4 ? 4 : source>=2 ? 2 : null'
-    );
     // Natural armor bonuses don't normally stack. However, the text for the
     // Natural Armor Increase feature states that it gives "an increase to the
     // character’s existing natural armor"--a rephrase of "it stacks"--so
@@ -6768,46 +6773,30 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.breathWeapon',
       classLevel, '+=', 'source >= 3 ? 1 : null'
     );
-    rules.defineRule('combatNotes.dragonBite',
-      classLevel, '?', 'source >= 2',
-      '', '=', '6',
-      'features.Small', '=', '4',
-      'features.Large', '=', '8'
-    );
-    rules.defineRule('combatNotes.dragonBite.1',
-      'features.Dragon Bite', '?', null,
-      'strengthModifier', '=', 'Math.floor(source * 1.5)'
-    );
-    rules.defineRule('combatNotes.dragonBite.2',
-      'features.Dragon Bite', '?', null,
-      classLevel, '=', 'source >= 6 ? ", 1d6 energy" : ""'
-    );
     rules.defineRule('combatNotes.naturalArmorIncrease',
-      classLevel, '+=', 'Math.floor((source + 2) / 3)'
+      classLevel, '+=', 'source<4 ? 1 : source<7 ? 2 : 3'
     );
     rules.defineRule
-      ('constitution', 'abilityNotes.constitutionBoost', '+', '2');
+      ('constitution', 'levels.Dragon Disciple', '+', 'source>=6 ? 2 : null');
     rules.defineRule('featCount.Bloodline Draconic',
+      'featureNotes.bloodlineFeat', '+=', null
+    );
+    rules.defineRule('featureNotes.bloodlineFeat',
       classLevel, '+=', 'source>=2 ? Math.floor((source + 1) / 3) : null'
+    );
+    rules.defineRule
+      ('intelligence', 'levels.Dragon Disciple', '+', 'source>=8 ? 2 : null');
+    rules.defineRule('magicNotes.arcaneCasterLevelBonus',
+      classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
     );
     rules.defineRule('skillNotes.blindsense',
       classLevel, '^=', 'source<5? null : source<10 ? 30 : 60'
     );
-    rules.defineRule
-      ('intelligence', 'abilityNotes.intelligenceBoost', '+', '2');
-    rules.defineRule('magicNotes.arcaneCasterLevelBonus',
-      classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
-    );
-    rules.defineRule
-      ('magicNotes.dragonForm', classLevel, '=', 'source < 10 ? "I" : "II"');
-    rules.defineRule
-      ('magicNotes.dragonForm.1', classLevel, '=', 'source < 10 ? 1 : 2');
     rules.defineRule('sorcererFeatures.Breath Weapon',
       classLevel, '=', 'source >= 3 ? 1 : null'
     );
     rules.defineRule
       ('sorcererFeatures.Wings', classLevel, '=', 'source >= 9 ? 1 : null');
-    rules.defineRule('strength', 'abilityNotes.strengthBoost', '+', null);
     // Choice of Draconic Bloodline if not Sorcerer
     rules.defineRule('dragonDiscipleIsNotSorcerer',
       classLevel, '=', '1',
@@ -6821,7 +6810,14 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'selectableFeatureCount.Dragon Disciple (Bloodline)', '+=', 'source == 1 ? 0 : null',
       classLevel, '+', null
     );
+    rules.defineRule('strength',
+      'abilityNotes.abilityBoost', '+', 'null', // italics
+      'levels.Dragon Disciple', '+', 'source>=4 ? 4 : source>=2 ? 2 : null'
+    );
     rules.defineRule('casterLevels.Bloodline', classLevel, '+=', null);
+    rules.defineRule('spells.Form Of The Dragon I(DragonForm6 Tran)',
+      classLevel, '?', 'source < 10'
+    );
 
   } else if(name == 'Duelist') {
 
@@ -6966,6 +6962,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('shadowdancerFeatures.Improved Uncanny Dodge',
       'shadowdancerFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+    );
+    rules.defineRule('skillNotes.hideInPlainSight',
+      'shadowdancerFeatures.Hide In Plain Sight', '=', '"within 10\' of dim light"'
     );
     rules.defineRule('combatNotes.improvedUncannyDodge',
       classLevel, '+=', 'source >= 2 ? source : null',

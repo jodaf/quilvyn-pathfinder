@@ -69,11 +69,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Constitution Boost: +2 Constitution</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Intelligence Boost: +2 Intelligence</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Strength Boost: +4 Strength</i></td>
+      <td><i>Ability Boost: +4 Strength/+2 Constitution/+2 Intelligence</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
@@ -98,13 +94,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Strike; Combat Casting; Craft Wondrous Item; Extend Spell; Improved Unarmed Strike; Point-Blank Shot; Rapid Shot; Simple Weapon Proficiency; Skill Focus (Fly); Skill Focus (Knowledge (Arcana)); Toughness; Widen Spell</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
-        <td><b>Dragon Disciple Features</b>: Arcane Caster Level Bonus; Blindsense; Blood Of Dragons; Constitution Boost; Dragon Bite; Dragon Form; Intelligence Boost; Natural Armor Increase; Strength Boost; Wings</td>
+        <td><b>Dragon Disciple Features</b>: Ability Boost; Arcane Caster Level Bonus; Blindsense; Blood Of Dragons; Bloodline Feat; Dragon Bite; Dragon Form; Natural Armor Increase; Wings</td>
         <td><b>Sorcerer Features</b>: Bloodline Draconic (Black); Bloodline; Breath Weapon; Cantrips; Claws; Dragon Resistances; Eschew Materials; Weapon Proficiency (Simple Weapons); Wings</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Bloodline Feat: +3 Bloodline Draconic feats</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Bloodline: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feat (Human): +1 General Feat</i></td>
@@ -172,7 +170,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 133</td>
         <td><b>Initiative</b>: +3</td>
-        <td><b>AC/Touch/Flat</b>: 21/13/18</td>
+        <td><b>AC/Touch/Flat</b>: 20/13/17</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/25</td>
@@ -195,7 +193,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Class Modifiers: Armor +0; Deflection +0; Dexterity +3; Dodge +0; Natural Armor +8; Shield +0; Size +0</i></td>
+        <td><i>Armor Class Modifiers: Armor +0; Deflection +0; Dexterity +3; Dodge +0; Natural Armor +7; Shield +0; Size +0</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +32</i></td>
       </tr><tr style="text-align:center">
@@ -203,7 +201,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dragon Resistances: +4 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Natural Armor Increase: +4 natural armor bonus to Armor Class</i></td>
+        <td><i>Natural Armor Increase: +3 natural armor bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -219,7 +217,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Claws: Can make 2 +12 magical attacks that inflict 1d6+2 HP each for 6 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Dragon Bite: 1d6+3, 1d6 energy bite when using claws</td>
+        <td>Dragon Bite: Bite attack inflicts 1d6+3 plus 1d6 acid when using claws</td>
       </tr><tr style="text-align:center">
         <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
       </tr><tr style="text-align:center">
@@ -260,7 +258,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 3; S6: 2</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 4</td>
-        <td><b>Spell DC</b>: S: 13</td>
+        <td><b>Spell DC</b>: Dragon Form: 13; S: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -283,6 +281,8 @@ var attributes = {
       <td>Form Of The Dragon I (Bloodline6 Tran): Self becomes medium dragon (+4 Strength, +2 Constitution, +4 AC, Fly 60', Darkvision 60', breath weapon once 6d8 HP (Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for 16 min</td>
     </tr><tr style="text-align:left">
       <td>Form Of The Dragon II (Bloodline7 Tran): Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 16 min</td>
+    </tr><tr style="text-align:left">
+      <td>Form Of The Dragon II (Dragon Form7 Tran): Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90', Darkvision 60', breath weapon twice 8d8 HP (Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for 16 min</td>
     </tr><tr style="text-align:left">
       <td>Fox's Cunning (S2 Tran): Touched gains +4 Intelligence for 13 min</td>
     </tr><tr style="text-align:left">
@@ -342,7 +342,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Craft Wondrous Item: May create and mend miscellaneous magic items</td>
     </tr><tr style="text-align:center">
-      <td>Dragon Form: May use <i>Form Of The Dragon II</i> effects 2/dy</td>
+      <td>Dragon Form: Can use <i>Form Of The Dragon II</i> effects 2 times per day</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Can cast spells without materials</td>
     </tr><tr style="text-align:center">
