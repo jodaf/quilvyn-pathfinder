@@ -1535,7 +1535,7 @@ Pathfinder.FEATURES = {
     'Note="Can gain %{(rogueFeatures.Resiliency?levels.Rogue:0)+(shadowdancerFeatures.Resiliency?levels.Shadowdancer:0)} temporary hit points for 1 min when taken to negative hit points once per day"',
   'Rogue Crawl':
     'Section=ability ' +
-    'Note="Has a %{speed//2}\' Speed and can take a 5\' Step while crawling"',
+    'Note="Has a %{speed//2}\' crawl Speed and can take a 5\' Step while crawling"',
   'Rogue Talents':
     'Section=feature ' +
     'Note="%V selection%{featureNotes.rogueTalents>1?\'s\':\'\'}"',
@@ -1980,7 +1980,7 @@ Pathfinder.FEATURES = {
   // Sneak Attack as above
   'Swift Death':
     'Section=combat ' +
-    'Note="Can make a Death Attack without prior study once per ay"',
+    'Note="Can make a Death Attack without prior study once per day"',
   'True Death':
     'Section=combat ' +
     'Note="Raising a Death Attack victim requires a successful DC %{10+levels.Assassin} <i>Remove Curse</i> or DC %{15+levels.Assassin} caster level check"',
@@ -1997,7 +1997,7 @@ Pathfinder.FEATURES = {
   // Breath Weapon as above
   'Dragon Bite':
     'Section=combat ' +
-    'Note="Bite attack inflicts 1d%{features.Small?4:features.Large?8:6}+%{strengthModifier*1.5//1}%{$\'levels.Dragon Disciple\'>5?\' plus 1d6 \'+bloodlineEnergy:\'\'} when using claws"',
+    'Note="Bite attack inflicts 1d%{features.Small?4:features.Large?8:6}+%{strengthModifier*1.5//1}%{$\'levels.Dragon Disciple\'>5?\' plus 1d6 \'+bloodlineEnergy:\'\'} when using Claws"',
   'Dragon Form':
     'Section=magic ' +
     'Note="Can use <i>Form Of The Dragon I%{$\'levels.Dragon Disciple\'<10?\'\':\'I\'}</i> effects %{$\'levels.Dragon Disciple\'<10?\'once\':\'2 times\'} per day" ' +
@@ -2043,8 +2043,8 @@ Pathfinder.FEATURES = {
   // Eldritch Knight
   // Arcane Caster Level Bonus as above
   'Bonus Feat (Eldritch Knight)':
-    SRD35.FEATURES['Bonus Feat (Eldritch Knight)']
-    .replace('+1', '+%V'),
+    'Section=feature ' +
+    'Note="+%V Fighter Feat%{$\'featureNotes.bonusFeat(EldritchKnight)\'>1?\'s\':\'\'}"',
   'Diverse Training':
     'Section=feature ' +
     'Note="+%{$\'levels.Eldritch Knight\'} level for Fighter and arcane feat prerequisites"',
@@ -2099,12 +2099,13 @@ Pathfinder.FEATURES = {
       '"+4 Sleight Of Hand to conceal small objects"',
   'Epic Tales':
     'Section=skill ' +
-    'Note="Can use a Bardic Performance effect by writing a saga using Profession (Scribe) instead of Perform"',
+    'Note="Can spend 1 hr and expend any number of Bardic Performance rd, using Profession (Scribe) in place of Perform for any checks, to create a text that evokes a Bardic Performance effect on the first reader within %{$\'levels.Pathfinder Chronicler\'} days; the effect has a duration equal to half the number of Bardic Performance rd expended"',
   'Greater Epic Tales':
-    'Section=skill Note="Epic Tales takes effect when read by others"',
+    'Section=skill ' +
+    'Note="Allows an Epic Tales text to be read aloud, evoking its Bardic Performance effect on those targeted by the reader"',
   'Improved Aid':'Section=combat Note="Using Aid Another gives a +4 bonus"',
   'Inspire Action':
-    'Section=magic ' +
+    'Section=skill ' +
     'Note="Can use Bardic Performance to give an ally an extra move%{$\'levels.Pathfinder Chronicler\'>8?\' or standard\':\'\'} action"',
   'Lay Of The Exalted Dead':
     'Section=magic ' +
@@ -2146,10 +2147,9 @@ Pathfinder.FEATURES = {
     .replace(' once ', " %{levels.Shadowdancer>3?levels.Shadowdancer//2+' times ':' once '}"),
   'Shadow Jump':SRD35.FEATURES['Shadow Jump'],
   'Shadow Master':
-    'Section=combat,combat,save ' +
+    'Section=combat,save ' +
     'Note=' +
-      '"Has DR 10/- in dim light",' +
-      '"Critical hit in dim light inflicts blinded for d6 rd",' +
+      '"Has DR 10/- in dim light, and critical hits in dim light inflict blinded for d6 rd",' +
       '"+2 saves in dim light"',
   'Shadow Power':
     'Section=magic ' +
