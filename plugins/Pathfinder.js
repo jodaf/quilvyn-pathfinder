@@ -940,7 +940,7 @@ Pathfinder.FEATURES = {
     'Note="Can gain a +%{ragePowerLevel//6+1} dodge bonus to Armor Class vs. ranged attacks for %{(constitutionModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))>?1} rd during rage"',
   'Roused Anger':
     'Section=combat ' +
-    'Note="Can rage when fatigued, gaining immuity to fatigued but becoming exhausted afterward for 10 min per rd raging"',
+    'Note="Can rage when fatigued, gaining immunity to fatigued but becoming exhausted afterward for 10 min per rd raging"',
   'Scent (Barbarian)':
     'Section=skill Note="Can detect creatures via smell during rage"',
   'Strength Surge':
@@ -1285,7 +1285,7 @@ Pathfinder.FEATURES = {
     'Note="Touch gives a +%{casterLevels.War//2>?1} damage bonus for 1 rd %{wisdomModifier+3} times per day"',
   'Weapon Master':
     'Section=combat ' +
-    'Note="Can use the effects of additional combat feats for %{casterLevels.War} rd per day; must meet any feat prerequsites"',
+    'Note="Can use the effects of additional combat feats for %{casterLevels.War} rd per day; must meet any feat prerequisites"',
   // Water Domain
   'Cold Resistance':
     'Section=save ' +
@@ -1386,7 +1386,7 @@ Pathfinder.FEATURES = {
   'Still Mind':SRD35.FEATURES['Still Mind'],
   'Stunning Fist':
     SRD35.FEATURES['Stunning Fist']
-    .replace('stunned for 1 rd', "stunned for 1 rd%{levels.Monk>3?(levels.Monk>7?',':' or')+' fatiged':''}%{levels.Monk>7?(levels.Monk>11?',':', or')+' sickened for 1 min':''}%{levels.Monk>11?(levels.Monk>15?',':', or')+' staggered for 1d6+1 rd':''}%{levels.Monk>15?(levels.Monk>19?',':', or')+' permanently blind or deafened':''}%{levels.Monk>19?', or paralyzed for 1d6+1 rd':''}"),
+    .replace('stunned for 1 rd', "stunned for 1 rd%{levels.Monk>3?(levels.Monk>7?',':' or')+' fatigued':''}%{levels.Monk>7?(levels.Monk>11?',':', or')+' sickened for 1 min':''}%{levels.Monk>11?(levels.Monk>15?',':', or')+' staggered for 1d6+1 rd':''}%{levels.Monk>15?(levels.Monk>19?',':', or')+' permanently blind or deafened':''}%{levels.Monk>19?', or paralyzed for 1d6+1 rd':''}"),
   // Timeless Body as above
   'Tongue Of The Sun And Moon':SRD35.FEATURES['Tongue Of The Sun And Moon'],
   'Unarmed Strike':SRD35.FEATURES['Unarmed Strike'],
@@ -1609,7 +1609,7 @@ Pathfinder.FEATURES = {
   'Demonic Might':
     'Section=save,skill ' +
     'Note=' +
-      '"Has immunity to electricty and poison and resistance 10 to acid, cold, and fire",' +
+      '"Has immunity to electricity and poison and resistance 10 to acid, cold, and fire",' +
       '"R60\' Can communicate telepathically with any speaking creature"',
   'Strength Of The Abyss':'Section=ability Note="+%V Strength"',
   // Arcane
@@ -2081,6 +2081,9 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can prepare spells of up to level %{($\'levels.Mystic Theurge\'+1)//2} in 1 level higher spell slots from a different class"',
   'Divine Caster Level Bonus':SRD35.FEATURES['Divine Caster Level Bonus'],
+  'Spell Synthesis':
+    'Section=magic ' +
+    'Note="Can cast two spells simultaneously with -2 target saves and +2 checks to overcome spell resistance"',
 
   // Pathfinder Chronicler
   // Bardic Knowledge as above
@@ -2121,7 +2124,7 @@ Pathfinder.FEATURES = {
       '"+5 Survival to avoid becoming lost/Can treat trackless terrain as a road, and a DC 15 Survival check extends this benefit to %{$\'levels.Pathfinder Chronicler\'} companions"',
   'Whispering Campaign':
     'Section=magic ' +
-    'Note="Can use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance to change listerners\' perception of a target" ' +
+    'Note="Can use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance to change listeners\' perception of a target" ' +
     'Spells="Doom","Enthrall" ' +
     'SpellAbility=Charisma',
 
@@ -3011,12 +3014,7 @@ Pathfinder.FEATURES = {
     'Note="May use Wisdom modifier for choice of Strength, Constitution, or Dexterity skill/Choice of Strength, Constitution, or Dexterity skill is a class skill"',
   'World Traveler (Trait)':
     'Section=skill ' +
-    'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
-
-  // Prestige classes
-  'Spell Synthesis':
-    'Section=magic ' +
-    'Note="May cast two spells simultaneously w/+2 checks to overcome spell resistance and target -2 saves 1/dy"',
+    'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"'
 
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
