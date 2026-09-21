@@ -364,7 +364,7 @@ Pathfinder.FEATS = {
   'Critical Mastery':
     'Type=Fighter ' +
     'Require=' +
-      '"levels.Fighter >= 14",' +
+      '"fighterFeatLevel >= 14",' +
       '"features.Critical Focus",' +
       '"sumCriticalFeats >= 2"',
   'Dazzling Display':
@@ -387,7 +387,7 @@ Pathfinder.FEATS = {
     'Type=Fighter Require="dexterity >= 13","features.Improved Unarmed Strike"',
   'Deft Hands':'Type=General',
   'Diehard':'Type=General Require="features.Endurance"',
-  'Disruptive':'Type=Fighter Require="levels.Fighter >= 6"',
+  'Disruptive':'Type=Fighter Require="fighterFeatLevel >= 6"',
   'Dodge':'Type=Fighter Require="dexterity >= 13"',
   'Double Slice':
     'Type=Fighter Require="dexterity >= 15","features.Two-Weapon Fighting"',
@@ -469,14 +469,14 @@ Pathfinder.FEATS = {
   'Greater Penetrating Strike':
     'Type=Fighter ' +
     'Require=' +
-      '"levels.Fighter >= 16",' +
+      '"fighterFeatLevel >= 16",' +
       '"features.Penetrating Strike",' +
       '"Sum \'^features\\.Weapon Focus\' >= 1"',
   'Greater Shield Focus':
     'Type=Fighter ' +
     'Require=' +
       '"baseAttack >= 1",' +
-      '"levels.Fighter >= 8",' +
+      '"fighterFeatLevel >= 8",' +
       '"features.Shield Focus",' +
       '"armorProficiency.Shield"',
   'Greater Spell Focus (%school)':
@@ -517,7 +517,7 @@ Pathfinder.FEATS = {
     'Imply="ownedWeapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
-      '"levels.Fighter >= 8"',
+      '"fighterFeatLevel >= 8"',
   'Greater Weapon Specialization (%weapon)':
     'Type=Fighter ' +
     'Imply="ownedWeapons.%weapon" ' +
@@ -525,7 +525,7 @@ Pathfinder.FEATS = {
       '"features.Weapon Focus (%weapon)",' +
       '"features.Greater Weapon Focus (%weapon)",' +
       '"features.Weapon Specialization (%weapon)",' +
-      '"levels.Fighter >= 12"',
+      '"fighterFeatLevel >= 12"',
   'Heavy Armor Proficiency':
     'Type=Fighter Require="armorProficiency.Medium"',
   'Heighten Spell':'Type=Metamagic,Wizard Imply="casterLevel >= 1"',
@@ -626,7 +626,7 @@ Pathfinder.FEATS = {
     'Type=Fighter ' +
     'Require=' +
       '"baseAttack >= 1",' +
-      '"levels.Fighter >= 12",' +
+      '"fighterFeatLevel >= 12",' +
       '"Sum \'^features\\.Weapon Focus\' >= 1"',
   'Persuasive':'Type=General',
   'Pinpoint Targeting':
@@ -701,7 +701,7 @@ Pathfinder.FEATS = {
     'Type=Wizard Imply="intelligenceModifier > 0" Require="levels.Wizard >= 1"',
   'Spell Penetration':'Type=General Imply="casterLevel >= 1"',
   'Spellbreaker':
-    'Type=Fighter Require="levels.Fighter >= 10","features.Disruptive"',
+    'Type=Fighter Require="fighterFeatLevel >= 10","features.Disruptive"',
   'Spirited Charge':
     'Type=Fighter ' +
     'Require="features.Mounted Combat","features.Ride-By Attack",skills.Ride',
@@ -772,7 +772,7 @@ Pathfinder.FEATS = {
     'Imply="ownedWeapons.%weapon" ' +
     'Require=' +
       '"features.Weapon Focus (%weapon)",' +
-      '"levels.Fighter >= 4"',
+      '"fighterFeatLevel >= 4"',
   'Whirlwind Attack':
     'Type=Fighter ' +
     'Require=' +
@@ -2006,6 +2006,159 @@ Pathfinder.FEATURES = {
   'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
   // Wings as above
 
+  // Duelist
+  'Acrobatic Charge':SRD35.FEATURES['Acrobatic Charge'],
+  'Canny Defense':
+    SRD35.FEATURES['Canny Defense']
+    .replace('Dexterity', 'dodge')
+    .replace('unarmored', 'wearing light or no armor'),
+  'Crippling Critical (Duelist)':
+    'Section=combat ' +
+    'Note="Critical hits with a light or one-handed piercing weapon also inflict a choice of -10 Speed for 1 min, 1d4 points of Strength or Dexterity damage, -4 saves for 1 min, -4 Armor Class for 1 min, or 2d6 HP bleed each rd until ended by magical healing or a DC 15 Heal"',
+  // Note change in name from SRD35
+  'Elaborate Defense':
+    SRD35.FEATURES['Elaborate Parry']
+    .replace('levels.Duelist', 'levels.Duelist//3'),
+  'Elaborate Parry':
+    'Section=combat ' +
+    'Note="+%{levels.Duelist} dodge bonus to Armor Class when fighting defensively"',
+  'Enhanced Mobility':
+    SRD35.FEATURES['Enhanced Mobility']
+    .replace('unarmored', 'wearing light or no armor'),
+  'Grace':
+    SRD35.FEATURES.Grace
+    .replace('unarmored', 'wearing light or no armor'),
+  'Improved Reaction':SRD35.FEATURES['Improved Reaction'],
+  'No Retreat':
+    'Section=combat ' +
+    'Note="Can take an AOO when an adjacent foe takes a withdraw action"',
+  'Parry':
+    'Section=combat ' +
+    'Note="During a full attack action with a light or one-handed piercing weapon, can dedicate 1 attack roll to negate a foe attack on self or an adjacent ally; requires rolling higher than the foe, and attacks by larger foes or on an adjacent ally each incur a -4 penalty"',
+  'Precise Strike (Duelist)':
+    SRD35.FEATURES['Precise Strike']
+    .replace('{levels.Duelist//5}d6', '{levels.Duelist}'),
+  'Riposte':'Section=combat Note="Can take an AOO after a successful Parry"',
+
+  // Eldritch Knight
+  // Arcane Caster Level Bonus as above
+  'Bonus Feat (Eldritch Knight)':
+    SRD35.FEATURES['Bonus Feat (Eldritch Knight)']
+    .replace('+1', '+%V'),
+  'Diverse Training':
+    'Section=feature ' +
+    'Note="+%{$\'levels.Eldritch Knight\'} level for Fighter and arcane feat prerequisites"',
+  'Spell Critical':
+    'Section=magic ' +
+    'Note="Can use a swift action immediately following a critical hit to cast a spell that affects the target"',
+
+  // Loremaster
+  'Applicable Knowledge':SRD35.FEATURES['Applicable Knowledge'],
+  'Bonus Languages':SRD35.FEATURES['Bonus Languages'],
+  'Caster Level Bonus':SRD35.FEATURES['Caster Level Bonus'],
+  'Dodge Trick':SRD35.FEATURES['Dodge Trick'],
+  'Greater Lore':
+    'Section=skill Note="+10 Spellcraft to identify magic item properties"',
+  'Instant Mastery':SRD35.FEATURES['Instant Mastery'],
+  'Lore':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V all Knowledge",' +
+      '"Can use any Knowledge untrained"',
+  'More Newfound Arcana':SRD35.FEATURES['More Newfound Arcana'],
+  'Newfound Arcana':SRD35.FEATURES['Newfound Arcana'],
+  'Secret':SRD35.FEATURES['Secret'],
+  'Secret Health':'Section=combat Note="Has the Toughness feature"',
+  'Secret Knowledge Of Avoidance':
+    SRD35.FEATURES['Secret Knowledge Of Avoidance'],
+  'Secrets Of Inner Strength':SRD35.FEATURES['Secrets Of Inner Strength'],
+  'The Lore Of True Stamina':SRD35.FEATURES['The Lore Of True Stamina'],
+  'True Lore':SRD35.FEATURES['True Lore'],
+  'Weapon Trick':SRD35.FEATURES['Weapon Trick'],
+
+  // Mystic Theurge
+  'Combined Spells':
+    'Section=magic ' +
+    'Note="Can prepare spells of up to level %{($\'levels.Mystic Theurge\'+1)//2} in 1 level higher spell slots from a different class"',
+  'Divine Caster Level Bonus':SRD35.FEATURES['Divine Caster Level Bonus'],
+
+  // Pathfinder Chronicler
+  // Bardic Knowledge as above
+  // Bardic Performance as above
+  'Call Down The Legends':
+    'Section=magic ' +
+    'Note="Can summon 2d4 level 4 construct barbarians once per week"',
+  'Deep Pockets':
+    'Section=ability,feature,skill ' +
+    'Note=' +
+      '"+4 Strength for light load determination",' +
+      '"Can retrieve any small object from backpack as a full-round action",' +
+      '"+4 Sleight Of Hand to conceal small objects"',
+  'Epic Tales':
+    'Section=skill ' +
+    'Note="Can use a Bardic Performance effect by writing a saga using Profession (Scribe) instead of Perform"',
+  'Greater Epic Tales':
+    'Section=skill Note="Epic Tales takes effect when read by others"',
+  'Improved Aid':'Section=combat Note="Using Aid Another gives a +4 bonus"',
+  'Inspire Action':
+    'Section=magic ' +
+    'Note="Can use Bardic Performance to give an ally an extra move%{$\'levels.Pathfinder Chronicler\'>8?\' or standard\':\'\'} action"',
+  'Lay Of The Exalted Dead':
+    'Section=magic ' +
+    'Note="Can summon d4+1 level 5 incorporeal construct barbarians, wearing +2 studded leather armor and wielding +1 <i>ghost touch</i> greataxes, once per week; their appearance inflicts shaken on foes (save Will DC %{15+charismaModifier} negates) for 1 rd per barbarian"',
+  'Live To Tell The Tale':
+    'Section=save ' +
+    'Note="Can attempt another save on the round after a failure %{$\'levels.Pathfinder Chronicler\'>3?$\'levels.Pathfinder Chronicler\'//2+\' times\':\'once\'} per day"',
+  'Master Scribe':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+%V Linguistics/+%V Profession (Scribe)",' +
+      '"+%{$\'levels.Pathfinder Chronicler\'} Use Magic Device involving scrolls and magical writing/Can take 10 on Linguistics and Profession (Scribe) checks when distracted"',
+  'Pathfinding':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+5 to escape a <i>Maze</i>",' +
+      '"+5 Survival to avoid becoming lost/Can treat trackless terrain as a road, and a DC 15 Survival check extends this benefit to %{$\'levels.Pathfinder Chronicler\'} companions"',
+  'Whispering Campaign':
+    'Section=magic ' +
+    'Note="Can use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance to change listerners\' perception of a target" ' +
+    'Spells="Doom","Enthrall" ' +
+    'SpellAbility=Charisma',
+
+  // Shadowdancer
+  // Darkvision as above
+  // Defensive Roll as above
+  // Evasion as above
+  // Hide In Plain Sight as above
+  // Improved Evasion as above
+  // Improved Uncanny Dodge as above
+  'Rogue Talents (Shadowdancer)':'Section=feature Note="%V selections"',
+  'Shadow Call':
+    'Section=magic ' +
+    'Note="Can use <i>%{levels.Shadowdancer<10?\'\':\'Greater \'}Shadow Conjuration</i> effects %{levels.Shadowdancer>5?(levels.Shadowdancer-2)//2+\' times\':\'once\'} per day" ' +
+    'Spells="Shadow Conjuration","Greater Shadow Conjuration" ' +
+    'SpellAbility=Charisma',
+  'Shadow Illusion':
+    SRD35.FEATURES['Shadow Illusion']
+    .replace(' once ', " %{levels.Shadowdancer>3?levels.Shadowdancer//2+' times ':' once '}"),
+  'Shadow Jump':SRD35.FEATURES['Shadow Jump'],
+  'Shadow Master':
+    'Section=combat,combat,save ' +
+    'Note=' +
+      '"Has DR 10/- in dim light",' +
+      '"Critical hit in dim light inflicts blinded for d6 rd",' +
+      '"+2 saves in dim light"',
+  'Shadow Power':
+    'Section=magic ' +
+    'Note="Can use <i>Shadow Evocation</i> effects %{levels.Shadowdancer<10?\'once\':\'2 times\'} per day" ' +
+    'Spells="Shadow Evocation" ' +
+    'SpellAbility=Charisma',
+  // Slippery Mind as above
+  'Summon Shadow':
+    'Section=magic ' +
+    'Note="Can summon an unturnable Shadow companion with %{hitPoints//2} hit points that uses self BAB and saves and gains +4 Will vs. channeled energy; its destruction inflicts a permanent negative level (save Fortitude DC 15 negates) and prevents replacement for 30 days"',
+  // Uncanny Dodge as above
+
   // Shared with SRD35
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
@@ -2225,7 +2378,7 @@ Pathfinder.FEATURES = {
   'Still Spell':
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out movement"',
-  'Toughness':'Section=combat Note="+%V HP"',
+  'Toughness':SRD35.FEATURES.Toughness,
   'Trample':
     'Section=combat ' +
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
@@ -2676,7 +2829,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 damage w/daggers",' +
       '"+1 Swim/Swim is a class skill"',
-  'Rogue Talents (Shadowdancer)':'Section=feature Note="%V selections"',
   'Rousing Oratory':
     'Section=skill ' +
     'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
@@ -2703,7 +2855,6 @@ Pathfinder.FEATURES = {
   'Scorpion Style':
     'Section=combat ' +
     'Note="Unarmed hit slows foe to 5\' for %V rd (DC %1 Fort neg)"',
-  'Secrets':'Section=feature Note="%V selections"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
     'Note="+2 Knowledge check 1/dy/Choice of Knowledge is a class skill"',
@@ -2863,122 +3014,10 @@ Pathfinder.FEATURES = {
     'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"',
 
   // Prestige classes
-  'Acrobatic Charge':'Section=combat Note="May charge in difficult terrain"',
-  'Applicable Knowledge':'Section=feature Note="+1 General Feat"',
-  'Bonus Language':'Section=feature Note="+%V Language Count"',
-  'Call Down The Legends':
-    'Section=magic Note="May summon 2d4 level 4 construct barbarians 1/wk"',
-  'Canny Defense':
-    'Section=combat ' +
-    'Note="+%V dodge bonus to Armor Class; holding a shield or wearing medium or heavy armor negates"',
-  'Caster Level Bonus':
-    'Section=magic ' +
-    'Note="+%V base class level for spells known and spells per day"',
-  'Combined Spells':
-    'Section=magic ' +
-    'Note="May place spells up to level %V into +1 spell slots from different class"',
-  'Crippling Critical (Duelist)':
-    'Section=combat Note="Critical hit inflicts follow-on damage"',
-  'Deep Pockets':
-    'Section=ability,feature,skill ' +
-    'Note=' +
-      '"%V Strength for light load",' +
-      '"May retrieve any small object from backpack as a full-round action",' +
-      '"+4 Sleight Of Hand (conceal small objects)"',
-  'Diverse Training':
-    'Section=feature ' +
-    'Note="Eldritch Knight level satisfies Fighter or arcane feat prerequisite"',
-  'Divine Caster Level Bonus':
-    'Section=magic ' +
-    'Note="+%V divine base class level for spells known and spells per day"',
-  'Dodge Trick':'Section=combat Note="+1 dodge bonus to Armor Class"',
-  'Dragon Disciple':'Section=combat Note="+%V"',
-  'Elaborate Defense':'Section=combat Note="+%V AC when fighting defensively"',
-  'Enhanced Mobility':
-    'Section=combat Note="+4 AC vs. movement AOO in light or no armor"',
-  'Epic Tales':
-    'Section=skill ' +
-    'Note="May use Bardic Performance effect via Profession (Scribe)"',
-  'Grace':'Section=save Note="+2 Reflex in light or no armor"',
-  'Greater Epic Tales':
-    'Section=skill Note="Bardic Performance takes effect when read by others"',
-  'Greater Lore':
-    'Section=skill Note="+10 Spellcraft (identify magic item properties)"',
-  'Improved Aid':
-    'Section=combat Note="Using aid another action gives +4 bonus"',
-  'Improved Reaction':'Section=combat Note="+%V Initiative"',
-  'Inspire Action':
-    'Section=magic ' +
-    'Note="May use Bardic Performance to give ally extra %V action"',
-  'Instant Mastery':'Section=skill Note="Gains 4 ranks in untrained skill"',
-  'Lay Of The Exalted Dead':
-    'Section=magic ' +
-    'Note="May summon d4+1 level 5 incorporeal construct barbarians 1/wk"',
-  'Live To Tell The Tale':
-    'Section=save ' +
-    'Note="May attempt extra saving throw vs. ongoing condition %V/dy"',
-  'Lore':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+%V all Knowledge",' +
-      '"May use any Knowledge untrained"',
-  'Master Scribe':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+%V Linguistics/+%V Profession (Scribe)",' +
-      '"+%V Use Magic Device (scrolls)"',
-  'More Newfound Arcana':'Section=magic Note="+1 level 2 spells known"',
-  'Newfound Arcana':'Section=magic Note="+1 level 1 spells known"',
-  'No Retreat':'Section=combat Note="May take AOO on foe withdraw"',
-  'Parry':
-    'Section=combat ' +
-    'Note="May make opposed attack roll on full-round attack to negate foe attack instead of damaging"',
-  'Pathfinding':
-    'Section=ability,feature,save,skill ' +
-    'Note=' +
-      '"May treat trackless terrain as road",' +
-      '"DC 15 Survival check gives Pathfinding benefits to %V companions",' +
-      '"+5 vs. <i>Maze</i>",' +
-      '"+5 Survival (avoid becoming lost)"',
-  'Precise Strike (Duelist)':
-    'Section=combat ' +
-    'Note="+%V HP damage with light or one-handed piercing weapon"',
-  'Riposte':'Section=combat Note="May take AOO after parry"',
-  'Secret Health':'Section=combat Note="+%V HP"',
-  'Secret Knowledge Of Avoidance':'Section=save Note="+2 Reflex"',
-  'Secrets Of Inner Strength':'Section=save Note="+2 Will"',
-  'Shadow Call':
-    'Section=magic ' +
-    'Note="May mimic conjuration (creation or summoning) spell up to %1 level (DC %2 Will 20% effect) %V/dy"',
-  'Shadow Illusion':
-    'Section=magic ' +
-    'Note="R%{levels.Shadowdancer*40+400}\' May create %{levels.Shadowdancer*10+40}\' cu image (DC %{11+charismaModifier} Will disbelieve) for conc %V/dy"',
-  'Shadow Jump':'Section=magic Note="May teleport between shadows %V\'/dy"',
-  'Shadow Master':
-    'Section=combat,combat,save ' +
-    'Note=' +
-      '"DR 10/-",' +
-      '"Critical hit blinds for d6 rd in dim light",' +
-      '"+2 saves in dim light"',
-  'Shadow Power':
-    'Section=magic ' +
-    'Note="May mimic evocation spell up to 4rd level (DC %{15+charismaModifier} Will 20% effect) %V/dy"',
-  'Spell Critical':
-    'Section=magic Note="May cast swift spell after critical hit"',
   'Spell Synthesis':
     'Section=magic ' +
     'Note="May cast two spells simultaneously w/+2 checks to overcome spell resistance and target -2 saves 1/dy"',
-  'Summon Shadow':
-    'Section=magic ' +
-    'Note="May summon unturnable Shadow companion with %V HP, +%{baseAttack} BAB, %{save.Fortitude>=0 ? \'+\' + save.Fortitude : save.Fortitude}/%{save.Reflex>=0 ? \'+\' + save.Reflex : save.Reflex}/%{save.Will>=0 ? \'+\' + save.Will : save.Will} Fort/Ref/Will, and +4 Will vs. channeled energy"',
-  'The Lore Of True Stamina':'Section=save Note="+2 Fortitude"',
-  'True Lore':
-    'Section=magic ' +
-    'Note="May use <i>Legend Lore</i> or <i>Analyze Dweomer</i> effects 1/dy"',
-  'Weapon Trick':'Section=combat Note="+1 Melee Attack/+1 Ranged Attack"',
-  'Whispering Campaign':
-    'Section=magic ' +
-    'Note="May use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance"'
+
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
   'Combat Maneuver Bonus':
@@ -5056,9 +5095,9 @@ Pathfinder.PRESTIGE_CLASSES = {
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Canny Defense","1:Precise Strike (Duelist)","2:Improved Reaction",' +
-      '2:Parry,"3:Enhanced Mobility","4:Combat Reflexes",4:Grace,5:Riposte,' +
-      '"6:Acrobatic Charge","7:Elaborate Defense","9:Deflect Arrows",' +
-      '"9:No Retreat","10:Crippling Critical (Duelist)"',
+      '"2:Parry","3:Enhanced Mobility","4:Combat Reflexes","4:Grace",' +
+      '"5:Riposte","6:Acrobatic Charge","7:Elaborate Defense",' +
+      '"9:Deflect Arrows","9:No Retreat","10:Crippling Critical (Duelist)"',
   'Eldritch Knight':
     'Require=' +
       '"weaponProficiency.Martial Weapons",' +
@@ -5068,7 +5107,8 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Climb,"Knowledge (Arcana)","Knowledge (Nobility)",Linguistics,Ride,' +
       '"Sense Motive",Spellcraft,Swim ' +
     'Features=' +
-      '"1:Diverse Training","2:Arcane Caster Level Bonus","10:Spell Critical"',
+      '"1:Bonus Feat (Eldritch Knight)","1:Diverse Training",' +
+      '"2:Arcane Caster Level Bonus","10:Spell Critical"',
   'Loremaster':
     'Require=' +
       '"Sum \'^features\\.Skill Focus .Knowledge\' >= 0",' +
@@ -5079,7 +5119,7 @@ Pathfinder.PRESTIGE_CLASSES = {
       'Appraise,Diplomacy,"Handle Animal",Heal,Knowledge,Linguistics,' +
       'Perform,Spellcraft,"Use Magic Device" ' +
     'Features=' +
-      '"1:Caster Level Bonus",1:Secrets,2:Lore,"4:Bonus Language",' +
+      '"1:Caster Level Bonus","1:Secret","2:Lore","4:Bonus Languages",' +
       '"6:Greater Lore","10:True Lore" ' +
     'Selectables=' +
       '"1:Applicable Knowledge:Secret",' +
@@ -5114,10 +5154,10 @@ Pathfinder.PRESTIGE_CLASSES = {
     'Features=' +
       '"1:Bardic Knowledge","1:Deep Pockets","1:Master Scribe",' +
       '"2:Live To Tell The Tale",2:Pathfinding,"3:Bardic Performance",' +
-      '3:Countersong,3:Distraction,3:Fascinate,"3:Improved Aid",' +
+      '"3:Countersong","3:Distraction","3:Fascinate","3:Improved Aid",' +
       '"3:Inspire Courage","4:Epic Tales","5:Inspire Competence",' +
       '"5:Whispering Campaign","6:Inspire Action","7:Call Down The Legends",' +
-      '"8:Greater Epic Tales",8:Suggestion,"10:Dirge Of Doom",' +
+      '"8:Greater Epic Tales","8:Suggestion","10:Dirge Of Doom",' +
       '"10:Lay Of The Exalted Dead"',
   'Shadowdancer':
     'Require=' +
@@ -5902,7 +5942,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'featureNotes.versatilePerformance', '=', null
     );
     rules.defineRule('skillNotes.bardicKnowledge',
-      classLevel, '=', 'Math.max(Math.floor(source / 2), 1)'
+      classLevel, '+=', 'Math.max(Math.floor(source / 2), 1)'
     );
     rules.defineRule
       ('skillNotes.jack-Of-All-Trades-1', classLevel, '?', 'source>=16');
@@ -6053,6 +6093,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.bonusFeats(Fighter)',
       classLevel, '=', '1 + Math.floor(source / 2)'
     );
+    rules.defineRule('fighterFeatLevel', classLevel, '+=', null);
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorTraining', '+', null
     );
@@ -6821,79 +6862,45 @@ Pathfinder.classRulesExtra = function(rules, name) {
 
   } else if(name == 'Duelist') {
 
-    rules.defineRule
-      ('armorClassDodgeModifier', 'combatNotes.cannyDefense.1', '+=', null);
-    rules.defineRule('combatNotes.cannyDefense',
-      'intelligenceModifier', '+=', 'source < 0 ? null : source',
-      classLevel, 'v', null
-    );
-    rules.defineRule('combatNotes.cannyDefense.1',
-      'armorWeight', '?', '"NoneLight".includes(source)',
-      'shield', '?', 'source == "None"',
-      'combatNotes.cannyDefense', '=', null
-    );
     rules.defineRule('combatNotes.elaborateDefense',
       classLevel, '+=', 'Math.floor(source / 3)'
     );
     rules.defineRule('combatNotes.improvedReaction',
       classLevel, '+=', 'source < 2 ? null : source < 8 ? 2 : 4'
     );
-    rules.defineRule
-      ('combatNotes.preciseStrike(Duelist)', classLevel, '=', null);
-    rules.defineRule('initiative', 'combatNotes.improvedReaction', '+', null);
-    rules.defineRule('save.Reflex', 'saveNotes.grace.1', '+', '2');
     rules.defineRule('saveNotes.grace.1',
-      'saveNotes.grace', '?', null,
-      'armorWeight', '=', '"NoneLight".includes(source) ? 2 : null'
+      'armorWeight', '?', '"NoneLight".includes(source)',
+      'shield', '?', 'source == "None"',
+      'saveNotes.grace', '=', '2'
     );
+    rules.defineRule('save.Reflex', 'saveNotes.grace.1', '+', null);
 
   } else if(name == 'Eldritch Knight') {
 
-    rules.defineRule
-      ('featCount.Fighter', classLevel, '+=', 'Math.floor((source + 3) / 4)');
+    rules.defineRule('casterLevelArcane', classLevel, '+=', null);
+    rules.defineRule('featureNotes.bonusFeat(EldritchKnight)',
+      classLevel, '+=', 'Math.floor((source + 3) / 4)'
+    );
+    rules.defineRule('featCount.Fighter',
+      'featureNotes.bonusFeat(EldritchKnight)', '+=', null
+    );
+    rules.defineRule('fighterFeatLevel', classLevel, '+=', null);
     rules.defineRule('magicNotes.arcaneCasterLevelBonus',
       classLevel, '+=', 'source > 1 ? source - 1 : null'
     );
 
   } else if(name == 'Loremaster') {
 
-    let allSkills = rules.getChoices('skills');
-    for(let skill in allSkills) {
-      if(skill.startsWith('Knowledge')) {
-        rules.defineRule('countKnowledgeGe7',
-          'skills.' + skill, '+=', 'source >= 7 ? 1 : null'
-        );
-        rules.defineRule('skillModifier.' + skill, 'skillNotes.lore', '+', '5');
-      }
-    }
-    rules.defineRule('abilityNotes.deepPockets',
-      'features.Deep Pockets', '?', null,
-      'strength', '=', 'source + 4'
-    );
     rules.defineRule('casterLevelArcane', classLevel, '+=', null);
-    rules.defineRule
-      ('combatNotes.secretHealth', 'level', '=', 'Math.max(source, 3)');
-    rules.defineRule
-      ('featCount.General', 'featureNotes.applicableKnowledge', '+', '1');
-    rules.defineRule('featureNotes.bonusLanguage',
-      classLevel, '+=', 'Math.floor(source / 4)'
-    );
-    rules.defineRule('featureNotes.secrets',
+    rules.defineRule('featureNotes.secret',
       classLevel, '=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('hitPoints', 'combatNotes.secretHealth', '+','3');
-    rules.defineRule('languageCount', 'featureNotes.bonusLanguage', '+', null);
-    rules.defineRule('loadLight',
-      'abilityNotes.deepPockets', '^', 'Math.floor(SRD35.STRENGTH_MAX_LOADS[source] / 3)'
-    );
     rules.defineRule('magicNotes.casterLevelBonus', classLevel, '+=', null);
-    rules.defineRule
-      ('save.Fortitude', 'saveNotes.theLoreOfTrueStamina', '+', '2');
-    rules.defineRule('save.Will', 'saveNotes.secretsOfInnerStrength', '+', '2');
-    rules.defineRule
-      ('save.Reflex', 'saveNotes.secretKnowledgeOfAvoidance', '+', '2');
     rules.defineRule('selectableFeatureCount.Loremaster (Secret)',
-      'featureNotes.secrets', '+=', null
+      'featureNotes.secret', '+=', null
+    );
+    rules.defineRule('skillNotes.bonusLanguages',
+      classLevel, '+=', 'Math.floor(source / 4)'
     );
     rules.defineRule
       ('skillNotes.lore', classLevel, '+=', 'Math.floor(source / 2)');
@@ -6904,9 +6911,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ('magicNotes.arcaneCasterLevelBonus', classLevel, '+=', null);
     rules.defineRule
       ('magicNotes.divineCasterLevelBonus', classLevel, '+=', null);
-    rules.defineRule('magicNotes.combinedSpells',
-      classLevel, '+=', 'Math.floor((source + 1) / 2)'
-    );
 
   } else if(name == 'Pathfinder Chronicler') {
 
@@ -6916,18 +6920,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // Set casterLevels.W to a minimal value so that spell DC will be
     // calculated even for non-Wizard Pathfinder Chroniclers.
     rules.defineRule('casterLevels.W', classLevel, '=', 'source<3 ? null : 1');
-    rules.defineRule('featureNotes.pathfinding', classLevel, '=', null);
-    rules.defineRule('magicNotes.inspireAction',
-      classLevel, '=', 'source<9 ? "move" : "move or standard"'
-    );
-    rules.defineRule('saveNotes.liveToTellTheTale',
-      classLevel, '+=', 'Math.floor(source / 2)'
+    rules.defineRule('loadLight',
+      'abilityNotes.deepPockets', '^', 'Math.floor(SRD35.STRENGTH_MAX_LOADS[dict.strength + 4] / 3)'
     );
     rules.defineRule('skillNotes.bardicKnowledge',
-      classLevel, '+=', 'Math.max(1, Math.floor(source / 2))'
+      classLevel, '+=', 'Math.max(Math.floor(source / 2), 1)'
     );
-    rules.defineRule('skillNotes.masterScribe', classLevel, '+=', null);
-    rules.defineRule('skillNotes.masterScribe-1', classLevel, '+=', null);
+    rules.defineRule('skillNotes.masterScribe', classLevel, '=', null);
 
   } else if(name == 'Shadowdancer') {
 
@@ -6937,24 +6936,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.rogueTalents(Shadowdancer)',
       classLevel, '+=', 'Math.floor(source / 3)'
     );
-    rules.defineRule
-      ('magicNotes.shadowCall', classLevel, '=', 'Math.floor(source / 2) - 1');
-    rules.defineRule
-      ('magicNotes.shadowCall.1', classLevel, '=', 'source<10 ? "3rd" : "6th"');
-    rules.defineRule('magicNotes.shadowCall.2',
-      classLevel, '=', 'source<10 ? 14 : 17',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule
-      ('magicNotes.shadowIllusion', classLevel, '=', 'Math.floor(source / 2)');
     rules.defineRule('magicNotes.shadowJump',
       classLevel, '=', '40 * Math.pow(2, Math.floor(source/2)-2)'
-    );
-    rules.defineRule('magicNotes.shadowPower',
-      classLevel, '=', 'source<8 ? null : source<10 ? 1 : 2'
-    );
-    rules.defineRule('magicNotes.summonShadow',
-      'hitPoints', '=', 'Math.floor(source / 2)'
     );
     rules.defineRule('selectableFeatureCount.Shadowdancer (Talent)',
       'featureNotes.rogueTalents(Shadowdancer)', '+=', null
@@ -6962,6 +6945,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('shadowdancerFeatures.Improved Uncanny Dodge',
       'shadowdancerFeatures.Uncanny Dodge', '?', null,
       'uncannyDodgeSources', '=', 'source >= 2 ? 1 : null'
+    );
+    rules.defineRule('spells.Shadow Conjuration(ShadowCall4 Illu)',
+      classLevel, '?', 'source < 10'
     );
     rules.defineRule('skillNotes.hideInPlainSight',
       'shadowdancerFeatures.Hide In Plain Sight', '=', '"within 10\' of dim light"'
@@ -7608,10 +7594,15 @@ Pathfinder.skillRules = function(
   }
   if(name.startsWith('Craft'))
     rules.addChoice('craftSkills', name, '');
-  else if(name.startsWith('Knowledge'))
+  else if(name.startsWith('Knowledge')) {
+    // For Loremaster
     rules.defineRule
-      ('skillModifier.' + name, 'skillNotes.bardicKnowledge', '+', null);
-  else if(name.startsWith('Profession'))
+      ('countKnowledgeGe7', 'skills.' + name, '+=', 'source>=7 ? 1 : null');
+    rules.defineRule('skillModifier.' + name,
+      'skillNotes.bardicKnowledge', '+', null,
+      'skillNotes.lore', '+', null
+    );
+  } else if(name.startsWith('Profession'))
     rules.addChoice('professionSkills', name, '');
   rules.defineRule
     ('classSkills.' + name, 'skillNotes.jack-Of-All-Trades-1', '=', '1');
