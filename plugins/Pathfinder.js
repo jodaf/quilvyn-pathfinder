@@ -1098,7 +1098,7 @@ Pathfinder.FEATURES = {
   // Death Domain
   'Bleeding Touch':
     'Section=combat ' +
-    'Note="Touch attack inflicts 1d6 HP each rd for %{casterLevels.Death//2>?1} rd (magical healing or a DC 15 Heal ends) %{wisdomModifier+3} times per day"',
+    'Note="Touch attack inflicts 1d6 HP bleed damage for %{casterLevels.Death//2>?1} rd (magical healing or a DC 15 Heal ends) %{wisdomModifier+3} times per day"',
   "Death's Embrace":
     'Section=combat Note="Regains hit points from channeled negative energy"',
   // Destruction Domain
@@ -1501,7 +1501,7 @@ Pathfinder.FEATURES = {
     'Section=feature Note="Has additional Rogue Talent choices"',
   'Bleeding Attack':
     'Section=combat ' +
-    'Note="Sneak Attack inflicts %{combatNotes.sneakAttack} HP each rd; magical healing or a DC 15 Heal ends"',
+    'Note="Sneak Attack inflicts %{combatNotes.sneakAttack} HP bleed each rd; magical healing or a DC 15 Heal ends"',
   'Feat (Rogue)':'Section=feature Note="+1 General Feat"',
   'Combat Trick':'Section=feature Note="+1 Fighter Feat"',
   'Crippling Strike':SRD35.FEATURES['Crippling Strike'],
@@ -2162,28 +2162,105 @@ Pathfinder.FEATURES = {
     'Note="Can summon an unturnable Shadow companion with %{hitPoints//2} hit points that uses self BAB and saves and gains +4 Will vs. channeled energy; its destruction inflicts a permanent negative level (save Fortitude DC 15 negates) and prevents replacement for 30 days"',
   // Uncanny Dodge as above
 
-  // Shared with SRD35
+  // Feats
   'Acrobatic':'Section=skill Note="+%V Acrobatics/+%1 Fly"',
+  'Acrobatic Steps':
+    'Section=ability ' +
+    'Note="Can move normally through difficult terrain 20\' per rd"',
+  'Agile Maneuvers':'Section=combat Note="+%V CMB"',
   'Alertness':'Section=skill Note="+%V Perception/+%1 Sense Motive"',
-  'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
-  'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
-  'Augment Summoning':
-    'Section=magic Note="Summoned creatures gain +4 Strength and Constitution"',
-  'Blind-Fight':
+  'Alignment Channel (Chaos)':
     'Section=combat ' +
-    'Note="Can reroll misses due to concealment/Invisible foes gain no melee bonus/Requires no skill check to move full Speed when blinded"',
-  'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
-  'Brew Potion':
-    'Section=magic Note="May create potion for up to 3rd level spell"',
+    'Note="Can use Channel Energy to heal or harm chaotic outsiders"',
+  'Alignment Channel (Evil)':
+    'Section=combat ' +
+    'Note="Can use Channel Energy to heal or harm evil outsiders"',
+  'Alignment Channel (Good)':
+    'Section=combat ' +
+    'Note="Can use Channel Energy to heal or harm good outsiders"',
+  'Alignment Channel (Law)':
+    'Section=combat ' +
+    'Note="Can use Channel Energy to heal or harm lawful outsiders"',
+  'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
+  'Arcane Armor Mastery':
+    'Section=magic ' +
+    'Note="Can use a swift action to reduce the armored casting penalty by 20%"',
+  'Arcane Armor Training':
+    'Section=magic ' +
+    'Note="Can use a swift action to reduce the armored casting penalty by 10%"',
+  'Arcane Strike':
+    'Section=combat ' +
+    'Note="Can use a swift action to make weapons magic with a +%V damage bonus for 1 rd"',
+  // Heavy, Light, and Medium Armor Proficiency have no note
+  'Athletic':'Section=skill Note="+%V Climb/+%1 Swim"',
+  'Augment Summoning':SRD35.FEATURES['Augment Summoning'],
+  'Bleeding Critical':
+    'Section=combat ' +
+    'Note="Critical hits inflict 2d6 HP bleed each rd; magical healing or a DC 15 Heal ends"',
+  'Blind-Fight':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"Can reroll misses due to concealment/Invisible foes gain no melee bonus",' +
+      '"Requires no Acrobatics check to move full Speed when blinded"',
+  'Blinding Critical':
+    'Section=combat ' +
+    'Note="Critical hits inflict permanent blindness (save Fortitude DC %{10+baseAttack} inflicts dazzled for 1d4 rd)"',
+  'Brew Potion':SRD35.FEATURES['Brew Potion'],
+  'Catch Off-Guard':
+    'Section=combat ' +
+    'Note="Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed"',
+  'Channel Smite':
+    'Section=combat ' +
+    'Note="Can use a swift action before a melee attack to add Channel Energy to its damage"',
   'Cleave':
-    'Section=combat Note="May suffer -2 AC to gain attack against two foes"',
+    'Section=combat ' +
+    'Note="Can use a full attack to attack two adjacent foes, suffering a -2 penalty to Armor Class until the next turn"',
   'Combat Casting':
-    'Section=skill ' +
-    'Note="Gains +4 concentration to cast spell while on defensive or grappling"',
+    SRD35.FEATURES['Combat Casting']
+    .replace(', grappling, or pinned', ' or grappling'),
   'Combat Expertise':
-    'Section=combat Note="May suffer up to -%V attack to gain equal AC bonus"',
-  'Combat Reflexes':
-    'Section=combat Note="May take AOO while flat-footed and %V AOO/rd"',
+    SRD35.FEATURES['Combat Expertise']
+    .replace('baseAttack<?5', '1+baseAttack//4')
+    .replace('next action', 'next turn'),
+  'Combat Reflexes':SRD35.FEATURES['Combat Reflexes'],
+  'Command Undead':
+    'Section=combat ' +
+    'Note="R30\' Can use Channel Energy to control %{channelLevel} HD of undead (save Will DC %{10+channelLevel//2+charismaModifier} negates)"',
+  'Craft Magic Arms And Armor':SRD35.FEATURES['Craft Magic Arms And Armor'],
+  'Craft Rod':SRD35.FEATURES['Craft Rod'],
+  'Craft Staff':SRD35.FEATURES['Craft Staff'],
+  'Craft Wand':SRD35.FEATURES['Craft Wand'],
+  'Craft Wondrous Item':SRD35.FEATURES['Craft Wondrous Item'],
+  'Critical Focus':'Section=combat Note="+4 to confirm crit threats"',
+  'Critical Mastery':
+    'Section=combat ' +
+    'Note="Can apply the effects of 2 critical feats to critical hits"',
+  'Dazzling Display':
+    'Section=combat ' +
+    'Note="R30\' Can use Intimidate to demoralize foes using a Weapon Focus weapon"',
+  'Deadly Aim':
+    'Section=combat ' +
+    'Note="Can suffer -%{1+baseAttack//4} on ranged attacks to inflict +%{2*(1+baseAttack//4)} HP until the next turn"',
+  'Deadly Stroke':
+    'Section=combat ' +
+    'Note="Attacks using a Greater Weapon Focus weapon against a stunned or flat-footed foe inflict x2 damage and 1 point Constitution bleed"',
+  'Deafening Critical':
+    'Section=combat ' +
+    'Note="Critical hit inflicts permanent deafness (save Fortitude DC %{10+baseAttack{ inflicts deafness for 1 rd)"',
+  'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
+  'Defensive Combat Training':'Section=combat Note="+%V CMD"',
+  'Deflect Arrows':SRD35.FEATURES['Deflect Arrows'],
+  'Deft Hands':'Section=skill Note="+%V Disable Device/+%1 Sleight Of Hand"',
+  'Diehard':SRD35.FEATURES.Diehard,
+  'Disruptive':
+    'Section=combat ' +
+    'Note="Foes within threat area suffer +4 defensive spell DC"',
+  'Dodge':SRD35.FEATURES.Dodge,
+  'Double Slice':
+    'Section=combat Note="Adds full Strength modifier to off-hand damage"',
+
+  // Shared with SRD35
+  'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
   'Companion Alertness':
     'Section=skill ' +
     'Note="+2 Perception and Sense Motive when companion in reach"',
@@ -2192,28 +2269,11 @@ Pathfinder.FEATURES = {
     'Note="Successful Reflex saves yield no damage instead of half%{companionNotes.companionImprovedEvasion?\', and failed Reflex saves yield half damage\':\'\'}"',
   'Companion Improved Evasion':
     'Section=companion Note="Has increased Companion Evasion effects"',
-  'Craft Magic Arms And Armor':
-    'Section=magic ' +
-    'Note="May create and mend magic weapons, armor, and shields"',
-  'Craft Rod':'Section=magic Note="May create magic rods"',
-  'Craft Staff':'Section=magic Note="May create magic staves"',
-  'Craft Wand':
-    'Section=magic Note="May create wands for up to 4th level spell"',
-  'Craft Wondrous Item':
-    'Section=magic Note="May create and mend miscellaneous magic items"',
   'Damage Reduction':'Section=combat Note="DR %V/-"',
-  'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
-  'Deflect Arrows':
-    'Section=combat Note="Suffers no damage from ranged hit 1/rd"',
-  'Deft Hands':'Section=skill Note="+%V Disable Device/+%1 Sleight Of Hand"',
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="May deliver touch spells if in contact w/master when cast"',
   'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
-  'Diehard':
-    'Section=combat ' +
-    'Note="Remains conscious, stable, and able to act with negative HP"',
-  'Dodge':SRD35.FEATURES.Dodge,
   'Empathic Link':'Section=companion Note="May share emotions up to 1 mile"',
   'Empower Spell':
     'Section=magic ' +
@@ -2407,23 +2467,8 @@ Pathfinder.FEATURES = {
     'Note="May use +3 spell slot to dbl chosen spell area of affect"',
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
-  'Acrobatic Steps':
-    'Section=ability Note="May move normally through difficult terrain 20\'/rd "',
   'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
-  'Agile Maneuvers':'Section=combat Note="+%V CMB"',
   'Aid Allies':'Section=combat Note="+1 on aid another actions"',
-  'Alignment Channel (Chaos)':
-    'Section=combat ' +
-    'Note="May use Channel Energy to heal or harm chaotic outsiders"',
-  'Alignment Channel (Evil)':
-    'Section=combat ' +
-    'Note="May use Channel Energy to heal or harm evil outsiders"',
-  'Alignment Channel (Good)':
-    'Section=combat ' +
-    'Note="May use Channel Energy to heal or harm good outsiders"',
-  'Alignment Channel (Law)':
-    'Section=combat ' +
-    'Note="May use Channel Energy to heal or harm lawful outsiders"',
   'Anatomist':'Section=combat Note="+1 crit confirm"',
   'Ancient Historian':
     'Section=skill ' +
@@ -2441,13 +2486,6 @@ Pathfinder.FEATURES = {
   'Arcane Archivist':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Arcane Armor Mastery':
-    'Section=magic Note="Reduces armored casting penalty by 10%"',
-  'Arcane Armor Training':
-    'Section=magic Note="Reduces armored casting penalty by 10%"',
-  'Arcane Strike':
-    'Section=combat ' +
-    'Note="May imbue weapons with +%V magic damage bonus for 1 rd"',
   'Armor Expert':'Section=skill Note="Reduces armor skill check penalty by 1"',
   'Attuned To The Ancestors':
     'Section=magic ' +
@@ -2467,12 +2505,6 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
       '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
-  'Bleeding Critical':
-    'Section=combat ' +
-    'Note="Critical hit inflicts 2d6 HP/rd (magic healing or DC 15 Heal ends)"',
-  'Blinding Critical':
-    'Section=combat ' +
-    'Note="Critical hit inflicts permanent blindness (DC %V Fort dazzled for 1d4 rd)"',
   'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
   'Bullied':'Section=combat Note="+1 unarmed AOO attack"',
   'Bully':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
@@ -2483,12 +2515,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="+1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill"',
   'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
-  'Catch Off-Guard':
-    'Section=combat ' +
-    'Note="Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed"',
-  'Channel Smite':
-    'Section=combat ' +
-    'Note="May inflict Channel Energy damage using melee weapon attack"',
   'Charming':
     'Section=magic,skill ' +
     'Note=' +
@@ -2508,31 +2534,13 @@ Pathfinder.FEATURES = {
       '"Choice of Knowledge (Nobility) or Knowledge (Religion) is a class skill"',
   'Classically Schooled':
     'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
-  'Command Undead':
-    'Section=combat ' +
-    'Note="R30\' May use Channel Energy to control %1 HD of undead (%V DC Will neg)"',
   'Comparative Religion':
     'Section=skill ' +
     'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
   'Courageous':'Section=save Note="+2 vs. fear"',
-  'Critical Focus':'Section=combat Note="+4 crit confirm"',
-  'Critical Mastery':
-    'Section=combat Note="May apply two effects to critical hits"',
   'Dangerously Curious':
     'Section=skill ' +
     'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Dazzling Display':
-    'Section=combat ' +
-    'Note="R30\' May use Intimidate to demoralize foes using focused weapon"',
-  'Deadly Aim':
-    'Section=combat Note="May suffer -%V ranged attack to gain +%1 damage"',
-  'Deadly Stroke':
-    'Section=combat ' +
-    'Note="x2 damage and 1 point Constitution damage w/focused weapon against stunned or flat-footed foe"',
-  'Deafening Critical':
-    'Section=combat ' +
-    'Note="Critical hit inflicts permanent deafness (DC %V Fort deaf for 1 rd)"',
-  'Defensive Combat Training':'Section=combat Note="+%V CMD"',
   'Deft Dodger':'Section=save Note="+1 Reflex"',
   'Demon Hunter':
     'Section=skill,save ' +
@@ -2552,15 +2560,12 @@ Pathfinder.FEATURES = {
       '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
       '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
   'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
-  'Disruptive':'Section=combat Note="+4 foe defensive spell DC"',
   'Divine Courtesan':
     'Section=skill,skill ' +
     'Note=' +
       '"+1 Sense Motive",' +
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
   'Divine Warrior':'Section=magic Note="+1 damage w/enspelled melee weapons"',
-  'Double Slice':
-    'Section=combat Note="Adds full Strength modifier to off-hand damage"',
   'Dunewalker':
     'Section=ability,save ' +
     'Note=' +
@@ -7097,16 +7102,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       '', '=', '2',
       'skills.Ride', '+', 'source >= 10 ? 2 : null'
     );
-  } else if(name == 'Arcane Armor Mastery') {
-    rules.defineRule('magicNotes.arcaneSpellFailure',
-      'magicNotes.arcaneArmorMastery', '+', '-10',
-      '', '^', '0'
-    );
-  } else if(name == 'Arcane Armor Training') {
-    rules.defineRule('magicNotes.arcaneSpellFailure',
-      'magicNotes.arcaneArmorTraining', '+', '-10',
-      '', '^', '0'
-    );
   } else if(name == 'Arcane Strike') {
     rules.defineRule('combatNotes.arcaneStrike',
       'casterLevelArcane', '=', '1 + Math.floor(source / 5)'
@@ -7121,36 +7116,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       '', '=', '2',
       'skills.Swim', '+', 'source >= 10 ? 2 : null'
     );
-  } else if(name == 'Blinding Critical') {
-    rules.defineRule
-      ('combatNotes.blindingCritical', 'baseAttack', '=', '10 + source');
-  } else if(name == 'Combat Expertise') {
-    rules.defineRule('combatNotes.combatExpertise',
-      'baseAttack', '=', '1 + Math.floor(source / 4)'
-    );
-  } else if(name == 'Combat Reflexes') {
-    rules.defineRule
-      ('combatNotes.combatReflexes', 'dexterityModifier', '=', 'source + 1');
-  } else if(name == 'Command Undead') {
-    rules.defineRule('combatNotes.commandUndead',
-      'channelLevel', '=', '10 + Math.floor(source / 2)',
-      'charismaModifier', '+', null
-    );
-    rules.defineRule('combatNotes.commandUndead.1',
-      'features.Command Undead', '?', null,
-      'channelLevel', '=', null
-    );
-  } else if(name == 'Deadly Aim') {
-    rules.defineRule('combatNotes.deadlyAim',
-      'baseAttack', '=', '1 + Math.floor(source / 4)'
-    );
-    rules.defineRule('combatNotes.deadlyAim.1',
-      'features.Deadly Aim', '?', null,
-      'baseAttack', '=', '2 * (1 + Math.floor(source / 4))'
-    );
-  } else if(name == 'Deafening Critical') {
-    rules.defineRule
-      ('combatNotes.deafeningCritical', 'baseAttack', '=', '10 + source');
   } else if(name == 'Deceitful') {
     rules.defineRule('skillNotes.deceitful',
       '', '=', '2',
