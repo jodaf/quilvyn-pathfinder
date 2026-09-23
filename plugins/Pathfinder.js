@@ -879,6 +879,21 @@ Pathfinder.FEATURES = {
   'Human Ability Adjustment':'Section=ability Note="+2 any"',
   'Skilled':'Section=skill Note="+%V Skill ranks"',
 
+  'Large':
+    // changed effects
+    'Section=ability,combat,skill ' +
+    'Note=' +
+      '"x2 Load Max",' +
+      '"-1 size penalty to Armor Class/-1 Melee Attack/-1 Ranged Attack/+1 CMB/+1 CMD",' +
+      '"-2 Fly/+4 Intimidate/-4 Stealth"',
+  'Small':
+    // changed effects
+    'Section=ability,combat,skill ' +
+    'Note=' +
+      '"x0.75 Load Max",' +
+      '"+1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
+      '"+2 Fly/-4 Intimidate/+4 Stealth"',
+
   // Class
 
   // Barbarian
@@ -886,6 +901,7 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Can use a +%{baseAttack-5} bite attack during rage that inflicts %V+%{(strengthModifier+2+(combatNotes.greaterRage?1:0)+(combatNotes.mightyRage?1:0))//2} HP; a hit also gives +2 on a subsequent grapple check"',
   'Clear Mind':'Section=save Note="Can reroll a Will save once per rage"',
+  'Damage Reduction':'Section=combat Note="Has DR %V/-"',
   'Fast Movement (Barbarian)':SRD35.FEATURES['Fast Movement (Barbarian)'],
   'Guarded Stance':
     'Section=combat ' +
@@ -1026,6 +1042,32 @@ Pathfinder.FEATURES = {
     'SpellAbility=Charisma',
   'Suggestion':SRD35.FEATURES.Suggestion,
   'Versatile Performance':'Section=feature Note="%V selections"',
+  'Versatile Skill (Act)':
+    'Section=skill Note="Can use Perform (Act) in place of Bluff and Disguise"',
+  'Versatile Skill (Comedy)':
+    'Section=skill ' +
+    'Note="Can use Perform (Comedy) in place of Bluff and Intimidate"',
+  'Versatile Skill (Dance)':
+    'Section=skill ' +
+    'Note="Can use Perform (Dance) in place of Acrobatics and Fly"',
+  'Versatile Skill (Keyboard)':
+    'Section=skill ' +
+    'Note="Can use Perform (Keyboard) in place of Diplomacy and Intimidate"',
+  'Versatile Skill (Oratory)':
+    'Section=skill ' +
+    'Note="Can use Perform (Oratory) in place of Diplomacy and Sense Motive"',
+  'Versatile Skill (Percussion)':
+    'Section=skill ' +
+    'Note="Can use Perform (Percussion) in place of Handle Animal and Intimidate"',
+  'Versatile Skill (Sing)':
+    'Section=skill ' +
+    'Note="Can use Perform (Sing) in place of Bluff and Sense Motive"',
+  'Versatile Skill (String)':
+    'Section=skill ' +
+    'Note="Can use Perform (String) in place of Bluff and Diplomacy"',
+  'Versatile Skill (Wind)':
+    'Section=skill ' +
+    'Note="Can use Perform (Wind) in place of Diplomacy and Handle Animal"',
   'Well-Versed':
     'Section=save ' +
     'Note="+4 vs. bardic performance, sonic, and language-dependent effects"',
@@ -2323,7 +2365,7 @@ Pathfinder.FEATURES = {
     'Note="+2 overrun checks, and allies can take a movement AOO on a foe knocked prone"',
   'Greater Penetrating Strike':
     'Section=combat ' +
-    'Note="Focused weapons ignore DR 5/- and DR 10 for more limited forms of DR"',
+    'Note="Focused weapons ignore DR 5/- and DR 10 for limited forms of DR"',
   'Greater Shield Focus':'Section=combat Note="+1 shield bonus to Armor Class"',
   'Greater Spell Focus (%school)':
     SRD35.FEATURES['Greater Spell Focus (%school)'],
@@ -2425,6 +2467,25 @@ Pathfinder.FEATURES = {
   'Nimble Moves':
     'Section=ability ' +
     'Note="Can move normally through 5\' of difficult terrain each rd"',
+  'Penetrating Strike':
+    'Section=combat Note="Focused weapons ignore DR 5 for limited forms of DR"',
+  'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
+  'Pinpoint Targeting':
+    'Section=combat ' +
+    'Note="Can make a single ranged attack as a standard action that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use"',
+  'Point-Blank Shot':SRD35.FEATURES['Point-Blank Shot'],
+  'Power Attack':
+    'Section=combat ' +
+    'Note="Can suffer -%{1+baseAttack//4} attack to inflict +%{2+baseAttack//4*2} HP, or +%{(2+baseAttack//4*2)*1.5//1} HP if wielding weapon two-handed"',
+  'Precise Shot':SRD35.FEATURES['Precise Shot'],
+  'Quick Draw':SRD35.FEATURES['Quick Draw'],
+  'Quicken Spell':SRD35.FEATURES['Quicken Spell'],
+  'Rapid Reload (Hand)':SRD35.FEATURES['Rapid Reload (Hand)'],
+  'Rapid Reload (Heavy)':SRD35.FEATURES['Rapid Reload (Heavy)'],
+  'Rapid Reload (Light)':SRD35.FEATURES['Rapid Reload (Light)'],
+  'Rapid Shot':SRD35.FEATURES['Rapid Shot'],
+  'Ride-By Attack':SRD35.FEATURES['Ride-By Attack'],
+  'Run':SRD35.FEATURES.Run,
 
   // Shared with SRD35
   'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
@@ -2436,7 +2497,6 @@ Pathfinder.FEATURES = {
     'Note="Successful Reflex saves yield no damage instead of half%{companionNotes.companionImprovedEvasion?\', and failed Reflex saves yield half damage\':\'\'}"',
   'Companion Improved Evasion':
     'Section=companion Note="Has increased Companion Evasion effects"',
-  'Damage Reduction':'Section=combat Note="DR %V/-"',
   'Deliver Touch Spells':
     'Section=companion ' +
     'Note="May deliver touch spells if in contact w/master when cast"',
@@ -2453,44 +2513,13 @@ Pathfinder.FEATURES = {
   'Familiar Toad':'Section=combat Note="+3 Hit Points"',
   'Familiar Weasel':'Section=save Note="+2 Reflex"',
   'Improved Speed':'Section=companion Note="+10 companion Speed"',
-  'Large':
-    'Section=ability,combat,skill ' +
-    'Note="x2 Load Max",' +
-         '"-1 AC/-1 Melee Attack/-1 Ranged Attack/+1 CMB/+1 CMD",' +
-         '"-2 Fly/+4 Intimidate/-4 Stealth"',
   'Link':
     'Section=skill ' +
     'Note="+4 Handle Animal (companion)/+4 Wild Empathy (companion)"',
   'Multiattack':
     'Section=companion ' +
     'Note="Reduces additional attack penalty to -2 or gives second attack at -5"',
-  'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
-  'Point-Blank Shot':
-    'Section=combat Note="+1 ranged attack and damage w/in 30\'"',
-  'Power Attack':
-    'Section=combat ' +
-    'Note="May suffer -%V attack to gain +%1 damage (+%2 when wielding weapon w/two hands)"',
-  'Precise Shot':'Section=combat Note="Suffers no penalty on shot into melee"',
-  'Quick Draw':'Section=combat Note="May draw a weapon as a free action"',
-  'Quicken Spell':
-    'Section=magic Note="May use +4 spell slot to cast chosen spell as a free action 1/rd"',
-  'Rapid Reload (Hand)':
-    'Section=combat Note="May reload a hand crossbow as a free action"',
-  'Rapid Reload (Heavy)':
-    'Section=combat Note="May reload a heavy crossbow as a move action"',
-  'Rapid Reload (Light)':
-    'Section=combat Note="May reload a light crossbow as a free action"',
-  'Rapid Shot':
-    'Section=combat ' +
-    'Note="May make normal and extra ranged attacks at a -2 penalty"',
-  'Resist Illusion':'Section=save Note="+2 vs. illusions"',
-  'Ride-By Attack':
-    'Section=combat Note="May move before and after mounted attack w/out AOO"',
-  'Run':
-    'Section=ability,combat,skill ' +
-    'Note="+1 Run Speed Multiplier",' +
-         '"Retains Dexterity bonus to AC while running",' +
-         '"+4 Acrobatics (running jump)"',
+
   'Scribe Scroll':SRD35.FEATURES['Scribe Scroll'],
   'Scry On Familiar':'Section=companion Note="Master may view companion 1/dy"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
@@ -2502,13 +2531,6 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="May use +1 spell slot to cast chosen spell w/out speech"',
   'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
-  'Small':
-    // changed effects
-    'Section=ability,combat,skill ' +
-    'Note=' +
-      '"x0.75 Load Max",' +
-      '"+1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD",' +
-      '"+2 Fly/-4 Intimidate/+4 Stealth"',
   'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
   'Speak With Animals Of Its Kind':
     SRD35.FEATURES['Speak With Animals Of Its Kind'],
@@ -2536,7 +2558,7 @@ Pathfinder.FEATURES = {
     'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
   'Turn Undead':
     'Section=combat ' +
-    'Note="R30\' Channel Energy causes undead to flee for 1 min (DC %{combatNotes.channelEnergy.2} Will neg)"',
+    'Note="R30\' Channel Energy causes undead to flee for 1 min (DC %{magicNotes.channelEnergy.2} Will neg)"',
   'Two-Weapon Defense':
     'Section=combat ' +
     'Note="+1 AC when wielding two weapons; +2 when fighting defensively"',
@@ -2554,6 +2576,7 @@ Pathfinder.FEATURES = {
   'Widen Spell':
     'Section=magic ' +
     'Note="May use +3 spell slot to dbl chosen spell area of affect"',
+
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
   'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
@@ -2823,12 +2846,9 @@ Pathfinder.FEATURES = {
   'Patient Optimist':
     'Section=skill ' +
     'Note="+2 Diplomacy (unfriendly or hostile creatures); may retry once"',
-  'Penetrating Strike':'Section=combat Note="Focused weapons ignore DR 5/any"',
   'Performance Artist':
     'Section=skill ' +
     'Note="+1 choice of Perform (+5 when performing for money)/Choice of Perform is a class skill"',
-  'Pinpoint Targeting':
-    'Section=combat Note="Ranged attack ignores armor bonus"',
   'Planar Voyager':
     'Section=combat,save ' +
     'Note=' +
@@ -2986,32 +3006,6 @@ Pathfinder.FEATURES = {
   'Vagabond Child':
     'Section=skill ' +
     'Note="+1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill"',
-  'Versatile Skill (Act)':
-    'Section=skill Note="Can use Perform (Act) in place of Bluff and Disguise"',
-  'Versatile Skill (Comedy)':
-    'Section=skill ' +
-    'Note="Can use Perform (Comedy) in place of Bluff and Intimidate"',
-  'Versatile Skill (Dance)':
-    'Section=skill ' +
-    'Note="Can use Perform (Dance) in place of Acrobatics and Fly"',
-  'Versatile Skill (Keyboard)':
-    'Section=skill ' +
-    'Note="Can use Perform (Keyboard) in place of Diplomacy and Intimidate"',
-  'Versatile Skill (Oratory)':
-    'Section=skill ' +
-    'Note="Can use Perform (Oratory) in place of Diplomacy and Sense Motive"',
-  'Versatile Skill (Percussion)':
-    'Section=skill ' +
-    'Note="Can use Perform (Percussion) in place of Handle Animal and Intimidate"',
-  'Versatile Skill (Sing)':
-    'Section=skill ' +
-    'Note="Can use Perform (Sing) in place of Bluff and Sense Motive"',
-  'Versatile Skill (String)':
-    'Section=skill ' +
-    'Note="Can use Perform (String) in place of Bluff and Diplomacy"',
-  'Versatile Skill (Wind)':
-    'Section=skill ' +
-    'Note="Can use Perform (Wind) in place of Diplomacy and Handle Animal"',
   'Veteran Of Battle':
     'Section=combat,combat ' +
     'Note=' +
@@ -5581,6 +5575,9 @@ Pathfinder.magicRules = function(rules, schools, spells) {
 Pathfinder.talentRules = function(
   rules, feats, features, goodies, languages, skills
 ) {
+  for(let f in features)
+    if(features[f] == null)
+      console.log(f);
   SRD35.talentRules(rules, feats, features, goodies, languages, skills);
   // Override SRD35 intelligence skillPoint adjustment, feat count computation,
   // max ranks per skill, and armor skill check penalty and disable armor swim
@@ -7226,17 +7223,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       'features.Persuasive', '?', null,
       '', '=', '2',
       'skills.Intimidate', '+', 'source >= 10 ? 2 : null'
-    );
-  } else if(name == 'Power Attack') {
-    rules.defineRule('combatNotes.powerAttack',
-      'baseAttack', '=', 'Math.floor((source + 4) / 4)'
-    );
-    rules.defineRule('combatNotes.powerAttack.1',
-      'features.Power Attack', '?', null,
-      'baseAttack', '=', 'Math.floor((source + 4) / 4) * 2'
-    );
-    rules.defineRule('combatNotes.powerAttack.2',
-      'combatNotes.powerAttack.1', '=', 'Math.floor(source * 1.5)'
     );
   } else if(name == 'Scorpion Style') {
     rules.defineRule('combatNotes.scorpionStyle', 'wisdomModifier', '=', null);
