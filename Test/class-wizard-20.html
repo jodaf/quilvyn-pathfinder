@@ -255,7 +255,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
-        <td>Leadership: Attracts followers</td>
+        <td>Leadership: Can attract companions and devoted followers</td>
       </tr><tr style="text-align:center">
         <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr><tr style="text-align:center">
@@ -320,8 +320,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Profession (Tanner)): +3 Profession (Tanner)</i></td>
       </tr><tr style="text-align:center">
-        <td>Combat Casting: Gains +4 concentration to cast spell while on defensive or grappling</td>
-      </tr><tr style="text-align:center">
         <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
       </tr><tr style="text-align:center">
         <td>Familiar Owl: +3 Spot in shadows and darkness</td>
@@ -383,7 +381,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Blinding Ray: R30' Ranged touch attack blinds a target with up to 20 HD or dazzles a target with more for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Command Undead: R30' May use Channel Energy to control 20 HD of undead (21 DC Will neg)</td>
+        <td>Command Undead: R30' Can use Channel Energy to control 20 HD of undead (save Will DC 21 negates)</td>
       </tr><tr style="text-align:center">
         <td>Dazing Touch (Enchantment): Touch dazes a foe with up to 20 HD for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
@@ -399,7 +397,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Hand Of The Apprentice: R30' Can make a +12 ranged attack with a melee weapon 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
         <td>Power Over Undead: Can use chosen Power Over Undead feat 5 times per day</td>
       </tr><tr style="text-align:center">
@@ -407,7 +405,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Telekinetic Fist: R30' Ranged touch attack inflicts 1d4+10 HP bludgeoning 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Turn Undead: R30' Channel Energy causes undead to flee for 1 min (DC 21 Will neg)</td>
+        <td>Turn Undead: R30' Can use Channel Energy to cause undead to flee for 1 min (save Will DC 21 negates)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -427,6 +425,8 @@ var attributes = {
         <td><i>Wisdom Will Adjustment: -3</i></td>
       </tr><tr style="text-align:center">
         <td>Birthmark: +2 vs. charm and compulsion</td>
+      </tr><tr style="text-align:center">
+        <td>Combat Casting: +4 Concentration checks to cast spells while on the defensive or grappling</td>
       </tr><tr style="text-align:center">
         <td>Elven Immunities: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
@@ -1283,33 +1283,33 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bonded Object: Can cast a known spell through a chosen object</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
       <td>Change Shape: Can use <i>Beast Shape III</i> or <i>Elemental Body II</i> effects for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Craft Staff: May create magic staves</td>
+      <td>Craft Staff: Can create magic staves</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wondrous Item: May create and mend miscellaneous magic items</td>
+      <td>Craft Wondrous Item: Can create and mend miscellaneous magic items</td>
     </tr><tr style="text-align:center">
       <td>Dimensional Steps: Can teleport 600' per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Wall: Can use <i>Wall Of Fire</i> effects to inflict acid, cold, electricity, or fire damage for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Extend Spell: May use +1 spell slot to dbl chosen spell duration</td>
+      <td>Extend Spell: Can cast a spell using a spell slot 1 level higher than normal to double its duration</td>
     </tr><tr style="text-align:center">
       <td>Extended Illusions: Increases the duration of Illusion spells by 10 rd and can make permanent 1 Illusion spell at a time</td>
     </tr><tr style="text-align:center">
-      <td>Heighten Spell: May cast chosen spell at a higher level</td>
+      <td>Heighten Spell: Can cast spells at a higher than normal level</td>
     </tr><tr style="text-align:center">
       <td>Intense Spells: Evocation spells inflict +10 HP and can use the better of 2 rolls to overcome SR</td>
     </tr><tr style="text-align:center">
       <td>Invisibility Field: Can use swift actions to invoke <i>Greater Invisibility</i> effects on self for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
       <td>Metamagic Mastery: Can apply a metamagic feat to a spell without changing its level or casting time 7 times per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>School Opposition (Abjuration): Casting Abjuration spells requires two spell slots each</td>
     </tr><tr style="text-align:center">

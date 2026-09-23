@@ -929,7 +929,7 @@ Pathfinder.FEATURES = {
   'Moment Of Clarity':
     'Section=combat Note="Can suspend rage effects for 1 rd once per rage"',
   'Night Vision':
-    SRD35.FEATURES['Darkvision']
+    SRD35.FEATURES.Darkvision
     .replace(/"$/, ' during rage"'),
   'No Escape':
     'Section=combat ' +
@@ -1724,7 +1724,7 @@ Pathfinder.FEATURES = {
     'Section=save ' +
     'Note="Taking fatal damage allows a DC 20 Will save that results in -1 hit point and stable once per day"',
   // Draconic
-  'Blindsense':SRD35.FEATURES['Blindsense'],
+  'Blindsense':SRD35.FEATURES.Blindsense,
   'Bloodline Draconic':
     'Section=magic,skill ' +
     'Note=' +
@@ -1782,7 +1782,7 @@ Pathfinder.FEATURES = {
     'Section=magic Note="Can reroll checks to overcome spell resistance"',
   'Laughing Touch':
     'Section=combat ' +
-    'Note="Touch inflicts laughter for 1 rd, preventing attacks, %{charismaModifier+3} times per day; a creature can ony be affected once per 24 hr"',
+    'Note="Touch inflicts laughter for 1 rd, preventing attacks, %{charismaModifier+3} times per day; a creature can only be affected once per 24 hr"',
   'Soul Of The Fey':
     'Section=combat,combat,magic,save ' +
     'Note=' +
@@ -1802,7 +1802,7 @@ Pathfinder.FEATURES = {
     'Note="Touch inflicts shaken for %{levels.Sorcerer//2>?1} rd %{charismaModifier+3} times per day"',
   'Hellfire':
     'Section=combat ' +
-    'Note="R60\' 10\' radius inflicts %{levels.Sorcerer}d6 HP fire and shakes good creatures for %{levels.Sorcerer} rd (save Reflex DC %{10+levels.Sorcerer//2+charismaModifier} half HP ony) %{levels.Sorcerer<17?\'once\':levels.Sorcerer<20?\'2 times\':\'3 times\'} per day"',
+    'Note="R60\' 10\' radius inflicts %{levels.Sorcerer}d6 HP fire and shakes good creatures for %{levels.Sorcerer} rd (save Reflex DC %{10+levels.Sorcerer//2+charismaModifier} half HP only) %{levels.Sorcerer<17?\'once\':levels.Sorcerer<20?\'2 times\':\'3 times\'} per day"',
   'Infernal Resistances':
     'Section=save,save ' +
     'Note=' +
@@ -1933,7 +1933,7 @@ Pathfinder.FEATURES = {
   'Power Over Undead':
     'Section=combat,feature ' +
     'Note=' +
-      '"Can use chosen Power Over Undead feat %{3+intelligenceModifier} times per day",' +
+      '"Can use chosen Power Over Undead feat %V times per day",' +
       '"+1 General Feat (Command Undead or Turn Undead)"',
   // Transmutation
   'Change Shape':
@@ -2109,7 +2109,7 @@ Pathfinder.FEATURES = {
       '"Can use any Knowledge untrained"',
   'More Newfound Arcana':SRD35.FEATURES['More Newfound Arcana'],
   'Newfound Arcana':SRD35.FEATURES['Newfound Arcana'],
-  'Secret':SRD35.FEATURES['Secret'],
+  'Secret':SRD35.FEATURES.Secret,
   'Secret Health':'Section=combat Note="Has the Toughness feature"',
   'Secret Knowledge Of Avoidance':
     SRD35.FEATURES['Secret Knowledge Of Avoidance'],
@@ -2226,10 +2226,10 @@ Pathfinder.FEATURES = {
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
   'Arcane Armor Mastery':
     'Section=magic ' +
-    'Note="Can use a swift action to reduce the armored casting penalty by 20%"',
+    'Note="Can use a swift action to reduce the armored casting penalty by 20% for 1 rd"',
   'Arcane Armor Training':
     'Section=magic ' +
-    'Note="Can use a swift action to reduce the armored casting penalty by 10%"',
+    'Note="Can use a swift action to reduce the armored casting penalty by 10% for 1 rd"',
   'Arcane Strike':
     'Section=combat ' +
     'Note="Can use a swift action to make weapons magic with a +%V damage bonus for 1 rd"',
@@ -2238,7 +2238,7 @@ Pathfinder.FEATURES = {
   'Augment Summoning':SRD35.FEATURES['Augment Summoning'],
   'Bleeding Critical':
     'Section=combat ' +
-    'Note="Critical hits inflict 2d6 HP bleed each rd; magical healing or a DC 15 Heal ends"',
+    'Note="Critical hits can also inflict 2d6 HP bleed each rd; magical healing or a DC 15 Heal ends"',
   'Blind-Fight':
     'Section=combat,skill ' +
     'Note=' +
@@ -2246,7 +2246,7 @@ Pathfinder.FEATURES = {
       '"Requires no Acrobatics check to move full Speed when blinded"',
   'Blinding Critical':
     'Section=combat ' +
-    'Note="Critical hits inflict permanent blindness (save Fortitude DC %{10+baseAttack} inflicts dazzled for 1d4 rd)"',
+    'Note="Critical hits can also inflict permanent blindness (save Fortitude DC %{10+baseAttack} inflicts dazzled for 1d4 rd)"',
   'Brew Potion':SRD35.FEATURES['Brew Potion'],
   'Catch Off-Guard':
     'Section=combat ' +
@@ -2279,7 +2279,7 @@ Pathfinder.FEATURES = {
     'Note="Can apply the effects of 2 critical feats to critical hits"',
   'Dazzling Display':
     'Section=combat ' +
-    'Note="R30\' Can use Intimidate to demoralize foes using a Weapon Focus weapon"',
+    'Note="R30\' Can use Intimidate to demoralize foes when using a Weapon Focus weapon"',
   'Deadly Aim':
     'Section=combat ' +
     'Note="Can suffer -%{1+baseAttack//4} on ranged attacks to inflict +%{2*(1+baseAttack//4)} HP until the next turn"',
@@ -2288,7 +2288,7 @@ Pathfinder.FEATURES = {
     'Note="Attacks using a Greater Weapon Focus weapon against a stunned or flat-footed foe inflict x2 damage and 1 point Constitution bleed"',
   'Deafening Critical':
     'Section=combat ' +
-    'Note="Critical hit inflicts permanent deafness (save Fortitude DC %{10+baseAttack{ inflicts deafness for 1 rd)"',
+    'Note="Critical hits can also inflict permanent deafness (save Fortitude DC %{10+baseAttack} inflicts deafness for 1 rd)"',
   'Deceitful':'Section=skill Note="+%V Bluff/+%1 Disguise"',
   'Defensive Combat Training':'Section=combat Note="+%V CMD"',
   'Deflect Arrows':SRD35.FEATURES['Deflect Arrows'],
@@ -2317,7 +2317,7 @@ Pathfinder.FEATURES = {
   'Enlarge Spell':SRD35.FEATURES['Enlarge Spell'],
   'Eschew Materials':SRD35.FEATURES['Eschew Materials'],
   'Exhausting Critical':
-    'Section=combat Note="Critical hits also inflict exhausted"',
+    'Section=combat Note="Critical hits can also inflict exhausted"',
   // No note for Exotic Weapon Proficiency
   'Extend Spell':SRD35.FEATURES['Extend Spell'],
   'Extra Channel':
@@ -2378,8 +2378,7 @@ Pathfinder.FEATURES = {
     'Note="+2 trip checks, and allies can take a movement AOO on a tripped foe"',
   'Greater Two-Weapon Fighting':SRD35.FEATURES['Greater Two-Weapon Fighting'],
   'Greater Vital Strike':
-    'Section=combat ' +
-    'Note="Can use an attack action to make a single attack that inflicts 4x base damage"',
+    'Section=combat Note="Has increased Vital Strike effects"',
   'Greater Weapon Focus (%weapon)':
     SRD35.FEATURES['Greater Weapon Focus (%weapon)'],
   'Greater Weapon Specialization (%weapon)':
@@ -2424,8 +2423,7 @@ Pathfinder.FEATURES = {
   'Improved Two-Weapon Fighting':SRD35.FEATURES['Improved Two-Weapon Fighting'],
   'Improved Unarmed Strike':SRD35.FEATURES['Improved Unarmed Strike'],
   'Improved Vital Strike':
-    'Section=combat ' +
-    'Note="Can use an attack action to make a single attack that inflicts 3x base damage"',
+    'Section=combat Note="Has increased Vital Strike effects"',
   'Improvised Weapon Mastery':
     'Section=combat ' +
     'Note="Suffers no penalty for using an improvised weapon, and improvised weapons gain +1 damage step and crit 19-20/x2"',
@@ -2476,7 +2474,7 @@ Pathfinder.FEATURES = {
   'Point-Blank Shot':SRD35.FEATURES['Point-Blank Shot'],
   'Power Attack':
     'Section=combat ' +
-    'Note="Can suffer -%{1+baseAttack//4} attack to inflict +%{2+baseAttack//4*2} HP, or +%{(2+baseAttack//4*2)*1.5//1} HP if wielding weapon two-handed"',
+    'Note="Can suffer -%{1+baseAttack//4} attack to inflict +%{2+baseAttack//4*2} HP, or +%{(2+baseAttack//4*2)*1.5//1} HP when attacking two-handed"',
   'Precise Shot':SRD35.FEATURES['Precise Shot'],
   'Quick Draw':SRD35.FEATURES['Quick Draw'],
   'Quicken Spell':SRD35.FEATURES['Quicken Spell'],
@@ -2486,6 +2484,89 @@ Pathfinder.FEATURES = {
   'Rapid Shot':SRD35.FEATURES['Rapid Shot'],
   'Ride-By Attack':SRD35.FEATURES['Ride-By Attack'],
   'Run':SRD35.FEATURES.Run,
+  'Scorpion Style':
+    'Section=combat ' +
+    'Note="Successful unarmed attack as a standard action also slows the target to 5\' for %{wisdomModifier} rd (save Fortitude DC %{10+level//2+wisdomModifier} negates)"',
+  'Scribe Scroll':SRD35.FEATURES['Scribe Scroll'],
+  'Selective Channeling':
+    'Section=magic ' +
+    'Note="Can exclude %{charismaModifier} creature%{charismaModifier>1?\'s\':\'\'} from Channel Energy effects"',
+  'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
+  'Shatter Defenses':
+    'Section=combat ' +
+    'Note="Hit on a shaken, frightened, or panicked foe inflicts flat-footed vs. self attacks until the end of the next turn"',
+  'Shield Focus':'Section=combat Note="+1 shield bonus to Armor Class"',
+  'Shield Master':
+    'Section=combat ' +
+    'Note="Suffers no penalty on shield attacks, and any shield enhancement bonus benefits shield attacks and damage"',
+  // No note for Shield Proficiency
+  'Shield Slam':
+    'Section=combat ' +
+    'Note="Shield Bash also inflicts a Bull Rush based on the attack roll that provokes no AOO"',
+  'Shot On The Run':SRD35.FEATURES['Shot On The Run'],
+  'Sickening Critical':
+    'Section=combat Note="Critical hits can also inflict sickened for 1 min"',
+  'Silent Spell':SRD35.FEATURES['Silent Spell'],
+  // No note for Simple Weapon Proficiency
+  'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
+  'Snatch Arrows':SRD35.FEATURES['Snatch Arrows'],
+  'Spell Focus (%school)':SRD35.FEATURES['Spell Focus (%school)'],
+  'Spell Mastery':SRD35.FEATURES['Spell Mastery'],
+  'Spell Penetration':SRD35.FEATURES['Spell Penetration'],
+  'Spellbreaker':
+    'Section=combat ' +
+    'Note="Can take an AOO on a foe who fails when casting defensively"',
+  'Spirited Charge':SRD35.FEATURES['Spirited Charge'],
+  'Spring Attack':SRD35.FEATURES['Spring Attack'],
+  'Staggering Critical':
+    'Section=combat ' +
+    'Note="Critical hits can also inflict staggered for 1d4+1 rd (save Fortitude DC %{10+baseAttack} inflicts staggered for 1 rd)"',
+  'Stand Still':
+    'Section=combat ' +
+    'Note="Can use a movement AOO for a CMB check to halt the foe"',
+  'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
+  'Step Up':
+    'Section=combat ' +
+    'Note="Can follow a foe\'s 5\' step, foregoing a 5\' step or subtracting 5\' of movement during the next turn"',
+  'Still Spell':SRD35.FEATURES['Still Spell'],
+  'Strike Back':
+    'Section=combat ' +
+    'Note="Can ready a melee attack against any attacker, including those that are out of reach"',
+  'Stunning Critical':
+    'Section=combat ' +
+    'Note="Critical hits can also inflict stunned for 1d4 rd (save Fortitude DC %{10+baseAttack} inflicts staggered for 1d4 rd)"',
+  // Stunning Fist as above
+  'Throw Anything':
+    'Section=combat ' +
+    'Note="Suffers no penalty for using improvised ranged weapons, and gains +1 attack with thrown splash weapons"',
+  'Tiring Critical':
+    'Section=combat Note="Critical hits can also inflict fatigued"',
+  'Toughness':SRD35.FEATURES.Toughness,
+  // No note for Tower Shield Proficiency
+  'Trample':SRD35.FEATURES.Trample,
+  'Turn Undead':
+    'Section=combat ' +
+    'Note="R30\' Can use Channel Energy to cause undead to flee for 1 min (save Will DC %{magicNotes.channelEnergy.2} negates)"',
+  'Two-Weapon Defense':SRD35.FEATURES['Two-Weapon Defense'],
+  'Two-Weapon Fighting':SRD35.FEATURES['Two-Weapon Fighting'],
+  'Two-Weapon Rend':
+    'Section=combat ' +
+    'Note="Hitting a foe twice using a weapon in each hand inflicts an additional 1d10%{strengthModifier>0?\'+\'+strengthModifier*1.5//1:\'\'} HP once per rd"',
+  'Unseat':
+    'Section=combat ' +
+    'Note="Successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it"',
+  'Vital Strike':
+    'Section=combat ' +
+    'Note="Can use an attack action to make a single attack that inflicts %{combatNotes.greaterVitalStrike?4:combatNotes.improvedVitalStrike?3:2}x base damage"',
+  'Weapon Finesse':SRD35.FEATURES['Weapon Finesse'],
+  'Weapon Focus (%weapon)':SRD35.FEATURES['Weapon Focus (%weapon)'],
+  'Weapon Specialization (%weapon)':
+    SRD35.FEATURES['Weapon Specialization (%weapon)'],
+  'Whirlwind Attack':SRD35.FEATURES['Whirlwind Attack'],
+  'Widen Spell':SRD35.FEATURES['Widen Spell'],
+  'Wind Stance':
+    'Section=combat ' +
+    'Note="Gains 20% concealment vs. ranged attacks for 1 rd after moving more than 5\' in a turn"',
 
   // Shared with SRD35
   'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
@@ -2520,62 +2601,18 @@ Pathfinder.FEATURES = {
     'Section=companion ' +
     'Note="Reduces additional attack penalty to -2 or gives second attack at -5"',
 
-  'Scribe Scroll':SRD35.FEATURES['Scribe Scroll'],
   'Scry On Familiar':'Section=companion Note="Master may view companion 1/dy"',
-  'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
   'Share Spells':
     'Section=companion Note="Master may share self spell w/adjacent companion"',
-  'Shot On The Run':
-    'Section=combat Note="May move before and after ranged attack"',
-  'Silent Spell':
-    'Section=magic ' +
-    'Note="May use +1 spell slot to cast chosen spell w/out speech"',
-  'Skill Focus (%skill)':'Section=skill Note="+%V %skill"',
-  'Snatch Arrows':'Section=combat Note="May catch ranged weapons"',
   'Speak With Animals Of Its Kind':
     SRD35.FEATURES['Speak With Animals Of Its Kind'],
   'Speak With Master':
     'Section=companion Note="May talk w/master in secret language"',
   'Special Mount':'Section=feature Note="Magical mount w/special abilities"',
-  'Spell Focus (%school)':'Section=magic Note="+1 Spell DC (%school)"',
-  'Spell Mastery':'Section=magic Note="May prepare %V spells w/out spellbook"',
-  'Spell Penetration':
-    'Section=magic Note="+2 checks to overcome spell resistance"',
-  'Spirited Charge':
-    'Section=combat Note="x2 damage (x3 lance) on mounted charge"',
   'Spontaneous Druid Spell':
     'Section=magic ' +
     'Note="May cast <i>Summon Nature\'s Ally</i> in place of known spell"',
-  'Spring Attack':
-    'Section=combat Note="May move before and after melee attack w/out AOO"',
-  'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
-  'Still Spell':
-    'Section=magic ' +
-    'Note="May use +1 spell slot to cast chosen spell w/out movement"',
-  'Toughness':SRD35.FEATURES.Toughness,
-  'Trample':
-    'Section=combat ' +
-    'Note="Foe cannot avoid mounted overrun; mount gains bonus hoof attack"',
-  'Turn Undead':
-    'Section=combat ' +
-    'Note="R30\' Channel Energy causes undead to flee for 1 min (DC %{magicNotes.channelEnergy.2} Will neg)"',
-  'Two-Weapon Defense':
-    'Section=combat ' +
-    'Note="+1 AC when wielding two weapons; +2 when fighting defensively"',
-  'Two-Weapon Fighting':
-    'Section=combat Note="Reduces on-hand penalty by 2 and off-hand by 6"',
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
-  // Uncanny Dodge as above
-  'Weapon Finesse':
-    'Section=combat ' +
-    'Note="+%V light melee weapon attack (Dexterity instead of Strength)"',
-  'Weapon Focus (%weapon)':'Section=combat Note="+1 %weapon Attack Modifier"',
-  'Weapon Specialization (%weapon)':
-    'Section=combat Note="+2 %weapon Damage Modifier"',
-  'Whirlwind Attack':'Section=combat Note="May attack all foes w/in reach"',
-  'Widen Spell':
-    'Section=magic ' +
-    'Note="May use +3 spell slot to dbl chosen spell area of affect"',
 
   // New features
   'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
@@ -2900,32 +2937,17 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"+1 Knowledge (History)/+1 Knowledge (Planes)",' +
       '"Choice of Knowledge (History) or Knowledge (Planes) is a class skill"',
-  'Scorpion Style':
-    'Section=combat ' +
-    'Note="Unarmed hit slows foe to 5\' for %V rd (DC %1 Fort neg)"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
     'Note="+2 Knowledge check 1/dy/Choice of Knowledge is a class skill"',
-  'Selective Channeling':
-    'Section=magic ' +
-    'Note="May withhold Channel Energy effects from up to %V targets"',
   'Shadow Diplomat':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
-  'Shatter Defenses':
-    'Section=combat Note="Fearful struck foes suffer flat-footed for 1 rd"',
   'Sheriff':
     'Section=skill,skill ' +
     'Note=' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
       '"May use legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session"',
-  'Shield Focus':'Section=combat Note="+1 shield bonus to Armor Class"',
-  'Shield Master':
-    'Section=combat ' +
-    'Note="No penalty on shield attacks/May apply shield enhancements to attack and damage"',
-  'Shield Slam':'Section=combat Note="Shield Bash inflicts Bull Rush"',
   'Shiv':'Section=combat Note="+1 surprise piercing and slashing damage"',
-  'Sickening Critical':
-    'Section=combat Note="Critical hit inflicts sickened for 1 min"',
   'Skeptic':'Section=save Note="+2 vs. illusions"',
   'Smuggler':
     'Section=skill,skill ' +
@@ -2935,26 +2957,12 @@ Pathfinder.FEATURES = {
   'Soul Drinker':
     'Section=combat ' +
     'Note="May gain temporary HP equal to slain foe\'s HD for 1 min 1/dy"',
-  'Spellbreaker':
-    'Section=combat Note="May take AOO after foe failed defensive casting"',
-  'Staggering Critical':
-    'Section=combat ' +
-    'Note="Critical hit staggers for 1d4+1 rd (DC %V Fort staggered for 1 rd)"',
-  'Stand Still':
-    'Section=combat Note="May use AOO for CMB check to halt foe movement"',
   'Starchild':
     'Section=skill ' +
     'Note="+4 Survival (avoid becoming lost)/Always know direction of north"',
-  'Step Up':'Section=combat Note="May match foe 5\' step"',
   'Storyteller':
     'Section=skill ' +
     'Note="+%{intelligenceModifier+3>?1} choice of Knowledge 1/scenario"',
-  'Strike Back':
-    'Section=combat ' +
-    'Note="May ready melee attack against melee foes that are out of range"',
-  'Stunning Critical':
-    'Section=combat ' +
-    'Note="Critical hit inflicts stunned (DC %V Fort staggered) for 1d4 rd"',
   'Suspicious':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
   'Tavern Owner':
@@ -2964,15 +2972,11 @@ Pathfinder.FEATURES = {
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
   'Teaching Mistake':
     'Section=save Note="+1 next save after nat 1 save roll 1/scenario"',
-  'Throw Anything':
-    'Section=combat ' +
-    'Note="No penalty for improvised ranged weapon, +1 attack w/thrown splash"',
   'Tireless':
     'Section=ability,combat ' +
     'Note=' +
       '"+2 Constitution vs. nonlethal exertion and environment",' +
       '"+1 HP"',
-  'Tiring Critical':'Section=combat Note="Critical hit inflicts fatigued"',
   'Tomb Raider':
     'Section=skill,skill ' +
     'Note=' +
@@ -2986,7 +2990,6 @@ Pathfinder.FEATURES = {
   'Tunnel Fighter':
     'Section=combat ' +
     'Note="+2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit"',
-  'Two-Weapon Rend':'Section=combat Note="Double hit inflicts +1d10%1 HP"',
   'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
   'Unflappable':
     'Section=save,skill ' +
@@ -2995,9 +2998,6 @@ Pathfinder.FEATURES = {
       '"+3 DC on foe attempts to demoralize self using Intimidate"',
   'Unorthodox Strategy':
     'Section=skill Note="+2 Acrobatics (traverse threatened squares)"',
-  'Unseat':
-    'Section=combat ' +
-    'Note="May make Bull Rush after lance hit to unseat mounted foe"',
   'Upstanding':
     'Section=skill,skill ' +
     'Note=' +
@@ -3014,7 +3014,6 @@ Pathfinder.FEATURES = {
   'Vindictive':
     'Section=combat ' +
     'Note="May inflict +1 damage vs. successful attacker for 1 min 1/dy"',
-  'Vital Strike':'Section=combat Note="2x base damage"',
   'Warrior Of Old':'Section=combat Note="+2 Initiative"',
   'Watchdog':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
@@ -3026,8 +3025,6 @@ Pathfinder.FEATURES = {
       '"+1 Diplomacy (gather information)/Choice of Diplomacy or Knowledge (Local) is a class skill"',
   'Whistleblower':
     'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Wind Stance':
-    'Section=combat Note="20% concealment vs. ranged attacks when moving more than 5\'"',
   'Wisdom In The Flesh':
     'Section=skill ' +
     'Note="May use Wisdom modifier for choice of Strength, Constitution, or Dexterity skill/Choice of Strength, Constitution, or Dexterity skill is a class skill"',
@@ -5487,49 +5484,41 @@ Pathfinder.identityRules = function(
   QuilvynUtils.checkAttrTable(tracks, ['Progression']);
   QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
-  for(let alignment in alignments) {
-    rules.choiceRules(rules, 'Alignment', alignment, alignments[alignment]);
-  }
-  for(let clas in classes) {
-    rules.choiceRules(rules, 'Class', clas, classes[clas]);
-  }
+  for(let a in alignments)
+    rules.choiceRules(rules, 'Alignment', a, alignments[a]);
+  for(let c in classes)
+    rules.choiceRules(rules, 'Class', c, classes[c]);
   if(prestigeClasses) {
-    for(let pc in prestigeClasses) {
-      rules.choiceRules(rules, 'Prestige', pc, prestigeClasses[pc]);
-      rules.defineRule('levels.' + pc, 'prestige.' + pc, '=', null);
+    for(let c in prestigeClasses) {
+      rules.choiceRules(rules, 'Prestige', c, prestigeClasses[c]);
+      rules.defineRule('levels.' + c, 'prestige.' + c, '=', null);
       // Pathfinder prestige classes use different progressions for saves
       for(let save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
-        let value = QuilvynUtils.getAttrValue(prestigeClasses[pc], save);
+        let value = QuilvynUtils.getAttrValue(prestigeClasses[c], save);
         rules.defineRule('class' + save + 'Bonus',
-          'levels.' + pc, '+', 'Math.floor((source + 1) / ' + (value == '1/2' ? '2' : '3') + ')'
+          'levels.' + c, '+', 'Math.floor((source + 1) / ' + (value == '1/2' ? '2' : '3') + ')'
         );
       }
     }
   }
   if(npcClasses) {
-    for(let nc in npcClasses) {
-      rules.choiceRules(rules, 'NPC', nc, npcClasses[nc]);
-      rules.defineRule('levels.' + nc, 'npc.' + nc, '=', null);
+    for(let c in npcClasses) {
+      rules.choiceRules(rules, 'NPC', c, npcClasses[c]);
+      rules.defineRule('levels.' + c, 'npc.' + c, '=', null);
     }
   }
-  for(let faction in factions) {
-    rules.choiceRules(rules, 'Faction', faction, factions[faction]);
-  }
-  for(let deity in deities) {
-    rules.choiceRules(rules, 'Deity', deity, deities[deity]);
-  }
-  for(let path in paths) {
-    rules.choiceRules(rules, 'Path', path, paths[path]);
-  }
-  for(let race in races) {
-    rules.choiceRules(rules, 'Race', race, races[race]);
-  }
-  for(let track in tracks) {
-    rules.choiceRules(rules, 'Track', track, tracks[track]);
-  }
-  for(let trait in traits) {
-    rules.choiceRules(rules, 'Trait', trait, traits[trait]);
-  }
+  for(let f in factions)
+    rules.choiceRules(rules, 'Faction', f, factions[f]);
+  for(let d in deities)
+    rules.choiceRules(rules, 'Deity', d, deities[d]);
+  for(let p in paths)
+    rules.choiceRules(rules, 'Path', p, paths[p]);
+  for(let r in races)
+    rules.choiceRules(rules, 'Race', r, races[r]);
+  for(let t in tracks)
+    rules.choiceRules(rules, 'Track', t, tracks[t]);
+  for(let t in traits)
+    rules.choiceRules(rules, 'Trait', t, traits[t]);
 
   rules.defineEditorElement
     ('faction', 'Faction', 'select-one', 'factions', 'alignment');
@@ -5974,11 +5963,9 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'charismaModifier', '=', '3 + source'
     );
     rules.defineRule('magicNotes.channelEnergy.1',
-      'features.Channel Energy', '?', null,
       'channelLevel', '+=', 'Math.floor((source + 1) / 2)'
     );
     rules.defineRule('magicNotes.channelEnergy.2',
-      'features.Channel Energy', '?', null,
       'channelLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null,
       'magicNotes.improvedChannel', '+', '2'
@@ -7166,6 +7153,8 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Extra Channel') {
     rules.defineRule
+      ('combatNotes.powerOverUndead', 'magicNotes.extraChannel', '+', '2');
+    rules.defineRule
       ('magicNotes.channelEnergy', 'magicNotes.extraChannel', '+', '2');
     rules.defineRule
       ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4');
@@ -7224,16 +7213,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
       '', '=', '2',
       'skills.Intimidate', '+', 'source >= 10 ? 2 : null'
     );
-  } else if(name == 'Scorpion Style') {
-    rules.defineRule('combatNotes.scorpionStyle', 'wisdomModifier', '=', null);
-    rules.defineRule('combatNotes.scorpionStyle.1',
-      'features.Scorpion Style', '?', null,
-      'level', '=', '10 + Math.floor(source / 2)',
-      'wisdomModifier', '+', null
-    );
-  } else if(name == 'Selective Channeling') {
-    rules.defineRule
-      ('magicNotes.selectiveChanneling', 'charismaModifier', '=', null);
   } else if(name == 'Self-Sufficient') {
     rules.defineRule('skillNotes.self-Sufficient',
       '', '=', '2',
@@ -7249,12 +7228,6 @@ Pathfinder.featRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.skillFocus(' + skill.replaceAll(' ', '') + ')',
       'skills.' + skill, '=', 'source >= 10 ? 6 : 3'
     );
-  } else if(name == 'Spell Mastery') {
-    rules.defineRule
-      ('magicNotes.spellMastery', 'intelligenceModifier', '=', null);
-  } else if(name == 'Staggering Critical') {
-    rules.defineRule
-      ('combatNotes.staggeringCritical', 'baseAttack', '=', '10 + source');
   } else if(name == 'Stealthy') {
     rules.defineRule('skillNotes.stealthy',
       '', '=', '2',
@@ -7265,25 +7238,12 @@ Pathfinder.featRulesExtra = function(rules, name) {
       '', '=', '2',
       'skills.Stealth', '+', 'source >= 10 ? 2 : null'
     );
-  } else if(name == 'Stunning Critical') {
-    rules.defineRule
-      ('combatNotes.stunningCritical', 'baseAttack', '=', '10 + source');
   } else if(name == 'Toughness') {
     rules.defineRule
       ('combatNotes.toughness', 'level', '=', 'Math.max(source, 3)');
   } else if(name.match(/^(Tower )?Shield Proficiency/)) {
     rules.defineRule('armorProficiency.' + name.replace(' Proficiency', ''),
       'features.' + name, '=', '1'
-    );
-  } else if(name == 'Two-Weapon Rend') {
-    rules.defineRule('combatNotes.two-WeaponRend.1',
-      'features.Two-Weapon Rend', '?', null,
-      'strengthModifier', '=', 'source>0 ? "+" + Math.floor(source * 1.5) : source<0 ? source : ""'
-    );
-  } else if(name == 'Weapon Finesse') {
-    rules.defineRule('combatNotes.weaponFinesse',
-      'dexterityModifier', '=', null,
-      'strengthModifier', '+', '-source'
     );
   } else if(name == 'Simple Weapon Proficiency') {
     rules.defineRule('weaponProficiency.Simple Weapons',
@@ -7481,6 +7441,9 @@ Pathfinder.schoolRulesExtra = function(rules, name) {
       'features.Command Undead || features.Turn Undead'
     );
     rules.defineRule('channelLevel', schoolLevel, '+=', null);
+    rules.defineRule('combatNotes.powerOverUndead',
+      'intelligenceModifier', '=', '3 + source'
+    );
     rules.defineRule('validationNotes.commandUndeadFeat',
       'featureNotes.powerOverUndead', '^', '0'
     );

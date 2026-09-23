@@ -73,13 +73,13 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Armor Training: No Speed penalty in heavy armor</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Fleet: +5 Speed in light or no armor</i></td>
+      <td><i>Fleet: +5 Speed in light or no armor; a medium or heavy load negates</i></td>
     </tr><tr style="text-align:center">
       <td><i>Run: +1 Run Speed Multiplier</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Nimble Moves: May move normally through difficult terrain 5'/rd</td>
+      <td>Nimble Moves: Can move normally through 5' of difficult terrain each rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -109,9 +109,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): +5 Fighter Feats</i></td>
       </tr><tr style="text-align:center">
-        <td>Leadership: Attracts followers</td>
+        <td>Leadership: Can attract companions and devoted followers</td>
       </tr><tr style="text-align:center">
-        <td>Master Craftsman (Craft (Alchemy)): May use Craft (Alchemy) with Craft Magic Arms And Armor and Craft Wondrous Item</td>
+        <td>Master Craftsman (Craft (Alchemy)): Can use Craft (Alchemy) with Craft Magic Arms And Armor and Craft Wondrous Item</td>
       </tr></table>
 </td>
     </tr></table>
@@ -186,7 +186,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Stealthy: +2 Escape Artist/+2 Stealth</i></td>
       </tr><tr style="text-align:center">
-        <td>Run: +4 Acrobatics (running jump)</td>
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
+      </tr><tr style="text-align:center">
+        <td>Run: +4 running Jump</td>
       </tr></table>
 </td>
     </tr></table>
@@ -250,53 +252,53 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Unproficient Weapon Penalty.Hand Crossbow: -4 attack</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Finesse: +1 light melee weapon attack (Dexterity instead of Strength)</i></td>
+        <td><i>Weapon Finesse: +1 light melee weapon, rapier, whip, and spiked chain attacks (uses Dexterity instead of Strength)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Longsword): +1 Longsword Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Training: +2, +1 attacks, damage, CMB, and CMD with weapons from 2 chosen weapon groups</i></td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus/Requires no skill check to move full Speed when blinded</td>
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
-        <td>Combat Expertise: May suffer up to -3 attack to gain equal AC bonus</td>
+        <td>Combat Expertise: Can suffer up to -3 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: May take AOO while flat-footed and 3 AOO/rd</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed and make +2 AOO per rd</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
-        <td>Deadly Aim: May suffer -3 ranged attack to gain +6 damage</td>
+        <td>Deadly Aim: Can suffer -3 on ranged attacks to inflict +6 HP until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Disruptive: +4 foe defensive spell DC</td>
+        <td>Disruptive: Foes within threat area suffer +4 defensive spell DC</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Lunge: May suffer -2 AC to gain +5' melee range</td>
+        <td>Lunge: Can suffer -2 Armor Class until the start of the next turn to gain +5' melee range until the end of the turn</td>
       </tr><tr style="text-align:center">
-        <td>Mounted Combat: Successful Ride skill check (DC foe attack roll) negates mount damage 1/rd</td>
+        <td>Mounted Combat: Can use a successful Ride skill check (DC foe attack roll) to negate damage to mount once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Power Attack: May suffer -3 attack to gain +6 damage (+9 when wielding weapon w/two hands)</td>
+        <td>Power Attack: Can suffer -3 attack to inflict +6 HP, or +9 HP when attacking two-handed</td>
       </tr><tr style="text-align:center">
-        <td>Quick Draw: May draw a weapon as a free action</td>
+        <td>Quick Draw: Can draw a weapon as a free action and throw weapons at the full attack rate</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Reload (Light): May reload a light crossbow as a free action</td>
+        <td>Rapid Reload (Light): Can reload a light crossbow as a free action</td>
       </tr><tr style="text-align:center">
-        <td>Run: Retains Dexterity bonus to AC while running</td>
+        <td>Run: Retains Dexterity bonus to Armor Class while running</td>
       </tr><tr style="text-align:center">
-        <td>Step Up: May match foe 5' step</td>
+        <td>Step Up: Can follow a foe's 5' step, foregoing a 5' step or subtracting 5' of movement during the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
-        <td>Throw Anything: No penalty for improvised ranged weapon, +1 attack w/thrown splash</td>
+        <td>Throw Anything: Suffers no penalty for using improvised ranged weapons, and gains +1 attack with thrown splash weapons</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+        <td>Two-Weapon Fighting: Reduces the attack penalties when fighting with a weapon in each hand by 2 for the primary hand and 6 for the off hand</td>
       </tr><tr style="text-align:center">
-        <td>Vital Strike: 2x base damage</td>
+        <td>Vital Strike: Can use an attack action to make a single attack that inflicts 2x base damage</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -320,7 +322,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bravery: +2 vs. fear</td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr></table>
 </td>
     </tr></table>

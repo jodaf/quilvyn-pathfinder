@@ -87,11 +87,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Goodies Dexterity: +1 Dexterity</i></td>
     </tr><tr style="text-align:center">
-      <td>Acrobatic Steps: May move normally through difficult terrain 20'/rd </td>
+      <td>Acrobatic Steps: Can move normally through difficult terrain 20' per rd</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Nimble Moves: May move normally through difficult terrain 5'/rd</td>
+      <td>Nimble Moves: Can move normally through 5' of difficult terrain each rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -212,13 +212,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Far Shot: Reduces range penalty by 1 per range increment</i></td>
+        <td><i>Far Shot: Reduces the range increment penalty for ranged weapons by 1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Shield Focus: +1 shield bonus to Armor Class</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Greater Vital Strike: Has increased Vital Strike effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Weapon Focus (Longsword): +1 Longsword Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Weapon Specialization (Longsword): +2 Longsword Damage Modifier</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Improved Vital Strike: Has increased Vital Strike effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
@@ -232,159 +236,155 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Training: +4, +3, +2, +1 attacks, damage, CMB, and CMD with weapons from 4 chosen weapon groups</i></td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Critical: Critical hit inflicts 2d6 HP/rd (magic healing or DC 15 Heal ends)</td>
+        <td>Bleeding Critical: Critical hits can also inflict 2d6 HP bleed each rd; magical healing or a DC 15 Heal ends</td>
       </tr><tr style="text-align:center">
-        <td>Blinding Critical: Critical hit inflicts permanent blindness (DC 27 Fort dazzled for 1d4 rd)</td>
+        <td>Blinding Critical: Critical hits can also inflict permanent blindness (save Fortitude DC 27 inflicts dazzled for 1d4 rd)</td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
-        <td>Cleave: May suffer -2 AC to gain attack against two foes</td>
+        <td>Cleave: Can use a full-attack action to make an attack on a foe within reach and, if it hits, to attack another foe adjacent to the first; inflicts a -2 penalty to Armor Class on self until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Combat Expertise: May suffer up to -5 attack to gain equal AC bonus</td>
+        <td>Combat Expertise: Can suffer up to -5 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: May take AOO while flat-footed and 5 AOO/rd</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed and make +4 AOO per rd</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
-        <td>Critical Mastery: May apply two effects to critical hits</td>
+        <td>Critical Mastery: Can apply the effects of 2 critical feats to critical hits</td>
       </tr><tr style="text-align:center">
-        <td>Dazzling Display: R30' May use Intimidate to demoralize foes using focused weapon</td>
+        <td>Dazzling Display: R30' Can use Intimidate to demoralize foes when using a Weapon Focus weapon</td>
       </tr><tr style="text-align:center">
-        <td>Deadly Stroke: x2 damage and 1 point Constitution damage w/focused weapon against stunned or flat-footed foe</td>
+        <td>Deadly Stroke: Attacks using a Greater Weapon Focus weapon against a stunned or flat-footed foe inflict x2 damage and 1 point Constitution bleed</td>
       </tr><tr style="text-align:center">
-        <td>Deafening Critical: Critical hit inflicts permanent deafness (DC 27 Fort deaf for 1 rd)</td>
+        <td>Deafening Critical: Critical hits can also inflict permanent deafness (save Fortitude DC 27 inflicts deafness for 1 rd)</td>
       </tr><tr style="text-align:center">
-        <td>Deflect Arrows: Suffers no damage from ranged hit 1/rd</td>
+        <td>Deflect Arrows: Can use a free hand to bat away a successful ranged attack, suffering no damage, once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Diehard: Remains conscious, stable, and able to act with negative HP</td>
+        <td>Diehard: Can remain conscious, stable, and able to act with negative hit points; taking a standard action inflicts 1 HP</td>
       </tr><tr style="text-align:center">
-        <td>Disruptive: +4 foe defensive spell DC</td>
+        <td>Disruptive: Foes within threat area suffer +4 defensive spell DC</td>
       </tr><tr style="text-align:center">
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
       </tr><tr style="text-align:center">
-        <td>Exhausting Critical: Critical hit inflicts exhausted</td>
+        <td>Exhausting Critical: Critical hits can also inflict exhausted</td>
       </tr><tr style="text-align:center">
-        <td>Gorgon's Fist: Unarmed attack vs. slowed foe staggers (DC 19 Fort neg)</td>
+        <td>Gorgon's Fist: Successful unarmed melee attack vs. a slowed foe also inflicts staggered (save Fortitude DC 19 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Great Cleave: May cleave w/out limit</td>
+        <td>Great Cleave: Allows using Cleave to attack 3 or more adjacent foes</td>
       </tr><tr style="text-align:center">
-        <td>Greater Bull Rush: +2 Bull Rush checks, may take AOO on Bull Rushed foes</td>
+        <td>Greater Bull Rush: +2 Bull Rush checks, and allies can take a movement AOO on a Bull Rushed foe</td>
       </tr><tr style="text-align:center">
-        <td>Greater Disarm: +2 disarm checks, disarmed weapons land 15' away</td>
+        <td>Greater Disarm: +2 disarm checks, and disarmed weapons land 15' away from foe</td>
       </tr><tr style="text-align:center">
-        <td>Greater Feint: Feinted foe loses Dexterity AC bonus for 1 rd</td>
+        <td>Greater Feint: Successful feint causes foe to lose its Dexterity bonus until the start of the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Greater Grapple: +2 grapple checks, may maintain grapple as move action</td>
+        <td>Greater Grapple: +2 grapple checks/Can maintain a grapple as move action and make 2 grapple checks per rd; success on 1 maintains the grapple</td>
       </tr><tr style="text-align:center">
-        <td>Greater Overrun: +2 overrun checks, may take AOO on foes knocked prone</td>
+        <td>Greater Overrun: +2 overrun checks, and allies can take a movement AOO on a foe knocked prone</td>
       </tr><tr style="text-align:center">
-        <td>Greater Penetrating Strike: Focused weapons ignore DR 5/- or DR 10/any</td>
+        <td>Greater Penetrating Strike: Focused weapons ignore DR 5/- and DR 10 for limited forms of DR</td>
       </tr><tr style="text-align:center">
-        <td>Greater Sunder: +2 sunder checks, foe takes excess damage</td>
+        <td>Greater Sunder: +2 sunder checks, and the foe suffers any damage beyond that needed to destroy the item</td>
       </tr><tr style="text-align:center">
-        <td>Greater Trip: +2 trip checks, may take AOO on tripped foes</td>
+        <td>Greater Trip: +2 trip checks, and allies can take a movement AOO on a tripped foe</td>
       </tr><tr style="text-align:center">
-        <td>Greater Two-Weapon Fighting: May make third off-hand attack at -10 penalty</td>
+        <td>Greater Two-Weapon Fighting: Can make a third off-hand attack with a -10 attack penalty</td>
       </tr><tr style="text-align:center">
-        <td>Greater Vital Strike: 4x base damage</td>
+        <td>Improved Bull Rush: +2 on Bull Rush attempts and CMD, and they provoke no AOO from the target</td>
       </tr><tr style="text-align:center">
-        <td>Improved Bull Rush: Bull Rush provokes no AOO, gains +2 Bull Rush check and CMD</td>
+        <td>Improved Disarm: +2 on Disarm attempts and CMD, and Disarm attempts provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Disarm: Disarm provokes no AOO, gains +2 Disarm check and CMD</td>
+        <td>Improved Feint: Can Feint as a move action</td>
       </tr><tr style="text-align:center">
-        <td>Improved Feint: May make Bluff check to Feint as a move action</td>
+        <td>Improved Grapple: +2 on Grapple checks and CMD, and Grapple attempts provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Grapple: Grapple provokes no AOO, gains +2 Grapple check and CMD</td>
+        <td>Improved Overrun: +2 Overrun checks and CMD, Overrun provokes no AOO, and the target cannot avoid an Overrun attempt</td>
       </tr><tr style="text-align:center">
-        <td>Improved Overrun: Overrun provokes no AOO, gains +2 Overrun check and CMD, and foe cannot avoid Overrun</td>
+        <td>Improved Precise Shot: Ranged attacks ignore partial cover or concealment</td>
       </tr><tr style="text-align:center">
-        <td>Improved Precise Shot: Foe gains no AC bonus for partial cover</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Improved Sunder: +2 on Sunder attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Sunder: Sunder provokes no AOO, gains +2 Sunder check and CMD</td>
+        <td>Improved Trip: +2 Trip check and CMD, and Trip provokes no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Trip: Trip provokes no AOO, gains +2 Trip check and CMD</td>
+        <td>Improved Two-Weapon Fighting: Can make a second off-hand attack with a -5 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Improved Two-Weapon Fighting: Gains second off-hand attack at -5 penalty</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improvised Weapon Mastery: Suffers no penalty for using an improvised weapon, and improvised weapons gain +1 damage step and crit 19-20/x2</td>
       </tr><tr style="text-align:center">
-        <td>Improved Vital Strike: 3x base damage</td>
+        <td>Lightning Stance: A double move or withdraw action gives 50% concealment for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Improvised Weapon Mastery: Suffers no penalty for improvised weapon, gains +1 damage step and crit 19-20/x2 on improvised weapon</td>
+        <td>Manyshot: Can fire 2 arrows with the first bow attack of a full-attack action</td>
       </tr><tr style="text-align:center">
-        <td>Lightning Stance: Dbl move or withdraw action gives 50% concealment</td>
+        <td>Medusa's Wrath: As part of a full-attack action, can make 2 additional unarmed attacks vs. a dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe</td>
       </tr><tr style="text-align:center">
-        <td>Manyshot: May fire 2 arrows simultaneously</td>
+        <td>Mobility: +4 dodge bonus to Armor Class vs. movement AOO</td>
       </tr><tr style="text-align:center">
-        <td>Medusa's Wrath: May make 2 extra unarmed attacks vs. diminished-capacity foe</td>
+        <td>Mounted Archery: Reduces the mounted ranged weapon attack penalty to -2 during a double move and -4 during a run</td>
       </tr><tr style="text-align:center">
-        <td>Mobility: +4 AC vs. movement AOO</td>
+        <td>Mounted Combat: Can use a successful Ride skill check (DC foe attack roll) to negate damage to mount once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Mounted Archery: Suffers half normal mounted ranged weapon penalty</td>
+        <td>Penetrating Strike: Focused weapons ignore DR 5 for limited forms of DR</td>
       </tr><tr style="text-align:center">
-        <td>Mounted Combat: Successful Ride skill check (DC foe attack roll) negates mount damage 1/rd</td>
+        <td>Pinpoint Targeting: Can make a single ranged attack as a standard action that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
       </tr><tr style="text-align:center">
-        <td>Penetrating Strike: Focused weapons ignore DR 5/any</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
+        <td>Power Attack: Can suffer -5 attack to inflict +10 HP, or +15 HP when attacking two-handed</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Precise Shot: Suffers no penalty from shooting into a melee</td>
       </tr><tr style="text-align:center">
-        <td>Power Attack: May suffer -5 attack to gain +10 damage (+15 when wielding weapon w/two hands)</td>
+        <td>Rapid Shot: Can make an extra ranged attack during a full attack, suffering a -2 penalty on all ranged attacks during the rd</td>
       </tr><tr style="text-align:center">
-        <td>Precise Shot: Suffers no penalty on shot into melee</td>
+        <td>Ride-By Attack: Can move before and after a mounted attack without provoking AOO, moving in total up to double the normal mounted Speed</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at a -2 penalty</td>
+        <td>Scorpion Style: Successful unarmed attack as a standard action also slows the target to 5' for 1 rd (save Fortitude DC 19 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Ride-By Attack: May move before and after mounted attack w/out AOO</td>
+        <td>Shatter Defenses: Hit on a shaken, frightened, or panicked foe inflicts flat-footed vs. self attacks until the end of the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Scorpion Style: Unarmed hit slows foe to 5' for 1 rd (DC 19 Fort neg)</td>
+        <td>Shield Master: Suffers no penalty on shield attacks, and any shield enhancement bonus benefits shield attacks and damage</td>
       </tr><tr style="text-align:center">
-        <td>Shatter Defenses: Fearful struck foes suffer flat-footed for 1 rd</td>
+        <td>Shield Slam: Shield Bash also inflicts a Bull Rush based on the attack roll that provokes no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Shield Master: No penalty on shield attacks/May apply shield enhancements to attack and damage</td>
+        <td>Shot On The Run: Can move before and after a ranged attack, moving up to 30' total</td>
       </tr><tr style="text-align:center">
-        <td>Shield Slam: Shield Bash inflicts Bull Rush</td>
+        <td>Sickening Critical: Critical hits can also inflict sickened for 1 min</td>
       </tr><tr style="text-align:center">
-        <td>Shot On The Run: May move before and after ranged attack</td>
+        <td>Snatch Arrows: Can use Deflect Arrows to catch ranged weapons, and can make an immediate attack with a caught thrown weapon</td>
       </tr><tr style="text-align:center">
-        <td>Sickening Critical: Critical hit inflicts sickened for 1 min</td>
+        <td>Spellbreaker: Can take an AOO on a foe who fails when casting defensively</td>
       </tr><tr style="text-align:center">
-        <td>Snatch Arrows: May catch ranged weapons</td>
+        <td>Spirited Charge: Attacks during a charge inflict double damage, or triple damage with a lance</td>
       </tr><tr style="text-align:center">
-        <td>Spellbreaker: May take AOO after foe failed defensive casting</td>
+        <td>Spring Attack: Can move before and after a melee attack without provoking an AOO from the target, moving up to 30' total</td>
       </tr><tr style="text-align:center">
-        <td>Spirited Charge: x2 damage (x3 lance) on mounted charge</td>
+        <td>Staggering Critical: Critical hits can also inflict staggered for 1d4+1 rd (save Fortitude DC 27 inflicts staggered for 1 rd)</td>
       </tr><tr style="text-align:center">
-        <td>Spring Attack: May move before and after melee attack w/out AOO</td>
+        <td>Stand Still: Can use a movement AOO for a CMB check to halt the foe</td>
       </tr><tr style="text-align:center">
-        <td>Staggering Critical: Critical hit staggers for 1d4+1 rd (DC 27 Fort staggered for 1 rd)</td>
-      </tr><tr style="text-align:center">
-        <td>Stand Still: May use AOO for CMB check to halt foe movement</td>
-      </tr><tr style="text-align:center">
-        <td>Stunning Critical: Critical hit inflicts stunned (DC 27 Fort staggered) for 1d4 rd</td>
+        <td>Stunning Critical: Critical hits can also inflict stunned for 1d4 rd (save Fortitude DC 27 inflicts staggered for 1d4 rd)</td>
       </tr><tr style="text-align:center">
         <td>Stunning Fist: Unarmed Strike can inflict stunned for 1 rd (save Fortitude DC 19 negates) 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Tiring Critical: Critical hit inflicts fatigued</td>
+        <td>Tiring Critical: Critical hits can also inflict fatigued</td>
       </tr><tr style="text-align:center">
-        <td>Trample: Foe cannot avoid mounted overrun; mount gains bonus hoof attack</td>
+        <td>Trample: Mounted Overrun targets cannot avoid them, and a successful mounted Overrun allows the mount to make a hoof attack vs. the target</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Defense: +1 AC when wielding two weapons; +2 when fighting defensively</td>
+        <td>Two-Weapon Defense: +1 shield bonus to Armor Class when wielding two weapons, or +2 if fighting defensively</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+        <td>Two-Weapon Fighting: Reduces the attack penalties when fighting with a weapon in each hand by 2 for the primary hand and 6 for the off hand</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Rend: Double hit inflicts +1d10+3 HP</td>
+        <td>Two-Weapon Rend: Hitting a foe twice using a weapon in each hand inflicts an additional 1d10+3 HP once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Unseat: May make Bull Rush after lance hit to unseat mounted foe</td>
+        <td>Unseat: Successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it</td>
       </tr><tr style="text-align:center">
-        <td>Vital Strike: 2x base damage</td>
+        <td>Vital Strike: Can use an attack action to make a single attack that inflicts 4x base damage</td>
       </tr><tr style="text-align:center">
-        <td>Whirlwind Attack: May attack all foes w/in reach</td>
+        <td>Whirlwind Attack: Can use a full attack action to make 1 attack vs. each foe within reach</td>
       </tr><tr style="text-align:center">
-        <td>Wind Stance: 20% concealment vs. ranged attacks when moving more than 5'</td>
+        <td>Wind Stance: Gains 20% concealment vs. ranged attacks for 1 rd after moving more than 5' in a turn</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -408,13 +408,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bravery: +4 vs. fear</td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
-        <td>Improved Great Fortitude: May reroll Fort 1/dy</td>
+        <td>Improved Great Fortitude: Can reroll a Fortitude save once per day</td>
       </tr><tr style="text-align:center">
-        <td>Improved Iron Will: May reroll Will 1/dy</td>
+        <td>Improved Iron Will: Can reroll a Will save once per day</td>
       </tr><tr style="text-align:center">
-        <td>Improved Lightning Reflexes: May reroll Ref 1/dy</td>
+        <td>Improved Lightning Reflexes: Can reroll a Reflex save once per day</td>
       </tr></table>
 </td>
     </tr></table>

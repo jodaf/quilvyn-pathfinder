@@ -15,8 +15,9 @@ var attributes = {
   "languages.Infernal":1, "levels.Cleric":1, "name":"Feats-Cleric", "race":"Human", 
   "selectableFeatures.Cleric - Animal Domain":1, "selectableFeatures.Cleric - Plant Domain":1, "shield":"None", 
   "skills.Knowledge (Planes)":1, "skills.Linguistics":1, "skills.Profession (Soldier)":1, 
-  "spells.Cure Minor Wounds(C0 Conj)":1, "spells.Detect Magic(C0 Divi)":1, "spells.Hide From Undead(C1 Abju)":1, 
-  "spells.Purify Food And Drink(C0 Tran)":1, "strength":14, "weapons.Light Mace":1, "weapons.Quarterstaff":1, "wisdom":14
+  "spells.Detect Magic(C0 Divi)":1, "spells.Hide From Undead(C1 Abju)":1, 
+  "spells.Purify Food And Drink(C0 Tran)":1, "spells.Stabilize(C0 Conj)":1, "strength":14, "weapons.Light Mace":1, 
+  "weapons.Quarterstaff":1, "wisdom":14
 };
   </script>
 </head>
@@ -159,15 +160,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Chaos): May use Channel Energy to heal or harm chaotic outsiders</td>
+        <td>Alignment Channel (Chaos): Can use Channel Energy to heal or harm chaotic outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Command Undead: R30' May use Channel Energy to control 1 HD of undead (11 DC Will neg)</td>
+        <td>Command Undead: R30' Can use Channel Energy to control 1 HD of undead (save Will DC 13 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Elemental Channel (Air): May use Channel Energy to heal or harm Air outsiders</td>
+        <td>Elemental Channel (Air): Can use Channel Energy to heal or harm Air outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Turn Undead: R30' Channel Energy causes undead to flee for 1 min (DC 11 Will neg)</td>
+        <td>Turn Undead: R30' Can use Channel Energy to cause undead to flee for 1 min (save Will DC 13 negates)</td>
       </tr><tr style="text-align:center">
         <td>Wooden Fist: Unarmed attacks inflict +0 HP and provoke no AOO for 5 rd per day</td>
       </tr></table>
@@ -206,8 +207,6 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Cure Minor Wounds (C0 Conj): 1</td>
-    </tr><tr style="text-align:left">
       <td>Detect Magic (C0 Divi): 60' cone reveals the presence, power, and schools of magical auras for concentration up to 1 min</td>
     </tr><tr style="text-align:left">
       <td>Hide From Undead (C1 Abju): 1 touched become imperceptible to undead (save Will for intelligent undead negates) for 10 min; turning or touching an undead or attacking any creature ends the spell for all</td>
@@ -215,24 +214,26 @@ var attributes = {
       <td>Purify Food And Drink (C0 Tran): R10' Makes 1 cubic foot of food and water safe to consume (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for 1 min</td>
+    </tr><tr style="text-align:left">
+      <td>Stabilize (C0 Conj): R25' Stabilizes target w/negative HP</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Extra Channel: Channel Energy +2/dy</i></td>
+      <td><i>Extra Channel: Can use Channel Energy 2 additional times per day</i></td>
+    </tr><tr style="text-align:center">
+      <td><i>Improved Channel: +2 Channel Energy DC</i></td>
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
       <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 11 half) to all creatures within 30' 6 times per day</td>
-    </tr><tr style="text-align:center">
-      <td>Improved Channel: +2 Channel Energy DC</td>
+      <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 13 half) to all creatures within 30' 6 times per day</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Selective Channeling: May withhold Channel Energy effects from up to 1 targets</td>
+      <td>Selective Channeling: Can exclude 1 creature from Channel Energy effects</td>
     </tr><tr style="text-align:center">
       <td>Speak With Animals: Can use <i>Speak With Animals</i> effects for 4 rd per day</td>
     </tr><tr style="text-align:center">

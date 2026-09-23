@@ -93,7 +93,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Fleet: +5 Speed in light or no armor</i></td>
+      <td><i>Fleet: +5 Speed in light or no armor; a medium or heavy load negates</i></td>
     </tr><tr style="text-align:center">
       <td><i>Run: +1 Run Speed Multiplier</i></td>
     </tr><tr style="text-align:center">
@@ -219,7 +219,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Quarry: Can take 20 to track quarry at full Speed</td>
       </tr><tr style="text-align:center">
-        <td>Run: +4 Acrobatics (running jump)</td>
+        <td>Run: +4 running Jump</td>
       </tr><tr style="text-align:center">
         <td>Swift Tracker: Can track at full Speed with no penalty to Survival and at double Speed with a -10 penalty</td>
       </tr><tr style="text-align:center">
@@ -269,7 +269,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Far Shot: Reduces range penalty by 1 per range increment</i></td>
+        <td><i>Far Shot: Reduces the range increment penalty for ranged weapons by 1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Unarmed Strike): x2 Unarmed Strike Threat Range</i></td>
       </tr><tr style="text-align:center">
@@ -279,7 +279,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Companion Bond: R30' Can use a move action to give half of a favored enemy bonus to allies for 4 rd</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
       </tr><tr style="text-align:center">
@@ -287,41 +287,41 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Favored Terrain: Has 7 +2 Initiative bonuses distributed among 4 terrain types</td>
       </tr><tr style="text-align:center">
-        <td>Greater Two-Weapon Fighting: May make third off-hand attack at -10 penalty</td>
+        <td>Greater Two-Weapon Fighting: Can make a third off-hand attack with a -10 attack penalty</td>
       </tr><tr style="text-align:center">
-        <td>Improved Precise Shot: Foe gains no AC bonus for partial cover</td>
+        <td>Improved Precise Shot: Ranged attacks ignore partial cover or concealment</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
-        <td>Improved Two-Weapon Fighting: Gains second off-hand attack at -5 penalty</td>
+        <td>Improved Two-Weapon Fighting: Can make a second off-hand attack with a -5 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Manyshot: May fire 2 arrows simultaneously</td>
+        <td>Manyshot: Can fire 2 arrows with the first bow attack of a full-attack action</td>
       </tr><tr style="text-align:center">
         <td>Master Hunter: Full attack vs. a favored enemy kills or inflicts nonlethal HP equal to the target's current hit points (save Fortitude DC 24 negates) once per day per favored enemy type</td>
       </tr><tr style="text-align:center">
-        <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
+        <td>Pinpoint Targeting: Can make a single ranged attack as a standard action that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Precise Shot: Suffers no penalty on shot into melee</td>
+        <td>Precise Shot: Suffers no penalty from shooting into a melee</td>
       </tr><tr style="text-align:center">
         <td>Quarry: Can use a free action to gain +4 attacks and automatically confirm crit threats vs. a chosen favored enemy target once per 10 min</td>
       </tr><tr style="text-align:center">
-        <td>Quick Draw: May draw a weapon as a free action</td>
+        <td>Quick Draw: Can draw a weapon as a free action and throw weapons at the full attack rate</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at a -2 penalty</td>
+        <td>Rapid Shot: Can make an extra ranged attack during a full attack, suffering a -2 penalty on all ranged attacks during the rd</td>
       </tr><tr style="text-align:center">
-        <td>Run: Retains Dexterity bonus to AC while running</td>
+        <td>Run: Retains Dexterity bonus to Armor Class while running</td>
       </tr><tr style="text-align:center">
-        <td>Shot On The Run: May move before and after ranged attack</td>
+        <td>Shot On The Run: Can move before and after a ranged attack, moving up to 35' total</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Defense: +1 AC when wielding two weapons; +2 when fighting defensively</td>
+        <td>Two-Weapon Defense: +1 shield bonus to Armor Class when wielding two weapons, or +2 if fighting defensively</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+        <td>Two-Weapon Fighting: Reduces the attack penalties when fighting with a weapon in each hand by 2 for the primary hand and 6 for the off hand</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Rend: Double hit inflicts +1d10 HP</td>
+        <td>Two-Weapon Rend: Hitting a foe twice using a weapon in each hand inflicts an additional 1d10 HP once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Vital Strike: 2x base damage</td>
+        <td>Vital Strike: Can use an attack action to make a single attack that inflicts 2x base damage</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -344,7 +344,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Elven Immunities: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
         <td>Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage; medium or heavy armor negates</td>
       </tr></table>
