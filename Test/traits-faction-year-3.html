@@ -81,7 +81,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Dunewalker: May move normally through sand</td>
+      <td>Dunewalker: Can move through sand as normal terrain</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -181,6 +181,8 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Acrobatic: +2 Acrobatics/+2 Fly</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Ancient Historian: +1 Language Count</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Bad Reputation: +2 Intimidate/Intimidate is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bloodline Draconic: Perception is a class skill</i></td>
@@ -229,11 +231,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Watchdog: +1 Sense Motive/Sense Motive is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td>Ancient Historian: +1 Choice of Knowledge (History) or Linguistics/Choice of Knowledge (History) or Linguistics is a class skill/May learn 1 ancient language</td>
+        <td>Ancient Historian: Choice of Knowledge (History) or Linguistics is a class skill/Can learn 1 ancient language</td>
       </tr><tr style="text-align:center">
         <td>Captain's Blade: +1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Desert Shadow: May use Stealth at full Speed w/out penalty</td>
+        <td>Desert Shadow: Suffers no penalty from using Stealth at full Speed in desert terrain</td>
       </tr><tr style="text-align:center">
         <td>Devil's Mark: +2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders</td>
       </tr><tr style="text-align:center">
@@ -245,17 +247,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Gold Finger: Choice of Disable Device or Sleight Of Hand is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>I Know A Guy: +2 Diplomacy (gather information)</td>
+        <td>I Know A Guy: +2 Diplomacy to gather information</td>
       </tr><tr style="text-align:center">
-        <td>Medic: +2 Heal (disease, poison)</td>
+        <td>Medic: +2 Heal with diseases and poisons</td>
       </tr><tr style="text-align:center">
-        <td>Meticulous Artisan: +1 Craft for day job</td>
+        <td>Meticulous Artisan: +1 Craft for Day Job checks</td>
       </tr><tr style="text-align:center">
-        <td>Performance Artist: +1 choice of Perform (+5 when performing for money)/Choice of Perform is a class skill</td>
+        <td>Performance Artist: +1 choice of Perform, and the choice is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Secrets Of The Sphinx: +2 Knowledge check 1/dy/Choice of Knowledge is a class skill</td>
+        <td>Secrets Of The Sphinx: +2 Knowledge check once per day/Choice of Knowledge is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Storyteller: +5 choice of Knowledge 1/scenario</td>
+        <td>Storyteller: +5 on a choice of Knowledge once per scenario</td>
       </tr><tr style="text-align:center">
         <td>Tomb Raider: Choice of Knowledge (Dungeoneering) or Perception is a class skill</td>
       </tr><tr style="text-align:center">
@@ -305,37 +307,37 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Aid Allies: +1 on aid another actions</td>
+        <td>Aid Allies: Aid Another gives allies a +3 bonus</td>
       </tr><tr style="text-align:center">
         <td>Claws: Can make 2 +2 attacks that inflict 1d4+0 HP each for 4 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Dervish: +1 AC vs. movement AOO</td>
+        <td>Dervish: +1 dodge bonus to Armor Class vs. movement AOO</td>
       </tr><tr style="text-align:center">
         <td>Expert Duelist: +1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class</td>
       </tr><tr style="text-align:center">
-        <td>Fires Of Hell: Flaming blade inflicts +1 HP fire for 1 rd 1/dy</td>
+        <td>Fires Of Hell: Weapon emits light in a 20' radius and inflicts +1 HP fire for 1 rd once per day</td>
       </tr><tr style="text-align:center">
-        <td>Fortified: May gain 20% chance to negate critical hit or Sneak Attack 1/dy</td>
+        <td>Fortified: Has a 20% chance to negate a critical hit or Sneak Attack once per day</td>
       </tr><tr style="text-align:center">
-        <td>Freedom Fighter (Liberty's Edge): +1 attack during surprise rd</td>
+        <td>Freedom Fighter (Liberty's Edge): +1 attacks during a surprise rd</td>
       </tr><tr style="text-align:center">
-        <td>Hunter's Eye: Has Proficiency and suffers no penalty for 2nd range increment w/choice of longbow or shortbow</td>
+        <td>Hunter's Eye: Has Proficiency with a choice of longbow or shortbow and suffers no penalty for the 2nd range increment with it</td>
       </tr><tr style="text-align:center">
-        <td>Impressive Presence: May take full-round action that inflicts shaken on adjacent foes (DC 13 Will neg) for 1 rd 1/dy</td>
+        <td>Impressive Presence: Can take full-round action that inflicts shaken on adjacent foes for 1 rd (save Will DC 13 negates) oncel per day</td>
       </tr><tr style="text-align:center">
-        <td>Meridian Strike: May reroll crit damage 1s 1/dy</td>
+        <td>Meridian Strike: Can reroll 1s on critical hit damage once per day</td>
       </tr><tr style="text-align:center">
-        <td>Reverent Wielder: +1 disarm, steal, and sunder CMD</td>
+        <td>Reverent Wielder: +1 CMD vs. disarm, steal, and sunder</td>
       </tr><tr style="text-align:center">
-        <td>Shiv: +1 surprise piercing and slashing damage</td>
+        <td>Shiv: One-handed piercing and slashing weapons inflict +1 HP during the surprise rd</td>
       </tr><tr style="text-align:center">
         <td>Sickening Critical: Critical hits can also inflict sickened for 1 min</td>
       </tr><tr style="text-align:center">
-        <td>Soul Drinker: May gain temporary HP equal to slain foe's HD for 1 min 1/dy</td>
+        <td>Soul Drinker: Can gain temporary HP equal to a slain foe's HD for 1 min once per day</td>
       </tr><tr style="text-align:center">
-        <td>Vindictive: May inflict +1 damage vs. successful attacker for 1 min 1/dy</td>
+        <td>Vindictive: Can inflict +1 HP vs. a successful attacker for 1 min once per day</td>
       </tr><tr style="text-align:center">
-        <td>Weapon Style: Proficient with choice of monk weapon</td>
+        <td>Weapon Style: Proficient with a choice of monk weapon</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -355,15 +357,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Dunewalker: +4 Fortitude vs. heat</td>
+        <td>Dunewalker: +4 Fortitude vs. nonlethal damage from heat</td>
       </tr><tr style="text-align:center">
         <td>Indomitable: +1 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Mummy-Touched: +2 vs. curse and disease</td>
+        <td>Mummy-Touched: +2 vs. curses and diseases</td>
       </tr><tr style="text-align:center">
         <td>Reverent Wielder: Equipment gains +1 saves</td>
       </tr><tr style="text-align:center">
-        <td>Trouper: +1 vs. Perform-related abilities</td>
+        <td>Trouper: +1 vs. abilities the rely on the chosen Perform skill</td>
       </tr></table>
 </td>
     </tr></table>
@@ -407,17 +409,17 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Charisma Sorcerer Spell Slot Bonus: Spell level S1</i></td>
     </tr><tr style="text-align:center">
-      <td>Attuned To The Ancestors: May become imperceptible to unintelligent undead for 2 rd 1/dy</td>
+      <td>Attuned To The Ancestors: Can become imperceptible to unintelligent undead for 2 rd once per day; attacking an undead ends</td>
     </tr><tr style="text-align:center">
       <td>Bloodline Draconic: Spells with the cold descriptor inflict +1 HP per die</td>
     </tr><tr style="text-align:center">
       <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Eastern Mysteries: +2 spell DC 1/dy</td>
+      <td>Eastern Mysteries: +2 spell DC once per day</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Can ignore inexpensive material component requirements when casting spells</td>
     </tr><tr style="text-align:center">
-      <td>Master Of Pentacles: +2 caster level to determine duration when casting a conjuration spell 1/dy</td>
+      <td>Master Of Pentacles: +2 caster level to determine the duration of a conjuration spell once per day</td>
     </tr><tr style="text-align:center">
       <td>Medic: +1 caster level on <i>Remove</i> spells</td>
     </tr></table>
@@ -438,12 +440,6 @@ var attributes = {
 * Secrets Of The Sphinx: Knowledge (Planes) is a class skill<br/>
 * Tomb Raider: Knowledge (Dungeoneering) is a class skill<br/>
 * Trouper: +1 Perform (Oratory) skill</td>
-    </tr></table>
-</td>
-  </tr><tr style="text-align:center">
-    <td>    <table id="ValidationPart" style="width:100%">
-    <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Language Allocation: 4 available vs. 5 allocated</td>
     </tr></table>
 </td>
   </tr></table>

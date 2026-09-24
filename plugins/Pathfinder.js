@@ -478,7 +478,8 @@ Pathfinder.FEATS = {
       '"baseAttack >= 1",' +
       '"fighterFeatLevel >= 8",' +
       '"features.Shield Focus",' +
-      '"armorProficiency.Shield"',
+      '"armorProficiency.Shield" ' +
+    'Imply="shield != \'None\'"',
   'Greater Spell Focus (%school)':
     'Type=General Require="features.Spell Focus (%school)"',
   'Greater Spell Penetration':
@@ -661,7 +662,8 @@ Pathfinder.FEATS = {
       '"features.Dazzling Display"',
   'Shield Focus':
     'Type=Fighter ' +
-    'Require="baseAttack >= 1","armorProficiency.Shield"',
+    'Require="baseAttack >= 1","armorProficiency.Shield" ' +
+    'Imply="shield != \'None\'"',
   'Shield Master':
     'Type=Fighter ' +
     'Require=' +
@@ -669,7 +671,8 @@ Pathfinder.FEATS = {
       '"features.Improved Shield Bash",' +
       '"armorProficiency.Shield",' +
       '"features.Shield Slam",' +
-      '"features.Two-Weapon Fighting"',
+      '"features.Two-Weapon Fighting" ' +
+    'Imply="shield != \'None\'"',
   'Shield Proficiency':'Type=Fighter',
   'Shield Slam':
     'Type=Fighter ' +
@@ -677,7 +680,8 @@ Pathfinder.FEATS = {
       '"baseAttack >= 6",' +
       '"features.Improved Shield Bash",' +
       '"armorProficiency.Shield",' +
-      '"features.Two-Weapon Fighting"',
+      '"features.Two-Weapon Fighting" ' +
+    'Imply="shield != \'None\'"',
   'Shot On The Run':
     'Type=Fighter ' +
     'Require=' +
@@ -1076,7 +1080,7 @@ Pathfinder.FEATURES = {
   'Aligned Spells':SRD35.FEATURES['Aligned Spells'],
   'Aura':SRD35.FEATURES.Aura,
   'Channel Energy':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Can restore %1d6 hit points or inflict the same amount (save Will DC %2 half) to all creatures within 30\' %{%V>1?\'%V times\':\'once\'} per day"',
   'Orisons':'Section=magic Note="Knows 0-level spells"',
   'Spontaneous Casting (Cleric)':SRD35.FEATURES['Spontaneous Casting (Cleric)'],
@@ -2226,10 +2230,10 @@ Pathfinder.FEATURES = {
   'Animal Affinity':'Section=skill Note="+%V Handle Animal/+%1 Ride"',
   'Arcane Armor Mastery':
     'Section=magic ' +
-    'Note="Can use a swift action to reduce the armored casting penalty by 20% for 1 rd"',
+    'Note="Can use a swift action to reduce the arcane spell failure chance by 20% for 1 rd"',
   'Arcane Armor Training':
     'Section=magic ' +
-    'Note="Can use a swift action to reduce the armored casting penalty by 10% for 1 rd"',
+    'Note="Can use a swift action to reduce the arcane spell failure chance by 10% for 1 rd"',
   'Arcane Strike':
     'Section=combat ' +
     'Note="Can use a swift action to make weapons magic with a +%V damage bonus for 1 rd"',
@@ -2259,6 +2263,8 @@ Pathfinder.FEATURES = {
     'Note="Can use a full-attack action to make an attack on a foe within reach and, if it hits, to attack another foe adjacent to the first; inflicts a -2 penalty to Armor Class on self until the next turn"',
   'Combat Casting':
     SRD35.FEATURES['Combat Casting']
+    .replace('skill', 'magic')
+    .replace('Concentration', 'concentration checks')
     .replace(', grappling, or pinned', ' or grappling'),
   'Combat Expertise':
     SRD35.FEATURES['Combat Expertise']
@@ -2267,7 +2273,7 @@ Pathfinder.FEATURES = {
   'Combat Reflexes':SRD35.FEATURES['Combat Reflexes'],
   'Command Undead':
     'Section=combat ' +
-    'Note="R30\' Can use Channel Energy to control %{channelLevel} HD of undead (save Will DC %{magicNotes.channelEnergy.2} negates)"',
+    'Note="R30\' Can use Channel Energy to control %{channelLevel} HD of undead (save Will DC %{combatNotes.channelEnergy.2} negates)"',
   'Craft Magic Arms And Armor':SRD35.FEATURES['Craft Magic Arms And Armor'],
   'Craft Rod':SRD35.FEATURES['Craft Rod'],
   'Craft Staff':SRD35.FEATURES['Craft Staff'],
@@ -2296,22 +2302,22 @@ Pathfinder.FEATURES = {
   'Diehard':SRD35.FEATURES.Diehard,
   'Disruptive':
     'Section=combat ' +
-    'Note="Foes within threat area suffer +4 defensive spell DC"',
+    'Note="Foes within threat area suffer +4 DC to cast spells defensively when self can make an AOO"',
   'Dodge':SRD35.FEATURES.Dodge,
   'Double Slice':
     'Section=combat Note="Adds full Strength modifier to off-hand damage"',
   'Elemental Channel (Air)':
     'Section=combat ' +
-    'Note="Can use Channel Energy to heal or harm Air outsiders"',
+    'Note="Can use Channel Energy to heal or harm air outsiders"',
   'Elemental Channel (Earth)':
     'Section=combat ' +
-    'Note="Can use Channel Energy to heal or harm Earth outsiders"',
+    'Note="Can use Channel Energy to heal or harm earth outsiders"',
   'Elemental Channel (Fire)':
     'Section=combat ' +
-    'Note="Can use Channel Energy to heal or harm Fire outsiders"',
+    'Note="Can use Channel Energy to heal or harm fire outsiders"',
   'Elemental Channel (Water)':
     'Section=combat ' +
-    'Note="Can use Channel Energy to heal or harm Water outsiders"',
+    'Note="Can use Channel Energy to heal or harm water outsiders"',
   'Empower Spell':SRD35.FEATURES['Empower Spell'],
   'Endurance':SRD35.FEATURES.Endurance,
   'Enlarge Spell':SRD35.FEATURES['Enlarge Spell'],
@@ -2321,7 +2327,7 @@ Pathfinder.FEATURES = {
   // No note for Exotic Weapon Proficiency
   'Extend Spell':SRD35.FEATURES['Extend Spell'],
   'Extra Channel':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Can use Channel Energy 2 additional times per day%{$\'features.Lay On Hands\'?\' and Lay On Hands an additional 4 times per day\':\'\'}"',
   'Extra Ki':'Section=feature Note="+%V Ki Pool points"',
   'Extra Lay On Hands':
@@ -2333,7 +2339,6 @@ Pathfinder.FEATURES = {
     'Section=skill ' +
     'Note="Can use Bardic Performance an additional %V rd per day"',
   'Extra Rage':'Section=combat Note="Can use Rage an additional %V rd per day"',
-  // TODO probably inheriting the SRD35 calculations (x1.5 or x2 range)
   'Far Shot':
     'Section=combat ' +
     'Note="Reduces the range increment penalty for ranged weapons by 1"',
@@ -2350,19 +2355,19 @@ Pathfinder.FEATURES = {
   'Great Fortitude':SRD35.FEATURES['Great Fortitude'],
   'Greater Bull Rush':
     'Section=combat ' +
-    'Note="+2 Bull Rush checks, and allies can take a movement AOO on a Bull Rushed foe"',
+    'Note="+2 on Bull Rush attempts, and allies can take a movement AOO on a Bull Rushed foe"',
   'Greater Disarm':
     'Section=combat ' +
-    'Note="+2 disarm checks, and disarmed weapons land 15\' away from foe"',
+    'Note="+2 on Disarm attempts, and disarmed weapons land 15\' away from foe"',
   'Greater Feint':
     'Section=combat ' +
-    'Note="Successful feint causes foe to lose its Dexterity bonus until the start of the next turn"',
+    'Note="Successful Feint causes the target to lose its Dexterity bonus until the start of the next turn"',
   'Greater Grapple':
     'Section=combat ' +
-    'Note="+2 grapple checks/Can maintain a grapple as move action and make 2 grapple checks per rd; success on 1 maintains the grapple"',
+    'Note="+2 on Grapple attempts, can maintain a Grapple as move action, and can make 2 Grapple checks per rd; success on 1 maintains the Grapple"',
   'Greater Overrun':
     'Section=combat ' +
-    'Note="+2 overrun checks, and allies can take a movement AOO on a foe knocked prone"',
+    'Note="+2 on Overrun attempts, and allies can take a movement AOO on a foe knocked prone"',
   'Greater Penetrating Strike':
     'Section=combat ' +
     'Note="Focused weapons ignore DR 5/- and DR 10 for limited forms of DR"',
@@ -2372,10 +2377,10 @@ Pathfinder.FEATURES = {
   'Greater Spell Penetration':SRD35.FEATURES['Greater Spell Penetration'],
   'Greater Sunder':
     'Section=combat ' +
-    'Note="+2 sunder checks, and the foe suffers any damage beyond that needed to destroy the item"',
+    'Note="+2 on Sunder checks, and the foe suffers any damage beyond that needed to destroy the item"',
   'Greater Trip':
     'Section=combat ' +
-    'Note="+2 trip checks, and allies can take a movement AOO on a tripped foe"',
+    'Note="+2 on Trip checks, and allies can take a movement AOO on a tripped foe"',
   'Greater Two-Weapon Fighting':SRD35.FEATURES['Greater Two-Weapon Fighting'],
   'Greater Vital Strike':
     'Section=combat Note="Has increased Vital Strike effects"',
@@ -2385,21 +2390,20 @@ Pathfinder.FEATURES = {
     SRD35.FEATURES['Greater Weapon Specialization (%weapon)'],
   'Heighten Spell':SRD35.FEATURES['Heighten Spell'],
   'Improved Bull Rush':
-    SRD35.FEATURES['Improved Bull Rush']
-    .replace('+4', '+2')
-    .replace('attempts', 'attempts and CMD'),
-  'Improved Channel':'Section=magic Note="+2 Channel Energy DC"',
+    'Section=combat ' +
+    'Note="+2 on Bull Rush attempts and CMD, and they provoke no AOO"',
+  'Improved Channel':'Section=combat Note="+2 Channel Energy DC"',
   'Improved Counterspell':SRD35.FEATURES['Improved Counterspell'],
   'Improved Critical (%weapon)':SRD35.FEATURES['Improved Critical (%weapon)'],
   'Improved Disarm':
     'Section=combat ' +
-    'Note="+2 on Disarm attempts and CMD, and Disarm attempts provoke no AOO"',
+    'Note="+2 on Disarm attempts and CMD, and they provoke no AOO"',
   'Improved Familiar':SRD35.FEATURES['Improved Familiar'],
   'Improved Feint':SRD35.FEATURES['Improved Feint'],
   'Improved Grapple':
     SRD35.FEATURES['Improved Grapple']
     .replace('+4', '+2')
-    .replace('checks', 'checks and CMD'),
+    .replace('attempts', 'attempts and CMD'),
   'Improved Great Fortitude':
     'Section=save Note="Can reroll a Fortitude save once per day"',
   'Improved Initiative':SRD35.FEATURES['Improved Initiative'],
@@ -2409,7 +2413,7 @@ Pathfinder.FEATURES = {
     'Section=save Note="Can reroll a Reflex save once per day"',
   'Improved Overrun':
     'Section=combat ' +
-    'Note="+2 Overrun checks and CMD, Overrun provokes no AOO, and the target cannot avoid an Overrun attempt"',
+    'Note="+2 on Overrun attempts and CMD, they provoke no AOO, and the target cannot avoid an Overrun attempt"',
   'Improved Precise Shot':
     SRD35.FEATURES['Improved Precise Shot']
     .replace(/, and[^"]*/, ''),
@@ -2419,7 +2423,7 @@ Pathfinder.FEATURES = {
     .replace('+4', '+2')
     .replace('attempts', 'attempts and CMD'),
   'Improved Trip':
-    'Section=combat Note="+2 Trip check and CMD, and Trip provokes no AOO"',
+    'Section=combat Note="+2 on Trip attempts and CMD, and they provoke no AOO"',
   'Improved Two-Weapon Fighting':SRD35.FEATURES['Improved Two-Weapon Fighting'],
   'Improved Unarmed Strike':SRD35.FEATURES['Improved Unarmed Strike'],
   'Improved Vital Strike':
@@ -2443,10 +2447,10 @@ Pathfinder.FEATURES = {
     'Note="Can fire 2 arrows with the first bow attack of a full-attack action"',
   // No note for Martial Weapon Proficiency
   'Master Craftsman (%craftSkill)':
-    'Section=feature,skill ' +
+    'Section=skill,skill ' +
     'Note=' +
-      '"Can use %craftSkill with Craft Magic Arms And Armor and Craft Wondrous Item",' +
-      '"+2 %craftSkill"',
+      '"+2 %craftSkill",' +
+      '"Can use %craftSkill with Craft Magic Arms And Armor and Craft Wondrous Item"',
   'Master Craftsman (%professionSkill)':
     'Section=feature,skill ' +
     'Note=' +
@@ -2470,7 +2474,7 @@ Pathfinder.FEATURES = {
   'Persuasive':'Section=skill Note="+%V Diplomacy/+%1 Intimidate"',
   'Pinpoint Targeting':
     'Section=combat ' +
-    'Note="Can make a single ranged attack as a standard action that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use"',
+    'Note="As a standard action, can make a single ranged attack that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use"',
   'Point-Blank Shot':SRD35.FEATURES['Point-Blank Shot'],
   'Power Attack':
     'Section=combat ' +
@@ -2483,13 +2487,15 @@ Pathfinder.FEATURES = {
   'Rapid Reload (Light)':SRD35.FEATURES['Rapid Reload (Light)'],
   'Rapid Shot':SRD35.FEATURES['Rapid Shot'],
   'Ride-By Attack':SRD35.FEATURES['Ride-By Attack'],
-  'Run':SRD35.FEATURES.Run,
+  'Run':
+    SRD35.FEATURES.Run
+    .replace('running Jump', 'Acrobatics to make a running jump'),
   'Scorpion Style':
     'Section=combat ' +
     'Note="Successful unarmed attack as a standard action also slows the target to 5\' for %{wisdomModifier} rd (save Fortitude DC %{10+level//2+wisdomModifier} negates)"',
   'Scribe Scroll':SRD35.FEATURES['Scribe Scroll'],
   'Selective Channeling':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Can exclude %{charismaModifier} creature%{charismaModifier>1?\'s\':\'\'} from Channel Energy effects"',
   'Self-Sufficient':'Section=skill Note="+%V Heal/+%1 Survival"',
   'Shatter Defenses':
@@ -2527,7 +2533,7 @@ Pathfinder.FEATURES = {
   'Stealthy':'Section=skill Note="+%V Escape Artist/+%1 Stealth"',
   'Step Up':
     'Section=combat ' +
-    'Note="Can follow a foe\'s 5\' step, foregoing a 5\' step or subtracting 5\' of movement during the next turn"',
+    'Note="Can follow a foe\'s 5\' step; requires foregoing a 5\' step or subtracting 5\' from movement during the next turn"',
   'Still Spell':SRD35.FEATURES['Still Spell'],
   'Strike Back':
     'Section=combat ' +
@@ -2546,7 +2552,7 @@ Pathfinder.FEATURES = {
   'Trample':SRD35.FEATURES.Trample,
   'Turn Undead':
     'Section=combat ' +
-    'Note="R30\' Can use Channel Energy to cause undead to flee for 1 min (save Will DC %{magicNotes.channelEnergy.2} negates)"',
+    'Note="R30\' Can use Channel Energy to cause undead to flee for 1 min (save Will DC %{combatNotes.channelEnergy.2} negates)"',
   'Two-Weapon Defense':SRD35.FEATURES['Two-Weapon Defense'],
   'Two-Weapon Fighting':SRD35.FEATURES['Two-Weapon Fighting'],
   'Two-Weapon Rend':
@@ -2554,7 +2560,7 @@ Pathfinder.FEATURES = {
     'Note="Hitting a foe twice using a weapon in each hand inflicts an additional 1d10%{strengthModifier>0?\'+\'+strengthModifier*1.5//1:\'\'} HP once per rd"',
   'Unseat':
     'Section=combat ' +
-    'Note="Successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it"',
+    'Note="When mounted, a successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it"',
   'Vital Strike':
     'Section=combat ' +
     'Note="Can use an attack action to make a single attack that inflicts %{combatNotes.greaterVitalStrike?4:combatNotes.improvedVitalStrike?3:2}x base damage"',
@@ -2601,7 +2607,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
   'Indomitable Faith':'Section=save Note="+1 Will"',
-  'Sacred Conduit':'Section=magic Note="+1 Channel Energy DC"',
+  'Sacred Conduit':'Section=combat Note="+1 Channel Energy DC"',
   'Sacred Touch':'Section=magic Note="Touch automatically stabilizes"',
   'Scholar Of The Great Beyond':
     'Section=skill,skill ' +
@@ -6108,17 +6114,17 @@ Pathfinder.classRulesExtra = function(rules, name) {
   } else if(name == 'Cleric') {
 
     rules.defineRule('channelLevel', classLevel, '+=', null);
-    rules.defineRule('magicNotes.channelEnergy',
+    rules.defineRule('combatNotes.channelEnergy',
       'charismaModifier', '=', '3 + source'
     );
-    rules.defineRule('magicNotes.channelEnergy.1',
+    rules.defineRule('combatNotes.channelEnergy.1',
       'channelLevel', '+=', 'Math.floor((source + 1) / 2)'
     );
-    rules.defineRule('magicNotes.channelEnergy.2',
+    rules.defineRule('combatNotes.channelEnergy.2',
       'channelLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null,
-      'magicNotes.improvedChannel', '+', '2',
-      'magicNotes.sacredConduit', '+', '1'
+      'combatNotes.improvedChannel', '+', '2',
+      'combatNotes.sacredConduit', '+', '1'
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric (Domain)', classLevel, '=', '2');
@@ -7303,11 +7309,11 @@ Pathfinder.featRulesExtra = function(rules, name) {
     );
   } else if(name == 'Extra Channel') {
     rules.defineRule
-      ('combatNotes.powerOverUndead', 'magicNotes.extraChannel', '+', '2');
+      ('combatNotes.powerOverUndead', 'combatNotes.extraChannel', '+', '2');
     rules.defineRule
-      ('magicNotes.channelEnergy', 'magicNotes.extraChannel', '+', '2');
+      ('combatNotes.channelEnergy', 'combatNotes.extraChannel', '+', '2');
     rules.defineRule
-      ('magicNotes.layOnHands.1', 'magicNotes.extraChannel', '+', '4');
+      ('magicNotes.layOnHands.1', 'combatNotes.extraChannel', '+', '4');
   } else if(name == 'Extra Ki') {
     rules.defineRule
       ('featureNotes.extraKi', 'feats.Extra Ki', '=', 'source * 2');
@@ -7422,11 +7428,20 @@ Pathfinder.featureRules = function(
   rules, name, sections, notes, spells, spellAbility
 ) {
   SRD35.featureRules(rules, name, sections, notes, spells, spellAbility);
-  if(name.match(/^(Greater )?Shield Focus$/))
-    // Override ^= from SRD35.featureRules with +
-    rules.defineRule('armorClassShieldModifier',
-      'combatNotes.' + name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', ''), '+', '1'
+  if(name.match(/^(Greater )?Shield Focus$/)) {
+    let note =
+      'combatNotes.' + name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
+    // Override ^= from SRD35.featureRules with + and negate the bonus if the
+    // character has no shield
+    rules.defineRule(note + '.1',
+      'features.' + name, '?', null,
+      'shield', '=', 'source=="None" ? -1 : null'
     );
+    rules.defineRule('armorClassShieldModifier',
+      note, '+', '1',
+      note + '.1', '+', null
+    );
+  }
 };
 
 /*

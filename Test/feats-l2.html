@@ -42,7 +42,8 @@ var attributes = {
   "skills.Escape Artist":6, "skills.Handle Animal":10, "skills.Intimidate":12, 
   "skills.Knowledge (History)":7, "skills.Perception":2, "skills.Profession (Scribe)":10, 
   "skills.Profession (Soldier)":5, "skills.Profession (Tanner)":2, "skills.Ride":12, "skills.Swim":2, 
-  "strength":14, "weapons.Bite":1, "weapons.Longsword":1, "weapons.Morningstar":1, "wisdom":13
+  "strength":14, "weapons.Longsword":1, "weapons.Morningstar":1, "weapons.Shortbow":1, 
+  "wisdom":13
 };
   </script>
 </head>
@@ -198,7 +199,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Banded Mail</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Bite; Longsword (+21 d8+6 x2@19); Morningstar (+19 d8+2 x2@20); Unarmed Strike (+19 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Longsword (+21 d8+6 x2@19); Morningstar (+19 d8+2 x2@20); Shortbow (+21 d6 x3@20 R60'); Unarmed Strike (+19 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -211,8 +212,6 @@ var attributes = {
         <td><i>Dexterity Attack Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Far Shot: Reduces the range increment penalty for ranged weapons by 1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Greater Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
@@ -246,7 +245,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Combat Expertise: Can suffer up to -5 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: Can make an AOO while flat-footed and make +4 AOO per rd</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed and make 5 AOO per rd</td>
       </tr><tr style="text-align:center">
         <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
@@ -262,43 +261,45 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Diehard: Can remain conscious, stable, and able to act with negative hit points; taking a standard action inflicts 1 HP</td>
       </tr><tr style="text-align:center">
-        <td>Disruptive: Foes within threat area suffer +4 defensive spell DC</td>
+        <td>Disruptive: Foes within threat area suffer +4 DC to cast spells defensively when self can make an AOO</td>
       </tr><tr style="text-align:center">
         <td>Double Slice: Adds full Strength modifier to off-hand damage</td>
       </tr><tr style="text-align:center">
         <td>Exhausting Critical: Critical hits can also inflict exhausted</td>
       </tr><tr style="text-align:center">
+        <td>Far Shot: Reduces the range increment penalty for ranged weapons by 1</td>
+      </tr><tr style="text-align:center">
         <td>Gorgon's Fist: Successful unarmed melee attack vs. a slowed foe also inflicts staggered (save Fortitude DC 19 negates)</td>
       </tr><tr style="text-align:center">
         <td>Great Cleave: Allows using Cleave to attack 3 or more adjacent foes</td>
       </tr><tr style="text-align:center">
-        <td>Greater Bull Rush: +2 Bull Rush checks, and allies can take a movement AOO on a Bull Rushed foe</td>
+        <td>Greater Bull Rush: +2 on Bull Rush attempts, and allies can take a movement AOO on a Bull Rushed foe</td>
       </tr><tr style="text-align:center">
-        <td>Greater Disarm: +2 disarm checks, and disarmed weapons land 15' away from foe</td>
+        <td>Greater Disarm: +2 on Disarm attempts, and disarmed weapons land 15' away from foe</td>
       </tr><tr style="text-align:center">
-        <td>Greater Feint: Successful feint causes foe to lose its Dexterity bonus until the start of the next turn</td>
+        <td>Greater Feint: Successful Feint causes the target to lose its Dexterity bonus until the start of the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Greater Grapple: +2 grapple checks/Can maintain a grapple as move action and make 2 grapple checks per rd; success on 1 maintains the grapple</td>
+        <td>Greater Grapple: +2 on Grapple attempts, can maintain a Grapple as move action, and can make 2 Grapple checks per rd; success on 1 maintains the Grapple</td>
       </tr><tr style="text-align:center">
-        <td>Greater Overrun: +2 overrun checks, and allies can take a movement AOO on a foe knocked prone</td>
+        <td>Greater Overrun: +2 on Overrun attempts, and allies can take a movement AOO on a foe knocked prone</td>
       </tr><tr style="text-align:center">
         <td>Greater Penetrating Strike: Focused weapons ignore DR 5/- and DR 10 for limited forms of DR</td>
       </tr><tr style="text-align:center">
-        <td>Greater Sunder: +2 sunder checks, and the foe suffers any damage beyond that needed to destroy the item</td>
+        <td>Greater Sunder: +2 on Sunder checks, and the foe suffers any damage beyond that needed to destroy the item</td>
       </tr><tr style="text-align:center">
-        <td>Greater Trip: +2 trip checks, and allies can take a movement AOO on a tripped foe</td>
+        <td>Greater Trip: +2 on Trip checks, and allies can take a movement AOO on a tripped foe</td>
       </tr><tr style="text-align:center">
         <td>Greater Two-Weapon Fighting: Can make a third off-hand attack with a -10 attack penalty</td>
       </tr><tr style="text-align:center">
-        <td>Improved Bull Rush: +2 on Bull Rush attempts and CMD, and they provoke no AOO from the target</td>
+        <td>Improved Bull Rush: +2 on Bull Rush attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Disarm: +2 on Disarm attempts and CMD, and Disarm attempts provoke no AOO</td>
+        <td>Improved Disarm: +2 on Disarm attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>Improved Feint: Can Feint as a move action</td>
       </tr><tr style="text-align:center">
-        <td>Improved Grapple: +2 on Grapple checks and CMD, and Grapple attempts provoke no AOO</td>
+        <td>Improved Grapple: +2 on Grapple attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Overrun: +2 Overrun checks and CMD, Overrun provokes no AOO, and the target cannot avoid an Overrun attempt</td>
+        <td>Improved Overrun: +2 on Overrun attempts and CMD, they provoke no AOO, and the target cannot avoid an Overrun attempt</td>
       </tr><tr style="text-align:center">
         <td>Improved Precise Shot: Ranged attacks ignore partial cover or concealment</td>
       </tr><tr style="text-align:center">
@@ -306,7 +307,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Improved Sunder: +2 on Sunder attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Trip: +2 Trip check and CMD, and Trip provokes no AOO</td>
+        <td>Improved Trip: +2 on Trip attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>Improved Two-Weapon Fighting: Can make a second off-hand attack with a -5 penalty</td>
       </tr><tr style="text-align:center">
@@ -328,7 +329,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Penetrating Strike: Focused weapons ignore DR 5 for limited forms of DR</td>
       </tr><tr style="text-align:center">
-        <td>Pinpoint Targeting: Can make a single ranged attack as a standard action that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
+        <td>Pinpoint Targeting: As a standard action, can make a single ranged attack that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
@@ -378,7 +379,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Two-Weapon Rend: Hitting a foe twice using a weapon in each hand inflicts an additional 1d10+3 HP once per rd</td>
       </tr><tr style="text-align:center">
-        <td>Unseat: Successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it</td>
+        <td>Unseat: When mounted, a successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it</td>
       </tr><tr style="text-align:center">
         <td>Vital Strike: Can use an attack action to make a single attack that inflicts 4x base damage</td>
       </tr><tr style="text-align:center">

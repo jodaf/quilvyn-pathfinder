@@ -24,7 +24,7 @@ var attributes = {
   "feats.Step Up":1, "feats.Strike Back":1, "feats.Throw Anything":1, "feats.Toughness":1, 
   "feats.Two-Weapon Fighting":1, "feats.Vital Strike":1, "feats.Weapon Finesse":1, 
   "feats.Weapon Focus (Longsword)":1, "gender":"Female", "hitPoints":48, "intelligence":14, "languages.Abyssal":1, 
-  "languages.Goblin":1, "levels.Fighter":9, "name":"Feats-L1", "race":"Human", "shield":"None", 
+  "languages.Goblin":1, "levels.Fighter":9, "name":"Feats-L1", "race":"Human", "shield":"Buckler", 
   "skills.Acrobatics":2, "skills.Appraise":2, "skills.Bluff":2, "skills.Craft (Alchemy)":7, 
   "skills.Disable Device":2, "skills.Handle Animal":6, "skills.Intimidate":2, 
   "skills.Knowledge (Arcana)":2, "skills.Ride":8, "skills.Sense Motive":4, "skills.Stealth":2, 
@@ -110,8 +110,6 @@ var attributes = {
         <td><i>Bonus Feats (Fighter): +5 Fighter Feats</i></td>
       </tr><tr style="text-align:center">
         <td>Leadership: Can attract companions and devoted followers</td>
-      </tr><tr style="text-align:center">
-        <td>Master Craftsman (Craft (Alchemy)): Can use Craft (Alchemy) with Craft Magic Arms And Armor and Craft Wondrous Item</td>
       </tr></table>
 </td>
     </tr></table>
@@ -188,7 +186,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
       </tr><tr style="text-align:center">
-        <td>Run: +4 running Jump</td>
+        <td>Master Craftsman (Craft (Alchemy)): Can use Craft (Alchemy) with Craft Magic Arms And Armor and Craft Wondrous Item</td>
+      </tr><tr style="text-align:center">
+        <td>Run: +4 Acrobatics to make a running jump</td>
       </tr></table>
 </td>
     </tr></table>
@@ -204,7 +204,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 57</td>
         <td><b>Initiative</b>: +6</td>
-        <td><b>AC/Touch/Flat</b>: 16/13/13</td>
+        <td><b>AC/Touch/Flat</b>: 17/13/14</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +9/+10/+11</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +11/23</td>
@@ -221,7 +221,7 @@ var attributes = {
       <td>      <table id="Gear" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
-        <td><b>Shield</b>: None</td>
+        <td><b>Shield</b>: Buckler</td>
         <td><b>Weapons</b>: Bastard Sword (+10 d10+1 x2@19); Dagger (+11 d4+1 x2@19 R10'); Hand Crossbow (+7 d4 x2@19 R30'); Heavy Crossbow (+11 d10 x2@19 R120'); Light Crossbow (+11 d8 x2@19 R80'); Longsword (+11 d8+1 x2@17); Unarmed Strike (+11 d3+1 x2@20)</td>
       </tr></table>
 </td>
@@ -230,7 +230,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Agile Maneuvers: +1 CMB</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +2; Dodge +1; Natural Armor +0; Shield +1; Size +0</i></td>
+        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +2; Dodge +1; Natural Armor +0; Shield +2; Size +0</i></td>
       </tr><tr style="text-align:center">
         <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 2</i></td>
       </tr><tr style="text-align:center">
@@ -264,13 +264,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Combat Expertise: Can suffer up to -3 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: Can make an AOO while flat-footed and make +2 AOO per rd</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed and make 3 AOO per rd</td>
       </tr><tr style="text-align:center">
         <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
         <td>Deadly Aim: Can suffer -3 on ranged attacks to inflict +6 HP until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Disruptive: Foes within threat area suffer +4 defensive spell DC</td>
+        <td>Disruptive: Foes within threat area suffer +4 DC to cast spells defensively when self can make an AOO</td>
       </tr><tr style="text-align:center">
         <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
@@ -290,11 +290,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Run: Retains Dexterity bonus to Armor Class while running</td>
       </tr><tr style="text-align:center">
-        <td>Step Up: Can follow a foe's 5' step, foregoing a 5' step or subtracting 5' of movement during the next turn</td>
+        <td>Step Up: Can follow a foe's 5' step; requires foregoing a 5' step or subtracting 5' from movement during the next turn</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
-        <td>Throw Anything: Suffers no penalty for using improvised ranged weapons, and gains +1 attack with thrown splash weapons</td>
+        <td>Throw Anything: Suffers no penalty for using improvised ranged weapons, and gains +1 attacks with thrown splash weapons</td>
       </tr><tr style="text-align:center">
         <td>Two-Weapon Fighting: Reduces the attack penalties when fighting with a weapon in each hand by 2 for the primary hand and 6 for the off hand</td>
       </tr><tr style="text-align:center">

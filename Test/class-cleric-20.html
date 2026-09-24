@@ -414,7 +414,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 128</td>
         <td><b>Initiative</b>: +4</td>
-        <td><b>AC/Touch/Flat</b>: 16/14/12</td>
+        <td><b>AC/Touch/Flat</b>: 17/14/13</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+18/+19</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +18/32</td>
@@ -438,7 +438,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +4; Dodge +0; Natural Armor +0; Shield +0; Size +0</i></td>
+        <td><i>Armor Class Modifiers: Armor +2; Deflection +0; Dexterity +4; Dodge +0; Natural Armor +0; Shield +1; Size +0</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
@@ -452,7 +452,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Toughness: +20 Hit Points</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and Armor Class</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Unarmed Strike): +1 Unarmed Strike Attack Modifier</i></td>
       </tr><tr style="text-align:center">
@@ -469,6 +469,8 @@ var attributes = {
         <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
         <td>Bramble Armor: Successful melee attackers without reach suffer 1d6+10 HP piercing for 20 rd per day</td>
+      </tr><tr style="text-align:center">
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
         <td>Chaos Blade: Touched weapon gains the <i>anarchic</i> quality for 10 rd 4 times per day</td>
       </tr><tr style="text-align:center">
@@ -507,6 +509,8 @@ var attributes = {
         <td>Touch Of Darkness: Touch attack inflicts a 20% miss chance on attacks for 10 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Touch Of Evil: Touch inflicts sickened and susceptibility to good-targeted spells for 10 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr><tr style="text-align:center">
         <td>Weapon Master: Can use the effects of additional combat feats for 20 rd per day; must meet any feat prerequisites</td>
       </tr><tr style="text-align:center">
@@ -804,7 +808,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Demand (Nobility8 Ench): Sends to a familiar target a 25-word message that contains a <i>Suggestion</i> (save Will negates); the target can send a 25-word reply</td>
     </tr><tr style="text-align:left">
-      <td>Desecrate (C2 Evoc): R75' 20' radius gives +3 DC vs. negative channel, undead +1 attack, damage, saves, and 1 temporary HP/HD for 40 hr</td>
+      <td>Desecrate (C2 Evoc): R75' 20' radius gives +3 DC vs. negative channel, undead +1 attacks, damage, saves, and 1 temporary HP/HD for 40 hr</td>
     </tr><tr style="text-align:left">
       <td>Destruction (C7 Necr): R75' Target suffers 200 HP, consumed if slain (Fort 10d6 HP)</td>
     </tr><tr style="text-align:left">
@@ -1056,9 +1060,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Helping Hand (C3 Evoc): Creates a ghostly hand that leads a described target found within 5 miles to self for 4 hr</td>
     </tr><tr style="text-align:left">
-      <td>Heroes' Feast (C6 Conj): R75' Food for 20 creatures cures sickness, poison, and disease, gives 1d8+10 temporary HP, +1 attack and Will saves, and +4 vs. poison and fear for 12 hr</td>
+      <td>Heroes' Feast (C6 Conj): R75' Food for 20 creatures cures sickness, poison, and disease, gives 1d8+10 temporary HP, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Heroes' Feast (Community6 Conj): R75' Food for 20 creatures cures sickness, poison, and disease, gives 1d8+10 temporary HP, +1 attack and Will saves, and +4 vs. poison and fear for 12 hr</td>
+      <td>Heroes' Feast (Community6 Conj): R75' Food for 20 creatures cures sickness, poison, and disease, gives 1d8+10 temporary HP, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr</td>
     </tr><tr style="text-align:left">
       <td>Heroism (Charm4 Ench): Touched gains +2 attacks, saves, and skill checks for 200 min</td>
     </tr><tr style="text-align:left">
@@ -1683,8 +1687,6 @@ var attributes = {
       <td>Blast Rune: Can create a rune in an adjacent unoccupied square that inflicts 1d6+10 HP of a choice of acid, cold, electricity, or fire damage once within 20 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Calming Touch: Touch restores 1d6+20 nonlethal hit points and removes fatigued, shaken, and sickened conditions 5 times per day</td>
-    </tr><tr style="text-align:center">
-      <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 6 times per day</td>
     </tr><tr style="text-align:center">
       <td>Charming Smile: Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC 22) for 20 rd per day</td>
     </tr><tr style="text-align:center">
