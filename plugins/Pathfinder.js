@@ -72,7 +72,7 @@ function Pathfinder() {
   Pathfinder.combatRules
     (rules, Pathfinder.ARMORS, Pathfinder.SHIELDS, Pathfinder.WEAPONS);
   Pathfinder.magicRules(rules, Pathfinder.SCHOOLS, Pathfinder.SPELLS);
-  // Feats must be defined before paths
+  // N.B. feats must be defined before classes
   Pathfinder.talentRules
     (rules, Pathfinder.FEATS, Pathfinder.FEATURES, Pathfinder.GOODIES,
      Pathfinder.LANGUAGES, Pathfinder.SKILLS);
@@ -2625,8 +2625,24 @@ Pathfinder.FEATURES = {
   'Gifted Adept':'Section=magic Note="+1 caster level on a chosen spell"',
   'Hedge Magician':
     'Section=skill Note="Reduces the cost to craft magic items by 5%"',
-  'Magical Knack (%casterClass)':
-    'Section=magic Note="+2 %casterClass caster level (%{level} maximum)"',
+  // Hard to generalize Magical Knack, since caster classes aren't collected
+  // separately; the ordering of class and feature definition is also a problem.
+  'Magical Knack (Adept)':
+    'Section=magic Note="+2 Adept caster level (%{level} maximum)"',
+  'Magical Knack (Bard)':
+    'Section=magic Note="+2 Bard caster level (%{level} maximum)"',
+  'Magical Knack (Cleric)':
+    'Section=magic Note="+2 Cleric caster level (%{level} maximum)"',
+  'Magical Knack (Druid)':
+    'Section=magic Note="+2 Druid caster level (%{level} maximum)"',
+  'Magical Knack (Paladin)':
+    'Section=magic Note="+2 Paladin caster level (%{level} maximum)"',
+  'Magical Knack (Ranger)':
+    'Section=magic Note="+2 Ranger caster level (%{level} maximum)"',
+  'Magical Knack (Sorcerer)':
+    'Section=magic Note="+2 Sorcerer caster level (%{level} maximum)"',
+  'Magical Knack (Wizard)':
+    'Section=magic Note="+2 Wizard caster level (%{level} maximum)"',
   'Magical Lineage':
     'Section=magic ' +
     'Note="Reduces the spell level increase for metamagic feats applied to a chosen spell by 1"',
@@ -2683,10 +2699,8 @@ Pathfinder.FEATURES = {
       '"Has a reliable poisons source",' +
       '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
   'Bitter Nobleman':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
-      '"+1 on a choice of Bluff, Sleight Of Hand, or Stealth, and the choice is a class skill"',
+    'Section=skill ' +
+    'Note="+1 on a choice of Bluff, Sleight Of Hand, or Stealth, and the choice is a class skill"',
   // Outlander
   'Exile':'Section=combat Note="+2 Initiative"',
   'Lore Seeker':
@@ -2794,7 +2808,7 @@ Pathfinder.FEATURES = {
       '"+1 Sense Motive",' +
       '"+1 Diplomacy to gather information/Choice of Diplomacy or Sense Motive is a class skill"',
   'Divine Warrior':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="+1 melee weapon damage after casting a divine spell that affects weapons"',
   'Ear For Music':
     'Section=skill ' +
@@ -2869,7 +2883,7 @@ Pathfinder.FEATURES = {
     'Note="+2 caster level to determine the duration of a conjuration spell once per day"',
   'Soul Drinker':
     'Section=combat ' +
-    'Note="Can gain temporary HP equal to a slain foe\'s HD for 1 min once per day"',
+    'Note="Can gain temporary hit points equal to a slain foe\'s HD for 1 min once per day"',
   // The Exchange
   'Gold Finger':
     'Section=skill,skill ' +
@@ -2886,7 +2900,7 @@ Pathfinder.FEATURES = {
   'Tireless':
     'Section=combat,save ' +
     'Note=' +
-      '"+1 Hit Point",' +
+      '"+1 Hit Points",' +
       '"+2 Constitution vs. nonlethal damage from swimming, forced marches, starvation, thirst, and environment"',
   'Upstanding':
     'Section=skill,skill ' +
@@ -2942,7 +2956,7 @@ Pathfinder.FEATURES = {
     'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
   'Impressive Presence':
     'Section=combat ' +
-    'Note="Can take full-round action that inflicts shaken on adjacent foes for 1 rd (save Will DC %{10+level//2+charismaModifier} negates) oncel per day"',
+    'Note="Can take a full-round action that inflicts shaken on adjacent foes for 1 rd (save Will DC %{10+level//2+charismaModifier} negates) once per day"',
   'Influential':
     'Section=magic,skill ' +
     'Note=' +
@@ -2962,12 +2976,12 @@ Pathfinder.FEATURES = {
       '"+1 Language Count",' +
       '"Choice of Knowledge (History) or Linguistics is a class skill/Can learn 1 ancient language"',
   'Attuned To The Ancestors':
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Can become imperceptible to unintelligent undead for %{level//2>?1} rd once per day; attacking an undead ends"',
   'Reverent Wielder':
     'Section=combat,save ' +
     'Note=' +
-      '"+1 CMD vs. disarm, steal, and sunder",' +
+      '"+1 CMD vs. Disarm, Steal, and Sunder",' +
       '"Equipment gains +1 saves"',
   'Secrets Of The Sphinx':
     'Section=skill ' +
@@ -4336,7 +4350,14 @@ Pathfinder.TRAITS = {
   'Focused Mind':'Type=Basic Subtype=Magic',
   'Gifted Adept':'Type=Basic Subtype=Magic',
   'Hedge Magician':'Type=Basic Subtype=Magic',
-  'Magical Knack':'Type=Basic Subtype=Magic',
+  'Magical Knack (Adept)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Bard)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Cleric)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Druid)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Paladin)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Ranger)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Sorcerer)':'Type=Basic Subtype=Magic',
+  'Magical Knack (Wizard)':'Type=Basic Subtype=Magic',
   'Magical Lineage':'Type=Basic Subtype=Magic',
   'Magical Talent (Trait)':'Type=Basic Subtype=Magic',
   'Mathematical Prodigy':'Type=Basic Subtype=Magic',
@@ -5670,8 +5691,17 @@ Pathfinder.identityRules = function(
     rules.choiceRules(rules, 'Race', r, races[r]);
   for(let t in tracks)
     rules.choiceRules(rules, 'Track', t, tracks[t]);
-  for(let t in traits)
-    rules.choiceRules(rules, 'Trait', t, traits[t]);
+  for(let t in traits) {
+    let matchInfo = t.match(/(%(\w+))/);
+    if(matchInfo) {
+      for(let c in rules.getChoices(matchInfo[2] + 's')) {
+        rules.choiceRules
+          (rules, 'Trait', t.replace(matchInfo[1], c), traits[t].replaceAll(matchInfo[1], c));
+      }
+    } else {
+      rules.choiceRules(rules, 'Trait', t, traits[t]);
+    }
+  }
 
   rules.defineEditorElement
     ('faction', 'Faction', 'select-one', 'factions', 'alignment');
@@ -5717,9 +5747,6 @@ Pathfinder.magicRules = function(rules, schools, spells) {
 Pathfinder.talentRules = function(
   rules, feats, features, goodies, languages, skills
 ) {
-  for(let f in features)
-    if(features[f] == null)
-      console.log(f);
   SRD35.talentRules(rules, feats, features, goodies, languages, skills);
   // Override SRD35 intelligence skillPoint adjustment, feat count computation,
   // max ranks per skill, and armor skill check penalty and disable armor swim
@@ -5805,8 +5832,6 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       rules.defineRule('levels.' + name, 'prestige.' + name, '=', null);
     else if(type == 'NPC')
       rules.defineRule('levels.' + name, 'npc.' + name, '=', null);
-    if(attrs.includes('SpellSlots'))
-      rules.addChoice('casterClasss', name, attrs);
   } else if(type == 'Class Feature') {
     SRD35.classFeatureRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),

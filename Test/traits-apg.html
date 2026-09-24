@@ -12,7 +12,7 @@ var attributes = {
   "feats.Acrobatic":1, "feats.Sickening Critical":1, "feats.Skill Focus (Acrobatics)":1, 
   "gender":"Male", "hitPoints":10, "intelligence":14, "languages.Aklo":1, "languages.Elven":1, 
   "levels.Sorcerer":1, "name":"Traits-Apg", 
-  "notes":"* Bitter Nobleman: Stealth is a class skill\n* Child Of Nature: Survival is a class skill\n* Child Of The Temple: Knowledge (Nobility) is a class skill\n* Devotee Of The Green: Knowledge (Geography) is a class skill\n* Divine Courtesan: Diplomacy is a class skill\n* Ear For Music: Perform (String) is a class skill\n* Guardian Of The Forge: Knowledge (History) is a class skill\n* Magical Knack: +2 sorcerer caster level\n* Mathematical Prodigy: Knowledge (Engineering) is a class skill\n* Militia Veteran: Ride is a class skill; +1 Ride skill\n* Savanna Child: Handle Animal is a class skill; +1 Handle Animal skill\n* Scholar Of Ruins: Knowledge (Dungeoneering) is a class skill\n* Scholar Of The Great Beyond: Knowledge (Planes) is a class skill\n* Vagabond Child: Disable Device is a class skill/+1 Disable Device skill\n* Well-Informed: Knowledge (Local) is a class skill\n* Wisdom In The Flesh: Climb is a class skill; +2 Climb skill (Wisdom instead of Strength)\n* World Traveler: Sense Motive is a class skill; +1 Sense Motive skill\n", "npc.Expert":3, "race":"Human", 
+  "notes":"* Bitter Nobleman: Stealth is a class skill\n* Child Of Nature: Survival is a class skill\n* Child Of The Temple: Knowledge (Nobility) is a class skill\n* Devotee Of The Green: Knowledge (Geography) is a class skill\n* Divine Courtesan: Diplomacy is a class skill\n* Ear For Music: +1 Perform (String) skill\n* Guardian Of The Forge: Knowledge (History) is a class skill\n* Mathematical Prodigy: Knowledge (Engineering) is a class skill\n* Militia Veteran: Ride is a class skill; +1 Ride skill\n* Savanna Child: Handle Animal is a class skill; +1 Handle Animal skill\n* Scholar Of Ruins: Knowledge (Dungeoneering) is a class skill\n* Scholar Of The Great Beyond: Knowledge (Planes) is a class skill\n* Vagabond Child: Disable Device is a class skill/+1 Disable Device skill\n* Well-Informed: Knowledge (Local) is a class skill\n* Wisdom In The Flesh: Climb is a class skill; +2 Climb skill (Wisdom instead of Strength)\n* World Traveler: Sense Motive is a class skill; +1 Sense Motive skill\n", "npc.Expert":3, "race":"Human", 
   "selectableFeatures.Sorcerer - Bloodline Draconic (Silver)":1, "shield":"None", "skills.Acrobatics":1, "skills.Appraise":1, 
   "skills.Bluff":1, "skills.Climb":1, "skills.Diplomacy":1, "skills.Disable Device":1, 
   "skills.Escape Artist":1, "skills.Handle Animal":1, "skills.Heal":1, "skills.Intimidate":1, 
@@ -39,7 +39,7 @@ var attributes = {
   "traits.Freedom Fighter (Halfling)":1, "traits.Gifted Adept":1, "traits.Goldsniffer":1, 
   "traits.Guardian Of The Forge":1, "traits.Hedge Magician":1, "traits.Highlander":1, 
   "traits.History Of Heresy":1, "traits.Indomitable Faith":1, "traits.Killer":1, "traits.Log Roller":1, 
-  "traits.Lore Seeker":1, "traits.Magic Is Life":1, "traits.Magical Knack":1, 
+  "traits.Lore Seeker":1, "traits.Magic Is Life":1, "traits.Magical Knack (Sorcerer)":1, 
   "traits.Magical Lineage":1, "traits.Magical Talent (Trait)":1, "traits.Mathematical Prodigy":1, 
   "traits.Militia Veteran":1, "traits.Missionary":1, "traits.Natural-Born Leader":1, "traits.Outcast":1, 
   "traits.Patient Optimist":1, "traits.Poverty-Stricken":1, "traits.Rapscallion":1, "traits.Reactionary":1, 
@@ -108,7 +108,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Sickening Critical; Skill Focus (Acrobatics)</td>
-        <td><b>Traits</b>: Adopted; Anatomist; Animal Friend; Apothecary; Armor Expert; Birthmark; Bitter Nobleman; Brute; Bullied; Bully; Canter; Caretaker; Charming; Child Of Nature; Child Of The Streets; Child Of The Temple; Classically Schooled; Courageous; Dangerously Curious; Deft Dodger; Demon Hunter; Desert Child; Devotee Of The Green; Dirty Fighter; Divine Courtesan; Divine Warrior; Ear For Music; Ease Of Faith; Elven Reflexes; Exile; Eyes And Ears Of The City; Failed Apprentice; Fast-Talker; Fencer; Flame Of The Dawnflower; Focused Mind; Forlorn; Fortified Drinker; Freedom Fighter (Halfling); Gifted Adept; Goldsniffer; Guardian Of The Forge; Hedge Magician; Highlander; History Of Heresy; Indomitable Faith; Killer; Log Roller; Lore Seeker; Magic Is Life; Magical Knack; Magical Lineage; Magical Talent (Trait); Mathematical Prodigy; Militia Veteran; Missionary; Natural-Born Leader; Outcast; Patient Optimist; Poverty-Stricken; Rapscallion; Reactionary; Resilient; Rich Parents; River Rat; Sacred Conduit; Sacred Touch; Savanna Child; Scholar Of Ruins; Scholar Of The Great Beyond; Sheriff; Skeptic; Starchild; Suspicious; Tavern Owner; Tunnel Fighter; Undead Slayer; Vagabond Child; Veteran Of Battle; Warrior Of Old; Well-Informed; Wisdom In The Flesh; World Traveler (Trait)</td>
+        <td><b>Traits</b>: Adopted; Anatomist; Animal Friend; Apothecary; Armor Expert; Birthmark; Bitter Nobleman; Brute; Bullied; Bully; Canter; Caretaker; Charming; Child Of Nature; Child Of The Streets; Child Of The Temple; Classically Schooled; Courageous; Dangerously Curious; Deft Dodger; Demon Hunter; Desert Child; Devotee Of The Green; Dirty Fighter; Divine Courtesan; Divine Warrior; Ear For Music; Ease Of Faith; Elven Reflexes; Exile; Eyes And Ears Of The City; Failed Apprentice; Fast-Talker; Fencer; Flame Of The Dawnflower; Focused Mind; Forlorn; Fortified Drinker; Freedom Fighter (Halfling); Gifted Adept; Goldsniffer; Guardian Of The Forge; Hedge Magician; Highlander; History Of Heresy; Indomitable Faith; Killer; Log Roller; Lore Seeker; Magic Is Life; Magical Knack (Sorcerer); Magical Lineage; Magical Talent (Trait); Mathematical Prodigy; Militia Veteran; Missionary; Natural-Born Leader; Outcast; Patient Optimist; Poverty-Stricken; Rapscallion; Reactionary; Resilient; Rich Parents; River Rat; Sacred Conduit; Sacred Touch; Savanna Child; Scholar Of Ruins; Scholar Of The Great Beyond; Sheriff; Skeptic; Starchild; Suspicious; Tavern Owner; Tunnel Fighter; Undead Slayer; Vagabond Child; Veteran Of Battle; Warrior Of Old; Well-Informed; Wisdom In The Flesh; World Traveler (Trait)</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
         <td><b>Expert Features</b>: Armor Proficiency (Light); Expert Skills; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Sorcerer Features</b>: Bloodline Draconic (Silver); Bloodline; Cantrips; Claws; Eschew Materials; Weapon Proficiency (Simple Weapons)</td>
@@ -161,7 +161,7 @@ var attributes = {
         <td>Sense Motive: (wis) 1 (+9)</td>
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha) 1 (+6)</td>
-        <td>Knowledge (Local): (int) 1 (+11)</td>
+        <td>Knowledge (Local): (int) 1 (+10)</td>
         <td>Sleight Of Hand: (dex) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Disable Device: (dex) 1 (+6)</td>
@@ -185,7 +185,7 @@ var attributes = {
         <td>Use Magic Device: (cha) 1 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Knowledge (Arcana): (int) 1 (+8)</td>
-        <td>Perform (String): (cha) 1 (+5)</td>
+        <td>Perform (String): (cha;cc) 1 (+3)</td>
         <td></td>
       </tr></table>
 </td>
@@ -201,8 +201,6 @@ var attributes = {
         <td><i>Apothecary: +1 Knowledge (Local)/Knowledge (Local) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Armor Expert: Reduces armor skill check penalty by 1</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Bitter Nobleman: +1 Knowledge (Local)/Knowledge (Local) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bloodline Draconic: Perception is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -262,7 +260,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Goodies Knowledge (Planes) Class Skill: Knowledge (Planes) is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Goodies Perform (String) Class Skill: Perform (String) is a class skill</i></td>
+        <td><i>Goodies Perform (String): +1 Perform (String)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Goodies Ride Class Skill: Ride is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -438,6 +436,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Dirty Fighter: Inflicts +1 HP when flanking</td>
       </tr><tr style="text-align:center">
+        <td>Divine Warrior: +1 melee weapon damage after casting a divine spell that affects weapons</td>
+      </tr><tr style="text-align:center">
         <td>Fencer: +1 AOO attacks with blades</td>
       </tr><tr style="text-align:center">
         <td>Flame Of The Dawnflower: Critical hits with a scimitar inflict +2 HP fire</td>
@@ -546,15 +546,13 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Charisma Sorcerer Spell Slot Bonus: Spell level S1</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Goodies Sorcerer Caster Level: +2 Sorcerer caster level</i></td>
+      <td><i>Magical Knack (Sorcerer): +2 Sorcerer caster level (4 maximum)</i></td>
     </tr><tr style="text-align:center">
       <td>Bloodline Draconic: Spells with the cold descriptor inflict +1 HP per die</td>
     </tr><tr style="text-align:center">
       <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Charming: +1 language-dependent spell DC targeting attracted creatures</td>
-    </tr><tr style="text-align:center">
-      <td>Divine Warrior: +1 melee weapon damage after casting a divine spell that affects weapons</td>
     </tr><tr style="text-align:center">
       <td>Eschew Materials: Can ignore inexpensive material component requirements when casting spells</td>
     </tr><tr style="text-align:center">
@@ -585,9 +583,8 @@ var attributes = {
 * Child Of The Temple: Knowledge (Nobility) is a class skill<br/>
 * Devotee Of The Green: Knowledge (Geography) is a class skill<br/>
 * Divine Courtesan: Diplomacy is a class skill<br/>
-* Ear For Music: Perform (String) is a class skill<br/>
+* Ear For Music: +1 Perform (String) skill<br/>
 * Guardian Of The Forge: Knowledge (History) is a class skill<br/>
-* Magical Knack: +2 sorcerer caster level<br/>
 * Mathematical Prodigy: Knowledge (Engineering) is a class skill<br/>
 * Militia Veteran: Ride is a class skill; +1 Ride skill<br/>
 * Savanna Child: Handle Animal is a class skill; +1 Handle Animal skill<br/>
