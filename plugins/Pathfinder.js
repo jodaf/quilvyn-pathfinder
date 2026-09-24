@@ -2538,7 +2538,7 @@ Pathfinder.FEATURES = {
   // Stunning Fist as above
   'Throw Anything':
     'Section=combat ' +
-    'Note="Suffers no penalty for using improvised ranged weapons, and gains +1 attack with thrown splash weapons"',
+    'Note="Suffers no penalty for using improvised ranged weapons, and gains +1 attacks with thrown splash weapons"',
   'Tiring Critical':
     'Section=combat Note="Critical hits can also inflict fatigued"',
   'Toughness':SRD35.FEATURES.Toughness,
@@ -2567,6 +2567,504 @@ Pathfinder.FEATURES = {
   'Wind Stance':
     'Section=combat ' +
     'Note="Gains 20% concealment vs. ranged attacks for 1 rd after moving more than 5\' in a turn"',
+
+  // Traits
+
+  // Combat
+  'Anatomist':'Section=combat Note="+1 to confirm crit threats"',
+  'Armor Expert':'Section=skill Note="Reduces armor skill check penalty by 1"',
+  'Bullied':'Section=combat Note="+1 Unarmed Strike AOO attacks"',
+  'Courageous':'Section=save Note="+2 vs. fear"',
+  'Deft Dodger':'Section=save Note="+1 Reflex"',
+  'Dirty Fighter':'Section=combat Note="Inflicts +1 HP when flanking"',
+  'Fencer':'Section=combat Note="+1 AOO attacks with blades"',
+  'Killer':
+    'Section=combat ' +
+    'Note="Inflicts extra damage equal to the weapon damage multiplier on critical hits"',
+  'Reactionary':'Section=combat Note="+2 Initiative"',
+  'Resilient':'Section=save Note="+1 Fortitude"',
+
+  // Faith
+  'Birthmark':'Section=save Note="+2 vs. charm and compulsion"',
+  'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
+  'Child Of The Temple':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nobility)/+1 Knowledge (Religion)",' +
+      '"Choice of Knowledge (Nobility) or Knowledge (Religion) is a class skill"',
+  'Devotee Of The Green':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
+      '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
+  'Ease Of Faith':
+    'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
+  'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
+  'Indomitable Faith':'Section=save Note="+1 Will"',
+  'Sacred Conduit':'Section=magic Note="+1 Channel Energy DC"',
+  'Sacred Touch':'Section=magic Note="Touch automatically stabilizes"',
+  'Scholar Of The Great Beyond':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (History)/+1 Knowledge (Planes)",' +
+      '"Choice of Knowledge (History) or Knowledge (Planes) is a class skill"',
+
+  // Magic
+  'Classically Schooled':
+    'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
+  'Dangerously Curious':
+    'Section=skill ' +
+    'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
+  'Focused Mind':'Section=magic Note="+2 concentration checks"',
+  'Gifted Adept':'Section=magic Note="+1 caster level on a chosen spell"',
+  'Hedge Magician':
+    'Section=skill Note="Reduces the cost to craft magic items by 5%"',
+  'Magical Knack (%casterClass)':
+    'Section=magic Note="+2 %casterClass caster level (%{level} maximum)"',
+  'Magical Lineage':
+    'Section=magic ' +
+    'Note="Reduces the spell level increase for metamagic feats applied to a chosen spell by 1"',
+  'Magical Talent (Trait)':
+    'Section=magic Note="Can use a chosen Talent0 spell once per day"',
+  'Mathematical Prodigy':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Arcana)/+1 Knowledge (Engineering)",' +
+      '"Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill"',
+  'Skeptic':'Section=save Note="+2 vs. illusions"',
+
+  // Social
+  'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
+  'Bully':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
+  'Canter':
+    'Section=skill ' +
+    'Note="+5 Sense Motive to intercept secret messages and to ally Bluff to deliver a secret message to self"',
+  'Charming':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 language-dependent spell DC targeting attracted creatures",' +
+      '"+1 Bluff and Diplomacy targeting attracted creatures"',
+  'Child Of The Streets':
+    'Section=skill Note="+1 Sleight Of Hand/Sleight Of Hand is a class skill"',
+  'Fast-Talker':'Section=skill Note="+1 Bluff/Bluff is a class skill"',
+  'Natural-Born Leader':
+    'Section=feature,save ' +
+    'Note=' +
+      '"+1 Leadership score",' +
+      '"+1 followers\' Will vs. mind-altering effects"',
+  'Poverty-Stricken':
+    'Section=skill Note="+1 Survival/Survival is a class skill"',
+  'Rich Parents':'Section=feature Note="Starts with 900 GP"',
+  'Suspicious':
+    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
+
+  // Campaign
+  // Favored Son/Daughter
+  'Sheriff':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
+      '"Can use a legal favor or gain +10 on Bluff, Diplomacy, or Intimidate targeting a local once per session"',
+  'Tavern Owner':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Receives free lodging and 10% extra from treasure sale",' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
+  // Black Sheep
+  'Apothecary':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Has a reliable poisons source",' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
+  'Bitter Nobleman':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
+      '"+1 on a choice of Bluff, Sleight Of Hand, or Stealth, and the choice is a class skill"',
+  // Outlander
+  'Exile':'Section=combat Note="+2 Initiative"',
+  'Lore Seeker':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 caster level and save DC on chosen 3 arcane spells",' +
+      '"+1 Knowledge (Arcana)/Knowledge (Arcana) is a class skill"',
+  'Missionary':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 caster level and save DC on 3 divine spells",' +
+      '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
+
+  // Race
+  // Dwarf
+  'Goldsniffer':
+    'Section=skill Note="+2 Perception related to metals, jewels, and gems"',
+  'Tunnel Fighter':
+    'Section=combat ' +
+    'Note="When underground, gains +2 Initiative and critical hits inflict extra damage equal to the weapon damage multiplier"',
+  // Elf
+  'Forlorn':'Section=save Note="+1 Fortitude"',
+  'Warrior Of Old':'Section=combat Note="+2 Initiative"',
+  // Gnome
+  'Animal Friend':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+1 Will when within 30\' of an unhostile animal",' +
+      '"Handle Animal is a class skill"',
+  'Rapscallion':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 Initiative",' +
+      '"+1 Escape Artist"',
+  // Half-Elf
+  'Elven Reflexes':'Section=combat Note="+2 Initiative"',
+  'Failed Apprentice':'Section=save Note="+1 vs. arcane spells"',
+  // Half-Orc
+  'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
+  'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
+  // Halfling
+  'Freedom Fighter (Halfling)':
+    'Section=combat,skill,skill ' +
+    'Note=' +
+      '"+1 attacks during an escape",' +
+      '"Escape Artist is a class skill",' +
+      '"+1 on all skills during an escape"',
+  'Well-Informed':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)",' +
+      '"+1 Diplomacy to gather information/Choice of Diplomacy or Knowledge (Local) is a class skill"',
+  // Human
+  'Scholar Of Ruins':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)",' +
+      '"Choice of Knowledge (Dungeoneering) or Knowledge (Geography) is a class skill"',
+  'World Traveler (Trait)':
+    'Section=skill ' +
+    'Note="+1 on a choice of Diplomacy, Knowledge (Local), or Sense Motive, and the choice is a class skill"',
+
+  // Regional
+  'Desert Child':
+    'Section=save Note="+4 to resist hot conditions and +1 vs. fire effects"',
+  'Highlander':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Stealth/Stealth is a class skill",' +
+      '"+1 Stealth in hilly and rocky areas"',
+  'Log Roller':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 CMB vs. Trip",' +
+      '"+1 Acrobatics"',
+  'Militia Veteran':
+    'Section=skill ' +
+    'Note="+1 on a choice of Profession (Soldier), Ride, or Survival, and the choice is a class skill"',
+  'River Rat':
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 damage with daggers",' +
+      '"+1 Swim/Swim is a class skill"',
+  'Savanna Child':
+    'Section=skill ' +
+    'Note="+1 on a choice of Handle Animal, Knowledge (Nature), or Ride, and the choice is a class skill"',
+  'Vagabond Child':
+    'Section=skill ' +
+    'Note="+1 on a choice of Disable Device, Escape Artist, or Sleight Of Hand, and the choice is a class skill"',
+
+  // Religion
+  'Child Of Nature':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nature)",' +
+      '"+1 Survival to find food and water/Choice of Knowledge (Nature) or Survival is a class skill"',
+  'Demon Hunter':
+    'Section=skill,save ' +
+    'Note=' +
+      '"+3 Knowledge (Planes) regarding demons",' +
+      '"+2 Will vs. demonic mental spells and effects"',
+  'Divine Courtesan':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Sense Motive",' +
+      '"+1 Diplomacy to gather information/Choice of Diplomacy or Sense Motive is a class skill"',
+  'Divine Warrior':
+    'Section=magic ' +
+    'Note="+1 melee weapon damage after casting a divine spell that affects weapons"',
+  'Ear For Music':
+    'Section=skill ' +
+    'Note="+1 on a choice of Perform/+2 Knowledge (Local) regarding art and music"',
+  'Eyes And Ears Of The City':
+    'Section=skill Note="+1 Perception/Perception is a class skill"',
+  'Flame Of The Dawnflower':
+    'Section=combat Note="Critical hits with a scimitar inflict +2 HP fire"',
+  'Fortified Drinker':
+    'Section=save Note="Drinking alcohol gives +2 vs. mental effects for 1 hr"',
+  'Guardian Of The Forge':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
+      '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
+  'Magic Is Life':
+    'Section=save ' +
+    'Note="+2 vs. death effects and stabilizes automatically when enspelled"',
+  'Patient Optimist':
+    'Section=skill ' +
+    'Note="+2 Diplomacy with unfriendly or hostile creatures, and may retry once with them"',
+  'Starchild':
+    'Section=skill ' +
+    'Note="+4 Survival to avoid becoming lost/Always knows which way is north"',
+  'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
+  'Veteran Of Battle':
+    'Section=combat,combat ' +
+    'Note=' +
+      '"+1 Initiative",' +
+      '"Can draw a weapon as a free action during a surprise rd"',
+  'Wisdom In The Flesh':
+    'Section=skill ' +
+    'Note="Can use Wisdom instead of Strength, Constitution, or Dexterity for a chosen skill, and the choice is a class skill"',
+
+  // Faction Traits - PS Roleplaying Guild Guide (v10)
+  // The Concordance
+  'Balanced Offensive':
+    'Section=combat ' +
+    'Note="R30\' Ranged touch inflicts 1d6+%{level//2} HP of a choice of nonlethal (plus -2 attacks for 1 rd), acid, fire, cold, or electricity %{level>4?1+level//5+\' times\':\'once\'} per day"',
+  'Beastspeaker':
+    'Section=skill ' +
+    'Note="+1 Wild Empathy, and suffers no penalty when using Wild Empathy with elemental magical beasts"',
+  'Natural Negotiator':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Language Count",' +
+      '"Choice of Diplomacy or Handle Animal is a class skill"',
+  'Planar Voyager':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 Initiative when not on the Material Plane",' +
+      '"+1 saves when not on the Material Plane"',
+  'Scholar Of Balance':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Nature)/+1 Knowledge (Planes)",' +
+      '"Choice of Knowledge (Nature) or Knowledge (Planes) is a class skill"',
+  // Dark Archive
+  'Arcane Archivist':
+    'Section=skill ' +
+    'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
+  "Devil's Mark":
+    'Section=skill ' +
+    'Note="+2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders"',
+  'Librarian':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Linguistics/+1 Profession (Librarian)",' +
+      '"Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus once per day"',
+  'Master Of Pentacles':
+    'Section=magic ' +
+    'Note="+2 caster level to determine the duration of a conjuration spell once per day"',
+  'Soul Drinker':
+    'Section=combat ' +
+    'Note="Can gain temporary HP equal to a slain foe\'s HD for 1 min once per day"',
+  // The Exchange
+  'Gold Finger':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Disable Device/+1 Sleight Of Hand",' +
+      '"Choice of Disable Device or Sleight Of Hand is a class skill"',
+  'Greasy Palm':
+    'Section=feature Note="Can bribe NPCs for 10% less than typical"',
+  'Smuggler':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"Sleight Of Hand is a class skill",' +
+      '"+3 Sleight Of Hand to hide a object"',
+  'Tireless':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 Hit Point",' +
+      '"+2 Constitution vs. nonlethal damage from swimming, forced marches, starvation, thirst, and environment"',
+  'Upstanding':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Diplomacy/+1 Sense Motive",' +
+      '"Choice of Diplomacy or Sense Motive is a class skill"',
+  // Grand Lodge
+  'Insider Knowledge':
+    'Section=skill ' +
+    'Note="+1 choice of Diplomacy or Knowledge (Local), and the choice is a class skill"',
+  'Loyalty':'Section=save Note="+1 vs. enchantment"',
+  'Observant':
+    'Section=skill ' +
+    'Note="+1 choice of Perception or Sense Motive, and the choice is a class skill"',
+  'Proper Training':
+    'Section=skill ' +
+    'Note="+1 choice of Knowledge (Geography) or Knowledge (History), and the choice is a class skill"',
+  'Teaching Mistake':
+    'Section=save ' +
+    'Note="Gains +1 on the next save after a natural 1 save roll once per scenario"',
+  // Liberty's Edge
+  "Captain's Blade":
+    'Section=skill ' +
+    'Note="+1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill"',
+  "Freedom Fighter (Liberty's Edge)":
+    'Section=combat,skill ' +
+    'Note=' +
+      '"+1 attacks during a surprise rd",' +
+      '"+1 Stealth"',
+  'Indomitable':'Section=save Note="+1 vs. enchantment"',
+  'Rousing Oratory':
+    'Section=skill ' +
+    'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill, and a successful DC 15 or 25 check of the chosen skill gives allies within 60\' +1 or +2 vs. fear for 5 min once per day"',
+  'Whistleblower':
+    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
+  // Silver Crusade
+  'A Sure Thing':
+    'Section=combat Note="+2 attack vs. an evil creature once per day"',
+  'Beneficent Touch':
+    'Section=magic Note="Can reroll healing spell 1s once per day"',
+  'Comparative Religion':
+    'Section=skill ' +
+    'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
+  'Force For Good':'Section=magic Note="+1 caster level on Good spells"',
+  'Unorthodox Strategy':
+    'Section=skill Note="+2 Acrobatics to traverse threatened squares"',
+  // Sovereign Court
+  'Expert Duelist':
+    'Section=combat ' +
+    'Note="+1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class"',
+  'Fashionable':
+    'Section=skill ' +
+    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
+  'Impressive Presence':
+    'Section=combat ' +
+    'Note="Can take full-round action that inflicts shaken on adjacent foes for 1 rd (save Will DC %{10+level//2+charismaModifier} negates) oncel per day"',
+  'Influential':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 DC on a language-dependent spell once per day",' +
+      '"+3 Diplomacy to make requests"',
+  'Unflappable':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+1 vs. fear",' +
+      '"+3 DC on foe attempts to demoralize self using Intimidate"',
+
+  // Faction Traits - PS Roleplaying Guild Guide (v9)
+  // Scarab Sages
+  'Ancient Historian':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Language Count",' +
+      '"Choice of Knowledge (History) or Linguistics is a class skill/Can learn 1 ancient language"',
+  'Attuned To The Ancestors':
+    'Section=magic ' +
+    'Note="Can become imperceptible to unintelligent undead for %{level//2>?1} rd once per day; attacking an undead ends"',
+  'Reverent Wielder':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+1 CMD vs. disarm, steal, and sunder",' +
+      '"Equipment gains +1 saves"',
+  'Secrets Of The Sphinx':
+    'Section=skill ' +
+    'Note="+2 Knowledge check once per day/Choice of Knowledge is a class skill"',
+  'Tomb Raider':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Dungeoneering)/+1 Perception",' +
+      '"Choice of Knowledge (Dungeoneering) or Perception is a class skill"',
+
+  // Faction Traits - Guide to PS Organized Play (v5)
+  // Andoran
+  // Captain's Blade as above
+  'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
+  // Freedom Fighter as above
+  "Hunter's Eye":
+    'Section=combat ' +
+    'Note="Has Proficiency with a choice of longbow or shortbow and suffers no penalty for the 2nd range increment with it"',
+  // Indomitable as above
+  // Cheliax
+  // Devil's Mark as above
+  'Fiendish Presence':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Diplomacy/+1 Sense Motive",' +
+      '"Choice of Diplomacy or Sense Motive is a class skill"',
+  'Fires Of Hell':
+    'Section=combat ' +
+    'Note="Weapon emits light in a 20\' radius and inflicts +1 HP fire for %{charismaModifier} rd once per day"',
+  // Master Of Pentacles as above
+  // Soul Drinker as above
+  // Osirion
+  // Attuned To The Ancestors as above
+  'Dunewalker':
+    'Section=ability,save ' +
+    'Note=' +
+      '"Can move through sand as normal terrain",' +
+      '"+4 Fortitude vs. nonlethal damage from heat"',
+  'Mummy-Touched':'Section=save Note="+2 vs. curses and diseases"',
+  // Secrets Of The Sphinx as above
+  // Tomb Raider as above
+  // Qadira
+  'Dervish':
+    'Section=combat Note="+1 dodge bonus to Armor Class vs. movement AOO"',
+  'Desert Shadow':
+    'Section=skill ' +
+    'Note="Suffers no penalty from using Stealth at full Speed in desert terrain"',
+  'Eastern Mysteries':'Section=magic Note="+2 spell DC once per day"',
+  // Gold Finger as above
+  'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
+  // Sczarni
+  'Bad Reputation':
+    'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
+  // Greasy Palm as above
+  'I Know A Guy':
+    'Section=skill,skill ' +
+    'Note=' +
+      '"+1 Knowledge (Local)",' +
+      '"+2 Diplomacy to gather information"',
+  'Shiv':
+    'Section=combat ' +
+    'Note="One-handed piercing and slashing weapons inflict +1 HP during the surprise rd"',
+  'Trouper':
+    'Section=save,skill ' +
+    'Note=' +
+      '"+1 vs. abilities the rely on the chosen Perform skill",' +
+      '"+1 choice of Perform"',
+  // Taldor
+  // Expert Duelist as above
+  // Fashionable as above
+  // Impressive Presence as above
+  'Performance Artist':
+    'Section=skill ' +
+    'Note="+1 choice of Perform, and the choice is a class skill"',
+  'Vindictive':
+    'Section=combat ' +
+    'Note="Can inflict +1 HP vs. a successful attacker for 1 min once per day"',
+
+  // Faction Traits - Guide to PS Organized Play (v4)
+  // Lantern Lodge
+  'Meridian Strike':
+    'Section=combat Note="Can reroll 1s on critical hit damage once per day"',
+  'Meticulous Artisan':'Section=skill Note="+1 Craft for Day Job checks"',
+  'Mind Over Matter':'Section=save Note="+1 Will"',
+  'Storyteller':
+    'Section=skill ' +
+    'Note="+%{intelligenceModifier+3>?1} on a choice of Knowledge once per scenario"',
+  'Weapon Style':
+    'Section=combat Note="Proficient with a choice of monk weapon"',
+  // Shadow Lodge
+  'Aid Allies':'Section=combat Note="Aid Another gives allies a +3 bonus"',
+  'Fortified':
+    'Section=combat ' +
+    'Note="Has a 20% chance to negate a critical hit or Sneak Attack once per day"',
+  'Medic':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"+1 caster level on <i>Remove</i> spells",' +
+      '"+2 Heal with diseases and poisons"',
+  'Shadow Diplomat':
+    'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
+  'Watchdog':
+    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
 
   // Shared with SRD35
   'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
@@ -2615,422 +3113,7 @@ Pathfinder.FEATURES = {
   'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
 
   // New features
-  'A Sure Thing':'Section=combat Note="+2 attack vs. evil creature 1/dy"',
-  'Adopted':'Section=feature Note="Has one trait from adoptive family\'s race"',
-  'Aid Allies':'Section=combat Note="+1 on aid another actions"',
-  'Anatomist':'Section=combat Note="+1 crit confirm"',
-  'Ancient Historian':
-    'Section=skill ' +
-    'Note="+1 Choice of Knowledge (History) or Linguistics/Choice of Knowledge (History) or Linguistics is a class skill/May learn 1 ancient language"',
-  'Animal Friend':
-    'Section=save,skill ' +
-    'Note=' +
-      '"+1 Will when within 30\' of an unhostile animal",' +
-      '"Handle Animal is a class skill"',
-  'Apothecary':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"Has reliable poisons source",' +
-      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
-  'Arcane Archivist':
-    'Section=skill ' +
-    'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Armor Expert':'Section=skill Note="Reduces armor skill check penalty by 1"',
-  'Attuned To The Ancestors':
-    'Section=magic ' +
-    'Note="May become imperceptible to unintelligent undead for %{level//2>?1} rd 1/dy"',
-  'Bad Reputation':
-    'Section=skill Note="+2 Intimidate/Intimidate is a class skill"',
-  'Balanced Offensive':
-    'Section=combat ' +
-    'Note="R30\' Ranged touch inflicts 1d6+%{level//2} HP choice of nonlethal (plus -2 attack for 1 rd), acid, fire, cold, or electricity %{1+level//5}/dy"',
-  'Beastspeaker':
-    'Section=skill ' +
-    'Note="+1 Diplomacy (animals); no penalty w/elemental animals"',
-  'Beneficent Touch':'Section=magic Note="May reroll healing spell 1s 1/dy"',
-  'Birthmark':'Section=save Note="+2 vs. charm and compulsion"',
-  'Bitter Nobleman':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
-      '"+1 choice of Bluff, Sleight Of Hand, or Stealth/Choice of Bluff, Sleight Of Hand, or Stealth is a class skill"',
-  'Brute':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
-  'Bullied':'Section=combat Note="+1 unarmed AOO attack"',
-  'Bully':'Section=skill Note="+1 Intimidate/Intimidate is a class skill"',
-  'Canter':
-    'Section=skill ' +
-    'Note="+5 Sense Motive (intercept secret message)/+5 ally Bluff (deliver secret message to self)"',
-  "Captain's Blade":
-    'Section=skill ' +
-    'Note="+1 Acrobatics and Climb when on a boat/Choice of Acrobatics or Climb is a class skill"',
-  'Caretaker':'Section=skill Note="+1 Heal/Heal is a class skill"',
-  'Charming':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+1 spell DC w/attracted creatures",' +
-      '"+1 Bluff and Diplomacy w/attracted creatures"',
-  'Child Of Nature':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Nature)",' +
-      '"+1 Survival (finding food and water)/Choice of Knowledge (Nature) or Survival is a class skill"',
-  'Child Of The Streets':
-    'Section=skill Note="+1 Sleight Of Hand/Sleight Of Hand is a class skill"',
-  'Child Of The Temple':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Nobility)/+1 Knowledge (Religion)",' +
-      '"Choice of Knowledge (Nobility) or Knowledge (Religion) is a class skill"',
-  'Classically Schooled':
-    'Section=skill Note="+1 Spellcraft/Spellcraft is a class skill"',
-  'Comparative Religion':
-    'Section=skill ' +
-    'Note="+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
-  'Courageous':'Section=save Note="+2 vs. fear"',
-  'Dangerously Curious':
-    'Section=skill ' +
-    'Note="+1 Use Magic Device/Use Magic Device is a class skill"',
-  'Deft Dodger':'Section=save Note="+1 Reflex"',
-  'Demon Hunter':
-    'Section=skill,save ' +
-    'Note=' +
-      '"+3 Knowledge (Planes) (demons)",' +
-      '"+2 Will vs. demonic mental spells and effects"',
-  'Dervish':'Section=combat Note="+1 AC vs. movement AOO"',
-  'Desert Child':'Section=save Note="+4 heat stamina, +1 vs. fire effects"',
-  'Desert Shadow':
-    'Section=skill Note="May use Stealth at full Speed w/out penalty"',
-  "Devil's Mark":
-    'Section=skill ' +
-    'Note="+2 Bluff, Diplomacy, Intimidate, and Sense Motive with evil outsiders"',
-  'Devotee Of The Green':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Geography)/+1 Knowledge (Nature)",' +
-      '"Choice of Knowledge (Geography) or Knowledge (Nature) is a class skill"',
-  'Dirty Fighter':'Section=combat Note="+1 damage when flanking"',
-  'Divine Courtesan':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Sense Motive",' +
-      '"+1 Diplomacy (gather information)/Choice of Diplomacy or Sense Motive is a class skill"',
-  'Divine Warrior':'Section=magic Note="+1 damage w/enspelled melee weapons"',
-  'Dunewalker':
-    'Section=ability,save ' +
-    'Note=' +
-      '"May move normally through sand",' +
-      '"+4 Fortitude vs. heat"',
-  'Ear For Music':
-    'Section=skill ' +
-    'Note="+1 choice of Perform/+2 Knowledge (Local) (art and music)"',
-  'Ease Of Faith':
-    'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
-  'Eastern Mysteries':'Section=magic Note="+2 spell DC 1/dy"',
-  'Elven Reflexes':'Section=combat Note="+2 Initiative"',
-  'Exile':'Section=combat Note="+2 Initiative"',
-  'Expert Duelist':
-    'Section=combat ' +
-    'Note="+1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class"',
-  'Explorer':'Section=skill Note="+1 Survival/Survival is a class skill"',
-  'Eyes And Ears Of The City':
-    'Section=skill Note="+1 Perception/Perception is a class skill"',
-  'Failed Apprentice':'Section=save Note="+1 vs. arcane spells"',
-  'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
-  'Fashionable':
-    'Section=skill ' +
-    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
-  'Fast-Talker':'Section=skill Note="+1 Bluff/Bluff is a class skill"',
-  'Fencer':'Section=combat Note="+1 attack on AOO with blades"',
-  'Fiendish Presence':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Diplomacy/+1 Sense Motive",' +
-      '"Choice of Diplomacy or Sense Motive is a class skill"',
-  'Fires Of Hell':
-    'Section=combat Note="Flaming blade inflicts +1 HP fire for %{charismaModifier} rd 1/dy"',
-  'Flame Of The Dawnflower':
-    'Section=combat Note="Crit w/scimitar inflicts +2 HP fire"',
-  'Focused Mind':'Section=magic Note="+2 concentration checks"',
-  'Force For Good':'Section=magic Note="+1 caster level on Good spells"',
-  'Forlorn':'Section=save Note="+1 Fortitude"',
-  'Fortified Drinker':
-    'Section=save Note="Drinking alcohol gives +2 vs. mental effects for 1 hr"',
-  'Fortified':
-    'Section=combat ' +
-    'Note="May gain 20% chance to negate critical hit or Sneak Attack 1/dy"',
-  'Freedom Fighter (Halfling)':
-    'Section=combat,skill,skill ' +
-    'Note=' +
-      '"+1 attack during escape",' +
-      '"Escape Artist is a class skill",' +
-      '"+1 skills during escape"',
-  "Freedom Fighter (Liberty's Edge)":
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+1 attack during surprise rd",' +
-      '"+1 Stealth"',
-  'Gifted Adept':'Section=magic Note="+1 caster level on chosen spell"',
-  'Gold Finger':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Disable Device/+1 Sleight Of Hand",' +
-      '"Choice of Disable Device or Sleight Of Hand is a class skill"',
-  'Goldsniffer':'Section=skill Note="+2 Perception (metals, jewels, gems)"',
-  'Greasy Palm':'Section=feature Note="10% discount on bribes"',
-  'Guardian Of The Forge':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Engineering)/+1 Knowledge (History)",' +
-      '"Choice of Knowledge (Engineering) or Knowledge (History) is a class skill"',
-  'Hedge Magician':
-    'Section=skill Note="Cost to craft magic items is reduced by 5%"',
-  'Highlander':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Stealth/Stealth is a class skill",' +
-      '"+1 Stealth (hilly and rocky areas)"',
-  'History Of Heresy':'Section=save Note="+1 vs. divine spells"',
-  'Horse Lord (Trait)':'Section=skill Note="+2 Ride/Ride is a class skill"',
-  "Hunter's Eye":
-    'Section=combat ' +
-    'Note="Has Proficiency and suffers no penalty for 2nd range increment w/choice of longbow or shortbow"',
-  'I Know A Guy':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Local)",' +
-      '"+2 Diplomacy (gather information)"',
-  'Impressive Presence':
-    'Section=combat ' +
-    'Note="May take full-round action that inflicts shaken on adjacent foes (DC %{10+level//2+charismaModifier} Will neg) for 1 rd 1/dy"',
-  'Indomitable Faith':'Section=save Note="+1 Will"',
-  'Indomitable':'Section=save Note="+1 vs. enchantment"',
-  'Influential':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+1 DC on language-dependent spell 1/dy",' +
-      '"+3 Diplomacy (requests)"',
-  'Insider Knowledge':
-    'Section=skill ' +
-    'Note="+1 choice of Diplomacy or Knowledge (Local)/Choice of Diplomacy of Knowledge (Local) is a class skill"',
-  'Killer':
-    'Section=combat ' +
-    'Note="Inflicts extra damage equal to weapon damage multiplier on critical hit"',
-  'Librarian':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Linguistics/+1 Profession (Librarian)",' +
-      '"Choice of Linguistics or Profession (Librarian) is a class skill/+1 reading bonus 1/dy"',
-  'Log Roller':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+1 CMD vs. Trip",' +
-      '"+1 Acrobatics"',
-  'Lore Seeker':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+1 caster level and save DC on chosen 3 arcane spells",' +
-      '"+1 Knowledge (Arcana)/Knowledge (Arcana) is a class skill"',
-  'Loyalty':'Section=save Note="+1 vs. enchantment"',
-  'Magic Is Life':
-    'Section=save ' +
-    'Note="+2 vs. death effects and stabilizes automatically when enspelled"',
-  'Magical Knack':
-    'Section=magic Note="Gains +2 caster level (max %{level}) in chosen class"',
-  'Magical Lineage':
-    'Section=magic ' +
-    'Note="Reduces spell level penalty by 1 for metamagic feats applied to chosen spell"',
-  'Magical Talent (Trait)':
-    'Section=magic Note="May use chosen Talent0 spell 1/dy"',
-  'Master Of Pentacles':
-    'Section=magic ' +
-    'Note="+2 caster level to determine duration when casting a conjuration spell 1/dy"',
-  'Mathematical Prodigy':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Arcana)/+1 Knowledge (Engineering)",' +
-      '"Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill"',
-  'Medic':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+1 caster level on <i>Remove</i> spells",' +
-      '"+2 Heal (disease, poison)"',
-  'Meridian Strike':'Section=combat Note="May reroll crit damage 1s 1/dy"',
-  'Meticulous Artisan':'Section=skill Note="+1 Craft for day job"',
-  'Militia Veteran':
-    'Section=skill ' +
-    'Note="+1 choice of Profession (Soldier), Ride, or Survival/Choice of Profession (Soldier), Ride, or Survival is a class skill"',
-  'Mind Over Matter':'Section=save Note="+1 Will"',
-  'Missionary':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"+1 caster level and save DC on 3 divine spells",' +
-      '"+1 Knowledge (Religion)/Knowledge (Religion) is a class skill"',
-  'Mummy-Touched':'Section=save Note="+2 vs. curse and disease"',
-  'Natural Negotiator':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"+1 Language Count",' +
-      '"Choice of Diplomacy or Handle Animal is a class skill"',
-  'Natural-Born Leader':
-    'Section=feature,save ' +
-    'Note=' +
-      '"+1 Leadership score",' +
-      '"+1 followers\' Will vs. mind-altering effects"',
-  'Observant':
-    'Section=skill ' +
-    'Note="+1 choice of Perception or Sense Motive/Choice of Perception or Sense Motive is a class skill"',
-  'Outcast':'Section=skill Note="+1 Survival/Survival is a class skill"',
-  'Patient Optimist':
-    'Section=skill ' +
-    'Note="+2 Diplomacy (unfriendly or hostile creatures); may retry once"',
-  'Performance Artist':
-    'Section=skill ' +
-    'Note="+1 choice of Perform (+5 when performing for money)/Choice of Perform is a class skill"',
-  'Planar Voyager':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+1 Initiative when not on Material Plane",' +
-      '"+1 saves when not on Material Plane"',
-  'Poverty-Stricken':
-    'Section=skill Note="+1 Survival/Survival is a class skill"',
-  'Proper Training':
-    'Section=skill ' +
-    'Note="+1 choice of Knowledge (Geography) or Knowledge (History)/Choice of Knowledge (Geography) or Knowledge (History) is a class skill"',
-  'Rapscallion':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+1 Initiative",' +
-      '"+1 Escape Artist"',
-  'Reactionary':'Section=combat Note="+2 Initiative"',
-  'Resilient':'Section=save Note="+1 Fortitude"',
-  'Reverent Wielder':
-    'Section=combat,save ' +
-    'Note=' +
-      '"+1 disarm, steal, and sunder CMD",' +
-      '"Equipment gains +1 saves"',
-  'Rich Parents':'Section=feature Note="Starts w/900 GP"',
-  'River Rat':
-    'Section=combat,skill ' +
-    'Note=' +
-      '"+1 damage w/daggers",' +
-      '"+1 Swim/Swim is a class skill"',
-  'Rousing Oratory':
-    'Section=skill ' +
-    'Note="Choice of Perform (Act, Comedy, Oratory, or Sing) is a class skill/R60\' DC 15/25 gives allies +1/+2 vs. fear for 5 min 1/dy"',
-  'Sacred Conduit':'Section=magic Note="+1 channeled energy save DC"',
-  'Sacred Touch':'Section=magic Note="Touch stabilizes"',
-  'Savanna Child':
-    'Section=skill ' +
-    'Note="+1 choice of Handle Animal, Knowledge (Nature), or Ride/Choice of Handle Animal, Knowledge (Nature) or Ride is a class skill"',
-  'Scholar Of Balance':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Nature)/+1 Knowledge (Planes)",' +
-      '"Choice of Knowledge (Nature) or Knowledge (Planes) is a class skill"',
-  'Scholar Of Ruins':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Dungeoneering)/+1 Knowledge (Geography)",' +
-      '"Choice of Knowledge (Dungeoneering) or Knowledge (Geography) is a class skill"',
-  'Scholar Of The Great Beyond':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (History)/+1 Knowledge (Planes)",' +
-      '"Choice of Knowledge (History) or Knowledge (Planes) is a class skill"',
-  'Secrets Of The Sphinx':
-    'Section=skill ' +
-    'Note="+2 Knowledge check 1/dy/Choice of Knowledge is a class skill"',
-  'Shadow Diplomat':
-    'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
-  'Sheriff':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill",' +
-      '"May use legal favor or +10 local Bluff, Diplomacy, or Intimidate 1/session"',
-  'Shiv':'Section=combat Note="+1 surprise piercing and slashing damage"',
-  'Skeptic':'Section=save Note="+2 vs. illusions"',
-  'Smuggler':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"Sleight Of Hand is a class skill",' +
-      '"+3 Sleight Of Hand (hide object)"',
-  'Soul Drinker':
-    'Section=combat ' +
-    'Note="May gain temporary HP equal to slain foe\'s HD for 1 min 1/dy"',
-  'Starchild':
-    'Section=skill ' +
-    'Note="+4 Survival (avoid becoming lost)/Always know direction of north"',
-  'Storyteller':
-    'Section=skill ' +
-    'Note="+%{intelligenceModifier+3>?1} choice of Knowledge 1/scenario"',
-  'Suspicious':
-    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Tavern Owner':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"Receives free lodging and 10% extra from treasure sale",' +
-      '"+1 Knowledge (Local)/Knowledge (Local) is a class skill"',
-  'Teaching Mistake':
-    'Section=save Note="+1 next save after nat 1 save roll 1/scenario"',
-  'Tireless':
-    'Section=ability,combat ' +
-    'Note=' +
-      '"+2 Constitution vs. nonlethal exertion and environment",' +
-      '"+1 HP"',
-  'Tomb Raider':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Dungeoneering)/+1 Perception",' +
-      '"Choice of Knowledge (Dungeoneering) or Perception is a class skill"',
-  'Trouper':
-    'Section=save,skill ' +
-    'Note=' +
-      '"+1 vs. Perform-related abilities",' +
-      '"+1 choice of Perform"',
-  'Tunnel Fighter':
-    'Section=combat ' +
-    'Note="+2 Initiative (underground)/Inflicts extra damage equal to weapon damage multiplier on critical hit"',
-  'Undead Slayer':'Section=combat Note="+1 weapon damage vs. undead"',
-  'Unflappable':
-    'Section=save,skill ' +
-    'Note=' +
-      '"+1 vs. fear",' +
-      '"+3 DC on foe attempts to demoralize self using Intimidate"',
-  'Unorthodox Strategy':
-    'Section=skill Note="+2 Acrobatics (traverse threatened squares)"',
-  'Upstanding':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Diplomacy/+1 Sense Motive",' +
-      '"Choice of Diplomacy or Sense Motive is a class skill"',
-  'Vagabond Child':
-    'Section=skill ' +
-    'Note="+1 choice of Disable Device, Escape Artist, or Sleight Of Hand/Choice of Disable Device, Escape Artist, or Sleight Of Hand is a class skill"',
-  'Veteran Of Battle':
-    'Section=combat,combat ' +
-    'Note=' +
-      '"+1 Initiative",' +
-      '"May draw weapon as a free action during a surprise rd"',
-  'Vindictive':
-    'Section=combat ' +
-    'Note="May inflict +1 damage vs. successful attacker for 1 min 1/dy"',
-  'Warrior Of Old':'Section=combat Note="+2 Initiative"',
-  'Watchdog':
-    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Weapon Style':'Section=combat Note="Proficient with choice of monk weapon"',
-  'Well-Informed':
-    'Section=skill,skill ' +
-    'Note=' +
-      '"+1 Knowledge (Local)",' +
-      '"+1 Diplomacy (gather information)/Choice of Diplomacy or Knowledge (Local) is a class skill"',
-  'Whistleblower':
-    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-  'Wisdom In The Flesh':
-    'Section=skill ' +
-    'Note="May use Wisdom modifier for choice of Strength, Constitution, or Dexterity skill/Choice of Strength, Constitution, or Dexterity skill is a class skill"',
-  'World Traveler (Trait)':
-    'Section=skill ' +
-    'Note="+1 choice of Diplomacy, Knowledge (Local), or Sense Motive/Choice of Diplomacy, Knowledge (Local), or Sense Motive is a class skill"'
+  'Familiar Monkey':'Section=skill Note="+3 Acrobatics"'
 
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
@@ -3473,7 +3556,7 @@ Pathfinder.SPELLS = {
   'Demand':'Level=Charm8,Nobility8,S8,W8',
   'Desecrate':
     'Level=C2 ' +
-    'Description="R%{25+lvl//2*5}\' 20\' radius gives +3 DC vs. negative channel, undead +1 attack, damage, saves, and 1 temporary HP/HD for %{lvl*2} hr"',
+    'Description="R%{25+lvl//2*5}\' 20\' radius gives +3 DC vs. negative channel, undead +1 attacks, damage, saves, and 1 temporary HP/HD for %{lvl*2} hr"',
   'Destruction':
     'Level=C7,Death7,Repose7 ' +
     'Description="R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP, consumed if slain (Fort 10d6 HP)"',
@@ -3657,7 +3740,7 @@ Pathfinder.SPELLS = {
   'Helping Hand':'Level=C3',
   'Heroes\' Feast':
     'Level=B6,C6,Community6 ' +
-    'Description="R%{25+lvl//2*5}\' Food for %{lvl} creatures cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary HP, +1 attack and Will saves, and +4 vs. poison and fear for 12 hr"',
+    'Description="R%{25+lvl//2*5}\' Food for %{lvl} creatures cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary HP, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr"',
   'Heroism':'Level=B2,Charm4,S3,W3 Liquid=Potion',
   'Hide From Animals':'Level=D1,R1 Liquid=Potion',
   'Hide From Undead':'Level=C1 Liquid=Potion',
@@ -4214,158 +4297,222 @@ Pathfinder.TRACKS = {
       '.042,.045,.048,.051,.054,.057,.060' 
 };
 Pathfinder.TRAITS = {
+
   // Advanced Player's Guide
-  'Adopted':'Type=Basic Subtype=Social',
+
+  // Combat
   'Anatomist':'Type=Basic Subtype=Combat',
-  'Animal Friend':'Type=Race Subtype=Gnome',
-  'Apothecary':'Type=Campaign Subtype="Black Sheep"',
   'Armor Expert':'Type=Basic Subtype=Combat',
-  'Birthmark':'Type=Basic Subtype=Faith',
-  'Bitter Nobleman':'Type=Campaign Subtype="Black Sheep"',
-  'Brute':'Type=Race Subtype=Half-Orc',
   'Bullied':'Type=Basic Subtype=Combat',
-  'Bully':'Type=Basic Subtype=Social',
-  'Canter':'Type=Basic Subtype=Social',
-  'Caretaker':'Type=Basic Subtype=Faith',
-  'Charming':'Type=Basic Subtype=Social',
-  'Child Of Nature':'Type=Religion Subtype=N',
-  'Child Of The Streets':'Type=Basic Subtype=Social',
-  'Child Of The Temple':'Type=Basic Subtype=Faith',
-  'Classically Schooled':'Type=Basic Subtype=Magic',
   'Courageous':'Type=Basic Subtype=Combat',
-  'Dangerously Curious':'Type=Basic Subtype=Magic',
   'Deft Dodger':'Type=Basic Subtype=Combat',
-  'Demon Hunter':'Type=Religion Subtype=LE',
-  'Desert Child':'Type=Regional Subtype=Desert',
-  'Devotee Of The Green':'Type=Basic Subtype=Faith',
   'Dirty Fighter':'Type=Basic Subtype=Combat',
-  'Divine Courtesan':'Type=Religion Subtype=CN',
-  'Divine Warrior':'Type=Religion Subtype=LG',
-  'Ear For Music':'Type=Religion Subtype=NG',
-  'Ease Of Faith':'Type=Basic Subtype=Faith',
-  'Elven Reflexes':'Type=Race Subtype=Half-Elf',
-  'Exile':'Type=Campaign Subtype=Outlander',
-  'Eyes And Ears Of The City':'Type=Religion Subtype=LG',
-  'Failed Apprentice':'Type=Race Subtype=Half-Elf',
-  'Fast-Talker':'Type=Basic Subtype=Social',
   'Fencer':'Type=Basic Subtype=Combat',
-  'Flame Of The Dawnflower':'Type=Religion Subtype=NG',
-  'Focused Mind':'Type=Basic Subtype=Magic',
-  'Forlorn':'Type=Race Subtype=Elf',
-  'Fortified Drinker':'Type=Religion Subtype=CG',
-  'Freedom Fighter (Halfling)':'Type=Race Subtype=Halfling',
-  'Gifted Adept':'Type=Basic Subtype=Magic',
-  'Goldsniffer':'Type=Race Subtype=Dwarf',
-  'Guardian Of The Forge':'Type=Religion Subtype=LG',
-  'Hedge Magician':'Type=Basic Subtype=Magic',
-  'Highlander':'Type=Regional Subtype=Hills,Mountains',
+  'Killer':'Type=Basic Subtype=Combat',
+  'Reactionary':'Type=Basic Subtype=Combat',
+  'Resilient':'Type=Basic Subtype=Combat',
+
+  // Faith
+  'Birthmark':'Type=Basic Subtype=Faith',
+  'Caretaker':'Type=Basic Subtype=Faith',
+  'Child Of The Temple':'Type=Basic Subtype=Faith',
+  'Devotee Of The Green':'Type=Basic Subtype=Faith',
+  'Ease Of Faith':'Type=Basic Subtype=Faith',
   'History Of Heresy':'Type=Basic Subtype=Faith',
   'Indomitable Faith':'Type=Basic Subtype=Faith',
-  'Killer':'Type=Basic Subtype=Combat',
-  'Log Roller':'Type=Regional Subtype=Forest',
-  'Lore Seeker':'Type=Campaign Subtype=Outlander',
-  'Magic Is Life':'Type=Religion Subtype=N',
+  'Sacred Conduit':'Type=Basic Subtype=Faith',
+  'Sacred Touch':'Type=Basic Subtype=Faith',
+  'Scholar Of The Great Beyond':'Type=Basic Subtype=Faith',
+
+  // Magic
+  'Classically Schooled':'Type=Basic Subtype=Magic',
+  'Dangerously Curious':'Type=Basic Subtype=Magic',
+  'Focused Mind':'Type=Basic Subtype=Magic',
+  'Gifted Adept':'Type=Basic Subtype=Magic',
+  'Hedge Magician':'Type=Basic Subtype=Magic',
   'Magical Knack':'Type=Basic Subtype=Magic',
   'Magical Lineage':'Type=Basic Subtype=Magic',
   'Magical Talent (Trait)':'Type=Basic Subtype=Magic',
   'Mathematical Prodigy':'Type=Basic Subtype=Magic',
-  'Militia Veteran':'Type=Regional Subtype=Town,Village',
-  'Missionary':'Type=Campaign Subtype=Outlander',
-  'Natural-Born Leader':'Type=Basic Subtype=Social',
-  'Outcast':'Type=Race Subtype=Half-Orc',
-  'Patient Optimist':'Type=Religion Subtype=LG',
-  'Poverty-Stricken':'Type=Basic Subtype=Social',
-  'Rapscallion':'Type=Race Subtype=Gnome',
-  'Reactionary':'Type=Basic Subtype=Combat',
-  'Resilient':'Type=Basic Subtype=Combat',
-  'Rich Parents':'Type=Basic Subtype=Social',
-  'River Rat':'Type=Regional Subtype=Marsh,River',
-  'Sacred Conduit':'Type=Basic Subtype=Faith',
-  'Sacred Touch':'Type=Basic Subtype=Faith',
-  'Savanna Child':'Type=Regional Subtype=Plains',
-  'Scholar Of Ruins':'Type=Race Subtype=Human',
-  'Scholar Of The Great Beyond':'Type=Basic Subtype=Faith',
-  'Sheriff':'Type=Campaign Subtype="Favored Child"',
   'Skeptic':'Type=Basic Subtype=Magic',
-  'Starchild':'Type=Religion Subtype=CG',
+
+  // Social
+  'Adopted':'Type=Basic Subtype=Social',
+  'Bully':'Type=Basic Subtype=Social',
+  'Canter':'Type=Basic Subtype=Social',
+  'Charming':'Type=Basic Subtype=Social',
+  'Child Of The Streets':'Type=Basic Subtype=Social',
+  'Fast-Talker':'Type=Basic Subtype=Social',
+  'Natural-Born Leader':'Type=Basic Subtype=Social',
+  'Poverty-Stricken':'Type=Basic Subtype=Social',
+  'Rich Parents':'Type=Basic Subtype=Social',
   'Suspicious':'Type=Basic Subtype=Social',
+
+  // Campaign
+  // Favored Son/Daughter
+  'Sheriff':'Type=Campaign Subtype="Favored Child"',
   'Tavern Owner':'Type=Campaign Subtype="Favored Child"',
+  // Black Sheep
+  'Apothecary':'Type=Campaign Subtype="Black Sheep"',
+  'Bitter Nobleman':'Type=Campaign Subtype="Black Sheep"',
+  // Outlander
+  'Exile':'Type=Campaign Subtype=Outlander',
+  'Lore Seeker':'Type=Campaign Subtype=Outlander',
+  'Missionary':'Type=Campaign Subtype=Outlander',
+
+  // Race
+  // Dwarf
+  'Goldsniffer':'Type=Race Subtype=Dwarf',
   'Tunnel Fighter':'Type=Race Subtype=Dwarf',
-  'Undead Slayer':'Type=Religion Subtype=N',
-  'Vagabond Child':'Type=Regional Subtype=Urban',
-  'Veteran Of Battle':'Type=Religion Subtype=CN',
+  // Elf
+  'Forlorn':'Type=Race Subtype=Elf',
   'Warrior Of Old':'Type=Race Subtype=Elf',
+  // Gnome
+  'Animal Friend':'Type=Race Subtype=Gnome',
+  'Rapscallion':'Type=Race Subtype=Gnome',
+  // Half-Elf
+  'Elven Reflexes':'Type=Race Subtype=Half-Elf',
+  'Failed Apprentice':'Type=Race Subtype=Half-Elf',
+  // Half-Orc
+  'Brute':'Type=Race Subtype=Half-Orc',
+  'Outcast':'Type=Race Subtype=Half-Orc',
+  // Halfling
+  'Freedom Fighter (Halfling)':'Type=Race Subtype=Halfling',
   'Well-Informed':'Type=Race Subtype=Halfling',
-  'Wisdom In The Flesh':'Type=Religion Subtype=LN',
+  // Human
+  'Scholar Of Ruins':'Type=Race Subtype=Human',
   'World Traveler (Trait)':'Type=Race Subtype=Human',
-  // Faction Traits - PS Roleplaying Guild Guide (v10.0)
-  'A Sure Thing':'Type=Faction Subtype="Silver Crusade"',
-  'Arcane Archivist':'Type=Faction Subtype="Dark Archive"',
+
+  // Regional
+  'Desert Child':'Type=Regional Subtype=Desert',
+  'Highlander':'Type=Regional Subtype=Hills,Mountains',
+  'Log Roller':'Type=Regional Subtype=Forest',
+  'Militia Veteran':'Type=Regional Subtype=Town,Village',
+  'River Rat':'Type=Regional Subtype=Marsh,River',
+  'Savanna Child':'Type=Regional Subtype=Plains',
+  'Vagabond Child':'Type=Regional Subtype=Urban',
+
+  // Religion
+  'Child Of Nature':'Type=Religion Subtype=N',
+  'Demon Hunter':'Type=Religion Subtype=LE',
+  'Divine Courtesan':'Type=Religion Subtype=CN',
+  'Divine Warrior':'Type=Religion Subtype=LG',
+  'Ear For Music':'Type=Religion Subtype=NG',
+  'Eyes And Ears Of The City':'Type=Religion Subtype=LG',
+  'Flame Of The Dawnflower':'Type=Religion Subtype=NG',
+  'Fortified Drinker':'Type=Religion Subtype=CG',
+  'Guardian Of The Forge':'Type=Religion Subtype=LG',
+  'Magic Is Life':'Type=Religion Subtype=N',
+  'Patient Optimist':'Type=Religion Subtype=LG',
+  'Starchild':'Type=Religion Subtype=CG',
+  'Undead Slayer':'Type=Religion Subtype=N',
+  'Veteran Of Battle':'Type=Religion Subtype=CN',
+  'Wisdom In The Flesh':'Type=Religion Subtype=LN',
+
+  // Faction Traits - PS Roleplaying Guild Guide (v10)
+  // The Concordance
   'Balanced Offensive':'Type=Faction Subtype="The Concordance"',
   'Beastspeaker':'Type=Faction Subtype="The Concordance"',
-  'Beneficent Touch':'Type=Faction Subtype="Silver Crusade"',
-  "Captain's Blade":'Type=Faction Subtype="Liberty\'s Edge"',
-  'Comparative Religion':'Type=Faction Subtype="Silver Crusade"',
+  'Natural Negotiator':'Type=Faction Subtype="The Concordance"',
+  'Planar Voyager':'Type=Faction Subtype="The Concordance"',
+  'Scholar Of Balance':'Type=Faction Subtype="The Concordance"',
+  // Dark Archive
+  'Arcane Archivist':'Type=Faction Subtype="Dark Archive"',
   "Devil's Mark":'Type=Faction Subtype="Dark Archive"',
-  'Expert Duelist':'Type=Faction Subtype="Sovereign Court"',
-  'Fashionable':'Type=Faction Subtype="Sovereign Court"',
-  'Force For Good':'Type=Faction Subtype="Silver Crusade"',
-  "Freedom Fighter (Liberty's Edge)":'Type=Faction Subtype="Liberty\'s Edge"',
+  'Librarian':'Type=Faction Subtype="Dark Archive"',
+  'Master Of Pentacles':'Type=Faction Subtype="Dark Archive"',
+  'Soul Drinker':'Type=Faction Subtype="Dark Archive"',
+  // The Exchange
   'Gold Finger':'Type=Faction Subtype="The Exchange"',
   'Greasy Palm':'Type=Faction Subtype="The Exchange"',
-  'Impressive Presence':'Type=Faction Subtype="Sovereign Court"',
-  'Indomitable':'Type=Faction Subtype="Liberty\'s Edge"',
-  'Influential':'Type=Faction Subtype="Sovereign Court"',
-  'Insider Knowledge':'Type=Faction Subtype="Grand Lodge"',
-  'Librarian':'Type=Faction Subtype="Dark Archive"',
-  'Loyalty':'Type=Faction Subtype="Grand Lodge"',
-  'Master Of Pentacles':'Type=Faction Subtype="Dark Archive"',
-  'Natural Negotiator':'Type=Faction Subtype="The Concordance"',
-  'Observant':'Type=Faction Subtype="Grand Lodge"',
-  'Planar Voyager':'Type=Faction Subtype="The Concordance"',
-  'Proper Training':'Type=Faction Subtype="Grand Lodge"',
-  'Rousing Oratory':'Type=Faction Subtype="Liberty\'s Edge"',
-  'Scholar Of Balance':'Type=Faction Subtype="The Concordance"',
   'Smuggler':'Type=Faction Subtype="The Exchange"',
-  'Soul Drinker':'Type=Faction Subtype="Dark Archive"',
-  'Teaching Mistake':'Type=Faction Subtype="Grand Lodge"',
   'Tireless':'Type=Faction Subtype="The Exchange"',
-  'Unflappable':'Type=Faction Subtype="Sovereign Court"',
-  'Unorthodox Strategy':'Type=Faction Subtype="Silver Crusade"',
   'Upstanding':'Type=Faction Subtype="The Exchange"',
+  // Grand Lodge
+  'Insider Knowledge':'Type=Faction Subtype="Grand Lodge"',
+  'Loyalty':'Type=Faction Subtype="Grand Lodge"',
+  'Observant':'Type=Faction Subtype="Grand Lodge"',
+  'Proper Training':'Type=Faction Subtype="Grand Lodge"',
+  'Teaching Mistake':'Type=Faction Subtype="Grand Lodge"',
+  // Liberty's Edge
+  "Captain's Blade":'Type=Faction Subtype="Liberty\'s Edge"',
+  "Freedom Fighter (Liberty's Edge)":'Type=Faction Subtype="Liberty\'s Edge"',
+  'Indomitable':'Type=Faction Subtype="Liberty\'s Edge"',
+  'Rousing Oratory':'Type=Faction Subtype="Liberty\'s Edge"',
   'Whistleblower':'Type=Faction Subtype="Liberty\'s Edge"',
-  // Faction Traits from prior Guide versions
-  'Aid Allies':'Type=Faction Subtype="Shadow Lodge"',
+  // Silver Crusade
+  'A Sure Thing':'Type=Faction Subtype="Silver Crusade"',
+  'Beneficent Touch':'Type=Faction Subtype="Silver Crusade"',
+  'Comparative Religion':'Type=Faction Subtype="Silver Crusade"',
+  'Force For Good':'Type=Faction Subtype="Silver Crusade"',
+  'Unorthodox Strategy':'Type=Faction Subtype="Silver Crusade"',
+  // Sovereign Court
+  'Expert Duelist':'Type=Faction Subtype="Sovereign Court"',
+  'Fashionable':'Type=Faction Subtype="Sovereign Court"',
+  'Impressive Presence':'Type=Faction Subtype="Sovereign Court"',
+  'Influential':'Type=Faction Subtype="Sovereign Court"',
+  'Unflappable':'Type=Faction Subtype="Sovereign Court"',
+
+  // Faction Traits - PS Roleplaying Guild Guide (v9)
+  // Scarab Sages
   'Ancient Historian':'Type=Faction Subtype="Scarab Sages"',
   'Attuned To The Ancestors':'Type=Faction Subtype="Scarab Sages"',
-  'Bad Reputation':'Type=Faction Subtype=Sczarni',
-  'Dervish':'Type=Faction Subtype=Qadira',
-  'Desert Shadow':'Type=Faction Subtype=Qadira',
-  'Dunewalker':'Type=Faction Subtype=Osirion',
-  'Eastern Mysteries':'Type=Faction Subtype=Qadira',
+  'Reverent Wielder':'Type=Faction Subtype="Scarab Sages"',
+  'Secrets Of The Sphinx':'Type=Faction Subtype="Scarab Sages"',
+  'Tomb Raider':'Type=Faction Subtype="Scarab Sages"',
+
+  // Faction Traits - Guide to PS Organized Play (v5)
+  // Andoran
+  // Captain's Blade as above
   'Explorer':'Type=Faction Subtype=Andoran',
+  // Freedom Fighter as above
+  "Hunter's Eye":'Type=Faction Subtype=Andoran',
+  // Indomitable as above
+  // Cheliax
+  // Devil's Mark as above
   'Fiendish Presence':'Type=Faction Subtype=Cheliax',
   'Fires Of Hell':'Type=Faction Subtype=Cheliax',
-  'Fortified':'Type=Faction Subtype="Shadow Lodge"',
+  // Master Of Pentacles as above
+  // Soul Drinker as above
+  // Osirion
+  // Attuned To The Ancestors as above
+  'Dunewalker':'Type=Faction Subtype=Osirion',
+  'Mummy-Touched':'Type=Faction Subtype=Osirion',
+  // Secrets Of The Sphinx as above
+  // Tomb Raider as above
+  // Qadira
+  'Dervish':'Type=Faction Subtype=Qadira',
+  'Desert Shadow':'Type=Faction Subtype=Qadira',
+  'Eastern Mysteries':'Type=Faction Subtype=Qadira',
+  // Gold Finger as above
   'Horse Lord (Trait)':'Type=Faction Subtype=Qadira',
-  "Hunter's Eye":'Type=Faction Subtype=Andoran',
+  // Sczarni
+  'Bad Reputation':'Type=Faction Subtype=Sczarni',
+  // Greasy Palm as above
   'I Know A Guy':'Type=Faction Subtype=Sczarni',
-  'Medic':'Type=Faction Subtype="Shadow Lodge"',
+  'Shiv':'Type=Faction Subtype=Sczarni',
+  'Trouper':'Type=Faction Subtype=Sczarni',
+  // Taldor
+  // Expert Duelist as above
+  // Fashionable as above
+  // Impressive Presence as above
+  'Performance Artist':'Type=Faction Subtype=Taldor',
+  'Vindictive':'Type=Faction Subtype=Taldor',
+
+  // Faction Traits - Guide to PS Organized Play (v4)
+  // Lantern Lodge
   'Meridian Strike':'Type=Faction Subtype="Lantern Lodge"',
   'Meticulous Artisan':'Type=Faction Subtype="Lantern Lodge"',
   'Mind Over Matter':'Type=Faction Subtype="Lantern Lodge"',
-  'Mummy-Touched':'Type=Faction Subtype=Osirion',
-  'Performance Artist':'Type=Faction Subtype=Taldor',
-  'Reverent Wielder':'Type=Faction Subtype="Scarab Sages"',
-  'Secrets Of The Sphinx':'Type=Faction Subtype="Scarab Sages"',
-  'Shadow Diplomat':'Type=Faction Subtype="Shadow Lodge"',
-  'Shiv':'Type=Faction Subtype=Sczarni',
   'Storyteller':'Type=Faction Subtype="Lantern Lodge"',
-  'Tomb Raider':'Type=Faction Subtype="Scarab Sages"',
-  'Trouper':'Type=Faction Subtype=Sczarni',
-  'Vindictive':'Type=Faction Subtype=Taldor',
-  'Watchdog':'Type=Faction Subtype="Shadow Lodge"',
-  'Weapon Style':'Type=Faction Subtype="Lantern Lodge"'
+  'Weapon Style':'Type=Faction Subtype="Lantern Lodge"',
+  // Shadow Lodge
+  'Aid Allies':'Type=Faction Subtype="Shadow Lodge"',
+  'Fortified':'Type=Faction Subtype="Shadow Lodge"',
+  'Medic':'Type=Faction Subtype="Shadow Lodge"',
+  'Shadow Diplomat':'Type=Faction Subtype="Shadow Lodge"',
+  'Watchdog':'Type=Faction Subtype="Shadow Lodge"'
+
 };
 Pathfinder.WEAPONS = {
   'Bastard Sword':'Level=Exotic Category=One-Handed Damage=d10 Threat=19',
@@ -5652,6 +5799,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       rules.defineRule('levels.' + name, 'prestige.' + name, '=', null);
     else if(type == 'NPC')
       rules.defineRule('levels.' + name, 'npc.' + name, '=', null);
+    if(attrs.includes('SpellSlots'))
+      rules.addChoice('casterClasss', name, attrs);
   } else if(type == 'Class Feature') {
     SRD35.classFeatureRules(rules, name,
       QuilvynUtils.getAttrValueArray(attrs, 'Require'),
@@ -5968,7 +6117,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('magicNotes.channelEnergy.2',
       'channelLevel', '=', '10 + Math.floor(source / 2)',
       'charismaModifier', '+', null,
-      'magicNotes.improvedChannel', '+', '2'
+      'magicNotes.improvedChannel', '+', '2',
+      'magicNotes.sacredConduit', '+', '1'
     );
     rules.defineRule
       ('selectableFeatureCount.Cleric (Domain)', classLevel, '=', '2');
@@ -7633,21 +7783,20 @@ Pathfinder.traitRulesExtra = function(rules, name) {
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorExpert', '+', '1'
     );
+  } else if(name.startsWith('Magical Knack')) {
+    let c = name.replace('Magical Knack (', '').replace(')', '');
+    rules.defineRule('casterLevels.' + c,
+      'magicNotes.magicalKnack(' + c.replaceAll(' ', '') + ')', '+', '2'
+    );
   } else if(name == 'Magical Talent (Trait)') {
-    rules.defineRule
-      ('spellSlots.Talent0', 'features.Magical Talent (Trait)', '=', '1');
     rules.defineRule('casterLevels.Talent',
-      'spellSlots.Talent0', '?', null,
-      'level', '=', null
+      'features.Magical Talent (Trait)', '=', '1',
+      'casterLevel', '^', null
     );
     rules.defineRule('spellDifficultyClass.Talent',
       'casterLevels.Talent', '?', null,
       'charismaModifier', '=', '10 + source'
     );
-  } else if(name == 'River Rat') {
-    rules.defineRule('daggerDamageModifier', 'combatNotes.riverRat', '+', '1');
-    rules.defineRule
-      ('punchingDaggerDamageModifier', 'combatNotes.riverRat', '+', '1');
   }
 };
 
@@ -7669,7 +7818,10 @@ Pathfinder.weaponRules = function(
     rules, name, profLevel, category, damage, threat, critMultiplier, range,
     properties
   );
-  // No changes needed to the rules defined by SRD35 method
+  if(name.match(/\bDagger\b/))
+    rules.defineRule(name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '') + 'DamageModifier',
+      'combatNotes.riverRat', '+', '1'
+    );
 };
 
 /*
