@@ -1368,6 +1368,19 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can change into a %{wildShapeLevel<6?\'small\':wildShapeLevel<8?\'tiny\':\'diminutive\'} to %{wildShapeLevel<6?\'medium\':wildShapeLevel<8?\'large\':\'huge\'} animal%{wildShapeLevel>=8?\', a small to \'+(wildShapeLevel<10?\'medium\':wildShapeLevel<12?\'large\':\'huge\')+\' plant,\':\'\'}%{wildShapeLevel>=6?\' or a \'+(wildShapeLevel<8?\'small\':wildShapeLevel<10?\'small to medium\':wildShapeLevel<12?\'small to large\':\'small to huge\')+\' elemental\':\'\'} for %{wildShapeLevel} hr %{wildShapeLevel<20?(wildShapeLevel>=6?(wildShapeLevel-2)//2+\' times\':\'once\')+\' per day\':\'at will\'}"',
   'Woodland Stride':SRD35.FEATURES['Woodland Stride'],
+  // Animal Companion
+  'Ability Score Increase':
+    'Section=companion ' +
+    'Note="Companion has %V ability increase%{companionNotes.abilityScoreIncrease>1?\'s\':\'\'} to assign"',
+  'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
+  'Evasion (Companion)':SRD35.FEATURES['Evasion (Companion)'],
+  'Improved Evasion (Companion)':SRD35.FEATURES['Improved Evasion (Companion)'],
+  'Devotion':SRD35.FEATURES.Devotion,
+  'Link':SRD35.FEATURES.Link,
+  'Multiattack':SRD35.FEATURES.Multiattack,
+  'Share Spells':
+    SRD35.FEATURES['Share Spells']
+    .replace(/ and [^"]*/, ''),
 
   // Fighter
   'Armor Mastery':
@@ -1460,7 +1473,6 @@ Pathfinder.FEATURES = {
   'Channel Positive Energy':
     'Section=magic ' +
     'Note="Can expend 2 Lay On Hands uses to use Channel Energy effects"',
-  'Companion Spell Resistance':SRD35.FEATURES['Companion Spell Resistance'],
   'Detect Evil':SRD35.FEATURES['Detect Evil'],
   'Divine Grace':SRD35.FEATURES['Divine Grace'],
   'Divine Health':SRD35.FEATURES['Divine Health'],
@@ -1499,6 +1511,7 @@ Pathfinder.FEATURES = {
   'Smite Evil':
     'Section=combat ' +
     'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin} HP on first the hit if the target is %1"',
+  'Spell Resistance (Companion)':SRD35.FEATURES['Spell Resistance (Companion)'],
 
   // Ranger
   // Animal Companion as above
@@ -1960,6 +1973,32 @@ Pathfinder.FEATURES = {
   'Metamagic Mastery':
     'Section=magic ' +
     'Note="Can apply a metamagic feat to a spell without changing its level or casting time %{levels.Wizard>9?(levels.Wizard-6)//2+\' times\':\'once\'} per day; applying a metamagic feat that normally adds multiple levels to the spell expends additional uses"',
+  // Familiars
+  'Familiar Bat':'Section=skill Note="+3 Fly"',
+  'Familiar Cat':'Section=skill Note="+3 Stealth"',
+  'Familiar Hawk':'Section=skill Note="+3 Perception in bright light"',
+  'Familiar Lizard':SRD35.FEATURES['Familiar Lizard'],
+  'Familiar Monkey':'Section=skill Note="+3 Acrobatics"',
+  'Familiar Owl':'Section=skill Note="+3 Perception in shadows and darkness"',
+  'Familiar Rat':SRD35.FEATURES['Familiar Rat'],
+  'Familiar Raven':SRD35.FEATURES['Familiar Raven'],
+  'Familiar Tiny Viper':SRD35.FEATURES['Familiar Tiny Viper'],
+  'Familiar Toad':SRD35.FEATURES['Familiar Toad'],
+  'Familiar Weasel':SRD35.FEATURES['Familiar Weasel'],
+  'Alertness (Companion)':
+    SRD35.FEATURES['Alertness (Companion)']
+    .replace('Listen', 'Perception')
+    .replace('Spot', 'Sense Motive'),
+  'Deliver Touch Spells':SRD35.FEATURES['Deliver Touch Spells'],
+  'Empathic Link':SRD35.FEATURES['Empathic Link'],
+  // Evasion (Companion) as above
+  // Improved Evasion (Companion) as above
+  'Scry On Familiar':SRD35.FEATURES['Scry On Familiar'],
+  // Share Spells as above
+  'Speak With Animals Of Its Kind':
+    SRD35.FEATURES['Speak With Animals Of Its Kind'],
+  'Speak With Master':SRD35.FEATURES['Speak With Master'],
+  // Spell Resistance (Companion) as above
 
   // Adept
   'Summon Familiar':'Section=companion Note="Has the Familiar feature"',
@@ -3084,56 +3123,7 @@ Pathfinder.FEATURES = {
   'Shadow Diplomat':
     'Section=skill Note="+1 Diplomacy/Diplomacy is a class skill"',
   'Watchdog':
-    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"',
-
-  // Shared with SRD35
-  'Bonus Tricks':SRD35.FEATURES['Bonus Tricks'],
-  'Companion Alertness':
-    'Section=skill ' +
-    'Note="+2 Perception and Sense Motive when companion in reach"',
-  'Companion Evasion':
-    'Section=companion ' +
-    'Note="Successful Reflex saves yield no damage instead of half%{companionNotes.companionImprovedEvasion?\', and failed Reflex saves yield half damage\':\'\'}"',
-  'Companion Improved Evasion':
-    'Section=companion Note="Has increased Companion Evasion effects"',
-  'Deliver Touch Spells':
-    'Section=companion ' +
-    'Note="May deliver touch spells if in contact w/master when cast"',
-  'Devotion':'Section=companion Note="+4 Will vs. enchantment"',
-  'Empathic Link':'Section=companion Note="May share emotions up to 1 mile"',
-  'Familiar Bat':'Section=skill Note="+3 Fly"',
-  'Familiar Cat':'Section=skill Note="+3 Stealth"',
-  'Familiar Hawk':'Section=skill Note="+3 Spot in bright light"',
-  'Familiar Lizard':'Section=skill Note="+3 Climb"',
-  'Familiar Owl':'Section=skill Note="+3 Spot in shadows and darkness"',
-  'Familiar Rat':'Section=save Note="+2 Fortitude"',
-  'Familiar Raven':'Section=skill Note="+3 Appraise"',
-  'Familiar Tiny Viper':'Section=skill Note="+3 Bluff"',
-  'Familiar Toad':'Section=combat Note="+3 Hit Points"',
-  'Familiar Weasel':'Section=save Note="+2 Reflex"',
-  'Improved Speed':'Section=companion Note="+10 companion Speed"',
-  'Link':
-    'Section=skill ' +
-    'Note="+4 Handle Animal (companion)/+4 Wild Empathy (companion)"',
-  'Multiattack':
-    'Section=companion ' +
-    'Note="Reduces additional attack penalty to -2 or gives second attack at -5"',
-
-  'Scry On Familiar':'Section=companion Note="Master may view companion 1/dy"',
-  'Share Spells':
-    'Section=companion Note="Master may share self spell w/adjacent companion"',
-  'Speak With Animals Of Its Kind':
-    SRD35.FEATURES['Speak With Animals Of Its Kind'],
-  'Speak With Master':
-    'Section=companion Note="May talk w/master in secret language"',
-  'Special Mount':'Section=feature Note="Magical mount w/special abilities"',
-  'Spontaneous Druid Spell':
-    'Section=magic ' +
-    'Note="May cast <i>Summon Nature\'s Ally</i> in place of known spell"',
-  'Unarmored Speed Bonus':'Section=ability Note="+%V Speed"',
-
-  // New features
-  'Familiar Monkey':'Section=skill Note="+3 Acrobatics"'
+    'Section=skill Note="+1 Sense Motive/Sense Motive is a class skill"'
 
 };
 Pathfinder.GOODIES = Object.assign({}, SRD35.GOODIES, {
@@ -5507,6 +5497,12 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
     'companionMasterLevel', '=', 'source + 1 - Math.floor((source + 1) / 4)'
   );
   // Pathfinder-specific attributes
+  SRD35.featureListRules
+    (rules, ['4:Ability Score Increase'], 'Animal Companion',
+     'companionMasterLevel', false);
+  rules.defineRule('companionNotes.abilityScoreIncrease',
+    'companionMasterLevel', '=', 'source<9 ? 1 : source<14 ? 2 : source<20 ? 3 : 4'
+  );
   rules.defineChoice('notes',
     'animalCompanionStats.CMB:%S',
     'familiarStats.CMB:%S'
@@ -6387,13 +6383,13 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('animalCompanion.Celestial',
       'companionPaladinLevel', '=', 'source >= 11 ? 1 : null'
     );
-    rules.defineRule('animalCompanionFeatures.Companion Spell Resistance',
+    rules.defineRule('animalCompanionFeatures.Spell Resistance (Companion)',
       'companionPaladinLevel', '=', 'source >= 15 ? 1 : null'
     );
     rules.defineRule
       ('animalCompanionStats.Int', 'companionPaladinLevel', '^', '6');
     rules.defineRule('animalCompanionStats.SR',
-      'companionNotes.companionSpellResistance', '^=', null
+      'companionNotes.spellResistance(Companion)', '^=', null
     );
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
@@ -6409,7 +6405,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('companionMasterLevel', 'companionPaladinLevel', '^=', null);
-    rules.defineRule('companionNotes.companionSpellResistance',
+    rules.defineRule('companionNotes.spellResistance(Companion)',
       'companionPaladinLevel', '=', 'source + 11'
     );
     rules.defineRule('companionPaladinLevel',
@@ -6420,8 +6416,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
       ('damageReduction.Evil', 'combatNotes.auraOfRighteousness', '^=', null);
     rules.defineRule
       ('features.Channel Energy', 'features.Channel Positive Energy', '=', '1');
-    rules.defineRule('features.Companion Spell Resistance',
-      'animalCompanionFeatures.Companion Spell Resistance', '=', null
+    rules.defineRule('features.Spell Resistance (Companion)',
+      'animalCompanionFeatures.Spell Resistance (Companion)', '=', null
     );
     rules.defineRule
       ('magicNotes.layOnHands', classLevel, '=', 'Math.floor(source / 2)');

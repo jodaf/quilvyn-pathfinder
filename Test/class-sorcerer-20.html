@@ -372,6 +372,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Sense Motive): +3 Sense Motive</i></td>
       </tr><tr style="text-align:center">
+        <td>Alertness (Companion): +2 Perception and Sense Motive when companion is within reach</td>
+      </tr><tr style="text-align:center">
         <td>Ascension: Can communicate with any speaking creature</td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
@@ -381,8 +383,6 @@ var attributes = {
         <td>Blindsight: R60' Can operate effectively without vision</td>
       </tr><tr style="text-align:center">
         <td>Bloodline Arcane: Choice of Knowledge is a class skill</td>
-      </tr><tr style="text-align:center">
-        <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
       </tr><tr style="text-align:center">
         <td>Demonic Might: R60' Can communicate telepathically with any speaking creature</td>
       </tr><tr style="text-align:center">
@@ -600,7 +600,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3; S: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
-        <td><b>Spell DC</b>: Fleeting Glance: 13; S: 13</td>
+        <td><b>Spell DC</b>: Fleeting Glance: 13; S: 13; Scry On Familiar: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -1342,6 +1342,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Scrying (S4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 20 min</td>
     </tr><tr style="text-align:left">
+      <td>Scrying (Scry On Familiar4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 20 min</td>
+    </tr><tr style="text-align:left">
       <td>Secret Chest (S5 Conj): Allows using a miniature replica of a well-crafted chest to teleport it and up to 20 cubic feet of contents to and from the ethereal plane at will for 60 days</td>
     </tr><tr style="text-align:left">
       <td>Secret Page (S3 Tran): Permanently alters the text on a touched page so that a password is required to read it</td>
@@ -1673,31 +1675,31 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Familiar Features</b>: Companion Alertness; Companion Evasion; Companion Improved Evasion; Companion Spell Resistance; Deliver Touch Spells; Empathic Link; Scry On Familiar; Share Spells; Speak With Animals Of Its Kind; Speak With Master</td>
+      <td><b>Familiar Features</b>: Alertness (Companion); Deliver Touch Spells; Empathic Link; Evasion (Companion); Improved Evasion (Companion); Scry On Familiar; Share Spells; Speak With Animals Of Its Kind; Speak With Master; Spell Resistance (Companion)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Companion Improved Evasion: Has increased Companion Evasion effects</i></td>
+      <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Companion Spell Resistance: Companion has SR 25</i></td>
+      <td><i>Spell Resistance (Companion): Companion has SR 25</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage</td>
+      <td>Deliver Touch Spells: Can use companion to deliver touch spells if in contact when the spell is cast</td>
     </tr><tr style="text-align:center">
-      <td>Deliver Touch Spells: May deliver touch spells if in contact w/master when cast</td>
+      <td>Empathic Link: Can communicate emotions with companion up to 1 mile</td>
     </tr><tr style="text-align:center">
-      <td>Empathic Link: May share emotions up to 1 mile</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
       <td>Familiar: Can bond with a magical creature with expanded abilities</td>
     </tr><tr style="text-align:center">
-      <td>Scry On Familiar: Master may view companion 1/dy</td>
+      <td>Scry On Familiar: Can view companion once per day</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr><tr style="text-align:center">
       <td>Speak With Animals Of Its Kind: Companion can communicate with similar creatures</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Master: May talk w/master in secret language</td>
+      <td>Speak With Master: Can talk with companion in a shared, secret language</td>
     </tr></table>
 </td>
   </tr></table>
