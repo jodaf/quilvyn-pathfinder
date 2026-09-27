@@ -3429,7 +3429,7 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=B2,S2,W2 ' +
     'Description=' +
-      '"Self becomes a small humanoid, gaining +2 Dexterity, or a medium humanoid, gaining +2 Strength, for %{lvl} min"',
+      '"Self becomes a Small humanoid, gaining +2 Dexterity, or a medium humanoid, gaining +2 Strength, for %{lvl} min"',
   'Analyze Dweomer':'',
   'Animal Growth':
     'Description=' +
@@ -3438,7 +3438,7 @@ Pathfinder.SPELLS = {
   'Animal Shapes':
     'School="Transmutation (Polymorph)"' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen diminutive - huge animal for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen Diminutive - Huge animal for %{lvl} hr"',
   'Animal Trance':
     'Description=' +
       '"R%{25+lvl//2*5}\' 2d6 HD of animals with Intelligence 1 or 2 sit unmoving (save Will negates) for concentration"',
@@ -3467,90 +3467,149 @@ Pathfinder.SPELLS = {
   'Atonement':'',
   'Augury':'',
   'Awaken':'',
-  'Baleful Polymorph':'Level=Adept5,D5,S5,W5',
-  'Bane':'Level=C1',
-  'Banishment':'Level=C6,S7,W7',
-  'Barkskin':'Level=D2,Plant2,R2 Liquid=Potion',
-  'Bear\'s Endurance':'Level=Adept2,C2,D2,R2,S2,W2 Liquid=Potion',
-  'Bestow Curse':'Level=Adept3,C3,S4,W4',
-  'Binding':'Level=S8,W8',
-  'Black Tentacles':
+
+  'Baleful Polymorph':
+    'School="Transmutation (Polymorph)" ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; Will after a failure allows retaining HD and memories)"',
+  'Bane':'',
+  'Banishment':'',
+  'Barkskin':'',
+  "Bear's Endurance":'',
+  "Mass Bear's Endurance":'',
+  'Beast Shape I':
+    'School="Transmutation (Polymorph)"' +
+    'Level=S3,W3 ' +
+    'Description=' +
+      '"Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 30\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, and Scent, as appropriate to the form"',
+  'Beast Shape II':
+    'School="Transmutation (Polymorph)"' +
     'Level=S4,W4 ' +
-    'Description="R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (BAB +%{casterLevel+5}) and inflict 1d6+4 HP/rd for %{lvl} rd"',
-  'Blade Barrier':'Level=C6,Good6,War6',
+    'Description=' +
+      '"Self becomes a Tiny (gives +4 Dexterity, -2 Strength, and a +1 natural armor bonus to Armor Class) or Large (gives +4 Strength, -2 Dexterity, and a +4 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 60\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Grab, Pounce, and Trip, as appropriate to the form"',
+  'Beast Shape III':
+    'School="Transmutation (Polymorph)"' +
+    'Level=Animal5,S5,W5 ' +
+    'Description=' +
+      '"Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 30\' burrow Speed, 90\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Constrict, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form"',
+  'Beast Shape IV':
+    'School="Transmutation (Polymorph)"' +
+    'Level=S6,W6 ' +
+    'Description=' +
+      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly or swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Ren, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
+  'Bestow Curse':'',
+  'Binding':'',
+  'Black Tentacles':
+    'Description=' +
+      '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
+  'Blade Barrier':'',
   'Blasphemy':
-    'Level=C7,Evil7 ' +
-    'Description="Nonevil creatures in 40\' radius with equal/-1/-5/-10 HD dazed for 1 rd (Will neg)/suffer -2d6 Strength for 2d4 rd (Will half)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will suffer 3d6+%{lvl} HP) and banished (Will -4 neg)"',
+    'Description=' +
+      '"Nonevil creatures within 40\' with up to %{lvl}/%{lvl-1}/%{lvl-5}/%{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become dazed for 1 rd (save Will negates)/suffer -2d6 Strength for 2d4 rd (save Will half)/become paralyzed for 1d10 min (save Will inflicts paralyzed for 1 rd)/are killed (save Will inflicts 3d6+%{lvl} HP)"',
+  'Bleed':
+    'School=Necromancy ' +
+    'Level=C0,S0,W0 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (save Will neg)"',
   'Bless':'Level=Adept1,C1,Community1,P1',
-  'Bless Water':'Level=C1,P1',
-  'Bless Weapon':'Level=Glory2,P1 Liquid=Oil',
-  'Blight':'Level=D4,S5,W5',
+  'Bless Water':'',
+  'Bless Weapon':'Level=Glory2,P1',
+  'Blight':'',
   'Blindness/Deafness':'Level=B2,C3,Darkness2,S2,W2',
-  'Blink':'Level=B3,S3,W3',
-  'Blur':'Level=B2,S2,W2 Liquid=Potion',
-  'Break Enchantment':'Level=Adept5,B4,C5,Liberation5,Luck5,P4,S5,W5',
-  'Bull\'s Strength':
-    'Level=Adept2,C2,D2,P2,Strength2,S2,W2 Liquid=Potion',
-  'Burning Hands':'Level=Adept1,Fire1,S1,W1',
+  'Blink':'',
+  'Blur':'',
+  'Break Enchantment':
+    'Level=Adept5,B4,C5,Liberation5,Luck5,P4,S5,W5 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Self makes a +%{lvl<?15} check (DC 11 + the effect\'s caster level) to free %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
+  'Breath Of Life':
+    'School="Conjuration (Healing)"' +
+    'Level=C5,Healing5 ' +
+    'Description=' +
+      '"Touched regains 5d8+%{lvl<?25} hit points; undead instead suffer the same amount (save Will half); the spell can revive a corpse dead less than 1 rd, giving a temporary negative level for 1 day"',
+  "Bull's Strength":'Level=Adept2,C2,D2,P2,Strength2,S2,W2',
+  "Mass Bull's Strength":'',
+  'Burning Hands':'',
+
   'Call Lightning':'Level=D3,Weather3',
-  'Call Lightning Storm':'Level=D5',
-  'Calm Animals':'Level=Animal1,D1,R1',
+  'Call Lightning Storm':'',
+  'Calm Animals':'',
   'Calm Emotions':'Level=B2,C2,Charm2',
-  'Cat\'s Grace':'Level=Adept2,B2,D2,R2,S2,W2 Liquid=Potion',
+  "Cat's Grace":'Level=Adept2,B2,D2,R2,S2,W2',
+  "Mass Cat's Grace":'',
   'Cause Fear':'Level=Adept1,B1,C1,Death1,S1,W1',
   'Chain Lightning':
-    'Level=Air6,S6,W6 ' +
-    'Description="R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP to primary target (Ref half) and %{lvl<?20} secondary targets in 30\' radius (Ref +2 half)"',
-  'Changestaff':'Level=D7',
+    'Description=' +
+      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in 30\' radius (save Reflex +2 half)"',
+  'Changestaff':'',
   'Chaos Hammer':'Level=C4,Chaos4',
-  'Charm Animal':'Level=D1,R1',
+  'Charm Animal':'',
   'Charm Monster':'Level=B3,Charm5,S4,W4',
+  'Mass Charm Monster':'',
   'Charm Person':'Level=B1,Charm1,S1,W1',
-  'Chill Metal':'Level=D2',
-  'Chill Touch':'Level=S1,W1',
-  'Circle Of Death':'Level=S6,W6',
+  'Chill Metal':'',
+  'Chill Touch':'',
+  'Circle Of Death':'',
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
   'Clenched Fist':
-    'Level=Strength8,S8,W8 ' +
-    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +%{lvl+12} bull rush and +$Lplus11+mod melee attack that inflicts 1d8+11 HP and stuns for 1 rd (Fort neg) for %{lvl} rd"',
-  'Cloak Of Chaos':'Level=C8,Chaos8',
-  'Clone':'Level=S8,W8',
-  'Cloudkill':'Level=S5,W5',
-  'Color Spray':'Level=S1,W1',
-  'Command':'Level=Adept1,C1',
-  'Command Plants':'Level=D4,Plant4,R3',
-  'Command Undead':'Level=S2,W2',
-  'Commune':'Level=Adept5,C5',
+    'Description=' +
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs +%{lvl+12} bull rush and +%{lvl+11+mdf} melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
+  'Cloak Of Chaos':'',
+  'Clone':'',
+  'Cloudkill':'',
+  'Color Spray':'',
+  'Command':'',
+  'Greater Command':'Level=C5,Nobility5',
+  'Command Plants':'',
+  'Command Undead':'',
+  'Commune':'',
   'Commune With Nature':'Level=D5,R4',
-  'Comprehend Languages':'Level=Adept1,B1,C1,Knowledge1,S1,W1',
-  'Cone Of Cold':'Level=S5,W5,Water6',
+  'Comprehend Languages':
+    'Level=Adept1,B1,C1,Knowledge1,S1,W1 ' +
+    'Description=' +
+      '"Allows self to understand written text and words spoken in any language for %{lvl*10} min"',
+  'Cone Of Cold':'',
   'Confusion':
     'Level=B3,Madness4,Trickery4,S4,W4 ' +
-    'Description="R%{100+lvl*10}\' Creatures in 15\' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for %{lvl} rd (Will neg)"',
-  'Consecrate':'Level=C2',
-  'Contact Other Plane':'Level=S5,W5',
+    'Description=' +
+      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% the attack the nearest creature (save Will negates), for %{lvl} rd"',
+  'Lesser Confusion':
+    'Level=B1,Madness1 ' +
+    'Description=' +
+      '"R%{100+lvl*10}\' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd"',
+  'Consecrate':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' 20\' radius gives +3 positive channeled energy save DC and inflicts on undead -1 attacks, damage, and saves for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
+  'Contact Other Plane':'',
   'Contagion':'Level=Adept3,C3,D3,S4,W4',
-  'Contingency':'Level=S6,W6',
-  'Continual Flame':'Level=Adept3,C3,S2,W2 Liquid=Oil',
-  'Control Plants':'Level=D8,Plant8',
-  'Control Undead':'Level=S7,W7',
-  'Control Water':'Level=C4,D4,S6,W6,Water4',
+  'Contingency':'',
+  'Continual Flame':'Liquid=Oil',
+  'Control Plants':'',
+  'Control Undead':'',
+  'Control Water':'',
   'Control Weather':'Level=C7,D7,S7,W7,Weather7',
   'Control Winds':'Level=Air5,D5,Weather6',
-  'Create Food And Water':'Level=C3',
-  'Create Greater Undead':'Level=C8,Death8,S8,W8',
-  'Create Undead':'Level=C6,Death6,Evil6,S6,W6',
-  'Create Water':'Level=Adept0,C0,D0,P1',
-  'Creeping Doom':'Level=D7',
-  'Crushing Despair':'Level=B3,S4,W4',
+  'Create Food And Water':'',
+  'Create Greater Undead':'',
+  'Create Undead':'',
+  'Create Water':'',
+  'Creeping Doom':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' 4 centipede swarms inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 20\' each rd as a standard action"',
+  'Crushing Despair':'',
   'Crushing Hand':
-    'Level=Strength9,S9,W9 ' +
-    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +%{lvl+13} bull rush and +%{lvl+13} grapple that inflicts 2d6+12 HP for %{lvl} rd"',
+    'Description=' +
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+13} Bull Rush and a +%{lvl+13} Grapple that inflicts 2d6+12 HP for %{lvl} rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
-  'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2 Liquid=Potion',
-  'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3 Liquid=Potion',
-  'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4 Liquid=Potion',
-  'Curse Water':'Level=C1',
+  'Mass Cure Critical Wounds':'Level=C8,Community8,D9,Healing8',
+  'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2',
+  'Mass Cure Light Wounds':'Level=B5,C5,D6',
+  'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3',
+  'Mass Cure Moderate Wounds':'Level=B6,C6,D7',
+  'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4',
+  'Mass Cure Serious Wounds':'Level=C7,D8',
+  'Curse Water':'',
+
   'Dancing Lights':'Level=B0,S0,W0',
   'Darkness':
     'Level=Adept2,B2,C2,S2,W2 ' +
@@ -3722,7 +3781,6 @@ Pathfinder.SPELLS = {
     'Level=B1,S1,W1 ' +
     'Description="R%{25+lvl//2*5}\' Object or 10\' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Command':'Level=C5,Nobility5',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
     'Description="R%{100+lvl*10}\' Successful d20+%{lvl<?20} check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius"',
@@ -3823,9 +3881,6 @@ Pathfinder.SPELLS = {
   'Knock':'Level=S2,W2',
   'Know Direction':'Level=B0,D0',
   'Legend Lore':'Level=B4,Knowledge7,S6,W6',
-  'Lesser Confusion':
-    'Level=B1,Madness1 ' +
-    'Description="R%{100+lvl*10}\' Target randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest for 1 rd (Will neg)"',
   'Lesser Geas':'Level=B3,S4,W4',
   'Lesser Globe Of Invulnerability':'Level=S4,W4',
   'Lesser Planar Ally':'Level=C4',
@@ -3881,14 +3936,6 @@ Pathfinder.SPELLS = {
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
   'Mark Of Justice':'Level=C5,P4',
-  'Mass Bear\'s Endurance':'Level=C6,D6,S6,W6',
-  'Mass Bull\'s Strength':'Level=C6,D6,S6,W6',
-  'Mass Cat\'s Grace':'Level=B6,D6,S6,W6',
-  'Mass Charm Monster':'Level=B6,S8,W8',
-  'Mass Cure Critical Wounds':'Level=C8,Community8,D9,Healing8',
-  'Mass Cure Light Wounds':'Level=B5,C5,D6',
-  'Mass Cure Moderate Wounds':'Level=B6,C6,D7',
-  'Mass Cure Serious Wounds':'Level=C7,D8',
   'Mass Eagle\'s Splendor':'Level=B6,C6,S6,W6',
   'Mass Enlarge Person':'Level=S4,W4',
   'Mass Fox\'s Cunning':'Level=B6,S6,W6',
@@ -4210,30 +4257,6 @@ Pathfinder.SPELLS = {
   'Zone Of Silence':'Level=B4',
   'Zone Of Truth':'Level=C2,P2',
 
-  'Beast Shape I':
-    'School=Transmutation ' +
-    'Level=S3,W3 ' +
-    'Description="Self becomes small (+2 Dexterity, +1 AC) or medium (+2 Strength, +2 AC) animal for %{lvl} min"',
-  'Beast Shape II':
-    'School=Transmutation ' +
-    'Level=S4,W4 ' +
-    'Description="Self becomes tiny (+4 Dexterity, -2 Strength, +1 AC) or large (+4 Strength, -2 Dexterity, +4 AC) animal for %{lvl} min"',
-  'Beast Shape III':
-    'School=Transmutation ' +
-    'Level=Animal5,S5,W5 ' +
-    'Description="Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for %{lvl} min"',
-  'Beast Shape IV':
-    'School=Transmutation ' +
-    'Level=S6,W6 ' +
-    'Description="Self becomes tiny (+8 Dexterity, -2 Strength, +3 AC) or large (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC) magical beast for %{lvl} min"',
-  'Bleed':
-    'School=Necromancy ' +
-    'Level=C0,S0,W0 ' +
-    'Description="R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (Will neg)"',
-  'Breath Of Life':
-    'School=Conjuration ' +
-    'Level=C5,Healing5 ' +
-    'Description="Touched corpse dead less than 1 rd resurrected and heals 5d8+%{lvl<?25} HP"',
   'Elemental Body I':
     'School=Transmutation ' +
     'Level=S4,W4 ' +
