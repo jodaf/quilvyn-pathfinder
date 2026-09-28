@@ -3456,6 +3456,7 @@ Pathfinder.SPELLS = {
   'Antiplant Shell':
     'Description=' +
       '"10\' radius bars animate plants for %{lvl} min"',
+  'Arcane Eye':'',
   'Arcane Lock':
     'Liquid=Oil ' +
     'Description=' +
@@ -3579,7 +3580,7 @@ Pathfinder.SPELLS = {
       '"R%{100+lvl*10}\' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd"',
   'Consecrate':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius gives +3 positive channeled energy save DC and inflicts on undead -1 attacks, damage, and saves for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
+      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 positive channeled energy save DCs and inflicts on undead -1 attacks, damage, and saves for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
   'Contact Other Plane':'',
   'Contagion':'Level=Adept3,C3,D3,S4,W4',
   'Contingency':'',
@@ -3610,84 +3611,116 @@ Pathfinder.SPELLS = {
   'Mass Cure Serious Wounds':'Level=C7,D8',
   'Curse Water':'',
 
-  'Dancing Lights':'Level=B0,S0,W0',
+  'Dancing Lights':'',
   'Darkness':
     'Level=Adept2,B2,C2,S2,W2 ' +
-    'Description="Touched reduces light level by 1 in 20\' radius for %{lvl} min" ' +   'Liquid=Oil',
-  'Darkvision':'Level=R3,S2,W2 Liquid=Potion',
-  'Daylight':
-    'Level=Adept3,B3,C3,D3,P3,S3,W3 ' +
-    'Description="Touched increases light level by 1 in 60\' radius for %{lvl*10} min" ' +
-    'Liquid=Oil',
-  'Daze':'Level=B0,S0,W0',
-  'Daze Monster':'Level=B2,S2,W2',
+    'Description=' +
+      '"Touched object reduces the light level in a 20\' radius by 1 step for %{lvl} min"',
+  'Darkvision':'',
+  'Daylight':'',
+  'Daze':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Target humanoid with up to 4 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
+  'Daze Monster':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
   'Death Knell':'Level=C2,Death2',
   'Death Ward':
     'Level=C4,D5,Death4,Repose4,P4 ' +
-    'Description="Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects for %{lvl} min"',
-  'Deathwatch':'Level=C1,Repose1',
+    'Description=' +
+      '"Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects for %{lvl} min"',
+  'Deathwatch':
+    'School="Necromancy" ' +
+    'Level=C1,Repose1 ' +
+    'Description=' +
+      '"30\' cone reveals whether creatures are dead, alive with up to 3 or more than 3 hit points, healthy, undead, or animated, for %{lvl*10} min"',
   'Deep Slumber':'Level=B3,S3,W3',
   'Deeper Darkness':
     'Level=Adept3,C3,Darkness3 ' +
-    'Description="Touched reduces light level by 2 in 60\' radius for %{lvl} min"',
-  'Delay Poison':'Level=Adept2,B2,C2,D2,P2,R1 Liquid=Potion',
-  'Delayed Blast Fireball':'Level=S7,W7',
+    'Description=' +
+      '"Touched object reduces the light level in a 60\' radius by 2 steps for %{lvl*10} min"',
+  'Delay Poison':'',
+  'Delayed Blast Fireball':'',
   'Demand':'Level=Charm8,Nobility8,S8,W8',
   'Desecrate':
     'Level=C2 ' +
-    'Description="R%{25+lvl//2*5}\' 20\' radius gives +3 DC vs. negative channel, undead +1 attacks, damage, saves, and 1 temporary HP/HD for %{lvl*2} hr"',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 negative channelled energy save DCs and gives undead +1 attacks, damage, and saves for %{lvl*2} hr, and undead created or summoned within the area also gain +1 hit point per HD; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
   'Destruction':
     'Level=C7,Death7,Repose7 ' +
-    'Description="R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP, consumed if slain (Fort 10d6 HP)"',
-  'Detect Animals Or Plants':'Level=D1,R1',
-  'Detect Chaos':'Level=Adept1,C1',
-  'Detect Evil':'Level=Adept1,C1',
+    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP and, if this slays the target, consumes its remains (save Fortitude inflicts 10d6 HP)"',
+  'Detect Animals Or Plants':'',
+  'Detect Chaos':'',
+  'Detect Evil':'',
   'Detect Good':'Level=Adept1,C1',
-  'Detect Law':'Level=Adept1,C1',
-  'Detect Magic':'Level=Adept0,B0,C0,D0,S0,W0',
+  'Detect Law':'',
+  'Detect Magic':'',
   'Detect Poison':'Level=C0,D0,P1,R1,S0,W0',
-  'Detect Scrying':'Level=B4,S4,W4',
+  'Detect Scrying':'',
   'Detect Secret Doors':'Level=B1,S1,W1',
-  'Detect Snares And Pits':'Level=D1,R1',
-  'Detect Thoughts':'Level=B2,Knowledge2,S2,W2',
-  'Detect Undead':'Level=C1,P1,S1,W1',
+  'Detect Snares And Pits':'',
+  'Detect Thoughts':'',
+  'Detect Undead':'',
   'Dictum':
-    'Level=C7,Law7 ' +
-    'Description="Nonlawful creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/staggered for 2d4 rd (Will for 1d4 rd)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will suffer 3d6+%{lvl} HP) and banished (Will -4 neg)"',
+    'Description=' +
+      '"Nonlawful creatures within 40\' with up to %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), are staggered for 2d4 rd (save Will inflicts staggered for 1d4 rd), suffer paralysis for 1d10 min (save Will inflicts paralysis for 1 rd, and are killed (save Will inflicts 3d6+%{lvl} HP)"',
   'Dimension Door':'Level=B4,Travel4,S4,W4',
-  'Dimensional Anchor':'Level=C4,S4,W4',
-  'Dimensional Lock':'Level=C8,S8,W8',
-  'Diminish Plants':'Level=D3,R3',
+  'Dimensional Anchor':'',
+  'Dimensional Lock':'',
+  'Diminish Plants':'',
   'Discern Lies':'Level=C4,Nobility4,P3',
-  'Discern Location':'Level=C8,Knowledge8,S8,W8',
+  'Discern Location':'',
   'Disguise Self':'Level=B1,Trickery1,S1,W1',
-  'Disintegrate':'Level=Destruction7,S6,W6',
+  'Disintegrate':'',
   'Dismissal':
-    'Level=C4,S5,W5 ' +
-    'Description="R%{25+lvl//2*5}\' Returns target to native plane (Will neg)"',
-  'Dispel Chaos':'Level=C5,Law5,P4',
-  'Dispel Evil':'Level=C5,Good5,P4',
-  'Dispel Good':'Level=C5,Evil5',
-  'Dispel Law':'Level=C5,Chaos5',
-  'Dispel Magic':
-    'Level=B3,C3,D4,Magic3,P3,S3,W3 Liquid=Potion ' +
-    'Description="R%{100+lvl*10}\' Successful d20+%{lvl} check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature"',
-  'Displacement':'Level=B3,S3,W3 Liquid=Potion',
-  'Disrupt Undead':'Level=S0,W0',
-  'Disrupting Weapon':'Level=C5',
-  'Divination':'Level=C4,Knowledge4',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Sends the target to its native plane or (20%) to another random plane (save Will negates)"',
+  'Dispel Chaos':'',
+  'Dispel Evil':'',
+  'Dispel Good':'',
+  'Dispel Law':'',
+  'Dispel Magic':'',
+  'Greater Dispel Magic':
+    'Level=B5,C6,Liberation6,D6,S6,W6 ' +
+    'Description="R%{100+lvl*10}\' Successful d20+%{lvl<?20} check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius or suppresses a magic item for 1d4 rd"',
+  'Displacement':'',
+  'Disrupt Undead':'',
+  'Disrupting Weapon':'',
+  'Divination':'',
   'Divine Favor':'Level=C1,Nobility1,P1',
   'Divine Power':
-    'Level=C4,War4 ' +
-    'Description="Self gains +%{lvl//3<?6} attack, damage, Strength checks, and Strength-based skill checks, +%{lvl} temporary HP, and extra attack for %{lvl} rd"',
-  'Dominate Animal':'Level=Animal3,D3',
+    'Description=' +
+      '"Self gains +%{lvl//3<?6} attack, damage, Strength checks, and Strength-based skill checks, +%{lvl} temporary hit points, and an extra attack during full-attack actions for %{lvl} rd"',
+  'Dominate Animal':'',
   'Dominate Monster':'Level=Charm9,S9,W9',
-  'Dominate Person':'Level=B4,S5,W5',
+  'Dominate Person':'',
   'Doom':'Level=C1',
-  'Dream':'Level=B5,S5,W5',
-  'Eagle\'s Splendor':'Level=B2,C2,P2,S2,W2 Liquid=Potion',
+  'Dream':'',
+
+  "Eagle's Splendor":'Level=B2,C2,P2,S2,W2',
+  "Mass Eagle's Splendor":'',
   'Earthquake':'Level=C8,D8,Destruction8,Earth8',
-  'Elemental Swarm':'Level=Air9,D9,Earth9,Fire9,Water9',
+  'Elemental Body I':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=S4,W4 ' +
+    'Description=' +
+      '"Self becomes a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+  'Elemental Body II':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=S5,W5 ' +
+    'Description=' +
+      '"Self becomes a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+  'Elemental Body III':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=S6,W6 ' +
+    'Description=' +
+      '"Self becomes a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
+  'Elemental Body IV':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
+    'Description=' +
+      '"Self becomes a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
+  'Elemental Swarm':'',
   'Endure Elements':'Level=Adept1,C1,D1,P1,R1,Sun1,S1,W1 Liquid=Potion',
   'Energy Drain':'Level=C9,S9,W9',
   'Enervation':'Level=S4,W4',
@@ -3781,9 +3814,6 @@ Pathfinder.SPELLS = {
     'Level=B1,S1,W1 ' +
     'Description="R%{25+lvl//2*5}\' Object or 10\' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Dispel Magic':
-    'Level=B5,C6,Liberation6,D6,S6,W6 ' +
-    'Description="R%{100+lvl*10}\' Successful d20+%{lvl<?20} check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius"',
   'Greater Glyph Of Warding':'Level=C6,Rune6',
   'Greater Heroism':'Level=B5,S6,W6',
   'Greater Invisibility':'Level=B4,S4,W4',
@@ -3936,7 +3966,6 @@ Pathfinder.SPELLS = {
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
   'Mark Of Justice':'Level=C5,P4',
-  'Mass Eagle\'s Splendor':'Level=B6,C6,S6,W6',
   'Mass Enlarge Person':'Level=S4,W4',
   'Mass Fox\'s Cunning':'Level=B6,S6,W6',
   'Mass Heal':'Level=C9,Healing9',
@@ -4257,22 +4286,6 @@ Pathfinder.SPELLS = {
   'Zone Of Silence':'Level=B4',
   'Zone Of Truth':'Level=C2,P2',
 
-  'Elemental Body I':
-    'School=Transmutation ' +
-    'Level=S4,W4 ' +
-    'Description="Self becomes small air (+2 Dexterity, +2 AC, fly 60\', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60\', vortex, breathe water) elemental, gains 60\' darkvision for %{lvl} min"',
-  'Elemental Body II':
-    'School=Transmutation ' +
-    'Level=S5,W5 ' +
-    'Description="Self becomes medium air (+4 Dexterity, +3 AC, fly 60\', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60\', vortex, breathe water) elemental, gains 60\' darkvision for %{lvl} min"',
-  'Elemental Body III':
-    'School=Transmutation ' +
-    'Level=S6,W6 ' +
-    'Description="Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60\', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60\', vortex, breathe water) elemental, gains 60\' darkvision, immunity to bleeding, critical hits, and Sneak Attacks for %{lvl} min"',
-  'Elemental Body IV':
-    'School=Transmutation ' +
-    'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
-    'Description="Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120\', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120\', vortex, breathe water) elemental, gains 60\' darkvision, immunity to bleeding, critical hits, and Sneak Attacks, DR 5/- for %{lvl} min"',
   'Form Of The Dragon I':
     'School=Transmutation ' +
     'Level=S6,W6 ' +
