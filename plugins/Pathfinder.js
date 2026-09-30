@@ -3721,100 +3721,144 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Self becomes a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
   'Elemental Swarm':'',
-  'Endure Elements':'Level=Adept1,C1,D1,P1,R1,Sun1,S1,W1 Liquid=Potion',
-  'Energy Drain':'Level=C9,S9,W9',
-  'Enervation':'Level=S4,W4',
-  'Enlarge Person':'Level=Strength1,S1,W1 Liquid=Potion',
+  'Endure Elements':'',
+  'Energy Drain':'',
+  'Enervation':'',
+  'Enlarge Person':'',
+  'Mass Enlarge Person':'',
   'Entangle':
-    'Level=D1,Plant1,R1 ' +
-    'Description="R%{400+lvl*40}\' Creatures in 40\' radius entangled for %{lvl} min (Ref neg)"',
+    'Description=' +
+      '"R%{400+lvl*40}\' 40\' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for %{lvl} min"',
   'Enthrall':'Level=B2,C2,Nobility2',
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rune1,S1,W1 Liquid=Oil',
-  'Ethereal Jaunt':'Level=C7,S7,W7',
-  'Etherealness':'Level=C9,S9,W9',
-  'Expeditious Retreat':'Level=B1,S1,W1',
+  'Ethereal Jaunt':'',
+  'Etherealness':'',
+  'Expeditious Retreat':'',
   'Explosive Runes':'Level=Rune4,S3,W3',
-  'Eyebite':'Level=B6,S6,W6',
+  'Eyebite':
+    'School=Necromancy ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Renders 1 target per rd with 1, 5, and 10 HD comatose for %{lvl*10} min, panicked for 1d4 rd and shaken for %{lvl*10} min, and sickened for %{lvl*10} min (save Fortitude negates), for %{lvl} rd"',
+
   'Fabricate':'Level=Artifice5,S5,W5',
-  'Faerie Fire':'Level=D1',
+  'Faerie Fire':'',
   'False Life':'Level=S2,W2',
-  'False Vision':'Level=B5,Trickery5,S5,W5',
-  'Fear':'Level=B3,S4,W4',
+  'False Vision':'',
+  'Fear':'',
   'Feather Fall':'Level=B1,S1,W1',
-  'Feeblemind':'Level=S5,W5',
-  'Find The Path':'Level=B6,C6,D6,Knowledge6,Travel6',
+  'Feeblemind':'',
+  'Find The Path':
+    'Description=' +
+      '"Touched knows the most direct route to a specified location for %{lvl*10} min"',
   'Find Traps':
     'Level=C2 ' +
-    'Description="Self gains +%{lvl//2<?10} Perception to uncover traps for %{lvl} min"',
+    'Description=' +
+      '"Self gains +%{lvl//2<?10} Perception to uncover traps and an automatic check when within 10\' of one for %{lvl} min"',
   'Finger Of Death':
-    'Level=D8,S7,W7 ' +
-    'Description="R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP (Fort 3d6+%{lvl} HP)"',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
   'Fire Seeds':
-    'Level=D6,Fire6,Sun6 ' +
-    'Description="Touched 4 acorn grenades inflict %{lvl<?20}d4 total or 8 berry bombs detonate on command to inflict 1d8+%{lvl} in 5\' radius (Ref half) for %{lvl*10} min"',
-  'Fire Shield':'Level=Fire5,Sun4,S4,W4',
+    'Description=' +
+      '"Changes 4 touched acorns into grenades that can be thrown with a 20\' range increment for ranged touch attacks that inflict %{lvl<?20}d4 HP fire in total%{lvl>10?\' (the most powerful can inflict at most 10d4 HP)\':\'\'}, plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+%{lvl} HP fire in a 5\' radius each (save Reflex half), for %{lvl*10} min"',
+  'Fire Shield':'',
   'Fire Storm':
     'Level=C8,D7 ' +
-    'Description="R%{100+lvl*10}\' %{lvl*2} 10\' cu inflicts %{lvl<?20}d6 HP, then 4d6 HP/rd until extinguished (Ref half, initial damage only)"',
-  'Fire Trap':'Level=D2,S4,W4 Liquid=Oil',
+    'Description=' +
+      '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only)"',
+  'Fire Trap':'Liquid=Oil',
   'Fireball':'Level=Fire3,S3,W3',
-  'Flame Arrow':'Level=S3,W3 Liquid=Oil',
-  'Flame Blade':'Level=D2',
-  'Flame Strike':'Level=C5,D4,Sun5,War5',
+  'Flame Arrow':'',
+  'Flame Blade':'',
+  'Flame Strike':'',
   'Flaming Sphere':
-    'Level=D2,S2,W2 ' +
-    'Description="R%{100+lvl*10}\' 5\' diameter sphere inflicts 3d6 HP (Ref neg), jumps or moves 30\'/rd for %{lvl} rd"',
-  'Flare':'Level=B0,D0,S0,W0',
-  'Flesh To Stone':'Level=S6,W6',
-  'Floating Disk':'Level=S1,W1',
+    'Description=' +
+      '"R%{100+lvl*10}\' 5\' diameter sphere inflicts 3d6 HP fire (save Reflex negates) for %{lvl} rd; can be directed to jump 30\' and move 30\' per rd"',
+  'Flare':'',
+  'Flesh To Stone':'',
+  'Floating Disk':'',
   'Fly':
-    'Level=Travel3,S3,W3 ' +
-    'Description="Touched gains 60\' fly Speed and +%{lvl//2} Fly skill for %{lvl} min" ' +
-    'Liquid=Potion',
+    'Description=' +
+      '"Touched gains a 60\' fly Speed and +%{lvl//2} Fly skill for %{lvl} min, then floats downward 60\' per rd for 1d6 rd"',
   'Fog Cloud':'Level=D2,S2,W2,Water2,Weather2',
-  'Forbiddance':'Level=C6',
+  'Forbiddance':'',
   'Forcecage':
-    'Level=S7,W7 ' +
-    'Description="R%{25+lvl//2*5}\' Traps targets in 20\' cage or 10\' cube for %{lvl} rd"',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell for %{lvl} rd"',
   'Forceful Hand':
+    'Description=' +
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 AC, and performs a +%{lvl+9} bull rush for %{lvl} rd"',
+  'Foresight':'',
+  'Form Of The Dragon I':
+    'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
-    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs %{lvl+9} bull rush for %{lvl} rd"',
-  'Foresight':'Level=D9,Knowledge9,S9,W9',
-  'Fox\'s Cunning':'Level=B2,S2,W2 Liquid=Potion',
+    'Description=' +
+      '"Self becomes a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
+  'Form Of The Dragon II':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=S7,W7 ' +
+    'Description=' +
+      '"Self becomes a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 2d6 HP, 2x1d8 HP, and 2x1d6 HP"',
+  'Form Of The Dragon III':
+    'School="Transmutation (Polymorph)" ' +
+    'Level=S8,W8 ' +
+    'Description=' +
+      '"Self becomes a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
+  "Fox's Cunning":'Level=B2,S2,W2',
+  "Mass Fox's Cunning":'',
   'Freedom':'Level=Liberation9,S9,W9',
   'Freedom Of Movement':'Level=B4,C4,D4,Liberation4,Luck4,R4',
   'Freezing Sphere':
-    'Level=S6,W6 ' +
-    'Description="R%{400+lvl*40}\' 40\' radius inflicts %{lvl<?15}d6 HP (Ref half)"',
+    'Description=' +
+      '"R%{400+lvl*40}\' 40\' radius inflicts %{lvl<?15}d6 HP cold, or %{lvl<?15}d8 HP cold to elemental water creatures (save Reflex half), and freezes a 40\' radius of water to a depth of 6\\" for %{lvl} rd"',
+
   'Gaseous Form':
-    'Level=Air3,B3,S3,W3 ' +
-    'Description="Touched becomes insubstantial (DR 10/magic, immune to poison, Sneak Attacks, and critical hits, unable to use spell components, fly 10\') for %{lvl*2} min" ' +
-    'Liquid=Potion',
-  'Gate':'Level=C9,Glory9,S9,W9',
-  'Geas/Quest':'Level=B6,C6,Charm6,Nobility6,S6,W6',
+    'Description=' +
+      '"Touched becomes insubstantial, losing its armor bonus to Armor Class, any supernatural abilities, ability to manipulate objects, and ability to cast spells with components, but gaining DR 10/magic, immunity to poison, Sneak Attack, and critical hits, a 10\' fly Speed, and the ability to pass through small openings, for %{lvl*2} min"',
+  'Gate':
+    'Level=C9,Glory9,S9,W9 ' +
+    'Description=' +
+      '"R%{100+lvl*10}\' Creates a 5\'-20\' diameter disk passage to another plane for concentration up to %{lvl} rd, or, at the cost of 10,000 GP, allows summoning extraplanar creatures&mdash;a named creature, a single creature of a named kind, or up to %{lvl*2} HD of a named kind"',
+  'Lesser Geas':'',
+  'Geas/Quest':
+    'Level=B6,C6,Charm6,Nobility6,S6,W6 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Compels a target to complete a specified task (save Will negates) within %{lvl} days, suffering -3 to each ability score (maximum -12, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task"',
   'Gentle Repose':'Level=C2,Repose2,S3,W3 Liquid=Oil',
-  'Ghost Sound':'Level=Adept0,B0,S0,W0',
-  'Ghoul Touch':'Level=S2,W2',
+  'Ghost Sound':
+    'Level=Adept0,B0,S0,W0 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Produces the sound volume of %{lvl*4<?40} humans (save Will upon interaction disbelieves) for %{lvl} rd"',
+  'Ghoul Touch':'',
+  'Giant Form I':
+    'School=Transmutation ' +
+    'Level=S7,W7 ' +
+    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, Low-Light vision, and, depending on the form taken, 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, and 60\' rock throwing that inficts 2d6 HP"',
+  'Giant Form II':
+    'School=Transmutation ' +
+    'Level=S8,W8 ' +
+    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, +10 Speed, and, depending on the form taken, a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, 120\' rock throwing that inficts 2d10 HP, and elemental resistances and vulnerabilities"',
   'Giant Vermin':
-    'Level=C4,D4 ' +
-    'Description="R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey self for %{lvl} min"',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey simple commands for %{lvl} min"',
   'Glibness':
     'Level=B3 ' +
-    'Description="Self gains +20 Bluff, SR %{lvl+15} (magical lie detection) for %{lvl*10} min"',
-  'Glitterdust':'Level=B2,S2,W2',
-  'Globe Of Invulnerability':'Level=S6,W6',
+    'Description=' +
+      '"Gives self +20 Bluff with lies and SR %{lvl+15} vs. magical lie detection for %{lvl*10} min"',
+  'Glitterdust':'',
+  'Globe Of Invulnerability':'',
+  'Lesser Globe Of Invulnerability':'',
   'Glyph Of Warding':'Level=C3,Rune3',
-  'Good Hope':'Level=B3 Liquid=Potion',
-  'Goodberry':'Level=D1 Liquid=Oil',
-  'Grasping Hand':
-    'Level=Strength7,S7,W7 ' +
-    'Description="R%{100+lvl*10}\' 10\' hand (AC 20, %{hitPoints} HP) moves 60\'/rd, gives +4 AC, and performs +%{lvl+11} bull rush and +%{lvl+11} grapple for %{lvl} rd"',
-  'Grease':
-    'Level=B1,S1,W1 ' +
-    'Description="R%{25+lvl//2*5}\' Object or 10\' sq becomes slippery, causing falls (Ref DC 10 Acrobatics for half Speed) for %{lvl} min" ' +
-    'Liquid=Oil',
   'Greater Glyph Of Warding':'Level=C6,Rune6',
+  'Good Hope':'',
+  'Goodberry':'Liquid=Oil',
+  'Grasping Hand':
+    'Description=' +
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+11} Bull Rush and a +%{lvl+11} Grapple for %{lvl} rd"',
+  'Grease':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
+    'Liquid=Oil',
   'Greater Heroism':'Level=B5,S6,W6',
   'Greater Invisibility':'Level=B4,S4,W4',
   'Greater Magic Fang':'Level=D3,R3 Liquid=Potion',
@@ -3831,16 +3875,19 @@ Pathfinder.SPELLS = {
   'Greater Shout':'Level=B6,S8,W8',
   'Greater Spell Immunity':'Level=C8',
   'Greater Teleport':'Level=Travel7,S7,W7',
-  'Guards And Wards':'Level=S6,W6',
-  'Guidance':'Level=Adept0,C0,D0 Liquid=Potion',
-  'Gust Of Wind':'Level=D2,S2,W2',
+  'Guards And Wards':'',
+  'Guidance':'Liquid=Potion',
+  'Gust Of Wind':
+    'Description=' +
+      '"Creates a 60\' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Strength DC 15 allows Medium creatures to move); Tiny creatures are also pushed 1d4x10\', suffering 1d4 HP nonlethal per 10\'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move aginst the wind, with Tiny flying creatures blown back 2d6x10\', suffering 2d6 HP nonlethal (save Fly DC 25 negates)"',
+
   'Hallow':
-    'Level=C5,D5 ' +
-    'Description="40\' radius from touched gives +2 AC and saves vs. evil, suppresses mental control, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling +4 DC and negative channeling -4 DC, and evokes boon spell"',
-  'Hallucinatory Terrain':'Level=B4,S4,W4',
-  'Halt Undead':'Level=S3,W3',
-  'Harm':'Level=C6,Destruction6',
-  'Haste':'Level=B3,S3,W3 Liquid=Potion',
+    'Description=' +
+      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, suppresses mental control, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
+  'Hallucinatory Terrain':'',
+  'Halt Undead':'',
+  'Harm':'',
+  'Haste':'',
   'Heal':'Level=Adept5,C6,D7,Healing6',
   'Heal Mount':'Level=P3',
   'Heat Metal':'Level=D2,Sun2',
@@ -3911,8 +3958,6 @@ Pathfinder.SPELLS = {
   'Knock':'Level=S2,W2',
   'Know Direction':'Level=B0,D0',
   'Legend Lore':'Level=B4,Knowledge7,S6,W6',
-  'Lesser Geas':'Level=B3,S4,W4',
-  'Lesser Globe Of Invulnerability':'Level=S4,W4',
   'Lesser Planar Ally':'Level=C4',
   'Lesser Planar Binding':'Level=Rune5,S5,W5',
   'Lesser Restoration':'Level=C2,D2,P1 Liquid=Potion',
@@ -3966,8 +4011,6 @@ Pathfinder.SPELLS = {
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
   'Mark Of Justice':'Level=C5,P4',
-  'Mass Enlarge Person':'Level=S4,W4',
-  'Mass Fox\'s Cunning':'Level=B6,S6,W6',
   'Mass Heal':'Level=C9,Healing9',
   'Mass Hold Monster':'Level=S9,W9',
   'Mass Hold Person':'Level=S7,W7',
@@ -4286,26 +4329,6 @@ Pathfinder.SPELLS = {
   'Zone Of Silence':'Level=B4',
   'Zone Of Truth':'Level=C2,P2',
 
-  'Form Of The Dragon I':
-    'School=Transmutation ' +
-    'Level=S6,W6 ' +
-    'Description="Self becomes medium dragon (+4 Strength, +2 Constitution, +4 AC, Fly 60\', Darkvision 60\', breath weapon once 6d8 HP (Ref half), resistance to energy, bite 1d8 HP, claws 2x1d6 HP, wings 2x1d4 HP) for %{lvl} min"',
-  'Form Of The Dragon II':
-    'School=Transmutation ' +
-    'Level=S7,W7 ' +
-    'Description="Self becomes large dragon (+6 Strength, +4 Constitution, +6 AC, Fly 90\', Darkvision 60\', breath weapon twice 8d8 HP (Ref half), resistance to energy, bite 2d6 HP, claws 2x1d8 HP, wings 2x1d6 HP) for %{lvl} min"',
-  'Form Of The Dragon III':
-    'School=Transmutation ' +
-    'Level=S8,W8 ' +
-    'Description="Self becomes huge dragon (+10 Strength, +8 Constitution, +8 AC, Fly 120\', Blindsense 60\', Darkvision 120\', breath weapon 1/d4 rd 12d8 HP (Ref half), element immunity, bite 2d8 HP, claws 2x2d6 HP, wings 2x1d8 HP, tail 2d6 HP) for %{lvl} min"',
-  'Giant Form I':
-    'School=Transmutation ' +
-    'Level=S7,W7 ' +
-    'Description="Self becomes large giant (+6 Strength, -2 Dexterity, +4 Constitution, +4 AC, low-light vision, form abilities) for %{lvl} min"',
-  'Giant Form II':
-    'School=Transmutation ' +
-    'Level=S8,W8 ' +
-    'Description="Self becomes huge giant (+8 Strength, -2 Dexterity, +6 Constitution, +6 AC, low-light vision, form abilities) for %{lvl} min"',
   'Greater Polymorph':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
