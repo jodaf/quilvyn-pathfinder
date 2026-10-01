@@ -3416,6 +3416,7 @@ Pathfinder.SKILLS = {
   'Use Magic Device':
     'Ability=Charisma Untrained=false Class=Bard,Rogue,Sorcerer'
 };
+// TODO: Check Liquids
 Pathfinder.SPELLS = {
 
   'Acid Arrow':'',
@@ -3555,7 +3556,9 @@ Pathfinder.SPELLS = {
   'Clenched Fist':
     'Description=' +
       '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs +%{lvl+12} bull rush and +%{lvl+11+mdf} melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
-  'Cloak Of Chaos':'',
+  'Cloak Of Chaos':
+    'Description=' +
+      '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
   'Clone':'',
   'Cloudkill':'',
   'Color Spray':'',
@@ -3573,7 +3576,7 @@ Pathfinder.SPELLS = {
   'Confusion':
     'Level=B3,Madness4,Trickery4,S4,W4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% the attack the nearest creature (save Will negates), for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for %{lvl} rd"',
   'Lesser Confusion':
     'Level=B1,Madness1 ' +
     'Description=' +
@@ -3859,8 +3862,6 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Heroism':'Level=B5,S6,W6',
-  'Greater Invisibility':'Level=B4,S4,W4',
   'Greater Magic Fang':'Level=D3,R3 Liquid=Potion',
   'Greater Magic Weapon':'Level=C4,P3,S3,W3 Liquid=Oil',
   'Greater Planar Ally':'Level=C8',
@@ -3883,80 +3884,121 @@ Pathfinder.SPELLS = {
 
   'Hallow':
     'Description=' +
-      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, suppresses mental control, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
+      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control or possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
   'Hallucinatory Terrain':'',
   'Halt Undead':'',
   'Harm':'',
   'Haste':'',
-  'Heal':'Level=Adept5,C6,D7,Healing6',
-  'Heal Mount':'Level=P3',
-  'Heat Metal':'Level=D2,Sun2',
-  'Helping Hand':'Level=C3',
+  'Heal':'',
+  'Mass Heal':'',
+  'Heal Mount':'',
+  'Heat Metal':'',
+  'Helping Hand':'',
   'Heroes\' Feast':
     'Level=B6,C6,Community6 ' +
-    'Description="R%{25+lvl//2*5}\' Food for %{lvl} creatures cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary HP, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr"',
-  'Heroism':'Level=B2,Charm4,S3,W3 Liquid=Potion',
-  'Hide From Animals':'Level=D1,R1 Liquid=Potion',
-  'Hide From Undead':'Level=C1 Liquid=Potion',
-  'Hideous Laughter':'Level=B1,S2,W2',
-  'Hold Animal':'Level=Animal2,D2,R2',
-  'Hold Monster':'Level=B4,Law6,S5,W5',
-  'Hold Person':'Level=B2,C2,S3,W3',
-  'Hold Portal':'Level=S1,W1 Liquid=Oil',
-  'Holy Aura':'Level=C8,Glory8,Good8',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Creates food for %{lvl} creatures that cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary hit points, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr"',
+  'Heroism':'Level=B2,Charm4,S3,W3',
+  'Greater Heroism':'',
+  'Hide From Animals':'',
+  'Hide From Undead':'',
+  'Hideous Laughter':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Target falls into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster gain +4) for %{lvl} rd"',
+  'Hold Animal':'',
+  'Hold Monster':'',
+  'Mass Hold Monster':'',
+  'Hold Person':'',
+  'Mass Hold Person':'',
+  'Hold Portal':'Liquid=Oil',
+  'Holy Aura':
+    'Level=C8,Glory8,Good8 ' +
+    'Description=' +
+      '"%{lvl} creatures within 20\' blind successful evil attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Holy Smite':'Level=C4,Glory4,Good4',
-  'Holy Sword':'Level=Glory7,P4',
+  'Holy Sword':
+    'Level=Glory7,P4 ' +
+    'Description=' +
+      '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures for %{lvl} rd"',
   'Holy Word':
-    'Level=C7,Good7 ' +
-    'Description="Nongood creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/blinded for 2d4 rd (Will for 1d4 rd)/paralyzed for 1d10 min (Will for 1 rd)/killed (Will suffer 3d6+%{lvl} HP) and banished (Will neg)"',
-  'Horrid Wilting':'Level=Water8,S8,W8',
-  'Hypnotic Pattern':'Level=B2,S2,W2',
-  'Hypnotism':'Level=B1,S1,W1',
+    'Description=' +
+      '"Nongood creatures within 40\' with %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), blinded for 2d4 rd (save Will for 1d4 rd), paralyzed for 1d10 min (save Will for 1 rd), and killed (save Will inflicts 3d6+%{lvl} HP)"',
+  'Horrid Wilting':'',
+  'Hypnotic Pattern':'',
+  'Hypnotism':'',
+
   'Ice Storm':
     'Level=D4,S4,W4,Water5,Weather5 ' +
-    'Description="R%{400+lvl*40}\' Hail in 20\' radius inflicts 3d6 HP bludgeoning, 2d6 HP cold, and -4 Perception for %{lvl} rd"',
+    'Description=' +
+      '"R%{400+lvl*40}\' Hail in 20\' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
   'Identify':
     'Level=Magic1,B1,S1,W1 ' +
-    'Description="R60\' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or %{lvl*3} rd"',
+    'Description=' +
+      '"R60\' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties for %{lvl*3} rd"',
   'Illusory Script':'Level=B3,S3,W3',
-  'Illusory Wall':'Level=S4,W4',
+  'Illusory Wall':'',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
   'Implosion':
-    'Level=C9,Destruction9 ' +
-    'Description="R%{25+lvl//2*5}\' 1 target/rd suffers %{lvl*10} HP for conc or %{lvl//2} rd (Fort neg)"',
-  'Imprisonment':'Level=S9,W9',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on 1 target per rd for concentration up to %{lvl//2} rd"',
+  'Imprisonment':'',
   'Incendiary Cloud':
-    'Level=Fire8,S8,W8 ' +
-    'Description="R%{100+lvl*10}\' Fire in 20\' radius inflicts 6d6 HP (Ref half) while moving away 10\'/rd for %{lvl} rd"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Fire in a 20\' radius, 20\'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10\' per rd (or up to 60\' with concentration) for %{lvl} rd"',
   'Inflict Critical Wounds':'Level=C4,Destruction4',
+  'Mass Inflict Critical Wounds':'',
   'Inflict Light Wounds':'Level=C1',
+  'Mass Inflict Light Wounds':'Level=C5',
   'Inflict Moderate Wounds':'Level=C2',
+  'Mass Inflict Moderate Wounds':'',
   'Inflict Serious Wounds':'Level=C3',
+  'Mass Inflict Serious Wounds':'',
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
-    'Description="R%{100+lvl*10}\' Target permanently randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest permanently (Will neg)"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Target permanently randomly 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)"',
   'Insect Plague':
     'Level=C5,D5 ' +
-    'Description="R%{400+lvl*40}\' %{lvl//3<?6} wasp swarms inflict 2d6 HP and -1 Dexterity (DC 13 Fort neg) for %{lvl} min"',
+    'Description=' +
+      '"R%{400+lvl*40}\' %{lvl//3<?6} wasp swarms inflict 2d6 HP and -1 Dexterity (save Fortitude DC 13 HP only) for %{lvl} min"',
   'Instant Summons':'Level=Rune7,S7,W7',
-  'Interposing Hand':'Level=S5,W5',
-  'Invisibility':'Level=Adept2,B2,Trickery2,S2,W2 Liquid=Oil,Potion',
-  'Invisibility Purge':'Level=C3',
-  'Invisibility Sphere':'Level=B3,S3,W3',
+  'Interposing Hand':'',
+  'Invisibility':
+    'Level=Adept2,B2,Trickery2,S2,W2 ' +
+    'Description=' +
+      '"Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
+  'Greater Invisibility':
+    'Level=B4,S4,W4 ' +
+    'Description=' +
+      '"Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} rd"',
+  'Mass Invisibility':
+    'Level=Trickery8,S7,W7 ' +
+    'Description=' +
+      '"R%{400+lvl*40}\' Creatures in a 90\' radius become invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
+  'Invisibility Purge':'',
+  'Invisibility Sphere':
+    'Description=' +
+      '"Creatures within 10\' of touched become invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
   'Iron Body':
     'Level=S8,W8 ' +
-    'Description="Self becomes iron (+6 Strength, -6 Dexterity, half Speed, 35% arcane failure, -6 skill, DR 15/adamantine, half damage from acid and fire, immunity to other attacks and effects) for %{lvl} min"',
-  'Ironwood':'Level=D6',
+    'Description=' +
+      '"Self becomes living iron, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulerability to special attacks that affect iron golems, for %{lvl} min"',
+  'Ironwood':'',
   'Irresistible Dance':
-    'Level=B6,S8,W8 ' +
-    'Description="Touched dances (-4 AC, -10 Reflex) for d4+1 rd (Will for 1 rd)"',
+    'Description=' +
+      '"Touched dances in place, suffering -4 Armor Class, loss of shield bonus to Armor Class, and -10 Reflex saves, for 1d4+1 rd (save Will ends the effects after 1 rd)"',
+
   'Jump':
     'Level=D1,R1,S1,W1 ' +
-    'Description="Touched +%{lvl<5?10:lvl<9?20:30} Acrobatics (jump) for %{lvl} min" ' +
-    'Liquid=Potion',
-  'Keen Edge':'Level=S3,W3 Liquid=Oil',
-  'Knock':'Level=S2,W2',
-  'Know Direction':'Level=B0,D0',
+    'Description=' +
+      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jump for %{lvl} min"',
+
+  'Keen Edge':'',
+  'Knock':
+    'Description=' +
+      '"R%{100+lvl*10}\' Opens a stuck or barred door, chest, or shackle, gives a +{lvl+10} check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
+  'Know Direction':'',
+
   'Legend Lore':'Level=B4,Knowledge7,S6,W6',
   'Lesser Planar Ally':'Level=C4',
   'Lesser Planar Binding':'Level=Rune5,S5,W5',
@@ -4011,14 +4053,6 @@ Pathfinder.SPELLS = {
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
   'Mark Of Justice':'Level=C5,P4',
-  'Mass Heal':'Level=C9,Healing9',
-  'Mass Hold Monster':'Level=S9,W9',
-  'Mass Hold Person':'Level=S7,W7',
-  'Mass Inflict Critical Wounds':'Level=C8',
-  'Mass Inflict Light Wounds':'Level=C5',
-  'Mass Inflict Moderate Wounds':'Level=C6',
-  'Mass Inflict Serious Wounds':'Level=C7',
-  'Mass Invisibility':'Level=Trickery8,S7,W7',
   'Mass Owl\'s Wisdom':'Level=C6,D6,S6,W6',
   'Mass Reduce Person':'Level=S4,W4',
   'Mass Suggestion':'Level=B5,S6,W6',
