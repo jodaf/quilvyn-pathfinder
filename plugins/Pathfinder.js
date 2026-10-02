@@ -3439,7 +3439,7 @@ Pathfinder.SPELLS = {
   'Animal Shapes':
     'School="Transmutation (Polymorph)"' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen Diminutive - Huge animal for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for %{lvl} hr"',
   'Animal Trance':
     'Description=' +
       '"R%{25+lvl//2*5}\' 2d6 HD of animals with Intelligence 1 or 2 sit unmoving (save Will negates) for concentration"',
@@ -3505,6 +3505,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
   'Blade Barrier':'',
+  // TODO: awkward phrasing
   'Blasphemy':
     'Description=' +
       '"Nonevil creatures within 40\' with up to %{lvl}/%{lvl-1}/%{lvl-5}/%{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become dazed for 1 rd (save Will negates)/suffer -2d6 Strength for 2d4 rd (save Will half)/become paralyzed for 1d10 min (save Will inflicts paralyzed for 1 rd)/are killed (save Will inflicts 3d6+%{lvl} HP)"',
@@ -3512,7 +3513,7 @@ Pathfinder.SPELLS = {
     'School=Necromancy ' +
     'Level=C0,S0,W0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (save Will neg)"',
+      '"R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (save Will negates)"',
   'Bless':'Level=Adept1,C1,Community1,P1',
   'Bless Water':'',
   'Bless Weapon':'Level=Glory2,P1',
@@ -3523,7 +3524,7 @@ Pathfinder.SPELLS = {
   'Break Enchantment':
     'Level=Adept5,B4,C5,Liberation5,Luck5,P4,S5,W5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self makes a +%{lvl<?15} check (DC 11 + the effect\'s caster level) to free %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
+      '"R%{25+lvl//2*5}\' Successful caster level check (+15 maximum) against a DC of 11 + the effect\'s caster level, frees %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
   'Breath Of Life':
     'School="Conjuration (Healing)"' +
     'Level=C5,Healing5 ' +
@@ -3542,7 +3543,7 @@ Pathfinder.SPELLS = {
   'Cause Fear':'Level=Adept1,B1,C1,Death1,S1,W1',
   'Chain Lightning':
     'Description=' +
-      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in 30\' radius (save Reflex +2 half)"',
+      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in a 30\' radius (save Reflex +2 half)"',
   'Changestaff':'',
   'Chaos Hammer':'Level=C4,Chaos4',
   'Charm Animal':'',
@@ -3555,7 +3556,7 @@ Pathfinder.SPELLS = {
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
   'Clenched Fist':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs +%{lvl+12} bull rush and +%{lvl+11+mdf} melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+12} Bull Rush and +%{lvl+11} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
   'Cloak Of Chaos':
     'Description=' +
       '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
@@ -3626,7 +3627,7 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Target humanoid with up to 4 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
   'Daze Monster':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
+      '"R%{100+lvl*10}\' Target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
   'Death Knell':'Level=C2,Death2',
   'Death Ward':
     'Level=C4,D5,Death4,Repose4,P4 ' +
@@ -3636,7 +3637,7 @@ Pathfinder.SPELLS = {
     'School="Necromancy" ' +
     'Level=C1,Repose1 ' +
     'Description=' +
-      '"30\' cone reveals whether creatures are dead, alive with up to 3 or more than 3 hit points, healthy, undead, or animated, for %{lvl*10} min"',
+      '"30\' cone reveals whether creatures are dead, alive with up to 3 hit points, alive with more than 3 hit points, healthy, undead, or animated, for %{lvl*10} min"',
   'Deep Slumber':'Level=B3,S3,W3',
   'Deeper Darkness':
     'Level=Adept3,C3,Darkness3 ' +
@@ -3651,7 +3652,7 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 negative channelled energy save DCs and gives undead +1 attacks, damage, and saves for %{lvl*2} hr, and undead created or summoned within the area also gain +1 hit point per HD; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
   'Destruction':
     'Level=C7,Death7,Repose7 ' +
-    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP and, if this slays the target, consumes its remains (save Fortitude inflicts 10d6 HP)"',
+    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains"',
   'Detect Animals Or Plants':'',
   'Detect Chaos':'',
   'Detect Evil':'',
@@ -3664,6 +3665,7 @@ Pathfinder.SPELLS = {
   'Detect Snares And Pits':'',
   'Detect Thoughts':'',
   'Detect Undead':'',
+  // TODO: awkward phrasing
   'Dictum':
     'Description=' +
       '"Nonlawful creatures within 40\' with up to %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), are staggered for 2d4 rd (save Will inflicts staggered for 1d4 rd), suffer paralysis for 1d10 min (save Will inflicts paralysis for 1 rd, and are killed (save Will inflicts 3d6+%{lvl} HP)"',
@@ -3682,10 +3684,12 @@ Pathfinder.SPELLS = {
   'Dispel Evil':'',
   'Dispel Good':'',
   'Dispel Law':'',
-  'Dispel Magic':'',
+  'Dispel Magic':
+    'Description=' +
+      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20\' radius, or disrupts a foe\'s spell casting"',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
-    'Description="R%{100+lvl*10}\' Successful d20+%{lvl<?20} check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius or suppresses a magic item for 1d4 rd"',
+    'Description="R%{100+lvl*10}\' Successful caster level check check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius or suppresses a magic item for 1d4 rd"',
   'Displacement':'',
   'Disrupt Undead':'',
   'Disrupting Weapon':'',
@@ -3790,7 +3794,7 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell for %{lvl} rd"',
   'Forceful Hand':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 AC, and performs a +%{lvl+9} bull rush for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+9} Bull Rush for %{lvl} rd"',
   'Foresight':'',
   'Form Of The Dragon I':
     'School="Transmutation (Polymorph)" ' +
@@ -3884,7 +3888,7 @@ Pathfinder.SPELLS = {
 
   'Hallow':
     'Description=' +
-      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control or possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
+      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
   'Hallucinatory Terrain':'',
   'Halt Undead':'',
   'Harm':'',
@@ -3897,7 +3901,7 @@ Pathfinder.SPELLS = {
   'Heroes\' Feast':
     'Level=B6,C6,Community6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Creates food for %{lvl} creatures that cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary hit points, +1 attacks and Will saves, and +4 vs. poison and fear for 12 hr"',
+      '"R%{25+lvl//2*5}\' Creates food for %{lvl} creatures that cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary hit points, +1 attacks, +1 Will saves, and +4 saves vs. poison and fear, for 12 hr"',
   'Heroism':'Level=B2,Charm4,S3,W3',
   'Greater Heroism':'',
   'Hide From Animals':'',
@@ -3914,12 +3918,13 @@ Pathfinder.SPELLS = {
   'Holy Aura':
     'Level=C8,Glory8,Good8 ' +
     'Description=' +
-      '"%{lvl} creatures within 20\' blind successful evil attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
+      '"%{lvl} creatures within 20\' blind successful evil attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Holy Smite':'Level=C4,Glory4,Good4',
   'Holy Sword':
     'Level=Glory7,P4 ' +
     'Description=' +
-      '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures for %{lvl} rd"',
+      '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures, for %{lvl} rd"',
+  // TODO: awkward phrasing
   'Holy Word':
     'Description=' +
       '"Nongood creatures within 40\' with %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), blinded for 2d4 rd (save Will for 1d4 rd), paralyzed for 1d10 min (save Will for 1 rd), and killed (save Will inflicts 3d6+%{lvl} HP)"',
@@ -3930,11 +3935,11 @@ Pathfinder.SPELLS = {
   'Ice Storm':
     'Level=D4,S4,W4,Water5,Weather5 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Hail in 20\' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
+      '"R%{400+lvl*40}\' Hail in a 20\' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
   'Identify':
     'Level=Magic1,B1,S1,W1 ' +
     'Description=' +
-      '"R60\' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties for %{lvl*3} rd"',
+      '"R60\' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties, for %{lvl*3} rd"',
   'Illusory Script':'Level=B3,S3,W3',
   'Illusory Wall':'',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
@@ -3956,7 +3961,7 @@ Pathfinder.SPELLS = {
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target permanently randomly 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)"',
+      '"R%{100+lvl*10}\' Target permanently randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)"',
   'Insect Plague':
     'Level=C5,D5 ' +
     'Description=' +
@@ -3982,7 +3987,7 @@ Pathfinder.SPELLS = {
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
-      '"Self becomes living iron, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulerability to special attacks that affect iron golems, for %{lvl} min"',
+      '"Self becomes living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulerability to special attacks that affect iron golems"',
   'Ironwood':'',
   'Irresistible Dance':
     'Description=' +
@@ -3996,27 +4001,29 @@ Pathfinder.SPELLS = {
   'Keen Edge':'',
   'Knock':
     'Description=' +
-      '"R%{100+lvl*10}\' Opens a stuck or barred door, chest, or shackle, gives a +{lvl+10} check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
+      '"R%{100+lvl*10}\' Opens a stuck or barred door, chest, or shackle, gives a +%{lvl+10} check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
   'Know Direction':'',
 
-  'Legend Lore':'Level=B4,Knowledge7,S6,W6',
+  'Legend Lore':'',
   'Lesser Planar Ally':'Level=C4',
   'Lesser Planar Binding':'Level=Rune5,S5,W5',
   'Lesser Restoration':'Level=C2,D2,P1 Liquid=Potion',
-  'Levitate':'Level=S2,W2 Liquid=Oil,Potion',
+  'Levitate':'',
   'Light':
-    'Level=Adept0,B0,C0,D0,S0,W0 ' +
     'Description="Touched gives 20\' normal light for %{lvl*10} min" ' +
     'Liquid=Oil',
-  'Lightning Bolt':'Level=Adept3,S3,W3',
-  'Limited Wish':'Level=S7,W7',
-  'Liveoak':'Level=D6',
+  'Lightning Bolt':'',
+  'Limited Wish':
+    'Description=' +
+      '"Replicates a Sorcerer/Wizard spell of up 6th level or a spell from a different class of up to 5th level%{$\'features.School Specialization\'?\' (-1 level if from an opposition school)\':\'\'}, undoes the harmful effects of a spell, or produces another effect of similar power"',
+  'Liveoak':'',
   'Locate Creature':'Level=B4,S4,W4',
-  'Locate Object':'Level=B2,C3,Travel2,S2,W2',
-  'Longstrider':'Level=D1,R1,Travel1', // no liquid--personal
+  'Locate Object':'',
+  'Longstrider':'',
   'Lullaby':
-    'Level=B0 ' +
-    'Description="R%{100+lvl*10}\' Creatures in 10\' radius suffer -5 Perception, -2 Will vs. sleep for conc + %{lvl} rd (Will neg)"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep for concentration + %{lvl} rd (save Will negates)"',
+
   'Mage Armor':'Level=S1,W1 Liquid=Potion',
   'Mage Hand':'Level=B0,S0,W0',
   'Mage\'s Disjunction':'Level=Magic9,S9,W9',

@@ -287,11 +287,11 @@ var attributes = {
     <tr style="text-align:left">
       <td>Alarm (S1 Abju): R65' Entry into a 20' radius by a Tiny or larger creature triggers a choice of an audible or mental alarm (password negates) for 32 hr</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Lock (S2 Abju): Increases by 10 the DC for others to open a touched door, portal, or chest</td>
+      <td>Arcane Lock (S2 Abju): Increases by 10 the DC for others to open a touched door, portal, or chest or creates a DC 20 lock on an object without one</td>
     </tr><tr style="text-align:left">
       <td>Arcane Mark (S0 Univ): Inscribes a personal rune on touched, lasting a month on a creature or permanently on an object</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Sight (S3 Divi): R120' Reveals auras and spell abilities for 16 min; a successful DC 15+level Spellcraft reveals their schools</td>
+      <td>Arcane Sight (S3 Divi): R120' Reveals auras and spell abilities for 16 min; a successful DC 15 + spell level Spellcraft reveals their schools</td>
     </tr><tr style="text-align:left">
       <td>Bear's Endurance (S2 Tran): Touched gains +4 Constitution for 16 min</td>
     </tr><tr style="text-align:left">
@@ -301,11 +301,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Circle Of Death (S6 Necr): R260' Kills 16d4 HD of creatures with up to 8 HD in a 40' radius (save Fortitude negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
-      <td>Comprehend Languages (S1 Divi): Allows self to understand touched written text and words spoken in any language by touched creatures for 160 min</td>
+      <td>Comprehend Languages (S1 Divi): Allows self to understand written text and words spoken in any language for 160 min</td>
     </tr><tr style="text-align:left">
       <td>Continual Flame (S2 Evoc): Touched permanently emits a heatless torch flame</td>
     </tr><tr style="text-align:left">
-      <td>Create Greater Undead (S8 Necr): R65' Creates a wraith or shadow from physical remains</td>
+      <td>Create Greater Undead (S8 Necr): R65' Cast at night, creates a wraith or shadow from physical remains</td>
     </tr><tr style="text-align:left">
       <td>Dancing Lights (S0 Evoc): R260' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
@@ -317,25 +317,25 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Dominate Person (S5 Ench): R65' Target humanoid obeys mental commands (save Will negates) for 16 days; concentration allows receiving sensory info from the target</td>
     </tr><tr style="text-align:left">
-      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 1 day</td>
+      <td>Endure Elements (S1 Abju): Touched remains comfortable between -50F and 140F for 24 hr</td>
     </tr><tr style="text-align:left">
       <td>Fabricate (S5 Tran): R65' Creates finished items from 160 cubic feet of raw materials, or 16 cubic feet if working with minerals</td>
     </tr><tr style="text-align:left">
       <td>Feather Fall (S1 Tran): R65' 16 falling targets in a 10' radius slow to 60' per rd (save Will negates) for 16 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Dispel Magic (S6 Abju): R260' Successful d20+16 check vs. 11+caster level cancels 4 targeted spells or 1 spell or curse on each creature in a 20' radius</td>
+      <td>Greater Dispel Magic (S6 Abju): R260' Successful caster level check check vs. 11+caster level cancels 4 targeted spells or 1 spell or curse on each creature in a 20' radius or suppresses a magic item for 1d4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Invisibility (Invisible Thief4 Illu): Touched becomes invisible for 20 rd</td>
+      <td>Greater Invisibility (Invisible Thief4 Illu): Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Planar Binding (S8 Conj): Traps 1-3 extraplanar creatures with up to 18 HD total in a <i>Magic Circle</i> (save Will negates) until they perform a task (opposed Charisma allows refusal), escape via SR, dimensional travel, or a 23 Charisma check, or 16 days pass</td>
     </tr><tr style="text-align:left">
       <td>Greater Prying Eyes (S8 Divi): 1d4+16 floating eyes (AC 18, 1 HP, +16 Stealth, +16 Perception, Fly 30') with True Seeing scout 1 mile for 16 hr</td>
     </tr><tr style="text-align:left">
-      <td>Jump (S1 Tran): Touched +30 Acrobatics (jump) for 16 min</td>
+      <td>Jump (S1 Tran): Touched gains +30 Acrobatics to jump for 16 min</td>
     </tr><tr style="text-align:left">
-      <td>Knock (S2 Tran): R260' Opens a stuck, barred, locked, or magically held door, chest, or shackle and suppresses <i>Arcane Lock</i> for 10 min</td>
+      <td>Knock (S2 Tran): R260' Opens a stuck or barred door, chest, or shackle, gives a +{(casterLevels.S+(spellEffectsCasterLevelBonus.Transmutation||0))+10} check to open locks, and suppresses <i>Arcane Lock</i> for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Geas (S4 Ench): R65' Compels a target with up to 7 HD to complete a specified task (save Will negates) within 16 days, suffering -2 to each ability score (maximum -8, and no score can drop below 1) for each 24 hr spent without obeying; this infliction ends 24 hr after resuming the task</td>
+      <td>Lesser Geas (S4 Ench): R65' Compels a target with up to 7 HD to complete a specified task (save Will negates) within 16 days, suffering -2 to each ability score (maximum -8, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task</td>
     </tr><tr style="text-align:left">
       <td>Mage Armor (Bloodline1 Conj): Gives touched a +4 armor bonus for 6 hr</td>
     </tr><tr style="text-align:left">
