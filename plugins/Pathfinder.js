@@ -45,12 +45,12 @@ function Pathfinder() {
   rules.choiceRules = Pathfinder.choiceRules;
   rules.removeChoice = SRD35.removeChoice;
   rules.editorElements = SRD35.initialEditorElements();
-  rules.getChoices = SRD35.getChoices;
   rules.getFormats = Pathfinder.getFormats;
   rules.getPlugins = Pathfinder.getPlugins;
   rules.makeValid = SRD35.makeValid;
   rules.randomizeOneAttribute = Pathfinder.randomizeOneAttribute;
   rules.defineChoice('random', Pathfinder.RANDOMIZABLE_ATTRIBUTES);
+  rules.getChoices = SRD35.getChoices;
   rules.ruleNotes = Pathfinder.ruleNotes;
 
   SRD35.ABBREVIATIONS.CMB = 'Combat Maneuver Bonus';
@@ -78,7 +78,7 @@ function Pathfinder() {
      Pathfinder.LANGUAGES, Pathfinder.SKILLS);
   Pathfinder.identityRules(
     rules, Pathfinder.ALIGNMENTS, Pathfinder.CLASSES, Pathfinder.DEITIES,
-    Pathfinder.FACTIONS, Pathfinder.PATHS, Pathfinder.RACES, Pathfinder.TRACKS,
+    Pathfinder.FACTIONS, Pathfinder.RACES, Pathfinder.TRACKS,
     Pathfinder.TRAITS, Pathfinder.PRESTIGE_CLASSES, Pathfinder.NPC_CLASSES
   );
 
@@ -3211,8 +3211,6 @@ Pathfinder.LANGUAGES = {
   'Terran':'',
   'Undercommon':''
 };
-Pathfinder.PATHS = {
-};
 Pathfinder.RACES = {
   'Dwarf':
     'Size=Medium ' +
@@ -3416,7 +3414,6 @@ Pathfinder.SKILLS = {
   'Use Magic Device':
     'Ability=Charisma Untrained=false Class=Bard,Rogue,Sorcerer'
 };
-// TODO: Check Liquids
 Pathfinder.SPELLS = {
 
   'Acid Arrow':'',
@@ -3459,9 +3456,9 @@ Pathfinder.SPELLS = {
       '"10\' radius bars animate plants for %{lvl} min"',
   'Arcane Eye':'',
   'Arcane Lock':
-    'Liquid=Oil ' +
     'Description=' +
-      '"Increases by 10 the DC for others to open a touched door, portal, or chest or creates a DC 20 lock on an object without one"',
+      '"Increases by 10 the DC for others to open a touched door, portal, or chest or creates a DC 20 lock on an object without one" ' +
+    'Liquid=Oil',
   'Arcane Mark':'Liquid=Oil',
   'Arcane Sight':'',
   'Greater Arcane Sight':'',
@@ -3686,7 +3683,8 @@ Pathfinder.SPELLS = {
   'Dispel Law':'',
   'Dispel Magic':
     'Description=' +
-      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20\' radius, or disrupts a foe\'s spell casting"',
+      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20\' radius, or disrupts a foe\'s spell casting" ' +
+    'Liquid=Potion',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
     'Description="R%{100+lvl*10}\' Successful caster level check check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius or suppresses a magic item for 1d4 rd"',
@@ -3866,8 +3864,6 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Magic Fang':'Level=D3,R3 Liquid=Potion',
-  'Greater Magic Weapon':'Level=C4,P3,S3,W3 Liquid=Oil',
   'Greater Planar Ally':'Level=C8',
   'Greater Planar Binding':'Level=S8,W8',
   'Greater Prying Eyes':
@@ -4005,9 +4001,6 @@ Pathfinder.SPELLS = {
   'Know Direction':'',
 
   'Legend Lore':'',
-  'Lesser Planar Ally':'Level=C4',
-  'Lesser Planar Binding':'Level=Rune5,S5,W5',
-  'Lesser Restoration':'Level=C2,D2,P1 Liquid=Potion',
   'Levitate':'',
   'Light':
     'Description="Touched gives 20\' normal light for %{lvl*10} min" ' +
@@ -4024,7 +4017,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep for concentration + %{lvl} rd (save Will negates)"',
 
-  'Mage Armor':'Level=S1,W1 Liquid=Potion',
+  'Mage Armor':'Level=S1,W1',
   'Mage Hand':'Level=B0,S0,W0',
   'Mage\'s Disjunction':'Level=Magic9,S9,W9',
   'Mage\'s Faithful Hound':'Level=S5,W5',
@@ -4035,32 +4028,30 @@ Pathfinder.SPELLS = {
   'Magic Aura':'Level=B1,S1,W1',
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. chaotic creatures, extra save to suppress mental control, bars contact and entry (SR neg) by chaotic summoned creatures for %{lvl*10} min or traps nonlawful summoned creatures (SR neg) for %{lvl} dy" ' +
-    'Liquid=Potion',
+    'Description="10\' radius from touched gives +2 AC and saves vs. chaotic creatures, extra save to suppress mental control, bars contact and entry (SR neg) by chaotic summoned creatures for %{lvl*10} min or traps nonlawful summoned creatures (SR neg) for %{lvl} dy"',
   'Magic Circle Against Evil':
     'Level=C3,Good3,P3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. evil creatures, extra save to suppress mental control, bars contact and entry (SR neg) by evil summoned creatures for %{lvl*10} min or traps nongood summoned creatures (SR neg) for %{lvl} dy" ' +
-    'Liquid=Potion',
+    'Description="10\' radius from touched gives +2 AC and saves vs. evil creatures, extra save to suppress mental control, bars contact and entry (SR neg) by evil summoned creatures for %{lvl*10} min or traps nongood summoned creatures (SR neg) for %{lvl} dy"',
   'Magic Circle Against Good':
     'Level=C3,Evil3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. good creatures, extra save to suppress mental control, bars contact and entry (SR neg) by good summoned creatures for %{lvl*10} min or traps nonevil summoned creatures (SR neg) for %{lvl} dy" ' +
-    'Liquid=Potion',
+    'Description="10\' radius from touched gives +2 AC and saves vs. good creatures, extra save to suppress mental control, bars contact and entry (SR neg) by good summoned creatures for %{lvl*10} min or traps nonevil summoned creatures (SR neg) for %{lvl} dy"',
   'Magic Circle Against Law':
     'Level=C3,Chaos3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. lawful creatures, extra save to suppress mental control, bars contact and entry (SR neg) by lawful summoned creatures for %{lvl*10} min or traps nonchaotic summoned creatures (SR neg) for %{lvl} dy" ' +
-    'Liquid=Potion',
-  'Magic Fang':'Level=D1,R1 Liquid=Potion',
+    'Description="10\' radius from touched gives +2 AC and saves vs. lawful creatures, extra save to suppress mental control, bars contact and entry (SR neg) by lawful summoned creatures for %{lvl*10} min or traps nonchaotic summoned creatures (SR neg) for %{lvl} dy"',
+  'Magic Fang':'Level=D1,R1',
+  'Greater Magic Fang':'Level=D3,R3',
   'Magic Jar':'Level=S5,W5',
   'Magic Missile':'Level=S1,W1',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
-  'Magic Stone':'Level=C1,D1,Earth1 Liquid=Oil',
-  'Magic Vestment':'Level=C3,Nobility3,Strength3,War3 Liquid=Oil',
-  'Magic Weapon':'Level=C1,P1,S1,W1,War1 Liquid=Oil',
+  'Magic Stone':'Level=C1,D1,Earth1',
+  'Magic Vestment':'Level=C3,Nobility3,Strength3,War3',
+  'Magic Weapon':'Level=C1,P1,S1,W1,War1',
+  'Greater Magic Weapon':'Level=C4,P3,S3,W3',
   'Major Creation':'Level=Adept5,Artifice6,S5,W5',
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
   'Mark Of Justice':'Level=C5,P4',
-  'Mass Owl\'s Wisdom':'Level=C6,D6,S6,W6',
+  "Mass Owl's Wisdom":'Level=C6,D6,S6,W6',
   'Mass Reduce Person':'Level=S4,W4',
   'Mass Suggestion':'Level=B5,S6,W6',
   'Maze':'Level=S8,W8',
@@ -4079,16 +4070,16 @@ Pathfinder.SPELLS = {
   'Miracle':'Level=C9,Community9,Luck9',
   'Mirage Arcana':'Level=B5,S5,W5',
   'Mirror Image':'Level=Adept2,B2,Trickery2,S2,W2',
-  'Misdirection':'Level=B2,S2,W2 Liquid=Potion',
+  'Misdirection':'Level=B2,S2,W2',
   'Mislead':'Level=B5,Luck6,Trickery6,S6,W6',
   'Mnemonic Enhancer':'Level=S4,W4',
   'Modify Memory':'Level=B4',
   'Moment Of Prescience':'Level=Luck8,S8,W8',
   'Mount':'Level=S1,W1',
   'Move Earth':'Level=D6,S6,W6',
-  'Neutralize Poison':'Level=Adept3,B4,C4,D3,P4,R3 Liquid=Potion',
+  'Neutralize Poison':'Level=Adept3,B4,C4,D3,P4,R3',
   'Nightmare':'Level=B5,Madness5,S5,W5',
-  'Nondetection':'Level=R4,Trickery3,S3,W3 Liquid=Potion',
+  'Nondetection':'Level=R4,Trickery3,S3,W3',
   'Obscure Object':'Level=B1,C3,S2,W2 Liquid=Oil',
   'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Water1,S1,W1,Weather1',
   'Open/Close':'Level=B0,S0,W0',
@@ -4096,9 +4087,9 @@ Pathfinder.SPELLS = {
   'Overland Flight':
     'Level=S5,W5 ' +
     'Description="Self gains 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
-  'Owl\'s Wisdom':'Level=C2,D2,P2,R2,S2,W2 Liquid=Potion',
+  "Owl's Wisdom":'Level=C2,D2,P2,R2,S2,W2',
   'Passwall':'Level=S5,W5',
-  'Pass Without Trace':'Level=D1,R1 Liquid=Potion',
+  'Pass Without Trace':'Level=D1,R1',
   'Permanency':'Level=S5,W5',
   'Permanent Image':'Level=B6,S6,W6',
   'Persistent Image':'Level=B5,S5,W5',
@@ -4109,7 +4100,9 @@ Pathfinder.SPELLS = {
   'Phantom Trap':'Level=S2,W2',
   'Phase Door':'Level=Travel8,S7,W7',
   'Planar Ally':'Level=C6',
+  'Lesser Planar Ally':'Level=C4',
   'Planar Binding':'Level=S6,W6',
+  'Lesser Planar Binding':'Level=Rune5,S5,W5',
   'Plane Shift':'Level=C5,S7,W7',
   'Plant Growth':'Level=D3,Plant3,R3',
   'Poison':
@@ -4131,12 +4124,12 @@ Pathfinder.SPELLS = {
   'Produce Flame':'Level=D1,Fire2',
   'Programmed Image':'Level=B6,S6,W6',
   'Project Image':'Level=B6,S7,W7',
-  'Protection From Arrows':'Level=S2,W2 Liquid=Potion',
+  'Protection From Arrows':'Level=S2,W2',
   'Protection From Chaos':
     'Level=Adept1,C1,Law1,P1,S1,W1 Liquid=Potion ' +
     'Description="Touched gains +2 AC and saves vs. chaotic creatures, suppresses mental control, and bars contact by chaotic summoned creatures for %{lvl} min"',
   'Protection From Energy':
-    'Level=C3,D3,Luck3,Protection3,R2,S3,W3 Liquid=Potion',
+    'Level=C3,D3,Luck3,Protection3,R2,S3,W3',
   'Protection From Evil':
     'Level=Adept1,C1,Good1,P1,S1,W1 Liquid=Potion ' +
     'Description="Touched gains +2 AC and saves vs. evil creatures, suppresses mental control, and bars contact by evil summoned creatures for %{lvl} min"',
@@ -4153,7 +4146,7 @@ Pathfinder.SPELLS = {
   'Purify Food And Drink':'Level=Adept0,C0,D0 Liquid=Oil',
   'Pyrotechnics':'Level=B2,S2,W2',
   'Quench':'Level=D3',
-  'Rage':'Level=B2,Destruction3,Madness3,S3,W3 Liquid=Potion',
+  'Rage':'Level=B2,Destruction3,Madness3,S3,W3',
   'Rainbow Pattern':'Level=B4,S4,W4',
   'Raise Dead':'Level=Adept5,C5',
   'Ray Of Enfeeblement':
@@ -4163,30 +4156,28 @@ Pathfinder.SPELLS = {
   'Ray Of Frost':'Level=S0,W0',
   'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,S0,W0',
   'Reduce Animal':'Level=D2,R3 Liquid=Potion',
-  'Reduce Person':'Level=S1,W1 Liquid=Potion',
+  'Reduce Person':'Level=S1,W1',
   'Refuge':'Level=C7,Community7,Liberation7,S9,W9',
   'Regenerate':'Level=C7,D9,Healing7',
   'Reincarnate':'Level=D4',
-  'Remove Blindness/Deafness':'Level=C3,P3 Liquid=Potion',
+  'Remove Blindness/Deafness':'Level=C3,P3',
   'Remove Curse':
     'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
-    'Description="Self makes caster level check to dispel all curses from touched" ' +
-    'Liquid=Potion',
+    'Description="Self makes caster level check to dispel all curses from touched"',
   'Remove Disease':
     'Level=Adept3,C3,D3,R3 ' +
-    'Description="Self makes caster level check to cure touched of all diseases" ' +
-    'Liquid=Potion',
-  'Remove Fear':'Level=B1,C1,Liberation1 Liquid=Potion',
-  'Remove Paralysis':'Level=C2,Liberation2,P2 Liquid=Potion',
+    'Description="Self makes caster level check to cure touched of all diseases"',
+  'Remove Fear':'Level=B1,C1,Liberation1',
+  'Remove Paralysis':'Level=C2,Liberation2,P2',
   'Repel Metal Or Stone':'Level=D8',
   'Repel Vermin':'Level=B4,C4,D4,R3',
   'Repel Wood':'Level=D6,Plant6',
   'Repulsion':'Level=C7,Nobility7,Protection7,S6,W6',
   'Resilient Sphere':'Level=S4,W4',
-  'Resist Energy':
-    'Level=Adept2,C2,D2,P2,R1,S2,W2 Liquid=Potion',
+  'Resist Energy':'Level=Adept2,C2,D2,P2,R1,S2,W2',
   'Resistance':'Level=B0,C0,D0,P1,S0,W0 Liquid=Potion',
   'Restoration':'Level=Adept4,C4,P4',
+  'Lesser Restoration':'Level=C2,D2,P1',
   'Resurrection':'Level=C7',
   'Reverse Gravity':
     'Level=D8,S7,W7 ' +
@@ -4196,7 +4187,7 @@ Pathfinder.SPELLS = {
     'Description="Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good for %{lvl} rd"',
   'Rope Trick':'Level=S2,W2 Liquid=Oil',
   'Rusting Grasp':'Level=D4',
-  'Sanctuary':'Level=C1,Glory1,Protection1 Liquid=Potion',
+  'Sanctuary':'Level=C1,Glory1,Protection1',
   'Scare':'Level=B2,S2,W2',
   'Scintillating Pattern':'Level=Madness8,S8,W8',
   'Scorching Ray':'Level=Adept2,S2,W2',
@@ -4222,10 +4213,10 @@ Pathfinder.SPELLS = {
   'Shapechange':'Level=Animal9,D9,S9,W9',
   'Shatter':'Level=B2,C2,Destruction2,S2,W2',
   'Shield':'Level=S1,W1',
-  'Shield Of Faith':'Level=C1,Glory1 Liquid=Potion',
+  'Shield Of Faith':'Level=C1,Glory1',
   'Shield Of Law':'Level=C8,Law8',
   'Shield Other':'Level=C2,Community2,Protection2,P2',
-  'Shillelagh':'Level=D1 Liquid=Oil',
+  'Shillelagh':'Level=D1',
   'Shocking Grasp':'Level=S1,W1',
   'Shout':'Level=B4,Destruction5,S4,W4',
   'Shrink Item':'Level=S3,W3 Liquid=Oil',
@@ -4258,7 +4249,7 @@ Pathfinder.SPELLS = {
   'Spell Resistance':'Level=C5,Magic5,Protection5',
   'Spell Turning':'Level=Luck7,Magic7,S7,W7',
   'Spellstaff':'Level=D6',
-  'Spider Climb':'Level=D2,S2,W2 Liquid=Potion',
+  'Spider Climb':'Level=D2,S2,W2',
   'Spike Growth':'Level=D3,R2',
   'Spike Stones':'Level=D4,Earth4',
   'Spiritual Weapon':'Level=C2,War2',
@@ -4312,7 +4303,7 @@ Pathfinder.SPELLS = {
   'Temporal Stasis':'Level=S8,W8',
   'Time Stop':'Level=Trickery9,S9,W9',
   'Tiny Hut':'Level=B3,S3,W3',
-  'Tongues':'Level=Adept3,B2,C4,S3,W3 Liquid=Potion',
+  'Tongues':'Level=Adept3,B2,C4,S3,W3',
   'Touch Of Fatigue':'Level=Adept0,S0,W0',
   'Touch Of Idiocy':'Level=Madness2,S2,W2',
   'Transformation':'Level=S6,W6',
@@ -4327,7 +4318,7 @@ Pathfinder.SPELLS = {
   'True Seeing':'Level=Adept5,C5,D7,Knowledge5,S6,W6',
   'True Strike':'Level=Destruction1,Luck1,S1,W1',
   'Undeath To Death':'Level=C6,Glory6,Repose6,S6,W6',
-  'Undetectable Alignment':'Level=B1,C2,P2 Liquid=Potion',
+  'Undetectable Alignment':'Level=B1,C2,P2',
   'Unhallow':
     'Level=C5,D5 ' +
     'Description="40\' radius from touched gives +2 AC and saves vs. good, suppresses mental control, bars contact by summoned good creatures, gives negative channeling +4 DC and positive channeling -4 DC, and evokes bane spell"',
@@ -4349,8 +4340,8 @@ Pathfinder.SPELLS = {
   'Wall Of Stone':'Level=Adept5,C5,D6,Earth5,S5,W5',
   'Wall Of Thorns':'Level=D5,Plant5',
   'Warp Wood':'Level=D2 Liquid=Oil',
-  'Water Breathing':'Level=C3,D3,S3,W3,Water3 Liquid=Potion',
-  'Water Walk':'Level=C3,R3 Liquid=Potion',
+  'Water Breathing':'Level=C3,D3,S3,W3,Water3',
+  'Water Walk':'Level=C3,R3',
   'Waves Of Exhaustion':'Level=Repose8,S7,W7',
   'Waves Of Fatigue':'Level=S5,W5',
   'Web':
@@ -5049,10 +5040,10 @@ Pathfinder.CLASSES = {
     'CasterLevelDivine="levels.Paladin >= 4 ? levels.Paladin - 3 : null" ' +
     'SpellAbility=Charisma ' +
     'SpellSlots=' +
-      'P1:4=0;5=1;9=2;13=3;17=4,' +
-      'P2:7=0;8=1;12=2;16=3;20=4,' +
-      'P3:10=0;11=1;15=2;19=3,' +
-      'P4:13=0;14=1;18=2;20=3',
+      'P1:0@4;1@5;2@9;3@13;4@17,' +
+      'P2:0@7;1@8;2@12;3@16;4@20,' +
+      'P3:0@10;1@11;2@15;3@19,' +
+      'P4:0@13;1@14;2@18;3@20',
   'Ranger':
     'HitDie=d10 Attack=1 SkillPoints=6 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -5086,10 +5077,10 @@ Pathfinder.CLASSES = {
     'CasterLevelDivine="levels.Ranger >= 4 ? levels.Ranger - 3 : null" ' +
     'SpellAbility=Wisdom ' +
     'SpellSlots=' +
-      'R1:4=0;5=1;9=2;13=3;17=4,' +
-      'R2:7=0;8=1;12=2;16=3;20=4,' +
-      'R3:10=0;11=1;15=2;19=3,' +
-      'R4:13=0;14=1;18=2;20=3',
+      'R1:0@4;1@5;2@9;3@13;4@17,' +
+      'R2:0@7;1@8;2@12;3@16;4@20,' +
+      'R3:0@10;1@11;2@15;3@19,' +
+      'R4:0@13;1@14;2@18;3@20',
   'Rogue':
     'HitDie=d8 Attack=3/4 SkillPoints=8 Fortitude=1/3 Reflex=1/2 Will=1/3 ' +
     'Features=' +
@@ -5243,16 +5234,16 @@ Pathfinder.CLASSES = {
     'CasterLevelArcane=levels.Wizard ' +
     'SpellAbility=Intelligence ' +
     'SpellSlots=' +
-      'W0:1=3;2=4,' +
-      'W1:1=1;2=2;4=3;7=4,' +
-      'W2:3=1;4=2;6=3;9=4,' +
-      'W3:5=1;6=2;8=3;11=4,' +
-      'W4:7=1;8=2;10=3;13=4,' +
-      'W5:9=1;10=2;12=3;15=4,' +
-      'W6:11=1;12=2;14=3;17=4,' +
-      'W7:13=1;14=2;16=3;19=4,' +
-      'W8:15=1;16=2;18=3;20=4,' +
-      'W9:17=1;18=2;19=3;20=4'
+      'W0:3@1;4@2,' +
+      'W1:1@1;2@2;3@4;4@7,' +
+      'W2:1@3;2@4;3@6;4@9,' +
+      'W3:1@5;2@6;3@8;4@11,' +
+      'W4:1@7;2@8;3@10;4@13,' +
+      'W5:1@9;2@10;3@12;4@15,' +
+      'W6:1@11;2@12;3@14;4@17,' +
+      'W7:1@13;2@14;3@16;4@19,' +
+      'W8:1@15;2@16;3@18;4@20,' +
+      'W9:1@17;2@18;3@19;4@20'
 };
 Pathfinder.NPC_CLASSES = {
   'Adept':
@@ -5747,7 +5738,7 @@ Pathfinder.combatRules = function(rules, armors, shields, weapons) {
 
 /* Defines rules related to basic character identity. */
 Pathfinder.identityRules = function(
-  rules, alignments, classes, deities, factions, paths, races, tracks, traits,
+  rules, alignments, classes, deities, factions, races, tracks, traits,
   prestigeClasses, npcClasses
 ) {
 
@@ -5756,10 +5747,12 @@ Pathfinder.identityRules = function(
     (classes, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'SpellsAvailable']);
   QuilvynUtils.checkAttrTable(deities, ['Alignment', 'Domain', 'Weapon']);
   QuilvynUtils.checkAttrTable(factions, ['Season', 'Successor']);
-  // Note addition of feats and skills to SRD35's list
   QuilvynUtils.checkAttrTable
-    (paths, ['Group', 'Level', 'Features', 'Selectables', 'Feats', 'Skills', 'SpellAbility', 'SpellSlots']);
-  QuilvynUtils.checkAttrTable(races, ['Require', 'Features', 'Selectables', 'Languages', 'SpellAbility', 'SpellSlots', 'Size', 'Speed']);
+    (races, ['Require', 'Features', 'Selectables', 'Languages', 'Size', 'Speed']);
+  QuilvynUtils.checkAttrTable
+    (prestigeClasses, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'SpellsAvailable']);
+  QuilvynUtils.checkAttrTable
+    (npcClasses, ['Require', 'HitDie', 'Attack', 'SkillPoints', 'Fortitude', 'Reflex', 'Will', 'Skills', 'Features', 'Selectables', 'Languages', 'CasterLevelArcane', 'CasterLevelDivine', 'SpellAbility', 'SpellSlots', 'SpellsAvailable']);
   QuilvynUtils.checkAttrTable(tracks, ['Progression']);
   QuilvynUtils.checkAttrTable(traits, ['Type', 'Subtype']);
 
@@ -5770,7 +5763,6 @@ Pathfinder.identityRules = function(
   if(prestigeClasses) {
     for(let c in prestigeClasses) {
       rules.choiceRules(rules, 'Prestige', c, prestigeClasses[c]);
-      rules.defineRule('levels.' + c, 'prestige.' + c, '=', null);
       // Pathfinder prestige classes use different progressions for saves
       for(let save in {'Fortitude':'', 'Reflex':'', 'Will':''}) {
         let value = QuilvynUtils.getAttrValue(prestigeClasses[c], save);
@@ -5781,17 +5773,13 @@ Pathfinder.identityRules = function(
     }
   }
   if(npcClasses) {
-    for(let c in npcClasses) {
+    for(let c in npcClasses)
       rules.choiceRules(rules, 'NPC', c, npcClasses[c]);
-      rules.defineRule('levels.' + c, 'npc.' + c, '=', null);
-    }
   }
-  for(let f in factions)
-    rules.choiceRules(rules, 'Faction', f, factions[f]);
   for(let d in deities)
     rules.choiceRules(rules, 'Deity', d, deities[d]);
-  for(let p in paths)
-    rules.choiceRules(rules, 'Path', p, paths[p]);
+  for(let f in factions)
+    rules.choiceRules(rules, 'Faction', f, factions[f]);
   for(let r in races)
     rules.choiceRules(rules, 'Race', r, races[r]);
   for(let t in tracks)
@@ -6055,8 +6043,10 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
         console.log('Bad level "' + gl + '" for spell ' + name);
       } else {
         let group = matchInfo[1];
-        let level = matchInfo[2] * 1;
+        let level = +matchInfo[2];
         let fullName = name + '(' + group + level + ' ' + schoolAbbr + ')';
+        // If classes have already been processed, then domains will be listed
+        // in Cleric selectable features; otherwise, look in Pathfinder.CLASSES
         let domainSpell =
           (rules.getChoices('selectableFeatures') != null &&
            ('Cleric - ' + group + ' Domain') in rules.getChoices('selectableFeatures')) ||
@@ -6093,7 +6083,7 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
   }
   if(type != 'Spell') {
     type = type == 'Class' ? 'levels' :
-    (type.substring(0,1).toLowerCase() + type.substring(1).replaceAll(' ', '') + 's');
+    (type.charAt(0).toLowerCase() + type.substring(1).replaceAll(' ','') + 's');
     rules.addChoice(type, name, attrs);
   }
 };
@@ -7268,7 +7258,7 @@ Pathfinder.classRulesExtra = function(rules, name) {
  * Defines in #rules# the rules associated with animal companion #name#, which
  * has abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The companion has attack bonus #attack#, does
- * #damage# damage, moves at #speed# (which may be fly or swim speed for
+ * #damage# damage, moves at #speed# (which can be a fly or swim speed for
  * creatures who normally use that form of movement) and is size #size#. If
  * specified, #level# indicates the minimum master level the character needs to
  * have this animal as a companion.
@@ -7277,7 +7267,7 @@ Pathfinder.companionRules = function(
   rules, name, str, dex, con, intel, wis, cha, hd, ac, attack, damage, size,
   speed, level
 ) {
-  // NOTE The PRD calculates HD from master level, in contrast to the SRD's
+  // NOTE: The PRD calculates HD from master level, in contrast to the SRD's
   // addition to a starting value
   SRD35.companionRules(
     rules, name, str, dex, con, intel, wis, cha, 1, ac, attack, damage, size,
@@ -7331,7 +7321,7 @@ Pathfinder.factionRules = function(rules, name, seasons, successor) {
  * Defines in #rules# the rules associated with familiar #name#, which has
  * abilities #str#, #dex#, #con#, #intel#, #wis#, and #cha#, hit dice #hd#,
  * and armor class #ac#. The familiar has attack bonus #attack#, does
- * #damage# damage, moves at #speed# (which may be fly or swim speed for
+ * #damage# damage, moves at #speed# (which can be a fly or swim speed for
  * creatures who normally use that form of movement) and is size #size#. If
  * specified, #level# indicates the minimum master level the character needs to
  * have this animal as a familiar.
@@ -7577,29 +7567,10 @@ Pathfinder.featureRules = function(
 };
 
 /*
- * Defines in #rules# the rules to grant the spells listed in #spellList# when
- * feature #feature# is acquired. #spellType# contains the spell group,
- * #spellAbility# the associated ability, and #levelAttr# the related
- * character level. If non-null, #spellDC# specifies the expression for
- * computing the DC for the spell; an empty string indicates that standard
- * DC computation (10 + ability modifier + spell level). Each element of
- * #spellList# has the format "[min level:]spell name[,spell name...]". If min
- * level is provided, the spells listed in that element are not acquired until
- * the character's value of #levelAttr# reaches that level.
- */
-Pathfinder.featureSpells = function(
-  rules, feature, spellType, spellAbility, levelAttr, spellDC, spellList
-) {
-  return SRD35.featureSpells(
-    rules, feature, spellType, spellAbility, levelAttr, spellDC, spellList
-  );
-};
-
-/*
  * Defines in #rules# the rules associated with goody #name#, triggered by
  * a starred line in the character notes that matches #pattern#. #effect#
  * specifies the effect of the goody on each attribute in list #attributes#.
- * This is one of "increment" (adds #value# to the attribute), "set" (replaces
+ * This is one of "add" (adds #value# to the attribute), "set" (replaces
  * the value of the attribute by #value#), "lower" (decreases the value to
  * #value#), or "raise" (increases the value to #value#). #value#, if null,
  * defaults to 1; occurrences of $1, $2, ... in #value# reference capture
@@ -7619,25 +7590,6 @@ Pathfinder.goodyRules = function(
 Pathfinder.languageRules = function(rules, name) {
   SRD35.languageRules(rules, name);
   // No changes needed to the rules defined by SRD35 method
-};
-
-/*
- * Defines in #rules# the rules associated with path #name#, which is a
- * selection for characters belonging to #group# and tracks path level via
- * #levelAttr#. The path grants the features listed in #features#. If the path
- * grants spell slots, #spellAbility# names the ability for computing spell
- * difficulty class, and #spellSlots# lists the number of spells per level per
- * day granted. #feats# lists feats that may be selected by characters
- * following the path, and #skills# lists skills that become class skills.
- */
-Pathfinder.pathRules = function(
-  rules, name, group, levelAttr, features, selectables, feats, skills,
-  spellAbility, spellSlots
-) {
-  SRD35.pathRules(
-    rules, name, group, levelAttr, features, selectables, spellAbility,
-    spellSlots
-  );
 };
 
 /*
@@ -7783,12 +7735,11 @@ Pathfinder.shieldRules = function(
 
 /*
  * Defines in #rules# the rules associated with skill #name#, associated with
- * basic ability #ability#. #untrained#, if specified, is a boolean indicating
- * whether or not the skill can be used untrained; the default is true.
- * #classes# lists the classes for which this is a class skill; a value of
- * "all" indicates that this is a class skill for all classes. #synergies#
- * lists any synergies with other skills and abilities granted by high ranks in
- * this skill.
+ * basic ability #ability#. #untrained# is a boolean indicating whether or not
+ * the skill can be used untrained. #classes# lists the classes for which this
+ * is a class skill; a value of "all" indicates that this is a class skill for
+ * all classes. #synergies# lists any synergies with other skills and abilities
+ * granted by high ranks in this skill.
  */
 Pathfinder.skillRules = function(
   rules, name, ability, untrained, classes, synergies
@@ -7854,16 +7805,6 @@ Pathfinder.spellRules = function(
   SRD35.spellRules
     (rules, name, school, casterGroup, level, description, domainSpell,
      liquids);
-  // SRD35 uses wisdomModifier when calculating the save DC for Paladin
-  // spells; in Pathfinder we override to use charismaModifier.
-  if(casterGroup == 'P') {
-    let matchInfo;
-    let note = rules.getChoices('notes')[name];
-    if(note != null && (matchInfo = note.match(/\(DC\s%(\d+)/)) != null)
-      rules.defineRule(note + '.' + matchInfo[1],
-        'charismaModifier', '=', '10 + source + ' + level
-      );
-  }
   // SRD35 specifies the caster level of Paladins and Rangers to be half their
   // class level; Pathfinder specifies class level - 3. This difference doesn't
   // affect the spell itself, since casterLevel.{Paladin,Ranger} is calculated
@@ -7969,6 +7910,25 @@ Pathfinder.weaponRules = function(
     rules.defineRule(name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '') + 'DamageModifier',
       'combatNotes.riverRat', '+', '1'
     );
+};
+
+/*
+ * Defines in #rules# the rules to grant the spells listed in #spellList# when
+ * feature #feature# is acquired. #spellType# contains the spell group,
+ * #spellAbility# the associated ability, and #levelAttr# the related
+ * character level. If non-null, #spellDC# specifies the expression for
+ * computing the DC for the spell; an empty string indicates that standard
+ * DC computation (10 + ability modifier + spell level). Each element of
+ * #spellList# has the format "[min level:]spell name[,spell name...]". If min
+ * level is provided, the spells listed in that element are not acquired until
+ * the character's value of #levelAttr# reaches that level.
+ */
+Pathfinder.featureSpells = function(
+  rules, feature, spellType, spellAbility, levelAttr, spellDC, spellList
+) {
+  return SRD35.featureSpells(
+    rules, feature, spellType, spellAbility, levelAttr, spellDC, spellList
+  );
 };
 
 /*
