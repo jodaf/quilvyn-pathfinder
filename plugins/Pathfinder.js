@@ -4017,30 +4017,34 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep for concentration + %{lvl} rd (save Will negates)"',
 
-  'Mage Armor':'Level=S1,W1',
-  'Mage Hand':'Level=B0,S0,W0',
-  'Mage\'s Disjunction':'Level=Magic9,S9,W9',
-  'Mage\'s Faithful Hound':'Level=S5,W5',
-  'Mage\'s Lucubration':'Level=S6,W6',
-  'Mage\'s Magnificent Mansion':'Level=S7,W7',
-  'Mage\'s Private Sanctum':'Level=S5,W5',
-  'Mage\'s Sword':'Level=S7,W7',
+  'Mage Armor':'',
+  'Mage Hand':'',
+  "Mage's Disjunction":
+    'Description=' +
+      '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success and permanently strips self spellcasting abilities (save Will DC 25 negates)"',
+  "Mage's Faithful Hound":'',
+  "Mage's Lucubration":'',
+  "Mage's Magnificent Mansion":'',
+  "Mage's Private Sanctum":'',
+  "Mage's Sword":'',
   'Magic Aura':'Level=B1,S1,W1',
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. chaotic creatures, extra save to suppress mental control, bars contact and entry (SR neg) by chaotic summoned creatures for %{lvl*10} min or traps nonlawful summoned creatures (SR neg) for %{lvl} dy"',
+    'Description="10\' radius around touched either gives +2 AC and saves vs. chaotic creatures, gives an extra save to suppress mental control, and bars contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Evil':
     'Level=C3,Good3,P3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. evil creatures, extra save to suppress mental control, bars contact and entry (SR neg) by evil summoned creatures for %{lvl*10} min or traps nongood summoned creatures (SR neg) for %{lvl} dy"',
+    'Description="10\' radius around touched either gives +2 AC and saves vs. evil creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Good':
     'Level=C3,Evil3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. good creatures, extra save to suppress mental control, bars contact and entry (SR neg) by good summoned creatures for %{lvl*10} min or traps nonevil summoned creatures (SR neg) for %{lvl} dy"',
+    'Description="10\' radius around touched either gives +2 AC and saves vs. good creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by good summoned creatures for %{lvl*10} min or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Law':
     'Level=C3,Chaos3,S3,W3 ' +
-    'Description="10\' radius from touched gives +2 AC and saves vs. lawful creatures, extra save to suppress mental control, bars contact and entry (SR neg) by lawful summoned creatures for %{lvl*10} min or traps nonchaotic summoned creatures (SR neg) for %{lvl} dy"',
-  'Magic Fang':'Level=D1,R1',
-  'Greater Magic Fang':'Level=D3,R3',
-  'Magic Jar':'Level=S5,W5',
+    'Description="10\' radius around touched either gives +2 AC and saves vs. lawful creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
+  'Magic Fang':'',
+  'Greater Magic Fang':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified magic weapon, or +1 attacks and damage when using any natural weapon, for %{lvl} hr"',
+  'Magic Jar':'',
   'Magic Missile':'Level=S1,W1',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
   'Magic Stone':'Level=C1,D1,Earth1',
