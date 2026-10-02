@@ -44,8 +44,8 @@ function PFAPG(edition, rules) {
     (rules, PFAPG.SCHOOLS, PFAPG.SPELLS, PFAPG.SPELLS_LEVELS_ADDED);
   PFAPG.talentRules(rules, PFAPG.FEATS, PFAPG.FEATURES, {}, {}, {});
   PFAPG.identityRules(
-    rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.PATHS, PFAPG.RACES, {},
-    PFAPG.TRAITS, PFAPG.PRESTIGE_CLASSES, PFAPG.NPC_CLASSES
+    rules, {}, PFAPG.CLASSES, PFAPG.DEITIES, {}, PFAPG.RACES, {}, PFAPG.TRAITS,
+    PFAPG.PRESTIGE_CLASSES, PFAPG.NPC_CLASSES
   );
 
   for(let c in PFAPG.CLASSES) {
@@ -959,7 +959,7 @@ PFAPG.FEATURES = {
   'Poison Touch':
     'Section=combat ' +
     'Note="Touch inflicts 1d3 Constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Constitution neg)"',
-  // 'Poison Use' in Pathfinder.js
+  // 'Poison Use' in Pathfinder
   'Precise Bombs':
     'Section=combat ' +
     'Note="May specify %{intelligenceModifier} squares in bomb splash radius that are unaffected"',
@@ -1174,7 +1174,7 @@ PFAPG.FEATURES = {
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
-  'Orisons':'Section=magic Note="Knows level-0 spells"',
+  // Orisons as Pathfinder
   'Second Judgment':
     'Section=combat ' +
     'Note="May use 2 Judgments simultaneously; may change 1 as a swift action"',
@@ -1205,7 +1205,7 @@ PFAPG.FEATURES = {
   'Third Judgment':
     'Section=combat ' +
     'Note="May use 3 Judgments simultaneously; may change 1 as a swift action"',
-  // 'Track' in Pathfinder.js
+  // 'Track' in Pathfinder
   'True Judgment':
     'Section=combat ' +
     'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg); must wait 1d4 rd between uses"',
@@ -1620,9 +1620,7 @@ PFAPG.FEATURES = {
   // Summoner
   'Ability Increase Evolution':
     'Section=companion Note="+2 each on %V chosen %1"',
-  'Ability Score Increase':
-    'Section=companion ' +
-    'Note="+%{levels.Summoner>=15 ? 3 : levels.Summoner>=10 ? 2 : 1} distributed among eidolon abilities"',
+  // Ability Score Increase as Pathfinder
   'Aspect':
     'Section=feature ' +
     'Note="May use 2 points from evolution pool to apply 2 points of evolutions to self"',
@@ -1641,7 +1639,7 @@ PFAPG.FEATURES = {
     'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Ref half) %V/dy"',
   'Burrow Evolution':
     'Section=companion Note="May burrow through earth at %V\'"',
-  'Cantrips':'Section=magic Note="May cast 0-level spells"',
+  // Cantrips as Pathfinder
   'Claws Evolution':
     'Section=companion ' +
     'Note="Claws inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
@@ -1904,7 +1902,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Mount gains +2 Strength during rage",' +
       '"Has Animal Companion feature w/mount"',
-  // Blindsight as Pathfinder.js
+  // Blindsight as Pathfinder
   'Boasting Taunt':
     'Section=combat ' +
     'Note="Successful Intimidate during rage (+2 per alcoholic drink taken) inflicts shaken on target until attacks self"',
@@ -3449,7 +3447,7 @@ PFAPG.FEATURES = {
   'Peerless Maneuver':
     'Section=skill ' +
     'Note="May take better of 2 Acrobatics rolls %{levels.Rogue//5+1}/dy"',
-  // Poison Use in Pathfinder.js
+  // Poison Use in Pathfinder
   'Positioning Attack':
     'Section=combat ' +
     'Note="May move 30\' w/out provoking AOO after a successful melee attack, ending adjacent to the same foe, 1/dy"',
@@ -3970,8 +3968,8 @@ PFAPG.FEATURES = {
   'Bloodrain':
     'Section=magic ' +
     'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %{10 + channelLevel//2} Will ends)"',
-  // Caster Level Bonus as Pathfinder.js
-  // Channel Smite as Pathfinder.js
+  // Caster Level Bonus as Pathfinder
+  // Channel Smite as Pathfinder
   'Divine Judgment':
     'Section=magic ' +
     'Note="May use level 2 spell slot to inflict <i>Death Knell</i> in response to reducing foe to negative HP"',
@@ -4114,7 +4112,7 @@ PFAPG.FEATURES = {
       '"+%{$\'levels.Master Chymist\'//2} Strength and Constitution checks while in mutagenic form",' +
       '"+%{$\'levels.Master Chymist\'//2} CMB and CMD while in mutagenic form",' +
       '"+%{$\'levels.Master Chymist\'//2} Strength-linked skill checks while in mutagenic form"',
-  // Caster Level Bonus as Pathfinder.js
+  // Caster Level Bonus as Pathfinder
   'Disguise':
     'Section=save ' +
     'Note="Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves; must wait 10 min between uses"',
@@ -4216,7 +4214,7 @@ PFAPG.FEATURES = {
   'Concealed Thoughts':
     'Section=save ' +
     'Note="May control effect of spells that detect surface thoughts when cast on self"',
-  // Death Attack as Pathfinder.js
+  // Death Attack as Pathfinder
   'Elude Detection':
     'Section=save ' +
     'Note="May gain SR %{$\'levels.Master Spy\'+15} vs. divination at will; must wait 1d4 rd between uses"',
@@ -4243,7 +4241,7 @@ PFAPG.FEATURES = {
   'Shift Alignment':
     'Section=save ' +
     'Note="May modify alignment to change alignment-specific effects of magic directed at self"',
-  // Slippery Mind as Pathfinder.js
+  // Slippery Mind as Pathfinder
   'Superficial Knowledge':
     'Section=skill ' +
     'Note="May make +%{$\'levels.Master Spy\'//2} untrained Knowledge and Profession checks related to cover identity"',
@@ -4252,7 +4250,7 @@ PFAPG.FEATURES = {
   'Animal Speech':
     'Section=magic ' +
     'Note="May use <i>Speak With Animals</i> effects at will in favored terrain, 1/dy elsewhere"',
-  // Caster Level Bonus as Pathfinder.js
+  // Caster Level Bonus as Pathfinder
   'Companion Bond (Nature Warden)':
     'Section=companion,companion ' +
     'Note=' +
@@ -4266,7 +4264,7 @@ PFAPG.FEATURES = {
   'Companion Walk':
     'Section=companion ' +
     'Note="May affect animal companion w/self travel and polymorph spells"',
-  // Favored Terrain as Pathfinder.js
+  // Favored Terrain as Pathfinder
   'Guarded Lands':
     'Section=feature ' +
     'Note="May gain +2 Favored Terrain and +2 Favored Enemy bonuses in %{wisdomModifier>?1} chosen 1 mile sq areas"',
@@ -4299,11 +4297,11 @@ PFAPG.FEATURES = {
     'Note="May combine <i>Wood Shape</i> and <i>Ironwood</i> effects 1/dy"',
 
   // Rage Prophet
-  // Caster Level Bonus as Pathfinder.js
+  // Caster Level Bonus as Pathfinder
   'Enduring Rage':
     'Section=magic ' +
     'Note="May spend a spell slot to extend rage 1 rd/spell level"',
-  // Greater Rage as Pathfinder.js
+  // Greater Rage as Pathfinder
   'Indomitable Caster':
     'Section=magic Note="+%{constitutionModifier} concentration checks"',
   'Rage Prophet Mystery':'Section=magic Note="Has access to additional spells"',
@@ -4329,8 +4327,8 @@ PFAPG.FEATURES = {
   'Bulwark':
     'Section=skill ' +
     'Note="+%V foe DC for Bluff and movement Acrobatics during stance"',
-  // Clear Mind as Pathfinder.js
-  // Damage Reduction as Pathfinder.js
+  // Clear Mind as Pathfinder
+  // Damage Reduction as Pathfinder
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
@@ -4342,12 +4340,12 @@ PFAPG.FEATURES = {
   'Immobile':
     'Section=combat ' +
     'Note="+%{$\'levels.Stalwart Defender\'} CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
-  // Improved Uncanny Dodge as Pathfinder.js
-  // Increased Damage Reduction as Pathfinder.js
+  // Improved Uncanny Dodge as Pathfinder
+  // Increased Damage Reduction as Pathfinder
   'Intercept':
     'Section=combat ' +
     'Note="May suffer damage from an attack directed at an adjacent ally during stance 1/rd"',
-  // Internal Fortitude as Pathfinder.js
+  // Internal Fortitude as Pathfinder
   'Last Word':
     'Section=combat ' +
     'Note="May make an extra attack w/dbl damage when a hit to self results in negative HP or unconsciousness 1/dy"',
@@ -4364,8 +4362,8 @@ PFAPG.FEATURES = {
   'Smash (Stalwart Defender)':
     'Section=combat ' +
     'Note="May make an extra shield bash or slam attack for 1d%{features.Small ? 3 : 4}+%{strengthModifier//2} HP 1/rd during stance"',
-  // Uncanny Dodge as Pathfinder.js
-  // Unexpected Strike as Pathfinder.js
+  // Uncanny Dodge as Pathfinder
+  // Unexpected Strike as Pathfinder
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -4873,8 +4871,6 @@ PFAPG.FEATURES = {
     'Note="May use choice of Sleight Of Hand or Survival (DC 10 + GP cost) to produce required mundane item 1/dy"'
 
 };
-PFAPG.PATHS = {
-};
 PFAPG.RACES = {
   'Dwarf':
     'Selectables=' +
@@ -5012,7 +5008,7 @@ PFAPG.SCHOOLS = {
       .replace('Energy Absorption', 'Counterspell Mastery'),
   'Creation':
     Pathfinder.SCHOOLS.Conjuration
-      .replace('Acid Dart (Wizard)', 'Create Gear')
+      .replace('Acid Dart (Conjuration)', 'Create Gear')
       .replace('Dimensional Steps', "Creator's Will"),
   'Enhancement':
     Pathfinder.SCHOOLS.Transmutation
@@ -5029,10 +5025,10 @@ PFAPG.SCHOOLS = {
   'Life':
     Pathfinder.SCHOOLS.Necromancy
       .replace('Power Over Undead', 'Healing Grace')
-      .replace('Grave Touch (Wizard)', 'Share Essence'),
+      .replace('Grave Touch (Necromancy)', 'Share Essence'),
   'Manipulator':
     Pathfinder.SCHOOLS.Enchantment
-      .replace('Dazing Touch Enchantment', 'Beguiling Touch')
+      .replace('Dazing Touch (Enchantment)', 'Beguiling Touch')
       .replace('Aura Of Despair', 'Shape Emotions'),
   'Phantasm':
     Pathfinder.SCHOOLS.Illusion
@@ -5050,14 +5046,14 @@ PFAPG.SCHOOLS = {
       .replace('Telekinetic Fist', 'Battleshaping'),
   'Teleportation':
     Pathfinder.SCHOOLS.Conjuration
-      .replace('Acid Dart (Wizard)', 'Shift'),
+      .replace('Acid Dart (Conjuration)', 'Shift'),
   'Undead':
     Pathfinder.SCHOOLS.Necromancy
-      .replace('Grave Touch (Wizard)', 'Bolster')
+      .replace('Grave Touch (Necromancy)', 'Bolster')
 };
 PFAPG.SHIELDS = {
-  'Light Steel Quickdraw':'AC=1 Weight=Light Skill=2 Spell=5',
-  'Light Wooden Quickdraw':'AC=1 Weight=Light Skill=2 Spell=5'
+  'Light Steel Quickdraw':'AC=1 Weight=Light Dex=10 Skill=2 Spell=5',
+  'Light Wooden Quickdraw':'AC=1 Weight=Light Dex=10 Skill=2 Spell=5'
 };
 // As noted below, the following two spell lists include Witch spells that are
 // restricted to particular patrons and Oracle spells that are restricted to
@@ -6690,7 +6686,7 @@ PFAPG.SPELLS_LEVELS_ADDED = {
   'Zone Of Truth':'Honor2,Inquisitor2,O2,Witch2'
 };
 PFAPG.TRAITS = {
-  // Already declared in Pathfinder.js
+  // Already declared in Pathfinder
 };
 PFAPG.WEAPONS = {
   'Bardiche':'Level=Martial Category=Two-Handed Damage=d10 Threat=19',
@@ -8321,7 +8317,7 @@ PFAPG.combatRules = function(rules, armors, shields, weapons) {
 
 /* Defines rules related to basic character identity. */
 PFAPG.identityRules = function(
-  rules, alignments, classes, deities, factions, paths, races, tracks, traits,
+  rules, alignments, classes, deities, factions, races, tracks, traits,
   prestigeClasses, npcClasses
 ) {
   let newClasses = Object.assign({}, classes);
@@ -8347,8 +8343,8 @@ PFAPG.identityRules = function(
     }
   }
   Pathfinder.identityRules(
-    rules, alignments, newClasses, {}, factions, paths, newRaces, tracks,
-    traits, prestigeClasses, npcClasses
+    rules, alignments, newClasses, {}, factions, newRaces, tracks, traits,
+    prestigeClasses, npcClasses
   );
   if('Summoner' in newClasses) {
     // Create an invisible selectable feature that consumes the excess
@@ -9036,7 +9032,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'companionNotes.largeEvolution', '+', 'source=="Huge" ? 1 : 0',
       'companionNotes.smallEidolon', '+', '2' // +1 AC, +2 Dex
     );
-    // Size effect on CMB/CMD taken care of in Pathfinder.js
+    // Size effect on CMB/CMD taken care of in Pathfinder
     rules.defineRule('animalCompanionStats.Con',
       'companionNotes.largeEvolution.2', '+', null,
       'companionNotes.smallEidolon', '+', '-2'
@@ -9100,6 +9096,9 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule('companionNotes.abilityIncreaseEvolution.1',
       'summonerFeatures.Ability Increase Evolution', '=', 'source==1 ? "ability" : "abilities"'
+    );
+    rules.defineRule('companionNotes.abilityScoreIncrease',
+      classLevel, '=', 'source<10 ? 1 : source<15 ? 2 : 3'
     );
     rules.defineRule('companionNotes.breathWeaponEvolution',
       'summonerFeatures.Breath Weapon Evolution', '=', null
@@ -9809,7 +9808,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       });
     }
     featureReplacements = {
-      'Acid Dart':['Metal Fist'],
+      'Acid Dart (Earth)':['Metal Fist'],
       'Acid Resistance':['Tunnel Runner'],
       'Agile Feet':['Door Sight', 'Silver-Tongued Haggler'],
       'Aura Of Protection':['Purifying Touch'],
@@ -9823,7 +9822,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'Cold Resistance':['Body Of Ice'],
       'Copycat':['Sudden Shift'],
       'Dancing Weapons':['Animate Servant', 'Aura Of Repetition'],
-      'Dazing Touch':['Adoration'],
+      'Dazing Touch (Charm)':['Adoration'],
       "Death's Embrace":['Killing Blow'],
       'Destructive Aura':['Deadly Weather', 'Rage (Cleric)'],
       'Divine Presence':['Aura Of Heroism'],
@@ -11429,12 +11428,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         );
       }
     }
-    ['Acid Dart (Wizard)', 'Aura Of Despair', 'Blinding Ray', 'Change Shape',
-     'Dazing Touch Enchantment', 'Dimensional Steps', "Diviner's Fortune",
-     'Elemental Wall', 'Enchanting Smile', 'Energy Absorption', 'Force Missile',
-     'Grave Touch (Wizard)', 'Intense Spells', 'Invisibility Field',
-     'Power Over Undead', 'Protective Ward', 'Scrying Adept',
-      'Telekinetic Fist',
+    ['Acid Dart (Conjuration)', 'Aura Of Despair', 'Blinding Ray',
+     'Change Shape', 'Dazing Touch (Enchantment)', 'Dimensional Steps',
+     "Diviner's Fortune", 'Elemental Wall', 'Enchanting Smile',
+     'Energy Absorption', 'Force Missile', 'Grave Touch (Necromancy)',
+     'Intense Spells', 'Invisibility Field', 'Power Over Undead',
+     'Protective Ward', 'Scrying Adept', 'Telekinetic Fist',
     ].forEach(f => {
       rules.defineRule('wizardFeatures.' + f,
         'wizardHas' + f.replaceAll(/ |'/g, ''), '?', null
