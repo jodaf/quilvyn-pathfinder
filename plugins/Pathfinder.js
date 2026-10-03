@@ -4045,53 +4045,71 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified magic weapon, or +1 attacks and damage when using any natural weapon, for %{lvl} hr"',
   'Magic Jar':'',
-  'Magic Missile':'Level=S1,W1',
+  'Magic Missile':'',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
-  'Magic Stone':'Level=C1,D1,Earth1',
+  'Magic Stone':'',
   'Magic Vestment':'Level=C3,Nobility3,Strength3,War3',
   'Magic Weapon':'Level=C1,P1,S1,W1,War1',
-  'Greater Magic Weapon':'Level=C4,P3,S3,W3',
+  'Greater Magic Weapon':'',
   'Major Creation':'Level=Adept5,Artifice6,S5,W5',
   'Major Image':'Level=B3,S3,W3',
-  'Make Whole':'Level=C2,S2,W2 Liquid=Oil',
-  'Mark Of Justice':'Level=C5,P4',
-  "Mass Owl's Wisdom":'Level=C6,D6,S6,W6',
+  'Make Whole':
+    'Level=C2,S2,W2 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges" ' +
+    'Liquid=Oil',
+  'Mark Of Justice':'',
   'Mass Reduce Person':'Level=S4,W4',
   'Mass Suggestion':'Level=B5,S6,W6',
-  'Maze':'Level=S8,W8',
-  'Meld Into Stone':'Level=C3,D3',
+  'Maze':'',
+  'Meld Into Stone':'',
   'Mending':
-    'Level=Adept0,Artifice0,B0,C0,D0,S0,W0 ' + // no liquid--10 min cast
-    'Description="R10\' Repairs minor damage to %{lvl} lb object"',
-  'Message':'Level=B0,S0,W0',
-  'Meteor Swarm':'Level=S9,W9',
+    'Level=Adept0,Artifice0,B0,C0,D0,S0,W0 ' +
+    'Description="R10\' Repairs minor damage to an object weighing up to %{lvl} lb"',
+  'Message':'',
+  'Meteor Swarm':
+    'Description=' +
+      '"R%{400+lvl*40}\' Ranged touch with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty)"',
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
-    'Description="R%{25+lvl//2*5}\' Target gains immunity to divination and +8 save vs. mental effects for 1 dy"',
-  'Mind Fog':'Level=B5,S5,W5',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Target gains immunity to divination and scrying and +8 vs. mental effects for 24 hr"',
+  'Mind Fog':'',
   'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
   'Minor Image':'Level=B2,S2,W2',
-  'Miracle':'Level=C9,Community9,Luck9',
-  'Mirage Arcana':'Level=B5,S5,W5',
-  'Mirror Image':'Level=Adept2,B2,Trickery2,S2,W2',
+  'Miracle':
+    'Level=C9,Community9,Luck9 ' +
+    'Description=' +
+      '"Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 25,000 GP to request"',
+  'Mirage Arcana':'',
+  'Mirror Image':
+    'Level=Adept2,B2,Trickery2,S2,W2 ' +
+    'Description=' +
+      '"Creates 1d4+%{lvl//3<?8} (maximum 8) copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and any hit on one destroys it"',
   'Misdirection':'Level=B2,S2,W2',
-  'Mislead':'Level=B5,Luck6,Trickery6,S6,W6',
-  'Mnemonic Enhancer':'Level=S4,W4',
+  'Mislead':'',
+  'Mnemonic Enhancer':'',
   'Modify Memory':'Level=B4',
-  'Moment Of Prescience':'Level=Luck8,S8,W8',
-  'Mount':'Level=S1,W1',
-  'Move Earth':'Level=D6,S6,W6',
-  'Neutralize Poison':'Level=Adept3,B4,C4,D3,P4,R3',
+  'Moment Of Prescience':'',
+  'Mount':'',
+  'Move Earth':'',
+
+  'Neutralize Poison':
+    'Description=' +
+      '"Allows successful caster level checks to neutralize each poison affecting touched or neutralizes a poisonous creature or object for %{lvl*10} min (save Will negates)"',
   'Nightmare':'Level=B5,Madness5,S5,W5',
   'Nondetection':'Level=R4,Trickery3,S3,W3',
-  'Obscure Object':'Level=B1,C3,S2,W2 Liquid=Oil',
+
+  'Obscure Object':'Liquid=Oil',
   'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Water1,S1,W1,Weather1',
-  'Open/Close':'Level=B0,S0,W0',
-  'Order\'s Wrath':'Level=C4,Law4',
+  'Open/Close':'',
+  "Order's Wrath":'Level=C4,Law4',
   'Overland Flight':
-    'Level=S5,W5 ' +
-    'Description="Self gains 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
-  "Owl's Wisdom":'Level=C2,D2,P2,R2,S2,W2',
+    'Description=' +
+      '"Self gains a 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
+  "Owl's Wisdom":'',
+  "Mass Owl's Wisdom":'',
+
   'Passwall':'Level=S5,W5',
   'Pass Without Trace':'Level=D1,R1',
   'Permanency':'Level=S5,W5',
@@ -4227,7 +4245,7 @@ Pathfinder.SPELLS = {
   'Silence':
     'Level=B2,C2 ' +
     'Description="R%{400+lvl*40}\' Bars sound in 20\' radius (Will neg if targeted) for %{lvl} rd"',
-  'Silent Image':'Level=B1,S1,W1',
+  'Silent Image':'',
   'Simulacrum':'Level=S7,W7',
   'Slay Living':
     'Level=C5,Death5,Repose5 ' +
