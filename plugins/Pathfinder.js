@@ -3864,12 +3864,6 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Planar Ally':'Level=C8',
-  'Greater Planar Binding':'Level=S8,W8',
-  'Greater Prying Eyes':
-    'Level=S8,W8 ' +
-    'Description="1d4+%{lvl} floating eyes (AC 18, 1 HP, +16 Stealth, +%{lvl<?25} Perception, Fly 30\') with True Seeing scout 1 mile for %{lvl} hr"',
-  'Greater Restoration':'Level=C7',
   'Greater Scrying':'Level=B6,C7,D7,S7,W7',
   'Greater Shadow Conjuration':'Level=S7,W7',
   'Greater Shadow Evocation':'Level=Darkness8,S8,W8',
@@ -4021,7 +4015,7 @@ Pathfinder.SPELLS = {
   'Mage Hand':'',
   "Mage's Disjunction":
     'Description=' +
-      '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success and permanently strips self spellcasting abilities (save Will DC 25 negates)"',
+      '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success and permanently strips self of spellcasting abilities (save Will DC 25 negates)"',
   "Mage's Faithful Hound":'',
   "Mage's Lucubration":'',
   "Mage's Magnificent Mansion":'',
@@ -4030,20 +4024,24 @@ Pathfinder.SPELLS = {
   'Magic Aura':'Level=B1,S1,W1',
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,S3,W3 ' +
-    'Description="10\' radius around touched either gives +2 AC and saves vs. chaotic creatures, gives an extra save to suppress mental control, and bars contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
+    'Description=' +
+      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. chaotic creatures, an extra +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures or objects, as well as barring contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min, or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Evil':
     'Level=C3,Good3,P3,S3,W3 ' +
-    'Description="10\' radius around touched either gives +2 AC and saves vs. evil creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
+    'Description=' +
+      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. evil creatures, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures or objects, as well as barring contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min, or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Good':
     'Level=C3,Evil3,S3,W3 ' +
-    'Description="10\' radius around touched either gives +2 AC and saves vs. good creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by good summoned creatures for %{lvl*10} min or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
+    'Description=' +
+      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. good creatures, an extra +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures or objects, as well as barring contact and entry (SR negates) by good summoned creatures for %{lvl*10} min, or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Law':
     'Level=C3,Chaos3,S3,W3 ' +
-    'Description="10\' radius around touched either gives +2 AC and saves vs. lawful creatures, an extra save to suppress mental control, bars contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
+    'Description=' +
+      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. lawful creatures, an extra +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures or objects, as well as barring contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min, or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Fang':'',
   'Greater Magic Fang':
     'Description=' +
-      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified magic weapon, or +1 attacks and damage when using any natural weapon, for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, for %{lvl} hr"',
   'Magic Jar':'',
   'Magic Missile':'',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
@@ -4059,7 +4057,6 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges" ' +
     'Liquid=Oil',
   'Mark Of Justice':'',
-  'Mass Reduce Person':'Level=S4,W4',
   'Mass Suggestion':'Level=B5,S6,W6',
   'Maze':'',
   'Meld Into Stone':'',
@@ -4110,105 +4107,173 @@ Pathfinder.SPELLS = {
   "Owl's Wisdom":'',
   "Mass Owl's Wisdom":'',
 
-  'Passwall':'Level=S5,W5',
   'Pass Without Trace':'Level=D1,R1',
-  'Permanency':'Level=S5,W5',
-  'Permanent Image':'Level=B6,S6,W6',
-  'Persistent Image':'Level=B5,S5,W5',
+  'Passwall':'',
+  'Permanency':
+    'Description=' +
+      '"Makes certain spells permanent, at a cost of 2,500-22,500 GP"',
+  'Permanent Image':'',
+  'Persistent Image':'',
   'Phantasmal Killer':'Level=Madness6,S4,W4',
   'Phantom Steed':
-    'Level=B3,S3,W3 ' +
-    'Description="Creates mount (%{lvl+7} HP, AC 18, move %{lvl//2*20<?100}\') that only target can ride for %{lvl} hr"',
-  'Phantom Trap':'Level=S2,W2',
-  'Phase Door':'Level=Travel8,S7,W7',
-  'Planar Ally':'Level=C6',
-  'Lesser Planar Ally':'Level=C4',
-  'Planar Binding':'Level=S6,W6',
+    'Description=' +
+      '"Creates a mount with %{lvl+7} hit points, Armor Class 18, and %{lvl//2*20<?100}\' Speed that only the target can ride for %{lvl} hr%{lvl>7?\'; the mount can ride over sandy, muddy, and swampy ground at full Speed\':\'\'}%{lvl>11?\', \':lvl>9?\' and \':\'\'}%{lvl>9?\'use <i>Water Walk</i> effects at will\':\'\'}%{lvl>13?\',\':lvl>11?\', and \':\'\'}%{lvl>11?\'use <i>Air Walk</i> effects for 1 rd at will\':\'\'}%{lvl>13?\', and fly at full Speed\':\'\'}"',
+  'Phantom Trap':'',
+  'Phase Door':'',
+  'Planar Ally':'',
+  'Greater Planar Ally':'',
+  'Lesser Planar Ally':'',
+  'Planar Binding':'',
+  'Greater Planar Binding':'',
   'Lesser Planar Binding':'Level=Rune5,S5,W5',
-  'Plane Shift':'Level=C5,S7,W7',
-  'Plant Growth':'Level=D3,Plant3,R3',
+  'Plane Shift':'',
+  'Plant Growth':'',
+  'Plant Shape I':
+    'School=Transmutation ' +
+    'Level=S5,W5 ' +
+    'Description=' +
+      '"Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min"',
+  'Plant Shape II':
+    'School=Transmutation ' +
+    'Level=S6,W6 ' +
+    'Description=' +
+      '"Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min"',
+  'Plant Shape III':
+    'School=Transmutation ' +
+    'Level=S7,W7 ' +
+    'Description=' +
+      '"Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min"',
   'Poison':
     'Level=C4,D3 ' +
-    'Description="Touched suffers -1d3 Constitution/rd for 6 rd (Fort neg)"',
+    'Description="Touched suffers -1d3 Constitution each rd (save Fortitude ends) for 6 rd"',
   'Polar Ray':
-    'Level=S8,W8 ' +
-    'Description="R%{100+lvl*10}\' Ranged touch inflicts %{lvl<?25}d6 HP, -1d4 Dexterity"',
-  'Polymorph':'Level=Adept4,S5,W5',
+    'Description=' +
+      '"R%{100+lvl*10}\' Ranged touch inflicts %{lvl<?25}d6 HP and drains 1d4 points of Dexterity"',
+  'Polymorph':
+    'Level=S5,W5 ' +
+    'School="Transmutation (Polymorph)" ' +
+    'Description=' +
+      '"Touched willing target becomes a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid for %{lvl} min; the target can use a full-round action to end the spell"',
+  'Greater Polymorph':
+    'School=Transmutation ' +
+    'Level=S7,W7 ' +
+    'Description=' +
+      '"Touched willing target becomes a Dimunitive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
-  'Power Word Kill':'Level=S9,W9,War9',
-  'Power Word Stun':'Level=S8,W8,War8',
+  'Power Word Kill':'',
+  'Power Word Stun':'',
   'Prayer':'Level=C3,Community3,P3',
-  'Prestidigitation':'Level=B0,S0,W0',
-  'Prismatic Sphere':'Level=Artifice9,Protection9,Sun9,S9,W9',
-  'Prismatic Spray':'Level=S7,W7',
-  'Prismatic Wall':'Level=S8,W8',
-  'Produce Flame':'Level=D1,Fire2',
-  'Programmed Image':'Level=B6,S6,W6',
-  'Project Image':'Level=B6,S7,W7',
-  'Protection From Arrows':'Level=S2,W2',
+  'Prestidigitation':'',
+  'Prismatic Sphere':
+    'Level=Artifice9,Protection9,Sun9,S9,W9 ' +
+    'Description=' +
+      '"10\' radius sphere lasting %{lvl*10} min blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save will negates)"',
+  'Prismatic Spray':
+    'Description=' +
+      '"60\' cone blinds creatures with up to 8 HD for 2d4 rd and randomly inflicts on each creature one of: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex Half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates); 2 of the preceding effects"',
+  'Prismatic Wall':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save will negates)"',
+  'Produce Flame':'',
+  'Programmed Image':'',
+  'Project Image':'',
+  'Protection From Arrows':'',
   'Protection From Chaos':
-    'Level=Adept1,C1,Law1,P1,S1,W1 Liquid=Potion ' +
-    'Description="Touched gains +2 AC and saves vs. chaotic creatures, suppresses mental control, and bars contact by chaotic summoned creatures for %{lvl} min"',
+    'Level=Adept1,C1,Law1,P1,S1,W1 ' +
+    'Description=' +
+      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for %{lvl} min" ' +
+    'Liquid=Potion',
   'Protection From Energy':
     'Level=C3,D3,Luck3,Protection3,R2,S3,W3',
   'Protection From Evil':
-    'Level=Adept1,C1,Good1,P1,S1,W1 Liquid=Potion ' +
-    'Description="Touched gains +2 AC and saves vs. evil creatures, suppresses mental control, and bars contact by evil summoned creatures for %{lvl} min"',
+    'Description=' +
+      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for %{lvl} min" ' +
+    'Liquid=Potion',
   'Protection From Good':
-    'Level=Adept1,C1,Evil1,S1,W1 Liquid=Potion ' +
-    'Description="Touched gains +2 AC and saves vs. good creatures, suppresses mental control, and bars contact by good summoned creatures for %{lvl} min"',
+    'Level=Adept1,C1,Evil1,S1,W1 ' +
+    'Description=' +
+      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. good creatures, an additional +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures and objects, as well as barring contact by good summoned creatures, for %{lvl} min" ' +
+    'Liquid=Potion',
   'Protection From Law':
-    'Level=Adept1,C1,Chaos1,S1,W1 Liquid=Potion ' +
-    'Description="Touched gains +2 AC and saves vs. lawful creatures, suppresses mental control, and bars contact by lawful summoned creatures for %{lvl} min"',
-  'Protection From Spells':'Level=Magic8,S8,W8',
+    'Level=Adept1,C1,Chaos1,S1,W1 ' +
+    'Description=' +
+      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. lawful creatures, an additional +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures and objects, as well as barring contact by lawful summoned creatures, for %{lvl} min" ' +
+    'Liquid=Potion',
+  'Protection From Spells':'',
   'Prying Eyes':
-    'Level=S5,W5 ' +
-    'Description="1d4+%{lvl} floating eyes (AC 18, 1 HP, +16 Stealth, +%{lvl<?15} Perception, Fly 30\') scout 1 mile for %{lvl} hr"',
-  'Purify Food And Drink':'Level=Adept0,C0,D0 Liquid=Oil',
-  'Pyrotechnics':'Level=B2,S2,W2',
-  'Quench':'Level=D3',
+    'Description=' +
+      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 HP, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) scout up to 1 mile and return to show observations for %{lvl} hr"',
+  'Greater Prying Eyes':
+    'Description=' +
+      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 HP, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing scout up to 1 mile and return to show observations for %{lvl} hr"',
+  'Purify Food And Drink':'Liquid=Oil',
+  'Pyrotechnics':'',
+
+  'Quench':
+    'Description=' +
+      '"R%{100+lvl*10}\' Extinguishes nonmagical fires, dispels magic fires with a successful caster level check (maximum +15), and inflicts %{lvl<?10}d6 HP to fire creatures in a %{lvl*20} cubic foot area, or suppresses fire-based effects of a non-artifact magic item for 1d4 hr (save Will negates)"',
+
   'Rage':'Level=B2,Destruction3,Madness3,S3,W3',
-  'Rainbow Pattern':'Level=B4,S4,W4',
-  'Raise Dead':'Level=Adept5,C5',
+  'Rainbow Pattern':'',
+  'Raise Dead':
+    'Description=' +
+      '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Ray Of Enfeeblement':
-    'Level=S1,W1 ' +
-    'Description="R%{25+lvl//2*5}\' Ranged touch inflicts -1d6+%{lvl//2<?5} Strength for %{lvl} rd"',
-  'Ray Of Exhaustion':'Level=S3,W3',
-  'Ray Of Frost':'Level=S0,W0',
-  'Read Magic':'Level=Adept0,B0,C0,D0,P1,R1,S0,W0',
-  'Reduce Animal':'Level=D2,R3 Liquid=Potion',
-  'Reduce Person':'Level=S1,W1',
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Ranged touch inflicts -1d6+%{lvl//2<?5} Strength for %{lvl} rd"',
+  'Ray Of Exhaustion':'',
+  'Ray Of Frost':'',
+  'Read Magic':'',
+  'Reduce Animal':'Liquid=Potion',
+  'Reduce Person':'',
+  'Mass Reduce Person':'',
   'Refuge':'Level=C7,Community7,Liberation7,S9,W9',
-  'Regenerate':'Level=C7,D9,Healing7',
-  'Reincarnate':'Level=D4',
-  'Remove Blindness/Deafness':'Level=C3,P3',
+  'Regenerate':'',
+  'Reincarnate':'',
+  'Remove Blindness/Deafness':'',
   'Remove Curse':
     'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
-    'Description="Self makes caster level check to dispel all curses from touched"',
+    'Description=' +
+      '"Allows a successful caster level check to dispel all curses from touched"',
   'Remove Disease':
-    'Level=Adept3,C3,D3,R3 ' +
-    'Description="Self makes caster level check to cure touched of all diseases"',
+    'Description=' +
+      '"Allows a successful caster level check to cure touched of all diseases"',
   'Remove Fear':'Level=B1,C1,Liberation1',
-  'Remove Paralysis':'Level=C2,Liberation2,P2',
-  'Repel Metal Or Stone':'Level=D8',
-  'Repel Vermin':'Level=B4,C4,D4,R3',
-  'Repel Wood':'Level=D6,Plant6',
+  'Remove Paralysis':
+    'Level=C2,Liberation2,P2 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2"',
+  'Repel Metal Or Stone':'',
+  'Repel Vermin':'',
+  'Repel Wood':'',
   'Repulsion':'Level=C7,Nobility7,Protection7,S6,W6',
-  'Resilient Sphere':'Level=S4,W4',
+  'Resilient Sphere':'',
   'Resist Energy':'Level=Adept2,C2,D2,P2,R1,S2,W2',
-  'Resistance':'Level=B0,C0,D0,P1,S0,W0 Liquid=Potion',
-  'Restoration':'Level=Adept4,C4,P4',
-  'Lesser Restoration':'Level=C2,D2,P1',
-  'Resurrection':'Level=C7',
+  'Resistance':'Liquid=Potion',
+  'Restoration':
+    'Description=' +
+      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level"',
+  'Greater Restoration':
+    'Description=' +
+      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects"',
+  'Lesser Restoration':'',
+  'Resurrection':
+    'Description=' +
+      '"Fully restores a target willing soul, dead up to %{lvl*10} years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)"',
   'Reverse Gravity':
-    'Level=D8,S7,W7 ' +
-    'Description="R%{100+lvl*10}\' Objects in %{lvl} 10\' cu fall upward for %{lvl} rd"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Objects in a %{lvl*10} cubic foot area fall upward for %{lvl} rd"',
   'Righteous Might':
     'Level=C5,Glory5,Strength5 ' +
-    'Description="Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good for %{lvl} rd"',
-  'Rope Trick':'Level=S2,W2 Liquid=Oil',
-  'Rusting Grasp':'Level=D4',
+    'Description=' +
+      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhanancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
+  'Rope Trick':
+    'Description=' +
+      '"Causes a 5\'-30\' rope to stretch upward and remain immobile, leading to an extradimensional space with room for 8 creatures, for %{lvl} hr" ' +
+    'Liquid=Oil',
+  'Rusting Grasp':'',
+
   'Sanctuary':'Level=C1,Glory1,Protection1',
   'Scare':'Level=B2,S2,W2',
   'Scintillating Pattern':'Level=Madness8,S8,W8',
@@ -4383,22 +4448,6 @@ Pathfinder.SPELLS = {
   'Zone Of Silence':'Level=B4',
   'Zone Of Truth':'Level=C2,P2',
 
-  'Greater Polymorph':
-    'School=Transmutation ' +
-    'Level=S7,W7 ' +
-    'Description="Willing target becomes animal, elemental, plant, or dragon for %{lvl} min"',
-  'Plant Shape I':
-    'School=Transmutation ' +
-    'Level=S5,W5 ' +
-    'Description="Self becomes small (+2 Constitution, +2 AC) or medium (+2 Strength, +2 Constitution, +2 AC) plant creature for %{lvl} min"',
-  'Plant Shape II':
-    'School=Transmutation ' +
-    'Level=S6,W6 ' +
-    'Description="Self becomes large (+4 Strength, +2 Constitution, +4 AC) plant creature for %{lvl} min"',
-  'Plant Shape III':
-    'School=Transmutation ' +
-    'Level=S7,W7 ' +
-    'Description="Self becomes huge (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC) plant creature for %{lvl} min"',
   'Stabilize':
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
