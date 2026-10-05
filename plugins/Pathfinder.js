@@ -3864,8 +3864,6 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
     'Liquid=Oil',
-  'Greater Shout':'Level=B6,S8,W8',
-  'Greater Spell Immunity':'Level=C8',
   'Greater Teleport':'Level=Travel7,S7,W7',
   'Guards And Wards':'',
   'Guidance':'Liquid=Potion',
@@ -4295,51 +4293,65 @@ Pathfinder.SPELLS = {
   'Greater Shadow Evocation':'Level=Darkness8,S8,W8',
   'Shadow Walk':'Level=B5,Darkness6,S6,W6',
   'Shambler':
-    'Level=D9,Plant9 ' +
-    'Description="R%{100+lvl*10}\' Creates 1d4+2 advanced shambling mounds in 15\' radius that fight for 7 dy or guard for 7 mo"',
-  'Shapechange':'Level=Animal9,D9,S9,W9',
+    'Description=' +
+      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months"',
+  'Shapechange':
+    'School="Transmutation (Polymorph)" ' +
+    'Description=' +
+      '"Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for %{lvl} min"',
   'Shatter':'Level=B2,C2,Destruction2,S2,W2',
-  'Shield':'Level=S1,W1',
+  'Shield':'',
   'Shield Of Faith':'Level=C1,Glory1',
-  'Shield Of Law':'Level=C8,Law8',
+  'Shield Of Law':
+    'Description=' +
+      '"%{lvl} creatures within 20\' gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and slow successful chaotic attackers (save Will negates) for %{lvl} rd"',
   'Shield Other':'Level=C2,Community2,Protection2,P2',
-  'Shillelagh':'Level=D1',
-  'Shocking Grasp':'Level=S1,W1',
+  'Shillelagh':'',
+  'Shocking Grasp':'',
   'Shout':'Level=B4,Destruction5,S4,W4',
-  'Shrink Item':'Level=S3,W3 Liquid=Oil',
+  'Greater Shout':'',
+  'Shrink Item':'Liquid=Oil',
   'Silence':
-    'Level=B2,C2 ' +
-    'Description="R%{400+lvl*40}\' Bars sound in 20\' radius (Will neg if targeted) for %{lvl} rd"',
+    'Description=' +
+      '"R%{400+lvl*40}\' Eliminates sound in a 20\' radius (save Will for a targeted creature negates) for %{lvl} rd"',
   'Silent Image':'',
-  'Simulacrum':'Level=S7,W7',
+  'Simulacrum':
+    'Description=' +
+      '"Creates a permanent obedient double of a creature with half of the original\'s hit points and levels; suspicious creatures can detect the copy with a successful Perception vs. Disguise or a successful DC 20 Sense Motive"',
   'Slay Living':
     'Level=C5,Death5,Repose5 ' +
-    'Description="Touched suffers 12d6+%{lvl} HP (Fort 3d6+%{lvl} HP)"',
+    'Description=' +
+      '"Melee touch attack inflicts 12d6+%{lvl} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
   'Sleep':'Level=Adept1,B1,S1,W1',
   'Sleet Storm':
     'Level=D3,S3,W3,Weather4 ' +
-    'Description="R%{400+lvl*40}\' Sleet in 40\' radius binds, inflicts DC 10 Acrobatics to move for %{lvl} rd"',
-  'Slow':'Level=B3,S3,W3',
-  'Snare':'Level=D3,R2',
-  'Soften Earth And Stone':'Level=D2,Earth2',
+    'Description=' +
+      '"R%{400+lvl*40}\' 40\' radius, 20\' high cylinder blocks sight, extinguishes small fires, and requires a DC 10 Acrobatics check to move at half Speed (failure by 5 or more causes a fall) for %{lvl} rd"',
+  'Slow':'',
+  'Snare':'',
+  'Soften Earth And Stone':'',
   'Solid Fog':
-    'Level=S4,W4 ' +
-    'Description="R%{100+lvl*10}\' Fog in 20\' radius obscures vision, reduces Speed to half, and imposes -2 attack and damage for %{lvl} min"',
-  'Song Of Discord':'Level=B5',
-  'Soul Bind':'Level=C9,S9,W9',
-  'Sound Burst':'Level=B2,C2',
+    'Description=' +
+      '"R%{100+lvl*10}\' 20\' radius fog obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half normal, prevents ranged attacks, and inflicts -2 attacks and damage for %{lvl} min"',
+  'Song Of Discord':'',
+  'Soul Bind':'',
+  'Sound Burst':'',
   'Speak With Animals':'Level=Animal1,B3,D1,R1',
   'Speak With Dead':'Level=C3,Knowledge3,Repose3',
-  'Speak With Plants':'Level=B4,D3,R2',
-  'Spectral Hand':'Level=S2,W2',
-  'Spell Immunity':'Level=C4,Protection4,Strength4',
-  'Spell Resistance':'Level=C5,Magic5,Protection5',
-  'Spell Turning':'Level=Luck7,Magic7,S7,W7',
-  'Spellstaff':'Level=D6',
-  'Spider Climb':'Level=D2,S2,W2',
-  'Spike Growth':'Level=D3,R2',
-  'Spike Stones':'Level=D4,Earth4',
-  'Spiritual Weapon':'Level=C2,War2',
+  'Speak With Plants':'',
+  'Spectral Hand':'',
+  'Spell Immunity':'',
+  'Greater Spell Immunity':'',
+  'Spell Resistance':'',
+  'Spell Turning':'',
+  'Spellstaff':'',
+  'Spider Climb':
+    'Level=D2,S2,W2 ' +
+    'Description=' +
+      '"Gives touched a 20\' climb Speed, a +8 bonus to Climb checks, and the ability to climb walls and ceilings for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
+  'Spike Growth':'',
+  'Spike Stones':'',
+  'Spiritual Weapon':'',
   'Statue':'Level=Artifice8,S7,W7',
   'Status':'Level=C2',
   'Stinking Cloud':'Level=S3,W3',
