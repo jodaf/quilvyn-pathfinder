@@ -4052,7 +4052,6 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges" ' +
     'Liquid=Oil',
   'Mark Of Justice':'',
-  'Mass Suggestion':'Level=B5,S6,W6',
   'Maze':'',
   'Meld Into Stone':'',
   'Mending':
@@ -4352,37 +4351,44 @@ Pathfinder.SPELLS = {
   'Spike Growth':'',
   'Spike Stones':'',
   'Spiritual Weapon':'',
+  'Stabilize':
+    'School=Conjuration ' +
+    'Level=Adept0,C0,D0 ' +
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points" ' +
+    'Liquid=Potion',
   'Statue':'Level=Artifice8,S7,W7',
-  'Status':'Level=C2',
-  'Stinking Cloud':'Level=S3,W3',
+  'Status':'',
+  'Stinking Cloud':'',
   'Stone Shape':'Level=Artifice3,C3,D3,Earth3,S4,W4 Liquid=Oil',
-  'Stone Tell':'Level=D6',
-  'Stone To Flesh':'Level=S6,W6',
-  'Stoneskin':'Level=Adept4,D5,Earth6,Strength6,S4,W4',
+  'Stone Tell':'',
+  'Stone To Flesh':'',
+  'Stoneskin':'',
   'Storm Of Vengeance':'Level=C9,D9,Nobility9,Weather9',
   'Suggestion':'Level=B2,Charm3,S3,W3',
+  'Mass Suggestion':'',
   'Summon Instrument':'Level=B0',
   'Summon Monster I':'Level=B1,C1,S1,W1',
   'Summon Monster II':'Level=B2,C2,S2,W2',
   'Summon Monster III':'Level=B3,C3,S3,W3',
   'Summon Monster IV':'Level=B4,C4,S4,W4',
-  'Summon Monster IX':'Level=C9,Chaos9,Evil9,Good9,Law9,S9,W9',
   'Summon Monster V':'Level=B5,C5,Darkness5,S5,W5',
-  'Summon Monster VI':'Level=B6,C6,S6,W6',
-  'Summon Monster VII':'Level=C7,S7,W7',
-  'Summon Monster VIII':'Level=C8,S8,W8',
-  'Summon Nature\'s Ally I':'Level=D1,R1',
-  'Summon Nature\'s Ally II':'Level=D2,R2',
-  'Summon Nature\'s Ally III':'Level=D3,R3',
-  'Summon Nature\'s Ally IV':'Level=Animal4,D4,R4',
-  'Summon Nature\'s Ally IX':'Level=D9',
-  'Summon Nature\'s Ally V':'Level=D5',
-  'Summon Nature\'s Ally VI':'Level=D6',
-  'Summon Nature\'s Ally VII':'Level=D7',
-  'Summon Nature\'s Ally VIII':'Level=Animal8,D8',
-  'Summon Swarm':'Level=B2,D2,S2,W2',
-  'Sunbeam':'Level=D7,Sun7',
-  'Sunburst':'Level=D8,Sun8,S8,W8',
+  'Summon Monster VI':'',
+  'Summon Monster VII':'',
+  'Summon Monster VIII':'',
+  'Summon Monster IX':'',
+  "Summon Nature's Ally I":'',
+  "Summon Nature's Ally II":'',
+  "Summon Nature's Ally III":'',
+  "Summon Nature's Ally IV":'',
+  "Summon Nature's Ally V":'',
+  "Summon Nature's Ally VI":'',
+  "Summon Nature's Ally VII":'',
+  "Summon Nature's Ally VIII":'',
+  "Summon Nature's Ally IX":'',
+  'Summon Swarm':'',
+  'Sunbeam':'',
+  'Sunburst':'',
   'Symbol Of Death':'Level=C8,Rune8,S8,W8',
   'Symbol Of Fear':'Level=C6,S6,W6',
   'Symbol Of Insanity':'Level=C8,S8,W8',
@@ -4458,13 +4464,7 @@ Pathfinder.SPELLS = {
     'Description="Nonchaotic creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/stunned for 1 rd (Will neg)/confused for 1d10 min (Will for 1 rd)/killed (Will 3d6+%{lvl} HP) and banished (Will neg)"',
   'Word Of Recall':'Level=C6,D8',
   'Zone Of Silence':'Level=B4',
-  'Zone Of Truth':'Level=C2,P2',
-
-  'Stabilize':
-    'School=Conjuration ' +
-    'Level=Adept0,C0,D0 ' +
-    'Description="R%{25+lvl//2*5}\' Stabilizes target w/negative HP" ' +
-    'Liquid=Potion'
+  'Zone Of Truth':'Level=C2,P2'
 
 };
 for(let s in Pathfinder.SPELLS) {
