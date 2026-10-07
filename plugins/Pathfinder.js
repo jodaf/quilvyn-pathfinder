@@ -4445,33 +4445,40 @@ Pathfinder.SPELLS = {
     'Level=Death9,Repose9,S9,W9 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} targets in a 40\' radius"',
-  'Wall Of Fire':'Level=Adept4,D5,Fire4,S4,W4',
-  'Wall Of Force':'Level=S5,W5',
-  'Wall Of Ice':'Level=S4,W4',
+  'Wall Of Fire':'',
+  'Wall Of Force':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Creates an invisible, impassible, and immobile %{lvl*10} square foot wall for %{lvl} rd; the wall can be destroyed by <i>Disintegrate</i>, <i>Mage\'s Disjunction</i>, a rod of cancellation, or a sphere of annihilation, and other spells and physical attacks can damage it (hardness 30, %{lvl*20} hit points"',
+  'Wall Of Ice':'',
   'Wall Of Iron':'Level=Artifice7,S6,W6',
-  'Wall Of Stone':'Level=Adept5,C5,D6,Earth5,S5,W5',
-  'Wall Of Thorns':'Level=D5,Plant5',
-  'Warp Wood':'Level=D2 Liquid=Oil',
-  'Water Breathing':'Level=C3,D3,S3,W3,Water3',
-  'Water Walk':'Level=C3,R3',
+  'Wall Of Stone':'',
+  'Wall Of Thorns':
+    'Description=' +
+      '"R%{100+lvl*10}\' Creates %{lvl*10} cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for %{lvl*10} min; moving through the thorns requires a Strength check each rd, allowing 5\' of movement for each 5 points that the check exceeds 20"',
+  'Warp Wood':'Liquid=Oil',
+  'Water Breathing':'',
+  'Water Walk':'',
   'Waves Of Exhaustion':'Level=Repose8,S7,W7',
-  'Waves Of Fatigue':'Level=S5,W5',
+  'Waves Of Fatigue':'',
   'Web':
-    'Level=Adept2,S2,W2 ' +
-    'Description="R%{100+lvl*10}\' Webs in 20\' radius entangle (Ref neg, Str or Escape Artist break), burning inflicts 2d4 HP for %{lvl*10} min"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Anchored web strands in a 20\' radius grapple creatures (save Reflex negates, and a successful combat maneuver or Escape Artist check against the spell DC breaks free) for %{lvl*10} min; movement through the web requires a successful combat maneuver or Escape Artist check each rd; burning clears the web, inflicting 2d4 HP fire on those within"',
   'Weird':'Level=Madness9,S9,W9',
   'Whirlwind':'Level=Air8,D8,Weather8',
-  'Whispering Wind':'Level=B2,S2,W2',
-  'Wind Walk':'Level=C6,D7',
+  'Whispering Wind':'',
+  'Wind Walk':'',
   'Wind Wall':'Level=Air2,C3,D3,R2,S3,W3',
-  'Wish':'Level=S9,W9',
+  'Wish':
+    'Description=' +
+      '"Alters reality, with few limits; costs at least 25,000 GP to cast"',
   'Wood Shape':'Level=Artifice2,D2 Liquid=Oil',
   'Word Of Chaos':
-    'Level=C7,Chaos7 ' +
-    'Description="Nonchaotic creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/stunned for 1 rd (Will neg)/confused for 1d10 min (Will for 1 rd)/killed (Will 3d6+%{lvl} HP) and banished (Will neg)"',
-  'Word Of Recall':'Level=C6,D8',
-  'Zone Of Silence':'Level=B4',
-  'Zone Of Truth':'Level=C2,P2'
+    'Description=' +
+      '"Nonchaotic creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/stunned for 1 rd (Will neg)/confused for 1d10 min (Will for 1 rd)/killed (Will 3d6+%{lvl} HP) and banished (Will neg)"',
+  'Word Of Recall':'',
+
+  'Zone Of Silence':'',
+  'Zone Of Truth':''
 
 };
 for(let s in Pathfinder.SPELLS) {
