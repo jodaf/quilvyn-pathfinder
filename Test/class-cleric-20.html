@@ -1040,7 +1040,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Greater Shadow Evocation (Darkness8 Illu): Mimics an evocation spell of up to 7th level (save Will reduces the mimicked spell's effects by 40%); mimicked spells are subject to SR and have a save DC as an 8th-level spell</td>
     </tr><tr style="text-align:left">
-      <td>Greater Spell Immunity (C8 Abju): Gives touched immunity to 5 spells of up to 8th level that are subject to spell resistance for 200 min</td>
+      <td>Greater Spell Immunity (C8 Abju): Gives touched immunity to 5 spells of up to 8th level that are subject to spell resistance for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
     </tr><tr style="text-align:left">
       <td>Greater Teleport (Travel7 Conj): Transports self and 6 willing targets any distance with no chance of error</td>
     </tr><tr style="text-align:left">
@@ -1048,9 +1048,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Hallow (C5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Harm (C6 Necr): Touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
+      <td>Harm (C6 Necr): Melee touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
-      <td>Harm (Destruction6 Necr): Touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
+      <td>Harm (Destruction6 Necr): Melee touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
       <td>Heal (C6 Conj): Touched regains 150 hit points and recovers from negative conditions; undead instead suffer the same amount (save Will negates)</td>
     </tr><tr style="text-align:left">
@@ -1392,11 +1392,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Resurrection (C7 Conj): Fully restores a target willing soul, dead up to 200 years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (C5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhanancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
+      <td>Righteous Might (C5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (Glory5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhanancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
+      <td>Righteous Might (Glory5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (Strength5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhanancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
+      <td>Righteous Might (Strength5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Sanctuary (C1 Abju): Foes cannot attack touched (save Will negates) for 20 rd; target attacking ends the spell</td>
     </tr><tr style="text-align:left">
@@ -1408,17 +1408,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Scintillating Pattern (Madness8 Illu): R75' Renders 20 HD of creatures in a 20' radius with up to 6, 12, and 20 HD unconscious for 1d4 rd, stunned for 1d4 rd, and confused for 1d4 rd, working upward from those with the fewest HD, for concentration + 2 rd</td>
     </tr><tr style="text-align:left">
-      <td>Screen (Trickery7 Illu): R75' Illusion hides 600 cubic feet from vision and scrying (save Will disbelieves) for 24 hr</td>
+      <td>Screen (Trickery7 Illu): R75' Illusion hides 600 cubic feet from vision and scrying (save Will if interacted with disbelieves) for 24 hr</td>
     </tr><tr style="text-align:left">
       <td>Scrying (C5 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Searing Light (C3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 5d6 HP for a construct or object)</td>
+      <td>Searing Light (C3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 10d8 HP for vulnerable undead, and 5d6 HP for a construct or object)</td>
     </tr><tr style="text-align:left">
-      <td>Searing Light (Glory3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 5d6 HP for a construct or object)</td>
+      <td>Searing Light (Glory3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 10d8 HP for vulnerable undead, and 5d6 HP for a construct or object)</td>
     </tr><tr style="text-align:left">
-      <td>Searing Light (Sun3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 5d6 HP for a construct or object)</td>
+      <td>Searing Light (Sun3 Evoc): R300' Ranged touch inflicts 5d8 HP (or 10d6 HP for undead, 10d8 HP for vulnerable undead, and 5d6 HP for a construct or object)</td>
     </tr><tr style="text-align:left">
-      <td>Secret Page (Rune2 Tran): Permanently alters the text on a touched page so that a password is required to read it</td>
+      <td>Secret Page (Rune2 Tran): Permanently alters the text on a touched page so that a password is required to read the original</td>
     </tr><tr style="text-align:left">
       <td>Sending (C4 Evoc): Allows self to exchange 25-word messages with a familiar target</td>
     </tr><tr style="text-align:left">
@@ -1428,9 +1428,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Shadow Walk (Darkness6 Illu): Allows self and 20 touched to travel at 50 MPH via the Plane of Shadow (save Will negates) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Plant9 Conj): R300' Creates 1d4+2 advanced shambling mounds in 15' radius that fight for 7 dy or guard for 7 mo</td>
+      <td>Shambler (Plant9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
     </tr><tr style="text-align:left">
-      <td>Shapechange (Animal9 Tran): Allows self to becomes a nonunique creature of any size with up to 20 HD once per rd for 200 min</td>
+      <td>Shapechange (Animal9 Tran): Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Shatter (C2 Evoc): R75' Breakables weighing up to 20 lb in a 5' radius shatter (save Will (DC +1) negates), or a target object weighing up to 200 lb suffers 10d6 HP sonic (save Fortitude (DC +1) half)</td>
     </tr><tr style="text-align:left">
@@ -1440,31 +1440,31 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Shield Of Faith (Glory1 Abju): Gives touched a +5 deflection bonus to Armor Class for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Law (C8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, and SR 25 vs. chaotic spells and casters, suppress mental control, and slow successful chaotic attackers (save Will negates) for 20 rd</td>
+      <td>Shield Of Law (C8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and slow successful chaotic attackers (save Will negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Law (Law8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, and SR 25 vs. chaotic spells and casters, suppress mental control, and slow successful chaotic attackers (save Will negates) for 20 rd</td>
+      <td>Shield Of Law (Law8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and slow successful chaotic attackers (save Will negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shield Other (C2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any damage suffered by the target is transferred to self, for 20 hr</td>
+      <td>Shield Other (C2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any HP damage suffered by the target is transferred to self, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Shield Other (Community2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any damage suffered by the target is transferred to self, for 20 hr</td>
+      <td>Shield Other (Community2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any HP damage suffered by the target is transferred to self, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Shield Other (Protection2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any damage suffered by the target is transferred to self, for 20 hr</td>
+      <td>Shield Other (Protection2 Abju): R75' Target gains a +1 deflection bonus to Armor Class and +1 saves, and half of any HP damage suffered by the target is transferred to self, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Shout (Destruction5 Evoc): 30' cone inflicts 5d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects) and deafness for 2d6 rd (save Fortitude (DC +1) half HP only; save Reflex (DC +1) negates damage to held objects)</td>
+      <td>Shout (Destruction5 Evoc): 30' cone inflicts 5d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects) and deafened for 2d6 rd (save Fortitude (DC +1) half HP only; save Reflex (DC +1) negates damage to held objects)</td>
     </tr><tr style="text-align:left">
-      <td>Silence (C2 Illu): R1200' Bars sound in 20' radius (Will neg if targeted) for 20 rd</td>
+      <td>Silence (C2 Illu): R1200' Eliminates sound in a 20' radius (save Will for a targeted creature negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (C5 Necr): Touched suffers 12d6+20 HP (Fort 3d6+20 HP)</td>
+      <td>Slay Living (C5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Death5 Necr): Touched suffers 12d6+20 HP (Fort 3d6+20 HP)</td>
+      <td>Slay Living (Death5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Repose5 Necr): Touched suffers 12d6+20 HP (Fort 3d6+20 HP)</td>
+      <td>Slay Living (Repose5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Sleet Storm (Weather4 Conj): R1200' Sleet in 40' radius binds, inflicts DC 10 Acrobatics to move for 20 rd</td>
+      <td>Sleet Storm (Weather4 Conj): R1200' 40' radius, 20' high cylinder blocks sight, extinguishes small fires, and requires a DC 10 Acrobatics check to move at half Speed (failure by 5 or more causes a fall) for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Soften Earth And Stone (Earth2 Tran): R75' 200 square feet of wet earth, dry earth, or natural stone becomes mud that traps creatures for 1d2 rd (save Reflex negates), sand that slows movement by half, or clay</td>
     </tr><tr style="text-align:left">
-      <td>Soul Bind (C9 Necr): R75' Imprisons the soul from a corpse dead up to 20 rd (save Will negates), preventing resurrection</td>
+      <td>Soul Bind (C9 Necr): R75' Imprisons the soul from a corpse dead up to 20 rd in a black sapphire (save Will negates), preventing resurrection</td>
     </tr><tr style="text-align:left">
       <td>Sound Burst (C2 Evoc): R75' 10' radius inflicts 1d8 HP sonic and stunned for 1 rd (save Fortitude (DC +1) HP only)</td>
     </tr><tr style="text-align:left">
@@ -1472,17 +1472,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Speak With Animals (Speak With Animals1 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (C3 Necr): R10' Target corpse answers 10 questions (save Will negates) asked within 20 min</td>
+      <td>Speak With Dead (C3 Necr): R10' Target corpse answers 10 questions (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune) asked within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (Knowledge3 Necr): R10' Target corpse answers 10 questions (save Will negates) asked within 20 min</td>
+      <td>Speak With Dead (Knowledge3 Necr): R10' Target corpse answers 10 questions (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune) asked within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (Repose3 Necr): R10' Target corpse answers 10 questions (save Will negates) asked within 20 min</td>
+      <td>Speak With Dead (Repose3 Necr): R10' Target corpse answers 10 questions (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune) asked within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Immunity (C4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min</td>
+      <td>Spell Immunity (C4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
     </tr><tr style="text-align:left">
-      <td>Spell Immunity (Protection4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min</td>
+      <td>Spell Immunity (Protection4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
     </tr><tr style="text-align:left">
-      <td>Spell Immunity (Strength4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min</td>
+      <td>Spell Immunity (Strength4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
     </tr><tr style="text-align:left">
       <td>Spell Resistance (C5 Abju): Gives touched SR 32 for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1490,21 +1490,21 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Spell Resistance (Protection5 Abju): Gives touched SR 32 for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Spell Turning (Luck7 Abju): 1d4+6 levels of spells, excluding area and ranged touch spells, directed at self within 200 min reflect onto their caster; spells between casters who both have <i>Spell Turning</i> produce one of these effects: 70% dissipate with no effect; 10% affect both casters; 17% disable both casters' <i>Spell Turning</i> for 1d4 min; 3% send both casters to another plane</td>
+      <td>Spell Turning (Luck7 Abju): 1d4+6 levels of targeted, non-ranged-touch spells directed at self within 200 min reflect onto their caster; spells between casters who both have <i>Spell Turning</i> produce one of these effects: 70% dissipate with no effect; 10% affect both casters; 17% disable both casters' <i>Spell Turning</i> for 1d4 min; 3% send both casters to another plane</td>
     </tr><tr style="text-align:left">
-      <td>Spell Turning (Magic7 Abju): 1d4+6 levels of spells, excluding area and ranged touch spells, directed at self within 200 min reflect onto their caster; spells between casters who both have <i>Spell Turning</i> produce one of these effects: 70% dissipate with no effect; 10% affect both casters; 17% disable both casters' <i>Spell Turning</i> for 1d4 min; 3% send both casters to another plane</td>
+      <td>Spell Turning (Magic7 Abju): 1d4+6 levels of targeted, non-ranged-touch spells directed at self within 200 min reflect onto their caster; spells between casters who both have <i>Spell Turning</i> produce one of these effects: 70% dissipate with no effect; 10% affect both casters; 17% disable both casters' <i>Spell Turning</i> for 1d4 min; 3% send both casters to another plane</td>
     </tr><tr style="text-align:left">
       <td>Spike Stones (Earth4 Tran): R300' Stony ground in a 400 square foot area inflicts 1d8 HP piercing for each 5' movement and slows creatures to half Speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Spiritual Weapon (C2 Evoc): R300' Creates a force weapon (+17 attacks; inflicts 1d8+5 HP force; crit same as the corresponding physical weapon) that attacks a designated foe for 20 rd; can use move actions to redirect to different targets, and the first attack on each creature is subject to SR</td>
+      <td>Spiritual Weapon (C2 Evoc): R300' Creates a force weapon (+17 attacks; inflicts 1d8+5 HP force; crit same as the corresponding physical weapon) that attacks a designated foe for 20 rd; can use move actions to redirect to different targets; the first attack on each creature is subject to SR, and the spell ends if the attack fails to overcome it</td>
     </tr><tr style="text-align:left">
-      <td>Spiritual Weapon (War2 Evoc): R300' Creates a force weapon (+17 attacks; inflicts 1d8+5 HP force; crit same as the corresponding physical weapon) that attacks a designated foe for 20 rd; can use move actions to redirect to different targets, and the first attack on each creature is subject to SR</td>
+      <td>Spiritual Weapon (War2 Evoc): R300' Creates a force weapon (+17 attacks; inflicts 1d8+5 HP force; crit same as the corresponding physical weapon) that attacks a designated foe for 20 rd; can use move actions to redirect to different targets; the first attack on each creature is subject to SR, and the spell ends if the attack fails to overcome it</td>
     </tr><tr style="text-align:left">
-      <td>Stabilize (C0 Conj): R75' Stabilizes target w/negative HP</td>
+      <td>Stabilize (C0 Conj): R75' Stabilizes a target with negative hit points</td>
     </tr><tr style="text-align:left">
       <td>Statue (Artifice8 Tran): Allows touched to become a statue with hardness 8 at will for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Status (C2 Divi): Allows monitoring the condition and position of 6 touched allies for 20 hr</td>
+      <td>Status (C2 Divi): Allows monitoring the condition and position of 6 touched creatures (save Will negates) for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Stone Shape (Artifice3 Tran): Reshapes 30 cubic feet of stone</td>
     </tr><tr style="text-align:left">
@@ -1512,17 +1512,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Stone Shape (Earth3 Tran): Reshapes 30 cubic feet of stone</td>
     </tr><tr style="text-align:left">
-      <td>Stoneskin (Earth6 Abju): Touched gains DR 10/adamantine for 200 min or until 150 HP worth of damage has been prevented</td>
+      <td>Stoneskin (Earth6 Abju): Touched gains DR 10/adamantine for 200 min or until 150 HP have been negated</td>
     </tr><tr style="text-align:left">
-      <td>Stoneskin (Strength6 Abju): Touched gains DR 10/adamantine for 200 min or until 150 HP worth of damage has been prevented</td>
+      <td>Stoneskin (Strength6 Abju): Touched gains DR 10/adamantine for 200 min or until 150 HP have been negated</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (C9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then obscures vision and reduces Speed by 3/4 for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
+      <td>Storm Of Vengeance (C9 Conj): R1200' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Nobility9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then obscures vision and reduces Speed by 3/4 for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
+      <td>Storm Of Vengeance (Nobility9 Conj): R1200' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Weather9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then obscures vision and reduces Speed by 3/4 for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
+      <td>Storm Of Vengeance (Weather9 Conj): R1200' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Suggestion (Charm3 Ench): R75' Target follows a reasonable suggestion (save Will negates) for 20 hr</td>
+      <td>Suggestion (Charm3 Ench): R75' Target follows a reasonable suggestion (save Will negates) for up to 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster I (C1 Conj): R75' Summons a 1st-level extraplanar creature that fights foes and obeys orders for 20 rd</td>
     </tr><tr style="text-align:left">
@@ -1556,27 +1556,27 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Summon Nature's Ally VIII (Animal8 Conj): R75' Summons 1 8th-level, 1d3 7th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sunbeam (Sun7 Evoc): 6 60' beam of light inflicts 4d6 HP (or 8d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) and blinded (save Reflex (DC +1) half HP only) once per rd for 20 rd</td>
+      <td>Sunbeam (Sun7 Evoc): 60' beam of light inflicts blinded and 4d6 HP (or 8d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (save Reflex (DC +1) half HP only) once per rd 6 times within 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sunburst (Sun8 Evoc): R1200' 80' radius inflicts 6d6 HP (or 12d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) and blinded (save Reflex (DC +1) half HP only)</td>
+      <td>Sunburst (Sun8 Evoc): R1200' 80' radius inflicts blinded and 6d6 HP (or 12d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (save Reflex (DC +1) half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (C8 Necr): R60' Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for 200 min or until creatures with 150 HP total have been killed</td>
+      <td>Symbol Of Death (C8 Necr): Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for 200 min or until creatures with 150 HP total have been killed</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Rune8 Necr): R60' Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for 200 min or until creatures with 150 HP total have been killed</td>
+      <td>Symbol Of Death (Rune8 Necr): Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for 200 min or until creatures with 150 HP total have been killed</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Fear (C6 Necr): R60' Rune panics creatures in a 60' radius for 20 rd (save Will negates) when triggered for 200 min</td>
+      <td>Symbol Of Fear (C6 Necr): Rune panics creatures in a 60' radius for 20 rd (save Will negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Symbol Of Insanity (C8 Ench): R60' Rune inflicts permanent insanity on creatures in a 60' radius (save Will negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Pain (C5 Necr): R60' Rune causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
+      <td>Symbol Of Pain (C5 Necr): Rune causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Persuasion (C6 Ench): R60' Rune charms creatures in a 60' radius for 20 hrs (save Will negates) when triggered for 200 min</td>
+      <td>Symbol Of Persuasion (C6 Ench): Rune charms creatures in a 60' radius for 20 hrs (save Will negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Sleep (C5 Ench): R60' Rune renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min (save Will negates) when triggered for 200 min</td>
+      <td>Symbol Of Sleep (C5 Ench): Rune renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min (save Will negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Stunning (C7 Ench): R60' Rune stuns creatures in a 60' radius for 1d6 rd (save Will negates) when triggered for 200 min</td>
+      <td>Symbol Of Stunning (C7 Ench): Rune stuns creatures in a 60' radius for 1d6 rd (save Will negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Weakness (C7 Necr): R60' Rune inflicts -3d6 Strength on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
+      <td>Symbol Of Weakness (C7 Necr): Rune inflicts -3d6 Strength on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Telepathic Bond (Community5 Divi): R75' Allows self and/or 6 willing targets in a 15' radius with at least 3 Intelligence to share thoughts for 200 min</td>
     </tr><tr style="text-align:left">
@@ -1588,7 +1588,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Tongues (C4 Divi): Allows touched to communicate in any language for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Idiocy (Madness2 Ench): Touch attack inflicts -1d6 Intelligence, Wisdom, and Charisma for 200 min</td>
+      <td>Touch Of Idiocy (Madness2 Ench): Melee touch inflicts -1d6 Intelligence, Wisdom, and Charisma for 200 min</td>
     </tr><tr style="text-align:left">
       <td>True Resurrection (C9 Conj): Restores life with full health, levels, and prepared spells to a willing chosen creature dead up to 200 years</td>
     </tr><tr style="text-align:left">
@@ -1596,9 +1596,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>True Seeing (Knowledge5 Divi): Allows touched to see through 120' darkness, illusion, and invisibility, note secret doors, and see the true forms of polymorphed items for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>True Strike (Destruction1 Divi): Gives self +20 on the next attack before the end of the next rd</td>
+      <td>True Strike (Destruction1 Divi): Gives self +20 on the next attack, ignoring concealment, before the end of the next rd</td>
     </tr><tr style="text-align:left">
-      <td>True Strike (Luck1 Divi): Gives self +20 on the next attack before the end of the next rd</td>
+      <td>True Strike (Luck1 Divi): Gives self +20 on the next attack, ignoring concealment, before the end of the next rd</td>
     </tr><tr style="text-align:left">
       <td>Undeath To Death (C6 Necr): R300' Destroys 20d4 HD of undead with up to 8 HD in a 40' radius (save Will negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
@@ -1608,25 +1608,25 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Undetectable Alignment (C2 Abju): R75' Conceals the target's alignment from divination (save Will negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Unhallow (C5 Evoc): 40' radius from touched gives +2 AC and saves vs. good, suppresses mental control, bars contact by summoned good creatures, gives negative channeling +4 DC and positive channeling -4 DC, and evokes bane spell</td>
+      <td>Unhallow (C5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Unholy Aura (C8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, and SR 25 vs. good spells and casters, suppress mental control, and inflict -1d6 Strength on successful good attackers (save Fortitude negates) for 20 rd</td>
+      <td>Unholy Aura (C8 Abju): 20 creatures within 20' inflict -1d6 Strength on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Unholy Aura (Evil8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, and SR 25 vs. good spells and casters, suppress mental control, and inflict -1d6 Strength on successful good attackers (save Fortitude negates) for 20 rd</td>
+      <td>Unholy Aura (Evil8 Abju): 20 creatures within 20' inflict -1d6 Strength on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Unholy Blight (C4 Evoc): R300' 20' radius inflicts 5d8 HP (or 20d6 HP to outsiders) and sickened for 1d4 rd on good creatures (save Will (DC +1) half HP only) and half as many HP on neutral ones (save Will (DC +1) half)</td>
+      <td>Unholy Blight (C4 Evoc): R300' Good creatures in a 20' radius suffer 5d8 HP (or 10d6 HP to outsiders) and are sickened for 1d4 rd (save Will (DC +1) half HP only); neutral creatures suffer half HP only (save Will (DC +1) half)</td>
     </tr><tr style="text-align:left">
-      <td>Unholy Blight (Evil4 Evoc): R300' 20' radius inflicts 5d8 HP (or 20d6 HP to outsiders) and sickened for 1d4 rd on good creatures (save Will (DC +1) half HP only) and half as many HP on neutral ones (save Will (DC +1) half)</td>
+      <td>Unholy Blight (Evil4 Evoc): R300' Good creatures in a 20' radius suffer 5d8 HP (or 10d6 HP to outsiders) and are sickened for 1d4 rd (save Will (DC +1) half HP only); neutral creatures suffer half HP only (save Will (DC +1) half)</td>
     </tr><tr style="text-align:left">
       <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Virtue (C0 Tran): Gives touched 1 temporary HP for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Wail Of The Banshee (Death9 Necr): R75' 20 targets in 40' radius suffer 200 HP (Fort neg)</td>
+      <td>Wail Of The Banshee (Death9 Necr): R75' Inflicts 200 HP (save Fortitude negates) on 20 targets in a 40' radius</td>
     </tr><tr style="text-align:left">
-      <td>Wail Of The Banshee (Repose9 Necr): R75' 20 targets in 40' radius suffer 200 HP (Fort neg)</td>
+      <td>Wail Of The Banshee (Repose9 Necr): R75' Inflicts 200 HP (save Fortitude negates) on 20 targets in a 40' radius</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (Fire4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10', 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
+      <td>Wall Of Fire (Fire4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Iron (Artifice7 Conj): R300' Creates a 100 square foot, 5"-thick permanent iron wall (the area can be doubled by halving the thickness); if unanchored, the wall falls (a successful DC 40 Strength check pushes it to fall in the desired direction), inflicting 10d6 HP on Large and smaller creatures (save Reflex negates)</td>
     </tr><tr style="text-align:left">
@@ -1634,11 +1634,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Wall Of Stone (Earth5 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness); each 5' section has 75 hit points and hardness 8</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Plant5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP slashing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
+      <td>Wall Of Thorns (Plant5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (C3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs</td>
+      <td>Water Breathing (C3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs divided among them</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (Water3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs</td>
+      <td>Water Breathing (Water3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs divided among them</td>
     </tr><tr style="text-align:left">
       <td>Water Walk (C3 Tran): Allows 20 touched creatures to walk on liquid as if it were a solid surface for 200 min</td>
     </tr><tr style="text-align:left">

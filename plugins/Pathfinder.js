@@ -3838,11 +3838,11 @@ Pathfinder.SPELLS = {
   'Giant Form I':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
-    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, Low-Light vision, and, depending on the form taken, 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, and 60\' rock throwing that inficts 2d6 HP"',
+    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, Low-Light vision, and, depending on the form taken, 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, and 60\' rock throwing that inflicts 2d6 HP"',
   'Giant Form II':
     'School=Transmutation ' +
     'Level=S8,W8 ' +
-    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, +10 Speed, and, depending on the form taken, a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, 120\' rock throwing that inficts 2d10 HP, and elemental resistances and vulnerabilities"',
+    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, +10 Speed, and, depending on the form taken, a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, 120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities"',
   'Giant Vermin':
     'Description=' +
       '"R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey simple commands for %{lvl} min"',
@@ -3868,7 +3868,7 @@ Pathfinder.SPELLS = {
   'Guidance':'Liquid=Potion',
   'Gust Of Wind':
     'Description=' +
-      '"Creates a 60\' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Strength DC 15 allows Medium creatures to move); Tiny creatures are also pushed 1d4x10\', suffering 1d4 HP nonlethal per 10\'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move aginst the wind, with Tiny flying creatures blown back 2d6x10\', suffering 2d6 HP nonlethal (save Fly DC 25 negates)"',
+      '"Creates a 60\' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Strength DC 15 allows Medium creatures to move); Tiny creatures are also pushed 1d4x10\', suffering 1d4 HP nonlethal per 10\'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10\', suffering 2d6 HP nonlethal (save Fly DC 25 negates)"',
 
   'Hallow':
     'Description=' +
@@ -3971,7 +3971,7 @@ Pathfinder.SPELLS = {
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
-      '"Self becomes living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulerability to special attacks that affect iron golems"',
+      '"Self becomes living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
   'Ironwood':'',
   'Irresistible Dance':
     'Description=' +
@@ -4151,7 +4151,7 @@ Pathfinder.SPELLS = {
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Touched willing target becomes a Dimunitive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Touched willing target becomes a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
   'Power Word Kill':'',
@@ -4260,7 +4260,7 @@ Pathfinder.SPELLS = {
   'Righteous Might':
     'Level=C5,Glory5,Strength5 ' +
     'Description=' +
-      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhanancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
+      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
   'Rope Trick':
     'Description=' +
       '"Causes a 5\'-30\' rope to stretch upward and remain immobile, leading to an extradimensional space with room for 8 creatures, for %{lvl} hr" ' +
@@ -4296,7 +4296,7 @@ Pathfinder.SPELLS = {
   'Shapechange':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for %{lvl} min"',
+      '"Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for %{lvl*10} min"',
   'Shatter':'Level=B2,C2,Destruction2,S2,W2',
   'Shield':'',
   'Shield Of Faith':'Level=C1,Glory1',

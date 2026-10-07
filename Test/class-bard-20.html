@@ -476,7 +476,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Greater Scrying (B6 Divi): Self sees, hears, and can cast detection and communication spells in a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Greater Shout (B6 Evoc): 60' cone inflicts 10d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects), deafness for 4d6 rd, and stunned for 1 rd (save Fortitude half HP and half deafness duration only; save Reflex negates damage to held objects)</td>
+      <td>Greater Shout (B6 Evoc): 60' cone inflicts 10d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects), deafened for 4d6 rd, and stunned for 1 rd (save Fortitude half HP and half deafness duration only; save Reflex negates damage to held objects)</td>
     </tr><tr style="text-align:left">
       <td>Hallucinatory Terrain (B4 Illu): R1200' Changes the look, sound, and smell of 600 cubic feet of terrain (save Will upon interaction disbelieves) for 40 hr</td>
     </tr><tr style="text-align:left">
@@ -512,7 +512,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Lesser Confusion (B1 Ench): R300' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Geas (B3 Ench): R75' Compels a target with up to 7 HD to complete a specified task (save Will negates) within 20 days, suffering -2 to each ability score (maximum -8, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task</td>
+      <td>Lesser Geas (B3 Ench): R75' Compels a target with up to 7 HD to complete a specified task (save Will negates) within 20 days, suffering -2 to each ability score (-8 maximum, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task</td>
     </tr><tr style="text-align:left">
       <td>Light (B0 Evoc): Touched gives 20' normal light for 200 min</td>
     </tr><tr style="text-align:left">
@@ -544,7 +544,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Mass Fox's Cunning (B6 Tran): R75' 20 targets in a 15' radius gain +4 Intelligence for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Suggestion (B5 Ench): R300' 20 targets in a 15' radius follow a reasonable suggestion (save Will negates) for 20 hr</td>
+      <td>Mass Suggestion (B5 Ench): R300' 20 targets in a 15' radius follow a reasonable suggestion (save Will negates) for up to 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Mending (B0 Tran): R10' Repairs minor damage to an object weighing up to 20 lb</td>
     </tr><tr style="text-align:left">
@@ -600,13 +600,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Resistance (B0 Abju): Touched gains +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Scare (B2 Necr): R75' Target with up to 6 HD becomes frightened and flees for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
+      <td>Scare (B2 Necr): R300' 6 targets in a 15' radius with up to 6 HD become frightened and flee for 20 rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Scrying (B3 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Sculpt Sound (B3 Tran): R75' Changes the sounds of 20 targets in a 15' radius (save Will negates) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Secret Page (B3 Tran): Permanently alters the text on a touched page so that a password is required to read it</td>
+      <td>Secret Page (B3 Tran): Permanently alters the text on a touched page so that a password is required to read the original</td>
     </tr><tr style="text-align:left">
       <td>Secure Shelter (B4 Conj): R75' Creates a 20'x20' cottage, strong as a stone building, with secured entrances, resistance to fire, immunity to normal missiles, and an unseen servant that can perform tasks, for 40 hr</td>
     </tr><tr style="text-align:left">
@@ -624,9 +624,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Shatter (B2 Evoc): R75' Breakables weighing up to 20 lb in a 5' radius shatter (save Will negates), or a target object weighing up to 200 lb suffers 10d6 HP sonic (save Fortitude half)</td>
     </tr><tr style="text-align:left">
-      <td>Shout (B4 Evoc): 30' cone inflicts 5d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects) and deafness for 2d6 rd (save Fortitude half HP only; save Reflex negates damage to held objects)</td>
+      <td>Shout (B4 Evoc): 30' cone inflicts 5d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects) and deafened for 2d6 rd (save Fortitude half HP only; save Reflex negates damage to held objects)</td>
     </tr><tr style="text-align:left">
-      <td>Silence (B2 Illu): R1200' Bars sound in 20' radius (Will neg if targeted) for 20 rd</td>
+      <td>Silence (B2 Illu): R1200' Eliminates sound in a 20' radius (save Will for a targeted creature negates) for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Silent Image (B1 Illu): R1200' Creates a 240 cubic foot movable image (save Will upon interaction disbelieves) for concentration</td>
     </tr><tr style="text-align:left">
@@ -642,9 +642,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Speak With Plants (B4 Divi): Allows self to converse with plants and plant creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Suggestion (B2 Ench): R75' Target follows a reasonable suggestion (save Will negates) for 20 hr</td>
+      <td>Suggestion (B2 Ench): R75' Target follows a reasonable suggestion (save Will negates) for up to 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Suggestion (Suggestion3 Ench): R75' Target follows a reasonable suggestion (save Will negates) for 20 hr</td>
+      <td>Suggestion (Suggestion3 Ench): R75' Target follows a reasonable suggestion (save Will negates) for up to 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Summon Instrument (B0 Conj): Summons a specified musical instrument, small enough to be held and playable only by self, for 20 min</td>
     </tr><tr style="text-align:left">
@@ -660,11 +660,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Summon Monster VI (B6 Conj): R75' Summons 1 6th-level, 1d3 5th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Swarm (B2 Conj): R75' Summons a swarm of bats, rats, or spiders that attacks the nearest creature for concentration + 2 rd</td>
+      <td>Summon Swarm (B2 Conj): R75' Summons a swarm of a choice of bats, rats, or spiders that attacks the nearest creature for concentration + 2 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sympathetic Vibration (B6 Evoc): Touched structure suffers 2d10 HP each rd for up to 20 rd</td>
+      <td>Sympathetic Vibration (B6 Evoc): Touched structure suffers 2d10 HP each rd, bypassing hardness, for up to 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tiny Hut (B3 Evoc): Creates a 20'-radius sphere that provides shelter for 10 Medium creatures, resisting heat, cold, and weather, for 40 hr</td>
+      <td>Tiny Hut (B3 Evoc): Creates a 20'-radius sphere, opaque from the outside, that provides shelter for 10 Medium creatures, resisting heat, cold, and weather, for 40 hr</td>
     </tr><tr style="text-align:left">
       <td>Tongues (B2 Divi): Allows touched to communicate in any language for 200 min</td>
     </tr><tr style="text-align:left">
