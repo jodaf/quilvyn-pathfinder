@@ -5065,37 +5065,37 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
     'Description=' +
-      '"Self hand absorbs touched %{lvl} lb object (Fort neg) for %{lvl} dy"',
+      '"Hand absorbs a touched %{lvl} lb object (save Fortitude for objects possessed by another negates) for %{lvl} days"',
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,S2,W2 ' +
     'Description=' +
-      '"Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration"',
+      '"Poison affecting touched takes effect immediately or inflicts damage twice as often for half its normal duration"',
   'Acid Pit':
     'School="Conjuration (Creation) [Acid]" ' +
     'Level=S4,W4,Summoner4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit containing 5\' of acid for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 30 Climb to exit) and suffer 2d6 HP acid/rd; objects suffer broken after 3 rd (Fort delays 1 rd), then are destroyed 1 rd later (Fort delays 1 rd)"',
+      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?100}\' deep extradimensional pit, containing 5\' of acid that inflicts 2d6 HP per rd and makes objects broken after 3 rd and destroyed after 4 (save Fortitude delays for 1 rd), for %{lvl+1} rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 30 Climb check"',
   'Alchemical Allocation':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
     'Description=' +
-      '"Self gains effect of chosen potion in next rd w/out consuming it"',
+      '"Allows self to gain the effects of a chosen potion in the next rd without consuming it"',
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
     'Description=' +
-      '"Transforms touched %{lvl*5} lb object into 1 day\'s food for %{lvl*5} Medium creatures"',
+      '"Makes a touched %{lvl*5} lb object edible, providing 1 day\'s food for %{lvl*5} Medium creatures"',
   'Alter Winds':
     'School="Transmutation [Air]" ' +
     'Level=D1,O1,S1,W1 ' + // Oracle Wind
     'Description=' +
-      '"Increases or decreases %{lvl>=16 ? \'severe\' : lvl>=10 ? \'strong\' : lvl>=4 ? \'moderate\' : \'light\'} winds 1 step in 10\' radius around touched for %{lvl} hr"',
+      '"Increases or decreases %{lvl>=16 ? \'severe\' : lvl>=10 ? \'strong\' : lvl>=4 ? \'moderate\' : \'light\'} winds 1 step in a 10\' radius around touched for %{lvl} hr"',
   'Amplify Elixir':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
     'Description=' +
-      '"Variable effects of potions and elixirs consumed by self increase by 1/2 (dbl duration if no variable effects) for %{lvl} rd"',
+      '"Variable effects of potions and elixirs consumed by self increase by 50% (or double duration if it has no variable effects) for %{lvl} rd"',
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,O1,R1,S1,W1,Summoner1 ' +
@@ -5105,42 +5105,42 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D3,S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' diameter sphere douses normal fires and acts as <i>Dispel Magic</i> on magical ones, inflicts 2d6 HP nonlethal (Ref neg) and engulfs (Ref neg), moves 30\'/rd and rolls over 10\' obstacles for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' diameter sphere of water can be moved 30\' per rd and rolled over 10\' obstacles for %{lvl} rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd"',
   'Arcane Concordance':
     'School=Evocation ' +
     'Level=B3 ' +
     'Description=' +
-      '"10\' radius gives +1 ally spell DC and free use of choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for %{lvl} rd"',
+      '"10\' radius gives allied casters +1 spell DC and free use of a choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for %{lvl} rd"',
   'Arrow Eruption':
     'School="Conjuration (Creation)" ' +
     'Level=R2,S2,W2 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Duplicates of arrow that killed in prior rd attack %{lvl<?15} foes in 30\' radius"',
+      '"R%{400+lvl*40}\' Cast the rd after killing a creature with an arrow, causes duplicates of the arrow to attack %{lvl<?15} foes in a 30\' radius"',
   'Aspect Of The Bear':
     'School="Transmutation (Polymorph)" ' +
     'Level=D2,R2 ' +
     'Description=' +
-      '"Self gains +2 AC and CMB and does not provoke AOO on bull rush, grapple, and overrun for %{lvl} min"',
+      '"Gives self a +2 enhancement bonus to natural armor and CMB and allows performing Bull Rush, Grapple, and Overrun without provoking AOO for %{lvl} min"',
   'Aspect Of The Falcon':
     'School="Transmutation (Polymorph)" ' +
     'Level=D1,R1 ' +
     'Description=' +
-      '"Self gains +3 Perception, +1 ranged attack, and crit of 19-20/x3 w/bows and crossbows for %{lvl} min"',
+      '"Gives self +3 Perception, +1 ranged attacks, and a crit of x3@19 with bows and crossbows for %{lvl} min"',
   'Aspect Of The Stag':
     'School="Transmutation (Polymorph)" ' +
     'Level=D4,R3 ' +
     'Description=' +
-      '"Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+%{baseAttack+(strengthModifier>?dexterityModifier)} 1d%{features.Small ? 6 : 8}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier<0 ? strengthModifier : \'\'} HP piercing 19-20/x2) after a successful foe AOO for %{lvl} min"',
+      '"Gives self a +2 dodge bonus to Armor Class vs. AOO, +20 Speed, full speed in undergrowth, and an immediate attack with antlers after a successful foe AOO (+%{baseAttack+(strengthModifier>?dexterityModifier)} inflicts 1d%{features.Small ? 6 : 8}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier<0 ? strengthModifier : \'\'} HP piercing x2@19) for %{lvl} min"',
   'Aspect Of The Wolf':
     'School="Transmutation (Polymorph)" ' +
     'Level=D5,R4 ' +
     'Description=' +
-      '"Self gains +4 Strength and Dexterity, Scent feature, +2 trip attack, and swift trip w/out provoking AOO for %{lvl} min"',
+      '"Gives self +4 Strength and Dexterity, the Scent feature, +2 Trip attack, and swift Trip without provoking AOO for %{lvl} min"',
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
     'Description=' +
-      '"Allies in 10\' radius gain immunity to fear for %{lvl*10} min"',
+      '"Allies in a 10\' radius gain immunity to fear for %{lvl*10} min"',
 
   'Ball Lightning':
     'School="Evocation [Air,Electricity]" ' +
@@ -5372,7 +5372,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation)" ' +
     'Level=Caves2,S2,W2,Summoner2 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates 10\'x10\' %{lvl//2*10<?30}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 25 Climb to exit)"',
+      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?30}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 25 Climb check"',
   'Create Treasure Map':
     'School=Divination ' +
     'Level=B2,D3,R2,S2,W2 ' +
