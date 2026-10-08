@@ -3502,10 +3502,9 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
   'Blade Barrier':'',
-  // TODO: awkward phrasing
   'Blasphemy':
     'Description=' +
-      '"Nonevil creatures within 40\' with up to %{lvl}/%{lvl-1}/%{lvl-5}/%{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become dazed for 1 rd (save Will negates)/suffer -2d6 Strength for 2d4 rd (save Will half)/become paralyzed for 1d10 min (save Will inflicts paralyzed for 1 rd)/are killed (save Will inflicts 3d6+%{lvl} HP)"',
+      '"Inflicts on nonevil creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); -2d6 Strength for 2d4 rd on creatures with up to %{lvl-1} HD (save Will half); dazed for 1 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Bleed':
     'School=Necromancy ' +
     'Level=C0,S0,W0 ' +
@@ -3662,10 +3661,9 @@ Pathfinder.SPELLS = {
   'Detect Snares And Pits':'',
   'Detect Thoughts':'',
   'Detect Undead':'',
-  // TODO: awkward phrasing
   'Dictum':
     'Description=' +
-      '"Nonlawful creatures within 40\' with up to %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), are staggered for 2d4 rd (save Will inflicts staggered for 1d4 rd), suffer paralysis for 1d10 min (save Will inflicts paralysis for 1 rd, and are killed (save Will inflicts 3d6+%{lvl} HP)"',
+      '"Inflicts on nonlawful creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Dimension Door':'Level=B4,Travel4,S4,W4',
   'Dimensional Anchor':'',
   'Dimensional Lock':'',
@@ -3744,7 +3742,7 @@ Pathfinder.SPELLS = {
   'Eyebite':
     'School=Necromancy ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Renders 1 target per rd with 1, 5, and 10 HD comatose for %{lvl*10} min, panicked for 1d4 rd and shaken for %{lvl*10} min, and sickened for %{lvl*10} min (save Fortitude negates), for %{lvl} rd"',
+      '"Inflicts on 1 target per rd for %{lvl} rd a set of effects (save Fortitude negates): sickened for %{lvl*10} min; panicked for 1d4 rd and shaken for %{lvl*10} min on creatures with up to 9 HD; comatose for %{lvl*10} min on creatures with up to 4 HD"',
 
   'Fabricate':'Level=Artifice5,S5,W5',
   'Faerie Fire':'',
@@ -3908,10 +3906,9 @@ Pathfinder.SPELLS = {
     'Level=Glory7,P4 ' +
     'Description=' +
       '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures, for %{lvl} rd"',
-  // TODO: awkward phrasing
   'Holy Word':
     'Description=' +
-      '"Nongood creatures within 40\' with %{lvl}, %{lvl-1}, %{lvl-5}, and %{lvl-10} HD are banished to their home planes for 24 hr (save Will -4 negates) and become deafened for 1d4 rd (save Will negates), blinded for 2d4 rd (save Will for 1d4 rd), paralyzed for 1d10 min (save Will for 1 rd), and killed (save Will inflicts 3d6+%{lvl} HP)"',
+      '"Inflicts on nongood creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP; paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save negates)"',
   'Horrid Wilting':'',
   'Hypnotic Pattern':'',
   'Hypnotism':'',
@@ -4474,7 +4471,7 @@ Pathfinder.SPELLS = {
   'Wood Shape':'Level=Artifice2,D2 Liquid=Oil',
   'Word Of Chaos':
     'Description=' +
-      '"Nonchaotic creatures in 40\' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (Will neg)/stunned for 1 rd (Will neg)/confused for 1d10 min (Will for 1 rd)/killed (Will 3d6+%{lvl} HP) and banished (Will neg)"',
+      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for rd on creatures with up to %{lvl-1} HD (save Will negates); deafend for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Word Of Recall':'',
 
   'Zone Of Silence':'',
