@@ -5393,98 +5393,98 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=B6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ending Bardic Performance inflicts 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd (Fort neg bleed), on %{lvl//3} targets in 15\' radius"',
+      '"R%{25+lvl//2*5}\' Ending Bardic Performance inflicts 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd, (save Fortitude sonic only) on %{lvl//3} target%{lvl>5?\'s\':\'\'} in a 15\' radius"',
   'Deafening Song Bolt':
     'School="Evocation [Sonic]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ranged touch w/3 bolts in 15\' radius inflicts 3d10 HP sonic and deafened for 1d6 rd each"',
+      '"R%{25+lvl//2*5}\' Ranged touch with 3 bolts in a 15\' radius each inflicts 3d10 HP sonic and deafened for 1d6 rd"',
   'Defile Armor':
     'School="Abjuration [Evil]" ' +
     'Level=Inquisitor4,Antipaladin3 ' +
     'Description=' +
-      '"Touched armor gives +%{lvl//4} AC, plus DR 5/good while using Judgment or Smite for %{lvl} min"',
+      '"Touched armor gains a +%{lvl//4<?20} enhancement bonus, and gives DR 5/good while using Judgment or Smite features, for %{lvl} min"',
   'Deflection':
     'School="Abjuration [Force]" ' +
     'Level=Defense7,S7,W7 ' +
     'Description=' +
-      '"Missed attacks on self inflict new attack on attacker for %{lvl} rd"',
+      '"Missed attacks on self inflict force the attacker to make an immediate attack on itself for %{lvl} rd"',
   'Delayed Consumption':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
     'Description=' +
-      '"Delays effects of second consumed extract of up to level 4 up to %{lvl} dy"',
+      '"Delays the effects of a second consumed extract of up to level 4 for up to %{lvl} dy"',
   'Denounce':
     'School="Enchantment (Compulsion) [Language-Dependent,Mind-Affecting]" ' +
     'Level=B4,Inquisitor4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Creatures in 30\' radius shift attitude toward target 2 levels worse (Will neg) for %{lvl} hr; target suffers -10 Diplomacy checks to improve attitude of those affected"',
+      '"R%{25+lvl//2*5}\' Shifts the attitudes of creatures in a 30\' radius toward the target 2 levels worse (save Will negates) for %{lvl} hr, and the target suffers -10 Diplomacy checks to improve the attitudes of those affected"',
   'Detect Aberration':
     'School=Divination ' +
     'Level=D1,R1 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Cone gives self info on aberrations for conc or %{lvl*10} min"',
+      '"%{400+lvl*40}\' cone reveals the presence and condition of a chosen kind of aberration for concentration up to %{lvl*10} min; can change the chosen kind each rd"',
   'Detonate':
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist4,S4,W4 ' +
     'Description=' +
-      '"15\' radius inflicts %{lvl}d8 HP (30\' radius half) chosen energy type (Ref half) in next rd; self suffers half HP"',
+      '"On the rd after casting, inflicts %{lvl<?10}d8 HP of a chosen energy type to creatures within 15\' and half as much to those within 30\' (save Reflex half); also inflicts half damage to self with no save"',
   'Devolution':
     'School=Transmutation ' +
     'Level=S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target eidolon loses %{lvl//5+1} evolutions (Will neg) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Target eidolon loses %{lvl//5+1} evolution%{lvl>4?\'s\':\'\'} (save Will negates) for %{lvl} rd"',
   'Discordant Blast':
     'School="Evocation [Sonic]" ' +
     'Level=B4 ' +
     'Description=' +
-      '"10\' radius or 30\' cone inflicts 3d6 HP sonic and +%{lvl+charismaModifier} CMB bull rush"',
+      '"10\' radius or 30\' cone inflicts 3d6 HP sonic and a +%{lvl+charismaModifier} CMB Bull Rush"',
   'Divine Transfer':
     'School=Necromancy ' +
     'Level=P3 ' +
     'Description=' +
-      '"Touched regains up to %{constitution} HP, transferred from self, and gains DR %{charismaModifier}/evil for %{lvl} rd"',
+      '"Touched regains up to %{constitution} hit points, transferred from self, and gains DR %{charismaModifier}/evil for %{lvl} rd"',
   'Divine Vessel':
     'School=Transmutation ' + // One of [Chaotic,Evil,Good,Lawful]
     'Level=O8 ' +
     'Description=' +
-      '"Self gains size category, +6 Strength, +6 Constitution, +3 AC, 60\' Darkvision, SR %{12+lvl}, and alignment-specific effects for %{lvl} rd"',
+      '"Self become a choice of an anarchic, axiomatic, celestial, or fiendish creature, increasing size by a category and gaining +6 Strength, +6 Constitution, a +3 natural armor bonus to Armor Class, 60\' Darkvision, SR %{12+lvl}, and creature-specific characteristics, for %{lvl} rd"',
   'Draconic Reservoir':
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist3,S3,W3 ' +
     'Description=' +
-      '"Touched can absorb, then release in +1d6 HP damage bonuses, %{lvl*6} HP of specified energy damage w/in %{lvl*10} min"',
+      '"Touched can absorb and release as +1d6 HP damage bonuses %{lvl*6} HP of a chosen energy type within %{lvl*10} min"',
   "Dragon's Breath":
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist4,S4,W4 ' +
     'Description=' +
-      '"60\' line or 30\' cone inflicts %{lvl<?12}d6 HP specified energy damage (Ref half)"',
+      '"Breath inflicts %{lvl<?12}d6 HP (save Reflex half); the type of dragon scale used to cast the spell determines energy type and area of effect (30\' cone or 60\' line)"',
   'Dust Of Twilight':
     'School="Conjuration [Darkness]" ' +
     'Level=B2,S2,W2 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' 5\' radius inflicts fatigue (Fort neg) and extinguishes mundane light and light spells up to level 2"',
+      '"R%{100+lvl*10}\' 5\' radius inflicts fatigue (save Fortitude negates) and extinguishes mundane light and light spells up to level 2"',
 
   'Eagle Eye':
     'School=Divination ' +
     'Level=D2,R2 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Self can view from higher point for %{lvl} min"',
+      '"Self can view from a point up to %{400+lvl*40}\' overhead for %{lvl} min"',
   'Elemental Aura':
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist3,S3,W3 ' +
     'Description=' +
-      '"Creatures adjacent to self suffer 2d6 HP chosen energy plus energy-specific effects (Ref half HP only) for %{lvl} rd"',
+      '"Inflicts 2d6 HP of a chosen energy type plus energy-specific effects (save Reflex half HP only) on adjacent creatures for %{lvl} rd; acid inflicts sickened and 1 HP acid each rd for %{lvl//3} rd, cold inflicts fatigued, electricity inflicts staggered for 1 rd, and fire catches creatures on fire"',
   'Elemental Speech':
     'School=Divination ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=B3,C3,D2,O3,S2,W2 ' +
     'Description=' +
-      '"Self can converse w/chosen element creatures for %{lvl} min"',
+      '"Allows self can to converse in Auran with air or flying creatures, Terran with earth or burrowing creatures, Ignan with fire creatures, or Aquan with water or swimming creatures, for %{lvl} min"',
   'Elemental Touch':
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist2,S2,W2 ' +
     'Description=' +
-      '"Touch inflicts 1d6 HP chosen energy, plus energy-specific effects, for %{lvl} rd"',
+      '"Touch and unarmed attacks inflict +1d6 HP chosen energy, plus energy-specific effects, for %{lvl} rd; acid inflicts sickened (save Fortitude negates) and 1 HP acid per rd for %{lvl//3} rd, cold inflicts fatigued, electricity inflicts staggered for 1 rd (save Fortitude negates), and fire catches creatures on fire"',
   'Elude Time':
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
@@ -5494,17 +5494,17 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Self can use target each rd for 30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack (Fort neg 1 rd, full-round resistance +4), inflicting 2d6 HP (medium target), for %{lvl} rd"',
+      '"R%{400+lvl*40}\' Allows using the target each rd for a 30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack that injures both the target of the spell and the target of the throw (save Fortitude negates 1 rd, full-round resistance gives +4 on the save) for %{lvl} rd; Small, Medium, and Large targets inflict 1d10 HP, 2d6 HP, and 2d8 HP, respectively"',
   'Enter Image':
     'School=Transmutation ' +
     'Level=B2,C3,O3,S3,W3 ' +
     'Description=' +
-      '"R%{lvl*50}\' Self can inhabit and interact from images of self w/in range for conc"',
+      '"Allows self to inhabit and interact from images of self within %{lvl*50}\' for concentration"',
   'Euphoric Tranquility':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B6,C8,D8,Love8,O8,S8,W8 ' +
     'Description=' +
-      '"Touched treats all as friends (Will after attacked neg 1 rd), suffers half speed for %{lvl} rd"',
+      '"Touched becomes helpful, treats all as friends (save Will after being attacked negates for 1 rd), and suffers half speed for %{lvl} rd"',
   'Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner3 ' +
@@ -5524,12 +5524,12 @@ PFAPG.SPELLS = {
     'School="Transmutation [Earth]" ' +
     'Level=D1,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Moves 5\' cu of dirt; creatures on top fall into pit (Ref neg)"',
+      '"R%{25+lvl//2*5}\' Moves a 5\' cube of dirt; creatures on top fall into the resulting pit (save Reflex negates)"',
   'Expend':
     'School=Abjuration ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' 20\' radius successively drains creatures\' limited-use magical abilities (Will ends)"',
+      '"R%{100+lvl*10}\' 20\' radius successively drains creatures\' limited-use magical abilities, starting with those with the most daily uses (save Will ends)"',
 
   'Feast Of Ashes':
     'School=Transmutation ' +
@@ -6052,7 +6052,7 @@ PFAPG.SPELLS = {
     'School="Abjuration [Good]" ' +
     'Level=Inquisitor4,P3 ' +
     'Description=' +
-      '"Touched armor gives +%{lvl//4} AC, plus DR 5/evil while using Judgment or Smite, for %{lvl} min"',
+      '"Touched armor gains a +%{lvl//4<?20} enhancement bonus, and gives DR 5/evil while using Judgment or Smite features, for %{lvl} min"',
   'Saving Finale':
     'School="Evocation [Mind-Affecting]" ' +
     'Level=B1 ' +
