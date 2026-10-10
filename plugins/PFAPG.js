@@ -869,7 +869,7 @@ PFAPG.FEATURES = {
   'Awakened Intellect':'Section=ability Note="+2 Intelligence"',
   'Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict %{bombDamageDice}+%{intelligenceModifier} HP fire on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP fire splash (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) %V/dy"',
+    'Note="May create bombs that inflict %{bombDamageDice}+%{intelligenceModifier} HP fire on hit and %{effectiveAlchemistLevel+1)//2+intelligenceModifier} HP fire splash (DC %{10+levels.Alchemist//2+intelligenceModifier} Reflex half) %V/dy"',
   // 'Brew Potion' in SRD35.js
   'Combine Extracts':
     'Section=magic ' +
@@ -879,10 +879,10 @@ PFAPG.FEATURES = {
     'Note="1 min process combines two poison doses; result yields +50% frequency and +2 save DC when used within 1 hr"',
   'Concussive Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict %{(effectiveAlchemistLevel+1)//2}d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="May create bombs that inflict %{(effectiveAlchemistLevel+1)//2}d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC %{10+levels.Alchemist//2+intelligenceModifier} Fortitude negates)"',
   'Delayed Bomb':
     'Section=combat ' +
-    'Note="May configure bombs to explode after up to %{levels.Alchemist} rd (<i>Dispel Magic</i> or DC %{10+levels.Alchemist+intelligenceModifier} Disable Device neg)"',
+    'Note="May configure bombs to explode after up to %{levels.Alchemist} rd (<i>Dispel Magic</i> or DC %{10+levels.Alchemist+intelligenceModifier} Disable Device negates)"',
   'Dilution':
     'Section=magic Note="May split potion or elixir into two doses 1/dy"',
   'Discovery':'Section=feature Note="%V selections"',
@@ -915,10 +915,10 @@ PFAPG.FEATURES = {
     'Note="Mutagen gives 2 claw attacks for 1d%V HP each, 1 bite attack for 1d%1 HP damage, and +2 Intimidate"',
   'Force Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict %{(effectiveAlchemistLevel+1)//2}d4 HP force instead of fire; a direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref neg)"',
+    'Note="May create bombs that inflict %{(effectiveAlchemistLevel+1)//2}d4 HP force instead of fire; a direct hit knocks prone (DC %{10+levels.Alchemist//2+intelligenceModifier} Reflex negates)"',
   'Frost Bomb':
     'Section=combat ' +
-    'Note="May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg)"',
+    'Note="May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC %{10+levels.Alchemist//2+intelligenceModifier} Fortitude negates)"',
   'Grand Discovery':
     'Section=feature Note="1 selection/+2 Discovery selections"',
   'Grand Mutagen':
@@ -929,7 +929,7 @@ PFAPG.FEATURES = {
     'Note="Mutagen gives +4 AC and +6/-2 and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for %{effectiveAlchemistLevel*10} min"',
   'Inferno Bomb':
     'Section=combat ' +
-    'Note="May create bombs that obscure vision and inflict 6d6 HP fire in dbl splash radius (DC %{10+levels.Alchemist//2+intelligenceModifier} Ref half) for %{levels.Alchemist} rd"',
+    'Note="May create bombs that obscure vision and inflict 6d6 HP fire in dbl splash radius (DC %{10+levels.Alchemist//2+intelligenceModifier} Reflex half) for %{levels.Alchemist} rd"',
   'Infuse Mutagen':
      'Section=magic ' +
      'Note="May retain multiple mutagens; suffers -2 Intelligence per additional mutagen"',
@@ -954,11 +954,11 @@ PFAPG.FEATURES = {
     'Note="1 dy process creates stones that turn base metals into silver and gold and can be used for <i>True Resurrection</i> effects"',
   'Poison Bomb':
     'Section=combat ' +
-    'Note="May create bombs that kill creatures up to 6 HD (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort 1d4 Constitution damage for 4-6 HD) and inflict 1d4 Constitution damage on higher HD creatures (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort half) in dbl splash radius for %{levels.Alchemist} rd"',
+    'Note="May create bombs that kill creatures up to 6 HD (DC %{10+levels.Alchemist//2+intelligenceModifier} Fortitude 1d4 Constitution damage for 4-6 HD) and inflict 1d4 Constitution damage on higher HD creatures (DC %{10+levels.Alchemist//2+intelligenceModifier} Fortitude half) in dbl splash radius for %{levels.Alchemist} rd"',
   'Poison Resistance':'Section=save Note="%V to poison"',
   'Poison Touch':
     'Section=combat ' +
-    'Note="Touch inflicts 1d3 Constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Constitution neg)"',
+    'Note="Touch inflicts 1d3 Constitution damage/rd for 6 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Constitution negates)"',
   // 'Poison Use' in Pathfinder
   'Precise Bombs':
     'Section=combat ' +
@@ -977,7 +977,7 @@ PFAPG.FEATURES = {
     'Note="Poison applied to a weapon remains effective for %{intelligenceModifier} strikes"',
   'Stink Bomb':
     'Section=combat ' +
-    'Note="May create bombs that nauseate for 1d4+1 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Fort neg) in dbl splash radius for 1 rd"',
+    'Note="May create bombs that nauseate for 1d4+1 rd (DC %{10+levels.Alchemist//2+intelligenceModifier} Fortitude negates) in dbl splash radius for 1 rd"',
   'Swift Alchemy':
     'Section=combat,magic ' +
     'Note=' +
@@ -1208,7 +1208,7 @@ PFAPG.FEATURES = {
   // 'Track' in Pathfinder
   'True Judgment':
     'Section=combat ' +
-    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fort neg); must wait 1d4 rd between uses"',
+    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fortitude negates); must wait 1d4 rd between uses"',
 
   // Oracle
   'Acid Skin':
@@ -1243,17 +1243,17 @@ PFAPG.FEATURES = {
     'Note="Successful negative energy spell inflicts %{(mysteryLevel+5)//5} HP bleeding/rd (DC 15 Heal or healing effect ends)"',
   'Blizzard':
     'Section=combat ' +
-    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Ref half), reduce vision to 5\', and inflict +5 Acrobatics DC for %{charismaModifier} rd 1/dy"',
+    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d4 HP cold (DC %{10+mysteryLevel//2+charismaModifier} Reflex half), reduce vision to 5\', and inflict +5 Acrobatics DC for %{charismaModifier} rd 1/dy"',
   'Bonded Mount':'Section=feature Note="Has Animal Companion feature w/mount"',
   'Bones Mystery':
     'Section=skill ' +
     'Note="Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill"',
   'Brain Drain':
     'Section=magic ' +
-    'Note="R100\' Mental probe inflicts %{mysteryLevel}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (DC %{10+mysteryLevel//2+charismaModifier} Will neg) for %{charismaModifier} rd %{(mysteryLevel+5)//5}/dy"',
+    'Note="R100\' Mental probe inflicts %{mysteryLevel}d4 HP and yields 1 Knowledge check/rd at target\'s bonus (DC %{10+mysteryLevel//2+charismaModifier} Will negates) for %{charismaModifier} rd %{(mysteryLevel+5)//5}/dy"',
   'Burning Magic':
     'Section=magic ' +
-    'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Ref ends)"',
+    'Note="Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Reflex ends)"',
   'Channel':
     'Section=feature Note="Has Channel Energy feature (positive energy only)"',
   'Cinder Dance':
@@ -1341,10 +1341,10 @@ PFAPG.FEATURES = {
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to air and electricity spells w/out cost"',
   'Fire Breath':
     'Section=combat ' +
-    'Note="15\' cone inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) %{1+mysteryLevel//5}/dy"',
+    'Note="15\' cone inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) %{1+mysteryLevel//5}/dy"',
   'Firestorm':
     'Section=combat ' +
-    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d6 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) for %{charismaModifier} rd 1/dy"',
+    'Note="%{mysteryLevel} contiguous 10\' cu inflict %{mysteryLevel}d6 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) for %{charismaModifier} rd 1/dy"',
   'Flame Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill"',
@@ -1408,7 +1408,7 @@ PFAPG.FEATURES = {
     'Note="%{mysteryLevel>=17 ? \'Immune\' : mysteryLevel>=11 ? \'Resistance 20\' : mysteryLevel>=5 ? \'Resistance 10\' : \'Resistance 5\'} to cold"',
   'Interstellar Void':
     'Section=combat ' +
-    'Note="R30\' Inflicts %{mysteryLevel}d6 HP cold%{mysteryLevel>=15 ? \', exhausted, stunned 1 rd\' : mysteryLevel>=10 ? \', fatigued\' : \'\'} (DC %{10+mysteryLevel//2+charismaModifier} Fort half HP only) %{mysteryLevel>=10 ? 2 : 1}/dy"',
+    'Note="R30\' Inflicts %{mysteryLevel}d6 HP cold%{mysteryLevel>=15 ? \', exhausted, stunned 1 rd\' : mysteryLevel>=10 ? \', fatigued\' : \'\'} (DC %{10+mysteryLevel//2+charismaModifier} Fortitude half HP only) %{mysteryLevel>=10 ? 2 : 1}/dy"',
   'Invisibility':
     'Section=magic ' +
     'Note="May use <i>Invisibility</i> effects %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> effects \' + mysteryLevel + \' rd/dy\' : \'\'}"',
@@ -1423,7 +1423,7 @@ PFAPG.FEATURES = {
       '"Immune to %V"',
   'Life Leach':
     'Section=combat ' +
-    'Note="R30\' Target suffers %{mysteryLevel<?10}d6 HP (DC %{10+mysteryLevel//2+charismaModifier} Fort half) and self gains equal temporary HP for %{charismaModifier} hr %{(mysteryLevel-3)//4}/dy"',
+    'Note="R30\' Target suffers %{mysteryLevel<?10}d6 HP (DC %{10+mysteryLevel//2+charismaModifier} Fortitude half) and self gains equal temporary HP for %{charismaModifier} hr %{(mysteryLevel-3)//4}/dy"',
   'Life Link':
     'Section=combat ' +
     'Note="R%{mysteryLevel*10+100}\' May establish bond with up to %{mysteryLevel} targets that transfers 5 HP/rd damage to self"',
@@ -1433,7 +1433,7 @@ PFAPG.FEATURES = {
   'Lifesense':'Section=feature Note="Has 30\' Blindsight"',
   'Lightning Breath':
     'Section=combat ' +
-    'Note="30\' line inflicts %{mysteryLevel}d4 HP electricity (DC %{10+mysteryLevel//2+charismaModifier} Ref half) %{mysteryLevel//5+1}/dy"',
+    'Note="30\' line inflicts %{mysteryLevel}d4 HP electricity (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) %{mysteryLevel//5+1}/dy"',
   'Lore Mystery':
     'Section=skill ' +
     'Note="Appraise is a class skill/Knowledge is a class skill"',
@@ -1456,7 +1456,7 @@ PFAPG.FEATURES = {
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Mighty Pebble':
     'Section=combat ' +
-    'Note="R20\' Thrown pebble +%{mysteryLevel//4} attack inflicts %{mysteryLevel//2>?1}d6+%{mysteryLevel//4} HP bludgeoning, half in 5\' radius (DC %{10+mysteryLevel//2+charismaModifier} Ref neg) %{(mysteryLevel+5)//5}/dy"',
+    'Note="R20\' Thrown pebble +%{mysteryLevel//4} attack inflicts %{mysteryLevel//2>?1}d6+%{mysteryLevel//4} HP bludgeoning, half in 5\' radius (DC %{10+mysteryLevel//2+charismaModifier} Reflex negates) %{(mysteryLevel+5)//5}/dy"',
   'Molten Skin':
     'Section=save ' +
     'Note="%{mysteryLevel>=17 ? \'Immune\' : mysteryLevel>=11 ? \'Resistance 20\' : mysteryLevel>=5 ? \'Resistance 10\' : \'Resistance 5\'} to fire"',
@@ -1497,7 +1497,7 @@ PFAPG.FEATURES = {
   'Safe Curing':'Section=magic Note="<i>Cure</i> spells do not provoke AOO"',
   'Shard Explosion':
     'Section=combat ' +
-    'Note="10\' radius inflicts %{mysteryLevel//2>?1}d6 HP piercing (DC %{10+mysteryLevel//2+charismaModifier} Ref half) and difficult terrain for 1 rd %{mysteryLevel//5+1}/dy"',
+    'Note="10\' radius inflicts %{mysteryLevel//2>?1}d6 HP piercing (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) and difficult terrain for 1 rd %{mysteryLevel//5+1}/dy"',
   'Sidestep Secret':
     'Section=combat,save ' +
     'Note=' +
@@ -1528,7 +1528,7 @@ PFAPG.FEATURES = {
     'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
   'Spray Of Shooting Stars':
     'Section=combat ' +
-    'Note="R60\' 5\' radius inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Ref half) %{(mysteryLevel+5)//5}/dy"',
+    'Note="R60\' 5\' radius inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) %{(mysteryLevel+5)//5}/dy"',
   'Star Chart':
     'Section=magic ' +
     'Note="May use <i>Commune</i> effects via 10 min contemplation 1/dy"',
@@ -1550,7 +1550,7 @@ PFAPG.FEATURES = {
     'Section=skill Note="May make +10 reroll on failed Knowledge 1/day"',
   'Thunderburst':
     'Section=combat ' +
-    'Note="R100\' %{(mysteryLevel+9)//4*5>?20}\' radius inflicts %{mysteryLevel}d6 HP bludgeoning and 1 hr deafness (DC %{10+mysteryLevel//2+charismaModifier} Fort half HP only) %{(mysteryLevel-3)//4>?1}/dy"',
+    'Note="R100\' %{(mysteryLevel+9)//4*5>?20}\' radius inflicts %{mysteryLevel}d6 HP bludgeoning and 1 hr deafness (DC %{10+mysteryLevel//2+charismaModifier} Fortitude half HP only) %{(mysteryLevel-3)//4>?1}/dy"',
   'Tongues':
     'Section=combat,skill,skill ' +
     'Note=' +
@@ -1572,7 +1572,7 @@ PFAPG.FEATURES = {
   'Undead Servitude':'Section=magic Note="May use Command Undead %V/dy"',
   'Undo Artifice':
     'Section=feature ' +
-    'Note="May disintegrate nonliving item into raw materials (DC %{10+mysteryLevel//2+charismaModifier} Fort neg) %{charismaModifier}/dy"',
+    'Note="May disintegrate nonliving item into raw materials (DC %{10+mysteryLevel//2+charismaModifier} Fortitude negates) %{charismaModifier}/dy"',
   'Voice Of The Grave':
     'Section=magic ' +
     'Note="May use <i>Speak With Dead</i> effects %{mysteryLevel} rd/dy%1"',
@@ -1636,7 +1636,7 @@ PFAPG.FEATURES = {
     'Note="May perceive via eidolon senses on same plane for %{levels.Summoner} rd/dy"',
   'Breath Weapon Evolution':
     'Section=companion ' +
-    'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Ref half) %V/dy"',
+    'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Reflex half) %V/dy"',
   'Burrow Evolution':
     'Section=companion Note="May burrow through earth at %V\'"',
   // Cantrips as Pathfinder
@@ -1657,7 +1657,7 @@ PFAPG.FEATURES = {
   'Flight Evolution':'Section=companion Note="%V\' Fly"',
   'Frightful Presence Evolution':
     'Section=companion ' +
-    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will neg) for 3d6 rd"',
+    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will negates) for 3d6 rd"',
   'Gills Evolution':'Section=companion Note="May breathe underwater"',
   'Gore Evolution':
     'Section=companion ' +
@@ -1710,7 +1710,7 @@ PFAPG.FEATURES = {
     'Note="Pincers inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
   'Poison Evolution':
     'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 %V damage each rd for 4 rd (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fort neg) 1/rd"',
+    'Note="Chosen natural attack inflicts +1d4 %V damage each rd for 4 rd (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fortitude negates) 1/rd"',
   'Pounce Evolution':
     'Section=companion Note="May take a full-attack action after a charge"',
   'Pull Evolution':
@@ -1766,7 +1766,7 @@ PFAPG.FEATURES = {
     'Note="Tentacles inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
   'Trample Evolution':
     'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Ref half)"',
+    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Reflex half)"',
   'Transposition':
     'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
   'Tremorsense Evolution':
@@ -1781,7 +1781,7 @@ PFAPG.FEATURES = {
     'Section=companion Note="Proficient with simple%1 weapons"',
   'Web Evolution':
     'Section=companion ' +
-    'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Strength neg) 8/dy"',
+    'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Strength negates) 8/dy"',
   'Wing Buffet Evolution':
     'Section=companion ' +
     'Note="2 wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
@@ -1789,7 +1789,7 @@ PFAPG.FEATURES = {
   // Witch
   'Agony Hex':
     'Section=magic ' +
-    'Note="R60\' Target suffers nauseated for %{levels.Witch} rd (DC %{hexDC} Fort ends) 1/target/dy"',
+    'Note="R60\' Target suffers nauseated for %{levels.Witch} rd (DC %{hexDC} Fortitude ends) 1/target/dy"',
   'Blight Hex':
     'Section=magic ' +
     'Note="Touch kills vegetation in %{levels.Witch * 10}\' radius over 1 wk or inflicts -1 Constitution/dy"',
@@ -1804,7 +1804,7 @@ PFAPG.FEATURES = {
       '"+4 Craft (Alchemy)"',
   'Charm Hex':
     'Section=skill ' +
-    'Note="R30\' Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will neg) for %{intelligenceModifier} rd 1/target/dy"',
+    'Note="R30\' Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will negates) for %{intelligenceModifier} rd 1/target/dy"',
   'Coven Hex':
     'Section=feature,magic ' +
     'Note=' +
@@ -1812,13 +1812,13 @@ PFAPG.FEATURES = {
       '"R30\' May use aid another to give target w/Coven Hex +1 caster level for 1 rd"',
   'Death Curse Hex':
     'Section=magic ' +
-    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will neg), then exhausted, then dies (DC %{hexDC} Fort suffers 4d6+%{levels.Witch} HP) 1/target/dy"',
+    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will negates), then exhausted, then dies (DC %{hexDC} Fortitude suffers 4d6+%{levels.Witch} HP) 1/target/dy"',
   'Disguise Hex':
     'Section=magic ' +
     'Note="May use <i>Disguise Self</i> effects for %{levels.Witch} hr/dy"',
   'Eternal Slumber Hex':
     'Section=magic ' +
-    'Note="Touch or poison inflicts permanent sleep (DC %{hexDC} Will neg) 1/target/dy"',
+    'Note="Touch or poison inflicts permanent sleep (DC %{hexDC} Will negates) 1/target/dy"',
   'Evil Eye Hex':
     'Section=magic ' +
     'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of AC, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
@@ -1835,7 +1835,7 @@ PFAPG.FEATURES = {
       '"+4 Swim"',
   'Forced Reincarnation Hex':
     'Section=magic ' +
-    'Note="R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will neg) 1/target/dy"',
+    'Note="R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will negates) 1/target/dy"',
   'Fortune Hex':
     'Section=magic ' +
     'Note="R30\' Target gains the better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
@@ -1853,7 +1853,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy"',
   'Misfortune Hex':
     'Section=magic ' +
-    'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will neg) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
+    'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will negates) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Natural Disaster Hex':
     'Section=magic ' +
     'Note="May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy"',
@@ -1867,16 +1867,16 @@ PFAPG.FEATURES = {
       '"Knows additional spells"',
   'Retribution Hex':
     'Section=magic ' +
-    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will neg) for %{intelligenceModifier} rd"',
+    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will negates) for %{intelligenceModifier} rd"',
   'Slumber Hex':
     'Section=magic ' +
-    'Note="R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will neg) for %{levels.Witch} rd 1/target/dy"',
+    'Note="R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will negates) for %{levels.Witch} rd 1/target/dy"',
   'Tongues Hex':
     'Section=magic ' +
     'Note="May use self <i>Comprehend Languages</i>%{levels.Witch>=5 ? \' and <i>Tongues</i>\' : \'\'} effects for %{levels.Witch} min/dy"',
   'Vision Hex':
     'Section=magic ' +
-    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will neg)"',
+    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will negates)"',
   'Ward Hex':
     'Section=magic ' +
     'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} AC and saves until hit or fails save"',
@@ -1930,7 +1930,7 @@ PFAPG.FEATURES = {
     'Note="May convert energy damage to self to 1/3 temporary HP 1/rage"',
   'Energy Eruption':
     'Section=combat ' +
-    'Note="May convert energy damage to self to R60\' line or R30\' cone breath attack of equal HP (DC %{10+ragePowerLevel//2+constitutionModifier} Ref half) 1/rage"',
+    'Note="May convert energy damage to self to R60\' line or R30\' cone breath attack of equal HP (DC %{10+ragePowerLevel//2+constitutionModifier} Reflex half) 1/rage"',
   'Energy Resistance':
     'Section=save ' +
     'Note="Resistance %{ragePowerLevel//2>?1} to %V chosen energy during rage"',
@@ -1943,13 +1943,13 @@ PFAPG.FEATURES = {
     'Note="May give mount rage benefits when adjacent or mounted during rage; uses equal amount of daily rage rd"',
   'Ferocious Trample':
     'Section=combat ' +
-    'Note="Mount trample inflicts 1d8+1.5xStrength (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Strength Ref half) during rage"',
+    'Note="Mount trample inflicts 1d8+1.5xStrength (L/H mount 2d6/2d8, DC %{10+levels.Barbarian//2}+Strength Reflex half) during rage"',
   'Fiend Totem':
     'Section=combat ' +
     'Note="Successful foe melee attack inflicts 1d6 HP on attacker during rage"',
   'Flesh Wound':
     'Section=combat ' +
-    'Note="May reduce damage to half nonlethal w/a successful DC damage Fort 1/rage"',
+    'Note="May reduce damage to half nonlethal w/a successful DC damage Fortitude 1/rage"',
   'Good For What Ails You':
     'Section=combat ' +
     'Note="Alcohol gives save vs. condition or poison during rage"',
@@ -1984,7 +1984,7 @@ PFAPG.FEATURES = {
     'Note="During rage, spirits inflict 1d8 HP negative energy on adjacent foes and may make a R15\' +%{baseAttack+charismaModifier} attack that inflicts 1d6 HP"',
   'Ground Breaker':
     'Section=combat ' +
-    'Note="Successful attack on floor inflicts knocked prone on adjacent creatures (DC 15 Ref neg) and creates difficult terrain 1/rage"',
+    'Note="Successful attack on floor inflicts knocked prone on adjacent creatures (DC 15 Reflex negates) and creates difficult terrain 1/rage"',
   'Guarded Life':
     'Section=combat ' +
     'Note="Stabilizes automatically and converts %{ragePowerLevel} HP damage to nonlethal when taken to negative HP during rage"',
@@ -2026,7 +2026,7 @@ PFAPG.FEATURES = {
     'Note="Gore inflicts 1d%{features.Small ? 6 : 8}%{strengthModifier<0 ? strengthModifier : strengthModifier>0 ? \'+\' + strengthModifier : \'\'} HP during rage"',
   'Lesser Hurling':
     'Section=combat ' +
-    'Note="R%V\' Ranged touched using thrown %1 object inflicts 1d6+%{strengthModifier} HP or more (DC %{10+levels.Barbarian//2+strengthModifier} Ref half) during rage"',
+    'Note="R%V\' Ranged touched using thrown %1 object inflicts 1d6+%{strengthModifier} HP or more (DC %{10+levels.Barbarian//2+strengthModifier} Reflex half) during rage"',
   'Lesser Spirit Totem':
     'Section=combat ' +
     'Note="Spirits\' +%{baseAttack+charismaModifier} attack inflicts 1d4+%{charismaModifier} HP negative energy 1/rd during rage"',
@@ -2050,7 +2050,7 @@ PFAPG.FEATURES = {
     'Note="+%{armor==\'None\' ? 2 : 1} CMB or CMD on choice of %{levels.Barbarian//3} combat maneuvers"',
   'Raging Drunk':
     'Section=combat ' +
-    'Note="May drink alcohol or potion w/out provoking AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated for 1 rd after rage (Internal Fortitude neg)"',
+    'Note="May drink alcohol or potion w/out provoking AOO during rage/Alcohol extends rage 1 rd and inflicts nauseated for 1 rd after rage (Internal Fortitude negates)"',
   'Reckless Abandon':
     'Section=combat ' +
     'Note="May suffer up to -%{ragePowerLevel//4+1} AC to gain equal attack bonus during rage"',
@@ -2118,7 +2118,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use 3 rd Bardic Performance to give allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
   'Disappearing Act':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to cause creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May use Bardic Performance to cause creatures to overlook %{(levels.Bard+7)//6} allies (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Dramatic Subtext':
     'Section=magic ' +
     'Note="May use 2 rd Bardic Performance to cast spell w/out visual or audible components (opposed Perception vs. Sleight Of Hand to detect)"',
@@ -2141,13 +2141,13 @@ PFAPG.FEATURES = {
     'Note="Receives dbl normal pay from performing/May use Bluff to improve target attitude for 1 min; 1 step worse afterwards"',
   'Glorious Epic':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to inflict flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will neg) on foes"',
+    'Note="R30\' May use Bardic Performance to inflict flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will negates) on foes"',
   'Greater Stealspell':
     'Section=magic ' +
     'Note="Successful Stealspell reveals target\'s spells and any spell resistance; may instead steal SR %{levels.Bard//2}"',
   'Harmless Performer':
     'Section=magic ' +
-    'Note="May use Bardic Performance to cause foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will neg; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
+    'Note="May use Bardic Performance to cause foes to lose attack on self (DC %{10+levels.Bard//2+charismaModifier} Will negates; DC %{10+levels.Bard//2+charismaModifier} concentration to redirect targeted spell)"',
   'Heraldic Expertise':
     'Section=skill,skill ' +
     'Note=' +
@@ -2155,16 +2155,16 @@ PFAPG.FEATURES = {
       '"May reroll Diplomacy, Knowledge (History), Knowledge (Local), or Knowledge (Nobility) %{1+levels.Bard//5}/dy"',
   'Incite Rage':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to affect target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May use Bardic Performance to affect target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Inspiring Blow':
     'Section=combat ' +
     'Note="May use Bardic Performance following crit to give%{charismaModifier>0 ? \' self \' + charismaModifier + \' temporary HP and\' : \'\'} R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
-    'Note="May use Bardic Performance to inflict choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use Bardic Performance to inflict choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Madcap Prank':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to inflict on target random choice of blinded, dazzled, deafened, entangled, prone, or nauseated (DC %{10+levels.Bard//2+charismaModifier} Ref neg) for 1 rd"',
+    'Note="R30\' May use Bardic Performance to inflict on target random choice of blinded, dazzled, deafened, entangled, prone, or nauseated (DC %{10+levels.Bard//2+charismaModifier} Reflex negates) for 1 rd"',
   'Magic Lore':
     'Section=save,skill ' +
     'Note=' +
@@ -2178,7 +2178,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use Bardic Performance to give +1 or more attack bonus to weapons of multiple allies"',
   'Mass Slumber Song':
     'Section=magic ' +
-    'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May cause all fascinated targets to sleep (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Master Of Deception':
     'Section=skill,skill ' +
     'Note=' +
@@ -2195,7 +2195,7 @@ PFAPG.FEATURES = {
     'Note="R30\' May use Bardic Performance to give allies +%{(levels.Bard+5)//6} AC, attack, and saves vs. abilities of creatures identified w/Knowledge check"',
   'Pedantic Lecture':
     'Section=magic ' +
-    'Note="May use Bardic Performance to inflict choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use Bardic Performance to inflict choice of sleep, dazed, or confused on all fascinated creatures (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Probable Path':
     'Section=feature ' +
     'Note="May take 10 on any d20 roll %{(levels.Bard-7)//3>?1}/dy"',
@@ -2210,7 +2210,7 @@ PFAPG.FEATURES = {
     'Note="May use Bardic Performance to inflict -%{(levels.Bard+7)//6} on attack, damage, and saves vs. fear and charm on foes w/in hearing"',
   'Scandal':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to inflict on foes 50% chance of attacking nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="R30\' May use Bardic Performance to inflict on foes 50% chance of attacking nearest creature (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Sea Legs':
     'Section=combat,save ' +
     'Note="+2 CMD vs. grapple, overrun, and trip",' +
@@ -2220,13 +2220,13 @@ PFAPG.FEATURES = {
     'Note="R30\' May use Bardic Performance to allow Allies to use self Perform to save vs. exhausted, fatigued, nauseated, and sickened"',
   'Show Yourselves':
     'Section=combat ' +
-    'Note="R30\' May use Bardic Performance to compel foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will neg) and to prevent attacks until fully revealed"',
+    'Note="R30\' May use Bardic Performance to compel foes to reveal selves (DC %{10+levels.Bard//2+charismaModifier} Will negates) and to prevent attacks until fully revealed"',
   'Slip Through The Crowd':
     'Section=magic ' +
     'Note="Disappearing Act allows affected allies to move through occupied squares and attack"',
   'Slumber Song':
     'Section=magic ' +
-    'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May cause one fascinated target to sleep (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Sneakspell':
     'Section=magic ' +
     'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} spell DC and Bardic Performance vs. foes denied Dexterity bonus"',
@@ -2241,7 +2241,7 @@ PFAPG.FEATURES = {
     'Note="May use Bardic Performance to counter Spellcraft-identified spell of level equal to or less than performance rds"',
   'Stealspell':
     'Section=magic ' +
-    'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will neg) for duration of Bardic Performance"',
+    'Note="Touch transfers spell to self (DC %{10+levels.Bard//2+charismaModifier} Will negates) for duration of Bardic Performance"',
   'Still Water':
     'Section=magic ' +
     'Note="R30\' May use Bardic Performance to give listeners -%{levels.Bard} DC (min DC 10) for Profession (Sailor), Swim, Acrobatics (shipboard), and Climb (shipboard); 10 rd performance extends effect to 1 hr"',
@@ -2252,7 +2252,7 @@ PFAPG.FEATURES = {
       '"+%V Diplomacy (crowds or gather information)/+%V Intimidate (crowds)"',
   'True Confession':
     'Section=skill ' +
-    'Note="May use %{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive to cause target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will neg)"',
+    'Note="May use %{levels.Bard>=20 ? 1 : levels.Bard>=15 ? 2 : 3} rd Bardic Performance and successful Sense Motive to cause target to reveal lie or compulsion (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
   'Wand Mastery':
     'Section=magic ' +
     'Note="Uses Charisma bonus to calculate save DC%{levels.Bard>=16 ? \' and caster level to calculate effects\' : \'\'} of spells cast from wands"',
@@ -2271,25 +2271,25 @@ PFAPG.FEATURES = {
   // Cleric
   'Adoration':
     'Section=combat ' +
-    'Note="May force foe to forego self attack (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{wisdomModifier+3}/dy"',
+    'Note="May force foe to forego self attack (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{wisdomModifier+3}/dy"',
   'Animate Servant':
     'Section=magic ' +
     'Note="May use <i>Animate Object</i> effects %{(levels.Cleric-4)//4}/dy"',
   'Anything To Please':
     'Section=magic ' +
-    'Note="R30\' Target attempts to please self (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{(levels.Cleric-4)//4}/dy"',
+    'Note="R30\' Target attempts to please self (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{(levels.Cleric-4)//4}/dy"',
   'Arcane Beacon':
     'Section=magic ' +
     'Note="15\' radius gives arcane casters choice of +1 caster level or DC for 1 rd %{3+wisdomModifier}/dy"',
   'Aura Of Chaos':
     'Section=combat ' +
-    'Note="30\' radius randomizes foe actions (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="30\' radius randomizes foe actions (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
   'Aura Of Decay':
     'Section=combat ' +
     'Note="30\' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd %{levels.Cleric} rd/dy"',
   'Aura Of Forgetfulness':
     'Section=magic ' +
-    'Note="Targets have no memory of time spent in 30\' radius (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) and lose 1 spell slot/rd (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="Targets have no memory of time spent in 30\' radius (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) and lose 1 spell slot/rd (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
   'Aura Of Heroism':
     'Section=combat ' +
     'Note="30\' radius gives allies +2 attack, saves, and skill checks %{levels.Cleric} rd/dy"',
@@ -2298,7 +2298,7 @@ PFAPG.FEATURES = {
     'Note="30\' radius inflicts -2 AC, attack, and saves on foes %{levels.Cleric} rd/dy"',
   'Aura Of Repetition':
     'Section=combat ' +
-    'Note="R30\' May force foes to repeat prior action (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="R30\' May force foes to repeat prior action (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
   'Bestow Resolve':
     'Section=magic ' +
     'Note="R20\' May give allies %{levels.Cleric+wisdomModifier} temporary HP for 1 min %{(levels.Cleric-4)//4}/dy"',
@@ -2307,7 +2307,7 @@ PFAPG.FEATURES = {
     'Note="Touch transfers condition to self and gives immunity for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
   'Blinding Flash':
     'Section=magic ' +
-    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg) and dazzles all creatures for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+    'Note="20\' radius blinds creatures up to %{levels.Cleric-1} HD for 1d4 rd (DC %{10+levels.Cleric//2+wisdomModifier} Fortitude negates) and dazzles all creatures for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Body Of Ice':
     'Section=combat ' +
     'Note="May suffer dbl damage from fire to gain immunity to cold and DR 5/- %{levels.Cleric} rd/dy"',
@@ -2316,7 +2316,7 @@ PFAPG.FEATURES = {
     'Note="R30\' 5\' radius inflicts -2 attack and Perception while in radius + 1 rd and gives concealment %{wisdomModifier+3}/dy"',
   'Command':
     'Section=magic ' +
-    'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) 1/target/dy %{wisdomModifier+3}/dy"',
+    'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) 1/target/dy %{wisdomModifier+3}/dy"',
   "Day's Resurgence":
     'Section=magic ' +
     'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
@@ -2413,7 +2413,7 @@ PFAPG.FEATURES = {
     'Note="+4 Strength, +4 Constitution, +2 Will, -2 AC and %1 powers %{levels.Cleric} rd/dy"',
   'Read Minds':
     'Section=magic ' +
-    'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="R30\' May read surface thoughts (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
   'Recall':
     'Section=skill ' +
     'Note="Touch gives +%{wisdomModifier} Knowledge reroll %{wisdomModifier+3}/dy"',
@@ -2459,13 +2459,13 @@ PFAPG.FEATURES = {
     'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
   'Wall Of Ashes':
     'Section=magic ' +
-    'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (DC %{10+levels.Cleric//2+wisdomModifier} Fort neg) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
+    'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (DC %{10+levels.Cleric//2+wisdomModifier} Fortitude negates) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
   'Warding Rune':
     'Section=magic ' +
-    'Note="Damage from blast rune prevents attack on self (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+    'Note="Damage from blast rune prevents attack on self (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
   'Whispering Evil':
     'Section=magic ' +
-    'Note="30\' radius fascinates foes (DC %{10+levels.Cleric//2+wisdomModifier} Will neg) %{levels.Cleric} rd/dy"',
+    'Note="30\' radius fascinates foes (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
   'Wind Blast':
     'Section=magic ' +
     'Note="30\' line inflicts CMB +%{levels.Cleric+wisdomModifier} bull rush %{wisdomModifier+3}/dy"',
@@ -2572,7 +2572,7 @@ PFAPG.FEATURES = {
   'Mental Strength':'Section=save Note="Immune to charm and compulsion"',
   'Miasma':
     'Section=combat ' +
-    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fort neg) for 1 rd 1/creature/dy; animals, feys, and plants are instead nauseated for 1 rd, then sickened for 1 min"',
+    'Note="Inflicts sickened on adjacent creatures (DC %{10+levels.Druid//2+wisdomModifier} Fortitude negates) for 1 rd 1/creature/dy; animals, feys, and plants are instead nauseated for 1 rd, then sickened for 1 min"',
   'Mountain Druid':
     'Section=magic ' +
     'Note="Cannot Wild Shape into a plant creature%{levels.Druid>=12 ? \'/May Wild Shape into a giant\':\'\'}"',
@@ -2592,7 +2592,7 @@ PFAPG.FEATURES = {
   'Natural Swimmer':'Section=ability Note="%V\' Swim speed"',
   'Plaguebearer':
     'Section=combat ' +
-    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fort neg and immune for 1 dy)"',
+    'Note="Contact inflicts disease on attacker (DC %{10+levels.Druid//2+wisdomModifier} Fortitude negates and immune for 1 dy)"',
   'Plains Traveler':
     'Section=combat,feature,skill ' +
     'Note=' +
@@ -2978,7 +2978,7 @@ PFAPG.FEATURES = {
     'Note="Min 1 drunken Ki Point allows spending 1 Ki Point for +1d6 HP melee damage%{levels.Monk>=10 ? \'; may instead spend 2\' + (levels.Monk>=15 ? \'-\' + levels.Monk//5 : \'\') + \' drunken Ki Points to increase up to \' + levels.Monk//5 + \'d6\' : \'\'}"',
   'Firewater Breath':
     'Section=combat ' +
-    'Note="Min 1 drunken Ki Point allows spending 4 Ki Points for R30\' alcohol-fueled cone that inflicts 20d6 HP fire (DC %{10+levels.Monk//2+wisdomModifier} Ref half)"',
+    'Note="Min 1 drunken Ki Point allows spending 4 Ki Points for R30\' alcohol-fueled cone that inflicts 20d6 HP fire (DC %{10+levels.Monk//2+wisdomModifier} Reflex half)"',
   'Flurry Of Blows (Zen Archer)':
     'Section=combat Note="May only make Flurry Of Blows attacks with a bow"',
   'Immortality':
@@ -3092,7 +3092,7 @@ PFAPG.FEATURES = {
   'Domain (Paladin)':'Section=feature Note="1 selection"',
   "Knight's Charge":
     'Section=combat ' +
-    'Note="Mounted charge provokes no AOO/Smite Evil at the end of a mounted charge inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will neg) for %{levels.Paladin//2} rd"',
+    'Note="Mounted charge provokes no AOO/Smite Evil at the end of a mounted charge inflicts panicked (DC %{10+levels.Paladin//2+charismaModifier} Will negates) for %{levels.Paladin//2} rd"',
   'Power Of Faith':
    'Section=magic,magic ' +
    'Note=' +
@@ -3103,7 +3103,7 @@ PFAPG.FEATURES = {
     'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
   'Shining Light':
     'Section=combat ' +
-    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and 1 rd blindness on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Ref half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
+    'Note="30\' radius inflicts %{levels.Paladin//2}d6 HP and 1 rd blindness on evil creatures (1d4 rd blindness on outsider, dragon, or undead) (DC %{10+levels.Paladin//2+charismaModifier} Reflex half HP only); good creatures regain %{levels.Paladin//2}d6 HP and gain +2 ability checks, attack, saves, and skill checks for 1 rd %{(levels.Paladin-11)//3}/dy"',
   'Skilled Rider':
     'Section=companion,skill ' +
     'Note=' +
@@ -3111,7 +3111,7 @@ PFAPG.FEATURES = {
       '"Suffers no Ride armor penalty"',
   'Undead Annihilation':
     'Section=combat ' +
-    'Note="Smite Evil hit on undead destroys foes below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will neg)"',
+    'Note="Smite Evil hit on undead destroys foes below %{levels.Paladin*2} HD (DC %{10+levels.Paladin//2+charismaModifier} Will negates)"',
 
   // Antipaladin
   'Aura Of Cowardice':
@@ -3136,7 +3136,7 @@ PFAPG.FEATURES = {
     'Note="May expend 2 Touch Of Corruption uses to use Channel Energy effects"',
   'Cruelty':
     'Section=magic ' +
-    'Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fort neg)"',
+    'Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fortitude negates)"',
   'Detect Good':
     'Section=magic Note="May use <i>Detect Good</i> effects at will"',
   'Fiendish Boon':'Section=feature Note="1 selection"',
@@ -3377,7 +3377,7 @@ PFAPG.FEATURES = {
     'Note="During a full-attack action, may suffer -2 attack to treat sneak attack damage 1s and 2s as 3s"',
   'Distracting Attack (Rogue)':
     'Section=combat ' +
-    'Note="May forego sneak attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge neg)"',
+    'Note="May forego sneak attack damage to inflict flat-footed vs. chosen ally (Uncanny Dodge negates)"',
   'Distraction (Rogue)':
     'Section=skill ' +
     'Note="May use Bluff vs. Sense Motive to avoid detection after a failed Stealth attempt"',
@@ -3422,7 +3422,7 @@ PFAPG.FEATURES = {
     'Note="May add sneak attack damage to successful attacks on an adjacent foe for 1 rd 1/dy"',
   'Knock-Out Blow':
     'Section=combat ' +
-    'Note="May forego sneak attack damage to inflict unconscious for 1d4 rd (DC %{10+levels.Rogue//2+intelligenceModifier} Fort staggered 1 rd) 1/dy"',
+    'Note="May forego sneak attack damage to inflict unconscious for 1d4 rd (DC %{10+levels.Rogue//2+intelligenceModifier} Fortitude staggered 1 rd) 1/dy"',
   'Lasting Poison':
     'Section=combat ' +
     'Note="May apply poison to last 2 attacks; targets gain +2 save"',
@@ -3466,14 +3466,14 @@ PFAPG.FEATURES = {
     'Note="May redirect successful attack on self to a new attack on an adjacent creature 1/dy"',
   "Scout's Charge":
     'Section=combat ' +
-    'Note="Charge attack inflicts sneak attack damage (Uncanny Dodge neg)"',
+    'Note="Charge attack inflicts sneak attack damage (Uncanny Dodge negates)"',
   'Second Chance (Rogue)':
     'Section=skill ' +
     'Note="May make -5 reroll on Acrobatics, Climb, or Fly %{levels.Rogue//3}/dy"',
   'Skilled Liar':'Section=skill Note="+%{levels.Rogue//2>?1} Bluff (deceive)"',
   'Skirmisher (Rogue)':
     'Section=combat ' +
-    'Note="First attack after 10\' move inflicts sneak attack damage (Uncanny Dodge neg)"',
+    'Note="First attack after 10\' move inflicts sneak attack damage (Uncanny Dodge negates)"',
   'Snap Shot':
     'Section=combat ' +
     'Note="May make a ranged attack at Initiative 20 during the surprise round"',
@@ -3512,7 +3512,7 @@ PFAPG.FEATURES = {
       '"May cast on aquatic and swimming creatures <i>Suggestion</i> %{charismaModifier}/dy%{levels.Sorcerer>=15 ? \' and <i>Demand</i> or <i>Greater Planar Ally</i> 1/dy\' : \'\'}"',
   'Aurora Borealis':
     'Section=magic ' +
-    'Note="May use modified <i>Wall Of Fire</i> effects that inflict cold damage and fascinate %{levels.Sorcerer*2} HD of creatures w/in 10\' (DC %{10+levels.Sorcerer//2+charismaModifier} Will neg) for %{levels.Sorcerer} rd/dy"',
+    'Note="May use modified <i>Wall Of Fire</i> effects that inflict cold damage and fascinate %{levels.Sorcerer*2} HD of creatures w/in 10\' (DC %{10+levels.Sorcerer//2+charismaModifier} Will negates) for %{levels.Sorcerer} rd/dy"',
   'Avatar Of Chaos':
     'Section=magic,save ' +
     'Note=' +
@@ -3573,7 +3573,7 @@ PFAPG.FEATURES = {
       '"Knowledge (Nature) is a class skill"',
   'Breaching The Gulf':
     'Section=magic ' +
-    'Note="+3 caster level on teleportation spells/R30\' May teleport target to void, inflicting 6d6 HP cold/rd and suffocation (DC %{10+levels.Sorcerer//2+charismaModifier} Will neg or ends) 1/dy"',
+    'Note="+3 caster level on teleportation spells/R30\' May teleport target to void, inflicting 6d6 HP cold/rd and suffocation (DC %{10+levels.Sorcerer//2+charismaModifier} Will negates or ends) 1/dy"',
   'Child Of Ancient Winters':
     'Section=feature,save ' +
     'Note=' +
@@ -3624,7 +3624,7 @@ PFAPG.FEATURES = {
   'Massmorph':
     'Section=magic ' +
     'Note="May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i>%{levels.Sorcerer>=15 ? \' or <i>Plant Shape I\' + (levels.Sorcerer>=20 ? \'I\' : \'\') : \'\'}</i> 1/dy"',
-  'Minute Meteors':'Section=magic Note="R30\' 5\' diameter inflicts 1d4+%{levels.Sorcerer//2} HP fire (DC %{10+levels.Sorcerer//2+charismaModifier} Ref neg) %{charismaModifier+3}/dy"',
+  'Minute Meteors':'Section=magic Note="R30\' 5\' diameter inflicts 1d4+%{levels.Sorcerer//2} HP fire (DC %{10+levels.Sorcerer//2+charismaModifier} Reflex negates) %{charismaModifier+3}/dy"',
   'Nighteye':
     'Section=feature ' +
     'Note="%{(features.Darkvision ? 60 : 0) + (levels.Sorcerer>=9 ? 60 : 30)}\' b/w vision in darkness"',
@@ -3666,7 +3666,7 @@ PFAPG.FEATURES = {
       '"Immune to poison and paralysis"',
   "Serpent's Fang":
     'Section=combat ' +
-    'Note="%{levels.Sorcerer>=5 ? \'Magical fangs\' : \'Fangs\'} inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Constitution/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} neg or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
+    'Note="%{levels.Sorcerer>=5 ? \'Magical fangs\' : \'Fangs\'} inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Constitution/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} negates or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
   'Serpentfriend':
     'Section=feature,magic ' +
     'Note=' +
@@ -3737,7 +3737,7 @@ PFAPG.FEATURES = {
     'Note="May make R15\' +%{levels.Sorcerer+charismaModifier} CMB disarm, steal, or trip maneuver %{charismaModifier+3}/dy"',
   'Thunderbolt':
     'Section=magic ' +
-    'Note="R120\' 5\' radius inflicts %{levels.Sorcerer}d6 HP (half electricity, half sonic) and deafened 1 rd (DC %{10+levels.Sorcerer//2+charismaModifier} Ref half HP only) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
+    'Note="R120\' 5\' radius inflicts %{levels.Sorcerer}d6 HP (half electricity, half sonic) and deafened 1 rd (DC %{10+levels.Sorcerer//2+charismaModifier} Reflex half HP only) %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
   'Thunderstaff':
     'Section=magic ' +
     'Note="Touched weapon inflicts +1d6 HP electricity for %{levels.Sorcerer//2>?1} rd%{levels.Sorcerer>=9 ? \' or gains <i>shocking burst</i> property for \' + (levels.Sorcerer//4) + \' rd\' : \'\'} %{charismaModifier+3}/dy"',
@@ -3756,7 +3756,7 @@ PFAPG.FEATURES = {
   // Wizard
   'Acid Cloud':
     'Section=magic ' +
-    'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fort half HP only; exit neg) %{intelligenceModifier+3}/dy"',
+    'Note="R30\' 5\' radius inflicts 1d6+%{levels.Wizard//2} HP acid and sickened for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Fortitude half HP only; exit negates) %{intelligenceModifier+3}/dy"',
   'Air Supremacy':
     'Section=magic,skill,skill ' +
     'Note=' +
@@ -3768,7 +3768,7 @@ PFAPG.FEATURES = {
     'Note="Touch gives +%{levels.Wizard>=10 ? 4 : 2} ability or +%{1+levels.Wizard//5} AC for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   'Aura Of Banishment':
     'Section=magic ' +
-    'Note="30\' radius staggers summoned creatures (Will neg), then returns them to their home plane (Will delays 1 rd) %{levels.Wizard} rd/dy"',
+    'Note="30\' radius staggers summoned creatures (Will negates), then returns them to their home plane (Will delays 1 rd) %{levels.Wizard} rd/dy"',
   'Battleshaping':
     'Section=magic ' +
     'Note="May use%{levels.Wizard>=11 ? \' 2\' : \'\'} magical claw, bite, or gore w/+%{levels.Wizard//4} attack and damage for 1 rd %{intelligenceModifier+3}/dy"',
@@ -3777,7 +3777,7 @@ PFAPG.FEATURES = {
     'Note="30\' radius inflicts half speed, cannot take AOO, and flanked on foes for %{levels.Wizard} rd/dy"',
   'Beguiling Touch':
     'Section=magic ' +
-    'Note="Touch inflicts <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostility, or DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
+    'Note="Touch inflicts <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostility, or DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
   'Binding Darkness':
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts entanglement and concealment for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
@@ -3786,7 +3786,7 @@ PFAPG.FEATURES = {
     'Note="Touched undead gains +%{1+levels.Wizard//5} attack and saves, +2 turn resistance, and +1 temporary HP/HD for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
   'Cold Blast':
     'Section=magic ' +
-    'Note="5\' radius inflicts 16d+%{levels.Wizard//2} HP cold and staggered for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Ref half HP only) %{intelligenceModifier+3}/dy"',
+    'Note="5\' radius inflicts 16d+%{levels.Wizard//2} HP cold and staggered for 1 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Reflex half HP only) %{intelligenceModifier+3}/dy"',
   'Counterspell Mastery':
     'Section=feature,magic ' +
     'Note=' +
@@ -3800,7 +3800,7 @@ PFAPG.FEATURES = {
     'Note="May cast <i>%{levels.Wizard>=12 ? \'Major\' : \'Minor\'} Creation</i> %{levels.Wizard//2}/dy"',
   'Cyclone':
     'Section=combat ' +
-    'Note="10\' radius negates ranged attacks, knocks flying creatures to the ground (DC %{10+levels.Wizard} Fly neg), and bars passage to ground creatures (DC %{10+levels.Wizard} Strength neg) for %{levels.Wizard} rd/dy"',
+    'Note="10\' radius negates ranged attacks, knocks flying creatures to the ground (DC %{10+levels.Wizard} Fly negates), and bars passage to ground creatures (DC %{10+levels.Wizard} Strength negates) for %{levels.Wizard} rd/dy"',
   'Dancing Flame':
     'Section=magic ' +
     'Note="May move a nonmagical fire 30\', remove squares from self instantaneous fire spell area, or move an effect of a longer self fire spell %{levels.Wizard//2}/dy"',
@@ -3818,7 +3818,7 @@ PFAPG.FEATURES = {
     'Note="30\' radius modifies energy type of spells and supernatural effects from casters up to level %{levels.Wizard} and creatures up to %{levels.Wizard} HD %{levels.Wizard} rd/dy"',
   'Fire Jet':
     'Section=magic ' +
-    'Note="20\' line inflicts 1d6+%{levels.Wizard//2} HP fire and 1d6 HP fire in next rd (DC %{10+levels.Wizard//2+intelligenceModifier} Ref half first rd only) %{intelligenceModifier+3}/dy"',
+    'Note="20\' line inflicts 1d6+%{levels.Wizard//2} HP fire and 1d6 HP fire in next rd (DC %{10+levels.Wizard//2+intelligenceModifier} Reflex half first rd only) %{intelligenceModifier+3}/dy"',
   'Fire Supremacy':
     'Section=combat,save ' +
     'Note=' +
@@ -3835,10 +3835,10 @@ PFAPG.FEATURES = {
     'Note="Self targeted and area effect spells heal %{levels.Wizard>=20 ? 3 : levels.Wizard >= 11 ? 2 : 1} HP per spell level, distributed among targets"',
   'Irresistible Demand':
     'Section=magic ' +
-    'Note="May use <i>Dominate Monster</i> effects on creatures up to %{levels.Wizard} HD (DC %{10+levels.Wizard//2+intelligenceModifier} Will neg) %{levels.Wizard} rd/dy"',
+    'Note="May use <i>Dominate Monster</i> effects on creatures up to %{levels.Wizard} HD (DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) %{levels.Wizard} rd/dy"',
   'Lightning Flash':
     'Section=combat ' +
-    'Note="5\' radius inflicts 1d6+%{levels.Wizard//2} HP electricity and dazzled for 1d4 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Ref half HP only) %{intelligenceModifier+3}/dy"',
+    'Note="5\' radius inflicts 1d6+%{levels.Wizard//2} HP electricity and dazzled for 1d4 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Reflex half HP only) %{intelligenceModifier+3}/dy"',
   'Lingering Evocations':
     'Section=magic ' +
     'Note="Evocation spells last +%{levels.Wizard//2>?1} rd%{levels.Wizard>=20 ? \'/Dispel checks vs. self evocation spells take worse of 2 rolls\' : \'\'}"',
@@ -3865,7 +3865,7 @@ PFAPG.FEATURES = {
     'Note="May use <i>Dimension Door</i> effects to move %{levels.Wizard//2*5>?5}\' %{intelligenceModifier+3}/dy"',
   'Terror':
     'Section=combat ' +
-    'Note="Touch causes target to provoke AOO (%{levels.Wizard+1} HD neg) %{intelligenceModifier+3}/dy"',
+    'Note="Touch causes target to provoke AOO (%{levels.Wizard+1} HD negates) %{intelligenceModifier+3}/dy"',
   'Unstable Bonds':
     'Section=combat ' +
     'Note="Touch inflicts shaken and staggered on a summoned creature for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
@@ -3947,13 +3947,13 @@ PFAPG.FEATURES = {
     'Note="R60\' Inspiring Command gives allies 50% concealment with dbl move or withdraw action"',
   'Stand Firm (Battle Herald)':
     'Section=magic ' +
-    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} CMD and Fort saves"',
+    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} CMD and Fortitude saves"',
   'Teamwork':
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} to aid another rolls and effects"',
   'Tuck And Roll':
     'Section=magic ' +
-    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Ref saves"',
+    'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Reflex saves"',
   'Voice Of Authority':
     'Section=feature,skill,skill ' +
     'Note=' +
@@ -4119,52 +4119,52 @@ PFAPG.FEATURES = {
   'Draconic (Black) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"60\' line inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"60\' line inflicts 8d8 acid (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to acid"',
   'Draconic (Blue) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"60\' line inflicts 8d8 electricity (DC %V Ref half) 1/transformation",' +
+      '"60\' line inflicts 8d8 electricity (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to electricity"',
   'Draconic (Brass) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"60\' line inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"60\' line inflicts 8d8 fire (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to fire"',
   'Draconic (Bronze) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"60\' line inflicts 8d8 electricity (DC %V Ref half) 1/transformation",' +
+      '"60\' line inflicts 8d8 electricity (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to electricity"',
   'Draconic (Copper) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"60\' line inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"60\' line inflicts 8d8 acid (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to acid"',
   'Draconic (Gold) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"30\' cone inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"30\' cone inflicts 8d8 fire (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to fire"',
   'Draconic (Green) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"30\' cone inflicts 8d8 acid (DC %V Ref half) 1/transformation",' +
+      '"30\' cone inflicts 8d8 acid (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to acid"',
   'Draconic (Red) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"30\' cone inflicts 8d8 fire (DC %V Ref half) 1/transformation",' +
+      '"30\' cone inflicts 8d8 fire (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to fire"',
   'Draconic (Silver) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"30\' cone inflicts 8d8 cold (DC %V Ref half) 1/transformation",' +
+      '"30\' cone inflicts 8d8 cold (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to cold"',
   'Draconic (White) Mutagen':
     'Section=combat,save ' +
     'Note=' +
-      '"30\' cone inflicts 8d8 cold (DC %V Ref half) 1/transformation",' +
+      '"30\' cone inflicts 8d8 cold (DC %V Reflex half) 1/transformation",' +
       '"Resistance 20 to cold"',
   'Dual Mind':
     'Section=save,save ' +
@@ -4188,7 +4188,7 @@ PFAPG.FEATURES = {
     'Note="Has alternate humanoid form w/its own personality and alignment"',
   'Mutate':
     'Section=feature ' +
-    'Note="May assume mutagenic form %V/dy or by consuming mutagen; suffering crit or failed Fort save forces use (DC 25 Will neg)"',
+    'Note="May assume mutagenic form %V/dy or by consuming mutagen; suffering crit or failed Fortitude save forces use (DC 25 Will negates)"',
   'Night Vision (Master Chymist)':
     'Section=feature ' +
     'Note="Has 60\' b/w vision in darkness and x2 normal distance in poor light while in mutagenic form"',
@@ -4416,7 +4416,7 @@ PFAPG.FEATURES = {
     'Section=ability Note="May walk %{levels.Monk//2*5<?50}\' on air for 1 rd"',
   'Cockatrice Strike':
     'Section=combat ' +
-    'Note="Crit on a full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fort neg)"',
+    'Note="Crit on a full-round unarmed attack petrifies dazed, flat-footed, paralyzed, staggered, stunned, or unconscious foe (DC %{10 + level//2 + wisdomModifier} Fortitude negates)"',
   'Combat Patrol':
     'Section=combat ' +
     'Note="May use a full-round action to increase threat area by %{baseAttack//5*5}\'"',
@@ -4439,7 +4439,7 @@ PFAPG.FEATURES = {
     'Note="Total defense action gives +%{shield==\'Tower\' ? 4 : shield=~\'Heavy\' ? 2 : shield==\'None\' ? 0 : 1} AC to an adjacent ally"',
   'Crippling Critical':
     'Section=combat ' +
-    'Note="Crit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fort 1d4 rd)"',
+    'Note="Crit reduces foe speed by half for 1 min (DC %{10 + baseAttack} Fortitude 1d4 rd)"',
   'Crossbow Mastery':
     'Section=combat ' +
     'Note="May reload a crossbow as a free action w/out provoking AOO"',
@@ -4448,10 +4448,10 @@ PFAPG.FEATURES = {
     'Note="May deliver coups de grace to cowering or stunned targets"',
   'Dazing Assault':
     'Section=combat ' +
-    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} Fort neg)"',
+    'Note="May suffer -5 attack to daze w/hit (DC %{10 + baseAttack} Fortitude negates)"',
   'Dazing Spell':
     'Section=magic ' +
-    'Note="May use +3 spell slot w/damaging spell to daze target (spell save or Will neg) for spell level rd"',
+    'Note="May use +3 spell slot w/damaging spell to daze target (spell save or Will negates) for spell level rd"',
   'Deep Drinker':'Section=feature Note="Increased Drunken Ki effects"',
   'Deepsight':'Section=feature Note="120\' Darkvision"',
   'Disarming Strike':
@@ -4705,7 +4705,7 @@ PFAPG.FEATURES = {
     'Note="May cast %V chosen spell in place of prepared spell"',
   'Punishing Kick':
     'Section=combat ' +
-    'Note="Successful kick attack inflicts choice of %V\' push or %{$\'features.Hungry Ghost Monk\' ? \\"5\' push and \\" : \'\'}knocked prone (DC %{10+level//2+wisdomModifier} neg) %1/dy"',
+    'Note="Successful kick attack inflicts choice of %V\' push or %{$\'features.Hungry Ghost Monk\' ? \\"5\' push and \\" : \'\'}knocked prone (DC %{10+level//2+wisdomModifier} negates) %1/dy"',
   'Pushing Assault':
     'Section=combat ' +
     'Note="May trade Power Attack damage bonus for 5\' push (crit 10\')"',
@@ -4775,7 +4775,7 @@ PFAPG.FEATURES = {
     'Note="+4 concentration when an adjacent ally has this feat and no shield, +5 w/a buckler or light shield, +6 w/a heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature"',
   'Sickening Spell':
     'Section=magic ' +
-    'Note="May spend +2 spell slot to sicken target (spell save or Fort neg) for spell level rd"',
+    'Note="May spend +2 spell slot to sicken target (spell save or Fortitude negates) for spell level rd"',
   'Sidestep':
     'Section=combat ' +
     'Note="May move 5\' w/in threatened area w/out provoking AOO after a foe miss; suffers -5\' move next rd"',
@@ -4812,7 +4812,7 @@ PFAPG.FEATURES = {
     'Note="+4 Bluff (lying and concealing feelings or motives), foe suffers +5 Sense Motive DC"',
   'Stunning Assault':
     'Section=combat ' +
-    'Note="May suffer -5 attack to inflict 1 rd stun (DC %{10+baseAttack} Fort neg)"',
+    'Note="May suffer -5 attack to inflict 1 rd stun (DC %{10+baseAttack} Fortitude negates)"',
   "Summoner's Call":
     'Section=companion ' +
     'Note="Summoned eidolon gains choice of +2 Strength, Dexterity, or Constitution for 10 min"',
@@ -4838,10 +4838,10 @@ PFAPG.FEATURES = {
     'Note="Self transmutation spell gains +2 DC to dispel, and effects continue 1 rd after a successful dispel"',
   'Thundering Spell':
     'Section=magic ' +
-    'Note="May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd"',
+    'Note="May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd"',
   'Touch Of Serenity':
     'Section=combat ' +
-    'Note="May forego attack damage to prevent a foe from attacking or spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will neg) %1/dy"',
+    'Note="May forego attack damage to prevent a foe from attacking or spellcasting for %V rd (DC %{10+level//2+wisdomModifier} Will negates) %1/dy"',
   'Trick Riding':
     'Section=combat,skill ' +
     'Note=' +
@@ -5302,7 +5302,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=P1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Gives +2 melee attacks on the evil target and forces it to attack self or suffer sickened (save Will neg), for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Gives +2 melee attacks on the evil target and forces it to attack self or suffer sickened (save Will negates), for %{lvl} min"',
   'Chameleon Stride':
     'School="Illusion (Glamer)" ' +
     'Level=R2 ' +
@@ -5535,7 +5535,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=D2,Witch2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers starvation (Fort neg) and eating causes 1 rd nausea (DC 12 Fort neg) for %{lvl*2} dy"',
+      '"R%{25+lvl//2*5}\' Inflicts insatiable hunger that leads to starvation (save Fortitude negates), and eating causes 1 rd nausea (save Fortitude DC 12 negates), for %{lvl*2} dy"',
   'Feather Step':
     'School=Transmutation ' +
     'Level=B1,D1,R1 ' +
@@ -5545,102 +5545,102 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B3,D3,R3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius treat difficult terrain as normal terrain for %{lvl*10} min"',
+      '"R%{25+lvl//2*5}\' %{lvl} targets in a 15\' radius treat difficult terrain as normal terrain for %{lvl*10} min"',
   'Fester':
     'School=Necromancy ' +
     'Level=Inquisitor3,Witch2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers SR %{lvl+12} to spells that grant healing or temporary HP for %{lvl} rd (Fort 1 rd)"',
+      '"R%{25+lvl//2*5}\' Target suffers SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
   'Mass Fester':
     'School=Necromancy ' +
     'Level=Inquisitor6,Witch6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius suffer SR %{lvl+12} to spells that grant healing or temporary HP for %{lvl} rd (Fort 1 rd)"',
+      '"R%{25+lvl//2*5}\' %{lvl} targets in a 15\' radius suffer SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
   'Fiery Body':
     'School="Transmutation [Fire]" ' +
     'Level=Ash9,O9,S9,W9 ' + // Oracle Flame
     'Description=' +
-      '"Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40\' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for %{lvl} min"',
+      '"Self gains immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40\' fly Speed, brightness that dazzles viewers, +1 fire spell DC, and unarmed attacks that inflict +3d6 HP fire, regains hit points instead of suffering damage from fire attacks (regains 1 hit point per 3 HP damage), suffers x1.5 HP from cold, and suffers 2d6 HP each rd in water while gaining a 50% miss chance, for %{lvl} min"',
   'Fire Breath':
     'School="Evocation [Fire]" ' +
     'Level=Alchemist2,S2,W2 ' +
     'Description=' +
-      '"3 uses of 15\' cone inflict 4d6, 2d6, and 1d6 HP fire (Ref half) w/in %{lvl} rd"',
+      '"3 uses of a 15\' breath cone inflict 4d6 HP fire, 2d6 HP fire, and 1d6 HP fire (save Reflex half) within %{lvl} rd"',
   'Fire Of Entanglement':
     'School=Evocation ' +
     'Level=P2 ' +
     'Description=' +
-      '"Target of next Smite Evil hit suffers entanglement for %{lvl} rd (Ref 1 rd)"',
+      '"Next Smite Evil attack within %{lvl} rd inflicts entanglement for the remaining duration (save Reflex inflicts entanglement for 1 rd)"',
   'Fire Of Judgment':
     'School=Evocation ' +
     'Level=P3 ' +
     'Description=' +
-      '"Target of next Smite Evil hit suffers 1d6 HP divine (1d10 HP on outsider, dragon, or undead), bypassing DR, when attacking anyone but self for %{lvl} rd (Will 1 rd)"',
+      '"Next Smite Evil attack within %{lvl} rd inflicts 1d6 HP divine (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, each rd on the start of the target\'s turn and when it attacks anyone but self for the remaining duration (save Will effects last for 1 rd)"',
   'Fire Of Vengeance':
     'School="Evocation [Fire]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"Target of next Smite Evil hit suffers 3d8 HP fire on first attack on anyone but self"',
+      '"Next Smite Evil attack causes the target to suffer 3d8 HP fire the first time it attacks anyone but self"',
   'Fire Snake':
     'School="Evocation [Fire]" ' +
     'Level=D5,S5,W5 ' +
     'Description=' +
-      '"Adjacent %{lvl} contiguous 5\' sq w/in 60\' inflict %{lvl<?15}d6 HP fire (Ref half)"',
+      '"Adjacent %{lvl} contiguous 5\' squares within 60\' inflict %{lvl<?15}d6 HP fire (save Reflex half)"',
   'Firebrand':
     'School="Transmutation [Fire]" ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl//4} targets in 15\' radius gain torchlight, immunity to self fire spells, and weapons inflict +1d6 HP fire for %{lvl} rd; target may end for R30\' ranged touch that inflicts 6d6 HP fire"',
+      '"R%{25+lvl//2*5}\' %{lvl//4} targets in 15\' radius emit torchlight, gain immunity to self fire spells, and inflict +1d6 HP fire with weapons for %{lvl} rd; each target can make a R30\' ranged touch attack that inflicts 6d6 HP fire and ends the spell for that target"',
   'Firefall':
     'School="Transmutation [Fire]" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' 60\' radius around target fire inflicts 5d6 HP fire and catch on fire (Ref half HP only) and 120\' radius inflicts blinded for 1d4+1 rd (Will neg); fire creature target suffers %{lvl} HP; extinguishes normal target fire up 20\' cu"',
+      '"R%{400+lvl*40}\' Target fire source erupts, inflicting 5d6 HP fire and caught on fire to creatures within 60\' (save Reflex half HP only) and blinded for 1d4+1 rd to creatures within 120\' (save Will negates); a targeted fire creature suffers %{lvl} HP, and a 20\'x20\' area of a targeted normal fire is extinguished"',
   'Flames Of The Faithful':
     'School="Transmutation [Fire]" ' +
     'Level=Inquisitor2 ' +
     'Description=' +
-      '"Touched self weapon inflicts +1d6 HP fire (crit while using Judgment also inflicts +1d10 HP fire or more) for %{lvl} rd"',
+      '"Touched weapon inflicts +1d6 HP fire while wielded by self, and critical hits while using Judgment also inflict an additional +1d10 HP - +3d10 HP fire, for %{lvl} rd"',
   'Flare Burst':
     'School="Evocation [Light]" ' +
     'Level=B1,D1,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' 10\' radius inflicts dazzled (Fort neg) for 1 min"',
+      '"R%{25+lvl//2*5}\' 10\' radius inflicts dazzled (save Fortitude negates) for 1 min"',
   'Fluid Form':
     'School="Transmutation [Water]" ' +
     'Level=Alchemist4,O6,S6,W6 ' + // Oracle Waves
     'Description=' +
-      '"Self gains DR 10/slashing, +10 reach, +60\' Swim, Amphibious feature, and ability to squeeze through cracks for %{lvl} min"',
+      '"Self gains DR 10/slashing, +10\' reach, a 60\' swim Speed, water breathing, the ability to squeeze through cracks, and the water subtype, for %{lvl} min"',
   'Mass Fly':
     'School=Transmutation ' +
     'Level=Feather6,S7,W7 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius gain 60\' fly speed for %{lvl*10} min"',
+      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius gain a 60\' fly speed for %{lvl*10} min, then float downward 60\' per rd for 1d6 rd"',
   'Foe To Friend':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Redirects or negates foe attack, and foe counts as an ally for flanking, for 1 rd (Will neg)"',
+      '"R%{100+lvl*10}\' Negates the targeted foe\'s attack or redirects it to a chosen target, and the foe counts as an ally for flanking for 1 rd (save Will negates)"',
   'Follow Aura':
     'School=Divination ' + // One of [Chaotic,Evil,Good,Lawful]
     'Level=Inquisitor2 ' +
     'Description=' +
-      '"Self can track chosen alignment %{lvl>=10 ? \'moderate or \' : \'\'}strong aura for %{lvl*10} min"',
+      '"Allows self to track the %{lvl>=10 ? \'moderate or \' : \'\'}strong traces of a chosen alignment component for %{lvl*10} min"',
   "Fool's Forbiddance":
     'School="Abjuration [Mind-Affecting]" ' +
     'Level=B6 ' +
     'Description=' +
-      '"10\' radius inflicts confusion on foes (Will staggered) while in radius + 1 rd for conc"',
+      '"10\' radius inflicts confusion on foes (save Will inflicts staggered) while within it plus 1 rd after exiting, for conentration"',
   'Forced Repentance':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Inquisitor4,P4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Evil target (but not of evil subtype) falls prone and makes confession (Will neg) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Evil target (but not one of the evil subtype) falls prone and makes a confession for %{lvl} rd (save Will negates)"',
   'Frozen Note':
     'School="Enchantment (Compulsion) [Mind-Affecting,Sonic]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"Creatures up to %{lvl+3} HD in 30\' radius held spellbound (%{lvl-3}-%{lvl+3} HD DC %{spellDifficultyClass.B+5} Will neg) for conc or %{lvl} rd"',
+      '"Captivates creatures with up to %{lvl+3} HD in a 30\' radius (save Will DC %{spellDifficultyClass.B+5} each rd for creatures with at least %{lvl-3} HD delays for 1 rd) for concentration up to %{lvl} rd"',
 
   'Gallant Inspiration':
     'School=Divination ' +
@@ -5651,12 +5651,12 @@ PFAPG.SPELLS = {
     'School="Conjuration (Teleportation)" ' +
     'Level=B6,S6,W6 ' +
     'Description=' +
-      '"R30\' Self and %{lvl//2} willing pre-selected targets teleport to a prepared location"',
+      '"R30\' Allows self, along with %{lvl//2} willing creatures within 30\', to return to the casting location as a swift action at any time within %{lvl} hr; targets that are more than 30\' away at the time of teleport remain in place"',
   'Geyser':
     'School="Conjuration (Creation) [Fire,Water]" ' +
     'Level=D4,O5,S5,W5,Witch5 ' + // Oracle Waves, Witch Water
     'Description=' +
-      '"R%{400+lvl*40}\' 5\' sq inflicts 3d6 HP fire and %{lvl//2}d6 falling (Ref half fire only), and surrounding %{lvl*2.5//1}\' radius inflicts 1d6 HP fire, for conc + 1 rd"',
+      '"R%{400+lvl*40}\' 5\' sq inflicts 3d6 HP fire and up to %{lvl//2}d6 falling (save Reflex half fire only), and the surrounding %{lvl*2.5//1}\' radius inflicts 1d6 HP fire, for concentration + 1 rd"',
   'Ghostbane Dirge':
     'School=Transmutation ' +
     'Level=B2,C2,Inquisitor2,O2,P1 ' +
@@ -5666,12 +5666,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B4,C5,Inquisitor5,O5,P3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} incorporeal targets in 15\' radius suffer half damage from normal attacks and full damage from magic and magic weapons for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' %{lvl} incorporeal targets in a 15\' radius suffer half damage from normal attacks and full damage from magic and magic weapons for %{lvl} rd"',
   'Glide':
     'School=Transmutation ' +
     'Level=D2,R1,S2,W2,Summoner2,Witch2 ' +
     'Description=' +
-      '"Self falls 60\'/rd and may move horizontally 300\'/rd for %{lvl} min"',
+      '"Self falls 60\' per rd and can move horizontally 300\' per rd for %{lvl} min"',
   'Grace':
     'School=Abjuration ' +
     'Level=C2,O2,P1 ' +
@@ -5681,79 +5681,79 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=R1,S1,W1 ' +
     'Description=' +
-      '"Self bow inflicts damage as if 1 size larger for %{lvl} min"',
+      '"Self arrows and bolts inflict damage as if 1 size larger for %{lvl} min"',
   'Grove Of Respite':
     'School="Conjuration (Creation)" ' +
     'Level=D4,O4,R4 ' + // Oracle Nature
     'Description=' +
-      '"R%{25+lvl//2*5}\' Creates 20\' radius grove that reports intruders and provides water and fruit that feeds 8 and heals 1 HP for %{lvl*2} hr"',
+      '"R%{25+lvl//2*5}\' Creates a 20\' radius grove that reports intruders and provides water and fruit that feeds 8 and restores 1 hit point for %{lvl*2} hr"',
   'Guiding Star':
     'School=Divination ' +
     'Level=C3,O3,R2,Witch3 ' +
     'Description=' +
-      '"Self aware of direction and distance to casting location for %{lvl} dy"',
+      '"Self knows the direction and distance to the casting location for %{lvl} days"',
 
   "Hero's Defiance":
     'School="Conjuration (Healing)" ' +
     'Level=P1 ' +
     'Description=' +
-      '"Expending Lay on Hands use on self when reduced to 0 or negative HP heals +1d6 HP"',
+      '"Expending a Lay on Hands use on self when reduced to 0 or negative hit points restores +1d6 hit points"',
   'Heroic Finale':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' End of Bardic Performance allows target an immediate move or standard action"',
+      '"R%{25+lvl//2*5}\' Allows ending a Bardic Performance to allow a target to make an immediate move or standard action"',
   'Hidden Speech':
     'School="Transmutation [Language-Dependent]" ' +
     'Level=B2,Inquisitor3,Witch2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self and %{lvl} targets in 15\' radius gain +10 Bluff to exchange secret messages and foes suffer -5 Sense Motive to decipher for %{lvl*10} min"',
+      '"R%{25+lvl//2*5}\' Self and %{lvl} targets in a 15\' radius gain +10 Bluff to exchange secret messages, and foes suffer -5 Sense Motive to decipher them, for %{lvl*10} min"',
   'Hide Campsite':
     'School="Illusion (Glamer)" ' +
     'Level=D3,R2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' cu covers camp activity (Will neg on interaction) for %{lvl*2} hr"',
+      '"R%{25+lvl//2*5}\' 20\' cube conceals camping activity (save Will negates on interaction) for %{lvl*2} hr"',
   'Holy Whisper':
     'School="Evocation [Good]" ' +
     'Level=P3 ' +
     'Description=' +
-      '"30\' cone sickens evil creatures for %{lvl} rd and inflicts 2d8 HP on outsiders, dragons, and undead (Fort neg); also gives good creatures +2 attack and damage for 1 rd"',
+      '"30\' cone sickens evil creatures for %{lvl} rd and inflicts 2d8 HP on outsiders, dragons, and undead (save Fortitude negates); good creatures gain +2 attack and damage for 1 rd"',
   'Honeyed Tongue':
     'School=Transmutation ' +
     'Level=B2,Inquisitor2,P1 ' +
     'Description=' +
-      '"Self gains best of two Diplomacy rolls to change attitude for %{lvl*10} min or +5 on next Diplomacy roll to gather information"',
+      '"Self gains the better of two Diplomacy rolls to change attitude for %{lvl*10} min or +5 on the next Diplomacy roll to gather information"',
   'Hungry Pit':
     'School="Conjuration (Creation)" ' +
     'Level=Caves6,S5,W5,Summoner5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 35 Climb to exit) and suffer 4d6 HP bludgeoning/rd (Ref half)"',
+      '"R%{100+lvl*10}\' Creates a 10\'x10\' %{lvl//2*10<?100}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 35 Climb check, and creatures inside suffer 4d6 HP bludgeoning each rd (save Reflex half)"',
   "Hunter's Eye":
     'School=Divination ' +
     'Level=Inquisitor3,R2 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Self can see target when invisible or concealed (except by darkness) and gains +20 Perception to locate target for %{lvl} min"',
+      '"R%{100+lvl*10}\' Self can perceive the target when it\'s invisible or concealed, except by darkness, and gains +20 Perception to locate it for %{lvl} min"',
   "Hunter's Howl":
     'School="Necromancy [Fear,Mind-Affecting]" ' +
     'Level=R1 ' +
     'Description=' +
-      '"Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20\' radius (favored enemies shaken instead) (Will neg) for %{lvl} rd"',
+      '"Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in a 20\' radius (favored enemies instead suffer shaken) for %{lvl} rd (save Will negates)"',
   'Hydraulic Push':
     'School="Evocation [Water]" ' +
     'Level=D1,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; also extinguishes normal fires up to 5\' sq"',
+      '"R%{25+lvl//2*5}\' Creates a blast of water that performs a +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} Bull Rush on the target and extinguishes normal fires up to 5\'x5\'"',
   'Hydraulic Torrent':
     'School="Evocation [Water]" ' +
     'Level=D3,S3,W3 ' +
     'Description=' +
-      '"Creatures in 60\' line suffer CMB +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} bull rush; immovable objects %{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} Strength to break; also extinguishes normal fires"',
+      '"Creates a 60\' line of water that performs a +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} Bull Rush on creatures, extinguishes normal fires, and makes a +%{lvl+(intelligenceModifier>?wisdomModifier>?charismaModifier)} Strength check to break immovable objects"',
 
   'Ill Omen':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Witch1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers worse of two rolls for next %{lvl//5+1} d20 rolls (aware target can use a move action to negate 1) w/in %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Target suffers the worse of two rolls on the next %{lvl>4?lvl//5+1+\' d20 rolls\':\'d20 roll\'} within %{lvl} rd; an aware target can use a move action to negate the effect on a roll"',
   'Innocence':
     'School=Transmutation ' +
     'Level=B1 ' +
@@ -5763,44 +5763,44 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Force]" ' +
     'Level=C2,O2,P2 ' +
     'Description=' +
-      '"Self gains effects of %{lvl>=12 ? \'full plate\' : lvl>=9 ? \'half-plate\' : lvl>=6 ? \'banded mail\' : \'chainmail\'} or magical lesser armor for %{lvl} min"',
+      '"Self gains force armor effects equivalent to %{lvl>=12?\'full plate\':lvl>=9?\'half-plate\':lvl>=6?\'banded mail\':\'chainmail\'} or magical lesser armor for %{lvl} min"',
   'Instant Enemy':
     'School=Enchantment ' +
     'Level=R3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self gains favored enemy benefits vs. target for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Gives self favored enemy benefits vs. the target for %{lvl} min"',
   'Invigorate':
     'School="Illusion (Figment)" ' +
     'Level=B1 ' +
     'Description=' +
-      '"Touched ignores effects of fatigued and exhausted for %{lvl*10} min, suffers 1d6 HP nonlethal after"',
+      '"Touched ignores fatigue and exhaustion effects for %{lvl*10} min but suffers 1d6 HP nonlethal afterwards"',
   'Mass Invigorate':
     'School="Illusion (Figment)" ' +
     'Level=B3 ' +
     'Description=' +
-      '"%{lvl} touched ignore effects of fatigued and exhausted for %{lvl*10} min, suffer 1d6 HP nonlethal after"',
+      '"%{lvl} touched ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterwards"',
 
   "Jester's Jaunt":
     'School="Conjuration (Teleportation)" ' +
     'Level=B3 ' +
     'Description=' +
-      '"Touched teleported up to 30\' to a safe spot (Will neg)"',
+      '"Teleports touched up to 30\' to a safe location (save Will negates)"',
 
   'Keen Senses':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
     'Description=' +
-      '"Touched gains +2 Perception and Low-Light Vision (or dbl range) for %{lvl} min"',
+      '"Touched gains +2 Perception and Low-Light Vision (or doubles the range of existing Low-Light Vision) for %{lvl} min"',
   "King's Castle":
     'School="Conjuration (Teleportation)" ' +
     'Level=P4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self exchanges places w/target ally"',
+      '"R%{25+lvl//2*5}\' Swaps the locations of self and an ally"',
   "Knight's Calling":
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=P1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target must move to attack self (Will neg) for 1 rd"',
+      '"R%{25+lvl//2*5}\' Forces the target to move in order to attack self (save Will negates) for 1 rd"',
 
   'Lead Blades':
     'School=Transmutation ' +
@@ -5832,7 +5832,7 @@ PFAPG.SPELLS = {
     'School="Abjuration [Mind-Affecting]" ' +
     'Level=P3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ally target and foe target cannot attack one another (Will neg 1 rd) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Ally target and foe target cannot attack one another (Will negates 1 rd) for %{lvl} rd"',
   'Mask Dweomer':
     'School="Illusion (Glamer)" ' +
     'Level=Witch1 ' +
@@ -5842,12 +5842,12 @@ PFAPG.SPELLS = {
     'School="Enchantment [Mind-Affecting]" ' +
     'Level=B1,Memory2,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target forgets prior rd (Will neg)"',
+      '"R%{25+lvl//2*5}\' Target forgets prior rd (Will negates)"',
   'Moonstruck':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=D4,Insanity4,Rage6,S4,W4,Witch4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for %{lvl-2} rd, then suffers dazed for 1 rd (Will neg)"',
+      '"R%{100+lvl*10}\' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for %{lvl-2} rd, then suffers dazed for 1 rd (Will negates)"',
 
   'Nap Stack':
     'School=Necromancy ' +
@@ -5863,12 +5863,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
     'Description=' +
-      '"Touched suffers permanent hostility from natural animals and -10 Survival; any animal companion suffers -2 attack, skill checks, and saves (Will neg)"',
+      '"Touched suffers permanent hostility from natural animals and -10 Survival; any animal companion suffers -2 attack, skill checks, and saves (Will negates)"',
   'Negate Aroma':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target loses all odors (Fort neg) for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' Target loses all odors (Fortitude negates) for %{lvl} hr"',
 
   'Oath Of Peace':
     'School=Abjuration ' +
@@ -5879,18 +5879,18 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=O2 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target suffers self Oracle\'s Curse effects (Will neg) for %{lvl} min"',
+      '"R%{100+lvl*10}\' Target suffers self Oracle\'s Curse effects (Will negates) for %{lvl} min"',
 
   'Pain Strike':
     'School="Evocation [Evil]" ' +
     'Level=S3,W3,Witch3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. target for %{lvl<?10} rd"',
+      '"R%{25+lvl//2*5}\' Target suffers 1d6 HP nonlethal/rd and sickened (Fortitude negates) and self gains +4 Intimidate vs. target for %{lvl<?10} rd"',
   'Mass Pain Strike':
     'School="Evocation [Evil]" ' +
     'Level=S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius suffer 1d6 HP nonlethal/rd and sickened (Fort neg) and self gains +4 Intimidate vs. targets for %{lvl<?10} rd"',
+      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius suffer 1d6 HP nonlethal/rd and sickened (Fortitude negates) and self gains +4 Intimidate vs. targets for %{lvl<?10} rd"',
   "Paladin's Sacrifice":
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -5905,17 +5905,17 @@ PFAPG.SPELLS = {
     'School="Illusion (Phantasm) [Fear,Mind-Affecting]" ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Spectre from touched %{lvl}-day-old corpse finds killer and inflicts %{lvl*10} HP (Will neg; DC %{spellDifficultyClass.W+7} Fort 5d6+%{lvl} HP)"',
+      '"Spectre from touched %{lvl}-day-old corpse finds killer and inflicts %{lvl*10} HP (Will negates; DC %{spellDifficultyClass.W+7} Fortitude 5d6+%{lvl} HP)"',
   'Phantasmal Web':
     'School="Illusion (Phantasm) [Mind-Affecting]" ' +
     'Level=B5,Insanity6,S5,W5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' %{lvl} targets in 15\' radius suffer entanglement (Will neg) and nauseated (Fort each rd neg) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' %{lvl} targets in 15\' radius suffer entanglement (Will negates) and nauseated (Fortitude each rd negates) for %{lvl} rd"',
   'Pied Piping':
     'School="Enchantment (Compulsion) [Mind-Affecting,Sonic]" ' +
     'Level=B6 ' +
     'Description=' +
-      '"Creatures w/chosen physical trait in 90\' radius follow self (Will neg) for conc + %{lvl} rd"',
+      '"Creatures w/chosen physical trait in 90\' radius follow self (Will negates) for conc + %{lvl} rd"',
   'Pillar Of Life':
     'School="Conjuration (Healing) [Light]" ' +
     'Level=C5,O5 ' +
@@ -5935,7 +5935,7 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=D2,S2,W2,Witch2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers sickened and -4 Dexterity (Fort neg; full-round scratch neg sickened for 1 rd) for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Target suffers sickened and -4 Dexterity (Fortitude negates; full-round scratch negates sickened for 1 rd) for %{lvl} min"',
   'Protective Spirit':
     'School="Conjuration (Creation)" ' +
     'Level=R2 ' +
@@ -5955,7 +5955,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Witch0 ' +
     'Description=' +
-      '"R10\' Fouls a single potion (Will neg) or %{lvl}\' cu food and water"',
+      '"R10\' Fouls a single potion (Will negates) or %{lvl}\' cu food and water"',
 
   'Rally Point':
     'School="Enchantment (Compulsion) [Good,Mind-Affecting]" ' +
@@ -5971,7 +5971,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=Inquisitor4 ' +
     'Description=' +
-      '"Foes in 20\' radius suffer %{lvl//2<?5}d8 HP (half sonic, half divine) and staggered for 1 rd %{deity!=\'None\' ? \'(worshipers of \' + deity + \' \' + (lvl<?10) + \'d6 HP and stunned for 1d4 rd) \' : \'\'}(Fort half HP only)"',
+      '"Foes in 20\' radius suffer %{lvl//2<?5}d8 HP (half sonic, half divine) and staggered for 1 rd %{deity!=\'None\' ? \'(worshipers of \' + deity + \' \' + (lvl<?10) + \'d6 HP and stunned for 1d4 rd) \' : \'\'}(Fortitude half HP only)"',
   'Rejuvenate Eidolon':
     'School="Conjuration (Healing)" ' +
     'Level=Summoner3 ' +
@@ -5996,7 +5996,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
     'Description=' +
-      '"Hits w/held weapon inflict +1d6 HP sonic, plus staggered 1 rd while using Judgment or Smite (Fort neg); crit inflicts stunned 1 rd and deafened 1d6 rd (Fort neg), for %{lvl} rd"',
+      '"Hits w/held weapon inflict +1d6 HP sonic, plus staggered 1 rd while using Judgment or Smite (Fortitude negates); crit inflicts stunned 1 rd and deafened 1d6 rd (Fortitude negates), for %{lvl} rd"',
   'Rest Eternal':
     'School=Necromancy ' +
     'Level=Ancestors4,C4,O4,D5,Witch5 ' +
@@ -6016,7 +6016,7 @@ PFAPG.SPELLS = {
     'School="Necromancy [Evil]" ' +
     'Level=Inquisitor3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target who just damaged self suffers -4 attack, skill checks, and ability checks for %{lvl} rd (Fort 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' save -2\' : \'\'})"',
+      '"R%{25+lvl//2*5}\' Target who just damaged self suffers -4 attack, skill checks, and ability checks for %{lvl} rd (Fortitude 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' save -2\' : \'\'})"',
   'Reviving Finale':
     'School="Conjuration (Healing)" ' +
     'Level=B3 ' +
@@ -6031,7 +6031,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Air]" ' +
     'Level=D4,O4,S4,W4 ' + // Oracle Wind
     'Description=' +
-      '"5\'x120\' line inflicts 4d6 HP nonlethal and knocked prone (Fort half HP only), then 2d6 HP nonlethal, pushed 20\', and knocked prone (Fort 1d6 HP only) for %{lvl-1} rd"',
+      '"5\'x120\' line inflicts 4d6 HP nonlethal and knocked prone (Fortitude half HP only), then 2d6 HP nonlethal, pushed 20\', and knocked prone (Fortitude 1d6 HP only) for %{lvl-1} rd"',
 
   'Sacred Bond':
     'School="Conjuration (Healing)" ' +
@@ -6067,7 +6067,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=Witch3 ' +
     'Description=' +
-      '"Foes in 30\' radius provoke AOO (Fort neg)"',
+      '"Foes in 30\' radius provoke AOO (Fortitude negates)"',
   'Sculpt Corpse':
     'School=Necromancy ' +
     'Level=S1,W1 ' +
@@ -6082,7 +6082,7 @@ PFAPG.SPELLS = {
     'School="Divination [Mind-Affecting]" ' +
     'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,S3,W3,Witch3 ' +
     'Description=' +
-      '"40\' radius gives self an answer from nearby thoughts for conc or %{lvl} min (Will neg)"',
+      '"40\' radius gives self an answer from nearby thoughts for conc or %{lvl} min (Will negates)"',
   'Shadow Projection':
     'School="Necromancy [Evil]" ' +
     'Level=S4,W4 ' +
@@ -6107,7 +6107,7 @@ PFAPG.SPELLS = {
     'School="Transmutation [Earth]" ' +
     'Level=D3,S3,W3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' radius earth or sand moves 10\'/rd, creates difficult terrain, inflicts -%{lvl} Acrobatics, and entangles and knocks prone (Ref neg) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' radius earth or sand moves 10\'/rd, creates difficult terrain, inflicts -%{lvl} Acrobatics, and entangles and knocks prone (Reflex negates) for %{lvl} rd"',
   'Sift':
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
@@ -6117,12 +6117,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Air,Fire]" ' +
     'Level=D6,O6,Storms6,S6,W6 ' + // Oracle Wind
     'Description=' +
-      '"R%{100+lvl*10}\' 60\' high, 20\' radius inflicts 4d6+%{lvl} HP fire, fatigues, and knocks prone (Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 60\' high, 20\' radius inflicts 4d6+%{lvl} HP fire, fatigues, and knocks prone (Fortitude half HP and negates knocked prone; flying creatures DC 15 Fly to avoid) for %{lvl} rd"',
   'Sleepwalk':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Inquisitor4,Witch4 ' +
     'Description=' +
-      '"Touched unconscious creature animates and moves at half speed (Will neg) for %{lvl} hr"',
+      '"Touched unconscious creature animates and moves at half speed (Will negates) for %{lvl} hr"',
   'Slipstream':
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D2,O2,Oceans2,R2,S2,W2,Witch2 ' + // Oracle Waves, Witch Water
@@ -6142,12 +6142,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Fire]" ' +
     'Level=Talent0,B0,C0,D0,O0,S0,W0,Witch0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Burns unattended Fine flammable object (Fort neg)"',
+      '"R%{25+lvl//2*5}\' Burns unattended Fine flammable object (Fortitude negates)"',
   'Spiked Pit':
     'School="Conjuration (Creation)" ' +
     'Level=Caves3,S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates 10\'x10\' %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Ref neg, adjacent squares Ref+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing"',
+      '"R%{100+lvl*10}\' Creates 10\'x10\' %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (Reflex negates, adjacent squares Reflex+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing"',
   'Spiritual Ally':
     'School="Evocation [Force]" ' +
     'Level=C4,O4 ' +
@@ -6177,7 +6177,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Electricity]" ' +
     'Level=C8,D8,O8,S8,W8,Witch8 ' +
     'Description=' +
-      '"Targets in 30\' radius suffer %{lvl}d8 HP electricity and stunned 1 rd (Fort half HP only)"',
+      '"Targets in 30\' radius suffer %{lvl}d8 HP electricity and stunned 1 rd (Fortitude half HP only)"',
   'Strong Jaw':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
@@ -6187,22 +6187,22 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation)" ' +
     'Level=S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' 5\' square inflicts 1d6 HP and knocked prone (Ref -1 all rolls for 1 rd) for %{lvl+1} rd"',
+      '"R%{25+lvl//2*5}\' 5\' square inflicts 1d6 HP and knocked prone (Reflex -1 all rolls for 1 rd) for %{lvl+1} rd"',
   'Stunning Finale':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' End of Bardic Performance inflicts stunned 1 rd (Fort staggered 1 rd) on 3 targets in 15\' radius"',
+      '"R%{25+lvl//2*5}\' End of Bardic Performance inflicts stunned 1 rd (Fortitude staggered 1 rd) on 3 targets in 15\' radius"',
   'Suffocation':
     'School=Necromancy ' +
     'Level=Murder5,S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target drops to 0 HP next rd (Fort staggered 1 rd), then drops to -1 HP (Fort delays 1 rd), then dies (Fort delays 1 rd) for 3 rd"',
+      '"R%{25+lvl//2*5}\' Target drops to 0 HP next rd (Fortitude staggered 1 rd), then drops to -1 HP (Fortitude delays 1 rd), then dies (Fortitude delays 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,S9,W9,Witch9 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl//2} targets in 15\' radius drop to 0 HP next rd (Fort staggered 1 rd), then drop to -1 HP (Fort delays 1 rd), then die (Fort delays 1 rd) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' %{lvl//2} targets in 15\' radius drop to 0 HP next rd (Fortitude staggered 1 rd), then drop to -1 HP (Fortitude delays 1 rd), then die (Fortitude delays 1 rd) for %{lvl} rd"',
   'Summon Eidolon':
     'School="Conjuration (Summoning)" ' +
     'Level=Summoner2 ' +
@@ -6228,7 +6228,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=B3 ' +
     'Description=' +
-      '"15\' cone inflicts %{lvl<?5}d8 HP sonic and knocked prone (Fort half HP only)"',
+      '"15\' cone inflicts %{lvl<?5}d8 HP sonic and knocked prone (Fortitude half HP only)"',
   'Timely Inspiration':
     'School=Divination ' +
     'Level=B1 ' +
@@ -6248,7 +6248,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B1,S1,W1 ' +
     'Description=' +
-      '"Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone by moving more than half speed, and flying maneuverability reduced one step (Fort half Dexterity damage only) for %{lvl} rd"',
+      '"Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone by moving more than half speed, and flying maneuverability reduced one step (Fortitude half Dexterity damage only) for %{lvl} rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,O1,S1,W1 ' + // Oracle Waves
@@ -6273,12 +6273,12 @@ PFAPG.SPELLS = {
     'School=Abjuration ' +
     'Level=D4,S4,W4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Removes polymorph effects from %{lvl//3} targets in 15\' radius (Will neg for polymorph ability, DC 11+effect level for polymorph spell) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Removes polymorph effects from %{lvl//3} targets in 15\' radius (Will negates for polymorph ability, DC 11+effect level for polymorph spell) for %{lvl} rd"',
   'Tsunami':
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D9,O9,Oceans9,S9,W9,Witch9 ' + // Oracle Waves, Witch Water
     'Description=' +
-      '"R%{400+lvl*40}\' 10\'x10\'x%{lvl*2}\' wave moves 30\'/60\'/rd over land/water, inflicts 8d6 HP bludgeoning (Fort half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
+      '"R%{400+lvl*40}\' 10\'x10\'x%{lvl*2}\' wave moves 30\'/60\'/rd over land/water, inflicts 8d6 HP bludgeoning (Fortitude half), +%{lvl+8+(intelligenceModifier>?charismaModifier>?wisdomModifier)} CMB to knock down and sweep away for 5 rd"',
   'Twilight Knife':
     'School="Evocation [Force]" ' +
     'Level=S3,W3,Witch3 ' +
@@ -6304,12 +6304,12 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=B5,Inquisitor5,S6,W6,Witch6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self gains half damage and +1 AC and saves, target suffers half of damage to self (Will neg) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Self gains half damage and +1 AC and saves, target suffers half of damage to self (Will negates) for %{lvl} rd"',
   'Unwitting Ally':
     'School="Enchantment (Charm) [Mind-Affecting]" ' +
     'Level=B0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self counts target as an ally for flanking (Will neg), and foes do not, for 1 rd"',
+      '"R%{25+lvl//2*5}\' Self counts target as an ally for flanking (Will negates), and foes do not, for 1 rd"',
 
   'Vanish':
     'School="Illusion (Glamer)" ' +
@@ -6325,7 +6325,7 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=R3 ' +
     'Description=' +
-      '"Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (Fort neg)"',
+      '"Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (Fortitude negates)"',
   'Versatile Weapon':
     'School=Transmutation ' +
     'Level=B2,R2,S3,W3 ' +
@@ -6340,7 +6340,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Water]" ' +
     'Level=D7,O7,S7,W7,Witch7 ' + // Oracle Waves, Witch Elements
     'Description=' +
-      '"R%{400+lvl*40}\' 15\' radius inflicts 3d6 HP bludgeoning (Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (Ref neg) for %{lvl-1} rd; self may eject creatures from the vortex"',
+      '"R%{400+lvl*40}\' 15\' radius inflicts 3d6 HP bludgeoning (Reflex negates) on first contact, then 1d8 HP/rd on Medium and smaller (Reflex negates) for %{lvl-1} rd; self may eject creatures from the vortex"',
 
   'Wake Of Light':
     'School="Evocation [Good]" ' +
@@ -6376,7 +6376,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Air]" ' +
     'Level=C9,D9,O9,S9,W9,Wind9 ' +
     'Description=' +
-      '"Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fort half HP only), for %{lvl} min"',
+      '"Self gains 60\' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fortitude half HP only), for %{lvl} min"',
   'World Wave':
     'School="Transmutation [Earth,Water]" ' +
     'Level=D9,Exploration9,O9,S9,W9 ' + // Oracle Nature
