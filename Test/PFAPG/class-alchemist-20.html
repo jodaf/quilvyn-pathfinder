@@ -32,7 +32,7 @@ var attributes = {
   "selectableFeatures.Alchemist - Shock Bomb":1, "selectableFeatures.Alchemist - Smoke Bomb":1, 
   "selectableFeatures.Alchemist - Sticky Bomb":1, "selectableFeatures.Alchemist - Sticky Poison":1, 
   "selectableFeatures.Alchemist - Stink Bomb":1, "selectableFeatures.Alchemist - True Mutagen":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"None", 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, "shield":"None", 
   "skills.Acrobatics":16, "skills.Bluff":2, "skills.Climb":10, "skills.Craft (Alchemy)":20, 
   "skills.Craft (Bows)":11, "skills.Diplomacy":1, "skills.Disable Device":11, "skills.Disguise":15, 
   "skills.Fly":10, "skills.Heal":2, "skills.Knowledge (Arcana)":10, "skills.Perception":16, 
@@ -72,6 +72,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 35/140</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -81,7 +82,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Awakened Intellect: +2 Intelligence</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Fleet: +5 Speed in light or no armor</i></td>
+      <td><i>Fleet: +5 Speed in light or no armor; a medium or heavy load negates</i></td>
     </tr><tr style="text-align:center">
       <td>Eternal Youth: Suffers no ability score penalties from age</td>
     </tr><tr style="text-align:center">
@@ -105,14 +106,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Alertness; Athletic; Craft Magic Arms And Armor; Craft Rod; Craft Staff; Craft Wand; Deceitful; Deft Hands; Dodge; Fleet</td>
-        <td><b>Alchemist Features</b>: Acid Bomb; Alchemy; Armor Proficiency (Light); Awakened Intellect; Bomb; Brew Potion; Combine Extracts; Concentrate Poison; Concussive Bomb; Delayed Bomb; Dilution; Discovery; Dispelling Bomb; Elixir Of Life; Enhance Potion; Eternal Potion; Eternal Youth; Explosive Bomb; Extend Potion; Fast Bombs; Fast Healing; Feral Mutagen; Force Bomb; Frost Bomb; Grand Discovery; Grand Mutagen; Greater Mutagen; Inferno Bomb; Infuse Mutagen; Infusion; Instant Alchemy; Madness Bomb; Mutagen; Persistent Mutagen; Philosopher's Stone; Poison Bomb; Poison Resistance; Poison Touch; Poison Use; Precise Bombs; Shock Bomb; Smoke Bomb; Sticky Bomb; Sticky Poison; Stink Bomb; Swift Alchemy; Swift Poisoning; Throw Anything (Alchemist); True Mutagen; Weapon Proficiency (Simple/Bomb)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Alchemist Features</b>: Acid Bomb; Alchemy; Armor Proficiency (Light); Awakened Intellect; Bomb; Brew Potion; Combine Extracts; Concentrate Poison; Concussive Bomb; Delayed Bomb; Dilution; Discovery; Dispelling Bomb; Elixir Of Life; Enhance Potion; Eternal Potion; Eternal Youth; Explosive Bomb; Extend Potion; Fast Bombs; Fast Healing; Feral Mutagen; Force Bomb; Frost Bomb; Grand Discovery; Grand Mutagen; Greater Mutagen; Inferno Bomb; Infuse Mutagen; Infusion; Instant Alchemy; Madness Bomb; Mutagen; Persistent Mutagen; Philosopher's Stone; Poison Bomb; Poison Resistance; Poison Touch; Poison Use; Precise Bombs; Shock Bomb; Smoke Bomb; Sticky Bomb; Sticky Poison; Stink Bomb; Swift Alchemy; Swift Poisoning; Throw Anything (Alchemist); True Mutagen; Weapon Proficiency (Simple Weapons; Bomb)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Discovery: 11 selections</i></td>
       </tr><tr style="text-align:center">
@@ -121,8 +122,6 @@ var attributes = {
         <td><i>Throw Anything (Alchemist): Has Throw Anything feature</i></td>
       </tr><tr style="text-align:center">
         <td>Concentrate Poison: 1 min process combines two poison doses; result yields +50% frequency and +2 save DC when used within 1 hr</td>
-      </tr><tr style="text-align:center">
-        <td>Poison Use: No chance of self-poisoning when applying poison to a weapon</td>
       </tr></table>
 </td>
     </tr></table>
@@ -201,7 +200,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 54</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/13/10</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+17</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/30</td>
@@ -211,8 +210,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Bomb; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -220,19 +218,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Bomb (+17 10d6+4); Javelin (+17 d6+2 x2@20 R30'); Morningstar (+17 d8+3 x2@20); Unarmed (+17 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Bomb (+17 10d6+4); Javelin (+17 d6+2 x2@20 R30'); Morningstar (+17 d8+3 x2@20); Unarmed Strike (+17 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: -20</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +2; Dodge: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -242,11 +240,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Acid Bomb: May create bombs that inflict acid damage instead of fire; a direct hit inflicts an additional 1d6 HP acid the next round</td>
       </tr><tr style="text-align:center">
-        <td>Bomb: May create bombs that inflict 10d6+4 HP fire on hit and 14 HP fire splash (DC 24 Ref half) 24/dy</td>
+        <td>Bomb: May create bombs that inflict 10d6+4 HP fire on hit and 14 HP fire splash (DC 24 Reflex half) 24/dy</td>
       </tr><tr style="text-align:center">
-        <td>Concussive Bomb: May create bombs that inflict 10d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC 24 Fort neg)</td>
+        <td>Concussive Bomb: May create bombs that inflict 10d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC 24 Fortitude negates)</td>
       </tr><tr style="text-align:center">
-        <td>Delayed Bomb: May configure bombs to explode after up to 20 rd (<i>Dispel Magic</i> or DC 34 Disable Device neg)</td>
+        <td>Delayed Bomb: May configure bombs to explode after up to 20 rd (<i>Dispel Magic</i> or DC 34 Disable Device negates)</td>
       </tr><tr style="text-align:center">
         <td>Explosive Bomb: Direct hit from bomb inflicts additional 1d6 HP fire/rd until extinguished; splash extends 10'</td>
       </tr><tr style="text-align:center">
@@ -254,19 +252,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Fast Healing: Regains 5 HP/rd</td>
       </tr><tr style="text-align:center">
-        <td>Force Bomb: May create bombs that inflict 10d4 HP force instead of fire; a direct hit knocks prone (DC 24 Ref neg)</td>
+        <td>Force Bomb: May create bombs that inflict 10d4 HP force instead of fire; a direct hit knocks prone (DC 24 Reflex negates)</td>
       </tr><tr style="text-align:center">
-        <td>Frost Bomb: May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC 24 Fort neg)</td>
+        <td>Frost Bomb: May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC 24 Fortitude negates)</td>
       </tr><tr style="text-align:center">
-        <td>Inferno Bomb: May create bombs that obscure vision and inflict 6d6 HP fire in dbl splash radius (DC 24 Ref half) for 20 rd</td>
+        <td>Inferno Bomb: May create bombs that obscure vision and inflict 6d6 HP fire in dbl splash radius (DC 24 Reflex half) for 20 rd</td>
       </tr><tr style="text-align:center">
         <td>Instant Alchemy: May apply poison to a weapon as an immediate action</td>
       </tr><tr style="text-align:center">
         <td>Madness Bomb: May create bombs that inflict 1d4 points of Wisdom damage, reducing fire damage by 2d6 HP</td>
       </tr><tr style="text-align:center">
-        <td>Poison Bomb: May create bombs that kill creatures up to 6 HD (DC 24 Fort 1d4 Constitution damage for 4-6 HD) and inflict 1d4 Constitution damage on higher HD creatures (DC 24 Fort half) in dbl splash radius for 20 rd</td>
+        <td>Poison Bomb: May create bombs that kill creatures up to 6 HD (DC 24 Fortitude 1d4 Constitution damage for 4-6 HD) and inflict 1d4 Constitution damage on higher HD creatures (DC 24 Fortitude half) in dbl splash radius for 20 rd</td>
       </tr><tr style="text-align:center">
-        <td>Poison Touch: Touch inflicts 1d3 Constitution damage/rd for 6 rd (DC 24 Constitution neg)</td>
+        <td>Poison Touch: Touch inflicts 1d3 Constitution damage/rd for 6 rd (DC 24 Constitution negates)</td>
+      </tr><tr style="text-align:center">
+        <td>Poison Use: Has no risk of self-poisoning when applying poison to a weapon</td>
       </tr><tr style="text-align:center">
         <td>Precise Bombs: May specify 4 squares in bomb splash radius that are unaffected</td>
       </tr><tr style="text-align:center">
@@ -278,7 +278,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Sticky Poison: Poison applied to a weapon remains effective for 4 strikes</td>
       </tr><tr style="text-align:center">
-        <td>Stink Bomb: May create bombs that nauseate for 1d4+1 rd (DC 24 Fort neg) in dbl splash radius for 1 rd</td>
+        <td>Stink Bomb: May create bombs that nauseate for 1d4+1 rd (DC 24 Fortitude negates) in dbl splash radius for 1 rd</td>
       </tr><tr style="text-align:center">
         <td>Swift Alchemy: May apply poison to a weapon as a move action</td>
       </tr><tr style="text-align:center">
@@ -286,7 +286,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Throw Anything (Alchemist): Splash weapons inflict +4 HP damage</td>
       </tr><tr style="text-align:center">
-        <td>Throw Anything: No penalty for improvised ranged weapon, +1 attack w/thrown splash</td>
+        <td>Throw Anything: Suffers no penalty for using improvised ranged weapons, and gains +1 attacks with thrown splash weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -329,17 +329,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Alchemy: May infuse extracts that duplicate spell effects on self for 1 dy</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
       <td>Combine Extracts: May spend +2 formula slot to combine two formulas into one extract</td>
     </tr><tr style="text-align:center">
-      <td>Craft Magic Arms And Armor: May create and mend magic weapons, armor, and shields</td>
+      <td>Craft Magic Arms And Armor: Can create and mend magic weapons, armor, and shields</td>
     </tr><tr style="text-align:center">
-      <td>Craft Rod: May create magic rods</td>
+      <td>Craft Rod: Can create magic rods</td>
     </tr><tr style="text-align:center">
-      <td>Craft Staff: May create magic staves</td>
+      <td>Craft Staff: Can create magic staves</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Dilution: May split potion or elixir into two doses 1/dy</td>
     </tr><tr style="text-align:center">

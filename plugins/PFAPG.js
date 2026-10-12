@@ -473,7 +473,7 @@ PFAPG.FEATS = {
       '"baseAttack >= 9"',
   'Saving Shield':
     'Type=General,Fighter ' +
-    'Require="features.Shield Proficiency" ' +
+    'Require="armorProficiency.Shield" ' +
     'Imply="shield =~ \'Light|Heavy|Tower\'"',
   'Second Chance':
     'Type=General,Fighter ' +
@@ -497,52 +497,52 @@ PFAPG.FEATS = {
   'Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Shield Focus",' +
       '"levels.Fighter >= 4"',
   'Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Shield Focus",' +
       '"levels.Fighter >= 4"',
   'Shield Specialization (Light)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Shield Focus",' +
       '"levels.Fighter >= 4"',
   'Shield Specialization (Tower)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Tower Shield Proficiency",' +
+      '"armorProficiency.Tower Shield",' +
       '"features.Shield Focus",' +
       '"levels.Fighter >= 4"',
   'Greater Shield Specialization (Buckler)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Buckler)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Heavy)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Heavy)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Light)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Shield Proficiency",' +
+      '"armorProficiency.Shield",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Light)",' +
       '"levels.Fighter >= 12"',
   'Greater Shield Specialization (Tower)':
     'Type=General,Fighter ' +
     'Require=' +
-      '"features.Tower Shield Proficiency",' +
+      '"armorProficiency.Tower Shield",' +
       '"features.Greater Shield Focus",' +
       '"features.Shield Specialization (Tower)",' +
       '"levels.Fighter >= 12"',
@@ -668,7 +668,7 @@ PFAPG.FEATS = {
   'Paired Opportunists':'Type=Teamwork,Fighter',
   'Precise Strike':
     'Type=Teamwork,Fighter Require="dexterity >= 13","baseAttack >= 1"',
-  'Shield Wall':'Type=Teamwork,Fighter Require="features.Shield Proficiency"',
+  'Shield Wall':'Type=Teamwork,Fighter Require="armorProficiency.Shield"',
   'Shielded Caster':'Type=Teamwork Imply="casterLevel >= 1"',
   'Swap Places':'Type=Teamwork,Fighter'
 };
@@ -1505,7 +1505,7 @@ PFAPG.FEATURES = {
       '"Dexterity Reflex adjustment uses Charisma instead"',
   'Skill At Arms':
     'Section=combat ' +
-    'Note="Weapon Proficiency (Martial)/Armor Proficiency (Heavy)"',
+    'Note="Weapon Proficiency (Martial Weapons)/Armor Proficiency (Heavy)"',
   'Soul Siphon':
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts negative level for %{charismaModifier} min and heals %{mysteryLevel} HP to self %{(mysteryLevel-3)//4}/dy"',
@@ -2062,6 +2062,7 @@ PFAPG.FEATURES = {
   'Savage Grapple':
    'Section=combat ' +
    'Note="%V grappled penalties/May always take AOO vs. grapple; hit gives +2 CMD vs. grapple"',
+  'Scent':'Section=skill Note="Can detect creatures via smell"',
   'Sixth Sense':
     'Section=combat,combat ' +
     'Note=' +
@@ -2138,7 +2139,7 @@ PFAPG.FEATURES = {
       '"+%V Diplomacy (gather information)"',
   'Gladhanding':
     'Section=skill ' +
-    'Note="Receives dbl normal pay from performing/May use Bluff to improve target attitude for 1 min; 1 step worse afterwards"',
+    'Note="Receives dbl normal pay from performing/May use Bluff to improve target attitude for 1 min; 1 step worse afterward"',
   'Glorious Epic':
     'Section=magic ' +
     'Note="R30\' May use Bardic Performance to inflict flat-footed (DC %{10+levels.Bard//2+charismaModifier} Will negates) on foes"',
@@ -3134,15 +3135,25 @@ PFAPG.FEATURES = {
   'Channel Negative Energy':
     'Section=magic ' +
     'Note="May expend 2 Touch Of Corruption uses to use Channel Energy effects"',
+  // TODO: does "using the antipaladin's level as the caster level" mean class level or character level
   'Cruelty':
     'Section=magic ' +
-    'Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fortitude negates)"',
+    'Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fortitude negates)" ' +
+    'Spells="Bestow Curse","Contagion","Poison" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Antipaladin',
   'Detect Good':
-    'Section=magic Note="May use <i>Detect Good</i> effects at will"',
+    'Section=magic Note="May use <i>Detect Good</i> effects at will" ' +
+    'Spells="Detect Good" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Antipaladin',
   'Fiendish Boon':'Section=feature Note="1 selection"',
   'Fiendish Servant':
     'Section=magic ' +
-    'Note="May use <i>Summon Monster %V</i> effects to permanently summon %{levels.Antipaladin>=11 ? \'an advanced\' : \'a\'} chaotic evil creature or fiendish animal%{levels.Antipaladin>=15 ? \' w/SR \' + (levels.Antipaladin+11) : \'\'}"',
+    'Note="May use <i>Summon Monster %V</i> effects to permanently summon %{levels.Antipaladin>=11 ? \'an advanced\' : \'a\'} chaotic evil creature or fiendish animal%{levels.Antipaladin>=15 ? \' w/SR \' + (levels.Antipaladin+11) : \'\'}" ' +
+    'Spells="Summon Monster IX" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Antipaladin',
   'Fiendish Weapon':
     'Section=combat ' +
     'Note="May add %V enhancements and properties to a weapon for %1 min %2/dy"',
@@ -3157,7 +3168,10 @@ PFAPG.FEATURES = {
     'Section=combat,magic ' +
     'Note=' +
       '"DR 10/good",' +
-      '"Channel Negative Energy and Touch Of Corruption effects maximized/Smite Good inflicts <i>Banishment</i> effects"',
+      '"Channel Negative Energy and Touch Of Corruption effects maximized/Smite Good inflicts <i>Banishment</i> effects" ' +
+    'Spells="Banishment" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Antipaladin',
   'Unholy Resilience':'Section=save Note="+%V Fortitude/+%V Reflex/+%V Will"',
 
   // Ranger
@@ -4332,7 +4346,7 @@ PFAPG.FEATURES = {
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
-    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %{($\'levels.Stalwart Defender\' - 1) * 2 + constitutionModifier + 4} rd/8 hr rest; fatigued afterwards for 2 rd per rd in stance"',
+    'Note="Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for %{($\'levels.Stalwart Defender\' - 1) * 2 + constitutionModifier + 4} rd/8 hr rest; fatigued afterward for 2 rd per rd in stance"',
   'Fearless Defense':
     'Section=save Note="Immune to shaken and frightened during stance"',
   'Halting Blow':
@@ -4974,7 +4988,7 @@ PFAPG.RACES = {
         '"1:Warslinger:Racial Trait"',
   'Human':
     'Selectables=' +
-      '"1:Bonus Feat:Racial Trait",' +
+      '"1:Bonus Feat (Human):Racial Trait",' +
         '"1:Eye For Talent:Racial Trait",' +
       '"1:Skilled:Racial Trait",' +
         '"1:Heart Of The Fields:Racial Trait",' +
@@ -5773,12 +5787,12 @@ PFAPG.SPELLS = {
     'School="Illusion (Figment)" ' +
     'Level=B1 ' +
     'Description=' +
-      '"Touched ignores fatigue and exhaustion effects for %{lvl*10} min but suffers 1d6 HP nonlethal afterwards"',
+      '"Touched ignores fatigue and exhaustion effects for %{lvl*10} min but suffers 1d6 HP nonlethal afterward"',
   'Mass Invigorate':
     'School="Illusion (Figment)" ' +
     'Level=B3 ' +
     'Description=' +
-      '"%{lvl} touched ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterwards"',
+      '"%{lvl} touched ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterward"',
 
   "Jester's Jaunt":
     'School="Conjuration (Teleportation)" ' +
@@ -5811,75 +5825,75 @@ PFAPG.SPELLS = {
     'School=Abjuration ' +
     'Level=C5,D4,O5,R3,S5,W5 ' +
     'Description=' +
-      '"%{lvl} touched breathe freely, remain comfortable from -40F to 150F, and are unaffected by pressure for %{lvl*2} hr total"',
+      '"%{lvl} touched breathe freely, remain comfortable from -40F to 150F, and are unaffected by pressure for a total of %{lvl*2} hr divided among them"',
   'Light Lance':
     'School="Evocation [Good,Light]" ' +
     'Level=P2 ' +
     'Description=' +
-      '"Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for %{lvl+1} rd"',
+      '"Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for %{lvl+1} rd; raising it gives bright light in a 90\' radius, and doing so for more than 1 rd emits a beam visible for 2 miles per rd"',
   'Lily Pad Stride':
     'School=Transmutation ' +
     'Level=D3 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Self moves across liquid and others can follow w/DC 10 Acrobatics (half speed; full speed inflicts -5 Acrobatics) for %{lvl*10} min"',
+      '"R%{400+lvl*40}\' Allows self to walk across water, and others of %{size} size or smaller can follow at half Speed with a successful DC 10 Acrobatics check each rd (moving at full Speed inflicts -5 on the checks) for %{lvl*10} min"',
   'Lockjaw':
     'School=Transmutation ' +
     'Level=D2,R2 ' +
     'Description=' +
-      '"Touched gains +4 CMB to grapple w/out provoking AOO after hit w/natural weapon for %{lvl} rd"',
+      '"Touched gains a +4 CMB to grapple with a successful natural weapon attack without provoking an AOO for %{lvl} rd"',
 
   'Marks Of Forbiddance':
     'School="Abjuration [Mind-Affecting]" ' +
     'Level=P3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ally target and foe target cannot attack one another (Will negates 1 rd) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Prevents an ally target and a foe target from attacking each other (save Will negates for 1 rd) for %{lvl} rd"',
   'Mask Dweomer':
     'School="Illusion (Glamer)" ' +
     'Level=Witch1 ' +
     'Description=' +
-      '"Spell aura on touched becomes immune to <i>Detect Magic</i> for %{lvl} dy"',
+      '"Spell aura on touched becomes hidden from <i>Detect Magic</i> and similar detection spells (save Will for more powerful spells negates, and <i>Mask Dweomer</i> is ineffective vs. <i>Arcane Sight</i>) for %{lvl} days"',
   'Memory Lapse':
     'School="Enchantment [Mind-Affecting]" ' +
     'Level=B1,Memory2,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target forgets prior rd (Will negates)"',
+      '"R%{25+lvl//2*5}\' Target forgets events since the start of its prior turn (save Will negates)"',
   'Moonstruck':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=D4,Insanity4,Rage6,S4,W4,Witch4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for %{lvl-2} rd, then suffers dazed for 1 rd (Will negates)"',
+      '"R%{100+lvl*10}\' Target suffers dazed for 1 rd while growing claws and fangs, then gains a bite attack, two claw attacks, and <i>Confusion</i> and <i>Rage</i> effects for %{lvl-2} rd, then suffers dazed for 1 rd while its hands and teeth return to normal (save Will negates)"',
 
   'Nap Stack':
     'School=Necromancy ' +
     'Level=C3,O3 ' +
     'Description=' +
-      '"30\' radius gives effects of 8 hr sleep in 2 hr for 8 hr"',
+      '"For 8 hr, gives the benefits of 8 hr sleep for each 2 hr of uninterrupted sleep within a 30\' radius; a creature can benefit from <i>Nap Stack</i> no more than once per week"',
   'Natural Rhythm':
     'School=Transmutation ' +
     'Level=D2 ' +
     'Description=' +
-      '"Touched gains +1 cumulative damage using natural attacks (max +5, miss resets to +0) for %{lvl} rd"',
+      '"Touched gains a +1 cumulative damage bonus vs. each foe each time it hits that foe with a natural attack (+5 maximum, and a miss resets the bonus vs. all foes to 0) for %{lvl} rd"',
   "Nature's Exile":
     'School=Transmutation ' +
     'Level=D3,Witch3 ' +
     'Description=' +
-      '"Touched suffers permanent hostility from natural animals and -10 Survival; any animal companion suffers -2 attack, skill checks, and saves (Will negates)"',
+      '"Touched suffers permanent hostility from natural animals and -10 Survival, and any animal companion suffers -2 attacks, skill checks, and saves (Will negates)"',
   'Negate Aroma':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,R1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target loses all odors (Fortitude negates) for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' Target loses all odors (save Fortitude negates) and cannot be tracked via scent for %{lvl} hr"',
 
   'Oath Of Peace':
     'School=Abjuration ' +
     'Level=P4 ' +
     'Description=' +
-      '"Self gains +5 AC and saves and DR 10/evil for %{lvl} rd or until attacks"',
+      '"Self gains a +5 sacred bonus to Armor Class and saves and DR 10/evil for %{lvl} rd; making an attack ends the spell"',
   "Oracle's Burden":
     'School=Necromancy ' +
     'Level=O2 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target suffers self Oracle\'s Curse effects (Will negates) for %{lvl} min"',
+      '"R%{100+lvl*10}\' Target suffers self Oracle\'s Curse effects (save Will negates) for %{lvl} min"',
 
   'Pain Strike':
     'School="Evocation [Evil]" ' +
@@ -7000,7 +7014,7 @@ PFAPG.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/3 ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Simple/Bomb)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Bomb)",' +
       '1:Alchemy,1:Bomb,"1:Brew Potion",1:Mutagen,' +
       '"1:Throw Anything (Alchemist)",2:Discovery,"2:Poison Resistance",' +
       '"2:Poison Use","3:Swift Alchemy","6:Swift Poisoning",' +
@@ -7043,8 +7057,8 @@ PFAPG.CLASSES = {
   'Cavalier':
     'HitDie=d10 Attack=1 SkillPoints=4 Fortitude=1/2 Reflex=1/3 Will=1/3 ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '1:Challenge,1:Mount,1:Order,1:Tactician,"3:Cavalier\'s Charge",' +
       '"4:Expert Trainer",5:Banner,"6:Cavalier Feat Bonus",' +
       '"9:Greater Tactician","11:Mighty Charge","12:Demanding Challenge",' +
@@ -7077,8 +7091,8 @@ PFAPG.CLASSES = {
   'Inquisitor':
     'HitDie=d8 Attack=3/4 SkillPoints=6 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple/Hand Crossbow/Longbow/Repeating Crossbow/Shortbow)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow)",' +
       '"1:Domain (Inquisitor)",1:Judgment,"1:Monster Lore",1:Orisons,' +
       '"1:Stern Gaze","2:Cunning Initiative","2:Detect Alignment",2:Track,' +
       '"3:Solo Tactics","3:Teamwork Feat (Inquisitor)",5:Bane,' +
@@ -7106,8 +7120,8 @@ PFAPG.CLASSES = {
   'Oracle':
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Armor Proficiency (Medium)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Simple)",' +
+      '"1:Armor Proficiency (Light; Medium; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons)",' +
       '1:Mystery,"1:Oracle\'s Curse",1:Orisons,1:Revelation,' +
       '"oracleFeatures.Battle Mystery ? 20:Final Revelation (Battle Mystery)",'+
       '"oracleFeatures.Bones Mystery ? 20:Final Revelation (Bones Mystery)",' +
@@ -7247,7 +7261,7 @@ PFAPG.CLASSES = {
     'HitDie=d8 Attack=3/4 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
-      '"1:Weapon Proficiency (Simple)",' +
+      '"1:Weapon Proficiency (Simple Weapons)",' +
       '1:Cantrips,1:Eidolon,"1:Life Link (Summoner)","1:Simple Somatics",' +
       '"1:Summon Monster","2:Bond Senses","4:Shield Ally (Summoner)",' +
       '"6:Maker\'s Call",8:Transposition,10:Aspect,' +
@@ -7321,7 +7335,7 @@ PFAPG.CLASSES = {
   'Witch':
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
-      '"1:Weapon Proficiency (Simple)",' +
+      '"1:Weapon Proficiency (Simple Weapons)",' +
       '1:Cantrips,1:Hex,1:Patron,"1:Witch\'s Familiar" ' +
     'Selectables=' +
       '"1:Agility Patron:Patron","1:Animals Patron:Patron",' +
@@ -8238,8 +8252,8 @@ PFAPG.NPC_CLASSES = {
       '"Knowledge (Religion)",Profession,Ride,"Sense Motive",Spellcraft,' +
       'Stealth ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Aura Of Evil","1:Detect Good","1:Smite Good","2:Unholy Resilience",' +
       '"2:Touch Of Corruption","3:Aura Of Cowardice","3:Plague Bringer",' +
       '3:Cruelty,"4:Channel Negative Energy","5:Fiendish Boon",' +
@@ -8308,8 +8322,8 @@ PFAPG.PRESTIGE_CLASSES = {
       'Climb,Heal,Intimidate,"Knowledge (Planes)","Knowledge (Religion)",' +
       'Ride,"Sense Motive",Spellcraft,Swim ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Channel Energy","1:Vindicator\'s Shield",2:Stigmata,' +
       '"2:Caster Level Bonus","3:Faith Healing","4:Divine Wrath",5:Bloodfire,' +
       '"5:Channel Smite","6:Versatile Channel","7:Divine Judgment",' +
@@ -8493,13 +8507,13 @@ PFAPG.PRESTIGE_CLASSES = {
     'Require=' +
       '"baseAttack >= 7",' +
       'features.Dodge,features.Endurance,features.Toughness,' +
-      '"features.Armor Proficiency (Medium) || features.Armor Proficiency (Heavy)" ' +
+      '"armorProficiency.Medium || armorProficiency.Heavy" ' +
     'HitDie=d12 Attack=1 SkillPoints=2 Fortitude=1/2 Reflex=1/3 Will=1/2 ' +
     'Skills=' +
       'Acrobatics,Climb,Intimidate,Perception,"Sense Motive" ' +
     'Features=' +
-      '"1:Armor Proficiency (Heavy)","1:Shield Proficiency",' +
-      '"1:Tower Shield Proficiency","1:Weapon Proficiency (Martial)",' +
+      '"1:Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield)",' +
+      '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Armor Class Bonus (Stalwart Defender)","1:Defensive Stance",' +
       '"2:Defensive Powers","3:Uncanny Dodge","5:Damage Reduction",' +
       '"7:Improved Uncanny Dodge","9:Mobile Defense","10:Last Word" ' +
@@ -8966,12 +8980,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('combatNotes.deaf',
       'mysteryLevel', '=', 'source<5 ? -4 : source<10 ? -2 : null'
     );
-    rules.defineRule('featureNotes.blindsense',
-      'featureNote.cloudedVision.1', '^=', 'source.includes("30") ? 30 : null'
-    );
-    rules.defineRule('featureNotes.blindsight',
-      'featureNote.cloudedVision.2', '^=', 'source.includes("15") ? 15 : null'
-    );
     rules.defineRule('featureNotes.cloudedVision.1',
       'features.Clouded Vision', '?', null,
       'mysteryLevel', '=', 'source>=10 ? ", 30\' Blindsense" : ""'
@@ -9011,6 +9019,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('selectableFeatureCount.Oracle (Mystery)',
       'featureNotes.mystery', '+=', '1'
     );
+    rules.defineRule('skillNotes.blindsense',
+      'featureNote.cloudedVision.1', '^=', 'source.includes("30") ? 30 : null'
+    );
+    rules.defineRule('skillNotes.blindsight',
+      'featureNote.cloudedVision.2', '^=', 'source.includes("15") ? 15 : null'
+    );
     let allSkills = rules.getChoices('skills');
     for(let s in allSkills) {
       if(s != 'Intimidate' && allSkills[s].match(/charisma/i))
@@ -9048,12 +9062,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'features.Weapon Mastery (Oracle)', '?', null,
       'mysteryLevel', '=', 'source>=12 ? ", Improved Critical, and Greater Weapon Focus" : source>=8 ? " and Improved Critical" : ""'
     );
-    rules.defineRule('features.Armor Proficiency (Heavy)',
+    rules.defineRule('armorProficiency.Heavy',
       'combatNotes.skillAtArms', '=', '1'
     );
     rules.defineRule
       ('features.Diehard', 'featureNotes.resiliency(Oracle)', '=', '1');
-    rules.defineRule('features.Weapon Proficiency (Martial)',
+    rules.defineRule('features.Weapon Proficiency (Martial Weapons)',
       'combatNotes.skillAtArms', '=', '1'
     );
     Pathfinder.featureSpells(rules,
@@ -9156,8 +9170,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('channelLevel', 'featureNotes.channel.1', '+=', null);
     rules.defineRule
       ('features.Channel Energy', 'featureNotes.channel', '=', '1');
-    rules.defineRule
-      ('featureNotes.blindsight', 'featureNotes.lifesense', '^=', '30');
     rules.defineRule('featureNotes.channel.1',
       'features.Channel', '?', null,
       'mysteryLevel', '=', null
@@ -9192,6 +9204,8 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('saveNotes.dexterityReflexAdjustment',
       'combatNotes.sidestepSecret.1', '+', null
     );
+    rules.defineRule
+      ('skillNotes.blindsight', 'featureNotes.lifesense', '^=', '30');
     rules.defineRule('skillNotes.loreKeeper(Oracle).1',
       'skillNotes.loreKeeper(Oracle)', '?', null,
       'charismaModifier', '=', null,
@@ -9683,7 +9697,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'Damage Reduction':[
         'Invulnerability', 'Keen Senses (Barbarian)', 'Natural Toughness'
       ],
-      'Fast Movement':[
+      'Fast Movement (Barbarian)':[
         'Destructive', 'Fast Rider', 'Raging Drunk', 'Skilled Thrower'
       ],
       'Improved Uncanny Dodge':[
@@ -9759,14 +9773,8 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('combatNotes.sixthSense', classLevel, '=', 'Math.floor(source / 3)');
     rules.defineRule
       ('combatNotes.sixthSense-1', classLevel, '=', 'Math.floor(source / 3)');
-    rules.defineRule('featureNotes.blindsense',
+    rules.defineRule('skillNotes.blindsense',
       'featureNotes.keenSenses(Barbarian).3', '=', 'source.includes("30") ? 30 : null'
-    );
-    rules.defineRule('featureNotes.blindsense',
-      'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
-    );
-    rules.defineRule('featureNotes.blindsight',
-      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("30") ? 30 : null'
     );
     rules.defineRule('featureNotes.keenSenses(Barbarian).1',
       'features.Keen Senses (Barbarian)', '?', null,
@@ -9798,6 +9806,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule('features.Scent',
       'featureNotes.keenSenses(Barbarian).2', '=', 'source.includes("Scent") ? 1 : null'
+    );
+    rules.defineRule('skillNotes.blindsense',
+      'superstitiousLevel', '^=', 'source>=13 ? 30 : null'
+    );
+    rules.defineRule('skillNotes.blindsight',
+      'featureNotes.keenSenses(Barbarian).4', '=', 'source.includes("30") ? 30 : null'
     );
 
     // Totem Warrior
@@ -11005,6 +11019,9 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
 
   } else if(name == 'Antipaladin') {
 
+    rules.defineRule('casterLevels.Cruelty', classLevel, '=', null);
+    rules.defineRule('casterLevels.DetectGood', classLevel, '=', null);
+    rules.defineRule('casterLevels.UnholyChampion', classLevel, '=', null);
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'source>=4 ? source : null');
     rules.defineRule('combatNotes.fiendishWeapon',
@@ -11076,22 +11093,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         'antipaladinFeatures.' + cruelty, '=', 'Pathfinder.crueltiesTaken.push("' + cruelty.replace(/Cruelty..|.$/g, '').toLowerCase() + (details[cruelty] || '') + '") ? Pathfinder.crueltiesTaken.join(", ") : ""'
       );
     }
-    Pathfinder.featureSpells(rules,
-      'Cruelty', 'Cruelty', 'charisma', classLevel,
-      '10+' + classLevel + '//2+charismaModifier',
-      ['Bestow Curse', 'Contagion', 'Poison']
-    );
-    Pathfinder.featureSpells(rules,
-      'Detect Good', 'DetectGood', 'charisma', classLevel, null, ['Detect Good']
-    );
-    Pathfinder.featureSpells(rules,
-      'Fiendish Servant', 'FiendishServant', 'charisma', classLevel, null,
-      ['Summon Monster IX']
-    );
-    Pathfinder.featureSpells(rules,
-      'Unholy Champion', 'UnholyChampion', 'charisma', classLevel, '',
-      ['Banishment']
-    );
 
   } else if(name == 'Ranger') {
 
@@ -11454,15 +11455,15 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('featureNotes.aquaticAdaptation(Sorcerer)',
       classLevel, '?', 'source>=9'
     );
-    rules.defineRule
-      ('featureNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
-    rules.defineRule
-      ('featureNotes.blindsight', 'featureNotes.deepOne', '^=', '120');
     rules.defineRule('features.Blindsense', 'featureNotes.deepOne', '=', '1');
     rules.defineRule('features.Blindsight', 'featureNotes.deepOne', '=', '1');
     rules.defineRule('features.Evasion', 'featureNotes.deepOne', '=', '1');
     rules.defineRule
       ('saveNotes.aquaticAdaptation(Sorcerer)', classLevel, '?', 'source>=9');
+    rules.defineRule
+      ('skillNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
+    rules.defineRule
+      ('skillNotes.blindsight', 'featureNotes.deepOne', '^=', '120');
     Pathfinder.featureSpells(rules,
       'Aquatic Telepathy', 'AquaticTelepathy', 'charisma', classLevel, '',
       ['Suggestion', '15:Demand', '15:Greater Planar Ally']
@@ -12456,7 +12457,7 @@ PFAPG.raceRulesExtra = function(rules, name) {
        "Sum 'skills.Craft' > 0 || Sum 'skills.Profession' > 0 || skills.Sense Motive > 0");
   } else if(name.match(/Human/)) {
     alternateRacialTraits = [
-      ['Bonus Feat', 'Eye For Talent'],
+      ['Bonus Feat (Human)', 'Eye For Talent'],
       ['Skilled', 'Heart Of The Fields', 'Heart Of The Streets',
        'Heart Of The Wilderness']
     ];
