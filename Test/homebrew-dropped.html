@@ -27,7 +27,7 @@ var attributes = {
 <body>
 <table id="_top" style="border:1px solid black; width:100%">
 <tr style="text-align:center">
-  <td style="border:1px solid black"><b>Homebrew Dropped</b> — <b>Male</b> <b>Lizardfolk</b> <b>Cleric/Druid/Humanoid/Wizard</b></td>
+  <td style="border:1px solid black"><b>Homebrew Dropped</b> — <b>Male</b> <b>Lizardfolk</b> <b>Cleric: 1/Druid: 1/Humanoid: 1/Shaman: 2/Wizard: 1</b></td>
 </tr><tr style="text-align:center">
   <td style="border:1px solid black">  <table id="Attributes" style="width:100%">
   <tr style="text-align:center">
@@ -170,7 +170,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Class Modifiers: Armor %1; Deflection %2; Dexterity %3; Dodge %4; Natural Armor %5; Shield %6; Size %7</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -178,9 +178,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Boomerang: -4 attack</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Unproficient Weapon Penalty.Flail: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
+      </tr><tr style="text-align:center">
+        <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 12 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Force Missile: Missile automatically hits, inflicting 1d4+1 HP force, 4 times per day</td>
       </tr></table>
@@ -222,8 +226,6 @@ var attributes = {
       <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
       <td>Bonded Object: Can cast a known spell through a chosen object</td>
-    </tr><tr style="text-align:center">
-      <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 12 half) to all creatures within 30' 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Intense Spells: Evocation spells inflict +1 HP</td>
     </tr><tr style="text-align:center">
@@ -298,6 +300,8 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Validation Errors</b>:       <table id="ValidationNotes" style="width:100%">
       <tr style="text-align:center">
+        <td>Cleric-Forge Domain Selectable Feature: Requires deity domains matches 'Forge' and cleric level (currently 1)</td>
+      </tr><tr style="text-align:center">
         <td>Cleric-Knowledge Domain Selectable Feature: Requires deity domains matches 'Knowledge' and cleric level (currently 1)</td>
       </tr><tr style="text-align:center">
         <td>Druid Class: Requires alignment (currently Neutral) matches 'Neutral', armor (currently Mithral Breastplate) matches 'None|Hide|Leather|Padded' and shield (currently Light Mithril) matches 'None|Wooden'</td>
@@ -305,6 +309,8 @@ var attributes = {
         <td>Feat Allocation: 2 available vs. 3 allocated</td>
       </tr><tr style="text-align:center">
         <td>Language Allocation: 0 available vs. 2 allocated</td>
+      </tr><tr style="text-align:center">
+        <td>Level Allocation: 4 available vs. 6 allocated</td>
       </tr><tr style="text-align:center">
         <td>Skill Allocation: 12 available vs. 10 allocated</td>
       </tr></table>
