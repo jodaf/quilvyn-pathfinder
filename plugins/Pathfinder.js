@@ -1873,7 +1873,10 @@ Pathfinder.FEATURES = {
       '"Has DR 10/cold iron",' +
       '"Animals attack self only if magically compelled",' +
       '"Can use <i>Shadow Walk</i> effects once per day",' +
-      '"Has immunity to poison"',
+      '"Has immunity to poison" ' +
+    'Spells="20:Shadow Walk" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Fey',
   // Woodland Stride as above
   // Infernal
   'Bloodline Infernal':
@@ -7094,17 +7097,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     // Bloodline Fey
     rules.defineRule
       ('damageReduction.Cold Iron', 'combatNotes.soulOfTheFey', '^=', '10');
-    Pathfinder.featureSpells(rules,
-      'Fleeting Glance', 'FleetingGlance', 'charisma',
-      'bloodlineLevels.Fey', '',
-      ['9:Greater Invisibility']
-    );
     rules.defineRule
       ('casterLevels.FleetingGlance', 'bloodlineLevels.Fey', '=', null);
-    Pathfinder.featureSpells(rules,
-      'Soul Of The Fey', 'SoulOfTheFey', 'charisma', 'bloodlineLevels.Fey', '',
-      ['20:Shadow Walk']
-    );
     rules.defineRule
       ('casterLevels.SoulOfTheFey', 'bloodlineLevels.Fey', '=', null);
 
