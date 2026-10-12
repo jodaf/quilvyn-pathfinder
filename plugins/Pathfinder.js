@@ -841,7 +841,8 @@ Pathfinder.FEATURES = {
       '"+1 Spell DC (Illusion)",' +
       '"Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day" ' +
     'Spells="Dancing Lights","Ghost Sound","Prestidigitation","Speak With Animals" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Illusion Resistance':SRD35.FEATURES['Resist Illusion'],
   // Keen Senses as above
   // Low-Light Vision as above
@@ -1043,7 +1044,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="R30\' Can use a 4 rd Bardic Performance to invoke <i>Mass Cure Serious Wounds</i> effects; also removes fatigued, sickened, and shaken" ' +
     'Spells="Mass Cure Serious Wounds" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bardicPerformanceLevel',
   'Suggestion':SRD35.FEATURES.Suggestion,
   'Versatile Performance':'Section=feature Note="%V selections"',
   'Versatile Skill (Act)':
@@ -1098,7 +1100,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Speak With Animals</i> effects for %{casterLevels.Animal+3} rd per day" ' +
     'Spells="Speak With Animals" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Animal',
   // Artifice Domain
   "Artificer's Touch":
     'Section=combat,magic ' +
@@ -1106,7 +1109,8 @@ Pathfinder.FEATURES = {
       '"Touch attack on objects and constructs inflicts 1d6+%{casterLevels.Artifice//2} HP, bypassing %{casterLevels.Artifice} DR and hardness, %{wisdomModifier+3} times per day",' +
       '"Can use <i>Mending</i> effects at will" ' +
     'Spells="Mending" ' +
-    'SpellAbility=Wisdom',
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Artifice',
   'Dancing Weapons':
     'Section=combat ' +
     'Note="Touched weapon gains the <i>dancing</i> quality for 4 rd %{casterLevels.Artifice>11?(casterLevels.Artifice-4)//4+\' times\':\'once\'} per day"',
@@ -1122,7 +1126,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use a swift action to invoke <i>Charm Person</i> effects (save Will DC %{10+casterLevels.Charm//2+wisdomModifier}) for %{casterLevels.Charm} rd per day" ' +
     'Spells="Charm Person" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Charm',
   'Dazing Touch (Charm)':
     'Section=combat ' +
     'Note="Touch dazes a foe with up to %{casterLevels.Charm} HD for 1 rd %{wisdomModifier+3} times per day"',
@@ -1180,7 +1185,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="30\' emanation gives allies DC %{10+casterLevels.Glory//2+wisdomModifier} <i>Sanctuary</i> effects for %{casterLevels.Glory} rd per day; self attacking ends" ' +
     'Spells="Sanctuary" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Glory',
   'Glory Domain':
     'Section=magic Note="+2 save DC on channeled energy to harm undead"',
   'Touch Of Glory':
@@ -1209,7 +1215,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Clairaudience/Clairvoyance</i> effects for %{casterLevels.Knowledge} rd per day" ' +
     'Spells="Clairaudience/Clairvoyance" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Knowledge',
   // Law Domain
   'Staff Of Order':
     'Section=combat ' +
@@ -1237,7 +1244,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="30\' emanation inflicts <i>Confusion</i> effects (save Will DC %{10+casterLevels.Madness//2+wisdomModifier} negates for 24 hr) for %{casterLevels.Madness} rd per day" ' +
     'Spells="Confusion" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Madness',
   'Vision Of Madness':
     'Section=magic ' +
     'Note="Gives touched +%{casterLevels.Madness//2>?1} on a choice of attacks, saves, or skill checks and -%{casterLevels.Madness//2>?1} on the others for 3 rd %{wisdomModifier+3} times per day"',
@@ -1246,7 +1254,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Touch invokes <i>Dispel Magic</i> effects %{casterLevels.Magic>11?(casterLevels.Magic-4)//4+\' times\':\'once\'} per day" ' +
     'Spells="Dispel Magic" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Magic',
   'Hand Of The Acolyte':
     'Section=combat ' +
     'Note="R30\' Can make a +%{rangedAttack-dexterityModifier+wisdomModifier} ranged attack with a melee weapon %{wisdomModifier+3} times per day"',
@@ -1300,7 +1309,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="30\' emanation invokes <i>Daylight</i> effects, inflicts %{casterLevels.Sun} HP on undead, and dispels spells with the Darkness descriptor for %{casterLevels.Sun} rd per day" ' +
     'Spells="Daylight" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Sun',
   "Sun's Blessing":
     'Section=magic ' +
     'Note="Channel Energy inflicts +%{casterLevels.Sun} HP on undead and negates channel resistance"',
@@ -1317,12 +1327,14 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Mirror Image</i> effects to create a single copy for %{casterLevels.Trickery} rd %{wisdomModifier+3} times per day" ' +
     'Spells="Mirror Image" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Trickery',
   "Master's Illusion":
     'Section=magic ' +
     'Note="30\' emanation invokes <i>Veil</i> effects (save Will DC %{10+casterLevels.Trickery//2+wisdomModifier} disbelieve) for %{casterLevels.Trickery} rd per day" ' +
     'Spells="Veil" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Trickery',
   'Trickery Domain':
     'Section=skill Note="Bluff is a class skill/Disguise is a class skill/Stealth is a class skill"',
   // War Domain
@@ -1344,7 +1356,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Call Lightning</i> effects on targets within 15\' for %{casterLevels.Weather} bolts per day" ' +
     'Spells="Call Lightning" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Weather',
   'Storm Burst':
     'Section=combat ' +
     'Note="R30\' Ranged touch attack inflicts 1d6+%{casterLevels.Weather//2} HP nonlethal and -2 attacks for 1 rd %{wisdomModifier+3} times per day"',
@@ -1486,7 +1499,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Channel Positive Energy and Lay On Hands heal or inflict the maximum possible hit points/Using Smite Evil vs. an outsider immediately ends the use and inflicts <i>Banishment</i> effects" ' +
     'Spells="Banishment" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Paladin',
   'Lay On Hands':
     'Section=magic ' +
     'Note="Touch restores %Vd6 hit points %{%1>1?%1+\' times\':\'once\'} per day; use on undead instead inflicts HP"',
@@ -1497,17 +1511,20 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Lay On Hands acts as a <i>Remove Curse</i> spell" ' +
     'Spells="Remove Curse" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Paladin',
   'Mercy (Diseased)':
     'Section=magic ' +
     'Note="Lay On Hands acts as a <i>Remove Disease</i> spell" ' +
     'Spells="Remove Disease" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Paladin',
   'Mercy (Poisoned)':
     'Section=magic ' +
     'Note="Lay On Hands acts as a <i>Neutralize Poison</i> spell" ' +
     'Spells="Neutralize Poison" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Paladin',
   'Smite Evil':
     'Section=combat ' +
     'Note="Can gain +%{charismaModifier>?0} attack, inflict +%{levels.Paladin} HP, bypass DR, and gain a +%{charismaModifier>?0} deflection bonus to Armor Class vs. a chosen evil foe %{%V>1?%V+\' times\':\'once\'} per day; does an additional +%{levels.Paladin} HP on first the hit if the target is %1"',
@@ -1569,7 +1586,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Sneak Attack acts as <i>Dispel Magic</i> vs. the lowest-level spell affecting the target" ' +
     'Spells="Dispel Magic" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Rogue',
   // Evasion as above
   'Fast Stealth':
     'Section=skill Note="Can use Stealth at full Speed without penalty"',
@@ -1641,7 +1659,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill '+
     'Note=' +
       '"Increases the duration of Polymorph spells by 50%",' +
-      '"Knowledge (Dungeoneering) is a class skill"',
+      '"Knowledge (Dungeoneering) is a class skill" ' +
+    'Spells=' +
+      '"3:Enlarge Person","5:See Invisibility","7:Tongues",' +
+      '"9:Black Tentacles","11:Feeblemind","13:Veil",' +
+      '"15:Plane Shift","17:Mind Blank","19:Shapechange" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Aberrant',
   'Long Limbs':
     'Section=combat ' +
     'Note="Has a +%{levels.Sorcerer<11?5:levels.Sorcerer<17?10:15}\' melee touch attack range"',
@@ -1656,7 +1680,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Summoned creatures gain DR %{levels.Sorcerer//2>?1}/good",' +
-      '"Knowledge (Planes) is a class skill"',
+      '"Knowledge (Planes) is a class skill" ' +
+    'Spells=' +
+      '"3:Cause Fear","5:Bull\'s Strength","7:Rage",' +
+      '"9:Stoneskin","11:Dismissal","13:Transformation",' +
+      '"15:Greater Teleport","17:Unholy Aura","19:Summon Monster IX" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Abyssal',
   'Claws':
     'Section=combat ' +
     'Note="Can make 2 +%{meleeAttack}%{levels.Sorcerer<5?\'\':\' magical\'} attacks that inflict %V+%{strengthModifier} HP%{levels.Sorcerer>10?\' +1d6 HP \'+(bloodlineEnergy||\'fire\'):\'\'} each for %{charismaModifier+3} rd per day"',
@@ -1680,7 +1710,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"+1 metamagicked spell DC",' +
-      '"Choice of Knowledge is a class skill"',
+      '"Choice of Knowledge is a class skill" ' +
+    'Spells=' +
+      '"3:Identify","5:Invisibility","7:Dispel Magic",' +
+      '"9:Dimension Door","11:Overland Flight","13:True Seeing",' +
+      '"15:Greater Teleport","17:Power Word Stun","19:Wish" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Arcane',
   'Bonded Object':
     'Section=magic Note="Can cast a known spell through a chosen object"',
   'Familiar':
@@ -1702,7 +1738,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Summoned creatures gain DR %{levels.Sorcerer//2>?1}/evil",' +
-      '"Heal is a class skill"',
+      '"Heal is a class skill" ' +
+    'Spells=' +
+      '"3:Bless","5:Resist Energy","7:Magic Circle Against Evil",' +
+      '"9:Remove Curse","11:Flame Strike","13:Greater Dispel Magic",' +
+      '"15:Banishment","17:Sunburst","19:Gate" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Celestial',
   'Celestial Resistances':
     'Section=save Note="Has resistance %V to acid and cold"',
   'Conviction':
@@ -1720,7 +1762,13 @@ Pathfinder.FEATURES = {
     'Section=save,skill ' +
     'Note=' +
       '"Casting a personal spell gives +spell level on saves for 1 rd",' +
-      '"Knowledge (History) is a class skill"',
+      '"Knowledge (History) is a class skill" ' +
+    'Spells=' +
+      '"3:Alarm","5:Blur","7:Protection From Energy",' +
+      '"9:Freedom Of Movement","11:Break Enchantment","13:Mislead",' +
+      '"15:Spell Turning","17:Moment Of Prescience","19:Foresight" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Destined',
   'Destiny Realized':
     'Section=combat,magic ' +
     'Note=' +
@@ -1746,7 +1794,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Spells with the %{bloodlineEnergy} descriptor inflict +1 HP per die",' +
-      '"Perception is a class skill"',
+      '"Perception is a class skill" ' +
+    'Spells=' +
+      '"3:Mage Armor","5:Resist Energy","7:Fly",' +
+      '"9:Fear","11:Spell Resistance","13:Form Of The Dragon I",' +
+      '"15:Form Of The Dragon II","17:Form Of The Dragon III","19:Wish" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Draconic',
   'Breath Weapon':
     'Section=combat ' +
     'Note="%{bloodlineShape} inflicts %{levels.Sorcerer}d6 HP %{bloodlineEnergy} (save Reflex DC %{10+levels.Sorcerer//2+charismaModifier} half) %{%V>1?%V+\' times\':\'once\'} per day"',
@@ -1766,7 +1820,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Can change a spell\'s energy type to %{bloodlineEnergy}",' +
-      '"Knowledge (Planes) is a class skill"',
+      '"Knowledge (Planes) is a class skill" ' +
+    'Spells=' +
+      '"3:Burning Hands","5:Scorching Ray","7:Protection From Energy",' +
+      '"9:Elemental Body I","11:Elemental Body II","13:Elemental Body III",' +
+      '"15:Elemental Body IV","17:Summon Monster VIII","19:Elemental Swarm" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Elemental',
   'Elemental Blast':
     'Section=combat ' +
     'Note="R60\' 20\' radius inflicts %{levels.Sorcerer}d6 HP %{bloodlineEnergy} and vulnerability to %{bloodlineEnergy} until the end of the next turn (save Reflex DC %{10+levels.Sorcerer//20+charismaModifier} half HP only) %{levels.Sorcerer<17?\'once\':levels.Sorcerer<20?\'2 times\':\'3 times\'} per day"',
@@ -1789,12 +1849,19 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"+2 compulsion spell DC",' +
-      '"Knowledge (Nature) is a class skill"',
+      '"Knowledge (Nature) is a class skill" ' +
+    'Spells=' +
+      '"3:Entangle","5:Hideous Laughter","7:Deep Slumber",' +
+      '"9:Poison","11:Tree Stride","13:Mislead",' +
+      '"15:Phase Door","17:Irresistible Dance","19:Shapechange" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Fey',
   'Fleeting Glance':
     'Section=magic ' +
     'Note="Can use <i>Greater Invisibility</i> effects on self for %{levels.Sorcerer} rd per day" ' +
     'Spells="Greater Invisibility" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'spellLevel=bloodlineLevels.Fey',
   'Fey Magic':
     'Section=magic Note="Can reroll checks to overcome spell resistance"',
   'Laughing Touch':
@@ -1813,7 +1880,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"+2 charm spell DC",' +
-      '"Diplomacy is a class skill"',
+      '"Diplomacy is a class skill" ' +
+    'Spells=' +
+      '"3:Protection From Good","5:Scorching Ray","7:Suggestion",' +
+      '"9:Charm Monster","11:Dominate Person","13:Planar Binding",' +
+      '"15:Greater Teleport","17:Power Word Stun","19:Meteor Swarm" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Infernal',
   'Corrupting Touch':
     'Section=combat ' +
     'Note="Touch inflicts shaken for %{levels.Sorcerer//2>?1} rd %{charismaModifier+3} times per day"',
@@ -1836,7 +1909,13 @@ Pathfinder.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Mind-affecting spells affect corporeal undead that were once humanoids",' +
-      '"Knowledge (Religion) is a class skill"',
+      '"Knowledge (Religion) is a class skill" ' +
+    'Spells=' +
+      '"3:Chill Touch","5:False Life","7:Vampiric Touch",' +
+      '"9:Animate Dead","11:Waves Of Fatigue","13:Undeath To Death",' +
+      '"15:Finger Of Death","17:Horrid Wilting","19:Energy Drain" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Undead',
   "Death's Gift":
     'Section=save,save ' +
     'Note=' +
@@ -1903,7 +1982,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Has continuous <i>Detect Scrying</i> effects/Gains +1 familiarity step when scrying" ' +
     'Spells="Detect Scrying" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Wizard',
   // Enchantment
   'Aura Of Despair':
     'Section=combat ' +
@@ -1921,7 +2001,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Wall Of Fire</i> effects to inflict acid, cold, electricity, or fire damage for %{levels.Wizard} rd per day" ' +
     'Spells="Wall Of Fire" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Wizard',
   'Force Missile':
     'Section=combat ' +
     'Note="Missile automatically hits, inflicting 1d4+%{levels.Wizard//2>?1} HP force, %{intelligenceModifier+3} times per day"',
@@ -1939,7 +2020,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use swift actions to invoke <i>Greater Invisibility</i> effects on self for %{levels.Wizard} rd per day" ' +
     'Spells="Greater Invisibility" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Wizard',
   // Necromancy
   'Grave Touch (Necromancy)':
     'Section=combat ' +
@@ -1959,7 +2041,8 @@ Pathfinder.FEATURES = {
     'Spells=' +
       '"Beast Shape II","Elemental Body I",' +
       '"12:Beast Shape III","12:Elemental Body II" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Wizard',
   'Physical Enhancement':
     'Section=ability ' +
     'Note="Gains +%{levels.Wizard//5+1} to %{levels.Wizard>19?\'2 choices\':\'a choice\'} of Strength, Dexterity, and Constitution each day"',
@@ -2036,7 +2119,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Greater Invisibility</i> effects on self for %{$\'levels.Arcane Trickster\'} rd per day" ' +
     'Spells="Greater Invisibility" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevelArcane',
   'Ranged Legerdemain':
     'Section=skill ' +
     'Note="Can use Disable Device and Sleight Of Hand at a range of 30\', increasing the DC by 5"',
@@ -2087,7 +2171,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Form Of The Dragon I%{$\'levels.Dragon Disciple\'<10?\'\':\'I\'}</i> effects %{$\'levels.Dragon Disciple\'<10?\'once\':\'2 times\'} per day" ' +
     'Spells="Form Of The Dragon I","10:Form Of The Dragon II" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Draconic',
   'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
   // Wings as above
 
@@ -2212,7 +2297,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Doom</i> and <i>Enthrall</i> effects via Bardic Performance to change listeners\' perception of a target" ' +
     'Spells="Doom","Enthrall" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Pathfinder Chronicler"',
 
   // Shadowdancer
   // Darkvision as above
@@ -2226,7 +2312,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>%{levels.Shadowdancer<10?\'\':\'Greater \'}Shadow Conjuration</i> effects %{levels.Shadowdancer>5?(levels.Shadowdancer-2)//2+\' times\':\'once\'} per day" ' +
     'Spells="Shadow Conjuration","Greater Shadow Conjuration" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Shadow Illusion':
     SRD35.FEATURES['Shadow Illusion']
     .replace(' once ', " %{levels.Shadowdancer>3?levels.Shadowdancer//2+' times ':' once '}"),
@@ -2240,7 +2327,8 @@ Pathfinder.FEATURES = {
     'Section=magic ' +
     'Note="Can use <i>Shadow Evocation</i> effects %{levels.Shadowdancer<10?\'once\':\'2 times\'} per day" ' +
     'Spells="Shadow Evocation" ' +
-    'SpellAbility=Charisma',
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   // Slippery Mind as above
   'Summon Shadow':
     'Section=magic ' +
@@ -6066,7 +6154,8 @@ Pathfinder.choiceRules = function(rules, type, name, attrs) {
       QuilvynUtils.getAttrValueArray(attrs, 'Section'),
       QuilvynUtils.getAttrValueArray(attrs, 'Note'),
       QuilvynUtils.getAttrValueArray(attrs, 'Spells'),
-      QuilvynUtils.getAttrValue(attrs, 'SpellAbility')
+      QuilvynUtils.getAttrValue(attrs, 'SpellAbility'),
+      QuilvynUtils.getAttrValue(attrs, 'SpellLevel')
     );
   else if(type == 'Goody')
     Pathfinder.goodyRules(rules, name,
@@ -6639,10 +6728,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
         'paladinFeatures.' + mercy, '=', 'Pathfinder.merciesTaken.push("' + mercy.replace(/Mercy..|.$/g, '').toLowerCase() + '") ? Pathfinder.merciesTaken.length==2 ? Pathfinder.merciesTaken[0] + " and " + Pathfinder.merciesTaken[1] : Pathfinder.merciesTaken.join(", ").replace(/(.*),/, "$1, and") : ""'
       );
     }
-    Pathfinder.featureSpells(rules,
-      'Detect Evil', 'DetectEvil', 'charisma', classLevel,
-      null, ['Detect Evil']
-    );
     rules.defineRule('casterLevels.DetectEvil', classLevel, '=', null);
 
   } else if(name == 'Ranger') {
@@ -6729,10 +6814,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     rules.defineRule('uncannyDodgeSources',
       classLevel, '+=', 'source >= 4 ? 1 : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Dispelling Attack', 'DispellingAttack', 'intelligence', classLevel, null,
-      ['Dispel Magic']
     );
     rules.defineRule('casterLevels.DispellingAttack', classLevel, '=', null);
     rules.defineRule('spellDifficultyClass.Rogue',
@@ -6840,76 +6921,26 @@ Pathfinder.classRulesExtra = function(rules, name) {
     }
 
     rules.defineRule('casterLevels.Bloodline', classLevel, '=', null);
-    Pathfinder.featureSpells(rules,
-      'Bloodline Aberrant', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Enlarge Person', '5:See Invisibility', '7:Tongues',
-       '9:Black Tentacles', '11:Feeblemind', '13:Veil',
-       '15:Plane Shift', '17:Mind Blank', '19:Shapechange']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Abyssal', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Cause Fear', "5:Bull\'s Strength", '7:Rage',
-       '9:Stoneskin', '11:Dismissal', '13:Transformation',
-       '15:Greater Teleport', '17:Unholy Aura', '19:Summon Monster IX']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Arcane', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Identify', '5:Invisibility', '7:Dispel Magic',
-       '9:Dimension Door', '11:Overland Flight', '13:True Seeing',
-       '15:Greater Teleport', '17:Power Word Stun', '19:Wish']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Celestial', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Bless', '5:Resist Energy', '7:Magic Circle Against Evil',
-       '9:Remove Curse', '11:Flame Strike', '13:Greater Dispel Magic',
-       '15:Banishment', '17:Sunburst', '19:Gate']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Destined', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Alarm', '5:Blur', '7:Protection From Energy',
-       '9:Freedom Of Movement', '11:Break Enchantment', '13:Mislead',
-       '15:Spell Turning', '17:Moment Of Prescience', '19:Foresight']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Draconic', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Mage Armor', '5:Resist Energy', '7:Fly',
-       '9:Fear', '11:Spell Resistance', '13:Form Of The Dragon I',
-       '15:Form Of The Dragon II', '17:Form Of The Dragon III', '19:Wish']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Elemental', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Burning Hands', '5:Scorching Ray', '7:Protection From Energy',
-       '9:Elemental Body I', '11:Elemental Body II', '13:Elemental Body III',
-       '15:Elemental Body IV', '17:Summon Monster VIII', '19:Elemental Swarm']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Fey', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Entangle', '5:Hideous Laughter', '7:Deep Slumber',
-       '9:Poison', '11:Tree Stride', '13:Mislead',
-       '15:Phase Door', '17:Irresistible Dance', '19:Shapechange']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Infernal', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Protection From Good', '5:Scorching Ray', '7:Suggestion',
-       '9:Charm Monster', '11:Dominate Person', '13:Planar Binding',
-       '15:Greater Teleport', '17:Power Word Stun', '19:Meteor Swarm']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Undead', 'Bloodline', 'charisma',
-      'casterLevels.Bloodline', '',
-      ['3:Chill Touch', '5:False Life', '7:Vampiric Touch',
-       '9:Animate Dead', '11:Waves Of Fatigue', '13:Undeath To Death',
-       '15:Finger Of Death', '17:Horrid Wilting', '19:Energy Drain']
-    );
+    rules.defineRule
+      ('casterLevels.BloodlineAberrant', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineAbyssal', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineArcane', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineCelestial', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineDestined', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineDraconic', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineElemental', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineFey', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineInfernal', 'casterLevels.Bloodline', '=', null);
+    rules.defineRule
+      ('casterLevels.BloodlineUndead', 'casterLevels.Bloodline', '=', null);
 
     // Bloodline Aberrant
     rules.defineRule
@@ -7641,9 +7672,10 @@ Pathfinder.featRulesExtra = function(rules, name) {
  * calculate attack and difficulty class for these spells.
  */
 Pathfinder.featureRules = function(
-  rules, name, sections, notes, spells, spellAbility
+  rules, name, sections, notes, spells, spellAbility, spellLevel
 ) {
-  SRD35.featureRules(rules, name, sections, notes, spells, spellAbility);
+  SRD35.featureRules
+    (rules, name, sections, notes, spells, spellAbility, spellLevel);
   if(name.match(/^(Greater )?Shield Focus$/)) {
     let note =
       'combatNotes.' + name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
@@ -7901,7 +7933,7 @@ Pathfinder.spellRules = function(
      liquids);
   // SRD35 specifies the caster level of Paladins and Rangers to be half their
   // class level; Pathfinder specifies class level - 3. This difference doesn't
-  // affect the spell itself, since casterLevel.{Paladin,Ranger} is calculated
+  // affect the spell itself, since casterLevels.{Paladin,Ranger} is calculated
   // differently in the two plugins, but we have to adjust the notes for
   // potions and scrolls that calculate the minimum caster level required to
   // cast the corresponding spell.
