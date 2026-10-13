@@ -2113,7 +2113,11 @@ PFAPG.FEATURES = {
     'Note="R30\' May use Bardic Performance to give weapon of one ally choice of +%{(levels.Bard-3)//3} attack and damage or one of defending, distance, ghost touch, keen, mighty cleaving, returning, shock, shocking burst, seeking, speed, or wounding properties"',
   'Call The Storm':
     'Section=magic ' +
-    'Note="May use Bardic Performance to use <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> effects"',
+    'Note="May use Bardic Performance to use <i>Control Water</i>, <i>Control Weather</i>, <i>Control Winds</i>, or <i>Storm Of Vengeance</i> effects" ' +
+    'Spells=' +
+      '"Control Water","Control Weather","Control Winds","Storm Of Vengeance" '+
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Bard',
   'Careful Teamwork':
     'Section=magic ' +
     'Note="R30\' May use 3 rd Bardic Performance to give allies +%{(levels.Bard+7)//6} Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr"',
@@ -2156,7 +2160,10 @@ PFAPG.FEATURES = {
       '"May reroll Diplomacy, Knowledge (History), Knowledge (Local), or Knowledge (Nobility) %{1+levels.Bard//5}/dy"',
   'Incite Rage':
     'Section=magic ' +
-    'Note="R30\' May use Bardic Performance to affect target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
+    'Note="R30\' May use Bardic Performance to affect target as <i>Rage</i> spell (DC %{10+levels.Bard//2+charismaModifier} Will negates)" ' +
+    'Spells="Rage" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=casterLevels.Bard',
   'Inspiring Blow':
     'Section=combat ' +
     'Note="May use Bardic Performance following crit to give%{charismaModifier>0 ? \' self \' + charismaModifier + \' temporary HP and\' : \'\'} R30\' allies +1 next attack for 1 rd"',
@@ -2259,7 +2266,10 @@ PFAPG.FEATURES = {
     'Note="Uses Charisma bonus to calculate save DC%{levels.Bard>=16 ? \' and caster level to calculate effects\' : \'\'} of spells cast from wands"',
   'Whistle The Wind':
    'Section=magic ' +
-   'Note="May use Bardic Performance to use <i>Gust Of Wind</i> effects; 5 rd performance extends effect to 1 min"',
+   'Note="May use Bardic Performance to use <i>Gust Of Wind</i> effects; 5 rd performance extends effect to 1 min" ' +
+   'Spells="Gust Of Wind" ' +
+   'SpellAbility=Charisma ' +
+   'SpellLevel=levels.Bard',
   'Wide Audience':
     'Section=magic ' +
     'Note="Bardic Performance affects %{60+(levels.Bard-5)//5*20}\' cone, %{30+(levels.Bard-5)//5*10}\' radius, or +%{(levels.Bard-5)//5} targets"',
@@ -2275,7 +2285,10 @@ PFAPG.FEATURES = {
     'Note="May force foe to forego self attack (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{wisdomModifier+3}/dy"',
   'Animate Servant':
     'Section=magic ' +
-    'Note="May use <i>Animate Object</i> effects %{(levels.Cleric-4)//4}/dy"',
+    'Note="May use <i>Animate Object</i> effects %{(levels.Cleric-4)//4}/dy" ' +
+    'Spells="Animate Objects" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Construct',
   'Anything To Please':
     'Section=magic ' +
     'Note="R30\' Target attempts to please self (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{(levels.Cleric-4)//4}/dy"',
@@ -2317,13 +2330,19 @@ PFAPG.FEATURES = {
     'Note="R30\' 5\' radius inflicts -2 attack and Perception while in radius + 1 rd and gives concealment %{wisdomModifier+3}/dy"',
   'Command':
     'Section=magic ' +
-    'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) 1/target/dy %{wisdomModifier+3}/dy"',
+    'Note="May use <i>Command</i> effects (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) 1/target/dy %{wisdomModifier+3}/dy" ' +
+    'Spells=Command ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Inevitable',
   "Day's Resurgence":
     'Section=magic ' +
     'Note="10 minute ritual gives target 8 hrs rest %{(levels.Cleric-6)//2}/dy"',
   'Deadly Weather':
     'Section=magic ' +
-    'Note="%{levels.Cleric*5}\' radius inflicts choice of rain (-4 Perception and ranged attack), winds (-8 Fly and ranged attack), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy"',
+    'Note="%{levels.Cleric*5}\' radius inflicts choice of rain (-4 Perception and ranged attack), winds (-8 Fly and ranged attack), snow (terrain becomes difficult), or <i>Call Lightning</i> %{levels.Cleric} rd/dy" ' +
+    'Spells="Call Lightning" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Catastrophe',
   "Death's Kiss":
     'Section=magic ' +
     'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
@@ -2416,7 +2435,10 @@ PFAPG.FEATURES = {
       '"Has Low-Light Vision feature for 1 rd %{wisdomModifier+3}/dy"',
   'Protective Aura':
     'Section=magic ' +
-    'Note="R30\' May use <i>Protection From Evil</i> effects on allies %{levels.Cleric} rd/dy"',
+    'Note="R30\' May use <i>Protection From Evil</i> effects on allies %{levels.Cleric} rd/dy" ' +
+    'Spells="Protection From Evil" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Agathion',
   'Purifying Touch':
     'Section=magic ' +
     'Note="Touch gives additional saves vs. existing effects %{(levels.Cleric-2)//6}/dy"',
@@ -2469,10 +2491,16 @@ PFAPG.FEATURES = {
     'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
   'Tunnel Runner':
     'Section=feature ' +
-    'Note="Self gains <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy"',
+    'Note="Self gains <i>Spider Climb</i> on stone surfaces, +60\' Darkvision, +%{levels.Cleric} Stealth underground, and +%{wisdomModifier} Initiative underground %{levels.Cleric} min/dy" ' +
+    'Spells="Spider Climb" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Caves',
   'Untouched By The Seasons':
     'Section=magic ' +
-    'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy"',
+    'Note="Touch gives <i>Endure Elements</i> for %{levels.Cleric} hr %{wisdomModifier+3}/dy" ' +
+    'Spells="Endure Elements" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevels.Seasons',
   'Wall Of Ashes':
     'Section=magic ' +
     'Note="R100\' 20\'x%{levels.Cleric*10}\' ash wall blocks sight, blinds passers (DC %{10+levels.Cleric//2+wisdomModifier} Fortitude negates) for 1d4 rd, and reveals invisible creatures %{levels.Cleric} min/dy"',
@@ -10026,11 +10054,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule
       ('sneakAttack', 'sandmanLevel', '=', 'Math.floor(source / 5)');
 
-    // Savage Skald
-    Pathfinder.featureSpells(rules,
-      'Incite Rage', 'InciteRage', 'charisma', classLevel, '', ['Rage']
-    );
-
     // Sea Singer
     rules.defineRule
       ('familiarMasterLevel', classLevel, '+=', 'source>=2 ? source : null');
@@ -10050,14 +10073,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('skillNotes.worldTraveler.1',
       'features.World Traveler', '?', null,
       classLevel, '=', 'Math.floor(source / 2)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Call The Storm', 'CallTheStorm', 'charisma', classLevel, '',
-      ['Control Water','Control Weather','Control Winds','Storm Of Vengeance']
-    );
-    Pathfinder.featureSpells(rules,
-      'Whistle The Wind', 'WhistleTheWind', 'charisma', classLevel, null,
-      ['Gust Of Wind']
     );
 
     // Street Performer
@@ -10182,30 +10197,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'Wooden Fist':['Enlarge'],
     };
 
-    // Agathion
-    Pathfinder.featureSpells(rules,
-      'Protective Aura', 'ProtectiveAura', 'wisdom', 'casterLevels.Agathion',
-      null, ['Protection From Evil']
-    );
-
-    // Catastrophe
-    Pathfinder.featureSpells(rules,
-      'Deadly Weather', 'DeadlyWeather', 'wisdom', 'casterLevels.Catastrophe',
-      '', ['Call Lightning']
-    );
-
-    // Caves
-    Pathfinder.featureSpells(rules,
-      'Tunnel Runner', 'TunnelRunner', 'wisdom', 'casterLevels.Caves', null,
-      ['Spider Climb']
-    );
-
-    // Construct
-    Pathfinder.featureSpells(rules,
-      'Animate Servant', 'AnimateServant', 'wisdom', 'casterLevels.Construct',
-      null, ['Animate Objects']
-    );
-
     // Defense
     rules.defineRule('saveNotes.defenseSubdomain',
       'levels.Cleric', '=', '1 + Math.floor(source / 5)'
@@ -10214,12 +10205,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     // Feather
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'casterLevels.Feather', '=', 'Math.max(Math.floor(source / 2), 1)'
-    );
-
-    // Inevitable
-    Pathfinder.featureSpells(rules,
-      'Command', 'Command', 'wisdom', 'casterLevels.Inevitable',
-      '10+casterLevels.Inevitable//2+wisdomModifier', ['Command']
     );
 
     // Purity
@@ -10257,12 +10242,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         '', 'v', '0' // Needed for multiclass Barbarian/Rage Cleric
       );
     });
-
-    // Seasons
-    Pathfinder.featureSpells(rules,
-      'Untouched By The Seasons', 'UntouchedByTheSeasons', 'wisdom',
-      'casterLevels.Seasons', null, ['Endure Elements']
-    );
 
   } else if(name == 'Druid') {
 
