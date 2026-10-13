@@ -11836,10 +11836,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
   } else if(name == 'Battle Herald') {
 
     rules.defineRule('bannerLevel', classLevel, '+=', null);
-    rules.defineRule('inspireCourageLevel',
-      classLevel, '=', null,
-     'bardicPerformanceLevel', '+', null
-    );
+    rules.defineRule('inspireCourageLevel', classLevel, '+=', null);
     rules.defineRule
       ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', '1');
     rules.defineRule('featureNotes.inspiringCommand',
@@ -11850,9 +11847,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('features.Inspire Courage', 'featureNotes.inspiringCommand', '=', '1');
     rules.defineRule('inspiringCommandBonus',
       classLevel, '+=', 'Math.floor((source + 2) / 3)'
-    );
-    rules.defineRule('magicNotes.inspireCourage',
-      'inspireCourageLevel', '=', '1 + Math.floor((source + 1) / 6)'
     );
     rules.defineRule('magicNotes.inspireGreatness',
       classLevel, '+=', 'Math.floor((source - 1) / 3)'
