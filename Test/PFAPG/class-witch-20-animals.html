@@ -64,6 +64,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 59/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 50/100/150</td>
     </tr></table>
@@ -87,14 +88,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Catch Off-Guard; Craft Staff; Ectoplasmic Spell; Leadership; Lunge; Scribe Scroll; Skill Focus (Perception); Skill Focus (Perform (Keyboard)); Skill Focus (Perform (Percussion)); Skill Focus (Profession (Soldier)); Vital Strike</td>
-        <td><b>Witch Features</b>: Agony Hex; Animals Patron; Blight Hex; Cantrips; Cauldron Hex; Coven Hex; Death Curse Hex; Eternal Slumber Hex; Healing Hex; Hex; Misfortune Hex; Nightmares Hex; Patron; Retribution Hex; Slumber Hex; Weapon Proficiency (Simple); Witch's Familiar</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Witch Features</b>: Agony Hex; Animals Patron; Blight Hex; Cantrips; Cauldron Hex; Coven Hex; Death Curse Hex; Eternal Slumber Hex; Healing Hex; Hex; Misfortune Hex; Nightmares Hex; Patron; Retribution Hex; Slumber Hex; Weapon Proficiency (Simple Weapons); Witch's Familiar</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Cauldron Hex: Has Brew Potion feature</i></td>
       </tr><tr style="text-align:center">
@@ -106,9 +107,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Coven Hex: May participate in a hag coven</td>
       </tr><tr style="text-align:center">
-        <td>Familiar: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
-        <td>Leadership: Attracts followers</td>
+        <td>Leadership: Can attract companions and devoted followers</td>
       </tr></table>
 </td>
     </tr></table>
@@ -179,7 +178,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 86</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 10</td>
+        <td><b>AC/Touch/Flat</b>: 10/10/10</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+11/+10</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +11/21</td>
@@ -188,9 +187,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -198,7 +195,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+11 d6+1 x2@20); Club (+11 d6+1 x2@20 R10'); Light Mace (+11 d6+1 x2@20); Unarmed (+11 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+11 d6+1 x2@20); Club (+11 d6+1 x2@20 R10'); Light Mace (+11 d6+1 x2@20); Unarmed Strike (+11 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -212,9 +209,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
-        <td>Lunge: May suffer -2 AC to gain +5' melee range</td>
+        <td>Lunge: Can suffer -2 Armor Class until the start of the next turn to gain +5' melee range until the end of the turn</td>
       </tr><tr style="text-align:center">
-        <td>Vital Strike: 2x base damage</td>
+        <td>Vital Strike: Can use an attack action to make a single attack that inflicts 2x base damage</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -251,31 +248,31 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animal Growth (Witch5 Tran): R300' 10 animal targets in 15' radius dbl size (+8 Strength, +4 Constitution, +2 AC, -2 Dexterity) for 20 min (DC 16 Fort neg)</td>
+      <td>Animal Growth (Witch5 Tran): R300' Animal target doubles in size (save Fortitude negates), gaining +8 Strength, +4 Constitution, and -2 Dexterity for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Animal Shapes (Witch8 Tran): R75' 20 willing targets in 15' radius become chosen diminutive - huge animal or small - medium magical beast for 20 hr</td>
+      <td>Animal Shapes (Witch8 Tran): R75' 20 willing targets in a 15' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Antilife Shell (Witch6 Abju): 10' radius bars living for 20 min</td>
+      <td>Antilife Shell (Witch6 Abju): 10' radius bars the entrance of living creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape IV (Witch7 Tran): Self becomes tiny (+8 Dexterity, -2 Strength, +3 AC) or large (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC) magical beast for 20 min</td>
+      <td>Beast Shape IV (Witch7 Tran): Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for 20 min; the transformation may also give any of a 60' burrow Speed, a 90' climb Speed, 120' fly or swim Speeds, 60' Blindsense, 90' Darkvision, Low-Light Vision, Scent, 60' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Ren, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Charm Animal (Witch1 Ench): R75' Target treats self as trusted friend (DC 12 Will neg) for 20 hr</td>
+      <td>Charm Animal (Witch1 Ench): R75' Target animal treats self as a trusted friend (save Will negates; +5 if being threatened) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (Healing Hex1 Conj): Touched heals (undead suffers) 1d8+5 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (Healing Hex1 Conj): Touched regains 1d8+5 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched heals (undead suffers) 2d8+10 HP (DC 13 Will half)</td>
+      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched regains 2d8+10 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Dominate Animal (Witch3 Ench): R75' Target animal obeys self thoughts (DC 14 Will neg) for 20 rd</td>
+      <td>Dominate Animal (Witch3 Ench): R75' Target animal obeys mental commands (save Will negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Nightmare (Nightmares Hex5 Illu): Target suffers 1d10 HP and fatigue (DC 21 Will neg (modified for familiarity w/target))</td>
+      <td>Nightmare (Nightmares Hex5 Illu): Specified sleeping target suffers 1d10 HP, fatigue, and inability to regain arcane spells for 24 hr (save Will negates, modified from +10 to -5 based on familiarity with the target)</td>
     </tr><tr style="text-align:left">
-      <td>Sleep (Slumber Hex1 Ench): R300' 4 HD of creatures in 10' radius sleep (DC 11 Will neg) for 20 min</td>
+      <td>Sleep (Slumber Hex1 Ench): RNaN' 4 HD of creatures in a 10' radius fall asleep (save Will negates), moving upward from those with the lowest HD, for NaN min; shaking or wounding wakens an affected creature, but noise does not</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Witch2 Divi): Self converses w/animals for 20 min</td>
+      <td>Speak With Animals (Witch2 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally IV (Witch4 Conj): R75' 1 4th-, 1d3 3rd-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally IV (Witch4 Conj): R75' Summons 1 4th-level, 1d3 3rd-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally IX (Witch9 Conj): R75' 1 9th-, 1d3 8th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally IX (Witch9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -283,39 +280,55 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Intelligence Witch Spell Slot Bonus: Spell level Witch1</i></td>
     </tr><tr style="text-align:center">
-      <td>Agony Hex: R60' Target suffers nauseated for 20 rd (DC 21 Fort ends) 1/target/dy</td>
+      <td>Agony Hex: R60' Target suffers nauseated for 20 rd (DC 21 Fortitude ends) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Blight Hex: Touch kills vegetation in 200' radius over 1 wk or inflicts -1 Constitution/dy</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Coven Hex: R30' May use aid another to give target w/Coven Hex +1 caster level for 1 rd</td>
     </tr><tr style="text-align:center">
-      <td>Craft Staff: May create magic staves</td>
+      <td>Craft Staff: Can create magic staves</td>
     </tr><tr style="text-align:center">
-      <td>Death Curse Hex: R30' Target becomes fatigued (DC 21 Will neg), then exhausted, then dies (DC 21 Fort suffers 4d6+20 HP) 1/target/dy</td>
+      <td>Death Curse Hex: R30' Target becomes fatigued (DC 21 Will negates), then exhausted, then dies (DC 21 Fortitude suffers 4d6+20 HP) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Ectoplasmic Spell: May spend +1 spell slot to target an incorporeal or ethereal creature</td>
     </tr><tr style="text-align:center">
-      <td>Eternal Slumber Hex: Touch or poison inflicts permanent sleep (DC 21 Will neg) 1/target/dy</td>
+      <td>Eternal Slumber Hex: Touch or poison inflicts permanent sleep (DC 21 Will negates) 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects 1/target/dy</td>
     </tr><tr style="text-align:center">
-      <td>Misfortune Hex: R30' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC 21 Will neg) for 3 rd 1/target/dy</td>
+      <td>Misfortune Hex: R30' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC 21 Will negates) for 3 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Nightmares Hex: R60' May use <i>Nightmare</i> effects (DC 21 Will ends)</td>
     </tr><tr style="text-align:center">
       <td>Patron: Knows additional spells</td>
     </tr><tr style="text-align:center">
-      <td>Retribution Hex: R60' Target suffers half of damage it inflicts (DC 21 Will neg) for 1 rd</td>
+      <td>Retribution Hex: R60' Target suffers half of damage it inflicts (DC 21 Will negates) for 1 rd</td>
     </tr><tr style="text-align:center">
-      <td>Scribe Scroll: May create scroll of any known spell</td>
+      <td>Scribe Scroll: Can create scrolls for known spells</td>
     </tr><tr style="text-align:center">
-      <td>Slumber Hex: R30' May use <i>Sleep</i> effects w/out HD limit (DC 21 Will neg) for 20 rd 1/target/dy</td>
+      <td>Slumber Hex: R30' May use <i>Sleep</i> effects w/out HD limit (DC 21 Will negates) for 20 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Witch's Familiar: Familiar stores spells</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Companions</b><br/>  <table id="CompanionArea" style="width:100%">
+  <tr style="text-align:center">
+    <td><b>Companion Notes</b>: Familiar: Can bond with a magical creature with expanded abilities</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 14 available vs. 15 allocated</td>
     </tr></table>
 </td>
   </tr></table>

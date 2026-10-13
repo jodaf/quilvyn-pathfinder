@@ -14,7 +14,7 @@ var attributes = {
   "feats.Quicken Spell":1, "feats.Reach Spell":1, "feats.Silent Spell":1, 
   "feats.Spell Focus (Enchantment)":1, "feats.Strike Back":1, "gender":"Male", "hitPoints":82, "intelligence":12, 
   "languages.Elven":1, "languages.Giant":1, "languages.Gnome":1, "levels.Oracle":20, 
-  "name":"Class-Oracle 20-Lore", "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
+  "name":"Class-Oracle 20-Lore", "race":"Human", "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "selectableFeatures.Oracle - Arcane Archivist (Oracle)":1, 
   "selectableFeatures.Oracle - Automatic Writing":1, "selectableFeatures.Oracle - Brain Drain":1, 
   "selectableFeatures.Oracle - Focused Trance":1, "selectableFeatures.Oracle - Lore Keeper":1, 
@@ -66,6 +66,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -95,14 +96,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Elemental Spell (Cold); Empower Spell; Improved Unarmed Strike; Maximize Spell; Persistent Spell; Point-Blank Shot; Quicken Spell; Reach Spell; Silent Spell; Spell Focus (Enchantment); Strike Back</td>
-        <td><b>Oracle Features</b>: Arcane Archivist (Oracle); Armor Proficiency (Medium); Automatic Writing; Brain Drain; Final Revelation (Lore Mystery); Focused Trance; Lore Keeper (Oracle); Lore Mystery; Mental Acuity; Mystery; Oracle's Curse; Orisons; Revelation; Shield Proficiency; Sidestep Secret; Spontaneous Symbology; Think On It; Wasting; Weapon Proficiency (Simple); Whirlwind Lesson</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Arcane Archivist (Oracle); Armor Proficiency (Light; Medium; Shield); Automatic Writing; Brain Drain; Final Revelation (Lore Mystery); Focused Trance; Lore Keeper (Oracle); Lore Mystery; Mental Acuity; Mystery; Oracle's Curse; Orisons; Revelation; Sidestep Secret; Spontaneous Symbology; Think On It; Wasting; Weapon Proficiency (Simple Weapons); Whirlwind Lesson</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Mystery: 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -193,18 +194,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 142</td>
         <td><b>Initiative</b>: -2</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 10/8/10</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
-        <td><b>Combat Maneuver Bonus/Defense</b>: +15/29</td>
+        <td><b>Combat Maneuver Bonus/Defense</b>: +15/23</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -212,25 +212,25 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +60</i></td>
+        <td><i>Armor Class Modifiers: Armor: +2; Dexterity: -2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +4</i></td>
+        <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Sidestep Secret: Dexterity Armor Class adjustment uses Charisma instead</i></td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -273,47 +273,47 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Augury (Automatic Writing2 Divi): Self has 90% chance to learn weal or woe outcome of a proposed action up to 30 min in the future</td>
+      <td>Augury (Automatic Writing2 Divi): Gives a 90% chance of learning the weal or woe outcome of a proposed action up to 30 min in the future</td>
     </tr><tr style="text-align:left">
-      <td>Commune (Automatic Writing5 Divi): Deity answers 20 yes/no questions</td>
+      <td>Commune (Automatic Writing5 Divi): Agents of Gorum respond to NaN yes/no questions asked within NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Contact Other Plane (O5 Divi): Self asks 10 questions of extraplanar entity</td>
+      <td>Contact Other Plane (O5 Divi): Contacts an extraplanar entity to ask 10 yes/no questions within 10 min; carries the risks of receiving lies and of suffering loss of Intelligence, Charisma, and arcane spellcasting for 1-5 weeks</td>
     </tr><tr style="text-align:left">
-      <td>Divination (Automatic Writing4 Divi): Self has 90% chance to learn useful advice on a proposed action up to 1 week in the future</td>
+      <td>Divination (Automatic Writing4 Divi): Gives a 90% chance to learn useful advice on a proposed action up to 1 week in the future</td>
     </tr><tr style="text-align:left">
-      <td>Identify (O1 Divi): R60' Cone gives self info on magical auras, +10 Spellcraft (item properties) for conc or 60 rd</td>
+      <td>Identify (O1 Divi): R60' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties, for 60 rd</td>
     </tr><tr style="text-align:left">
-      <td>Legend Lore (O4 Divi): Self learns legends about specified person, place, or object</td>
+      <td>Legend Lore (O4 Divi): Reveals legends about a specified person, place, or object; requires minutes to weeks to cast depending on the familiarity of the target</td>
     </tr><tr style="text-align:left">
-      <td>Locate Object (O3 Divi): Self senses direction of object or type in 1200' radius for 20 min</td>
+      <td>Locate Object (O3 Divi): Reveals the direction of a visualized object or kind of object found within 1200' for 20 min; a sheet of lead blocks the spell</td>
     </tr><tr style="text-align:left">
-      <td>Mass Owl's Wisdom (O6 Tran): R75' 20 targets in 15' radius gain +4 Wisdom for 20 min</td>
+      <td>Mass Owl's Wisdom (O6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Moment Of Prescience (O8 Divi): Self gains +20 attack, check, or save once w/in 20 hr</td>
+      <td>Moment Of Prescience (O8 Divi): Gives self +20 on Armor Class or an attack, check, or save once within 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Spontaneous Symbology8 Necr): R60' Rune slays (DC 24 Fort neg) in 60' radius when triggered for 200 min or 150 HP killed</td>
+      <td>Symbol Of Death (Spontaneous Symbology8 Necr): Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for NaN min or until creatures with 150 HP total have been killed</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): R60' Rune panics 20 rd (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): Rune panics creatures in a 60' radius for NaN rd (save Will negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): R60' Rune causes insanity (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): R60' Rune inflicts permanent insanity on creatures in a 60' radius (save Will (DC +1) negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): R60' Rune causes pain (-4 attack and skill and ability checks) for 1 hr (DC 24 Fort neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): Rune causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius (save Fortitude negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): R60' Rune charms for 20 hrs (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): Rune charms creatures in a 60' radius for NaN hrs (save Will (DC +1) negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): R60' Rune sleeps creatures w/10 HD or less for 3d6x10 min (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): Rune renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min (save Will (DC +1) negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): R60' Rune stuns for 1d6 rd (DC 24 Will neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): Rune stuns creatures in a 60' radius for 1d6 rd (save Will (DC +1) negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): R60' Rune inflicts -3d6 Strength (DC 24 Fort neg) in 60' radius when triggered for 200 min</td>
+      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): Rune inflicts -3d6 Strength on creatures in a 60' radius (save Fortitude negates) when triggered for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Time Stop (O9 Tran): All but self halt and become invulnerable for 1d4+1 rd</td>
+      <td>Time Stop (O9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures for the duration</td>
     </tr><tr style="text-align:left">
-      <td>Tongues (O4 Divi): Touched can communicate in any language for 200 min</td>
+      <td>Tongues (O4 Divi): Allows touched to communicate in any language for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Vision (O7 Divi): Self learns answer about target person, place, or object</td>
+      <td>Vision (O7 Divi): Allows a successful caster level check (+25 maximum) to answer a question about a specified person, place, or object; the DC varies from 20 to 30 depending on the familiarity of the subject</td>
     </tr><tr style="text-align:left">
-      <td>Wish (Lore Oracle9 Univ): Alters reality, with few limits</td>
+      <td>Wish (Lore Oracle9 Univ): Alters reality, with few limits; costs at least 25,000 GP to cast</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -327,25 +327,25 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Automatic Writing: 1 hr meditation yields results of <i>Commune</i> spell 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check/rd at target's bonus (DC 24 Will neg) for 4 rd 5/dy</td>
+      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check/rd at target's bonus (DC 24 Will negates) for 4 rd 5/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Final Revelation (Lore Mystery): May cast <i>Wish</i> 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Persistent Spell: May spend +2 spell slot to force target to take worse of 2 saving throws</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
       <td>Spontaneous Symbology: May use spell slot to cast any <i>Symbol</i> spell</td>
     </tr><tr style="text-align:center">

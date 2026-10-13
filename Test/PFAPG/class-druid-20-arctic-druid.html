@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Knowledge (Nobility))":1, "gender":"Female", "hitPoints":76, "intelligence":14, 
   "languages.Draconic":1, "languages.Undercommon":1, "levels.Druid":20, 
   "name":"Class-Druid 20-Arctic Druid", "race":"Human", "selectableFeatures.Druid - Arctic Druid":1, 
-  "selectableFeatures.Druid - Water Domain":1, "selectableFeatures.Human - Bonus Feat":1, 
+  "selectableFeatures.Druid - Water Domain":1, "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":15, "skills.Climb":20, 
   "skills.Craft (Armor)":2, "skills.Craft (Bows)":1, "skills.Handle Animal":10, "skills.Intimidate":2, 
   "skills.Knowledge (Geography)":1, "skills.Knowledge (History)":1, "skills.Knowledge (Nature)":20, 
@@ -76,6 +76,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 200048/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 43/86/130</td>
     </tr></table>
@@ -106,22 +107,22 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Deft Hands; Forge Ring; Heighten Spell; Leadership; Light Armor Proficiency; Lightning Reflexes; Simple Weapon Proficiency; Skill Focus (Craft (Bows)); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (History)); Skill Focus (Knowledge (Nobility))</td>
         <td><b>Traits</b>: Birthmark; Child Of The Streets</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Druid Features</b>: Arctic Druid; Arctic Endurance; Arctic Native; Armor Proficiency (Medium); Cold Resistance; Flurry Form; Icewalking; Icicle; Nature Bond; Nature Sense; Shield Proficiency; Snowcaster; Spontaneous Druid Spell; Timeless Body; Water Domain; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Druid Features</b>: Aligned Spells; Arctic Druid; Arctic Endurance; Arctic Native; Armor Proficiency (Light; Medium; Shield); Cold Resistance; Flurry Form; Icewalking; Icicle; Nature Bond; Nature Sense; Orisons; Snowcaster; Spontaneous Casting (Druid); Timeless Body; Water Domain; Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy; Wild Shape</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Nature Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Arctic Native: Cannot be tracked in cold or icy terrain</td>
       </tr><tr style="text-align:center">
-        <td>Leadership: Attracts followers</td>
+        <td>Leadership: Can attract companions and devoted followers</td>
       </tr><tr style="text-align:center">
         <td>Snowcaster: Sees normally in snowstorms</td>
-      </tr><tr style="text-align:center">
-        <td>Timeless Body: Suffers no aging penalties</td>
       </tr></table>
 </td>
     </tr></table>
@@ -192,7 +193,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Icewalking: Suffers no Acrobatics, Climb, or Stealth penalty on ice or snow</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +22 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +22 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -208,7 +209,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 96</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/11/11</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+16/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +16/27</td>
@@ -217,9 +218,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Shortspear; Sickle; Simple Weapons; Sling; Spear</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -227,15 +227,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Padded</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bayonet (+16 d6+1 x2@20); Blowgun (+16 d2 x2@20 R20'); Light Mace (+16 d6+1 x2@20); Unarmed (+16 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Bayonet (+16 d6+1 x2@20); Blowgun (+16 d2 x2@20 R20'); Light Mace (+16 d6+1 x2@20); Unarmed Strike (+16 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +20</i></td>
+        <td><i>Armor Class Modifiers: Armor: +1; Dexterity: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -245,7 +245,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Arctic Native: +10 Initiative in cold or icy terrain</td>
       </tr><tr style="text-align:center">
-        <td>Icicle: R30' Ranged touch inflicts 1d6+10 HP 4/dy</td>
+        <td>Icicle: R30' Ranged touch attack inflicts 1d6+10 HP cold 4 times per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -258,7 +258,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Cold Resistance: Resistance immune to cold</i></td>
+        <td><i>Cold Resistance: Has immunity to cold</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -271,6 +271,8 @@ var attributes = {
         <td>Arctic Endurance: Remains comfortable down to -50F/Immune to dazzled</td>
       </tr><tr style="text-align:center">
         <td>Birthmark: +2 vs. charm and compulsion</td>
+      </tr><tr style="text-align:center">
+        <td>Timeless Body: Suffers no additional penalties from aging and has immunity to magical aging</td>
       </tr></table>
 </td>
     </tr></table>
@@ -293,105 +295,105 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration</td>
+      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts damage twice as often for half its normal duration</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning Storm (D5 Evoc): R1200' 1 bolt/rd inflicts 5d6 HP (DC 16 Ref half) for 20 min or 15 bolts</td>
+      <td>Call Lightning Storm (D5 Evoc): R1200' 1 bolt per rd inflicts 5d6 HP electricity (or 5d10 HP during a storm) (save Reflex half) for 20 min or 15 bolts</td>
     </tr><tr style="text-align:left">
-      <td>Changestaff (D7 Tran): Touched staff becomes treant-like creature for 20 hr</td>
+      <td>Changestaff (D7 Tran): Touched staff looks and fights like a 24'-tall treant and obeys commands for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Charm Animal (D1 Ench): R75' Target treats self as trusted friend (DC 12 Will neg) for 20 hr</td>
+      <td>Charm Animal (D1 Ench): R75' Target animal treats self as a trusted friend (save Will negates; +5 if being threatened) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Clashing Rocks (D9 Conj): R1200' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (DC 20 Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (DC 20 Ref half HP only)</td>
+      <td>Clashing Rocks (D9 Conj): R1200' Creates two Colossal rocks that slam together in a ranged touch attack that inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (save Reflex negates buried); a missed target and other creatures in the path of the rocks suffer 10d6 HP bludgeoning and knocked prone (save Reflex inflicts half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (D4 Tran): R75' 40 HD plant creatures in 15' radius obey self (DC 15 Will neg) for 20 dy</td>
+      <td>Command Plants (D4 Tran): R75' 40 HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Cone Of Cold (Water6 Evoc): R60' Cone inflicts 15d6 HP (DC 17 Ref half)</td>
+      <td>Cone Of Cold (Water6 Evoc): 60' cone inflicts 15d6 HP cold (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Control Water (Water4 Tran): R1200' Raises or lowers 20 10'x10'x2' of water 40' for 200 min</td>
+      <td>Control Water (Water4 Tran): R1200' Raises or lowers a 200'x200'x40' area of water by 40' for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Water7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 20 min</td>
+      <td>Elemental Body IV (Water7 Tran): Self becomes a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Swarm (Water9 Conj): R300' Summons 2d4 large, then 1d4 huge, then 1 greater elementals for 200 min</td>
+      <td>Elemental Swarm (Water9 Conj): R300' Summons at 10-min intervals from a chosen elemental plane a series of obedient elementals: 2d4 large; 1d4 huge; 1 greater, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Euphoric Tranquility (D8 Ench): Touched treats all as friends (DC 19 Will after attacked neg 1 rd), suffers half speed for 20 rd</td>
+      <td>Euphoric Tranquility (D8 Ench): Touched becomes helpful, treats all as friends (save Will after being attacked negates for 1 rd), and suffers half speed for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Feast Of Ashes (D2 Tran): R75' Target suffers starvation (DC 13 Fort neg) and eating causes 1 rd nausea (DC 12 Fort neg) for 40 dy</td>
+      <td>Feast Of Ashes (D2 Tran): R75' Inflicts insatiable hunger that leads to starvation (save Fortitude negates), and eating causes 1 rd nausea (save Fortitude DC 12 negates), for 40 dy</td>
     </tr><tr style="text-align:left">
       <td>Feather Step (D1 Tran): R75' Target treats difficult terrain as normal terrain for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Finger Of Death (D8 Necr): R75' Target suffers 200 HP (DC 19 Fort 3d6+20 HP)</td>
+      <td>Finger Of Death (D8 Necr): R75' Target suffers 200 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Fog Cloud (Water2 Conj): R300' Fog in 20' radius obscures vision for 200 min</td>
+      <td>Fog Cloud (Water2 Conj): R300' 20' radius fog obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Freedom Of Movement (D4 Abju): Touched moves freely for 200 min</td>
+      <td>Freedom Of Movement (D4 Abju): Allows touched to ignore movement impediments, escape grapples, and move normally when underwater, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Greater Dispel Magic (D6 Abju): R300' Successful d20+20 check vs. 11+caster level cancels 5 targeted spells or 1 spell or curse on each creature in a 20' radius</td>
+      <td>Greater Dispel Magic (D6 Abju): R300' Successful caster level check check vs. 11+caster level cancels 5 targeted spells or 1 spell or curse on each creature in a 20' radius or suppresses a magic item for 1d4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Magic Fang (D3 Tran): R75' target natural weapon gains +4 attack and damage for 20 hr</td>
+      <td>Greater Magic Fang (D3 Tran): R75' target gains +5 attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Grove Of Respite (D4 Conj): R75' Creates 20' radius grove that reports intruders and provides water and fruit that feeds 8 and heals 1 HP for 40 hr</td>
+      <td>Grove Of Respite (D4 Conj): R75' Creates a 20' radius grove that reports intruders and provides water and fruit that feeds 8 and restores 1 hit point for 40 hr</td>
     </tr><tr style="text-align:left">
-      <td>Hallow (D5 Evoc): 40' radius from touched gives +2 AC and saves vs. evil, suppresses mental control, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling +4 DC and negative channeling -4 DC, and evokes boon spell</td>
+      <td>Hallow (D5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Hide From Animals (D1 Abju): 20 touched become imperceptible to animals for 200 min</td>
+      <td>Hide From Animals (D1 Abju): 20 touched become imperceptible to animals for 200 min; attacking any creature ends the spell for all</td>
     </tr><tr style="text-align:left">
-      <td>Horrid Wilting (Water8 Necr): R1200' Creatures in 30' radius suffer 20d6 HP (plants or water elementals 20d8 HP) (DC 19 Fort half)</td>
+      <td>Horrid Wilting (Water8 Necr): R1200' Creatures in a 30' radius suffer 20d6 HP, or 20d8 HP for plants or water elementals (save Fortitude half)</td>
     </tr><tr style="text-align:left">
-      <td>Ice Storm (Water5 Evoc): R1200' Hail in 20' radius inflicts 3d6 HP bludgeoning, 2d6 HP cold, and -4 Perception for 20 rd</td>
+      <td>Ice Storm (Water5 Evoc): R1200' Hail in a 20' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Lily Pad Stride (D3 Tran): R1200' Self moves across liquid and others can follow w/DC 10 Acrobatics (half speed; full speed inflicts -5 Acrobatics) for 200 min</td>
+      <td>Lily Pad Stride (D3 Tran): R1200' Allows self to walk across water, and others of Medium size or smaller can follow at half Speed with a successful DC 10 Acrobatics check each rd (moving at full Speed inflicts -5 on the checks) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Cure Critical Wounds (D9 Conj): R75' 20 targets in 15' radius heal (undead suffer) 4d8+20 HP (DC 20 Will half)</td>
+      <td>Mass Cure Critical Wounds (D9 Conj): R75' 20 targets in a 15' radius regain 4d8+20 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Mass Owl's Wisdom (D6 Tran): R75' 20 targets in 15' radius gain +4 Wisdom for 20 min</td>
+      <td>Mass Owl's Wisdom (D6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Mending (D0 Tran): R10' Repairs minor damage to 20 lb object</td>
+      <td>Mending (D0 Tran): R10' Repairs minor damage to an object weighing up to 20 lb</td>
     </tr><tr style="text-align:left">
-      <td>Obscuring Mist (Water1 Conj): Fog in 20' radius obscures vision for 20 min</td>
+      <td>Obscuring Mist (Water1 Conj): Fog in a 20'-radius, 20'-high cylinder obscures vision, giving a 20% miss chance on attacks within 5' and a 50% chance on more distant attacks, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Poison (D3 Necr): Touched suffers -1d3 Constitution/rd for 6 rd (DC 14 Fort neg)</td>
+      <td>Poison (D3 Necr): Touched suffers -1d3 Constitution each rd (save Fortitude ends) for 6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Purify Food And Drink (D0 Tran): R10' Makes 20' cu food and water safe (DC 11 Will neg)</td>
+      <td>Purify Food And Drink (D0 Tran): R10' Makes 20 cubic feet of food and water safe to consume (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Rampart (D7 Conj): R300' Creates 5'x10'x100' linear or 5'x23' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)</td>
     </tr><tr style="text-align:left">
-      <td>Read Magic (D0 Divi): Self can read magical writing for 200 min</td>
+      <td>Read Magic (D0 Divi): Allows self to read magical writing and identify <i>Glyphs</i> and <i>Symbols</i> with a successful Spellcraft check for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Regenerate (D9 Conj): Regrows maims, heals 4d8+20 HP, and eliminates fatigue, exhaustion, and nonlethal damage from touched</td>
+      <td>Regenerate (D9 Conj): Touched living creature regrows missing body parts, regains 4d8+20 hit points, and recovers from fatigue, exhaustion, and nonlethal damage</td>
     </tr><tr style="text-align:left">
-      <td>Reincarnate (D4 Tran): Restores willing soul, dead up to 1 week, to full health in a generated body</td>
+      <td>Reincarnate (D4 Tran): Uses part of a corpse, dead up to 1 week, to restore a willing soul to full health in a generated body</td>
     </tr><tr style="text-align:left">
       <td>Resistance (D0 Abju): Touched gains +1 saves for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (D9 Conj): R300' Creates 1d4+2 advanced shambling mounds in 15' radius that fight for 7 dy or guard for 7 mo</td>
+      <td>Shambler (D9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
     </tr><tr style="text-align:left">
-      <td>Shifting Sand (D3 Tran): R300' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -20 Acrobatics, and entangles and knocks prone (DC 14 Ref neg) for 20 rd</td>
+      <td>Shifting Sand (D3 Tran): R300' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -20 Acrobatics, and entangles and knocks prone (Reflex negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shillelagh (D1 Tran): S/M/L staff gains +1 attack, 1d8+2/2d6+2/3d6+2 damage (DC 12 Will neg) for 20 min</td>
+      <td>Shillelagh (D1 Tran): Touched small, medium, or large staff gains +1 attacks and inflicts 1d8+2 HP, 2d6+2 HP, or 3d6+2 HP (save Will negates) when wielded by self for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Snake Staff (D5 Tran): R300' Transforms up to 20 sticks in 15' radius into telepathically controlled snakes for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (D1 Divi): Self converses w/animals for 20 min</td>
+      <td>Speak With Animals (D1 Divi): Allows self to converse with animals for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Stormbolts (D8 Evoc): Targets in 30' radius suffer 20d8 HP electricity and stunned 1 rd (DC 19 Fort half HP only)</td>
+      <td>Stormbolts (D8 Evoc): Targets in 30' radius suffer 20d8 HP electricity and stunned 1 rd (Fortitude half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally VII (D7 Conj): R75' 1 7th-, 1d3 6th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally VII (D7 Conj): R75' Summons 1 7th-level, 1d3 6th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally VIII (D8 Conj): R75' 1 8th-, 1d3 7th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally VIII (D8 Conj): R75' Summons 1 8th-level, 1d3 7th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Swarm Skin (D6 Tran): Self flesh transforms into controlled insect swarms until destroyed or ordered to return to bones</td>
     </tr><tr style="text-align:left">
-      <td>Tree Shape (D2 Tran): Self becomes tree for 20 hr</td>
+      <td>Tree Shape (D2 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>True Seeing (D7 Divi): Touched sees through 120' darkness, illusion, and invisibility for 20 min</td>
+      <td>True Seeing (D7 Divi): Allows touched to see through 120' darkness, illusion, and invisibility, note secret doors, and see the true forms of polymorphed items for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Unhallow (D5 Evoc): 40' radius from touched gives +2 AC and saves vs. good, suppresses mental control, bars contact by summoned good creatures, gives negative channeling +4 DC and positive channeling -4 DC, and evokes bane spell</td>
+      <td>Unhallow (D5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Stone (D6 Conj): R300' Creates 20 5' x 5 inch thick permanent stone wall</td>
+      <td>Wall Of Stone (D6 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness); each 5' section has 75 hit points and hardness 8</td>
     </tr><tr style="text-align:left">
-      <td>Warp Wood (D2 Tran): R75' Warps 20 wooden objects in 20' radius (DC 13 Will neg)</td>
+      <td>Warp Wood (D2 Tran): R75' Warps or straightens 20 wooden objects in a 20' radius (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (Water3 Tran): Touched can breathe underwater for 40 hrs total</td>
+      <td>Water Breathing (Water3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs divided among them</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -399,17 +401,21 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Wisdom Druid Spell Slot Bonus: Spell level D1</i></td>
     </tr><tr style="text-align:center">
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
       <td>Flurry Form: May assume insubstantial snow flurry form</td>
     </tr><tr style="text-align:center">
-      <td>Forge Ring: May create and mend magic rings</td>
+      <td>Forge Ring: Can create and mend magic rings</td>
     </tr><tr style="text-align:center">
-      <td>Heighten Spell: May cast chosen spell at a higher level</td>
+      <td>Heighten Spell: Can cast spells at a higher than normal level</td>
+    </tr><tr style="text-align:center">
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Snowcaster: May prepare fire spells to inflict cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Druid Spell: May cast <i>Summon Nature's Ally</i> in place of known spell</td>
+      <td>Spontaneous Casting (Druid): Can cast <i>Summon Nature's Ally</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
-      <td>Wild Shape: May change into creature of size diminutive-huge/elemental/plant for 18 hr 8/dy</td>
+      <td>Wild Shape: Can change into a diminutive to huge animal, a small to huge plant, or a small to huge elemental for 18 hr 8 times per day</td>
     </tr></table>
 </td>
   </tr></table>

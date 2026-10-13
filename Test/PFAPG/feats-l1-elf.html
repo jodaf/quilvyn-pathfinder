@@ -59,6 +59,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 29/30 (PSOP)</td>
       <td><b>Level</b>: 10</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 50/100/150</td>
     </tr></table>
@@ -68,11 +69,11 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Elf Ability Adjustment: +2 Dexterity/+2 Intelligence/-2 Constitution</i></td>
     </tr><tr style="text-align:center">
-      <td>Acrobatic Steps: May move normally through difficult terrain 20'/rd </td>
+      <td>Acrobatic Steps: Can move normally through difficult terrain 20' per rd</td>
     </tr><tr style="text-align:center">
       <td>Light Step: Treats difficult terrain as normal terrain in natural environments</td>
     </tr><tr style="text-align:center">
-      <td>Nimble Moves: May move normally through difficult terrain 5'/rd</td>
+      <td>Nimble Moves: Can move normally through 5' of difficult terrain each rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -92,18 +93,20 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic Steps; Arcane Talent; Breadth Of Experience; Eagle Eyes; Elven Accuracy; Light Step; Nimble Moves; Point-Blank Shot; Rapid Shot; Sharp Senses; Stabbing Shot</td>
-        <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow/Composite Shortbow/Longbow/Longsword/Rapier/Shortbow)</td>
-        <td><b>Rogue Features</b>: Acrobat; Armor Proficiency (Light); Bleeding Attack; Crippling Strike; Evasion; Expert Acrobat; Finesse Rogue; Improved Uncanny Dodge; Knock-Out Blow; Rogue Talents; Second Chance (Rogue); Sneak Attack; Survivalist; Uncanny Dodge; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
+        <td><b>Elf Features</b>: Elf Ability Adjustment; Elven Immunities; Elven Magic; Keen Senses; Low-Light Vision; Weapon Familiarity (Elven Curve Blade); Weapon Proficiency (Composite Longbow; Composite Shortbow; Longbow; Longsword; Rapier; Shortbow)</td>
+        <td><b>Rogue Features</b>: Acrobat; Advanced Talents; Armor Proficiency (Light); Bleeding Attack; Crippling Strike; Evasion; Expert Acrobat; Finesse Rogue; Improved Uncanny Dodge; Knock-Out Blow; Rogue Talents; Second Chance (Rogue); Sneak Attack; Survivalist; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Finesse Rogue: Has Weapon Finesse feature</i></td>
+        <td><i>Advanced Talents: Has additional Rogue Talent choices</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Finesse Rogue: Has the Weapon Finesse feature</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rogue Talents: 5 selections</i></td>
       </tr><tr style="text-align:center">
-        <td>Low-Light Vision: x2 normal distance in poor light</td>
+        <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr></table>
 </td>
     </tr></table>
@@ -126,7 +129,7 @@ var attributes = {
         <td>Disguise: (cha) 5 (+12)</td>
         <td>Perform (Keyboard): (cha) 8 (+15)</td>
       </tr><tr style="text-align:left">
-        <td>Climb: (str) 5 (+9)</td>
+        <td>Climb: (str) 5 (+8)</td>
         <td>Escape Artist: (dex) 2 (+6)</td>
         <td>Profession (Librarian): (wis) 5 (+11)</td>
       </tr><tr style="text-align:left">
@@ -136,7 +139,7 @@ var attributes = {
       </tr><tr style="text-align:left">
         <td>Craft (Armor): (int) 5 (+9)</td>
         <td>Knowledge (Engineering): (int;cc) 2 (+5)</td>
-        <td>Stealth: (dex) 9 (+14)</td>
+        <td>Stealth: (dex) 9 (+13)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 1 (+5)</td>
         <td>Linguistics: (int) 2 (+6)</td>
@@ -152,7 +155,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Breadth Of Experience: +2 all Knowledge/+2 all Profession</i></td>
       </tr><tr style="text-align:center">
@@ -172,7 +175,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Eagle Eyes: Ignores -5 distance penalties on visual Perception</td>
       </tr><tr style="text-align:center">
-        <td>Elven Magic: +2 Spellcraft (identify magic item properties)</td>
+        <td>Elven Magic: +2 Spellcraft to identify magic item properties</td>
       </tr><tr style="text-align:center">
         <td>Second Chance (Rogue): May make -5 reroll on Acrobatics, Climb, or Fly 3/dy</td>
       </tr></table>
@@ -190,7 +193,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 67</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/12/15</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +7/+8/+9</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +8/20</td>
@@ -200,8 +203,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Composite Longbow; Composite Shortbow; Hand Crossbow; Longbow; Longsword; Rapier; Sap; Short Sword; Shortbow; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -209,51 +211,54 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Studded Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dart (+9 d4+1 x2@20 R20'); Greataxe (+4 d12+1 x3@20); Heavy Mace (+8 d8+1 x2@20); Light Mace (+9 d6+1 x2@20); Unarmed (+9 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Dart (+9 d4+1 x2@20 R20'); Greataxe (+4 d12+1 x3@20); Heavy Mace (+8 d8+1 x2@20); Light Mace (+9 d6+1 x2@20); Unarmed Strike (+9 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +3; Dexterity: +2</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +10</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Greataxe: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Finesse: +1 light melee weapon attack (Dexterity instead of Strength)</i></td>
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Attack: Sneak attack inflicts 5 HP/rd (magic healing or DC 15 Heal ends)</td>
+        <td><i>Unproficient Weapon Penalty.Greataxe: -4 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Crippling Strike: Sneak attack inflicts 2 points Strength damage</td>
+        <td><i>Weapon Finesse: +1 light melee weapon, rapier, whip, and spiked chain attacks (uses Dexterity instead of Strength)</i></td>
+      </tr><tr style="text-align:center">
+        <td>Bleeding Attack: Sneak Attack inflicts 5 HP bleed each rd; magical healing or a DC 15 Heal ends</td>
+      </tr><tr style="text-align:center">
+        <td>Crippling Strike: Sneak Attack also inflicts 2 points of Strength damage</td>
       </tr><tr style="text-align:center">
         <td>Elven Accuracy: May reroll a bow miss due to concealment</td>
       </tr><tr style="text-align:center">
-        <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 14+</td>
+        <td>Improved Uncanny Dodge: Cannot be flanked and can be Sneak Attacked only by rogue of level 14 or higher</td>
       </tr><tr style="text-align:center">
-        <td>Knock-Out Blow: May forego sneak attack damage to inflict unconscious for 1d4 rd (DC 16 Fort staggered 1 rd) 1/dy</td>
+        <td>Knock-Out Blow: May forego sneak attack damage to inflict unconscious for 1d4 rd (DC 16 Fortitude staggered 1 rd) 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at a -2 penalty</td>
+        <td>Rapid Shot: Can make an extra ranged attack during a full attack, suffering a -2 penalty on all ranged attacks during the rd</td>
       </tr><tr style="text-align:center">
-        <td>Sneak Attack: Hit inflicts +5d6 HP when foe is flanked or denied Dexterity bonus</td>
+        <td>Sneak Attack: Melee hit or ranged hit within 30' inflicts +5d6 HP when the target is flanked or denied its Dexterity bonus</td>
       </tr><tr style="text-align:center">
         <td>Stabbing Shot: May use first bow attack of a full-attack action to stab and push an adjacent foe 5'; all attacks suffer -2 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +4; Reflex: +9; Will: +4</td>
+        <td><b>Resistance</b>: Sleep: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -263,11 +268,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Elven Immunities: Has immunity to sleep</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Elven Immunities: Immune to sleep effects, +2 vs. enchantment</td>
+        <td>Elven Immunities: +2 vs. enchantment</td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half; medium or heavy armor negates</td>
       </tr></table>
 </td>
     </tr></table>
@@ -288,7 +295,7 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Spells</b>:<br/>Acid Splash (Talent0 Conj): R50' Ranged touch inflicts 1d3 HP</td>
+    <td><b>Spells</b>:<br/>Acid Splash (Talent0 Conj): R50' Ranged touch inflicts 1d3 HP acid</td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">

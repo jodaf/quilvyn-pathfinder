@@ -51,6 +51,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 1904/3000 (3.5)</td>
       <td><b>Level</b>: 2</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -82,9 +83,11 @@ var attributes = {
         <td><b>Feats</b>: Blind-Fight; Skill Focus (Fly); Swap Places</td>
         <td><b>Traits</b>: History Of Heresy; Indomitable Faith</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Fields; Heart Of The Streets; Heart Of The Wilderness; Human Ability Adjustment</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Bravery; Core Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Bonus Feats (Fighter); Bravery; Core Fighter; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
+    </tr><tr style="text-align:center">
+      <td><b>Feature Notes</b>: <i>Bonus Feats (Fighter): +2 Fighter Feats</i></td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -111,7 +114,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Eye For Talent: +2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
@@ -124,6 +127,8 @@ var attributes = {
         <td><i>Intelligence Skill Ranks Adjustment: +4</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Fly): +3 Fly</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: +1 on choice of Craft or Profession</td>
       </tr></table>
@@ -141,7 +146,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 10</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 16/11/15</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +2/+4/+3</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +4/15</td>
@@ -150,9 +155,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -160,13 +164,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Chakram (+3 d8+2 x2@20 R30'); Glaive-Guisarme (+3 d10+2 x3@20); Spear (+3 d8+2 x3@20 R20'); Unarmed (+4 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Chakram (+3 d8+2 x2@20 R30'); Glaive-Guisarme (+3 d10+2 x3@20); Spear (+3 d8+2 x3@20 R20'); Unarmed Strike (+4 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1; Shield: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -174,15 +178,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Streets: +1 AC when adjacent to 2 allies</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Wilderness: +5 stabilization checks/Does not die until -12 HP</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">

@@ -78,11 +78,11 @@ PFAPG.ANIMAL_COMPANIONS = {
     'Size=M Speed=20' // Save F/R/W: B/G/G
 };
 PFAPG.ARMORS = {
-  'Agile Breastplate':'AC=6 Weight=Medium Dex=3 Skill=4 Spell=25',
-  'Agile Half-Plate':'AC=8 Weight=Medium Dex=0 Skill=7 Spell=40',
-  'Armored Coat':'AC=4 Weight=Medium Dex=3 Skill=2 Spell=20',
+  'Agile Breastplate':'AC=6 Weight=Medium Dex=3 Skill=-4 Spell=25',
+  'Agile Half-Plate':'AC=8 Weight=Medium Dex=0 Skill=-7 Spell=40',
+  'Armored Coat':'AC=4 Weight=Medium Dex=3 Skill=-2 Spell=20',
   'Quilted Cloth':'AC=1 Weight=Light Dex=8 Skill=0 Spell=10',
-  'Wooden':'AC=3 Weight=Light Dex=3 Skill=1 Spell=15'
+  'Wooden':'AC=3 Weight=Light Dex=3 Skill=-1 Spell=15'
 };
 PFAPG.FAMILIARS = {
   // Attack, Dam, AC include all modifiers
@@ -2327,6 +2327,8 @@ PFAPG.FEATURES = {
   "Death's Kiss":
     'Section=magic ' +
     'Note="Touched healed and harmed as undead for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Deception Subdomain':Pathfinder.FEATURES['Trickery Domain'],
+  'Defense Subdomain':Pathfinder.FEATURES['Protection Domain'],
   'Deflection Aura':
     'Section=combat ' +
     'Note="20\' radius gives allies +2 AC and CMD for %{levels.Cleric} rd 1/dy"',
@@ -2340,6 +2342,7 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="Touch gives immediate save reroll vs. charm and compulsion; also +2 saves vs. charm and compulsion, +2 CMB to escape grapple, and negation of 5\' difficult terrain/rd for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
   'Enlarge':'Section=magic Note="May dbl size for 1 rd %{wisdomModifier+3}/dy"',
+  'Exploration Subdomain':Pathfinder.FEATURES['Travel Domain'],
   'Eyes Of The Hawk':
     'Section=combat,skill ' +
     'Note=' +
@@ -2352,10 +2355,12 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"Casting flying spells on self improves maneuverability by 1 step",' +
-      '"Fly is a class skill"',
+      // hard-code inherited Animal Domain power
+      '"Fly is a class skill/Knowledge (Nature) is a class skill"',
   'Ferocious Strike':
     'Section=combat ' +
     'Note="Called attack inflicts +%{levels.Cleric//2} HP %{wisdomModifier+3}/dy"',
+  'Fur Subdomain':Pathfinder.FEATURES['Animal Domain'],
   'Fury Of The Abyss':
     'Section=combat ' +
     'Note="May suffer -2 AC to gain +%{levels.Cleric//2>?1} attack, damage, CMB, and CMD for 1 rd %{wisdomModifier+3}/dy"',
@@ -2371,9 +2376,11 @@ PFAPG.FEATURES = {
   "Hell's Corruption":
     'Section=combat ' +
     'Note="Touch inflicts -2 saves and worse of two rolls on opposed skill checks for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Heroism Subdomain':Pathfinder.FEATURES['Glory Domain'],
   'Honor Bound':
     'Section=magic ' +
     'Note="Touch gives additional saves vs. existing charm and compulsion effects %{wisdomModifier+3}/dy"',
+  'Honor Subdomain':Pathfinder.FEATURES['Glory Domain'],
   'Insane Focus':
     'Section=magic ' +
     'Note="Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) for 1 min %{wisdomModifier+3}/dy"',
@@ -2383,18 +2390,22 @@ PFAPG.FEATURES = {
   'Killing Blow':
     'Section=combat ' +
     'Note="Crit inflicts %{levels.Cleric//2} HP bleed damage %{(levels.Cleric-4)//4}/dy"',
+  'Language Subdomain':Pathfinder.FEATURES['Rune Domain'],
   "Liberty's Blessing":
     'Section=magic ' +
     'Note="Touch gives save vs. existing spell or effect w/in 1 min %{wisdomModifier+3}/dy"',
+  'Loss Subdomain':Pathfinder.FEATURES['Darkness Domain'],
   'Malign Eye':
     'Section=magic ' +
     'Note="R30\' Inflicts -2 save vs. self spells on target for 1 min or until hits self %{wisdomModifier+3}/dy"',
+  'Memory Subdomain':Pathfinder.FEATURES['Knowledge Domain'],
   'Metal Fist':
     'Section=combat ' +
     'Note="Unarmed attack inflicts 1d6+%{strengthModifier} HP, ignoring hardness 10, w/out provoking AOO for 1 rd %{wisdomModifier+3}/dy"',
   'Night Hunter':
     'Section=feature ' +
     'Note="May become invisible to normal vision in dim light or darkness for %{levels.Cleric//2>?1} rd %{wisdomModifier+3}/dy"',
+  'Night Subdomain':Pathfinder.FEATURES['Darkness Domain'],
   'Powerful Persuader':
     'Section=skill ' +
     'Note="May take higher of 2 Diplomacy or Intimidate rolls %{(levels.Cleric-6)//2}/dy"',
@@ -2409,6 +2420,7 @@ PFAPG.FEATURES = {
   'Purifying Touch':
     'Section=magic ' +
     'Note="Touch gives additional saves vs. existing effects %{(levels.Cleric-2)//6}/dy"',
+  'Purity Subdomain':Pathfinder.FEATURES['Protection Domain'],
   'Rage (Cleric)':
     'Section=combat ' +
     'Note="+4 Strength, +4 Constitution, +2 Will, -2 AC and %1 powers %{levels.Cleric} rd/dy"',
@@ -2444,12 +2456,15 @@ PFAPG.FEATURES = {
   'Thief Of The Gods':
     'Section=skill ' +
     'Note="May take higher of 2 Disable Device or Sleight Of Hand rolls %{(levels.Cleric-6)//2}/dy"',
+  'Thievery Subdomain':Pathfinder.FEATURES['Trickery Domain'],
+  'Thought Subdomain':Pathfinder.FEATURES['Knowledge Domain'],
   'Thundercloud':
     'Section=magic ' +
     'Note="R%{levels.Cleric*10+100}\' Fog in 20\' radius moves 30\'/rd, obscures vision, deafens, and inflicts 2d6 HP electricity %{levels.Cleric} rd/dy"',
   'Touch The Spirit World':
     'Section=magic ' +
     'Note="Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for %{levels.Cleric} rd %{wisdomModifier+3}/dy"',
+  'Trade Subdomain':Pathfinder.FEATURES['Travel Domain'],
   'Tugging Strands':
     'Section=combat Note="May force target reroll %{(levels.Cleric-2)//6}/dy"',
   'Tunnel Runner':
@@ -2464,6 +2479,7 @@ PFAPG.FEATURES = {
   'Warding Rune':
     'Section=magic ' +
     'Note="Damage from blast rune prevents attack on self (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) for %{levels.Cleric//2} rd %{(levels.Cleric-2)//6}/dy"',
+  'Wards Subdomain':Pathfinder.FEATURES['Rune Domain'],
   'Whispering Evil':
     'Section=magic ' +
     'Note="30\' radius fascinates foes (DC %{10+levels.Cleric//2+wisdomModifier} Will negates) %{levels.Cleric} rd/dy"',
@@ -8861,7 +8877,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('skillModifier.Ride', 'skillNotes.mount.1', '+', null);
     rules.defineRule('skillNotes.mount.1',
       'skillNotes.mount', '?', null,
-      'skillNotes.armorSkillCheckPenalty', '=', null
+      'skillNotes.armorSkillCheckPenalty', '=', '-source'
     );
     rules.defineRule('tacticianLevel', classLevel, '=', null);
     let allFeats = rules.getChoices('feats');
@@ -10190,6 +10206,11 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       null, ['Animate Objects']
     );
 
+    // Defense
+    rules.defineRule('saveNotes.defenseSubdomain',
+      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
+    );
+
     // Feather
     rules.defineRule('skillNotes.eyesOfTheHawk',
       'casterLevels.Feather', '=', 'Math.max(Math.floor(source / 2), 1)'
@@ -10199,6 +10220,11 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     Pathfinder.featureSpells(rules,
       'Command', 'Command', 'wisdom', 'casterLevels.Inevitable',
       '10+casterLevels.Inevitable//2+wisdomModifier', ['Command']
+    );
+
+    // Purity
+    rules.defineRule('saveNotes.puritySubdomain',
+      'levels.Cleric', '=', '1 + Math.floor(source / 5)'
     );
 
     // Rage

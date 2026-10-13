@@ -73,12 +73,19 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 59/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 43/86/130</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Ability Notes</b>: Human Ability Adjustment: +2 any</td>
+    <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
+    <tr style="text-align:center">
+      <td>Human Ability Adjustment: +2 any</td>
+    </tr><tr style="text-align:center">
+      <td>Woodland Stride: Can move normally through natural undergrowth without damage or impairment</td>
+    </tr></table>
+</td>
   </tr></table>
 </td>
 </tr><tr style="text-align:center">
@@ -97,22 +104,22 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Combat Expertise; Deadly Aim; Improved Lightning Reflexes; Lightning Reflexes; Shield Focus; Skill Focus (Craft (Traps)); Skill Focus (Heal); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (Planes)); Strike Back</td>
         <td><b>Traits</b>: Adopted; Reactionary</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Aiding Attack; Animal Companion; Armor Proficiency (Medium); Bolster Companion; Camouflage; Catfall; Chameleon Step; Combat Style (Archery); Cunning Pantomime; Defensive Bow Stance; Deft Stand; Distracting Attack; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Hateful Attack; Heel; Hide In Plain Sight; Hobbling Attack; Hunter's Tricks; Improved Evasion; Improved Quarry; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Quarry; Quick Climb; Quick Healing; Quick Swim; Ranger's Counsel; Rapid Shot; Rattling Strike; Second Chance Strike; Shield Proficiency; Sic 'em; Skill Sage; Skirmisher; Stag's Leap; Surprise Shift; Swift Tracker; Tangling Attack; Track; Trick Shot; Uncanny Senses; Upending Strike; Vengeance Strike; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Ranger Features</b>: Aiding Attack; Animal Companion; Armor Proficiency (Light; Medium; Shield); Bolster Companion; Camouflage; Catfall; Chameleon Step; Combat Style (Archery); Combat Style; Cunning Pantomime; Defensive Bow Stance; Deft Stand; Distracting Attack; Endurance; Evasion; Far Shot; Favored Enemy; Favored Terrain; Hateful Attack; Heel; Hide In Plain Sight; Hobbling Attack; Hunter's Bond; Hunter's Tricks; Improved Evasion; Improved Quarry; Manyshot; Master Hunter; Pinpoint Targeting; Point-Blank Shot; Quarry; Quick Climb; Quick Healing; Quick Swim; Ranger's Counsel; Rapid Shot; Rattling Strike; Second Chance Strike; Sic 'em; Skill Sage; Skirmisher; Stag's Leap; Surprise Shift; Swift Tracker; Tangling Attack; Track; Trick Shot; Uncanny Senses; Upending Strike; Vengeance Strike; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Combat Style: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Hunter's Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Adopted: Has one trait from adoptive family's race</td>
       </tr><tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
         <td>Hunter's Tricks: May use 8 selections 13/dy</td>
-      </tr><tr style="text-align:center">
-        <td>Woodland Stride: May move normally through undergrowth</td>
       </tr></table>
 </td>
     </tr></table>
@@ -159,9 +166,9 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Acrobatic: +2 Acrobatics/+2 Fly</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: May take 20 to track target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -177,19 +184,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Camouflage: May use Stealth to hide in favored terrain</td>
+        <td>Camouflage: Can use Hide in any favored terrain</td>
       </tr><tr style="text-align:center">
         <td>Cunning Pantomime: May use Hunter's Trick to communicate w/any speaking creature for 10 min; suffers -4 Bluff and Diplomacy</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 bonuses on Bluff, Listen, Sense Motive, Spot, and Survival distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in 4 terrain type(s)</td>
+        <td>Favored Terrain: Has 7 +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among 4 terrain types and and leaves no trail in those terrains</td>
       </tr><tr style="text-align:center">
-        <td>Hide In Plain Sight: May hide even when observed</td>
+        <td>Hide In Plain Sight: Can Stealth in a favored terrain even when observed</td>
       </tr><tr style="text-align:center">
-        <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
+        <td>Link: +4 Handle Animal and Wild Empathy with companion, and can command companion as a free action</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: May take 20 to track target</td>
+        <td>Master Hunter: Can take 20 when tracking at full Speed</td>
+      </tr><tr style="text-align:center">
+        <td>Quarry: Can take 20 to track quarry at full Speed</td>
       </tr><tr style="text-align:center">
         <td>Quick Climb: May use Hunter's Trick to Climb at full speed w/out penalty for 1 rd</td>
       </tr><tr style="text-align:center">
@@ -201,13 +210,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Stag's Leap: May use Hunter's Trick to make a running jump w/out a prior move</td>
       </tr><tr style="text-align:center">
-        <td>Swift Tracker: May track at full speed</td>
+        <td>Swift Tracker: Can track at full Speed with no penalty to Survival and at double Speed with a -10 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Track: +10 Survival to follow creatures' trail</td>
+        <td>Track: +10 Survival to follow creatures' trails</td>
       </tr><tr style="text-align:center">
         <td>Uncanny Senses: May use Hunter's Trick to gain +10 Perception for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +23 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +23 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -223,7 +232,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 126</td>
         <td><b>Initiative</b>: +4</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 15/12/13</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+21/+22</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +21/33</td>
@@ -232,9 +241,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -242,23 +250,23 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Studded Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Greatsword (+21 2d6+1 x2@19); Lance (+21 d8+1 x3@20); Ranseur (+21 2d4+1 x3@20); Unarmed (+21 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Greatsword (+21 2d6+1 x2@19); Lance (+21 d8+1 x3@20); Ranseur (+21 2d4+1 x3@20); Unarmed Strike (+21 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +20</i></td>
+        <td><i>Armor Class Modifiers: Armor: +3; Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: +4 attack vs. target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Reactionary: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -270,9 +278,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Chameleon Step: May use Hunter's Trick to move dbl speed w/out Stealth penalty</td>
       </tr><tr style="text-align:center">
-        <td>Combat Expertise: May suffer up to -6 attack to gain equal AC bonus</td>
+        <td>Combat Expertise: Can suffer up to -6 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
+        <td>Deadly Aim: Can suffer -6 on ranged attacks to inflict +12 HP until the next turn</td>
       </tr><tr style="text-align:center">
         <td>Defensive Bow Stance: May use Hunter's Trick to make a ranged attack w/out provoking AOO for 1 rd</td>
       </tr><tr style="text-align:center">
@@ -280,35 +288,35 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Distracting Attack: May use Hunter's Trick to inflict -2 attacks on foe for 1 rd w/a successful attack</td>
       </tr><tr style="text-align:center">
-        <td>Far Shot: Reduces range penalty by 1 per range increment</td>
+        <td>Far Shot: Reduces the range increment penalty for ranged weapons by 1</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 weapon attack and damage bonuses distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Initiative in 4 terrain type(s)</td>
+        <td>Favored Terrain: Has 7 +2 Initiative bonuses distributed among 4 terrain types</td>
       </tr><tr style="text-align:center">
         <td>Hateful Attack: May use Hunter's Trick to dbl threat range against favored enemy for 1 rd</td>
       </tr><tr style="text-align:center">
         <td>Hobbling Attack: May use Hunter's Trick to inflict half Speed on land for 1d4 rd with successful attack</td>
       </tr><tr style="text-align:center">
-        <td>Manyshot: May fire 2 arrows simultaneously</td>
+        <td>Manyshot: Can fire 2 arrows with the first bow attack of a full-attack action</td>
       </tr><tr style="text-align:center">
-        <td>Master Hunter: Full attack vs. favored enemy kills (DC 23 Fort neg) 1/dy/favored enemy type</td>
+        <td>Master Hunter: Full attack vs. a favored enemy kills or inflicts nonlethal HP equal to the target's current hit points (save Fortitude DC 23 negates) once per day per favored enemy type</td>
       </tr><tr style="text-align:center">
-        <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
+        <td>Pinpoint Targeting: As a standard action, can make a single ranged attack that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: +4 attack, critical confirmed vs. target</td>
+        <td>Quarry: Can use a free action to gain +4 attacks and automatically confirm crit threats vs. a chosen favored enemy target once per 10 min</td>
       </tr><tr style="text-align:center">
         <td>Quick Healing: May use Hunter's Trick for a swift action Heal skill or a move action potion use on an adjacent unconscious ally</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at a -2 penalty</td>
+        <td>Rapid Shot: Can make an extra ranged attack during a full attack, suffering a -2 penalty on all ranged attacks during the rd</td>
       </tr><tr style="text-align:center">
         <td>Rattling Strike: May use Hunter's Trick to inflict shaken for 1d4 rd w/a successful attack</td>
       </tr><tr style="text-align:center">
         <td>Second Chance Strike: May use Hunter's Trick to immediately reroll a melee miss w/-5 attack</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
         <td>Surprise Shift: May use Hunter's Trick to move 5' w/out provoking AOO</td>
       </tr><tr style="text-align:center">
@@ -334,17 +342,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Improved Evasion: Has increased Evasion effects</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Lightning Reflexes: +2 Reflex</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage; medium or heavy armor negates</td>
       </tr><tr style="text-align:center">
-        <td>Improved Evasion: Failed Reflex in light or no armor save yields half damage</td>
-      </tr><tr style="text-align:center">
-        <td>Improved Lightning Reflexes: May reroll Ref 1/dy</td>
+        <td>Improved Lightning Reflexes: Can reroll a Reflex save once per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -383,25 +391,31 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Evasion; Companion Improved Evasion; Devotion; Link; Multiattack; Share Spells</td>
+      <td><b>Animal Companion Features</b>: Ability Score Increase; Bonus Tricks; Devotion; Evasion (Companion); Improved Evasion (Companion); Link; Multiattack; Share Spells</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
+      <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
+    </tr><tr style="text-align:center">
+      <td>Ability Score Increase: Companion has 3 ability increases to assign</td>
+    </tr><tr style="text-align:center">
+      <td>Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
+    </tr><tr style="text-align:center">
       <td>Bolster Companion: May use Hunter's Trick to give animal companion immediate +4 AC, +4 CMD, and half damage reduction when hit</td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Bonus Tricks: Companion can learn 6 additional tricks, requiring no training time or Handle Animal checks</td>
     </tr><tr style="text-align:center">
-      <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>
+      <td>Devotion: Companion has +4 Will vs. enchantment</td>
     </tr><tr style="text-align:center">
-      <td>Devotion: +4 Will vs. enchantment</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
       <td>Heel: May use Hunter's Trick to move animal companion to self w/out provoking AOO in starting square</td>
     </tr><tr style="text-align:center">
-      <td>Multiattack: Reduces additional attack penalty to -2 or gives second attack at -5</td>
+      <td>Multiattack: Reduces the penalty for additional attacks to -2 or gives a second attack at -5</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr><tr style="text-align:center">
       <td>Sic'em: May use Hunter's Trick to give animal companion an immediate attack on an adjacent foe</td>
     </tr></table>
@@ -413,7 +427,9 @@ var attributes = {
   <tr style="text-align:center">
     <td>    <table id="ValidationPart" style="width:100%">
     <tr style="text-align:center">
-      <td><b>Validation Errors</b>: Selectable Feature Allocation: 18 available vs. 36 allocated</td>
+      <td><b>Validation Warnings</b>: Shield Focus Feat: Implies shield (currently None) != 'None'</td>
+    </tr><tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 18 available vs. 37 allocated</td>
     </tr></table>
 </td>
   </tr></table>

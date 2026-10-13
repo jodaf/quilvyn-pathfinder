@@ -12,7 +12,7 @@ var attributes = {
   "feats.Combat Reflexes":1, "feats.Skill Focus (Disguise)":1, "gender":"Male", "hitPoints":12, 
   "intelligence":16, "languages.Draconic":1, "languages.Dwarven":1, "languages.Halfling":1, 
   "languages.Terran":1, "name":"Skills-Holy Vindicator", "prestige.Holy Vindicator":1, 
-  "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
+  "race":"Human", "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Acrobatics":1, "skills.Appraise":1, 
   "skills.Bluff":1, "skills.Climb":1, "skills.Craft (Alchemy)":1, "skills.Craft (Armor)":1, 
   "skills.Craft (Bows)":1, "skills.Craft (Traps)":1, "skills.Craft (Weapons)":1, "skills.Diplomacy":1, 
@@ -63,6 +63,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 750/1000 (3.5)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -86,12 +87,12 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Reflexes; Skill Focus (Disguise)</td>
-        <td><b>Holy Vindicator Features</b>: Armor Proficiency (Heavy); Channel Energy; Shield Proficiency; Vindicator's Shield; Weapon Proficiency (Martial)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Holy Vindicator Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield); Channel Energy; Vindicator's Shield; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: <i>Bonus Feat: +1 General Feat</i></td>
+      <td><b>Feature Notes</b>: <i>Bonus Feat (Human): +1 General Feat</i></td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -200,7 +201,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 11</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/10/12</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+4/+1</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +4/14</td>
@@ -209,9 +210,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -219,12 +219,14 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Halberd (+4 d10+4 x3@20); Scythe (+4 2d4+4 x4@20); Spiked Gauntlet (+4 d4+3 x2@20); Unarmed (+4 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Halberd (+4 d10+4 x3@20); Scythe (+4 2d4+4 x4@20); Spiked Gauntlet (+4 d4+3 x2@20); Unarmed Strike (+4 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +2</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
@@ -233,9 +235,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: May take AOO while flat-footed and 1 AOO/rd</td>
+        <td>Channel Energy: Can restore 1d6 hit points or inflict the same amount (save Will DC 13 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Vindicator's Shield: May use Channel Energy to gain +1 AC from shield for 1 dy or until struck</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed</td>
+      </tr><tr style="text-align:center">
+        <td>Vindicator's Shield: May use Channel Energy to gain +undefined AC from shield for 1 dy or until struck</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -246,18 +250,6 @@ var attributes = {
 </td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>: <i>Constitution Fortitude Adjustment: -1</i></td>
-    </tr></table>
-</td>
-  </tr></table>
-</td>
-</tr><tr style="text-align:center">
-  <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
-  <tr style="text-align:center">
-    <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
-    <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 1d6 HP (DC 13 Will half) 6/dy</td>
     </tr></table>
 </td>
   </tr></table>

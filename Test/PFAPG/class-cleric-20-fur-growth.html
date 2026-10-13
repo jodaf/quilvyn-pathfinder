@@ -15,7 +15,7 @@ var attributes = {
   "feats.Skill Focus (Knowledge (Nature))":1, "feats.Skill Focus (Perform (Sing))":1, "feats.Tower Shield Proficiency":1, 
   "gender":"Male", "hitPoints":104, "intelligence":11, "levels.Cleric":20, 
   "name":"Class-Cleric 20-Fur Growth", "race":"Human", "selectableFeatures.Cleric - Fur Subdomain":1, 
-  "selectableFeatures.Cleric - Growth Subdomain":1, "selectableFeatures.Human - Bonus Feat":1, 
+  "selectableFeatures.Cleric - Growth Subdomain":1, "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, "skills.Craft (Alchemy)":20, 
   "skills.Craft (Traps)":1, "skills.Diplomacy":2, "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, 
   "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":20, "skills.Perform (Sing)":13, 
@@ -61,6 +61,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 194657/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -93,18 +94,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Law); Channel Smite; Critical Focus; Improved Shield Bash; Intimidating Prowess; Skill Focus (Bluff); Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Nature)); Skill Focus (Perform (Sing)); Tower Shield Proficiency</td>
         <td><b>Traits</b>: Hedge Magician; Sacred Conduit</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Animal Companion; Armor Proficiency (Medium); Aura; Bramble Armor; Channel Energy; Enlarge; Fur Subdomain; Growth Subdomain; Predator's Grace; Shield Proficiency; Spontaneous Cleric Spell; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Animal Companion; Armor Proficiency (Light; Medium; Shield); Aura; Bramble Armor; Channel Energy; Enlarge; Fur Subdomain; Growth Subdomain; Orisons; Predator's Grace; Spontaneous Casting (Cleric); Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
-      </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr><tr style="text-align:center">
         <td>Predator's Grace: Has Low-Light Vision feature for 1 rd 5/dy</td>
       </tr></table>
@@ -123,7 +122,7 @@ var attributes = {
       <tr style="text-align:left">
         <td>Bluff: (cha;cc) 1 (+6)</td>
         <td>Diplomacy: (cha) 2 (+7)</td>
-        <td>Knowledge (Nature): (int;cc) 1 (+4)</td>
+        <td>Knowledge (Nature): (int) 1 (+7)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Alchemy): (int) 20 (+23)</td>
         <td>Intimidate: (cha;cc) 1 (+5)</td>
@@ -139,7 +138,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Fur Subdomain: Knowledge (Nature) is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intimidating Prowess: +2 Intimidate</i></td>
       </tr><tr style="text-align:center">
@@ -155,7 +156,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Hedge Magician: Cost to craft magic items is reduced by 5%</td>
+        <td>Hedge Magician: Reduces the cost to craft magic items by 5%</td>
       </tr></table>
 </td>
     </tr></table>
@@ -171,7 +172,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 84</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/28</td>
@@ -180,9 +181,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -190,17 +190,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Armored Coat</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed Strike (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Sacred Conduit: +1 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -208,15 +210,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
+        <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Bramble Armor: Thorny hide inflicts 1d6+10 HP on striking foes 20 rd/dy</td>
+        <td>Bramble Armor: Successful melee attackers without reach suffer 1d6+10 HP piercing for 20 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
+      </tr><tr style="text-align:center">
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -255,59 +259,63 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animal Shapes (Fur7 Tran): R75' 20 willing targets in 15' radius become chosen diminutive - huge animal or small - medium magical beast for 20 hr</td>
+      <td>Animal Shapes (Fur7 Tran): R75' 20 willing targets in a 15' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Animate Plants (Growth7 Tran): R75' 6 plants attack foes for 20 rd or entwine for 20 hr</td>
+      <td>Animate Plants (Growth7 Tran): R75' 6 Large plant targets attack foes for 20 rd or entwine for 20 hr; larger plants reduce the number affected by half for each size level</td>
     </tr><tr style="text-align:left">
-      <td>Antilife Shell (Fur6 Abju): 10' radius bars living for 20 min</td>
+      <td>Antilife Shell (Fur6 Abju): 10' radius bars the entrance of living creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Barkskin (Growth2 Tran): Touched gains +5 natural armor for 200 min</td>
+      <td>Barkskin (Growth2 Tran): Touched gains a +5 natural armor enhancement bonus to Armor Class for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape I (Fur3 Tran): Self becomes small (+2 Dexterity, +1 AC) or medium (+2 Strength, +2 AC) animal for 20 min</td>
+      <td>Beast Shape I (Fur3 Tran): Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for 20 min; the transformation may also give any of 30' climb, fly, or swim Speeds, 60' Darkvision, Low-Light Vision, and Scent, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape III (Fur5 Tran): Self becomes diminutive (+6 Dexterity, -4 Strength, +1 AC) or huge (+6 Strength, -4 Dexterity, +6 AC) animal or small (+4 Dexterity, +2 AC) or medium (+4 Strength, +4 AC) magical beast for 20 min</td>
+      <td>Beast Shape III (Fur5 Tran): Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for 20 min; the transformation may also give any of a 30' burrow Speed, 90' climb, fly, or swim Speeds, 60' Darkvision, Low-Light Vision, Scent, Constrict, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (Growth4 Tran): R75' 40 HD plant creatures in 15' radius obey self (DC 16 Will neg) for 20 dy</td>
+      <td>Command Plants (Growth4 Tran): R75' 40 HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Control Plants (Growth8 Tran): R75' 40 HD plant creatures in 15' radius obey self (DC 20 Will neg) for 20 min</td>
+      <td>Control Plants (Growth8 Tran): R75' 40 HD of plant creatures in a 15' radius obey self (save Will negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Enlarge Person (Growth1 Tran): R75' Target humanoid dbl size (+2 Strength, -2 Dexterity, -1 attack, -1 AC) (DC 13 Fort neg) for 20 min</td>
+      <td>Enlarge Person (Growth1 Tran): R75' Target humanoid doubles in size, gaining +2 Strength and suffering -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class (save Fortitude negates), for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Hold Animal (Fur2 Ench): R300' Immobilizes target animal (DC 14 Will neg) for 20 rd</td>
+      <td>Hold Animal (Fur2 Ench): R300' Paralyzes the animal target (save Will negates; additional saves each rd end) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Magic Fang (Fur1 Tran): Touched natural weapon gains +1 attack and damage for 20 min</td>
+      <td>Magic Fang (Fur1 Tran): Touched gains +1 attacks and damage when using a specified natural weapon for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Growth (Growth3 Tran): Vegetation in 1200' radius becomes dense or 1/2 mile radius increases productivity</td>
+      <td>Plant Growth (Growth3 Tran): Causes vegetation in a 100' radius to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Repel Wood (Growth6 Tran): Repels 60' line of unanchored wood for 20 min</td>
+      <td>Repel Wood (Growth6 Tran): 60' line pushes away unanchored wooden objects and splinters fixed objects up to 3" in diameter for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (Growth5 Tran): Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR 10/evil or DR 10/good for 20 rd</td>
+      <td>Righteous Might (Growth5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Growth9 Conj): R300' Creates 1d4+2 advanced shambling mounds in 15' radius that fight for 7 dy or guard for 7 mo</td>
+      <td>Shambler (Growth9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
     </tr><tr style="text-align:left">
-      <td>Shapechange (Fur9 Tran): Self becomes nonunique creature of any size 1/rd for 200 min</td>
+      <td>Shapechange (Fur9 Tran): Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally IV (Fur4 Conj): R75' 1 4th-, 1d3 3rd-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally IV (Fur4 Conj): R75' Summons 1 4th-level, 1d3 3rd-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Nature's Ally VIII (Fur8 Conj): R75' 1 8th-, 1d3 7th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Nature's Ally VIII (Fur8 Conj): R75' Summons 1 8th-level, 1d3 7th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 22 Will half) 5/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
       <td>Enlarge: May dbl size for 1 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Sacred Conduit: +1 channeled energy save DC</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Companions</b><br/>  <table id="CompanionArea" style="width:100%">
+  <tr style="text-align:center">
+    <td><b>Companion Notes</b>: Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
   </tr></table>
 </td>
 </tr></table>

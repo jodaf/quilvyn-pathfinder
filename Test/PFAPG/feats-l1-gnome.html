@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 29/30 (PSOP)</td>
       <td><b>Level</b>: 10</td>
+      <td><b>Size</b>: Small</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 28/57/86.25</td>
     </tr></table>
@@ -70,8 +71,6 @@ var attributes = {
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Gnome Ability Adjustment: +2 Constitution/+2 Charisma/-2 Strength</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Slow: -10 Speed</i></td>
     </tr><tr style="text-align:center">
       <td><i>Small: x0.75 Load Max</i></td>
     </tr></table>
@@ -93,18 +92,20 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Agile Maneuvers; Arcane Talent; Breadth Of Experience; Dodge; Eagle Eyes; Gnome Trickster; Go Unnoticed; Groundling; Improved Sidestep; Low Profile; Mobility; Sharp Senses; Sidestep; Taunt; Under And Over; Underfoot</td>
-        <td><b>Gnome Features</b>: Defensive Training; Gnome Ability Adjustment; Gnome Hatred; Gnome Magic; Keen Senses; Low-Light Vision; Obsessive; Resist Illusion; Slow; Small; Weapon Familiarity (Gnome Hooked Hammer)</td>
-        <td><b>Rogue Features</b>: Acrobat; Armor Proficiency (Light); Bleeding Attack; Crippling Strike; Evasion; Expert Acrobat; Finesse Rogue; Improved Uncanny Dodge; Knock-Out Blow; Rogue Talents; Second Chance (Rogue); Sneak Attack; Survivalist; Uncanny Dodge; Weapon Proficiency (Simple/Hand Crossbow/Rapier/Sap/Shortbow/Short Sword)</td>
+        <td><b>Gnome Features</b>: Defensive Training; Gnome Ability Adjustment; Gnome Hatred; Gnome Magic; Illusion Resistance; Keen Senses; Low-Light Vision; Obsessive; Resist Illusion; Weapon Familiarity (Gnome Hooked Hammer)</td>
+        <td><b>Rogue Features</b>: Acrobat; Advanced Talents; Armor Proficiency (Light); Bleeding Attack; Crippling Strike; Evasion; Expert Acrobat; Finesse Rogue; Improved Uncanny Dodge; Knock-Out Blow; Rogue Talents; Second Chance (Rogue); Sneak Attack; Survivalist; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Hand Crossbow; Rapier; Sap; Shortbow; Short Sword)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Finesse Rogue: Has Weapon Finesse feature</i></td>
+        <td><i>Advanced Talents: Has additional Rogue Talent choices</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Finesse Rogue: Has the Weapon Finesse feature</i></td>
       </tr><tr style="text-align:center">
         <td><i>Rogue Talents: 5 selections</i></td>
       </tr><tr style="text-align:center">
-        <td>Low-Light Vision: x2 normal distance in poor light</td>
+        <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr></table>
 </td>
     </tr></table>
@@ -127,13 +128,13 @@ var attributes = {
         <td>Escape Artist: (dex) 2 (+6)</td>
         <td>Profession (Librarian): (wis) 5 (+11)</td>
       </tr><tr style="text-align:left">
-        <td>Climb: (str) 5 (+8)</td>
+        <td>Climb: (str) 5 (+7)</td>
         <td>Intimidate: (cha) 5 (+9)</td>
         <td>Sense Motive: (wis) 5 (+9)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Alchemy): (int) 5 (+8)</td>
         <td>Knowledge (Engineering): (int;cc) 2 (+4)</td>
-        <td>Stealth: (dex) 9 (+18)</td>
+        <td>Stealth: (dex) 9 (+17)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Armor): (int) 5 (+8)</td>
         <td>Linguistics: (int) 2 (+5)</td>
@@ -153,7 +154,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Breadth Of Experience: +2 all Knowledge/+2 all Profession</i></td>
       </tr><tr style="text-align:center">
@@ -173,7 +174,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Go Unnoticed: May use Stealth to hide from flat-footed foes during the first rd of combat</td>
       </tr><tr style="text-align:center">
-        <td>Obsessive: +2 choice of Craft or Profession</td>
+        <td>Obsessive: +2 on a choice of Craft or Profession</td>
       </tr><tr style="text-align:center">
         <td>Second Chance (Rogue): May make -5 reroll on Acrobatics, Climb, or Fly 3/dy</td>
       </tr><tr style="text-align:center">
@@ -195,7 +196,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 87</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 17</td>
+        <td><b>AC/Touch/Flat</b>: 17/14/16</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +7/+8/+10</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +8/19</td>
@@ -205,8 +206,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Hand Crossbow; Rapier; Sap; Short Sword; Shortbow; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -214,7 +214,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Studded Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dart (+10 d3 x2@20 R20'); Greataxe (+4 d10 x3@20); Heavy Mace (+8 d6 x2@20); Light Mace (+10 d4 x2@20); Unarmed (+10 d2 x2@20)</td>
+        <td><b>Weapons</b>: Dart (+10 d3 x2@20 R20'); Greataxe (+4 d10 x3@20); Heavy Mace (+8 d6 x2@20); Light Mace (+10 d4 x2@20); Unarmed Strike (+10 d2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -222,43 +222,45 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Agile Maneuvers: +2 CMB</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +30</i></td>
+        <td><i>Armor Class Modifiers: Armor: +3; Dexterity: +2; Dodge: +1; Size: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +30</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Greataxe: -4 attack</i></td>
+        <td><i>Small: +1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Small: +1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD</i></td>
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Finesse: +2 light melee weapon attack (Dexterity instead of Strength)</i></td>
+        <td><i>Unproficient Weapon Penalty.Greataxe: -4 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Bleeding Attack: Sneak attack inflicts 5 HP/rd (magic healing or DC 15 Heal ends)</td>
+        <td><i>Weapon Finesse: +2 light melee weapon, rapier, whip, and spiked chain attacks (uses Dexterity instead of Strength)</i></td>
       </tr><tr style="text-align:center">
-        <td>Crippling Strike: Sneak attack inflicts 2 points Strength damage</td>
+        <td>Bleeding Attack: Sneak Attack inflicts 5 HP bleed each rd; magical healing or a DC 15 Heal ends</td>
       </tr><tr style="text-align:center">
-        <td>Defensive Training: +4 AC vs. giant creatures</td>
+        <td>Crippling Strike: Sneak Attack also inflicts 2 points of Strength damage</td>
       </tr><tr style="text-align:center">
-        <td>Gnome Hatred: +1 attack vs. goblinoid and reptilian</td>
+        <td>Defensive Training: +4 dodge bonus to Armor Class vs. creatures with the giant type</td>
+      </tr><tr style="text-align:center">
+        <td>Gnome Hatred: +1 attacks vs. goblinoid and reptilian</td>
       </tr><tr style="text-align:center">
         <td>Improved Sidestep: May move normally on next rd after Sidestep</td>
       </tr><tr style="text-align:center">
-        <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 14+</td>
+        <td>Improved Uncanny Dodge: Cannot be flanked and can be Sneak Attacked only by rogue of level 14 or higher</td>
       </tr><tr style="text-align:center">
-        <td>Knock-Out Blow: May forego sneak attack damage to inflict unconscious for 1d4 rd (DC 15 Fort staggered 1 rd) 1/dy</td>
+        <td>Knock-Out Blow: May forego sneak attack damage to inflict unconscious for 1d4 rd (DC 15 Fortitude staggered 1 rd) 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Low Profile: +1 AC vs. ranged</td>
       </tr><tr style="text-align:center">
-        <td>Mobility: +4 AC vs. movement AOO</td>
+        <td>Mobility: +4 dodge bonus to Armor Class vs. movement AOO</td>
       </tr><tr style="text-align:center">
         <td>Sidestep: May move 5' w/in threatened area w/out provoking AOO after a foe miss; suffers -5' move next rd</td>
       </tr><tr style="text-align:center">
-        <td>Sneak Attack: Hit inflicts +5d6 HP when foe is flanked or denied Dexterity bonus</td>
+        <td>Sneak Attack: Melee hit or ranged hit within 30' inflicts +5d6 HP when the target is flanked or denied its Dexterity bonus</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr><tr style="text-align:center">
         <td>Under And Over: May make an immediate +2 trip maneuver w/out provoking AOO after a larger foe grapple attempt fails</td>
       </tr><tr style="text-align:center">
@@ -280,9 +282,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half; medium or heavy armor negates</td>
       </tr><tr style="text-align:center">
-        <td>Resist Illusion: +2 vs. illusions</td>
+        <td>Illusion Resistance: +2 vs. illusions</td>
       </tr></table>
 </td>
     </tr></table>
@@ -297,7 +299,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Talent0</td>
-        <td><b>Spell DC</b>: Talent: 15</td>
+        <td><b>Spell DC</b>: Gnome Magic: 15; Talent: 15</td>
       </tr></table>
 </td>
     </tr></table>
@@ -305,27 +307,29 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Acid Splash (Talent0 Conj): R50' Ranged touch inflicts 1d3 HP</td>
+      <td>Acid Splash (Talent0 Conj): R50' Ranged touch inflicts 1d3 HP acid</td>
     </tr><tr style="text-align:left">
-      <td>Dancing Lights (Gnome Magic0 Evoc): R200' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+      <td>Dancing Lights (Gnome Magic0 Evoc): R200' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (Gnome Magic0 Illu): R50' Produces sound volume of 20 humans (DC 15 Will disbelieve) for 10 rd</td>
+      <td>Ghost Sound (Gnome Magic0 Illu): R50' Produces the sound volume of 40 humans (save Will (DC +1) upon interaction disbelieves) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mage Hand (Gnome Trickster0 Tran): R50' Self moves up to 5 lb target 15'/rd for conc</td>
+      <td>Mage Hand (Gnome Trickster0 Tran): RNaN' Allows self to use move actions to move a target object up to 5 lb 15' per rd for concentration</td>
     </tr><tr style="text-align:left">
-      <td>Prestidigitation (Gnome Magic0 Univ): R10' Self performs minor tricks for 1 hr</td>
+      <td>Prestidigitation (Gnome Magic0 Univ): R10' Allows performing minor magic effects for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Prestidigitation (Gnome Trickster0 Univ): R10' Self performs minor tricks for 1 hr</td>
+      <td>Prestidigitation (Gnome Trickster0 Univ): R10' Allows performing minor magic effects for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Gnome Magic1 Divi): Self converses w/animals for 10 min</td>
+      <td>Speak With Animals (Gnome Magic1 Divi): Allows self to converse with animals for 10 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Gnome Magic: +1 Spell DC (Illusion)/May cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> 1/dy</i></td>
+      <td><i>Gnome Magic: +1 Spell DC (Illusion)</i></td>
     </tr><tr style="text-align:center">
       <td>Arcane Talent: May cast chosen Talent0 spell 3/dy</td>
+    </tr><tr style="text-align:center">
+      <td>Gnome Magic: Can cast <i>Dancing Lights</i>, <i>Ghost Sound</i>, <i>Prestidigitation</i>, and <i>Speak With Animals</i> once per day</td>
     </tr><tr style="text-align:center">
       <td>Gnome Trickster: May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy</td>
     </tr><tr style="text-align:center">

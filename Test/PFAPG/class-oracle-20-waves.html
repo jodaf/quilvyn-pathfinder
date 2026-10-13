@@ -14,7 +14,7 @@ var attributes = {
   "feats.Quicken Spell":1, "feats.Reach Spell":1, "feats.Silent Spell":1, 
   "feats.Spell Focus (Enchantment)":1, "feats.Strike Back":1, "gender":"Male", "hitPoints":82, "intelligence":13, 
   "languages.Elven":1, "levels.Oracle":20, "name":"Class-Oracle 20-Waves", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Oracle - Blizzard":1, "selectableFeatures.Oracle - Fluid Nature":1, 
   "selectableFeatures.Oracle - Fluid Travel":1, "selectableFeatures.Oracle - Freezing Spells":1, 
   "selectableFeatures.Oracle - Ice Armor":1, "selectableFeatures.Oracle - Icy Skin":1, 
@@ -63,6 +63,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -94,14 +95,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Elemental Spell (Cold); Empower Spell; Improved Unarmed Strike; Maximize Spell; Persistent Spell; Point-Blank Shot; Quicken Spell; Reach Spell; Silent Spell; Spell Focus (Enchantment); Strike Back</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Blizzard; Final Revelation (Waves Mystery); Fluid Nature; Fluid Travel; Freezing Spells; Ice Armor; Icy Skin; Mystery; Oracle's Curse; Orisons; Punitive Transformation; Revelation; Shield Proficiency; Wasting; Water Form; Water Sight; Waves Mystery; Weapon Proficiency (Simple); Wintry Touch</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Blizzard; Final Revelation (Waves Mystery); Fluid Nature; Fluid Travel; Freezing Spells; Ice Armor; Icy Skin; Mystery; Oracle's Curse; Orisons; Punitive Transformation; Revelation; Wasting; Water Form; Water Sight; Waves Mystery; Weapon Proficiency (Simple Weapons); Wintry Touch</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Fluid Nature: Has Dodge feature</i></td>
       </tr><tr style="text-align:center">
@@ -156,7 +157,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -182,7 +183,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 142</td>
         <td><b>Initiative</b>: -2</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/9/12</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +15/24</td>
@@ -191,9 +192,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -201,31 +201,31 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +60</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: -2; Dodge: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: -2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td>Blizzard: 20 contiguous 10' cu inflict 20d4 HP cold (DC 23 Ref half), reduce vision to 5', and inflict +5 Acrobatics DC for 3 rd 1/dy</td>
+        <td>Blizzard: 20 contiguous 10' cu inflict 20d4 HP cold (DC 23 Reflex half), reduce vision to 5', and inflict +5 Acrobatics DC for 3 rd 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Fluid Nature: +4 CMD vs. bull rush, drag, grapple, reposition, and trip/-4 Foe crit confirm</td>
       </tr><tr style="text-align:center">
         <td>Ice Armor: Conjured armor gives +12 AC and DR 5/piercing (both +2 in cold, -2 in heat) for 20 hr/dy</td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
         <td>Wintry Touch: Touch inflicts 1d6+10 HP cold 6/dy; wielded weapons inflict +1d6 cold</td>
       </tr></table>
@@ -270,23 +270,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Baleful Polymorph (Punitive Transformation5 Tran): R75' Target becomes 1 HD creature (DC 23 Fort neg)</td>
+      <td>Baleful Polymorph (Punitive Transformation5 Tran): RNaN' Changes the target into a chosen 1 HD creature (save Fortitude negates; Will after a failure allows retaining HD and memories)</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body I (Water Form4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+      <td>Elemental Body I (Water Form4 Tran): Self becomes a Small elemental for NaN min—a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body II (Water Form5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+      <td>Elemental Body II (Water Form5 Tran): Self becomes a Medium elemental for NaN min—a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body III (Water Form6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks for 20 min</td>
+      <td>Elemental Body III (Water Form6 Tran): Self becomes a Large elemental for NaN min—a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Water Form7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 20 min</td>
+      <td>Elemental Body IV (Water Form7 Tran): Self becomes a Huge elemental for NaN min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
     </tr><tr style="text-align:left">
-      <td>Fluid Form (O6 Tran): Self gains DR 10/slashing, +10 reach, +60' Swim, Amphibious feature, and ability to squeeze through cracks for 20 min</td>
+      <td>Fluid Form (O6 Tran): Self gains DR 10/slashing, +10' reach, a 60' swim Speed, water breathing, the ability to squeeze through cracks, and the water subtype, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Geyser (O5 Conj): R1200' 5' sq inflicts 3d6 HP fire and 10d6 falling (DC 18 Ref half fire only), and surrounding 50' radius inflicts 1d6 HP fire, for conc + 1 rd</td>
+      <td>Geyser (O5 Conj): R1200' 5' sq inflicts 3d6 HP fire and up to 10d6 falling (save Reflex half fire only), and the surrounding 50' radius inflicts 1d6 HP fire, for concentration + 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Scrying (Water Sight7 Divi): Self views and may cast detection and communication spells on target (DC 23 Will special neg) for 20 hr</td>
+      <td>Greater Scrying (Water Sight7 Divi): Self sees, hears, and can cast detection and communication spells in a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for NaN hr</td>
     </tr><tr style="text-align:left">
-      <td>Scrying (Water Sight4 Divi): Self views target (DC 23 Will neg) for 20 min</td>
+      <td>Scrying (Water Sight4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for NaN min</td>
     </tr><tr style="text-align:left">
       <td>Seamantle (O8 Conj): 30' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30' slam attack, and touch that extinguishes fires for 20 min</td>
     </tr><tr style="text-align:left">
@@ -294,13 +294,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Touch Of The Sea (O1 Tran): Touched gains +30' swim speed and +8 Swim, plus may use run action and may always take 10 while swimming, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Tsunami (O9 Conj): R1200' 10'x10'x40' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (DC 22 Fort half), +31 CMB to knock down and sweep away for 5 rd</td>
+      <td>Tsunami (O9 Conj): R1200' 10'x10'x40' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (Fortitude half), +31 CMB to knock down and sweep away for 5 rd</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (O7 Evoc): R1200' 15' radius inflicts 3d6 HP bludgeoning (DC 20 Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (DC 20 Ref neg) for 19 rd; self may eject creatures from the vortex</td>
+      <td>Vortex (O7 Evoc): R1200' 15' radius inflicts 3d6 HP bludgeoning (Reflex negates) on first contact, then 1d8 HP/rd on Medium and smaller (Reflex negates) for 19 rd; self may eject creatures from the vortex</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Ice (O4 Evoc): R300' Creates 20 10' x 20 inch thick ice wall or 23' hemisphere for 20 min</td>
+      <td>Wall Of Ice (O4 Evoc): R300' Creates a 200 square foot wall or a 23' radius hemisphere of 20"-thick ice for 20 min; each 10' section has 60 hit points, and passing through a broken section of the wall inflicts 1d6+20 HP cold</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (O3 Tran): Touched can breathe underwater for 40 hrs total</td>
+      <td>Water Breathing (O3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs divided among them</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -312,25 +312,25 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Final Revelation (Waves Mystery): May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to cold and water spells w/out cost</td>
     </tr><tr style="text-align:center">
       <td>Freezing Spells: Target failed save on spells that inflict cold damage also slows target for 1d4 rd</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Persistent Spell: May spend +2 spell slot to force target to take worse of 2 saving throws</td>
     </tr><tr style="text-align:center">
       <td>Punitive Transformation: May use <i>Baleful Polymorph</i> effects, lasting 20 rd, to transform target into a harmless animal 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
       <td>Water Form: May use <i>Elemental Body IV</i> effects to become huge water elemental for 20 hr 1/dy</td>
     </tr><tr style="text-align:center">

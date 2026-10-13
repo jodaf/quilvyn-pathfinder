@@ -53,6 +53,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 28/30 (PSOP)</td>
       <td><b>Level</b>: 10</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 23/46/70</td>
     </tr></table>
@@ -76,7 +77,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Extra Bombs; Extra Discovery</td>
-        <td><b>Alchemist Features</b>: Acid Bomb; Alchemy; Armor Proficiency (Light); Bomb; Brew Potion; Concussive Bomb; Discovery; Enhance Potion; Extend Potion; Frost Bomb; Infusion; Mutagen; Poison Resistance; Poison Use; Swift Alchemy; Swift Poisoning; Throw Anything (Alchemist); Weapon Proficiency (Simple/Bomb)</td>
+        <td><b>Alchemist Features</b>: Acid Bomb; Alchemy; Armor Proficiency (Light); Bomb; Brew Potion; Concussive Bomb; Discovery; Enhance Potion; Extend Potion; Frost Bomb; Infusion; Mutagen; Poison Resistance; Poison Use; Swift Alchemy; Swift Poisoning; Throw Anything (Alchemist); Weapon Proficiency (Simple Weapons; Bomb)</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Wilderness; Human Ability Adjustment</td>
       </tr></table>
 </td>
@@ -88,8 +89,6 @@ var attributes = {
         <td><i>Extra Discovery: +1 selections</i></td>
       </tr><tr style="text-align:center">
         <td><i>Throw Anything (Alchemist): Has Throw Anything feature</i></td>
-      </tr><tr style="text-align:center">
-        <td>Poison Use: No chance of self-poisoning when applying poison to a weapon</td>
       </tr></table>
 </td>
     </tr></table>
@@ -156,7 +155,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 82</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/12/11</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +7/+5/+9</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +5/17</td>
@@ -166,8 +165,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Bomb; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -175,15 +173,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Padded</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bomb (+9 5d6+1); Dagger (+5 d4-2 x2@19 R10'); Heavy Crossbow (+9 d10 x2@19 R120'); Punching Dagger (+5 d4-2 x3@20); Unarmed (+5 d3-2 x2@20)</td>
+        <td><b>Weapons</b>: Bomb (+9 5d6+1); Dagger (+5 d4-2 x2@19 R10'); Heavy Crossbow (+9 d10 x2@19 R120'); Punching Dagger (+5 d4-2 x3@20); Unarmed Strike (+5 d3-2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +30</i></td>
+        <td><i>Armor Class Modifiers: Armor: +1; Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +30</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -195,13 +193,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Acid Bomb: May create bombs that inflict acid damage instead of fire; a direct hit inflicts an additional 1d6 HP acid the next round</td>
       </tr><tr style="text-align:center">
-        <td>Bomb: May create bombs that inflict 5d6+1 HP fire on hit and 6 HP fire splash (DC 16 Ref half) 13/dy</td>
+        <td>Bomb: May create bombs that inflict 5d6+1 HP fire on hit and 6 HP fire splash (DC 16 Reflex half) 13/dy</td>
       </tr><tr style="text-align:center">
-        <td>Concussive Bomb: May create bombs that inflict 5d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC 16 Fort neg)</td>
+        <td>Concussive Bomb: May create bombs that inflict 5d4 HP sonic instead of fire; a direct hit deafens for 1 min (DC 16 Fortitude negates)</td>
       </tr><tr style="text-align:center">
-        <td>Frost Bomb: May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC 16 Fort neg)</td>
+        <td>Frost Bomb: May create bombs that inflict cold damage instead of fire; a direct hit staggers (DC 16 Fortitude negates)</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Wilderness: +5 stabilization checks/Does not die until -22 HP</td>
+      </tr><tr style="text-align:center">
+        <td>Poison Use: Has no risk of self-poisoning when applying poison to a weapon</td>
       </tr><tr style="text-align:center">
         <td>Swift Alchemy: May apply poison to a weapon as a move action</td>
       </tr><tr style="text-align:center">
@@ -209,7 +209,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Throw Anything (Alchemist): Splash weapons inflict +1 HP damage</td>
       </tr><tr style="text-align:center">
-        <td>Throw Anything: No penalty for improvised ranged weapon, +1 attack w/thrown splash</td>
+        <td>Throw Anything: Suffers no penalty for using improvised ranged weapons, and gains +1 attacks with thrown splash weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -256,7 +256,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 5%</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
       <td>Enhance Potion: May cause imbibed potion to function at caster level 10 1/dy</td>
     </tr><tr style="text-align:center">

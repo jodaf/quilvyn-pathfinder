@@ -53,6 +53,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 36/39 (PSOP)</td>
       <td><b>Level</b>: 13</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -82,13 +83,13 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Chaos); Elemental Focus (Fire); Enlarge Spell; Improved Critical (Unarmed); Lingering Spell; Spell Focus (Divination); Spell Focus (Transmutation)</td>
-        <td><b>Holy Vindicator Features</b>: Armor Proficiency (Heavy); Bloodfire; Bloodrain; Caster Level Bonus; Channel Energy; Channel Smite; Divine Judgment; Divine Retribution; Divine Wrath; Faith Healing; Shield Proficiency; Stigmata; Versatile Channel; Vindicator's Shield; Weapon Proficiency (Martial)</td>
+        <td><b>Holy Vindicator Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield); Bloodfire; Bloodrain; Caster Level Bonus; Channel Energy; Channel Smite; Divine Judgment; Divine Retribution; Divine Wrath; Faith Healing; Stigmata; Versatile Channel; Vindicator's Shield; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
         <td><b>Human Features</b>: Eye For Talent; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura; Bleeding Touch; Channel Energy; Evil Domain; Murder Subdomain; Shield Proficiency; Spontaneous Cleric Spell; Touch Of Evil; Weapon Proficiency (Scythe); Weapon Proficiency (Simple)</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Bleeding Touch; Channel Energy; Evil Domain; Murder Subdomain; Orisons; Spontaneous Casting (Cleric); Touch Of Evil; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+      <td><b>Feature Notes</b>: Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -119,7 +120,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -6 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -6 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Eye For Talent: +2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
@@ -141,7 +142,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 105</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 18</td>
+        <td><b>AC/Touch/Flat</b>: 19/11/18</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +12/+12/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/23</td>
@@ -150,9 +151,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -160,31 +160,31 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Breastplate</td>
         <td><b>Shield</b>: Heavy Steel</td>
-        <td><b>Weapons</b>: Brass Knuckles (+12 d3 x2@20); Light Mace (+12 d6 x2@20); Punching Dagger (+12 d4 x3@20); Unarmed (+12 d3 x2@19)</td>
+        <td><b>Weapons</b>: Brass Knuckles (+12 d3 x2@20); Light Mace (+12 d6 x2@20); Punching Dagger (+12 d4 x3@20); Unarmed Strike (+12 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +13</i></td>
+        <td><i>Armor Class Modifiers: Armor: +6; Dexterity: +1; Shield: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +13</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Critical (Unarmed): x2 Unarmed Threat Range</i></td>
+        <td>Alignment Channel (Chaos): Can use Channel Energy to heal or harm chaotic outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Chaos): May use Channel Energy to heal or harm chaotic outsiders</td>
-      </tr><tr style="text-align:center">
-        <td>Bleeding Touch: Touch attack inflicts 1d6 HP/rd for 1 rd (magic healing or DC 15 Heal ends) 5/dy</td>
+        <td>Bleeding Touch: Touch attack inflicts 1d6 HP bleed damage for 1 rd (magical healing or a DC 15 Heal ends) 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Bloodfire: Channel Smite while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP/rd bleed (DC 16 Will ends)</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 7d6 hit points or inflict the same amount (save Will DC 19 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Touch Of Evil: Touch inflicts sickened for 1 rd 5/dy</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Vindicator's Shield: May use Channel Energy to gain +7 AC from shield for 1 dy or until struck</td>
+        <td>Touch Of Evil: Touch inflicts sickened and susceptibility to good-targeted spells for 1 rd 5 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Vindicator's Shield: May use Channel Energy to gain +undefined AC from shield for 1 dy or until struck</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -223,15 +223,15 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Bestow Curse (Divine Retribution3 Necr): Touched permanently suffers self choice of -6 ability, -4 attack, saves, and checks, or 50% chance/rd of losing action (DC 15 Will neg)</td>
+      <td>Bestow Curse (Divine Retribution3 Necr): Touched permanently suffers a choice of -6 to an ability, -4 attacks, saves, and checks, or a 50% chance of losing its action each rd (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Bleed (Stigmata0 Necr): R50' Stabilized target suffers 1 HP and resumes dying (DC 12 Will neg)</td>
+      <td>Bleed (Stigmata0 Necr): RNaN' Stabilized target suffers 1 HP and resumes dying (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Death Knell (Divine Judgment2 Necr): Touched w/negative HP dies, and self gains 1d8 temporary HP, +2 Strength, and +1 caster level for 10*target HD min (DC 14 Will neg)</td>
+      <td>Death Knell (Divine Judgment2 Necr): Touched creature with negative hit points dies (save Will negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
     </tr><tr style="text-align:left">
-      <td>Doom (Divine Wrath1 Necr): R200' Target becomes shaken (-2 attack, damage, saves, and checks) (DC 13 Will neg) for 10 min</td>
+      <td>Doom (Divine Wrath1 Necr): RNaN' Makes the target shaken, inflicting -2 attacks, damage, saves, and checks (save Will negates), for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Stabilize (Stigmata0 Conj): R50' Stabilizes target w/negative HP</td>
+      <td>Stabilize (Stigmata0 Conj): RNaN' Stabilizes a target with negative hit points</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -239,17 +239,15 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Caster Level Bonus: +7 base class level for spells known and spells per day</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Spell Focus (Divination): +1 Spell DC (Divination)</i></td>
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Transmutation): +1 Spell DC (Transmutation)</i></td>
     </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Bloodrain: Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC 16 Will ends)</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 7d6 HP (DC 19 Will half) 6/dy</td>
+      <td>Bloodrain: Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC 16 Will ends)</td>
     </tr><tr style="text-align:center">
       <td>Divine Judgment: May use level 2 spell slot to inflict <i>Death Knell</i> in response to reducing foe to negative HP</td>
     </tr><tr style="text-align:center">
@@ -259,13 +257,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Fire): +1 save DC on spells that inflict fire damage</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
       <td>Faith Healing: Self <i>Cure</i> spells have maximum effects</td>
     </tr><tr style="text-align:center">
       <td>Lingering Spell: May spend +1 spell slot to cast an instantaneous spell w/duration 1</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Orisons: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
       <td>Stigmata: May suffer 5 HP/rd bleed damage to gain +5 choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will</td>
     </tr><tr style="text-align:center">

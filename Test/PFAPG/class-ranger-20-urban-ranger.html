@@ -61,6 +61,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 59/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 43/86/130</td>
     </tr></table>
@@ -85,14 +86,18 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Deadly Aim; Elemental Focus (Electricity); Expanded Arcana; Lightning Reflexes; Quicken Spell; Reach Spell; Shield Focus; Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Geography)); Skill Focus (Knowledge (Planes)); Strike Back</td>
         <td><b>Traits</b>: Adopted; Reactionary</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Blend In; Combat Style (Weapon And Shield); Evasion; Favored Community; Favored Enemy; Focused Shot; Furious Focus; Improved Evasion; Improved Quarry; Invisibility Trick; Master Hunter; Push Through; Quarry; Saving Shield; Shield Focus; Shield Master; Shield Proficiency; Shield Slam; Swift Tracker; Track; Trapfinding; Urban Ranger; Weapon Proficiency (Martial); Wild Empathy</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Ranger Features</b>: Armor Proficiency (Light; Medium; Shield); Blend In; Combat Style (Weapon And Shield); Combat Style; Evasion; Favored Community; Favored Enemy; Focused Shot; Furious Focus; Hunter's Bond; Improved Evasion; Improved Quarry; Invisibility Trick; Master Hunter; Push Through; Quarry; Saving Shield; Shield Focus; Shield Master; Shield Slam; Swift Tracker; Track; Trapfinding; Urban Ranger; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Combat Style: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Hunter's Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Adopted: Has one trait from adoptive family's race</td>
       </tr><tr style="text-align:center">
@@ -145,9 +150,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: May take 20 to track target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -165,17 +170,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Favored Community: +2 or more Knowledge (Local), Perception, Stealth, and Survival and leaves no trail w/in favored community</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 bonuses on Bluff, Listen, Sense Motive, Spot, and Survival distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: May take 20 to track target</td>
+        <td>Master Hunter: Can take 20 when tracking at full Speed</td>
       </tr><tr style="text-align:center">
-        <td>Swift Tracker: May track at full speed</td>
+        <td>Quarry: Can take 20 to track quarry at full Speed</td>
       </tr><tr style="text-align:center">
-        <td>Track: +10 Survival to follow creatures' trail</td>
+        <td>Swift Tracker: Can track at full Speed with no penalty to Survival and at double Speed with a -10 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Trapfinding: +10 Perception (traps)/+10 Disable Device (traps)</td>
+        <td>Track: +10 Survival to follow creatures' trails</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +23 Diplomacy (animals)</td>
+        <td>Trapfinding: +10 Perception to locate traps and Disable Device to disarm them</td>
+      </tr><tr style="text-align:center">
+        <td>Wild Empathy: Can make a +23 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -191,7 +198,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 126</td>
         <td><b>Initiative</b>: +4</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 15/12/13</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+21/+22</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +21/33</td>
@@ -200,9 +207,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -210,51 +216,51 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Studded Leather</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Greatsword (+21 2d6+1 x2@19); Lance (+21 d8+1 x3@20); Ranseur (+21 2d4+1 x3@20); Unarmed (+21 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Greatsword (+21 2d6+1 x2@19); Lance (+21 d8+1 x3@20); Ranseur (+21 2d4+1 x3@20); Unarmed Strike (+21 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +20</i></td>
+        <td><i>Armor Class Modifiers: Armor: +3; Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Improved Quarry: +4 attack vs. target</i></td>
+        <td><i>Improved Quarry: Has increased Quarry effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Reactionary: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Deadly Aim: May suffer -6 ranged attack to gain +12 damage</td>
+        <td>Deadly Aim: Can suffer -6 on ranged attacks to inflict +12 HP until the next turn</td>
       </tr><tr style="text-align:center">
         <td>Favored Community: +2 or more Initiative w/in favored community</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more attack and damage vs. 5 type(s) of creatures</td>
+        <td>Favored Enemy: Has 9 +2 weapon attack and damage bonuses distributed among 5 chosen creature types</td>
       </tr><tr style="text-align:center">
         <td>Focused Shot: R30' +2 HP damage on a bow or crossbow attack</td>
       </tr><tr style="text-align:center">
         <td>Furious Focus: Suffers no penalty on first attack using two-handed Power Attack</td>
       </tr><tr style="text-align:center">
-        <td>Master Hunter: Full attack vs. favored enemy kills (DC 23 Fort neg) 1/dy/favored enemy type</td>
+        <td>Master Hunter: Full attack vs. a favored enemy kills or inflicts nonlethal HP equal to the target's current hit points (save Fortitude DC 23 negates) once per day per favored enemy type</td>
       </tr><tr style="text-align:center">
         <td>Push Through: Not slowed by difficult terrain and can move through spaces occupied by locals w/in favored community</td>
       </tr><tr style="text-align:center">
-        <td>Quarry: +4 attack, critical confirmed vs. target</td>
+        <td>Quarry: Can use a free action to gain +4 attacks and automatically confirm crit threats vs. a chosen favored enemy target once per 10 min</td>
       </tr><tr style="text-align:center">
         <td>Saving Shield: May use shield to give an adjacent ally +2 AC</td>
       </tr><tr style="text-align:center">
-        <td>Shield Master: No penalty on shield attacks/May apply shield enhancements to attack and damage</td>
+        <td>Shield Master: Suffers no penalty on shield attacks, and any shield enhancement bonus benefits shield attacks and damage</td>
       </tr><tr style="text-align:center">
-        <td>Shield Slam: Shield Bash inflicts Bull Rush</td>
+        <td>Shield Slam: Shield Bash also inflicts a Bull Rush based on the attack roll that provokes no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -270,13 +276,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Improved Evasion: Has increased Evasion effects</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Lightning Reflexes: +2 Reflex</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
-      </tr><tr style="text-align:center">
-        <td>Improved Evasion: Failed Reflex in light or no armor save yields half damage</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half, and failed Reflex saves yield half damage; medium or heavy armor negates</td>
       </tr></table>
 </td>
     </tr></table>
@@ -297,7 +303,7 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Spells</b>:<br/>Greater Invisibility (Invisibility Trick4 Illu): Touched becomes invisible for 20 rd</td>
+    <td><b>Spells</b>:<br/>Greater Invisibility (Invisibility Trick4 Illu): Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for NaN rd</td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
@@ -309,9 +315,21 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Invisibility Trick: My cast self <i>Greater Invisibility</i> 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Warnings</b>: Shield Focus Feat: Implies shield (currently None) != 'None'</td>
+    </tr><tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 10 available vs. 11 allocated</td>
     </tr></table>
 </td>
   </tr></table>

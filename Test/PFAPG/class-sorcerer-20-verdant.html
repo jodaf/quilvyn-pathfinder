@@ -56,6 +56,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -80,14 +81,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Craft Wand; Deft Hands; Ectoplasmic Spell; Elemental Spell (Acid); Expanded Arcana; Improved Initiative; Skill Focus (Craft (Armor)); Skill Focus (Handle Animal); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Use Magic Device); Spell Focus (Necromancy); Thundering Spell; Toughness</td>
         <td><b>Traits</b>: Killer; Resilient</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Sorcerer Features</b>: Bloodline Verdant; Eschew Materials; Massmorph; Photosynthesis; Rooting; Shepherd Of The Trees; Tanglevine; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Sorcerer Features</b>: Bloodline Verdant; Bloodline; Cantrips; Eschew Materials; Massmorph; Photosynthesis; Rooting; Shepherd Of The Trees; Tanglevine; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bloodline: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Shepherd Of The Trees: Has 30' tremorsense</i></td>
       </tr><tr style="text-align:center">
@@ -160,7 +163,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 91</td>
         <td><b>Initiative</b>: +6</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 16/16/14</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+12</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/24</td>
@@ -169,9 +172,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -179,13 +180,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed (+12 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed Strike (+12 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -197,11 +198,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Toughness: +20 HP</i></td>
+        <td><i>Toughness: +20 Hit Points</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Killer: Inflicts extra damage equal to weapon damage multiplier on critical hit</td>
+        <td>Killer: Inflicts extra damage equal to the weapon damage multiplier on critical hits</td>
       </tr><tr style="text-align:center">
         <td>Tanglevine: May make R15' +23 CMB disarm, steal, or trip maneuver 6/dy</td>
       </tr></table>
@@ -237,6 +238,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
         <td><b>Spell DC</b>: S: 13</td>
       </tr></table>
@@ -246,33 +248,33 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Plants (Bloodline Verdant7 Tran): R75' 6 plants attack foes for 20 rd or entwine for 20 hr</td>
+      <td>Animate Plants (Bloodline Verdant7 Tran): RNaN' NaN Large plant targets attack foes for NaN rd or entwine for NaN hr; larger plants reduce the number affected by half for each size level</td>
     </tr><tr style="text-align:left">
-      <td>Barkskin (Bloodline Verdant2 Tran): Touched gains +5 natural armor for 200 min</td>
+      <td>Barkskin (Bloodline Verdant2 Tran): Touched gains a +5 natural armor enhancement bonus to Armor Class for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (Bloodline Verdant4 Tran): R75' 40 HD plant creatures in 15' radius obey self (DC 17 Will neg) for 20 dy</td>
+      <td>Command Plants (Bloodline Verdant4 Tran): RNaN' NaN HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for NaN days, obeying commands only with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Diminish Plants (Massmorph3 Tran): Prunes 1200' or stunts growth of normal plants in 1/2 mile radius</td>
+      <td>Diminish Plants (Massmorph3 Tran): Prunes normal vegetation in a NaN' radius or stunts the growth of normal plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Entangle (Bloodline Verdant1 Tran): R1200' Creatures in 40' radius entangled for 20 min (DC 14 Ref neg)</td>
+      <td>Entangle (Bloodline Verdant1 Tran): RNaN' 40' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Growth (Massmorph3 Tran): Vegetation in 1200' radius becomes dense or 1/2 mile radius increases productivity</td>
+      <td>Plant Growth (Massmorph3 Tran): Causes vegetation in a 100' radius to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape I (Massmorph5 Tran): Self becomes small (+2 Constitution, +2 AC) or medium (+2 Strength, +2 Constitution, +2 AC) plant creature for 20 min</td>
+      <td>Plant Shape I (Massmorph5 Tran): Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape II (Massmorph6 Tran): Self becomes large (+4 Strength, +2 Constitution, +4 AC) plant creature for 20 min</td>
+      <td>Plant Shape II (Massmorph6 Tran): Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape III (Bloodline Verdant7 Tran): Self becomes huge (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC) plant creature for 20 min</td>
+      <td>Plant Shape III (Bloodline Verdant7 Tran): Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Bloodline Verdant9 Conj): R300' Creates 1d4+2 advanced shambling mounds in 15' radius that fight for 7 dy or guard for 7 mo</td>
+      <td>Shambler (Bloodline Verdant9 Conj): RNaN' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Plants (Bloodline Verdant3 Divi): Self converses w/plants for 20 min</td>
+      <td>Speak With Plants (Bloodline Verdant3 Divi): Allows self to converse with plants and plant creatures for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Transport Via Plants (Bloodline Verdant6 Conj): Self and 6 willing targets teleport via like plants for 1 rd</td>
+      <td>Transport Via Plants (Bloodline Verdant6 Conj): Uses a Medium or larger plant to transport self and NaN willing creatures to another plant of the same kind</td>
     </tr><tr style="text-align:left">
-      <td>Tree Shape (Massmorph3 Tran): Self becomes tree for 20 hr</td>
+      <td>Tree Shape (Massmorph3 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for NaN hr</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Bloodline Verdant5 Conj): R300' 20 10' cu thorns inflict (25-AC) HP/rd when passing through for 200 min</td>
+      <td>Wall Of Thorns (Bloodline Verdant5 Conj): RNaN' Creates NaN cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for NaN min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -284,13 +286,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bloodline Verdant: Casting personal spell gives +1/spell level to AC for 1d4 rd</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Cantrips: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Ectoplasmic Spell: May spend +1 spell slot to target an incorporeal or ethereal creature</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Acid): May use +1 spell slot to convert half or all spell damage to acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Eschew Materials: May cast spells w/out materials</td>
+      <td>Eschew Materials: Can ignore inexpensive material component requirements when casting spells</td>
     </tr><tr style="text-align:center">
       <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
     </tr><tr style="text-align:center">
@@ -298,7 +302,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Rooting: May suffer Speed reduction to 5' to gain +4 AC, +10 CMD vs. bull rush, overrun, reposition, and trip, 30' tremorsense, and regain 1 HP/rd for 20 min/dy</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd</td>
+      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 3 available vs. 4 allocated</td>
     </tr></table>
 </td>
   </tr></table>

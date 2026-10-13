@@ -13,7 +13,7 @@ var attributes = {
   "feats.Practiced Tactician":1, "gender":"Female", "hitPoints":24, "intelligence":17, "languages.Druidic":1, 
   "languages.Gnoll":1, "languages.Gnome":1, "languages.Orc":1, "levels.Cavalier":3, 
   "name":"Feats-L1 Cavalier", "race":"Human", "selectableFeatures.Cavalier - Order Of The Cockatrice":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Heart Of The Fields":1, "shield":"Buckler", 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Heart Of The Fields":1, "shield":"Buckler", 
   "skills.Appraise":3, "skills.Bluff":2, "skills.Climb":3, "skills.Craft (Armor)":1, 
   "skills.Diplomacy":2, "skills.Heal":1, "skills.Knowledge (Nobility)":2, "skills.Linguistics":1, 
   "skills.Perform (Oratory)":3, "skills.Profession (Scribe)":3, "strength":14, "weapons.Heavy Flail":1, 
@@ -51,6 +51,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 8/9 (PSOP)</td>
       <td><b>Level</b>: 3</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -80,14 +81,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Practiced Tactician</td>
-        <td><b>Cavalier Features</b>: Armor Proficiency (Heavy); Braggart; Cavalier's Charge; Challenge; Mount; Order Of The Cockatrice; Order; Shield Proficiency; Tactician; Weapon Proficiency (Martial)</td>
-        <td><b>Human Features</b>: Bonus Feat; Heart Of The Fields; Human Ability Adjustment</td>
+        <td><b>Cavalier Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield); Braggart; Cavalier's Charge; Challenge; Mount; Order Of The Cockatrice; Order; Tactician; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Heart Of The Fields; Human Ability Adjustment</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Braggart: Has Dazzling Display feature; may use unarmed</i></td>
       </tr><tr style="text-align:center">
@@ -96,8 +97,6 @@ var attributes = {
         <td><i>Order: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Tactician: 1 Teamwork feat</i></td>
-      </tr><tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
       </tr><tr style="text-align:center">
         <td>Order Of The Cockatrice: Must put own interest above others'</td>
       </tr></table>
@@ -136,7 +135,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -5 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -5 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -148,7 +147,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: +1 on choice of Craft or Profession</td>
       </tr><tr style="text-align:center">
-        <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
+        <td>Link: +4 Handle Animal and Wild Empathy with companion, and can command companion as a free action</td>
       </tr><tr style="text-align:center">
         <td>Order Of The Cockatrice: Foes suffer +0 DC to demoralize using Intimidate</td>
       </tr></table>
@@ -166,7 +165,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 30</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 17/11/16</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +3/+5/+4</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +5/16</td>
@@ -175,9 +174,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -185,15 +183,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Scale Mail</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Heavy Flail (+4 d10+2 x2@19); Sap (+5 d6+2 x2@20); Shortbow (+4 d6 x3@20 R60'); Unarmed (+5 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Flail (+4 d10+2 x2@19); Sap (+5 d6+2 x2@20); Shortbow (+4 d6 x3@20 R60'); Unarmed Strike (+5 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +6</i></td>
+        <td><i>Armor Class Modifiers: Armor: +5; Dexterity: +1; Shield: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +6</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -203,7 +201,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Braggart: +2 attack vs. demoralized target</td>
       </tr><tr style="text-align:center">
@@ -211,11 +209,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Challenge: May inflict +3 HP damage on chosen foe and suffer -2 AC against other foes 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Dazzling Display: R30' May use Intimidate to demoralize foes using focused weapon</td>
+        <td>Dazzling Display: R30' Can use Intimidate to demoralize foes when using a Weapon Focus weapon</td>
       </tr><tr style="text-align:center">
         <td>Order Of The Cockatrice: +1 HP damage during solo threat of Challenge target</td>
       </tr><tr style="text-align:center">
         <td>Tactician: R30' May share Teamwork feat w/allies for 4 rd 2/dy</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -272,7 +272,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Evasion; Light Armor Proficiency; Link</td>
+      <td><b>Animal Companion Features</b>: Bonus Tricks; Evasion (Companion); Light Armor Proficiency; Link</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -280,7 +280,11 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Mount: Mount has Light Armor Proficiency feature but lacks Share Spells feature</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
+    </tr><tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 2 additional tricks, requiring no training time or Handle Animal checks</td>
+    </tr><tr style="text-align:center">
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half</td>
     </tr></table>
 </td>
   </tr></table>

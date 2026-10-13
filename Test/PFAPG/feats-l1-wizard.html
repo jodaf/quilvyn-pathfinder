@@ -61,6 +61,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 50/51 (PSOP)</td>
       <td><b>Level</b>: 17</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -91,11 +92,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Arcane Blast; Arcane Shield; Bouncing Spell; Brew Potion; Cooperative Crafting; Dazing Spell; Disruptive Spell; Diviner's Delving; Ectoplasmic Spell; Elemental Focus (Acid); Elemental Spell (Acid); Focused Spell; Greater Elemental Focus (Acid); Heighten Spell; Improved Counterspell; Improved Share Spells; Intensified Spell; Lingering Spell; Major Spell Expertise; Merciful Spell; Minor Spell Expertise; Parry Spell; Persistent Spell; Preferred Spell; Reach Spell; Selective Spell; Sickening Spell; Spell Focus (Divination); Spell Focus (Transmutation); Spell Perfection; Tenacious Transmutation; Thundering Spell</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Streets; Human Ability Adjustment</td>
-        <td><b>Wizard Features</b>: Blinding Ray; Extended Illusions; Familiar; Invisibility Field; School Opposition (Abjuration); School Opposition (Enchantment); School Specialization (Illusion); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
+        <td><b>Wizard Features</b>: Arcane Bond; Blinding Ray; Bonus Feats (Wizard); Extended Illusions; Familiar; Invisibility Field; School Opposition (Abjuration); School Opposition (Enchantment); School Specialization (Illusion); School Specialization; Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: Familiar: Special bond and abilities</td>
+      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td><i>Arcane Bond: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feats (Wizard): +3 Wizard Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td>School Specialization: 1 selection</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -132,11 +141,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +34</i></td>
       </tr><tr style="text-align:center">
-        <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
+        <td>Alertness (Companion): +2 Perception and Sense Motive when companion is within reach</td>
       </tr><tr style="text-align:center">
         <td>Cooperative Crafting: Assisting another gives +2 Craft or Spellcraft and dbl daily output</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Illusion): +2 Spellcraft (Illusion effects)</td>
       </tr></table>
 </td>
     </tr></table>
@@ -152,7 +159,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 68</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 10</td>
+        <td><b>AC/Touch/Flat</b>: 10/10/10</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +8/+10/+8</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +10/20</td>
@@ -161,9 +168,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Limited</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -171,7 +176,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Brass Knuckles (+10 d3+2 x2@20); Gauntlet (+10 d3+2 x2@20); Light Crossbow (+8 d8 x2@19 R80'); Nunchaku (+6 d6+2 x2@20); Unarmed (+10 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Brass Knuckles (+10 d3+2 x2@20); Gauntlet (+10 d3+2 x2@20); Light Crossbow (+8 d8 x2@19 R80'); Nunchaku (+6 d6+2 x2@20); Unarmed Strike (+10 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -179,13 +184,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +17</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Nunchaku: -4 attack</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Nunchaku: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blinding Ray: R30' Ranged touch attack blinds a target with up to 17 HD or dazzles a target with more for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Familiar Crab: +2 grapple CMB</td>
       </tr><tr style="text-align:center">
@@ -220,9 +227,17 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: W0: 4; W1: 6; W2: 6; W3: 5; W4: 5; W5: 5; W6: 5; W7: 4; W8: 3; W9: 2</td>
-        <td><b>Spell DC</b>: W: 12</td>
+        <td><b>Spell DC</b>: Invisibility Field: 13; Scry On Familiar: 13; W: 12</td>
       </tr></table>
 </td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
+    <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
+    <tr style="text-align:left">
+      <td>Greater Invisibility (Invisibility Field4 Illu): Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for 17 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Scrying (Scry On Familiar4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for 17 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -232,7 +247,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1, W2</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Illusion): +1 Illusion spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Illusion): +1 Illusion spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Divination): +1 Spell DC (Divination)</i></td>
     </tr><tr style="text-align:center">
@@ -242,13 +257,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Arcane Shield: May use a spell slot to gain +1 AC/slot level for 1 rd</td>
     </tr><tr style="text-align:center">
-      <td>Blinding Ray: R30' Ranged touch blinds or dazzles target for 1 rd 5/dy</td>
-    </tr><tr style="text-align:center">
       <td>Bouncing Spell: May spend +1 spell slot to redirect an ineffective spell to another target</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
-      <td>Dazing Spell: May use +3 spell slot w/damaging spell to daze target (spell save or Will neg) for spell level rd</td>
+      <td>Dazing Spell: May use +3 spell slot w/damaging spell to daze target (spell save or Will negates) for spell level rd</td>
     </tr><tr style="text-align:center">
       <td>Disruptive Spell: May spend +1 spell slot to inflict a concentration check to use a spell or spell-like ability for 1 rd</td>
     </tr><tr style="text-align:center">
@@ -260,17 +273,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Acid): May use +1 spell slot to convert half or all spell damage to acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Extended Illusions: Illusion duration increased by 8 rd</td>
+      <td>Extended Illusions: Increases the duration of Illusion spells by 8 rd</td>
     </tr><tr style="text-align:center">
       <td>Focused Spell: May spend +1 spell slot to inflict +2 save DC on one chosen target of a multi-target spell</td>
     </tr><tr style="text-align:center">
-      <td>Heighten Spell: May cast chosen spell at a higher level</td>
+      <td>Heighten Spell: Can cast spells at a higher than normal level</td>
     </tr><tr style="text-align:center">
-      <td>Improved Counterspell: May counterspell using a higher-level spell from the same school</td>
+      <td>Improved Counterspell: Can counterspell using a higher-level spell from the same school</td>
     </tr><tr style="text-align:center">
       <td>Intensified Spell: May spend +1 spell slot to raise the spell damage cap by 5 HD</td>
     </tr><tr style="text-align:center">
-      <td>Invisibility Field: May become invisible 17 rd/dy</td>
+      <td>Invisibility Field: Can use swift actions to invoke <i>Greater Invisibility</i> effects on self for 17 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Lingering Spell: May spend +1 spell slot to cast an instantaneous spell w/duration 1</td>
     </tr><tr style="text-align:center">
@@ -292,17 +305,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>School Opposition (Enchantment): Casting Enchantment spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
-      <td>Scribe Scroll: May create scroll of any known spell</td>
+      <td>Scribe Scroll: Can create scrolls for known spells</td>
     </tr><tr style="text-align:center">
       <td>Selective Spell: May spend +1 spell slot to protect creatures in spell effect area from damage</td>
     </tr><tr style="text-align:center">
-      <td>Sickening Spell: May spend +2 spell slot to sicken target (spell save or Fort neg) for spell level rd</td>
+      <td>Sickening Spell: May spend +2 spell slot to sicken target (spell save or Fortitude negates) for spell level rd</td>
     </tr><tr style="text-align:center">
       <td>Spell Perfection: May use metamagic feat for one chosen spell w/out cost; spell gains dbl other feat bonuses</td>
     </tr><tr style="text-align:center">
       <td>Tenacious Transmutation: Self transmutation spell gains +2 DC to dispel, and effects continue 1 rd after a successful dispel</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd</td>
+      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
     </tr></table>
 </td>
   </tr></table>
@@ -334,34 +347,39 @@ var attributes = {
         <td><b>Attack</b>: +8 2@1d2-2</td>
         <td><b>CMB/CMD</b>: +8/16</td>
         <td><b>Fort/Ref/Will</b>: +6/+7/+10</td>
+        <td><b>SR</b>: 22</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Familiar Features</b>: Companion Alertness; Companion Evasion; Companion Improved Evasion; Companion Spell Resistance; Deliver Touch Spells; Empathic Link; Scry On Familiar; Share Spells; Speak With Like Animals; Speak With Master</td>
+      <td><b>Familiar Features</b>: Alertness (Companion); Deliver Touch Spells; Empathic Link; Evasion (Companion); Improved Evasion (Companion); Scry On Familiar; Share Spells; Speak With Animals Of Its Kind; Speak With Master; Spell Resistance (Companion)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>
+      <td><i>Spell Resistance (Companion): Companion has SR 22</i></td>
     </tr><tr style="text-align:center">
-      <td>Deliver Touch Spells: May deliver touch spells if in contact w/master when cast</td>
+      <td>Deliver Touch Spells: Can use companion to deliver touch spells if in contact when the spell is cast</td>
     </tr><tr style="text-align:center">
-      <td>Empathic Link: May share emotions up to 1 mile</td>
+      <td>Empathic Link: Can communicate emotions with companion up to 1 mile</td>
+    </tr><tr style="text-align:center">
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
       <td>Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
     </tr><tr style="text-align:center">
+      <td>Familiar: Can bond with a magical creature with expanded abilities</td>
+    </tr><tr style="text-align:center">
       <td>Improved Share Spells: R5' May share non-instantaneous self spells w/companion; halves spell effects duration</td>
     </tr><tr style="text-align:center">
-      <td>Scry On Familiar: Master may view companion 1/dy</td>
+      <td>Scry On Familiar: Can view companion once per day</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Like Animals: May talk w/similar creatures</td>
+      <td>Speak With Animals Of Its Kind: Companion can communicate with similar creatures</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Master: May talk w/master in secret language</td>
+      <td>Speak With Master: Can talk with companion in a shared, secret language</td>
     </tr></table>
 </td>
   </tr></table>

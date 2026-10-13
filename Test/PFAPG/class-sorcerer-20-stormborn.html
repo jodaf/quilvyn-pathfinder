@@ -56,6 +56,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -80,14 +81,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Craft Wand; Deft Hands; Ectoplasmic Spell; Elemental Spell (Acid); Expanded Arcana; Improved Initiative; Skill Focus (Craft (Armor)); Skill Focus (Handle Animal); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Use Magic Device); Spell Focus (Necromancy); Thundering Spell; Toughness</td>
         <td><b>Traits</b>: Killer; Resilient</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Sorcerer Features</b>: Bloodline Stormborn; Eschew Materials; Ride The Lightning; Storm Lord; Stormchild; Thunderbolt; Thunderstaff; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Sorcerer Features</b>: Bloodline Stormborn; Bloodline; Cantrips; Eschew Materials; Ride The Lightning; Storm Lord; Stormchild; Thunderbolt; Thunderstaff; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bloodline: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td>Storm Lord: Has 120' Blindsight against concealment by fog, mist, or weather</td>
       </tr><tr style="text-align:center">
@@ -158,7 +161,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 91</td>
         <td><b>Initiative</b>: +6</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/12/10</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+12</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/24</td>
@@ -167,9 +170,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -177,13 +178,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed (+12 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed Strike (+12 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -193,11 +194,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Toughness: +20 HP</i></td>
+        <td><i>Toughness: +20 Hit Points</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Killer: Inflicts extra damage equal to weapon damage multiplier on critical hit</td>
+        <td>Killer: Inflicts extra damage equal to the weapon damage multiplier on critical hits</td>
       </tr><tr style="text-align:center">
         <td>Storm Lord: May regain 1/3 HP from electricity or sonic attack damage 1/dy</td>
       </tr></table>
@@ -233,6 +234,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
         <td><b>Spell DC</b>: S: 13</td>
       </tr></table>
@@ -242,23 +244,23 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Chain Lightning (Bloodline Stormborn6 Evoc): R1200' Bolt inflicts 20d6 HP to primary target (DC 19 Ref half) and 20 secondary targets in 30' radius (DC 19 Ref +2 half)</td>
+      <td>Chain Lightning (Bloodline Stormborn6 Evoc): RNaN' Bolt inflicts 20d6 HP electricity to the primary target (save Reflex half) and 20 secondary targets in a 30' radius (save Reflex +2 half)</td>
     </tr><tr style="text-align:left">
-      <td>Control Weather (Bloodline Stormborn7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (Bloodline Stormborn7 Tran): Modifies seasonal weather in a 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Gust Of Wind (Bloodline Stormborn2 Evoc): 60' 50 MPH gust affects medium or smaller creatures (DC 15 Fort neg) for 1 rd</td>
+      <td>Gust Of Wind (Bloodline Stormborn2 Evoc): Creates a 60' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Strength DC 15 allows Medium creatures to move); Tiny creatures are also pushed 1d4x10', suffering 1d4 HP nonlethal per 10'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10', suffering 2d6 HP nonlethal (save Fly DC 25 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Lightning Bolt (Bloodline Stormborn3 Evoc): 120' bolt inflicts 10d6 HP (DC 16 Ref half)</td>
+      <td>Lightning Bolt (Bloodline Stormborn3 Evoc): 120' line inflicts 10d6 HP electricity (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (Bloodline Stormborn5 Tran): Self gains 40' fly speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (Bloodline Stormborn5 Tran): Self gains a 40' fly Speed and +NaN Fly skill for NaN hr</td>
     </tr><tr style="text-align:left">
-      <td>Shocking Grasp (Bloodline Stormborn1 Evoc): Touch (+3 vs. metal) inflicts 5d6 HP</td>
+      <td>Shocking Grasp (Bloodline Stormborn1 Evoc): Melee touch attack (+3 vs. metal) inflicts 5d6 HP electricity</td>
     </tr><tr style="text-align:left">
-      <td>Shout (Bloodline Stormborn4 Evoc): R30' Cone inflicts 5d6 HP and deafness for 2d6 rd (DC 17 Fort half HP only)</td>
+      <td>Shout (Bloodline Stormborn4 Evoc): 30' cone inflicts 5d6 HP sonic (or 15d6 HP sonic to crystalline creatures and objects) and deafened for 2d6 rd (save Fortitude half HP only; save Reflex negates damage to held objects)</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Bloodline Stormborn9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (DC 22 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 22 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
+      <td>Storm Of Vengeance (Bloodline Stormborn9 Conj): RNaN' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Whirlwind (Bloodline Stormborn8 Evoc): R1200' Wind in 10' radius inflicts 3d6 HP, then 1d8 HP/rd for 20 rd (DC 21 Ref neg)</td>
+      <td>Whirlwind (Bloodline Stormborn8 Evoc): RNaN' 10' radius, 30' high cyclone moves 60' as directed each rd, inflicting 3d6 HP on Large and smaller creatures (save Reflex negates), for NaN rd; it traps Medium and smaller creatures (save Reflex negates), inflicting an additional 1d8 HP on each subsequent rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -270,23 +272,35 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bloodline Stormborn: +1 save DC on electricity and sonic spells</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Cantrips: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Ectoplasmic Spell: May spend +1 spell slot to target an incorporeal or ethereal creature</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Acid): May use +1 spell slot to convert half or all spell damage to acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Eschew Materials: May cast spells w/out materials</td>
+      <td>Eschew Materials: Can ignore inexpensive material component requirements when casting spells</td>
     </tr><tr style="text-align:center">
       <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
     </tr><tr style="text-align:center">
       <td>Ride The Lightning: Full-round action moves self 300' w/out provoking AOO, inflicts Thunderbolt effect for 20 rd 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Thunderbolt: R120' 5' radius inflicts 20d6 HP (half electricity, half sonic) and deafened 1 rd (DC 23 Ref half HP only) 3/dy</td>
+      <td>Thunderbolt: R120' 5' radius inflicts 20d6 HP (half electricity, half sonic) and deafened 1 rd (DC 23 Reflex half HP only) 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd</td>
+      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
     </tr><tr style="text-align:center">
       <td>Thunderstaff: Touched weapon inflicts +1d6 HP electricity for 10 rd or gains <i>shocking burst</i> property for 5 rd 6/dy</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 3 available vs. 4 allocated</td>
     </tr></table>
 </td>
   </tr></table>

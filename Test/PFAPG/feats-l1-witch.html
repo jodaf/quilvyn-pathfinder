@@ -50,6 +50,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 6/9 (PSOP)</td>
       <td><b>Level</b>: 3</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -79,7 +80,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Extra Hex</td>
-        <td><b>Witch Features</b>: Agility Patron; Cantrips; Fortune Hex; Healing Hex; Hex; Patron; Slumber Hex; Weapon Proficiency (Simple); Witch's Familiar</td>
+        <td><b>Witch Features</b>: Agility Patron; Cantrips; Fortune Hex; Healing Hex; Hex; Patron; Slumber Hex; Weapon Proficiency (Simple Weapons); Witch's Familiar</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Streets; Human Ability Adjustment</td>
       </tr></table>
 </td>
@@ -93,8 +94,6 @@ var attributes = {
         <td><i>Patron: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Witch's Familiar: Has Familiar feature</i></td>
-      </tr><tr style="text-align:center">
-        <td>Familiar: Special bond and abilities</td>
       </tr></table>
 </td>
     </tr></table>
@@ -131,7 +130,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Intelligence Skill Ranks Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
-        <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
+        <td>Alertness (Companion): +2 Perception and Sense Motive when companion is within reach</td>
       </tr></table>
 </td>
     </tr></table>
@@ -147,7 +146,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 17</td>
         <td><b>Initiative</b>: +3</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/13/10</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+1/+4</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +1/14</td>
@@ -156,9 +155,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -166,15 +163,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+1 d4 x2@19 R10'); Longspear (+1 d8 x3@20); Sickle (+1 d6 x2@20); Unarmed (+1 d3 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+1 d4 x2@19 R10'); Longspear (+1 d8 x3@20); Sickle (+1 d6 x2@20); Unarmed Strike (+1 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +3</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +3</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +3</i></td>
+        <td><i>Constitution Hit Points Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -219,9 +216,9 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Cure Light Wounds (Healing Hex1 Conj): Touched heals (undead suffers) 1d8+3 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (Healing Hex1 Conj): Touched regains 1d8+5 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Sleep (Slumber Hex1 Ench): R130' 4 HD of creatures in 10' radius sleep (DC 11 Will neg) for 3 min</td>
+      <td>Sleep (Slumber Hex1 Ench): RNaN' 4 HD of creatures in a 10' radius fall asleep (save Will negates), moving upward from those with the lowest HD, for NaN min; shaking or wounding wakens an affected creature, but noise does not</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -229,7 +226,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Intelligence Witch Spell Slot Bonus: Spell level Witch1</i></td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Fortune Hex: R30' Target gains the better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for 1 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
@@ -237,7 +234,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Patron: Knows additional spells</td>
     </tr><tr style="text-align:center">
-      <td>Slumber Hex: R30' May use <i>Sleep</i> effects w/out HD limit (DC 12 Will neg) for 3 rd 1/target/dy</td>
+      <td>Slumber Hex: R30' May use <i>Sleep</i> effects w/out HD limit (DC 12 Will negates) for 3 rd 1/target/dy</td>
     </tr><tr style="text-align:center">
       <td>Witch's Familiar: Familiar stores spells</td>
     </tr></table>
@@ -274,23 +271,25 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Familiar Features</b>: Companion Alertness; Companion Evasion; Companion Improved Evasion; Deliver Touch Spells; Empathic Link; Share Spells</td>
+      <td><b>Familiar Features</b>: Alertness (Companion); Deliver Touch Spells; Empathic Link; Evasion (Companion); Improved Evasion (Companion); Share Spells</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>
+      <td>Deliver Touch Spells: Can use companion to deliver touch spells if in contact when the spell is cast</td>
     </tr><tr style="text-align:center">
-      <td>Deliver Touch Spells: May deliver touch spells if in contact w/master when cast</td>
+      <td>Empathic Link: Can communicate emotions with companion up to 1 mile</td>
     </tr><tr style="text-align:center">
-      <td>Empathic Link: May share emotions up to 1 mile</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
       <td>Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Familiar: Can bond with a magical creature with expanded abilities</td>
+    </tr><tr style="text-align:center">
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr></table>
 </td>
   </tr></table>

@@ -50,6 +50,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 904/1000 (3.5)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -74,14 +75,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Skill Focus (Fly); Swap Places</td>
         <td><b>Traits</b>: History Of Heresy; Indomitable Faith</td>
-        <td><b>Half-Orc Features</b>: Darkvision; Half-Orc Ability Adjustment; Intimidating; Orc Blood; Orc Ferocity; Weapon Familiarity (Orc Double Axe); Weapon Proficiency (Falchion/Greataxe)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Core Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Half-Orc Features</b>: Darkvision; Half-Orc Ability Adjustment; Intimidating; Orc Blood; Orc Ferocity; Weapon Familiarity (Orc Double Axe); Weapon Proficiency (Falchion; Greataxe)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Bonus Feats (Fighter); Core Fighter; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Darkvision: 60' b/w vision in darkness</td>
+        <td><i>Bonus Feats (Fighter): +1 Fighter Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td>Darkvision: R60' Has black and white vision in complete darkness</td>
       </tr><tr style="text-align:center">
         <td>Orc Blood: Counts as both orc and human for racial effects</td>
       </tr></table>
@@ -112,7 +115,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -136,7 +139,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 10</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 16/11/15</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+3/+2</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/14</td>
@@ -145,9 +148,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Falchion; Greataxe; Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -155,13 +157,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Chakram (+2 d8+2 x2@20 R30'); Glaive-Guisarme (+2 d10+2 x3@20); Spear (+2 d8+2 x3@20 R20'); Unarmed (+3 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Chakram (+2 d8+2 x2@20 R30'); Glaive-Guisarme (+2 d10+2 x3@20); Spear (+2 d8+2 x3@20 R20'); Unarmed Strike (+3 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1; Shield: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -169,11 +171,13 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Orc Ferocity: May fight below zero HP for 1 rd 1/dy</td>
+        <td>Orc Ferocity: Can continue to fight for 1 rd when brought to negative hit points once per day</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">

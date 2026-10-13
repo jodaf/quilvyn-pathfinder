@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Perform (Sing))":1, "feats.Tower Shield Proficiency":1, "gender":"Male", "hitPoints":104, 
   "intelligence":11, "levels.Cleric":20, "name":"Class-Cleric 20-Trade Undeath", "race":"Human", 
   "selectableFeatures.Cleric - Trade Subdomain":1, "selectableFeatures.Cleric - Undead Subdomain":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, 
   "skills.Craft (Alchemy)":20, "skills.Craft (Traps)":1, "skills.Diplomacy":2, "skills.Intimidate":1, 
   "skills.Knowledge (Arcana)":1, "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":20, 
   "skills.Perform (Sing)":13, "spells.Animate Dead(Undead3 Necr)":1, "spells.Cause Fear(Undead1 Necr)":1, 
@@ -61,6 +61,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 194657/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -70,7 +71,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Armor Speed Adjustment: -10</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Travel Speed: +10 Speed</i></td>
+      <td><i>Trade Subdomain: +10 Speed</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -93,16 +94,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Law); Channel Smite; Critical Focus; Improved Shield Bash; Intimidating Prowess; Skill Focus (Bluff); Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Nature)); Skill Focus (Perform (Sing)); Tower Shield Proficiency</td>
         <td><b>Traits</b>: Hedge Magician; Sacred Conduit</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura; Channel Energy; Death's Embrace; Death's Kiss; Dimensional Hop; Shield Proficiency; Silver-Tongued Haggler; Spontaneous Cleric Spell; Trade Subdomain; Travel Speed; Undead Subdomain; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Death's Embrace; Death's Kiss; Dimensional Hop; Orisons; Silver-Tongued Haggler; Spontaneous Casting (Cleric); Trade Subdomain; Undead Subdomain; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -135,7 +136,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intimidating Prowess: +2 Intimidate</i></td>
       </tr><tr style="text-align:center">
@@ -151,7 +152,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Hedge Magician: Cost to craft magic items is reduced by 5%</td>
+        <td>Hedge Magician: Reduces the cost to craft magic items by 5%</td>
       </tr><tr style="text-align:center">
         <td>Silver-Tongued Haggler: +10 Bluff, Diplomacy, or Sense Motive 5/dy</td>
       </tr></table>
@@ -169,7 +170,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 84</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/28</td>
@@ -178,9 +179,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -188,17 +188,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Armored Coat</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed Strike (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Sacred Conduit: +1 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -206,15 +208,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
+        <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Death's Embrace: Healed by channeled negative energy</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Death's Embrace: Regains hit points from channeled negative energy</td>
+      </tr><tr style="text-align:center">
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -253,59 +257,57 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Dead (Undead3 Necr): Touched corpses become up to 40 HD of obedient skeletons or zombies</td>
+      <td>Animate Dead (Undead3 Necr): Touched corpses become up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (Undead1 Necr): R75' Target w/up to 5 HD flees for 1d4 rd (DC 13 Will shaken for 1 rd)</td>
+      <td>Cause Fear (Undead1 Necr): R75' Target with up to 5 HD becomes frightened and flees for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Create Greater Undead (Undead8 Necr): R75' Creates shadow, wraith, spectre, devourer from physical remains</td>
+      <td>Create Greater Undead (Undead8 Necr): R75' Cast at night, creates a devourer, spectre, wraith, or shadow from physical remains</td>
     </tr><tr style="text-align:left">
-      <td>Create Undead (Undead6 Necr): R75' Creates ghoul, ghast, mummy, mohrg from physical remains</td>
+      <td>Create Undead (Undead6 Necr): R75' Cast at night, creates a mohrg, mummy, ghast, or ghoul from physical remains</td>
     </tr><tr style="text-align:left">
-      <td>Destruction (Undead7 Necr): R75' Target suffers 200 HP, consumed if slain (DC 19 Fort 10d6 HP)</td>
+      <td>Destruction (Undead7 Necr): R75' Inflicts 200 HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains</td>
     </tr><tr style="text-align:left">
-      <td>Dimension Door (Trade4 Conj): Teleports self and touched object or 6 willing creatures 1200'</td>
+      <td>Dimension Door (Trade4 Conj): Teleports self, held objects, and 6 willing Medium creatures 1200'</td>
     </tr><tr style="text-align:left">
-      <td>Energy Drain (Undead9 Necr): R75' Ranged touch inflicts 2d4 negative levels (Fort/level after 1 dy neg, permanent otherwise); undead gains 2d4x5 HP for 1 hr</td>
+      <td>Energy Drain (Undead9 Necr): R75' Ranged touch inflicts 2d4 negative levels (save Fortitude for each level after 24 hr negates; failure makes the loss permanent); an undead target instead gains 2d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Enervation (Undead4 Necr): R75' Ranged touch inflicts 1d4 negative levels for 20 hr; undead gains 1d4x5 HP for 1 hr</td>
+      <td>Enervation (Undead4 Necr): R75' Ranged touch inflicts 1d4 negative levels for 15 hr; an undead target instead gains 1d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Find The Path (Trade6 Divi): Touched knows most direct route to location for 200 min</td>
+      <td>Find The Path (Trade6 Divi): Touched knows the most direct route to a specified location for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Floating Disk (Trade1 Evoc): R75' 3'-diameter x 1 inch thick force disk follows, holds 2000 lbs at 3' for 20 hr</td>
+      <td>Floating Disk (Trade1 Evoc): R75' 3'-diameter, 1" thick force disk can hold 2000 lbs and follows self at a 5' distance, 3' off the ground, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Trade3 Tran): Touched gains 60' fly speed and +10 Fly skill for 20 min</td>
+      <td>Fly (Trade3 Tran): Touched gains a 60' fly Speed and +10 Fly skill for 20 min, then floats downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Gate (Trade9 Conj): R300' 5' - 20' disk connects to another plane for conc or 20 rd, allows summoning of extraplanar creature</td>
+      <td>Gate (Trade9 Conj): R300' Creates a 5'-20' diameter disk passage to another plane for concentration up to 20 rd, or, at the cost of 10,000 GP, allows summoning extraplanar creatures—a named creature, a single creature of a named kind, or up to 40 HD of a named kind</td>
     </tr><tr style="text-align:left">
-      <td>Ghoul Touch (Undead2 Necr): Touched becomes paralyzed for 1d6+2 rd and stench sickens in 10' radius (DC 14 Fort neg)</td>
+      <td>Ghoul Touch (Undead2 Necr): Melee touch inflicts paralyzed and a stench that sickens creatures other than self in a 10' radius (save Fortitude negates) for 1d6+2 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Teleport (Trade7 Conj): Transports self and 6 willing targets anywhere w/no error chance</td>
+      <td>Greater Teleport (Trade7 Conj): Transports self and 6 willing targets any distance with no chance of error</td>
     </tr><tr style="text-align:left">
-      <td>Locate Object (Trade2 Divi): Self senses direction of object or type in 1200' radius for 20 min</td>
+      <td>Locate Object (Trade2 Divi): Reveals the direction of a visualized object or kind of object found within 1200' for 20 min; a sheet of lead blocks the spell</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (Trade5 Tran): Self gains 40' fly speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (Trade5 Tran): Self gains a 40' fly Speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Phase Door (Trade8 Conj): Allows 10 passes through 8'x5'x25' wood, stone, or plaster; adding another creature uses a pass</td>
+      <td>Phase Door (Trade8 Conj): Allows self and specified creatures to pass through a 5'x8'x40' section of wood, stone, or plaster a total of 10 times</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Undead5 Necr): Touched suffers 12d6+20 HP (DC 17 Fort 3d6+20 HP)</td>
+      <td>Slay Living (Undead5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 22 Will half) 5/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
       <td>Death's Kiss: Touched healed and harmed as undead for 10 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Dimensional Hop: May teleport 200'/dy; including others uses equal portion of daily distance</td>
+      <td>Dimensional Hop: Can teleport 200' per day; including others uses an equal portion of the daily distance</td>
     </tr><tr style="text-align:center">
-      <td>Sacred Conduit: +1 channeled energy save DC</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
   </tr></table>

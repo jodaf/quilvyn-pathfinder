@@ -14,7 +14,7 @@ var attributes = {
   "feats.Quicken Spell":1, "feats.Reach Spell":1, "feats.Silent Spell":1, 
   "feats.Spell Focus (Enchantment)":1, "feats.Strike Back":1, "gender":"Male", "hitPoints":82, "intelligence":13, 
   "languages.Dwarven":1, "languages.Elven":1, "languages.Gnome":1, "levels.Oracle":20, 
-  "name":"Class-Oracle 20-Life", "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
+  "name":"Class-Oracle 20-Life", "race":"Human", "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "selectableFeatures.Oracle - Channel":1, 
   "selectableFeatures.Oracle - Combat Healer":1, "selectableFeatures.Oracle - Delay Affliction":1, 
   "selectableFeatures.Oracle - Energy Body":1, "selectableFeatures.Oracle - Enhanced Cures":1, 
@@ -64,6 +64,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -93,14 +94,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Elemental Spell (Cold); Empower Spell; Improved Unarmed Strike; Maximize Spell; Persistent Spell; Point-Blank Shot; Quicken Spell; Reach Spell; Silent Spell; Spell Focus (Enchantment); Strike Back</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Channel; Combat Healer; Delay Affliction; Energy Body; Enhanced Cures; Final Revelation (Life Mystery); Healing Hands; Life Link; Life Mystery; Lifesense; Mystery; Oracle's Curse; Orisons; Revelation; Safe Curing; Shield Proficiency; Spirit Boost; Tongues; Weapon Proficiency (Simple)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Channel; Combat Healer; Delay Affliction; Energy Body; Enhanced Cures; Final Revelation (Life Mystery); Healing Hands; Life Link; Life Mystery; Lifesense; Mystery; Oracle's Curse; Orisons; Revelation; Safe Curing; Spirit Boost; Tongues; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Channel: Has Channel Energy feature (positive energy only)</i></td>
       </tr><tr style="text-align:center">
@@ -111,8 +112,6 @@ var attributes = {
         <td><i>Oracle's Curse: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Revelation: 6 selections</i></td>
-      </tr><tr style="text-align:center">
-        <td>Blindsight: R30' Can maneuver and fight w/out vision</td>
       </tr></table>
 </td>
     </tr></table>
@@ -157,7 +156,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Healing Hands: +4 Heal</i></td>
       </tr><tr style="text-align:center">
@@ -170,6 +169,8 @@ var attributes = {
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
         <td><i>Tongues: +2 Language Count</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blindsight: R30' Can operate effectively without vision</td>
       </tr><tr style="text-align:center">
         <td>Healing Hands: May use Heal on dbl number of people simultaneously/May provide long-term care for self</td>
       </tr><tr style="text-align:center">
@@ -189,7 +190,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 142</td>
         <td><b>Initiative</b>: -2</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/8/12</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +15/23</td>
@@ -198,9 +199,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -208,29 +208,31 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: -2</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: -2</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
+      </tr><tr style="text-align:center">
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
         <td>Energy Body: Energy form lights 10' radius, inflicts 1d6+20 HP positive energy on undead w/unarmed attack or when undead hits self w/melee attack, and heals target 1d6+20 HP 1/rd for 20 rd/dy</td>
       </tr><tr style="text-align:center">
         <td>Final Revelation (Life Mystery): Does not die until -33 HP</td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
         <td>Life Link: R300' May establish bond with up to 20 targets that transfers 5 HP/rd damage to self</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
         <td>Tongues: Can speak only chosen outsider or elemental language during combat</td>
       </tr></table>
@@ -275,57 +277,53 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Breath Of Life (O5 Conj): Touched corpse dead less than 1 rd resurrected and heals 5d8+20 HP</td>
+      <td>Breath Of Life (O5 Conj): Touched regains 5d8+20 hit points; undead instead suffer the same amount (save Will half); the spell can revive a corpse dead less than 1 rd, giving a temporary negative level for 1 day</td>
     </tr><tr style="text-align:left">
-      <td>Detect Undead (O1 Divi): R60' Cone gives self info on undead auras for conc or 20 min</td>
+      <td>Detect Undead (O1 Divi): 60' cone reveals undead and their strengths for concentration up to 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Greater Restoration (O7 Conj): Touch dispels magical ability harm and heals all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion and temporary negative levels, and restores all drained levels</td>
+      <td>Greater Restoration (O7 Conj): Dispels magical ability harm from touched and cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects</td>
     </tr><tr style="text-align:left">
-      <td>Heal (O6 Conj): Touched heals (undead suffers) 150 HP (DC 19 Will neg) and removes negative conditions</td>
+      <td>Heal (O6 Conj): Touched regains 150 hit points and recovers from negative conditions; undead instead suffer the same amount (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Restoration (O2 Conj): Dispels magical ability harm from touched or heals 1d4 temporary ability damage, removes fatigue, and reduces exhaustion</td>
+      <td>Lesser Restoration (O2 Conj): Dispels magical ability harm from touched or cures 1d4 temporary ability damage, removes fatigue, and reduces exhaustion</td>
     </tr><tr style="text-align:left">
-      <td>Mass Heal (O9 Conj): R75' Targets in 15' radius heal (undead suffer) 150 HP (DC 22 Will neg) and remove negative conditions</td>
+      <td>Mass Heal (O9 Conj): R75' Targets in a 15' radius regain 150 hit points and recover from negative conditions; undead instead suffer the same amount (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Neutralize Poison (O4 Conj): Touched neutralized 200 min, immunized, or detoxified</td>
+      <td>Neutralize Poison (O4 Conj): Allows successful caster level checks to neutralize each poison affecting touched or neutralizes a poisonous creature or object for 200 min (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Restoration (O4 Conj): Dispels magical ability harm from touched and heals all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion and temporary negative levels, and restores 1 drained level</td>
+      <td>Restoration (O4 Conj): Dispels magical ability harm from touched and cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level</td>
     </tr><tr style="text-align:left">
-      <td>True Resurrection (O9 Conj): Fully restores chosen creature dead up to 200 yr</td>
+      <td>True Resurrection (O9 Conj): Restores life with full health, levels, and prepared spells to a willing chosen creature dead up to 200 years</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Charisma Oracle Spell Slot Bonus: Spell level O1, O2, O3</i></td>
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
-    </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 23 Will half) 4/dy</td>
     </tr><tr style="text-align:center">
       <td>Combat Healer: May use two spell slots to cast <i>Cure</i> spell as a swift action 4/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Enhanced Cures: Caster level bonus for <i>Cure</i> spell effects is +20</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Persistent Spell: May spend +2 spell slot to force target to take worse of 2 saving throws</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
       <td>Safe Curing: <i>Cure</i> spells do not provoke AOO</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
       <td>Spirit Boost: Up to 20 excess HP from a <i>Cure</i> spell become temporary HP for 1 rd</td>
     </tr></table>

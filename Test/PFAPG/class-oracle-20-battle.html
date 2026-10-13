@@ -16,7 +16,7 @@ var attributes = {
   "feats.Spell Focus (Enchantment)":1, "feats.Step Up":1, "feats.Strike Back":1, 
   "feats.Weapon Focus (Heavy Mace)":1, "gender":"Male", "hitPoints":82, "intelligence":13, "languages.Druidic":1, 
   "levels.Oracle":20, "name":"Class-Oracle 20-Battle", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Oracle - Battle Mystery":1, "selectableFeatures.Oracle - Battlecry":1, 
   "selectableFeatures.Oracle - Battlefield Clarity":1, "selectableFeatures.Oracle - Clouded Vision":1, 
   "selectableFeatures.Oracle - Combat Healer":1, "selectableFeatures.Oracle - Iron Skin":1, 
@@ -65,6 +65,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -94,14 +95,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Combat Expertise; Elemental Spell (Cold); Empower Spell; Greater Disarm; Greater Weapon Focus (Heavy Mace); Improved Critical (Heavy Mace); Improved Disarm; Maximize Spell; Persistent Spell; Point-Blank Shot; Reach Spell; Silent Spell; Spell Focus (Enchantment); Step Up; Strike Back; Weapon Focus (Heavy Mace)</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Battle Mystery; Battlecry; Battlefield Clarity; Clouded Vision; Combat Healer; Final Revelation (Battle Mystery); Iron Skin; Maneuver Mastery; Mystery; Oracle's Curse; Orisons; Resiliency (Oracle); Revelation; Shield Proficiency; Skill At Arms; Surprising Charge; War Sight; Weapon Mastery (Oracle); Weapon Proficiency (Simple)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Battle Mystery; Battlecry; Battlefield Clarity; Clouded Vision; Combat Healer; Final Revelation (Battle Mystery); Iron Skin; Maneuver Mastery; Mystery; Oracle's Curse; Orisons; Resiliency (Oracle); Revelation; Skill At Arms; Surprising Charge; War Sight; Weapon Mastery (Oracle); Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Maneuver Mastery: +2 General Feat (Improved  and Greater combat maneuver)</i></td>
       </tr><tr style="text-align:center">
@@ -156,7 +157,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Battle Mystery: Intimidate is a class skill/Knowledge (Engineering) is a class skill/Perception is a class skill/Ride is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -180,7 +181,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 142</td>
         <td><b>Initiative</b>: -2</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/8/12</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +15/23</td>
@@ -189,9 +190,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -199,15 +199,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+17 d8 x2@19); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+17 d8 x2@19); Longspear (+15 d8 x3@20); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +60</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: -2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: -2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
@@ -215,31 +215,31 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Critical (Heavy Mace): x2 Heavy Mace Threat Range</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Skill At Arms: Weapon Proficiency (Martial)/Armor Proficiency (Heavy)</i></td>
+        <td><i>Skill At Arms: Weapon Proficiency (Martial Weapons)/Armor Proficiency (Heavy)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Heavy Mace): +1 Heavy Mace Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td>Battlecry: R100' Allies gain +2 attack, skill checks, and saves for 3 rd 5/dy</td>
       </tr><tr style="text-align:center">
-        <td>Combat Expertise: May suffer up to -4 attack to gain equal AC bonus</td>
+        <td>Combat Expertise: Can suffer up to -4 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Diehard: Remains conscious, stable, and able to act with negative HP</td>
+        <td>Diehard: Can remain conscious, stable, and able to act with negative hit points; taking a standard action inflicts 1 HP</td>
       </tr><tr style="text-align:center">
         <td>Final Revelation (Battle Mystery): May take a full-attack action and move 20' as a full-round action/Crit ignores DR/+4 AC vs. crit/Does not die until -33 HP</td>
       </tr><tr style="text-align:center">
-        <td>Greater Disarm: +2 disarm checks, disarmed weapons land 15' away</td>
+        <td>Greater Disarm: +2 on Disarm attempts, and disarmed weapons land 15' away from foe</td>
       </tr><tr style="text-align:center">
-        <td>Improved Disarm: Disarm provokes no AOO, gains +2 Disarm check and CMD</td>
+        <td>Improved Disarm: +2 on Disarm attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>Maneuver Mastery: +5 CMB on chosen combat maneuver</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
         <td>Resiliency (Oracle): Not disabled or staggered at 0 HP/No HP loss from taking action while disabled</td>
       </tr><tr style="text-align:center">
-        <td>Step Up: May match foe 5' step</td>
+        <td>Step Up: Can follow a foe's 5' step; requires foregoing a 5' step or subtracting 5' from movement during the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
         <td>Surprising Charge: May move as an immediate action 3/dy</td>
       </tr><tr style="text-align:center">
@@ -284,25 +284,25 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Control Weather (O7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (O7 Tran): Modifies seasonal weather in a 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Earthquake (O8 Evoc): R1200' Intense tremor shakes 80' radius for 1 rd</td>
+      <td>Earthquake (O8 Evoc): R1200' Intense tremor shakes an 80' radius for 1 rd, prohibiting movement, breaking spell concentration (DC 20 + spell level concentration negates), collapsing caverns, cliffs, and structures that inflict 8d6 HP (save Reflex DC 15 half) and pin creatures in the rubble, knocking down creatures on open ground (save Reflex DC 15 negates) and opening fissures with a 25% chance to fall in (save Reflex DC 20 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Enlarge Person (O1 Tran): R75' Target humanoid dbl size (+2 Strength, -2 Dexterity, -1 attack, -1 AC) (DC 14 Fort neg) for 20 min</td>
+      <td>Enlarge Person (O1 Tran): R75' Target humanoid doubles in size, gaining +2 Strength and suffering -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class (save Fortitude negates), for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fog Cloud (O2 Conj): R300' Fog in 20' radius obscures vision for 200 min</td>
+      <td>Fog Cloud (O2 Conj): R300' 20' radius fog obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Magic Vestment (O3 Tran): Touched armor, shield, or clothing gives +5 AC for 20 hr</td>
+      <td>Magic Vestment (O3 Tran): Touched armor, shield, or clothing gives a +5 enhancement bonus to Armor Class for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Mass Bull's Strength (O6 Tran): R75' 20 targets in 15' radius gain +4 Strength for 20 min</td>
+      <td>Mass Bull's Strength (O6 Tran): R75' 20 targets in a 15' radius gain +4 Strength for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (O5 Tran): Self dbl size (+4 Str, +2 Con, -2 Dex, +2 AC) and gains DR 10/evil or DR 10/good for 20 rd</td>
+      <td>Righteous Might (O5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Stoneskin (Iron Skin4 Abju): Touched gains DR 10/adamantine for 150 HP or 200 min</td>
+      <td>Stoneskin (Iron Skin4 Abju): Touched gains DR 10/adamantine for NaN min or until 150 HP have been negated</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (O9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (DC 22 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 22 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
+      <td>Storm Of Vengeance (O9 Conj): R1200' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (O4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
+      <td>Wall Of Fire (O4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -316,19 +316,19 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Iron Skin: May use self <i>Stoneskin</i> effects 2/dy</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Persistent Spell: May spend +2 spell slot to force target to take worse of 2 saving throws</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr></table>
 </td>
   </tr></table>

@@ -17,7 +17,7 @@ var attributes = {
   "languages.Celestial":1, "languages.Giant":1, "languages.Gnoll":1, "languages.Terran":1, 
   "levels.Fighter":7, "name":"Prestige-Stalwart Defender 10", "prestige.Stalwart Defender":10, 
   "race":"Human", "selectableFeatures.Fighter - Mobile Fighter":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Heart Of The Fields":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Heart Of The Fields":1, 
   "selectableFeatures.Stalwart Defender - Bulwark":1, "selectableFeatures.Stalwart Defender - Clear Mind":1, 
   "selectableFeatures.Stalwart Defender - Fearless Defense":1, "selectableFeatures.Stalwart Defender - Halting Blow":1, 
   "selectableFeatures.Stalwart Defender - Immobile":1, "selectableFeatures.Stalwart Defender - Increased Damage Reduction":1, 
@@ -63,6 +63,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 48/51 (PSOP)</td>
       <td><b>Level</b>: 17</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -70,7 +71,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Armor Training: No speed penalty in heavy armor</i></td>
+      <td><i>Armor Training: No Speed penalty in heavy armor</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -92,15 +93,17 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Catch Off-Guard; Dodge; Endurance; Improved Unarmed Strike; Lunge; Paired Opportunists; Quick Draw; Shield Focus; Shield Wall; Skill Focus (Diplomacy); Skill Focus (Heal); Skill Focus (Knowledge (Engineering)); Strike Back; Toughness</td>
-        <td><b>Stalwart Defender Features</b>: Armor Class Bonus (Stalwart Defender); Armor Proficiency (Heavy); Bulwark; Clear Mind; Damage Reduction; Defensive Powers; Defensive Stance; Fearless Defense; Halting Blow; Immobile; Improved Uncanny Dodge; Increased Damage Reduction; Intercept; Internal Fortitude; Last Word; Mighty Resilience; Mobile Defense; Renewed Defense; Roused Defense; Shield Proficiency; Smash (Stalwart Defender); Tower Shield Proficiency; Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Martial)</td>
-        <td><b>Human Features</b>: Bonus Feat; Heart Of The Fields; Human Ability Adjustment</td>
-        <td><b>Fighter Features</b>: Agility; Armor Proficiency (Heavy); Armor Training; Leaping Attack; Mobile Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Stalwart Defender Features</b>: Armor Class Bonus (Stalwart Defender); Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Bulwark; Clear Mind; Damage Reduction; Defensive Powers; Defensive Stance; Fearless Defense; Halting Blow; Immobile; Improved Uncanny Dodge; Increased Damage Reduction; Intercept; Internal Fortitude; Last Word; Mighty Resilience; Mobile Defense; Renewed Defense; Roused Defense; Smash (Stalwart Defender); Uncanny Dodge; Unexpected Strike; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Heart Of The Fields; Human Ability Adjustment</td>
+        <td><b>Fighter Features</b>: Agility; Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Leaping Attack; Mobile Fighter; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feats (Fighter): +4 Fighter Feats</i></td>
       </tr><tr style="text-align:center">
         <td><i>Defensive Powers: 5 selections</i></td>
       </tr></table>
@@ -117,17 +120,17 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Acrobatics: (dex) 17 (+14)</td>
+        <td>Acrobatics: (dex) 17 (+18)</td>
         <td>Heal: (wis;cc) 1 (+7)</td>
         <td>Profession (Librarian): (wis) 13 (+19)</td>
       </tr><tr style="text-align:left">
-        <td>Climb: (str) 12 (+10)</td>
+        <td>Climb: (str) 12 (+14)</td>
         <td>Knowledge (Engineering): (int) 1 (+9)</td>
         <td>Profession (Scribe): (wis) 1 (+7)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 2 (+7)</td>
         <td>Linguistics: (int;cc) 2 (+4)</td>
-        <td>Sleight Of Hand: (dex;cc) 8 (+2)</td>
+        <td>Sleight Of Hand: (dex;cc) 8 (+6)</td>
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha;cc) 1 (+6)</td>
         <td>Perform (Percussion): (cha;cc) 8 (+10)</td>
@@ -139,7 +142,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -7 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Armor Training: Reduces armor skill check penalty by 2</i></td>
       </tr><tr style="text-align:center">
@@ -153,7 +156,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Knowledge (Engineering)): +3 Knowledge (Engineering)</i></td>
       </tr><tr style="text-align:center">
-        <td>Bulwark: +7 foe DC for Bluff and movement Acrobatics during stance</td>
+        <td>Bulwark: -3 foe DC for Bluff and movement Acrobatics during stance</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: +8 on choice of Craft or Profession</td>
       </tr></table>
@@ -171,7 +174,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 141</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 26</td>
+        <td><b>AC/Touch/Flat</b>: 26/16/25</td>
         <td><b>Damage Reduction</b>: 5/-</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +17/+19/+18</td>
@@ -181,9 +184,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -191,7 +193,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Agile Half-Plate</td>
         <td><b>Shield</b>: Light Wooden Quickdraw</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+19 d6+2 x2@20); Rapier (+19 d6+2 x2@18); Sap (+19 d6+2 x2@20); Unarmed (+19 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+19 d6+2 x2@20); Rapier (+19 d6+2 x2@18); Sap (+19 d6+2 x2@20); Unarmed Strike (+19 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -199,37 +201,41 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Armor Class Bonus (Stalwart Defender): +4 AC</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Training: +1 Dexterity AC bonus</i></td>
+        <td><i>Armor Class Modifiers: Armor: +8; Dexterity: +1; Dodge: +1; Shield: +2</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +34</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Damage Reduction: DR 5/-</i></td>
+        <td><i>Damage Reduction: Has DR 5/-</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Toughness: +17 HP</i></td>
+        <td><i>Toughness: +17 Hit Points</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
-        <td>Defensive Stance: Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for 24 rd/8 hr rest; fatigued afterwards for 2 rd per rd in stance</td>
+        <td>Defensive Stance: Voluntary immobility gives +2 AC, +4 Strength, +4 Constitution, and +2 Will for 24 rd/8 hr rest; fatigued afterward for 2 rd per rd in stance</td>
       </tr><tr style="text-align:center">
         <td>Halting Blow: Successful movement AOO halts foe during stance</td>
       </tr><tr style="text-align:center">
         <td>Immobile: +10 CMD vs. bull rush, overrun, pull, push, and movement grapple during stance</td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed attack provokes no AOO and may inflict lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Uncanny Dodge: Cannot be flanked, sneak attack only by rogue level 14+</td>
+        <td>Improved Uncanny Dodge: Cannot be flanked and can be Sneak Attacked only by rogue of level 14 or higher</td>
       </tr><tr style="text-align:center">
-        <td>Increased Damage Reduction: +1 DR/- during rage or stance</td>
+        <td>Increased Damage Reduction: Has +1 DR/- during rage or stance</td>
       </tr><tr style="text-align:center">
         <td>Intercept: May suffer damage from an attack directed at an adjacent ally during stance 1/rd</td>
       </tr><tr style="text-align:center">
@@ -237,7 +243,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Leaping Attack: +1 attack and damage after 5' move</td>
       </tr><tr style="text-align:center">
-        <td>Lunge: May suffer -2 AC to gain +5' melee range</td>
+        <td>Lunge: Can suffer -2 Armor Class until the start of the next turn to gain +5' melee range until the end of the turn</td>
       </tr><tr style="text-align:center">
         <td>Mighty Resilience: May negate extra damage and effects from crit or sneak attack 1/stance</td>
       </tr><tr style="text-align:center">
@@ -245,7 +251,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Paired Opportunists: +4 AOO and may share ally AOO when an adjacent ally has this feat and threatens the same foe</td>
       </tr><tr style="text-align:center">
-        <td>Quick Draw: May draw a weapon as a free action</td>
+        <td>Quick Draw: Can draw a weapon as a free action and throw weapons at the full attack rate</td>
       </tr><tr style="text-align:center">
         <td>Renewed Defense: May regain 5d8+2 HP during stance 1/dy</td>
       </tr><tr style="text-align:center">
@@ -255,11 +261,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Smash (Stalwart Defender): May make an extra shield bash or slam attack for 1d4+1 HP 1/rd during stance</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr><tr style="text-align:center">
-        <td>Unexpected Strike: May take AOO when foe enters threat area 1/rage or stance</td>
+        <td>Unexpected Strike: Can take an AOO when a foe enters threat area once per rage or stance</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -279,15 +285,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Agility: +2 vs. paralyzed, slowed, and entangled</td>
       </tr><tr style="text-align:center">
-        <td>Clear Mind: May reroll Will save 1/rage or stance</td>
+        <td>Clear Mind: Can reroll a Will save once per rage or stance</td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
         <td>Fearless Defense: Immune to shaken and frightened during stance</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: May ignore fatigued or exhausted effect 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Internal Fortitude: Immune to sickened and nauseated during rage or stance</td>
+        <td>Internal Fortitude: Has immunity to sickened and nauseated during rage or stance</td>
       </tr></table>
 </td>
     </tr></table>

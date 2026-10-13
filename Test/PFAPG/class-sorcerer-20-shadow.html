@@ -56,6 +56,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -80,14 +81,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Craft Wand; Deft Hands; Ectoplasmic Spell; Elemental Spell (Acid); Expanded Arcana; Improved Initiative; Skill Focus (Craft (Armor)); Skill Focus (Handle Animal); Skill Focus (Knowledge (Arcana)); Skill Focus (Perform (Act)); Skill Focus (Use Magic Device); Spell Focus (Necromancy); Thundering Spell; Toughness</td>
         <td><b>Traits</b>: Killer; Resilient</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Sorcerer Features</b>: Bloodline Shadow; Enveloping Darkness; Eschew Materials; Nighteye; Shadow Master (Sorcerer); Shadow Well; Shadowstrike; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Sorcerer Features</b>: Bloodline Shadow; Bloodline; Cantrips; Enveloping Darkness; Eschew Materials; Nighteye; Shadow Master (Sorcerer); Shadow Well; Shadowstrike; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bloodline: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td>Nighteye: 60' b/w vision in darkness</td>
       </tr><tr style="text-align:center">
@@ -160,7 +163,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 91</td>
         <td><b>Initiative</b>: +6</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/12/10</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +10/+12/+12</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/24</td>
@@ -169,9 +172,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: None</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -179,13 +180,13 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed (+12 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+12 d6+2 x2@20); Blowgun (+12 d2 x2@20 R20'); Heavy Crossbow (+12 d10 x2@19 R120'); Unarmed Strike (+12 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Armor Class Modifiers: Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -195,11 +196,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Toughness: +20 HP</i></td>
+        <td><i>Toughness: +20 Hit Points</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Killer: Inflicts extra damage equal to weapon damage multiplier on critical hit</td>
+        <td>Killer: Inflicts extra damage equal to the weapon damage multiplier on critical hits</td>
       </tr><tr style="text-align:center">
         <td>Shadowstrike: Touch inflicts 1d4 HP+10 nonlethal and dazzled for 1 min (Darkvision or Low-Light Vision HP only) 6/dy</td>
       </tr></table>
@@ -231,6 +232,7 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
         <td><b>Spell DC</b>: S: 13</td>
       </tr></table>
@@ -240,27 +242,27 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Darkvision (Bloodline Shadow2 Tran): Touched sees 60' in total darkness for 20 hr</td>
+      <td>Darkvision (Bloodline Shadow2 Tran): Gives touched 60' black and white vision in total darkness for NaN hr</td>
     </tr><tr style="text-align:left">
-      <td>Deeper Darkness (Bloodline Shadow3 Evoc): Touched reduces light level by 2 in 60' radius for 20 min</td>
+      <td>Deeper Darkness (Bloodline Shadow3 Evoc): Touched object reduces the light level in a 60' radius by 2 steps for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Deeper Darkness (Enveloping Darkness3 Evoc): Touched reduces light level by 2 in 60' radius for 20 min</td>
+      <td>Deeper Darkness (Enveloping Darkness3 Evoc): Touched object reduces the light level in a 60' radius by 2 steps for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Dimension Door (Shadow Well4 Conj): Teleports self and touched object or 6 willing creatures 1200'</td>
+      <td>Dimension Door (Shadow Well4 Conj): Teleports self, held objects, and NaN willing Medium creature NaN'</td>
     </tr><tr style="text-align:left">
-      <td>Greater Shadow Evocation (Bloodline Shadow8 Illu): Mimics evocation spell up to 7th level (DC 21 Will 60% effect)</td>
+      <td>Greater Shadow Evocation (Bloodline Shadow8 Illu): Mimics an evocation spell of up to 7th level (save Will reduces the mimicked spell's effects by 40%); mimicked spells are subject to SR and have a save DC as an 8th-level spell</td>
     </tr><tr style="text-align:left">
-      <td>Power Word Blind (Bloodline Shadow7 Ench): R75' Target w/ 1/51/101/201 HP blinded for ever/1d4+1 min/1d4+1 rd/unaffected</td>
+      <td>Power Word Blind (Bloodline Shadow7 Ench): RNaN' Blinds a target with up to 200 hit points; the duration is permanent if the target has 50 hit points or fewer, 1d4+1 min for up to 100 hit points, and 1d4+1 rd otherwise</td>
     </tr><tr style="text-align:left">
-      <td>Ray Of Enfeeblement (Bloodline Shadow1 Necr): R75' Ranged touch inflicts -1d6+5 Strength for 20 rd</td>
+      <td>Ray Of Enfeeblement (Bloodline Shadow1 Necr): RNaN' Ranged touch inflicts -1d6+5 Strength for NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Shades (Bloodline Shadow9 Illu): Mimics conjuration (creation or summoning) spell up to 8th level (DC 22 Will 80% effect)</td>
+      <td>Shades (Bloodline Shadow9 Illu): Mimics a creation or summoning conjuration spell of up to 8th level (save Will reduces the mimicked spell's effects by 20%); mimicked spells are subject to SR and have a save DC as a 9th-level spell, and creatures summoned by a mimicked spell have 20% of their normal hit points</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Conjuration (Bloodline Shadow4 Illu): Mimics conjuration (creation or summoning) spell up to 3rd level (DC 17 Will 20% effect)</td>
+      <td>Shadow Conjuration (Bloodline Shadow4 Illu): Mimics a creation or summoning conjuration spell of up to 3rd level (save Will reduces the mimicked spell's effects by 80%); mimicked spells are subject to SR and have a save DC as a 4th-level spell, and creatures summoned by a mimicked spell have 20% of their normal hit points</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Evocation (Bloodline Shadow5 Illu): Mimics evocation spell up to 4th level (DC 18 Will 20% effect)</td>
+      <td>Shadow Evocation (Bloodline Shadow5 Illu): Mimics an evocation spell of up to 4th level (save Will reduces the mimicked spell's effects by 80%); mimicked spells are subject to SR and have a save DC as a 5th-level spell</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Walk (Bloodline Shadow6 Illu): Self and 20 touched travel quickly via Plane of Shadow (DC 19 Will Neg) for 20 hr</td>
+      <td>Shadow Walk (Bloodline Shadow6 Illu): Allows self and NaN touched to travel at 50 MPH via the Plane of Shadow (save Will negates) for NaN hr</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -272,7 +274,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bloodline Shadow: Casting darkness or shadow spell gives +1/spell level to Stealth for 1d4 rd</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Cantrips: Knows 0-level spells</td>
+    </tr><tr style="text-align:center">
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Ectoplasmic Spell: May spend +1 spell slot to target an incorporeal or ethereal creature</td>
     </tr><tr style="text-align:center">
@@ -280,7 +284,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Enveloping Darkness: May use entangling <i>Deeper Darkness</i> effects 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Eschew Materials: May cast spells w/out materials</td>
+      <td>Eschew Materials: Can ignore inexpensive material component requirements when casting spells</td>
     </tr><tr style="text-align:center">
       <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
     </tr><tr style="text-align:center">
@@ -288,7 +292,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Shadow Well: R60' May use <i>Dimension Door</i> effects in darkness or dim light to swap places w/an ally or swap 2 allies 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd</td>
+      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 3 available vs. 4 allocated</td>
     </tr></table>
 </td>
   </tr></table>

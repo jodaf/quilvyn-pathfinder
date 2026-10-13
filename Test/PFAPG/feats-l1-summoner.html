@@ -12,7 +12,7 @@ var attributes = {
   "experience":8, "experienceTrack":"PSOP", "faction":"Scarab Sages", 
   "feats.Summoner's Call":1, "gender":"Male", "hitPoints":19, "intelligence":13, "languages.Elven":1, 
   "levels.Summoner":3, "name":"Feats-L1 Summoner", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Summoner - Limbs (Arms) Evolution":1, "selectableFeatures.Summoner - Pincers Evolution":1, 
   "selectableFeatures.Summoner - Resistance Evolution":1, "selectableFeatures.Summoner - Skilled Evolution":1, 
   "selectableFeatures.Summoner - Small Eidolon":1, "shield":"None", "skills.Craft (Armor)":1, "skills.Handle Animal":3, 
@@ -52,6 +52,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 8/9 (PSOP)</td>
       <td><b>Level</b>: 3</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 50/100/150</td>
     </tr></table>
@@ -75,14 +76,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Summoner's Call</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Bite Evolution: 1; Bond Senses: 1; Cantrips: 1; Eidolon: 1; Life Link (Summoner): 1; Limbs (Arms) Evolution: 1; Limbs (Legs) Evolution: 2; Pincers Evolution: 1; Resistance Evolution: 1; Simple Somatics: 1; Skilled Evolution: 1; Small Eidolon: 1; Summon Monster: 1; Weapon Proficiency (Simple): 1</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Bite Evolution: 1; Bond Senses: 1; Cantrips: 1; Eidolon: 1; Life Link (Summoner): 1; Limbs (Arms) Evolution: 1; Limbs (Legs) Evolution: 2; Pincers Evolution: 1; Resistance Evolution: 1; Simple Somatics: 1; Skilled Evolution: 1; Small Eidolon: 1; Summon Monster: 1; Weapon Proficiency (Simple Weapons): 1</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td>Bond Senses: May perceive via eidolon senses on same plane for 3 rd/dy</td>
       </tr><tr style="text-align:center">
@@ -139,7 +140,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 22</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/11/11</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +2/+3/+3</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/14</td>
@@ -149,8 +150,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -158,15 +158,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Quilted Cloth</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Battle Aspergillum (+3 d6+1 x2@20); Punching Dagger (+3 d4+1 x3@20); Sickle (+3 d6+1 x2@20); Unarmed (+3 d3+1 x2@20)</td>
+        <td><b>Weapons</b>: Battle Aspergillum (+3 d6+1 x2@20); Punching Dagger (+3 d4+1 x3@20); Sickle (+3 d6+1 x2@20); Unarmed Strike (+3 d3+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +3</i></td>
+        <td><i>Armor Class Modifiers: Armor: +1; Dexterity: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -213,9 +213,9 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Simple Somatics: Suffers no arcane spell failure in light armor</i></td>
+      <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Summon Monster: May cast <i>Summon Monster II</i>, lasting 3 min, when eidolon not present 3/dy</td>
     </tr></table>
@@ -254,7 +254,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Darkvision; Companion Evasion; Link (Summoner); Share Spells (Summoner)</td>
+      <td><b>Animal Companion Features</b>: Bonus Tricks; Companion Darkvision; Companion Evasion; Evasion (Companion); Link (Summoner); Share Spells (Summoner)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -266,9 +266,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bite Evolution: Bite inflicts 1d4 HP</td>
     </tr><tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 2 additional tricks, requiring no training time or Handle Animal checks</td>
+    </tr><tr style="text-align:center">
       <td>Companion Darkvision: 60' b/w vision in darkness</td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half</td>
     </tr><tr style="text-align:center">
       <td>Limbs (Arms) Evolution: Has 1 pairs of arms</td>
     </tr><tr style="text-align:center">

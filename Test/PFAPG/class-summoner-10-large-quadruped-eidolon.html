@@ -55,6 +55,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 27/30 (PSOP)</td>
       <td><b>Level</b>: 10</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 100/200/300</td>
     </tr></table>
@@ -78,7 +79,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Climb Evolution; Enlarge Spell; Self-Sufficient; Skill Focus (Perform (Dance)); Skill Focus (Spellcraft)</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Aspect: 1; Bite Evolution: 1; Bond Senses: 1; Breath Weapon Evolution: 1; Cantrips: 1; Eidolon: 1; Large Evolution: 1; Life Link (Summoner): 1; Limbs (Legs) Evolution: 2; Maker's Call: 1; Shield Ally (Summoner): 1; Simple Somatics: 1; Spell Resistance Evolution: 1; Summon Monster: 1; Tail Evolution: 1; Tentacle Evolution: 1; Transposition: 1; Weapon Proficiency (Simple): 1</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light): 1; Aspect: 1; Bite Evolution: 1; Bond Senses: 1; Breath Weapon Evolution: 1; Cantrips: 1; Eidolon: 1; Large Evolution: 1; Life Link (Summoner): 1; Limbs (Legs) Evolution: 2; Maker's Call: 1; Shield Ally (Summoner): 1; Simple Somatics: 1; Spell Resistance Evolution: 1; Summon Monster: 1; Tail Evolution: 1; Tentacle Evolution: 1; Transposition: 1; Weapon Proficiency (Simple Weapons): 1</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Wilderness; Human Ability Adjustment</td>
       </tr></table>
 </td>
@@ -126,7 +127,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Eye For Talent: +2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
@@ -156,7 +157,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 93</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 16/12/14</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +7/+11/+9</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +11/23</td>
@@ -166,8 +167,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -175,15 +175,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+11 d8+6 x2@20); Heavy Mace (+11 d8+6 x2@20); Shortspear (+11 d6+6 x2@20 R20'); Unarmed (+11 d3+4 x2@20)</td>
+        <td><b>Weapons</b>: Boar Spear (+11 d8+6 x2@20); Heavy Mace (+11 d8+6 x2@20); Shortspear (+11 d6+6 x2@20 R20'); Unarmed Strike (+11 d3+4 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +30</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +30</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -236,17 +236,17 @@ var attributes = {
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
-    <td><b>Spells</b>:<br/>Dimension Door (Makers Call4 Conj): Teleports self and touched object or 3 willing creatures 800'</td>
+    <td><b>Spells</b>:<br/>Dimension Door (Makers Call4 Conj): Teleports self, held objects, and NaN willing Medium creature NaN'</td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Charisma Summoner Spell Slot Bonus: Spell level Summoner1, Summoner2, Summoner3</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Simple Somatics: Suffers no arcane spell failure in light armor</i></td>
+      <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
       <td>Maker's Call: May use <i>Dimension Door</i> effects to bring eidolon adjacent 2/dy</td>
     </tr><tr style="text-align:center">
@@ -289,7 +289,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Ability Score Increase; Companion Darkvision; Companion Evasion; Devotion; Link (Summoner); Multiattack; Share Spells (Summoner)</td>
+      <td><b>Animal Companion Features</b>: Ability Score Increase; Bonus Tricks; Companion Darkvision; Companion Evasion; Devotion; Evasion (Companion); Link (Summoner); Multiattack; Share Spells (Summoner)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -299,23 +299,25 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Limbs (Legs) Evolution: 2 pairs of legs give +20 speed</i></td>
     </tr><tr style="text-align:center">
-      <td>Ability Score Increase: +2 distributed among eidolon abilities</td>
+      <td>Ability Score Increase: Companion has 2 ability increases to assign</td>
     </tr><tr style="text-align:center">
       <td>Bite Evolution: Bite inflicts 1d8+8 HP</td>
     </tr><tr style="text-align:center">
-      <td>Breath Weapon Evolution: 30' cone or 60' line inflicts 8d6 HP of chosen energy type (DC 17 Ref half) 1/dy</td>
+      <td>Bonus Tricks: Companion can learn 4 additional tricks, requiring no training time or Handle Animal checks</td>
+    </tr><tr style="text-align:center">
+      <td>Breath Weapon Evolution: 30' cone or 60' line inflicts 8d6 HP of chosen energy type (DC 17 Reflex half) 1/dy</td>
     </tr><tr style="text-align:center">
       <td>Companion Darkvision: 60' b/w vision in darkness</td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Devotion: Companion has +4 Will vs. enchantment</td>
     </tr><tr style="text-align:center">
-      <td>Devotion: +4 Will vs. enchantment</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half</td>
     </tr><tr style="text-align:center">
       <td>Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
     </tr><tr style="text-align:center">
       <td>Link (Summoner): May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon</td>
     </tr><tr style="text-align:center">
-      <td>Multiattack: Reduces additional attack penalty to -2 or gives second attack at -5</td>
+      <td>Multiattack: Reduces the penalty for additional attacks to -2 or gives a second attack at -5</td>
     </tr><tr style="text-align:center">
       <td>Share Spells (Summoner): May cast self spells on eidolon as touch spells</td>
     </tr><tr style="text-align:center">

@@ -53,6 +53,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 904/1000 (3.5)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Small</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 32/65/97.5</td>
     </tr></table>
@@ -61,8 +62,6 @@ var attributes = {
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Gnome Ability Adjustment: +2 Constitution/+2 Charisma/-2 Strength</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Slow: -10 Speed</i></td>
     </tr><tr style="text-align:center">
       <td><i>Small: x0.75 Load Max</i></td>
     </tr></table>
@@ -85,16 +84,18 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Skill Focus (Fly); Swap Places</td>
         <td><b>Traits</b>: History Of Heresy; Indomitable Faith</td>
-        <td><b>Gnome Features</b>: Academician; Eternal Hope; Gift Of Tongues; Gnome Ability Adjustment; Keen Senses; Low-Light Vision; Magical Linguist; Master Tinker; Pyromaniac; Slow; Small; Warden Of Nature; Weapon Familiarity (Gnome Hooked Hammer)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Core Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Gnome Features</b>: Academician; Eternal Hope; Gift Of Tongues; Gnome Ability Adjustment; Illusion Resistance; Keen Senses; Low-Light Vision; Magical Linguist; Master Tinker; Pyromaniac; Warden Of Nature; Weapon Familiarity (Gnome Hooked Hammer)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Bonus Feats (Fighter); Core Fighter; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Bonus Feats (Fighter): +1 Fighter Feat</i></td>
+      </tr><tr style="text-align:center">
         <td>Eternal Hope: May reroll 1 on d20 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Low-Light Vision: x2 normal distance in poor light</td>
+        <td>Low-Light Vision: Can see double the normal distance in poor light</td>
       </tr></table>
 </td>
     </tr></table>
@@ -123,7 +124,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Gift Of Tongues: +1 Bluff/+1 Diplomacy/+1 Language Count</i></td>
       </tr><tr style="text-align:center">
@@ -157,7 +158,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 11</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 16</td>
+        <td><b>AC/Touch/Flat</b>: 17/12/16</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+3/+3</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +1/12</td>
@@ -166,9 +167,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -176,31 +176,33 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Chakram (+3 d6+1 x2@20 R30'); Glaive-Guisarme (+2 d8+1 x3@20); Spear (+2 d6+1 x3@20 R20'); Unarmed (+3 d2+1 x2@20)</td>
+        <td><b>Weapons</b>: Chakram (+3 d6+1 x2@20 R30'); Glaive-Guisarme (+2 d8+1 x3@20); Spear (+2 d6+1 x3@20 R20'); Unarmed Strike (+3 d2+1 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1; Size: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Small: +1 AC/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD</i></td>
+        <td><i>Small: +1 size bonus to Armor Class/+1 Melee Attack/+1 Ranged Attack/-1 CMB/-1 CMD</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Master Tinker: Proficient with any self-made weapon</td>
       </tr><tr style="text-align:center">
         <td>Pyromaniac: +1 alchemist level for bomb fire damage</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr><tr style="text-align:center">
         <td>Warden Of Nature: +2 AC and +1 attack vs. aberrations, oozes, and vermin</td>
       </tr></table>
@@ -226,6 +228,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>History Of Heresy: +1 vs. divine spells</td>
       </tr><tr style="text-align:center">
+        <td>Illusion Resistance: +2 vs. illusions</td>
+      </tr><tr style="text-align:center">
         <td>Magical Linguist: +2 vs. language-dependent and magical writing spells</td>
       </tr></table>
 </td>
@@ -238,21 +242,21 @@ var attributes = {
   <tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Arcane Mark (Magical Linguist0 Univ): Inscribes permanent personal rune on touched</td>
+      <td>Arcane Mark (Magical Linguist0 Univ): Inscribes a personal rune on touched, lasting a month on a creature or permanently on an object</td>
     </tr><tr style="text-align:left">
-      <td>Comprehend Languages (Magical Linguist1 Divi): Self understands all languages for 10 min</td>
+      <td>Comprehend Languages (Magical Linguist1 Divi): Allows self to understand written text and words spoken in any language for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Dancing Lights (Pyromaniac0 Evoc): R110' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+      <td>Dancing Lights (Pyromaniac0 Evoc): RNaN' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Flare (Pyromaniac0 Evoc): R25' Target dazzled (DC 11 Fort neg) for 1 min</td>
+      <td>Flare (Pyromaniac0 Evoc): RNaN' Dazzles the target (save Fortitude negates) for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Message (Magical Linguist0 Tran): R110' 1 targets hold whispered dialogue for 10 min</td>
+      <td>Message (Magical Linguist0 Tran): RNaN' Allows self to exchange whispered messages with NaN targets for NaN min; messages can circumvent barriers, but 1' of stone, 1" of metal, a thin sheet of lead, or 3' of wood or dirt blocks the spell</td>
     </tr><tr style="text-align:left">
-      <td>Prestidigitation (Pyromaniac0 Univ): R10' Self performs minor tricks for 1 hr</td>
+      <td>Prestidigitation (Pyromaniac0 Univ): R10' Allows performing minor magic effects for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Produce Flame (Pyromaniac2 Evoc): Creates throwable torch flames that inflict 1d6+1 HP for 1 min</td>
+      <td>Produce Flame (Pyromaniac2 Evoc): Produces a torch flame in self hand for NaN min; can be used repeatedly for a R120' ranged touch attack that inflicts 1d6+5 HP fire, reducing the duration by 1 min for each attack</td>
     </tr><tr style="text-align:left">
-      <td>Read Magic (Magical Linguist0 Divi): Self can read magical writing for 10 min</td>
+      <td>Read Magic (Magical Linguist0 Divi): Allows self to read magical writing and identify <i>Glyphs</i> and <i>Symbols</i> with a successful Spellcraft check for NaN min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

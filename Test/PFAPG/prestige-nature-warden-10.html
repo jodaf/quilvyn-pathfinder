@@ -58,6 +58,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 50/51 (PSOP)</td>
       <td><b>Level</b>: 17</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 33/66/100</td>
     </tr></table>
@@ -70,6 +71,8 @@ var attributes = {
       <td>Heart Of The Streets: Crowds count as normal terrain</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
+    </tr><tr style="text-align:center">
+      <td>Woodland Stride: Can move normally through natural undergrowth without damage or impairment</td>
     </tr></table>
 </td>
   </tr></table>
@@ -91,21 +94,19 @@ var attributes = {
         <td><b>Feats</b>: Extend Spell; Sickening Critical; Skill Focus (Craft (Bows)); Skill Focus (Craft (Weapons)); Skill Focus (Escape Artist); Skill Focus (Heal); Skill Focus (Use Magic Device); Spell Focus (Conjuration); Swap Places</td>
         <td><b>Nature Warden Features</b>: Animal Speech; Caster Level Bonus; Companion Bond (Nature Warden); Companion Soul; Companion Walk; Favored Terrain; Guarded Lands; Ironpaw; Mystic Harmony; Natural Empathy; Plant Speech; Silverclaw; Survivalist (Nature Warden); Wild Stride; Woodforging</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Streets; Human Ability Adjustment</td>
-        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Medium); Combat Style (Mounted Combat); Endurance; Favored Terrain; Guide; Mounted Shield; Ranger's Focus; Shield Proficiency; Terrain Bond; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
+        <td><b>Ranger Features</b>: Animal Companion; Armor Proficiency (Light; Medium; Shield); Combat Style (Mounted Combat); Combat Style; Endurance; Favored Terrain; Guide; Mounted Shield; Ranger's Focus; Terrain Bond; Track; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Animal Companion: Special bond and abilities</td>
+        <td><i>Combat Style: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Guarded Lands: May gain +2 Favored Terrain and +2 Favored Enemy bonuses in 2 chosen 1 mile sq areas</td>
       </tr><tr style="text-align:center">
         <td>Survivalist (Nature Warden): Suffers no penalty for improvised weapon and tool use/Improvised weapons and tools are considered masterwork after 1 min examination</td>
       </tr><tr style="text-align:center">
         <td>Wild Stride: Self and animal companion may move normally through natural hazards while in favored terrain</td>
-      </tr><tr style="text-align:center">
-        <td>Woodland Stride: May move normally through undergrowth</td>
       </tr></table>
 </td>
     </tr></table>
@@ -158,7 +159,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -5 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -5 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Eye For Talent: +2 Sense Motive</i></td>
       </tr><tr style="text-align:center">
@@ -176,17 +177,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skill Focus (Use Magic Device): +3 Use Magic Device</i></td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in 3 terrain type(s)</td>
+        <td>Favored Terrain: Has 5 +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among 3 terrain types and and leaves no trail in those terrains</td>
       </tr><tr style="text-align:center">
-        <td>Link: +4 Handle Animal (companion)/+4 Wild Empathy (companion)</td>
+        <td>Link: +4 Handle Animal and Wild Empathy with companion, and can command companion as a free action</td>
       </tr><tr style="text-align:center">
         <td>Natural Empathy: +10 Wild Empathy checks when in favored terrain/May use Wild Empathy to demoralize/May use Wild Empathy w/magical beasts, vermin, and plant creatures w/out penalty</td>
       </tr><tr style="text-align:center">
         <td>Terrain Bond: Allies w/in sight and hearing gain +2 Perception, Stealth, and Survival and leave no trail in favored terrain</td>
       </tr><tr style="text-align:center">
-        <td>Track: +3 Survival to follow creatures' trail</td>
+        <td>Track: +3 Survival to follow creatures' trails</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +9 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +9 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -202,7 +203,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 158</td>
         <td><b>Initiative</b>: -1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/9/15</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +14/+14/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +14/23</td>
@@ -211,9 +212,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -221,19 +221,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: Heavy Wooden</td>
-        <td><b>Weapons</b>: Heavy Spiked Shield (+14 d6 x2@20); Light Mace (+14 d6 x2@20); Unarmed (+14 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Spiked Shield (+14 d6 x2@20); Light Mace (+14 d6 x2@20); Unarmed Strike (+14 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +51</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: -1; Shield: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: -1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +51</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Initiative in 3 terrain type(s)</td>
+        <td>Favored Terrain: Has 5 +2 Initiative bonuses distributed among 3 terrain types</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Streets: +1 AC when adjacent to 2 allies</td>
       </tr><tr style="text-align:center">
@@ -243,7 +243,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Ranger's Focus: +4 attack and damage vs. target until surrenders or reduced to 0 or negative HP 3/dy</td>
       </tr><tr style="text-align:center">
-        <td>Sickening Critical: Critical hit inflicts sickened for 1 min</td>
+        <td>Sickening Critical: Critical hits can also inflict sickened for 1 min</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
       </tr><tr style="text-align:center">
@@ -265,7 +265,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
         <td>Heart Of The Streets: +1 Reflex when adjacent to 2 allies</td>
       </tr></table>
@@ -290,17 +290,17 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Ironwood (Woodforging6 Tran): Makes 50 lb wood object as strong as steel, or 25 lb object as strong as steel and +1 magic, for 10 dy</td>
+      <td>Ironwood (Woodforging6 Tran): Makes a NaN lb wooden object as strong as steel, or a NaN lb object as strong as steel and +1 magic, for NaN days</td>
     </tr><tr style="text-align:left">
-      <td>Raise Dead (Companion Soul5 Conj): Restores willing soul, dead up to 10 dy, to its touched corpse</td>
+      <td>Raise Dead (Companion Soul5 Conj): Restores a willing soul, dead up to NaN days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot</td>
     </tr><tr style="text-align:left">
-      <td>Scrying (Companion Soul4 Divi): Self views target (DC 16 Will neg) for 10 min</td>
+      <td>Scrying (Companion Soul4 Divi): Self sees and hears a 10' radius around the target (save Will, modified by familiarity and connection with the target, negates for 24 hr) for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Animals (Animal Speech1 Divi): Self converses w/animals for 10 min</td>
+      <td>Speak With Animals (Animal Speech1 Divi): Allows self to converse with animals for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Plants (Plant Speech3 Divi): Self converses w/plants for 10 min</td>
+      <td>Speak With Plants (Plant Speech3 Divi): Allows self to converse with plants and plant creatures for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Wood Shape (Woodforging2 Tran): Self reshapes 20' cu of wood (DC 14 Will neg)</td>
+      <td>Wood Shape (Woodforging2 Tran): Reshapes a NaN cubic feet piece of wood (save Will negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -316,7 +316,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Companion Soul: May use <i>Scrying</i> and <i>Raise Dead</i> effects on animal companion</td>
     </tr><tr style="text-align:center">
-      <td>Extend Spell: May use +1 spell slot to dbl chosen spell duration</td>
+      <td>Extend Spell: Can cast a spell using a spell slot 1 level higher than normal to double its duration</td>
     </tr><tr style="text-align:center">
       <td>Ironpaw: May give summoned creatures DR 10/cold iron/Natural weapons are considered cold iron for overcoming DR</td>
     </tr><tr style="text-align:center">
@@ -361,7 +361,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Evasion; Devotion; Link; Multiattack; Share Spells</td>
+      <td><b>Animal Companion Features</b>: Ability Score Increase; Bonus Tricks; Devotion; Evasion (Companion); Link; Multiattack; Share Spells</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -369,25 +369,31 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Companion Bond (Nature Warden): Has Empathic Link feature</i></td>
     </tr><tr style="text-align:center">
-      <td>Companion Bond (Nature Warden): Companion shares Favored Terrain benefits</td>
+      <td>Ability Score Increase: Companion has 3 ability increases to assign</td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Animal Companion: Can have a special bond with an animal that has expanded abilities</td>
+    </tr><tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 5 additional tricks, requiring no training time or Handle Animal checks</td>
+    </tr><tr style="text-align:center">
+      <td>Companion Bond (Nature Warden): Companion shares Favored Terrain benefits</td>
     </tr><tr style="text-align:center">
       <td>Companion Soul: Additional +4 Will vs. enchantment</td>
     </tr><tr style="text-align:center">
       <td>Companion Walk: May affect animal companion w/self travel and polymorph spells</td>
     </tr><tr style="text-align:center">
-      <td>Devotion: +4 Will vs. enchantment</td>
+      <td>Devotion: Companion has +4 Will vs. enchantment</td>
     </tr><tr style="text-align:center">
-      <td>Empathic Link: May share emotions up to 1 mile</td>
+      <td>Empathic Link: Can communicate emotions with companion up to 1 mile</td>
+    </tr><tr style="text-align:center">
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half</td>
     </tr><tr style="text-align:center">
       <td>Eye For Talent: Animal companion, bonded mount, cohort, or familiar gains +2 on choice of ability</td>
     </tr><tr style="text-align:center">
       <td>Ironpaw: May give animal companion DR 10/cold iron/Natural weapons are considered cold iron for overcoming DR</td>
     </tr><tr style="text-align:center">
-      <td>Multiattack: Reduces additional attack penalty to -2 or gives second attack at -5</td>
+      <td>Multiattack: Reduces the penalty for additional attacks to -2 or gives a second attack at -5</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr><tr style="text-align:center">
       <td>Silverclaw: Animal companion gains DR 10/silver/Natural weapons are considered silver for overcoming DR</td>
     </tr></table>

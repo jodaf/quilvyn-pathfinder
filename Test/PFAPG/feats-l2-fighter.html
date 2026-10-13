@@ -35,7 +35,7 @@ var attributes = {
   "feats.Weapon Specialization (Hand Crossbow)":1, "gender":"Female", "hitPoints":93, "intelligence":15, 
   "languages.Draconic":1, "languages.Ignan":1, "levels.Fighter":16, "name":"Feats-L2 Fighter", 
   "race":"Human", "selectableFeatures.Fighter - Savage Warrior":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"Light Wooden", 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, "shield":"Light Wooden", 
   "skills.Climb":2, "skills.Craft (Traps)":5, "skills.Craft (Weapons)":1, 
   "skills.Handle Animal":15, "skills.Intimidate":1, "skills.Knowledge (Arcana)":6, 
   "skills.Perception":15, "skills.Perform (Act)":1, "skills.Perform (Comedy)":1, 
@@ -74,6 +74,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 47/48 (PSOP)</td>
       <td><b>Level</b>: 16</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -81,7 +82,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Ability Notes</b>:     <table id="AbilityNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Armor Training: No speed penalty in heavy armor</i></td>
+      <td><i>Armor Training: No Speed penalty in heavy armor</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr></table>
@@ -103,12 +104,18 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Bashing Finish; Blind-Fight; Bloody Assault; Bodyguard; Bull Rush Strike; Charge Through; Combat Expertise; Combat Patrol; Combat Reflexes; Covering Defense; Crippling Critical; Critical Focus; Crossbow Mastery; Dazing Assault; Disarming Strike; Disrupting Shot; Disruptive; Dodge; Dreadful Carnage; Focused Shot; Following Step; Furious Focus; Gang Up; Greater Blind-Fight; Greater Dirty Trick; Greater Drag; Greater Reposition; Greater Shield Focus; Greater Shield Specialization (Buckler); Greater Steal; Improved Blind-Fight; Improved Bull Rush; Improved Dirty Trick; Improved Disarm; Improved Drag; Improved Overrun; Improved Reposition; Improved Second Chance; Improved Shield Bash; Improved Steal; Improved Sunder; Improved Trip; In Harm's Way; Missile Shield; Mobility; Mounted Combat; Mounted Shield; Mounted Skirmisher; Parting Shot; Point-Blank Master; Point-Blank Shot; Power Attack; Precise Shot; Pushing Assault; Rapid Reload (Hand); Rapid Shot; Ray Shield; Repositioning Strike; Saving Shield; Second Chance; Shield Focus; Shield Master; Shield Of Swings; Shield Slam; Shield Specialization (Buckler); Shot On The Run; Spellbreaker; Step Up And Strike; Step Up; Stunning Assault; Sundering Strike; Swift Aid; Team Up; Teleport Tactician; Trick Riding; Tripping Strike; Two-Weapon Fighting; Weapon Focus (Hand Crossbow); Weapon Specialization (Hand Crossbow)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Armor Training; Careful Claw; Natural Savagery; Savage Charge; Savage Warrior; Shield Proficiency; Spark Of Life; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Careful Claw; Natural Savagery; Savage Charge; Savage Warrior; Spark Of Life; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: <i>Bonus Feat: +1 General Feat</i></td>
+      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feats (Fighter): +9 Fighter Feats</i></td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -155,6 +162,8 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +16 Skill ranks</i></td>
       </tr><tr style="text-align:center">
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
+      </tr><tr style="text-align:center">
         <td>Trick Riding: In light or no armor, gains automatic success on DC 15 or lower Ride checks and suffers no penalty for bareback riding</td>
       </tr></table>
 </td>
@@ -171,7 +180,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 125</td>
         <td><b>Initiative</b>: +2</td>
-        <td><b>Armor Class</b>: 20</td>
+        <td><b>AC/Touch/Flat</b>: 20/13/17</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +16/+19/+18</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +19/35</td>
@@ -180,9 +189,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -190,25 +198,25 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: Light Wooden</td>
-        <td><b>Weapons</b>: Hand Crossbow (+15 d4+2 x2@19 R30'); Morningstar (+19 d8+3 x2@20); Unarmed (+19 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Hand Crossbow (+15 d4+2 x2@19 R30'); Morningstar (+19 d8+3 x2@20); Unarmed Strike (+19 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +32</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +2; Dodge: +1; Shield: +3</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +2</i></td>
+        <td><i>Armor Training: Raises armor maximum Dexterity bonus to Armor Class by 2</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Constitution Hit Points Adjustment: +32</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dodge: +1 AC/+1 CMD</i></td>
+        <td><i>Dodge: +1 dodge bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Greater Shield Focus: +1 AC</i></td>
+        <td><i>Greater Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Hand Crossbow: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Shield Focus: +1 AC</i></td>
+        <td><i>Shield Focus: +1 shield bonus to Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Shield Specialization (Buckler): +3 CMD</i></td>
       </tr><tr style="text-align:center">
@@ -216,13 +224,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Hand Crossbow: -4 attack</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Hand Crossbow): +1 Hand Crossbow Attack Modifier</i></td>
       </tr><tr style="text-align:center">
         <td><i>Weapon Specialization (Hand Crossbow): +2 Hand Crossbow Damage Modifier</i></td>
       </tr><tr style="text-align:center">
         <td>Bashing Finish: May make a free shield bash after crit</td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
         <td>Bloody Assault: May suffer -5 attack to inflict 1d4 HP/rd bleed damage (DC 15 Heal or magical healing ends)</td>
       </tr><tr style="text-align:center">
@@ -234,27 +244,27 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Charge Through: May attempt a free overrun during charge; failure ends charge</td>
       </tr><tr style="text-align:center">
-        <td>Combat Expertise: May suffer up to -5 attack to gain equal AC bonus</td>
+        <td>Combat Expertise: Can suffer up to -5 attacks to gain an equal dodge bonus to Armor Class until the next turn</td>
       </tr><tr style="text-align:center">
         <td>Combat Patrol: May use a full-round action to increase threat area by 15'</td>
       </tr><tr style="text-align:center">
-        <td>Combat Reflexes: May take AOO while flat-footed and 3 AOO/rd</td>
+        <td>Combat Reflexes: Can make an AOO while flat-footed and make 3 AOO per rd</td>
       </tr><tr style="text-align:center">
         <td>Covering Defense: Total defense action gives +1 AC to an adjacent ally</td>
       </tr><tr style="text-align:center">
-        <td>Crippling Critical: Crit reduces foe speed by half for 1 min (DC 26 Fort 1d4 rd)</td>
+        <td>Crippling Critical: Crit reduces foe speed by half for 1 min (DC 26 Fortitude 1d4 rd)</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
         <td>Crossbow Mastery: May reload a crossbow as a free action w/out provoking AOO</td>
       </tr><tr style="text-align:center">
-        <td>Dazing Assault: May suffer -5 attack to daze w/hit (DC 26 Fort neg)</td>
+        <td>Dazing Assault: May suffer -5 attack to daze w/hit (DC 26 Fortitude negates)</td>
       </tr><tr style="text-align:center">
         <td>Disarming Strike: May disarm foe on a crit confirm that exceeds foe CMD</td>
       </tr><tr style="text-align:center">
         <td>Disrupting Shot: R30' Casting opponent suffers +4 concentration DC from a successful readied ranged attack</td>
       </tr><tr style="text-align:center">
-        <td>Disruptive: +4 foe defensive spell DC</td>
+        <td>Disruptive: Foes within threat area suffer +4 DC to cast spells defensively when self can make an AOO</td>
       </tr><tr style="text-align:center">
         <td>Dreadful Carnage: R30' Successful Intimidation check demoralizes foes after reducing a foe to 0 or negative HP</td>
       </tr><tr style="text-align:center">
@@ -280,35 +290,35 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Improved Blind-Fight: Suffers no miss chance from foe concealment; R30' located unseen attacker gains no ranged attack bonus</td>
       </tr><tr style="text-align:center">
-        <td>Improved Bull Rush: Bull Rush provokes no AOO, gains +2 Bull Rush check and CMD</td>
+        <td>Improved Bull Rush: +2 on Bull Rush attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>Improved Dirty Trick: May perform a dirty trick w/out provoking AOO/+2 dirty trick CMB and CMD</td>
       </tr><tr style="text-align:center">
-        <td>Improved Disarm: Disarm provokes no AOO, gains +2 Disarm check and CMD</td>
+        <td>Improved Disarm: +2 on Disarm attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>Improved Drag: May perform drag w/out provoking AOO/+2 drag CMB and CMD</td>
       </tr><tr style="text-align:center">
-        <td>Improved Overrun: Overrun provokes no AOO, gains +2 Overrun check and CMD, and foe cannot avoid Overrun</td>
+        <td>Improved Overrun: +2 on Overrun attempts and CMD, they provoke no AOO, and the target cannot avoid an Overrun attempt</td>
       </tr><tr style="text-align:center">
         <td>Improved Reposition: May perform reposition w/out provoking AOO/+2 reposition CMB and CMD</td>
       </tr><tr style="text-align:center">
         <td>Improved Second Chance: May make remaining attacks of a full-attack action after Second Chance, suffering a -5 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
         <td>Improved Steal: May perform a steal w/out provoking AOO/+2 Steal CMB and CMD</td>
       </tr><tr style="text-align:center">
-        <td>Improved Sunder: Sunder provokes no AOO, gains +2 Sunder check and CMD</td>
+        <td>Improved Sunder: +2 on Sunder attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Improved Trip: Trip provokes no AOO, gains +2 Trip check and CMD</td>
+        <td>Improved Trip: +2 on Trip attempts and CMD, and they provoke no AOO</td>
       </tr><tr style="text-align:center">
         <td>In Harm's Way: May suffer all damage from an attack aimed at an adjacent ally when using aid another</td>
       </tr><tr style="text-align:center">
         <td>Missile Shield: Suffers no damage from a ranged hit 1/rd</td>
       </tr><tr style="text-align:center">
-        <td>Mobility: +4 AC vs. movement AOO</td>
+        <td>Mobility: +4 dodge bonus to Armor Class vs. movement AOO</td>
       </tr><tr style="text-align:center">
-        <td>Mounted Combat: Successful Ride skill check (DC foe attack roll) negates mount damage 1/rd</td>
+        <td>Mounted Combat: Can use a successful Ride skill check (DC foe attack roll) to negate damage to mount once per rd</td>
       </tr><tr style="text-align:center">
         <td>Mounted Shield: +3 mount AC and Ride checks to avoid mount damage</td>
       </tr><tr style="text-align:center">
@@ -320,17 +330,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Point-Blank Master: Using chosen ranged weapon while threatened provokes no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Power Attack: May suffer -5 attack to gain +10 damage (+15 when wielding weapon w/two hands)</td>
+        <td>Power Attack: Can suffer -5 attack to inflict +10 HP, or +15 HP when attacking two-handed</td>
       </tr><tr style="text-align:center">
-        <td>Precise Shot: Suffers no penalty on shot into melee</td>
+        <td>Precise Shot: Suffers no penalty from shooting into a melee</td>
       </tr><tr style="text-align:center">
         <td>Pushing Assault: May trade Power Attack damage bonus for 5' push (crit 10')</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Reload (Hand): May reload a hand crossbow as a free action</td>
+        <td>Rapid Reload (Hand): Can reload a hand crossbow as a free action</td>
       </tr><tr style="text-align:center">
-        <td>Rapid Shot: May make normal and extra ranged attacks at a -2 penalty</td>
+        <td>Rapid Shot: Can make an extra ranged attack during a full attack, suffering a -2 penalty on all ranged attacks during the rd</td>
       </tr><tr style="text-align:center">
         <td>Ray Shield: Shield absorbs damage from a ranged touch hit 1/rd</td>
       </tr><tr style="text-align:center">
@@ -342,23 +352,23 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Second Chance: May forego additional attacks of a full-attack action to reroll a miss on the first attack</td>
       </tr><tr style="text-align:center">
-        <td>Shield Master: No penalty on shield attacks/May apply shield enhancements to attack and damage</td>
+        <td>Shield Master: Suffers no penalty on shield attacks, and any shield enhancement bonus benefits shield attacks and damage</td>
       </tr><tr style="text-align:center">
         <td>Shield Of Swings: May reduce two-handed weapon full-attack action damage by half to gain +4 AC and CMD</td>
       </tr><tr style="text-align:center">
-        <td>Shield Slam: Shield Bash inflicts Bull Rush</td>
+        <td>Shield Slam: Shield Bash also inflicts a Bull Rush based on the attack roll that provokes no AOO</td>
       </tr><tr style="text-align:center">
         <td>Shield Specialization (Buckler): +2 AC vs. crit</td>
       </tr><tr style="text-align:center">
-        <td>Shot On The Run: May move before and after ranged attack</td>
+        <td>Shot On The Run: Can move before and after a ranged attack, moving up to 30' total</td>
       </tr><tr style="text-align:center">
-        <td>Spellbreaker: May take AOO after foe failed defensive casting</td>
+        <td>Spellbreaker: Can take an AOO on a foe who fails when casting defensively</td>
       </tr><tr style="text-align:center">
         <td>Step Up And Strike: May make AOO after Step Up</td>
       </tr><tr style="text-align:center">
-        <td>Step Up: May match foe 5' step</td>
+        <td>Step Up: Can follow a foe's 5' step; requires foregoing a 5' step or subtracting 5' from movement during the next turn</td>
       </tr><tr style="text-align:center">
-        <td>Stunning Assault: May suffer -5 attack to inflict 1 rd stun (DC 26 Fort neg)</td>
+        <td>Stunning Assault: May suffer -5 attack to inflict 1 rd stun (DC 26 Fortitude negates)</td>
       </tr><tr style="text-align:center">
         <td>Sundering Strike: May damage foe weapon w/crit confirm that exceeds foe CMD</td>
       </tr><tr style="text-align:center">
@@ -372,7 +382,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Tripping Strike: May inflict trip w/crit confirm that exceeds foe CMD</td>
       </tr><tr style="text-align:center">
-        <td>Two-Weapon Fighting: Reduces on-hand penalty by 2 and off-hand by 6</td>
+        <td>Two-Weapon Fighting: Reduces the attack penalties when fighting with a weapon in each hand by 2 for the primary hand and 6 for the off hand</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">

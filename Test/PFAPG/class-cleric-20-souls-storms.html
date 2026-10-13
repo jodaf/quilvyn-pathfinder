@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Perform (Sing))":1, "feats.Tower Shield Proficiency":1, "gender":"Male", "hitPoints":104, 
   "intelligence":11, "levels.Cleric":20, "name":"Class-Cleric 20-Souls Storms", "race":"Human", 
   "selectableFeatures.Cleric - Souls Subdomain":1, "selectableFeatures.Cleric - Storms Subdomain":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, 
   "skills.Craft (Alchemy)":20, "skills.Craft (Traps)":1, "skills.Diplomacy":2, "skills.Intimidate":1, 
   "skills.Knowledge (Arcana)":1, "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":20, 
   "skills.Perform (Sing)":13, "spells.Animate Dead(Souls3 Necr)":1, 
@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 194657/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -92,16 +93,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Law); Channel Smite; Critical Focus; Improved Shield Bash; Intimidating Prowess; Skill Focus (Bluff); Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Nature)); Skill Focus (Perform (Sing)); Tower Shield Proficiency</td>
         <td><b>Traits</b>: Hedge Magician; Sacred Conduit</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura; Channel Energy; Gale Aura; Shield Proficiency; Souls Subdomain; Spontaneous Cleric Spell; Storm Burst; Storms Subdomain; Touch The Spirit World; Ward Against Death; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Gale Aura; Orisons; Souls Subdomain; Spontaneous Casting (Cleric); Storm Burst; Storms Subdomain; Touch The Spirit World; Ward Against Death; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -134,7 +135,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intimidating Prowess: +2 Intimidate</i></td>
       </tr><tr style="text-align:center">
@@ -150,7 +151,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Hedge Magician: Cost to craft magic items is reduced by 5%</td>
+        <td>Hedge Magician: Reduces the cost to craft magic items by 5%</td>
       </tr></table>
 </td>
     </tr></table>
@@ -166,7 +167,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 84</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/28</td>
@@ -175,9 +176,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -185,17 +185,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Armored Coat</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed Strike (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Sacred Conduit: +1 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -203,15 +205,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
+        <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
-        <td>Storm Burst: R30' Ranged touch inflicts 1d6+10 HP non-lethal and -2 attack 5/dy</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
+      </tr><tr style="text-align:center">
+        <td>Storm Burst: R30' Ranged touch attack inflicts 1d6+10 HP nonlethal and -2 attacks for 1 rd 5 times per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -250,61 +254,59 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Dead (Souls3 Necr): Touched corpses become up to 40 HD of obedient skeletons or zombies</td>
+      <td>Animate Dead (Souls3 Necr): Touched corpses become up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
     </tr><tr style="text-align:left">
-      <td>Antilife Shell (Souls6 Abju): 10' radius bars living for 20 min</td>
+      <td>Antilife Shell (Souls6 Abju): 10' radius bars the entrance of living creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Storms3 Evoc): R300' 1 bolt/rd inflicts 3d6 HP (DC 15 Ref half) for 20 min or 10 bolts</td>
+      <td>Call Lightning (Storms3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity (or 3d10 HP during a storm) (save Reflex half) for 20 min or 10 bolts</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning Storm (Storms5 Evoc): R1200' 1 bolt/rd inflicts 5d6 HP (DC 17 Ref half) for 20 min or 15 bolts</td>
+      <td>Call Lightning Storm (Storms5 Evoc): R1200' 1 bolt per rd inflicts 5d6 HP electricity (or 5d10 HP during a storm) (save Reflex half) for 20 min or 15 bolts</td>
     </tr><tr style="text-align:left">
-      <td>Control Weather (Storms7 Tran): Modifies seasonal weather in 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (Storms7 Tran): Modifies seasonal weather in a 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
       <td>Death Ward (Souls4 Necr): Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Deathwatch (Souls1 Necr): R30' Cone reveals HP status of targets for 200 min</td>
+      <td>Deathwatch (Souls1 Necr): 30' cone reveals whether creatures are dead, alive with up to 3 hit points, alive with more than 3 hit points, healthy, undead, or animated, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Destruction (Souls7 Necr): R75' Target suffers 200 HP, consumed if slain (DC 19 Fort 10d6 HP)</td>
+      <td>Destruction (Souls7 Necr): R75' Inflicts 200 HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains</td>
     </tr><tr style="text-align:left">
-      <td>Fog Cloud (Storms2 Conj): R300' Fog in 20' radius obscures vision for 200 min</td>
+      <td>Fog Cloud (Storms2 Conj): R300' 20' radius fog obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Gentle Repose (Souls2 Necr): Touched corpse preserved 20 dy (DC 14 Will neg)</td>
+      <td>Gentle Repose (Souls2 Necr): Preserves a touched corpse from decay (save Will negates) for 20 days</td>
     </tr><tr style="text-align:left">
-      <td>Obscuring Mist (Storms1 Conj): Fog in 20' radius obscures vision for 20 min</td>
+      <td>Obscuring Mist (Storms1 Conj): Fog in a 20'-radius, 20'-high cylinder obscures vision, giving a 20% miss chance on attacks within 5' and a 50% chance on more distant attacks, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Sirocco (Storms6 Evoc): R300' 60' high, 20' radius inflicts 4d6+20 HP fire, fatigues, and knocks prone (DC 18 Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for 20 rd</td>
+      <td>Sirocco (Storms6 Evoc): R300' 60' high, 20' radius inflicts 4d6+20 HP fire, fatigues, and knocks prone (Fortitude half HP and negates knocked prone; flying creatures DC 15 Fly to avoid) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Souls5 Necr): Touched suffers 12d6+20 HP (DC 17 Fort 3d6+20 HP)</td>
+      <td>Slay Living (Souls5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Sleet Storm (Storms4 Conj): R1200' Sleet in 40' radius binds, inflicts DC 10 Acrobatics to move for 20 rd</td>
+      <td>Sleet Storm (Storms4 Conj): R1200' 40' radius, 20' high cylinder blocks sight, extinguishes small fires, and requires a DC 10 Acrobatics check to move at half Speed (failure by 5 or more causes a fall) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Storms9 Conj): R1200' 360' radius storm deafens for 1d4x10 min (DC 21 Fort neg), then rains acid inflicting 1d6 HP, then generates 6 bolts lightning that inflict 10d6 HP each (DC 21 Ref half), then hail that inflicts 5d6 HP, then obscures vision for 6 rd</td>
+      <td>Storm Of Vengeance (Storms9 Conj): R1200' 360' radius storm inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Trap The Soul (Souls9 Conj): R75' Target imprisoned in gem (DC 21 Will neg)</td>
+      <td>Trap The Soul (Souls9 Conj): R75' Imprisons the target in a gem, either by saying the spell (save Will negates; -2 if the target's name is also uttered), or by tricking the target into taking a trigger object, allowing no save</td>
     </tr><tr style="text-align:left">
-      <td>Waves Of Exhaustion (Souls8 Necr): Creatures in 60' cone become exhausted</td>
+      <td>Waves Of Exhaustion (Souls8 Necr): 60' cone inflicts exhausted</td>
     </tr><tr style="text-align:left">
-      <td>Whirlwind (Storms8 Evoc): R1200' Wind in 10' radius inflicts 3d6 HP, then 1d8 HP/rd for 20 rd (DC 20 Ref neg)</td>
+      <td>Whirlwind (Storms8 Evoc): R1200' 10' radius, 30' high cyclone moves 60' as directed each rd, inflicting 3d6 HP on Large and smaller creatures (save Reflex negates), for 20 rd; it traps Medium and smaller creatures (save Reflex negates), inflicting an additional 1d8 HP on each subsequent rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 22 Will half) 5/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
       <td>Gale Aura: 30' radius inflicts difficult terrain when moving toward self and no 5' step 20 rd/dy</td>
     </tr><tr style="text-align:center">
-      <td>Sacred Conduit: +1 channeled energy save DC</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
       <td>Touch The Spirit World: Touched weapon inflicts 1/2 damage (full damage if magic) on incorporeal creatures for 20 rd 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Ward Against Death: R30' Gives immunity to death effects, energy drain, and negative levels 20 rd/dy</td>
+      <td>Ward Against Death: 30' emanation gives living creatures immunity to death effects, energy drain, and negative level effects for 20 rd per day</td>
     </tr></table>
 </td>
   </tr></table>

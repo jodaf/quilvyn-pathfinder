@@ -16,7 +16,7 @@ var attributes = {
   "languages.Draconic":1, "languages.Goblin":1, "levels.Barbarian":2, "levels.Oracle":1, 
   "name":"Prestige-Rage Prophet 10", "prestige.Rage Prophet":10, "race":"Human", 
   "selectableFeatures.Barbarian - Breaker":1, "selectableFeatures.Barbarian - Moment Of Clarity":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Heart Of The Wilderness":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Heart Of The Wilderness":1, 
   "selectableFeatures.Oracle - Bones Mystery":1, "selectableFeatures.Oracle - Voice Of The Grave":1, 
   "selectableFeatures.Oracle - Wasting":1, "shield":"Buckler", "skills.Acrobatics":6, "skills.Appraise":2, 
   "skills.Climb":8, "skills.Craft (Bows)":13, "skills.Craft (Weapons)":1, "skills.Diplomacy":2, 
@@ -57,6 +57,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 36/39 (PSOP)</td>
       <td><b>Level</b>: 13</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -81,15 +82,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Blind-Fight; Point-Blank Shot; Shielded Caster; Skill Focus (Craft (Weapons)); Skill Focus (Handle Animal); Skill Focus (Linguistics); Spell Focus (Evocation); Swap Places</td>
         <td><b>Rage Prophet Features</b>: Caster Level Bonus; Enduring Rage; Greater Rage; Indomitable Caster; Rage Prophet Mystery; Ragecaster; Raging Healer; Raging Spellstrength; Savage Seer; Spirit Guardian; Spirit Guide; Spirit Warrior</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Bones Mystery; Mystery; Oracle's Curse; Orisons; Revelation; Shield Proficiency; Voice Of The Grave; Wasting; Weapon Proficiency (Simple)</td>
-        <td><b>Human Features</b>: Bonus Feat; Heart Of The Wilderness; Human Ability Adjustment</td>
-        <td><b>Barbarian Features</b>: Armor Proficiency (Medium); Breaker; Destructive; Moment Of Clarity; Rage Powers; Rage; Shield Proficiency; Uncanny Dodge; Weapon Proficiency (Martial)</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Bones Mystery; Mystery; Oracle's Curse; Orisons; Revelation; Voice Of The Grave; Wasting; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Heart Of The Wilderness; Human Ability Adjustment</td>
+        <td><b>Barbarian Features</b>: Armor Proficiency (Light; Medium; Shield); Breaker; Destructive; Moment Of Clarity; Rage Powers; Rage; Uncanny Dodge; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Mystery: 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -142,7 +143,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bones Mystery: Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -159,6 +160,8 @@ var attributes = {
         <td><i>Skill Focus (Linguistics): +3 Linguistics</i></td>
       </tr><tr style="text-align:center">
         <td><i>Wasting: -4 Charisma-based skills other than Intimidate</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
       </tr></table>
 </td>
     </tr></table>
@@ -174,7 +177,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 124</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 14/10/14</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +9/+11/+9</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +11/21</td>
@@ -183,9 +186,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -193,13 +195,17 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Studded Leather</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Glaive (+10 d10+2 x3@20); Longspear (+10 d8+2 x3@20); Lucerne Hammer (+10 d12+2 x2@20); Unarmed (+11 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Glaive (+10 d10+2 x3@20); Longspear (+10 d8+2 x3@20); Lucerne Hammer (+10 d12+2 x2@20); Unarmed Strike (+11 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +3; Shield: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +52</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Greater Rage: Has increased Rage effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Savage Seer: +10 Rage Power Level/+10 Mystery Level</i></td>
       </tr><tr style="text-align:center">
@@ -207,25 +213,27 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
+        <td><i>Uncanny Dodge: Retains Dexterity bonus to Armor Class when flat-footed</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
         <td>Destructive: +1 damage vs. objects and with sunder</td>
       </tr><tr style="text-align:center">
-        <td>Greater Rage: Gains +6 Strength, +6 Constitution, +3 Will during rage</td>
-      </tr><tr style="text-align:center">
         <td>Heart Of The Wilderness: +5 stabilization checks/Does not die until -24 HP</td>
       </tr><tr style="text-align:center">
-        <td>Moment Of Clarity: May suspend rage effects for 1 rd 1/rage</td>
+        <td>Moment Of Clarity: Can suspend rage effects for 1 rd once per rage</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
-        <td>Rage: Gains +4 Strength, +4 Constitution, +2 Will, -2 AC for 10 rd/8 hr rest</td>
+        <td>Rage: Can gain +6 Strength, +6 Constitution, and +3 Will and suffer -2 Armor Class, becoming fatigued afterward for twice as many rd, for 10 rd per 8 hr of rest</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Uncanny Dodge: Always adds Dexterity modifier to AC (foe feint neg)</td>
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
+      </tr><tr style="text-align:center">
+        <td>Uncanny Dodge: Retains Dexterity bonus to Armor Class vs. invisible foes</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -264,15 +272,15 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Dancing Lights (Spirit Guide0 Evoc): R200' 4 torch lights in 10' radius move 100'/rd for 1 min</td>
+      <td>Dancing Lights (Spirit Guide0 Evoc): RNaN' Creates a humanoid-shaped light, 4 torch lights, or 4 glowing spheres in a 10' radius that can be moved 100' each rd for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Ghost Sound (Spirit Guide0 Illu): R50' Produces sound volume of 20 humans (DC 10 Will disbelieve) for 10 rd</td>
+      <td>Ghost Sound (Spirit Guide0 Illu): RNaN' Produces the sound volume of 40 humans (save Will upon interaction disbelieves) for NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Guidance (Spirit Guide0 Divi): Touched gains +1 next attack, save, or skill check for 1 min</td>
+      <td>Guidance (Spirit Guide0 Divi): Touched gains +1 on an attack, save, or skill check within 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Mage Hand (Spirit Guide0 Tran): R50' Self moves up to 5 lb target 15'/rd for conc</td>
+      <td>Mage Hand (Spirit Guide0 Tran): RNaN' Allows self to use move actions to move a target object up to 5 lb 15' per rd for concentration</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (Voice Of The Grave3 Necr): R10' Self receives 5 answers from corpse (DC 15 Will neg)</td>
+      <td>Speak With Dead (Voice Of The Grave3 Necr): R10' Target corpse answers a question (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune) asked within NaN min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -286,7 +294,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Indomitable Caster: +4 concentration checks</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Rage Prophet Mystery: Has access to additional spells</td>
     </tr><tr style="text-align:center">

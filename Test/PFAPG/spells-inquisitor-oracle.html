@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Profession (Tanner))":1, "feats.Skill Focus (Survival)":1, "feats.Widen Spell":1, "gender":"Female", 
   "hitPoints":143, "intelligence":13, "languages.Dwarven":1, "levels.Inquisitor":10, 
   "levels.Oracle":10, "name":"Spells-Inquisitor Oracle", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Inquisitor - Magic Domain":1, "selectableFeatures.Oracle - Awesome Display":1, 
   "selectableFeatures.Oracle - Haunted":1, "selectableFeatures.Oracle - Heavens Mystery":1, 
   "selectableFeatures.Oracle - Interstellar Void":1, "selectableFeatures.Oracle - Star Chart":1, "shield":"None", 
@@ -74,6 +74,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 57/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 20/40/60</td>
     </tr></table>
@@ -104,15 +105,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Blind-Fight; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Lookout; Shield Wall; Shielded Caster; Silent Spell; Skill Focus (Perform (Dance)); Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Awesome Display; Haunted; Heavens Mystery; Interstellar Void; Mystery; Oracle's Curse; Orisons; Revelation; Shield Proficiency; Star Chart; Weapon Proficiency (Simple)</td>
-        <td><b>Inquisitor Features</b>: Armor Proficiency (Medium); Bane; Cunning Initiative; Detect Alignment; Discern Lies; Dispelling Touch; Domain (Inquisitor); Hand Of The Acolyte; Judgment; Magic Domain; Monster Lore; Orisons; Second Judgment; Shield Proficiency; Solo Tactics; Stern Gaze; Teamwork Feat (Inquisitor); Track; Weapon Proficiency (Quarterstaff); Weapon Proficiency (Simple/Hand Crossbow/Longbow/Repeating Crossbow/Shortbow)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Awesome Display; Haunted; Heavens Mystery; Interstellar Void; Mystery; Oracle's Curse; Orisons; Revelation; Star Chart; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Inquisitor Features</b>: Armor Proficiency (Light; Medium; Shield); Bane; Cunning Initiative; Detect Alignment; Discern Lies; Dispelling Touch; Domain (Inquisitor); Hand Of The Acolyte; Judgment; Magic Domain; Monster Lore; Orisons; Second Judgment; Solo Tactics; Stern Gaze; Teamwork Feat (Inquisitor); Track; Weapon Proficiency (Quarterstaff); Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Domain (Inquisitor): 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -171,7 +172,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Heavens Mystery: Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -195,13 +196,15 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Stern Gaze: +5 Intimidate/+5 Sense Motive</i></td>
       </tr><tr style="text-align:center">
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
+      </tr><tr style="text-align:center">
         <td>Mathematical Prodigy: Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Monster Lore: +0 Knowledge (identify creature abilities and weaknesses)</td>
       </tr><tr style="text-align:center">
         <td>Scholar Of The Great Beyond: Choice of Knowledge (History) or Knowledge (Planes) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Track: +5 Survival to follow creatures' trail</td>
+        <td>Track: +5 Survival to follow creatures' trails</td>
       </tr></table>
 </td>
     </tr></table>
@@ -217,7 +220,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 183</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 14</td>
+        <td><b>AC/Touch/Flat</b>: 14/10/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +14/+12/+14</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/22</td>
@@ -226,9 +229,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Hand Crossbow; Longbow; Repeating Crossbow; Shortbow; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -236,31 +238,33 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bardiche (+8 d10-2 x2@19); Light Hammer (+8 d4-2 x2@20 R20'); Spiked Armor (+8 d6-2 x2@20); Unarmed (+12 d3-2 x2@20)</td>
+        <td><b>Weapons</b>: Bardiche (+8 d10-2 x2@19); Light Hammer (+8 d4-2 x2@20 R20'); Spiked Armor (+8 d6-2 x2@20); Unarmed Strike (+12 d3-2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +40</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Bardiche: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Bardiche: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
+      </tr><tr style="text-align:center">
         <td>Bane: Self gains +2 attack and +2d6 HP damage with chosen weapon vs. chosen creature type for 10 rd/dy</td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
-        <td>Hand Of The Acolyte: R30' May make +14 ranged attack w/melee weapon 3/dy</td>
+        <td>Hand Of The Acolyte: R30' Can make a +14 ranged attack with a melee weapon 3 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Interstellar Void: R30' Inflicts 10d6 HP cold, fatigued (DC 18 Fort half HP only) 2/dy</td>
+        <td>Interstellar Void: R30' Inflicts 10d6 HP cold, fatigued (DC 18 Fortitude half HP only) 2/dy</td>
       </tr><tr style="text-align:center">
         <td>Judgment: May pronounce one of these, gaining the specified bonus until combat ends, 4/dy: destruction (+4 weapon damage), healing (regains 4 HP/rd), justice (+3 attack, dbl to confirm crit), piercing (+4 concentration, +4 caster level to overcome spell resistance), protection (+3 AC, dbl vs. confirm crit), purity (+3 saves, dbl vs. curse, disease, and poison), resiliency (gain DR 3/opposed alignment), resistance (resistance 8 to chosen energy), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
       </tr><tr style="text-align:center">
@@ -293,7 +297,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Inquisitor0: 6; Inquisitor1: 5; Inquisitor2: 4; Inquisitor3: 3; Inquisitor4: 1; O0: 9; O1: 7; O2: 7; O3: 7; O4: 5; O5: 3</td>
-        <td><b>Spell DC</b>: Domain: 10; Inquisitor: 10; O: 13</td>
+        <td><b>Spell DC</b>: Dispelling Touch: 13; Domain: 10; Inquisitor: 10; O: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -301,73 +305,73 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Banish Seeming (Inquisitor3 Abju): Touch gives +2 <i>Dispel Magic</i> effects vs. 2 illusions or reverts magical transformations (check vs. target HD) for 10 rd</td>
+      <td>Banish Seeming (Inquisitor3 Abju): Melee touch gives +2 <i>Dispel Magic</i> effects vs. 2 illusions or allows a caster level check vs. the target's HD to revert magical transformations and prevent new ones for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Borrow Fortune (O3 Evoc): Self gains better of two immediate d20 rolls, then suffers worse of two d20 rolls for 2 rd</td>
+      <td>Borrow Fortune (O3 Evoc): Gives self the better of two immediate d20 rolls at the cost of taking the worse of two d20 rolls for 2 rd</td>
     </tr><tr style="text-align:left">
-      <td>Brand (Inquisitor0 Tran): Inflicts 1 HP on touched to etch indelible mark (DC 10 Fort neg, scraping to remove inflicts 1d6 HP and brand reappears if healed) for 10 dy</td>
+      <td>Brand (Inquisitor0 Tran): Inflicts 1 HP on touched to etch an indelible mark (save Fortitude negates) for 10 days; scraping can remove the brand while inflicting 1d6 HP, but it reappears if the damage is healed</td>
     </tr><tr style="text-align:left">
-      <td>Burst Bonds (Inquisitor1 Evoc): Touched restraints suffer 5d6 HP (DC 11 Fort half (magical restraints)), ignoring hardness up to 10, or self gains free +5 CMB and +5 save attempt to break grapple (DC 11 Fort neg)</td>
+      <td>Burst Bonds (Inquisitor1 Evoc): Touched restraints suffer 5d6 HP (save Fortitude half for magical restraints), ignoring hardness up to 10, or gives self a +5 CMB or +5 save attempt to break a Grapple (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Cast Out (Inquisitor3 Abju): Touched suffers 2d8+10 HP and dispel of 2 <i>Magic Jar</i> or enchantment effects (DC 13 Will half HP and 1 effect)</td>
+      <td>Cast Out (Inquisitor3 Abju): Melee touch inflicts 2d8+10 HP and dispels 2 <i>Magic Jar</i> or compulsion effects, starting with the highest-level spells (save Will inflicts half HP and dispels 1 effect)</td>
     </tr><tr style="text-align:left">
-      <td>Castigate (Inquisitor2 Ench): R50' Target suffers fear for 10 rd (DC 12 Will ends w/1 rd shaken; worshipers of Nethys save -2)</td>
+      <td>Castigate (Inquisitor2 Ench): R50' Target cowers with fear for 10 rd (save Will each rd inflicts shaken for 1 rd, then ends; worshipers of Nethys have a -2 penalty on the saves)</td>
     </tr><tr style="text-align:left">
-      <td>Commune (Star Chart5 Divi): Deity answers 10 yes/no questions</td>
+      <td>Commune (Star Chart5 Divi): Agents of Nethys respond to NaN yes/no questions asked within NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Confess (Inquisitor2 Ench): R50' Target must answer truthfully one question from self or suffer 5d6 HP and 2d4 rd sickened (DC 12 Will half HP only)</td>
+      <td>Confess (Inquisitor2 Ench): R50' Compels the target to truthfully answer one question from self or suffer 5d6 HP and sickened for 2d4 rd (save Will half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Corruption Resistance (Inquisitor2 Abju): Touched gains DR 10/- vs. chosen alignment magical damage for 100 min</td>
+      <td>Corruption Resistance (Inquisitor2 Abju): Touched gains DR 10/- vs. magical damage based on a chosen alignment component for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Coward's Lament (Inquisitor4 Ench): R50' Target suffers cumulative -1 AC, attack, and saves/rd (max -5, DC 14 Will neg 1 rd, attacking self resets to 0) for 10 rd</td>
+      <td>Coward's Lament (Inquisitor4 Ench): R50' Compels the target to attack self or suffer a cumulative -1 Armor Class, attacks, and saves each rd (-5 maximum) (save Will DC 14 negates for 1 rd, and attacking self resets the penalty to 0) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Defile Armor (Inquisitor4 Abju): Touched armor gives +2 AC, plus DR 5/good while using Judgment or Smite for 10 min</td>
+      <td>Defile Armor (Inquisitor4 Abju): Touched armor gains a +2 enhancement bonus, and gives DR 5/good while using Judgment or Smite features, for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Chaos (Detection1 Divi): R60' Cone gives self info on chaotic auras for conc or 100 min</td>
+      <td>Detect Chaos (Detection1 Divi): 60' cone reveals the presence and power of chaotic auras for concentration up to NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Evil (Detection1 Divi): R60' Cone gives self info on evil auras for conc or 100 min</td>
+      <td>Detect Evil (Detection1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Good (Detection1 Divi): R60' Cone gives self info on good auras for conc or 100 min</td>
+      <td>Detect Good (Detection1 Divi): 60' cone reveals the presence and power of good auras for concentration up to NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Law (Detection1 Divi): R60' Cone gives self info on lawful auras for conc or 100 min</td>
+      <td>Detect Law (Detection1 Divi): 60' cone reveals the presence and power of lawful auras for concentration up to NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Discern Lies (Detection4 Divi): R50' Self detects lies from 10 creatures in 15' radius (DC 17 Will neg) for conc or 10 rd</td>
+      <td>Discern Lies (Detection4 Divi): RNaN' Reveals lies from NaN creatures in a 15' radius (save Will negates) for concentration up to NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Magic (Dispelling Touch3 Abju): R200' Successful d20+10 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
+      <td>Dispel Magic (Dispelling Touch3 Abju): R300' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20' radius, or disrupts a foe's spell casting</td>
     </tr><tr style="text-align:left">
-      <td>Divine Vessel (O8 Tran): Self gains size category, +6 Strength, +6 Constitution, +3 AC, 60' Darkvision, SR 22, and alignment-specific effects for 10 rd</td>
+      <td>Divine Vessel (O8 Tran): Self become a choice of an anarchic, axiomatic, celestial, or fiendish creature, increasing size by a category and gaining +6 Strength, +6 Constitution, a +3 natural armor bonus to Armor Class, 60' Darkvision, SR 22, and creature-specific characteristics, for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Fester (Inquisitor3 Necr): R50' Target suffers SR 22 to spells that grant healing or temporary HP for 10 rd (DC 13 Fort 1 rd)</td>
+      <td>Fester (Inquisitor3 Necr): R50' Target suffers SR 22 to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for 10 rd (save Fortitude effects last 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Flames Of The Faithful (Inquisitor2 Tran): Touched self weapon inflicts +1d6 HP fire (crit while using Judgment also inflicts +1d10 HP fire or more) for 10 rd</td>
+      <td>Flames Of The Faithful (Inquisitor2 Tran): Touched weapon inflicts +1d6 HP fire while wielded by self, and critical hits while using Judgment also inflict an additional +1d10 HP - +3d10 HP fire, for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Follow Aura (Inquisitor2 Divi): Self can track chosen alignment moderate or strong aura for 100 min</td>
+      <td>Follow Aura (Inquisitor2 Divi): Allows self to track the moderate or strong traces of a chosen alignment component for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Forced Repentance (Inquisitor4 Ench): R50' Evil target (but not of evil subtype) falls prone and makes confession (DC 14 Will neg) for 10 rd</td>
+      <td>Forced Repentance (Inquisitor4 Ench): R50' Evil target (but not one of the evil subtype) falls prone and makes a confession for 10 rd (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Brand (Inquisitor4 Tran): Inflicts 1d6 HP on touched to etch permanent indelible mark (DC 14 Fort neg) that glows and sickens when w/in 30' of self faith symbol</td>
+      <td>Greater Brand (Inquisitor4 Tran): Inflicts 1d6 HP on touched to etch a permanent, indelible mark (save Fortitude negates) that glows and inflicts sickened on the target when within 30' of a visible faith symbol of Nethys</td>
     </tr><tr style="text-align:left">
-      <td>Hunter's Eye (Inquisitor3 Divi): R200' Self can see target when invisible or concealed (except by darkness) and gains +20 Perception to locate target for 10 min</td>
+      <td>Hunter's Eye (Inquisitor3 Divi): R200' Self can perceive the target when it's invisible or concealed, except by darkness, and gains +20 Perception to locate it for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Castigate (Inquisitor5 Ench): R200' 10 targets in 15' radius suffer fear for 10 rd (DC 15 Will ends w/1 rd shaken; worshipers of Nethys save -2)</td>
+      <td>Mass Castigate (Inquisitor5 Ench): R200' 10 targets in 15' radius cower with fear for 10 rd (save Will ech rd inflicts shaken for 1 rd, then ends; worshipers of Nethys have a -2 penalty on the saves)</td>
     </tr><tr style="text-align:left">
-      <td>Mass Fester (Inquisitor6 Necr): R50' 10 targets in 15' radius suffer SR 22 to spells that grant healing or temporary HP for 10 rd (DC 16 Fort 1 rd)</td>
+      <td>Mass Fester (Inquisitor6 Necr): R50' 10 targets in a 15' radius suffer SR 22 to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for 10 rd (save Fortitude effects last 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Oracle's Burden (O2 Necr): R200' Target suffers self Oracle's Curse effects (DC 15 Will neg) for 10 min</td>
+      <td>Oracle's Burden (O2 Necr): R200' Target suffers self Oracle's Curse effects (save Will negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Rebuke (Inquisitor4 Evoc): Foes in 20' radius suffer 5d8 HP (half sonic, half divine) and staggered for 1 rd (worshipers of Nethys 10d6 HP and stunned for 1d4 rd) (DC 14 Fort half HP only)</td>
+      <td>Rebuke (Inquisitor4 Evoc): Foes in 20' radius suffer 5d8 HP (half sonic, half divine) and staggered for 1 rd (worshipers of Nethys 10d6 HP and stunned for 1d4 rd) (Fortitude half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Resounding Blow (Inquisitor5 Evoc): Hits w/held weapon inflict +1d6 HP sonic, plus staggered 1 rd while using Judgment or Smite (DC 15 Fort neg); crit inflicts stunned 1 rd and deafened 1d6 rd (DC 15 Fort neg), for 10 rd</td>
+      <td>Resounding Blow (Inquisitor5 Evoc): Hits w/held weapon inflict +1d6 HP sonic, plus staggered 1 rd while using Judgment or Smite (Fortitude negates); crit inflicts stunned 1 rd and deafened 1d6 rd (Fortitude negates), for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Retribution (Inquisitor3 Necr): R50' Target who just damaged self suffers -4 attack, skill checks, and ability checks for 10 rd (DC 13 Fort 1 rd; worshipers of Nethys save -2)</td>
+      <td>Retribution (Inquisitor3 Necr): R50' Target who just damaged self suffers -4 attack, skill checks, and ability checks for 10 rd (Fortitude 1 rd; worshipers of Nethys save -2)</td>
     </tr><tr style="text-align:left">
       <td>Righteous Vigor (Inquisitor3 Ench): Touched gains +1 attack and 1d8 temporary HP from each successful attack (max +4/20 temporary HP; miss resets to +0) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sanctify Armor (Inquisitor4 Abju): Touched armor gives +2 AC, plus DR 5/evil while using Judgment or Smite, for 10 min</td>
+      <td>Sanctify Armor (Inquisitor4 Abju): Touched armor gains a +2 enhancement bonus, and gives DR 5/evil while using Judgment or Smite features, for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Shared Wrath (Inquisitor4 Ench): 10 targets in 15' radius gain +3 attack, damage, and spell resistance checks vs. targeted foe for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Sleepwalk (Inquisitor4 Ench): Touched unconscious creature animates and moves at half speed (DC 14 Will neg) for 10 hr</td>
+      <td>Sleepwalk (Inquisitor4 Ench): Touched unconscious creature animates and moves at half speed (Will negates) for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Tireless Pursuers (Inquisitor4 Tran): Self and 3 touched gain half damage from hustling and forced march and ignore travel fatigue for 10 hr</td>
     </tr><tr style="text-align:left">
@@ -387,29 +391,29 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Awesome Display: Treats illusion targets as having 3 fewer HD</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Detect Alignment: May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will</td>
     </tr><tr style="text-align:center">
       <td>Discern Lies: May use <i>Discern Lies</i> effects 10 rd/dy</td>
     </tr><tr style="text-align:center">
-      <td>Dispelling Touch: Touch inflicts <i>Dispel Magic</i> 1/dy</td>
+      <td>Dispelling Touch: Touch invokes <i>Dispel Magic</i> effects once per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +2 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
       <td>Haunted: Knows <i>Mage Hand</i>, <i>Ghost Sound</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Telekinesis</i> spells</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Shielded Caster: +4 concentration when an adjacent ally has this feat and no shield, +5 w/a buckler or light shield, +6 w/a heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
       <td>Star Chart: May use <i>Commune</i> effects via 10 min contemplation 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Widen Spell: May use +3 spell slot to dbl chosen spell area of affect</td>
+      <td>Widen Spell: Can cast a spell using a spell slot 3 levels higher than normal to double its area of affect</td>
     </tr></table>
 </td>
   </tr></table>

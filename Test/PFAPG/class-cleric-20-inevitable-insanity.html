@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Perform (Sing))":1, "feats.Tower Shield Proficiency":1, "gender":"Male", "hitPoints":104, 
   "intelligence":11, "levels.Cleric":20, "name":"Class-Cleric 20-Inevitable Insanity", 
   "race":"Human", "selectableFeatures.Cleric - Inevitable Subdomain":1, 
-  "selectableFeatures.Cleric - Insanity Subdomain":1, "selectableFeatures.Human - Bonus Feat":1, 
+  "selectableFeatures.Cleric - Insanity Subdomain":1, "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, "skills.Craft (Alchemy)":20, 
   "skills.Craft (Traps)":1, "skills.Diplomacy":2, "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, 
   "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":20, "skills.Perform (Sing)":13, 
@@ -64,6 +64,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 194657/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -94,16 +95,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Law); Channel Smite; Critical Focus; Improved Shield Bash; Intimidating Prowess; Skill Focus (Bluff); Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Nature)); Skill Focus (Perform (Sing)); Tower Shield Proficiency</td>
         <td><b>Traits</b>: Hedge Magician; Sacred Conduit</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura Of Madness; Aura; Channel Energy; Command; Inevitable Subdomain; Insane Focus; Insanity Subdomain; Shield Proficiency; Spontaneous Cleric Spell; Staff Of Order; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura Of Madness; Aura; Channel Energy; Command; Inevitable Subdomain; Insane Focus; Insanity Subdomain; Orisons; Spontaneous Casting (Cleric); Staff Of Order; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -136,7 +137,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intimidating Prowess: +2 Intimidate</i></td>
       </tr><tr style="text-align:center">
@@ -152,7 +153,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Hedge Magician: Cost to craft magic items is reduced by 5%</td>
+        <td>Hedge Magician: Reduces the cost to craft magic items by 5%</td>
       </tr></table>
 </td>
     </tr></table>
@@ -168,7 +169,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 84</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/28</td>
@@ -177,9 +178,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -187,17 +187,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Armored Coat</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed Strike (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Sacred Conduit: +1 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -205,15 +207,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
+        <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
       </tr><tr style="text-align:center">
-        <td>Staff Of Order: May add <i>axiomatic</i> property to weapon for 10 rd 4/dy</td>
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
+      </tr><tr style="text-align:center">
+        <td>Staff Of Order: Touched weapon gains the <i>axiomatic</i> quality for 10 rd 4 times per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -244,7 +248,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
-        <td><b>Spell DC</b>: C: 12; Domain: 12</td>
+        <td><b>Spell DC</b>: Aura Of Madness: 12; C: 12; Domain: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -252,65 +256,63 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Inevitable2 Tran): Touched weapon gains alignment (DC 14 Will neg) for 20 min</td>
+      <td>Align Weapon (Inevitable2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Command (Command1 Ench): R75' Target obeys self commands to approach, drop, fall, flee, or halt (DC 22 Will neg) for 1 rd</td>
+      <td>Command (Command1 Ench): RNaN' Target obeys a command to approach, drop, fall, flee, or halt (save Will negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Command Undead (Inevitable3 Necr): R75' Undead target obeys self (DC 15 Will neg) for 20 dy</td>
+      <td>Command Undead (Inevitable3 Necr): R75' Undead target considers self as a friend (save Will for intelligent undead negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Confusion (Aura Of Madness4 Ench): R300' Creatures in 15' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for 20 rd (DC 22 Will neg)</td>
+      <td>Confusion (Aura Of Madness4 Ench): R300' Creatures in a 15' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Dictum (Inevitable7 Evoc): Nonlawful creatures in 40' radius with equal/-1/-5/-10 HD deafened for 1d4 rd (DC 19 Will neg)/staggered for 2d4 rd (DC 19 Will for 1d4 rd)/paralyzed for 1d10 min (DC 19 Will for 1 rd)/killed (DC 19 Will suffer 3d6+20 HP) and banished (DC 19 Will -4 neg)</td>
+      <td>Dictum (Inevitable7 Evoc): Inflicts on nonlawful creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save will inflicts 3d6+20 HP); paralyzed for 1d10 min on creatures with up to 15 HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to 19 HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Command (Inevitable5 Ench): R75' 20 targets in 15' radius obey self commands to approach, drop, fall, flee, or halt (DC 17 Will neg) for 20 rd</td>
+      <td>Greater Command (Inevitable5 Ench): R75' 20 targets in a 15' radius obey a command to approach, drop, fall, flee, or halt (save Will negates; additional saves each rd end) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Insanity (Insanity7 Ench): R300' Target permanently randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest permanently (DC 19 Will neg)</td>
+      <td>Insanity (Insanity7 Ench): R300' Target permanently randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Confusion (Insanity1 Ench): R300' Target randomly 25% acts normal/25% babbles/25% attacks themselves/25% attacks nearest for 1 rd (DC 13 Will neg)</td>
+      <td>Lesser Confusion (Insanity1 Ench): R300' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Moonstruck (Insanity4 Ench): R300' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for 18 rd, then suffers dazed for 1 rd (DC 16 Will neg)</td>
+      <td>Moonstruck (Insanity4 Ench): R300' Target suffers dazed for 1 rd while growing claws and fangs, then gains a bite attack, two claw attacks, and <i>Confusion</i> and <i>Rage</i> effects for 18 rd, then suffers dazed for 1 rd while its hands and teeth return to normal (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Nightmare (Insanity5 Illu): Target suffers 1d10 HP and fatigue (DC 17 Will neg (modified for familiarity w/target))</td>
+      <td>Nightmare (Insanity5 Illu): Specified sleeping target suffers 1d10 HP, fatigue, and inability to regain arcane spells for 24 hr (save Will negates, modified from +10 to -5 based on familiarity with the target)</td>
     </tr><tr style="text-align:left">
-      <td>Order's Wrath (Inevitable4 Evoc): R300' Chaotic creatures in 30' cu suffer 5d8 HP and are dazed for 1 rd, neutral half (DC 16 Will half)</td>
+      <td>Order's Wrath (Inevitable4 Evoc): R300' Chaotic creatures in a 30' cube suffer 5d8 HP (or 10d6 HP to outsiders) and are dazed for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Phantasmal Web (Insanity6 Illu): R300' 20 targets in 15' radius suffer entanglement (DC 18 Will neg) and nauseated (DC 18 Fort each rd neg) for 20 rd</td>
+      <td>Phantasmal Web (Insanity6 Illu): R300' 20 targets in 15' radius suffer entanglement (Will negates) and nauseated (Fortitude each rd negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Planar Binding (Inevitable6 Conj): Traps extraplanar creature(s) w/up to 12 HD (DC 18 Will neg) until they escape (SR, dimensional travel, or 27 Cha) or perform a task (Opposed Charisma neg)</td>
+      <td>Planar Binding (Inevitable6 Conj): Traps 1-3 extraplanar creatures with up to 12 HD total in a <i>Magic Circle</i> (save Will negates) until they perform a task (opposed Charisma allows refusal), or escape via SR, dimensional travel, or a DC 27 Charisma check</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Chaos (Inevitable1 Abju): Touched gains +2 AC and saves vs. chaotic creatures, suppresses mental control, and bars contact by chaotic summoned creatures for 20 min</td>
+      <td>Protection From Chaos (Inevitable1 Abju): Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Rage (Insanity3 Ench): R300' 6 willing targets in 15' radius gain +2 Strength, +2 Constitution, and +1 Will and suffer -2 AC for conc + 20 rd</td>
+      <td>Rage (Insanity3 Ench): R300' 6 willing targets in a 15' radius gain +2 Strength, +2 Constitution, and +1 Will and suffer -2 Armor Class for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Scintillating Pattern (Insanity8 Illu): R75' Renders 20 HD creatures in 20' radius w/up to 6/12/20 HD unconscious for 1d4 rd/stunned for 1d4 rd/confused for 1d4 rd for conc + 2 rd</td>
+      <td>Scintillating Pattern (Insanity8 Illu): R75' Creates a moving pattern of colors for concentration + 2 rd that inflicts a sequence of effects on 20 HD of creatures in a 20' radius, working upward from those with the fewest HD: unconscious for 1d4 rd on creatures with up to 6 HD; stunned for 1d4 rd on creatures with up to 12 HD; confused for 1d4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Law (Inevitable8 Abju): 20 creatures in 20' radius gain +4 AC, +4 saves, and SR 25 (chaotic), suppress mental control, and slow successful chaotic attackers (DC 20 Will neg) for 20 rd</td>
+      <td>Shield Of Law (Inevitable8 Abju): 20 creatures within 20' gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and slow successful chaotic attackers (save Will negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Summon Monster IX (Inevitable9 Conj): R75' 1 9th-, 1d3 8th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Monster IX (Inevitable9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Idiocy (Insanity2 Ench): Touch inflicts -1d6 Intelligence, Wisdom, and Charisma for 200 min</td>
+      <td>Touch Of Idiocy (Insanity2 Ench): Melee touch inflicts -1d6 Intelligence, Wisdom, and Charisma for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Weird (Insanity9 Illu): R300' Fears of targets in 15' radius create creatures (DC 21 Will neg) whose touch kills targets (DC 21 Fort suffer 3d6 HP, -1d4 Str, stunned for 1 rd)</td>
+      <td>Weird (Insanity9 Illu): R300' Fears of targets in a 15' radius create creatures (save Will negates) whose touch kills its target (save Fortitude inflicts 3d6 HP, -1d4 Strength, and stunned for 1 rd)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Madness: R30' May use <i>Confusion</i> effects (DC 22 Will neg) 20 rd/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 22 Will half) 5/dy</td>
+      <td>Aura Of Madness: 30' emanation inflicts <i>Confusion</i> effects (save Will DC 22 negates for 24 hr) for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Command: May use <i>Command</i> effects (DC 22 Will neg) 1/target/dy 5/dy</td>
+      <td>Command: May use <i>Command</i> effects (DC 22 Will negates) 1/target/dy 5/dy</td>
     </tr><tr style="text-align:center">
       <td>Insane Focus: Touch gives +4 save vs. mind-affecting effects and immunity to confusion (failed save ends and confuses for 1 rd) for 1 min 5/dy</td>
     </tr><tr style="text-align:center">
-      <td>Sacred Conduit: +1 channeled energy save DC</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
   </tr></table>

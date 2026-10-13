@@ -14,7 +14,7 @@ var attributes = {
   "feats.Quicken Spell":1, "feats.Reach Spell":1, "feats.Silent Spell":1, 
   "feats.Spell Focus (Enchantment)":1, "feats.Strike Back":1, "gender":"Male", "hitPoints":82, "intelligence":13, 
   "languages.Elven":1, "levels.Oracle":20, "name":"Class-Oracle 20-Flame", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Oracle - Burning Magic":1, "selectableFeatures.Oracle - Cinder Dance":1, 
   "selectableFeatures.Oracle - Fire Breath":1, "selectableFeatures.Oracle - Firestorm":1, 
   "selectableFeatures.Oracle - Flame Mystery":1, "selectableFeatures.Oracle - Form Of Flame":1, 
@@ -64,6 +64,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 58/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 38/76/115</td>
     </tr></table>
@@ -75,11 +76,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Cinder Dance: +10 Speed</i></td>
     </tr><tr style="text-align:center">
-      <td>Acrobatic Steps: May move normally through difficult terrain 20'/rd </td>
+      <td>Acrobatic Steps: Can move normally through difficult terrain 20' per rd</td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
     </tr><tr style="text-align:center">
-      <td>Nimble Moves: May move normally through difficult terrain 5'/rd</td>
+      <td>Nimble Moves: Can move normally through 5' of difficult terrain each rd</td>
     </tr><tr style="text-align:center">
       <td>Wings Of Fire: May fly 60' 20 min/dy</td>
     </tr></table>
@@ -101,14 +102,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Blind-Fight; Elemental Focus (Acid); Elemental Spell (Cold); Empower Spell; Maximize Spell; Persistent Spell; Quicken Spell; Reach Spell; Silent Spell; Spell Focus (Enchantment); Strike Back</td>
-        <td><b>Oracle Features</b>: Armor Proficiency (Medium); Burning Magic; Cinder Dance; Final Revelation (Flame Mystery); Fire Breath; Firestorm; Flame Mystery; Form Of Flame; Gaze Of Flames; Haunted; Heat Aura; Molten Skin; Mystery; Oracle's Curse; Orisons; Revelation; Shield Proficiency; Touch Of Flame; Weapon Proficiency (Simple); Wings Of Fire</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Burning Magic; Cinder Dance; Final Revelation (Flame Mystery); Fire Breath; Firestorm; Flame Mystery; Form Of Flame; Gaze Of Flames; Haunted; Heat Aura; Molten Skin; Mystery; Oracle's Curse; Orisons; Revelation; Touch Of Flame; Weapon Proficiency (Simple Weapons); Wings Of Fire</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Cinder Dance: Has Nimble Moves and Acrobatic Steps features</i></td>
       </tr><tr style="text-align:center">
@@ -165,7 +166,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Flame Mystery: Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill</i></td>
       </tr><tr style="text-align:center">
@@ -174,6 +175,8 @@ var attributes = {
         <td><i>Intelligence Skill Ranks Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
+      </tr><tr style="text-align:center">
+        <td>Blind-Fight: Requires no Acrobatics check to move full Speed when blinded</td>
       </tr></table>
 </td>
     </tr></table>
@@ -189,7 +192,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 142</td>
         <td><b>Initiative</b>: -2</td>
-        <td><b>Armor Class</b>: 12</td>
+        <td><b>AC/Touch/Flat</b>: 12/8/12</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+15/+13</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +15/23</td>
@@ -198,9 +201,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -208,27 +210,27 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed (+15 d3 x2@20)</td>
+        <td><b>Weapons</b>: Heavy Crossbow (+13 d10 x2@19 R120'); Heavy Mace (+15 d8 x2@20); Longspear (+15 d8 x3@20); Unarmed Strike (+15 d3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +60</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: -2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: -2</i></td>
+        <td><i>Constitution Hit Points Adjustment: +60</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td>Blind-Fight: May reroll miss due to concealment/Invisible foe gains no melee bonus/Requires no skill check to move full speed when blinded</td>
+        <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
-        <td>Fire Breath: 15' cone inflicts 20d4 HP fire (DC 23 Ref half) 5/dy</td>
+        <td>Fire Breath: 15' cone inflicts 20d4 HP fire (DC 23 Reflex half) 5/dy</td>
       </tr><tr style="text-align:center">
-        <td>Firestorm: 20 contiguous 10' cu inflict 20d6 HP fire (DC 23 Ref half) for 3 rd 1/dy</td>
+        <td>Firestorm: 20 contiguous 10' cu inflict 20d6 HP fire (DC 23 Reflex half) for 3 rd 1/dy</td>
       </tr><tr style="text-align:center">
         <td>Heat Aura: 10' radius inflicts 10d4 HP fire (DC 23 half) and gives self 20% concealment for 1 rd 5/dy</td>
       </tr><tr style="text-align:center">
-        <td>Strike Back: May ready melee attack against melee foes that are out of range</td>
+        <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
         <td>Touch Of Flame: Touch inflicts 1d6+10 HP fire 6/dy; wielded weapons inflict +1d6 HP fire</td>
       </tr></table>
@@ -271,31 +273,31 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Burning Hands (O1 Evoc): R15' Cone inflicts 5d4 HP (DC 14 Ref half)</td>
+      <td>Burning Hands (O1 Evoc): 15' cone inflicts 5d4 HP fire (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body I (Form Of Flame4 Tran): Self becomes small air (+2 Dexterity, +2 AC, fly 60', whirlwind), earth (+2 Strength, +4 AC, earth glide), fire (+2 Dexterity, +2 AC, resist fire, burn), or water (+2 Constitution, +4 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+      <td>Elemental Body I (Form Of Flame4 Tran): Self becomes a Small elemental for NaN min—a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body II (Form Of Flame5 Tran): Self becomes medium air (+4 Dexterity, +3 AC, fly 60', whirlwind), earth (+4 Strength, +5 AC, earth glide), fire (+4 Dexterity, +3 AC, resist fire, burn), or water (+4 Constitution, +5 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision for 20 min</td>
+      <td>Elemental Body II (Form Of Flame5 Tran): Self becomes a Medium elemental for NaN min—a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body III (Form Of Flame6 Tran): Self becomes large air (+2 Strength, +4 Dexterity, +4 AC, fly 60', whirlwind), earth (+6 Strength, -2 Dexterity, +2 Constitution, +6 AC, earth glide), fire (+4 Dexterity, +2 Constitution, +4 AC, resist fire, burn), or water (+2 Strength, -2 Dexterity, +6 Constitution, +6 AC, swim 60', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks for 20 min</td>
+      <td>Elemental Body III (Form Of Flame6 Tran): Self becomes a Large elemental for NaN min—a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Form Of Flame7 Tran): Self becomes huge air (+4 Strength, +6 Dexterity, +4 AC, fly 120', whirlwind), earth (+8 Strength, -2 Dexterity, +4 Constitution, +6 AC, earth glide), fire (+6 Dexterity, +4 Constitution, +4 AC, resist fire, burn), or water (+4 Strength, -2 Dexterity, +8 Constitution, +6 AC, swim 120', vortex, breathe water) elemental, gains 60' darkvision, immunity to bleeding, critical hits, and sneak attacks, DR 5/- for 20 min</td>
+      <td>Elemental Body IV (Form Of Flame7 Tran): Self becomes a Huge elemental for NaN min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
     </tr><tr style="text-align:left">
-      <td>Fiery Body (O9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for 20 min</td>
+      <td>Fiery Body (O9 Tran): Self gains immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40' fly Speed, brightness that dazzles viewers, +1 fire spell DC, and unarmed attacks that inflict +3d6 HP fire, regains hit points instead of suffering damage from fire attacks (regains 1 hit point per 3 HP damage), suffers x1.5 HP from cold, and suffers 2d6 HP each rd in water while gaining a 50% miss chance, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Seeds (O6 Conj): Touched 4 acorn grenades inflict 20d4 total or 8 berry bombs detonate on command to inflict 1d8+20 in 5' radius (DC 19 Ref half) for 200 min</td>
+      <td>Fire Seeds (O6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (save Reflex half), for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Storm (O8 Evoc): R300' 40 10' cu inflicts 20d6 HP, then 4d6 HP/rd until extinguished (DC 21 Ref half, initial damage only)</td>
+      <td>Fire Storm (O8 Evoc): R300' 40 10' cubes inflict 20d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (O3 Evoc): R1200' Inflicts 10d6 HP (DC 16 Ref half) in 20' radius</td>
+      <td>Fireball (O3 Evoc): R1200' Inflicts 10d6 HP fire in a 20' radius (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Incendiary Cloud (O8 Conj): R300' Fire in 20' radius inflicts 6d6 HP (DC 21 Ref half) while moving away 10'/rd for 20 rd</td>
+      <td>Incendiary Cloud (O8 Conj): R300' Fire in a 20' radius, 20'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (O2 Abju): Touched gains resistance 30 to chosen energy for 200 min</td>
+      <td>Resist Energy (O2 Abju): Touched gains resistance 30 to a choice of acid, cold, electricity, fire, or sonic for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Summon Monster V (O5 Conj): R75' 1 5th-, 1d3 4th-, or 1d4+1 lower-level creatures appear and fight foes for 20 rd</td>
+      <td>Summon Monster V (O5 Conj): R75' Summons 1 5th-level, 1d3 4th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (O4 Evoc): R300' 400' wall inflicts 2d4 HP to creatures w/in 10', 1d4 HP to creatures w/in 20', 2d6+20 HP when passing through (undead dbl) for conc + 20 rd</td>
+      <td>Wall Of Fire (O4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -305,13 +307,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
     </tr><tr style="text-align:center">
-      <td>Burning Magic: Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Ref ends)</td>
+      <td>Burning Magic: Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Reflex ends)</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +1 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
-      <td>Empower Spell: May use +2 spell slot to increase chosen spell variable effects by 50%</td>
+      <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
       <td>Final Revelation (Flame Mystery): May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spells w/out cost</td>
     </tr><tr style="text-align:center">
@@ -321,17 +323,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Haunted: Knows <i>Mage Hand</i>, <i>Ghost Sound</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Telekinesis</i><i>, Reverse Gravity</i> spells</td>
     </tr><tr style="text-align:center">
-      <td>Maximize Spell: May use +3 spell slot to maximize all variable effects on chosen spell</td>
+      <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
-      <td>Orisons: Knows level-0 spells</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Persistent Spell: May spend +2 spell slot to force target to take worse of 2 saving throws</td>
     </tr><tr style="text-align:center">
-      <td>Quicken Spell: May use +4 spell slot to cast chosen spell as a free action 1/rd</td>
+      <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr></table>
 </td>
   </tr></table>

@@ -15,7 +15,7 @@ var attributes = {
   "feats.Skill Focus (Profession (Tanner))":1, "feats.Skill Focus (Survival)":1, "feats.Widen Spell":1, "gender":"Female", 
   "hitPoints":143, "intelligence":13, "languages.Dwarven":1, "levels.Paladin":10, 
   "levels.Ranger":10, "name":"Spells-Paladin Ranger", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Paladin - Core Paladin":1, "selectableFeatures.Paladin - Divine Weapon":1, 
   "selectableFeatures.Paladin - Mercy (Cursed)":1, "selectableFeatures.Paladin - Mercy (Dazed)":1, 
   "selectableFeatures.Paladin - Mercy (Diseased)":1, "selectableFeatures.Ranger - Combat Style (Archery)":1, 
@@ -73,6 +73,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 57/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 20/40/60</td>
     </tr></table>
@@ -83,6 +84,8 @@ var attributes = {
       <td><i>Armor Speed Adjustment: -10</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
+    </tr><tr style="text-align:center">
+      <td>Woodland Stride: Can move normally through natural undergrowth without damage or impairment</td>
     </tr></table>
 </td>
   </tr></table>
@@ -103,19 +106,21 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Command Undead; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Ranger Features</b>: Armor Proficiency (Medium); Combat Style (Archery); Companion Bond; Core Ranger; Endurance; Evasion; Favored Enemy; Favored Terrain; Improved Precise Shot; Pinpoint Targeting; Point-Blank Shot; Shield Proficiency; Swift Tracker; Track; Weapon Proficiency (Martial); Wild Empathy; Woodland Stride</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Good; Aura Of Resolve; Channel Positive Energy; Core Paladin; Detect Evil; Divine Grace; Divine Health; Divine Weapon; Lay On Hands; Mercy (Cursed); Mercy (Dazed); Mercy (Diseased); Mercy; Shield Proficiency; Smite Evil; Weapon Proficiency (Martial)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Ranger Features</b>: Armor Proficiency (Light; Medium; Shield); Combat Style (Archery); Combat Style; Companion Bond; Core Ranger; Endurance; Evasion; Favored Enemy; Favored Terrain; Hunter's Bond; Improved Precise Shot; Pinpoint Targeting; Point-Blank Shot; Swift Tracker; Track; Weapon Proficiency (Simple Weapons; Martial Weapons); Wild Empathy; Woodland Stride</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Good; Aura Of Resolve; Channel Positive Energy; Core Paladin; Detect Evil; Divine Grace; Divine Health; Divine Weapon; Lay On Hands; Mercy (Cursed); Mercy (Dazed); Mercy (Diseased); Mercy; Smite Evil; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Combat Style: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Hunter's Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td>Aura Of Good: Visible to <i>Detect Good</i></td>
-      </tr><tr style="text-align:center">
-        <td>Woodland Stride: May move normally through undergrowth</td>
       </tr></table>
 </td>
     </tr></table>
@@ -162,7 +167,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Acrobatic: +2 Acrobatics/+4 Fly</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -180,19 +185,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more Bluff, Knowledge, Perception, Sense Motive, Survival vs. 3 type(s) of creatures</td>
+        <td>Favored Enemy: Has 5 +2 bonuses on Bluff, Listen, Sense Motive, Spot, and Survival distributed among 3 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Knowledge (Geography), Perception, Stealth, and Survival and leaves no trail in 2 terrain type(s)</td>
+        <td>Favored Terrain: Has 3 +2 bonuses on Knowledge (Geography), Perception, Stealth, and Survival distributed among 2 terrain types and and leaves no trail in those terrains</td>
       </tr><tr style="text-align:center">
         <td>Mathematical Prodigy: Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill</td>
       </tr><tr style="text-align:center">
         <td>Scholar Of The Great Beyond: Choice of Knowledge (History) or Knowledge (Planes) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Swift Tracker: May track at full speed</td>
+        <td>Swift Tracker: Can track at full Speed with no penalty to Survival and at double Speed with a -10 penalty</td>
       </tr><tr style="text-align:center">
-        <td>Track: +5 Survival to follow creatures' trail</td>
+        <td>Track: +5 Survival to follow creatures' trails</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +13 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +13 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -208,7 +213,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 183</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 14</td>
+        <td><b>AC/Touch/Flat</b>: 14/10/14</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+18/+20</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +18/28</td>
@@ -217,9 +222,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -227,57 +231,68 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bardiche (+18 d10-2 x2@19); Light Hammer (+18 d4-2 x2@20 R20'); Spiked Armor (+18 d6-2 x2@20); Unarmed (+18 d3-2 x2@20)</td>
+        <td><b>Weapons</b>: Bardiche (+18 d10-2 x2@19); Light Hammer (+18 d4-2 x2@20 R20'); Spiked Armor (+18 d6-2 x2@20); Unarmed Strike (+18 d3-2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +40</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td>Command Undead: R30' May use Channel Energy to control 10 HD of undead (18 DC Will neg)</td>
+        <td>Channel Energy: Can restore 5d6 hit points or inflict the same amount (save Will DC 18 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Divine Weapon: May add 2 enhancements and properties to weapon for 10 min 2/dy</td>
+        <td>Command Undead: R30' Can use Channel Energy to control 10 HD of undead (save Will DC 18 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Favored Enemy: +2 or more attack and damage vs. 3 type(s) of creatures</td>
+        <td>Companion Bond: R30' Can use a move action to give half of a favored enemy bonus to allies for 1 rd</td>
       </tr><tr style="text-align:center">
-        <td>Favored Terrain: +2 or more Initiative in 2 terrain type(s)</td>
+        <td>Divine Weapon: Can add 2 +1 enhancements (these stack with an existing enhancement to a maximum of +5) or choices of <i>axiomatic</i>, <i>brilliant energy</i>, <i>defending</i>, <i>disruption</i>, <i>flaming</i>, <i>flaming burst</i>, <i>holy</i>, <i>keen</i>, <i>merciful</i>, and <i>speed</i> to a chosen weapon for 10 min 2 times per day; destruction of the weapon inflicts -1 attacks and damage for 30 days or until a Paladin level is gained</td>
       </tr><tr style="text-align:center">
-        <td>Improved Precise Shot: Foe gains no AC bonus for partial cover</td>
+        <td>Favored Enemy: Has 5 +2 weapon attack and damage bonuses distributed among 3 chosen creature types</td>
       </tr><tr style="text-align:center">
-        <td>Pinpoint Targeting: Ranged attack ignores armor bonus</td>
+        <td>Favored Terrain: Has 3 +2 Initiative bonuses distributed among 2 terrain types</td>
       </tr><tr style="text-align:center">
-        <td>Point-Blank Shot: +1 ranged attack and damage w/in 30'</td>
+        <td>Improved Precise Shot: Ranged attacks ignore partial cover or concealment</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: May gain +3 attack, +10 HP damage, bypass DR, and +3 AC vs. chosen evil foe (+20 HP on first hit vs. antipaladin, outsider, dragon, or undead) 4/dy</td>
+        <td>Pinpoint Targeting: As a standard action, can make a single ranged attack that ignores armor, natural armor, and shield bonuses; moving during the rd prevents use</td>
+      </tr><tr style="text-align:center">
+        <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
+      </tr><tr style="text-align:center">
+        <td>Smite Evil: Can gain +3 attack, inflict +10 HP, bypass DR, and gain a +3 deflection bonus to Armor Class vs. a chosen evil foe 4 times per day; does an additional +10 HP on first the hit if the target is an antipaladin, outsider, dragon, or undead</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +19; Reflex: +13; Will: +13</td>
+        <td><b>Resistance</b>: Charm: immune; Disease: immune; Fear: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Aura Of Courage: Has immunity to fear</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Aura Of Resolve: Has immunity to charm</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Divine Grace: +3 Fortitude/+3 Reflex/+3 Will</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Courage: Immune to fear/R10' Allies +4 vs. fear</td>
+        <td><i>Divine Health: Has immunity to disease</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Resolve: Immune to charm/R10' Allies gain +4 vs. charm</td>
+        <td>Aura Of Courage: Allies within 10' gain +4 saves vs. fear</td>
       </tr><tr style="text-align:center">
-        <td>Divine Health: Immune to disease</td>
+        <td>Aura Of Resolve: Allies within 10' gain +4 saves vs. charm</td>
       </tr><tr style="text-align:center">
-        <td>Endurance: +4 extended physical action</td>
+        <td>Endurance: +4 vs. damage from extended physical action, starvation, thirst, and suffocation/Can sleep in light or medium armor without becoming fatigued</td>
       </tr><tr style="text-align:center">
-        <td>Evasion: Reflex save in light or no armor yields no damage instead of half</td>
+        <td>Evasion: Successful Reflex saves yield no damage instead of half; medium or heavy armor negates</td>
       </tr></table>
 </td>
     </tr></table>
@@ -292,7 +307,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: P1: 3; P2: 2; P3: 1; R1: 2; R2: 1; R3: 0</td>
-        <td><b>Spell DC</b>: P: 13; R: 10</td>
+        <td><b>Spell DC</b>: Detect Evil: 13; Mercy Cursed: 13; Mercy Diseased: 13; P: 13; R: 10</td>
       </tr></table>
 </td>
     </tr></table>
@@ -300,53 +315,53 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Allfood (R2 Tran): Transforms touched 35 lb object into 1 day's food for 35 Medium creatures</td>
+      <td>Allfood (R2 Tran): Makes a touched 35 lb object edible, providing 1 day's food for 35 Medium creatures</td>
     </tr><tr style="text-align:left">
-      <td>Arrow Eruption (R2 Conj): R680' Duplicates of arrow that killed in prior rd attack 7 foes in 30' radius</td>
+      <td>Arrow Eruption (R2 Conj): R680' Cast the rd after killing a creature with an arrow, causes duplicates of the arrow to attack 7 foes in a 30' radius</td>
     </tr><tr style="text-align:left">
-      <td>Aura Of Greater Courage (P2 Abju): Allies in 10' radius gain immunity to fear for 70 min</td>
+      <td>Aura Of Greater Courage (P2 Abju): Allies in a 10' radius gain immunity to fear for 70 min</td>
     </tr><tr style="text-align:left">
       <td>Bestow Grace (P2 Abju): Touched good creature adds its charisma bonus to saves for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Blaze Of Glory (P4 Conj): 30' radius restores 3d6 HP to good creatures, inflicts 3d6 HP on evil (DC 17 Will half), and gives +1 attack, damage, save, and skill to allies and inflicts -1 on foes for 7 rd; self drops to -1 HP and stabilizes</td>
+      <td>Blaze Of Glory (P4 Conj): 30' radius restores 3d6 hit points to good creatures, inflicts 3d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies, and inflicts -1 attacks, weapon damage, saves, and skill checks on foes for 7 rd; reduces self to stable at -1 hit point</td>
     </tr><tr style="text-align:left">
-      <td>Bow Spirit (R4 Conj): Conjured spirit attacks using self ammo, bonuses, and feats each rd for 7 rd</td>
+      <td>Bow Spirit (R4 Conj): Conjures a spirit that attacks using self ammo, bonuses, and feats each rd for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Challenge Evil (P1 Ench): R40' Evil target must attack self or suffer sickened (DC 14 Will neg) and self gains +2 melee attack on target for 7 min</td>
+      <td>Challenge Evil (P1 Ench): R40' Gives +2 melee attacks on the evil target and forces it to attack self or suffer sickened (save Will negates), for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Chameleon Stride (R2 Illu): Self gains +4 Stealth and 20% miss from non-adjacent foes for 7 min</td>
+      <td>Chameleon Stride (R2 Illu): Self gains +4 Stealth and concealment from non-adjacent foes for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Evil (Detect Evil1 Divi): R60' Cone gives self info on evil auras for conc or 100 min</td>
+      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Divine Transfer (P3 Necr): Touched regains up to 15 HP, transferred from self, and gains DR 3/evil for 7 rd</td>
+      <td>Divine Transfer (P3 Necr): Touched regains up to 15 hit points, transferred from self, and gains DR 3/evil for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Fire Of Entanglement (P2 Evoc): Target of next Smite Evil hit suffers entanglement for 7 rd (DC 15 Ref 1 rd)</td>
+      <td>Fire Of Entanglement (P2 Evoc): Next Smite Evil attack within 7 rd inflicts entanglement for the remaining duration (save Reflex inflicts entanglement for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Fire Of Judgment (P3 Evoc): Target of next Smite Evil hit suffers 1d6 HP divine (1d10 HP on outsider, dragon, or undead), bypassing DR, when attacking anyone but self for 7 rd (DC 16 Will 1 rd)</td>
+      <td>Fire Of Judgment (P3 Evoc): Next Smite Evil attack within 7 rd inflicts 1d6 HP divine (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, each rd on the start of the target's turn and when it attacks anyone but self for the remaining duration (save Will effects last for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Fire Of Vengeance (P4 Evoc): Target of next Smite Evil hit suffers 3d8 HP fire on first attack on anyone but self</td>
+      <td>Fire Of Vengeance (P4 Evoc): Next Smite Evil attack causes the target to suffer 3d8 HP fire the first time it attacks anyone but self</td>
     </tr><tr style="text-align:left">
-      <td>Gravity Bow (R1 Tran): Self bow inflicts damage as if 1 size larger for 7 min</td>
+      <td>Gravity Bow (R1 Tran): Self arrows and bolts inflict damage as if 1 size larger for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Hero's Defiance (P1 Conj): Expending Lay on Hands use on self when reduced to 0 or negative HP heals +1d6 HP</td>
+      <td>Hero's Defiance (P1 Conj): Expending a Lay on Hands use on self when reduced to 0 or negative hit points restores +1d6 hit points</td>
     </tr><tr style="text-align:left">
-      <td>Holy Whisper (P3 Evoc): 30' cone sickens evil creatures for 7 rd and inflicts 2d8 HP on outsiders, dragons, and undead (DC 16 Fort neg); also gives good creatures +2 attack and damage for 1 rd</td>
+      <td>Holy Whisper (P3 Evoc): 30' cone sickens evil creatures for 7 rd and inflicts 2d8 HP on outsiders, dragons, and undead (save Fortitude negates); good creatures gain +2 attack and damage for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Hunter's Howl (R1 Necr): Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in 20' radius (favored enemies shaken instead) (DC 11 Will neg) for 7 rd</td>
+      <td>Hunter's Howl (R1 Necr): Self gains +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in a 20' radius (favored enemies instead suffer shaken) for 7 rd (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Instant Enemy (R3 Ench): R40' Self gains favored enemy benefits vs. target for 7 min</td>
+      <td>Instant Enemy (R3 Ench): R40' Gives self favored enemy benefits vs. the target for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>King's Castle (P4 Conj): R40' Self exchanges places w/target ally</td>
+      <td>King's Castle (P4 Conj): R40' Swaps the locations of self and an ally</td>
     </tr><tr style="text-align:left">
-      <td>Knight's Calling (P1 Ench): R40' Target must move to attack self (DC 14 Will neg) for 1 rd</td>
+      <td>Knight's Calling (P1 Ench): R40' Forces the target to move in order to attack self (save Will negates) for 1 rd</td>
     </tr><tr style="text-align:left">
       <td>Lead Blades (R1 Tran): Self melee weapons inflict damage as if 1 size larger for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Light Lance (P2 Evoc): Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for 8 rd</td>
+      <td>Light Lance (P2 Evoc): Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for 8 rd; raising it gives bright light in a 90' radius, and doing so for more than 1 rd emits a beam visible for 2 miles per rd</td>
     </tr><tr style="text-align:left">
-      <td>Marks Of Forbiddance (P3 Abju): R40' Ally target and foe target cannot attack one another (DC 16 Will neg 1 rd) for 7 rd</td>
+      <td>Marks Of Forbiddance (P3 Abju): R40' Prevents an ally target and a foe target from attacking each other (save Will negates for 1 rd) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Oath Of Peace (P4 Abju): Self gains +5 AC and saves and DR 10/evil for 7 rd or until attacks</td>
+      <td>Oath Of Peace (P4 Abju): Self gains a +5 sacred bonus to Armor Class and saves and DR 10/evil for 7 rd; making an attack ends the spell</td>
     </tr><tr style="text-align:left">
       <td>Paladin's Sacrifice (P2 Abju): R40' Transfers to self immediate damage and negative effects suffered by target</td>
     </tr><tr style="text-align:left">
@@ -354,15 +369,19 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Rally Point (P1 Ench): R5' Good creatures gain +2 attacks, +2 saves, and 14 temporary HP for 1 rd on first pass through 5' sq for 7 min</td>
     </tr><tr style="text-align:left">
+      <td>Remove Curse (Mercy Cursed3 Abju): Allows a successful caster level check to dispel all curses from touched</td>
+    </tr><tr style="text-align:left">
+      <td>Remove Disease (Mercy Diseased3 Conj): Allows a successful caster level check to cure touched of all diseases</td>
+    </tr><tr style="text-align:left">
       <td>Residual Tracking (R1 Divi): Self has a vision of the creation of touched footprint</td>
     </tr><tr style="text-align:left">
       <td>Sacrificial Oath (P4 Abju): Self may suffer damage and negative effects instead of touched target (refusal inflicts 15 HP on self) for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Stay The Hand (P4 Ench): 170' Target suffers negated attack (DC 17 Will -5 attack and damage) and -2 attack and damage on same creature for 7 rd</td>
+      <td>Stay The Hand (P4 Ench): 170' Target suffers negated attack (Will -5 attack and damage) and -2 attack and damage on same creature for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Veil Of Positive Energy (P1 Abju): Self gains +2 AC and +2 saves vs. undead for 70 min; dismissal inflicts 7 HP on undead in 5' radius</td>
     </tr><tr style="text-align:left">
-      <td>Venomous Bolt (R3 Necr): Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (DC 13 Fort neg)</td>
+      <td>Venomous Bolt (R3 Necr): Fired arrow or bolt inflicts -1d3 Constitution/rd for 6 rd (Fortitude negates)</td>
     </tr><tr style="text-align:left">
       <td>Wake Of Light (P2 Evoc): 10'x120' trail behind mount makes difficult terrain normal for good creatures and normal terrain difficult for evil creatures for 7 rd</td>
     </tr></table>
@@ -370,31 +389,31 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Charisma Paladin Spell Slot Bonus: Spell level P1, P2, P3</i></td>
     </tr><tr style="text-align:center">
       <td><i>Greater Elemental Focus (Acid): Increased Elemental Focus (Acid) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 5d6 HP (DC 18 Will half) 6/dy</td>
+      <td>Channel Positive Energy: Can expend 2 Lay On Hands uses to use Channel Energy effects</td>
     </tr><tr style="text-align:center">
-      <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
-    </tr><tr style="text-align:center">
-      <td>Detect Evil: May use <i>Detect Evil</i> effects at will</td>
+      <td>Detect Evil: Can use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +2 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
-      <td>Lay On Hands: May harm undead or heal 5d6 HP 8/dy</td>
+      <td>Lay On Hands: Touch restores 5d6 hit points 8 times per day; use on undead instead inflicts HP</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes cursed, dazed, diseased</td>
+      <td>Mercy (Cursed): Lay On Hands acts as a <i>Remove Curse</i> spell</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Mercy (Diseased): Lay On Hands acts as a <i>Remove Disease</i> spell</td>
     </tr><tr style="text-align:center">
-      <td>Widen Spell: May use +3 spell slot to dbl chosen spell area of affect</td>
+      <td>Mercy: Lay On Hands also removes the cursed, dazed, and diseased conditions</td>
+    </tr><tr style="text-align:center">
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
+    </tr><tr style="text-align:center">
+      <td>Widen Spell: Can cast a spell using a spell slot 3 levels higher than normal to double its area of affect</td>
     </tr></table>
 </td>
   </tr></table>

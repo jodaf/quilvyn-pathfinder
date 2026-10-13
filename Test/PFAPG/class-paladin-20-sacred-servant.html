@@ -15,7 +15,7 @@ var attributes = {
   "feats.Skill Focus (Knowledge (History))":1, "feats.Skill Focus (Knowledge (Local))":1, "feats.Thundering Spell":1, 
   "gender":"Female", "hitPoints":124, "intelligence":14, "languages.Sylvan":1, 
   "languages.Terran":1, "levels.Paladin":20, "name":"Class-Paladin 20-Sacred Servant", 
-  "race":"Human", "selectableFeatures.Human - Bonus Feat":1, 
+  "race":"Human", "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "selectableFeatures.Paladin - Divine Bond (Holy Symbol)":1, 
   "selectableFeatures.Paladin - Good Domain":1, "selectableFeatures.Paladin - Mercy (Blinded)":1, 
   "selectableFeatures.Paladin - Mercy (Deafened)":1, "selectableFeatures.Paladin - Mercy (Diseased)":1, 
@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 200077/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -86,14 +87,14 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Animal Affinity; Combat Casting; Coordinated Defense; Eclectic; Elemental Channel (Air); Elemental Spell (Electricity); Selective Channeling; Skill Focus (Bluff); Skill Focus (Knowledge (History)); Skill Focus (Knowledge (Local)); Thundering Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Suspicious</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Paladin Features</b>: Armor Proficiency (Heavy); Aura Of Courage; Aura Of Faith; Aura Of Good; Aura Of Justice; Aura Of Righteousness; Call Celestial Ally; Channel Positive Energy; Detect Evil; Divine Bond (Holy Symbol); Divine Grace; Divine Health; Domain (Paladin); Good Domain; Holy Champion; Holy Lance; Lay On Hands; Mercy (Blinded); Mercy (Deafened); Mercy (Diseased); Mercy (Paralyzed); Mercy (Poisoned); Mercy (Shaken); Mercy; Resist Evil; Sacred Servant; Shield Proficiency; Smite Evil; Touch Of Good; Weapon Proficiency (Martial)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Paladin Features</b>: Armor Proficiency (Light; Heavy; Shield); Aura Of Courage; Aura Of Faith; Aura Of Good; Aura Of Justice; Aura Of Righteousness; Call Celestial Ally; Channel Positive Energy; Detect Evil; Divine Bond (Holy Symbol); Divine Grace; Divine Health; Domain (Paladin); Good Domain; Holy Champion; Holy Lance; Lay On Hands; Mercy (Blinded); Mercy (Deafened); Mercy (Diseased); Mercy (Paralyzed); Mercy (Poisoned); Mercy (Shaken); Mercy; Sacred Servant; Smite Evil; Touch Of Good; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Domain (Paladin): 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -158,8 +159,6 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Suspicious: +1 Sense Motive/Sense Motive is a class skill</i></td>
       </tr><tr style="text-align:center">
-        <td>Combat Casting: Gains +4 concentration to cast spell while on defensive or grappling</td>
-      </tr><tr style="text-align:center">
         <td>Mathematical Prodigy: Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill</td>
       </tr></table>
 </td>
@@ -176,7 +175,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 144</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 11</td>
+        <td><b>AC/Touch/Flat</b>: 11/10/11</td>
         <td><b>Damage Reduction</b>: 10/Evil</td>
         <td><b>Attacks Per Round</b>: 4</td>
         <td><b>Base/Melee/Ranged Attack</b>: +20/+23/+20</td>
@@ -186,9 +185,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Shield</td>
+        <td><b>Weapon Proficiency</b>: Martial Weapons; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -196,13 +194,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Quilted Cloth</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bec De Corbin (+23 d10+4 x3@20); Guisarme (+23 2d4+4 x3@20); Longbow (+20 d8 x3@20 R100'); Unarmed (+23 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Bec De Corbin (+23 d10+4 x3@20); Guisarme (+23 2d4+4 x3@20); Longbow (+20 d8 x3@20 R100'); Unarmed Strike (+23 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Aura Of Righteousness: DR 10/evil</i></td>
+        <td><i>Armor Class Modifiers: Armor: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Aura Of Righteousness: Has DR 10/evil</i></td>
       </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
@@ -212,39 +212,48 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Faith: R10' Weapons considered good-aligned</td>
+        <td>Aura Of Faith: Self weapons and ally attacks vs. foes within 10' count as good-aligned</td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Justice: R10' May expend 2 Smite Evil uses to give allies 1 use</td>
+        <td>Aura Of Justice: Can expend 2 Smite Evil uses to allow allies within 10' to Smite Evil for 1 min</td>
+      </tr><tr style="text-align:center">
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
         <td>Coordinated Defense: +2 CMD (+4 vs. larger foe) when an adjacent ally has this feat</td>
       </tr><tr style="text-align:center">
-        <td>Elemental Channel (Air): May use Channel Energy to heal or harm Air outsiders</td>
+        <td>Elemental Channel (Air): Can use Channel Energy to heal or harm air outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Holy Lance: May add <i>holy</i> property to weapon for 8 rd 3/dy</td>
+        <td>Holy Lance: Touched weapon gains the <i>holy</i> quality for 8 rd 3 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Smite Evil: May gain +3 attack, +20 HP damage, bypass DR, and +3 AC vs. chosen evil foe (+40 HP on first hit vs. antipaladin, outsider, dragon, or undead) 4/dy</td>
+        <td>Selective Channeling: Can exclude 3 creatures from Channel Energy effects</td>
+      </tr><tr style="text-align:center">
+        <td>Smite Evil: Can gain +3 attack, inflict +20 HP, bypass DR, and gain a +3 deflection bonus to Armor Class vs. a chosen evil foe 4 times per day; does an additional +20 HP on first the hit if the target is an antipaladin, outsider, dragon, or undead</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +16; Reflex: +9; Will: +16</td>
+        <td><b>Resistance</b>: Compulsion: immune; Disease: immune; Fear: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Save Notes</b>:       <table id="SaveNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Aura Of Courage: Has immunity to fear</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Aura Of Righteousness: Has immunity to compulsion</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Divine Grace: +3 Fortitude/+3 Reflex/+3 Will</i></td>
       </tr><tr style="text-align:center">
+        <td><i>Divine Health: Has immunity to disease</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Courage: Immune to fear/R10' Allies +4 vs. fear</td>
+        <td>Aura Of Courage: Allies within 10' gain +4 saves vs. fear</td>
       </tr><tr style="text-align:center">
-        <td>Aura Of Righteousness: Immune to compulsion/R10' Allies gain +4 vs. compulsion</td>
-      </tr><tr style="text-align:center">
-        <td>Divine Health: Immune to disease</td>
+        <td>Aura Of Righteousness: Allies within 10' gain +4 saves vs. compulsion</td>
       </tr></table>
 </td>
     </tr></table>
@@ -259,7 +268,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; P1: 5; P2: 5; P3: 4; P4: 3</td>
-        <td><b>Spell DC</b>: Domain: 11; P: 13</td>
+        <td><b>Spell DC</b>: Detect Evil: 13; Domain: 11; Holy Champion: 13; Mercy Diseased: 13; Mercy Poisoned: 13; P: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -267,53 +276,59 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Good2 Tran): Touched weapon gains alignment (DC 13 Will neg) for 17 min</td>
+      <td>Align Weapon (Good2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 17 min</td>
     </tr><tr style="text-align:left">
-      <td>Detect Evil (Detect Evil1 Divi): R60' Cone gives self info on evil auras for conc or 200 min</td>
+      <td>Banishment (Holy Champion7 Abju): R75' Banishes 40 HD of extraplanar creatures in a 15' radius to their home planes (save Will negates; possession of an object that a target hates gives +2 DC and +1 vs. spell resistance)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Planar Ally (Call Celestial Ally8 Conj): Self purchases service from extraplanar creature w/up to 18 HD</td>
+      <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Holy Smite (Good4 Evoc): R270' Evil creatures in 20' radius suffer 5d8 HP and blindness for 1 rd, neutral half (DC 15 Will half)</td>
+      <td>Greater Planar Ally (Call Celestial Ally8 Conj): Allows negotiating the purchase of a service from 1-3 extraplanar creatures with a total of up to 18 HD</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Planar Ally (Call Celestial Ally4 Conj): Self purchases service from extraplanar creature w/up to 6 HD</td>
+      <td>Holy Smite (Good4 Evoc): R270' Evil creatures in a 20' radius suffer 5d8 HP (or 10d6 HP to outsiders) and blindness for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Magic Circle Against Evil (Good3 Abju): 10' radius from touched gives +2 AC and saves vs. evil creatures, extra save to suppress mental control, bars contact and entry (SR neg) by evil summoned creatures for 170 min or traps nongood summoned creatures (SR neg) for 17 dy</td>
+      <td>Lesser Planar Ally (Call Celestial Ally4 Conj): Allows negotiating the purchase of a service from an extraplanar creature with up to 6 HD</td>
     </tr><tr style="text-align:left">
-      <td>Planar Ally (Call Celestial Ally6 Conj): Self purchases service from extraplanar creature w/up to 12 HD</td>
+      <td>Magic Circle Against Evil (Good3 Abju): 10' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. evil creatures, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures or objects, as well as barring contact and entry (SR negates) by evil summoned creatures for 170 min, or traps nongood summoned creatures (SR negates) for 408 hr</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Evil (Good1 Abju): Touched gains +2 AC and saves vs. evil creatures, suppresses mental control, and bars contact by evil summoned creatures for 17 min</td>
+      <td>Neutralize Poison (Mercy Poisoned3 Conj): Allows successful caster level checks to neutralize each poison affecting touched or neutralizes a poisonous creature or object for 200 min (save Will negates)</td>
+    </tr><tr style="text-align:left">
+      <td>Planar Ally (Call Celestial Ally6 Conj): Allows negotiating the purchase of a service from 1-2 extraplanar creatures with a total of up to 12 HD</td>
+    </tr><tr style="text-align:left">
+      <td>Protection From Evil (Good1 Abju): Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for 17 min</td>
+    </tr><tr style="text-align:left">
+      <td>Remove Disease (Mercy Diseased3 Conj): Allows a successful caster level check to cure touched of all diseases</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Charisma Paladin Spell Slot Bonus: Spell level P1, P2, P3</i></td>
     </tr><tr style="text-align:center">
       <td>Call Celestial Ally: May cast <i>Greater Planar Ally</i> 1/wk</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 23 Will half) 6/dy</td>
+      <td>Channel Positive Energy: Can expend 2 Lay On Hands uses to use Channel Energy effects</td>
     </tr><tr style="text-align:center">
-      <td>Channel Positive Energy: May expend 2 Lay On Hands uses to use Channel Energy effects</td>
+      <td>Combat Casting: +4 concentration checks to cast spells while on the defensive or grappling</td>
     </tr><tr style="text-align:center">
-      <td>Detect Evil: May use <i>Detect Evil</i> effects at will</td>
+      <td>Detect Evil: Can use <i>Detect Evil</i> effects at will</td>
     </tr><tr style="text-align:center">
       <td>Divine Bond (Holy Symbol): Holy symbol lights 30' radius and gives 6 choices of +1 spell caster level, +1 undead Channel Energy DC, +1d6 Channel Energy, or +1 Lay On Hands use, for 20 min 4/dy</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Electricity): May use +1 spell slot to convert half or all spell damage to electricity damage</td>
     </tr><tr style="text-align:center">
-      <td>Holy Champion: Lay On Hands effects maximized/Smite Evil inflicts <i>Banishment</i> effects (DC 20 neg)</td>
+      <td>Holy Champion: Channel Positive Energy and Lay On Hands heal or inflict the maximum possible hit points/Using Smite Evil vs. an outsider immediately ends the use and inflicts <i>Banishment</i> effects</td>
     </tr><tr style="text-align:center">
-      <td>Lay On Hands: May harm undead or heal 10d6 HP 13/dy</td>
+      <td>Lay On Hands: Touch restores 10d6 hit points 13 times per day; use on undead instead inflicts HP</td>
     </tr><tr style="text-align:center">
-      <td>Mercy: Lay On Hands removes blinded, deafened, diseased, paralyzed, poisoned, shaken</td>
+      <td>Mercy (Diseased): Lay On Hands acts as a <i>Remove Disease</i> spell</td>
     </tr><tr style="text-align:center">
-      <td>Selective Channeling: May withhold Channel Energy effects from up to 3 targets</td>
+      <td>Mercy (Poisoned): Lay On Hands acts as a <i>Neutralize Poison</i> spell</td>
     </tr><tr style="text-align:center">
-      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fort neg) for spell level rd</td>
+      <td>Mercy: Lay On Hands also removes the blinded, deafened, diseased, paralyzed, poisoned, and shaken conditions</td>
     </tr><tr style="text-align:center">
-      <td>Touch Of Good: Touch gives +8 attack, skill, ability, and save for 1 rd 4/dy</td>
+      <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
+    </tr><tr style="text-align:center">
+      <td>Touch Of Good: Touch gives +8 attacks, skill checks, ability checks, and saves for 1 rd 4 times per day</td>
     </tr></table>
 </td>
   </tr></table>

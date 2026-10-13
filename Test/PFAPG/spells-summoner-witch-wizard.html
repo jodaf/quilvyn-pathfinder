@@ -17,7 +17,7 @@ var attributes = {
   "feats.Skill Focus (Survival)":1, "feats.Widen Spell":1, "gender":"Female", "hitPoints":143, 
   "intelligence":13, "languages.Dwarven":1, "levels.Summoner":7, "levels.Witch":6, 
   "levels.Wizard":7, "name":"Spells-Summoner Witch Wizard", "race":"Human", 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, 
   "selectableFeatures.Summoner - Eidolon Skilled":1, "selectableFeatures.Summoner - Flight Evolution":1, 
   "selectableFeatures.Summoner - Gills Evolution":1, "selectableFeatures.Summoner - Gore Evolution":1, 
   "selectableFeatures.Summoner - Scent Evolution":1, "selectableFeatures.Summoner - Skilled Evolution":1, 
@@ -82,6 +82,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 57/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 20/40/60</td>
     </tr></table>
@@ -111,16 +112,20 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Arcane Strike; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Medium Armor Proficiency; Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
-        <td><b>Witch Features</b>: Cackle Hex; Cantrips; Cauldron Hex; Flight Hex; Healing Hex; Hex; Patron; Strength Patron; Weapon Proficiency (Simple); Witch's Familiar</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bond Senses; Cantrips; Claws Evolution; Eidolon; Flight Evolution; Gills Evolution; Gore Evolution; Life Link (Summoner); Limbs (Arms) Evolution; Limbs (Legs) Evolution; Maker's Call; Scent Evolution; Shield Ally (Summoner); Simple Somatics; Skilled Evolution; Summon Monster; Trample Evolution; Weapon Proficiency (Simple)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Wizard Features</b>: Bonded Object; Force Missile; Intense Spells; School Opposition (Conjuration); School Opposition (Transmutation); School Specialization (Evocation); Scribe Scroll; Weapon Proficiency (Club/Dagger/Heavy Crossbow/Light Crossbow/Quarterstaff)</td>
+        <td><b>Witch Features</b>: Cackle Hex; Cantrips; Cauldron Hex; Flight Hex; Healing Hex; Hex; Patron; Strength Patron; Weapon Proficiency (Simple Weapons); Witch's Familiar</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bond Senses; Cantrips; Claws Evolution; Eidolon; Flight Evolution; Gills Evolution; Gore Evolution; Life Link (Summoner); Limbs (Arms) Evolution; Limbs (Legs) Evolution; Maker's Call; Scent Evolution; Shield Ally (Summoner); Simple Somatics; Skilled Evolution; Summon Monster; Trample Evolution; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Wizard Features</b>: Arcane Bond; Bonded Object; Bonus Feats (Wizard); Force Missile; Intense Spells; School Opposition (Conjuration); School Opposition (Transmutation); School Specialization (Evocation); School Specialization; Scribe Scroll; Weapon Proficiency (Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Arcane Bond: 1 selection</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Bonus Feats (Wizard): +1 Wizard Feats</i></td>
       </tr><tr style="text-align:center">
         <td><i>Cauldron Hex: Has Brew Potion feature</i></td>
       </tr><tr style="text-align:center">
@@ -134,7 +139,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Eidolon: Special bond and abilities</td>
       </tr><tr style="text-align:center">
-        <td>Familiar: Special bond and abilities</td>
+        <td>School Specialization: 1 selection</td>
       </tr></table>
 </td>
     </tr></table>
@@ -181,7 +186,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Acrobatic: +2 Acrobatics/+2 Fly</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Cauldron Hex: +4 Craft (Alchemy)</i></td>
       </tr><tr style="text-align:center">
@@ -201,9 +206,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Companion Alertness: +2 Perception and Sense Motive when companion in reach</td>
-      </tr><tr style="text-align:center">
-        <td>School Specialization (Evocation): +2 Spellcraft (Evocation effects)</td>
+        <td>Alertness (Companion): +2 Perception and Sense Motive when companion is within reach</td>
       </tr></table>
 </td>
     </tr></table>
@@ -219,7 +222,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 183</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 14</td>
+        <td><b>AC/Touch/Flat</b>: 14/10/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +11/+9/+11</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +9/19</td>
@@ -228,9 +231,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Heavy Crossbow; Light Crossbow; Quarterstaff; Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -238,25 +240,29 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bardiche (+5 d10-2 x2@19); Light Hammer (+5 d4-2 x2@20 R20'); Spiked Armor (+5 d6-2 x2@20); Unarmed (+9 d3-2 x2@20)</td>
+        <td><b>Weapons</b>: Bardiche (+5 d10-2 x2@19); Light Hammer (+5 d4-2 x2@20 R20'); Spiked Armor (+5 d6-2 x2@20); Unarmed Strike (+9 d3-2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +40</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Bardiche: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td>Arcane Strike: May imbue weapons with +5 magic damage bonus for 1 rd</td>
+        <td><i>Unproficient Weapon Penalty.Bardiche: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td>Arcane Strike: Can use a swift action to make weapons magic with a +5 damage bonus for 1 rd</td>
+      </tr><tr style="text-align:center">
+        <td>Force Missile: Missile automatically hits, inflicting 1d4+3 HP force, 4 times per day</td>
       </tr><tr style="text-align:center">
         <td>Life Link (Summoner): May transfer damage from eidolon to self to negate forced return to home plane/Eidolon must stay w/in 100' to have full HP</td>
       </tr><tr style="text-align:center">
@@ -297,93 +303,93 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Acid Pit (Summoner4 Conj): R170' Creates 10'x10' 30' deep extradimensional pit containing 5' of acid for 8 rd; creatures on top fall in (DC 17 Ref neg, adjacent squares Ref+2; DC 30 Climb to exit) and suffer 2d6 HP acid/rd; objects suffer broken after 3 rd (DC 17 Fort delays 1 rd), then are destroyed 1 rd later (DC 17 Fort delays 1 rd)</td>
+      <td>Acid Pit (Summoner4 Conj): R170' Creates a 10'x10', 30' deep extradimensional pit, containing 5' of acid that inflicts 2d6 HP per rd and makes objects broken after 3 rd and destroyed after 4 (save Fortitude delays for 1 rd), for 8 rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 30 Climb check</td>
     </tr><tr style="text-align:left">
-      <td>Break (W1 Tran): R40' Breaks medium object target or destroys already-broken target (DC 12 Fort neg)</td>
+      <td>Break (W1 Tran): R40' Breaks a Medium object target or destroys an already-broken target (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Calcific Touch (W4 Tran): Touched suffers permanent 1d4 Dexterity damage and <i>Slow</i> effects (DC 15 Fort Dexterity damage only) 1/rd for 7 rd</td>
+      <td>Calcific Touch (W4 Tran): Touched suffers 1d4 Dexterity damage permanently and <i>Slow</i> effects for 1 rd (save Fortitude inflicts Dexterity damage only) once per rd for 7 rd; a target reduced to 0 Dexterity becomes stone</td>
     </tr><tr style="text-align:left">
-      <td>Contagious Flame (W6 Evoc): R40' 3 ranged touch rays in 15' radius each inflict 4d6 HP fire and move each rd up to 40' to a new target for 3 rd</td>
+      <td>Contagious Flame (W6 Evoc): R40' Makes ranged touch attacks with 3 rays in a 15' radius, each inflicting 4d6 HP fire; a successful attack allows the ray to attack another creature within 40' in the next rd, for 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Crafter's Curse (W1 Tran): R40' Target suffers -5 Craft (DC 12 Will neg) for 7 dy</td>
+      <td>Crafter's Curse (W1 Tran): R40' Target suffers -5 on all Craft checks (save Will negates) for 7 days</td>
     </tr><tr style="text-align:left">
-      <td>Create Pit (Summoner2 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 15 Ref neg, adjacent squares Ref+2; DC 25 Climb to exit)</td>
+      <td>Create Pit (Summoner2 Conj): R170' Creates a 10'x10', 30' deep extradimensional pit for 8 rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 25 Climb check</td>
     </tr><tr style="text-align:left">
-      <td>Cure Light Wounds (Healing Hex1 Conj): Touched heals (undead suffers) 1d8+5 HP (DC 11 Will half)</td>
+      <td>Cure Light Wounds (Healing Hex1 Conj): Touched regains 1d8+5 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched heals (undead suffers) 2d8+6 HP (DC 13 Will half)</td>
+      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched regains 2d8+10 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Deflection (W7 Abju): Missed attacks on self inflict new attack on attacker for 7 rd</td>
+      <td>Deflection (W7 Abju): Missed attacks on self inflict force the attacker to make an immediate attack on itself for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Devolution (Summoner3 Tran): R40' Target eidolon loses 2 evolutions (DC 16 Will neg) for 7 rd</td>
+      <td>Devolution (Summoner3 Tran): R40' Target eidolon loses 2 evolutions (save Will negates) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Dimension Door (Makers Call4 Conj): Teleports self and touched object or 2 willing creatures 680'</td>
+      <td>Dimension Door (Makers Call4 Conj): Teleports self, held objects, and NaN willing Medium creature NaN'</td>
     </tr><tr style="text-align:left">
-      <td>Enemy Hammer (W6 Tran): R680' Self can use target each rd for 30' +10 throw attack (DC 17 Fort neg 1 rd, full-round resistance +4), inflicting 2d6 HP (medium target), for 7 rd</td>
+      <td>Enemy Hammer (W6 Tran): R680' Allows using the target each rd for a 30' +10 throw attack that injures both the target of the spell and the target of the throw (save Fortitude negates 1 rd, full-round resistance gives +4 on the save) for 7 rd; Small, Medium, and Large targets inflict 1d10 HP, 2d6 HP, and 2d8 HP, respectively</td>
     </tr><tr style="text-align:left">
       <td>Evolution Surge (Summoner3 Tran): Touched eidolon gains an evolution costing up to 4 points for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Expend (W7 Abju): R170' 20' radius successively drains creatures' limited-use magical abilities (DC 18 Will ends)</td>
+      <td>Expend (W7 Abju): R170' 20' radius successively drains creatures' limited-use magical abilities, starting with those with the most daily uses (save Will ends)</td>
     </tr><tr style="text-align:left">
-      <td>Feather Fall (Flight Hex1 Tran): R40' 6 targets in 10' radius fall 60'/rd (DC 11 Will neg) for 6 rd</td>
+      <td>Feather Fall (Flight Hex1 Tran): RNaN' NaN falling targets in a 10' radius slow to 60' per rd (save Will negates) for NaN rd</td>
     </tr><tr style="text-align:left">
-      <td>Fiery Body (W9 Tran): Self gains immunity to fire, blindness, crit, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, 40' Fly, dazzling brightness, +1 fire spell DC, unarmed attacks inflict +3d6 HP fire, regains damage/3 from fire, suffers x1.5 cold damage, and suffers 2d6 HP/rd but gains 50% miss chance in water, for 7 min</td>
+      <td>Fiery Body (W9 Tran): Self gains immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40' fly Speed, brightness that dazzles viewers, +1 fire spell DC, and unarmed attacks that inflict +3d6 HP fire, regains hit points instead of suffering damage from fire attacks (regains 1 hit point per 3 HP damage), suffers x1.5 HP from cold, and suffers 2d6 HP each rd in water while gaining a 50% miss chance, for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Firebrand (W7 Tran): R40' 1 targets in 15' radius gain torchlight, immunity to self fire spells, and weapons inflict +1d6 HP fire for 7 rd; target may end for R30' ranged touch that inflicts 6d6 HP fire</td>
+      <td>Firebrand (W7 Tran): R40' 1 targets in 15' radius emit torchlight, gain immunity to self fire spells, and inflict +1d6 HP fire with weapons for 7 rd; each target can make a R30' ranged touch attack that inflicts 6d6 HP fire and ends the spell for that target</td>
     </tr><tr style="text-align:left">
-      <td>Firefall (W4 Tran): R680' 60' radius around target fire inflicts 5d6 HP fire and catch on fire (DC 15 Ref half HP only) and 120' radius inflicts blinded for 1d4+1 rd (DC 15 Will neg); fire creature target suffers 7 HP; extinguishes normal target fire up 20' cu</td>
+      <td>Firefall (W4 Tran): R680' Target fire source erupts, inflicting 5d6 HP fire and caught on fire to creatures within 60' (save Reflex half HP only) and blinded for 1d4+1 rd to creatures within 120' (save Will negates); a targeted fire creature suffers 7 HP, and a 20'x20' area of a targeted normal fire is extinguished</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Flight Hex3 Tran): Touched gains 60' fly speed and +3 Fly skill for 6 min</td>
+      <td>Fly (Flight Hex3 Tran): Touched gains a 60' fly Speed and +NaN Fly skill for NaN min, then floats downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
       <td>Greater Evolution Surge (Summoner4 Tran): Touched eidolon gains 1 or 2 evolutions costing up to 6 points total for 7 min</td>
     </tr><tr style="text-align:left">
       <td>Greater Rejuvenate Eidolon (Summoner5 Conj): Touched eidolon regains 5d10+7 HP</td>
     </tr><tr style="text-align:left">
-      <td>Hungry Pit (W5 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 16 Ref neg, adjacent squares Ref+2; DC 35 Climb to exit) and suffer 4d6 HP bludgeoning/rd (DC 16 Ref half)</td>
+      <td>Hungry Pit (W5 Conj): R170' Creates a 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 35 Climb check, and creatures inside suffer 4d6 HP bludgeoning each rd (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Ill Omen (Witch1 Ench): R40' Target suffers worse of two rolls for next 2 d20 rolls (aware target can use a move action to negate 1) w/in 6 rd</td>
+      <td>Ill Omen (Witch1 Ench): R40' Target suffers the worse of two rolls on the next 2 d20 rolls within 6 rd; an aware target can use a move action to negate the effect on a roll</td>
     </tr><tr style="text-align:left">
       <td>Lesser Evolution Surge (Summoner2 Tran): Touched eidolon gains an evolution costing up to 2 points for 7 min</td>
     </tr><tr style="text-align:left">
       <td>Lesser Rejuvenate Eidolon (Summoner1 Conj): Touched eidolon regains 1d10+5 HP</td>
     </tr><tr style="text-align:left">
-      <td>Levitate (Flight Hex2 Tran): R40' Self moves willing target up and down 20'/rd for 6 min</td>
+      <td>Levitate (Flight Hex2 Tran): RNaN' Allows using a move action each rd to raise or lower an object or a willing target 20' for NaN min</td>
     </tr><tr style="text-align:left">
-      <td>Mask Dweomer (Witch1 Illu): Spell aura on touched becomes immune to <i>Detect Magic</i> for 6 dy</td>
+      <td>Mask Dweomer (Witch1 Illu): Spell aura on touched becomes hidden from <i>Detect Magic</i> and similar detection spells (save Will for more powerful spells negates, and <i>Mask Dweomer</i> is ineffective vs. <i>Arcane Sight</i>) for 6 days</td>
     </tr><tr style="text-align:left">
-      <td>Mass Fly (W7 Tran): R40' 7 targets in 15' radius gain 60' fly speed for 70 min</td>
+      <td>Mass Fly (W7 Tran): R40' 7 targets in 15' radius gain a 60' fly speed for 70 min, then float downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mass Pain Strike (W5 Evoc): R40' 7 targets in 15' radius suffer 1d6 HP nonlethal/rd and sickened (DC 16 Fort neg) and self gains +4 Intimidate vs. targets for 7 rd</td>
+      <td>Mass Pain Strike (W5 Evoc): R40' 7 targets in 15' radius suffer 1d6 HP nonlethal/rd and sickened (Fortitude negates) and self gains +4 Intimidate vs. targets for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Mass Planar Adaptation (Summoner6 Tran): R40' 7 targets in 15' radius gain immunity to environmental harm from chosen plane and 20 resistance to an associated energy for 7 hr</td>
     </tr><tr style="text-align:left">
-      <td>Mass Suffocation (W9 Necr): R40' 3 targets in 15' radius drop to 0 HP next rd (DC 20 Fort staggered 1 rd), then drop to -1 HP (DC 20 Fort delays 1 rd), then die (DC 20 Fort delays 1 rd) for 7 rd</td>
+      <td>Mass Suffocation (W9 Necr): R40' 3 targets in 15' radius drop to 0 HP next rd (Fortitude staggered 1 rd), then drop to -1 HP (Fortitude delays 1 rd), then die (Fortitude delays 1 rd) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Pain Strike (W3 Evoc): R40' Target suffers 1d6 HP nonlethal/rd and sickened (DC 14 Fort neg) and self gains +4 Intimidate vs. target for 7 rd</td>
+      <td>Pain Strike (W3 Evoc): R40' Target suffers 1d6 HP nonlethal/rd and sickened (Fortitude negates) and self gains +4 Intimidate vs. target for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Phantasmal Revenge (W7 Illu): Spectre from touched 7-day-old corpse finds killer and inflicts 70 HP (DC 18 Will neg; DC 18 Fort 5d6+7 HP)</td>
+      <td>Phantasmal Revenge (W7 Illu): Spectre from touched 7-day-old corpse finds killer and inflicts 70 HP (Will negates; DC 18 Fortitude 5d6+7 HP)</td>
     </tr><tr style="text-align:left">
       <td>Purified Calling (Summoner4 Conj): Subsequent summons brings eidolon w/full HP and no ability damage or temporary conditions</td>
     </tr><tr style="text-align:left">
-      <td>Putrefy Food And Drink (Witch0 Tran): R10' Fouls a single potion (DC 11 Will neg) or 6' cu food and water</td>
+      <td>Putrefy Food And Drink (Witch0 Tran): R10' Fouls a single potion (Will negates) or 6' cu food and water</td>
     </tr><tr style="text-align:left">
       <td>Rejuvenate Eidolon (Summoner3 Conj): Touched eidolon regains 3d10+7 HP</td>
     </tr><tr style="text-align:left">
-      <td>Screech (Witch3 Evoc): Foes in 30' radius provoke AOO (DC 14 Fort neg)</td>
+      <td>Screech (Witch3 Evoc): Foes in 30' radius provoke AOO (Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Sculpt Corpse (W1 Necr): Reshapes touched corpse to look like another creature (DC 12 Will detect (suspicious or familiar))</td>
+      <td>Sculpt Corpse (W1 Necr): Reshapes touched corpse to look like another creature (Will detect (suspicious or familiar))</td>
     </tr><tr style="text-align:left">
       <td>Shadow Projection (W4 Necr): Self becomes an undead shadow for 7 hr; death reduces body to -1 HP</td>
     </tr><tr style="text-align:left">
       <td>Share Senses (W4 Divi): R680' Self can use familiar's senses for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Spiked Pit (Summoner3 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (DC 16 Ref neg, adjacent squares Ref+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing</td>
+      <td>Spiked Pit (Summoner3 Conj): R170' Creates 10'x10' 30' deep extradimensional pit for 8 rd; creatures on top fall in (Reflex negates, adjacent squares Reflex+2; DC 20 Climb to exit) and suffer +2d6 HP piercing; contact w/walls inflicts 1d6 HP piercing</td>
     </tr><tr style="text-align:left">
       <td>Spite (Witch4 Abju): First successful melee attack or combat maneuver on self inflicts chosen touch spell up to level 4 on attacker w/in 6 hr</td>
     </tr><tr style="text-align:left">
-      <td>Stumble Gap (W1 Conj): R40' 5' square inflicts 1d6 HP and knocked prone (DC 12 Ref -1 all rolls for 1 rd) for 8 rd</td>
+      <td>Stumble Gap (W1 Conj): R40' 5' square inflicts 1d6 HP and knocked prone (Reflex -1 all rolls for 1 rd) for 8 rd</td>
     </tr><tr style="text-align:left">
-      <td>Suffocation (W5 Necr): R40' Target drops to 0 HP next rd (DC 16 Fort staggered 1 rd), then drops to -1 HP (DC 16 Fort delays 1 rd), then dies (DC 16 Fort delays 1 rd) for 3 rd</td>
+      <td>Suffocation (W5 Necr): R40' Target drops to 0 HP next rd (Fortitude staggered 1 rd), then drops to -1 HP (Fortitude delays 1 rd), then dies (Fortitude delays 1 rd) for 3 rd</td>
     </tr><tr style="text-align:left">
       <td>Summon Eidolon (Summoner2 Conj): R40' Brings eidolon companion from home plane for 7 min</td>
     </tr><tr style="text-align:left">
@@ -407,33 +413,31 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Intelligence Wizard Spell Slot Bonus: Spell level W1</i></td>
     </tr><tr style="text-align:center">
-      <td><i>School Specialization (Evocation): +1 Evocation spell/dy in each spell level</i></td>
+      <td><i>School Specialization (Evocation): +1 Evocation spell slot in each spell level</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Simple Somatics: Suffers no arcane spell failure in light armor</i></td>
+      <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
       <td>Arcane Spell Failure: 20%</td>
     </tr><tr style="text-align:center">
-      <td>Bonded Object: May cast known spell through object</td>
+      <td>Bonded Object: Can cast a known spell through a chosen object</td>
     </tr><tr style="text-align:center">
-      <td>Brew Potion: May create potion for up to 3rd level spell</td>
+      <td>Brew Potion: Can create potions for known, targeted spells of up to 3rd level</td>
     </tr><tr style="text-align:center">
       <td>Cackle Hex: R30' Extends self agony, charm, evil eye, fortune, and misfortune hex effects for 1 rd</td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +2 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
       <td>Flight Hex: May use self <i>Feather Fall</i> effects at will, self <i>Levitate</i> 1/dy, self <i>Fly</i> effects 6 min/dy</td>
     </tr><tr style="text-align:center">
-      <td>Force Missile: <i>Magic Missile</i> inflicts 1d4+3 HP 4/dy</td>
-    </tr><tr style="text-align:center">
       <td>Healing Hex: May use <i>Cure Moderate Wounds</i> effects 1/target/dy</td>
     </tr><tr style="text-align:center">
-      <td>Intense Spells: +3 Evocation spell damage</td>
+      <td>Intense Spells: Evocation spells inflict +3 HP</td>
     </tr><tr style="text-align:center">
       <td>Maker's Call: May use <i>Dimension Door</i> effects to bring eidolon adjacent 1/dy</td>
     </tr><tr style="text-align:center">
@@ -443,13 +447,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>School Opposition (Transmutation): Casting Transmutation spells requires two spell slots each</td>
     </tr><tr style="text-align:center">
-      <td>Scribe Scroll: May create scroll of any known spell</td>
+      <td>Scribe Scroll: Can create scrolls for known spells</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
       <td>Summon Monster: May cast <i>Summon Monster IV</i>, lasting 7 min, when eidolon not present 6/dy</td>
     </tr><tr style="text-align:center">
-      <td>Widen Spell: May use +3 spell slot to dbl chosen spell area of affect</td>
+      <td>Widen Spell: Can cast a spell using a spell slot 3 levels higher than normal to double its area of affect</td>
     </tr><tr style="text-align:center">
       <td>Witch's Familiar: Familiar stores spells</td>
     </tr></table>
@@ -488,7 +492,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Ability Score Increase; Companion Darkvision; Companion Evasion; Devotion; Link (Summoner); Multiattack; Share Spells (Summoner)</td>
+      <td><b>Animal Companion Features</b>: Ability Score Increase; Bonus Tricks; Companion Darkvision; Companion Evasion; Devotion; Evasion (Companion); Link (Summoner); Multiattack; Share Spells (Summoner)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -520,29 +524,33 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Familiar Features</b>: Companion Alertness; Companion Evasion; Companion Improved Evasion; Deliver Touch Spells; Empathic Link; Share Spells; Speak With Master</td>
+      <td><b>Familiar Features</b>: Alertness (Companion); Deliver Touch Spells; Empathic Link; Evasion (Companion); Improved Evasion (Companion); Share Spells; Speak With Master</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
+      <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
+    </tr><tr style="text-align:center">
       <td><i>Limbs (Legs) Evolution: 1 pairs of legs give +10 speed</i></td>
     </tr><tr style="text-align:center">
-      <td>Ability Score Increase: +1 distributed among eidolon abilities</td>
+      <td>Ability Score Increase: Companion has 1 ability increase to assign</td>
+    </tr><tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 3 additional tricks, requiring no training time or Handle Animal checks</td>
     </tr><tr style="text-align:center">
       <td>Claws Evolution: Claws inflict 1d4+4 HP each</td>
     </tr><tr style="text-align:center">
       <td>Companion Darkvision: 60' b/w vision in darkness</td>
     </tr><tr style="text-align:center">
-      <td>Companion Evasion: Reflex save yields no damage instead of half</td>
+      <td>Deliver Touch Spells: Can use companion to deliver touch spells if in contact when the spell is cast</td>
     </tr><tr style="text-align:center">
-      <td>Companion Improved Evasion: Failed Reflex save yields half damage</td>
+      <td>Devotion: Companion has +4 Will vs. enchantment</td>
     </tr><tr style="text-align:center">
-      <td>Deliver Touch Spells: May deliver touch spells if in contact w/master when cast</td>
+      <td>Empathic Link: Can communicate emotions with companion up to 1 mile</td>
     </tr><tr style="text-align:center">
-      <td>Devotion: +4 Will vs. enchantment</td>
+      <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
-      <td>Empathic Link: May share emotions up to 1 mile</td>
+      <td>Familiar: Can bond with a magical creature with expanded abilities</td>
     </tr><tr style="text-align:center">
       <td>Flight Evolution: 30' Fly</td>
     </tr><tr style="text-align:center">
@@ -554,19 +562,19 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Link (Summoner): May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon</td>
     </tr><tr style="text-align:center">
-      <td>Multiattack: Reduces additional attack penalty to -2 or gives second attack at -5</td>
+      <td>Multiattack: Reduces the penalty for additional attacks to -2 or gives a second attack at -5</td>
     </tr><tr style="text-align:center">
       <td>Scent Evolution: R30' May detect foes by smell</td>
     </tr><tr style="text-align:center">
       <td>Share Spells (Summoner): May cast self spells on eidolon as touch spells</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells: Master may share self spell w/adjacent companion</td>
+      <td>Share Spells: Can cast a personal spell on an adjacent companion</td>
     </tr><tr style="text-align:center">
       <td>Skilled Evolution: +8 each on choice of 1 skill</td>
     </tr><tr style="text-align:center">
-      <td>Speak With Master: May talk w/master in secret language</td>
+      <td>Speak With Master: Can talk with companion in a shared, secret language</td>
     </tr><tr style="text-align:center">
-      <td>Trample Evolution: Full-round automatic overrun inflicts 1d6+6 HP (DC 17 Ref half)</td>
+      <td>Trample Evolution: Full-round automatic overrun inflicts 1d6+6 HP (DC 17 Reflex half)</td>
     </tr></table>
 </td>
   </tr></table>

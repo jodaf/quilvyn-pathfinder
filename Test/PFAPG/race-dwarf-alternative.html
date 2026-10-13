@@ -52,6 +52,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 904/1000 (3.5)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 58/116/175</td>
     </tr></table>
@@ -61,9 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Dwarf Ability Adjustment: +2 Constitution/+2 Wisdom/-2 Charisma</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Slow: -10 Speed</i></td>
-    </tr><tr style="text-align:center">
-      <td><i>Steady: Suffers no speed penalty in heavy armor or with heavy load</i></td>
+      <td><i>Steady: Suffers no Speed penalty in heavy armor or with a heavy load</i></td>
     </tr></table>
 </td>
   </tr></table>
@@ -84,12 +83,18 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Skill Focus (Fly); Swap Places</td>
         <td><b>Traits</b>: History Of Heresy; Indomitable Faith</td>
-        <td><b>Dwarf Features</b>: Ancient Enmity; Craftsman; Darkvision; Deep Warrior; Dwarf Ability Adjustment; Lorekeeper (Dwarf); Magic Resistant; Relentless; Slow; Steady; Stonesinger; Stubborn; Weapon Familiarity (Dwarven Urgosh/Dwarven Waraxe); Weapon Proficiency (Battleaxe/Heavy Pick/Warhammer)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Heavy); Core Fighter; Shield Proficiency; Tower Shield Proficiency; Weapon Proficiency (Martial)</td>
+        <td><b>Dwarf Features</b>: Ancient Enmity; Craftsman; Darkvision; Deep Warrior; Dwarf Ability Adjustment; Lorekeeper (Dwarf); Magic Resistant; Relentless; Steady; Stonesinger; Stubborn; Weapon Familiarity (Dwarven Urgosh; Dwarven Waraxe); Weapon Proficiency (Battleaxe; Heavy Pick; Warhammer)</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Bonus Feats (Fighter); Core Fighter; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>: Darkvision: 60' b/w vision in darkness</td>
+      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
+      <tr style="text-align:center">
+        <td><i>Bonus Feats (Fighter): +1 Fighter Feat</i></td>
+      </tr><tr style="text-align:center">
+        <td>Darkvision: R60' Has black and white vision in complete darkness</td>
+      </tr></table>
+</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -116,7 +121,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -142,7 +147,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 11</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 16/11/15</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +1/+3/+2</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/14</td>
@@ -151,9 +156,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Heavy</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Martial</td>
+        <td><b>Armor Proficiency</b>: Heavy; Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Battleaxe; Heavy Pick; Martial Weapons; Simple Weapons; Warhammer</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -161,15 +165,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chain Shirt</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Chakram (+2 d8+2 x2@20 R30'); Glaive-Guisarme (+2 d10+2 x3@20); Spear (+2 d8+2 x3@20 R20'); Unarmed (+3 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Chakram (+2 d8+2 x2@20 R30'); Glaive-Guisarme (+2 d10+2 x3@20); Spear (+2 d8+2 x3@20 R20'); Unarmed Strike (+3 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +1</i></td>
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1; Shield: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -177,7 +181,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack and AC</i></td>
+        <td><i>Two-handed Weapon With Buckler Penalty: -1 attack</i></td>
       </tr><tr style="text-align:center">
         <td>Ancient Enmity: +1 attack vs. elves</td>
       </tr><tr style="text-align:center">
@@ -186,6 +190,8 @@ var attributes = {
         <td>Relentless: +2 CMB to bull rush and overrun when standing on ground</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
+      </tr><tr style="text-align:center">
+        <td>Two-handed Weapon With Buckler Penalty: Negates shield bonus to Armor Class</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -221,9 +227,9 @@ var attributes = {
   <tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td>Magic Resistant: -2 arcane spell concentration</td>
+      <td><i>Stonesinger: +1 caster level on earth and stone spells</i></td>
     </tr><tr style="text-align:center">
-      <td>Stonesinger: +1 caster level on earth and stone spells</td>
+      <td>Magic Resistant: -2 arcane spell concentration</td>
     </tr></table>
 </td>
   </tr></table>

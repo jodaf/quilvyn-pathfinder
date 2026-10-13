@@ -17,7 +17,7 @@ var attributes = {
   "levels.Druid":10, "name":"Spells-Cleric Druid", "race":"Human", 
   "selectableFeatures.Cleric - Arcane Subdomain":1, "selectableFeatures.Cleric - Deception Subdomain":1, 
   "selectableFeatures.Druid - Core Druid":1, "selectableFeatures.Druid - Fire Domain":1, 
-  "selectableFeatures.Human - Bonus Feat":1, "selectableFeatures.Human - Skilled":1, "shield":"None", 
+  "selectableFeatures.Human - Bonus Feat (Human)":1, "selectableFeatures.Human - Skilled":1, "shield":"None", 
   "skills.Appraise":1, "skills.Climb":7, "skills.Craft (Alchemy)":1, "skills.Craft (Traps)":7, 
   "skills.Diplomacy":1, "skills.Disable Device":10, "skills.Escape Artist":10, "skills.Fly":20, 
   "skills.Knowledge (Engineering)":1, "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":4, 
@@ -81,6 +81,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 57/60 (PSOP)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 20/40/60</td>
     </tr></table>
@@ -91,6 +92,10 @@ var attributes = {
       <td><i>Armor Speed Adjustment: -10</i></td>
     </tr><tr style="text-align:center">
       <td>Human Ability Adjustment: +2 any</td>
+    </tr><tr style="text-align:center">
+      <td>Trackless Step: Can leave no traces of passage through natural surroundings</td>
+    </tr><tr style="text-align:center">
+      <td>Woodland Stride: Can move normally through natural undergrowth without damage or impairment</td>
     </tr></table>
 </td>
   </tr></table>
@@ -111,21 +116,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Command Undead; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Light Armor Proficiency; Silent Spell; Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Druid Features</b>: Armor Proficiency (Medium); Core Druid; Fire Bolt; Fire Domain; Fire Resistance; Nature Bond; Nature Sense; Resist Nature's Lure; Shield Proficiency; Spontaneous Druid Spell; Trackless Step; Venom Immunity; Weapon Proficiency (Club/Dagger/Dart/Quarterstaff/Scimitar/Scythe/Sickle/Shortspear/Sling/Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
-        <td><b>Cleric Features</b>: Arcane Beacon; Arcane Subdomain; Armor Proficiency (Medium); Aura; Channel Energy; Deception Subdomain; Dispelling Touch; Master's Illusion; Shield Proficiency; Spontaneous Cleric Spell; Sudden Shift; Weapon Proficiency (Simple)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Druid Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Core Druid; Fire Bolt; Fire Domain; Fire Resistance; Nature Bond; Nature Sense; Orisons; Resist Nature's Lure; Spontaneous Casting (Druid); Trackless Step; Venom Immunity; Weapon Proficiency (Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Sickle; Shortspear; Sling; Spear); Wild Empathy; Wild Shape; Woodland Stride</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Arcane Beacon; Arcane Subdomain; Armor Proficiency (Light; Medium; Shield); Aura; Channel Energy; Deception Subdomain; Dispelling Touch; Master's Illusion; Orisons; Spontaneous Casting (Cleric); Sudden Shift; Weapon Proficiency (Simple Weapons)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td><i>Nature Bond: 1 selection</i></td>
       </tr><tr style="text-align:center">
-        <td>Trackless Step: Untrackable outdoors</td>
-      </tr><tr style="text-align:center">
-        <td>Woodland Stride: May move normally through undergrowth</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -170,7 +173,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -3 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Deception Subdomain: Bluff is a class skill/Disguise is a class skill/Stealth is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -194,7 +199,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Scholar Of The Great Beyond: Choice of Knowledge (History) or Knowledge (Planes) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Wild Empathy: +13 Diplomacy (animals)</td>
+        <td>Wild Empathy: Can make a +13 check to use Diplomacy actions with animals; using Wild Empathy with magical beasts that have an Intelligence of 1 or 2 incurs a -4 penalty on the check</td>
       </tr></table>
 </td>
     </tr></table>
@@ -210,7 +215,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 183</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 14</td>
+        <td><b>AC/Touch/Flat</b>: 14/10/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +14/+12/+14</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +12/22</td>
@@ -219,9 +224,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield</td>
+        <td><b>Weapon Proficiency</b>: Club; Dagger; Dart; Quarterstaff; Scimitar; Scythe; Shortspear; Sickle; Simple Weapons; Sling; Spear</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -229,27 +233,31 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Hide</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Bardiche (+8 d10-2 x2@19); Light Hammer (+8 d4-2 x2@20 R20'); Spiked Armor (+8 d6-2 x2@20); Unarmed (+12 d3-2 x2@20)</td>
+        <td><b>Weapons</b>: Bardiche (+8 d10-2 x2@19); Light Hammer (+8 d4-2 x2@20 R20'); Spiked Armor (+8 d6-2 x2@20); Unarmed Strike (+12 d3-2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +40</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Bardiche: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
-      </tr><tr style="text-align:center">
-        <td><i>Nonproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td>Command Undead: R30' May use Channel Energy to control 10 HD of undead (18 DC Will neg)</td>
+        <td><i>Unproficient Weapon Penalty.Bardiche: -4 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Fire Bolt: R30' Ranged touch inflicts 1d6+5 HP 3/dy</td>
+        <td><i>Unproficient Weapon Penalty.Light Hammer: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Unproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
+      </tr><tr style="text-align:center">
+        <td>Channel Energy: Can restore 5d6 hit points or inflict the same amount (save Will DC 18 half) to all creatures within 30' 6 times per day</td>
+      </tr><tr style="text-align:center">
+        <td>Command Undead: R30' Can use Channel Energy to control 10 HD of undead (save Will DC 18 negates)</td>
+      </tr><tr style="text-align:center">
+        <td>Fire Bolt: R30' Ranged touch attack inflicts 1d6+5 HP fire 3 times per day</td>
       </tr><tr style="text-align:center">
         <td>Sudden Shift: After foe miss, may teleport 10' within foe threat range 3/dy</td>
       </tr></table>
@@ -258,7 +266,7 @@ var attributes = {
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +16; Reflex: +6; Will: +14</td>
-        <td><b>Resistance</b>: Fire: 10</td>
+        <td><b>Resistance</b>: Fire: 10; Poison: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -266,11 +274,11 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Constitution Fortitude Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Fire Resistance: Resistance 10 to fire</i></td>
+        <td><i>Fire Resistance: Has resistance 10 to fire</i></td>
       </tr><tr style="text-align:center">
-        <td>Resist Nature's Lure: +4 vs. spells of feys and spells targeting plants</td>
+        <td><i>Venom Immunity: Has immunity to poison</i></td>
       </tr><tr style="text-align:center">
-        <td>Venom Immunity: Immune to poisons</td>
+        <td>Resist Nature's Lure: +4 vs. the spell-like abilities of fey creatures and effects that target plants</td>
       </tr></table>
 </td>
     </tr></table>
@@ -285,7 +293,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 4; C2: 4; C3: 3; C4: 3; C5: 2; D0: 4; D1: 4; D2: 4; D3: 3; D4: 3; D5: 2; Domain1: 2; Domain2: 2; Domain3: 2; Domain4: 2; Domain5: 2</td>
-        <td><b>Spell DC</b>: C: 10; D: 10; Domain: 10</td>
+        <td><b>Spell DC</b>: C: 10; D: 10; Dispelling Touch: 13; Domain: 10; Masters Illusion: 13</td>
       </tr></table>
 </td>
     </tr></table>
@@ -293,95 +301,95 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts damage twice as often for half duration</td>
+      <td>Accelerate Poison (D2 Tran): Poison affecting touched takes effect immediately or inflicts damage twice as often for half its normal duration</td>
     </tr><tr style="text-align:left">
-      <td>Aqueous Orb (D3 Conj): R200' 10' diameter sphere douses normal fires and acts as <i>Dispel Magic</i> on magical ones, inflicts 2d6 HP nonlethal (DC 13 Ref neg) and engulfs (DC 13 Ref neg), moves 30'/rd and rolls over 10' obstacles for 10 rd</td>
+      <td>Aqueous Orb (D3 Conj): R200' 10' diameter sphere of water can be moved 30' per rd and rolled over 10' obstacles for 10 rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Bear (D2 Tran): Self gains +2 AC and CMB and does not provoke AOO on bull rush, grapple, and overrun for 10 min</td>
+      <td>Aspect Of The Bear (D2 Tran): Gives self a +2 enhancement bonus to natural armor and CMB and allows performing Bull Rush, Grapple, and Overrun without provoking AOO for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Falcon (D1 Tran): Self gains +3 Perception, +1 ranged attack, and crit of 19-20/x3 w/bows and crossbows for 10 min</td>
+      <td>Aspect Of The Falcon (D1 Tran): Gives self +3 Perception, +1 ranged attacks, and a crit of x3@19 with bows and crossbows for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Stag (D4 Tran): Self gains +2 AC vs. AOO, +20 Speed, full speed in undergrowth, and immediate attack w/antlers (+14 1d8-2 HP piercing 19-20/x2) after a successful foe AOO for 10 min</td>
+      <td>Aspect Of The Stag (D4 Tran): Gives self a +2 dodge bonus to Armor Class vs. AOO, +20 Speed, full speed in undergrowth, and an immediate attack with antlers after a successful foe AOO (+14 inflicts 1d8-2 HP piercing x2@19) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Aspect Of The Wolf (D5 Tran): Self gains +4 Strength and Dexterity, Scent feature, +2 trip attack, and swift trip w/out provoking AOO for 10 min</td>
+      <td>Aspect Of The Wolf (D5 Tran): Gives self +4 Strength and Dexterity, the Scent feature, +2 Trip attack, and swift Trip without provoking AOO for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Ball Lightning (D4 Evoc): R200' 2 5' spheres fly 20'/rd, inflict 3d6 HP electricity (DC 14 Ref neg; -4 in metal armor) in 5' square for 10 rd</td>
+      <td>Ball Lightning (D4 Evoc): R200' Creates 2 5' spheres that fly 20' per rd for 10 rd, stopping for 1 rd to inflict 3d6 HP electricity on creatures they encounter (save Reflex negates; creatures in metal armor have a -4 penalty on the save)</td>
     </tr><tr style="text-align:left">
-      <td>Blessing Of Courage and Life (C2 Conj): R50' Target gains +2 save vs. fear and death for 10 min; target may end to regain 1d8+10 HP</td>
+      <td>Blessing Of Courage and Life (C2 Conj): R50' Target gains +2 save vs. fear and death for 10 min and can end the spell early to regain 1d8+10 hit points</td>
     </tr><tr style="text-align:left">
-      <td>Blessing Of Fervor (C4 Tran): R50' 10 targets in 15' radius gain choice each rd from: +30 Speed; stand as a swift action w/out provoking AOO; extra attack as part of a full-attack action; +2 attack, AC, and Reflex; or free use of metamagic w/spell up to level 2 for 10 rd</td>
+      <td>Blessing Of Fervor (C4 Tran): R50' 10 targets in a 15' radius gain a choice each rd for 10 rd: +30 Speed; standing as a swift action without provoking AOO; an extra attack as part of a full-attack action; +2 attacks, a +2 dodge bonus to Armor Class, and +2 Reflex saves; free use of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell on a spell of up to 2nd level</td>
     </tr><tr style="text-align:left">
       <td>Blessing Of The Salamander (D5 Tran): Touched gains fast healing 5, fire resistance 20, and +2 CMD for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Bloody Claws (D4 Necr): Touched inflicts +5 HP bleed w/natural slashing or piercing attack for 10 min</td>
+      <td>Bloody Claws (D4 Necr): Natural slashing or piercing attacks by touched also inflict bleed damage equal to the lesser of 5 HP or the maximum damage possible from the attack itself for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Bristle (D1 Tran): Touched may trade up to 3 natural armor bonus for equal damage bonus each rd for 10 min</td>
+      <td>Bristle (D1 Tran): Touched can reduce its natural armor bonus to Armor Class by up to 3 for an equal damage bonus on natural attacks each rd for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Burning Gaze (D2 Evoc): R30' Self inflicts 1d6 HP fire/rd on chosen target (DC 12 Ref ends) each rd for 10 rd</td>
+      <td>Burning Gaze (D2 Evoc): R30' Allows self to use a standard action each rd to inflict 1d6 HP fire (save Fortitude negates) for undefined; targets who fail their saves catch on fire, suffering an additional 1d6 HP fire each rd (save Reflex ends)</td>
     </tr><tr style="text-align:left">
-      <td>Call Animal (D1 Ench): Nearest wild animal of chosen type (CR 10 max) moves toward self for 10 hr</td>
+      <td>Call Animal (D1 Ench): Causes the nearest wild animal of a chosen type (CR 10 maximum) to move toward self for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Clashing Rocks (D9 Conj): R800' Ranged touch inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (DC 19 Ref not buried); missed target and creatures in path suffer 10d6 HP and knocked prone (DC 19 Ref half HP only)</td>
+      <td>Clashing Rocks (D9 Conj): R800' Creates two Colossal rocks that slam together in a ranged touch attack that inflicts 20d6 HP bludgeoning, knocked prone, and buried in rubble (save Reflex negates buried); a missed target and other creatures in the path of the rocks suffer 10d6 HP bludgeoning and knocked prone (save Reflex inflicts half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Cleanse (C5 Evoc): Self regains 4d8+10 HP, recovers from ability damage and conditions, and breaks one enchantment</td>
+      <td>Cleanse (C5 Evoc): Self regains 4d8+10 hit points, recovers from ability damage and conditions, and breaks one enchantment</td>
     </tr><tr style="text-align:left">
       <td>Cloak Of Shade (D1 Abju): 10 touched treat heat from sunlight as 1 level less severe and reduce penalties from sunlight by 1 for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Cloak Of Winds (D3 Abju): R50' Foes of target suffer -4 ranged attacks; Tiny foes cannot touch target, are pushed 50', and suffer 3d6 HP nonlethal (DC 13 Fort neg) for 10 min</td>
+      <td>Cloak Of Winds (D3 Abju): R50' Foes of the target suffer -4 ranged attacks; Tiny foes cannot touch the target, are pushed away 50', and suffer 3d6 HP nonlethal, plus 1d6 HP if it strikes a solid object, (save Fortitude negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Cup Of Dust (D3 Tran): R50' Target suffers dehydration (DC 13 Fort neg) for 10 dy</td>
+      <td>Cup Of Dust (D3 Tran): R50' Inflicts unquenchable thirst that leads to dehydration (save Fortitude negates) for 10 dy</td>
     </tr><tr style="text-align:left">
-      <td>Detect Aberration (D1 Divi): R800' Cone gives self info on aberrations for conc or 100 min</td>
+      <td>Detect Aberration (D1 Divi): 800' cone reveals the presence and condition of a chosen kind of aberration for concentration up to 100 min; can change the chosen kind each rd</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Magic (Dispelling Touch3 Abju): R200' Successful d20+10 check vs. 11+caster level cancels targeted spell or 1 spell on targeted creature</td>
+      <td>Dispel Magic (Dispelling Touch3 Abju): R300' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20' radius, or disrupts a foe's spell casting</td>
     </tr><tr style="text-align:left">
-      <td>Eagle Eye (D2 Divi): R800' Self can view from higher point for 10 min</td>
+      <td>Eagle Eye (D2 Divi): Self can view from a point up to 800' overhead for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Expeditious Excavation (D1 Tran): R50' Moves 5' cu of dirt; creatures on top fall into pit (DC 11 Ref neg)</td>
+      <td>Expeditious Excavation (D1 Tran): R50' Moves a 5' cube of dirt; creatures on top fall into the resulting pit (save Reflex negates)</td>
     </tr><tr style="text-align:left">
-      <td>Feast Of Ashes (D2 Tran): R50' Target suffers starvation (DC 12 Fort neg) and eating causes 1 rd nausea (DC 12 Fort neg) for 20 dy</td>
+      <td>Feast Of Ashes (D2 Tran): R50' Inflicts insatiable hunger that leads to starvation (save Fortitude negates), and eating causes 1 rd nausea (save Fortitude DC 12 negates), for 20 dy</td>
     </tr><tr style="text-align:left">
-      <td>Fire Snake (D5 Evoc): Adjacent 10 contiguous 5' sq w/in 60' inflict 10d6 HP fire (DC 15 Ref half)</td>
+      <td>Fire Snake (D5 Evoc): Adjacent 10 contiguous 5' squares within 60' inflict 10d6 HP fire (save Reflex half)</td>
     </tr><tr style="text-align:left">
-      <td>Geyser (D4 Conj): R800' 5' sq inflicts 3d6 HP fire and 5d6 falling (DC 14 Ref half fire only), and surrounding 25' radius inflicts 1d6 HP fire, for conc + 1 rd</td>
+      <td>Geyser (D4 Conj): R800' 5' sq inflicts 3d6 HP fire and up to 5d6 falling (save Reflex half fire only), and the surrounding 25' radius inflicts 1d6 HP fire, for concentration + 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Glide (D2 Tran): Self falls 60'/rd and may move horizontally 300'/rd for 10 min</td>
+      <td>Glide (D2 Tran): Self falls 60' per rd and can move horizontally 300' per rd for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Grace (C2 Abju): Self movement provokes no AOO for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Grove Of Respite (D4 Conj): R50' Creates 20' radius grove that reports intruders and provides water and fruit that feeds 8 and heals 1 HP for 20 hr</td>
+      <td>Grove Of Respite (D4 Conj): R50' Creates a 20' radius grove that reports intruders and provides water and fruit that feeds 8 and restores 1 hit point for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Guiding Star (C3 Divi): Self aware of direction and distance to casting location for 10 dy</td>
+      <td>Guiding Star (C3 Divi): Self knows the direction and distance to the casting location for 10 days</td>
     </tr><tr style="text-align:left">
-      <td>Hide Campsite (D3 Illu): R50' 20' cu covers camp activity (DC 13 Will neg on interaction) for 20 hr</td>
+      <td>Hide Campsite (D3 Illu): R50' 20' cube conceals camping activity (save Will negates on interaction) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Hydraulic Push (D1 Evoc): R50' Target suffers CMB +13 bull rush; also extinguishes normal fires up to 5' sq</td>
+      <td>Hydraulic Push (D1 Evoc): R50' Creates a blast of water that performs a +13 Bull Rush on the target and extinguishes normal fires up to 5'x5'</td>
     </tr><tr style="text-align:left">
-      <td>Hydraulic Torrent (D3 Evoc): Creatures in 60' line suffer CMB +13 bull rush; immovable objects 13 Strength to break; also extinguishes normal fires</td>
+      <td>Hydraulic Torrent (D3 Evoc): Creates a 60' line of water that performs a +13 Bull Rush on creatures, extinguishes normal fires, and makes a +13 Strength check to break immovable objects</td>
     </tr><tr style="text-align:left">
-      <td>Instant Armor (C2 Conj): Self gains effects of half-plate or magical lesser armor for 10 min</td>
+      <td>Instant Armor (C2 Conj): Self gains force armor effects equivalent to half-plate or magical lesser armor for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Life Bubble (C5 Abju): 10 touched breathe freely, remain comfortable from -40F to 150F, and are unaffected by pressure for 20 hr total</td>
+      <td>Life Bubble (C5 Abju): 10 touched breathe freely, remain comfortable from -40F to 150F, and are unaffected by pressure for a total of 20 hr divided among them</td>
     </tr><tr style="text-align:left">
-      <td>Lily Pad Stride (D3 Tran): R800' Self moves across liquid and others can follow w/DC 10 Acrobatics (half speed; full speed inflicts -5 Acrobatics) for 100 min</td>
+      <td>Lily Pad Stride (D3 Tran): R800' Allows self to walk across water, and others of Medium size or smaller can follow at half Speed with a successful DC 10 Acrobatics check each rd (moving at full Speed inflicts -5 on the checks) for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Lockjaw (D2 Tran): Touched gains +4 CMB to grapple w/out provoking AOO after hit w/natural weapon for 10 rd</td>
+      <td>Lockjaw (D2 Tran): Touched gains a +4 CMB to grapple with a successful natural weapon attack without provoking an AOO for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Moonstruck (D4 Ench): R200' Target suffers dazed for 1 rd, then suffers confused and gains bite attack, two claw attacks, and rage for 8 rd, then suffers dazed for 1 rd (DC 14 Will neg)</td>
+      <td>Moonstruck (D4 Ench): R200' Target suffers dazed for 1 rd while growing claws and fangs, then gains a bite attack, two claw attacks, and <i>Confusion</i> and <i>Rage</i> effects for 8 rd, then suffers dazed for 1 rd while its hands and teeth return to normal (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Natural Rhythm (D2 Tran): Touched gains +1 cumulative damage using natural attacks (max +5, miss resets to +0) for 10 rd</td>
+      <td>Natural Rhythm (D2 Tran): Touched gains a +1 cumulative damage bonus vs. each foe each time it hits that foe with a natural attack (+5 maximum, and a miss resets the bonus vs. all foes to 0) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Nature's Exile (D3 Tran): Touched suffers permanent hostility from natural animals and -10 Survival; any animal companion suffers -2 attack, skill checks, and saves (DC 13 Will neg)</td>
+      <td>Nature's Exile (D3 Tran): Touched suffers permanent hostility from natural animals and -10 Survival, and any animal companion suffers -2 attacks, skill checks, and saves (Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Pillar Of Life (C5 Conj): R200' Creatures regain 2d8+10 HP (undead suffer 10d6 HP (light-sensitive 10d8)) on first contact w/5' sq for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Pox Pustules (D2 Necr): R50' Target suffers sickened and -4 Dexterity (DC 12 Fort neg; full-round scratch neg sickened for 1 rd) for 10 min</td>
+      <td>Pox Pustules (D2 Necr): R50' Target suffers sickened and -4 Dexterity (Fortitude negates; full-round scratch negates sickened for 1 rd) for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Rampart (D7 Conj): R200' Creates 5'x10'x50' linear or 5'x13' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)</td>
     </tr><tr style="text-align:left">
       <td>Rest Eternal (D5 Necr): Touched corpse requires DC 21 caster check to communicate, resurrect, or animate</td>
     </tr><tr style="text-align:left">
-      <td>River Of Wind (D4 Evoc): 5'x120' line inflicts 4d6 HP nonlethal and knocked prone (DC 14 Fort half HP only), then 2d6 HP nonlethal, pushed 20', and knocked prone (DC 14 Fort 1d6 HP only) for 9 rd</td>
+      <td>River Of Wind (D4 Evoc): 5'x120' line inflicts 4d6 HP nonlethal and knocked prone (Fortitude half HP only), then 2d6 HP nonlethal, pushed 20', and knocked prone (Fortitude 1d6 HP only) for 9 rd</td>
     </tr><tr style="text-align:left">
       <td>Sacred Bond (C3 Conj): Self and touched may cast touch healing spells on each other at R50' for 100 min</td>
     </tr><tr style="text-align:left">
@@ -389,9 +397,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Seamantle (D8 Conj): 30' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30' slam attack, and touch that extinguishes fires for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -10 Acrobatics, and entangles and knocks prone (DC 13 Ref neg) for 10 rd</td>
+      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -10 Acrobatics, and entangles and knocks prone (Reflex negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigues, and knocks prone (DC 16 Fort half HP and neg knocked prone; flying creatures DC 15 Fly to avoid) for 10 rd</td>
+      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigues, and knocks prone (Fortitude half HP and negates knocked prone; flying creatures DC 15 Fly to avoid) for 10 rd</td>
     </tr><tr style="text-align:left">
       <td>Slipstream (D2 Conj): Creates a wave that moves touched 10'/rd (20' downhill) and gives +20' Swim for 100 min</td>
     </tr><tr style="text-align:left">
@@ -401,7 +409,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Stone Call (D2 Conj): R200' 40' radius inflicts 2d6 HP bludgeoning for 1 rd, then difficult terrain for 9 rd</td>
     </tr><tr style="text-align:left">
-      <td>Stormbolts (C8 Evoc): Targets in 30' radius suffer 10d8 HP electricity and stunned 1 rd (DC 18 Fort half HP only)</td>
+      <td>Stormbolts (C8 Evoc): Targets in 30' radius suffer 10d8 HP electricity and stunned 1 rd (Fortitude half HP only)</td>
     </tr><tr style="text-align:left">
       <td>Strong Jaw (D4 Tran): Touched natural weapon inflicts damage as +2 size for 10 min</td>
     </tr><tr style="text-align:left">
@@ -409,19 +417,19 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Threefold Aspect (D5 Tran): Self may transform freely between young (+2 Dexterity and Constitution, -2 Wisdom), adult (+2 Wisdom and Intelligence, -2 Dexterity), and elderly (+4 Wisdom and Intelligence, -2 Strength and Dexterity) for 1 dy</td>
     </tr><tr style="text-align:left">
-      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in 15' radius (DC 14 Will neg for polymorph ability, DC 11+effect level for polymorph spell) for 10 rd</td>
+      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in 15' radius (Will negates for polymorph ability, DC 11+effect level for polymorph spell) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (DC 19 Fort half), +21 CMB to knock down and sweep away for 5 rd</td>
+      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (Fortitude half), +21 CMB to knock down and sweep away for 5 rd</td>
     </tr><tr style="text-align:left">
-      <td>Veil (Masters Illusion6 Illu): R800' Creatures in 15' radius appear to be other creatures (DC 15 Will neg) for conc + 10 hr</td>
+      <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (D7 Evoc): R800' 15' radius inflicts 3d6 HP bludgeoning (DC 17 Ref neg) on first contact, then 1d8 HP/rd on Medium and smaller (DC 17 Ref neg) for 9 rd; self may eject creatures from the vortex</td>
+      <td>Vortex (D7 Evoc): R800' 15' radius inflicts 3d6 HP bludgeoning (Reflex negates) on first contact, then 1d8 HP/rd on Medium and smaller (Reflex negates) for 9 rd; self may eject creatures from the vortex</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Lava (D8 Conj): R200' Creates 10 contiguous 5' sq wall sections for 10 rd; foe strike inflicts 2d6 HP fire on weapon; passage (DC 25 Strength) inflicts 20d6 HP fire; R60' ranged touch inflicts 10d6 HP fire and destroys 1d4 sections 1/rd; half damage continues for 1d3 rd</td>
     </tr><tr style="text-align:left">
       <td>Weapon Of Awe (C2 Tran): Touched weapon or unarmed strike gains +2 damage, and crit inflicts 1 rd shaken, for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Winds Of Vengeance (C9 Evoc): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (DC 19 Fort half HP only), for 10 min</td>
+      <td>Winds Of Vengeance (C9 Evoc): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fortitude half HP only), for 10 min</td>
     </tr><tr style="text-align:left">
       <td>World Wave (D9 Tran): Self rides 20'x10' natural terrain oval that forms 30' wave for 10 rd or 5' swell for 10 hr, moves 160'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects (constructs and undead suffer dbl HP)</td>
     </tr><tr style="text-align:left">
@@ -431,33 +439,43 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +3</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Greater Elemental Focus (Acid): Increased Elemental Focus (Acid) effects</i></td>
+    </tr><tr style="text-align:center">
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
       <td>Arcane Beacon: 15' radius gives arcane casters choice of +1 caster level or DC for 1 rd 3/dy</td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 5d6 HP (DC 18 Will half) 6/dy</td>
+      <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
-      <td>Craft Wand: May create wands for up to 4th level spell</td>
-    </tr><tr style="text-align:center">
-      <td>Dispelling Touch: Touch inflicts <i>Dispel Magic</i> 1/dy</td>
+      <td>Dispelling Touch: Touch invokes <i>Dispel Magic</i> effects once per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +2 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
-      <td>Enlarge Spell: May use +1 spell slot to dbl chosen spell range</td>
+      <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
-      <td>Master's Illusion: May use 30' radius <i>Veil</i> effects (DC 15 Will disbelieve) 10 rd/dy</td>
+      <td>Master's Illusion: 30' emanation invokes <i>Veil</i> effects (save Will DC 15 disbelieve) for 10 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Silent Spell: May use +1 spell slot to cast chosen spell w/out speech</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Druid Spell: May cast <i>Summon Nature's Ally</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
-      <td>Widen Spell: May use +3 spell slot to dbl chosen spell area of affect</td>
+      <td>Spontaneous Casting (Druid): Can cast <i>Summon Nature's Ally</i> spells in place of prepared spells</td>
     </tr><tr style="text-align:center">
-      <td>Wild Shape: May change into creature of size diminutive-huge/large elemental/plant for 10 hr 4/dy</td>
+      <td>Widen Spell: Can cast a spell using a spell slot 3 levels higher than normal to double its area of affect</td>
+    </tr><tr style="text-align:center">
+      <td>Wild Shape: Can change into a diminutive to huge animal, a small to large plant, or a small to large elemental for 10 hr 4 times per day</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Warnings</b>: Deception Subdomain: Implies bluff skill, disguise skill or stealth skill</td>
     </tr></table>
 </td>
   </tr></table>

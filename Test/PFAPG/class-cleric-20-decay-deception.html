@@ -16,7 +16,7 @@ var attributes = {
   "feats.Skill Focus (Perform (Sing))":1, "feats.Tower Shield Proficiency":1, "gender":"Male", "hitPoints":104, 
   "intelligence":11, "levels.Cleric":20, "name":"Class-Cleric 20-Decay Deception", 
   "race":"Human", "selectableFeatures.Cleric - Decay Subdomain":1, 
-  "selectableFeatures.Cleric - Deception Subdomain":1, "selectableFeatures.Human - Bonus Feat":1, 
+  "selectableFeatures.Cleric - Deception Subdomain":1, "selectableFeatures.Human - Bonus Feat (Human)":1, 
   "selectableFeatures.Human - Skilled":1, "shield":"None", "skills.Bluff":1, "skills.Craft (Alchemy)":20, 
   "skills.Craft (Traps)":1, "skills.Diplomacy":2, "skills.Intimidate":1, "skills.Knowledge (Arcana)":1, 
   "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":20, "skills.Perform (Sing)":13, 
@@ -62,6 +62,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 194657/190001 (3.5)</td>
       <td><b>Level</b>: 20</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 20/80</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -92,16 +93,16 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Alignment Channel (Law); Channel Smite; Critical Focus; Improved Shield Bash; Intimidating Prowess; Skill Focus (Bluff); Skill Focus (Craft (Traps)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Nature)); Skill Focus (Perform (Sing)); Tower Shield Proficiency</td>
         <td><b>Traits</b>: Hedge Magician; Sacred Conduit</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
-        <td><b>Cleric Features</b>: Armor Proficiency (Medium); Aura Of Decay; Aura; Channel Energy; Decay Subdomain; Deception Subdomain; Master's Illusion; Shield Proficiency; Spontaneous Cleric Spell; Sudden Shift; Weapon Proficiency (Simple); Wooden Fist</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
+        <td><b>Cleric Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Aura Of Decay; Aura; Channel Energy; Decay Subdomain; Deception Subdomain; Master's Illusion; Orisons; Spontaneous Casting (Cleric); Sudden Shift; Weapon Proficiency (Simple Weapons); Wooden Fist</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i> based on deity alignment</td>
+        <td>Aura: Visible to <i>Detect Chaos/Evil/Good/Law</i>, depending on deity alignment and domains</td>
       </tr></table>
 </td>
     </tr></table>
@@ -116,7 +117,7 @@ var attributes = {
       <col style="width:33%"/>
       <col style="width:34%"/>
       <tr style="text-align:left">
-        <td>Bluff: (cha;cc) 1 (+6)</td>
+        <td>Bluff: (cha) 1 (+9)</td>
         <td>Diplomacy: (cha) 2 (+7)</td>
         <td>Knowledge (Nature): (int;cc) 1 (+4)</td>
       </tr><tr style="text-align:left">
@@ -134,7 +135,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -2 Dexterity- and Strength-based skills</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Deception Subdomain: Bluff is a class skill/Disguise is a class skill/Stealth is a class skill</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intimidating Prowess: +2 Intimidate</i></td>
       </tr><tr style="text-align:center">
@@ -150,7 +153,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Hedge Magician: Cost to craft magic items is reduced by 5%</td>
+        <td>Hedge Magician: Reduces the cost to craft magic items by 5%</td>
       </tr></table>
 </td>
     </tr></table>
@@ -166,7 +169,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 84</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 15</td>
+        <td><b>AC/Touch/Flat</b>: 15/11/14</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+16</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +17/28</td>
@@ -175,9 +178,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Medium</td>
-        <td><b>Shield Proficiency</b>: Tower</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Medium; Shield; Tower Shield</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -185,17 +187,19 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Armored Coat</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
+        <td><b>Weapons</b>: Boar Spear (+17 d8+3 x2@20); Punching Dagger (+17 d4+2 x3@20); Unarmed Strike (+17 d3+2 x2@20); Wooden Stake (+17 d4+2 x2@20 R10')</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +4; Dexterity: +1</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: -20</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Sacred Conduit: +1 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -203,19 +207,21 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
-        <td>Alignment Channel (Law): May use Channel Energy to heal or harm lawful outsiders</td>
+        <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
         <td>Aura Of Decay: 30' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd 20 rd/dy</td>
       </tr><tr style="text-align:center">
-        <td>Channel Smite: May inflict Channel Energy damage using melee weapon attack</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Critical Focus: +4 crit confirm</td>
+        <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
-        <td>Improved Shield Bash: Suffers no AC penalty when using Shield Bash</td>
+        <td>Critical Focus: +4 to confirm crit threats</td>
+      </tr><tr style="text-align:center">
+        <td>Improved Shield Bash: Retains shield bonus to Armor Class when using Shield Bash</td>
       </tr><tr style="text-align:center">
         <td>Sudden Shift: After foe miss, may teleport 10' within foe threat range 5/dy</td>
       </tr><tr style="text-align:center">
-        <td>Wooden Fist: +10 unarmed damage and no AOO on unarmed attacks 5 rd/dy</td>
+        <td>Wooden Fist: Unarmed attacks inflict +10 HP and provoke no AOO for 5 rd per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -246,7 +252,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
-        <td><b>Spell DC</b>: C: 12; Domain: 12</td>
+        <td><b>Spell DC</b>: C: 12; Domain: 12; Masters Illusion: 12</td>
       </tr></table>
 </td>
     </tr></table>
@@ -254,59 +260,57 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Plants (Decay7 Tran): R75' 6 plants attack foes for 20 rd or entwine for 20 hr</td>
+      <td>Animate Plants (Decay7 Tran): R75' 6 Large plant targets attack foes for 20 rd or entwine for 20 hr; larger plants reduce the number affected by half for each size level</td>
     </tr><tr style="text-align:left">
-      <td>Barkskin (Decay2 Tran): Touched gains +5 natural armor for 200 min</td>
+      <td>Barkskin (Decay2 Tran): Touched gains a +5 natural armor enhancement bonus to Armor Class for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Confusion (Deception4 Ench): R300' Creatures in 15' radius randomly 25% act normal/25% babble/25% attack themselves/25% attack nearest for 20 rd (DC 16 Will neg)</td>
+      <td>Confusion (Deception4 Ench): R300' Creatures in a 15' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Contagion (Decay3 Necr): Touched contracts random disease (DC 15 Fort neg)</td>
+      <td>Contagion (Decay3 Necr): Touched contracts a random disease (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
-      <td>Control Plants (Decay8 Tran): R75' 40 HD plant creatures in 15' radius obey self (DC 20 Will neg) for 20 min</td>
+      <td>Control Plants (Decay8 Tran): R75' 40 HD of plant creatures in a 15' radius obey self (save Will negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Disguise Self (Deception1 Illu): Self changes appearance and gains +10 Disguise for 200 min</td>
+      <td>Disguise Self (Deception1 Illu): Changes the appearance of self (save Will upon interaction disbelieves) and gives +10 Disguise, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Entangle (Decay1 Tran): R1200' Creatures in 40' radius entangled for 20 min (DC 13 Ref neg)</td>
+      <td>Entangle (Decay1 Tran): R1200' 40' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>False Vision (Deception5 Illu): Scrying of touched 40' radius shows illusion for 20 hr</td>
+      <td>False Vision (Deception5 Illu): Scrying of a touched 40' radius shows a crafted illusion for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Harm (Decay6 Necr): Touched suffers (undead heals) 150 HP (DC 18 Will half)</td>
+      <td>Harm (Decay6 Necr): Melee touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
-      <td>Mass Invisibility (Deception8 Illu): R1200' Creatures in 90' radius become invisible for 20 min or until attack</td>
+      <td>Mass Invisibility (Deception8 Illu): R1200' Creatures in a 90' radius become invisible, gaining +20 Stealth when moving and +40 when still, for 20 min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all</td>
     </tr><tr style="text-align:left">
-      <td>Mirror Image (Deception2 Illu): Creates 1d4+6 self copies that mislead attacks for 20 min</td>
+      <td>Mirror Image (Deception2 Illu): Creates 1d4+6 (maximum 8) copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 15, and any hit on one destroys it</td>
     </tr><tr style="text-align:left">
-      <td>Mislead (Deception6 Illu): R75' Makes self invisible for 20 rd and creates false double (DC 18 Will disbelieve) for conc + 3 rd</td>
+      <td>Mislead (Deception6 Illu): R75' Makes self invisible for 20 rd and creates a false double (save Will upon interaction disbelieves) for concentration + 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (Deception3 Abju): Touched gains SR 31 (divination) (self SR 35) for 20 hr</td>
+      <td>Nondetection (Deception3 Abju): Touched gains SR 31 vs. divination, or self or a possession gains SR 35, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Poison (Decay4 Necr): Touched suffers -1d3 Constitution/rd for 6 rd (DC 16 Fort neg)</td>
+      <td>Poison (Decay4 Necr): Touched suffers -1d3 Constitution each rd (save Fortitude ends) for 6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Project Image (Deception7 Illu): R300' Self sees and casts through illusory double (DC 19 Will disbelieve) for 20 rd</td>
+      <td>Project Image (Deception7 Illu): R300' Allows self to see and cast through an intangible duplicate (save Will upon interaction disbelieves) for 20 rd; a break in line of effect to the duplicate ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Decay9 Conj): R300' Creates 1d4+2 advanced shambling mounds in 15' radius that fight for 7 dy or guard for 7 mo</td>
+      <td>Shambler (Decay9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
     </tr><tr style="text-align:left">
-      <td>Time Stop (Deception9 Tran): All but self halt and become invulnerable for 1d4+1 rd</td>
+      <td>Time Stop (Deception9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures for the duration</td>
     </tr><tr style="text-align:left">
-      <td>Veil (Masters Illusion6 Illu): R1200' Creatures in 15' radius appear to be other creatures (DC 22 Will neg) for conc + 20 hr</td>
+      <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Decay5 Conj): R300' 20 10' cu thorns inflict (25-AC) HP/rd when passing through for 200 min</td>
+      <td>Wall Of Thorns (Decay5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Charisma Channel Energy Adjustment: +2</i></td>
-    </tr><tr style="text-align:center">
       <td><i>Wisdom Cleric Spell Slot Bonus: Spell level C1, C2</i></td>
     </tr><tr style="text-align:center">
-      <td>Channel Energy: R30' May heal or inflict 10d6 HP (DC 22 Will half) 5/dy</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Master's Illusion: May use 30' radius <i>Veil</i> effects (DC 22 Will disbelieve) 20 rd/dy</td>
+      <td>Master's Illusion: 30' emanation invokes <i>Veil</i> effects (save Will DC 22 disbelieve) for 20 rd per day</td>
     </tr><tr style="text-align:center">
-      <td>Sacred Conduit: +1 channeled energy save DC</td>
+      <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Cleric Spell: May cast <i>Cure</i> or <i>Inflict</i> in place of known spell</td>
+      <td>Spontaneous Casting (Cleric): Can cast <i>Cure</i> or <i>Inflict</i> spells in place of prepared spells</td>
     </tr></table>
 </td>
   </tr></table>

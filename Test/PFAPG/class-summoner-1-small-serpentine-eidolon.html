@@ -53,6 +53,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 0/3 (PSOP)</td>
       <td><b>Level</b>: 1</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 76/153/230</td>
     </tr></table>
@@ -76,14 +77,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Elemental Focus (Fire); Skill Focus (Craft (Weapons))</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bite Evolution; Cantrips; Climb Evolution; Eidolon; Life Link (Summoner); Pull Evolution; Push Evolution; Reach Evolution; Simple Somatics; Small Eidolon; Summon Monster; Swim Evolution; Tail Evolution; Tail Slap Evolution; Weapon Proficiency (Simple)</td>
-        <td><b>Human Features</b>: Bonus Feat; Human Ability Adjustment; Skilled</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light); Bite Evolution; Cantrips; Climb Evolution; Eidolon; Life Link (Summoner); Pull Evolution; Push Evolution; Reach Evolution; Simple Somatics; Small Eidolon; Summon Monster; Swim Evolution; Tail Evolution; Tail Slap Evolution; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Bonus Feat: +1 General Feat</i></td>
+        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td>Eidolon: Special bond and abilities</td>
       </tr></table>
@@ -114,7 +115,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -1 Dex- and Str-based skills</i></td>
+        <td><i>Armor Skill Check Penalty: -1 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
@@ -138,7 +139,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 93</td>
         <td><b>Initiative</b>: +0</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/10/13</td>
         <td><b>Attacks Per Round</b>: 1</td>
         <td><b>Base/Melee/Ranged Attack</b>: +0/+3/+0</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +3/13</td>
@@ -148,8 +149,7 @@ var attributes = {
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
         <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: None</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Weapon Proficiency</b>: Simple Weapons</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -157,12 +157,14 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Wooden</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+3 d4+3 x2@19 R10'); Light Crossbow (+0 d8 x2@19 R80'); Punching Dagger (+3 d4+3 x3@20); Unarmed (+3 d3+3 x2@20)</td>
+        <td><b>Weapons</b>: Dagger (+3 d4+3 x2@19 R10'); Light Crossbow (+0 d8 x2@19 R80'); Punching Dagger (+3 d4+3 x3@20); Unarmed Strike (+3 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
+        <td><i>Armor Class Modifiers: Armor: +3</i></td>
+      </tr><tr style="text-align:center">
         <td><i>Constitution Hit Points Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +3</i></td>
@@ -204,9 +206,9 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Charisma Summoner Spell Slot Bonus: Spell level Summoner1</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Simple Somatics: Suffers no arcane spell failure in light armor</i></td>
+      <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
-      <td>Cantrips: May cast 0-level spells</td>
+      <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Fire): +1 save DC on spells that inflict fire damage</td>
     </tr><tr style="text-align:center">
@@ -247,7 +249,7 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Companion Darkvision; Link (Summoner); Share Spells (Summoner)</td>
+      <td><b>Animal Companion Features</b>: Bonus Tricks; Companion Darkvision; Link (Summoner); Share Spells (Summoner)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -256,6 +258,8 @@ var attributes = {
       <td><i>Small Eidolon: Size is Small: gains +2 Dexterity, +1 AC, +1 attack, +2 Fly, and +4 Stealth; suffers -4 Strength, -2 Constitution, -1 CMB/CMD, -1 damage die step</i></td>
     </tr><tr style="text-align:center">
       <td>Bite Evolution: Bite inflicts 1d4-1 HP</td>
+    </tr><tr style="text-align:center">
+      <td>Bonus Tricks: Companion can learn 1 additional tricks, requiring no training time or Handle Animal checks</td>
     </tr><tr style="text-align:center">
       <td>Climb Evolution: 20' Climb</td>
     </tr><tr style="text-align:center">
@@ -276,6 +280,16 @@ var attributes = {
       <td>Tail Evolution: +2 Acrobatics (balance)</td>
     </tr><tr style="text-align:center">
       <td>Tail Slap Evolution: Slaps inflict 1d4-1 HP each</td>
+    </tr></table>
+</td>
+  </tr></table>
+</td>
+</tr><tr style="text-align:center">
+  <td style="border:1px solid black"><b>Notes</b><br/>  <table id="NotesArea" style="width:100%">
+  <tr style="text-align:center">
+    <td>    <table id="ValidationPart" style="width:100%">
+    <tr style="text-align:center">
+      <td><b>Validation Errors</b>: Selectable Feature Allocation: 5 available vs. 6 allocated</td>
     </tr></table>
 </td>
   </tr></table>

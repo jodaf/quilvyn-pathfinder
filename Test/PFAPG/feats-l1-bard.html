@@ -54,6 +54,7 @@ var attributes = {
     <tr style="text-align:center">
       <td><b>Experience</b>: 29/30 (PSOP)</td>
       <td><b>Level</b>: 10</td>
+      <td><b>Size</b>: Medium</td>
       <td><b>Speed/Run</b>: 30/120</td>
       <td><b>Light/Med/Max Load:</b> 66/133/200</td>
     </tr></table>
@@ -77,16 +78,14 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Expanded Arcana; Leaf Singer; Lingering Performance; Stone Singer; War Singer</td>
-        <td><b>Half-Orc Features</b>: Cavewight; Darkvision; Half-Orc Ability Adjustment; Orc Blood; Orc Ferocity; Weapon Familiarity (Orc Double Axe); Weapon Proficiency (Falchion/Greataxe)</td>
-        <td><b>Bard Features</b>: Arcane Insight; Arcane Investigation; Armor Proficiency (Light); Bardic Performance; Careful Teamwork; Countersong; Detective; Dirge Of Doom; Distraction; Eye For Detail; Fascinate; Inspire Competence; Jack-Of-All-Trades; Lore Master; Shield Proficiency; Simple Somatics; Suggestion; True Confession; Weapon Proficiency (Simple/Longsword/Rapier/Sap/Short Sword/Shortbow/Whip)</td>
+        <td><b>Half-Orc Features</b>: Cavewight; Darkvision; Half-Orc Ability Adjustment; Orc Blood; Orc Ferocity; Weapon Familiarity (Orc Double Axe); Weapon Proficiency (Falchion; Greataxe)</td>
+        <td><b>Bard Features</b>: Arcane Insight; Arcane Investigation; Armor Proficiency (Light; Shield); Bardic Performance; Careful Teamwork; Countersong; Detective; Dirge Of Doom; Distraction; Eye For Detail; Fascinate; Inspire Competence; Jack-Of-All-Trades; Lore Master; Simple Somatics; Suggestion; True Confession; Weapon Proficiency (Simple Weapons; Longsword; Rapier; Sap; Short Sword; Shortbow; Whip)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
       <tr style="text-align:center">
-        <td>Bardic Performance: May use Bardic Performance effect 23 rd/dy</td>
-      </tr><tr style="text-align:center">
-        <td>Darkvision: 60' b/w vision in darkness</td>
+        <td>Darkvision: R60' Has black and white vision in complete darkness</td>
       </tr><tr style="text-align:center">
         <td>Leaf Singer: Dbl range or area of effect of audible Bardic Performance in forest/+2 Bardic Performance DC vs. feys</td>
       </tr><tr style="text-align:center">
@@ -117,9 +116,9 @@ var attributes = {
       </tr><tr style="text-align:left">
         <td>Bluff: (cha) 9 (+13)</td>
         <td>Linguistics: (int) 2 (+8)</td>
-        <td>Stealth: (dex) 5 (+7)</td>
+        <td>Stealth: (dex) 5 (+9)</td>
       </tr><tr style="text-align:left">
-        <td>Climb: (str) 10 (+13)</td>
+        <td>Climb: (str) 10 (+15)</td>
         <td>Perception: (wis) 2 (+11)</td>
         <td>Survival: (wis;cc) 10 (+11)</td>
       </tr><tr style="text-align:left">
@@ -141,8 +140,6 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><b>Skill Notes</b>:       <table id="SkillNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Armor Skill Check Penalty: -2 Dex- and Str-based skills</i></td>
-      </tr><tr style="text-align:center">
         <td><i>Eye For Detail: +5 Knowledge (Local)/+5 Perception/+5 Sense Motive</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +3</i></td>
@@ -151,15 +148,27 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Arcane Insight: May find and disable magical traps/+4 vs. disguises</td>
       </tr><tr style="text-align:center">
+        <td>Bardic Performance: Can use Bardic Performance effects 23 rd per day, starting or changing each as a move action</td>
+      </tr><tr style="text-align:center">
         <td>Cavewight: +1 Knowledge (Dungeoneering) (underground)/+1 Survival (underground)</td>
+      </tr><tr style="text-align:center">
+        <td>Countersong: R30' Can allow listeners to substitute a Bardic Performance check for saves vs. sonic magic and give them additional saves each rd vs. existing effects</td>
+      </tr><tr style="text-align:center">
+        <td>Dirge Of Doom: R30' Can use Bardic Performance to inflict shaken on foes</td>
+      </tr><tr style="text-align:center">
+        <td>Distraction: R30' Can allow listeners to substitute a Bardic Performance check for saves vs. pattern and figment illusions and give them additional saves each rd vs. existing effects</td>
       </tr><tr style="text-align:center">
         <td>Eye For Detail: +5 Diplomacy (gather information)</td>
       </tr><tr style="text-align:center">
-        <td>Jack-Of-All-Trades: May use any skill untrained</td>
+        <td>Fascinate: R90' Can use Bardic Music to hold 4 creatures spellbound (save Will DC 16 negates for 24 hr; potential threats allow another save) and inflict -4 on reaction skill checks for 10 rd or until a target is threatened</td>
       </tr><tr style="text-align:center">
-        <td>Lore Master: May take 10 on any ranked Knowledge skill; may take 20 1/dy</td>
+        <td>Inspire Competence: R30' Can use Bardic Performance to give allies +3 skill checks</td>
       </tr><tr style="text-align:center">
-        <td>True Confession: May use 3 rd Bardic Performance and successful Sense Motive to cause target to reveal lie or compulsion (DC 16 Will neg)</td>
+        <td>Jack-Of-All-Trades: Can use any skill untrained</td>
+      </tr><tr style="text-align:center">
+        <td>Lore Master: Can take 10 on any ranked Knowledge skill and can take 20 on any Knowledge skill once per day</td>
+      </tr><tr style="text-align:center">
+        <td>True Confession: May use 3 rd Bardic Performance and successful Sense Motive to cause target to reveal lie or compulsion (DC 16 Will negates)</td>
       </tr></table>
 </td>
     </tr></table>
@@ -175,7 +184,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Hit Points</b>: 73</td>
         <td><b>Initiative</b>: +1</td>
-        <td><b>Armor Class</b>: 13</td>
+        <td><b>AC/Touch/Flat</b>: 13/11/12</td>
         <td><b>Attacks Per Round</b>: 2</td>
         <td><b>Base/Melee/Ranged Attack</b>: +7/+9/+8</td>
         <td><b>Combat Maneuver Bonus/Defense</b>: +9/20</td>
@@ -184,9 +193,8 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>      <table id="Proficiencies" style="width:100%">
       <tr style="text-align:center">
-        <td><b>Armor Proficiency</b>: Light</td>
-        <td><b>Shield Proficiency</b>: Heavy</td>
-        <td><b>Weapon Proficiency</b>: Simple</td>
+        <td><b>Armor Proficiency</b>: Light; Shield</td>
+        <td><b>Weapon Proficiency</b>: Falchion; Greataxe; Longsword; Rapier; Sap; Short Sword; Shortbow; Simple Weapons; Whip</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -194,15 +202,15 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Quilted Cloth</td>
         <td><b>Shield</b>: Light Steel Quickdraw</td>
-        <td><b>Weapons</b>: Gauntlet (+9 d3+2 x2@20); Heavy Mace (+9 d8+2 x2@20); Sap (+9 d6+2 x2@20); Unarmed (+9 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Gauntlet (+9 d3+2 x2@20); Heavy Mace (+9 d8+2 x2@20); Sap (+9 d6+2 x2@20); Unarmed Strike (+9 d3+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td><b>Combat Notes</b>:       <table id="CombatNotes" style="width:100%">
       <tr style="text-align:center">
-        <td><i>Constitution Hit Points Adjustment: +20</i></td>
+        <td><i>Armor Class Modifiers: Armor: +1; Dexterity: +1; Shield: +1</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Dexterity Armor Class Adjustment: +1</i></td>
+        <td><i>Constitution Hit Points Adjustment: +20</i></td>
       </tr><tr style="text-align:center">
         <td><i>Dexterity Attack Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -210,7 +218,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Orc Ferocity: May fight below zero HP for 1 rd 1/dy</td>
+        <td>Orc Ferocity: Can continue to fight for 1 rd when brought to negative hit points once per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -242,18 +250,21 @@ var attributes = {
     <tr style="text-align:center">
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
+        <td><b>Spells Known/Prepared</b>: B0: 6; B1: 5; B2: 5; B3: 4; B4: 2</td>
         <td><b>Spell Slots</b>: B0: 6; B1: 6; B2: 4; B3: 3; B4: 1</td>
-        <td><b>Spell DC</b>: B: 11</td>
+        <td><b>Spell DC</b>: B: 11; Suggestion: 11</td>
       </tr></table>
 </td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
+    <td><b>Spells</b>:<br/>Suggestion (Suggestion3 Ench): R50' Target follows a reasonable suggestion (save Will negates) for up to 10 hr</td>
+  </tr><tr style="text-align:center">
     <td><b>Magic Notes</b>:     <table id="MagicNotes" style="width:100%">
     <tr style="text-align:center">
       <td><i>Charisma Bard Spell Slot Bonus: Spell level B1</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Simple Somatics: Suffers no arcane spell failure in light armor</i></td>
+      <td><i>Simple Somatics: Suffers no arcane spell failure risk from wearing light armor</i></td>
     </tr><tr style="text-align:center">
       <td>Arcane Insight: +4 caster level to overcome protection vs. divination</td>
     </tr><tr style="text-align:center">
@@ -261,19 +272,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Careful Teamwork: R30' May use 3 rd Bardic Performance to give allies +2 Initiative, Perception, Disable Device, Reflex saves, AC vs. traps, and flat-footed AC for 1 hr</td>
     </tr><tr style="text-align:center">
-      <td>Countersong: R30' Bardic Performance gives Perform check vs. sonic magic</td>
-    </tr><tr style="text-align:center">
-      <td>Dirge Of Doom: R30' Bardic Performance inflicts shaken</td>
-    </tr><tr style="text-align:center">
-      <td>Distraction: R30' Bardic Performance gives Perform check vs. visual magic</td>
-    </tr><tr style="text-align:center">
       <td>Expanded Arcana: +1 spells known, or +2 of lower than max level</td>
     </tr><tr style="text-align:center">
-      <td>Fascinate: R90' Bardic Performance holds 4 creatures spellbound (DC 16 Will neg)</td>
-    </tr><tr style="text-align:center">
-      <td>Inspire Competence: R30' Bardic Performance gives allies +3 skill checks</td>
-    </tr><tr style="text-align:center">
-      <td>Suggestion: May use <i>Suggestion</i> effects on 1 fascinated creature (DC 16 Will neg)</td>
+      <td>Suggestion: Can use <i>Suggestion</i> effects on 1 fascinated creature</td>
     </tr></table>
 </td>
   </tr></table>
