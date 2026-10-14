@@ -10577,7 +10577,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       classLevel, '=', 'Math.floor((source + 2) / 4)'
     );
     rules.defineRule('combatNotes.elusive.1',
-      'armorWeight', '?', 'source<=1',
+      'armorWeight', '?', 'source=="None" || source=="Light"',
       'combatNotes.elusive', '=', null
     );
 
