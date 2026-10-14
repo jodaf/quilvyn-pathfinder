@@ -3039,7 +3039,7 @@ PFAPG.FEATURES = {
       '"Has Toughness feature"',
   'Ki Arrows':
     'Section=combat ' +
-    'Note="May spend 1 Ki Point to inflict %{unarmedDamageDice}+%{unarmedDamageModifier} HP w/bow"',
+    'Note="May spend 1 Ki Point to inflict %{combatNotes.unarmedStrike} HP w/bow"',
   'Ki Focus Bow':
     'Section=combat ' +
     'Note="May use arrows for Ki attacks when Ki Pool is not empty"',
@@ -3059,7 +3059,7 @@ PFAPG.FEATURES = {
     'Note="May spend entire Ki Pool in 1 hr ritual for effects of <i>Raise Dead</i> (min 6 Ki Points)%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8 Ki Points)\' : \'\'}; Ki Points replenish after 1 dy"',
   'Ki Weapons':
     'Section=combat ' +
-    'Note="May spend 1 Ki Point to inflict %{unarmedDamageDice}+%{unarmedDamageModifier} w/an improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give an improvised weapon an enhancement bonus or abilities for 1 rd\' : \'\'}"',
+    'Note="May spend 1 Ki Point to inflict %{combatNotes.unarmedStrike} w/an improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give an improvised weapon an enhancement bonus or abilities for 1 rd\' : \'\'}"',
   'Learned Master':
     'Section=skill ' +
     'Note="Knowledge is a class skill/Linguistics is a class skill/+%1 all Knowledge/+%1 Linguistics"',
@@ -4047,7 +4047,7 @@ PFAPG.FEATURES = {
     'Note="May use Channel Energy to affect 30\' cone or 120\' line"',
   "Vindicator's Shield":
     'Section=combat ' +
-    'Note="May use Channel Energy to gain +%{magicNotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
+    'Note="May use Channel Energy to gain +%{combatotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
 
   // Horizon Walker
   'Master Of All Lands':
@@ -4272,7 +4272,9 @@ PFAPG.FEATURES = {
   'Concealed Thoughts':
     'Section=save ' +
     'Note="May control effect of spells that detect surface thoughts when cast on self"',
-  // Death Attack as Pathfinder
+  'Death Attack':
+    Pathfinder.FEATURES['Death Attack']
+    .replaceAll('levels.Assassin', '((levels.Assassin||0)+($\\"levels.Master Spy\\"||0))'),
   'Elude Detection':
     'Section=save ' +
     'Note="May gain SR %{$\'levels.Master Spy\'+15} vs. divination at will; must wait 1d4 rd between uses"',
@@ -5309,7 +5311,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Fire]" ' +
     'Level=D2,S2,W2,Witch2 ' +
     'Description=' +
-      '"R30\' Allows self to use a standard action each rd to inflict 1d6 HP fire (save Fortitude negates) for %{lvl rd}; targets who fail their saves catch on fire, suffering an additional 1d6 HP fire each rd (save Reflex ends)"',
+      '"R30\' Allows self to use a standard action each rd to inflict 1d6 HP fire (save Fortitude negates) for %{lvl} rd; targets who fail their saves catch on fire, suffering an additional 1d6 HP fire each rd (save Reflex ends)"',
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +

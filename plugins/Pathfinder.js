@@ -6651,8 +6651,6 @@ Pathfinder.classRulesExtra = function(rules, name) {
       'features.Small', '=', 'SRD35.SMALL_DAMAGE[SRD35.SMALL_DAMAGE["monk"]]',
       'features.Large', '=', 'SRD35.LARGE_DAMAGE[SRD35.LARGE_DAMAGE["monk"]]'
     );
-    rules.defineRule
-      ('unarmedStrikeDamageDice', 'combatNotes.unarmedStrike', '=', null);
     rules.defineRule('featureNotes.bonusFeats(Monk)',
       classLevel, '=', '1 + Math.floor((source + 2) / 4)'
     );
