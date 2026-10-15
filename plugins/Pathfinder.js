@@ -3616,7 +3616,7 @@ Pathfinder.SPELLS = {
     'School="Conjuration (Healing)"' +
     'Level=C5,Healing5 ' +
     'Description=' +
-      '"Touched regains 5d8+%{lvl<?25} hit points; undead instead suffer the same amount (save Will half); the spell can revive a corpse dead less than 1 rd, giving a temporary negative level for 1 day"',
+      '"Touched regains 5d8+%{lvl<?25} hit points (save Will negates); undead instead suffer the same amount (save Will half); the spell can revive a corpse dead less than 1 rd, giving a temporary negative level for 1 day"',
   "Bull's Strength":'Level=Adept2,C2,D2,P2,Strength2,S2,W2',
   "Mass Bull's Strength":'',
   'Burning Hands':'',
@@ -3630,7 +3630,7 @@ Pathfinder.SPELLS = {
   'Cause Fear':'Level=Adept1,B1,C1,Death1,S1,W1',
   'Chain Lightning':
     'Description=' +
-      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in a 30\' radius (save Reflex +2 half)"',
+      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in a 30\' radius (save Reflex (DC -2) half)"',
   'Changestaff':'',
   'Chaos Hammer':'Level=C4,Chaos4',
   'Charm Animal':'',
@@ -3707,7 +3707,9 @@ Pathfinder.SPELLS = {
     'Level=Adept2,B2,C2,S2,W2 ' +
     'Description=' +
       '"Touched object reduces the light level in a 20\' radius by 1 step for %{lvl} min"',
-  'Darkvision':'',
+  'Darkvision':
+    'Description=' +
+      '"Gives touched 60\' black and white vision in total darkness (save Will negates) for %{lvl} hr"',
   'Daylight':'',
   'Daze':
     'Description=' +
@@ -3719,7 +3721,7 @@ Pathfinder.SPELLS = {
   'Death Ward':
     'Level=C4,D5,Death4,Repose4,P4 ' +
     'Description=' +
-      '"Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects for %{lvl} min"',
+      '"Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (save Will negates) for %{lvl} min"',
   'Deathwatch':
     'School="Necromancy" ' +
     'Level=C1,Repose1 ' +
@@ -3754,7 +3756,7 @@ Pathfinder.SPELLS = {
   'Detect Undead':'',
   'Dictum':
     'Description=' +
-      '"Inflicts on nonlawful creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
+      '"Inflicts on nonlawful creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Dimension Door':'Level=B4,Travel4,S4,W4',
   'Dimensional Anchor':'',
   'Dimensional Lock':'',
@@ -3844,7 +3846,7 @@ Pathfinder.SPELLS = {
   'Feeblemind':'',
   'Find The Path':
     'Description=' +
-      '"Touched knows the most direct route to a specified location for %{lvl*10} min"',
+      '"Touched knows the most direct route to a specified location (save Will negates) for %{lvl*10} min"',
   'Find Traps':
     'Level=C2 ' +
     'Description=' +
@@ -3873,12 +3875,12 @@ Pathfinder.SPELLS = {
   'Floating Disk':'',
   'Fly':
     'Description=' +
-      '"Touched gains a 60\' fly Speed and +%{lvl//2} Fly skill for %{lvl} min, then floats downward 60\' per rd for 1d6 rd"',
+      '"Touched gains a 60\' fly Speed and +%{lvl//2} Fly skill for %{lvl} min, then floats downward 60\' per rd for 1d6 rd (save Will negates)"',
   'Fog Cloud':'Level=D2,S2,W2,Water2,Weather2',
   'Forbiddance':'',
   'Forcecage':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell (save Reflex negates) for %{lvl} rd"',
   'Forceful Hand':
     'Description=' +
       '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+9} Bull Rush for %{lvl} rd"',
@@ -3917,7 +3919,7 @@ Pathfinder.SPELLS = {
   'Geas/Quest':
     'Level=B6,C6,Charm6,Nobility6,S6,W6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Compels a target to complete a specified task (save Will negates) within %{lvl} days, suffering -3 to each ability score (maximum -12, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task"',
+      '"R%{25+lvl//2*5}\' Compels a target to complete a specified task within %{lvl} days, suffering -3 to each ability score (maximum -12, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task"',
   'Gentle Repose':'Level=C2,Repose2,S3,W3 Liquid=Oil',
   'Ghost Sound':
     'Level=Adept0,B0,S0,W0 ' +
@@ -3957,7 +3959,7 @@ Pathfinder.SPELLS = {
   'Guidance':'Liquid=Potion',
   'Gust Of Wind':
     'Description=' +
-      '"Creates a 60\' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Strength DC 15 allows Medium creatures to move); Tiny creatures are also pushed 1d4x10\', suffering 1d4 HP nonlethal per 10\'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10\', suffering 2d6 HP nonlethal (save Fly DC 25 negates)"',
+      '"Creates a 60\' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Fortitude negates; a successful DC 15 Strength check allows Medium creatures to move); Tiny creatures are also pushed 1d4x10\', suffering 1d4 HP nonlethal per 10\'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10\', suffering 2d6 HP nonlethal (save Fly DC 25 negates)"',
 
   'Hallow':
     'Description=' +
@@ -4043,19 +4045,19 @@ Pathfinder.SPELLS = {
   'Invisibility':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
-      '"Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
+      '"Touched becomes invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
   'Greater Invisibility':
     'Level=B4,S4,W4 ' +
     'Description=' +
-      '"Touched becomes invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} rd"',
+      '"Touched becomes invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} rd"',
   'Mass Invisibility':
     'Level=Trickery8,S7,W7 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Creatures in a 90\' radius become invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
+      '"R%{400+lvl*40}\' Creatures in a 90\' radius become invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
   'Invisibility Purge':'',
   'Invisibility Sphere':
     'Description=' +
-      '"Creatures within 10\' of touched become invisible, gaining +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
+      '"Creatures within 10\' of touched become invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
@@ -4068,7 +4070,7 @@ Pathfinder.SPELLS = {
   'Jump':
     'Level=D1,R1,S1,W1 ' +
     'Description=' +
-      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jump for %{lvl} min"',
+      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jump (save Will negates) for %{lvl} min"',
 
   'Keen Edge':'',
   'Knock':
@@ -4147,7 +4149,7 @@ Pathfinder.SPELLS = {
   'Message':'',
   'Meteor Swarm':
     'Description=' +
-      '"R%{400+lvl*40}\' Ranged touch with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty)"',
+      '"R%{400+lvl*40}\' Ranged touch attack with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty)"',
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
     'Description=' +
@@ -4229,7 +4231,7 @@ Pathfinder.SPELLS = {
     'Description="Touched suffers -1d3 Constitution each rd (save Fortitude ends) for 6 rd"',
   'Polar Ray':
     'Description=' +
-      '"R%{100+lvl*10}\' Ranged touch inflicts %{lvl<?25}d6 HP and drains 1d4 points of Dexterity"',
+      '"R%{100+lvl*10}\' Ranged touch attack inflicts %{lvl<?25}d6 HP and drains 1d4 points of Dexterity"',
   'Polymorph':
     'Level=S5,W5 ' +
     'School="Transmutation (Polymorph)" ' +
@@ -4249,13 +4251,13 @@ Pathfinder.SPELLS = {
   'Prismatic Sphere':
     'Level=Artifice9,Protection9,Sun9,S9,W9 ' +
     'Description=' +
-      '"10\' radius sphere lasting %{lvl*10} min blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save will negates)"',
+      '"10\' radius sphere lasting %{lvl*10} min blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
   'Prismatic Spray':
     'Description=' +
       '"60\' cone blinds creatures with up to 8 HD for 2d4 rd and randomly inflicts on each creature one of: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex Half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates); 2 of the preceding effects"',
   'Prismatic Wall':
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save will negates)"',
+      '"R%{25+lvl//2*5}\' %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
   'Produce Flame':'',
   'Programmed Image':'',
   'Project Image':'',
@@ -4302,7 +4304,7 @@ Pathfinder.SPELLS = {
       '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Ray Of Enfeeblement':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ranged touch inflicts -1d6+%{lvl//2<?5} Strength for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Ranged touch attack inflicts -1d6+%{lvl//2<?5} Strength for %{lvl} rd (save Fortitude half)"',
   'Ray Of Exhaustion':'',
   'Ray Of Frost':'',
   'Read Magic':'',
