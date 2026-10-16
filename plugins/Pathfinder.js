@@ -4109,23 +4109,23 @@ Pathfinder.SPELLS = {
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,S3,W3 ' +
     'Description=' +
-      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. chaotic creatures, an extra +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures or objects, as well as barring contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min, or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"10\' radius around touched either gives immunity to new attempts to control or possess by chaotic creatures or objects, an extra +2 save to suppress existing mental control and possession by chaotic creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. chaotic creatures (save Will negates), as well as barring contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min, or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Evil':
     'Level=C3,Good3,P3,S3,W3 ' +
     'Description=' +
-      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. evil creatures, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures or objects, as well as barring contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min, or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"10\' radius around touched either gives immunity to new attempts to control or possess by evil creatures or objects, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. evil creatures (save Will negates), as well as barring contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min, or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Good':
     'Level=C3,Evil3,S3,W3 ' +
     'Description=' +
-      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. good creatures, an extra +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures or objects, as well as barring contact and entry (SR negates) by good summoned creatures for %{lvl*10} min, or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"10\' radius around touched either gives immunity to new attempts to control or possess by good creatures or objects, an extra +2 save to suppress existing mental control and possession by good creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. good creatures (save Will negates), as well as barring contact and entry (SR negates) by good summoned creatures for %{lvl*10} min, or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Law':
     'Level=C3,Chaos3,S3,W3 ' +
     'Description=' +
-      '"10\' radius around touched either gives a +2 deflection bonus to Armor Class, +2 saves vs. lawful creatures, an extra +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures or objects, as well as barring contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min, or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"10\' radius around touched either gives immunity to new attempts to control or possess by lawful creatures or objects, an extra +2 save to suppress existing mental control and possession by lawful creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. lawful creatures (save Will negates), as well as barring contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min, or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Fang':'',
   'Greater Magic Fang':
     'Description=' +
-      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for %{lvl} hr"',
   'Magic Jar':'',
   'Magic Missile':'',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
@@ -4138,14 +4138,14 @@ Pathfinder.SPELLS = {
   'Make Whole':
     'Level=C2,S2,W2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges" ' +
+      '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges (save Will negates)" ' +
     'Liquid=Oil',
   'Mark Of Justice':'',
   'Maze':'',
   'Meld Into Stone':'',
   'Mending':
     'Level=Adept0,Artifice0,B0,C0,D0,S0,W0 ' +
-    'Description="R10\' Repairs minor damage to an object weighing up to %{lvl} lb"',
+    'Description="R10\' Repairs minor damage to an object weighing up to %{lvl} lb (save Will negates)"',
   'Message':'',
   'Meteor Swarm':
     'Description=' +
@@ -4153,7 +4153,7 @@ Pathfinder.SPELLS = {
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target gains immunity to divination and scrying and +8 vs. mental effects for 24 hr"',
+      '"R%{25+lvl//2*5}\' Target gains immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr"',
   'Mind Fog':'',
   'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
   'Minor Image':'Level=B2,S2,W2',
@@ -4236,12 +4236,12 @@ Pathfinder.SPELLS = {
     'Level=S5,W5 ' +
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"Touched willing target becomes a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Touched willing target becomes a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Greater Polymorph':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Touched willing target becomes a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Touched willing target becomes a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
   'Power Word Kill':'',
@@ -4265,23 +4265,23 @@ Pathfinder.SPELLS = {
   'Protection From Chaos':
     'Level=Adept1,C1,Law1,P1,S1,W1 ' +
     'Description=' +
-      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for %{lvl} min" ' +
+      '"Wards the touched creature from attacks from chaotic creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Energy':
     'Level=C3,D3,Luck3,Protection3,R2,S3,W3',
   'Protection From Evil':
     'Description=' +
-      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for %{lvl} min" ' +
+      '"Wards the touched creature from attacks from evil creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Good':
     'Level=Adept1,C1,Evil1,S1,W1 ' +
     'Description=' +
-      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. good creatures, an additional +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures and objects, as well as barring contact by good summoned creatures, for %{lvl} min" ' +
+      '"Wards the touched creature from attacks from good creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. good creatures, an additional +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures and objects, as well as barring contact by good summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Law':
     'Level=Adept1,C1,Chaos1,S1,W1 ' +
     'Description=' +
-      '"Gives touched a +2 deflection bonus to Armor Class and +2 saves vs. lawful creatures, an additional +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures and objects, as well as barring contact by lawful summoned creatures, for %{lvl} min" ' +
+      '"Wards the touched creature from attacks from lawful creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. lawful creatures, an additional +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures and objects, as well as barring contact by lawful summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Spells':'',
   'Prying Eyes':
@@ -4318,15 +4318,15 @@ Pathfinder.SPELLS = {
   'Remove Curse':
     'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
     'Description=' +
-      '"Allows a successful caster level check to dispel all curses from touched"',
+      '"Allows a successful caster level check to dispel all curses from touched (save Will negates)"',
   'Remove Disease':
     'Description=' +
-      '"Allows a successful caster level check to cure touched of all diseases"',
+      '"Allows a successful caster level check to cure touched of all diseases (save Fortitude negates)"',
   'Remove Fear':'Level=B1,C1,Liberation1',
   'Remove Paralysis':
     'Level=C2,Liberation2,P2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2"',
+      '"R%{25+lvl//2*5}\' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2 (save Will negates)"',
   'Repel Metal Or Stone':'',
   'Repel Vermin':'',
   'Repel Wood':'',
@@ -4336,10 +4336,10 @@ Pathfinder.SPELLS = {
   'Resistance':'Liquid=Potion',
   'Restoration':
     'Description=' +
-      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level"',
+      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level (save Will negates)"',
   'Greater Restoration':
     'Description=' +
-      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects"',
+      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects (save Will negates)"',
   'Lesser Restoration':'',
   'Resurrection':
     'Description=' +
@@ -4392,7 +4392,7 @@ Pathfinder.SPELLS = {
   'Shield Of Faith':'Level=C1,Glory1',
   'Shield Of Law':
     'Description=' +
-      '"%{lvl} creatures within 20\' gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and slow successful chaotic attackers (save Will negates) for %{lvl} rd"',
+      '"%{lvl} creatures within 20\' slow successful chaotic attackers (save Will negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Shield Other':'Level=C2,Community2,Protection2,P2',
   'Shillelagh':'',
   'Shocking Grasp':'',
@@ -4436,7 +4436,7 @@ Pathfinder.SPELLS = {
   'Spider Climb':
     'Level=D2,S2,W2 ' +
     'Description=' +
-      '"Gives touched a 20\' climb Speed, a +8 bonus to Climb checks, and the ability to climb walls and ceilings for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
+      '"Gives touched a 20\' climb Speed, a +8 bonus to Climb checks, and the ability to climb walls and ceilings (save Will negates) for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
   'Spike Growth':'',
   'Spike Stones':'',
   'Spiritual Weapon':'',
@@ -4444,7 +4444,7 @@ Pathfinder.SPELLS = {
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points" ' +
+      '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points (save Will negates)" ' +
     'Liquid=Potion',
   'Statue':'Level=Artifice8,S7,W7',
   'Status':'',
@@ -6587,6 +6587,8 @@ Pathfinder.classRulesExtra = function(rules, name) {
     );
     // N.B.: this untyped bonus applies to both flat-footed and touch
     rules.defineRule('armorClass', 'combatNotes.armorClassBonus.1', '+', null);
+    rules.defineRule
+      ('combatManeuverDefense', 'combatNotes.armorClassBonus.1', '+', null);
     // Display the Armor Class Bonus note even when armored
     rules.defineRule('combatNotes.armorClassBonus',
       classLevel, '=', 'Math.floor(source / 4)', // Changed from SRD35
