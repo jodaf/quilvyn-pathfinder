@@ -4564,7 +4564,7 @@ Pathfinder.SPELLS = {
   'Wood Shape':'Level=Artifice2,D2 Liquid=Oil',
   'Word Of Chaos':
     'Description=' +
-      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for rd on creatures with up to %{lvl-1} HD (save Will negates); deafend for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
+      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Word Of Recall':'',
 
   'Zone Of Silence':'',
