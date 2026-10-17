@@ -1150,7 +1150,11 @@ PFAPG.FEATURES = {
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Detect Alignment':
     'Section=magic ' +
-    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will"',
+    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will" ' +
+    'Spells=' +
+      '"Detect Chaos","Detect Evil","Detect Good","Detect Law" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Inquisitor',
   'Discern Lies':
     'Section=magic ' +
     'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor} rd/dy"',
@@ -1225,7 +1229,10 @@ PFAPG.FEATURES = {
     'Note="Conjured armor gives +%{(mysteryLevel+5)//4*2>?4} AC%{mysteryLevel>=13 ? \', DR 5/bludgeoning\' : \'\'} %{mysteryLevel} hr/dy"',
   'Automatic Writing':
     'Section=magic ' +
-    'Note="1 hr meditation yields results of %{mysteryLevel>=8 ? \'<i>Commune</i>\' : mysteryLevel>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy"',
+    'Note="1 hr meditation yields results of %{mysteryLevel>=8 ? \'<i>Commune</i>\' : mysteryLevel>=5 ? \'<i>Divination</i> (90% effective)\' : \'<i>Augury</i> (90% effective)\'} spell 1/dy" ' +
+    'Spells="Augury","5:Divination","8:Commune" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Awesome Display':
     'Section=magic ' +
     'Note="Treats illusion targets as having %{charismaModifier>?0} fewer HD"',
@@ -1289,7 +1296,12 @@ PFAPG.FEATURES = {
   'Delay Affliction':
     'Section=save ' +
     'Note="May delay effects of failed save vs. disease or poison for %{mysteryLevel} hr %{mysteryLevel>=15 ? 3 : mysteryLevel >= 7 ? 2 : 1}/dy"',
-  'Dweller In Darkness':'Section=magic Note="Can use <i>%V</i> effects 1/dy"',
+  'Dweller In Darkness':
+    'Section=magic ' +
+    'Note="Can use <i>%V</i> effects 1/dy" ' +
+    'Spells="Phantasmal Killer","17:Weird" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Energy Body':
     'Section=combat ' +
     'Note="Energy form lights 10\' radius, inflicts 1d6+%{mysteryLevel} HP positive energy on undead w/unarmed attack or when undead hits self w/melee attack, and heals target 1d6+%{mysteryLevel} HP 1/rd for %{mysteryLevel} rd/dy"',
@@ -1306,7 +1318,10 @@ PFAPG.FEATURES = {
     'Section=combat,magic ' +
     'Note=' +
       '"Automatically stabilizes at negative HP",' +
-      '"May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy"',
+      '"May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy" ' +
+    'Spells="Bleed","Stabilize","Animate Dead","Power Word Kill" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Final Revelation (Flame Mystery)':
     'Section=magic ' +
     'Note="May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spells w/out cost"',
@@ -1361,7 +1376,12 @@ PFAPG.FEATURES = {
     'Note="1d6 rd trance gives +%{mysteryLevel} save vs. sonic and gaze attack followed by a single +20 Intelligence skill check %{charismaModifier}/dy"',
   'Form Of Flame':
     'Section=magic ' +
-    'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} fire elemental for %{mysteryLevel} hr 1/dy"',
+    'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} fire elemental for %{mysteryLevel} hr 1/dy" ' +
+    'Spells=' +
+      '"Elemental Body I","9:Elemental Body II","11:Elemental Body III",' +
+      '"13:Elemental Body IV" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Freezing Spells':
     'Section=magic ' +
     'Note="Target failed save on spells that inflict cold damage also slows target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
@@ -1372,7 +1392,10 @@ PFAPG.FEATURES = {
       '"R30\' Animals gain +%{charismaModifier} on all saves"',
   'Gaseous Form':
     'Section=magic ' +
-    'Note="May use <i>Gaseous Form</i> effects %{mysteryLevel} min/dy; including others uses equal portion of daily time for each"',
+    'Note="May use <i>Gaseous Form</i> effects %{mysteryLevel} min/dy; including others uses equal portion of daily time for each" ' +
+    'Spells="Gaseous Form" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Gaze Of Flames':
     'Section=feature,magic ' +
     'Note=' +
@@ -1411,10 +1434,16 @@ PFAPG.FEATURES = {
     'Note="R30\' Inflicts %{mysteryLevel}d6 HP cold%{mysteryLevel>=15 ? \', exhausted, stunned 1 rd\' : mysteryLevel>=10 ? \', fatigued\' : \'\'} (DC %{10+mysteryLevel//2+charismaModifier} Fortitude half HP only) %{mysteryLevel>=10 ? 2 : 1}/dy"',
   'Invisibility':
     'Section=magic ' +
-    'Note="May use <i>Invisibility</i> effects %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> effects \' + mysteryLevel + \' rd/dy\' : \'\'}"',
+    'Note="May use <i>Invisibility</i> effects %{mysteryLevel} min/dy%{mysteryLevel>=9 ? \' or <i>Greater Invisibility</i> effects \' + mysteryLevel + \' rd/dy\' : \'\'}" ' +
+    'Spells="Invisibility","9:Greater Invisibility" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Iron Skin':
     'Section=magic ' +
-    'Note="May use self <i>Stoneskin</i> effects %{mysteryLevel>=15 ? 2 : 1}/dy"',
+    'Note="May use self <i>Stoneskin</i> effects %{mysteryLevel>=15 ? 2 : 1}/dy" ' +
+    'Spells="Stoneskin" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Lame':
     'Section=ability,ability,save ' +
     'Note=' +
@@ -1442,7 +1471,10 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"Leaves no tracks",' +
-      '"May use <i>Levitate</i> effects to hover 6\\" at will%1"',
+      '"May use <i>Levitate</i> effects to hover 6\\" at will%1" ' +
+    'Spells="Levitate","10:Fly" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Maneuver Mastery':
     'Section=combat,feature ' +
     'Note=' +
@@ -1452,7 +1484,10 @@ PFAPG.FEATURES = {
     'Section=combat,save ' +
     'Note=' +
       '"Touch forces lycanthrope target into human form%{mysteryLevel>=5 ? \' or inflicts <i>Rage</i>\' : \'\'} for %{mysteryLevel} rd %{mysteryLevel//5>?1}/dy",' +
-      '"Immune to lycanthropy"',
+      '"Immune to lycanthropy" ' +
+    'Spells="5:Rage" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Mental Acuity':'Section=ability Note="+%V Intelligence"',
   'Mighty Pebble':
     'Section=combat ' +
@@ -1478,7 +1513,10 @@ PFAPG.FEATURES = {
   // Orisons as Inquisitor
   'Punitive Transformation':
     'Section=magic ' +
-    'Note="May use <i>Baleful Polymorph</i> effects, lasting %{mysteryLevel} rd, to transform target into a harmless animal %{charismaModifier}/dy"',
+    'Note="May use <i>Baleful Polymorph</i> effects, lasting %{mysteryLevel} rd, to transform target into a harmless animal %{charismaModifier}/dy" ' +
+    'Spells="Baleful Polymorph" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Raise The Dead':
     'Section=magic ' +
     'Note="Summoned %{mysteryLevel} HD %{mysteryLevel>= 15 ? \'advanced skeleton or zombie\' : mysteryLevel>=7 ? \'bloody skeleton or fast zombie\' : \'skeleton or zombie\'} serves for %{charismaModifier} rd %{mysteryLevel>=10 ? 2 : 1}/dy"',
@@ -1525,13 +1563,23 @@ PFAPG.FEATURES = {
     'Section=magic ' +
     'Note="May become incorporeal for %{mysteryLevel} rd %{mysteryLevel>=15 ? 2 : 1}/dy"',
   'Spontaneous Symbology':
-    'Section=magic Note="May use spell slot to cast any <i>Symbol</i> spell"',
+    'Section=magic ' +
+    'Note="May use spell slot to cast any <i>Symbol</i> spell" ' +
+    'Spells=' +
+      '"Symbol Of Death","Symbol Of Fear","Symbol Of Insanity",' +
+      '"Symbol Of Pain","Symbol Of Persuasion","Symbol Of Sleep",' +
+      '"Symbol Of Stunning","Symbol Of Weakness" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Spray Of Shooting Stars':
     'Section=combat ' +
     'Note="R60\' 5\' radius inflicts %{mysteryLevel}d4 HP fire (DC %{10+mysteryLevel//2+charismaModifier} Reflex half) %{(mysteryLevel+5)//5}/dy"',
   'Star Chart':
     'Section=magic ' +
-    'Note="May use <i>Commune</i> effects via 10 min contemplation 1/dy"',
+    'Note="May use <i>Commune</i> effects via 10 min contemplation 1/dy" ' +
+    'Spells="Commune" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Steelbreaker Skin':
     'Section=combat ' +
     'Note="Skin inflicts %{mysteryLevel} HP on striking weapon%{mysteryLevel>=15 ? \', ignoring 10 points of hardness,\' : \'\'} for %{mysteryLevel} min 1/dy"',
@@ -1568,14 +1616,20 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP fire %{charismaModifier+3}/dy%{mysteryLevel>=11 ? \'; wielded weapons inflict +1d6 HP fire\' : \'\'}"',
   'Transcendental Bond':
     'Section=magic ' +
-    'Note="May use <i>Telepathic Bond</i> effects on %{charismaModifier} allies %{mysteryLevel} rd/dy%{mysteryLevel>=10 ? \'; may cast touch spell on 1 of these remotely 1/dy\' : \'\'}"',
+    'Note="May use <i>Telepathic Bond</i> effects on %{charismaModifier} allies %{mysteryLevel} rd/dy%{mysteryLevel>=10 ? \'; may cast touch spell on 1 of these remotely 1/dy\' : \'\'}" ' +
+    'Spells="Telepathic Bond" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Undead Servitude':'Section=magic Note="May use Command Undead %V/dy"',
   'Undo Artifice':
     'Section=feature ' +
     'Note="May disintegrate nonliving item into raw materials (DC %{10+mysteryLevel//2+charismaModifier} Fortitude negates) %{charismaModifier}/dy"',
   'Voice Of The Grave':
     'Section=magic ' +
-    'Note="May use <i>Speak With Dead</i> effects %{mysteryLevel} rd/dy%1"',
+    'Note="May use <i>Speak With Dead</i> effects %{mysteryLevel} rd/dy%1" ' +
+    'Spells="Speak With Dead" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Vortex Spells':
     'Section=magic ' +
     'Note="Crit w/spell staggers target for 1%{mysteryLevel>=11 ? \'d4\' : \'\'} rd"',
@@ -1589,12 +1643,20 @@ PFAPG.FEATURES = {
       '"-4 Charisma-based skills other than Intimidate"',
   'Water Form':
     'Section=magic ' +
-    'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} water elemental for %{mysteryLevel} hr 1/dy"',
+    'Note="May use <i>Elemental Body %{mysteryLevel>=13 ? \'IV\' : mysteryLevel>=11 ? \'III\' : mysteryLevel>=9 ? \'II\' : \'I\'}</i> effects to become %{mysteryLevel>=13 ? \'huge\' : mysteryLevel>=11 ? \'large\' : mysteryLevel>=9 ? \'medium\' : \'small\'} water elemental for %{mysteryLevel} hr 1/dy" ' +
+    'Spells=' +
+      '"Elemental Body I","9:Elemental Body II","11:Elemental Body III",' +
+      '"13:Elemental Body IV" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Water Sight':
     'Section=feature,magic ' +
     'Note=' +
       '"Can see normally through fog and mist",' +
-      '"May use <i>%V</i> effects via pool %{mysteryLevel} rd/dy"',
+      '"May use <i>%V</i> effects via pool %{mysteryLevel} rd/dy" ' +
+    'Spells="Scrying","15:Greater Scrying" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Waves Mystery':
     'Section=skill ' +
     'Note="Acrobatics is a class skill/Escape Artist is a class skill/Knowledge (Nature) is a class skill/Swim is a class skill"',
@@ -1610,7 +1672,10 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"May use <i>Clairaudience/Clairvoyance</i> effects on any unobstructed area %V rd/dy",' +
-      '"Ignores Perception wind penalties and first 100\' distance penalties"',
+      '"Ignores Perception wind penalties and first 100\' distance penalties" '+
+    'Spells="7:Clairaudience/Clairvoyance" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Wings Of Air':'Section=ability Note="May fly %{mysteryLevel>=10 ? 90 : 60}\' for %{mysteryLevel} min/dy"',
   'Wings Of Fire':'Section=ability Note="May fly 60\' %{mysteryLevel} min/dy"',
   'Wintry Touch':
@@ -2682,7 +2747,11 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="+2 vs. gaze, figments, and patterns/Immune to blinded and dazzled"',
   'Slippery':
-    'Section=magic Note="Has continuous <i>Freedom Of Movement</i> effect"',
+    'Section=magic ' +
+    'Note="Has continuous <i>Freedom Of Movement</i> effect" ' +
+    'Spells="Freedom Of Movement" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Druid',
   'Snowcaster':
     'Section=feature,magic ' +
     'Note=' +
@@ -2735,7 +2804,11 @@ PFAPG.FEATURES = {
     'Section=feature ' +
     'Note="Must choose Nature Bond from Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, and Weather domains"',
   'Verdant Sentinel':
-    'Section=magic Note="May cast <i>Tree Shape</i> at will"',
+    'Section=magic ' +
+    'Note="May cast <i>Tree Shape</i> at will" ' +
+    'Spells="Tree Shape" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=classLevel.Druid',
   'Vermin Empathy':
     'Section=skill ' +
     'Note="+%{levels.Druid+charismaModifier} Diplomacy (vermin, disease-bearing)/+%{levels.Druid+charismaModifier-4} Diplomacy (other animals)"',
@@ -3001,7 +3074,10 @@ PFAPG.FEATURES = {
       '"May use tail to pick up objects and make unarmed attacks"',
   'Aspect Of The Oni':
     'Section=magic ' +
-    'Note="May use effects of <i>Gaseous Form</i> %{levels.Monk} min/dy"',
+    'Note="May use effects of <i>Gaseous Form</i> %{levels.Monk} min/dy" ' +
+    'Spells="Gaseous Form" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Aspect Of The Owl':'Section=ability Note="30\' Fly"',
   'Aspect Of The Tiger':
     'Section=combat Note="May charge %{speed*10}\' and pounce 1/hr"',
@@ -3056,7 +3132,10 @@ PFAPG.FEATURES = {
     'Section=combat Note="May spend 1 Ki Point for +20\' throw range for 1 rd"',
   'Ki Sacrifice':
     'Section=magic ' +
-    'Note="May spend entire Ki Pool in 1 hr ritual for effects of <i>Raise Dead</i> (min 6 Ki Points)%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8 Ki Points)\' : \'\'}; Ki Points replenish after 1 dy"',
+    'Note="May spend entire Ki Pool in 1 hr ritual for effects of <i>Raise Dead</i> (min 6 Ki Points)%{levels.Monk>=15 ? \' or <i>Resurrection</i> (min 8 Ki Points)\' : \'\'}; Ki Points replenish after 1 dy" ' +
+    'Spells="Raise Dead","15:Resurrection" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Ki Weapons':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to inflict %{combatNotes.unarmedStrike} w/an improvised weapon for 1 rd%{levels.Monk>=11 ? \'/May spend up to \' + (levels.Monk>=15 ? 5 : 3) + \' Ki Points to give an improvised weapon an enhancement bonus or abilities for 1 rd\' : \'\'}"',
@@ -3091,16 +3170,25 @@ PFAPG.FEATURES = {
     'Note="Critical hit or reducing living foe to 0 or negative HP when Ki Pool is not empty transfers 1 Ki Point from foe to self%{levels.Monk>=11 ? \' and gives immediate +\' + wisdomModifier + \' save vs. existing disease\' : \'\'}"',
   'Touch Of Peace':
     'Section=magic ' +
-    'Note="May spend 6 Ki Points to have an attack inflict <i>Charm Monster</i> effects for %{levels.Monk} dy instead of HP damage 1/dy"',
+    'Note="May spend 6 Ki Points to have an attack inflict <i>Charm Monster</i> effects for %{levels.Monk} dy instead of HP damage 1/dy" ' +
+    'Spells="Charm Monster" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Touch Of Surrender':
     'Section=magic ' +
-    'Note="May spend 6 Ki Points to add <i>Charm Monster</i> effects for %{levels.Monk} dy to damage that reduces foe to 0 or negative HP"',
+    'Note="May spend 6 Ki Points to add <i>Charm Monster</i> effects for %{levels.Monk} dy to damage that reduces foe to 0 or negative HP" ' +
+    'Spells="Charm Monster" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Trick Shot (Zen Archer)':
     'Section=combat ' +
     'Note="May spend 1 Ki Point to ignore concealment, 2 to ignore total concealment or cover, or 3 to ignore total cover w/bow shot for 1 rd"',
   'True Sacrifice':
     'Section=magic ' +
-    'Note="May permanently destroy self to use R50\' <i>True Resurrection</i> effects on allies\' corpses"',
+    'Note="May permanently destroy self to use R50\' <i>True Resurrection</i> effects on allies\' corpses" ' +
+    'Spells="True Resurrection" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Uncanny Initiative':'Section=combat Note="May choose Initiative value"',
   'Versatile Improvisation':
     'Section=combat Note="May change the damage type of an improvised weapon"',
@@ -3142,7 +3230,10 @@ PFAPG.FEATURES = {
    'Section=magic,magic ' +
    'Note=' +
      '"+%{levels.Paladin//4} daily uses of Lay On Hands",' +
-     '"May use Lay On Hands for a %{levels.Paladin>=20 ? 60 : 30}\' radius that %{levels.Paladin>=12 ? \'acts a as <i>Daylight</i> spell and \' : \'\'}gives allies +%{levels.Paladin>=20 ? 2 : 1} AC, attack, damage, and saves vs. fear%1 for 1 min"',
+     '"May use Lay On Hands for a %{levels.Paladin>=20 ? 60 : 30}\' radius that %{levels.Paladin>=12 ? \'acts a as <i>Daylight</i> spell and \' : \'\'}gives allies +%{levels.Paladin>=20 ? 2 : 1} AC, attack, damage, and saves vs. fear%1 for 1 min" ' +
+    'Spells="Daylight" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Paladin',
   'Shared Defense':
     'Section=magic ' +
     'Note="May expend 1 Lay On Hands use to give +%{levels.Paladin>=15 ? 3: levels.Paladin>=9 ? 2 : 1} AC and CMD%1 to allies in %{5+levels.Paladin//6*5}\' radius for %{charismaModifier} rd"',
@@ -3308,10 +3399,16 @@ PFAPG.FEATURES = {
     'Note="Self gains +10\' Speed, extra move, +4 AC and attack, +4 ability and skill checks, and confirm crit for 1 rd %{levels.Ranger>=19 ? 2 : 1}/dy"',
   'Invisibility Trick':
     'Section=magic ' +
-    'Note="My cast self <i>Greater Invisibility</i> %{wisdomModifier>?1}/dy"',
+    'Note="My cast self <i>Greater Invisibility</i> %{wisdomModifier>?1}/dy" ' +
+    'Spells="Greater Invisibility" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Ranger',
   'Master Shifter':
     'Section=feature ' +
-    'Note="Increased Shifter\'s Blessing effects; may polymorph instead"',
+    'Note="Increased Shifter\'s Blessing effects; may polymorph instead" ' +
+    'Spells="Beast Shape IV","Form Of The Dragon I" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Ranger',
   'Mounted Bond':'Section=feature Note="Has Animal Companion mount"',
   'Push Through':
     'Section=combat ' +
@@ -4047,7 +4144,7 @@ PFAPG.FEATURES = {
     'Note="May use Channel Energy to affect 30\' cone or 120\' line"',
   "Vindicator's Shield":
     'Section=combat ' +
-    'Note="May use Channel Energy to gain +%{combatotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
+    'Note="May use Channel Energy to gain +%{combatNotes.channelEnergy.1} AC from shield for 1 dy or until struck"',
 
   // Horizon Walker
   'Master Of All Lands':
@@ -4272,9 +4369,7 @@ PFAPG.FEATURES = {
   'Concealed Thoughts':
     'Section=save ' +
     'Note="May control effect of spells that detect surface thoughts when cast on self"',
-  'Death Attack':
-    Pathfinder.FEATURES['Death Attack']
-    .replaceAll('levels.Assassin', '((levels.Assassin||0)+($\\"levels.Master Spy\\"||0))'),
+  // Death Attack from Pathfinder
   'Elude Detection':
     'Section=save ' +
     'Note="May gain SR %{$\'levels.Master Spy\'+15} vs. divination at will; must wait 1d4 rd between uses"',
@@ -9004,11 +9099,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule
       ('skillNotes.track', classLevel, '+=', 'Math.floor(source / 2)');
-    Pathfinder.featureSpells(rules,
-      'Detect Alignment', 'Detection', 'charisma', classLevel, '',
-      ['Detect Chaos', 'Detect Evil', 'Detect Good', 'Detect Law',
-       '5:Discern Lies']
-    );
 
   } else if(name == 'Oracle') {
 
@@ -9116,9 +9206,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('features.Weapon Proficiency (Martial Weapons)',
       'combatNotes.skillAtArms', '=', '1'
     );
-    Pathfinder.featureSpells(rules,
-      'Iron Skin', 'IronSkin', 'charisma', 'mysteryLevel', null, ['Stoneskin']
-    );
     // Suppress validation errors for Weapon Mastery and Maneuver Mastery feats
     for(let feat in rules.getChoices('feats')) {
       if(feat.match(/^((Greater )?Weapon Focus|Improved Critical)/)) {
@@ -9154,15 +9241,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('validationNotes.improvedChannelFeat',
       'features.Undead Servitude', '=', '0'
     );
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Bones Mystery)', 'BonesOracle', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Bleed', 'Stabilize', 'Animate Dead', 'Power Word Kill']
-    );
-    Pathfinder.featureSpells(rules,
-      'Voice Of The Grave', 'VoiceOfTheGrave', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Speak With Dead']
-    );
 
     // Flame Mystery
     rules.defineRule('featureNotes.cinderDance',
@@ -9177,11 +9255,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('magicNotes.gazeOfFlames',
       'mysteryLevel', '=', 'source>=7 ? source : null'
     );
-    Pathfinder.featureSpells(rules,
-      'Form Of Flame', 'FormOfFlame', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
 
     // Heavens Mystery
     rules.defineRule('magicNotes.dwellerInDarkness',
@@ -9195,21 +9268,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule('saveNotes.finalRevelation(HeavensMystery)',
       'charismaModifier', '=', null
-    );
-    Pathfinder.featureSpells(rules,
-      'Dweller In Darkness', 'DwellerInDarkness', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Phantasmal Killer', '17:Weird']
-    );
-    Pathfinder.featureSpells(rules,
-      'Lure Of The Heavens', 'LureOfTheHeavens', 'charisma', 'mysteryLevel',
-      null, ['Levitate', '10:Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Mantle Of Moonlight', 'MantleOfMoonlight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['5:Rage']
-    );
-    Pathfinder.featureSpells(rules,
-      'Star Chart', 'StarChart', 'charisma', 'mysteryLevel', null, ['Commune']
     );
 
     // Life Mystery
@@ -9263,19 +9321,8 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
     });
     Pathfinder.featureSpells(rules,
-      'Automatic Writing', 'AutomaticWriting', 'charisma', 'mysteryLevel',
-      null, ['Augury', '5:Divination', '8:Commune']
-    );
-    Pathfinder.featureSpells(rules,
       'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
       'mysteryLevel', null, ['Wish']
-    );
-    Pathfinder.featureSpells(rules,
-      'Spontaneous Symbology', 'SpontaneousSymbology', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Symbol Of Death', 'Symbol Of Fear', 'Symbol Of Insanity',
-       'Symbol Of Pain', 'Symbol Of Persuasion', 'Symbol Of Sleep',
-       'Symbol Of Stunning', 'Symbol Of Weakness']
     );
 
     // Nature Mystery
@@ -9293,10 +9340,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('companionMasterLevel', 'companionOracleLevel', '^=', null);
     rules.defineRule
       ('features.Animal Companion', 'featureNotes.bondedMount', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Transcendental Bond', 'TranscendentalBond', 'charisma', 'mysteryLevel',
-      null, ['Telepathic Bond']
-    );
 
     // Stone Mystery
     rules.defineRule
@@ -9329,36 +9372,10 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('magicNotes.waterSight',
       'mysteryLevel', '=', 'source>=15 ? "Greater Scrying" : source>=7 ? "Scrying" : null'
     );
-    Pathfinder.featureSpells(rules,
-      'Punitive Transformation', 'PunitiveTransformation', 'charisma',
-      'mysteryLevel', '10+mysteryLevel//2+charismaModifier',
-      ['Baleful Polymorph']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Form', 'WaterForm', 'charisma', 'mysteryLevel', null,
-      ['Elemental Body I', '9:Elemental Body II', '11:Elemental Body III',
-       '13:Elemental Body IV']
-    );
-    Pathfinder.featureSpells(rules,
-      'Water Sight', 'WaterSight', 'charisma', 'mysteryLevel',
-      '10+mysteryLevel//2+charismaModifier', ['Scrying', '15:Greater Scrying']
-    );
 
     // Wind Mystery
     rules.defineRule('magicNotes.windSight',
       'mysteryLevel', '=', 'source>=7 ? source : null'
-    );
-    Pathfinder.featureSpells(rules,
-      'Gaseous Form', 'GaseousForm', 'charisma', 'mysteryLevel', null,
-      ['Gaseous Form']
-    );
-    Pathfinder.featureSpells(rules,
-      'Invisibility', 'Invisibility', 'charisma', 'mysteryLevel', null,
-      ['Invisibility', '9:Greater Invisibility']
-    );
-    Pathfinder.featureSpells(rules,
-      'Wind Sight', 'WindSight', 'charisma', 'mysteryLevel', null,
-      ['7:Clairaudience/Clairvoyance']
     );
 
   } else if(name == 'Summoner') {
@@ -10449,10 +10466,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
 
     // Jungle Druid
     rules.defineRule('wildShapeLevel', 'features.Jungle Druid', '+', '-2');
-    Pathfinder.featureSpells(rules,
-      'Verdant Sentinel', 'VerdantSentinel', 'wisdom', classLevel, null,
-      ['Tree Shape']
-    );
 
     // Mountain Druid
     rules.defineRule('mountainDruidWildShape',
@@ -10477,10 +10490,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('wildShapeLevel', 'features.Plains Druid', '+', '-2');
 
     // Swamp Druid
-    Pathfinder.featureSpells(rules,
-      'Slippery', 'Slippery', 'wisdom', classLevel, null,
-      ['Freedom Of Movement']
-    );
     rules.defineRule('wildShapeLevel', 'features.Swamp Druid', '+', '-2');
 
     // Urban Druid
@@ -10786,20 +10795,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'features.Monk Of The Four Winds', '?', null,
       classLevel, '=', 'source>=17 ? 1 : null'
     );
-    Pathfinder.featureSpells(rules,
-      'Aspect Of The Oni', 'AspectOfTheOni', 'charisma', classLevel, null,
-      ['Gaseous Form']
-    );
-
-    // Monk Of The Healing Hand
-    Pathfinder.featureSpells(rules,
-      'Ki Sacrifice', 'KiSacrifice', 'charisma', classLevel, null,
-      ['Raise Dead', '15:Resurrection']
-    );
-    Pathfinder.featureSpells(rules,
-      'True Sacrifice', 'TrueSacrifice', 'charisma', classLevel, null,
-      ['True Resurrection']
-    );
 
     // Monk Of The Lotus
     rules.defineRule('lotusLevel',
@@ -10819,14 +10814,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         rules.defineRule
           ('skillModifier.' + skill, 'skillNotes.learnedMaster.1', '+', null);
     });
-    Pathfinder.featureSpells(rules,
-      'Touch Of Peace', 'TouchOfPeace', 'charisma', classLevel, null,
-      ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Touch Of Surrender', 'TouchOfSurrender', 'charisma', classLevel, null,
-      ['Charm Monster']
-    );
 
     // Monk Of The Sacred Mountain
     rules.defineRule('features.Toughness', 'featureNotes.ironMonk', '=', '1');
@@ -11018,10 +11005,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('magicNotes.powerOfFaith-1.1',
       'features.Power Of Faith', '?', null,
       classLevel, '=', 'source>=20 ? ", 20 resistance to chosen energy, 50% chance of negating crit damage, and healing of 2d4 ability damage" : source>=16 ? ", 10 resistance to chosen energy, 25% chance of negating crit damage, and healing of 1d4 ability damage" : source>=12 ? ", 10 resistance to chosen energy, and healing of 1d4 ability damage" : source>=8 ? " and healing of 1d4 ability damage" : ""'
-    );
-    Pathfinder.featureSpells(rules,
-      'Power Of Faith', 'PowerOfFaith', 'wisdom', classLevel, null,
-      ['12:Daylight']
     );
 
   } else if(name == 'Antipaladin') {
@@ -11252,10 +11235,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'rangerFeatures.Shapeshifter', '?', null,
       classLevel, '=', 'Math.floor((source + 2) / 5)'
     );
-    Pathfinder.featureSpells(rules,
-      'Master Shifter', 'MasterShifter', 'wisdom', classLevel, null,
-      ['Beast Shape IV', 'Form Of The Dragon I']
-    );
 
     // Skirmisher
     rules.defineRule("featureNotes.hunter'sTricks",
@@ -11292,10 +11271,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('classSkills.Disable Device', 'features.Urban Ranger', '=', '1');
     rules.defineRule
       ('classSkills.Knowledge (Local)', 'features.Urban Ranger', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Invisibility Trick', 'InvisibilityTrick', 'wisdom', classLevel, null,
-      ['Greater Invisibility']
-    );
 
   } else if(name == 'Rogue') {
 
