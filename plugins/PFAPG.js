@@ -711,7 +711,10 @@ PFAPG.FEATURES = {
     'Section=magic,save ' +
     'Note=' +
       '"+1 caster level on light-based spells and abilities%{intelligence>=10 ? \'/May cast <i>Light</i> at will</i>\' : \'\'}",' +
-      '"Immune to light-based blindness and dazzle"',
+      '"Immune to light-based blindness and dazzle" ' +
+    'Spells="Light" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=level',
   'Silent Hunter':
     'Section=skill ' +
     'Note="Reduces moving Stealth penalty by 5/May use -20 Stealth while running"',
@@ -740,7 +743,10 @@ PFAPG.FEATURES = {
     'Section=magic,save ' +
     'Note=' +
       '"+1 save DC on language-dependent and magical writing spells%{charisma>=11 ? \'/May cast <i>Arcane Mark</i>, <i>Comprehend Languages</i>, <i>Message</i>, and <i>Read Magic</i> 1/dy\' : \'\'}",' +
-      '"+2 vs. language-dependent and magical writing spells"',
+      '"+2 vs. language-dependent and magical writing spells" ' +
+    'Spells="Arcane Mark","Comprehend Languages","Message","Read Magic" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Master Tinker':
     'Section=combat,skill ' +
     'Note=' +
@@ -750,7 +756,10 @@ PFAPG.FEATURES = {
     'Section=combat,magic ' +
     'Note=' +
       '"+1 alchemist level for bomb fire damage",' +
-      '"+1 caster level on fire and flame spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy\' : \'\'}"',
+      '"+1 caster level on fire and flame spells%{charisma>=11 ? \'/May cast <i>Dancing Lights</i>, <i>Flare</i>, <i>Prestidigitation</i>, and <i>Produce Flame</i> 1/dy\' : \'\'}" ' +
+    'Spells="Dancing Lights","Flare","Prestidigitation","Produce Flame" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Warden Of Nature':
     'Section=combat ' +
     'Note="+2 AC and +1 attack vs. aberrations, oozes, and vermin"',
@@ -1157,7 +1166,10 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Inquisitor',
   'Discern Lies':
     'Section=magic ' +
-    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor} rd/dy"',
+    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor} rd/dy" ' +
+    'Spells="Discern Lies" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Inquisitor',
   'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
@@ -1765,7 +1777,10 @@ PFAPG.FEATURES = {
     'Note="Natural attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
   "Maker's Call":
     'Section=magic ' +
-    'Note="May use <i>Dimension Door</i> effects to bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy"',
+    'Note="May use <i>Dimension Door</i> effects to bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy" ' +
+    'Spells="Dimension Door" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Summoner',
   'Merge Forms':
     'Section=combat ' +
     'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
@@ -1880,7 +1895,10 @@ PFAPG.FEATURES = {
     'Note="R30\' Target becomes fatigued (DC %{hexDC} Will negates), then exhausted, then dies (DC %{hexDC} Fortitude suffers 4d6+%{levels.Witch} HP) 1/target/dy"',
   'Disguise Hex':
     'Section=magic ' +
-    'Note="May use <i>Disguise Self</i> effects for %{levels.Witch} hr/dy"',
+    'Note="May use <i>Disguise Self</i> effects for %{levels.Witch} hr/dy" ' +
+    'Spells="Disguise Self" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Eternal Slumber Hex':
     'Section=magic ' +
     'Note="Touch or poison inflicts permanent sleep (DC %{hexDC} Will negates) 1/target/dy"',
@@ -1897,7 +1915,10 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"May use self <i>Feather Fall</i> effects at will%1",' +
-      '"+4 Swim"',
+      '"+4 Swim" ' +
+    'Spells="Feather Fall","3:Levitate","5:Fly" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Forced Reincarnation Hex':
     'Section=magic ' +
     'Note="R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will negates) 1/target/dy"',
@@ -1906,13 +1927,21 @@ PFAPG.FEATURES = {
     'Note="R30\' Target gains the better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   "Hag's Eye Hex":
     'Section=magic ' +
-    'Note="Can use <i>Arcane Eye</i> effects %{levels.Witch} min/dy%{$\'features.Coven Hex\' ? \\" and share w/witches in 10\' radius\\" : \'\'}"',
+    'Note=' +
+      '"Can use <i>Arcane Eye</i> effects %{levels.Witch} min/dy%{$\'features.Coven Hex\' ? \\" and share w/witches in 10\' radius\\" : \'\'}" ' +
+    'Spells="Arcane Eye" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Healing Hex':
     'Section=magic ' +
     'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects 1/target/dy"',
   'Hex':'Section=feature Note="%V selections"',
   'Life Giver Hex':
-    'Section=magic Note="May use <i>Resurrection</i> effects 1/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Resurrection</i> effects 1/dy" ' +
+    'Spells="Resurrection" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Major Healing Hex':
     'Section=magic ' +
     'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy"',
@@ -1921,7 +1950,11 @@ PFAPG.FEATURES = {
     'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will negates) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
   'Natural Disaster Hex':
     'Section=magic ' +
-    'Note="May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy"',
+    'Note=' +
+      '"May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy" ' +
+    'Spells="Earthquake","Storm Of Vengeance" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Nightmares Hex':
     'Section=magic ' +
     'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends)"',
@@ -1935,10 +1968,18 @@ PFAPG.FEATURES = {
     'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will negates) for %{intelligenceModifier} rd"',
   'Slumber Hex':
     'Section=magic ' +
-    'Note="R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will negates) for %{levels.Witch} rd 1/target/dy"',
+    'Note=' +
+      '"R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will negates) for %{levels.Witch} rd 1/target/dy" ' +
+    'Spells="Sleep" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Tongues Hex':
     'Section=magic ' +
-    'Note="May use self <i>Comprehend Languages</i>%{levels.Witch>=5 ? \' and <i>Tongues</i>\' : \'\'} effects for %{levels.Witch} min/dy"',
+    'Note=' +
+      '"May use self <i>Comprehend Languages</i>%{levels.Witch>=5 ? \' and <i>Tongues</i>\' : \'\'} effects for %{levels.Witch} min/dy" ' +
+    'Spells="Comprehend Languages","5:Tongues" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Vision Hex':
     'Section=magic ' +
     'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will negates)"',
@@ -3664,10 +3705,17 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"May use 100\' telepathy w/aquatic and swimming creatures",' +
-      '"May cast on aquatic and swimming creatures <i>Suggestion</i> %{charismaModifier}/dy%{levels.Sorcerer>=15 ? \' and <i>Demand</i> or <i>Greater Planar Ally</i> 1/dy\' : \'\'}"',
+      '"May cast on aquatic and swimming creatures <i>Suggestion</i> %{charismaModifier}/dy%{levels.Sorcerer>=15 ? \' and <i>Demand</i> or <i>Greater Planar Ally</i> 1/dy\' : \'\'}" ' +
+    'Spells="Suggestion","15:Demand","15:Greater Planar Ally" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Aurora Borealis':
     'Section=magic ' +
-    'Note="May use modified <i>Wall Of Fire</i> effects that inflict cold damage and fascinate %{levels.Sorcerer*2} HD of creatures w/in 10\' (DC %{10+levels.Sorcerer//2+charismaModifier} Will negates) for %{levels.Sorcerer} rd/dy"',
+    'Note=' +
+      '"May use modified <i>Wall Of Fire</i> effects that inflict cold damage and fascinate %{levels.Sorcerer*2} HD of creatures w/in 10\' (DC %{10+levels.Sorcerer//2+charismaModifier} Will negates) for %{levels.Sorcerer} rd/dy" ' +
+    'Spells="Wall Of Fire" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Avatar Of Chaos':
     'Section=magic,save ' +
     'Note=' +
@@ -3680,52 +3728,112 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"+1 Caster Level on water spells/Summoned water and swimming creatures gain +1 attack and damage",' +
-      '"Swim is a class skill"',
+      '"Swim is a class skill" ' +
+    'Spells=' +
+      '"3:Hydraulic Push","5:Slipstream","7:Aqueous Orb",' +
+      '"9:Geyser","11:Control Water","13:Beast Shape IV",' +
+      '"15:Summon Monster VII","17:Seamantle","19:World Wave" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Aquatic',
   'Bloodline Boreal':
     'Section=magic,skill ' +
     'Note=' +
       '"+1 save DC on cold spells",' +
-      '"Survival is a class skill"',
+      '"Survival is a class skill" ' +
+    'Spells=' +
+      '"3:Enlarge Person","5:Rage","7:Elemental Aura",' +
+      '"9:Wall Of Ice","11:Cone Of Cold","13:Transformation",' +
+      '"15:Giant Form I","17:Polar Ray","19:Meteor Swarm" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Boreal',
   'Bloodline Deep Earth':
     'Section=magic,skill ' +
     'Note=' +
       '"+1 save DC on spells cast underground",' +
-      '"Knowledge (Dungeoneering) is a class skill"',
+      '"Knowledge (Dungeoneering) is a class skill" ' +
+    'Spells=' +
+      '"3:Expeditious Excavation","5:Darkvision","7:Shifting Sand",' +
+      '"9:Stoneskin","1:Spike Stones","13:Stone Tell",' +
+      '"15:Repel Metal Or Stone","17:Earthquake","19:Clashing Rocks" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="bloodlineLevels.Deep Earth"',
   'Bloodline Dreamspun':
     'Section=magic,skill ' +
     'Note=' +
       '"Casting targeted spells gives +0.5/spell level to AC and saves vs. target for 1 rd",' +
-      '"Sense Motive is a class skill"',
+      '"Sense Motive is a class skill" ' +
+    'Spells=' +
+      '"3:Sleep","5:Augury","7:Deep Slumber",' +
+      '"9:Divination","11:Dream","13:Shadow Walk",' +
+      '"15:Vision","17:Moment Of Prescience","19:Astral Projection" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Dreamspun',
   'Bloodline Protean':
     'Section=magic,skill ' +
     'Note=' +
       '"+4 dispel DC on transmutation and creation spells",' +
-      '"Knowledge (Planes) is a class skill"',
+      '"Knowledge (Planes) is a class skill" ' +
+    'Spells=' +
+      '"3:Entropic Shield","5:Blur","7:Gaseous Form",' +
+      '"9:Confusion","11:Major Creation","13:Disintegrate",' +
+      '"15:Greater Polymorph","17:Polymorph Any Object","19:Shapechange" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Protean',
   'Bloodline Serpentine':
     'Section=magic,skill ' +
     'Note=' +
       '"May affect animals, magical beasts, and monstrous humanoids with mind-affecting and language-dependent spells",' +
-      '"Diplomacy is a class skill"',
+      '"Diplomacy is a class skill" ' +
+    'Spells=' +
+      '"3:Hypnotism","5:Delay Poison","7:Summon Monster III",' +
+      '"9:Poison","11:Hold Monster","13:Mass Suggestion",' +
+      '"15:Summon Monster VII","17:Irresistible Dance","19:Dominate Monster" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Serpentine',
   'Bloodline Shadow':
     'Section=magic,skill ' +
     'Note=' +
       '"Casting darkness or shadow spell gives +1/spell level to Stealth for 1d4 rd",' +
-      '"Stealth is a class skill"',
+      '"Stealth is a class skill" ' +
+    'Spells=' +
+      '"3:Ray Of Enfeeblement","5:Darkvision","7:Deeper Darkness",' +
+      '"9:Shadow Conjuration","11:Shadow Evocation","13:Shadow Walk",' +
+      '"15:Power Word Blind","17:Greater Shadow Evocation","19:Shades" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Shadow',
   'Bloodline Starsoul':
     'Section=magic,skill ' +
     'Note=' +
       '"Evocation spells inflict dazzled for 1 rd/spell level",' +
-      '"Knowledge (Nature) is a class skill"',
+      '"Knowledge (Nature) is a class skill" ' +
+    'Spells=' +
+      '"3:Unseen Servant","5:Glitterdust","7:Blink",' +
+      '"9:Call Lightning Storm","11:Overland Flight","13:Repulsion",' +
+      '"15:Reverse Gravity","17:Greater Prying Eyes","19:Meteor Swarm" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Starsoul',
   'Bloodline Stormborn':
     'Section=magic,skill ' +
     'Note=' +
       '"+1 save DC on electricity and sonic spells",' +
-      '"Knowledge (Nature) is a class skill"',
+      '"Knowledge (Nature) is a class skill" ' +
+    'Spells=' +
+      '"3:Shocking Grasp","5:Gust Of Wind","7:Lightning Bolt",' +
+      '"9:Shout","11:Overland Flight","13:Chain Lightning",' +
+      '"15:Control Weather","17:Whirlwind","19:Storm Of Vengeance" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Stormborn',
   'Bloodline Verdant':
     'Section=magic,skill ' +
     'Note=' +
       '"Casting personal spell gives +1/spell level to AC for 1d4 rd",' +
-      '"Knowledge (Nature) is a class skill"',
+      '"Knowledge (Nature) is a class skill" ' +
+    'Spells=' +
+      '"3:Entangle","5:Barkskin","7:Speak With Plants",' +
+      '"9:Command Plants","11:Wall Of Thorns","13:Transport Via Plants",' +
+      '"15:Plant Shape III","17:Animate Plants","19:Shambler" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=bloodlineLevels.Verdant',
   'Breaching The Gulf':
     'Section=magic ' +
     'Note="+3 caster level on teleportation spells/R30\' May teleport target to void, inflicting 6d6 HP cold/rd and suffocation (DC %{10+levels.Sorcerer//2+charismaModifier} Will negates or ends) 1/dy"',
@@ -3748,37 +3856,68 @@ PFAPG.FEATURES = {
       '"Has 120\' Blindsight and Evasion feature underwater",' +
       '"Has continuous <i>Freedom Of Movement</i> effects",' +
       '"DR 10/piercing",' +
-      '"Resistance 20 to cold/Immune to water pressure damage"',
+      '"Resistance 20 to cold/Immune to water pressure damage" ' +
+    'Spells="Freedom Of Movement" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Dehydrating Touch':
     'Section=combat ' +
     'Note="Touch inflicts 1d6+%{levels.Sorcerer//2} HP nonlethal (oozes, plants, and water creatures lethal) and sickened for 1 rd %{charismaModifier+3}/dy"',
   'Den Of Vipers':
     'Section=magic ' +
-    'Note="May use <i>Creeping Doom</i> effects w/serpents that inflict Constitution damage and entanglement 1/dy"',
+    'Note=' +
+      '"May use <i>Creeping Doom</i> effects w/serpents that inflict Constitution damage and entanglement 1/dy" ' +
+    'Spells="Creeping Doom" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Dreamshaper':
     'Section=magic ' +
-    'Note="May use <i>Modify Memory</i> or mental <i>Speak With Dead</i> effects %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy"',
+    'Note=' +
+      '"May use <i>Modify Memory</i> or mental <i>Speak With Dead</i> effects %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy" ' +
+    'Spells="Modify Memory","Speak With Dead" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Earth Glide':
     'Section=ability ' +
     'Note="May move through earth and stone%1, leaving no trace, for %V/dy"',
   'Enveloping Darkness':
     'Section=magic ' +
-    'Note="May use entangling <i>Deeper Darkness</i> effects 1/dy"',
+    'Note="May use entangling <i>Deeper Darkness</i> effects 1/dy" ' +
+    'Spells="Deeper Darkness" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Eye Of Somnus':
     'Section=magic ' +
-    'Note="May use <i>Arcane Eye</i> effects, optionally with <i>Symbol Of Sleep</i> effects, 1/dy"',
+    'Note=' +
+    '"May use <i>Arcane Eye</i> effects, optionally with <i>Symbol Of Sleep</i> effects, 1/dy" ' +
+    'Spells="Arcane Eye","Symbol Of Sleep" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Icewalker':
     'Section=ability,magic,save ' +
     'Note=' +
       '"Moves across ice and snow at full speed w/out leaving tracks",' +
       '"May use <i>Spider Climb</i> effects at will on icy surfaces",' +
-      '"Has cold resistance %{levels.Sorcerer>=9 ? 10 : 5}"',
+      '"Has cold resistance %{levels.Sorcerer>=9 ? 10 : 5}" ' +
+    'Spells="Spider Climb" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Lullaby':
     'Section=magic ' +
-    'Note="May use <i>Lullaby</i> effects that inflict -4 saves vs. sleep effects for 1 min %{charismaModifier+3}/dy"',
+    'Note=' +
+      '"May use <i>Lullaby</i> effects that inflict -4 saves vs. sleep effects for 1 min %{charismaModifier+3}/dy" ' +
+    'Spells="Lullaby" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Massmorph':
     'Section=magic ' +
-    'Note="May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i>%{levels.Sorcerer>=15 ? \' or <i>Plant Shape I\' + (levels.Sorcerer>=20 ? \'I\' : \'\') : \'\'}</i> 1/dy"',
+    'Note=' +
+      '"May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i>%{levels.Sorcerer>=15 ? \' or <i>Plant Shape I\' + (levels.Sorcerer>=20 ? \'I\' : \'\') : \'\'}</i> 1/dy" ' +
+    'Spells=' +
+      '"Diminish Plants","Plant Growth","Tree Shape","15:Plant Shape I",' +
+      '"20:Plant Shape II" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Minute Meteors':'Section=magic Note="R30\' 5\' diameter inflicts 1d4+%{levels.Sorcerer//2} HP fire (DC %{10+levels.Sorcerer//2+charismaModifier} Reflex negates) %{charismaModifier+3}/dy"',
   'Nighteye':
     'Section=feature ' +
@@ -3796,7 +3935,10 @@ PFAPG.FEATURES = {
     'Note="R30\' Hurled protoplasm inflicts entanglement and 1 HP acid/rd for 1d3 rd %{charismaModifier+3}/dy"',
   'Raise The Deep':
     'Section=magic ' +
-    'Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> for %{levels.Sorcerer} rd even when no water is present 1/dy"',
+    'Note="May raise water as per%{levels.Sorcerer>=20 ? \' dbl dimension\' : \'\'} <i>Control Water</i> for %{levels.Sorcerer} rd even when no water is present 1/dy" ' +
+    'Spells="Control Water" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Reality Wrinkle':
     'Section=combat ' +
     'Note="10\' radius inflicts 20% miss chance on outside attacks for %{levels.Sorcerer} rd/dy"',
@@ -3818,7 +3960,10 @@ PFAPG.FEATURES = {
       '"May use Serpent\'s Fang at will, inflicting damage on choice of ability",' +
       '"Has shapechanger subtype",' +
       '"May use <i>Alter Self</i> or <i>Beast Shape III</i> effects to become a reptilian humanoid or snake at will",' +
-      '"Immune to poison and paralysis"',
+      '"Immune to poison and paralysis" ' +
+    'Spells="Alter Self","Beast Shape III" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   "Serpent's Fang":
     'Section=combat ' +
     'Note="%{levels.Sorcerer>=5 ? \'Magical fangs\' : \'Fangs\'} inflict 1d%{features.Small ? 3 : 4}%{strengthModifier>=0 ? \'+\' + strengthModifier : strengthModifier} HP plus poison (1%{levels.Sorcerer>=11 ? \'d4\' : levels.Sorcerer>=5 ? \'d2\' : \'\'} Constitution/rd for 6 rd (DC %{10+levels.Sorcerer//2+constitutionModifier} negates or%{levels.Sorcerer>=7 ? \' twice to\' : \'\'} end)) for %{charismaModifier+3} rd/dy"',
@@ -3826,7 +3971,10 @@ PFAPG.FEATURES = {
     'Section=feature,magic ' +
     'Note=' +
       '"Has Familiar feature (Viper)",' +
-      '"May use <i>Speak With Animals</i> at will with reptiles"',
+      '"May use <i>Speak With Animals</i> at will with reptiles" ' +
+    'Spells="Speak With Animals" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Shadow Master (Sorcerer)':
     'Section=feature,magic ' +
     'Note=' +
@@ -3836,7 +3984,10 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"R60\' May use <i>Dimension Door</i> effects in darkness or dim light to swap places w/an ally%{levels.Sorcerer>=13 ? \' or swap 2 allies\' : \'\'} %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy",' +
-      '"May use Stealth while being observed when w/in 10\' of a shadow"',
+      '"May use Stealth while being observed when w/in 10\' of a shadow" ' +
+    'Spells="Dimension Door" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Shadowstrike':
     'Section=combat ' +
     'Note="Touch inflicts 1d4 HP+%{levels.Sorcerer//2} nonlethal and dazzled for 1 min (Darkvision or Low-Light Vision HP only) %{charismaModifier+3}/dy"',
@@ -3857,12 +4008,19 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Ignores concealment from snowy, icy, or foggy weather",' +
       '"May use cold <i>Fire Shield</i> effects that give 20% attack miss and +%{levels.Sorcerer//2} Stealth in snowy or icy areas for %{levels.Sorcerer} rd %{levels.Sorcerer>=20 ? 3 : levels.Sorcerer>=17 ? 2 : 1}/dy",' +
-      '"Suffers no Perception penalty from snowy, icy, or foggy weather"',
+      '"Suffers no Perception penalty from snowy, icy, or foggy weather" ' +
+    'Spells="Fire Shield" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Solipsism':
     'Section=magic Note="May become incorporeal %{levels.Sorcerer} min/dy"',
   'Spatial Tear':
     'Section=magic ' +
-    'Note="May use combined <i>Dimension Door</i> and <i>Black Tentacles</i> effects %{levels.Sorcerer>=20 ? 2 : 1}/dy"',
+    'Note=' +
+      '"May use combined <i>Dimension Door</i> and <i>Black Tentacles</i> effects %{levels.Sorcerer>=20 ? 2 : 1}/dy" ' +
+    'Spells="Black Tentacles","Dimension Door" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Sorcerer',
   'Starborn':
     'Section=combat,feature,save ' +
     'Note=' +
@@ -3917,7 +4075,10 @@ PFAPG.FEATURES = {
     'Note=' +
       '"May cast self <i>Feather Fall</i>%{levels.Wizard>=5 ? \', <i>Levitate</i>\' : \'\'}%{levels.Wizard>=10 ? \', <i>Fly</i>\' : \'\'} at will",' +
       '"+%V Fly",' +
-      '"Automatic nat 20 on Fly"',
+      '"Automatic nat 20 on Fly" ' +
+    'Spells="Feather Fall","5:Levitate","10:Fly" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Wizard',
   'Augment':
     'Section=magic ' +
     'Note="Touch gives +%{levels.Wizard>=10 ? 4 : 2} ability or +%{1+levels.Wizard//5} AC for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
@@ -3932,7 +4093,11 @@ PFAPG.FEATURES = {
     'Note="30\' radius inflicts half speed, cannot take AOO, and flanked on foes for %{levels.Wizard} rd/dy"',
   'Beguiling Touch':
     'Section=magic ' +
-    'Note="Touch inflicts <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostility, or DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy"',
+    'Note=' +
+      '"Touch inflicts <i>Charm Monster</i> effects (%{levels.Wizard+1} HD, combat, hostility, or DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) for %{levels.Wizard//2} rd %{intelligenceModifier+3}/dy" ' +
+    'Spells="Charm Monster" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Wizard',
   'Binding Darkness':
     'Section=magic ' +
     'Note="R30\' Ranged touch inflicts entanglement and concealment for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
@@ -3952,7 +4117,11 @@ PFAPG.FEATURES = {
     'Note="May create and retain for 1 min a %{levels.Wizard} lb simple item %{intelligenceModifier+3}/dy"',
   "Creator's Will":
     'Section=magic ' +
-    'Note="May cast <i>%{levels.Wizard>=12 ? \'Major\' : \'Minor\'} Creation</i> %{levels.Wizard//2}/dy"',
+    'Note=' +
+      '"May cast <i>%{levels.Wizard>=12 ? \'Major\' : \'Minor\'} Creation</i> %{levels.Wizard//2}/dy" ' +
+    'Spells="Minor Creation","8:Major Creation" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Wizard',
   'Cyclone':
     'Section=combat ' +
     'Note="10\' radius negates ranged attacks, knocks flying creatures to the ground (DC %{10+levels.Wizard} Fly negates), and bars passage to ground creatures (DC %{10+levels.Wizard} Strength negates) for %{levels.Wizard} rd/dy"',
@@ -3990,7 +4159,11 @@ PFAPG.FEATURES = {
     'Note="Self targeted and area effect spells heal %{levels.Wizard>=20 ? 3 : levels.Wizard >= 11 ? 2 : 1} HP per spell level, distributed among targets"',
   'Irresistible Demand':
     'Section=magic ' +
-    'Note="May use <i>Dominate Monster</i> effects on creatures up to %{levels.Wizard} HD (DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) %{levels.Wizard} rd/dy"',
+    'Note=' +
+      '"May use <i>Dominate Monster</i> effects on creatures up to %{levels.Wizard} HD (DC %{10+levels.Wizard//2+intelligenceModifier} Will negates) %{levels.Wizard} rd/dy" ' +
+    'Spells="Dominate Monster" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Wizard',
   'Lightning Flash':
     'Section=combat ' +
     'Note="5\' radius inflicts 1d6+%{levels.Wizard//2} HP electricity and dazzled for 1d4 rd (DC %{10+levels.Wizard//2+intelligenceModifier} Reflex half HP only) %{intelligenceModifier+3}/dy"',
@@ -4017,7 +4190,11 @@ PFAPG.FEATURES = {
     'Note="Touch gives 1d6+%{levels.Wizard//2} temporary HP for 1 hr and self suffers equal HP nonlethal %{intelligenceModifier+3}/dy"',
   'Shift':
     'Section=magic ' +
-    'Note="May use <i>Dimension Door</i> effects to move %{levels.Wizard//2*5>?5}\' %{intelligenceModifier+3}/dy"',
+    'Note=' +
+      '"May use <i>Dimension Door</i> effects to move %{levels.Wizard//2*5>?5}\' %{intelligenceModifier+3}/dy" ' +
+    'Spells="Dimension Door" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Wizard',
   'Terror':
     'Section=combat ' +
     'Note="Touch causes target to provoke AOO (%{levels.Wizard+1} HD negates) %{intelligenceModifier+3}/dy"',
@@ -4133,12 +4310,20 @@ PFAPG.FEATURES = {
     'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to crit to self or foe"',
   'Divine Wrath':
     'Section=magic ' +
-    'Note="May use level 1 spell slot to inflict <i>Doom</i> on foe in response to crit to self or foe"',
+    'Note=' +
+      '"May use level 1 spell slot to inflict <i>Doom</i> on foe in response to crit to self or foe" ' +
+    'Spells="Doom" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevel',
   'Faith Healing':
     'Section=magic Note="Self <i>Cure</i> spells have %{$\'levels.Holy Vindicator\'>=8 ? \'maximum\' : \'x1.5\'} effects"',
   'Stigmata':
     'Section=magic ' +
-    'Note="May suffer %{$\'levels.Holy Vindicator\'//2} HP/rd bleed damage to gain +%{$\'levels.Holy Vindicator\'//2} choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will"',
+    'Note=' +
+      '"May suffer %{$\'levels.Holy Vindicator\'//2} HP/rd bleed damage to gain +%{$\'levels.Holy Vindicator\'//2} choice of attack, damage, AC, caster level checks, or saves and use <i>Bleed</i> and <i>Stabilize</i> at will" ' +
+    'Spells="Bleed","Stabilize" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevel',
   'Versatile Channel':
     'Section=magic ' +
     'Note="May use Channel Energy to affect 30\' cone or 120\' line"',
@@ -4165,7 +4350,10 @@ PFAPG.FEATURES = {
     'Section=combat,magic ' +
     'Note=' +
       '"+1 attack and damage vs. outsiders",' +
-      '"May use <i>Dimension Door</i> effects %{3+wisdomModifier}/dy"',
+      '"May use <i>Dimension Door</i> effects %{3+wisdomModifier}/dy" ' +
+    'Spells="Dimension Door" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Cold)':
     'Section=combat,save ' +
     'Note=' +
@@ -4175,17 +4363,32 @@ PFAPG.FEATURES = {
     'Section=save ' +
     'Note="Resistance 10 to fire/Immune to fatigue"',
   'Terrain Dominance (Ethereal Plane)':
-    'Section=magic Note="May use <i>Ethereal Jaunt</i> effects 1/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Ethereal Jaunt</i> effects 1/dy" ' +
+    'Spells="Ethereal Jaunt" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Forest)':
     'Section=magic ' +
-    'Note="May use <i>Hallucinatory Terrain</i> effects to create forest images %{3+wisdomModifier}/dy"',
+    'Note=' +
+      '"May use <i>Hallucinatory Terrain</i> effects to create forest images %{3+wisdomModifier}/dy" ' +
+    'Spells="Hallucinatory Terrain" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Jungle)':
     'Section=magic ' +
-    'Note="May use <i>Charm Monster</i> effects on jungle creatures %{3+wisdomModifier}/dy"',
+    'Note="May use <i>Charm Monster</i> effects on jungle creatures %{3+wisdomModifier}/dy" ' +
+    'Spells="Charm Monster" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Mountain)':'Section=combat Note="DR 2/adamantine"',
   'Terrain Dominance (Plains)':'Section=ability Note="+10 Speed"',
   'Terrain Dominance (Plane Of Air)':
-    'Section=magic Note="May use <i>Fly</i> effects %{3+wisdomModifier}/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Fly</i> effects %{3+wisdomModifier}/dy" ' +
+    'Spells="Fly" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Plane Of Earth)':
     'Section=feature Note="Has 30\' Tremorsense"',
   'Terrain Dominance (Plane Of Fire)':
@@ -4199,7 +4402,10 @@ PFAPG.FEATURES = {
   'Terrain Dominance (Underground)':'Section=feature Note="+60\' Darkvision"',
   'Terrain Dominance (Urban)':
     'Section=magic ' +
-    'Note="May use <i>Charm Person</i> effects %{3+wisdomModifier}/dy"',
+    'Note="May use <i>Charm Person</i> effects %{3+wisdomModifier}/dy" ' +
+    'Spells="Charm Monster" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Terrain Dominance (Water)':'Section=ability Note="+20\' Swim"',
   'Terrain Mastery':
     'Section=feature,skill ' +
@@ -4389,7 +4595,11 @@ PFAPG.FEATURES = {
     'Section=skill ' +
     'Note="May create a disguise in half time; reduces Disguise penalties by 1"',
   'Nonmagical Aura':
-    'Section=magic Note="May use <i>Magic Aura</i> effects to mask aura 2/dy"',
+    'Section=magic ' +
+    'Note="May use <i>Magic Aura</i> effects to mask aura 2/dy" ' +
+    'Spells="Magic Aura" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Quick Change (Master Spy)':
     'Section=skill ' +
     'Note="May suffer %{$\'levels.Master Spy\'<8 ? -10 : -5} penalty on Disguise to assume disguise in 2d4 rd"',
@@ -4404,7 +4614,11 @@ PFAPG.FEATURES = {
   // Nature Warden
   'Animal Speech':
     'Section=magic ' +
-    'Note="May use <i>Speak With Animals</i> effects at will in favored terrain, 1/dy elsewhere"',
+    'Note=' +
+      '"May use <i>Speak With Animals</i> effects at will in favored terrain, 1/dy elsewhere" ' +
+    'Spells="Speak With Animals" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Nature Warden"',
   // Caster Level Bonus as Pathfinder
   'Companion Bond (Nature Warden)':
     'Section=companion,companion ' +
@@ -4415,7 +4629,10 @@ PFAPG.FEATURES = {
     'Section=companion,magic ' +
     'Note=' +
       '"Additional +4 Will vs. enchantment",' +
-      '"May use <i>Scrying</i> and <i>Raise Dead</i> effects on animal companion"',
+      '"May use <i>Scrying</i> and <i>Raise Dead</i> effects on animal companion" ' +
+    'Spells="Scrying","Raise Dead" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Nature Warden"',
   'Companion Walk':
     'Section=companion ' +
     'Note="May affect animal companion w/self travel and polymorph spells"',
@@ -4435,7 +4652,11 @@ PFAPG.FEATURES = {
     'Note="+%V Wild Empathy checks when in favored terrain/May use Wild Empathy to demoralize%1"',
   'Plant Speech':
     'Section=magic ' +
-    'Note="May use <i>Speak With Plants</i> effects at will in favored terrain, 1/dy elsewhere"',
+    'Note=' +
+      '"May use <i>Speak With Plants</i> effects at will in favored terrain, 1/dy elsewhere" ' +
+    'Spells="Speak With Plants" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Nature Warden"',
   'Silverclaw':
     'Section=companion,magic ' +
     'Note=' +
@@ -4449,7 +4670,10 @@ PFAPG.FEATURES = {
     'Note="Self and animal companion may move normally through natural hazards while in favored terrain"',
   'Woodforging':
     'Section=magic ' +
-    'Note="May combine <i>Wood Shape</i> and <i>Ironwood</i> effects 1/dy"',
+    'Note="May combine <i>Wood Shape</i> and <i>Ironwood</i> effects 1/dy" ' +
+    'Spells="Wood Shape","Ironwood" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Nature Warden"',
 
   // Rage Prophet
   // Caster Level Bonus as Pathfinder
@@ -4472,7 +4696,11 @@ PFAPG.FEATURES = {
     'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%{$\'levels.Rage Prophet\'//2} vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for a swift action that allows armor and weapons to inflict full damage on incorporeal creatures for 1 rd"',
   'Spirit Guide':
     'Section=magic ' +
-    'Note="May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage"',
+    'Note=' +
+      '"May use effects of <i>Dancing Lights</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> 1/dy and <i>Guidance</i> 1/rage" ' +
+    'Spells="Guidance","Dancing Lights","Ghost Sound","Mage Hand" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel="levels.Rage Prophet"',
   'Spirit Warrior':
     'Section=magic ' +
     'Note="Increases Spirit Guide <i>Guidance</i> bonus to +%{$\'levels.Rage Prophet\'} vs. fey, outsider, undead, or incorporeal/May use 1 rd of rage for an immediate action that allows armor and weapons to inflict full damage on incorporeal creatures for 1 rd"',
@@ -4703,7 +4931,10 @@ PFAPG.FEATURES = {
     'Note="Always considered flanking when two allies threaten the same foe"',
   'Gnome Trickster':
     'Section=magic ' +
-    'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy"',
+    'Note="May cast <i>Mage Hand</i> and <i>Prestidigitation</i> 1/dy" ' +
+    'Spells="Mage Hand","Prestidigitation" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Go Unnoticed':
     'Section=skill ' +
     'Note="May use Stealth to hide from flat-footed foes during the first rd of combat"',
@@ -5502,7 +5733,7 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=B3,Inquisitor3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Self and %{lvl>5?lvl//3+\' allies in a 15\' radius\':\'an ally\'} gain use of a chosen self Teamwork feat for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Self and %{lvl>5?lvl//3+\\" allies in a 15\' radius\\":\'an ally\'} gain use of a chosen self Teamwork feat for %{lvl} min"',
   'Corruption Resistance':
     'School=Abjuration ' + // One of [Chaotic,Evil,Good,Lawful]
     'Level=Antipaladin2,Inquisitor2,P2 ' +
@@ -9673,10 +9904,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     // Suppress error for allocating fewer than max natural attacks
     rules.defineRule
       ('validationNotes.eidolonNaturalAttacksAllocation', '', '^', '0');
-    Pathfinder.featureSpells(rules,
-      "Maker's Call", 'MakersCall', 'charisma', classLevel, null,
-      ['Dimension Door']
-    );
     // Make sure the editor allows multiple selections of selectableFeatures
     rules.defineEditorElement('selectableFeatures');
     rules.defineEditorElement
@@ -9706,48 +9933,20 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'featureNotes.patron', '+=', '1'
     );
     Pathfinder.featureSpells(rules,
-      'Disguise Hex', 'DisguiseHex', 'intelligence', classLevel, null,
-      ['Disguise Self']
-    );
-    Pathfinder.featureSpells(rules,
-      'Flight Hex', 'FlightHex', 'intelligence', classLevel, null,
-      ['Feather Fall', '3:Levitate', '5:Fly']
-    );
-    Pathfinder.featureSpells(rules,
       'Forced Reincarnation Hex', 'ForcedReincarnationHex', 'intelligence',
       classLevel, null, ['Reincarnate']
-    );
-    Pathfinder.featureSpells(rules,
-      "Hag's Eye Hex", "HagsEyeHex", 'intelligence', classLevel,
-      '10+' + classLevel + '//2+intelligenceModifier', ['Arcane Eye']
     );
     Pathfinder.featureSpells(rules,
       'Healing Hex', 'HealingHex', 'intelligence', classLevel, null,
       ['Cure Light Wounds', '5:Cure Moderate Wounds']
     );
     Pathfinder.featureSpells(rules,
-      'Life Giver Hex', 'LifeGiverHex', 'intelligence', classLevel, null,
-      ['Resurrection']
-    );
-    Pathfinder.featureSpells(rules,
       'Major Healing Hex', 'MajorHealingHex', 'intelligence', classLevel,
       null, ['Cure Serious Wounds', '15:Cure Critical Wounds']
     );
     Pathfinder.featureSpells(rules,
-      'Natural Disaster Hex', 'NaturalDisasterHex', 'intelligence',
-      classLevel, '10+' + classLevel + '//2+intelligenceModifier',
-      ['Earthquake', 'Storm Of Vengeance']
-    );
-    Pathfinder.featureSpells(rules,
       'Nightmares Hex', 'NightmaresHex', 'intelligence', classLevel,
       '10+' + classLevel + '//2+intelligenceModifier', ['Nightmare']
-    );
-    Pathfinder.featureSpells(rules,
-      'Slumber Hex', 'SlumberHex', 'intelligence', classLevel, null, ['Sleep']
-    );
-    Pathfinder.featureSpells(rules,
-      'Tongues Hex', 'TonguesHex', 'intelligence', classLevel, null,
-      ['Comprehend Languages', '5:Tongues']
     );
     Pathfinder.featureSpells(rules,
       'Weather Control Hex', 'WeatherControlHex', 'intelligence', classLevel,
@@ -11446,25 +11645,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('skillNotes.blindsense', 'featureNotes.deepOne', '^=', '60');
     rules.defineRule
       ('skillNotes.blindsight', 'featureNotes.deepOne', '^=', '120');
-    Pathfinder.featureSpells(rules,
-      'Aquatic Telepathy', 'AquaticTelepathy', 'charisma', classLevel, '',
-      ['Suggestion', '15:Demand', '15:Greater Planar Ally']
-    );
-    Pathfinder.featureSpells(rules,
-      'Raise The Deep', 'RaiseTheDeep', 'charisma', classLevel, null,
-      ['Control Water']
-    );
-    Pathfinder.featureSpells(rules,
-      'Deep One', 'DeepOne', 'charisma', classLevel, null,
-      ['Freedom Of Movement']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Aquatic', 'BloodlineAquatic', 'charisma',
-      'bloodlineLevels.Aquatic', '',
-      ['3:Hydraulic Push', '5:Slipstream', '7:Aqueous Orb',
-       '9:Geyser', '11:Control Water', '13:Beast Shape IV',
-       '15:Summon Monster VII', '17:Seamantle', '19:World Wave']
-    );
 
     // Bloodline Boreal
     rules.defineRule('magicNotes.icewalker', classLevel, '?', 'source>=9');
@@ -11472,20 +11652,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     Pathfinder.featureSpells(rules,
       'Blizzard (Sorcerer)', 'Blizzard', 'charisma', classLevel, '',
       ['Control Winds', 'Sleet Storm']
-    );
-    Pathfinder.featureSpells(rules,
-      'Icewalker', 'Icewalker', 'charisma', classLevel, null, ['Spider Climb']
-    );
-    Pathfinder.featureSpells(rules,
-      'Snow Shroud', 'SnowShroud', 'charisma', classLevel, null,
-      ['Fire Shield']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Boreal', 'BloodlineBoreal', 'charisma',
-      'bloodlineLevels.Boreal', '',
-      ['3:Enlarge Person', '5:Rage', '7:Elemental Aura',
-       '9:Wall Of Ice', '11:Cone Of Cold', '13:Transformation',
-       '15:Giant Form I', '17:Polar Ray', '19:Meteor Swarm']
     );
 
     // Bloodline Deep Earth
@@ -11508,49 +11674,10 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('magicNotes.rockseer', classLevel, '?', 'source>=15');
     rules.defineRule
       ('skillNotes.rockseer', 'race', '?', 'source.match(/Dwarf/)');
-    Pathfinder.featureSpells(rules,
-      'Bloodline Deep Earth', 'BloodlineDeepEarth', 'charisma',
-      'bloodlineLevels.Deep Earth', '',
-      ['3:Expeditious Excavation', '5:Darkvision', '7:Shifting Sand',
-       '9:Stoneskin', '11:Spike Stones', '13:Stone Tell',
-       '15:Repel Metal Or Stone', '17:Earthquake', '19:Clashing Rocks']
-    );
 
     // Bloodline Dreamspun
     rules.defineRule('combatNotes.combatPrecognition',
       classLevel, '=', 'Math.floor((source + 1) / 4)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Dreamshaper', 'Dreamshaper', 'charisma', classLevel,
-      '10 + ' + classLevel + '//2 + charismaModifier',
-      ['Modify Memory', 'Speak With Dead']
-    );
-    Pathfinder.featureSpells(rules,
-      'Eye Of Somnus', 'EyeOfSomnus', 'charisma', classLevel, '',
-      ['Arcane Eye', 'Symbol Of Sleep']
-    );
-    Pathfinder.featureSpells(rules,
-      'Lullaby', 'Lullaby', 'charisma', classLevel, '', ['Lullaby']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Dreamspun', 'BloodlineDreamspun', 'charisma',
-      'bloodlineLevels.Dreamspun', '',
-      ['3:Sleep', '5:Augury', '7:Deep Slumber',
-       '9:Divination', '11:Dream', '13:Shadow Walk',
-       '15:Vision', '17:Moment Of Prescience', '19:Astral Projection']
-    );
-
-    // Bloodline Protean
-    Pathfinder.featureSpells(rules,
-      'Spatial Tear', 'SpatialTear', 'charisma', classLevel, '',
-      ['Black Tentacles', 'Dimension Door']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Protean', 'BloodlineProtean', 'charisma',
-      'bloodlineLevels.Protean', '',
-      ['3:Entropic Shield', '5:Blur', '7:Gaseous Form',
-       '9:Confusion', '11:Major Creation', '13:Disintegrate',
-       '15:Greater Polymorph', '17:Polymorph Any Object', '19:Shapechange']
     );
 
     // Bloodline Serpentine
@@ -11566,87 +11693,21 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('features.Familiar', 'featureNotes.serpentfriend', '=', '1');
     rules.defineRule
       ('skillNotes.snakeskin', classLevel, '=', 'Math.floor((source - 1) / 4)');
-    Pathfinder.featureSpells(rules,
-      'Den Of Vipers', 'DenOfVipers', 'charisma', classLevel, '',
-      ['Creeping Doom']
-    );
-    Pathfinder.featureSpells(rules,
-      'Scaled Soul', 'ScaledSoul', 'charisma', classLevel, null,
-      ['Alter Self', 'Beast Shape III']
-    );
-    Pathfinder.featureSpells(rules,
-      'Serpentfriend', 'Serpentfriend', 'charisma', classLevel, '',
-      ['Speak With Animals']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Serpentine', 'BloodlineSerpentine', 'charisma',
-      'bloodlineLevels.Serpentine', '',
-      ['3:Hypnotism', '5:Delay Poison', '7:Summon Monster III',
-       '9:Poison', '11:Hold Monster', '13:Mass Suggestion',
-       '15:Summon Monster VII', '17:Irresistible Dance', '19:Dominate Monster']
-    );
-
-    // Bloodline Shadow
-    Pathfinder.featureSpells(rules,
-      'Enveloping Darkness', 'EnvelopingDarkness', 'charisma', classLevel, '',
-      ['Deeper Darkness']
-    );
-    Pathfinder.featureSpells(rules,
-      'Shadow Well', 'ShadowWell', 'charisma', classLevel, null,
-      ['Dimension Door']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Shadow', 'BloodlineShadow', 'charisma',
-      'bloodlineLevels.Shadow', '',
-      ['3:Ray Of Enfeeblement', '5:Darkvision', '7:Deeper Darkness',
-       '9:Shadow Conjuration', '11:Shadow Evocation', '13:Shadow Walk',
-       '15:Power Word Blind', '17:Greater Shadow Evocation', '19:Shades']
-    );
 
     // Bloodline Starsoul
     rules.defineRule('featureNotes.voidwalker-1', classLevel, '?', 'source>=9');
     rules.defineRule
       ('features.Low-Light Vision', 'featureNotes.voidwalker', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Aurora Borealis', 'AuroraBorealis', 'charisma', classLevel,
-      '10 + ' + classLevel + '//2 + charismaModifier', ['Wall Of Fire']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Starsoul', 'BloodlineStarsoul', 'charisma',
-      'bloodlineLevels.Starsoul', '',
-      ['3:Unseen Servant', '5:Glitterdust', '7:Blink',
-       '9:Call Lightning Storm', '11:Overland Flight', '13:Repulsion',
-       '15:Reverse Gravity', '17:Greater Prying Eyes', '19:Meteor Swarm']
-    );
 
     // Bloodline Stormborn
     rules.defineRule('featureNotes.stormchild', classLevel, '?', 'source>=9');
     rules.defineRule('features.Blindsense', 'features.Stormchild', '=', '1');
     rules.defineRule('features.Blindsight', 'features.Storm Lord', '=', '1');
-    Pathfinder.featureSpells(rules,
-      'Bloodline Stormborn', 'BloodlineStormborn', 'charisma',
-      'bloodlineLevels.Stormborn', '',
-      ['3:Shocking Grasp', '5:Gust Of Wind', '7:Lightning Bolt',
-       '9:Shout', '11:Overland Flight', '13:Chain Lightning',
-       '15:Control Weather', '17:Whirlwind', '19:Storm Of Vengeance']
-    );
 
     // Bloodline Verdant
     rules.defineRule('features.Tremorsense',
       'features.Rooting', '=', '1',
       'featureNotes.shepherdOfTheTrees', '=', '1'
-    );
-    Pathfinder.featureSpells(rules,
-      'Massmorph', 'Massmorph', 'charisma', classLevel, null,
-      ['Diminish Plants', 'Plant Growth', 'Tree Shape', '15:Plant Shape I',
-       '20:Plant Shape II']
-    );
-    Pathfinder.featureSpells(rules,
-      'Bloodline Verdant', 'BloodlineVerdant', 'charisma',
-      'bloodlineLevels.Verdant', '',
-      ['3:Entangle', '5:Barkskin', '7:Speak With Plants',
-       '9:Command Plants', '11:Wall Of Thorns', '13:Transport Via Plants',
-       '15:Plant Shape III', '17:Animate Plants', '19:Shambler']
     );
 
   } else if(name == 'Wizard') {
@@ -11832,13 +11893,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'Divine Retribution', 'DivineRetribution', 'wisdom', 'casterLevel', '',
       ['Bestow Curse']
     );
-    Pathfinder.featureSpells(rules,
-      'Divine Wrath', 'DivineWrath', 'wisdom', 'casterLevel', '', ['Doom']
-    );
-    Pathfinder.featureSpells(rules,
-      'Stigmata', 'Stigmata', 'wisdom', 'casterLevel', '',
-      ['Bleed', 'Stabilize']
-    );
 
   } else if(name == 'Horizon Walker') {
 
@@ -11882,30 +11936,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule
       ('skillNotes.terrainMastery', 'featureNotes.terrainMastery', '=', null);
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Astral Plane)', 'AstralPlaneDominance', 'charisma',
-      'level', null, ['Dimension Door']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Ethereal Plane)', 'EtherealPlaneDominance',
-      'charisma', 'level', null, ['Ethereal Jaunt']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Forest)', 'ForestDominance', 'charisma',
-      'level', '', ['Hallucinatory Terrain']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Jungle)', 'JungleDominance', 'charisma',
-      'level', '', ['Charm Monster']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Plane Of Air)', 'PlaneOfAirDominance', 'charisma',
-      'level', null, ['Fly']
-    );
-    Pathfinder.featureSpells(rules,
-      'Terrain Dominance (Urban)', 'UrbanDominance', 'charisma', 'level',
-      '', ['Charm Person']
-    );
 
   } else if(name == 'Master Chymist') {
 
@@ -11952,10 +11982,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('skillNotes.artOfDeception', classLevel, '=', null);
     rules.defineRule
       ('sneakAttack', classLevel, '+=', 'Math.floor((source + 2) / 3)');
-    Pathfinder.featureSpells(rules,
-      'Nonmagical Aura', 'NonmagicalAura', 'charisma', 'level', '',
-      ['Magic Aura']
-    );
 
   } else if(name == 'Nature Warden') {
 
@@ -12001,32 +12027,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('skillNotes.naturalEmpathy.1',
       classLevel, '=', 'source>=4 ? "/May use Wild Empathy w/magical beasts" + (source>=10 ? ", vermin, and plant creatures" : source>=7 ? " and vermin" : "") + " w/out penalty" : ""'
     );
-    Pathfinder.featureSpells(rules,
-      'Animal Speech', 'AnimalSpeech', 'charisma', classLevel, '',
-      ['Speak With Animals']
-    );
-    Pathfinder.featureSpells(rules,
-      'Woodforging', 'Woodforging', 'charisma', classLevel, '',
-      ['Wood Shape', 'Ironwood']
-    );
-    Pathfinder.featureSpells(rules,
-      'Plant Speech', 'PlantSpeech', 'charisma', classLevel, '',
-      ['Speak With Plants']
-    );
-    Pathfinder.featureSpells(rules,
-      'Companion Soul', 'CompanionSoul', 'charisma', classLevel, '',
-      ['Scrying', 'Raise Dead']
-    );
 
   } else if(name == 'Rage Prophet') {
 
     rules.defineRule('combatNotes.savageSeer', classLevel, '=', null);
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - 1 - (source>=8 ? 2 : source>=5 ? 1 : 0)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Spirit Guide', 'SpiritGuide', 'charisma', classLevel, '',
-      ['Guidance', 'Dancing Lights', 'Ghost Sound', 'Mage Hand']
     );
 
   } else if(name == 'Stalwart Defender') {
@@ -12177,11 +12183,6 @@ PFAPG.featRulesExtra = function(rules, name) {
   } else if(name == 'Favored Defense') {
     rules.defineRule
       ('combatNotes.favoredDefense', 'feats.Favored Defense', '=', null);
-  } else if(name == 'Gnome Trickster') {
-    Pathfinder.featureSpells(rules,
-      'Gnome Trickster', 'GnomeTrickster', 'charisma', 'level', '',
-      ['Mage Hand', 'Prestidigitation']
-    );
   } else if(name == 'Improved Stonecunning') {
     rules.defineRule
       ('skillNotes.stonecunning', 'skillNotes.improvedStonecunning', '+', '2');
@@ -12373,11 +12374,8 @@ PFAPG.raceRulesExtra = function(rules, name) {
       ('casterLevels.Dreamspeaker', 'charisma', '?', 'source >= 15');
     rules.defineRule
       ('spells.Dream(Dreamspeaker5 Illu)', 'charisma', '?', 'source>=15');
-    Pathfinder.featureSpells(rules,
-      'Lightbringer', 'Lightbringer', 'intelligence', 'level', '', ['Light']
-    );
     rules.defineRule
-      ('casterLevels.Lightbringer', 'intelligence', '?', 'source>=10');
+      ('elfFeatures.Lightbringer', 'intelligence', '?', 'source>=10');
   } else if(name.match(/Gnome/)) {
     alternateRacialTraits = [
       ['Defensive Training','Eternal Hope', 'Gift Of Tongues', 'Master Tinker',
@@ -12403,18 +12401,10 @@ PFAPG.raceRulesExtra = function(rules, name) {
       'gnomeFeatures.Pyromaniac', '+', '-1',
       'gnomeFeatures.Warden Of Nature', '+', '-1'
     );
-    Pathfinder.featureSpells(rules,
-      'Magical Linguist', 'MagicalLinguist', 'charisma', 'level', '',
-      ['Arcane Mark', 'Comprehend Languages', 'Message', 'Read Magic']
-    );
     rules.defineRule
       ('casterLevels.MagicalLinguist', 'charisma', '?', 'source >= 11');
-    Pathfinder.featureSpells(rules,
-      'Pyromaniac', 'Pyromaniac', 'charisma', 'level', '',
-      ['Dancing Lights', 'Flare', 'Prestidigitation', 'Produce Flame']
-    );
     rules.defineRule
-      ('casterLevels.Pyromaniac', 'charisma', '?', 'source >= 11');
+      ('gnomeFeatures.Pyromaniac', 'charisma', '?', 'source >= 11');
   } else if(name.match(/Halfling/)) {
     alternateRacialTraits = [
       ['Fearless', 'Craven', 'Practicality', 'Wanderlust'],
@@ -12499,23 +12489,9 @@ PFAPG.schoolRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('skillNotes.airSupremacy-1', schoolLevel, '?', 'source>=20');
-    Pathfinder.featureSpells(rules,
-      'Air Supremacy', 'AirSupremacy', 'intelligence', schoolLevel, null,
-      ['Feather Fall', '5:Levitate', '10:Fly']
-    );
-  } else if(name == 'Controller') {
-    Pathfinder.featureSpells(rules,
-      'Irresistible Demand', 'IrresistibleDemand', 'intelligence', schoolLevel,
-      '10+' + schoolLevel + '//2+intelligenceModifier', ['Dominate Monster']
-    );
   } else if(name == 'Counterspell') {
     rules.defineRule('features.Improved Counterspell',
       'featureNotes.counterspellMastery', '=', '1'
-    );
-  } else if(name == 'Creation') {
-    Pathfinder.featureSpells(rules,
-      "Creator's Will", 'CreatorsWill', 'intelligence', schoolLevel, null,
-      ['Minor Creation', '8:Major Creation']
     );
   } else if(name == 'Earth') {
     rules.defineRule
@@ -12526,15 +12502,6 @@ PFAPG.schoolRulesExtra = function(rules, name) {
     );
     rules.defineRule
       ('magicNotes.earthSupremacy', schoolLevel, '?', 'source>=20');
-  } else if(name == 'Manipulator') {
-    Pathfinder.featureSpells(rules,
-      'Beguiling Touch', 'BeguilingTouch', 'intelligence', schoolLevel,
-      '10+manipulatorLevel//2+intelligenceModifier', ['Charm Monster']
-    );
-  } else if(name == 'Teleportation') {
-    Pathfinder.featureSpells(rules,
-      'Shift', 'Shift', 'intelligence', schoolLevel, null, ['Dimension Door']
-    );
   } else if(name == 'Water') {
     rules.defineRule
       ('abilityNotes.waterSupremacy', schoolLevel, '?', 'source>=10');
