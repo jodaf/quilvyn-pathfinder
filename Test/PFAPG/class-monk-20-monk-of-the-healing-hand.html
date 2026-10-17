@@ -25,7 +25,7 @@ var attributes = {
   "skills.Perception":20, "skills.Perform (Comedy)":20, "skills.Perform (Keyboard)":1, 
   "skills.Profession (Scribe)":1, "skills.Ride":20, "skills.Spellcraft":1, "skills.Stealth":8, 
   "skills.Use Magic Device":2, "strength":14, "traits.Caretaker":1, "traits.Dangerously Curious":1, 
-  "weapons.Dagger":1, "weapons.Shuriken":1, "weapons.Unarmed":1, "wisdom":12
+  "weapons.Dagger":1, "weapons.Shuriken":1, "wisdom":12
 };
   </script>
 </head>
@@ -187,7 +187,7 @@ var attributes = {
         <td><b>AC/Touch/Flat</b>: 19/19/16</td>
         <td><b>Attacks Per Round</b>: 3</td>
         <td><b>Base/Melee/Ranged Attack</b>: +15/+17/+18</td>
-        <td><b>Combat Maneuver Bonus/Defense</b>: +22/30</td>
+        <td><b>Combat Maneuver Bonus/Defense</b>: +22/36</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -201,7 +201,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: None</td>
         <td><b>Shield</b>: None</td>
-        <td><b>Weapons</b>: Dagger (+17 d4+2 x2@19 R10'); Shuriken (+18 d2+2 x2@20 R10'); Unarmed Strike (+17 2d10+2 x2@20); Unarmed</td>
+        <td><b>Weapons</b>: Dagger (+17 d4+2 x2@19 R10'); Shuriken (+18 d2+2 x2@20 R10'); Unarmed Strike (+17 2d10+2 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -307,13 +307,23 @@ var attributes = {
 </tr><tr style="text-align:center">
   <td style="border:1px solid black"><b>Magic</b><br/>  <table id="Magic" style="width:100%">
   <tr style="text-align:center">
+    <td>    <table id="SpellPart" style="width:100%">
+    <tr style="text-align:center">
+      <td>      <table id="SpellStats" style="width:100%">
+      <tr style="text-align:center">
+        <td><b>Spell DC</b>: Ki Sacrifice: 13; True Sacrifice: 13</td>
+      </tr></table>
+</td>
+    </tr></table>
+</td>
+  </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Raise Dead (Ki Sacrifice5 Conj): Restores a willing soul, dead up to NaN days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot</td>
+      <td>Raise Dead (Ki Sacrifice5 Conj): Restores a willing soul, dead up to 20 days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot</td>
     </tr><tr style="text-align:left">
-      <td>Resurrection (Ki Sacrifice7 Conj): Fully restores a target willing soul, dead up to NaN years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)</td>
+      <td>Resurrection (Ki Sacrifice7 Conj): Fully restores a target willing soul, dead up to 200 years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)</td>
     </tr><tr style="text-align:left">
-      <td>True Resurrection (True Sacrifice9 Conj): Restores life with full health, levels, and prepared spells to a willing chosen creature dead up to NaN years</td>
+      <td>True Resurrection (True Sacrifice9 Conj): Restores life with full health, levels, and prepared spells to a willing chosen creature dead up to 200 years</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

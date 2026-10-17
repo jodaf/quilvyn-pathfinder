@@ -285,7 +285,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: D0: 4; D1: 5; D2: 4; D3: 4; D4: 4; D5: 4; D6: 4; D7: 4; D8: 4; D9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
-        <td><b>Spell DC</b>: D: 11; Domain: 11</td>
+        <td><b>Spell DC</b>: D: 11; Domain: 11; Verdant Sentinel: 11</td>
       </tr></table>
 </td>
     </tr></table>
@@ -323,17 +323,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Fog Cloud (Water2 Conj): R300' 20' radius fog obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Freedom Of Movement (D4 Abju): Allows touched to ignore movement impediments, escape grapples, and move normally when underwater, for 200 min</td>
+      <td>Freedom Of Movement (D4 Abju): Allows touched to ignore movement impediments, escape grapples, and move normally when underwater (save Will negates), for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Greater Dispel Magic (D6 Abju): R300' Successful caster level check check vs. 11+caster level cancels 5 targeted spells or 1 spell or curse on each creature in a 20' radius or suppresses a magic item for 1d4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Magic Fang (D3 Tran): R75' target gains +5 attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, for 20 hr</td>
+      <td>Greater Magic Fang (D3 Tran): R75' target gains +5 attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Grove Of Respite (D4 Conj): R75' Creates a 20' radius grove that reports intruders and provides water and fruit that feeds 8 and restores 1 hit point for 40 hr</td>
     </tr><tr style="text-align:left">
       <td>Hallow (D5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Hide From Animals (D1 Abju): 20 touched become imperceptible to animals for 200 min; attacking any creature ends the spell for all</td>
+      <td>Hide From Animals (D1 Abju): 20 touched become imperceptible to animals for 200 min (save Will negates); attacking any creature ends the spell for all</td>
     </tr><tr style="text-align:left">
       <td>Horrid Wilting (Water8 Necr): R1200' Creatures in a 30' radius suffer 20d6 HP, or 20d8 HP for plants or water elementals (save Fortitude half)</td>
     </tr><tr style="text-align:left">
@@ -343,9 +343,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Mass Cure Critical Wounds (D9 Conj): R75' 20 targets in a 15' radius regain 4d8+20 hit points; undead instead suffer the same amount (save Will half)</td>
     </tr><tr style="text-align:left">
-      <td>Mass Owl's Wisdom (D6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom for 20 min</td>
+      <td>Mass Owl's Wisdom (D6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom (save Will negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Mending (D0 Tran): R10' Repairs minor damage to an object weighing up to 20 lb</td>
+      <td>Mending (D0 Tran): R10' Repairs minor damage to an object weighing up to 20 lb (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Obscuring Mist (Water1 Conj): Fog in a 20'-radius, 20'-high cylinder obscures vision, giving a 20% miss chance on attacks within 5' and a 50% chance on more distant attacks, for 20 min</td>
     </tr><tr style="text-align:left">
@@ -357,7 +357,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Read Magic (D0 Divi): Allows self to read magical writing and identify <i>Glyphs</i> and <i>Symbols</i> with a successful Spellcraft check for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Regenerate (D9 Conj): Touched living creature regrows missing body parts, regains 4d8+20 hit points, and recovers from fatigue, exhaustion, and nonlethal damage</td>
+      <td>Regenerate (D9 Conj): Touched living creature regrows missing body parts, regains 4d8+20 hit points, and recovers from fatigue, exhaustion, and nonlethal damage (save Fortitude negates)</td>
     </tr><tr style="text-align:left">
       <td>Reincarnate (D4 Tran): Uses part of a corpse, dead up to 1 week, to restore a willing soul to full health in a generated body</td>
     </tr><tr style="text-align:left">
@@ -383,17 +383,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Tree Shape (D2 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Tree Shape (Verdant Sentinel3 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for NaN hr</td>
+      <td>Tree Shape (Verdant Sentinel3 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>True Seeing (D7 Divi): Allows touched to see through 120' darkness, illusion, and invisibility, note secret doors, and see the true forms of polymorphed items for 20 min</td>
+      <td>True Seeing (D7 Divi): Allows touched to see things as they really are (save Will negates) for 20 min: to see through 120' darkness, illusion, and invisibility, note secret doors, and see the true forms of polymorphed items</td>
     </tr><tr style="text-align:left">
       <td>Unhallow (D5 Evoc): 40' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Stone (D6 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness); each 5' section has 75 hit points and hardness 8</td>
+      <td>Wall Of Stone (D6 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness); each 5' section has 75 hit points and hardness 8 (save Reflex avoids entrapment)</td>
     </tr><tr style="text-align:left">
       <td>Warp Wood (D2 Tran): R75' Warps or straightens 20 wooden objects in a 20' radius (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Water Breathing (Water3 Tran): Allows touched creatures to breathe underwater for a total of 40 hrs divided among them</td>
+      <td>Water Breathing (Water3 Tran): Allows touched creatures to breathe underwater (save Will negates) for a total of 40 hrs divided among them</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
