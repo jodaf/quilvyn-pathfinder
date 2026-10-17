@@ -2139,7 +2139,10 @@ Pathfinder.FEATURES = {
   'Angel Of Death':
     'Section=combat ' +
     'Note="Successful Death Attack disintegrates the victim, preventing use of <i>Raise Dead</i> and <i>Resurrection</i>, once per day"',
-  'Death Attack':SRD35.FEATURES['Death Attack'],
+  'Death Attack':
+    // Add Master Spy level to support PFAPG
+    SRD35.FEATURES['Death Attack']
+    .replaceAll('levels.Assassin', '((levels.Assassin||0)+($\\"levels.Master Spy\\"||0))'),
   // Hide In Plain Sight as above
   'Hidden Weapons':
     'Section=skill Note="+%{levels.Assassin} Sleight Of Hand to hide weapons"',
