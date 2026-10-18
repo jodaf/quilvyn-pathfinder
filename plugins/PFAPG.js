@@ -705,7 +705,10 @@ PFAPG.FEATURES = {
     'Section=magic,magic ' +
     'Note=' +
       '"+1 Spell DC (Divination)",' +
-      '"+1 <i>Sleep</i> DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}"',
+      '"+1 <i>Sleep</i> DC%{charisma>=15 ? \'/May cast <i>Dream</i> 1/dy\' : \'\'}" ' +
+    'Spells="Dream" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=level',
   'Eternal Grudge':'Section=combat Note="+1 attack vs. dwarves and orcs"',
   'Lightbringer':
     'Section=magic,save ' +
@@ -1353,7 +1356,10 @@ PFAPG.FEATURES = {
     'Section=magic,skill ' +
     'Note=' +
       '"May cast <i>Wish</i> 1/dy",' +
-      '"May take 20 on all Knowledge"',
+      '"May take 20 on all Knowledge" ' +
+    'Spells="Wish" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=mysteryLevel',
   'Final Revelation (Nature Mystery)':
     'Section=feature ' +
     'Note="Cocooning for 8 hr changes creature type, removes poisons and diseases, and restores HP and abilities 1/dy"',
@@ -1921,7 +1927,11 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Witch',
   'Forced Reincarnation Hex':
     'Section=magic ' +
-    'Note="R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will negates) 1/target/dy"',
+    'Note=' +
+      '"R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will negates) 1/target/dy" ' +
+      'Spells="Reincarnate" ' +
+      'SpellAbility=Intelligence ' +
+      'SpellLevel=levels.Witch',
   'Fortune Hex':
     'Section=magic ' +
     'Note="R30\' Target gains the better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
@@ -1934,7 +1944,10 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Witch',
   'Healing Hex':
     'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects 1/target/dy"',
+    'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects 1/target/dy" ' +
+    'Spells="Cure Light Wounds","5:Cure Moderate Wounds" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Hex':'Section=feature Note="%V selections"',
   'Life Giver Hex':
     'Section=magic ' +
@@ -1944,7 +1957,10 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Witch',
   'Major Healing Hex':
     'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy"',
+    'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy" ' +
+    'Spells="Cure Serious Wounds","15:Cure Critical Wounds" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Misfortune Hex':
     'Section=magic ' +
     'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will negates) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
@@ -1957,7 +1973,10 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Witch',
   'Nightmares Hex':
     'Section=magic ' +
-    'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends)"',
+    'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends)" ' +
+    'Spells="Nightmare" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   'Patron':
     'Section=feature,magic ' +
     'Note=' +
@@ -1991,7 +2010,11 @@ PFAPG.FEATURES = {
     'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends) 1/target/dy"',
   'Weather Control Hex':
     'Section=magic ' +
-    'Note="May perform 1 hr ritual to use <i>Control Weather</i> effects 1/dy"',
+    'Note=' +
+      '"May perform 1 hr ritual to use <i>Control Weather</i> effects 1/dy" ' +
+    'Spells="Control Weather" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
   "Witch's Familiar":
     'Section=feature,magic ' +
     'Note=' +
@@ -3198,7 +3221,10 @@ PFAPG.FEATURES = {
   'Mystic Prescience':'Section=combat Note="+%V AC/+%V CMD"',
   'Mystic Visions':
     'Section=magic ' +
-    'Note="May spend 2 Ki Points to use <i>Divination</i> effects"',
+    'Note="May spend 2 Ki Points to use <i>Divination</i> effects" ' +
+    'Spells="Divination" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Monk',
   'Pure Power':'Section=ability Note="+2 Strength/+2 Dexterity/+2 Wisdom"',
   'Reflexive Shot':'Section=combat Note="May make AOO w/bow"',
   'Sipping Demon':
@@ -3253,7 +3279,11 @@ PFAPG.FEATURES = {
     'Note="10\' radius inflicts on undead -4 Will vs. positive energy and no recovery of HP from channeled negative energy"',
   'Call Celestial Ally':
     'Section=magic ' +
-    'Note="May cast <i>%{levels.Paladin<12? \'Lesser \' : levels.Paladin>=16 ? \'Greater \' : \'\'}Planar Ally</i> 1/wk"',
+    'Note=' +
+      '"May cast <i>%{levels.Paladin<12? \'Lesser \' : levels.Paladin>=16 ? \'Greater \' : \'\'}Planar Ally</i> 1/wk" ' +
+    'Spells="Lesser Planar Ally","12:Planar Ally","16:Greater Planar Ally" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Paladin',
   'Channel Positive Energy (Hospitaler)':
     'Section=magic ' +
     'Note="May use Channel Energy effects %{charismaModifier + 3}/dy"',
@@ -3488,7 +3518,11 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to take the better of 2 rolls on a known skill"',
   'Spirit Bond':
     'Section=magic ' +
-    'Note="May cast <i>Augury</i> and %{levels.Ranger//4} ranger spells w/in favored terrain 1/dy"',
+    'Note=' +
+      '"May cast <i>Augury</i> and %{levels.Ranger//4} ranger spells w/in favored terrain 1/dy" ' +
+    'Spells="Augury" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Ranger',
   'Spiritual Bond':'Section=companion Note="R30\' Mount gains %{levels.Ranger} temporary HP and self may take half of mount\'s damage 1/dy"',
   "Stag's Leap":
     'Section=skill ' +
@@ -3519,7 +3553,11 @@ PFAPG.FEATURES = {
     'Note="May use Hunter\'s Trick to make an immediate attack on an adjacent foe who hits an ally"',
   'Wisdom Of The Spirits':
     'Section=magic ' +
-    'Note="May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain"',
+    'Note=' +
+      '"May cast <i>Divination</i> instead of <i>Augury</i> w/in favored terrain or <i>Augury</i> in any terrain" ' +
+    'Spells="Divination" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=levels.Ranger',
 
   // Rogue
   'Accuracy':
@@ -3723,7 +3761,11 @@ PFAPG.FEATURES = {
       '"Immune to acid, petrification, and polymorph"',
   'Blizzard (Sorcerer)':
     'Section=magic ' +
-    'Note="May use combined <i>Control Winds</i> and <i>Sleet Storm</i> effects centered on self 1/dy"',
+    'Note=' +
+      '"May use combined <i>Control Winds</i> and <i>Sleet Storm</i> effects centered on self 1/dy" ' +
+    'Spells="Control Winds","Sleet Storm" ' +
+    'SpellAbility=Charisma ' +
+    'SpellLevel=levels.Ranger',
   'Bloodline Aquatic':
     'Section=magic,skill ' +
     'Note=' +
@@ -4304,10 +4346,18 @@ PFAPG.FEATURES = {
   // Channel Smite as Pathfinder
   'Divine Judgment':
     'Section=magic ' +
-    'Note="May use level 2 spell slot to inflict <i>Death Knell</i> in response to reducing foe to negative HP"',
+    'Note=' +
+      '"May use level 2 spell slot to inflict <i>Death Knell</i> in response to reducing foe to negative HP" ' +
+    'Spells="Death Knell" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel="levels.Holy Vindicator"',
   'Divine Retribution':
     'Section=magic ' +
-    'Note="May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to crit to self or foe"',
+    'Note=' +
+      '"May use level 3 spell slot to inflict <i>Bestow Curse</i> on foe in response to crit to self or foe" ' +
+    'Spells="Bestow Curse" ' +
+    'SpellAbility=Wisdom ' +
+    'SpellLevel=casterLevel',
   'Divine Wrath':
     'Section=magic ' +
     'Note=' +
@@ -9551,10 +9601,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       rules.defineRule
         ('skillModifier.' + s, 'skillNotes.loreKeeper(Oracle).1', '+', null);
     });
-    Pathfinder.featureSpells(rules,
-      'Final Revelation (Lore Mystery)', 'LoreOracle', 'charisma',
-      'mysteryLevel', null, ['Wish']
-    );
 
     // Nature Mystery
     rules.defineRule
@@ -9931,26 +9977,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
     rules.defineRule('selectableFeatureCount.Witch (Patron)',
       'featureNotes.patron', '+=', '1'
-    );
-    Pathfinder.featureSpells(rules,
-      'Forced Reincarnation Hex', 'ForcedReincarnationHex', 'intelligence',
-      classLevel, null, ['Reincarnate']
-    );
-    Pathfinder.featureSpells(rules,
-      'Healing Hex', 'HealingHex', 'intelligence', classLevel, null,
-      ['Cure Light Wounds', '5:Cure Moderate Wounds']
-    );
-    Pathfinder.featureSpells(rules,
-      'Major Healing Hex', 'MajorHealingHex', 'intelligence', classLevel,
-      null, ['Cure Serious Wounds', '15:Cure Critical Wounds']
-    );
-    Pathfinder.featureSpells(rules,
-      'Nightmares Hex', 'NightmaresHex', 'intelligence', classLevel,
-      '10+' + classLevel + '//2+intelligenceModifier', ['Nightmare']
-    );
-    Pathfinder.featureSpells(rules,
-      'Weather Control Hex', 'WeatherControlHex', 'intelligence', classLevel,
-      null, ['Control Weather']
     );
 
   } else if(name == 'Barbarian') {
@@ -10965,10 +10991,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     // Ki Mystic
     rules.defineRule
       ('combatNotes.mysticPrescience', classLevel, '=', 'source<20 ? 2 : 4');
-    Pathfinder.featureSpells(rules,
-      'Mystic Visions', 'MysticVisions', 'charisma', classLevel, null,
-      ['Divination']
-    );
 
     // Monk Of The Empty Hand
     rules.defineRule('emptyHandLevel',
@@ -11168,10 +11190,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     );
     rules.defineRule('combatNotes.smiteEvil',
       'sacredServantLevel', 'v', 'Math.floor((source + 5) / 6)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Call Celestial Ally', 'CallCelestialAlly', 'wisdom', classLevel,
-      null, ['Lesser Planar Ally', '12:Planar Ally', '16:Greater Planar Ally']
     );
 
     // Shining Knight
@@ -11444,15 +11462,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       classLevel, '=', 'Math.floor((source - 3) / 2)'
     );
 
-    // Spirit Ranger
-    Pathfinder.featureSpells(rules,
-      'Spirit Bond', 'SpiritBond', 'wisdom', classLevel, null, ['Augury']
-    );
-    Pathfinder.featureSpells(rules,
-      'Wisdom Of The Spirits', 'WisdomOfTheSpirits', 'wisdom', classLevel, null,
-      ['Divination']
-    );
-
     // Urban Ranger
     rules.defineRule
       ('skillNotes.trapfinding', classLevel, '+=', 'Math.floor(source / 2)');
@@ -11649,10 +11658,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     // Bloodline Boreal
     rules.defineRule('magicNotes.icewalker', classLevel, '?', 'source>=9');
     rules.defineRule('casterLevels.Blizzard', classLevel, '+=', null);
-    Pathfinder.featureSpells(rules,
-      'Blizzard (Sorcerer)', 'Blizzard', 'charisma', classLevel, '',
-      ['Control Winds', 'Sleet Storm']
-    );
 
     // Bloodline Deep Earth
     rules.defineRule('deepEarthLevel',
@@ -11884,14 +11889,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('channelLevel', classLevel, '+=', null);
     rules.defineRule('magicNotes.casterLevelBonus',
       classLevel, '+=', 'source - Math.floor((source + 3) / 4)'
-    );
-    Pathfinder.featureSpells(rules,
-      'Divine Judgment', 'DivineJudgment', 'wisdom', classLevel, '',
-      ['Death Knell']
-    );
-    Pathfinder.featureSpells(rules,
-      'Divine Retribution', 'DivineRetribution', 'wisdom', 'casterLevel', '',
-      ['Bestow Curse']
     );
 
   } else if(name == 'Horizon Walker') {
@@ -12366,9 +12363,6 @@ PFAPG.raceRulesExtra = function(rules, name) {
     rules.defineRule('selectableFeatureCount.Elf (Racial Trait)',
       'elfFeatures.Lightbringer', '+', '-1',
       'elfFeatures.Spirit Of The Waters', '+', '-1'
-    );
-    Pathfinder.featureSpells(rules,
-      'Dreamspeaker', 'Dreamspeaker', 'charisma', 'level', '', ['Dream']
     );
     rules.defineRule
       ('casterLevels.Dreamspeaker', 'charisma', '?', 'source >= 15');
