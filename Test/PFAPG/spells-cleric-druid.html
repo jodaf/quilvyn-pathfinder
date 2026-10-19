@@ -367,7 +367,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Hydraulic Torrent (D3 Evoc): Creates a 60' line of water that performs a +13 Bull Rush on creatures, extinguishes normal fires, and makes a +13 Strength check to break immovable objects</td>
     </tr><tr style="text-align:left">
-      <td>Instant Armor (C2 Conj): Self gains force armor effects equivalent to half-plate or magical lesser armor for 10 min</td>
+      <td>Instant Armor (C2 Conj): Gives self force armor equivalent to half-plate or magical lesser armor for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Life Bubble (C5 Abju): 10 touched breathe freely, remain comfortable from -40F to 150F, and are unaffected by pressure for a total of 20 hr divided among them</td>
     </tr><tr style="text-align:left">
@@ -381,59 +381,59 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Nature's Exile (D3 Tran): Touched suffers permanent hostility from natural animals and -10 Survival, and any animal companion suffers -2 attacks, skill checks, and saves (Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Pillar Of Life (C5 Conj): R200' Creatures regain 2d8+10 HP (undead suffer 10d6 HP (light-sensitive 10d8)) on first contact w/5' sq for 10 rd</td>
+      <td>Pillar Of Life (C5 Conj): R200' Creates a 5' square of positive energy that restores 2d8+10 HP on first contact for 10 rd; undead instead suffer 10d6 HP, or 10d8 HP if light-sensitive</td>
     </tr><tr style="text-align:left">
-      <td>Pox Pustules (D2 Necr): R50' Target suffers sickened and -4 Dexterity (Fortitude negates; full-round scratch negates sickened for 1 rd) for 10 min</td>
+      <td>Pox Pustules (D2 Necr): R50' Inflicts sickened and -4 Dexterity (save Fortitude negates; spending a move action scratching negates sickened for 1 rd) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Rampart (D7 Conj): R200' Creates 5'x10'x50' linear or 5'x13' radius circular earthen wall (Hardness 0; 180 HP; DC 20 Climb; DC 60 Strength to break)</td>
+      <td>Rampart (D7 Conj): R200' Creates a 5'x10'x50' linear or 5'x13' radius circular earthen wall; each 5' section has hardness 0 and 180 hit points and requires a DC 20 Climb check to climb over and a DC 60 Strength check to break</td>
     </tr><tr style="text-align:left">
-      <td>Rest Eternal (D5 Necr): Touched corpse requires DC 21 caster check to communicate, resurrect, or animate</td>
+      <td>Rest Eternal (D5 Necr): Touched corpse requires a DC 21 caster check to communicate, resurrect, or animate</td>
     </tr><tr style="text-align:left">
-      <td>River Of Wind (D4 Evoc): 5'x120' line inflicts 4d6 HP nonlethal and knocked prone (Fortitude half HP only), then 2d6 HP nonlethal, pushed 20', and knocked prone (Fortitude 1d6 HP only) for 9 rd</td>
+      <td>River Of Wind (D4 Evoc): 5'x120' line inflicts 4d6 HP nonlethal and knocked prone initially (Fortitude half HP only), then 2d6 HP nonlethal, pushed 20', and knocked prone (Fortitude 1d6 HP only) for 9 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sacred Bond (C3 Conj): Self and touched may cast touch healing spells on each other at R50' for 100 min</td>
+      <td>Sacred Bond (C3 Conj): Allows self and touched to cast touch healing spells on each other at R50' for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Scent Trail (D2 Tran): R50' 10 designated creatures in 15' radius gain +20 Survival to follow target trail and understand scent messages for 10 hr</td>
+      <td>Scent Trail (D2 Tran): R50' 10 designated creatures in a 15' radius gain +20 Survival to follow the target's trail and the ability to understand scent messages left along it with a DC 20 Survival check, with a -1 penalty for each word or emotion in the message, (save Fortitude negates) for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Seamantle (D8 Conj): 30' water column hinders fire spells and gives self +8 AC, +4 Reflex, 30' slam attack, and touch that extinguishes fires for 10 min</td>
+      <td>Seamantle (D8 Conj): 30' high water column around self requires DC 20 + spell level caster level checks for fire spells to take effect and gives self a +8 cover bonus to Armor Class, +4 Reflex, a 30' slam attack that inflicts 1d4 HP bludgeoning, and a touch that extinguishes fires for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand moves 10'/rd, creates difficult terrain, inflicts -10 Acrobatics, and entangles and knocks prone (Reflex negates) for 10 rd</td>
+      <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand creates difficult terrain, inflicts -10 Acrobatics, and entangles (save Reflex negates; moving while entangled requires another save that inflicts knocked prone on failure) for 10 rd; can be moved 10' per rd as a move action</td>
     </tr><tr style="text-align:left">
-      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigues, and knocks prone (Fortitude half HP and negates knocked prone; flying creatures DC 15 Fly to avoid) for 10 rd</td>
+      <td>Sirocco (D6 Evoc): R200' 60' high, 20' radius inflicts 4d6+10 HP fire, fatigued, and knocked prone (Fortitude half HP and fatigued only; water creatures suffer a -4 penalty on the save) and inflicts falling damage on flying creatures (save Fly DC 15 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Slipstream (D2 Conj): Creates a wave that moves touched 10'/rd (20' downhill) and gives +20' Swim for 100 min</td>
+      <td>Slipstream (D2 Conj): Creates a wave that moves touched 10' per rd, or 20' per rd downhill, and gives it a +20 swim Speed (save Reflex negates) for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Snake Staff (C5 Tran): R200' Transforms up to 10 sticks in 15' radius into telepathically controlled snakes for 10 rd</td>
+      <td>Snake Staff (C5 Tran): R200' Transforms up to 10 sticks in 15' radius into telepathically controlled snakes (save Will negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Spiritual Ally (C4 Evoc): R200' Force being moves 30'/rd and makes +14/+9/+4 attacks inflicting 1d10+3 HP for 10 rd (DC d20+10 SR ends)</td>
+      <td>Spiritual Ally (C4 Evoc): R200' Force being can be moved 30' per rd as a swift action and makes +14, +9, +4 attacks that inflict 1d10+3 HP for 10 rd; the first attack on a target is subject to SR, and failure to overcome it ends the spell</td>
     </tr><tr style="text-align:left">
       <td>Stone Call (D2 Conj): R200' 40' radius inflicts 2d6 HP bludgeoning for 1 rd, then difficult terrain for 9 rd</td>
     </tr><tr style="text-align:left">
-      <td>Stormbolts (C8 Evoc): Targets in 30' radius suffer 10d8 HP electricity and stunned 1 rd (Fortitude half HP only)</td>
+      <td>Stormbolts (C8 Evoc): Targets within 30' suffer 10d8 HP electricity and stunned 1 rd (save Fortitude half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Strong Jaw (D4 Tran): Touched natural weapon inflicts damage as +2 size for 10 min</td>
+      <td>Strong Jaw (D4 Tran): Touched natural weapon inflicts damage as a creature 2 sizes larger (save Fortitude negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Swarm Skin (D6 Tran): Self flesh transforms into controlled insect swarms until destroyed or ordered to return to bones</td>
+      <td>Swarm Skin (D6 Tran): Transforms self flesh into controlled swarms until they are destroyed or ordered to return to bones; can divide 10 levels among swarms of spiders (costs 2), rats (costs 4), crabs or wasps (cost 6 each), centipedes or leeches (cost 8 each), and army ants (cost 10)</td>
     </tr><tr style="text-align:left">
-      <td>Threefold Aspect (D5 Tran): Self may transform freely between young (+2 Dexterity and Constitution, -2 Wisdom), adult (+2 Wisdom and Intelligence, -2 Dexterity), and elderly (+4 Wisdom and Intelligence, -2 Strength and Dexterity) for 1 dy</td>
+      <td>Threefold Aspect (D5 Tran): Allows self to transform freely between young (gaining +2 Dexterity and Constitution and suffering -2 Wisdom), adult (gaining +2 Wisdom and Intelligence and suffering -2 Dexterity), and elderly (gaining +4 Wisdom and Intelligence and suffering -2 Strength and Dexterity) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in 15' radius (Will negates for polymorph ability, DC 11+effect level for polymorph spell) for 10 rd</td>
+      <td>True Form (D4 Abju): R200' Removes polymorph effects from 3 targets in a 15' radius (save Will negates for the polymorph ability, and a second save 1 rd after a failure ends) for 10 rd; reversing a polymorph spell requires a DC 11 + effect level caster level check (+15 maximum)</td>
     </tr><tr style="text-align:left">
-      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 30'/60'/rd over land/water, inflicts 8d6 HP bludgeoning (Fortitude half), +21 CMB to knock down and sweep away for 5 rd</td>
+      <td>Tsunami (D9 Conj): R800' 10'x10'x20' wave moves 30' each rd (60' over water), inflicts 8d6 HP bludgeoning (save Fortitude half), and makes +21 combat maneuvers to knock down and sweep away creatures, inflicting 6d6 HP on them each rd (successful combat maneuver or Swim check ends), for 5 rd</td>
     </tr><tr style="text-align:left">
       <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (D7 Evoc): R800' 15' radius inflicts 3d6 HP bludgeoning (Reflex negates) on first contact, then 1d8 HP/rd on Medium and smaller (Reflex negates) for 9 rd; self may eject creatures from the vortex</td>
+      <td>Vortex (D7 Evoc): R800' Creates in a body of liquid a 15' radius, 50' deep whirlpool that inflicts 3d6 HP bludgeoning (save Reflex negates) on first contact, then 1d8 HP bludgeoning each rd on Medium and smaller creatures (save Reflex on the first rd after initial failure negates) for 9 rd or until deliberately ejected; boats up to 30' long suffer 6d6 HP and are pulled into the current (successful DC 25 Profession (Sailor) check half HP only), and longer boats suffer half HP only</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Lava (D8 Conj): R200' Creates 10 contiguous 5' sq wall sections for 10 rd; foe strike inflicts 2d6 HP fire on weapon; passage (DC 25 Strength) inflicts 20d6 HP fire; R60' ranged touch inflicts 10d6 HP fire and destroys 1d4 sections 1/rd; half damage continues for 1d3 rd</td>
+      <td>Wall Of Lava (D8 Conj): R200' Creates 10 contiguous 5'x5'x2" wall sections, each with hardness 4 and 90 hit points, that inflict 2d4 HP fire to creatures within 10' for 10 rd; weapon strikes on the wall inflict 2d6 HP fire on the weapon, and passage through requires a DC 25 Strength check and inflicts 20d6 HP fire; allows a R60' ranged touch once per rd that inflicts 10d6 HP fire but destroys 1d4 wall sections; all damage from the wall continues to inflict half HP for 1d3 rd after exposure ends</td>
     </tr><tr style="text-align:left">
-      <td>Weapon Of Awe (C2 Tran): Touched weapon or unarmed strike gains +2 damage, and crit inflicts 1 rd shaken, for 10 min</td>
+      <td>Weapon Of Awe (C2 Tran): Touched weapon or unarmed strike gains a +2 sacred bonus to damage, and critical hits inflict shaken for 1 rd, (save Will negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Winds Of Vengeance (C9 Evoc): Self gains 60' fly and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone (Fortitude half HP only), for 10 min</td>
+      <td>Winds Of Vengeance (C9 Evoc): Gives self a 60' fly Speed and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>World Wave (D9 Tran): Self rides 20'x10' natural terrain oval that forms 30' wave for 10 rd or 5' swell for 10 hr, moves 160'/rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects (constructs and undead suffer dbl HP)</td>
+      <td>World Wave (D9 Tran): Allows self and 10 designated creatures to ride a 20'x100' section of natural terrain that forms a 30' wave for 10 rd or a 5' swell for 10 hr, moves 160' per rd, and inflicts 6d6 (wave) or 1d6 (swell) HP bludgeoning to non-natural objects, with constructs and undead sufferng double</td>
     </tr><tr style="text-align:left">
-      <td>Wrathful Mantle (C3 Evoc): Touched gains +2 saves for 10 min; target may dismiss to inflict 2d8 HP force to creatures in 5' radius</td>
+      <td>Wrathful Mantle (C3 Evoc): Touched gains a +2 resistance bonus to saves for 10 min; target can dismiss the spell to inflict 2d8 HP force on creatures within 5'</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
