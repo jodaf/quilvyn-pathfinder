@@ -3710,9 +3710,7 @@ Pathfinder.SPELLS = {
     'Level=Adept2,B2,C2,S2,W2 ' +
     'Description=' +
       '"Touched object reduces the light level in a 20\' radius by 1 step for %{lvl} min"',
-  'Darkvision':
-    'Description=' +
-      '"Gives touched 60\' black and white vision in total darkness (save Will negates) for %{lvl} hr"',
+  'Darkvision':'',
   'Daylight':'',
   'Daze':
     'Description=' +
