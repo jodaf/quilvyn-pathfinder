@@ -3920,7 +3920,7 @@ Pathfinder.SPELLS = {
   'Geas/Quest':
     'Level=B6,C6,Charm6,Nobility6,S6,W6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Compels a target to complete a specified task within %{lvl} days, suffering -3 to each ability score (maximum -12, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task"',
+      '"R%{25+lvl//2*5}\' Compels a target to complete a specified task within %{lvl} days, suffering -3 to each ability score (-12 maximum, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task"',
   'Gentle Repose':'Level=C2,Repose2,S3,W3 Liquid=Oil',
   'Ghost Sound':
     'Level=Adept0,B0,S0,W0 ' +
@@ -4161,12 +4161,12 @@ Pathfinder.SPELLS = {
   'Miracle':
     'Level=C9,Community9,Luck9 ' +
     'Description=' +
-      '"Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 25,000 GP to request"',
+      '"Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells of up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 25,000 GP to request"',
   'Mirage Arcana':'',
   'Mirror Image':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
-      '"Creates 1d4+%{lvl//3<?8} (maximum 8) copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and any hit on one destroys it"',
+      '"Creates 1d4+%{lvl//3<?8} (8 maximum) copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and any hit on one destroys it"',
   'Misdirection':'Level=B2,S2,W2',
   'Mislead':'',
   'Mnemonic Enhancer':'',
@@ -4296,7 +4296,7 @@ Pathfinder.SPELLS = {
 
   'Quench':
     'Description=' +
-      '"R%{100+lvl*10}\' Extinguishes nonmagical fires, dispels magic fires with a successful caster level check (maximum +15), and inflicts %{lvl<?10}d6 HP to fire creatures in a %{lvl*20} cubic foot area, or suppresses fire-based effects of a non-artifact magic item for 1d4 hr (save Will negates)"',
+      '"R%{100+lvl*10}\' Extinguishes nonmagical fires, dispels magic fires with a successful caster level check (+15 maximum), and inflicts %{lvl<?10}d6 HP to fire creatures in a %{lvl*20} cubic foot area, or suppresses fire-based effects of a non-artifact magic item for 1d4 hr (save Will negates)"',
 
   'Rage':'Level=B2,Destruction3,Madness3,S3,W3',
   'Rainbow Pattern':'',
