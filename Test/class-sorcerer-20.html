@@ -643,7 +643,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Astral Projection (S9 Necr): Projects self and 10 willing creatures to the Astral Plane</td>
     </tr><tr style="text-align:left">
-      <td>Baleful Polymorph (S5 Tran): R75' Changes the target into a chosen 1 HD creature (save Fortitude (DC +1) negates; Will after a failure allows retaining HD and memories)</td>
+      <td>Baleful Polymorph (S5 Tran): R75' Changes the target into a chosen 1 HD creature (save Fortitude (DC +1) negates; Will after a failure allows retaining abilities)</td>
     </tr><tr style="text-align:left">
       <td>Banishment (Bloodline Celestial7 Abju): R75' Banishes 40 HD of extraplanar creatures in a 15' radius to their home planes (save Will negates; possession of an object that a target hates gives +2 DC and +1 vs. spell resistance)</td>
     </tr><tr style="text-align:left">
@@ -661,7 +661,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Bestow Curse (S4 Necr): Touched permanently suffers a choice of -6 to an ability, -4 attacks, saves, and checks, or a 50% chance of losing its action each rd (save Will (DC +1) negates)</td>
     </tr><tr style="text-align:left">
-      <td>Binding (S8 Ench): R75' Magically imprisons the target (save Will negates for targets with 10 HD or more; assistance from other casters raises the threshold by 1/2 HD per assistant, or by 1/3 the assistant's level if they cast <i>Binding</i> or an appropriate <i>Dominate</i> spell) with a choice of chains for 20 years, sleep for 20 years, chains and sleep for 20 months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2</td>
+      <td>Binding (S8 Ench): R75' Magically imprisons the target (save Will negates for targets with 10 HD or more; assistance from other casters raises the threshold by 1 HD per assistant who casts <i>Suggestion</i>, or by 1/3 the assistant's level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains for 20 years, sleep for 20 years, chains and sleep for 20 months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2</td>
     </tr><tr style="text-align:left">
       <td>Black Tentacles (Bloodline Aberrant4 Conj): R300' Tentacles in a 20' radius grapple (CMB +25; CMD 35), inflicting 1d6+4 HP each rd for 20 rd</td>
     </tr><tr style="text-align:left">
@@ -799,9 +799,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Disintegrate (S6 Tran): R300' Ranged touch attack inflicts 40d6 HP (save Fortitude (DC +1) inflicts 5d6 HP), turning a slain target to dust, or disintegrates a 10' cube of matter</td>
     </tr><tr style="text-align:left">
-      <td>Dismissal (Bloodline Abyssal5 Abju): R75' Sends the target to its native plane or (20%) to another random plane (save Will negates)</td>
+      <td>Dismissal (Bloodline Abyssal5 Abju): R75' Sends the target to its native plane or (20% chance) to another random plane (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Dismissal (S5 Abju): R75' Sends the target to its native plane or (20%) to another random plane (save Will negates)</td>
+      <td>Dismissal (S5 Abju): R75' Sends the target to its native plane or (20% chance) to another random plane (save Will negates)</td>
     </tr><tr style="text-align:left">
       <td>Dispel Magic (Bloodline Arcane3 Abju): R300' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20' radius, or disrupts a foe's spell casting</td>
     </tr><tr style="text-align:left">
@@ -1209,9 +1209,9 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Open/Close (S0 Tran): R75' Opens or closes an object weighing up to 30 lb (save Will (DC +1) negates)</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (Bloodline Arcane5 Tran): Self gains a 40' fly Speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (Bloodline Arcane5 Tran): Gives self a 40' fly Speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Overland Flight (S5 Tran): Self gains a 40' fly Speed and +10 Fly skill for 20 hr</td>
+      <td>Overland Flight (S5 Tran): Gives self a 40' fly Speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Owl's Wisdom (S2 Tran): Gives touched +4 Wisdom (save Will (DC +1) Negates) for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1247,13 +1247,13 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Plant Shape III (S7 Tran): Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Poison (Bloodline Fey3 Necr): Touched suffers -1d3 Constitution each rd (save Fortitude (DC +1) ends) for 6 rd</td>
+      <td>Poison (Bloodline Fey3 Necr): Touched suffers 1d3 points of Constitution damage each rd (save Fortitude (DC +1) ends) for 6 rd</td>
     </tr><tr style="text-align:left">
       <td>Polar Ray (S8 Evoc): R300' Ranged touch attack inflicts 20d6 HP and drains 1d4 points of Dexterity</td>
     </tr><tr style="text-align:left">
       <td>Polymorph (S5 Tran): Touched willing target becomes a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will (DC +1) negates) for 20 min; the target can use a full-round action to end the spell</td>
     </tr><tr style="text-align:left">
-      <td>Polymorph Any Object (S8 Tran): R75' Transforms the target creature or object into a different creature or object (save Fortitude (DC +1) negates); the duration depends on the degree of change, from 20 min to permanent</td>
+      <td>Polymorph Any Object (S8 Tran): R75' Transforms the target creature or nonmagical object into a different creature or object (save Fortitude (DC +1) negates); the duration depends on the degree of change, from 20 min to permanent</td>
     </tr><tr style="text-align:left">
       <td>Power Word Blind (S7 Ench): R75' Blinds a target with up to 200 hit points; the duration is permanent if the target has 50 hit points or fewer, 1d4+1 min for up to 100 hit points, and 1d4+1 rd otherwise</td>
     </tr><tr style="text-align:left">
@@ -1307,7 +1307,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Rainbow Pattern (S4 Illu): R300' Fascinates 24 HD of creatures in a 20' radius (save Will (DC +1) negates), working upward from those with the fewest HD, for concentration + 20 rd; can move the effect 30' as a free action, and affected creatures will follow it, gaining another save if the move leads them into danger</td>
     </tr><tr style="text-align:left">
-      <td>Ray Of Enfeeblement (S1 Necr): R75' Ranged touch attack inflicts -1d6+5 Strength for 20 rd (save Fortitude (DC +1) half)</td>
+      <td>Ray Of Enfeeblement (S1 Necr): R75' Ranged touch attack reduces Strength by 1d6+5 (save Fortitude (DC +1) half; will not lower Strength below 1) for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Ray Of Exhaustion (S3 Necr): R75' Ranged touch attack inflicts exhaustion (save Fortitude (DC +1) inflicts fatigued) for 20 min</td>
     </tr><tr style="text-align:left">
@@ -1533,7 +1533,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Undeath To Death (S6 Necr): R300' Destroys 20d4 HD of undead with up to 8 HD in a 40' radius (save Will (DC +1) negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
-      <td>Unholy Aura (Bloodline Abyssal8 Abju): 20 creatures within 20' inflict -1d6 Strength on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
+      <td>Unholy Aura (Bloodline Abyssal8 Abju): 20 creatures within 20' inflict 1d6 points of Strength damage on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Unseen Servant (S1 Conj): R75' Creates an invisible servant with Strength 2 and a 15' Speed that can perform simple tasks for 20 hr</td>
     </tr><tr style="text-align:left">

@@ -3564,7 +3564,7 @@ Pathfinder.SPELLS = {
   'Baleful Polymorph':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; Will after a failure allows retaining HD and memories)"',
+      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; Will after a failure allows retaining abilities)"',
   'Bane':'',
   'Banishment':'',
   'Barkskin':'',
@@ -3591,7 +3591,9 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly or swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Ren, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
   'Bestow Curse':'',
-  'Binding':'',
+  'Binding':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Magically imprisons the target (save Will negates for targets with %{lvl//2}%{lvl/2-lvl//2==1?\' 1/2\':\'\'} HD or more; assistance from other casters raises the threshold by 1 HD per assistant who casts <i>Suggestion</i>, or by 1/3 the assistant\'s level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains for %{lvl} years, sleep for %{lvl} years, chains and sleep for %{lvl} months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1\\" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2"',
   'Black Tentacles':
     'Description=' +
       '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
@@ -3768,7 +3770,7 @@ Pathfinder.SPELLS = {
   'Disintegrate':'',
   'Dismissal':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Sends the target to its native plane or (20%) to another random plane (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Sends the target to its native plane or (20% chance) to another random plane (save Will negates)"',
   'Dispel Chaos':'',
   'Dispel Evil':'',
   'Dispel Good':'',
@@ -3787,7 +3789,7 @@ Pathfinder.SPELLS = {
   'Divine Favor':'Level=C1,Nobility1,P1',
   'Divine Power':
     'Description=' +
-      '"Self gains +%{lvl//3<?6} attack, damage, Strength checks, and Strength-based skill checks, +%{lvl} temporary hit points, and an extra attack during full-attack actions for %{lvl} rd"',
+      '"Gives self gains +%{lvl//3<?6} attack, damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions for %{lvl} rd"',
   'Dominate Animal':'',
   'Dominate Monster':'Level=Charm9,S9,W9',
   'Dominate Person':'',
@@ -3851,7 +3853,7 @@ Pathfinder.SPELLS = {
   'Find Traps':
     'Level=C2 ' +
     'Description=' +
-      '"Self gains +%{lvl//2<?10} Perception to uncover traps and an automatic check when within 10\' of one for %{lvl} min"',
+      '"Gives self +%{lvl//2<?10} Perception to uncover traps and an automatic check when within 10\' of one for %{lvl} min"',
   'Finger Of Death':
     'Description=' +
       '"R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
@@ -3964,7 +3966,7 @@ Pathfinder.SPELLS = {
 
   'Hallow':
     'Description=' +
-      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
+      '"40\' radius around the touched structure or site gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
   'Hallucinatory Terrain':'',
   'Halt Undead':'',
   'Harm':'',
@@ -4040,7 +4042,7 @@ Pathfinder.SPELLS = {
   'Insect Plague':
     'Level=C5,D5 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' %{lvl//3<?6} wasp swarms inflict 2d6 HP and -1 Dexterity (save Fortitude DC 13 HP only) for %{lvl} min"',
+      '"R%{400+lvl*40}\' %{lvl//3<?6} wasp swarms inflict 2d6 HP and 1 point of Dexterity damage (save Fortitude DC 13 HP only) for %{lvl} min"',
   'Instant Summons':'Level=Rune7,S7,W7',
   'Interposing Hand':'',
   'Invisibility':
@@ -4094,7 +4096,7 @@ Pathfinder.SPELLS = {
   'Longstrider':'',
   'Lullaby':
     'Description=' +
-      '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep for concentration + %{lvl} rd (save Will negates)"',
+      '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep (save Will negates) for concentration + %{lvl} rd"',
 
   'Mage Armor':'',
   'Mage Hand':'',
@@ -4187,7 +4189,7 @@ Pathfinder.SPELLS = {
   "Order's Wrath":'Level=C4,Law4',
   'Overland Flight':
     'Description=' +
-      '"Self gains a 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
+      '"Gives self a 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
   "Owl's Wisdom":'',
   "Mass Owl's Wisdom":'',
 
@@ -4229,7 +4231,7 @@ Pathfinder.SPELLS = {
       '"Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min"',
   'Poison':
     'Level=C4,D3 ' +
-    'Description="Touched suffers -1d3 Constitution each rd (save Fortitude ends) for 6 rd"',
+    'Description="Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
   'Polar Ray':
     'Description=' +
       '"R%{100+lvl*10}\' Ranged touch attack inflicts %{lvl<?25}d6 HP and drains 1d4 points of Dexterity"',
@@ -4305,7 +4307,7 @@ Pathfinder.SPELLS = {
       '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Ray Of Enfeeblement':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ranged touch attack inflicts -1d6+%{lvl//2<?5} Strength for %{lvl} rd (save Fortitude half)"',
+      '"R%{25+lvl//2*5}\' Ranged touch attack reduces Strength by 1d6+%{lvl//2<?5} (save Fortitude half; will not lower Strength below 1) for %{lvl} rd"',
   'Ray Of Exhaustion':'',
   'Ray Of Frost':'',
   'Read Magic':'',
@@ -4520,16 +4522,18 @@ Pathfinder.SPELLS = {
   'Unhallow':
     'Level=C5,D5 ' +
     'Description=' +
-      '"40\' radius around touched gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
+      '"40\' radius around the touched structure or site gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
   'Unholy Aura':
     'Description=' +
-      '"%{lvl} creatures within 20\' inflict -1d6 Strength on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
+      '"%{lvl} creatures within 20\' inflict 1d6 points of Strength damage on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Unholy Blight':'Level=C4,Evil4',
   'Unseen Servant':'',
   'Vampiric Touch':'',
   'Veil':'',
   'Ventriloquism':'',
-  'Virtue':'Liquid=Potion',
+  'Virtue':
+    'Description="Gives touched 1 temporary HP for 1 min" ' +
+    'Liquid=Potion',
   'Vision':'',
 
   'Wail Of The Banshee':
