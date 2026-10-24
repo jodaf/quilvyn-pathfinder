@@ -82,7 +82,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Nimble Moves: Can move normally through 5' of difficult terrain each rd</td>
     </tr><tr style="text-align:center">
-      <td>Wings Of Fire: May fly 60' 20 min/dy</td>
+      <td>Wings Of Fire: Can use swift actions to gain a 60' fly Speed for 20 min per day</td>
     </tr></table>
 </td>
   </tr></table>
@@ -111,7 +111,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Cinder Dance: Has Nimble Moves and Acrobatic Steps features</i></td>
+        <td><i>Cinder Dance: Has the Nimble Moves and Acrobatic Steps features</i></td>
       </tr><tr style="text-align:center">
         <td><i>Mystery: 1 selection</i></td>
       </tr><tr style="text-align:center">
@@ -121,7 +121,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Gaze Of Flames: Can see through fire, fog, and smoke</td>
       </tr><tr style="text-align:center">
-        <td>Haunted: Malevolent spirits inflict minor annoyances</td>
+        <td>Haunted: Malevolent spirits inflict minor annoyances such as delaying item retrieval and scattering dropped items</td>
       </tr></table>
 </td>
     </tr></table>
@@ -168,7 +168,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Flame Mystery: Acrobatics is a class skill/Climb is a class skill/Intimidate is a class skill/Perform is a class skill</i></td>
+        <td><i>Flame Mystery: Acrobatics, Climb, Intimidate, and Perform are class skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -224,21 +224,22 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
-        <td>Fire Breath: 15' cone inflicts 20d4 HP fire (DC 23 Reflex half) 5/dy</td>
+        <td>Fire Breath: 15' cone inflicts 20d4 HP fire (save Reflex DC 23 half) 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Firestorm: 20 contiguous 10' cu inflict 20d6 HP fire (DC 23 Reflex half) for 3 rd 1/dy</td>
+        <td>Firestorm: 20 contiguous 10' cubes inflict 20d6 HP fire (save Reflex DC 23 half) for 3 rd once per day</td>
       </tr><tr style="text-align:center">
-        <td>Heat Aura: 10' radius inflicts 10d4 HP fire (DC 23 half) and gives self 20% concealment for 1 rd 5/dy</td>
+        <td>Heat Aura: Can use a swift action to inflict 10d4 HP fire in a 10' radius (save Reflex DC 23 half) and gain 20% concealment until the start of the next turn 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
       </tr><tr style="text-align:center">
-        <td>Touch Of Flame: Touch inflicts 1d6+10 HP fire 6/dy; wielded weapons inflict +1d6 HP fire</td>
+        <td>Touch Of Flame: Touch inflicts 1d6+10 HP fire 6 times per day, and weapons inflict +1d6 HP fire</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
       <td>      <table id="SavesAndResistance" style="width:100%">
       <tr style="text-align:center">
         <td><b>Save</b>: Fortitude: +9; Reflex: +4; Will: +14</td>
+        <td><b>Resistance</b>: Fire: immune</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -248,9 +249,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Dexterity Reflex Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Wisdom Will Adjustment: +2</i></td>
+        <td><i>Molten Skin: Has immunity to fire</i></td>
       </tr><tr style="text-align:center">
-        <td>Molten Skin: Immune to fire</td>
+        <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -289,15 +290,27 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Fire Storm (O8 Evoc): R300' 40 10' cubes inflict 20d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (O3 Evoc): R1200' Inflicts 10d6 HP fire in a 20' radius (save Reflex half)</td>
+      <td>Fireball (O3 Evoc): R1200' 20' radius inflicts 10d6 HP fire (save Reflex half)</td>
+    </tr><tr style="text-align:left">
+      <td>Ghost Sound (O0 Illu): R75' Produces the sound volume of 40 humans (save Will upon interaction disbelieves) for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Incendiary Cloud (O8 Conj): R300' Fire in a 20' radius, 20'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Resist Energy (O2 Abju): Touched gains resistance 30 to a choice of acid, cold, electricity, fire, or sonic for 200 min (save Fortitude negates)</td>
+      <td>Levitate (O2 Tran): R75' Allows using a move action each rd to raise or lower an unattended object or willing creature 20' each rd for 20 min</td>
+    </tr><tr style="text-align:left">
+      <td>Mage Hand (O0 Tran): R75' Allows self to use move actions to move an unattended object weighing up to 5 lb 15' per rd for concentration</td>
+    </tr><tr style="text-align:left">
+      <td>Minor Image (O2 Illu): R1200' Creates a 240 cubic foot movable image with sound (save Will upon interaction disbelieves) for concentration + 2 rd</td>
+    </tr><tr style="text-align:left">
+      <td>Resist Energy (O2 Abju): Gives touched resistance 30 to a choice of acid, cold, electricity, fire, or sonic (save Fortitude negates) for 200 min</td>
+    </tr><tr style="text-align:left">
+      <td>Reverse Gravity (O7 Tran): R300' Objects in a 200 cubic foot area fall upward for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster V (O5 Conj): R75' Summons 1 5th-level, 1d3 4th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Fire (O4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through (or double these damages to undead) for concentration + 20 rd</td>
+      <td>Telekinesis (O5 Tran): R1200' Allows self to move an object or creature weighing up to 375 lb 20' per rd for concentration up to 20 rd (save Will negates), to perform a +20 Bull Rush, Disarm, Grapple, or Trip using Charisma instead of Strength or Dexterity once per rd for concentration up to 20 rd, or to hurl 15 objects or creatures in a 5' radius weighing up to 375 lbs total up to 10' (save Will negates)</td>
+    </tr><tr style="text-align:left">
+      <td>Wall Of Fire (O4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through, or double these damages to undead, for concentration + 20 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -305,9 +318,11 @@ var attributes = {
     <tr style="text-align:center">
       <td><i>Charisma Oracle Spell Slot Bonus: Spell level O1, O2, O3</i></td>
     </tr><tr style="text-align:center">
+      <td><i>Haunted: Knows the <i>Reverse Gravity</i>, <i>Telekinesis</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> spells</i></td>
+    </tr><tr style="text-align:center">
       <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
     </tr><tr style="text-align:center">
-      <td>Burning Magic: Successful fire spell inflicts 1 HP/spell level fire for 1d4 rd (spell DC Reflex ends)</td>
+      <td>Burning Magic: Fire spells also inflict 1 HP per spell level fire each rd for 1d4 rd on a failed save (save Reflex ends; dousing with water gives +2 on the save, and immersion ends)</td>
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Acid): +1 save DC on spells that inflict acid damage</td>
     </tr><tr style="text-align:center">
@@ -315,13 +330,11 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
-      <td>Final Revelation (Flame Mystery): May apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to fire spells w/out cost</td>
+      <td>Final Revelation (Flame Mystery): Can apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell when casting a fire spell without increasing the level or casting time</td>
     </tr><tr style="text-align:center">
-      <td>Form Of Flame: May use <i>Elemental Body IV</i> effects to become huge fire elemental for 20 hr 1/dy</td>
+      <td>Form Of Flame: Can use <i>Elemental Body IV</i> effects to become a fire elemental for 20 hr once per day</td>
     </tr><tr style="text-align:center">
-      <td>Gaze Of Flames: R200' Can see out of any flame in range 20 rd/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Haunted: Knows <i>Mage Hand</i>, <i>Ghost Sound</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Telekinesis</i><i>, Reverse Gravity</i> spells</td>
+      <td>Gaze Of Flames: R200' Can see out of any flame 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">

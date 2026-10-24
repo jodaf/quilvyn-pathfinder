@@ -133,7 +133,7 @@ var attributes = {
         <td>Profession (Librarian): (wis) 10 (+15)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 2 (+8)</td>
-        <td>Knowledge (Arcana): (int) 16 (+23)</td>
+        <td>Knowledge (Arcana): (int;cc) 16 (+20)</td>
         <td>Ride: (dex;cc) 2 (+0)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Traps): (int) 8 (+14)</td>
@@ -141,7 +141,7 @@ var attributes = {
         <td>Sense Motive: (wis) 10 (+15)</td>
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha) 2 (+5)</td>
-        <td>Knowledge (Nature): (int) 10 (+17)</td>
+        <td>Knowledge (Nature): (int;cc) 10 (+14)</td>
         <td>Stealth: (dex;cc) 10 (+8)</td>
       </tr><tr style="text-align:left">
         <td>Disguise: (cha;cc) 12 (+12)</td>
@@ -168,17 +168,17 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Lore Keeper (Oracle): +1 all Knowledge</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Lore Mystery: Appraise is a class skill/Knowledge is a class skill</i></td>
+        <td><i>Lore Mystery: Appraise and all Knowledge are class skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Wasting: -4 Charisma-based skills other than Intimidate</i></td>
+        <td><i>Wasting: -4 on Charisma-based skills other than Intimidate</i></td>
       </tr><tr style="text-align:center">
-        <td>Final Revelation (Lore Mystery): May take 20 on all Knowledge</td>
+        <td>Final Revelation (Lore Mystery): Can take 20 on all Knowledge</td>
       </tr><tr style="text-align:center">
-        <td>Focused Trance: 1d6 rd trance gives +20 save vs. sonic and gaze attack followed by a single +20 Intelligence skill check 4/dy</td>
+        <td>Focused Trance: 1d6 rd trance gives +20 saves vs. sonic and gaze attacks followed by a +20 Intelligence skill check 4 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Think On It: May make +10 reroll on failed Knowledge 1/day</td>
+        <td>Think On It: Can reroll with a +10 competence bonus a failed Knowledge once per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -250,7 +250,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Wisdom Will Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
-        <td>Wasting: Immune to disease/Immune to sickened and nauseated</td>
+        <td>Wasting: Has immunity to disease/Has immunity to sickened and nauseated</td>
       </tr></table>
 </td>
     </tr></table>
@@ -289,23 +289,23 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Mass Owl's Wisdom (O6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom (save Will negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Moment Of Prescience (O8 Divi): Gives self +20 on Armor Class or an attack, check, or save once within 20 hr</td>
+      <td>Moment Of Prescience (O8 Divi): Gives self a +20 insight bonus to Armor Class or to an attack, check, or save once within 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Spontaneous Symbology8 Necr): Rune slays creatures in a 60' radius (save Fortitude negates) when triggered, working outward from the closest creatures, for 200 min or until creatures with 150 HP total have been killed</td>
+      <td>Symbol Of Death (Spontaneous Symbology8 Necr): Creates a rune that slays creatures in a 60' radius when triggered (save Fortitude negates), working outward from the closest creatures, for 200 min or until creatures with 150 hit points total have been killed</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): Rune panics creatures in a 60' radius for 20 rd (save Will negates) when triggered for 200 min</td>
+      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): Creates a rune that panics creatures in a 60' radius for 20 rd when triggered (save Will negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): R60' Rune inflicts permanent insanity on creatures in a 60' radius (save Will (DC +1) negates) when triggered for 200 min</td>
+      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): Creates a rune that inflicts permanent insanity on creatures in a 60' radius when triggered (save Will (DC +1) negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): Rune causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
+      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): Creates a rune that causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius when triggered (save Fortitude negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): Rune charms creatures in a 60' radius for 20 hrs (save Will (DC +1) negates) when triggered for 200 min</td>
+      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): Creates a rune that charms creatures in a 60' radius for 20 hrs when triggered (save Will (DC +1) negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): Rune renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min (save Will (DC +1) negates) when triggered for 200 min</td>
+      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): Creates a rune that renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min when triggered (save Will (DC +1) negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): Rune stuns creatures in a 60' radius for 1d6 rd (save Will (DC +1) negates) when triggered for 200 min</td>
+      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): Creates a rune that stuns creatures in a 60' radius for 1d6 rd when triggered (save Will (DC +1) negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): Rune inflicts -3d6 Strength on creatures in a 60' radius (save Fortitude negates) when triggered for 200 min</td>
+      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): Creates a rune that inflicts 3d6 points of Strength damage on creatures in a 60' radius when triggered (save Fortitude negates) for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Time Stop (O9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures for the duration</td>
     </tr><tr style="text-align:left">
@@ -323,17 +323,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
     </tr><tr style="text-align:center">
-      <td>Arcane Archivist (Oracle): May spend +1 spell slot to cast Sorcerer/Wizard spell from lore book 1/dy</td>
+      <td>Arcane Archivist (Oracle): Can cast a Sorcerer/Wizard spell from a spellbook using a spell slot 1 level higher than normal once per day; doing so erases the spell from the spellbook</td>
     </tr><tr style="text-align:center">
-      <td>Automatic Writing: 1 hr meditation yields results of <i>Commune</i> spell 1/dy</td>
+      <td>Automatic Writing: 1 hr meditation yields the results of a <i>Commune</i> spell once per day</td>
     </tr><tr style="text-align:center">
-      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check/rd at target's bonus (DC 24 Will negates) for 4 rd 5/dy</td>
+      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check per rd at the target's bonus (save Will DC 24 negates) for 4 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">
       <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
-      <td>Final Revelation (Lore Mystery): May cast <i>Wish</i> 1/dy</td>
+      <td>Final Revelation (Lore Mystery): Can cast <i>Wish</i> once per day; cannot be used for ability score bonuses or effects requiring expensive material components</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
@@ -347,9 +347,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
-      <td>Spontaneous Symbology: May use spell slot to cast any <i>Symbol</i> spell</td>
+      <td>Spontaneous Symbology: Can use spell slots to cast any <i>Symbol</i> spell</td>
     </tr><tr style="text-align:center">
-      <td>Whirlwind Lesson: May absorb lesson from magical tome in 8 hr and share with 20 others for 4 dy</td>
+      <td>Whirlwind Lesson: Can permanently absorb lessons from a magical tome in 8 hr and share them with 20 others for 4 days</td>
     </tr></table>
 </td>
   </tr></table>

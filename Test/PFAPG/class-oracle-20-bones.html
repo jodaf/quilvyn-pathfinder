@@ -107,8 +107,6 @@ var attributes = {
         <td><i>Oracle's Curse: 1 selection</i></td>
       </tr><tr style="text-align:center">
         <td><i>Revelation: 6 selections</i></td>
-      </tr><tr style="text-align:center">
-        <td>Deaf: Cannot hear/Has Scent feature and 30' Tremorsense</td>
       </tr></table>
 </td>
     </tr></table>
@@ -151,7 +149,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Bones Mystery: Bluff is a class skill/Disguise is a class skill/Intimidate is a class skill/Stealth is a class skill</i></td>
+        <td><i>Bones Mystery: Bluff, Disguise, Intimidate, and Stealth are class skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -159,7 +157,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Skilled: +20 Skill ranks</i></td>
       </tr><tr style="text-align:center">
-        <td>Deaf: Automatically fails Perception (sound)/-4 opposed Perception/+3 Perception (non-sound)</td>
+        <td>Deaf: Automatically fails Perception that depends on sound/-4 opposed Perception/+3 Perception that does not depend on sound/Has the Scent feature and 30' Tremorsense</td>
       </tr><tr style="text-align:center">
         <td>Scent: Can detect creatures via smell</td>
       </tr></table>
@@ -211,17 +209,19 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Channel: +2 Channel Energy DC</i></td>
       </tr><tr style="text-align:center">
-        <td>Armor Of Bones: Conjured armor gives +12 AC, DR 5/bludgeoning 20 hr/dy</td>
+        <td>Armor Of Bones: Can conjure armor that gives a +12 armor bonus to Armor Class and DR 5/bludgeoning for 20 hr per day</td>
       </tr><tr style="text-align:center">
         <td>Command Undead: R30' Can use Channel Energy to control 20 HD of undead (save Will DC 25 negates)</td>
       </tr><tr style="text-align:center">
-        <td>Death's Touch: Touch inflicts 1d6+10 HP negative energy (undead heals and gains +2 channel resistance for 1 min) 6/dy</td>
+        <td>Death's Touch: Touch inflicts 1d6+10 HP negative energy 6 times per day; undead instead regain the same amount, plus +2 channel resistance for 1 min</td>
       </tr><tr style="text-align:center">
-        <td>Final Revelation (Bones Mystery): Automatically stabilizes at negative HP</td>
+        <td>Final Revelation (Bones Mystery): Automatically stabilizes at negative hit points</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
         <td>Strike Back: Can ready a melee attack against any attacker, including those that are out of reach</td>
+      </tr><tr style="text-align:center">
+        <td>Undead Servitude: Can use Command Undead 8 times per day</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -241,7 +241,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Near Death: +4 vs. disease, mental effects, poison, death effects, sleep effects, and stunning</td>
       </tr><tr style="text-align:center">
-        <td>Resist Life: Saves as undead vs. negative and positive energy w/+6 channel resistance</td>
+        <td>Resist Life: Saves as undead vs. negative and positive energy with +6 channel resistance</td>
       </tr></table>
 </td>
     </tr></table>
@@ -264,13 +264,13 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Dead (Final Revelation Bones Mystery3 Necr): Touched corpses become up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
+      <td>Animate Dead (Final Revelation Bones Mystery3 Necr): Transforms touched corpses into up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
     </tr><tr style="text-align:left">
-      <td>Animate Dead (O3 Necr): Touched corpses become up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
+      <td>Animate Dead (O3 Necr): Transforms touched corpses into up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
     </tr><tr style="text-align:left">
       <td>Bleed (Final Revelation Bones Mystery0 Necr): R75' Stabilized target suffers 1 HP and resumes dying (save Will negates)</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (O1 Necr): R75' Target with up to 5 HD becomes frightened and flees for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
+      <td>Cause Fear (O1 Necr): R75' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Circle Of Death (O6 Necr): R300' Kills 20d4 HD of creatures with up to 8 HD in a 40' radius (save Fortitude negates), working upward from those with the fewest HD</td>
     </tr><tr style="text-align:left">
@@ -286,7 +286,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Slay Living (O5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (Voice Of The Grave3 Necr): R10' Target corpse answers 10 questions (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune) asked within 20 min</td>
+      <td>Speak With Dead (Voice Of The Grave3 Necr): R10' Causes the target corpse to answer 10 questions asked within 20 min (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune)</td>
     </tr><tr style="text-align:left">
       <td>Stabilize (Final Revelation Bones Mystery0 Conj): R75' Stabilizes a target with negative hit points (save Will negates)</td>
     </tr><tr style="text-align:left">
@@ -300,13 +300,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Enchantment): +1 Spell DC (Enchantment)</i></td>
     </tr><tr style="text-align:center">
-      <td>Bleeding Wounds: Successful negative energy spell inflicts 5 HP bleeding/rd (DC 15 Heal or healing effect ends)</td>
+      <td>Bleeding Wounds: Successful negative energy spells inflict 5 HP bleed per rd; a DC 15 Heal check or a healing effect ends</td>
     </tr><tr style="text-align:center">
-      <td>Deaf: May cast all spells silently</td>
+      <td>Deaf: Can cast all spells silently</td>
     </tr><tr style="text-align:center">
       <td>Empower Spell: Can cast a spell using a spell slot 2 levels higher than normal to increase its variable effects by 50%</td>
     </tr><tr style="text-align:center">
-      <td>Final Revelation (Bones Mystery): May cast <i>Bleed</i> or <i>Stabilize</i> 1/rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. target w/up to 150 HP 1/dy</td>
+      <td>Final Revelation (Bones Mystery): Can cast <i>Bleed</i> or <i>Stabilize</i> as a free action once per rd, <i>Animate Dead</i> at will, and <i>Power Word Kill</i> vs. a target with up to 150 hit points once per day</td>
     </tr><tr style="text-align:center">
       <td>Maximize Spell: Can cast a spell using a spell slot 3 levels higher than normal to maximize all of its variable effects</td>
     </tr><tr style="text-align:center">
@@ -316,19 +316,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Quicken Spell: Once per rd, can cast a spell with a casting time of up to 1 rd as a free action, using a spell slot 4 levels higher than normal</td>
     </tr><tr style="text-align:center">
-      <td>Raise The Dead: Summoned 20 HD advanced skeleton or zombie serves for 3 rd 2/dy</td>
+      <td>Raise The Dead: Can summon a 20 HD advanced skeleton or zombie that serves for 3 rd 2 times per day</td>
     </tr><tr style="text-align:center">
       <td>Reach Spell: May cast touch, close, or medium range spell at longer range; uses +1 spell slot/range increase</td>
     </tr><tr style="text-align:center">
       <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
-      <td>Soul Siphon: R30' Ranged touch inflicts negative level for 3 min and heals 20 HP to self 4/dy</td>
+      <td>Soul Siphon: R30' Ranged touch attack inflicts a negative level lasting 3 min and restores 20 hit points to self 4 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Spirit Walk: May become incorporeal for 20 rd 2/dy</td>
+      <td>Spirit Walk: Can become incorporeal for up to 20 rd 2 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Undead Servitude: May use Command Undead 6/dy</td>
-    </tr><tr style="text-align:center">
-      <td>Voice Of The Grave: May use <i>Speak With Dead</i> effects 20 rd/dy; target suffers -8 save</td>
+      <td>Voice Of The Grave: Can use <i>Speak With Dead</i> effects 20 rd per day; the target suffers -8 on the save</td>
     </tr></table>
 </td>
   </tr></table>
