@@ -125,7 +125,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Teamwork Feat (Inquisitor): 3 Teamwork feats</i></td>
       </tr><tr style="text-align:center">
-        <td>Haunted: Malevolent spirits inflict minor annoyances</td>
+        <td>Haunted: Malevolent spirits inflict minor annoyances such as delaying item retrieval and scattering dropped items</td>
       </tr><tr style="text-align:center">
         <td>Teamwork Feat (Inquisitor): May exchange most recently acquired Teamwork feat 0/dy</td>
       </tr></table>
@@ -174,7 +174,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Armor Skill Check Penalty: -3 Dexterity- and Strength-based skills</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Heavens Mystery: Fly is a class skill/Knowledge (Arcana) is a class skill/Perception is a class skill/Survival is a class skill</i></td>
+        <td><i>Heavens Mystery: Fly, Knowledge (Arcana), Perception, and Survival are class skills</i></td>
       </tr><tr style="text-align:center">
         <td><i>Intelligence Language Adjustment: +1</i></td>
       </tr><tr style="text-align:center">
@@ -264,7 +264,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Hand Of The Acolyte: R30' Can make a +14 ranged attack with a melee weapon 3 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Interstellar Void: R30' Inflicts 10d6 HP cold, fatigued (DC 18 Fortitude half HP only) 2/dy</td>
+        <td>Interstellar Void: R30' Inflicts 10d6 HP cold and fatigued (save Fortitude DC 18 half HP only) 2 times per day</td>
       </tr><tr style="text-align:center">
         <td>Judgment: May pronounce one of these, gaining the specified bonus until combat ends, 4/dy: destruction (+4 weapon damage), healing (regains 4 HP/rd), justice (+3 attack, dbl to confirm crit), piercing (+4 concentration, +4 caster level to overcome spell resistance), protection (+3 AC, dbl vs. confirm crit), purity (+3 saves, dbl vs. curse, disease, and poison), resiliency (gain DR 3/opposed alignment), resistance (resistance 8 to chosen energy), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
       </tr><tr style="text-align:center">
@@ -349,13 +349,21 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Forced Repentance (Inquisitor4 Ench): R50' Evil target (but not one of the evil subtype) falls prone and makes a confession for 10 rd (save Will negates)</td>
     </tr><tr style="text-align:left">
+      <td>Ghost Sound (O0 Illu): R50' Produces the sound volume of 40 humans (save Will upon interaction disbelieves) for 10 rd</td>
+    </tr><tr style="text-align:left">
       <td>Greater Brand (Inquisitor4 Tran): Inflicts 1d6 HP on touched to etch a permanent, indelible mark (save Fortitude negates) that glows and inflicts sickened on the target when within 30' of a visible faith symbol of Nethys</td>
     </tr><tr style="text-align:left">
       <td>Hunter's Eye (Inquisitor3 Divi): R200' Self can perceive the target when it's invisible or concealed, except by darkness, and gains +20 Perception to locate it for 10 min</td>
     </tr><tr style="text-align:left">
+      <td>Levitate (O2 Tran): R50' Allows using a move action each rd to raise or lower an unattended object or willing creature 20' each rd for 10 min</td>
+    </tr><tr style="text-align:left">
+      <td>Mage Hand (O0 Tran): R50' Allows self to use move actions to move an unattended object weighing up to 5 lb 15' per rd for concentration</td>
+    </tr><tr style="text-align:left">
       <td>Mass Castigate (Inquisitor5 Ench): R200' 10 targets in 15' radius cower with fear for 10 rd (save Will ech rd inflicts shaken for 1 rd, then ends; worshipers of Nethys have a -2 penalty on the saves)</td>
     </tr><tr style="text-align:left">
       <td>Mass Fester (Inquisitor6 Necr): R50' 10 targets in a 15' radius suffer SR 22 to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for 10 rd (save Fortitude effects last 1 rd)</td>
+    </tr><tr style="text-align:left">
+      <td>Minor Image (O2 Illu): R800' Creates a 140 cubic foot movable image with sound (save Will upon interaction disbelieves) for concentration + 2 rd</td>
     </tr><tr style="text-align:left">
       <td>Oracle's Burden (O2 Necr): R200' Target suffers self Oracle's Curse effects (save Will negates) for 10 min</td>
     </tr><tr style="text-align:left">
@@ -373,6 +381,8 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Sleepwalk (Inquisitor4 Ench): Touched unconscious creature animates and moves at half speed (save Will negates) for 10 hr</td>
     </tr><tr style="text-align:left">
+      <td>Telekinesis (O5 Tran): R800' Allows self to move an object or creature weighing up to 250 lb 20' per rd for concentration up to 10 rd (save Will negates), to perform a +10 Bull Rush, Disarm, Grapple, or Trip using Charisma instead of Strength or Dexterity once per rd for concentration up to 10 rd, or to hurl 10 objects or creatures in a 5' radius weighing up to 250 lbs total up to 10' (save Will negates)</td>
+    </tr><tr style="text-align:left">
       <td>Tireless Pursuers (Inquisitor4 Tran): Self and 3 touched suffer only half damage from hustling and forced march and ignore travel fatigue for 10 hr, suffering fatigue afterward</td>
     </tr><tr style="text-align:left">
       <td>Tireless Pursuit (Inquisitor1 Tran): Self suffers only half damage from hustling and forced march and ignores travel fatigue for 10 hr, suffering fatigue afterward</td>
@@ -389,7 +399,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Greater Elemental Focus (Acid): Increased Elemental Focus (Acid) effects</i></td>
     </tr><tr style="text-align:center">
-      <td>Awesome Display: Treats illusion targets as having 3 fewer HD</td>
+      <td>Awesome Display: Treats pattern illusion targets as having 3 fewer HD</td>
     </tr><tr style="text-align:center">
       <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
@@ -403,17 +413,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Enlarge Spell: Can cast a spell using a spell slot 1 level higher than normal to double its range</td>
     </tr><tr style="text-align:center">
-      <td>Haunted: Knows <i>Mage Hand</i>, <i>Ghost Sound</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Telekinesis</i> spells</td>
-    </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
       <td>Shielded Caster: +4 concentration when an adjacent ally has this feat and no shield, +5 w/a buckler or light shield, +6 w/a heavy or tower shield/Suffer half concentration DC from foe Disruptive or similar feature</td>
     </tr><tr style="text-align:center">
       <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">
-      <td>Star Chart: May use <i>Commune</i> effects via 10 min contemplation 1/dy</td>
+      <td>Star Chart: Can use <i>Commune</i> effects via a 10 min contemplation once per day</td>
     </tr><tr style="text-align:center">
       <td>Widen Spell: Can cast a spell using a spell slot 3 levels higher than normal to double its area of affect</td>
+    </tr><tr style="text-align:center">
+      <td>Wind Sight: +10</td>
     </tr></table>
 </td>
   </tr></table>
