@@ -3589,7 +3589,7 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly or swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Ren, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
+      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly or swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
   'Bestow Curse':'',
   'Binding':
     'Description=' +
