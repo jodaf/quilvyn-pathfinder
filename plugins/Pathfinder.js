@@ -868,7 +868,7 @@ Pathfinder.FEATURES = {
     .replace('an orc', 'both orc and human'),
   'Orc Ferocity':
     'Section=combat ' +
-    'Note="Can continue to fight for 1 rd when brought to negative hit points once per day"',
+    'Note="Can continue to fight for 1 rd when reduced to negative hit points once per day"',
 
   // Halfling
   'Fearless':SRD35.FEATURES['Resist Fear'],
@@ -1609,7 +1609,7 @@ Pathfinder.FEATURES = {
     'Section=skill Note="Can use Disable Device in half the normal time"',
   'Resiliency':
     'Section=combat ' +
-    'Note="Can gain %{(rogueFeatures.Resiliency?levels.Rogue:0)+(shadowdancerFeatures.Resiliency?levels.Shadowdancer:0)} temporary hit points for 1 min when taken to negative hit points once per day"',
+    'Note="Can gain %{(rogueFeatures.Resiliency?levels.Rogue:0)+(shadowdancerFeatures.Resiliency?levels.Shadowdancer:0)} temporary hit points for 1 min when reduced to negative hit points once per day"',
   'Rogue Crawl':
     'Section=ability ' +
     'Note="Has a %{speed//2}\' crawl Speed and can take a 5\' Step while crawling"',
@@ -1803,7 +1803,7 @@ Pathfinder.FEATURES = {
     'SpellLevel=bloodlineLevels.Draconic',
   'Breath Weapon':
     'Section=combat ' +
-    'Note="%{bloodlineShape} inflicts %{levels.Sorcerer}d6 HP %{bloodlineEnergy} (save Reflex DC %{10+levels.Sorcerer//2+charismaModifier} half) %{%V>1?%V+\' times\':\'once\'} per day"',
+    'Note="%{bloodlineShape} inflicts %{bloodlineLevels.Draconic}d6 HP %{bloodlineEnergy} (save Reflex DC %{10+bloodlineLevels.Draconic//2+charismaModifier} half) %{%V>1?%V+\' times\':\'once\'} per day"',
   'Dragon Resistances':
     'Section=combat,save ' +
     'Note=' +
@@ -3086,7 +3086,7 @@ Pathfinder.FEATURES = {
     'Note="+1 bonus to Armor Class and CMD when adjacent to a single foe; does not apply to touch or flat-footed Armor Class"',
   'Fashionable':
     'Section=skill ' +
-    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed/Choice of Bluff, Diplomacy, or Sense Motive is a class skill"',
+    'Note="+1 Bluff, Diplomacy, and Sense Motive when well-dressed, and a choice of these is a class skill"',
   'Impressive Presence':
     'Section=combat ' +
     'Note="Can take a full-round action that inflicts shaken on adjacent foes for 1 rd (save Will DC %{10+level//2+charismaModifier} negates) once per day"',
@@ -3789,7 +3789,7 @@ Pathfinder.SPELLS = {
   'Divine Favor':'Level=C1,Nobility1,P1',
   'Divine Power':
     'Description=' +
-      '"Gives self gains +%{lvl//3<?6} attack, damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions for %{lvl} rd"',
+      '"Gives self +%{lvl//3<?6} attacks, damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions, for %{lvl} rd"',
   'Dominate Animal':'',
   'Dominate Monster':'Level=Charm9,S9,W9',
   'Dominate Person':'',
@@ -3803,6 +3803,7 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S4,W4 ' +
     'Description=' +
+      // TODO "ability to burn"?
       '"Self becomes a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body II':
     'School="Transmutation (Polymorph)" ' +
@@ -3892,11 +3893,13 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
+      // TODO resistance 20 or 30?
       '"Self becomes a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
   'Form Of The Dragon II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S7,W7 ' +
     'Description=' +
+      // TODO resistance 20 or 30?
       '"Self becomes a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 2d6 HP, 2x1d8 HP, and 2x1d6 HP"',
   'Form Of The Dragon III':
     'School="Transmutation (Polymorph)" ' +
@@ -7421,11 +7424,14 @@ Pathfinder.deityRules = function(rules, name, alignment, domains, weapons) {
     let focusFeature = 'Weapon Focus (' + weapon + ')';
     let proficiencyFeature = 'Weapon Proficiency (' + weapon + ')';
     rules.defineRule
-      ('clericFeatures.' + focusFeature, 'levels.Cleric', '?', 'source == 0');
+      ('clericFeatures.' + focusFeature, 'deityFavoredWeapons', '=', 'null');
     rules.defineRule('clericFeatures.' + proficiencyFeature,
       'levels.Cleric', '?', null,
-      'deityFavoredWeapon', '=', 'source.indexOf("'+weapon+'")>=0 ? 1 : null',
-      'combatNotes.weaponOfWar', '=', 'null'
+      'combatNotes.warDomain', '=', 'null',
+      'deityFavoredWeapon', '=', 'source.indexOf("'+weapon+'")>=0 ? 1 : null'
+    );
+    rules.defineRule('weaponProficiency.' + weapon,
+      'clericFeatures.' + proficiencyFeature, '=', '1'
     );
   }
 };
