@@ -1312,7 +1312,7 @@ Pathfinder.FEATURES = {
     'SpellAbility=Charisma ' +
     'SpellLevel=casterLevels.Sun',
   "Sun's Blessing":
-    'Section=magic ' +
+    'Section=combat ' +
     'Note="Channel Energy inflicts +%{casterLevels.Sun} HP on undead and negates channel resistance"',
   // Travel Domain
   'Agile Feet':
@@ -3511,7 +3511,10 @@ Pathfinder.SKILLS = {
 Pathfinder.SPELLS = {
 
   'Acid Arrow':'',
-  'Acid Fog':'Level=S6,W6',
+  'Acid Fog':
+    'Level=S6,W6 ' +
+    'Description=' +
+      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, and inflicts -2 attacks, -2 damage, and 2d6 HP acid per rd for %{lvl} rd"',
   'Acid Splash':'',
   'Aid':'Level=Adept2,C2,Luck2',
   'Air Walk':'',
@@ -3521,11 +3524,11 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=B2,S2,W2 ' +
     'Description=' +
-      '"Self becomes a Small humanoid, gaining +2 Dexterity, or a medium humanoid, gaining +2 Strength, for %{lvl} min"',
+      '"Transforms self into a Small humanoid, giving +2 Dexterity, or a medium humanoid, giving +2 Strength, for %{lvl} min; also gives 60\' Darkvision, Low-Light Vision, Scent, and a 30\' swim Speed as appropriate to the form"',
   'Analyze Dweomer':'',
   'Animal Growth':
     'Description=' +
-      '"R%{100+lvl*10}\' Animal target doubles in size (save Fortitude negates), gaining +8 Strength, +4 Constitution, and -2 Dexterity for %{lvl} min"',
+      '"R%{100+lvl*10}\' Animal target doubles in size (save Fortitude negates), gaining 8x weight, +8 Strength, +4 Constitution, -2 Dexterity, +2 natural armor, and a -1 size penalty to Armor Class and attacks, for %{lvl} min"',
   'Animal Messenger':'',
   'Animal Shapes':
     'School="Transmutation (Polymorph)"' +
@@ -3533,21 +3536,21 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for %{lvl} hr"',
   'Animal Trance':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 2d6 HD of animals with Intelligence 1 or 2 sit unmoving (save Will negates) for concentration"',
+      '"R%{25+lvl//2*5}\' 2d6 HD of animals and magical beasts with Intelligence 1 or 2 sit unmoving (save Will negates) for concentration"',
   'Animate Dead':'',
   'Animate Objects':'',
   'Animate Plants':'',
   'Animate Rope':'Level=Artifice1,B1,S1,W1 Liquid=Oil',
   'Antilife Shell':
     'Description=' +
-      '"10\' radius bars the entrance of living creatures for %{lvl} min"',
+      '"10\' radius bars the entrance of living creatures for %{lvl} min; does not affect constructs, elementals, outsiders, and undead"',
   'Antimagic Field':
     'Description=' +
       '"10\' radius suppresses magic and summoned creatures for %{lvl*10} min"',
   'Antipathy':'',
   'Antiplant Shell':
     'Description=' +
-      '"10\' radius bars animate plants for %{lvl} min"',
+      '"10\' radius bars plant creatures and animated plants for %{lvl} min"',
   'Arcane Eye':'',
   'Arcane Lock':
     'Description=' +
@@ -3564,7 +3567,7 @@ Pathfinder.SPELLS = {
   'Baleful Polymorph':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; Will after a failure allows retaining abilities)"',
+      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; a successful Will after an initial failure allows retaining abilities)"',
   'Bane':'',
   'Banishment':'',
   'Barkskin':'',
@@ -3574,26 +3577,26 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=S3,W3 ' +
     'Description=' +
-      '"Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 30\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, and Scent, as appropriate to the form"',
+      '"Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 30\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, and Scent, as appropriate to the form"',
   'Beast Shape II':
     'School="Transmutation (Polymorph)"' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Self becomes a Tiny (gives +4 Dexterity, -2 Strength, and a +1 natural armor bonus to Armor Class) or Large (gives +4 Strength, -2 Dexterity, and a +4 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 60\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Grab, Pounce, and Trip, as appropriate to the form"',
+      '"Self becomes a Tiny (gives +4 Dexterity, -2 Strength, and a +1 natural armor bonus to Armor Class) or Large (gives +4 Strength, -2 Dexterity, and a +4 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 60\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Grab, Pounce, and Trip, as appropriate to the form"',
   'Beast Shape III':
     'School="Transmutation (Polymorph)"' +
     'Level=Animal5,S5,W5 ' +
     'Description=' +
-      '"Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 30\' burrow Speed, 90\' climb, fly, or swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Constrict, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form"',
+      '"Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 30\' burrow Speed, 90\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form"',
   'Beast Shape IV':
     'School="Transmutation (Polymorph)"' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly or swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
+      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly and swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
   'Bestow Curse':'',
   'Binding':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Magically imprisons the target (save Will negates for targets with %{lvl//2}%{lvl/2-lvl//2==1?\' 1/2\':\'\'} HD or more; assistance from other casters raises the threshold by 1 HD per assistant who casts <i>Suggestion</i>, or by 1/3 the assistant\'s level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains for %{lvl} years, sleep for %{lvl} years, chains and sleep for %{lvl} months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1\\" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2"',
+      '"R%{25+lvl//2*5}\' Magically imprisons the target (save Will negates for targets with %{lvl//2}%{lvl/2-lvl//2==1?\' 1/2\':\'\'} HD or more; assistance from up to 6 other casters raises the threshold by 1/2 HD per assistant who casts <i>Suggestion</i>, or by 1/6 the assistant\'s level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains imbued with <i>Antipathy</i> for %{lvl} years, sleep for %{lvl} years (-1 save DC), chains and sleep for %{lvl} months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1\\" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2"',
   'Black Tentacles':
     'Description=' +
       '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
@@ -3635,7 +3638,7 @@ Pathfinder.SPELLS = {
   'Cause Fear':'Level=Adept1,B1,C1,Death1,S1,W1',
   'Chain Lightning':
     'Description=' +
-      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets in a 30\' radius (save Reflex (DC -2) half)"',
+      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets within 30\' of the primary (save Reflex (DC -2) half)"',
   'Changestaff':'',
   'Chaos Hammer':'Level=C4,Chaos4',
   'Charm Animal':'',
@@ -3648,11 +3651,13 @@ Pathfinder.SPELLS = {
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
   'Clenched Fist':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+12} Bull Rush and +%{lvl+11} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, slows those pushing past to half Speed, and performs a +%{lvl+9} Bull Rush and a +%{lvl+11} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
   'Cloak Of Chaos':
     'Description=' +
       '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
-  'Clone':'',
+  'Clone':
+    'Description=' +
+      '"Grows a duplicate from a piece of a creature that its soul can enter if the original has died or dies later, at which point the creature regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Cloudkill':'',
   'Color Spray':'',
   'Command':'',
@@ -3669,14 +3674,14 @@ Pathfinder.SPELLS = {
   'Confusion':
     'Level=B3,Madness4,Trickery4,S4,W4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature (save Will negates), for %{lvl} rd"',
   'Lesser Confusion':
     'Level=B1,Madness1 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd"',
+      '"R%{100+lvl*10}\' Target randomly: 25% acts normally; 25% babbles; 25% inflicts 1d8 + Strength modifier HP to itself; 25% attacks the nearest creature (save Will negates) for 1 rd"',
   'Consecrate':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 positive channeled energy save DCs and inflicts on undead -1 attacks, damage, and saves for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
+      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 positive channeled energy save DCs, inflicts on undead -1 attacks, damage, and saves, and prevents the creation and summoning of undead, for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
   'Contact Other Plane':'',
   'Contagion':'Level=Adept3,C3,D3,S4,W4',
   'Contingency':'',
@@ -3689,10 +3694,12 @@ Pathfinder.SPELLS = {
   'Create Food And Water':'',
   'Create Greater Undead':'',
   'Create Undead':'',
-  'Create Water':'',
+  'Create Water':
+    'Description=' +
+      '"R%{25+lvl//2*5}\' Creates %{lvl*2} gallons of pure water; any that remains after 24 hr disappears"',
   'Creeping Doom':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 4 centipede swarms inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 20\' each rd as a standard action"',
+      '"R%{25+lvl//2*5}\' 4 centipede swarms inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 30\' each rd as a standard action"',
   'Crushing Despair':'',
   'Crushing Hand':
     'Description=' +
@@ -3719,7 +3726,7 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Target humanoid with up to 4 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
   'Daze Monster':
     'Description=' +
-      '"R%{100+lvl*10}\' Target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
+      '"R%{100+lvl*10}\' Living target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
   'Death Knell':'Level=C2,Death2',
   'Death Ward':
     'Level=C4,D5,Death4,Repose4,P4 ' +
@@ -3741,16 +3748,18 @@ Pathfinder.SPELLS = {
   'Desecrate':
     'Level=C2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 negative channelled energy save DCs and gives undead +1 attacks, damage, and saves for %{lvl*2} hr, and undead created or summoned within the area also gain +1 hit point per HD; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
+      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 negative channelled energy save DCs, gives undead +1 attacks, damage, and saves for %{lvl*2} hr, gives undead created or summoned within the area +1 hit point per HD, and doubles the number of undead created by <i>Animate Dead</i>; a shrine to %{deity} in the area doubles the spell\'s effects other than the change to <i>Animate Dead</i>, while a shrine to a different deity negates the effects but renders the shrine inert"',
   'Destruction':
     'Level=C7,Death7,Repose7 ' +
-    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains"',
+    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP and, if this slays the target, consumes its remains (save Fortitude inflicts 10d6 HP)"',
   'Detect Animals Or Plants':'',
   'Detect Chaos':'',
   'Detect Evil':'',
   'Detect Good':'Level=Adept1,C1',
   'Detect Law':'',
-  'Detect Magic':'',
+  'Detect Magic':
+    'Description=' +
+      '"60\' cone reveals the presence and power of magical auras and allows making Knowledge (Arcana) checks to determine their schools for concentration up to %{lvl} min"',
   'Detect Poison':'Level=C0,D0,P1,R1,S0,W0',
   'Detect Scrying':'',
   'Detect Secret Doors':'Level=B1,S1,W1',
@@ -3777,11 +3786,12 @@ Pathfinder.SPELLS = {
   'Dispel Law':'',
   'Dispel Magic':
     'Description=' +
-      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, cancels 1 spell on each creature in a 20\' radius, or disrupts a foe\'s spell casting" ' +
+      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, or disrupts a foe\'s spell casting" ' +
     'Liquid=Potion',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
-    'Description="R%{100+lvl*10}\' Successful caster level check check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius or suppresses a magic item for 1d4 rd"',
+    'Description=' +
+      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius, suppresses a magic item for 1d4 rd, or disrupts a foe\'s spell casting with a +4 bonus on the check"',
   'Displacement':'',
   'Disrupt Undead':'',
   'Disrupting Weapon':'',
@@ -3789,7 +3799,7 @@ Pathfinder.SPELLS = {
   'Divine Favor':'Level=C1,Nobility1,P1',
   'Divine Power':
     'Description=' +
-      '"Gives self +%{lvl//3<?6} attacks, damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions, for %{lvl} rd"',
+      '"Gives self +%{lvl//3<?6} attacks, weapon damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions, for %{lvl} rd"',
   'Dominate Animal':'',
   'Dominate Monster':'Level=Charm9,S9,W9',
   'Dominate Person':'',
@@ -3803,23 +3813,22 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      // TODO "ability to burn"?
-      '"Self becomes a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Self becomes a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Self becomes a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Self becomes a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
+      '"Self becomes a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
   'Elemental Body IV':
     'School="Transmutation (Polymorph)" ' +
     'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
     'Description=' +
-      '"Self becomes a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
+      '"Self becomes a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
   'Elemental Swarm':'',
   'Endure Elements':'',
   'Energy Drain':'',
@@ -4029,7 +4038,7 @@ Pathfinder.SPELLS = {
   'Imprisonment':'',
   'Incendiary Cloud':
     'Description=' +
-      '"R%{100+lvl*10}\' Fire in a 20\' radius, 20\'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10\' per rd (or up to 60\' with concentration) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Fire in a 20\' radius, 20\' high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10\' per rd (or up to 60\' with concentration) for %{lvl} rd"',
   'Inflict Critical Wounds':'Level=C4,Destruction4',
   'Mass Inflict Critical Wounds':'',
   'Inflict Light Wounds':'Level=C1',
@@ -4426,7 +4435,7 @@ Pathfinder.SPELLS = {
   'Soften Earth And Stone':'',
   'Solid Fog':
     'Description=' +
-      '"R%{100+lvl*10}\' 20\' radius fog obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half normal, prevents ranged attacks, and inflicts -2 attacks and damage for %{lvl} min"',
+      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, prevents ranged attacks, and inflicts -2 attacks and damage for %{lvl} min"',
   'Song Of Discord':'',
   'Soul Bind':'',
   'Sound Burst':'',
