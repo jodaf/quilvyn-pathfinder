@@ -3651,7 +3651,7 @@ Pathfinder.SPELLS = {
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
   'Clenched Fist':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, slows those pushing past to half Speed, and performs a +%{lvl+9} Bull Rush and a +%{lvl+11} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+12} Bull Rush, can make a +%{lvl+10} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only), and can be redirected between targets as a move action, for %{lvl} rd"',
   'Cloak Of Chaos':
     'Description=' +
       '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
@@ -3703,7 +3703,7 @@ Pathfinder.SPELLS = {
   'Crushing Despair':'',
   'Crushing Hand':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+13} Bull Rush and a +%{lvl+13} Grapple that inflicts 2d6+12 HP for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+13} Bull Rush and a a +%{lvl+13} Grapple that inflicts 2d6+12 HP, and can be redirected between targets as a move action, for %{lvl} rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
   'Mass Cure Critical Wounds':'Level=C8,Community8,D9,Healing8',
   'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2',
@@ -3859,7 +3859,7 @@ Pathfinder.SPELLS = {
   'Feeblemind':'',
   'Find The Path':
     'Description=' +
-      '"Touched knows the most direct route to a specified location (save Will negates) for %{lvl*10} min"',
+      '"Reveals to the touched creature the most direct route to a specified location (save Will negates) for %{lvl*10} min"',
   'Find Traps':
     'Level=C2 ' +
     'Description=' +
@@ -3874,7 +3874,7 @@ Pathfinder.SPELLS = {
   'Fire Storm':
     'Level=C8,D7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only)"',
+      '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only; the fire does not harm vegetation or chosen plant creatures); extinguising the flames is a full-rd action that requires a successful DC 20 Reflex save"',
   'Fire Trap':'Liquid=Oil',
   'Fireball':'Level=Fire3,S3,W3',
   'Flame Arrow':'',
@@ -3888,7 +3888,7 @@ Pathfinder.SPELLS = {
   'Floating Disk':'',
   'Fly':
     'Description=' +
-      '"Touched gains a 60\' fly Speed and +%{lvl//2} Fly skill for %{lvl} min, then floats downward 60\' per rd for 1d6 rd (save Will negates)"',
+      '"Gives touched a 60\' fly Speed and +%{lvl//2} Fly skill (save Will negates) for %{lvl} min, after which it floats downward 60\' per rd for 1d6 rd"',
   'Fog Cloud':'Level=D2,S2,W2,Water2,Weather2',
   'Forbiddance':'',
   'Forcecage':
@@ -3896,20 +3896,18 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell (save Reflex negates) for %{lvl} rd"',
   'Forceful Hand':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+9} Bull Rush for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+9} Bull Rush, and can be redirected between targets as a move action, for %{lvl} rd"',
   'Foresight':'',
   'Form Of The Dragon I':
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      // TODO resistance 20 or 30?
       '"Self becomes a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
   'Form Of The Dragon II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S7,W7 ' +
     'Description=' +
-      // TODO resistance 20 or 30?
-      '"Self becomes a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 2d6 HP, 2x1d8 HP, and 2x1d6 HP"',
+      '"Self becomes a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 40\' cone or 80\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, wings, and a tail that inflict 2d6 HP, 2x1d8 HP, 2x1d6 HP, and 1d8 HP"',
   'Form Of The Dragon III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S8,W8 ' +
@@ -3921,7 +3919,7 @@ Pathfinder.SPELLS = {
   'Freedom Of Movement':'Level=B4,C4,D4,Liberation4,Luck4,R4',
   'Freezing Sphere':
     'Description=' +
-      '"R%{400+lvl*40}\' 40\' radius inflicts %{lvl<?15}d6 HP cold, or %{lvl<?15}d8 HP cold to elemental water creatures (save Reflex half), and freezes a 40\' radius of water to a depth of 6\\" for %{lvl} rd"',
+      '"R%{400+lvl*40}\' 40\' radius inflicts %{lvl<?15}d6 HP cold, or %{lvl<?15}d8 HP cold to elemental water creatures (save Reflex half), and freezes a 40\' radius of water to a depth of 6\\" for %{lvl} rd; can delay the effects of the spell for up to %{lvl} rd"',
 
   'Gaseous Form':
     'Description=' +
@@ -3929,7 +3927,7 @@ Pathfinder.SPELLS = {
   'Gate':
     'Level=C9,Glory9,S9,W9 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 5\'-20\' diameter disk passage to another plane for concentration up to %{lvl} rd, or, at the cost of 10,000 GP, allows summoning extraplanar creatures&mdash;a named creature, a single creature of a named kind, or up to %{lvl*2} HD of a named kind"',
+      '"R%{100+lvl*10}\' Creates a 5\'-20\' diameter disk passage to another plane for concentration up to %{lvl} rd, and, at the cost of 10,000 GP, allows summoning extraplanar creatures&mdash;a named creature, a single creature of a named kind, or up to %{lvl*2} HD of a named kind; a single creature with up to %{lvl} HD can be compelled to perform a service"',
   'Lesser Geas':'',
   'Geas/Quest':
     'Level=B6,C6,Charm6,Nobility6,S6,W6 ' +
@@ -3944,11 +3942,11 @@ Pathfinder.SPELLS = {
   'Giant Form I':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
-    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, Low-Light vision, and, depending on the form taken, 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, and 60\' rock throwing that inflicts 2d6 HP"',
+    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, and Low-Light vision; the transformation may also give any of 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, R60\' rock throwing that inflicts 2d6 HP, and elemental resistances and vulnerabilities, as appropriate to the form"',
   'Giant Form II':
     'School=Transmutation ' +
     'Level=S8,W8 ' +
-    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, +10 Speed, and, depending on the form taken, a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, 120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities"',
+    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give any of a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropraite to the form"',
   'Giant Vermin':
     'Description=' +
       '"R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey simple commands for %{lvl} min"',
@@ -3965,7 +3963,7 @@ Pathfinder.SPELLS = {
   'Goodberry':'Liquid=Oil',
   'Grasping Hand':
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' hand (Armor Class 20, %{hitPoints} hit points) can be moved 60\' as a move action, gives +4 Armor Class, and performs a +%{lvl+11} Bull Rush and a +%{lvl+11} Grapple for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half speed, can perform a +%{lvl+11} Bull Rush and a +%{lvl+11} Grapple, and can be redirected between targets as a move action, for %{lvl} rd"',
   'Grease':
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
@@ -3998,7 +3996,7 @@ Pathfinder.SPELLS = {
   'Hide From Undead':'',
   'Hideous Laughter':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target falls into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster gain +4) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Target with an Intelligence of at least 3 falls into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster have +4 on the saves) for %{lvl} rd"',
   'Hold Animal':'',
   'Hold Monster':'',
   'Mass Hold Monster':'',
@@ -4013,7 +4011,7 @@ Pathfinder.SPELLS = {
   'Holy Sword':
     'Level=Glory7,P4 ' +
     'Description=' +
-      '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures, for %{lvl} rd"',
+      '"Touched weapon gains +5 attacks and damage and an additional +2d6 HP vs. evil foes, gives a +2 deflection bonus to Armor Class, +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, and bars contact by summoned evil creatures, for %{lvl} rd"',
   'Holy Word':
     'Description=' +
       '"Inflicts on nongood creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP; paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save negates)"',
@@ -4024,11 +4022,11 @@ Pathfinder.SPELLS = {
   'Ice Storm':
     'Level=D4,S4,W4,Water5,Weather5 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Hail in a 20\' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
+      '"R%{400+lvl*40}\' Hail in a 20\' radius, 40\' high cylinder inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
   'Identify':
     'Level=Magic1,B1,S1,W1 ' +
     'Description=' +
-      '"R60\' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties, for %{lvl*3} rd"',
+      '"60\' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft to determine non-artifact magic item properties, for %{lvl*3} rd"',
   'Illusory Script':'Level=B3,S3,W3',
   'Illusory Wall':'',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
@@ -4050,7 +4048,7 @@ Pathfinder.SPELLS = {
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target permanently randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)"',
+      '"R%{100+lvl*10}\' Target permanently randomly: 25% acts normally; 25% babbles; 25% inflicts 1d8 + Strength modifier HP to itself; 25% attacks the nearest creature (save Will negates)"',
   'Insect Plague':
     'Level=C5,D5 ' +
     'Description=' +
@@ -4060,19 +4058,19 @@ Pathfinder.SPELLS = {
   'Invisibility':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
-      '"Touched becomes invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
+      '"Makes touched invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
   'Greater Invisibility':
     'Level=B4,S4,W4 ' +
     'Description=' +
-      '"Touched becomes invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} rd"',
+      '"Makes touched invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} rd"',
   'Mass Invisibility':
     'Level=Trickery8,S7,W7 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Creatures in a 90\' radius become invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
+      '"R%{400+lvl*40}\' Makes creatures in a 90\' radius invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
   'Invisibility Purge':'',
   'Invisibility Sphere':
     'Description=' +
-      '"Creatures within 10\' of touched become invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
+      '"Makes creatures within 10\' of touched invisible to others (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
@@ -4085,12 +4083,12 @@ Pathfinder.SPELLS = {
   'Jump':
     'Level=D1,R1,S1,W1 ' +
     'Description=' +
-      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jump (save Will negates) for %{lvl} min"',
+      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jumps (save Will negates) for %{lvl} min"',
 
   'Keen Edge':'',
   'Knock':
     'Description=' +
-      '"R%{100+lvl*10}\' Opens a stuck or barred door, chest, or shackle, gives a +%{lvl+10} check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
+      '"R%{100+lvl*10}\' Opens a stuck, barred, locked, or magically held door, chest, or shackle, gives a +10 caster level check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
   'Know Direction':'',
 
   'Legend Lore':'',
