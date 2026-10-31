@@ -4112,7 +4112,7 @@ Pathfinder.SPELLS = {
   'Mage Hand':'',
   "Mage's Disjunction":
     'Description=' +
-      '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success and permanently strips self of spellcasting abilities (save Will DC 25 negates)"',
+      '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success, permanently strips self of spellcasting abilities (save Will DC 25 negates), and is likely to attract the attention of a powerful being"',
   "Mage's Faithful Hound":'',
   "Mage's Lucubration":'',
   "Mage's Magnificent Mansion":'',
@@ -4162,7 +4162,7 @@ Pathfinder.SPELLS = {
   'Message':'',
   'Meteor Swarm':
     'Description=' +
-      '"R%{400+lvl*40}\' Ranged touch attack with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty)"',
+      '"R%{400+lvl*40}\' Ranged touch attack with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty on the save)"',
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
     'Description=' +
@@ -4178,7 +4178,7 @@ Pathfinder.SPELLS = {
   'Mirror Image':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
-      '"Creates 1d4+%{lvl//3<?8} (8 maximum) copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and any hit on one destroys it"',
+      '"Creates 1d4+%{lvl//3<?8}%{lvl>14?\' (8 maximum)\':\'\'} copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and an attack on one that hits or misses by less than 6 destroys it"',
   'Misdirection':'Level=B2,S2,W2',
   'Mislead':'',
   'Mnemonic Enhancer':'',
@@ -4213,7 +4213,7 @@ Pathfinder.SPELLS = {
   'Phantasmal Killer':'Level=Madness6,S4,W4',
   'Phantom Steed':
     'Description=' +
-      '"Creates a mount with %{lvl+7} hit points, Armor Class 18, and %{lvl//2*20<?100}\' Speed that only the target can ride for %{lvl} hr%{lvl>7?\'; the mount can ride over sandy, muddy, and swampy ground at full Speed\':\'\'}%{lvl>11?\', \':lvl>9?\' and \':\'\'}%{lvl>9?\'use <i>Water Walk</i> effects at will\':\'\'}%{lvl>13?\',\':lvl>11?\', and \':\'\'}%{lvl>11?\'use <i>Air Walk</i> effects for 1 rd at will\':\'\'}%{lvl>13?\', and fly at full Speed\':\'\'}"',
+      '"Creates a mount with %{lvl+7} hit points, Armor Class 18, and %{lvl//2*20<?100}\' Speed that only the target can ride, along with up to %{lvl*20} lbs of cargo, for %{lvl} hr%{lvl>7?\'; the mount can ride over sandy, muddy, and swampy ground at full Speed\':\'\'}%{lvl>11?\', \':lvl>9?\' and \':\'\'}%{lvl>9?\'use <i>Water Walk</i> effects at will\':\'\'}%{lvl>13?\',\':lvl>11?\', and \':\'\'}%{lvl>11?\'use <i>Air Walk</i> effects for 1 rd at will\':\'\'}%{lvl>13?\', and fly at full Speed\':\'\'}"',
   'Phantom Trap':'',
   'Phase Door':'',
   'Planar Ally':'',
@@ -4228,17 +4228,17 @@ Pathfinder.SPELLS = {
     'School=Transmutation ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min"',
+      '"Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape II':
     'School=Transmutation ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min"',
+      '"Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape III':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min"',
+      '"Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Poison':
     'Level=C4,D3 ' +
     'Description="Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
@@ -4299,10 +4299,10 @@ Pathfinder.SPELLS = {
   'Protection From Spells':'',
   'Prying Eyes':
     'Description=' +
-      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 HP, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) scout up to 1 mile and return to show observations for %{lvl} hr"',
+      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) scout up to 1 mile and return to show observations for %{lvl} hr"',
   'Greater Prying Eyes':
     'Description=' +
-      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 HP, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing scout up to 1 mile and return to show observations for %{lvl} hr"',
+      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing scout up to 1 mile and return to show observations for %{lvl} hr"',
   'Purify Food And Drink':'Liquid=Oil',
   'Pyrotechnics':'',
 
@@ -4314,10 +4314,10 @@ Pathfinder.SPELLS = {
   'Rainbow Pattern':'',
   'Raise Dead':
     'Description=' +
-      '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
+      '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, regains 1 point of each ability score taken to 0 before death, becomes cured of nonmagical poison and disease, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Ray Of Enfeeblement':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Ranged touch attack reduces Strength by 1d6+%{lvl//2<?5} (save Fortitude half; will not lower Strength below 1) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Ranged touch attack reduces Strength by 1d6+%{lvl//2<?5} (save Fortitude half; will not lower Strength below 1) for %{lvl} rd; multiple castings do not stack"',
   'Ray Of Exhaustion':'',
   'Ray Of Frost':'',
   'Read Magic':'',
@@ -4331,10 +4331,10 @@ Pathfinder.SPELLS = {
   'Remove Curse':
     'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
     'Description=' +
-      '"Allows a successful caster level check to dispel all curses from touched (save Will negates)"',
+      '"Allows successful caster level checks to dispel each curse affecting touched (save Will negates)"',
   'Remove Disease':
     'Description=' +
-      '"Allows a successful caster level check to cure touched of all diseases (save Fortitude negates)"',
+      '"Allows successful caster level checks to cure each disease affecting touched (save Fortitude negates)"',
   'Remove Fear':'Level=B1,C1,Liberation1',
   'Remove Paralysis':
     'Level=C2,Liberation2,P2 ' +
@@ -4349,10 +4349,10 @@ Pathfinder.SPELLS = {
   'Resistance':'Liquid=Potion',
   'Restoration':
     'Description=' +
-      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level (save Will negates)"',
+      '"Dispels magical harm affecting an ability score of touched, cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level (save Will negates); can restore no more that 1 drained level to a target per week"',
   'Greater Restoration':
     'Description=' +
-      '"Dispels magical ability harm from touched and cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects (save Will negates)"',
+      '"Dispels magical harm affecting the ability scores of touched, cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects (save Will negates)"',
   'Lesser Restoration':'',
   'Resurrection':
     'Description=' +
@@ -4363,7 +4363,7 @@ Pathfinder.SPELLS = {
   'Righteous Might':
     'Level=C5,Glory5,Strength5 ' +
     'Description=' +
-      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
+      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +4 Constitution, -2 Dexterity, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
   'Rope Trick':
     'Description=' +
       '"Causes a 5\'-30\' rope to stretch upward and remain immobile, leading to an extradimensional space with room for 8 creatures, for %{lvl} hr" ' +
