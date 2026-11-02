@@ -3649,9 +3649,16 @@ Pathfinder.SPELLS = {
   'Chill Touch':'',
   'Circle Of Death':'',
   'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
+  // N.B. Clenched Fist has a description that incorporates the ability
+  // modifier related to the spell group. (True also for Crushing Hand, Mage's
+  // Sword, and Telekinesis, but their descriptions are inherited from SRD35.)
+  // Although we don't have a direct way to select the appropriate modifier, we
+  // can select between possibilities by examining the name of the associated
+  // caster level that spellRules plugs into occurrances of lvl in the
+  // description, e.g., casterLevel.S for sorcerer => charismaModifier.
   'Clenched Fist':
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+12} Bull Rush, can make a +%{lvl+10} + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only), and can be redirected between targets as a move action, for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+12} Bull Rush, can make a +%{lvl+10+(\'lvl\'=~\'casterLevels.W\'?intelligenceModifier:\'lvl\'=~\'casterLevels.[BS]\'?charismaModifier:wisdomModifier)} melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only), and can be redirected between targets as a move action, for %{lvl} rd"',
   'Cloak Of Chaos':
     'Description=' +
       '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
@@ -4395,7 +4402,7 @@ Pathfinder.SPELLS = {
   'Shadow Walk':'Level=B5,Darkness6,S6,W6',
   'Shambler':
     'Description=' +
-      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months"',
+      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shamber</i> can be active at a time"',
   'Shapechange':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
@@ -4433,7 +4440,7 @@ Pathfinder.SPELLS = {
   'Soften Earth And Stone':'',
   'Solid Fog':
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, prevents ranged attacks, and inflicts -2 attacks and damage for %{lvl} min"',
+      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, prevents ranged attacks, and inflicts -2 melee attacks and damage for %{lvl} min"',
   'Song Of Discord':'',
   'Soul Bind':'',
   'Sound Burst':'',
@@ -4449,7 +4456,7 @@ Pathfinder.SPELLS = {
   'Spider Climb':
     'Level=D2,S2,W2 ' +
     'Description=' +
-      '"Gives touched a 20\' climb Speed, a +8 bonus to Climb checks, and the ability to climb walls and ceilings (save Will negates) for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
+      '"Gives touched a 20\' climb Speed, the ability to climb walls and ceilings, and a +8 bonus to Climb checks (save Will negates), for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
   'Spike Growth':'',
   'Spike Stones':'',
   'Spiritual Weapon':'',
@@ -4549,11 +4556,11 @@ Pathfinder.SPELLS = {
   'Wail Of The Banshee':
     'Level=Death9,Repose9,S9,W9 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} targets in a 40\' radius"',
+      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} creatures in a 40\' radius"',
   'Wall Of Fire':'',
   'Wall Of Force':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Creates an invisible, impassible, and immobile %{lvl*10} square foot wall for %{lvl} rd; the wall can be destroyed by <i>Disintegrate</i>, <i>Mage\'s Disjunction</i>, a rod of cancellation, or a sphere of annihilation, and other spells and physical attacks can damage it (hardness 30, %{lvl*20} hit points"',
+      '"R%{25+lvl//2*5}\' Creates an invisible, impassible, and immobile %{lvl*10} square foot wall (hardness 30, %{lvl*20} hit points) for %{lvl} rd; the wall can be destroyed by <i>Disintegrate</i>, <i>Mage\'s Disjunction</i>, a rod of cancellation, or a sphere of annihilation, and other spells and physical attacks can damage it"',
   'Wall Of Ice':'',
   'Wall Of Iron':'Level=Artifice7,S6,W6',
   'Wall Of Stone':'',
@@ -4579,7 +4586,7 @@ Pathfinder.SPELLS = {
   'Wood Shape':'Level=Artifice2,D2 Liquid=Oil',
   'Word Of Chaos':
     'Description=' +
-      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
+      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for 1 rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Word Of Recall':'',
 
   'Zone Of Silence':'',
