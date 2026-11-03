@@ -3524,7 +3524,7 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=B2,S2,W2 ' +
     'Description=' +
-      '"Transforms self into a Small humanoid, giving +2 Dexterity, or a medium humanoid, giving +2 Strength, for %{lvl} min; also gives 60\' Darkvision, Low-Light Vision, Scent, and a 30\' swim Speed as appropriate to the form"',
+      '"Transforms self into a Small humanoid, giving +2 Dexterity, or a medium humanoid, giving +2 Strength, for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Scent, and a 30\' swim Speed, as appropriate to the form"',
   'Analyze Dweomer':'',
   'Animal Growth':
     'Description=' +
@@ -3577,22 +3577,22 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)"' +
     'Level=S3,W3 ' +
     'Description=' +
-      '"Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 30\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, and Scent, as appropriate to the form"',
+      '"Transforms self into a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for %{lvl} min; the transformation may also give 30\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, and Scent, as appropriate to the form"',
   'Beast Shape II':
     'School="Transmutation (Polymorph)"' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Self becomes a Tiny (gives +4 Dexterity, -2 Strength, and a +1 natural armor bonus to Armor Class) or Large (gives +4 Strength, -2 Dexterity, and a +4 natural armor bonus) animal for %{lvl} min; the transformation may also give any of 60\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Grab, Pounce, and Trip, as appropriate to the form"',
+      '"Transforms self into a Tiny (gives +4 Dexterity, -2 Strength, and a +1 natural armor bonus to Armor Class) or Large (gives +4 Strength, -2 Dexterity, and a +4 natural armor bonus) animal for %{lvl} min; the transformation may also give 60\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Grab, Pounce, and Trip, as appropriate to the form"',
   'Beast Shape III':
     'School="Transmutation (Polymorph)"' +
     'Level=Animal5,S5,W5 ' +
     'Description=' +
-      '"Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 30\' burrow Speed, 90\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form"',
+      '"Transforms self into a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for %{lvl} min; the transformation may also give a 30\' burrow Speed, 90\' climb, fly, and swim Speeds, 60\' Darkvision, Low-Light Vision, Scent, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form"',
   'Beast Shape IV':
     'School="Transmutation (Polymorph)"' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give any of a 60\' burrow Speed, a 90\' climb Speed, 120\' fly and swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental Resistance 20, and elemental Vulnerability, as appropriate to the form"',
+      '"Transforms self into a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give a 60\' burrow Speed, a 90\' climb Speed, 120\' fly and swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental resistance 20, and elemental vulnerability, as appropriate to the form"',
   'Bestow Curse':'',
   'Binding':
     'Description=' +
@@ -3820,22 +3820,22 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Self becomes a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Transforms self into a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Self becomes a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Transforms self into a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
+      '"Transforms self into a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
   'Elemental Body IV':
     'School="Transmutation (Polymorph)" ' +
     'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
     'Description=' +
-      '"Self becomes a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
+      '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
   'Elemental Swarm':'',
   'Endure Elements':'',
   'Energy Drain':'',
@@ -3873,7 +3873,7 @@ Pathfinder.SPELLS = {
       '"Gives self +%{lvl//2<?10} Perception to uncover traps and an automatic check when within 10\' of one for %{lvl} min"',
   'Finger Of Death':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers %{lvl*10} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
+      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
   'Fire Seeds':
     'Description=' +
       '"Changes 4 touched acorns into grenades that can be thrown with a 20\' range increment for ranged touch attacks that inflict %{lvl<?20}d4 HP fire in total%{lvl>10?\' (the most powerful can inflict at most 10d4 HP)\':\'\'}, plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+%{lvl} HP fire in a 5\' radius each (save Reflex half), for %{lvl*10} min"',
@@ -3909,17 +3909,17 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
+      '"Transforms self into a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
   'Form Of The Dragon II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Self becomes a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 40\' cone or 80\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, wings, and a tail that inflict 2d6 HP, 2x1d8 HP, 2x1d6 HP, and 1d8 HP"',
+      '"Transforms self into a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 40\' cone or 80\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, wings, and a tail that inflict 2d6 HP, 2x1d8 HP, 2x1d6 HP, and 1d8 HP"',
   'Form Of The Dragon III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S8,W8 ' +
     'Description=' +
-      '"Self becomes a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
+      '"Transforms self into a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
   "Fox's Cunning":'Level=B2,S2,W2',
   "Mass Fox's Cunning":'',
   'Freedom':'Level=Liberation9,S9,W9',
@@ -3949,11 +3949,11 @@ Pathfinder.SPELLS = {
   'Giant Form I':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
-    'Description="Self becomes a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, and Low-Light vision; the transformation may also give any of 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, R60\' rock throwing that inflicts 2d6 HP, and elemental resistances and vulnerabilities, as appropriate to the form"',
+    'Description="Transforms self into a Large giant for %{lvl} min, gaining +6 Strength, -2 Dexterity, +4 Constitution, a +4 natural bonus to Armor Class, and Low-Light vision; the transformation may also give 60\' Darkvision, a rend attack that inflicts 2d6 HP, regeneration 5, rock catching, R60\' rock throwing that inflicts 2d6 HP, and elemental resistances and vulnerabilities, as appropriate to the form"',
   'Giant Form II':
     'School=Transmutation ' +
     'Level=S8,W8 ' +
-    'Description="Self becomes a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give any of a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropraite to the form"',
+    'Description="Transforms self into a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropraite to the form"',
   'Giant Vermin':
     'Description=' +
       '"R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey simple commands for %{lvl} min"',
@@ -4081,7 +4081,7 @@ Pathfinder.SPELLS = {
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
-      '"Self becomes living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
+      '"Transforms self into living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
   'Ironwood':'',
   'Irresistible Dance':
     'Description=' +
@@ -4233,17 +4233,17 @@ Pathfinder.SPELLS = {
     'School=Transmutation ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape II':
     'School=Transmutation ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape III':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give any of 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Poison':
     'Level=C4,D3 ' +
     'Description="Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
