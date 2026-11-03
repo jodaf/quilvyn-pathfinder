@@ -3528,15 +3528,15 @@ Pathfinder.SPELLS = {
   'Analyze Dweomer':'',
   'Animal Growth':
     'Description=' +
-      '"R%{100+lvl*10}\' Animal target doubles in size (save Fortitude negates), gaining 8x weight, +8 Strength, +4 Constitution, -2 Dexterity, +2 natural armor, and a -1 size penalty to Armor Class and attacks, for %{lvl} min"',
+      '"R%{100+lvl*10}\' Causes the target animal to double in size (save Fortitude negates), gaining 8x weight, +8 Strength, +4 Constitution, -2 Dexterity, +2 natural armor, and a -1 size penalty to Armor Class and attacks, for %{lvl} min"',
   'Animal Messenger':'',
   'Animal Shapes':
     'School="Transmutation (Polymorph)"' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} willing targets in a 15\' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' Transforms %{lvl} willing targets in a 15\' radius into a chosen Diminutive - Huge animal or a Small - Medium magical beast for %{lvl} hr"',
   'Animal Trance':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 2d6 HD of animals and magical beasts with Intelligence 1 or 2 sit unmoving (save Will negates) for concentration"',
+      '"R%{25+lvl//2*5}\' Causes 2d6 HD of animals and magical beasts with Intelligence 1 or 2 to sit unmoving (save Will negates) for concentration"',
   'Animate Dead':'',
   'Animate Objects':'',
   'Animate Plants':'',
@@ -3567,7 +3567,7 @@ Pathfinder.SPELLS = {
   'Baleful Polymorph':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Changes the target into a chosen 1 HD creature (save Fortitude negates; a successful Will after an initial failure allows retaining abilities)"',
+      '"R%{25+lvl//2*5}\' Transforms the target into a chosen 1 HD creature (save Fortitude negates; a successful Will after an initial failure allows retaining abilities)"',
   'Bane':'',
   'Banishment':'',
   'Barkskin':'',
@@ -3599,7 +3599,7 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Magically imprisons the target (save Will negates for targets with %{lvl//2}%{lvl/2-lvl//2==1?\' 1/2\':\'\'} HD or more; assistance from up to 6 other casters raises the threshold by 1/2 HD per assistant who casts <i>Suggestion</i>, or by 1/6 the assistant\'s level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains imbued with <i>Antipathy</i> for %{lvl} years, sleep for %{lvl} years (-1 save DC), chains and sleep for %{lvl} months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1\\" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2"',
   'Black Tentacles':
     'Description=' +
-      '"R%{100+lvl*10}\' Tentacles in a 20\' radius grapple (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Causes tentacles to erupt from the ground in a 20\' radius and grapple creatures (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd, for %{lvl} rd"',
   'Blade Barrier':'',
   'Blasphemy':
     'Description=' +
@@ -3619,7 +3619,7 @@ Pathfinder.SPELLS = {
   'Break Enchantment':
     'Level=Adept5,B4,C5,Liberation5,Luck5,P4,S5,W5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Successful caster level check (+15 maximum) against a DC of 11 + the effect\'s caster level, frees %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
+      '"R%{25+lvl//2*5}\' Allows a successful caster level check (+15 maximum) vs. a DC of 11 + the effect\'s caster level to free %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
   'Breath Of Life':
     'School="Conjuration (Healing)"' +
     'Level=C5,Healing5 ' +
@@ -3681,11 +3681,11 @@ Pathfinder.SPELLS = {
   'Confusion':
     'Level=B3,Madness4,Trickery4,S4,W4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creatures in a 15\' radius randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature (save Will negates), for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Causes creatures in a 15\' radius to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature, (save Will negates) for %{lvl} rd"',
   'Lesser Confusion':
     'Level=B1,Madness1 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target randomly: 25% acts normally; 25% babbles; 25% inflicts 1d8 + Strength modifier HP to itself; 25% attacks the nearest creature (save Will negates) for 1 rd"',
+      '"R%{100+lvl*10}\' Causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature, (save Will negates) for 1 rd"',
   'Consecrate':
     'Description=' +
       '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 positive channeled energy save DCs, inflicts on undead -1 attacks, damage, and saves, and prevents the creation and summoning of undead, for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
@@ -3706,11 +3706,11 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Creates %{lvl*2} gallons of pure water; any that remains after 24 hr disappears"',
   'Creeping Doom':
     'Description=' +
-      '"R%{25+lvl//2*5}\' 4 centipede swarms inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 30\' each rd as a standard action"',
+      '"R%{25+lvl//2*5}\' Summons 4 centipede swarms that inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 30\' each rd as a standard action"',
   'Crushing Despair':'',
   'Crushing Hand':
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+13} Bull Rush and a a +%{lvl+13} Grapple that inflicts 2d6+12 HP, and can be redirected between targets as a move action, for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+13} Bull Rush and a +%{lvl+13} Grapple that inflicts 2d6+12 HP, and can be redirected between targets as a move action, for %{lvl} rd"',
   'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
   'Mass Cure Critical Wounds':'Level=C8,Community8,D9,Healing8',
   'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2',
@@ -3738,7 +3738,7 @@ Pathfinder.SPELLS = {
   'Death Ward':
     'Level=C4,D5,Death4,Repose4,P4 ' +
     'Description=' +
-      '"Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (save Will negates) for %{lvl} min"',
+      '"Gives touched +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (save Will negates) for %{lvl} min"',
   'Deathwatch':
     'School="Necromancy" ' +
     'Level=C1,Repose1 ' +
@@ -3793,12 +3793,12 @@ Pathfinder.SPELLS = {
   'Dispel Law':'',
   'Dispel Magic':
     'Description=' +
-      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels an ongoing targeted spell, suppresses a magic item for 1d4 rd, or disrupts a foe\'s spell casting" ' +
+      '"R%{100+lvl*10}\' Allows a successful caster level check vs. a DC of 11 + caster level to cancel an ongoing targeted spell, suppress a magic item for 1d4 rd, or disrupt a foe\'s spell casting" ' +
     'Liquid=Potion',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Successful caster level check vs. 11+caster level cancels %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius, suppresses a magic item for 1d4 rd, or disrupts a foe\'s spell casting with a +4 bonus on the check"',
+      '"R%{100+lvl*10}\' Allows a successful caster level check vs. a DC of 11 + caster level to cancel %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius, suppress a magic item for 1d4 rd, or disrupt a foe\'s spell casting with a +4 bonus on the check"',
   'Displacement':'',
   'Disrupt Undead':'',
   'Disrupting Weapon':'',
@@ -3835,7 +3835,7 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
     'Description=' +
-      '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-"',
+      '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack"',
   'Elemental Swarm':'',
   'Endure Elements':'',
   'Energy Drain':'',
@@ -3844,7 +3844,7 @@ Pathfinder.SPELLS = {
   'Mass Enlarge Person':'',
   'Entangle':
     'Description=' +
-      '"R%{400+lvl*40}\' 40\' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for %{lvl} min"',
+      '"R%{400+lvl*40}\' Causes vegetation in a 40\' radius to entangle creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for %{lvl} min"',
   'Enthrall':'Level=B2,C2,Nobility2',
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rune1,S1,W1 Liquid=Oil',
@@ -3956,7 +3956,7 @@ Pathfinder.SPELLS = {
     'Description="Transforms self into a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropraite to the form"',
   'Giant Vermin':
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius become giant and obey simple commands for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Causes %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius to grow to giant size and obey simple commands for %{lvl} min"',
   'Glibness':
     'Level=B3 ' +
     'Description=' +
@@ -4003,7 +4003,7 @@ Pathfinder.SPELLS = {
   'Hide From Undead':'',
   'Hideous Laughter':
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target with an Intelligence of at least 3 falls into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster have +4 on the saves) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Causes a target with an Intelligence of at least 3 to fall into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster have +4 on the saves) for %{lvl} rd"',
   'Hold Animal':'',
   'Hold Monster':'',
   'Mass Hold Monster':'',
@@ -4033,7 +4033,7 @@ Pathfinder.SPELLS = {
   'Identify':
     'Level=Magic1,B1,S1,W1 ' +
     'Description=' +
-      '"60\' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft to determine non-artifact magic item properties, for %{lvl*3} rd"',
+      '"60\' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft checks to determine non-artifact magic item properties, for %{lvl*3} rd"',
   'Illusory Script':'Level=B3,S3,W3',
   'Illusory Wall':'',
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
@@ -4055,11 +4055,11 @@ Pathfinder.SPELLS = {
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Target permanently randomly: 25% acts normally; 25% babbles; 25% inflicts 1d8 + Strength modifier HP to itself; 25% attacks the nearest creature (save Will negates)"',
+      '"R%{100+lvl*10}\' Permanently causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature (save Will negates)"',
   'Insect Plague':
     'Level=C5,D5 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' %{lvl//3<?6} wasp swarms inflict 2d6 HP and 1 point of Dexterity damage (save Fortitude DC 13 HP only) for %{lvl} min"',
+      '"R%{400+lvl*40}\' Summons %{lvl//3<?6} wasp swarms that inflict 2d6 HP and 1 point of Dexterity damage (save Fortitude DC 13 HP only) for %{lvl} min"',
   'Instant Summons':'Level=Rune7,S7,W7',
   'Interposing Hand':'',
   'Invisibility':
@@ -4081,16 +4081,16 @@ Pathfinder.SPELLS = {
   'Iron Body':
     'Level=S8,W8 ' +
     'Description=' +
-      '"Transforms self into living iron for %{lvl} min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
+      '"Transforms self into living iron for %{lvl} min, giving DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
   'Ironwood':'',
   'Irresistible Dance':
     'Description=' +
-      '"Touched dances in place, suffering -4 Armor Class, loss of shield bonus to Armor Class, and -10 Reflex saves, for 1d4+1 rd (save Will ends the effects after 1 rd)"',
+      '"Causes touched to dance in place, suffering -4 Armor Class, loss of shield bonus to Armor Class, and -10 Reflex saves, for 1d4+1 rd (save Will ends the effects after 1 rd)"',
 
   'Jump':
     'Level=D1,R1,S1,W1 ' +
     'Description=' +
-      '"Touched gains +%{lvl<5?10:lvl<9?20:30} Acrobatics to jumps (save Will negates) for %{lvl} min"',
+      '"Gives touched +%{lvl<5?10:lvl<9?20:30} Acrobatics to jumps (save Will negates) for %{lvl} min"',
 
   'Keen Edge':'',
   'Knock':
@@ -4101,7 +4101,8 @@ Pathfinder.SPELLS = {
   'Legend Lore':'',
   'Levitate':'',
   'Light':
-    'Description="Touched gives 20\' normal light for %{lvl*10} min" ' +
+    'Description=' +
+      '"Touched object emits a 20\' normal light for %{lvl*10} min" ' +
     'Liquid=Oil',
   'Lightning Bolt':'',
   'Limited Wish':'',
@@ -4111,7 +4112,7 @@ Pathfinder.SPELLS = {
   'Longstrider':'',
   'Lullaby':
     'Description=' +
-      '"R%{100+lvl*10}\' Creatures in a 10\' radius suffer -5 Perception and -2 Will vs. sleep (save Will negates) for concentration + %{lvl} rd"',
+      '"R%{100+lvl*10}\' 10\' radius inflicts -5 Perception and -2 Will vs. sleep (save Will negates) for concentration + %{lvl} rd"',
 
   'Mage Armor':'',
   'Mage Hand':'',
@@ -4143,7 +4144,7 @@ Pathfinder.SPELLS = {
   'Magic Fang':'',
   'Greater Magic Fang':
     'Description=' +
-      '"R%{25+lvl//2*5}\' target gains +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' Gives the target +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for %{lvl} hr"',
   'Magic Jar':'',
   'Magic Missile':'',
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
@@ -4254,12 +4255,12 @@ Pathfinder.SPELLS = {
     'Level=S5,W5 ' +
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"Touched willing target becomes a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Transforms the touched willing target into a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Greater Polymorph':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Touched willing target becomes a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Transforms the touched willing target into a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
   'Power Word Kill':'',
@@ -4304,10 +4305,10 @@ Pathfinder.SPELLS = {
   'Protection From Spells':'',
   'Prying Eyes':
     'Description=' +
-      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) scout up to 1 mile and return to show observations for %{lvl} hr"',
+      '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) that scout up to 1 mile and return to show observations for %{lvl} hr"',
   'Greater Prying Eyes':
     'Description=' +
-      '"1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing scout up to 1 mile and return to show observations for %{lvl} hr"',
+      '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing that scout up to 1 mile and return to show observations for %{lvl} hr"',
   'Purify Food And Drink':'Liquid=Oil',
   'Pyrotechnics':'',
 
