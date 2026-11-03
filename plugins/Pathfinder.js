@@ -4104,9 +4104,7 @@ Pathfinder.SPELLS = {
     'Description="Touched gives 20\' normal light for %{lvl*10} min" ' +
     'Liquid=Oil',
   'Lightning Bolt':'',
-  'Limited Wish':
-    'Description=' +
-      '"Replicates a Sorcerer/Wizard spell of up 6th level or a spell from a different class of up to 5th level%{$\'features.School Specialization\'?\' (-1 level if from an opposition school)\':\'\'}, undoes the harmful effects of a spell, or produces another effect of similar power"',
+  'Limited Wish':'',
   'Liveoak':'',
   'Locate Creature':'Level=B4,S4,W4',
   'Locate Object':'',
