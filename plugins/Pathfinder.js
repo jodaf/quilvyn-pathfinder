@@ -3654,7 +3654,7 @@ Pathfinder.SPELLS = {
   // Sword, and Telekinesis, but their descriptions are inherited from SRD35.)
   // Although we don't have a direct way to select the appropriate modifier, we
   // can select between possibilities by examining the name of the associated
-  // caster level that spellRules plugs into occurrances of lvl in the
+  // caster level that spellRules plugs into occurrences of lvl in the
   // description, e.g., casterLevel.S for sorcerer => charismaModifier.
   'Clenched Fist':
     'Description=' +
@@ -3881,7 +3881,7 @@ Pathfinder.SPELLS = {
   'Fire Storm':
     'Level=C8,D7 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only; the fire does not harm vegetation or chosen plant creatures); extinguising the flames is a full-rd action that requires a successful DC 20 Reflex save"',
+      '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only; the fire does not harm vegetation or chosen plant creatures); extinguishing the flames is a full-rd action that requires a successful DC 20 Reflex save"',
   'Fire Trap':'Liquid=Oil',
   'Fireball':'Level=Fire3,S3,W3',
   'Flame Arrow':'',
@@ -3953,7 +3953,7 @@ Pathfinder.SPELLS = {
   'Giant Form II':
     'School=Transmutation ' +
     'Level=S8,W8 ' +
-    'Description="Transforms self into a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropraite to the form"',
+    'Description="Transforms self into a Huge giant for %{lvl} min, gaining +8 Strength, -2 Dexterity, +6 Constitution, a +6 natural bonus to Armor Class, Low-Light vision, and +10 Speed; the transformation may also give a 60\' swim Speed, 60\' Darkvision, a rend attack that inflicts 2d8 HP, regeneration 5, rock catching, R120\' rock throwing that inflicts 2d10 HP, and elemental resistances and vulnerabilities, as appropriate to the form"',
   'Giant Vermin':
     'Description=' +
       '"R%{25+lvl//2*5}\' Causes %{lvl<10?3:lvl<14?4:lvl<18?6:lvl<20?8:12} centipedes, %{lvl<10?2:lvl<14?3:lvl<18?4:lvl<20?5:8} spiders, or %{lvl<10?1:lvl<14?2:lvl<18?3:lvl<20?4:6} scorpions in 15\' radius to grow to giant size and obey simple commands for %{lvl} min"',
@@ -4401,7 +4401,7 @@ Pathfinder.SPELLS = {
   'Shadow Walk':'Level=B5,Darkness6,S6,W6',
   'Shambler':
     'Description=' +
-      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shamber</i> can be active at a time"',
+      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shambler</i> can be active at a time"',
   'Shapechange':
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
