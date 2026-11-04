@@ -4172,7 +4172,7 @@ Pathfinder.SPELLS = {
   'Mind Blank':
     'Level=Liberation8,Protection8,S8,W8 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target gains immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr"',
+      '"R%{25+lvl//2*5}\' Gives the target immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr"',
   'Mind Fog':'',
   'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
   'Minor Image':'Level=B2,S2,W2',
@@ -4234,17 +4234,17 @@ Pathfinder.SPELLS = {
     'School=Transmutation ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Transforms self into a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, Poison, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape II':
     'School=Transmutation ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Transforms self into a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, Poison, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Plant Shape III':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Transforms self into a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
+      '"Transforms self into a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, Poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Poison':
     'Level=C4,D3 ' +
     'Description="Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
@@ -4270,13 +4270,13 @@ Pathfinder.SPELLS = {
   'Prismatic Sphere':
     'Level=Artifice9,Protection9,Sun9,S9,W9 ' +
     'Description=' +
-      '"10\' radius sphere lasting %{lvl*10} min blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
+      '"Creates a 10\' radius sphere lasting %{lvl*10} min that blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
   'Prismatic Spray':
     'Description=' +
       '"60\' cone blinds creatures with up to 8 HD for 2d4 rd and randomly inflicts on each creature one of: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex Half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates); 2 of the preceding effects"',
   'Prismatic Wall':
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Creates a %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min that blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
   'Produce Flame':'',
   'Programmed Image':'',
   'Project Image':'',
@@ -4573,7 +4573,7 @@ Pathfinder.SPELLS = {
   'Waves Of Fatigue':'',
   'Web':
     'Description=' +
-      '"R%{100+lvl*10}\' Anchored web strands in a 20\' radius grapple creatures (save Reflex negates, and a successful combat maneuver or Escape Artist check against the spell DC breaks free) for %{lvl*10} min; movement through the web requires a successful combat maneuver or Escape Artist check each rd; burning clears the web, inflicting 2d4 HP fire on those within"',
+      '"R%{100+lvl*10}\' Creates anchored web strands in a 20\' radius that grapple creatures (save Reflex negates, and a successful combat maneuver or Escape Artist check against the spell DC breaks free) for %{lvl*10} min; movement through the web requires a successful combat maneuver or Escape Artist check each rd; burning clears the web and inflicts 2d4 HP fire on those within"',
   'Weird':'Level=Madness9,S9,W9',
   'Whirlwind':'Level=Air8,D8,Weather8',
   'Whispering Wind':'',
