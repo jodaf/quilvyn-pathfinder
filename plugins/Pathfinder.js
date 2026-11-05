@@ -3508,71 +3508,87 @@ Pathfinder.SKILLS = {
   'Use Magic Device':
     'Ability=Charisma Untrained=false Class=Bard,Rogue,Sorcerer'
 };
+// N.B. code that follows the SPELLS definition replaces null entries with
+// unmodified copies of the SRD35 definitions.
 Pathfinder.SPELLS = {
 
-  'Acid Arrow':'',
+  'Acid Arrow':null,
   'Acid Fog':
-    'Level=S6,W6 ' +
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, and inflicts -2 attacks, -2 damage, and 2d6 HP acid per rd for %{lvl} rd"',
-  'Acid Splash':'',
-  'Aid':'Level=Adept2,C2,Luck2',
-  'Air Walk':'',
-  'Alarm':'',
-  'Align Weapon':'Level=C2,Chaos2,Evil2,Good2,Law2 Liquid=Oil',
+    SRD35.SPELLS['Acid Fog']
+    .replace(',Water7', '')
+    .replace("movement to 5'", 'movement to half Speed'),
+  'Acid Splash':null,
+  'Aid':
+    SRD35.SPELLS.Aid
+    .replace(',Good2', ''),
+  'Air Walk':null,
+  'Alarm':null,
+  'Align Weapon':
+    SRD35.SPELLS['Align Weapon']
+    .replace('C2', 'C2,Chaos2,Evil2,Good2,Law2') + ' ' +
+    'Liquid=Oil',
   'Alter Self':
+    // Changes SRD35 School and Level and rewrites Description
     'School="Transmutation (Polymorph)"' +
     'Level=B2,S2,W2 ' +
     'Description=' +
       '"Transforms self into a Small humanoid, giving +2 Dexterity, or a medium humanoid, giving +2 Strength, for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Scent, and a 30\' swim Speed, as appropriate to the form"',
-  'Analyze Dweomer':'',
+  'Analyze Dweomer':null,
   'Animal Growth':
-    'Description=' +
-      '"R%{100+lvl*10}\' Causes the target animal to double in size (save Fortitude negates), gaining 8x weight, +8 Strength, +4 Constitution, -2 Dexterity, +2 natural armor, and a -1 size penalty to Armor Class and attacks, for %{lvl} min"',
-  'Animal Messenger':'',
+    SRD35.SPELLS['Animal Growth']
+    .replace(/Causes.*radius/, 'Causes the target animal')
+    .replace('a -1 size', 'and a -1 size')
+    .replace(/, DR.* for/, ', for'),
+  'Animal Messenger':null,
   'Animal Shapes':
-    'School="Transmutation (Polymorph)"' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Transforms %{lvl} willing targets in a 15\' radius into a chosen Diminutive - Huge animal or a Small - Medium magical beast for %{lvl} hr"',
+    SRD35.SPELLS['Animal Shapes']
+    .replace('Transmutation', '"Transmutation (Polymorph)"')
+    .replace(/animal.*for/, 'Diminutive - Huge animal or a Small - Medium magical beast for'),
   'Animal Trance':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Causes 2d6 HD of animals and magical beasts with Intelligence 1 or 2 to sit unmoving (save Will negates) for concentration"',
-  'Animate Dead':'',
-  'Animate Objects':'',
-  'Animate Plants':'',
-  'Animate Rope':'Level=Artifice1,B1,S1,W1 Liquid=Oil',
-  'Antilife Shell':
-    'Description=' +
-      '"10\' radius bars the entrance of living creatures for %{lvl} min; does not affect constructs, elementals, outsiders, and undead"',
-  'Antimagic Field':
-    'Description=' +
-      '"10\' radius suppresses magic and summoned creatures for %{lvl*10} min"',
-  'Antipathy':'',
-  'Antiplant Shell':
-    'Description=' +
-      '"10\' radius bars plant creatures and animated plants for %{lvl} min"',
-  'Arcane Eye':'',
-  'Arcane Lock':
-    'Description=' +
-      '"Increases by 10 the DC for others to open a touched door, portal, or chest or creates a DC 20 lock on an object without one" ' +
+    SRD35.SPELLS['Animal Trance']
+    .replace('for trained, dire, or magical animals ', ''),
+  'Animate Dead':null,
+  'Animate Objects':null,
+  'Animate Plants':null,
+  'Animate Rope':
+    SRD35.SPELLS['Animate Rope']
+    .replace('Level=', 'Level=Artifice1,') + ' ' +
     'Liquid=Oil',
-  'Arcane Mark':'Liquid=Oil',
-  'Arcane Sight':'',
-  'Greater Arcane Sight':'',
-  'Astral Projection':'',
-  'Atonement':'',
-  'Augury':'',
-  'Awaken':'',
+  'Antilife Shell':
+    SRD35.SPELLS['Antilife Shell']
+    .replace('lvl*10', 'lvl'),
+  'Antimagic Field':
+    SRD35.SPELLS['Antimagic Field']
+    .replace(' and incorporeal undead', ''),
+  'Antipathy':null,
+  'Antiplant Shell':
+    SRD35.SPELLS['Antiplant Shell']
+    .replace('lvl*10', 'lvl'),
+  'Arcane Eye':null,
+  'Arcane Lock':
+    SRD35.SPELLS['Arcane Lock']
+    .replace('chest', 'chest or creates a DC 20 lock on an object without one') + ' ' +
+    'Liquid=Oil',
+  'Arcane Mark':
+    SRD35.SPELLS['Arcane Mark'] + ' ' +
+    'Liquid=Oil',
+  'Arcane Sight':null,
+  'Greater Arcane Sight':null,
+  'Astral Projection':null,
+  'Atonement':null,
+  'Augury':null,
+  'Awaken':null,
 
   'Baleful Polymorph':
-    'School="Transmutation (Polymorph)" ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Transforms the target into a chosen 1 HD creature (save Fortitude negates; a successful Will after an initial failure allows retaining abilities)"',
-  'Bane':'',
-  'Banishment':'',
-  'Barkskin':'',
-  "Bear's Endurance":'',
-  "Mass Bear's Endurance":'',
+    SRD35.SPELLS['Baleful Polymorph']
+    .replace('Transmutation', '"Transmutation (Polymorph)"')
+    .replace('24 hr ', '')
+    .replace('HD and memories', 'abilities'),
+  'Bane':null,
+  'Banishment':null,
+  'Barkskin':null,
+  "Bear's Endurance":null,
+  "Mass Bear's Endurance":null,
   'Beast Shape I':
     'School="Transmutation (Polymorph)"' +
     'Level=S3,W3 ' +
@@ -3593,228 +3609,328 @@ Pathfinder.SPELLS = {
     'Level=S6,W6 ' +
     'Description=' +
       '"Transforms self into a Tiny (gives +8 Dexterity, -2 Strength, and a +3 natural armor bonus to Armor Class) or Large (gives +6 Strength, -2 Dexterity, +2 Constitution, and a +6 natural armor bonus) magical beast for %{lvl} min; the transformation may also give a 60\' burrow Speed, a 90\' climb Speed, 120\' fly and swim Speeds, 60\' Blindsense, 90\' Darkvision, Low-Light Vision, Scent, 60\' Tremorsense, a Breath Weapon, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Rend, Roar, Spikes, Trample, Trip, Web, elemental resistance 20, and elemental vulnerability, as appropriate to the form"',
-  'Bestow Curse':'',
+  'Bestow Curse':null,
   'Binding':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Magically imprisons the target (save Will negates for targets with %{lvl//2}%{lvl/2-lvl//2==1?\' 1/2\':\'\'} HD or more; assistance from up to 6 other casters raises the threshold by 1/2 HD per assistant who casts <i>Suggestion</i>, or by 1/6 the assistant\'s level if they cast an appropriate <i>Dominate</i> spell) with a choice of chains imbued with <i>Antipathy</i> for %{lvl} years, sleep for %{lvl} years (-1 save DC), chains and sleep for %{lvl} months (-2 save DC), permanent confinement (-3 save DC), permanent gaseous form in a container (-4 save DC), or permanent reduction in size to 1\\" or less within a container (-4 save DC); the spell can also include triggering conditions that end it, increasing the save DC by 2"',
+    SRD35.SPELLS.Binding
+    .replace('assistant', 'assistant who casts <i>Suggestion</i>'),
   'Black Tentacles':
+    SRD35.SPELLS['Black Tentacles'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Causes tentacles to erupt from the ground in a 20\' radius and grapple creatures (CMB +%{lvl+5}; CMD %{lvl+15}), inflicting 1d6+4 HP each rd, for %{lvl} rd"',
-  'Blade Barrier':'',
+  'Blade Barrier':null,
   'Blasphemy':
+    SRD35.SPELLS.Blasphemy + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"Inflicts on nonevil creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); -2d6 Strength for 2d4 rd on creatures with up to %{lvl-1} HD (save Will half); dazed for 1 rd on creatures with up to %{lvl} HD (save Will negates)"',
+      '"Inflicts on nonevil creatures within 40\' a set of effects: banishment for 24 hr on extraplanar creatures (save Will -4 negates); killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); -2d6 Strength for 2d4 rd on creatures with up to %{lvl-1} HD (save Will half); dazed for 1 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Bleed':
     'School=Necromancy ' +
     'Level=C0,S0,W0 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (save Will negates)"',
-  'Bless':'Level=Adept1,C1,Community1,P1',
-  'Bless Water':'',
-  'Bless Weapon':'Level=Glory2,P1',
-  'Blight':'',
-  'Blindness/Deafness':'Level=B2,C3,Darkness2,S2,W2',
-  'Blink':'',
-  'Blur':'',
+  'Bless':
+    SRD35.SPELLS.Bless
+    .replace('Level=', 'Level=Community1,'),
+  'Bless Water':null,
+  'Bless Weapon':
+    SRD35.SPELLS['Bless Weapon']
+    .replace('Level=', 'Level=Glory2,'),
+  'Blight':null,
+  'Blindness/Deafness':
+    SRD35.SPELLS['Blindness/Deafness']
+    .replace('Level=', 'Level=Darkness2,'),
+  'Blink':null,
+  'Blur':null,
   'Break Enchantment':
-    'Level=Adept5,B4,C5,Liberation5,Luck5,P4,S5,W5 ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Allows a successful caster level check (+15 maximum) vs. a DC of 11 + the effect\'s caster level to free %{lvl} targets in a 15\' radius from enchantments, transmutations, and curses"',
+    SRD35.SPELLS['Break Enchantment']
+    .replace('Level=', 'Level=Liberation5,')
+    .replace(', or DC 25 for cursed items,', ''),
   'Breath Of Life':
     'School="Conjuration (Healing)"' +
     'Level=C5,Healing5 ' +
     'Description=' +
       '"Touched regains 5d8+%{lvl<?25} hit points (save Will negates); undead instead suffer the same amount (save Will half); the spell can revive a corpse dead less than 1 rd, giving a temporary negative level for 1 day"',
-  "Bull's Strength":'Level=Adept2,C2,D2,P2,Strength2,S2,W2',
-  "Mass Bull's Strength":'',
-  'Burning Hands':'',
+  "Bull's Strength":
+    SRD35.SPELLS["Bull's Strength"]
+    .replace(',Blackguard2', ''),
+  "Mass Bull's Strength":null,
+  'Burning Hands':null,
 
-  'Call Lightning':'Level=D3,Weather3',
-  'Call Lightning Storm':'',
-  'Calm Animals':'',
-  'Calm Emotions':'Level=B2,C2,Charm2',
-  "Cat's Grace":'Level=Adept2,B2,D2,R2,S2,W2',
-  "Mass Cat's Grace":'',
-  'Cause Fear':'Level=Adept1,B1,C1,Death1,S1,W1',
+  'Call Lightning':
+    SRD35.SPELLS['Call Lightning']
+    .replace('Level=', 'Level=Weather3,'),
+  'Call Lightning Storm':null,
+  'Calm Animals':null,
+  'Calm Emotions':
+    SRD35.SPELLS['Calm Emotions']
+    .replace('Law2', 'Charm2'),
+  "Cat's Grace":
+    SRD35.SPELLS["Cat's Grace"]
+    .replace(',Assassin2', ''),
+  "Mass Cat's Grace":null,
+  'Cause Fear':
+    SRD35.SPELLS['Cause Fear']
+    .replace(',Blackguard1', ''),
   'Chain Lightning':
-    'Description=' +
-      '"R%{400+lvl*40}\' Bolt inflicts %{lvl<?20}d6 HP electricity to the primary target (save Reflex half) and %{lvl<?20} secondary targets within 30\' of the primary (save Reflex (DC -2) half)"',
-  'Changestaff':'',
-  'Chaos Hammer':'Level=C4,Chaos4',
-  'Charm Animal':'',
-  'Charm Monster':'Level=B3,Charm5,S4,W4',
-  'Mass Charm Monster':'',
-  'Charm Person':'Level=B1,Charm1,S1,W1',
-  'Chill Metal':'',
-  'Chill Touch':'',
-  'Circle Of Death':'',
-  'Clairaudience/Clairvoyance':'Level=B3,Knowledge3,S3,W3',
-  // N.B. Clenched Fist has a description that incorporates the ability
-  // modifier related to the spell group. (True also for Crushing Hand, Mage's
-  // Sword, and Telekinesis, but their descriptions are inherited from SRD35.)
-  // Although we don't have a direct way to select the appropriate modifier, we
-  // can select between possibilities by examining the name of the associated
-  // caster level that spellRules plugs into occurrences of lvl in the
-  // description, e.g., casterLevel.S for sorcerer => charismaModifier.
+    SRD35.SPELLS['Chain Lightning']
+    .replace('save Reflex', 'save Reflex (DC -2)')
+    .replace('and half as much to', '(save Reflex half) and'),
+  'Changestaff':null,
+  'Chaos Hammer':
+    SRD35.SPELLS['Chaos Hammer']
+    .replace('Level=', 'Level=C4,'),
+  'Charm Animal':null,
+  'Charm Monster':
+    SRD35.SPELLS['Charm Monster']
+    .replace('Level=', 'Level=Charm5,'),
+  'Mass Charm Monster':null,
+  'Charm Person':
+    SRD35.SPELLS['Charm Person']
+    .replace('Level=', 'Level=Charm1,'),
+  'Chill Metal':null,
+  'Chill Touch':null,
+  'Circle Of Death':null,
+  'Clairaudience/Clairvoyance':
+    SRD35.SPELLS['Clairaudience/Clairvoyance']
+    .replace('Assassin4,', ''),
   'Clenched Fist':
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+12} Bull Rush, can make a +%{lvl+10+(\'lvl\'=~\'casterLevels.W\'?intelligenceModifier:\'lvl\'=~\'casterLevels.[BS]\'?charismaModifier:wisdomModifier)} melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only), and can be redirected between targets as a move action, for %{lvl} rd"',
+    SRD35.SPELLS['Clenched Fist']
+    .replace('+15', '+%{lvl+12}'),
   'Cloak Of Chaos':
+    SRD35.SPELLS['Cloak Of Chaos'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"%{lvl} creatures within 20\' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for %{lvl} rd"',
   'Clone':
-    'Description=' +
-      '"Grows a duplicate from a piece of a creature that its soul can enter if the original has died or dies later, at which point the creature regains 1 hit point per HD, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
-  'Cloudkill':'',
-  'Color Spray':'',
-  'Command':'',
-  'Greater Command':'Level=C5,Nobility5',
-  'Command Plants':'',
-  'Command Undead':'',
-  'Commune':'',
-  'Commune With Nature':'Level=D5,R4',
+    SRD35.SPELLS.Clone
+    .replace('irreversibly loses a level', 'gains 2 permanent negative levels')
+    .replace('irreversibly lose 2 Constitution', 'suffer 2 points of Constitution drain'),
+  'Cloudkill':null,
+  'Color Spray':null,
+  'Command':null,
+  'Greater Command':
+    SRD35.SPELLS['Greater Command']
+    .replace('Level=', 'Level=Nobility5,'),
+  'Command Plants':null,
+  'Command Undead':null,
+  'Commune':null,
+  'Commune With Nature':
+    SRD35.SPELLS['Commune With Nature']
+    .replace('Animal5,', ''),
   'Comprehend Languages':
-    'Level=Adept1,B1,C1,Knowledge1,S1,W1 ' +
-    'Description=' +
-      '"Allows self to understand written text and words spoken in any language for %{lvl*10} min"',
-  'Cone Of Cold':'',
+    SRD35.SPELLS['Comprehend Languages']
+    .replace('Level=', 'Level=Knowledge1,')
+    .replace('touched ', '')
+    .replace('by touched creatures ', ''),
+  'Cone Of Cold':null,
   'Confusion':
-    'Level=B3,Madness4,Trickery4,S4,W4 ' +
+    SRD35.SPELLS.Confusion
+    .replace('Level=', 'Level=Madness4,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Causes creatures in a 15\' radius to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature, (save Will negates) for %{lvl} rd"',
   'Lesser Confusion':
-    'Level=B1,Madness1 ' +
+    SRD35.SPELLS['Lesser Confusion']
+    .replace('Level=', 'Level=Madness1,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature, (save Will negates) for 1 rd"',
   'Consecrate':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 positive channeled energy save DCs, inflicts on undead -1 attacks, damage, and saves, and prevents the creation and summoning of undead, for %{lvl*2} hr; a shrine to %{deity} in the area doubles the spell\'s effects, while a shrine to a different deity negates the effects but renders the shrine inert"',
-  'Contact Other Plane':'',
-  'Contagion':'Level=Adept3,C3,D3,S4,W4',
-  'Contingency':'',
-  'Continual Flame':'Liquid=Oil',
-  'Control Plants':'',
-  'Control Undead':'',
-  'Control Water':'',
-  'Control Weather':'Level=C7,D7,S7,W7,Weather7',
-  'Control Winds':'Level=Air5,D5,Weather6',
-  'Create Food And Water':'',
-  'Create Greater Undead':'',
-  'Create Undead':'',
+    SRD35.SPELLS.Consecrate
+    .replace('gives +3 turn undead', 'inflicts +3 positive channeled energy save DCs'),
+  'Contact Other Plane':null,
+  'Contagion':
+    SRD35.SPELLS.Contagion
+    .replace('Blackguard3,', '')
+    .replace('Destruction3,', ''),
+  'Contingency':null,
+  'Continual Flame':
+    SRD35.SPELLS['Continual Flame'] + ' ' +
+    'Liquid=Oil',
+  'Control Plants':null,
+  'Control Undead':null,
+  'Control Water':null,
+  'Control Weather':
+    SRD35.SPELLS['Control Weather']
+    .replace('Air7', 'Weather7'),
+  'Control Winds':
+    SRD35.SPELLS['Control Winds']
+    .replace('Level=', 'Level=Weather6,'),
+  'Create Food And Water':null,
+  'Create Greater Undead':null,
+  'Create Undead':null,
   'Create Water':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Creates %{lvl*2} gallons of pure water; any that remains after 24 hr disappears"',
+    SRD35.SPELLS['Create Water']
+    .replace('pure water', 'pure water; any that remains after 24 hr disappears'),
   'Creeping Doom':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Summons 4 centipede swarms that inflict 4d6 HP plus 1d4 Dexterity damage from poison (save Fortitude HP only) for %{lvl} rd; swarms within 100\' can be moved 30\' each rd as a standard action"',
-  'Crushing Despair':'',
+    SRD35.SPELLS['Creeping Doom']
+    .replace('%{lvl//2}', '4')
+    .replace('2d6', '4d6')
+    .replace('moved 20', 'moved 30'),
+  'Crushing Despair':null,
   'Crushing Hand':
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+13} Bull Rush and a +%{lvl+13} Grapple that inflicts 2d6+12 HP, and can be redirected between targets as a move action, for %{lvl} rd"',
-  'Cure Critical Wounds':'Level=Adept4,B4,C4,D5,Healing4',
-  'Mass Cure Critical Wounds':'Level=C8,Community8,D9,Healing8',
-  'Cure Light Wounds':'Level=Adept1,B1,C1,D1,Healing1,P1,R2',
-  'Mass Cure Light Wounds':'Level=B5,C5,D6',
-  'Cure Moderate Wounds':'Level=Adept2,B2,C2,D3,Healing2,P3,R3',
-  'Mass Cure Moderate Wounds':'Level=B6,C6,D7',
-  'Cure Serious Wounds':'Level=Adept3,B3,C3,D4,Healing3,P4,R4',
-  'Mass Cure Serious Wounds':'Level=C7,D8',
-  'Curse Water':'',
+    SRD35.SPELLS['Crushing Hand']
+    .replace('+18', '+%{lvl+13}')
+    .replace(/\+%\{[^\}]*\} Grapple/, '+%{lvl+13} Grapple'),
+  'Cure Critical Wounds':
+    SRD35.SPELLS['Cure Critical Wounds']
+    .replace('Blackguard4,', ''),
+  'Mass Cure Critical Wounds':
+    SRD35.SPELLS['Mass Cure Critical Wounds']
+    .replace('Level=', 'Level=Community8,'),
+  'Cure Light Wounds':
+    SRD35.SPELLS['Cure Light Wounds']
+    .replace('Blackguard1,', ''),
+  'Mass Cure Light Wounds':
+    SRD35.SPELLS['Mass Cure Light Wounds']
+    .replace(',Healing5', ''),
+  'Cure Moderate Wounds':
+    SRD35.SPELLS['Cure Moderate Wounds']
+    .replace('Blackguard2,', ''),
+  'Mass Cure Moderate Wounds':null,
+  'Cure Serious Wounds':
+    SRD35.SPELLS['Cure Serious Wounds']
+    .replace('Blackguard3,', ''),
+  'Mass Cure Serious Wounds':null,
+  'Curse Water':null,
 
-  'Dancing Lights':'',
+  'Dancing Lights':null,
   'Darkness':
-    'Level=Adept2,B2,C2,S2,W2 ' +
+    SRD35.SPELLS.Darkness
+    .replace('Assassin2,', '')
+    .replace('Blackguard2,', '') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Touched object reduces the light level in a 20\' radius by 1 step for %{lvl} min"',
-  'Darkvision':'',
-  'Daylight':'',
+  'Darkvision':null,
+  'Daylight':null,
   'Daze':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Target humanoid with up to 4 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
+    SRD35.SPELLS.Daze
+    .replace('negates)', 'negates) and is then immune to the spell for 1 min'),
   'Daze Monster':
-    'Description=' +
-      '"R%{100+lvl*10}\' Living target with up to 6 HD loses its actions for 1 rd (save Will negates) and is then immune to the spell for 1 min"',
-  'Death Knell':'Level=C2,Death2',
+    SRD35.SPELLS['Daze Monster']
+    .replace('negates)', 'negates) and is then immune to the spell for 1 min'),
+  'Death Knell':
+    SRD35.SPELLS['Death Knell']
+    .replace('Blackguard2,', ''),
   'Death Ward':
-    'Level=C4,D5,Death4,Repose4,P4 ' +
-    'Description=' +
-      '"Gives touched +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (save Will negates) for %{lvl} min"',
+    SRD35.SPELLS['Death Ward']
+    .replace('Level=', 'Level=Repose4,')
+    .replace('immunity to death spells, death effects, energy drain,', '+4 saves vs. death spells and death effects and immunity to energy drain'),
   'Deathwatch':
-    'School="Necromancy" ' +
-    'Level=C1,Repose1 ' +
-    'Description=' +
-      '"30\' cone reveals whether creatures are dead, alive with up to 3 hit points, alive with more than 3 hit points, healthy, undead, or animated, for %{lvl*10} min"',
-  'Deep Slumber':'Level=B3,S3,W3',
+    SRD35.SPELLS.Deathwatch
+    .replace(' [Evil]', '')
+    .replace('Level=', 'Level=Repose1,')
+    .replace('undead', 'healthy, undead'),
+  'Deep Slumber':
+    SRD35.SPELLS['Deep Slumber']
+    .replace('Assassin3,', ''),
   'Deeper Darkness':
-    'Level=Adept3,C3,Darkness3 ' +
+    SRD35.SPELLS['Deeper Darkness']
+    .replace('Assassin3', 'Darkness3')
+    .replace('Blackguard3,', '') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Touched object reduces the light level in a 60\' radius by 2 steps for %{lvl*10} min"',
-  'Delay Poison':'',
-  'Delayed Blast Fireball':'',
-  'Demand':'Level=Charm8,Nobility8,S8,W8',
+  'Delay Poison':null,
+  'Delayed Blast Fireball':null,
+  'Demand':
+    SRD35.SPELLS.Demand
+    .replace('Level=', 'Level=Charm8,Nobility8,'),
   'Desecrate':
-    'Level=C2 ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius inflicts +3 negative channelled energy save DCs, gives undead +1 attacks, damage, and saves for %{lvl*2} hr, gives undead created or summoned within the area +1 hit point per HD, and doubles the number of undead created by <i>Animate Dead</i>; a shrine to %{deity} in the area doubles the spell\'s effects other than the change to <i>Animate Dead</i>, while a shrine to a different deity negates the effects but renders the shrine inert"',
+    SRD35.SPELLS.Desecrate
+    .replace(',Evil2', '')
+    .replace('-3 turn undead', '+3 negative channelled energy save DCs'),
   'Destruction':
-    'Level=C7,Death7,Repose7 ' +
-    'Description="R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP and, if this slays the target, consumes its remains (save Fortitude inflicts 10d6 HP)"',
-  'Detect Animals Or Plants':'',
-  'Detect Chaos':'',
-  'Detect Evil':'',
-  'Detect Good':'Level=Adept1,C1',
-  'Detect Law':'',
-  'Detect Magic':
+    SRD35.SPELLS.Destruction
+    .replace('Level=', 'Level=Repose7,') + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"60\' cone reveals the presence and power of magical auras and allows making Knowledge (Arcana) checks to determine their schools for concentration up to %{lvl} min"',
-  'Detect Poison':'Level=C0,D0,P1,R1,S0,W0',
-  'Detect Scrying':'',
-  'Detect Secret Doors':'Level=B1,S1,W1',
-  'Detect Snares And Pits':'',
-  'Detect Thoughts':'',
-  'Detect Undead':'',
+      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP and, if this slays the target, consumes its remains (save Fortitude inflicts 10d6 HP)"',
+  'Detect Animals Or Plants':null,
+  'Detect Chaos':null,
+  'Detect Evil':null,
+  'Detect Good':
+    SRD35.SPELLS['Detect Good']
+    .replace('Blackguard1,', ''),
+  'Detect Law':null,
+  'Detect Magic':
+    SRD35.SPELLS['Detect Magic']
+    .replace('Spellcraft', 'Knowledge (Arcana)'),
+  'Detect Poison':
+    SRD35.SPELLS['Detect Poison']
+    .replace('Assassin1,', ''),
+  'Detect Scrying':null,
+  'Detect Secret Doors':
+    SRD35.SPELLS['Detect Secret Doors']
+    .replace('Knowledge1,', ''),
+  'Detect Snares And Pits':null,
+  'Detect Thoughts':null,
+  'Detect Undead':null,
   'Dictum':
+    SRD35.SPELLS.Dictum + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Inflicts on nonlawful creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
-  'Dimension Door':'Level=B4,Travel4,S4,W4',
-  'Dimensional Anchor':'',
-  'Dimensional Lock':'',
-  'Diminish Plants':'',
-  'Discern Lies':'Level=C4,Nobility4,P3',
-  'Discern Location':'',
-  'Disguise Self':'Level=B1,Trickery1,S1,W1',
-  'Disintegrate':'',
+  'Dimension Door':
+    SRD35.SPELLS['Dimension Door']
+    .replace('Assassin4,', ''),
+  'Dimensional Anchor':null,
+  'Dimensional Lock':null,
+  'Diminish Plants':null,
+  'Discern Lies':
+    SRD35.SPELLS['Discern Lies']
+    .replace('Level=', 'Level=Nobility4,'),
+  'Discern Location':null,
+  'Disguise Self':
+    SRD35.SPELLS['Disguise Self']
+    .replace('Assassin1,', ''),
+  'Disintegrate':null,
   'Dismissal':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Sends the target to its native plane or (20% chance) to another random plane (save Will negates)"',
-  'Dispel Chaos':'',
-  'Dispel Evil':'',
-  'Dispel Good':'',
-  'Dispel Law':'',
+    SRD35.SPELLS.Dismissal
+    .replace('Will + %{lvl} - target HD', 'Will'),
+  'Dispel Chaos':null,
+  'Dispel Evil':null,
+  'Dispel Good':null,
+  'Dispel Law':null,
   'Dispel Magic':
+    SRD35.SPELLS['Dispel Magic'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Allows a successful caster level check vs. a DC of 11 + caster level to cancel an ongoing targeted spell, suppress a magic item for 1d4 rd, or disrupt a foe\'s spell casting" ' +
     'Liquid=Potion',
   'Greater Dispel Magic':
     'Level=B5,C6,Liberation6,D6,S6,W6 ' +
+    SRD35.SPELLS['Greater Dispel Magic']
+    .replace('Level=', 'Level=Liberation6,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Allows a successful caster level check vs. a DC of 11 + caster level to cancel %{lvl//4} targeted spells or 1 spell or curse on each creature in a 20\' radius, suppress a magic item for 1d4 rd, or disrupt a foe\'s spell casting with a +4 bonus on the check"',
-  'Displacement':'',
-  'Disrupt Undead':'',
-  'Disrupting Weapon':'',
-  'Divination':'',
-  'Divine Favor':'Level=C1,Nobility1,P1',
+  'Displacement':null,
+  'Disrupt Undead':null,
+  'Disrupting Weapon':null,
+  'Divination':null,
+  'Divine Favor':
+    SRD35.SPELLS['Divine Favor']
+    .replace('Level=', 'Level=Nobility1,'),
   'Divine Power':
+    SRD35.SPELLS['Divine Power'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Gives self +%{lvl//3<?6} attacks, weapon damage, Strength checks, and Strength-based skill checks, %{lvl} temporary hit points, and an extra attack during full-attack actions, for %{lvl} rd"',
-  'Dominate Animal':'',
-  'Dominate Monster':'Level=Charm9,S9,W9',
-  'Dominate Person':'',
-  'Doom':'Level=C1',
-  'Dream':'',
+  'Dominate Animal':null,
+  'Dominate Monster':
+    SRD35.SPELLS['Dominate Monster']
+    .replace('Level=', 'Level=Charm9,'),
+  'Dominate Person':null,
+  'Doom':
+    SRD35.SPELLS.Doom
+    .replace('Blackguard1,', ''),
+  'Dream':null,
 
   "Eagle's Splendor":'Level=B2,C2,P2,S2,W2',
-  "Mass Eagle's Splendor":'',
+  "Mass Eagle's Splendor":null,
   'Earthquake':'Level=C8,D8,Destruction8,Earth8',
   'Elemental Body I':
     'School="Transmutation (Polymorph)" ' +
@@ -3836,21 +3952,21 @@ Pathfinder.SPELLS = {
     'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
     'Description=' +
       '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack"',
-  'Elemental Swarm':'',
-  'Endure Elements':'',
-  'Energy Drain':'',
-  'Enervation':'',
-  'Enlarge Person':'',
-  'Mass Enlarge Person':'',
+  'Elemental Swarm':null,
+  'Endure Elements':null,
+  'Energy Drain':null,
+  'Enervation':null,
+  'Enlarge Person':null,
+  'Mass Enlarge Person':null,
   'Entangle':
     'Description=' +
       '"R%{400+lvl*40}\' Causes vegetation in a 40\' radius to entangle creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for %{lvl} min"',
   'Enthrall':'Level=B2,C2,Nobility2',
   'Entropic Shield':'Level=C1',
   'Erase':'Level=B1,Rune1,S1,W1 Liquid=Oil',
-  'Ethereal Jaunt':'',
-  'Etherealness':'',
-  'Expeditious Retreat':'',
+  'Ethereal Jaunt':null,
+  'Etherealness':null,
+  'Expeditious Retreat':null,
   'Explosive Runes':'Level=Rune4,S3,W3',
   'Eyebite':
     'School=Necromancy ' +
@@ -3858,12 +3974,12 @@ Pathfinder.SPELLS = {
       '"Inflicts on 1 target per rd for %{lvl} rd a set of effects (save Fortitude negates): sickened for %{lvl*10} min; panicked for 1d4 rd and shaken for %{lvl*10} min on creatures with up to 9 HD; comatose for %{lvl*10} min on creatures with up to 4 HD"',
 
   'Fabricate':'Level=Artifice5,S5,W5',
-  'Faerie Fire':'',
+  'Faerie Fire':null,
   'False Life':'Level=S2,W2',
-  'False Vision':'',
-  'Fear':'',
+  'False Vision':null,
+  'Fear':null,
   'Feather Fall':'Level=B1,S1,W1',
-  'Feeblemind':'',
+  'Feeblemind':null,
   'Find The Path':
     'Description=' +
       '"Reveals to the touched creature the most direct route to a specified location (save Will negates) for %{lvl*10} min"',
@@ -3877,34 +3993,34 @@ Pathfinder.SPELLS = {
   'Fire Seeds':
     'Description=' +
       '"Changes 4 touched acorns into grenades that can be thrown with a 20\' range increment for ranged touch attacks that inflict %{lvl<?20}d4 HP fire in total%{lvl>10?\' (the most powerful can inflict at most 10d4 HP)\':\'\'}, plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+%{lvl} HP fire in a 5\' radius each (save Reflex half), for %{lvl*10} min"',
-  'Fire Shield':'',
+  'Fire Shield':null,
   'Fire Storm':
     'Level=C8,D7 ' +
     'Description=' +
       '"R%{100+lvl*10}\' %{lvl*2} 10\' cubes inflict %{lvl<?20}d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only; the fire does not harm vegetation or chosen plant creatures); extinguishing the flames is a full-rd action that requires a successful DC 20 Reflex save"',
   'Fire Trap':'Liquid=Oil',
   'Fireball':'Level=Fire3,S3,W3',
-  'Flame Arrow':'',
-  'Flame Blade':'',
-  'Flame Strike':'',
+  'Flame Arrow':null,
+  'Flame Blade':null,
+  'Flame Strike':null,
   'Flaming Sphere':
     'Description=' +
       '"R%{100+lvl*10}\' 5\' diameter sphere inflicts 3d6 HP fire (save Reflex negates) for %{lvl} rd; can be directed to jump 30\' and move 30\' per rd"',
-  'Flare':'',
-  'Flesh To Stone':'',
-  'Floating Disk':'',
+  'Flare':null,
+  'Flesh To Stone':null,
+  'Floating Disk':null,
   'Fly':
     'Description=' +
       '"Gives touched a 60\' fly Speed and +%{lvl//2} Fly skill (save Will negates) for %{lvl} min, after which it floats downward 60\' per rd for 1d6 rd"',
   'Fog Cloud':'Level=D2,S2,W2,Water2,Weather2',
-  'Forbiddance':'',
+  'Forbiddance':null,
   'Forcecage':
     'Description=' +
       '"R%{25+lvl//2*5}\' Traps targets in a 20\' cage or a 10\' windowless cell (save Reflex negates) for %{lvl} rd"',
   'Forceful Hand':
     'Description=' +
       '"R%{100+lvl*10}\' Creates a 10\' hand (Armor Class 20, %{hitPoints} hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +%{lvl+9} Bull Rush, and can be redirected between targets as a move action, for %{lvl} rd"',
-  'Foresight':'',
+  'Foresight':null,
   'Form Of The Dragon I':
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
@@ -3921,7 +4037,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Transforms self into a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
   "Fox's Cunning":'Level=B2,S2,W2',
-  "Mass Fox's Cunning":'',
+  "Mass Fox's Cunning":null,
   'Freedom':'Level=Liberation9,S9,W9',
   'Freedom Of Movement':'Level=B4,C4,D4,Liberation4,Luck4,R4',
   'Freezing Sphere':
@@ -3935,7 +4051,7 @@ Pathfinder.SPELLS = {
     'Level=C9,Glory9,S9,W9 ' +
     'Description=' +
       '"R%{100+lvl*10}\' Creates a 5\'-20\' diameter disk passage to another plane for concentration up to %{lvl} rd, and, at the cost of 10,000 GP, allows summoning extraplanar creatures&mdash;a named creature, a single creature of a named kind, or up to %{lvl*2} HD of a named kind; a single creature with up to %{lvl} HD can be compelled to perform a service"',
-  'Lesser Geas':'',
+  'Lesser Geas':null,
   'Geas/Quest':
     'Level=B6,C6,Charm6,Nobility6,S6,W6 ' +
     'Description=' +
@@ -3945,7 +4061,7 @@ Pathfinder.SPELLS = {
     'Level=Adept0,B0,S0,W0 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Produces the sound volume of %{lvl*4<?40} humans (save Will upon interaction disbelieves) for %{lvl} rd"',
-  'Ghoul Touch':'',
+  'Ghoul Touch':null,
   'Giant Form I':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
@@ -3961,12 +4077,12 @@ Pathfinder.SPELLS = {
     'Level=B3 ' +
     'Description=' +
       '"Gives self +20 Bluff with lies and SR %{lvl+15} vs. magical lie detection for %{lvl*10} min"',
-  'Glitterdust':'',
-  'Globe Of Invulnerability':'',
-  'Lesser Globe Of Invulnerability':'',
+  'Glitterdust':null,
+  'Globe Of Invulnerability':null,
+  'Lesser Globe Of Invulnerability':null,
   'Glyph Of Warding':'Level=C3,Rune3',
   'Greater Glyph Of Warding':'Level=C6,Rune6',
-  'Good Hope':'',
+  'Good Hope':null,
   'Goodberry':'Liquid=Oil',
   'Grasping Hand':
     'Description=' +
@@ -3975,7 +4091,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Coats a 10\' square with grease, inflicting falls (save Reflex negates and allows a DC 10 Acrobatics check to move at half Speed), or coats a target object with grease (save Reflex negates for possessed items), causing them to be dropped (save Reflex negates each rd), for %{lvl} min" ' +
     'Liquid=Oil',
-  'Guards And Wards':'',
+  'Guards And Wards':null,
   'Guidance':'Liquid=Potion',
   'Gust Of Wind':
     'Description=' +
@@ -3984,31 +4100,31 @@ Pathfinder.SPELLS = {
   'Hallow':
     'Description=' +
       '"40\' radius around the touched structure or site gives a +2 deflection bonus to Armor Class and +2 saves vs. evil, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned evil creatures, prevents undead creation, gives positive channeling a +4 DC and negative channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
-  'Hallucinatory Terrain':'',
-  'Halt Undead':'',
-  'Harm':'',
-  'Haste':'',
-  'Heal':'',
-  'Mass Heal':'',
-  'Heal Mount':'',
-  'Heat Metal':'',
-  'Helping Hand':'',
+  'Hallucinatory Terrain':null,
+  'Halt Undead':null,
+  'Harm':null,
+  'Haste':null,
+  'Heal':null,
+  'Mass Heal':null,
+  'Heal Mount':null,
+  'Heat Metal':null,
+  'Helping Hand':null,
   'Heroes\' Feast':
     'Level=B6,C6,Community6 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Creates food for %{lvl} creatures that cures sickness, poison, and disease, gives 1d8+%{lvl//2<?10} temporary hit points, +1 attacks, +1 Will saves, and +4 saves vs. poison and fear, for 12 hr"',
   'Heroism':'Level=B2,Charm4,S3,W3',
-  'Greater Heroism':'',
-  'Hide From Animals':'',
-  'Hide From Undead':'',
+  'Greater Heroism':null,
+  'Hide From Animals':null,
+  'Hide From Undead':null,
   'Hideous Laughter':
     'Description=' +
       '"R%{25+lvl//2*5}\' Causes a target with an Intelligence of at least 3 to fall into uncontrollable laughter (save Will on the first or second rd negates, creatures of a different type than the caster have +4 on the saves) for %{lvl} rd"',
-  'Hold Animal':'',
-  'Hold Monster':'',
-  'Mass Hold Monster':'',
-  'Hold Person':'',
-  'Mass Hold Person':'',
+  'Hold Animal':null,
+  'Hold Monster':null,
+  'Mass Hold Monster':null,
+  'Hold Person':null,
+  'Mass Hold Person':null,
   'Hold Portal':'Liquid=Oil',
   'Holy Aura':
     'Level=C8,Glory8,Good8 ' +
@@ -4022,9 +4138,9 @@ Pathfinder.SPELLS = {
   'Holy Word':
     'Description=' +
       '"Inflicts on nongood creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP; paralyzed for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to %{lvl-1} HD (save Will inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to %{lvl} HD (save negates)"',
-  'Horrid Wilting':'',
-  'Hypnotic Pattern':'',
-  'Hypnotism':'',
+  'Horrid Wilting':null,
+  'Hypnotic Pattern':null,
+  'Hypnotism':null,
 
   'Ice Storm':
     'Level=D4,S4,W4,Water5,Weather5 ' +
@@ -4035,23 +4151,23 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"60\' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft checks to determine non-artifact magic item properties, for %{lvl*3} rd"',
   'Illusory Script':'Level=B3,S3,W3',
-  'Illusory Wall':'',
+  'Illusory Wall':null,
   'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
   'Implosion':
     'Description=' +
       '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on 1 target per rd for concentration up to %{lvl//2} rd"',
-  'Imprisonment':'',
+  'Imprisonment':null,
   'Incendiary Cloud':
     'Description=' +
       '"R%{100+lvl*10}\' Fire in a 20\' radius, 20\' high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10\' per rd (or up to 60\' with concentration) for %{lvl} rd"',
   'Inflict Critical Wounds':'Level=C4,Destruction4',
-  'Mass Inflict Critical Wounds':'',
+  'Mass Inflict Critical Wounds':null,
   'Inflict Light Wounds':'Level=C1',
   'Mass Inflict Light Wounds':'Level=C5',
   'Inflict Moderate Wounds':'Level=C2',
-  'Mass Inflict Moderate Wounds':'',
+  'Mass Inflict Moderate Wounds':null,
   'Inflict Serious Wounds':'Level=C3',
-  'Mass Inflict Serious Wounds':'',
+  'Mass Inflict Serious Wounds':null,
   'Insanity':
     'Level=Charm7,Madness7,S7,W7 ' +
     'Description=' +
@@ -4061,7 +4177,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{400+lvl*40}\' Summons %{lvl//3<?6} wasp swarms that inflict 2d6 HP and 1 point of Dexterity damage (save Fortitude DC 13 HP only) for %{lvl} min"',
   'Instant Summons':'Level=Rune7,S7,W7',
-  'Interposing Hand':'',
+  'Interposing Hand':null,
   'Invisibility':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
@@ -4074,7 +4190,7 @@ Pathfinder.SPELLS = {
     'Level=Trickery8,S7,W7 ' +
     'Description=' +
       '"R%{400+lvl*40}\' Makes creatures in a 90\' radius invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
-  'Invisibility Purge':'',
+  'Invisibility Purge':null,
   'Invisibility Sphere':
     'Description=' +
       '"Makes creatures within 10\' of touched invisible to others (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
@@ -4082,7 +4198,7 @@ Pathfinder.SPELLS = {
     'Level=S8,W8 ' +
     'Description=' +
       '"Transforms self into living iron for %{lvl} min, giving DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
-  'Ironwood':'',
+  'Ironwood':null,
   'Irresistible Dance':
     'Description=' +
       '"Causes touched to dance in place, suffering -4 Armor Class, loss of shield bonus to Armor Class, and -10 Reflex saves, for 1d4+1 rd (save Will ends the effects after 1 rd)"',
@@ -4092,38 +4208,38 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Gives touched +%{lvl<5?10:lvl<9?20:30} Acrobatics to jumps (save Will negates) for %{lvl} min"',
 
-  'Keen Edge':'',
+  'Keen Edge':null,
   'Knock':
     'Description=' +
       '"R%{100+lvl*10}\' Opens a stuck, barred, locked, or magically held door, chest, or shackle, gives a +10 caster level check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
-  'Know Direction':'',
+  'Know Direction':null,
 
-  'Legend Lore':'',
-  'Levitate':'',
+  'Legend Lore':null,
+  'Levitate':null,
   'Light':
     'Description=' +
       '"Touched object emits a 20\' normal light for %{lvl*10} min" ' +
     'Liquid=Oil',
-  'Lightning Bolt':'',
-  'Limited Wish':'',
-  'Liveoak':'',
+  'Lightning Bolt':null,
+  'Limited Wish':null,
+  'Liveoak':null,
   'Locate Creature':'Level=B4,S4,W4',
-  'Locate Object':'',
-  'Longstrider':'',
+  'Locate Object':null,
+  'Longstrider':null,
   'Lullaby':
     'Description=' +
       '"R%{100+lvl*10}\' 10\' radius inflicts -5 Perception and -2 Will vs. sleep (save Will negates) for concentration + %{lvl} rd"',
 
-  'Mage Armor':'',
-  'Mage Hand':'',
+  'Mage Armor':null,
+  'Mage Hand':null,
   "Mage's Disjunction":
     'Description=' +
       '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success, permanently strips self of spellcasting abilities (save Will DC 25 negates), and is likely to attract the attention of a powerful being"',
-  "Mage's Faithful Hound":'',
-  "Mage's Lucubration":'',
-  "Mage's Magnificent Mansion":'',
-  "Mage's Private Sanctum":'',
-  "Mage's Sword":'',
+  "Mage's Faithful Hound":null,
+  "Mage's Lucubration":null,
+  "Mage's Magnificent Mansion":null,
+  "Mage's Private Sanctum":null,
+  "Mage's Sword":null,
   'Magic Aura':'Level=B1,S1,W1',
   'Magic Circle Against Chaos':
     'Level=C3,Law3,P3,S3,W3 ' +
@@ -4141,17 +4257,17 @@ Pathfinder.SPELLS = {
     'Level=C3,Chaos3,S3,W3 ' +
     'Description=' +
       '"10\' radius around touched either gives immunity to new attempts to control or possess by lawful creatures or objects, an extra +2 save to suppress existing mental control and possession by lawful creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. lawful creatures (save Will negates), as well as barring contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min, or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
-  'Magic Fang':'',
+  'Magic Fang':null,
   'Greater Magic Fang':
     'Description=' +
       '"R%{25+lvl//2*5}\' Gives the target +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for %{lvl} hr"',
-  'Magic Jar':'',
-  'Magic Missile':'',
+  'Magic Jar':null,
+  'Magic Missile':null,
   'Magic Mouth':'Level=B1,Magic2,S2,W2',
-  'Magic Stone':'',
+  'Magic Stone':null,
   'Magic Vestment':'Level=C3,Nobility3,Strength3,War3',
   'Magic Weapon':'Level=C1,P1,S1,W1,War1',
-  'Greater Magic Weapon':'',
+  'Greater Magic Weapon':null,
   'Major Creation':'Level=Adept5,Artifice6,S5,W5',
   'Major Image':'Level=B3,S3,W3',
   'Make Whole':
@@ -4159,13 +4275,13 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges (save Will negates)" ' +
     'Liquid=Oil',
-  'Mark Of Justice':'',
-  'Maze':'',
-  'Meld Into Stone':'',
+  'Mark Of Justice':null,
+  'Maze':null,
+  'Meld Into Stone':null,
   'Mending':
     'Level=Adept0,Artifice0,B0,C0,D0,S0,W0 ' +
     'Description="R10\' Repairs minor damage to an object weighing up to %{lvl} lb (save Will negates)"',
-  'Message':'',
+  'Message':null,
   'Meteor Swarm':
     'Description=' +
       '"R%{400+lvl*40}\' Ranged touch attack with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty on the save)"',
@@ -4173,25 +4289,25 @@ Pathfinder.SPELLS = {
     'Level=Liberation8,Protection8,S8,W8 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Gives the target immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr"',
-  'Mind Fog':'',
+  'Mind Fog':null,
   'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
   'Minor Image':'Level=B2,S2,W2',
   'Miracle':
     'Level=C9,Community9,Luck9 ' +
     'Description=' +
       '"Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells of up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 25,000 GP to request"',
-  'Mirage Arcana':'',
+  'Mirage Arcana':null,
   'Mirror Image':
     'Level=Adept2,B2,Trickery2,S2,W2 ' +
     'Description=' +
       '"Creates 1d4+%{lvl//3<?8}%{lvl>14?\' (8 maximum)\':\'\'} copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and an attack on one that hits or misses by less than 6 destroys it"',
   'Misdirection':'Level=B2,S2,W2',
-  'Mislead':'',
-  'Mnemonic Enhancer':'',
+  'Mislead':null,
+  'Mnemonic Enhancer':null,
   'Modify Memory':'Level=B4',
-  'Moment Of Prescience':'',
-  'Mount':'',
-  'Move Earth':'',
+  'Moment Of Prescience':null,
+  'Mount':null,
+  'Move Earth':null,
 
   'Neutralize Poison':
     'Description=' +
@@ -4201,35 +4317,35 @@ Pathfinder.SPELLS = {
 
   'Obscure Object':'Liquid=Oil',
   'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Water1,S1,W1,Weather1',
-  'Open/Close':'',
+  'Open/Close':null,
   "Order's Wrath":'Level=C4,Law4',
   'Overland Flight':
     'Description=' +
       '"Gives self a 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
-  "Owl's Wisdom":'',
-  "Mass Owl's Wisdom":'',
+  "Owl's Wisdom":null,
+  "Mass Owl's Wisdom":null,
 
   'Pass Without Trace':'Level=D1,R1',
-  'Passwall':'',
+  'Passwall':null,
   'Permanency':
     'Description=' +
       '"Makes certain spells permanent, at a cost of 2,500-22,500 GP"',
-  'Permanent Image':'',
-  'Persistent Image':'',
+  'Permanent Image':null,
+  'Persistent Image':null,
   'Phantasmal Killer':'Level=Madness6,S4,W4',
   'Phantom Steed':
     'Description=' +
       '"Creates a mount with %{lvl+7} hit points, Armor Class 18, and %{lvl//2*20<?100}\' Speed that only the target can ride, along with up to %{lvl*20} lbs of cargo, for %{lvl} hr%{lvl>7?\'; the mount can ride over sandy, muddy, and swampy ground at full Speed\':\'\'}%{lvl>11?\', \':lvl>9?\' and \':\'\'}%{lvl>9?\'use <i>Water Walk</i> effects at will\':\'\'}%{lvl>13?\',\':lvl>11?\', and \':\'\'}%{lvl>11?\'use <i>Air Walk</i> effects for 1 rd at will\':\'\'}%{lvl>13?\', and fly at full Speed\':\'\'}"',
-  'Phantom Trap':'',
-  'Phase Door':'',
-  'Planar Ally':'',
-  'Greater Planar Ally':'',
-  'Lesser Planar Ally':'',
-  'Planar Binding':'',
-  'Greater Planar Binding':'',
+  'Phantom Trap':null,
+  'Phase Door':null,
+  'Planar Ally':null,
+  'Greater Planar Ally':null,
+  'Lesser Planar Ally':null,
+  'Planar Binding':null,
+  'Greater Planar Binding':null,
   'Lesser Planar Binding':'Level=Rune5,S5,W5',
-  'Plane Shift':'',
-  'Plant Growth':'',
+  'Plane Shift':null,
+  'Plant Growth':null,
   'Plant Shape I':
     'School=Transmutation ' +
     'Level=S5,W5 ' +
@@ -4263,10 +4379,10 @@ Pathfinder.SPELLS = {
       '"Transforms the touched willing target into a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':'Level=S8,W8',
   'Power Word Blind':'Level=Darkness7,S7,W7,War7',
-  'Power Word Kill':'',
-  'Power Word Stun':'',
+  'Power Word Kill':null,
+  'Power Word Stun':null,
   'Prayer':'Level=C3,Community3,P3',
-  'Prestidigitation':'',
+  'Prestidigitation':null,
   'Prismatic Sphere':
     'Level=Artifice9,Protection9,Sun9,S9,W9 ' +
     'Description=' +
@@ -4277,10 +4393,10 @@ Pathfinder.SPELLS = {
   'Prismatic Wall':
     'Description=' +
       '"R%{25+lvl//2*5}\' Creates a %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min that blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
-  'Produce Flame':'',
-  'Programmed Image':'',
-  'Project Image':'',
-  'Protection From Arrows':'',
+  'Produce Flame':null,
+  'Programmed Image':null,
+  'Project Image':null,
+  'Protection From Arrows':null,
   'Protection From Chaos':
     'Level=Adept1,C1,Law1,P1,S1,W1 ' +
     'Description=' +
@@ -4302,7 +4418,7 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Wards the touched creature from attacks from lawful creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. lawful creatures, an additional +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures and objects, as well as barring contact by lawful summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
-  'Protection From Spells':'',
+  'Protection From Spells':null,
   'Prying Eyes':
     'Description=' +
       '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) that scout up to 1 mile and return to show observations for %{lvl} hr"',
@@ -4310,30 +4426,30 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing that scout up to 1 mile and return to show observations for %{lvl} hr"',
   'Purify Food And Drink':'Liquid=Oil',
-  'Pyrotechnics':'',
+  'Pyrotechnics':null,
 
   'Quench':
     'Description=' +
       '"R%{100+lvl*10}\' Extinguishes nonmagical fires, dispels magic fires with a successful caster level check (+15 maximum), and inflicts %{lvl<?10}d6 HP to fire creatures in a %{lvl*20} cubic foot area, or suppresses fire-based effects of a non-artifact magic item for 1d4 hr (save Will negates)"',
 
   'Rage':'Level=B2,Destruction3,Madness3,S3,W3',
-  'Rainbow Pattern':'',
+  'Rainbow Pattern':null,
   'Raise Dead':
     'Description=' +
       '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, regains 1 point of each ability score taken to 0 before death, becomes cured of nonmagical poison and disease, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
   'Ray Of Enfeeblement':
     'Description=' +
       '"R%{25+lvl//2*5}\' Ranged touch attack reduces Strength by 1d6+%{lvl//2<?5} (save Fortitude half; will not lower Strength below 1) for %{lvl} rd; multiple castings do not stack"',
-  'Ray Of Exhaustion':'',
-  'Ray Of Frost':'',
-  'Read Magic':'',
+  'Ray Of Exhaustion':null,
+  'Ray Of Frost':null,
+  'Read Magic':null,
   'Reduce Animal':'Liquid=Potion',
-  'Reduce Person':'',
-  'Mass Reduce Person':'',
+  'Reduce Person':null,
+  'Mass Reduce Person':null,
   'Refuge':'Level=C7,Community7,Liberation7,S9,W9',
-  'Regenerate':'',
-  'Reincarnate':'',
-  'Remove Blindness/Deafness':'',
+  'Regenerate':null,
+  'Reincarnate':null,
+  'Remove Blindness/Deafness':null,
   'Remove Curse':
     'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
     'Description=' +
@@ -4346,11 +4462,11 @@ Pathfinder.SPELLS = {
     'Level=C2,Liberation2,P2 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2 (save Will negates)"',
-  'Repel Metal Or Stone':'',
-  'Repel Vermin':'',
-  'Repel Wood':'',
+  'Repel Metal Or Stone':null,
+  'Repel Vermin':null,
+  'Repel Wood':null,
   'Repulsion':'Level=C7,Nobility7,Protection7,S6,W6',
-  'Resilient Sphere':'',
+  'Resilient Sphere':null,
   'Resist Energy':'Level=Adept2,C2,D2,P2,R1,S2,W2',
   'Resistance':'Liquid=Potion',
   'Restoration':
@@ -4359,7 +4475,7 @@ Pathfinder.SPELLS = {
   'Greater Restoration':
     'Description=' +
       '"Dispels magical harm affecting the ability scores of touched, cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects (save Will negates)"',
-  'Lesser Restoration':'',
+  'Lesser Restoration':null,
   'Resurrection':
     'Description=' +
       '"Fully restores a target willing soul, dead up to %{lvl*10} years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)"',
@@ -4374,29 +4490,29 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Causes a 5\'-30\' rope to stretch upward and remain immobile, leading to an extradimensional space with room for 8 creatures, for %{lvl} hr" ' +
     'Liquid=Oil',
-  'Rusting Grasp':'',
+  'Rusting Grasp':null,
 
   'Sanctuary':'Level=C1,Glory1,Protection1',
-  'Scare':'',
+  'Scare':null,
   'Scintillating Pattern':'Level=Madness8,S8,W8',
-  'Scorching Ray':'',
-  'Screen':'',
-  'Scrying':'',
-  'Greater Scrying':'',
-  'Sculpt Sound':'',
+  'Scorching Ray':null,
+  'Screen':null,
+  'Scrying':null,
+  'Greater Scrying':null,
+  'Sculpt Sound':null,
   'Searing Light':'Level=C3,Glory3,Sun3',
-  'Secret Chest':'',
+  'Secret Chest':null,
   'Secret Page':'Level=B3,Rune2,S3,W3',
-  'Secure Shelter':'',
+  'Secure Shelter':null,
   'See Invisibility':'Level=Adept2,B3,S2,W2',
-  'Seeming':'',
-  'Sending':'',
-  'Sepia Snake Sigil':'',
-  'Sequester':'',
+  'Seeming':null,
+  'Sending':null,
+  'Sepia Snake Sigil':null,
+  'Sequester':null,
   'Shades':'Level=Darkness9,S9,W9',
   'Shadow Conjuration':'Level=B4,Darkness4,S4,W4',
-  'Greater Shadow Conjuration':'',
-  'Shadow Evocation':'',
+  'Greater Shadow Conjuration':null,
+  'Shadow Evocation':null,
   'Greater Shadow Evocation':'Level=Darkness8,S8,W8',
   'Shadow Walk':'Level=B5,Darkness6,S6,W6',
   'Shambler':
@@ -4407,21 +4523,21 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for %{lvl*10} min"',
   'Shatter':'Level=B2,C2,Destruction2,S2,W2',
-  'Shield':'',
+  'Shield':null,
   'Shield Of Faith':'Level=C1,Glory1',
   'Shield Of Law':
     'Description=' +
       '"%{lvl} creatures within 20\' slow successful chaotic attackers (save Will negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Shield Other':'Level=C2,Community2,Protection2,P2',
-  'Shillelagh':'',
-  'Shocking Grasp':'',
+  'Shillelagh':null,
+  'Shocking Grasp':null,
   'Shout':'Level=B4,Destruction5,S4,W4',
-  'Greater Shout':'',
+  'Greater Shout':null,
   'Shrink Item':'Liquid=Oil',
   'Silence':
     'Description=' +
       '"R%{400+lvl*40}\' Eliminates sound in a 20\' radius (save Will for a targeted creature negates) for %{lvl} rd"',
-  'Silent Image':'',
+  'Silent Image':null,
   'Simulacrum':
     'Description=' +
       '"Creates a permanent obedient double of a creature with half of the original\'s hit points and levels; suspicious creatures can detect the copy with a successful Perception vs. Disguise or a successful DC 20 Sense Motive"',
@@ -4434,31 +4550,31 @@ Pathfinder.SPELLS = {
     'Level=D3,S3,W3,Weather4 ' +
     'Description=' +
       '"R%{400+lvl*40}\' 40\' radius, 20\' high cylinder blocks sight, extinguishes small fires, and requires a DC 10 Acrobatics check to move at half Speed (failure by 5 or more causes a fall) for %{lvl} rd"',
-  'Slow':'',
-  'Snare':'',
-  'Soften Earth And Stone':'',
+  'Slow':null,
+  'Snare':null,
+  'Soften Earth And Stone':null,
   'Solid Fog':
     'Description=' +
       '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, prevents ranged attacks, and inflicts -2 melee attacks and damage for %{lvl} min"',
-  'Song Of Discord':'',
-  'Soul Bind':'',
-  'Sound Burst':'',
+  'Song Of Discord':null,
+  'Soul Bind':null,
+  'Sound Burst':null,
   'Speak With Animals':'Level=Animal1,B3,D1,R1',
   'Speak With Dead':'Level=C3,Knowledge3,Repose3',
-  'Speak With Plants':'',
-  'Spectral Hand':'',
-  'Spell Immunity':'',
-  'Greater Spell Immunity':'',
-  'Spell Resistance':'',
-  'Spell Turning':'',
-  'Spellstaff':'',
+  'Speak With Plants':null,
+  'Spectral Hand':null,
+  'Spell Immunity':null,
+  'Greater Spell Immunity':null,
+  'Spell Resistance':null,
+  'Spell Turning':null,
+  'Spellstaff':null,
   'Spider Climb':
     'Level=D2,S2,W2 ' +
     'Description=' +
       '"Gives touched a 20\' climb Speed, the ability to climb walls and ceilings, and a +8 bonus to Climb checks (save Will negates), for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
-  'Spike Growth':'',
-  'Spike Stones':'',
-  'Spiritual Weapon':'',
+  'Spike Growth':null,
+  'Spike Stones':null,
+  'Spiritual Weapon':null,
   'Stabilize':
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
@@ -4466,71 +4582,71 @@ Pathfinder.SPELLS = {
       '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points (save Will negates)" ' +
     'Liquid=Potion',
   'Statue':'Level=Artifice8,S7,W7',
-  'Status':'',
-  'Stinking Cloud':'',
+  'Status':null,
+  'Stinking Cloud':null,
   'Stone Shape':'Level=Artifice3,C3,D3,Earth3,S4,W4 Liquid=Oil',
-  'Stone Tell':'',
-  'Stone To Flesh':'',
-  'Stoneskin':'',
+  'Stone Tell':null,
+  'Stone To Flesh':null,
+  'Stoneskin':null,
   'Storm Of Vengeance':'Level=C9,D9,Nobility9,Weather9',
   'Suggestion':'Level=B2,Charm3,S3,W3',
-  'Mass Suggestion':'',
+  'Mass Suggestion':null,
   'Summon Instrument':'Level=B0',
   'Summon Monster I':'Level=B1,C1,S1,W1',
   'Summon Monster II':'Level=B2,C2,S2,W2',
   'Summon Monster III':'Level=B3,C3,S3,W3',
   'Summon Monster IV':'Level=B4,C4,S4,W4',
   'Summon Monster V':'Level=B5,C5,Darkness5,S5,W5',
-  'Summon Monster VI':'',
-  'Summon Monster VII':'',
-  'Summon Monster VIII':'',
-  'Summon Monster IX':'',
-  "Summon Nature's Ally I":'',
-  "Summon Nature's Ally II":'',
-  "Summon Nature's Ally III":'',
-  "Summon Nature's Ally IV":'',
-  "Summon Nature's Ally V":'',
-  "Summon Nature's Ally VI":'',
-  "Summon Nature's Ally VII":'',
-  "Summon Nature's Ally VIII":'',
-  "Summon Nature's Ally IX":'',
-  'Summon Swarm':'',
-  'Sunbeam':'',
-  'Sunburst':'',
+  'Summon Monster VI':null,
+  'Summon Monster VII':null,
+  'Summon Monster VIII':null,
+  'Summon Monster IX':null,
+  "Summon Nature's Ally I":null,
+  "Summon Nature's Ally II":null,
+  "Summon Nature's Ally III":null,
+  "Summon Nature's Ally IV":null,
+  "Summon Nature's Ally V":null,
+  "Summon Nature's Ally VI":null,
+  "Summon Nature's Ally VII":null,
+  "Summon Nature's Ally VIII":null,
+  "Summon Nature's Ally IX":null,
+  'Summon Swarm':null,
+  'Sunbeam':null,
+  'Sunburst':null,
   'Symbol Of Death':'Level=C8,Rune8,S8,W8',
-  'Symbol Of Fear':'',
-  'Symbol Of Insanity':'',
-  'Symbol Of Pain':'',
-  'Symbol Of Persuasion':'',
-  'Symbol Of Sleep':'',
-  'Symbol Of Stunning':'',
-  'Symbol Of Weakness':'',
-  'Sympathetic Vibration':'',
-  'Sympathy':'',
+  'Symbol Of Fear':null,
+  'Symbol Of Insanity':null,
+  'Symbol Of Pain':null,
+  'Symbol Of Persuasion':null,
+  'Symbol Of Sleep':null,
+  'Symbol Of Stunning':null,
+  'Symbol Of Weakness':null,
+  'Sympathetic Vibration':null,
+  'Sympathy':null,
 
-  'Telekinesis':'',
-  'Telekinetic Sphere':'',
+  'Telekinesis':null,
+  'Telekinetic Sphere':null,
   'Telepathic Bond':'Level=Community5,S5,W5',
-  'Teleport':'',
-  'Greater Teleport':'',
-  'Teleport Object':'',
+  'Teleport':null,
+  'Greater Teleport':null,
+  'Teleport Object':null,
   'Teleportation Circle':'Level=Rune9,S9,W9',
-  'Temporal Stasis':'',
-  'Time Stop':'',
-  'Tiny Hut':'',
-  'Tongues':'',
-  'Touch Of Fatigue':'',
+  'Temporal Stasis':null,
+  'Time Stop':null,
+  'Tiny Hut':null,
+  'Tongues':null,
+  'Touch Of Fatigue':null,
   'Touch Of Idiocy':'Level=Madness2,S2,W2',
-  'Transformation':'',
-  'Transmute Metal To Wood':'',
-  'Transmute Mud To Rock':'',
-  'Transmute Rock To Mud':'',
-  'Transport Via Plants':'',
-  'Trap The Soul':'',
-  'Tree Shape':'',
-  'Tree Stride':'',
-  'True Resurrection':'',
-  'True Seeing':'',
+  'Transformation':null,
+  'Transmute Metal To Wood':null,
+  'Transmute Mud To Rock':null,
+  'Transmute Rock To Mud':null,
+  'Transport Via Plants':null,
+  'Trap The Soul':null,
+  'Tree Shape':null,
+  'Tree Stride':null,
+  'True Resurrection':null,
+  'True Seeing':null,
   'True Strike':'Level=Destruction1,Luck1,S1,W1',
 
   'Undeath To Death':'Level=C6,Glory6,Repose6,S6,W6',
@@ -4543,41 +4659,41 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"%{lvl} creatures within 20\' inflict 1d6 points of Strength damage on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
   'Unholy Blight':'Level=C4,Evil4',
-  'Unseen Servant':'',
-  'Vampiric Touch':'',
-  'Veil':'',
-  'Ventriloquism':'',
+  'Unseen Servant':null,
+  'Vampiric Touch':null,
+  'Veil':null,
+  'Ventriloquism':null,
   'Virtue':
     'Description="Gives touched 1 temporary HP for 1 min" ' +
     'Liquid=Potion',
-  'Vision':'',
+  'Vision':null,
 
   'Wail Of The Banshee':
     'Level=Death9,Repose9,S9,W9 ' +
     'Description=' +
       '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} creatures in a 40\' radius"',
-  'Wall Of Fire':'',
+  'Wall Of Fire':null,
   'Wall Of Force':
     'Description=' +
       '"R%{25+lvl//2*5}\' Creates an invisible, impassible, and immobile %{lvl*10} square foot wall (hardness 30, %{lvl*20} hit points) for %{lvl} rd; the wall can be destroyed by <i>Disintegrate</i>, <i>Mage\'s Disjunction</i>, a rod of cancellation, or a sphere of annihilation, and other spells and physical attacks can damage it"',
-  'Wall Of Ice':'',
+  'Wall Of Ice':null,
   'Wall Of Iron':'Level=Artifice7,S6,W6',
-  'Wall Of Stone':'',
+  'Wall Of Stone':null,
   'Wall Of Thorns':
     'Description=' +
       '"R%{100+lvl*10}\' Creates %{lvl*10} cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for %{lvl*10} min; moving through the thorns requires a Strength check each rd, allowing 5\' of movement for each 5 points that the check exceeds 20"',
   'Warp Wood':'Liquid=Oil',
-  'Water Breathing':'',
-  'Water Walk':'',
+  'Water Breathing':null,
+  'Water Walk':null,
   'Waves Of Exhaustion':'Level=Repose8,S7,W7',
-  'Waves Of Fatigue':'',
+  'Waves Of Fatigue':null,
   'Web':
     'Description=' +
       '"R%{100+lvl*10}\' Creates anchored web strands in a 20\' radius that grapple creatures (save Reflex negates, and a successful combat maneuver or Escape Artist check against the spell DC breaks free) for %{lvl*10} min; movement through the web requires a successful combat maneuver or Escape Artist check each rd; burning clears the web and inflicts 2d4 HP fire on those within"',
   'Weird':'Level=Madness9,S9,W9',
   'Whirlwind':'Level=Air8,D8,Weather8',
-  'Whispering Wind':'',
-  'Wind Walk':'',
+  'Whispering Wind':null,
+  'Wind Walk':null,
   'Wind Wall':'Level=Air2,C3,D3,R2,S3,W3',
   'Wish':
     'Description=' +
@@ -4586,14 +4702,17 @@ Pathfinder.SPELLS = {
   'Word Of Chaos':
     'Description=' +
       '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for 1 rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
-  'Word Of Recall':'',
+  'Word Of Recall':null,
 
-  'Zone Of Silence':'',
-  'Zone Of Truth':''
+  'Zone Of Silence':null,
+  'Zone Of Truth':null
 
 };
 for(let s in Pathfinder.SPELLS) {
-  Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
+  if(Pathfinder.SPELLS[s] == null)
+    Pathfinder.SPELLS[s] = SRD35.SPELLS[s];
+  else if(s > 'E') // TODO: temporary; remove after replacements are in place
+    Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
 }
 Pathfinder.TRACKS = {
   '3.5':
