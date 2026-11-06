@@ -4215,97 +4215,127 @@ Pathfinder.SPELLS = {
   'Hypnotism':null,
 
   'Ice Storm':
-    'Level=D4,S4,W4,Water5,Weather5 ' +
-    'Description=' +
-      '"R%{400+lvl*40}\' Hail in a 20\' radius, 40\' high cylinder inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for %{lvl} rd"',
+    SRD35.SPELLS['Ice Storm']
+    .replace('Level=', 'Level=Weather5,')
+    .replace('Listen and half Speed', 'Perception and difficult terrain'),
   'Identify':
-    'Level=Magic1,B1,S1,W1 ' +
+    SRD35.SPELLS.Identify
+    .replace('Magic1', 'Magic2') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"60\' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft checks to determine non-artifact magic item properties, for %{lvl*3} rd"',
-  'Illusory Script':'Level=B3,S3,W3',
+  'Illusory Script':
+    SRD35.SPELLS['Illusory Script']
+    .replace('Assassin2,', ''),
   'Illusory Wall':null,
-  'Imbue With Spell Ability':'Level=C4,Community4,Magic4',
+  'Imbue With Spell Ability':
+    SRD35.SPELLS['Imbue With Spell Ability']
+    .replace('Level=', 'Level=Community4,'),
   'Implosion':
+    SRD35.SPELLS.Implosion + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on 1 target per rd for concentration up to %{lvl//2} rd"',
   'Imprisonment':null,
   'Incendiary Cloud':
-    'Description=' +
-      '"R%{100+lvl*10}\' Fire in a 20\' radius, 20\' high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10\' per rd (or up to 60\' with concentration) for %{lvl} rd"',
-  'Inflict Critical Wounds':'Level=C4,Destruction4',
+    SRD35.SPELLS['Incendiary Cloud']
+    .replace('4d6', '6d6'),
+  'Inflict Critical Wounds':
+    SRD35.SPELLS['Inflict Critical Wounds']
+    .replace('Backguard4,', ''),
   'Mass Inflict Critical Wounds':null,
-  'Inflict Light Wounds':'Level=C1',
-  'Mass Inflict Light Wounds':'Level=C5',
-  'Inflict Moderate Wounds':'Level=C2',
+  'Inflict Light Wounds':
+    SRD35.SPELLS['Inflict Light Wounds']
+    .replace('Blackguard1,', '')
+    .replace(',Destruction1', ''),
+  'Mass Inflict Light Wounds':
+    SRD35.SPELLS['Mass Inflict Light Wounds']
+    .replace(',Destruction5', ''),
+  'Inflict Moderate Wounds':
+    SRD35.SPELLS['Inflict Moderate Wounds']
+    .replace('Blackguard2,', ''),
   'Mass Inflict Moderate Wounds':null,
-  'Inflict Serious Wounds':'Level=C3',
+  'Inflict Serious Wounds':
+    SRD35.SPELLS['Inflict Serious Wounds']
+    .replace('Blackguard3,', ''),
   'Mass Inflict Serious Wounds':null,
   'Insanity':
-    'Level=Charm7,Madness7,S7,W7 ' +
+    SRD35.SPELLS.Insanity
+    .replace('Level=', 'Level=Charm7,Madness7,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Permanently causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature (save Will negates)"',
   'Insect Plague':
-    'Level=C5,D5 ' +
+    SRD35.SPELLS['Insect Plague'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{400+lvl*40}\' Summons %{lvl//3<?6} wasp swarms that inflict 2d6 HP and 1 point of Dexterity damage (save Fortitude DC 13 HP only) for %{lvl} min"',
-  'Instant Summons':'Level=Rune7,S7,W7',
+  'Instant Summons':
+    SRD35.SPELLS['Instant Summons']
+    .replace('Level=', 'Level=Rune7,'),
   'Interposing Hand':null,
   'Invisibility':
-    'Level=Adept2,B2,Trickery2,S2,W2 ' +
-    'Description=' +
-      '"Makes touched invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; target attacking ends the spell"',
+    SRD35.SPELLS.Invisibility
+    .replace('Assassin2,', '')
+    .replace('negates)', 'negates), giving +20 Stealth when moving and +40 when still,'),
   'Greater Invisibility':
-    SRD35.SPELLS['Greater Invisibility'] + ' ' +
-    'Level=B4,S4,W4 ' +
-    'Description=' +
-      '"Makes touched invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} rd"',
+    SRD35.SPELLS['Greater Invisibility']
+    .replace('Assassin4,', '')
+    .replace('negates)', 'negates), giving +20 Stealth when moving and +40 when still,'),
   'Mass Invisibility':
-    'Level=Trickery8,S7,W7 ' +
+    SRD35.SPELLS['Mass Invisibility']
+    .replace('Level=', 'Level=Trickery8,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{400+lvl*40}\' Makes creatures in a 90\' radius invisible (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all"',
   'Invisibility Purge':null,
   'Invisibility Sphere':
-    'Description=' +
-      '"Makes creatures within 10\' of touched invisible to others (save Will negates), giving +20 Stealth when moving and +40 when still, for %{lvl} min; attacking or moving more than 10\' from the target ends the spell for that creature, and the target attacking ends the spell for all"',
+    SRD35.SPELLS['Invisibility Sphere']
+    .replace('negates)', 'negates), giving +20 Stealth when moving and +40 when still,'),
   'Iron Body':
-    'Level=S8,W8 ' +
-    'Description=' +
-      '"Transforms self into living iron for %{lvl} min, giving DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, unarmed attacks that inflict 1d%{size==\'Small\'?4:6} HP, -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems"',
+    SRD35.SPELLS['Iron Body']
+    .replace('Earth8,', '')
+   .replace('50%', '35%')
+   .replace('-8 armor', '-6 armor'),
   'Ironwood':null,
   'Irresistible Dance':
-    'Description=' +
-      '"Causes touched to dance in place, suffering -4 Armor Class, loss of shield bonus to Armor Class, and -10 Reflex saves, for 1d4+1 rd (save Will ends the effects after 1 rd)"',
+    SRD35.SPELLS['Irresistible Dance']
+    .replace('rd', 'rd (save Will ends the effects after 1 rd)'),
 
   'Jump':
-    'Level=D1,R1,S1,W1 ' +
-    'Description=' +
-      '"Gives touched +%{lvl<5?10:lvl<9?20:30} Acrobatics to jumps (save Will negates) for %{lvl} min"',
+    SRD35.SPELLS.Jump
+    .replace('Assassin1,', '')
+    .replace('Jump', 'Acrobatics to jumps'),
 
   'Keen Edge':null,
   'Knock':
-    'Description=' +
-      '"R%{100+lvl*10}\' Opens a stuck, barred, locked, or magically held door, chest, or shackle, gives a +10 caster level check to open locks, and suppresses <i>Arcane Lock</i> for 10 min"',
+    SRD35.SPELLS.Knock
+    .replace('shackle', 'shackle, gives a +10 caster level check to open locks,'),
   'Know Direction':null,
 
   'Legend Lore':null,
   'Levitate':null,
   'Light':
-    'Description=' +
-      '"Touched object emits a 20\' normal light for %{lvl*10} min" ' +
+    SRD35.SPELLS.Light
+    .replace('bright light', 'normal light') + ' ' +
     'Liquid=Oil',
   'Lightning Bolt':null,
   'Limited Wish':null,
   'Liveoak':null,
-  'Locate Creature':'Level=B4,S4,W4',
+  'Locate Creature':
+    SRD35.SPELLS['Locate Creature']
+    .replace('Assassin4,', ''),
   'Locate Object':null,
   'Longstrider':null,
   'Lullaby':
-    'Description=' +
-      '"R%{100+lvl*10}\' 10\' radius inflicts -5 Perception and -2 Will vs. sleep (save Will negates) for concentration + %{lvl} rd"',
+    SRD35.SPELLS.Lullaby
+    .replace('-5 Listen, -5 Spot,', '-5 Perception'),
 
   'Mage Armor':null,
   'Mage Hand':null,
   "Mage's Disjunction":
+    SRD35.SPELLS["Mage's Disjunction"] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{25+lvl//2*5}\' 40\' radius dispels spells and spell-like effects, disenchants magic items (save Will negates) for %{lvl} min, and gives a %{lvl}% chance to destroy antimagic fields; targeting a single magic item destroys it (save Will -5 negates); targeting an artifact has a %{lvl}% chance of success, permanently strips self of spellcasting abilities (save Will DC 25 negates), and is likely to attract the attention of a powerful being"',
   "Mage's Faithful Hound":null,
@@ -4313,39 +4343,55 @@ Pathfinder.SPELLS = {
   "Mage's Magnificent Mansion":null,
   "Mage's Private Sanctum":null,
   "Mage's Sword":null,
-  'Magic Aura':'Level=B1,S1,W1',
+  'Magic Aura':
+    SRD35.SPELLS['Magic Aura']
+    .replace('Magic1,', ''),
   'Magic Circle Against Chaos':
-    'Level=C3,Law3,P3,S3,W3 ' +
+    SRD35.SPELLS['Magic Circle Against Chaos'] + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"10\' radius around touched either gives immunity to new attempts to control or possess by chaotic creatures or objects, an extra +2 save to suppress existing mental control and possession by chaotic creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. chaotic creatures (save Will negates), as well as barring contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min, or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"Either creates a 10\' emanation from the touched creature that gives immunity to new attempts to control or possess by chaotic creatures or objects, an extra +2 save to suppress existing mental control and possession by chaotic creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. chaotic creatures (save Will negates), as well as barring contact and entry (SR negates) by chaotic summoned creatures for %{lvl*10} min, or traps nonlawful summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Evil':
-    'Level=C3,Good3,P3,S3,W3 ' +
+    SRD35.SPELLS['Magic Circle Against Evil'] + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"10\' radius around touched either gives immunity to new attempts to control or possess by evil creatures or objects, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. evil creatures (save Will negates), as well as barring contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min, or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"Either creates a 10\' emanation from the touched creature that gives immunity to new attempts to control or possess by evil creatures or objects, an extra +2 save to suppress existing mental control and possession by evil creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. evil creatures (save Will negates), as well as barring contact and entry (SR negates) by evil summoned creatures for %{lvl*10} min, or traps nongood summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Good':
-    'Level=C3,Evil3,S3,W3 ' +
+    SRD35.SPELLS['Magic Circle Against Good']
+    .replace('Assassin3,', '') + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"10\' radius around touched either gives immunity to new attempts to control or possess by good creatures or objects, an extra +2 save to suppress existing mental control and possession by good creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. good creatures (save Will negates), as well as barring contact and entry (SR negates) by good summoned creatures for %{lvl*10} min, or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
+      '"Either creates a 10\' emanation around the touched creature that gives immunity to new attempts to control or possess by good creatures or objects, an extra +2 save to suppress existing mental control and possession by good creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. good creatures (save Will negates), as well as barring contact and entry (SR negates) by good summoned creatures for %{lvl*10} min, or traps nonevil summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Circle Against Law':
-    'Level=C3,Chaos3,S3,W3 ' +
+    SRD35.SPELLS['Magic Circle Against Law'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"10\' radius around touched either gives immunity to new attempts to control or possess by lawful creatures or objects, an extra +2 save to suppress existing mental control and possession by lawful creatures and objects, a +2 deflection bonus to Armor Class, and +2 saves vs. lawful creatures (save Will negates), as well as barring contact and entry (SR negates) by lawful summoned creatures for %{lvl*10} min, or traps nonchaotic summoned creatures (SR negates) for %{lvl*24} hr"',
   'Magic Fang':null,
   'Greater Magic Fang':
-    SRD35.SPELLS['Greater Magic Fang'] + ' ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Gives the target +%{lvl//4<?5} attacks and damage when using a specified natural weapon, or +1 attacks and damage when using any natural weapon, (save Will negates) for %{lvl} hr"',
+    SRD35.SPELLS['Greater Magic Fang']
+    .replace('<?4', '<?5'),
   'Magic Jar':null,
   'Magic Missile':null,
-  'Magic Mouth':'Level=B1,Magic2,S2,W2',
+  'Magic Mouth':
+    SRD35.SPELLS['Magic Mouth']
+    .replace('Level=', 'Level=Magic2,'),
   'Magic Stone':null,
-  'Magic Vestment':'Level=C3,Nobility3,Strength3,War3',
-  'Magic Weapon':'Level=C1,P1,S1,W1,War1',
+  'Magic Vestment':
+    SRD35.SPELLS['Magic Vestment']
+    .replace('Level=', 'Level=Nobility3,'),
+  'Magic Weapon':
+    SRD35.SPELLS['Magic Weapon']
+    .replace('Blackguard1,', ''),
   'Greater Magic Weapon':null,
-  'Major Creation':'Level=Adept5,Artifice6,S5,W5',
-  'Major Image':'Level=B3,S3,W3',
+  'Major Creation':
+    SRD35.SPELLS['Major Creation']
+    .replace('Level=', 'Level=Artifice6,'),
+  'Major Image':null,
   'Make Whole':
-    'Level=C2,S2,W2 ' +
+    SRD35.SPELLS['Make Whole']
+    .replace('Level=', 'Level=S2,W2,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{25+lvl//2*5}\' Repairs %{lvl<?5}d6 hit points of damage to a %{lvl*10} cubic foot object or construct, or to a destroyed multi-use magic item that does not use charges (save Will negates)" ' +
     'Liquid=Oil',
@@ -4353,49 +4399,71 @@ Pathfinder.SPELLS = {
   'Maze':null,
   'Meld Into Stone':null,
   'Mending':
-    'Level=Adept0,Artifice0,B0,C0,D0,S0,W0 ' +
-    'Description="R10\' Repairs minor damage to an object weighing up to %{lvl} lb (save Will negates)"',
+    SRD35.SPELLS['Mending']
+    .replace('Level=', 'Level=Artifice0,')
+    .replace('1 lb', '%{lvl} lb'),
   'Message':null,
   'Meteor Swarm':
-    'Description=' +
-      '"R%{400+lvl*40}\' Ranged touch attack with each of 4 2\'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40\' radius (save Reflex half; creatures hit by a meteor have a -4 penalty on the save)"',
+    SRD35.SPELLS['Meteor Swarm']
+    .replace(' for creatures not hit by a meteor', '; creatures hit by a meteor have a -4 penalty on the save'),
   'Mind Blank':
-    'Level=Liberation8,Protection8,S8,W8 ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Gives the target immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr"',
+    SRD35.SPELLS['Mind Blank']
+    .replace('Level=', 'Level=Liberation8,')
+    .replace(', scrying, and', ' and scrying and +8 vs.'),
   'Mind Fog':null,
-  'Minor Creation':'Level=Adept4,Artifice4,S4,W4',
-  'Minor Image':'Level=B2,S2,W2',
+  'Minor Creation':
+    SRD35.SPELLS['Minor Creation']
+    .replace('Level=', 'Level=Artifice4,'),
+  'Minor Image':null,
   'Miracle':
-    'Level=C9,Community9,Luck9 ' +
-    'Description=' +
-      '"Requests deity intercession to duplicate the effects of a cleric spell of up to 8th level, duplicate the effects of other spells of up to 7th level, undo the harmful affects of spells, or create effects of similar power; more powerful effects cost 25,000 GP to request"',
+    SRD35.SPELLS.Miracle
+    .replace('Level=', 'Level=Community9,')
+    .replace('5,000 XP', '25,000 GP'),
   'Mirage Arcana':null,
   'Mirror Image':
-    'Level=Adept2,B2,Trickery2,S2,W2 ' +
+    SRD35.SPELLS['Mirror Image']
+    .replace('Level=', 'Level=Trickery2,') + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"Creates 1d4+%{lvl//3<?8}%{lvl>14?\' (8 maximum)\':\'\'} copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and an attack on one that hits or misses by less than 6 destroys it"',
-  'Misdirection':'Level=B2,S2,W2',
+      '"Creates 1d4+%{lvl//3}%{lvl>14?\' (8 maximum)\':\'\'} copies of self that randomly misdirect attacks for %{lvl} min; the duplicates have Armor Class %{armorClass}, and an attack on one that hits or misses by less than 6 destroys it"',
+  'Misdirection':
+    SRD35.SPELLS['Misdirection']
+    .replace('Assassin3,', ''),
   'Mislead':null,
   'Mnemonic Enhancer':null,
-  'Modify Memory':'Level=B4',
+  'Modify Memory':
+    SRD35.SPELLS['Modify Memory']
+    .replace('Assassin4,', ''),
   'Moment Of Prescience':null,
   'Mount':null,
   'Move Earth':null,
 
   'Neutralize Poison':
+    SRD35.SPELLS['Neutralize Poison'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Allows successful caster level checks to neutralize each poison affecting touched or neutralizes a poisonous creature or object for %{lvl*10} min (save Will negates)"',
-  'Nightmare':'Level=B5,Madness5,S5,W5',
-  'Nondetection':'Level=R4,Trickery3,S3,W3',
+  'Nightmare':
+    SRD35.SPELLS.Nightmare
+    .replace('Level=', 'Level=Madness5,'),
+  'Nondetection':
+    SRD35.SPELLS.Nondetection
+    .replace('Assassin3,', ''),
 
-  'Obscure Object':'Liquid=Oil',
-  'Obscuring Mist':'Level=Adept1,Air1,C1,D1,Darkness1,Water1,S1,W1,Weather1',
+  'Obscure Object':
+    SRD35.SPELLS['Obscure Object'] + ' ' +
+   'Liquid=Oil',
+  'Obscuring Mist':
+    SRD35.SPELLS['Obscuring Mist'] + ' ' +
+    // Multiple changes to level
+    'Level=Adept1,Air1,C1,D1,Darkness1,Water1,S1,W1,Weather1',
   'Open/Close':null,
-  "Order's Wrath":'Level=C4,Law4',
+  "Order's Wrath":
+    SRD35.SPELLS["Order's Wrath"]
+    .replace('Level=', 'Level=C4,'),
   'Overland Flight':
-    'Description=' +
-      '"Gives self a 40\' fly Speed and +%{lvl//2} Fly skill for %{lvl} hr"',
+    SRD35.SPELLS['Overland Flight']
+    .replace('Speed', 'Speed and +%{lvl//2} Fly skill'),
   "Owl's Wisdom":null,
   "Mass Owl's Wisdom":null,
 
@@ -4417,7 +4485,9 @@ Pathfinder.SPELLS = {
   'Lesser Planar Ally':null,
   'Planar Binding':null,
   'Greater Planar Binding':null,
-  'Lesser Planar Binding':'Level=Rune5,S5,W5',
+  'Lesser Planar Binding':
+    SRD35.SPELLS['Lesser Planar Binding'] + ' ' +
+    'Level=Rune5,S5,W5',
   'Plane Shift':null,
   'Plant Growth':null,
   'Plant Shape I':
@@ -4789,7 +4859,7 @@ Pathfinder.SPELLS = {
 for(let s in Pathfinder.SPELLS) {
   if(Pathfinder.SPELLS[s] == null)
     Pathfinder.SPELLS[s] = SRD35.SPELLS[s];
-  else if(s > 'I') // TODO: temporary; remove after replacements are in place
+  else if(s > 'M') // TODO: temporary; remove after replacements are in place
     Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
 }
 Pathfinder.TRACKS = {
