@@ -4467,17 +4467,22 @@ Pathfinder.SPELLS = {
   "Owl's Wisdom":null,
   "Mass Owl's Wisdom":null,
 
-  'Pass Without Trace':'Level=D1,R1',
+  'Pass Without Trace':
+    SRD35.SPELLS['Pass Without Trace']
+    .replace('Assassin2,', ''),
   'Passwall':null,
   'Permanency':
-    'Description=' +
-      '"Makes certain spells permanent, at a cost of 2,500-22,500 GP"',
+    SRD35.SPELLS.Permanency
+    .replace('500-4,000 XP', '2,500-22,500 GP'),
   'Permanent Image':null,
   'Persistent Image':null,
-  'Phantasmal Killer':'Level=Madness6,S4,W4',
+  'Phantasmal Killer':
+    SRD35.SPELLS['Phantasmal Killer']
+    .replace('Level=', 'Level=Madness6,'),
   'Phantom Steed':
-    'Description=' +
-      '"Creates a mount with %{lvl+7} hit points, Armor Class 18, and %{lvl//2*20<?100}\' Speed that only the target can ride, along with up to %{lvl*20} lbs of cargo, for %{lvl} hr%{lvl>7?\'; the mount can ride over sandy, muddy, and swampy ground at full Speed\':\'\'}%{lvl>11?\', \':lvl>9?\' and \':\'\'}%{lvl>9?\'use <i>Water Walk</i> effects at will\':\'\'}%{lvl>13?\',\':lvl>11?\', and \':\'\'}%{lvl>11?\'use <i>Air Walk</i> effects for 1 rd at will\':\'\'}%{lvl>13?\', and fly at full Speed\':\'\'}"',
+    SRD35.SPELLS['Phantom Steed']
+    .replace('lvl*20<?240', 'lvl//2*20<?100')
+    .replace('lvl*10', 'lvl*20'),
   'Phantom Trap':null,
   'Phase Door':null,
   'Planar Ally':null,
@@ -4486,8 +4491,8 @@ Pathfinder.SPELLS = {
   'Planar Binding':null,
   'Greater Planar Binding':null,
   'Lesser Planar Binding':
-    SRD35.SPELLS['Lesser Planar Binding'] + ' ' +
-    'Level=Rune5,S5,W5',
+    SRD35.SPELLS['Lesser Planar Binding']
+    .replace('Level=', 'Level=Rune5,'),
   'Plane Shift':null,
   'Plant Growth':null,
   'Plant Shape I':
@@ -4506,12 +4511,18 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"Transforms self into a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for %{lvl} min; the transformation may also give 60\' Darkvision, Low-Light Vision, Constrict, Grab, Poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5\' Speed, as appropriate to the form"',
   'Poison':
-    'Level=C4,D3 ' +
-    'Description="Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
-  'Polar Ray':
+    SRD35.SPELLS.Poison
+      .replace('Assassin4,', '')
+      .replace('Blackguard4,', '') + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"R%{100+lvl*10}\' Ranged touch attack inflicts %{lvl<?25}d6 HP and drains 1d4 points of Dexterity"',
+      '"Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd"',
+  'Polar Ray':
+    SRD35.SPELLS['Polar Ray']
+    .replace('25+lvl//2*5', '100+lvl*10')
+    .replace('cold', 'cold and drains 1d4 points of Dexterity'),
   'Polymorph':
+    // Changes to all three attributes
     'Level=S5,W5 ' +
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
@@ -4521,120 +4532,149 @@ Pathfinder.SPELLS = {
     'Level=S7,W7 ' +
     'Description=' +
       '"Transforms the touched willing target into a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
-  'Polymorph Any Object':'Level=S8,W8',
-  'Power Word Blind':'Level=Darkness7,S7,W7,War7',
+  'Polymorph Any Object':
+    SRD35.SPELLS['Polymorph Any Object']
+    .replace('Trickery8,', ''),
+  'Power Word Blind':
+    SRD35.SPELLS['Power Word Blind']
+    .replace('Darkness7,', ''),
   'Power Word Kill':null,
   'Power Word Stun':null,
-  'Prayer':'Level=C3,Community3,P3',
+  'Prayer':
+    SRD35.SPELLS.Prayer
+    .replace('Level=', 'Level=Commuity3,'),
   'Prestidigitation':null,
   'Prismatic Sphere':
-    'Level=Artifice9,Protection9,Sun9,S9,W9 ' +
-    'Description=' +
-      '"Creates a 10\' radius sphere lasting %{lvl*10} min that blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
+    SRD35.SPELLS['Prismatic Sphere']
+    .replace('Level=', 'Level=Artifice9,')
+    .replace('1d6 points of Constitution damage', '1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends'),
   'Prismatic Spray':
-    'Description=' +
-      '"60\' cone blinds creatures with up to 8 HD for 2d4 rd and randomly inflicts on each creature one of: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex Half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates); 2 of the preceding effects"',
+    SRD35.SPELLS['Prismatic Spray']
+    .replace('1d4 points of Constitution damage', '1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends'),
   'Prismatic Wall':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Creates a %{lvl*4}\'x%{lvl*2}\' wall lasting %{lvl*10} min that blinds for 2d4 rd creatures with up to 7 HD who look at it from within 20\', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)"',
+    SRD35.SPELLS['Prismatic Wall']
+    .replace('1d6 points of Constitution damage', '1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends'),
   'Produce Flame':null,
   'Programmed Image':null,
   'Project Image':null,
   'Protection From Arrows':null,
   'Protection From Chaos':
-    'Level=Adept1,C1,Law1,P1,S1,W1 ' +
+    SRD35.SPELLS['Protection From Chaos'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Wards the touched creature from attacks from chaotic creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Energy':
-    'Level=C3,D3,Luck3,Protection3,R2,S3,W3',
+    SRD35.SPELLS['Protection From Energy']
+    .replace('Blackguard3,', ''),
   'Protection From Evil':
+    SRD35.SPELLS['Protection From Evil'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Wards the touched creature from attacks from evil creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Good':
-    'Level=Adept1,C1,Evil1,S1,W1 ' +
+    SRD35.SPELLS['Protection From Good'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Wards the touched creature from attacks from good creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. good creatures, an additional +2 save to suppress existing mental control and possession by good creatures and objects, and immunity to new attempts to control or possess by good creatures and objects, as well as barring contact by good summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Law':
-    'Level=Adept1,C1,Chaos1,S1,W1 ' +
+    SRD35.SPELLS['Protection From Law'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Wards the touched creature from attacks from lawful creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. lawful creatures, an additional +2 save to suppress existing mental control and possession by lawful creatures and objects, and immunity to new attempts to control or possess by lawful creatures and objects, as well as barring contact by lawful summoned creatures, for %{lvl} min" ' +
     'Liquid=Potion',
   'Protection From Spells':null,
   'Prying Eyes':
-    'Description=' +
-      '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?15} Perception, 30\' fly Speed) that scout up to 1 mile and return to show observations for %{lvl} hr"',
+    SRD35.SPELLS['Prying Eyes']
+    .replace('Hide', 'Stealth')
+    .replace('Spot', 'Perception'),
   'Greater Prying Eyes':
-    SRD35.SPELLS['Greater Prying Eyes'] + ' ' +
-    'Description=' +
-      '"Creates 1d4+%{lvl} floating eyes (Armor Class 18, 1 hit point, +16 Stealth, +%{lvl<?25} Perception, 30\' fly Speed) with 120\' True Seeing that scout up to 1 mile and return to show observations for %{lvl} hr"',
-  'Purify Food And Drink':'Liquid=Oil',
+    SRD35.SPELLS['Greater Prying Eyes']
+    .replace('Hide', 'Stealth')
+    .replace('Spot', 'Perception'),
+  'Purify Food And Drink':
+    SRD35.SPELLS['Purify Food And Drink'] + ' ' +
+    'Liquid=Oil',
   'Pyrotechnics':null,
 
   'Quench':
-    'Description=' +
-      '"R%{100+lvl*10}\' Extinguishes nonmagical fires, dispels magic fires with a successful caster level check (+15 maximum), and inflicts %{lvl<?10}d6 HP to fire creatures in a %{lvl*20} cubic foot area, or suppresses fire-based effects of a non-artifact magic item for 1d4 hr (save Will negates)"',
+    SRD35.SPELLS.Quench
+    .replace('<?15', '<?10'),
 
-  'Rage':'Level=B2,Destruction3,Madness3,S3,W3',
+  'Rage':
+    SRD35.SPELLS.Rage
+    .replace('Level=', 'Level=Destruction3,Madness3,'),
   'Rainbow Pattern':null,
   'Raise Dead':
-    'Description=' +
-      '"Restores a willing soul, dead up to %{lvl} days, to its touched corpse; the target regains 1 hit point per HD, regains 1 point of each ability score taken to 0 before death, becomes cured of nonmagical poison and disease, gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain), and has a 50% chance of losing each prepared spell or unused spell slot"',
+    SRD35.SPELLS['Raise Dead']
+    .replace('irreversibly loses a level (level 1 targets instead irreversibly lose 2 Constitution)', 'gains 2 permanent negative levels (level 1 targets instead suffer 2 points of Constitution drain)'),
   'Ray Of Enfeeblement':
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Ranged touch attack reduces Strength by 1d6+%{lvl//2<?5} (save Fortitude half; will not lower Strength below 1) for %{lvl} rd; multiple castings do not stack"',
+    SRD35.SPELLS['Ray Of Enfeeblement']
+    .replace(' min', ' rd; multiple castings do not stack'),
   'Ray Of Exhaustion':null,
   'Ray Of Frost':null,
   'Read Magic':null,
-  'Reduce Animal':'Liquid=Potion',
+  'Reduce Animal':
+    SRD35.SPELLS['Reduce Animal'] + ' ' +
+    'Liquid=Potion',
   'Reduce Person':null,
   'Mass Reduce Person':null,
-  'Refuge':'Level=C7,Community7,Liberation7,S9,W9',
+  'Refuge':
+    SRD35.SPELLS.Refuge
+    .replace('Level=', 'Level=Community7,Liberation7,'),
   'Regenerate':null,
   'Reincarnate':null,
   'Remove Blindness/Deafness':null,
   'Remove Curse':
-    'Level=Adept3,B3,C3,Liberation3,P3,S4,W4 ' +
-    'Description=' +
-      '"Allows successful caster level checks to dispel each curse affecting touched (save Will negates)"',
+    SRD35.SPELLS['Remove Curse']
+    .replace('Level=', 'Level=Liberation3,')
+    .replace('Dispels all curses', 'Allows a successful caster level check to dispel each curse'),
   'Remove Disease':
-    'Description=' +
-      '"Allows successful caster level checks to cure each disease affecting touched (save Fortitude negates)"',
-  'Remove Fear':'Level=B1,C1,Liberation1',
+    SRD35.SPELLS['Remove Disease']
+    .replace('Cures touched of all diseases', 'Allows a successful caster level check to cure each disease affecting touched'),
+  'Remove Fear':
+    SRD35.SPELLS['Remove Fear']
+    .replace('Level=', 'Level=Liberation1,'),
   'Remove Paralysis':
-    'Level=C2,Liberation2,P2 ' +
-    'Description=' +
-      '"R%{25+lvl//2*5}\' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2 (save Will negates)"',
+    SRD35.SPELLS['Remove Paralysis']
+    .replace('Level=', 'Level=Liberation2,')
+    .replace('<i>Slow</i> spell', 'spell that inflicts staggered'),
   'Repel Metal Or Stone':null,
   'Repel Vermin':null,
   'Repel Wood':null,
-  'Repulsion':'Level=C7,Nobility7,Protection7,S6,W6',
+  'Repulsion':
+    SRD35.SPELLS.Repulsion
+    .replace('Level=', 'Level=Nobility7,'),
   'Resilient Sphere':null,
-  'Resist Energy':'Level=Adept2,C2,D2,P2,R1,S2,W2',
-  'Resistance':'Liquid=Potion',
+  'Resist Energy':
+    SRD35.SPELLS['Resist Energy']
+    .replace('Fire3,', ''),
+  'Resistance':
+    SRD35.SPELLS.Resistance + ' ' +
+    'Liquid=Potion',
   'Restoration':
-    'Description=' +
-      '"Dispels magical harm affecting an ability score of touched, cures all temporary ability damage, restores 1 drained ability, removes fatigue or exhaustion, removes temporary negative levels, and restores 1 drained level (save Will negates); can restore no more that 1 drained level to a target per week"',
+    SRD35.SPELLS.Restoration
+    .replace('suffered within the past %{lvl} days with the minimum necessary XP (save Will negates)', '(save Will negates); can restore no more that 1 drained level to a target per week'),
   'Greater Restoration':
-    SRD35.SPELLS['Greater Restoration'] + ' ' +
-    'Description=' +
-      '"Dispels magical harm affecting the ability scores of touched, cures all temporary ability damage, restores all drained abilities, removes fatigue or exhaustion, removes temporary negative levels, restores all levels drained, and removes insanity, confusion, and similar mental effects (save Will negates)"',
+    SRD35.SPELLS['Greater Restoration']
+    .replace(' within the past %{lvl} weeks', ''),
   'Lesser Restoration':null,
   'Resurrection':
-    'Description=' +
-      '"Fully restores a target willing soul, dead up to %{lvl*10} years, using a piece of its corpse; the target gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)"',
+    SRD35.SPELLS.Resurrection
+    .replace('irreversibly loses a level (level 1 targets instead irreversibly lose 2 Constitution)', 'gains a permanent negative level (level 1 targets instead suffer 2 points of Constitution drain)'),
   'Reverse Gravity':
-    'Description=' +
-      '"R%{100+lvl*10}\' Objects in a %{lvl*10} cubic foot area fall upward for %{lvl} rd"',
+    SRD35.SPELLS['Reverse Gravity']
+    .replace('lvl//2', 'lvl'),
   'Righteous Might':
-    'Level=C5,Glory5,Strength5 ' +
-    'Description=' +
-      '"Causes self and equipment to double in size, gaining a size category, +4 Strength, +4 Constitution, -2 Dexterity, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR %{lvl>14?10:5}/evil or DR %{lvl>14?10:5}/good, for %{lvl} rd"',
+    SRD35.SPELLS['Righteous Might']
+    .replace('Level=', 'Level=Glory5,')
+    .replace('+2 Constitution', '+4 Constitution, -2 Dexterity')
+    .replaceAll('lvl>14?9:lvl>11?6:3', 'lvl>14?10:5'),
   'Rope Trick':
-    'Description=' +
-      '"Causes a 5\'-30\' rope to stretch upward and remain immobile, leading to an extradimensional space with room for 8 creatures, for %{lvl} hr" ' +
+    SRD35.SPELLS['Rope Trick']
+    .replace('upward', 'upward and remain immobile') + ' ' +
     'Liquid=Oil',
   'Rusting Grasp':null,
 
@@ -4859,7 +4899,7 @@ Pathfinder.SPELLS = {
 for(let s in Pathfinder.SPELLS) {
   if(Pathfinder.SPELLS[s] == null)
     Pathfinder.SPELLS[s] = SRD35.SPELLS[s];
-  else if(s > 'M') // TODO: temporary; remove after replacements are in place
+  else if(s > 'S') // TODO: temporary; remove after replacements are in place
     Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
 }
 Pathfinder.TRACKS = {
