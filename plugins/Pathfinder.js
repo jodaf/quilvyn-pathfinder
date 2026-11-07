@@ -3516,7 +3516,7 @@ Pathfinder.SPELLS = {
   'Acid Fog':
     SRD35.SPELLS['Acid Fog']
     .replace(',Water7', '')
-    .replace("movement to 5'", 'movement to half Speed'),
+    .replace("to 5'", 'to half Speed'),
   'Acid Splash':null,
   'Aid':
     SRD35.SPELLS.Aid
@@ -4678,77 +4678,113 @@ Pathfinder.SPELLS = {
     'Liquid=Oil',
   'Rusting Grasp':null,
 
-  'Sanctuary':'Level=C1,Glory1,Protection1',
+  'Sanctuary':
+    SRD35.SPELLS.Sanctuary
+    .replace('Level=', 'Level=Glory1,'),
   'Scare':null,
-  'Scintillating Pattern':'Level=Madness8,S8,W8',
+  'Scintillating Pattern':
+    SRD35.SPELLS['Scintillating Pattern']
+    .replace('Level=', 'Level=Madness8,'),
   'Scorching Ray':null,
   'Screen':null,
   'Scrying':null,
   'Greater Scrying':null,
   'Sculpt Sound':null,
-  'Searing Light':'Level=C3,Glory3,Sun3',
+  'Searing Light':
+    SRD35.SPELLS['Searing Light']
+    .replace('Level=', 'Level=Glory3,'),
   'Secret Chest':null,
-  'Secret Page':'Level=B3,Rune2,S3,W3',
+  'Secret Page':
+    SRD35.SPELLS['Secret Page']
+    .replace('Level=', 'Level=Run2,'),
   'Secure Shelter':null,
-  'See Invisibility':'Level=Adept2,B3,S2,W2',
+  'See Invisibility':null,
   'Seeming':null,
   'Sending':null,
   'Sepia Snake Sigil':null,
   'Sequester':null,
-  'Shades':'Level=Darkness9,S9,W9',
-  'Shadow Conjuration':'Level=B4,Darkness4,S4,W4',
+  'Shades':
+    SRD35.SPELLS.Shades
+    .replace('Level=', 'Level=Darkness9,'),
+  'Shadow Conjuration':
+    SRD35.SPELLS['Shadow Conjuration']
+    .replace('Level=', 'Level=Darkness4,'),
   'Greater Shadow Conjuration':null,
   'Shadow Evocation':null,
   'Greater Shadow Evocation':
-    SRD35.SPELLS['Greater Shadow Evocation'] + ' ' +
-    'Level=Darkness8,S8,W8',
-  'Shadow Walk':'Level=B5,Darkness6,S6,W6',
+    SRD35.SPELLS['Greater Shadow Evocation']
+    .replace('Level=', 'Level=Darkness8,'),
+  'Shadow Walk':
+    SRD35.SPELLS['Shadow Walk']
+    .replace('Level=', 'Level=Darkness6,'),
   'Shambler':
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates in a 15\' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shambler</i> can be active at a time"',
+    SRD35.SPELLS.Shambler
+    .replace('11 HD', 'advanced')
+    .replace('months', 'months; only one casting of <i>Shambler</i> can be active at a time'),
   'Shapechange':
-    'School="Transmutation (Polymorph)" ' +
+    SRD35.SPELLS.Shapechange
+    .replace('Transmutation', '"Transmutation (Polymorph)"') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for %{lvl*10} min"',
-  'Shatter':'Level=B2,C2,Destruction2,S2,W2',
+  'Shatter':
+    SRD35.SPELLS.Shatter
+    .replace('Blackguard2,', '')
+    .replace('Chaos2,', ''),
   'Shield':null,
-  'Shield Of Faith':'Level=C1,Glory1',
+  'Shield Of Faith':
+    SRD35.SPELLS['Shield Of Faith']
+    .replace('Level=', 'Level=Glory1,'),
   'Shield Of Law':
+    SRD35.SPELLS['Shield Of Law'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"%{lvl} creatures within 20\' slow successful chaotic attackers (save Will negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
-  'Shield Other':'Level=C2,Community2,Protection2,P2',
+  'Shield Other':
+    SRD35.SPELLS['Shield Other']
+    .replace('Level=', 'Level=Community2,'),
   'Shillelagh':null,
   'Shocking Grasp':null,
-  'Shout':'Level=B4,Destruction5,S4,W4',
+  'Shout':
+    SRD35.SPELLS.Shout
+    .replace('Level=', 'Level=Destruction5,'),
   'Greater Shout':null,
-  'Shrink Item':'Liquid=Oil',
+  'Shrink Item':
+    SRD35.SPELLS['Shrink Item'] + ' ' +
+    'Liquid=Oil',
   'Silence':
-    'Description=' +
-      '"R%{400+lvl*40}\' Eliminates sound in a 20\' radius (save Will for a targeted creature negates) for %{lvl} rd"',
+    SRD35.SPELLS.Silence
+    .replace(' min', ' rd'),
   'Silent Image':null,
   'Simulacrum':
-    'Description=' +
-      '"Creates a permanent obedient double of a creature with half of the original\'s hit points and levels; suspicious creatures can detect the copy with a successful Perception vs. Disguise or a successful DC 20 Sense Motive"',
+    SRD35.SPELLS.Simulacrum
+    .replace('Spot', 'Perception'),
   'Slay Living':
-    'Level=C5,Death5,Repose5 ' +
-    'Description=' +
-      '"Melee touch attack inflicts 12d6+%{lvl} HP (save Fortitude inflicts 3d6+%{lvl} HP)"',
-  'Sleep':'Level=Adept1,B1,S1,W1',
+    SRD35.SPELLS['Slay Living']
+    .replace('Level=', 'Level=Repose5,')
+    .replace('kills the target', 'inflicts 12d6+%{lvl} HP'),
+  'Sleep':
+    SRD35.SPELLS.Sleep
+    .replace('Assassin1,', ''),
   'Sleet Storm':
-    'Level=D3,S3,W3,Weather4 ' +
-    'Description=' +
-      '"R%{400+lvl*40}\' 40\' radius, 20\' high cylinder blocks sight, extinguishes small fires, and requires a DC 10 Acrobatics check to move at half Speed (failure by 5 or more causes a fall) for %{lvl} rd"',
+    SRD35.SPELLS['Sleet Storm']
+    .replace('Level=', 'Level=Weather4,')
+    .replace('Balance', 'Acrobatics'),
   'Slow':null,
   'Snare':null,
   'Soften Earth And Stone':null,
   'Solid Fog':
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates a 20\' radius, 20\' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5\' and a 50% miss chance on more distant attacks, slows movement to half Speed, prevents ranged attacks, and inflicts -2 melee attacks and damage for %{lvl} min"',
+    SRD35.SPELLS['Solid Fog']
+    .replace("to 5'", 'to half Speed'),
   'Song Of Discord':null,
   'Soul Bind':null,
   'Sound Burst':null,
-  'Speak With Animals':'Level=Animal1,B3,D1,R1',
-  'Speak With Dead':'Level=C3,Knowledge3,Repose3',
+  'Speak With Animals':
+    SRD35.SPELLS['Speak With Animals']
+    .replace('Level=', 'Level=Animal1,'),
+  'Speak With Dead':
+    SRD35.SPELLS['Speak With Dead']
+    .replace('Level=', 'Level=Knowledge3,Repose3,'),
   'Speak With Plants':null,
   'Spectral Hand':null,
   'Spell Immunity':null,
@@ -4757,9 +4793,10 @@ Pathfinder.SPELLS = {
   'Spell Turning':null,
   'Spellstaff':null,
   'Spider Climb':
-    'Level=D2,S2,W2 ' +
-    'Description=' +
-      '"Gives touched a 20\' climb Speed, the ability to climb walls and ceilings, and a +8 bonus to Climb checks (save Will negates), for %{lvl*10} min; the target also retains its Dexterity bonus to Armor Class while climbing"',
+    SRD35.SPELLS['Spider Climb']
+    .replace('Assassin2,', '')
+    .replace(' and ', ', ')
+    .replace('ceilings', 'ceilings, and a +8 bonus to Climb checks'),
   'Spike Growth':null,
   'Spike Stones':null,
   'Spiritual Weapon':null,
@@ -4769,22 +4806,41 @@ Pathfinder.SPELLS = {
     'Description=' +
       '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points (save Will negates)" ' +
     'Liquid=Potion',
-  'Statue':'Level=Artifice8,S7,W7',
+  'Statue':
+    SRD35.SPELLS.Statue
+    .replace('Level=', 'Level=Artifice8,'),
   'Status':null,
   'Stinking Cloud':null,
-  'Stone Shape':'Level=Artifice3,C3,D3,Earth3,S4,W4 Liquid=Oil',
+  'Stone Shape':
+    SRD35.SPELLS['Stone Shape']
+    .replace('Level=', 'Level=Artifice3,') + ' ' +
+    'Liquid=Oil',
   'Stone Tell':null,
   'Stone To Flesh':null,
   'Stoneskin':null,
-  'Storm Of Vengeance':'Level=C9,D9,Nobility9,Weather9',
-  'Suggestion':'Level=B2,Charm3,S3,W3',
+  'Storm Of Vengeance':
+    SRD35.SPELLS['Storm Of Vengeance']
+    .replace('Level=', 'Level=Nobility9,Weather9,'),
+  'Suggestion':
+    SRD35.SPELLS.Suggestion
+    .replace('Level=', 'Level=Charm3,'),
   'Mass Suggestion':null,
-  'Summon Instrument':'Level=B0',
-  'Summon Monster I':'Level=B1,C1,S1,W1',
-  'Summon Monster II':'Level=B2,C2,S2,W2',
-  'Summon Monster III':'Level=B3,C3,S3,W3',
-  'Summon Monster IV':'Level=B4,C4,S4,W4',
-  'Summon Monster V':'Level=B5,C5,Darkness5,S5,W5',
+  'Summon Instrument':null,
+  'Summon Monster I':
+    SRD35.SPELLS['Summon Monster I']
+    .replace('Blackguard1,', ''),
+  'Summon Monster II':
+    SRD35.SPELLS['Summon Monster II']
+    .replace('Blackguard2,', ''),
+  'Summon Monster III':
+    SRD35.SPELLS['Summon Monster III']
+    .replace('Blackguard3,', ''),
+  'Summon Monster IV':
+    SRD35.SPELLS['Summon Monster IV']
+    .replace('Blackguard4,', ''),
+  'Summon Monster V':
+    SRD35.SPELLS['Summon Monster V']
+    .replace('Level=', 'Level=Darkness5,'),
   'Summon Monster VI':null,
   'Summon Monster VII':null,
   'Summon Monster VIII':null,
@@ -4801,7 +4857,9 @@ Pathfinder.SPELLS = {
   'Summon Swarm':null,
   'Sunbeam':null,
   'Sunburst':null,
-  'Symbol Of Death':'Level=C8,Rune8,S8,W8',
+  'Symbol Of Death':
+    SRD35.SPELLS['Symbol Of Death']
+    .replace('Level=', 'Level=Rune8,'),
   'Symbol Of Fear':null,
   'Symbol Of Insanity':null,
   'Symbol Of Pain':null,
@@ -4814,17 +4872,23 @@ Pathfinder.SPELLS = {
 
   'Telekinesis':null,
   'Telekinetic Sphere':null,
-  'Telepathic Bond':'Level=Community5,S5,W5',
+  'Telepathic Bond':
+    SRD35.SPELLS['Telepathic Bond']
+    .replace('Level=', 'Level=Community5,'),
   'Teleport':null,
   'Greater Teleport':null,
   'Teleport Object':null,
-  'Teleportation Circle':'Level=Rune9,S9,W9',
+  'Teleportation Circle':
+    SRD35.SPELLS['Teleportation Circle']
+    .replace('Level=', 'Level=Rune9,'),
   'Temporal Stasis':null,
   'Time Stop':null,
   'Tiny Hut':null,
   'Tongues':null,
   'Touch Of Fatigue':null,
-  'Touch Of Idiocy':'Level=Madness2,S2,W2',
+  'Touch Of Idiocy':
+    SRD35.SPELLS['Touch Of Idiocy']
+    .replace('Level=', 'Level=Madness2,'),
   'Transformation':null,
   'Transmute Metal To Wood':null,
   'Transmute Mud To Rock':null,
@@ -4835,61 +4899,93 @@ Pathfinder.SPELLS = {
   'Tree Stride':null,
   'True Resurrection':null,
   'True Seeing':null,
-  'True Strike':'Level=Destruction1,Luck1,S1,W1',
+  'True Strike':
+    SRD35.SPELLS['True Strike']
+    .replace('Assassin1', 'Destruction1,Luck1'),
 
-  'Undeath To Death':'Level=C6,Glory6,Repose6,S6,W6',
-  'Undetectable Alignment':'Level=B1,C2,P2',
+  'Undeath To Death':
+    SRD35.SPELLS['Undeath To Death']
+    .replace('Level=', 'Level=Glory6,Repose6,'),
+  'Undetectable Alignment':
+    SRD35.SPELLS['Undetectable Alignment']
+    .replace('Assassin2,', ''),
   'Unhallow':
-    'Level=C5,D5 ' +
+    SRD35.SPELLS.Unhallow + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"40\' radius around the touched structure or site gives a +2 deflection bonus to Armor Class and +2 saves vs. good, gives an additional +2 save to suppress existing mental control and possession and immunity to new attempts to control or possess, bars contact by summoned good creatures, gives negative channeling a +4 DC and positive channeling a -4 DC, and evokes a chosen spell upon specified creatures for 1 year"',
   'Unholy Aura':
-    'Description=' +
-      '"%{lvl} creatures within 20\' inflict 1d6 points of Strength damage on successful good attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. good spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for %{lvl} rd"',
-  'Unholy Blight':'Level=C4,Evil4',
+    SRD35.SPELLS['Unholy Aura']
+    .replace('suppression of', 'an additional +2 save to suppress'),
+  'Unholy Blight':
+    SRD35.SPELLS['Unholy Blight']
+    .replace('Level=', 'Level=C4,'),
   'Unseen Servant':null,
+
   'Vampiric Touch':null,
   'Veil':null,
   'Ventriloquism':null,
   'Virtue':
-    'Description="Gives touched 1 temporary HP for 1 min" ' +
+    SRD35.SPELLS.Virtue
+    .replace('point', 'point (save Fortitude negates)') + ' ' +
     'Liquid=Potion',
   'Vision':null,
 
   'Wail Of The Banshee':
-    'Level=Death9,Repose9,S9,W9 ' +
+    SRD35.SPELLS['Wail Of The Banshee']
+    .replace('Level=', 'Level=Repose9,') + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} creatures in a 40\' radius"',
   'Wall Of Fire':null,
   'Wall Of Force':
+    SRD35.SPELLS['Wall Of Force'] + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{25+lvl//2*5}\' Creates an invisible, impassible, and immobile %{lvl*10} square foot wall (hardness 30, %{lvl*20} hit points) for %{lvl} rd; the wall can be destroyed by <i>Disintegrate</i>, <i>Mage\'s Disjunction</i>, a rod of cancellation, or a sphere of annihilation, and other spells and physical attacks can damage it"',
   'Wall Of Ice':null,
-  'Wall Of Iron':'Level=Artifice7,S6,W6',
+  'Wall Of Iron':
+    SRD35.SPELLS['Wall Of Iron']
+    .replace('Level=', 'Level=Artifice7,'),
   'Wall Of Stone':null,
   'Wall Of Thorns':
-    'Description=' +
-      '"R%{100+lvl*10}\' Creates %{lvl*10} cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for %{lvl*10} min; moving through the thorns requires a Strength check each rd, allowing 5\' of movement for each 5 points that the check exceeds 20"',
-  'Warp Wood':'Liquid=Oil',
+    SRD35.SPELLS['Wall Of Thorns']
+    .replace('slashing', 'piercing'),
+  'Warp Wood':
+    SRD35.SPELLS['Warp Wood'] + ' ' +
+    'Liquid=Oil',
   'Water Breathing':null,
   'Water Walk':null,
-  'Waves Of Exhaustion':'Level=Repose8,S7,W7',
+  'Waves Of Exhaustion':
+    SRD35.SPELLS['Waves Of Exhaustion']
+    .replace('Level=', 'Level=Repose8,'),
   'Waves Of Fatigue':null,
   'Web':
+    SRD35.SPELLS.Web + ' ' +
+    // Significant changes to Description
     'Description=' +
       '"R%{100+lvl*10}\' Creates anchored web strands in a 20\' radius that grapple creatures (save Reflex negates, and a successful combat maneuver or Escape Artist check against the spell DC breaks free) for %{lvl*10} min; movement through the web requires a successful combat maneuver or Escape Artist check each rd; burning clears the web and inflicts 2d4 HP fire on those within"',
-  'Weird':'Level=Madness9,S9,W9',
-  'Whirlwind':'Level=Air8,D8,Weather8',
+  'Weird':
+    SRD35.SPELLS['Weird']
+    .replace('Level=', 'Level=Madness9,'),
+  'Whirlwind':
+    SRD35.SPELLS['Whirlwind']
+    .replace('Level=', 'Level=Weather8,'),
   'Whispering Wind':null,
   'Wind Walk':null,
-  'Wind Wall':'Level=Air2,C3,D3,R2,S3,W3',
+  'Wind Wall':null,
   'Wish':
-    'Description=' +
-      '"Alters reality, with few limits; costs at least 25,000 GP to cast"',
-  'Wood Shape':'Level=Artifice2,D2 Liquid=Oil',
+    SRD35.SPELLS.Wish
+    .replace('5,000 XP', '25,000 GP'),
+  'Wood Shape':
+    SRD35.SPELLS['Wood Shape']
+    .replace('Level=', 'Level=Artifice2,') + ' ' +
+    'Liquid=Oil',
   'Word Of Chaos':
+    SRD35.SPELLS['Word Of Chaos'] + ' ' +
+    // Significant changes to Description
     'Description=' +
-      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for 1 rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
+      '"Inflicts on nonchaotic creatures within 40\' a set of effects: banishment for 24 hr on extraplanar creatures (save Will -4 negates); killed or destroyed on creatures with up to %{lvl-10} HD (save Will inflicts 3d6+%{lvl<?25} HP); confused for 1d10 min on creatures with up to %{lvl-5} HD (save Will inflicts confused for 1 rd); stunned for 1 rd on creatures with up to %{lvl-1} HD (save Will negates); deafened for 1d4 rd on creatures with up to %{lvl} HD (save Will negates)"',
   'Word Of Recall':null,
 
   'Zone Of Silence':null,
@@ -4899,8 +4995,6 @@ Pathfinder.SPELLS = {
 for(let s in Pathfinder.SPELLS) {
   if(Pathfinder.SPELLS[s] == null)
     Pathfinder.SPELLS[s] = SRD35.SPELLS[s];
-  else if(s > 'S') // TODO: temporary; remove after replacements are in place
-    Pathfinder.SPELLS[s] = (SRD35.SPELLS[s]||'') + ' ' + Pathfinder.SPELLS[s];
 }
 Pathfinder.TRACKS = {
   '3.5':
