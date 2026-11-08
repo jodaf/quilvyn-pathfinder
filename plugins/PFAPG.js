@@ -5510,12 +5510,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
     'Description=' +
-      '"Hand absorbs a touched %{lvl} lb object (save Fortitude negates) for %{lvl} days"',
+      '"Touch absorbs a nonmagical object weighing up to %{lvl} lb (save Fortitude negates) for %{lvl} days; only 1 object per hand can be absorbed"',
   'Accelerate Poison':
     'School=Transmutation ' +
     'Level=D2,R2,S2,W2 ' +
     'Description=' +
-      '"Poison affecting touched takes effect immediately or inflicts damage twice as often for half its normal duration (save Fortitude negates)"',
+      '"Causes a choice of poison affecting touched to take effect immediately or to inflict damage twice as often for half its normal duration (save Fortitude negates)"',
   'Acid Pit':
     'School="Conjuration (Creation) [Acid]" ' +
     'Level=S4,W4,Summoner4 ' +
@@ -5525,32 +5525,32 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
     'Description=' +
-      '"Allows self to gain the effects of a chosen potion in the next rd without consuming it"',
+      '"Allows self to gain the effects of a potion in the next rd by spitting it back into its vial without consuming it"',
   'Allfood':
     'School=Transmutation ' +
     'Level=R2 ' +
     'Description=' +
-      '"Makes a touched %{lvl*5} lb object edible (save Will negates), providing 1 day\'s food for %{lvl*5} Medium creatures"',
+      '"Makes %{lvl*5} lb of touched objects edible (save Will negates), providing a day\'s food for %{lvl*5} Medium creatures"',
   'Alter Winds':
     'School="Transmutation [Air]" ' +
     'Level=D1,O1,S1,W1 ' + // Oracle Wind
     'Description=' +
-      '"Increases or decreases %{lvl>=16 ? \'severe\' : lvl>=10 ? \'strong\' : lvl>=4 ? \'moderate\' : \'light\'} winds 1 step in a 10\' radius around touched (ave Will negates) for %{lvl} hr"',
+      '"Increases or decreases %{lvl>=16 ? \'severe\' : lvl>=10 ? \'strong\' : lvl>=4 ? \'moderate\' : \'light\'} natural winds 1 step in a 10\' radius around a touched point (save Will negates) for %{lvl} hr"',
   'Amplify Elixir':
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
     'Description=' +
-      '"Variable effects of potions and elixirs consumed by self increase by 50% (or double duration if it has no variable effects) for %{lvl} rd"',
+      '"Increases the variable effects of potions and elixirs consumed by self by 50%, and doubles the duration of potions and elixers that have no variable effects, for %{lvl} rd"',
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,O1,R1,S1,W1,Summoner1 ' +
     'Description=' +
-      '"Touched creature gains triple carrying capacity (save Fortitude negates) for %{lvl*2} hr"',
+      '"Triples the carrying capacity of a touched creature (save Fortitude negates) for %{lvl*2} hr"',
   'Aqueous Orb':
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D3,S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' 10\' diameter sphere of water can be moved 30\' per rd and rolled over 10\' obstacles for %{lvl} rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' diameter sphere of water that can be moved 30\' per rd and rolled over 10\' obstacles for %{lvl} rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd"',
   'Arcane Concordance':
     'School=Evocation ' +
     'Level=B3 ' +
@@ -5560,27 +5560,27 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation)" ' +
     'Level=R2,S2,W2 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Cast the rd after killing a creature with an arrow, causes duplicates of the arrow to attack %{lvl<?15} foes in a 30\' radius"',
+      '"R%{400+lvl*40}\' Cast in the next rd after killing a creature with an arrow, causes duplicates of that arrow to attack %{lvl<?15} foes in a 30\' radius around the corpse"',
   'Aspect Of The Bear':
     'School="Transmutation (Polymorph)" ' +
     'Level=D2,R2 ' +
     'Description=' +
-      '"Gives self a +2 enhancement bonus to natural armor and CMB and allows performing Bull Rush, Grapple, and Overrun without provoking AOO for %{lvl} min"',
+      '"Gives self a +2 enhancement bonus to natural armor, +2 CMB, and the ability to perform Bull Rush, Grapple, and Overrun without provoking AOO, for %{lvl} min"',
   'Aspect Of The Falcon':
     'School="Transmutation (Polymorph)" ' +
     'Level=D1,R1 ' +
     'Description=' +
-      '"Gives self +3 Perception, +1 ranged attacks, and a crit of x3@19 with bows and crossbows for %{lvl} min"',
+      '"Gives self +3 Perception, +1 ranged attacks, and a crit of x3@19 with bows and crossbows, for %{lvl} min"',
   'Aspect Of The Stag':
     'School="Transmutation (Polymorph)" ' +
     'Level=D4,R3 ' +
     'Description=' +
-      '"Gives self a +2 dodge bonus to Armor Class vs. AOO, +20 Speed, full speed in undergrowth, and an immediate attack with antlers after a successful foe AOO (+%{baseAttack+(strengthModifier>?dexterityModifier)} inflicts 1d%{features.Small ? 6 : 8}%{strengthModifier>0 ? \'+\' + strengthModifier : strengthModifier<0 ? strengthModifier : \'\'} HP piercing x2@19) for %{lvl} min"',
+      '"Gives self a +2 dodge bonus to Armor Class vs. AOO, +20 Speed, movement at full Speed in undergrowth, and an immediate attack with antlers after a successful foe AOO (+%{baseAttack+(strengthModifier>?dexterityModifier)} attack inflicts 1d%{size==\'Small\'?6:8}%{strengthModifier>0 ?\'+\'+strengthModifier:strengthModifier<0?strengthModifier:\'\'} HP piercing x2@19), for %{lvl} min"',
   'Aspect Of The Wolf':
     'School="Transmutation (Polymorph)" ' +
     'Level=D5,R4 ' +
     'Description=' +
-      '"Gives self +4 Strength and Dexterity, the Scent feature, +2 Trip attack, and swift Trip without provoking AOO for %{lvl} min"',
+      '"Gives self +4 Strength and Dexterity, the Scent feature, +2 Trip attack, and swift Trip without provoking AOO, for %{lvl} min"',
   'Aura Of Greater Courage':
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -5596,7 +5596,7 @@ PFAPG.SPELLS = {
     'School=Abjuration ' +
     'Level=Inquisitor3,Witch5 ' +
     'Description=' +
-      '"Melee touch gives +2 <i>Dispel Magic</i> effects vs. %{lvl//4} illusion%{lvl>7?\'s\':\'\'} or allows a caster level check vs. the target\'s HD to revert magical transformations and prevent new ones for %{lvl} rd"',
+      '"Melee touch attack evokes +2 <i>Dispel Magic</i> effects vs. %{lvl//4} illusion%{lvl>7?\'s\':\'\'} or allows a caster level check vs. the target\'s HD to revert magical transformations and prevent new ones for %{lvl} rd"',
   "Bard's Escape":
     'School="Conjuration (Teleportation)" ' +
     'Level=B5 ' +
@@ -5606,42 +5606,42 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B1,Witch1 ' +
     'Description=' +
-      '"R5\' Target takes and uses an offered object (save Will negates) for 1 rd"',
+      '"R5\' Causes an adjacent creature to take and use an offered object (save Will negates) for 1 rd"',
   'Bestow Grace':
     'School=Abjuration ' +
     'Level=P2 ' +
     'Description=' +
-      '"Touched good creature adds its charisma bonus to saves for %{lvl} min (save Will negates)"',
+      '"Allows a touched good creature to add its charisma bonus to saves for %{lvl} min (save Will negates)"',
   'Blaze Of Glory':
     'School="Conjuration (Healing) [Good,Mind-Affecting]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"30\' radius restores %{lvl//2}d6 hit points to good creatures, gives +1 attacks, weapon damage, saves, and skill checks to allies, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), and inflicts -1 attacks, weapon damage, saves, and skill checks on foes for %{lvl} rd; reduces self to stable at -1 hit point"',
+      '"Causes a 30\' emanation that restores %{lvl//2}d6 hit points to good creatures, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies for %{lvl} rd, inflicts -1 of the same on foes for %{lvl} rd, and reduces self to -1 hit point and stable"',
   'Blessing Of Courage and Life':
     'School="Conjuration (Healing)" ' +
     'Level=C2,O2,P2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target gains +2 save vs. fear and death for %{lvl} min and can end the spell early to regain 1d8+%{lvl<?10} hit points (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Gives the living target +2 saves vs. fear and death (save Will negates) for %{lvl} min; it can end the spell early to regain 1d8+%{lvl<?10} hit points"',
   'Blessing Of Fervor':
     'School=Transmutation ' +
     'Level=C4,O4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in a 15\' radius gain a choice each rd for %{lvl} rd: +30 Speed; standing as a swift action without provoking AOO; an extra attack as part of a full-attack action; +2 attacks, a +2 dodge bonus to Armor Class, and +2 Reflex saves; free use of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell on a spell of up to 2nd level"',
+      '"R%{25+lvl//2*5}\' Gives %{lvl} targets in a 15\' radius a choice each rd (save Fortitude negates) for %{lvl} rd: +30 Speed; standing as a swift action without provoking AOO; an extra attack as part of a full-attack action; +2 attacks, a +2 dodge bonus to Armor Class, and +2 Reflex saves; free use of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell on a spell of up to 2nd level"',
   'Blessing Of The Salamander':
     'School="Transmutation (Polymorph)" ' +
     'Level=D5,R4 ' +
     'Description=' +
-      '"Touched gains fast healing 5, fire resistance 20, and +2 CMD for %{lvl} rd"',
+      '"Gives touched fast healing 5, fire resistance 20, and +2 CMD (save Fortitude negates) for %{lvl} rd"',
   'Blood Biography':
     'School=Divination ' +
     'Level=B2,C3,Inquisitor3,O3,S3,W3 ' +
     'Description=' +
-      '"Target blood identifies the name, gender, race, and profession of the creature it came from and when and how it was shed (save Will negates)"',
+      '"Causes the target blood to identify the name, gender, race, and profession of the creature it came from and to reveal when and how it was shed (save Will negates)"',
   'Bloodhound':
     'School=Transmutation ' +
     'Level=Alchemist3,Inquisitor2,R2 ' +
     'Description=' +
-      '"Gives self Scent features, +8 Perception with smell, +4 Survival to track via scent, and -4 saves vs. odor and can make a DC 20 Perception check to detect poison via scent, for %{lvl} hr"',
+      '"Gives self the Scent feature, +8 Perception with smell, +4 Survival to track via scent, -4 saves vs. odor, and the ability to make a DC 20 Perception check to detect poison via scent, for %{lvl} hr"',
   'Bloody Claws':
     'School=Necromancy ' +
     'Level=D4,R3 ' +
@@ -5661,12 +5661,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B1 ' +
     'Description=' +
-      '"Allows self to use touched\'s ranks for a chosen skill on a the next check using that skill within %{lvl} rd (save Will negates)"',
+      '"Allows self to use a touched creature\'s ranks in a chosen skill (save Will negates) on a the next check within %{lvl} rd that uses that skill"',
   'Bow Spirit':
     'School="Conjuration (Creation)" ' +
     'Level=R4 ' +
     'Description=' +
-      '"Conjures a spirit that attacks using self ammo, bonuses, and feats each rd for %{lvl} rd"',
+      '"Conjures a spirit that attacks each rd as directed, using self ammo, bonuses, and feats, for %{lvl} rd"',
   'Brand':
     'School=Transmutation ' +
     'Level=Inquisitor0 ' +
@@ -5681,38 +5681,38 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Breaks a Medium object target or destroys an already-broken target (save Fortitude negates)"',
+      '"R%{25+lvl//2*5}\' Breaks a Medium object target or destroys an already-broken one (save Fortitude negates)"',
   'Brilliant Inspiration':
     'School="Evocation [Language-Dependent]" ' +
     'Level=B6,Leadership6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target gains the better of two attack, ability check, and skill check rolls (save Will negates) for %{lvl} rd or until a natural 20 is rolled"',
+      '"R%{25+lvl//2*5}\' Gives the target the better of two attack, ability check, and skill check rolls (save Will negates) for %{lvl} rd or until a natural 20 is rolled"',
   'Bristle':
     'School=Transmutation ' +
     'Level=D1 ' +
     'Description=' +
-      '"Allows touched to reduce its natural armor bonus to Armor Class by up to %{lvl//3<?5} for an equal damage bonus on natural attacks each rd (save Fortitude negates) for %{lvl} min"',
+      '"Each rd for %{lvl} min, allows touched to reduce its natural armor bonus to Armor Class by up to %{lvl//3<?5} for an equal damage bonus on natural attacks (save Fortitude negates)"',
   'Burning Gaze':
     'School="Evocation [Fire]" ' +
     'Level=D2,S2,W2,Witch2 ' +
     'Description=' +
-      '"R30\' Allows self to use a standard action each rd to inflict 1d6 HP fire (save Fortitude negates) for %{lvl} rd; targets who fail their saves catch on fire, suffering an additional 1d6 HP fire each rd (save Reflex ends)"',
+      '"Allows self to use a standard action each rd for %{lvl} rd to inflict 1d6 HP fire on a target within 30\' (save Fortitude negates); targets who fail their saves catch on fire, suffering an additional 1d6 HP fire each rd (save Reflex ends)"',
   'Burst Bonds':
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
     'Description=' +
-      '"Touched restraints suffer %{lvl<?5}d6 HP (save Fortitude half for magical restraints), ignoring hardness up to 10, or gives self a +%{lvl<?5} CMB or +%{lvl//2<?5} save attempt to break a Grapple (save Fortitude negates)"',
+      '"Inflicts %{lvl<?5}d6 HP on a touched restraint affecting self (save Fortitude half for magical restraints), ignoring hardness up to 10, or gives self a +%{lvl<?5} CMB or +%{lvl//2<?5} save attempt to break a Grapple (save Fortitude negates)"',
 
   'Cacophonous Call':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B2 ' +
     'Description=' +
-      '"R$%{25+lvl//2*5}\' Target suffers nauseated (save Will negates) for %{lvl} rd"',
+      '"R$%{25+lvl//2*5}\' Inflicts nauseated (save Will negates) for %{lvl} rd"',
   'Mass Cacophonous Call':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in 15\' radius suffer nauseated (save Will negates) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Inflicts nauseated on %{lvl} targets in 15\' radius (save Will negates) for %{lvl} rd"',
   'Calcific Touch':
     'School="Transmutation [Earth]" ' +
     'Level=S4,W4 ' +
@@ -5727,7 +5727,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Fire,Light]" ' +
     'Level=B3,D2,R2,S3,W3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' 20\' radius around a fire of at least campfire size blocks sight and inflicts 1d6 HP fire and a glow lasting 1d6 min on those passing toward the fire for %{lvl*2} hr"',
+      '"R%{25+lvl//2*5}\' Creates around a fire of at least campfire size a 20\' opaque sphere of light that inflicts 1d6 HP fire and a glow lasting 1d6 min on those moving into it for %{lvl*2} hr"',
   'Cast Out':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
