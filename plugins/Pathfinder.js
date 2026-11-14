@@ -2178,7 +2178,7 @@ Pathfinder.FEATURES = {
     'Note="Can use <i>Form Of The Dragon I%{$\'levels.Dragon Disciple\'<10?\'\':\'I\'}</i> effects %{$\'levels.Dragon Disciple\'<10?\'once\':\'2 times\'} per day" ' +
     'Spells="Form Of The Dragon I","10:Form Of The Dragon II" ' +
     'SpellAbility=Charisma ' +
-    'SpellLevel=bloodlineLevels.Draconic',
+    'SpellLevel="levels.Dragon Disciple"',
   'Natural Armor Increase':SRD35.FEATURES['Natural Armor Increase'],
   // Wings as above
 
@@ -3628,7 +3628,7 @@ Pathfinder.SPELLS = {
     'School=Necromancy ' +
     'Level=C0,S0,W0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Stabilized target suffers 1 HP and resumes dying (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Stabilized living target suffers 1 HP and resumes dying (save Will negates)"',
   'Bless':
     SRD35.SPELLS.Bless
     .replace('Level=', 'Level=Community1,'),
@@ -4144,7 +4144,8 @@ Pathfinder.SPELLS = {
     .replace('lvl+14', 'lvl+11'),
   'Grease':
     SRD35.SPELLS.Grease
-    .replace('Balance', 'Acrobatics') + ' ' +
+    .replace('Balance', 'Acrobatics')
+    .replace('{lvl} rd', '{lvl} min') + ' ' +
     'Liquid=Oil',
   'Guards And Wards':null,
   'Guidance':
@@ -4526,12 +4527,12 @@ Pathfinder.SPELLS = {
     'Level=S5,W5 ' +
     'School="Transmutation (Polymorph)" ' +
     'Description=' +
-      '"Transforms the touched willing target into a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Transforms the touched willing living target into a Tiny-Large animal, a Small elemental, or a Small-Medium humanoid (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Greater Polymorph':
     'School=Transmutation ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Transforms the touched willing target into a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
+      '"Transforms the touched willing living target into a Diminutive-Huge animal, a Tiny-Large magical beast, a Small-Large elemental, a Small-Medium humanoid, a Small-Large plant creature, or a Medium dragon (save Will negates) for %{lvl} min; the target can use a full-round action to end the spell"',
   'Polymorph Any Object':
     SRD35.SPELLS['Polymorph Any Object']
     .replace('Trickery8,', ''),
@@ -4762,7 +4763,7 @@ Pathfinder.SPELLS = {
   'Slay Living':
     SRD35.SPELLS['Slay Living']
     .replace('Level=', 'Level=Repose5,')
-    .replace('kills the target', 'inflicts 12d6+%{lvl} HP'),
+    .replace('kills', 'inflicts 12d6+%{lvl} HP on'),
   'Sleep':
     SRD35.SPELLS.Sleep
     .replace('Assassin1,', ''),
@@ -4804,7 +4805,7 @@ Pathfinder.SPELLS = {
     'School=Conjuration ' +
     'Level=Adept0,C0,D0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Stabilizes a target with negative hit points (save Will negates)" ' +
+      '"R%{25+lvl//2*5}\' Stabilizes a living target with negative hit points (save Will negates)" ' +
     'Liquid=Potion',
   'Statue':
     SRD35.SPELLS.Statue
@@ -4936,7 +4937,7 @@ Pathfinder.SPELLS = {
     .replace('Level=', 'Level=Repose9,') + ' ' +
     // Significant changes to Description
     'Description=' +
-      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} creatures in a 40\' radius"',
+      '"R%{25+lvl//2*5}\' Inflicts %{lvl*10} HP (save Fortitude negates) on %{lvl} living creatures in a 40\' radius"',
   'Wall Of Fire':null,
   'Wall Of Force':
     SRD35.SPELLS['Wall Of Force'] + ' ' +
