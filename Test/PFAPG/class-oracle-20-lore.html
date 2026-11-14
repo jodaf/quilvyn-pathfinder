@@ -133,7 +133,7 @@ var attributes = {
         <td>Profession (Librarian): (wis) 10 (+15)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Bows): (int) 2 (+8)</td>
-        <td>Knowledge (Arcana): (int;cc) 16 (+20)</td>
+        <td>Knowledge (Arcana): (int) 16 (+23)</td>
         <td>Ride: (dex;cc) 2 (+0)</td>
       </tr><tr style="text-align:left">
         <td>Craft (Traps): (int) 8 (+14)</td>
@@ -141,7 +141,7 @@ var attributes = {
         <td>Sense Motive: (wis) 10 (+15)</td>
       </tr><tr style="text-align:left">
         <td>Diplomacy: (cha) 2 (+5)</td>
-        <td>Knowledge (Nature): (int;cc) 10 (+14)</td>
+        <td>Knowledge (Nature): (int) 10 (+17)</td>
         <td>Stealth: (dex;cc) 10 (+8)</td>
       </tr><tr style="text-align:left">
         <td>Disguise: (cha;cc) 12 (+12)</td>
@@ -226,7 +226,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Sidestep Secret: Dexterity Armor Class adjustment uses Charisma instead</i></td>
       </tr><tr style="text-align:center">
-        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can deal lethal damage</td>
+        <td>Improved Unarmed Strike: Unarmed strikes provoke no AOO and can inflict lethal damage</td>
       </tr><tr style="text-align:center">
         <td>Point-Blank Shot: +1 ranged attacks and damage within 30'</td>
       </tr><tr style="text-align:center">
@@ -265,6 +265,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: O0: 9; O1: 7; O2: 7; O3: 7; O4: 7; O5: 6; O6: 6; O7: 6; O8: 6; O9: 6</td>
+        <td><b>Spell Points</b>: 280</td>
         <td><b>Spell DC</b>: Automatic Writing: 14; Final Revelation Lore Mystery: 14; O: 14; Spontaneous Symbology: 14</td>
       </tr></table>
 </td>
@@ -275,41 +276,41 @@ var attributes = {
     <tr style="text-align:left">
       <td>Augury (Automatic Writing2 Divi): Gives a 90% chance of learning the weal or woe outcome of a proposed action up to 30 min in the future</td>
     </tr><tr style="text-align:left">
-      <td>Commune (Automatic Writing5 Divi): Agents of Gorum respond to 20 yes/no questions asked within 20 rd</td>
+      <td>Commune (Automatic Writing5 Divi): Contacts agents of Gorum who respond to 20 yes/no questions asked within 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Contact Other Plane (O5 Divi): Contacts an extraplanar entity to ask 10 yes/no questions within 10 min; carries the risks of receiving lies and of suffering loss of Intelligence, Charisma, and arcane spellcasting for 1-5 weeks</td>
+      <td>Contact Other Plane (O5 Divi): Contacts an extraplanar entity to receive one-word answers to 10 questions asked within 10 min; carries the risks of receiving lies and of suffering loss of Intelligence, Charisma, and arcane spellcasting for 1-5 weeks</td>
     </tr><tr style="text-align:left">
       <td>Divination (Automatic Writing4 Divi): Gives a 90% chance to learn useful advice on a proposed action up to 1 week in the future</td>
     </tr><tr style="text-align:left">
-      <td>Identify (O1 Divi): R60' Cone reveals info on magical auras and gives +10 Spellcraft to determine non-artifact magic item properties, for 60 rd</td>
+      <td>Identify (O1 Divi): 60' cone reveals the presence and power of magical auras, allows making Knowledge (Arcana) checks to determine their schools, and gives +10 Spellcraft checks to determine non-artifact magic item properties, for 60 rd</td>
     </tr><tr style="text-align:left">
       <td>Legend Lore (O4 Divi): Reveals legends about a specified person, place, or object; requires minutes to weeks to cast depending on the familiarity of the target</td>
     </tr><tr style="text-align:left">
       <td>Locate Object (O3 Divi): Reveals the direction of a visualized object or kind of object found within 1200' for 20 min; a sheet of lead blocks the spell</td>
     </tr><tr style="text-align:left">
-      <td>Mass Owl's Wisdom (O6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom (save Will negates) for 20 min</td>
+      <td>Mass Owl's Wisdom (O6 Tran): R75' 20 targets in a 15' radius gain +4 Wisdom (<b>save Will</b> DC 20 negates) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Moment Of Prescience (O8 Divi): Gives self a +20 insight bonus to Armor Class or to an attack, check, or save once within 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Spontaneous Symbology8 Necr): Creates a rune that slays creatures in a 60' radius when triggered (save Fortitude negates), working outward from the closest creatures, for 200 min or until creatures with 150 hit points total have been killed</td>
+      <td>Symbol Of Death (Spontaneous Symbology8 Necr): Creates a rune that slays creatures in a 60' radius (<b>save Fortitude</b> DC 22 negates), working outward from the closest creatures, for 200 min after it is triggered or until creatures with 150 hit points total have been killed</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): Creates a rune that panics creatures in a 60' radius for 20 rd when triggered (save Will negates) for 200 min</td>
+      <td>Symbol Of Fear (Spontaneous Symbology6 Necr): Creates a rune that panics creatures in a 60' radius for 20 rd (<b>save Will</b> DC 20 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): Creates a rune that inflicts permanent insanity on creatures in a 60' radius when triggered (save Will (DC +1) negates) for 200 min</td>
+      <td>Symbol Of Insanity (Spontaneous Symbology8 Ench): Creates a rune that inflicts permanent insanity on creatures in a 60' radius (<b>save Will</b> DC 23 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): Creates a rune that causes pain that inflicts -4 attacks and skill and ability checks for 1 hr on creatures in a 60' radius when triggered (save Fortitude negates) for 200 min</td>
+      <td>Symbol Of Pain (Spontaneous Symbology5 Necr): Creates a rune that causes pain that inflicts -4 attacks and skill and ability checks on creatures in a 60' radius, lasting for 1 hr after exiting, (<b>save Fortitude</b> DC 19 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): Creates a rune that charms creatures in a 60' radius for 20 hrs when triggered (save Will (DC +1) negates) for 200 min</td>
+      <td>Symbol Of Persuasion (Spontaneous Symbology6 Ench): Creates a rune that charms creatures in a 60' radius for 20 hrs (<b>save Will</b> DC 21 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): Creates a rune that renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min when triggered (save Will (DC +1) negates) for 200 min</td>
+      <td>Symbol Of Sleep (Spontaneous Symbology5 Ench): Creates a rune that renders creatures in a 60' radius with up to 10 HD catatonic for 3d6x10 min (<b>save Will</b> DC 20 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): Creates a rune that stuns creatures in a 60' radius for 1d6 rd when triggered (save Will (DC +1) negates) for 200 min</td>
+      <td>Symbol Of Stunning (Spontaneous Symbology7 Ench): Creates a rune that stuns creatures in a 60' radius for 1d6 rd (<b>save Will</b> DC 22 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): Creates a rune that inflicts 3d6 points of Strength damage on creatures in a 60' radius when triggered (save Fortitude negates) for 200 min</td>
+      <td>Symbol Of Weakness (Spontaneous Symbology7 Necr): Creates a rune that inflicts 3d6 points of Strength damage on creatures in a 60' radius (<b>save Fortitude</b> DC 21 negates) for 200 min after it is triggered</td>
     </tr><tr style="text-align:left">
-      <td>Time Stop (O9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures for the duration</td>
+      <td>Time Stop (O9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures or remove or harm their possessions during the spell</td>
     </tr><tr style="text-align:left">
-      <td>Tongues (O4 Divi): Allows touched to communicate in any language (save Will negates) for 200 min</td>
+      <td>Tongues (O4 Divi): Allows touched to speak and understand any language (<b>save Will</b> DC 18 negates) for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Vision (O7 Divi): Allows a successful caster level check (+25 maximum) to answer a question about a specified person, place, or object; the DC varies from 20 to 30 depending on the familiarity of the subject</td>
     </tr><tr style="text-align:left">
@@ -327,7 +328,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Automatic Writing: 1 hr meditation yields the results of a <i>Commune</i> spell once per day</td>
     </tr><tr style="text-align:center">
-      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check per rd at the target's bonus (save Will DC 24 negates) for 4 rd 5 times per day</td>
+      <td>Brain Drain: R100' Mental probe inflicts 20d4 HP and yields 1 Knowledge check per rd at the target's bonus (<b>save Will</b> DC 24 negates) for 4 rd 5 times per day</td>
     </tr><tr style="text-align:center">
       <td>Elemental Spell (Cold): May use +1 spell slot to convert half or all spell damage to cold damage</td>
     </tr><tr style="text-align:center">

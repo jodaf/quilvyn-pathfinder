@@ -192,7 +192,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Improved Initiative: +4 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Shepherd Of The Trees: +4 AC</i></td>
+        <td><i>Shepherd Of The Trees: +4 Armor Class</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: +2</i></td>
       </tr><tr style="text-align:center">
@@ -240,6 +240,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: S0: 9; S1: 5; S2: 5; S3: 4; S4: 4; S5: 4; S6: 3; S7: 3; S8: 3; S9: 3</td>
         <td><b>Spell Slots</b>: S0: 9; S1: 7; S2: 7; S3: 7; S4: 6; S5: 6; S6: 6; S7: 6; S8: 6; S9: 6</td>
+        <td><b>Spell Points</b>: 276</td>
         <td><b>Spell DC</b>: Bloodline Verdant: 13; Massmorph: 13; S: 13</td>
       </tr></table>
 </td>
@@ -248,33 +249,33 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Plants (Bloodline Verdant7 Tran): R75' 6 Large plant targets attack foes for 20 rd or entwine for 20 hr; larger plants reduce the number affected by half for each size level</td>
+      <td>Animate Plants (Bloodline Verdant7 Tran): R75' Causes all plants within range to entangle for 20 hr, or 6 Large plant targets to attack foes for 20 rd; larger plants reduce the number affected by half for each size category</td>
     </tr><tr style="text-align:left">
       <td>Barkskin (Bloodline Verdant2 Tran): Gives touched a +5 natural armor enhancement bonus to Armor Class for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (Bloodline Verdant4 Tran): R75' 40 HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
+      <td>Command Plants (Bloodline Verdant4 Tran): R75' Causes 40 HD of plant creatures in a 15' radius to consider self as a friend (<b>save Will</b> DC 17 negates) for 20 days; they can be persuaded to obey commands to perform actions outside of their normal behavior with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
       <td>Diminish Plants (Massmorph3 Tran): Prunes normal vegetation in a 1200' radius or stunts the growth of normal plants in a 1/2 mile radius for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Entangle (Bloodline Verdant1 Tran): R1200' 40' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for 20 min</td>
+      <td>Entangle (Bloodline Verdant1 Tran): R1200' Causes vegetation in a 40' radius to entangle creatures (<b>save Reflex</b> DC 14 negates; Strength or Escape Artist breaks an entanglement) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Growth (Massmorph3 Tran): Causes vegetation in a 100' radius to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants in a 1/2 mile radius for 1 year</td>
+      <td>Plant Growth (Massmorph3 Tran): Causes vegetation in a 100' radius within 1200' to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants within 1/2 mile for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape I (Massmorph5 Tran): Self becomes a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for 20 min</td>
+      <td>Plant Shape I (Massmorph5 Tran): Transforms self into a Small (gives +2 Constitution and a +2 natural armor bonus to Armor Class) or Medium (gives +2 Strength, +2 Constitution, and a +2 natural armor bonus) plant creature for 20 min; the transformation may also give 60' Darkvision, Low-Light Vision, Constrict, Grab, Poison, elemental vulnerability, and a 5' Speed, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape II (Massmorph6 Tran): Self becomes a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for 20 min</td>
+      <td>Plant Shape II (Massmorph6 Tran): Transforms self into a Large (gives +4 Strength, +2 Constitution, and a +4 natural armor bonus to Armor Class) plant creature for 20 min; the transformation may also give 60' Darkvision, Low-Light Vision, Constrict, Grab, Poison, resistance 20 to an element, elemental vulnerability, and a 5' Speed, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Plant Shape III (Bloodline Verdant7 Tran): Self becomes a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for 20 min</td>
+      <td>Plant Shape III (Bloodline Verdant7 Tran): Transforms self into a Huge (gives +8 Strength, -2 Dexterity, +4 Constitution, and a +6 natural armor bonus to Armor Class) plant creature for 20 min; the transformation may also give 60' Darkvision, Low-Light Vision, Constrict, Grab, Poison, Trample, DR, regeneration 5, resistance 20 to an element, elemental vulnerability, and a 5' Speed, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Bloodline Verdant9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
+      <td>Shambler (Bloodline Verdant9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shambler</i> can be active at a time</td>
     </tr><tr style="text-align:left">
       <td>Speak With Plants (Bloodline Verdant3 Divi): Allows self to converse with plants and plant creatures for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Transport Via Plants (Bloodline Verdant6 Conj): Allows self and 6 willing creatures to use a Medium or larger plant to teleport to another plant of the same kind</td>
+      <td>Transport Via Plants (Bloodline Verdant6 Conj): Allows self and 6 Medium or smaller touched willing creatures (larger creatures reduce the number that can accompany by half for each size category) to use a Medium or larger plant to teleport to another plant of the same kind</td>
     </tr><tr style="text-align:left">
       <td>Tree Shape (Massmorph3 Tran): Converts self into a tree, with a +10 natural armor bonus and immunity to critical hits, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Bloodline Verdant5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
+      <td>Wall Of Thorns (Bloodline Verdant5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to Armor Class, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -284,7 +285,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Spell Focus (Necromancy): +1 Spell DC (Necromancy)</i></td>
     </tr><tr style="text-align:center">
-      <td>Bloodline Verdant: Casting personal spell gives +1/spell level to AC for 1d4 rd</td>
+      <td>Bloodline Verdant: Casting personal spell gives +1/spell level to Armor Class for 1d4 rd</td>
     </tr><tr style="text-align:center">
       <td>Cantrips: Knows 0-level spells</td>
     </tr><tr style="text-align:center">
@@ -300,7 +301,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Massmorph: May use <i>Plant Growth</i> and <i>Diminish Plants</i> at will, <i>Tree Shape</i> or <i>Plant Shape II</i> 1/dy</td>
     </tr><tr style="text-align:center">
-      <td>Rooting: May suffer Speed reduction to 5' to gain +4 AC, +10 CMD vs. bull rush, overrun, reposition, and trip, 30' tremorsense, and regain 1 HP/rd for 20 min/dy</td>
+      <td>Rooting: May suffer Speed reduction to 5' to gain +4 Armor Class, +10 CMD vs. bull rush, overrun, reposition, and trip, 30' tremorsense, and regain 1 hit points/rd for 20 min/dy</td>
     </tr><tr style="text-align:center">
       <td>Thundering Spell: May spend +2 spell slot to deafen target (spell save or Fortitude negates) for spell level rd</td>
     </tr></table>

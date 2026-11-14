@@ -207,7 +207,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -247,6 +247,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12; Lightning Lord: 12; Untouched By The Seasons: 12</td>
       </tr></table>
 </td>
@@ -255,43 +256,43 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Blight (Seasons4 Necr): Touched plant dies, or touched plant creature suffers 15d6 HP (save Fortitude half)</td>
+      <td>Blight (Seasons4 Necr): Kills a touched plant or inflicts 15d6 HP on a touched plant creature (<b>save Fortitude</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Burning Hands (Smoke1 Evoc): 15' cone inflicts 5d4 HP fire (save Reflex half)</td>
+      <td>Burning Hands (Smoke1 Evoc): 15' cone inflicts 5d4 HP fire (<b>save Reflex</b> DC 13 half)</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Lightning Lord3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (save Reflex half) for 10 bolts within 20 min</td>
+      <td>Call Lightning (Lightning Lord3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (<b>save Reflex</b> DC 15 half) for 10 bolts within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Seasons3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (save Reflex half) for 10 bolts within 20 min</td>
+      <td>Call Lightning (Seasons3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (<b>save Reflex</b> DC 15 half) for 10 bolts within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Control Weather (Seasons7 Tran): Modifies seasonal weather in a 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (Seasons7 Tran): Modifies seasonal weather within a 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Control Winds (Seasons6 Tran): R800' Changes the wind direction and speed by 6 levels in a 800'x40' cylinder for 200 min (save Fortitude each rd negates wind effects on a creature for 1 rd)</td>
+      <td>Control Winds (Seasons6 Tran): R800' Changes the wind direction and speed by 6 levels in a 800' radius, 40' high cylinder for 200 min (<b>save Fortitude</b> DC 18 each rd negates wind effects on a creature for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Smoke7 Tran): Self becomes a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
+      <td>Elemental Body IV (Smoke7 Tran): Transforms self into a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack</td>
     </tr><tr style="text-align:left">
       <td>Elemental Swarm (Smoke9 Conj): R300' Summons at 10-min intervals from a chosen elemental plane a series of obedient elementals: 2d4 large; 1d4 huge; 1 greater, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Endure Elements (Untouched By The Seasons1 Abju): Touched remains comfortable between -50F and 140F (save Will negates) for 24 hr</td>
+      <td>Endure Elements (Untouched By The Seasons1 Abju): Allows touched to remain comfortable between -50F and 140F (<b>save Will</b> DC 13 negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fire Seeds (Smoke6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (save Reflex half), for 200 min</td>
+      <td>Fire Seeds (Smoke6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (<b>save Reflex</b> DC 18 half), for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Shield (Smoke5 Evoc): Envelopes self in cold or hot flames that inflict 1d6+15 HP cold or fire on melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with a successful allowed Reflex save, for 20 rd</td>
+      <td>Fire Shield (Smoke5 Evoc): Envelopes self in cold or hot flames for 20 rd; they inflict 1d6+15 HP cold or fire on non-reach melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with success on an allowed Reflex save</td>
     </tr><tr style="text-align:left">
-      <td>Fog Cloud (Seasons2 Conj): R300' Creates a 20' radius fog that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
+      <td>Fog Cloud (Seasons2 Conj): R300' Creates a 20' radius, 20' high cylinder of fog that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Goodberry (Seasons1 Tran): 2d4 target berries each provide a full meal and restore 1 hit point for 20 days</td>
+      <td>Goodberry (Seasons1 Tran): Transforms 2d4 target berries so that they each provide a full meal and restore 1 hit point for 20 days</td>
     </tr><tr style="text-align:left">
-      <td>Ice Storm (Seasons5 Evoc): R1200' Hail in a 20' radius inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for 20 rd</td>
+      <td>Ice Storm (Seasons5 Evoc): R1200' Hail in a 20'-radius, 40' high cylinder inflicts 3d6 HP bludgeoning and 2d6 HP cold for 1 rd, then -4 Perception and difficult terrain for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Incendiary Cloud (Smoke8 Conj): R300' Fire in a 20' radius, 20'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
+      <td>Incendiary Cloud (Smoke8 Conj): R300' Fire in a 20'-radius, 20' high cylinder obscures vision, inflicts 6d6 HP fire (<b>save Reflex</b> DC 20 half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Pyrotechnics (Smoke2 Tran): R1200' Target fire shoots fireworks, blinding creatures within 120' for 1d4+1 rd (save Will negates), or emits a 20' radius of choking smoke for 20 rd, inflicting -4 Strength and Dexterity for 1d4+1 rd (save Fortitude negates)</td>
+      <td>Pyrotechnics (Smoke2 Tran): R1200' Causes the target fire to shoot fireworks, blinding creatures within 120' for 1d4+1 rd (<b>save Will</b> DC 14 negates), or to emit a 20' radius of choking smoke for 20 rd, inflicting -4 Strength and Dexterity for 1d4+1 rd (<b>save Fortitude</b> DC 14 negates); the spell extinguishes up to a 20' cube of a nonmagical target fire and inflicts 20 HP on a targeted fire creature</td>
     </tr><tr style="text-align:left">
-      <td>Stinking Cloud (Smoke3 Conj): R300' Creates a 20' radius fog, lasting 20 rd, that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, and causes nausea for 1d4+1 rd (save Fortitude negates) that prevents attacks and spellcasting</td>
+      <td>Stinking Cloud (Smoke3 Conj): R300' Creates a 20' radius, 20' high cylinder of fog, lasting 20 rd, that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, and causes nausea  (<b>save Fortitude</b> DC 15 negates) that lasts for 1d4+1 rd after exiting, preventing attacks and spellcasting</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Seasons9 Conj): R1200' Creates a 360' radius storm that inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
+      <td>Storm Of Vengeance (Seasons9 Conj): R1200' Creates a 360' radius storm that inflicts deafened for 1d4x10 min (<b>save Fortitude</b> DC 21 negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (<b>save Reflex</b> DC 21 half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (<b>save Concentration</b> negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Sunburst (Seasons8 Evoc): R1200' 80' radius inflicts blinded and 6d6 HP (or 12d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (save Reflex half HP only)</td>
+      <td>Sunburst (Seasons8 Evoc): R1200' 80' radius inflicts blinded and 6d6 HP (double damage to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (<b>save Reflex</b> DC 20 half HP only)</td>
     </tr><tr style="text-align:left">
       <td>Wall Of Fire (Smoke4 Evoc): R300' Creates a 400'x20' wall or a 50'x20' ring that inflicts 2d4 HP fire to creatures within 10' of a chosen side, 1d4 HP fire to creatures within 20', and 2d6+20 HP fire when passing through, or double these damages to undead, for concentration + 20 rd</td>
     </tr></table>

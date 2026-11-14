@@ -36,7 +36,7 @@ var attributes = {
   "spells.Knight's Calling(P1 Ench)":1, "spells.Lead Blades(R1 Tran)":1, "spells.Light Lance(P2 Evoc)":1, 
   "spells.Marks Of Forbiddance(P3 Abju)":1, "spells.Oath Of Peace(P4 Abju)":1, "spells.Paladin's Sacrifice(P2 Abju)":1, 
   "spells.Protective Spirit(R2 Conj)":1, "spells.Rally Point(P1 Ench)":1, "spells.Residual Tracking(R1 Divi)":1, 
-  "spells.Sacrificial Oath(P4 Abju)":1, "spells.Stay The Hand(P4 Ench)":1, 
+  "spells.Sacrificial Oath(P4 Abju)":1, "spells.Saddle Surge(P2 Tran)":1, "spells.Stay The Hand(P4 Ench)":1, 
   "spells.Veil Of Positive Energy(P1 Abju)":1, "spells.Venomous Bolt(R3 Necr)":1, "spells.Wake Of Light(P2 Evoc)":1, 
   "strength":6, "traits.Mathematical Prodigy":1, "traits.Scholar Of The Great Beyond":1, 
   "weapons.Bardiche":1, "weapons.Light Hammer":1, "weapons.Spiked Armor":1, "wisdom":11
@@ -245,9 +245,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -2</i></td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 5d6 hit points or inflict the same amount (save Will DC 18 half) to all creatures within 30' 6 times per day</td>
+        <td>Channel Energy: Can restore 5d6 hit points or inflict the same amount (<b>save Will</b> DC 18 half) to all creatures within 30' 6 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Command Undead: R30' Can use Channel Energy to control 10 HD of undead (save Will DC 18 negates)</td>
+        <td>Command Undead: R30' Can use Channel Energy to control 10 HD of undead (<b>save Will</b> DC 18 negates)</td>
       </tr><tr style="text-align:center">
         <td>Companion Bond: R30' Can use a move action to give half of a favored enemy bonus to allies for 1 rd</td>
       </tr><tr style="text-align:center">
@@ -307,6 +307,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: P1: 3; P2: 2; P3: 1; R1: 2; R2: 1; R3: 0</td>
+        <td><b>Spell Points</b>: 14</td>
         <td><b>Spell DC</b>: Detect Evil: 13; Mercy Cursed: 13; Mercy Diseased: 13; P: 13; R: 10</td>
       </tr></table>
 </td>
@@ -315,73 +316,75 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Allfood (R2 Tran): Makes a touched 35 lb object edible, providing 1 day's food for 35 Medium creatures</td>
+      <td>Allfood (R2 Tran): Makes 35 lb of touched objects edible (<b>save Will</b> DC 12 negates), providing a day's food for 35 Medium creatures</td>
     </tr><tr style="text-align:left">
-      <td>Arrow Eruption (R2 Conj): R680' Cast the rd after killing a creature with an arrow, causes duplicates of the arrow to attack 7 foes in a 30' radius</td>
+      <td>Arrow Eruption (R2 Conj): R680' Cast in the next rd after killing a creature with an arrow, causes duplicates of that arrow to attack 7 foes in a 30' radius around the corpse</td>
     </tr><tr style="text-align:left">
-      <td>Aura Of Greater Courage (P2 Abju): Allies in a 10' radius gain immunity to fear for 70 min</td>
+      <td>Aura Of Greater Courage (P2 Abju): Gives allies in a 10' radius immunity to fear (<b>save Will</b> DC 15 negates) for 70 min</td>
     </tr><tr style="text-align:left">
-      <td>Bestow Grace (P2 Abju): Touched good creature adds its charisma bonus to saves for 7 min</td>
+      <td>Bestow Grace (P2 Abju): Allows a touched good creature to add its charisma bonus to saves for 7 min (<b>save Will</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Blaze Of Glory (P4 Conj): 30' radius restores 3d6 hit points to good creatures, inflicts 3d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies, and inflicts -1 attacks, weapon damage, saves, and skill checks on foes for 7 rd; reduces self to stable at -1 hit point</td>
+      <td>Blaze Of Glory (P4 Conj): Causes a 30' emanation that restores 3d6 hit points to good creatures, inflicts 3d6 HP on evil creatures (<b>save Will</b> DC 17 half), gives +1 attacks, weapon damage, saves, and skill checks to allies for 7 rd, inflicts -1 of the same on foes for 7 rd, and reduces self to -1 hit point and stable</td>
     </tr><tr style="text-align:left">
-      <td>Bow Spirit (R4 Conj): Conjures a spirit that attacks using self ammo, bonuses, and feats each rd for 7 rd</td>
+      <td>Bow Spirit (R4 Conj): Conjures a spirit that attacks each rd as directed, using self ammo, bonuses, and feats, for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Challenge Evil (P1 Ench): R40' Gives +2 melee attacks on the evil target and forces it to attack self or suffer sickened (save Will negates), for 7 min</td>
+      <td>Challenge Evil (P1 Ench): R40' Gives self +2 melee attacks vs. the evil target and forces it to attack self or suffer sickened (<b>save Will</b> DC 14 negates), for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Chameleon Stride (R2 Illu): Gives self +4 Stealth and concealment from non-adjacent foes for 7 min</td>
+      <td>Chameleon Stride (R2 Illu): Gives self +4 Stealth and concealment from foes more than 5' away for 7 min</td>
     </tr><tr style="text-align:left">
       <td>Detect Evil (Detect Evil1 Divi): 60' cone reveals the presence and power of evil auras for concentration up to 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Divine Transfer (P3 Necr): Touched regains up to 15 hit points, transferred from self, and gains DR 3/evil for 7 rd</td>
+      <td>Divine Transfer (P3 Necr): Restores to the living touched creature up to 15 hit points, transferred from self, and gives it DR 3/evil for 7 rd (<b>save Fortitude</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Fire Of Entanglement (P2 Evoc): Next Smite Evil attack within 7 rd inflicts entanglement for the remaining duration (save Reflex inflicts entanglement for 1 rd)</td>
+      <td>Fire Of Entanglement (P2 Evoc): Next Smite Evil attack within 7 rd inflicts entanglement for the remaining duration (<b>save Reflex</b> DC 15 inflicts entanglement for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Fire Of Judgment (P3 Evoc): Next Smite Evil attack within 7 rd inflicts 1d6 HP divine (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, each rd on the start of the target's turn and when it attacks anyone but self for the remaining duration (save Will effects last for 1 rd)</td>
+      <td>Fire Of Judgment (P3 Evoc): Next Smite Evil attack within 7 rd inflicts 1d6 HP positive (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, each rd on the start of the target's turn and when it attacks anyone but self for the remaining duration (<b>save Will</b> DC 16 effects last for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Fire Of Vengeance (P4 Evoc): Next Smite Evil attack causes the target to suffer 3d8 HP fire the first time it attacks anyone but self</td>
     </tr><tr style="text-align:left">
-      <td>Gravity Bow (R1 Tran): Self arrows and bolts inflict damage as if 1 size larger for 7 min</td>
+      <td>Gravity Bow (R1 Tran): Causes self arrows and bolts to inflict damage as if the bow were 1 size larger for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Hero's Defiance (P1 Conj): Expending a Lay on Hands use on self when reduced to 0 or negative hit points restores +1d6 hit points</td>
+      <td>Hero's Defiance (P1 Conj): Allows expending a Lay on Hands use on self when reduced to 0 or negative hit points, restoring +1d6 hit points</td>
     </tr><tr style="text-align:left">
-      <td>Holy Whisper (P3 Evoc): 30' cone sickens evil creatures for 7 rd and inflicts 2d8 HP on outsiders, dragons, and undead (save Fortitude negates); good creatures gain +2 attack and damage for 1 rd</td>
+      <td>Holy Whisper (P3 Evoc): 30' cone sickens evil creatures for 7 rd and inflicts 2d8 HP on evil outsiders, dragons, and undead (<b>save Fortitude</b> DC 16 negates); good creatures gain +2 attack and damage for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Hunter's Howl (R1 Necr): Gives self +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. targets in a 20' radius (favored enemies instead suffer shaken) for 7 rd (save Will negates)</td>
+      <td>Hunter's Howl (R1 Necr): Inflicts shaken on favored enemies within 20', and gives self +2 attack, damage, Bluff, Knowledge, Perception, Sense Motive, and Survival vs. other targets in the same area, (<b>save Will</b> DC 11 negates) for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Instant Enemy (R3 Ench): R40' Gives self favored enemy benefits vs. the target for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>King's Castle (P4 Conj): R40' Swaps the locations of self and an ally</td>
+      <td>King's Castle (P4 Conj): R40' Swaps the locations of self and an ally (<b>save Will</b> DC 17 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Knight's Calling (P1 Ench): R40' Forces the target to move in order to attack self (save Will negates) for 1 rd</td>
+      <td>Knight's Calling (P1 Ench): R40' Forces the target to move in order to attack self (<b>save Will</b> DC 14 negates) for 1 rd, allowing self to make an AOO if the move ends in an adjacent square</td>
     </tr><tr style="text-align:left">
-      <td>Lead Blades (R1 Tran): Self melee weapons inflict damage as if 1 size larger for 7 min</td>
+      <td>Lead Blades (R1 Tran): Causes self melee weapons to inflict damage as if they were 1 size larger for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Light Lance (P2 Evoc): Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for 8 rd; raising it gives bright light in a 90' radius, and doing so for more than 1 rd emits a beam visible for 2 miles per rd</td>
+      <td>Light Lance (P2 Evoc): Creates a glowing, good-aligned +1 lance that inflicts +2d6 HP vs. evil foes for 8 rd; raising it gives bright light in a 90' radius, and doing so for more than 1 rd emits a beam visible for 2 miles per rd; releasing it ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Marks Of Forbiddance (P3 Abju): R40' Prevents an ally target and a foe target from attacking each other (save Will negates for 1 rd) for 7 rd</td>
+      <td>Marks Of Forbiddance (P3 Abju): R40' Prevents an ally target and a foe target from attacking each other directly (<b>save Will</b> DC 16 negates for 1 rd) for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Oath Of Peace (P4 Abju): Gives self a +5 sacred bonus to Armor Class and saves and DR 10/evil for 7 rd; making an attack ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Paladin's Sacrifice (P2 Abju): R40' Cast immediately upon the target suffering damage or negative effects, transfers the damage or effects to self</td>
+      <td>Paladin's Sacrifice (P2 Abju): R40' Cast immediately upon the target suffering damage or negative effects, transfers the damage or effects to self (<b>save Fortitude</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Protective Spirit (R2 Conj): Successful +20 attacks by a protective force negate 1 AOO on self each rd for 7 rd</td>
+      <td>Protective Spirit (R2 Conj): Creates a protective force whose successful +20 attacks negate 1 AOO on self each rd for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Rally Point (P1 Ench): R5' Good creatures gain +2 attacks, +2 saves, and 14 temporary HP for 1 rd (save Will negates) on their first pass through a targeted 5' sq for 7 min</td>
+      <td>Rally Point (P1 Ench): R5' Creates a 5' square that gives good creatures +2 attacks, +2 saves, and 14 temporary hit points for 1 rd on their first pass through it (<b>save Will</b> DC 14 negates) for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Remove Curse (Mercy Cursed3 Abju): Allows a successful caster level check to dispel all curses from touched (save Will negates)</td>
+      <td>Remove Curse (Mercy Cursed3 Abju): Allows a successful caster level check to dispel each curse affecting touched (<b>save Will</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Remove Disease (Mercy Diseased3 Conj): Allows a successful caster level check to cure touched of all diseases (save Fortitude negates)</td>
+      <td>Remove Disease (Mercy Diseased3 Conj): Allows a successful caster level check to cure each disease affecting touched (<b>save Fortitude</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
       <td>Residual Tracking (R1 Divi): Gives self a vision of the creation of a touched footprint</td>
     </tr><tr style="text-align:left">
-      <td>Sacrificial Oath (P4 Abju): Allows self to suffer damage and negative effects instead of the touched creature, with refusal to do so inflicting 15 HP on self each time, for 7 min; moving out of sight ends the spell</td>
+      <td>Sacrificial Oath (P4 Abju): Allows self to suffer damage and negative effects instead of the touched creature (<b>save Fortitude</b> DC 17 negates), with refusal to do so inflicting 15 HP on self each time, for 7 min; moving out of sight ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Stay The Hand (P4 Ench): 170' Negates a target's attack (save Will inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for 7 rd</td>
+      <td>Saddle Surge (P2 Tran): Gives self +1 Ride and self and mount each +1 damage per 5' of movement (maximum +7) for 7 rd; dismounting ends the spell</td>
+    </tr><tr style="text-align:left">
+      <td>Stay The Hand (P4 Ench): 170' Negates the target's attack (<b>save Will</b> DC 17 inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for 7 rd</td>
     </tr><tr style="text-align:left">
       <td>Veil Of Positive Energy (P1 Abju): Gives self a +2 sacred bonus to Armor Class and saves vs. undead for 70 min; can be dismissed early to inflict 7 HP on undead within 5'</td>
     </tr><tr style="text-align:left">
-      <td>Venomous Bolt (R3 Necr): Arrow or bolt fired immediately also inflicts -1d3 Constitution per rd for 6 rd (save Fortitude negates)</td>
+      <td>Venomous Bolt (R3 Necr): Arrow or bolt fired immediately also inflicts 1d3 Constitution damage per rd (<b>save Fortitude</b> DC 13 ends) for 6 rd</td>
     </tr><tr style="text-align:left">
       <td>Wake Of Light (P2 Evoc): Creates a 10'x120' trail behind mount that makes difficult terrain normal for good creatures and normal terrain difficult for evil creatures for 7 rd</td>
     </tr></table>

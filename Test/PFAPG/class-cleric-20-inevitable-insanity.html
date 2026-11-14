@@ -209,7 +209,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -248,6 +248,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: Aura Of Madness: 12; C: 12; Command: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -256,45 +257,45 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Inevitable2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
+      <td>Align Weapon (Inevitable2 Tran): Gives the touched weapon or collection of up to 50 projectiles a choice of chaotic, evil, good, or lawful alignment (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Command (Command1 Ench): R75' Target obeys a command to approach, drop, fall, flee, or halt (save Will negates) for 1 rd</td>
+      <td>Command (Command1 Ench): R75' Causes the target to obey a command to approach, drop, fall, flee, or halt (<b>save Will</b> DC 13 negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Command Undead (Inevitable3 Necr): R75' Undead target considers self as a friend (save Will for intelligent undead negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
+      <td>Command Undead (Inevitable3 Necr): R75' Causes the undead target to consider self as a friend (<b>save Will</b> DC 15 for intelligent undead negates) for 20 days; an intelligent target can be persuaded to obey commands to perform actions outside of its normal behavior with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Confusion (Aura Of Madness4 Ench): R300' Creatures in a 15' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for 20 rd</td>
+      <td>Confusion (Aura Of Madness4 Ench): R300' Causes creatures in a 15' radius to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature, (<b>save Will</b> DC 16 negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Dictum (Inevitable7 Evoc): Inflicts on nonlawful creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save Will inflicts 3d6+20 HP); paralyzed for 1d10 min on creatures with up to 15 HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to 19 HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save Will negates)</td>
+      <td>Dictum (Inevitable7 Evoc): Inflicts on nonlawful creatures within 40' a set of effects: banishment for 24 hr (<b>save Will</b> DC 19 -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (<b>save Will</b> DC 19 inflicts 3d6+20 HP); paralyzed for 1d10 min on creatures with up to 15 HD (<b>save Will</b> DC 19 inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to 19 HD (<b>save Will</b> DC 19 inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (<b>save Will</b> DC 19 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Command (Inevitable5 Ench): R75' 20 targets in a 15' radius obey a command to approach, drop, fall, flee, or halt (save Will negates; additional saves each rd end) for 20 rd</td>
+      <td>Greater Command (Inevitable5 Ench): R75' Causes 20 targets in a 15' radius to obey a command to approach, drop, fall, flee, or halt (<b>save Will</b> DC 17 negates; additional saves each rd end) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Insanity (Insanity7 Ench): R300' Target permanently randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates)</td>
+      <td>Insanity (Insanity7 Ench): R300' Permanently causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature (<b>save Will</b> DC 19 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Confusion (Insanity1 Ench): R300' Target randomly: 25% acts normally; 25% babbles; 25% attacks itself; 25% attacks the nearest creature (save Will negates) for 1 rd</td>
+      <td>Lesser Confusion (Insanity1 Ench): R300' Causes the target to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to itself; 25% attack the nearest creature, (<b>save Will</b> DC 13 negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Moonstruck (Insanity4 Ench): R300' Target suffers dazed for 1 rd while growing claws and fangs, then gains a bite attack, two claw attacks, and <i>Confusion</i> and <i>Rage</i> effects for 18 rd, then suffers dazed for 1 rd while its hands and teeth return to normal (save Will negates)</td>
+      <td>Moonstruck (Insanity4 Ench): R300' Target suffers dazed for 1 rd while growing claws and fangs, then gains a bite attack, two claw attacks, and <i>Confusion</i> (randomly: 25% act normally; 25% babble; 25% inflict 1d8 + strength modifier to self; 25% attack the nearest creature) and <i>Rage</i> (+2 Strength; +2 Constitution; +1 Will; -2 Armor Class) effects for 18 rd, then suffers dazed for 1 rd while its hands and teeth return to normal (<b>save Will</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Nightmare (Insanity5 Illu): Inflicts on a specified sleeping target 1d10 HP, fatigue, and an inability to regain arcane spells for 24 hr (save Will negates, modified from +10 to -5 based on familiarity with the target)</td>
+      <td>Nightmare (Insanity5 Illu): Inflicts on a specified sleeping target 1d10 HP, fatigue, and an inability to regain arcane spells for 24 hr (<b>save Will</b> DC 17 negates, modified from +10 to -10 depending on familiarity and connection with the target)</td>
     </tr><tr style="text-align:left">
-      <td>Order's Wrath (Inevitable4 Evoc): R300' Chaotic creatures in a 30' cube suffer 5d8 HP, or 10d6 HP if they are outsiders, and are dazed for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
+      <td>Order's Wrath (Inevitable4 Evoc): R300' Chaotic creatures in a 30' cube suffer 5d8 HP, or 10d6 HP if they are outsiders, and are dazed for 1 rd (<b>save Will</b> DC 16 half HP only); neutral creatures suffer half HP only (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Phantasmal Web (Insanity6 Illu): R300' 20 targets in a 15' radius suffer entanglement (save Will disbelieves) and nauseated (save Fortitude each rd negates) for 20 rd</td>
+      <td>Phantasmal Web (Insanity6 Illu): R300' 20 targets in a 15' radius suffer entanglement (<b>save Will</b> DC 18 disbelieves) and nauseated (<b>save Fortitude</b> DC 18 each rd negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Planar Binding (Inevitable6 Conj): Traps 1-3 extraplanar creatures with up to 12 HD total in a <i>Magic Circle</i> (save Will negates) until they perform a task (opposed Charisma allows refusal), or escape via SR, dimensional travel, or a DC 27 Charisma check</td>
+      <td>Planar Binding (Inevitable6 Conj): Traps 1-3 extraplanar creatures with up to 12 HD total in a <i>Magic Circle</i> (<b>save Will</b> DC 18 negates) until they perform a task (opposed Charisma allows refusal), or escape via SR, dimensional travel, or a DC 27 Charisma check</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Chaos (Inevitable1 Abju): Wards the touched creature from attacks from chaotic creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for 20 min</td>
+      <td>Protection From Chaos (Inevitable1 Abju): Wards the touched creature from attacks from chaotic creatures, mental control, and summoned creatures (<b>save Will</b> DC 13 negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. chaotic creatures, an additional +2 save to suppress existing mental control and possession by chaotic creatures and objects, and immunity to new attempts to control or possess by chaotic creatures and objects, as well as barring contact by chaotic summoned creatures, for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Rage (Insanity3 Ench): R300' Gives 6 willing targets in a 15' radius +2 Strength, +2 Constitution, +1 Will, and -2 Armor Class for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Scintillating Pattern (Insanity8 Illu): R75' Creates a moving pattern of colors for concentration + 2 rd that inflicts a sequence of effects on 20 HD of creatures in a 20' radius, working upward from those with the fewest HD: unconscious for 1d4 rd on creatures with up to 6 HD; stunned for 1d4 rd on creatures with up to 12 HD; confused for 1d4 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Law (Inevitable8 Abju): 20 creatures within 20' slow successful chaotic attackers (save Will negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
+      <td>Shield Of Law (Inevitable8 Abju): 20 creatures within 20' slow successful chaotic attackers (<b>save Will</b> DC 20 negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster IX (Inevitable9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Touch Of Idiocy (Insanity2 Ench): Melee touch inflicts 1d6 points of Intelligence, Wisdom, and Charisma damage for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Weird (Insanity9 Illu): R300' Fears of targets in a 15' radius create creatures (save Will upon interaction disbelieves) whose touch kills its target (save Fortitude inflicts 3d6 HP, 1d4 points of Strength damage, and stunned for 1 rd)</td>
+      <td>Weird (Insanity9 Illu): R300' Uses the fears of targets in a 15' radius to create creatures (<b>save Will</b> DC 21 upon interaction disbelieves) whose touch kills its target (<b>save Fortitude</b> DC 21 inflicts 3d6 HP, 1d4 points of Strength damage, and stunned for 1 rd)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -304,7 +305,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Madness: 30' emanation inflicts <i>Confusion</i> effects (save Will DC 22 negates for 24 hr) for 20 rd per day</td>
+      <td>Aura Of Madness: 30' emanation inflicts <i>Confusion</i> effects (<b>save Will</b> DC 22 negates for 24 hr) for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Command: May use <i>Command</i> effects (DC 22 Will negates) 1/target/dy 5/dy</td>
     </tr><tr style="text-align:center">

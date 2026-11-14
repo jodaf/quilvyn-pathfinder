@@ -214,7 +214,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bramble Armor: Successful melee attackers without reach suffer 1d6+10 HP piercing for 20 rd per day</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -251,6 +251,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -259,35 +260,35 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animal Shapes (Fur7 Tran): R75' 20 willing targets in a 15' radius become a chosen Diminutive - Huge animal or a Small - Medium magical beast for 20 hr</td>
+      <td>Animal Shapes (Fur7 Tran): R75' Transforms 20 willing targets in a 15' radius into a chosen Diminutive - Huge animal or a Small - Medium magical beast for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Animate Plants (Growth7 Tran): R75' 6 Large plant targets attack foes for 20 rd or entwine for 20 hr; larger plants reduce the number affected by half for each size level</td>
+      <td>Animate Plants (Growth7 Tran): R75' Causes all plants within range to entangle for 20 hr, or 6 Large plant targets to attack foes for 20 rd; larger plants reduce the number affected by half for each size category</td>
     </tr><tr style="text-align:left">
-      <td>Antilife Shell (Fur6 Abju): 10' radius bars the entrance of living creatures for 20 min</td>
+      <td>Antilife Shell (Fur6 Abju): 10' radius bars the entrance of living creatures for 20 min; does not affect constructs, elementals, outsiders, and undead</td>
     </tr><tr style="text-align:left">
       <td>Barkskin (Growth2 Tran): Gives touched a +5 natural armor enhancement bonus to Armor Class for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape I (Fur3 Tran): Self becomes a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for 20 min; the transformation may also give any of 30' climb, fly, or swim Speeds, 60' Darkvision, Low-Light Vision, and Scent, as appropriate to the form</td>
+      <td>Beast Shape I (Fur3 Tran): Transforms self into a Small (gives +2 Dexterity and a +1 natural armor bonus to Armor Class) or Medium (gives +2 Strength and  a +2 natural armor bonus) animal for 20 min; the transformation may also give 30' climb, fly, and swim Speeds, 60' Darkvision, Low-Light Vision, and Scent, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Beast Shape III (Fur5 Tran): Self becomes a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for 20 min; the transformation may also give any of a 30' burrow Speed, 90' climb, fly, or swim Speeds, 60' Darkvision, Low-Light Vision, Scent, Constrict, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form</td>
+      <td>Beast Shape III (Fur5 Tran): Transforms self into a Diminutive (gives +6 Dexterity, -4 Strength, and a +1 natural armor bonus to Armor Class) or Huge (gives +6 Strength, -4 Dexterity, and a +6 natural armor bonus) animal or or a Small (gives +4 Dexterity and a +2 natural armor bonus) or Medium (gives +4 Strength and a +4 natural armor bonus) magical beast for 20 min; the transformation may also give a 30' burrow Speed, 90' climb, fly, and swim Speeds, 60' Darkvision, Low-Light Vision, Scent, Constrict, Ferocity, Grab, Jet, Poison, Pounce, Rake, Trample, Trip, and Web, as appropriate to the form</td>
     </tr><tr style="text-align:left">
-      <td>Command Plants (Growth4 Tran): R75' 40 HD of plant creatures in a 15' radius consider self as a friend (save Will negates) for 20 days, obeying commands only with successful opposed Charisma checks</td>
+      <td>Command Plants (Growth4 Tran): R75' Causes 40 HD of plant creatures in a 15' radius to consider self as a friend (<b>save Will</b> DC 16 negates) for 20 days; they can be persuaded to obey commands to perform actions outside of their normal behavior with successful opposed Charisma checks</td>
     </tr><tr style="text-align:left">
-      <td>Control Plants (Growth8 Tran): R75' 40 HD of plant creatures in a 15' radius obey self (save Will negates) for 20 min</td>
+      <td>Control Plants (Growth8 Tran): R75' Causes 40 HD of plant creatures in a 15' radius to obey self (<b>save Will</b> DC 20 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Enlarge Person (Growth1 Tran): R75' Target humanoid doubles in size (save Fortitude negates), gaining +2 Strength and suffering -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class, for 20 min</td>
+      <td>Enlarge Person (Growth1 Tran): R75' Causes the target humanoid to double in size (<b>save Fortitude</b> DC 13 negates), gaining 8x weight, +2 Strength, -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Hold Animal (Fur2 Ench): R300' Paralyzes the animal target (save Will negates; additional saves each rd end) for 20 rd</td>
+      <td>Hold Animal (Fur2 Ench): R300' Paralyzes the target animal (<b>save Will</b> DC 14 negates; additional saves each rd end) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Magic Fang (Fur1 Tran): Gives touched +1 attacks and damage when using a specified natural weapon (save Will negates) for 20 min</td>
+      <td>Magic Fang (Fur1 Tran): Gives touched +1 attacks and damage when using a specified natural weapon (<b>save Will</b> DC 13 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Plant Growth (Growth3 Tran): Causes vegetation in a 100' radius to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants in a 1/2 mile radius for 1 year</td>
+      <td>Plant Growth (Growth3 Tran): Causes vegetation in a 100' radius within 1200' to become overgrown, slowing movement to 5' (10' for Large creatures), or increases the productivity of plants within 1/2 mile for 1 year</td>
     </tr><tr style="text-align:left">
-      <td>Repel Wood (Growth6 Tran): 60' line pushes away unanchored wooden objects and splinters fixed objects up to 3" in diameter for 20 min</td>
+      <td>Repel Wood (Growth6 Tran): 60' line pushes away unanchored wooden objects 40' per rd, and splinters fixed objects up to 3" in diameter, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (Growth5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
+      <td>Righteous Might (Growth5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +4 Constitution, -2 Dexterity, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Growth9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
+      <td>Shambler (Growth9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shambler</i> can be active at a time</td>
     </tr><tr style="text-align:left">
       <td>Shapechange (Fur9 Tran): Allows self to become a humanoid, elemental, dragon, giant, or plant creature once per rd for 200 min</td>
     </tr><tr style="text-align:left">

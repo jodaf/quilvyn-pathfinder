@@ -56,11 +56,12 @@ var attributes = {
   "spells.Thundering Drums(B3 Evoc)":1, "spells.Timely Inspiration(B1 Divi)":1, 
   "spells.Touch Of Gracelessness(B1 Tran)":1, "spells.Touch Of The Sea(Alchemist1 Tran)":1, 
   "spells.Transmute Potion To Poison(Alchemist2 Tran)":1, "spells.Treasure Stitching(B4 Tran)":1, 
-  "spells.Universal Formula(Alchemist4 Tran)":1, "spells.Unwilling Shield(B5 Necr)":1, "spells.Unwitting Ally(B0 Ench)":1, 
-  "spells.Vanish(B1 Illu)":1, "spells.Versatile Weapon(B2 Tran)":1, 
-  "spells.Vomit Swarm(Alchemist2 Conj)":1, "spells.Wandering Star Motes(B4 Illu)":1, "strength":6, 
-  "traits.Mathematical Prodigy":1, "traits.Scholar Of The Great Beyond":1, "weapons.Bardiche":1, 
-  "weapons.Light Hammer":1, "weapons.Spiked Armor":1, "wisdom":11
+  "spells.Twin Form(Alchemist6 Tran)":1, "spells.Universal Formula(Alchemist4 Tran)":1, 
+  "spells.Unwilling Shield(B5 Necr)":1, "spells.Unwitting Ally(B0 Ench)":1, "spells.Vanish(B1 Illu)":1, 
+  "spells.Versatile Weapon(B2 Tran)":1, "spells.Vomit Swarm(Alchemist2 Conj)":1, 
+  "spells.Wandering Star Motes(B4 Illu)":1, "strength":6, "traits.Mathematical Prodigy":1, 
+  "traits.Scholar Of The Great Beyond":1, "weapons.Bardiche":1, "weapons.Light Hammer":1, "weapons.Spiked Armor":1, 
+  "wisdom":11
 };
   </script>
 </head>
@@ -214,7 +215,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Distraction: R30' Can allow listeners to substitute a Bardic Performance check for saves vs. pattern and figment illusions and give them additional saves each rd vs. existing effects</td>
       </tr><tr style="text-align:center">
-        <td>Fascinate: R90' Can use Bardic Music to hold 4 creatures spellbound (save Will DC 18 negates for 24 hr; potential threats allow another save) and inflict -4 on reaction skill checks for 10 rd or until a target is threatened</td>
+        <td>Fascinate: R90' Can use Bardic Music to hold 4 creatures spellbound (<b>save Will</b> DC 18 negates for 24 hr; potential threats allow another save) and inflict -4 on reaction skill checks for 10 rd or until a target is threatened</td>
       </tr><tr style="text-align:center">
         <td>Inspire Competence: R30' Can use Bardic Performance to give allies +3 skill checks</td>
       </tr><tr style="text-align:center">
@@ -322,6 +323,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Spells Known/Prepared</b>: B0: 6; B1: 5; B2: 5; B3: 4; B4: 2</td>
         <td><b>Spell Slots</b>: Alchemist1: 6; Alchemist2: 4; Alchemist3: 3; Alchemist4: 1; B0: 6; B1: 6; B2: 5; B3: 4; B4: 1</td>
+        <td><b>Spell Points</b>: 59</td>
         <td><b>Spell DC</b>: Alchemist: 11; B: 13; Suggestion: 13</td>
       </tr></table>
 </td>
@@ -330,181 +332,183 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Absorbing Touch (Alchemist3 Tran): Hand absorbs a touched 10 lb object (save Fortitude for objects possessed by another negates) for 10 days</td>
+      <td>Absorbing Touch (Alchemist3 Tran): Touch absorbs a nonmagical object weighing up to 10 lb (<b>save Fortitude</b> DC 14 negates) for 10 days; only 1 object per hand can be absorbed</td>
     </tr><tr style="text-align:left">
-      <td>Alchemical Allocation (Alchemist2 Tran): Allows self to gain the effects of a chosen potion in the next rd without consuming it</td>
+      <td>Alchemical Allocation (Alchemist2 Tran): Allows self to gain the effects of a potion in the next rd by spitting it back into its vial without consuming it</td>
     </tr><tr style="text-align:left">
-      <td>Amplify Elixir (Alchemist3 Tran): Variable effects of potions and elixirs consumed by self increase by 50% (or double duration if it has no variable effects) for 10 rd</td>
+      <td>Amplify Elixir (Alchemist3 Tran): Increases the variable effects of potions and elixirs consumed by self by 50%, and doubles the duration of potions and elixirs that have no variable effects, for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Ant Haul (Alchemist1 Tran): Touched creature gains triple carrying capacity for 20 hr</td>
+      <td>Ant Haul (Alchemist1 Tran): Triples the carrying capacity of a touched creature (<b>save Fortitude</b> DC 12 negates) for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Arcane Concordance (B3 Evoc): 10' radius gives allied casters +1 spell DC and free use of a choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for 10 rd</td>
+      <td>Arcane Concordance (B3 Evoc): 10' emanation gives allied casters +1 spell DC and free use of a choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Bard's Escape (B5 Conj): R200' Teleports self and 5 willing targets in 15' radius to another location within range</td>
+      <td>Bard's Escape (B5 Conj): R200' Teleports self and 5 willing creatures in a 15' radius to another location within range</td>
     </tr><tr style="text-align:left">
-      <td>Beguiling Gift (B1 Ench): R5' Target takes and uses an offered object (save Will negates) for 1 rd</td>
+      <td>Beguiling Gift (B1 Ench): R5' Causes an adjacent creature to take and use an offered object (<b>save Will</b> DC 14 negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Blood Biography (B2 Divi): Target blood identifies the name, gender, race, and profession of the creature it came from and when and how it was shed (save Will negates)</td>
+      <td>Blood Biography (B2 Divi): Causes the target blood to identify the name, gender, race, and profession of the creature it came from and to reveal when and how it was shed (<b>save Will</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Bloodhound (Alchemist3 Tran): Gives self Scent features, +8 Perception with smell, +4 Survival to track via scent, and -4 saves vs. odor and can make a DC 20 Perception check to detect poison via scent, for 10 hr</td>
+      <td>Bloodhound (Alchemist3 Tran): Gives self the Scent feature, +8 Perception with smell, +4 Survival to track via scent, -4 saves vs. odor, and the ability to make a DC 20 Perception check to detect poison via scent, for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Bomber's Eye (Alchemist1 Tran): Gives self +1 attacks and +10' range with thrown weapons for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Borrow Skill (B1 Tran): Allows self to use touched's ranks for a chosen skill on a the next check using that skill within 10 rd</td>
+      <td>Borrow Skill (B1 Tran): Allows self to use a touched creature's ranks in a chosen skill (<b>save Will</b> DC 14 negates) on a the next check within 10 rd that uses that skill</td>
     </tr><tr style="text-align:left">
-      <td>Brilliant Inspiration (B6 Evoc): R50' Target gains the better of two attack, ability check, and skill check rolls for 10 rd or until a natural 20 is rolled</td>
+      <td>Brilliant Inspiration (B6 Evoc): R50' Gives the living target the better of two attack, ability check, and skill check rolls (<b>save Will</b> DC 19 negates) for 10 rd or until a natural 20 is rolled</td>
     </tr><tr style="text-align:left">
-      <td>Cacophonous Call (B2 Ench): R$50' Target suffers nauseated (save Will negates) for 10 rd</td>
+      <td>Cacophonous Call (B2 Ench): R$50' Inflicts nauseated (<b>save Will</b> DC 15 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Campfire Wall (B3 Evoc): R50' 20' radius around a fire of at least campfire size blocks sight and inflicts 1d6 HP fire and a glow lasting 1d6 min on those passing toward the fire for 20 hr</td>
+      <td>Campfire Wall (B3 Evoc): R50' Creates around a fire of at least campfire size a 20' opaque sphere of light that inflicts 1d6 HP fire and a glow lasting 1d6 min on those moving into the shielded area for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Cloak Of Dreams (B5 Ench): Creatures within 5' fall asleep for 1 min (save Will negates; creatures with Scent have a -4 penalty on their saves) for 10 rd</td>
+      <td>Cloak Of Dreams (B5 Ench): 5' emanation puts living creatures to sleep for 1 min (<b>save Will</b> DC 18 negates; creatures with Scent have a -4 penalty on their saves) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Coordinated Effort (B3 Divi): R50' Self and 3 allies in a 15' radius gain use of a chosen self Teamwork feat for 10 min</td>
+      <td>Coordinated Effort (B3 Divi): R50' Allows 3 allies in a 15' radius to use a chosen self Teamwork feat for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Crafter's Fortune (Alchemist1 Tran): R50' Target gains +5 on its next Craft check within 10 days</td>
+      <td>Crafter's Fortune (Alchemist1 Tran): R50' Gives the target +5 on its next Craft check within 10 days (<b>save Will</b> DC 12 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Create Treasure Map (B2 Divi): Uses a piece cut from a corpse dead up to 1 day to create a map to 3 treasures that it knew about</td>
+      <td>Create Treasure Map (B2 Divi): Uses a piece cut from a corpse dead up to 24 hr to create a map to 3 treasures that it knew about</td>
     </tr><tr style="text-align:left">
-      <td>Dancing Lantern (B1 Tran): Touched lantern lights magically and follows 5' behind self for 10 hr</td>
+      <td>Dancing Lantern (B1 Tran): Causes the touched lantern to light magically and follow 5' behind self for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Deadly Finale (B6 Evoc): R50' Allows ending a Bardic Performance to inflict 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd, (save Fortitude sonic only) on 3 targets in a 15' radius</td>
+      <td>Deadly Finale (B6 Evoc): R50' Allows ending a Bardic Performance to inflict 2d8 HP sonic, plus 3d6 HP bleed for 1d6 rd, on 3 targets in a 15' radius (<b>save Fortitude</b> DC 19 sonic only)</td>
     </tr><tr style="text-align:left">
-      <td>Deafening Song Bolt (B5 Evoc): R50' Ranged touch with 3 bolts in a 15' radius each inflicts 3d10 HP sonic and deafened for 1d6 rd</td>
+      <td>Deafening Song Bolt (B5 Evoc): R50' Makes 3 ranged touch attacks in a 15' radius; each inflicts 3d10 HP sonic and deafened for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Delayed Consumption (Alchemist5 Tran): Delays the effects of a second consumed extract of up to level 4 for up to 10 dy</td>
+      <td>Delayed Consumption (Alchemist5 Tran): Delays for up to 10 days the effects of an extract of up to level 4 consumed by self; only one use of <i>Delayed Consumption</i> can be active at a time</td>
     </tr><tr style="text-align:left">
-      <td>Denounce (B4 Ench): R50' Shifts the attitudes of creatures in a 30' radius toward the target 2 levels worse (save Will negates) for 10 hr, and the target suffers -10 Diplomacy checks to improve the attitudes of those affected</td>
+      <td>Denounce (B4 Ench): R50' Shifts the attitudes of creatures in a 30' radius toward the target 2 levels worse (<b>save Will</b> DC 17 negates) for 10 hr; the target suffers -10 Diplomacy checks to improve the attitudes of those affected</td>
     </tr><tr style="text-align:left">
-      <td>Detonate (Alchemist4 Evoc): On the rd after casting, inflicts 10d8 HP of a chosen energy type to creatures within 15' and half as much to those within 30' (save Reflex half); also inflicts half damage to self with no save</td>
+      <td>Detonate (Alchemist4 Evoc): On the rd after casting, inflicts 10d8 HP of a chosen energy type to creatures within 15' and half as much to those within 30' (<b>save Reflex</b> DC 15 half); also inflicts half damage to self with no save</td>
     </tr><tr style="text-align:left">
-      <td>Discordant Blast (B4 Evoc): 10' radius or 30' cone inflicts 3d6 HP sonic and a +13 CMB Bull Rush</td>
+      <td>Discordant Blast (B4 Evoc): 10' radius or 30' cone inflicts 3d6 HP sonic and a +13 Bull Rush</td>
     </tr><tr style="text-align:left">
-      <td>Draconic Reservoir (Alchemist3 Evoc): Touched can absorb and release as +1d6 HP damage bonuses 60 HP of a chosen energy type within 100 min</td>
+      <td>Draconic Reservoir (Alchemist3 Evoc): Allows the touched creature to absorb and release as +1d6 HP damage bonuses 60 HP of a choice of acid, cold, electricity, or fire within 100 min (<b>save Fortitude</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Dragon's Breath (Alchemist4 Evoc): Breath inflicts 10d6 HP (save Reflex half); the type of dragon scale used to cast the spell determines energy type and area of effect (30' cone or 60' line)</td>
+      <td>Dragon's Breath (Alchemist4 Evoc): Inflicts 10d6 HP acid, cold, electricity, or fire in a 30' cone or a 60' line (<b>save Reflex</b> DC 15 half); the type of dragon scale used to cast the spell determines the energy type and area of effect</td>
     </tr><tr style="text-align:left">
-      <td>Dust Of Twilight (B2 Conj): R200' 5' radius inflicts fatigue (save Fortitude negates) and extinguishes mundane light and light spells up to level 2</td>
+      <td>Dust Of Twilight (B2 Conj): R200' 5' radius inflicts fatigue (<b>save Fortitude</b> DC 15 negates) and extinguishes mundane light and light spells up to level 2</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Aura (Alchemist3 Evoc): Inflicts 2d6 HP of a chosen energy type plus energy-specific effects (save Reflex half HP only) on adjacent creatures for 10 rd; acid inflicts sickened and 1 HP acid each rd for 3 rd, cold inflicts fatigued, electricity inflicts staggered for 1 rd, and fire catches creatures on fire</td>
+      <td>Elemental Aura (Alchemist3 Evoc): Inflicts 2d6 HP of a choice of acid, cold, electricity, or fire plus energy-specific effects on adjacent creatures (<b>save Reflex</b> DC 14 half HP only) for 10 rd; acid also inflicts sickened and 1 HP acid each rd for 3 rd, cold also inflicts fatigued, electricity also inflicts staggered for 1 rd, and fire sets creatures on fire</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Speech (B3 Divi): Allows self can to converse in Auran with air or flying creatures, Terran with earth or burrowing creatures, Ignan with fire creatures, or Aquan with water or swimming creatures, for 10 min</td>
+      <td>Elemental Speech (B3 Divi): Allows self to converse in a choice of Auran with air or flying creatures, Terran with earth or burrowing creatures, Ignan with fire creatures, or Aquan with water or swimming creatures, for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Touch (Alchemist2 Evoc): Touch and unarmed attacks inflict +1d6 HP chosen energy, plus energy-specific effects, for 10 rd; acid inflicts sickened (save Fortitude negates) and 1 HP acid per rd for 3 rd, cold inflicts fatigued, electricity inflicts staggered for 1 rd (save Fortitude negates), and fire catches creatures on fire</td>
+      <td>Elemental Touch (Alchemist2 Evoc): Causes self touch and unarmed attacks to inflict +1d6 HP of a choice of acid, cold, electricity, or fire, plus energy-specific effects, for 10 rd: acid also inflicts sickened (<b>save Fortitude</b> DC 13 negates) and 1 HP acid per rd for 3 rd, cold also inflicts fatigued (<b>save Fortitude</b> DC 13 negates), electricity also inflicts staggered for 1 rd (<b>save Fortitude</b> DC 13 negates), and fire sets creatures on fire</td>
     </tr><tr style="text-align:left">
-      <td>Elude Time (Alchemist5 Tran): Self enters suspended animation, becoming impervious to damage, for up to 10 min</td>
+      <td>Elude Time (Alchemist5 Tran): Places self into suspended animation, giving immunity to damage, for up to 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Enter Image (B2 Tran): Allows self to inhabit and interact from images of self within 500' for concentration</td>
+      <td>Enter Image (B2 Tran): Allows self to inhabit and interact from images of self within 500', giving them limited animation, for concentration</td>
     </tr><tr style="text-align:left">
-      <td>Euphoric Tranquility (B6 Ench): Touched becomes helpful, treats all as friends (save Will after being attacked negates for 1 rd), and suffers half speed for 10 rd</td>
+      <td>Euphoric Tranquility (B6 Ench): Touched creature becomes helpful, treats all as friends (<b>save Will</b> DC 19 after being attacked negates for 1 rd), and suffers half Speed for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Feather Step (B1 Tran): R50' Target treats difficult terrain as normal terrain for 100 min</td>
+      <td>Feather Step (B1 Tran): R50' Allows the target to move normally in difficult terrain (<b>save Fortitude</b> DC 14 negates) for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Breath (Alchemist2 Evoc): 3 uses of a 15' breath cone inflict 4d6 HP fire, 2d6 HP fire, and 1d6 HP fire (save Reflex half) within 10 rd</td>
+      <td>Fire Breath (Alchemist2 Evoc): 3 uses of a 15' breath cone within 10 rd inflict 4d6 HP fire on the first use, 2d6 HP fire on the second, and 1d6 HP fire on the third (<b>save Reflex</b> DC 13 half)</td>
     </tr><tr style="text-align:left">
-      <td>Flare Burst (B1 Evoc): R50' 10' radius inflicts dazzled (save Fortitude negates) for 1 min</td>
+      <td>Flare Burst (B1 Evoc): R50' 10' radius inflicts dazzled (<b>save Fortitude</b> DC 14 negates) for 1 min</td>
     </tr><tr style="text-align:left">
       <td>Fluid Form (Alchemist4 Tran): Gives self DR 10/slashing, +10' reach, a 60' swim Speed, water breathing, the ability to squeeze through cracks, and the water subtype, for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Foe To Friend (B5 Ench): R200' Negates the targeted foe's attack or redirects it to a chosen target, and the foe counts as an ally for flanking for 1 rd (save Will negates)</td>
+      <td>Foe To Friend (B5 Ench): R200' Negates the living target's attack or redirects it to another creature, and causes the target to count as an ally for flanking purposes for 1 rd (<b>save Will</b> DC 18 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Fool's Forbiddance (B6 Abju): 10' radius inflicts confusion on foes (save Will inflicts staggered) while within it plus 1 rd after exiting, for conentration</td>
+      <td>Fool's Forbiddance (B6 Abju): 10' emanation inflicts confusion on foes (<b>save Will</b> DC 19 inflicts staggered), lasting for 1 rd after exiting, for concentration</td>
     </tr><tr style="text-align:left">
-      <td>Frozen Note (B5 Ench): Captivates creatures with up to 13 HD in a 30' radius (save Will DC 18 each rd for creatures with at least 7 HD delays for 1 rd) for concentration up to 10 rd</td>
+      <td>Frozen Note (B5 Ench): 30' emanation captivates creatures with up to 13 HD (<b>save Will</b> DC 18 each rd for creatures with at least 7 HD delays for 1 rd; sound barriers such as ear plugs give +2 per barrier on the saves) for concentration up to 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Gallant Inspiration (B2 Divi): R50' Target immediately gains +2d4 on failed attack or skill roll</td>
+      <td>Gallant Inspiration (B2 Divi): R50' Allows the living target to add 2d4 to a failed attack or skill roll (<b>save Will</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Getaway (B6 Conj): R30' Allows self, along with 5 willing creatures within 30', to return to the casting location as a swift action at any time within 10 hr; targets that are more than 30' away at the time of teleport remain in place</td>
+      <td>Getaway (B6 Conj): R30' Allows self, along with 5 willing creatures within 30', to return to the casting location as a swift action at any time within 10 hr; targets that are more than 30' away at the time of return remain behind</td>
     </tr><tr style="text-align:left">
-      <td>Ghostbane Dirge (B2 Tran): R50' Incorporeal target suffers half damage from normal attacks and full damage from magic and magic weapons for 10 rd</td>
+      <td>Ghostbane Dirge (B2 Tran): R50' Causes the incorporeal target to suffer half damage from nonmagical attacks and full damage from magic and magic weapons (<b>save Will</b> DC 15 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Heroic Finale (B4 Ench): R50' Allows ending a Bardic Performance to allow a target to make an immediate move or standard action</td>
+      <td>Heroic Finale (B4 Ench): R50' Allows ending a Bardic Performance to allow a target to make an immediate move or standard action (<b>save Will</b> DC 17 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Hidden Speech (B2 Tran): R50' Self and 10 targets in a 15' radius gain +10 Bluff to exchange secret messages, and foes suffer -5 Sense Motive to decipher them, for 100 min</td>
+      <td>Hidden Speech (B2 Tran): R50' Gives self and 10 targets in a 15' radius +10 Bluff to exchange secret messages (<b>save Will</b> DC 15 negates), and inflicts -5 on foes' Sense Motive to decipher them, for 100 min</td>
     </tr><tr style="text-align:left">
       <td>Honeyed Tongue (B2 Tran): Gives self the better of two Diplomacy rolls to change attitude for 100 min or +5 on the next Diplomacy roll to gather information</td>
     </tr><tr style="text-align:left">
-      <td>Innocence (B1 Tran): Gives self +10 Bluff to promote own innocence for 10 min</td>
+      <td>Innocence (B1 Tran): Gives self +10 Bluff to convince others of own innocence for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Invigorate (B1 Illu): Touched ignores fatigue and exhaustion effects for 100 min but suffers 1d6 HP nonlethal afterward</td>
+      <td>Invigorate (B1 Illu): Allows touched to ignore fatigue and exhaustion effects for 100 min but suffer 1d6 HP nonlethal afterward (<b>save Will</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Jester's Jaunt (B3 Conj): Teleports touched up to 30' to a safe location (save Will negates)</td>
+      <td>Jester's Jaunt (B3 Conj): Teleports the touched living creature up to 30' to a safe location (<b>save Will</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Keen Senses (Alchemist1 Tran): Touched gains +2 Perception and Low-Light Vision (or doubles the range of existing Low-Light Vision) for 10 min</td>
+      <td>Keen Senses (Alchemist1 Tran): Touched gains +2 Perception and Low-Light Vision, or double the range of existing Low-Light Vision, (<b>save Will</b> DC 12 negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Cacophonous Call (B5 Ench): R50' 10 targets in 15' radius suffer nauseated (save Will negates) for 10 rd</td>
+      <td>Mass Cacophonous Call (B5 Ench): R50' Inflicts nauseated on 10 targets in 15' radius (<b>save Will</b> DC 18 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mass Feather Step (B3 Tran): R50' 10 targets in a 15' radius treat difficult terrain as normal terrain for 100 min</td>
+      <td>Mass Feather Step (B3 Tran): R50' Allows 10 targets in a 15' radius to move normally in difficult terrain (<b>save Fortitude</b> DC 16 negates) for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Ghostbane Dirge (B4 Tran): R50' 10 incorporeal targets in a 15' radius suffer half damage from normal attacks and full damage from magic and magic weapons for 10 rd</td>
+      <td>Mass Ghostbane Dirge (B4 Tran): R50' Causes 10 incorporeal targets in a 15' radius to suffer half damage from nonmagical attacks and full damage from magic and magic weapons (<b>save Will</b> DC 17 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Mass Invigorate (B3 Illu): 10 touched ignore fatigue and exhaustion effects for 100 min but suffer 1d6 HP nonlethal afterward</td>
+      <td>Mass Invigorate (B3 Illu): Allows 10 touched to ignore fatigue and exhaustion effects for 100 min but suffer 1d6 HP nonlethal afterward (<b>save Will</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Memory Lapse (B1 Ench): R50' Target forgets events since the start of its prior turn (save Will negates)</td>
+      <td>Memory Lapse (B1 Ench): R50' Causes the living target to forget events since the start of its prior turn (<b>save Will</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Negate Aroma (Alchemist1 Tran): R50' Target loses all odors (save Fortitude negates) and cannot be tracked via scent for 10 hr</td>
+      <td>Negate Aroma (Alchemist1 Tran): R50' Removes all odors from the target (<b>save Fortitude</b> DC 12 negates) and prevents it from being tracked via scent for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Perceive Cues (Alchemist2 Tran): Gives self +5 Perception and Sense Motive for 100 min</td>
     </tr><tr style="text-align:left">
-      <td>Phantasmal Web (B5 Illu): R200' 10 targets in a 15' radius suffer entanglement (save Will disbelieves) and nauseated (save Fortitude each rd negates) for 10 rd</td>
+      <td>Phantasmal Web (B5 Illu): R200' 10 targets in a 15' radius suffer entanglement (<b>save Will</b> DC 18 disbelieves) and nauseated (<b>save Fortitude</b> DC 18 each rd negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Pied Piping (B6 Ench): Causes creatures within 90' with a specified physical trait to follow self (save Will negates) for concentration + 10 rd</td>
+      <td>Pied Piping (B6 Ench): Causes creatures within 90' with a specified physical trait to move toward and follow self (<b>save Will</b> DC 19 negates) for concentration + 10 rd; those affected will not endanger themselves and will defend themselves if attacked</td>
     </tr><tr style="text-align:left">
-      <td>Planar Adaptation (Alchemist5 Tran): Gives self immunity to environmental harm from a chosen plane and resistance 20 to an associated energy for 10 hr</td>
+      <td>Planar Adaptation (Alchemist5 Tran): Gives self immunity to environmental harm from a chosen plane and resistance 20 to an associated energy type for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Purging Finale (B3 Conj): R50' Allows ending a Bardic Performance to remove a choice of cowering, dazzled, exhausted, paralyzed, or stunned from the target</td>
+      <td>Purging Finale (B3 Conj): R50' Allows ending a Bardic Performance to remove a choice of cowering, dazzled, exhausted, paralyzed, shaken, or stunned from the living target (<b>save Will</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Restful Sleep (B1 Necr): R50' 10 targets in a 15' radius regain 2 x level HP from 8 hr sleep and 3 x level HP from a full day's rest</td>
+      <td>Restful Sleep (B1 Necr): R50' 10 targets in a 15' radius regain level x 2 hit points from 8 hr sleep and level x 3 hit points from a full day's rest (<b>save Fortitude</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Resurgent Transformation (Alchemist5 Conj): Prepares contingent effects evoked the first time self is reduced to 45 HP within 10 hr: restores 4d8+10 (maximum 25) HP, inflicts 1d4 points of Intelligence and Wisdom damage, and gives +4 Constitution, +4 Strength, DR 5/-, and Haste effects for 10 rd; afterward, self suffers exhausted and 1d4 points Constitution damage, and, on a second use within 24 hr, an additional 1d4 points Constitution damage and death (save Fortitude DC 15 Constitution damage only)</td>
+      <td>Resurgent Transformation (Alchemist5 Conj): Prepares contingent effects evoked the first time within 10 hr that self is reduced to 45 hit points: restores 4d8+10 (maximum 25) hit points, inflicts 1d4 points of Intelligence and Wisdom damage, and gives +4 Constitution, +4 Strength, DR 5/-, and Haste effects for 10 rd; afterward, inflicts exhaustion and 1d4 points Constitution damage, and, on a second use within 24 hr, an additional 1d4 points Constitution damage and death (<b>save Fortitude</b> DC 15 Constitution damage only)</td>
     </tr><tr style="text-align:left">
-      <td>Reviving Finale (B3 Conj): Allows ending a Bardic Performance to restore 2d6 HP to allies within 20'</td>
+      <td>Reviving Finale (B3 Conj): Allows ending a Bardic Performance to restore 2d6 hit points to allies within 20' (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Saving Finale (B1 Evoc): R50' Allows ending a Bardic Performance to give the target a reroll on a failed save</td>
+      <td>Saving Finale (B1 Evoc): R50' Allows ending a Bardic Performance to give the living target a reroll on a failed save</td>
     </tr><tr style="text-align:left">
-      <td>Seek Thoughts (Alchemist3 Divi): 40' radius reveals the number of creatures, as well as the location of those visible, who are thinking about a specified topic (save Will negates) for concentration up to 10 min</td>
+      <td>Seek Thoughts (Alchemist3 Divi): 40' radius reveals the number of creatures, as well as the location of those visible, who are thinking about a specified topic (<b>save Will</b> DC 14 negates) for concentration up to 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Share Language (B1 Divi): Touched can use 3 languages that self knows for 24 hr</td>
+      <td>Share Language (B1 Divi): Allows the touched creature to read, speak, and understand 3 languages that self knows (<b>save Will</b> DC 14 negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Sift (B0 Divi): R30' Allows using Perception with a -5 penalty to look for fine details and hidden features at range</td>
+      <td>Sift (B0 Divi): R30' Allows self to use Perception with a -5 penalty to look for fine details and hidden features at range</td>
     </tr><tr style="text-align:left">
-      <td>Solid Note (B1 Conj): R50' Transforms a note into a hand-sized physical object with 20 Strength, 13 Armor Class, and 19 CMD for concentration + 10 rd</td>
+      <td>Solid Note (B1 Conj): R50' Transforms a note into a hand-sized physical object with 20 Strength, 13 Armor Class, and 19 CMD that resists movement for concentration + 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Spark (B0 Evoc): R50' Burns an unattended Fine flammable object (save Fortitude negates)</td>
+      <td>Spark (B0 Evoc): R50' Sets an unattended Fine flammable object on fire (<b>save Fortitude</b> DC 13 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Stone Fist (Alchemist1 Tran): Self unarmed attacks inflict 1d6 HP bludgeoning without provoking AOO and ignore object hardness up to 7 for 10 min</td>
+      <td>Stone Fist (Alchemist1 Tran): Enhances self unarmed attacks to inflict 1d6 HP bludgeoning without provoking AOO and to ignore object hardness up to 7 for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Stunning Finale (B5 Ench): R50' Allows ending a Bardic Performance to inflict stunned for 1 rd (save Fortitude inflicts staggered for 1 rd) on 3 targets in a 15' radius</td>
+      <td>Stunning Finale (B5 Ench): R50' Allows ending a Bardic Performance to inflict stunned for 1 rd (<b>save Fortitude</b> DC 18 inflicts staggered for 1 rd) on 3 targets in a 15' radius</td>
     </tr><tr style="text-align:left">
-      <td>Suggestion (Suggestion3 Ench): R75' Causes the target to follow a reasonable suggestion (save Will negates) for up to 20 hr</td>
+      <td>Suggestion (Suggestion3 Ench): R50' Causes the target to follow a reasonable suggestion (<b>save Will</b> DC 16 negates) for up to 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Thorn Body (Alchemist3 Tran): Foe non-reach melee hits inflict on the attacker 1d6+10 HP piercing, grapples 2d6+10 HP, and self unarmed attacks +1d6 HP, for 10 rd</td>
+      <td>Thorn Body (Alchemist3 Tran): Grows spines on self that cause foe non-reach melee hits to inflict 1d6+10 HP piercing on the attacker, foe grapples 2d6+10 HP, and self unarmed attacks +1d6 HP, for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Thundering Drums (B3 Evoc): 15' cone inflicts 5d8 HP sonic and knocked prone (save Fortitude half HP only)</td>
+      <td>Thundering Drums (B3 Evoc): 15' cone inflicts 5d8 HP sonic and knocked prone (<b>save Fortitude</b> DC 16 half HP only)</td>
     </tr><tr style="text-align:left">
-      <td>Timely Inspiration (B1 Divi): R50' Target retroactively gains +2 on a failed attack or skill roll</td>
+      <td>Timely Inspiration (B1 Divi): R50' Allows the target to add 2 to a failed attack or skill roll (<b>save Will</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of Gracelessness (B1 Tran): Touched suffers 1d6+5 Dexterity damage, knocked prone when moving more than half Speed, and flying maneuverability reduced one step (save Fortitude half Dexterity damage only) for 10 rd</td>
+      <td>Touch Of Gracelessness (B1 Tran): Touch inflicts 1d6+5 Dexterity damage, knocked prone when moving at more than half Speed, and flying maneuverability reduced by 1 step (<b>save Fortitude</b> DC 14 half Dexterity damage only) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Touch Of The Sea (Alchemist1 Tran): Touched gains +30 swim Speed and +8 Swim, plus the ability to take 10 when distracted and run while swimming, (save Fortitude negates) for 10 min</td>
+      <td>Touch Of The Sea (Alchemist1 Tran): Gives touched +30 swim Speed, +8 Swim, and the abilities to take 10 when distracted and to run while swimming, (<b>save Fortitude</b> DC 12 negates) for 10 min</td>
     </tr><tr style="text-align:left">
-      <td>Transmute Potion To Poison (Alchemist2 Tran): Allows using any potion to poison a weapon for 10 min</td>
+      <td>Transmute Potion To Poison (Alchemist2 Tran): Allows using any potion within 1 rd to apply a poison lasting 10 min to a weapon; the poison derived from a potion of level 0, 1, 2, or 3 inflicts 1 point of Dexterity damage per rd for 2 rd (<b>save Fortitude</b> DC 10 ends), 1d2 points of Dexterity damage per rd for 4 rd (<b>save Fortitude</b> DC 11 ends), 1d4 points of Strength damage for 6 rd (<b>save Fortitude</b> DC 13 ends), or 1d4 points of Constitution damage for 6 rd (<b>save Fortitude</b> two consecutive DC 14 saves end)</td>
     </tr><tr style="text-align:left">
-      <td>Treasure Stitching (B4 Tran): R50' Transforms objects within a 10 square foot area into embroidery (save Fortitude negates) for 10 dy</td>
+      <td>Treasure Stitching (B4 Tran): R50' Transforms objects within a 10 foot cube into embroidery (<b>save Fortitude</b> DC 17 negates) for 10 dy</td>
     </tr><tr style="text-align:left">
-      <td>Universal Formula (Alchemist4 Tran): Causes an extract to effect self as any known extract up to level 3</td>
+      <td>Twin Form (Alchemist6 Tran): Splits self into two, starting each copy with the same statistics and hit points and allowing acting from either for 10 rd, with the unused one unable to take actions other than moving; consumption of or damage to equipment on either affects the equipment on both, the death of either copy ends the spell, and the death of the copy in use inflicts stunned until the start of the next turn</td>
     </tr><tr style="text-align:left">
-      <td>Unwilling Shield (B5 Necr): R50' Gives self a +1 luck bonus to Armor Class and saves and transfers half of any damage taken to the target (save Will negates) for 10 rd</td>
+      <td>Universal Formula (Alchemist4 Tran): Causes an extract to affect self as any known extract of up to level 3</td>
     </tr><tr style="text-align:left">
-      <td>Unwitting Ally (B0 Ench): R50' For flanking purposes, the target counts as an ally of self and not of foes (save Will negates) for 1 rd</td>
+      <td>Unwilling Shield (B5 Necr): R50' Gives self a +1 luck bonus to Armor Class and saves and transfers half of any damage taken to the target (<b>save Will</b> DC 18 negates) for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Vanish (B1 Illu): Touched becomes invisible (save Will negates) for 5 rd; target attacking ends the spell</td>
+      <td>Unwitting Ally (B0 Ench): R50' Causes the living target to count as an ally of self and not of foes for flanking purposes (<b>save Will</b> DC 13 negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Versatile Weapon (B2 Tran): R50' Target weapon or up to 50 projectiles in a container (save Will negates) gain +2 attacks and damage and bypass a choice of DR: blugeoning, cold iron, piercing, silver, or slashing, for 10 hr</td>
+      <td>Vanish (B1 Illu): Makes touched invisible (<b>save Will</b> DC 14 negates) for 5 rd; target attacking ends the spell</td>
+    </tr><tr style="text-align:left">
+      <td>Versatile Weapon (B2 Tran): R50' Enhances the target weapon or up to 50 projectiles in a container to make +2 attacks and inflict +2 HP, bypassing a choice of DR: bludgeoning, cold iron, piercing, silver, or slashing, (<b>save Will</b> DC 15 negates) for 10 hr</td>
     </tr><tr style="text-align:left">
       <td>Vomit Swarm (Alchemist2 Conj): Allows self to create and control the movement of a swarm of spiders or wasps that attacks all other creatures for 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wandering Star Motes (B4 Illu): R50' Target loses any concealment and suffers dazed (save Will each rd ends the daze and transfers the spell 30' to the nearest previously-unaffected foe) for 10 rd</td>
+      <td>Wandering Star Motes (B4 Illu): R50' Inflicts on the living target loss of concealment and dazed (<b>save Will</b> DC 17 each rd ends the daze and transfers the spell 30' to the nearest previously-untargeted foe) for 10 rd</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -546,7 +550,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Improved Counterspell: Can counterspell using a higher-level spell from the same school</td>
     </tr><tr style="text-align:center">
-      <td>Mutagen: 1 hr process creates potions that give self +2 AC and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for 100 min</td>
+      <td>Mutagen: 1 hr process creates potions that give self +2 Armor Class and +4/-2 to Strength/Intelligence, Dexterity/Wisdom, or Constitution/Charisma for 100 min</td>
     </tr><tr style="text-align:center">
       <td>Silent Spell: Can cast a spell using a spell slot 1 level higher than normal to cast it without verbal components</td>
     </tr><tr style="text-align:center">

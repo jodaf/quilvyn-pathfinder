@@ -211,7 +211,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Aura Of Decay: 30' radius inflicts 1d6 HP/rd (plants 2d6 HP) and -1 Strength/rd 20 rd/dy</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -252,6 +252,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12; Masters Illusion: 12</td>
       </tr></table>
 </td>
@@ -260,43 +261,43 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Animate Plants (Decay7 Tran): R75' 6 Large plant targets attack foes for 20 rd or entwine for 20 hr; larger plants reduce the number affected by half for each size level</td>
+      <td>Animate Plants (Decay7 Tran): R75' Causes all plants within range to entangle for 20 hr, or 6 Large plant targets to attack foes for 20 rd; larger plants reduce the number affected by half for each size category</td>
     </tr><tr style="text-align:left">
       <td>Barkskin (Decay2 Tran): Gives touched a +5 natural armor enhancement bonus to Armor Class for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Confusion (Deception4 Ench): R300' Creatures in a 15' radius randomly: 25% act normally; 25% babble; 25% attack themselves; 25% attack the nearest creature (save Will negates), for 20 rd</td>
+      <td>Confusion (Deception4 Ench): R300' Causes creatures in a 15' radius to randomly: 25% act normally; 25% babble; 25% inflict 1d8 + Strength modifier HP to themselves; 25% attack the nearest creature, (<b>save Will</b> DC 16 negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Contagion (Decay3 Necr): Touched contracts a random disease (save Fortitude negates)</td>
+      <td>Contagion (Decay3 Necr): Infects touched with a random disease (<b>save Fortitude</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Control Plants (Decay8 Tran): R75' 40 HD of plant creatures in a 15' radius obey self (save Will negates) for 20 min</td>
+      <td>Control Plants (Decay8 Tran): R75' Causes 40 HD of plant creatures in a 15' radius to obey self (<b>save Will</b> DC 20 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Disguise Self (Deception1 Illu): Changes the appearance of self (save Will upon interaction disbelieves) and gives +10 Disguise, for 200 min</td>
+      <td>Disguise Self (Deception1 Illu): Changes the appearance of self (<b>save Will</b> DC 13 upon interaction disbelieves) and gives +10 Disguise, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Entangle (Decay1 Tran): R1200' 40' radius entangles creatures (save Reflex negates; Strength or Escape Artist breaks an entanglement) for 20 min</td>
+      <td>Entangle (Decay1 Tran): R1200' Causes vegetation in a 40' radius to entangle creatures (<b>save Reflex</b> DC 13 negates; Strength or Escape Artist breaks an entanglement) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>False Vision (Deception5 Illu): Scrying of a touched 40' radius shows a crafted illusion for 20 hr</td>
+      <td>False Vision (Deception5 Illu): Causes scrying of a touched 40' radius within 20 hr to show a crafted illusion</td>
     </tr><tr style="text-align:left">
-      <td>Harm (Decay6 Necr): Melee touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
+      <td>Harm (Decay6 Necr): Melee touch inflicts 150 HP (<b>save Will</b> DC 18 half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
-      <td>Mass Invisibility (Deception8 Illu): R1200' Creatures in a 90' radius become invisible (save Will negates), gaining +20 Stealth when moving and +40 when still, for 20 min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all</td>
+      <td>Mass Invisibility (Deception8 Illu): R1200' Makes creatures in a 90' radius invisible (<b>save Will</b> DC 20 negates), giving +20 Stealth when moving and +40 when still, for 20 min; moving out of the radius ends for that creature, and any affected creature attacking ends the spell for all</td>
     </tr><tr style="text-align:left">
-      <td>Mirror Image (Deception2 Illu): Creates 1d4+6 (8 maximum) copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 15, and any hit on one destroys it</td>
+      <td>Mirror Image (Deception2 Illu): Creates 1d4+6 (8 maximum) copies of self that randomly misdirect attacks for 20 min; the duplicates have Armor Class 15, and an attack on one that hits or misses by less than 6 destroys it</td>
     </tr><tr style="text-align:left">
-      <td>Mislead (Deception6 Illu): R75' Makes self invisible for 20 rd and creates a false double (save Will upon interaction disbelieves) for concentration + 3 rd</td>
+      <td>Mislead (Deception6 Illu): R75' Makes self invisible for 20 rd and creates an illusory double (<b>save Will</b> DC 18 upon interaction disbelieves) for concentration + 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Nondetection (Deception3 Abju): Gives touched SR 31 vs. divination (save Will negates), or self or a possession SR 35, for 20 hr</td>
+      <td>Nondetection (Deception3 Abju): Gives touched SR 31 vs. divination (<b>save Will</b> DC 15 negates), or self or a possession SR 35, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Poison (Decay4 Necr): Touched suffers 1d3 points of Constitution damage each rd (save Fortitude ends) for 6 rd</td>
+      <td>Poison (Decay4 Necr): Touched suffers 1d3 points of Constitution damage each rd (<b>save Fortitude</b> DC 16 ends) for 6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Project Image (Deception7 Illu): R300' Allows self to see and cast through an intangible duplicate (save Will upon interaction disbelieves) for 20 rd; a break in line of effect to the duplicate ends the spell</td>
+      <td>Project Image (Deception7 Illu): R300' Allows self to see, hear, and cast spells through an intangible duplicate (<b>save Will</b> DC 19 upon interaction disbelieves) for 20 rd; a break in line of effect to the duplicate ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Shambler (Decay9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months</td>
+      <td>Shambler (Decay9 Conj): R300' Creates in a 15' radius 1d4+2 advanced shambling mounds that fight for 7 days or guard for 7 months; only one casting of <i>Shambler</i> can be active at a time</td>
     </tr><tr style="text-align:left">
-      <td>Time Stop (Deception9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures for the duration</td>
+      <td>Time Stop (Deception9 Tran): Allows taking 1d4+1 turns while no time passes for others; cannot attack or cast spells on other creatures or remove or harm their possessions during the spell</td>
     </tr><tr style="text-align:left">
-      <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (save Will negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
+      <td>Veil (Masters Illusion6 Illu): R1200' Makes creatures in a 15' radius appear to be different creatures (<b>save Will</b> DC 18 negates for targets; save Will upon interaction disbelieves for others) for concentration + 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Decay5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
+      <td>Wall Of Thorns (Decay5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to Armor Class, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -306,7 +307,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Master's Illusion: 30' emanation invokes <i>Veil</i> effects (save Will DC 22 disbelieve) for 20 rd per day</td>
+      <td>Master's Illusion: 30' emanation invokes <i>Veil</i> effects (<b>save Will</b> DC 22 disbelieve) for 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">

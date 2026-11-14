@@ -240,6 +240,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Witch0: 4; Witch1: 5; Witch2: 4; Witch3: 4; Witch4: 4; Witch5: 4; Witch6: 4; Witch7: 4; Witch8: 4; Witch9: 4</td>
+        <td><b>Spell Points</b>: 181</td>
         <td><b>Spell DC</b>: Healing Hex: 11; Nightmares Hex: 11; Slumber Hex: 11; Witch: 11</td>
       </tr></table>
 </td>
@@ -248,31 +249,31 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Cure Light Wounds (Healing Hex1 Conj): Touched regains 1d8+5 hit points; undead instead suffer the same amount (save Will half)</td>
+      <td>Cure Light Wounds (Healing Hex1 Conj): Touched regains 1d8+5 hit points (<b>save Will</b> DC 12 negates); undead instead suffer the same amount (<b>save Will</b> DC 12 half)</td>
     </tr><tr style="text-align:left">
-      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched regains 2d8+10 hit points; undead instead suffer the same amount (save Will half)</td>
+      <td>Cure Moderate Wounds (Healing Hex2 Conj): Touched regains 2d8+10 hit points (<b>save Will</b> DC 13 negates); undead instead suffer the same amount (<b>save Will</b> DC 13 half)</td>
     </tr><tr style="text-align:left">
-      <td>Fire Storm (Witch8 Evoc): R300' 40 10' cubes inflict 20d6 HP fire, then 4d6 HP fire each rd until extinguished (save Reflex inflicts half initial HP only)</td>
+      <td>Fire Storm (Witch8 Evoc): R300' 40 10' cubes inflict 20d6 HP fire, then 4d6 HP fire each rd until extinguished (<b>save Reflex</b> DC 19 inflicts half initial HP only; the fire does not harm vegetation or chosen plant creatures); extinguishing the flames is a full-rd action that requires a successful DC 20 Reflex save</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (Witch3 Evoc): R1200' 20' radius inflicts 10d6 HP fire (save Reflex half)</td>
+      <td>Fireball (Witch3 Evoc): R1200' 20' radius inflicts 10d6 HP fire (<b>save Reflex</b> DC 14 half)</td>
     </tr><tr style="text-align:left">
-      <td>Flame Strike (Witch5 Evoc): R300' 10' radius, 40' high cylinder inflicts 15d6 HP (save Reflex half), half fire and half divine power</td>
+      <td>Flame Strike (Witch5 Evoc): R300' 10' radius, 40' high cylinder inflicts 15d6 HP (<b>save Reflex</b> DC 16 half), half fire and half divine power</td>
     </tr><tr style="text-align:left">
-      <td>Flaming Sphere (Witch2 Evoc): R300' 5' diameter sphere inflicts 3d6 HP fire (save Reflex negates) for 20 rd; can be directed to jump 30' and move 30' per rd</td>
+      <td>Flaming Sphere (Witch2 Evoc): R300' 5' diameter sphere inflicts 3d6 HP fire (<b>save Reflex</b> DC 13 negates) for 20 rd; can be directed to jump 30' and move 30' per rd</td>
     </tr><tr style="text-align:left">
-      <td>Freezing Sphere (Witch6 Evoc): R1200' 40' radius inflicts 15d6 HP cold, or 15d8 HP cold to elemental water creatures (save Reflex half), and freezes a 40' radius of water to a depth of 6" for 20 rd</td>
+      <td>Freezing Sphere (Witch6 Evoc): R1200' 10' radius inflicts 15d6 HP cold, or 15d8 HP cold to elemental water creatures, (<b>save Reflex</b> DC 17 half) and freezes a 40' radius of water to a depth of 6" for 20 rd; can delay the effects of the spell for up to 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Meteor Swarm (Witch9 Evoc): R1200' Ranged touch attack with each of 4 2'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40' radius (save Reflex half; creatures hit by a meteor have a -4 penalty)</td>
+      <td>Meteor Swarm (Witch9 Evoc): R1200' Ranged touch attack with each of 4 2'-diameter spheres inflicts 2d6 HP bludgeoning, plus 6d6 HP fire in a 40' radius (<b>save Reflex</b> DC 20 half; creatures hit by a meteor have a -4 penalty on the save)</td>
     </tr><tr style="text-align:left">
-      <td>Nightmare (Nightmares Hex5 Illu): Inflicts on a specified sleeping target 1d10 HP, fatigue, and an inability to regain arcane spells for 24 hr (save Will negates, modified from +10 to -5 based on familiarity with the target)</td>
+      <td>Nightmare (Nightmares Hex5 Illu): Inflicts on a specified sleeping target 1d10 HP, fatigue, and an inability to regain arcane spells for 24 hr (<b>save Will</b> DC 16 negates, modified from +10 to -10 depending on familiarity and connection with the target)</td>
     </tr><tr style="text-align:left">
       <td>Shocking Grasp (Witch1 Evoc): Melee touch attack (+3 vs. metal) inflicts 5d6 HP electricity</td>
     </tr><tr style="text-align:left">
-      <td>Sleep (Slumber Hex1 Ench): R300' Causes 4 HD of creatures in a 10' radius to fall asleep (save Will negates), moving upward from those with the lowest HD, for 20 min; shaking or wounding wakens an affected creature, but noise does not</td>
+      <td>Sleep (Slumber Hex1 Ench): R300' Puts 4 HD of living creatures in a 10' radius to sleep (<b>save Will</b> DC 12 negates), moving upward from those with the lowest HD, for 20 min; shaking or wounding wakens an affected creature, but noise does not</td>
     </tr><tr style="text-align:left">
-      <td>Vortex (Witch7 Evoc): R1200' Creates in a body of liquid a 15' radius, 50' deep whirlpool that inflicts 3d6 HP bludgeoning (save Reflex negates) on first contact, then 1d8 HP bludgeoning each rd on Medium and smaller creatures (save Reflex on the first rd after initial failure negates) for 19 rd or until deliberately ejected; boats up to 30' long suffer 6d6 HP and are pulled into the current (successful DC 25 Profession (Sailor) check half HP only), and longer boats suffer half HP only</td>
+      <td>Vortex (Witch7 Evoc): R1200' Creates in a body of liquid a 15' radius, 50' deep whirlpool that inflicts 3d6 HP bludgeoning on Large and smaller creatures (<b>save Reflex</b> DC 18 negates), then 1d8 HP bludgeoning each rd on Medium and smaller creatures who fail their initial save (<b>save Reflex</b> DC 18 negates) for 19 rd or until deliberately ejected; boats up to 30' long suffer 6d6 HP and are pulled into the current (a successful DC 25 Profession (Sailor) check reduces the damage by half and leaves the boat free of the current), and longer boats suffer half HP only</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Ice (Witch4 Evoc): R300' Creates a 200 square foot wall or a 23' radius hemisphere of 20"-thick ice for 20 min (save Reflex by adjacent creatures causes the spell to fail); each 10' section has 60 hit points, and passing through a broken section of the wall inflicts 1d6+20 HP cold</td>
+      <td>Wall Of Ice (Witch4 Evoc): R300' Creates a 200 square foot wall or a 23' radius hemisphere of 20"-thick ice for 20 min (<b>save Reflex</b> DC 15 by adjacent creatures causes the spell to fail); each 10' section has 60 hit points, and passing through a broken section of the wall inflicts 1d6+20 HP cold</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

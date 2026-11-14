@@ -210,7 +210,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Battle Rage: Touch gives a +10 damage bonus for 1 rd 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -249,6 +249,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -257,25 +258,25 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Azata Chaos2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
+      <td>Align Weapon (Azata Chaos2 Tran): Gives the touched weapon or collection of up to 50 projectiles a choice of chaotic, evil, good, or lawful alignment (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Blade Barrier (Blood6 Evoc): R300' 400' blade wall or a 50' radius ring provides cover and inflicts 15d6 HP initially (save Reflex negates) and each rd (save Reflex half) for 20 min</td>
+      <td>Blade Barrier (Blood6 Evoc): R300' Creates a 400'x20' blade wall or a 50' radius, 20' high ring that provides cover and inflicts 15d6 HP initially (<b>save Reflex</b> DC 18 negates) and each rd (<b>save Reflex</b> DC 18 half) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Chaos Hammer (Azata Chaos4 Evoc): R300' Lawful creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are slowed (inflicts -2 Armor Class, attacks, damage, and Reflex saves) for 1d6 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
+      <td>Chaos Hammer (Azata Chaos4 Evoc): R300' Lawful creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are slowed (inflicts -2 Armor Class, attacks, damage, and Reflex saves) for 1d6 rd (<b>save Will</b> DC 16 half HP only); neutral creatures suffer half HP only (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Cloak Of Chaos (Azata Chaos8 Abju): 20 creatures within 20' inflict confusion on successful lawful attackers (save Will negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for 20 rd</td>
+      <td>Cloak Of Chaos (Azata Chaos8 Abju): 20 creatures within 20' inflict confusion on successful lawful attackers (<b>save Will</b> DC 20 negates) for 1 rd and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. lawful spells and casters, an additional +2 save to suppress existing mental control or possession, and immunity to new attempts to control or possess by lawful creatures or objects, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Law (Azata Chaos5 Abju): Gives self a +4 deflection bonus to Armor Class vs. lawful creatures for 20 rd; can end the spell early with a touch that dismisses a lawful creature (save Will negates), a lawful spell, or a spell cast by a lawful caster</td>
+      <td>Dispel Law (Azata Chaos5 Abju): Gives self a +4 deflection bonus to Armor Class vs. lawful creatures for 20 rd; can end the spell early with a touch that dismisses a lawful creature (<b>save Will</b> DC 17 negates), a lawful spell, or a spell cast by a lawful caster</td>
     </tr><tr style="text-align:left">
-      <td>Divine Power (Blood4 Evoc): Gives self gains +6 attack, damage, Strength checks, and Strength-based skill checks, 20 temporary hit points, and an extra attack during full-attack actions for 20 rd</td>
+      <td>Divine Power (Blood4 Evoc): Gives self +6 attacks, weapon damage, Strength checks, and Strength-based skill checks, 20 temporary hit points, and an extra attack during full-attack actions, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Expeditious Retreat (Azata Chaos1 Tran): Gives self a +30 land Speed for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Azata Chaos3 Tran): Touched gains a 60' fly Speed and +10 Fly skill for 20 min, then floats downward 60' per rd for 1d6 rd (save Will negates)</td>
+      <td>Fly (Azata Chaos3 Tran): Gives touched a 60' fly Speed and +10 Fly skill (<b>save Will</b> DC 15 negates) for 20 min, after which it floats downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Magic Weapon (Blood1 Tran): Enhances the touched weapon to make +1 attacks and inflict +1 HP (save Will negates) for 20 min</td>
+      <td>Magic Weapon (Blood1 Tran): Enhances the touched weapon to make +1 attacks and inflict +1 HP (<b>save Will</b> DC 13 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Inflict Serious Wounds (Blood7 Necr): R75' 20 targets in a 15' radius suffer 3d8+20 HP (save Will half); undead instead regain the same amount</td>
+      <td>Mass Inflict Serious Wounds (Blood7 Necr): R75' 20 targets in a 15' radius suffer 3d8+20 HP (<b>save Will</b> DC 19 half); undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
       <td>Planar Ally (Azata Chaos6 Conj): Allows negotiating the purchase of a service from 1-2 extraplanar creatures with a total of up to 12 HD</td>
     </tr><tr style="text-align:left">
@@ -283,15 +284,15 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Power Word Stun (Blood8 Ench): R75' Stuns a target with up to 150 hit points; the duration is 4d4 rd if the target has 50 hit points or fewer, 2d4 rd for up to 100 hit points, and 1d4 rd otherwise</td>
     </tr><tr style="text-align:left">
-      <td>Spiritual Weapon (Blood2 Evoc): R300' Creates a force weapon (+17 attacks; inflicts 1d8+5 HP force; critical hits as the corresponding physical weapon) that attacks a designated foe for 20 rd; can use move actions to redirect to different targets; the first attack on each creature is subject to SR, and the spell ends if the attack fails to overcome it</td>
+      <td>Spiritual Weapon (Blood2 Evoc): R300' Creates a force weapon that attacks a designated foe (+17 attacks as a spell inflict 1d8+5 HP force and crit as the corresponding physical weapon) for 20 rd; can be redirected between targets as a move action; the first attack on each creature is subject to SR that ends the spell if the attack fails to overcome it, and the weapon makes 4 attacks with the normal penalties on each subsequent rd</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster IX (Azata Chaos9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Vampiric Touch (Blood3 Necr): Melee touch inflicts 10d6 HP and gives self the same number of temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Thorns (Blood5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to AC, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
+      <td>Wall Of Thorns (Blood5 Conj): R300' Creates 200 cubic feet of thorns that inflict (25-Armor Class) HP piercing, discounting Dexterity and dodge bonuses to Armor Class, for 200 min; moving through the thorns requires a Strength check each rd, allowing 5' of movement for each 5 points that the check exceeds 20</td>
     </tr><tr style="text-align:left">
-      <td>Word Of Chaos (Azata Chaos7 Evoc): Inflicts on nonchaotic creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save Will inflicts 3d6+20 HP); confused for 1d10 min on creatures with up to 15 HD (save Will inflicts confused for 1 rd); stunned for rd on creatures with up to 19 HD (save Will negates); deafened for 1d4 rd on creatures with up to 20 HD (save Will negates)</td>
+      <td>Word Of Chaos (Azata Chaos7 Evoc): Inflicts on nonchaotic creatures within 40' a set of effects: banishment for 24 hr on extraplanar creatures (<b>save Will</b> DC 19 -4 negates); killed or destroyed on creatures with up to 10 HD (<b>save Will</b> DC 19 inflicts 3d6+20 HP); confused for 1d10 min on creatures with up to 15 HD (<b>save Will</b> DC 19 inflicts confused for 1 rd); stunned for 1 rd on creatures with up to 19 HD (<b>save Will</b> DC 19 negates); deafened for 1d4 rd on creatures with up to 20 HD (<b>save Will</b> DC 19 negates)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

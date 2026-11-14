@@ -210,7 +210,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -249,6 +249,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -259,39 +260,39 @@ var attributes = {
     <tr style="text-align:left">
       <td>Animate Dead (Undead3 Necr): Transforms touched corpses into up to 40 HD of obedient skeletons and zombies; no more than 4 HD of undead created by multiple castings can be controlled</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (Undead1 Necr): R75' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
+      <td>Cause Fear (Undead1 Necr): R75' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (<b>save Will</b> DC 13 inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Create Greater Undead (Undead8 Necr): R75' Cast at night, creates a devourer, spectre, wraith, or shadow from physical remains</td>
     </tr><tr style="text-align:left">
       <td>Create Undead (Undead6 Necr): R75' Cast at night, creates a mohrg, mummy, ghast, or ghoul from physical remains</td>
     </tr><tr style="text-align:left">
-      <td>Destruction (Undead7 Necr): R75' Inflicts 200 HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains</td>
+      <td>Destruction (Undead7 Necr): R75' Inflicts 200 HP and, if this slays the target, consumes its remains (<b>save Fortitude</b> DC 19 inflicts 10d6 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Dimension Door (Trade4 Conj): Teleports self, held objects (save Will negates), and 6 willing Medium creatures 1200'</td>
+      <td>Dimension Door (Trade4 Conj): Teleports self, held objects (<b>save Will</b> DC 16 negates), and 6 willing Medium creatures 1200'</td>
     </tr><tr style="text-align:left">
-      <td>Energy Drain (Undead9 Necr): R75' Ranged touch attack inflicts 2d4 negative levels (save Fortitude for each level after 24 hr negates; failure makes the loss permanent); an undead target instead gains 2d4x5 temporary hit points for 1 hr</td>
+      <td>Energy Drain (Undead9 Necr): R75' Ranged touch attack inflicts 2d4 negative levels (<b>save Fortitude</b> DC 21 for each level after 24 hr negates; failure makes the loss permanent); an undead target instead gains 2d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
       <td>Enervation (Undead4 Necr): R75' Ranged touch attack inflicts 1d4 negative levels for 15 hr; an undead target instead gains 1d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Find The Path (Trade6 Divi): Touched knows the most direct route to a specified location (save Will negates) for 200 min</td>
+      <td>Find The Path (Trade6 Divi): Reveals to the touched creature the most direct route to a specified location (<b>save Will</b> DC 18 negates) for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Floating Disk (Trade1 Evoc): R75' Creates a 3'-diameter, 1" thick force disk that can hold 2000 lbs and follows self at a 5' distance, 3' off the ground, for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Trade3 Tran): Touched gains a 60' fly Speed and +10 Fly skill for 20 min, then floats downward 60' per rd for 1d6 rd (save Will negates)</td>
+      <td>Fly (Trade3 Tran): Gives touched a 60' fly Speed and +10 Fly skill (<b>save Will</b> DC 15 negates) for 20 min, after which it floats downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Gate (Trade9 Conj): R300' Creates a 5'-20' diameter disk passage to another plane for concentration up to 20 rd, or, at the cost of 10,000 GP, allows summoning extraplanar creatures—a named creature, a single creature of a named kind, or up to 40 HD of a named kind</td>
+      <td>Gate (Trade9 Conj): R300' Creates a 5'-20' diameter disk passage to another plane for concentration up to 20 rd and, at the cost of 10,000 GP, allows summoning extraplanar creatures—a named creature, a single creature of a named kind, or up to 40 HD of a named kind; a single creature with up to 20 HD can be compelled to perform a service</td>
     </tr><tr style="text-align:left">
-      <td>Ghoul Touch (Undead2 Necr): Melee touch inflicts paralyzed and a stench (save Fortitude negates) that sickens creatures other than self in a 10' radius (save Fortitude negates) for 1d6+2 rd</td>
+      <td>Ghoul Touch (Undead2 Necr): Melee touch inflicts paralyzed and a stench (<b>save Fortitude</b> DC 14 negates) that sickens creatures other than self in a 10' radius (<b>save Fortitude</b> DC 14 negates) for 1d6+2 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Teleport (Trade7 Conj): Transports self, touched objects (save Will negates), and 6 willing targets any distance with no chance of error</td>
+      <td>Greater Teleport (Trade7 Conj): Transports self, touched objects (<b>save Will</b> DC 19 negates), and 6 Medium or smaller touched willing creatures (larger creatures reduce the number that can accompany by half for each size category) any distance with no chance of error</td>
     </tr><tr style="text-align:left">
       <td>Locate Object (Trade2 Divi): Reveals the direction of a visualized object or kind of object found within 1200' for 20 min; a sheet of lead blocks the spell</td>
     </tr><tr style="text-align:left">
       <td>Overland Flight (Trade5 Tran): Gives self a 40' fly Speed and +10 Fly skill for 20 hr</td>
     </tr><tr style="text-align:left">
-      <td>Phase Door (Trade8 Conj): Allows self and specified creatures to pass through a 5'x8'x40' section of wood, stone, or plaster a total of 10 times</td>
+      <td>Phase Door (Trade8 Conj): Allows self and specified creatures to pass through a 5'x8'x40' section of wood, stone, and plaster a total of 10 times</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Undead5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
+      <td>Slay Living (Undead5 Necr): Melee touch attack inflicts 12d6+20 HP (<b>save Fortitude</b> DC 17 inflicts 3d6+20 HP)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

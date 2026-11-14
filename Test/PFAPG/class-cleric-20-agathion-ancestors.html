@@ -208,7 +208,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -247,6 +247,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12; Protective Aura: 12</td>
       </tr></table>
 </td>
@@ -255,41 +256,41 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Agathion2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
+      <td>Align Weapon (Agathion2 Tran): Gives the touched weapon or collection of up to 50 projectiles a choice of chaotic, evil, good, or lawful alignment (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Deathwatch (Ancestors1 Necr): 30' cone reveals whether creatures are dead, alive with up to 3 hit points, alive with more than 3 hit points, healthy, undead, or animated, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Destruction (Ancestors7 Necr): R75' Inflicts 200 HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains</td>
+      <td>Destruction (Ancestors7 Necr): R75' Inflicts 200 HP and, if this slays the target, consumes its remains (<b>save Fortitude</b> DC 19 inflicts 10d6 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Evil (Agathion5 Abju): Gives self a +4 deflection bonus to Armor Class vs. evil creatures for 20 rd; can end the spell early with a touch that dismisses an evil creature (save Will negates), an evil spell, or a spell cast by an evil caster</td>
+      <td>Dispel Evil (Agathion5 Abju): Gives self a +4 deflection bonus to Armor Class vs. evil creatures for 20 rd; can end the spell early with a touch that dismisses an evil creature (<b>save Will</b> DC 17 negates), an evil spell, or a spell cast by an evil caster</td>
     </tr><tr style="text-align:left">
-      <td>Geas/Quest (Ancestors6 Ench): R75' Compels a target to complete a specified task within 20 days, suffering -3 to each ability score (-12 maximum, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task</td>
+      <td>Geas/Quest (Ancestors6 Ench): R75' Compels the target to complete a specified task within 20 days, suffering -3 to each ability score (-12 maximum, and no score can drop below 1) for each 24 hr spent without obeying; this affliction ends 24 hr after resuming the task</td>
     </tr><tr style="text-align:left">
-      <td>Gentle Repose (Ancestors2 Necr): Preserves a touched corpse from decay (save Will negates) for 20 days</td>
+      <td>Gentle Repose (Ancestors2 Necr): Preserves a touched corpse from decay (<b>save Will</b> DC 14 negates) for 20 days</td>
     </tr><tr style="text-align:left">
-      <td>Holy Aura (Agathion8 Abju): 20 creatures within 20' blind successful evil attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
+      <td>Holy Aura (Agathion8 Abju): 20 creatures within 20' blind successful evil attackers (<b>save Fortitude</b> DC 20 negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Holy Smite (Agathion4 Evoc): R300' Evil creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are blinded for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
+      <td>Holy Smite (Agathion4 Evoc): R300' Evil creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are blinded for 1 rd (<b>save Will</b> DC 16 half HP only); neutral creatures suffer half HP only (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Holy Word (Agathion7 Evoc): Inflicts on nongood creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save Will inflicts 3d6+20 HP; paralyzed for 1d10 min on creatures with up to 15 HD (save Will inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to 19 HD (save Will inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save negates)</td>
+      <td>Holy Word (Agathion7 Evoc): Inflicts on nongood creatures within 40' a set of effects: banishment for 24 hr (<b>save Will</b> DC 19 -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (<b>save Will</b> DC 19 inflicts 3d6+20 HP; paralyzed for 1d10 min on creatures with up to 15 HD (<b>save Will</b> DC 19 inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to 19 HD (<b>save Will</b> DC 19 inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save negates)</td>
     </tr><tr style="text-align:left">
       <td>Planar Ally (Agathion6 Conj): Allows negotiating the purchase of a service from 1-2 extraplanar creatures with a total of up to 12 HD</td>
     </tr><tr style="text-align:left">
-      <td>Protection From Evil (Protective Aura1 Abju): Wards the touched creature from attacks from evil creatures, mental control, and summoned creatures (save Will negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for 20 min</td>
+      <td>Protection From Evil (Protective Aura1 Abju): Wards the touched creature from attacks from evil creatures, mental control, and summoned creatures (<b>save Will</b> DC 13 negates): gives a +2 deflection bonus to Armor Class and +2 saves vs. evil creatures, an additional +2 save to suppress existing mental control and possession by evil creatures and objects, and immunity to new attempts to control or possess by evil creatures and objects, as well as barring contact by evil summoned creatures, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Rest Eternal (Ancestors4 Necr): Touched corpse requires a DC 31 caster check to communicate, resurrect, or animate</td>
+      <td>Rest Eternal (Ancestors4 Necr): Curses the touched corpse to require a DC 31 caster check to communicate, resurrect, or animate</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Faith (Agathion1 Abju): Gives touched a +5 deflection bonus to Armor Class (save Will negates) for 20 min</td>
+      <td>Shield Of Faith (Agathion1 Abju): Gives touched a +5 deflection bonus to Armor Class (<b>save Will</b> DC 13 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Ancestors5 Necr): Melee touch attack inflicts 12d6+20 HP (save Fortitude inflicts 3d6+20 HP)</td>
+      <td>Slay Living (Ancestors5 Necr): Melee touch attack inflicts 12d6+20 HP (<b>save Fortitude</b> DC 17 inflicts 3d6+20 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Speak With Dead (Ancestors3 Necr): R10' Causes the target corpse to answer 10 questions asked within 20 min (save Will for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune)</td>
+      <td>Speak With Dead (Ancestors3 Necr): R10' Causes the target corpse to answer 10 questions asked within 20 min (<b>save Will</b> DC 15 for creatures with a different alignment negates; corpses who have been targeted by <i>Speak With Dead</i> within the past week are immune)</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster IX (Agathion9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Tongues (Agathion3 Divi): Allows touched to communicate in any language (save Will negates) for 200 min</td>
+      <td>Tongues (Agathion3 Divi): Allows touched to speak and understand any language (<b>save Will</b> DC 15 negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Wail Of The Banshee (Ancestors9 Necr): R75' Inflicts 200 HP (save Fortitude negates) on 20 targets in a 40' radius</td>
+      <td>Wail Of The Banshee (Ancestors9 Necr): R75' Inflicts 200 HP (<b>save Fortitude</b> DC 21 negates) on 20 creatures in a 40' radius</td>
     </tr><tr style="text-align:left">
       <td>Waves Of Exhaustion (Ancestors8 Necr): 60' cone inflicts exhausted</td>
     </tr></table>

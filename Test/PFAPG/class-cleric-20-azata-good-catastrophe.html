@@ -209,7 +209,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -250,6 +250,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Deadly Weather: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -258,39 +259,39 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Azata Good2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
+      <td>Align Weapon (Azata Good2 Tran): Gives the touched weapon or collection of up to 50 projectiles a choice of chaotic, evil, good, or lawful alignment (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Catastrophe3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (save Reflex half) for 10 bolts within 20 min</td>
+      <td>Call Lightning (Catastrophe3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (<b>save Reflex</b> DC 15 half) for 10 bolts within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Call Lightning (Deadly Weather3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (save Reflex half) for 10 bolts within 20 min</td>
+      <td>Call Lightning (Deadly Weather3 Evoc): R300' 1 bolt per rd inflicts 3d6 HP electricity, or 3d10 HP during a storm, (<b>save Reflex</b> DC 15 half) for 10 bolts within 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Control Weather (Catastrophe7 Tran): Modifies seasonal weather in a 2 mile radius for 4d12 hr</td>
+      <td>Control Weather (Catastrophe7 Tran): Modifies seasonal weather within a 2 mile radius for 4d12 hr</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Evil (Azata Good5 Abju): Gives self a +4 deflection bonus to Armor Class vs. evil creatures for 20 rd; can end the spell early with a touch that dismisses an evil creature (save Will negates), an evil spell, or a spell cast by an evil caster</td>
+      <td>Dispel Evil (Azata Good5 Abju): Gives self a +4 deflection bonus to Armor Class vs. evil creatures for 20 rd; can end the spell early with a touch that dismisses an evil creature (<b>save Will</b> DC 17 negates), an evil spell, or a spell cast by an evil caster</td>
     </tr><tr style="text-align:left">
-      <td>Earthquake (Catastrophe8 Evoc): R1200' Intense tremor shakes an 80' radius for 1 rd, prohibiting movement, breaking spell concentration (DC 20 + spell level concentration negates), collapsing caverns, cliffs, and structures that inflict 8d6 HP (save Reflex DC 15 half) and pin creatures in the rubble, knocking down creatures on open ground (save Reflex DC 15 negates) and opening fissures with a 25% chance to fall in (save Reflex DC 20 negates)</td>
+      <td>Earthquake (Catastrophe8 Evoc): R1200' Causes an intense tremor to shake an 80' radius for 1 rd, prohibiting movement, breaking spell concentration (DC 20 + spell level concentration negates), collapsing caverns, cliffs, and structures that inflict 8d6 HP (<b>save Reflex</b> DC 15 half) and pin creatures in the rubble, knocking down creatures on open ground (<b>save Reflex</b> DC 15 negates) and opening fissures with a 25% chance to fall in (<b>save Reflex</b> DC 20 negates); pinned creatures suffer 1d6 HP nonlethal each min until unconscious, then 1d6 HP lethal each min (<b>save Constitution</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
       <td>Expeditious Retreat (Azata Good1 Tran): Gives self a +30 land Speed for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fly (Azata Good3 Tran): Touched gains a 60' fly Speed and +10 Fly skill for 20 min, then floats downward 60' per rd for 1d6 rd (save Will negates)</td>
+      <td>Fly (Azata Good3 Tran): Gives touched a 60' fly Speed and +10 Fly skill (<b>save Will</b> DC 15 negates) for 20 min, after which it floats downward 60' per rd for 1d6 rd</td>
     </tr><tr style="text-align:left">
-      <td>Gust Of Wind (Catastrophe2 Evoc): Creates a 60' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (save Fortitude negates; a successful DC 15 Strength check allows Medium creatures to move); Tiny creatures are also pushed 1d4x10', suffering 1d4 HP nonlethal per 10'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10', suffering 2d6 HP nonlethal (save Fly DC 25 negates)</td>
+      <td>Gust Of Wind (Catastrophe2 Evoc): Creates a 60' line of wind for 1 rd that moves objects, extinguishes unprotected flames, knocks down Small and smaller creatures, and halts Medium ones (<b>save Fortitude</b> negates; a successful DC 15 Strength check allows Medium creatures to move); Tiny creatures are also pushed 1d4x10', suffering 1d4 HP nonlethal per 10'; flying creatures suffer a -4 penalty on Fly checks and require a DC 20 Fly check to move against the wind, with Tiny flying creatures blown back 2d6x10', suffering 2d6 HP nonlethal (<b>save Fly</b> DC 25 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Harm (Catastrophe6 Necr): Melee touch inflicts 150 HP (save Will half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
+      <td>Harm (Catastrophe6 Necr): Melee touch inflicts 150 HP (<b>save Will</b> DC 18 half), leaving the target with at least 1 hit point; undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
-      <td>Holy Aura (Azata Good8 Abju): 20 creatures within 20' blind successful evil attackers (save Fortitude negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
+      <td>Holy Aura (Azata Good8 Abju): 20 creatures within 20' blind successful evil attackers (<b>save Fortitude</b> DC 20 negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. evil spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Holy Smite (Azata Good4 Evoc): R300' Evil creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are blinded for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
+      <td>Holy Smite (Azata Good4 Evoc): R300' Evil creatures in a 20' radius suffer 5d8 HP, or 10d6 HP if they are outsiders, and are blinded for 1 rd (<b>save Will</b> DC 16 half HP only); neutral creatures suffer half HP only (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
-      <td>Holy Word (Azata Good7 Evoc): Inflicts on nongood creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save Will inflicts 3d6+20 HP; paralyzed for 1d10 min on creatures with up to 15 HD (save Will inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to 19 HD (save Will inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save negates)</td>
+      <td>Holy Word (Azata Good7 Evoc): Inflicts on nongood creatures within 40' a set of effects: banishment for 24 hr (<b>save Will</b> DC 19 -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (<b>save Will</b> DC 19 inflicts 3d6+20 HP; paralyzed for 1d10 min on creatures with up to 15 HD (<b>save Will</b> DC 19 inflicts paralyzed for 1 rd); blinded for 2d4 rd on creatures with up to 19 HD (<b>save Will</b> DC 19 inflicts blinded for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save negates)</td>
     </tr><tr style="text-align:left">
-      <td>Implosion (Catastrophe9 Evoc): R75' Inflicts 200 HP (save Fortitude negates) on 1 target per rd for concentration up to 10 rd</td>
+      <td>Implosion (Catastrophe9 Evoc): R75' Inflicts 200 HP (<b>save Fortitude</b> DC 21 negates) on 1 target per rd for concentration up to 10 rd</td>
     </tr><tr style="text-align:left">
-      <td>Inflict Critical Wounds (Catastrophe4 Necr): Touched suffers 4d8+20 HP (save Will half); undead instead regain the same amount</td>
+      <td>Inflict Critical Wounds (Catastrophe4 Necr): Touched suffers 4d8+20 HP (<b>save Will</b> DC 16 half); undead instead regain the same amount</td>
     </tr><tr style="text-align:left">
       <td>Planar Ally (Azata Good6 Conj): Allows negotiating the purchase of a service from 1-2 extraplanar creatures with a total of up to 12 HD</td>
     </tr><tr style="text-align:left">
-      <td>Shout (Catastrophe5 Evoc): 30' cone inflicts 5d6 HP sonic (or 20d6 HP sonic to crystalline creatures and objects) and deafened for 2d6 rd (save Fortitude half HP only; save Reflex negates damage to held objects)</td>
+      <td>Shout (Catastrophe5 Evoc): 30' cone inflicts 5d6 HP sonic (or 15d6 HP sonic to crystalline creatures and objects) and deafened for 2d6 rd (<b>save Fortitude</b> DC 17 half HP only; save Reflex negates damage to held objects)</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster IX (Azata Good9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">

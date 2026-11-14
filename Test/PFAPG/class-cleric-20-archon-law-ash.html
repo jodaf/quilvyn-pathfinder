@@ -206,7 +206,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -245,6 +245,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -253,37 +254,37 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Align Weapon (Archon Law2 Tran): Touched weapon gains a choice of chaotic, evil, good, or lawful alignment (save Will negates) for 20 min</td>
+      <td>Align Weapon (Archon Law2 Tran): Gives the touched weapon or collection of up to 50 projectiles a choice of chaotic, evil, good, or lawful alignment (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Burning Hands (Ash1 Evoc): 15' cone inflicts 5d4 HP fire (save Reflex half)</td>
+      <td>Burning Hands (Ash1 Evoc): 15' cone inflicts 5d4 HP fire (<b>save Reflex</b> DC 13 half)</td>
     </tr><tr style="text-align:left">
-      <td>Dictum (Archon Law7 Evoc): Inflicts on nonlawful creatures within 40' a set of effects: banishment for 24 hr (save Will -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (save Will inflicts 3d6+20 HP); paralyzed for 1d10 min on creatures with up to 15 HD (save Will inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to 19 HD (save Will inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (save Will negates)</td>
+      <td>Dictum (Archon Law7 Evoc): Inflicts on nonlawful creatures within 40' a set of effects: banishment for 24 hr (<b>save Will</b> DC 19 -4 negates) on extraplanar creatures; killed or destroyed on creatures with up to 10 HD (<b>save Will</b> DC 19 inflicts 3d6+20 HP); paralyzed for 1d10 min on creatures with up to 15 HD (<b>save Will</b> DC 19 inflicts paralyzed for 1 rd); staggered for 2d4 rd on creatures with up to 19 HD (<b>save Will</b> DC 19 inflicts staggered for 1d4 rd); deafened for 1d4 rd on creatures with up to 20 HD (<b>save Will</b> DC 19 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Disintegrate (Ash7 Tran): R300' Ranged touch attack inflicts 40d6 HP (save Fortitude inflicts 5d6 HP), turning a slain target to dust, or disintegrates a 10' cube of matter</td>
+      <td>Disintegrate (Ash7 Tran): R300' Ranged touch attack inflicts 40d6 HP, turning a slain target to dust, or disintegrates a 10' cube of matter (<b>save Fortitude</b> DC 19 inflicts 5d6 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Dispel Chaos (Archon Law5 Abju): Gives self a +4 deflection bonus to Armor Class vs. chaotic creatures for 20 rd; can end the spell early with a touch that dismisses a chaotic creature (save Will negates), a chaotic spell, or a spell cast by a chaotic caster</td>
+      <td>Dispel Chaos (Archon Law5 Abju): Gives self a +4 deflection bonus to Armor Class vs. chaotic creatures for 20 rd; can end the spell early with a touch that dismisses a chaotic creature (<b>save Will</b> DC 17 negates), a chaotic spell, or a spell cast by a chaotic caster</td>
     </tr><tr style="text-align:left">
       <td>Divine Favor (Archon Law1 Evoc): Gives self +3 attacks and damage for 1 min</td>
     </tr><tr style="text-align:left">
-      <td>Fiery Body (Ash9 Tran): Gives self immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40' fly Speed, brightness that dazzles viewers, +1 fire spell DC, and unarmed attacks that inflict +3d6 HP fire, regains hit points instead of suffering damage from fire attacks (regains 1 hit point per 3 HP damage), suffers x1.5 HP from cold, and suffers 2d6 HP each rd in water while gaining a 50% miss chance, for 20 min</td>
+      <td>Fiery Body (Ash9 Tran): Gives self immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40' fly Speed, brightness that dazzles viewers, +1 fire spell DC, unarmed attacks that inflict +3d6 HP fire, the ability to regain instead of lose hit points from fire damage (1 point regained per 3 points damage), vulnerability that inflicts 50% additional damage from cold, and effects when immersed in water that inflict 2d6 HP each rd to self while giving concealment, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Seeds (Ash6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (save Reflex half), for 200 min</td>
+      <td>Fire Seeds (Ash6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (<b>save Reflex</b> DC 18 half), for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Shield (Ash5 Evoc): Envelopes self in cold or hot flames that inflict 1d6+15 HP cold or fire on melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with a successful allowed Reflex save, for 20 rd</td>
+      <td>Fire Shield (Ash5 Evoc): Envelopes self in cold or hot flames for 20 rd; they inflict 1d6+15 HP cold or fire on non-reach melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with success on an allowed Reflex save</td>
     </tr><tr style="text-align:left">
-      <td>Fireball (Ash3 Evoc): R1200' 20' radius inflicts 10d6 HP fire (save Reflex half)</td>
+      <td>Fireball (Ash3 Evoc): R1200' 20' radius inflicts 10d6 HP fire (<b>save Reflex</b> DC 15 half)</td>
     </tr><tr style="text-align:left">
-      <td>Incendiary Cloud (Ash8 Conj): R300' Fire in a 20' radius, 20'-high cylinder obscures vision, inflicts 6d6 HP fire (save Reflex half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
+      <td>Incendiary Cloud (Ash8 Conj): R300' Fire in a 20'-radius, 20' high cylinder obscures vision, inflicts 6d6 HP fire (<b>save Reflex</b> DC 20 half), and moves away 10' per rd (or up to 60' with concentration) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Order's Wrath (Archon Law4 Evoc): R300' Chaotic creatures in a 30' cube suffer 5d8 HP, or 10d6 HP if they are outsiders, and are dazed for 1 rd (save Will half HP only); neutral creatures suffer half HP only (save Will half)</td>
+      <td>Order's Wrath (Archon Law4 Evoc): R300' Chaotic creatures in a 30' cube suffer 5d8 HP, or 10d6 HP if they are outsiders, and are dazed for 1 rd (<b>save Will</b> DC 16 half HP only); neutral creatures suffer half HP only (<b>save Will</b> DC 16 half)</td>
     </tr><tr style="text-align:left">
       <td>Planar Ally (Archon Law6 Conj): Allows negotiating the purchase of a service from 1-2 extraplanar creatures with a total of up to 12 HD</td>
     </tr><tr style="text-align:left">
       <td>Prayer (Archon Law3 Ench): Gives allies within 40' +1 attacks, weapon damage, saves, and skill checks, and inflicts -1 of the same on foes, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Produce Flame (Ash2 Evoc): Creates a torch flame in self hand for 20 min; it can be used repeatedly for R120' ranged touch attacks that inflict 1d6+5 HP fire, reducing the remaining duration by 1 min each time</td>
+      <td>Produce Flame (Ash2 Evoc): Creates a torch flame in self hand for 20 min; it can be used repeatedly for melee touch or R120' ranged touch attacks that inflict 1d6+5 HP fire, reducing the remaining duration by 1 min each time</td>
     </tr><tr style="text-align:left">
-      <td>Shield Of Law (Archon Law8 Abju): 20 creatures within 20' slow successful chaotic attackers (save Will negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
+      <td>Shield Of Law (Archon Law8 Abju): 20 creatures within 20' slow successful chaotic attackers (<b>save Will</b> DC 20 negates) and gain a +4 deflection bonus to Armor Class, +4 saves, SR 25 vs. chaotic spells and casters, an additional +2 save to suppress existing mental control and possession, and immunity to new attempts to control or possess, for 20 rd</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster IX (Archon Law9 Conj): R75' Summons 1 9th-level, 1d3 8th-level, or 1d4+1 lower-level creatures that fight foes and obey orders for 20 rd</td>
     </tr><tr style="text-align:left">
@@ -297,7 +298,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
     </tr><tr style="text-align:center">
-      <td>Aura Of Menace: 30' radius inflicts -2 AC, attack, and saves on foes 20 rd/dy</td>
+      <td>Aura Of Menace: 30' radius inflicts -2 Armor Class, attack, and saves on foes 20 rd/dy</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">

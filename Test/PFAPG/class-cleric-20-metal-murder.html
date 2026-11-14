@@ -208,7 +208,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Bleeding Touch: Touch attack inflicts 1d6 HP bleed damage for 10 rd (magical healing or a DC 15 Heal ends) 5 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -252,6 +252,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -260,41 +261,41 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Cause Fear (Murder1 Necr): R75' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (save Will inflicts shaken for 1 rd)</td>
+      <td>Cause Fear (Murder1 Necr): R75' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (<b>save Will</b> DC 13 inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Create Greater Undead (Murder8 Necr): R75' Cast at night, creates a devourer, spectre, wraith, or shadow from physical remains</td>
     </tr><tr style="text-align:left">
       <td>Create Undead (Murder6 Necr): R75' Cast at night, creates a mohrg, mummy, ghast, or ghoul from physical remains</td>
     </tr><tr style="text-align:left">
-      <td>Death Knell (Murder2 Necr): Touched creature with negative hit points dies (save Will negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
+      <td>Death Knell (Murder2 Necr): Touched creature with negative hit points dies (<b>save Will</b> DC 14 negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
     </tr><tr style="text-align:left">
-      <td>Death Ward (Murder4 Necr): Touched gains +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (save Will negates) for 20 min</td>
+      <td>Death Ward (Murder4 Necr): Gives touched +4 saves vs. death spells and death effects and immunity to energy drain and negative energy effects (<b>save Will</b> DC 16 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Destruction (Murder7 Necr): R75' Inflicts 200 HP (save Fortitude inflicts 10d6 HP) and, if this slays the target, consumes its remains</td>
+      <td>Destruction (Murder7 Necr): R75' Inflicts 200 HP and, if this slays the target, consumes its remains (<b>save Fortitude</b> DC 19 inflicts 10d6 HP)</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Metal7 Tran): Self becomes a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
+      <td>Elemental Body IV (Metal7 Tran): Transforms self into a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack</td>
     </tr><tr style="text-align:left">
       <td>Elemental Swarm (Metal9 Conj): R300' Summons at 10-min intervals from a chosen elemental plane a series of obedient elementals: 2d4 large; 1d4 huge; 1 greater, for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Heat Metal (Metal2 Tran): R75' Inflicts 0, 1d4, 2d4, 2d4, 2d4, 1d4, and 0 HP fire over 7 rd on 10 targets in a 15' radius (save Will negates); a target not in possession of metal instead takes 1 or 2 HP fire in the second through sixth rd</td>
+      <td>Heat Metal (Metal2 Tran): R75' Causes metal equipment on 10 targets in a 15' radius, or 500 lb of metal in a 15' radius, to inflict 0, 1d4, 2d4, 2d4, 2d4, 1d4, and 0 HP fire over 7 rd (<b>save Will</b> DC 14 negates); a target not in contact with metal instead suffers 1 or 2 HP fire in the second through sixth rd</td>
     </tr><tr style="text-align:left">
-      <td>Iron Body (Metal8 Tran): Self becomes living iron for 20 min, gaining DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, and unarmed attacks that inflict 1d6 HP, but suffering -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems</td>
+      <td>Iron Body (Metal8 Tran): Transforms self into living iron for 20 min, giving DR 15/adamantine, immunity to critical hits, electricity, stunning, and physiology and respiration effects, half damage from acid and fire, +6 Strength, unarmed attacks that inflict 1d6 HP, -6 Dexterity, half Speed, 35% arcane spell failure, a -6 armor skill check penalty, 10x weight, inability to use potions or wind instruments, and vulnerability to special attacks that affect iron golems</td>
     </tr><tr style="text-align:left">
-      <td>Keen Edge (Murder3 Tran): R75' Doubles the threat range of the target piercing or slashing weapon (save Will negates) for 200 min</td>
+      <td>Keen Edge (Murder3 Tran): R75' Doubles the threat range of the target piercing or slashing weapon or collection of up to 50 projectiles (<b>save Will</b> DC 15 negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Magic Stone (Metal1 Tran): Enhances 3 touched stones (save Will negates) to attack at +1 and inflict 1d6+1 HP, or 2d6+2 HP vs. undead, within 30 min</td>
+      <td>Magic Stone (Metal1 Tran): Enhances 3 touched stones (<b>save Will</b> DC 13 negates) to attack at +1 and inflict 1d6+1 HP, or 2d6+2 HP vs. undead, within 30 min</td>
     </tr><tr style="text-align:left">
-      <td>Mass Suffocation (Murder9 Necr): R75' 10 targets in a 15' radius drop to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drop to -1 hit point in the second rd (save Fortitude delays for 1 rd), then die in the third rd (save Fortitude delays for 1 rd) for 20 rd</td>
+      <td>Mass Suffocation (Murder9 Necr): R75' 10 living targets in a 15' radius drop to 0 hit points in the next rd (<b>save Fortitude</b> DC 21 inflicts staggered for 1 rd), then drop to -1 hit point in the second rd (<b>save Fortitude</b> DC 21 delays for 1 rd), then die in the third rd (<b>save Fortitude</b> DC 21 delays for 1 rd) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Spike Stones (Metal4 Tran): R300' Causes stony ground in a 400 square foot area to inflict 1d8 HP piercing for each 5' movement, slowing creatures to half Speed for 24 hr (save Reflex HP only; a healing spell or successful Heal check restores full Speed), for 20 hr</td>
+      <td>Spike Stones (Metal4 Tran): R300' Causes stony ground in a 400 square foot area to inflict 1d8 HP piercing for each 5' movement, slowing creatures to half Speed for 24 hr (<b>save Reflex</b> DC 16 HP only; a healing spell or successful Heal check restores full Speed), for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Stone Shape (Metal3 Tran): Reshapes 30 cubic feet of stone</td>
     </tr><tr style="text-align:left">
-      <td>Suffocation (Murder5 Necr): R75' Target drops to 0 hit points in the next rd (save Fortitude inflcits staggered for 1 rd), then drops to -1 hit points in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd</td>
+      <td>Suffocation (Murder5 Necr): R75' Living target drops to 0 hit points in the next rd (<b>save Fortitude</b> DC 17 inflicts staggered for 1 rd), then drops to -1 hit point in the second rd (<b>save Fortitude</b> DC 17 delays for 1 rd), then dies in the third rd (<b>save Fortitude</b> DC 17 delays for 1 rd) for 3 rd</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Iron (Metal6 Conj): R300' Creates a 100 square foot, 5"-thick permanent iron wall (the area can be doubled by halving the thickness); if unanchored, the wall falls (a successful DC 40 Strength check pushes it to fall in the desired direction), inflicting 10d6 HP on Large and smaller creatures (save Reflex negates)</td>
+      <td>Wall Of Iron (Metal6 Conj): R300' Creates a 100 square foot, 5"-thick permanent iron wall (the area can be doubled by halving the thickness); if unanchored, the wall falls (a successful DC 40 Strength check pushes it to fall in the desired direction), inflicting 10d6 HP on Large and smaller creatures (<b>save Reflex</b> DC 18 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Wall Of Stone (Metal5 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness); each 5' section has 75 hit points and hardness 8 (save Reflex avoids entrapment)</td>
+      <td>Wall Of Stone (Metal5 Conj): R300' Creates a 100 square foot, 5"-thick permanent stone wall (the area can be doubled by halving the thickness) supported by existing stone; each 5' section has 75 hit points and hardness 8 (<b>save Reflex</b> DC 17 avoids entrapment)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

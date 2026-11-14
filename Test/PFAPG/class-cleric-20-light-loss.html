@@ -211,7 +211,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -250,6 +250,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12; Nimbus Of Light: 12</td>
       </tr></table>
 </td>
@@ -258,7 +259,7 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Blindness/Deafness (Loss2 Necr): R300' Target suffers a choice of permanent blindness or deafness (save Fortitude negates)</td>
+      <td>Blindness/Deafness (Loss2 Necr): R300' Inflicts a choice of permanent blindness or deafness (<b>save Fortitude</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
       <td>Daylight (Light3 Evoc): Touched object radiates bright light in a 60' radius for 200 min</td>
     </tr><tr style="text-align:left">
@@ -266,35 +267,35 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Deeper Darkness (Loss3 Evoc): Touched object reduces the light level in a 60' radius by 2 steps for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Energy Drain (Loss9 Necr): R75' Ranged touch attack inflicts 2d4 negative levels (save Fortitude for each level after 24 hr negates; failure makes the loss permanent); an undead target instead gains 2d4x5 temporary hit points for 1 hr</td>
+      <td>Energy Drain (Loss9 Necr): R75' Ranged touch attack inflicts 2d4 negative levels (<b>save Fortitude</b> DC 21 for each level after 24 hr negates; failure makes the loss permanent); an undead target instead gains 2d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
       <td>Enervation (Loss5 Necr): R75' Ranged touch attack inflicts 1d4 negative levels for 15 hr; an undead target instead gains 1d4x5 temporary hit points for 1 hr</td>
     </tr><tr style="text-align:left">
-      <td>Faerie Fire (Light1 Evoc): R1200' Creatures in a 5' radius glow for 20 min, negating concealment from darkness, blurring, displacement, and invisibility</td>
+      <td>Faerie Fire (Light1 Evoc): R1200' Causes creatures in a 5' radius to glow for 20 min, negating concealment from darkness, blurring, displacement, and invisibility</td>
     </tr><tr style="text-align:left">
-      <td>Fire Seeds (Light6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (save Reflex half), for 200 min</td>
+      <td>Fire Seeds (Light6 Conj): Changes 4 touched acorns into grenades that can be thrown with a 20' range increment for ranged touch attacks that inflict 20d4 HP fire in total (the most powerful can inflict at most 10d4 HP), plus 1 HP of splash per die, or 8 touched holly berries into bombs that detonate on command to inflict 1d8+20 HP fire in a 5' radius each (<b>save Reflex</b> DC 18 half), for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Fire Shield (Light4 Evoc): Envelopes self in cold or hot flames that inflict 1d6+15 HP cold or fire on melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with a successful allowed Reflex save, for 20 rd</td>
+      <td>Fire Shield (Light4 Evoc): Envelopes self in cold or hot flames for 20 rd; they inflict 1d6+15 HP cold or fire on non-reach melee attackers (SR may negate) and either reduce heat or cold damage taken by half or negate it entirely with success on an allowed Reflex save</td>
     </tr><tr style="text-align:left">
-      <td>Flame Strike (Light5 Evoc): R300' 10' radius, 40' high cylinder inflicts 15d6 HP (save Reflex half), half fire and half divine power</td>
+      <td>Flame Strike (Light5 Evoc): R300' 10' radius, 40' high cylinder inflicts 15d6 HP (<b>save Reflex</b> DC 17 half), half fire and half divine power</td>
     </tr><tr style="text-align:left">
-      <td>Greater Shadow Evocation (Loss8 Illu): Mimics an evocation spell of up to 7th level (save Will reduces the mimicked spell's effects by 40%); mimicked spells are subject to SR and have a save DC as an 8th-level spell</td>
+      <td>Greater Shadow Evocation (Loss8 Illu): Mimics an evocation spell of up to 7th level (<b>save Will</b> DC 20 reduces the mimicked spell's effects by 40%); mimicked spells are subject to SR and have a save DC as an 8th-level spell</td>
     </tr><tr style="text-align:left">
-      <td>Heat Metal (Light2 Tran): R75' Inflicts 0, 1d4, 2d4, 2d4, 2d4, 1d4, and 0 HP fire over 7 rd on 10 targets in a 15' radius (save Will negates); a target not in possession of metal instead takes 1 or 2 HP fire in the second through sixth rd</td>
+      <td>Heat Metal (Light2 Tran): R75' Causes metal equipment on 10 targets in a 15' radius, or 500 lb of metal in a 15' radius, to inflict 0, 1d4, 2d4, 2d4, 2d4, 1d4, and 0 HP fire over 7 rd (<b>save Will</b> DC 14 negates); a target not in contact with metal instead suffers 1 or 2 HP fire in the second through sixth rd</td>
     </tr><tr style="text-align:left">
-      <td>Modify Memory (Loss6 Ench): R75' Changes 5 min of the target's memory (save Will negates)</td>
+      <td>Modify Memory (Loss6 Ench): R75' Erases, enhances, or changes 5 min of the target's memory (<b>save Will</b> DC 18 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Obscuring Mist (Loss1 Conj): Creates a 20'-radius, 20'-high cylinder fog that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% chance on more distant attacks, for 20 min</td>
+      <td>Obscuring Mist (Loss1 Conj): Creates a 20'-radius, 20' high cylinder fog that obscures vision, giving a 20% miss chance on attacks within 5' and a 50% chance on more distant attacks, for 20 min</td>
     </tr><tr style="text-align:left">
       <td>Power Word Blind (Loss7 Ench): R75' Blinds a target with up to 200 hit points; the duration is permanent if the target has 50 hit points or fewer, 1d4+1 min for up to 100 hit points, and 1d4+1 rd otherwise</td>
     </tr><tr style="text-align:left">
-      <td>Prismatic Sphere (Light9 Abju): 10' radius sphere lasting 200 min blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (save Reflex half); 40 HP acid (save Reflex half); 80 HP electricity (save Reflex half); slain by poison (save Fortitude inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (save Fortitude negates); insanity (save Will negates); sent to another plane (save Will negates)</td>
+      <td>Prismatic Sphere (Light9 Abju): Creates a 10' radius sphere lasting 200 min that blinds for 2d4x10 min creatures with up to 7 HD who look at it from within 20', blocks magical and nonmagical ranged attacks, poisons, gasses, petrification, breath weapons, divination, mental attacks, spells, objects, and effects, and inflicts on creatures other than self who pass through all of these effects: 20 HP fire (<b>save Reflex</b> DC 21 half); 40 HP acid (<b>save Reflex</b> DC 21 half); 80 HP electricity (<b>save Reflex</b> DC 21 half); slain by poison (<b>save Fortitude</b> DC 21 inflicts 1 point of Constitution damage per rd for 6 rd; 2 consecutive Fortitude saves ends); turned to stone (<b>save Fortitude</b> DC 21 negates); insanity (<b>save Will</b> DC 21 negates); sent to another plane (<b>save Will</b> DC 21 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Shadow Conjuration (Loss4 Illu): Mimics a creation or summoning conjuration spell of up to 3rd level (save Will reduces the mimicked spell's effects by 80%); mimicked spells are subject to SR and have a save DC as a 4th-level spell, and creatures summoned by a mimicked spell have 20% of their normal hit points</td>
+      <td>Shadow Conjuration (Loss4 Illu): Mimics a creation or summoning conjuration spell of up to 3rd level (<b>save Will</b> DC 16 reduces the mimicked spell's effects by 80%); mimicked spells are subject to SR and have a save DC as a 4th-level spell, and creatures summoned by a mimicked spell have 20% of their normal hit points</td>
     </tr><tr style="text-align:left">
-      <td>Sunbeam (Light7 Evoc): 60' beam of light inflicts blinded and 4d6 HP (or 8d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (save Reflex half HP only) once per rd 6 times within 20 rd</td>
+      <td>Sunbeam (Light7 Evoc): 60' beam of light inflicts blinded and 4d6 HP (double damage to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (<b>save Reflex</b> DC 19 half HP only) once per rd 6 times within 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sunburst (Light8 Evoc): R1200' 80' radius inflicts blinded and 6d6 HP (or 12d6 HP to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (save Reflex half HP only)</td>
+      <td>Sunburst (Light8 Evoc): R1200' 80' radius inflicts blinded and 6d6 HP (double damage to creatures sensitive to sunlight and 20d6 HP to undead and oozes, destroying undead and oozes with a weakness to bright light) (<b>save Reflex</b> DC 20 half HP only)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

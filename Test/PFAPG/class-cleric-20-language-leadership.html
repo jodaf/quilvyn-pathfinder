@@ -215,7 +215,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -252,6 +252,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -260,41 +261,41 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Bless (Leadership1 Ench): Allies within 50' gain +1 attacks and fear saves for 20 min</td>
+      <td>Bless (Leadership1 Ench): Gives allies within 50' +1 attacks and fear saves for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Brilliant Inspiration (Leadership6 Evoc): R75' Target gains the better of two attack, ability check, and skill check rolls for 20 rd or until a natural 20 is rolled</td>
+      <td>Brilliant Inspiration (Leadership6 Evoc): R75' Gives the living target the better of two attack, ability check, and skill check rolls (<b>save Will</b> DC 18 negates) for 20 rd or until a natural 20 is rolled</td>
     </tr><tr style="text-align:left">
       <td>Comprehend Languages (Language1 Divi): Allows self to understand written text and words spoken in any language for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Demand (Leadership8 Ench): Sends to a familiar target a 25-word message that contains a <i>Suggestion</i> (save Will negates); the target can send a 25-word reply</td>
+      <td>Demand (Leadership8 Ench): Sends to a familiar target a 25-word message that contains a <i>Suggestion</i> (<b>save Will</b> DC 20 negates); the target can send a 25-word reply</td>
     </tr><tr style="text-align:left">
-      <td>Discern Lies (Leadership4 Divi): R75' Reveals lies from 20 creatures in a 15' radius (save Will negates) for concentration up to 20 rd</td>
+      <td>Discern Lies (Leadership4 Divi): R75' Reveals lies from 20 creatures in a 15' radius (<b>save Will</b> DC 16 negates) for concentration up to 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Enthrall (Leadership2 Ench): R300' Captivates listeners (save Will negates) for concentration up to 1 hr plus 1d3 rd; attacking an enthralled creature ends the spell for all, and creatures who save can attempt a Charisma check to end it for others</td>
+      <td>Enthrall (Leadership2 Ench): R300' Captivates listeners (<b>save Will</b> DC 14 negates) for concentration up to 1 hr plus 1d3 rd; attacking an enthralled creature ends the spell for all, and creatures who save can attempt a Charisma check to end it for others</td>
     </tr><tr style="text-align:left">
-      <td>Explosive Runes (Language4 Abju): Creates runes that inflict 6d6 HP force in a 10' radius when read by an unauthorized person (save Reflex half; adjacent creatures automatically fail)</td>
+      <td>Explosive Runes (Language4 Abju): Creates runes that inflict 6d6 HP force in a 10' radius when read by an unauthorized person (<b>save Reflex</b> DC 16 half; creatures adjacent to the runes automatically fail)</td>
     </tr><tr style="text-align:left">
-      <td>Greater Command (Leadership5 Ench): R75' 20 targets in a 15' radius obey a command to approach, drop, fall, flee, or halt (save Will negates; additional saves each rd end) for 20 rd</td>
+      <td>Greater Command (Leadership5 Ench): R75' Causes 20 targets in a 15' radius to obey a command to approach, drop, fall, flee, or halt (<b>save Will</b> DC 17 negates; additional saves each rd end) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Glyph Of Warding (Language6 Abju): Creatures with specified characteristics who enter a 100 square foot area trigger a blast that inflicts 10d8 HP of a choice of acid, cold, fire, electricity, or sonic in a 5' radius (save Reflex half; password negates) or a harmful spell of up to 6th level</td>
+      <td>Greater Glyph Of Warding (Language6 Abju): Creates a glyph that causes creatures with specified characteristics who enter a 100 square foot area or open a warded object to trigger a blast that inflicts 10d8 HP of a choice of acid, cold, fire, electricity, or sonic in a 5' radius (<b>save Reflex</b> DC 18 half; password negates) or a harmful spell of up to 6th level</td>
     </tr><tr style="text-align:left">
       <td>Instant Summons (Language7 Conj): Prepares an item weighing up to 10 lb and up to 6' long to teleport to self when desired; if the item is held when summoned, the spell instead reveals the possessor</td>
     </tr><tr style="text-align:left">
       <td>Prayer (Leadership3 Ench): Gives allies within 40' +1 attacks, weapon damage, saves, and skill checks, and inflicts -1 of the same on foes, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Repulsion (Leadership7 Abju): 200' radius bars creatures and prevents those within it from approaching (save Will negates) for 20 rd</td>
+      <td>Repulsion (Leadership7 Abju): Radius of up to 200' bars creatures and prevents those within it from approaching (<b>save Will</b> DC 19 negates) for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Share Language (Language2 Divi): Touched can use 5 languages that self knows for 24 hr</td>
+      <td>Share Language (Language2 Divi): Allows the touched creature to read, speak, and understand 5 languages that self knows (<b>save Will</b> DC 14 negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Storm Of Vengeance (Leadership9 Conj): R1200' Creates a 360' radius storm that inflicts deafened for 1d4x10 min (save Fortitude negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (save Reflex half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (save Concentration negates; add the level of the spell to be cast to the DC)</td>
+      <td>Storm Of Vengeance (Leadership9 Conj): R1200' Creates a 360' radius storm that inflicts deafened for 1d4x10 min (<b>save Fortitude</b> DC 21 negates), then produces rain that inflicts 1d6 HP acid, then generates lightning bolts that inflict 10d6 HP electricity on 6 targets (<b>save Reflex</b> DC 21 half), then creates hail that inflicts 5d6 HP bludgeoning, then produces violent wind and rain that reduce Speed by 3/4 and obscure vision, giving a 20% miss chance on attacks within 5' and a 50% miss chance on more distant attacks, for 6 rd; the storm also prevents ranged attacks and disrupts spellcasting (<b>save Concentration</b> negates; add the level of the spell to be cast to the DC)</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Language8 Necr): Creates a rune that slays creatures in a 60' radius when triggered (save Fortitude negates), working outward from the closest creatures, for 200 min or until creatures with 150 hit points total have been killed</td>
+      <td>Symbol Of Death (Language8 Necr): Creates a rune that slays creatures in a 60' radius (<b>save Fortitude</b> DC 20 negates), working outward from the closest creatures, for 200 min after it is triggered or until creatures with 150 hit points total have been killed</td>
     </tr><tr style="text-align:left">
       <td>Telepathic Bond (Language5 Divi): R75' Allows self and/or 6 willing targets in a 15' radius with at least 3 Intelligence to share thoughts for 200 min</td>
     </tr><tr style="text-align:left">
       <td>Teleportation Circle (Language9 Conj): 5' radius transports creatures to a specified destination with no chance of error for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Tongues (Language3 Divi): Allows touched to communicate in any language (save Will negates) for 200 min</td>
+      <td>Tongues (Language3 Divi): Allows touched to speak and understand any language (<b>save Will</b> DC 15 negates) for 200 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -308,7 +309,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Blast Rune: Can create a rune in an adjacent unoccupied square that inflicts 1d6+10 HP of a choice of acid, cold, electricity, or fire damage once within 20 rd 5 times per day</td>
     </tr><tr style="text-align:center">
-      <td>Inspiring Command (Cleric): R30' Gives 7 allies +2 attack, AC, CMD, and skill checks for 1 rd</td>
+      <td>Inspiring Command (Cleric): R30' Gives 7 allies +2 attack, Armor Class, CMD, and skill checks for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">

@@ -207,7 +207,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -247,6 +247,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -255,41 +256,41 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Air Walk (Wind4 Tran): Touched can walk on air for 200 min, then floats downward 60' per rd for 1d6 rd; winds of over 20 MPH push the target 5' per 5 MPH; training a mount to <i>Air Walk</i> requires a week of work and a DC 25 Handle Animal check</td>
+      <td>Air Walk (Wind4 Tran): Allows touched to walk on air for 200 min, then float downward 60' per rd for 1d6 rd; winds of over 20 MPH push the target 5' per 5 MPH; training a mount to <i>Air Walk</i> requires a week of work and a DC 25 Handle Animal check</td>
     </tr><tr style="text-align:left">
       <td>Arcane Lock (Wards1 Abju): Increases by 10 the DC for others to open a touched door, portal, or chest or creates a DC 20 lock on an object without one</td>
     </tr><tr style="text-align:left">
-      <td>Control Winds (Wind5 Tran): R800' Changes the wind direction and speed by 6 levels in a 800'x40' cylinder for 200 min (save Fortitude each rd negates wind effects on a creature for 1 rd)</td>
+      <td>Control Winds (Wind5 Tran): R800' Changes the wind direction and speed by 6 levels in a 800' radius, 40' high cylinder for 200 min (<b>save Fortitude</b> DC 17 each rd negates wind effects on a creature for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Dimensional Anchor (Wards4 Abju): R300' Ranged touch attack bars extradimensional travel for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Elemental Body IV (Wind7 Tran): Self becomes a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the ability to earth glide), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the ability to burn), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, immunity to bleed damage, critical hits, and Sneak Attack, and DR 5/-</td>
+      <td>Elemental Body IV (Wind7 Tran): Transforms self into a Huge elemental for 20 min—a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack</td>
     </tr><tr style="text-align:left">
-      <td>Gaseous Form (Wind3 Tran): Touched becomes insubstantial, losing its armor bonus to Armor Class, any supernatural abilities, ability to manipulate objects, and ability to cast spells with components, but gaining DR 10/magic, immunity to poison, Sneak Attack, and critical hits, a 10' fly Speed, and the ability to pass through small openings, for 40 min</td>
+      <td>Gaseous Form (Wind3 Tran): Causes the willing touched corporeal creature to become insubstantial, losing its armor bonus to Armor Class, any supernatural abilities, ability to manipulate objects, and ability to cast spells with components, but gaining DR 10/magic, immunity to poison, Sneak Attack, and critical hits, a 10' fly Speed, and the ability to pass through small openings, for 40 min</td>
     </tr><tr style="text-align:left">
-      <td>Glyph Of Warding (Wards3 Abju): Creatures with specified characteristics who enter a 100 square foot area trigger a blast that inflicts 5d8 HP of a choice of acid, cold, fire, electricity, or sonic in a 5' radius (save Reflex half; password negates) or a harmful spell of up to 3rd level</td>
+      <td>Glyph Of Warding (Wards3 Abju): Creates a glyph that causes creatures with specified characteristics who enter a 100 square foot area or open a warded object to trigger a blast that inflicts 5d8 HP of a choice of acid, cold, fire, electricity, or sonic in a 5' radius (<b>save Reflex</b> DC 15 half; password negates) or a harmful spell of up to 3rd level</td>
     </tr><tr style="text-align:left">
-      <td>Guards And Wards (Wards6 Abju): Multiple magic effects protect a 4000' sq area for 40 hr</td>
+      <td>Guards And Wards (Wards6 Abju): Protects a 4000' sq area with foggy corridors, <i>Arcane Lock</i> on all doors, stairs clogged with webs that reappear 10 min after burning, intersections that inflict confused direction choices 50% of the time, 20 concealed doors (<b>save Will</b> DC 18 disbelieves if interacted with), and a choice of 4 instances of <i>Dancing Lights</i>, 2 instances of <i>Magic Mouth</i>, 2 instances of <i>Stinking Cloud</i>, one instance of <i>Gust Of Wind</i>, or one instance of <i>Suggestion</i>, for 40 hr</td>
     </tr><tr style="text-align:left">
       <td>Instant Summons (Wards7 Conj): Prepares an item weighing up to 10 lb and up to 6' long to teleport to self when desired; if the item is held when summoned, the spell instead reveals the possessor</td>
     </tr><tr style="text-align:left">
-      <td>Lesser Planar Binding (Wards5 Conj): Traps an extraplanar creature with up to 6 HD in a <i>Magic Circle</i> (save Will negates) until it performs a task (opposed Charisma allows refusal), or escapes via SR, dimensional travel, or a DC 27 Charisma check</td>
+      <td>Lesser Planar Binding (Wards5 Conj): Traps an extraplanar creature with up to 6 HD in a <i>Magic Circle</i> (<b>save Will</b> DC 17 negates) until it performs a task (opposed Charisma allows refusal), or escapes via SR, dimensional travel, or a DC 27 Charisma check</td>
     </tr><tr style="text-align:left">
       <td>Secret Page (Wards2 Tran): Permanently alters the text on a touched page so that a password is required to read the original</td>
     </tr><tr style="text-align:left">
-      <td>Symbol Of Death (Wards8 Necr): Creates a rune that slays creatures in a 60' radius when triggered (save Fortitude negates), working outward from the closest creatures, for 200 min or until creatures with 150 hit points total have been killed</td>
+      <td>Symbol Of Death (Wards8 Necr): Creates a rune that slays creatures in a 60' radius (<b>save Fortitude</b> DC 20 negates), working outward from the closest creatures, for 200 min after it is triggered or until creatures with 150 hit points total have been killed</td>
     </tr><tr style="text-align:left">
       <td>Teleportation Circle (Wards9 Conj): 5' radius transports creatures to a specified destination with no chance of error for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Whirlwind (Wind8 Evoc): R1200' Creates a 10' radius, 30' high cyclone that moves 60' as directed each rd, inflicting 3d6 HP on Large and smaller creatures (save Reflex negates), for 20 rd; it traps Medium and smaller creatures (save Reflex negates), inflicting an additional 1d8 HP on each subsequent rd</td>
+      <td>Whirlwind (Wind8 Evoc): R1200' Creates a 10' radius, 30' high cyclone that moves 60' as directed each rd, inflicting 3d6 HP on Large and smaller creatures (<b>save Reflex</b> DC 20 negates), for 20 rd; it traps Medium and smaller creatures (<b>save Reflex</b> DC 20 negates), inflicting an additional 1d8 HP on each subsequent rd</td>
     </tr><tr style="text-align:left">
       <td>Whispering Wind (Wind1 Tran): R20 miles Allows sending a whispered 25-word message or sound to a familiar 10' area</td>
     </tr><tr style="text-align:left">
-      <td>Wind Walk (Wind6 Tran): Allows self and 6 touched (save Will negates) to spend 5 rd changing to and from a translucent vapor that can move 60 MPH, for 20 hr</td>
+      <td>Wind Walk (Wind6 Tran): Allows self and 6 touched creatures (<b>save Will</b> DC 18 negates) to spend 5 rd changing to and from a translucent vapor that can move 60 MPH, for 20 hr</td>
     </tr><tr style="text-align:left">
       <td>Wind Wall (Wind2 Evoc): R300' Creates a 200'x100'x2' curtain of air that scatters objects, bars gasses and Small or smaller flying creatures, and deflects arrows and bolts for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Winds Of Vengeance (Wind9 Evoc): Gives self a 60' fly Speed and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for 20 min</td>
+      <td>Winds Of Vengeance (Wind9 Evoc): Gives self a 60' fly Speed, breathable air, and immunity to wind, gas, and ranged weapons; inflicts on melee attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (<b>save Fortitude</b> DC 21 half HP only; Huge flying creatures are checked instead), for 20 min</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">

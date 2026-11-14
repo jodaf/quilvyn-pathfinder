@@ -210,7 +210,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Alignment Channel (Law): Can use Channel Energy to heal or harm lawful outsiders</td>
       </tr><tr style="text-align:center">
-        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (save Will DC 23 half) to all creatures within 30' 5 times per day</td>
+        <td>Channel Energy: Can restore 10d6 hit points or inflict the same amount (<b>save Will</b> DC 23 half) to all creatures within 30' 5 times per day</td>
       </tr><tr style="text-align:center">
         <td>Channel Smite: Can use a swift action before a melee attack to add Channel Energy to its damage</td>
       </tr><tr style="text-align:center">
@@ -249,6 +249,7 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 5; C2: 5; C3: 4; C4: 4; C5: 4; C6: 4; C7: 4; C8: 4; C9: 4; Domain1: 1; Domain2: 1; Domain3: 1; Domain4: 1; Domain5: 1; Domain6: 1; Domain7: 1; Domain8: 1; Domain9: 1</td>
+        <td><b>Spell Points</b>: 228</td>
         <td><b>Spell DC</b>: C: 12; Domain: 12</td>
       </tr></table>
 </td>
@@ -257,41 +258,41 @@ var attributes = {
   </tr><tr style="text-align:center">
     <td><b>Spells</b>:<br/>    <table id="Spells" style="width:100%">
     <tr style="text-align:left">
-      <td>Bull's Strength (Ferocity2 Tran): Gives touched +4 Strength (save Will negates) for 20 min</td>
+      <td>Bull's Strength (Ferocity2 Tran): Gives touched +4 Strength (<b>save Will</b> DC 14 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Clenched Fist (Ferocity8 Evoc): R300' 10' hand (Armor Class 20, 84 hit points) can be moved 60' as a move action, gives +4 Armor Class, and performs a +32 Bull Rush and +31 + modifier melee attack that inflicts 1d8+11 HP and stunned for 1 rd (save Fortitude HP only) for 20 rd</td>
+      <td>Clenched Fist (Ferocity8 Evoc): R300' Creates a 10' hand (Armor Class 20, 84 hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +32 Bull Rush, can make a +32 melee attack that inflicts 1d8+11 HP and stunned for 1 rd (<b>save Fortitude</b> DC 20 HP only), and can be redirected between targets as a move action, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Crushing Hand (Ferocity9 Evoc): R300' 10' hand (Armor Class 20, 84 hit points) can be moved 60' as a move action, gives +4 Armor Class, and performs a +33 Bull Rush and a +33 Grapple that inflicts 2d6+12 HP for 20 rd</td>
+      <td>Crushing Hand (Ferocity9 Evoc): R300' Creates a 10' hand (Armor Class 20, 84 hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +33 Bull Rush and a +33 Grapple that inflicts 2d6+12 HP, and can be redirected between targets as a move action, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Enlarge Person (Ferocity1 Tran): R75' Target humanoid doubles in size (save Fortitude negates), gaining +2 Strength and suffering -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class, for 20 min</td>
+      <td>Enlarge Person (Ferocity1 Tran): R75' Causes the target humanoid to double in size (<b>save Fortitude</b> DC 13 negates), gaining 8x weight, +2 Strength, -2 Dexterity, -1 attacks, and a -1 size penalty to Armor Class, for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Freedom (Freedom9 Abju): R75' Releases the target from movement restrictions (save Will negates)</td>
+      <td>Freedom (Freedom9 Abju): R75' Releases the target from movement restrictions (<b>save Will</b> DC 21 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Freedom Of Movement (Freedom4 Abju): Allows touched to ignore movement impediments, escape grapples, and move normally when underwater, (save Will negates) for 200 min</td>
+      <td>Freedom Of Movement (Freedom4 Abju): Allows touched to ignore movement impediments, escape grapples, and move normally when underwater, (<b>save Will</b> DC 16 negates) for 200 min</td>
     </tr><tr style="text-align:left">
-      <td>Grasping Hand (Ferocity7 Evoc): R300' 10' hand (Armor Class 20, 84 hit points) can be moved 60' as a move action, gives +4 Armor Class, and performs a +31 Bull Rush and a +31 Grapple for 20 rd</td>
+      <td>Grasping Hand (Ferocity7 Evoc): R300' Creates a 10' hand (Armor Class 20, 84 hit points) that gives +4 Armor Class vs. a target, slows creatures weighing up to 2,000 lbs who push past it to half Speed, can perform a +31 Bull Rush and a +31 Grapple, and can be redirected between targets as a move action, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Greater Dispel Magic (Freedom6 Abju): R300' Successful caster level check check vs. 11+caster level cancels 5 targeted spells or 1 spell or curse on each creature in a 20' radius or suppresses a magic item for 1d4 rd</td>
+      <td>Greater Dispel Magic (Freedom6 Abju): R300' Allows a successful caster level check vs. a DC of 11 + caster level to cancel 5 targeted spells or 1 spell or curse on each creature in a 20' radius, suppress a magic item for 1d4 rd, or disrupt a foe's spell casting with a +4 bonus on the check</td>
     </tr><tr style="text-align:left">
-      <td>Mass Bull's Strength (Ferocity6 Tran): R75' 20 targets in a 15' radius gain +4 Strength (save Will negates) for 20 min</td>
+      <td>Mass Bull's Strength (Ferocity6 Tran): R75' 20 targets in a 15' radius gain +4 Strength (<b>save Will</b> DC 18 negates) for 20 min</td>
     </tr><tr style="text-align:left">
-      <td>Mind Blank (Freedom8 Abju): R75' Target gains immunity to divination and scrying and +8 vs. mental effects (save Will negates) for 24 hr</td>
+      <td>Mind Blank (Freedom8 Abju): R75' Gives the target immunity to divination and scrying and +8 vs. mental effects (<b>save Will</b> DC 20 negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Plane Shift (Freedom5 Conj): Transports touched (save Will negates) or 8 willing persons joined in a circle to another plane</td>
+      <td>Plane Shift (Freedom5 Conj): Transports touched (<b>save Will</b> DC 17 negates) or 8 willing persons joined in a circle to another plane</td>
     </tr><tr style="text-align:left">
       <td>Rage (Ferocity3 Ench): R300' Gives 6 willing targets in a 15' radius +2 Strength, +2 Constitution, +1 Will, and -2 Armor Class for concentration + 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Refuge (Freedom7 Conj): Breaking a prepared object and speaking a command word transports the possessor to self home or transports self to possessor</td>
+      <td>Refuge (Freedom7 Conj): Prepares an object so that breaking it and speaking a command word transports the possessor to self home or transports self to the possessor</td>
     </tr><tr style="text-align:left">
-      <td>Remove Curse (Freedom3 Abju): Allows a successful caster level check to dispel all curses from touched (save Will negates)</td>
+      <td>Remove Curse (Freedom3 Abju): Allows a successful caster level check to dispel each curse affecting touched (<b>save Will</b> DC 15 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Remove Paralysis (Freedom2 Conj): R75' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2 (save Will negates)</td>
+      <td>Remove Paralysis (Freedom2 Conj): R75' Frees one target from paralysis or the effects of a spell that inflicts staggered; 2, 3, or 4 targets instead get an extra save at +4, +2, or +2 (<b>save Will</b> DC 14 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Righteous Might (Ferocity5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +2 Constitution, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
+      <td>Righteous Might (Ferocity5 Tran): Causes self and equipment to double in size, gaining a size category, +4 Strength, +4 Constitution, -2 Dexterity, a +2 enhancement bonus to natural armor, and x8 weight, and gives DR 10/evil or DR 10/good, for 20 rd</td>
     </tr><tr style="text-align:left">
-      <td>Sanctuary (Freedom1 Abju): Prevents foes from attacking touched (save Will negates) for 20 rd; target attacking ends the spell</td>
+      <td>Sanctuary (Freedom1 Abju): Prevents foes from attacking touched (<b>save Will</b> DC 13 negates) for 20 rd; target attacking ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Spell Immunity (Ferocity4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance (save Will negates) for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
+      <td>Spell Immunity (Ferocity4 Abju): Gives touched immunity to 5 spells of up to 4th level that are subject to spell resistance (<b>save Will</b> DC 16 negates) for 200 min; a target can benefit from only one <i>Spell Immunity</i> or <i>Greater Spell Immunity</i> at a time</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
