@@ -2380,7 +2380,7 @@ PFAPG.FEATURES = {
     'Note="%{levels.Bard>=6?(levels.Bard>=14?\'+4\':\'+2\')+\' caster level vs. SR and \':\'\'}+%{(levels.Bard+6)//8} spell DC and Bardic Performance vs. foes denied Dexterity bonus"',
   'Song Of The Fallen':
     'Section=magic ' +
-    'Note="May use 10 rd Bardic Performance to summon barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of valhalla</i>"',
+    'Note="May use 10 rd Bardic Performance to summon barbarian warriors as %{levels.Bard>=19 ? \'iron\' : levels.Bard>=16 ? \'bronze\' : levels.Bard>=13 ? \'brass\' : \'silver\'} <i>horn of Valhalla</i>"',
   'Spell Catching':
     'Section=magic ' +
     'Note="Successful save and caster level check (DC 10 + foe caster level) negates and allows immediate recast of foe spell targeted on self; costs Bardic Performance rds equal to spell level"',
@@ -5546,7 +5546,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist3 ' +
     'Description=' +
-      '"Increases the variable effects of potions and elixirs consumed by self by 50%, and doubles the duration of potions and elixers that have no variable effects, for %{lvl} rd"',
+      '"Increases the variable effects of potions and elixirs consumed by self by 50%, and doubles the duration of potions and elixirs that have no variable effects, for %{lvl} rd"',
   'Ant Haul':
     'School=Transmutation ' +
     'Level=Alchemist1,C1,D1,O1,R1,S1,W1,Summoner1 ' +
@@ -6081,7 +6081,7 @@ PFAPG.SPELLS = {
     'School="Abjuration [Mind-Affecting]" ' +
     'Level=B6 ' +
     'Description=' +
-      '"10\' emanation inflicts confusion on foes (save Will inflicts staggered), lasting for 1 rd after exiting, for conentration"',
+      '"10\' emanation inflicts confusion on foes (save Will inflicts staggered), lasting for 1 rd after exiting, for concentration"',
   'Forced Repentance':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Inquisitor4,P4 ' +
@@ -6447,7 +6447,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=Antipaladin4,Inquisitor5,Paladin4 ' +
     'Description=' +
-      '"Enhances the held weapon to inflict +1d6 HP sonic, staggered for 1 rd while using Judgment or Smite, plus stunned for 1 rd and deafened 1d6 rd on a critical hit, (save Fortitude HP only) for %{lvl} rd; relasing the weapon ends the spell"',
+      '"Enhances the held weapon to inflict +1d6 HP sonic, staggered for 1 rd while using Judgment or Smite, plus stunned for 1 rd and deafened 1d6 rd on a critical hit, (save Fortitude HP only) for %{lvl} rd; releasing the weapon ends the spell"',
   'Rest Eternal':
     'School=Necromancy ' +
     'Level=Ancestors4,C4,O4,D5,Witch5 ' +
@@ -6538,7 +6538,7 @@ PFAPG.SPELLS = {
     'School="Necromancy [Evil]" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Detatches self shadow as an undead shadow, making the body comatose, for %{lvl} hr; death of the shadow ends the spell and reduces the body to dying with -1 hit point"',
+      '"Detaches self shadow as an undead shadow, making the body comatose, for %{lvl} hr; death of the shadow ends the spell and reduces the body to dying with -1 hit point"',
   'Share Language':
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,S2,W2 ' +
@@ -6578,33 +6578,32 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D2,O2,Oceans2,R2,S2,W2,Witch2 ' + // Oracle Waves, Witch Water
     'Description=' +
-      '"Creates a wave that moves touched 10\' per rd, or 20\' per rd downhill, and gives it a +20 swim Speed, (save Reflex negates) for %{lvl*10} min"',
+      '"Creates a wave that gives touched +10 Speed on flat ground, +20 Speed when moving downhill, and a +20 swim Speed, (save Reflex negates) for %{lvl*10} min"',
   'Snake Staff':
     'School=Transmutation ' +
     'Level=C5,D5,O5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Transforms up to %{lvl} sticks in 15\' radius into telepathically controlled snakes (save Will negates) for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Transforms sticks in 15\' radius into up to %{lvl} telepathically controlled snakes (save Will negates) for %{lvl} rd; a venomous snake counts as 1 snake, a constrictor as 2, an advanced snake as +1, and a giant snake as +2"',
   'Solid Note':
     'School="Conjuration (Creation)" ' +
     'Level=B1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Transforms a note into a hand-sized physical object with %{lvl+10} Strength, %{10+charismaModifier} Armor Class, and %{2 + baseAttack + charismaModifier} CMD for concentration + %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Transforms a note into a hand-sized physical object with %{lvl+10} Strength, %{10+charismaModifier} Armor Class, and %{2 + baseAttack + charismaModifier} CMD that resists movement for concentration + %{lvl} rd"',
   'Spark':
     'School="Evocation [Fire]" ' +
     'Level=Talent0,B0,C0,D0,O0,S0,W0,Witch0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Burns an unattended Fine flammable object (save Fortitude negates)"',
+      '"R%{25+lvl//2*5}\' Sets an unattended Fine flammable object on fire (save Fortitude negates)"',
   'Spiked Pit':
     'School="Conjuration (Creation)" ' +
     'Level=Caves3,S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2) and suffer +2d6 HP piercing; crawling out requires a DC 20 Climb check and inflicts 1d6 HP piercing each rd"',
+      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?50}\' deep extradimensional pit for %{lvl+1} rd; creatures on top of or adjacent to the pit fall in (save Reflex negates; adjacent creatures save at +2) and suffer +2d6 HP piercing; crawling out requires a DC 20 Climb check and inflicts 1d6 HP piercing each rd"',
   'Spiritual Ally':
     'School="Evocation [Force]" ' +
     'Level=C4,O4 ' +
     'Description=' +
-      // TODO reword attack bonus?
-      '"R%{100+lvl*10}\' Force being can be moved 30\' per rd as a swift action and makes +%{baseAttack+wisdomModifier}%{baseAttack>=5?\', +\'+(baseAttack-5+wisdomModifier):\'\'}%{baseAttack>=10?\', +\'+(baseAttack-10+wisdomModifier):\'\'} attacks that inflict 1d10+%{lvl//3<?5} HP for %{lvl} rd; the first attack on a target is subject to SR, and failure to overcome it ends the spell"',
+      '"R%{100+lvl*10}\' Creates a force being that can be moved 30\' as a swift action, counts as an ally for the purpose of flanking, and makes +%{baseAttack+wisdomModifier}%{baseAttack>=5?\'/+\'+(baseAttack-5+wisdomModifier):\'\'}%{baseAttack>=10?\'/+\'+(baseAttack-10+wisdomModifier):\'\'} attacks each rd that inflict 1d10+%{lvl//3<?5} HP, for %{lvl} rd; the first attack on a target is subject to SR, and failure to overcome it ends the spell"',
   'Spite':
     'School=Abjuration ' +
     'Level=Witch4 ' +
@@ -6614,7 +6613,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"%{100+lvl*10}\' Negates a target\'s attack (save Will inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for %{lvl} rd"',
+      '"%{100+lvl*10}\' Negates the target\'s attack (save Will inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for %{lvl} rd"',
   'Stone Call':
     'School="Conjuration (Creation) [Earth]" ' +
     'Level=D2,O2,R2,S2,W2 ' + // Oracle Stone
@@ -6629,12 +6628,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Electricity]" ' +
     'Level=C8,D8,O8,S8,W8,Witch8 ' +
     'Description=' +
-      '"Targets within 30\' suffer %{lvl}d8 HP electricity and stunned 1 rd (save Fortitude half HP only)"',
+      '"Targets within 30\' suffer %{lvl}d8 HP electricity and stunned for 1 rd (save Fortitude half HP only)"',
   'Strong Jaw':
     'School=Transmutation ' +
     'Level=D4,R3 ' +
     'Description=' +
-      '"Touched natural weapon inflicts damage as a creature 2 sizes larger (save Fortitude negates) for %{lvl} min"',
+      '"Causes the touched natural weapon to inflict damage as a creature 2 sizes larger (save Fortitude negates) for %{lvl} min"',
   'Stumble Gap':
     'School="Conjuration (Creation)" ' +
     'Level=S1,W1 ' +
@@ -6649,7 +6648,7 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=Murder5,S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target drops to 0 hit points in the next rd (save Fortitude inflcits staggered for 1 rd), then drops to -1 hit points in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
+      '"R%{25+lvl//2*5}\' Target drops to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drops to -1 hit point in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,S9,W9,Witch9 ' +
@@ -6659,7 +6658,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Summoning)" ' +
     'Level=Summoner2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Brings eidolon companion from home plane for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Brings eidolon companion from home plane, subject to <i>Protection From Evil</i> and dismissal via <i>Dispel Magic</i>, for %{lvl} min"',
   'Swarm Skin':
     'School=Transmutation ' +
     'Level=D6,Witch6 ' +
@@ -6670,12 +6669,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist3,D4 ' +
     'Description=' +
-      '"Foe non-reach melee hits inflict on the attacker 1d6+%{lvl<?15} HP piercing, grapples 2d6+%{lvl<?15} HP, and self unarmed attacks +1d6 HP, for %{lvl} rd"',
+      '"Grows spines on self that cause foe non-reach melee hits to inflict 1d6+%{lvl<?15} HP piercing on the attacker, foe grapples 2d6+%{lvl<?15} HP, and self unarmed attacks +1d6 HP, for %{lvl} rd"',
   'Threefold Aspect':
     'School=Transmutation ' +
     'Level=D5,Witch4 ' +
     'Description=' +
-      '"Allows self to transform freely between young (gaining +2 Dexterity and Constitution and suffering -2 Wisdom), adult (gaining +2 Wisdom and Intelligence and suffering -2 Dexterity), and elderly (gaining +4 Wisdom and Intelligence and suffering -2 Strength and Dexterity) for 24 hr"',
+      '"Allows self to transform freely between young adult (gives +2 Dexterity, +2 Constitution, and -2 Wisdom), adult (gives +2 Wisdom, +2 Intelligence, and -2 Dexterity), and elderly (gives +4 Wisdom, +4 Intelligence, -2 Strength, and -2 Dexterity) for 24 hr"',
   'Thundering Drums':
     'School="Evocation [Sonic]" ' +
     'Level=B3 ' +
@@ -6685,47 +6684,47 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=B1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target retroactively gains +%{lvl//5<?3} on a failed attack or skill roll (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Allows the target to add %{lvl//5<?3} to a failed attack or skill roll (save Will negates)"',
   'Tireless Pursuers':
     'School=Transmutation ' +
     'Level=Inquisitor4,R3 ' +
     'Description=' +
-      '"Self and %{lvl//3} touched suffer only half damage from hustling and forced march and ignore travel fatigue (save Fortitude negates) for %{lvl} hr, suffering fatigue afterward"',
+      '"Negates travel fatigue suffered by self and %{lvl//3} touched and reduces by half the damage from hustling and forced march, for %{lvl} hr; lingering nonlethal damage inflicts fatigue afterward"',
   'Tireless Pursuit':
     'School=Transmutation ' +
     'Level=Inquisitor1,R1 ' +
     'Description=' +
-      '"Self suffers only half damage from hustling and forced march and ignores travel fatigue for %{lvl} hr, suffering fatigue afterward"',
+      '"Negates travel fatigue suffered by self and reduces by half the damage from hustling and forced march, for %{lvl} hr; lingering nonlethal damage inflicts fatigue afterward"',
   'Touch Of Gracelessness':
     'School=Transmutation ' +
     'Level=B1,S1,W1 ' +
     'Description=' +
-      '"Touched suffers 1d6+%{lvl//2<?5} Dexterity damage, knocked prone when moving more than half Speed, and flying maneuverability reduced one step (save Fortitude half Dexterity damage only) for %{lvl} rd"',
+      '"Inflicts on the touched creature 1d6+%{lvl//2<?5} Dexterity damage, knocked prone when moving at more than half Speed, and flying maneuverability reduced by 1 step (save Fortitude half Dexterity damage only) for %{lvl} rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,O1,S1,W1 ' + // Oracle Waves
     'Description=' +
-      '"Touched gains +30 swim Speed and +8 Swim, plus the ability to take 10 when distracted and run while swimming, (save Fortitude negates) for %{lvl} min"',
+      '"Gives touched +30 swim Speed, +8 Swim, and the abilities to take 10 when distracted and to run while swimming, (save Fortitude negates) for %{lvl} min"',
   'Transmogrify':
     'School=Transmutation ' +
     'Level=Summoner4 ' +
     'Description=' +
-      '"Replaces evolutions applied to eidolon and self with others (save Will negates); can be cast only once per day"',
+      '"Replaces evolutions applied to eidolon and self with other choices (save Will negates); can be cast only once per day"',
   'Transmute Potion To Poison':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
     'Description=' +
-      '"Allows using any potion to poison a weapon for %{lvl} min"',
+      '"Allows using any potion within 1 rd to apply a poison lasting %{lvl} min to a weapon; the poison derived from a potion of level 0, 1, 2, or 3 inflicts 1 point of Dexterity damage per rd for 2 rd (save Fortitude DC 10 ends), 1d2 points of Dexterity damage per rd for 4 rd (save Fortitude DC 11 ends), 1d4 points of Strength damage for 6 rd (save Fortitude DC 13 ends), or 1d4 points of Constitution damage for 6 rd (save Fortitude two consecutive DC 14 saves end)"',
   'Treasure Stitching':
     'School=Transmutation ' +
     'Level=B4,C4,O4,S5,W5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Transforms objects within a 10 square foot area into embroidery (save Fortitude negates) for %{lvl} dy"',
+      '"R%{25+lvl//2*5}\' Transforms objects within a 10 foot cube into embroidery (save Fortitude negates) for %{lvl} dy"',
   'True Form':
     'School=Abjuration ' +
     'Level=D4,S4,W4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Removes polymorph effects from %{lvl//3} targets in a 15\' radius (save Will negates for the polymorph ability, and a second save 1 rd after a failure ends) for %{lvl} rd; reversing a polymorph spell requires a DC 11 + effect level caster level check (+15 maximum)"',
+      '"R%{100+lvl*10}\' Removes polymorph effects from %{lvl//3} targets in a 15\' radius (save Will negates for the polymorph ability, and a second, full-rd save during the duration after a failure ends) for %{lvl} rd; reversing a polymorph spell requires a DC 11 + effect level caster level check (+15 maximum)"',
   'Tsunami':
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D9,O9,Oceans9,S9,W9,Witch9 ' + // Oracle Waves, Witch Water
@@ -6735,12 +6734,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Force]" ' +
     'Level=S3,W3,Witch3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Force knife flanks and makes +%{baseAttack+(intelligenceModifier>?charismaModifier)} attacks on the same foe as self, inflicting 1d4 HP plus %{lvl//4}d6 HP sneak attack for %{lvl} rd; the first attack on a target is subject to SR, and failure to overcome it ends the spell"',
+      '"R%{25+lvl//2*5}\' Creates a force knife that flanks and makes +%{baseAttack+(intelligenceModifier>?charismaModifier)} attacks on the same foe as self, inflicting 1d4 HP, plus %{lvl//4}d6 HP from Sneak Attack, for %{lvl} rd; the first attack on a target is subject to SR, and failure to overcome it ends the spell"',
   'Twin Form':
     'School=Transmutation ' +
     'Level=Alchemist6 ' +
     'Description=' +
-      '"Splits self into two, starting each with the same statistics and hit points and allowing acting from either for %{lvl} rd, with the unused one unable to take actions other than moving; destruction of either ends the spell, and destruction of the one in use inflicts stunned until the start of the next turn"',
+      '"Splits self into two, starting each copy with the same statistics and hit points and allowing acting from either for %{lvl} rd, with the unused one unable to take actions other than moving; consumption or damage of equipment on either affects the equipment on both, the death of either copy ends the spell, and the death of the copy in use inflicts stunned until the start of the next turn"',
 
   'Unfetter':
     'School=Transmutation ' +
@@ -6751,7 +6750,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist4 ' +
     'Description=' +
-      '"Causes an extract to effect self as any known extract up to level 3"',
+      '"Causes an extract to affect self as any known extract of up to level 3"',
   'Unwilling Shield':
     'School=Necromancy ' +
     'Level=B5,Inquisitor5,S6,W6,Witch6 ' +
@@ -6761,13 +6760,13 @@ PFAPG.SPELLS = {
     'School="Enchantment (Charm) [Mind-Affecting]" ' +
     'Level=B0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' For flanking purposes, the target counts as an ally of self and not of foes (save Will negates) for 1 rd"',
+      '"R%{25+lvl//2*5}\' Causes the target to count as an ally of self and not of foes for flanking purposes (save Will negates) for 1 rd"',
 
   'Vanish':
     'School="Illusion (Glamer)" ' +
     'Level=B1,S1,W1 ' +
     'Description=' +
-      '"Touched becomes invisible (save Will negates) for %{lvl<?5} rd; target attacking ends the spell"',
+      '"Makes touched invisible (save Will negates) for %{lvl<?5} rd; target attacking ends the spell"',
   'Veil Of Positive Energy':
     'School="Abjuration [Good]" ' +
     'Level=P1 ' +
@@ -6782,7 +6781,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B2,R2,S3,W3 ' +
     'Description=' +
-      '"Gives R%{25+lvl//2*5}\' Target weapon or up to 50 projectiles in a container +%{lvl//4<?4} attacks and damage and bypass a choice of DR: blugeoning, cold iron, piercing, silver, or slashing, (save Will negates) for %{lvl} hr"',
+      '"R%{25+lvl//2*5}\' Enhances the target weapon or up to 50 projectiles in a container to make +%{lvl//4<?4} attacks and inflict +%{lvl//4<?4} HP, bypassing a choice of DR: bludgeoning, cold iron, piercing, silver, or slashing, (save Will negates) for %{lvl} hr"',
   'Vomit Swarm':
     'School="Conjuration (Summoning)" ' +
     'Level=Alchemist2,Witch2 ' +
@@ -6792,7 +6791,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Water]" ' +
     'Level=D7,O7,S7,W7,Witch7 ' + // Oracle Waves, Witch Elements
     'Description=' +
-      '"R%{400+lvl*40}\' Creates in a body of liquid a 15\' radius, 50\' deep whirlpool that inflicts 3d6 HP bludgeoning (save Reflex negates) on first contact, then 1d8 HP bludgeoning each rd on Medium and smaller creatures (save Reflex on the first rd after initial failure negates) for %{lvl-1} rd or until deliberately ejected; boats up to 30\' long suffer 6d6 HP and are pulled into the current (successful DC 25 Profession (Sailor) check half HP only), and longer boats suffer half HP only"',
+      '"R%{400+lvl*40}\' Creates in a body of liquid a 15\' radius, 50\' deep whirlpool that inflicts 3d6 HP bludgeoning on Large and smaller creatures (save Reflex negates), then 1d8 HP bludgeoning each rd on Medium and smaller creatures who fail their initial save (save Reflex negates) for %{lvl-1} rd or until deliberately ejected; boats up to 30\' long suffer 6d6 HP and are pulled into the current (a successful DC 25 Profession (Sailor) check reduces the damage by half and leaves the boat free of the current), and longer boats suffer half HP only"',
 
   'Wake Of Light':
     'School="Evocation [Good]" ' +
@@ -6803,7 +6802,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Earth,Fire]" ' +
     'Level=D8,S8,W8 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates %{lvl} contiguous 5\'x5\'x%{lvl//4}\\" wall sections, each with hardness 4 and 90 hit points, that inflict 2d4 HP fire to creatures within 10\' for %{lvl} rd; weapon strikes on the wall inflict 2d6 HP fire on the weapon, and passage through requires a DC 25 Strength check and inflicts 20d6 HP fire; allows a R60\' ranged touch once per rd that inflicts 10d6 HP fire but destroys 1d4 wall sections; all damage from the wall continues to inflict half HP for 1d3 rd after exposure ends"',
+      '"R%{100+lvl*10}\' Creates %{lvl} contiguous 5\'x5\'x%{lvl//4}\\" wall sections, each with hardness 4 and 90 hit points, that inflict 2d4 HP fire to creatures within 10\' and 1d4 HP fire to those within 20\' for %{lvl} rd; weapon strikes on the wall inflict 2d6 HP fire to the weapon, and passage through requires a DC 25 Strength check and inflicts 20d6 HP fire; allows a R60\' ranged touch once per rd as a move action that inflicts 10d6 HP fire but destroys 1d4 wall sections; all damage from the wall continues to inflict half HP for 1d3 rd after exposure ends"',
   'Wall Of Suppression':
     'School=Abjuration ' +
     'Level=S9,W9 ' +
@@ -6813,7 +6812,7 @@ PFAPG.SPELLS = {
     'School="Illusion (Pattern) [Light,Mind-Affecting]" ' +
     'Level=B4,S4,W4,Witch4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target loses any concealment and suffers dazed (save Will each rd ends the daze and transfers the spell 30\' to the nearest previously-unaffected foe) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Inflicts loss of concealment and dazed (save Will each rd ends the daze and transfers the spell 30\' to the nearest previously-untargeted foe) for %{lvl} rd"',
   'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
@@ -6823,17 +6822,17 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=C2,Inquisitor2,O2,P2 ' +
     'Description=' +
-      '"Touched weapon or unarmed strike gains a +2 sacred bonus to damage, and critical hits inflict shaken for 1 rd, (save Will negates) for %{lvl} min"',
+      '"Enchants the touched weapon or unarmed strike (save Will negates) for %{lvl} min, giving it a +2 sacred bonus to damage and critical hits that inflict shaken for 1 rd"',
   'Winds Of Vengeance':
     'School="Evocation [Air]" ' +
     'Level=C9,D9,O9,S9,W9,Wind9 ' +
     'Description=' +
-      '"Gives self a 60\' fly Speed and immunity to wind, gas, and ranged weapons; inflicts on attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for %{lvl} min"',
+      '"Gives self a 60\' fly Speed, breathable air, and immunity to wind, gas, and ranged weapons; inflicts on melee attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for %{lvl} min"',
   'World Wave':
     'School="Transmutation [Earth,Water]" ' +
     'Level=D9,Exploration9,O9,S9,W9 ' + // Oracle Nature
     'Description=' +
-      '"Allows self and %{lvl} designated creatures to ride a 20\'x%{lvl*10}\' section of natural terrain that forms a 30\' wave for %{lvl} rd or a 5\' swell for %{lvl} hr, moves %{speed*8}\' per rd, and inflicts 6d6 HP (wave) or 1d6 HP (swell) bludgeoning to non-natural objects, with constructs and undead sufferng double"',
+      '"Allows self and %{lvl} designated creatures to ride a 20\'x%{lvl*10}\' section of natural terrain that forms a 30\' wave for %{lvl} rd or a 5\' swell for %{lvl} hr, moves %{speed*8}\' per rd, and inflicts 6d6 HP (wave) or 1d6 HP (swell) bludgeoning to non-natural objects in its path; constructs and undead suffer double damage"',
   'Wrath':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Inquisitor1 ' +
@@ -6843,7 +6842,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Force,Light]" ' +
     'Level=C3,O3,P3 ' +
     'Description=' +
-      '"Touched gains a +%{lvl//4<?5} resistance bonus to saves (save Will negates) for %{lvl} min; target can dismiss the spell to inflict 2d8 HP force on creatures within 5\'"'
+      '"Gives touched a +%{lvl//4<?5} resistance bonus to saves (save Will negates) for %{lvl} min; the target can dismiss the spell to inflict 2d8 HP force on all creatures within 5\'"'
 
 };
 PFAPG.SPELLS_LEVELS_ADDED = {
@@ -9192,7 +9191,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
   let featureReplacements = null;
 
   // For classes that include a core archetype selectable, default to using
-  // that selecteable if no archetype is selected, thereby supporting the
+  // that selectable if no archetype is selected, thereby supporting the
   // display of characters created by the core Pathfinder plugin
   let archetypes =
     QuilvynUtils.getAttrValueArray(attrs, 'Selectables').filter(x => x.match(/:Archetype$/)).map(x => x.replace(/^\d+:/, '').replace(':Archetype', ''));
@@ -12773,7 +12772,7 @@ PFAPG.ruleNotes = function() {
     '    Quilvyn does not note that save DCs for spells cast via the' +
     '    Major/Minor Spell Expertise feats are charisma-based.\n' +
     '  </li><li>\n' +
-    '    Quilvyn assumes that the Mental Accuity revelation of a Lore Oracle' +
+    '    Quilvyn assumes that the Mental Acuity revelation of a Lore Oracle' +
     '    is taken at the minimum possible level (7).\n' +
     '  </li><li>\n' +
     '    Quilvyn does not note the Expanded Arcana requirement that the' +
