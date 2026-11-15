@@ -23,7 +23,7 @@ var attributes = {
   "skills.Knowledge (Engineering)":1, "skills.Knowledge (Nature)":1, "skills.Knowledge (Planes)":4, 
   "skills.Perform (Comedy)":10, "skills.Profession (Scribe)":1, "skills.Profession (Tanner)":20, 
   "skills.Sense Motive":1, "skills.Survival":3, "skills.Swim":2, "spells.Accelerate Poison(D2 Tran)":1, 
-  "spells.Aqueous Orb(D3 Conj)":1, "spells.Aspect Of The Bear(D2 Tran)":1, 
+  "spells.Alter Winds(D1 Tran)":1, "spells.Aqueous Orb(D3 Conj)":1, "spells.Aspect Of The Bear(D2 Tran)":1, 
   "spells.Aspect Of The Falcon(D1 Tran)":1, "spells.Aspect Of The Stag(D4 Tran)":1, 
   "spells.Aspect Of The Wolf(D5 Tran)":1, "spells.Ball Lightning(D4 Evoc)":1, 
   "spells.Blessing Of Courage and Life(C2 Conj)":1, "spells.Blessing Of Fervor(C4 Tran)":1, 
@@ -293,7 +293,6 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: C0: 4; C1: 4; C2: 4; C3: 3; C4: 3; C5: 2; D0: 4; D1: 4; D2: 4; D3: 3; D4: 3; D5: 2; Domain1: 2; Domain2: 2; Domain3: 2; Domain4: 2; Domain5: 2</td>
-        <td><b>Spell Points</b>: 116</td>
         <td><b>Spell DC</b>: C: 10; D: 10; Dispelling Touch: 13; Domain: 10; Masters Illusion: 13</td>
       </tr></table>
 </td>
@@ -304,7 +303,9 @@ var attributes = {
     <tr style="text-align:left">
       <td>Accelerate Poison (D2 Tran): Causes a choice of poison affecting touched to take effect immediately or to inflict damage twice as often for half its normal duration (<b>save Fortitude</b> DC 12 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Aqueous Orb (D3 Conj): R200' Creates a 10' diameter sphere of water that can be moved 30' per rd and rolled over 10' obstacles for 10 rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (<b>save Reflex</b> DC 13 negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (<b>save Reflex</b> DC 13 negates), inflicting an additional 2d6 HP nonlethal each rd</td>
+      <td>Alter Winds (D1 Tran): Increases or decreases strong natural winds 1 step in a 10' radius around a touched point (<b>save Will</b> DC 11 negates) for 10 hr</td>
+    </tr><tr style="text-align:left">
+      <td>Aqueous Orb (D3 Conj): R200' Creates a 10' diameter sphere of water that can be moved 30' per rd and rolled over 10' obstacles for 10 rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (<b>save Reflex</b> DC 13 negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (<b>save Reflex</b> DC 13 negates), inflicting an additional 2d6 HP nonlethal each rd and potential drowning</td>
     </tr><tr style="text-align:left">
       <td>Aspect Of The Bear (D2 Tran): Gives self a +2 enhancement bonus to natural armor, +2 CMB, and the ability to perform Bull Rush, Grapple, and Overrun without provoking AOO, for 10 min</td>
     </tr><tr style="text-align:left">
@@ -350,7 +351,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Feast Of Ashes (D2 Tran): R50' Inflicts insatiable hunger that leads to starvation (<b>save Fortitude</b> DC 12 negates), and eating causes 1 rd nausea (<b>save Fortitude</b> DC 12 negates), for 20 dy</td>
     </tr><tr style="text-align:left">
-      <td>Fire Snake (D5 Evoc): Adjacent 10 contiguous 5' squares within 60' inflict 10d6 HP fire (<b>save Reflex</b> DC 15 half)</td>
+      <td>Fire Snake (D5 Evoc): 10 contiguous 5' squares within 60', at least one of which must be adjacent to self, inflict 10d6 HP fire (<b>save Reflex</b> DC 15 half)</td>
     </tr><tr style="text-align:left">
       <td>Geyser (D4 Conj): R800' 5' sq inflicts 3d6 HP fire and up to 5d6 falling (<b>save Reflex</b> DC 14 half fire only), and the surrounding 25' radius inflicts 1d6 HP fire, for concentration + 1 rd</td>
     </tr><tr style="text-align:left">
@@ -398,7 +399,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Scent Trail (D2 Tran): R50' 10 designated creatures in a 15' radius gain +20 Survival to follow the target's trail (<b>save Fortitude</b> DC 12 negates) and the ability to understand scent messages left along it with a DC 20 Survival check, with a -1 penalty for each word or emotion in the message, for 10 hr</td>
     </tr><tr style="text-align:left">
-      <td>Seamantle (D8 Conj): 30' high water column around self inflicts DC 20 + spell level caster level checks on fire spells to take effect, suppresses the <i>flaming</i> and <i>flaming burst</i> properties of weapons (<b>save Fortitude</b> DC 18 negates), and gives self a +8 cover bonus to Armor Class, +4 Reflex, a 30' slam attack that inflicts 1d4 HP bludgeoning, and a touch that extinguishes fires for 10 min</td>
+      <td>Seamantle (D8 Conj): 30' high water column around self inflicts DC 20 + spell level caster level checks on fire spells to take effect, suppresses the <i>flaming</i> and <i>flaming burst</i> properties of weapons (<b>save Fortitude</b> DC 18 negates) for 1d4 rd, and gives self a +8 cover bonus to Armor Class, +4 Reflex, a 30' slam attack that inflicts 1d4 HP bludgeoning, and a standard action touch that extinguishes fires for 10 min</td>
     </tr><tr style="text-align:left">
       <td>Shifting Sand (D3 Tran): R200' 10' radius earth or sand creates difficult terrain, inflicts -10 Acrobatics, and entangles (<b>save Reflex</b> DC 13 negates; moving while entangled requires another save that inflicts knocked prone on failure) for 10 rd; can use a move action each rd to move the effect 10'</td>
     </tr><tr style="text-align:left">

@@ -269,7 +269,6 @@ var attributes = {
       <td>      <table id="SpellStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Spell Slots</b>: Antipaladin1: 3; Antipaladin2: 2; Antipaladin3: 1</td>
-        <td><b>Spell Points</b>: 10</td>
         <td><b>Spell DC</b>: Antipaladin: 13; Cruelty: 13; Detect Good: 13</td>
       </tr></table>
 </td>
@@ -286,17 +285,17 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Bestow Curse (Cruelty3 Necr): Touched permanently suffers a choice of -6 to an ability, -4 attacks, saves, and checks, or a 50% chance of losing its action each rd (<b>save Will</b> DC 17 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Blindness/Deafness (Antipaladin2 Necr): R170' Inflicts a choice of permanent blindness or deafness (<b>save Fortitude</b> DC 16 negates)</td>
+      <td>Blindness/Deafness (Antipaladin2 Necr): R170' Inflicts on a living target a choice of permanent blindness or deafness (<b>save Fortitude</b> DC 16 negates)</td>
     </tr><tr style="text-align:left">
       <td>Bull's Strength (Antipaladin2 Tran): Gives touched +4 Strength (<b>save Will</b> DC 15 negates) for 7 min</td>
     </tr><tr style="text-align:left">
-      <td>Cause Fear (Antipaladin1 Necr): R40' Causes a target with up to 5 HD to become frightened and flee for 1d4 rd (<b>save Will</b> DC 15 inflicts shaken for 1 rd)</td>
+      <td>Cause Fear (Antipaladin1 Necr): R40' Causes a living target with up to 5 HD to become frightened and flee for 1d4 rd (<b>save Will</b> DC 15 inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
-      <td>Command (Antipaladin1 Ench): R40' Causes the target to obey a command to approach, drop, fall, flee, or halt (<b>save Will</b> DC 14 negates) for 1 rd</td>
+      <td>Command (Antipaladin1 Ench): R40' Causes the living target to obey a command to approach, drop, fall, flee, or halt (<b>save Will</b> DC 14 negates) for 1 rd</td>
     </tr><tr style="text-align:left">
-      <td>Contagion (Antipaladin3 Necr): Infects touched with a random disease (<b>save Fortitude</b> DC 17 negates)</td>
+      <td>Contagion (Antipaladin3 Necr): Infects the touched living creature with a random disease (<b>save Fortitude</b> DC 17 negates)</td>
     </tr><tr style="text-align:left">
-      <td>Contagion (Cruelty3 Necr): Infects touched with a random disease (<b>save Fortitude</b> DC 17 negates)</td>
+      <td>Contagion (Cruelty3 Necr): Infects the touched living creature with a random disease (<b>save Fortitude</b> DC 17 negates)</td>
     </tr><tr style="text-align:left">
       <td>Corruption Resistance (Antipaladin2 Abju): Gives touched DR 10/- vs. magical damage based on a chosen alignment component (<b>save Fortitude</b> DC 15 negates) for 70 min</td>
     </tr><tr style="text-align:left">
@@ -306,7 +305,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Darkvision (Antipaladin2 Tran): Gives touched 60' black and white vision in total darkness (<b>save Will</b> DC 15 negates) for 7 hr</td>
     </tr><tr style="text-align:left">
-      <td>Death Knell (Antipaladin1 Necr): Touched creature with negative hit points dies (<b>save Will</b> DC 15 negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
+      <td>Death Knell (Antipaladin1 Necr): Kills the touched living creature that has negative hit points (<b>save Will</b> DC 15 negates), giving self 1d8 temporary hit points, +2 Strength, and +1 caster level for 10 min per target HD</td>
     </tr><tr style="text-align:left">
       <td>Deeper Darkness (Antipaladin3 Evoc): Touched object reduces the light level in a 60' radius by 2 steps for 70 min</td>
     </tr><tr style="text-align:left">
@@ -326,7 +325,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Dispel Magic (Antipaladin3 Abju): R170' Allows a successful caster level check vs. a DC of 11 + caster level to cancel an ongoing targeted spell, suppress a magic item for 1d4 rd, or disrupt a foe's spell casting</td>
     </tr><tr style="text-align:left">
-      <td>Doom (Antipaladin1 Necr): R170' Makes the target shaken (<b>save Will</b> DC 15 negates), inflicting -2 attacks, damage, saves, and checks, for 7 min</td>
+      <td>Doom (Antipaladin1 Necr): R170' Makes the living target shaken (<b>save Will</b> DC 15 negates), inflicting -2 attacks, damage, saves, and checks, for 7 min</td>
     </tr><tr style="text-align:left">
       <td>Eagle's Splendor (Antipaladin2 Tran): Gives touched +4 Charisma (<b>save Will</b> DC 15 negates) for 7 min</td>
     </tr><tr style="text-align:left">
@@ -366,11 +365,11 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Resounding Blow (Antipaladin4 Evoc): Enhances the held weapon to inflict +1d6 HP sonic, staggered for 1 rd while using Judgment or Smite, plus stunned for 1 rd and deafened 1d6 rd on a critical hit, (<b>save Fortitude</b> DC 17 HP only) for 7 rd; releasing the weapon ends the spell</td>
     </tr><tr style="text-align:left">
-      <td>Scare (Antipaladin2 Necr): R170' Causes 2 targets in a 15' radius with up to 6 HD to become frightened and flee for 7 rd (<b>save Will</b> DC 16 inflicts shaken for 1 rd)</td>
+      <td>Scare (Antipaladin2 Necr): R170' Causes 2 living targets in a 15' radius with up to 6 HD to become frightened and flee for 7 rd (<b>save Will</b> DC 16 inflicts shaken for 1 rd)</td>
     </tr><tr style="text-align:left">
       <td>Silence (Antipaladin2 Illu): R680' Eliminates sound in a 20' radius (<b>save Will</b> DC 15 for a targeted creature negates) for 7 rd</td>
     </tr><tr style="text-align:left">
-      <td>Slay Living (Antipaladin4 Necr): Melee touch attack inflicts 12d6+7 HP (<b>save Fortitude</b> DC 18 inflicts 3d6+7 HP)</td>
+      <td>Slay Living (Antipaladin4 Necr): Melee touch attack inflicts 12d6+7 HP on the living target (<b>save Fortitude</b> DC 18 inflicts 3d6+7 HP)</td>
     </tr><tr style="text-align:left">
       <td>Summon Monster I (Antipaladin1 Conj): R40' Summons a 1st-level extraplanar creature that fights foes and obeys orders for 7 rd</td>
     </tr><tr style="text-align:left">
@@ -382,7 +381,7 @@ var attributes = {
     </tr><tr style="text-align:left">
       <td>Undetectable Alignment (Antipaladin2 Abju): R40' Conceals the target's alignment from divination (<b>save Will</b> DC 15 negates) for 24 hr</td>
     </tr><tr style="text-align:left">
-      <td>Vampiric Touch (Antipaladin3 Necr): Melee touch inflicts 3d6 HP and gives self the same number of temporary hit points for 1 hr</td>
+      <td>Vampiric Touch (Antipaladin3 Necr): Melee touch inflicts 3d6 HP on the living target and gives self the same number of temporary hit points for 1 hr</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
