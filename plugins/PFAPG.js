@@ -5526,7 +5526,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Acid]" ' +
     'Level=S4,W4,Summoner4 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?100}\' deep extradimensional pit, containing 5\' of acid that inflicts 2d6 HP per rd and makes objects broken after 3 rd and destroyed after 4 (save Fortitude delays for 1 rd), for %{lvl+1} rd; creatures on top fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 30 Climb check"',
+      '"R%{100+lvl*10}\' Creates a 10\'x10\', %{lvl//2*10<?100}\' deep extradimensional pit containing 5\' of acid that inflicts 2d6 HP per rd and makes objects broken after 3 rd and destroyed after 4 (save Fortitude delays for 1 rd), for %{lvl+1} rd; creatures on top of or adjacent to the pit fall in (save Reflex negates, and creatures in adjacent squares save at +2); crawling out requires a DC 30 Climb check"',
   'Alchemical Allocation':
     'School=Transmutation ' +
     'Level=Alchemist2 ' +
@@ -5556,12 +5556,12 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D3,S3,W3,Summoner3 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates a 10\' diameter sphere of water that can be moved 30\' per rd and rolled over 10\' obstacles for %{lvl} rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd"',
+      '"R%{100+lvl*10}\' Creates a 10\' diameter sphere of water that can be moved 30\' per rd and rolled over 10\' obstacles for %{lvl} rd; it douses normal fires, acts as <i>Dispel Magic</i> on Large or smaller magical fires, inflicts 2d6 HP nonlethal (save Reflex negates), and engulfs 1 Large, 4 Medium, or 16 Small creatures who fail their saves (save Reflex negates), inflicting an additional 2d6 HP nonlethal each rd and potential drowning"',
   'Arcane Concordance':
     'School=Evocation ' +
     'Level=B3 ' +
     'Description=' +
-      '"Gives allied casters within 10\' +1 spell DC and free use of a choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for %{lvl} rd"',
+      '"10\' emanation gives allied casters +1 spell DC and free use of a choice of Enlarge Spell, Extend Spell, Silent Spell, or Still Spell for %{lvl} rd"',
   'Arrow Eruption':
     'School="Conjuration (Creation)" ' +
     'Level=R2,S2,W2 ' +
@@ -5607,7 +5607,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Teleportation)" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Teleports self and %{lvl//2} willing targets in 15\' radius to another location within range"',
+      '"R%{100+lvl*10}\' Teleports self and %{lvl//2} willing creatures in a 15\' radius to another location within range"',
   'Beguiling Gift':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B1,Witch1 ' +
@@ -5622,7 +5622,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Healing) [Good,Mind-Affecting]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"Causes a 30\' emanation that restores %{lvl//2}d6 hit points to good creatures, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies for %{lvl} rd, inflicts -1 of the same on foes for %{lvl} rd, and reduces self to -1 hit point and stable"',
+      '"Creates a 30\' emanation that restores %{lvl//2}d6 hit points to good creatures, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies for %{lvl} rd, inflicts -1 of the same on foes for %{lvl} rd, and reduces self to -1 hit point and stable"',
   'Blessing Of Courage and Life':
     'School="Conjuration (Healing)" ' +
     'Level=C2,O2,P2 ' +
@@ -5652,7 +5652,7 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=D4,R3 ' +
     'Description=' +
-      '"Enhances natural slashing or piercing attacks by touched (save Fortitude negates) to inflict bleed damage equal to the lesser of %{lvl//2} HP or the maximum damage possible from the attack itself for %{lvl} min"',
+      '"Enhances natural slashing or piercing attacks by the touched living creature (save Fortitude negates) to inflict bleed damage equal to the lesser of %{lvl//2} HP or the maximum damage possible from the attack itself for %{lvl} min"',
   "Bomber's Eye":
     'School=Transmutation ' +
     'Level=Alchemist1 ' +
@@ -5692,7 +5692,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Language-Dependent]" ' +
     'Level=B6,Leadership6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Gives the target the better of two attack, ability check, and skill check rolls (save Will negates) for %{lvl} rd or until a natural 20 is rolled"',
+      '"R%{25+lvl//2*5}\' Gives the living target the better of two attack, ability check, and skill check rolls (save Will negates) for %{lvl} rd or until a natural 20 is rolled"',
   'Bristle':
     'School=Transmutation ' +
     'Level=D1 ' +
@@ -5707,7 +5707,7 @@ PFAPG.SPELLS = {
     'School=Evocation ' +
     'Level=Inquisitor1 ' +
     'Description=' +
-      '"Inflicts %{lvl<?5}d6 HP on a touched restraint affecting self (save Fortitude half for magical restraints), ignoring hardness up to 10, or gives self a +%{lvl<?5} CMB or +%{lvl//2<?5} save attempt to break a Grapple (save Fortitude negates)"',
+      '"Inflicts %{lvl<?5}d6 HP, ignoring hardness up to 10, on a touched restraint affecting self (save Fortitude half for magical restraints), or gives self a +%{lvl<?5} CMB or +%{lvl//2<?5} save attempt to break a Grapple (save Fortitude negates)"',
 
   'Cacophonous Call':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
@@ -5743,7 +5743,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Fear,Language-Dependent,Mind-Affecting]" ' +
     'Level=Inquisitor2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Causes the target to cower with fear for %{lvl} rd (save Will each rd ends after inflicting shaken for 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' have a -2 penalty on the saves\' : \'\'})"',
+      '"R%{25+lvl//2*5}\' Causes the living target to cower with fear for %{lvl} rd (save Will each rd ends after inflicting shaken for 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' have a -2 penalty on the saves\' : \'\'})"',
   'Mass Castigate':
     'School="Enchantment (Compulsion) [Fear,Language-Dependent,Mind-Affecting]" ' +
     'Level=Inquisitor5 ' +
@@ -5753,7 +5753,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=P1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Gives self +2 melee attacks vs. an evil target and forces it to attack self or suffer sickened (save Will negates), for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Gives self +2 melee attacks vs. the evil target and forces it to attack self or suffer sickened (save Will negates), for %{lvl} min"',
   'Chameleon Stride':
     'School="Illusion (Glamer)" ' +
     'Level=R2 ' +
@@ -5773,7 +5773,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B5,Nightmare6,S6,W6,Witch6 ' +
     'Description=' +
-      '"Puts creatures within 5\' to sleep for 1 min (save Will negates; creatures with Scent have a -4 penalty on their saves) for %{lvl} rd"',
+      '"5\' emanation puts living creatures to sleep for 1 min (save Will negates; creatures with Scent have a -4 penalty on their saves) for %{lvl} rd"',
   'Cloak Of Shade':
     'School=Abjuration ' +
     'Level=D1,R1 ' +
@@ -5783,7 +5783,7 @@ PFAPG.SPELLS = {
     'School="Abjuration [Air]" ' +
     'Level=D3,O3,R3,S3,W3 ' + // Oracle Wind
     'Description=' +
-      '"R%{25+lvl//2*5}\' Creates winds that protect the target (save Fortitude negates) for %{lvl} min: foes suffer -4 ranged attacks, and Tiny foes cannot touch the target, are pushed away %{lvl*5}\', and suffer 3d6 HP nonlethal, plus 1d6 HP if they strike a solid object (save Fortitude negates)"',
+      '"R%{25+lvl//2*5}\' Creates winds that protect the living target (save Fortitude negates) for %{lvl} min: foes suffer -4 ranged attacks, and Tiny foes cannot touch the target, are pushed away %{lvl*5}\', and suffer 3d6 HP nonlethal, plus 1d6 HP if they strike a solid object (save Fortitude negates)"',
   'Confess':
     'School="Enchantment (Compulsion) [Language-Dependent,Mind-Affecting]" ' +
     'Level=Inquisitor2 ' +
@@ -5808,7 +5808,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Inquisitor4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Compels the target to attack self or suffer a cumulative -1 Armor Class, attacks, and saves each rd (save Will negates for 1 rd), up to a -5 maximum, for %{lvl} rd; attacking self resets the penalty to 0"',
+      '"R%{25+lvl//2*5}\' Compels the living target to attack self or suffer a cumulative -1 Armor Class, attacks, and saves each rd (save Will negates for 1 rd), up to a -5 maximum, for %{lvl} rd; attacking self resets the penalty to 0"',
   "Crafter's Curse":
     'School=Transmutation ' +
     'Level=S1,W1 ' +
@@ -5839,7 +5839,7 @@ PFAPG.SPELLS = {
     'School="Transmutation [Fire,Light]" ' +
     'Level=B1,C1,O1,R1,S1,W1,Witch1 ' +
     'Description=' +
-      '"Touched lantern lights magically and follows 5\' behind self for %{lvl} hr"',
+      '"Causes the touched lantern to light magically and follow 5\' behind self for %{lvl} hr"',
   'Deadly Finale':
     'School="Evocation [Sonic]" ' +
     'Level=B6 ' +
@@ -5864,12 +5864,12 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist5 ' +
     'Description=' +
-      '"Delays the effects of a second consumed extract of up to level 4 for up to %{lvl} dy; only one use of <i>Delayed Consumption</i> can be active at a time"',
+      '"Delays for up to %{lvl} days the effects of an extract of up to level 4 consumed by self; only one use of <i>Delayed Consumption</i> can be active at a time"',
   'Denounce':
     'School="Enchantment (Compulsion) [Language-Dependent,Mind-Affecting]" ' +
     'Level=B4,Inquisitor4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Shifts the attitudes of creatures in a 30\' radius toward the target 2 levels worse (save Will negates) for %{lvl} hr, and the target suffers -10 Diplomacy checks to improve the attitudes of those affected"',
+      '"R%{25+lvl//2*5}\' Shifts the attitudes of creatures in a 30\' radius toward the target 2 levels worse (save Will negates) for %{lvl} hr; the target suffers -10 Diplomacy checks to improve the attitudes of those affected"',
   'Detect Aberration':
     'School=Divination ' +
     'Level=D1,R1 ' +
@@ -5889,12 +5889,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Sonic]" ' +
     'Level=B4 ' +
     'Description=' +
-      '"10\' radius or 30\' cone inflicts 3d6 HP sonic and a +%{lvl+charismaModifier} CMB Bull Rush"',
+      '"10\' radius or 30\' cone inflicts 3d6 HP sonic and a +%{lvl+charismaModifier} Bull Rush"',
   'Divine Transfer':
     'School=Necromancy ' +
     'Level=P3 ' +
     'Description=' +
-      '"Restores to touched up to %{constitution} hit points, transferred from self, and gives DR %{charismaModifier}/evil for %{lvl} rd (save Fortitude negates)"',
+      '"Restores to the living touched creature up to %{constitution} hit points, transferred from self, and gives it DR %{charismaModifier}/evil for %{lvl} rd (save Fortitude negates)"',
   'Divine Vessel':
     'School=Transmutation ' + // One of [Chaotic,Evil,Good,Lawful]
     'Level=O8 ' +
@@ -5904,12 +5904,12 @@ PFAPG.SPELLS = {
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist3,S3,W3 ' +
     'Description=' +
-      '"Allows touched to absorb and release as +1d6 HP damage bonuses %{lvl*6} HP of a choice of acid, cold, electricity, or fire within %{lvl*10} min (save Fortitude negates)"',
+      '"Allows the touched creature to absorb and release as +1d6 HP damage bonuses %{lvl*6} HP of a choice of acid, cold, electricity, or fire within %{lvl*10} min (save Fortitude negates)"',
   "Dragon's Breath":
     'School=Evocation ' + // One of [Acid,Cold,Electricity,Fire]
     'Level=Alchemist4,S4,W4 ' +
     'Description=' +
-      '"Breath inflicts %{lvl<?12}d6 HP acid, cold, electricity, or fire in a 30\' cone or a 60\' line (save Reflex half); the type of dragon scale used to cast the spell determines energy type and area of effect"',
+      '"Inflicts %{lvl<?12}d6 HP acid, cold, electricity, or fire in a 30\' cone or a 60\' line (save Reflex half); the type of dragon scale used to cast the spell determines the energy type and area of effect"',
   'Dust Of Twilight':
     'School="Conjuration [Darkness]" ' +
     'Level=B2,S2,W2 ' +
@@ -5945,7 +5945,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"R%{400+lvl*40}\' Allows using the target each rd for a 30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack that injures both the target of the spell and the target of the throw (save Fortitude negates for 1 rd, and full-round resistance gives +4 on the save) for %{lvl} rd; Tiny, Small, Medium, Large, and Huge targets inflict 1d8 HP, 1d10 HP, 2d6 HP, 2d8 HP, and 2d10 HP, respectively"',
+      '"R%{400+lvl*40}\' Allows using the target each rd for a R30\' +%{lvl+(intelligenceModifier>?charismaModifier)} throw attack that injures both the target of the spell and the target of the throw (save Fortitude negates for 1 rd, and full-round resistance gives +4 on the save) for %{lvl} rd; Tiny, Small, Medium, Large, and Huge targets inflict 1d8 HP, 1d10 HP, 2d6 HP, 2d8 HP, and 2d10 HP, respectively"',
   'Enter Image':
     'School=Transmutation ' +
     'Level=B2,C3,O3,S3,W3 ' +
@@ -5955,7 +5955,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B6,C8,D8,Love8,O8,S8,W8 ' +
     'Description=' +
-      '"Touched becomes helpful, treats all as friends (save Will after being attacked negates for 1 rd), and suffers half Speed for %{lvl} rd"',
+      '"Touched creature becomes helpful, treats all as friends (save Will after being attacked negates for 1 rd), and suffers half Speed for %{lvl} rd"',
   'Evolution Surge':
     'School=Transmutation ' +
     'Level=Summoner3 ' +
@@ -5991,7 +5991,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B1,D1,R1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Allows the target to move normally in in difficult terrain (save Fortitude negates) for %{lvl*10} min"',
+      '"R%{25+lvl//2*5}\' Allows the target to move normally in difficult terrain (save Fortitude negates) for %{lvl*10} min"',
   'Mass Feather Step':
     'School=Transmutation ' +
     'Level=B3,D3,R3 ' +
@@ -6001,12 +6001,12 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=Inquisitor3,Witch2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
+      '"R%{25+lvl//2*5}\' Inflicts on the living target SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
   'Mass Fester':
     'School=Necromancy ' +
     'Level=Inquisitor6,Witch6 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl} targets in a 15\' radius suffer SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
+      '"R%{25+lvl//2*5}\' Inflicts on %{lvl} targets in a 15\' radius SR %{lvl+12} to spells that grant healing or temporary hit points and half healing from effects such as fast healing and regeneration for %{lvl} rd (save Fortitude effects last 1 rd)"',
   'Fiery Body':
     'School="Transmutation [Fire]" ' +
     'Level=Ash9,O9,S9,W9 ' + // Oracle Flame
@@ -6026,7 +6026,7 @@ PFAPG.SPELLS = {
     'School=Evocation ' +
     'Level=P3 ' +
     'Description=' +
-      '"Next Smite Evil attack within %{lvl} rd inflicts 1d6 HP positive (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, each rd on the start of the target\'s turn and when it attacks anyone but self for the remaining duration (save Will effects last for 1 rd)"',
+      '"Next Smite Evil attack within %{lvl} rd inflicts 1d6 HP positive (or 1d10 HP on an outsider, dragon, or undead), bypassing DR, on the start of the target\'s turn each rd and when it attacks anyone but self for the remaining duration (save Will effects last for 1 rd)"',
   'Fire Of Vengeance':
     'School="Evocation [Fire]" ' +
     'Level=P4 ' +
@@ -6036,7 +6036,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Fire]" ' +
     'Level=D5,S5,W5 ' +
     'Description=' +
-      '"Adjacent %{lvl} contiguous 5\' squares within 60\' inflict %{lvl<?15}d6 HP fire (save Reflex half)"',
+      '"%{lvl} contiguous 5\' squares within 60\', at least one of which must be adjacent to self, inflict %{lvl<?15}d6 HP fire (save Reflex half)"',
   'Firebrand':
     'School="Transmutation [Fire]" ' +
     'Level=S7,W7 ' +
@@ -6071,7 +6071,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=B5 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Negates the targeted foe\'s attack or redirects it to a chosen target, and causes the foe to count as an ally for flanking purposes for 1 rd (save Will negates)"',
+      '"R%{100+lvl*10}\' Negates the living target\'s attack or redirects it to another creature, and causes the target to count as an ally for flanking purposes for 1 rd (save Will negates)"',
   'Follow Aura':
     'School=Divination ' + // One of [Chaotic,Evil,Good,Lawful]
     'Level=Inquisitor2 ' +
@@ -6097,7 +6097,7 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=B2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Allows the target to add 2d4 to a failed attack or skill roll (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Allows the living target to add 2d4 to a failed attack or skill roll (save Will negates)"',
   'Getaway':
     'School="Conjuration (Teleportation)" ' +
     'Level=B6,S6,W6 ' +
@@ -6204,7 +6204,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=Witch1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target suffers the worse of two rolls on the next %{lvl>4?lvl//5+1+\' d20 rolls\':\'d20 roll\'} within %{lvl} rd; an aware target can spend a move action to negate the effect on a roll"',
+      '"R%{25+lvl//2*5}\' Causes the target to use the worse of two rolls on the next %{lvl>4?lvl//5+1+\' d20 rolls\':\'d20 roll\'} within %{lvl} rd; an aware target can spend a move action to negate the effect on a roll"',
   'Innocence':
     'School=Transmutation ' +
     'Level=B1 ' +
@@ -6224,12 +6224,12 @@ PFAPG.SPELLS = {
     'School="Illusion (Figment)" ' +
     'Level=B1 ' +
     'Description=' +
-      '"Touched ignores fatigue and exhaustion effects for %{lvl*10} min but suffers 1d6 HP nonlethal afterward (save Will negates)"',
+      '"Allows touched to ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterward (save Will negates)"',
   'Mass Invigorate':
     'School="Illusion (Figment)" ' +
     'Level=B3 ' +
     'Description=' +
-      '"%{lvl} touched ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterward (save Will negates)"',
+      '"Allows %{lvl} touched to ignore fatigue and exhaustion effects for %{lvl*10} min but suffer 1d6 HP nonlethal afterward (save Will negates)"',
 
   "Jester's Jaunt":
     'School="Conjuration (Teleportation)" ' +
@@ -6293,7 +6293,7 @@ PFAPG.SPELLS = {
     'School="Enchantment [Mind-Affecting]" ' +
     'Level=B1,Memory2,S1,W1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Causes the target to forget events since the start of its prior turn (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Causes the living target to forget events since the start of its prior turn (save Will negates)"',
   'Moonstruck':
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=D4,Insanity4,Rage6,S4,W4,Witch4 ' +
@@ -6336,12 +6336,12 @@ PFAPG.SPELLS = {
     'School="Evocation [Evil]" ' +
     'Level=S3,W3,Witch3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Inflicts sickened and 1d6 HP nonlethal each rd, and gives self +4 Intimidate vs. the target, (save Fortitude negates) for %{lvl<?10} rd"',
+      '"R%{25+lvl//2*5}\' Inflicts on the living target sickened and 1d6 HP nonlethal each rd, and gives self +4 Intimidate vs. the target, (save Fortitude negates) for %{lvl<?10} rd"',
   'Mass Pain Strike':
     'School="Evocation [Evil]" ' +
     'Level=S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Inflicts sickened and 1d6 nonlethal each rd on %{lvl} targets in a 15\' radius, and gives self +4 Intimidate vs. them, (save Fortitude negates) for %{lvl<?10} rd"',
+      '"R%{25+lvl//2*5}\' Inflicts sickened and 1d6 nonlethal each rd on %{lvl} living targets in a 15\' radius, and gives self +4 Intimidate vs. them, (save Fortitude negates) for %{lvl<?10} rd"',
   "Paladin's Sacrifice":
     'School=Abjuration ' +
     'Level=P2 ' +
@@ -6396,7 +6396,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Healing)" ' +
     'Level=B3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Allows ending a Bardic Performance to remove a choice of cowering, dazzled, exhausted, paralyzed, shaken, or stunned from the target (save Will negates)"',
+      '"R%{25+lvl//2*5}\' Allows ending a Bardic Performance to remove a choice of cowering, dazzled, exhausted, paralyzed, shaken, or stunned from the living target (save Will negates)"',
   'Purified Calling':
     'School="Conjuration (Healing)" ' +
     'Level=Summoner4 ' +
@@ -6462,12 +6462,12 @@ PFAPG.SPELLS = {
     'School="Conjuration (Healing)" ' +
     'Level=Alchemist5 ' +
     'Description=' +
-      '"Prepares contingent effects evoked the first time within %{lvl} hr that self is reduced to %{hitPoints//4} hit points: restores 4d8+%{lvl<?25} (maximum 25) hit points, inflicts 1d4 points of Intelligence and Wisdom damage, and gives +4 Constitution, +4 Strength, DR 5/-, and Haste effects for %{lvl} rd; afterward, self suffers exhaustion and 1d4 points Constitution damage, and, on a second use within 24 hr, an additional 1d4 points Constitution damage and death (save Fortitude DC 15 Constitution damage only)"',
+      '"Prepares contingent effects evoked the first time within %{lvl} hr that self is reduced to %{hitPoints//4} hit points: restores 4d8+%{lvl<?25} (maximum 25) hit points, inflicts 1d4 points of Intelligence and Wisdom damage, and gives +4 Constitution, +4 Strength, DR 5/-, and Haste effects for %{lvl} rd; afterward, inflicts exhaustion and 1d4 points Constitution damage, and, on a second use within 24 hr, an additional 1d4 points Constitution damage and death (save Fortitude DC 15 Constitution damage only)"',
   'Retribution':
     'School="Necromancy [Evil]" ' +
     'Level=Inquisitor3 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target who just damaged self suffers -4 attack, skill checks, and ability checks for %{lvl} rd (save Fortitude effects last 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' suffer -2 on the save\' : \'\'})"',
+      '"R%{25+lvl//2*5}\' Inflicts on a target who just damaged self -4 attack, skill checks, and ability checks for %{lvl} rd (save Fortitude effects last 1 rd%{deity != \'None\' ? \'; worshipers of \' + deity + \' suffer -2 on the save\' : \'\'})"',
   'Reviving Finale':
     'School="Conjuration (Healing)" ' +
     'Level=B3 ' +
@@ -6508,7 +6508,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Mind-Affecting]" ' +
     'Level=B1 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Allows ending a Bardic Performance to give the target a reroll on a failed save"',
+      '"R%{25+lvl//2*5}\' Allows ending a Bardic Performance to give the living target a reroll on a failed save"',
   'Scent Trail':
     'School=Transmutation ' +
     'Level=D2 ' +
@@ -6528,7 +6528,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Water]" ' +
     'Level=D8,O8,S8,W8,Witch8 ' + // Oracle Waves, Witch Water
     'Description=' +
-      '"30\' high water column around self inflicts DC 20 + spell level caster level checks on fire spells to take effect, suppresses the <i>flaming</i> and <i>flaming burst</i> properties of weapons (save Fortitude negates), and gives self a +8 cover bonus to Armor Class, +4 Reflex, a 30\' slam attack that inflicts 1d%{size==\'Small\'?3:size==\'Large\'?6:4} HP bludgeoning, and a touch that extinguishes fires for %{lvl} min"',
+      '"30\' high water column around self inflicts DC 20 + spell level caster level checks on fire spells to take effect, suppresses the <i>flaming</i> and <i>flaming burst</i> properties of weapons (save Fortitude negates) for 1d4 rd, and gives self a +8 cover bonus to Armor Class, +4 Reflex, a 30\' slam attack that inflicts 1d%{size==\'Small\'?3:size==\'Large\'?6:4} HP bludgeoning, and a standard action touch that extinguishes fires for %{lvl} min"',
   'Seek Thoughts':
     'School="Divination [Mind-Affecting]" ' +
     'Level=Alchemist3,B3,Inquisitor3,Summoner3,Thought3,S3,W3,Witch3 ' +
@@ -6543,7 +6543,7 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,S2,W2 ' +
     'Description=' +
-      '"Touched can use %{lvl//5+1} language%{lvl>4?\'s\':\'\'} that self knows (save Will negates) for 24 hr"',
+      '"Allows the touched creature to read, speak, and understand %{lvl//5+1} language%{lvl>4?\'s\':\'\'} that self knows (save Will negates) for 24 hr"',
   'Share Senses':
     'School="Divination (Scrying)" ' +
     'Level=S4,W4,Witch3 ' +
@@ -6563,7 +6563,7 @@ PFAPG.SPELLS = {
     'School=Divination ' +
     'Level=B0,Inquisitor0 ' +
     'Description=' +
-      '"R30\' Allows using Perception with a -5 penalty to look for fine details and hidden features at range"',
+      '"R30\' Allows self to use Perception with a -5 penalty to look for fine details and hidden features at range"',
   'Sirocco':
     'School="Evocation [Air,Fire]" ' +
     'Level=D6,O6,Storms6,S6,W6 ' + // Oracle Wind
@@ -6613,7 +6613,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Compulsion) [Mind-Affecting]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"%{100+lvl*10}\' Negates the target\'s attack (save Will inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for %{lvl} rd"',
+      '"R%{100+lvl*10}\' Negates the target\'s attack (save Will inflicts -5 attack and damage) and inflicts -2 attack and damage when attacking the same creature for %{lvl} rd"',
   'Stone Call':
     'School="Conjuration (Creation) [Earth]" ' +
     'Level=D2,O2,R2,S2,W2 ' + // Oracle Stone
@@ -6623,7 +6623,7 @@ PFAPG.SPELLS = {
     'School="Transmutation [Earth]" ' +
     'Level=Alchemist1,D1,S1,W1 ' +
     'Description=' +
-      '"Self unarmed attacks inflict 1d%{size==\'Small\'?4:6} HP bludgeoning without provoking AOO and ignore object hardness up to 7 for %{lvl} min"',
+      '"Enhances self unarmed attacks to inflict 1d%{size==\'Small\'?4:6} HP bludgeoning without provoking AOO and to ignore object hardness up to 7 for %{lvl} min"',
   'Stormbolts':
     'School="Evocation [Electricity]" ' +
     'Level=C8,D8,O8,S8,W8,Witch8 ' +
@@ -6648,17 +6648,17 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=Murder5,S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Target drops to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drops to -1 hit point in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
+      '"R%{25+lvl//2*5}\' Living target drops to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drops to -1 hit point in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,S9,W9,Witch9 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl//2} targets in a 15\' radius drop to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drop to -1 hit point in the second rd (save Fortitude delays for 1 rd), then die in the third rd (save Fortitude delays for 1 rd) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' %{lvl//2} living targets in a 15\' radius drop to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drop to -1 hit point in the second rd (save Fortitude delays for 1 rd), then die in the third rd (save Fortitude delays for 1 rd) for %{lvl} rd"',
   'Summon Eidolon':
     'School="Conjuration (Summoning)" ' +
     'Level=Summoner2 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Brings eidolon companion from home plane, subject to <i>Protection From Evil</i> and dismissal via <i>Dispel Magic</i>, for %{lvl} min"',
+      '"R%{25+lvl//2*5}\' Summons eidolon companion, subject to <i>Protection From Evil</i> and dismissal via <i>Dispel Magic</i>, for %{lvl} min"',
   'Swarm Skin':
     'School=Transmutation ' +
     'Level=D6,Witch6 ' +
@@ -6699,7 +6699,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=B1,S1,W1 ' +
     'Description=' +
-      '"Inflicts on the touched creature 1d6+%{lvl//2<?5} Dexterity damage, knocked prone when moving at more than half Speed, and flying maneuverability reduced by 1 step (save Fortitude half Dexterity damage only) for %{lvl} rd"',
+      '"Touch inflicts 1d6+%{lvl//2<?5} Dexterity damage, knocked prone when moving at more than half Speed, and flying maneuverability reduced by 1 step (save Fortitude half Dexterity damage only) for %{lvl} rd"',
   'Touch Of The Sea':
     'School=Transmutation ' +
     'Level=Alchemist1,D1,O1,S1,W1 ' + // Oracle Waves
@@ -6739,7 +6739,7 @@ PFAPG.SPELLS = {
     'School=Transmutation ' +
     'Level=Alchemist6 ' +
     'Description=' +
-      '"Splits self into two, starting each copy with the same statistics and hit points and allowing acting from either for %{lvl} rd, with the unused one unable to take actions other than moving; consumption or damage of equipment on either affects the equipment on both, the death of either copy ends the spell, and the death of the copy in use inflicts stunned until the start of the next turn"',
+      '"Splits self into two, starting each copy with the same statistics and hit points and allowing acting from either for %{lvl} rd, with the unused one unable to take actions other than moving; consumption of or damage to equipment on either affects the equipment on both, the death of either copy ends the spell, and the death of the copy in use inflicts stunned until the start of the next turn"',
 
   'Unfetter':
     'School=Transmutation ' +
@@ -6760,7 +6760,7 @@ PFAPG.SPELLS = {
     'School="Enchantment (Charm) [Mind-Affecting]" ' +
     'Level=B0 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Causes the target to count as an ally of self and not of foes for flanking purposes (save Will negates) for 1 rd"',
+      '"R%{25+lvl//2*5}\' Causes the living target to count as an ally of self and not of foes for flanking purposes (save Will negates) for 1 rd"',
 
   'Vanish':
     'School="Illusion (Glamer)" ' +
@@ -6776,7 +6776,7 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=R3 ' +
     'Description=' +
-      '"Arrow or bolt fired immediately also inflicts 1d3 Constitution damage per rd (save Fortitude ends) for 6 rd"',
+      '"Enhances an arrow or bolt fired immediately to also inflict 1d3 Constitution damage per rd (save Fortitude ends) for 6 rd"',
   'Versatile Weapon':
     'School=Transmutation ' +
     'Level=B2,R2,S3,W3 ' +
@@ -6812,7 +6812,7 @@ PFAPG.SPELLS = {
     'School="Illusion (Pattern) [Light,Mind-Affecting]" ' +
     'Level=B4,S4,W4,Witch4 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Inflicts loss of concealment and dazed (save Will each rd ends the daze and transfers the spell 30\' to the nearest previously-untargeted foe) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' Inflicts on the living target loss of concealment and dazed (save Will each rd ends the daze and transfers the spell 30\' to the nearest previously-untargeted foe) for %{lvl} rd"',
   'Ward The Faithful':
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
