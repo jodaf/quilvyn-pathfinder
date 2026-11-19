@@ -38,7 +38,9 @@ var attributes = {
   "feats.Weapon Focus (Longsword)":1, "feats.Weapon Specialization (Longsword)":1, "feats.Whirlwind Attack":1, 
   "feats.Wind Stance":1, "gender":"Male", "hitPoints":67, "intelligence":15, "languages.Aquan":1, 
   "languages.Ignan":1, "levels.Fighter":17, "name":"Feats-L2", "notes":"* +1 Dexterity", 
-  "race":"Human", "shield":"Buckler", "skills.Climb":2, "skills.Craft (Weapons)":15, 
+  "race":"Human", "selectableFeatures.Fighter - Weapon Training 1 (Axes)":1, 
+  "selectableFeatures.Fighter - Weapon Training 2 (Heavy Blades)":1, "selectableFeatures.Fighter - Weapon Training 3 (Hammers)":1, 
+  "selectableFeatures.Fighter - Weapon Training 4 (Close)":1, "shield":"Buckler", "skills.Climb":2, "skills.Craft (Weapons)":15, 
   "skills.Escape Artist":6, "skills.Handle Animal":10, "skills.Intimidate":12, 
   "skills.Knowledge (History)":7, "skills.Perception":2, "skills.Profession (Scribe)":10, 
   "skills.Profession (Soldier)":5, "skills.Profession (Tanner)":2, "skills.Ride":12, "skills.Swim":2, 
@@ -105,6 +107,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: Fighter: 9; General: 10</td>
+        <td><b>Selectable Feature Count</b>: Fighter (Weapon Training 1); Fighter (Weapon Training 2); Fighter (Weapon Training 3); Fighter (Weapon Training 4)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -112,7 +115,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic Steps; Bleeding Critical; Blinding Critical; Catch Off-Guard; Cleave; Combat Expertise; Combat Reflexes; Critical Focus; Critical Mastery; Dazzling Display; Deadly Stroke; Deafening Critical; Deflect Arrows; Diehard; Disruptive; Dodge; Double Slice; Endurance; Exhausting Critical; Far Shot; Gorgon's Fist; Great Cleave; Great Fortitude; Greater Bull Rush; Greater Disarm; Greater Feint; Greater Grapple; Greater Overrun; Greater Penetrating Strike; Greater Shield Focus; Greater Sunder; Greater Trip; Greater Two-Weapon Fighting; Greater Vital Strike; Greater Weapon Focus (Longsword); Greater Weapon Specialization (Longsword); Improved Bull Rush; Improved Disarm; Improved Feint; Improved Grapple; Improved Great Fortitude; Improved Iron Will; Improved Lightning Reflexes; Improved Overrun; Improved Precise Shot; Improved Shield Bash; Improved Sunder; Improved Trip; Improved Two-Weapon Fighting; Improved Unarmed Strike; Improved Vital Strike; Improvised Weapon Mastery; Iron Will; Lightning Reflexes; Lightning Stance; Manyshot; Medusa's Wrath; Mobility; Mounted Archery; Mounted Combat; Nimble Moves; Penetrating Strike; Pinpoint Targeting; Point-Blank Shot; Power Attack; Precise Shot; Rapid Shot; Ride-By Attack; Scorpion Style; Shatter Defenses; Shield Focus; Shield Master; Shield Slam; Shot On The Run; Sickening Critical; Snatch Arrows; Spellbreaker; Spirited Charge; Spring Attack; Staggering Critical; Stand Still; Stunning Critical; Stunning Fist; Tiring Critical; Trample; Two-Weapon Defense; Two-Weapon Fighting; Two-Weapon Rend; Unseat; Vital Strike; Weapon Focus (Longsword); Weapon Specialization (Longsword); Whirlwind Attack; Wind Stance</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training 1 (Axes); Weapon Training 2 (Heavy Blades); Weapon Training 3 (Hammers); Weapon Training 4 (Close); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -121,6 +124,8 @@ var attributes = {
         <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): +9 Fighter Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Weapon Training: 4 selections</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -199,7 +204,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Banded Mail</td>
         <td><b>Shield</b>: Buckler</td>
-        <td><b>Weapons</b>: Longsword (+21 d8+6 x2@19); Morningstar (+19 d8+2 x2@20); Shortbow (+21 d6 x3@20 R60'); Unarmed Strike (+19 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Longsword (+24 d8+9 x2@19); Morningstar (+19 d8+2 x2@20); Shortbow (+21 d6 x3@20 R60'); Unarmed Strike (+20 d3+3 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -233,7 +238,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Specialization (Longsword): +2 Longsword Damage Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Training: +4, +3, +2, +1 attacks, damage, CMB, and CMD with weapons from 4 chosen weapon groups</i></td>
+        <td><i>Weapon Training: +4 attacks and damage with axes, +3 with heavy blades, +2 with hammers, +1 with close</i></td>
       </tr><tr style="text-align:center">
         <td>Bleeding Critical: Critical hits can also inflict 2d6 HP bleed each rd; magical healing or a DC 15 Heal ends</td>
       </tr><tr style="text-align:center">
@@ -382,6 +387,8 @@ var attributes = {
         <td>Unseat: When mounted, a successful lance attack vs. a mounted foe allows an immediate Bull Rush attempt to unseat it</td>
       </tr><tr style="text-align:center">
         <td>Vital Strike: Can use an attack action to make a single attack that inflicts 4x base damage</td>
+      </tr><tr style="text-align:center">
+        <td>Weapon Training: +4 CMB and CMD with axes, +3 with heavy blades, +2 with hammers, +1 with close</td>
       </tr><tr style="text-align:center">
         <td>Whirlwind Attack: Can use a full attack action to make 1 attack vs. each foe within reach</td>
       </tr><tr style="text-align:center">

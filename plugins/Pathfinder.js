@@ -1410,9 +1410,11 @@ Pathfinder.FEATURES = {
     'Section=combat ' +
     'Note="Crit threats with a chosen weapon are automatically confirmed and gain +1 damage multiplier; cannot be disarmed when wielding this weapon"',
   'Weapon Training':
-    'Section=combat ' +
-    // TODO Implement? Group properties on weapons?
-    'Note="%V attacks, damage, CMB, and CMD with weapons from %1 chosen weapon group%{combatNotes.weaponTraining.1==1?\'\':\'s\'}"',
+    'Section=combat,combat,feature ' +
+    'Note=' +
+      '"+%V attacks and damage with %1%{combatNotes.weaponTraining>1?\', +\'+(combatNotes.weaponTraining-1)+\' with %2\':\'\'}%{combatNotes.weaponTraining>2?\', +\'+(combatNotes.weaponTraining-2)+\' with %3\':\'\'}%{combatNotes.weaponTraining>3?\', +1 with %4\':\'\'}",' +
+      '"+%{combatNotes.weaponTraining} CMB and CMD with %{combatNotes.weaponTraining.1}%{combatNotes.weaponTraining>1?\', +\'+(combatNotes.weaponTraining-1)+\' with \'+combatNotes.weaponTraining.2:\'\'}%{combatNotes.weaponTraining>2?\', +\'+(combatNotes.weaponTraining-2)+\' with \'+combatNotes.weaponTraining.3:\'\'}%{combatNotes.weaponTraining>3?\', +1 with \'+combatNotes.weaponTraining.4:\'\'}",' +
+      '"%V selection%{featureNotes.weaponTraining>1?\'s\':\'\'}"',
 
   // Monk
   'Abundant Step':
@@ -1787,7 +1789,7 @@ Pathfinder.FEATURES = {
     'Note="Touch gives +%{levels.Sorcerer//2>?1} attacks, skill checks, ability checks, and saves for 1 rd %{charismaModifier+3} times per day"',
   'Within Reach':
     'Section=save ' +
-    'Note="Taking fatal damage allows a DC 20 Will save that results in -1 hit point and stable once per day"',
+    'Note="Taking fatal damage allows a DC 20 Will save that results in -1 hit points and stable once per day"',
   // Draconic
   'Blindsense':SRD35.FEATURES.Blindsense,
   'Bloodline Draconic':
@@ -3311,7 +3313,7 @@ Pathfinder.RACES = {
     'Speed=20 ' +
     'Features=' +
       '"Dwarf Ability Adjustment",' +
-      '"Weapon Familiarity (Dwarven Urgosh; Dwarven Waraxe)",' +
+      '"Weapon Familiarity (Dwarven Urgrosh; Dwarven Waraxe)",' +
       '"Weapon Proficiency (Battleaxe; Heavy Pick; Warhammer)",' +
       '"Darkvision","Defensive Training","Dwarf Hatred","Greed","Hardy",' +
       '"Stability","Steady","Stonecunning" ' +
@@ -5242,87 +5244,109 @@ Pathfinder.TRAITS = {
 
 };
 Pathfinder.WEAPONS = {
-  'Bastard Sword':SRD35.WEAPONS['Bastard Sword'],
-  'Battleaxe':SRD35.WEAPONS.Battleaxe,
+  'Bastard Sword':SRD35.WEAPONS['Bastard Sword'] + ' Properties="Heavy Blades"',
+  'Battleaxe':SRD35.WEAPONS.Battleaxe + ' Properties=Axes',
   'Bolas':SRD35.WEAPONS.Bolas,
-  'Blowgun':'Level=Simple Category=Ranged Damage=d2 Range=20',
-  'Club':SRD35.WEAPONS.Club,
-  'Composite Longbow':SRD35.WEAPONS['Composite Longbow'],
-  'Composite Shortbow':SRD35.WEAPONS['Composite Shortbow'],
-  'Dagger':SRD35.WEAPONS.Dagger,
+  'Blowgun':'Level=Simple Category=Ranged Damage=d2 Range=20 Properties=Thrown',
+  'Club':SRD35.WEAPONS.Club + ' Properties=Thrown,Hammers',
+  'Composite Longbow':
+    SRD35.WEAPONS['Composite Longbow'] + ' Properties=Projectile,Bows',
+  'Composite Shortbow':
+    SRD35.WEAPONS['Composite Shortbow'] + ' Properties=Projectile,Bows',
+  'Dagger':SRD35.WEAPONS.Dagger + ' Properties=Thrown,"Light Blades"',
   'Dart':SRD35.WEAPONS.Dart,
-  'Dire Flail':SRD35.WEAPONS['Dire Flail'],
-  'Dwarven Urgosh':SRD35.WEAPONS['Dwarven Urgosh'],
-  'Dwarven Waraxe':SRD35.WEAPONS['Dwarven Waraxe'],
-  'Elven Curve Blade':'Level=Exotic Category=Two-Handed Damage=d10 Threat=18',
-  'Falchion':SRD35.WEAPONS.Falchion,
-  'Flail':SRD35.WEAPONS.Flail,
-  'Gauntlet':SRD35.WEAPONS.Gauntlet,
-  'Glaive':SRD35.WEAPONS.Glaive,
+  'Dire Flail':SRD35.WEAPONS['Dire Flail'] + ' Properties=Double,Flails',
+  'Dwarven Urgrosh':SRD35.WEAPONS['Dwarven Urgrosh'],
+  'Dwarven Waraxe':SRD35.WEAPONS['Dwarven Waraxe'] + ' Properties=Axes',
+  'Elven Curve Blade':
+    'Level=Exotic Category=Two-Handed Damage=d10 Threat=18 ' +
+    'Properties="Heavy Blades"',
+  'Falchion':SRD35.WEAPONS.Falchion + ' Properties="Heavy Blades"',
+  'Flail':SRD35.WEAPONS.Flail + ' Properties=Flails',
+  'Gauntlet':SRD35.WEAPONS.Gauntlet + ' Properties=Close',
+  'Glaive':SRD35.WEAPONS.Glaive + ' Properties=Reach,"Pole Arms"',
   'Gnome Hooked Hammer':SRD35.WEAPONS['Gnome Hooked Hammer'],
-  'Greataxe':SRD35.WEAPONS.Greataxe,
-  'Greatclub':SRD35.WEAPONS.Greatclub,
-  'Greatsword':SRD35.WEAPONS.Greatsword,
-  'Guisarme':SRD35.WEAPONS.Guisarme,
-  'Halberd':SRD35.WEAPONS.Halberd,
+  'Greataxe':SRD35.WEAPONS.Greataxe + ' Properties=Axes',
+  'Greatclub':SRD35.WEAPONS.Greatclub + ' Properties=Hammers',
+  'Greatsword':SRD35.WEAPONS.Greatsword + ' Properties="Heavy Blades"',
+  'Guisarme':SRD35.WEAPONS.Guisarme + ' Properties=Reach,"Pole Arms"',
+  'Halberd':SRD35.WEAPONS.Halberd + ' Properties="Pole Arms"',
+  // N.B. HSS isn't in the list of thrown weapons in the equipment section of
+  // the rules, but the Fighter's Weapon Training Thrown category includes it
   'Halfling Sling Staff':
-    'Level=Exotic Category=Ranged Damage=d8 Crit=3 Range=80',
-  'Hand Crossbow':SRD35.WEAPONS['Hand Crossbow'],
-  'Handaxe':SRD35.WEAPONS.Handaxe,
-  'Heavy Crossbow':SRD35.WEAPONS['Heavy Crossbow'],
-  'Heavy Flail':SRD35.WEAPONS['Heavy Flail'],
-  'Heavy Mace':SRD35.WEAPONS['Heavy Mace'],
-  'Heavy Pick':SRD35.WEAPONS['Heavy Pick'],
-  'Heavy Shield':SRD35.WEAPONS['Heavy Shield'],
-  'Heavy Spiked Shield':SRD35.WEAPONS['Heavy Spiked Shield'],
+    'Level=Exotic Category=Ranged Damage=d8 Crit=3 Range=80 ' +
+    'Properties=Projectile',
+  'Hand Crossbow':
+    SRD35.WEAPONS['Hand Crossbow'] + ' Properties=Projectile,Crossbows',
+  'Handaxe':SRD35.WEAPONS.Handaxe + ' Properties=Axes',
+  'Heavy Crossbow':
+    SRD35.WEAPONS['Heavy Crossbow'] + ' Properties=Projectile,Crossbows',
+  'Heavy Flail':SRD35.WEAPONS['Heavy Flail'] + ' Properties=Flails',
+  'Heavy Mace':SRD35.WEAPONS['Heavy Mace'] + ' Properties=Hammers',
+  'Heavy Pick':SRD35.WEAPONS['Heavy Pick'] + ' Properties=Axes',
+  'Heavy Shield':SRD35.WEAPONS['Heavy Shield'] + ' Properties=Close',
+  'Heavy Spiked Shield':
+    SRD35.WEAPONS['Heavy Spiked Shield'] + ' Properties=Close',
   'Improvised':SRD35.WEAPONS.Improvised,
-  'Javelin':SRD35.WEAPONS.Javelin,
-  'Kama':SRD35.WEAPONS.Kama,
-  'Kukri':SRD35.WEAPONS.Kukri,
-  'Lance':SRD35.WEAPONS.Lance,
-  'Light Crossbow':SRD35.WEAPONS['Light Crossbow'],
-  'Light Hammer':SRD35.WEAPONS['Light Hammer'],
-  'Light Mace':SRD35.WEAPONS['Light Mace'],
-  'Light Pick':SRD35.WEAPONS['Light Pick'],
-  'Light Shield':SRD35.WEAPONS['Light Shield'],
-  'Light Spiked Shield':SRD35.WEAPONS['Light Spiked Shield'],
-  'Longbow':SRD35.WEAPONS.Longbow,
-  'Longspear':SRD35.WEAPONS.Longspear,
-  'Longsword':SRD35.WEAPONS.Longsword,
-  'Morningstar':SRD35.WEAPONS.Morningstar,
+  'Javelin':SRD35.WEAPONS.Javelin + ' Properties=Thrown,Spears',
+  'Kama':SRD35.WEAPONS.Kama + ' Properties="Light Blades",Monk',
+  'Kukri':SRD35.WEAPONS.Kukri + ' Properties="Light Blades"',
+  'Lance':SRD35.WEAPONS.Lance + ' Properties=Reach,Spears',
+  'Light Crossbow':
+    SRD35.WEAPONS['Light Crossbow'] + ' Properties=Projectile,Crossbows',
+  'Light Hammer':SRD35.WEAPONS['Light Hammer'] + ' Properties=Thrown,Hammers',
+  'Light Mace':SRD35.WEAPONS['Light Mace'] + ' Properties=Hammers',
+  'Light Pick':SRD35.WEAPONS['Light Pick'] + ' Properties=Axes',
+  'Light Shield':SRD35.WEAPONS['Light Shield'] + ' Properties=Close',
+  'Light Spiked Shield':
+    SRD35.WEAPONS['Light Spiked Shield'] + ' Properties=Close',
+  'Longbow':SRD35.WEAPONS.Longbow + ' Properties=Projectile,Bows',
+  'Longspear':SRD35.WEAPONS.Longspear + ' Properties=Reach,Spears',
+  'Longsword':SRD35.WEAPONS.Longsword + ' Properties="Heavy Blades"',
+  'Morningstar':SRD35.WEAPONS.Morningstar + ' Properties=Flails',
   'Net':SRD35.WEAPONS.Net,
-  'Nunchaku':SRD35.WEAPONS.Nunchaku,
-  'Orc Double Axe':SRD35.WEAPONS['Orc Double Axe'],
-  'Punching Dagger':SRD35.WEAPONS['Punching Dagger'],
-  'Quarterstaff':SRD35.WEAPONS.Quarterstaff,
-  'Ranseur':SRD35.WEAPONS.Ranseur,
-  'Rapier':SRD35.WEAPONS.Rapier,
-  'Repeating Heavy Crossbow':SRD35.WEAPONS['Repeating Heavy Crossbow'],
-  'Repeating Light Crossbow':SRD35.WEAPONS['Repeating Light Crossbow'],
+  'Nunchaku':SRD35.WEAPONS.Nunchaku + ' Properties=Flails,Monk',
+  'Orc Double Axe':SRD35.WEAPONS['Orc Double Axe'] + ' Properties=Double,Axes',
+  'Punching Dagger':SRD35.WEAPONS['Punching Dagger'] + ' Properties=Close',
+  'Quarterstaff':SRD35.WEAPONS.Quarterstaff + ' Properties=Double,Monk',
+  'Ranseur':SRD35.WEAPONS.Ranseur + ' Properties=Reach,"Pole Arms"',
+  'Rapier':SRD35.WEAPONS.Rapier + ' Properties="Light Blades"',
+  'Repeating Heavy Crossbow':
+    SRD35.WEAPONS['Repeating Heavy Crossbow'] + ' ' +
+    'Properties=Projectile,Crossbows',
+  'Repeating Light Crossbow':
+    SRD35.WEAPONS['Repeating Light Crossbow'] + ' ' +
+    'Properties=Projectile,Crossbows',
   'Sai':
     SRD35.WEAPONS.Sai
     .replace(/Range=\d+/, ''),
-  'Sap':SRD35.WEAPONS.Sap,
-  'Scimitar':SRD35.WEAPONS.Scimitar,
-  'Scythe':SRD35.WEAPONS.Scythe,
-  'Short Sword':SRD35.WEAPONS['Short Sword'],
-  'Shortbow':SRD35.WEAPONS['Shortbow'],
-  'Shortspear':SRD35.WEAPONS.Shortspear,
-  'Shuriken':SRD35.WEAPONS.Shuriken,
-  'Siangham':SRD35.WEAPONS.Siangham,
-  'Sickle':SRD35.WEAPONS.Sickle,
-  'Sling':SRD35.WEAPONS.Sling,
-  'Spear':SRD35.WEAPONS.Spear,
-  'Spiked Armor':SRD35.WEAPONS['Spiked Armor'],
-  'Spiked Chain':SRD35.WEAPONS['Spiked Chain'],
-  'Spiked Gauntlet':SRD35.WEAPONS['Spiked Gauntlet'],
-  'Starknife':'Level=Martial Category=Light Damage=d4 Crit=3 Range=20',
-  'Throwing Axe':SRD35.WEAPONS['Throwing Axe'],
-  'Trident':SRD35.WEAPONS.Trident,
-  'Two-Bladed Sword':SRD35.WEAPONS['Two-Bladed Sword'],
-  'Unarmed Strike':SRD35.WEAPONS['Unarmed Strike'],
-  'Warhammer':SRD35.WEAPONS.Warhammer,
-  'Whip':SRD35.WEAPONS.Whip
+  'Sap':SRD35.WEAPONS.Sap + ' Properties=Close,Monk',
+  'Scimitar':SRD35.WEAPONS.Scimitar + ' Properties="Heavy Blades"',
+  'Scythe':SRD35.WEAPONS.Scythe + ' Properties="Heavy Blades"',
+  'Short Sword':SRD35.WEAPONS['Short Sword'] + ' Properties="Light Blades"',
+  'Shortbow':SRD35.WEAPONS['Shortbow'] + ' Properties=Projectile,Bows',
+  'Shortspear':SRD35.WEAPONS.Shortspear + ' Properties=Thrown,Spears',
+  'Shuriken':SRD35.WEAPONS.Shuriken + ' Properties=Thrown,Monk',
+  'Siangham':SRD35.WEAPONS.Siangham + ' Properties=Monk',
+  'Sickle':SRD35.WEAPONS.Sickle + ' Properties="Light Blades"',
+  // N.B. Sling isn't in the list of thrown weapons in the equipment section of
+  // the rules, but the Fighter's Weapon Training Thrown category includes it
+  'Sling':SRD35.WEAPONS.Sling + ' Properties=Projectile,Thrown',
+  'Spear':SRD35.WEAPONS.Spear + ' Properties=Thrown,Spears',
+  'Spiked Armor':SRD35.WEAPONS['Spiked Armor'] + ' Properties=Close',
+  'Spiked Chain':SRD35.WEAPONS['Spiked Chain'] + ' Properties=Reach,Flails',
+  'Spiked Gauntlet':SRD35.WEAPONS['Spiked Gauntlet'] + ' Properties=Close',
+  'Starknife':
+    'Level=Martial Category=Light Damage=d4 Crit=3 Range=20 ' +
+    'Properties=Thrown,"Light Blades"',
+  'Throwing Axe':SRD35.WEAPONS['Throwing Axe'] + ' Properties=Thrown,Axes',
+  'Trident':SRD35.WEAPONS.Trident + ' Properties=Thrown,Spears',
+  'Two-Bladed Sword':
+    SRD35.WEAPONS['Two-Bladed Sword'] + ' Properties=Double,"Heavy Blades"',
+  'Unarmed Strike':
+    SRD35.WEAPONS['Unarmed Strike'] + ' Properties=Close,Monk,Natural',
+  'Warhammer':SRD35.WEAPONS.Warhammer + ' Properties=Hammers',
+  'Whip':SRD35.WEAPONS.Whip + ' Properties=Reach,Flails'
 };
 Pathfinder.CLASSES = {
   'Barbarian':
@@ -5589,7 +5613,64 @@ Pathfinder.CLASSES = {
       '"1:Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '"1:Bonus Feats (Fighter)","2:Bravery","3:Armor Training",' +
-      '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery"',
+      '"5:Weapon Training","19:Armor Mastery","20:Weapon Mastery" ' +
+    'Selectables=' +
+      '"5:Weapon Training 1 (Axes):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Heavy Blades):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Light Blades):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Bows):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Close):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Crossbows):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Double):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Flails):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Hammers):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Monk):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Natural):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Pole Arms):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Spears):Weapon Training 1",' +
+      '"5:Weapon Training 1 (Thrown):Weapon Training 1",' +
+      '"9:Weapon Training 2 (Axes):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Heavy Blades):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Light Blades):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Bows):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Close):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Crossbows):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Double):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Flails):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Hammers):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Monk):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Natural):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Pole Arms):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Spears):Weapon Training 2",' +
+      '"9:Weapon Training 2 (Thrown):Weapon Training 2",' +
+      '"13:Weapon Training 3 (Axes):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Heavy Blades):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Light Blades):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Bows):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Close):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Crossbows):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Double):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Flails):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Hammers):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Monk):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Natural):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Pole Arms):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Spears):Weapon Training 3",' +
+      '"13:Weapon Training 3 (Thrown):Weapon Training 3",' +
+      '"17:Weapon Training 4 (Axes):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Heavy Blades):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Light Blades):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Bows):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Close):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Crossbows):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Double):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Flails):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Hammers):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Monk):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Natural):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Pole Arms):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Spears):Weapon Training 4",' +
+      '"17:Weapon Training 4 (Thrown):Weapon Training 4"',
   'Monk':
     'Require="alignment =~ \'Lawful\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +
@@ -6293,6 +6374,14 @@ Pathfinder.aideRules = function(rules, companions, familiars) {
 
 /* Defines rules related to combat. */
 Pathfinder.combatRules = function(rules, armors, shields, weapons) {
+  // Add PF-specific weapon properties (used for the Fighter's Weapon Training
+  // feature) to SRD35's set of known properties
+  for(let w in weapons) {
+    QuilvynUtils.getAttrValueArray(weapons[w], 'Properties').forEach(p => {
+      if(!(p in SRD35.weaponRules.KNOWN_PROPERTIES))
+        SRD35.weaponRules.KNOWN_PROPERTIES.push(p);
+    });
+  }
   SRD35.combatRules(rules, armors, shields, weapons);
   // Pathfinder-specific attributes
   rules.defineChoice('notes',
@@ -6977,14 +7066,43 @@ Pathfinder.classRulesExtra = function(rules, name) {
       classLevel, 'v', 'Math.min(Math.floor((source + 1) / 4), 4)',
       '', '^', '0'
     );
-    rules.defineRule('combatNotes.weaponTraining',
-      classLevel, '=',
-        '(source>=17 ? "+4, " : "") + (source>=13 ? "+3, " : "") + ' +
-        '(source>=9 ? "+2, " : "") + "+1"'
-    );
+    rules.defineRule
+      ('combatNotes.weaponTraining', 'featureNotes.weaponTraining', '=', null);
     rules.defineRule('combatNotes.weaponTraining.1',
-      'combatNotes.weaponTraining', '=', '(source+"").replace("+", "").replace(/,.*/, "")'
+      'combatNotes.weaponTraining', '=', '"a choice of weapon group"'
     );
+    rules.defineRule('combatNotes.weaponTraining.2',
+      'combatNotes.weaponTraining', '=', '"a choice of weapon group"'
+    );
+    rules.defineRule('combatNotes.weaponTraining.3',
+      'combatNotes.weaponTraining', '=', '"a choice of weapon group"'
+    );
+    rules.defineRule('combatNotes.weaponTraining.4',
+      'combatNotes.weaponTraining', '=', '"a choice of weapon group"'
+    );
+    let weaponGroups = [];
+    let weapons = rules.getChoices('weapons');
+    for(let w in weapons) {
+      QuilvynUtils.getAttrValueArray(weapons[w], 'Properties').forEach(p => {
+        if(!(p in weaponGroups))
+          weaponGroups.push(p);
+      });
+    }
+    weaponGroups.forEach(wg => {
+      let wglc = wg.toLowerCase();
+      rules.defineRule('combatNotes.weaponTraining.1',
+        'fighterFeatures.Weapon Training 1 (' + wg + ')', '=', '"' + wglc + '"'
+      );
+      rules.defineRule('combatNotes.weaponTraining.2',
+        'fighterFeatures.Weapon Training 2 (' + wg + ')', '=', '"' + wglc + '"'
+      );
+      rules.defineRule('combatNotes.weaponTraining.3',
+        'fighterFeatures.Weapon Training 3 (' + wg + ')', '=', '"' + wglc + '"'
+      );
+      rules.defineRule('combatNotes.weaponTraining.4',
+        'fighterFeatures.Weapon Training 4 (' + wg + ')', '=', '"' + wglc + '"'
+      );
+    });
     rules.defineRule
       ('damageReduction.-', 'combatNotes.armorMastery.1', '^=', '5');
     rules.defineRule
@@ -6992,7 +7110,22 @@ Pathfinder.classRulesExtra = function(rules, name) {
     rules.defineRule('featureNotes.bonusFeats(Fighter)',
       classLevel, '=', '1 + Math.floor(source / 2)'
     );
+    rules.defineRule('featureNotes.weaponTraining',
+      classLevel, '=', 'source<9 ? 1 : source<13 ? 2 : source<17 ? 3 : 4'
+    );
     rules.defineRule('fighterFeatLevel', classLevel, '+=', null);
+    rules.defineRule('selectableFeatureCount.Fighter (Weapon Training 1)',
+      'featureNotes.weaponTraining', '=', '1'
+    );
+    rules.defineRule('selectableFeatureCount.Fighter (Weapon Training 2)',
+      'featureNotes.weaponTraining', '=', 'source<2 ? null : 1'
+    );
+    rules.defineRule('selectableFeatureCount.Fighter (Weapon Training 3)',
+      'featureNotes.weaponTraining', '=', 'source<3 ? null : 1'
+    );
+    rules.defineRule('selectableFeatureCount.Fighter (Weapon Training 4)',
+      'featureNotes.weaponTraining', '=', 'source<4 ? null : 1'
+    );
     rules.defineRule('skillNotes.armorSkillCheckPenalty',
       'skillNotes.armorTraining', '+', null
     );
@@ -8451,10 +8584,30 @@ Pathfinder.weaponRules = function(
     rules, name, profLevel, category, damage, threat, critMultiplier, range,
     properties
   );
-  if(name.match(/\bDagger\b/))
-    rules.defineRule(name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '') + 'DamageModifier',
-      'combatNotes.riverRat', '+', '1'
+  let prefix =
+    name.charAt(0).toLowerCase() + name.substring(1).replaceAll(' ', '');
+  if(name.includes('Dagger'))
+    rules.defineRule
+      (prefix + 'DamageModifier', 'combatNotes.riverRat', '+', '1');
+  rules.defineRule
+    (prefix + 'AttackModifier', 'weaponTraining.' + name, '+', null);
+  rules.defineRule
+    (prefix + 'DamageModifier', 'weaponTraining.' + name, '+', null);
+  if(name.includes('Sling'))
+    // Slings are considered thrown only in the context of Weapon Training
+    properties.push('Thrown');
+  properties.forEach(p => {
+    let plc = p.toLowerCase();
+    rules.defineRule
+      ('weaponTraining.' + name, 'weaponTraining.' + p, '^=', null);
+    rules.defineRule('weaponTraining.' + p,
+      'combatNotes.weaponTraining.1', '=', 'source=="' + plc + '" ? 0 : null',
+      'combatNotes.weaponTraining.2', '=', 'source=="' + plc + '" ? -1 : null',
+      'combatNotes.weaponTraining.3', '=', 'source=="' + plc + '" ? -2 : null',
+      'combatNotes.weaponTraining.4', '=', 'source=="' + plc + '" ? -3 : null',
+      'combatNotes.weaponTraining', '+', null
     );
+  });
 };
 
 /*

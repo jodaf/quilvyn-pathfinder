@@ -18,6 +18,8 @@ var attributes = {
   "feats.Toughness":1, "feats.Vital Strike":1, "feats.Weapon Focus (Dart)":1, "gender":"Female", 
   "hitPoints":114, "intelligence":16, "languages.Abyssal":1, "languages.Ignan":1, 
   "languages.Undercommon":1, "levels.Fighter":20, "name":"Class-Fighter 20", "race":"Half-Elf", 
+  "selectableFeatures.Fighter - Weapon Training 1 (Close)":1, "selectableFeatures.Fighter - Weapon Training 2 (Flails)":1, 
+  "selectableFeatures.Fighter - Weapon Training 3 (Light Blades)":1, "selectableFeatures.Fighter - Weapon Training 4 (Thrown)":1, 
   "shield":"Light Steel", "skills.Climb":12, "skills.Craft (Bows)":1, "skills.Craft (Traps)":10, 
   "skills.Craft (Weapons)":4, "skills.Diplomacy":6, "skills.Disguise":2, "skills.Escape Artist":1, 
   "skills.Intimidate":2, "skills.Knowledge (Arcana)":6, "skills.Knowledge (Engineering)":10, 
@@ -80,6 +82,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: Fighter: 11; General: 11</td>
+        <td><b>Selectable Feature Count</b>: Fighter (Weapon Training 1); Fighter (Weapon Training 2); Fighter (Weapon Training 3); Fighter (Weapon Training 4)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -87,7 +90,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Athletic; Catch Off-Guard; Combat Expertise; Combat Reflexes; Far Shot; Greater Shield Focus; Greater Weapon Focus (Dart); Improved Critical (Unarmed Strike); Improved Initiative; Leadership; Point-Blank Shot; Quick Draw; Self-Sufficient; Shield Focus; Simple Weapon Proficiency; Skill Focus (Craft (Bows)); Skill Focus (Craft (Weapons)); Skill Focus (Escape Artist); Skill Focus (Sense Motive); Toughness; Vital Strike; Weapon Focus (Dart)</td>
         <td><b>Half-Elf Features</b>: Adaptability; Elf Blood; Elven Immunities; Half-Elf Ability Adjustment; Keen Senses; Low-Light Vision; Multitalented</td>
-        <td><b>Fighter Features</b>: Armor Mastery; Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Mastery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
+        <td><b>Fighter Features</b>: Armor Mastery; Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Mastery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training 1 (Close); Weapon Training 2 (Flails); Weapon Training 3 (Light Blades); Weapon Training 4 (Thrown); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -96,6 +99,8 @@ var attributes = {
         <td><i>Adaptability: +1 General Feat (Skill Focus)</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): +11 Fighter Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Weapon Training: 4 selections</i></td>
       </tr><tr style="text-align:center">
         <td>Elf Blood: Counts as both elf and human for racial effects</td>
       </tr><tr style="text-align:center">
@@ -203,7 +208,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Chainmail</td>
         <td><b>Shield</b>: Light Steel</td>
-        <td><b>Weapons</b>: Dart (+23 d4+2 x2@20 R20'); Light Mace (+22 d6+2 x2@20); Sap (+22 d6+2 x2@20); Starknife (+22 d4+2 x3@20 R20'); Unarmed Strike (+22 d3+2 x2@19)</td>
+        <td><b>Weapons</b>: Dart (+24 d4+3 x2@20 R20'); Light Mace (+22 d6+2 x2@20); Sap (+26 d6+6 x2@20); Starknife (+24 d4+4 x3@20 R20'); Unarmed Strike (+26 d3+6 x2@19)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -237,7 +242,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Focus (Dart): +1 Dart Attack Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Training: +4, +3, +2, +1 attacks, damage, CMB, and CMD with weapons from 4 chosen weapon groups</i></td>
+        <td><i>Weapon Training: +4 attacks and damage with close, +3 with flails, +2 with light blades, +1 with thrown</i></td>
       </tr><tr style="text-align:center">
         <td>Catch Off-Guard: Using an improvised melee weapon inflicts no penalty and makes unarmed foes flat-footed</td>
       </tr><tr style="text-align:center">
@@ -254,6 +259,8 @@ var attributes = {
         <td>Vital Strike: Can use an attack action to make a single attack that inflicts 2x base damage</td>
       </tr><tr style="text-align:center">
         <td>Weapon Mastery: Crit threats with a chosen weapon are automatically confirmed and gain +1 damage multiplier; cannot be disarmed when wielding this weapon</td>
+      </tr><tr style="text-align:center">
+        <td>Weapon Training: +4 CMB and CMD with close, +3 with flails, +2 with light blades, +1 with thrown</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">

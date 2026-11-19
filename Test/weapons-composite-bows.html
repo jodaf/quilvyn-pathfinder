@@ -17,12 +17,13 @@ var attributes = {
   "feats.Weapon Focus (Dagger)":1, "feats.Weapon Specialization (Composite Longbow)":1, 
   "feats.Weapon Specialization (Composite Shortbow)":1, "feats.Weapon Specialization (Dagger)":1, "gender":"Male", "hitPoints":78, 
   "intelligence":11, "levels.Fighter":12, "name":"Weapons-Composite Bows", 
-  "notes":"Homebrew Weapon \"Composite Longbow (+3 Str bonus)\" Level=Martial Category=Ranged Damage=d8 Crit=3 Range=110\nHomebrew Weapon \"Composite Shortbow (+2 Str bonus)\" Level=Martial Category=Ranged Damage=d6 Crit=3 Range=70\n* +2 Composite Longbow", "race":"Human", "shield":"Light Steel", "skills.Acrobatics":1, 
-  "skills.Appraise":1, "skills.Climb":6, "skills.Craft (Traps)":2, "skills.Intimidate":4, 
-  "skills.Perception":1, "skills.Perform (Percussion)":6, "skills.Profession (Scribe)":2, 
-  "skills.Ride":1, "skills.Survival":10, "skills.Swim":2, "strength":14, 
-  "weapons.Composite Longbow":1, "weapons.Composite Longbow (+3 Str bonus)":1, 
-  "weapons.Composite Shortbow (+2 Str bonus)":1, "wisdom":15
+  "notes":"Homebrew Weapon \"Composite Longbow (+3 Str bonus)\" Level=Martial Category=Ranged Damage=d8 Crit=3 Range=110\nHomebrew Weapon \"Composite Shortbow (+2 Str bonus)\" Level=Martial Category=Ranged Damage=d6 Crit=3 Range=70\n* +2 Composite Longbow", "race":"Human", 
+  "selectableFeatures.Fighter - Weapon Training 1 (Natural)":1, "selectableFeatures.Fighter - Weapon Training 2 (Light Blades)":1, 
+  "shield":"Light Steel", "skills.Acrobatics":1, "skills.Appraise":1, "skills.Climb":6, 
+  "skills.Craft (Traps)":2, "skills.Intimidate":4, "skills.Perception":1, 
+  "skills.Perform (Percussion)":6, "skills.Profession (Scribe)":2, "skills.Ride":1, "skills.Survival":10, 
+  "skills.Swim":2, "strength":14, "weapons.Composite Longbow":1, 
+  "weapons.Composite Longbow (+3 Str bonus)":1, "weapons.Composite Shortbow (+2 Str bonus)":1, "wisdom":15
 };
   </script>
 </head>
@@ -79,6 +80,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: Fighter: 7; General: 7</td>
+        <td><b>Selectable Feature Count</b>: Fighter (Weapon Training 1); Fighter (Weapon Training 2)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -86,7 +88,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Feats</b>: Greater Weapon Focus (Composite Longbow); Greater Weapon Focus (Composite Shortbow); Greater Weapon Specialization (Composite Longbow); Greater Weapon Specialization (Composite Shortbow); Improved Critical (Composite Longbow); Improved Critical (Composite Shortbow); Improved Critical (Dagger); Weapon Focus (Composite Longbow); Weapon Focus (Composite Shortbow); Weapon Focus (Dagger); Weapon Specialization (Composite Longbow); Weapon Specialization (Composite Shortbow); Weapon Specialization (Dagger)</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training 1 (Natural); Weapon Training 2 (Light Blades); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -95,6 +97,8 @@ var attributes = {
         <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): +7 Fighter Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Weapon Training: 2 selections</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -167,7 +171,7 @@ var attributes = {
       <tr style="text-align:center">
         <td><b>Armor</b>: Leather</td>
         <td><b>Shield</b>: Light Steel</td>
-        <td><b>Weapons</b>: Composite Longbow (+3 Str bonus) (+16 d8+8 x3@19 R110'); Composite Longbow (+18 d8+6 x3@19 R110'); Composite Shortbow (+2 Str bonus) (+16 d6+6 x3@19 R70'); Unarmed Strike (+14 d3+2 x2@20)</td>
+        <td><b>Weapons</b>: Composite Longbow (+3 Str bonus) (+16 d8+8 x3@19 R110'); Composite Longbow (+18 d8+6 x3@19 R110'); Composite Shortbow (+2 Str bonus) (+16 d6+6 x3@19 R70'); Unarmed Strike (+16 d3+4 x2@20)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -213,7 +217,9 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Specialization (Dagger): +2 Dagger Damage Modifier</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Training: +2, +1 attacks, damage, CMB, and CMD with weapons from 2 chosen weapon groups</i></td>
+        <td><i>Weapon Training: +2 attacks and damage with natural, +1 with light blades</i></td>
+      </tr><tr style="text-align:center">
+        <td>Weapon Training: +2 CMB and CMD with natural, +1 with light blades</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">

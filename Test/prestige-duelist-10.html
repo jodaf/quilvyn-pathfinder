@@ -14,10 +14,11 @@ var attributes = {
   "feats.Quick Draw":1, "feats.Simple Weapon Proficiency":1, "feats.Vital Strike":1, 
   "feats.Weapon Finesse":1, "gender":"Female", "hitPoints":103, "intelligence":12, 
   "languages.Druidic":1, "levels.Fighter":6, "name":"Prestige-Duelist 10", "prestige.Duelist":10, 
-  "race":"Human", "shield":"None", "skills.Acrobatics":8, "skills.Craft (Alchemy)":16, 
-  "skills.Fly":16, "skills.Intimidate":16, "skills.Knowledge (Dungeoneering)":16, 
-  "skills.Perform (Sing)":2, "skills.Swim":10, "strength":10, "weapons.Composite Shortbow":1, 
-  "weapons.Guisarme":1, "weapons.Light Pick":1, "wisdom":16
+  "race":"Human", "selectableFeatures.Fighter - Weapon Training 1 (Light Blades)":1, 
+  "shield":"None", "skills.Acrobatics":8, "skills.Craft (Alchemy)":16, "skills.Fly":16, 
+  "skills.Intimidate":16, "skills.Knowledge (Dungeoneering)":16, "skills.Perform (Sing)":2, 
+  "skills.Swim":10, "strength":10, "weapons.Composite Shortbow":1, "weapons.Guisarme":1, 
+  "weapons.Light Pick":1, "wisdom":16
 };
   </script>
 </head>
@@ -75,6 +76,7 @@ var attributes = {
       <td>      <table id="FeatStats" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feat Count</b>: Fighter: 4; General: 9</td>
+        <td><b>Selectable Feature Count</b>: Fighter (Weapon Training 1)</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -83,7 +85,7 @@ var attributes = {
         <td><b>Feats</b>: Acrobatic Steps; Acrobatic; Blind-Fight; Dodge; Great Fortitude; Improved Unarmed Strike; Investigator; Mobility; Negotiator; Quick Draw; Simple Weapon Proficiency; Vital Strike; Weapon Finesse</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
         <td><b>Duelist Features</b>: Acrobatic Charge; Armor Proficiency (Light); Canny Defense; Combat Reflexes; Crippling Critical (Duelist); Deflect Arrows; Elaborate Defense; Enhanced Mobility; Grace; Improved Reaction; No Retreat; Parry; Precise Strike (Duelist); Riposte; Weapon Proficiency (Simple Weapons; Martial Weapons)</td>
-        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training</td>
+        <td><b>Fighter Features</b>: Armor Proficiency (Light; Medium; Heavy; Shield; Tower Shield); Armor Training; Bonus Feats (Fighter); Bravery; Weapon Proficiency (Simple Weapons; Martial Weapons); Weapon Training 1 (Light Blades); Weapon Training</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -92,6 +94,8 @@ var attributes = {
         <td><i>Bonus Feat (Human): +1 General Feat</i></td>
       </tr><tr style="text-align:center">
         <td><i>Bonus Feats (Fighter): +4 Fighter Feats</i></td>
+      </tr><tr style="text-align:center">
+        <td><i>Weapon Training: 1 selection</i></td>
       </tr></table>
 </td>
     </tr></table>
@@ -188,7 +192,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Weapon Finesse: +1 light melee weapon, rapier, whip, and spiked chain attacks (uses Dexterity instead of Strength)</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Weapon Training: +1 attacks, damage, CMB, and CMD with weapons from 1 chosen weapon group</i></td>
+        <td><i>Weapon Training: +1 attacks and damage with light blades</i></td>
       </tr><tr style="text-align:center">
         <td>Acrobatic Charge: Can charge in difficult terrain</td>
       </tr><tr style="text-align:center">
@@ -221,6 +225,8 @@ var attributes = {
         <td>Riposte: Can take an AOO after a successful Parry</td>
       </tr><tr style="text-align:center">
         <td>Vital Strike: Can use an attack action to make a single attack that inflicts 2x base damage</td>
+      </tr><tr style="text-align:center">
+        <td>Weapon Training: +1 CMB and CMD with light blades</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
