@@ -5273,8 +5273,6 @@ Pathfinder.WEAPONS = {
   'Greatsword':SRD35.WEAPONS.Greatsword + ' Properties="Heavy Blades"',
   'Guisarme':SRD35.WEAPONS.Guisarme + ' Properties=Reach,"Pole Arms"',
   'Halberd':SRD35.WEAPONS.Halberd + ' Properties="Pole Arms"',
-  // N.B. HSS isn't in the list of thrown weapons in the equipment section of
-  // the rules, but the Fighter's Weapon Training Thrown category includes it
   'Halfling Sling Staff':
     'Level=Exotic Category=Ranged Damage=d8 Crit=3 Range=80 ' +
     'Properties=Projectile',
@@ -5331,12 +5329,11 @@ Pathfinder.WEAPONS = {
   'Shuriken':SRD35.WEAPONS.Shuriken + ' Properties=Thrown,Monk',
   'Siangham':SRD35.WEAPONS.Siangham + ' Properties=Monk',
   'Sickle':SRD35.WEAPONS.Sickle + ' Properties="Light Blades"',
-  // N.B. Sling isn't in the list of thrown weapons in the equipment section of
-  // the rules, but the Fighter's Weapon Training Thrown category includes it
-  'Sling':SRD35.WEAPONS.Sling + ' Properties=Projectile,Thrown',
+  'Sling':SRD35.WEAPONS.Sling + ' Properties=Projectile',
   'Spear':SRD35.WEAPONS.Spear + ' Properties=Thrown,Spears',
   'Spiked Armor':SRD35.WEAPONS['Spiked Armor'] + ' Properties=Close',
-  'Spiked Chain':SRD35.WEAPONS['Spiked Chain'] + ' Properties=Reach,Flails',
+  // N.B. Spiked Chain is not a reach weapon in Pathfinder
+  'Spiked Chain':SRD35.WEAPONS['Spiked Chain'] + ' Properties=Flails',
   'Spiked Gauntlet':SRD35.WEAPONS['Spiked Gauntlet'] + ' Properties=Close',
   'Starknife':
     'Level=Martial Category=Light Damage=d4 Crit=3 Range=20 ' +

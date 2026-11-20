@@ -3355,7 +3355,6 @@ PFAPG.FEATURES = {
   'Channel Negative Energy':
     'Section=magic ' +
     'Note="May expend 2 Touch Of Corruption uses to use Channel Energy effects"',
-  // TODO: does "using the antipaladin's level as the caster level" mean class level or character level
   'Cruelty':
     'Section=magic ' +
     'Note="Touch Of Corruption inflicts choice of %V (DC %{10+levels.Antipaladin//2+charismaModifier} Fortitude negates)" ' +
@@ -7422,14 +7421,16 @@ PFAPG.SPELLS_LEVELS_ADDED = {
 PFAPG.TRAITS = {
   // Already declared in Pathfinder
 };
-// TODO review properties
+// N.B. Properties taken from www.d20pfsrd.com/classes/core-classes/fighter/
 PFAPG.WEAPONS = {
   'Bardiche':
-    'Level=Martial Category=Two-Handed Damage=d10 Threat=19 Properties=Reach',
+    'Level=Martial Category=Two-Handed Damage=d10 Threat=19 ' +
+    'Properties=Reach,Axes,"Pole Arms"',
   'Battle Aspergillum':
     'Level=Simple Category=Light Damage=d6 Properties=Hammers',
   'Bayonet':
-    'Level=Simple Category=Two-Handed Damage=d6 Properties="Light Blades"',
+    'Level=Simple Category=Two-Handed Damage=d6 ' +
+    'Properties=Close,"Light Blades"',
   'Bec De Corbin':
     'Level=Martial Category=Two-Handed Damage=d10 Crit=3 ' +
     'Properties=Reach,"Pole Arms"',
@@ -7444,9 +7445,11 @@ PFAPG.WEAPONS = {
   'Cestus':
     'Level=Simple Category=Light Damage=d4 Threat=19 Properties=Monk,Close',
   'Chain Spear':
-    'Level=Exotic Category=Two-Handed Damage=d6/d6 Properties=Spears',
+    'Level=Exotic Category=Two-Handed Damage=d6/d6 ' +
+    'Properties=Double,Flails,Spears',
   'Chakram':
-    'Level=Martial Category=Ranged Damage=d8 Range=30 Properties=Thrown',
+    'Level=Martial Category=Ranged Damage=d8 Range=30 ' +
+    'Properties="Heavy Blades","Light Blades",Thrown',
   'Double Crossbow':
     'Level=Exotic Category=Ranged Damage=d8 Threat=19 Range=80 ' +
     'Properties=Projectile,Crossbows',
@@ -9280,7 +9283,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'featureNotes.grandDiscovery', '=', '1'
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
-    // TODO properties?
+    // Presumed properties
     Pathfinder.weaponRules
       (rules, 'Bomb', 'Exotic', 'Ranged', '1d6', 20, 2, 20, ['Thrown']);
     // Remove crit info for bomb--it doesn't crit
@@ -12144,7 +12147,6 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('weapons.Claws',
       'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
     );
-    // TODO properties?
     Pathfinder.weaponRules
       (rules, 'Claws', 'Unarmed', 'Unarmed', 'd4', 20, 2, null, ['Natural']);
   } else if(name == 'Aspect Of The Beast (Night Senses)') {
@@ -12296,7 +12298,6 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Weapon Proficiency (Bite)', 'combatNotes.razortusk', '=', '1');
     rules.defineRule('weapons.Bite', 'combatNotes.razortusk', '=', '1');
-    // TODO properties?
     Pathfinder.weaponRules
       (rules, 'Bite', 'Unarmed', 'Unarmed', 'd4', 20, 2, null, ['Natural']);
   } else if(name == 'Sharp Senses') {
