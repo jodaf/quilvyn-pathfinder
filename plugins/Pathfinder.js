@@ -1757,8 +1757,7 @@ Pathfinder.FEATURES = {
     'Note="R30\' Ranged touch attack inflicts 1d4+%{levels.Sorcerer//2} HP on an evil target or restores the same amount to a good one %{charismaModifier+3} times per day"',
   'Wings Of Heaven':
     'Section=ability ' +
-    // TODO: include maneuverability?
-    'Note="%{levels.Sorcerer>19?\\"Has a 60\' fly Speed\\":\\"Can gain a 60\' fly Speed for \\"+levels.Sorcerer+\' min per day\'}"',
+    'Note="%{levels.Sorcerer>19?\\"Has a 60\' fly Speed with good maneuverability\\":\\"Can gain a 60\' fly Speed with good maneuverability for \\"+levels.Sorcerer+\' min per day\'}"',
   // Destined
   'Bloodline Destined':
     'Section=save,skill ' +
@@ -1816,7 +1815,8 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"Has immunity to paralysis and sleep",' +
       '"Has the Blindsense feature"',
-  'Wings':'Section=ability Note="Has a %V\' fly Speed"',
+  'Wings':
+    'Section=ability Note="Has a %V\' fly Speed with average maneuverability"',
   // Elemental
   'Bloodline Elemental':
     'Section=magic,skill ' +
@@ -1837,7 +1837,8 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"Has immunity to critical hits and Sneak Attacks",' +
       '"Has immunity to %{bloodlineEnergy}"',
-  'Elemental Movement (Air)':'Section=ability Note="Has a 60\' fly Speed"',
+  'Elemental Movement (Air)':
+    'Section=ability Note="Has a 60\' fly Speed with average maneuverability"',
   'Elemental Movement (Earth)':'Section=ability Note="Has a 30\' burrow Speed"',
   'Elemental Movement (Fire)':'Section=ability Note="+30 Speed"',
   'Elemental Movement (Water)':'Section=ability Note="Has a 60\' swim Speed"',
@@ -1903,7 +1904,8 @@ Pathfinder.FEATURES = {
     'Note=' +
       '"Has resistance %V to fire",' +
       '"+%{levels.Sorcerer<9?2:4} vs. poison"',
-  'On Dark Wings':'Section=ability Note="Has a 60\' fly Speed"',
+  'On Dark Wings':
+    'Section=ability Note="Has a 60\' fly Speed with average maneuverability"',
   'Power Of The Pit':
     'Section=save,skill ' +
     'Note=' +
@@ -3942,22 +3944,22 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Transforms self into a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Transforms self into a Small elemental for %{lvl} min&mdash;a choice of air (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, a 60\' fly Speed with perfect maneuverability, and the ability to create a whirlwind), earth (gives +2 Strength, a +4 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +2 Dexterity, a +2 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S5,W5 ' +
     'Description=' +
-      '"Transforms self into a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
+      '"Transforms self into a Medium elemental for %{lvl} min&mdash;a choice of air (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, a 60\' fly Speed with perfect maneuverability, and the ability to create a whirlwind), earth (gives +4 Strength, a +5 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, a +3 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Constitution, a +5 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision"',
   'Elemental Body III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Transforms self into a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
+      '"Transforms self into a Large elemental for %{lvl} min&mdash;a choice of air (gives +2 Strength; +4 Dexterity, a +4 natural armor bonus to Armor Class, a 60\' fly Speed with perfect maneuverability, and the ability to create a whirlwind), earth (gives +6 Strength, -2 Dexterity, +2 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +4 Dexterity, +2 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +2 Strength, -2 Dexterity, +6 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision and immunity to bleed damage, critical hits, and Sneak Attack"',
   'Elemental Body IV':
     'School="Transmutation (Polymorph)" ' +
     'Level=Air7,Earth7,Fire7,S7,W7,Water7 ' +
     'Description=' +
-      '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack"',
+      '"Transforms self into a Huge elemental for %{lvl} min&mdash;a choice of air (gives +4 Strength; +6 Dexterity, a +4 natural armor bonus to Armor Class, a 120\' fly Speed with perfect maneuverability, and the ability to create a whirlwind), earth (gives +8 Strength, -2 Dexterity, +4 Constitution, a +6 natural armor bonus to Armor Class, and the earth glide ability), fire (gives +6 Dexterity, +4 Constitution, a +4 natural armor bonus to Armor Class, resistance 20 to fire, vulnerability to cold, and the burn ability), or water (gives +4 Strength, -2 Dexterity, +8 Constitution, a +6 natural armor bonus to Armor Class, a 60\' swim Speed, the ability to create a vortex, and the ability to breathe water); all forms also give 60\' Darkvision, DR 5/-, and immunity to bleed damage, critical hits, and Sneak Attack"',
   'Elemental Swarm':null,
   'Endure Elements':null,
   'Energy Drain':null,
@@ -4041,7 +4043,7 @@ Pathfinder.SPELLS = {
   'Floating Disk':null,
   'Fly':
     SRD35.SPELLS.Fly
-    .replace('fly Speed', 'fly Speed and +%{lvl//2} Fly skill'),
+    .replace('fly Speed', 'fly Speed with good maneuverability and +%{lvl//2} Fly skill'),
   'Fog Cloud':
     SRD35.SPELLS['Fog Cloud']
     .replace('Level=', 'Level=Weather2,'),
@@ -4058,17 +4060,17 @@ Pathfinder.SPELLS = {
     'School="Transmutation (Polymorph)" ' +
     'Level=S6,W6 ' +
     'Description=' +
-      '"Transforms self into a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
+      '"Transforms self into a Medium dragon for %{lvl} min, gaining +4 Strength, +2 Constitution, a +4 natural armor bonus to Armor Class, a 60\' fly Speed with poor maneuverability, 60\' Darkvision, a breath weapon that can be used once to inflict 6d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 30\' cone or 60\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, and wings that inflict 1d8 HP, 2x1d6 HP, and 2x1d4 HP"',
   'Form Of The Dragon II':
     'School="Transmutation (Polymorph)" ' +
     'Level=S7,W7 ' +
     'Description=' +
-      '"Transforms self into a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 40\' cone or 80\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, wings, and a tail that inflict 2d6 HP, 2x1d8 HP, 2x1d6 HP, and 1d8 HP"',
+      '"Transforms self into a Large dragon for %{lvl} min, gaining +6 Strength, +4 Constitution, a +6 natural armor bonus to Armor Class, a 90\' fly Speed with poor maneuverability, 60\' Darkvision, DR 5/magic, a breath weapon that can be used 2 times to inflict 8d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 40\' cone or 80\' line, resistance 20 or 30 to that energy type, movement and vulnerabilities specific to the dragon type, and a bite, claws, wings, and a tail that inflict 2d6 HP, 2x1d8 HP, 2x1d6 HP, and 1d8 HP"',
   'Form Of The Dragon III':
     'School="Transmutation (Polymorph)" ' +
     'Level=S8,W8 ' +
     'Description=' +
-      '"Transforms self into a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
+      '"Transforms self into a Huge dragon for %{lvl} min, gaining +10 Strength, +8 Constitution, a +8 natural armor bonus to Armor Class, a 120\' fly Speed with poor maneuverability, 60\' Blindsense, 120\' Darkvision, DR 10/magic, a breath weapon that can be used every 1d4 rd to inflict 12d8 HP of an energy type specific to the type of dragon (save Reflex half) in a 50\' cone or 100\' line, immunity to that energy type, movement and vulnerabilities specific to the dragon type, frightful presence, and a bite, claws, wings, and a tail that inflict 2d8 HP, 2x2d6 HP, 2x1d8, and 2d6 HP"',
   "Fox's Cunning":
     SRD35.SPELLS["Fox's Cunning"]
     .replace('Assassin2,', ''),
@@ -5629,48 +5631,132 @@ Pathfinder.CLASSES = {
       '"5:Weapon Training 1 (Pole Arms):Weapon Training 1",' +
       '"5:Weapon Training 1 (Spears):Weapon Training 1",' +
       '"5:Weapon Training 1 (Thrown):Weapon Training 1",' +
-      '"9:Weapon Training 2 (Axes):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Heavy Blades):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Light Blades):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Bows):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Close):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Crossbows):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Double):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Flails):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Hammers):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Monk):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Natural):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Pole Arms):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Spears):Weapon Training 2",' +
-      '"9:Weapon Training 2 (Thrown):Weapon Training 2",' +
-      '"13:Weapon Training 3 (Axes):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Heavy Blades):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Light Blades):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Bows):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Close):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Crossbows):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Double):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Flails):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Hammers):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Monk):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Natural):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Pole Arms):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Spears):Weapon Training 3",' +
-      '"13:Weapon Training 3 (Thrown):Weapon Training 3",' +
-      '"17:Weapon Training 4 (Axes):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Heavy Blades):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Light Blades):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Bows):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Close):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Crossbows):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Double):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Flails):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Hammers):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Monk):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Natural):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Pole Arms):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Spears):Weapon Training 4",' +
-      '"17:Weapon Training 4 (Thrown):Weapon Training 4"',
+      '"fighterFeatures.Weapon Training 1 (Axes) == 0 ? ' +
+       '9:Weapon Training 2 (Axes):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Heavy Blades) == 0 ? ' +
+       '9:Weapon Training 2 (Heavy Blades):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Light Blades) == 0 ? ' +
+       '9:Weapon Training 2 (Light Blades):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Bows) == 0 ? ' +
+       '9:Weapon Training 2 (Bows):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Close) == 0 ? ' +
+       '9:Weapon Training 2 (Close):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Crossbows) == 0 ? ' +
+       '9:Weapon Training 2 (Crossbows):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Double) == 0 ? ' +
+       '9:Weapon Training 2 (Double):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Flails) == 0 ? ' +
+       '9:Weapon Training 2 (Flails):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Hammers) == 0 ? ' +
+       '9:Weapon Training 2 (Hammers):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Monk) == 0 ? ' +
+       '9:Weapon Training 2 (Monk):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Natural) == 0 ? ' +
+       '9:Weapon Training 2 (Natural):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Pole Arms) == 0 ? ' +
+       '9:Weapon Training 2 (Pole Arms):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Spears) == 0 ? ' +
+       '9:Weapon Training 2 (Spears):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Thrown) == 0 ? ' +
+       '9:Weapon Training 2 (Thrown):Weapon Training 2",' +
+      '"fighterFeatures.Weapon Training 1 (Axes) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Axes) == 0 ? ' +
+       '13:Weapon Training 3 (Axes):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Heavy Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Heavy Blades) == 0 ? ' +
+       '13:Weapon Training 3 (Heavy Blades):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Light Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Light Blades) == 0 ? ' +
+       '13:Weapon Training 3 (Light Blades):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Bows) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Bows) == 0 ? ' +
+       '13:Weapon Training 3 (Bows):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Close) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Close) == 0 ? ' +
+       '13:Weapon Training 3 (Close):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Crossbows) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Crossbows) == 0 ? ' +
+       '13:Weapon Training 3 (Crossbows):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Double) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Double) == 0 ? ' +
+       '13:Weapon Training 3 (Double):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Flails) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Flails) == 0 ? ' +
+       '13:Weapon Training 3 (Flails):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Hammers) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Hammers) == 0 ? ' +
+       '13:Weapon Training 3 (Hammers):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Monk) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Monk) == 0 ? ' +
+       '13:Weapon Training 3 (Monk):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Natural) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Natural) == 0 ? ' +
+       '13:Weapon Training 3 (Natural):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Pole Arms) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Pole Arms) == 0 ? ' +
+       '13:Weapon Training 3 (Pole Arms):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Spears) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Spears) == 0 ? ' +
+       '13:Weapon Training 3 (Spears):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Thrown) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Thrown) == 0 ? ' +
+       '13:Weapon Training 3 (Thrown):Weapon Training 3",' +
+      '"fighterFeatures.Weapon Training 1 (Axes) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Axes) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Axes) == 0 ? ' +
+       '17:Weapon Training 4 (Axes):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Heavy Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Heavy Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Heavy Blades) == 0 ? ' +
+       '17:Weapon Training 4 (Heavy Blades):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Light Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Light Blades) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Light Blades) == 0 ? ' +
+       '17:Weapon Training 4 (Light Blades):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Bows) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Bows) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Bows) == 0 ? ' +
+       '17:Weapon Training 4 (Bows):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Close) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Close) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Close) == 0 ? ' +
+       '17:Weapon Training 4 (Close):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Crossbows) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Crossbows) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Crossbows) == 0 ? ' +
+       '17:Weapon Training 4 (Crossbows):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Double) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Double) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Double) == 0 ? ' +
+       '17:Weapon Training 4 (Double):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Flails) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Flails) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Flails) == 0 ? ' +
+       '17:Weapon Training 4 (Flails):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Hammers) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Hammers) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Hammers) == 0 ? ' +
+       '17:Weapon Training 4 (Hammers):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Monk) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Monk) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Monk) == 0 ? ' +
+       '17:Weapon Training 4 (Monk):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Natural) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Natural) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Natural) == 0 ? ' +
+       '17:Weapon Training 4 (Natural):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Pole Arms) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Pole Arms) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Pole Arms) == 0 ? ' +
+       '17:Weapon Training 4 (Pole Arms):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Spears) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Spears) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Spears) == 0 ? ' +
+       '17:Weapon Training 4 (Spears):Weapon Training 4",' +
+      '"fighterFeatures.Weapon Training 1 (Thrown) == 0 && ' +
+       'fighterFeatures.Weapon Training 2 (Thrown) == 0 && ' +
+       'fighterFeatures.Weapon Training 3 (Thrown) == 0 ? ' +
+       '17:Weapon Training 4 (Thrown):Weapon Training 4"',
   'Monk':
     'Require="alignment =~ \'Lawful\'" ' +
     'HitDie=d8 Attack=3/4 SkillPoints=4 Fortitude=1/2 Reflex=1/2 Will=1/2 ' +

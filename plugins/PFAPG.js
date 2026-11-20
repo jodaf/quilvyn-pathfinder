@@ -1398,7 +1398,7 @@ PFAPG.FEATURES = {
     'Note="Touch inflicts 1d6+%{mysteryLevel//2} HP fire %{charismaModifier+3} times per day%{mysteryLevel>=11?\', and weapons inflict +1d6 HP fire\':\'\'}"',
   'Wings Of Fire':
     'Section=ability ' +
-    'Note="Can use swift actions to gain a 60\' fly Speed for %{mysteryLevel} min per day"',
+    'Note="Can use swift actions to gain a 60\' fly Speed with average maneuverability for %{mysteryLevel} min per day"',
   // Heavens Mystery
   'Awesome Display':
     'Section=magic ' +
@@ -1708,7 +1708,7 @@ PFAPG.FEATURES = {
     'Note="Ignores Perception penalties from wind and the first 100\' distance%{mysteryLevel<7?\'\':\' and can view and hear any unobstructed area for \'+mysteryLevel+\' rd per day\'}"',
   'Wings Of Air':
     'Section=ability ' +
-    'Note="Can use swift actions to gain a %{mysteryLevel>=10 ? 90 : 60}\' fly Speed for %{mysteryLevel} min per day"',
+    'Note="Can use swift actions to gain a %{mysteryLevel>=10 ? 90 : 60}\' fly Speed with good maneuverability for %{mysteryLevel} min per day"',
 
   // Summoner
   'Ability Increase Evolution':
@@ -5622,7 +5622,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Healing) [Good,Mind-Affecting]" ' +
     'Level=P4 ' +
     'Description=' +
-      '"Creates a 30\' emanation that restores %{lvl//2}d6 hit points to good creatures, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies for %{lvl} rd, inflicts -1 of the same on foes for %{lvl} rd, and reduces self to -1 hit point and stable"',
+      '"Creates a 30\' emanation that restores %{lvl//2}d6 hit points to good creatures, inflicts %{lvl//2}d6 HP on evil creatures (save Will half), gives +1 attacks, weapon damage, saves, and skill checks to allies for %{lvl} rd, inflicts -1 of the same on foes for %{lvl} rd, and reduces self to -1 hit points and stable"',
   'Blessing Of Courage and Life':
     'School="Conjuration (Healing)" ' +
     'Level=C2,O2,P2 ' +
@@ -6011,7 +6011,7 @@ PFAPG.SPELLS = {
     'School="Transmutation [Fire]" ' +
     'Level=Ash9,O9,S9,W9 ' + // Oracle Flame
     'Description=' +
-      '"Gives self immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40\' fly Speed, brightness that dazzles viewers, +1 fire spell DC, unarmed attacks that inflict +3d6 HP fire, the ability to regain instead of lose hit points from fire damage (1 point regained per 3 points damage), vulnerability that inflicts 50% additional damage from cold, and effects when immersed in water that inflict 2d6 HP each rd to self while giving concealment, for %{lvl} min"',
+      '"Gives self immunity to fire, blindness, critical hits, ability damage, deafness, disease, drowning, poison, stunning, and physiology spells, half damage from acid or electricity, +6 Dexterity, a 40\' fly Speed with perfect maneuverability, brightness that dazzles viewers, +1 fire spell DC, unarmed attacks that inflict +3d6 HP fire, the ability to regain instead of lose hit points from fire damage (1 point regained per 3 points damage), vulnerability that inflicts 50% additional damage from cold, and effects when immersed in water that inflict 2d6 HP each rd to self while giving concealment, for %{lvl} min"',
   'Fire Breath':
     'School="Evocation [Fire]" ' +
     'Level=Alchemist2,S2,W2 ' +
@@ -6538,7 +6538,7 @@ PFAPG.SPELLS = {
     'School="Necromancy [Evil]" ' +
     'Level=S4,W4 ' +
     'Description=' +
-      '"Detaches self shadow as an undead shadow, making the body comatose, for %{lvl} hr; death of the shadow ends the spell and reduces the body to dying with -1 hit point"',
+      '"Detaches self shadow as an undead shadow, making the body comatose, for %{lvl} hr; death of the shadow ends the spell and reduces the body to dying with -1 hit points"',
   'Share Language':
     'School=Divination ' +
     'Level=B1,C2,D2,Language2,O2,S2,W2 ' +
@@ -6648,12 +6648,12 @@ PFAPG.SPELLS = {
     'School=Necromancy ' +
     'Level=Murder5,S5,W5,Witch5 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' Living target drops to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drops to -1 hit point in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
+      '"R%{25+lvl//2*5}\' Living target drops to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drops to -1 hit points in the second rd (save Fortitude delays for 1 rd), then dies in the third rd (save Fortitude delays for 1 rd) for 3 rd"',
   'Mass Suffocation':
     'School=Necromancy ' +
     'Level=Murder9,S9,W9,Witch9 ' +
     'Description=' +
-      '"R%{25+lvl//2*5}\' %{lvl//2} living targets in a 15\' radius drop to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drop to -1 hit point in the second rd (save Fortitude delays for 1 rd), then die in the third rd (save Fortitude delays for 1 rd) for %{lvl} rd"',
+      '"R%{25+lvl//2*5}\' %{lvl//2} living targets in a 15\' radius drop to 0 hit points in the next rd (save Fortitude inflicts staggered for 1 rd), then drop to -1 hit points in the second rd (save Fortitude delays for 1 rd), then die in the third rd (save Fortitude delays for 1 rd) for %{lvl} rd"',
   'Summon Eidolon':
     'School="Conjuration (Summoning)" ' +
     'Level=Summoner2 ' +
@@ -6827,7 +6827,7 @@ PFAPG.SPELLS = {
     'School="Evocation [Air]" ' +
     'Level=C9,D9,O9,S9,W9,Wind9 ' +
     'Description=' +
-      '"Gives self a 60\' fly Speed, breathable air, and immunity to wind, gas, and ranged weapons; inflicts on melee attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for %{lvl} min"',
+      '"Gives self a 60\' fly Speed with perfect maneuverability, breathable air, and immunity to wind, gas, and ranged weapons; inflicts on melee attackers 5d8 HP bludgeoning and knocked prone, or blown away if flying (save Fortitude half HP only; Huge flying creatures are checked instead), for %{lvl} min"',
   'World Wave':
     'School="Transmutation [Earth,Water]" ' +
     'Level=D9,Exploration9,O9,S9,W9 ' + // Oracle Nature
@@ -7422,29 +7422,58 @@ PFAPG.SPELLS_LEVELS_ADDED = {
 PFAPG.TRAITS = {
   // Already declared in Pathfinder
 };
+// TODO review properties
 PFAPG.WEAPONS = {
-  'Bardiche':'Level=Martial Category=Two-Handed Damage=d10 Threat=19',
-  'Battle Aspergillum':'Level=Simple Category=Light Damage=d6',
-  'Bayonet':'Level=Simple Category=Two-Handed Damage=d6',
-  'Bec De Corbin':'Level=Martial Category=Two-Handed Damage=d10 Crit=3',
-  'Bill':'Level=Martial Category=Two-Handed Damage=d8 Crit=3',
-  'Boar Spear':'Level=Simple Category=Two-Handed Damage=d8',
-  'Boomerang':'Level=Exotic Category=Ranged Damage=d6 Range=30',
-  'Brass Knuckles':'Level=Unarmed Category=Unarmed Damage=d3',
-  'Cestus':'Level=Simple Category=Light Damage=d4 Threat=19',
-  'Chain Spear':'Level=Exotic Category=Two-Handed Damage=d6/d6',
-  'Chakram':'Level=Martial Category=Ranged Damage=d8 Range=30',
-  'Double Crossbow':'Level=Exotic Category=Ranged Damage=d8 Threat=19 Range=80',
-  'Falcata':'Level=Exotic Category=One-Handed Damage=d8 Threat=19 Crit=3',
-  'Glaive-Guisarme':'Level=Martial Category=Two-Handed Damage=d10 Crit=3',
-  'Khopesh':'Level=Exotic Category=One-Handed Damage=d8 Threat=19',
-  'Lucerne Hammer':'Level=Martial Category=Two-Handed Damage=d12',
-  'Mancatcher':'Level=Exotic Category=Two-Handed Damage=d2',
-  'Pilum':'Level=Martial Category=Ranged Damage=d8 Range=20',
-  'Sword Cane':'Level=Martial Category=One-Handed Damage=d6',
-  'Swordbreaker Dagger':'Level=Exotic Category=Light Damage=d4',
-  'Temple Sword':'Level=Exotic Category=One-Handed Damage=d8 Threat=19',
-  'Wooden Stake':'Level=Simple Category=Light Damage=d4 Range=10'
+  'Bardiche':
+    'Level=Martial Category=Two-Handed Damage=d10 Threat=19 Properties=Reach',
+  'Battle Aspergillum':
+    'Level=Simple Category=Light Damage=d6 Properties=Hammers',
+  'Bayonet':
+    'Level=Simple Category=Two-Handed Damage=d6 Properties="Light Blades"',
+  'Bec De Corbin':
+    'Level=Martial Category=Two-Handed Damage=d10 Crit=3 ' +
+    'Properties=Reach,"Pole Arms"',
+  'Bill':
+    'Level=Martial Category=Two-Handed Damage=d8 Crit=3 ' +
+    'Properties=Reach,"Pole Arms"',
+  'Boar Spear':'Level=Simple Category=Two-Handed Damage=d8 Properties=Spears',
+  'Boomerang':
+    'Level=Exotic Category=Ranged Damage=d6 Range=30 Properties=Thrown',
+  'Brass Knuckles':
+    'Level=Unarmed Category=Unarmed Damage=d3 Properties=Monk,Close',
+  'Cestus':
+    'Level=Simple Category=Light Damage=d4 Threat=19 Properties=Monk,Close',
+  'Chain Spear':
+    'Level=Exotic Category=Two-Handed Damage=d6/d6 Properties=Spears',
+  'Chakram':
+    'Level=Martial Category=Ranged Damage=d8 Range=30 Properties=Thrown',
+  'Double Crossbow':
+    'Level=Exotic Category=Ranged Damage=d8 Threat=19 Range=80 ' +
+    'Properties=Projectile,Crossbows',
+  'Falcata':
+    'Level=Exotic Category=One-Handed Damage=d8 Threat=19 Crit=3 ' +
+    'Properties="Heavy Blades"',
+  'Glaive-Guisarme':
+    'Level=Martial Category=Two-Handed Damage=d10 Crit=3 ' +
+    'Properties=Reach,"Pole Arms"',
+  'Khopesh':
+    'Level=Exotic Category=One-Handed Damage=d8 Threat=19 ' +
+    'Properties="Heavy Blades"',
+  'Lucerne Hammer':
+    'Level=Martial Category=Two-Handed Damage=d12 Properties=Reach,"Pole Arms"',
+  'Mancatcher':
+    'Level=Exotic Category=Two-Handed Damage=d2 Properties=Reach,"Pole Arms"',
+  'Pilum':
+    'Level=Martial Category=Ranged Damage=d8 Range=20 Properties=Thrown,Spears',
+  'Sword Cane':
+    'Level=Martial Category=One-Handed Damage=d6 Properties="Light Blades"',
+  'Swordbreaker Dagger':
+    'Level=Exotic Category=Light Damage=d4 Properties="Light Blades"',
+  'Temple Sword':
+    'Level=Exotic Category=One-Handed Damage=d8 Threat=19 ' +
+    'Properties=Monk,"Heavy Blades"',
+  'Wooden Stake':
+    'Level=Simple Category=Light Damage=d4 Range=10 Properties=Close'
 };
 PFAPG.CLASSES = {
   'Alchemist':
@@ -9251,7 +9280,9 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'featureNotes.grandDiscovery', '=', '1'
     );
     rules.defineRule('skillNotes.alchemy', classLevel, '=', null);
-    Pathfinder.weaponRules(rules, 'Bomb', 'Exotic', 'Ranged', '1d6', 20, 2, 20);
+    // TODO properties?
+    Pathfinder.weaponRules
+      (rules, 'Bomb', 'Exotic', 'Ranged', '1d6', 20, 2, 20, ['Thrown']);
     // Remove crit info for bomb--it doesn't crit
     delete rules.choices.notes['weapons.Bomb'];
     rules.defineChoice('notes', 'weapons.Bomb:%V (%1 %2%3)');
@@ -12113,7 +12144,9 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('weapons.Claws',
       'combatNotes.aspectOfTheBeast(ClawsOfTheBeast)', '=', '1'
     );
-    Pathfinder.weaponRules(rules, 'Claws', 'Unarmed', 'Unarmed', 'd4', 20, 2);
+    // TODO properties?
+    Pathfinder.weaponRules
+      (rules, 'Claws', 'Unarmed', 'Unarmed', 'd4', 20, 2, null, ['Natural']);
   } else if(name == 'Aspect Of The Beast (Night Senses)') {
     rules.defineRule('featureNotes.aspectOfTheBeast(NightSenses)',
       '', '=', '"x2 normal distance in poor light"',
@@ -12263,7 +12296,9 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule
       ('features.Weapon Proficiency (Bite)', 'combatNotes.razortusk', '=', '1');
     rules.defineRule('weapons.Bite', 'combatNotes.razortusk', '=', '1');
-    Pathfinder.weaponRules(rules, 'Bite', 'Unarmed', 'Unarmed', 'd4', 20, 2);
+    // TODO properties?
+    Pathfinder.weaponRules
+      (rules, 'Bite', 'Unarmed', 'Unarmed', 'd4', 20, 2, null, ['Natural']);
   } else if(name == 'Sharp Senses') {
     rules.defineRule
       ('skillNotes.keenSenses', 'skillNotes.sharpSenses', '+', '2');
