@@ -1,5 +1,5 @@
 /*
-Copyright 2023, James J. Hayes
+Copyright 2026, James J. Hayes
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -1884,153 +1884,155 @@ PFAPG.FEATURES = {
     'Note="2 wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
 
   // Witch
-  'Agony Hex':
-    'Section=magic ' +
-    'Note="R60\' Target suffers nauseated for %{levels.Witch} rd (DC %{hexDC} Fortitude ends) 1/target/dy"',
-  'Blight Hex':
-    'Section=magic ' +
-    'Note="Touch kills vegetation in %{levels.Witch * 10}\' radius over 1 wk or inflicts -1 Constitution/dy"',
-  'Cackle Hex':
-    'Section=magic ' +
-    'Note="R30\' Extends self agony, charm, evil eye, fortune, and misfortune hex effects for 1 rd"',
-  // Cantrips as Summoner
-  'Cauldron Hex':
-    'Section=feature,skill ' +
-    'Note=' +
-      '"Has Brew Potion feature",' +
-      '"+4 Craft (Alchemy)"',
-  'Charm Hex':
-    'Section=skill ' +
-    'Note="R30\' Improves attitude of target animal or humanoid by %{levels.Witch>=8 ? 2 : 1} (DC %{hexDC} Will negates) for %{intelligenceModifier} rd 1/target/dy"',
-  'Coven Hex':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May participate in a hag coven",' +
-      '"R30\' May use aid another to give target w/Coven Hex +1 caster level for 1 rd"',
-  'Death Curse Hex':
-    'Section=magic ' +
-    'Note="R30\' Target becomes fatigued (DC %{hexDC} Will negates), then exhausted, then dies (DC %{hexDC} Fortitude suffers 4d6+%{levels.Witch} HP) 1/target/dy"',
-  'Disguise Hex':
-    'Section=magic ' +
-    'Note="May use <i>Disguise Self</i> effects for %{levels.Witch} hr/dy" ' +
-    'Spells="Disguise Self" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Eternal Slumber Hex':
-    'Section=magic ' +
-    'Note="Touch or poison inflicts permanent sleep (DC %{hexDC} Will negates) 1/target/dy"',
-  'Evil Eye Hex':
-    'Section=magic ' +
-    'Note="R30\' Target suffers %{levels.Witch>=8 ? -4 : -2} on choice of Armor Class, ability checks, attack, saves, or skill checks for %{3 + intelligenceModifier} rd (DC %{hexDC} Will 1 rd)"',
+  // Cantrips as above
   'Familiar Centipede':'Section=skill Note="+3 Stealth"',
-  'Familiar Crab':'Section=combat Note="+2 grapple CMB"',
+  'Familiar Crab':'Section=combat Note="+2 Grapple checks"',
   'Familiar Fox':'Section=save Note="+2 Reflex"',
   'Familiar Octopus':'Section=skill Note="+3 Swim"',
   'Familiar Scorpion':'Section=combat Note="+2 Initiative"',
   'Familiar Spider':'Section=skill Note="+3 Climb"',
-  'Flight Hex':
-    'Section=magic,skill ' +
-    'Note=' +
-      '"May use self <i>Feather Fall</i> effects at will%1",' +
-      '"+4 Swim" ' +
-    'Spells="Feather Fall","3:Levitate","5:Fly" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Forced Reincarnation Hex':
-    'Section=magic ' +
-    'Note=' +
-      '"R30\' Target suffers death and <i>Reincarnate</i> effects (DC %{hexDC} Will negates) 1/target/dy" ' +
-      'Spells="Reincarnate" ' +
-      'SpellAbility=Intelligence ' +
-      'SpellLevel=levels.Witch',
-  'Fortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target gains the better of 2 rolls on choice of ability check, attack, save, or skill check 1/rd for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
-  "Hag's Eye Hex":
-    'Section=magic ' +
-    'Note=' +
-      '"Can use <i>Arcane Eye</i> effects %{levels.Witch} min/dy%{$\'features.Coven Hex\' ? \\" and share w/witches in 10\' radius\\" : \'\'}" ' +
-    'Spells="Arcane Eye" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Healing Hex':
-    'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=5 ? \'Moderate\' : \'Light\'} Wounds</i> effects 1/target/dy" ' +
-    'Spells="Cure Light Wounds","5:Cure Moderate Wounds" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
   'Hex':'Section=feature Note="%V selections"',
-  'Life Giver Hex':
-    'Section=magic ' +
-    'Note="May use <i>Resurrection</i> effects 1/dy" ' +
-    'Spells="Resurrection" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Major Healing Hex':
-    'Section=magic ' +
-    'Note="May use <i>Cure %{levels.Witch>=15 ? \'Critical\' : \'Serious\'} Wounds</i> effects 1/target/dy" ' +
-    'Spells="Cure Serious Wounds","15:Cure Critical Wounds" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Misfortune Hex':
-    'Section=magic ' +
-    'Note="R30\' Target suffers worse of 2 rolls on all ability checks, attack, saves, and skill checks (DC %{hexDC} Will negates) for %{levels.Witch>=16 ? 3 : levels.Witch>=8 ? 2 : 1} rd 1/target/dy"',
-  'Natural Disaster Hex':
-    'Section=magic ' +
-    'Note=' +
-      '"May combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects 1/dy" ' +
-    'Spells="Earthquake","Storm Of Vengeance" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
-  'Nightmares Hex':
-    'Section=magic ' +
-    'Note="R60\' May use <i>Nightmare</i> effects (DC %{hexDC} Will ends)" ' +
-    'Spells="Nightmare" ' +
-    'SpellAbility=Intelligence ' +
-    'SpellLevel=levels.Witch',
   'Patron':
     'Section=feature,magic ' +
     'Note=' +
       '"1 selection",' +
       '"Knows additional spells"',
-  'Retribution Hex':
+  "Witch's Familiar":
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Has the Familiar %{levels.Witch>2?\'and Deliver Touch Spells features\':\'feature\'}",' +
+      '"Must commune with familiar each day to prepare spells"',
+  // Hexes
+  'Blight Hex':
     'Section=magic ' +
-    'Note="R60\' Target suffers half of damage it inflicts (DC %{hexDC} Will negates) for %{intelligenceModifier} rd"',
+    'Note="Can use touch to kill vegetation in a %{levels.Witch * 10}\' radius over the course of a week or use a melee touch attack to impose a curse on an animal or plant creature (save Will DC %{hexDC} negates) that inflicts 1 point of Constitution damage each day; can have only one Blight curse active at a time"',
+  'Cackle Hex':
+    'Section=combat ' +
+    'Note="R30\' Can use a move action to extend self Agony, Charm, Evil Eye, Fortune, and Misfortune hex effects for 1 rd"',
+  'Cauldron Hex':
+    'Section=feature,skill ' +
+    'Note=' +
+      '"Has the Brew Potion feature",' +
+      '"+4 Craft (Alchemy)"',
+  'Charm Hex':
+    'Section=combat ' +
+    'Note="R30\' Can improve the attitude of a target animal or humanoid by %{levels.Witch>=8?2:1} (save Will DC %{hexDC} negates) for %{intelligenceModifier>?1} rd once per target per day"',
+  'Coven Hex':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"R30\' Can use Aid Another to give a target with the Coven hex +1 caster level for 1 rd",' +
+      '"Can participate in a hag coven"',
+  'Disguise Hex':
+    'Section=magic ' +
+    'Note="Can use <i>Disguise Self</i> effects for %{levels.Witch} hr per day" ' +
+    'Spells="Disguise Self" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Evil Eye Hex':
+    'Section=combat ' +
+    'Note="R30\' Inflicts %{levels.Witch>=8?-4:-2} on a choice of Armor Class, ability checks, attacks, saves, or skill checks for %{(3+intelligenceModifier)>?1} rd (save Will DC %{hexDC} effects last for 1 rd)"',
+  'Flight Hex':
+    'Section=magic,skill ' +
+    'Note=' +
+      '"Can cast <i>Feather Fall</i> on self at will%{levels.Witch>2?(levels.Witch>4?\',\':\' and\')+\' <i>Levitate</i> on self once per day\':\'\'}%{levels.Witch>4?\', and <i>Fly</i> on self for \'+levels.Witch+\' min per day\':\'\'}",' +
+      '"+4 Swim" ' +
+    'Spells="Feather Fall","3:Levitate","5:Fly" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Fortune Hex':
+    'Section=combat ' +
+    'Note="R30\' Allows a target to take the better of 2 rolls on an ability check, attack, save, or skill check once per rd for %{levels.Witch>=16?3:levels.Witch>=8?2:1} rd once per target per day"',
+  'Healing Hex':
+    'Section=magic ' +
+    'Note="Can use <i>Cure %{levels.Witch>=5?\'Moderate\':\'Light\'} Wounds</i> effects once per target per day" ' +
+    'Spells="Cure Light Wounds","5:Cure Moderate Wounds" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Misfortune Hex':
+    'Section=combat ' +
+    'Note="R30\' Forces a target to take the worse of 2 rolls on ability checks, attacks, saves, and skill checks (save Will DC %{hexDC} negates) for %{levels.Witch>=16?3:levels.Witch>=8?2:1} rd once per target per day"',
   'Slumber Hex':
     'Section=magic ' +
     'Note=' +
-      '"R30\' May use <i>Sleep</i> effects w/out HD limit (DC %{hexDC} Will negates) for %{levels.Witch} rd 1/target/dy" ' +
+      '"R30\' Can use <i>Sleep</i> effects on a creature of any HD (save Will DC %{hexDC} negates) for %{levels.Witch} rd once per target per day" ' +
     'Spells="Sleep" ' +
     'SpellAbility=Intelligence ' +
     'SpellLevel=levels.Witch',
   'Tongues Hex':
     'Section=magic ' +
     'Note=' +
-      '"May use self <i>Comprehend Languages</i>%{levels.Witch>=5 ? \' and <i>Tongues</i>\' : \'\'} effects for %{levels.Witch} min/dy" ' +
+      '"Can use <i>Comprehend Languages</i>%{levels.Witch>=5?\' and <i>Tongues</i>\':\'\'} effects on self for %{levels.Witch} min per day" ' +
     'Spells="Comprehend Languages","5:Tongues" ' +
     'SpellAbility=Intelligence ' +
     'SpellLevel=levels.Witch',
-  'Vision Hex':
-    'Section=magic ' +
-    'Note="Touched target gains vision of possible event within next yr (DC %{hexDC} Will negates)"',
   'Ward Hex':
-    'Section=magic ' +
-    'Note="Target gains +%{levels.Witch>=16 ? 4 : levels.Witch>=8 ? 3 : 2} Armor Class and saves until hit or fails save"',
-  'Waxen Image Hex':
-    'Section=magic ' +
-    'Note="R30\' Self controls target action %{intelligenceModifier} times (DC %{hexDC} Will ends) 1/target/dy"',
-  'Weather Control Hex':
+    'Section=combat ' +
+    'Note="Gives the target +%{levels.Witch>=16?4:levels.Witch>=8?3:2} Armor Class and saves until it fails a save or a foe hits it; can have only one Ward hex active at a time"',
+  // Major Hexes
+  'Agony Hex':
+    'Section=combat ' +
+    'Note="R60\' Inflicts nauseated for %{levels.Witch} rd (save Fortitude DC %{hexDC} negates; additional saves each rd end) once per target per day"',
+  "Hag's Eye Hex":
     'Section=magic ' +
     'Note=' +
-      '"May perform 1 hr ritual to use <i>Control Weather</i> effects 1/dy" ' +
+      '"Can use <i>Arcane Eye</i> effects %{levels.Witch} min per day%{$\'features.Coven Hex\'?\\" and share its vision with witches within 10\'\\":\'\'}" ' +
+    'Spells="Arcane Eye" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Major Healing Hex':
+    'Section=magic ' +
+    'Note="Can use <i>Cure %{levels.Witch>=15?\'Critical\':\'Serious\'} Wounds</i> effects once per target per day" ' +
+    'Spells="Cure Serious Wounds","15:Cure Critical Wounds" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Nightmares Hex':
+    'Section=magic ' +
+    'Note="R60\' Can use <i>Nightmare</i> effects (save Will DC %{hexDC} negates; additional saves each night end) at will" ' +
+    'Spells="Nightmare" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Retribution Hex':
+    'Section=combat ' +
+    'Note="R60\' Target suffers half as much damage as it inflicts (save Will DC %{hexDC} negates) for %{intelligenceModifier>?1} rd"',
+  'Vision Hex':
+    'Section=magic ' +
+    'Note="Gives the touched target a vision of a possible event within the next year (save Will DC %{hexDC} negates)"',
+  'Waxen Image Hex':
+    'Section=combat ' +
+    'Note="R30\' Can use a full-round action to create a wax image of a target that can be used %{intelligenceModifier>1?intelligencModifier+\' times\':\'once\'} to force the target to move, attack itself, lie down, or drop an object, or to inflict sickened and staggered on the target for 1 rd (save Will DC %{hexDC} negates; additional saves upon each use end), once per target per day"',
+  'Weather Control Hex':
+    'Section=magic ' +
+    'Note="Can perform a 1 hr ritual to use <i>Control Weather</i> effects once per day" ' +
     'Spells="Control Weather" ' +
     'SpellAbility=Intelligence ' +
     'SpellLevel=levels.Witch',
-  "Witch's Familiar":
-    'Section=feature,magic ' +
+  // Grand Hexes
+  'Death Curse Hex':
+    'Section=combat ' +
+    'Note="R30\' Target becomes fatigued (save Will DC %{hexDC} negates) for 1 rd, then exhausted for 1 rd, then dies (save Fortitude DC %{hexDC} inflicts 4d6+%{levels.Witch} HP) once per target per day"',
+  'Eternal Slumber Hex':
+    'Section=combat ' +
+    'Note="Touch or a poison lasting 1 min inflicts permanent sleep (save Will DC %{hexDC} negates) once target per day"',
+  'Forced Reincarnation Hex':
+    'Section=magic ' +
     'Note=' +
-      '"Has Familiar feature",' +
-      '"Familiar stores spells"',
+      '"R30\' Inflicts death and <i>Reincarnate</i> effects (save Will DC %{hexDC} negates) once per target per day" ' +
+      'Spells="Reincarnate" ' +
+      'SpellAbility=Intelligence ' +
+      'SpellLevel=levels.Witch',
+  'Life Giver Hex':
+    'Section=magic ' +
+    'Note="Can use <i>Resurrection</i> effects once per day" ' +
+    'Spells="Resurrection" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
+  'Natural Disaster Hex':
+    'Section=magic ' +
+    'Note=' +
+      '"Can combine <i>Storm Of Vengeance</i> and <i>Earthquake</i> effects once per day" ' +
+    'Spells="Earthquake","Storm Of Vengeance" ' +
+    'SpellAbility=Intelligence ' +
+    'SpellLevel=levels.Witch',
 
   // Barbarian
   'Beast Totem':'Section=combat Note="+%{ragePowerLevel//4+1} Armor Class during rage"',
@@ -4155,7 +4157,7 @@ PFAPG.FEATURES = {
     'SpellLevel=levels.Wizard',
   'Binding Darkness':
     'Section=magic ' +
-    'Note="R30\' Ranged touch inflicts entanglement and concealment for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
+    'Note="R30\' Ranged touch attack inflicts entanglement and concealment for %{1+levels.Wizard//5} rd (bright light halves duration) %{intelligenceModifier+3}/dy"',
   'Bolster':
     'Section=magic ' +
     'Note="Touched undead gains +%{1+levels.Wizard//5} attack and saves, +2 turn resistance, and +1 temporary hit point/HD for %{levels.Wizard//2>?1} rd %{intelligenceModifier+3}/dy"',
@@ -4271,7 +4273,7 @@ PFAPG.FEATURES = {
     'Note="%{5*levels.Wizard}\'x20\' wave moves away 30\'/rd, douses normal fires, and knocks prone or carries away (caster level vs. CMD; DC %{10+levels.Wizard//2+intelligenceModifier} Strength to end) %{levels.Wizard//2} rd/dy"',
   'Wind Servant':
     'Section=magic ' +
-    'Note="May blow %{levels.Wizard} lb object 30\', hitting a target w/a ranged touch %{intelligenceModifier+3}/dy"',
+    'Note="May blow %{levels.Wizard} lb object 30\', hitting a target w/a ranged touch attack %{intelligenceModifier+3}/dy"',
 
   // Battle Herald
   // Banner as Cavalier
@@ -4819,7 +4821,7 @@ PFAPG.FEATURES = {
     'Note="+2 to overcome spell resistance when an adjacent ally has this feat; +4 and +1 caster level when the ally has the same spell"',
   'Arcane Blast':
     'Section=magic ' +
-    'Note="R30\' Ranged touch spends a spell slot (level 1 minimum) to inflict 2d6 HP + 1d6 HP/slot level"',
+    'Note="R30\' Ranged touch attack spends a spell slot (level 1 minimum) to inflict 2d6 HP + 1d6 HP/slot level"',
   'Arcane Shield':
     'Section=magic ' +
     'Note="May use a spell slot to gain +1 Armor Class/slot level for 1 rd"',
@@ -5166,7 +5168,7 @@ PFAPG.FEATURES = {
     'Section=combat ' +
     'Note="+2 Constitution during rage; rage continues while unconscious"',
   'Ray Shield':
-    'Section=combat Note="Shield absorbs damage from a ranged touch hit 1/rd"',
+    'Section=combat Note="Shield absorbs damage from a ranged touch attack hit 1/rd"',
   'Razortusk':
     'Section=combat Note="Bite inflicts 1d4+%{strengthModifier} HP damage"',
   'Reach Spell':
@@ -5737,7 +5739,7 @@ PFAPG.SPELLS = {
     'School=Abjuration ' +
     'Level=Inquisitor3 ' +
     'Description=' +
-      '"Melee touch inflicts 2d8+%{lvl<?15} HP and dispels %{lvl//4} <i>Magic Jar</i> or compulsion effects, starting with the highest-level spells (save Will inflicts half HP and dispels 1 effect)"',
+      '"Melee touch attack inflicts 2d8+%{lvl<?15} HP and dispels %{lvl//4} <i>Magic Jar</i> or compulsion effects, starting with the highest-level spells (save Will inflicts half HP and dispels 1 effect)"',
   'Castigate':
     'School="Enchantment (Compulsion) [Fear,Language-Dependent,Mind-Affecting]" ' +
     'Level=Inquisitor2 ' +
@@ -6801,7 +6803,7 @@ PFAPG.SPELLS = {
     'School="Conjuration (Creation) [Earth,Fire]" ' +
     'Level=D8,S8,W8 ' +
     'Description=' +
-      '"R%{100+lvl*10}\' Creates %{lvl} contiguous 5\'x5\'x%{lvl//4}\\" wall sections, each with hardness 4 and 90 hit points, that inflict 2d4 HP fire to creatures within 10\' and 1d4 HP fire to those within 20\' for %{lvl} rd; weapon strikes on the wall inflict 2d6 HP fire to the weapon, and passage through requires a DC 25 Strength check and inflicts 20d6 HP fire; allows a R60\' ranged touch once per rd as a move action that inflicts 10d6 HP fire but destroys 1d4 wall sections; all damage from the wall continues to inflict half HP for 1d3 rd after exposure ends"',
+      '"R%{100+lvl*10}\' Creates %{lvl} contiguous 5\'x5\'x%{lvl//4}\\" wall sections, each with hardness 4 and 90 hit points, that inflict 2d4 HP fire to creatures within 10\' and 1d4 HP fire to those within 20\' for %{lvl} rd; weapon strikes on the wall inflict 2d6 HP fire to the weapon, and passage through requires a DC 25 Strength check and inflicts 20d6 HP fire; allows a R60\' ranged touch attack once per rd as a move action that inflicts 10d6 HP fire but destroys 1d4 wall sections; all damage from the wall continues to inflict half HP for 1d3 rd after exposure ends"',
   'Wall Of Suppression':
     'School=Abjuration ' +
     'Level=S9,W9 ' +
@@ -7805,7 +7807,7 @@ PFAPG.CLASSES = {
     'HitDie=d6 Attack=1/2 SkillPoints=2 Fortitude=1/3 Reflex=1/3 Will=1/2 ' +
     'Features=' +
       '"1:Weapon Proficiency (Simple Weapons)",' +
-      '1:Cantrips,1:Hex,1:Patron,"1:Witch\'s Familiar" ' +
+      '"1:Cantrips","1:Hex","1:Patron","1:Witch\'s Familiar" ' +
     'Selectables=' +
       '"1:Agility Patron:Patron","1:Animals Patron:Patron",' +
       '"1:Deception Patron:Patron","1:Elements Patron:Patron",' +
@@ -10000,17 +10002,14 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('familiarMasterLevel', classLevel, '+=', null);
     rules.defineRule
       ('featureNotes.hex', classLevel, '=', 'Math.floor(source / 2) + 1');
-    rules.defineRule
-      ('features.Brew Potion', 'featureNotes.cauldronHex', '=', '1');
+    rules.defineRule('features.Deliver Touch Spells',
+      classLevel, '=', 'source>=3 ? 1 : null'
+    );
     rules.defineRule
       ('features.Familiar', "featureNotes.witch'sFamiliar", '=', '1');
     rules.defineRule('hexDC',
       classLevel, '=', '10 + Math.floor(source / 2)',
       'intelligenceModifier', '+', null
-    );
-    rules.defineRule('magicNotes.flightHex.1',
-      'features.Flight Hex', '?', null,
-      classLevel, '=', '(source>=3 ? ", self <i>Levitate</i> 1/dy" : "") + (source>=5 ? ", self <i>Fly</i> effects %{' + classLevel + '} min/dy" : "")'
     );
     rules.defineRule
       ('selectableFeatureCount.Witch (Hex)', 'featureNotes.hex', '+=', null);
@@ -12798,7 +12797,11 @@ PFAPG.ruleNotes = function() {
     '    PFAPG plugin defaults to giving characters the core archetypes, as' +
     '    well as the core rules\' racial traits, if no alternatives are' +
     '    selected. This allows characters generated using only the' +
-    '    Pathfinder base plugin to display properly.\n' +
+    '    Pathfinder base plugin to display properly when using the PFAPG' +
+    '    plugin.\n' +
+    '  </li><li>\n' +
+    "    Quilvyn assumes that a witch's hexes that have durations dependent" +
+    "    on the witch's intelligence modifier last for at least 1 round.\n" +
     '  </li>\n' +
     '</ul>\n' +
     '<h3>Limitations</h3>\n' +
