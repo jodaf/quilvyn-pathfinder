@@ -1194,7 +1194,7 @@ PFAPG.FEATURES = {
   'Monster Lore':
     'Section=skill ' +
     'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
-  // Orisons as Pathfinder
+  'Orisons':Pathfinder.FEATURES.Orisons,
   'Second Judgment':
     'Section=combat ' +
     'Note="May use 2 Judgments simultaneously; may change 1 as a swift action"',
@@ -1482,7 +1482,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"+4 Heal",' +
       '"Can use Heal on double the normal number of people simultaneously and can provide long-term care to self"',
-  'Life Link':
+  'Life Link (Oracle)':
     'Section=combat ' +
     'Note="R%{mysteryLevel*10+100}\' Can establish a bond with up to %{mysteryLevel} targets that transfers 5 hit points of damage per rd to self; can end as an immediate action, and moving out of range ends the bond"',
   'Life Mystery':
@@ -1711,177 +1711,223 @@ PFAPG.FEATURES = {
     'Note="Can use swift actions to gain a %{mysteryLevel>=10 ? 90 : 60}\' fly Speed with good maneuverability for %{mysteryLevel} min per day"',
 
   // Summoner
-  'Ability Increase Evolution':
-    'Section=companion Note="+2 each on %V chosen %1"',
-  // Ability Score Increase as Pathfinder
   'Aspect':
-    'Section=feature ' +
-    'Note="May use 2 points from evolution pool to apply 2 points of evolutions to self"',
-  'Bite Evolution':
     'Section=companion ' +
-    'Note="Bite inflicts %{eidolonDamage}%{eidolonBiteDamageBonus} HP"',
-  'Blindsense Evolution':
-    'Section=companion Note="R30\' May detect unseen creatures"',
-  'Blindsight Evolution':
-    'Section=companion Note="R30\' Can maneuver and fight w/out vision"',
+    'Note="Can use 2 points from evolution pool to apply 2 points of evolutions to self; cannot be used for ability increases"',
   'Bond Senses':
-    'Section=feature ' +
-    'Note="May perceive via eidolon senses on same plane for %{levels.Summoner} rd/dy"',
-  'Breath Weapon Evolution':
     'Section=companion ' +
-    'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of chosen energy type (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Reflex half) %V/dy"',
-  'Burrow Evolution':
-    'Section=companion Note="May burrow through earth at %V\'"',
-  // Cantrips as Pathfinder
-  'Claws Evolution':
+    'Note="Can perceive via eidolon senses when on the same plane for %{levels.Summoner} rd per day"',
+  'Cantrips':Pathfinder.FEATURES.Cantrips,
+  'Eidolon':
     'Section=companion ' +
-    'Note="Claws inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
-  'Climb Evolution':'Section=companion Note="%V\' Climb"',
-  'Companion Darkvision':'Section=companion Note="60\' b/w vision in darkness"',
-  'Constrict Evolution':
-    'Section=companion Note="Successful grapple inflicts dbl grab damage"',
-  'Damage Reduction Evolution':
-    'Section=companion Note="DR %V/opposite alignment"',
-  'Eidolon':'Section=feature Note="Special bond and abilities"',
-  'Energy Attacks Evolution':
-    'Section=companion ' +
-    'Note="Natural attack inflicts +1d6 HP of chosen energy type"',
-  'Fast Healing Evolution':
-    'Section=companion Note="Heals %V hit points per rd"',
-  'Flight Evolution':'Section=companion Note="%V\' Fly"',
-  'Frightful Presence Evolution':
-    'Section=companion ' +
-    'Note="R30\' Foes suffer frightened (up to %{animalCompanionStats.HD-4} HD) or shaken (up to %{animalCompanionStats.HD} HD) (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} Will negates) for 3d6 rd"',
-  'Gills Evolution':'Section=companion Note="May breathe underwater"',
-  'Gore Evolution':
-    'Section=companion ' +
-    'Note="Horn inflicts %{eidolonDamage}%{eidolonPrimaryDamageBonus} HP"',
-  'Grab Evolution':
-    'Section=companion ' +
-    'Note="Successful chosen natural attack allows free combat maneuver to grapple/+4 grapple CMB"',
+    'Note="Has a special bond with an outsider that has the same alignment, knows the same languages, shares a glowing rune, is not prevented from contact by spells such as <i>Protection From Evil</i>, and has a form and stats dependent on Summoner level; summoning takes 1 min and lasts until dismissed or killed, with death preventing renewed summoning, with half hit points, until the next day"',
+  'Evolution Pool':'Section=companion Note="%V points"',
   'Greater Aspect':
-    'Section=feature ' +
-    'Note="May use 3 points from evolution pool to apply 6 points of evolutions to self"',
-  'Greater Shield Ally (Summoner)':
-    'Section=combat,save ' +
+    'Section=companion ' +
+    'Note="Can use 3 points from evolution pool to apply 6 points of evolutions to self; cannot be used for ability increases"',
+  'Greater Shield Ally':
+    'Section=combat,combat,save ' +
     'Note=' +
-      '"Allies gain +2 Armor Class and self gains +4 Armor Class when eidolon is within reach",' +
-      '"Allies gain +2 saves and self gains +4 saves when eidolon is within reach"',
-  'Immunity Evolution':
-    'Section=companion Note="Immune to choice of %V energy type"',
-  'Improved Damage Evolution':
-    'Section=companion ' +
-    'Note="Choice of %V natural attacks each inflict damage 1 die type higher"',
-  'Improved Natural Armor Evolution':
-    'Section=companion Note="+%V natural armor"',
-  'Large Evolution':
-    'Section=companion ' +
-    'Note="Size is %V: gains +%1 Strength, +%2 Constitution, +%3 Armor Class, +%4 CMB/CMD%{$\'animalCompanion.Biped Eidolon\' || $\'features.Large Evolution\'>1 ? \', \' + ($\'animalCompanion.Biped Eidolon\' && $\'features.Large Evolution\'>1 ? 15 : 10) + \\"\' reach\\" : \'\'}; suffers %5 Dexterity, %6 Attack, %7 Fly, %8 Stealth"',
+      '"Has increased Shield Ally effects",' +
+      '"Allies gain +2 Armor Class when eidolon is within reach",' +
+      '"Allies gain +2 saves when eidolon is within reach"',
   'Life Bond':
     'Section=combat ' +
     'Note="Transfers to eidolon damage that would reduce self to negative hit points"',
   'Life Link (Summoner)':
-    'Section=combat ' +
-    'Note="May transfer damage from eidolon to self to negate forced return to home plane/Eidolon must stay w/in 100\' to have full hit points"',
-  'Limbs (Arms) Evolution':'Section=companion Note="Has %V pairs of arms"',
-  'Limbs (Legs) Evolution':
-    'Section=companion Note="%V pairs of legs give +%1 speed"',
-  'Link (Summoner)':
     'Section=companion ' +
-    'Note="May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon"',
-  'Magic Attacks Evolution':
-    'Section=companion ' +
-    'Note="Natural attacks count as magic%{levels.Summoner>=10 ? \' and aligned\' : \'\'}"',
+    'Note="Can use a free action to transfer damage from eidolon to self to prevent a forced return to its home plane/The eidolon\'s current and maximum hit points are reduced by 50% or 75% when it is greater than 100\' or 1000\' away, and it is forced to its home plane if the distance exceeds 10,000\'"',
   "Maker's Call":
     'Section=magic ' +
-    'Note="May use <i>Dimension Door</i> effects to bring eidolon adjacent %{(levels.Summoner - 2) // 4}/dy" ' +
+    'Note="Can use <i>Dimension Door</i> effects to bring eidolon to an adjacent spot %{levels.Summoner>9?(levels.Summoner-2)//4+\' times\':\'once\'} per day" ' +
     'Spells="Dimension Door" ' +
     'SpellAbility=Charisma ' +
     'SpellLevel=levels.Summoner',
   'Merge Forms':
     'Section=combat ' +
-    'Note="May merge into eidolon, becoming protected from harm, for %{levels.Summoner} rd/dy"',
+    'Note="Can merge into eidolon, speaking through it, controlling its actions (which allows spellcasting), perceiving through its senses, becoming protected from harm, and suspending spells and effects affecting self, for %{levels.Summoner} rd per day; death of the eidolon while merged inflicts on self 4d6 HP and stunned for 1 rd"',
+  'Shield Ally (Summoner)':
+    'Section=combat,save ' +
+    'Note=' +
+      '"+%{combatNotes.greaterShieldAlly?4:2} Armor Class when eidolon is within reach",' +
+      '"+%{combatNotes.greaterShieldAlly?4:2} saves when eidolon is within reach"',
+  'Simple Somatics':Pathfinder.FEATURES['Simple Somatics'],
+  'Small Eidolon':
+    'Section=companion,companion ' +
+    'Note=' +
+      '"Eidolon is Small and has -4 Strength, +2 Dexterity, -2 Constitution, a +1 size bonus to Armor Class, +1 attack, -1 CMB and CMD, and -1 damage die step",' +
+      '"Eidolon has +2 Fly and +4 Stealth"',
+  'Summon Monster':
+    'Section=magic ' +
+    'Note="Can cast <i>Summon Monster %V</i>%{levels.Summoner>=19?\' or <i>Gate</i>\':\'\'}, lasting %{levels.Summoner} min, when eidolon is not present %{3+charismaModifier} times per day"',
+  'Transposition':
+    'Section=magic Note="Can use Maker\'s Call to swap places with eidolon"',
+  'Twin Eidolon':
+    'Section=companion ' +
+    'Note="Can take the form of eidolon for %{levels.Summoner} min per day"',
+  // Eidolon special abilities
+  'Ability Score Increase':Pathfinder.FEATURES['Ability Score Increase'],
+  'Darkvision (Companion)':
+    'Section=companion ' +
+    'Note="R60\' Companion has black and white vision in complete darkness"',
+  'Devotion':Pathfinder.FEATURES.Devotion,
+  'Evasion (Companion)':Pathfinder.FEATURES['Evasion (Companion)'],
+  'Improved Evasion Companion)':
+    Pathfinder.FEATURES['Improved Evasion (Companion)'],
+  'Link (Summoner)':
+    'Section=companion ' +
+    'Note="Can communicate with eidolon over any distance while on same plane/Magic items worn by eidolon count as using slots on self"',
+  'Multiattack':Pathfinder.FEATURES.Multiattack,
+  'Share Spells (Summoner)':
+    'Section=companion Note="Can use touch to cast self spells on eidolon"',
+  // 1-Point Evolutions
+  'Bite Evolution':
+    'Section=companion ' +
+    'Note="Bite inflicts %{eidolonDamage}%{eidolonBiteDamageBonus} HP"',
+  'Claws Evolution':
+    'Section=companion ' +
+    'Note="Claws inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
+  'Climb Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has a %{eidolonSpeed+($\'summonerFeatures.Climb Evolution\'-1)*20}\' climb Speed"',
+  'Gills Evolution':'Section=companion Note="Eidolon can breathe underwater"',
+  'Improved Damage Evolution':
+    'Section=companion ' +
+    'Note="Increases the damage from %{$\'summonerFeatures.Improved Damage Evolution\'>1?$\'summonerFeatures.Improved Damage Evolution\'+\' chosen natural weapons\':\'a chosen natural weapon\'} by 1 die type"',
+  'Improved Natural Armor Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has a +%V natural armor bonus to Armor Class"',
+  'Magic Attacks Evolution':
+    'Section=companion ' +
+    'Note="Eidolon natural attacks count as magic%{levels.Summoner>=10?\' and aligned\':\'\'}"',
   'Mount Evolution':'Section=companion Note="Self may ride eidolon"',
   'Pincers Evolution':
     'Section=companion ' +
     'Note="Pincers inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
-  'Poison Evolution':
-    'Section=companion ' +
-    'Note="Chosen natural attack inflicts +1d4 %V damage each rd for 4 rd (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Fortitude negates) 1/rd"',
   'Pounce Evolution':
-    'Section=companion Note="May take a full-attack action after a charge"',
+    'Section=companion ' +
+    'Note="Eidolon can take a full-attack action after a charge"',
   'Pull Evolution':
     'Section=companion ' +
-    'Note="Successful attack w/choice of %V natural attacks each allow free combat maneuver for 5\' pull"',
+    'Note="Successful attacks with %{$\'summonerFeatures.Push Evolution\'>1?$\'summonerFeatures.Push Evolution\'+\' chosen natural weapons\':\'a chosen natural weapon\'} allow a free combat maneuver to make a 5\' pull"',
   'Push Evolution':
     'Section=companion ' +
-    'Note="Successful attack w/choice of %V natural attacks each allow free combat maneuver for 5\' push"',
-  'Rake Evolution':
-    'Section=companion ' +
-    'Note="Claw rake on grappled foe inflicts 2 x %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP"',
+    'Note="Successful attacks with %{$\'summonerFeatures.Push Evolution\'>1?$\'summonerFeatures.Push Evolution\'+\' chosen natural weapons\':\'a chosen natural weapon\'} allow a free combat maneuver to make a 5\' push"',
   'Reach Evolution':
-    'Section=companion Note="+5\' reach w/choice of natural attack"',
+    'Section=companion Note="Chosen natural attack has +5\' reach"',
   'Resistance Evolution':
     'Section=companion ' +
-    'Note="Resistance %{(levels.Summoner+5)//5*5<?15} to %V chosen energy type"',
-  'Rend Evolution':
+    'Note="Eidolon has resistance %{(levels.Summoner+5)//5*5<?15} to %{$\'summonerFeatures.Resistance Evolution\'>1?$\'summonerFeatures.Resistance Evolution\'+\' choices\':\'a choice\'} of acid, cold, electricity, fire, or sonic"',
+  'Scent Evolution':
+    'Section=companion Note="Companion can detect creatures via smell"',
+  'Skilled Evolution':
     'Section=companion ' +
-    'Note="Successful attacks w/2 claws inflicts +%{eidolonDamageMinor}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP"',
-  'Scent Evolution':'Section=companion Note="R30\' May detect foes by smell"',
-  'Share Spells (Summoner)':
-    'Section=companion Note="May cast self spells on eidolon as touch spells"',
-  'Shield Ally (Summoner)':
-    'Section=combat,save ' +
-    'Note=' +
-      '"Self gains +2 Armor Class when eidolon is within reach",' +
-      '"Self gains +2 saves when eidolon is within reach"',
-  'Skilled Evolution':'Section=companion Note="+8 each on choice of %V skill"',
+    'Note="+8 on %{$\'summonerFeatures.Skilled Evolution\'>1?$\'summonerFeatures.Skilled Evolution\'+\' chosen skills\':\'a chosen skill\'}"',
   'Slam Evolution':
     'Section=companion ' +
     'Note="Slams inflict %{eidolonDamageMajor}%{eidolonPrimaryDamageBonus} HP each"',
-  'Small Eidolon':
-    'Section=companion ' +
-    'Note="Size is Small: gains +2 Dexterity, +1 Armor Class, +1 attack, +2 Fly, and +4 Stealth; suffers -4 Strength, -2 Constitution, -1 CMB/CMD, -1 damage die step"',
-  'Spell Resistance Evolution':
-    'Section=companion Note="Has SR %{levels.Summoner + 11}"',
   'Sting Evolution':
     'Section=companion ' +
     'Note="Stings inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
-  'Summon Monster':
-    'Section=magic ' +
-    'Note="May cast <i>Summon Monster %V</i>%{levels.Summoner>=19 ? \' or <i>Gate</i>\' : \'\'}, lasting %{levels.Summoner} min, when eidolon not present %{3 + charismaModifier}/dy"',
-  'Swallow Whole Evolution':
+  'Swim Evolution':
     'Section=companion ' +
-    'Note="May make combat maneuver to swallow creature grappled by bite, inflicting %{eidolonDamage}%{eidolonPrimaryDamageBonus}+1d6 HP/rd"',
-  'Swim Evolution':'Section=companion Note="%V\' Swim"',
-  'Tail Evolution':'Section=companion Note="+%V Acrobatics (balance)"',
+    'Note="Eidolon has a %{eidolonSpeed+($\'summonerFeatures.Swim Evolution\'-1)*20}\' swim Speed"',
+  'Tail Evolution':
+    'Section=companion ' +
+    'Note="+%{$\'summonerFeatures.Tail Evolution\'*2} Acrobatics to balance"',
   'Tail Slap Evolution':
     'Section=companion ' +
     'Note="Slaps inflict %{eidolonDamage}%{eidolonSecondaryDamageBonus} HP each"',
   'Tentacle Evolution':
     'Section=companion ' +
     'Note="Tentacles inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
-  'Trample Evolution':
-    'Section=companion ' +
-    'Note="Full-round automatic overrun inflicts %{eidolonDamage}%{animalCompanionStats.Str<10 ? (animalCompanionStats.Str-10)//2 : animalCompanionStats.Str>11 ? \'+\' + (animalCompanionStats.Str-10)//2*1.5//1 : \'\'} HP (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} Reflex half)"',
-  'Transposition':
-    'Section=magic Note="May use Maker\'s Call to swap places w/eidolon"',
-  'Tremorsense Evolution':
-    'Section=companion Note="R30\' May sense creatures via ground vibrations"',
-  'Trip Evolution':
-    'Section=companion ' +
-    'Note="Successful bite allows free combat maneuver to trip"',
-  'Twin Eidolon':
-    'Section=feature ' +
-    'Note="May take form of eidolon for %{levels.Summoner} min/dy"',
-  'Weapon Training Evolution':
-    'Section=companion Note="Proficient with simple%1 weapons"',
-  'Web Evolution':
-    'Section=companion ' +
-    'Note="R50\' May entangle target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Strength negates) 8/dy"',
   'Wing Buffet Evolution':
     'Section=companion ' +
     'Note="2 wing attacks inflict %{eidolonDamageMinor}%{eidolonSecondaryDamageBonus} HP each"',
+  // 2-Point Evolutions
+  'Ability Increase Evolution':
+    'Section=companion ' +
+    'Note="+2 each on %{$\'summonerFeatures.Ability Increase Evolution\'>1?$\'summonerFeatures.Ability Increase Evolution\'+\' choices of abilities\':\' a choice of ability\'}"',
+  'Constrict Evolution':
+    'Section=companion ' +
+    'Note="Successful grapple inflicts damage equal to that of the grab attack"',
+  'Energy Attacks Evolution':
+    'Section=companion ' +
+    'Note="Natural attack inflicts +1d6 HP of a choice of acid, cold, electricity, or fire"',
+  'Flight Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has a %{eidolonSpeed+($\'summonerFeatures.Flight Evolution\'-1)*20}\' fly Speed with %{$\'summonerFeatures.Flight Evolution\'>1?\'perfect\':companionStats.Size==\'H\'?\'poor\':companionStats.Size==\'L\'?\'average\':\'good\'} maneuverability"',
+  'Gore Evolution':
+    'Section=companion ' +
+    'Note="Horn inflicts %{eidolonDamage}%{eidolonPrimaryDamageBonus} HP"',
+  'Grab Evolution':
+    'Section=companion ' +
+    'Note="Successful attack with a chosen natural weapon allows free combat maneuver to grapple/+4 grapple CMB"',
+  'Immunity Evolution':
+    'Section=companion ' +
+    'Note="Immune to %{$\'summonerFeatures.Immunity Evolution\'>1?$\'summonerFeatures.Immunity Evolution\'+\' choices\':\'a choice\'} of acid, cold, electricity, fire, and sonic"',
+  'Limbs (Arms) Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has %{$\'summonerFeatures.Limbs (Arms) Evolution\'>1?$\'summonerFeatures.Limbs (Arms) Evolution\'+\' pairs\':\'a pair\'} of arms"',
+  'Limbs (Legs) Evolution':
+    'Section=companion,companion ' +
+    'Note=' +
+      '"+%V eidolon Speed",' +
+      '"Eidolon has %{$\'summonerFeatures.Limbs (Legs) Evolution\'>1?$\'summonerFeatures.Limbs (Legs) Evolution\'+\' pairs\':\'a pair\'} of legs"',
+  'Poison Evolution':
+    'Section=companion ' +
+    'Note="Chosen natural attack also inflicts 1d4 points of %{$\'summonerFeatures.Poison Evolution\'>1?\'Constitution\':\'Strength\'} damage each rd for 4 rd (save Fortitude DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} negates) once per rd"',
+  'Rake Evolution':
+    'Section=companion ' +
+    'Note="Can make 2 claw rake attacks on a grappled foe that inflict %{eidolonDamageMinor}%{eidolonPrimaryDamageBonus} HP each"',
+  'Rend Evolution':
+    'Section=companion ' +
+    'Note="2 successful attacks with claws inflict +%{eidolonDamageMinor}%{animalCompanionStats.Str<10?(animalCompanionStats.Str-10)//2:animalCompanionStats.Str>11?\'+\'+(animalCompanionStats.Str-10)//2*1.5//1:\'\'} HP"',
+  'Trample Evolution':
+    'Section=companion ' +
+    'Note="Can make a full-round automatic overrun that inflicts %{eidolonDamage}%{animalCompanionStats.Str<10?(animalCompanionStats.Str-10)//2:animalCompanionStats.Str>11?\'+\'+(animalCompanionStats.Str-10)//2*1.5//1:\'\'} HP (save Reflex DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Str-10)//2} half; a target can forego the save to make an AOO at a -4 penalty)"',
+  'Tremorsense Evolution':
+    'Section=companion ' +
+    'Note="R30\' Eidolon can sense creatures via ground vibrations"',
+  'Trip Evolution':
+    'Section=companion ' +
+    'Note="Successful bite allows a free combat maneuver to trip"',
+  'Weapon Training Evolution':
+    'Section=companion ' +
+    'Note="Eidolon is proficient with simple%{$\'summonerFeatures.Weapon Training Evolution\'>1?\' and martial\':\'\'} weapons"',
+  // 3-Point Evolutions
+  'Blindsense Evolution':
+    'Section=companion Note="R30\' Eidolon can detect unseen creatures"',
+  'Burrow Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has a %{eidolonSpeed//2}\' burrow Speed"',
+  'Damage Reduction Evolution':
+    'Section=companion ' +
+    'Note="Eidolon has DR %{$\'summonerFeatures.Damage Reduction Evolution\'>1?10:5}, overcome by a weapon with a chosen alignment component"',
+  'Frightful Presence Evolution':
+    'Section=companion ' +
+    'Note="R30\' Foes with up to %{animalCompanionStats.HD-4} HD suffer frightened, and those with up to %{animalCompanionStats.HD} HD suffer shaken, (save Will DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} negates) for 3d6 rd"',
+  'Swallow Whole Evolution':
+    'Section=companion ' +
+    'Note="Can attempt a combat maneuver to swallow a creature grappled by a bite attack, inflicting %{eidolonDamage}%{eidolonPrimaryDamageBonus}+1d6 HP bludgeoning each rd on success; swallowed foes can emerge by escaping the grapple or by using a light slashing or piercing weapon to cut its way free by inflicting %{animalCompanionStats.HP//10} HP vs. AC %{10+(animalCompanionStats.AC-10)//2}"',
+  'Web Evolution':
+    'Section=companion ' +
+    'Note="R50\' Can entangle a target (DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} Escape Artist or -4 Strength ends) 8 times per day"',
+  // 4-Point Evolutions
+  'Blindsight Evolution':
+    'Section=companion Note="R30\' Can maneuver and fight without vision"',
+  'Breath Weapon Evolution':
+    'Section=companion ' +
+    'Note="30\' cone or 60\' line inflicts %{animalCompanionStats.HD}d6 HP of a choice of acid, cold, electricity, or fire (save Reflex DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Con-10)//2} half) %{$\'summonerFeatures.Breath Weapon Evolution\'>1?$\'summonerFeatures.Breath Weapon Evolution\'+\' times\':\'once\'} per day"',
+  'Fast Healing Evolution':
+    'Section=companion Note="Regains %{$\'summonerFeatures.Fast Healing Evolution\'} hit points per rd"',
+  'Large Evolution':
+    'Section=companion,companion ' +
+    'Note=' +
+      '"Eidolon is %V and has +%1 Strength, %5 Dexterity, +%2 Constitution, +%3 Armor Class, +%4 CMB/CMD, and %6 Attack",' +
+      '"Eidolon has%{$\'animalCompanion.Biped Eidolon\'||$\'features.Large Evolution\'>1?\', \'+($\'animalCompanion.Biped Eidolon\'&&$\'features.Large Evolution\'>1?15:10)+\\"\' reach,\\":\'\'} %1 Fly, and %2 Stealth"',
+  'Spell Resistance Evolution':
+    'Section=companion Note="Eidolon has SR %{levels.Summoner+11}"',
 
   // Witch
   // Cantrips as above
@@ -2044,7 +2090,7 @@ PFAPG.FEATURES = {
     'Note=' +
       '"Mount gains +2 Strength during rage",' +
       '"Has Animal Companion feature w/mount"',
-  // Blindsight as Pathfinder
+  'Blindsight':Pathfinder.FEATURES.Blindsight,
   'Boasting Taunt':
     'Section=combat ' +
     'Note="Successful Intimidate during rage (+2 per alcoholic drink taken) inflicts shaken on target until attacks self"',
@@ -3057,7 +3103,7 @@ PFAPG.FEATURES = {
   'Shattering Strike':
     'Section=combat ' +
     'Note="+%{(levels.Fighter+2)//4} CMB and CMD on sunder and damage vs. objects"',
-  'Shield Ally':
+  'Shield Ally (Fighter)':
     'Section=combat ' +
     'Note="May use heavy or tower shield move to give self and adjacent allies +%{levels.Fighter>=17 ? 4 : 2} Armor Class and +%{levels.Fighter>=17 ? 2 : 1} Reflex%{levels.Fighter>=13 ? \' (or 1 adjacent ally \' + (levels.Fighter>=17 ? \'Improved Evasion, +8 Armor Class, and +4 Reflex)\' : \'Evasion, +4 Armor Class, and +2 Reflex)\') : \'\'} for 1 rd"',
   'Shield Buffet':
@@ -4357,8 +4403,8 @@ PFAPG.FEATURES = {
   'Bloodrain':
     'Section=magic ' +
     'Note="Channel Energy while using Stigmata inflicts +1d6 HP, sickened, and 1d6 HP bleed/rd (DC %{10 + channelLevel//2} Will ends)"',
-  // Caster Level Bonus as Pathfinder
-  // Channel Smite as Pathfinder
+  'Caster Level Bonus':Pathfinder.FEATURES['Caster Level Bonus'],
+  'Channel Smite':Pathfinder.FEATURES['Channel Smite'],
   'Divine Judgment':
     'Section=magic ' +
     'Note=' +
@@ -4538,7 +4584,7 @@ PFAPG.FEATURES = {
       '"+%{$\'levels.Master Chymist\'//2} Strength and Constitution checks while in mutagenic form",' +
       '"+%{$\'levels.Master Chymist\'//2} CMB and CMD while in mutagenic form",' +
       '"+%{$\'levels.Master Chymist\'//2} Strength-linked skill checks while in mutagenic form"',
-  // Caster Level Bonus as Pathfinder
+  // Caster Level Bonus as above
   'Disguise':
     'Section=save ' +
     'Note="Successful DC 20 Will allows assuming normal appearance for 1 min while in mutagenic form; extending duration requires additional +1 DC/min saves; must wait 10 min between uses"',
@@ -4671,7 +4717,7 @@ PFAPG.FEATURES = {
   'Shift Alignment':
     'Section=save ' +
     'Note="May modify alignment to change alignment-specific effects of magic directed at self"',
-  // Slippery Mind as Pathfinder
+  'Slippery Mind':Pathfinder.FEATURES['Slippery Mind'],
   'Superficial Knowledge':
     'Section=skill ' +
     'Note="May make +%{$\'levels.Master Spy\'//2} untrained Knowledge and Profession checks related to cover identity"',
@@ -4684,7 +4730,7 @@ PFAPG.FEATURES = {
     'Spells="Speak With Animals" ' +
     'SpellAbility=Charisma ' +
     'SpellLevel="levels.Nature Warden"',
-  // Caster Level Bonus as Pathfinder
+  // Caster Level Bonus as above
   'Companion Bond (Nature Warden)':
     'Section=companion,companion ' +
     'Note=' +
@@ -4701,7 +4747,7 @@ PFAPG.FEATURES = {
   'Companion Walk':
     'Section=companion ' +
     'Note="May affect animal companion w/self travel and polymorph spells"',
-  // Favored Terrain as Pathfinder
+  'Favored Terrain':Pathfinder.FEATURES['Favored Terrain'],
   'Guarded Lands':
     'Section=feature ' +
     'Note="May gain +2 Favored Terrain and +2 Favored Enemy bonuses in %{wisdomModifier>?1} chosen 1 mile sq areas"',
@@ -4741,11 +4787,11 @@ PFAPG.FEATURES = {
     'SpellLevel="levels.Nature Warden"',
 
   // Rage Prophet
-  // Caster Level Bonus as Pathfinder
+  // Caster Level Bonus as above
   'Enduring Rage':
     'Section=magic ' +
     'Note="May spend a spell slot to extend rage 1 rd/spell level"',
-  // Greater Rage as Pathfinder
+  'Greater Rage':Pathfinder.FEATURES['Greater Rage'],
   'Indomitable Caster':
     'Section=magic Note="+%{constitutionModifier} concentration checks"',
   'Rage Prophet Mystery':'Section=magic Note="Has access to additional spells"',
@@ -4776,8 +4822,8 @@ PFAPG.FEATURES = {
   'Bulwark':
     'Section=skill ' +
     'Note="+%V foe DC for Bluff and movement Acrobatics during stance"',
-  // Clear Mind as Pathfinder
-  // Damage Reduction as Pathfinder
+  'Clear Mind':Pathfinder.FEATURES['Clear Mind'],
+  'Damage Reduction':Pathfinder.FEATURES['Damage Reduction'],
   'Defensive Powers':'Section=feature Note="%V selections"',
   'Defensive Stance':
     'Section=combat ' +
@@ -4789,12 +4835,13 @@ PFAPG.FEATURES = {
   'Immobile':
     'Section=combat ' +
     'Note="+%{$\'levels.Stalwart Defender\'} CMD vs. bull rush, overrun, pull, push, and movement grapple during stance"',
-  // Improved Uncanny Dodge as Pathfinder
-  // Increased Damage Reduction as Pathfinder
+  'Improved Uncanny Dodge':Pathfinder.FEATURES['Improved Uncanny Dodge'],
+  'Increased Damage Reduction':
+    Pathfinder.FEATURES['Increased Damage Reduction'],
   'Intercept':
     'Section=combat ' +
     'Note="May suffer damage from an attack directed at an adjacent ally during stance 1/rd"',
-  // Internal Fortitude as Pathfinder
+  'Internal Fortitude':Pathfinder.FEATURES['Internal Fortitude'],
   'Last Word':
     'Section=combat ' +
     'Note="May make an extra attack w/dbl damage when a hit to self results in negative hit points or unconsciousness 1/dy"',
@@ -4811,8 +4858,8 @@ PFAPG.FEATURES = {
   'Smash (Stalwart Defender)':
     'Section=combat ' +
     'Note="May make an extra shield bash or slam attack for 1d%{features.Small ? 3 : 4}+%{strengthModifier//2} HP 1/rd during stance"',
-  // Uncanny Dodge as Pathfinder
-  // Unexpected Strike as Pathfinder
+  'Uncanny Dodge':Pathfinder.FEATURES['Uncanny Dodge'],
+  'Unexpected Strike':Pathfinder.FEATURES['Unexpected Strike'],
 
   // Feats
   'Additional Traits':'Section=feature Note="+2 Trait Count"',
@@ -7656,7 +7703,7 @@ PFAPG.CLASSES = {
       '"oracleFeatures.Life Mystery ? 1:Energy Body:Life Revelation",' +
       '"oracleFeatures.Life Mystery ? 1:Enhanced Cures:Life Revelation",' +
       '"oracleFeatures.Life Mystery ? 1:Healing Hands:Life Revelation",' +
-      '"oracleFeatures.Life Mystery ? 1:Life Link:Life Revelation",' +
+      '"oracleFeatures.Life Mystery ? 1:Life Link (Oracle):Life Revelation",' +
       '"oracleFeatures.Life Mystery ? 11:Lifesense:Life Revelation",' +
       '"oracleFeatures.Life Mystery ? 1:Safe Curing:Life Revelation",' +
       '"oracleFeatures.Life Mystery ? 1:Spirit Boost:Life Revelation",' +
@@ -7733,12 +7780,13 @@ PFAPG.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light)",' +
       '"1:Weapon Proficiency (Simple Weapons)",' +
-      '1:Cantrips,1:Eidolon,"1:Life Link (Summoner)","1:Simple Somatics",' +
-      '"1:Summon Monster","2:Bond Senses","4:Shield Ally (Summoner)",' +
-      '"6:Maker\'s Call",8:Transposition,10:Aspect,' +
-      '"12:Greater Shield Ally (Summoner)","14:Life Bond","16:Merge Forms",' +
+      '"1:Cantrips","1:Eidolon","1:Evolution Pool","1:Life Link (Summoner)",' +
+      '"1:Simple Somatics","1:Summon Monster","2:Bond Senses",' +
+      '"4:Shield Ally (Summoner)","6:Maker\'s Call","8:Transposition",' +
+      '"10:Aspect","12:Greater Shield Ally","14:Life Bond","16:Merge Forms",' +
       '"18:Greater Aspect","20:Twin Eidolon" ' +
     'Selectables=' +
+      '"1:Small Eidolon:Evolution:0",' +
       '"1:Bite Evolution:Evolution",' +
       '"features.Limbs (Arms) Evolution || features.Limbs (Legs) Evolution ? 1:Claws Evolution:Evolution",' +
       '"1:Climb Evolution:Evolution",' +
@@ -7756,7 +7804,6 @@ PFAPG.CLASSES = {
       '"1:Scent Evolution:Evolution",' +
       '"1:Skilled Evolution:Evolution",' +
       '"features.Limbs (Arms) Evolution ? 1:Slam Evolution:Evolution",' +
-      '"1:Small Eidolon:Evolution:0",' +
       '"features.Tail Evolution ? 1:Sting Evolution:Evolution",' +
       '"1:Swim Evolution:Evolution",' +
       '"1:Tail Evolution:Evolution",' +
@@ -8306,7 +8353,7 @@ PFAPG.CLASSES = {
       '"fighterFeatures.Phalanx Soldier ? 3:Phalanx Fighting",' +
       '"fighterFeatures.Phalanx Soldier ? 5:Ready Pike",' +
       '"fighterFeatures.Phalanx Soldier ? 7:Deft Shield",' +
-      '"fighterFeatures.Phalanx Soldier ? 9:Shield Ally",' +
+      '"fighterFeatures.Phalanx Soldier ? 9:Shield Ally (Fighter)",' +
       '"fighterFeatures.Phalanx Soldier ? 15:Irresistible Advance",' +
       '"fighterFeatures.Phalanx Soldier ? 20:Shielded Fortress",' +
       '"fighterFeatures.Polearm Master ? 2:Pole Fighting",' +
@@ -9698,33 +9745,33 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
 
   } else if(name == 'Summoner') {
 
-    rules.defineRule
-      ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
-    rules.defineRule('animalCompanionFeatures.Share Spells',
-      'companionIsNotEidolon', '?', null
+    // Animal companion stats for eidolon
+    rules.defineRule('companionIsNotEidolon',
+      'companionMasterLevel', '=', '1',
+      'eidolonMasterLevel', '=', '0'
     );
-    rules.defineRule('animalCompanionStats.AC',
-      'eidolonMasterLevel', '+', '(Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)) * 2',
-      'companionNotes.improvedNaturalArmorEvolution', '+', null,
-      // Large/Huge/Small AC mods net AC and Dex modifiers
-      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 1 : 0',
-      'companionNotes.smallEidolon', '+', '2' // +1 AC, +2 Dex
-    );
-    // Size effect on CMB/CMD taken care of in Pathfinder
-    rules.defineRule('animalCompanionStats.Con',
-      'companionNotes.largeEvolution.2', '+', null,
-      'companionNotes.smallEidolon', '+', '-2'
-    );
-    rules.defineRule('animalCompanionStats.Dex',
-      'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
-      'companionNotes.largeEvolution.5', '+', null,
-      'companionNotes.smallEidolon', '+', '2'
-    );
-    rules.defineRule('animalCompanionStats.Feats',
-      'eidolonMasterLevel', '=', 'Math.floor((source - 1) / 8) * 3 + Math.floor((((source - 1) % 8) + 1) / 3) + 1'
-    );
+    rules.defineRule('companionMasterLevel', 'eidolonMasterLevel', '^=', null);
+    rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
     rules.defineRule('animalCompanionStats.HD',
       'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
+    );
+    rules.defineRule('companionBAB',
+      'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
+    );
+    // Standard animal companions have G/G/B base saves; override for Biped's
+    // G/B/G and Serpentine's B/G/G
+    rules.defineRule('eidolonSaveFort',
+      'animalCompanion.Serpentine Eidolon', '=', '0',
+      'animalCompanionStats.HD', '+', 'Math.floor(source / 3)'
+    );
+    rules.defineRule('eidolonSaveRef',
+      'animalCompanion.Biped Eidolon', '=', '0',
+      'animalCompanionStats.HD', '+', 'Math.floor(source / 3)'
+    );
+    rules.defineRule('eidolonSaveWill',
+      'animalCompanion.Biped Eidolon', '=', '0',
+      'animalCompanion.Serpentine Eidolon', '=', '0',
+      'animalCompanionStats.HD', '+', '2 + Math.floor(source / 2)'
     );
     rules.defineRule
       ('animalCompanionStats.Save Fort', 'eidolonSaveFort', '=', null);
@@ -9732,79 +9779,113 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       ('animalCompanionStats.Save Ref', 'eidolonSaveRef', '=', null);
     rules.defineRule
       ('animalCompanionStats.Save Will', 'eidolonSaveWill', '=', null);
-    rules.defineRule('animalCompanionStats.Size',
-      'companionNotes.largeEvolution', '=', 'source.charAt(0)',
-      'companionNotes.smallEidolon', '=', '"S"'
-    );
     rules.defineRule('animalCompanionStats.Skills',
       'eidolonMasterLevel', '=', '(source - Math.floor(source / 4)) * 4'
     );
-    rules.defineRule('animalCompanionStats.Speed',
-      'companionNotes.limbs(Legs)Evolution.1', '+', null
+    rules.defineRule('animalCompanionStats.Feats',
+      'eidolonMasterLevel', '=', 'Math.floor((source-1)/8) * 3 + ((source-1)%8<2?1:(source-1)%8<5?2:3)'
+    );
+    rules.defineRule('eidolonAC',
+      'eidolonMasterLevel', '=', 'Math.floor(source/5) * 4 + (source%5>1?2:0) + (source/5)',
+      'animalCompanionStats.Dex', '+', 'source % 2 == 0 ? 0.5 : null',
+      'companionNotes.improvedNaturalArmorEvolution', '+', null,
+      // /mallSLarge/Huge AC mods net AC and Dex modifiers
+      'companionNotes.smallEidolon', '+', '2', // +1 size, +1 Dex
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 1 : 0',
+      // Offset standard companion AC components
+      'companionMasterLevel', '+', '-Math.floor(source / 3) * 2',
+      'companionACBoosts', '+', '-Math.floor(source)'
+    );
+    rules.defineRule('animalCompanionStats.AC',
+      'eidolonAC', '+', 'Math.floor(source)'
+    );
+    rules.defineRule('eidolonStrDexBonus',
+      'eidolonMasterLevel', '=', 'Math.floor(source/5) * 2 + (source%5>1?1:0)',
+      // Offset standard companion StrDex bonus
+      'companionMasterLevel', '+', '-Math.floor(source / 3)'
     );
     rules.defineRule('animalCompanionStats.Str',
-      'eidolonMasterLevel', '+', 'Math.floor(source / 5) + Math.floor((source + 3) / 5) - Math.floor(source / 3)',
-      'companionNotes.largeEvolution.1', '+', null,
-      'companionNotes.smallEidolon', '+', '-4'
+      'eidolonStrDexBonus', '+', null,
+      'companionNotes.smallEidolon', '+', '-4',
+      'companionNotes.largeEvolution.1', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Dex',
+      'eidolonStrDexBonus', '+', null,
+      'companionNotes.smallEidolon', '+', '2',
+      'companionNotes.largeEvolution.5', '+', null
+    );
+    rules.defineRule('eidolonNaturalAttacksAvailable',
+      classLevel, '=', '3 + Math.floor((source + 1) / 5)'
+    );
+    rules.defineRule('eidolonNaturalAttacksChosen',
+      'features.Bite Evolution', '+=', '1',
+      'features.Claws Evolution', '+=', '1',
+      'features.Gore Evolution', '+=', '1',
+      'features.Pincers Evolution', '+=', '1',
+      'features.Rake Evolution', '+=', '1',
+      'features.Slam Evolution', '+=', '1',
+      'features.Sting Evolution', '+=', '1',
+      'features.Tail Slap Evolution', '+=', '1',
+      'features.Tentacle Evolution', '+=', '1',
+      'features.Wing Buffet Evolution', '+=', '1'
+    );
+    QuilvynRules.validAllocationRules(
+      rules, 'eidolonNaturalAttacks', 'eidolonNaturalAttacksAvailable',
+      'eidolonNaturalAttacksChosen'
+    );
+    // Suppress error for allocating fewer than max natural attacks
+    rules.defineRule
+      ('validationNotes.eidolonNaturalAttacksAllocation', '', '^', '0');
+
+    rules.defineRule('companionNotes.evolutionPool',
+      classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
+    );
+    rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
+      'companionNotes.evolutionPool', '=', null
+    );
+    let features = [
+      '1:Darkvision (Companion)', '1:Link (Summoner)',
+      '1:Share Spells (Summoner)', '2:Evasion (Companion)',
+      '5:Ability Score Increase', '6:Devotion', '9:Multiattack',
+      '14:Improved Evasion (Companion)'
+    ];
+    QuilvynRules.featureListRules
+      (rules, features, 'Animal Companion', 'eidolonMasterLevel', false);
+
+    rules.defineRule('animalCompanionFeatures.Bonus Tricks',
+      'companionIsNotEidolon', '?', null
+    );
+    rules.defineRule
+      ('animalCompanionFeatures.Link', 'companionIsNotEidolon', '?', null);
+    rules.defineRule('animalCompanionFeatures.Share Spells',
+      'companionIsNotEidolon', '?', null
+    );
+    // Size effect on CMB/CMD taken care of in Pathfinder
+    rules.defineRule('animalCompanionStats.Con',
+      'companionNotes.smallEidolon', '+', '-2',
+      'companionNotes.largeEvolution.2', '+', null
+    );
+    rules.defineRule('animalCompanionStats.Size',
+      'companionNotes.smallEidolon', '=', '"S"',
+      'companionNotes.largeEvolution', '=', 'source.charAt(0)'
+    );
+    rules.defineRule('animalCompanionStats.Speed',
+      'companionNotes.limbs(Legs)Evolution', '+', null
     );
     rules.defineRule
       ('animalCompanionStats.Tricks', 'eidolonMasterLevel', 'v', '0');
-    rules.defineRule('companionACBoosts',
-      'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
-    );
     rules.defineRule('companionAttack',
       'eidolonAttackAdjustment', '+', null,
-      // Large/Huge/Small attack mods net attack and Str modifiers
-      'companionNotes.largeEvolution', '+', '3 + (source=="Huge" ? 3 : 0)',
-      'companionNotes.smallEidolon', '+', '-1'
+      // Small/Large/Huge attack mods net attack and Str modifiers
+      'companionNotes.smallEidolon', '+', '-1',
+      'companionNotes.largeEvolution', '+', '3 + (source=="Huge" ? 3 : 0)'
     );
     rules.defineRule('companionAttackBoosts',
       'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
     );
-    rules.defineRule('companionBAB',
-      'eidolonMasterLevel', '=', 'source - Math.floor(source / 4)'
-    );
-    rules.defineRule('companionIsNotEidolon',
-      'companionMasterLevel', '=', '1',
-      'eidolonMasterLevel', '=', '0'
-    );
-    rules.defineRule('companionMasterLevel', 'eidolonMasterLevel', '^=', null);
-    rules.defineRule('companionNotes.abilityIncreaseEvolution',
-      'summonerFeatures.Ability Increase Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.abilityIncreaseEvolution.1',
-      'summonerFeatures.Ability Increase Evolution', '=', 'source==1 ? "ability" : "abilities"'
-    );
+
     rules.defineRule('companionNotes.abilityScoreIncrease',
       classLevel, '=', 'source<10 ? 1 : source<15 ? 2 : 3'
-    );
-    rules.defineRule('companionNotes.breathWeaponEvolution',
-      'summonerFeatures.Breath Weapon Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.burrowEvolution',
-      'eidolonSpeed', '=', 'Math.floor(source / 2)'
-    );
-    rules.defineRule('companionNotes.climbEvolution',
-      // The first selection gives base speed; additional +20
-      'eidolonSpeed', '=', null,
-      'summonerFeatures.Climb Evolution', '+=', '20 * (source - 1)'
-    );
-    rules.defineRule('companionNotes.improvedDamageEvolution',
-      'summonerFeatures.Improved Damage Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.damageReductionEvolution',
-      'summonerFeatures.Damage Reduction Evolution', '=', 'source>=2 ? 10 : 5'
-    );
-    rules.defineRule('companionNotes.fastHealingEvolution',
-      'summonerFeatures.Fast Healing Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.flightEvolution',
-      // The first selection gives base speed; additional +20
-      'eidolonSpeed', '=', null,
-      'summonerFeatures.Flight Evolution', '+', '(source - 1) * 20'
-    );
-    rules.defineRule('companionNotes.immunityEvolution',
-      'summonerFeatures.Immunity Evolution', '=', null
     );
     rules.defineRule('companionNotes.improvedNaturalArmorEvolution',
       'summonerFeatures.Improved Natural Armor Evolution', '=', '2 * source'
@@ -9830,45 +9911,14 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('companionNotes.largeEvolution.6',
       'summonerFeatures.Large Evolution', '=', 'source * -1'
     );
-    rules.defineRule('companionNotes.largeEvolution.7',
+    rules.defineRule('companionNotes.largeEvolution-1.1',
       'summonerFeatures.Large Evolution', '=', 'source * -2'
     );
-    rules.defineRule('companionNotes.largeEvolution.8',
+    rules.defineRule('companionNotes.largeEvolution-1.2',
       'summonerFeatures.Large Evolution', '=', 'source * -4'
     );
-    rules.defineRule('companionNotes.limbs(Arms)Evolution',
-      'summonerFeatures.Limbs (Arms) Evolution', '=', null
-    );
     rules.defineRule('companionNotes.limbs(Legs)Evolution',
-      'summonerFeatures.Limbs (Legs) Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.limbs(Legs)Evolution.1',
-      'companionNotes.limbs(Legs)Evolution', '=', 'source * 10'
-    );
-    rules.defineRule('companionNotes.poisonEvolution',
-      'summonerFeatures.Poison Evolution', '=', 'source>=2 ? "Con" : "Str"'
-    );
-    rules.defineRule('companionNotes.pullEvolution',
-      'summonerFeatures.Pull Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.pushEvolution',
-      'summonerFeatures.Push Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.resistanceEvolution',
-      'summonerFeatures.Resistance Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.skilledEvolution',
-      'summonerFeatures.Skilled Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.swimEvolution',
-      'eidolonSpeed', '=', null,
-      'summonerFeatures.Swim Evolution', '+', '(source - 1) * 20'
-    );
-    rules.defineRule('companionNotes.tailEvolution',
-      'summonerFeatures.Tail Evolution', '=', 'source * 2'
-    );
-    rules.defineRule('companionNotes.weaponTrainingEvolution.1',
-      'summonerFeatures.Weapon Training Evolution', '=', 'source>=2 ? " and martial" : ""'
+      'summonerFeatures.Limbs (Legs) Evolution', '=', 'source * 10'
     );
     rules.defineRule('eidolonAttackAdjustment',
       'features.eidolon', '?', null,
@@ -9885,22 +9935,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('eidolonDamageMajor',
       'features.Eidolon', '?', null,
       'animalCompanionStats.Size', '=', 'source=="S" ? "1d6" : source=="M" ? "1d8" : source=="L" ? "2d6" : "2d8"'
-    );
-    rules.defineRule('eidolonMasterLevel', classLevel, '=', null);
-    rules.defineRule('eidolonNaturalAttacksAvailable',
-      classLevel, '=', '3 + Math.floor((source + 1) / 5)'
-    );
-    rules.defineRule('eidolonNaturalAttacksChosen',
-      'features.Bite Evolution', '+=', '1',
-      'features.Claws Evolution', '+=', '1',
-      'features.Gore Evolution', '+=', '1',
-      'features.Pincers Evolution', '+=', '1',
-      'features.Rake Evolution', '+=', '1',
-      'features.Slam Evolution', '+=', '1',
-      'features.Sting Evolution', '+=', '1',
-      'features.Tail Slap Evolution', '+=', '1',
-      'features.Tentacle Evolution', '+=', '1',
-      'features.Wing Buffet Evolution', '+=', '1'
     );
     rules.defineRule('eidolonBiteDamageBonus',
       'eidolonBiteDamageBonus.1', '=', 'source!=0 ? QuilvynUtils.signed(Math.floor(source)) : ""',
@@ -9924,19 +9958,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'eidolonNaturalAttacksChosen', '?', 'source<2',
       'animalCompanionStats.Str', '=', 'source>13 ? Math.floor(Math.floor((source - 10) / 2) * 1.5) : null'
     );
-    rules.defineRule('eidolonSaveFort',
-      'animalCompanion.Serpentine Eidolon', '=', '0',
-      'animalCompanionStats.HD', '+', 'Math.floor(source / 3)'
-    );
-    rules.defineRule('eidolonSaveRef',
-      'animalCompanion.Biped Eidolon', '=', '0',
-      'animalCompanionStats.HD', '+', 'Math.floor(source / 3)'
-    );
-    rules.defineRule('eidolonSaveWill',
-      'animalCompanion.Biped Eidolon', '=', '0',
-      'animalCompanion.Serpentine Eidolon', '=', '0',
-      'animalCompanionStats.HD', '+', '2 + Math.floor(source / 2)'
-    );
     rules.defineRule('eidolonSpeed',
       // Note that the free legs evolution gives biped +10 and quad +20
       'animalCompanion.Biped Eidolon', '=', '20',
@@ -9944,19 +9965,8 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'animalCompanion.Serpentine Eidolon', '=', '20',
       'summonerFeatures.Limbs (Legs) Evolution', '+', 'source * 10'
     );
-    let features = [
-      '1:Companion Darkvision', '1:Link (Summoner)',
-      '1:Share Spells (Summoner)', '2:Companion Evasion',
-      '5:Ability Score Increase', '5:Devotion', '7:Multiattack',
-      '11:Companion Improved Evasion'
-    ];
-    QuilvynRules.featureListRules
-      (rules, features, 'Animal Companion', 'eidolonMasterLevel', false);
     rules.defineRule('magicNotes.summonMonster',
       classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.min(Math.floor((source - 1) / 2), 8)]'
-    );
-    rules.defineRule('selectableFeatureCount.Summoner (Evolution)',
-      classLevel, '=', 'source + 2 + Math.floor((source + 1) / 5)'
     );
     rules.defineRule('summonerFeatures.Bite Evolution',
       'animalCompanion.Quadruped Eidolon', '+=', '1',
@@ -9984,18 +9994,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule('summonerFeatures.Tail Slap Evolution',
       'animalCompanion.Serpentine Eidolon', '+=', '1'
     );
-    QuilvynRules.validAllocationRules(
-      rules, 'eidolonNaturalAttacks', 'eidolonNaturalAttacksAvailable',
-      'eidolonNaturalAttacksChosen'
-    );
-    // Suppress error for allocating fewer than max natural attacks
-    rules.defineRule
-      ('validationNotes.eidolonNaturalAttacksAllocation', '', '^', '0');
-    // Make sure the editor allows multiple selections of selectableFeatures
-    rules.defineEditorElement('selectableFeatures');
-    rules.defineEditorElement
-      ('selectableFeatures', 'Selectable Features', 'setbag',
-       'selectableFeatures', 'skills');
 
   } else if(name == 'Witch') {
 
@@ -12780,17 +12778,6 @@ PFAPG.ruleNotes = function() {
     '<h3>Usage notes</h3>\n' +
     '<ul>\n' +
     '  <li>\n' +
-    '    Quilvyn gives the Oracle class its own spell list ("O" spells),' +
-    '    rather than using spells from the Cleric list. The Oracle spell' +
-    '    list includes spells particular to individual mysteries and curses' +
-    '    as well as those particular to the Rage Prophet prestige class;' +
-    '    when randomly assigning spells, Quilvyn restricts these spells to' +
-    '    characters with the appropriate feature or Rage Prophet levels.\n' +
-    '  </li><li>\n' +
-    '    Quilvyn includes in the Witch spell list spells that are made' +
-    '    available by specific patrons. Quilvyn randomly assigns these' +
-    '    spells only to characters with the appropriate patron.\n' +
-    '  </li><li>\n' +
     '    You can define characters with class features from the core rules' +
     '    by selecting the Core archetypes&mdash;for example, selecting Core' +
     '    Bard gives you a character with the core rules\' bard features. The' +
@@ -12799,6 +12786,21 @@ PFAPG.ruleNotes = function() {
     '    selected. This allows characters generated using only the' +
     '    Pathfinder base plugin to display properly when using the PFAPG' +
     '    plugin.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn gives the Oracle class its own spell list ("O" spells),' +
+    '    rather than using spells from the Cleric list. The Oracle spell' +
+    '    list includes spells particular to individual mysteries and curses' +
+    '    as well as those particular to the Rage Prophet prestige class;' +
+    '    when randomly assigning spells, Quilvyn restricts these spells to' +
+    '    characters with the appropriate feature or Rage Prophet levels.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn includes Small Eidolon, costing zero evolution points, in' +
+    '    the list of evolutions available to Summoners. You can select this' +
+    '    choice to give a Summoner a Small, rather than Medium, eidolon.\n' +
+    '  </li><li>\n' +
+    '    Quilvyn includes in the Witch spell list spells that are made' +
+    '    available by specific patrons. Quilvyn randomly assigns these' +
+    '    spells only to characters with the appropriate patron.\n' +
     '  </li><li>\n' +
     "    Quilvyn assumes that a witch's hexes that have durations dependent" +
     "    on the witch's intelligence modifier last for at least 1 round.\n" +

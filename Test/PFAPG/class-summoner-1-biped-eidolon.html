@@ -76,18 +76,12 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Elemental Focus (Fire); Skill Focus (Craft (Weapons))</td>
-        <td><b>Summoner Features</b>: Armor Proficiency (Light); Cantrips; Claws Evolution; Eidolon; Life Link (Summoner); Limbs (Arms) Evolution; Limbs (Legs) Evolution; Pull Evolution; Push Evolution; Simple Somatics; Summon Monster; Swim Evolution; Weapon Proficiency (Simple Weapons)</td>
+        <td><b>Summoner Features</b>: Armor Proficiency (Light); Cantrips; Claws Evolution; Eidolon; Evolution Pool; Life Link (Summoner); Limbs (Arms) Evolution; Limbs (Legs) Evolution; Pull Evolution; Push Evolution; Simple Somatics; Summon Monster; Swim Evolution; Weapon Proficiency (Simple Weapons)</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Feature Notes</b>:       <table id="FeatureNotes" style="width:100%">
-      <tr style="text-align:center">
-        <td><i>Bonus Feat (Human): +1 General Feat</i></td>
-      </tr><tr style="text-align:center">
-        <td>Eidolon: Special bond and abilities</td>
-      </tr></table>
-</td>
+      <td><b>Feature Notes</b>: <i>Bonus Feat (Human): +1 General Feat</i></td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
@@ -171,8 +165,6 @@ var attributes = {
         <td><i>Strength Damage Adjustment: +3</i></td>
       </tr><tr style="text-align:center">
         <td><i>Two-Handed Wield Damage Adjustment: +1</i></td>
-      </tr><tr style="text-align:center">
-        <td>Life Link (Summoner): May transfer damage from eidolon to self to negate forced return to home plane/Eidolon must stay w/in 100' to have full hit points</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -211,7 +203,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Elemental Focus (Fire): +1 save DC on spells that inflict fire damage</td>
     </tr><tr style="text-align:center">
-      <td>Summon Monster: May cast <i>Summon Monster I</i>, lasting 1 min, when eidolon not present 4/dy</td>
+      <td>Summon Monster: Can cast <i>Summon Monster I</i>, lasting 1 min, when eidolon is not present 4 times per day</td>
     </tr></table>
 </td>
   </tr></table>
@@ -248,31 +240,37 @@ var attributes = {
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
-      <td><b>Animal Companion Features</b>: Bonus Tricks; Companion Darkvision; Link (Summoner); Share Spells (Summoner)</td>
+      <td><b>Animal Companion Features</b>: Darkvision (Companion); Link (Summoner); Share Spells (Summoner)</td>
     </tr></table>
 </td>
   </tr><tr style="text-align:center">
     <td><b>Companion Notes</b>:     <table id="CompanionNotes" style="width:100%">
     <tr style="text-align:center">
-      <td><i>Limbs (Legs) Evolution: 1 pairs of legs give +10 speed</i></td>
+      <td><i>Evolution Pool: 3 points</i></td>
     </tr><tr style="text-align:center">
-      <td>Bonus Tricks: Companion can learn 1 additional tricks, requiring no training time or Handle Animal checks</td>
+      <td><i>Limbs (Legs) Evolution: +10 eidolon Speed</i></td>
     </tr><tr style="text-align:center">
       <td>Claws Evolution: Claws inflict 1d4+4 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Companion Darkvision: 60' b/w vision in darkness</td>
+      <td>Darkvision (Companion): R60' Companion has black and white vision in complete darkness</td>
     </tr><tr style="text-align:center">
-      <td>Limbs (Arms) Evolution: Has 1 pairs of arms</td>
+      <td>Eidolon: Has a special bond with an outsider that has the same alignment, knows the same languages, shares a glowing rune, is not prevented from contact by spells such as <i>Protection From Evil</i>, and has a form and stats dependent on Summoner level; summoning takes 1 min and lasts until dismissed or killed, with death preventing renewed summoning, with half hit points, until the next day</td>
     </tr><tr style="text-align:center">
-      <td>Link (Summoner): May communicate on same plane w/eidolon over any distance/Shares magic item slots w/eidolon</td>
+      <td>Life Link (Summoner): Can use a free action to transfer damage from eidolon to self to prevent a forced return to its home plane/The eidolon's current and maximum hit points are reduced by 50% or 75% when it is greater than 100' or 1000' away, and it is forced to its home plane if the distance exceeds 10,000'</td>
     </tr><tr style="text-align:center">
-      <td>Pull Evolution: Successful attack w/choice of 1 natural attacks each allow free combat maneuver for 5' pull</td>
+      <td>Limbs (Arms) Evolution: Eidolon has a pair of arms</td>
     </tr><tr style="text-align:center">
-      <td>Push Evolution: Successful attack w/choice of 1 natural attacks each allow free combat maneuver for 5' push</td>
+      <td>Limbs (Legs) Evolution: Eidolon has a pair of legs</td>
     </tr><tr style="text-align:center">
-      <td>Share Spells (Summoner): May cast self spells on eidolon as touch spells</td>
+      <td>Link (Summoner): Can communicate with eidolon over any distance while on same plane/Magic items worn by eidolon count as using slots on self</td>
     </tr><tr style="text-align:center">
-      <td>Swim Evolution: 30' Swim</td>
+      <td>Pull Evolution: Successful attacks with a chosen natural weapon allow a free combat maneuver to make a 5' pull</td>
+    </tr><tr style="text-align:center">
+      <td>Push Evolution: Successful attacks with a chosen natural weapon allow a free combat maneuver to make a 5' push</td>
+    </tr><tr style="text-align:center">
+      <td>Share Spells (Summoner): Can use touch to cast self spells on eidolon</td>
+    </tr><tr style="text-align:center">
+      <td>Swim Evolution: Eidolon has a 30' swim Speed</td>
     </tr></table>
 </td>
   </tr></table>
