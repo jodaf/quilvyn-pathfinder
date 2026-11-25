@@ -230,7 +230,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Life Bond: Transfers to eidolon damage that would reduce self to negative hit points</td>
       </tr><tr style="text-align:center">
-        <td>Merge Forms: Can merge into eidolon, speaking through it, controlling its actions (which allows spellcasting), perceiving through its senses, becoming protected from harm, and suspending spells and effects affecting self, for 20 rd per day; death of the eidolon while merged inflicts on self 4d6 HP and stunned for 1 rd</td>
+        <td>Life Link (Summoner): Can use a free action to transfer damage from eidolon to self to prevent a forced return to its home plane</td>
       </tr><tr style="text-align:center">
         <td>Run: Retains Dexterity bonus to Armor Class while running</td>
       </tr><tr style="text-align:center">
@@ -296,6 +296,8 @@ var attributes = {
       <td>Summon Monster: Can cast <i>Summon Monster IX</i> or <i>Gate</i>, lasting 20 min, when eidolon is not present 6 times per day</td>
     </tr><tr style="text-align:center">
       <td>Transposition: Can use Maker's Call to swap places with eidolon</td>
+    </tr><tr style="text-align:center">
+      <td>Twin Eidolon: Can take the form of eidolon for 20 min per day</td>
     </tr></table>
 </td>
   </tr></table>
@@ -350,13 +352,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Improved Evasion (Companion): Has increased Evasion (Companion) effects</i></td>
     </tr><tr style="text-align:center">
-      <td><i>Improved Natural Armor Evolution: Eidolon has a +2 natural armor bonus to Armor Class</i></td>
+      <td><i>Improved Natural Armor Evolution: Has a +2 natural armor bonus to Armor Class</i></td>
     </tr><tr style="text-align:center">
       <td><i>Large Evolution: Eidolon is Large and has +8 Strength, -2 Dexterity, +4 Constitution, a -1 size penalty to Armor Class, +1 CMB/CMD, and -1 Attack</i></td>
     </tr><tr style="text-align:center">
       <td><i>Limbs (Legs) Evolution: +10 eidolon Speed</i></td>
     </tr><tr style="text-align:center">
-      <td>Ability Increase Evolution: +2 each on  a choice of ability</td>
+      <td>Ability Increase Evolution: +2 on a choice of ability</td>
     </tr><tr style="text-align:center">
       <td>Ability Score Increase: Companion has 3 ability increases to assign</td>
     </tr><tr style="text-align:center">
@@ -364,7 +366,7 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Bite Evolution: Bite inflicts 1d8+11 HP</td>
     </tr><tr style="text-align:center">
-      <td>Blindsense Evolution: R30' Eidolon can detect unseen creatures</td>
+      <td>Blindsense Evolution: R30' Can detect unseen creatures</td>
     </tr><tr style="text-align:center">
       <td>Blindsight Evolution: R30' Can maneuver and fight without vision</td>
     </tr><tr style="text-align:center">
@@ -372,15 +374,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Breath Weapon Evolution: 30' cone or 60' line inflicts 15d6 HP of a choice of acid, cold, electricity, or fire (<b>save Reflex</b> DC 21 half) once per day</td>
     </tr><tr style="text-align:center">
-      <td>Burrow Evolution: Eidolon has a 15' burrow Speed</td>
+      <td>Burrow Evolution: Has a 15' burrow Speed</td>
     </tr><tr style="text-align:center">
       <td>Claws Evolution: Claws inflict 1d6+11 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Climb Evolution: Eidolon has a 30' climb Speed</td>
+      <td>Climb Evolution: Has a 30' climb Speed</td>
     </tr><tr style="text-align:center">
       <td>Constrict Evolution: Successful grapple inflicts damage equal to that of the grab attack</td>
     </tr><tr style="text-align:center">
-      <td>Damage Reduction Evolution: Eidolon has DR 5, overcome by a weapon with a chosen alignment component</td>
+      <td>Damage Reduction Evolution: Has DR 5, overcome by a weapon with a chosen alignment component</td>
     </tr><tr style="text-align:center">
       <td>Darkvision (Companion): R60' Companion has black and white vision in complete darkness</td>
     </tr><tr style="text-align:center">
@@ -392,17 +394,17 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Evasion (Companion): Successful Reflex saves by companion yield no damage instead of half, and failed Reflex saves yield half damage</td>
     </tr><tr style="text-align:center">
-      <td>Fast Healing Evolution: Regains 1 hit points per rd</td>
+      <td>Fast Healing Evolution: Regains 1 hit point per rd</td>
     </tr><tr style="text-align:center">
-      <td>Flight Evolution: Eidolon has a 30' fly Speed with good maneuverability</td>
+      <td>Flight Evolution: Has a 30' fly Speed with good maneuverability</td>
     </tr><tr style="text-align:center">
       <td>Frightful Presence Evolution: R30' Foes with up to 11 HD suffer frightened, and those with up to 15 HD suffer shaken, (<b>save Will</b> DC 17 negates) for 3d6 rd</td>
     </tr><tr style="text-align:center">
-      <td>Gills Evolution: Eidolon can breathe underwater</td>
+      <td>Gills Evolution: Can breathe underwater</td>
     </tr><tr style="text-align:center">
       <td>Gore Evolution: Horn inflicts 1d8+11 HP</td>
     </tr><tr style="text-align:center">
-      <td>Grab Evolution: Successful attack with a chosen natural weapon allows free combat maneuver to grapple/+4 grapple CMB</td>
+      <td>Grab Evolution: Successful attack with a chosen natural weapon allows a free combat maneuver to grapple/+4 grapple CMB</td>
     </tr><tr style="text-align:center">
       <td>Greater Aspect: Can use 3 points from evolution pool to apply 6 points of evolutions to self; cannot be used for ability increases</td>
     </tr><tr style="text-align:center">
@@ -410,17 +412,19 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Improved Damage Evolution: Increases the damage from a chosen natural weapon by 1 die type</td>
     </tr><tr style="text-align:center">
-      <td>Large Evolution: Eidolon has 10' reach, -2 Fly and -4 Stealth</td>
+      <td>Large Evolution: Has 10' reach, -2 Fly and -4 Stealth</td>
     </tr><tr style="text-align:center">
-      <td>Life Link (Summoner): Can use a free action to transfer damage from eidolon to self to prevent a forced return to its home plane/The eidolon's current and maximum hit points are reduced by 50% or 75% when it is greater than 100' or 1000' away, and it is forced to its home plane if the distance exceeds 10,000'</td>
+      <td>Life Link (Summoner): Eidolon's current and maximum hit points are reduced by 50% or 75% when it is greater than 100' or 1000' away, and it is forced to its home plane if the distance exceeds 10,000'</td>
     </tr><tr style="text-align:center">
-      <td>Limbs (Arms) Evolution: Eidolon has a pair of arms</td>
+      <td>Limbs (Arms) Evolution: Has a pair of arms</td>
     </tr><tr style="text-align:center">
-      <td>Limbs (Legs) Evolution: Eidolon has a pair of legs</td>
+      <td>Limbs (Legs) Evolution: Has a pair of legs</td>
     </tr><tr style="text-align:center">
       <td>Link (Summoner): Can communicate with eidolon over any distance while on same plane/Magic items worn by eidolon count as using slots on self</td>
     </tr><tr style="text-align:center">
-      <td>Magic Attacks Evolution: Eidolon natural attacks count as magic and aligned</td>
+      <td>Magic Attacks Evolution: Natural attacks count as magic and aligned</td>
+    </tr><tr style="text-align:center">
+      <td>Merge Forms: Can merge into eidolon, speaking through it, controlling its actions (which allows spellcasting), perceiving through its senses, becoming protected from harm, and suspending spells and effects affecting self, for 20 rd per day; death of the eidolon while merged inflicts on self 4d6 HP and stunned for 1 rd</td>
     </tr><tr style="text-align:center">
       <td>Mount Evolution: Self may ride eidolon</td>
     </tr><tr style="text-align:center">
@@ -436,15 +440,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Push Evolution: Successful attacks with a chosen natural weapon allow a free combat maneuver to make a 5' push</td>
     </tr><tr style="text-align:center">
-      <td>Rake Evolution: Can make 2 claw rake attacks on a grappled foe that inflict 1d6+11 HP each</td>
+      <td>Rake Evolution: Can make 2 claw rake attacks that inflict 1d6+11 HP each on a grappled foe</td>
     </tr><tr style="text-align:center">
       <td>Reach Evolution: Chosen natural attack has +5' reach</td>
     </tr><tr style="text-align:center">
       <td>Rend Evolution: 2 successful attacks with claws inflict +1d6+16 HP</td>
     </tr><tr style="text-align:center">
-      <td>Resistance Evolution: Eidolon has resistance 15 to a choice of acid, cold, electricity, fire, or sonic</td>
+      <td>Resistance Evolution: Has resistance 15 to a choice of acid, cold, electricity, fire, or sonic</td>
     </tr><tr style="text-align:center">
-      <td>Scent Evolution: Companion can detect creatures via smell</td>
+      <td>Scent Evolution: Can detect creatures via smell</td>
     </tr><tr style="text-align:center">
       <td>Share Spells (Summoner): Can use touch to cast self spells on eidolon</td>
     </tr><tr style="text-align:center">
@@ -452,13 +456,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Slam Evolution: Slams inflict 2d6+11 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Spell Resistance Evolution: Eidolon has SR 31</td>
+      <td>Spell Resistance Evolution: Has SR 31</td>
     </tr><tr style="text-align:center">
       <td>Sting Evolution: Stings inflict 1d6+11 HP each</td>
     </tr><tr style="text-align:center">
-      <td>Swallow Whole Evolution: Can attempt a combat maneuver to swallow a creature grappled by a bite attack, inflicting 1d8+11+1d6 HP bludgeoning each rd on success; swallowed foes can emerge by escaping the grapple or by using a light slashing or piercing weapon to cut its way free by inflicting 12 HP vs. AC 21</td>
+      <td>Swallow Whole Evolution: Can attempt a combat maneuver to swallow a creature grappled by a bite attack, inflicting bite damage plus 1d6 HP bludgeoning each rd on success; swallowed foes can emerge by escaping the grapple or by using a light slashing or piercing weapon to cut its way free by inflicting 12 HP vs. AC 21</td>
     </tr><tr style="text-align:center">
-      <td>Swim Evolution: Eidolon has a 30' swim Speed</td>
+      <td>Swim Evolution: Has a 30' swim Speed</td>
     </tr><tr style="text-align:center">
       <td>Tail Evolution: +2 Acrobatics to balance</td>
     </tr><tr style="text-align:center">
@@ -468,11 +472,9 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td>Trample Evolution: Can make a full-round automatic overrun that inflicts 1d8+16 HP (<b>save Reflex</b> DC 28 half; a target can forego the save to make an AOO at a -4 penalty)</td>
     </tr><tr style="text-align:center">
-      <td>Tremorsense Evolution: R30' Eidolon can sense creatures via ground vibrations</td>
+      <td>Tremorsense Evolution: R30' Can sense creatures via ground vibrations</td>
     </tr><tr style="text-align:center">
       <td>Trip Evolution: Successful bite allows a free combat maneuver to trip</td>
-    </tr><tr style="text-align:center">
-      <td>Twin Eidolon: Can take the form of eidolon for 20 min per day</td>
     </tr><tr style="text-align:center">
       <td>Weapon Training Evolution: Eidolon is proficient with simple weapons</td>
     </tr><tr style="text-align:center">
