@@ -1720,7 +1720,7 @@ PFAPG.FEATURES = {
   'Cantrips':Pathfinder.FEATURES.Cantrips,
   'Eidolon':
     'Section=companion ' +
-    'Note="Has a special bond with an outsider that has the same alignment, knows the same languages, shares a glowing rune, is not prevented from contact by spells such as <i>Protection From Evil</i>, and has a form and stats dependent on Summoner level; summoning takes 1 min and lasts until dismissed or killed, with death preventing renewed summoning, with half hit points, until the next day"',
+    'Note="Has a special bond with an outsider that has the same alignment, knows the same languages, shares a glowing rune, is not prevented from contact by spells such as <i>Protection From Evil</i>, and has a form and stats dependent on Summoner level; summoning takes 1 min and lasts until dismissed or killed; eidolon death prevents renewed summoning until the next day, with half hit points restored,"',
   'Evolution Pool':'Section=companion Note="%V points"',
   'Greater Aspect':
     'Section=companion ' +
@@ -1766,6 +1766,14 @@ PFAPG.FEATURES = {
     'Section=companion ' +
     'Note="Can take the form of eidolon for %{levels.Summoner} min per day"',
   // Eidolon special abilities
+  'Biped Eidolon':
+    'Section=companion ' +
+    'Note="Has the Claws, Limbs (Arms), and Limbs (Legs) evolutions"',
+  'Quadruped Eidolon':
+    'Section=companion Note="Has the Bite and Limbs (Legs) (x2) evolutions"',
+  'Serpentine Eidolon':
+    'Section=companion ' +
+    'Note="Has the Bite, Climb, Reach, Tail, and Tail Slap evolutions"',
   'Ability Score Increase':Pathfinder.FEATURES['Ability Score Increase'],
   'Darkvision (Companion)':
     'Section=companion ' +
@@ -1924,8 +1932,8 @@ PFAPG.FEATURES = {
   'Large Evolution':
     'Section=companion,companion ' +
     'Note=' +
-      '"Eidolon is %V and has +%1 Strength, %5 Dexterity, +%2 Constitution, +%3 Armor Class, +%4 CMB/CMD, and %6 Attack",' +
-      '"Eidolon has%{$\'animalCompanion.Biped Eidolon\'||$\'features.Large Evolution\'>1?\', \'+($\'animalCompanion.Biped Eidolon\'&&$\'features.Large Evolution\'>1?15:10)+\\"\' reach,\\":\'\'} %1 Fly, and %2 Stealth"',
+      '"Eidolon is %V and has +%{$\'features.Large Evolution\'*8} Strength, %{$\'features.Large Evolution\'*-2} Dexterity, +%{$\'features.Large Evolution\'*4} Constitution, a %{$\'features.Large Evolution\'*-1} size penalty to Armor Class, +%{$\'features.Large Evolution\'} CMB/CMD, and %{$\'features.Large Evolution\'*-1} Attack",' +
+      '"Eidolon has%{$\'animalCompanion.Biped Eidolon\'&&$\'features.Large Evolution\'>1?\\" 15\' reach,\\":$\'animalCompanion.Biped Eidolon\'||$\'features.Large Evolution\'>1?\\" 10\' reach,\\":\'\'} %{$\'features.Large Evolution\'*-2} Fly and %{$\'features.Large Evolution\'*-4} Stealth"',
   'Spell Resistance Evolution':
     'Section=companion Note="Eidolon has SR %{levels.Summoner+11}"',
 
@@ -9745,6 +9753,14 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
 
   } else if(name == 'Summoner') {
 
+    rules.defineRule
+      ('features.Biped Eidolon', 'animalCompanion.Biped Eidolon', '=', '1');
+    rules.defineRule('features.Quadruped Eidolon',
+      'animalCompanion.Quadruped Eidolon', '=', '1'
+    );
+    rules.defineRule('features.Serpentine Eidolon',
+      'animalCompanion.Serpentine Eidolon', '=', '1'
+    );
     // Animal companion stats for eidolon
     rules.defineRule('companionIsNotEidolon',
       'companionMasterLevel', '=', '1',
@@ -9789,9 +9805,9 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'eidolonMasterLevel', '=', 'Math.floor(source/5) * 4 + (source%5>1?2:0) + (source/5)',
       'animalCompanionStats.Dex', '+', 'source % 2 == 0 ? 0.5 : null',
       'companionNotes.improvedNaturalArmorEvolution', '+', null,
-      // /mallSLarge/Huge AC mods net AC and Dex modifiers
-      'companionNotes.smallEidolon', '+', '2', // +1 size, +1 Dex
-      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 1 : 0',
+      // Small/Large/Huge AC mods include size and Dex modifiers
+      'companionNotes.smallEidolon', '+', '2',
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? -4 : -2',
       // Offset standard companion AC components
       'companionMasterLevel', '+', '-Math.floor(source / 3) * 2',
       'companionACBoosts', '+', '-Math.floor(source)'
@@ -9804,15 +9820,15 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       // Offset standard companion StrDex bonus
       'companionMasterLevel', '+', '-Math.floor(source / 3)'
     );
-    rules.defineRule('animalCompanionStats.Str',
-      'eidolonStrDexBonus', '+', null,
-      'companionNotes.smallEidolon', '+', '-4',
-      'companionNotes.largeEvolution.1', '+', null
-    );
     rules.defineRule('animalCompanionStats.Dex',
       'eidolonStrDexBonus', '+', null,
       'companionNotes.smallEidolon', '+', '2',
-      'companionNotes.largeEvolution.5', '+', null
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? -4 : -2'
+    );
+    rules.defineRule('animalCompanionStats.Str',
+      'eidolonStrDexBonus', '+', null,
+      'companionNotes.smallEidolon', '+', '-4',
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 16 : 8'
     );
     rules.defineRule('eidolonNaturalAttacksAvailable',
       classLevel, '=', '3 + Math.floor((source + 1) / 5)'
@@ -9863,7 +9879,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     // Size effect on CMB/CMD taken care of in Pathfinder
     rules.defineRule('animalCompanionStats.Con',
       'companionNotes.smallEidolon', '+', '-2',
-      'companionNotes.largeEvolution.2', '+', null
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 8 : 4'
     );
     rules.defineRule('animalCompanionStats.Size',
       'companionNotes.smallEidolon', '=', '"S"',
@@ -9878,7 +9894,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'eidolonAttackAdjustment', '+', null,
       // Small/Large/Huge attack mods net attack and Str modifiers
       'companionNotes.smallEidolon', '+', '-1',
-      'companionNotes.largeEvolution', '+', '3 + (source=="Huge" ? 3 : 0)'
+      'companionNotes.largeEvolution', '+', 'source=="Huge" ? 6 : 3'
     );
     rules.defineRule('companionAttackBoosts',
       'eidolonMasterLevel', '=', 'Math.floor(source / 5)'
@@ -9888,37 +9904,13 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       classLevel, '=', 'source<10 ? 1 : source<15 ? 2 : 3'
     );
     rules.defineRule('companionNotes.improvedNaturalArmorEvolution',
-      'summonerFeatures.Improved Natural Armor Evolution', '=', '2 * source'
+      'features.Improved Natural Armor Evolution', '=', '2 * source'
     );
     rules.defineRule('companionNotes.largeEvolution',
-      'summonerFeatures.Large Evolution', '=', 'source==1 ? "Large" : "Huge"'
-    );
-    rules.defineRule('companionNotes.largeEvolution.1',
-      'summonerFeatures.Large Evolution', '=', 'source * 8'
-    );
-    rules.defineRule('companionNotes.largeEvolution.2',
-      'summonerFeatures.Large Evolution', '=', 'source * 4'
-    );
-    rules.defineRule('companionNotes.largeEvolution.3',
-      'summonerFeatures.Large Evolution', '=', 'source==1 ? 1 : 3'
-    );
-    rules.defineRule('companionNotes.largeEvolution.4',
-      'summonerFeatures.Large Evolution', '=', null
-    );
-    rules.defineRule('companionNotes.largeEvolution.5',
-      'summonerFeatures.Large Evolution', '=', 'source * -2'
-    );
-    rules.defineRule('companionNotes.largeEvolution.6',
-      'summonerFeatures.Large Evolution', '=', 'source * -1'
-    );
-    rules.defineRule('companionNotes.largeEvolution-1.1',
-      'summonerFeatures.Large Evolution', '=', 'source * -2'
-    );
-    rules.defineRule('companionNotes.largeEvolution-1.2',
-      'summonerFeatures.Large Evolution', '=', 'source * -4'
+      'features.Large Evolution', '=', 'source==1 ? "Large" : "Huge"'
     );
     rules.defineRule('companionNotes.limbs(Legs)Evolution',
-      'summonerFeatures.Limbs (Legs) Evolution', '=', 'source * 10'
+      'features.Limbs (Legs) Evolution', '=', 'source * 10'
     );
     rules.defineRule('eidolonAttackAdjustment',
       'features.eidolon', '?', null,
@@ -9963,37 +9955,26 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'animalCompanion.Biped Eidolon', '=', '20',
       'animalCompanion.Quadruped Eidolon', '=', '20',
       'animalCompanion.Serpentine Eidolon', '=', '20',
-      'summonerFeatures.Limbs (Legs) Evolution', '+', 'source * 10'
+      'features.Limbs (Legs) Evolution', '+', 'source * 10'
     );
     rules.defineRule('magicNotes.summonMonster',
       classLevel, '=', '["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][Math.min(Math.floor((source - 1) / 2), 8)]'
     );
-    rules.defineRule('summonerFeatures.Bite Evolution',
-      'animalCompanion.Quadruped Eidolon', '+=', '1',
-      'animalCompanion.Serpentine Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Claws Evolution',
-      'animalCompanion.Biped Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Climb Evolution',
-      'animalCompanion.Serpentine Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Limbs (Arms) Evolution',
-      'animalCompanion.Biped Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Limbs (Legs) Evolution',
-      'animalCompanion.Biped Eidolon', '+=', '1',
-      'animalCompanion.Quadruped Eidolon', '+=', '2'
-    );
-    rules.defineRule('summonerFeatures.Reach Evolution',
-      'animalCompanion.Serpentine Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Tail Evolution',
-      'animalCompanion.Serpentine Eidolon', '+=', '1'
-    );
-    rules.defineRule('summonerFeatures.Tail Slap Evolution',
-      'animalCompanion.Serpentine Eidolon', '+=', '1'
-    );
+    ['Claws', 'Limbs (Arms)', 'Limbs (Legs)'].forEach(e => {
+      rules.defineRule('summonerFeatures.' + e + ' Evolution',
+        'companionNotes.bipedEidolon', '+=', '1'
+      );
+    });
+    ['Bite', 'Limbs (Legs)'].forEach(e => {
+      rules.defineRule('summonerFeatures.' + e + ' Evolution',
+        'companionNotes.quadrupedEidolon', '+=', e=='Limbs (Legs)' ? '2' : '1'
+      );
+    });
+    ['Bite', 'Climb', 'Reach', 'Tail', 'Tail Slap'].forEach(e => {
+      rules.defineRule('summonerFeatures.' + e + ' Evolution',
+        'companionNotes.serpentineEidolon', '+=', '1'
+      );
+    });
 
   } else if(name == 'Witch') {
 
