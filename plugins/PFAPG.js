@@ -9453,19 +9453,12 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
           'levels.Inquisitor', '=', null
         );
         rules.defineRule('casterLevels.' + domain,
-          'inquisitorDomainLevels.' + domain, '^=', null
+          'inquisitorDomainLevels.' + domain, '+=', null
         );
         rules.defineRule('inquisitorDomainLevel',
           'inquisitorDomainLevels.' + domain, '^=', null
         );
       }
-    }
-    rules.defineRule
-      ('casterLevels.Domain', 'inquisitorDomainLevel', '^=', null);
-    for(let level = 1; level <= 9; level++) {
-      rules.defineRule('spellSlots.Domain' + level,
-        'inquisitorDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
-      );
     }
     rules.defineRule
       ('combatNotes.cunningInitiative', 'wisdomModifier', '=', null);
