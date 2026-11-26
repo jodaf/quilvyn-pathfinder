@@ -90,7 +90,7 @@ var attributes = {
       <td>      <table id="FeatLists" style="width:100%">
       <tr style="text-align:center">
         <td><b>Feats</b>: Acrobatic; Coordinated Defense; Coordinated Maneuvers; Duck and Cover; Eclectic; Outflank; Shield Wall; Simple Weapon Proficiency; Skill Focus (Craft (Armor)); Skill Focus (Knowledge (Arcana)); Skill Focus (Knowledge (Engineering)); Spell Focus (Evocation); Spell Focus (Illusion); Spell Focus (Transmutation); Swap Places; Thundering Spell</td>
-        <td><b>Inquisitor Features</b>: Agile Feet; Armor Proficiency (Light; Medium; Shield); Bane; Cunning Initiative; Detect Alignment; Dimensional Hop; Discern Lies; Domain (Inquisitor); Exploit Weakness; Greater Bane; Judgment; Monster Lore; Orisons; Second Judgment; Slayer; Solo Tactics; Stalwart; Stern Gaze; Teamwork Feat (Inquisitor); Third Judgment; Track; Travel Domain; True Judgment; Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow); Weapon Proficiency (Starknife)</td>
+        <td><b>Inquisitor Features</b>: Agile Feet; Aligned Spells; Armor Proficiency (Light; Medium; Shield); Bane; Cunning Initiative; Detect Alignment; Dimensional Hop; Discern Lies; Domain (Inquisitor); Exploit Weakness; Greater Bane; Judgment; Monster Lore; Orisons; Second Judgment; Slayer; Solo Tactics; Stalwart; Stern Gaze; Teamwork Feat (Inquisitor); Third Judgment; Track; Travel Domain; True Judgment; Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow); Weapon Proficiency (Starknife)</td>
         <td><b>Human Features</b>: Eye For Talent; Heart Of The Fields; Human Ability Adjustment</td>
       </tr></table>
 </td>
@@ -99,11 +99,11 @@ var attributes = {
       <tr style="text-align:center">
         <td><i>Domain (Inquisitor): 1 selection</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Teamwork Feat (Inquisitor): 6 Teamwork feats</i></td>
+        <td><i>Teamwork Feat (Inquisitor): +6 Teamwork feats</i></td>
       </tr><tr style="text-align:center">
         <td>Eclectic: May choose 1 additional favored class</td>
       </tr><tr style="text-align:center">
-        <td>Teamwork Feat (Inquisitor): May exchange most recently acquired Teamwork feat 2/dy</td>
+        <td>Teamwork Feat (Inquisitor): Can use a standard action to exchange the most recently acquired Teamwork feat for another 2 times per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -162,7 +162,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: +10 on choice of Craft or Profession</td>
       </tr><tr style="text-align:center">
-        <td>Monster Lore: +2 Knowledge (identify creature abilities and weaknesses)</td>
+        <td>Monster Lore: +2 Knowledge to identify creature abilities and weaknesses</td>
       </tr><tr style="text-align:center">
         <td>Track: +10 Survival to follow creatures' trails</td>
       </tr></table>
@@ -208,37 +208,37 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Cunning Initiative: +2 Initiative</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Greater Bane: Increased Bane effects</i></td>
+        <td><i>Greater Bane: Has increased Bane effects</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Attack Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
         <td><i>Strength Damage Adjustment: -1</i></td>
       </tr><tr style="text-align:center">
-        <td>Bane: Self gains +2 attack and +4d6 HP damage with chosen weapon vs. chosen creature type for 20 rd/dy</td>
+        <td>Bane: Gives self +2 attack and +4d6 HP damage vs. a chosen creature type with a chosen weapon for 20 rd per day; can use a swift action to change the creature type</td>
       </tr><tr style="text-align:center">
         <td>Coordinated Defense: +2 CMD (+4 vs. larger foe) when an adjacent ally has this feat</td>
       </tr><tr style="text-align:center">
         <td>Coordinated Maneuvers: +2 CMB, +2 CMD, and +4 vs. grapple when an adjacent ally has this feat</td>
       </tr><tr style="text-align:center">
-        <td>Exploit Weakness: Crit ignores DR and negates regeneration for 1 rd/+1 HP per die energy damage vs. vulnerable foe</td>
+        <td>Exploit Weakness: Critical hits ignore DR and negate foe regeneration for 1 rd/Energy attacks inflict +1 HP per die vs. vulnerable foes</td>
       </tr><tr style="text-align:center">
-        <td>Judgment: May pronounce one of these, gaining the specified bonus until combat ends, 7/dy: destruction (+7 weapon damage), healing (regains 7 hit points per rd), justice (+5 attack, dbl to confirm crit), piercing (+7 concentration, +7 caster level to overcome spell resistance), protection (+5 Armor Class, dbl vs. confirm crit), purity (+5 saves, dbl vs. curse, disease, and poison), resiliency (gain DR 5/opposed alignment), resistance (resistance 14 to chosen energy), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
+        <td>Judgment: Can pronounce one of these judgments, gaining the specified bonus until combat ends, 7 times per day: destruction (inflicts +7 weapon damage); healing (regains 7 hit points per rd); justice (+5 attacks and +10 to confirm crits); piercing (+7 concentration checks and +7 caster level to overcome spell resistance); protection (+5 Armor Class and +10 Armor Class vs. foe crit confirmation); purity (+5 saves and +10 vs. curses, disease, and poison); resiliency (DR 5, overcome by weapons with a specified opposed alignment component); resistance (resistance 14 to a choice of acid, cold, electricity, fire, or sonic), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
       </tr><tr style="text-align:center">
         <td>Outflank: +4 flanking attack when an ally has this feat; crit gives ally AOO</td>
       </tr><tr style="text-align:center">
-        <td>Second Judgment: May use 2 Judgments simultaneously; may change 1 as a swift action</td>
+        <td>Second Judgment: Can use 2 judgments with 1 use of Judgment and can change 1 as a swift action</td>
       </tr><tr style="text-align:center">
         <td>Shield Wall: +1 shield Armor Class bonus when an adjacent ally has this feat and a buckler or light shield; +2 w/a heavy or tower shield</td>
       </tr><tr style="text-align:center">
-        <td>Slayer: Effects of choice of Judgment increase to: destruction (+9 weapon damage), healing (regains 9 hit points per rd), justice (+6 attack), piercing (+9 concentration, +9 caster level to overcome spell resistance), protection (+6 Armor Class), purity (+6 saves), resiliency (gain DR 6/opposed alignment), resistance (resistance 18 to chosen energy)</td>
+        <td>Slayer: Increases the effects of a choice of Judgment upon each use to: destruction (inflicts +9 weapon damage); healing (regains 9 hit points per rd); justice (+6 attacks and +12 to confirm crits); piercing (+9 concentration checks and +9 caster level to overcome spell resistance); protection (+6 Armor Class and +12 Armor Class vs. foe crit confirmation); purity (+6 saves and +12 vs. curses, disease, and poison); resiliency (DR 6, overcome by weapons with a specified opposed alignment component); resistance (resistance 18 to a choice of acid, cold, electricity, fire, or sonic), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
       </tr><tr style="text-align:center">
         <td>Solo Tactics: All allies are treated as having the same Teamwork feats for determining feat bonuses</td>
       </tr><tr style="text-align:center">
         <td>Swap Places: May swap places w/an adjacent ally who has this feat; ally suffers no AOO</td>
       </tr><tr style="text-align:center">
-        <td>Third Judgment: May use 3 Judgments simultaneously; may change 1 as a swift action</td>
+        <td>Third Judgment: Can use 3 judgments with 1 use of Judgment and can change 1 as a swift action</td>
       </tr><tr style="text-align:center">
-        <td>True Judgment: R30' Successful Judgment attack kills foe (DC 22 Fortitude negates); must wait 1d4 rd between uses</td>
+        <td>True Judgment: R30' Successful Judgment attack kills foe (<b>save Fortitude</b> DC 22 negates) once per target per 24 hr; must wait 1d4 rd between uses</td>
       </tr></table>
 </td>
     </tr><tr style="text-align:center">
@@ -254,7 +254,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Heart Of The Fields: May ignore fatigued or exhausted effect 1/dy</td>
       </tr><tr style="text-align:center">
-        <td>Stalwart: Successful Fortitude or Will save in medium or lighter armor yields no damage instead of half</td>
+        <td>Stalwart: Successful Fortitude or Will save yields no damage instead of half; wearing heavy armor negates</td>
       </tr></table>
 </td>
     </tr></table>
@@ -299,11 +299,13 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Wisdom Inquisitor Spell Slot Bonus: Spell level Inquisitor1, Inquisitor2</i></td>
     </tr><tr style="text-align:center">
-      <td>Detect Alignment: May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will</td>
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
+      <td>Detect Alignment: Can cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, and <i>Detect Law</i> at will</td>
     </tr><tr style="text-align:center">
       <td>Dimensional Hop: Can teleport 200' per day; including others uses an equal portion of the daily distance</td>
     </tr><tr style="text-align:center">
-      <td>Discern Lies: May use <i>Discern Lies</i> effects 20 rd/dy</td>
+      <td>Discern Lies: Can use <i>Discern Lies</i> effects 20 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Orisons: Knows 0-level spells</td>
     </tr><tr style="text-align:center">

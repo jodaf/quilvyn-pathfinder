@@ -1157,78 +1157,78 @@ PFAPG.FEATURES = {
       '"1 Teamwork feat"',
 
   // Inquisitor
+  // Aligned Spells as Pathfinder
   'Bane':
     'Section=combat ' +
-    'Note="Self gains +2 attack and +%Vd6 HP damage with chosen weapon vs. chosen creature type for %{levels.Inquisitor} rd/dy"',
+    'Note="Gives self +2 attack and +%{combatNotes.greaterBane?4:2}d6 HP damage vs. a chosen creature type with a chosen weapon for %{levels.Inquisitor} rd per day; can use a swift action to change the creature type"',
   'Cunning Initiative':'Section=combat Note="+%V Initiative"',
   'Detect Alignment':
     'Section=magic ' +
-    'Note="May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will" ' +
-    'Spells=' +
-      '"Detect Chaos","Detect Evil","Detect Good","Detect Law" ' +
+    'Note="Can cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, and <i>Detect Law</i> at will" ' +
+    'Spells="Detect Chaos","Detect Evil","Detect Good","Detect Law" ' +
     'SpellAbility=Charisma ' +
     'SpellLevel=levels.Inquisitor',
   'Discern Lies':
     'Section=magic ' +
-    'Note="May use <i>Discern Lies</i> effects %{levels.Inquisitor} rd/dy" ' +
+    'Note="Can use <i>Discern Lies</i> effects %{levels.Inquisitor} rd per day" ' +
     'Spells="Discern Lies" ' +
     'SpellAbility=Charisma ' +
     'SpellLevel=levels.Inquisitor',
   'Domain (Inquisitor)':'Section=feature Note="1 selection"',
   'Exploit Weakness':
     'Section=combat ' +
-    'Note="Crit ignores DR and negates regeneration for 1 rd/+1 HP per die energy damage vs. vulnerable foe"',
-  'Greater Bane':'Section=combat Note="Increased Bane effects"',
+    'Note="Critical hits ignore DR and negate foe regeneration for 1 rd/Energy attacks inflict +1 HP per die vs. vulnerable foes"',
+  'Greater Bane':'Section=combat Note="Has increased Bane effects"',
   'Judgment':
     'Section=combat ' +
-    'Note="May pronounce one of these, gaining the specified bonus until combat ends, %{(levels.Inquisitor+2)//3}/dy: ' +
-      'destruction (+%{(levels.Inquisitor+3)//3} weapon damage), ' +
-      'healing (regains %{(levels.Inquisitor+3)//3} hit points per rd), ' +
-      'justice (+%{(levels.Inquisitor+5)//5} attack%{levels.Inquisitor>=10 ? \', dbl to confirm crit\' : \'\'}), ' +
-      'piercing (+%{(levels.Inquisitor+3)//3} concentration, +%{(levels.Inquisitor+3)//3} caster level to overcome spell resistance), ' +
-      'protection (+%{levels.Inquisitor+5)//5} Armor Class%{levels.Inquisitor>=10 ? \', dbl vs. confirm crit\' : \'\'}), ' +
-      'purity (+%{(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=10 ? \', dbl vs. curse, disease, and poison\' : \'\'}), ' +
-      'resiliency (gain DR %{(levels.Inquisitor+5)//5}/%{levels.Inquisitor>=10 ? \'opposed alignment\' : \'magic\'}), ' +
-      'resistance (resistance %{(levels.Inquisitor+3)//3*2} to chosen energy), ' +
-      'smiting (weapons count as magic%{levels.Inquisitor>=10 ? \', aligned, and adamantine\' : levels.Inquisitor>=6 ? \' and aligned\' : \'\'} to overcome DR)"',
+    'Note="Can pronounce one of these judgments, gaining the specified bonus until combat ends, %{levels.Inquisitor>3?(levels.Inquisitor+2)//3+\' times\':\'once\'} per day: ' +
+      'destruction (inflicts +%{1+levels.Inquisitor//3} weapon damage); ' +
+      'healing (regains %{1+levels.Inquisitor//3} hit points per rd); ' +
+      'justice (+%{1+levels.Inquisitor//5} attacks%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' to confirm crits\':\'\'}); ' +
+      'piercing (+%{1+levels.Inquisitor//3} concentration checks and +%{1+levels.Inquisitor//3} caster level to overcome spell resistance); ' +
+      'protection (+%{1+levels.Inquisitor//5} Armor Class%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' Armor Class vs. foe crit confirmation\':\'\'}); ' +
+      'purity (+%{1+levels.Inquisitor//5} saves%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' vs. curses, disease, and poison\':\'\'}); ' +
+      'resiliency (DR %{1+levels.Inquisitor//5}, overcome by %{levels.Inquisitor>=10&&alignment!=\'Neutral\'?\'weapons with a specified opposed alignment component\':\'magic weapons\'}); ' +
+      'resistance (resistance %{2+levels.Inquisitor//3*2} to a choice of acid, cold, electricity, fire, or sonic), ' +
+      'smiting (weapons count as magic%{levels.Inquisitor>=10&&alignment!=\'Neutral\'?\', aligned, and adamantine\':levels.Inquisitor>=10?\' and adamantine\':levels.Inquisitor>=6&&alignment!=\'Neutral\'?\' and aligned\':\'\'} to overcome DR)"',
   'Monster Lore':
     'Section=skill ' +
-    'Note="+%{wisdomModifier} Knowledge (identify creature abilities and weaknesses)"',
+    'Note="+%{wisdomModifier} Knowledge to identify creature abilities and weaknesses"',
   'Orisons':Pathfinder.FEATURES.Orisons,
-  'Second Judgment':
-    'Section=combat ' +
-    'Note="May use 2 Judgments simultaneously; may change 1 as a swift action"',
-  'Slayer':
-    'Section=combat ' +
-    'Note="Effects of choice of Judgment increase to: ' +
-      'destruction (+%{(levels.Inquisitor+8)//3} weapon damage), ' +
-      'healing (regains %{(levels.Inquisitor+8)//3} hit points per rd), ' +
-      'justice (+%{(levels.Inquisitor+10)//5} attack), ' +
-      'piercing (+%{(levels.Inquisitor+8)//3} concentration, +%{(levels.Inquisitor+8)//3} caster level to overcome spell resistance), ' +
-      'protection (+%{levels.Inquisitor+10)//5} Armor Class), ' +
-      'purity (+%{(levels.Inquisitor+10)//5} saves), ' +
-      'resiliency (gain DR %{(levels.Inquisitor+10)//5}/opposed alignment), ' +
-      'resistance (resistance %{(levels.Inquisitor+8)//3*2} to chosen energy)"',
   'Solo Tactics':
     'Section=combat ' +
     'Note="All allies are treated as having the same Teamwork feats for determining feat bonuses"',
+  'Second Judgment':
+    'Section=combat ' +
+    'Note="Can use 2 judgments with 1 use of Judgment and can change 1 as a swift action"',
+  'Slayer':
+    'Section=combat ' +
+    'Note="Increases the effects of a choice of Judgment upon each use to: ' +
+      'destruction (inflicts +%{1+(levels.Inquisitor+5)//3} weapon damage); ' +
+      'healing (regains %{1+(levels.Inquisitor+5)//3} hit points per rd); ' +
+      'justice (+%{1+(levels.Inquisitor+5)//5} attacks%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' to confirm crits\':\'\'}); ' +
+      'piercing (+%{1+(levels.Inquisitor+5)//3} concentration checks and +%{1+(levels.Inquisitor+5)//3} caster level to overcome spell resistance); ' +
+      'protection (+%{1+(levels.Inquisitor+5)//5} Armor Class%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' Armor Class vs. foe crit confirmation\':\'\'}); ' +
+      'purity (+%{1+(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' vs. curses, disease, and poison\':\'\'}); ' +
+      'resiliency (DR %{1+(levels.Inquisitor+5)//5}, overcome by %{levels.Inquisitor>=5&&alignment!=\'Neutral\'?\'weapons with a specified opposed alignment component\':\'magic weapons\'}); ' +
+      'resistance (resistance %{2+(levels.Inquisitor+5)//3*2} to a choice of acid, cold, electricity, fire, or sonic), ' +
+      'smiting (weapons count as magic%{levels.Inquisitor>=5&&alignment!=\'Neutral\'?\', aligned, and adamantine\':levels.Inquisitor>=5?\' and adamantine\':levels.Inquisitor>=1&&alignment!=\'Neutral\'?\' and aligned\':\'\'} to overcome DR)"',
   'Stalwart':
     'Section=save ' +
-    'Note="Successful Fortitude or Will save in medium or lighter armor yields no damage instead of half"',
+    'Note="Successful Fortitude or Will save yields no damage instead of half; wearing heavy armor negates"',
   'Stern Gaze':'Section=skill Note="+%V Intimidate/+%V Sense Motive"',
-  'Teamwork Feat':'Section=feature Note="1 Teamwork feat"',
   'Teamwork Feat (Inquisitor)':
     'Section=feature,feature ' +
     'Note=' +
-      '"%V Teamwork feats",' +
-      '"May exchange most recently acquired Teamwork feat %{wisdomModifier}/dy"',
+      '"+%V Teamwork feats",' +
+      '"Can use a standard action to exchange the most recently acquired Teamwork feat for another %{wisdomModifier>1?wisdomModifier+\' times\':\'once\'} per day"',
   'Third Judgment':
     'Section=combat ' +
-    'Note="May use 3 Judgments simultaneously; may change 1 as a swift action"',
-  // 'Track' in Pathfinder
+    'Note="Can use 3 judgments with 1 use of Judgment and can change 1 as a swift action"',
+  'Track':Pathfinder.FEATURES.Track,
   'True Judgment':
     'Section=combat ' +
-    'Note="R30\' Successful Judgment attack kills foe (DC %{10+levels.Inquisitor//2+wisdomModifier} Fortitude negates); must wait 1d4 rd between uses"',
+    'Note="R30\' Successful Judgment attack kills foe (save Fortitude DC %{10+levels.Inquisitor//2+wisdomModifier} negates) once per target per 24 hr; must wait 1d4 rd between uses"',
 
   // Oracle
   'Mystery':'Section=feature Note="1 selection"',
@@ -1910,7 +1910,7 @@ PFAPG.FEATURES = {
     'Note="Has a %{animalCompanionStats.Speed//2}\' burrow Speed"',
   'Damage Reduction Evolution':
     'Section=companion ' +
-    'Note="Has DR %{$\'features.Damage Reduction Evolution\'>1?10:5}, overcome by a weapon with a chosen alignment component"',
+    'Note="Has DR %{$\'features.Damage Reduction Evolution\'>1?10:5}, overcome by weapons with a chosen alignment component"',
   'Frightful Presence Evolution':
     'Section=companion ' +
     'Note="R30\' Foes with up to %{animalCompanionStats.HD-4} HD suffer frightened, and those with up to %{animalCompanionStats.HD} HD suffer shaken, (save Will DC %{10+animalCompanionStats.HD//2+(animalCompanionStats.Cha-10)//2} negates) for 3d6 rd"',
@@ -4393,6 +4393,7 @@ PFAPG.FEATURES = {
   'Teamwork':
     'Section=magic ' +
     'Note="R60\' Inspiring Command gives allies +%{inspiringCommandBonus} to aid another rolls and effects"',
+  'Teamwork Feat (Battle Herald)':'Section=feature Note="+1 Teamwork feat"',
   'Tuck And Roll':
     'Section=magic ' +
     'Note="Inspiring Command gives allies +%{inspiringCommandBonus} Acrobatics and Reflex saves"',
@@ -7618,10 +7619,11 @@ PFAPG.CLASSES = {
     'Features=' +
       '"1:Armor Proficiency (Light; Medium; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow)",' +
-      '"1:Domain (Inquisitor)",1:Judgment,"1:Monster Lore",1:Orisons,' +
-      '"1:Stern Gaze","2:Cunning Initiative","2:Detect Alignment",2:Track,' +
-      '"3:Solo Tactics","3:Teamwork Feat (Inquisitor)",5:Bane,' +
-      '"5:Discern Lies","8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
+      '"1:Aligned Spells","1:Domain (Inquisitor)",1:Judgment,' +
+      '"1:Monster Lore","1:Orisons","1:Stern Gaze","2:Cunning Initiative",' +
+      '"2:Detect Alignment","2:Track","3:Solo Tactics",' +
+      '"3:Teamwork Feat (Inquisitor)","5:Bane","5:Discern Lies",' +
+      '"8:Second Judgment",11:Stalwart,"12:Greater Bane",' +
       '"14:Exploit Weakness","16:Third Judgment",17:Slayer,"20:True Judgment",'+
       '"' + QuilvynUtils.getAttrValueArray(Pathfinder.CLASSES.Cleric, 'Features').filter(x => x.includes('clericDomainFeatures')).map(x => x.replace(/clericDomainFeatures.(\w*)/, 'inquisitorFeatures.$1 Domain')).join('","') + '" ' +
     'Selectables=' +
@@ -8816,9 +8818,9 @@ PFAPG.PRESTIGE_CLASSES = {
       '"Knowledge (Nobility)",Perception,Profession,Ride,"Sense Motive" ' +
     'Features=' +
       '"1:Inspiring Command","1:Improved Leadership","1:Voice Of Authority",' +
-      '"2:Easy March","4:Inspire Greatness",5:Banner,"6:Teamwork Feat",' +
-      '"7:Demanding Challenge","8:Persistent Commands",' +
-      '"9:Inspire Last Stand","10:Complex Commands" ' +
+      '"2:Easy March","4:Inspire Greatness","5:Banner",' +
+      '"6:Teamwork Feat (Battle Herald)","7:Demanding Challenge",' +
+      '"8:Persistent Commands","9:Inspire Last Stand","10:Complex Commands" ' +
     'Selectables=' +
       '"1:Battle Magic:Inspiring Command",' +
       '"1:Inspire Hardiness:Inspiring Command",' +
@@ -9465,10 +9467,6 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
         'inquisitorDomainLevel', '+=', 'source>=' + (level * 2 - 1) + ' ? 1 : null'
       );
     }
-    rules.defineRule('combatNotes.bane',
-      '', '=', '2',
-      'combatNotes.greaterBane', '+', '2'
-    );
     rules.defineRule
       ('combatNotes.cunningInitiative', 'wisdomModifier', '=', null);
     rules.defineRule('featCount.Teamwork',
@@ -11863,8 +11861,9 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
 
     rules.defineRule('bannerLevel', classLevel, '+=', null);
     rules.defineRule('inspireCourageLevel', classLevel, '+=', null);
-    rules.defineRule
-      ('featCount.Teamwork', 'featureNotes.teamworkFeat', '+=', '1');
+    rules.defineRule('featCount.Teamwork',
+      'featureNotes.teamworkFeat(BattleHerald)', '+=', '1'
+    );
     rules.defineRule('featureNotes.inspiringCommand',
       classLevel, '=', 'Math.floor((source + 1) / 2)'
     );

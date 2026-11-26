@@ -106,7 +106,7 @@ var attributes = {
         <td><b>Feats</b>: Blind-Fight; Craft Wand; Elemental Focus (Acid); Enlarge Spell; Greater Elemental Focus (Acid); Lookout; Shield Wall; Shielded Caster; Silent Spell; Skill Focus (Perform (Dance)); Skill Focus (Profession (Scribe)); Skill Focus (Profession (Tanner)); Skill Focus (Survival); Widen Spell</td>
         <td><b>Traits</b>: Mathematical Prodigy; Scholar Of The Great Beyond</td>
         <td><b>Oracle Features</b>: Armor Proficiency (Light; Medium; Shield); Awesome Display; Haunted; Heavens Mystery; Interstellar Void; Mystery; Oracle's Curse; Orisons; Revelation; Star Chart; Weapon Proficiency (Simple Weapons)</td>
-        <td><b>Inquisitor Features</b>: Armor Proficiency (Light; Medium; Shield); Bane; Cunning Initiative; Detect Alignment; Discern Lies; Dispelling Touch; Domain (Inquisitor); Hand Of The Acolyte; Judgment; Magic Domain; Monster Lore; Orisons; Second Judgment; Solo Tactics; Stern Gaze; Teamwork Feat (Inquisitor); Track; Weapon Proficiency (Quarterstaff); Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow)</td>
+        <td><b>Inquisitor Features</b>: Aligned Spells; Armor Proficiency (Light; Medium; Shield); Bane; Cunning Initiative; Detect Alignment; Discern Lies; Dispelling Touch; Domain (Inquisitor); Hand Of The Acolyte; Judgment; Magic Domain; Monster Lore; Orisons; Second Judgment; Solo Tactics; Stern Gaze; Teamwork Feat (Inquisitor); Track; Weapon Proficiency (Quarterstaff); Weapon Proficiency (Simple Weapons; Hand Crossbow; Longbow; Repeating Crossbow; Shortbow)</td>
         <td><b>Human Features</b>: Bonus Feat (Human); Human Ability Adjustment; Skilled</td>
       </tr></table>
 </td>
@@ -123,11 +123,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Revelation: 3 selections</i></td>
       </tr><tr style="text-align:center">
-        <td><i>Teamwork Feat (Inquisitor): 3 Teamwork feats</i></td>
+        <td><i>Teamwork Feat (Inquisitor): +3 Teamwork feats</i></td>
       </tr><tr style="text-align:center">
         <td>Haunted: Malevolent spirits inflict minor annoyances such as delaying item retrieval and scattering dropped items</td>
       </tr><tr style="text-align:center">
-        <td>Teamwork Feat (Inquisitor): May exchange most recently acquired Teamwork feat 0/dy</td>
+        <td>Teamwork Feat (Inquisitor): Can use a standard action to exchange the most recently acquired Teamwork feat for another once per day</td>
       </tr></table>
 </td>
     </tr></table>
@@ -200,7 +200,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Mathematical Prodigy: Choice of Knowledge (Arcana) or Knowledge (Engineering) is a class skill</td>
       </tr><tr style="text-align:center">
-        <td>Monster Lore: +0 Knowledge (identify creature abilities and weaknesses)</td>
+        <td>Monster Lore: +0 Knowledge to identify creature abilities and weaknesses</td>
       </tr><tr style="text-align:center">
         <td>Scholar Of The Great Beyond: Choice of Knowledge (History) or Knowledge (Planes) is a class skill</td>
       </tr><tr style="text-align:center">
@@ -258,7 +258,7 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td><i>Unproficient Weapon Penalty.Spiked Armor: -4 attack</i></td>
       </tr><tr style="text-align:center">
-        <td>Bane: Self gains +2 attack and +2d6 HP damage with chosen weapon vs. chosen creature type for 10 rd/dy</td>
+        <td>Bane: Gives self +2 attack and +2d6 HP damage vs. a chosen creature type with a chosen weapon for 10 rd per day; can use a swift action to change the creature type</td>
       </tr><tr style="text-align:center">
         <td>Blind-Fight: Can reroll misses due to concealment/Invisible foes gain no melee bonus</td>
       </tr><tr style="text-align:center">
@@ -266,11 +266,11 @@ var attributes = {
       </tr><tr style="text-align:center">
         <td>Interstellar Void: R30' Inflicts 10d6 HP cold and fatigued (<b>save Fortitude</b> DC 18 half HP only) 2 times per day</td>
       </tr><tr style="text-align:center">
-        <td>Judgment: May pronounce one of these, gaining the specified bonus until combat ends, 4/dy: destruction (+4 weapon damage), healing (regains 4 hit points per rd), justice (+3 attack, dbl to confirm crit), piercing (+4 concentration, +4 caster level to overcome spell resistance), protection (+3 Armor Class, dbl vs. confirm crit), purity (+3 saves, dbl vs. curse, disease, and poison), resiliency (gain DR 3/opposed alignment), resistance (resistance 8 to chosen energy), smiting (weapons count as magic, aligned, and adamantine to overcome DR)</td>
+        <td>Judgment: Can pronounce one of these judgments, gaining the specified bonus until combat ends, 4 times per day: destruction (inflicts +4 weapon damage); healing (regains 4 hit points per rd); justice (+3 attacks and +6 to confirm crits); piercing (+4 concentration checks and +4 caster level to overcome spell resistance); protection (+3 Armor Class and +6 Armor Class vs. foe crit confirmation); purity (+3 saves and +6 vs. curses, disease, and poison); resiliency (DR 3, overcome by magic weapons); resistance (resistance 8 to a choice of acid, cold, electricity, fire, or sonic), smiting (weapons count as magic and adamantine to overcome DR)</td>
       </tr><tr style="text-align:center">
         <td>Lookout: When an adjacent ally has this feat, may take move and standard actions in the surprise round if both self and ally can act; if only ally can act, self gains a surprise round action after ally</td>
       </tr><tr style="text-align:center">
-        <td>Second Judgment: May use 2 Judgments simultaneously; may change 1 as a swift action</td>
+        <td>Second Judgment: Can use 2 judgments with 1 use of Judgment and can change 1 as a swift action</td>
       </tr><tr style="text-align:center">
         <td>Shield Wall: +1 shield Armor Class bonus when an adjacent ally has this feat and a buckler or light shield; +2 w/a heavy or tower shield</td>
       </tr><tr style="text-align:center">
@@ -401,13 +401,15 @@ var attributes = {
     </tr><tr style="text-align:center">
       <td><i>Haunted: Knows the <i>Telekinesis</i>, <i>Levitate</i>, <i>Minor Image</i>, <i>Ghost Sound</i>, and <i>Mage Hand</i> spells</i></td>
     </tr><tr style="text-align:center">
+      <td>Aligned Spells: Cannot cast spells with an alignment opposed to own or deity's alignment</td>
+    </tr><tr style="text-align:center">
       <td>Awesome Display: Treats pattern illusion targets as having 3 fewer HD</td>
     </tr><tr style="text-align:center">
       <td>Craft Wand: Can create wands for known spells of up to 4th level</td>
     </tr><tr style="text-align:center">
-      <td>Detect Alignment: May cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, <i>Detect Law</i> at will</td>
+      <td>Detect Alignment: Can cast <i>Detect Chaos</i>, <i>Detect Good</i>, <i>Detect Evil</i>, and <i>Detect Law</i> at will</td>
     </tr><tr style="text-align:center">
-      <td>Discern Lies: May use <i>Discern Lies</i> effects 10 rd/dy</td>
+      <td>Discern Lies: Can use <i>Discern Lies</i> effects 10 rd per day</td>
     </tr><tr style="text-align:center">
       <td>Dispelling Touch: Touch invokes <i>Dispel Magic</i> effects once per day</td>
     </tr><tr style="text-align:center">
