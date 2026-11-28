@@ -1008,153 +1008,163 @@ PFAPG.FEATURES = {
     'Note="Mutagen gives +8 Armor Class, +8 to Strength, Dexterity, and Constitution, and -2 Intelligence, Wisdom, and Charisma for %{effectiveAlchemistLevel*10} min"',
 
   // Cavalier
-  'Act As One':
-    'Section=combat ' +
-    'Note="R30\' May give immediate move, +2 melee attack, and +2 Armor Class to allies 1/combat"',
-  'Aid Allies (Cavalier)':
-    'Section=combat ' +
-    'Note="Aid another action gives ally +%{(levels.Cavalier+4)//6+2} Armor Class, attack, save, or skill check"',
   'Banner':
     'Section=combat ' +
-    'Note="R60\' Allies gain +%{bannerLevel//5+1} save vs. fear and +%{bannerLevel//5} charge attack when banner is visible"',
-  'Braggart':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"+2 attack vs. demoralized target",' +
-      '"Has Dazzling Display feature; may use unarmed"',
-  'By My Honor':
-     'Section=save ' +
-     'Note="+2 chosen save unless alignment changes on chosen axis"',
-  'Calling':
-    'Section=feature,magic ' +
-    'Note=' +
-      '"May gain +%{charismaModifier} on choice of ability check, attack, save, or skill check within 1 min after prayer 1/choice/dy",' +
-      '"+%1 %V level"',
-  'Cavalier Feat Bonus':'Section=feature Note="%V Fighter Feats"',
+    'Note="R60\' Allies gain +%{1+bannerLevel//5} saves vs. fear and +%{bannerLevel//5} charge attacks when banner is visible"',
+  'Bonus Feat (Cavalier)':'Section=feature Note="+%V Fighter Feats"',
   "Cavalier's Charge":
     'Section=combat ' +
-    'Note="+4 mounted charge attack/Suffers no Armor Class penalty after mounted charge"',
+    'Note="+4 mounted charge attack/Suffers no Armor Class penalty from making a mounted charge"',
   'Challenge':
     'Section=combat ' +
-    'Note="May inflict +%{levels.Cavalier} HP damage on chosen foe and suffer -2 Armor Class against other foes %{(levels.Cavalier+2)//3}/dy"',
+    'Note="Can target a chosen foe, inflicting +%{levels.Cavalier} HP with melee attacks while suffering -2 Armor Class against other foes, until the chosen foe is unconscious or dead or combat ends, %{levels.Cavalier>3?(levels.Cavalier+2)//3+\' times\':\'once\'} per day"',
   'Demanding Challenge':
     'Section=combat ' +
-    'Note="Challenged target suffers -2 Armor Class on attacks by others"',
+    'Note="Challenged targets within threat range suffer -2 Armor Class vs. attacks by others"',
   'Expert Trainer':
     'Section=skill ' +
-    'Note="+%{levels.Cavalier//2} Handle Animal (any mount)/May teach any mount in 1/7 time (DC +5)/May train multiple mounts simultaneously (+2 DC/additional mount)"',
-  'For The Faith':
-    'Section=combat ' +
-    'Note="R30\' May give self +%{charismaModifier>?1} attack and allies who follow the same faith +%{charismaModifier//2>?1} attack for 1 rd %{levels.Cavalier//4-1}/dy"',
-  'For The King':
-    'Section=combat ' +
-    'Note="R30\' May give allies +%{charismaModifier} attack and damage for 1 rd 1/combat"',
+    'Note="+%{levels.Cavalier//2} Handle Animal with any mount/Can teach any mount in 1/7 the normal time with a +5 DC/Can train multiple mounts simultaneously with a +2 DC per additional mount"',
   'Greater Banner':
     'Section=combat ' +
-    'Note="R60\' Allies gain +2 save vs. charm and compulsion/Waving banner gives allies additional save vs. spell or effect"',
-  'Greater Tactician':'Section=feature Note="1 Teamwork feat"',
-  "Knight's Challenge":
-    'Section=combat ' +
-    'Note="May make additional Challenge w/+%{charismaModifier} attack and damage and +4 to confirm crit 1/dy"',
-  "Lion's Call":
-    'Section=combat ' +
-    'Note="R60\' May use a standard action speech to give allies +%{charismaModifier} save vs. fear, +1 attack for %{levels.Cavalier} rd, and an immediate save vs. frightened or panicked"',
+    'Note="R60\' Allies gain +2 saves vs. charm and compulsion when banner is visible, and waving it gives allies an additional save vs. a spell or effect"',
+  'Greater Tactician':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"Has increased Tactician effects",' +
+      '"+1 Teamwork feat"',
   'Master Tactician':
     'Section=combat,feature ' +
     'Note=' +
-      '"May use Tactician to share 2 Teamwork feats w/allies",' +
-      '"1 Teamwork feat"',
+      '"Has increased Tactician effects",' +
+      '"+1 Teamwork feat"',
   'Mighty Charge':
     'Section=combat ' +
-    'Note="Dbl threat range during mounted charge/May make free bull rush, disarm, sunder, or trip w/out provoking AOO after a successful mounted charge"',
-  'Moment Of Triumph':
-    'Section=combat ' +
-    'Note="May automatically confirm crit and gain +%{charismaModifier} on ability checks, attack, damage, saves, skill checks, and Armor Class for 1 rd 1/dy"',
-  'Mount':'Section=companion,feature,skill ' +
+    'Note="Doubles critical threat range during a mounted charge/Can make a free Bull Rush, Disarm, Sunder, or Trip attempt without provoking an AOO after a successful mounted charge"',
+  'Mount':'Section=companion,companion,skill ' +
     'Note=' +
-      '"Mount has Light Armor Proficiency feature but lacks Share Spells feature",' +
-      '"Has Animal Companion feature w/mount",' +
-      '"Suffers no Ride armor penalty w/mount"',
-  'Mounted Mastery':
-    'Section=combat,feature,skill ' +
-    'Note=' +
-      '"+4 Armor Class vs. attack set against mounted charge/+%{((animalCompanionStats.Str||10)-10)//2} mounted charge damage",' +
-      '"1 Order Of The Sword feat",' +
-      '"Suffers no Ride armor penalty"',
+      '"Has the Animal Companion feature with mount/Mount has the Light Armor Proficiency feature but not Share Spells",' +
+      '"Death of mount requires 1 week before acquiring another, and the Link, Evasion, Devotion, and Improved Evasion do not apply to the new mount until the next level of Cavalier",' +
+      '"Suffers no Ride armor penalty with mount"',
   'Order':'Section=feature Note="1 selection"',
-  'Order Of The Cockatrice':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} HP damage during solo threat of Challenge target",' +
-      '"Must put own interest above others\'",' +
-      '"Appraise is a class skill/Perform is a class skill",' +
-      '"Foes suffer +%{charismaModifier} DC to demoralize using Intimidate"',
-  'Order Of The Dragon':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"Allies gain +%{levels.Cavalier//4+1} attack on threatened Challenge target",' +
-      '"Must protect allies from harm and defend their honor",' +
-      '"Perception is a class skill/Survival is a class skill",' +
-      '"+%{levels.Cavalier//2>?1} Survival (care for allies)"',
-  'Order Of The Lion':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} Armor Class vs. Challenge target",' +
-      '"Must defend and obey sovereign",' +
-      '"Knowledge (Local) is a class skill/Knowledge (Nobility) is a class skill",' +
-      '"May use Knowledge (Nobility) untrained/+%{levels.Cavalier//2>?1} Knowledge (Nobility) (sovereign)"',
-  'Order Of The Shield':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} attack vs. Challenge target for 1 min if target attacks another",' +
-      '"Must defend the lives and prosperity of common folk",' +
-      '"Heal is a class skill/Knowledge (Local) is a class skill",' +
-      '"+%{levels.Cavalier//2>?1} Heal (others)"',
-  'Order Of The Star':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} saves while threatening Challenge target",' +
-      '"Must protect and serve a faith and its members",' +
-      '"Heal is a class skill/Knowledge (Religion) is a class skill",' +
-      '"May use Knowledge (Religion) untrained/+%{levels.Cavalier//2>?1} Knowledge (Religion) (chosen faith)"',
-  'Order Of The Sword':
-    'Section=combat,feature,skill,skill ' +
-    'Note=' +
-      '"+%{levels.Cavalier//4+1} mounted attack vs. Challenge target",' +
-      '"Must show honor, courage, mercy, and charity",' +
-      '"Knowledge (Nobility) is a class skill/Knowledge (Religion) is a class skill",' +
-      '"+%{levels.Cavalier//2>?1} Sense Motive (oppose Bluff)"',
-  'Protect The Meek':
-    'Section=combat ' +
-    'Note="May take immediate move and attack; staggered for 1 rd afterward"',
-  'Resolute':
-    'Section=combat ' +
-    'Note="May convert %{(levels.Cavalier+2)//4} HP damage per attack to nonlethal when wearing heavy armor"',
-  'Retribution':
-    'Section=combat ' +
-    'Note="May make +2 AOO against adjacent foe who strikes self or follower of the same faith 1/rd; foe crit allows Challenge use"',
-  'Shield Of The Liege':
-    'Section=combat ' +
-    'Note="Adjacent allies gain +2 Armor Class/May redirect an attack on an adjacent ally to self"',
-  'Steal Glory':
-    'Section=combat ' +
-    'Note="May make AOO against threatened target when ally scores a crit"',
-  'Stem The Tide':
-    'Section=combat,feature ' +
-    'Note=' +
-      '"May halt foe using attack instead of maneuver",' +
-      '"Has Stand Still feature"',
-  'Strategy':
-    'Section=combat ' +
-    'Note="R30\' May give each ally +2 Armor Class for 1 rd, +2 attack for 1 rd, or immediate move 1/combat"',
-  'Supreme Charge':
-    'Section=combat ' +
-    'Note="Mounted charge inflicts dbl damage (lance triple)/Crit during mounted charge inflicts stunned (DC %{baseAttack+10} Will staggered) for 1d4 rd"',
   'Tactician':
     'Section=combat,feature ' +
     'Note=' +
-      '"R30\' May share Teamwork feat w/allies for %{tacticianLevel//2+3} rd %V/dy",' +
-      '"1 Teamwork feat"',
+      '"R30\' Can use a %{combatNotes.greaterTactician?\'swift\':\'standard\'} action to share %{combatNotes.masterTactician?\'2 Teamwork feats\':\'a Teamwork feat\'} with allies for %{tacticianLevel//2+3} rd %{tacticianLevel>4||combatNotes.practicedTactician?1+tacticianLevel//5+(combatNotes.practicedTactician||0)+\' times\':\'once\'} per day",' +
+      '"+1 Teamwork feat"',
+  'Supreme Charge':
+    'Section=combat ' +
+    'Note="Mounted charge inflicts x2 damage, or x3 with a lance/Critical hits from a mounted charge inflict stunned (save Will DC %{baseAttack+10} inflicts staggered) for 1d4 rd"',
+  // Order of the Cockatrice
+  'Braggart':
+    'Section=combat,feature ' +
+    'Note=' +
+      '"+2 attacks vs. demoralized targets",' +
+      '"Has the Dazzling Display feature; may use it when unarmed"',
+  'Moment Of Triumph':
+    'Section=combat ' +
+    'Note="Can automatically confirm critical hits and gain +%{charismaModifier} on ability checks, attacks, damage, saves, skill checks, and Armor Class for 1 rd once per day"',
+  'Order Of The Cockatrice':
+    'Section=combat,feature,skill,skill ' +
+    'Note=' +
+      '"Inflicts +%{levels.Cavalier//4+1} HP to a Challenge targets when no others threaten it",' +
+      '"Must put own interests above others\'",' +
+      '"Appraise and Perform are class skills",' +
+      '"Foes suffer +%{charismaModifier} DC to demoralize self using Intimidate"',
+  'Steal Glory':
+    'Section=combat ' +
+    'Note="Can make an AOO against a threatened target when an ally scores a critical hit on it"',
+  // Order of the Dragon
+  'Act As One':
+    'Section=combat ' +
+    'Note="R30\' Can use a standard action to give self and allies an immediate move, +2 melee attack, and a +2 dodge bonus to Armor Class for 1 rd, once per combat"',
+  'Aid Allies (Cavalier)':
+    'Section=combat ' +
+    'Note="Using Aid Another gives the ally +%{(levels.Cavalier+4)//6+2} to its Armor Class, attack, save, or skill check"',
+  'Order Of The Dragon':
+    'Section=combat,feature,skill,skill ' +
+    'Note=' +
+      '"Allies gain +%{levels.Cavalier//4+1} attacks on a Challenge target within self threat range",' +
+      '"Must protect allies from harm and defend their honor",' +
+      '"Perception and Survival are class skill",' +
+      '"+%{levels.Cavalier//2>?1} Survival to provide shelter or gather food and water for allies"',
+  'Strategy':
+    'Section=combat ' +
+    'Note="R30\' Can give each ally +2 Armor Class for 1 rd, +2 attacks for 1 rd, or an immediate move action once per combat"',
+  // Order of the Lion
+  'For The King':
+    'Section=combat ' +
+    'Note="R30\' Can use a swift action to give allies +%{charismaModifier} attacks and damage for 1 rd once per combat"',
+  "Lion's Call":
+    'Section=combat ' +
+    'Note="R60\' Can use a standard action to make a speech that gives allies +%{charismaModifier} saves vs. fear, +1 attacks for %{levels.Cavalier} rd, and an immediate save vs. an existing frightened or panicked condition"',
+  'Order Of The Lion':
+    'Section=combat,feature,skill,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} dodge bonus to Armor Class vs. a Challenge target",' +
+      '"Must defend, obey, and advance the interests of the sovereign",' +
+      '"Knowledge (Local) and Knowledge (Nobility) are class skills",' +
+      '"%{$\'skills.Knowledge (Nobility)\'?\'+\'+(levels.Cavalier//2>?1)+\' Knowledge (Nobility) regarding sovereign\':\'Can use Knowledge (Nobility) untrained\'}"',
+  'Shield Of The Liege':
+    'Section=combat ' +
+    'Note="Adjacent allies gain a +2 shield bonus to Armor Class/Can redirect an attack on an adjacent ally by a foe within reach to self"',
+  // Order of the Shield
+  'Order Of The Shield':
+    'Section=combat,feature,skill,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} attacks vs. a Challenge target for 1 min if the target attacks another",' +
+      '"Must defend the lives and prosperity of common folk",' +
+      '"Heal and Knowledge (Local) are class skills",' +
+      '"+%{levels.Cavalier//2>?1} Heal when used on others"',
+  'Protect The Meek':
+    'Section=combat ' +
+    'Note="Can use an immedate action to move and attack, suffering staggered for 1 rd afterward"',
+  'Resolute':
+    'Section=combat ' +
+    'Note="Can convert %{(levels.Cavalier+2)//4} HP of damage suffered per attack to nonlethal when wearing heavy armor"',
+  'Stem The Tide':
+    'Section=combat,combat ' +
+    'Note=' +
+      '"Has the Stand Still feature",' +
+      '"Can use Stand Still to halt a foe using an attack instead of a maneuver"',
+  // Order of the Star
+  'Calling':
+    'Section=feature,magic ' +
+    'Note=' +
+      '"Can gain +%{charismaModifier} on a choice of ability check, attack, save, or skill check within 1 min once per choice per day",' +
+      '"+%1 %V level"',
+  'For The Faith':
+    'Section=combat ' +
+    'Note="R30\' Can give self +%{charismaModifier>?1} attacks and give allies of the same faith +%{charismaModifier//2>?1} attacks for 1 rd %{levels.Cavalier>11?levels.Cavalier//4-1+\' times\':\'once\'} per day"',
+  'Order Of The Star':
+    'Section=feature,save,skill,skill ' +
+    'Note=' +
+      '"Must protect and serve a faith and its members",' +
+      '"+%{levels.Cavalier//4+1} saves while threatening a Challenge target",' +
+      '"Heal and Knowledge (Religion) are class skills",' +
+      '"%{$\'skills.Knowledge (Religion)\'?\'+\'+(levels.Cavalier//2>?1)+\' Knowledge (Religion) regarding own faith\':\'Can use Knowledge (Religion) untrained\'}"',
+  'Retribution':
+    'Section=combat ' +
+    'Note="Can make a +2 AOO against an adjacent foe who strikes self or an ally of the same faith once per rd; foe critical hits also allow treating the foe as a Challenge target"',
+  // Order of the Sword
+  'By My Honor':
+     'Section=save ' +
+     'Note="Gains +2 on a chosen save as long as a chosen alignment component remains unchanged"',
+  "Knight's Challenge":
+    'Section=combat ' +
+    'Note="Can make an additional Challenge with +%{charismaModifier} attacks and damage and +4 to confirm critical hits once per day"',
+  'Mounted Mastery':
+    'Section=combat,feature,skill ' +
+    'Note=' +
+      '"+4 Armor Class vs. attacks set against a mounted charge/Inflicts +%{((animalCompanionStats.Str||10)-10)//2} HP with mounted charges",' +
+      '"+1 Order Of The Sword feat",' +
+      '"Suffers no Ride armor penalty"',
+  'Order Of The Sword':
+    'Section=combat,feature,skill,skill ' +
+    'Note=' +
+      '"+%{levels.Cavalier//4+1} mounted attacks vs. a Challenge target",' +
+      '"Must show courage, mercy, charity, and honor",' +
+      '"Knowledge (Nobility) and Knowledge (Religion) are class skills",' +
+      '"+%{levels.Cavalier//2>?1} Sense Motive to oppose a Bluff"',
 
   // Inquisitor
   // Aligned Spells as Pathfinder
@@ -1184,9 +1194,9 @@ PFAPG.FEATURES = {
     'Note="Can pronounce one of these judgments, gaining the specified bonus until combat ends, %{levels.Inquisitor>3?(levels.Inquisitor+2)//3+\' times\':\'once\'} per day: ' +
       'destruction (inflicts +%{1+levels.Inquisitor//3} weapon damage); ' +
       'healing (regains %{1+levels.Inquisitor//3} hit points per rd); ' +
-      'justice (+%{1+levels.Inquisitor//5} attacks%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' to confirm crits\':\'\'}); ' +
+      'justice (+%{1+levels.Inquisitor//5} attacks%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' to confirm critical hits\':\'\'}); ' +
       'piercing (+%{1+levels.Inquisitor//3} concentration checks and +%{1+levels.Inquisitor//3} caster level to overcome spell resistance); ' +
-      'protection (+%{1+levels.Inquisitor//5} Armor Class%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' Armor Class vs. foe crit confirmation\':\'\'}); ' +
+      'protection (+%{1+levels.Inquisitor//5} Armor Class%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' Armor Class vs. foe critical hit confirmation\':\'\'}); ' +
       'purity (+%{1+levels.Inquisitor//5} saves%{levels.Inquisitor>=10?\' and +\'+(2+levels.Inquisitor//5*2)+\' vs. curses, disease, and poison\':\'\'}); ' +
       'resiliency (DR %{1+levels.Inquisitor//5}, overcome by %{levels.Inquisitor>=10&&alignment!=\'Neutral\'?\'weapons with a specified opposed alignment component\':\'magic weapons\'}); ' +
       'resistance (resistance %{2+levels.Inquisitor//3*2} to a choice of acid, cold, electricity, fire, or sonic), ' +
@@ -1206,9 +1216,9 @@ PFAPG.FEATURES = {
     'Note="Increases the effects of a choice of Judgment upon each use to: ' +
       'destruction (inflicts +%{1+(levels.Inquisitor+5)//3} weapon damage); ' +
       'healing (regains %{1+(levels.Inquisitor+5)//3} hit points per rd); ' +
-      'justice (+%{1+(levels.Inquisitor+5)//5} attacks%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' to confirm crits\':\'\'}); ' +
+      'justice (+%{1+(levels.Inquisitor+5)//5} attacks%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' to confirm critical hits\':\'\'}); ' +
       'piercing (+%{1+(levels.Inquisitor+5)//3} concentration checks and +%{1+(levels.Inquisitor+5)//3} caster level to overcome spell resistance); ' +
-      'protection (+%{1+(levels.Inquisitor+5)//5} Armor Class%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' Armor Class vs. foe crit confirmation\':\'\'}); ' +
+      'protection (+%{1+(levels.Inquisitor+5)//5} Armor Class%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' Armor Class vs. foe critical hit confirmation\':\'\'}); ' +
       'purity (+%{1+(levels.Inquisitor+5)//5} saves%{levels.Inquisitor>=5?\' and +\'+(2+(levels.Inquisitor+5)//5*2)+\' vs. curses, disease, and poison\':\'\'}); ' +
       'resiliency (DR %{1+(levels.Inquisitor+5)//5}, overcome by %{levels.Inquisitor>=5&&alignment!=\'Neutral\'?\'weapons with a specified opposed alignment component\':\'magic weapons\'}); ' +
       'resistance (resistance %{2+(levels.Inquisitor+5)//3*2} to a choice of acid, cold, electricity, fire, or sonic), ' +
@@ -1281,7 +1291,7 @@ PFAPG.FEATURES = {
     'Note="Can use two spell slots to cast a <i>Cure</i> spell using a swift action %{mysteryLevel>10?(mysteryLevel-3)//4+\' times\':\'once\'} per day"',
   'Final Revelation (Battle Mystery)':
     'Section=combat ' +
-    'Note="Can use a full-round action to take a full-attack action and move %{speed}\'/Critical hits ignore DR/+4 Armor Class vs. critical confirmation/Does not die until reaching -%{constitution*2+1} hit points"',
+    'Note="Can use a full-round action to take a full-attack action and move %{speed}\'/Critical hits ignore DR/+4 Armor Class vs. critical hit confirmation/Does not die until reaching -%{constitution*2+1} hit points"',
   'Iron Skin':
     'Section=magic ' +
     'Note="Cane use <i>Stoneskin</i> effects on self %{mysteryLevel>14?\'2 times\':\'once\'} per day" ' +
@@ -1628,7 +1638,7 @@ PFAPG.FEATURES = {
   'Fluid Nature':
     'Section=combat,feature ' +
     'Note=' +
-      '"+4 CMD vs. Bull Rush, Drag, Grapple, Reposition, and Trip/Inflicts -4 on foe critical confirmations",' +
+      '"+4 CMD vs. Bull Rush, Drag, Grapple, Reposition, and Trip/Inflicts -4 on foe critical hit confirmations",' +
       '"Has the %V"',
   'Fluid Travel':
     'Section=ability ' +
@@ -2105,7 +2115,7 @@ PFAPG.FEATURES = {
   'Chaos Totem':
     'Section=combat,skill ' +
     'Note=' +
-      '"25% chance to ignore crit and sneak attack damage during rage",' +
+      '"25% chance to ignore critical hit and sneak attack damage during rage",' +
       '"+4 Escape Artist during rage"',
   'Come And Get Me':
     'Section=combat ' +
@@ -2361,7 +2371,7 @@ PFAPG.FEATURES = {
     'SpellLevel=casterLevels.Bard',
   'Inspiring Blow':
     'Section=combat ' +
-    'Note="May use Bardic Performance following crit to give%{charismaModifier>0 ? \' self \' + charismaModifier + \' temporary hit points and\' : \'\'} R30\' allies +1 next attack for 1 rd"',
+    'Note="May use Bardic Performance following a critical hit to give%{charismaModifier>0 ? \' self \' + charismaModifier + \' temporary hit points and\' : \'\'} R30\' allies +1 next attack for 1 rd"',
   'Lamentable Belaborment':
     'Section=magic ' +
     'Note="May use Bardic Performance to inflict choice of dazed or confused on fascinated target (DC %{10+levels.Bard//2+charismaModifier} Will negates)"',
@@ -7586,7 +7596,7 @@ PFAPG.CLASSES = {
       '"1:Armor Proficiency (Light; Medium; Heavy; Shield)",' +
       '"1:Weapon Proficiency (Simple Weapons; Martial Weapons)",' +
       '1:Challenge,1:Mount,1:Order,1:Tactician,"3:Cavalier\'s Charge",' +
-      '"4:Expert Trainer",5:Banner,"6:Cavalier Feat Bonus",' +
+      '"4:Expert Trainer",5:Banner,"6:Bonus Feat (Cavalier)",' +
       '"9:Greater Tactician","11:Mighty Charge","12:Demanding Challenge",' +
       '"14:Greater Banner","17:Master Tactician","20:Supreme Charge",' +
       '"cavalierFeatures.Order Of The Cockatrice ? 2:Braggart",' +
@@ -9365,23 +9375,21 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
       'companionMasterLevel', '=', '1',
       'companionNotes.mount', '=', '0'
     );
+    rules.defineRule
+      ('features.Animal Companion', 'companionNotes.mount', '=', '1');
+
     rules.defineRule('bannerLevel', classLevel, '+=', null);
     rules.defineRule
       ('channelLevel', classLevel, '+=', 'Math.floor(source / 2)');
-    rules.defineRule('combatNotes.tactician',
-      'tacticianLevel', '=', 'Math.floor(source / 5) + 1'
-    );
     rules.defineRule('companionMasterLevel', classLevel, '^=', null);
     rules.defineRule
-      ('features.Animal Companion', 'featureNotes.mount', '=', '1');
-    rules.defineRule
-      ('featCount.Fighter', 'featureNotes.cavalierFeatBonus', '+=', null);
+      ('featCount.Fighter', 'featureNotes.bonusFeat(Cavalier)', '+=', null);
     rules.defineRule('featCount.Teamwork',
       'featureNotes.greaterTactician', '+=', '1',
       'featureNotes.masterTactician', '+=', '1',
       'featureNotes.tactician', '+=', '1'
     );
-    rules.defineRule('featureNotes.cavalierFeatBonus',
+    rules.defineRule('featureNotes.bonusFeat(Cavalier)',
       classLevel, '+=', 'Math.floor(source / 6)'
     );
     rules.defineRule('selectableFeatureCount.Cavalier (Order)',
@@ -9406,6 +9414,7 @@ PFAPG.classRulesExtra = function(rules, name, attrs) {
     rules.defineRule
       ('features.Stand Still', 'featureNotes.stemTheTide', '=', '1');
     // Order Of The Star
+    rules.defineRule('channelLevel', 'magicNotes.calling.1', '+'. null);
     rules.defineRule('magicNotes.calling',
       'magicNotes.calling.2', '=', 'source==1 ? "Channel Energy" : source==2 ? "Lay On Hands" : "Channel Energy and Lay On Hands"'
     );
@@ -12229,8 +12238,9 @@ PFAPG.featRulesExtra = function(rules, name) {
     rules.defineRule('combatNotes.practicedTactician',
       'feats.Practiced Tactician', '=', null
     );
-    rules.defineRule
-      ('combatNotes.tactician', 'combatNotes.practicedTactician', '+', null);
+    rules.defineRule('combatNotes.tactician',
+      'combatNotes.practicedTactician', '+', 'null' // italics
+    );
   } else if(name == 'Preferred Spell') {
     rules.defineRule
       ('magicNotes.preferredSpell', 'feats.Preferred Spell', '=', null);
